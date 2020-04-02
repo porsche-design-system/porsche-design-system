@@ -329,7 +329,7 @@ export namespace Components {
     }
     interface PLinkSocial {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -339,13 +339,13 @@ export namespace Components {
         /**
           * The social icon shown.
          */
-        "icon"?: "logo-facebook" | "logo-linkedin" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        "icon"?: "logo-facebook" | "logo-google" | "logo-linkedin" | "logo-pinterest" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
         /**
           * A custom URL path to a custom social icon.
          */
         "iconSource"?: string;
         /**
-          * Adapts the link color when used on dark background.
+          * Adapts the icon color when used on dark background.
          */
         "theme"?: Theme;
     }
@@ -976,7 +976,7 @@ declare namespace LocalJSX {
     }
     interface PLinkSocial {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -986,13 +986,13 @@ declare namespace LocalJSX {
         /**
           * The social icon shown.
          */
-        "icon"?: "logo-facebook" | "logo-linkedin" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        "icon"?: "logo-facebook" | "logo-google" | "logo-linkedin" | "logo-pinterest" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
         /**
           * A custom URL path to a custom social icon.
          */
         "iconSource"?: string;
         /**
-          * Adapts the link color when used on dark background.
+          * Adapts the icon color when used on dark background.
          */
         "theme"?: Theme;
     }

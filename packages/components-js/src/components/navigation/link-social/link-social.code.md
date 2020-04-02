@@ -4,31 +4,33 @@ The `<p-link-social>` component is a set of pre defined social icons for various
 
 ## Variants
 
-Choose between a set of different social icons or use a custom one.
+Choose between a set of pre defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template #configurator>
-    <select v-model="icon">
+    <select v-model="icon" @change="getLabel">
       <option selected value="logo-facebook">Facebook</option>
+      <option selected value="logo-google">Google</option>
       <option value="logo-linkedin">Linkedin</option>
+      <option value="logo-pinterest">Pinterest</option>
       <option value="logo-instagram">Instagram</option>
+      <option value="logo-twitter">Twitter</option>
+      <option value="logo-wechat">WeChat</option>
+      <option value="logo-youtube">YouTube</option>
     </select>
   </template>
   <template v-slot={theme}>
-    <p-link-icon href="#linkToSocialMedia" :icon="icon">Facebook</p-link-icon>
+    <p-link-social href="#linkToSocialMedia" :icon="icon" :theme="theme">{{ label }}</p-link-social>
   </template>
 </Playground>
 
 ---
 
-## Wrapped with an anchor tag (e.g. for framework routing)
-If the component is used within a JS framework, it might be applied within a framework specific router component. 
-In this case the router component must be wrapped around `<p-link>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
-
+## Wrapped with an anchor tag 
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <a href="#" class="example-link" target="_blank" rel="nofollow noopener">
+    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener">
       <p-link-social icon="logo-facebook" :theme="theme">Facebook</p-link-social>
     </a>
   </template>
@@ -41,9 +43,25 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" :theme="theme">Kaixin</p-link>
+    <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" :theme="theme">Kaixin</p-link-social>
   </template>
 </Playground>
+
+--- 
+
+## Pattern of grouped components 
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <div class="example-grouped">
+      <p-link-social href="https://www.facebook.com/" icon="logo-facebook" :theme="theme" class="">Facebook</p-link-social>
+      <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" :theme="theme">Linkedin</p-link-social>
+      <p-link-social href="https://www.twitter.com/" icon="logo-twitter" :theme="theme">Twitter</p-link-social>
+    </div>
+  </template>
+</Playground>
+
+---
 
 ## Bind events to the Link
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
@@ -51,7 +69,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link-social
-        href="#facebook"
+        href="https://www.facebook.com/"
+        icon="logo-facebook"
         onclick="alert('click'); return false;"
         onfocus="console.log('focus')"
         onfocusin="console.log('focusin')"
@@ -67,7 +86,14 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   
   @Component
   export default class PlaygroundLinkSocial extends Vue {
-    public icon: string = 'facebook';
+    public icon: string = 'logo-facebook';
+    public label: string = 'Facebook';
+    
+    public getLabel(event) {
+      const options = event.target.options;
+      const selectedOption = options[options.selectedIndex];
+      this.label =  selectedOption.textContent;
+    };
   }
 </script>
 
@@ -76,5 +102,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     display: inline-block;
     outline: none;
     text-decoration: none;
+  }
+  
+  .example-grouped {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
   }
 </style>
