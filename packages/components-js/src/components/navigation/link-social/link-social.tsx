@@ -1,6 +1,11 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  prefix,
+  insertSlottedStyles,
+  mapBreakpointPropToPrefixedClasses
+} from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { Theme } from '../../../types';
 
@@ -13,7 +18,7 @@ export class LinkSocial {
   @Element() public element!: HTMLElement;
 
   /** The social icon shown. */
-  @Prop() public icon?: 'logo-facebook' | 'logo-linkedin' | 'logo-instagram' | 'logo-twitter' | 'logo-wechat' | 'logo-youtube' = 'logo-facebook';
+  @Prop() public icon?: 'logo-facebook' | 'logo-google' | 'logo-linkedin' | 'logo-pinterest' | 'logo-instagram' | 'logo-twitter' | 'logo-wechat' | 'logo-youtube' = 'logo-default';
 
   /** A custom URL path to a custom social icon. */
   @Prop() public iconSource?: string = undefined;
@@ -25,7 +30,7 @@ export class LinkSocial {
   @Prop() public theme?: Theme = 'light';
 
   /** Show or hide label. */
-  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = true;
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad() {
     const tagName= this.element.tagName.toLowerCase();
@@ -42,12 +47,13 @@ export class LinkSocial {
     const TagType = this.href === undefined ? 'span' : 'a';
 
     const linkClasses = cx(
-      prefix('link'),
-      mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
-      prefix(`link--theme-${this.theme}`)
+      prefix('link-social'),
+      mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
+      prefix(`link-social--${this.icon}`),
+      prefix(`link-social--theme-${this.theme}`)
     );
-    const iconClasses = prefix('link__icon');
-    const labelClasses = prefix('link__label');
+    const iconClasses = prefix('link-social__icon');
+    const labelClasses = prefix('link-social__label');
 
     return (
       <TagType

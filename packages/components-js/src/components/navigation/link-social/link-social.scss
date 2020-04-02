@@ -70,10 +70,7 @@
   appearance: none;
   outline: none transparent;
   text-decoration: none;
-  border-style: solid;
-  border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color $p-animation-hover-duration $p-animation-hover-bezier,
   outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -88,101 +85,100 @@
   }
 
   &--theme-light {
+    background-color: $p-color-theme-light-neutral-contrast-high;
+    color: $p-color-theme-dark-default;
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+    }
+
     &:focus {
       outline-color: $p-color-theme-light-state-focus;
     }
   }
 
   &--theme-dark {
+    background-color: $p-color-theme-dark-default;
+    color: $p-color-theme-light-default;
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+    }
+
     &:focus {
       outline-color: $p-color-theme-dark-state-focus;
     }
   }
 
-  &--primary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-brand;
-      border-color: $p-color-theme-light-brand;
-    }
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-dark-brand;
-      border-color: $p-color-theme-dark-brand;
-    }
-
+  &--logo-default {
     &:hover,
     &:active {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-state-hover, 12%);
-        border-color: darken($p-color-theme-light-state-hover, 12%);
-      }
-
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-dark-state-hover, 12%);
-        border-color: darken($p-color-theme-dark-state-hover, 12%);
-      }
-    }
-  }
-
-  &--secondary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-neutral-contrast-high;
-      border-color: $p-color-theme-light-neutral-contrast-high;
-    }
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-light-default;
-      background-color: $p-color-theme-dark-default;
-      border-color: $p-color-theme-dark-default;
-    }
-
-    &:hover,
-    &:active {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
         background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-        border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+        color: $p-color-theme-dark-default;
       }
-
       &#{$bem-block}--theme-dark {
-        color: $p-color-theme-light-default;
         background-color: darken($p-color-theme-dark-default, 12%);
-        border-color: darken($p-color-theme-dark-default, 12%);
+        color: $p-color-theme-light-default;
       }
     }
   }
 
-  &--tertiary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-light-default;
-      background-color: transparent;
-      border-color: $p-color-theme-light-neutral-contrast-high;
-    }
-
-    &#{$bem-block}--theme-dark {
-      color: $p-color-theme-dark-default;
-      background-color: transparent;
-      border-color: $p-color-theme-dark-default;
-    }
-
+  &--logo-facebook {
     &:hover,
     &:active {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-        border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-      }
+      background-color: $p-color-external-facebook;
+    }
+  }
 
-      &#{$bem-block}--theme-dark {
-        color: $p-color-theme-light-default;
-        background-color: $p-color-theme-dark-default;
-        border-color: $p-color-theme-dark-default;
-      }
+  &--logo-google {
+    &:hover,
+    &:active {
+      background-color: deeppink;
+    }
+  }
+
+  &--logo-linkedin {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-linkedin;
+    }
+  }
+
+  &--logo-pinterest {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-pinterest;
+    }
+  }
+
+  &--logo-instagram {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-instagram;
+    }
+  }
+
+  &--logo-twitter {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-twitter;
+    }
+  }
+
+  &--logo-wechat {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-wechat;
+    }
+  }
+
+  &--logo-youtube {
+    &:hover,
+    &:active {
+      background-color: $p-color-external-youtube;
     }
   }
 
@@ -334,14 +330,9 @@
         @include p-link-social-label-without-label;
       }
 
-      #{$bem-block}__icon´ {
+      #{$bem-block}__icon {
         @include p-link-social-icon-without-label;
       }
     }
-  }
-
-  &__label {
-    display: block;
-    box-sizing: border-box;
   }
 }
