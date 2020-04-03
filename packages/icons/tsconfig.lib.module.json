@@ -2,9 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2015",
-    "module": "commonjs",
+    "module": "esnext",
     "declaration": true,
-    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "outDir": "./dist/module",
     "types": []
   },
   "include": ["index.ts"]

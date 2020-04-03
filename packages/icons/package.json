@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/index.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
   "types": "dist/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -32,7 +33,9 @@
   "scripts": {
     "build": "yarn build:node && yarn build:tsc",
     "build:node": "ts-node --project './tsconfig.json' './scripts/build.ts'",
-    "build:tsc": "tsc --build ./tsconfig.lib.json",
+    "build:tsc": "yarn build:tsc:module && yarn build:tsc:commonjs",
+    "build:tsc:module": "tsc --build ./tsconfig.lib.module.json",
+    "build:tsc:commonjs": "tsc --build ./tsconfig.lib.commonjs.json",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {

@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.lib.module.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": false,
+    "declarationDir": null,
+    "outDir": "./dist/commonjs"
+  },
+  "include": ["index.ts"]
+}
