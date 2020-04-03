@@ -47,11 +47,11 @@ export default App;
 
 #### App.test file
 
-To enable jest testing we provide mocks. You can access them in your jest.mock function with ComponentNameMock. 
-
+To enable jest testing we provide mocks. You can access them in your jest.mock function. All of our mocks are named like **ComponentNameMock** for example **PHeadlineMock**.  
+All used mocks must be included in the mock factory as require. 
 ``` 
 jest.mock('@porsche-design-system/components-react', () => {
-  const { PHeadlineMock } = require('@porsche-design-system/components-react');
+  const { PHeadlineMock } = require('@porsche-design-system/components-react/dist/mocks/jest-Mocks');
 
   return({
       PHeadline: PHeadlineMock,

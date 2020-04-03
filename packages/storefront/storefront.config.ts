@@ -18,10 +18,6 @@ export const config: StorefrontConfig = {
       'Example Project React': [
         // @ts-ignore
         () => import(`@/pages/start-coding/example-project-react.md`)
-      ],
-      'Example Project Angular': [
-        // @ts-ignore
-        () => import(`@/pages/start-coding/example-project-angular.md`)
       ]
     },
     'Start Designing': {
