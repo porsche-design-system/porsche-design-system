@@ -30,7 +30,9 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "ts-node './scripts/build.ts' && tsc -p './tsconfig.json'",
+    "build": "yarn build:node && yarn build:tsc",
+    "build:node": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:tsc": "tsc --build ./tsconfig.lib.json",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const icons = require('@porsche-design-system/icons');
+import * as fs from 'fs';
+import * as path from 'path';
+import * as icons from '@porsche-design-system/icons';
 
 const iconNames = Object.keys(icons.svg).sort().map(icon => `'${icon}'`);
 const file = path.normalize('./src/types.d.ts');
