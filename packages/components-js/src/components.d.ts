@@ -337,9 +337,9 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * The social icon shown.
+          * The icon shown.
          */
-        "icon"?: "logo-facebook" | "logo-google" | "logo-linkedin" | "logo-pinterest" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
         /**
           * A custom URL path to a custom social icon.
          */
@@ -984,9 +984,9 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * The social icon shown.
+          * The icon shown.
          */
-        "icon"?: "logo-facebook" | "logo-google" | "logo-linkedin" | "logo-pinterest" | "logo-instagram" | "logo-twitter" | "logo-wechat" | "logo-youtube";
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
         /**
           * A custom URL path to a custom social icon.
          */

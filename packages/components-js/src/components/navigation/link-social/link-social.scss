@@ -91,6 +91,7 @@
     &:hover,
     &:active {
       color: $p-color-theme-dark-default;
+      background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
     }
 
     &:focus {
@@ -104,7 +105,8 @@
 
     &:hover,
     &:active {
-      color: $p-color-theme-dark-default;
+      color: $p-color-theme-light-default;
+      background-color: darken($p-color-theme-dark-default, 12%);
     }
 
     &:focus {
@@ -112,23 +114,10 @@
     }
   }
 
-  &--logo-default {
-    &:hover,
-    &:active {
-      &#{$bem-block}--theme-light {
-        background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-        color: $p-color-theme-dark-default;
-      }
-      &#{$bem-block}--theme-dark {
-        background-color: darken($p-color-theme-dark-default, 12%);
-        color: $p-color-theme-light-default;
-      }
-    }
-  }
-
   &--logo-facebook {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-facebook;
     }
   }
@@ -136,13 +125,23 @@
   &--logo-google {
     &:hover,
     &:active {
-      background-color: deeppink;
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-google;
+    }
+  }
+
+  &--logo-instagram {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-instagram;
     }
   }
 
   &--logo-linkedin {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-linkedin;
     }
   }
@@ -150,20 +149,15 @@
   &--logo-pinterest {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-pinterest;
-    }
-  }
-
-  &--logo-instagram {
-    &:hover,
-    &:active {
-      background-color: $p-color-external-instagram;
     }
   }
 
   &--logo-twitter {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-twitter;
     }
   }
@@ -171,13 +165,31 @@
   &--logo-wechat {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-wechat;
+    }
+  }
+
+  &--logo-whatsapp {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-whatsapp;
+    }
+  }
+
+  &--logo-xing {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-xing;
     }
   }
 
   &--logo-youtube {
     &:hover,
     &:active {
+      color: $p-color-theme-dark-default;
       background-color: $p-color-external-youtube;
     }
   }

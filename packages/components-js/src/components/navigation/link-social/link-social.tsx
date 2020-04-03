@@ -17,8 +17,37 @@ import { Theme } from '../../../types';
 export class LinkSocial {
   @Element() public element!: HTMLElement;
 
-  /** The social icon shown. */
-  @Prop() public icon?: 'logo-facebook' | 'logo-google' | 'logo-linkedin' | 'logo-pinterest' | 'logo-instagram' | 'logo-twitter' | 'logo-wechat' | 'logo-youtube' = 'logo-default';
+  /** The icon shown. */
+  @Prop() public icon?:
+  'logo-facebook'
+  | 'logo-google'
+  | 'logo-instagram'
+  | 'logo-linkedin'
+  | 'logo-pinterest'
+  | 'logo-twitter'
+  | 'logo-wechat'
+  | 'logo-whatsapp'
+  | 'logo-xing'
+  | 'logo-youtube'
+  | 'logo-baidu'
+  | 'logo-delicious'
+  | 'logo-digg'
+  | 'logo-foursquare'
+  | 'logo-gmail'
+  | 'logo-hatena'
+  | 'logo-kaixin'
+  | 'logo-qq-share'
+  | 'logo-qq'
+  | 'logo-skyrock'
+  | 'logo-sohu'
+  | 'logo-tecent'
+  | 'logo-telegram'
+  | 'logo-tumblr'
+  | 'logo-viber'
+  | 'logo-vk'
+  | 'logo-weibo'
+  | 'logo-yahoo'
+  | 'logo-youku' = undefined;
 
   /** A custom URL path to a custom social icon. */
   @Prop() public iconSource?: string = undefined;
