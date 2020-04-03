@@ -5,6 +5,8 @@ lazy loaded. That means, that they might not be ready when your tests start
 to access the elements.  
 You can solve that by using the [componentsReady-function](#/components/general/components-ready)
  to know when all loading is finished.
+ 
+Detailed information about tests in frameworks like [React](#/start-coding/example-project-react), Angular etc. can be found in the respective test projects
 
 ## Unit Tests
 

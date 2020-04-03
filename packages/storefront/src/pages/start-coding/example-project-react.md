@@ -7,49 +7,66 @@ You can find the repository of the react example project here: [Sample integrati
 * Clone the repository by executing <br>
 `git clone https://github.com/porscheui/sample-integration-react.git`
 
-### npm
-* Install dependencies via `npm install`
-* Run tests via `npm test`
-* Run the application via `npm start`
-* Build the application via `npm run build`
-
 ### yarn
 * Install dependencies via `yarn install`
 * Run tests via `yarn test`
 * Run the application via `yarn start`
 * Build the application via `yarn build`
 
+### npm
+* Install dependencies via `npm install`
+* Run tests via `npm test`
+* Run the application via `npm start`
+* Build the application via `npm run build`
+
 ---
 
 ## Reproduce on your own
 To build your own application which is provided with the Porsche Design System follow these simple steps:
 
-* Run `npx create-react-app .` to create a directory inside the current folder with the initial project structure called `my-app` 
-* Install the Porsche Design System<br>
-``` 
-// install with npm:
-npm install @porsche-design-system/components-react
+* Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to create a directory inside the current 
+folder with the initial project structure called `my-app` 
+* To add TypeScript to your **Create React App**, you have to install it:
+```
+yarn add typescript @types/node @types/react @types/react-dom @types/jest
 
+or  
+
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest  
+```
+* Install the Porsche Design System  
+
+``` 
 // install with yarn:
 yarn add @porsche-design-system/components-react
+
+or
+
+// install with npm:
+npm install @porsche-design-system/components-react
 ```
 
 You are ready to start building your own application. The React wrappers for web components can be used like every other React 
-component - even with Typescript support. 
+component. 
 
 The following setup is a standard React Scripts (Create React App) setup with SCSS support:
 
 ### Index file
 ``` 
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './index.css';
 import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
+serviceWorker.unregister();
 ``` 
 
 ### App file
@@ -60,67 +77,65 @@ Change your App file to use at least one Porsche Design System Component, for ex
 import React from 'react';
 import { PHeadline } from '@porsche-design-system/components-react';
 
-const App: React.FC = () => {
+export function App() {
   return (
     <div className="App">
-      <PHeadline variant="headline-1">Headline</PHeadline>
+      <PHeadline variant="headline-1">Headline from PorscheDesignSystem</PHeadline>
     </div>
-  )
+  );
 }
 
 export default App;
 ```
 
-Run `npm start` or `yarn start` and check if the components are displayed correctly.
+Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
 ---
 
 ## Test the application
 
 **Jest** uses **jsdom**. It is not yet possible to render web components via jsdom. 
-For this reason we have created mock´s for every Porsche Design System component.
 
+To ensure your tests dont fail, we provide mocks for every Porsche Design System Component. 
+They are distributed in the `@porsche-design-system/components-react/` so they dont have to be installed separately.
 
-To ensure your tests dont fail, copy the `jest.mock()` function and keep a mock for every component you have used. Use this solution until **jsdom** provides support for **webcomponents**.
+You have to access them in the Mock-Factory inside of the `jest.mock()` function, where the mocks follow the same naming pattern **ComponentNameMock** (eg. `PHeadlineMock`).
+We have to use `require` because the mock factory doesn't allow otherwise. You can copy the `jest.mock()` function beneath and keep a mock for every component you have used. 
 
 ``` 
-jest.mock('@porsche-design-system/components-react', () => ({
+jest.mock('@porsche-design-system/components-react', () => {
 
-       PHeadline: props => <mock-PHeadline>{props.children}</mock-PHeadline>,
-       PIcon: () => <mock-PIcon></mock-PIcon>,
-       PButton: props => <button>{props.children}</button>,
-       PButtonPure: props => <button>{props.children}</button>,
-       PGrid: props => <mock-PGrid>{props.children}</mock-PGrid>,
-       PGridItem: props => <mock-PGridItem>{props.children}</mock-PGridItem>,
-       PFlex: props => <mock-PFlex>{props.children}</mock-PFlex>,
-       PFlexItem: props => <mock-PFlexItem>{props.children}</mock-PFlexItem>,
-       PSelectWrapper: props => <mock-PSelectWrapper>{props.children}</mock-PSelectWrapper>,
-       PCheckboxWrapper: props => <mock-PCheckboxWrapper>{props.children}</mock-PCheckboxWrapper>,
-       PRadioButtonWrapper: props => <mock-PRadioButtonWraper>{props.children}</mock-PRadioButtonWraper>,
-       PTextareaWrapper: () => <mock-PTextareaWrapper></mock-PTextareaWrapper>,
-       PTextFieldWrapper: props => <mock-PTextFieldWrapper>{props.children}</mock-PTextFieldWrapper>,
-       PLink: props => {
-           if (props.href) {
-               return <a href={props.href}>{props.children}</a>
-           }
-           return <mock-PLink>{props.children}</mock-PLink>
-       },
-       PLinkPure: props => {
-           if (props.href) {
-               return <a href={props.href}>{props.children}</a>
-           }
-           return <mock-PLinkPure>{props.children}</mock-PLinkPure>
-       },
-       PSpinner: () => <mock-PSpinner></mock-PSpinner>,
-   
-       /* PPagination uses the onPageChange Event, which you could test. Unfortunately Jest and JS-Dom have to many Restrictions to trigger a Mocked Custom Event.
-       * If you Use a different Testing-Framework which also requires mocking you can use triggerCustomEvent.js as mock for PPagination */
-   
-       PPagination: props => <mock-PPagination>{props.children}</mock-PPagination>,
-   })); 
+    const {PHeadlineMock, PIconMock, PButtonMock, PButtonPureMock, PDividerMock, 
+           PGridMock, PGridItemMock, PFlexMock, PFlexItemMock, PSelectWrapperMock, 
+           PCheckboxWrapperMock, PRadioButtonWrapperMock, PTextareaWrapperMock, 
+           PTextFieldWrapperMock, PLinkMock, PLinkPureMock, PSpinnerMock, PPaginationMock} = require('@porsche-design-system/components-react/dist/mocks/jest-Mocks');
+
+    return ({
+        PHeadline: PHeadlineMock,
+        PIcon: PIconMock,
+        PButton: PButtonMock,
+        PButtonPure: PButtonPureMock,
+        PDivider: PDividerMock,
+        PGrid: PGridMock,
+        PGridItem: PGridItemMock,
+        PFlex: PFlexMock,
+        PFlexItem: PFlexItemMock,
+        PSelectWrapper: PSelectWrapperMock,
+        PCheckboxWrapper: PCheckboxWrapperMock,
+        PRadioButtonWrapper: PRadioButtonWrapperMock,
+        PTextareaWrapper: PTextareaWrapperMock,
+        PTextFieldWrapper: PTextFieldWrapperMock,
+        PLink: PLinkMock,
+        PLinkPure: PLinkPureMock,
+        PSpinner: PSpinnerMock,
+        PPagination: PPaginationMock
+    });
+});
 ```
-You find detailed informations on how to use mock functions in jest [here](https://jestjs.io/docs/en/mock-functions.html).
-<br>
-<br>
+Use this solution until **Creat React App** upgrades to a newer **jsdom** version, which hopefully
+provides support for **webcomponents**. In the meantime we keep providing mocks.
+ 
+You find detailed information on how to use mock functions in jest [here](https://jestjs.io/docs/en/mock-functions.html).
+   
 We also provide test examples in our example-project. You can find them in the `App.test.js`.
 
