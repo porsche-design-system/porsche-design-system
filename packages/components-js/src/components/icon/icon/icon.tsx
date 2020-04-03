@@ -3,7 +3,7 @@ import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
-import * as foo from '@porsche-design-system/icons';
+import { cdn, svg } from '@porsche-design-system/icons';
 
 @Component({
   tag: 'p-icon',
@@ -85,7 +85,7 @@ export class Icon {
 
   public getSource(): string {
     if (this.name && !this.source) {
-      return `${foo.cdn}/${foo.svg[this.name]}.svg`;
+      return `${cdn}/${svg[this.name]}.svg`;
     }
     if (this.source) {
       return this.source;
