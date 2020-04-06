@@ -15,7 +15,7 @@ import { Theme } from '../../../types';
   shadow: true
 })
 export class LinkSocial {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The icon shown. */
   @Prop() public icon?:
@@ -52,7 +52,7 @@ export class LinkSocial {
   /** A custom URL path to a custom social icon. */
   @Prop() public iconSource?: string = undefined;
 
-  /** When providing a social share url then the component will be rendered as `<a>`. */
+  /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
 
   /** Adapts the icon color when used on dark background. */
@@ -61,15 +61,9 @@ export class LinkSocial {
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentDidLoad() {
-    const tagName= this.element.tagName.toLowerCase();
-    const style = `a:focus ${tagName} {
-      outline: 2px solid #00d5b9;
-      outline-offset: 1px;
-    }`;
-
-    insertSlottedStyles(this.element, style);
-    improveFocusHandlingForCustomElement(this.element);
+  public componentWillLoad() {
+    this.addSlottedStyles();
+    improveFocusHandlingForCustomElement(this.host);
   }
 
   public render(): JSX.Element {
@@ -111,5 +105,14 @@ export class LinkSocial {
   private get iconWithColor(): boolean {
     const coloredVariants = ['logo-facebook', 'logo-google', 'logo-instagram', 'logo-linkedin', 'logo-pinterest', 'logo-twitter', 'logo-wechat', 'logo-whatsapp', 'logo-xing', 'logo-youtube'];
     return coloredVariants.includes(this.icon) && true;
+  }
+
+  private addSlottedStyles(): void {
+    const tagName= this.host.tagName.toLowerCase();
+    const style = `a:focus ${tagName} {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }`;
+    insertSlottedStyles(this.host, style);
   }
 }

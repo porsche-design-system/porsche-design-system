@@ -333,7 +333,7 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing a social share url then the component will be rendered as `<a>`.
+          * When providing an url then the component will be rendered as `<a>`.
          */
         "href"?: string;
         /**
@@ -980,7 +980,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When providing a social share url then the component will be rendered as `<a>`.
+          * When providing an url then the component will be rendered as `<a>`.
          */
         "href"?: string;
         /**
