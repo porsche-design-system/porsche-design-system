@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - New headline size `headline-5` to `p-headline` 
 
+## [1.3.0-rc.0] - 2020-04-03
+
 ### Fixed
 - Improve form elements
 
@@ -26,17 +28,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Notification colors
 
-## [1.1.1] (2020-03-13)
+## [1.1.1] - 2020-03-13
 
 ### Changed
 - Icon of `Checkbox` indeterminate state
 
-## [1.1.0] (2020-03-11)
+## [1.1.0] - 2020-03-11
 
 ### Fixed
 - Minor improvements
 
-## [1.1.0-rc.0] (2020-03-02)
+## [1.1.0-rc.0] - 2020-03-02
 
 ### Added
 - `Select Wrapper`
@@ -47,12 +49,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - `Text Field Wrapper` toggle password visibility
 
-## [1.0.3] (2020-02-13)
+## [1.0.3] - 2020-02-13
 
 ### Fixed
 - JS framework compatibility
 
-## [1.1.0-0] (2020-02-06)
+## [1.1.0-0] - 2020-02-06
 
 ### Added
 - `Text Field Wrapper`
@@ -60,17 +62,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Add proper cursor for disabled state for `Button` and `Button Pure`
 
-## [1.0.2] (2020-02-04)
+## [1.0.2] - 2020-02-04
 
 ### Fixed
 - Inheritable styling of slotted content
 
-## [1.0.1] (2020-01-30)
+## [1.0.1] - 2020-01-30
 
 ### Added
 - Clickable area of `Link Pure` and `Button Pure` is optionally configurable by defining padding on host element
 
-## [1.0.0] (2020-01-28)
+## [1.0.0] - 2020-01-28
 
 ### Added
 - Cursor pointer on hover for `Button` and `Button Pure`
@@ -82,7 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve font-weight definitions
 - Rename and optimize neutral colors for `Icon` and `Text`
 
-## [1.0.0-rc.1] (2019-12-13)
+## [1.0.0-rc.1] - 2019-12-13
 
 ### Added
 - `Headline`
