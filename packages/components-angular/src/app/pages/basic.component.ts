@@ -28,6 +28,7 @@ import { Component } from '@angular/core';
           <p-headline [variant]="'headline-2'">The quick brown fox jumps over the lazy dog</p-headline>
           <p-headline [variant]="'headline-3'">The quick brown fox jumps over the lazy dog</p-headline>
           <p-headline [variant]="'headline-4'">The quick brown fox jumps over the lazy dog</p-headline>
+          <p-headline [variant]="'headline-5'">The quick brown fox jumps over the lazy dog</p-headline>
         </div>
       </p-grid-item>
     </p-grid>
