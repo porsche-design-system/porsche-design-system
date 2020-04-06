@@ -85,7 +85,7 @@ export class Icon {
 
   public getSource(): string {
     if (this.name && !this.source) {
-      return `${cdn}/${svg[this.name]}.svg`;
+      return `${cdn}/${svg[this.name]}`;
     }
     if (this.source) {
       return this.source;
