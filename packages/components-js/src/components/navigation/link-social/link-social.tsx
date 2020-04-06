@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses
 } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { Theme } from '../../../types';
+import { LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-social',
@@ -58,6 +58,12 @@ export class LinkSocial {
   /** Adapts the icon color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Target attribute where the link should be opened. */
+  @Prop() public target?: LinkTarget = '_self';
+
+  /** Specifies the relationship of the target object to the link object. */
+  @Prop() public rel?: string = undefined;
+
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
@@ -83,8 +89,8 @@ export class LinkSocial {
         class={linkClasses}
         {...(TagType === 'a' ? {
           href: this.href,
-          target: '_blank',
-          rel: 'nofollow noopener'
+          target: this.target,
+          rel: this.rel
         } : null)}
       >
         <p-icon

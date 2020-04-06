@@ -31,7 +31,7 @@ Choose between a set of pre defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme">Facebook</p-link-social>
+    <p-link-social href="https://www.facebook.com/" rel="nofollow" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme">Facebook</p-link-social>
   </template>
 </Playground>
 

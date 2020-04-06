@@ -345,6 +345,14 @@ export namespace Components {
          */
         "iconSource"?: string;
         /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
           * Adapts the icon color when used on dark background.
          */
         "theme"?: Theme;
@@ -991,6 +999,14 @@ declare namespace LocalJSX {
           * A custom URL path to a custom social icon.
          */
         "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
         /**
           * Adapts the icon color when used on dark background.
          */
