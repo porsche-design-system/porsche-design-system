@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "es2015",
-    "allowJs": false,
+    "allowJs": true,
     "noEmit": false,
     "isolatedModules": false,
     "sourceMap": true,
