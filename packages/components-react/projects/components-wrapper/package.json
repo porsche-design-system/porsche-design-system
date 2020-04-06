@@ -19,10 +19,11 @@
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "files": [
-    "./dist"
+    "./dist",
+    "./mocks"
   ],
   "scripts": {
-    "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json'"
+    "build": "rm -rf './dist' && tsc -p './tsconfig.lib.json' && mv './dist/mocks' './mocks'"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "1.3.0-rc.0"
