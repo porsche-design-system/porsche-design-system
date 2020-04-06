@@ -18,6 +18,12 @@ Password fields have the ability to hide/show the typed password.
 
 <p-text-field-wrapper label="Some label"><input type="password" name="some-name" value="some password"></p-text-field-wrapper>
 
+### Search
+
+Search fields have the ability to to activate the search function.
+
+!!! Code Beispiel !!!
+
 ### Pure (without label)
 
 The component Pure (without label) is only used if the context clearly describes what the component Pure is to be used for and no further explanation is required.
