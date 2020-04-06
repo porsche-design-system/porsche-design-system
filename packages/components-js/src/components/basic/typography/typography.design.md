@@ -27,7 +27,7 @@ For Chinese, Japanese and Korean language the `sans-serif` system fonts are to b
 
 ## Headline styles
 
-The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 4 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 5 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -36,6 +36,7 @@ The Porsche headline styles should only be used for first-level headlines whose 
 | Headline-2       | 24 px       | 30 px  | 36 px    | 42 px   | 48 px             | 
 | Headline-3       | 20 px       | 24 px   | 28 px    | 32 px        | 36 px         | 
 | Headline-4       | 16 px         | 18 px   | 20 px     | 22 px    | 24 px          | 
+| Headline-5       | 16 px         | 16 px   | 16 px     | 16 px    | 16 px          | 
 
 ![Headline example](./assets/typography-headlines.png)
 
