@@ -176,8 +176,8 @@ export class PLinkPure {
 }
 
 export declare interface PLinkSocial extends Components.PLinkSocial {}
-@ProxyCmp({inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'theme']})
-@Component({ selector: 'p-link-social', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'theme'] })
+@ProxyCmp({inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme']})
+@Component({ selector: 'p-link-social', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'href', 'icon', 'iconSource', 'rel', 'target', 'theme'] })
 export class PLinkSocial {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
