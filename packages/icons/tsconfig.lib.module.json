@@ -1,12 +1,10 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "target": "ES2015",
-    "module": "esnext",
+    "module": "ESNext",
     "declaration": true,
     "declarationDir": "./dist",
-    "outDir": "./dist/module",
-    "types": []
-  },
-  "include": ["index.ts"]
+    "outDir": "./dist/module"
+  }
 }

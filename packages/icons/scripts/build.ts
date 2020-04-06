@@ -12,18 +12,18 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   const svgo = new SVGO(config);
 
   for (let file of files) {
-    const name = path.basename(file, '.svg');
+    const name = path.basename(path.normalize(file), '.svg');
 
     if (name !== toKebabCase(name)) throw new Error(`Icon name "${name}" does not fit naming convention »kebab-case«.`);
     if (name in manifest) throw new Error(`Icon name "${name}" is not unique.`);
 
-    const buffer = fs.readFileSync(file);
-    const svg = (await svgo.optimize(buffer.toString())).data;
-    const hash = toHash(svg);
+    const svgRaw = fs.readFileSync(path.normalize(file), 'utf8');
+    const svgOptimized = (await svgo.optimize(svgRaw)).data;
+    const hash = toHash(svgOptimized);
     const filename = `${name}.min.${hash}.svg`;
 
     manifest[name] = filename;
-    fs.writeFileSync(path.normalize(`./dist/svg/${filename}`), svg);
+    fs.writeFileSync(path.normalize(`./dist/svg/${filename}`), svgOptimized);
   }
 
   fs.writeFileSync(path.normalize('./index.ts'),
@@ -37,10 +37,6 @@ export const svg = ${JSON.stringify(manifest)};`
   const files = getFiles(path.normalize('./src'), '.svg');
   const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), 'utf8'));
 
-  // use hashed icons in icon.tsx
-  // create json database
-  // deploy icon set to cdn by ci/cd when release will be made (check if package version of pds is available on artifactory)
-  // deploy json database to icon platform when release will be made (only reflects latest icons)
   await createManifestAndOptimizeSVG(cdn, files, config).catch(e => {
     console.error(e);
     process.exit(1);
