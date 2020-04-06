@@ -214,7 +214,7 @@ export namespace Components {
         /**
           * Style of the text.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4";
+        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
     interface PIcon {
         /**
@@ -863,7 +863,7 @@ declare namespace LocalJSX {
         /**
           * Style of the text.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4";
+        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
     interface PIcon {
         /**
