@@ -31,7 +31,7 @@ Choose between a set of pre defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="#linkToSocialMedia" hide-label="{ base: true, s: false }" :theme="theme">{{ label }}</p-link-social>
+    <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme">Facebook</p-link-social>
   </template>
 </Playground>
 
@@ -44,6 +44,9 @@ Choose between a set of pre defined social icons.
     <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener">
       <p-link-social icon="logo-facebook" :theme="theme">Facebook</p-link-social>
     </a>
+    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener">
+      <p-link-social icon="logo-facebook" hide-label="true" :theme="theme">Facebook</p-link-social>
+    </a>
   </template>
 </Playground>
 
@@ -55,7 +58,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link-social href="#delicious" icon="logo-delicious" :theme="theme">Delicious</p-link-social>
-    <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" :theme="theme">Kaixin</p-link-social>
+    <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Kaixin</p-link-social>
   </template>
 </Playground>
 
@@ -66,9 +69,9 @@ If another icon needs to be implemented, just replace the default icon with anot
 <Playground :themeable="true">
   <template v-slot={theme}>
     <div class="example-grouped">
-      <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" :theme="theme" class="">Facebook</p-link-social>
-      <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" :theme="theme" class="">Google</p-link-social>
-      <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" :theme="theme" class="">Instagram</p-link-social>
+      <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" :theme="theme">Facebook</p-link-social>
+      <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" :theme="theme">Google</p-link-social>
+      <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" :theme="theme">Instagram</p-link-social>
       <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" :theme="theme">Linkedin</p-link-social>
       <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" :theme="theme">Pinterest</p-link-social>
       <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" :theme="theme">Twitter</p-link-social>
@@ -84,10 +87,10 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 ```scss  
 
-// With CSS Grid (not suppoerted by IE11)
+// With CSS Grid (The more elegant way but not suppoerted by IE11)
 .example-grouped {
   display: grid;
-  grid-template-columns: repeat( auto-fit, p-rem(48px) );
+  grid-template-columns: repeat(auto-fit, p-rem(48px));
   grid-column-gap: p-rem(8px);
   grid-row-gap: p-rem(8px);
 }
