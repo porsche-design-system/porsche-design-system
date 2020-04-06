@@ -84,6 +84,11 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 
 ## Code
 
+### [1.3.0-rc.0] (2020-04-03)
+
+**Fixed**
+- Improve form elements
+
 ### [1.2.0] (2020-03-25)
 
 **Added**
