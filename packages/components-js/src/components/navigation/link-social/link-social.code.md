@@ -22,8 +22,8 @@ Choose between a set of pre defined social icons.
     </select>
   </template>
   <template v-slot={theme}>
-    <p-link-social href="#linkToSocialMedia" :icon="icon" :theme="theme">{{ label }}</p-link-social>
-    <p-link-social href="#linkToSocialMedia" hide-label="true" :icon="icon" :theme="theme">{{ label }}</p-link-social>
+    <p-link-social href="#linkToSocialMedia" :icon="icon" :theme="theme" target="_blank" rel="nofollow noopener">{{ label }}</p-link-social>
+    <p-link-social href="#linkToSocialMedia" hide-label="true" :icon="icon" :theme="theme" target="_blank" rel="nofollow noopener">{{ label }}</p-link-social>
   </template>
 </Playground>
 
@@ -31,7 +31,7 @@ Choose between a set of pre defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="https://www.facebook.com/" rel="nofollow" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme">Facebook</p-link-social>
+    <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
   </template>
 </Playground>
 
@@ -57,8 +57,8 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="#delicious" icon="logo-delicious" :theme="theme">Delicious</p-link-social>
-    <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme">Kaixin</p-link-social>
+    <p-link-social href="#delicious" icon="logo-delicious" :theme="theme" target="_blank" rel="nofollow noopener">Delicious</p-link-social>
+    <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>
   </template>
 </Playground>
 
@@ -69,16 +69,16 @@ If another icon needs to be implemented, just replace the default icon with anot
 <Playground :themeable="true">
   <template v-slot={theme}>
     <div class="example-grouped">
-      <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" :theme="theme">Facebook</p-link-social>
-      <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" :theme="theme">Google</p-link-social>
-      <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" :theme="theme">Instagram</p-link-social>
-      <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" :theme="theme">Linkedin</p-link-social>
-      <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" :theme="theme">Pinterest</p-link-social>
-      <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" :theme="theme">Twitter</p-link-social>
-      <p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true" :theme="theme">Wechat</p-link-social>
-      <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true" :theme="theme">Whatsapp</p-link-social>
-      <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true" :theme="theme">Xing</p-link-social>
-      <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true" :theme="theme">Youtube</p-link-social>
+      <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
+      <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Google</p-link-social>
+      <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Instagram</p-link-social>
+      <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Linkedin</p-link-social>
+      <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Pinterest</p-link-social>
+      <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Twitter</p-link-social>
+      <p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Wechat</p-link-social>
+      <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Whatsapp</p-link-social>
+      <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Xing</p-link-social>
+      <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Youtube</p-link-social>
     </div>
   </template>
 </Playground>
@@ -128,6 +128,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
         onblur="console.log('blur')"
         onfocusout="console.log('focusout')"
         :theme="theme"
+        target="_blank" 
+        rel="nofollow noopener"
     >Facebook</p-link-social>
   </template>
 </Playground>
