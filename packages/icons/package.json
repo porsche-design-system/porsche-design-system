@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/commonjs/index.js",
+  "main": "dist/umd/index.js",
   "module": "dist/module/index.js",
   "types": "dist/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -31,11 +31,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn build:node && yarn build:tsc",
-    "build:node": "ts-node --project './tsconfig.json' './scripts/build.ts'",
-    "build:tsc": "yarn build:tsc:module && yarn build:tsc:commonjs",
+    "build": "yarn build:svg && yarn build:tsc",
+    "build:svg": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:tsc": "yarn build:tsc:module && yarn build:tsc:umd",
     "build:tsc:module": "tsc --build ./tsconfig.lib.module.json",
-    "build:tsc:commonjs": "tsc --build ./tsconfig.lib.commonjs.json",
+    "build:tsc:umd": "tsc --build ./tsconfig.lib.umd.json",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {

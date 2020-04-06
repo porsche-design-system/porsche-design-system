@@ -1,48 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
+import { getFiles } from './utils';
 
-function getFilesInDirectory(dir, suffix, files=[]) {
-  if (fs.existsSync(dir)) {
-    fs.readdirSync(dir).forEach((file) => {
-      let subpath = dir.replace(/\/$/, '') + '/' + file;
+const updateDependencyPaths = (str: string): string => str.replace(/\([.\/]*(.*?)\)/g, '(#/components/$1)');
+const removeGraph = (str: string): string => str.replace(/### Graph\s+```.*```/gs, '');
+const removeGenerator = (str: string): string => str.replace(/----------------------------------------------\s+\*Built with.*/g, '');
+const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
 
-      if (fs.statSync(subpath).isDirectory()) {
-        getFilesInDirectory(subpath, suffix, files);
-      } else if (subpath.endsWith(suffix)) {
-        files.push(subpath);
-      }
-    });
-  }
+const files = getFiles(path.normalize('./src/components'), 'readme.md');
+for (const file of files) {
 
-  return files;
-}
+  const dir = path.dirname(path.normalize(file));
+  const name = dir.split('/').pop();
+  const readme = fs.readFileSync(path.normalize(file), 'utf8');
 
-function updateDependencyPaths(data) {
-  return data.replace(/\([.\/]*(.*?)\)/g, '(#/components/$1)');
-}
-
-function removeGraph(data) {
-  return data.replace(/### Graph\s+```.*```/gs, '');
-}
-
-function removeGenerator(data) {
-  return data.replace(/----------------------------------------------\s+\*Built with.*/g, '');
-}
-
-function removeWhitespace(data) {
-  return data.replace(/^\s+|\s+$/g, '');
-}
-
-for (const file of getFilesInDirectory('./src/components/', 'readme.md')) {
-  fs.readFile(file, 'utf8', (err, data) => {
-    if (err) throw err;
-    fs.writeFile(file, removeWhitespace(removeGenerator(removeGraph(data))), 'utf8', (err) => {
-      if (err) throw err;
-    });
-    const dir = path.dirname(file);
-    const basename = dir.split('/')[dir.split('/').length-1];
-    fs.writeFile(`${dir}/${basename}.props.md`, removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(data)))), 'utf8', (err) => {
-      if (err) throw err;
-    });
-  });
+  fs.writeFileSync(path.normalize(file), removeWhitespace(removeGenerator(removeGraph(readme))));
+  fs.writeFileSync(path.normalize(`${dir}/${name}.props.md`), removeWhitespace(removeGenerator(removeGraph(updateDependencyPaths(readme)))));
 }
