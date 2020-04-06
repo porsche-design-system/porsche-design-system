@@ -36,6 +36,7 @@ export function Basic() {
             <Headline variant={'headline-2'}>The quick brown fox jumps over the lazy dog</Headline>
             <Headline variant={'headline-3'}>The quick brown fox jumps over the lazy dog</Headline>
             <Headline variant={'headline-4'}>The quick brown fox jumps over the lazy dog</Headline>
+            <Headline variant={'headline-5'}>The quick brown fox jumps over the lazy dog</Headline>
           </div>
         </GridItem>
       </Grid>
