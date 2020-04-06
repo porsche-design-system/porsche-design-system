@@ -19,7 +19,8 @@ export class Headline {
     | 'headline-1'
     | 'headline-2'
     | 'headline-3'
-    | 'headline-4' = 'headline-1';
+    | 'headline-4'
+    | 'headline-5' = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
@@ -54,6 +55,7 @@ export class Headline {
       || this.variant === 'headline-2' && 'h2'
       || this.variant === 'headline-3' && 'h3'
       || this.variant === 'headline-4' && 'h4'
+      || this.variant === 'headline-5' && 'h5'
       : this.tag;
 
     const headlineClasses = cx(
