@@ -112,6 +112,12 @@
   }
 }
 
+@mixin p-headline-5 {
+  @include p-type-scale($p-font-size-16);
+  font-family: $p-font-primary;
+  font-weight: $p-font-weight-semibold;
+}
+
 @mixin p-text($size: $p-text-size-small, $weight: $p-font-weight-regular) {
   @include p-type-scale($size);
   font-family: $p-font-primary;
