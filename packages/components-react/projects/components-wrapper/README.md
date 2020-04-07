@@ -53,7 +53,7 @@ All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
 ``` 
 jest.mock('@porsche-design-system/components-react', () => {
-  return require('@porsche-design-system/components-react/mocks/mock-collection');
+  return require('@porsche-design-system/components-react/mocks/all');
 
 or single require
 

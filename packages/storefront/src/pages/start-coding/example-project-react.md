@@ -99,29 +99,16 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 To ensure your tests dont fail, we provide mocks for every Porsche Design System Component. 
 They are distributed in the `@porsche-design-system/components-react/` so they dont have to be installed separately.
 
-To consume the mocks you can set them up via your **jest.config.js**. Create a **setup.js** file next to your jest config and copy the following snippet into the setup file.
+To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
 
 ```
-setup.js
+setupTest.ts
 
 jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks/mock-collection');
+    return require('@porsche-design-system/components-react/mocks/all');
 });
 ```
 You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
-
-Activate the setup file in your jest config file by setting `setupFilesAfterEnv` option to the correct path. 
-
-```
-jest.config.js
-
-module.exports = {
-  verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/tests/mocks/config/setup.js'],
-  testMatch: ['**/tests/mocks/specs/**/*.test.tsx'],
-};
-
-```
 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
