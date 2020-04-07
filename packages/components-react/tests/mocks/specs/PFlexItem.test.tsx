@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { PFlex, PHeadline } from '../../../projects/components-wrapper/src/lib/components';
+import { PFlexItem } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PFlexItem', () => {
   it('should render PFlexItem children', () => {
-    const { getByText } = render(<PFlex><PHeadline>Headline</PHeadline></PFlex>);
+    const { getByText } = render(<PFlexItem>Headline</PFlexItem>);
     expect(getByText('Headline')).toBeDefined();
+  });
+
+  it('should render TagName of component', ()=> {
+    const {container} = render(<PFlexItem/>);
+    expect(container.getElementsByTagName('p-flex-item')).toBeTruthy();
   });
 });

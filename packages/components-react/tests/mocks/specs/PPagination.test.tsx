@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PPagination } from '../../../projects/components-wrapper/src/lib/components';
+import { PIcon, PPagination } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PPagination', () => {
   describe('active page in the middle', () => {
@@ -58,6 +58,11 @@ describe('PPagination', () => {
       fireEvent.click(getByText('3'));
       expect(callback).toHaveBeenCalledWith({ page: 3, previousPage: 2 });
       callback.mockClear();
+    });
+
+    it('should render TagName of component', ()=> {
+      const {container} = render(<PPagination/>);
+      expect(container.getElementsByTagName('p-pagination')).toBeTruthy();
     });
   });
 

@@ -1,8 +1,8 @@
 const React = require('react');
 
 module.exports = {
-  PMarque: (props) =>
+  PMarque: () =>
     <p-marque>
       <img />
-    </p-marque>,
+    </p-marque>
 };

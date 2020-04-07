@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { PCheckboxWrapper } from '../../../projects/components-wrapper/src/lib/components';
+import { PButtonPure, PCheckboxWrapper } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PCheckboxWrapper', () => {
   it('should render PCheckboxWrapper input name', () => {
@@ -10,5 +10,10 @@ describe('PCheckboxWrapper', () => {
       </PCheckboxWrapper>
     );
     expect(container.getElementsByTagName('input').namedItem("Wrapped-Checkbox")).toBeTruthy();
+  });
+
+  it('should render TagName of component', ()=> {
+    const {container} = render(<PCheckboxWrapper/>);
+    expect(container.getElementsByTagName('p-checkbox-wrapper')).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { PIcon } from '../../../projects/components-wrapper/src/lib/components';
+import { PHeadline, PIcon } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PHeadline', () => {
   it('should render Highway Icon children', () => {
@@ -8,5 +8,10 @@ describe('PHeadline', () => {
     const icon = container.getElementsByTagName("p-icon");
 
     expect(icon.namedItem('highway')).toBeTruthy();
+  });
+
+  it('should render TagName of component', ()=> {
+    const {container} = render(<PIcon/>);
+    expect(container.getElementsByTagName('p-icon')).toBeTruthy();
   });
 });
