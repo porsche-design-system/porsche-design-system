@@ -67,7 +67,7 @@ export class LinkSocial {
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.addSlottedStyles();
     improveFocusHandlingForCustomElement(this.host);
   }
