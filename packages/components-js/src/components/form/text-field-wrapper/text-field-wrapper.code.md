@@ -87,6 +87,16 @@ For better accessibility it's recommended to **not** reset these browser default
   </p-text-field-wrapper>
 </Playground>
 
+### Search
+
+<Playground>
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label">
+    <input type="search" name="some-name"/>
+  </p-text-field-wrapper>
+  </form>
+</Playground>
+
 ---
 
 ## Validation states
