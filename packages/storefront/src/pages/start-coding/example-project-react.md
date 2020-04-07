@@ -99,40 +99,57 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 To ensure your tests dont fail, we provide mocks for every Porsche Design System Component. 
 They are distributed in the `@porsche-design-system/components-react/` so they dont have to be installed separately.
 
-You have to access them in the Mock-Factory inside of the `jest.mock()` function, where the mocks follow the same naming pattern **ComponentNameMock** (eg. `PHeadlineMock`).
-We have to use `require` because the mock factory doesn't allow otherwise. You can copy the `jest.mock()` function beneath and keep a mock for every component you have used. 
+To consume the mocks you can set them up via your **jest.config.js**. Create a **setup.js** file next to your jest config and copy the following snippet into the setup file.
 
-``` 
+```
+setup.js
+
 jest.mock('@porsche-design-system/components-react', () => {
-
-    const {PHeadlineMock, PIconMock, PButtonMock, PButtonPureMock, PDividerMock, 
-           PGridMock, PGridItemMock, PFlexMock, PFlexItemMock, PSelectWrapperMock, 
-           PCheckboxWrapperMock, PRadioButtonWrapperMock, PTextareaWrapperMock, 
-           PTextFieldWrapperMock, PLinkMock, PLinkPureMock, PSpinnerMock, PPaginationMock} = require('@porsche-design-system/components-react/dist/mocks/jest-Mocks');
-
-    return ({
-        PHeadline: PHeadlineMock,
-        PIcon: PIconMock,
-        PButton: PButtonMock,
-        PButtonPure: PButtonPureMock,
-        PDivider: PDividerMock,
-        PGrid: PGridMock,
-        PGridItem: PGridItemMock,
-        PFlex: PFlexMock,
-        PFlexItem: PFlexItemMock,
-        PSelectWrapper: PSelectWrapperMock,
-        PCheckboxWrapper: PCheckboxWrapperMock,
-        PRadioButtonWrapper: PRadioButtonWrapperMock,
-        PTextareaWrapper: PTextareaWrapperMock,
-        PTextFieldWrapper: PTextFieldWrapperMock,
-        PLink: PLinkMock,
-        PLinkPure: PLinkPureMock,
-        PSpinner: PSpinnerMock,
-        PPagination: PPaginationMock
-    });
+    return require('@porsche-design-system/components-react/mocks/mock-collection');
 });
 ```
-Use this solution until **Creat React App** upgrades to a newer **jsdom** version, which hopefully
+You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
+
+Activate the setup file in your jest config file by setting `setupFilesAfterEnv` option to the correct path. 
+
+```
+jest.config.js
+
+module.exports = {
+  verbose: true,
+  setupFilesAfterEnv: ['<rootDir>/tests/mocks/config/setup.js'],
+  testMatch: ['**/tests/mocks/specs/**/*.test.tsx'],
+};
+
+```
+
+If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
+
+```
+SingleComponent.tsx
+
+export function SingleComponent() {
+
+    return (
+        <PHeadline>Show single mock usage</PHeadline>
+    )
+}
+
+------
+SingleComponent.test.tsx
+
+jest.mock('@porsche-design-system/components-react', () => {
+    return require('@porsche-design-system/components-react/mocks/p-headline-mock');
+});
+
+test('renders a headline from Porsche Design System', async () => {
+    const {getByText} = render(<SingleComponent/>);
+    const headLineElement = getByText('Show single mock usage');
+    expect(headLineElement).toBeInTheDocument();
+});
+```
+
+Use this solution until **Creat React App** upgrades to a newer **jsdom** version, which
 provides support for **webcomponents**. In the meantime we keep providing mocks.
  
 You find detailed information on how to use mock functions in jest [here](https://jestjs.io/docs/en/mock-functions.html).
