@@ -1,7 +1,8 @@
 # Link Social
 
-The Link Social Social enables the user to navigate or share another page.
+The Link Social component enables the user to linking to social media platforms or social sharing dialogs.
 For an optimal user guidance and dedicated pursuit of goals, different types of links can be used.
+
 
 ---
 
