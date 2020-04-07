@@ -15,7 +15,7 @@ module.exports = {
     ),
     PButton: (props) => <p-button onClick={props.onClick}>{props.children}</p-button>,
     PButtonPure: (props) => <p-button-pure onClick={props.onClick}>{props.children}</p-button-pure>,
-    PDivider: (props) => <p-divider/>,
+    PDivider: () => <p-divider/>,
     PGrid: (props) => <p-grid>{props.children}</p-grid>,
     PGridItem: (props) => <p-grid-item>{props.children}</p-grid-item>,
     PFlex: (props) => <p-flex>{props.children}</p-flex>,
@@ -46,7 +46,7 @@ module.exports = {
       }
       return <p-link-pure>{props.children}</p-link-pure>
     },
-    PSpinner: (props) => <p-spinner/>,
+    PSpinner: () => <p-spinner/>,
     /* PPagination uses the onPageChange Event, which you could test. Unfortunately Jest and JS-Dom have many Restrictions (usage of useState is not allowed)
     to trigger a Mocked Custom Event. */
     PPagination: (props) => {
