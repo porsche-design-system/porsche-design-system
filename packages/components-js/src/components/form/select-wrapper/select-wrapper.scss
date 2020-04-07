@@ -66,6 +66,7 @@
 ::slotted(select:focus::-ms-value) {
   background-color: transparent !important;
   text-shadow: 0 0 0 $p-color-theme-light-default !important;
+  color: $p-color-theme-light-default !important;
 }
 
 // Focus
