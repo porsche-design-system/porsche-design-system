@@ -70,7 +70,7 @@ The link covers the following states:
 ## Styling
 
 ### Icon
-The icon corresponds to the logo of the respective social service. For the fallback icon the corresponding icon must be used
+The icon corresponds to the logo of the respective social service. For the fallback icon the corresponding icon must be used.
 
 
 ### Text label
