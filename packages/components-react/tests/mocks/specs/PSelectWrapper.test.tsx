@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PSelectWrapper } from '../../../projects/components-wrapper/src/lib/components';
+import { PSelectWrapper, PText } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PSelectWrapper', () => {
   it('should render PSelectWrapper select name', () => {
@@ -14,5 +14,10 @@ describe('PSelectWrapper', () => {
     );
     expect(container.getElementsByTagName('select').namedItem("Wrapped-Select")).toBeTruthy();
 
+  });
+
+  it('should render TagName of component', ()=> {
+    const {container} = render(<PSelectWrapper/>);
+    expect(container.getElementsByTagName('p-select-wrapper')).toBeTruthy();
   });
 });

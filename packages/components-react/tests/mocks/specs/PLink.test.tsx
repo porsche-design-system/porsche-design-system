@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { PLink } from '../../../projects/components-wrapper/src/lib/components';
+import { PLink, PLinkPure } from '../../../projects/components-wrapper/src/lib/components';
 
 describe('PLink', () => {
   it('should find PLink href', () => {
@@ -8,5 +8,10 @@ describe('PLink', () => {
       <PLink href={"#test"}>TestLink</PLink>
     );
     expect(getByText('TestLink').closest('a')).toHaveAttribute('href', '#test');
+  });
+
+  it('should render TagName of component', ()=> {
+    const {container} = render(<PLink/>);
+    expect(container.getElementsByTagName('p-link')).toBeTruthy();
   });
 });
