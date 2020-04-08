@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PFlexItem } from '../../../projects/components-wrapper/src/lib/components';
+import { PFlexItem } from '../../../projects/components-wrapper/src';
 
 describe('PFlexItem', () => {
   it('should render PFlexItem children', () => {

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PButtonPure, PCheckboxWrapper } from '../../../projects/components-wrapper/src/lib/components';
+import { PCheckboxWrapper } from '../../../projects/components-wrapper/src';
 
 describe('PCheckboxWrapper', () => {
   it('should render PCheckboxWrapper input name', () => {

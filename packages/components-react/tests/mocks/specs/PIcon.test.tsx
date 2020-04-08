@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PHeadline, PIcon } from '../../../projects/components-wrapper/src/lib/components';
+import { PIcon } from '../../../projects/components-wrapper/src';
 
-describe('PHeadline', () => {
+describe('PIcon', () => {
   it('should render Highway Icon children', () => {
-    const { container } = render(<PIcon name={"highway"}></PIcon>);
+    const { container } = render(<PIcon name={"highway"}/>);
     const icon = container.getElementsByTagName("p-icon");
 
     expect(icon.namedItem('highway')).toBeTruthy();

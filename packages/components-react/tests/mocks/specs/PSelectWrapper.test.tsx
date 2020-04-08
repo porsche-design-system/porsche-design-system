@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { PSelectWrapper, PText } from '../../../projects/components-wrapper/src/lib/components';
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import { PSelectWrapper } from '../../../projects/components-wrapper/src';
 
 describe('PSelectWrapper', () => {
   it('should render PSelectWrapper select name', () => {

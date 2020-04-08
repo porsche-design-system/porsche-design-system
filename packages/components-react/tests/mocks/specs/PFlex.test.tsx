@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PCheckboxWrapper, PFlex } from '../../../projects/components-wrapper/src/lib/components';
+import { PFlex } from '../../../projects/components-wrapper/src';
 
 describe('PFlex', () => {
   it('should render PFlex children', () => {

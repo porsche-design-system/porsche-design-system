@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PIcon, PPagination } from '../../../projects/components-wrapper/src/lib/components';
+import { PPagination } from '../../../projects/components-wrapper/src';
 
 describe('PPagination', () => {
   describe('active page in the middle', () => {

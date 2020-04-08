@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PGridItem } from '../../../projects/components-wrapper/src/lib/components';
+import { PGridItem } from '../../../projects/components-wrapper/src';
 
 describe('PGridItem', () => {
   it('should render PGridItem children', () => {

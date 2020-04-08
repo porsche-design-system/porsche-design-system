@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PButton, PButtonPure } from '../../../projects/components-wrapper/src/lib/components';
+import { PButtonPure } from '../../../projects/components-wrapper/src';
 
 describe('PButtonPure', () => {
   it('should fire events on button click', () => {

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PLink, PLinkPure } from '../../../projects/components-wrapper/src/lib/components';
+import { PLink } from '../../../projects/components-wrapper/src';
 
 describe('PLink', () => {
   it('should find PLink href', () => {
