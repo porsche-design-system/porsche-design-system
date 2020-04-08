@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PText } from '../../../projects/components-wrapper/src/lib/components';
+import { PText } from '../../../projects/components-wrapper/src';
 
 describe('PText', () => {
   it('should render PText children', () => {

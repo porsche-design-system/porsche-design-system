@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PText, PTextareaWrapper } from '../../../projects/components-wrapper/src/lib/components';
+import { PTextareaWrapper } from '../../../projects/components-wrapper/src';
 
 describe('PTextareaWrapper', () => {
   it('should render PTextareaWrapper text input', () => {

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PLinkPure, PRadioButtonWrapper } from '../../../projects/components-wrapper/src/lib/components';
+import { PLinkPure } from '../../../projects/components-wrapper/src';
 
 describe('PLinkPure', () => {
   it('should find PLinkPure href', () => {

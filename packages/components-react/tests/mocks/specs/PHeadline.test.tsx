@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PGridItem, PHeadline } from '../../../projects/components-wrapper/src/lib/components';
+import { PHeadline } from '../../../projects/components-wrapper/src';
 
 describe('PHeadline', () => {
   it('should render PHeadline children', () => {

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PFlexItem, PGrid } from '../../../projects/components-wrapper/src/lib/components';
+import { PGrid } from '../../../projects/components-wrapper/src';
 
 describe('PGrid', () => {
   it('should render PGrid children', () => {
