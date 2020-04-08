@@ -35,6 +35,7 @@ The Select component is available in the following states:
 * disabled
 * hover
 * focus
+* help text
 * error
 * success
 

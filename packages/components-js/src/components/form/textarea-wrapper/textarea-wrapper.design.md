@@ -29,6 +29,7 @@ All Textareas types are available in the following states:
 * hover
 * read only
 * focus
+* help text
 * error
 * success
 
