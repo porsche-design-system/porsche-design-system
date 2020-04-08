@@ -6,10 +6,10 @@ describe('PTextareaWrapper', () => {
   it('should render PTextareaWrapper text input', () => {
     const {container} = render(
       <PTextareaWrapper>
-        <textarea name={"Wrapped-Textarea"}/>
+        <textarea/>
       </PTextareaWrapper>
     );
-    expect(container.getElementsByTagName('textarea').namedItem("Wrapped-Textarea")).toBeTruthy();
+    expect(container.getElementsByTagName('textarea')).toBeTruthy();
   });
 
   it('should render TagName of component', ()=> {
