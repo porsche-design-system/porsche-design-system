@@ -25,7 +25,7 @@
   "scripts": {
     "build": "yarn build:components && yarn build:mocks",
     "build:components": "rm -rf './dist' && tsc -p './tsconfig.lib.json'",
-    "build:mocks": "rm -rf './mocks' && mv './dist/mocks' './mocks'"
+    "build:mocks": "rm -rf './mocks' && cp -r './src/mocks' './mocks'"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "1.3.0-rc.0"
