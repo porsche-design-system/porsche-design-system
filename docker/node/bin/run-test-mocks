@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if
+  [[ "--components-react" == "${1}" ]]
+then
+  yarn test:mocks:${1:2}
+else
+  yarn test:mocks
+fi
