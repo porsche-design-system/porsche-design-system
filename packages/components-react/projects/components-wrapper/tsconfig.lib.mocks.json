@@ -3,7 +3,11 @@
   "compilerOptions": {
     "outDir": "./mocks",
     "target": "es2015",
-    "allowJs": true
+    "allowJs": true,
+    "noEmit": false,
+    "isolatedModules": false,
+    "sourceMap": false,
+    "declaration": false
   },
   "include": [
     "src/mocks"
