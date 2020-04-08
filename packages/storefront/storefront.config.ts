@@ -10,16 +10,6 @@ export const config: StorefrontConfig = {
         () => import(`@/pages/about/introduction.md`)
       ]
     },
-    'Start Coding': {
-      'Introduction': [
-        // @ts-ignore
-        () => import(`@/pages/start-coding/introduction.md`)
-      ],
-      'Example Project React': [
-        // @ts-ignore
-        () => import(`@/pages/start-coding/example-project-react.md`)
-      ]
-    },
     'Start Designing': {
       'Introduction': [
         // @ts-ignore
@@ -32,6 +22,16 @@ export const config: StorefrontConfig = {
       'Sketch Plugins': [
         // @ts-ignore
         () => import(`@/pages/start-designing/sketch-plugins.md`)
+      ]
+    },
+    'Start Coding': {
+      'Introduction': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/introduction.md`)
+      ],
+      'React': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/react.md`)
       ]
     },
     News: {
