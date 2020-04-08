@@ -29,11 +29,11 @@ To build your own application which is provided with the Porsche Design System f
 folder with the initial project structure called `my-app` 
 * To add TypeScript to your **Create React App**, you have to install it:
 ```
+// install with yarn:
 yarn add typescript @types/node @types/react @types/react-dom @types/jest
 
-or  
-
-npm install --save typescript @types/node @types/react @types/react-dom @types/jest  
+// install with npm:
+npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
 * Install the Porsche Design System  
 
@@ -41,16 +41,13 @@ npm install --save typescript @types/node @types/react @types/react-dom @types/j
 // install with yarn:
 yarn add @porsche-design-system/components-react
 
-or
-
 // install with npm:
 npm install @porsche-design-system/components-react
 ```
 
-You are ready to start building your own application. The React wrappers for web components can be used like every other React 
-component. 
+You are ready to start building your own application.
 
-The following setup is a standard React Scripts (Create React App) setup with SCSS support:
+The following project is a standard React Scripts (Create React App) setup:
 
 ### Index file
 ``` 
@@ -81,7 +78,7 @@ import { PHeadline } from '@porsche-design-system/components-react';
 export function App() {
   return (
     <div className="App">
-      <PHeadline variant="headline-1">Headline from PorscheDesignSystem</PHeadline>
+      <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
     </div>
   );
 }
@@ -97,16 +94,16 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 **Jest** uses **jsdom**. It is not yet possible to render web components via jsdom. 
 
-To ensure your tests dont fail, we provide mocks for every Porsche Design System Component. 
-They are distributed in the `@porsche-design-system/components-react/` so they dont have to be installed separately.
+To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
+They are distributed in the `@porsche-design-system/components-react` npm package.
 
 To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
 
 ```
-setupTest.ts
+// setupTest.ts
 
 jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks/all');
+    return require('@porsche-design-system/components-react/mocks');
 });
 ```
 You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
@@ -114,17 +111,17 @@ You have to access the mocks in the Mock-Factory of the `jest.mock()` function. 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
 ```
-SingleComponent.tsx
+// SingleComponent.tsx
 
 export function SingleComponent() {
-
     return (
-        <PHeadline>Show single mock usage</PHeadline>
+        <PHeadline>Some headline</PHeadline>
     )
 }
+```
 
-------
-SingleComponent.test.tsx
+```
+// SingleComponent.test.tsx
 
 jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks/p-headline-mock');
@@ -132,15 +129,14 @@ jest.mock('@porsche-design-system/components-react', () => {
 
 test('renders a headline from Porsche Design System', async () => {
     const {getByText} = render(<SingleComponent/>);
-    const headLineElement = getByText('Show single mock usage');
+    const headLineElement = getByText('Some headline');
     expect(headLineElement).toBeInTheDocument();
 });
 ```
 
-Use this solution until **Creat React App** upgrades to a newer **jsdom** version, which
-provides support for **webcomponents**. In the meantime we keep providing mocks.
+Use this solution until **Creat React App** upgrades to a newer **jsdom** version which provides support for **Web Components**.
+In the meantime we keep providing mocks.
  
-You find detailed information on how to use mock functions in jest [here](https://jestjs.io/docs/en/mock-functions.html).
+You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
    
-We also provide test examples in our example-project. You can find them in the `App.test.js`.
-
+We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
