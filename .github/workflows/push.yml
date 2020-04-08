@@ -147,6 +147,11 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
+      - name: 'Mock Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-mocks
+          args: --components-react
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
