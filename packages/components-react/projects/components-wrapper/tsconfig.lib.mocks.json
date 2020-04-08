@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./mocks",
+    "target": "es2015",
+    "allowJs": true
+  },
+  "include": [
+    "src/mocks"
+  ]
+}
