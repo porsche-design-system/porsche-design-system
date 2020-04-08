@@ -3,12 +3,12 @@ describe('Start Coding', () => {
     cy.visit('/');
 
     cy.get('#app .sidebar nav p-link-pure[href*="start-coding/react"]')
-      .contains('Example Project React')
+      .contains('React')
       .click()
       .should('have.attr', 'active', 'true');
 
     cy.get('#app main h1')
       .should('be.visible')
-      .and('contain', 'Sample project integration react');
+      .and('contain', 'React - Sample integration');
   });
 });
