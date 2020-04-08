@@ -49,10 +49,10 @@
   font-weight: $p-font-weight-regular !important;
   font-size: p-font-size($p-text-size-small) !important;
   line-height: p-line-height($p-text-size-small) !important;
-  color: $p-color-theme-light-default;
+  color: $p-color-theme-light-default !important;
   text-indent: 0 !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  text-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
