@@ -12,18 +12,27 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   const svgo = new SVGO(config);
 
   for (let file of files) {
-    const name = path.basename(path.normalize(file), '.svg');
+    const svgRawPath = path.normalize(file);
+    const svgRawName = path.basename(svgRawPath, '.svg');
+    const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
+    const svgOptimizedData = (await svgo.optimize(svgRawData)).data;
+    const svgOptimizedHash = toHash(svgOptimizedData);
+    const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedPath = path.normalize(`./dist/svg/${svgOptimizedFilename}`);
 
-    if (name !== toKebabCase(name)) throw new Error(`Icon name "${name}" does not fit naming convention »kebab-case«.`);
-    if (name in manifest) throw new Error(`Icon name "${name}" is not unique.`);
+    if (svgRawName !== toKebabCase(svgRawName)) throw new Error(`Icon name "${svgRawName}" does not fit naming convention »kebab-case«.`);
+    if (svgRawName in manifest) throw new Error(`Icon name "${svgRawName}" is not unique.`);
 
-    const svgRaw = fs.readFileSync(path.normalize(file), 'utf8');
-    const svgOptimized = (await svgo.optimize(svgRaw)).data;
-    const hash = toHash(svgOptimized);
-    const filename = `${name}.min.${hash}.svg`;
+    manifest[svgRawName] = svgOptimizedFilename;
+    fs.writeFileSync(svgOptimizedPath, svgOptimizedData);
 
-    manifest[name] = filename;
-    fs.writeFileSync(path.normalize(`./dist/svg/${filename}`), svgOptimized);
+    const svgRawSize = fs.statSync(svgRawPath).size;
+    const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
+    const svgSizeDiff = svgOptimizedSize - svgRawSize;
+
+    console.log(`${svgRawName}: ${svgSizeDiff < 0 ? svgSizeDiff : '+'+ svgSizeDiff} bytes (size: ${svgOptimizedSize} bytes)`);
+
+    if (svgOptimizedSize > 3000) throw new Error(`Icon "${svgRawName}" is too large.`);
   }
 
   fs.writeFileSync(path.normalize('./index.ts'),
