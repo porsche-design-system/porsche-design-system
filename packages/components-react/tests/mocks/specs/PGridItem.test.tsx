@@ -8,7 +8,6 @@ describe('PGridItem', () => {
     expect(getByText('Headline')).toBeDefined();
   });
 
-
   it('should render TagName of component', ()=> {
     const {container} = render(<PGridItem/>);
     expect(container.getElementsByTagName('p-grid-item')).toBeTruthy();

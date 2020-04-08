@@ -6,10 +6,10 @@ describe('PTextFieldWrapper', () => {
   it('should render PTextFieldWrapper text input', () => {
     const {container} = render(
       <PTextFieldWrapper>
-        <input type={"text"} name={"Wrapped-Text-Field"}/>
+        <input type={"text"}/>
       </PTextFieldWrapper>
     );
-    expect(container.getElementsByTagName('input').namedItem("Wrapped-Text-Field")).toBeTruthy();
+    expect(container.getElementsByTagName('input')).toBeTruthy();
   });
 
   it('should render TagName of component', ()=> {

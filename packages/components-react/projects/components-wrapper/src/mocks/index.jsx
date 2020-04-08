@@ -39,5 +39,5 @@ module.exports = {
   PSpinner,
   PText,
   PTextareaWrapper,
-  PTextFieldWrapper,
+  PTextFieldWrapper
 };

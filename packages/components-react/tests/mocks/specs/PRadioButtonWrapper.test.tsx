@@ -6,10 +6,10 @@ describe('PRadioButtonWrapper', () => {
   it('should render PRadioButtonWrapper input name', () => {
     const {container} = render(
       <PRadioButtonWrapper>
-        <input type={"radio"} name={"Wrapped-RadioButton"}/>
+        <input type={"radio"}/>
       </PRadioButtonWrapper>
     );
-    expect(container.getElementsByTagName('input').namedItem("Wrapped-RadioButton")).toBeTruthy();
+    expect(container.getElementsByTagName('input')).toBeTruthy();
   });
 
   it('should render TagName of component', ()=> {

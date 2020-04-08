@@ -6,10 +6,10 @@ describe('PCheckboxWrapper', () => {
   it('should render PCheckboxWrapper input name', () => {
     const {container} = render(
       <PCheckboxWrapper>
-        <input type={"checkbox"} name={"Wrapped-Checkbox"}/>
+        <input type={"checkbox"}/>
       </PCheckboxWrapper>
     );
-    expect(container.getElementsByTagName('input').namedItem("Wrapped-Checkbox")).toBeTruthy();
+    expect(container.getElementsByTagName('input')).toBeTruthy();
   });
 
   it('should render TagName of component', ()=> {
