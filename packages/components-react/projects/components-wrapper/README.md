@@ -44,3 +44,17 @@ const App: React.FC = () => {
 
 export default App;
 ```
+
+#### App.test file
+
+To enable jest testing we provide mocks. You can access them in your jest.mock function. 
+
+``` 
+jest.mock('@porsche-design-system/components-react', () => {
+  // require the whole mock collection (including all design system components)
+  return require('@porsche-design-system/components-react/mocks');
+
+  // or require a single mock
+  return require('@porsche-design-system/components-react/mocks/p-headline-mock');
+});
+```
