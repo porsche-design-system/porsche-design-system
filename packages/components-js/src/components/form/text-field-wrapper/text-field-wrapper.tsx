@@ -101,7 +101,7 @@ export class TextFieldWrapper {
             onClick={(event: MouseEvent) => this.onSubmitHandler(event)}
             type='submit'
             class={buttonClasses}
-            disabled={this.disabled}
+            disabled={this.disabled || this.readonly}
           >
             <p-icon name='search' color='inherit'/>
           </button>

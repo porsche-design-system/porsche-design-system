@@ -90,10 +90,10 @@ For better accessibility it's recommended to **not** reset these browser default
 ### Search
 
 <Playground>
-<form action="#" onsubmit="alert('submit'); return false;">
-  <p-text-field-wrapper label="Some label">
-    <input type="search" name="some-name"/>
-  </p-text-field-wrapper>
+  <form action="#" onsubmit="alert('submit'); return false;">
+    <p-text-field-wrapper label="Some label">
+      <input type="search" name="some-name"/>
+    </p-text-field-wrapper>
   </form>
 </Playground>
 
