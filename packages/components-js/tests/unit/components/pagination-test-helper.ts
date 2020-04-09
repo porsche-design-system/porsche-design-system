@@ -47,9 +47,12 @@ function parseExpectedPage(expectedPage: string): PaginationModelItem {
 
 function paginationModelItemToSymbolPart(item: PaginationModelItem) {
   switch (item.type) {
-    case itemTypes.PREVIOUS_PAGE_LINK: return '<';
-    case itemTypes.NEXT_PAGE_LINK: return '>';
-    case itemTypes.ELLIPSIS: return (item.key === -1 ? '<...' : '...>');
+    case itemTypes.PREVIOUS_PAGE_LINK:
+      return '<';
+    case itemTypes.NEXT_PAGE_LINK:
+      return '>';
+    case itemTypes.ELLIPSIS:
+      return (item.key === -1 ? '<...' : '...>');
   }
 }
 
@@ -57,7 +60,7 @@ export const formatPaginationModelToASCII = (paginationModel: PaginationModelIte
   const arr = [];
   paginationModel.map(item => {
     const symbolPart = paginationModelItemToSymbolPart(item);
-    arr.push( [
+    arr.push([
       item.isActive ? '*' : '',
       item.value,
       symbolPart ? `(${symbolPart})` : ''
