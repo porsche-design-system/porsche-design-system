@@ -2,6 +2,14 @@
 
 ## Design
 
+### [1.3.0] (2020-04-08)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Text Styles |  | Headline 5 |
+
 ### [1.2.0] (2020-03-25)
 
 **Added**
