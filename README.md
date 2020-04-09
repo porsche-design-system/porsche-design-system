@@ -64,6 +64,12 @@
     * `./docker.sh run-test-unit` (unit tests for the entire application)
     * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
     * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
+    
+### Mock Tests
+1. Switch to __project root directory__
+1. For the different applications, select one of the following commands:
+    * `./docker.sh run-test-mocks` (mock tests for the entire application)
+    * `./docker.sh run-test-mocks --components-react` (mock tests for the react components)
 
 ### E2E Tests
 1. Switch to __project root directory__
