@@ -29,6 +29,10 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/pages/start-coding/introduction.md`)
       ],
+      'Angular': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/angular.md`)
+      ],
       'React': [
         // @ts-ignore
         () => import(`@/pages/start-coding/react.md`)
