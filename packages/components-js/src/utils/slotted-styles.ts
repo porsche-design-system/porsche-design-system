@@ -1,6 +1,6 @@
 const elementStyles = new Map();
 
-function getElementMap(element: HTMLElement) {
+export const getElementMap = (element: HTMLElement): Map<any, any> => {
   const tagName = element.tagName;
   const map = elementStyles.get(tagName);
   if (map !== undefined) {
@@ -9,14 +9,14 @@ function getElementMap(element: HTMLElement) {
   const newMap = new Map();
   elementStyles.set(tagName, newMap);
   return newMap;
-}
+};
 
-function getNodeToPrependTo(rootNode: HTMLElement | Document): HTMLElement {
+export const getNodeToPrependTo = (rootNode: HTMLElement | Document): HTMLElement => {
   if (rootNode === document) {
-    return (rootNode as Document).head;
+    return (rootNode).head;
   }
   return rootNode as HTMLElement;
-}
+};
 
 /**
  * Adds an inheritable style for slotted content.
@@ -26,7 +26,7 @@ function getNodeToPrependTo(rootNode: HTMLElement | Document): HTMLElement {
  * providing only `a {…}` would cause unscoped global styling.
  * @returns void
  */
-export function insertSlottedStyles(element: HTMLElement, css: string): void {
+export const insertSlottedStyles = (element: HTMLElement, css: string): void => {
   const rootNode = element.getRootNode() as HTMLElement | Document;
   const elementMap = getElementMap(element);
   if (elementMap.get(rootNode) === undefined) {
@@ -49,4 +49,4 @@ export function insertSlottedStyles(element: HTMLElement, css: string): void {
 
     prependTo.appendChild(style);
   }
-}
+};

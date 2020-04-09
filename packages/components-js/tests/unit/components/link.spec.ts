@@ -3,10 +3,6 @@ import { Link } from '../../../src/components/navigation/link/link';
 
 describe('Component <p-link>', () => {
 
-  it('should build', () => {
-    expect(new Link()).toBeTruthy();
-  });
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Link],
@@ -15,7 +11,6 @@ describe('Component <p-link>', () => {
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-link')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('.p-link')).toBeTruthy();
-    expect(page.root).toMatchSnapshot();
   });
 
   it('should render with href attribute', async () => {
@@ -23,7 +18,7 @@ describe('Component <p-link>', () => {
       components: [Link],
       html: `<p-link href="https://designsystem.porsche.com">Some label</p-link>`,
     });
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href','https://designsystem.porsche.com');
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href', 'https://designsystem.porsche.com');
   });
 
   it('should render with target attribute of "_blank"', async () => {
@@ -31,7 +26,7 @@ describe('Component <p-link>', () => {
       components: [Link],
       html: `<p-link href="https://designsystem.porsche.com" target="_blank">Some label</p-link>`,
     });
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target','_blank');
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target', '_blank');
   });
 
   it('should render with download attribute of "picture"', async () => {
@@ -39,7 +34,7 @@ describe('Component <p-link>', () => {
       components: [Link],
       html: `<p-link href="https://designsystem.porsche.com" download="picture">Some label</p-link>`,
     });
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('download','picture');
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('download', 'picture');
   });
 
   it('should render with <span> tag instead of <a>', async () => {

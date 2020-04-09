@@ -1,28 +1,37 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 // @ts-ignore
 import { StorefrontConfig } from '@/interface';
 
 export const config: StorefrontConfig = {
   pages: {
-    'Getting Started': {
-      About: [
+    'About': {
+      'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/about.md`)
-      ],
-      'Start Designing': [
+        () => import(`@/pages/about/introduction.md`)
+      ]
+    },
+    'Start Designing': {
+      'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/start-designing.md`)
+        () => import(`@/pages/start-designing/introduction.md`)
       ],
       'Design Workflow': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/design-workflow.md`)
+        () => import(`@/pages/start-designing/design-workflow.md`)
       ],
       'Sketch Plugins': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/sketch-plugins.md`)
-      ],
-      'Start Coding': [
+        () => import(`@/pages/start-designing/sketch-plugins.md`)
+      ]
+    },
+    'Start Coding': {
+      'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/getting-started/start-coding.md`)
+        () => import(`@/pages/start-coding/introduction.md`)
+      ],
+      'React': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/react.md`)
       ]
     },
     News: {
