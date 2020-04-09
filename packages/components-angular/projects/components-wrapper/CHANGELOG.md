@@ -6,11 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Submit button with search icon to `p-textfield-wrapper` type search
+
 ## [1.3.0] - 2020-04-08
 
 ### Added
 - New headline size `headline-5` to `p-headline` 
-- Test Mocks
+``- Test Mocks
 
 ### Fixed
 - Text styling of Select component on focus in IE11 and Chrome on Windows 10
