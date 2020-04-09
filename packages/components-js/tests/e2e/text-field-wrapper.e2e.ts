@@ -134,7 +134,6 @@ describe('Text Field Wrapper', () => {
       const textFieldComponent = await page.find('p-text-field-wrapper');
       return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
     };
-    const fakeInputClassList = async () => (await getFakeInput()).classList;
 
     expect((await getFakeInput())).not.toHaveClass('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState(page)).toBe(false);
@@ -143,10 +142,7 @@ describe('Text Field Wrapper', () => {
       document.querySelector('input').disabled = true;
     });
 
-    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
-    while(!(await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
     expect((await getFakeInput())).toHaveClass('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState(page)).toBe(true);
@@ -155,10 +151,7 @@ describe('Text Field Wrapper', () => {
       document.querySelector('input').disabled = false;
     });
 
-    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
-    while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
     expect((await getFakeInput())).not.toHaveClass('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState(page)).toBe(false);
@@ -222,7 +215,6 @@ describe('Text Field Wrapper', () => {
       const textFieldComponent = await page.find('p-text-field-wrapper');
       return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
     };
-    const fakeInputClassList = async () => (await getFakeInput()).classList;
 
     expect(await getCustomInputButtonDisabledState(page)).toBe(false);
 
@@ -230,10 +222,7 @@ describe('Text Field Wrapper', () => {
       document.querySelector('input').disabled = true;
     });
 
-    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
-    while(!(await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
     expect(await getCustomInputButtonDisabledState(page)).toBe(true);
 
@@ -241,26 +230,27 @@ describe('Text Field Wrapper', () => {
       document.querySelector('input').disabled = false;
     });
 
-
-    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
-    while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
     expect(await getCustomInputButtonDisabledState(page)).toBe(false);
 
-    // TODO: check why readonly tests fail! It seems like this property is not set.
-    // await page.evaluate(() => {
-    //   document.querySelector('input').readOnly = true;
-    // });
-    //
-    // // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
-    // while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--readonly')) {
-    //   await page.waitFor(10);
-    // }
-    //
-    // expect(await getFakeInput()).toHaveClass('p-text-field-wrapper__fake-input--readonly');
-    // expect(await getCustomInputButtonDisabledState(page)).toBe(true);
+    await page.evaluate(() => {
+      document.querySelector('input').readOnly = true;
+    });
+
+    await page.waitForChanges();
+
+    expect(await getFakeInput()).toHaveClass('p-text-field-wrapper__fake-input--readonly');
+    expect(await getCustomInputButtonDisabledState(page)).toBe(true);
+
+    await page.evaluate(() => {
+      document.querySelector('input').readOnly = false;
+    });
+
+    await page.waitForChanges();
+
+    expect(await getFakeInput()).not.toHaveClass('p-text-field-wrapper__fake-input--readonly');
+    expect(await getCustomInputButtonDisabledState(page)).toBe(false);
   });
 
   it(`submits outer forms on click on search button, if the input is search`, async () => {
