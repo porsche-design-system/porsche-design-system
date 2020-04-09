@@ -35,12 +35,12 @@
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
-              <router-link to="/getting-started/start-designing" class="router-link spacing-mt-16 spacing-mr-32">
+              <router-link to="/start-designing/introduction" class="router-link spacing-mt-16 spacing-mr-32">
                 <p-link variant="primary">Start Designing</p-link>
               </router-link>
             </p-flex-item>
             <p-flex-item>
-              <router-link to="/getting-started/start-coding" class="router-link spacing-mt-16">
+              <router-link to="/start-coding/introduction" class="router-link spacing-mt-16">
                 <p-link variant="primary">Start Coding</p-link>
               </router-link>
             </p-flex-item>
