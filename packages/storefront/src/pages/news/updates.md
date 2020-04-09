@@ -2,6 +2,14 @@
 
 ## Design
 
+### [1.3.0] (2020-04-08)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Text Styles |  | Headline 5 |
+
 ### [1.2.0] (2020-03-25)
 
 **Added**
@@ -83,6 +91,15 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.3.0] (2020-04-08)
+
+**Added**
+- New headline size `headline-5` to `p-headline`
+- Test Mocks
+
+**Fixed**
+- Text styling of Select component on focus in IE11 and Chrome on Windows 10
 
 ### [1.3.0-rc.0] (2020-04-03)
 
