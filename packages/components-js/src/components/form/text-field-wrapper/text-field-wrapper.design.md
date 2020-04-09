@@ -24,6 +24,13 @@ The component Pure (without label) is only used if the context clearly describes
 
 <p-text-field-wrapper label="Some label" hide-label="true"><input type="text" name="some-name"></p-text-field-wrapper>
 
+### Help text
+
+Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+
+!!! Code Beispiel !!!
+
 ---
 
 ## States
@@ -33,9 +40,7 @@ All Text Fields types are available in the following states:
 * default
 * disabled
 * hover
-* read only
 * focus
-* help text
 * error
 * success
 
@@ -51,10 +56,6 @@ Enables users to enter a single line text.
 
 ### Width
 Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that: “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations) The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
-
-### Help text
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which text field the validation belongs to.
