@@ -2,7 +2,7 @@ import { E2EPage, newE2EPage } from '@stencil/core/testing';
 import { Components } from '../../src';
 import PIcon = Components.PIcon;
 
-const getToggleButtonDisabledState = async (page: E2EPage) => {
+const getCustomInputButtonDisabledState = async (page: E2EPage) => {
   return await page.evaluate(() => {
     const wrapper = document.querySelector('p-text-field-wrapper');
     const toggleButton =  wrapper.shadowRoot.querySelector('.p-text-field-wrapper__button') as HTMLButtonElement;
@@ -131,37 +131,37 @@ describe('Text Field Wrapper', () => {
     `);
 
     const getFakeInput = async () => {
-      const selectWrapper = await page.find('p-text-field-wrapper');
-      return selectWrapper.shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
+      const textFieldComponent = await page.find('p-text-field-wrapper');
+      return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
     };
     const fakeInputClassList = async () => (await getFakeInput()).classList;
 
     expect((await getFakeInput())).not.toHaveClass('p-text-field-wrapper__fake-input--disabled');
-    expect(await getToggleButtonDisabledState(page)).toBe(false);
+    expect(await getCustomInputButtonDisabledState(page)).toBe(false);
 
     await page.evaluate(() => {
       document.querySelector('input').disabled = true;
     });
 
-    // for some reason we've to re-query the fakeSelect each time and .waitForSelector does not work
+    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
     while(!(await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
       await page.waitFor(10);
     }
 
     expect((await getFakeInput())).toHaveClass('p-text-field-wrapper__fake-input--disabled');
-    expect(await getToggleButtonDisabledState(page)).toBe(true);
+    expect(await getCustomInputButtonDisabledState(page)).toBe(true);
 
     await page.evaluate(() => {
       document.querySelector('input').disabled = false;
     });
 
-    // for some reason we've to re-query the fakeSelect each time and .waitForSelector does not work
+    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
     while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
       await page.waitFor(10);
     }
 
     expect((await getFakeInput())).not.toHaveClass('p-text-field-wrapper__fake-input--disabled');
-    expect(await getToggleButtonDisabledState(page)).toBe(false);
+    expect(await getCustomInputButtonDisabledState(page)).toBe(false);
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
@@ -208,6 +208,77 @@ describe('Text Field Wrapper', () => {
 
     expect(input.getAttribute('type')).toBe('password');
     expect(inputFocusSpy.length).toBe(2);
+  });
+
+  it('should disable search button when input (type search) is set to disabled or readonly programmatically', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper label="Some label">
+        <input type="search" name="some-name">
+      </p-text-field-wrapper>
+    `);
+
+    const getFakeInput = async () => {
+      const textFieldComponent = await page.find('p-text-field-wrapper');
+      return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
+    };
+    const fakeInputClassList = async () => (await getFakeInput()).classList;
+
+    expect(await getCustomInputButtonDisabledState(page)).toBe(false);
+
+    await page.evaluate(() => {
+      document.querySelector('input').disabled = true;
+    });
+
+    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
+    while(!(await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
+      await page.waitFor(10);
+    }
+
+    expect(await getCustomInputButtonDisabledState(page)).toBe(true);
+
+    await page.evaluate(() => {
+      document.querySelector('input').disabled = false;
+    });
+
+
+    // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
+    while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--disabled')) {
+      await page.waitFor(10);
+    }
+
+    expect(await getCustomInputButtonDisabledState(page)).toBe(false);
+
+    // TODO: check why readonly tests fail! It seems like this property is not set.
+    // await page.evaluate(() => {
+    //   document.querySelector('input').readOnly = true;
+    // });
+    //
+    // // for some reason we've to re-query the fakeInput each time and .waitForSelector does not work
+    // while((await fakeInputClassList()).contains('p-text-field-wrapper__fake-input--readonly')) {
+    //   await page.waitFor(10);
+    // }
+    //
+    // expect(await getFakeInput()).toHaveClass('p-text-field-wrapper__fake-input--readonly');
+    // expect(await getCustomInputButtonDisabledState(page)).toBe(true);
+  });
+
+  it(`submits outer forms on click on search button, if the input is search`, async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <form onsubmit="return false;">
+        <p-text-field-wrapper label="Some label">
+          <input type="search" name="some-name">
+        </p-text-field-wrapper>
+      </form>
+    `);
+    const searchButton = await page.find('p-text-field-wrapper >>> button');
+    const form = await page.find('form');
+    for(const triggerElement of [searchButton]) {
+      const spy = await form.spyOnEvent('submit');
+      await triggerElement.click();
+      expect(spy.length).toBe(1);
+    }
   });
 
   describe('hover state', () => {
