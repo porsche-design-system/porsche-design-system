@@ -47,8 +47,8 @@ describe('Router', () => {
   });
 
   it('Should route to page', () => {
-    cy.visit('/#/getting-started/about');
-    cy.url().should('eq', Cypress.config().baseUrl + '/#/getting-started/about');
+    cy.visit('/#/about/introduction');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/about/introduction');
   });
 
   it('Should route to story', () => {
