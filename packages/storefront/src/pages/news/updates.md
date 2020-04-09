@@ -92,6 +92,11 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 
 ## Code
 
+### [1.4.0-rc.0] (2020-04-09)
+
+**Added**
+- SSR support
+
 ### [1.3.0] (2020-04-08)
 
 **Added**
