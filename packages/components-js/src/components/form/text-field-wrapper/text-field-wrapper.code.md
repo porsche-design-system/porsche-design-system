@@ -12,16 +12,16 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   <template #configurator>
     <select v-model="label">
       <option disabled>Select a label mode</option>
-      <option selected value="show">With label</option>
-      <option value="hide">Without label</option>
+      <option selected value="show">With label and description</option>
+      <option value="hide">Without label and description</option>
       <option value="responsive">Responsive</option>
     </select>
   </template>
   <template>
-    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+    <p-text-field-wrapper label="Some label" description="Some description" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <input type="text" name="some-name"/>
     </p-text-field-wrapper>
-    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+    <p-text-field-wrapper label="Some label" description="Some description" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <input type="text" placeholder="Some placeholder text" name="some-name"/>
     </p-text-field-wrapper>
   </template>
@@ -32,7 +32,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Disabled
 
 <Playground>    
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" value="Some value" disabled="disabled" />
   </p-text-field-wrapper>
 </Playground>
@@ -42,7 +42,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Read only
 
 <Playground>    
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" value="Some value" readonly="readonly" />
   </p-text-field-wrapper>
 </Playground>
@@ -113,13 +113,14 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 
 <Playground>
   <template>
     <p-text-field-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <input type="text" aria-invalid="true" name="some-name" placeholder="Some placeholder"/>
       <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-text-field-wrapper>

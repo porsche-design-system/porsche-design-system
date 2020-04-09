@@ -22,24 +22,27 @@ export class TextFieldWrapper {
   /** The label text. */
   @Prop() public label?: string = '';
 
+  /** The description text. */
+  @Prop() public description?: string = '';
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   @State() private disabled: boolean;
   @State() private readonly: boolean;
-  @State() private showPassword: boolean = false;
+  @State() private showPassword = false;
 
   private input: HTMLInputElement;
   private isPasswordToggleable: boolean;
   private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setInput();
     this.setState();
     this.updatePasswordToggleable();
@@ -55,6 +58,11 @@ export class TextFieldWrapper {
       prefix('text-field-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('text-field-wrapper__label-text--disabled')
+    );
+    const descriptionTextClasses = cx(
+      prefix('text-field-wrapper__description-text'),
+      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('text-field-wrapper__description-text--disabled')
     );
     const fakeInputClasses = cx(
       prefix('text-field-wrapper__fake-input'),
@@ -73,9 +81,14 @@ export class TextFieldWrapper {
         <span class={containerClasses}>
           <label class={labelClasses} id={this.state === 'error' && this.labelId}>
             {this.isLabelVisible &&
-            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
+            }
+            {(this.isDescriptionVisible) &&
+              <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+                {this.description ? this.description : <span><slot name='description'/></span>}
+              </p-text>
             }
             <span class={fakeInputClasses}>
               <slot/>
@@ -103,6 +116,10 @@ export class TextFieldWrapper {
 
   private get isLabelVisible(): boolean {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
+  }
+
+  private get isDescriptionVisible(): boolean {
+    return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
   private get isMessageDefined(): boolean {
