@@ -90,7 +90,8 @@
     display: block;
   }
 
-  &__label-text {
+  &__label-text,
+  &__description-text {
     display: inline-block;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -155,6 +156,20 @@
       &--hidden-xl {
         @include p-text-field-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  &__description-text {
+    display: block;
+    width: fit-content;
+    color: $p-color-theme-light-neutral-contrast-medium;
+
+    #{$bem-block}__label-text ~ & {
+      margin-top: p-rem(-4px);
+    }
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
     }
   }
 
