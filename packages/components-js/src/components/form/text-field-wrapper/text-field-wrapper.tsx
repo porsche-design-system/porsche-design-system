@@ -42,12 +42,6 @@ export class TextFieldWrapper {
   private isInputTypeSearch: boolean;
   private labelId = randomString();
 
-  public onSubmitHandler(event: MouseEvent): void {
-    if (this.isInputTypeSearch) {
-      handleButtonEvent(event, this.host, () => this.searchButtonType, () => this.disabled);
-    }
-  }
-
   public componentWillLoad(): void {
     this.setInput();
     this.setState();
@@ -98,7 +92,7 @@ export class TextFieldWrapper {
           }
           {this.isInputTypeSearch &&
           <button
-            onClick={(event: MouseEvent) => this.onSubmitHandler(event)}
+            onClick={(event: MouseEvent): void => this.onSubmitHandler(event)}
             type='submit'
             class={buttonClasses}
             disabled={this.disabled || this.readonly}
@@ -161,7 +155,11 @@ export class TextFieldWrapper {
   }
 
   private togglePassword(): void {
-    this.input.type === 'password' ? this.input.type = 'text' : this.input.type = 'password';
+    if (this.input.type === 'password') {
+      this.input.type = 'text';
+    } else {
+      this.input.type = 'password';
+    }
     this.showPassword = !this.showPassword;
     this.labelClick();
   }
@@ -170,6 +168,12 @@ export class TextFieldWrapper {
     this.isInputTypeSearch = this.input.type === 'search';
     if (this.isInputTypeSearch) {
       this.input.style.cssText = 'padding-right: 3rem !important';
+    }
+  }
+
+  private onSubmitHandler(event: MouseEvent): void {
+    if (this.isInputTypeSearch) {
+      handleButtonEvent(event, this.host, () => this.searchButtonType, () => this.disabled);
     }
   }
 
