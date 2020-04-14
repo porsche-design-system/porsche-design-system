@@ -55,7 +55,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>    
   <p-text-field-wrapper label="Some label" description="Some description">
-    <input type="text" name="some-name" value="Some value" />
+    <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </Playground>
 
@@ -133,8 +133,8 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
     <p-text-field-wrapper state="error">
       <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="text" aria-invalid="true" name="some-name" placeholder="Some placeholder"/>
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <input type="text" aria-invalid="true" name="some-name" placeholder="Some placeholder" aria-describedby="some-message-id"/>
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-text-field-wrapper>
   </template>
 </Playground>

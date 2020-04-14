@@ -92,7 +92,8 @@
 
   &__label-text,
   &__description-text {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -160,8 +161,6 @@
   }
 
   &__description-text {
-    display: block;
-    width: fit-content;
     color: $p-color-theme-light-neutral-contrast-medium;
 
     #{$bem-block}__label-text ~ & {
