@@ -16,26 +16,32 @@
   </p-text-field-wrapper>
 </div>
 
+<div class="playground light" title="should render with label and description">
+  <p-text-field-wrapper label="Some label" description="Some description">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+</div>
+
 <div class="playground light" title="should render with label and placeholder">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" placeholder="Some placeholder"/>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render without label">
-  <p-text-field-wrapper label="Some label" hide-label="true">
+<div class="playground light" title="should render without label and without description">
+  <p-text-field-wrapper label="Some label" description="Some description" hide-label="true">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with responsive label">
-  <p-text-field-wrapper label="Some label" hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+<div class="playground light" title="should render with responsive label ad description">
+  <p-text-field-wrapper label="Some label" description="Some description" hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
 </div>
 
 <div class="playground light" title="should render with disabled state">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" disabled="disabled"/>
   </p-text-field-wrapper>
 </div>
@@ -47,7 +53,7 @@
 </div>
 
 <div class="playground light" title="should render with readonly state">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" value="Some value" readonly="readonly"/>
   </p-text-field-wrapper>
 </div>

@@ -12,16 +12,16 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   <template #configurator>
     <select v-model="label">
       <option disabled>Select a label mode</option>
-      <option selected value="show">With label and description</option>
-      <option value="hide">Without label and description</option>
+      <option selected value="show">With label</option>
+      <option value="hide">Without label</option>
       <option value="responsive">Responsive</option>
     </select>
   </template>
   <template>
-    <p-text-field-wrapper label="Some label" description="Some description" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <input type="text" name="some-name"/>
     </p-text-field-wrapper>
-    <p-text-field-wrapper label="Some label" description="Some description" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+    <p-text-field-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <input type="text" placeholder="Some placeholder text" name="some-name"/>
     </p-text-field-wrapper>
   </template>
@@ -32,7 +32,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Disabled
 
 <Playground>    
-  <p-text-field-wrapper label="Some label" description="Some description">
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" value="Some value" disabled="disabled" />
   </p-text-field-wrapper>
 </Playground>
@@ -42,12 +42,24 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Read only
 
 <Playground>    
-  <p-text-field-wrapper label="Some label" description="Some description">
+  <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" value="Some value" readonly="readonly" />
   </p-text-field-wrapper>
 </Playground>
 
 ---
+
+## With description text
+
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground>    
+  <p-text-field-wrapper label="Some label" description="Some description">
+    <input type="text" name="some-name" value="Some value" />
+  </p-text-field-wrapper>
+</Playground>
+
+--- 
 
 ## Types
 
