@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `Text List`
 
+## [1.4.0-rc.0] - 2020-04-09
+
+### Added
+- SSR support
+
 ## [1.3.0] - 2020-04-08
 
 ### Added
