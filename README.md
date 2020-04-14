@@ -157,6 +157,11 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build --utils`
 
+### Icons
+1. Run `./docker.sh run-build --icons`
+1. Switch to __packages/icons/dist/svg directory__
+1. Provide the optimized SVG files on CDN (`https://cdn.ui.porsche.com/porsche-design-system/icons`) (should have happened before normally otherwise VRT tests are not up to date)
+
 ### Components JS
 1. Run `./docker.sh run-build --components-js`
 1. Switch to __packages/components-js directory__
@@ -215,6 +220,14 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
 1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components React artifact to the Artifactory repository.
+
+### Icon platform
+1. Switch to __packages/icons/database directory__
+1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
+1. Switch to Icon platform Git repository (`https://github.com/porscheui/porsche-icon-frontend`)
+1. Update `@porsche-design-system/components-js` to latest version
+1. Build icon platform
+1. Deploy icon platform
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
