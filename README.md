@@ -191,6 +191,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-vrt --components-js`
 1. Run `./docker.sh run-test-vrt --components-angular`
 1. Run `./docker.sh run-test-vrt --components-react`
+1. Run `./docker.sh run-test-mocks --components-react`
 1. Run `./docker.sh run-test-cbt --components-js`
 1. Run `./docker.sh run-test-cbt --components-angular`
 1. Run `./docker.sh run-test-cbt --components-react`
