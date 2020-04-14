@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true
   },
   "exclude": [
