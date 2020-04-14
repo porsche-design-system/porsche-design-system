@@ -51,7 +51,7 @@
   line-height: p-line-height($p-text-size-small) !important;
   color: $p-color-theme-light-default !important;
   text-indent: 0 !important;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important; // used for transitionend event listener;

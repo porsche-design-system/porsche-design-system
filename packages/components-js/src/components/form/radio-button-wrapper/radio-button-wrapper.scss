@@ -43,7 +43,7 @@
   background-color: transparent !important;
   opacity: 1 !important;
   outline: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
   box-shadow: 0 0 0 0 transparent !important;
   transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important;

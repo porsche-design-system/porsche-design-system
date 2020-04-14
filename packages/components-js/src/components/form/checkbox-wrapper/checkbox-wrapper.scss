@@ -44,7 +44,7 @@
   opacity: 1 !important;
   outline: transparent solid 2px !important;
   outline-offset: 1px !important;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important;
 }
