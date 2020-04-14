@@ -78,7 +78,7 @@ export class TextFieldWrapper {
 
     return (
       <Host>
-        <span class={containerClasses}>
+        <div class={containerClasses}>
           <label class={labelClasses} id={this.state === 'error' && this.labelId}>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
@@ -95,11 +95,11 @@ export class TextFieldWrapper {
             </span>
           </label>
           {this.isPasswordToggleable &&
-          <button type='button' class={buttonClasses} onClick={() => this.togglePassword()} disabled={this.disabled}>
+          <button type='button' class={buttonClasses} onClick={(): void => this.togglePassword()} disabled={this.disabled}>
             <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
           </button>
           }
-        </span>
+        </div>
         {this.isMessageVisible &&
         <p-text
           class={messageClasses}
@@ -132,7 +132,12 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input');
-    this.input.setAttribute('aria-label', this.label);
+    if (this.label && this.description) {
+      this.input.setAttribute('aria-label', this.label + '. ' + this.description);
+    }
+    else if (this.label) {
+      this.input.setAttribute('aria-label', this.label);
+    }
   }
 
   private setState(): void {
@@ -158,7 +163,11 @@ export class TextFieldWrapper {
   }
 
   private togglePassword(): void {
-    this.input.type === 'password' ? this.input.type = 'text' : this.input.type = 'password';
+    if(this.input.type === 'password') {
+      this.input.type = 'text';
+    } else {
+      this.input.type = 'password';
+    }
     this.showPassword = !this.showPassword;
     this.labelClick();
   }
