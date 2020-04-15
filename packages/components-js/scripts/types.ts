@@ -8,6 +8,7 @@ const types = fs.readFileSync(file, 'utf8').replace(/\s\/\* Auto Generated Below
 
 fs.writeFileSync(file,
   `${types}
-/* Auto Generated Below */\n
+/* Auto Generated Below */
+
 export type IconName = ${iconNames.join("\n| ")};`
 );
