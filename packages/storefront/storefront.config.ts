@@ -36,7 +36,15 @@ export const config: StorefrontConfig = {
       'React': [
         // @ts-ignore
         () => import(`@/pages/start-coding/react.md`)
-      ]
+      ],
+      'NextJS': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/nextjs.md`)
+      ],
+      'Gatsby': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/gatsby.md`)
+      ],
     },
     News: {
       Updates: [
