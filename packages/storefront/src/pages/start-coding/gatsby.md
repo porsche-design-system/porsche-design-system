@@ -96,26 +96,26 @@ const IndexPage = () => (
 export default IndexPage
 ```
 
-
-
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
 ---
 
-#### TO BE DEFINED After NextJS
-
-
 ## Test the application
 
-**Jest** uses **jsdom**. It is not yet possible to render web components via jsdom. 
+To set up jest testing in in Gatsby you have to follow the instructions on how to set up jest for your project:
+
+* Step 1: [Set up Jest for Unit testing general](https://www.gatsbyjs.org/docs/unit-testing/)
+* Step 2: [Set up to test react components](https://www.gatsbyjs.org/docs/testing-react-components/)
+
+It is yet not possible to render our web components in **jsdom**.
 
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
 
-To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
+To consume the mocks you can set them up via your **setup-test-env.js** file in your root folder and copy the following snippet into the setup file.
 
 ```
-// setupTest.ts
+// setup-test-env.js
 
 jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks');
@@ -149,9 +149,9 @@ test('renders a headline from Porsche Design System', async () => {
 });
 ```
 
-Use this solution until **Creat React App** upgrades to a newer **jsdom** version which provides support for **Web Components**.
+Use this solution until there is an upgrades to a newer **jsdom** version which provides support for **Web Components**.
 In the meantime we keep providing mocks.
  
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
    
-We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
+We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-gatsby/blob/master/src/components/__tests__/applicationTest.test.tsx).
