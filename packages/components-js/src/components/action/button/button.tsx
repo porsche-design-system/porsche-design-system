@@ -41,7 +41,7 @@ export class Button {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
   }
@@ -87,7 +87,7 @@ export class Button {
     );
   }
 
-  private isDisabled() {
+  private isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }

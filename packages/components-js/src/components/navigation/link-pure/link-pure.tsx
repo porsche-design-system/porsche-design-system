@@ -56,7 +56,7 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     const tagName= this.element.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
@@ -79,7 +79,7 @@ export class LinkPure {
       prefix('link-pure'),
       mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
       prefix(`link-pure--theme-${this.theme}`),
-      this.active && prefix(`link-pure--active`)
+      this.active && prefix('link-pure--active')
     );
 
     const iconClasses = cx(

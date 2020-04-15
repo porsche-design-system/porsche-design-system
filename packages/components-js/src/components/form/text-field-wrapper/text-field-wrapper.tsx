@@ -33,13 +33,13 @@ export class TextFieldWrapper {
 
   @State() private disabled: boolean;
   @State() private readonly: boolean;
-  @State() private showPassword: boolean = false;
+  @State() private showPassword = false;
 
   private input: HTMLInputElement;
   private isPasswordToggleable: boolean;
   private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setInput();
     this.setState();
     this.updatePasswordToggleable();
@@ -141,7 +141,7 @@ export class TextFieldWrapper {
   }
 
   private togglePassword(): void {
-    this.input.type === 'password' ? this.input.type = 'text' : this.input.type = 'password';
+    this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
     this.labelClick();
   }
