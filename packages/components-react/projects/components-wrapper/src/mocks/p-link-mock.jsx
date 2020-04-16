@@ -1,14 +1,9 @@
 const React = require('react');
 
 module.exports = {
-  PLink: (props) => {
-    if (props.href) {
-      return (
-        <p-link>
-          <a href={props.href}>{props.children}</a>
-        </p-link>
-      )
-    }
-    return <p-link>{props.children}</p-link>
-  }
+  PLink: (props) => (
+    <p-link {...props}>
+      {props.href ? <a href={props.href}>{props.children}</a> : props.children}
+    </p-link>
+  )
 };
