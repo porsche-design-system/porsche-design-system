@@ -27,4 +27,6 @@ export const PSelectWrapper = /*@__PURE__*/createReactComponent<JSX.PSelectWrapp
 export const PSpinner = /*@__PURE__*/createReactComponent<JSX.PSpinner, HTMLPSpinnerElement>('p-spinner');
 export const PText = /*@__PURE__*/createReactComponent<JSX.PText, HTMLPTextElement>('p-text');
 export const PTextFieldWrapper = /*@__PURE__*/createReactComponent<JSX.PTextFieldWrapper, HTMLPTextFieldWrapperElement>('p-text-field-wrapper');
+export const PTextList = /*@__PURE__*/createReactComponent<JSX.PTextList, HTMLPTextListElement>('p-text-list');
+export const PTextListItem = /*@__PURE__*/createReactComponent<JSX.PTextListItem, HTMLPTextListItemElement>('p-text-list-item');
 export const PTextareaWrapper = /*@__PURE__*/createReactComponent<JSX.PTextareaWrapper, HTMLPTextareaWrapperElement>('p-textarea-wrapper');
