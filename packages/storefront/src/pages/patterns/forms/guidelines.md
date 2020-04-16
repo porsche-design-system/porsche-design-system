@@ -1,4 +1,4 @@
-# Introduction
+# Forms
 
 The digital world cannot be imagined without forms. **Whenever we need information from the user that is to be processed by the application or when we want to enable the user to configure options**, forms are best to be used.
 
@@ -18,11 +18,20 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 
 A typical form in Porsche web applications is made up of five basic elements:
 
-1. **The general structure** is defined by how the form is being layed out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.
-2. **Form fields** provide all input options the user needs to fill out the form, whether it's commonly used free-form text input (Text Fields, Textareas) or specific data inputs (such as Checkboxes, Radio Buttons, Select). They can have different states and variants that are described in the specific component guidelines.
-3. **Labels** accompany the form fields, helping the user to understand the type of input that is required. They should always be short and descriptive (optimal: 1-3 words), stating the required input. Always start labels capitalized. In all Porsche Design System components, labels are placed top-aligned to support scannability and speed up form completion.
-4. Good **feedback** is crucial to give the user both a feeling of success when completing the form fields correctly as well as providing valuable support in case of a wrong entry.
-5. A **call-to-action** is needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/action/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
+1. **The general structure**  
+  … is defined by how the form is being layed out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.  
+  
+2. **Form fields**  
+  … provide all input options the user needs to fill out the form, whether it's commonly used free-form text input (Text Fields, Textareas) or specific data inputs (such as Checkboxes, Radio Buttons, Select). They can have different states and variants that are described in the specific component guidelines.  
+  
+3. **Labels**  
+  … accompany the form fields, helping the user to understand the type of input that is required. They should always be short and descriptive (optimal: 1-3 words), stating the required input. Always start labels capitalized. In all Porsche Design System components, labels are placed top-aligned to support scannability and speed up form completion.  
+  
+4. **Good feedback**  
+  … is crucial to give the user both a feeling of success when completing the form fields correctly as well as providing valuable support in case of a wrong entry.  
+  
+5. **Call-to-actions**  
+  … are needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/action/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
 
   
  ![The five basic elements of Porsche forms](../../../assets/patterns-forms-dna.png)
@@ -130,56 +139,68 @@ Further benefits:
 
 ## Form layout
 
-### Anatomy
+### The anatomy of a form
 
-1. **Headline and subline**
-   A clear title gives the user some information what to expect when filling out the form.
-2. **Sections with form elements**
-3. **Call-to-actions**
-   Call-to-actions (commonly we provide two for either cancelling the form input or submitting) should always be placed left-aligned.
-
+1. **Headline and subline**  
+   A clear title gives the user some information what to expect when filling out the form.  
+   
+2. **Sections including form elements**  
+   The longer a form, the more crucial it is to split it in content-related sub-areas in order to increase scannability.  
+   Thus form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". 
+   Each fieldset should be initiated by a title (we recommend headline-4) that gives the user a short information on what data is required in this section.
+   
+3. **Call-to-actions**  
+   Call-to-actions are needed to submit or cancel the form input and should always be placed left-aligned.
+   
 
 ### Single-column layout
 
-Even though today's display offer a lot of space: **Good forms are always single-column!** This is even more important when is comes to mobile view or longer forms, especially multi-step forms. A research study revealed that single-column forms could be completed 15.4 sec faster than a comparable multi-column form and at a 95% confidence level ([CXL Institute, 2018](https://cxl.com/research-study/form-field-usability/)).  
+Even though today's displays offer a lot of space: **Good forms are always single-column!** This is even more important when is comes to mobile view or longer forms, especially multi-step forms. A research study revealed that single-column forms could be completed 15.4 sec faster than a comparable multi-column form and at a 95% confidence level ([CXL Institute, 2018](https://cxl.com/research-study/form-field-usability/)).  
 
-Reasons are:
+This is why:
 
 - Single-column forms make it easier for the user to scan a form fluently and with less distraction.
 - The common reading direction is zigzag ("Z"). This makes is harder to perceive a multi-column form.
 
-### Maximum column width
+### Form layout spacings
 
-For designing a single-column form layout, we recommend the following **maximum grid column widths** for the different viewports. 
+According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com/law-of-proximity) objects that are near or proximate to each other tend to be grouped together. So in order to make it easy for the user to scan the form you should cluster the form in logical, coherent parts by working with spacings. We differ the following spacings (according to the **Porsche Design System spacing system**): 
+Depending on the viewport you're designing for you should stick to slightly different spacings for your form:
 
-- **XS (320-759 px):** 12 columns
-- **S (760-999 px):** 10 columns
-- **M (1000-1299 px):** 8 columns
-- **L/XL (1300 px or larger):** 6 columns
+| Viewport | Range | Total max. width of the form | Min. form top / bottom spacing (A) | Section spacing (B) |  Min. vertical/horizontal form field spacing (C) |
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| **XS** | 320-759 px | 12 grid columns | 48/64 px | 40 px | 16 px |
+| **S** | 760-999 px | 10 grid columns | 56/72 px | 40 px | 16 px |
+| **M** | 1000-1299 px | 8 grid columns | 64/80 px | 48 px | 16 px |
+| **L** | 1300-1759 px  | 6 grid columns | 72/88 px | 48 px | 16 px |
+| **XL** | 1760 px or larger | 6 grid columns | 80/96 px | 48 px | 16 px |
+
+As for the smallest grouped element within a form – label and form field – we recommend using 4 px spacing. This is also preset in the Porsche Design System form elements.
+  
+![Form layout with spacings](../../../assets/patterns-forms-anatomy-mobile-spacings.png)
+
 
 ### Form field width
 
-It's commonly recommended to set the form field width to the estimated length of the required input. Though, as we design for international markets at Porsche it's often quite hard to predict the estimated length depending on the language. Also this might lead to a quite unbalanced, "fluttering" look and feel of the form in general. We therefore recommend to go the "golden middle way" in order to cover both the reflection of the intended content length, but also visual pleasure:
+It's commonly recommended to set the form field width to the estimated length of the required input. As we design for international markets at Porsche it's often quite hard 
+to predict the estimated length depending on the language. Also this might lead to a quite unbalanced and "fluttering" look and feel of the form in general. 
+We therefore recommend to go the "golden middle way" in order to cover both the reflection of the intended content length, but also visual pleasure:
 
-- Generally, **form field widths should be set to the full form column width**.
-- Within a form column, it's possible to set multiple form fields in a row, for example in case of ZIP code and city input. In this case, it's helpful to set the form fields to the estimated width.
-- In case of very short forms (up to 2 or 3 form fields) you might also go for estimated lengths, as the fluttering effect is kept low anyway.
+**Form fields should be set to full form width (100 %) by default** to keep the fluttering effect low.
+However, we recommend to break out of that rule and **go for estimated form field lengths in the following cases** (even if this doesn't mean 100 % in total for that row) as this supports the user's perception:
 
-### Spacing between form elements
+- When setting form elements in a row (one or more) that _aren't_ Text Fields, for example Selects or Radio Button Groups.
+- When setting multiple form fields in a row (only when it makes sense, e.g. in case of ZIP code and city input).
+- In case of very short forms (up to 3 fields).
 
-According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com/law-of-proximity) objects that are near or proximate to each other tend to be grouped together. So in order to make it easy for the user to scan the form you should cluster the form in logical, coherent parts by working with spacings. We differ the following spacings (according to the **Porsche Design System spacing system**): 
-
-1. The smallest grouped element and therefore **the smallest spacing should be set between label and form field**. We recommend using 4 px, that is also preset in the Porsche Design System form elements.
-2. **The spacing between different form fields** might be a bit larger. We recommend at least 16 px (both vertical and horizontal).
-3. In longer forms, multiple form fields can be grouped together in sections. **Inbetween these sections the spacing should be larger** than between the form fields itself to build visual groups. 40 px is the minimum spacing to go for between two fieldsets. 
-
-### Form sections
-
-Form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". Each fieldset should be initiated by a title (we recommend headline-4) that gives the user a short information on what data is required in this section.
-
-![Mobile form layout with spacings](../../../assets/patterns-forms-anatomy-mobile-spacings.png)  
+When setting field widths to the estimated length you should stick to the following standard values to support a common overall look and feel for Porsche forms.
+The % values always refer to the full maximum width of the form (see table above):  
   
-![Desktop form layout with spacings](../../../assets/patterns-forms-anatomy-desktop-spacings.png)
+**25 % / 33.33 % / 50 % / 66.66 % / 75 % / 100 %**
+
+
+![Form field widths](../../../assets/patterns-forms-field-widths.png)
+
 
 ---
 
