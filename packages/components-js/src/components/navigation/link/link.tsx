@@ -1,10 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { IconName } from '../../icon/icon/icon-name';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { LinkTarget, Theme } from '../../../types';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
+import { IconName, LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',

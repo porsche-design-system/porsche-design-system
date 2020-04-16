@@ -2,8 +2,8 @@ import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil
 import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { Theme } from '../../../types';
-import { IconName } from './icon-name';
+import { Theme, IconName } from '../../../types';
+import { cdn, svg } from '@porsche-design-system/icons';
 
 @Component({
   tag: 'p-icon',
@@ -51,7 +51,7 @@ export class Icon {
   @State() private svgContent?: string;
   @State() private isVisible = false;
 
-  public connectedCallback() {
+  public connectedCallback(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
     // only load the svg if it's visible
@@ -61,7 +61,7 @@ export class Icon {
     });
   }
 
-  public disconnectedCallback() {
+  public disconnectedCallback(): void {
     if (this.io) {
       this.io.disconnect();
       this.io = undefined;
@@ -70,7 +70,7 @@ export class Icon {
 
   @Watch('source')
   @Watch('name')
-  public loadIcon() {
+  public loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
       const url = this.getSource();
       if (iconContent.has(url)) {
@@ -85,7 +85,7 @@ export class Icon {
 
   public getSource(): string {
     if (this.name && !this.source) {
-      return `https://cdn.ui.porsche.com/porsche-icons/v2/${this.variant}/${this.name}.svg`;
+      return `${cdn}/${svg[this.name]}`;
     }
     if (this.source) {
       return this.source;
@@ -112,7 +112,7 @@ export class Icon {
     );
   }
 
-  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
+  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
     if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
       const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
         if (data[0].isIntersecting) {
@@ -120,7 +120,7 @@ export class Icon {
           this.io = undefined;
           cb();
         }
-      }, { rootMargin });
+      }, {rootMargin});
 
       io.observe(el);
 
