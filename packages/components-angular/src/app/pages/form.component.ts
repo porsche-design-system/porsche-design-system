@@ -18,6 +18,7 @@ import { Component } from '@angular/core';
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" disabled="disabled"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" readonly="readonly" value="Some value"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="password" name="some-name" value="some-password"/></p-text-field-wrapper>
+          <p-text-field-wrapper [label]="'Some label'"><input type="search" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [state]="'error'" [message]="'Error message'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [state]="'success'" [message]="'Success message'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name" placeholder="Some placeholder"/><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-text-field-wrapper>
