@@ -44,10 +44,15 @@ export class TextFieldWrapper {
 
   public componentWillLoad(): void {
     this.setInput();
+    this.setAriaAttributes();
     this.setState();
     this.updatePasswordToggleable();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -79,7 +84,7 @@ export class TextFieldWrapper {
     return (
       <Host>
         <div class={containerClasses}>
-          <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+          <label class={labelClasses} id={this.labelId}>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
@@ -105,7 +110,6 @@ export class TextFieldWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -132,11 +136,28 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input');
-    if (this.label && this.description) {
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.input.setAttribute('aria-label', this.label + '. ' + this.message);
+    }
+    else if (this.label && this.description) {
       this.input.setAttribute('aria-label', this.label + '. ' + this.description);
     }
-    else if (this.label) {
+    else {
       this.input.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.input.setAttribute('aria-invalid', 'true');
+    } else {
+      this.input.removeAttribute('aria-invalid');
     }
   }
 
