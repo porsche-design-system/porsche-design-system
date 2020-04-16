@@ -20,9 +20,9 @@ Password fields have the ability to hide/show the typed password.
 
 ### Search
 
-Search fields have the ability to to activate the search function.
+Search fields have the ability to to activate the search function.  
 
-!!! Code Beispiel !!!
+<p-text-field-wrapper label="Some label"><input type="search" name="some-name"/></p-text-field-wrapper>
 
 ### Pure (without label)
 
