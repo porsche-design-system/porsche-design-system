@@ -264,11 +264,9 @@ describe('Text Field Wrapper', () => {
     `);
     const searchButton = await page.find('p-text-field-wrapper >>> button');
     const form = await page.find('form');
-    for(const triggerElement of [searchButton]) {
-      const spy = await form.spyOnEvent('submit');
-      await triggerElement.click();
-      expect(spy.length).toBe(1);
-    }
+    const spy = await form.spyOnEvent('submit');
+    await searchButton.click();
+    expect(spy.length).toBe(1);
   });
 
   describe('hover state', () => {
