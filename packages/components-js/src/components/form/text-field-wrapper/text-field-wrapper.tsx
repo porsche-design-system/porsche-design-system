@@ -208,11 +208,11 @@ export class TextFieldWrapper {
 
     ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
     ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
-      margin-right: 32px;
+      margin-right: 2rem;
     }
 
     ${tagName} input[type=search]::-webkit-search-cancel-button {
-      margin-right: 32px;
+      margin-right: 2rem;
     }
     `;
 
