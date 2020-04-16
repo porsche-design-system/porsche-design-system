@@ -116,7 +116,7 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
   </template>
   <template>
     <p-text-field-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="text" :aria-invalid="state === 'error'" name="some-name" />
+      <input type="text" name="some-name" />
     </p-text-field-wrapper>
   </template>
 </Playground>
@@ -131,9 +131,9 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
 <Playground>
   <template>
     <p-text-field-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="text" aria-invalid="true" name="some-name" placeholder="Some placeholder" aria-describedby="some-message-id"/>
+      <input type="text" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"/>
       <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-text-field-wrapper>
   </template>
