@@ -6,10 +6,10 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  randomString
+  randomString,
+  handleButtonEvent
 } from '../../../utils';
 import { ButtonType, FormState } from '../../../types';
-import { handleButtonEvent } from '../../../utils/buttonHandling';
 
 @Component({
   tag: 'p-text-field-wrapper',
