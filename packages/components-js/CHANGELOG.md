@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Search submit button to `p-text-field-wrapper` type search component
+- `Link Social`
 
 ### Changed
 - Visual appearance of icons
