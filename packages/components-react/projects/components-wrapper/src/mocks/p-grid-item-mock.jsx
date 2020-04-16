@@ -1,5 +1,5 @@
 const React = require('react');
 
 module.exports = {
-  PGridItem: (props) => <p-grid-item>{props.children}</p-grid-item>
+  PGridItem: (props) => <p-grid-item {...props}>{props.children}</p-grid-item>
 };
