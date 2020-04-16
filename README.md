@@ -119,6 +119,8 @@ Every week, we update our NPM packages:
 1. Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
+1. Angular hast to be updated with `ng update` inside of the package.
+1. Afterwards run `./docker.sh run-install` to create the correct yarn.lock file inside docker
 1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-lint`  
 1. Run `./docker.sh run-test-unit`  
