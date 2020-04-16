@@ -7,10 +7,9 @@ import {
   prefix,
   transitionListener
 } from '../../../utils';
-import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
+import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
-import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-button-pure',

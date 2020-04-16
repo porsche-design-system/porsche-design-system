@@ -5,12 +5,11 @@ import {
   calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
+  insertSlottedStyles
 } from '../../../utils';
-import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { IconName } from '../../icon/icon/icon-name';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-link-pure',
