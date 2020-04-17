@@ -1,10 +1,9 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { IconName } from '../../icon/icon/icon-name';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
-import { ButtonType, Theme } from '../../../types';
+import { ButtonType, IconName, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button',
