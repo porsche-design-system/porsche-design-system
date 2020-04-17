@@ -13,23 +13,21 @@
         </ul>
       </li>
     </ul>
-    <fragment v-if="config.stories">
-      <p-divider class="divider-spacing-small"></p-divider>
-      <p-headline variant="headline-3" tag="h2">Components</p-headline>
-      <ul class="list">
-        <li v-for="(stories, category, index) in config.stories" :key="index">
-          <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
-          <ul>
-            <li v-for="(v, story, index) in stories" :key="index">
-              <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
-                           v-slot="{ href, navigate, isActive }">
-                <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
-              </router-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </fragment>
+    <p-divider v-if="config.stories" class="divider-spacing-small"></p-divider>
+    <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
+    <ul v-if="config.stories" class="list">
+      <li v-for="(stories, category, index) in config.stories" :key="index">
+        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
+        <ul>
+          <li v-for="(v, story, index) in stories" :key="index">
+            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
+                         v-slot="{ href, navigate, isActive }">
+              <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
+            </router-link>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </nav>
 </template>
 
