@@ -1,5 +1,4 @@
 import Vue, { VueConstructor } from 'vue';
-import Fragment from 'vue-fragment';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -29,8 +28,6 @@ Vue.use({
     vue.component('ColorBadge', ColorBadge);
   },
 });
-
-Vue.use(Fragment.Plugin);
 
 new Vue({
   router,
