@@ -124,6 +124,7 @@ _Enter_. Afterwards execute automated tests to make sure application still works
     1. `cd packages/components-angular`
     1. `./node_modules/.bin/ng update`
     1. `./node_modules/.bin/ng update @angular/cli @angular/core`
+    1. `exit` to leave the docker container
 1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-lint`  
 1. Run `./docker.sh run-test-unit`  
