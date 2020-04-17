@@ -5,12 +5,11 @@ import {
   calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
+  insertSlottedStyles
 } from '../../../utils';
-import { LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { IconName } from '../../icon/icon/icon-name';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-link-pure',
@@ -56,7 +55,7 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     const tagName= this.element.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;

@@ -51,7 +51,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Types
 
-The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calender dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
+The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
 For better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 ### Basic
@@ -85,6 +85,16 @@ For better accessibility it's recommended to **not** reset these browser default
   <p-text-field-wrapper label="Some label">
     <input type="password" name="some-name" value="some password"/>
   </p-text-field-wrapper>
+</Playground>
+
+### Search
+
+<Playground>
+  <form action="#" onsubmit="alert('submit'); return false;">
+    <p-text-field-wrapper label="Some label">
+      <input type="search" name="some-name"/>
+    </p-text-field-wrapper>
+  </form>
 </Playground>
 
 ---
