@@ -3,7 +3,7 @@ describe('Start Coding', () => {
     cy.visit('/');
 
     cy.get('#app .sidebar nav p-link-pure[href*="start-coding/nextjs"]')
-      .contains('NextJS')
+      .contains('Nextjs')
       .click()
       .should('have.attr', 'active', 'true');
 
