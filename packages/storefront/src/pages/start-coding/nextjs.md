@@ -36,11 +36,12 @@ npm init next-app
 ```
 
 * Follow the instructions to set everything up
-* Switch to the created folder with ***cd your-app-name***
+* Switch to the created folder with `cd your-app-name`
 
-* To add TypeScript to your **NextJS Project**, you have to install it by creating a `tsconfig.json` file in the root of your project
-* Add typescript with `yarn add --dev typescript @types/react @types/node` or `npm install --save-dev typescript @types/react @types/node` 
-* Run `yarn dev` or `npm run dev` which configures your `tsconfig.json with default values`
+* To add TypeScript to your **NextJS Project**, you have to create a `tsconfig.json` file in the root of your project
+* Add typescript with `yarn add --dev typescript @types/react @types/node` or  
+`npm install --save-dev typescript @types/react @types/node` 
+* Run `yarn dev` or `npm run dev` which configures your `tsconfig.json` with default values
 * You can convert your files from `.js` to `.tsx` 
 
 * Install the Porsche Design System  
