@@ -6,9 +6,10 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  randomString
+  randomString,
+  handleButtonEvent
 } from '../../../utils';
-import { FormState } from '../../../types';
+import { ButtonType, FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -36,13 +37,16 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
+  private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
+  private isInputTypeSearch: boolean;
   private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setInput();
     this.setState();
     this.updatePasswordToggleable();
+    this.initInputTypeSearch();
     this.bindStateListener();
     this.addSlottedStyles();
   }
@@ -73,7 +77,7 @@ export class TextFieldWrapper {
         <span class={containerClasses}>
           <label class={labelClasses} id={this.state === 'error' && this.labelId}>
             {this.isLabelVisible &&
-            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             }
@@ -82,8 +86,18 @@ export class TextFieldWrapper {
             </span>
           </label>
           {this.isPasswordToggleable &&
-          <button type='button' class={buttonClasses} onClick={() => this.togglePassword()} disabled={this.disabled}>
+          <button type='button' class={buttonClasses} onClick={(): void => this.togglePassword()} disabled={this.disabled}>
             <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
+          </button>
+          }
+          {this.isInputTypeSearch &&
+          <button
+            onClick={(event: MouseEvent): void => this.onSubmitHandler(event)}
+            type='submit'
+            class={buttonClasses}
+            disabled={this.disabled || this.readonly}
+          >
+            <p-icon name='search' color='inherit'/>
           </button>
           }
         </span>
@@ -146,6 +160,19 @@ export class TextFieldWrapper {
     this.labelClick();
   }
 
+  private initInputTypeSearch(): void {
+    this.isInputTypeSearch = this.input.type === 'search';
+    if (this.isInputTypeSearch) {
+      this.input.style.cssText = 'padding-right: 3rem !important';
+    }
+  }
+
+  private onSubmitHandler(event: MouseEvent): void {
+    if (this.isInputTypeSearch) {
+      handleButtonEvent(event, this.host, () => this.searchButtonType, () => this.disabled);
+    }
+  }
+
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
@@ -177,7 +204,11 @@ export class TextFieldWrapper {
 
     ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
     ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
-      margin-right: 32px;
+      margin-right: 2rem;
+    }
+
+    ${tagName} input[type=search]::-webkit-search-cancel-button {
+      margin-right: 2rem;
     }
     `;
 
