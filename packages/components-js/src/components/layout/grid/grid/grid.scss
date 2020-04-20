@@ -7,6 +7,9 @@ $p-grid-gutter-m: p-rem(36px);
 $p-grid-gutter-l: p-rem(36px);
 $p-grid-gutter-xl: p-rem(36px);
 
+$p-grid-margin: 7vw;
+$p-grid-margin-xl: 10vw;
+
 .#{$p-global-class-prefix}grid {
   $bem-block: &;
   display: flex;
@@ -115,24 +118,10 @@ $p-grid-gutter-xl: p-rem(36px);
   }
 
   &--safe-zone {
-    @include p-breakpoint("xs")  {
-      padding: 0 7vw;
-    }
-
-    @include p-breakpoint("s") {
-      padding: 0 7vw;
-    }
-
-    @include p-breakpoint("m") {
-      padding: 0 7vw;
-    }
-
-    @include p-breakpoint("l") {
-      padding: 0 7vw;
-    }
+    padding: 0 $p-grid-margin;
 
     @include p-breakpoint("xl") {
-      padding: 0 10vw;
+      padding: 0 $p-grid-margin-xl;
     }
   }
 }
