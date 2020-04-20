@@ -39,9 +39,7 @@ yarn add @porsche-design-system/components-angular
 ```
 
 After adding the `@porsche-design-system/components-angular` package to your project,
-you've to import the `PorscheDesignSystemModule` in every module you want to use the
-components in. It declares and exports the Porsche Design System Components to make
-it available in the module that imports it. 
+you've to import the `PorscheDesignSystemModule` in every module you want to use the components.
 The following setup is a standard Angular CLI project: 
 
 ### App module
