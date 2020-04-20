@@ -7,7 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Submit button with search icon to `p-textfield-wrapper` type search
+
+### Changed
+- Visual appearance of icons
+- Improve caching strategy for icons by content-based hash
+- Cursor of Radio, Checkbox and Select
+
+## [1.4.0-rc.0] - 2020-04-09
+
+### Added
+- SSR support
+
+## [1.3.0] - 2020-04-08
+
+### Added
 - New headline size `headline-5` to `p-headline`
+- Test Mocks
+
+### Fixed
+- Text styling of Select component on focus in IE11 and Chrome on Windows 10
 
 ## [1.3.0-rc.0] - 2020-04-03
 
