@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `Text List`
+- Submit button with search icon to `p-textfield-wrapper` type search
 
 ### Changed
 - Visual appearance of icons
