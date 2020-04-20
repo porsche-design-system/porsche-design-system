@@ -5,8 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
-import { IconName, } from "./components/icon/icon/icon-name";
+import { ButtonType, FormState, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
 import { BreakpointCustomizable, } from "./utils";
 import { NumberOfPageLinks, } from "./components/navigation/pagination/pagination";
 export namespace Components {
