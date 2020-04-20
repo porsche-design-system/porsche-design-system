@@ -36,6 +36,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
+    * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --components-js` (builds the native web components)
     * `./docker.sh run-build --components-angular` (builds angular components)
     * `./docker.sh run-build --components-react` (builds react components)
@@ -118,6 +119,12 @@ Every week, we update our NPM packages:
 1. Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
+1. Angular has to be updated with `ng update`.
+    1. Run `./docker.sh bash`
+    1. `cd packages/components-angular`
+    1. `./node_modules/.bin/ng update`
+    1. `./node_modules/.bin/ng update @angular/cli @angular/core`
+    1. `exit` to leave the docker container
 1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-lint`  
 1. Run `./docker.sh run-test-unit`  
@@ -155,6 +162,11 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `git pull origin {current master- or v-branch}`
 1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build --utils`
+
+### Icons
+1. Run `./docker.sh run-build --icons`
+1. Switch to __packages/icons/dist/svg directory__
+1. Provide the optimized SVG files on CDN (`https://cdn.ui.porsche.com/porsche-design-system/icons`) (should have happened before normally otherwise VRT tests are not up to date)
 
 ### Components JS
 1. Run `./docker.sh run-build --components-js`
@@ -214,6 +226,14 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
 1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components React artifact to the Artifactory repository.
+
+### Icon platform
+1. Switch to __packages/icons/database directory__
+1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
+1. Switch to Icon platform Git repository (`https://github.com/porscheui/porsche-icon-frontend`)
+1. Update `@porsche-design-system/components-js` to latest version
+1. Build icon platform
+1. Deploy icon platform
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace

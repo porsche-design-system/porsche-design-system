@@ -76,12 +76,6 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with type search">
-  <p-text-field-wrapper label="Some label">
-    <input type="search" name="some-name"/>
-  </p-text-field-wrapper>
-</div>
-
 <div class="playground light" title="should render with type url">
   <p-text-field-wrapper label="Some label">
     <input type="url" name="some-name"/>
@@ -123,6 +117,20 @@
   <br>
   <p-text-field-wrapper label="Some label">
     <input type="password" name="some-name" value="some password" readonly="readonly"/>
+  </p-text-field-wrapper>
+</div>
+
+<div class="playground light" title="should render with type search in different states">
+  <p-text-field-wrapper label="Some label">
+    <input type="search" name="some-name"/>
+  </p-text-field-wrapper>
+  <br>
+  <p-text-field-wrapper label="Some label">
+    <input type="search" name="some-name" disabled="disabled"/>
+  </p-text-field-wrapper>
+  <br>
+  <p-text-field-wrapper label="Some label">
+    <input type="search" name="some-name" readonly="readonly"/>
   </p-text-field-wrapper>
 </div>
 
