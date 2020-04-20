@@ -179,7 +179,7 @@ export namespace Components {
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
-          * Defines whether the outer grid margin should be applied. Defaults to `false`
+          * Defines whether the outer grid margin should be applied. Defaults to `false`.
          */
         "safeZone"?: boolean;
     }
@@ -802,7 +802,7 @@ declare namespace LocalJSX {
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
-          * Defines whether the outer grid margin should be applied. Defaults to `false`
+          * Defines whether the outer grid margin should be applied. Defaults to `false`.
          */
         "safeZone"?: boolean;
     }
