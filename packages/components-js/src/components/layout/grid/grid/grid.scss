@@ -11,23 +11,14 @@ $p-grid-gutter-xl: p-rem(36px);
   $bem-block: &;
   display: flex;
   flex-wrap: wrap;
-  margin: {
-    left: -$p-grid-gutter / 2;
-    right: -$p-grid-gutter / 2;
-  }
+  margin: 0 (-$p-grid-gutter / 2);
 
   @include p-breakpoint("s") {
-    margin: {
-      left: -$p-grid-gutter-s / 2;
-      right: -$p-grid-gutter-s / 2;
-    }
+    margin: 0 (-$p-grid-gutter-s / 2);
   }
 
   @include p-breakpoint("m") {
-    margin: {
-      left: -$p-grid-gutter-m / 2;
-      right: -$p-grid-gutter-m / 2;
-    }
+    margin: 0 (-$p-grid-gutter-m / 2);
   }
 
   &--direction {

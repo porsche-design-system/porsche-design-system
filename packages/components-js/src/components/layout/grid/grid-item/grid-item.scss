@@ -19,23 +19,14 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
 
 .#{$p-global-class-prefix}grid-item {
   box-sizing: border-box;
-  padding: {
-    left: $p-grid-gutter / 2;
-    right: $p-grid-gutter / 2;
-  }
+  padding: 0 ($p-grid-gutter / 2);
 
   @include p-breakpoint("s") {
-    padding: {
-      left: $p-grid-gutter-s / 2;
-      right: $p-grid-gutter-s / 2;
-    }
+    padding: 0 ($p-grid-gutter-s / 2);
   }
 
   @include p-breakpoint("m") {
-    padding: {
-      left: $p-grid-gutter-m / 2;
-      right: $p-grid-gutter-m / 2;
-    }
+    padding: 0 ($p-grid-gutter-m / 2);
   }
 
   &--size {
