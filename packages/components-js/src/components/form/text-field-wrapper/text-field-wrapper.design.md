@@ -30,12 +30,12 @@ The component Pure (without label) is only used if the context clearly describes
 
 <p-text-field-wrapper label="Some label" hide-label="true"><input type="text" name="some-name"></p-text-field-wrapper>
 
-### Help text
+### Description text
 
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+Description text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
 For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
-!!! Code Beispiel !!!
+<p-text-field-wrapper label="Some label" description="Some description"><input type="text" name="some-name" /></p-text-field-wrapper>
 
 ---
 
