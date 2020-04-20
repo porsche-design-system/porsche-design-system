@@ -29,6 +29,18 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ---
 
+## With description text
+
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground>    
+  <p-text-field-wrapper label="Some label" description="Some description">
+    <input type="text" name="some-name" />
+  </p-text-field-wrapper>
+</Playground>
+
+---
+
 ## Disabled
 
 <Playground>    
@@ -44,18 +56,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 <Playground>    
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" value="Some value" readonly="readonly" />
-  </p-text-field-wrapper>
-</Playground>
-
----
-
-## With description text
-
-A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
-
-<Playground>    
-  <p-text-field-wrapper label="Some label" description="Some description">
-    <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </Playground>
 

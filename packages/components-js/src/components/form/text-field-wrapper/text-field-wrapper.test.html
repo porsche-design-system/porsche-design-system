@@ -16,9 +16,9 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with label">
+<div class="playground light" title="should render with label and placeholder">
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name"/>
+    <input type="text" name="some-name" placeholder="Some placeholder"/>
   </p-text-field-wrapper>
 </div>
 
@@ -34,7 +34,7 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with responsive label ad description">
+<div class="playground light" title="should render with responsive label and description">
   <p-text-field-wrapper label="Some label" description="Some description" hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
@@ -164,17 +164,19 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render label and message by slotted content with error state">
+<div class="playground light" title="should render label, description and message by slotted content with error state">
   <p-text-field-wrapper state="error">
     <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+    <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
     <input type="text" name="some-name" placeholder="Some placeholder"/>
     <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render label and message by slotted content with success state">
+<div class="playground light" title="should render label, description and message by slotted content with success state">
   <p-text-field-wrapper state="success">
     <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+    <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
     <input type="text" name="some-name" placeholder="Some placeholder"/>
     <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
   </p-text-field-wrapper>

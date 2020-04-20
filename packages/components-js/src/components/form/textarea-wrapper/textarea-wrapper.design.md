@@ -18,12 +18,12 @@ The component Pure (without label) is only used if the context clearly describes
 
 <p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
-### Help text
+### Description text
 
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+Description text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+For further information we recommend reading the general form guideline. [Forms Guideline](#/patterns/forms)
 
-!!! Code Beispiel !!!
+<p-textarea-wrapper label="Some label" description="Some description"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
 ---
 
@@ -53,11 +53,11 @@ Textareas have no specific width. Depending on the layout you can set the width 
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Textarea the validation belongs to.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+For further information we recommend reading the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ### Spacing
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+For further information we recommend reading the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ---
 
