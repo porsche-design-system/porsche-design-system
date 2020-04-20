@@ -89,9 +89,9 @@ export class Pagination {
 
     // generate pagination items
     const createPaginationItems = (): {
-      prevItem: JSX.Element,
-      pageItems: JSX.Element[],
-      nextItem: JSX.Element
+      prevItem: JSX.Element;
+      pageItems: JSX.Element[];
+      nextItem: JSX.Element;
     } => {
       const paginationModel = createPaginationModel({
         activePage,
