@@ -122,4 +122,26 @@ $p-grid-gutter-xl: p-rem(36px);
       }
     }
   }
+
+  &--safe-zone {
+    @include p-breakpoint("xs")  {
+      padding: 0 7vw;
+    }
+
+    @include p-breakpoint("s") {
+      padding: 0 7vw;
+    }
+
+    @include p-breakpoint("m") {
+      padding: 0 7vw;
+    }
+
+    @include p-breakpoint("l") {
+      padding: 0 7vw;
+    }
+
+    @include p-breakpoint("xl") {
+      padding: 0 10vw;
+    }
+  }
 }

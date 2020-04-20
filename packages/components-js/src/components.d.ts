@@ -178,6 +178,10 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
+        /**
+          * Defines whether the outer grid margin should be applied. Defaults to `false`
+         */
+        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
@@ -797,6 +801,10 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
+        /**
+          * Defines whether the outer grid margin should be applied. Defaults to `false`
+         */
+        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
