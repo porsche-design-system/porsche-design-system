@@ -119,6 +119,12 @@ Every week, we update our NPM packages:
 1. Run `./docker.sh run-upgrade`  
 This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press
 _Enter_. Afterwards execute automated tests to make sure application still works.
+1. Angular has to be updated with `ng update`.
+    1. Run `./docker.sh bash`
+    1. `cd packages/components-angular`
+    1. `./node_modules/.bin/ng update`
+    1. `./node_modules/.bin/ng update @angular/cli @angular/core`
+    1. `exit` to leave the docker container
 1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-lint`  
 1. Run `./docker.sh run-test-unit`  
