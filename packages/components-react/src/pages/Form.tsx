@@ -56,6 +56,13 @@ export function Form() {
                 <option value="c">Option C</option>
               </select>
             </SelectWrapper>
+            <SelectWrapper label={'Some label'} description={'Some description'}>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </SelectWrapper>
             <SelectWrapper label={'Some label'}>
               <select name="some-name" disabled={true}>
                 <option value="a">Option A</option>
@@ -72,6 +79,7 @@ export function Form() {
             </SelectWrapper>
             <SelectWrapper state={'success'}>
               <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>

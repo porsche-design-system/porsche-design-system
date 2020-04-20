@@ -211,8 +211,8 @@ export class PRadioButtonWrapper {
 }
 
 export declare interface PSelectWrapper extends Components.PSelectWrapper {}
-@ProxyCmp({inputs: ['hideLabel', 'label', 'message', 'state']})
-@Component({ selector: 'p-select-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['hideLabel', 'label', 'message', 'state'] })
+@ProxyCmp({inputs: ['description', 'hideLabel', 'label', 'message', 'state']})
+@Component({ selector: 'p-select-wrapper', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['description', 'hideLabel', 'label', 'message', 'state'] })
 export class PSelectWrapper {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

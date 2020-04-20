@@ -93,7 +93,7 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
     <p-textarea-wrapper state="error">
       <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <textarea name="some-name" aria-invalid="true" aria-labelledby="some-label-id" aria-describedby="some-message-id"></textarea>
+      <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"></textarea>
       <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-textarea-wrapper>
   </template>
