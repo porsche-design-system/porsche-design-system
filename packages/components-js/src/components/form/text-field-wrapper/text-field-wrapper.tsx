@@ -164,7 +164,7 @@ export class TextFieldWrapper {
     else if (this.label && this.description) {
       this.input.setAttribute('aria-label', this.label + '. ' + this.description);
     }
-    else {
+    else if (this.label) {
       this.input.setAttribute('aria-label', this.label);
     }
 
