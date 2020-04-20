@@ -9,7 +9,7 @@
 // /* eslint-disable import/no-extraneous-dependencies, global-require */
 // const webpack = require('@cypress/webpack-preprocessor')
 
-const puppeteer = require('puppeteer');
+// const puppeteer = require('puppeteer');
 
 module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
@@ -17,13 +17,12 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
 
-  on('before:browser:launch', (browser = {}, args) => {
-    if (browser.family === 'chrome') {
-      args.push('--disable-dev-shm-usage');
-      args.push('--headless');
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    if (browser.family === 'chromium' && browser.name === 'chromium') {
+      // https://docs.cypress.io/guides/guides/continuous-integration.html#In-Docker
+      launchOptions.args.push('--disable-dev-shm-usage');
+      return launchOptions;
     }
-
-    return args
   });
 
   return Object.assign({}, config, {
@@ -32,13 +31,13 @@ module.exports = (on, config) => {
     screenshotsFolder: 'tests/e2e/screenshots',
     videosFolder: 'tests/e2e/videos',
     supportFile: 'tests/e2e/support/index.js',
-    browsers: [ {
-        name: 'chrome',
-        family: 'chrome',
-        displayName: 'Chrome',
-        path: puppeteer.executablePath(),
-        version: '79.0.3945.0',
-        majorVersion: 79
-    } ]
+    // browsers: [ {
+    //     name: 'chromium',
+    //     family: 'chromium',
+    //     displayName: 'Chrome',
+    //     path: puppeteer.executablePath(),
+    //     version: '79.0.3945.0',
+    //     majorVersion: 79
+    // } ]
   })
 };
