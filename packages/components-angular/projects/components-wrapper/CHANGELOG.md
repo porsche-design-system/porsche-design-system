@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Submit button with search icon to `p-textfield-wrapper` type search
+
 ### Changed
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
