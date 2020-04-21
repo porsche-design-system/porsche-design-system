@@ -37,7 +37,7 @@ export class TextareaWrapper {
   private textarea: HTMLTextAreaElement;
   private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setTextarea();
     this.setState();
     this.bindStateListener();

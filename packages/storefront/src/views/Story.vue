@@ -32,7 +32,7 @@
     }
 
     public get tabs(): string[] {
-      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+      const story = this.config?.[this.category]?.[this.story];
 
       if (!story || Array.isArray(story)) {
         return [];
@@ -58,7 +58,7 @@
     }
 
     private get stories(): ComponentListImport {
-      const story = this.config && this.config[this.category] && this.config[this.category][this.story];
+      const story = this.config?.[this.category]?.[this.story];
 
       if (!story || Array.isArray(story)) {
         return story;
