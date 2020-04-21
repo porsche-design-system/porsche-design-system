@@ -41,6 +41,28 @@ describe('Text Field Wrapper', () => {
     expect(input.getAttribute('aria-label')).toBe('Some label');
   });
 
+  it('should add aria-label with description text to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper label="Some label" description="Some description">
+        <input type="text" name="some-name">
+      </p-text-field-wrapper>
+    `);
+    const input = await page.find('p-text-field-wrapper input');
+    expect(input.getAttribute('aria-label')).toBe('Some label. Some description');
+  });
+
+  it('should add aria-label with message text to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-text-field-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+        <input type="text" name="some-name">
+      </p-text-field-wrapper>
+    `);
+    const input = await page.find('p-text-field-wrapper input');
+    expect(input.getAttribute('aria-label')).toBe('Some label. Some error message');
+  });
+
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
@@ -63,7 +85,7 @@ describe('Text Field Wrapper', () => {
 
   });
 
-  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+  it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
       <p-text-field-wrapper label="Some label">
@@ -75,32 +97,37 @@ describe('Text Field Wrapper', () => {
       return textFieldComponent.shadowRoot.querySelector('.p-text-field-wrapper__message');
     };
 
+    const getInput = async () => {
+      return textFieldComponent.find('input');
+    };
+
     expect(await getMessage()).toBeNull();
 
     textFieldComponent.setProperty('state', 'error');
-    textFieldComponent.setProperty('message', 'some message');
+    textFieldComponent.setProperty('message', 'Some error message');
 
     await page.waitForChanges();
 
-    const label = await page.find('p-text-field-wrapper >>> .p-text-field-wrapper__label');
-    const labelId = label.getAttribute('id');
-
     expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+    expect(await getMessage()).toEqualAttribute('role', 'alert');
+    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some error message');
 
     textFieldComponent.setProperty('state', 'success');
+    textFieldComponent.setProperty('message', 'Some success message');
 
     await page.waitForChanges();
 
     expect(await getMessage()).not.toBeNull();
     expect(await getMessage()).not.toHaveAttribute('role');
-    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some success message');
 
     textFieldComponent.setProperty('state', 'none');
+    textFieldComponent.setProperty('message', '');
 
     await page.waitForChanges();
 
     expect(await getMessage()).toBeNull();
+    expect(await getInput()).toEqualAttribute('aria-label','Some label');
 
   });
 
