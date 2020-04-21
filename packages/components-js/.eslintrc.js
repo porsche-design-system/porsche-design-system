@@ -14,7 +14,8 @@ module.exports = {
   },
   "plugins": [
     "@typescript-eslint",
-    "prefer-arrow"
+    "prefer-arrow",
+    "react"
   ],
   "rules": {
     "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -23,6 +24,12 @@ module.exports = {
     "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      {
+        allowExpressions: true
+      }
+    ],
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {
@@ -55,6 +62,15 @@ module.exports = {
     "@typescript-eslint/no-namespace": "error",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "varsIgnorePattern": "h"
+      }
+    ],
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/prefer-for-of": "off",
     "@typescript-eslint/prefer-function-type": "error",
@@ -165,6 +181,7 @@ module.exports = {
     "no-unsafe-finally": "error",
     "no-unused-expressions": "error",
     "no-unused-labels": "error",
+    "no-unused-vars": "off",
     "no-var": "error",
     "object-shorthand": "error",
     "one-var": [
@@ -173,6 +190,7 @@ module.exports = {
     ],
     "prefer-arrow/prefer-arrow-functions": "error",
     "prefer-const": "error",
+    "react/jsx-uses-vars": "error",
     "quote-props": "off",
     "radix": "error",
     "space-before-function-paren": "off",
