@@ -27,6 +27,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   </p-grid>
 </Playground>
 
+---
+
 #### Safe Zone
 
 By appyling the `safe-zone` property you can enable the outer grid margins.
