@@ -22,7 +22,7 @@ export class Flex {
 
   /** Defines how the flex items are aligned along the main axis. */
   @Prop() public justifyContent?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'flex-start';
 
   /** Defines how the flex items are aligned along the cross axis. */
@@ -30,7 +30,7 @@ export class Flex {
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'stretch';
 
   public render(): JSX.Element {
