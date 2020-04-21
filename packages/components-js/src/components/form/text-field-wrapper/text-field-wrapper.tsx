@@ -6,7 +6,6 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  randomString,
   handleButtonEvent
 } from '../../../utils';
 import { ButtonType, FormState } from '../../../types';
@@ -43,7 +42,6 @@ export class TextFieldWrapper {
   private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
   private isInputTypeSearch: boolean;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setInput();
@@ -88,7 +86,7 @@ export class TextFieldWrapper {
     return (
       <Host>
         <div class={containerClasses}>
-          <label class={labelClasses} id={this.labelId}>
+          <label class={labelClasses}>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}

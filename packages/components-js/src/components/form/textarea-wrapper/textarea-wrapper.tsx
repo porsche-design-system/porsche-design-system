@@ -4,7 +4,6 @@ import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  randomString,
   transitionListener,
   insertSlottedStyles
 } from '../../../utils';
@@ -38,7 +37,6 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setTextarea();
@@ -78,7 +76,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <label class={labelClasses}>
           {this.isLabelVisible &&
           <p-text class={labelTextClasses} color='inherit' tag='span' onClick={(): void => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
@@ -98,7 +96,6 @@ export class TextareaWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
