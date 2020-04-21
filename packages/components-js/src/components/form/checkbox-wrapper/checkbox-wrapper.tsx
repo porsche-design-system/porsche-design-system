@@ -38,7 +38,7 @@ export class CheckboxWrapper {
   private input: HTMLInputElement;
   private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setInput();
     this.setState();
     this.bindStateListener();
@@ -50,13 +50,13 @@ export class CheckboxWrapper {
     const labelClasses = cx(prefix('checkbox-wrapper__label'));
     const fakeCheckboxClasses = cx(
       prefix('checkbox-wrapper__fake-checkbox'),
-      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__fake-checkbox--checked`),
-      this.disabled && prefix(`checkbox-wrapper__fake-checkbox--disabled`),
+      (this.checked || this.indeterminate) && prefix('checkbox-wrapper__fake-checkbox--checked'),
+      this.disabled && prefix('checkbox-wrapper__fake-checkbox--disabled'),
       this.state !== 'none' && prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)
     );
     const iconClasses = cx(
       prefix('checkbox-wrapper__icon'),
-      (this.checked || this.indeterminate) && prefix(`checkbox-wrapper__icon--checked`)
+      (this.checked || this.indeterminate) && prefix('checkbox-wrapper__icon--checked')
     );
     const labelTextClasses = cx(
       prefix('checkbox-wrapper__label-text'),
