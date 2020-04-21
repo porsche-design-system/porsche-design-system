@@ -72,5 +72,8 @@
     "test:cbt:components-angular": "yarn --cwd ./packages/components-angular test:cbt",
     "test:cbt:components-react": "yarn --cwd ./packages/components-react test:cbt",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/icons clean && yarn --cwd ./packages/components-js clean && yarn --cwd ./packages/scss-utils clean && yarn --cwd ./packages/storefront clean && yarn --cwd ./packages/components-angular clean && yarn --cwd ./packages/components-react clean && yarn --cwd ./packages/utils clean"
+  },
+  "resolutions": {
+    "cypress": "4.4.0"
   }
 }

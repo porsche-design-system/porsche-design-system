@@ -23,10 +23,10 @@ export class Pagination {
   @Element() public element!: HTMLElement;
 
   /** The total count of items. */
-  @Prop() public totalItemsCount: number = 1;
+  @Prop() public totalItemsCount = 1;
 
   /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage: number = 1;
+  @Prop() public itemsPerPage = 1;
 
   /** Index of the currently active page. */
   @Prop({
@@ -61,11 +61,11 @@ export class Pagination {
   private navigationElement: HTMLElement;
 
   @Watch('activePage')
-  public onActivePageChange(page: number, previousPage: number) {
+  public onActivePageChange(page: number, previousPage: number): void {
     this.pageChange.emit({ page, previousPage });
   }
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     this.unlistenResize = listenResize(() => {
       this.updateMaxNumberOfPageLinks();
@@ -74,7 +74,7 @@ export class Pagination {
     this.updateMaxNumberOfPageLinks();
   }
 
-  public componentDidUnload() {
+  public componentDidUnload(): void {
     this.unlistenResize();
   }
 
@@ -88,7 +88,11 @@ export class Pagination {
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
 
     // generate pagination items
-    const createPaginationItems = () => {
+    const createPaginationItems = (): {
+      prevItem: JSX.Element;
+      pageItems: JSX.Element[];
+      nextItem: JSX.Element;
+    } => {
       const paginationModel = createPaginationModel({
         activePage,
         pageTotal,
@@ -199,9 +203,9 @@ export class Pagination {
     const paginationItems = createPaginationItems();
     return (
       <nav class={paginationClasses}
-           role='navigation'
-           aria-label={this.allyLabel}
-           ref={el => this.navigationElement = el as HTMLElement}
+        role='navigation'
+        aria-label={this.allyLabel}
+        ref={el => this.navigationElement = el}
       >
         <ul class={paginationItemsClasses}>
           {paginationItems.prevItem}
@@ -212,7 +216,7 @@ export class Pagination {
     );
   }
 
-  private onKeyDown(event: KeyboardEvent, page: number) {
+  private onKeyDown(event: KeyboardEvent, page: number): void {
     /**
      * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
      */
@@ -225,13 +229,13 @@ export class Pagination {
     }
   }
 
-  private onClick(page: number) {
+  private onClick(page: number): void {
     if (page !== this.activePage) {
       this.activePage = page;
     }
   }
 
-  private updateMaxNumberOfPageLinks() {
+  private updateMaxNumberOfPageLinks(): void {
     const { size } = readCounterResetValue(this.navigationElement);
     this.breakpointMaxNumberOfPageLinks = size;
   }
