@@ -32,6 +32,7 @@ Placeholder text disappears when a user types in the input. If a user doesn’t 
 The Select component is available in the following states:
 
 * default
+* active
 * disabled
 * hover
 * focus
