@@ -5,8 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles,
-  randomString
+  insertSlottedStyles
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -37,7 +36,6 @@ export class SelectWrapper {
   @State() private disabled: boolean;
 
   private select: HTMLSelectElement;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setSelect();
@@ -80,7 +78,7 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <label class={labelClasses}>
           {this.isLabelVisible &&
           <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
@@ -101,7 +99,6 @@ export class SelectWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
