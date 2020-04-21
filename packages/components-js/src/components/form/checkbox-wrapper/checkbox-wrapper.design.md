@@ -32,8 +32,8 @@ The squared box is used as a typical Checkbox indicator and can have different s
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two)
 
-### Help text
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
+### Description text
+Description text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
 For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
 
 ### Validation and error
