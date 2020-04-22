@@ -1,25 +1,7 @@
 # Link Social
 
-The Link Social component enables the user to linking to social media platforms or social sharing dialogs.
-For an optimal user guidance and dedicated pursuit of goals, different types of links can be used.
-
-
----
-
-## Types
-
-### 1. Default
-
-<p-link-social href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
-
-This case is valid for all Social Links for which an external brand color is available in our palette.
-
-### 2. Fallback
-
-<p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)">Kaixin</p-link-social>
-
-This case is to be used as fallback version for all Social Links that are not provided with an external brand color yet.
-
+The Link Social component enables the user to link to social media platforms or social sharing dialogs.
+For an optimal user guidance and dedicated pursuit of goals different types of links can be used.
 
 
 ---
@@ -30,14 +12,14 @@ This case is to be used as fallback version for all Social Links that are not pr
 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
 
-This should be the option of your choice to connect to the social site for better comprehensibility and accessibility.
-The length of the link always adapts to the length of the text label. The size of the icon container always equals the line height of the text it's combined with.
+Due to better comprehensibility and accessibility, you should preferably go for this variant.
+The length of the link always adapts to the length of the text label. 
 
 ### Icon only
 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true">Facebook</p-link-social>
 
-This variant contains an icon only with no further text information. It is highly recommended to use it only for share to another page.
+This variant contains an icon only with no further text information.
 
 ### Group
 
@@ -54,13 +36,13 @@ This variant contains an icon only with no further text information. It is highl
   <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true">Youtube</p-link-social>
 </p>
 
-This variant contains the most used social icons that can be used as a group.
+The Link Social group contains the most used social icons that can be used as a group.
 
 ---
 
 ## States
 
-The link covers the following states:
+The Social Link covers the following states:
 
 * Default
 * Hover
@@ -71,11 +53,13 @@ The link covers the following states:
 ## Styling
 
 ### Icon
-The icon corresponds to the logo of the respective social service. For the fallback icon the corresponding icon must be used.
-
+The icon corresponds to the logo of the respective social platform. For the specific social icons the corresponding icon must be used.
 
 ### Text label
 The text label within a link should always be short and descriptive.
+
+### Hover
+For the most used social icons, we use the brand color as hover state. For specific social icons, where we do not offer the brand color, the color #151718 must be used as hover (analogous to the link).
 
 
 <style scoped lang="scss">
