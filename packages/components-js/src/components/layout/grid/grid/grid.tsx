@@ -18,12 +18,18 @@ export class Grid {
   @Prop() public safeZone?: boolean = false;
 
   public render(): JSX.Element {
-    const gridClasses = cx(
-      prefix('grid'),
-      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction),
-      { [prefix('grid--safe-zone')]: this.safeZone },
+    const gridClasses = prefix('grid');
+
+    const gridInnerClasses = cx(
+      prefix('grid__inner'),
+      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid__inner--direction', this.direction),
+      { [prefix('grid__inner--safe-zone')]: this.safeZone },
     );
 
-    return <Host class={gridClasses} />;
+    return (<Host class={gridClasses}>
+      <div class={gridInnerClasses}>
+        <slot />
+      </div>
+    </Host>);
   }
 }
