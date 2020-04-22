@@ -75,6 +75,7 @@
   border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-theme-light-state-disabled !important;
   cursor: not-allowed !important;
+  opacity: 1 !important;
 }
 
 .#{$p-global-class-prefix}textarea-wrapper {
