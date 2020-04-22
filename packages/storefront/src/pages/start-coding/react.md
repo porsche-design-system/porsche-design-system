@@ -2,8 +2,6 @@
 
 You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
 
----
-
 ## Get the project up and running
 * Clone the repository by executing <br>
 `git clone https://github.com/porscheui/sample-integration-react.git`
@@ -106,7 +104,7 @@ jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks');
 });
 ```
-You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
+You have to access the mocks in the Mock-Factory of the `jest.mock()` function. 
 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
