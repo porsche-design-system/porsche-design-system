@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
-// @ts-ignore
 import { StorefrontConfig } from '@/interface';
 
 export const config: StorefrontConfig = {
