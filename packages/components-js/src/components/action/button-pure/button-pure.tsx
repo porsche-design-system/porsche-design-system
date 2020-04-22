@@ -52,7 +52,7 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
 
@@ -119,7 +119,7 @@ export class ButtonPure {
     );
   }
 
-  private isDisabled() {
+  private isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }
