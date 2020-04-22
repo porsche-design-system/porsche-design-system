@@ -12,119 +12,126 @@ $p-grid-max-width: map-get($p-breakpoints, xxl);
 .#{$p-global-class-prefix}grid {
   $bem-block: &;
   display: flex;
-  flex-wrap: wrap;
-  margin: 0 (-$p-grid-gutter / 2);
+  justify-content: center;
+  overflow-x: hidden;
 
-  @include p-breakpoint("s") {
-    margin: 0 (-$p-grid-gutter-s / 2);
-  }
-
-  @include p-breakpoint("m") {
-    margin: 0 (-$p-grid-gutter-m / 2);
-  }
-
-  @include p-breakpoint("xxl") {
-    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
-  }
-
-  &--direction {
-    &-column {
-      flex-direction: column;
-    }
-
-    &-column-reverse {
-      flex-direction: column-reverse;
-    }
-
-    &-row {
-      flex-direction: row;
-    }
-
-    &-row-reverse {
-      flex-direction: row-reverse;
-    }
-
-    @include p-breakpoint("xs") {
-      &-column-xs {
-        flex-direction: column;
-      }
-      &-column-reverse-xs {
-        flex-direction: column-reverse;
-      }
-      &-row-xs {
-        flex-direction: row;
-      }
-      &-row-reverse-xs {
-        flex-direction: row-reverse;
-      }
-    }
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    margin: 0 (-$p-grid-gutter / 2);
 
     @include p-breakpoint("s") {
-      &-column-s {
-        flex-direction: column;
-      }
-      &-column-reverse-s {
-        flex-direction: column-reverse;
-      }
-      &-row-s {
-        flex-direction: row;
-      }
-      &-row-reverse-s {
-        flex-direction: row-reverse;
-      }
+      margin: 0 (-$p-grid-gutter-s / 2);
     }
 
     @include p-breakpoint("m") {
-      &-column-m {
+      margin: 0 (-$p-grid-gutter-m / 2);
+    }
+
+    @include p-breakpoint("xxl") {
+      max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
+    }
+
+    &--direction {
+      &-column {
         flex-direction: column;
       }
-      &-column-reverse-m {
+
+      &-column-reverse {
         flex-direction: column-reverse;
       }
-      &-row-m {
+
+      &-row {
         flex-direction: row;
       }
-      &-row-reverse-m {
+
+      &-row-reverse {
         flex-direction: row-reverse;
+      }
+
+      @include p-breakpoint("xs") {
+        &-column-xs {
+          flex-direction: column;
+        }
+        &-column-reverse-xs {
+          flex-direction: column-reverse;
+        }
+        &-row-xs {
+          flex-direction: row;
+        }
+        &-row-reverse-xs {
+          flex-direction: row-reverse;
+        }
+      }
+
+      @include p-breakpoint("s") {
+        &-column-s {
+          flex-direction: column;
+        }
+        &-column-reverse-s {
+          flex-direction: column-reverse;
+        }
+        &-row-s {
+          flex-direction: row;
+        }
+        &-row-reverse-s {
+          flex-direction: row-reverse;
+        }
+      }
+
+      @include p-breakpoint("m") {
+        &-column-m {
+          flex-direction: column;
+        }
+        &-column-reverse-m {
+          flex-direction: column-reverse;
+        }
+        &-row-m {
+          flex-direction: row;
+        }
+        &-row-reverse-m {
+          flex-direction: row-reverse;
+        }
+      }
+
+      @include p-breakpoint("l") {
+        &-column-l {
+          flex-direction: column;
+        }
+        &-column-reverse-l {
+          flex-direction: column-reverse;
+        }
+        &-row-l {
+          flex-direction: row;
+        }
+        &-row-reverse-l {
+          flex-direction: row-reverse;
+        }
+      }
+
+      @include p-breakpoint("xl") {
+        &-column-xl {
+          flex-direction: column;
+        }
+        &-column-reverse-xl {
+          flex-direction: column-reverse;
+        }
+        &-row-xl {
+          flex-direction: row;
+        }
+        &-row-reverse-xl {
+          flex-direction: row-reverse;
+        }
       }
     }
 
-    @include p-breakpoint("l") {
-      &-column-l {
-        flex-direction: column;
-      }
-      &-column-reverse-l {
-        flex-direction: column-reverse;
-      }
-      &-row-l {
-        flex-direction: row;
-      }
-      &-row-reverse-l {
-        flex-direction: row-reverse;
-      }
-    }
+    &--safe-zone {
+      padding: 0 $p-grid-margin;
 
-    @include p-breakpoint("xl") {
-      &-column-xl {
-        flex-direction: column;
+      @include p-breakpoint("xl") {
+        padding: 0 $p-grid-margin-xl;
       }
-      &-column-reverse-xl {
-        flex-direction: column-reverse;
-      }
-      &-row-xl {
-        flex-direction: row;
-      }
-      &-row-reverse-xl {
-        flex-direction: row-reverse;
-      }
-    }
-  }
-
-  &--safe-zone {
-    padding: 0 $p-grid-margin;
-
-    @include p-breakpoint("xl") {
-      padding: 0 $p-grid-margin-xl;
     }
   }
 }
