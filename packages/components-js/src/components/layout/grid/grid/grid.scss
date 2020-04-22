@@ -1,14 +1,13 @@
 @import "../../../../../../../packages/scss-utils/index";
 
 $p-grid-gutter: p-rem(16px);
-$p-grid-gutter-xs: p-rem(16px);
 $p-grid-gutter-s: p-rem(24px);
 $p-grid-gutter-m: p-rem(36px);
-$p-grid-gutter-l: p-rem(36px);
-$p-grid-gutter-xl: p-rem(36px);
 
 $p-grid-margin: 7vw;
 $p-grid-margin-xl: 10vw;
+
+$p-grid-max-width: 1920px;
 
 .#{$p-global-class-prefix}grid {
   $bem-block: &;
@@ -22,6 +21,11 @@ $p-grid-margin-xl: 10vw;
 
   @include p-breakpoint("m") {
     margin: 0 (-$p-grid-gutter-m / 2);
+  }
+
+  @include p-breakpoint("xl") {
+    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
+    margin: 0 auto;
   }
 
   &--direction {
@@ -121,6 +125,7 @@ $p-grid-margin-xl: 10vw;
     padding: 0 $p-grid-margin;
 
     @include p-breakpoint("xl") {
+      max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m} + #{2 * $p-grid-margin-xl});
       padding: 0 $p-grid-margin-xl;
     }
   }
