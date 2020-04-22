@@ -7,7 +7,7 @@ $p-grid-gutter-m: p-rem(36px);
 $p-grid-margin: 7vw;
 $p-grid-margin-xl: 10vw;
 
-$p-grid-max-width: 1920px;
+$p-grid-max-width: map-get($p-breakpoints, xxl);
 
 .#{$p-global-class-prefix}grid {
   $bem-block: &;
@@ -23,9 +23,8 @@ $p-grid-max-width: 1920px;
     margin: 0 (-$p-grid-gutter-m / 2);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-breakpoint("xxl") {
     max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
-    margin: 0 auto;
   }
 
   &--direction {
@@ -125,7 +124,6 @@ $p-grid-max-width: 1920px;
     padding: 0 $p-grid-margin;
 
     @include p-breakpoint("xl") {
-      max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m} + #{2 * $p-grid-margin-xl});
       padding: 0 $p-grid-margin-xl;
     }
   }
