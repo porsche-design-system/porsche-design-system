@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e --browser chrome",
+    "test:e2e": "browser=$(node tests/e2e/support/browser.js) && vue-cli-service test:e2e --browser $browser",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist",
     "start": "vue-cli-service serve",

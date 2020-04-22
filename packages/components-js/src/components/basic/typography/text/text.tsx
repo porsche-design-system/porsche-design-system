@@ -21,15 +21,15 @@ export class Text {
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
   @Prop() public tag?:
-    | 'p'
-    | 'span'
-    | 'div'
-    | 'address'
-    | 'blockquote'
-    | 'figcaption'
-    | 'cite'
-    | 'time'
-    | 'legend' = 'p';
+  | 'p'
+  | 'span'
+  | 'div'
+  | 'address'
+  | 'blockquote'
+  | 'figcaption'
+  | 'cite'
+  | 'time'
+  | 'legend' = 'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -51,7 +51,7 @@ export class Text {
 
   private textTag: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
 
     const tagName= this.element.tagName.toLowerCase();
     const style = `${tagName} a {
@@ -61,11 +61,11 @@ export class Text {
       -webkit-transition: outline-color .24s ease, color .24s ease;
       transition: outline-color .24s ease, color .24s ease;
     }
-    
+
     ${tagName} a:hover {
       color: #d5001c;
     }
-    
+
     ${tagName} a:focus {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
