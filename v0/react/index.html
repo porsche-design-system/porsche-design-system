@@ -13,7 +13,23 @@
     <title>Porsche UI Kit React</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
-    <style>
+    <style style="text/css">
+        .banner-warning {
+            height: 48px;
+            padding: 12px 16px;
+            overflow: hidden;
+            position: relative;
+            background: #ff9b00;
+            color: black;
+            border-bottom: 1px solid black;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .banner-warning p {
+            line-height: 24px;
+            margin: 0;
+        }
         /* Semantic UI Overrides */
 
         .ui.input input {
@@ -53,6 +69,7 @@
         }
 
         .ui.inverted.menu {
+            padding-top: 48px;
             background: black !important;
         }
 
@@ -131,9 +148,12 @@
         }
     </style>
 <link href="main.dcad77190f8ab88e44c0.css" rel="stylesheet"></head>
-
+<div class="banner-warning">
+    <p><b>Announcement:</b> This version of the Porsche UI Kit is outdated. Please visit the new
+        <u><a href="//designsystem.porsche.com/">Porsche Design System</a></u> to get the latest design and code!</p>
+</div>
 <body class="docs-body">
-    <div id="root">
+    <div id="root" style="margin-top: 48px">
         <!-- START initial preloader -->
         <!-- hint:
              as we all know, styles between body tags are creepy.
