@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Porsche Design System</title>
+    <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,6 +15,7 @@
         page_path: location.pathname + location.hash
       })
     </script>
+    <% } %>
     <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
