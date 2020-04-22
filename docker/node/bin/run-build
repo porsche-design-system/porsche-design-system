@@ -5,6 +5,7 @@ set -o pipefail
 
 if
   [[ "--icons" == "${1}" ]] ||
+  [[ "--fonts" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
