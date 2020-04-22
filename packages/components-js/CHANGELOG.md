@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Submit button with search icon to `p-textfield-wrapper` type search
 
 ### Changed
+- `p-grid` has a max-width of 1920px and gets centered
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
 - Cursor of Radio, Checkbox and Select
