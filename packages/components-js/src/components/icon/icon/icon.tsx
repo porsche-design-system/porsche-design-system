@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
 import { cdn, icons } from '@porsche-design-system/icons';
+import { camelCase } from 'change-case';
 
 @Component({
   tag: 'p-icon',
@@ -85,7 +86,7 @@ export class Icon {
 
   public getSource(): string {
     if (this.name && !this.source) {
-      return `${cdn}/${icons[this.name]}`;
+      return `${cdn}/${icons[camelCase(this.name)]}`;
     }
     if (this.source) {
       return this.source;

@@ -2,19 +2,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
+import { paramCase, camelCase } from 'change-case';
 
 const toHash = (str: string): string => {
   return crypto
     .createHash('md5')
     .update(str, 'utf8')
     .digest('hex');
-};
-
-const toKebabCase = (str: string): string => {
-  return str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
-    .map(x => x.toLowerCase())
-    .join('-');
 };
 
 const checkIntegrity = async (manifest: { [key: string]: { [key: string]: string; }; }): Promise<void> => {
@@ -37,11 +31,11 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     const name = path.basename(sourcePath, ext);
     const font = fs.readFileSync(sourcePath, 'utf8');
     const hash = toHash(font);
-    const filename = `${toKebabCase(name)}.min.${hash}${ext}`;
+    const filename = `${paramCase(name)}.min.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
-    if (!manifest[name]) manifest[name] = {};
-    manifest[name][ext.substring(1)] = filename;
+    if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
+    manifest[camelCase(name)][ext.substring(1)] = filename;
     fs.writeFileSync(targetPath, font);
   }
 
