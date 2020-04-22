@@ -4,7 +4,7 @@
     "target": "ES2015",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./dist/types",
     "outDir": "./dist/module"
   }
 }
