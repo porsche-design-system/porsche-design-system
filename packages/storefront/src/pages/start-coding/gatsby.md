@@ -2,8 +2,6 @@
 
 You can find the repository of the Gatsby example project here: [Sample integration Gatsby](https://github.com/porscheui/sample-integration-gatsby)
 
----
-
 ## Get the project up and running
 * Clone the repository by executing  
 `git clone https://github.com/porscheui/sample-integration-gatsby.git`
@@ -23,7 +21,7 @@ You can find the repository of the Gatsby example project here: [Sample integrat
 ---
 
 ## Reproduce on your own
-To build your own application which is provided with the Porsche Design System follow these simple steps:
+To build your own application with the components of the Porsche Design System, follow these steps:
 
 * Get the Gatsby CLI 
 ```
@@ -34,8 +32,8 @@ yarn global install gatsby-cli
 npm install -g gatsby-cli
 ```
 
-* Create a new site with ***gatsby new gatsby-site***
-* Switch to the created folder with ***cd gatsby-site***
+* Create a new site with ```gatsby new gatsby-site```
+* Switch to the created folder with ```cd gatsby-site```
 * To add TypeScript to your **Gatsby Project**, you have to install it
 ```
 // install with yarn:
@@ -53,6 +51,7 @@ module.exports = {
 }
 ```
 * To get full Typescript support, change the .js files to .ts
+* Follow the instructions at [Introduction](https://designsystem.porsche.com/v1/#/start-coding/introduction) to get the required npm package
 * Install the Porsche Design System  
 ``` 
 // install with yarn:
@@ -102,7 +101,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## Test the application
 
-To set up jest testing in in Gatsby you have to follow the instructions on how to set up jest for your project:
+To set up Jest testing in in Gatsby you have to follow the instructions on how to set up jest for your project:
 
 * Step 1: [Set up Jest for Unit testing general](https://www.gatsbyjs.org/docs/unit-testing/)
 * Step 2: [Set up to test react components](https://www.gatsbyjs.org/docs/testing-react-components/)
@@ -121,7 +120,7 @@ jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks');
 });
 ```
-You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
+You have to access the mocks in the Mock-Factory of the `jest.mock()` function. 
 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
@@ -149,7 +148,7 @@ test('renders a headline from Porsche Design System', async () => {
 });
 ```
 
-Use this solution until there is an upgrades to a newer **jsdom** version which provides support for **Web Components**.
+Use this solution until there is an upgrade to a newer **jsdom** version which provides support for **Web Components**.
 In the meantime we keep providing mocks.
  
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
