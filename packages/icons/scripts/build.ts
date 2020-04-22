@@ -4,19 +4,13 @@ import * as crypto from 'crypto';
 import * as yaml from 'js-yaml';
 import SVGO = require('svgo');
 import globby from 'globby';
+import { paramCase, camelCase } from 'change-case';
 
 const toHash = (str: string): string => {
   return crypto
     .createHash('md5')
     .update(str, 'utf8')
     .digest('hex');
-};
-
-const toKebabCase = (str: string): string => {
-  return str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
-    .map(x => x.toLowerCase())
-    .join('-');
 };
 
 const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
@@ -32,13 +26,13 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = (await svgo.optimize(svgRawData)).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
 
-    if (svgRawName !== toKebabCase(svgRawName)) throw new Error(`Icon name "${svgRawName}" does not fit naming convention »kebab-case«.`);
+    if (svgRawName !== paramCase(svgRawName)) throw new Error(`Icon name "${svgRawName}" does not fit naming convention »kebab-case«.`);
     if (svgRawName in manifest) throw new Error(`Icon name "${svgRawName}" is not unique.`);
 
-    manifest[svgRawName] = svgOptimizedFilename;
+    manifest[camelCase(svgRawName)] = svgOptimizedFilename;
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData);
 
     const svgRawSize = fs.statSync(svgRawPath).size;
