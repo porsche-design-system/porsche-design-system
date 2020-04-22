@@ -2,8 +2,6 @@
 
 You can find the repository of the NextJS example project here: [Sample integration NextJS](https://github.com/porscheui/sample-integration-nextjs)
 
----
-
 ## Get the project up and running
 * Clone the repository by executing  
 `git clone https://github.com/porscheui/sample-integration-nextjs.git`
@@ -24,7 +22,7 @@ You can find the repository of the NextJS example project here: [Sample integrat
 ---
 
 ## Reproduce on your own
-To build your own application which is provided with the Porsche Design System follow these simple steps:
+To build your own application with the components of the Porsche Design System, follow these steps:
 
 * Create a new application by executing:
 ```
@@ -56,7 +54,7 @@ npm install @porsche-design-system/components-react
 You are ready to start building your own application.
 
 The following project is the standard NextJS setup.
-Change your Index page to use at least one Porsche Design System Component, for example:
+Change your index page to use at least one Porsche Design System Component, for example:
 
 ### Index page
 
@@ -91,8 +89,8 @@ export default function Home() {
 
 ## Test the application
 
-To set up jest testing in in NextJS you have to manually set up jest in your project. You find Detailed 
-information on how to do it here: [Get Started with Jest](https://jestjs.io/docs/en/getting-started)
+To set up Jest testing in in NextJS you have to manually set up jest in your project. You find detailed 
+information here: [Get Started with Jest](https://jestjs.io/docs/en/getting-started)
 
 It is yet not possible to render our web components in **jsdom**.
 
@@ -108,7 +106,7 @@ jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks');
 });
 ```
-You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
+You have to access the mocks in the Mock-Factory of the `jest.mock()` function.
 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
@@ -136,7 +134,7 @@ test('renders a headline from Porsche Design System', async () => {
 });
 ```
 
-Use this solution until there is an upgrades to a newer **jsdom** version which provides support for **Web Components**.
+Use this solution until there is an upgrade to a newer **jsdom** version which provides support for **Web Components**.
 In the meantime we keep providing mocks.
  
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
