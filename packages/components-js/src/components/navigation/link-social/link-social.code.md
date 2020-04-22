@@ -1,10 +1,10 @@
 # Link Social
 
-The `<p-link-social>` component is a set of pre defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
+The `<p-link-social>` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
 
 ## Variants
 
-Choose between a set of pre defined social icons.
+Choose between a set of pre-defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template #configurator>
@@ -12,12 +12,12 @@ Choose between a set of pre defined social icons.
       <option selected value="logo-facebook">Facebook</option>
       <option selected value="logo-google">Google</option>
       <option value="logo-instagram">Instagram</option>
-      <option value="logo-linkedin">Linkedin</option>
+      <option value="logo-linkedin">LinkedIn</option>
       <option value="logo-pinterest">Pinterest</option>
       <option value="logo-twitter">Twitter</option>
       <option value="logo-wechat">WeChat</option>
       <option value="logo-whatsapp">WhatsApp</option>
-      <option value="logo-xing">Xing</option>
+      <option value="logo-xing">XING</option>
       <option value="logo-youtube">YouTube</option>
     </select>
   </template>
@@ -53,11 +53,11 @@ Choose between a set of pre defined social icons.
 ---
 
 ## Specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If another icon needs to be implemented, just replace the default icon with another pre-defined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="#delicious" icon="logo-delicious" :theme="theme" target="_blank" rel="nofollow noopener">Delicious</p-link-social>
+    <p-link-social href="#tumblr" icon="logo-tumblr" :theme="theme" target="_blank" rel="nofollow noopener">Delicious</p-link-social>
     <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>
   </template>
 </Playground>
@@ -72,12 +72,12 @@ If another icon needs to be implemented, just replace the default icon with anot
       <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
       <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Google</p-link-social>
       <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Instagram</p-link-social>
-      <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Linkedin</p-link-social>
+      <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">LinkedIn</p-link-social>
       <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Pinterest</p-link-social>
       <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Twitter</p-link-social>
       <p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Wechat</p-link-social>
       <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Whatsapp</p-link-social>
-      <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Xing</p-link-social>
+      <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">XING</p-link-social>
       <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Youtube</p-link-social>
     </div>
   </template>

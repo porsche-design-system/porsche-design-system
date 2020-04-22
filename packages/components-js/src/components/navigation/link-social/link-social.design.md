@@ -45,12 +45,12 @@ This variant contains an icon only with no further text information. It is highl
   <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true">Facebook</p-link-social>
   <p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true">Google</p-link-social>
   <p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true">Instagram</p-link-social>
-  <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true">Linkedin</p-link-social>
+  <p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true">LinkedIn</p-link-social>
   <p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true">Pinterest</p-link-social>
   <p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true">Twitter</p-link-social>
   <p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true">Wechat</p-link-social>
   <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true">Whatsapp</p-link-social>
-  <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true">Xing</p-link-social>
+  <p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true">XING</p-link-social>
   <p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true">Youtube</p-link-social>
 </p>
 
