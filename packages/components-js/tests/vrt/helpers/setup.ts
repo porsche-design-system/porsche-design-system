@@ -1,4 +1,3 @@
-require('dotenv').config();
 import 'jasmine';
 import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-ui/visual-regression-tester';
 import * as puppeteer from 'puppeteer';
@@ -9,7 +8,7 @@ let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
-  viewports: [320, 480, 760, 1000, 1300, 1760],
+  viewports: [320, 480, 760, 1000, 1300, 1760, 1920, 2560],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
