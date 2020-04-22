@@ -74,8 +74,8 @@
 ::slotted(textarea:disabled) {
   border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-theme-light-state-disabled !important;
+  -webkit-text-fill-color: $p-color-theme-light-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
-  opacity: 1 !important;
 }
 
 .#{$p-global-class-prefix}textarea-wrapper {
