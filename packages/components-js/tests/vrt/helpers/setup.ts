@@ -6,9 +6,10 @@ import {Browser} from 'puppeteer';
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
+let visualRegressionGridTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
-  viewports: [320, 480, 760, 1000, 1300, 1760, 1920, 2560],
+  viewports: [320, 480, 760, 1000, 1300, 1760],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
@@ -47,4 +48,15 @@ export async function getVisualRegressionOverviewTester(): Promise<VisualRegress
   }
 
   return visualRegressionOverviewTester;
+}
+
+export const getVisualRegressionGridTester = (): VisualRegressionTester => {
+  if (!visualRegressionGridTester) {
+    visualRegressionGridTester = new VisualRegressionTester(browser, {
+      ...testOptions,
+      viewports: testOptions.viewports.concat([1920, 2560])
+    });
+  }
+
+  return visualRegressionGridTester;
 }
