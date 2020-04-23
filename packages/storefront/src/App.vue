@@ -151,87 +151,267 @@
     }
   }
 
-  .form-row-spacing {
-    &-m {
-      margin-top: $p-spacing-16;
+  // form top spacing
+  .form-top-spacing {
+    margin-top: p-rem(48px);
 
-      @include p-breakpoint('m') {
-        margin-top: $p-spacing-24;
-      }
+    @include p-breakpoint('s') {
+      margin-top: p-rem(56px);
     }
-    &-l {
-      margin-top: $p-spacing-40;
 
-      @include p-breakpoint('m') {
-        margin-top: $p-spacing-56;
-      }
+    @include p-breakpoint('m') {
+      margin-top: p-rem(64px);
+    }
+
+    @include p-breakpoint('l') {
+      margin-top: p-rem(72px);
+    }
+
+    @include p-breakpoint('xl') {
+      margin-top: p-rem(80px);
     }
   }
 
-  .form-grid-item {
-    width: 100%;
+  // form bottom spacing
+  .form-bottom-spacing {
+    padding-bottom: $p-spacing-64;
 
-    + .form-grid-item {
-      margin-top: 16px;
-      @include p-breakpoint('m') {
+    @include p-breakpoint('s') {
+      padding-bottom: $p-spacing-72;
+    }
+
+    @include p-breakpoint('m') {
+      padding-bottom: $p-spacing-80;
+    }
+
+    @include p-breakpoint('l') {
+      padding-bottom: p-rem(88px);
+    }
+
+    @include p-breakpoint('xl') {
+      padding-bottom: p-rem(96px);
+    }
+  }
+
+  // form section and fieldset spacing
+  .form-section-spacing {
+    margin-top: $p-spacing-40;
+
+    @include p-breakpoint('m') {
+      margin-top: $p-spacing-48;
+    }
+  }
+
+  // form row spacing
+  .form-row-spacing {
+    margin-top: $p-spacing-16;
+    @include p-breakpoint('xs') {
+      &--xs {
+        margin-top: $p-spacing-16;
+      }
+      &--xs-zero {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('s') {
+      &--s {
+        margin-top: $p-spacing-16;
+      }
+      &--s-zero {
         margin-top: 0;
       }
     }
 
     @include p-breakpoint('m') {
-      &--s-l {
-        width: 50%;
-        padding-right: $p-layout-small;
+      &--m {
+        margin-top: $p-spacing-16;
       }
-      &--s-r {
-        width: 50%;
-        padding-left: $p-layout-small;
-      }
-      &--m-l {
-        width: 100%;
-        padding-right: $p-layout-small;
-      }
-      &--m-r {
-        width: 100%;
-        padding-left: $p-layout-small;
+      &--m-zero {
+        margin-top: 0;
       }
     }
+
     @include p-breakpoint('l') {
-      &--s-l {
-        width: 25%;
-        padding-right: $p-layout-small;
+      &--l {
+        margin-top: $p-spacing-16;
       }
-      &--s-r {
-        width: 25%;
-        padding-left: $p-layout-small;
-      }
-      &--m-l {
-        width: 33.333%;
-        padding-right: $p-layout-small;
-      }
-      &--m-r {
-        width: 33.333%;
-        padding-left: $p-layout-small;
+      &--l-zero {
+        margin-top: 0;
       }
     }
-    @include p-breakpoint('m') {
-      &--l-l {
-        width: 50%;
-        padding-right: $p-layout-small;
+
+    @include p-breakpoint('xl') {
+      &--xl {
+        margin-top: $p-spacing-16;
       }
-      &--l-r {
-        width: 50%;
-        padding-left: $p-layout-small;
-      }
-      &--xl-l {
-        width: 66.666%;
-        padding-right: $p-layout-small;
-      }
-      &--xl-r {
-        width: 66.666%;
-        padding-left: $p-layout-small;
+      &--xl-zero {
+        margin-top: 0;
       }
     }
+  }
+
+  // form grid
+  .form-grid-item-container {
+    margin-left: - $p-spacing-8;
+    margin-right: - $p-spacing-8;
+  }
+  .form-grid-item {
+    width: 100%;
+    padding-left: $p-spacing-8;
+    padding-right: $p-spacing-8;
+
+    &--quarter {
+      width: 25%;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: 25%;
+        }
+      }
+      @include p-breakpoint('s') {
+        &-s {
+          width: 25%;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: 25%;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: 25%;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: 25%;
+        }
+      }
+    }
+
+    &--third {
+      width: 33.333%;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: 33.333%;
+        }
+      }
+      @include p-breakpoint('s') {
+        &-s {
+          width: 33.333%;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: 33.333%;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: 33.333%;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: 33.333%;
+        }
+      }
+    }
+
+    &--half {
+      width: 100%;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: 50%;
+        }
+      }
+      @include p-breakpoint('s') {
+        &-s {
+          width: 50%;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: 50%;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: 50%;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: 50%;
+        }
+      }
+    }
+
+    &--two-thirds {
+      width: 66.666%;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: 66.666%;
+        }
+      }
+      @include p-breakpoint('s') {
+        &-s {
+          width: 66.666%;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: 66.666%;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: 66.666%;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: 66.666%;
+        }
+      }
+    }
+
+    &--three-quarters {
+      width: 75%;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: 75%;
+        }
+      }
+      @include p-breakpoint('s') {
+        &-s {
+          width: 75%;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: 75%;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: 75%;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: 75%;
+        }
+      }
+    }
+
+    /*+ .form-grid-item {
+      margin-top:  $p-spacing-16;
+      @include p-breakpoint('m') {
+        margin-top: 0;
+      }
+    }*/
   }
 </style>
 
