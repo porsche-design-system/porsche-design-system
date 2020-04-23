@@ -166,6 +166,7 @@
 
     #{$bem-block}__label-text ~ & {
       margin-top: p-rem(-4px);
+      padding-bottom: p-rem(8px);
     }
 
     &--disabled {
