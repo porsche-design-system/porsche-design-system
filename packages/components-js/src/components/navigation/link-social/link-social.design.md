@@ -12,14 +12,13 @@ For an optimal user guidance and dedicated pursuit of goals different types of l
 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
 
-Due to better comprehensibility and accessibility, you should preferably go for this variant.
-The length of the link always adapts to the length of the text label. 
+Due to better comprehensibility and accessibility, you should preferably go for this variant. The length of the link always adapts to the length of the text label. As for the icon, you can either choose between one of the social platform icons provided in the Porsche icon set or also use a specific icon, whereas it must refer (which should be clear) to a social platform.
 
 ### Icon only
 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true">Facebook</p-link-social>
 
-This variant contains an icon only with no further text information.
+This variant contains an icon only with no further text information. It should preferably be used e.g. for social sharing links, when the user is totally aware of the button functionality due to a clear context.
 
 ### Group
 
@@ -53,13 +52,13 @@ The Social Link covers the following states:
 ## Styling
 
 ### Icon
-The icon corresponds to the logo of the respective social platform. For the specific social icons the corresponding icon must be used.
+The icon refers to the logo of the respective social platform. For the specific social icons the corresponding icon must be used.
 
 ### Text label
 The text label within a link should always be short and descriptive.
 
-### Hover
-For the most used social icons, we use the brand color as hover state. For specific social icons, where we do not offer the brand color, the color #151718 must be used as hover (analogous to the link).
+### Hover state
+As for the social icons that are currently provided in the Porsche Design System, the background changes to the specific corporate social platform color on hover. For specific social icons, for which no brand color is currently provided in the Porsche Design System, a dark grey must be used as hover color instead (as defined for the standard [Button](#/components/action/button)/[Link](#/components/navigation/link)).
 
 
 <style scoped lang="scss">
