@@ -23,7 +23,6 @@
     "./mocks"
   ],
   "scripts": {
-    "prebuild": "cp './src/lib/components.ts' './src/lib-ssr/components.ts'",
     "build": "yarn build:components && yarn build:mocks",
     "build:components": "rm -rf './dist' && tsc -p './tsconfig.esm.json' && tsc -p './tsconfig.cjs.json'",
     "build:mocks": "rm -rf './mocks' && tsc -p './tsconfig.mocks.json'"
