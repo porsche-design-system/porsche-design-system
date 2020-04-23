@@ -31,7 +31,7 @@ afterAll(async () => {
   }
 });
 
-export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
+export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   }
@@ -39,7 +39,7 @@ export async function getVisualRegressionTester(): Promise<VisualRegressionTeste
   return visualRegressionTester;
 }
 
-export async function getVisualRegressionOverviewTester(): Promise<VisualRegressionTester> {
+export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
     visualRegressionOverviewTester = new VisualRegressionTester(browser, {
       ...testOptions,
