@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
+- Improve caching strategy for fonts by content-based hash
 - Cursor of Radio, Checkbox and Select
 - Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
 
