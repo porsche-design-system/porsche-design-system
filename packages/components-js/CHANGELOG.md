@@ -8,12 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Submit button with search icon to `p-textfield-wrapper` type search
+- Test-Projects React, Angular, Gatsby and NextJS
 
 ### Changed
 - Background color of readonly state in components `p-textfield-wrapper` and `p-textarea-wrapper`
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
 - Cursor of Radio, Checkbox and Select
+- Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
 
 ## [1.4.0-rc.0] - 2020-04-09
 
