@@ -1,6 +1,6 @@
 <Playground>
   <div class="safe-zone">
-    <p-grid class="spacing-mt-80">
+    <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Create a new Porsche account</p-headline>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
@@ -9,11 +9,11 @@
         </p-text>
       </p-grid-item>
     </p-grid>
-    <p-grid class="form-row-spacing-l">
-      <p-grid-item size="{ base: 12, m: 6 }">
+    <p-grid class="form-section-spacing">
+      <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate>
-          <p-flex wrap="{ base: 'wrap', m: 'nowrap' }">
-            <p-flex-item class="form-grid-item form-grid-item--m-l">
+          <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
+            <p-flex-item class="form-grid-item form-grid-item--third-m">
               <p-select-wrapper label="Salutation">
                 <select name="salutation">
                   <option>Choose an option</option>
@@ -23,7 +23,7 @@
                 </select>
               </p-select-wrapper>
             </p-flex-item>
-            <p-flex-item class="form-grid-item form-grid-item--m-r">
+            <p-flex-item class="form-row-spacing form-row-spacing--m-zero form-grid-item form-grid-item--third-m">
               <p-select-wrapper label="Title">
                 <select name="title">
                   <option>Choose an option</option>
@@ -34,33 +34,33 @@
               </p-select-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex wrap="{ base: 'wrap', m: 'nowrap' }" class="form-row-spacing-m">
-            <p-flex-item class="form-grid-item form-grid-item--l-l">
+          <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
+            <p-flex-item class="form-grid-item form-grid-item--half-m">
               <p-text-field-wrapper label="First name">
                 <input type="text" name="first-name">
               </p-text-field-wrapper>
             </p-flex-item>
-            <p-flex-item class="form-grid-item form-grid-item--l-r">
+            <p-flex-item class="form-row-spacing form-row-spacing--m-zero form-grid-item form-grid-item--half-m">
               <p-text-field-wrapper label="Last name">
                 <input type="text" name="last-name">
               </p-text-field-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-text-field-wrapper label="Email address" class="form-row-spacing-m">
+          <p-text-field-wrapper label="Email address" class="form-row-spacing">
             <input type="email" name="email">
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Password" class="form-row-spacing-m">
+          <p-text-field-wrapper label="Password" class="form-row-spacing">
             <input type="password" name="password">
           </p-text-field-wrapper>
-          <p-checkbox-wrapper class="form-row-spacing-l">
+          <p-checkbox-wrapper class="form-section-spacing">
             <span slot="label">I have read the <a href="#">general terms ans conditions</a> and I accept them.</span>
             <input type="checkbox" name="terms">
           </p-checkbox-wrapper>
-          <p-checkbox-wrapper class="form-row-spacing-m">
+          <p-checkbox-wrapper class="form-row-spacing">
             <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
             <input type="checkbox" name="privacy">
           </p-checkbox-wrapper>
-          <p-flex class="form-row-spacing-l">
+          <p-flex class="form-section-spacing form-bottom-spacing">
             <p-flex-item class="spacing-mr-8">
               <p-button variant="tertiary" icon="close">Cancel</p-button>
             </p-flex-item>
