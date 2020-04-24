@@ -23,7 +23,7 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   for (let file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
-    const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
+    const svgRawData = fs.readFileSync(svgRawPath, {encoding: 'utf8'});
     const svgOptimizedData = (await svgo.optimize(svgRawData)).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
     const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
@@ -33,7 +33,7 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
     if (svgRawName in manifest) throw new Error(`Icon name "${svgRawName}" is not unique.`);
 
     manifest[camelCase(svgRawName)] = svgOptimizedFilename;
-    fs.writeFileSync(svgOptimizedPath, svgOptimizedData);
+    fs.writeFileSync(svgOptimizedPath, svgOptimizedData, {encoding: 'utf8'});
 
     const svgRawSize = fs.statSync(svgRawPath).size;
     const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
@@ -53,7 +53,7 @@ export const icons = ${JSON.stringify(manifest)};`
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
   const files = await globby('./src/**/*.svg');
-  const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), 'utf8'));
+  const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), {encoding: 'utf8'}));
 
   await createManifestAndOptimizeSVG(cdn, files, config).catch(e => {
     console.error(e);

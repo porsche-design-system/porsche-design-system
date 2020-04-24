@@ -29,14 +29,14 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
     const name = path.basename(sourcePath, ext);
-    const font = fs.readFileSync(sourcePath, 'utf8');
+    const font = fs.readFileSync(sourcePath, {encoding: 'binary'});
     const hash = toHash(font);
     const filename = `${paramCase(name)}.min.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
     if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
     manifest[camelCase(name)][ext.substring(1)] = filename;
-    fs.writeFileSync(targetPath, font);
+    fs.writeFileSync(targetPath, font, {encoding: 'binary'});
   }
 
   await checkIntegrity(manifest);
