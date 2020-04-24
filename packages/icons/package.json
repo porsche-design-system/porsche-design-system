@@ -31,11 +31,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn build:svg && yarn build:tsc && yarn build:database",
-    "build:svg": "ts-node --project './tsconfig.json' './scripts/build.ts'",
-    "build:tsc": "yarn build:tsc:module && yarn build:tsc:umd",
-    "build:tsc:module": "tsc --build ./tsconfig.lib.module.json",
-    "build:tsc:umd": "tsc --build ./tsconfig.lib.umd.json",
+    "build": "yarn build:icons && yarn build:lib && yarn build:database",
+    "build:icons": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:lib": "yarn build:lib:module && yarn build:lib:umd",
+    "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
+    "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
     "build:database": "ts-node --project './tsconfig.json' './scripts/database.ts'",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
