@@ -1,4 +1,4 @@
-<Playground>
+<template>
   <div class="safe-zone">
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
@@ -60,11 +60,11 @@
             <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
             <input type="checkbox" name="privacy">
           </p-checkbox-wrapper>
-          <p-flex class="form-section-spacing form-bottom-spacing">
-            <p-flex-item class="spacing-mr-8">
-              <p-button variant="tertiary" icon="close">Cancel</p-button>
+          <p-flex class="form-section-spacing form-bottom-spacing form-grid-item-container">
+            <p-flex-item class="form-grid-item form-grid-item--auto">
+              <p-button variant="tertiary" icon="close" type="reset">Cancel</p-button>
             </p-flex-item>
-            <p-flex-item>
+            <p-flex-item class="form-grid-item form-grid-item--auto">
               <p-button type="submit">Create Porsche account</p-button>
             </p-flex-item>
           </p-flex>
@@ -72,4 +72,4 @@
       </p-grid-item>
     </p-grid>
   </div>
-</Playground>
+</template>
