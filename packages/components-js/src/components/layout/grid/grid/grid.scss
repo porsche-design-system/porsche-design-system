@@ -10,128 +10,128 @@ $p-grid-margin-xl: 10vw;
 $p-grid-max-width: map-get($p-breakpoints, xxl);
 
 .#{$p-global-class-prefix}grid {
-  $bem-block: &;
   display: flex;
-  justify-content: center;
-  overflow-x: hidden;
+  flex-wrap: wrap;
+  margin: 0 (-$p-grid-gutter / 2);
 
-  &__inner {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    margin: 0 (-$p-grid-gutter / 2);
+  @include p-breakpoint("s") {
+    margin: 0 (-$p-grid-gutter-s / 2);
+  }
+
+  @include p-breakpoint("m") {
+    margin: 0 (-$p-grid-gutter-m / 2);
+  }
+
+  @include p-breakpoint("xxl") {
+    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
+  }
+
+  &--direction {
+    &-column {
+      flex-direction: column;
+    }
+
+    &-column-reverse {
+      flex-direction: column-reverse;
+    }
+
+    &-row {
+      flex-direction: row;
+    }
+
+    &-row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    @include p-breakpoint("xs") {
+      &-column-xs {
+        flex-direction: column;
+      }
+      &-column-reverse-xs {
+        flex-direction: column-reverse;
+      }
+      &-row-xs {
+        flex-direction: row;
+      }
+      &-row-reverse-xs {
+        flex-direction: row-reverse;
+      }
+    }
 
     @include p-breakpoint("s") {
-      margin: 0 (-$p-grid-gutter-s / 2);
+      &-column-s {
+        flex-direction: column;
+      }
+      &-column-reverse-s {
+        flex-direction: column-reverse;
+      }
+      &-row-s {
+        flex-direction: row;
+      }
+      &-row-reverse-s {
+        flex-direction: row-reverse;
+      }
     }
 
     @include p-breakpoint("m") {
-      margin: 0 (-$p-grid-gutter-m / 2);
-    }
-
-    @include p-breakpoint("xxl") {
-      max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
-    }
-
-    &--direction {
-      &-column {
+      &-column-m {
         flex-direction: column;
       }
-
-      &-column-reverse {
+      &-column-reverse-m {
         flex-direction: column-reverse;
       }
-
-      &-row {
+      &-row-m {
         flex-direction: row;
       }
-
-      &-row-reverse {
+      &-row-reverse-m {
         flex-direction: row-reverse;
-      }
-
-      @include p-breakpoint("xs") {
-        &-column-xs {
-          flex-direction: column;
-        }
-        &-column-reverse-xs {
-          flex-direction: column-reverse;
-        }
-        &-row-xs {
-          flex-direction: row;
-        }
-        &-row-reverse-xs {
-          flex-direction: row-reverse;
-        }
-      }
-
-      @include p-breakpoint("s") {
-        &-column-s {
-          flex-direction: column;
-        }
-        &-column-reverse-s {
-          flex-direction: column-reverse;
-        }
-        &-row-s {
-          flex-direction: row;
-        }
-        &-row-reverse-s {
-          flex-direction: row-reverse;
-        }
-      }
-
-      @include p-breakpoint("m") {
-        &-column-m {
-          flex-direction: column;
-        }
-        &-column-reverse-m {
-          flex-direction: column-reverse;
-        }
-        &-row-m {
-          flex-direction: row;
-        }
-        &-row-reverse-m {
-          flex-direction: row-reverse;
-        }
-      }
-
-      @include p-breakpoint("l") {
-        &-column-l {
-          flex-direction: column;
-        }
-        &-column-reverse-l {
-          flex-direction: column-reverse;
-        }
-        &-row-l {
-          flex-direction: row;
-        }
-        &-row-reverse-l {
-          flex-direction: row-reverse;
-        }
-      }
-
-      @include p-breakpoint("xl") {
-        &-column-xl {
-          flex-direction: column;
-        }
-        &-column-reverse-xl {
-          flex-direction: column-reverse;
-        }
-        &-row-xl {
-          flex-direction: row;
-        }
-        &-row-reverse-xl {
-          flex-direction: row-reverse;
-        }
       }
     }
 
-    &--safe-zone {
-      padding: 0 $p-grid-margin;
-
-      @include p-breakpoint("xl") {
-        padding: 0 $p-grid-margin-xl;
+    @include p-breakpoint("l") {
+      &-column-l {
+        flex-direction: column;
       }
+      &-column-reverse-l {
+        flex-direction: column-reverse;
+      }
+      &-row-l {
+        flex-direction: row;
+      }
+      &-row-reverse-l {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include p-breakpoint("xl") {
+      &-column-xl {
+        flex-direction: column;
+      }
+      &-column-reverse-xl {
+        flex-direction: column-reverse;
+      }
+      &-row-xl {
+        flex-direction: row;
+      }
+      &-row-reverse-xl {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &--safe-zone {
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 0 $p-grid-margin;
+    margin: 0; // to override negative margins
+    max-width: inherit; // to override 1920px
+
+    > .#{$p-global-class-prefix}grid {
+      flex: 1; // for full width of wrapped grid
+    }
+
+    @include p-breakpoint("xl") {
+      padding: 0 $p-grid-margin-xl;
     }
   }
 }
