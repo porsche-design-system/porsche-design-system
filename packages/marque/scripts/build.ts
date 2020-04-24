@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
+import sharp from 'sharp';
 import { paramCase, camelCase } from 'change-case';
 
 const toHash = (str: string): string => {
@@ -15,19 +16,47 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[]): Pr
   fs.rmdirSync(path.normalize('./dist'), {recursive: true});
   fs.mkdirSync(path.normalize('./dist/marque'), {recursive: true});
 
-  const manifest: { [key: string]: string } = {};
+  const manifest: any = {};
 
   for (let file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
     const name = path.basename(sourcePath, ext);
-    const marque = fs.readFileSync(sourcePath, {encoding: 'utf8'});
-    const hash = toHash(marque);
-    const filename = `${paramCase(name)}.min.${hash}${ext}`;
-    const targetPath = path.normalize(`./dist/marque/${filename}`);
+    const marque = fs.readFileSync(sourcePath, {encoding: null});
 
-    manifest[camelCase(name)] = filename;
-    fs.writeFileSync(targetPath, marque, {encoding: 'utf8'});
+    let i = 1;
+    for (let opt of [{w: 123, h:75}, {w: 246, h:150}, {w: 369, h:225}]) {
+
+      const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
+
+      const hash = toHash(optimizedMarque.toString());
+      const filename = `${paramCase(name)}.min.${hash}@${i}x.png`;
+      const targetPath = path.normalize(`./dist/marque/${filename}`);
+
+      if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
+      if (!manifest[camelCase(name)].medium) manifest[camelCase(name)].medium = {};
+      manifest[camelCase(name)].medium[`${i}x`] = filename;
+      fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
+
+      i++;
+    }
+
+    let c = 1;
+    for (let opt of [{w: 102, h:62}, {w: 204, h:124}, {w: 306, h:186}]) {
+
+      const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
+
+      const hash = toHash(optimizedMarque.toString());
+      const filename = `${paramCase(name)}.min.${hash}@${c}x.png`;
+      const targetPath = path.normalize(`./dist/marque/${filename}`);
+
+      if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
+      if (!manifest[camelCase(name)].small) manifest[camelCase(name)].small = {};
+      manifest[camelCase(name)].small[`${c}x`] = filename;
+      fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
+
+      c++;
+    }
   }
 
   fs.writeFileSync(path.normalize('./index.ts'),
