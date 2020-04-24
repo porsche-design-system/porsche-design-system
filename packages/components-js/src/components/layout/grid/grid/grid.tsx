@@ -14,22 +14,20 @@ export class Grid {
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this. */
   @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
 
-  /** Defines whether the outer grid margin should be applied. Defaults to `false`. */
+  /** Defines whether the outer grid margin should be applied which centers the grid and applies `overflow-x: hidden;` to prevent horizontal scrolling. Defaults to `false`. */
   @Prop() public safeZone?: boolean = false;
 
   public render(): JSX.Element {
-    const gridClasses = prefix('grid');
-
-    const gridInnerClasses = cx(
-      prefix('grid__inner'),
-      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid__inner--direction', this.direction),
-      { [prefix('grid__inner--safe-zone')]: this.safeZone },
+    const gridClasses = cx(
+      prefix('grid'),
+      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction),
     );
 
-    return (<Host class={gridClasses}>
-      <div class={gridInnerClasses}>
-        <slot />
-      </div>
+    return (<Host class={cx(gridClasses, { [prefix('grid--safe-zone')]: this.safeZone })}>
+      {this.safeZone
+        ? <div class={gridClasses}><slot /></div>
+        : <slot />
+      }
     </Host>);
   }
 }
