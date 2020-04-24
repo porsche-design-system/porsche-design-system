@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/fonts",
+  "name": "@porsche-design-system/marque",
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
@@ -8,19 +8,19 @@
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
+    "Marcel Bertram <marcel.bertram@porsche.de>",
     "Stephan Schröter <stephan.schroeter@mhp.com>",
     "Oliver Hook <oliver.hook@mhp.com>",
-    "Marcel Bertram <marcel.bertram@porsche.de>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Olivia Pala <olivia.pala@udg.de>",
     "Anna Krohmer <anna.krohmer@udg.de>",
     "Melanie Kolar <melanie.kolar@udg.de>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "Porsche Fonts",
+  "description": "Porsche Marque",
   "keywords": [
     "porsche",
-    "fonts"
+    "marque"
   ],
   "homepage": "https://designsystem.porsche.com",
   "repository": {
@@ -31,8 +31,8 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn build:fonts && yarn build:lib",
-    "build:fonts": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build": "yarn build:marque && yarn build:lib",
+    "build:marque": "ts-node --project './tsconfig.json' './scripts/build.ts'",
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",

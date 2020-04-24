@@ -13,7 +13,7 @@ const toHash = (str: string): string => {
     .digest('hex');
 };
 
-const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
+const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), {recursive: true});
   fs.mkdirSync(path.normalize('./dist/icons'), {recursive: true});
 
@@ -55,7 +55,7 @@ export const icons = ${JSON.stringify(manifest)};`
   const files = await globby('./src/**/*.svg');
   const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), {encoding: 'utf8'}));
 
-  await createManifestAndOptimizeSVG(cdn, files, config).catch(e => {
+  await createManifestAndOptimizeIcons(cdn, files, config).catch(e => {
     console.error(e);
     process.exit(1);
   });
