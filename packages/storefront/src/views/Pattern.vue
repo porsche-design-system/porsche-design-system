@@ -4,10 +4,11 @@
 
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
+  import { Component as ComponentType } from "vue/types/options";
 
   @Component
   export default class Patterns extends Vue {
-    public component: any = null;
+    public component: ComponentType | null = null;
 
     private get category(): string {
       return this.$route.params.category.toLowerCase();
