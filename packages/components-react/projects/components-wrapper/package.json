@@ -24,8 +24,10 @@
   ],
   "scripts": {
     "build": "yarn build:components && yarn build:mocks",
-    "build:components": "rm -rf './dist' && tsc -p './tsconfig.esm.json' && tsc -p './tsconfig.cjs.json'",
-    "build:mocks": "rm -rf './mocks' && tsc -p './tsconfig.mocks.json'"
+    "build:components": "rm -rf './dist' && yarn build:components:module && yarn build:components:cjs",
+    "build:components:module": "tsc --build './tsconfig.esm.json'",
+    "build:components:cjs": "tsc --build './tsconfig.cjs.json'",
+    "build:mocks": "rm -rf './mocks' && tsc --build './tsconfig.mocks.json'"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "1.4.0-rc.0"
