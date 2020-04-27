@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `p-grid` has a max-width of 1920px and gets centered
+- Background color of readonly state in components `p-textfield-wrapper` and `p-textarea-wrapper`
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
 - Cursor of Radio, Checkbox and Select
