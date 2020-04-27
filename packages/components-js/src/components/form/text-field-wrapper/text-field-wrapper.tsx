@@ -155,11 +155,7 @@ export class TextFieldWrapper {
   }
 
   private togglePassword(): void {
-    if (this.input.type === 'password') {
-      this.input.type = 'text';
-    } else {
-      this.input.type = 'password';
-    }
+    this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
     this.labelClick();
   }

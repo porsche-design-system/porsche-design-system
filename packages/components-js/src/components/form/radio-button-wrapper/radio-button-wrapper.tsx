@@ -37,7 +37,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
   private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setInput();
     this.setState();
     this.bindStateListener();
@@ -49,8 +49,8 @@ export class RadioButtonWrapper {
     const labelClasses = cx(prefix('radio-button-wrapper__label'));
     const fakeRadioButtonClasses = cx(
       prefix('radio-button-wrapper__fake-radio-button'),
-      this.checked && prefix(`radio-button-wrapper__fake-radio-button--checked`),
-      this.disabled && prefix(`radio-button-wrapper__fake-radio-button--disabled`),
+      this.checked && prefix('radio-button-wrapper__fake-radio-button--checked'),
+      this.disabled && prefix('radio-button-wrapper__fake-radio-button--disabled'),
       this.state !== 'none' && prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)
     );
     const labelTextClasses = cx(

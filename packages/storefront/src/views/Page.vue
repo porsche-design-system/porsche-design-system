@@ -33,7 +33,7 @@
     }
 
     private get pages(): ComponentListImport {
-      return this.config && this.config[this.category] && this.config[this.category][this.page];
+      return this.config?.[this.category]?.[this.page];
     }
 
     @Watch('$route')

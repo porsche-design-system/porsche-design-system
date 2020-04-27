@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
-// @ts-ignore
 import { StorefrontConfig } from '@/interface';
 
 export const config: StorefrontConfig = {
@@ -29,10 +27,22 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/pages/start-coding/introduction.md`)
       ],
+      'Angular': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/angular.md`)
+      ],
       'React': [
         // @ts-ignore
         () => import(`@/pages/start-coding/react.md`)
-      ]
+      ],
+      'Nextjs':[
+        // @ts-ignore
+        () => import(`@/pages/start-coding/nextjs.md`)
+      ],
+      'Gatsby': [
+        // @ts-ignore
+        () => import(`@/pages/start-coding/gatsby.md`)
+      ],
     },
     News: {
       Updates: [
@@ -121,13 +131,13 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/pages/general/components-ready.md`)
       ],
-      'Testing': [
-        // @ts-ignore
-        () => import(`@/pages/general/testing.md`)
-      ],
       'Slotted Content': [
         // @ts-ignore
         () => import(`@/pages/general/slotted-content.md`)
+      ],
+      'Testing': [
+        // @ts-ignore
+        () => import(`@/pages/general/testing.md`)
       ]
     },
     Basic: {
@@ -139,6 +149,20 @@ export const config: StorefrontConfig = {
         Code: [
           // @ts-ignore
           () => import(`@/../../components-js/src/components/basic/color/color.code.md`)
+        ]
+      },
+      Marque: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/basic/marque/marque.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/basic/marque/marque.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/basic/marque/marque.props.md`)
         ]
       },
       Typography: {
@@ -159,20 +183,6 @@ export const config: StorefrontConfig = {
           () => import(`@/../../components-js/src/components/basic/typography/headline/headline.props.md`),
           // @ts-ignore
           () => import(`@/../../components-js/src/components/basic/typography/text/text.props.md`)
-        ]
-      },
-      Marque: {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/basic/marque/marque.design.md`)
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/basic/marque/marque.code.md`)
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/basic/marque/marque.props.md`)
         ]
       }
     },
@@ -207,18 +217,32 @@ export const config: StorefrontConfig = {
       }
     },
     Form: {
-      'Text Field': {
+      Checkbox: {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
+          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
+        ]
+      },
+      'Radio Button': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
         ]
       },
       Select: {
@@ -235,20 +259,6 @@ export const config: StorefrontConfig = {
           () => import(`@/../../components-js/src/components/form/select-wrapper/select-wrapper.props.md`)
         ]
       },
-      Checkbox: {
-        Design: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
-        ],
-        Code: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
-        ],
-        Props: [
-          // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
-        ]
-      },
       Textarea: {
         Design: [
           // @ts-ignore
@@ -263,18 +273,18 @@ export const config: StorefrontConfig = {
           () => import(`@/../../components-js/src/components/form/textarea-wrapper/textarea-wrapper.props.md`)
         ]
       },
-      'Radio Button': {
+      'Text Field': {
         Design: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
         ],
         Code: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
         ],
         Props: [
           // @ts-ignore
-          () => import(`@/../../components-js/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
+          () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
         ]
       }
     },
