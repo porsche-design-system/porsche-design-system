@@ -20,10 +20,14 @@ export class Grid {
   public render(): JSX.Element {
     const gridClasses = cx(
       prefix('grid'),
-      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction),
+      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction)
     );
 
-    return (<Host class={cx(gridClasses, { [prefix('grid--safe-zone')]: this.safeZone })}>
+    const gridSafeZoneClasses = cx(
+      prefix('grid-safe-zone'),
+    );
+
+    return (<Host class={this.safeZone ? gridSafeZoneClasses : gridClasses}>
       {this.safeZone
         ? <div class={gridClasses}><slot /></div>
         : <slot />

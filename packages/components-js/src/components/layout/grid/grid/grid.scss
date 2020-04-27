@@ -4,14 +4,40 @@ $p-grid-gutter: p-rem(16px);
 $p-grid-gutter-s: p-rem(24px);
 $p-grid-gutter-m: p-rem(36px);
 
-$p-grid-margin: 7vw;
-$p-grid-margin-xl: 10vw;
+$p-grid-safe-zone: 7vw;
+$p-grid-safe-zone-xl: 10vw;
 
 $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
+
+.#{$p-global-class-prefix}grid-safe-zone {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  margin: {
+    left: 0 !important;
+    right: 0 !important;
+  }
+  padding: {
+    left: $p-grid-safe-zone !important;
+    right: $p-grid-safe-zone !important;
+  }
+
+  @include p-breakpoint("xl") {
+    padding: {
+      left: $p-grid-safe-zone-xl !important;
+      right: $p-grid-safe-zone-xl !important;
+    }
+  }
+
+  & > .#{$p-global-class-prefix}grid {
+    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
+  }
+}
 
 .#{$p-global-class-prefix}grid {
   display: flex !important;
   flex-wrap: wrap !important;
+  width: 100% !important;
   margin: {
     left: -$p-grid-gutter / 2 !important;
     right: -$p-grid-gutter / 2 !important;
@@ -121,22 +147,6 @@ $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
       &-row-reverse-xl {
         flex-direction: row-reverse !important;
       }
-    }
-  }
-
-  &--safe-zone {
-    justify-content: center !important;
-    overflow-x: hidden !important;
-    padding: 0 $p-grid-margin !important;
-    margin: 0 !important; // to override negative margins
-    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
-
-    > .#{$p-global-class-prefix}grid {
-      flex: 1 !important; // for full width of wrapped grid
-    }
-
-    @include p-breakpoint("xl") {
-      padding: 0 $p-grid-margin-xl !important;
     }
   }
 }
