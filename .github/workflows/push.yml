@@ -251,9 +251,9 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy
-      - name: 'Slack'
-        uses: ./docker/node/
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        with:
-          entrypoint: run-slack
+#      - name: 'Slack'
+#        uses: ./docker/node/
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#        with:
+#          entrypoint: run-slack
