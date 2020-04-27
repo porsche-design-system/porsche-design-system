@@ -11,7 +11,6 @@ $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
 
 .#{$p-global-class-prefix}grid-safe-zone {
   display: flex !important;
-  flex-wrap: wrap !important;
   justify-content: center !important;
   margin: {
     left: 0 !important;
@@ -37,7 +36,8 @@ $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
 .#{$p-global-class-prefix}grid {
   display: flex !important;
   flex-wrap: wrap !important;
-  width: 100% !important;
+  flex: auto !important;
+  width: auto !important;
   margin: {
     left: -$p-grid-gutter / 2 !important;
     right: -$p-grid-gutter / 2 !important;
