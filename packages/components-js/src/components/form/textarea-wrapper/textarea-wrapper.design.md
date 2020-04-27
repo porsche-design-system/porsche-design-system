@@ -1,16 +1,13 @@
 # Textarea
 
-Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you should use the Text Field component. Textareas should always be accompanied by labels, helping the user to understand the type of input that is required.
+Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line. 
+Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
+such as a phone number or name. In this case, you should use the Text Field component. 
+Textareas should always be accompanied by labels, helping the user to understand the type of input that is required.
 
 ---
 
 ## Variants
-
-### Placeholder
-
-Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. However, using placeholder text is not recommended since users can misinterpret it as already filled in content. For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
-
-<p-textarea-wrapper label="Some label"><textarea name="some-name" placeholder="Some placeholder text"></textarea></p-textarea-wrapper>
 
 ### Pure (without label)
 
@@ -37,25 +34,27 @@ All Textareas types are available in the following states:
 ## Styling
 
 ### Label
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Input area
 Enables users to enter a multiline text.
 
 ### Width and height
-Textareas have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. In this case we recommend to adapt the Text Area to the content. For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+Textareas have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. 
+We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
+In this case we recommend to adapt the Textarea to the content. For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
 
 ### Help text
 Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Textarea the validation belongs to.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
 
 ### Spacing
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general form guideline. [Forms Guideline](#/patterns/forms)
+For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
 
 ---
 
@@ -63,20 +62,23 @@ For further information we recommend to read the general form guideline. [Forms 
 
 ### Mandatory and optional fields
 
-Generally, it’s recommended to avoid optional fields in forms due to the fact that we should not give the user the feeling of having to give information that is not absolutely necessary. That being said, we would then have to label almost every (mandatory) form field with the well-known asterisk accompanied by a global explanation (“All fields marked with * ...“). In order to give the Porsche forms a more positive connotation and for the reason that users are more likely to provide voluntary information, we  recommend to mark only optional fields by adding “(optional)” next to the input label.
+Generally, it’s recommended to avoid optional fields in forms due to the fact that we should not give the user the feeling of having to give information that is not absolutely necessary. 
+That being said, we would then have to label almost every (mandatory) form field with the well-known asterisk accompanied by a global explanation (“All fields marked with * ...“).
+ n order to give the Porsche forms a more positive connotation and for the reason that users are more likely to provide voluntary information, we  recommend to mark only optional fields by adding “(optional)” next to the input label.
 
 By doing so…
-* user feel less overwhelmed, as there are way less “(optional)” labels than there would be asterisks.
-* users do not have to read a global explanation (“All fields marked with * ...“).
-* the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
-* forms not only seem to be more positive, but also look more cleaned up in general.
+* … user feel less overwhelmed, as there are way less “(optional)” labels than there would be asterisks.
+* … users do not have to read a global explanation (“All fields marked with * ...“).
+* … the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
+* … forms not only seem to be more positive, but also look more cleaned up in general.
 
 <p-text-field-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-text-field-wrapper>
 
 
 ### Disabled state
 
-All types of Textareas are available as disabled state. However, disabled states (e.g. read only) should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
+All types of Textareas are available as disabled state. However, disabled states (e.g. read only) should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
+Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
 
 
  <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
