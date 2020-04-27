@@ -200,6 +200,17 @@
     }
   }
 
+  &__fake-option-list {
+    position: absolute;
+    left: 0;
+    top: p-rem(48px);
+    background-color: $p-color-theme-light-background;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
   &__icon {
     position: absolute;
     top: p-rem(12px);
