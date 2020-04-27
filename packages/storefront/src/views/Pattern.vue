@@ -1,20 +1,14 @@
 <template>
-  <Markdown>
-    <component :is="component" v-if="component"></component>
-  </Markdown>
+  <component :is="component" v-if="component"></component>
 </template>
 
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
-  import Markdown from '@/components/Markdown.vue';
+  import { Component as ComponentType } from "vue/types/options";
 
-  @Component({
-    components: {
-      Markdown
-    }
-  })
+  @Component
   export default class Patterns extends Vue {
-    public component: any = null;
+    public component: ComponentType | null = null;
 
     private get category(): string {
       return this.$route.params.category.toLowerCase();
@@ -36,7 +30,7 @@
     private async loadComponent(): Promise<void> {
       try {
         await this.$store.dispatch('toggleLoadingAsync', true);
-        this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.page}.md`))()).default;
+        this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.page}.vue`))()).default;
         await this.$store.dispatch('toggleLoadingAsync', false);
       } catch (e) {
        //  this.redirect();

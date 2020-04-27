@@ -106,8 +106,8 @@ export class Icon {
       <Host>
         {
           (Build.isBrowser && this.svgContent)
-          ? <i class={iconClasses} innerHTML={this.svgContent}/>
-          : <i class={iconClasses}/>
+            ? <i class={iconClasses} innerHTML={this.svgContent}/>
+            : <i class={iconClasses}/>
         }
       </Host>
     );
