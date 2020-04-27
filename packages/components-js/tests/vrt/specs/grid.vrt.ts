@@ -2,7 +2,7 @@ import 'jasmine';
 import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
 import { getVisualRegressionGridTester } from '../helpers/setup';
 
-fdescribe('Grid', () => {
+describe('Grid', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {

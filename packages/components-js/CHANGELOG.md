@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cursor of Radio, Checkbox and Select
 - Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
 
+### Fixed
+- Icon loading mechanism
+
 ## [1.4.0-rc.0] - 2020-04-09
 
 ### Added
