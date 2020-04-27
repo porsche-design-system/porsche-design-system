@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0-rc.1] - 2020-04-27
+
 ### Added
 - Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
