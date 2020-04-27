@@ -7,12 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Add `safe-zone` property to `p-grid` for outer grid margin
+- Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
 - Test-Projects React, Angular, Gatsby and NextJS
 
 ### Changed
-- `p-grid` has a max-width of 1920px and gets centered
 - Background color of readonly state in components `p-textfield-wrapper` and `p-textarea-wrapper`
 - Visual appearance of icons
 - Improve caching strategy for icons by content-based hash
