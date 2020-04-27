@@ -24,8 +24,17 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[]): Pr
     const name = path.basename(sourcePath, ext);
     const marque = fs.readFileSync(sourcePath, {encoding: null});
 
+    const options = {
+      'small': {w: 102, h: 62},
+      'medium': {w: 123, h: 75}
+    };
+
+    for (const [size, dimension] of Object.entries(options)) {
+      console.log(size, dimension);
+    }
+
     let i = 1;
-    for (let opt of [{w: 123, h:75}, {w: 246, h:150}, {w: 369, h:225}]) {
+    for (let opt of [{w: 123, h: 75}, {w: 246, h: 150}, {w: 369, h: 225}]) {
 
       const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
 
@@ -42,7 +51,7 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[]): Pr
     }
 
     let c = 1;
-    for (let opt of [{w: 102, h:62}, {w: 204, h:124}, {w: 306, h:186}]) {
+    for (let opt of [{w: 102, h: 62}, {w: 204, h: 124}, {w: 306, h: 186}]) {
 
       const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
 
