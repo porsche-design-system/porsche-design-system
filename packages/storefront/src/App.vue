@@ -406,12 +406,52 @@
       }
     }
 
-    /*+ .form-grid-item {
-      margin-top:  $p-spacing-16;
-      @include p-breakpoint('m') {
-        margin-top: 0;
+    &--auto {
+      width: auto;
+      @include p-breakpoint('xs') {
+        &-xs {
+          width: auto;
+        }
       }
-    }*/
+      @include p-breakpoint('s') {
+        &-s {
+          width: auto;
+        }
+      }
+      @include p-breakpoint('m') {
+        &-m {
+          width: auto;
+        }
+      }
+      @include p-breakpoint('l') {
+        &-l {
+          width: auto;
+        }
+      }
+      @include p-breakpoint('xl') {
+        &-xl {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  .form-fieldset {
+    display: block;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-block-start: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    padding-block-end: 0;
+
+    legend {
+      display: block;
+      font-weight: $p-font-weight-semibold;
+    }
   }
 </style>
 
