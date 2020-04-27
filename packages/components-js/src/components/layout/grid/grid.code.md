@@ -47,6 +47,23 @@ body {
   </p-grid>
 </Playground>
 
+##### Scrolling Demo
+
+In this demo you can toggle the overflow behavior of the grid's wrapping component.<br>
+<p-button @click="noScroll = !noScroll">Toggle Overflow</p-button><br>
+Current style: 
+<template v-if="!noScroll">`overflow-y: auto;`</template>
+<template v-else>`overflow-y: hidden;`</template>
+
+<Playground>
+  <div class="scrolling-demo" v-bind:class="{ 'scrolling-demo--locked': noScroll }">
+      <p-grid v-for="n, index in 11" :key="index" class="example-grid" safe-zone="true">
+        <p-grid-item :size="n">{{ n }}</p-grid-item>
+        <p-grid-item :size="12 - n">{{ 12 - n }}</p-grid-item>
+      </p-grid>
+  </div>
+</Playground>
+
 ---
 
 ### Grid offset
@@ -169,6 +186,15 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 5
 * total width of 3
 
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundGrid extends Vue {
+    public noScroll = false;
+  }
+</script>
+
 <style scoped lang="scss">
   @import '~@porsche-design-system/scss-utils/index';
   
@@ -182,6 +208,20 @@ Nesting inside columns with the following widths should be prevented, because al
     &[offset] {
       color: lightskyblue;
       text-indent: calc(-100% - 48px);
+    }
+  }
+  
+  .scrolling-demo {
+    height: 200px;
+    overflow-y: auto;
+    
+    &--locked {
+        overflow-y: hidden
+    }
+        
+    > * {
+        margin-top: $p-spacing-8;
+        &:first-child { margin-top: 0 }
     }
   }
 </style>
