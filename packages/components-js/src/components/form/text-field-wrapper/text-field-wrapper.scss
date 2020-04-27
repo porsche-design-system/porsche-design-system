@@ -195,8 +195,8 @@
     }
 
     &--readonly {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-surface;
-      background-color: $p-color-theme-light-surface;
+      box-shadow: inset 0 0 0 1px #ebebeb;
+      background-color: #ebebeb;
     }
 
     &--success {
