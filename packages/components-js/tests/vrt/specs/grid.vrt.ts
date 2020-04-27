@@ -1,12 +1,12 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
-import { getVisualRegressionTester } from '../helpers/setup';
+import { getVisualRegressionGridTester } from '../helpers/setup';
 
 describe('Grid', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionGridTester();
   });
 
   it('should have no visual regression', async () => {

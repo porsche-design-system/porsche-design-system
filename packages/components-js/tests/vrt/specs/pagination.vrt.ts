@@ -5,8 +5,8 @@ import { getVisualRegressionTester } from '../helpers/setup';
 describe('Pagination', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {

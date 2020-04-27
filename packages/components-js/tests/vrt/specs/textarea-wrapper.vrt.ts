@@ -6,8 +6,8 @@ import { redraw } from '../helpers/redraw';
 describe('Textarea Wrapper', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
