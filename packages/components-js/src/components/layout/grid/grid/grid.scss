@@ -31,116 +31,112 @@ $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
     }
   }
 
-  @include p-breakpoint("xxl") {
-    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
-  }
-
   &--direction {
     &-column {
-      flex-direction: column;
+      flex-direction: column !important;
     }
 
     &-column-reverse {
-      flex-direction: column-reverse;
+      flex-direction: column-reverse !important;
     }
 
     &-row {
-      flex-direction: row;
+      flex-direction: row !important;
     }
 
     &-row-reverse {
-      flex-direction: row-reverse;
+      flex-direction: row-reverse !important;
     }
 
     @include p-breakpoint("xs") {
       &-column-xs {
-        flex-direction: column;
+        flex-direction: column !important;
       }
       &-column-reverse-xs {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
       }
       &-row-xs {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       &-row-reverse-xs {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
       }
     }
 
     @include p-breakpoint("s") {
       &-column-s {
-        flex-direction: column;
+        flex-direction: column !important;
       }
       &-column-reverse-s {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
       }
       &-row-s {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       &-row-reverse-s {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
       }
     }
 
     @include p-breakpoint("m") {
       &-column-m {
-        flex-direction: column;
+        flex-direction: column !important;
       }
       &-column-reverse-m {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
       }
       &-row-m {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       &-row-reverse-m {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
       }
     }
 
     @include p-breakpoint("l") {
       &-column-l {
-        flex-direction: column;
+        flex-direction: column !important;
       }
       &-column-reverse-l {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
       }
       &-row-l {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       &-row-reverse-l {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
       }
     }
 
     @include p-breakpoint("xl") {
       &-column-xl {
-        flex-direction: column;
+        flex-direction: column !important;
       }
       &-column-reverse-xl {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse !important;
       }
       &-row-xl {
-        flex-direction: row;
+        flex-direction: row !important;
       }
       &-row-reverse-xl {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse !important;
       }
     }
   }
 
   &--safe-zone {
-    justify-content: center;
-    overflow-x: hidden;
-    padding: 0 $p-grid-margin;
-    margin: 0; // to override negative margins
-    max-width: inherit; // to override 1920px
+    justify-content: center !important;
+    overflow-x: hidden !important;
+    padding: 0 $p-grid-margin !important;
+    margin: 0 !important; // to override negative margins
+    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
 
     > .#{$p-global-class-prefix}grid {
-      flex: 1; // for full width of wrapped grid
+      flex: 1 !important; // for full width of wrapped grid
     }
 
     @include p-breakpoint("xl") {
-      padding: 0 $p-grid-margin-xl;
+      padding: 0 $p-grid-margin-xl !important;
     }
   }
 }
