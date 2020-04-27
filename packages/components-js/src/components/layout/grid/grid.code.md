@@ -31,7 +31,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 #### Safe Zone
 
-By appyling the `safe-zone` property you can enable the outer grid margins and center the grid.<br>
+By applying the `safe-zone` property you can enable the outer grid margins and center the grid.<br>
 Keep in mind that this will apply `overflow-x: hidden;` on the grid component in order to prevent horizontal scrolling.<br>
 If you want to prevent horizontal scrolling on a grid that goes from edge to edge you should apply this style to your `body` like 
 ```
