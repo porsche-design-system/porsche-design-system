@@ -7,23 +7,32 @@ $p-grid-gutter-m: p-rem(36px);
 $p-grid-margin: 7vw;
 $p-grid-margin-xl: 10vw;
 
-$p-grid-max-width: map-get($p-breakpoints, xxl);
+$p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
 
 .#{$p-global-class-prefix}grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 (-$p-grid-gutter / 2);
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: {
+    left: -$p-grid-gutter / 2 !important;
+    right: -$p-grid-gutter / 2 !important;
+  }
 
-  @include p-breakpoint("s") {
-    margin: 0 (-$p-grid-gutter-s / 2);
+  @include p-breakpoint("s", "m") {
+    margin: {
+      left: -$p-grid-gutter-s / 2 !important;
+      right: -$p-grid-gutter-s / 2 !important;
+    }
   }
 
   @include p-breakpoint("m") {
-    margin: 0 (-$p-grid-gutter-m / 2);
+    margin: {
+      left: -$p-grid-gutter-m / 2 !important;
+      right: -$p-grid-gutter-m / 2 !important;
+    }
   }
 
   @include p-breakpoint("xxl") {
-    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m});
+    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
   }
 
   &--direction {
