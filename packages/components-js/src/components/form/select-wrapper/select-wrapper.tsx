@@ -31,13 +31,20 @@ export class SelectWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Custom styled select data-list. */
+  @Prop() public variant?: 'native' | 'custom' = 'native';
+
   @State() private disabled: boolean;
+  @State() private fakeOptionListHidden = true;
 
   private select: HTMLSelectElement;
+  private options: NodeListOf<HTMLOptionElement>;
   private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setSelect();
+    this.variant === 'custom' && this.disableSelectDropDown();
+    this.setOptions();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
@@ -55,6 +62,10 @@ export class SelectWrapper {
       prefix('select-wrapper__fake-select'),
       this.disabled && prefix('select-wrapper__fake-select--disabled'),
       this.state !== 'none' && prefix(`select-wrapper__fake-select--${this.state}`)
+    );
+    const fakeOptionListClasses = cx(
+      prefix('select-wrapper__fake-option-list'),
+      this.fakeOptionListHidden && prefix('select-wrapper__fake-option-list--hidden')
     );
     const iconClasses = cx(
       prefix('select-wrapper__icon'),
@@ -76,6 +87,15 @@ export class SelectWrapper {
           <span class={fakeSelectClasses}>
             <p-icon class={iconClasses} name='arrow-head-down' color='inherit'/>
             <slot/>
+            {this.variant === 'custom' &&
+            <span class={fakeOptionListClasses} role="listbox" aria-activedescendant="option1" tabIndex={-1}>
+              {
+                Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
+                  <span id={key} role='option'>{option.text}</span>
+                )
+              }
+            </span>
+            }
           </span>
         </label>
         {this.isMessageVisible &&
@@ -107,6 +127,26 @@ export class SelectWrapper {
   private setSelect(): void {
     this.select = this.host.querySelector('select');
     this.select.setAttribute('aria-label', this.label);
+  }
+
+  private disableSelectDropDown(): void {
+    this.select.onmousedown = ((e) => {
+      e.preventDefault();
+      this.toggleCustomDataList();
+    });
+    this.select.onkeydown = ((e:KeyboardEvent) => {
+      if(e.code  === 'ArrowDown' || e.code === 'ArrowUp' || e.code === 'Space') {
+        e.preventDefault();
+      }
+    });
+  }
+
+  private toggleCustomDataList(): void {
+    this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+  }
+
+  private setOptions(): void  {
+    this.options = this.select.querySelectorAll('option');
   }
 
   private setState(): void {
