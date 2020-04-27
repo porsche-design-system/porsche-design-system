@@ -179,7 +179,7 @@ export namespace Components {
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
-          * Defines whether the outer grid margin should be applied which centers the grid and applies `overflow-x: hidden;` to prevent horizontal scrolling. Defaults to `false`.
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "safeZone"?: boolean;
     }
@@ -802,7 +802,7 @@ declare namespace LocalJSX {
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
-          * Defines whether the outer grid margin should be applied which centers the grid and applies `overflow-x: hidden;` to prevent horizontal scrolling. Defaults to `false`.
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "safeZone"?: boolean;
     }
