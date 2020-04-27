@@ -40,7 +40,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 #### Safe Zone
 
 Enabling the `safe-zone` property defines the outer spacings between the content area and the left and right screen
-sides, as well as centering its content.
+sides, as well as centering its content and setting a max-width.
 
 <Playground>
   <p-grid class="example-grid" safe-zone="true">
@@ -171,15 +171,6 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 5
 * total width of 3
 
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  
-  @Component
-  export default class PlaygroundGrid extends Vue {
-    public noScroll = false;
-  }
-</script>
-
 <style scoped lang="scss">
   @import '~@porsche-design-system/scss-utils/index';
   
@@ -193,20 +184,6 @@ Nesting inside columns with the following widths should be prevented, because al
     &[offset] {
       color: lightskyblue;
       text-indent: calc(-100% - 48px);
-    }
-  }
-  
-  .scrolling-demo {
-    height: 200px;
-    overflow-y: auto;
-    
-    &--locked {
-        overflow-y: hidden
-    }
-        
-    > * {
-        margin-top: $p-spacing-8;
-        &:first-child { margin-top: 0 }
     }
   }
 </style>

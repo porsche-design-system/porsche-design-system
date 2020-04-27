@@ -14,7 +14,7 @@ export class Grid {
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this. */
   @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
 
-  /** Defines whether the outer grid margin should be applied which centers the grid and applies `overflow-x: hidden;` to prevent horizontal scrolling. Defaults to `false`. */
+  /** Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width. */
   @Prop() public safeZone?: boolean = false;
 
   public render(): JSX.Element {
