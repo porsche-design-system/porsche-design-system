@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "1.4.0-rc.0",
+  "version": "1.4.0-rc.1",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -30,7 +30,7 @@
     "build:mocks": "rm -rf './mocks' && tsc --build './tsconfig.mocks.json'"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "1.4.0-rc.0"
+    "@porsche-design-system/components-js": "1.4.0-rc.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",
