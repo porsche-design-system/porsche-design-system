@@ -2,6 +2,14 @@
 
 The Porsche Design System grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](#/components/layout/flex) component is the right choice.
 
+In order to prevent horizontal scrolling it's needed to define a global CSS rule in your application, e.g.:
+
+```
+body {
+  overflow-x: hidden;
+}
+```
+
 ### Grid size
 
 Following example shows a standard grid implementation.  
@@ -31,37 +39,14 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 #### Safe Zone
 
-By applying the `safe-zone` property you can enable the outer grid margins and center the grid.<br>
-Keep in mind that this will apply `overflow-x: hidden;` on the grid component in order to prevent horizontal scrolling.<br>
-If you want to prevent horizontal scrolling on a grid that goes from edge to edge you should apply this style to your `body` like 
-```
-body {
-    overflow-x: hidden;
-}
-```
+Enabling the `safe-zone` property defines the outer spacings between the content area and the left and right screen
+sides, as well as centering its content.
 
 <Playground>
   <p-grid class="example-grid" safe-zone="true">
-    <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
-    <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="8">B</p-grid-item>
   </p-grid>
-</Playground>
-
-##### Scrolling Demo
-
-In this demo you can toggle the overflow behavior of the grid's wrapping component.<br>
-<p-button @click="noScroll = !noScroll">Toggle Overflow</p-button><br>
-Current style: 
-<template v-if="!noScroll">`overflow-y: auto;`</template>
-<template v-else>`overflow-y: hidden;`</template>
-
-<Playground>
-  <div class="scrolling-demo" v-bind:class="{ 'scrolling-demo--locked': noScroll }">
-      <p-grid v-for="n, index in 11" :key="index" class="example-grid" safe-zone="true">
-        <p-grid-item :size="n">{{ n }}</p-grid-item>
-        <p-grid-item :size="12 - n">{{ 12 - n }}</p-grid-item>
-      </p-grid>
-  </div>
 </Playground>
 
 ---
