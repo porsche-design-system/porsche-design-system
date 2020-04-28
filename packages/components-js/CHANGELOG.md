@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `Text List`
+
+## [1.4.0-rc.1] - 2020-04-27
+
+### Added
+- Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
 - Test-Projects React, Angular, Gatsby and NextJS
 
@@ -17,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve caching strategy for icons by content-based hash
 - Cursor of Radio, Checkbox and Select
 - Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
+
+### Fixed
+- Icon loading mechanism
 
 ## [1.4.0-rc.0] - 2020-04-09
 

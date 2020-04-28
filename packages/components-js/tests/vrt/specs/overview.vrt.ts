@@ -6,8 +6,8 @@ import { redraw } from '../helpers/redraw';
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionOverviewTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionOverviewTester();
   });
 
   it('should have no visual regression for basic', async () => {
