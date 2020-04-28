@@ -1,2 +1,2 @@
 // Web Components
-export * from './lib-ssr/components';
+export * from './lib/components';

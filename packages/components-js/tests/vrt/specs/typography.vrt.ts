@@ -5,8 +5,8 @@ import { getVisualRegressionOverviewTester } from '../helpers/setup';
 describe('Typography', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionOverviewTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionOverviewTester();
   });
 
   it('should have no visual regression', async () => {
