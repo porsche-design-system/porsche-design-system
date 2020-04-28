@@ -24,7 +24,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
   const manifest: Manifest = {};
   const svgo = new SVGO(config);
 
-  for (let file of files) {
+  for (const file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, {encoding: 'utf8'});
@@ -36,7 +36,9 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     if (svgRawName !== paramCase(svgRawName)) throw new Error(`Icon name "${svgRawName}" does not fit naming convention »kebab-case«.`);
     if (svgRawName in manifest) throw new Error(`Icon name "${svgRawName}" is not unique.`);
 
-    manifest[camelCase(svgRawName)] = svgOptimizedFilename;
+    const nameKey = camelCase(svgRawName);
+    manifest[nameKey] = svgOptimizedFilename;
+
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, {encoding: 'utf8'});
 
     const svgRawSize = fs.statSync(svgRawPath).size;

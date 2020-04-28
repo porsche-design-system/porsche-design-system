@@ -11,9 +11,8 @@ a 6-column-grid to avoid too much small-scaling or even „cluttering“.
 - **The grid gutter** separates the columns horizontally by in-between-spacings.
 The gutter is defined with fixed pixel sizes and breakpoints to balance size
 ratios between elements on the respective screen size. 
-- **The grid margins** define the outer spacings between the content area and the left and right screen
-sides. Grid margins are defined using percentages, going from 7% to 10% for
-screen widths larger than 1760px. 
+- **The grid safe zone** defines the outer spacings between the content area and the left and right screen
+sides. Grid safe zone is defined using percentages. By default 7% and screen widths larger than 1760px 10% is used.
 
 ![Porsche Design System grid architecture](./assets/grid-components.png)
 
