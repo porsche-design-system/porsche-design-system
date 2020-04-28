@@ -5,13 +5,6 @@ import globby from 'globby';
 import sharp from 'sharp';
 import { paramCase, camelCase } from 'change-case';
 
-interface Config {
-  [size: string]: {
-    w: number;
-    h: number;
-  };
-}
-
 interface Manifest {
   [name: string]: {
     [size: string]: {
@@ -20,6 +13,13 @@ interface Manifest {
       '3x': string;
     };
   }
+}
+
+interface Config {
+  [size: string]: {
+    w: number;
+    h: number;
+  };
 }
 
 const toHash = (str: string): string => {
@@ -53,11 +53,12 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[], con
 
         const nameKey = camelCase(name);
         const sizeKey = camelCase(size);
+        const resolutionKey = camelCase(`${i}x`);
         manifest[nameKey] = {
           ...manifest[nameKey],
           [sizeKey]: {
             ...manifest[nameKey]?.[sizeKey],
-            [`${i}x`]: filename
+            [resolutionKey]: filename
           }
         };
         fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
@@ -71,6 +72,8 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[], con
     `export const cdn = "${cdn}";
 export const marque = ${JSON.stringify(manifest)};`
   );
+
+  console.log('Created marque manifest.');
 };
 
 (async (): Promise<void> => {

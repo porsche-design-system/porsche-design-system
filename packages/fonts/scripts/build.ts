@@ -4,6 +4,13 @@ import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 
+interface Manifest {
+  [name: string]: {
+    woff: string;
+    woff2: string;
+  };
+}
+
 const toHash = (str: string): string => {
   return crypto
     .createHash('md5')
@@ -11,7 +18,7 @@ const toHash = (str: string): string => {
     .digest('hex');
 };
 
-const checkIntegrity = async (manifest: { [key: string]: { [key: string]: string; }; }): Promise<void> => {
+const checkIntegrity = async (manifest: Manifest): Promise<void> => {
   const formats = Object.values(manifest);
   for (let format of formats) {
     if (!format.woff) throw new Error('Font declaration .woff is missing in manifest.');
@@ -23,7 +30,7 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
   fs.rmdirSync(path.normalize('./dist'), {recursive: true});
   fs.mkdirSync(path.normalize('./dist/fonts'), {recursive: true});
 
-  const manifest: { [key: string]: { [key: string]: string; }; } = {};
+  const manifest: Manifest = {};
 
   for (let file of files) {
     const ext = path.extname(file);
@@ -34,9 +41,16 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     const filename = `${paramCase(name)}.min.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
-    if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
-    manifest[camelCase(name)][ext.substring(1)] = filename;
+    const nameKey = camelCase(name);
+    const formatKey = camelCase(ext.substring(1));
+    manifest[nameKey] = {
+      ...manifest[nameKey],
+      [formatKey]: filename
+    };
+
     fs.writeFileSync(targetPath, font, {encoding: 'binary'});
+
+    console.log(`Font "${name}" copied.`);
   }
 
   await checkIntegrity(manifest);
@@ -45,6 +59,8 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     `export const cdn = "${cdn}";
 export const fonts = ${JSON.stringify(manifest)};`
   );
+
+  console.log('Created fonts manifest.');
 };
 
 (async (): Promise<void> => {

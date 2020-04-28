@@ -6,6 +6,10 @@ import SVGO = require('svgo');
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 
+interface Manifest {
+  [name: string]: string;
+}
+
 const toHash = (str: string): string => {
   return crypto
     .createHash('md5')
@@ -17,7 +21,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
   fs.rmdirSync(path.normalize('./dist'), {recursive: true});
   fs.mkdirSync(path.normalize('./dist/icons'), {recursive: true});
 
-  const manifest: {[key: string]: string} = {};
+  const manifest: Manifest = {};
   const svgo = new SVGO(config);
 
   for (let file of files) {
@@ -39,7 +43,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
     const svgSizeDiff = svgOptimizedSize - svgRawSize;
 
-    console.log(`${svgRawName}: ${svgSizeDiff < 0 ? svgSizeDiff : '+'+ svgSizeDiff} bytes (size: ${svgOptimizedSize} bytes)`);
+    console.log(`Icon "${svgRawName}" optimized: ${svgSizeDiff < 0 ? svgSizeDiff : '+'+ svgSizeDiff} bytes (size: ${svgOptimizedSize} bytes)`);
 
     if (svgOptimizedSize > 3000) throw new Error(`Icon "${svgRawName}" is too large.`);
   }
@@ -48,6 +52,8 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
 `export const cdn = "${cdn}";
 export const icons = ${JSON.stringify(manifest)};`
   );
+
+  console.log('Created icons manifest.');
 };
 
 (async (): Promise<void> => {
