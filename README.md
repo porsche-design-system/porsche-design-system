@@ -167,8 +167,18 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Icons
 1. Run `./docker.sh run-build --icons`
-1. Switch to __packages/icons/dist/svg directory__
+1. Switch to __packages/icons/dist/icons directory__
 1. Provide the optimized SVG files on CDN (`https://cdn.ui.porsche.com/porsche-design-system/icons`) (should have happened before normally otherwise VRT tests are not up to date)
+
+### Fonts
+1. Run `./docker.sh run-build --fonts`
+1. Switch to __packages/fonts/dist/fonts directory__
+1. Provide the optimized font files on CDN (`https://cdn.ui.porsche.com/porsche-design-system/fonts`) (should have happened before normally otherwise VRT tests are not up to date)
+
+### Marque
+1. Run `./docker.sh run-build --marque`
+1. Switch to __packages/marque/dist/marque directory__
+1. Provide the optimized marque files on CDN (`https://cdn.ui.porsche.com/porsche-design-system/marque`) (should have happened before normally otherwise VRT tests are not up to date)
 
 ### Components JS
 1. Run `./docker.sh run-build --components-js`
