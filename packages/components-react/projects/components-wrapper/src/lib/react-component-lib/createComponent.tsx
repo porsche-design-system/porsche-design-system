@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 
 import {
   attachEventProps,
@@ -16,8 +15,12 @@ interface IonicReactInternalProps<ElementType> extends React.HTMLAttributes<Elem
 export const createReactComponent = <PropType, ElementType>(tagName: string) => {
   const displayName = dashToPascalCase(tagName);
   const ReactComponent = class extends React.Component<IonicReactInternalProps<ElementType>> {
+    
+    private ref: React.RefObject<HTMLElement>;
+    
     constructor(props: IonicReactInternalProps<ElementType>) {
       super(props);
+      this.ref = React.createRef<HTMLElement>();
     }
 
     componentDidMount() {
@@ -25,7 +28,7 @@ export const createReactComponent = <PropType, ElementType>(tagName: string) => 
     }
 
     componentDidUpdate(prevProps: IonicReactInternalProps<ElementType>) {
-      const node = ReactDom.findDOMNode(this) as HTMLElement;
+      const node = this.ref.current;
       attachEventProps(node, this.props, prevProps);
     }
 
@@ -39,7 +42,7 @@ export const createReactComponent = <PropType, ElementType>(tagName: string) => 
 
         if (isEventProp) {
           const eventName = name.substring(2).toLowerCase();
-          if (isCoveredByReact(eventName)) {
+          if (typeof document !== "undefined" && isCoveredByReact(eventName)) {
             (acc as any)[name] = (cProps as any)[name];
           }
         } else if (isDataProp || isAriaProp) {
@@ -50,7 +53,7 @@ export const createReactComponent = <PropType, ElementType>(tagName: string) => 
 
       const newProps: any = {
         ...propsToPass,
-        ref: forwardedRef,
+        ref: this.ref,
         style,
         className,
       };
