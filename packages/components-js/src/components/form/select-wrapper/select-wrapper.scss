@@ -202,12 +202,40 @@
 
   &__fake-option-list {
     position: absolute;
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
+    border-top-color: $p-color-theme-light-neutral-contrast-low;
     left: 0;
-    top: p-rem(48px);
+    right: 0;
+    top: p-rem(47px);
     background-color: $p-color-theme-light-background;
 
     &--hidden {
-      display: none;
+      display: block;
+      opacity: 0;
+      overflow: hidden;
+      height: 1px;
+    }
+  }
+
+  &__fake-option {
+    display: block;
+    padding: $p-spacing-8 p-rem(12px);
+    cursor: pointer;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &:hover {
+      color: $p-color-theme-light-state-hover;
+    }
+
+    &:focus {
+      outline: $p-color-theme-light-state-focus solid 2px !important;
+    }
+
+    &--selected {
+      color: $p-color-theme-light-state-active;
+      cursor: default;
+      pointer-events: none;
     }
   }
 

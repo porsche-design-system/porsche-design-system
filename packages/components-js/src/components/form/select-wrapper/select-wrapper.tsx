@@ -36,6 +36,7 @@ export class SelectWrapper {
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
+  @State() private optionsSelected: number;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -43,11 +44,14 @@ export class SelectWrapper {
 
   public componentWillLoad(): void {
     this.setSelect();
-    this.variant === 'custom' && this.disableSelectDropDown();
-    this.setOptions();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+
+    if (this.variant === 'custom') {
+      this.setOptions();
+      this.handleSelectEvents();
+    }
   }
 
   public render(): JSX.Element {
@@ -90,9 +94,7 @@ export class SelectWrapper {
             {this.variant === 'custom' &&
             <span class={fakeOptionListClasses} role="listbox" aria-activedescendant="option1" tabIndex={-1}>
               {
-                Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
-                  <span id={key} role='option'>{option.text}</span>
-                )
+                this.getOptions()
               }
             </span>
             }
@@ -129,24 +131,58 @@ export class SelectWrapper {
     this.select.setAttribute('aria-label', this.label);
   }
 
-  private disableSelectDropDown(): void {
-    this.select.onmousedown = ((e) => {
+  private handleSelectEvents(): void {
+    this.select.addEventListener('mousedown', (e: MouseEvent) => {
       e.preventDefault();
-      this.toggleCustomDataList();
+      this.select.focus();
+      this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     });
-    this.select.onkeydown = ((e:KeyboardEvent) => {
-      if(e.code  === 'ArrowDown' || e.code === 'ArrowUp' || e.code === 'Space') {
+    this.select.addEventListener('keydown', (e: KeyboardEvent) => {
+      if(e.code  === 'ArrowUp' || e.code === 'ArrowDown') {
         e.preventDefault();
+        this.fakeOptionListHidden = false;
+      }
+      if(e.code === 'Space') {
+        e.preventDefault();
+        this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+      }
+      if(e.code === 'Escape' || e.code === 'Enter') {
+        this.fakeOptionListHidden = true;
       }
     });
-  }
-
-  private toggleCustomDataList(): void {
-    this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+    this.select.addEventListener('blur', () => {
+      // this.fakeOptionListHidden = true;
+    });
   }
 
   private setOptions(): void  {
     this.options = this.select.querySelectorAll('option');
+    this.optionsSelected = this.select.selectedIndex;
+  }
+
+  private setSelectedOption(key: number): void {
+    this.options.forEach((item: HTMLOptionElement) => {
+      if (item.hasAttribute('selected')) {
+        item.removeAttribute('selected');
+      }
+    });
+    this.select.options[key].setAttribute('selected', 'selected');
+    this.optionsSelected = key;
+  }
+
+  private getOptions(): any {
+    return Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
+      <p-text
+        id={key}
+        role='option'
+        tag='span'
+        color='inherit'
+        class={`${prefix('select-wrapper__fake-option')} ${(key === this.optionsSelected ? prefix('select-wrapper__fake-option--selected') : '')}`}
+        onClick={() => this.setSelectedOption(key)}
+      >
+        {option.text}
+      </p-text>
+    );
   }
 
   private setState(): void {
