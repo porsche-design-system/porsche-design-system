@@ -61,6 +61,7 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[], con
             [resolutionKey]: filename
           }
         };
+
         fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
 
         console.log(`Marque "${name}" optimized as "${size}" variant in ${i}x resolution.`);

@@ -19,10 +19,9 @@ const toHash = (str: string): string => {
 };
 
 const checkIntegrity = async (manifest: Manifest): Promise<void> => {
-  const formats = Object.values(manifest);
-  for (let format of formats) {
-    if (!format.woff) throw new Error('Font declaration .woff is missing in manifest.');
-    if (!format.woff2) throw new Error('Font declaration .woff2 is missing in manifest.');
+  for (const [name, format] of Object.entries(manifest)) {
+    if (!format.woff) throw new Error(`Font declaration .woff is missing in manifest for "${name}".`);
+    if (!format.woff2) throw new Error(`Font declaration .woff2 is missing in manifest for "${name}".`);
   }
 };
 
@@ -32,7 +31,7 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
 
   const manifest: Manifest = {};
 
-  for (let file of files) {
+  for (const file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
     const name = path.basename(sourcePath, ext);

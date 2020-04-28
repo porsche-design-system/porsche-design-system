@@ -1,40 +1,37 @@
 @import "../../../../../../../packages/scss-utils/index";
 
 $p-grid-gutter: p-rem(16px);
-$p-grid-gutter-xs: p-rem(16px);
 $p-grid-gutter-s: p-rem(24px);
 $p-grid-gutter-m: p-rem(36px);
-$p-grid-gutter-l: p-rem(36px);
-$p-grid-gutter-xl: p-rem(36px);
 
 $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
 
 @mixin p-grid-item-size($i) {
-  width: #{nth($p-grid-item-width, $i)};
+  width: #{nth($p-grid-item-width, $i)} !important;
 }
 
 @mixin p-grid-item-offset($i) {
-  margin-left: #{nth($p-grid-item-width, $i)};
+  margin-left: #{nth($p-grid-item-width, $i)} !important;
 }
 
 .#{$p-global-class-prefix}grid-item {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   padding: {
-    left: $p-grid-gutter / 2;
-    right: $p-grid-gutter / 2;
+    left: $p-grid-gutter / 2 !important;
+    right: $p-grid-gutter / 2 !important;
   }
 
-  @include p-breakpoint("s") {
+  @include p-breakpoint("s", "m") {
     padding: {
-      left: $p-grid-gutter-s / 2;
-      right: $p-grid-gutter-s / 2;
+      left: $p-grid-gutter-s / 2 !important;
+      right: $p-grid-gutter-s / 2 !important;
     }
   }
 
   @include p-breakpoint("m") {
     padding: {
-      left: $p-grid-gutter-m / 2;
-      right: $p-grid-gutter-m / 2;
+      left: $p-grid-gutter-m / 2 !important;
+      right: $p-grid-gutter-m / 2 !important;
     }
   }
 

@@ -90,10 +90,13 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## Test the application
 
-**Jest** uses **jsdom**. It is not yet possible to render web components via jsdom. 
+**Jest** uses **jsdom**. It is not yet possible to render functionality of web components via **jsdom**. 
 
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
+
+The mocks must only be used if functionality of the web component is required within the test.
+As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
 To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
 
