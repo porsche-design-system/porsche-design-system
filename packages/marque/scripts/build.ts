@@ -46,7 +46,7 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[], con
 
         const width = dimension.w * i;
         const height = dimension.h * i;
-        const optimizedMarque = await sharp(marque).resize(width, height).png().toBuffer();
+        const optimizedMarque = await sharp(marque).resize(width, height).png({ quality: 100 }).toBuffer();
         const hash = toHash(optimizedMarque.toString());
         const filename = `${paramCase(name)}.min.${hash}@${i}x.png`;
         const targetPath = path.normalize(`./dist/marque/${filename}`);
@@ -81,8 +81,8 @@ export const marque = ${JSON.stringify(manifest)};`
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/marque';
   const files = await globby('./src/**/*.svg');
   const config: Config = {
-    'small': {w: 102, h: 62},
-    'medium': {w: 123, h: 75}
+    'small': {w: 100, h: 60},
+    'medium': {w: 120, h: 72}
   };
 
   await createManifestAndOptimizeMarque(cdn, files, config).catch(e => {
