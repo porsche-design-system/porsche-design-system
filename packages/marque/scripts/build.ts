@@ -5,6 +5,23 @@ import globby from 'globby';
 import sharp from 'sharp';
 import { paramCase, camelCase } from 'change-case';
 
+interface Config {
+  [size: string]: {
+    w: number;
+    h: number;
+  };
+}
+
+interface Manifest {
+  [name: string]: {
+    [size: string]: {
+      '1x': string;
+      '2x': string;
+      '3x': string;
+    };
+  }
+}
+
 const toHash = (str: string): string => {
   return crypto
     .createHash('md5')
@@ -12,11 +29,11 @@ const toHash = (str: string): string => {
     .digest('hex');
 };
 
-const createManifestAndOptimizeMarque = async (cdn: string, files: string[]): Promise<void> => {
+const createManifestAndOptimizeMarque = async (cdn: string, files: string[], config: Config): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), {recursive: true});
   fs.mkdirSync(path.normalize('./dist/marque'), {recursive: true});
 
-  const manifest: any = {};
+  const manifest: Manifest = {};
 
   for (let file of files) {
     const ext = path.extname(file);
@@ -24,47 +41,29 @@ const createManifestAndOptimizeMarque = async (cdn: string, files: string[]): Pr
     const name = path.basename(sourcePath, ext);
     const marque = fs.readFileSync(sourcePath, {encoding: null});
 
-    const options = {
-      'small': {w: 102, h: 62},
-      'medium': {w: 123, h: 75}
-    };
+    for (const [size, dimension] of Object.entries(config)) {
+      for (let i = 1; i <= 3; i++) {
 
-    for (const [size, dimension] of Object.entries(options)) {
-      console.log(size, dimension);
-    }
+        const width = dimension.w * i;
+        const height = dimension.h * i;
+        const optimizedMarque = await sharp(marque).resize(width, height).png().toBuffer();
+        const hash = toHash(optimizedMarque.toString());
+        const filename = `${paramCase(name)}.min.${hash}@${i}x.png`;
+        const targetPath = path.normalize(`./dist/marque/${filename}`);
 
-    let i = 1;
-    for (let opt of [{w: 123, h: 75}, {w: 246, h: 150}, {w: 369, h: 225}]) {
+        const nameKey = camelCase(name);
+        const sizeKey = camelCase(size);
+        manifest[nameKey] = {
+          ...manifest[nameKey],
+          [sizeKey]: {
+            ...manifest[nameKey]?.[sizeKey],
+            [`${i}x`]: filename
+          }
+        };
+        fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
 
-      const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
-
-      const hash = toHash(optimizedMarque.toString());
-      const filename = `${paramCase(name)}.min.${hash}@${i}x.png`;
-      const targetPath = path.normalize(`./dist/marque/${filename}`);
-
-      if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
-      if (!manifest[camelCase(name)].medium) manifest[camelCase(name)].medium = {};
-      manifest[camelCase(name)].medium[`${i}x`] = filename;
-      fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
-
-      i++;
-    }
-
-    let c = 1;
-    for (let opt of [{w: 102, h: 62}, {w: 204, h: 124}, {w: 306, h: 186}]) {
-
-      const optimizedMarque = await sharp(marque).resize(opt.w, opt.h).png().toBuffer();
-
-      const hash = toHash(optimizedMarque.toString());
-      const filename = `${paramCase(name)}.min.${hash}@${c}x.png`;
-      const targetPath = path.normalize(`./dist/marque/${filename}`);
-
-      if (!manifest[camelCase(name)]) manifest[camelCase(name)] = {};
-      if (!manifest[camelCase(name)].small) manifest[camelCase(name)].small = {};
-      manifest[camelCase(name)].small[`${c}x`] = filename;
-      fs.writeFileSync(targetPath, optimizedMarque, {encoding: 'utf8'});
-
-      c++;
+        console.log(`Marque "${name}" optimized as "${size}" variant in ${i}x resolution.`);
+      }
     }
   }
 
@@ -77,8 +76,12 @@ export const marque = ${JSON.stringify(manifest)};`
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/marque';
   const files = await globby('./src/**/*.svg');
+  const config: Config = {
+    'small': {w: 102, h: 62},
+    'medium': {w: 123, h: 75}
+  };
 
-  await createManifestAndOptimizeMarque(cdn, files).catch(e => {
+  await createManifestAndOptimizeMarque(cdn, files, config).catch(e => {
     console.error(e);
     process.exit(1);
   });
