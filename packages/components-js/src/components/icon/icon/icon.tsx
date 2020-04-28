@@ -78,7 +78,11 @@ export class Icon {
         this.svgContent = iconContent.get(url);
       } else {
         // async if it hasn't been loaded
-        getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
+        getSvgContent(url).then(() => {
+          if (url === this.getSource()) {
+            this.svgContent = iconContent.get(url);
+          }
+        });
       }
     }
   }

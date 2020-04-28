@@ -110,8 +110,8 @@ export class PFlexItem {
 }
 
 export declare interface PGrid extends Components.PGrid {}
-@ProxyCmp({inputs: ['direction']})
-@Component({ selector: 'p-grid', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['direction'] })
+@ProxyCmp({inputs: ['direction', 'safeZone']})
+@Component({ selector: 'p-grid', changeDetection: ChangeDetectionStrategy.OnPush, template: '<ng-content></ng-content>', inputs: ['direction', 'safeZone'] })
 export class PGrid {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
