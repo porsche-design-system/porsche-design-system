@@ -48,7 +48,7 @@ A `label` is a caption which informs the user what information a particular form
   <p-select-wrapper label="Some label" variant="custom">
     <select name="some-name">
       <option value="a">Option A</option>
-      <option value="b">Option B</option>
+      <option value="b" selected>Option B</option>
       <option value="c">Option C</option>
     </select>
   </p-select-wrapper>
