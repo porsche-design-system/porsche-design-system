@@ -1,5 +1,5 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { getSvgContent, iconContent } from './icon-request';
+import { getSvgContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
@@ -73,13 +73,11 @@ export class Icon {
   public loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
       const url = this.getSource();
-      if (iconContent.has(url)) {
-        // sync if it's already loaded
-        this.svgContent = iconContent.get(url);
-      } else {
-        // async if it hasn't been loaded
-        getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
-      }
+      getSvgContent(url).then((iconContent) => {
+        if (url === this.getSource()) {
+          this.svgContent = iconContent;
+        }
+      });
     }
   }
 
