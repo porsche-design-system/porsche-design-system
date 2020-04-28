@@ -1,0 +1,43 @@
+import { getSvgContent } from '../../../src/components/icon/icon/icon-request';
+import { cdn, svg } from '@porsche-design-system/icons';
+import { IconName } from '../../../src/types';
+
+describe('getSvgContent()', () => {
+
+  const getIconUrl = (name: IconName) => `${cdn}/${svg[name]}`;
+  const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
+  const undefinedUrl = undefined;
+
+  it('should fetch valid svg icon from remote url', async () => {
+    const result = await getSvgContent(getIconUrl('highway'));
+    expect(result.startsWith('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">')).toBeTruthy();
+  });
+
+  it('should return previously fetched and cached icon', async () => {
+    const iconUrl = getIconUrl('question');
+    // @ts-ignore
+    const spy = jest.spyOn(global, 'fetch');
+    const result1 = await getSvgContent(iconUrl);
+    expect(result1).not.toBe(undefined);
+    expect(spy).toHaveBeenCalledTimes(1);
+    const result2 = await getSvgContent(iconUrl);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(result1).toEqual(result2);
+  });
+
+  it('should return empty string for empty icon url', async () => {
+    const result = await getSvgContent(emptyIconUrl);
+    expect(result).toBe('');
+  });
+
+  it('should return ??? string for undefined url', async () => {
+    try{
+      const result = getSvgContent(undefinedUrl);
+      expect(true).toBe(false);
+      // @ts-ignore
+    }catch (e: Error) {
+       expect(e.name).toEqual('Error')
+    }
+  });
+});
+

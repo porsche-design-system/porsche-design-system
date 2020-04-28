@@ -1,5 +1,4 @@
-const config = {
+module.exports = {
   preset: '@stencil/core/testing',
+  setupFiles: ['./jest.setup.js'],
 };
-
-module.exports = config;

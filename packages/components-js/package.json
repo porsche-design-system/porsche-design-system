@@ -88,6 +88,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.0",
     "eslint-plugin-react": "^7.19.0",
     "http-server": "^0.12.1",
+    "isomorphic-fetch": "^2.2.1",
     "jasmine": "^3.5.0",
     "jest": "~24.8.0",
     "jest-cli": "~24.8.0",
