@@ -1,26 +1,40 @@
+/**
+ * TODO: Cache is shared between tests and never cleared. Evaluate solution.
+ * */
+
 import { validateContent } from './icon-validation';
 
-export const iconContent = new Map<string, string>();
-const requests = new Map<string, Promise<any>>();
+const iconCache = new Map<string, string>();
+const requestCache = new Map<string, Promise<string>>();
 
-export const getSvgContent = (url: string): Promise<string> => {
-  // see if we already have a request for this url
-  let req = requests.get(url);
+export function getSvgContent (url: string): Promise<string> {
+  let req: Promise<string>;
+  if(iconCache.has(url)){
+    req = Promise.resolve(iconCache.get(url));
+  } else {
+    // see if we already have a request for this url
+    const pendingReq: Promise<string> = requestCache.get(url);
 
-  if (req === undefined) {
-    // we don't already have a request
-    req = fetch(url).then(rsp => {
-      if (rsp.ok) {
-        return rsp.text().then(svgContent => {
-          iconContent.set(url, validateContent(svgContent));
-        });
-      }
-      iconContent.set(url, '');
-    });
+    if (!pendingReq) {
+      // we don't already have a request
+      req = fetch(url).then(rsp => {
+        if (rsp.ok) {
+          return rsp.text().then(svgContent => {
+            const validSvgContent = validateContent(svgContent);
+            iconCache.set(url, validSvgContent);
+            return validSvgContent;
+          });
+        }
+        const emptyString = '';
+        iconCache.set(url, emptyString);
+        return emptyString;
+      });
 
-    // cache for the same requests
-    requests.set(url, req);
+      // cache for the same requests
+      requestCache.set(url, req);
+    }else{
+     req = pendingReq;
+    }
   }
-
   return req;
-};
+}
