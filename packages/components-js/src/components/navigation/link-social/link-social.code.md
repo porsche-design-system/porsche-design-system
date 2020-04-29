@@ -9,8 +9,9 @@ Choose between a set of pre-defined social icons.
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template #configurator>
     <select v-model="icon" @change="getLabel">
-      <option selected value="logo-facebook">Facebook</option>
-      <option selected value="logo-google">Google</option>
+      <option disabled>Select a social platform</option>
+      <option value="logo-facebook">Facebook</option>
+      <option value="logo-google">Google</option>
       <option value="logo-instagram">Instagram</option>
       <option value="logo-linkedin">LinkedIn</option>
       <option value="logo-pinterest">Pinterest</option>
@@ -31,7 +32,7 @@ Choose between a set of pre-defined social icons.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, s: false }" :theme="theme" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
+    <p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, l: false }" :theme="theme" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
   </template>
 </Playground>
 
@@ -57,7 +58,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-social href="#tumblr" icon="logo-tumblr" :theme="theme" target="_blank" rel="nofollow noopener">Delicious</p-link-social>
+    <p-link-social href="#tumblr" icon="logo-tumblr" :theme="theme" target="_blank" rel="nofollow noopener">Tumblr</p-link-social>
     <p-link-social href="#kaixin" :icon-source="require(`./assets/icon-custom-kaixin.svg`)" hide-label="true" :theme="theme" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>
   </template>
 </Playground>
@@ -91,8 +92,8 @@ If another icon needs to be implemented, just replace the default icon with anot
 .example-grouped {
   display: grid;
   grid-template-columns: repeat(auto-fit, p-rem(48px));
-  grid-column-gap: p-rem(8px);
-  grid-row-gap: p-rem(8px);
+  grid-column-gap: $p-spacing-8;
+  grid-row-gap: $p-spacing-8;
 }
 
 // Fallback with IE11 support
@@ -100,12 +101,12 @@ If another icon needs to be implemented, just replace the default icon with anot
   &::before {
     content: "";
     display: block;
-    margin-top: p-rem(-8px);
+    margin-top: -$p-spacing-8;
   }
   > * {
-    margin-top: p-rem(8px);
+    margin-top: $p-spacing-8;
     &:not(:last-child) {
-      margin-right: p-rem(8px);
+      margin-right: $p-spacing-8;
     }
   }
 }
@@ -145,7 +146,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     public getLabel(event) {
       const options = event.target.options;
       const selectedOption = options[options.selectedIndex];
-      this.label =  selectedOption.textContent;
+      this.label = selectedOption.textContent;
     };
   }
 </script>
@@ -163,12 +164,12 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
     &::before {
       content: "";
       display: block;
-      margin-top: p-rem(-8px);
+      margin-top: -$p-spacing-8;
     }
     > * {
-      margin-top: p-rem(8px);
+      margin-top: $p-spacing-8;
       &:not(:last-child) {
-        margin-right: p-rem(8px);
+        margin-right: $p-spacing-8;
       }
     }
   }
