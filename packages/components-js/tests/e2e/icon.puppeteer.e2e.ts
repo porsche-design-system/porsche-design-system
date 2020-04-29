@@ -1,17 +1,28 @@
 
 describe('p-icon', () => {
 
-  const setRequestInterceptor = (content: string) => {
+  const iconNames = ['arrow-head-right', 'question'];
+
+  const setRequestInterceptor = (timeout = 0) => {
     page.removeAllListeners('request')
     page.on('request', (req) => {
-      if (req.url().indexOf('.svg') >= 0) {
-        // setTimeout(() => {
-        req.respond({
-          status: 200,
-          contentType: 'image/svg+xml',
-          body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${content}</svg>`,
-        });
-        // }, 2000);
+      const url = req.url();
+
+      if (url.indexOf('.svg') >= 0) {
+        const iconName = url.match(/icons\/(.*)\.min/)[1];
+        const iconIndex = iconNames.indexOf(iconName);
+        const delay = iconIndex === 0 ? timeout : 0;
+
+        console.log(`svg request, delay = ${delay}, icon = ${iconName}`)
+        if(iconIndex >= 0) {
+          setTimeout(() => {
+            req.respond({
+              status: 200,
+              contentType: 'image/svg+xml',
+              body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
+            });
+          }, delay);
+        }
       } else {
         req.continue();
       }
@@ -36,32 +47,37 @@ describe('p-icon', () => {
   it('should render', async () => {
     await page.setRequestInterception(true);
 
-    setRequestInterceptor('hi')
-    await setContentWithDesignSystem(`
-      <p-icon name="question"></p-icon>
-      <div class="test">hello</div>
-    `);
+    setRequestInterceptor(2000);
 
-    await page.content().then(console.log);
+    // render with default icon "arrow-head-right"
+    await setContentWithDesignSystem(`<p-icon></p-icon>`);
 
-    const testHtml = await page.$eval('.test', element => element.innerHTML);
-    console.log('testHtml', testHtml);
+    // check name attribute
+    const outerHTMLBefore = await page.$eval('p-icon', el => el.outerHTML);
+    console.log('outerHTMLBefore', outerHTMLBefore);
+    expect(outerHTMLBefore).not.toContain('name=');
 
-    const icon = await getInnerHTMLFromShadowRoot('p-icon','i');
-    console.log('icon', icon);
-
-    expect(testHtml).toEqual('hello');
-    expect(icon).toContain('hi');
+    // check svg content in shadow root
+    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon','i');
+    console.log('iconBefore', iconBefore);
+    expect(iconBefore).toContain('arrow-head-right');
 
     // ---
 
-    setRequestInterceptor('hello')
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
+    // change icon name to "question"
+    await page.$eval('p-icon', el => el.setAttribute('name', 'question'));
+    await page.waitForResponse(resp => resp.url().indexOf('question') && resp.status() === 200);
 
-    const icon2 = await getInnerHTMLFromShadowRoot('p-icon','i');
-    console.log('icon2', icon2);
+    // check name attribute
+    const outerHTMLAfter = await page.$eval('p-icon', el => el.outerHTML);
+    console.log('outerHTMLAfter', outerHTMLAfter);
+    expect(outerHTMLAfter).toContain('name="question"');
 
-    expect(icon2).toContain('hello');
+    // check svg content in shadow root
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon','i');
+    console.log('iconAfter', iconAfter);
+    expect(iconAfter).toContain('question');
+
   })
 
 });
