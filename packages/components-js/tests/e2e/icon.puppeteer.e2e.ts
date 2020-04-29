@@ -28,6 +28,11 @@ describe('p-icon', () => {
     { waitUntil: 'networkidle0'}
   );
 
+  const getInnerHTMLFromShadowRoot = async (documentSelector: string, shadowRootSelector: string) => {
+    const handle = await page.evaluateHandle(`document.querySelector('${documentSelector}').shadowRoot.querySelector('${shadowRootSelector}')`);
+    return handle.getProperty('innerHTML').then(x => x.jsonValue())
+  }
+
   it('should render', async () => {
     await page.setRequestInterception(true);
 
@@ -42,8 +47,7 @@ describe('p-icon', () => {
     const testHtml = await page.$eval('.test', element => element.innerHTML);
     console.log('testHtml', testHtml);
 
-    const handle = await page.evaluateHandle(`document.querySelector('p-icon').shadowRoot.querySelector('i')`);
-    const icon = await handle.getProperty('innerHTML').then(x => x.jsonValue());
+    const icon = await getInnerHTMLFromShadowRoot('p-icon','i');
     console.log('icon', icon);
 
     expect(testHtml).toEqual('hello');
@@ -54,8 +58,7 @@ describe('p-icon', () => {
     setRequestInterceptor('hello')
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
 
-    const handle2 = await page.evaluateHandle(`document.querySelector('p-icon').shadowRoot.querySelector('i')`);
-    const icon2 = await handle2.getProperty('innerHTML').then(x => x.jsonValue());
+    const icon2 = await getInnerHTMLFromShadowRoot('p-icon','i');
     console.log('icon2', icon2);
 
     expect(icon2).toContain('hello');
