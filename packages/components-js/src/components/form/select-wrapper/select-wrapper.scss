@@ -91,6 +91,7 @@
 
   &__label {
     display: block;
+    position: relative;
   }
 
   &__label-text {
@@ -206,8 +207,12 @@
     border-top-color: $p-color-theme-light-neutral-contrast-low;
     left: 0;
     right: 0;
-    top: p-rem(47px);
+    top: calc(100% - 1px);
     background-color: $p-color-theme-light-background;
+
+    &:focus {
+      outline: none;
+    }
 
     &--hidden {
       display: block;
@@ -229,7 +234,7 @@
     }
 
     &:focus {
-      outline: $p-color-theme-light-state-focus solid 2px !important;
+      outline: $p-color-theme-light-state-focus solid 2px;
     }
 
     &--selected {

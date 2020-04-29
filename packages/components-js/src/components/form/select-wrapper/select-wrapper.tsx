@@ -37,25 +37,25 @@ export class SelectWrapper {
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionsSelected: number;
+  @State() private optionsActive: number;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
   private labelId = randomString();
 
   public componentWillLoad(): void {
-    this.setSelect();
+    this.initSelect();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
 
     if (this.variant === 'custom') {
-      this.setOptions();
+      this.setOptionList();
       this.handleSelectEvents();
     }
   }
 
   public render(): JSX.Element {
-
     const labelClasses = cx(prefix('select-wrapper__label'));
     const labelTextClasses = cx(
       prefix('select-wrapper__label-text'),
@@ -82,24 +82,33 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
-          {this.isLabelVisible &&
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
-            {this.label ? this.label : <span><slot name='label'/></span>}
-          </p-text>
-          }
-          <span class={fakeSelectClasses}>
-            <p-icon class={iconClasses} name='arrow-head-down' color='inherit'/>
-            <slot/>
-            {this.variant === 'custom' &&
-            <span class={fakeOptionListClasses} role="listbox" aria-activedescendant="option1" tabIndex={-1}>
-              {
-                this.getOptions()
-              }
+        <div class={labelClasses}>
+          <label id={this.state === 'error' && this.labelId}>
+            {this.isLabelVisible &&
+            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+              {this.label ? this.label : <span><slot name='label'/></span>}
+            </p-text>
+            }
+            <span class={fakeSelectClasses}>
+              <p-icon class={iconClasses} name='arrow-head-down' color='inherit'/>
+              <slot/>
             </span>
+          </label>
+          {this.variant === 'custom' &&
+          <span
+            class={fakeOptionListClasses}
+            role='listbox'
+            aria-activedescendant={`option${this.optionsSelected}`}
+            tabIndex={0}
+            aria-expanded={this.fakeOptionListHidden ? 'true' : 'false'}
+            aria-labelledby={this.label}
+          >
+            {
+              this.createFakeOptionList()
             }
           </span>
-        </label>
+          }
+        </div>
         {this.isMessageVisible &&
         <p-text
           class={messageClasses}
@@ -126,7 +135,7 @@ export class SelectWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
-  private setSelect(): void {
+  private initSelect(): void {
     this.select = this.host.querySelector('select');
     this.select.setAttribute('aria-label', this.label);
   }
@@ -138,9 +147,14 @@ export class SelectWrapper {
       this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     });
     this.select.addEventListener('keydown', (e: KeyboardEvent) => {
-      if(e.code  === 'ArrowUp' || e.code === 'ArrowDown') {
+      if(e.code  === 'ArrowUp') {
         e.preventDefault();
         this.fakeOptionListHidden = false;
+      }
+      if(e.code === 'ArrowDown') {
+        e.preventDefault();
+        this.fakeOptionListHidden = false;
+        this.cycleFakeOptionList('down');
       }
       if(e.code === 'Space') {
         e.preventDefault();
@@ -150,17 +164,14 @@ export class SelectWrapper {
         this.fakeOptionListHidden = true;
       }
     });
-    this.select.addEventListener('blur', () => {
-      // this.fakeOptionListHidden = true;
-    });
   }
 
-  private setOptions(): void  {
+  private setOptionList(): void  {
     this.options = this.select.querySelectorAll('option');
     this.optionsSelected = this.select.selectedIndex;
   }
 
-  private setSelectedOption(key: number): void {
+  private setOptionSelected(key: number): void {
     this.options.forEach((item: HTMLOptionElement) => {
       if (item.hasAttribute('selected')) {
         item.removeAttribute('selected');
@@ -168,22 +179,30 @@ export class SelectWrapper {
     });
     this.select.options[key].setAttribute('selected', 'selected');
     this.optionsSelected = key;
+    this.fakeOptionListHidden = true;
+    this.select.focus();
   }
 
-  private getOptions(): any {
+  private createFakeOptionList(): any {
     return Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
       <p-text
-        id={key}
+        id={`option${key}`}
         role='option'
         tag='span'
         color='inherit'
         class={`${prefix('select-wrapper__fake-option')} ${(key === this.optionsSelected ? prefix('select-wrapper__fake-option--selected') : '')}`}
-        onClick={() => this.setSelectedOption(key)}
+        onClick={() => this.setOptionSelected(key)}
       >
         {option.text}
       </p-text>
     );
   }
+
+  private cycleFakeOptionList(direction: string): void {
+    if(direction === 'down') {
+      optionsActive = ++;
+    }
+  };
 
   private setState(): void {
     this.disabled = this.select.disabled;
