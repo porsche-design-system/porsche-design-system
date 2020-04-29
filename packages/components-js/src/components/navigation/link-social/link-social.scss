@@ -82,6 +82,12 @@
     background-color: $p-color-theme-light-neutral-contrast-high;
     color: $p-color-theme-dark-default;
 
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+    }
+
     &:focus {
       outline-color: $p-color-theme-light-state-focus;
     }
@@ -91,26 +97,14 @@
     background-color: $p-color-theme-dark-default;
     color: $p-color-theme-light-default;
 
+    &:hover,
+    &:active {
+      color: $p-color-theme-light-default;
+      background-color: darken($p-color-theme-dark-default, 12%);
+    }
+
     &:focus {
       outline-color: $p-color-theme-dark-state-focus;
-    }
-  }
-
-  &--logo-default {
-    &#{$bem-block}--theme-light {
-      &:hover,
-      &:active {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-      }
-    }
-
-    &#{$bem-block}--theme-dark {
-      &:hover,
-      &:active {
-        color: $p-color-theme-light-default;
-        background-color: darken($p-color-theme-dark-default, 12%);
-      }
     }
   }
 
