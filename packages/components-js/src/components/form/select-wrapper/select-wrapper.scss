@@ -242,6 +242,10 @@
       cursor: default;
       pointer-events: none;
     }
+
+    &--active {
+      color: $p-color-theme-light-state-active;
+    }
   }
 
   &__icon {
