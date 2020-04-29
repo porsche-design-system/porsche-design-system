@@ -1,8 +1,22 @@
 
 describe('p-icon', () => {
-  // beforeEach(async () => {
-  //   await page.goto('http://localhost:3333/')
-  // })
+
+  const setRequestInterceptor = (content: string) => {
+    page.removeAllListeners('request')
+    page.on('request', (req) => {
+      if (req.url().indexOf('.svg') >= 0) {
+        // setTimeout(() => {
+        req.respond({
+          status: 200,
+          contentType: 'image/svg+xml',
+          body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${content}</svg>`,
+        });
+        // }, 2000);
+      } else {
+        req.continue();
+      }
+    });
+  }
 
   const setContentWithDesignSystem = async (content: string) => await page.setContent(`
       <link href="https://cdn.ui.porsche.com/porsche-design-system/styles/v2/porsche-design-system.css" type="text/css" rel="stylesheet">
@@ -16,20 +30,8 @@ describe('p-icon', () => {
 
   it('should render', async () => {
     await page.setRequestInterception(true);
-    await page.on('request', req => {
-      if (req.url().indexOf('.svg') >= 0) {
-        // setTimeout(() => {
-        req.respond({
-          status: 200,
-          contentType: 'image/svg+xml',
-          body: '<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">hi</svg>',
-        });
-        // }, 2000);
-      } else {
-        req.continue();
-      }
-    });
 
+    setRequestInterceptor('hi')
     await setContentWithDesignSystem(`
       <p-icon name="question"></p-icon>
       <div class="test">hello</div>
@@ -37,16 +39,26 @@ describe('p-icon', () => {
 
     await page.content().then(console.log);
 
-    // const el = await page.waitForSelector('p-icon')
-
     const testHtml = await page.$eval('.test', element => element.innerHTML);
     console.log('testHtml', testHtml);
 
     const handle = await page.evaluateHandle(`document.querySelector('p-icon').shadowRoot.querySelector('i')`);
-    console.log('icon', await handle.getProperty('innerHTML').then(x => x.jsonValue()))
+    const icon = await handle.getProperty('innerHTML').then(x => x.jsonValue());
+    console.log('icon', icon);
 
-    // expect(el).not.toBe(null);
     expect(testHtml).toEqual('hello');
+    expect(icon).toContain('hi');
+
+    // ---
+
+    setRequestInterceptor('hello')
+    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
+
+    const handle2 = await page.evaluateHandle(`document.querySelector('p-icon').shadowRoot.querySelector('i')`);
+    const icon2 = await handle2.getProperty('innerHTML').then(x => x.jsonValue());
+    console.log('icon2', icon2);
+
+    expect(icon2).toContain('hello');
   })
 
 });
