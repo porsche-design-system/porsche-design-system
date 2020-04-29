@@ -8,11 +8,11 @@ For an optimal user guidance and dedicated pursuit of goals different types of l
 
 ## Variants
 
-### Icon and text
+### Icon and label
 
 <p-link-social href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
 
-Due to better comprehensibility and accessibility, you should preferably go for this variant. The length of the link always adapts to the length of the text label. As for the icon, you can either choose between one of the social platform icons provided in the Porsche icon set or also use a specific icon, whereas it must refer (which should be clear) to a social platform.
+Due to better comprehensibility and accessibility, you should preferably go for this variant. The length of the link always adapts to the length of the label. As for the icon, you can either choose between one of the social platform icons provided in the Porsche icon set or also use a specific icon, whereas it must refer (which should be clear) to a social platform.
 
 ### Icon only
 
@@ -54,8 +54,8 @@ The Social Link covers the following states:
 ### Icon
 The icon refers to the logo of the respective social platform. For the specific social icons the corresponding icon must be used.
 
-### Text label
-The text label within a link should always be short and descriptive.
+### Label
+The label within a link should always be short and descriptive.
 
 ### Hover state
 As for the social icons that are currently provided in the Porsche Design System, the background changes to the specific corporate social platform color on hover. For specific social icons, for which no brand color is currently provided in the Porsche Design System, a dark grey must be used as hover color instead (as defined for the standard [Button](#/components/action/button)/[Link](#/components/navigation/link)).
