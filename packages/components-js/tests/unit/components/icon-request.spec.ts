@@ -30,7 +30,7 @@ describe('getSvgContent()', () => {
     expect(result).toBe('');
   });
 
-  it('should return ??? string for undefined url', async () => {
+  it('should throw error if url is undefined', async () => {
     try{
       const result = getSvgContent(undefinedUrl);
       expect(true).toBe(false);
