@@ -36,8 +36,8 @@ export class SelectWrapper {
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
-  @State() private optionsSelected: number;
-  @State() private optionsActive: number;
+  @State() private optionSelected: number;
+  @State() private optionActive: number;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -52,6 +52,7 @@ export class SelectWrapper {
     if (this.variant === 'custom') {
       this.setOptionList();
       this.handleSelectEvents();
+      this.optionActive = this.optionSelected;
     }
   }
 
@@ -98,7 +99,7 @@ export class SelectWrapper {
           <span
             class={fakeOptionListClasses}
             role='listbox'
-            aria-activedescendant={`option${this.optionsSelected}`}
+            aria-activedescendant={`option${this.optionSelected}`}
             tabIndex={0}
             aria-expanded={this.fakeOptionListHidden ? 'true' : 'false'}
             aria-labelledby={this.label}
@@ -150,6 +151,7 @@ export class SelectWrapper {
       if(e.code  === 'ArrowUp') {
         e.preventDefault();
         this.fakeOptionListHidden = false;
+        this.cycleFakeOptionList('up');
       }
       if(e.code === 'ArrowDown') {
         e.preventDefault();
@@ -159,8 +161,15 @@ export class SelectWrapper {
       if(e.code === 'Space') {
         e.preventDefault();
         this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+        if(this.fakeOptionListHidden) {
+          this.setOptionSelected(this.optionActive);
+        }
       }
-      if(e.code === 'Escape' || e.code === 'Enter') {
+      if(e.code === 'Enter') {
+        this.fakeOptionListHidden = true;
+        this.setOptionSelected(this.optionActive);
+      }
+      if(e.code === 'Escape') {
         this.fakeOptionListHidden = true;
       }
     });
@@ -168,7 +177,7 @@ export class SelectWrapper {
 
   private setOptionList(): void  {
     this.options = this.select.querySelectorAll('option');
-    this.optionsSelected = this.select.selectedIndex;
+    this.optionSelected = this.select.selectedIndex;
   }
 
   private setOptionSelected(key: number): void {
@@ -178,7 +187,7 @@ export class SelectWrapper {
       }
     });
     this.select.options[key].setAttribute('selected', 'selected');
-    this.optionsSelected = key;
+    this.optionSelected = key;
     this.fakeOptionListHidden = true;
     this.select.focus();
   }
@@ -190,7 +199,11 @@ export class SelectWrapper {
         role='option'
         tag='span'
         color='inherit'
-        class={`${prefix('select-wrapper__fake-option')} ${(key === this.optionsSelected ? prefix('select-wrapper__fake-option--selected') : '')}`}
+        class={`
+          ${prefix('select-wrapper__fake-option')}
+          ${(key === this.optionSelected ? prefix('select-wrapper__fake-option--selected') : '')}
+          ${this.optionActive === key && prefix('select-wrapper__fake-option--active')}
+        `}
         onClick={() => this.setOptionSelected(key)}
       >
         {option.text}
@@ -200,7 +213,16 @@ export class SelectWrapper {
 
   private cycleFakeOptionList(direction: string): void {
     if(direction === 'down') {
-      optionsActive = ++;
+      this.optionActive++;
+    }
+    if(direction === 'up') {
+      this.optionActive--;
+    }
+    if (this.optionActive < 0) {
+      this.optionActive = this.options.length-1;
+    }
+    if (this.optionActive > this.options.length-1) {
+      this.optionActive = 0;
     }
   };
 
