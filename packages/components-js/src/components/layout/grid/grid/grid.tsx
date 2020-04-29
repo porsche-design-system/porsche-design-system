@@ -15,7 +15,7 @@ export class Grid {
   @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
 
   /** Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width. */
-  @Prop() public safeZone?: boolean = false;
+  @Prop() public safeZone?: 'none' | 'basic' | 'enhance' = 'none';
 
   public render(): JSX.Element {
     const gridClasses = cx(
@@ -25,13 +25,23 @@ export class Grid {
 
     const gridSafeZoneClasses = cx(
       prefix('grid-safe-zone'),
+      prefix(`grid-safe-zone--${this.safeZone}`)
     );
 
-    return (<Host class={this.safeZone ? gridSafeZoneClasses : gridClasses}>
-      {this.safeZone
-        ? <div class={gridClasses}><slot /></div>
-        : <slot />
-      }
+    if (this.addSafeZoneWrapper()) {
+      return (<Host class={gridSafeZoneClasses}>
+        <div class={gridClasses}>
+          <slot/>
+        </div>
+      </Host>);
+    }
+
+    return (<Host class={gridClasses}>
+      <slot />
     </Host>);
+  }
+
+  private addSafeZoneWrapper(): boolean {
+    return ['basic', 'enhance'].includes(this.safeZone);
   }
 }
