@@ -1,4 +1,3 @@
-require('dotenv').config();
 import 'jasmine';
 import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-ui/visual-regression-tester';
 import * as puppeteer from 'puppeteer';
@@ -7,6 +6,7 @@ import {Browser} from 'puppeteer';
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
+let visualRegressionGridTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -31,7 +31,7 @@ afterAll(async () => {
   }
 });
 
-export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
+export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   }
@@ -39,7 +39,7 @@ export async function getVisualRegressionTester(): Promise<VisualRegressionTeste
   return visualRegressionTester;
 }
 
-export async function getVisualRegressionOverviewTester(): Promise<VisualRegressionTester> {
+export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
     visualRegressionOverviewTester = new VisualRegressionTester(browser, {
       ...testOptions,
@@ -48,4 +48,15 @@ export async function getVisualRegressionOverviewTester(): Promise<VisualRegress
   }
 
   return visualRegressionOverviewTester;
+}
+
+export const getVisualRegressionGridTester = (): VisualRegressionTester => {
+  if (!visualRegressionGridTester) {
+    visualRegressionGridTester = new VisualRegressionTester(browser, {
+      ...testOptions,
+      viewports: testOptions.viewports.concat([1920, 2560])
+    });
+  }
+
+  return visualRegressionGridTester;
 }

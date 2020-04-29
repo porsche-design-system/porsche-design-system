@@ -106,10 +106,13 @@ To set up Jest testing in in Gatsby you have to follow the instructions on how t
 * Step 1: [Set up Jest for Unit testing general](https://www.gatsbyjs.org/docs/unit-testing/)
 * Step 2: [Set up to test react components](https://www.gatsbyjs.org/docs/testing-react-components/)
 
-It is yet not possible to render our web components in **jsdom**.
+**Jest** uses **jsdom**.It is yet not possible to render the functionality of web components in **jsdom**.
 
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
+
+The mocks must only be used if functionality of the web component is required within the test.
+As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
 To consume the mocks you can set them up via your **setup-test-env.js** file in your root folder and copy the following snippet into the setup file.
 
