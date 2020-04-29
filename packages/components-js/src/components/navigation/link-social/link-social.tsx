@@ -78,7 +78,7 @@ export class LinkSocial {
     const linkClasses = cx(
       prefix('link-social'),
       mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
-      this.iconWithColor ? prefix(`link-social--${this.icon}`) : prefix('link-social--logo-default'),
+      prefix(`link-social--${this.icon}`),
       prefix(`link-social--theme-${this.theme}`)
     );
     const iconClasses = prefix('link-social__icon');
@@ -106,11 +106,6 @@ export class LinkSocial {
         </p-text>
       </TagType>
     );
-  }
-
-  private get iconWithColor(): boolean {
-    const coloredVariants = ['logo-facebook', 'logo-google', 'logo-instagram', 'logo-linkedin', 'logo-pinterest', 'logo-twitter', 'logo-wechat', 'logo-whatsapp', 'logo-xing', 'logo-youtube'];
-    return coloredVariants.includes(this.icon) && true;
   }
 
   private addSlottedStyles(): void {
