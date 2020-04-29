@@ -1,7 +1,7 @@
 @import '../../../../../../packages/scss-utils/index';
 
 @mixin p-link-social-with-label() {
-  padding: p-rem(11px) p-rem(15px) p-rem(11px) p-rem(39px);
+  padding: p-rem(12px) p-rem(16px) p-rem(12px) p-rem(40px);
 }
 
 @mixin p-link-social-without-label() {
@@ -35,8 +35,8 @@
 }
 
 @mixin p-link-social-icon-with-label() {
-  left: p-rem(11px);
-  top: p-rem(11px);
+  left: p-rem(12px);
+  top: p-rem(12px);
   transform: translateX(0) translateY(0);
 }
 
