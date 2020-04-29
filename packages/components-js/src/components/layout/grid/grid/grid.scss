@@ -16,20 +16,29 @@ $p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
     left: 0 !important;
     right: 0 !important;
   }
-  padding: {
-    left: $p-grid-safe-zone !important;
-    right: $p-grid-safe-zone !important;
-  }
 
-  @include p-breakpoint("xl") {
+  &--basic {
     padding: {
-      left: $p-grid-safe-zone-xl !important;
-      right: $p-grid-safe-zone-xl !important;
+      left: $p-grid-safe-zone !important;
+      right: $p-grid-safe-zone !important;
+    }
+
+    @include p-breakpoint("xl") {
+      padding: {
+        left: $p-grid-safe-zone-xl !important;
+        right: $p-grid-safe-zone-xl !important;
+      }
+    }
+
+    & > .#{$p-global-class-prefix}grid {
+      max-width: p-rem(1536px) !important;
     }
   }
 
-  & > .#{$p-global-class-prefix}grid {
-    max-width: calc(#{$p-grid-max-width} + #{$p-grid-gutter-m}) !important;
+  &--enhance {
+    & > .#{$p-global-class-prefix}grid {
+      max-width: p-rem(1920px) !important;
+    }
   }
 }
 

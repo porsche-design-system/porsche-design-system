@@ -42,8 +42,43 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 Enabling the `safe-zone` property defines the outer spacings between the content area and the left and right screen
 sides, as well as centering its content and setting a max-width.
 
+* **None**: full-width
+* **Basic**: for max viewport width 1920px with 7-10% safe-zone
+* **Enhance**: for max viewport width 1920px
+
 <Playground>
-  <p-grid class="example-grid" safe-zone="true">
+  <template #configurator>
+    <select v-model="safeZone">
+      <option disabled>Select a safe-zone mode</option>
+      <option selected value="none">None</option>
+      <option value="basic">Basic</option>
+      <option value="enhance">Enhance</option>
+    </select>
+  </template>
+  <template>
+    <p-grid class="example-grid" :safe-zone="safeZone">
+      <p-grid-item size="4">A</p-grid-item>
+      <p-grid-item size="8">B</p-grid-item>
+    </p-grid>
+  </template>
+</Playground>
+
+<Playground>
+  <p-grid class="example-grid" safe-zone="none">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="8">B</p-grid-item>
+  </p-grid>
+</Playground>
+
+<Playground>
+  <p-grid class="example-grid" safe-zone="basic">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="8">B</p-grid-item>
+  </p-grid>
+</Playground>
+
+<Playground>
+  <p-grid class="example-grid" safe-zone="enhance">
     <p-grid-item size="4">A</p-grid-item>
     <p-grid-item size="8">B</p-grid-item>
   </p-grid>
@@ -170,6 +205,15 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 7
 * total width of 5
 * total width of 3
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundGrid extends Vue {
+    public safeZone: string = 'none';
+  }
+</script>
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/scss-utils/index';
