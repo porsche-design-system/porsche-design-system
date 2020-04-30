@@ -1,4 +1,4 @@
 module.exports = {
-  preset: ['@stencil/core/testing', 'jest-puppeteer'],
+  preset: ['@stencil/core/testing'],
   setupFiles: ['./jest.setup.js'],
 };
