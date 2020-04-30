@@ -22,20 +22,26 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render without label">
-  <p-text-field-wrapper label="Some label" hide-label="true">
+<div class="playground light" title="should render with label, description and placeholder">
+  <p-text-field-wrapper label="Some label" description="Some description">
+    <input type="text" name="some-name" placeholder="Some placeholder"/>
+  </p-text-field-wrapper>
+</div>
+
+<div class="playground light" title="should render without label and without description">
+  <p-text-field-wrapper label="Some label" description="Some description" hide-label="true">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with responsive label">
-  <p-text-field-wrapper label="Some label" hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+<div class="playground light" title="should render with responsive label and description">
+  <p-text-field-wrapper label="Some label" description="Some description" hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
     <input type="text" name="some-name"/>
   </p-text-field-wrapper>
 </div>
 
 <div class="playground light" title="should render with disabled state">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" disabled="disabled"/>
   </p-text-field-wrapper>
 </div>
@@ -47,7 +53,7 @@
 </div>
 
 <div class="playground light" title="should render with readonly state">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" description="Some description">
     <input type="text" name="some-name" value="Some value" readonly="readonly"/>
   </p-text-field-wrapper>
 </div>
@@ -158,24 +164,26 @@
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render label and message by slotted content with error state">
+<div class="playground light" title="should render label, description and message by slotted content with error state">
   <p-text-field-wrapper state="error">
     <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+    <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
     <input type="text" name="some-name" placeholder="Some placeholder"/>
     <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render label and message by slotted content with success state">
+<div class="playground light" title="should render label, description and message by slotted content with success state">
   <p-text-field-wrapper state="success">
     <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+    <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
     <input type="text" name="some-name" placeholder="Some placeholder"/>
     <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
   </p-text-field-wrapper>
 </div>
 
-<div class="playground light" title="should render with multiline label/message and cut off too long option text">
-  <p-text-field-wrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" state="error" message="At vero eos et accusam et justo duo dolores et ea rebum." style="width: 240px;">
+<div class="playground light" title="should render with multiline label, description and message and cut off too long option text">
+  <p-text-field-wrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet" state="error" message="At vero eos et accusam et justo duo dolores et ea rebum." style="width: 240px;">
     <input type="text" name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"/>
   </p-text-field-wrapper>
 </div>

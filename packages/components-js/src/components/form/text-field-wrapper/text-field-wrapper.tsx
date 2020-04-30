@@ -6,7 +6,6 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  randomString,
   handleButtonEvent
 } from '../../../utils';
 import { ButtonType, FormState } from '../../../types';
@@ -23,13 +22,16 @@ export class TextFieldWrapper {
   /** The label text. */
   @Prop() public label?: string = '';
 
+  /** The description text. */
+  @Prop() public description?: string = '';
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   @State() private disabled: boolean;
@@ -40,15 +42,19 @@ export class TextFieldWrapper {
   private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
   private isInputTypeSearch: boolean;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setInput();
+    this.setAriaAttributes();
     this.setState();
     this.updatePasswordToggleable();
     this.initInputTypeSearch();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -59,6 +65,11 @@ export class TextFieldWrapper {
       prefix('text-field-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('text-field-wrapper__label-text--disabled')
+    );
+    const descriptionTextClasses = cx(
+      prefix('text-field-wrapper__description-text'),
+      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('text-field-wrapper__description-text--disabled')
     );
     const fakeInputClasses = cx(
       prefix('text-field-wrapper__fake-input'),
@@ -74,11 +85,16 @@ export class TextFieldWrapper {
 
     return (
       <Host>
-        <span class={containerClasses}>
-          <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <div class={containerClasses}>
+          <label class={labelClasses}>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
+            </p-text>
+            }
+            {this.isDescriptionVisible &&
+            <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+              {this.description ? this.description : <span><slot name='description'/></span>}
             </p-text>
             }
             <span class={fakeInputClasses}>
@@ -100,13 +116,12 @@ export class TextFieldWrapper {
             <p-icon name='search' color='inherit'/>
           </button>
           }
-        </span>
+        </div>
         {this.isMessageVisible &&
         <p-text
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -119,6 +134,10 @@ export class TextFieldWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
+  private get isDescriptionVisible(): boolean {
+    return !!this.description || !!this.host.querySelector('[slot="description"]');
+  }
+
   private get isMessageDefined(): boolean {
     return !!this.message || !!this.host.querySelector('[slot="message"]');
   }
@@ -129,7 +148,29 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input');
-    this.input.setAttribute('aria-label', this.label);
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
+    }
+    else if (this.label && this.description) {
+      this.input.setAttribute('aria-label', `${this.label}. ${this.description}`);
+    }
+    else if (this.label) {
+      this.input.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.input.setAttribute('aria-invalid', 'true');
+    } else {
+      this.input.removeAttribute('aria-invalid');
+    }
   }
 
   private setState(): void {
