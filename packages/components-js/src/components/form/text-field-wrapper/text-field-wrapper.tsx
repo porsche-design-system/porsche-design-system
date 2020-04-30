@@ -157,10 +157,10 @@ export class TextFieldWrapper {
    */
   private setAriaAttributes(): void {
     if (this.label && this.message) {
-      this.input.setAttribute('aria-label', this.label + '. ' + this.message);
+      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
     }
     else if (this.label && this.description) {
-      this.input.setAttribute('aria-label', this.label + '. ' + this.description);
+      this.input.setAttribute('aria-label', `${this.label}. ${this.description}`);
     }
     else if (this.label) {
       this.input.setAttribute('aria-label', this.label);

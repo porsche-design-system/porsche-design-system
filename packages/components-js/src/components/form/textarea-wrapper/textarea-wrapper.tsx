@@ -131,10 +131,10 @@ export class TextareaWrapper {
    */
   private setAriaAttributes(): void {
     if (this.label && this.message) {
-      this.textarea.setAttribute('aria-label', this.label + '. ' + this.message);
+      this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
     }
     else if (this.label && this.description) {
-      this.textarea.setAttribute('aria-label', this.label + '. ' + this.description);
+      this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
     }
     else if (this.label) {
       this.textarea.setAttribute('aria-label', this.label);

@@ -120,7 +120,7 @@ export class CheckboxWrapper {
    */
   private setAriaAttributes(): void {
     if (this.label && this.message) {
-      this.input.setAttribute('aria-label', this.label + '. ' + this.message);
+      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
     }
     else if (this.label) {
       this.input.setAttribute('aria-label', this.label);
