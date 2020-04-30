@@ -72,10 +72,10 @@ export class Icon {
   @Watch('name')
   public loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
-      // TODO: unset old icon when name prop is changed otherwise wrong icon will still be shown
+      this.svgContent = undefined; // reset svg content while new icon is loaded
       const url = this.getSource();
       getSvgContent(url).then((iconContent) => {
-        if (url === this.getSource()) {
+        if (url === this.getSource()) { // check if response matches current icon source
           this.svgContent = iconContent;
         }
       });
@@ -103,11 +103,8 @@ export class Icon {
     );
 
     return (
-      <Host role='img'>{(
-        (Build.isBrowser && this.svgContent)
-          ? <i class={iconClasses} innerHTML={this.svgContent}/>
-          : <i class={iconClasses}/>
-      )}
+      <Host role='img'>
+        <i class={iconClasses} innerHTML={Build.isBrowser && this.svgContent}/>
       </Host>
     );
   }
