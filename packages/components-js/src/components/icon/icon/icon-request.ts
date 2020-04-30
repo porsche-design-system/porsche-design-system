@@ -3,6 +3,9 @@
  * */
 
 import { validateContent } from './icon-validation';
+import { cdn, svg } from '@porsche-design-system/icons';
+import { IconName } from '../../../types';
+import { isUrl } from './icon-helper';
 
 const iconCache = new Map<string, string>();
 const requestCache = new Map<string, Promise<string>>();
@@ -40,3 +43,14 @@ export function getSvgContent (url: string): Promise<string> {
   }
   return req;
 }
+
+export const buildIconUrl = (iconNameOrSource: IconName | string): string => {
+  if (isUrl(iconNameOrSource)){
+    return iconNameOrSource;
+  } else if (svg[iconNameOrSource]) { // check if IconName exists
+    return `${cdn}/${svg[iconNameOrSource]}`;
+  }
+
+  console.warn('Please provide either an name property or a source property!');
+  return '';
+};

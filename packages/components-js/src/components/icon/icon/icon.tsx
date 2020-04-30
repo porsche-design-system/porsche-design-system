@@ -1,9 +1,8 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { getSvgContent } from './icon-request';
+import { buildIconUrl, getSvgContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
-import { cdn, svg } from '@porsche-design-system/icons';
 
 @Component({
   tag: 'p-icon',
@@ -68,30 +67,27 @@ export class Icon {
     }
   }
 
+  // ToDo: watch is triggered 2x because of stencil life cycle. Remove double name watch.
+  @Watch('name')
+  public resetNameProp(): void {
+    if (this.name === null){
+      this.name = 'arrow-head-right';
+    }
+  }
+
   @Watch('source')
   @Watch('name')
-  public loadIcon(): void {
+  private loadIcon(): void {
+    console.log('name changed', this.name);
     if (Build.isBrowser && this.isVisible) {
       this.svgContent = undefined; // reset svg content while new icon is loaded
-      const url = this.getSource();
+      const url = buildIconUrl(this.source ?? this.name);
       getSvgContent(url).then((iconContent) => {
-        if (url === this.getSource()) { // check if response matches current icon source
+        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
           this.svgContent = iconContent;
         }
       });
     }
-  }
-
-  // TODO: Validate Name against Manifest-Keys and write Unit Test
-  public getSource(): string {
-    if (this.name && !this.source) {
-      return `${cdn}/${svg[this.name]}`;
-    }
-    if (this.source) {
-      return this.source;
-    }
-    console.warn('Please provide either an name property or a source property!');
-    return '';
   }
 
   public render(): JSX.Element {
@@ -104,7 +100,7 @@ export class Icon {
 
     return (
       <Host role='img'>
-        <i class={iconClasses} innerHTML={Build.isBrowser && this.svgContent}/>
+        <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
   }
