@@ -166,6 +166,10 @@
   &__description-text {
     color: $p-color-theme-light-neutral-contrast-medium;
 
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
     #{$bem-block}__label-text ~ & {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
