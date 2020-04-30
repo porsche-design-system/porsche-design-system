@@ -72,6 +72,7 @@ export class Icon {
   @Watch('name')
   public loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
+      // TODO: unset old icon when name prop is changed otherwise wrong icon will still be shown
       const url = this.getSource();
       getSvgContent(url).then((iconContent) => {
         if (url === this.getSource()) {

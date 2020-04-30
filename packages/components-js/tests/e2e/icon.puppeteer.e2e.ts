@@ -30,7 +30,6 @@ describe('p-icon', () => {
   }
 
   const setContentWithDesignSystem = async (content: string) => await page.setContent(`
-      <link href="https://cdn.ui.porsche.com/porsche-design-system/styles/v2/porsche-design-system.css" type="text/css" rel="stylesheet">
       <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
       <script type="module" src="http://localhost:3333/build/porsche-design-system.esm.js"></script>
 
