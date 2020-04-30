@@ -105,28 +105,6 @@ describe('p-icon', () => {
     expect(responseCounter).toEqual(2);
   });
 
-  it('should unset previous icon if name prop is removed', async () => {
-    setRequestInterceptor([2000]);
-
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
-
-    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-    expect(iconBefore).toContain('highway');
-
-    await page.$eval('p-icon', el => el.removeAttribute('name'));
-
-    // check name attribute
-    const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
-    console.log('outerHTMLBefore', outerHTML);
-    expect(outerHTML).not.toContain('name=');
-
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-    console.log(`iconAfter = ${iconAfter}, time = ${timeLogger()}`);
-
-    expect(iconAfter).toContain('arrow-head-right');
-    expect(responseCounter).toEqual(2);
-  });
-
   /**
    *       request 1st icon
    *         |‾‾‾‾‾‾‾‾‾‾⌄
@@ -152,6 +130,28 @@ describe('p-icon', () => {
     const iconFinal = await getInnerHTMLFromShadowRoot('p-icon', 'i');
 
     expect(iconFinal).toContain('light');
+    expect(responseCounter).toEqual(2);
+  });
+
+  it('should unset previous icon if name prop is removed', async () => {
+    setRequestInterceptor([2000]);
+
+    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
+
+    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon', 'i');
+    expect(iconBefore).toContain('highway');
+
+    await page.$eval('p-icon', el => el.removeAttribute('name'));
+
+    // check name attribute
+    const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
+    console.log('outerHTMLBefore', outerHTML);
+    expect(outerHTML).not.toContain('name=');
+
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
+    console.log(`iconAfter = ${iconAfter}, time = ${timeLogger()}`);
+
+    expect(iconAfter).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
   });
 
