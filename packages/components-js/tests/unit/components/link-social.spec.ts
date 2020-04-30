@@ -6,7 +6,7 @@ describe('Component <p-link-social>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [LinkSocial],
-      html: `<p-link-social href="https://www.facebook.com" icon="logo-facebook">Some label</p-link-social>`,
+      html: `<p-link-social href="https://www.some-url.com">Some label</p-link-social>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-link-social')).toBeFalsy();
@@ -16,15 +16,15 @@ describe('Component <p-link-social>', () => {
   it('should render with href attribute', async () => {
     const page = await newSpecPage({
       components: [LinkSocial],
-      html: `<p-link-social href="https://www.facebook.com">Some label</p-link-social>`,
+      html: `<p-link-social href="https://www.some-url.com">Some label</p-link-social>`,
     });
-    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href', 'https://www.facebook.com');
+    expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('href', 'https://www.some-url.com');
   });
 
   it('should render with target attribute of "_blank"', async () => {
     const page = await newSpecPage({
       components: [LinkSocial],
-      html: `<p-link-social href="https://www.facebook.com" target="_blank">Some label</p-link-social>`,
+      html: `<p-link-social href="https://www.some-url.com" target="_blank">Some label</p-link-social>`,
     });
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('target', '_blank');
   });
@@ -32,7 +32,7 @@ describe('Component <p-link-social>', () => {
   it('should render with rel attribute of "nofollow noopener"', async () => {
     const page = await newSpecPage({
       components: [LinkSocial],
-      html: `<p-link-social href="https://www.facebook.com" rel="nofollow noopener">Some label</p-link-social>`,
+      html: `<p-link-social href="https://www.some-url.com" rel="nofollow noopener">Some label</p-link-social>`,
     });
     expect(page.root.shadowRoot.querySelector('a')).toEqualAttribute('rel', 'nofollow noopener');
   });
@@ -45,4 +45,3 @@ describe('Component <p-link-social>', () => {
     expect(page.root.shadowRoot.querySelector('span.p-link-social')).toBeTruthy();
   });
 });
-
