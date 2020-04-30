@@ -424,6 +424,10 @@ export namespace Components {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -482,7 +486,11 @@ export namespace Components {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -499,6 +507,10 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PTextareaWrapper {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -1087,6 +1099,10 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1145,7 +1161,11 @@ declare namespace LocalJSX {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1162,6 +1182,10 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PTextareaWrapper {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
