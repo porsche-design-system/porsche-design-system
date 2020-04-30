@@ -77,7 +77,7 @@ Please make sure to set the corresponding **aria** attributes.
       <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper state="error">
-      <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
       <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
       <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-radio-button-wrapper>
