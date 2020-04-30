@@ -37,7 +37,7 @@ An "outline only" link version. In hierarchy it is always subordinated to the fi
 
 <p-link variant="primary" href="https://www.porsche.com">Some label</p-link> <p-link href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link> <p-link variant="tertiary" href="https://www.porsche.com" style="margin-left:16px;">Some label</p-link>
 
-This should be the option of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the link always adapts to the length of the text label. 
+This should be the option of your choice whenever possible, as icons should preferably always be paired with text for better comprehensibility and accessibility. The length of the link always adapts to the length of the text label.
 The size of the icon container always equals the line height of the text it's combined with.
 
 ### Icon only
@@ -53,9 +53,7 @@ This variant contains an icon only with no further text information. It is highl
 The link covers the following states:
 
 * Default
-* Active
 * Hover
-* Loading
 * Focus
 
 ---
@@ -66,7 +64,7 @@ The link covers the following states:
 The default icon is an arrow right that can be replaced by any icon available in the Porsche web icon set. It should be changed only if it is ensured that another symbol is more appropriate to support the text content, making it easier for the user to understand the function quickly.  
 
 ### External and internal links
-For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon: 
+For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon:
 
 <p-link href="https://www.porsche.com" icon="link-extern" aria-label="Extern link">Some label</p-link>
 
@@ -87,7 +85,7 @@ Even if there is no technical limit to the link width, you should always make su
 
 ### Multiline links
 
-Though it's technically possible to use multiline text in links, it's recommended to keep the text label short and, therefore, avoid multiline links. 
+Though it's technically possible to use multiline text in links, it's recommended to keep the text label short and, therefore, avoid multiline links.
 
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">

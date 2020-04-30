@@ -328,7 +328,7 @@
         @include p-link-label-without-label;
       }
 
-      #{$bem-block}__icon´ {
+      #{$bem-block}__icon {
         @include p-link-icon-without-label;
       }
     }

@@ -28,6 +28,22 @@ A `label` is a caption which informs the user what information a particular form
 
 ---
 
+## With description text
+
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground>
+  <p-select-wrapper label="Some label" description="Some description">
+    <select name="some-name">
+      <option value="a">Option A</option>
+      <option value="b">Option B</option>
+      <option value="c">Option C</option>
+    </select>
+  </p-select-wrapper>
+</Playground>
+
+---
+
 ## Disabled
 
 <Playground>
@@ -72,17 +88,19 @@ The **Select Wrapper** component supports the visualisation of inline validation
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes.
 
 <Playground>
   <template>
     <p-select-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <select name="some-name" aria-invalid="true">
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <select name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>
       </select>
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-select-wrapper>
   </template>
 </Playground>

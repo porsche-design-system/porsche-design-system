@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Description property to `p-text-field-wrapper`, `p-textarea-wrapper` and `p-select-wrapper`
+- `Link Social`
+
+### Changed
+- Improve accessibility of error and success states of form elements
+- Aria-invalid attribute of form elements if they are in error state is now managed by component 
 - Improve caching strategy for fonts by content-based hash
 - Improve caching strategy for marque by content-based hash
 
