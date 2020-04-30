@@ -2,7 +2,7 @@
 
 @mixin p-text-field-wrapper-label-text-visible() {
   position: static;
-  width: auto;
+  width: fit-content;
   height: auto;
   margin: 0;
   padding: 0 0 $p-spacing-4 0;
