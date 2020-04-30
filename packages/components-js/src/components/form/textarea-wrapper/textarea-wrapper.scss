@@ -159,12 +159,8 @@
     color: $p-color-theme-light-neutral-contrast-medium;
 
     #{$bem-block}__label-text ~ & {
-      margin-top: p-rem(-4px);
-      padding-bottom: p-rem(8px);
-    }
-
-    &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      margin-top: -$p-spacing-4;
+      padding-bottom: $p-spacing-8;
     }
   }
 
