@@ -13,7 +13,7 @@ describe('p-icon', () => {
         const iconIndex = iconNames.indexOf(iconName);
         const delay = iconIndex === 0 ? timeout : 0;
 
-        console.log(`svg request, delay = ${delay}, icon = ${iconName}`)
+        console.log(`REQ: delay = ${delay}, icon = ${iconName}, time = ${new Date().getUTCSeconds()}`)
         if(iconIndex >= 0) {
           setTimeout(() => {
             req.respond({
@@ -35,7 +35,7 @@ describe('p-icon', () => {
 
       ${content}
     `,
-    { waitUntil: 'networkidle0'}
+    { waitUntil: 'networkidle2'}
   );
 
   const getInnerHTMLFromShadowRoot = async (documentSelector: string, shadowRootSelector: string) => {
@@ -46,20 +46,32 @@ describe('p-icon', () => {
   it('should render', async () => {
     await page.setRequestInterception(true);
 
+    let responseCounter = 0;
+    page.on('response', (resp) => {
+      const url = resp.url();
+
+      if (url.indexOf('.svg') >= 0) {
+        const iconName = url.match(/icons\/(.*)\.min/)[1];
+        responseCounter++;
+        console.log(`RESP: icon = ${iconName}, time = ${new Date().getUTCSeconds()}`);
+      }
+    });
+
     setRequestInterceptor(2000);
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`);
+    await page.waitFor(1000)
 
     // check name attribute
     const outerHTMLBefore = await page.$eval('p-icon', el => el.outerHTML);
     console.log('outerHTMLBefore', outerHTMLBefore);
-    expect(outerHTMLBefore).not.toContain('name=');
+    // expect(outerHTMLBefore).not.toContain('name=');
 
     // check svg content in shadow root
     const iconBefore = await getInnerHTMLFromShadowRoot('p-icon','i');
     console.log('iconBefore', iconBefore);
-    expect(iconBefore).toContain('arrow-head-right');
+    // expect(iconBefore).toContain('arrow-head-right');
 
     // ---
 
@@ -77,6 +89,8 @@ describe('p-icon', () => {
     console.log('iconAfter', iconAfter);
     expect(iconAfter).toContain('question');
 
+    expect(true).toBeFalsy();
+    console.log('responseCounter', responseCounter);
   })
 
 });
