@@ -41,3 +41,19 @@ describe('getSvgContent()', () => {
   });
 });
 
+xdescribe('buildIconUrl()', () => {
+
+  it('should return cdn url for icon name', () => {
+
+  });
+
+  it('should return source url of external source',  () => {
+
+  });
+
+  it('should return empty string if icon name is not in manifest', () => {
+
+  });
+
+});
+
