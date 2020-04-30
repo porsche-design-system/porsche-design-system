@@ -82,6 +82,7 @@ export class Icon {
     }
   }
 
+  // TODO: Validate Name against Manifest-Keys and write Unit Test
   public getSource(): string {
     if (this.name && !this.source) {
       return `${cdn}/${svg[this.name]}`;
