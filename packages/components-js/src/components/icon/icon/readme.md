@@ -26,6 +26,7 @@
  - [p-checkbox-wrapper](../../form/checkbox-wrapper)
  - [p-link](../../navigation/link)
  - [p-link-pure](../../navigation/link-pure)
+ - [p-link-social](../../navigation/link-social)
  - [p-pagination](../../navigation/pagination)
  - [p-select-wrapper](../../form/select-wrapper)
  - [p-text-field-wrapper](../../form/text-field-wrapper)
