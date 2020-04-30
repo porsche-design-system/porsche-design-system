@@ -58,9 +58,9 @@
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
     "test:e2e": "stencil test --e2e --max-workers=1 ''",
-    "test:puppeteer": "jest -c jest.puppeteer.config.js",
-    "test:puppeteer:watch": "jest -c jest.puppeteer.config.js --watch",
     "test:e2e:watch": "stencil test --e2e --max-workers=8 '' --watch",
+    "test:puppeteer": "jest -c jest-puppeteer.config.js",
+    "test:puppeteer:watch": "jest -c jest-puppeteer.config.js --watch",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61423 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start:cbt-server\" \"wait-on -t 180000 http-get://localhost:61424 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
