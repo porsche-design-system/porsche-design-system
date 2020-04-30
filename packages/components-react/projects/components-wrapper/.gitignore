@@ -12,6 +12,9 @@
 /dist
 /mocks
 
+# auto generated
+/src/lib
+
 # misc
 .DS_Store
 !.env

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Link Social`
+
 ## [1.4.0-rc.1] - 2020-04-27
 
 ### Added

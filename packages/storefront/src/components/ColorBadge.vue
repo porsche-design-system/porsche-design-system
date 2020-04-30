@@ -27,8 +27,11 @@
     | 'external-google'
     | 'external-instagram'
     | 'external-linkedin'
+    | 'external-pinterest'
     | 'external-twitter'
     | 'external-wechat'
+    | 'external-whatsapp'
+    | 'external-xing'
     | 'external-youtube';
 
   @Component
@@ -181,12 +184,24 @@
       background: $p-color-external-linkedin;
     }
 
+    &.external-pinterest {
+      background: $p-color-external-pinterest;
+    }
+
     &.external-twitter {
       background: $p-color-external-twitter;
     }
 
     &.external-wechat {
       background: $p-color-external-wechat;
+    }
+
+    &.external-whatsapp {
+      background: $p-color-external-whatsapp;
+    }
+
+    &.external-xing {
+      background: $p-color-external-xing;
     }
 
     &.external-youtube {
