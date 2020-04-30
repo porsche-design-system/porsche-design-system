@@ -46,13 +46,15 @@ const setRequestInterceptor = (timeout = 0) => {
 };
 
 describe('p-icon', () => {
-
   let responseCounter: number;
 
   beforeEach(async () => {
-    responseCounter = 0;
+
+    await page.reload({waitUntil: 'networkidle0'});
     await page.setRequestInterception(true);
 
+    responseCounter = 0;
+    page.removeAllListeners('response');
     page.on('response', (resp) => {
       const url = resp.url();
 
@@ -64,6 +66,19 @@ describe('p-icon', () => {
     });
   });
 
+  it('should have only one response for default icon', async () => {
+    setRequestInterceptor();
+    // render with default icon "arrow-head-right"
+    await setContentWithDesignSystem(`<p-icon></p-icon>`);
+
+    // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
+/*    await page.waitFor(delay);*/
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
+    expect(iconAfter).toContain('arrow-head-right');
+
+    expect(responseCounter).toEqual(1);
+  });
+
   /**
    *                   request of default icon
    *           |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌄
@@ -72,7 +87,7 @@ describe('p-icon', () => {
    *                   request of actual icon
    */
   it('should render correct icon if default-icon request takes longer than icon request', async () => {
-    const delay = 1000;
+    const delay = 2000;
     setRequestInterceptor(delay);
 
     // render with default icon "arrow-head-right"
@@ -89,8 +104,7 @@ describe('p-icon', () => {
     expect(responseCounter).toEqual(2);
   });
 
-
-  xit('should unset previous icon if name prop is removed', () => {
+  xit('should unset previous icon if name prop is removed', async () => {
 
   });
 
