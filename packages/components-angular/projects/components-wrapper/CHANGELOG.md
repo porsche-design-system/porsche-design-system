@@ -8,13 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Description property to `p-text-field-wrapper`, `p-textarea-wrapper` and `p-select-wrapper`
+- `Link Social`
 
 ### Changed
 - Improve accessibility of error and success states of form elements
 - Aria-invalid attribute of form elements if they are in error state is now managed by component 
-
-### Added
-- `Link Social`
 
 ## [1.4.0-rc.1] - 2020-04-27
 
