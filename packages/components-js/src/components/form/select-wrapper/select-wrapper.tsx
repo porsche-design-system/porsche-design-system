@@ -134,10 +134,10 @@ export class SelectWrapper {
    */
   private setAriaAttributes(): void {
     if (this.label && this.message) {
-      this.select.setAttribute('aria-label', this.label + '. ' + this.message);
+      this.select.setAttribute('aria-label', `${this.label}. ${this.message}`);
     }
     else if (this.label && this.description) {
-      this.select.setAttribute('aria-label', this.label + '. ' + this.description);
+      this.select.setAttribute('aria-label', `${this.label}. ${this.description}`);
     }
     else if (this.label) {
       this.select.setAttribute('aria-label', this.label);
