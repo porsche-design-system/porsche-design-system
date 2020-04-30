@@ -51,7 +51,6 @@ describe('p-icon', () => {
   let responseCounter: number;
 
   beforeEach(async () => {
-
     await page.reload({waitUntil: 'networkidle0'});
     await page.setRequestInterception(true);
 
@@ -76,8 +75,8 @@ describe('p-icon', () => {
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
     /*    await page.waitFor(delay);*/
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-    expect(iconAfter).toContain('arrow-head-right');
 
+    expect(iconAfter).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
   });
 
@@ -101,8 +100,8 @@ describe('p-icon', () => {
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
     await page.waitFor(delay);
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-    expect(iconAfter).toContain('question');
 
+    expect(iconAfter).toContain('question');
     expect(responseCounter).toEqual(2);
   });
 
@@ -154,7 +153,6 @@ describe('p-icon', () => {
 
     expect(iconFinal).toContain('light');
     expect(responseCounter).toEqual(2);
-
   });
 
 });
