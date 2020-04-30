@@ -27,6 +27,18 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   </template>
 </Playground>
 
+--- 
+
+## With description text
+
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground>    
+  <p-textarea-wrapper label="Some label" description="Some description">
+    <textarea name="some-name"></textarea>
+  </p-textarea-wrapper>
+</Playground>
+
 ---
 
 ## Disabled
@@ -75,13 +87,15 @@ The **Textarea Wrapper** component supports the visualisation of inline validati
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes.
 
 <Playground>
   <template>
     <p-textarea-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <textarea name="some-name" aria-invalid="true" placeholder="Some placeholder"></textarea>
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"></textarea>
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-textarea-wrapper>
   </template>
 </Playground>
