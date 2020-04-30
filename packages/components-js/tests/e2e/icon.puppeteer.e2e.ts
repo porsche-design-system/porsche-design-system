@@ -1,10 +1,14 @@
-
 describe('p-icon', () => {
+
+  const timeLogger = () => {
+    const now = new Date();
+    return now.getUTCSeconds() + ':' + now.getUTCMilliseconds()
+  };
 
   const iconNames = ['arrow-head-right', 'question'];
 
   const setRequestInterceptor = (timeout = 0) => {
-    page.removeAllListeners('request')
+    /*page.removeAllListeners('request')*/
     page.on('request', (req) => {
       const url = req.url();
 
@@ -13,8 +17,8 @@ describe('p-icon', () => {
         const iconIndex = iconNames.indexOf(iconName);
         const delay = iconIndex === 0 ? timeout : 0;
 
-        console.log(`REQ: delay = ${delay}, icon = ${iconName}, time = ${new Date().getUTCSeconds()}`)
-        if(iconIndex >= 0) {
+        console.log(`REQ: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
+        if (iconIndex >= 0) {
           setTimeout(() => {
             req.respond({
               status: 200,
@@ -27,7 +31,7 @@ describe('p-icon', () => {
         req.continue();
       }
     });
-  }
+  };
 
   const setContentWithDesignSystem = async (content: string) => await page.setContent(`
       <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
@@ -35,15 +39,33 @@ describe('p-icon', () => {
 
       ${content}
     `,
-    { waitUntil: 'networkidle2'}
+    {waitUntil: 'networkidle2'}
   );
 
   const getInnerHTMLFromShadowRoot = async (documentSelector: string, shadowRootSelector: string) => {
     const handle = await page.evaluateHandle(`document.querySelector('${documentSelector}').shadowRoot.querySelector('${shadowRootSelector}')`);
     return handle.getProperty('innerHTML').then(x => x.jsonValue())
-  }
+  };
 
-  it('should render', async () => {
+  it('should render correct icon if undefined request take longer than icon request', () => {
+    /**
+     *                   request of default icon
+     *           |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾⌄
+     * TIME ------------------------------------------------>
+     *                 |_______________________⌃
+     *                   request of actual icon
+     */
+
+
+
+  });
+
+  it('should unset previous icon if name prop is removed', () => {
+
+  });
+
+  it('should unset previous icon if name prop is changed', async () => {
+    page = await newE2EPage();
     await page.setRequestInterception(true);
 
     let responseCounter = 0;
@@ -53,7 +75,7 @@ describe('p-icon', () => {
       if (url.indexOf('.svg') >= 0) {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
         responseCounter++;
-        console.log(`RESP: icon = ${iconName}, time = ${new Date().getUTCSeconds()}`);
+        console.log(`RESP: icon = ${iconName}, time = ${timeLogger()}`);
       }
     });
 
@@ -61,7 +83,7 @@ describe('p-icon', () => {
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`);
-    await page.waitFor(1000)
+    await page.waitFor(1000);
 
     // check name attribute
     const outerHTMLBefore = await page.$eval('p-icon', el => el.outerHTML);
@@ -69,9 +91,9 @@ describe('p-icon', () => {
     // expect(outerHTMLBefore).not.toContain('name=');
 
     // check svg content in shadow root
-    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon','i');
-    console.log('iconBefore', iconBefore);
-    // expect(iconBefore).toContain('arrow-head-right');
+    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon', 'i');
+    console.log(`iconBefore = ${iconBefore}, time = ${timeLogger()}`);
+    expect(iconBefore).toContain('arrow-head-right');
 
     // ---
 
@@ -85,13 +107,15 @@ describe('p-icon', () => {
     expect(outerHTMLAfter).toContain('name="question"');
 
     // check svg content in shadow root
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon','i');
-    console.log('iconAfter', iconAfter);
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
+    console.log(`iconAfter = ${iconAfter}, time = ${timeLogger()}`);
+
+    console.log(`timeBeforeExcept = ${timeLogger()}`);
     expect(iconAfter).toContain('question');
 
-    expect(true).toBeFalsy();
+    /*    expect(true).toBeFalsy();*/
     console.log('responseCounter', responseCounter);
-  })
+  });
 
 });
 
