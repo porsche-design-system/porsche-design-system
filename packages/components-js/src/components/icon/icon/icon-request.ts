@@ -12,7 +12,6 @@ const requestCache = new Map<string, Promise<string>>();
 
 export function getSvgContent (url: string): Promise<string> {
   let req: Promise<string>;
-  console.log(url);
   if(iconCache.has(url)){
     req = Promise.resolve(iconCache.get(url));
   } else {
@@ -20,7 +19,6 @@ export function getSvgContent (url: string): Promise<string> {
     const pendingReq: Promise<string> = requestCache.get(url);
 
     if (!pendingReq) {
-      console.log('!pendingReq');
       // we don't already have a request
       req = fetch(url).then(rsp => {
         if (rsp.ok) {

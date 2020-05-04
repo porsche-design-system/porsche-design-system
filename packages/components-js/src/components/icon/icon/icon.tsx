@@ -78,7 +78,6 @@ export class Icon {
   @Watch('source')
   @Watch('name')
   private loadIcon(): void {
-    console.log('name changed', this.name);
     if (Build.isBrowser && this.isVisible) {
       this.svgContent = undefined; // reset svg content while new icon is loaded
       const url = buildIconUrl(this.source ?? this.name);
