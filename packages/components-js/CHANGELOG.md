@@ -13,7 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Improve accessibility of error and success states of form elements
 - Aria-invalid attribute of form elements if they are in error state is now managed by component
-- Improve Icon loading behavior and bug fixes 
+- Improve `p-icon` loading behavior
+
+### Fixed
+- Display of wrong icons
 
 ## [1.4.0-rc.1] - 2020-04-27
 
