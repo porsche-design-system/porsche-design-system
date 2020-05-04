@@ -36,8 +36,8 @@ const createManifestAndOptimizeSVG = async (cdn: string, files: string[], config
   }
 
   fs.writeFileSync(path.normalize('./index.ts'),
-`export const cdn = "${cdn}";
-export const svg = ${JSON.stringify(manifest)};`
+`export const CDN_BASE_URL = "${cdn}";
+export const SVG_MANIFEST = ${JSON.stringify(manifest)};`
   );
 };
 

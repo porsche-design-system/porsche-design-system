@@ -3,7 +3,7 @@
  * */
 
 import { validateContent } from './icon-validation';
-import { cdn, svg } from '@porsche-design-system/icons';
+import { CDN_BASE_URL, SVG_MANIFEST } from '@porsche-design-system/icons';
 import { IconName } from '../../../types';
 import { isUrl } from './icon-helper';
 
@@ -21,8 +21,8 @@ export const getSvgContent = (url: string): Promise<string> => {
 export const buildIconUrl = (iconNameOrSource: IconName | string): string => {
   if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
-  } else if (svg[iconNameOrSource]) { // check if IconName exists
-    return `${cdn}/${svg[iconNameOrSource]}`;
+  } else if (SVG_MANIFEST[iconNameOrSource]) { // check if IconName exists
+    return `${CDN_BASE_URL}/${SVG_MANIFEST[iconNameOrSource]}`;
   }
   // Only occurs if consumer is not using typescript -> necessary?
   console.warn('Please provide either an name property or a source property!');
