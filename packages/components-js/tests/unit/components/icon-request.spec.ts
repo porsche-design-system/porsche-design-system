@@ -1,10 +1,10 @@
 import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/icon-request';
-import { cdn, svg } from '@porsche-design-system/icons';
+import { CDN_BASE_URL, SVG_MANIFEST } from '@porsche-design-system/icons';
 import { IconName } from '../../../src/types';
 
 describe('getSvgContent()', () => {
 
-  const getIconUrl = (name: IconName) => `${cdn}/${svg[name]}`;
+  const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${SVG_MANIFEST[name]}`;
   const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
   const undefinedUrl = undefined;
 
@@ -42,7 +42,6 @@ describe('getSvgContent()', () => {
 });
 
 describe('buildIconUrl()', () => {
-
   it('should return cdn url for icon name', () => {
     const cdnIconUrl = buildIconUrl('arrow-head-right');
     expect(cdnIconUrl).toEqual('https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg');
@@ -58,6 +57,19 @@ describe('buildIconUrl()', () => {
     const cdnIconUrl = buildIconUrl('arrow');
     expect(cdnIconUrl).toBe('');
   });
-
 });
+
+describe('validate cdn with svg manifest', () => {
+  it('should have every svg from manifest on cdn', async () => {
+    const manifestKeys = Object.keys(SVG_MANIFEST);
+    let cdnResponseCounter = 0;
+    await Promise.all(manifestKeys.map(async (key) => {
+      const svgContent = await getSvgContent(buildIconUrl(key));
+      expect(svgContent.startsWith('<svg')).toBeTruthy();
+      cdnResponseCounter++;
+    }));
+    expect(cdnResponseCounter).toEqual(manifestKeys.length);
+  });
+});
+
 
