@@ -61,8 +61,8 @@ describe('p-icon', () => {
 
       if (url.indexOf('.svg') >= 0) {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
-        responseCounter++;
         console.log(`RESP ${responseCounter}: icon = ${iconName}, time = ${timeLogger()}`);
+        responseCounter++;
       }
     });
   });
@@ -142,6 +142,8 @@ describe('p-icon', () => {
     // check name attribute
     const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
     expect(outerHTML).not.toContain('name=');
+    // one tick delay to repaint
+    await page.waitFor(1);
 
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
     expect(iconAfter).toContain('arrow-head-right');
