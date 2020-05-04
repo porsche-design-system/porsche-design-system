@@ -58,10 +58,10 @@ A description text can be added to explain the meaning of a specific form field.
 
 ---
 
-## Custom
+## Native
 
 <Playground>
-  <p-select-wrapper label="Some label" variant="custom">
+  <p-select-wrapper label="Some label" variant="native">
     <select name="some-name">
       <option value="a">Option A</option>
       <option value="b" selected>Option B</option>

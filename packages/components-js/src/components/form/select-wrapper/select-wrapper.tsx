@@ -34,12 +34,12 @@ export class SelectWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Custom styled select data-list. */
-  @Prop() public variant?: 'native' | 'custom' = 'native';
+  @Prop() public variant?: 'native' | 'custom' = 'custom';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionSelected: number;
-  @State() private optionActive: number;
+  @State() private optionHighlighted: number;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -51,15 +51,20 @@ export class SelectWrapper {
     this.bindStateListener();
     this.addSlottedStyles();
 
-    if (this.variant === 'custom') {
+    if(this.variant !== 'native') {
       this.setOptionList();
       this.handleSelectEvents();
-      this.optionActive = this.optionSelected;
+      this.optionHighlighted = this.optionSelected;
+      document.addEventListener('mousedown', this.handleClickOutside.bind(this), false);
     }
   }
 
   public componentDidUpdate(): void {
     this.setAriaAttributes();
+  }
+
+  public componentDidUnload(): void {
+    document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
   }
 
   public render(): JSX.Element {
@@ -85,7 +90,8 @@ export class SelectWrapper {
     );
     const iconClasses = cx(
       prefix('select-wrapper__icon'),
-      this.disabled && prefix('select-wrapper__icon--disabled')
+      this.disabled && prefix('select-wrapper__icon--disabled'),
+      !this.fakeOptionListHidden && prefix('select-wrapper__icon--opened')
     );
     const messageClasses = cx(
       prefix('select-wrapper__message'),
@@ -157,6 +163,22 @@ export class SelectWrapper {
 
   private initSelect(): void {
     this.select = this.host.querySelector('select');
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        this.select = this.host.querySelector('select');
+        this.setOptionList();
+        // this.optionHighlighted = this.optionSelected;
+      });
+    });
+    const config = { childList: true };
+    observer.observe(this.select, config);
+  }
+
+  private handleClickOutside(e): MouseEvent {
+    if(this.host.contains(e.target)) {
+      return;
+    }
+    this.fakeOptionListHidden = true;
   }
 
   /*
@@ -203,12 +225,12 @@ export class SelectWrapper {
         e.preventDefault();
         this.fakeOptionListHidden = this.fakeOptionListHidden === false;
         if(this.fakeOptionListHidden) {
-          this.setOptionSelected(this.optionActive);
+          this.setOptionSelected(this.optionHighlighted);
         }
       }
       if(e.code === 'Enter') {
         this.fakeOptionListHidden = true;
-        this.setOptionSelected(this.optionActive);
+        this.setOptionSelected(this.optionHighlighted);
       }
       if(e.code === 'Escape') {
         this.fakeOptionListHidden = true;
@@ -229,6 +251,7 @@ export class SelectWrapper {
     });
     this.select.options[key].setAttribute('selected', 'selected');
     this.optionSelected = key;
+    this.optionHighlighted = key;
     this.fakeOptionListHidden = true;
     this.select.focus();
   }
@@ -243,27 +266,30 @@ export class SelectWrapper {
         class={`
           ${prefix('select-wrapper__fake-option')}
           ${(key === this.optionSelected ? prefix('select-wrapper__fake-option--selected') : '')}
-          ${this.optionActive === key && prefix('select-wrapper__fake-option--active')}
+          ${this.optionHighlighted === key && prefix('select-wrapper__fake-option--active')}
         `}
         onClick={() => this.setOptionSelected(key)}
       >
-        {option.text}
+        <span>{option.text}</span>
+        {key === this.optionSelected &&
+          <p-icon class={prefix('select-wrapper__fake-option-icon')} name='check' color='inherit'/>
+        }
       </p-text>
     );
   }
 
   private cycleFakeOptionList(direction: string): void {
     if(direction === 'down') {
-      this.optionActive++;
+      this.optionHighlighted++;
     }
     if(direction === 'up') {
-      this.optionActive--;
+      this.optionHighlighted--;
     }
-    if (this.optionActive < 0) {
-      this.optionActive = this.options.length-1;
+    if (this.optionHighlighted < 0) {
+      this.optionHighlighted = this.options.length-1;
     }
-    if (this.optionActive > this.options.length-1) {
-      this.optionActive = 0;
+    if (this.optionHighlighted > this.options.length-1) {
+      this.optionHighlighted = 0;
     }
   };
 
