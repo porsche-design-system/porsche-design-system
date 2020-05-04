@@ -86,6 +86,7 @@ export class Icon {
 
   // ToDo: watch is triggered 2x because of stencil life cycle. Remove double name watch.
   @Watch('name')
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   private resetNameProp(): void { // ignore unused local
     if (this.name === null) {
