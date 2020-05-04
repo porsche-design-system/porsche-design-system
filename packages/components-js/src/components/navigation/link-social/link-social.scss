@@ -1,0 +1,350 @@
+@import '../../../../../../packages/scss-utils/index';
+
+@mixin p-link-social-with-label() {
+  padding: p-rem(12px) p-rem(16px) p-rem(12px) p-rem(40px);
+}
+
+@mixin p-link-social-without-label() {
+  padding: 0;
+}
+
+@mixin p-link-social-label-with-label() {
+  position: static;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
+  overflow: visible;
+  border: 0;
+  clip: auto;
+  clip-path: none;
+}
+
+@mixin p-link-social-label-without-label() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+@mixin p-link-social-icon-with-label() {
+  left: p-rem(12px);
+  top: p-rem(12px);
+  transform: translateX(0) translateY(0);
+}
+
+@mixin p-link-social-icon-without-label() {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+:host {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+.#{$p-global-class-prefix}link-social {
+  $bem-block: &;
+  display: flex;
+  width: 100%;
+  min-width: p-rem(48px);
+  min-height: p-rem(48px);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none transparent;
+  text-decoration: none;
+  transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
+  outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier;
+
+  &::-moz-focus-inner {
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  &:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 1px;
+  }
+
+  &--theme-light {
+    background-color: $p-color-theme-light-neutral-contrast-high;
+    color: $p-color-theme-dark-default;
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+    }
+
+    &:focus {
+      outline-color: $p-color-theme-light-state-focus;
+    }
+  }
+
+  &--theme-dark {
+    background-color: $p-color-theme-dark-default;
+    color: $p-color-theme-light-default;
+
+    &:hover,
+    &:active {
+      color: $p-color-theme-light-default;
+      background-color: darken($p-color-theme-dark-default, 12%);
+    }
+
+    &:focus {
+      outline-color: $p-color-theme-dark-state-focus;
+    }
+  }
+
+  &--logo-facebook {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-facebook;
+    }
+  }
+
+  &--logo-google {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-google;
+    }
+  }
+
+  &--logo-instagram {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-instagram;
+    }
+  }
+
+  &--logo-linkedin {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-linkedin;
+    }
+  }
+
+  &--logo-pinterest {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-pinterest;
+    }
+  }
+
+  &--logo-twitter {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-twitter;
+    }
+  }
+
+  &--logo-wechat {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-wechat;
+    }
+  }
+
+  &--logo-whatsapp {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-whatsapp;
+    }
+  }
+
+  &--logo-xing {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-xing;
+    }
+  }
+
+  &--logo-youtube {
+    &:hover,
+    &:active {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-external-youtube;
+    }
+  }
+
+  &--with-label {
+    @include p-link-social-with-label;
+
+    #{$bem-block}__label {
+      @include p-link-social-label-with-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-social-icon-with-label;
+    }
+  }
+
+  &--without-label {
+    @include p-link-social-without-label;
+
+    #{$bem-block}__label {
+      @include p-link-social-label-without-label;
+    }
+
+    #{$bem-block}__icon {
+      @include p-link-social-icon-without-label;
+    }
+  }
+
+  @include p-breakpoint("xs") {
+    &--with-label-xs {
+      @include p-link-social-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-with-label;
+      }
+    }
+
+    &--without-label-xs {
+      @include p-link-social-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("s") {
+    &--with-label-s {
+      @include p-link-social-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-with-label;
+      }
+    }
+
+    &--without-label-s {
+      @include p-link-social-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("m") {
+    &--with-label-m {
+      @include p-link-social-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-with-label;
+      }
+    }
+
+    &--without-label-m {
+      @include p-link-social-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("l") {
+    &--with-label-l {
+      @include p-link-social-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-with-label;
+      }
+    }
+
+    &--without-label-l {
+      @include p-link-social-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-without-label;
+      }
+    }
+  }
+
+  @include p-breakpoint("xl") {
+    &--with-label-xl {
+      @include p-link-social-with-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-with-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-with-label;
+      }
+    }
+
+    &--without-label-xl {
+      @include p-link-social-without-label;
+
+      #{$bem-block}__label {
+        @include p-link-social-label-without-label;
+      }
+
+      #{$bem-block}__icon {
+        @include p-link-social-icon-without-label;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    width: p-rem(24px);
+    height: p-rem(24px);
+  }
+}

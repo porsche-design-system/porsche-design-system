@@ -15,6 +15,12 @@ The component Pure (without label) is only used if the context clearly describes
 
 <p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
+### Description text
+
+Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+
+<p-textarea-wrapper label="Some label" description="Some description"><textarea name="some-name"></textarea></p-textarea-wrapper>
+
 ---
 
 ## States
