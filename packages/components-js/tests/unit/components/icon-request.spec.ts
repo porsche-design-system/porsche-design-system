@@ -1,4 +1,4 @@
-import { getSvgContent } from '../../../src/components/icon/icon/icon-request';
+import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/icon-request';
 import { cdn, svg } from '@porsche-design-system/icons';
 import { IconName } from '../../../src/types';
 
@@ -31,28 +31,32 @@ describe('getSvgContent()', () => {
   });
 
   it('should throw error if url is undefined', async () => {
-    try{
+    try {
       const result = getSvgContent(undefinedUrl);
       expect(true).toBe(false);
       // @ts-ignore
-    }catch (e: Error) {
-       expect(e.name).toEqual('Error')
+    } catch (e: Error) {
+      expect(e.name).toEqual('Error')
     }
   });
 });
 
-xdescribe('buildIconUrl()', () => {
+describe('buildIconUrl()', () => {
 
   it('should return cdn url for icon name', () => {
-
+    const cdnIconUrl = buildIconUrl('arrow-head-right');
+    expect(cdnIconUrl).toContain('arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg');
   });
 
-  it('should return source url of external source',  () => {
-
+  it('should return source url of external source', () => {
+    const source = 'https://some-icon-source.com/some-path/some-icon.svg'
+    const cdnIconUrl = buildIconUrl(source);
+    expect(cdnIconUrl).toEqual(source);
   });
 
   it('should return empty string if icon name is not in manifest', () => {
-
+    const cdnIconUrl = buildIconUrl('arrow');
+    expect(cdnIconUrl).toBe('');
   });
 
 });
