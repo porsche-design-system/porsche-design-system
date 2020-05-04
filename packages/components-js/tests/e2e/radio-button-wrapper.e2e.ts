@@ -23,6 +23,17 @@ describe('radio-button-wrapper', () => {
     expect(input.getAttribute('aria-label')).toBe('Some label');
   });
 
+  it('should add aria-label with message text to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-radio-button-wrapper label="Some label" message="Some error message" state="error">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>
+    `);
+    const input = await page.find('p-radio-button-wrapper input');
+    expect(input.getAttribute('aria-label')).toBe('Some label. Some error message');
+  });
+
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
@@ -45,7 +56,7 @@ describe('radio-button-wrapper', () => {
 
   });
 
-  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+  it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
       <p-radio-button-wrapper label="Some label">
@@ -58,32 +69,37 @@ describe('radio-button-wrapper', () => {
       return radioComponent.shadowRoot.querySelector('.p-radio-button-wrapper__message');
     };
 
+    const getInput = async () => {
+      return radioComponent.find('input');
+    };
+
     expect(await getMessage()).toBeNull();
 
     radioComponent.setProperty('state', 'error');
-    radioComponent.setProperty('message', 'some message');
+    radioComponent.setProperty('message', 'Some error message');
 
     await page.waitForChanges();
 
-    const label = await page.find('p-radio-button-wrapper >>> .p-radio-button-wrapper__label');
-    const labelId = label.getAttribute('id');
-
     expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+    expect(await getMessage()).toEqualAttribute('role', 'alert');
+    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some error message');
 
     radioComponent.setProperty('state', 'success');
+    radioComponent.setProperty('message', 'Some success message');
 
     await page.waitForChanges();
 
     expect(await getMessage()).not.toBeNull();
     expect(await getMessage()).not.toHaveAttribute('role');
-    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some success message');
 
     radioComponent.setProperty('state', 'none');
+    radioComponent.setProperty('message', '');
 
     await page.waitForChanges();
 
     expect(await getMessage()).toBeNull();
+    expect(await getInput()).toEqualAttribute('aria-label','Some label');
 
   });
 
@@ -106,9 +122,13 @@ describe('radio-button-wrapper', () => {
 
     await input1.click();
 
+    await page.waitForChanges();
+
     expect(fakeRadio1).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
 
     await input2.click();
+
+    await page.waitForChanges();
 
     expect(fakeRadio1).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
     expect(fakeRadio2).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
@@ -133,9 +153,13 @@ describe('radio-button-wrapper', () => {
 
     await labelText1.click();
 
+    await page.waitForChanges();
+
     expect(fakeRadio1).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
 
     await labelText2.click();
+
+    await page.waitForChanges();
 
     expect(fakeRadio1).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
     expect(fakeRadio2).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
@@ -161,19 +185,14 @@ describe('radio-button-wrapper', () => {
       return radioButtonWrapper.shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio-button');
     };
 
-    const fakeRadio1Classlist = async () => (await getFakeRadio1()).classList;
-    const fakeRadio2Classlist = async () => (await getFakeRadio2()).classList;
-
     expect(await getFakeRadio1()).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
+    expect(await getFakeRadio2()).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
 
     await page.evaluate(() => {
       document.querySelectorAll('input')[0].checked = true;
     });
 
-    // for some reason we've to requery the iconWrapper each time and .waitForSelector does not work
-    while(!(await fakeRadio1Classlist()).contains('p-radio-button-wrapper__fake-radio-button--checked')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
     expect(await getFakeRadio1()).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
 
@@ -181,11 +200,10 @@ describe('radio-button-wrapper', () => {
       document.querySelectorAll('input')[1].checked = true;
     });
 
-    while((await fakeRadio2Classlist()).contains('p-radio-button-wrapper__fake-radio-button--checked')) {
-      await page.waitFor(10);
-    }
+    await page.waitForChanges();
 
-    expect(await getFakeRadio2()).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
+    expect(await getFakeRadio1()).not.toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
+    expect(await getFakeRadio2()).toHaveClass('p-radio-button-wrapper__fake-radio-button--checked');
   });
 
   it('should disable radio-button when radio-button is set disabled programmatically', async () => {
