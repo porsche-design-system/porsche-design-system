@@ -10,6 +10,7 @@ import { PHeadline } from './p-headline-mock';
 import { PIcon } from './p-icon-mock';
 import { PLink } from './p-link-mock';
 import { PLinkPure } from './p-link-pure-mock';
+import { PLinkSocial } from './p-link-social-mock';
 import { PMarque } from './p-marque-mock';
 import { PPagination } from './p-pagination-mock';
 import { PRadioButtonWrapper } from './p-radio-button-wrapper-mock';
@@ -34,6 +35,7 @@ module.exports = {
   PIcon,
   PLink,
   PLinkPure,
+  PLinkSocial,
   PMarque,
   PPagination,
   PRadioButtonWrapper,

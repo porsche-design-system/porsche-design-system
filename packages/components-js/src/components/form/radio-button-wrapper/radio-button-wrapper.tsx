@@ -5,8 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles,
-  randomString
+  insertSlottedStyles
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -35,13 +34,17 @@ export class RadioButtonWrapper {
   @State() private disabled: boolean;
 
   private input: HTMLInputElement;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setInput();
+    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -65,9 +68,9 @@ export class RadioButtonWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <label class={labelClasses}>
           {this.isLabelVisible &&
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent) => this.labelClick(e)}>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent): void => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
           </p-text>
           }
@@ -80,7 +83,6 @@ export class RadioButtonWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -103,7 +105,26 @@ export class RadioButtonWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input[type="radio"]');
-    this.input.setAttribute('aria-label', this.label);
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
+    }
+    else if (this.label) {
+      this.input.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.input.setAttribute('aria-invalid', 'true');
+    } else {
+      this.input.removeAttribute('aria-invalid');
+    }
   }
 
   private labelClick(event: MouseEvent): void {

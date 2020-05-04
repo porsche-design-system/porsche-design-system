@@ -419,6 +419,20 @@ export const config: StorefrontConfig = {
           () => import(`@/../../components-js/src/components/navigation/link-pure/link-pure.props.md`),
         ],
       },
+      'Link Social': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.props.md`),
+        ],
+      },
       Pagination: {
         Design: [
           // @ts-ignore

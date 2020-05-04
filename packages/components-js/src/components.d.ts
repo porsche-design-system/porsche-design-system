@@ -330,6 +330,36 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Adapts the icon color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -394,6 +424,10 @@ export namespace Components {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -452,7 +486,11 @@ export namespace Components {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -485,6 +523,10 @@ export namespace Components {
     interface PTextListItem {
     }
     interface PTextareaWrapper {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -576,6 +618,12 @@ declare global {
         prototype: HTMLPLinkPureElement;
         new (): HTMLPLinkPureElement;
     };
+    interface HTMLPLinkSocialElement extends Components.PLinkSocial, HTMLStencilElement {
+    }
+    var HTMLPLinkSocialElement: {
+        prototype: HTMLPLinkSocialElement;
+        new (): HTMLPLinkSocialElement;
+    };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -649,6 +697,7 @@ declare global {
         "p-icon": HTMLPIconElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
+        "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -982,6 +1031,36 @@ declare namespace LocalJSX {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Adapts the icon color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -1050,6 +1129,10 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1108,7 +1191,11 @@ declare namespace LocalJSX {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1142,6 +1229,10 @@ declare namespace LocalJSX {
     }
     interface PTextareaWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1171,6 +1262,7 @@ declare namespace LocalJSX {
         "p-icon": PIcon;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
+        "p-link-social": PLinkSocial;
         "p-marque": PMarque;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -1199,6 +1291,7 @@ declare module "@stencil/core" {
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
+            "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
