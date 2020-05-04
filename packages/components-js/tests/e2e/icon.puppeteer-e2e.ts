@@ -1,13 +1,13 @@
 import { NavigationOptions } from 'puppeteer';
 
-const setContentWithDesignSystem = async (content: string, options?: NavigationOptions) =>
+const setContentWithDesignSystem = async (content: string, options: NavigationOptions = {waitUntil: 'networkidle0'}) =>
   await page.setContent(`
       <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
       <script type="module" src="http://localhost:3333/build/porsche-design-system.esm.js"></script>
 
       ${content}
     `,
-    options || {waitUntil: 'networkidle0'}
+    options
   );
 
 const getInnerHTMLFromShadowRoot = async (documentSelector: string, shadowRootSelector: string) => {
@@ -32,7 +32,7 @@ const setRequestInterceptor = (timeouts: number[]) => {
       const iconName = url.match(/icons\/(.*)\.min/)[1];
       const delay = timeouts[svgRequestCounter] ?? 0;
 
-      console.log(`REQ ${svgRequestCounter} : delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
+      console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
       setTimeout(() => {
         req.respond({
           status: 200,
@@ -62,7 +62,7 @@ describe('p-icon', () => {
       if (url.indexOf('.svg') >= 0) {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
         responseCounter++;
-        console.log(`RESP: icon = ${iconName}, time = ${timeLogger()}`);
+        console.log(`RESP ${responseCounter}: icon = ${iconName}, time = ${timeLogger()}`);
       }
     });
   });
@@ -72,10 +72,7 @@ describe('p-icon', () => {
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`);
 
-    // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
-    /*    await page.waitFor(delay);*/
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-
     expect(iconAfter).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
   });
@@ -99,8 +96,8 @@ describe('p-icon', () => {
 
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
     await page.waitFor(delay);
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
 
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
     expect(iconAfter).toContain('question');
     expect(responseCounter).toEqual(2);
   });
@@ -121,14 +118,13 @@ describe('p-icon', () => {
     expect(iconBefore).toContain('highway');
 
     await page.$eval('p-icon', el => el.setAttribute('name', 'light'));
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
 
-    console.log(`iconAfter = ${iconAfter}, time = ${timeLogger()}`);
+    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
     expect(iconAfter).toEqual('');
 
     await page.waitForResponse(resp => resp.url().indexOf('light') && resp.status() === 200);
-    const iconFinal = await getInnerHTMLFromShadowRoot('p-icon', 'i');
 
+    const iconFinal = await getInnerHTMLFromShadowRoot('p-icon', 'i');
     expect(iconFinal).toContain('light');
     expect(responseCounter).toEqual(2);
   });
@@ -145,12 +141,9 @@ describe('p-icon', () => {
 
     // check name attribute
     const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
-    console.log('outerHTMLBefore', outerHTML);
     expect(outerHTML).not.toContain('name=');
 
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
-    console.log(`iconAfter = ${iconAfter}, time = ${timeLogger()}`);
-
     expect(iconAfter).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
   });
