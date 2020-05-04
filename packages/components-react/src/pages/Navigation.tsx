@@ -5,6 +5,7 @@ import {
   PHeadline as Headline,
   PLink as Link,
   PLinkPure as LinkPure,
+  PLinkSocial as LinkSocial,
   PPagination as Pagination
 } from '@porsche-design-system/components-react';
 import React from 'react';
@@ -147,6 +148,41 @@ export function Navigation() {
           <div className="playground dark spacing-inline">
             <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{width: '240px'}}>Lorem ipsum
               dolor sit amet, consetetur sadipscing</LinkPure>
+          </div>
+          <Divider/>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>&lt;p-link-social&gt;</Headline>
+        </GridItem>
+        <GridItem size={5}>
+          <div className='playground light spacing-inline'>
+            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'}>Some label</LinkSocial>
+          </div>
+          <div className='playground light spacing-inline'>
+            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} hideLabel={true}>Some label</LinkSocial>
+          </div>
+          <div className='playground light spacing-inline'>
+            <LinkSocial icon={'logo-delicious'} href={'https://www.delicious.com'}>Some label</LinkSocial>
+          </div>
+          <div className='playground light spacing-inline'>
+            <LinkSocial style={{width: '240px'}} icon={'logo-facebook'} href={'https://www.facebook.com'}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkSocial>
+          </div>
+          <Divider/>
+        </GridItem>
+        <GridItem size={5}>
+          <div className='playground dark spacing-inline'>
+            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} theme={'dark'}>Some label</LinkSocial>
+          </div>
+          <div className='playground dark spacing-inline'>
+            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} hideLabel={true} theme={'dark'}>Some label</LinkSocial>
+          </div>
+          <div className='playground dark spacing-inline'>
+            <LinkSocial icon={'logo-delicious'} href={'https://www.delicious.com'} theme={'dark'}>Some label</LinkSocial>
+          </div>
+          <div className='playground dark spacing-inline'>
+            <LinkSocial style={{ width: '240px' }} icon={'logo-facebook'} href={'https://www.facebook.com'} theme={'dark'}>Lorem ipsum dolor sit amet, consetetur sadipscing</LinkSocial>
           </div>
           <Divider/>
         </GridItem>

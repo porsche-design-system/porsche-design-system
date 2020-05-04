@@ -32,17 +32,13 @@ The squared box is used as a typical Checkbox indicator and can have different s
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two)
 
-### Help text
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
-For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
-
 ### Validation and error
 Contrary to Radio Buttons, each Checkbox item can have its own validation message.
-For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
+Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
 
 ### Spacing
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-For further information we recommend to read the general [Form pattern guideline](#/patterns/forms).
+Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
 
 ---
 
