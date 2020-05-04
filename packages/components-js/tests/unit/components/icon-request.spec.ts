@@ -45,11 +45,11 @@ describe('buildIconUrl()', () => {
 
   it('should return cdn url for icon name', () => {
     const cdnIconUrl = buildIconUrl('arrow-head-right');
-    expect(cdnIconUrl).toContain('arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg');
+    expect(cdnIconUrl).toEqual('https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg');
   });
 
   it('should return source url of external source', () => {
-    const source = 'https://some-icon-source.com/some-path/some-icon.svg'
+    const source = 'https://some-icon-source.com/some-path/some-icon.svg';
     const cdnIconUrl = buildIconUrl(source);
     expect(cdnIconUrl).toEqual(source);
   });
