@@ -4,6 +4,8 @@ import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
 
+const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
+
 @Component({
   tag: 'p-icon',
   styleUrl: 'icon.scss',
@@ -15,7 +17,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name?: IconName = 'arrow-head-right';
+  @Prop() public name?: IconName = DEFAULT_ICON_NAME;
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
@@ -67,11 +69,27 @@ export class Icon {
     }
   }
 
+  public render(): JSX.Element {
+    const iconClasses = cx(
+      prefix('icon'),
+      prefix(`icon--size-${this.size}`),
+      prefix(`icon--color-${this.color}`),
+      this.color !== 'inherit' && prefix(`icon--theme-${this.theme}`)
+    );
+
+    return (
+      <Host role='img'>
+        <i class={iconClasses} innerHTML={this.svgContent}/>
+      </Host>
+    );
+  }
+
   // ToDo: watch is triggered 2x because of stencil life cycle. Remove double name watch.
   @Watch('name')
-  public resetNameProp(): void {
-    if (this.name === null){
-      this.name = 'arrow-head-right';
+  // @ts-ignore
+  private resetNameProp(): void { // ignore unused local
+    if (this.name === null) {
+      this.name = DEFAULT_ICON_NAME;
     }
   }
 
@@ -87,21 +105,6 @@ export class Icon {
         }
       });
     }
-  }
-
-  public render(): JSX.Element {
-    const iconClasses = cx(
-      prefix('icon'),
-      prefix(`icon--size-${this.size}`),
-      prefix(`icon--color-${this.color}`),
-      this.color !== 'inherit' && prefix(`icon--theme-${this.theme}`)
-    );
-
-    return (
-      <Host role='img'>
-        <i class={iconClasses} innerHTML={this.svgContent}/>
-      </Host>
-    );
   }
 
   private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
