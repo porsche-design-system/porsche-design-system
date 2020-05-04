@@ -238,6 +238,7 @@
   }
 
   &__fake-option {
+    position: relative;
     display: block;
     padding: $p-spacing-8 p-rem(12px);
     cursor: pointer;
@@ -256,6 +257,7 @@
       color: $p-color-theme-light-state-active;
       cursor: default;
       pointer-events: none;
+      padding-right: $p-spacing-32;
     }
 
     &--active {
@@ -263,14 +265,24 @@
     }
   }
 
+  &__fake-option-icon {
+    position: absolute;
+    right: p-rem(12px);
+  }
+
   &__icon {
     position: absolute;
     top: p-rem(12px);
     right: p-rem(12px);
     color: $p-color-theme-light-default;
+    transition: transform $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
+    }
+
+    &--opened {
+      transform: rotate(180deg);
     }
   }
 
