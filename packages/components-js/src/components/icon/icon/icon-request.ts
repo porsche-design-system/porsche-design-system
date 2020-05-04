@@ -12,7 +12,7 @@ const requestCache = new Map<string, Promise<string>>();
 export const getSvgContent = (url: string): Promise<string> => {
   let req = requestCache.get(url);
   if (req === undefined) {
-    req = fetch(url).then(rsp => rsp.ok ? rsp.text().then(svgContent => validateContent(svgContent)) : '');
+    req = fetch(url).then(rsp => rsp.ok ? rsp.text().then(validateContent) : '');
     requestCache.set(url, req);
   }
   return req;
