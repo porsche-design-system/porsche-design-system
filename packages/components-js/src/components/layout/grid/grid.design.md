@@ -90,8 +90,13 @@ When designing responsive layouts, always aim to find the solution that works be
 
 ### Don’t be afraid to think outside of the box
 
-It is possible to place elements end-to-end, spanning from left to the right edge of the screen. An example would be a full-width image that generates a more emotional and concise side entry. However, this should be a well-contemplated exception.
+It is possible to place elements end-to-end, spanning from left to the right edge of the screen. 
+This can be done by using the [Content Wrapper](#/components/layout/content-wrapper) component.
+An example would be a full-width image that generates a more emotional and concise side entry. 
+However, this should be a well-contemplated exception.
 
-Also, for image groups, it is possible to break out of the grid in order to create a stronger visual coherence. The outer edges (left and right) of the image group should always be placed within the grid, whereas the edges between the single images can be placed exactly in the middle of the gutter.
+Also, for image groups, it is possible to break out of the grid in order to create a stronger visual coherence. 
+The outer edges (left and right) of the image group should always be placed within the grid, 
+whereas the edges between the single images can be placed exactly in the middle of the gutter.
 
 ![End-to-end placement](./assets/grid-endtoend.png)
