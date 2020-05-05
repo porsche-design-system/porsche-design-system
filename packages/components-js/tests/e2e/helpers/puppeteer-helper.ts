@@ -11,10 +11,10 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
   );
 
 export const getActiveElement = async () =>
-  await page.evaluateHandle(() => document.activeElement)
+  await page.evaluateHandle(() => document.activeElement);
 
 export const getIdFromNode = async (node: ElementHandle<Element> | JSHandle<Element>) =>
-  await node.getProperty('id').then(x => x.jsonValue())
+  await node.getProperty('id').then(x => x.jsonValue());
 
 export const selectNode = async (selector: string) => {
   const selectorParts = selector.split('>>>');
