@@ -10,8 +10,13 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
     options
   );
 
-export const getInnerHTMLFromShadowRoot = async (documentSelector: string, shadowRootSelector: string) => {
-  const handle = await page.evaluateHandle(`document.querySelector('${documentSelector}').shadowRoot.querySelector('${shadowRootSelector}')`);
+export const selectNode = async (selector: string) => {
+  const selectorParts = selector.split('>>>');
+  return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${selectorParts[1] ? `.shadowRoot.querySelector('${selectorParts[1].trim()}')` : ''}`)).asElement();
+};
+
+export const getInnerHTMLFromShadowRoot = async (selector: string) => {
+  const handle = await selectNode(selector);
   return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };
 
