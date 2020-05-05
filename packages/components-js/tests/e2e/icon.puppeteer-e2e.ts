@@ -143,7 +143,7 @@ describe('p-icon', () => {
     const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
     expect(outerHTML).not.toContain('name=');
     // one tick delay to repaint
-    await page.waitFor(1);
+    await page.waitFor(10);
 
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon', 'i');
     expect(iconAfter).toContain('arrow-head-right');
