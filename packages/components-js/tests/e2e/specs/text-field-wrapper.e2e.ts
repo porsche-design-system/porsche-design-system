@@ -1,5 +1,5 @@
 import { E2EPage, newE2EPage } from '@stencil/core/testing';
-import { Components } from '../../src';
+import { Components } from '../../../src';
 import PIcon = Components.PIcon;
 
 const getCustomInputButtonDisabledState = async (page: E2EPage) => {
