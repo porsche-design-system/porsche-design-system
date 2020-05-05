@@ -13,6 +13,9 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
 export const getActiveElement = async () =>
   await page.evaluateHandle(() => document.activeElement);
 
+export const getActiveElementId = async () =>
+  await page.evaluate(() => document.activeElement.id);
+
 export const getIdFromNode = async (node: ElementHandle<Element> | JSHandle<Element>) =>
   await node.getProperty('id').then(x => x.jsonValue());
 
