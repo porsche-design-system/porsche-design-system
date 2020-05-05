@@ -1,5 +1,6 @@
 # Grid
-The grid is a fixed component in the digital Porsche layout. It provides a visual system consisting of a defined number of columns. It allows a responsive layout and therefore a homogeneous and balanced content placement across all Porsche web experiences and screen sizes.
+The grid is a fixed component in the digital Porsche layout. It provides a visual system consisting of a defined number of columns.
+ t allows a responsive layout and therefore a homogeneous and balanced content placement across all Porsche web experiences and screen sizes.
 
 ## Grid architecture
 
@@ -11,20 +12,18 @@ a 6-column-grid to avoid too much small-scaling or even „cluttering“.
 - **The grid gutter** separates the columns horizontally by in-between-spacings.
 The gutter is defined with fixed pixel sizes and breakpoints to balance size
 ratios between elements on the respective screen size. 
-- **The grid safe zone** defines the outer spacings between the content area and the left and right screen
-sides. Grid safe zone is defined using percentages. By default 7% and screen widths larger than 1760px 10% is used.
 
 ![Porsche Design System grid architecture](./assets/grid-components.png)
 
 ### Overview 
 
-| Viewport | Range | Columns | Gutter | Margin |
-| -------- | -------- | -------- | -------- | -------- |
-| **XS** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% |
-| **S** | 760-999 px | 12 columns |  24 px | 7% |
-| **M** | 1000-1299 px | 12 columns | 36 px| 7% |
-| **L** | 1300-1759 px  |  12 columns | 36 px | 7% | 
-| **XL** | 1760 px or larger |  12 columns | 36 px | 10% | 
+| Viewport | Range | Columns | Gutter | 
+| -------- | -------- | -------- | -------- | 
+| **XS** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 
+| **S** | 760-999 px | 12 columns |  24 px |
+| **M** | 1000-1299 px | 12 columns | 36 px| 
+| **L** | 1300-1759 px  |  12 columns | 36 px |  
+| **XL** | 1760 px or larger |  12 columns | 36 px | 
 
 ![Porsche Design System grid architecture](./assets/grid-viewports.png)
 
@@ -62,7 +61,9 @@ come with final layout settings (including the responsive grid) that can be turn
 Show Layout.
 
 ### Viewport range
-To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320px** to a maximum of **1920px**. For viewport sizes from 1920px onwards a growing white space outside the left and right edge should be used.
+To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320 px** 
+to a maximum of **1920 px**. For viewport sizes from 1920 px onwards a growing white space outside the left and right edge should be used.
+This can be done by using the [Content Wrapper](#/components/layout/content-wrapper) component.
 
 ![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
 
