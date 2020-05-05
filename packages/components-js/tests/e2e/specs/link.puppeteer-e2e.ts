@@ -1,11 +1,10 @@
-import { newE2EPage } from '@stencil/core/testing';
-import { selectNode, setContentWithDesignSystem } from '../helpers';
+import {getActiveElement, getIdFromNode, selectNode, setContentWithDesignSystem} from "../helpers";
 
 describe('link', () => {
   it('should render', async () => {
     await setContentWithDesignSystem(`<p-link href="#">Some label</p-link>`);
     const el = await selectNode('p-link >>> a');
-    expect(el).not.toBeNull();
+    expect(el).toBeDefined();
   });
 
   // ToDo: Discuss test usage.
@@ -26,98 +25,71 @@ describe('link', () => {
 
     for (const spy of [hostEventSpy, wrapperEventSpy]) {
       expect(spy.mock.instances.length).toBe(1);
-/*     for (const event of spy.mock.instances) {
-        expect(event.target.id).toBe(host.getProperty('id'));
-      }*/
+      /*     for (const event of spy.mock.instances) {
+              expect(event.target.id).toBe(host.getProperty('id'));
+            }*/
     }
   });
 
-  fit(`should trigger focus&blur events at the correct time`, async () => {
+  it(`should trigger focus&blur events at the correct time`, async () => {
+    // const page = await newE2EPage();
     await setContentWithDesignSystem(`
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link href="#">Some label</p-link>
-            <a href="#" id="after">after</a>
-          </div>
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link href="#" id="link">Some label</p-link>
+        <a href="#" id="after">after</a>
+      </div>
     `);
-    const pageDocument = await page.evaluateHandle('shadowRoot');
+
     const link = await selectNode('p-link');
-/*    const before = await selectNode('#before');*/
-/*    const after = await selectNode('#after');*/
-    await page.focus('#before');
+    const before = await selectNode('#before');
+    const after = await selectNode('#after');
 
-
-/*    const beforeFocusSpy = jest.spyOn(before, 'focus');*/
-    const linkFocusSpy = jest.spyOn(link, 'focus');
-/*    const linkFocusinSpy = await link.spyOnEvent('focusin');
-    const linkBlurSpy = await link.spyOnEvent('blur');
-    const linkFocusoutSpy = await link.spyOnEvent('focusout');
-    const afterFocusSpy = await after.spyOnEvent('focus');*/
-    await page.keyboard.press('Tab');
-    expect(pageDocument.getProperty('activeElement').then(x => x.jsonValue())).toEqual(link);
-
-
-    expect(linkFocusSpy).toHaveBeenCalledTimes(1);
-/*    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(0);
-    expect(linkFocusoutSpy.length).toBe(0);
-    expect(afterFocusSpy.length).toBe(0);*/
+    await before.focus();
+    let el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
-/*
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
 
-    expect(linkFocusSpy.length).toBe(1);
-    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(afterFocusSpy.length).toBe(1);
-*/
+    await page.keyboard.press('Tab');
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(after));
 
-/*    // tab back
+    // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(beforeFocusSpy.length).toBe(0);
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(2);
-    expect(linkFocusoutSpy.length).toBe(2);
-    expect(beforeFocusSpy.length).toBe(1);
-
-    await page.keyboard.up('ShiftLeft');*/
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link href="#">Some label</p-link>
-          </div>
+    await setContentWithDesignSystem(`
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link href="#">Some label</p-link>
+      </div>
     `);
 
-    async function linkHasFocus() {
-      return await page.evaluate(() => {
-        const linkElement = document.querySelector('p-link') as HTMLElement;
-        return document.activeElement === linkElement;
-      });
-    }
+    const linkHasFocus = async () => await page.evaluate(() => {
+      const linkElement = document.querySelector('p-link');
+      return document.activeElement === linkElement;
+    });
 
-    const link = await page.find('p-link');
-    const before = await page.find('#before');
+    const link = await selectNode('p-link');
+    const before = await selectNode('#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
     expect(await linkHasFocus()).toBe(true);
     await page.evaluate(() => {
-      const linkElement = document.querySelector('p-link') as HTMLElement;
+      const linkElement: HTMLElement = document.querySelector('p-link');
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
