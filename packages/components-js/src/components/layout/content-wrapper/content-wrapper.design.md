@@ -29,8 +29,7 @@ content area and the left and right screen sides** (100% = full screen width):
 | **XS-L (320-1759 px)** | 7% |
 | **XL (1760 px or larger)** | 10% |
 
-The content area is therefore calculated as follows:  
-Content area widht = Full screen width – (2 * margin) 
+![Content Wrapper with Basic safe zone](./assets/content-wrapper-safe-zone-basic.png)
 
 ### Enhanced
 
@@ -38,11 +37,15 @@ The "Enhanced" safe zone includes no defined margin on the left and right of the
 The content itself has a maximum width of 1920 px. In viewport sizes from 1920 px onwards there 
 is a growing white space outside the left and right edge.
 
+![Content Wrapper with Enhanced safe zone](./assets/content-wrapper-safe-zone-enhanced.png)
+
 ### None
 
 The name speaks for itself: The variant "None" includes no safe zone at all. So this is the variant of
 your choice when you want your content to span to the full screen width, containing no margin or visual 
 gap between content area and screen edges.
+
+![Content Wrapper with None safe zone](./assets/content-wrapper-safe-zone-none.png)
 
 ## Layout approach or: How to combine Content Wrapper with Grid, Flex or …
 
