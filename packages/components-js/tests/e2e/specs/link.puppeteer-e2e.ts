@@ -1,4 +1,9 @@
-import {getActiveElement, getIdFromNode, selectNode, setContentWithDesignSystem} from "../helpers";
+import {
+  getActiveElementId,
+  getIdFromNode,
+  selectNode,
+  setContentWithDesignSystem
+} from "../helpers";
 
 describe('link', () => {
   it('should render', async () => {
@@ -46,27 +51,22 @@ describe('link', () => {
     const after = await selectNode('#after');
 
     await before.focus();
-    let el = await getActiveElement();
-    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
-    el = await getActiveElement();
-    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
     await page.keyboard.press('Tab');
-    el = await getActiveElement();
-    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(after));
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(after));
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    el = await getActiveElement();
-    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    el = await getActiveElement();
-    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
