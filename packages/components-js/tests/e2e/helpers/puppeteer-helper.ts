@@ -1,4 +1,4 @@
-import {ElementHandle, JSHandle, NavigationOptions} from 'puppeteer';
+import { ElementHandle, JSHandle, NavigationOptions } from 'puppeteer';
 
 export const setContentWithDesignSystem = async (content: string, options: NavigationOptions = {waitUntil: 'networkidle0'}) =>
   await page.setContent(`
@@ -18,6 +18,9 @@ export const getActiveElementId = async () =>
 
 export const getIdFromNode = async (node: ElementHandle<Element> | JSHandle<Element>) =>
   await node.getProperty('id').then(x => x.jsonValue());
+
+export const getAttributeFromHandle = async (node: ElementHandle<Element> | JSHandle<Element>, attribute: string) =>
+  await page.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), node, attribute);
 
 export const selectNode = async (selector: string) => {
   const selectorParts = selector.split('>>>');

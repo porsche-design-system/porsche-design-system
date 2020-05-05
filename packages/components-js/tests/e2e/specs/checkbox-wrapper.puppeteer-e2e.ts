@@ -1,127 +1,108 @@
 import { E2EPage, newE2EPage } from '@stencil/core/testing';
 import { Components } from '../../../src';
 import PIcon = Components.PIcon;
+import { getAttributeFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
 
 describe('checkbox-wrapper', () => {
   it('should render', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>
     `);
-    const el = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-    expect(el).not.toBeNull();
+    const el = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    expect(el).toBeDefined();
   });
 
   it('should add aria-label to support screen readers properly', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>
     `);
-    const input = await page.find('p-checkbox-wrapper input');
-    expect(input.getAttribute('aria-label')).toBe('Some label');
+    const input = await selectNode('p-checkbox-wrapper input');
+    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label" message="Some error message" state="error">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>
     `);
-    const input = await page.find('p-checkbox-wrapper input');
-    expect(input.getAttribute('aria-label')).toBe('Some label. Some error message');
+    const input = await selectNode('p-checkbox-wrapper input');
+    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper>
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const checkboxComponent = await page.find('p-checkbox-wrapper');
-    const getLabelText = async () => {
-      return checkboxComponent.shadowRoot.querySelector('.p-checkbox-wrapper__label-text');
-    };
-
+    const getLabelText = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text')
     expect(await getLabelText()).toBeNull();
 
-    checkboxComponent.setProperty('label', 'Some label');
-
-    await page.waitForChanges();
-
+    await page.$eval('p-checkbox-wrapper', el => el.setAttribute('label', 'Some label'));
     expect(await getLabelText()).not.toBeNull();
-
   });
 
   it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const checkboxComponent = await page.find('p-checkbox-wrapper');
-    const getMessage = async () => {
-      return checkboxComponent.shadowRoot.querySelector('.p-checkbox-wrapper__message');
-    };
-
-    const getInput = async () => {
-      return checkboxComponent.find('input');
-    };
+    const checkboxComponent = await selectNode('p-checkbox-wrapper');
+    const getMessage = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
+      /*page.evaluate( (el: HTMLElement) => el.shadowRoot.querySelector('.p-checkbox-wrapper__message'), checkboxComponent);*/
+    const getInput = () => checkboxComponent.$('input');
 
     expect(await getMessage()).toBeNull();
 
-    checkboxComponent.setProperty('state', 'error');
-    checkboxComponent.setProperty('message', 'Some error message');
+    await page.$eval('p-checkbox-wrapper', el => el.setAttribute('state', 'error'));
+    await page.$eval('p-checkbox-wrapper', el => el.setAttribute('message', 'Some error message'));
+   /* await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);*/
+    await page.evaluate(el => el.setAttribute('message', 'Some error message'), checkboxComponent);
+    await page.waitFor(100);
+    console.log('####getMessage',await getAttributeFromHandle(await getMessage(), 'role'));
 
-    await page.waitForChanges();
+    expect(await getMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
+    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label. Some error message');
 
-    expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttribute('role', 'alert');
-    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some error message');
+    await page.evaluate(el => el.setAttribute('state', 'success'), checkboxComponent);
+    await page.evaluate(el => el.setAttribute('message', 'Some success message'), checkboxComponent);
+    await page.waitFor(100);
 
-    checkboxComponent.setProperty('state', 'success');
-    checkboxComponent.setProperty('message', 'Some success message');
+    expect(await getMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
+    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label. Some success message');
 
-    await page.waitForChanges();
-
-    expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).not.toHaveAttribute('role');
-    expect(await getInput()).toEqualAttribute('aria-label','Some label. Some success message');
-
-    checkboxComponent.setProperty('state', 'none');
-    checkboxComponent.setProperty('message', '');
-
-    await page.waitForChanges();
+    await page.evaluate(el => el.setAttribute('state', 'none'), checkboxComponent);
+    await page.evaluate(el => el.setAttribute('message', ''), checkboxComponent);
+    await page.waitFor(100);
 
     expect(await getMessage()).toBeNull();
-    expect(await getInput()).toEqualAttribute('aria-label','Some label');
+    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label');
   });
 
   it('should toggle checkbox when input is clicked', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const iconWrapper = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-    const input = await page.find('input[type="checkbox"]');
-
-    expect(iconWrapper).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
-
-    await input.click();
-
-    expect(iconWrapper).toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
+    const checkBoxShadowSelector = 'p-checkbox-wrapper >>> p-checkbox-wrapper__fake-checkbox--checked';
+    const input = await selectNode('input[type="checkbox"]');
+    expect(await selectNode(checkBoxShadowSelector)).toBeNull();
 
     await input.click();
+    expect(await selectNode(checkBoxShadowSelector)).toBeDefined();
 
-    expect(iconWrapper).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
+    await input.click();
+    expect(await selectNode(checkBoxShadowSelector)).toBeNull();
   });
 
   it('should toggle checkbox when label text is clicked', async () => {
