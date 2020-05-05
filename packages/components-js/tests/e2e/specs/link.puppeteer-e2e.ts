@@ -37,7 +37,6 @@ describe('link', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    // const page = await newE2EPage();
     await setContentWithDesignSystem(`
       <div id="wrapper">
         <a href="#" id="before">before</a>
