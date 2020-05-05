@@ -44,6 +44,8 @@ export class SelectWrapper {
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
+  private fakeOptionListNode: HTMLUListElement;
+  private fakeOptionHighlightedNode: HTMLLIElement;
 
   public componentWillLoad(): void {
     this.initSelect();
@@ -119,18 +121,19 @@ export class SelectWrapper {
             </span>
           </label>
           {this.variant === 'custom' &&
-          <span
+          <ul
             class={fakeOptionListClasses}
             role='listbox'
             aria-activedescendant={`option${this.optionSelected}`}
-            tabIndex={0}
-            aria-expanded={this.fakeOptionListHidden ? 'true' : 'false'}
+            tabIndex={-1}
+            aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
             aria-labelledby={this.label}
+            ref={el => this.fakeOptionListNode = el}
           >
             {
               this.createFakeOptionList()
             }
-          </span>
+          </ul>
           }
         </div>
         {this.isMessageVisible &&
@@ -262,16 +265,15 @@ export class SelectWrapper {
 
   private createFakeOptionList(): any {
     return Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
-      <p-text
+      <li
         id={`option${key}`}
         role='option'
-        tag='span'
         color='inherit'
         class={`
           ${prefix('select-wrapper__fake-option')}
           ${this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : ''}
-          ${this.optionHighlighted === key && prefix('select-wrapper__fake-option--active')}
-          ${this.optionDisabled === key && prefix('select-wrapper__fake-option--disabled')}
+          ${this.optionHighlighted === key ? prefix('select-wrapper__fake-option--active') : ''}
+          ${this.optionDisabled === key ? prefix('select-wrapper__fake-option--disabled') : ''}
         `}
         onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
         aria-selected={this.optionSelected === key && 'true'}
@@ -281,7 +283,7 @@ export class SelectWrapper {
         {key === this.optionSelected &&
           <p-icon class={prefix('select-wrapper__fake-option-icon')} name='check' color='inherit'/>
         }
-      </p-text>
+      </li>
     );
   }
 
@@ -298,6 +300,7 @@ export class SelectWrapper {
         this.optionHighlighted += 1;
       }
     }
+    
     if(direction === 'up') {
       this.optionHighlighted--;
       if (this.optionHighlighted < 0 && this.optionDisabled === this.options.length-1) {
@@ -308,6 +311,18 @@ export class SelectWrapper {
       }
       else if (this.optionHighlighted === this.optionDisabled) {
         this.optionHighlighted -= 1;
+      }
+    }
+
+    if (this.fakeOptionListNode.scrollHeight > this.fakeOptionListNode.clientHeight) {
+      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('li')[this.optionHighlighted];
+      const scrollBottom = this.fakeOptionListNode.clientHeight + this.fakeOptionListNode.scrollTop;
+      const elementBottom = this.fakeOptionHighlightedNode.offsetTop + this.fakeOptionHighlightedNode.offsetHeight;
+      if (elementBottom > scrollBottom) {
+        this.fakeOptionListNode.scrollTop = elementBottom - this.fakeOptionListNode.clientHeight;
+      }
+      else if (this.fakeOptionHighlightedNode.offsetTop < this.fakeOptionListNode.scrollTop) {
+        this.fakeOptionListNode.scrollTop = this.fakeOptionHighlightedNode.offsetTop;
       }
     }
   };

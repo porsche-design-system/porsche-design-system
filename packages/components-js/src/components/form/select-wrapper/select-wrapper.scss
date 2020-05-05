@@ -217,13 +217,34 @@
   }
 
   &__fake-option-list {
+    @include p-text();
     position: absolute;
+    margin: 0;
+    padding: 0;
     border: 1px solid $p-color-theme-light-neutral-contrast-medium;
     border-top-color: $p-color-theme-light-neutral-contrast-low;
     left: 0;
     right: 0;
     top: calc(100% - 1px);
+    max-height: 200px;
+    overflow-y: auto;
     background-color: $p-color-theme-light-background;
+    list-style-type: none;
+
+    // Firefox scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+
+    // Webkit scrollbar styling defaults to visible
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, .4);
+    }
 
     &:focus {
       outline: none;
