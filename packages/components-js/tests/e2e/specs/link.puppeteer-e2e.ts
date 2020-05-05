@@ -1,4 +1,5 @@
 import { newE2EPage } from '@stencil/core/testing';
+import {getActiveElement, getIdFromNode, selectNode, setContentWithDesignSystem} from "../helpers";
 
 describe('link', () => {
   it('should render', async () => {
@@ -27,60 +28,42 @@ describe('link', () => {
     }
   });
 
-  it(`should trigger focus&blur events at the correct time`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link href="#">Some label</p-link>
-            <a href="#" id="after">after</a>
-          </div>
+  fit(`should trigger focus&blur events at the correct time`, async () => {
+    // const page = await newE2EPage();
+    await setContentWithDesignSystem(`
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link href="#" id="link">Some label</p-link>
+        <a href="#" id="after">after</a>
+      </div>
     `);
-    const link = await page.find('p-link');
-    const before = await page.find('#before');
-    const after = await page.find('#after');
+
+    const link = await selectNode('p-link');
+    const before = await selectNode('#before');
+    const after = await selectNode('#after');
+
     await before.focus();
-
-    const beforeFocusSpy = await before.spyOnEvent('focus');
-    const linkFocusSpy = await link.spyOnEvent('focus');
-    const linkFocusinSpy = await link.spyOnEvent('focusin');
-    const linkBlurSpy = await link.spyOnEvent('blur');
-    const linkFocusoutSpy = await link.spyOnEvent('focusout');
-    const afterFocusSpy = await after.spyOnEvent('focus');
-    await page.keyboard.press('Tab');
-    expect(linkFocusSpy.length).toBe(1);
-    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(0);
-    expect(linkFocusoutSpy.length).toBe(0);
-    expect(afterFocusSpy.length).toBe(0);
+    let el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
 
-    expect(linkFocusSpy.length).toBe(1);
-    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(afterFocusSpy.length).toBe(1);
+    await page.keyboard.press('Tab');
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(after));
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(beforeFocusSpy.length).toBe(0);
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(link));
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(2);
-    expect(linkFocusoutSpy.length).toBe(2);
-    expect(beforeFocusSpy.length).toBe(1);
-
-    await page.keyboard.up('ShiftLeft');
+    el = await getActiveElement();
+    expect(await getIdFromNode(el)).toEqual(await getIdFromNode(before));
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
