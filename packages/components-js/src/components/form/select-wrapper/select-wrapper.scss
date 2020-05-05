@@ -245,7 +245,7 @@
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &:hover {
+    &:not([aria-disabled]):hover {
       color: $p-color-theme-light-state-hover;
     }
 
@@ -262,6 +262,11 @@
 
     &--active {
       color: $p-color-theme-light-state-active;
+    }
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+      cursor: not-allowed;
     }
   }
 
