@@ -1,9 +1,9 @@
-// raw puppeteer tests instead of stencil e2e-test -> necessary to use request interception to test race conditions
 module.exports = {
-  preset: 'jest-puppeteer',
-  testRegex: './*\\.puppeteer-e2e\\.ts$',
-  transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+  server: {
+    command: 'node node_modules/.bin/stencil build --watch --serve --no-open',
+    port: 3333
   },
-  testTimeout: 10000
+  launch: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+  }
 };
