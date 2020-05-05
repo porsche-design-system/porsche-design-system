@@ -28,7 +28,7 @@ describe('link', () => {
     }
   });
 
-  fit(`should trigger focus&blur events at the correct time`, async () => {
+  it(`should trigger focus&blur events at the correct time`, async () => {
     // const page = await newE2EPage();
     await setContentWithDesignSystem(`
       <div id="wrapper">
@@ -67,23 +67,20 @@ describe('link', () => {
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-link href="#">Some label</p-link>
-          </div>
+    await setContentWithDesignSystem(`
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-link href="#">Some label</p-link>
+      </div>
     `);
 
-    async function linkHasFocus() {
-      return await page.evaluate(() => {
-        const linkElement = document.querySelector('p-link') as HTMLElement;
-        return document.activeElement === linkElement;
-      });
-    }
+    const linkHasFocus = async () => await page.evaluate(() => {
+      const linkElement = document.querySelector('p-link') as HTMLElement;
+      return document.activeElement === linkElement;
+    });
 
-    const link = await page.find('p-link');
-    const before = await page.find('#before');
+    const link = await selectNode('p-link');
+    const before = await selectNode('#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
