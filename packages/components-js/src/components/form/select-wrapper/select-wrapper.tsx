@@ -40,6 +40,7 @@ export class SelectWrapper {
   @State() private fakeOptionListHidden = true;
   @State() private optionSelected: number;
   @State() private optionHighlighted: number;
+  @State() private optionDisabled: number;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -165,12 +166,10 @@ export class SelectWrapper {
     this.select = this.host.querySelector('select');
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(() => {
-        this.select = this.host.querySelector('select');
         this.setOptionList();
-        // this.optionHighlighted = this.optionSelected;
       });
     });
-    const config = { childList: true };
+    const config = {childList: true};
     observer.observe(this.select, config);
   }
 
@@ -241,6 +240,11 @@ export class SelectWrapper {
   private setOptionList(): void  {
     this.options = this.select.querySelectorAll('option');
     this.optionSelected = this.select.selectedIndex;
+    this.options.forEach((item: HTMLOptionElement, key: number) => {
+      if (item.hasAttribute('disabled')) {
+        this.optionDisabled = key;
+      }
+    });
   }
 
   private setOptionSelected(key: number): void {
@@ -265,10 +269,13 @@ export class SelectWrapper {
         color='inherit'
         class={`
           ${prefix('select-wrapper__fake-option')}
-          ${(key === this.optionSelected ? prefix('select-wrapper__fake-option--selected') : '')}
+          ${this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : ''}
           ${this.optionHighlighted === key && prefix('select-wrapper__fake-option--active')}
+          ${this.optionDisabled === key && prefix('select-wrapper__fake-option--disabled')}
         `}
-        onClick={() => this.setOptionSelected(key)}
+        onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
+        aria-selected={this.optionSelected === key && 'true'}
+        aria-disabled={this.optionDisabled === key && 'true'}
       >
         <span>{option.text}</span>
         {key === this.optionSelected &&
@@ -281,15 +288,27 @@ export class SelectWrapper {
   private cycleFakeOptionList(direction: string): void {
     if(direction === 'down') {
       this.optionHighlighted++;
+      if (this.optionHighlighted > this.options.length-1 && this.optionDisabled === 0) {
+        this.optionHighlighted = 1;
+      }
+      else if ((this.optionHighlighted === this.optionDisabled && this.optionDisabled === this.options.length-1) || this.optionHighlighted > this.options.length-1) {
+        this.optionHighlighted = 0;
+      }
+      else if (this.optionHighlighted === this.optionDisabled) {
+        this.optionHighlighted += 1;
+      }
     }
     if(direction === 'up') {
       this.optionHighlighted--;
-    }
-    if (this.optionHighlighted < 0) {
-      this.optionHighlighted = this.options.length-1;
-    }
-    if (this.optionHighlighted > this.options.length-1) {
-      this.optionHighlighted = 0;
+      if (this.optionHighlighted < 0 && this.optionDisabled === this.options.length-1) {
+        this.optionHighlighted = this.options.length-2;
+      }
+      else if ((this.optionHighlighted === this.optionDisabled && this.optionDisabled === 0) || this.optionHighlighted < 0) {
+        this.optionHighlighted = this.options.length-1;
+      }
+      else if (this.optionHighlighted === this.optionDisabled) {
+        this.optionHighlighted -= 1;
+      }
     }
   };
 
