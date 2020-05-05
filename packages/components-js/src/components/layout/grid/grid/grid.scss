@@ -4,44 +4,6 @@ $p-grid-gutter: p-rem(16px);
 $p-grid-gutter-s: p-rem(24px);
 $p-grid-gutter-m: p-rem(36px);
 
-$p-grid-safe-zone: 7vw;
-$p-grid-safe-zone-xl: 10vw;
-
-$p-grid-max-width: p-rem(map-get($p-breakpoints, xxl));
-
-.#{$p-global-class-prefix}grid-safe-zone {
-  display: flex !important;
-  justify-content: center !important;
-  margin: {
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  &--basic {
-    padding: {
-      left: $p-grid-safe-zone !important;
-      right: $p-grid-safe-zone !important;
-    }
-
-    @include p-breakpoint("xl") {
-      padding: {
-        left: $p-grid-safe-zone-xl !important;
-        right: $p-grid-safe-zone-xl !important;
-      }
-    }
-
-    & > .#{$p-global-class-prefix}grid {
-      max-width: p-rem(1536px) !important;
-    }
-  }
-
-  &--enhance {
-    & > .#{$p-global-class-prefix}grid {
-      max-width: p-rem(1920px) !important;
-    }
-  }
-}
-
 .#{$p-global-class-prefix}grid {
   display: flex !important;
   flex-wrap: wrap !important;

@@ -2,13 +2,7 @@
 
 The Porsche Design System grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](#/components/layout/flex) component is the right choice.
 
-In order to prevent horizontal scrolling it's needed to define a global CSS rule in your application, e.g.:
-
-```
-body {
-  overflow-x: hidden;
-}
-```
+In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](#/components/layout/content-wrapper).
 
 ### Grid size
 
@@ -32,55 +26,6 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-grid class="example-grid">
     <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
     <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
-  </p-grid>
-</Playground>
-
----
-
-#### Safe Zone
-
-Enabling the `safe-zone` property defines the outer spacings between the content area and the left and right screen
-sides, as well as centering its content and setting a max-width.
-
-* **None**: full-width
-* **Basic**: for max viewport width 1920px with 7-10% safe-zone
-* **Enhance**: for max viewport width 1920px
-
-<Playground>
-  <template #configurator>
-    <select v-model="safeZone">
-      <option disabled>Select a safe-zone mode</option>
-      <option selected value="none">None</option>
-      <option value="basic">Basic</option>
-      <option value="enhance">Enhance</option>
-    </select>
-  </template>
-  <template>
-    <p-grid class="example-grid" :safe-zone="safeZone">
-      <p-grid-item size="4">A</p-grid-item>
-      <p-grid-item size="8">B</p-grid-item>
-    </p-grid>
-  </template>
-</Playground>
-
-<Playground>
-  <p-grid class="example-grid" safe-zone="none">
-    <p-grid-item size="4">A</p-grid-item>
-    <p-grid-item size="8">B</p-grid-item>
-  </p-grid>
-</Playground>
-
-<Playground>
-  <p-grid class="example-grid" safe-zone="basic">
-    <p-grid-item size="4">A</p-grid-item>
-    <p-grid-item size="8">B</p-grid-item>
-  </p-grid>
-</Playground>
-
-<Playground>
-  <p-grid class="example-grid" safe-zone="enhance">
-    <p-grid-item size="4">A</p-grid-item>
-    <p-grid-item size="8">B</p-grid-item>
   </p-grid>
 </Playground>
 
@@ -205,15 +150,6 @@ Nesting inside columns with the following widths should be prevented, because al
 * total width of 7
 * total width of 5
 * total width of 3
-
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  
-  @Component
-  export default class PlaygroundGrid extends Vue {
-    public safeZone: string = 'none';
-  }
-</script>
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/scss-utils/index';

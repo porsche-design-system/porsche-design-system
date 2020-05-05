@@ -1,0 +1,31 @@
+@import '../../../../../scss-utils/index';
+
+:host {
+  display: block;
+  overflow-x: hidden !important;
+}
+
+.#{$p-global-class-prefix}content-wrapper {
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+
+  &--basic {
+    max-width: p-rem(1536px);
+    padding: {
+      left: 7vw;
+      right: 7vw;
+    }
+
+    @include p-breakpoint("xl") {
+      padding: {
+        left: 10vw;
+        right: 10vw;
+      }
+    }
+  }
+
+  &--enhance {
+    max-width: p-rem(1920px);
+  }
+}

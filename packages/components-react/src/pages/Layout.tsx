@@ -4,7 +4,8 @@ import {
   PFlexItem as FlexItem,
   PGrid as Grid,
   PGridItem as GridItem,
-  PHeadline as Headline
+  PHeadline as Headline,
+  PContentWrapper as ContentWrapper
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -157,6 +158,21 @@ export function Layout() {
             <br/>
             <br/>
             <Divider orientation={'vertical'} style={{'height': '100px'}}/>
+          </div>
+          <Divider/>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size={2}>
+          <Headline variant={'headline-4'} tag={'h4'}>
+            &lt;p-content-wrapper&gt;
+          </Headline>
+        </GridItem>
+        <GridItem size={10}>
+          <div className="playground light spacing-block">
+            <ContentWrapper>
+              <div className="example-content">Some content</div>
+            </ContentWrapper>
           </div>
           <Divider/>
         </GridItem>
