@@ -9,7 +9,7 @@ Can be used along with [Grid](#/components/layout/grid), [Flex](#/components/lay
 
 * **None**: full width
 * **Basic**: max width 1920px including 7-10% safe zone
-* **Enhance**: max width 1920px
+* **Enhanced**: max width 1920px
 
 <Playground>
   <template #configurator>
@@ -17,7 +17,7 @@ Can be used along with [Grid](#/components/layout/grid), [Flex](#/components/lay
       <option disabled>Select a safe-zone mode</option>
       <option value="none">None</option>
       <option value="basic">Basic</option>
-      <option value="enhance">Enhance</option>
+      <option value="enhanced">Enhanced</option>
     </select>
   </template>
   <template>
