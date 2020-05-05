@@ -111,7 +111,7 @@ export namespace Components {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "safeZone"?: "basic" | "enhance" | "none";
+        "safeZone"?: "basic" | "enhanced" | "none";
     }
     interface PDivider {
         /**
@@ -792,7 +792,7 @@ declare namespace LocalJSX {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "safeZone"?: "basic" | "enhance" | "none";
+        "safeZone"?: "basic" | "enhanced" | "none";
     }
     interface PDivider {
         /**
