@@ -148,9 +148,9 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const getFakeRadio1 =  await selectNode('#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
+    const getFakeRadio1 = await selectNode('#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
     const getFakeRadio1Input = await selectNode('#radio-1 > input');
-    const getFakeRadio2 =  await selectNode('#radio-2 >>> .p-radio-button-wrapper__fake-radio-button');
+    const getFakeRadio2 = await selectNode('#radio-2 >>> .p-radio-button-wrapper__fake-radio-button');
     const getFakeRadio2Input = await selectNode('#radio-2 > input');
 
     expect(await getClassFromHandle(getFakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -191,9 +191,9 @@ describe('radio-button-wrapper', () => {
   });
 
   describe('hover state', () => {
-    const getBoxShadow = () => page.evaluate(async () =>  {
+    const getBoxShadow = () => page.evaluate(() => {
       const fakeRadioButton = document.querySelector('p-radio-button-wrapper').shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio-button');
-      const style =  getComputedStyle(fakeRadioButton);
+      const style = getComputedStyle(fakeRadioButton);
 
       return style.boxShadow;
     });
