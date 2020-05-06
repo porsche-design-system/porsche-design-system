@@ -1,7 +1,11 @@
-import { E2EPage, newE2EPage } from '@stencil/core/testing';
+import {
+  getAttributeFromHandle,
+  getClassFromHandle,
+  selectNode,
+  setContentWithDesignSystem
+} from '../helpers';
 import { Components } from '../../../src';
 import PIcon = Components.PIcon;
-import { getAttributeFromHandle, getClassFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
 
 describe('checkbox-wrapper', () => {
   it('should render', async () => {
@@ -62,10 +66,9 @@ describe('checkbox-wrapper', () => {
 
     await page.$eval('p-checkbox-wrapper', el => el.setAttribute('state', 'error'));
     await page.$eval('p-checkbox-wrapper', el => el.setAttribute('message', 'Some error message'));
-   /* await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);*/
+    /* await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);*/
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), checkboxComponent);
     await page.waitFor(100);
-    console.log('####getMessage',await getAttributeFromHandle(await getMessage(), 'role'));
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
@@ -152,7 +155,7 @@ describe('checkbox-wrapper', () => {
     expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
-  fit('should disable checkbox when checkbox is set disabled programmatically', async () => {
+  it('should disable checkbox when checkbox is set disabled programmatically', async () => {
     await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
@@ -175,142 +178,137 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('indeterminate state', () => {
-    const getIconName = async (page: E2EPage) => {
-      return await page.evaluate(() => {
-        const wrapper = document.querySelector('p-checkbox-wrapper');
-        const icon =  wrapper.shadowRoot.querySelector('p-icon') as PIcon;
-        return icon.name;
-      });
-    };
+    const getIconName = () => page.evaluate(() => {
+      const icon: PIcon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('p-icon');
+      return icon.name;
+    });
 
-    const setIndeterminate = async (page: E2EPage, value: boolean) => {
+    const setIndeterminate = async (value: boolean) => {
       await page.evaluate((indeterminate: boolean) => {
         const input = document.querySelector('input[type="checkbox"]') as HTMLInputElement;
         input.indeterminate = indeterminate;
       }, value);
 
-      await page.waitForChanges();
+      await page.waitFor(100);
     };
 
-    const setChecked = async (page: E2EPage, value: boolean) => {
+    const setChecked = async (value: boolean) => {
       await page.evaluate((checked: boolean) => {
         const input = document.querySelector('input[type="checkbox"]') as HTMLInputElement;
         input.checked = checked;
       }, value);
 
-      await page.waitForChanges();
+      await page.waitFor(100);
     };
 
-    const showsIcon = async (page: E2EPage) => {
-      const icon = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__icon');
-      const styles = await icon.getComputedStyle();
-      await page.waitFor(parseFloat(styles.transitionDuration) * 1000);
-      return await icon.isVisible();
-    };
+    // ToDo: Refactor computedStyle Helper
+    const showsIcon = () => page.evaluate(async () => {
+      const icon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__icon')
+      const style = getComputedStyle(icon);
+      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000)); // transitionDuration is in sec, timeout needs ms
+      return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+    });
 
     it('should show indeterminate state when checkbox is set to indeterminate', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      expect(await getIconName(page)).toBe('check');
-      expect(await showsIcon(page)).toBe(false);
+      expect(await getIconName()).toBe('check');
+      expect(await showsIcon()).toBe(false);
 
-      await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
+      await setIndeterminate(true);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
 
-      await setIndeterminate(page, false);
-      expect(await getIconName(page)).toBe('check');
-      expect(await showsIcon(page)).toBe(false);
+      await setIndeterminate(false);
+      expect(await getIconName()).toBe('check');
+      expect(await showsIcon()).toBe(false);
     });
 
     it('should remove indeterminate state when checkbox value is changed by the user', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      const input = await page.find('input[type="checkbox"]');
+      const input = await selectNode('input[type="checkbox"]');
 
-      await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
-
-      await input.click();
-      expect(await getIconName(page)).toBe('check');
-      expect(await showsIcon(page)).toBe(true);
-
-      await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
+      await setIndeterminate(true);
+      await page.waitFor(100);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
 
       await input.click();
-      expect(await getIconName(page)).toBe('check');
-      expect(await showsIcon(page)).toBe(false);
+      await page.waitFor(100);
+      expect(await getIconName()).toBe('check');
+      expect(await showsIcon()).toBe(true);
+
+      await setIndeterminate(true);
+      await page.waitFor(100);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
+
+      await input.click();
+      await page.waitFor(100);
+      expect(await getIconName()).toBe('check');
+      expect(await showsIcon()).toBe(false);
     });
 
     it('should keep indeterminate state when checkbox value is changed programmatically', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`);
+      await setContentWithDesignSystem(`
+          <p-checkbox-wrapper label="Some label">
+            <input type="checkbox" name="some-name"/>
+          </p-checkbox-wrapper>`);
 
-      await setIndeterminate(page, true);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
+      await setIndeterminate(true);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
 
-      await setChecked(page, true);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
+      await setChecked(true);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
 
-      await setChecked(page, false);
-      expect(await getIconName(page)).toBe('minus');
-      expect(await showsIcon(page)).toBe(true);
+      await setChecked(false);
+      expect(await getIconName()).toBe('minus');
+      expect(await showsIcon()).toBe(true);
     });
   });
 
   describe('hover state', () => {
-    const getBoxShadow = async (page: E2EPage) => {
-      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-      const styles = await fakeCheckbox.getComputedStyle();
-      return styles.boxShadow;
-    };
+    // ToDo: Refactor computedStyle Helper
+    const getBoxShadow = () => page.evaluate(async () => {
+      const fakeCheckbox = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox');
+      const style = getComputedStyle(fakeCheckbox);
+
+      return style.boxShadow;
+    });
 
     it('should change box-shadow color when fake checkbox is hovered', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      const fakeCheckbox = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-
-      const initialBoxShadow = await getBoxShadow(page);
-
+      const fakeCheckbox = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+      const initialBoxShadow = getBoxShadow();
       await fakeCheckbox.hover();
 
-      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+      expect(getBoxShadow()).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      const labelText = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-
-      const initialBoxShadow = await getBoxShadow(page);
+      const labelText = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
+      const initialBoxShadow = getBoxShadow();
 
       await labelText.hover();
-
-      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow()).not.toBe(initialBoxShadow);
     });
   });
 });
