@@ -443,10 +443,6 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
-        /**
-          * Custom styled select data-list.
-         */
-        "variant"?: "native" | "custom";
     }
     interface PSpinner {
         /**
@@ -1122,10 +1118,6 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
-        /**
-          * Custom styled select data-list.
-         */
-        "variant"?: "native" | "custom";
     }
     interface PSpinner {
         /**

@@ -33,20 +33,23 @@ export class SelectWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Custom styled select data-list. */
-  @Prop() public variant?: 'native' | 'custom' = 'custom';
-
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionSelected: number;
   @State() private optionHighlighted: number;
   @State() private optionDisabled: number;
+  @State() private isTouch: boolean = SelectWrapper.isTouchDevice();
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
   private optgroups: NodeListOf<HTMLOptGroupElement>;
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
+
+  private static isTouchDevice(): boolean {
+    return (('ontouchstart' in window)
+      || (navigator.maxTouchPoints > 0));
+  }
 
   public componentWillLoad(): void {
     this.initSelect();
@@ -55,7 +58,7 @@ export class SelectWrapper {
     this.bindStateListener();
     this.addSlottedStyles();
 
-    if(this.variant === 'custom') {
+    if(!this.isTouch) {
       this.observeSelect();
       this.setOptionList();
       this.handleSelectEvents();
@@ -72,7 +75,7 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
-    if(this.variant === 'custom' && typeof document !== 'undefined') {
+    if(!this.isTouch && typeof document !== 'undefined') {
       document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
     }
   }
@@ -127,7 +130,7 @@ export class SelectWrapper {
               <slot/>
             </span>
           </label>
-          {this.variant === 'custom' &&
+          {!this.isTouch &&
           <div
             class={fakeOptionListClasses}
             role='listbox'
