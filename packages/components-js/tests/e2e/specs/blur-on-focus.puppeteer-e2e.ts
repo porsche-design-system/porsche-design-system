@@ -74,7 +74,7 @@ describe('blur on focus', () => {
   });
 
   it('should not blur if exclude class is set to element or parent', async () => {
-    await page.reload()
+    await page.reload(); // reload fixes flaky test 🤷‍♂️
     await setContentWithDesignSystem(`
         <p-button class="p-re-enable-focus-on-click">Some label</p-button>
         <p-button>Other label</p-button>
