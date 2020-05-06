@@ -276,7 +276,7 @@ describe('checkbox-wrapper', () => {
 
   describe('hover state', () => {
     // ToDo: Refactor computedStyle Helper
-    const getBoxShadow = () => page.evaluate(async () => {
+    const getBoxShadow = () => page.evaluate(() => {
       const fakeCheckbox = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox');
       const style = getComputedStyle(fakeCheckbox);
 
