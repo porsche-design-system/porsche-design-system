@@ -55,10 +55,14 @@ export class SelectWrapper {
     this.bindStateListener();
     this.addSlottedStyles();
 
-    if(this.variant !== 'native') {
+    if(this.variant === 'custom') {
+      this.observeSelect();
       this.setOptionList();
       this.handleSelectEvents();
       this.optionHighlighted = this.optionSelected;
+      if (typeof document === 'undefined') {
+        return;
+      }
       document.addEventListener('mousedown', this.handleClickOutside.bind(this), false);
     }
   }
@@ -68,7 +72,9 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
-    document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+    if(this.variant === 'custom' && typeof document !== 'undefined') {
+      document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+    }
   }
 
   public render(): JSX.Element {
@@ -168,6 +174,9 @@ export class SelectWrapper {
 
   private initSelect(): void {
     this.select = this.host.querySelector('select');
+  }
+
+  private observeSelect(): void {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach(() => {
         this.setOptionList();
