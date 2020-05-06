@@ -48,8 +48,8 @@ describe('link', () => {
     const link = await selectNode('p-link');
     const before = await selectNode('#before');
     const after = await selectNode('#after');
-
     await before.focus();
+
     expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
@@ -76,6 +76,7 @@ describe('link', () => {
       </div>
     `);
 
+    // ToDo: Helper function?
     const linkHasFocus = async () => await page.evaluate(() => {
       const linkElement = document.querySelector('p-link');
       return document.activeElement === linkElement;
