@@ -15,6 +15,7 @@ const events = new Map<number, WaitForEvent>();
 export const initAddEventListener = async () => {
   events.clear();
 
+  // TODO: maybe check if this has been registered before since it survives navigation
   await page.exposeFunction('puppeteerOnEvent', (id: number, ev: any) => {
     // NODE CONTEXT
     nodeContextEvents(events, id, ev);
