@@ -1,17 +1,14 @@
 # Grid
-The grid is a fixed component in the digital Porsche layout. It provides a visual system consisting of a defined number of columns.
- t allows a responsive layout and therefore a homogeneous and balanced content placement across all Porsche web experiences and screen sizes.
+The grid provides a visual stucturing system for a homogeneous and balanced content placement across all Porsche web experiences and screen sizes. It consists of a defined number of columns for defining layout areas.
 
 ## Grid architecture
 
-- The Porsche Design System grid uses **12 columns**, offering a high layout flexibility by
-being dividable by 2, 3, 4 or 6. To enable a flexible adaption of content to any
-screen size, its width is based on percentages (resulting from total screen
-width minus gutter and margin width). For layouting on mobile screens (widths < 759px), it is recommended to use
-a 6-column-grid to avoid too much small-scaling or even „cluttering“.
+- **The 12 grid columns** offer a high layout flexibility by
+being dividable by 2, 3, 4 or 6. For layouting on mobile screens (widths < 759px), it is recommended to use a 6-column-grid to avoid too much small-scaling or even „cluttering“.
 - **The grid gutter** separates the columns horizontally by in-between-spacings.
 The gutter is defined with fixed pixel sizes and breakpoints to balance size
 ratios between elements on the respective screen size. 
+- **The grid width** is resulting from the total screen width minus the fixed gutters and minus defined margins using the [Content Wrapper](#/components/layout/content-wrapper) component.
 
 ![Porsche Design System grid architecture](./assets/grid-components.png)
 
@@ -28,19 +25,16 @@ ratios between elements on the respective screen size.
 ![Porsche Design System grid architecture](./assets/grid-viewports.png)
 
 ## Grid breakpoints 
-Breakpoints are predefined points at which the content is changed to ensure an optimised layout on all screen sizes.
+Breakpoints are predefined width points at which the layout can be changed to fit the corresponding screen size.
 Within the layouts for Porsche web experiences, we use the following main breakpoints, derived from statistical data on browser size usage: 
 
+- 480px
 - 760px
 - 1000px 
 - 1300px
 - 1760px
 
-### Breakpoint usage
-
-It is highly recommended to stick to the defined breakpoints, especially for general elements like headers or footers.
-
-As for other components or modules, not every individual breakpoint has to be used. And also vice versa: if more breakpoints are needed for a specific component, you are free to add more. Please ensure that every additional breakpoint has a minimum gap of 100px to the existing main breakpoints (in order to avoid "breakpoint overload").
+It is highly recommended to stick to the defined breakpoints, especially for general elements like headers or footers. But not every individual offered breakpoint has to be used.
 
 ### Optimising for defined viewport sizes
 
@@ -54,18 +48,19 @@ Based on statistical use of specific devices, all Porsche web layouts should be 
 
 The main breakpoints (see above) are deliberately chosen with some distance from the optimised device sizes due to a higher fault tolerance.
 
-### Layout template 
-To make layouting from scratch as easy as possible, the
-optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch). They
-come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas →
-Show Layout.
-
 ### Viewport range
+
 To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320 px** 
 to a maximum of **1920 px**. For viewport sizes from 1920 px onwards a growing white space outside the left and right edge should be used.
 This can be done by using the [Content Wrapper](#/components/layout/content-wrapper) component.
 
 ![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
+
+### Layout template 
+To make layouting from scratch as easy as possible, the
+optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch). They
+come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas →
+Show Layout.
 
 ## Tips for responsive layouting
 
