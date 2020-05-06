@@ -22,6 +22,8 @@ export const getIdFromNode = async (node: ElementHandle<Element> | JSHandle<Elem
 export const getAttributeFromHandle = async (node: ElementHandle<Element> | JSHandle<Element>, attribute: string) =>
   await page.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), node, attribute);
 
+export const getClassFromHandle = async (node: ElementHandle<Element> | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
+
 export const selectNode = async (selector: string) => {
   const selectorParts = selector.split('>>>');
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${selectorParts[1] ? `.shadowRoot.querySelector('${selectorParts[1].trim()}')` : ''}`)).asElement();
