@@ -5,7 +5,7 @@ describe('link pure', () => {
   it('should render', async () => {
     await setContentWithDesignSystem(`<p-link-pure href="#">Some label</p-link-pure>`);
     const el = await selectNode('p-link-pure >>> a');
-    expect(el).not.toBeNull();
+    expect(el).toBeDefined();
   });
 
   // ToDo: Discuss test usage.

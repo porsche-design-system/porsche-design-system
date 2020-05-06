@@ -64,9 +64,7 @@ describe('checkbox-wrapper', () => {
 
     expect(await getMessage()).toBeNull();
 
-    await page.$eval('p-checkbox-wrapper', el => el.setAttribute('state', 'error'));
-    await page.$eval('p-checkbox-wrapper', el => el.setAttribute('message', 'Some error message'));
-    /* await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);*/
+    await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), checkboxComponent);
     await page.waitFor(100);
 
@@ -308,7 +306,7 @@ describe('checkbox-wrapper', () => {
       const initialBoxShadow = getBoxShadow();
 
       await labelText.hover();
-      expect(await getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(getBoxShadow()).not.toBe(initialBoxShadow);
     });
   });
 });
