@@ -47,8 +47,13 @@ export class SelectWrapper {
   private fakeOptionHighlightedNode: HTMLDivElement;
 
   private static isTouchDevice(): boolean {
-    return (('ontouchstart' in window)
-      || (navigator.maxTouchPoints > 0));
+    if (typeof window === 'undefined') {
+      return;
+    }
+    return !!(('ontouchstart' in window) ||
+      window.navigator.msPointerEnabled &&
+      window.MSGesture ||
+      window.navigator.maxTouchPoints > 0);
   }
 
   public componentWillLoad(): void {
