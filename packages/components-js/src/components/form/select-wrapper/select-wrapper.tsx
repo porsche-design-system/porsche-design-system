@@ -44,8 +44,9 @@ export class SelectWrapper {
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
-  private fakeOptionListNode: HTMLUListElement;
-  private fakeOptionHighlightedNode: HTMLLIElement;
+  private optgroups: NodeListOf<HTMLOptGroupElement>;
+  private fakeOptionListNode: HTMLDivElement;
+  private fakeOptionHighlightedNode: HTMLDivElement;
 
   public componentWillLoad(): void {
     this.initSelect();
@@ -121,7 +122,7 @@ export class SelectWrapper {
             </span>
           </label>
           {this.variant === 'custom' &&
-          <ul
+          <div
             class={fakeOptionListClasses}
             role='listbox'
             aria-activedescendant={`option${this.optionSelected}`}
@@ -133,7 +134,7 @@ export class SelectWrapper {
             {
               this.createFakeOptionList()
             }
-          </ul>
+          </div>
           }
         </div>
         {this.isMessageVisible &&
@@ -242,6 +243,7 @@ export class SelectWrapper {
 
   private setOptionList(): void  {
     this.options = this.select.querySelectorAll('option');
+    this.optgroups = this.select.querySelectorAll('optgroup');
     this.optionSelected = this.select.selectedIndex;
     this.options.forEach((item: HTMLOptionElement, key: number) => {
       if (item.hasAttribute('disabled')) {
@@ -256,7 +258,7 @@ export class SelectWrapper {
         item.removeAttribute('selected');
       }
     });
-    this.select.options[key].setAttribute('selected', 'selected');
+    this.options[key].setAttribute('selected', 'selected');
     this.optionSelected = key;
     this.optionHighlighted = key;
     this.fakeOptionListHidden = true;
@@ -264,26 +266,30 @@ export class SelectWrapper {
   }
 
   private createFakeOptionList(): any {
-    return Array.from(this.options).map((option: HTMLOptionElement, key: any) =>
-      <li
-        id={`option${key}`}
-        role='option'
-        color='inherit'
-        class={`
-          ${prefix('select-wrapper__fake-option')}
-          ${this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : ''}
-          ${this.optionHighlighted === key ? prefix('select-wrapper__fake-option--active') : ''}
-          ${this.optionDisabled === key ? prefix('select-wrapper__fake-option--disabled') : ''}
-        `}
-        onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
-        aria-selected={this.optionSelected === key && 'true'}
-        aria-disabled={this.optionDisabled === key && 'true'}
-      >
-        <span>{option.text}</span>
-        {key === this.optionSelected &&
+    return Array.from(this.options).map((option: HTMLOptionElement, key: number) =>
+      [
+        (this.optgroups.length > 0 && option === option.parentNode.firstChild) &&
+        <span class={`${prefix('select-wrapper__fake-optgroup-label')}`}>{option.closest('optgroup').label}</span>,
+        <div
+          id={`option-${key}`}
+          role='option'
+          color='inherit'
+          class={`
+            ${prefix('select-wrapper__fake-option')}
+            ${this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : ''}
+            ${this.optionHighlighted === key ? prefix('select-wrapper__fake-option--active') : ''}
+            ${this.optionDisabled === key ? prefix('select-wrapper__fake-option--disabled') : ''}
+          `}
+          onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
+          aria-selected={this.optionSelected === key && 'true'}
+          aria-disabled={this.optionDisabled === key && 'true'}
+        >
+          <span>{option.text}</span>
+          {key === this.optionSelected &&
           <p-icon class={prefix('select-wrapper__fake-option-icon')} name='check' color='inherit'/>
-        }
-      </li>
+          }
+        </div>
+      ]
     );
   }
 
@@ -300,7 +306,7 @@ export class SelectWrapper {
         this.optionHighlighted += 1;
       }
     }
-    
+
     if(direction === 'up') {
       this.optionHighlighted--;
       if (this.optionHighlighted < 0 && this.optionDisabled === this.options.length-1) {
@@ -315,7 +321,7 @@ export class SelectWrapper {
     }
 
     if (this.fakeOptionListNode.scrollHeight > this.fakeOptionListNode.clientHeight) {
-      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('li')[this.optionHighlighted];
+      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[this.optionHighlighted];
       const scrollBottom = this.fakeOptionListNode.clientHeight + this.fakeOptionListNode.scrollTop;
       const elementBottom = this.fakeOptionHighlightedNode.offsetTop + this.fakeOptionHighlightedNode.offsetHeight;
       if (elementBottom > scrollBottom) {
