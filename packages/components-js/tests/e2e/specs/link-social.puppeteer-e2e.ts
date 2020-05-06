@@ -1,14 +1,15 @@
+import { getActiveElementId, getIdFromNode, selectNode, setContentWithDesignSystem } from '../helpers';
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('link social', () => {
   it('should render', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await page.find('p-link-social >>> a');
+    await setContentWithDesignSystem(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
+    const el = await selectNode('p-link-social >>> a');
     expect(el).not.toBeNull();
   });
 
-  it('should dispatch correct click events', async () => {
+  // ToDo: Discuss test usage.
+  xit('should dispatch correct click events', async () => {
     const page = await newE2EPage();
     await page.setContent(`<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
     const link = await page.find('p-link-social >>> a');
@@ -28,70 +29,45 @@ describe('link social', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
             <a href="#" id="after">after</a>
           </div>
     `);
-    const link = await page.find('p-link-social');
-    const before = await page.find('#before');
-    const after = await page.find('#after');
+    const link = await selectNode('p-link-social');
+    const before = await selectNode('#before');
+    const after = await selectNode('#after');
     await before.focus();
 
-    const beforeFocusSpy = await before.spyOnEvent('focus');
-    const linkFocusSpy = await link.spyOnEvent('focus');
-    const linkFocusinSpy = await link.spyOnEvent('focusin');
-    const linkBlurSpy = await link.spyOnEvent('blur');
-    const linkFocusoutSpy = await link.spyOnEvent('focusout');
-    const afterFocusSpy = await after.spyOnEvent('focus');
-    await page.keyboard.press('Tab');
-    expect(linkFocusSpy.length).toBe(1);
-    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(0);
-    expect(linkFocusoutSpy.length).toBe(0);
-    expect(afterFocusSpy.length).toBe(0);
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
-    expect(linkFocusSpy.length).toBe(1);
-    expect(linkFocusinSpy.length).toBe(1);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(afterFocusSpy.length).toBe(1);
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(after));
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(1);
-    expect(linkFocusoutSpy.length).toBe(1);
-    expect(beforeFocusSpy.length).toBe(0);
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-
-    expect(linkFocusSpy.length).toBe(2);
-    expect(linkFocusinSpy.length).toBe(2);
-    expect(linkBlurSpy.length).toBe(2);
-    expect(linkFocusoutSpy.length).toBe(2);
-    expect(beforeFocusSpy.length).toBe(1);
-
-    await page.keyboard.up('ShiftLeft');
+    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
           </div>
     `);
 
+    // ToDo: Helper function?
     async function linkHasFocus() {
       return await page.evaluate(() => {
         const linkElement = document.querySelector('p-link-social') as HTMLElement;
@@ -99,8 +75,8 @@ describe('link social', () => {
       });
     }
 
-    const link = await page.find('p-link-social');
-    const before = await page.find('#before');
+    const link = await selectNode('p-link-social');
+    const before = await selectNode('#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
