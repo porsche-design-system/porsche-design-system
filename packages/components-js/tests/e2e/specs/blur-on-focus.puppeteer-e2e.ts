@@ -74,6 +74,7 @@ describe('blur on focus', () => {
   });
 
   it('should not blur if exclude class is set to element or parent', async () => {
+    await page.reload()
     await setContentWithDesignSystem(`
         <p-button class="p-re-enable-focus-on-click">Some label</p-button>
         <p-button>Other label</p-button>
@@ -84,10 +85,12 @@ describe('blur on focus', () => {
           <button>And another label</button>
         </div>
     `);
-    const pButtonExcluded = await selectNode('p-button.p-re-enable-focus-on-click');
-    const pButton = await selectNode('p-button:not(.p-re-enable-focus-on-click)');
-    const buttonExcluded = await selectNode('.p-re-enable-focus-on-click button');
-    const button = await selectNode(':not(.p-re-enable-focus-on-click) > button');
+
+    const className = '.p-re-enable-focus-on-click';
+    const pButtonExcluded = await selectNode(`p-button${className}`);
+    const pButton = await selectNode(`p-button:not(${className})`);
+    const buttonExcluded = await selectNode(`${className} button`);
+    const button = await selectNode(`:not(${className}) > button`);
 
     await pButtonExcluded.click();
     expect(await getActiveElementTagName()).toBe('P-BUTTON');
