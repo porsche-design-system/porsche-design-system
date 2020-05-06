@@ -144,12 +144,12 @@ describe('checkbox-wrapper', () => {
     await page.evaluate(el => el.setAttribute('checked', 'true'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await page.evaluate(el => el.removeAttribute('checked'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass) ).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
   fit('should disable checkbox when checkbox is set disabled programmatically', async () => {
