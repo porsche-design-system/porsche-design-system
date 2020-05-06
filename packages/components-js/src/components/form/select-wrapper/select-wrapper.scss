@@ -296,6 +296,17 @@
     right: p-rem(12px);
   }
 
+  &__fake-optgroup-label {
+    display: block;
+    padding: $p-spacing-8 p-rem(12px);
+    margin-top: $p-spacing-8;
+    font-weight: $p-font-weight-bold;
+
+    & ~ #{$bem-block}__fake-option {
+      padding-left: $p-spacing-24;
+    }
+  }
+
   &__icon {
     position: absolute;
     top: p-rem(12px);

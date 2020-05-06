@@ -24,6 +24,7 @@ A `label` is a caption which informs the user what information a particular form
         <option value="c" disabled>Option C</option>
         <option value="d">Option D</option>
         <option value="e">Option E</option>
+        <option value="f">Option F</option>
       </select>
     </p-select-wrapper>
   </template>
@@ -36,7 +37,7 @@ A `label` is a caption which informs the user what information a particular form
 <Playground>
   <p-select-wrapper label="Some label">
     <select name="some-name">
-      <optgroup label="Some optgroup label">
+      <optgroup label="Some optgroup label 1">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>
@@ -44,7 +45,7 @@ A `label` is a caption which informs the user what information a particular form
         <option value="e">Option E</option>
         <option value="f">Option F</option>
       </optgroup>
-      <optgroup label="Some optgroup label">
+      <optgroup label="Some optgroup label 2">
         <option value="g">Option G</option>
         <option value="h">Option H</option>
         <option value="i">Option I</option>
