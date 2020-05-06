@@ -1,7 +1,7 @@
 import { E2EPage, newE2EPage } from '@stencil/core/testing';
 import { Components } from '../../../src';
 import PIcon = Components.PIcon;
-import { getAttributeFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
+import { getAttributeFromHandle, getClassFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
 
 describe('checkbox-wrapper', () => {
   it('should render', async () => {
@@ -56,7 +56,6 @@ describe('checkbox-wrapper', () => {
 
     const checkboxComponent = await selectNode('p-checkbox-wrapper');
     const getMessage = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
-      /*page.evaluate( (el: HTMLElement) => el.shadowRoot.querySelector('.p-checkbox-wrapper__message'), checkboxComponent);*/
     const getInput = () => checkboxComponent.$('input');
 
     expect(await getMessage()).toBeNull();
@@ -106,104 +105,73 @@ describe('checkbox-wrapper', () => {
   });
 
   it('should toggle checkbox when label text is clicked', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const iconWrapper = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-    const labelText = await page.find('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-    const input = await page.find('input[type="checkbox"]');
+    const iconWrapper = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const labelText = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
+    const input = await selectNode('input[type="checkbox"]');
 
-    expect(iconWrapper).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
-    expect(await input.getProperty('checked')).toBe(false);
-
-    await labelText.click();
-
-    expect(iconWrapper).toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
-    expect(await input.getProperty('checked')).toBe(true);
+    expect(await getClassFromHandle(iconWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getAttributeFromHandle(input, 'checked')).toBeNull();
 
     await labelText.click();
+    await page.waitFor(100);
 
-    expect(iconWrapper).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
-    expect(await input.getProperty('checked')).toBe(false);
+    expect(await getClassFromHandle(iconWrapper)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await input.getProperty('checked')).not.toBeNull();
+
+    await labelText.click();
+    await page.waitFor(100);
+
+    expect(await getClassFromHandle(iconWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getAttributeFromHandle(input, 'checked')).toBeNull();
   });
 
   it('should check/uncheck checkbox when checkbox is changed programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const getIconWrapper = async () => {
-      const checkboxWrapper = await page.find('p-checkbox-wrapper');
-      return checkboxWrapper.shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox');
-    };
+    const getIconWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const input = await selectNode('input[type="checkbox"]');
 
-    const iconWrapperClasslist = async () => (await getIconWrapper()).classList;
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
-    expect(await getIconWrapper()).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
+    await page.evaluate(el => el.setAttribute('checked', 'true'), input);
+    await page.waitFor(100);
 
-    await page.evaluate(() => {
-      document.querySelector('input').checked = true;
-    });
+    expect(await getClassFromHandle(getIconWrapperShadowClass).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
-    // for some reason we've to requery the iconWrapper each time and .waitForSelector does not work
-    while(!(await iconWrapperClasslist()).contains('p-checkbox-wrapper__fake-checkbox--checked')) {
-      await page.waitFor(10);
-    }
+    await page.evaluate(el => el.removeAttribute('checked'), input);
+    await page.waitFor(100);
 
-    expect(await getIconWrapper()).toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
-
-    await page.evaluate(() => {
-      document.querySelector('input').checked = false;
-    });
-
-    while((await iconWrapperClasslist()).contains('p-checkbox-wrapper__fake-checkbox--checked')) {
-      await page.waitFor(10);
-    }
-
-    expect(await getIconWrapper()).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getIconWrapperShadowClass) ).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
-  it('should disable checkbox when checkbox is set disabled programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+  fit('should disable checkbox when checkbox is set disabled programmatically', async () => {
+    await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const getIconWrapper = async () => {
-      const checkboxWrapper = await page.find('p-checkbox-wrapper');
-      return checkboxWrapper.shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox');
-    };
+    const getIconWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const input = await selectNode('input[type="checkbox"]');
 
-    const iconWrapperClasslist = async () => (await getIconWrapper()).classList;
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
-    expect(await getIconWrapper()).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--disabled');
+    await page.evaluate(el => el.setAttribute('disabled', 'true'), input);
+    await page.waitFor(100);
 
-    await page.evaluate(() => {
-      document.querySelector('input').disabled = true;
-    });
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
-    // for some reason we've to requery the iconWrapper each time and .waitForSelector does not work
-    while(!(await iconWrapperClasslist()).contains('p-checkbox-wrapper__fake-checkbox--disabled')) {
-      await page.waitFor(10);
-    }
+    await page.evaluate(el => el.removeAttribute('disabled'), input);
+    await page.waitFor(100);
 
-    expect(await getIconWrapper()).toHaveClass('p-checkbox-wrapper__fake-checkbox--disabled');
-
-    await page.evaluate(() => {
-      document.querySelector('input').disabled = false;
-    });
-
-    while((await iconWrapperClasslist()).contains('p-checkbox-wrapper__fake-checkbox--disabled')) {
-      await page.waitFor(10);
-    }
-
-    expect(await getIconWrapper()).not.toHaveClass('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
   });
 
   describe('indeterminate state', () => {
