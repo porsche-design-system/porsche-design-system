@@ -5,7 +5,7 @@ describe('link social', () => {
   it('should render', async () => {
     await setContentWithDesignSystem(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
     const el = await selectNode('p-link-social >>> a');
-    expect(el).not.toBeNull();
+    expect(el).toBeDefined();
   });
 
   // ToDo: Discuss test usage.
