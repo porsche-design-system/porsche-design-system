@@ -107,6 +107,12 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PContentWrapper {
+        /**
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+         */
+        "safeZone"?: "basic" | "enhanced" | "none";
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
@@ -178,10 +184,6 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
-        /**
-          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
-         */
-        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
@@ -564,6 +566,12 @@ declare global {
         prototype: HTMLPCheckboxWrapperElement;
         new (): HTMLPCheckboxWrapperElement;
     };
+    interface HTMLPContentWrapperElement extends Components.PContentWrapper, HTMLStencilElement {
+    }
+    var HTMLPContentWrapperElement: {
+        prototype: HTMLPContentWrapperElement;
+        new (): HTMLPContentWrapperElement;
+    };
     interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {
     }
     var HTMLPDividerElement: {
@@ -688,6 +696,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
+        "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
@@ -809,6 +818,12 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PContentWrapper {
+        /**
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+         */
+        "safeZone"?: "basic" | "enhanced" | "none";
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
@@ -880,10 +895,6 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
-        /**
-          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
-         */
-        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
@@ -1253,6 +1264,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
+        "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
@@ -1282,6 +1294,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
+            "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
