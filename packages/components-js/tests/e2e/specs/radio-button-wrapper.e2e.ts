@@ -66,7 +66,7 @@ describe('radio-button-wrapper', () => {
     expect(await getMessage()).toBeNull();
     await page.evaluate(el => el.setAttribute('state', 'error'), radioComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), radioComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
@@ -74,7 +74,7 @@ describe('radio-button-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'success'), radioComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), radioComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
@@ -82,7 +82,7 @@ describe('radio-button-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'none'), radioComponent);
     await page.evaluate(el => el.setAttribute('message', ''), radioComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
 
     expect(await getMessage()).toBeNull();
@@ -106,12 +106,12 @@ describe('radio-button-wrapper', () => {
     expect(await getClassFromHandle(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await input1.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await input2.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getClassFromHandle(fakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -134,12 +134,12 @@ describe('radio-button-wrapper', () => {
     expect(await getClassFromHandle(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await labelText1.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await labelText2.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getClassFromHandle(fakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -163,12 +163,12 @@ describe('radio-button-wrapper', () => {
     expect(await getClassFromHandle(getFakeRadio2)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await page.evaluate(el => el.setAttribute('checked', 'true'), getFakeRadio1Input);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(getFakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await page.evaluate(el => el.setAttribute('checked', 'true'), getFakeRadio2Input);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(getFakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getClassFromHandle(getFakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -186,12 +186,12 @@ describe('radio-button-wrapper', () => {
     expect(await getClassFromHandle(getFakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
 
     await page.evaluate(el => el.setAttribute('disabled', 'true'), getFakeRadio1Input);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(getFakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--disabled');
 
     await page.evaluate(el => el.removeAttribute('disabled'), getFakeRadio1Input);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(getFakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
   });
