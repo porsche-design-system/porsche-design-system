@@ -37,7 +37,7 @@ To reference an icon just use the `name` property with a predefined icon id.
     <p-icon :theme="theme" name="check" aria-label="Check icon"></p-icon>
     <p-icon :theme="theme" name="close" aria-label="Close icon"></p-icon>
     <p-icon :theme="theme" name="compare" aria-label="Compare icon"></p-icon>
-    <p-icon :theme="theme" name="configure" aria-label="Configure icon"></p-icon>
+    <p-icon :theme="theme" name="configurate" aria-label="Configurate icon"></p-icon>
     <p-icon :theme="theme" name="delete" aria-label="Delete icon"></p-icon>
     <p-icon :theme="theme" name="disable" aria-label="Disable icon"></p-icon>
     <p-icon :theme="theme" name="download" aria-label="Download icon"></p-icon>

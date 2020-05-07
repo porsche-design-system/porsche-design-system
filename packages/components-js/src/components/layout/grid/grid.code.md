@@ -2,13 +2,7 @@
 
 The Porsche Design System grid system is based upon a standard 12 column responsive grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](#/components/layout/flex) component is the right choice.
 
-In order to prevent horizontal scrolling it's needed to define a global CSS rule in your application, e.g.:
-
-```
-body {
-  overflow-x: hidden;
-}
-```
+In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](#/components/layout/content-wrapper).
 
 ### Grid size
 
@@ -32,20 +26,6 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   <p-grid class="example-grid">
     <p-grid-item size="{ base: 6, m: 2 }">A</p-grid-item>
     <p-grid-item size="{ base: 6, m: 10 }">B</p-grid-item>
-  </p-grid>
-</Playground>
-
----
-
-#### Safe Zone
-
-Enabling the `safe-zone` property defines the outer spacings between the content area and the left and right screen
-sides, as well as centering its content and setting a max-width.
-
-<Playground>
-  <p-grid class="example-grid" safe-zone="true">
-    <p-grid-item size="4">A</p-grid-item>
-    <p-grid-item size="8">B</p-grid-item>
   </p-grid>
 </Playground>
 
