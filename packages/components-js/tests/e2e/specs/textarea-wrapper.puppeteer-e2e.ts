@@ -144,7 +144,7 @@ describe('Textarea Wrapper', () => {
 
       await fakeTextarea.hover();
 
-      expect(await getBoxShadow(fakeTextarea)).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake textarea when label text is hovered', async () => {
@@ -161,7 +161,7 @@ describe('Textarea Wrapper', () => {
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeTextarea)).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });
