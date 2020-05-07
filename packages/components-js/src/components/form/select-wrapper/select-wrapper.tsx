@@ -50,10 +50,7 @@ export class SelectWrapper {
     if (typeof window === 'undefined') {
       return;
     }
-    return !!(('ontouchstart' in window) ||
-      window.navigator.msPointerEnabled &&
-      window.MSGesture ||
-      window.navigator.maxTouchPoints > 0);
+    return !!(('ontouchstart' in window) || window.navigator.maxTouchPoints > 0);
   }
 
   public componentWillLoad(): void {
@@ -241,6 +238,14 @@ export class SelectWrapper {
         this.fakeOptionListHidden = false;
         this.cycleFakeOptionList('down');
       }
+      if(e.code === 'ArrowLeft') {
+        e.preventDefault();
+        this.cycleFakeOptionList('left');
+      }
+      if(e.code === 'ArrowRight') {
+        e.preventDefault();
+        this.cycleFakeOptionList('right');
+      }
       if(e.code === 'Space') {
         e.preventDefault();
         this.fakeOptionListHidden = this.fakeOptionListHidden === false;
@@ -265,14 +270,6 @@ export class SelectWrapper {
         e.preventDefault();
         this.optionHighlighted = this.options.length-1;
         this.handleScroll();
-      }
-      if(e.code === 'ArrowLeft') {
-        this.cycleFakeOptionList('up');
-        this.setOptionSelected(this.optionHighlighted);
-      }
-      if(e.code === 'ArrowRight') {
-        this.cycleFakeOptionList('down');
-        this.setOptionSelected(this.optionHighlighted);
       }
     });
   }
@@ -325,7 +322,7 @@ export class SelectWrapper {
   }
 
   private cycleFakeOptionList(direction: string): void {
-    if(direction === 'down') {
+    if(direction === 'down' || direction === 'right') {
       this.optionHighlighted++;
       if (this.optionHighlighted > this.options.length-1 && this.optionDisabled === 0) {
         this.optionHighlighted = 1;
@@ -338,7 +335,7 @@ export class SelectWrapper {
       }
     }
 
-    if(direction === 'up') {
+    if(direction === 'up' || direction === 'left') {
       this.optionHighlighted--;
       if (this.optionHighlighted < 0 && this.optionDisabled === this.options.length-1) {
         this.optionHighlighted = this.options.length-2;
@@ -349,6 +346,10 @@ export class SelectWrapper {
       else if (this.optionHighlighted === this.optionDisabled) {
         this.optionHighlighted -= 1;
       }
+    }
+
+    if(direction === 'left' || direction === 'right') {
+      this.setOptionSelected(this.optionHighlighted);
     }
 
     this.handleScroll();
