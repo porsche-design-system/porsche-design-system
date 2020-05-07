@@ -111,23 +111,23 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const iconWrapper = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const CheckBoxWrapper = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
     const labelText = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
     const input = await selectNode('input[type="checkbox"]');
 
-    expect(await getClassFromHandle(iconWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(CheckBoxWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getAttributeFromHandle(input, 'checked')).toBeNull();
 
     await labelText.click();
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(iconWrapper)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(CheckBoxWrapper)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await input.getProperty('checked')).not.toBeNull();
 
     await labelText.click();
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(iconWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(CheckBoxWrapper)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getAttributeFromHandle(input, 'checked')).toBeNull();
   });
 
@@ -137,20 +137,20 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const getIconWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const getCheckBoxWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
     const input = await selectNode('input[type="checkbox"]');
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await page.evaluate(el => el.setAttribute('checked', 'true'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await page.evaluate(el => el.removeAttribute('checked'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
   it('should disable checkbox when checkbox is set disabled programmatically', async () => {
@@ -159,20 +159,20 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const getIconWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+    const getCheckBoxWrapperShadowClass = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
     const input = await selectNode('input[type="checkbox"]');
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await page.evaluate(el => el.setAttribute('disabled', 'true'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await page.evaluate(el => el.removeAttribute('disabled'), input);
     await page.waitFor(100);
 
-    expect(await getClassFromHandle(getIconWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getClassFromHandle(getCheckBoxWrapperShadowClass)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
   });
 
   describe('indeterminate state', () => {
