@@ -2,7 +2,7 @@ import { Components } from '../../../src';
 import PIcon = Components.PIcon;
 import {
   addEventListener,
-  getAttributeFromHandle,
+  getAttributeFromHandle, getBoxShadow,
   getClassFromHandle, initAddEventListener,
   selectNode,
   setContentWithDesignSystem
@@ -271,44 +271,40 @@ describe('Text Field Wrapper', () => {
   });
 
   describe('hover state', () => {
-    // ToDo: Refactor computedStyle Helper
-    const getBoxShadow = () => page.evaluate(() => {
-      const fakeInput = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('.p-text-field-wrapper__fake-input');
-      const style = getComputedStyle(fakeInput);
 
-      return style.boxShadow;
-    });
+    const getFakeInput = () => selectNode('p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
 
     it('should change box-shadow color when fake input is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
         <p-text-field-wrapper label="Some label">
           <input type="text" name="some-name">
         </p-text-field-wrapper>
       `);
 
-      const fakeInput = await selectNode('p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-
-      const initialBoxShadow = getBoxShadow();
+      const fakeInput = await getFakeInput();
+      const initialBoxShadow = await getBoxShadow(fakeInput);
 
       await fakeInput.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeInput, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
         <p-text-field-wrapper label="Some label">
           <input type="text" name="some-name">
         </p-text-field-wrapper>
       `);
 
+      const fakeInput = await getFakeInput();
       const labelText = await selectNode('p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
-
-      const initialBoxShadow = getBoxShadow();
+      const initialBoxShadow = await getBoxShadow(fakeInput);
 
       await labelText.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeInput, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });

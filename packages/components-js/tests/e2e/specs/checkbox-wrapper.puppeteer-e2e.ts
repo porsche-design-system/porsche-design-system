@@ -1,5 +1,5 @@
 import {
-  getAttributeFromHandle,
+  getAttributeFromHandle, getBoxShadow,
   getClassFromHandle,
   selectNode,
   setContentWithDesignSystem
@@ -275,38 +275,36 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('hover state', () => {
-    // ToDo: Refactor computedStyle Helper
-    const getBoxShadow = () => page.evaluate(() => {
-      const fakeCheckbox = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__fake-checkbox');
-      const style = getComputedStyle(fakeCheckbox);
 
-      return style.boxShadow;
-    });
+    const getFakeCheckbox = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
 
     it('should change box-shadow color when fake checkbox is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-      const fakeCheckbox = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-      const initialBoxShadow = getBoxShadow();
+      const fakeCheckbox = await getFakeCheckbox();
+      const initialBoxShadow = await getBoxShadow(fakeCheckbox);
       await fakeCheckbox.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeCheckbox, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
+      const fakeCheckbox = await getFakeCheckbox();
       const labelText = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-      const initialBoxShadow = getBoxShadow();
+      const initialBoxShadow = await getBoxShadow(fakeCheckbox);
 
       await labelText.hover();
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeCheckbox, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });

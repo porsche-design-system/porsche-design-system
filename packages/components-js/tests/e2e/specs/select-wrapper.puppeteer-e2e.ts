@@ -1,4 +1,10 @@
-import { getAttributeFromHandle, getClassFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
+import {
+  getAttributeFromHandle,
+  getBoxShadow,
+  getClassFromHandle,
+  selectNode,
+  setContentWithDesignSystem
+} from '../helpers';
 
 describe('select-wrapper', () => {
   it('should render', async () => {
@@ -167,14 +173,11 @@ describe('select-wrapper', () => {
   });
 
   describe('hover state', () => {
-    const getBoxShadow = () => page.evaluate(() => {
-      const fakeSelect = document.querySelector('p-select-wrapper').shadowRoot.querySelector('.p-select-wrapper__fake-select');
-      const style = getComputedStyle(fakeSelect);
 
-      return style.boxShadow;
-    });
+    const getFakeSelect = () => selectNode('p-select-wrapper >>> .p-select-wrapper__fake-select');
 
     it('should change box-shadow color when fake select is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`<p-select-wrapper label="Some label">
         <select name="some-name">
           <option value="a">Option A</option>
@@ -183,16 +186,16 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
-      const fakeSelect = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-select');
-
-      const initialBoxShadow = getBoxShadow();
+      const fakeSelect = await getFakeSelect();
+      const initialBoxShadow = await getBoxShadow(fakeSelect);
 
       await fakeSelect.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake select when label text is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`<p-select-wrapper label="Some label">
         <select name="some-name">
           <option value="a">Option A</option>
@@ -201,12 +204,13 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
+      const fakeSelect = await getFakeSelect();
       const labelText = await selectNode('p-select-wrapper >>> .p-select-wrapper__label-text');
-      const initialBoxShadow = getBoxShadow();
+      const initialBoxShadow = await getBoxShadow(fakeSelect);
 
       await labelText.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });
