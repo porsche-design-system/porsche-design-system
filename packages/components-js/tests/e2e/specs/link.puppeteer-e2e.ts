@@ -1,38 +1,38 @@
 import {
+  addEventListener,
   getActiveElementId,
-  getIdFromNode,
+  getIdFromNode, initAddEventListener,
   selectNode,
   setContentWithDesignSystem
 } from "../helpers";
 
 describe('link', () => {
+  beforeAll(async () => {
+    await initAddEventListener(); // needed for setup
+  });
+
   it('should render', async () => {
     await setContentWithDesignSystem(`<p-link href="#">Some label</p-link>`);
     const el = await selectNode('p-link >>> a');
     expect(el).toBeDefined();
   });
 
-  // ToDo: Discuss test usage.
-  xit('should dispatch correct click events', async () => {
+  it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(`<div><p-link href="#testpage" id="hostElement">Some label</p-link></div>`);
     const link = await selectNode('p-link >>> a');
     const host = await selectNode('#hostElement');
-    const hostEventSpy = jest.spyOn(link, 'click');
-    const wrapperEventSpy = jest.spyOn(host,'click');
-    console.log('###pageUrl1', page.url());
+    const wrapper = await selectNode('div');
+
+    const events = [];
+    await addEventListener(wrapper, 'click', (ev) => events.push(ev));
+
     await link.click();
-    console.log('###pageUrl2', page.url());
-    await page.goBack();
-    console.log('###pageUrl2', page.url());
     await host.click();
-    console.log('###pageUrl3', page.url());
+    await page.waitFor(1);
 
-
-    for (const spy of [hostEventSpy, wrapperEventSpy]) {
-      expect(spy.mock.instances.length).toBe(1);
-      /*     for (const event of spy.mock.instances) {
-              expect(event.target.id).toBe(host.getProperty('id'));
-            }*/
+    expect(events.length).toBe(2);
+    for (const event of events) {
+      expect(event.target.id).toBe(await getIdFromNode(host));
     }
   });
 

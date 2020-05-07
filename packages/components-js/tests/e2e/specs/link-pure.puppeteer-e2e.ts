@@ -1,30 +1,40 @@
-import { newE2EPage } from '@stencil/core/testing';
-import { getActiveElementId, getIdFromNode, selectNode, setContentWithDesignSystem } from '../helpers';
+import {
+  addEventListener,
+  getActiveElementId,
+  getIdFromNode,
+  initAddEventListener,
+  selectNode,
+  setContentWithDesignSystem
+} from '../helpers';
 
 describe('link pure', () => {
+  beforeAll(async () => {
+    await initAddEventListener(); // needed for setup
+  });
+
   it('should render', async () => {
     await setContentWithDesignSystem(`<p-link-pure href="#">Some label</p-link-pure>`);
     const el = await selectNode('p-link-pure >>> a');
     expect(el).toBeDefined();
   });
 
-  // ToDo: Discuss test usage.
-  xit('should dispatch correct click events', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`);
-    const link = await page.find('p-link-pure >>> a');
-    const host = await page.find('#hostElement');
-    const wrapper = await page.find('div');
-    const hostEventSpy = await wrapper.spyOnEvent('click');
-    const wrapperEventSpy = await wrapper.spyOnEvent('click');
+  it('should dispatch correct click events', async () => {
+    await setContentWithDesignSystem(`<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`);
+
+    const link = await selectNode('p-link-pure >>> a');
+    const host = await selectNode('#hostElement');
+    const wrapper = await selectNode('div');
+
+    const events = [];
+    await addEventListener(wrapper, 'click', (ev) => events.push(ev));
+
     await link.click();
     await host.click();
+    await page.waitFor(1);
 
-    for (const spy of [hostEventSpy, wrapperEventSpy]) {
-      expect(spy.length).toBe(2);
-      for (const event of spy.events) {
-        expect(event.target.id).toBe(host.id);
-      }
+    expect(events.length).toBe(2);
+    for (const event of events) {
+      expect(event.target.id).toBe(await getIdFromNode(host));
     }
   });
 
