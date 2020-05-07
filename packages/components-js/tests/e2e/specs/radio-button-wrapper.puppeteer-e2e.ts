@@ -1,4 +1,10 @@
-import { getAttributeFromHandle, getClassFromHandle, selectNode, setContentWithDesignSystem } from '../helpers';
+import {
+  getAttributeFromHandle,
+  getBoxShadow,
+  getClassFromHandle,
+  selectNode,
+  setContentWithDesignSystem
+} from '../helpers';
 
 describe('radio-button-wrapper', () => {
   it('should render', async () => {
@@ -191,40 +197,39 @@ describe('radio-button-wrapper', () => {
   });
 
   describe('hover state', () => {
-    const getBoxShadow = () => page.evaluate(() => {
-      const fakeRadioButton = document.querySelector('p-radio-button-wrapper').shadowRoot.querySelector('.p-radio-button-wrapper__fake-radio-button');
-      const style = getComputedStyle(fakeRadioButton);
 
-      return style.boxShadow;
-    });
+    const getFakeRadioButton = () => selectNode('p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
 
     it('should change box-shadow color when fake radio button is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-      const fakeRadioButton = await selectNode('p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
-      const initialBoxShadow = await getBoxShadow();
+      const fakeRadioButton = await getFakeRadioButton();
+      const initialBoxShadow = await getBoxShadow(fakeRadioButton);
 
       await fakeRadioButton.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeRadioButton, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake radio button when label text is hovered', async () => {
+      await page.reload();
       await setContentWithDesignSystem(`
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
+      const fakeRadioButton = await getFakeRadioButton();
       const labelText = await selectNode('p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
 
-      const initialBoxShadow = await getBoxShadow();
+      const initialBoxShadow = await getBoxShadow(fakeRadioButton);
 
       await labelText.hover();
 
-      expect(getBoxShadow()).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeRadioButton, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });

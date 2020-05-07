@@ -129,7 +129,8 @@ describe('Textarea Wrapper', () => {
   });
 
   describe('hover state', () => {
-    const fakeTextareaSelector = 'p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea';
+
+    const getFakeTextarea = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
 
     it('should change box-shadow color when fake textarea is hovered', async () => {
       await page.reload();
@@ -139,7 +140,7 @@ describe('Textarea Wrapper', () => {
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await selectNode(fakeTextareaSelector);
+      const fakeTextarea = await getFakeTextarea();
       const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
       await fakeTextarea.hover();
@@ -155,7 +156,7 @@ describe('Textarea Wrapper', () => {
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await selectNode(fakeTextareaSelector);
+      const fakeTextarea = await getFakeTextarea();
       const labelText = await selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
       const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
