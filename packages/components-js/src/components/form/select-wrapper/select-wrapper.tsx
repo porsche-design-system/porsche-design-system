@@ -249,11 +249,30 @@ export class SelectWrapper {
         }
       }
       if(e.code === 'Enter') {
+        e.preventDefault();
         this.fakeOptionListHidden = true;
         this.setOptionSelected(this.optionHighlighted);
       }
       if(e.code === 'Escape') {
         this.fakeOptionListHidden = true;
+      }
+      if(e.code === 'PageUp') {
+        e.preventDefault();
+        this.optionHighlighted = 0;
+        this.handleScroll();
+      }
+      if(e.code === 'PageDown') {
+        e.preventDefault();
+        this.optionHighlighted = this.options.length-1;
+        this.handleScroll();
+      }
+      if(e.code === 'ArrowLeft') {
+        this.cycleFakeOptionList('up');
+        this.setOptionSelected(this.optionHighlighted);
+      }
+      if(e.code === 'ArrowRight') {
+        this.cycleFakeOptionList('down');
+        this.setOptionSelected(this.optionHighlighted);
       }
     });
   }
@@ -332,6 +351,10 @@ export class SelectWrapper {
       }
     }
 
+    this.handleScroll();
+  };
+
+  private handleScroll(): void {
     if (this.fakeOptionListNode.scrollHeight > this.fakeOptionListNode.clientHeight) {
       this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[this.optionHighlighted];
       const scrollBottom = this.fakeOptionListNode.clientHeight + this.fakeOptionListNode.scrollTop;
@@ -343,7 +366,7 @@ export class SelectWrapper {
         this.fakeOptionListNode.scrollTop = this.fakeOptionHighlightedNode.offsetTop;
       }
     }
-  };
+  }
 
   private setState(): void {
     this.disabled = this.select.disabled;
