@@ -1,4 +1,4 @@
-import { Components } from '../../../src';
+import { Components } from '../../src';
 import PIcon = Components.PIcon;
 import {
   addEventListener,
@@ -6,7 +6,7 @@ import {
   getClassFromHandle, initAddEventListener,
   selectNode,
   setContentWithDesignSystem
-} from '../helpers';
+} from './helpers';
 
 const getCustomInputButtonDisabledState = () => page.evaluate(() => {
   const toggleButton: HTMLButtonElement = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('.p-text-field-wrapper__button');

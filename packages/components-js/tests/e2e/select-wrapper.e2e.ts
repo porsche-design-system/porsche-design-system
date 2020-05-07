@@ -4,7 +4,7 @@ import {
   getClassFromHandle,
   selectNode,
   setContentWithDesignSystem
-} from '../helpers';
+} from './helpers';
 
 describe('select-wrapper', () => {
   it('should render', async () => {

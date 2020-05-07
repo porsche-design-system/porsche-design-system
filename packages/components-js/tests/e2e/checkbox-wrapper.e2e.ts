@@ -3,8 +3,8 @@ import {
   getClassFromHandle,
   selectNode,
   setContentWithDesignSystem
-} from '../helpers';
-import { Components } from '../../../src';
+} from './helpers';
+import { Components } from '../../src';
 import PIcon = Components.PIcon;
 
 describe('checkbox-wrapper', () => {

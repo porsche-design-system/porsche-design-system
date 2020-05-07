@@ -1,4 +1,4 @@
-import { getInnerHTMLFromShadowRoot, setContentWithDesignSystem, setRequestInterceptor, timeLogger } from '../helpers';
+import { getInnerHTMLFromShadowRoot, setContentWithDesignSystem, setRequestInterceptor, timeLogger } from './helpers';
 import { NavigationOptions } from 'puppeteer';
 
 describe('p-icon', () => {
