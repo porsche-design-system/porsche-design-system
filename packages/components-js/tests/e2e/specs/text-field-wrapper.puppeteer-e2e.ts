@@ -131,6 +131,7 @@ describe('Text Field Wrapper', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await labelText.click();
+    await page.waitFor(100);
 
     expect(inputFocusSpyCalls).toBe(1);
   });
