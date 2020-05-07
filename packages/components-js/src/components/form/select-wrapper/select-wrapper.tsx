@@ -50,7 +50,8 @@ export class SelectWrapper {
     if (typeof window === 'undefined') {
       return;
     }
-    return !!(('ontouchstart' in window) || window.navigator.maxTouchPoints > 0);
+    return !!(('ontouchstart' in window) ||
+      window.navigator.maxTouchPoints > 0);
   }
 
   public componentWillLoad(): void {
@@ -228,45 +229,45 @@ export class SelectWrapper {
       this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     });
     this.select.addEventListener('keydown', (e: KeyboardEvent) => {
-      if(e.code  === 'ArrowUp') {
+      if(e.key  === 'ArrowUp' || e.key === 'Up') {
         e.preventDefault();
         this.fakeOptionListHidden = false;
         this.cycleFakeOptionList('up');
       }
-      if(e.code === 'ArrowDown') {
+      if(e.key === 'ArrowDown' || e.key === 'Down') {
         e.preventDefault();
         this.fakeOptionListHidden = false;
         this.cycleFakeOptionList('down');
       }
-      if(e.code === 'ArrowLeft') {
+      if(e.key === 'ArrowLeft' || e.key === 'Left') {
         e.preventDefault();
         this.cycleFakeOptionList('left');
       }
-      if(e.code === 'ArrowRight') {
+      if(e.key === 'ArrowRight' || e.key === 'Right') {
         e.preventDefault();
         this.cycleFakeOptionList('right');
       }
-      if(e.code === 'Space') {
+      if(e.key === ' ' || e.key === 'Spacebar') {
         e.preventDefault();
         this.fakeOptionListHidden = this.fakeOptionListHidden === false;
         if(this.fakeOptionListHidden) {
           this.setOptionSelected(this.optionHighlighted);
         }
       }
-      if(e.code === 'Enter') {
+      if(e.key === 'Enter') {
         e.preventDefault();
         this.fakeOptionListHidden = true;
         this.setOptionSelected(this.optionHighlighted);
       }
-      if(e.code === 'Escape') {
+      if(e.key === 'Escape' || e.key === 'Esc') {
         this.fakeOptionListHidden = true;
       }
-      if(e.code === 'PageUp') {
+      if(e.key === 'PageUp') {
         e.preventDefault();
         this.optionHighlighted = 0;
         this.handleScroll();
       }
-      if(e.code === 'PageDown') {
+      if(e.key === 'PageDown') {
         e.preventDefault();
         this.optionHighlighted = this.options.length-1;
         this.handleScroll();
