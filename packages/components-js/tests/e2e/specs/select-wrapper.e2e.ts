@@ -99,7 +99,7 @@ describe('select-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'error'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), selectComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
@@ -107,7 +107,7 @@ describe('select-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'success'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), selectComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
@@ -115,7 +115,7 @@ describe('select-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'none'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', ''), selectComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeNull();
     expect(await getAttributeFromHandle(await getSelect(), 'aria-label')).toEqual('Some label');
@@ -162,12 +162,12 @@ describe('select-wrapper', () => {
     expect(await getClassFromHandle(await getFakeSelect())).not.toContain('p-select-wrapper__fake-select--disabled');
 
     await page.evaluate(el => el.setAttribute('disabled', 'true'), getSelect);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeSelect())).toContain('p-select-wrapper__fake-select--disabled');
 
     await page.evaluate(el => el.removeAttribute('disabled'), getSelect);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeSelect())).not.toContain('p-select-wrapper__fake-select--disabled');
   });

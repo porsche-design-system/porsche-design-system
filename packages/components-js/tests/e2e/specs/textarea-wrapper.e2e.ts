@@ -63,7 +63,7 @@ describe('Textarea Wrapper', () => {
     expect(await getLabelText).toBeNull();
 
     await page.evaluate(el => el.setAttribute('label', 'Some label'), textareaComponent);
-    await page.waitFor(100);
+    await page.waitFor(40);
 
     expect(await getLabelText).toBeDefined();
   });
@@ -82,7 +82,7 @@ describe('Textarea Wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'error'), textareaComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), textareaComponent);
-    await page.waitFor(100);
+    await page.waitFor(40);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBe('alert');
@@ -90,7 +90,7 @@ describe('Textarea Wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'success'), textareaComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), textareaComponent);
-    await page.waitFor(100);
+    await page.waitFor(40);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
@@ -98,7 +98,7 @@ describe('Textarea Wrapper', () => {
 
     await page.evaluate(el => el.removeAttribute('state'), textareaComponent);
     await page.evaluate(el => el.setAttribute('message', ''), textareaComponent);
-    await page.waitFor(100);
+    await page.waitFor(40);
 
     expect(await getMessage()).toBeNull();
     expect(await getAttributeFromHandle(await getTextarea(), 'aria-label')).toBe('Some label');
@@ -123,7 +123,7 @@ describe('Textarea Wrapper', () => {
     expect(textareaFocusSpyCalls).toBe(0);
 
     await labelText.click();
-    await page.waitFor(100);
+    await page.waitFor(40);
 
     expect(textareaFocusSpyCalls).toBe(1);
   });

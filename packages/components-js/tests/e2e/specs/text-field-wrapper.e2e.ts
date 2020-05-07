@@ -75,7 +75,7 @@ describe('Text Field Wrapper', () => {
 
     expect(await getLabelText()).toBeNull();
 
-    await page.evaluate(el => el.setAttribute('label', 'Some label'), textFieldComponent);
+    await textFieldComponent.evaluate(el => el.setAttribute('label', 'Some label'));
 
     expect(await getLabelText()).not.toBeNull();
   });
@@ -94,7 +94,7 @@ describe('Text Field Wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'error'), textFieldComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), textFieldComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
@@ -102,7 +102,7 @@ describe('Text Field Wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'success'), textFieldComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), textFieldComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
@@ -110,7 +110,7 @@ describe('Text Field Wrapper', () => {
 
     await page.evaluate(el => el.removeAttribute('state'), textFieldComponent);
     await page.evaluate(el => el.setAttribute('message', ''), textFieldComponent);
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getMessage()).toBeNull();
     expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label');
@@ -132,7 +132,7 @@ describe('Text Field Wrapper', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await labelText.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(inputFocusSpyCalls).toBe(1);
   });
@@ -152,13 +152,13 @@ describe('Text Field Wrapper', () => {
     expect(await getCustomInputButtonDisabledState()).toBe(false);
 
     await page.evaluate(el => el.setAttribute('disabled', 'true'), await input());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState()).toBe(true);
 
     await page.evaluate(el => el.removeAttribute('disabled'), await input());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState()).toBe(false);
@@ -176,12 +176,12 @@ describe('Text Field Wrapper', () => {
     expect((await getToggleButtonIconName())).toBe('view');
 
     await toggleButton.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect((await getToggleButtonIconName())).toBe('view-off');
 
     await toggleButton.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect((await getToggleButtonIconName())).toBe('view');
   });
@@ -229,23 +229,23 @@ describe('Text Field Wrapper', () => {
     expect(await getCustomInputButtonDisabledState()).toBe(false);
 
     await page.evaluate(el => el.setAttribute('disabled', 'true'), await getInput());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getCustomInputButtonDisabledState()).toBe(true);
 
     await page.evaluate(el => el.removeAttribute('disabled'), await getInput());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getCustomInputButtonDisabledState()).toBe(false);
 
     await page.evaluate(el => el.setAttribute('readOnly', 'true'), await getInput());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeInput())).toContain('p-text-field-wrapper__fake-input--readonly');
     expect(await getCustomInputButtonDisabledState()).toBe(true);
 
     await page.evaluate(el => el.removeAttribute('readOnly'), await getInput());
-    await page.waitFor(100);
+    await page.waitFor(50);
 
     expect(await getClassFromHandle(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--readonly');
     expect(await getCustomInputButtonDisabledState()).toBe(false);
@@ -266,7 +266,7 @@ describe('Text Field Wrapper', () => {
     await addEventListener(form, 'submit', () => formFocusCalls++);
 
     await searchButton.click();
-    await page.waitFor(100);
+    await page.waitFor(50);
     expect(formFocusCalls).toBe(1);
   });
 

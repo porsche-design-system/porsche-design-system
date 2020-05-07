@@ -7,20 +7,21 @@ import {
   setContentWithDesignSystem
 } from '../helpers';
 
-describe('link social', () => {
+describe('link pure', () => {
   beforeAll(async () => {
     await initAddEventListener(); // needed for setup
   });
 
   it('should render', async () => {
-    await setContentWithDesignSystem(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await selectNode('p-link-social >>> a');
+    await setContentWithDesignSystem(`<p-link-pure href="#">Some label</p-link-pure>`);
+    const el = await selectNode('p-link-pure >>> a');
     expect(el).toBeDefined();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(`<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
-    const link = await selectNode('p-link-social >>> a');
+    await setContentWithDesignSystem(`<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`);
+
+    const link = await selectNode('p-link-pure >>> a');
     const host = await selectNode('#hostElement');
     const wrapper = await selectNode('div');
 
@@ -29,7 +30,7 @@ describe('link social', () => {
 
     await link.click();
     await host.click();
-    await page.waitFor(1);
+    await page.waitFor(2);
 
     expect(events.length).toBe(2);
     for (const event of events) {
@@ -41,11 +42,11 @@ describe('link social', () => {
     await setContentWithDesignSystem(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
+            <p-link-pure href="#">Some label</p-link-pure>
             <a href="#" id="after">after</a>
           </div>
     `);
-    const link = await selectNode('p-link-social');
+    const link = await selectNode('p-link-pure');
     const before = await selectNode('#before');
     const after = await selectNode('#after');
     await before.focus();
@@ -72,26 +73,26 @@ describe('link social', () => {
     await setContentWithDesignSystem(`
           <div id="wrapper">
             <a href="#" id="before">before</a>
-            <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
+            <p-link-pure href="#">Some label</p-link-pure>
           </div>
     `);
 
     // ToDo: Helper function?
     async function linkHasFocus() {
       return await page.evaluate(() => {
-        const linkElement = document.querySelector('p-link-social') as HTMLElement;
+        const linkElement = document.querySelector('p-link-pure');
         return document.activeElement === linkElement;
       });
     }
 
-    const link = await selectNode('p-link-social');
+    const link = await selectNode('p-link-pure');
     const before = await selectNode('#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
     expect(await linkHasFocus()).toBe(true);
     await page.evaluate(() => {
-      const linkElement = document.querySelector('p-link-social') as HTMLElement;
+      const linkElement: HTMLElement = document.querySelector('p-link-pure');
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
