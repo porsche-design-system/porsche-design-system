@@ -1,10 +1,12 @@
 import { getInnerHTMLFromShadowRoot, setContentWithDesignSystem, setRequestInterceptor, timeLogger } from '../helpers';
+import { NavigationOptions } from 'puppeteer';
 
-xdescribe('p-icon', () => {
+describe('p-icon', () => {
   let responseCounter: number;
+  const navOptions: NavigationOptions = {waitUntil: 'networkidle0'};
 
   beforeEach(async () => {
-    await page.reload({waitUntil: 'networkidle0'});
+    await page.reload(navOptions);
     await page.setRequestInterception(true);
 
     responseCounter = 0;
@@ -23,7 +25,7 @@ xdescribe('p-icon', () => {
   it('should have only one response for default icon', async () => {
     setRequestInterceptor([]);
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(`<p-icon></p-icon>`);
+    await setContentWithDesignSystem(`<p-icon></p-icon>`, navOptions);
 
     const iconAfter = await getInnerHTMLFromShadowRoot('p-icon >>> i');
     expect(iconAfter).toContain('arrow-head-right');
@@ -64,8 +66,7 @@ xdescribe('p-icon', () => {
    */
   it('should unset previous icon if name prop is changed', async () => {
     setRequestInterceptor([0, 1000]);
-
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
+    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
     const iconBefore = await getInnerHTMLFromShadowRoot('p-icon >>> i');
     expect(iconBefore).toContain('highway');
@@ -84,8 +85,7 @@ xdescribe('p-icon', () => {
 
   it('should unset previous icon if name prop is removed', async () => {
     setRequestInterceptor([2000]);
-
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`);
+    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
     const iconBefore = await getInnerHTMLFromShadowRoot('p-icon >>> i');
     expect(iconBefore).toContain('highway');
@@ -102,6 +102,5 @@ xdescribe('p-icon', () => {
     expect(iconAfter).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
   });
-
 });
 
