@@ -29,8 +29,8 @@ describe('button', () => {
 
     await button.click();
     await host.click();
-
     await page.waitFor(1);
+
     expect(events.length).toBe(2);
     for (const event of events) {
       expect(event.target.id).toBe(await getIdFromNode(host));
@@ -46,7 +46,7 @@ describe('button', () => {
     let calls = 0;
     await addEventListener(form, 'submit', () => calls++);
 
-    for(const triggerElement of [host, button]) {
+    for (const triggerElement of [host, button]) {
       await triggerElement.click();
     }
     expect(calls).toBe(1);
