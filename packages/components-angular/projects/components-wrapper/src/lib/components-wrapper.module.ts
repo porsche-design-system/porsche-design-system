@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {defineCustomElements, applyPolyfills} from '@porsche-design-system/components-js/loader';
 
 import {
+  PContentWrapper,
   PButton,
   PButtonPure,
   PCheckboxWrapper,
@@ -28,6 +29,7 @@ import {
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
+  PContentWrapper,
   PButton,
   PButtonPure,
   PCheckboxWrapper,

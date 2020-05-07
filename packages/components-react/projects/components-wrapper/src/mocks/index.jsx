@@ -4,6 +4,7 @@ import { PCheckboxWrapper } from './p-checkbox-wrapper-mock';
 import { PDivider } from './p-divider-mock';
 import { PFlex } from './p-flex-mock';
 import { PFlexItem } from './p-flex-item-mock';
+import { PContentWrapper } from './p-content-wrapper-mock';
 import { PGrid } from './p-grid-mock';
 import { PGridItem } from './p-grid-item-mock';
 import { PHeadline } from './p-headline-mock';
@@ -29,6 +30,7 @@ module.exports = {
   PDivider,
   PFlex,
   PFlexItem,
+  PContentWrapper,
   PGrid,
   PGridItem,
   PHeadline,

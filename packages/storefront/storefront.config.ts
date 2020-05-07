@@ -337,6 +337,20 @@ export const config: StorefrontConfig = {
       }
     },
     Layout: {
+      'Content Wrapper': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.props.md`),
+        ]
+      },
       Divider: {
         Design: [
           // @ts-ignore
