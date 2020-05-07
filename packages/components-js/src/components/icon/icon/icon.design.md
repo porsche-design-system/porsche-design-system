@@ -3,7 +3,7 @@
 Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized.
 
 ## Icon overview
-A complete overview of all available Porsche icons, head over to Porsche Icons ([Porsche Icons](https://icons.porsche.com)).
+A complete overview of all available Porsche icons, head over to [Porsche Icons](https://icons.porsche.com).
 
 ---
 
