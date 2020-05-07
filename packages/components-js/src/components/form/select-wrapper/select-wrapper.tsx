@@ -352,7 +352,7 @@ export class SelectWrapper {
     }
 
     this.handleScroll();
-  };
+  }
 
   private handleScroll(): void {
     if (this.fakeOptionListNode.scrollHeight > this.fakeOptionListNode.clientHeight) {
