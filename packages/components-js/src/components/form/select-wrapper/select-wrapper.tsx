@@ -270,12 +270,7 @@ export class SelectWrapper {
   }
 
   private setOptionSelected(key: number): void {
-    this.options.forEach((item: HTMLOptionElement) => {
-      if (item.hasAttribute('selected')) {
-        item.removeAttribute('selected');
-      }
-    });
-    this.options[key].setAttribute('selected', 'selected');
+    this.select.selectedIndex = key;
     this.optionSelected = key;
     this.optionHighlighted = key;
     this.fakeOptionListHidden = true;
