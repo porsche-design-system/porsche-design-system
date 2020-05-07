@@ -139,7 +139,7 @@ export class SelectWrapper {
           <div
             class={fakeOptionListClasses}
             role='listbox'
-            aria-activedescendant={`option${this.optionSelected}`}
+            aria-activedescendant={`option-${this.optionSelected}`}
             tabIndex={-1}
             aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
             aria-labelledby={this.label}
