@@ -1,25 +1,26 @@
 import {
   addEventListener,
   getActiveElementId,
-  getIdFromNode, initAddEventListener,
+  getIdFromNode,
+  initAddEventListener,
   selectNode,
   setContentWithDesignSystem
-} from "../helpers";
+} from './helpers';
 
-describe('link', () => {
+describe('link social', () => {
   beforeAll(async () => {
     await initAddEventListener(); // needed for setup
   });
 
   it('should render', async () => {
-    await setContentWithDesignSystem(`<p-link href="#">Some label</p-link>`);
-    const el = await selectNode('p-link >>> a');
+    await setContentWithDesignSystem(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
+    const el = await selectNode('p-link-social >>> a');
     expect(el).toBeDefined();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(`<div><p-link href="#testpage" id="hostElement">Some label</p-link></div>`);
-    const link = await selectNode('p-link >>> a');
+    await setContentWithDesignSystem(`<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
+    const link = await selectNode('p-link-social >>> a');
     const host = await selectNode('#hostElement');
     const wrapper = await selectNode('div');
 
@@ -38,14 +39,13 @@ describe('link', () => {
 
   it(`should trigger focus&blur events at the correct time`, async () => {
     await setContentWithDesignSystem(`
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link href="#" id="link">Some label</p-link>
-        <a href="#" id="after">after</a>
-      </div>
+          <div id="wrapper">
+            <a href="#" id="before">before</a>
+            <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
+            <a href="#" id="after">after</a>
+          </div>
     `);
-
-    const link = await selectNode('p-link');
+    const link = await selectNode('p-link-social');
     const before = await selectNode('#before');
     const after = await selectNode('#after');
     await before.focus();
@@ -70,26 +70,28 @@ describe('link', () => {
 
   it(`should provide methods to focus&blur the element`, async () => {
     await setContentWithDesignSystem(`
-      <div id="wrapper">
-        <a href="#" id="before">before</a>
-        <p-link href="#">Some label</p-link>
-      </div>
+          <div id="wrapper">
+            <a href="#" id="before">before</a>
+            <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
+          </div>
     `);
 
     // ToDo: Helper function?
-    const linkHasFocus = async () => await page.evaluate(() => {
-      const linkElement = document.querySelector('p-link');
-      return document.activeElement === linkElement;
-    });
+    async function linkHasFocus() {
+      return await page.evaluate(() => {
+        const linkElement = document.querySelector('p-link-social') as HTMLElement;
+        return document.activeElement === linkElement;
+      });
+    }
 
-    const link = await selectNode('p-link');
+    const link = await selectNode('p-link-social');
     const before = await selectNode('#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
     expect(await linkHasFocus()).toBe(true);
     await page.evaluate(() => {
-      const linkElement: HTMLElement = document.querySelector('p-link');
+      const linkElement = document.querySelector('p-link-social') as HTMLElement;
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);

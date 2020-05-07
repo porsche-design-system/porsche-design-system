@@ -1,4 +1,4 @@
-import {getActiveElementTagName, selectNode, setContentWithDesignSystem} from "../helpers";
+import {getActiveElementTagName, selectNode, setContentWithDesignSystem} from "./helpers";
 
 describe('blur on focus', () => {
   it('should blur element after click', async () => {

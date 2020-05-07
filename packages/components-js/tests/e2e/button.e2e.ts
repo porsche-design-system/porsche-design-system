@@ -4,7 +4,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem
-} from "../helpers";
+} from "./helpers";
 
 describe('button', () => {
   beforeAll(async () => {
