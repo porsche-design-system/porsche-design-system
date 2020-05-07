@@ -25,11 +25,7 @@ describe('getSvgContent()', () => {
     expect(result1).toEqual(result2);
   });
 
-  it('should return empty string for empty icon url', async () => {
-    const result = await getSvgContent(emptyIconUrl);
-    expect(result).toBe('');
-  });
-
+  // make sure this test isn't the last of the describe block since the exception might break following tests
   it('should throw error if url is undefined', async () => {
     try {
       const result = getSvgContent(undefinedUrl);
@@ -38,6 +34,11 @@ describe('getSvgContent()', () => {
     } catch (e: Error) {
       expect(e.name).toEqual('Error')
     }
+  });
+
+  it('should return empty string for empty icon url', async () => {
+    const result = await getSvgContent(emptyIconUrl);
+    expect(result).toBe('');
   });
 });
 
