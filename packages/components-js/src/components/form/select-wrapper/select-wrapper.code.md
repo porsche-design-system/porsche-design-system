@@ -18,7 +18,7 @@ A `label` is a caption which informs the user what information a particular form
   <template>
     <p-select-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <select name="some-name">
-        <option value="">Select an option</option>
+        <option value="" selected>Select an option</option>
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c" disabled>Option C</option>
