@@ -22,7 +22,8 @@ const getToggleButtonIconName = () => page.evaluate(() => {
 describe('Text Field Wrapper', () => {
   beforeAll(async () => {
     await initAddEventListener(); // needed for setup
-  })
+  });
+
   it('should render', async () => {
     await setContentWithDesignSystem(`
       <p-text-field-wrapper label="Some label">
