@@ -10,6 +10,13 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
     options
   );
 
+export const getBoxShadow = (element: ElementHandle<Element>) =>
+  element.evaluate(async (el) => {
+    const style = getComputedStyle(el);
+    await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
+    return style.boxShadow;
+  });
+
 // TODO: rename to getActiveElementHandle
 export const getActiveElement = () => page.evaluateHandle(() => document.activeElement);
 
