@@ -10,7 +10,7 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
     options
   );
 
-type GetBoxShadowOptions =  {waitForTransition: boolean}
+type GetBoxShadowOptions = { waitForTransition: boolean }
 
 export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShadowOptions) =>
   element.evaluate(async (el, opts?: GetBoxShadowOptions) => {
@@ -21,6 +21,27 @@ export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShado
     return style.boxShadow;
   }, opts);
 
+// Node Context
+
+export const getPropertyFromHandle = (node: ElementHandle, prop: string) => node.getProperty(prop).then(x => x.jsonValue());
+
+export const getClassListFromHandle = (node: ElementHandle) => getPropertyFromHandle(node, 'classList').then((x) => Object.values(x).join(' '));
+
+export const waitForSelector = async (node: ElementHandle, selector: string, opts?: { isGone: boolean }) => {
+  if (opts?.isGone) {
+    while ((await getClassListFromHandle(node)).indexOf(selector) >= 0) {
+      await page.waitFor(10);
+    }
+  } else {
+    while ((await getClassListFromHandle(node)).indexOf(selector) === -1) {
+      await page.waitFor(10);
+    }
+  }
+};
+
+// Browser Context
+
+
 // TODO: rename to getActiveElementHandle
 export const getActiveElement = () => page.evaluateHandle(() => document.activeElement);
 
@@ -28,13 +49,13 @@ export const getActiveElementId = () => page.evaluate(() => document.activeEleme
 
 export const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
 
-export const getIdFromNode = async (node: ElementHandle<Element> | JSHandle<Element>) =>
+export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>) =>
   await node.getProperty('id').then(x => x.jsonValue());
 
-export const getAttributeFromHandle = async (node: ElementHandle<Element> | JSHandle<Element>, attribute: string) =>
-  await page.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), node, attribute);
+export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string) =>
+  await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 
-export const getClassFromHandle = async (node: ElementHandle<Element> | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
+export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
 
 export const selectNode = async (selector: string) => {
   const selectorParts = selector.split('>>>');
