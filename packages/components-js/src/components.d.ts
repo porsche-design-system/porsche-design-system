@@ -107,6 +107,12 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PContentWrapper {
+        /**
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+         */
+        "safeZone"?: "basic" | "enhanced" | "none";
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
@@ -178,10 +184,6 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
-        /**
-          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
-         */
-        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
@@ -330,6 +332,36 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Adapts the icon color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -394,6 +426,10 @@ export namespace Components {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -452,7 +488,11 @@ export namespace Components {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -468,7 +508,27 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PTextList {
+        /**
+          * The type of the text list.
+         */
+        "listType"?: "unordered" | "ordered";
+        /**
+          * The list style type of an ordered list.
+         */
+        "orderType"?: "numbered" | "alphabetically";
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PTextListItem {
+    }
     interface PTextareaWrapper {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -505,6 +565,12 @@ declare global {
     var HTMLPCheckboxWrapperElement: {
         prototype: HTMLPCheckboxWrapperElement;
         new (): HTMLPCheckboxWrapperElement;
+    };
+    interface HTMLPContentWrapperElement extends Components.PContentWrapper, HTMLStencilElement {
+    }
+    var HTMLPContentWrapperElement: {
+        prototype: HTMLPContentWrapperElement;
+        new (): HTMLPContentWrapperElement;
     };
     interface HTMLPDividerElement extends Components.PDivider, HTMLStencilElement {
     }
@@ -560,6 +626,12 @@ declare global {
         prototype: HTMLPLinkPureElement;
         new (): HTMLPLinkPureElement;
     };
+    interface HTMLPLinkSocialElement extends Components.PLinkSocial, HTMLStencilElement {
+    }
+    var HTMLPLinkSocialElement: {
+        prototype: HTMLPLinkSocialElement;
+        new (): HTMLPLinkSocialElement;
+    };
     interface HTMLPMarqueElement extends Components.PMarque, HTMLStencilElement {
     }
     var HTMLPMarqueElement: {
@@ -602,6 +674,18 @@ declare global {
         prototype: HTMLPTextFieldWrapperElement;
         new (): HTMLPTextFieldWrapperElement;
     };
+    interface HTMLPTextListElement extends Components.PTextList, HTMLStencilElement {
+    }
+    var HTMLPTextListElement: {
+        prototype: HTMLPTextListElement;
+        new (): HTMLPTextListElement;
+    };
+    interface HTMLPTextListItemElement extends Components.PTextListItem, HTMLStencilElement {
+    }
+    var HTMLPTextListItemElement: {
+        prototype: HTMLPTextListItemElement;
+        new (): HTMLPTextListItemElement;
+    };
     interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {
     }
     var HTMLPTextareaWrapperElement: {
@@ -612,6 +696,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
+        "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
@@ -621,6 +706,7 @@ declare global {
         "p-icon": HTMLPIconElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
+        "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
@@ -628,6 +714,8 @@ declare global {
         "p-spinner": HTMLPSpinnerElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
+        "p-text-list": HTMLPTextListElement;
+        "p-text-list-item": HTMLPTextListItemElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
     }
 }
@@ -730,6 +818,12 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PContentWrapper {
+        /**
+          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+         */
+        "safeZone"?: "basic" | "enhanced" | "none";
+    }
     interface PDivider {
         /**
           * Defines color depending on theme.
@@ -801,10 +895,6 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
-        /**
-          * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
-         */
-        "safeZone"?: boolean;
     }
     interface PGridItem {
         /**
@@ -952,6 +1042,36 @@ declare namespace LocalJSX {
          */
         "weight"?: TextWeight;
     }
+    interface PLinkSocial {
+        /**
+          * Show or hide label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * The icon shown.
+         */
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
+        /**
+          * A custom URL path to a custom social icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
+          * Adapts the icon color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PMarque {
         /**
           * Show/hide trademark sign.
@@ -1020,6 +1140,10 @@ declare namespace LocalJSX {
     }
     interface PSelectWrapper {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1078,7 +1202,11 @@ declare namespace LocalJSX {
     }
     interface PTextFieldWrapper {
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1094,7 +1222,27 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PTextList {
+        /**
+          * The type of the text list.
+         */
+        "listType"?: "unordered" | "ordered";
+        /**
+          * The list style type of an ordered list.
+         */
+        "orderType"?: "numbered" | "alphabetically";
+        /**
+          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
+    }
+    interface PTextListItem {
+    }
     interface PTextareaWrapper {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -1116,6 +1264,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
+        "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
@@ -1125,6 +1274,7 @@ declare namespace LocalJSX {
         "p-icon": PIcon;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
+        "p-link-social": PLinkSocial;
         "p-marque": PMarque;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
@@ -1132,6 +1282,8 @@ declare namespace LocalJSX {
         "p-spinner": PSpinner;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
+        "p-text-list": PTextList;
+        "p-text-list-item": PTextListItem;
         "p-textarea-wrapper": PTextareaWrapper;
     }
 }
@@ -1142,6 +1294,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
+            "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
@@ -1151,6 +1304,7 @@ declare module "@stencil/core" {
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
+            "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
@@ -1158,6 +1312,8 @@ declare module "@stencil/core" {
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
+            "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
+            "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
         }
     }

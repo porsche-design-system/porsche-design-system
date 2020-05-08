@@ -31,6 +31,36 @@ describe('select-wrapper', () => {
     expect(select.getAttribute('aria-label')).toBe('Some label');
   });
 
+  it('should add aria-label with description text to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-select-wrapper label="Some label" description="Some description">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+    const select = await page.find('p-select-wrapper select');
+    expect(select.getAttribute('aria-label')).toBe('Some label. Some description');
+  });
+
+  it('should add aria-label with message text to support screen readers properly', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <p-select-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+    const select = await page.find('p-select-wrapper select');
+    expect(select.getAttribute('aria-label')).toBe('Some label. Some error message');
+  });
+
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
@@ -57,7 +87,7 @@ describe('select-wrapper', () => {
 
   });
 
-  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
+  it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
     const page = await newE2EPage();
     await page.setContent(`
       <p-select-wrapper label="Some label">
@@ -73,32 +103,37 @@ describe('select-wrapper', () => {
       return selectComponent.shadowRoot.querySelector('.p-select-wrapper__message');
     };
 
+    const getSelect = async () => {
+      return selectComponent.find('select');
+    };
+
     expect(await getMessage()).toBeNull();
 
     selectComponent.setProperty('state', 'error');
-    selectComponent.setProperty('message', 'some message');
+    selectComponent.setProperty('message', 'Some error message');
 
     await page.waitForChanges();
 
-    const label = await page.find('p-select-wrapper >>> .p-select-wrapper__label');
-    const labelId = label.getAttribute('id');
-
     expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({ 'role': 'alert', 'aria-describedby': labelId });
+    expect(await getMessage()).toEqualAttribute('role', 'alert');
+    expect(await getSelect()).toEqualAttribute('aria-label','Some label. Some error message');
 
     selectComponent.setProperty('state', 'success');
+    selectComponent.setProperty('message', 'Some success message');
 
     await page.waitForChanges();
 
     expect(await getMessage()).not.toBeNull();
     expect(await getMessage()).not.toHaveAttribute('role');
-    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
+    expect(await getSelect()).toEqualAttribute('aria-label','Some label. Some success message');
 
     selectComponent.setProperty('state', 'none');
+    selectComponent.setProperty('message', '');
 
     await page.waitForChanges();
 
     expect(await getMessage()).toBeNull();
+    expect(await getSelect()).toEqualAttribute('aria-label','Some label');
 
   });
 

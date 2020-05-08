@@ -77,7 +77,7 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
   </template>
   <template>
     <p-checkbox-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="checkbox" :aria-invalid="state === 'error'" name="some-name" />
+      <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
   </template>
 </Playground>
@@ -88,13 +88,14 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes.
 
 <Playground>
   <template>
     <p-checkbox-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="checkbox" aria-invalid="true" name="some-name" />
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <input type="checkbox" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id" />
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-checkbox-wrapper>
   </template>
 </Playground>
