@@ -288,6 +288,22 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Content: {
+      'Text List': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list/text-list.props.md`),
+        ],
+      },
+    },
     Feedback: {
       Spinner: {
         Design: [

@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Text List`
+
 ### Changed
 - Improve caching strategy for fonts by content-based hash
 - Improve caching strategy for marque by content-based hash
