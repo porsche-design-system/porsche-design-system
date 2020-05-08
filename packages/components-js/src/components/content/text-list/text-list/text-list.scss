@@ -1,0 +1,21 @@
+@import '../../../../../../../packages/scss-utils/index';
+
+:host {
+  display: block;
+  counter-reset: section !important;
+}
+
+.#{$p-global-class-prefix}text-list {
+  @include p-text;
+  display: block;
+  padding: 0;
+  margin: 0;
+
+  &--theme-light {
+    color: $p-color-theme-light-default;
+  }
+
+  &--theme-dark {
+    color: $p-color-theme-dark-default;
+  }
+}

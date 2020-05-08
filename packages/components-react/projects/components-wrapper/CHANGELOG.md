@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Text List`
+
 ## [1.4.0-rc.2] - 2020-05-06
 
 ### Added

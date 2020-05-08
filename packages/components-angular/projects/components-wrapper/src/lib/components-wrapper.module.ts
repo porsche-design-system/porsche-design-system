@@ -21,6 +21,8 @@ import {
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
   PDivider
@@ -46,6 +48,8 @@ const DECLARATIONS = [
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
   PDivider
