@@ -37,4 +37,4 @@ Enrich your Porsche design experience by using the Porsche color palette in your
 [Download Porsche color palette](https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette)
 
 ## Other helpful Sketch plugins
-A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](https://designsystem.porsche.com/v1/#/start-designing/sketch-plugins).
+A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/start-designing/sketch-plugins).
