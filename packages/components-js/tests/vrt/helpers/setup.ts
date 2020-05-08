@@ -50,7 +50,7 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   return visualRegressionOverviewTester;
 }
 
-export const getVisualRegressionGridTester = (): VisualRegressionTester => {
+export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
   if (!visualRegressionGridTester) {
     visualRegressionGridTester = new VisualRegressionTester(browser, {
       ...testOptions,

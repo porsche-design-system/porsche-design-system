@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as icons from '@porsche-design-system/icons';
+import { icons } from '@porsche-design-system/icons';
+import { paramCase } from 'change-case';
 
-const iconNames = Object.keys(icons.svg).sort().map(icon => `'${icon}'`);
+const iconNames = Object.keys(icons).sort().map(icon => `'${paramCase(icon)}'`);
 const file = path.normalize('./src/types.d.ts');
 const types = fs.readFileSync(file, 'utf8').replace(/\s\/\* Auto Generated Below \*\/.*/s, '');
 

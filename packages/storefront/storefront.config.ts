@@ -288,6 +288,22 @@ export const config: StorefrontConfig = {
         ]
       }
     },
+    Content: {
+      'Text List': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/content/text-list/text-list/text-list.props.md`),
+        ],
+      },
+    },
     Feedback: {
       Spinner: {
         Design: [
@@ -321,6 +337,20 @@ export const config: StorefrontConfig = {
       }
     },
     Layout: {
+      'Content Wrapper': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/layout/content-wrapper/content-wrapper.props.md`),
+        ]
+      },
       Divider: {
         Design: [
           // @ts-ignore
@@ -401,6 +431,20 @@ export const config: StorefrontConfig = {
         Props: [
           // @ts-ignore
           () => import(`@/../../components-js/src/components/navigation/link-pure/link-pure.props.md`),
+        ],
+      },
+      'Link Social': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.design.md`),
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.code.md`),
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/link-social/link-social.props.md`),
         ],
       },
       Pagination: {

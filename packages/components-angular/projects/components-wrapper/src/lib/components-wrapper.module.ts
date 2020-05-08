@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {defineCustomElements, applyPolyfills} from '@porsche-design-system/components-js/loader';
 
 import {
+  PContentWrapper,
   PButton,
   PButtonPure,
   PCheckboxWrapper,
@@ -13,18 +14,22 @@ import {
   PIcon,
   PLink,
   PLinkPure,
+  PLinkSocial,
   PMarque,
   PPagination,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
   PDivider
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
+  PContentWrapper,
   PButton,
   PButtonPure,
   PCheckboxWrapper,
@@ -36,12 +41,15 @@ const DECLARATIONS = [
   PIcon,
   PLink,
   PLinkPure,
+  PLinkSocial,
   PMarque,
   PPagination,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
   PText,
+  PTextList,
+  PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
   PDivider

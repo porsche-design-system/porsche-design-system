@@ -5,8 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles,
-  randomString
+  insertSlottedStyles
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -22,6 +21,9 @@ export class SelectWrapper {
   /** The label text. */
   @Prop() public label?: string = '';
 
+  /** The description text. */
+  @Prop() public description?: string = '';
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
 
@@ -34,13 +36,17 @@ export class SelectWrapper {
   @State() private disabled: boolean;
 
   private select: HTMLSelectElement;
-  private labelId = randomString();
 
   public componentWillLoad(): void {
     this.setSelect();
+    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -50,6 +56,11 @@ export class SelectWrapper {
       prefix('select-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('select-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('select-wrapper__label-text--disabled')
+    );
+    const descriptionTextClasses = cx(
+      prefix('select-wrapper__description-text'),
+      mapBreakpointPropToPrefixedClasses('select-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('select-wrapper__description-text--disabled')
     );
     const fakeSelectClasses = cx(
       prefix('select-wrapper__fake-select'),
@@ -67,10 +78,15 @@ export class SelectWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <label class={labelClasses}>
           {this.isLabelVisible &&
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
+          </p-text>
+          }
+          {this.isDescriptionVisible &&
+          <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+            {this.description ? this.description : <span><slot name='description'/></span>}
           </p-text>
           }
           <span class={fakeSelectClasses}>
@@ -83,7 +99,6 @@ export class SelectWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -96,6 +111,10 @@ export class SelectWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
+  private get isDescriptionVisible(): boolean {
+    return !!this.description || !!this.host.querySelector('[slot="description"]');
+  }
+
   private get isMessageDefined(): boolean {
     return !!this.message || !!this.host.querySelector('[slot="message"]');
   }
@@ -106,7 +125,29 @@ export class SelectWrapper {
 
   private setSelect(): void {
     this.select = this.host.querySelector('select');
-    this.select.setAttribute('aria-label', this.label);
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.select.setAttribute('aria-label', `${this.label}. ${this.message}`);
+    }
+    else if (this.label && this.description) {
+      this.select.setAttribute('aria-label', `${this.label}. ${this.description}`);
+    }
+    else if (this.label) {
+      this.select.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.select.setAttribute('aria-invalid', 'true');
+    } else {
+      this.select.removeAttribute('aria-invalid');
+    }
   }
 
   private setState(): void {
