@@ -2,7 +2,7 @@ import {
   getAttributeFromHandle, getBoxShadow,
   getClassListFromHandle, getPropertyFromHandle,
   selectNode,
-  setContentWithDesignSystem, waitForSelector
+  setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
 import { Components } from '../../src';
 import PIcon = Components.PIcon;
@@ -192,21 +192,24 @@ describe('checkbox-wrapper', () => {
         input.indeterminate = indeterminate;
       }, value);
 
-      await page.waitFor(40);
+      await waitForInnerHTMLChange(await selectNode('p-checkbox-wrapper >>> p-icon >>> i'));
     };
 
     const setChecked = async (value: boolean) => {
-      await page.evaluate((checked: boolean) => {
+      const indeterminate = await page.evaluate((checked: boolean) => {
         const input = document.querySelector('input[type="checkbox"]') as HTMLInputElement;
         input.checked = checked;
+        return input.indeterminate;
       }, value);
 
-      await page.waitFor(40);
+      if (!indeterminate){
+        await waitForSelector(await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox'), 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: !value})
+      }
     };
 
     // ToDo: Refactor computedStyle Helper
     const showsIcon = () => page.evaluate(async () => {
-      const icon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__icon')
+      const icon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__icon');
       const style = getComputedStyle(icon);
       await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000)); // transitionDuration is in sec, timeout needs ms
       return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
@@ -249,7 +252,6 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon()).toBe(true);
 
       await setIndeterminate(true);
-      await page.waitFor(40);
       expect(await getIconName()).toBe('minus');
       expect(await showsIcon()).toBe(true);
 
