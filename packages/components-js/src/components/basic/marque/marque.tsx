@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
+import { cdn, marque } from '@porsche-design-system/marque';
 
 @Component({
   tag: 'p-marque',
@@ -15,32 +16,26 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    const marqueClasses = cx(
-      prefix('marque')
-    );
-
-    const path = 'https://cdn.ui.porsche.com/porsche-design-system/marque/v1';
-
-    const sourceTrademark = this.trademark === true ? '_trademark' : '';
+    const marqueClasses = cx(prefix('marque'));
 
     return (
       <picture class={marqueClasses}>
         <source
-          media='(min-width: 1000px)'
+          media='(min-width: 1300px)'
           srcSet={`
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@1x.png 1x,
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png 2x,
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@3x.png 3x
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['1x'] : marque.porscheMarque.medium['1x']} 1x,
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['2x'] : marque.porscheMarque.medium['2x']} 2x,
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['3x'] : marque.porscheMarque.medium['3x']} 3x
           `}
         />
         <source
           srcSet={`
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@1x.png 1x,
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@2x.png 2x,
-            ${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_small@3x.png 3x
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['1x'] : marque.porscheMarque.small['1x']} 1x,
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['2x'] : marque.porscheMarque.small['2x']} 2x,
+            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['3x'] : marque.porscheMarque.small['3x']} 3x
           `}
         />
-        <img src={`${path}/porsche-marque-rgb-digital_S-L_R${sourceTrademark}_large@2x.png`} alt='Porsche' />
+        <img src={`${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['2x'] : marque.porscheMarque.medium['2x']}`} alt='Porsche' />
       </picture>
     );
   }

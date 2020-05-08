@@ -25,8 +25,8 @@ This variant is to be used whenever the United States and/or Canada are not part
 
 | Size | Usage |
 |------|--------|
-| **Small** | Viewports with 999 px width or lower |
-| **Large** | Viewports with 1000 pixel width or larger |
+| **Small** | Viewports with 1299 px width or lower |
+| **Medium** | Viewports with 1300 pixel width or larger |
 
 Slight adjustments ensure that the Porsche marque is optimally perceived as equally as possible in the various image sizes.
 
