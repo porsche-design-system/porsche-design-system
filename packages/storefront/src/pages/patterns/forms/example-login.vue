@@ -1,5 +1,5 @@
 <template>
-  <div class="safe-zone">
+  <p-content-wrapper>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Welcome to Porsche</p-headline>
@@ -43,5 +43,5 @@
         <p-link-pure href="#" class="spacing-mt-8">Create a new Porsche account</p-link-pure>
       </p-grid-item>
     </p-grid>
-  </div>
+  </p-content-wrapper>
 </template>
