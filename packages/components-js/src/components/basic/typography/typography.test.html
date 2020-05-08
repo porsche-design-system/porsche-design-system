@@ -8,7 +8,7 @@
   <script nomodule src="../../../../dist/porsche-design-system/porsche-design-system.js"></script>
   <link rel="stylesheet" href="../../../../tests/vrt/helpers/styles.css">
   <style type="text/css">
-    p-text {
+    .playground:nth-child(-n+3) p-text {
       display: inline-block !important;
       vertical-align: top;
       margin: 4px;
@@ -2942,6 +2942,27 @@
   <p-text size="medium" align="center" title="U+04FD | Dec:1277">ӽ</p-text>
   <p-text size="medium" align="center" title="U+04FE | Dec:1278">Ӿ</p-text>
   <p-text size="medium" align="center" title="U+04FF | Dec:1279">ӿ</p-text>
+</div>
+
+<div class="playground" title="should show typography in supported font-weights for latin charset">
+  <p-text weight="thin">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text weight="regular">The quick brown fox jumps over the lazy dog</p-text>
+  <p-headline variant="headline-5">The quick brown fox jumps over the lazy dog</p-headline>
+  <p-text weight="bold">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="should show typography in supported font-weights for greek and coptic charset">
+  <p-text weight="thin">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+  <p-text weight="regular">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+  <p-headline variant="headline-5">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-headline>
+  <p-text weight="bold">Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text>
+</div>
+
+<div class="playground" title="should show typography in supported font-weights for cyril charset">
+  <p-text weight="thin">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
+  <p-text weight="regular">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
+  <p-headline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-headline>
+  <p-text weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
 </div>
 
 </body>
