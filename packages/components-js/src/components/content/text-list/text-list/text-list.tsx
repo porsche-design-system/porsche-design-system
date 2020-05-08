@@ -33,7 +33,7 @@ export class TextList {
     );
 
     return (
-      <Host nested={this.isNestedList && true}>
+      <Host nested={this.isNestedList}>
         <TagType role='list' class={textListClasses}>
           <slot/>
         </TagType>
@@ -42,7 +42,6 @@ export class TextList {
   }
 
   private get isNestedList():boolean {
-    const nestedList = this.host.closest(prefix('text-list-item'));
-    return nestedList && true;
+    return !!this.host.closest(prefix('text-list-item'));
   }
 }

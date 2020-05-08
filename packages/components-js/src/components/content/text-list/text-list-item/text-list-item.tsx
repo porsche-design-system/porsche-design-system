@@ -19,8 +19,10 @@ export class TextListItem {
     const textListItemClasses = cx(
       prefix('text-list-item'),
       prefix(`text-list-item--${this.typeOfList}`),
-      this.typeOfList === 'ordered' && prefix(`text-list-item--ordered-${this.typeOfOrderedList}`),
-      this.isNestedList && prefix('text-list-item--nested')
+      {
+        [prefix(`text-list-item--ordered-${this.typeOfOrderedList}`)]: this.typeOfList === 'ordered',
+        [prefix('text-list-item--nested')]: this.isNestedList
+      }
     );
 
     return (
@@ -41,8 +43,7 @@ export class TextListItem {
   }
 
   private get isNestedList():boolean {
-    const nestedList = this.host.closest(prefix('text-list[nested]'));
-    return nestedList && true;
+    return !!this.host.closest(prefix('text-list[nested]'));
   }
 
   private addSlottedStyles(): void {
