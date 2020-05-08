@@ -29,21 +29,21 @@ content area and the left and right screen sides** (100% = full screen width):
 
 ![Content Wrapper with Basic safe zone](./assets/content-wrapper-safe-zone-basic.png)
 
-### Enhanced
+### Extended
 
-The "Enhanced" safe zone includes no defined margin on the left and right of the content. 
+The "Extended" safe zone includes no defined margin on the left and right of the content. 
 The content itself has a maximum width of 1920 px. In viewport sizes from 1920 px onwards there 
 is a growing white space outside the left and right edge.
 
-![Content Wrapper with Enhanced safe zone](./assets/content-wrapper-safe-zone-enhanced.png)
+![Content Wrapper with Extended safe zone](./assets/content-wrapper-safe-zone-enhanced.png)
 
-### None
+### Fluid
 
-The name speaks for itself: The variant "None" includes no safe zone at all. So this is the variant of
+The name speaks for itself: The variant "Fluid" includes no safe zone at all. So this is the variant of
 your choice when you want your content to span to the full screen width, containing no margin or visual 
 gap between content area and screen edges.
 
-![Content Wrapper with None safe zone](./assets/content-wrapper-safe-zone-none.png)
+![Content Wrapper with Fluid safe zone](./assets/content-wrapper-safe-zone-none.png)
 
 ## Layout approach or: How to combine Content Wrapper with Grid, Flex or …
 
