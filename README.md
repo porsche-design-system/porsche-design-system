@@ -160,6 +160,34 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file which describes its general purpose, design/development specifications and examples.
 1. **Props:** The component has to describe its props using typescript types and documentation.
 
+---
+
+## Release management - Porsche Design System Icons
+
+1. Run `./docker.sh run-build --icons`
+1. Switch to __packages/icons/dist/icons directory__
+1. Upload all `.svg` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/icons directory__)
+1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
+
+---
+
+## Release management - Porsche Design System Fonts
+
+1. Run `./docker.sh run-build --fonts`
+1. Switch to __packages/fonts/dist/fonts directory__
+1. Upload all `.woff|.woff2` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/fonts directory__)
+1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
+
+---
+
+## Release management - Porsche Design System Marque
+
+1. Run `./docker.sh run-build --marque`
+1. Switch to __packages/marque/dist/marque directory__
+1. Upload all `.png` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/marque directory__)
+1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
+
+---
 
 ## Release management - Porsche Design System Components (JS/Angular/React)
 
@@ -209,6 +237,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
 
+---
 
 ## Release management - Porsche Design System Utils (SCSS)
 
@@ -234,6 +263,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
 
+---
 
 ## Release management - Porsche Design System Sketch Libraries (Basic, Web)
 
