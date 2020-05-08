@@ -45,10 +45,16 @@ export const config: StorefrontConfig = {
       ],
     },
     News: {
-      Updates: [
-        // @ts-ignore
-        () => import(`@/pages/news/updates.md`)
-      ],
+      Updates: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/pages/news/updates-design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/pages/news/updates-code.md`)
+        ]
+      },
       Versioning: [
         // @ts-ignore
         () => import(`@/pages/news/versioning.md`)
