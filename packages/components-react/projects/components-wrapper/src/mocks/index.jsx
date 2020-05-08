@@ -20,6 +20,8 @@ import { PSpinner } from './p-spinner-mock';
 import { PText } from './p-text-mock';
 import { PTextareaWrapper } from './p-textarea-wrapper-mock';
 import { PTextFieldWrapper } from './p-text-field-wrapper-mock';
+import { PTextList } from './p-text-list-mock';
+import { PTextListItem } from './p-text-list-item-mock';
 
 module.exports = {
   PButton,
@@ -43,5 +45,7 @@ module.exports = {
   PSpinner,
   PText,
   PTextareaWrapper,
-  PTextFieldWrapper
+  PTextFieldWrapper,
+  PTextList,
+  PTextListItem
 };
