@@ -39,6 +39,14 @@ export const waitForSelector = async (node: ElementHandle, selector: string, opt
   }
 };
 
+export const waitForInnerHTMLChange = async (node: ElementHandle) => {
+  const getInnerHTML = () => getPropertyFromHandle(node, 'innerHTML');
+  const initialInnerHTML = await getInnerHTML();
+  while (initialInnerHTML === await getInnerHTML()) {
+      await page.waitFor(10);
+    }
+};
+
 // Browser Context
 
 
@@ -50,7 +58,7 @@ export const getActiveElementId = () => page.evaluate(() => document.activeEleme
 export const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
 
 export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>) =>
-  await node.getProperty('id').then(x => x.jsonValue());
+  await node.evaluate(el => el.id);
 
 export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string) =>
   await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
@@ -59,7 +67,8 @@ export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>
 
 export const selectNode = async (selector: string) => {
   const selectorParts = selector.split('>>>');
-  return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${selectorParts[1] ? `.shadowRoot.querySelector('${selectorParts[1].trim()}')` : ''}`)).asElement();
+  const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
+  return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
 };
 
 export const getInnerHTMLFromShadowRoot = async (selector: string) => {
