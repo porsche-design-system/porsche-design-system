@@ -55,7 +55,7 @@ describe('button', () => {
   it(`should not submit the form if default is prevented`, async () => {
     await setContentWithDesignSystem(`
           <div id="wrapper">
-            <form id="form" onsubmit="return false;">
+            <form onsubmit="return false;">
               <p-button type="submit">Some label</p-button>
             </form>
           </div>
