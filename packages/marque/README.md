@@ -2,7 +2,7 @@
 
 ## Build
 
-Optimize marque in multiple resolutions and create a manifest.
+Copy marque in multiple resolutions and create a manifest.
 
 ```
 yarn build
