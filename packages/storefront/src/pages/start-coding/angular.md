@@ -84,7 +84,7 @@ Run the application by executing `yarn start` or `npm start` and see if the Pors
 You are now ready to build your own angular application using the Porsche Design System.
 
 ## Advanced usage
-Usually the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
+By default the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
 System Loader automatically.  
 But in some cases, for example if you want to include the Porsche Design System in Web Components that
 you build with angular, you might need more control on who is registering those components to prevent
@@ -94,6 +94,7 @@ by the Porsche Design System, while keeping you able to use the angular componen
 Caution, if you opt-out of the automatic registering you've to take care that they are registered in some
 other place, else the angular components won't work as expected.
 
+You can provide the token as follows:
 ```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
