@@ -42,9 +42,12 @@ export const waitForSelector = async (node: ElementHandle, selector: string, opt
 export const waitForInnerHTMLChange = async (node: ElementHandle) => {
   const getInnerHTML = () => getPropertyFromHandle(node, 'innerHTML');
   const initialInnerHTML = await getInnerHTML();
-  while (initialInnerHTML === await getInnerHTML()) {
-      await page.waitFor(10);
-    }
+  let runCounter = 0;
+  // We need an runCounter as exit if the right innerHTML is already loaded
+  while (runCounter < 100 && initialInnerHTML === await getInnerHTML()) {
+    await page.waitFor(10);
+    runCounter++;
+  }
 };
 
 // Browser Context
