@@ -14,6 +14,8 @@ source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 yarn install
 yarn build:utils
 yarn build:icons
+yarn build:fonts
+yarn build:marque
 
 pushd "./packages/components-js"
   yarn version --no-git-tag-version --new-version "${1}"

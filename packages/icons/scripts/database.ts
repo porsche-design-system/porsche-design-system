@@ -1,9 +1,10 @@
 // TODO: this file should be part of icon platform itself
 
-import { svg } from '@porsche-design-system/icons';
+import { icons } from '@porsche-design-system/icons';
 import database from './../database/icons.json';
 import * as fs from 'fs';
 import * as path from 'path';
+import { paramCase } from 'change-case';
 
 interface IconDatabase {
   icons: [
@@ -28,14 +29,15 @@ const syncIconDatabase = (): void => {
   const iconsDeleted: string[] = [];
 
   // add or update icons
-  for (const [name, file] of Object.entries(svg)) {
+  for (const [name, file] of Object.entries(icons).sort()) {
 
-    const icon = database.icons.find(element => element && element.id === name);
+    const id = paramCase(name);
+    const icon = database.icons.find(element => element && element.id === id);
 
     if (icon !== undefined) {
-      if (icon.filename !== file) iconsUpdated.push(name);
+      if (icon.filename !== file) iconsUpdated.push(id);
       newDatabase.icons.push({
-        id: name,
+        id: id,
         title: icon.title,
         description: icon.description,
         brand: icon.brand,
@@ -45,10 +47,10 @@ const syncIconDatabase = (): void => {
         public: icon.public
       });
     } else {
-      iconsAdded.push(name);
+      iconsAdded.push(id);
       newDatabase.icons.push({
-        id: name,
-        title: name,
+        id: id,
+        title: id,
         description: 'Short description',
         brand: false,
         vehicle: false,
