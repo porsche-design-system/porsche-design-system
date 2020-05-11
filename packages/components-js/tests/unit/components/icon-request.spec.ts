@@ -1,10 +1,11 @@
 import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/icon-request';
-import { CDN_BASE_URL, SVG_MANIFEST } from '@porsche-design-system/icons';
+import { CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import { IconName } from '../../../src/types';
+import { camelCase } from 'change-case';
 
 describe('getSvgContent()', () => {
 
-  const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${SVG_MANIFEST[name]}`;
+  const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
   const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
   const undefinedUrl = undefined;
 
@@ -61,8 +62,8 @@ describe('buildIconUrl()', () => {
 });
 
 describe('validate cdn with svg manifest', () => {
-  fit('should have every svg from manifest on cdn', async () => {
-    const manifestKeys = Object.keys(SVG_MANIFEST);
+  it('should have every svg from manifest on cdn', async () => {
+    const manifestKeys = Object.keys(ICONS_MANIFEST);
     let cdnResponseCounter = 0;
     await Promise.all(manifestKeys.map(async (key) => {
       const svgContent = await getSvgContent(buildIconUrl(key));

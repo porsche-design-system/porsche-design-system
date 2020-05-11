@@ -1,0 +1,67 @@
+@import '../../../../../../../packages/scss-utils/index';
+
+:host {
+  position: relative !important;
+  display: list-item !important;
+  color: inherit !important;
+  list-style-type: none !important;
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--unordered) {
+  padding-left: p-rem(24px) !important;
+
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(1.5em / 2 - 0.125em) !important;
+    width: p-rem(4px) !important;
+    height: p-rem(4px) !important;
+    background-color: currentColor !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--unordered.#{$p-global-class-prefix}text-list-item--nested) {
+  &::before {
+    height: 1px !important;
+    width: p-rem(8px) !important;
+    top: calc(1.5em / 2) !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered) {
+  padding-left: p-rem(40px) !important;
+
+  &::before {
+    position: absolute !important;
+    right: calc(100% - 24px) !important;
+    top: 0 !important;
+    counter-increment: section !important;
+    text-align: right !important;
+    @include p-text;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-numbered) {
+  &::before {
+    content: counters(section, '.', decimal) '.' !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-alphabetically) {
+  &::before {
+    content: counters(section, '.', lower-latin) '.' !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-numbered.#{$p-global-class-prefix}text-list-item--nested) {
+  &::before {
+    content: counters(section, '.', decimal) !important;
+  }
+}
+
+:host(.#{$p-global-class-prefix}text-list-item--ordered-alphabetically.#{$p-global-class-prefix}text-list-item--nested) {
+  &::before {
+    content: counters(section, '.', lower-latin) !important;
+  }
+}
