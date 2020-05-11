@@ -43,11 +43,12 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const radioButtonComponent = await selectNode('p-radio-button-wrapper');
+    const radioComponent = await selectNode('p-radio-button-wrapper');
     const getLabelText = () => selectNode('p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
     expect(await getLabelText()).toBeNull();
 
-    await radioButtonComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await radioComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await waitForInnerHTMLChange(radioComponent);
     expect(await getLabelText()).not.toBeNull();
   });
 
