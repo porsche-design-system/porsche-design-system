@@ -1,4 +1,4 @@
-import {JSHandle} from "puppeteer";
+import { JSHandle } from "puppeteer";
 
 /**
  * copied and stripped down from
@@ -11,15 +11,18 @@ type WaitForEvent = {
 }
 
 const events = new Map<number, WaitForEvent>();
+let hasExposedFunction = false;
 
 export const initAddEventListener = async () => {
   events.clear();
 
-  // TODO: maybe check if this has been registered before since it survives navigation
-  await page.exposeFunction('puppeteerOnEvent', (id: number, ev: any) => {
-    // NODE CONTEXT
-    nodeContextEvents(events, id, ev);
-  });
+  if (!hasExposedFunction) {
+    await page.exposeFunction('puppeteerOnEvent', (id: number, ev: any) => {
+      // NODE CONTEXT
+      nodeContextEvents(events, id, ev);
+    });
+    hasExposedFunction = true;
+  }
 
   // register helpers on window of browser context
   await page.evaluate(browserContextEvents);
@@ -62,10 +65,10 @@ const browserContextEvents = () => {
       return null;
     }
     if (target === window) {
-      return { serializedWindow: true };
+      return {serializedWindow: true};
     }
     if (target === document) {
-      return { serializedDocument: true };
+      return {serializedDocument: true};
     }
     if (target.nodeType != null) {
       return {
