@@ -3,7 +3,7 @@ import {
   getAttributeFromHandle, getBoxShadow,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem
+  setContentWithDesignSystem, waitForInnerHTMLChange
 } from './helpers';
 
 describe('Textarea Wrapper', () => {
@@ -58,14 +58,14 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>`);
 
     const textareaComponent = await selectNode('p-textarea-wrapper');
-    const getLabelText = await selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+    const getLabelText = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
 
-    expect(await getLabelText).toBeNull();
+    expect(await getLabelText()).toBeNull();
 
-    await page.evaluate(el => el.setAttribute('label', 'Some label'), textareaComponent);
-    await page.waitFor(40);
+    await textareaComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await waitForInnerHTMLChange(textareaComponent);
 
-    expect(await getLabelText).toBeDefined();
+    expect(await getLabelText()).toBeDefined();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -76,34 +76,32 @@ describe('Textarea Wrapper', () => {
 
     const textareaComponent = await selectNode('p-textarea-wrapper');
     const getMessage = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__message');
-    const getTextarea = () => textareaComponent.$('textarea');
+    const textarea = await selectNode('textarea');
 
     expect(await getMessage()).toBeNull();
 
-    await page.evaluate(el => el.setAttribute('state', 'error'), textareaComponent);
-    await page.evaluate(el => el.setAttribute('message', 'Some error message'), textareaComponent);
-    await page.waitFor(40);
+    await textareaComponent.evaluate(el => el.setAttribute('state', 'error'));
+    await textareaComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
+    await waitForInnerHTMLChange(textareaComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBe('alert');
-    expect(await getAttributeFromHandle(await getTextarea(), 'aria-label')).toBe('Some label. Some error message');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
 
-    await page.evaluate(el => el.setAttribute('state', 'success'), textareaComponent);
-    await page.evaluate(el => el.setAttribute('message', 'Some success message'), textareaComponent);
-    await page.waitFor(40);
+    await textareaComponent.evaluate(el => el.setAttribute('state', 'success'));
+    await textareaComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
+    await waitForInnerHTMLChange(textareaComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(await getTextarea(), 'aria-label')).toBe('Some label. Some success message');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some success message');
 
-    await page.evaluate(el => el.removeAttribute('state'), textareaComponent);
-    await page.evaluate(el => el.setAttribute('message', ''), textareaComponent);
-    await page.waitFor(40);
+    await textareaComponent.evaluate(el => el.setAttribute('state', ''));
+    await textareaComponent.evaluate(el => el.setAttribute('message', ''));
+    await waitForInnerHTMLChange(textareaComponent);
 
     expect(await getMessage()).toBeNull();
-    expect(await getAttributeFromHandle(await getTextarea(), 'aria-label')).toBe('Some label');
-
-
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
   });
 
   it(`should focus textarea when label text is clicked`, async () => {
@@ -113,9 +111,8 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>
     `);
 
-    const textareaComponent = await selectNode('p-textarea-wrapper');
     const labelText = await selectNode('p-textarea-wrapper >>> p-text');
-    const textarea = await textareaComponent.$('textarea');
+    const textarea = await selectNode('textarea');
 
     let textareaFocusSpyCalls = 0;
     await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
@@ -123,7 +120,7 @@ describe('Textarea Wrapper', () => {
     expect(textareaFocusSpyCalls).toBe(0);
 
     await labelText.click();
-    await page.waitFor(40);
+    await page.waitFor(10);
 
     expect(textareaFocusSpyCalls).toBe(1);
   });
