@@ -44,11 +44,12 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
-    const labelTextComponent = await selectNode('p-checkbox-wrapper');
+    const checkboxComponent = await selectNode('p-checkbox-wrapper');
     const getLabelText = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text')
     expect(await getLabelText()).toBeNull();
 
-    await page.evaluate(el => el.setAttribute('label', 'Some label'), labelTextComponent);
+    await checkboxComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await waitForInnerHTMLChange(checkboxComponent);
     expect(await getLabelText()).not.toBeNull();
   });
 
@@ -60,31 +61,31 @@ describe('checkbox-wrapper', () => {
 
     const checkboxComponent = await selectNode('p-checkbox-wrapper');
     const getMessage = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
-    const getInput = () => checkboxComponent.$('input');
+    const input = await selectNode('input');
     expect(await getMessage()).toBeNull();
 
-    await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);
-    await page.evaluate(el => el.setAttribute('message', 'Some error message'), checkboxComponent);
+    await checkboxComponent.evaluate(el => el.setAttribute('state', 'error'));
+    await checkboxComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
     await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
-    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label. Some error message');
+    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
 
-    await page.evaluate(el => el.setAttribute('state', 'success'), checkboxComponent);
-    await page.evaluate(el => el.setAttribute('message', 'Some success message'), checkboxComponent);
+    await checkboxComponent.evaluate(el => el.setAttribute('state', 'success'));
+    await checkboxComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
     await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label. Some success message');
+    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
 
-    await page.evaluate(el => el.setAttribute('state', 'none'), checkboxComponent);
-    await page.evaluate(el => el.setAttribute('message', ''), checkboxComponent);
+    await checkboxComponent.evaluate(el => el.setAttribute('state', 'none'));
+    await checkboxComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeNull();
-    expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label');
+    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
   });
 
   it('should toggle checkbox when input is clicked', async () => {
@@ -187,7 +188,7 @@ describe('checkbox-wrapper', () => {
 
     const setIndeterminate = async (value: boolean) => {
       await page.evaluate((indeterminate: boolean) => {
-        const input = document.querySelector('input[type="checkbox"]') as HTMLInputElement;
+        const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
         input.indeterminate = indeterminate;
       }, value);
 
@@ -196,7 +197,7 @@ describe('checkbox-wrapper', () => {
 
     const setChecked = async (value: boolean) => {
       const indeterminate = await page.evaluate((checked: boolean) => {
-        const input = document.querySelector('input[type="checkbox"]') as HTMLInputElement;
+        const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
         input.checked = checked;
         return input.indeterminate;
       }, value);
@@ -210,7 +211,7 @@ describe('checkbox-wrapper', () => {
     const showsIcon = () => page.evaluate(async () => {
       const icon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__icon');
       const style = getComputedStyle(icon);
-      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000)); // transitionDuration is in sec, timeout needs ms
+      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000 + 5)); // transitionDuration is in sec, timeout needs ms
       return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
     });
 
@@ -228,8 +229,8 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon()).toBe(true);
 
       await setIndeterminate(false);
-      expect(await getIconName()).toBe('check');
       expect(await showsIcon()).toBe(false);
+      expect(await getIconName()).toBe('check');
     });
 
     it('should remove indeterminate state when checkbox value is changed by the user', async () => {
@@ -237,7 +238,6 @@ describe('checkbox-wrapper', () => {
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
-
 
       const input = await selectNode('input[type="checkbox"]');
       const innerIcon = await selectNode('p-checkbox-wrapper >>> p-icon >>> i');
