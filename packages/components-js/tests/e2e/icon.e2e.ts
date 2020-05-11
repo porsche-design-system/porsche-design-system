@@ -3,7 +3,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setRequestInterceptor,
-  timeLogger
+  timeLogger, waitForInnerHTMLChange
 } from './helpers';
 import { NavigationOptions } from 'puppeteer';
 
@@ -91,15 +91,16 @@ describe('p-icon', () => {
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
     const iconComponent = await selectNode('p-icon');
+    const shadowIcon = await selectNode('p-icon >>> .p-icon');
     expect(await getIconContent()).toContain('highway');
 
-    await iconComponent.evaluate( el => el.removeAttribute('name'));
+    await iconComponent.evaluate(el => el.removeAttribute('name'));
 
     // check name attribute
-    const outerHTML = await iconComponent.evaluate( el => el.outerHTML);
+    const outerHTML = await iconComponent.evaluate(el => el.outerHTML);
     expect(outerHTML).not.toContain('name=');
     // one tick delay to repaint
-    await page.waitFor(10);
+    await waitForInnerHTMLChange(shadowIcon);
 
     expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
