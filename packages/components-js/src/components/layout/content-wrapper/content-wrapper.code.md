@@ -1,27 +1,27 @@
 # Content Wrapper
 
 Defines the outer spacings between the content area and the left and right screen
-sides, as well as centering its content and setting a max-width. Additionally it prevents horizontal overflow of its content.
+sides, as well as centering its content and setting a max-width.
 
 Can be used along with [Grid](#/components/layout/grid), [Flex](#/components/layout/flex) or with any custom content.
 
-### Safe Zone
+### Width
 
-* **None**: full width
 * **Basic**: max width 1920px including 7-10% safe zone
-* **Enhanced**: max width 1920px
+* **Extended**: max width 1920px
+* **Fluid**: full width
 
 <Playground>
   <template #configurator>
-    <select v-model="safeZone">
-      <option disabled>Select a safe-zone mode</option>
-      <option value="none">None</option>
+    <select v-model="width">
+      <option disabled>Select a width mode</option>
       <option value="basic">Basic</option>
-      <option value="enhanced">Enhanced</option>
+      <option value="extended">Extended</option>
+      <option value="fluid">Fluid</option>
     </select>
   </template>
   <template>
-    <p-content-wrapper :safe-zone="safeZone">
+    <p-content-wrapper :width="width">
       <div class="example-content">Some content</div>
     </p-content-wrapper>
   </template>
@@ -32,7 +32,7 @@ Can be used along with [Grid](#/components/layout/grid), [Flex](#/components/lay
   
   @Component
   export default class PlaygroundContentWrapper extends Vue {
-    public safeZone: string = 'basic';
+    public width: string = 'basic';
   }
 </script>
 
