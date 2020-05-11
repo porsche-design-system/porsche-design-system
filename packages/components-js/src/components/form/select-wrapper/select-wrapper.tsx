@@ -313,10 +313,10 @@ export class SelectWrapper {
           aria-selected={this.optionSelected === key && 'true'}
           aria-disabled={this.optionDisabled === key && 'true'}
         >
-          <span>{option.text}</span>
           {key === this.optionSelected &&
-          <p-icon class={prefix('select-wrapper__fake-option-icon')} name='check' color='inherit'/>
+          <p-icon class={prefix('select-wrapper__fake-option-icon')} aria-hidden={'true'} name='check' color='inherit'/>
           }
+          <span>{option.text}</span>
         </div>
       ]
     );

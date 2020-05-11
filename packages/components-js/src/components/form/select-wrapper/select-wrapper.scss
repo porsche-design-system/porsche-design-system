@@ -264,7 +264,8 @@
     padding: $p-spacing-8 p-rem(12px);
     cursor: pointer;
     color: $p-color-theme-light-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:not([aria-disabled]):hover {
       color: $p-color-theme-light-state-hover;
@@ -278,7 +279,8 @@
       color: $p-color-theme-light-state-active;
       cursor: default;
       pointer-events: none;
-      padding-right: $p-spacing-32;
+
+      // padding-right: $p-spacing-32;
     }
 
     &--active {
@@ -293,8 +295,10 @@
   }
 
   &__fake-option-icon {
-    position: absolute;
-    right: p-rem(12px);
+    margin-right: $p-spacing-8;
+
+    // position: absolute;
+    // right: p-rem(12px);
   }
 
   &__fake-optgroup-label {
