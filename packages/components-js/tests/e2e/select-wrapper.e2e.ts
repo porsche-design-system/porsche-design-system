@@ -3,7 +3,7 @@ import {
   getBoxShadow,
   getClassFromHandle,
   selectNode,
-  setContentWithDesignSystem
+  setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
 
 describe('select-wrapper', () => {
@@ -73,11 +73,12 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
+    const selectComponent = await selectNode('p-select-wrapper');
     const getLabelText = await selectNode('p-select-wrapper >>> .p-select-wrapper__label-text');
 
     expect(getLabelText).toBeNull();
 
-    await page.$eval('p-select-wrapper', el => el.setAttribute('label', 'Some label'));
+    await page.evaluate(el => el.setAttribute('label', 'Some label'), selectComponent);
     expect(getLabelText).toBeDefined();
   });
 
@@ -92,33 +93,33 @@ describe('select-wrapper', () => {
       </p-select-wrapper>`);
 
     const selectComponent = await selectNode('p-select-wrapper');
-    const getMessage = () => selectNode('p-select-wrapper >>> .p-select-wrapper__message');
-    const getSelect = () => selectComponent.$('select');
+    const getMessage = () => selectNode('p-select-wrapper >>> .p-select-wrapper__message'); // has to be a function because it only exists after first setAttribute
+    const select = await selectNode('select');
 
     expect(await getMessage()).toBeNull();
 
     await page.evaluate(el => el.setAttribute('state', 'error'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), selectComponent);
-    await page.waitFor(50);
+    await waitForInnerHTMLChange(selectComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
-    expect(await getAttributeFromHandle(await getSelect(), 'aria-label')).toEqual('Some label. Some error message');
+    expect(await getAttributeFromHandle(select, 'aria-label')).toEqual('Some label. Some error message');
 
     await page.evaluate(el => el.setAttribute('state', 'success'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), selectComponent);
-    await page.waitFor(50);
+    await waitForInnerHTMLChange(selectComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(await getSelect(), 'aria-label')).toEqual('Some label. Some success message');
+    expect(await getAttributeFromHandle(select, 'aria-label')).toEqual('Some label. Some success message');
 
     await page.evaluate(el => el.setAttribute('state', 'none'), selectComponent);
     await page.evaluate(el => el.setAttribute('message', ''), selectComponent);
-    await page.waitFor(50);
+    await waitForInnerHTMLChange(selectComponent);
 
     expect(await getMessage()).toBeNull();
-    expect(await getAttributeFromHandle(await getSelect(), 'aria-label')).toEqual('Some label');
+    expect(await getAttributeFromHandle(select, 'aria-label')).toEqual('Some label');
   });
 
   it('should focus select when label text is clicked', async () => {
@@ -156,20 +157,20 @@ describe('select-wrapper', () => {
       </select>
     </p-select-wrapper>`);
 
-    const getFakeSelect = () => selectNode('p-select-wrapper >>> .p-select-wrapper__fake-select');
-    const getSelect = await selectNode('select');
+    const fakeSelect = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-select');
+    const select = await selectNode('select');
 
-    expect(await getClassFromHandle(await getFakeSelect())).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
 
-    await page.evaluate(el => el.setAttribute('disabled', 'true'), getSelect);
-    await page.waitFor(50);
+    await select.evaluate((el: HTMLSelectElement) => el.disabled = true);
+    await waitForSelector(fakeSelect, 'p-select-wrapper__fake-select--disabled');
 
-    expect(await getClassFromHandle(await getFakeSelect())).toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassFromHandle(fakeSelect)).toContain('p-select-wrapper__fake-select--disabled');
 
-    await page.evaluate(el => el.removeAttribute('disabled'), getSelect);
-    await page.waitFor(50);
+    await select.evaluate((el: HTMLSelectElement) => el.disabled = false);
+    await waitForSelector(fakeSelect, 'p-select-wrapper__fake-select--disabled', {isGone: true});
 
-    expect(await getClassFromHandle(await getFakeSelect())).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
   });
 
   describe('hover state', () => {
