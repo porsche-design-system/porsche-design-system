@@ -19,12 +19,14 @@ There are multiple predefined styling variants available. Default semantic tag h
 ---
 
 ## Custom tag hierarchy
-If a custom tag hierarchy is needed, individual headline tags can be set from `h1` to `h6`. 
+If a custom tag hierarchy is needed, individual headline tags can be set from `h1` to `h6` either by referencing the corresponding `tag` property or setting the HTML headline tags directly as slots. 
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
     <p-headline :theme="theme" variant="headline-1" tag="h3">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-3" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="headline-1"><h1>The quick brown fox jumps over the lazy dog</h1></p-headline>
+    <p-headline :theme="theme" variant="headline-3"><h3>The quick brown fox jumps over the lazy dog</h3></p-headline>
   </template>
 </Playground>
 

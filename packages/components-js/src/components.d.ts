@@ -217,7 +217,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Style of the text.
+          * Style of the headline.
          */
         "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
@@ -928,7 +928,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Style of the text.
+          * Style of the headline.
          */
         "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
