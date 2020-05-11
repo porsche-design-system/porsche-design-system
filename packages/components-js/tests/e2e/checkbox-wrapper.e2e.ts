@@ -61,12 +61,11 @@ describe('checkbox-wrapper', () => {
     const checkboxComponent = await selectNode('p-checkbox-wrapper');
     const getMessage = () => selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
     const getInput = () => checkboxComponent.$('input');
-
     expect(await getMessage()).toBeNull();
 
     await page.evaluate(el => el.setAttribute('state', 'error'), checkboxComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some error message'), checkboxComponent);
-    await page.waitFor(40);
+    await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
@@ -74,7 +73,7 @@ describe('checkbox-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'success'), checkboxComponent);
     await page.evaluate(el => el.setAttribute('message', 'Some success message'), checkboxComponent);
-    await page.waitFor(40);
+    await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
@@ -82,7 +81,7 @@ describe('checkbox-wrapper', () => {
 
     await page.evaluate(el => el.setAttribute('state', 'none'), checkboxComponent);
     await page.evaluate(el => el.setAttribute('message', ''), checkboxComponent);
-    await page.waitFor(40);
+    await waitForInnerHTMLChange(checkboxComponent);
 
     expect(await getMessage()).toBeNull();
     expect(await getAttributeFromHandle(await getInput(), 'aria-label')).toEqual('Some label');
@@ -100,12 +99,12 @@ describe('checkbox-wrapper', () => {
     expect(await getClassListFromHandle(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.click();
-    await page.waitFor(40);
+    await waitForSelector(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked');
 
     expect(await getClassListFromHandle(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.click();
-    await page.waitFor(40);
+    await waitForSelector(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: true});
 
     expect(await getClassListFromHandle(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
@@ -124,13 +123,13 @@ describe('checkbox-wrapper', () => {
     expect(await getPropertyFromHandle(input, 'checked')).toBe(false);
 
     await labelText.click();
-    await page.waitFor(40);
+    await waitForSelector(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked');
 
     expect(await getClassListFromHandle(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getPropertyFromHandle(input, 'checked')).toBe(true);
 
     await labelText.click();
-    await page.waitFor(40);
+    await waitForSelector(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: true});
 
     expect(await getClassListFromHandle(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getPropertyFromHandle(input, 'checked')).toBe(false);
@@ -239,15 +238,16 @@ describe('checkbox-wrapper', () => {
         <input type="checkbox" name="some-name"/>
       </p-checkbox-wrapper>`);
 
+
       const input = await selectNode('input[type="checkbox"]');
+      const innerIcon = await selectNode('p-checkbox-wrapper >>> p-icon >>> i');
 
       await setIndeterminate(true);
-      await page.waitFor(40);
       expect(await getIconName()).toBe('minus');
       expect(await showsIcon()).toBe(true);
 
       await input.click();
-      await page.waitFor(40);
+      await waitForInnerHTMLChange(innerIcon);
       expect(await getIconName()).toBe('check');
       expect(await showsIcon()).toBe(true);
 
@@ -256,7 +256,7 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon()).toBe(true);
 
       await input.click();
-      await page.waitFor(40);
+      await waitForInnerHTMLChange(innerIcon);
       expect(await getIconName()).toBe('check');
       expect(await showsIcon()).toBe(false);
     });
