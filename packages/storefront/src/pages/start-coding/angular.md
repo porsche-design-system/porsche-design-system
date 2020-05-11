@@ -27,7 +27,7 @@ You can find the repository of the angular example project here: [Sample integra
 To build your own application with the components of the Porsche Design System, follow these steps:
 
 * Follow the instructions at [Introduction](https://designsystem.porsche.com/v1/#/start-coding/introduction) to get the required npm package
-* Run `ng new my-app` to create a new angular workspace and initial project
+* Run `ng new my-app` to create a new Angular workspace and initial project
 * Install the Porsche Design System
 
 ``` 
@@ -81,18 +81,18 @@ export class AppComponent {}
 ```
 Run the application by executing `yarn start` or `npm start` and see if the Porsche Design System component is rendered correctly.
 
-You are now ready to build your own angular application using the Porsche Design System.
+You are now ready to build your own Angular application using the Porsche Design System.
 
 ## Advanced usage
 By default the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
 System Loader automatically.  
 But in some cases, for example if you want to include the Porsche Design System in Web Components that
-you build with angular, you might need more control on who is registering those components to prevent
+you build with Angular, you might need more control on who is registering those components to prevent
 conflicts. In this case you can provide the `PREVENT_WEB_COMPONENTS_REGISTRATION` inject token with the
 value `true`. This will prevent the loading of polyfills and registration of the Web Components provided
-by the Porsche Design System, while keeping you able to use the angular components.  
+by the Porsche Design System, while keeping you able to use the Angular components.  
 Caution, if you opt-out of the automatic registering you've to take care that they are registered in some
-other place, else the angular components won't work as expected.
+other place, else the Angular components won't work as expected.
 
 You can provide the token as follows:
 ```
