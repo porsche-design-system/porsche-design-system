@@ -211,7 +211,7 @@ describe('checkbox-wrapper', () => {
     const showsIcon = () => page.evaluate(async () => {
       const icon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('.p-checkbox-wrapper__icon');
       const style = getComputedStyle(icon);
-      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000 + 5)); // transitionDuration is in sec, timeout needs ms
+      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000 + 10)); // transitionDuration is in sec, timeout needs ms
       return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
     });
 
