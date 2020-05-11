@@ -61,11 +61,14 @@ describe('buildIconUrl()', () => {
 });
 
 describe('validate cdn with svg manifest', () => {
-  it('should have every svg from manifest on cdn', async () => {
+  fit('should have every svg from manifest on cdn', async () => {
     const manifestKeys = Object.keys(SVG_MANIFEST);
     let cdnResponseCounter = 0;
     await Promise.all(manifestKeys.map(async (key) => {
       const svgContent = await getSvgContent(buildIconUrl(key));
+      if (!svgContent.startsWith('<svg')){
+        console.error('Icon request failed for:', buildIconUrl(key));
+      }
       expect(svgContent.startsWith('<svg')).toBeTruthy();
       cdnResponseCounter++;
     }));
