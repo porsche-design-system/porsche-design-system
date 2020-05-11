@@ -111,11 +111,7 @@ describe('link', () => {
       </div>
     `);
 
-    // ToDo: Helper function?
-    const linkHasFocus = async () => await page.evaluate(() => {
-      const linkElement = document.querySelector('p-link');
-      return document.activeElement === linkElement;
-    });
+    const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link'));
 
     const link = await selectNode('p-link');
     const before = await selectNode('#before');
