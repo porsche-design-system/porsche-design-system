@@ -1,6 +1,7 @@
 # Select
 
 The **Select Wrapper** component is a styling wrapper for the native HTML `<select>` form element.
+To improve accessibility on devices with touch support, it defaults to the native user interface behaviour.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The **Select Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
