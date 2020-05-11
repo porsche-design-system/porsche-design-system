@@ -5,7 +5,7 @@ The Porsche Design System enables designers to create outstanding digital design
 ## 1. Tooling
 To improve output efficiency and reduce maintenance costs, at Porsche we decided to set the tools [Sketch](https://www.sketch.com/) and [Abstract](https://www.goabstract.com/) as standard for designing. Please install the latest [Abstract desktop app](https://app.goabstract.com/). 
 
-You can find a [detailed guideline on how to use Abstract here](#/getting-started/design-workflow).
+You can find a [detailed guideline on how to use Abstract here](#/start-designing/design-workflow)
 
 ## 2. Get inspired 
 After you received your Abstract invitation you can get a smooth and easy onboaring experience. You are welcome to have a look into other digital Porsche projects within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects) and use them as starting point.
@@ -37,4 +37,4 @@ Enrich your Porsche design experience by using the Porsche color palette in your
 [Download Porsche color palette](https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette)
 
 ## Other helpful Sketch plugins
-A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/getting-started/sketch-plugins).
+A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/start-designing/sketch-plugins).
