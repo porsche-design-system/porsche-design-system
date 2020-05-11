@@ -10,12 +10,12 @@ import { prefix } from '../../../utils';
 export class ContentWrapper {
 
   /** Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width. */
-  @Prop() public safeZone?: 'basic' | 'enhanced' | 'none' = 'basic';
+  @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   public render(): JSX.Element {
     const contentWrapperClasses = cx(
       prefix('content-wrapper'),
-      prefix(`content-wrapper--${this.safeZone}`)
+      prefix(`content-wrapper--${this.width}`)
     );
 
     return (

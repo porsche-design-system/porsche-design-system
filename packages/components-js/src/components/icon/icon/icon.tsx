@@ -3,7 +3,8 @@ import { getSvgContent, iconContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
-import { cdn, svg } from '@porsche-design-system/icons';
+import { cdn, icons } from '@porsche-design-system/icons';
+import { camelCase } from 'change-case';
 
 @Component({
   tag: 'p-icon',
@@ -89,7 +90,7 @@ export class Icon {
 
   public getSource(): string {
     if (this.name && !this.source) {
-      return `${cdn}/${svg[this.name]}`;
+      return `${cdn}/${icons[camelCase(this.name)]}`;
     }
     if (this.source) {
       return this.source;

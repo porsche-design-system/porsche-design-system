@@ -92,6 +92,17 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 
 ## Code
 
+### [1.4.0-rc.3] (2020-05-08)
+
+**Added**
+- `Text List`
+
+**Changed**
+- Improve caching strategy for fonts by content-based hash
+- Improve caching strategy for marque by content-based hash
+- Dimensions and sharpness of marque
+- Props for `Content Wrapper`
+
 ### [1.4.0-rc.2] (2020-05-06)
 
 **Added**
