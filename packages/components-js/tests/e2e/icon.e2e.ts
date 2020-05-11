@@ -3,7 +3,7 @@ import { NavigationOptions } from 'puppeteer';
 
 describe('p-icon', () => {
   let responseCounter: number;
-  const navOptions: NavigationOptions = {waitUntil: 'networkidle0'};
+  const navOptions: NavigationOptions = {waitUntil: 'networkidle0'}; // If we check for number of responses it is necessary to wait for all network traffic to be resolved.
 
   beforeEach(async () => {
     await page.reload(navOptions);
