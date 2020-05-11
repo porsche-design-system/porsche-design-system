@@ -1,9 +1,16 @@
-import { getInnerHTMLFromShadowRoot, setContentWithDesignSystem, setRequestInterceptor, timeLogger } from './helpers';
+import {
+  getInnerHTMLFromShadowRoot,
+  selectNode,
+  setContentWithDesignSystem,
+  setRequestInterceptor,
+  timeLogger
+} from './helpers';
 import { NavigationOptions } from 'puppeteer';
 
 describe('p-icon', () => {
   let responseCounter: number;
   const navOptions: NavigationOptions = {waitUntil: 'networkidle0'}; // If we check for number of responses it is necessary to wait for all network traffic to be resolved.
+  const getIconContent = () => getInnerHTMLFromShadowRoot('p-icon >>> i');
 
   beforeEach(async () => {
     await page.reload(navOptions);
@@ -27,8 +34,7 @@ describe('p-icon', () => {
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`, navOptions);
 
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconAfter).toContain('arrow-head-right');
+    expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
   });
 
@@ -45,15 +51,15 @@ describe('p-icon', () => {
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
+    const iconComponent = await selectNode('p-icon');
 
     // change icon name to "question"
-    await page.$eval('p-icon', el => el.setAttribute('name', 'question'));
+    await iconComponent.evaluate(el => el.setAttribute('name', 'question'));
 
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
     await page.waitFor(delay);
 
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconAfter).toContain('question');
+    expect(await getIconContent()).toContain('question');
     expect(responseCounter).toEqual(2);
   });
 
@@ -68,18 +74,15 @@ describe('p-icon', () => {
     setRequestInterceptor([0, 1000]);
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
-    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconBefore).toContain('highway');
+    const iconComponent = await selectNode('p-icon');
+    expect(await getIconContent()).toContain('highway');
 
-    await page.$eval('p-icon', el => el.setAttribute('name', 'light'));
-
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconAfter).toEqual('');
+    await iconComponent.evaluate(el => el.setAttribute('name', 'light'));
+    expect(await getIconContent()).toEqual('');
 
     await page.waitForResponse(resp => resp.url().indexOf('light') && resp.status() === 200);
 
-    const iconFinal = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconFinal).toContain('light');
+    expect(await getIconContent()).toContain('light');
     expect(responseCounter).toEqual(2);
   });
 
@@ -87,19 +90,18 @@ describe('p-icon', () => {
     setRequestInterceptor([2000]);
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
-    const iconBefore = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconBefore).toContain('highway');
+    const iconComponent = await selectNode('p-icon');
+    expect(await getIconContent()).toContain('highway');
 
-    await page.$eval('p-icon', el => el.removeAttribute('name'));
+    await iconComponent.evaluate( el => el.removeAttribute('name'));
 
     // check name attribute
-    const outerHTML = await page.$eval('p-icon', el => el.outerHTML);
+    const outerHTML = await iconComponent.evaluate( el => el.outerHTML);
     expect(outerHTML).not.toContain('name=');
     // one tick delay to repaint
     await page.waitFor(10);
 
-    const iconAfter = await getInnerHTMLFromShadowRoot('p-icon >>> i');
-    expect(iconAfter).toContain('arrow-head-right');
+    expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
   });
 });
