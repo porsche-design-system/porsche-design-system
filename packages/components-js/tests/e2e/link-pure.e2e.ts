@@ -51,22 +51,57 @@ describe('link pure', () => {
     const after = await selectNode('#after');
     await before.focus();
 
+    let beforeFocusCalls = 0;
+    await addEventListener(before, 'focus', () => beforeFocusCalls++);
+    let linkFocusCalls = 0;
+    await addEventListener(link, 'focus', () => linkFocusCalls++)
+    let linkFocusInCalls = 0;
+    await addEventListener(link, 'focusin', () => linkFocusInCalls++);
+    let linkBlurCalls = 0;
+    await addEventListener(link, 'blur', () => linkBlurCalls++);
+    let linkFocusOutCalls = 0;
+    await addEventListener(link, 'focusout', () => linkFocusOutCalls++);
+    let afterFocusCalls = 0;
+    await addEventListener(after, 'focus', () => afterFocusCalls++);
+
     expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
+    expect(linkFocusCalls).toBe(1);
+    expect(linkFocusInCalls).toBe(1);
+    expect(linkBlurCalls).toBe(0);
+    expect(linkFocusOutCalls).toBe(0);
+    expect(afterFocusCalls).toBe(0);
     expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
     await page.keyboard.press('Tab');
+    expect(linkFocusCalls).toBe(1);
+    expect(linkFocusInCalls).toBe(1);
+    expect(linkBlurCalls).toBe(1);
+    expect(linkFocusOutCalls).toBe(1);
+    expect(afterFocusCalls).toBe(1);
     expect(await getActiveElementId()).toEqual(await getIdFromNode(after));
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    expect(linkFocusCalls).toBe(2);
+    expect(linkFocusInCalls).toBe(2);
+    expect(linkBlurCalls).toBe(1);
+    expect(linkFocusOutCalls).toBe(1);
+    expect(beforeFocusCalls).toBe(0);
     expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    expect(linkFocusCalls).toBe(2);
+    expect(linkFocusInCalls).toBe(2);
+    expect(linkBlurCalls).toBe(2);
+    expect(linkFocusOutCalls).toBe(2);
+    expect(beforeFocusCalls).toBe(1);
     expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
+
+    await page.keyboard.up('ShiftLeft');
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
@@ -77,17 +112,12 @@ describe('link pure', () => {
           </div>
     `);
 
-    // ToDo: Helper function?
-    async function linkHasFocus() {
-      return await page.evaluate(() => {
-        const linkElement = document.querySelector('p-link-pure');
-        return document.activeElement === linkElement;
-      });
-    }
+    const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-pure'));
 
     const link = await selectNode('p-link-pure');
     const before = await selectNode('#before');
     await before.focus();
+
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
     expect(await linkHasFocus()).toBe(true);
