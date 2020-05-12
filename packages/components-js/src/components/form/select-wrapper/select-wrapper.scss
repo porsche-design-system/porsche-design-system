@@ -279,13 +279,12 @@
       color: $p-color-theme-light-state-active;
       cursor: default;
       pointer-events: none;
-
-      // padding-right: $p-spacing-32;
+      padding-right: $p-spacing-32;
     }
 
-    &--active {
+    &--highlighted:not(&--selected) {
       color: $p-color-theme-light-state-active;
-      background-color: $p-color-theme-light-surface;
+      background-color: #ebebeb;
     }
 
     &--disabled {
@@ -295,10 +294,8 @@
   }
 
   &__fake-option-icon {
-    margin-right: $p-spacing-8;
-
-    // position: absolute;
-    // right: p-rem(12px);
+     position: absolute;
+     right: p-rem(12px);
   }
 
   &__fake-optgroup-label {

@@ -306,17 +306,17 @@ export class SelectWrapper {
           class={`
             ${prefix('select-wrapper__fake-option')}
             ${this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : ''}
-            ${this.optionHighlighted === key ? prefix('select-wrapper__fake-option--active') : ''}
+            ${this.optionHighlighted === key ? prefix('select-wrapper__fake-option--highlighted') : ''}
             ${this.optionDisabled === key ? prefix('select-wrapper__fake-option--disabled') : ''}
           `}
           onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
           aria-selected={this.optionSelected === key && 'true'}
           aria-disabled={this.optionDisabled === key && 'true'}
         >
+          <span>{option.text}</span>
           {key === this.optionSelected &&
           <p-icon class={prefix('select-wrapper__fake-option-icon')} aria-hidden={'true'} name='check' color='inherit'/>
           }
-          <span>{option.text}</span>
         </div>
       ]
     );
