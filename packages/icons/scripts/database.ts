@@ -29,7 +29,7 @@ const syncIconDatabase = (): void => {
   const iconsDeleted: string[] = [];
 
   // add or update icons
-  for (const [name, file] of Object.entries(ICONS_MANIFEST)) {
+  for (const [name, file] of Object.entries(ICONS_MANIFEST).sort()) {
 
     const id = paramCase(name);
     const icon = database.icons.find(element => element && element.id === id);
