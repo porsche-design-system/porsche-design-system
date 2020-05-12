@@ -12,6 +12,10 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 * Setting configuration
 * Surveys
 
+**Download patterns as Sketch file**  
+
+<p-link-pure href="downloads/pds-form-templates.sketch.zip" icon="download" download="download">Download form patterns</p-link-pure>
+
 ---
 
 ## Form DNA
