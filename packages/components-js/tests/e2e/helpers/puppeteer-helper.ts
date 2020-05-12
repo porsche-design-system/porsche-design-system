@@ -50,6 +50,10 @@ export const waitForInnerHTMLChange = async (node: ElementHandle) => {
   }
 };
 
+export const waitFor = async () => {
+  await page.waitFor(2)
+};
+
 // Browser Context
 
 
