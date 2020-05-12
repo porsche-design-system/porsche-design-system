@@ -1,6 +1,3 @@
-// fetch polyfill for test-execution in node environment and not browser
-require('isomorphic-fetch');
-
 /**
  * TODO: Remove this workaround
  * This is a temporary workaround to make stencil e2e tests
