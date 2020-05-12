@@ -45,6 +45,9 @@ export class SelectWrapper {
   private optgroups: NodeListOf<HTMLOptGroupElement>;
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
+  private keys: string[] = [];
+  private resetTime = 1000;
+  private timer: any;
 
   private static isTouchDevice(): boolean {
     if (typeof window === 'undefined') {
@@ -223,54 +226,60 @@ export class SelectWrapper {
   }
 
   private handleSelectEvents(): void {
+    const isLetterOrNum = (key): string => key.match(/[a-zA-Z0-9]/g);
+
     this.select.addEventListener('mousedown', (e: MouseEvent) => {
       e.preventDefault();
       this.select.focus();
       this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     });
+
     this.select.addEventListener('keydown', (e: KeyboardEvent) => {
-      if(e.key  === 'ArrowUp' || e.key === 'Up') {
-        e.preventDefault();
-        this.fakeOptionListHidden = false;
-        this.cycleFakeOptionList('up');
-      }
-      if(e.key === 'ArrowDown' || e.key === 'Down') {
-        e.preventDefault();
-        this.fakeOptionListHidden = false;
-        this.cycleFakeOptionList('down');
-      }
-      if(e.key === 'ArrowLeft' || e.key === 'Left') {
-        e.preventDefault();
-        this.cycleFakeOptionList('left');
-      }
-      if(e.key === 'ArrowRight' || e.key === 'Right') {
-        e.preventDefault();
-        this.cycleFakeOptionList('right');
-      }
-      if(e.key === ' ' || e.key === 'Spacebar') {
-        e.preventDefault();
-        this.fakeOptionListHidden = this.fakeOptionListHidden === false;
-        if(this.fakeOptionListHidden) {
+      const key = e.key;
+      switch (key) {
+        case 'ArrowUp' || 'Up':
+          e.preventDefault();
+          this.fakeOptionListHidden = false;
+          this.cycleFakeOptionList('up');
+          break;
+        case 'ArrowDown' || 'Down':
+          e.preventDefault();
+          this.fakeOptionListHidden = false;
+          this.cycleFakeOptionList('down');
+          break;
+        case 'ArrowRight' || 'Right':
+          e.preventDefault();
+          this.cycleFakeOptionList('right');
+          break;
+        case ' ' || 'Spacebar':
+          e.preventDefault();
+          this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+          if(this.fakeOptionListHidden) {
+            this.setOptionSelected(this.optionHighlighted);
+          }
+          break;
+        case 'Enter':
+          e.preventDefault();
+          this.fakeOptionListHidden = true;
           this.setOptionSelected(this.optionHighlighted);
-        }
-      }
-      if(e.key === 'Enter') {
-        e.preventDefault();
-        this.fakeOptionListHidden = true;
-        this.setOptionSelected(this.optionHighlighted);
-      }
-      if(e.key === 'Escape' || e.key === 'Esc') {
-        this.fakeOptionListHidden = true;
-      }
-      if(e.key === 'PageUp') {
-        e.preventDefault();
-        this.optionHighlighted = 0;
-        this.handleScroll();
-      }
-      if(e.key === 'PageDown') {
-        e.preventDefault();
-        this.optionHighlighted = this.options.length-1;
-        this.handleScroll();
+          break;
+        case 'Escape' || 'Esc':
+          this.fakeOptionListHidden = true;
+          break;
+        case 'PageUp':
+          e.preventDefault();
+          this.optionHighlighted = 0;
+          this.handleScroll();
+          break;
+        case 'PageDown':
+          e.preventDefault();
+          this.optionHighlighted = this.options.length-1;
+          this.handleScroll();
+          break;
+        default:
+          if(isLetterOrNum(key)) {
+            this.searchOptions(key);
+          }
       }
     });
   }
@@ -368,6 +377,47 @@ export class SelectWrapper {
         this.fakeOptionListNode.scrollTop = this.fakeOptionHighlightedNode.offsetTop;
       }
     }
+  }
+
+  private searchOptions(key: string): void {
+    const searchSelect = (matches) => {
+      if (!matches.length) { return; }
+      const current = this.optionSelected;
+      const currentIndex = matches.indexOf(current);
+      const nextIndex = currentIndex + 1;
+      const toBeSelected = matches[nextIndex] || matches[0];
+
+      if (toBeSelected === current) { return; }
+      this.optionHighlighted = toBeSelected.index;
+      this.optionSelected = toBeSelected.index;
+    };
+
+    clearTimeout(this.timer);
+
+    if (!key || !key.trim().length) { return; }
+
+    const options = Array.from(this.options).filter((o:HTMLOptionElement) => o.disabled !== true);
+    key = key.toLowerCase();
+    this.keys.push(key);
+
+    // find the FIRST option that most closely matches our keys
+    // if that first one is already selected, go to NEXT option
+    const stringMatch = this.keys.join('');
+    // attempt an exact match
+    const deepMatches = options.filter((o:HTMLOptionElement) => o.innerText.toLowerCase().startsWith(stringMatch) === true);
+
+    if (deepMatches.length) {
+      searchSelect(deepMatches);
+    } else {
+      // plan b - first character match
+      const firstChar = stringMatch[0];
+      searchSelect(options.filter((o:HTMLOptionElement) => o.innerText.toLowerCase().startsWith(firstChar) === true));
+    }
+
+    this.timer = setTimeout(() => {
+      // reset
+      this.keys = [];
+    }, this.resetTime);
   }
 
   private setState(): void {
