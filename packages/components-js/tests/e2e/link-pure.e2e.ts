@@ -4,7 +4,7 @@ import {
   getIdFromNode,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitFor
+  setContentWithDesignSystem, waitForEventCallbacks
 } from './helpers';
 
 describe('link pure', () => {
@@ -30,7 +30,7 @@ describe('link pure', () => {
 
     await link.click();
     await host.click();
-    await waitFor();
+    await waitForEventCallbacks();
 
     expect(events.length).toBe(2);
     for (const event of events) {
