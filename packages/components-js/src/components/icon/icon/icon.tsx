@@ -4,8 +4,6 @@ import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
 
-// ToDo: icon directory is nested in another icon directory. Is this necessary?
-
 @Component({
   tag: 'p-icon',
   styleUrl: 'icon.scss',

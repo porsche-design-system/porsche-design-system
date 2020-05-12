@@ -5,7 +5,7 @@ import {
   getAttributeFromHandle, getBoxShadow,
   getClassFromHandle, getClassListFromHandle, initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitFor, waitForInnerHTMLChange, waitForSelector
+  setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
 
 const getCustomInputButtonDisabledState = () => page.evaluate(() => {
@@ -131,7 +131,7 @@ describe('Text Field Wrapper', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await labelText.click();
-    await waitFor();
+    await waitForEventCallbacks();
 
     expect(inputFocusSpyCalls).toBe(1);
   });
@@ -265,7 +265,7 @@ describe('Text Field Wrapper', () => {
     await addEventListener(form, 'submit', () => formFocusCalls++);
 
     await searchButton.click();
-    await waitFor();
+    await waitForEventCallbacks();
     expect(formFocusCalls).toBe(1);
   });
 

@@ -3,7 +3,7 @@ import {
   getIdFromNode,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitFor
+  setContentWithDesignSystem, waitForEventCallbacks
 } from "./helpers";
 
 describe('button', () => {
@@ -29,7 +29,7 @@ describe('button', () => {
 
     await button.click();
     await host.click();
-    await waitFor();
+    await waitForEventCallbacks();
 
     expect(events.length).toBe(2);
     for (const event of events) {
@@ -73,6 +73,7 @@ describe('button', () => {
     await addEventListener(form, 'submit', () => calls++);
 
     await button.click();
+    await waitForEventCallbacks();
     expect(calls).toBe(0);
   });
 
@@ -94,6 +95,7 @@ describe('button', () => {
 
     await innerButton.click();
     await outerButton.click();
+    await waitForEventCallbacks();
     expect(calls).toBe(0);
   });
 

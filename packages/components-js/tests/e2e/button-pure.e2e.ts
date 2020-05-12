@@ -3,7 +3,7 @@ import {
   getIdFromNode,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitFor
+  setContentWithDesignSystem, waitForEventCallbacks
 } from "./helpers";
 
 describe('button pure', () => {
@@ -29,7 +29,7 @@ describe('button pure', () => {
     await button.click();
     await host.click();
 
-    await waitFor();
+    await waitForEventCallbacks();
     expect(events.length).toBe(2);
     for (const event of events) {
       expect(event.target.id).toBe(await getIdFromNode(host));

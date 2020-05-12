@@ -3,7 +3,7 @@ import {
   getAttributeFromHandle, getBoxShadow,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitFor, waitForInnerHTMLChange
+  setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange
 } from './helpers';
 
 describe('Textarea Wrapper', () => {
@@ -120,7 +120,7 @@ describe('Textarea Wrapper', () => {
     expect(textareaFocusSpyCalls).toBe(0);
 
     await labelText.click();
-    await waitFor();
+    await waitForEventCallbacks();
 
     expect(textareaFocusSpyCalls).toBe(1);
   });
