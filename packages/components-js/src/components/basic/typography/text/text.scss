@@ -4,6 +4,13 @@
   display: block;
 }
 
+::slotted(*:first-child) {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-style: normal !important;
+  font-size: inherit !important;
+}
+
 .#{$p-global-class-prefix}text {
   $bem-block: &;
   @include p-text;

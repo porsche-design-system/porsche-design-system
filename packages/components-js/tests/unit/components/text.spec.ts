@@ -20,4 +20,12 @@ describe('Component <p-text>', () => {
     });
     expect(page.root.shadowRoot.querySelector('span.p-text')).toBeTruthy();
   });
+
+  it('should render correctly with tag of <p> if tag is set as slot', async () => {
+    const page = await newSpecPage({
+      components: [Text],
+      html: `<p-text><p>Some text</p></p-text>`,
+    });
+    expect(page.root.shadowRoot.querySelector('p.p-text')).toBeTruthy();
+  });
 });
