@@ -41,8 +41,8 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const TagType = this.hasHeadlineTag ? 'div' :
-      (!this.tag && !this.hasHeadlineTag) ?
+    const TagType = this.hasSlottedHeadlineTag ? 'div' :
+      (!this.tag && !this.hasSlottedHeadlineTag) ?
         this.variant === 'large-title' && 'h1'
       || this.variant === 'headline-1' && 'h1'
       || this.variant === 'headline-2' && 'h2'
@@ -67,7 +67,7 @@ export class Headline {
     );
   }
 
-  private get hasHeadlineTag(): boolean {
+  private get hasSlottedHeadlineTag(): boolean {
     const el = this.host.querySelector(':first-child');
     return el ? el.matches('h1, h2, h3, h4, h5, h6') : false;
   }
