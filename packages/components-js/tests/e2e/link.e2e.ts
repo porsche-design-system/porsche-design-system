@@ -3,7 +3,7 @@ import {
   getActiveElementId,
   getIdFromNode, initAddEventListener,
   selectNode,
-  setContentWithDesignSystem
+  setContentWithDesignSystem, waitFor
 } from "./helpers";
 
 describe('link', () => {
@@ -28,7 +28,7 @@ describe('link', () => {
 
     await link.click();
     await host.click();
-    await page.waitFor(2);
+    await waitFor();
 
     expect(events.length).toBe(2);
     for (const event of events) {

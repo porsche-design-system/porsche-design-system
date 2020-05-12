@@ -4,7 +4,7 @@ import {
   getIdFromNode,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem
+  setContentWithDesignSystem, waitFor
 } from './helpers';
 
 describe('link pure', () => {
@@ -30,7 +30,7 @@ describe('link pure', () => {
 
     await link.click();
     await host.click();
-    await page.waitFor(2);
+    await waitFor();
 
     expect(events.length).toBe(2);
     for (const event of events) {
