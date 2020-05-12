@@ -10,7 +10,7 @@ import { camelCase } from 'change-case';
 
 const requestCache = new Map<string, Promise<string>>();
 
-export const getSvgContent = (url: string): Promise<string> => {
+export const getSvgContent = async (url: string): Promise<string> => {
   let req = requestCache.get(url);
   if (req === undefined) {
     req = fetch(url).then(
