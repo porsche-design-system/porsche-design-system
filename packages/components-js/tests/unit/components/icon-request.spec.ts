@@ -3,6 +3,8 @@ import { CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
 
+const DEFAULT_ICON_URL = 'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
+
 describe('getSvgContent()', () => {
 
   const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
@@ -46,7 +48,7 @@ describe('getSvgContent()', () => {
 describe('buildIconUrl()', () => {
   it('should return cdn url for icon name', () => {
     const cdnIconUrl = buildIconUrl('arrow-head-right');
-    expect(cdnIconUrl).toEqual('https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg');
+    expect(cdnIconUrl).toEqual(DEFAULT_ICON_URL);
   });
 
   it('should return source url of external source', () => {
@@ -55,9 +57,9 @@ describe('buildIconUrl()', () => {
     expect(cdnIconUrl).toEqual(source);
   });
 
-  it('should return empty string if icon name is not in manifest', () => {
+  it('should return default icon-url, if icon name is not in manifest', () => {
     const cdnIconUrl = buildIconUrl('arrow');
-    expect(cdnIconUrl).toBe('');
+    expect(cdnIconUrl).toEqual(DEFAULT_ICON_URL);
   });
 });
 
