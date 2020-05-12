@@ -48,6 +48,7 @@ describe('link social', () => {
     const link = await selectNode('p-link-social');
     const before = await selectNode('#before');
     const after = await selectNode('#after');
+    const linkId = await getIdFromNode(link);
     await before.focus();
 
     let beforeFocusCalls = 0;
@@ -71,7 +72,7 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(0);
     expect(linkFocusOutCalls).toBe(0);
     expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
+    expect(await getActiveElementId()).toEqual(linkId);
 
     await page.keyboard.press('Tab');
     expect(linkFocusCalls).toBe(1);
@@ -89,7 +90,7 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(1);
     expect(linkFocusOutCalls).toBe(1);
     expect(beforeFocusCalls).toBe(0);
-    expect(await getActiveElementId()).toEqual(await getIdFromNode(link));
+    expect(await getActiveElementId()).toEqual(linkId);
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
