@@ -21,7 +21,7 @@ describe('p-icon', () => {
     page.on('response', (resp) => {
       const url = resp.url();
 
-      if (url.indexOf('.svg') >= 0) {
+      if (url.endsWith('.svg')) {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
         console.log(`RESP ${responseCounter}: icon = ${iconName}, time = ${timeLogger()}`);
         responseCounter++;
@@ -47,7 +47,7 @@ describe('p-icon', () => {
    */
   it('should render correct icon if default-icon request takes longer than icon request', async () => {
     const delay = 2000;
-    setRequestInterceptor([delay]);
+    setRequestInterceptor([delay, 0]);
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`, {waitUntil: 'networkidle2'});

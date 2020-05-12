@@ -8,6 +8,7 @@ import { IconName } from '../../../types';
 import { isUrl } from './icon-helper';
 import { camelCase } from 'change-case';
 
+export const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
 const requestCache = new Map<string, Promise<string>>();
 
 export const getSvgContent = async (url: string): Promise<string> => {
@@ -22,13 +23,15 @@ export const getSvgContent = async (url: string): Promise<string> => {
   return req;
 };
 
-export const buildIconUrl = (iconNameOrSource: IconName | string): string => {
-  if (isUrl(iconNameOrSource)) {
+export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_NAME): string => {
+  if(iconNameOrSource === null){
+    return buildIconUrl(DEFAULT_ICON_NAME);
+  }else if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
   } else if (ICONS_MANIFEST[camelCase(iconNameOrSource)]) { // check if IconName exists
     return `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(iconNameOrSource)]}`;
   }
   // Only occurs if consumer is not using typescript -> necessary?
   console.warn('Please provide either an name property or a source property!');
-  return '';
+  return buildIconUrl(DEFAULT_ICON_NAME);
 };

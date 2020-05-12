@@ -1,12 +1,10 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { buildIconUrl, getSvgContent } from './icon-request';
+import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
 
 // ToDo: icon directory is nested in another icon directory. Is this necessary?
-
-const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
 
 @Component({
   tag: 'p-icon',
@@ -84,16 +82,6 @@ export class Icon {
         <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
-  }
-
-  // ToDo: watch is triggered 2x because of stencil life cycle. Remove double name watch.
-  @Watch('name')
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  private resetNameProp(): void { // ignore unused local
-    if (this.name === null) {
-      this.name = DEFAULT_ICON_NAME;
-    }
   }
 
   @Watch('source')
