@@ -10,14 +10,14 @@
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate>
           <p-flex class="form-grid-item-container">
-            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'two-thirds'}">
+            <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-grid-item">
               <p-text-field-wrapper label="Porsche ID (email address)">
                 <input type="email" name="email">
               </p-text-field-wrapper>
             </p-flex-item>
           </p-flex>
           <p-flex class="form-grid-item-container">
-            <p-flex-item class="form-row-spacing form-grid-item" width="{base: 'full', m: 'two-thirds'}">
+            <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-row-spacing form-grid-item">
               <p-text-field-wrapper label="Password">
                 <input type="password" name="password">
               </p-text-field-wrapper>

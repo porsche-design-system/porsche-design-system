@@ -42,17 +42,17 @@
           <p-grid class="form-row-spacing">
             <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
               <p-flex class="form-grid-item-container">
-                <p-flex-item class="form-grid-item form-grid-item--quarter">
+                <p-flex-item width="one-quarter" class="form-grid-item">
                   <p-text-field-wrapper state="error" label="Day">
                     <input type="number" placeholder="DD" name="day" aria-describedby="error-message-1">
                   </p-text-field-wrapper>
                 </p-flex-item>
-                <p-flex-item class="form-grid-item form-grid-item--quarter">
+                <p-flex-item width="one-quarter" class="form-grid-item">
                   <p-text-field-wrapper state="error" label="Month">
                     <input type="number" placeholder="MM" name="month" aria-describedby="error-message-2">
                   </p-text-field-wrapper>
                 </p-flex-item>
-                <p-flex-item class="form-grid-item form-grid-item--quarter">
+                <p-flex-item width="one-quarter" class="form-grid-item">
                   <p-text-field-wrapper label="Year">
                     <input type="number" value="1998" placeholder="YYYY" name="year">
                   </p-text-field-wrapper>
