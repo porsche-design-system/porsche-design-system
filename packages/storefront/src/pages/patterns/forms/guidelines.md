@@ -14,7 +14,7 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 
 **Download patterns as Sketch file**  
 
-<p-link-pure href="downloads/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
+<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
 
 ---
 
