@@ -55,8 +55,8 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
   await checkIntegrity(manifest);
 
   fs.writeFileSync(path.normalize('./index.ts'),
-    `export const cdn = "${cdn}";
-export const fonts = ${JSON.stringify(manifest)};`
+    `export const CDN_BASE_URL = "${cdn}";
+export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
   console.log('Created fonts manifest.');
