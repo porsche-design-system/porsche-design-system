@@ -2,7 +2,7 @@ const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/trac
 
 export const trackEvent = (component: string, event?: string): void => {
   if (process.env.NODE_ENV === 'production') {
-    fetch(`${TRACKING_BASE_URL}?${queryString({ component, event })}`).catch(console.warn);
+    fetch(`${TRACKING_BASE_URL}?${queryString({ c: component, e: event })}`).catch(console.warn);
   }
 };
 
