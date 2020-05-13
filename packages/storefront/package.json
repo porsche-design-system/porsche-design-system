@@ -28,7 +28,7 @@
     "@types/jest": "^25.2.1",
     "@types/js-beautify": "^1.8.2",
     "@types/lodash": "^4.14.150",
-    "@types/node": "~13.11.1",
+    "@types/node": "~14.0.1",
     "@types/prismjs": "^1.16.0",
     "@types/puppeteer": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
