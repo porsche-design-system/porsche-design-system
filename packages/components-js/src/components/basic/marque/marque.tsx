@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { cdn, marque } from '@porsche-design-system/marque';
+import { CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
 @Component({
   tag: 'p-marque',
@@ -23,19 +23,19 @@ export class Marque {
         <source
           media='(min-width: 1300px)'
           srcSet={`
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['1x'] : marque.porscheMarque.medium['1x']} 1x,
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['2x'] : marque.porscheMarque.medium['2x']} 2x,
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['3x'] : marque.porscheMarque.medium['3x']} 3x
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['1x'] : MARQUES_MANIFEST.porscheMarque.medium['1x']} 1x,
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['2x'] : MARQUES_MANIFEST.porscheMarque.medium['2x']} 2x,
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['3x'] : MARQUES_MANIFEST.porscheMarque.medium['3x']} 3x
           `}
         />
         <source
           srcSet={`
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['1x'] : marque.porscheMarque.small['1x']} 1x,
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['2x'] : marque.porscheMarque.small['2x']} 2x,
-            ${cdn}/${this.trademark ? marque.porscheMarqueTrademark.small['3x'] : marque.porscheMarque.small['3x']} 3x
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['1x'] : MARQUES_MANIFEST.porscheMarque.small['1x']} 1x,
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['2x'] : MARQUES_MANIFEST.porscheMarque.small['2x']} 2x,
+            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['3x'] : MARQUES_MANIFEST.porscheMarque.small['3x']} 3x
           `}
         />
-        <img src={`${cdn}/${this.trademark ? marque.porscheMarqueTrademark.medium['2x'] : marque.porscheMarque.medium['2x']}`} alt='Porsche' />
+        <img src={`${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['2x'] : MARQUES_MANIFEST.porscheMarque.medium['2x']}`} alt='Porsche' />
       </picture>
     );
   }
