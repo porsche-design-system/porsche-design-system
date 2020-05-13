@@ -195,7 +195,7 @@
       &--xs {
         margin-top: $p-spacing-16;
       }
-      &--xs-zero {
+      &--zero-xs {
         margin-top: 0;
       }
     }
@@ -204,7 +204,7 @@
       &--s {
         margin-top: $p-spacing-16;
       }
-      &--s-zero {
+      &--zero-s {
         margin-top: 0;
       }
     }
@@ -213,7 +213,7 @@
       &--m {
         margin-top: $p-spacing-16;
       }
-      &--m-zero {
+      &--zero-m {
         margin-top: 0;
       }
     }
@@ -222,7 +222,7 @@
       &--l {
         margin-top: $p-spacing-16;
       }
-      &--l-zero {
+      &--zero-l {
         margin-top: 0;
       }
     }
@@ -231,7 +231,7 @@
       &--xl {
         margin-top: $p-spacing-16;
       }
-      &--xl-zero {
+      &--zero-xl {
         margin-top: 0;
       }
     }
@@ -242,182 +242,63 @@
     margin-left: - $p-spacing-8;
     margin-right: - $p-spacing-8;
   }
+
   .form-grid-item {
-    width: 100%;
     padding-left: $p-spacing-8;
     padding-right: $p-spacing-8;
+  }
 
-    &--quarter {
-      width: 25%;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: 25%;
-        }
-      }
-      @include p-breakpoint('s') {
-        &-s {
-          width: 25%;
-        }
-      }
-      @include p-breakpoint('m') {
-        &-m {
-          width: 25%;
-        }
-      }
-      @include p-breakpoint('l') {
-        &-l {
-          width: 25%;
-        }
-      }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: 25%;
-        }
-      }
-    }
-
-    &--third {
-      width: 33.333%;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: 33.333%;
-        }
-      }
-      @include p-breakpoint('s') {
-        &-s {
-          width: 33.333%;
-        }
-      }
-      @include p-breakpoint('m') {
-        &-m {
-          width: 33.333%;
-        }
-      }
-      @include p-breakpoint('l') {
-        &-l {
-          width: 33.333%;
-        }
-      }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: 33.333%;
-        }
-      }
-    }
-
-    &--half {
+  // form item
+  .form-item-width {
+    &--full {
       width: 100%;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: 50%;
-        }
-      }
-      @include p-breakpoint('s') {
-        &-s {
-          width: 50%;
-        }
-      }
-      @include p-breakpoint('m') {
-        &-m {
-          width: 50%;
-        }
-      }
-      @include p-breakpoint('l') {
-        &-l {
-          width: 50%;
-        }
-      }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: 50%;
-        }
-      }
     }
-
-    &--two-thirds {
-      width: 66.666%;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: 66.666%;
-        }
-      }
-      @include p-breakpoint('s') {
-        &-s {
-          width: 66.666%;
-        }
-      }
-      @include p-breakpoint('m') {
-        &-m {
-          width: 66.666%;
-        }
-      }
-      @include p-breakpoint('l') {
-        &-l {
-          width: 66.666%;
-        }
-      }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: 66.666%;
-        }
-      }
-    }
-
-    &--three-quarters {
-      width: 75%;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: 75%;
-        }
-      }
-      @include p-breakpoint('s') {
-        &-s {
-          width: 75%;
-        }
-      }
-      @include p-breakpoint('m') {
-        &-m {
-          width: 75%;
-        }
-      }
-      @include p-breakpoint('l') {
-        &-l {
-          width: 75%;
-        }
-      }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: 75%;
-        }
-      }
-    }
-
     &--auto {
       width: auto;
-      @include p-breakpoint('xs') {
-        &-xs {
-          width: auto;
-        }
+    }
+
+    @include p-breakpoint('xs') {
+      &--full-xs {
+        width: 100%;
       }
-      @include p-breakpoint('s') {
-        &-s {
-          width: auto;
-        }
+      &--auto-xs {
+        width: auto;
       }
-      @include p-breakpoint('m') {
-        &-m {
-          width: auto;
-        }
+    }
+
+    @include p-breakpoint('s') {
+      &--full-s {
+        width: 100%;
       }
-      @include p-breakpoint('l') {
-        &-l {
-          width: auto;
-        }
+      &--auto-s {
+        width: auto;
       }
-      @include p-breakpoint('xl') {
-        &-xl {
-          width: auto;
-        }
+    }
+
+    @include p-breakpoint('m') {
+      &--full-m {
+        width: 100%;
+      }
+      &--auto-m {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('l') {
+      &--full-l {
+        width: 100%;
+      }
+      &--auto-l {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('xl') {
+      &--full-xl {
+        width: 100%;
+      }
+      &--auto-xl {
+        width: auto;
       }
     }
   }
