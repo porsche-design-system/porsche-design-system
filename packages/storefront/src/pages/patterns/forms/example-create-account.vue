@@ -13,7 +13,7 @@
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate>
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
-            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-third'}">
+            <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
               <p-select-wrapper label="Salutation">
                 <select name="salutation">
                   <option>Choose an option</option>
@@ -23,7 +23,7 @@
                 </select>
               </p-select-wrapper>
             </p-flex-item>
-            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
+            <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
               <p-select-wrapper label="Title">
                 <select name="title">
                   <option>Choose an option</option>
@@ -35,12 +35,12 @@
             </p-flex-item>
           </p-flex>
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
-            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
+            <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
               <p-text-field-wrapper label="First name">
                 <input type="text" name="first-name">
               </p-text-field-wrapper>
             </p-flex-item>
-            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'half'}">
+            <p-flex-item width="{base: 'full', m: 'half'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
               <p-text-field-wrapper label="Last name">
                 <input type="text" name="last-name">
               </p-text-field-wrapper>
