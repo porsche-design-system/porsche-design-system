@@ -50,8 +50,8 @@
     "puppeteer": "^3.0.4",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "ts-node": "^8.9.1",
-    "typescript": "~3.8.3",
+    "ts-node": "^8.10.1",
+    "typescript": "~3.9.2",
     "vmark": "~1.1.0",
     "vmark-loader": "^1.0.0",
     "vue-template-compiler": "^2.6.11"
