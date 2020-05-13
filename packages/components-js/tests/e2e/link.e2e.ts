@@ -121,7 +121,7 @@ describe('link', () => {
     await link.focus();
     expect(await linkHasFocus()).toBe(true);
     await page.evaluate(() => {
-      const linkElement: HTMLElement = document.querySelector('p-link');
+      const linkElement: HTMLElement = document.querySelector('p-link') as HTMLElement;
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
