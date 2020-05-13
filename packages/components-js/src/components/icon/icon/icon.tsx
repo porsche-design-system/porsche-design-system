@@ -50,6 +50,20 @@ export class Icon {
 
   private io?: IntersectionObserver;
 
+  @Watch('source')
+  @Watch('name')
+  private loadIcon(): void {
+    if (Build.isBrowser && this.isVisible) {
+      this.svgContent = undefined; // reset svg content while new icon is loaded
+      const url = buildIconUrl(this.source ?? this.name);
+      getSvgContent(url).then((iconContent) => {
+        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
+          this.svgContent = iconContent;
+        }
+      });
+    }
+  }
+
   public connectedCallback(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
@@ -80,20 +94,6 @@ export class Icon {
         <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
-  }
-
-  @Watch('source')
-  @Watch('name')
-  private loadIcon(): void {
-    if (Build.isBrowser && this.isVisible) {
-      this.svgContent = undefined; // reset svg content while new icon is loaded
-      const url = buildIconUrl(this.source ?? this.name);
-      getSvgContent(url).then((iconContent) => {
-        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
-          this.svgContent = iconContent;
-        }
-      });
-    }
   }
 
   private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
