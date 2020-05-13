@@ -1,13 +1,16 @@
 const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/tracking';
 
-export const trackEvent = (component: string, event?: string) => {
-  console.log('trackEvent', component, event);
-  fetch(`${TRACKING_BASE_URL}?${queryString({ component, event })}`).then(console.log);
+export const trackEvent = (component: string, event?: string): void => {
+  fetch(`${TRACKING_BASE_URL}?${queryString({ component, event })}`).catch(console.warn);
 };
 
-export const trackLoader = () => trackEvent('loader', 'init');
+export const trackLoader = (): void => trackEvent('loader', 'init');
 
-type HttpQuery = Partial<{ [key: string]: string | number | null | boolean | Array<string | number | null | boolean> }>;
+type StringNumberNullBooleanTupel = string | number | null | boolean;
+
+interface HttpQuery {
+  [key: string]: StringNumberNullBooleanTupel | StringNumberNullBooleanTupel[];
+}
 
 const queryString = (params: HttpQuery): string =>
   Object.entries(params)
@@ -18,4 +21,4 @@ const queryString = (params: HttpQuery): string =>
     )
     .join('&');
 
-export const encodeURI = (value: any) => encodeURIComponent(String(value));
+export const encodeURI = (value: StringNumberNullBooleanTupel): string => encodeURIComponent(String(value));
