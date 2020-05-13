@@ -45,10 +45,24 @@ export class Icon {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  private io?: IntersectionObserver;
-
   @State() private svgContent?: string;
   @State() private isVisible = false;
+
+  private io?: IntersectionObserver;
+
+  @Watch('source')
+  @Watch('name')
+  private loadIcon(): void {
+    if (Build.isBrowser && this.isVisible) {
+      this.svgContent = undefined; // reset svg content while new icon is loaded
+      const url = buildIconUrl(this.source ?? this.name);
+      getSvgContent(url).then((iconContent) => {
+        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
+          this.svgContent = iconContent;
+        }
+      });
+    }
+  }
 
   public connectedCallback(): void {
     // purposely do not return the promise here because loading
@@ -80,20 +94,6 @@ export class Icon {
         <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
-  }
-
-  @Watch('source')
-  @Watch('name')
-  private loadIcon(): void {
-    if (Build.isBrowser && this.isVisible) {
-      this.svgContent = undefined; // reset svg content while new icon is loaded
-      const url = buildIconUrl(this.source ?? this.name);
-      getSvgContent(url).then((iconContent) => {
-        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
-          this.svgContent = iconContent;
-        }
-      });
-    }
   }
 
   private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
