@@ -6,7 +6,7 @@ If you would like to see more examples, head over to our contribution board and 
 
 ## Download form patterns as Sketch file
 
-<p-link-pure href="downloads/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
+<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
 
 ## Form patterns examples
 
