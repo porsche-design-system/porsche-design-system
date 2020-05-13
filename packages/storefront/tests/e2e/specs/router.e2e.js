@@ -39,6 +39,9 @@ describe('Router', () => {
 
     cy.visit('/#/components/basic/some-invalid-story');
     cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
+
+    cy.visit('/#/patterns/forms/invalid-pattern');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/404');
   });
 
   it('Should route to custom view', () => {
@@ -49,6 +52,20 @@ describe('Router', () => {
   it('Should route to page', () => {
     cy.visit('/#/about/introduction');
     cy.url().should('eq', Cypress.config().baseUrl + '/#/about/introduction');
+
+    cy.visit('/#/patterns/forms#guidelines');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#guidelines');
+
+    cy.visit('/#/patterns/forms#ressources');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#ressources');
+  });
+
+  it('Should route to page and fallback to available first tab', () => {
+    cy.visit('/#/patterns/forms#some-invalid-tab');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#guidelines');
+
+    cy.visit('/#/patterns/forms');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#guidelines');
   });
 
   it('Should route to story', () => {
@@ -74,5 +91,10 @@ describe('Router', () => {
 
     cy.visit('/#/components/layout/flex#some-invalid-tab');
     cy.url().should('eq', Cypress.config().baseUrl + '/#/components/layout/flex#code');
+  });
+
+  it('Should route to pattern view', () => {
+    cy.visit('/#/patterns/forms/example-login');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms/example-login');
   });
 });

@@ -33,7 +33,7 @@
         this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.page}.vue`))()).default;
         await this.$store.dispatch('toggleLoadingAsync', false);
       } catch (e) {
-       //  this.redirect();
+        this.redirect();
       }
     }
 
