@@ -12,7 +12,7 @@
           <fieldset class="form-fieldset">
             <legend><p-headline variant="headline-4" tag="span">Your message</p-headline></legend>
             <p-flex class="form-row-spacing form-grid-item-container">
-              <p-flex-item class="form-grid-item form-grid-item--half-m">
+              <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
                 <p-select-wrapper label="Category">
                   <select name="category">
                     <option>Choose an option</option>
@@ -33,7 +33,7 @@
           <fieldset class="form-fieldset form-section-spacing">
             <legend><p-headline variant="headline-4" tag="span">Personal data</p-headline></legend>
             <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
-              <p-flex-item class="form-grid-item form-grid-item--third-m">
+              <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-third'}">
                 <p-select-wrapper label="Salutation">
                   <select name="salutation">
                     <option>Choose an option</option>
@@ -43,7 +43,7 @@
                   </select>
                 </p-select-wrapper>
               </p-flex-item>
-              <p-flex-item class="form-row-spacing form-row-spacing--m-zero form-grid-item form-grid-item--third-m">
+              <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
                 <p-select-wrapper label="Title">
                   <select name="title">
                     <option>Choose an option</option>
@@ -55,12 +55,12 @@
               </p-flex-item>
             </p-flex>
             <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
-              <p-flex-item class="form-grid-item form-grid-item--half-m">
+              <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
                 <p-text-field-wrapper label="First name">
                   <input type="text" name="firstname">
                 </p-text-field-wrapper>
               </p-flex-item>
-              <p-flex-item class="form-row-spacing form-row-spacing--m-zero form-grid-item form-grid-item--half-m">
+              <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'half'}">
                 <p-text-field-wrapper label="Last name">
                   <input type="text" name="lastname">
                 </p-text-field-wrapper>
@@ -113,12 +113,12 @@
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex class="form-section-spacing form-bottom-spacing form-grid-item-container">
-            <p-flex-item class="form-grid-item form-grid-item--auto">
-              <p-button variant="tertiary" icon="close" type="reset">Cancel</p-button>
+          <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
+            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
+              <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
             </p-flex-item>
-            <p-flex-item class="form-grid-item form-grid-item--auto">
-              <p-button type="submit">Send</p-button>
+            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-row-spacing form-row-spacing--zero-s form-grid-item">
+              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
             </p-flex-item>
           </p-flex>
         </form>
