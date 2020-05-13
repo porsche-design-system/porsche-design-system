@@ -15,20 +15,20 @@ export class Marque {
    */
   @Prop() public trademark?: boolean = true;
 
-  private manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
-
   public render(): JSX.Element {
-    const marqueClasses = cx(prefix('marque'));
+    const manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
+    const buildSrcSet = (size: 'small' | 'medium'): string =>
+      Object.entries(manifestPath[size]).map(([key, value]) => `${CDN_BASE_URL}/${value} ${key}`).join(',');
+
+
+    const marqueClasses = cx(prefix('marque'));
     return (
       <picture class={marqueClasses}>
-        <source srcSet={this.buildSrcSet('medium')} media='(min-width: 1300px)' />
-        <source srcSet={this.buildSrcSet('small')} />
-        <img src={`${CDN_BASE_URL}/${this.manifestPath.medium['2x']}`} alt='Porsche' />
+        <source srcSet={buildSrcSet('medium')} media='(min-width: 1300px)' />
+        <source srcSet={buildSrcSet('small')} />
+        <img src={`${CDN_BASE_URL}/${manifestPath.medium['2x']}`} alt='Porsche' />
       </picture>
     );
   }
-
-  private buildSrcSet = (size: 'small' | 'medium'): string =>
-    Object.entries(this.manifestPath[size]).map(([key, value]) => `${CDN_BASE_URL}/${value} ${key}`).join(',');
 }
