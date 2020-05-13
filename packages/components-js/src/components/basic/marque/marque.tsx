@@ -15,28 +15,20 @@ export class Marque {
    */
   @Prop() public trademark?: boolean = true;
 
+  private manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
+
   public render(): JSX.Element {
     const marqueClasses = cx(prefix('marque'));
 
     return (
       <picture class={marqueClasses}>
-        <source
-          media='(min-width: 1300px)'
-          srcSet={`
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['1x'] : MARQUES_MANIFEST.porscheMarque.medium['1x']} 1x,
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['2x'] : MARQUES_MANIFEST.porscheMarque.medium['2x']} 2x,
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['3x'] : MARQUES_MANIFEST.porscheMarque.medium['3x']} 3x
-          `}
-        />
-        <source
-          srcSet={`
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['1x'] : MARQUES_MANIFEST.porscheMarque.small['1x']} 1x,
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['2x'] : MARQUES_MANIFEST.porscheMarque.small['2x']} 2x,
-            ${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.small['3x'] : MARQUES_MANIFEST.porscheMarque.small['3x']} 3x
-          `}
-        />
-        <img src={`${CDN_BASE_URL}/${this.trademark ? MARQUES_MANIFEST.porscheMarqueTrademark.medium['2x'] : MARQUES_MANIFEST.porscheMarque.medium['2x']}`} alt='Porsche' />
+        <source srcSet={this.buildSrcSet('medium')} media='(min-width: 1300px)' />
+        <source srcSet={this.buildSrcSet('small')} />
+        <img src={`${CDN_BASE_URL}/${this.manifestPath.medium['2x']}`} alt='Porsche' />
       </picture>
     );
   }
+
+  private buildSrcSet = (size: 'small' | 'medium'): string =>
+    Object.entries(this.manifestPath[size]).map(([key, value]) => `${CDN_BASE_URL}/${value} ${key}`).join(',');
 }
