@@ -137,6 +137,7 @@ if isCurrentBranchMasterBranch; then
   add_deployment_version "latest"
   copy_latest_stable_sketch_file "porsche-design-system-layout-template.sketch"
   copy_latest_stable_sketch_file "porsche-design-system-colors.sketchpalette"
+  copy_latest_stable_sketch_file "pds-form-templates.sketch.zip"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-design-system-basic.sketch"
   copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-design-system-web.sketch"
   deploy_to_gh_pages
