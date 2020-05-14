@@ -56,8 +56,8 @@ describe('Router', () => {
     cy.visit('/#/patterns/forms#guidelines');
     cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#guidelines');
 
-    cy.visit('/#/patterns/forms#ressources');
-    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#ressources');
+    cy.visit('/#/patterns/forms#resources');
+    cy.url().should('eq', Cypress.config().baseUrl + '/#/patterns/forms#resources');
   });
 
   it('Should route to page and fallback to available first tab', () => {
