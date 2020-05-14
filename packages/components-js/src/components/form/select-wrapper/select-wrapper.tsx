@@ -45,6 +45,7 @@ export class SelectWrapper {
   private optgroups: NodeListOf<HTMLOptGroupElement>;
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
+  private selectObserver: MutationObserver;
 
   private static isTouchDevice(): boolean {
     if (typeof window === 'undefined') {
@@ -78,6 +79,7 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
+    this.selectObserver.disconnect();
     if(!this.isTouch && typeof document !== 'undefined') {
       document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
     }
@@ -178,27 +180,11 @@ export class SelectWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
+  /*
+   * <START NATIVE SELECT>
+   */
   private initSelect(): void {
     this.select = this.host.querySelector('select');
-  }
-
-  private observeSelect(): void {
-    const observer = new MutationObserver((mutations: MutationRecord[]) => {
-      mutations.forEach((mutation:MutationRecord) => {
-        if (mutation.type === 'childList') {
-          this.setOptionList();
-        }
-      });
-    });
-    const config = {childList: true};
-    observer.observe(this.select, config);
-  }
-
-  private handleClickOutside(e): MouseEvent {
-    if(this.host.contains(e.target)) {
-      return;
-    }
-    this.fakeOptionListHidden = true;
   }
 
   /*
@@ -224,9 +210,43 @@ export class SelectWrapper {
     }
   }
 
-  private handleSelectEvents(): void {
-    const isLetterOrNum = (key): string => key.match(/[a-zA-Z0-9]/g);
+  private observeSelect(): void {
+    this.selectObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      mutations.forEach((mutation:MutationRecord) => {
+        if (mutation.type === 'childList') {
+          this.setOptionList();
+        }
+      });
+    });
+    const config = {childList: true};
+    this.selectObserver.observe(this.select, config);
+  }
 
+  private setState(): void {
+    this.disabled = this.select.disabled;
+  }
+
+  private labelClick(): void {
+    this.select.focus();
+  }
+
+  private bindStateListener(): void {
+    transitionListener(this.select, 'border-top-color', () => {
+      this.setState();
+    });
+  }
+
+  /*
+   * <START CUSTOM SELECT DROPDOWN>
+   */
+  private handleClickOutside(e): MouseEvent {
+    if(this.host.contains(e.target)) {
+      return;
+    }
+    this.fakeOptionListHidden = true;
+  }
+
+  private handleSelectEvents(): void {
     this.select.addEventListener('mousedown', (e: MouseEvent) => {
       e.preventDefault();
       this.select.focus();
@@ -280,9 +300,7 @@ export class SelectWrapper {
           this.handleScroll();
           break;
         default:
-          if(isLetterOrNum(key)) {
-            this.searchOptions();
-          }
+          this.searchOptions();
       }
     });
   }
@@ -389,20 +407,6 @@ export class SelectWrapper {
       this.optionHighlighted = this.select.selectedIndex;
       this.handleScroll();
     }, 100);
-  }
-
-  private setState(): void {
-    this.disabled = this.select.disabled;
-  }
-
-  private labelClick(): void {
-    this.select.focus();
-  }
-
-  private bindStateListener(): void {
-    transitionListener(this.select, 'border-top-color', () => {
-      this.setState();
-    });
   }
 
   private addSlottedStyles(): void {
