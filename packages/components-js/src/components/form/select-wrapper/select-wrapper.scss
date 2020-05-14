@@ -2,7 +2,7 @@
 
 @mixin p-text-field-wrapper-label-text-visible() {
   position: static;
-  width: auto;
+  width: fit-content;
   height: auto;
   margin: 0;
   padding: 0 0 $p-spacing-4 0;
@@ -51,6 +51,7 @@
   line-height: p-line-height($p-text-size-small) !important;
   color: $p-color-theme-light-default !important;
   text-indent: 0 !important;
+  cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important; // used for transitionend event listener;
@@ -92,8 +93,10 @@
     display: block;
   }
 
-  &__label-text {
-    display: inline-block;
+  &__label-text,
+  &__description-text {
+    display: block;
+    width: fit-content;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -157,6 +160,19 @@
       &--hidden-xl {
         @include p-text-field-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  &__description-text {
+    color: $p-color-theme-light-neutral-contrast-medium;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
+    #{$bem-block}__label-text ~ & {
+      margin-top: -$p-spacing-4;
+      padding-bottom: $p-spacing-8;
     }
   }
 

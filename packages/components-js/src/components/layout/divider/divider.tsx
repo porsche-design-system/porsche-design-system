@@ -1,4 +1,4 @@
-import { Component, h, JSX, Prop, } from '@stencil/core';
+import { Component, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { Theme } from '../../../types';
@@ -10,7 +10,7 @@ import { Theme } from '../../../types';
 })
 export class Divider {
   /** Defines color depending on theme. */
-  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low'  = 'neutral-contrast-low';
+  @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' = 'neutral-contrast-low';
 
   /** Defines orientation. */
   @Prop() public orientation?: 'vertical' | 'horizontal' = 'horizontal';

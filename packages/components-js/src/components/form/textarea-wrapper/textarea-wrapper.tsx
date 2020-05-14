@@ -4,10 +4,9 @@ import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  randomString,
-  transitionListener
+  transitionListener,
+  insertSlottedStyles
 } from '../../../utils';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
 import { FormState } from '../../../types';
 
 @Component({
@@ -22,6 +21,9 @@ export class TextareaWrapper {
   /** The label text. */
   @Prop() public label?: string = '';
 
+  /** The description text. */
+  @Prop() public description?: string = '';
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
 
@@ -35,13 +37,17 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
-  private labelId = randomString();
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setTextarea();
+    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -51,6 +57,11 @@ export class TextareaWrapper {
       prefix('textarea-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('textarea-wrapper__label-text--disabled')
+    );
+    const descriptionTextClasses = cx(
+      prefix('textarea-wrapper__description-text'),
+      mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('textarea-wrapper__description-text--disabled')
     );
     const fakeTextareaClasses = cx(
       prefix('textarea-wrapper__fake-textarea'),
@@ -65,10 +76,15 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <label class={labelClasses}>
           {this.isLabelVisible &&
-          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={() => this.labelClick()}>
+          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={(): void => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
+          </p-text>
+          }
+          {this.isDescriptionVisible &&
+          <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+            {this.description ? this.description : <span><slot name='description'/></span>}
           </p-text>
           }
           <span class={fakeTextareaClasses}>
@@ -80,7 +96,6 @@ export class TextareaWrapper {
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -93,6 +108,10 @@ export class TextareaWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
+  private get isDescriptionVisible(): boolean {
+    return !!this.description || !!this.host.querySelector('[slot="description"]');
+  }
+
   private get isMessageDefined(): boolean {
     return !!this.message || !!this.host.querySelector('[slot="message"]');
   }
@@ -103,7 +122,29 @@ export class TextareaWrapper {
 
   private setTextarea(): void {
     this.textarea = this.host.querySelector('textarea');
-    this.textarea.setAttribute('aria-label', this.label);
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
+    }
+    else if (this.label && this.description) {
+      this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
+    }
+    else if (this.label) {
+      this.textarea.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.textarea.setAttribute('aria-invalid', 'true');
+    } else {
+      this.textarea.removeAttribute('aria-invalid');
+    }
   }
 
   private setState(): void {

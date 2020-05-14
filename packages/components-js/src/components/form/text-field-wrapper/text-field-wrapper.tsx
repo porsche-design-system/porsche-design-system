@@ -6,9 +6,9 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  randomString
+  handleButtonEvent
 } from '../../../utils';
-import { FormState } from '../../../types';
+import { ButtonType, FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -22,29 +22,39 @@ export class TextFieldWrapper {
   /** The label text. */
   @Prop() public label?: string = '';
 
+  /** The description text. */
+  @Prop() public description?: string = '';
+
   /** The validation state. */
   @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   @State() private disabled: boolean;
   @State() private readonly: boolean;
-  @State() private showPassword: boolean = false;
+  @State() private showPassword = false;
 
   private input: HTMLInputElement;
+  private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
-  private labelId = randomString();
+  private isInputTypeSearch: boolean;
 
-  public componentWillLoad() {
+  public componentWillLoad(): void {
     this.setInput();
+    this.setAriaAttributes();
     this.setState();
     this.updatePasswordToggleable();
+    this.initInputTypeSearch();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAriaAttributes();
   }
 
   public render(): JSX.Element {
@@ -55,6 +65,11 @@ export class TextFieldWrapper {
       prefix('text-field-wrapper__label-text'),
       mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
       this.disabled && prefix('text-field-wrapper__label-text--disabled')
+    );
+    const descriptionTextClasses = cx(
+      prefix('text-field-wrapper__description-text'),
+      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      this.disabled && prefix('text-field-wrapper__description-text--disabled')
     );
     const fakeInputClasses = cx(
       prefix('text-field-wrapper__fake-input'),
@@ -70,11 +85,16 @@ export class TextFieldWrapper {
 
     return (
       <Host>
-        <span class={containerClasses}>
-          <label class={labelClasses} id={this.state === 'error' && this.labelId}>
+        <div class={containerClasses}>
+          <label class={labelClasses}>
             {this.isLabelVisible &&
-            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={() => this.labelClick()}>
+            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
+            </p-text>
+            }
+            {this.isDescriptionVisible &&
+            <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+              {this.description ? this.description : <span><slot name='description'/></span>}
             </p-text>
             }
             <span class={fakeInputClasses}>
@@ -82,17 +102,26 @@ export class TextFieldWrapper {
             </span>
           </label>
           {this.isPasswordToggleable &&
-          <button type='button' class={buttonClasses} onClick={() => this.togglePassword()} disabled={this.disabled}>
+          <button type='button' class={buttonClasses} onClick={(): void => this.togglePassword()} disabled={this.disabled}>
             <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
           </button>
           }
-        </span>
+          {this.isInputTypeSearch &&
+          <button
+            onClick={(event: MouseEvent): void => this.onSubmitHandler(event)}
+            type='submit'
+            class={buttonClasses}
+            disabled={this.disabled || this.readonly}
+          >
+            <p-icon name='search' color='inherit'/>
+          </button>
+          }
+        </div>
         {this.isMessageVisible &&
         <p-text
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
-          aria-describedby={this.state === 'error' && this.labelId}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
         </p-text>
@@ -105,6 +134,10 @@ export class TextFieldWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
+  private get isDescriptionVisible(): boolean {
+    return !!this.description || !!this.host.querySelector('[slot="description"]');
+  }
+
   private get isMessageDefined(): boolean {
     return !!this.message || !!this.host.querySelector('[slot="message"]');
   }
@@ -115,7 +148,29 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     this.input = this.host.querySelector('input');
-    this.input.setAttribute('aria-label', this.label);
+  }
+
+  /*
+   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+   */
+  private setAriaAttributes(): void {
+    if (this.label && this.message) {
+      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
+    }
+    else if (this.label && this.description) {
+      this.input.setAttribute('aria-label', `${this.label}. ${this.description}`);
+    }
+    else if (this.label) {
+      this.input.setAttribute('aria-label', this.label);
+    }
+
+    if (this.state === 'error') {
+      this.input.setAttribute('aria-invalid', 'true');
+    } else {
+      this.input.removeAttribute('aria-invalid');
+    }
   }
 
   private setState(): void {
@@ -141,9 +196,22 @@ export class TextFieldWrapper {
   }
 
   private togglePassword(): void {
-    this.input.type === 'password' ? this.input.type = 'text' : this.input.type = 'password';
+    this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
     this.labelClick();
+  }
+
+  private initInputTypeSearch(): void {
+    this.isInputTypeSearch = this.input.type === 'search';
+    if (this.isInputTypeSearch) {
+      this.input.style.cssText = 'padding-right: 3rem !important';
+    }
+  }
+
+  private onSubmitHandler(event: MouseEvent): void {
+    if (this.isInputTypeSearch) {
+      handleButtonEvent(event, this.host, () => this.searchButtonType, () => this.disabled);
+    }
   }
 
   private addSlottedStyles(): void {
@@ -177,7 +245,11 @@ export class TextFieldWrapper {
 
     ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
     ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
-      margin-right: 32px;
+      margin-right: 2rem;
+    }
+
+    ${tagName} input[type=search]::-webkit-search-cancel-button {
+      margin-right: 2rem;
     }
     `;
 

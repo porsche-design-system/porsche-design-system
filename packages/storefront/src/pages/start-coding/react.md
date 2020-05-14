@@ -2,8 +2,6 @@
 
 You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
 
----
-
 ## Get the project up and running
 * Clone the repository by executing <br>
 `git clone https://github.com/porscheui/sample-integration-react.git`
@@ -92,10 +90,13 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## Test the application
 
-**Jest** uses **jsdom**. It is not yet possible to render web components via jsdom. 
+**Jest** uses **jsdom**. It is not yet possible to render functionality of web components via **jsdom**. 
 
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
+
+The mocks must only be used if functionality of the web component is required within the test.
+As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
 To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
 
@@ -106,7 +107,7 @@ jest.mock('@porsche-design-system/components-react', () => {
     return require('@porsche-design-system/components-react/mocks');
 });
 ```
-You have to access the mocks in the Mock-Factory of the `jest.mock()` function. We have to use `require` because the mock factory doesn't allow otherwise. 
+You have to access the mocks in the Mock-Factory of the `jest.mock()` function. 
 
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 

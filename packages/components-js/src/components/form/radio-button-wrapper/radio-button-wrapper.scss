@@ -43,6 +43,7 @@
   background-color: transparent !important;
   opacity: 1 !important;
   outline: none !important;
+  cursor: pointer !important;
   box-shadow: 0 0 0 0 transparent !important;
   transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important;
@@ -85,11 +86,13 @@
   &__label-text {
     order: 1;
     display: inline-block;
+    cursor: pointer;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
+      cursor: default;
     }
 
     &--visible {

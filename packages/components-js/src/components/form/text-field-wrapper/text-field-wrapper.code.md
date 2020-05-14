@@ -29,6 +29,18 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ---
 
+## With description text
+
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground>    
+  <p-text-field-wrapper label="Some label" description="Some description">
+    <input type="text" name="some-name" />
+  </p-text-field-wrapper>
+</Playground>
+
+---
+
 ## Disabled
 
 <Playground>    
@@ -47,11 +59,11 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
   </p-text-field-wrapper>
 </Playground>
 
----
+--- 
 
 ## Types
 
-The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calender dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
+The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the **Text Field Wrapper** component.
 For better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 ### Basic
@@ -87,6 +99,16 @@ For better accessibility it's recommended to **not** reset these browser default
   </p-text-field-wrapper>
 </Playground>
 
+### Search
+
+<Playground>
+  <form action="#" onsubmit="alert('submit'); return false;">
+    <p-text-field-wrapper label="Some label">
+      <input type="search" name="some-name"/>
+    </p-text-field-wrapper>
+  </form>
+</Playground>
+
 ---
 
 ## Validation states
@@ -104,7 +126,7 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
   </template>
   <template>
     <p-text-field-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="text" :aria-invalid="state === 'error'" name="some-name" />
+      <input type="text" name="some-name" />
     </p-text-field-wrapper>
   </template>
 </Playground>
@@ -113,15 +135,17 @@ The **Text Field Wrapper** component supports the visualisation of inline valida
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes.
 
 <Playground>
   <template>
     <p-text-field-wrapper state="error">
-      <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="text" aria-invalid="true" name="some-name" placeholder="Some placeholder"/>
-      <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <input type="text" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"/>
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
     </p-text-field-wrapper>
   </template>
 </Playground>

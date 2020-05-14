@@ -113,6 +113,16 @@ p-divider {
     }
   }
 
+  .example-content {
+    @include p-text;
+    background: lightskyblue;
+    padding: $p-spacing-4;
+    display: block;
+    text-align: center;
+    color: $p-color-theme-dark-default;
+    min-height: $p-spacing-24;
+  }
+
   /**
    * TODO: wait for Stencil statement regarding props deletion
    * Since v0.0.7 od react components wrapper, all attributes are stripped off the compiled components.

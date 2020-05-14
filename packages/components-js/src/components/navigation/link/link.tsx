@@ -1,10 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { IconName } from '../../icon/icon/icon-name';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { LinkTarget, Theme } from '../../../types';
-import { insertSlottedStyles } from '../../../utils/slotted-styles';
+import { IconName, LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -41,7 +39,7 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     const tagName= this.element.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
