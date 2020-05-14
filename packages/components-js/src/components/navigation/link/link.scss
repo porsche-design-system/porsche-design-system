@@ -35,20 +35,14 @@
 }
 
 @mixin p-link-icon-with-label() {
-  position: absolute;
   left: p-rem(11px);
   top: p-rem(11px);
-  width: p-rem(24px);
-  height: p-rem(24px);
   transform: translateX(0) translateY(0);
 }
 
 @mixin p-link-icon-without-label() {
-  position: absolute;
   left: 50%;
   top: 50%;
-  width: p-rem(36px);
-  height: p-rem(36px);
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -334,7 +328,7 @@
         @include p-link-label-without-label;
       }
 
-      #{$bem-block}__icon´ {
+      #{$bem-block}__icon {
         @include p-link-icon-without-label;
       }
     }
@@ -343,5 +337,11 @@
   &__label {
     display: block;
     box-sizing: border-box;
+  }
+
+  &__icon {
+    position: absolute;
+    width: p-rem(24px);
+    height: p-rem(24px);
   }
 }

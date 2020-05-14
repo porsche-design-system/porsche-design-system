@@ -15,13 +15,6 @@ export const validateContent = (svgContent: string | null): string => {
     // must only have 1 root element
     const svgElm = div.firstElementChild;
     if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
-
-      // fix IE11 focus SVG elements on tab
-      svgElm.setAttribute('focusable', 'false');
-
-      // Hide from Screen Readers
-      svgElm.setAttribute('aria-hidden', 'true');
-
       // root element must be an svg
       // lets double check we've got valid elements
       // do not allow scripts

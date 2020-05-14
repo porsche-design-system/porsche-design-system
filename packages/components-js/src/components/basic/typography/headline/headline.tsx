@@ -15,12 +15,12 @@ export class Headline {
 
   /** Style of the text. */
   @Prop() public variant?:
-    | 'large-title'
-    | 'headline-1'
-    | 'headline-2'
-    | 'headline-3'
-    | 'headline-4'
-    | 'headline-5' = 'headline-1';
+  | 'large-title'
+  | 'headline-1'
+  | 'headline-2'
+  | 'headline-3'
+  | 'headline-4'
+  | 'headline-5' = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
@@ -37,7 +37,7 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
 
     const tagName= this.element.tagName.toLowerCase();
     const style = `${tagName} a {

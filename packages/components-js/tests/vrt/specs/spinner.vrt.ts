@@ -1,12 +1,12 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
+import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Spinner', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {

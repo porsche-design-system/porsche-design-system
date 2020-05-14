@@ -7,10 +7,9 @@ import {
   prefix,
   transitionListener
 } from '../../../utils';
-import { ButtonType, TextSize, TextWeight, Theme } from '../../../types';
+import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
-import { IconName } from '../../icon/icon/icon-name';
 
 @Component({
   tag: 'p-button-pure',
@@ -53,7 +52,7 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
 
@@ -120,7 +119,7 @@ export class ButtonPure {
     );
   }
 
-  private isDisabled() {
+  private isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }

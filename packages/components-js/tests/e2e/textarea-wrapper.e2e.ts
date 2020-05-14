@@ -1,148 +1,165 @@
-import { E2EPage, newE2EPage } from '@stencil/core/testing';
+import {
+  addEventListener,
+  getAttributeFromHandle, getBoxShadow,
+  initAddEventListener,
+  selectNode,
+  setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange
+} from './helpers';
 
 describe('Textarea Wrapper', () => {
+  beforeAll(async () => {
+    await initAddEventListener(); // needed for setup
+  });
+
   it('should render', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-textarea-wrapper label="Some label">
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const el = await page.find('p-textarea-wrapper >>> label');
-    expect(el).not.toBeNull();
+    const el = await selectNode('p-textarea-wrapper >>> label');
+    expect(el).toBeDefined();
   });
 
   it('should add aria-label to support screen readers properly', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-textarea-wrapper label="Some label">
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const textarea = await page.find('p-textarea-wrapper textarea');
-    expect(textarea.getAttribute('aria-label')).toBe('Some label');
+    const textarea = await selectNode('p-textarea-wrapper textarea');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
+  });
+
+  it('should add aria-label with description text to support screen readers properly', async () => {
+    await setContentWithDesignSystem(`
+      <p-textarea-wrapper label="Some label" description="Some description">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+    `);
+    const textarea = await selectNode('p-textarea-wrapper textarea');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some description');
+  });
+
+  it('should add aria-label with message text to support screen readers properly', async () => {
+    await setContentWithDesignSystem(`
+      <p-textarea-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+    `);
+    const textarea = await selectNode('p-textarea-wrapper textarea');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-textarea-wrapper>
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>`);
 
-    const textareaComponent = await page.find('p-textarea-wrapper');
-    const getLabelText = async () => {
-      return textareaComponent.shadowRoot.querySelector('.p-textarea-wrapper__label-text');
-    };
+    const textareaComponent = await selectNode('p-textarea-wrapper');
+    const getLabelText = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
 
     expect(await getLabelText()).toBeNull();
 
-    textareaComponent.setProperty('label', 'Some label');
+    await textareaComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await waitForInnerHTMLChange(textareaComponent);
 
-    await page.waitForChanges();
-
-    expect(await getLabelText()).not.toBeNull();
-
+    expect(await getLabelText()).toBeDefined();
   });
 
-  it('should add/remove message text and add/remove aria attributes to message if state changes programmatically', async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+  it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
+    await setContentWithDesignSystem(`
       <p-textarea-wrapper label="Some label">
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>`);
 
-    const textareaComponent = await page.find('p-textarea-wrapper');
-    const getMessage = async () => {
-      return textareaComponent.shadowRoot.querySelector('.p-textarea-wrapper__message');
-    };
+    const textareaComponent = await selectNode('p-textarea-wrapper');
+    const getMessage = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__message');
+    const textarea = await selectNode('textarea');
 
     expect(await getMessage()).toBeNull();
 
-    textareaComponent.setProperty('state', 'error');
-    textareaComponent.setProperty('message', 'some message');
+    await textareaComponent.evaluate(el => el.setAttribute('state', 'error'));
+    await textareaComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
+    await waitForInnerHTMLChange(textareaComponent);
 
-    await page.waitForChanges();
+    expect(await getMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBe('alert');
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
 
-    const label = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__label');
-    const labelId = label.getAttribute('id');
+    await textareaComponent.evaluate(el => el.setAttribute('state', 'success'));
+    await textareaComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
+    await waitForInnerHTMLChange(textareaComponent);
 
-    expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).toEqualAttributes({'role': 'alert', 'aria-describedby': labelId});
+    expect(await getMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some success message');
 
-    textareaComponent.setProperty('state', 'success');
-
-    await page.waitForChanges();
-
-    expect(await getMessage()).not.toBeNull();
-    expect(await getMessage()).not.toHaveAttribute('role');
-    expect(await getMessage()).not.toHaveAttribute('aria-describedby');
-
-    textareaComponent.setProperty('state', 'none');
-
-    await page.waitForChanges();
+    await textareaComponent.evaluate(el => el.setAttribute('state', ''));
+    await textareaComponent.evaluate(el => el.setAttribute('message', ''));
+    await waitForInnerHTMLChange(textareaComponent);
 
     expect(await getMessage()).toBeNull();
-
+    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
   });
 
   it(`should focus textarea when label text is clicked`, async () => {
-    const page = await newE2EPage();
-    await page.setContent(`
+    await setContentWithDesignSystem(`
       <p-textarea-wrapper label="Some label">
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const labelText = await page.find('p-textarea-wrapper >>> label > p-text');
-    const textarea = await page.find('textarea');
-    const textareaFocusSpy = await textarea.spyOnEvent('focus');
 
-    expect(textareaFocusSpy.length).toBe(0);
+    const labelText = await selectNode('p-textarea-wrapper >>> p-text');
+    const textarea = await selectNode('textarea');
+
+    let textareaFocusSpyCalls = 0;
+    await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
+
+    expect(textareaFocusSpyCalls).toBe(0);
 
     await labelText.click();
+    await waitForEventCallbacks();
 
-    expect(textareaFocusSpy.length).toBe(1);
+    expect(textareaFocusSpyCalls).toBe(1);
   });
 
   describe('hover state', () => {
-    const getBoxShadow = async (page: E2EPage) => {
-      const fakeTextarea = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
-      const styles = await fakeTextarea.getComputedStyle();
-      return styles.boxShadow;
-    };
+
+    const getFakeTextarea = () => selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
 
     it('should change box-shadow color when fake textarea is hovered', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await page.reload();
+      await setContentWithDesignSystem(`
         <p-textarea-wrapper label="Some label">
           <textarea name="some-name"></textarea>
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
-
-      const initialBoxShadow = await getBoxShadow(page);
+      const fakeTextarea = await getFakeTextarea();
+      const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
       await fakeTextarea.hover();
 
-      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake textarea when label text is hovered', async () => {
-      const page = await newE2EPage();
-      await page.setContent(`
+      await page.reload();
+      await setContentWithDesignSystem(`
         <p-textarea-wrapper label="Some label">
           <textarea name="some-name"></textarea>
         </p-textarea-wrapper>
       `);
 
-      const labelText = await page.find('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
-
-      const initialBoxShadow = await getBoxShadow(page);
+      const fakeTextarea = await getFakeTextarea();
+      const labelText = await selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+      const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
       await labelText.hover();
 
-      expect(await getBoxShadow(page)).not.toBe(initialBoxShadow);
+      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });

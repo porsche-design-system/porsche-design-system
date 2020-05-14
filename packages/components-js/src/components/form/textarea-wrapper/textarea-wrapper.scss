@@ -2,7 +2,7 @@
 
 @mixin p-textarea-wrapper-label-text-visible() {
   position: static;
-  width: auto;
+  width: fit-content;
   height: auto;
   margin: 0;
   padding: 0 0 $p-spacing-4 0;
@@ -74,6 +74,7 @@
 ::slotted(textarea:disabled) {
   border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-theme-light-state-disabled !important;
+  -webkit-text-fill-color: $p-color-theme-light-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
 }
 
@@ -84,8 +85,10 @@
     display: block;
   }
 
-  &__label-text {
-    display: inline-block;
+  &__label-text,
+  &__description-text {
+    display: block;
+    width: fit-content;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -152,6 +155,19 @@
     }
   }
 
+  &__description-text {
+    color: $p-color-theme-light-neutral-contrast-medium;
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+    }
+
+    #{$bem-block}__label-text ~ & {
+      margin-top: -$p-spacing-4;
+      padding-bottom: $p-spacing-8;
+    }
+  }
+
   &__fake-textarea {
     display: block;
     padding: p-rem(2px);
@@ -172,8 +188,8 @@
     }
 
     &--readonly {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-surface;
-      background-color: $p-color-theme-light-surface;
+      box-shadow: inset 0 0 0 1px #ebebeb;
+      background-color: #ebebeb;
     }
 
     &--success {

@@ -2,6 +2,26 @@
 
 ## Design
 
+### [1.4.0] (2020-05-14)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Text List |  |
+Components | Text Field Search |  |
+Components | Social Link |  |
+Components | Description text component in Text Field, Textarea and Select |  |
+Components |  | Google Icon |
+
+**Fixed**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components |   | Icon optimization to base size 24 x 24 px |
+Components | Change icon size in Link & Button in 24 x 24 px  |  |
+Components | Background color for Text Field, Textarea and Select  |  |
+
 ### [1.3.0] (2020-04-08)
 
 **Added**
@@ -91,6 +111,56 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.4.0] (2020-05-14)
+
+### [1.4.0-rc.3] (2020-05-08)
+
+**Added**
+- `Text List`
+
+**Changed**
+- Improve caching strategy for fonts by content-based hash
+- Improve caching strategy for marque by content-based hash
+- Dimensions and sharpness of marque
+- Props for `Content Wrapper`
+
+### [1.4.0-rc.2] (2020-05-06)
+
+**Added**
+- `Content Wrapper`
+- Description property to `p-text-field-wrapper`, `p-textarea-wrapper` and `p-select-wrapper`
+- `Link Social`
+
+**Changed**
+- Improve accessibility of error and success states of form elements
+- Aria-invalid attribute of form elements if they are in error state is now managed by component 
+- Rename icon name `configure` to `configurate` (prevents breaking change compared to stable v1.3.0)
+
+**Removed**
+- `safe-zone` property of `p-grid` (`Content Wrapper` should be used instead)
+
+### [1.4.0-rc.1] (2020-04-27)
+
+**Added**
+- Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
+- Submit button with search icon to `p-textfield-wrapper` type search
+- Test-Projects React, Angular, Gatsby and NextJS
+
+**Changed**
+- Background color of readonly state in components `p-textfield-wrapper` and `p-textarea-wrapper`
+- Visual appearance of icons
+- Improve caching strategy for icons by content-based hash
+- Cursor of Radio, Checkbox and Select
+- Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
+
+**Fixed**
+- Icon loading mechanism
+
+### [1.4.0-rc.0] (2020-04-09)
+
+**Added**
+- SSR support
 
 ### [1.3.0] (2020-04-08)
 

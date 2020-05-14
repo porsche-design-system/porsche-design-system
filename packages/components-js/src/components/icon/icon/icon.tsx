@@ -1,9 +1,8 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { getSvgContent, iconContent } from './icon-request';
+import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { Theme } from '../../../types';
-import { IconName } from './icon-name';
+import { Theme, IconName } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -16,7 +15,7 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name?: IconName = 'arrow-head-right';
+  @Prop() public name?: IconName = DEFAULT_ICON_NAME;
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
@@ -46,12 +45,26 @@ export class Icon {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  private io?: IntersectionObserver;
-
   @State() private svgContent?: string;
   @State() private isVisible = false;
 
-  public connectedCallback() {
+  private io?: IntersectionObserver;
+
+  @Watch('source')
+  @Watch('name')
+  public loadIcon(): void {
+    if (Build.isBrowser && this.isVisible) {
+      this.svgContent = undefined; // reset svg content while new icon is loaded
+      const url = buildIconUrl(this.source ?? this.name);
+      getSvgContent(url).then((iconContent) => {
+        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
+          this.svgContent = iconContent;
+        }
+      });
+    }
+  }
+
+  public connectedCallback(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
     // only load the svg if it's visible
@@ -61,37 +74,11 @@ export class Icon {
     });
   }
 
-  public disconnectedCallback() {
+  public disconnectedCallback(): void {
     if (this.io) {
       this.io.disconnect();
       this.io = undefined;
     }
-  }
-
-  @Watch('source')
-  @Watch('name')
-  public loadIcon() {
-    if (Build.isBrowser && this.isVisible) {
-      const url = this.getSource();
-      if (iconContent.has(url)) {
-        // sync if it's already loaded
-        this.svgContent = iconContent.get(url);
-      } else {
-        // async if it hasn't been loaded
-        getSvgContent(url).then(() => this.svgContent = iconContent.get(url));
-      }
-    }
-  }
-
-  public getSource(): string {
-    if (this.name && !this.source) {
-      return `https://cdn.ui.porsche.com/porsche-icons/v2/${this.variant}/${this.name}.svg`;
-    }
-    if (this.source) {
-      return this.source;
-    }
-    console.warn('Please provide either an name property or a source property!');
-    return '';
   }
 
   public render(): JSX.Element {
@@ -103,16 +90,13 @@ export class Icon {
     );
 
     return (
-      <Host role='img'>{(
-        (Build.isBrowser && this.svgContent)
-          ? <i class={iconClasses} innerHTML={this.svgContent}/>
-          : <i class={iconClasses}/>
-      )}
+      <Host role='img'>
+        <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
   }
 
-  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void) {
+  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
     if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
       const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
         if (data[0].isIntersecting) {
@@ -120,7 +104,7 @@ export class Icon {
           this.io = undefined;
           cb();
         }
-      }, { rootMargin });
+      }, {rootMargin});
 
       io.observe(el);
 

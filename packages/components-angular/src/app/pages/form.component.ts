@@ -13,14 +13,16 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-block">
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" placeholder="Some placeholder text"/></p-text-field-wrapper>
+          <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [hideLabel]="true"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [hideLabel]="{ base: true, l: false }"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" disabled="disabled"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="text" name="some-name" readonly="readonly" value="Some value"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'"><input type="password" name="some-name" value="some-password"/></p-text-field-wrapper>
+          <p-text-field-wrapper [label]="'Some label'"><input type="search" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [state]="'error'" [message]="'Error message'"><input type="text" name="some-name"/></p-text-field-wrapper>
           <p-text-field-wrapper [label]="'Some label'" [state]="'success'" [message]="'Success message'"><input type="text" name="some-name"/></p-text-field-wrapper>
-          <p-text-field-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name" placeholder="Some placeholder"/><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-text-field-wrapper>
+          <p-text-field-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name" placeholder="Some placeholder"/><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-text-field-wrapper>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
@@ -32,6 +34,13 @@ import { Component } from '@angular/core';
       <p-grid-item [size]="10">
         <div class="playground light spacing-block">
           <p-select-wrapper [label]="'Some label'">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>
+          <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -54,6 +63,7 @@ import { Component } from '@angular/core';
           </p-select-wrapper>
           <p-select-wrapper [state]="'success'">
             <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -129,13 +139,14 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-block">
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" placeholder="Some placeholder text"></textarea></p-textarea-wrapper>
+          <p-textarea-wrapper [label]="'Some label'" [description]="'Some description'"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [hideLabel]="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [hideLabel]="{ base: true, l: false }"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" disabled="disabled"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'"><textarea name="some-name" readonly="readonly">Some value</textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [state]="'error'" [message]="'error message'"><textarea name="some-name"></textarea></p-textarea-wrapper>
           <p-textarea-wrapper [label]="'Some label'" [state]="'success'" [message]="'success message'"><textarea name="some-name"></textarea></p-textarea-wrapper>
-          <p-textarea-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><textarea name="some-name">Some value</textarea><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-textarea-wrapper>
+          <p-textarea-wrapper [state]="'error'"><span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span><span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span><textarea name="some-name">Some value</textarea><span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span></p-textarea-wrapper>
         </div>
         <p-divider></p-divider>
       </p-grid-item>

@@ -6,3 +6,4 @@ export * from './line-height';
 export * from './random-string';
 export * from './transition-listener';
 export * from './slotted-styles';
+export * from './buttonHandling';

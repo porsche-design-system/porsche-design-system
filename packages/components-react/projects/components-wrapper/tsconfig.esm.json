@@ -9,5 +9,5 @@
     "declarationDir": "./dist/types"
   },
   "include": ["src"],
-  "exclude": ["src/mocks"]
+  "exclude": ["src/mocks", "src/lib"]
 }

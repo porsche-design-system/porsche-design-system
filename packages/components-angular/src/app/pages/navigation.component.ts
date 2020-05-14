@@ -166,6 +166,41 @@ import { Component } from '@angular/core';
     </p-grid>
     <p-grid>
       <p-grid-item [size]="2">
+        <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-link-social&gt;</p-headline>
+      </p-grid-item>
+      <p-grid-item [size]="5">
+        <div class="playground light spacing-inline">
+          <p-link-social [href]="'https://www.facebook.com'" [icon]="'logo-facebook'">Some label</p-link-social>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link-social [href]="'https://www.facebook.com'" [icon]="'logo-facebook'" [hideLabel]="true">Some label</p-link-social>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link-social [icon]="'logo-delicious'" [href]="'https://www.delicious.com'">Some label</p-link-social>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link-social style="width: 240px;" [icon]="'logo-facebook'" [href]="'https://www.facebook.com'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-social>
+        </div>
+        <p-divider></p-divider>
+      </p-grid-item>
+      <p-grid-item [size]="5">
+        <div class="playground dark spacing-inline">
+          <p-link-social [href]="'https://www.facebook.com'" [icon]="'logo-facebook'" [theme]="'dark'">Some label</p-link-social>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link-social [href]="'https://www.facebook.com'" [icon]="'logo-facebook'" [hideLabel]="true" [theme]="'dark'">Some label</p-link-social>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link-social [icon]="'logo-delicious'" [href]="'https://www.delicious.com'" [theme]="'dark'">Some label</p-link-social>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link-social style="width: 240px;" [icon]="'logo-facebook'" [href]="'https://www.facebook.com'" [theme]="'dark'">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link-social>
+        </div>
+        <p-divider></p-divider>
+      </p-grid-item>
+    </p-grid>
+    <p-grid>
+      <p-grid-item [size]="2">
         <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-pagination&gt;</p-headline>
       </p-grid-item>
       <p-grid-item [size]="5">

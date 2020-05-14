@@ -9,7 +9,7 @@ export const improveButtonHandlingForCustomElement = (
   element.addEventListener('click', event => handleButtonEvent(event, element, getType, getDisabled));
 };
 
-const handleButtonEvent = (
+export const handleButtonEvent = (
   event: MouseEvent,
   element: HTMLElement,
   getType: () => ButtonType,

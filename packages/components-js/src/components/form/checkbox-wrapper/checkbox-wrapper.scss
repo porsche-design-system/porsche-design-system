@@ -44,6 +44,7 @@
   opacity: 1 !important;
   outline: transparent solid 2px !important;
   outline-offset: 1px !important;
+  cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-top-color 1ms linear !important;
 }
@@ -105,11 +106,13 @@
   &__label-text {
     order: 1;
     display: inline-block;
+    cursor: pointer;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
+      cursor: default;
     }
 
     &--visible {

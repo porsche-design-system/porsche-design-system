@@ -153,6 +153,21 @@ import { Component, OnInit } from '@angular/core';
         <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
+    <p-grid>
+      <p-grid-item [size]="2">
+        <p-headline [variant]="'headline-4'" [tag]="'h4'">
+          &lt;p-content-wrapper&gt;
+        </p-headline>
+      </p-grid-item>
+      <p-grid-item [size]="10">
+        <div class="playground light spacing-block">
+          <p-content-wrapper>
+            <div class="example-content">Some content</div>
+          </p-content-wrapper>
+        </div>
+        <p-divider></p-divider>
+      </p-grid-item>
+    </p-grid>
   `
 })
 export class LayoutComponent {

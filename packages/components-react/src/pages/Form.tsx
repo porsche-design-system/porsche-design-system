@@ -23,26 +23,22 @@ export function Form() {
         <GridItem size={10}>
           <div className="playground light spacing-block">
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name"
-                                                          placeholder="Some placeholder text"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"} hideLabel={true}><input type="text"
-                                                                           name="some-name"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"} hideLabel={{base: true, l: false}}><input type="text"
-                                                                                             name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" placeholder="Some placeholder text"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} description={"Some description"}><input type="text" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} hideLabel={true}><input type="text" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} hideLabel={{base: true, l: false}}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" disabled/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" readOnly
-                                                          value="Some value"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"}><input type="password" name="some-name"
-                                                          value="some-password"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"} state={"error"} message={"Error message"}><input type="text"
-                                                                                                    name="some-name"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"} state={"success"} message={"Success message"}><input type="text"
-                                                                                                        name="some-name"/></TextFieldWrapper>
-            <TextFieldWrapper state={"error"}><span slot="label">Some label with a <a
-              href="https://designsystem.porsche.com">link</a>.</span><input type="text" name="some-name"
-                                                                             placeholder="Some placeholder"/><span
-              slot="message">Some error message with a <a
-              href="https://designsystem.porsche.com">link</a>.</span></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" readOnly value="Some value"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="password" name="some-name" value="some-password"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="search" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} state={"error"} message={"Error message"}><input type="text" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"} state={"success"} message={"Success message"}><input type="text" name="some-name"/></TextFieldWrapper>
+            <TextFieldWrapper state={"error"}>
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <input type="text" name="some-name" placeholder="Some placeholder"/>
+              <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            </TextFieldWrapper>
           </div>
           <Divider/>
         </GridItem>
@@ -54,6 +50,13 @@ export function Form() {
         <GridItem size={10}>
           <div className="playground light spacing-block">
             <SelectWrapper label={'Some label'}>
+              <select name="some-name">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+              </select>
+            </SelectWrapper>
+            <SelectWrapper label={'Some label'} description={'Some description'}>
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
@@ -76,6 +79,7 @@ export function Form() {
             </SelectWrapper>
             <SelectWrapper state={'success'}>
               <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
@@ -154,24 +158,20 @@ export function Form() {
         <GridItem size={10}>
           <div className="playground light spacing-block">
             <TextareaWrapper label={'Some label'}><textarea name="some-name"></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'}><textarea name="some-name"
-                                                            placeholder="Some placeholder text"></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'} hideLabel={true}><textarea
-              name="some-name"></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'} hideLabel={{base: true, l: false}}><textarea
-              name="some-name"></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'}><textarea name="some-name"
-                                                            disabled={true}></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'}><textarea name="some-name"
-                                                            readOnly={true}>Some value</textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}><textarea
-              name="some-name"></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'} state={'success'} message={'success message'}><textarea
-              name="some-name"></textarea></TextareaWrapper>
-            <TextareaWrapper state={'error'}><span slot="label">Some label with a <a
-              href="https://designsystem.porsche.com">link</a>.</span><textarea
-              name="some-name">Some value</textarea><span slot="message">Some error message with a <a
-              href="https://designsystem.porsche.com">link</a>.</span></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" placeholder="Some placeholder text"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} description={"Some description"}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} hideLabel={true}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} hideLabel={{base: true, l: false}}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" disabled={true}></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" readOnly={true}>Some value</textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'} state={'success'} message={'success message'}><textarea name="some-name"></textarea></TextareaWrapper>
+            <TextareaWrapper state={'error'}>
+              <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+              <textarea name="some-name">Some value</textarea>
+              <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+            </TextareaWrapper>
           </div>
           <Divider/>
         </GridItem>
