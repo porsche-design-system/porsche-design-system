@@ -6,7 +6,6 @@ import { camelCase } from 'change-case';
 const DEFAULT_ICON_URL = 'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
 
 describe('getSvgContent()', () => {
-
   const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
   const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
   const undefinedUrl = undefined;
@@ -23,9 +22,11 @@ describe('getSvgContent()', () => {
     const result1 = await getSvgContent(iconUrl);
     expect(result1).not.toBe(undefined);
     expect(spy).toHaveBeenCalledTimes(1);
+
     const result2 = await getSvgContent(iconUrl);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(result1).toEqual(result2);
+    spy.mockRestore();
   });
 
   // make sure this test isn't the last of the describe block since the exception might break following tests
