@@ -1,10 +1,10 @@
 # Introduction
 
-To help you better understand how to use our fom guidelines, we provide basic fom patterns as pre designed Sketch files and the corresponding coded examples as well. 
+To help you better understand how to use our form guidelines we provide you with basic form patterns as pre-designed Sketch templates as well as the corresponding coded examples:
 
-## Download form patterns as Sketch file
+## Sketch form templates
 
-<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
+<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download Sketch form templates</p-link-pure>
 
 --- 
 
