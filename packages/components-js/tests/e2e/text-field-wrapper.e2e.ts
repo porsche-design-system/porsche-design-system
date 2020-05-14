@@ -76,6 +76,7 @@ describe('Text Field Wrapper', () => {
     expect(await getLabelText()).toBeNull();
 
     await textFieldComponent.evaluate(el => el.setAttribute('label', 'Some label'));
+    await waitForEventCallbacks();
 
     expect(await getLabelText()).not.toBeNull();
   });
