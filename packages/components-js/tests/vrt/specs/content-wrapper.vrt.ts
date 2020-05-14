@@ -1,5 +1,5 @@
 import 'jasmine';
-import { VisualRegressionTester } from '@porsche-ui/visual-regression-tester';
+import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionContentWrapperTester } from '../helpers/setup';
 
 describe('Content Wrapper', () => {
