@@ -1,10 +1,11 @@
 import {
   getAttributeFromHandle,
   getBoxShadow,
-  getClassFromHandle,
+  getClassFromHandle, getInnerHTMLFromShadowRoot,
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
+import * as devices from "puppeteer/DeviceDescriptors";
 
 describe('select-wrapper', () => {
   it('should render', async () => {
@@ -212,6 +213,91 @@ describe('select-wrapper', () => {
       await labelText.hover();
 
       expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
+    });
+  });
+
+  fdescribe('fake drop down', () => {
+    it('should render', async () => {
+      await setContentWithDesignSystem(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      expect(fakeOptionList).not.toBeNull();
+    });
+
+    it('should not render if touch support is detected', async () => {
+      await page.emulate(devices['iPhone X']);
+      await setContentWithDesignSystem(`
+        <p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>
+      `);
+      const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      expect(fakeOptionList).toBeNull();
+      await jestPuppeteer.resetPage();
+    });
+
+    it('should be visible if select is clicked', async () => {
+      await setContentWithDesignSystem(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await selectNode('select');
+      const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      const getOpacity = async () => await fakeOptionList.evaluate((el: HTMLElement) => {
+        const style = getComputedStyle(el);
+        return style.opacity;
+      });
+      expect(await getOpacity()).toBe('0');
+
+      await select.click();
+      expect(await getOpacity()).toBe('1');
+    });
+
+    it('should add fake option item if added to native select programmatically', async () => {
+      await setContentWithDesignSystem(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await selectNode('select');
+      const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      const numberOfOptions = await select.evaluate((el:HTMLElement) => {
+        return el.childElementCount;
+      });
+      const numberOfFakeOptions = await fakeOptionList.evaluate((el:HTMLElement) => {
+        return el.childElementCount;
+      });
+      expect(fakeOptionList).not.toBeNull();
+      expect(numberOfFakeOptions).toEqual(numberOfOptions);
+
+      await select.evaluate((el: HTMLSelectElement) => {
+        const option = document.createElement('option');
+        option.text = 'Test';
+        el.add(option,0);
+      });
+      const text = await getInnerHTMLFromShadowRoot('p-select-wrapper >>> .p-select-wrapper__fake-option:first-child');
+      expect(text).toContain('Test');
+      expect(numberOfFakeOptions + 1).toEqual(numberOfOptions + 1);
     });
   });
 });
