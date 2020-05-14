@@ -2,6 +2,26 @@
 
 ## Design
 
+### [1.4.0] (2020-05-14)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Text List |  |
+Components | Text Field Search |  |
+Components | Social Link |  |
+Components | Description text component in Text Field, Textarea and Select |  |
+Components |  | Google Icon |
+
+**Fixed**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components |   | Icon optimization to base size 24 x 24 px |
+Components | Change icon size in Link & Button in 24 x 24 px  |  |
+Components | Background color for Text Field, Textarea and Select  |  |
+
 ### [1.3.0] (2020-04-08)
 
 **Added**
@@ -91,6 +111,8 @@ Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` 
 --- 
 
 ## Code
+
+### [1.4.0] (2020-05-14)
 
 ### [1.4.0-rc.3] (2020-05-08)
 
