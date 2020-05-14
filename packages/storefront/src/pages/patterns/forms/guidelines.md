@@ -14,7 +14,9 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 
 **Download patterns as Sketch file**  
 
-<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download form patterns</p-link-pure>
+In order to make designing forms as easy as possible we provide you with a Sketch file containing **templates for the most common form types for both desktop and mobile**, easily adaptable to your requirements:
+
+<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download Sketch form templates</p-link-pure>
 
 ---
 
