@@ -230,6 +230,7 @@
     overflow-y: auto;
     background-color: $p-color-theme-light-background;
     list-style-type: none;
+    scroll-behavior: smooth;
 
     // Firefox scrollbar styling
     scrollbar-width: thin;

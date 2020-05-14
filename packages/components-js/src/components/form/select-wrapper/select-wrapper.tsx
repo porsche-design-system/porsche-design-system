@@ -45,9 +45,6 @@ export class SelectWrapper {
   private optgroups: NodeListOf<HTMLOptGroupElement>;
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
-  private keys: string[] = [];
-  private resetTime = 1000;
-  private timer: any;
 
   private static isTouchDevice(): boolean {
     if (typeof window === 'undefined') {
@@ -186,9 +183,11 @@ export class SelectWrapper {
   }
 
   private observeSelect(): void {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach(() => {
-        this.setOptionList();
+    const observer = new MutationObserver((mutations: MutationRecord[]) => {
+      mutations.forEach((mutation:MutationRecord) => {
+        if (mutation.type === 'childList') {
+          this.setOptionList();
+        }
       });
     });
     const config = {childList: true};
@@ -247,6 +246,10 @@ export class SelectWrapper {
           this.fakeOptionListHidden = false;
           this.cycleFakeOptionList('down');
           break;
+        case 'ArrowLeft' || 'Left':
+          e.preventDefault();
+          this.cycleFakeOptionList('left');
+          break;
         case 'ArrowRight' || 'Right':
           e.preventDefault();
           this.cycleFakeOptionList('right');
@@ -278,7 +281,7 @@ export class SelectWrapper {
           break;
         default:
           if(isLetterOrNum(key)) {
-            this.searchOptions(key);
+            this.searchOptions();
           }
       }
     });
@@ -366,12 +369,13 @@ export class SelectWrapper {
   }
 
   private handleScroll(): void {
-    if (this.fakeOptionListNode.scrollHeight > this.fakeOptionListNode.clientHeight) {
+    const fakeOptionListNodeHeight = 200;
+    if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
       this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[this.optionHighlighted];
-      const scrollBottom = this.fakeOptionListNode.clientHeight + this.fakeOptionListNode.scrollTop;
+      const scrollBottom = fakeOptionListNodeHeight + this.fakeOptionListNode.scrollTop;
       const elementBottom = this.fakeOptionHighlightedNode.offsetTop + this.fakeOptionHighlightedNode.offsetHeight;
       if (elementBottom > scrollBottom) {
-        this.fakeOptionListNode.scrollTop = elementBottom - this.fakeOptionListNode.clientHeight;
+        this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
       }
       else if (this.fakeOptionHighlightedNode.offsetTop < this.fakeOptionListNode.scrollTop) {
         this.fakeOptionListNode.scrollTop = this.fakeOptionHighlightedNode.offsetTop;
@@ -379,45 +383,12 @@ export class SelectWrapper {
     }
   }
 
-  private searchOptions(key: string): void {
-    const searchSelect = (matches) => {
-      if (!matches.length) { return; }
-      const current = this.optionSelected;
-      const currentIndex = matches.indexOf(current);
-      const nextIndex = currentIndex + 1;
-      const toBeSelected = matches[nextIndex] || matches[0];
-
-      if (toBeSelected === current) { return; }
-      this.optionHighlighted = toBeSelected.index;
-      this.optionSelected = toBeSelected.index;
-    };
-
-    clearTimeout(this.timer);
-
-    if (!key || !key.trim().length) { return; }
-
-    const options = Array.from(this.options).filter((o:HTMLOptionElement) => o.disabled !== true);
-    key = key.toLowerCase();
-    this.keys.push(key);
-
-    // find the FIRST option that most closely matches our keys
-    // if that first one is already selected, go to NEXT option
-    const stringMatch = this.keys.join('');
-    // attempt an exact match
-    const deepMatches = options.filter((o:HTMLOptionElement) => o.innerText.toLowerCase().startsWith(stringMatch) === true);
-
-    if (deepMatches.length) {
-      searchSelect(deepMatches);
-    } else {
-      // plan b - first character match
-      const firstChar = stringMatch[0];
-      searchSelect(options.filter((o:HTMLOptionElement) => o.innerText.toLowerCase().startsWith(firstChar) === true));
-    }
-
-    this.timer = setTimeout(() => {
-      // reset
-      this.keys = [];
-    }, this.resetTime);
+  private searchOptions(): void {
+    setTimeout(() => {
+      this.optionSelected = this.select.selectedIndex;
+      this.optionHighlighted = this.select.selectedIndex;
+      this.handleScroll();
+    }, 100);
   }
 
   private setState(): void {
