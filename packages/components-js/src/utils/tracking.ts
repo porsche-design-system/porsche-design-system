@@ -3,7 +3,7 @@ import { version } from '../../package.json';
 const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/tracking';
 
 export const trackEvent = (component: string, event?: string): void => {
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
     fetch(`${TRACKING_BASE_URL}?${queryString({ v: version, c: component, e: event })}`).catch(console.warn);
   }
 };
