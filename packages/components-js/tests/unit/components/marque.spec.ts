@@ -14,14 +14,8 @@ describe('Component <p-marque>', () => {
   });
 
   it('should have every png from manifest on cdn', async () => {
-    const fileNames = Object.keys(MARQUES_MANIFEST)
-      .map((marqueKey) =>
-        Object.keys(MARQUES_MANIFEST[marqueKey]).map((sizeKey) =>
-          Object.keys(MARQUES_MANIFEST[marqueKey][sizeKey]).map(
-            (resKey) => MARQUES_MANIFEST[marqueKey][sizeKey][resKey]
-          )
-        )
-      )
+    const fileNames = Object.values(MARQUES_MANIFEST)
+      .map((x) => Object.values(x).map(Object.values))
       // @ts-ignore
       .flat(2);
 
