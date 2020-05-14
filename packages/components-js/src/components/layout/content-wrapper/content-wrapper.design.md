@@ -35,8 +35,8 @@ This is the variant of your choice when you want your content to span to the ful
 
 ## Layout approach or: How to combine Content Wrapper with Grid, Flex or …
 
-Both technically and aesthetically **the Content Wrapper can be combined with both Grid and Flex or with any custom content**. The principle of how to apply the Content Wrapper component is quite simple – just  think "from big to small" when defining the module layouts:
-
+**The Content Wrapper can house both the Grid and Flex or any custom content.** The principle of how to apply the Content Wrapper component is quite simple – just think "from big to small" when defining the module layouts:
+  
 1. First of all, you define the **Content Wrapper** type for your layout part based on the content width variants described above.
 2. **The content area of each layout part** can then itself be designed by using Grid and/or Flex or any custom way of content layouting, depending on the individual requirements of the module.
 

@@ -8,7 +8,7 @@ being dividable by 2, 3, 4 or 6. For layouting on mobile screens (widths < 759px
 - **The grid gutter** separates the columns horizontally by in-between-spacings.
 The gutter is defined with fixed pixel sizes and breakpoints to balance size
 ratios between elements on the respective screen size. 
-- **The grid width** is resulting from the total screen width minus gutter widths and minus defined margins depending on the [Content Wrapper](#/components/layout/content-wrapper) width variant in use.
+- **The grid width** is resulting from the total screen width minus gutter widths and minus defined margins resulting from the [Content Wrapper](#/components/layout/content-wrapper) in use. The Grid component can only be combined with the "Basic" content width variant.
 
 ![Porsche Design System grid architecture](./assets/grid-components.png)
 
