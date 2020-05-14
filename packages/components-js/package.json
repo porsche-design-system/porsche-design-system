@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.4.0-rc.3",
+  "version": "1.4.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -70,8 +70,8 @@
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/scss-utils": "1.0.1",
     "@porsche-design-system/utils": "0.0.0",
-    "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@porsche-design-system/visual-regression-tester": "^1.0.0",
+    "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@stencil/angular-output-target": "^0.0.2",
     "@stencil/core": "~1.13.0",
     "@stencil/postcss": "^1.0.1",
