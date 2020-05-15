@@ -68,10 +68,10 @@ yarn add @porsche-design-system/components-react
 #### SCSS utils (optional):
 ``` 
 // install with npm:
-npm install @porsche-design-system/scss-utils --save-dev
+npm install @porsche-design-system/utilities --save-dev
 
 // install with yarn:
-yarn add @porsche-design-system/scss-utils --dev
+yarn add @porsche-design-system/utilities --dev
 ``` 
 
 ## Usage

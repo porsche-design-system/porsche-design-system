@@ -23,7 +23,7 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/scss-utils/index";
+  @import "~@porsche-design-system/utilities/scss/index";
 
   .header {
     text-align: center;
