@@ -1,8 +1,8 @@
 import 'jasmine';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import {
-  getVisualRegressionRetina2xTester,
-  getVisualRegressionRetina3xTester,
+  getVisualRegressionMarque2xTester,
+  getVisualRegressionMarque3xTester,
   getVisualRegressionTester
 } from '../helpers/setup';
 
@@ -13,8 +13,8 @@ describe('Marque', () => {
 
   beforeAll(() => {
     vrt = getVisualRegressionTester();
-    vrt2x = getVisualRegressionRetina2xTester();
-    vrt3x = getVisualRegressionRetina3xTester();
+    vrt2x = getVisualRegressionMarque2xTester();
+    vrt3x = getVisualRegressionMarque3xTester();
   });
 
   it('should have no visual regression', async () => {

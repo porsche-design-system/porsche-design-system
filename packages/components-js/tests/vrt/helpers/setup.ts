@@ -63,11 +63,11 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
   return visualRegressionGridTester;
 };
 
-export const getVisualRegressionRetina2xTester = (): VisualRegressionTester => {
+export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
   if (!visualRegressionRetina2xTester) {
     visualRegressionRetina2xTester = new VisualRegressionTester(browser, {
       ...testOptions,
-      viewports: [320, 375], // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
+      viewports: [1299, 1300],
       deviceScaleFactor: 2
     });
   }
@@ -75,11 +75,11 @@ export const getVisualRegressionRetina2xTester = (): VisualRegressionTester => {
   return visualRegressionRetina2xTester;
 };
 
-export const getVisualRegressionRetina3xTester = (): VisualRegressionTester => {
+export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
   if (!visualRegressionRetina3xTester) {
     visualRegressionRetina3xTester = new VisualRegressionTester(browser, {
       ...testOptions,
-      viewports: [414],
+      viewports: [1299, 1300],
       deviceScaleFactor: 3
     });
   }
