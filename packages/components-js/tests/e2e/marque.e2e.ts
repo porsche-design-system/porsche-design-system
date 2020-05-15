@@ -46,7 +46,7 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
       });
 
-      it('should request correct image for 2x resolution', async () => {
+      it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContent();
         expect(requestedImagePath).toContain(fileName);
@@ -74,7 +74,7 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
       });
 
-      it('should request correct image for 2x resolution', async () => {
+      it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContent();
         expect(requestedImagePath).toContain(fileName);
