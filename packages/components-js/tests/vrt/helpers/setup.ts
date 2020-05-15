@@ -7,8 +7,8 @@ let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
 let visualRegressionGridTester: VisualRegressionTester;
-let visualRegressionRetina2xTester: VisualRegressionTester;
-let visualRegressionRetina3xTester: VisualRegressionTester;
+let visualRegressionMarque2xTester: VisualRegressionTester;
+let visualRegressionMarque3xTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -64,25 +64,25 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
 };
 
 export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
-  if (!visualRegressionRetina2xTester) {
-    visualRegressionRetina2xTester = new VisualRegressionTester(browser, {
+  if (!visualRegressionMarque2xTester) {
+    visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
       ...testOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 2
     });
   }
 
-  return visualRegressionRetina2xTester;
+  return visualRegressionMarque2xTester;
 };
 
 export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
-  if (!visualRegressionRetina3xTester) {
-    visualRegressionRetina3xTester = new VisualRegressionTester(browser, {
+  if (!visualRegressionMarque3xTester) {
+    visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
       ...testOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 3
     });
   }
 
-  return visualRegressionRetina3xTester;
+  return visualRegressionMarque3xTester;
 };
