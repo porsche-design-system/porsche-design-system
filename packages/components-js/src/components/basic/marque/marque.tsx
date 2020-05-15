@@ -19,7 +19,7 @@ export class Marque {
     const manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
     const buildSrcSet = (size: 'small' | 'medium'): string =>
-      Object.entries(manifestPath[size]).map(([key, value]) => `${CDN_BASE_URL}/${value} ${key}`).join(',');
+      Object.entries(manifestPath[size]).map(([resolution, fileName]) => `${CDN_BASE_URL}/${fileName} ${resolution}`).join(',');
 
 
     const marqueClasses = cx(prefix('marque'));
