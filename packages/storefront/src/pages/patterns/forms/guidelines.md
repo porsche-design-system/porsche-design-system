@@ -186,7 +186,7 @@ As for the smallest grouped element within a form – label and form field – w
 ![Form layout with spacings](../../../assets/patterns-forms-anatomy-mobile-spacings.png)
 
 
-### Form field width
+### Form field widths 
 
 It's commonly recommended to set the form field width to the estimated length of the required input. As we design for international markets at Porsche it's often quite hard 
 to predict the estimated length depending on the language. Also this might lead to a quite unbalanced and "fluttering" look and feel of the form in general. 
@@ -198,6 +198,8 @@ However, we recommend to break out of that rule and **go for estimated form fiel
 - When setting form elements in a row (one or more) that _aren't_ Text Fields, for example Selects or Radio Button Groups.
 - When setting multiple form fields in a row (only when it makes sense, e.g. in case of ZIP code and city input).
 - In case of very short forms (up to 3 fields).
+
+### Form Grid
 
 When setting field widths to the estimated length you should stick to the following standard values to support a common overall look and feel for Porsche forms.
 The % values always refer to the full maximum width of the form (see table above):  
