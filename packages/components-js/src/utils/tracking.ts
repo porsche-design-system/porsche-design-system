@@ -1,12 +1,12 @@
 import { version } from '../../package.json';
 
-const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/tracking';
+const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/collect.gif';
 
 export const trackEvent = (component: string, event?: string): void => {
   if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
-    fetch(`${TRACKING_BASE_URL}?${queryString({ v: version, c: component, e: event })}`, {
-      mode: 'no-cors'
-    }).catch(console.warn);
+    fetch(`${TRACKING_BASE_URL}?${queryString({ v: version, c: component, ...(event && { e: event }) })}`).catch(
+      console.warn
+    );
   }
 };
 
