@@ -1,6 +1,6 @@
 // TODO: this file should be part of icon platform itself
 
-import { icons } from '@porsche-design-system/icons';
+import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 import database from './../database/icons.json';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -29,7 +29,7 @@ const syncIconDatabase = (): void => {
   const iconsDeleted: string[] = [];
 
   // add or update icons
-  for (const [name, file] of Object.entries(icons).sort()) {
+  for (const [name, file] of Object.entries(ICONS_MANIFEST).sort()) {
 
     const id = paramCase(name);
     const icon = database.icons.find(element => element && element.id === id);

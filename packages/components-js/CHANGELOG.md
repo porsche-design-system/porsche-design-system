@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-05-14
+
 ## [1.4.0-rc.3] - 2020-05-08
 
 ### Added
@@ -26,8 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Improve accessibility of error and success states of form elements
-- Aria-invalid attribute of form elements if they are in error state is now managed by component 
+- Aria-invalid attribute of form elements if they are in error state is now managed by component
 - Rename icon name `configure` to `configurate` (prevents breaking change compared to stable v1.3.0)
+- Improve `p-icon` loading behavior
+
+### Fixed
+- Display of wrong icons
 
 ### Removed
 - `safe-zone` property of `p-grid` (`Content Wrapper` should be used instead)
