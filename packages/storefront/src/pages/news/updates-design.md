@@ -19,6 +19,7 @@ Type | Web Library | Basic Library |
 Components |   | Icon optimization to base size 24 x 24 px |
 Components | Change icon size in Link & Button in 24 x 24 px  |  |
 Components | Background color for Text Field, Textarea and Select  |  |
+Components | | Optimization size of the Porsche Marque |
 
 ### [1.3.0] (2020-04-08)
 
