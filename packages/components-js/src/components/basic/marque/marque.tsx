@@ -9,7 +9,6 @@ import { CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
   shadow: true
 })
 export class Marque {
-
   /**
    * Show/hide trademark sign.
    */
@@ -19,8 +18,9 @@ export class Marque {
     const manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
     const buildSrcSet = (size: 'small' | 'medium'): string =>
-      Object.entries(manifestPath[size]).map(([resolution, fileName]) => `${CDN_BASE_URL}/${fileName} ${resolution}`).join(',');
-
+      Object.entries(manifestPath[size])
+        .map(([resolution, fileName]) => `${CDN_BASE_URL}/${fileName} ${resolution}`)
+        .join(',');
 
     const marqueClasses = cx(prefix('marque'));
     return (
