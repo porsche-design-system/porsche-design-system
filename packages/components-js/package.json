@@ -68,7 +68,7 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
-    "@porsche-design-system/scss-utils": "1.0.1",
+    "@porsche-design-system/utilities": "1.0.0",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^1.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",

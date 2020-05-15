@@ -152,7 +152,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/scss-utils/index";
+  @import "~@porsche-design-system/utilities/scss/index";
   
   .example-link {
     display: inline-block;

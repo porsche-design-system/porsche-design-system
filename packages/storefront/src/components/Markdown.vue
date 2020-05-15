@@ -12,7 +12,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/scss-utils/index";
+  @import "~@porsche-design-system/utilities/scss/index";
 
   /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
    * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
