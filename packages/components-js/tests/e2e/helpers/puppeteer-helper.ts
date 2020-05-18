@@ -12,7 +12,7 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
 
 type GetBoxShadowOptions = { waitForTransition: boolean };
 
-export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShadowOptions) =>
+export const getBoxShadow = (element: ElementHandle, opts?: GetBoxShadowOptions) =>
   element.evaluate(async (el, opts?: GetBoxShadowOptions) => {
     const style = getComputedStyle(el);
     if (opts?.waitForTransition) {
