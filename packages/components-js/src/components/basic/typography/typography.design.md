@@ -27,7 +27,7 @@ For Chinese, Japanese and Korean language the `sans-serif` system fonts are to b
 
 ## Headline styles
 
-The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only bold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 5 that can be used multiple times.
+The Porsche headline styles should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only semibold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. The headline styles span from large title, that can be used optionally and only once per page, to headlines 1 to 5 that can be used multiple times.
 
 |                  | 320 - 759 px (XS)     | 760 - 999 px (S)   | 1000 - 1299 px (M)   | 1300 - 1759 px (L)   | 1760  px or larger (XL)   |
 |------------------|---------------------  |------------------	|-------------------   |-------------------   |------------------------   |
@@ -140,7 +140,8 @@ The color to be used for Porsche Next depends on the [Porsche color theme](#/bas
 The Porsche Next is available in different font weights that enable to add emphasis and create a visual content hierarchy.
 For digital applications, we recommend only to use semibold, regular and thin:
 
-- **Porsche Next Semibold** for first-level headlines or copytext highlights.
+- **Porsche Next Semibold** for first-level headlines.
+- **Porsche Next Bold** for copytext highlights.
 - **Porsche Next Regular** for copytext, stand-alone text or sublines (in combination with first-level headlines).
 - **Porsche Next Thin** for stand-alone text larger than 20px.
 
