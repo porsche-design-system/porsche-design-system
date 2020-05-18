@@ -5,7 +5,18 @@ import {
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
-import * as devices from "puppeteer/DeviceDescriptors";
+
+const iPhone = {
+  viewport: {
+    width: 375,
+    height: 812,
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+    isLandscape: false
+  },
+  userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
+};
 
 describe('select-wrapper', () => {
   it('should render', async () => {
@@ -216,7 +227,7 @@ describe('select-wrapper', () => {
     });
   });
 
-  fdescribe('fake drop down', () => {
+  describe('fake drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
@@ -232,7 +243,7 @@ describe('select-wrapper', () => {
     });
 
     it('should not render if touch support is detected', async () => {
-      await page.emulate(devices['iPhone X']);
+      await page.emulate(iPhone);
       await setContentWithDesignSystem(`
         <p-select-wrapper label="Some label">
           <select name="some-name">
