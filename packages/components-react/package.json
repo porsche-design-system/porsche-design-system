@@ -15,8 +15,8 @@
     "@porsche-design-system/components-react": "1.4.0"
   },
   "devDependencies": {
+    "@porsche-design-system/visual-regression-tester": "^1.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@porsche-design-system/visual-regression-tester": "^1.0.0",
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^10.0.4",
     "@types/jest": "^25.2.2",
