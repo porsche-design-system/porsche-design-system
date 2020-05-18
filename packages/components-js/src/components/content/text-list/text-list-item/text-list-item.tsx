@@ -11,7 +11,7 @@ export class TextListItem {
 
   @Element() public host!: HTMLElement;
 
-  public componentDidLoad() {
+  public componentDidLoad(): void {
     this.addSlottedStyles();
   }
 

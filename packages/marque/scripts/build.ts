@@ -68,8 +68,8 @@ const createManifestAndCopyMarque = async (cdn: string, files: string[]): Promis
   await checkIntegrity(manifest);
 
   fs.writeFileSync(path.normalize('./index.ts'),
-    `export const cdn = "${cdn}";
-export const marque = ${JSON.stringify(manifest)};`
+    `export const CDN_BASE_URL = "${cdn}";
+export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
   console.log('Created marque manifest.');
