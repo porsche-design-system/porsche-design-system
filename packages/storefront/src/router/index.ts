@@ -40,7 +40,7 @@ const router = new Router({
       component: () => import('@/views/Story.vue')
     },
     {
-      path: '/patterns/:category/:page',
+      path: '/patterns/:category/:pattern',
       name: 'pattern',
       component: () => import('@/views/Pattern.vue'),
       meta: { standalone: true }
