@@ -14,8 +14,8 @@
       return this.$route.params.category.toLowerCase();
     }
 
-    private get page(): string {
-      return this.$route.params.page.toLowerCase();
+    private get pattern(): string {
+      return this.$route.params.pattern.toLowerCase();
     }
 
     @Watch('$route')
@@ -30,7 +30,7 @@
     private async loadComponent(): Promise<void> {
       try {
         await this.$store.dispatch('toggleLoadingAsync', true);
-        this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.page}.vue`))()).default;
+        this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.pattern}.vue`))()).default;
         await this.$store.dispatch('toggleLoadingAsync', false);
       } catch (e) {
         this.redirect();

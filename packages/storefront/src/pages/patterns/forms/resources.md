@@ -4,7 +4,7 @@ To help you better understand how to use our form guidelines we provide you with
 
 ## Sketch form templates
 
-<p-link-pure href="/latest/pds-form-templates.sketch.zip" icon="download" download>Download Sketch form templates</p-link-pure>
+<p-link-pure href="/latest/porsche-design-system-form-templates.sketch" icon="download" download>Download Sketch form templates</p-link-pure>
 
 --- 
 
