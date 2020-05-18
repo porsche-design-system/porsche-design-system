@@ -10,7 +10,7 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
     options
   );
 
-type GetBoxShadowOptions = { waitForTransition: boolean }
+type GetBoxShadowOptions = { waitForTransition: boolean };
 
 export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShadowOptions) =>
   element.evaluate(async (el, opts?: GetBoxShadowOptions) => {
@@ -50,11 +50,9 @@ export const waitForInnerHTMLChange = async (node: ElementHandle) => {
   }
 };
 
-export const waitForEventCallbacks = async () => await page.waitFor(5);
-
+export const waitForEventCallbacks = async () => await page.waitFor(40);
 
 // Browser Context
-
 
 // TODO: rename to getActiveElementHandle
 export const getActiveElement = () => page.evaluateHandle(() => document.activeElement);
@@ -89,13 +87,13 @@ export const timeLogger = () => {
 
 let svgRequestCounter: number;
 
-export const setRequestInterceptor = (timeouts: number[]) => {
+export const setSvgRequestInterceptor = (timeouts: number[]) => {
   svgRequestCounter = 0;
   page.removeAllListeners('request');
   page.on('request', (req) => {
     const url = req.url();
 
-    if (url.indexOf('.svg') >= 0) {
+    if (url.endsWith('.svg')) {
       const iconName = url.match(/icons\/(.*)\.min/)[1];
       const delay = timeouts[svgRequestCounter] ?? 0;
 
