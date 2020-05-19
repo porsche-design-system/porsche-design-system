@@ -139,22 +139,10 @@
 
   // form top spacing
   .form-top-spacing {
-    margin-top: p-rem(48px);
-
-    @include p-breakpoint('s') {
-      margin-top: p-rem(56px);
-    }
+    margin-top: $p-spacing-48;
 
     @include p-breakpoint('m') {
-      margin-top: p-rem(64px);
-    }
-
-    @include p-breakpoint('l') {
-      margin-top: p-rem(72px);
-    }
-
-    @include p-breakpoint('xl') {
-      margin-top: p-rem(80px);
+      margin-top: $p-spacing-64;
     }
   }
 
@@ -162,20 +150,8 @@
   .form-bottom-spacing {
     padding-bottom: $p-spacing-64;
 
-    @include p-breakpoint('s') {
-      padding-bottom: $p-spacing-72;
-    }
-
     @include p-breakpoint('m') {
       padding-bottom: $p-spacing-80;
-    }
-
-    @include p-breakpoint('l') {
-      padding-bottom: p-rem(88px);
-    }
-
-    @include p-breakpoint('xl') {
-      padding-bottom: p-rem(96px);
     }
   }
 
