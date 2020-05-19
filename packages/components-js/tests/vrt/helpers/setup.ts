@@ -1,12 +1,14 @@
 import 'jasmine';
-import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-design-system/visual-regression-tester';
+import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
 import * as puppeteer from 'puppeteer';
-import {Browser} from 'puppeteer';
+import { Browser } from 'puppeteer';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
 let visualRegressionOverviewTester: VisualRegressionTester;
 let visualRegressionGridTester: VisualRegressionTester;
+let visualRegressionMarque2xTester: VisualRegressionTester;
+let visualRegressionMarque3xTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
@@ -37,7 +39,7 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionTester;
-}
+};
 
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
@@ -48,7 +50,7 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionOverviewTester;
-}
+};
 
 export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
   if (!visualRegressionGridTester) {
@@ -59,4 +61,28 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
   }
 
   return visualRegressionGridTester;
-}
+};
+
+export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
+  if (!visualRegressionMarque2xTester) {
+    visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
+      ...testOptions,
+      viewports: [1299, 1300],
+      deviceScaleFactor: 2
+    });
+  }
+
+  return visualRegressionMarque2xTester;
+};
+
+export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
+  if (!visualRegressionMarque3xTester) {
+    visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
+      ...testOptions,
+      viewports: [1299, 1300],
+      deviceScaleFactor: 3
+    });
+  }
+
+  return visualRegressionMarque3xTester;
+};

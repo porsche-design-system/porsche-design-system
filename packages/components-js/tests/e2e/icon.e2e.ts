@@ -2,8 +2,9 @@ import {
   getInnerHTMLFromShadowRoot,
   selectNode,
   setContentWithDesignSystem,
-  setRequestInterceptor,
-  timeLogger, waitForInnerHTMLChange
+  setSvgRequestInterceptor,
+  timeLogger,
+  waitForInnerHTMLChange
 } from './helpers';
 import { NavigationOptions } from 'puppeteer';
 
@@ -30,7 +31,7 @@ describe('p-icon', () => {
   });
 
   it('should have only one response for default icon', async () => {
-    setRequestInterceptor([]);
+    setSvgRequestInterceptor([]);
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`, navOptions);
 
@@ -47,7 +48,7 @@ describe('p-icon', () => {
    */
   it('should render correct icon if default-icon request takes longer than icon request', async () => {
     const delay = 2000;
-    setRequestInterceptor([delay, 0]);
+    setSvgRequestInterceptor([delay, 0]);
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(`<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
@@ -71,7 +72,7 @@ describe('p-icon', () => {
    *                      request 2nd icon
    */
   it('should unset previous icon if name prop is changed', async () => {
-    setRequestInterceptor([0, 1000]);
+    setSvgRequestInterceptor([0, 1000]);
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
     const iconComponent = await selectNode('p-icon');
@@ -87,7 +88,7 @@ describe('p-icon', () => {
   });
 
   it('should unset previous icon if name prop is removed', async () => {
-    setRequestInterceptor([2000]);
+    setSvgRequestInterceptor([2000]);
     await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
 
     const iconComponent = await selectNode('p-icon');
@@ -106,4 +107,3 @@ describe('p-icon', () => {
     expect(responseCounter).toEqual(2);
   });
 });
-
