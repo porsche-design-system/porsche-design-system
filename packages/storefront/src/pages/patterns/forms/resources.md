@@ -110,22 +110,10 @@ Top spacing defines the larger between the beginning of the form and the top of 
 
 ```scss
 .form-top-spacing {
-  margin-top: p-rem(48px);
+  margin-top: $p-spacing-48;
 
-  @include p-breakpoint('s') {
-    margin-top: p-rem(56px);
-  }
-  
   @include p-breakpoint('m') {
-    margin-top: p-rem(64px);
-  }
-  
-  @include p-breakpoint('l') {
-    margin-top: p-rem(72px);
-  }
-  
-  @include p-breakpoint('xl') {
-    margin-top: p-rem(80px);
+    margin-top: $p-spacing-64;
   }
 }
 ``` 
@@ -138,20 +126,8 @@ Bottom spacing defines the larger between the end of the form and the bottom of 
 .form-bottom-spacing {
   padding-bottom: $p-spacing-64;
   
-  @include p-breakpoint('s') {
-    padding-bottom: $p-spacing-72;
-  }
-  
   @include p-breakpoint('m') {
     padding-bottom: $p-spacing-80;
-  }
-  
-  @include p-breakpoint('l') {
-    padding-bottom: p-rem(88px);
-  }
-  
-  @include p-breakpoint('xl') {
-    padding-bottom: p-rem(96px);
   }
 }
 ``` 
