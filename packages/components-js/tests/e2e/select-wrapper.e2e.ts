@@ -2,7 +2,7 @@ import {
   getAttributeFromHandle,
   getClassFromHandle, getElementStyle, getInnerHTMLFromShadowRoot,
   selectNode,
-  setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
+  setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
 
 const iPhone = {
@@ -226,7 +226,7 @@ describe('select-wrapper', () => {
     });
   });
 
-  describe('fake drop down', () => {
+  fdescribe('fake drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
@@ -257,8 +257,9 @@ describe('select-wrapper', () => {
       await jestPuppeteer.resetPage();
     });
 
-    it('should be visible if select is clicked', async () => {
+    it('should be visible if select is clicked and hidden if clicked outside', async () => {
       await setContentWithDesignSystem(`
+      <p-text>Some text</p-text>
       <p-select-wrapper label="Some label">
         <select name="some-name">
           <option value="a">Option A</option>
@@ -268,6 +269,7 @@ describe('select-wrapper', () => {
       </p-select-wrapper>
     `);
       const select = await selectNode('select');
+      const text = await selectNode('p-text');
       const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
       const getOpacity = () => getElementStyle(fakeOptionList, 'opacity');
       expect(await getOpacity()).toBe('0');
@@ -275,6 +277,18 @@ describe('select-wrapper', () => {
       await select.click();
       await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', {isGone: true});
       expect(await getOpacity()).toBe('1');
+
+      await text.click();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+
+      await select.click();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', {isGone: true});
+      expect(await getOpacity()).toBe('1');
+
+      await select.click();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
     });
 
     it('should add fake option item if added to native select programmatically', async () => {
@@ -306,6 +320,68 @@ describe('select-wrapper', () => {
       const text = await getInnerHTMLFromShadowRoot('p-select-wrapper >>> .p-select-wrapper__fake-option:first-child');
       expect(text).toContain('Test');
       expect(numberOfFakeOptions + 1).toEqual(numberOfOptions + 1);
+    });
+
+    it('should handle keyboard events', async () => {
+      await setContentWithDesignSystem(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+
+      const select = await selectNode('select');
+      const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      const getOpacity = () => getElementStyle(fakeOptionList, 'opacity');
+      const getElementPosition = (selector: string) => fakeOptionList.evaluate((el:Element, selector: string) => {
+        let option: ChildNode = el.querySelector(selector);
+        let pos = 0;
+        while((option = option.previousSibling) !== null) pos++;
+        return pos;
+      }, selector);
+
+
+      // initial status of highlight and select
+      expect(await getElementPosition('.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition('.p-select-wrapper__fake-option--selected')).toBe(0);
+
+      // 1 x arrow down
+      await select.focus();
+      await select.press('ArrowDown');
+      await waitForEventCallbacks();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', {isGone: true});
+      expect(await getOpacity()).toBe('1');
+      expect(await getElementPosition('.p-select-wrapper__fake-option--highlighted')).toBe(1);
+
+      await select.press('Enter');
+      await waitForEventCallbacks();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition('.p-select-wrapper__fake-option--selected')).toBe(1);
+
+      // 2 x arrow up
+      await select.press('ArrowUp');
+      await select.press('ArrowUp');
+      await waitForEventCallbacks();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', {isGone: true})
+      expect(await getOpacity()).toBe('1');
+      expect(await getElementPosition('.p-select-wrapper__fake-option--highlighted')).toBe(2);
+
+      // 1 x arrow down
+      await select.press('ArrowDown');
+      await waitForEventCallbacks();
+      expect(await getElementPosition('.p-select-wrapper__fake-option--highlighted')).toBe(0);
+
+      // Space
+      await select.press(' ');
+      await waitForEventCallbacks();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition('.p-select-wrapper__fake-option--selected')).toBe(0);
+
     });
   });
 });
