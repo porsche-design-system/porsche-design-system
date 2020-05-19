@@ -2,6 +2,14 @@
 
 ## Design
 
+### [1.5.0] (2020-05-19)
+
+**Fixed**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Various structural bugfixes  |  |
+
 ### [1.4.0] (2020-05-14)
 
 **Added**

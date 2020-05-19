@@ -124,7 +124,7 @@ isCurrentBranchMasterBranch() {
 
 P_CURRENT_BRANCH="${GITHUB_REF:11}"
 P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-P_LATEST_STABLE_SKETCH_VERSION="1.4.0"
+P_LATEST_STABLE_SKETCH_VERSION="1.5.0"
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
