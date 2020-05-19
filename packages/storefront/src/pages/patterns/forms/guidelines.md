@@ -176,10 +176,10 @@ Depending on the viewport you're designing for you should stick to slightly diff
 | Viewport | Range | Total max. width of the form | Min. form top / bottom spacing (A) | Section spacing (B) |  Min. vertical/horizontal form field spacing (C) |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | **XS** | 320-759 px | 12 grid columns | 48/64 px | 40 px | 16 px |
-| **S** | 760-999 px | 10 grid columns | 56/72 px | 40 px | 16 px |
+| **S** | 760-999 px | 10 grid columns | 48/64 px | 40 px | 16 px |
 | **M** | 1000-1299 px | 8 grid columns | 64/80 px | 48 px | 16 px |
-| **L** | 1300-1759 px  | 6 grid columns | 72/88 px | 48 px | 16 px |
-| **XL** | 1760 px or larger | 6 grid columns | 80/96 px | 48 px | 16 px |
+| **L** | 1300-1759 px  | 6 grid columns | 64/80 px | 48 px | 16 px |
+| **XL** | 1760 px or larger | 6 grid columns | 64/80 px | 48 px | 16 px |
 
 As for the smallest grouped element within a form – label and form field – we recommend using 4 px spacing. This is also preset in the Porsche Design System form elements.
   
