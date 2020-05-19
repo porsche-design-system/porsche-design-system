@@ -1,7 +1,6 @@
 import {
   getAttributeFromHandle,
-  getBoxShadow,
-  getClassFromHandle, getInnerHTMLFromShadowRoot,
+  getClassFromHandle, getElementStyle, getInnerHTMLFromShadowRoot,
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
@@ -200,11 +199,11 @@ describe('select-wrapper', () => {
       </p-select-wrapper>`);
 
       const fakeSelect = await getFakeSelect();
-      const initialBoxShadow = await getBoxShadow(fakeSelect);
+      const initialBoxShadow = await getElementStyle(fakeSelect, 'boxShadow');
 
       await fakeSelect.hover();
 
-      expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', true)).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake select when label text is hovered', async () => {
@@ -219,11 +218,11 @@ describe('select-wrapper', () => {
 
       const fakeSelect = await getFakeSelect();
       const labelText = await selectNode('p-select-wrapper >>> .p-select-wrapper__label-text');
-      const initialBoxShadow = await getBoxShadow(fakeSelect);
+      const initialBoxShadow = await getElementStyle(fakeSelect, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', true)).not.toBe(initialBoxShadow);
     });
   });
 
@@ -270,13 +269,11 @@ describe('select-wrapper', () => {
     `);
       const select = await selectNode('select');
       const fakeOptionList = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
-      const getOpacity = async () => await fakeOptionList.evaluate((el: HTMLElement) => {
-        const style = getComputedStyle(el);
-        return style.opacity;
-      });
+      const getOpacity = () => getElementStyle(fakeOptionList, 'opacity');
       expect(await getOpacity()).toBe('0');
 
       await select.click();
+      await waitForSelector(fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', {isGone: true});
       expect(await getOpacity()).toBe('1');
     });
 
