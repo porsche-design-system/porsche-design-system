@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <main v-if="isStandalone" id="app-standalone">
+    <router-view/>
+  </main>
+  <div v-else id="app">
     <div class="content">
       <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <div>
@@ -45,6 +48,10 @@
     public get isMenuActive(): boolean {
       return this.$store.getters.isMenuActive;
     }
+
+    public get isStandalone(): boolean {
+      return this.$route.meta.standalone;
+    }
   }
 </script>
 
@@ -71,8 +78,16 @@
     margin-top: $p-layout-small;
   }
 
+  .spacing-mr-8 {
+    margin-right: $p-layout-small;
+  }
+
   .spacing-mt-16 {
     margin-top: $p-layout-medium;
+  }
+
+  .spacing-mt-24 {
+    margin-top: $p-spacing-24;
   }
 
   .spacing-mt-32 {
@@ -83,6 +98,35 @@
     margin-right: $p-layout-large;
   }
 
+  .spacing-mt-48 {
+    margin-top: $p-layout-x-large;
+  }
+
+  .spacing-mt-56 {
+    margin-top: $p-spacing-56;
+  }
+
+  .spacing-mt-80 {
+    margin-top: $p-layout-xx-large;
+  }
+
+  // padding
+  .spacing-pt-8 {
+    padding-top: $p-layout-small;
+  }
+
+  .spacing-pr-8 {
+    padding-right: $p-layout-small;
+  }
+
+  .spacing-pb-8 {
+    padding-bottom: $p-layout-small;
+  }
+
+  .spacing-pl-8 {
+    padding-left: $p-layout-small;
+  }
+
   .divider-spacing-small {
       margin: $p-spacing-24 0;
   }
@@ -90,6 +134,166 @@
   @include p-breakpoint('m') {
     .spacing-mt-0-min-m {
       margin-top: 0;
+    }
+  }
+
+  // form top spacing
+  .form-top-spacing {
+    margin-top: $p-spacing-48;
+
+    @include p-breakpoint('m') {
+      margin-top: $p-spacing-64;
+    }
+  }
+
+  // form bottom spacing
+  .form-bottom-spacing {
+    padding-bottom: $p-spacing-64;
+
+    @include p-breakpoint('m') {
+      padding-bottom: $p-spacing-80;
+    }
+  }
+
+  // form section and fieldset spacing
+  .form-section-spacing {
+    margin-top: $p-spacing-40;
+
+    @include p-breakpoint('m') {
+      margin-top: $p-spacing-48;
+    }
+  }
+
+  // form row spacing
+  .form-row-spacing {
+    margin-top: $p-spacing-16;
+    @include p-breakpoint('xs') {
+      &--xs {
+        margin-top: $p-spacing-16;
+      }
+      &--zero-xs {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('s') {
+      &--s {
+        margin-top: $p-spacing-16;
+      }
+      &--zero-s {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('m') {
+      &--m {
+        margin-top: $p-spacing-16;
+      }
+      &--zero-m {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('l') {
+      &--l {
+        margin-top: $p-spacing-16;
+      }
+      &--zero-l {
+        margin-top: 0;
+      }
+    }
+
+    @include p-breakpoint('xl') {
+      &--xl {
+        margin-top: $p-spacing-16;
+      }
+      &--zero-xl {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // form grid
+  .form-grid-item-container {
+    margin-left: - $p-spacing-8;
+    margin-right: - $p-spacing-8;
+  }
+
+  .form-grid-item {
+    padding-left: $p-spacing-8;
+    padding-right: $p-spacing-8;
+  }
+
+  // form item
+  .form-item-width {
+    &--full {
+      width: 100%;
+    }
+    &--auto {
+      width: auto;
+    }
+
+    @include p-breakpoint('xs') {
+      &--full-xs {
+        width: 100%;
+      }
+      &--auto-xs {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('s') {
+      &--full-s {
+        width: 100%;
+      }
+      &--auto-s {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('m') {
+      &--full-m {
+        width: 100%;
+      }
+      &--auto-m {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('l') {
+      &--full-l {
+        width: 100%;
+      }
+      &--auto-l {
+        width: auto;
+      }
+    }
+
+    @include p-breakpoint('xl') {
+      &--full-xl {
+        width: 100%;
+      }
+      &--auto-xl {
+        width: auto;
+      }
+    }
+  }
+
+  .form-fieldset {
+    display: block;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-block-start: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    padding-block-end: 0;
+
+    legend {
+      display: block;
+      font-weight: $p-font-weight-semibold;
     }
   }
 </style>
