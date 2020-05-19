@@ -2,8 +2,8 @@ import { Components } from '../../src';
 import PIcon = Components.PIcon;
 import {
   addEventListener,
-  getAttributeFromHandle, getBoxShadow,
-  getClassFromHandle, getClassListFromHandle, initAddEventListener,
+  getAttributeFromHandle,
+  getClassFromHandle, getClassListFromHandle, getElementStyle, initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
@@ -283,11 +283,11 @@ describe('Text Field Wrapper', () => {
       `);
 
       const fakeInput = await getFakeInput();
-      const initialBoxShadow = await getBoxShadow(fakeInput);
+      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await fakeInput.hover();
 
-      expect(await getBoxShadow(fakeInput, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', true)).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
@@ -300,11 +300,11 @@ describe('Text Field Wrapper', () => {
 
       const fakeInput = await getFakeInput();
       const labelText = await selectNode('p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
-      const initialBoxShadow = await getBoxShadow(fakeInput);
+      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeInput, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', true)).not.toBe(initialBoxShadow);
     });
   });
 });
