@@ -30,7 +30,7 @@ The indeterminate state is only a visual state and cannot be achieved by direct 
 The squared box is used as a typical Checkbox indicator and can have different states, depending on whether it's checked or not.
 
 ### Label
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two)
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two)
 
 ### Validation and error
 Contrary to Radio Buttons, each Checkbox item can have its own validation message.

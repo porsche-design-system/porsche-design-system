@@ -24,7 +24,7 @@ All Radio Buttons are available in the following states:
 A circle is typically used to indicate a Radio Button selection.
 
 ### Label
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Validation and error
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
