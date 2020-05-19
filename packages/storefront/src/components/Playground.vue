@@ -67,10 +67,6 @@
     public theme: Theme = 'light';
     public markup = '';
 
-    public get isStandalone(): boolean {
-      return this.$route.meta.standalone;
-    }
-
     public switchTheme(theme: Theme): void {
       this.theme = theme;
     }
