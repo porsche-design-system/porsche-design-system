@@ -12,14 +12,6 @@ const router = new Router({
       component: () => import('@/views/Home.vue')
     },
     {
-      path: '/web',
-      redirect: { name: 'home' }
-    },
-    {
-      path: '/web/*',
-      redirect: { name: 'home' }
-    },
-    {
       path: '/404',
       name: '404',
       component: () => import('@/views/NotFound.vue')
@@ -35,19 +27,14 @@ const router = new Router({
       component: () => import('@/views/Page.vue')
     },
     {
-      path: '/components/:category/:story',
-      name: 'story',
-      component: () => import('@/views/Story.vue')
-    },
-    {
       path: '/patterns/:category/:pattern',
       name: 'pattern',
       component: () => import('@/views/Pattern.vue'),
-      meta: { standalone: true }
+      meta: {standalone: true}
     },
     {
       path: '*',
-      redirect: { name: '404' }
+      redirect: {name: '404'}
     }
   ]
 });
@@ -62,8 +49,8 @@ router.afterEach(async () => {
   // workaround for open issue(s) to set vue router scroll behaviour to other than standard body element
   // see: https://github.com/vuejs/vue-router/pull/2780
   const scrollElement = document.querySelector('.main');
-  if(scrollElement !== null) {
-    scrollElement.scrollTo(0,0);
+  if (scrollElement !== null) {
+    scrollElement.scrollTo(0, 0);
   }
 });
 

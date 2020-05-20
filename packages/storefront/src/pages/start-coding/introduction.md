@@ -100,7 +100,7 @@ If you're using web components in a static website, the following page setup is 
 
 ### SCSS utils
 
-SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/scss-utils/introduction) for further information.
+SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
 
 --- 
 

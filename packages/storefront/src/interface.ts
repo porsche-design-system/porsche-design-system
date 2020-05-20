@@ -1,11 +1,14 @@
-import {EsModuleComponent} from 'vue/types/options';
+import { EsModuleComponent } from 'vue/types/options';
 
 export interface StorefrontConfig {
-  pages: Pages;
-  stories: Stories;
+  [category: string]: {
+    [page: string]: {
+      [tab: string]: ComponentListImport;
+    } | ComponentListImport;
+  };
 }
 
-export type ComponentListImport =  Array<() => Promise<EsModuleComponent>>;
+export type ComponentListImport = Array<() => Promise<EsModuleComponent>>;
 
 export interface Pages {
   [category: string]: {

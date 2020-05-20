@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { getFiles } from './utils';
 
-const updateDependencyPaths = (str: string): string => str.replace(/\([.\/]*(.*?)\)/g, '(#/components/$1)');
+const updateDependencyPaths = (str: string): string => str.replace(/\(.*\/(.*?)\)/g, '(#/components/$1)');
 const removeGraph = (str: string): string => str.replace(/### Graph\s+```.*```/gs, '');
 const removeGenerator = (str: string): string => str.replace(/----------------------------------------------\s+\*Built with.*/g, '');
 const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');

@@ -14,6 +14,7 @@
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
   },
   "dependencies": {
+    "change-case": "^4.1.1",
     "core-js": "^3.6.5",
     "js-beautify": "^1.11.0",
     "lodash": "^4.17.15",
