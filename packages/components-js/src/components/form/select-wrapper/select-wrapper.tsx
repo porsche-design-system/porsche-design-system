@@ -288,16 +288,21 @@ export class SelectWrapper {
           break;
         case 'Escape' || 'Esc':
           this.fakeOptionListHidden = true;
+          this.optionHighlighted = this.optionSelected;
           break;
         case 'PageUp':
           e.preventDefault();
-          this.optionHighlighted = 0;
-          this.handleScroll();
+          if(!this.fakeOptionListHidden) {
+            this.optionHighlighted = 0;
+            this.handleScroll();
+          }
           break;
         case 'PageDown':
           e.preventDefault();
-          this.optionHighlighted = this.options.length-1;
-          this.handleScroll();
+          if(!this.fakeOptionListHidden) {
+            this.optionHighlighted = this.options.length - 1;
+            this.handleScroll();
+          }
           break;
         default:
           this.searchOptions();

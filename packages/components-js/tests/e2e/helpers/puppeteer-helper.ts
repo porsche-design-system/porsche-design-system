@@ -19,6 +19,13 @@ export const getElementStyle = (element: ElementHandle, opts: string, transition
     return style[opts];
   }, opts, transition);
 
+export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el:Element, selector: string) => {
+  let option: ChildNode = el.querySelector(selector);
+  let pos = 0;
+  while((option = option.previousSibling) !== null) pos++;
+  return pos;
+}, selector);
+
 // Node Context
 
 export const getPropertyFromHandle = (node: ElementHandle, prop: string) => node.getProperty(prop).then(x => x.jsonValue());
