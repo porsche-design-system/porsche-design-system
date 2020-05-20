@@ -22,13 +22,13 @@
 
 ### Used by
 
- - [p-button](#/components/action/button)
- - [p-button-pure](#/components/action/button-pure)
- - [p-checkbox-wrapper](#/components/form/checkbox-wrapper)
- - [p-link](#/components/navigation/link)
- - [p-link-pure](#/components/navigation/link-pure)
- - [p-link-social](#/components/navigation/link-social)
- - [p-radio-button-wrapper](#/components/form/radio-button-wrapper)
- - [p-select-wrapper](#/components/form/select-wrapper)
- - [p-text-field-wrapper](#/components/form/text-field-wrapper)
- - [p-textarea-wrapper](#/components/form/textarea-wrapper)
+ - [p-button](#/components/button)
+ - [p-button-pure](#/components/button-pure)
+ - [p-checkbox-wrapper](#/components/checkbox-wrapper)
+ - [p-link](#/components/link)
+ - [p-link-pure](#/components/link-pure)
+ - [p-link-social](#/components/link-social)
+ - [p-radio-button-wrapper](#/components/radio-button-wrapper)
+ - [p-select-wrapper](#/components/select-wrapper)
+ - [p-text-field-wrapper](#/components/text-field-wrapper)
+ - [p-textarea-wrapper](#/components/textarea-wrapper)
