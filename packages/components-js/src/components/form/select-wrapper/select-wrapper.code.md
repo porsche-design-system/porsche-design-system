@@ -28,7 +28,7 @@ A `label` is a caption which informs the user what information a particular form
         <option value="AD">Andorra</option>
         <option value="AO">Angola</option>
         <option value="AI">Anguilla</option>
-        <option value="AQ">Antarctica</option>
+        <option value="AQ" disabled>Antarctica</option>
         <option value="AG">Antigua and Barbuda</option>
         <option value="AR">Argentina</option>
         <option value="AM">Armenia</option>
