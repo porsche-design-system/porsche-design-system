@@ -1,18 +1,13 @@
 # Updates 
 
-### [1.5.0] (2020-05-20)
-
-**Added**
-
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | Extended Description text components in Text Field, Textarea and Select |  |
+### [1.4.1] (2020-05-20)
 
 **Fixed**
 
 Type | Web Library | Basic Library |
 |---|---|---|
 Components | Various structural bugfixes  |  |
+Components | Extended Description text components in Text Field, Textarea and Select |  |
 
 ### [1.4.0] (2020-05-14)
 
