@@ -1,4 +1,5 @@
-# Angular - Sample integration
+# Angular
+## Sample integration
 
 You can find the repository of the angular example project here: [Sample integration angular](https://github.com/porscheui/sample-integration-angular)
 

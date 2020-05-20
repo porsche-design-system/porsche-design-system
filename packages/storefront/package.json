@@ -4,14 +4,14 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "browser=$(node tests/e2e/support/browser.js) && vue-cli-service test:e2e --browser $browser",
-    "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist",
     "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "concurrently -k -s \"first\" -n \"server,e2e\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/e2e/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
     "change-case": "^4.1.1",
@@ -35,7 +35,6 @@
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "^4.3.1",
-    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
     "@vue/cli-plugin-router": "^4.3.1",
     "@vue/cli-plugin-typescript": "^4.3.1",
     "@vue/cli-plugin-unit-jest": "^4.3.1",
@@ -44,7 +43,6 @@
     "@vue/eslint-config-typescript": "^5.0.1",
     "@vue/test-utils": "1.0.2",
     "concurrently": "^5.2.0",
-    "cypress-shadow-dom": "^1.0.0",
     "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
     "jasmine": "^3.5.0",
