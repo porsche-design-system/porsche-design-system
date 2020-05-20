@@ -1,4 +1,5 @@
-# Start Coding
+# Introduction
+## Start Coding
 
 Porsche Design System provides developers with a collection of Web components, Angular components and React components to build clean and high-quality frontends 
 that innately come with the latest design definitions. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process 

@@ -1,4 +1,4 @@
-import { StorefrontConfig } from '@/interface';
+import { StorefrontConfig } from './src/interface';
 
 export const config: StorefrontConfig = {
   'About': {
@@ -34,9 +34,9 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/start-coding/react.md`)
     ],
-    'Nextjs': [
+    'Next Js': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/nextjs.md`)
+      () => import(`@/pages/start-coding/next-js.md`)
     ],
     'Gatsby': [
       // @ts-ignore
@@ -107,33 +107,25 @@ export const config: StorefrontConfig = {
     'Scss': {
       'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/scss-utils/introduction.md`)
+        () => import(`@/pages/utilities/scss/introduction.md`)
       ],
       'Variables': [
         // @ts-ignore
-        () => import(`@/pages/scss-utils/variables.md`)
+        () => import(`@/pages/utilities/scss/variables.md`)
       ],
       'Mixins': [
         // @ts-ignore
-        () => import(`@/pages/scss-utils/mixins.md`)
+        () => import(`@/pages/utilities/scss/mixins.md`)
       ],
       'Functions': [
         // @ts-ignore
-        () => import(`@/pages/scss-utils/functions.md`)
+        () => import(`@/pages/utilities/scss/functions.md`)
       ]
     },
     'Js': {
       'Introduction': [
         // @ts-ignore
-        () => import(`@/pages/scss-utils/introduction.md`)
-      ],
-      'Variables': [
-        // @ts-ignore
-        () => import(`@/pages/scss-utils/variables.md`)
-      ],
-      'Functions': [
-        // @ts-ignore
-        () => import(`@/pages/scss-utils/functions.md`)
+        () => import(`@/pages/utilities/js/introduction.md`)
       ]
     }
   },

@@ -1,4 +1,5 @@
-# React - Sample integration
+# React
+## Sample integration
 
 You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
 

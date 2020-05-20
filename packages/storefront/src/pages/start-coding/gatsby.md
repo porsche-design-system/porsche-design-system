@@ -1,4 +1,5 @@
-# Gatsby - Sample integration
+# Gatsby
+## Sample integration
 
 You can find the repository of the Gatsby example project here: [Sample integration Gatsby](https://github.com/porscheui/sample-integration-gatsby)
 
