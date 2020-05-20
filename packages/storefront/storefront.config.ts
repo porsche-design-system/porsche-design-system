@@ -45,10 +45,16 @@ export const config: StorefrontConfig = {
       ],
     },
     News: {
-      Updates: [
-        // @ts-ignore
-        () => import(`@/pages/news/updates.md`)
-      ],
+      Updates: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/pages/news/updates-design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/pages/news/updates-code.md`)
+        ]
+      },
       Versioning: [
         // @ts-ignore
         () => import(`@/pages/news/versioning.md`)
@@ -97,10 +103,16 @@ export const config: StorefrontConfig = {
       ]
     },
     Patterns: {
-      Forms: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/forms.md`)
-      ]
+      Forms: {
+        Guidelines: [
+          // @ts-ignore
+          () => import(`@/pages/patterns/forms/guidelines.md`)
+        ],
+        Resources: [
+          // @ts-ignore
+          () => import(`@/pages/patterns/forms/resources.md`)
+        ]
+      }
     },
     'Scss Utils': {
       Introduction: [

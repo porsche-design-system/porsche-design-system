@@ -1,13 +1,20 @@
 <template>
-  <Markdown>
-    <component :is="component" v-for="(component, index) in components" :key="index"></component>
-  </Markdown>
+  <div>
+    <nav class="tabs" v-if="hasTabs">
+      <p-text size="inherit" tag="div" weight="thin" class="tab" v-for="(tab, index) in tabs" :key="index">
+        <router-link :to="getTabLink(tab)">{{ tab }}</router-link>
+      </p-text>
+    </nav>
+    <Markdown>
+      <component :is="component" v-for="(component, index) in components" :key="index"></component>
+    </Markdown>
+  </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
   import { config as storefrontConfig } from '@/../storefront.config';
-  import { decodeUrl } from '@/services/utils';
+  import { decodeUrl, encodeUrl } from '@/services/utils';
   import Markdown from '@/components/Markdown.vue';
   import { ComponentListImport, Pages } from '@/interface';
   import { Component as ComponentType } from 'vue/types/options';
@@ -20,6 +27,20 @@
   export default class Page extends Vue {
     public components: ComponentType[] = [];
 
+    public get hasTabs(): boolean {
+      return this.tabs.length > 0;
+    }
+
+    public get tabs(): string[] {
+      const page = this.config && this.config[this.category] && this.config[this.category][this.page];
+
+      if (!page || Array.isArray(page)) {
+        return [];
+      }
+
+      return Object.keys(page);
+    }
+
     private get category(): string {
       return decodeUrl(this.$route.params.category);
     }
@@ -28,12 +49,30 @@
       return decodeUrl(this.$route.params.page);
     }
 
+    private get tab(): string {
+      return decodeUrl(this.$route.hash.substring(1));
+    }
+
     private get config(): Pages {
       return storefrontConfig.pages;
     }
 
     private get pages(): ComponentListImport {
-      return this.config?.[this.category]?.[this.page];
+      const page = this.config && this.config[this.category] && this.config[this.category][this.page];
+
+      if (!page || Array.isArray(page )) {
+        return page;
+      }
+
+      return page[this.tab];
+    }
+
+    public getTabLink(name: string): string {
+      return `#${encodeUrl(name)}`;
+    }
+
+    public getFirstTabName(): string {
+      return this.tabs[0];
     }
 
     @Watch('$route')
@@ -60,8 +99,54 @@
       await this.$store.dispatch('toggleLoadingAsync', false);
     }
 
-    private redirect(): void {
-      this.$router.replace({name: `404`});
+    private async redirect(): Promise<void> {
+      if (this.hasTabs) {
+        await this.$router.replace(this.getTabLink(this.getFirstTabName()));
+      } else {
+        await this.$router.replace({name: `404`});
+      }
     }
   }
 </script>
+
+<style scoped lang="scss">
+  @import "~@porsche-design-system/scss-utils/index";
+
+  .tabs {
+    display: flex;
+    margin-bottom: $p-spacing-64;
+    border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+
+    .tab {
+      @include p-type-scale($p-font-size-28);
+
+      &:not(:last-child) {
+        margin-right: $p-spacing-40;
+      }
+
+      a {
+        display: block;
+        padding-bottom: $p-spacing-8;
+        border-bottom: 3px solid transparent;
+        text-decoration: none;
+        color: $p-color-theme-light-neutral-contrast-medium;
+        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+        &:hover {
+          color: $p-color-theme-light-state-hover;
+        }
+
+        &:focus {
+          outline: 1px solid $p-color-theme-light-state-focus;
+          outline-offset: 4px;
+        }
+
+        &.router-link-exact-active {
+          cursor: default;
+          color: $p-color-theme-light-default;
+          border-bottom-color: $p-color-theme-light-brand;
+        }
+      }
+    }
+  }
+</style>
