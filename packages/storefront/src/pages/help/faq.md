@@ -19,7 +19,7 @@ The Porsche Design System Sketch library is created and maintained within a priv
 All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall business goals and the actual needs of the teams. The upcoming release content is accessible in the [quarterly roadmap](#/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
 
 ## What happens with contents marked as deprecated?
-Please have a look at in our [versioning and release strategy](#/news/versioning).
+Please take a look at our [versioning and release strategy](#/news/versioning).
 
 ## How to handle older versions?
 If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/ui-kit-react`–`v0`), we highly recommend updating to the latest Porsche Design System release if possible. If you have to stick to `v0` components because they do not exist in the new version, you can include both libraries in parallel.
