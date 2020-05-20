@@ -10,16 +10,16 @@ We want to enable continuous communication within the community. Therefore we of
 
 ## How can I access the Porsche Design System files?
 **Developer**  
-The scource code of the Porsche Design System is stored and developed within a private GitHub repository and distributed via a private NPM registry. Both managed by the Porsche Design System team. Access to the private NPM registry can be requested using our online subscription form.  
+The scource code of the Porsche Design System is stored and developed within a private GitHub repository and distributed via a private NPM registry. Both managed by the Porsche Design System team. If you are not yet registered, please sign up via [Start Coding](#/start-coding/introduction).
 
 **Designer**  
-The Porsche Design System Sketch library is created and maintained within a private Abstract project. Access can be also requested using our online subscription form.  
+The Porsche Design System Sketch library is created and maintained within a private Abstract project. If you are not yet registered, please sign up via [Start Designing](#/start-designing/introduction).
 
 ## What is the release strategy and how are the issues priorized?
 All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall business goals and the actual needs of the teams. The upcoming release content is accessible in the [quarterly roadmap](#/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
 
 ## What happens with contents marked as deprecated?
-Contents marked as deprecated in `v0` releases of the Porsche Design System won't be deleted and can still be used, but without any guarantee that those patterns still fulfil the latest design definitions or browser compatibility. If possible, we recommend replacing those patterns with new ones from release `v1` or copying the ones you still need over into your application and maintaining them yourself.
+Please have a look at in our [versioning and release strategy](#/news/versioning).
 
 ## How to handle older versions?
 If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/ui-kit-react`–`v0`), we highly recommend updating to the latest Porsche Design System release if possible. If you have to stick to `v0` components because they do not exist in the new version, you can include both libraries in parallel.
