@@ -92,6 +92,7 @@
   &__label {
     display: block;
     position: relative;
+    z-index: 1;
   }
 
   &__label-text,
@@ -219,6 +220,7 @@
   &__fake-option-list {
     @include p-text();
     position: absolute;
+    z-index: 1;
     margin: 0;
     padding: 0;
     border: 1px solid $p-color-theme-light-neutral-contrast-medium;
