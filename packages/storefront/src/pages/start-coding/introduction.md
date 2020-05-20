@@ -23,7 +23,7 @@ Those packages can be consumed by one of the following private NPM registries:
 
 If you don't have an account for one of the those NPM registries, you can easily register for the Porsche Design System NPM registry like as follows:
 
-<p-link target="_blank" href="http://eepurl.com/ghVSjH">Request a Porsche Design System npm registry account</p-link>
+<p-link target="_blank" href="https://ux.porsche.com/start-coding.html">Request a Porsche Design System npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
