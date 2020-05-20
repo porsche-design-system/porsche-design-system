@@ -14,7 +14,7 @@ describe('Story', () => {
       await vrt.test(
         'story',
         async () => {
-          await vrt.goTo('/#/components/navigation/pagination#code');
+          await vrt.goTo('/#/components/pagination#code');
           await vrt.click('.playground:nth-of-type(1) > .tabs p-text:nth-of-type(2) button');
         },
         '#app > .content > .main > .router-view'
