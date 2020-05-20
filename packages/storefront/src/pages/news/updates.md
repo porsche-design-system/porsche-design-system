@@ -2,7 +2,13 @@
 
 ## Design
 
-### [1.5.0] (2020-05-19)
+### [1.5.0] (2020-05-20)
+
+**Added**
+
+Type | Web Library | Basic Library |
+|---|---|---|
+Components | Extended Description text components in Text Field, Textarea and Select |  |
 
 **Fixed**
 
