@@ -40,6 +40,12 @@ const router = new Router({
       component: () => import('@/views/Story.vue')
     },
     {
+      path: '/patterns/:category/:pattern',
+      name: 'pattern',
+      component: () => import('@/views/Pattern.vue'),
+      meta: { standalone: true }
+    },
+    {
       path: '*',
       redirect: { name: '404' }
     }

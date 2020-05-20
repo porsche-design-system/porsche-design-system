@@ -80,7 +80,7 @@ export class CheckboxWrapper {
           </p-text>
           }
           <span class={fakeCheckboxClasses}>
-            <p-icon class={iconClasses} name={this.indeterminate ? 'minus' : 'check'} theme='dark' size='inherit' />
+            <p-icon class={iconClasses} name={this.indeterminate ? 'minus' : 'check'} theme='dark' size='inherit' aria-hidden='true' />
             <slot/>
           </span>
         </label>
