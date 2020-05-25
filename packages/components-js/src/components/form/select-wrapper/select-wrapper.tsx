@@ -256,25 +256,30 @@ export class SelectWrapper {
     this.select.addEventListener('keydown', (e: KeyboardEvent) => {
       const key = e.key;
       switch (key) {
-        case 'ArrowUp' || 'Up':
+        case 'ArrowUp':
+        case 'Up':
           e.preventDefault();
           this.fakeOptionListHidden = false;
           this.cycleFakeOptionList('up');
           break;
-        case 'ArrowDown' || 'Down':
+        case 'ArrowDown':
+        case 'Down':
           e.preventDefault();
           this.fakeOptionListHidden = false;
           this.cycleFakeOptionList('down');
           break;
-        case 'ArrowLeft' || 'Left':
+        case 'ArrowLeft':
+        case 'Left':
           e.preventDefault();
           this.cycleFakeOptionList('left');
           break;
-        case 'ArrowRight' || 'Right':
+        case 'ArrowRight':
+        case 'Right':
           e.preventDefault();
           this.cycleFakeOptionList('right');
           break;
-        case ' ' || 'Spacebar':
+        case ' ':
+        case 'Spacebar':
           e.preventDefault();
           this.fakeOptionListHidden = this.fakeOptionListHidden === false;
           if(this.fakeOptionListHidden) {
@@ -286,7 +291,8 @@ export class SelectWrapper {
           this.fakeOptionListHidden = true;
           this.setOptionSelected(this.optionHighlighted);
           break;
-        case 'Escape' || 'Esc':
+        case 'Escape':
+        case 'Esc':
           this.fakeOptionListHidden = true;
           this.optionHighlighted = this.optionSelected;
           break;
