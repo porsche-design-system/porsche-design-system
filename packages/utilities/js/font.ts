@@ -1,6 +1,3 @@
-import { rem } from './helper';
-
-
 export const font = {
 
   family: `"Porsche Next", "Arial Narrow", Arial, sans-serif`,
