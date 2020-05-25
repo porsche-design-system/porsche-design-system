@@ -226,7 +226,7 @@ describe('select-wrapper', () => {
     });
   });
 
-  fdescribe('fake drop down', () => {
+  describe('fake drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
