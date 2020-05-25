@@ -8,17 +8,18 @@ const getFocusableElements = (element: HTMLElement|ShadowRoot|Document = documen
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
-  const tabbableElementsSelector = `
-    button:not([tabindex="-1"]):not([disabled]),
-    [contenteditable]:not([tabindex="-1"]),
-    video[controls]:not([tabindex="-1"]),
-    audio[controls]:not([tabindex="-1"]),
-    [href]:not([tabindex="-1"]),
-    input:not([tabindex="-1"]):not([disabled]),
-    select:not([tabindex="-1"]):not([disabled]),
-    textarea:not([tabindex="-1"]):not([disabled]),
-    [tabindex="0"]
-  `;
+  const notTabIndexSelector = ':not([tabindex="-1"])';
+  const tabbableElementsSelector = [
+    `button${notTabIndexSelector}:not([disabled])`,
+    `[contenteditable]${notTabIndexSelector}`,
+    `video[controls]${notTabIndexSelector}`,
+    `audio[controls]${notTabIndexSelector}`,
+    `[href]${notTabIndexSelector}`,
+    `input${notTabIndexSelector}:not([disabled])`,
+    `select${notTabIndexSelector}:not([disabled])`,
+    `textarea${notTabIndexSelector}:not([disabled])`,
+    '[tabindex="0"]'
+  ].join(',');
 
   /**
    * querySelectorAll returns matching elements in DOM order
@@ -66,15 +67,15 @@ const getActiveElement = (element: HTMLElement): HTMLElement => {
 };
 
 export const improveFocusHandlingForCustomElement = (element: HTMLElement): void => {
-  const childElementContainer = element.shadowRoot ? element.shadowRoot : element;
-  element.focus = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
-    const [firstFocusableChild, ] = getFocusableElements(childElementContainer);
+  const childElementContainer = element.shadowRoot ?? element;
+  element.focus = (): void => {
+    const [firstFocusableChild] = getFocusableElements(childElementContainer);
     if (firstFocusableChild) {
       firstFocusableChild.focus();
     }
   };
 
-  element.blur = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
+  element.blur = (): void => {
     const activeElement = getActiveElement(element);
     if (activeElement && childElementContainer.contains(activeElement)) {
       activeElement.blur();
