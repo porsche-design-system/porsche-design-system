@@ -90,7 +90,7 @@ export class Icon {
     );
 
     return (
-      <Host role='img'>
+      <Host>
         <i class={iconClasses} innerHTML={this.svgContent}/>
       </Host>
     );
