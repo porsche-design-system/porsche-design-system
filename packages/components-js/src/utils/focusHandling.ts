@@ -44,14 +44,14 @@ const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = doc
 const createFocusEvent = (type: string, bubbles: boolean): FocusEvent => {
   if (typeof FocusEvent === 'function') {
     return new FocusEvent(type, { bubbles });
+  } else {
+    /**
+     * fallback for IE 11
+     */
+    const focusEvent = document.createEvent('FocusEvent');
+    focusEvent.initEvent(type, bubbles, false);
+    return focusEvent;
   }
-
-  /**
-   * fallback for IE 11
-   */
-  const focusEvent = document.createEvent('FocusEvent');
-  focusEvent.initEvent(type, bubbles, false);
-  return focusEvent;
 };
 
 const getActiveElement = (element: HTMLElement): HTMLElement => {
