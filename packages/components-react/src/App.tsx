@@ -14,6 +14,7 @@ import { Feedback } from "./pages/Feedback";
 import { Icons } from "./pages/Icons";
 import { Layout } from "./pages/Layout";
 import { Navigation } from "./pages/Navigation";
+import { StyledComponent } from './pages/StyledComponent'
 import './App.css';
 
 const App: React.FC = () => {
@@ -51,6 +52,9 @@ const App: React.FC = () => {
         <Link to="/navigation" className={'removeLinkStyle'}>
           <LinkPure>Navigation</LinkPure>
         </Link>
+        <Link to="/styledComponent" className={'removeLinkStyle'}>
+          <LinkPure>Styled Component</LinkPure>
+        </Link>
         <Divider/>
         <Switch>
           <Route path="/basic">
@@ -76,6 +80,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/navigation">
             <Navigation/>
+          </Route>
+          <Route path="/styledComponent">
+            <StyledComponent/>
           </Route>
         </Switch>
       </div>
