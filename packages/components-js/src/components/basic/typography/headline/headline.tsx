@@ -68,7 +68,7 @@ export class Headline {
   }
 
   private get hasSlottedHeadlineTag(): boolean {
-    const el = this.host.querySelector(':first-child');
+    const el: HTMLHeadingElement = this.host.querySelector(':first-child');
     return el ? el.matches('h1, h2, h3, h4, h5, h6') : false;
   }
 

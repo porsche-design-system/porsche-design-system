@@ -26,6 +26,6 @@ describe('Component <p-text>', () => {
       components: [Text],
       html: `<p-text><p>Some text</p></p-text>`,
     });
-    expect(page.root.shadowRoot.querySelector('p.p-text')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('div.p-text')).toBeTruthy();
   });
 });
