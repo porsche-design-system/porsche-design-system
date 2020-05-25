@@ -220,8 +220,6 @@
     @include p-text();
     position: absolute;
     z-index: 1;
-    margin: 0;
-    padding: 0;
     border: 1px solid $p-color-theme-light-neutral-contrast-medium;
     border-top-color: $p-color-theme-light-neutral-contrast-low;
     left: 0;
@@ -230,7 +228,6 @@
     max-height: 200px;
     overflow-y: auto;
     background-color: $p-color-theme-light-background;
-    list-style-type: none;
     scroll-behavior: smooth;
 
     // Firefox scrollbar styling

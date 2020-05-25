@@ -304,6 +304,11 @@ export class SelectWrapper {
             this.handleScroll();
           }
           break;
+        case 'Tab':
+          if(!this.fakeOptionListHidden) {
+            this.fakeOptionListHidden = true;
+          }
+          break;
         default:
           this.searchOptions();
       }
