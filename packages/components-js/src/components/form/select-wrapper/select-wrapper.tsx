@@ -338,7 +338,7 @@ export class SelectWrapper {
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) =>
       [
         (this.optgroups.length > 0 && option === option.parentNode.firstChild) &&
-        <span class={`${prefix('select-wrapper__fake-optgroup-label')}`}>{option.closest('optgroup').label}</span>,
+        <span class={`${prefix('select-wrapper__fake-optgroup-label')}`} role='presentation'>{option.closest('optgroup').label}</span>,
         <div
           id={`option-${key}`}
           role='option'
