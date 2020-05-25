@@ -16,12 +16,15 @@ describe('storefront', () => {
   const getInnerText = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('textContent')).jsonValue() as string : '';
   const getClassNames = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('className')).jsonValue() as string : '';
 
+  // TODO: split test into multiple describe/it()-blocks
   it('should navigate through configured pages', async () => {
 
     await PAGE.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
     let assertions = 0;
+    // TODO: use string array which includes pages
 
     for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
+      // TODO: pre-filter with .$()
       const [buttonElement] = await PAGE.$x(`//p-button-pure[contains(., '${category}')]`);
       await buttonElement.click();
 
@@ -50,7 +53,8 @@ describe('storefront', () => {
             assertions++;
 
             if (parseInt(index) === 0) {
-              expect(await getClassNames(tabElement)).toContain('router-link-active');
+              // TODO: add withContext() or use more it()-blocks
+              (expect(await getClassNames(tabElement)) as any).withContext(`failed because something went wrong ${page} > ${tab}`).toContain('router-link-active');
               assertions++;
             } else {
               expect(await getClassNames(tabElement)).not.toContain('router-link-active');
