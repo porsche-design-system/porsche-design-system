@@ -17,7 +17,7 @@ import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandli
   shadow: true
 })
 export class LinkPure {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -56,14 +56,14 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public componentDidLoad(): void {
-    const tagName= this.element.tagName.toLowerCase();
+    const tagName= this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
     }`;
 
-    insertSlottedStyles(this.element, style);
-    improveFocusHandlingForCustomElement(this.element);
+    insertSlottedStyles(this.host, style);
+    improveFocusHandlingForCustomElement(this.host);
     transitionListener(this.linkTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.linkTag);
       this.iconTag.style.width = `${size}em`;

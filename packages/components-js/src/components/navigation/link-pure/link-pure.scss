@@ -1,31 +1,26 @@
 @import '../../../../../../packages/scss-utils/index';
 
 @mixin p-link-pure-label-visible() {
-  position: static;
   width: 100%;
   height: auto;
   margin: 0 0 0 p-rem(4px);
   padding: 0 .125em 0 0;
   white-space: normal;
   overflow: visible;
-  clip: auto;
-  clip-path: none;
+  text-indent: 0;
 }
 
 @mixin p-link-pure-label-hidden() {
-  position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
+  margin: 0 0 0 -1px;
   padding: 0;
   white-space: nowrap;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
+  text-indent: -1px;
 }
 
 @mixin p-link-pure-size($prefix, $size) {
-
   @if $size == 'inherit' {
     font-size: inherit;
     line-height: inherit;
@@ -48,6 +43,33 @@
   display: inline-flex;
   vertical-align: top;
   position: relative !important;
+  cursor: pointer;
+}
+
+::slotted(a) {
+  display: block !important;
+  position: static !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+}
+::slotted(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  outline: transparent none !important;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
+}
+::slotted(a:focus) {
+  outline: none;
+}
+::slotted(a:focus)::before {
+  outline-offset: 1px !important;
+  outline: $p-color-theme-light-state-focus solid 2px !important;
 }
 
 .#{$p-global-class-prefix}link-pure {
