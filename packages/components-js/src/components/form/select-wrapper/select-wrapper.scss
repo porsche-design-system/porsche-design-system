@@ -245,6 +245,12 @@
       background-color: rgba(0, 0, 0, .4);
     }
 
+    &::after {
+      content: "";
+      display: block;
+      height: $p-spacing-4;
+    }
+
     &:focus {
       outline: none;
     }
