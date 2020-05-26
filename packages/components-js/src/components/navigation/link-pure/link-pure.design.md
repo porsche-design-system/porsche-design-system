@@ -67,7 +67,7 @@ The text label within a link should always be short and descriptive.
 
 ### Link Pure on images
 
-A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure to always use regular font-weight in Links Pure that are placed on images to provide legibility.
+A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure that the readability is also guaranteed on images.
 
 ### Additional subtext
 
