@@ -60,7 +60,34 @@ export class LinkPure {
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
-    }`;
+    }
+
+    /* only for IE11/Edge */
+    ${tagName} a {
+      text-decoration: none !important;
+    }
+    ${tagName} a:focus {
+      outline: none !important;
+    }
+
+    /* this hack is only needed for Safari which does not support pseudo elements in slotted context :-( */
+    ${tagName} a::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      display: block !important;
+      outline: transparent none !important;
+      transition: outline-color 0.24s ease !important;
+    }
+
+    ${tagName} a:focus::before {
+      outline-offset: 1px !important;
+      outline: #00d5b9 solid 2px !important;
+    }
+    `;
 
     insertSlottedStyles(this.host, style);
     improveFocusHandlingForCustomElement(this.host);
