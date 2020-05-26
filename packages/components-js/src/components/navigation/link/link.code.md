@@ -49,10 +49,21 @@ Choose between predefined styling variants.
 
 ---
 
-## Link wrapped with an anchor tag (e.g. for framework routing)
-If the component is used within a JS framework, it might be applied within a framework specific router component. 
-In this case the router component must be wrapped around `<p-link>`. Please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+## Link used with an anchor tag as a slot (e.g. for framework routing)
 
+The **link** component can also be used with an explicit anchor tag, in case you have to provide the link via a framework specific router.
+
+<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
+  <template v-slot={theme}>
+    <p-link :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link>
+  </template>
+</Playground>
+
+---
+
+## Link wrapped with an anchor tag (alternative for framework routing)
+
+In case the router component must be wrapped around `<p-link>`, please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
