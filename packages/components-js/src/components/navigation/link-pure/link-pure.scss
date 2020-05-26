@@ -54,18 +54,18 @@
   line-height: inherit !important;
 }
 ::slotted(a)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: block !important;
   outline: transparent none !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 ::slotted(a:focus) {
-  outline: none;
+  outline: none !important;
 }
 ::slotted(a:focus)::before {
   outline-offset: 1px !important;
@@ -100,6 +100,10 @@
     display: block;
     outline: transparent none;
     transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+  }
+
+  &:not(a)::before {
+    pointer-events: none;
   }
 
   &::-moz-focus-inner {
