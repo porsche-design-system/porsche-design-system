@@ -91,11 +91,11 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Link used with an anchor tag as a slot
 
-The link-pure component can also be used with an explicit anchor tag, in case you have to provide the link via a framework specific router.
+The **link-pure** component can also be used with an explicit anchor tag, in case you have to provide the link via a framework specific router.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <p-link-pure :theme="theme" hide-label="{ base: true, l: false }"><a href="https://www.porsche.com">Some label</a></p-link-pure>
+    <p-link-pure :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link-pure>
   </template>
 </Playground>
 
@@ -103,7 +103,7 @@ The link-pure component can also be used with an explicit anchor tag, in case yo
 
 ## Link wrapped within an anchor tag
 
-In case the link-pure component must be wrapped within an anchor tag, please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+In case the **link-pure** component must be wrapped within an anchor tag, please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
