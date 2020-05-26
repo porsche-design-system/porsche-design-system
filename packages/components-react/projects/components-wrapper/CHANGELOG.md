@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. <h1>-<h6> or <p>, <blockquote>, etc.) directly as slotted content.
+- Possibility to include anchor tags directly as slots of `p-link`, `p-link-pure` and `p-link-social` 
 
 ### Fixed
 - Minor accessibility improvements of `icons` and `text-field-wrapper`
