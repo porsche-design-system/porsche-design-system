@@ -1,2 +1,2 @@
-export * from './mixins';
-export * from './variables';
+export * from './mixins/index';
+export * from './variables/index';
