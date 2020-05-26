@@ -24,17 +24,17 @@ export const whatever = (minBreakpoint: breakpoints, maxBreakpoint: breakpoints)
   return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`
 };
 //TODO: like whatever! Implement CSS Types
-export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): MediaQueryList | undefined => {
+export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): string => {
   if (minBreakpoint && maxBreakpoint) {
     if (breakpointValue[minBreakpoint] && breakpointValue[maxBreakpoint]) {
-      return window.matchMedia(`(min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`);
+      return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`;
     }
-    return window.matchMedia(`(min-width: ${minBreakpoint}px) and (max-width: ${maxBreakpoint}px)`);
+    return `@media (min-width: ${minBreakpoint}px) and (max-width: ${maxBreakpoint}px)`;
   } else if (minBreakpoint) {
     if (breakpointValue[minBreakpoint]) {
-      return window.matchMedia(`(min-width: ${breakpointValue[minBreakpoint]}px)`);
+      return `@media (min-width: ${breakpointValue[minBreakpoint]}px)`;
     }
-    return window.matchMedia(`(min-width: ${minBreakpoint}px)`);
+    return `@media (min-width: ${minBreakpoint}px)`;
   }
 };
 
