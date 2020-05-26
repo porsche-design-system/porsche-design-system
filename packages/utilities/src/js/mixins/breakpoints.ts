@@ -1,13 +1,13 @@
-type breakpoints = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+export type breakpoints = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
-export const breakpointValue = {
+export const breakpointValue:{[key in breakpoints]: number} = {
   xxs: 0,
   xs: 480,
   s: 760,
   m: 1000,
   l: 1300,
   xl: 1760,
-  xxl: 1920
+  xxl: 1920,
 };
 
 export const breakpoint = {
@@ -20,7 +20,11 @@ export const breakpoint = {
   xxl: `${breakpointValue.xxl}px`
 };
 
-export const mediaQuery = (minBreakpoint: breakpoints | number, maxBreakpoint?: breakpoints | number): MediaQueryList => {
+export const whatever = (minBreakpoint: breakpoints, maxBreakpoint: breakpoints) => {
+  return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`
+};
+//TODO: like whatever! Implement CSS Types
+export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): MediaQueryList | undefined => {
   if (minBreakpoint && maxBreakpoint) {
     if (breakpointValue[minBreakpoint] && breakpointValue[maxBreakpoint]) {
       return window.matchMedia(`(min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`);

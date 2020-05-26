@@ -1,25 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, spacing } from '@porsche-design-system/utilities';
-import { font, text } from '@porsche-design-system/utilities';
+import { font } from '@porsche-design-system/utilities';
+import { headline } from '@porsche-design-system/utilities';
 
 const Div = styled.div`
   background-color: ${color.darkTheme.background};
 `;
 
+const Headline1 = styled.h1`
+  ${headline['1']}
+`;
+
 const P = styled.p`
   color: ${color.darkTheme.default};
-  font-size: ${text.size.xlarge};
+  font-size: ${font.size.xLarge};
   font-weight: ${font.weight.bold};
   font-family: ${font.family};
-  margin-top: ${spacing.twentyFour};
-  margin-left: ${spacing.sixteen};
+  margin-top: ${spacing['24']};
+  margin-left: ${spacing['16']};
 `;
 
 export function StyledComponent() {
   return (
     <div>
-      <p>Iam unstyled </p>
+      <Headline1>Iam unstyled </Headline1>
       <Div>
         <P>Look at me iam styled</P>
         <P>Second styled Paragraph with spacing</P>
