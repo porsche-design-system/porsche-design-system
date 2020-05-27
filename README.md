@@ -135,7 +135,10 @@ _Enter_. Afterwards execute automated tests to make sure application still works
     1. `cd packages/components-angular`
     1. `./node_modules/.bin/ng update`
     1. `./node_modules/.bin/ng update @angular/cli @angular/core`
+    1. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js` which indicates whether `typescript` can be updated for Angular packages or not.
     1. `exit` to leave the docker container
+1. Run `./docker.sh run-install`  
+1. Run `./docker.sh run-build`  
 1. Run `./docker.sh run-test`  
 As final check start application locally and have a look at it.
 1. Run `./docker.sh run-start`
