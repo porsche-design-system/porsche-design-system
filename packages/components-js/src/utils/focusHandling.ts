@@ -8,16 +8,17 @@ const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = doc
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
-  const notTabIndexSelector = ':not([tabindex="-1"])';
+  const notTabIndex = ':not([tabindex="-1"])';
+  const notDisabled = ':not([disabled])';
   const tabbableElementsSelector = [
-    `button${notTabIndexSelector}:not([disabled])`,
-    `[contenteditable]${notTabIndexSelector}`,
-    `video[controls]${notTabIndexSelector}`,
-    `audio[controls]${notTabIndexSelector}`,
-    `[href]${notTabIndexSelector}`,
-    `input${notTabIndexSelector}:not([disabled])`,
-    `select${notTabIndexSelector}:not([disabled])`,
-    `textarea${notTabIndexSelector}:not([disabled])`,
+    `button${notTabIndex}${notDisabled}`,
+    `[contenteditable]${notTabIndex}`,
+    `video[controls]${notTabIndex}`,
+    `audio[controls]${notTabIndex}`,
+    `[href]${notTabIndex}`,
+    `input${notTabIndex}${notDisabled}`,
+    `select${notTabIndex}${notDisabled}`,
+    `textarea${notTabIndex}${notDisabled}`,
     '[tabindex="0"]'
   ].join(',');
 
