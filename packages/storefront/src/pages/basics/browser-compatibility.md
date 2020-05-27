@@ -6,7 +6,7 @@ To ensure visual and functional compatibility, we do automatic and manual testin
 
 ### Supported Browsers & Platforms:
 
-We support the latest stable version and the discontinued predecessor, to bridge the temportal update transition period.
+We support the **latest stable version and the discontinued predecessor**, to bridge the temportal update transition period.
 
 * **Chrome** on Windows and macOS, Android and iOS ([see version history](https://en.wikipedia.org/wiki/Google_Chrome_version_history))
 * **Microsoft Edge Chromium** on Windows ([see version history](https://en.wikipedia.org/wiki/Microsoft_Edge#Release_history))
