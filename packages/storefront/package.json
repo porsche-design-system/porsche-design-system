@@ -21,7 +21,7 @@
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
-    "vue-router": "^3.1.6",
+    "vue-router": "^3.3.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "@types/lodash": "^4.14.150",
     "@types/node": "~14.0.1",
     "@types/prismjs": "^1.16.0",
-    "@types/puppeteer": "^2.1.0",
+    "@types/puppeteer": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "^4.3.1",
@@ -47,7 +47,7 @@
     "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
     "jasmine": "^3.5.0",
-    "puppeteer": "^3.0.4",
+    "puppeteer": "^3.1.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "ts-node": "^8.10.1",
