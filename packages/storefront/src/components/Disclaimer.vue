@@ -14,7 +14,7 @@ export default class Disclaimer extends Vue {}
 </script>
 
 <style scoped lang="scss">
-@import '~@porsche-design-system/utilities/scss/index';
+@import '~@porsche-design-system/utilities/src/scss/index';
 
 .disclaimer {
   padding: $p-spacing-8 $p-spacing-32;
