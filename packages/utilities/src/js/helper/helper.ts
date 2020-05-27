@@ -10,23 +10,26 @@ export const typeScale = (size: string) => ({
 
 export const getFontSizeRem = (fontSize: string): string => {
   if (fontSize.endsWith('rem')) {
-    return fontSize
+    const fontSizeLength = getFontSizeLength(fontSize);
+    if (fontSizeLength != -1) {
+      return fontSize
+    } else {return 'FontSize has to be a length and unit, e.g. 12px'}
   } else if (fontSize.endsWith('px')) {
     const fontSizeLength = getFontSizeLength(fontSize);
     if (fontSizeLength != -1) {
       return rem(fontSizeLength)
-    } else {return 'FontSize has to be a length and number, e.g. 12px'}
+    } else {return 'FontSize has to be a length and unit, e.g. 12px'}
   }
   return 'fontSize() only accepts rem or px as parameter'
 };
 
-export const convertLineHeight = (fontSize: string): number | string => {
+export const convertLineHeight = (fontSize: string): number => {
   let fontSizePx = '';
   if (fontSize.endsWith('rem')) {
     fontSizePx = remToPx(fontSize);
   } else if (fontSize.endsWith('px')) {
     fontSizePx = fontSize;
-  } else {return 'font size needs to be px or rem'}
+  } else {Error('font size needs to be px or rem')}
 
   const fontSizeLength = stripUnit(fontSizePx);
   const e = 2.71828;
@@ -42,7 +45,7 @@ export const convertLineHeight = (fontSize: string): number | string => {
   return fittedLineHeightPx / fontSizeLength
 };
 
-const getFontSizeLength = (fontSize: string): number => {
+export const getFontSizeLength = (fontSize: string): number => {
   let fontSizeLengthStr = '';
   if (fontSize.endsWith('rem')) {
     fontSizeLengthStr = fontSize.slice(0, -3);
@@ -51,7 +54,7 @@ const getFontSizeLength = (fontSize: string): number => {
   }
 
   const fontSizeLength = parseFloat(fontSizeLengthStr);
-  if (isNaN(fontSizeLength)) {
+  if (!isNaN(fontSizeLength)) {
     return fontSizeLength
   } else return -1
 };
