@@ -20,7 +20,7 @@ Assuming a proper SCSS compiler is setup within your project: Simply import the 
 at the place where you want to make use of the Porsche Design System SCSS utils.
 
 ```
-@import '~@porsche-design-system/utilities/scss/index';
+@import '~@porsche-design-system/utilities/src/scss/index';
 ```
 
 If your SCSS compiler does not support '~' (tilde)) imports, you can of course also import it via a path from your node_modules.
@@ -32,7 +32,7 @@ If your SCSS compiler does not support '~' (tilde)) imports, you can of course a
 A sample usage might look like as follows:
 
 ```
-@import '~@porsche-design-system/utilities/scss/index';
+@import '~@porsche-design-system/utilities/src/scss/index';
 
 #app {
   color: $p-color-theme-light-default;

@@ -94,7 +94,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss/index';
+  @import '~@porsche-design-system/utilities/src/scss/index';
 
   .tabs {
     display: flex;

@@ -64,7 +64,7 @@ Predefined colors associated with its theme are available.
   }
 </script>
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss/index';
+  @import '~@porsche-design-system/utilities/src/scss/index';
 
   .divider-vertical-container-example {
     display: flex;
