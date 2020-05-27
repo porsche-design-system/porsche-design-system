@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
+
+yarn install
+yarn build
+yarn lint:components-js
+yarn lint:storefront
+# yarn test:unit:components-js
+yarn test:unit:storefront
+# yarn test:e2e:components-js
+yarn test:e2e:storefront
+yarn test:vrt:components-js
+yarn test:vrt:components-angular
+yarn test:vrt:components-react
+yarn test:vrt:storefront
+yarn test:mocks:components-react
