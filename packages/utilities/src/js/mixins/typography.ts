@@ -1,6 +1,6 @@
 import { font } from '../variables';
 import { mediaQuery } from './breakpoints';
-import { typeScale } from './helper';
+import { typeScale } from '../helper/helper';
 
 export const title = {
   large: {

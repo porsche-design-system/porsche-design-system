@@ -1,4 +1,4 @@
-import { rem } from './helper';
+import { rem } from '../helper';
 
 export const font = {
 
