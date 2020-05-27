@@ -46,6 +46,6 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log"
   },
   "devDependencies": {
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.2"
   }
 }
