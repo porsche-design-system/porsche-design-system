@@ -10,20 +10,6 @@ export const breakpointValue:{[key in breakpoints]: number} = {
   xxl: 1920,
 };
 
-export const breakpoint = {
-  xxs: `${breakpointValue.xxs}px`,
-  xs: `${breakpointValue.xs}px`,
-  s: `${breakpointValue.s}px`,
-  m: `${breakpointValue.m}px`,
-  l: `${breakpointValue.l}px`,
-  xl: `${breakpointValue.xl}px`,
-  xxl: `${breakpointValue.xxl}px`
-};
-
-/*export const whatever = (minBreakpoint: breakpoints, maxBreakpoint: breakpoints) => {
-  return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`
-};*/
-
 //TODO: Implement custom breakpoints -> breakpoints as interface?
 export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): string => {
   if (minBreakpoint && maxBreakpoint) {
