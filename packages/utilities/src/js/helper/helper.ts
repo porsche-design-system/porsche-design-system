@@ -1,5 +1,7 @@
-import { rem, remBase } from '../variables';
-
+export const remBase = 16;
+export const rem = (pixel: number) => {
+  return `${pixel / remBase}rem`
+};
 
 export const typeScale = (size: string) => ({
   fontSize: getFontSizeRem(size),

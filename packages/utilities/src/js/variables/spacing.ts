@@ -1,4 +1,4 @@
-import { rem } from './helper';
+import { rem } from '../helper';
 
 export const spacing = {
   '4': `${rem(4)}`,
