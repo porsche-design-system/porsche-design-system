@@ -8,7 +8,7 @@ const Div = styled.div`
   background-color: ${color.darkTheme.background};
 `;
 
-const Headline1 = styled.h1`
+const Headline1 = styled.h4`
   ${headline['4']}
 `;
 
