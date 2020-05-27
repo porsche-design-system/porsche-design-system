@@ -24,7 +24,7 @@ export const breakpoint = {
   return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`
 };*/
 
-//TODO: Implement CSS Types
+//TODO: Implement custom breakpoints -> breakpoints as interface?
 export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): string => {
   if (minBreakpoint && maxBreakpoint) {
     if (breakpointValue[minBreakpoint] && breakpointValue[maxBreakpoint]) {
