@@ -20,11 +20,12 @@ export const breakpoint = {
   xxl: `${breakpointValue.xxl}px`
 };
 
-export const whatever = (minBreakpoint: breakpoints, maxBreakpoint: breakpoints) => {
+/*export const whatever = (minBreakpoint: breakpoints, maxBreakpoint: breakpoints) => {
   return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`
-};
+};*/
+
 //TODO: Implement CSS Types
-export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints): string => {
+export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoints) => {
   if (minBreakpoint && maxBreakpoint) {
     if (breakpointValue[minBreakpoint] && breakpointValue[maxBreakpoint]) {
       return `@media (min-width: ${breakpointValue[minBreakpoint]}px) and (max-width: ${breakpointValue[maxBreakpoint]}px)`;

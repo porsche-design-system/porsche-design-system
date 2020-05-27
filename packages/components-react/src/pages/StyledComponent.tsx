@@ -9,7 +9,7 @@ const Div = styled.div`
 `;
 
 const Headline1 = styled.h1`
-  ${headline['1']}
+  ${headline['4']}
 `;
 
 const P = styled.p`
@@ -24,7 +24,7 @@ const P = styled.p`
 export function StyledComponent() {
   return (
     <div>
-      <Headline1>Iam unstyled </Headline1>
+      <Headline1>I change according to min and max width </Headline1>
       <Div>
         <P>Look at me iam styled</P>
         <P>Second styled Paragraph with spacing</P>
