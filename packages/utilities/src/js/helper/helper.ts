@@ -15,7 +15,7 @@ export const getFontSizeRem = (fontSize: string): string => {
     const fontSizeLength = getFontSizeLength(fontSize);
     if (fontSizeLength != -1) {
       return rem(fontSizeLength)
-    } else 'Fontzsize has to be a length and number, e.g. 12px'
+    } else {return 'FontSize has to be a length and number, e.g. 12px'}
   }
   return 'fontSize() only accepts rem or px as parameter'
 };
@@ -26,7 +26,7 @@ export const convertLineHeight = (fontSize: string): number | string => {
     fontSizePx = remToPx(fontSize);
   } else if (fontSize.endsWith('px')) {
     fontSizePx = fontSize;
-  } else return 'font size needs to be px or rem';
+  } else {return 'font size needs to be px or rem'}
 
   const fontSizeLength = stripUnit(fontSizePx);
   const e = 2.71828;
