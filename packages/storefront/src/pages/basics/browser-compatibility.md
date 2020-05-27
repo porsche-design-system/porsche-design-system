@@ -12,7 +12,7 @@ To ensure visual and functional compatibility, we do automatic and manual testin
 * **Safari** on macOS and iOS ([latest 2 stable versions](https://en.wikipedia.org/wiki/Safari_version_history#Safari_13))
 
 **Annotation**  
-Chromium is the basis starting from Micrisoft Edge 79, Android Webview 33 and of Samsung Internet since 11.
+Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0.
 
 ## End of support announcement for IE 11 and Edge 15-18
 
