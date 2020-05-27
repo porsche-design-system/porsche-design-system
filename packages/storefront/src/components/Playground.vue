@@ -71,11 +71,11 @@
       this.theme = theme;
     }
 
-    public mounted() {
+    public mounted(): void {
       this.markup = this.getMarkup();
     }
 
-    public updated() {
+    public updated(): void {
       this.markup = this.getMarkup();
     }
 
