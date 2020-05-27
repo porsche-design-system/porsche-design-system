@@ -1,11 +1,8 @@
 # Start Coding
 
-Porsche Design System provides developers with a collection of Web components, Angular components and React components to build clean and high-quality frontends 
-that innately come with the latest design definitions. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process 
-and tell you more about our culture of designing great digital experiences and give you access to all of our frameworks standards and tools: [Sign Up for the Onboarding](https://ux.porsche.com/). 
+Porsche Design System provides developers with versioned packages of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions.
 
-To enable a smooth start with the Porsche Design System we have created sample projects in all common frameworks.
-These projects show how to install and the usage of the Porsche Design System. Furthermore, the example projects contain examples and solutions for testing.
+To enable a smooth start with the Porsche Design System we have created sample projects in all common frameworks. These projects show how to install and the usage of the Porsche Design System. Furthermore, the example projects contain examples and solutions for testing.
 
 --- 
 
@@ -26,8 +23,7 @@ Those packages can be consumed by one of the following private NPM registries:
 
 If you don't have an account for one of the those NPM registries, you can easily register for the Porsche Design System NPM registry like as follows:
 
-
-<p-link target="_blank" href="http://eepurl.com/ghVSjH">Request a Porsche Design System npm registry account</p-link>
+<p-link target="_blank" href="https://ux.porsche.com/start-coding.html">Request a Porsche Design System npm registry account</p-link>
 
 1. Follow the instructions sent by e-mail
 1. Execute `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
