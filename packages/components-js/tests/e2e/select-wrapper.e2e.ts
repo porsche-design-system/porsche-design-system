@@ -335,11 +335,11 @@ describe('select-wrapper', () => {
       await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
         <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c" disabled>Option C</option>
-          <option value="d">Option D</option>
-          <option value="e">Option E</option>
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c" disabled>C Option</option>
+          <option value="d">D Option</option>
+          <option value="e">E Option</option>
         </select>
       </p-select-wrapper>
     `);
@@ -493,6 +493,13 @@ describe('select-wrapper', () => {
       await waitForEventCallbacks();
       await waitForSelector(await fakeOptionList(), 'p-select-wrapper__fake-option-list--hidden');
       expect(await getOpacity()).toBe('0');
+
+      // Search for string and select it
+      await select.press('d');
+      await page.waitFor(120);
+      expect(await getElementPosition(await fakeOptionList(),'.p-select-wrapper__fake-option--highlighted')).toBe(3);
+      expect(await getElementPosition(await fakeOptionList(),'.p-select-wrapper__fake-option--selected')).toBe(3);
+      expect(await getSelectedIndex()).toBe(3);
 
       // Click on select while list is hidden
       await select.click();
