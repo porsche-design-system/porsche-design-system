@@ -1,6 +1,6 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
 import cx from 'classnames';
-import { insertSlottedStyles, prefix } from '../../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-text-list-item',
@@ -33,17 +33,20 @@ export class TextListItem {
   }
 
   private get typeOfList():string {
-    const list = this.host.closest(prefix('text-list'));
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    const list = this.host.closest(PrefixedTagNames.pTextList);
     return list.getAttribute('list-type');
   }
 
   private get typeOfOrderedList():string {
-    const list = this.host.closest(prefix('text-list'));
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    const list = this.host.closest(PrefixedTagNames.pTextList);
     return list.getAttribute('order-type');
   }
 
   private get isNestedList():boolean {
-    return !!this.host.closest(prefix('text-list[nested]'));
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    return !!this.host.closest(`${PrefixedTagNames.pTextList}[nested]`);
   }
 
   private addSlottedStyles(): void {

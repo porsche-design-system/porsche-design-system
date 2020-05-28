@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
-  calcLineHeightForElement,
+  calcLineHeightForElement, getPrefixedTagNames,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener
@@ -79,6 +79,8 @@ export class ButtonPure {
       mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text', 'p-spinner']);
+
     return (
       <button
         class={buttonPureClasses}
@@ -89,14 +91,14 @@ export class ButtonPure {
         aria-busy={this.loading && 'true'}
       >
         {this.loading ? (
-          <p-spinner
+          <PrefixedTagNames.pSpinner
             class={iconClasses}
             size='inherit'
             theme={this.theme}
             ref={el => this.iconTag = el as HTMLElement}
           />
         ) : (
-          <p-icon
+          <PrefixedTagNames.pIcon
             class={iconClasses}
             color='inherit'
             size='inherit'
@@ -106,7 +108,7 @@ export class ButtonPure {
             aria-hidden='true'
           />
         )}
-        <p-text
+        <PrefixedTagNames.pText
           class={labelClasses}
           tag='span'
           color='inherit'
@@ -114,7 +116,7 @@ export class ButtonPure {
           weight={this.weight}
         >
           <slot/>
-        </p-text>
+        </PrefixedTagNames.pText>
       </button>
     );
   }

@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../../utils';
+import { getPrefixedTagNames, prefix } from '../../../../utils';
 import { Theme } from '../../../../types';
 
 @Component({
@@ -42,6 +42,7 @@ export class TextList {
   }
 
   private get isNestedList():boolean {
-    return !!this.host.closest(prefix('text-list-item'));
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list-item']);
+    return !!this.host.closest(PrefixedTagNames.pTextListItem);
   }
 }

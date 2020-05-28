@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles, getPrefixedTagNames
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -66,26 +66,28 @@ export class RadioButtonWrapper {
       this.state !== 'none' && prefix(`radio-button-wrapper__message--${this.state}`)
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+
     return (
       <Host>
         <label class={labelClasses}>
           {this.isLabelVisible &&
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent): void => this.labelClick(e)}>
+          <PrefixedTagNames.pText class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent): void => this.labelClick(e)}>
             {this.label ? this.label : <span><slot name='label'/></span>}
-          </p-text>
+          </PrefixedTagNames.pText>
           }
           <span class={fakeRadioButtonClasses}>
             <slot/>
           </span>
         </label>
         {this.isMessageVisible &&
-        <p-text
+        <PrefixedTagNames.pText
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
+        </PrefixedTagNames.pText>
         }
       </Host>
     );

@@ -6,7 +6,7 @@
 }
 
 // disable animations for IE11
-p-spinner > .p-spinner {
+p-spinner > .p-spinner, my-prefix-p-spinner > .p-spinner {
   animation-duration: 0s !important;
 }
 
@@ -14,7 +14,7 @@ p-spinner > .p-spinner {
   padding: $p-spacing-32;
 }
 
-p-divider {
+p-divider, my-prefix-p-divider {
   margin: $p-spacing-24 0;
 }
 
@@ -94,13 +94,21 @@ p-divider {
   }
 
   p-grid-item[size],
+  my-prefix-p-grid-item[size],
   p-grid-item[class*="--size"],
+  my-prefix-p-grid-item[class*="--size"],
   p-grid-item[offset],
+  my-prefix-p-grid-item[offset],
   p-grid-item[class*="--offset"],
+  my-prefix-p-grid-item[class*="--offset"],
   p-flex-item[width],
+  my-prefix-p-flex-item[width],
   p-flex-item[class*="--width"],
+  my-prefix-p-flex-item[class*="--width"],
   p-flex-item[offset],
-  p-flex-item[class*="--offset"] {
+  my-prefix-p-flex-item[offset],
+  p-flex-item[class*="--offset"],
+  my-prefix-p-flex-item[class*="--offset"] {
     &::before {
       @include p-text;
       content: '';

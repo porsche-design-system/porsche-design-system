@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles, getPrefixedTagNames
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -76,32 +76,34 @@ export class SelectWrapper {
       this.state !== 'none' && prefix(`select-wrapper__message--${this.state}`)
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+
     return (
       <Host>
         <label class={labelClasses}>
           {this.isLabelVisible &&
-          <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
+          <PrefixedTagNames.pText class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
             {this.label ? this.label : <span><slot name='label'/></span>}
-          </p-text>
+          </PrefixedTagNames.pText>
           }
           {this.isDescriptionVisible &&
-          <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+          <PrefixedTagNames.pText class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
             {this.description ? this.description : <span><slot name='description'/></span>}
-          </p-text>
+          </PrefixedTagNames.pText>
           }
           <span class={fakeSelectClasses}>
-            <p-icon class={iconClasses} name='arrow-head-down' color='inherit'/>
+            <PrefixedTagNames.pIcon class={iconClasses} name='arrow-head-down' color='inherit'/>
             <slot/>
           </span>
         </label>
         {this.isMessageVisible &&
-        <p-text
+        <PrefixedTagNames.pText
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
+        </PrefixedTagNames.pText>
         }
       </Host>
     );

@@ -6,7 +6,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles, getPrefixedTagNames
 } from '../../../utils';
 import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
@@ -90,6 +90,8 @@ export class LinkPure {
       mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
+
     return (
       <TagType
         class={linkPureClasses}
@@ -101,7 +103,7 @@ export class LinkPure {
         } : null)}
         ref={el => this.linkTag = el as HTMLElement}
       >
-        <p-icon
+        <PrefixedTagNames.pIcon
           class={iconClasses}
           color='inherit'
           size='inherit'
@@ -110,7 +112,7 @@ export class LinkPure {
           ref={el => this.iconTag = el as HTMLElement}
           aria-hidden='true'
         />
-        <p-text
+        <PrefixedTagNames.pText
           class={labelClasses}
           tag='span'
           color='inherit'
@@ -118,7 +120,7 @@ export class LinkPure {
           weight={this.weight}
         >
           <slot/>
-        </p-text>
+        </PrefixedTagNames.pText>
       </TagType>
     );
   }
