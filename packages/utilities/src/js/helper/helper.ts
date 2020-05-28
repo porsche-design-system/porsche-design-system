@@ -2,7 +2,7 @@ const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
 export const remBase = 16;
 
-export const pxToRem = (fontSize: string) => {
+export const pxToRem = (fontSize: string): string => {
   const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit !== 'px' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 16px');
@@ -39,7 +39,7 @@ export const convertLineHeight = (fontSize: string): number => {
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error('font size needs to be value + px or rem and not 0, e.g. 15rem or 16px');
   }
-  const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSizeValue) : fontSizeValue;
+  const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSize) : fontSizeValue;
 
   const fontSizeLength = parseFloat(fontSizePx);
   const e = 2.71828;
