@@ -1,10 +1,10 @@
 import { defineCustomElements } from '@porsche-design-system/components-js/dist/esm/loader.mjs';
-import { setRegisterComponentsCallback } from '@myporsche/myservices-web-components-manager';
+import { setRegisterComponentsCallback } from '@porsche-design-system/web-components-manager';
 
 setRegisterComponentsCallback('porscheDesignSystem', function(prefix) {
   defineCustomElements(window, {
     transformTagName: function(tagName) {
-      if(prefix === '') {
+      if (prefix === '') {
         return tagName;
       }
 
