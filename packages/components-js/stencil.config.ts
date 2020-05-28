@@ -65,6 +65,7 @@ export const config: Config = {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
   },
   extras: {
-    lifecycleDOMEvents: true
+    lifecycleDOMEvents: true,
+    tagNameTransform: true
   }
 };

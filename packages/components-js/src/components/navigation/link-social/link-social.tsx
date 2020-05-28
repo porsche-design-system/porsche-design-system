@@ -4,7 +4,7 @@ import {
   BreakpointCustomizable,
   prefix,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses
+  mapBreakpointPropToPrefixedClasses, getPrefixedTagNames
 } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
@@ -84,6 +84,8 @@ export class LinkSocial {
     const iconClasses = prefix('link-social__icon');
     const labelClasses = prefix('link-social__label');
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+
     return (
       <TagType
         class={linkClasses}
@@ -93,7 +95,7 @@ export class LinkSocial {
           rel: this.rel
         } : null)}
       >
-        <p-icon
+        <PrefixedTagNames.pIcon
           class={iconClasses}
           size='inherit'
           name={this.icon}
@@ -101,9 +103,9 @@ export class LinkSocial {
           color='inherit'
           aria-hidden='true'
         />
-        <p-text tag='span' color='inherit' class={labelClasses}>
+        <PrefixedTagNames.pText tag='span' color='inherit' class={labelClasses}>
           <slot/>
-        </p-text>
+        </PrefixedTagNames.pText>
       </TagType>
     );
   }

@@ -1,6 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  insertSlottedStyles,
+  getPrefixedTagNames
+} from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName, LinkTarget, Theme } from '../../../types';
 
@@ -62,6 +68,8 @@ export class Link {
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
 
+    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
+
     return (
       <TagType
         class={linkClasses}
@@ -72,7 +80,7 @@ export class Link {
           rel: this.rel
         } : null)}
       >
-        <p-icon
+        <PrefixedTagNames.pIcon
           class={iconClasses}
           size='inherit'
           name={this.icon}
@@ -80,9 +88,9 @@ export class Link {
           color='inherit'
           aria-hidden='true'
         />
-        <p-text tag='span' color='inherit' class={labelClasses}>
+        <PrefixedTagNames.pText tag='span' color='inherit' class={labelClasses}>
           <slot/>
-        </p-text>
+        </PrefixedTagNames.pText>
       </TagType>
     );
   }

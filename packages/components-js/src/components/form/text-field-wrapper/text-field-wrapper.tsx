@@ -6,7 +6,7 @@ import {
   prefix,
   transitionListener,
   insertSlottedStyles,
-  handleButtonEvent
+  handleButtonEvent, getPrefixedTagNames
 } from '../../../utils';
 import { ButtonType, FormState } from '../../../types';
 
@@ -83,19 +83,21 @@ export class TextFieldWrapper {
       this.state !== 'none' && prefix(`text-field-wrapper__message--${this.state}`)
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+
     return (
       <Host>
         <div class={containerClasses}>
           <label class={labelClasses}>
             {this.isLabelVisible &&
-            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
+            <PrefixedTagNames.pText class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
               {this.label ? this.label : <span><slot name='label'/></span>}
-            </p-text>
+            </PrefixedTagNames.pText>
             }
             {this.isDescriptionVisible &&
-            <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
+            <PrefixedTagNames.pText class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
               {this.description ? this.description : <span><slot name='description'/></span>}
-            </p-text>
+            </PrefixedTagNames.pText>
             }
             <span class={fakeInputClasses}>
               <slot/>
@@ -103,7 +105,7 @@ export class TextFieldWrapper {
           </label>
           {this.isPasswordToggleable &&
           <button type='button' class={buttonClasses} onClick={(): void => this.togglePassword()} disabled={this.disabled}>
-            <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
+            <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
           </button>
           }
           {this.isInputTypeSearch &&
@@ -113,18 +115,18 @@ export class TextFieldWrapper {
             class={buttonClasses}
             disabled={this.disabled || this.readonly}
           >
-            <p-icon name='search' color='inherit'/>
+            <PrefixedTagNames.pIcon name='search' color='inherit'/>
           </button>
           }
         </div>
         {this.isMessageVisible &&
-        <p-text
+        <PrefixedTagNames.pText
           class={messageClasses}
           color='inherit'
           role={this.state === 'error' && 'alert'}
         >
           {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
+        </PrefixedTagNames.pText>
         }
       </Host>
     );

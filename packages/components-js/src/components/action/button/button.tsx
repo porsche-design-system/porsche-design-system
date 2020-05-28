@@ -1,8 +1,13 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+  improveButtonHandlingForCustomElement,
+  improveFocusHandlingForCustomElement,
+  getPrefixedTagNames
+} from '../../../utils';
 import { ButtonType, IconName, Theme } from '../../../types';
 
 @Component({
@@ -54,6 +59,7 @@ export class Button {
     );
     const iconClasses = prefix('button__icon');
     const labelClasses = prefix('button__label');
+    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-spinner', 'p-text']);
 
     return (
       <button
@@ -64,13 +70,13 @@ export class Button {
         aria-busy={this.loading && 'true'}
       >
         {this.loading ? (
-          <p-spinner
+          <PrefixedTagNames.pSpinner
             class={iconClasses}
             size='inherit'
             theme={this.variant === 'tertiary' && this.theme === 'light' ? 'light' : 'dark'}
           />
         ) : (
-          <p-icon
+          <PrefixedTagNames.pIcon
             class={iconClasses}
             size='inherit'
             name={this.icon}
@@ -79,9 +85,9 @@ export class Button {
             aria-hidden='true'
           />
         )}
-        <p-text class={labelClasses} tag='span' color='inherit'>
+        <PrefixedTagNames.pText class={labelClasses} tag='span' color='inherit'>
           <slot/>
-        </p-text>
+        </PrefixedTagNames.pText>
       </button>
     );
   }

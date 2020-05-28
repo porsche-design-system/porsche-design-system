@@ -7,3 +7,5 @@ export * from './random-string';
 export * from './transition-listener';
 export * from './slotted-styles';
 export * from './buttonHandling';
+export * from './get-prefixed-tag-name';
+export * from './focusHandling';

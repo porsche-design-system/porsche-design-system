@@ -1,6 +1,11 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  getPrefixedTagNames,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../utils';
 import {
   createPaginationModel,
   getCurrentActivePage,
@@ -104,6 +109,8 @@ export class Pagination {
 
       const paginationItemClasses = cx(prefix('pagination__item'));
 
+      const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
+
       paginationModel.forEach((pageModel: PaginationModelItem) => {
         if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
           const paginationPrevClasses = cx(
@@ -126,7 +133,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelPrev}
               >
-                <p-icon name='arrow-head-left' color='inherit' />
+                <PrefixedTagNames.pIcon name='arrow-head-left' color='inherit' />
               </span>
             </li>
           ));
@@ -186,7 +193,7 @@ export class Pagination {
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelNext}
               >
-                <p-icon name='arrow-head-right' color='inherit' />
+                <PrefixedTagNames.pIcon name='arrow-head-right' color='inherit' />
               </span>
             </li>
           ));

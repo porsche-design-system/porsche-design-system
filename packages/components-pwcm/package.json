@@ -1,0 +1,30 @@
+{
+  "name": "components-pwcm",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "rm -rf ./dist/dev && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && http-server -p 8576 --cors",
+    "build": "rm -rf ./dist/p && webpack && pwcm build",
+    "test": "yarn test:vrt",
+    "test:vrt": "yarn test:vrt:build && concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8576 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:vrt:build": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
+    "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
+  },
+  "dependencies": {
+    "@myporsche/myservices-web-components-manager": "0.2.2",
+    "@porsche-design-system/components-js": "1.4.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^2.1.0",
+    "@myporsche/myservices-web-components-manager-cli": "0.2.2",
+    "@porsche-design-system/visual-regression-tester": "^1.0.1",
+    "@porsche-design-system/utils": "0.0.0",
+    "http-server": "^0.12.3",
+    "jasmine": "^3.5.0",
+    "puppeteer": "^3.0.4",
+    "ts-node": "^8.10.1",
+    "wait-on": "^5.0.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
