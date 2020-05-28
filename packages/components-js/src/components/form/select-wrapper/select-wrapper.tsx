@@ -117,12 +117,12 @@ export class SelectWrapper {
           <label>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
-              {this.label ?? <span><slot name='label'/></span>}
+              {this.label ? this.label : <span><slot name='label'/></span>}
             </p-text>
             }
             {this.isDescriptionVisible &&
             <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
-              {this.description ?? <span><slot name='description'/></span>}
+              {this.description ? this.description : <span><slot name='description'/></span>}
             </p-text>
             }
             <span class={fakeSelectClasses}>
