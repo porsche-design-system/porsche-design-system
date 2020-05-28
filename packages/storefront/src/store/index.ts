@@ -3,6 +3,12 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+interface State {
+  isLoading: boolean;
+  lastTimeout: undefined;
+  isMenuActive: boolean;
+}
+
 export default new Vuex.Store({
   state: {
     isLoading: false,
@@ -10,21 +16,21 @@ export default new Vuex.Store({
     isMenuActive: false
   },
   mutations: {
-    setIsLoading(state, payload) {
+    setIsLoading(state: State, payload): void {
       state.isLoading = payload;
     },
-    setLastTimeout(state, payload) {
+    setLastTimeout(state: State, payload): void {
       state.lastTimeout = payload;
     },
-    setIsMenuActive(state, payload) {
+    setIsMenuActive(state: State, payload): void {
       state.isMenuActive = payload;
     },
-    toggleIsMenuActive(state) {
+    toggleIsMenuActive(state: State): void {
       state.isMenuActive = !state.isMenuActive;
     }
   },
   actions: {
-    toggleLoadingAsync({commit, state}, payload) {
+    toggleLoadingAsync({commit, state}, payload): void {
       const delay = 200;
       const timeout = setTimeout(() => {
         commit('setIsLoading', payload);
@@ -35,10 +41,10 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    isLoading(state) {
+    isLoading(state: State): boolean {
       return state.isLoading;
     },
-    isMenuActive(state) {
+    isMenuActive(state: State): boolean {
       return state.isMenuActive;
     }
   }
