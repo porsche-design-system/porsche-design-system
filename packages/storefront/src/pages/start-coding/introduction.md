@@ -100,9 +100,9 @@ SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section
 
 --- 
 
-### Web components used with non-supported framework
+### Web components used with a not-supported framework
 
-At time of writing we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. 
+At the time of writing, we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. 
 Just follow these guidelines to make our web components work in other frameworks:
 
 - [Guidelines for Vue](https://stenciljs.com/docs/vue)

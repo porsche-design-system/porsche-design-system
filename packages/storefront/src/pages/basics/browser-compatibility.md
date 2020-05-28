@@ -6,7 +6,7 @@ To ensure visual and functional compatibility, we do automatic and manual testin
 
 ### Supported Browsers & Platforms:
 
-We support the **latest stable version and the discontinued predecessor**, to bridge the temportal update transition period.
+We support the **latest stable version and the discontinued predecessor**, to bridge the temporal update transition period.
 
 * **Chrome** on Windows and macOS, Android and iOS ([see version history](https://en.wikipedia.org/wiki/Google_Chrome_version_history))
 * **Microsoft Edge Chromium** on Windows ([see version history](https://en.wikipedia.org/wiki/Microsoft_Edge#Release_history))
@@ -18,13 +18,13 @@ Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 a
 
 ## End of support announcement for IE 11 and Edge 15-18
 
-In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 Microsoft Edge versions are based on Chromium, also available for all operation systems.
+In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 Microsoft Edge versions are based on Chromium, also available for all operating systems.
 
-### Why do we stop the support?
-The share of use of not-supported browsers is the significant minority of our total users. To empower the opportuities of modern web standards including web components, and deliver the best possible user experience, performance and stability across all of our applications for the vast majority, we have decided to end support for Microsoft Internet Explorer 11 and the outdated Edge versions 15-18.
+### Why do we stop support?
+The share of use of not-supported browsers is the significant minority of our total users. To empower the opportunities of modern web standards including web components, and deliver the best possible user experience, performance and stability across all of our applications for the vast majority, we have decided to end support for Microsoft Internet Explorer 11 and the outdated Edge versions 15-18.
 
 ### Can users still access our applications?
-Windows, macOS, iOS and Anroid have at least one supported browser pre-installed. In the most cases continuously or at least frequently updated to the latest version. If an user runs into problems using your site with a not-supported browser, they can easily open it with a different browser.
+Windows, macOS, iOS and Android have at least one supported browser pre-installed. In most cases continuously or at least frequently updated to the latest version. If a user runs into problems using your site with a not-supported browser, they can easily open it with a different browser.
 
 Please do not create any dead-end for users, but consistently guide them by implement and use our global Browser Notification Component.
 
