@@ -11,12 +11,12 @@
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
-    "@myporsche/myservices-web-components-manager": "0.2.2",
+    "@porsche-design-system/web-components-manager": "0.2.3",
     "@porsche-design-system/components-js": "1.4.0"
   },
   "devDependencies": {
     "@types/puppeteer": "^2.1.0",
-    "@myporsche/myservices-web-components-manager-cli": "0.2.2",
+    "@porsche-design-system/web-components-manager-cli": "0.2.3",
     "@porsche-design-system/visual-regression-tester": "^1.0.1",
     "@porsche-design-system/utils": "0.0.0",
     "http-server": "^0.12.3",
