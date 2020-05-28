@@ -411,10 +411,12 @@ export class SelectWrapper {
   }
 
   private searchOptions(): void {
-    const selected = this.select.selectedIndex;
-    this.optionSelected = selected;
-    this.optionHighlighted = selected;
-    this.handleScroll();
+    setTimeout(() => {
+      const selected = this.select.selectedIndex;
+      this.optionSelected = selected;
+      this.optionHighlighted = selected;
+      this.handleScroll();
+    }, 100);
   }
 
   private addSlottedStyles(): void {
