@@ -1,6 +1,6 @@
 import { font } from '../variables';
 import { mediaQuery } from './breakpoints';
-import { typeScale } from '../helper/helper';
+import { typeScale } from '../helper';
 
 export const title = {
   large: {
@@ -10,7 +10,7 @@ export const title = {
     [mediaQuery('s', 'm')]: typeScale(font.size['42']),
     [mediaQuery('m', 'l')]: typeScale(font.size['52']),
     [mediaQuery('l', 'xl')]: typeScale(font.size['62']),
-    [mediaQuery('xl')]: typeScale(font.size['72']),
+    [mediaQuery('xl')]: typeScale(font.size['72'])
   }
 };
 
@@ -22,7 +22,7 @@ export const headline = {
     [mediaQuery('s', 'm')]: typeScale(font.size['36']),
     [mediaQuery('m', 'l')]: typeScale(font.size['44']),
     [mediaQuery('l', 'xl')]: typeScale(font.size['52']),
-    [mediaQuery('xl')]: typeScale(font.size['60']),
+    [mediaQuery('xl')]: typeScale(font.size['60'])
   },
   '2': {
     ...typeScale(font.size['24']),
@@ -31,7 +31,7 @@ export const headline = {
     [mediaQuery('s', 'm')]: typeScale(font.size['30']),
     [mediaQuery('m', 'l')]: typeScale(font.size['36']),
     [mediaQuery('l', 'xl')]: typeScale(font.size['42']),
-    [mediaQuery('xl')]: typeScale(font.size['48']),
+    [mediaQuery('xl')]: typeScale(font.size['48'])
   },
   '3': {
     ...typeScale(font.size['20']),
@@ -40,7 +40,7 @@ export const headline = {
     [mediaQuery('s', 'm')]: typeScale(font.size['24']),
     [mediaQuery('m', 'l')]: typeScale(font.size['28']),
     [mediaQuery('l', 'xl')]: typeScale(font.size['32']),
-    [mediaQuery('xl')]: typeScale(font.size['36']),
+    [mediaQuery('xl')]: typeScale(font.size['36'])
   },
   '4': {
     ...typeScale(font.size['16']),
@@ -49,13 +49,11 @@ export const headline = {
     [mediaQuery('s', 'm')]: typeScale(font.size['18']),
     [mediaQuery('m', 'l')]: typeScale(font.size['20']),
     [mediaQuery('l', 'xl')]: typeScale(font.size['22']),
-    [mediaQuery('xl')]: typeScale(font.size['24']),
+    [mediaQuery('xl')]: typeScale(font.size['24'])
   },
   '5': {
     ...typeScale(font.size['16']),
     fontFamily: font.family,
-    fontWeight: font.weight.semibold,
+    fontWeight: font.weight.semibold
   }
-
 };
-
