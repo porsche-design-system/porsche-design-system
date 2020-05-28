@@ -54,7 +54,7 @@ The Select component is available in the following states:
 ## Styling
 
 ### Label
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (a word or two).
+The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Width
 The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend reading the [Form pattern guideline](#/patterns/forms).
