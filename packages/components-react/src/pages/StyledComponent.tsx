@@ -23,13 +23,12 @@ const P = styled.p`
 
 export function StyledComponent() {
   return (
-    <div>
+    <>
       <Headline1>I change according to min and max width </Headline1>
       <Div>
         <P>Look at me iam styled</P>
         <P>Second styled Paragraph with spacing</P>
       </Div>
-    </div>
-  )
-};
-
+    </>
+  );
+}
