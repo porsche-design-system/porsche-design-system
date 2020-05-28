@@ -25,10 +25,3 @@
 | Event        | Description                    | Type               |
 | ------------ | ------------------------------ | ------------------ |
 | `pageChange` | Emitted when the page changes. | `CustomEvent<any>` |
-
-
-## Dependencies
-
-### Depends on
-
-- [p-icon](../../icon/icon)

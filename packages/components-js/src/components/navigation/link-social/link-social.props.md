@@ -16,11 +16,3 @@
 | `rel`        | `rel`         | Specifies the relationship of the target object to the link object. | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `undefined` |
 | `target`     | `target`      | Target attribute where the link should be opened.                   | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `'_self'`   |
 | `theme`      | `theme`       | Adapts the icon color when used on dark background.                 | `"dark" \| "light"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `'light'`   |
-
-
-## Dependencies
-
-### Depends on
-
-- [p-icon](#/components/icon/icon)
-- [p-text](#/components/basic/typography/text)
