@@ -6,7 +6,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: environment.cdnDistPath,
-    filename: 'porsche-design-system.[contenthash].js',
+    filename: `porsche-design-system.${environment.version}.js`,
+    chunkFilename:`[id].porsche-design-system.[contenthash].js`,
     libraryTarget: 'var',
     library: `PorscheDesignSystem_${environment.snakeCaseVersion}`,
     publicPath: `${environment.deployUrl}/`
