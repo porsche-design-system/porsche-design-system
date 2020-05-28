@@ -13,7 +13,7 @@
       return this.$store.getters.isMenuActive;
     }
 
-    public toggleMenu() {
+    public toggleMenu(): void {
       this.$store.commit('toggleIsMenuActive');
     }
 
