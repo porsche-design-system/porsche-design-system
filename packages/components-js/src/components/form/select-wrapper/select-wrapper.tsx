@@ -411,6 +411,7 @@ export class SelectWrapper {
   }
 
   private searchOptions(): void {
+    // timeout is needed if fast keyboard events are triggered and dom needs time to update state
     setTimeout(() => {
       const selected = this.select.selectedIndex;
       this.optionSelected = selected;
