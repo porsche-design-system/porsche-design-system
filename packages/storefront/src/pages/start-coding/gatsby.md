@@ -101,7 +101,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## Test the application
 
-To set up Jest testing in in Gatsby you have to follow the instructions on how to set up jest for your project:
+To set up Jest testing in Gatsby you have to follow the instructions on how to set up jest for your project:
 
 * Step 1: [Set up Jest for Unit testing general](https://www.gatsbyjs.org/docs/unit-testing/)
 * Step 2: [Set up to test react components](https://www.gatsbyjs.org/docs/testing-react-components/)
@@ -111,7 +111,7 @@ To set up Jest testing in in Gatsby you have to follow the instructions on how t
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
 
-The mocks must only be used if functionality of the web component is required within the test.
+The mocks must only be used if the functionality of the web component is required within the test.
 As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
 To consume the mocks you can set them up via your **setup-test-env.js** file in your root folder and copy the following snippet into the setup file.
@@ -152,7 +152,7 @@ test('renders a headline from Porsche Design System', async () => {
 ```
 
 Use this solution until there is an upgrade to a newer **jsdom** version which provides support for **Web Components**.
-In the meantime we keep providing mocks.
+In the meantime, we keep providing mocks.
  
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
    

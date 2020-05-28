@@ -1,12 +1,12 @@
 # Design Workflow with Abstract
 
 ## General information 
-We encourage an open and clear design workflow over all digital Porsche products with shared tools and workflows. Using the Abstract tool enables automated file management and version control - without the risk of losing data. The overall accessibility of files also brings the different roles and teams closer together and enables a fast collaboration.
+We encourage an open and clear design workflow overall digital Porsche products with shared tools and workflows. Using the Abstract tool enables automated file management and version control - without the risk of losing data. The overall accessibility of files also brings different roles and teams closer together and enables a fast collaboration.
 
 [Read more about Abstract](https://www.goabstract.com/how-it-works/) or watch some [Abstract videos](https://vimeo.com/goabstract).
 
 ### Project and file structure
-The Porsche organisation is structured by context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
+The Porsche organisation is structured by the context within different sections. Product-specific files are stored in different team projects. Team projects are visible for all organisation members by default. Confidential work is stored in private projects, which are only accessible by members on invitation.
 
 For better discoverability, files and libraries within a project are recommended to be split and named by their features in lower case with hyphenation. All libraries created within the Porsche organisation should be named with the format `porsche-design-system-[projectname].sketch`.
 
