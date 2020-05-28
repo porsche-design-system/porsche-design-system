@@ -15,6 +15,7 @@
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Web Components - Web Components Manager",
+  "main": "index.js",
   "publishConfig": {
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   }
