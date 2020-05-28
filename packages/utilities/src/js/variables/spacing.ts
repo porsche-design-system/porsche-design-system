@@ -1,17 +1,17 @@
-import { rem } from '../helper';
+import { pxToRem } from '../helper';
 
 export const spacing = {
-  '4': `${rem(4)}`,
-  '8': `${rem(8)}`,
-  '16': `${rem(16)}`,
-  '24': `${rem(24)}`,
-  '32': `${rem(32)}`,
-  '40': `${rem(40)}`,
-  '48': `${rem(48)}`,
-  '56': `${rem(56)}`,
-  '46': `${rem(46)}`,
-  '72': `${rem(72)}`,
-  '80': `${rem(80)}`
+  '4': `${pxToRem('4px')}`,
+  '8': `${pxToRem('8px')}`,
+  '16': `${pxToRem('16px')}`,
+  '24': `${pxToRem('24px')}`,
+  '32': `${pxToRem('32px')}`,
+  '40': `${pxToRem('40px')}`,
+  '48': `${pxToRem('48px')}`,
+  '56': `${pxToRem('56px')}`,
+  '46': `${pxToRem('46px')}`,
+  '72': `${pxToRem('72px')}`,
+  '80': `${pxToRem('80px')}`
 };
 
 export const layout = {

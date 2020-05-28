@@ -1,37 +1,46 @@
+const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
+
 export const remBase = 16;
-export const rem = (pixel: number) => {
-  return `${pixel / remBase}rem`
+
+export const pxToRem = (fontSize: string) => {
+  const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
+  if (fontSizeUnit !== 'px' || fontSizeValue === '0') {
+    throw new Error('function only accepts value in rem and not 0, e.g. 16px');
+  } else {
+    return `${parseFloat(`${fontSizeValue}`) / remBase}rem`;
+  }
+};
+
+export const remToPx = (rem: string): string => {
+  const [, fontSizeValue, fontSizeUnit] = rem.match(FONT_SIZE_REGEX) ?? [];
+  if (fontSizeUnit !== 'rem' || fontSizeValue === '0') {
+    throw new Error('function only accepts value in rem and not 0, e.g. 1.5rem');
+  } else return `${parseFloat(`${fontSizeValue}`) * remBase}px`;
 };
 
 export const typeScale = (size: string) => ({
-  fontSize: getFontSizeRem(size),
+  fontSize: convertToRem(size),
   lineHeight: convertLineHeight(size)
 });
 
-export const getFontSizeRem = (fontSize: string): string => {
-  if (fontSize.endsWith('rem')) {
-    const fontSizeLength = getFontSizeLength(fontSize);
-    if (fontSizeLength != -1) {
-      return fontSize
-    } else {return 'FontSize has to be a length and unit, e.g. 12px'}
-  } else if (fontSize.endsWith('px')) {
-    const fontSizeLength = getFontSizeLength(fontSize);
-    if (fontSizeLength != -1) {
-      return rem(fontSizeLength)
-    } else {return 'FontSize has to be a length and unit, e.g. 12px'}
+export const convertToRem = (fontSize: string): string => {
+  const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
+  if (fontSizeUnit === undefined) {
+    throw new Error('getFontSizeRem() only accepts rem or px as parameter');
+  } else if (fontSizeValue === undefined || fontSizeValue === '0') {
+    throw new Error('fontSize value has to be a Number and not 0');
   }
-  return 'fontSize() only accepts rem or px as parameter'
+  return fontSizeUnit === 'rem' ? fontSize : pxToRem(fontSize);
 };
 
 export const convertLineHeight = (fontSize: string): number => {
-  let fontSizePx = '';
-  if (fontSize.endsWith('rem')) {
-    fontSizePx = remToPx(fontSize);
-  } else if (fontSize.endsWith('px')) {
-    fontSizePx = fontSize;
-  } else {Error('font size needs to be px or rem')}
+  const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
+  if (fontSizeUnit === undefined || fontSizeValue === undefined) {
+    throw new Error('font size needs to be value + px or rem, e.g. 15rem or 16px');
+  }
+  const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSizeValue) : fontSizeValue;
 
-  const fontSizeLength = stripUnit(fontSizePx);
+  const fontSizeLength = parseFloat(fontSizePx);
   const e = 2.71828;
   const exactLineHeightFactor = 0.911 / (2.97 + 0.005 * Math.pow(e, 0.2 * fontSizeLength)) + 1.2;
   const exactLineHeightPx = fontSizeLength * exactLineHeightFactor;
@@ -42,46 +51,5 @@ export const convertLineHeight = (fontSize: string): number => {
   }
 
   const fittedLineHeightPx = exactLineHeightPx - remainingPx;
-  return fittedLineHeightPx / fontSizeLength
-};
-
-export const getFontSizeLength = (fontSize: string): number => {
-  let fontSizeLengthStr = '';
-  if (fontSize.endsWith('rem')) {
-    fontSizeLengthStr = fontSize.slice(0, -3);
-  } else if (fontSize.endsWith('px')) {
-    fontSizeLengthStr = fontSize.slice(0, -2);
-  }
-
-  const fontSizeLength = parseFloat(fontSizeLengthStr);
-  if (!isNaN(fontSizeLength)) {
-    return fontSizeLength
-  } else return -1
-};
-
-const remToPx = (fontSize: string): string => {
-  if (fontSize.endsWith('rem')) {
-    const size = stripUnit(fontSize);
-    const pxFontSize = size * remBase;
-    return pxFontSize.toString() + 'px'
-  }
-  return 'function only accepts value in rem for param $rem, e.g. 1.5rem'
-};
-
-const stripUnit = (fontSize: string): number => {
-  let strippedFonzSize = '';
-  if (fontSize.endsWith('rem')) {
-    strippedFonzSize = fontSize.slice(0, -3);
-    const fontSizeLength = parseFloat(strippedFonzSize);
-    if (isNaN(fontSizeLength)) {
-      return fontSizeLength
-    } else return -1
-  } else if (fontSize.endsWith('px')) {
-    strippedFonzSize = fontSize.slice(0, -2);
-    const fontSizeLength = parseFloat(strippedFonzSize);
-    if (isNaN(fontSizeLength)) {
-      return fontSizeLength
-    } else return -1
-  }
-  return -1
+  return fittedLineHeightPx / fontSizeLength;
 };
