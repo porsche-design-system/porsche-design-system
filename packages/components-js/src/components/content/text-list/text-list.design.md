@@ -40,7 +40,7 @@ Sequenced content should be displayed in an ordered list:
 
 ## Styling
 
-Per default, Text Lists are always displayed in copytext size (Text Small). Within Text Lists standard stylings are allowed (<a href="#">linked text</a>, <b>bold text</b> &amp; <strong>strong text</strong> as well as text colors).
+Per default, Text Lists are always displayed in copytext size (Text Small).
 
 ---
 
