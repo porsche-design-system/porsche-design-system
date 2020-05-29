@@ -1,34 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, spacing } from '@porsche-design-system/utilities';
-import { font } from '@porsche-design-system/utilities';
+import { color, layout, spacing, text } from '@porsche-design-system/utilities';
 import { headline } from '@porsche-design-system/utilities';
 
-const Div = styled.div`
+const DarkTheme = styled.div`
   background-color: ${color.darkTheme.background};
 `;
 
-const Headline1 = styled.h4`
-  ${headline['4']}
+const Div = styled.div`
+  margin: ${spacing['8']}
 `;
 
-const P = styled.p`
+const Headline4 = styled.h4`
   color: ${color.darkTheme.default};
-  font-size: ${font.size.xLarge};
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family};
-  margin-top: ${spacing['24']};
-  margin-left: ${spacing['16']};
+  ${headline['4']}
+  marginLeft: ${layout.large}
+  marginRight: ${layout.large}
+`;
+
+const P = styled.text`
+  color: ${color.darkTheme.default};
+  ${text}
+  marginTop: ${layout.small}
 `;
 
 export function StyledComponent() {
   return (
     <>
-      <Headline1>I change according to min and max width </Headline1>
-      <Div>
-        <P>Look at me iam styled</P>
-        <P>Second styled Paragraph with spacing</P>
-      </Div>
+      <DarkTheme>
+        <Div>
+          <Headline4>I change according to min and max width </Headline4>
+          <div>
+            <P>Look at me iam styled</P>
+          </div>
+          <div>
+            <P>Second styled Paragraph</P>
+          </div>
+        </Div>
+      </DarkTheme>
     </>
   );
 }
