@@ -331,6 +331,27 @@ describe('select-wrapper', () => {
       expect(numberOfFakeOptions + 1).toEqual(numberOfOptions + 1);
     });
 
+    it('should add/remove disabled state to fake option item if added/removed to native select programmatically', async () => {
+      await setContentWithDesignSystem(`
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await selectNode('select');
+      const fakeOptionList = async () => await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+      const fakeOption = await selectNode('p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+
+      await select.evaluate((el: HTMLSelectElement) => el.options[1].disabled = true);
+      await waitForSelector(fakeOption, 'p-select-wrapper__fake-option--disabled');
+
+      expect(await getClassFromHandle(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
+      expect(await getElementPosition(await fakeOptionList(),'.p-select-wrapper__fake-option--disabled')).toBe(1);
+    })
+
     it('should handle keyboard and click events', async () => {
       await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
