@@ -296,7 +296,7 @@ describe('checkbox-wrapper', () => {
       const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
       await fakeCheckbox.hover();
 
-      expect(await getElementStyle(fakeCheckbox, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
@@ -311,7 +311,7 @@ describe('checkbox-wrapper', () => {
       const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
 
       await labelText.hover();
-      expect(await getElementStyle(fakeCheckbox, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });

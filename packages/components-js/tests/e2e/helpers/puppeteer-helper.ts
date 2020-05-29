@@ -10,14 +10,18 @@ export const setContentWithDesignSystem = async (content: string, options: Navig
     options
   );
 
-export const getElementStyle = (element: ElementHandle, opts: string, transition?: boolean) =>
-  element.evaluate(async (el: Element, opts: string, transition?: boolean) => {
+
+
+type GetElementStyleOptions = { waitForTransition: boolean };
+
+export const getElementStyle = (element: ElementHandle, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) =>
+  element.evaluate(async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) => {
     const style = getComputedStyle(el);
-    if (transition) {
+    if (opts?.waitForTransition) {
       await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
     }
-    return style[opts];
-  }, opts, transition);
+    return style[property];
+  }, property, opts);
 
 export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el:Element, selector: string) => {
   let option: ChildNode = el.querySelector(selector);
