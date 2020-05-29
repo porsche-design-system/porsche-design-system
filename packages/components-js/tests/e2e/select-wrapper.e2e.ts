@@ -203,7 +203,7 @@ describe('select-wrapper', () => {
 
       await fakeSelect.hover();
 
-      expect(await getElementStyle(fakeSelect, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake select when label text is hovered', async () => {
@@ -222,7 +222,7 @@ describe('select-wrapper', () => {
 
       await labelText.hover();
 
-      expect(await getElementStyle(fakeSelect, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 

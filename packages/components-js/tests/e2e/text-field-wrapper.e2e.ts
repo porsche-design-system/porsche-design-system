@@ -287,7 +287,7 @@ describe('Text Field Wrapper', () => {
 
       await fakeInput.hover();
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
@@ -304,7 +304,7 @@ describe('Text Field Wrapper', () => {
 
       await labelText.hover();
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });

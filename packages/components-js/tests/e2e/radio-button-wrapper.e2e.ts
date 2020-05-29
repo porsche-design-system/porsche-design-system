@@ -214,7 +214,7 @@ describe('radio-button-wrapper', () => {
 
       await fakeRadioButton.hover();
 
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake radio button when label text is hovered', async () => {
@@ -231,7 +231,7 @@ describe('radio-button-wrapper', () => {
 
       await labelText.hover();
 
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', true)).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });
