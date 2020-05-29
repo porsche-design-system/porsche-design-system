@@ -57,3 +57,9 @@ export const headline = {
     fontWeight: font.weight.semibold
   }
 };
+
+export const text = {
+  ...typeScale(font.size.small),
+  fontFamily: font.family,
+  fontWeight: font.weight.regular
+};
