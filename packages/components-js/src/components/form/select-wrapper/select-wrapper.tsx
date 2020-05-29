@@ -38,7 +38,7 @@ export class SelectWrapper {
   @State() private fakeOptionListHidden = true;
   @State() private optionSelected: number;
   @State() private optionHighlighted: number;
-  @State() private optionDisabled: number;
+  @State() private optionDisabled: number[] = [];
   @State() private isTouch: boolean = isTouchDevice();
 
   private select: HTMLSelectElement;
@@ -117,12 +117,12 @@ export class SelectWrapper {
           <label>
             {this.isLabelVisible &&
             <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
-              {this.label ? this.label : <span><slot name='label'/></span>}
+              {this.label || <span><slot name='label'/></span>}
             </p-text>
             }
             {this.isDescriptionVisible &&
             <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
-              {this.description ? this.description : <span><slot name='description'/></span>}
+              {this.description || <span><slot name='description'/></span>}
             </p-text>
             }
             <span class={fakeSelectClasses}>
@@ -152,7 +152,7 @@ export class SelectWrapper {
           color='inherit'
           role={this.state === 'error' && 'alert'}
         >
-          {this.message ? this.message : <span><slot name='message'/></span>}
+          {this.message || <span><slot name='message'/></span>}
         </p-text>
         }
       </Host>
@@ -205,17 +205,6 @@ export class SelectWrapper {
     }
   }
 
-  private observeSelect(): void {
-    this.selectObserver = new MutationObserver((mutations: MutationRecord[]) => {
-      const mutationChildList = mutations.filter(mutation => mutation.type === 'childList');
-      mutationChildList.forEach(() => {
-        this.setOptionList();
-      });
-    });
-    const config = {childList: true};
-    this.selectObserver.observe(this.select, config);
-  }
-
   private setState(): void {
     this.disabled = this.select.disabled;
   }
@@ -233,6 +222,19 @@ export class SelectWrapper {
   /*
    * <START CUSTOM SELECT DROPDOWN>
    */
+  private observeSelect(): void {
+    this.selectObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      mutations.filter(mutation => mutation.type === 'childList').forEach(() => {
+        this.setOptionList();
+      });
+      mutations.filter(mutation => mutation.type === 'attributes').forEach(() => {
+        this.setOptionsDisabled();
+      });
+    });
+    const config = {childList: true, subtree: true, attributes: true, attributeFilter: ['disabled']};
+    this.selectObserver.observe(this.select, config);
+  }
+
   private handleClickOutside(e): void {
     if(this.host.contains(e.target)) {
       return;
@@ -317,9 +319,14 @@ export class SelectWrapper {
     this.options = this.select.querySelectorAll('option');
     this.optgroups = this.select.querySelectorAll('optgroup');
     this.optionSelected = this.select.selectedIndex;
+    this.setOptionsDisabled();
+  }
+
+  private setOptionsDisabled():void {
+    this.optionDisabled.length = 0;
     this.options.forEach((item: HTMLOptionElement, key: number) => {
       if (item.hasAttribute('disabled')) {
-        this.optionDisabled = key;
+        this.optionDisabled = [...this.optionDisabled, key];
       }
     });
   }
@@ -332,7 +339,7 @@ export class SelectWrapper {
     this.select.focus();
   }
 
-  private createFakeOptionList(): JSX.Element[] {
+  private createFakeOptionList(): JSX.Element[][] {
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) =>
       [
         (this.optgroups.length > 0 && option === option.parentNode.firstChild) &&
@@ -343,17 +350,19 @@ export class SelectWrapper {
           color='inherit'
           class={cx(
             prefix('select-wrapper__fake-option'),
-            this.optionSelected === key ? prefix('select-wrapper__fake-option--selected') : '',
-            this.optionHighlighted === key ? prefix('select-wrapper__fake-option--highlighted') : '',
-            this.optionDisabled === key ? prefix('select-wrapper__fake-option--disabled') : ''
+            {
+              [prefix('select-wrapper__fake-option--selected')]: this.optionSelected === key,
+              [prefix('select-wrapper__fake-option--highlighted')]: this.optionHighlighted === key,
+              [prefix('select-wrapper__fake-option--disabled')]: this.optionDisabled.includes(key)
+            }
           )}
-          onClick={() => this.optionDisabled !== key ? this.setOptionSelected(key) : this.select.focus()}
+          onClick={() => !this.optionDisabled.includes(key) ? this.setOptionSelected(key) : this.select.focus()}
           aria-selected={this.optionSelected === key && 'true'}
-          aria-disabled={this.optionDisabled === key && 'true'}
+          aria-disabled={this.optionDisabled.includes(key) && 'true'}
         >
           <span>{option.text}</span>
           {key === this.optionSelected &&
-          <p-icon class={cx(prefix('select-wrapper__fake-option-icon'))} aria-hidden={'true'} name='check' color='inherit'/>
+          <p-icon class={cx(prefix('select-wrapper__fake-option-icon'))} aria-hidden='true' name='check' color='inherit'/>
           }
         </div>
       ]
@@ -364,26 +373,26 @@ export class SelectWrapper {
     const numberOfOptions = this.options.length;
     if(direction === 'down' || direction === 'right') {
       this.optionHighlighted++;
-      if (this.optionHighlighted > numberOfOptions-1 && this.optionDisabled === 0) {
+      if (this.optionHighlighted > numberOfOptions-1 && this.optionDisabled.includes(0)) {
         this.optionHighlighted = 1;
       }
-      else if ((this.optionHighlighted === this.optionDisabled && this.optionDisabled === numberOfOptions-1) || this.optionHighlighted > numberOfOptions-1) {
+      else if ((this.optionDisabled.includes(this.optionHighlighted) && this.optionDisabled.includes(numberOfOptions-1)) || this.optionHighlighted > numberOfOptions-1) {
         this.optionHighlighted = 0;
       }
-      else if (this.optionHighlighted === this.optionDisabled) {
+      else if (this.optionDisabled.includes(this.optionHighlighted)) {
         this.optionHighlighted += 1;
       }
     }
 
-    if(direction === 'up' || direction === 'left') {
+    else if(direction === 'up' || direction === 'left') {
       this.optionHighlighted--;
-      if (this.optionHighlighted < 0 && this.optionDisabled === numberOfOptions-1) {
+      if (this.optionHighlighted < 0 && this.optionDisabled.includes(numberOfOptions-1)) {
         this.optionHighlighted = numberOfOptions-2;
       }
-      else if ((this.optionHighlighted === this.optionDisabled && this.optionDisabled === 0) || this.optionHighlighted < 0) {
+      else if ((this.optionDisabled.includes(this.optionHighlighted) && this.optionDisabled.includes(0)) || this.optionHighlighted < 0) {
         this.optionHighlighted = numberOfOptions-1;
       }
-      else if (this.optionHighlighted === this.optionDisabled) {
+      else if (this.optionDisabled.includes(this.optionHighlighted)) {
         this.optionHighlighted -= 1;
       }
     }
