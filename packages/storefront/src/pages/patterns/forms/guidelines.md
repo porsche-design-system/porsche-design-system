@@ -153,7 +153,7 @@ Further benefits:
 2. **Sections including form elements**  
    The longer a form, the more crucial it is to split it in content-related sub-areas in order to increase scannability.  
    Thus form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". 
-   Each fieldset should be initiated by a title (we recommend headline-4) that gives the user a short information on what data is required in this section.
+   Each fieldset should be initiated by a title (we recommend h4 of the respective viewport) that gives the user a short information on what data is required in this section.
    
 3. **Call-to-actions**  
    Call-to-actions are needed to submit or cancel the form input and should always be placed left-aligned.
