@@ -1,6 +1,6 @@
 import { version } from '../../package.json';
 
-const TRACKING_BASE_URL = 'https://cdn.ui.porsche.com/porsche-design-system/collect.gif';
+const TRACKING_BASE_URL = 'https://porsche-design-system.s3.eu-central-1.amazonaws.com/collect.gif';
 
 export const trackEvent = (component: string, event?: string): void => {
   if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
