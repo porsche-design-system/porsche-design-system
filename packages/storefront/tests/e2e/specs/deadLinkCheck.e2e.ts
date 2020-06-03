@@ -19,15 +19,16 @@ fdescribe('check for dead links in storefront', () => {
   afterEach(async () => await page.close());
 
   // internal functions
-  const getATags = async () =>
-    await page.$$('a[href]').then((x) => x.map(async (el) => await el.evaluate((y) => y.getAttribute('href'))));
-  const getPureLinks = async () =>
-    await page
-      .$$('p-link-pure[href]')
-      .then((x) => x.map(async (el) => await el.evaluate((y) => y.getAttribute('href'))));
-  const getLinks = async () =>
-    await page.$$('p-link[href]').then((x) => x.map(async (el) => await el.evaluate((y) => y.getAttribute('href'))));
-  const getHeadline = async () => await page.$eval('.vmark > h1', (x) => x.getAttribute('innerHtml'));
+  const getHref = (el: Element): string => el.getAttribute('href') as string;
+  const getLinks = () => page.$$('a[href],p-link[href],p-link-pure[href]');
+
+  const scanForLinks = async (): Promise<string[]> =>
+    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref)))).map((x) =>
+      x!.startsWith('#') ? `${options.baseURL}/${x}` : x
+    );
+
+  const getHeadline = async () =>
+    (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
 
   // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
   const urlArray: string[] = [
@@ -41,28 +42,20 @@ fdescribe('check for dead links in storefront', () => {
   fit('should check all a tags for correct response', async () => {
     await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
     const linkCheckLoop = async () => {
-      const aTags = await getATags();
-      const pureLinks = await getPureLinks();
-      const pLinks = await getLinks();
-      const links = [...aTags, ...pureLinks, ...pLinks];
+      const links = await scanForLinks();
 
-      let i;
-      for (i = 0; i < links.length; i++) {
-        const href = await links[i];
+      for (let i = 0; i < links.length; i++) {
+        const href = links[i];
         //Check if already been here
-        if (!urlArray.includes(`${options.baseURL}/${href}`) && !urlArray.includes(`${href}`) && href !== null) {
+        if (!urlArray.includes(href)) {
           console.log('Href which is checked', href);
           // Go to internal Url
-          if (href.startsWith('#')) {
-            await page.goto(`${options.baseURL}${href}`, { waitUntil: 'networkidle0' });
-            // Push url which is checked
-            urlArray.push(`${options.baseURL}/${href}`);
-            let headline;
-            if (href === '#/' || '#') {
-              headline = 'first page';
-            } else {
-              headline = await getHeadline();
-            }
+          if (href.includes(options.baseURL)) {
+            await page.goto(href, { waitUntil: 'networkidle0' });
+            urlArray.push(href); // Push url which is checked
+
+            const headline = href.endsWith('#/') ? 'first page' : await getHeadline();
+
             if (headline === '404 - Page not found') {
               checkForRef.push(href);
             } else {
@@ -71,11 +64,14 @@ fdescribe('check for dead links in storefront', () => {
             // Go to external Url
           } else if (href.startsWith('http')) {
             const response = await page.goto(href, { timeout: 0 });
-            urlArray.push(href);
+            urlArray.push(href); // Push url which is checked
+
             // Check response
             if (response?.status() === 404) {
               checkForRef.push(href);
-            } else await page.goBack({ waitUntil: 'networkidle0' });
+            } else {
+              await page.goBack({ waitUntil: 'networkidle0' });
+            }
           } else {
             checkForRef.push(href);
           }
