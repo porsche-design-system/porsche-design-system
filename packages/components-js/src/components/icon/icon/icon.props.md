@@ -23,10 +23,10 @@
 
  - [p-button](#/components/button)
  - [p-button-pure](#/components/button-pure)
- - [p-checkbox-wrapper](#/components/checkbox-wrapper)
+ - [p-checkbox-wrapper](#/components/checkbox)
  - [p-link](#/components/link)
  - [p-link-pure](#/components/link-pure)
  - [p-link-social](#/components/link-social)
  - [p-pagination](#/components/pagination)
- - [p-select-wrapper](#/components/select-wrapper)
- - [p-text-field-wrapper](#/components/text-field-wrapper)
+ - [p-select-wrapper](#/components/select)
+ - [p-text-field-wrapper](#/components/text-field)

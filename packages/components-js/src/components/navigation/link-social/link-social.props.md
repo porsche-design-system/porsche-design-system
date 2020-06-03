@@ -23,4 +23,4 @@
 ### Depends on
 
 - [p-icon](#/components/icon)
-- [p-text](#/components/text)
+- [p-text](#/components/typography#text)

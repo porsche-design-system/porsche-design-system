@@ -37,7 +37,7 @@ A typical form in Porsche web applications is made up of five basic elements:
   … is crucial to give the user both a feeling of success when completing the form fields correctly as well as providing valuable support in case of a wrong entry.  
   
 5. **Call-to-actions**  
-  … are needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/action/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
+  … are needed to initiate further processing, for example submitting, sending or cancelling a form input. Most forms come with two call-to-actions. The successive (and therefore most important) button should be emphasized. As red is a very sensitive color in forms (due to error notifications) we highly recommend to go for a [Secondary Button](#/components/button) in grey, accompanied by a Tertiary Button for the cancelling / least important option. Button labels have an effect on the conversion rate and should always be short and descriptive, informing the user about what to expect. Something like "submit" is not clear enough. Good examples are "Get a free demo", "Create account" or "Subscribe now".  
 
   
  ![The five basic elements of Porsche forms](../../../assets/patterns-forms-dna.png)
@@ -305,8 +305,8 @@ Always stick to the defined [Accessibility criteria](#/accessibility/introductio
 
 ## Related components
 
-* [Text Field](#/components/form/text-field)
-* [Textarea](#/components/form/textarea)
-* [Checkbox](#/components/form/checkbox)
-* [Radio Button](#/components/form/radio-button)
-* [Select](#/components/form/select)
+* [Text Field](#/components/text-field)
+* [Textarea](#/components/textarea)
+* [Checkbox](#/components/checkbox)
+* [Radio Button](#/components/radio-button)
+* [Select](#/components/select)

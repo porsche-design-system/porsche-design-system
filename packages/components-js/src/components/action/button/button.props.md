@@ -26,4 +26,4 @@
 
 - [p-spinner](#/components/spinner)
 - [p-icon](#/components/icon)
-- [p-text](#/components/text)
+- [p-text](#/components/typography#text)

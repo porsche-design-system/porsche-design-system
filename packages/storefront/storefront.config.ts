@@ -54,6 +54,10 @@ export const config: StorefrontConfig = {
         () => import(`@/pages/news/updates-code.md`)
       ]
     },
+    'Versioning': [
+      // @ts-ignore
+      () => import(`@/pages/news/versioning.md`)
+    ],
     'Roadmap': [
       // @ts-ignore
       () => import(`@/pages/news/roadmap.md`)

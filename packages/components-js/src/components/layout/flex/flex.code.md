@@ -1,6 +1,6 @@
 # Flex
 
-The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the Flex container and Flex item. It can be used to quickly layout standard content blocks or components. It does not replace the [Grid](#/components/layout/grid) component which should be used to define basic page structures.
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the Flex container and Flex item. It can be used to quickly layout standard content blocks or components. It does not replace the [Grid](#/components/grid) component which should be used to define basic page structures.
 
 ### Flex
 Initialize standard Flexbox container to define Flex context.

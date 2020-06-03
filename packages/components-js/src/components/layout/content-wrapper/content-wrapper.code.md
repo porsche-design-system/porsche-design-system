@@ -3,7 +3,7 @@
 Defines the outer spacings between the content area and the left and right screen
 sides, as well as centering its content and setting a max-width.
 
-Can be used along with [Grid](#/components/layout/grid), [Flex](#/components/layout/flex) or with any custom content.
+Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or with any custom content.
 
 ### Width
 
