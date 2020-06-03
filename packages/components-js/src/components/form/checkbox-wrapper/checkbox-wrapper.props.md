@@ -19,5 +19,5 @@
 
 ### Depends on
 
-- [p-text](#/components/text)
+- [p-text](#/components/typography#text)
 - [p-icon](#/components/icon)

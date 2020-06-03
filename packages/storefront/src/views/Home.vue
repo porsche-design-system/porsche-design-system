@@ -21,7 +21,7 @@
           <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
           <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
-            <router-link to="/getting-started/about">Learn more about it</router-link>
+            <router-link to="/about/introduction">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>

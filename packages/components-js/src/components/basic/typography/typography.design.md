@@ -113,7 +113,7 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles provided work with a 4 px baseline unit that fits to the [8 px spacing system](#/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles provided work with a 4 px baseline unit that fits to the [8 px spacing system](#/components/spacing) in order to follow a harmonious overall vertical rhythm.
 
 ### Type Scale Calculator
   
@@ -133,7 +133,7 @@ Enter a font-size in px unit based on Porsche Type Scale.
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche color theme](#/basic/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche color theme](#/components/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
 
 ### Font weights
 
@@ -218,7 +218,7 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/basics/accessibility-criteria),
+As we stick to the common [WCAG 2.1 Standard](#/accessibility/guidelines),
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
