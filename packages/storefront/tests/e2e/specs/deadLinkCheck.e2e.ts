@@ -23,9 +23,9 @@ fdescribe('check for dead links in storefront', () => {
   const getLinks = () => page.$$('a[href],p-link[href],p-link-pure[href]');
 
   const scanForLinks = async (): Promise<string[]> =>
-    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref)))).map((x) =>
-      x!.startsWith('#') ? `${options.baseURL}/${x}` : x
-    );
+    (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref))))
+      .map((x) => (x!.startsWith('#') ? `${options.baseURL}/${x}` : x))
+      .filter((x) => urlWhitelist.indexOf(x) === -1);
 
   const getHeadline = async () =>
     (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
@@ -47,55 +47,55 @@ fdescribe('check for dead links in storefront', () => {
     'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml'
   ];
 
-  const urlArray: string[] = [...urlWhitelist];
+  /*  const urlArray: string[] = [...urlWhitelist];*/
 
   const invalidUrls: string[] = [];
 
+  const linkCheckLoop = async () => {
+    let links = await scanForLinks();
+
+    for (let i = 0; i < links.length; i++) {
+      const href = links[i];
+      //Check if already been here
+      console.log('Href which is checked', i, href);
+      // Go to internal Url
+      if (href.includes(options.baseURL)) {
+        await page.goto(href, { waitUntil: 'domcontentloaded' });
+
+        const headline =
+          href.endsWith('#/') || href.endsWith('#')
+            ? 'first page'
+            : href.includes('patterns/forms/')
+            ? await getPatternHeadline()
+            : await getHeadline();
+
+        if (headline === '404 - Page not found') {
+          invalidUrls.push(href);
+        } else {
+          const newLinks = await scanForLinks();
+          links = links.concat(newLinks).filter((v, i, a) => a.indexOf(v) === i);
+        }
+        // Go to external Url
+      } else if (href.startsWith('http')) {
+        const response = await page.goto(href);
+
+        // Check response
+        if (response?.status() === 404) {
+          invalidUrls.push(href);
+        } else {
+          await page.goBack({ waitUntil: 'networkidle0' });
+        }
+      } else {
+        invalidUrls.push(href);
+      }
+    }
+    return invalidUrls;
+  };
+
   fit('should check all a tags for correct response', async () => {
     await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
-    const linkCheckLoop = async () => {
-      const links = await scanForLinks();
-
-      for (let i = 0; i < links.length; i++) {
-        const href = links[i];
-        //Check if already been here
-        if (!urlArray.includes(href)) {
-          console.log('Href which is checked', href);
-          // Go to internal Url
-          if (href.includes(options.baseURL)) {
-            await page.goto(href, { waitUntil: 'domcontentloaded' });
-            urlArray.push(href); // Push url which is checked
-
-            const headline = href.endsWith('#/')
-              ? 'first page'
-              : href.includes('patterns/forms/')
-              ? await getPatternHeadline()
-              : await getHeadline();
-
-            if (headline === '404 - Page not found') {
-              invalidUrls.push(href);
-            } else {
-              await linkCheckLoop();
-            }
-            // Go to external Url
-          } else if (href.startsWith('http')) {
-            const response = await page.goto(href);
-            urlArray.push(href); // Push url which is checked
-
-            // Check response
-            if (response?.status() === 404) {
-              invalidUrls.push(href);
-            } else {
-              await page.goBack({ waitUntil: 'networkidle0' });
-            }
-          } else {
-            urlArray.push(href); // Push url which is checked
-            invalidUrls.push(href);
-          }
-        }
-      }
-    };
-    await linkCheckLoop();
-    console.log('Check Url if valid', invalidUrls);
+    const urls = await linkCheckLoop();
+    console.log('Invalid Urls', urls);
+    expect(urls.length).toBe(0);
   });
 });
