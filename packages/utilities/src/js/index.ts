@@ -1,2 +1,2 @@
-export * from './mixins';
+export * from './functions';
 export * from './variables';
