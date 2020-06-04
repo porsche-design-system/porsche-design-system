@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { color, headline, layout, spacing, text } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
@@ -6,6 +6,16 @@ const objectToArray = (object: Object): string[] =>
   Object.values(object)
     .map((x) => (typeof x === 'object' ? Object.values(x) : x))
     .flat();
+
+const Square = styled.div(({ background }: { background: CSSProperties['background'] }) => ({
+  display: 'inline-block',
+  background,
+  height: 50,
+  width: 50,
+  textAlign: 'center',
+  lineHeight: '50px',
+  fontSize: 10
+}));
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 
@@ -17,19 +27,7 @@ export const JsVariables = (): JSX.Element => {
   const renderSquares = (array: string[]) => (
     <div>
       {array.map((x, idx) => (
-        <div
-          key={idx}
-          style={{
-            background: x,
-            height: 50,
-            width: 50,
-            display: 'inline-block',
-            textAlign: 'center',
-            lineHeight: '50px',
-            fontSize: 10
-          }}
-          children={x}
-        />
+        <Square key={idx} background={x} children={x} />
       ))}
     </div>
   );
