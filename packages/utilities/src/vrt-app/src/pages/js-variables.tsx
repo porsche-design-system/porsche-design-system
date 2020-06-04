@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { color, headline, layout, spacing, text } from '@porsche-design-system/utilities';
+import { color, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToArray = (object: Object): string[] =>
@@ -18,6 +18,7 @@ const Square = styled.div(({ background }: { background: CSSProperties['backgrou
 }));
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
+const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
 
 export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
@@ -39,6 +40,11 @@ export const JsVariables = (): JSX.Element => {
 
       <h2>Dark Theme Colors</h2>
       {renderSquares(colorDarkArray)}
+
+      <h2>Titles</h2>
+      {styledTitles.map(({ name, Component }) => (
+        <Component key={name} children={`Title ${name}`} />
+      ))}
 
       <h2>Headlines</h2>
       {styledHeadlines.map((Comp, idx) => (
