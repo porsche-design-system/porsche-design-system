@@ -2,7 +2,7 @@ import 'jasmine';
 import {VisualRegressionTester} from '@porsche-design-system/visual-regression-tester';
 import {getVisualRegressionTester} from '../helpers/setup';
 
-describe('js-variables', () => {
+describe('scss', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
@@ -12,7 +12,7 @@ describe('js-variables', () => {
   it('should have no visual regression', async () => {
     expect(
       await vrt.test('match-js-scss', async () => {
-        await vrt.goTo('/tests/vrt/html/js-variables.test.html');
+        await vrt.goTo('/tests/vrt/html/scss.test.html');
       })
     ).toBeFalsy();
   });
