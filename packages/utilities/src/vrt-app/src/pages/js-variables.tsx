@@ -2,14 +2,14 @@ import React, { CSSProperties } from 'react';
 import { color, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
-const objectToArray = (object: Object): string[] =>
+const objectToFlatArray = (object: Object): string[] =>
   Object.values(object)
     .map((x) => (typeof x === 'object' ? Object.values(x) : x))
     .flat();
 
-const Square = styled.div(({ background }: { background: CSSProperties['background'] }) => ({
+const Square = styled.div(({ background }: { background?: CSSProperties['background'] }) => ({
   display: 'inline-block',
-  background,
+  background: background ?? 'grey',
   height: 50,
   width: 50,
   textAlign: 'center',
@@ -23,13 +23,21 @@ const Text = styled.div(text);
 
 export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
-  const colorArray = objectToArray(other);
-  const colorDarkArray = objectToArray(darkTheme);
+  const colorArray = objectToFlatArray(other);
+  const colorDarkArray = objectToFlatArray(darkTheme);
 
-  const renderSquares = (array: string[]) => (
+  const renderSquares = (colors: string[]) => (
     <div>
-      {array.map((x, idx) => (
+      {colors.map((x, idx) => (
         <Square key={idx} background={x} children={x} />
+      ))}
+    </div>
+  );
+
+  const renderSpacing = (obj: typeof spacing | typeof layout) => (
+    <div className="dark">
+      {Object.entries(obj).map(([key, val]) => (
+        <Square key={key} style={{ marginLeft: val }} children={key} />
       ))}
     </div>
   );
@@ -63,6 +71,16 @@ export const JsVariables = (): JSX.Element => {
       <div className="playground">
         <h2>Text</h2>
         <Text>Some Text</Text>
+      </div>
+
+      <div className="playground">
+        <h2>Spacing</h2>
+        {renderSpacing(spacing)}
+      </div>
+
+      <div className="playground">
+        <h2>Layout</h2>
+        {renderSpacing(layout)}
       </div>
     </>
   );
