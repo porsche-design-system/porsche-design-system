@@ -25,7 +25,7 @@ fdescribe('check for dead links in storefront', () => {
   const scanForLinks = async (): Promise<string[]> =>
     (await Promise.all((await getLinks()).map((x) => x.evaluate(getHref))))
       .map((x) => (x!.startsWith('#') ? `${options.baseURL}/${x}` : x))
-      .filter((x) => urlWhitelist.indexOf(x) === -1);
+      .filter((x) => whitelistedUrls.indexOf(x) === -1);
 
   const getHeadline = async () =>
     (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
@@ -34,7 +34,7 @@ fdescribe('check for dead links in storefront', () => {
     (await page.waitForSelector('p-headline[tag="h1"]')) && page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
 
   // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
-  const urlWhitelist: string[] = [
+  const whitelistedUrls: string[] = [
     'https://github.com/porscheui/porsche-design-system',
     'http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch',
     'https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip',
@@ -47,17 +47,14 @@ fdescribe('check for dead links in storefront', () => {
     'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml'
   ];
 
-  /*  const urlArray: string[] = [...urlWhitelist];*/
-
-  const invalidUrls: string[] = [];
-
   const linkCheckLoop = async () => {
+    const invalidUrls: string[] = [];
     let links = await scanForLinks();
 
     for (let i = 0; i < links.length; i++) {
       const href = links[i];
-      //Check if already been here
-      console.log('Href which is checked', i, href);
+      console.log('Checking', `[${i + 1}/${links.length}]`, href);
+
       // Go to internal Url
       if (href.includes(options.baseURL)) {
         await page.goto(href, { waitUntil: 'domcontentloaded' });
@@ -94,8 +91,9 @@ fdescribe('check for dead links in storefront', () => {
 
   fit('should check all a tags for correct response', async () => {
     await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
-    const urls = await linkCheckLoop();
-    console.log('Invalid Urls', urls);
-    expect(urls.length).toBe(0);
+    const invalidUrls = await linkCheckLoop();
+    console.log('Whitelisted Urls', whitelistedUrls);
+    console.log('Invalid Urls', invalidUrls);
+    expect(invalidUrls.length).toBe(0);
   });
 });
