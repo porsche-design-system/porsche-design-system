@@ -19,6 +19,7 @@ const Square = styled.div(({ background }: { background: CSSProperties['backgrou
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
+const Text = styled.div(text);
 
 export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
@@ -35,21 +36,34 @@ export const JsVariables = (): JSX.Element => {
 
   return (
     <>
-      <h2>Default Colors</h2>
-      {renderSquares(colorArray)}
+      <div className="playground">
+        <h2>Default Colors</h2>
+        {renderSquares(colorArray)}
+      </div>
 
-      <h2>Dark Theme Colors</h2>
-      {renderSquares(colorDarkArray)}
+      <div className="playground">
+        <h2>Dark Theme Colors</h2>
+        {renderSquares(colorDarkArray)}
+      </div>
 
-      <h2>Titles</h2>
-      {styledTitles.map(({ name, Component }) => (
-        <Component key={name} children={`Title ${name}`} />
-      ))}
+      <div className="playground">
+        <h2>Titles</h2>
+        {styledTitles.map(({ name, Component }) => (
+          <Component key={name} children={`Title ${name}`} />
+        ))}
+      </div>
 
-      <h2>Headlines</h2>
-      {styledHeadlines.map((Comp, idx) => (
-        <Comp key={idx} children={`Headline${idx + 1}`} />
-      ))}
+      <div className="playground">
+        <h2>Headlines</h2>
+        {styledHeadlines.map((Comp, idx) => (
+          <Comp key={idx} children={`Headline${idx + 1}`} />
+        ))}
+      </div>
+
+      <div className="playground">
+        <h2>Text</h2>
+        <Text>Some Text</Text>
+      </div>
     </>
   );
 };
