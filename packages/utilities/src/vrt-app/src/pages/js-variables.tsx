@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { color, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
+import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
@@ -34,7 +34,7 @@ export const JsVariables = (): JSX.Element => {
     </div>
   );
 
-  const renderSpacing = (obj: typeof spacing | typeof layout) => (
+  const renderSpacingOrLayout = (obj: typeof spacing | typeof layout) => (
     <div className="dark">
       {Object.entries(obj).map(([key, val]) => (
         <Square key={key} style={{ marginLeft: val }} children={key} />
@@ -52,6 +52,20 @@ export const JsVariables = (): JSX.Element => {
       <div className="playground">
         <h2>Dark Theme Colors</h2>
         {renderSquares(colorDarkArray)}
+      </div>
+
+      <div className="playground">
+        <h2>Font Weights</h2>
+        {Object.entries(font.weight).map(([key, val]) => (
+          <Text key={key} style={{ fontWeight: val }} children={`Font ${key}`} />
+        ))}
+      </div>
+
+      <div className="playground">
+        <h2>Font Sizes</h2>
+        {Object.entries(font.size).map(([key, val]) => (
+          <Text key={key} style={{ fontSize: val }} children={`Font ${key}`} />
+        ))}
       </div>
 
       <div className="playground">
@@ -75,12 +89,12 @@ export const JsVariables = (): JSX.Element => {
 
       <div className="playground">
         <h2>Spacing</h2>
-        {renderSpacing(spacing)}
+        {renderSpacingOrLayout(spacing)}
       </div>
 
       <div className="playground">
         <h2>Layout</h2>
-        {renderSpacing(layout)}
+        {renderSpacingOrLayout(layout)}
       </div>
     </>
   );
