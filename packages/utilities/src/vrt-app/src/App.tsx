@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
 import { JsVariables, ScssVariables } from './pages';
 import './styles.css';
 
@@ -15,12 +15,12 @@ const routes: RouteProps[] = [
 ];
 
 export const App = (): JSX.Element => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       {routes.map((route, idx) => (
         <Route key={idx} {...route} exact />
       ))}
       <Redirect path="*" to={routes[0].path as string} />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
