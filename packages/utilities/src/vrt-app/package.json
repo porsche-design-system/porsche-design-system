@@ -12,9 +12,8 @@
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

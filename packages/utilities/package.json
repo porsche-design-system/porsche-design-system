@@ -40,7 +40,7 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423",
+    "start:vrt-server": "yarn build && yarn --cwd src/vrt-app build && http-server src/vrt-app/build -p 61423 -P http://localhost:61423",
     "build": "rm -rf ./dist && yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
