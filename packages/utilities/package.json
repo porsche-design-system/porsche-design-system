@@ -40,14 +40,18 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
+    "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423",
     "build": "rm -rf ./dist && yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "test": "jest"
+    "test": "yarn test:unit && yarn test:vrt",
+    "test:unit": "jest -c='tests/unit/config/jest.config.js'",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61423 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
+    "jasmine": "^3.5.0",
     "jest": "^26.0.1",
     "ts-jest": "^26.0.0",
     "typescript": "^3.9.2"

@@ -1,4 +1,4 @@
-import { convertLineHeight, convertToRem, pxToRem, remToPx } from '../../src/js/helper';
+import { convertLineHeight, convertToRem, pxToRem, remToPx } from '../../../src/js/helper';
 
 describe('pxToRem()', () => {
   it('should return correct rem value absolute px', () => {
