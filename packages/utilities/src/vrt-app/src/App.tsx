@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
 import { JsVariables, ScssVariables } from './pages';
+import './styles.css';
 
 const routes: RouteProps[] = [
   {
