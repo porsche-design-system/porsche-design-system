@@ -20,7 +20,7 @@ export class Button {
   @Prop() public type?: ButtonType = 'button';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ reflect: true }) public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
