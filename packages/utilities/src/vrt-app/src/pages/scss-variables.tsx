@@ -95,8 +95,8 @@ export const ScssVariables = (): JSX.Element => (
 
     <div className="playground">
       <h2>Font Weights</h2>
-      {fontWeights.map((x, index) => (
-        <div key={index} className={cx('font', `font--${x}`)} children={`Font ${x}`} />
+      {fontWeights.map((value) => (
+        <div key={value} className={cx('font', `font--${value}`)} children={`Font ${value}`} />
       ))}
     </div>
 
