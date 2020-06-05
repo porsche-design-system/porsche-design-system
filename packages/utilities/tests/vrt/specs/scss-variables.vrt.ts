@@ -1,7 +1,7 @@
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('scss', () => {
+describe('scss-variables', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
