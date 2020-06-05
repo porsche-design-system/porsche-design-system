@@ -64,7 +64,7 @@ export const JsVariables = (): JSX.Element => {
       <div className="playground">
         <h2>Font Sizes</h2>
         {Object.entries(font.size).map(([key, val]) => (
-          <Text key={key} style={{ fontSize: val }} children={`Font ${key}`} />
+          <Text key={key} style={val} children={`Font ${key}`} />
         ))}
       </div>
 

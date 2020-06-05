@@ -181,6 +181,7 @@
 }
 
 .font {
+  @include p-text();
   font-family: $p-font-primary;
 
   &--weight {
@@ -199,73 +200,73 @@
   }
 
   &--size-12 {
-    font-size: $p-font-size-12;
+    @include p-text($p-font-size-12);
   }
   &--size-16 {
-    font-size: $p-font-size-16;
+    @include p-text($p-font-size-16);
   }
   &--size-18 {
-    font-size: $p-font-size-18;
+    @include p-text($p-font-size-18);
   }
   &--size-20 {
-    font-size: $p-font-size-20;
+    @include p-text($p-font-size-20);
   }
   &--size-22 {
-    font-size: $p-font-size-22;
+    @include p-text($p-font-size-22);
   }
   &--size-24 {
-    font-size: $p-font-size-24;
+    @include p-text($p-font-size-24);
   }
   &--size-28 {
-    font-size: $p-font-size-28;
+    @include p-text($p-font-size-28);
   }
   &--size-30 {
-    font-size: $p-font-size-30;
+    @include p-text($p-font-size-30);
   }
   &--size-32 {
-    font-size: $p-font-size-32;
+    @include p-text($p-font-size-32);
   }
   &--size-36 {
-    font-size: $p-font-size-36;
+    @include p-text($p-font-size-36);
   }
   &--size-42 {
-    font-size: $p-font-size-42;
+    @include p-text($p-font-size-42);
   }
   &--size-44 {
-    font-size: $p-font-size-44;
+    @include p-text($p-font-size-44);
   }
   &--size-48 {
-    font-size: $p-font-size-48;
+    @include p-text($p-font-size-48);
   }
   &--size-52 {
-    font-size: $p-font-size-52;
+    @include p-text($p-font-size-52);
   }
   &--size-60 {
-    font-size: $p-font-size-60;
+    @include p-text($p-font-size-60);
   }
   &--size-62 {
-    font-size: $p-font-size-62;
+    @include p-text($p-font-size-62);
   }
   &--size-72 {
-    font-size: $p-font-size-72;
+    @include p-text($p-font-size-72);
   }
   &--size-84 {
-    font-size: $p-font-size-84;
+    @include p-text($p-font-size-84);
   }
   &--size-small {
-    font-size: $p-text-size-x-small;
+    @include p-text($p-text-size-small);
   }
   &--size-x-small {
-    font-size: $p-text-size-small;
+    @include p-text($p-text-size-x-small);
   }
   &--size-medium {
-    font-size: $p-text-size-medium;
+    @include p-text($p-text-size-medium);
   }
   &--size-large {
-    font-size: $p-text-size-large;
+    @include p-text($p-text-size-large);
   }
   &--size-x-large {
-    font-size: $p-text-size-x-large;
+    @include p-text($p-text-size-x-large);
   }
 }
 

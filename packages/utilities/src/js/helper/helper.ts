@@ -42,6 +42,7 @@ export const convertLineHeight = (fontSize: string): number => {
   const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSize) : fontSizeValue;
 
   const fontSizeLength = parseFloat(fontSizePx);
+
   const e = 2.71828;
   const exactLineHeightFactor = 0.911 / (2.97 + 0.005 * Math.pow(e, 0.2 * fontSizeLength)) + 1.2;
   const exactLineHeightPx = fontSizeLength * exactLineHeightFactor;
@@ -52,5 +53,6 @@ export const convertLineHeight = (fontSize: string): number => {
   }
 
   const fittedLineHeightPx = exactLineHeightPx - remainingPx;
-  return fittedLineHeightPx / fontSizeLength;
+  const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
+  return Math.round(fittedLineHeightFactor * 100000) / 100000;
 };
