@@ -3,6 +3,7 @@
     <router-view/>
   </main>
   <div v-else id="app">
+    <Banner/>
     <div class="content">
       <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <div>
@@ -30,6 +31,7 @@
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
   import Menu from '@/components/Menu.vue';
+  import Banner from '@/components/Banner.vue'
 
   @Component({
     components: {
@@ -37,7 +39,8 @@
       Header,
       Sidebar,
       Footer,
-      Menu
+      Menu,
+      Banner,
     }
   })
   export default class App extends Vue {
