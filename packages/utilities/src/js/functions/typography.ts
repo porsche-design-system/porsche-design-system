@@ -1,65 +1,64 @@
 import { font } from '../variables';
 import { mediaQuery } from './breakpoints';
-import { typeScale } from '../helper';
 
 export const title = {
   large: {
-    ...typeScale(font.size['32']),
+    ...font.size['32'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold,
-    [mediaQuery('s', 'm')]: typeScale(font.size['42']),
-    [mediaQuery('m', 'l')]: typeScale(font.size['52']),
-    [mediaQuery('l', 'xl')]: typeScale(font.size['62']),
-    [mediaQuery('xl')]: typeScale(font.size['72'])
+    [mediaQuery('s', 'm')]: font.size['42'],
+    [mediaQuery('m', 'l')]: font.size['52'],
+    [mediaQuery('l', 'xl')]: font.size['62'],
+    [mediaQuery('xl')]: font.size['72']
   }
 };
 
 export const headline = {
   '1': {
-    ...typeScale(font.size['28']),
+    ...font.size['28'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold,
-    [mediaQuery('s', 'm')]: typeScale(font.size['36']),
-    [mediaQuery('m', 'l')]: typeScale(font.size['44']),
-    [mediaQuery('l', 'xl')]: typeScale(font.size['52']),
-    [mediaQuery('xl')]: typeScale(font.size['60'])
+    [mediaQuery('s', 'm')]: font.size['36'],
+    [mediaQuery('m', 'l')]: font.size['44'],
+    [mediaQuery('l', 'xl')]: font.size['52'],
+    [mediaQuery('xl')]: font.size['60']
   },
   '2': {
-    ...typeScale(font.size['24']),
+    ...font.size['24'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold,
-    [mediaQuery('s', 'm')]: typeScale(font.size['30']),
-    [mediaQuery('m', 'l')]: typeScale(font.size['36']),
-    [mediaQuery('l', 'xl')]: typeScale(font.size['42']),
-    [mediaQuery('xl')]: typeScale(font.size['48'])
+    [mediaQuery('s', 'm')]: font.size['30'],
+    [mediaQuery('m', 'l')]: font.size['36'],
+    [mediaQuery('l', 'xl')]: font.size['42'],
+    [mediaQuery('xl')]: font.size['48']
   },
   '3': {
-    ...typeScale(font.size['20']),
+    ...font.size['20'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold,
-    [mediaQuery('s', 'm')]: typeScale(font.size['24']),
-    [mediaQuery('m', 'l')]: typeScale(font.size['28']),
-    [mediaQuery('l', 'xl')]: typeScale(font.size['32']),
-    [mediaQuery('xl')]: typeScale(font.size['36'])
+    [mediaQuery('s', 'm')]: font.size['24'],
+    [mediaQuery('m', 'l')]: font.size['28'],
+    [mediaQuery('l', 'xl')]: font.size['32'],
+    [mediaQuery('xl')]: font.size['36']
   },
   '4': {
-    ...typeScale(font.size['16']),
+    ...font.size['16'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold,
-    [mediaQuery('s', 'm')]: typeScale(font.size['18']),
-    [mediaQuery('m', 'l')]: typeScale(font.size['20']),
-    [mediaQuery('l', 'xl')]: typeScale(font.size['22']),
-    [mediaQuery('xl')]: typeScale(font.size['24'])
+    [mediaQuery('s', 'm')]: font.size['18'],
+    [mediaQuery('m', 'l')]: font.size['20'],
+    [mediaQuery('l', 'xl')]: font.size['22'],
+    [mediaQuery('xl')]: font.size['24']
   },
   '5': {
-    ...typeScale(font.size['16']),
+    ...font.size['16'],
     fontFamily: font.family,
     fontWeight: font.weight.semibold
   }
 };
 
 export const text = {
-  ...typeScale(font.size.small),
+  ...font.size.small,
   fontFamily: font.family,
   fontWeight: font.weight.regular
 };

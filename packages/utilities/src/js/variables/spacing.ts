@@ -9,7 +9,7 @@ export const spacing = {
   '40': `${pxToRem('40px')}`,
   '48': `${pxToRem('48px')}`,
   '56': `${pxToRem('56px')}`,
-  '46': `${pxToRem('46px')}`,
+  '64': `${pxToRem('64px')}`,
   '72': `${pxToRem('72px')}`,
   '80': `${pxToRem('80px')}`
 };

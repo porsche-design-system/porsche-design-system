@@ -66,21 +66,14 @@ export const ScssVariables = (): JSX.Element => {
     'size-62': '62',
     'size-72': '72',
     'size-84': '84',
-    'size-small': 'small',
     'size-x-small': 'xSmall',
+    'size-small': 'small',
     'size-medium': 'medium',
     'size-large': 'large',
     'size-x-large': 'xLarge'
   };
 
   const weightArray = ['thin', 'regular', 'semibold', 'bold'];
-  const textArray = {
-    'size-small': 'small',
-    'size-x-small': 'xSmall',
-    'size-medium': 'medium',
-    'size-large': 'large',
-    'size-x-large': 'xLarge'
-  };
 
   const headlineArray = {
     'headline-1': '1',
@@ -105,8 +98,8 @@ export const ScssVariables = (): JSX.Element => {
   };
 
   const layoutArray = {
-    small: 'small',
     'x-small': 'xSmall',
+    small: 'small',
     medium: 'medium',
     large: 'large',
     'x-large': 'xLarge',
@@ -116,7 +109,7 @@ export const ScssVariables = (): JSX.Element => {
   return (
     <>
       <div className="playground">
-        <h2>Default Theme Colors</h2>
+        <h2>Default Colors</h2>
         {Object.entries(defaultColorArray).map(([key, value]) => (
           <div key={key} className={cx('square', `square--color-${key}`)}>
             {value}

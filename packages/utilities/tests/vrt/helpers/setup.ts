@@ -7,7 +7,7 @@ let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
-  viewports: [320, 480, 760, 1000, 1300, 1760],
+  viewports: [320, 480, 760, 1000, 1300, 1760, 1920],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
