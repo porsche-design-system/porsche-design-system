@@ -1,0 +1,292 @@
+@import '../../../scss/_index.scss';
+
+.square {
+  display: inline-block;
+  background: grey;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 10px;
+
+  &--spacing-4 {
+    margin-left: $p-spacing-4;
+  }
+  &--spacing-8 {
+    margin-left: $p-spacing-8;
+  }
+  &--spacing-16 {
+    margin-left: $p-spacing-16;
+  }
+  &--spacing-24 {
+    margin-left: $p-spacing-24;
+  }
+  &--spacing-32 {
+    margin-left: $p-spacing-32;
+  }
+  &--spacing-40 {
+    margin-left: $p-spacing-40;
+  }
+  &--spacing-48 {
+    margin-left: $p-spacing-48;
+  }
+  &--spacing-56 {
+    margin-left: $p-spacing-56;
+  }
+  &--spacing-64 {
+    margin-left: $p-spacing-64;
+  }
+  &--spacing-72 {
+    margin-left: $p-spacing-72;
+  }
+  &--spacing-80 {
+    margin-left: $p-spacing-80;
+  }
+
+  &--layout {
+    &--x-small {
+      margin-left: $p-layout-x-small;
+    }
+    &--small {
+      margin-left: $p-layout-small;
+    }
+    &--medium {
+      margin-left: $p-layout-medium;
+    }
+    &--large {
+      margin-left: $p-layout-large;
+    }
+    &--x-large {
+      margin-left: $p-layout-x-large;
+    }
+    &--xx-large {
+      margin-left: $p-layout-xx-large;
+    }
+  }
+
+  &--color-theme-light-brand {
+    background: $p-color-theme-light-brand;
+  }
+  &--color-theme-light-default {
+    background: $p-color-theme-light-default;
+  }
+  &--color-theme-light-surface {
+    background: $p-color-theme-light-surface;
+  }
+  &--color-theme-light-background {
+    background: $p-color-theme-light-background;
+  }
+  &--color-theme-light-neutral-contrast-high {
+    background: $p-color-theme-light-neutral-contrast-high;
+  }
+  &--color-theme-light-neutral-contrast-medium {
+    background: $p-color-theme-light-neutral-contrast-medium;
+  }
+  &--color-theme-light-neutral-contrast-low {
+    background: $p-color-theme-light-neutral-contrast-low;
+  }
+  &--color-theme-light-notification-success {
+    background: $p-color-theme-light-notification-success;
+  }
+  &--color-theme-light-notification-warning {
+    background: $p-color-theme-light-notification-warning;
+  }
+  &--color-theme-light-notification-error {
+    background: $p-color-theme-light-notification-error;
+  }
+  &--color-theme-light-state-hover {
+    background: $p-color-theme-light-state-hover;
+  }
+  &--color-theme-light-state-active {
+    background: $p-color-theme-light-state-active;
+  }
+  &--color-theme-light-state-focus {
+    background: $p-color-theme-light-state-focus;
+  }
+  &--color-theme-light-state-disabled {
+    background: $p-color-theme-light-state-disabled;
+  }
+  &--color-theme-dark-brand {
+    background: $p-color-theme-dark-brand;
+  }
+  &--color-theme-dark-default {
+    background: $p-color-theme-dark-default;
+  }
+  &--color-theme-dark-surface {
+    background: $p-color-theme-dark-surface;
+  }
+  &--color-theme-dark-background {
+    background: $p-color-theme-dark-background;
+  }
+  &--color-theme-dark-neutral-contrast-high {
+    background: $p-color-theme-dark-neutral-contrast-high;
+  }
+  &--color-theme-dark-neutral-contrast-medium {
+    background: $p-color-theme-dark-neutral-contrast-medium;
+  }
+  &--color-theme-dark-neutral-contrast-low {
+    background: $p-color-theme-dark-neutral-contrast-low;
+  }
+  &--color-theme-dark-notification-success {
+    background: $p-color-theme-dark-notification-success;
+  }
+  &--color-theme-dark-notification-warning {
+    background: $p-color-theme-dark-notification-warning;
+  }
+  &--color-theme-dark-notification-error {
+    background: $p-color-theme-dark-notification-error;
+  }
+  &--color-theme-dark-state-hover {
+    background: $p-color-theme-dark-state-hover;
+  }
+  &--color-theme-dark-state-active {
+    background: $p-color-theme-dark-state-active;
+  }
+  &--color-theme-dark-state-focus {
+    background: $p-color-theme-dark-state-focus;
+  }
+  &--color-theme-dark-state-disabled {
+    background: $p-color-theme-dark-state-disabled;
+  }
+  &--color-external-facebook {
+    background: $p-color-external-facebook;
+  }
+  &--color-external-google {
+    background: $p-color-external-google;
+  }
+  &--color-external-instagram {
+    background: $p-color-external-instagram;
+  }
+  &--color-external-linkedin {
+    background: $p-color-external-linkedin;
+  }
+  &--color-external-pinterest {
+    background: $p-color-external-pinterest;
+  }
+  &--color-external-twitter {
+    background: $p-color-external-twitter;
+  }
+  &--color-external-wechat {
+    background: $p-color-external-wechat;
+  }
+  &--color-external-whatsapp {
+    background: $p-color-external-whatsapp;
+  }
+  &--color-external-xing {
+    background: $p-color-external-xing;
+  }
+  &--color-external-youtube {
+    background: $p-color-external-youtube;
+  }
+}
+
+.font {
+  font-family: $p-font-primary;
+
+  &--weight {
+    &--thin {
+      font-weight: $p-font-weight-thin;
+    }
+    &--regular {
+      font-weight: $p-font-weight-regular;
+    }
+    &--semibold {
+      font-weight: $p-font-weight-semibold;
+    }
+    &--bold {
+      font-weight: $p-font-weight-bold;
+    }
+  }
+
+  &--size-12 {
+    font-size: $p-font-size-12;
+  }
+  &--size-16 {
+    font-size: $p-font-size-16;
+  }
+  &--size-18 {
+    font-size: $p-font-size-18;
+  }
+  &--size-20 {
+    font-size: $p-font-size-20;
+  }
+  &--size-22 {
+    font-size: $p-font-size-22;
+  }
+  &--size-24 {
+    font-size: $p-font-size-24;
+  }
+  &--size-28 {
+    font-size: $p-font-size-28;
+  }
+  &--size-30 {
+    font-size: $p-font-size-30;
+  }
+  &--size-32 {
+    font-size: $p-font-size-32;
+  }
+  &--size-36 {
+    font-size: $p-font-size-36;
+  }
+  &--size-42 {
+    font-size: $p-font-size-42;
+  }
+  &--size-44 {
+    font-size: $p-font-size-44;
+  }
+  &--size-48 {
+    font-size: $p-font-size-48;
+  }
+  &--size-52 {
+    font-size: $p-font-size-52;
+  }
+  &--size-60 {
+    font-size: $p-font-size-60;
+  }
+  &--size-62 {
+    font-size: $p-font-size-62;
+  }
+  &--size-72 {
+    font-size: $p-font-size-72;
+  }
+  &--size-84 {
+    font-size: $p-font-size-84;
+  }
+  &--size-small {
+    font-size: $p-text-size-x-small;
+  }
+  &--size-x-small {
+    font-size: $p-text-size-small;
+  }
+  &--size-medium {
+    font-size: $p-text-size-medium;
+  }
+  &--size-large {
+    font-size: $p-text-size-large;
+  }
+  &--size-x-large {
+    font-size: $p-text-size-x-large;
+  }
+}
+
+.large-title {
+  @include p-large-title;
+}
+
+.headlines {
+  &--headline-1 {
+    @include p-headline-1;
+  }
+  &--headline-2 {
+    @include p-headline-2;
+  }
+  &--headline-3 {
+    @include p-headline-3;
+  }
+  &--headline-4 {
+    @include p-headline-4;
+  }
+  &--headline-5 {
+    @include p-headline-5;
+  }
+}
