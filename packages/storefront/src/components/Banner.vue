@@ -1,12 +1,14 @@
 <template>
-  <div id="ie11Banner">
+  <div id="ie11Banner" v-if="isActive">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false">
       <path d="M11.49 13h1.01l.5-6h-2l.49 6zM11 15h2v2h-2z"></path>
       <path d="M12 3a9 9 0 109 9 9 9 0 00-9-9zm0 17a8 8 0 118-8 8 8 0 01-8 8z"></path>
     </svg>
     <p>
       Please note that the Porsche Design System no longer supports Internet Explorer 11. Support will expires latest by
-      1st of Oktober 2020. We recommend upgrading to the latest
+      1st of Oktober 2020.
+      <br />
+      We recommend upgrading to the latest
       <a href="https://www.google.com/intl/en/chrome/" target="_blank">Chrome</a>,
       <a href="microsoft-edge:aktuelle url">Microsoft Edge Chromium</a>,
       <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> or
@@ -19,7 +21,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Banner extends Vue {}
+export default class Banner extends Vue {
+  private detectIe11 = (): boolean => {
+    return !!window.MSInputMethodContext && !!document.documentMode;
+  };
+
+  public isActive = this.detectIe11();
+}
 </script>
 
 <style scoped lang="css">
@@ -38,7 +46,6 @@ export default class Banner extends Vue {}
   color: red;
 }
 #ie11Banner p {
-  width: 748px;
   height: 48px;
   color: rgb(0, 0, 0);
   font-size: 16px;
