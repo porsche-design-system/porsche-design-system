@@ -10,9 +10,13 @@ describe('js-variables', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await vrt.test('match-js-scss', async () => {
-        await vrt.goTo('/#/js-variables');
-      })
+      await vrt.test(
+        'overview',
+        async () => {
+          await vrt.goTo('/#/js-variables');
+        },
+        { regressionSuffix: 'js' }
+      )
     ).toBeFalsy();
   });
 });

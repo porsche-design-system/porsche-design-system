@@ -2760,6 +2760,15 @@
     jimp "^0.10.3"
     puppeteer "^3.0.4"
 
+"@porsche-design-system/visual-regression-tester@^2.0.0":
+  version "2.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-2.0.0.tgz#f34e0b3c5a8a1c13f400c761c506cf3a60c91a7b"
+  integrity sha1-804LPFqKHBP0AMdhxQbPOmDJGns=
+  dependencies:
+    del "^5.1.0"
+    jimp "^0.10.3"
+    puppeteer "^3.0.4"
+
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.2.tgz#d6013a3514407b470ee607914bf31d6bff0697d2"

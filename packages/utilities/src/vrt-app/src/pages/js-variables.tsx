@@ -21,7 +21,7 @@ const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
 const Text = styled.div(text);
 
-export const JsVariables = (): JSX.Element => {
+  export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
   const colorArray = objectToFlatArray(other);
   const colorDarkArray = objectToFlatArray(darkTheme);

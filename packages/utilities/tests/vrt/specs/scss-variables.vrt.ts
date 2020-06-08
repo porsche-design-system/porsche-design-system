@@ -10,9 +10,13 @@ describe('scss-variables', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await vrt.test('match-js-scss', async () => {
-        await vrt.goTo('/#/scss-variables');
-      })
+      await vrt.test(
+        'overview',
+        async () => {
+          await vrt.goTo('/#/scss-variables');
+        },
+        { regressionSuffix: 'scss' }
+      )
     ).toBeFalsy();
   });
 });
