@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import { getBrowser, options } from '../helpers/setup';
 
-fdescribe('check for dead links in storefront', () => {
+describe('check for dead links in storefront', () => {
   let page: Page;
 
   let originalJasminTimeout: number;
@@ -87,7 +87,7 @@ fdescribe('check for dead links in storefront', () => {
     return invalidUrls;
   };
 
-  fit('should check all a tags for correct response', async () => {
+  it('should check all a tags for correct response', async () => {
     await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
     const invalidUrls = await linkCheckLoop();
     console.log('Whitelisted Urls', whitelistedUrls);
