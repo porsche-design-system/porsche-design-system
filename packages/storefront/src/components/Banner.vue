@@ -19,8 +19,7 @@
         <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> instead - and get back on
         track.
       </p>
-      <p-link variant="tertiary" icon="external" href="microsoft-edge:window.location.href"> Open Page in Microsoft Edge</p-link>
-      <!--<button onclick="console.log(window.location.href)">
+      <a id="edgeButton" href="microsoft-edge:window.location.href">
         <svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="margin: 0; width:24px; height: 24px">
           <path d="M15 4v1h3.08L10 13.2l.8.8L19 5.92V9h1V4h-5z"></path>
           <path d="M19 19H5V5h7V4H4v16h16v-8h-1v7z"></path>
@@ -28,7 +27,7 @@
         <span>
           Open Page in Microsoft Edge
         </span>
-      </button>-->
+      </a>
     </div>
   </div>
 </template>
@@ -42,12 +41,17 @@ export default class Banner extends Vue {
     return !!window.MSInputMethodContext && !!document.documentMode;
   };
 
-  private location = window.location.href;
+  private detectEdge = (): boolean => {
+    return window.navigator.userAgent.indexOf('Edge') > -1;
+  };
 
-  public isActive = this.detectIe11();
+  private isIE11: boolean = this.detectIe11();
+  private isEdge: boolean = this.detectEdge();
+
+  private location = window.location.href;
+  public isActive = true;
 }
 </script>
-
 <style scoped lang="css">
 #ie11Banner {
   background: #fff5e5;
@@ -80,10 +84,13 @@ export default class Banner extends Vue {
   vertical-align: top;
 }
 
-#ie11Banner p-link {
-  margin: 19px 226px 21px 512px;
+@media (max-width: 600px) {
+  #edgeButton {
+    display: none;
+  }
 }
-/*#ie11Banner button {
+
+#edgeButton {
   width: 238px;
   height: 48px;
   border: 1px solid rgb(50, 54, 57);
@@ -91,7 +98,8 @@ export default class Banner extends Vue {
   margin: 19px 226px 21px 512px;
   vertical-align: top;
   background-color: Transparent;
-}*/
+}
+
 #ie11Banner span {
   width: 260px;
   height: 24px;
