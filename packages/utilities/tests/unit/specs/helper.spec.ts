@@ -133,7 +133,7 @@ describe('convertLineHeight()', () => {
 
   it('should return correct lineHeight for 28px', () => {
     const lineHeight = convertLineHeight('28px');
-    expect(lineHeight).toBe(1.5);
+    expect(lineHeight).toBe(1.42857);
   });
 
   it('should return correct lineHeight for 30px', () => {
