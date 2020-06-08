@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a bug report
 title: ''
-labels: bug
+labels: bug 🛑
 assignees: ''
 
 ---
@@ -23,8 +23,5 @@ A clear and concise description of what you expected to happen.
 **Screenshots**  
 If applicable, add screenshots to help explain your problem.
 
-**Test Device (please complete the following information):**  
- - Device: [e.g. iPhone6, desktop]
- - OS: [e.g. iOS, Windows]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+**Test Environment (please complete the following information):**  
+Platform/Browser/Version: [e.g. iOS Safari 11, macOS Chrome 81]
