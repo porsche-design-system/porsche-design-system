@@ -42,7 +42,7 @@ This should be the variant of your choice if the Button Pure must be supplemente
 However, we recommend that you only use this variant in cases where the user requires additional information. 
 
 The standard variant will be used on a monochrome background, whereas the highlight variant should be used 
-on a polychrome background (e.g.on images) for better comprehensibility and accessibility.
+on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
 
 ---
 
