@@ -6,14 +6,12 @@ fdescribe('check for dead links in storefront', () => {
 
   let originalJasminTimeout: number;
 
-  beforeEach(function() {
+  beforeEach(() => {
     originalJasminTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 2147483647;
   });
 
-  afterEach(function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalJasminTimeout;
-  });
+  afterEach(() => jasmine.DEFAULT_TIMEOUT_INTERVAL = originalJasminTimeout);
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
