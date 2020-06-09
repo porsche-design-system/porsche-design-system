@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
-import { BreakpointCustomizable } from "./utils";
-import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
+import { ButtonType, FormState, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
+import { BreakpointCustomizable, } from "./utils";
+import { NumberOfPageLinks, } from "./components/navigation/pagination/pagination";
 export namespace Components {
     interface PButton {
         /**
@@ -45,7 +45,7 @@ export namespace Components {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: "primary" | "secondary" | "tertiary";
     }
     interface PButtonPure {
         /**
@@ -111,17 +111,17 @@ export namespace Components {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: "basic" | "extended" | "fluid";
     }
     interface PDivider {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low";
         /**
           * Defines orientation.
          */
-        "orientation"?: 'vertical' | 'horizontal';
+        "orientation"?: "vertical" | "horizontal";
         /**
           * Adapts color depending on theme.
          */
@@ -131,17 +131,15 @@ export namespace Components {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-  'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: BreakpointCustomizable<"stretch" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly">;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: BreakpointCustomizable<"stretch" | "flex-start" | "flex-end" | "center" | "baseline">;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
@@ -149,23 +147,21 @@ export namespace Components {
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-  'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: BreakpointCustomizable<"flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly">;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: BreakpointCustomizable<"nowrap" | "wrap" | "wrap-reverse">;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'>;
+        "alignSelf"?: BreakpointCustomizable<"auto" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch">;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal">;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
@@ -173,9 +169,7 @@ export namespace Components {
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-  'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: BreakpointCustomizable<"none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters">;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
@@ -183,15 +177,13 @@ export namespace Components {
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-  'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: BreakpointCustomizable<"auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full">;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
     }
     interface PGridItem {
         /**
@@ -207,11 +199,11 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: "left" | "center" | "right";
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'default' | 'inherit';
+        "color"?: "default" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -219,7 +211,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "tag"?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -227,18 +219,13 @@ export namespace Components {
         /**
           * Style of the text.
          */
-        "variant"?: | 'large-title'
-  | 'headline-1'
-  | 'headline-2'
-  | 'headline-3'
-  | 'headline-4'
-  | 'headline-5';
+        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
     interface PIcon {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -250,7 +237,7 @@ export namespace Components {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: "small" | "medium" | "large" | "inherit";
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -259,7 +246,7 @@ export namespace Components {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
+        "variant"?: "outline" | "filled";
     }
     interface PLink {
         /**
@@ -297,7 +284,7 @@ export namespace Components {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: "primary" | "secondary" | "tertiary";
     }
     interface PLinkPure {
         /**
@@ -357,35 +344,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: 'logo-facebook'
-  | 'logo-google'
-  | 'logo-instagram'
-  | 'logo-linkedin'
-  | 'logo-pinterest'
-  | 'logo-twitter'
-  | 'logo-wechat'
-  | 'logo-whatsapp'
-  | 'logo-xing'
-  | 'logo-youtube'
-  | 'logo-baidu'
-  | 'logo-delicious'
-  | 'logo-digg'
-  | 'logo-foursquare'
-  | 'logo-gmail'
-  | 'logo-hatena'
-  | 'logo-kaixin'
-  | 'logo-qq-share'
-  | 'logo-qq'
-  | 'logo-skyrock'
-  | 'logo-sohu'
-  | 'logo-tecent'
-  | 'logo-telegram'
-  | 'logo-tumblr'
-  | 'logo-viber'
-  | 'logo-vk'
-  | 'logo-weibo'
-  | 'logo-yahoo'
-  | 'logo-youku';
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
         /**
           * A custom URL path to a custom social icon.
          */
@@ -437,11 +396,11 @@ export namespace Components {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: "light" | "dark";
         /**
           * The total count of items.
          */
@@ -491,21 +450,21 @@ export namespace Components {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: BreakpointCustomizable<"small" | "medium" | "large" | "inherit">;
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: "light" | "dark";
     }
     interface PText {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: "left" | "center" | "right";
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -517,15 +476,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: | 'p'
-  | 'span'
-  | 'div'
-  | 'address'
-  | 'blockquote'
-  | 'figcaption'
-  | 'cite'
-  | 'time'
-  | 'legend';
+        "tag"?: "p" | "span" | "div" | "address" | "blockquote" | "figcaption" | "cite" | "time" | "legend";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -561,11 +512,11 @@ export namespace Components {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: "unordered" | "ordered";
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: "numbered" | "alphabetically";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -805,7 +756,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: "primary" | "secondary" | "tertiary";
     }
     interface PButtonPure {
         /**
@@ -871,17 +822,17 @@ declare namespace LocalJSX {
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: "basic" | "extended" | "fluid";
     }
     interface PDivider {
         /**
           * Defines color depending on theme.
          */
-        "color"?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low';
+        "color"?: "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low";
         /**
           * Defines orientation.
          */
-        "orientation"?: 'vertical' | 'horizontal';
+        "orientation"?: "vertical" | "horizontal";
         /**
           * Adapts color depending on theme.
          */
@@ -891,17 +842,15 @@ declare namespace LocalJSX {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-  'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: BreakpointCustomizable<"stretch" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly">;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: BreakpointCustomizable<"stretch" | "flex-start" | "flex-end" | "center" | "baseline">;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
@@ -909,23 +858,21 @@ declare namespace LocalJSX {
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-  'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: BreakpointCustomizable<"flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly">;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: BreakpointCustomizable<"nowrap" | "wrap" | "wrap-reverse">;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'>;
+        "alignSelf"?: BreakpointCustomizable<"auto" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch">;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: BreakpointCustomizable<"initial" | "auto" | "none" | "equal">;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
@@ -933,9 +880,7 @@ declare namespace LocalJSX {
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-  'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: BreakpointCustomizable<"none" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters">;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
@@ -943,15 +888,13 @@ declare namespace LocalJSX {
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-  'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: BreakpointCustomizable<"auto" | "one-quarter" | "one-third" | "half" | "two-thirds" | "three-quarters" | "full">;
     }
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: BreakpointCustomizable<"row" | "row-reverse" | "column" | "column-reverse">;
     }
     interface PGridItem {
         /**
@@ -967,11 +910,11 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: "left" | "center" | "right";
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'default' | 'inherit';
+        "color"?: "default" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -979,7 +922,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "tag"?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -987,18 +930,13 @@ declare namespace LocalJSX {
         /**
           * Style of the text.
          */
-        "variant"?: | 'large-title'
-  | 'headline-1'
-  | 'headline-2'
-  | 'headline-3'
-  | 'headline-4'
-  | 'headline-5';
+        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
     }
     interface PIcon {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -1010,7 +948,7 @@ declare namespace LocalJSX {
         /**
           * The size of the icon.
          */
-        "size"?: 'small' | 'medium' | 'large' | 'inherit';
+        "size"?: "small" | "medium" | "large" | "inherit";
         /**
           * Specifies a whole icon path which can be used for custom icons.
          */
@@ -1019,7 +957,6 @@ declare namespace LocalJSX {
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
-        "variant"?: 'outline' | 'filled';
     }
     interface PLink {
         /**
@@ -1057,7 +994,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: "primary" | "secondary" | "tertiary";
     }
     interface PLinkPure {
         /**
@@ -1117,35 +1054,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: 'logo-facebook'
-  | 'logo-google'
-  | 'logo-instagram'
-  | 'logo-linkedin'
-  | 'logo-pinterest'
-  | 'logo-twitter'
-  | 'logo-wechat'
-  | 'logo-whatsapp'
-  | 'logo-xing'
-  | 'logo-youtube'
-  | 'logo-baidu'
-  | 'logo-delicious'
-  | 'logo-digg'
-  | 'logo-foursquare'
-  | 'logo-gmail'
-  | 'logo-hatena'
-  | 'logo-kaixin'
-  | 'logo-qq-share'
-  | 'logo-qq'
-  | 'logo-skyrock'
-  | 'logo-sohu'
-  | 'logo-tecent'
-  | 'logo-telegram'
-  | 'logo-tumblr'
-  | 'logo-viber'
-  | 'logo-vk'
-  | 'logo-weibo'
-  | 'logo-yahoo'
-  | 'logo-youku';
+        "icon"?: "logo-facebook" | "logo-google" | "logo-instagram" | "logo-linkedin" | "logo-pinterest" | "logo-twitter" | "logo-wechat" | "logo-whatsapp" | "logo-xing" | "logo-youtube" | "logo-baidu" | "logo-delicious" | "logo-digg" | "logo-foursquare" | "logo-gmail" | "logo-hatena" | "logo-kaixin" | "logo-qq-share" | "logo-qq" | "logo-skyrock" | "logo-sohu" | "logo-tecent" | "logo-telegram" | "logo-tumblr" | "logo-viber" | "logo-vk" | "logo-weibo" | "logo-yahoo" | "logo-youku";
         /**
           * A custom URL path to a custom social icon.
          */
@@ -1197,7 +1106,7 @@ declare namespace LocalJSX {
         /**
           * The maximum number of page links rendered
          */
-        "maxNumberOfPageLinks"?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks>;
+        "maxNumberOfPageLinks"?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks>;
         /**
           * Emitted when the page changes.
          */
@@ -1205,7 +1114,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: "light" | "dark";
         /**
           * The total count of items.
          */
@@ -1255,21 +1164,21 @@ declare namespace LocalJSX {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: BreakpointCustomizable<"small" | "medium" | "large" | "inherit">;
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: "light" | "dark";
     }
     interface PText {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: "left" | "center" | "right";
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'inherit';
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -1281,15 +1190,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: | 'p'
-  | 'span'
-  | 'div'
-  | 'address'
-  | 'blockquote'
-  | 'figcaption'
-  | 'cite'
-  | 'time'
-  | 'legend';
+        "tag"?: "p" | "span" | "div" | "address" | "blockquote" | "figcaption" | "cite" | "time" | "legend";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1325,11 +1226,11 @@ declare namespace LocalJSX {
         /**
           * The type of the text list.
          */
-        "listType"?: 'unordered' | 'ordered';
+        "listType"?: "unordered" | "ordered";
         /**
           * The list style type of an ordered list.
          */
-        "orderType"?: 'numbered' | 'alphabetically';
+        "orderType"?: "numbered" | "alphabetically";
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
