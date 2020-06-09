@@ -19,9 +19,9 @@
         <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> instead - and get back on
         track.
       </p>
-      <div v-if="isIE11Active">
-      <p-link-pure href="microsoft-edge:https://designsystem.porsche.com/issue/514/#/" name="external">Open Page in installed Microsoft Edge</p-link-pure>
-      </div>
+      <p-link href="microsoft-edge:https://designsystem.porsche.com/issue/514/#/" name="external" v-if="isIE11Active" variant="tertiary">
+        Open Page in installed Microsoft Edge
+      </p-link>
       <!--      <a id="edgeButton" href="microsoft-edge:window.location.href">
         <svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="margin: 0; width:24px; height: 24px">
           <path d="M15 4v1h3.08L10 13.2l.8.8L19 5.92V9h1V4h-5z"></path>
@@ -97,7 +97,7 @@ export default class Banner extends Vue {
 }
 
 #ie11Banner p-link {
-  margin: 19px 226px 21px 512px;
+  margin: 19px 0px 21px 512px;
 }
 /*
 @media (max-width: 600px) {
