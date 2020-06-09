@@ -1,5 +1,3 @@
-import { convertLineHeight } from '@porsche-design-system/utilities/src/js/helper';
+import { convertLineHeight } from '@porsche-design-system/utilities';
 
-export const calcLineHeightForElement = (tag: HTMLElement): number => {
-  return convertLineHeight(window.getComputedStyle(tag).fontSize);
-};
+export const calcLineHeightForElement = (tag: HTMLElement): number => convertLineHeight(window.getComputedStyle(tag).fontSize);
