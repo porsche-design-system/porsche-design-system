@@ -20,7 +20,7 @@
         track.
       </p>
       <div v-if="isIE11Active">
-      <p-link-pure href="microsoft-edge:https://designsystem.porsche.com/issue/514/#/" name="external">Open Page in installed Microsoft Edge</p-link>
+      <p-link-pure href="microsoft-edge:https://designsystem.porsche.com/issue/514/#/" name="external">Open Page in installed Microsoft Edge</p-link-pure>
       </div>
       <!--      <a id="edgeButton" href="microsoft-edge:window.location.href">
         <svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="margin: 0; width:24px; height: 24px">
@@ -56,7 +56,7 @@ export default class Banner extends Vue {
   };
 
   public isActive = this.setIsActive();
-  public isIE11Active = this.detectEdge();
+  public isIE11Active = this.detectIe11();
 }
 </script>
 <style scoped lang="css">
