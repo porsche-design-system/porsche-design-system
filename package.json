@@ -3,6 +3,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
+      "packages/utilities/src/vrt-app",
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/projects/components-wrapper"
     ],

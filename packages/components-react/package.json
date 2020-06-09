@@ -27,13 +27,16 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "5.1.0",
+    "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
+    "puppeteer": "3.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "wait-on": "^5.0.1"
   },
   "resolutions": {
     "@types/react": "^16.9.17"
