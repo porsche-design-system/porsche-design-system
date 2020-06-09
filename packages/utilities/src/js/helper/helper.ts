@@ -33,7 +33,6 @@ export const convertToRem = (fontSize: string): string => {
   return fontSizeUnit === 'rem' ? fontSize : pxToRem(fontSize);
 };
 
-//TO DO: remove lineHeight function from components-js package
 export const convertLineHeight = (fontSize: string): number => {
   const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
