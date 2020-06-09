@@ -50,7 +50,7 @@
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61423 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
   },
   "devDependencies": {
-    "@porsche-design-system/visual-regression-tester": "^2.0.0",
+    "@porsche-design-system/visual-regression-tester": "^2.0.1",
     "@types/jest": "^25.2.3",
     "jasmine": "^3.5.0",
     "jest": "^26.0.1",
