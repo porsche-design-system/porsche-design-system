@@ -17,7 +17,7 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "@porsche-design-system/visual-regression-tester": "^2.0.0",
+    "@porsche-design-system/visual-regression-tester": "^2.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.2.1",
@@ -29,7 +29,7 @@
     "@types/styled-components": "5.1.0",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
-    "puppeteer": "3.0.4",
+    "puppeteer": "~3.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
