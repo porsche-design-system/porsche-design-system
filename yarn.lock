@@ -2586,12 +2586,12 @@
   resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
   integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
-"@stencil/core@~1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.14.0.tgz#4bdbfa69a7c89c404b688199441c39326418044c"
-  integrity sha512-3u3O8y8HIORiKuDmPowJiUu9nNmpxq4ak1kR3aVuWH6YTQ7+Uexy0dAxabn3CUoQmh6cpYsk9l5P5yIX2EQHoQ==
+"@stencil/core@~1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-1.13.0.tgz#908c1a62e3676e261acf3b3db2a37e48d0879a5a"
+  integrity sha512-++kIXaEgmwm/vq+9QAVHPuLLddCKVdJyI8OfHxknkpu5udxZMYA/vaN/K9i+2NIiTLbGpvHNk9E+RyYzKxS0XQ==
   dependencies:
-    typescript "3.9.3"
+    typescript "3.8.3"
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
@@ -17242,12 +17242,7 @@ typescript@3.6.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.5.tgz#dae20114a7b4ff4bd642db9c8c699f2953e8bbdb"
   integrity sha512-BEjlc0Z06ORZKbtcxGrIvvwYs5hAnuo6TKdNFL55frVDlB+na3z5bsLhFaIxmT+dPWgBIjMo6aNnTOgHHmHgiQ==
 
-typescript@3.9.3:
-  version "3.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
-  integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
-
-typescript@~3.8.3:
+typescript@3.8.3, typescript@~3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
