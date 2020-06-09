@@ -77,8 +77,6 @@ describe('check for dead links in storefront', () => {
         // Check response
         if (response?.status() === 404) {
           invalidUrls.push(href);
-        } else {
-          await page.goBack({ waitUntil: 'networkidle0' });
         }
       } else {
         invalidUrls.push(href);
