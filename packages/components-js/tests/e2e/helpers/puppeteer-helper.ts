@@ -1,10 +1,9 @@
-import { ElementHandle, JSHandle, NavigationOptions } from 'puppeteer';
+import { ElementHandle, JSHandle, NavigationOptions, Page } from 'puppeteer';
 
-export const setContentWithDesignSystem = async (content: string, options: NavigationOptions = {waitUntil: 'networkidle2'}) =>
+export const setContentWithDesignSystem = async (page: Page, content: string, options: NavigationOptions = {waitUntil: 'networkidle0'}) =>
   await page.setContent(`
       <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
       <script type="module" src="http://localhost:3333/build/porsche-design-system.esm.js"></script>
-
       ${content}
     `,
     options
@@ -27,7 +26,7 @@ export const getPropertyFromHandle = (node: ElementHandle, prop: string) => node
 
 export const getClassListFromHandle = (node: ElementHandle) => getPropertyFromHandle(node, 'classList').then((x) => Object.values(x).join(' '));
 
-export const waitForSelector = async (node: ElementHandle, selector: string, opts?: { isGone: boolean }) => {
+export const waitForSelector = async (page: Page, node: ElementHandle, selector: string, opts?: { isGone: boolean }) => {
   if (opts?.isGone) {
     while ((await getClassListFromHandle(node)).indexOf(selector) >= 0) {
       await page.waitFor(10);
@@ -39,7 +38,7 @@ export const waitForSelector = async (node: ElementHandle, selector: string, opt
   }
 };
 
-export const waitForInnerHTMLChange = async (node: ElementHandle) => {
+export const waitForInnerHTMLChange = async (page: Page, node: ElementHandle) => {
   const getInnerHTML = () => getPropertyFromHandle(node, 'innerHTML');
   const initialInnerHTML = await getInnerHTML();
   let runCounter = 0;
@@ -50,16 +49,16 @@ export const waitForInnerHTMLChange = async (node: ElementHandle) => {
   }
 };
 
-export const waitForEventCallbacks = async () => await page.waitFor(40);
+export const waitForEventCallbacks = async (page: Page) => await page.waitFor(40);
 
 // Browser Context
 
 // TODO: rename to getActiveElementHandle
-export const getActiveElement = () => page.evaluateHandle(() => document.activeElement);
+export const getActiveElement = (page: Page) => page.evaluateHandle(() => document.activeElement);
 
-export const getActiveElementId = () => page.evaluate(() => document.activeElement.id);
+export const getActiveElementId = (page: Page) => page.evaluate(() => document.activeElement.id);
 
-export const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
+export const getActiveElementTagName = (page: Page) => page.evaluate(() => document.activeElement.tagName);
 
 export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>) =>
   await node.evaluate(el => el.id);
@@ -69,14 +68,14 @@ export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Elem
 
 export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
 
-export const selectNode = async (selector: string) => {
+export const selectNode = async (page: Page, selector: string) => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
 };
 
 export const getInnerHTMLFromShadowRoot = async (selector: string) => {
-  const handle = await selectNode(selector);
+  const handle = await selectNode(page, selector);
   return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };
 
@@ -87,7 +86,7 @@ export const timeLogger = () => {
 
 let svgRequestCounter: number;
 
-export const setSvgRequestInterceptor = (timeouts: number[]) => {
+export const setSvgRequestInterceptor = (page: Page, timeouts: number[]) => {
   svgRequestCounter = 0;
   page.removeAllListeners('request');
   page.on('request', (req) => {

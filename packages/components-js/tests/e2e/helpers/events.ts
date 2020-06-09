@@ -1,4 +1,4 @@
-import { JSHandle } from "puppeteer";
+import { JSHandle, Page } from "puppeteer";
 
 /**
  * copied and stripped down from
@@ -13,7 +13,7 @@ type WaitForEvent = {
 const events = new Map<number, WaitForEvent>();
 let hasExposedFunction = false;
 
-export const initAddEventListener = async () => {
+export const initAddEventListener = async (page: Page) => {
   events.clear();
 
   if (!hasExposedFunction) {

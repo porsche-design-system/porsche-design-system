@@ -1,7 +1,12 @@
-import { setContentWithDesignSystem } from './helpers';
-import { Viewport } from 'puppeteer';
+import { setContentWithDesignSystem } from '../helpers';
+import { Page, Viewport } from 'puppeteer';
+import { getBrowser } from '../helpers/setup';
 
 describe('marque', () => {
+  let page: Page;
+  beforeEach(async () => page = await getBrowser().newPage());
+  afterEach(async () => await page.close());
+
   let initialViewport: Viewport;
   let requestedImagePath: string;
 
@@ -28,7 +33,7 @@ describe('marque', () => {
   const resolution3x = '@3x';
 
   describe('with trademark', () => {
-    const setContent = () => setContentWithDesignSystem(`<p-marque></p-marque>`);
+    const setContent = () => setContentWithDesignSystem(page, `<p-marque></p-marque>`);
 
     describe('on default screen', () => {
       const fileName = 'marque-trademark.small';
@@ -84,7 +89,7 @@ describe('marque', () => {
   });
 
   describe('without trademark', () => {
-    const setContent = () => setContentWithDesignSystem(`<p-marque trademark="false"></p-marque>`);
+    const setContent = () => setContentWithDesignSystem(page, `<p-marque trademark="false"></p-marque>`);
 
     describe('on default screen', () => {
       const fileName = 'marque.small';
