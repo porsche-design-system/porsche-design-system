@@ -5,15 +5,21 @@ import {
   setSvgRequestInterceptor,
   timeLogger,
   waitForInnerHTMLChange
-} from './helpers';
-import { NavigationOptions } from 'puppeteer';
+} from '../helpers';
+import { NavigationOptions, Page } from 'puppeteer';
+import { getBrowser } from '../helpers/setup';
 
 describe('p-icon', () => {
+  let page: Page;
+
   let responseCounter: number;
   const navOptions: NavigationOptions = {waitUntil: 'networkidle0'}; // If we check for number of responses it is necessary to wait for all network traffic to be resolved.
   const getIconContent = () => getInnerHTMLFromShadowRoot('p-icon >>> i');
 
   beforeEach(async () => {
+    const browser = await getBrowser();
+    page = await browser.newPage();
+
     await page.reload(navOptions);
     await page.setRequestInterception(true);
 
@@ -30,10 +36,12 @@ describe('p-icon', () => {
     });
   });
 
+  afterEach(async () => await page.close());
+
   it('should have only one response for default icon', async () => {
-    setSvgRequestInterceptor([]);
+    setSvgRequestInterceptor(page, []);
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(`<p-icon></p-icon>`, navOptions);
+    await setContentWithDesignSystem(page, `<p-icon></p-icon>`, navOptions);
 
     expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
@@ -48,11 +56,11 @@ describe('p-icon', () => {
    */
   it('should render correct icon if default-icon request takes longer than icon request', async () => {
     const delay = 2000;
-    setSvgRequestInterceptor([delay, 0]);
+    setSvgRequestInterceptor(page, [delay, 0]);
 
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(`<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
-    const iconComponent = await selectNode('p-icon');
+    await setContentWithDesignSystem(page, `<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
+    const iconComponent = await selectNode(page, 'p-icon');
 
     // change icon name to "question"
     await iconComponent.evaluate(el => el.setAttribute('name', 'question'));
@@ -72,10 +80,10 @@ describe('p-icon', () => {
    *                      request 2nd icon
    */
   it('should unset previous icon if name prop is changed', async () => {
-    setSvgRequestInterceptor([0, 1000]);
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
+    setSvgRequestInterceptor(page, [0, 1000]);
+    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`, navOptions);
 
-    const iconComponent = await selectNode('p-icon');
+    const iconComponent = await selectNode(page, 'p-icon');
     expect(await getIconContent()).toContain('highway');
 
     await iconComponent.evaluate(el => el.setAttribute('name', 'light'));
@@ -88,11 +96,11 @@ describe('p-icon', () => {
   });
 
   it('should unset previous icon if name prop is removed', async () => {
-    setSvgRequestInterceptor([2000]);
-    await setContentWithDesignSystem(`<p-icon name="highway"></p-icon>`, navOptions);
+    setSvgRequestInterceptor(page, [2000]);
+    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`, navOptions);
 
-    const iconComponent = await selectNode('p-icon');
-    const shadowIcon = await selectNode('p-icon >>> .p-icon');
+    const iconComponent = await selectNode(page, 'p-icon');
+    const shadowIcon = await selectNode(page, 'p-icon >>> .p-icon');
     expect(await getIconContent()).toContain('highway');
 
     await iconComponent.evaluate(el => el.removeAttribute('name'));
@@ -101,7 +109,7 @@ describe('p-icon', () => {
     const outerHTML = await iconComponent.evaluate(el => el.outerHTML);
     expect(outerHTML).not.toContain('name=');
     // one tick delay to repaint
-    await waitForInnerHTMLChange(shadowIcon);
+    await waitForInnerHTMLChange(page, shadowIcon);
 
     expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);

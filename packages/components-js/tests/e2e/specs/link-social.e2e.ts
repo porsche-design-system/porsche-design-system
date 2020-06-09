@@ -5,31 +5,37 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
-} from './helpers';
+} from '../helpers';
+import { Page } from 'puppeteer';
+import { getBrowser } from '../helpers/setup';
 
 describe('link social', () => {
+  let page: Page;
+  beforeEach(async () => page = await getBrowser().newPage());
+  afterEach(async () => await page.close());
+
   beforeAll(async () => {
-    await initAddEventListener(); // needed for setup
+    await initAddEventListener(page); // needed for setup
   });
 
   it('should render', async () => {
-    await setContentWithDesignSystem(`<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await selectNode('p-link-social >>> a');
+    await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
+    const el = await selectNode(page, 'p-link-social >>> a');
     expect(el).toBeDefined();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(`<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
-    const link = await selectNode('p-link-social >>> a');
-    const host = await selectNode('#hostElement');
-    const wrapper = await selectNode('div');
+    await setContentWithDesignSystem(page, `<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
+    const link = await selectNode(page, 'p-link-social >>> a');
+    const host = await selectNode(page, '#hostElement');
+    const wrapper = await selectNode(page, 'div');
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
 
     await link.click();
     await host.click();
-    await waitForEventCallbacks();
+    await waitForEventCallbacks(page);
 
     expect(events.length).toBe(2);
     for (const event of events) {
@@ -38,16 +44,16 @@ describe('link social', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(`
+    await setContentWithDesignSystem(page, `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
             <a href="#" id="after">after</a>
           </div>
     `);
-    const link = await selectNode('p-link-social');
-    const before = await selectNode('#before');
-    const after = await selectNode('#after');
+    const link = await selectNode(page, 'p-link-social');
+    const before = await selectNode(page, '#before');
+    const after = await selectNode(page, '#after');
     const linkId = await getIdFromNode(link);
     await before.focus();
 
@@ -64,7 +70,7 @@ describe('link social', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
+    expect(await getActiveElementId(page)).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
     expect(linkFocusCalls).toBe(1);
@@ -72,7 +78,7 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(0);
     expect(linkFocusOutCalls).toBe(0);
     expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId()).toEqual(linkId);
+    expect(await getActiveElementId(page)).toEqual(linkId);
 
     await page.keyboard.press('Tab');
     expect(linkFocusCalls).toBe(1);
@@ -80,7 +86,7 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(1);
     expect(linkFocusOutCalls).toBe(1);
     expect(afterFocusCalls).toBe(1);
-    expect(await getActiveElementId()).toEqual(await getIdFromNode(after));
+    expect(await getActiveElementId(page)).toEqual(await getIdFromNode(after));
 
     // tab back
     await page.keyboard.down('ShiftLeft');
@@ -90,7 +96,7 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(1);
     expect(linkFocusOutCalls).toBe(1);
     expect(beforeFocusCalls).toBe(0);
-    expect(await getActiveElementId()).toEqual(linkId);
+    expect(await getActiveElementId(page)).toEqual(linkId);
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
@@ -99,13 +105,13 @@ describe('link social', () => {
     expect(linkBlurCalls).toBe(2);
     expect(linkFocusOutCalls).toBe(2);
     expect(beforeFocusCalls).toBe(1);
-    expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
+    expect(await getActiveElementId(page)).toEqual(await getIdFromNode(before));
 
     await page.keyboard.up('ShiftLeft');
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(`
+    await setContentWithDesignSystem(page, `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
@@ -114,8 +120,8 @@ describe('link social', () => {
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-social'));
 
-    const link = await selectNode('p-link-social');
-    const before = await selectNode('#before');
+    const link = await selectNode(page, 'p-link-social');
+    const before = await selectNode(page, '#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
     await link.focus();
