@@ -13,8 +13,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "1.4.0",
-    "@porsche-design-system/utilities": "1.0.0",
-    "styled-components": "^5.1.1"
+    "@porsche-design-system/utilities": "1.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/visual-regression-tester": "^2.0.1",
@@ -26,7 +25,6 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "5.1.0",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
     "puppeteer": "~3.0.4",
