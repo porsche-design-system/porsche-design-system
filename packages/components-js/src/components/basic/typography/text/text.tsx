@@ -1,11 +1,10 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import {
-  BreakpointCustomizable,
+  BreakpointCustomizable, calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  calcLineHeightForElement
+  transitionListener
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
 import { insertSlottedStyles } from '../../../../utils/slotted-styles';
@@ -73,7 +72,8 @@ export class Text {
 
     insertSlottedStyles(this.element, style);
     transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+      const lineHeight = calcLineHeightForElement(this.textTag);
+      this.textTag.style.lineHeight = `${lineHeight}`;
     });
   }
 

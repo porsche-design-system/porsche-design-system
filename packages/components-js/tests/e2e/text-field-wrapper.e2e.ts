@@ -18,7 +18,6 @@ const getToggleButtonIconName = () => page.evaluate(() => {
   return icon.name;
 });
 
-
 describe('Text Field Wrapper', () => {
   beforeEach(async () => {
     await initAddEventListener(); // needed for setup

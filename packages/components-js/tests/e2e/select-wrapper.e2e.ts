@@ -7,6 +7,9 @@ import {
 } from './helpers';
 
 describe('select-wrapper', () => {
+
+  beforeEach(async () => await page.reload());
+
   it('should render', async () => {
     await setContentWithDesignSystem(`
       <p-select-wrapper label="Some label">
