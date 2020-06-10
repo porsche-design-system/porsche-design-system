@@ -1,4 +1,4 @@
-import { convertLineHeight, convertToRem, pxToRem, remToPx } from '../../../src/js/helper';
+import { convertLineHeight, checkIfRem, pxToRem, remToPx } from '../../../src/js/helper';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for pxpx', () => {
@@ -40,20 +40,20 @@ describe('remToPx()', () => {
   });
 });
 
-describe('convertToRem()', () => {
+describe('checkIfRem()', () => {
   it('should return correct fontSize from rem', () => {
-    const fontSizeRem = convertToRem('2rem');
+    const fontSizeRem = checkIfRem('2rem');
     expect(fontSizeRem).toEqual('2rem');
   });
 
   it('should return correct fontSize from px', () => {
-    const fontSizeRem = convertToRem('16px');
+    const fontSizeRem = checkIfRem('16px');
     expect(fontSizeRem).toEqual('1rem');
   });
 
   it('should throw error on false fontSize unit rem', () => {
     try {
-      convertToRem('2rem');
+      checkIfRem('2rem');
     } catch (e) {
       expect(e).toBeDefined();
     }
@@ -61,7 +61,7 @@ describe('convertToRem()', () => {
 
   it('should throw error on false fontSize unit px', () => {
     try {
-      convertToRem('Fpx');
+      checkIfRem('Fpx');
     } catch (e) {
       expect(e).toBeDefined();
     }
@@ -69,7 +69,7 @@ describe('convertToRem()', () => {
 
   it('should throw error on wrong unit', () => {
     try {
-      convertToRem('12bs');
+      checkIfRem('12bs');
     } catch (e) {
       expect(e).toBeDefined();
     }
@@ -77,7 +77,7 @@ describe('convertToRem()', () => {
 
   it('should throw error on 0 as size value', () => {
     try {
-      convertToRem('0px');
+      checkIfRem('0px');
     } catch (e) {
       expect(e).toBeDefined();
     }
