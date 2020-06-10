@@ -9,12 +9,20 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('Textarea Wrapper', () => {
+
   let page: Page;
+
   beforeEach(async () => {
     page = await getBrowser().newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
+
+  const getTextareaHost = () => selectNode(page, 'p-textarea-wrapper');
+  const getTextareaFakeInput = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
+  const getTextareaRealInput = () => selectNode(page, 'p-textarea-wrapper textarea');
+  const getTextareaMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
+  const getTextareaLabel = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
@@ -22,7 +30,7 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const el = await selectNode(page, 'p-textarea-wrapper >>> label');
+    const el = await getTextareaLabel();
     expect(el).toBeDefined();
   });
 
@@ -32,7 +40,7 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const textarea = await selectNode(page, 'p-textarea-wrapper textarea');
+    const textarea = await getTextareaRealInput();
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
   });
 
@@ -42,7 +50,7 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const textarea = await selectNode(page, 'p-textarea-wrapper textarea');
+    const textarea = await getTextareaRealInput();
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some description');
   });
 
@@ -52,7 +60,7 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>
     `);
-    const textarea = await selectNode(page, 'p-textarea-wrapper textarea');
+    const textarea = await getTextareaRealInput();
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
   });
 
@@ -62,15 +70,14 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>`);
 
-    const textareaComponent = await selectNode(page, 'p-textarea-wrapper');
-    const getLabelText = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+    const textareaComponent = await getTextareaHost();
 
-    expect(await getLabelText()).toBeNull();
+    expect(await getTextareaLabel()).toBeNull();
 
     await textareaComponent.evaluate(el => el.setAttribute('label', 'Some label'));
     await waitForInnerHTMLChange(page, textareaComponent);
 
-    expect(await getLabelText()).toBeDefined();
+    expect(await getTextareaLabel()).toBeDefined();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -79,33 +86,32 @@ describe('Textarea Wrapper', () => {
         <textarea name="some-name"></textarea>
       </p-textarea-wrapper>`);
 
-    const textareaComponent = await selectNode(page, 'p-textarea-wrapper');
-    const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
-    const textarea = await selectNode(page, 'textarea');
+    const textareaComponent = await getTextareaHost();
+    const textarea = await getTextareaRealInput();
 
-    expect(await getMessage()).toBeNull();
+    expect(await getTextareaMessage()).toBeNull();
 
     await textareaComponent.evaluate(el => el.setAttribute('state', 'error'));
     await textareaComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
     await waitForInnerHTMLChange(page, textareaComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBe('alert');
+    expect(await getTextareaMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBe('alert');
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', 'success'));
     await textareaComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
     await waitForInnerHTMLChange(page, textareaComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
+    expect(await getTextareaMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBeNull();
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some success message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', ''));
     await textareaComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, textareaComponent);
 
-    expect(await getMessage()).toBeNull();
+    expect(await getTextareaMessage()).toBeNull();
     expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
   });
 
@@ -116,8 +122,8 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>
     `);
 
-    const labelText = await selectNode(page, 'p-textarea-wrapper >>> p-text');
-    const textarea = await selectNode(page, 'textarea');
+    const labelText = await getTextareaLabel();
+    const textarea = await getTextareaRealInput();
 
     let textareaFocusSpyCalls = 0;
     await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
@@ -132,8 +138,6 @@ describe('Textarea Wrapper', () => {
 
   describe('hover state', () => {
 
-    const getFakeTextarea = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
-
     it('should change box-shadow color when fake textarea is hovered', async () => {
       await setContentWithDesignSystem(page, `
         <p-textarea-wrapper label="Some label">
@@ -141,7 +145,7 @@ describe('Textarea Wrapper', () => {
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await getFakeTextarea();
+      const fakeTextarea = await getTextareaFakeInput();
       const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
       await fakeTextarea.hover();
@@ -156,8 +160,8 @@ describe('Textarea Wrapper', () => {
         </p-textarea-wrapper>
       `);
 
-      const fakeTextarea = await getFakeTextarea();
-      const labelText = await selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+      const fakeTextarea = await getTextareaFakeInput();
+      const labelText = await getTextareaLabel();
       const initialBoxShadow = await getBoxShadow(fakeTextarea);
 
       await labelText.hover();

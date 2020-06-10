@@ -10,24 +10,30 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('link social', () => {
+
   let page: Page;
+
   beforeEach(async () => {
     page = await getBrowser().newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
 
+  const getLinkSocialHost = () => selectNode(page, 'p-link-social');
+  const getLinkSocialRealLink = () => selectNode(page, 'p-link-social >>> a');
+
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await selectNode(page, 'p-link-social >>> a');
+    const el = await getLinkSocialRealLink();
     expect(el).toBeDefined();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link-social href="#" icon="logo-facebook" id="hostElement">Some label</p-link-social></div>`);
-    const link = await selectNode(page, 'p-link-social >>> a');
-    const host = await selectNode(page, '#hostElement');
+    await setContentWithDesignSystem(page, `<div><p-link-social href="#" icon="logo-facebook">Some label</p-link-social></div>`);
+
     const wrapper = await selectNode(page, 'div');
+    const host = await getLinkSocialHost();
+    const link = await getLinkSocialRealLink();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -50,7 +56,7 @@ describe('link social', () => {
             <a href="#" id="after">after</a>
           </div>
     `);
-    const link = await selectNode(page, 'p-link-social');
+    const link = await getLinkSocialHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
     const linkId = await getIdFromNode(link);
@@ -119,7 +125,7 @@ describe('link social', () => {
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-social'));
 
-    const link = await selectNode(page, 'p-link-social');
+    const link = await getLinkSocialHost();
     const before = await selectNode(page, '#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);

@@ -10,10 +10,9 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('p-icon', () => {
-  let page: Page;
 
+  let page: Page;
   let responseCounter: number;
-  const getIconContent = () => getInnerHTMLFromShadowRoot(page, 'p-icon >>> i');
 
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -32,8 +31,11 @@ describe('p-icon', () => {
       }
     });
   });
-
   afterEach(async () => await page.close());
+
+  const getIconHost = () => selectNode(page, 'p-icon');
+  const getIconIcon = () => selectNode(page, 'p-icon >>> .p-icon');
+  const getIconContent = () => getInnerHTMLFromShadowRoot(page, 'p-icon >>> i');
 
   it('should have only one response for default icon', async () => {
     setSvgRequestInterceptor(page, []);
@@ -57,7 +59,7 @@ describe('p-icon', () => {
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(page, `<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
-    const iconComponent = await selectNode(page, 'p-icon');
+    const iconComponent = await getIconHost();
 
     // change icon name to "question"
     await iconComponent.evaluate(el => el.setAttribute('name', 'question'));
@@ -80,7 +82,7 @@ describe('p-icon', () => {
     setSvgRequestInterceptor(page, [0, 1000]);
     await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
-    const iconComponent = await selectNode(page, 'p-icon');
+    const iconComponent = await getIconHost();
     expect(await getIconContent()).toContain('highway');
 
     await iconComponent.evaluate(el => el.setAttribute('name', 'light'));
@@ -96,8 +98,8 @@ describe('p-icon', () => {
     setSvgRequestInterceptor(page, [2000]);
     await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
-    const iconComponent = await selectNode(page, 'p-icon');
-    const shadowIcon = await selectNode(page, 'p-icon >>> .p-icon');
+    const iconComponent = await getIconHost();
+    const shadowIcon = await getIconIcon();
     expect(await getIconContent()).toContain('highway');
 
     await iconComponent.evaluate(el => el.removeAttribute('name'));

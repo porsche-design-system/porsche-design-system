@@ -3,7 +3,9 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('blur on focus', () => {
+
   let page: Page;
+
   beforeEach(async () => page = await getBrowser().newPage());
   afterEach(async () => await page.close());
 

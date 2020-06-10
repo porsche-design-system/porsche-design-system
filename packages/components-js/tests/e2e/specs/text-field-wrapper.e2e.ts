@@ -11,12 +11,21 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('Text Field Wrapper', () => {
+
   let page: Page;
+
   beforeEach(async () => {
     page = await getBrowser().newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
+
+  const getTextFieldHost = () => selectNode(page, 'p-text-field-wrapper');
+  const getTextFieldFakeInput = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
+  const getTextFieldRealInput = () => selectNode(page, 'p-text-field-wrapper input');
+  const getTextFieldMessage = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
+  const getTextFieldLabel = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+  const getTextFieldButton = () => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
 
   const getCustomInputButtonDisabledState = () => page.evaluate(() => {
     const toggleButton: HTMLButtonElement = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('.p-text-field-wrapper__button');
@@ -35,8 +44,8 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `);
 
-    const button = await selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
-    const input = await selectNode(page, 'input');
+    const button = await getTextFieldButton();
+    const input = await getTextFieldRealInput();
 
     let inputFocusCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusCalls++);
@@ -64,7 +73,7 @@ describe('Text Field Wrapper', () => {
         </p-text-field-wrapper>
       </form>
     `);
-    const searchButton = await selectNode(page, 'p-text-field-wrapper >>> button');
+    const searchButton = await getTextFieldButton();
     const form = await selectNode(page, 'form');
 
     let formFocusCalls = 0;
@@ -81,7 +90,7 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name">
       </p-text-field-wrapper>
     `);
-    const el = await selectNode(page,'p-text-field-wrapper >>> label');
+    const el = await getTextFieldLabel();
     expect(el).toBeDefined();
   });
 
@@ -91,7 +100,7 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name">
       </p-text-field-wrapper>
     `);
-    const input = await selectNode(page,'p-text-field-wrapper input');
+    const input = await getTextFieldRealInput();
     expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
   });
 
@@ -101,7 +110,7 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name">
       </p-text-field-wrapper>
     `);
-    const input = await selectNode(page,'p-text-field-wrapper input');
+    const input = await getTextFieldRealInput();
     expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some description');
   });
 
@@ -111,7 +120,7 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name">
       </p-text-field-wrapper>
     `);
-    const input = await selectNode(page,'p-text-field-wrapper input');
+    const input = await getTextFieldRealInput();
     expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
   });
 
@@ -121,15 +130,14 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name"/>
       </p-text-field-wrapper>`);
 
-    const textFieldComponent = await selectNode(page,'p-text-field-wrapper');
-    const getLabelText = () => selectNode(page,'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+    const textFieldComponent = await getTextFieldHost();
 
-    expect(await getLabelText()).toBeNull();
+    expect(await getTextFieldLabel()).toBeNull();
 
     await textFieldComponent.evaluate(el => el.setAttribute('label', 'Some label'));
     await waitForEventCallbacks(page);
 
-    expect(await getLabelText()).not.toBeNull();
+    expect(await getTextFieldLabel()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -138,33 +146,32 @@ describe('Text Field Wrapper', () => {
         <input type="text" name="some-name"/>
       </p-text-field-wrapper>`);
 
-    const textFieldComponent = await selectNode(page,'p-text-field-wrapper');
-    const getMessage = () => selectNode(page,'p-text-field-wrapper >>> .p-text-field-wrapper__message'); // has to be a function because it only exists after first setAttribute
-    const input = await selectNode(page,'input');
+    const textFieldComponent = await getTextFieldHost();
+    const input = await getTextFieldRealInput();
 
-    expect(await getMessage()).toBeNull();
+    expect(await getTextFieldMessage()).toBeNull();
 
     await textFieldComponent.evaluate(el => el.setAttribute('state', 'error'));
     await textFieldComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
     await waitForInnerHTMLChange(page, textFieldComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
+    expect(await getTextFieldMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toEqual('alert');
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
 
     await textFieldComponent.evaluate(el => el.setAttribute('state', 'success'));
     await textFieldComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
     await waitForInnerHTMLChange(page, textFieldComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
+    expect(await getTextFieldMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toBeNull();
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
 
     await textFieldComponent.evaluate(el => el.setAttribute('state', 'null'));
     await textFieldComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, textFieldComponent);
 
-    expect(await getMessage()).toBeNull();
+    expect(await getTextFieldMessage()).toBeNull();
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
   });
 
@@ -175,8 +182,8 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `);
 
-    const labelText = await selectNode(page,'p-text-field-wrapper >>> p-text');
-    const input = await selectNode(page,'input');
+    const labelText = await getTextFieldLabel();
+    const input = await getTextFieldRealInput();
 
     let inputFocusSpyCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
@@ -195,8 +202,8 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `);
 
-    const fakeInput = await selectNode(page,'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-    const input = await selectNode(page,'input');
+    const fakeInput = await getTextFieldFakeInput();
+    const input = await getTextFieldRealInput();
 
     expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
     expect(await getCustomInputButtonDisabledState()).toBe(false);
@@ -222,7 +229,7 @@ describe('Text Field Wrapper', () => {
     `);
 
     const buttonIcon = await selectNode(page,'p-text-field-wrapper >>> p-icon >>> i');
-    const toggleButton = await selectNode(page,'p-text-field-wrapper >>> .p-text-field-wrapper__button');
+    const toggleButton = await getTextFieldButton();
 
     expect(await getToggleButtonIconName()).toBe('view');
 
@@ -244,8 +251,8 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `);
 
-    const fakeInput = await selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-    const input = await selectNode(page,'input');
+    const fakeInput = await getTextFieldFakeInput();
+    const input = await getTextFieldRealInput();
 
     expect(await getCustomInputButtonDisabledState()).toBe(false);
 
@@ -274,8 +281,6 @@ describe('Text Field Wrapper', () => {
 
   describe('hover state', () => {
 
-    const getFakeInput = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-
     it('should change box-shadow color when fake input is hovered', async () => {
       await setContentWithDesignSystem(page, `
         <p-text-field-wrapper label="Some label">
@@ -283,7 +288,7 @@ describe('Text Field Wrapper', () => {
         </p-text-field-wrapper>
       `);
 
-      const fakeInput = await getFakeInput();
+      const fakeInput = await getTextFieldFakeInput();
       const initialBoxShadow = await getBoxShadow(fakeInput);
 
       await fakeInput.hover();
@@ -298,8 +303,8 @@ describe('Text Field Wrapper', () => {
         </p-text-field-wrapper>
       `);
 
-      const fakeInput = await getFakeInput();
-      const labelText = await selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+      const fakeInput = await getTextFieldFakeInput();
+      const labelText = await getTextFieldLabel();
       const initialBoxShadow = await getBoxShadow(fakeInput);
 
       await labelText.hover();
