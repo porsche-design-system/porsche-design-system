@@ -11,11 +11,15 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('select-wrapper', () => {
+
   let page: Page;
+
   beforeEach(async () => page = await getBrowser().newPage());
   afterEach(async () => await page.close());
 
-  const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
+  const getSelectHost = () => selectNode(page, 'p-select-wrapper');
+  const getSelectFakeInput = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
+  const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectMessage = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__message');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label-text');
 
@@ -30,7 +34,7 @@ describe('select-wrapper', () => {
       </p-select-wrapper>
     `);
 
-    const el = await getFakeSelect();
+    const el = await getSelectFakeInput();
     expect(el).toBeDefined();
   });
 
@@ -44,7 +48,7 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>
     `);
-    const select = await selectNode(page, 'p-select-wrapper select');
+    const select = await getSelectRealInput();
     expect(await getAttributeFromHandle(select, 'aria-label')).toBe('Some label');
   });
 
@@ -58,7 +62,7 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>
     `);
-    const select = await selectNode(page, 'p-select-wrapper select');
+    const select = await getSelectRealInput();
     expect(await getAttributeFromHandle(select, 'aria-label')).toBe('Some label. Some description');
   });
 
@@ -72,7 +76,7 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>
     `);
-    const select = await selectNode(page, 'p-select-wrapper select');
+    const select = await getSelectRealInput();
     expect(await getAttributeFromHandle(select, 'aria-label')).toBe('Some label. Some error message');
   });
 
@@ -86,7 +90,7 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
-    const selectComponent = await selectNode(page, 'p-select-wrapper');
+    const selectComponent = await getSelectHost();
     const getLabelText = await getSelectLabel();
 
     expect(getLabelText).toBeNull();
@@ -105,8 +109,8 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
-    const selectComponent = await selectNode(page, 'p-select-wrapper');
-    const select = await selectNode(page, 'select');
+    const selectComponent = await getSelectHost();
+    const select = await getSelectRealInput();
 
     expect(await getSelectMessage()).toBeNull();
 
@@ -169,8 +173,8 @@ describe('select-wrapper', () => {
       </select>
     </p-select-wrapper>`);
 
-    const fakeSelect = await getFakeSelect();
-    const select = await selectNode(page, 'select');
+    const fakeSelect = await getSelectFakeInput();
+    const select = await getSelectRealInput();
 
     expect(await getClassFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
 
@@ -196,7 +200,7 @@ describe('select-wrapper', () => {
         </select>
       </p-select-wrapper>`);
 
-      const fakeSelect = await getFakeSelect();
+      const fakeSelect = await getSelectFakeInput();
       const initialBoxShadow = await getBoxShadow(fakeSelect);
 
       await fakeSelect.hover();
@@ -216,7 +220,7 @@ describe('select-wrapper', () => {
           </select>
         </p-select-wrapper>`);
 
-      const fakeSelect = await getFakeSelect();
+      const fakeSelect = await getSelectFakeInput();
       const labelText = await getSelectLabel();
       const initialBoxShadow = await getBoxShadow(fakeSelect);
 

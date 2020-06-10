@@ -3,6 +3,7 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('marque', () => {
+
   let page: Page;
   let requestedImagePath: string;
 
@@ -19,7 +20,6 @@ describe('marque', () => {
       req.continue();
     });
   });
-
   afterEach(async () => await page.close());
 
   const resolution1x = '@1x';

@@ -11,8 +11,15 @@ import { getBrowser } from '../helpers/setup';
 describe('radio-button-wrapper', () => {
 
   let page: Page;
+
   beforeEach(async () => page = await getBrowser().newPage());
   afterEach(async () => await page.close());
+
+  const getRadioButtonHost = () => selectNode(page, 'p-radio-button-wrapper');
+  const getRadioButtonFakeInput = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
+  const getRadioButtonRealInput = () => selectNode(page, 'p-radio-button-wrapper input');
+  const getRadioButtonLabel = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
+  const getRadioButtonMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
@@ -20,7 +27,7 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>
     `);
-    const el = await selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
+    const el = await getRadioButtonFakeInput();
     expect(el).toBeDefined();
   });
 
@@ -30,7 +37,7 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>
     `);
-    const input = await selectNode(page, 'p-radio-button-wrapper input');
+    const input = await getRadioButtonRealInput();
     expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
   });
 
@@ -40,7 +47,7 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>
     `);
-    const input = await selectNode(page, 'p-radio-button-wrapper input');
+    const input = await getRadioButtonRealInput();
     expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
   });
 
@@ -50,13 +57,12 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const radioComponent = await selectNode(page, 'p-radio-button-wrapper');
-    const getLabelText = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
-    expect(await getLabelText()).toBeNull();
+    const radioComponent = await getRadioButtonHost();
+    expect(await getRadioButtonLabel()).toBeNull();
 
     await radioComponent.evaluate(el => el.setAttribute('label', 'Some label'));
     await waitForInnerHTMLChange(page, radioComponent);
-    expect(await getLabelText()).not.toBeNull();
+    expect(await getRadioButtonLabel()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
@@ -66,32 +72,31 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const radioComponent = await selectNode(page, 'p-radio-button-wrapper');
-    const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
+    const radioComponent = await getRadioButtonHost();
     const input = await selectNode(page, 'input');
 
-    expect(await getMessage()).toBeNull();
+    expect(await getRadioButtonMessage()).toBeNull();
     await radioComponent.evaluate(el => el.setAttribute('state', 'error'));
     await radioComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
     await waitForInnerHTMLChange(page, radioComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toEqual('alert');
+    expect(await getRadioButtonMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toEqual('alert');
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'success'));
     await radioComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
     await waitForInnerHTMLChange(page, radioComponent);
 
-    expect(await getMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getMessage(), 'role')).toBeNull();
+    expect(await getRadioButtonMessage()).toBeDefined();
+    expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toBeNull();
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'none'));
     await radioComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, radioComponent);
 
-    expect(await getMessage()).toBeNull();
+    expect(await getRadioButtonMessage()).toBeNull();
     expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
   });
 
@@ -208,15 +213,13 @@ describe('radio-button-wrapper', () => {
 
   describe('hover state', () => {
 
-    const getFakeRadioButton = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
-
     it('should change box-shadow color when fake radio button is hovered', async () => {
       await setContentWithDesignSystem(page, `
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-      const fakeRadioButton = await getFakeRadioButton();
+      const fakeRadioButton = await getRadioButtonFakeInput();
       const initialBoxShadow = await getBoxShadow(fakeRadioButton);
 
       await fakeRadioButton.hover();
@@ -230,8 +233,8 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-      const fakeRadioButton = await getFakeRadioButton();
-      const labelText = await selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
+      const fakeRadioButton = await getRadioButtonFakeInput();
+      const labelText = await getRadioButtonLabel();
 
       const initialBoxShadow = await getBoxShadow(fakeRadioButton);
 

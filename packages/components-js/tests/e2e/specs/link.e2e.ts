@@ -9,24 +9,30 @@ import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('link', () => {
+
   let page: Page;
+
   beforeEach(async () => {
     page = await getBrowser().newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
 
+  const getLinkHost = () => selectNode(page, 'p-link');
+  const getLinkRealLink = () => selectNode(page, 'p-link >>> a');
+
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link href="#">Some label</p-link>`);
-    const el = await selectNode(page, 'p-link >>> a');
+    const el = await getLinkRealLink();
     expect(el).toBeDefined();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link href="#testpage" id="hostElement">Some label</p-link></div>`);
-    const link = await selectNode(page, 'p-link >>> a');
-    const host = await selectNode(page, '#hostElement');
+    await setContentWithDesignSystem(page, `<div><p-link href="#testpage">Some label</p-link></div>`);
+
     const wrapper = await selectNode(page, 'div');
+    const host = await getLinkHost();
+    const link = await getLinkRealLink();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -50,7 +56,7 @@ describe('link', () => {
       </div>
     `);
 
-    const link = await selectNode(page, 'p-link');
+    const link = await getLinkHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
     const linkId = await getIdFromNode(link);
@@ -119,7 +125,7 @@ describe('link', () => {
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link'));
 
-    const link = await selectNode(page, 'p-link');
+    const link = await getLinkHost();
     const before = await selectNode(page, '#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);

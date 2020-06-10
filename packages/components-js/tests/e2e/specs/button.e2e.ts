@@ -11,24 +11,28 @@ import { getBrowser } from '../helpers/setup';
 describe('button', () => {
 
   let page: Page;
+
   beforeEach(async () => {
     page = await getBrowser().newPage();
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
 
+  const getButtonHost = () => selectNode(page, 'p-button');
+  const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
+
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
-    const el = await selectNode(page, 'p-button >>> button');
+    const el = await getButtonRealButton();
     expect(el).not.toBeNull();
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
+    await setContentWithDesignSystem(page, `<div><p-button>Some label</p-button></div>`);
 
-    const button = await selectNode(page, 'p-button >>> button');
-    const host = await selectNode(page, '#hostElement');
     const wrapper = await selectNode(page, 'div');
+    const host = await getButtonHost();
+    const button = await getButtonRealButton();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -45,8 +49,8 @@ describe('button', () => {
 
   it(`submits outer forms on click, if it's type submit`, async () => {
     await setContentWithDesignSystem(page, `<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`);
-    const button = await selectNode(page, 'p-button >>> button');
-    const host = await selectNode(page, 'p-button');
+    const button = await getButtonRealButton();
+    const host = await getButtonHost();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
@@ -72,7 +76,7 @@ describe('button', () => {
           </script>
     `);
 
-    const button = await selectNode(page, 'p-button >>> button');
+    const button = await getButtonRealButton();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
@@ -92,8 +96,8 @@ describe('button', () => {
           </div>
     `);
 
-    const innerButton = await selectNode(page, 'p-button >>> button');
-    const outerButton = await selectNode(page, 'p-button');
+    const innerButton = await getButtonRealButton();
+    const outerButton = await getButtonHost();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
@@ -114,7 +118,7 @@ describe('button', () => {
           </div>
     `);
 
-    const button = await selectNode(page, 'p-button');
+    const button = await getButtonHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
     await before.focus();
@@ -178,7 +182,7 @@ describe('button', () => {
       document.activeElement === document.querySelector('p-button')
     )
 
-    const button = await selectNode(page, 'p-button');
+    const button = await getButtonHost();
     const before = await selectNode(page, '#before');
     await before.focus();
     expect(await buttonHasFocus()).toBe(false);
@@ -200,7 +204,7 @@ describe('button', () => {
           </div>
     `);
 
-    const button = await selectNode(page, 'p-button');
+    const button = await getButtonHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
