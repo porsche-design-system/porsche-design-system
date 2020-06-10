@@ -1,5 +1,6 @@
-import { font } from '../variables';
+import { font, fontSizeArray } from '../variables';
 import { mediaQuery } from './breakpoints';
+import { typeScale } from '../helper';
 
 export const title = {
   large: {
@@ -57,8 +58,28 @@ export const headline = {
   }
 };
 
-export const text = {
-  ...font.size.small,
-  fontFamily: font.family,
-  fontWeight: font.weight.regular
+const fontWeightObject: {[key: string]: number} = {
+  'thin': font.weight.thin,
+  'regular': font.weight.regular,
+  'semibold': font.weight.semibold,
+  'bold': font.weight.bold
+};
+
+export const text = (customSize?: string, customWeight?: string) => {
+  if (!customSize && !customWeight) {
+    return {
+      ...font.size.small,
+      fontFamily: font.family,
+      fontWeight: font.weight.regular
+    };
+  }
+
+  const fontSize = customSize && fontSizeArray.includes(customSize) ? typeScale(customSize) : font.size.small;
+  const fontWeight = customWeight &&  customWeight in Object.keys(fontWeightObject) ? fontWeightObject?.[customWeight] : font.weight.regular;
+
+  return {
+    ...fontSize,
+    fontFamily: font.family,
+    fontWeight: fontWeight
+  };
 };
