@@ -1,5 +1,31 @@
 import { pxToRem, typeScale } from '../helper';
 
+export const fontSizeArray = [
+  '12',
+  '16',
+  '18',
+  '20',
+  '22',
+  '24',
+  '28',
+  '30',
+  '32',
+  '36',
+  '42',
+  '44',
+  '48',
+  '52',
+  '60',
+  '62',
+  '72',
+  '84',
+  'xSmall',
+  'small',
+  'medium',
+  'large',
+  'xLarge'
+];
+
 export const font = {
   family: `"Porsche Next", "Arial Narrow", Arial, sans-serif`,
 
