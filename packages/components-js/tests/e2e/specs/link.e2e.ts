@@ -51,7 +51,7 @@ describe('link', () => {
     await setContentWithDesignSystem(page, `
       <div id="wrapper">
         <a href="#" id="before">before</a>
-        <p-link href="#" id="link">Some label</p-link>
+        <p-link href="#" id="my-link">Some label</p-link>
         <a href="#" id="after">after</a>
       </div>
     `);
@@ -59,8 +59,6 @@ describe('link', () => {
     const link = await getLinkHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
-    const linkId = await getIdFromNode(link);
-    await before.focus();
 
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
@@ -75,42 +73,61 @@ describe('link', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(await getActiveElementId(page )).toEqual(await getIdFromNode(before));
+    expect(beforeFocusCalls).toBe(0);
+    expect(linkFocusCalls).toBe(0);
+    expect(linkFocusInCalls).toBe(0);
+    expect(linkBlurCalls).toBe(0);
+    expect(linkFocusOutCalls).toBe(0);
+    expect(afterFocusCalls).toBe(0);
+    expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
+    expect(linkFocusCalls).toBe(0);
+    expect(linkFocusInCalls).toBe(0);
+    expect(linkBlurCalls).toBe(0);
+    expect(linkFocusOutCalls).toBe(0);
+    expect(afterFocusCalls).toBe(0);
+    expect(await getActiveElementId(page)).toBe('before');
+
+    await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
     expect(linkBlurCalls).toBe(0);
     expect(linkFocusOutCalls).toBe(0);
     expect(afterFocusCalls).toBe(0);
-    expect(await getActiveElementId(page )).toEqual(linkId);
+    expect(await getActiveElementId(page)).toBe('my-link');
 
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
     expect(linkBlurCalls).toBe(1);
     expect(linkFocusOutCalls).toBe(1);
     expect(afterFocusCalls).toBe(1);
-    expect(await getActiveElementId(page )).toEqual(await getIdFromNode(after));
+    expect(await getActiveElementId(page)).toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
     expect(linkBlurCalls).toBe(1);
     expect(linkFocusOutCalls).toBe(1);
-    expect(beforeFocusCalls).toBe(0);
-    expect(await getActiveElementId(page )).toEqual(linkId);
+    expect(afterFocusCalls).toBe(1);
+    expect(await getActiveElementId(page)).toBe('my-link');
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(2);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
     expect(linkBlurCalls).toBe(2);
     expect(linkFocusOutCalls).toBe(2);
-    expect(beforeFocusCalls).toBe(1);
-    expect(await getActiveElementId(page )).toEqual(await getIdFromNode(before));
+    expect(afterFocusCalls).toBe(1);
+    expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.up('ShiftLeft');
   });

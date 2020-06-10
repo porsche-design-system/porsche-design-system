@@ -1,5 +1,5 @@
 import {
-  addEventListener,
+  addEventListener, getActiveElementId,
   getIdFromNode,
   initAddEventListener,
   selectNode,
@@ -56,7 +56,7 @@ describe('button pure', () => {
     let calls = 0;
     await addEventListener(form, 'submit', () => calls++);
 
-    for(const triggerElement of [host, button]) {
+    for (const triggerElement of [host, button]) {
       await triggerElement.click();
     }
     expect(calls).toBe(1);
@@ -108,18 +108,16 @@ describe('button pure', () => {
 
   it(`should trigger focus&blur events at the correct time`, async () => {
     await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button-pure>Some label</p-button-pure>
-            <a href="#" id="after">after</a>
-          </div>
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button-pure id="my-button-pure">Some label</p-button-pure>
+        <a href="#" id="after">after</a>
+      </div>
     `);
 
     const button = await getButtonPureHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
-    await before.focus();
-
 
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
@@ -134,38 +132,61 @@ describe('button pure', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
+    expect(beforeFocusCalls).toBe(0);
+    expect(buttonFocusCalls).toBe(0);
+    expect(buttonFocusInCalls).toBe(0);
+    expect(buttonBlurCalls).toBe(0);
+    expect(buttonFocusOutCalls).toBe(0);
+    expect(afterFocusCalls).toBe(0);
+    expect(await getActiveElementId(page)).toBe('');
+
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
+    expect(buttonFocusCalls).toBe(0);
+    expect(buttonFocusInCalls).toBe(0);
+    expect(buttonBlurCalls).toBe(0);
+    expect(buttonFocusOutCalls).toBe(0);
+    expect(afterFocusCalls).toBe(0);
+    expect(await getActiveElementId(page)).toBe('before');
+
+    await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
     expect(buttonBlurCalls).toBe(0);
     expect(buttonFocusOutCalls).toBe(0);
     expect(afterFocusCalls).toBe(0);
+    expect(await getActiveElementId(page)).toBe('my-button-pure');
 
     await page.keyboard.press('Tab');
-
+    expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
     expect(buttonBlurCalls).toBe(1);
     expect(buttonFocusOutCalls).toBe(1);
     expect(afterFocusCalls).toBe(1);
+    expect(await getActiveElementId(page)).toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
     expect(buttonBlurCalls).toBe(1);
     expect(buttonFocusOutCalls).toBe(1);
-    expect(beforeFocusCalls).toBe(0);
+    expect(afterFocusCalls).toBe(1);
+    expect(await getActiveElementId(page)).toBe('my-button-pure');
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-
+    expect(beforeFocusCalls).toBe(2);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
     expect(buttonBlurCalls).toBe(2);
     expect(buttonFocusOutCalls).toBe(2);
-    expect(beforeFocusCalls).toBe(1);
+    expect(afterFocusCalls).toBe(1);
+    expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.up('ShiftLeft');
   });
