@@ -108,11 +108,11 @@ export const config: StorefrontConfig = {
     }
   },
   'Utilities': {
+    'Introduction': [
+      // @ts-ignore
+      () => import(`@/pages/utilities/introduction.md`)
+    ],
     'Scss': {
-      'Introduction': [
-        // @ts-ignore
-        () => import(`@/pages/utilities/scss/introduction.md`)
-      ],
       'Variables': [
         // @ts-ignore
         () => import(`@/pages/utilities/scss/variables.md`)
@@ -127,9 +127,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Js': {
-      'Introduction': [
+      'Variables': [
         // @ts-ignore
-        () => import(`@/pages/utilities/js/introduction.md`)
+        () => import(`@/pages/utilities/js/variables.md`)
+      ],
+      'Functions': [
+        // @ts-ignore
+        () => import(`@/pages/utilities/js/functions.md`)
       ]
     }
   },
