@@ -4,8 +4,6 @@ import {
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from '../helpers';
-import { Components } from '../../../src';
-import PIcon = Components.PIcon;
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
@@ -21,6 +19,9 @@ describe('checkbox-wrapper', () => {
   const getCheckboxRealInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
   const getCheckboxLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
   const getCheckboxMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
+  const getCheckboxIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
+
+  const getIconName = async () => getPropertyFromHandle(await getCheckboxIcon(), 'name');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
@@ -193,11 +194,6 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('indeterminate state', () => {
-    const getIconName = () => page.evaluate(() => {
-      const icon: PIcon = document.querySelector('p-checkbox-wrapper').shadowRoot.querySelector('p-icon');
-      return icon.name;
-    });
-
     const setIndeterminate = async (value: boolean) => {
       await page.evaluate((indeterminate: boolean) => {
         const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');

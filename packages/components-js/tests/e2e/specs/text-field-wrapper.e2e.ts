@@ -1,9 +1,7 @@
-import { Components } from '../../../src';
-import PIcon = Components.PIcon;
 import {
   addEventListener,
   getAttributeFromHandle, getBoxShadow,
-  getClassFromHandle, getClassListFromHandle, initAddEventListener,
+  getClassFromHandle, getClassListFromHandle, getPropertyFromHandle, initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange, waitForSelector
 } from '../helpers';
@@ -26,63 +24,11 @@ describe('Text Field Wrapper', () => {
   const getTextFieldMessage = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
   const getTextFieldLabel = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
   const getTextFieldButton = () => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
+  const getTextFieldIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
+  const getTextFieldIconInner = () => selectNode(page,'p-text-field-wrapper >>> p-icon >>> i');
 
-  const getCustomInputButtonDisabledState = () => page.evaluate(() => {
-    const toggleButton: HTMLButtonElement = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('.p-text-field-wrapper__button');
-    return toggleButton.disabled;
-  });
-
-  const getToggleButtonIconName = () => page.evaluate(() => {
-    const icon: PIcon = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('p-icon');
-    return icon.name;
-  });
-
-  it(`should toggle password visibility and focus input correctly`, async () => {
-    await setContentWithDesignSystem(page, `
-      <p-text-field-wrapper label="Some label">
-        <input type="password" name="some-name">
-      </p-text-field-wrapper>
-    `);
-
-    const button = await getTextFieldButton();
-    const input = await getTextFieldRealInput();
-
-    let inputFocusCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusCalls++);
-
-
-    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(0);
-
-    await button.click();
-
-    expect(await getAttributeFromHandle(input, 'type')).toBe('text');
-    expect(inputFocusCalls).toBe(1);
-
-    await button.click();
-
-    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(2);
-  });
-
-  it(`submits outer forms on click on search button, if the input is search`, async () => {
-    await setContentWithDesignSystem(page, `
-      <form onsubmit="return false;">
-        <p-text-field-wrapper label="Some label">
-          <input type="search" name="some-name">
-        </p-text-field-wrapper>
-      </form>
-    `);
-    const searchButton = await getTextFieldButton();
-    const form = await selectNode(page, 'form');
-
-    let formFocusCalls = 0;
-    await addEventListener(form, 'submit', () => formFocusCalls++);
-
-    await searchButton.click();
-    await waitForEventCallbacks(page);
-    expect(formFocusCalls).toBe(1);
-  });
+  const getIconName = async () => getPropertyFromHandle(await getTextFieldIcon(), 'name');
+  const getDisabledState = async () => getPropertyFromHandle(await getTextFieldButton(), 'disabled');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page,`
@@ -206,19 +152,19 @@ describe('Text Field Wrapper', () => {
     const input = await getTextFieldRealInput();
 
     expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getCustomInputButtonDisabledState()).toBe(false);
+    expect(await getDisabledState()).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = true);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled');
 
     expect(await getClassFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getCustomInputButtonDisabledState()).toBe(true);
+    expect(await getDisabledState()).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = false);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled', {isGone: true});
 
     expect(await getClassFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getCustomInputButtonDisabledState()).toBe(false);
+    expect(await getDisabledState()).toBe(false);
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
@@ -228,20 +174,20 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `);
 
-    const buttonIcon = await selectNode(page,'p-text-field-wrapper >>> p-icon >>> i');
     const toggleButton = await getTextFieldButton();
+    const buttonIconInner = await getTextFieldIconInner();
 
-    expect(await getToggleButtonIconName()).toBe('view');
-
-    await toggleButton.click();
-    await waitForInnerHTMLChange(page, buttonIcon);
-
-    expect(await getToggleButtonIconName()).toBe('view-off');
+    expect(await getIconName()).toBe('view');
 
     await toggleButton.click();
-    await waitForInnerHTMLChange(page, buttonIcon);
+    await waitForInnerHTMLChange(page, buttonIconInner);
 
-    expect(await getToggleButtonIconName()).toBe('view');
+    expect(await getIconName()).toBe('view-off');
+
+    await toggleButton.click();
+    await waitForInnerHTMLChange(page, buttonIconInner);
+
+    expect(await getIconName()).toBe('view');
   });
 
   it('should disable search button when input (type search) is set to disabled or readonly programmatically', async () => {
@@ -254,29 +200,75 @@ describe('Text Field Wrapper', () => {
     const fakeInput = await getTextFieldFakeInput();
     const input = await getTextFieldRealInput();
 
-    expect(await getCustomInputButtonDisabledState()).toBe(false);
+    expect(await getDisabledState()).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = true);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled');
 
-    expect(await getCustomInputButtonDisabledState()).toBe(true);
+    expect(await getDisabledState()).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = false);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled', {isGone: true});
 
-    expect(await getCustomInputButtonDisabledState()).toBe(false);
+    expect(await getDisabledState()).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => el.readOnly = true);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--readonly');
 
     expect(await getClassFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getCustomInputButtonDisabledState()).toBe(true);
+    expect(await getDisabledState()).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => el.readOnly = false);
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--readonly', {isGone: true});
 
     expect(await getClassFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getCustomInputButtonDisabledState()).toBe(false);
+    expect(await getDisabledState()).toBe(false);
+  });
+
+  it(`should toggle password visibility and focus input correctly`, async () => {
+    await setContentWithDesignSystem(page, `
+      <p-text-field-wrapper label="Some label">
+        <input type="password" name="some-name">
+      </p-text-field-wrapper>
+    `);
+
+    const button = await getTextFieldButton();
+    const input = await getTextFieldRealInput();
+
+    let inputFocusCalls = 0;
+    await addEventListener(input, 'focus', () => inputFocusCalls++);
+
+    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
+    expect(inputFocusCalls).toBe(0);
+
+    await button.click();
+
+    expect(await getAttributeFromHandle(input, 'type')).toBe('text');
+    expect(inputFocusCalls).toBe(1);
+
+    await button.click();
+
+    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
+    expect(inputFocusCalls).toBe(2);
+  });
+
+  it(`submits outer forms on click on search button, if the input is search`, async () => {
+    await setContentWithDesignSystem(page, `
+      <form onsubmit="return false;">
+        <p-text-field-wrapper label="Some label">
+          <input type="search" name="some-name">
+        </p-text-field-wrapper>
+      </form>
+    `);
+    const searchButton = await getTextFieldButton();
+    const form = await selectNode(page, 'form');
+
+    let formFocusCalls = 0;
+    await addEventListener(form, 'submit', () => formFocusCalls++);
+
+    await searchButton.click();
+    await waitForEventCallbacks(page);
+    expect(formFocusCalls).toBe(1);
   });
 
   describe('hover state', () => {
