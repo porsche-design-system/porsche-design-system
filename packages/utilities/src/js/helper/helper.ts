@@ -2,8 +2,8 @@ const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
 export const remBase = 16;
 
-export const pxToRem = (fontSize: string): string => {
-  const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
+export const pxToRem = (px: string): string => {
+  const [, fontSizeValue, fontSizeUnit] = px.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit !== 'px' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 16px');
   } else {
@@ -19,11 +19,11 @@ export const remToPx = (rem: string): string => {
 };
 
 export const typeScale = (size: string) => ({
-  fontSize: convertToRem(size),
+  fontSize: checkIfRem(size),
   lineHeight: convertLineHeight(size)
 });
 
-export const convertToRem = (fontSize: string): string => {
+export const checkIfRem = (fontSize: string): string => {
   const [, fontSizeValue, fontSizeUnit] = fontSize.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');
