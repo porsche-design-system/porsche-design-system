@@ -8,7 +8,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 beforeAll(async () => {
   browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     defaultViewport: {
       width: 1920,
       height: 800
