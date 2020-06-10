@@ -134,7 +134,11 @@ export const config: StorefrontConfig = {
       'Functions': [
         // @ts-ignore
         () => import(`@/pages/utilities/js/functions.md`)
-      ]
+      ],
+      'Helper': [
+        // @ts-ignore
+        () => import(`@/pages/utilities/js/helper.md`)
+      ],
     }
   },
   'Helpers': {
