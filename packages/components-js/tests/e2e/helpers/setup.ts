@@ -4,8 +4,6 @@ import { Browser } from 'puppeteer';
 
 let browser: Browser;
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
-
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: true,

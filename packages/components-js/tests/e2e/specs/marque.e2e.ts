@@ -1,17 +1,14 @@
 import { setContentWithDesignSystem } from '../helpers';
-import { Page, Viewport } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('marque', () => {
   let page: Page;
-  beforeEach(async () => page = await getBrowser().newPage());
-  afterEach(async () => await page.close());
-
-  let initialViewport: Viewport;
   let requestedImagePath: string;
 
-  beforeAll(async () => {
-    initialViewport = page.viewport();
+  beforeEach(async () => {
+    page = await getBrowser().newPage()
+    requestedImagePath = '';
 
     await page.setRequestInterception(true);
     page.on('request', (req) => {
@@ -23,10 +20,7 @@ describe('marque', () => {
     });
   });
 
-  beforeEach(async () => {
-    requestedImagePath = ''; // reset
-    await page.setViewport(initialViewport); // reset to default
-  });
+  afterEach(async () => await page.close());
 
   const resolution1x = '@1x';
   const resolution2x = '@2x';
@@ -37,6 +31,8 @@ describe('marque', () => {
 
     describe('on default screen', () => {
       const fileName = 'marque-trademark.small';
+
+      beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContent();
@@ -62,9 +58,7 @@ describe('marque', () => {
     describe('on large screen', () => {
       const fileName = 'marque-trademark.medium';
 
-      beforeEach(async () => {
-        await page.setViewport({ ...initialViewport, width: 1300 });
-      });
+      beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContent();
@@ -94,6 +88,8 @@ describe('marque', () => {
     describe('on default screen', () => {
       const fileName = 'marque.small';
 
+      beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
+
       it('should request correct image for 1x resolution', async () => {
         await setContent();
         expect(requestedImagePath).toContain(fileName);
@@ -118,9 +114,7 @@ describe('marque', () => {
     describe('on large screen', () => {
       const fileName = 'marque.medium';
 
-      beforeEach(async () => {
-        await page.setViewport({ ...initialViewport, width: 1300 });
-      });
+      beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContent();

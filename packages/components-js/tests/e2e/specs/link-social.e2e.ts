@@ -11,12 +11,11 @@ import { getBrowser } from '../helpers/setup';
 
 describe('link social', () => {
   let page: Page;
-  beforeEach(async () => page = await getBrowser().newPage());
-  afterEach(async () => await page.close());
-
-  beforeAll(async () => {
-    await initAddEventListener(page); // needed for setup
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
   });
+  afterEach(async () => await page.close());
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);

@@ -15,8 +15,6 @@ describe('checkbox-wrapper', () => {
   beforeEach(async () => page = await getBrowser().newPage());
   afterEach(async () => await page.close());
 
-  beforeEach(async () => await page.reload());
-
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
       <p-checkbox-wrapper label="Some label">
@@ -295,7 +293,6 @@ describe('checkbox-wrapper', () => {
     const getFakeCheckbox = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
 
     it('should change box-shadow color when fake checkbox is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>
@@ -309,7 +306,6 @@ describe('checkbox-wrapper', () => {
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
       <p-checkbox-wrapper label="Some label">
         <input type="checkbox" name="some-name"/>

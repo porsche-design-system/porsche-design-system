@@ -10,12 +10,11 @@ import { getBrowser } from '../helpers/setup';
 
 describe('Textarea Wrapper', () => {
   let page: Page;
-  beforeEach(async () => page = await getBrowser().newPage());
-  afterEach(async () => await page.close());
-
-  beforeAll(async () => {
-    await initAddEventListener(page); // needed for setup
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
   });
+  afterEach(async () => await page.close());
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
@@ -136,7 +135,6 @@ describe('Textarea Wrapper', () => {
     const getFakeTextarea = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
 
     it('should change box-shadow color when fake textarea is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
         <p-textarea-wrapper label="Some label">
           <textarea name="some-name"></textarea>
@@ -152,7 +150,6 @@ describe('Textarea Wrapper', () => {
     });
 
     it('should change box-shadow color of fake textarea when label text is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
         <p-textarea-wrapper label="Some label">
           <textarea name="some-name"></textarea>

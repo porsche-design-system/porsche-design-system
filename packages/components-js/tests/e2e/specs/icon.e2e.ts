@@ -6,21 +6,18 @@ import {
   timeLogger,
   waitForInnerHTMLChange
 } from '../helpers';
-import { NavigationOptions, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('p-icon', () => {
   let page: Page;
 
   let responseCounter: number;
-  const navOptions: NavigationOptions = {waitUntil: 'networkidle0'}; // If we check for number of responses it is necessary to wait for all network traffic to be resolved.
-  const getIconContent = () => getInnerHTMLFromShadowRoot('p-icon >>> i');
+  const getIconContent = () => getInnerHTMLFromShadowRoot(page, 'p-icon >>> i');
 
   beforeEach(async () => {
-    const browser = await getBrowser();
-    page = await browser.newPage();
+    page = await getBrowser().newPage();
 
-    await page.reload(navOptions);
     await page.setRequestInterception(true);
 
     responseCounter = 0;
@@ -41,7 +38,7 @@ describe('p-icon', () => {
   it('should have only one response for default icon', async () => {
     setSvgRequestInterceptor(page, []);
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(page, `<p-icon></p-icon>`, navOptions);
+    await setContentWithDesignSystem(page, `<p-icon></p-icon>`);
 
     expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
@@ -81,7 +78,7 @@ describe('p-icon', () => {
    */
   it('should unset previous icon if name prop is changed', async () => {
     setSvgRequestInterceptor(page, [0, 1000]);
-    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`, navOptions);
+    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
     const iconComponent = await selectNode(page, 'p-icon');
     expect(await getIconContent()).toContain('highway');
@@ -97,7 +94,7 @@ describe('p-icon', () => {
 
   it('should unset previous icon if name prop is removed', async () => {
     setSvgRequestInterceptor(page, [2000]);
-    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`, navOptions);
+    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
     const iconComponent = await selectNode(page, 'p-icon');
     const shadowIcon = await selectNode(page, 'p-icon >>> .p-icon');

@@ -12,7 +12,10 @@ import { getBrowser } from '../helpers/setup';
 
 describe('Text Field Wrapper', () => {
   let page: Page;
-  beforeEach(async () => page = await getBrowser().newPage());
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
+  });
   afterEach(async () => await page.close());
 
   const getCustomInputButtonDisabledState = () => page.evaluate(() => {
@@ -24,8 +27,6 @@ describe('Text Field Wrapper', () => {
     const icon: PIcon = document.querySelector('p-text-field-wrapper').shadowRoot.querySelector('p-icon');
     return icon.name;
   });
-
-  beforeEach(async () => await initAddEventListener(page));
 
   it(`should toggle password visibility and focus input correctly`, async () => {
     await setContentWithDesignSystem(page, `
