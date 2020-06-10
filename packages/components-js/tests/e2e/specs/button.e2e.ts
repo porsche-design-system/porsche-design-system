@@ -11,12 +11,11 @@ import { getBrowser } from '../helpers/setup';
 describe('button', () => {
 
   let page: Page;
-  beforeEach(async () => page = await getBrowser().newPage());
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
+  });
   afterEach(async () => await page.close());
-
-  beforeAll(async () => {
-    await initAddEventListener(page); // needed for setup
-  })
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);

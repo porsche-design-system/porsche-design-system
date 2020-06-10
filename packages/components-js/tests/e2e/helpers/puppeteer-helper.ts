@@ -74,7 +74,7 @@ export const selectNode = async (page: Page, selector: string) => {
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
 };
 
-export const getInnerHTMLFromShadowRoot = async (selector: string) => {
+export const getInnerHTMLFromShadowRoot = async (page: Page, selector: string) => {
   const handle = await selectNode(page, selector);
   return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };

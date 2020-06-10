@@ -14,8 +14,6 @@ describe('radio-button-wrapper', () => {
   beforeEach(async () => page = await getBrowser().newPage());
   afterEach(async () => await page.close());
 
-  beforeEach(async () => await page.reload());
-
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
       <p-radio-button-wrapper label="Some label">
@@ -213,7 +211,6 @@ describe('radio-button-wrapper', () => {
     const getFakeRadioButton = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
 
     it('should change box-shadow color when fake radio button is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name"/>
@@ -228,7 +225,6 @@ describe('radio-button-wrapper', () => {
     });
 
     it('should change box-shadow color of fake radio button when label text is hovered', async () => {
-      await page.reload();
       await setContentWithDesignSystem(page, `
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name"/>
