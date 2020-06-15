@@ -6,5 +6,6 @@ export * from './line-height';
 export * from './prefix';
 export * from './random-string';
 export * from './slotted-styles';
+export * from './touch-device-detection';
 export * from './tracking';
 export * from './transition-listener';
