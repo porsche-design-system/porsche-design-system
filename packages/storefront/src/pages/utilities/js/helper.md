@@ -8,7 +8,7 @@ Calculates font-size and line-height to fit into Porsche Vertical Grid System. `
 
 ```
 const StyledP = styled.p`
-    typeScale(font.size[32]);
+    typeScale('32px');
 `
 ```
 
