@@ -19,9 +19,9 @@ export const trackLoader = (): void => trackEvent('loader', 'init');
 
 type StringNumberNullBooleanTuple = string | number | null | boolean;
 
-interface HttpQuery {
+type HttpQuery = {
   [key: string]: StringNumberNullBooleanTuple | StringNumberNullBooleanTuple[];
-}
+};
 
 const queryString = (params: HttpQuery): string =>
   Object.entries(params)
