@@ -1,6 +1,6 @@
 # Text Field
 
-The **Text Field Wrapper** component supports basic input types and is essential for mostly any form.
+The **Text Field Wrapper** is a styling wrapper for the native HTML input types and is essential for mostly any form.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The **Text Field Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
