@@ -67,6 +67,7 @@ describe('link social', () => {
     expect(await getActiveElementId()).toEqual(await getIdFromNode(before));
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks();
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
     expect(linkBlurCalls).toBe(0);
@@ -75,6 +76,7 @@ describe('link social', () => {
     expect(await getActiveElementId()).toEqual(linkId);
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks();
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
     expect(linkBlurCalls).toBe(1);
@@ -85,6 +87,7 @@ describe('link social', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks();
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
     expect(linkBlurCalls).toBe(1);
@@ -94,6 +97,7 @@ describe('link social', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks();
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
     expect(linkBlurCalls).toBe(2);
