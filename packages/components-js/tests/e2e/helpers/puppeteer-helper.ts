@@ -66,6 +66,9 @@ export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>) =>
 export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string) =>
   await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 
+export const hasAttribute = async (node: ElementHandle | JSHandle<Element>, attribute: string) =>
+  await node.evaluate((el: HTMLElement, attr: string) => el.hasAttribute(attr), attribute);
+
 export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
 
 export const selectNode = async (page: Page, selector: string) => {
