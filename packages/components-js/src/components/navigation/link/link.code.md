@@ -49,30 +49,14 @@ Choose between predefined styling variants.
 
 ---
 
-## Link used with an anchor tag as a slot (e.g. for framework routing)
+## Framework routing (anchor nesting)
 
-The **link** component can also be used with an explicit anchor tag, in case you have to provide the link via a framework specific router.
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link>
-  </template>
-</Playground>
-
----
-
-## Link wrapped with an anchor tag (alternative for framework routing)
-
-In case the router component must be wrapped around `<p-link>`, please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
-
-<Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
-  <template v-slot={theme}>
-    <a href="https://www.porsche.com" class="example-link">
-      <p-link :theme="theme">Some label</p-link>
-    </a>
-    <a href="https://www.porsche.com" class="example-link">
-      <p-link hide-label="true" :theme="theme">Some label</p-link>
-    </a>
+    <a href="https://www.porsche.com" class="example-link"><p-link :theme="theme">Some label</p-link></a>
   </template>
 </Playground>
 
