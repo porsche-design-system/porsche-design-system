@@ -1,6 +1,6 @@
 # Radio Button
 
-The **Radio Button Wrapper** component supports input type `radio`.
+The **Radio Button Wrapper** component is a styling wrapper for the native HTML input type `radio` form element.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The **Radio Button Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 
