@@ -1,4 +1,4 @@
-import { convertLineHeight, checkIfRem, pxToRem, remToPx } from '../../../src/js/helper';
+import { convertLineHeight, checkIfRem, pxToRem, remToPx, typeScale } from '../../../src/js/helper';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for pxpx', () => {
@@ -189,5 +189,29 @@ describe('convertLineHeight()', () => {
   it('should return correct lineHeight for 84px', () => {
     const lineHeight = convertLineHeight('84px');
     expect(lineHeight).toBe(1.19048);
+  });
+});
+
+describe('typeScale()', () => {
+  it('should throw error if called with undefined', () => {
+    try {
+      typeScale(undefined!);
+    } catch (e) {
+      expect(e).toBeDefined();
+    }
+  });
+
+  it('should throw error if called with wrong unit', () => {
+    try {
+      typeScale('32fx');
+    } catch (e) {
+      expect(e).toBeDefined();
+    }
+  });
+
+  it('should return fontSize and lineHeight', () => {
+    const foo = typeScale('32px');
+    expect(foo.lineHeight).toBe(1.375);
+    expect(foo.fontSize).toBe('2rem');
   });
 });
