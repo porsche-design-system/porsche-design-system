@@ -47,7 +47,7 @@ export class Link {
       outline-offset: 1px;
     }
 
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context :-( */
+    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
       content: "" !important;
       position: absolute !important;
