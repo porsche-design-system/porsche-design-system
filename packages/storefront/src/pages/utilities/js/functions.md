@@ -131,14 +131,15 @@ PHeadline style = {
 ### Text
 
 With the `text()` function it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `customSize` and `customWeight`.
+The size is freely selectable, for the weight one of the predefined sizes must be chosen.
 
-Default is `font.size.small` and `font.weight.regular`.
-
-Use predefined values like:  
+Predefined size values are:  
  `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | xSmall | small | medium | large | xLarge`  
-  
+
 Pre defined weight values are:  
  `thin |regular | bold`
+
+Default is `font.size.small` and `font.weight.regular`.
 
 #### Example standard usage
 
