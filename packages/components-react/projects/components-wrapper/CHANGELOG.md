@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- `Select Wrapper` is now ready for the catwalk. It is dressed now with a custom drop down list box and gets naked by default on touch devices. 
+
 ### Fixed
 - Minor accessibility improvements of `icons` and `text-field-wrapper`
 

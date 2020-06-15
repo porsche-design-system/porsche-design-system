@@ -15,7 +15,7 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    const manifestPath = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
+    const manifestPath: {[size: string]: { [resolution: string]: string }} = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
     const buildSrcSet = (size: 'small' | 'medium'): string =>
       Object.entries(manifestPath[size])
