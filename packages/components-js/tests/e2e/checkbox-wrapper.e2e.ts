@@ -1,6 +1,6 @@
 import {
-  getAttributeFromHandle, getBoxShadow,
-  getClassListFromHandle, getPropertyFromHandle,
+  getAttributeFromHandle,
+  getClassListFromHandle, getElementStyle, getPropertyFromHandle,
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange, waitForSelector
 } from './helpers';
@@ -293,10 +293,10 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`);
 
       const fakeCheckbox = await getFakeCheckbox();
-      const initialBoxShadow = await getBoxShadow(fakeCheckbox);
+      const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
       await fakeCheckbox.hover();
 
-      expect(await getBoxShadow(fakeCheckbox, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
@@ -308,10 +308,10 @@ describe('checkbox-wrapper', () => {
 
       const fakeCheckbox = await getFakeCheckbox();
       const labelText = await selectNode('p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-      const initialBoxShadow = await getBoxShadow(fakeCheckbox);
+      const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
 
       await labelText.hover();
-      expect(await getBoxShadow(fakeCheckbox, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });
