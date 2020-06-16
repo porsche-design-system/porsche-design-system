@@ -2,7 +2,6 @@ import { ElementHandle, JSHandle, NavigationOptions, Page } from 'puppeteer';
 
 export const setContentWithDesignSystem = async (page: Page, content: string, options: NavigationOptions = {waitUntil: 'networkidle0'}): Promise<void> => {
   await page.setContent(`
-      <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
       <script type="module" src="http://localhost:3333/build/porsche-design-system.esm.js"></script>
       ${content}
     `,
