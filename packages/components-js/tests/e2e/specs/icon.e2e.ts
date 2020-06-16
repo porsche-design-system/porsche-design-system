@@ -2,8 +2,6 @@ import {
   getInnerHTMLFromShadowRoot,
   selectNode,
   setContentWithDesignSystem,
-  setSvgRequestInterceptor,
-  timeLogger,
   waitForInnerHTMLChange
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -13,6 +11,7 @@ describe('p-icon', () => {
 
   let page: Page;
   let responseCounter: number;
+  let svgRequestCounter: number;
 
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -37,8 +36,38 @@ describe('p-icon', () => {
   const getIconIcon = () => selectNode(page, 'p-icon >>> .p-icon');
   const getIconContent = () => getInnerHTMLFromShadowRoot(page, 'p-icon >>> i');
 
+  const timeLogger = (): string => {
+    const now = new Date();
+    return now.getUTCSeconds() + ':' + now.getUTCMilliseconds()
+  };
+
+  const setSvgRequestInterceptor = async (page: Page, timeouts: number[]): Promise<void> => {
+    svgRequestCounter = 0;
+    page.removeAllListeners('request');
+    page.on('request', (req) => {
+      const url = req.url();
+
+      if (url.endsWith('.svg')) {
+        const iconName = url.match(/icons\/(.*)\.min/)[1];
+        const delay = timeouts[svgRequestCounter] ?? 0;
+
+        console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
+        setTimeout(() => {
+          req.respond({
+            status: 200,
+            contentType: 'image/svg+xml',
+            body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
+          });
+        }, delay);
+        svgRequestCounter++;
+      } else {
+        req.continue();
+      }
+    });
+  };
+
   it('should have only one response for default icon', async () => {
-    setSvgRequestInterceptor(page, []);
+    await setSvgRequestInterceptor(page, []);
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(page, `<p-icon></p-icon>`);
 
@@ -55,7 +84,7 @@ describe('p-icon', () => {
    */
   it('should render correct icon if default-icon request takes longer than icon request', async () => {
     const delay = 2000;
-    setSvgRequestInterceptor(page, [delay, 0]);
+    await setSvgRequestInterceptor(page, [delay, 0]);
 
     // render with default icon "arrow-head-right"
     await setContentWithDesignSystem(page, `<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
@@ -79,7 +108,7 @@ describe('p-icon', () => {
    *                      request 2nd icon
    */
   it('should unset previous icon if name prop is changed', async () => {
-    setSvgRequestInterceptor(page, [0, 1000]);
+    await setSvgRequestInterceptor(page, [0, 1000]);
     await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
     const iconComponent = await getIconHost();
@@ -95,7 +124,7 @@ describe('p-icon', () => {
   });
 
   it('should unset previous icon if name prop is removed', async () => {
-    setSvgRequestInterceptor(page, [2000]);
+    await setSvgRequestInterceptor(page, [2000]);
     await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
 
     const iconComponent = await getIconHost();

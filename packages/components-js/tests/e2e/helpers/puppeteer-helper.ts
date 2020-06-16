@@ -88,35 +88,3 @@ export const getInnerHTMLFromShadowRoot = async (page: Page, selector: string): 
   const handle = await selectNode(page, selector);
   return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };
-
-export const timeLogger = (): string => {
-  const now = new Date();
-  return now.getUTCSeconds() + ':' + now.getUTCMilliseconds()
-};
-
-let svgRequestCounter: number;
-
-export const setSvgRequestInterceptor = (page: Page, timeouts: number[]): void => {
-  svgRequestCounter = 0;
-  page.removeAllListeners('request');
-  page.on('request', (req) => {
-    const url = req.url();
-
-    if (url.endsWith('.svg')) {
-      const iconName = url.match(/icons\/(.*)\.min/)[1];
-      const delay = timeouts[svgRequestCounter] ?? 0;
-
-      console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
-      setTimeout(() => {
-        req.respond({
-          status: 200,
-          contentType: 'image/svg+xml',
-          body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
-        });
-      }, delay);
-      svgRequestCounter++;
-    } else {
-      req.continue();
-    }
-  });
-};
