@@ -31,12 +31,12 @@ export const getElementPosition = (element: ElementHandle, selector: string) => 
 
 // Node Context
 
-export const getPropertyFromHandle = (node: ElementHandle, prop: string) => node.getProperty(prop).then(x => x.jsonValue());
+export const getPropertyFromHandle = async (node: ElementHandle, prop: string): Promise<string> => await (await node.getProperty(prop)).jsonValue() as string;
 
 export const getClassListFromHandle = (node: ElementHandle) => getPropertyFromHandle(node, 'classList').then((x) => Object.values(x).join(' '));
 
-export const waitForSelector = async (page: Page, node: ElementHandle, selector: string, opts?: { isGone: boolean }) => {
-  if (opts?.isGone) {
+export const waitForSelector = async (page: Page, node: ElementHandle, selector: string, opts: { isGone: boolean } = { isGone: false }) => {
+  if (opts.isGone) {
     while ((await getClassListFromHandle(node)).indexOf(selector) >= 0) {
       await page.waitFor(10);
     }
@@ -80,7 +80,7 @@ export const hasAttribute = async (node: ElementHandle | JSHandle<Element>, attr
 
 export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
 
-export const selectNode = async (page: Page, selector: string) => {
+export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
