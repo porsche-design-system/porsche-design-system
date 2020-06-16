@@ -1,9 +1,9 @@
 import {
   addEventListener,
   getAttributeFromHandle,
-  getClassListFromHandle,
+  getCssClasses,
   getElementStyle,
-  getPropertyFromHandle,
+  getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -31,7 +31,7 @@ describe('Text Field Wrapper', () => {
   const getTextFieldIcon = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon');
   const getTextFieldIconInner = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon >>> i');
 
-  const getIconName = async (): Promise<unknown> => getPropertyFromHandle(await getTextFieldIcon(), 'name');
+  const getIconName = async (): Promise<unknown> => getProperty(await getTextFieldIcon(), 'name');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -56,7 +56,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label');
+    expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
   });
 
   it('should add aria-label with description text to support screen readers properly', async () => {
@@ -69,7 +69,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some description');
+    expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some description');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
@@ -82,7 +82,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some error message');
+    expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -124,7 +124,7 @@ describe('Text Field Wrapper', () => {
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toEqual('alert');
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'success'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', 'Some success message'));
@@ -132,14 +132,14 @@ describe('Text Field Wrapper', () => {
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toBeNull();
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'null'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, textFieldComponent);
 
     expect(await getTextFieldMessage()).toBeNull();
-    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
   });
 
   it(`should focus input when label text is clicked`, async () => {
@@ -173,20 +173,20 @@ describe('Text Field Wrapper', () => {
 
     const input = await getTextFieldRealInput();
 
-    expect(await getClassListFromHandle(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(await getTextFieldRealInput(), 'disabled')).toBe(false)
+    expect(await getCssClasses(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
+    expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(false)
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
     await waitForEventCallbacks(page);
 
-    expect(await getClassListFromHandle(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(await getTextFieldRealInput(), 'disabled')).toBe(true);
+    expect(await getCssClasses(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
+    expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForEventCallbacks(page);
 
-    expect(await getClassListFromHandle(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(await getTextFieldRealInput(), 'disabled')).toBe(false);
+    expect(await getCssClasses(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
+    expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(false);
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
@@ -227,29 +227,29 @@ describe('Text Field Wrapper', () => {
 
     const input = await getTextFieldRealInput();
 
-    expect(await getPropertyFromHandle(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
     await waitForEventCallbacks(page);
 
-    expect(await getPropertyFromHandle(await getTextFieldButton(), 'disabled')).toBe(true);
+    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForEventCallbacks(page);
 
-    expect(await getPropertyFromHandle(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
     await waitForEventCallbacks(page);
 
-    expect(await getClassListFromHandle(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getPropertyFromHandle(await getTextFieldButton(), 'disabled')).toBe(true);
+    expect(await getCssClasses(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = false));
     await waitForEventCallbacks(page);
 
-    expect(await getClassListFromHandle(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getPropertyFromHandle(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getCssClasses(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
   });
 
   it(`should toggle password visibility and focus input correctly`, async () => {
@@ -268,17 +268,17 @@ describe('Text Field Wrapper', () => {
     let inputFocusCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusCalls++);
 
-    expect(await getPropertyFromHandle(input, 'type')).toBe('password');
+    expect(await getProperty(input, 'type')).toBe('password');
     expect(inputFocusCalls).toBe(0);
 
     await button.click();
 
-    expect(await getPropertyFromHandle(input, 'type')).toBe('text');
+    expect(await getProperty(input, 'type')).toBe('text');
     expect(inputFocusCalls).toBe(1);
 
     await button.click();
 
-    expect(await getPropertyFromHandle(input, 'type')).toBe('password');
+    expect(await getProperty(input, 'type')).toBe('password');
     expect(inputFocusCalls).toBe(2);
   });
 

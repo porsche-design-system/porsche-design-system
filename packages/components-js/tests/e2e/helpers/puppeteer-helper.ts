@@ -13,28 +13,28 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
 // NODE CONTEXT
 
-export const getPropertyFromHandle = async (elementHandle: ElementHandle, prop: string): Promise<unknown> => {
-  return (await elementHandle.getProperty(prop)).jsonValue();
+export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
+  return (await element.getProperty(prop)).jsonValue();
 }
 
-export const getClassListFromHandle = async (elementHandle: ElementHandle): Promise<string> => {
-  return Object.values(await getPropertyFromHandle(elementHandle, 'classList')).join(' ');
+export const getCssClasses = async (element: ElementHandle): Promise<string> => {
+  return Object.values(await getProperty(element, 'classList')).join(' ');
 }
 
-export const waitForSelector = async (page: Page, elementHandle: ElementHandle, selector: string, opts: { isGone: boolean } = {isGone: false}): Promise<void> => {
-  if (opts.isGone) {
-    while ((await getClassListFromHandle(elementHandle)).indexOf(selector) >= 0) {
-      await page.waitFor(10);
+export const waitForCssClass = async (element: ElementHandle, selector: string, options: { isGone: boolean } = {isGone: false}): Promise<void> => {
+  if (options.isGone) {
+    while ((await getCssClasses(element)).indexOf(selector) >= 0) {
+      await new Promise((resolve) => setTimeout(resolve, 10));
     }
   } else {
-    while ((await getClassListFromHandle(elementHandle)).indexOf(selector) === -1) {
-      await page.waitFor(10);
+    while ((await getCssClasses(element)).indexOf(selector) === -1) {
+      await new Promise((resolve) => setTimeout(resolve, 10));
     }
   }
 };
 
-export const waitForInnerHTMLChange = async (page: Page, node: ElementHandle): Promise<void> => {
-  const getInnerHTML = () => getPropertyFromHandle(node, 'innerHTML');
+export const waitForInnerHTMLChange = async (page: Page, element: ElementHandle): Promise<void> => {
+  const getInnerHTML = () => getProperty(element, 'innerHTML');
   const initialInnerHTML = await getInnerHTML();
   let runCounter = 0;
   // We need an runCounter as exit if the right innerHTML is already loaded
@@ -57,18 +57,13 @@ export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 }
 
-export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string): Promise<string> =>
-  await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
+export const getAttributeFromHandle = async (element: ElementHandle | JSHandle<Element>, attribute: string): Promise<string> =>
+  await element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
-};
-
-export const getInnerHTMLFromShadowRoot = async (page: Page, selector: string): Promise<unknown> => {
-  const handle = await selectNode(page, selector);
-  return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };
 
 type GetElementStyleOptions = { waitForTransition: boolean };
