@@ -1,6 +1,8 @@
 // common type definitions
 export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
 
+export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
+
 export type TextWeight = 'thin' | 'regular' | 'bold';
 
 export type Theme = 'light' | 'dark';

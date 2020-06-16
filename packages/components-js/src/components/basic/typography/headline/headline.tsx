@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, insertSlottedStyles } from '../../../../utils';
-import { Theme } from '../../../../types';
+import { HeadlineVariant, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -13,13 +13,7 @@ export class Headline {
   @Element() public host!: HTMLElement;
 
   /** Style of the headline. */
-  @Prop() public variant?:
-  | 'large-title'
-  | 'headline-1'
-  | 'headline-2'
-  | 'headline-3'
-  | 'headline-4'
-  | 'headline-5' = 'headline-1';
+  @Prop() public variant?: HeadlineVariant = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
@@ -41,15 +35,16 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const TagType = this.hasSlottedHeadlineTag ? 'div' :
-      (!this.tag && !this.hasSlottedHeadlineTag) ?
-        this.variant === 'large-title' && 'h1'
-      || this.variant === 'headline-1' && 'h1'
-      || this.variant === 'headline-2' && 'h2'
-      || this.variant === 'headline-3' && 'h3'
-      || this.variant === 'headline-4' && 'h4'
-      || this.variant === 'headline-5' && 'h5' :
-        this.tag;
+    const variantToTagMap: { [key in HeadlineVariant]: string } = {
+      'large-title': 'h1',
+      'headline-1': 'h1',
+      'headline-2': 'h2',
+      'headline-3': 'h3',
+      'headline-4': 'h4',
+      'headline-5': 'h5'
+    };
+
+    const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
 
     const headlineClasses = cx(
       prefix('headline'),
@@ -68,8 +63,8 @@ export class Headline {
   }
 
   private get hasSlottedHeadlineTag(): boolean {
-    const el: HTMLHeadingElement = this.host.querySelector(':first-child');
-    return el ? el.matches('h1, h2, h3, h4, h5, h6') : false;
+    const el = this.host.querySelector(':first-child');
+    return el?.matches('h1, h2, h3, h4, h5, h6');
   }
 
   private addSlottedStyles(): void {
