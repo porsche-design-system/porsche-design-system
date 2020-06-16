@@ -141,6 +141,7 @@ describe('button pure', () => {
     expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(0);
     expect(buttonFocusInCalls).toBe(0);
@@ -150,6 +151,7 @@ describe('button pure', () => {
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
@@ -159,6 +161,7 @@ describe('button pure', () => {
     expect(await getActiveElementId(page)).toBe('my-button-pure');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
@@ -170,6 +173,7 @@ describe('button pure', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
@@ -180,6 +184,7 @@ describe('button pure', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(2);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
@@ -237,10 +242,12 @@ describe('button pure', () => {
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
   });

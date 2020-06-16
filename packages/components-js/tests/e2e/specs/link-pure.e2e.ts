@@ -82,6 +82,7 @@ describe('link pure', () => {
     expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(0);
     expect(linkFocusInCalls).toBe(0);
@@ -91,6 +92,7 @@ describe('link pure', () => {
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
@@ -100,6 +102,7 @@ describe('link pure', () => {
     expect(await getActiveElementId(page)).toBe('my-link-pure');
 
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
@@ -111,6 +114,7 @@ describe('link pure', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
@@ -121,6 +125,7 @@ describe('link pure', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventCallbacks(page);
     expect(beforeFocusCalls).toBe(2);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
