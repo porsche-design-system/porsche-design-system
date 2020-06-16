@@ -1,5 +1,9 @@
 # Fieldset
 
+The **Fieldset Wrapper** is a grouping component for wrapping contextual associated form elements. 
+You can see some usage examples at our [form patterns section](#/patterns/forms#resources).
+
+## Basic example (with form element context)
 
 <Playground>
   <template>
@@ -10,10 +14,3 @@
     </p-fieldset-wrapper>
   </template>
 </Playground>
-
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  
-  @Component
-  export default class PlaygroundFieldsetWrapper extends Vue {}
-</script>
