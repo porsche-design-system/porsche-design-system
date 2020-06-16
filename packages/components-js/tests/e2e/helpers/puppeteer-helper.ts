@@ -67,24 +67,19 @@ export const waitForEventCallbacks = async (page: Page): Promise<void> =>
 
 // Browser Context
 
-// TODO: rename to getActiveElementHandle
-export const getActiveElement = (page: Page): Promise<JSHandle> =>
-  page.evaluateHandle(() => document.activeElement);
+export const getActiveElementId = (page: Page): Promise<string> => {
+  return page.evaluate(() => document.activeElement.id);
+}
 
-export const getActiveElementId = (page: Page): Promise<string> =>
-  page.evaluate(() => document.activeElement.id);
-
-export const getActiveElementTagName = (page: Page): Promise<string> =>
-  page.evaluate(() => document.activeElement.tagName);
+export const getActiveElementTagName = (page: Page): Promise<string> => {
+  return page.evaluate(() => document.activeElement.tagName);
+}
 
 export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>): Promise<string> =>
   await node.evaluate(el => el.id);
 
 export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string): Promise<string> =>
   await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
-
-export const hasAttribute = async (node: ElementHandle | JSHandle<Element>, attribute: string): Promise<boolean> =>
-  await node.evaluate((el: HTMLElement, attr: string) => el.hasAttribute(attr), attribute);
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
