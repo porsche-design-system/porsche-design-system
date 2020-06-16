@@ -1,6 +1,6 @@
 import {
   getAttributeFromHandle,
-  getClassFromHandle,
+  getClassListFromHandle,
   getElementPosition,
   getElementStyle,
   getInnerHTMLFromShadowRoot,
@@ -180,17 +180,17 @@ describe('select-wrapper', () => {
     const fakeSelect = await getSelectFakeInput();
     const select = await getSelectRealInput();
 
-    expect(await getClassFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassListFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
 
     await select.evaluate((el: HTMLSelectElement) => el.disabled = true);
     await waitForSelector(page, fakeSelect, 'p-select-wrapper__fake-select--disabled');
 
-    expect(await getClassFromHandle(fakeSelect)).toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassListFromHandle(fakeSelect)).toContain('p-select-wrapper__fake-select--disabled');
 
     await select.evaluate((el: HTMLSelectElement) => el.disabled = false);
     await waitForSelector(page, fakeSelect, 'p-select-wrapper__fake-select--disabled', {isGone: true});
 
-    expect(await getClassFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getClassListFromHandle(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
   });
 
   describe('hover state', () => {
@@ -353,7 +353,7 @@ describe('select-wrapper', () => {
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].disabled = true));
       await waitForSelector(page, fakeOption, 'p-select-wrapper__fake-option--disabled');
 
-      expect(await getClassFromHandle(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
+      expect(await getClassListFromHandle(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
       expect(await getElementPosition(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 

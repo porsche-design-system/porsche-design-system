@@ -1,8 +1,8 @@
 import {
   addEventListener,
   getAttributeFromHandle,
-  getClassFromHandle,
-  getClassListFromHandle, getElementStyle,
+  getClassListFromHandle,
+  getElementStyle,
   getPropertyFromHandle,
   hasAttribute,
   initAddEventListener,
@@ -177,19 +177,19 @@ describe('Text Field Wrapper', () => {
     const input = await getTextFieldRealInput();
 
     expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(input, 'disabled')).toBeFalsy();
+    expect(await getPropertyFromHandle(input, 'disabled')).toBe(false)
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled');
+    await waitForEventCallbacks(page);
 
-    expect(await getClassFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(input, 'disabled')).toBeTruthy();
+    expect(await getClassListFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--disabled');
+    expect(await getPropertyFromHandle(input, 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled', { isGone: true });
+    await waitForEventCallbacks(page);
 
-    expect(await getClassFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getPropertyFromHandle(input, 'disabled')).toBeFalsy();
+    expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
+    expect(await getPropertyFromHandle(input, 'disabled')).toBe(false);
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
@@ -246,13 +246,13 @@ describe('Text Field Wrapper', () => {
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--readonly');
 
-    expect(await getClassFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getClassListFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--readonly');
     expect(await hasAttribute(await getTextFieldButton(), 'disabled')).toBeTruthy();
 
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = false));
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--readonly', { isGone: true });
 
-    expect(await getClassFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--readonly');
     expect(await hasAttribute(await getTextFieldButton(), 'disabled')).toBeFalsy();
   });
 

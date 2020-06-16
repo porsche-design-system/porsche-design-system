@@ -86,9 +86,6 @@ export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Elem
 export const hasAttribute = async (node: ElementHandle | JSHandle<Element>, attribute: string): Promise<boolean> =>
   await node.evaluate((el: HTMLElement, attr: string) => el.hasAttribute(attr), attribute);
 
-export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>): Promise<string> =>
-  await getAttributeFromHandle(node, 'class');
-
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
