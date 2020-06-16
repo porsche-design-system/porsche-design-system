@@ -1,5 +1,5 @@
 import {
-  getInnerHTMLFromShadowRoot,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   waitForInnerHTMLChange
@@ -32,9 +32,9 @@ describe('p-icon', () => {
   });
   afterEach(async () => await page.close());
 
-  const getIconHost = () => selectNode(page, 'p-icon');
-  const getIconIcon = () => selectNode(page, 'p-icon >>> .p-icon');
-  const getIconContent = () => getInnerHTMLFromShadowRoot(page, 'p-icon >>> i');
+  const getIconHost = async () => selectNode(page, 'p-icon');
+  const getIconIcon = async () => selectNode(page, 'p-icon >>> .p-icon');
+  const getIconContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
 
   const timeLogger = (): string => {
     const now = new Date();
