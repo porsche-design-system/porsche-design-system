@@ -22,26 +22,30 @@ export const getElementStyle = (element: ElementHandle, property: keyof CSSStyle
     return style[property];
   }, property, opts);
 
-export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el:Element, selector: string): number => {
+export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el: Element, selector: string): number => {
   let option: ChildNode = el.querySelector(selector);
   let pos = 0;
-  while((option = option.previousSibling) !== null) pos++;
+  while ((option = option.previousSibling) !== null) pos++;
   return pos;
 }, selector);
 
 // Node Context
 
-export const getPropertyFromHandle = async (elementHandle: ElementHandle, prop: string): Promise<unknown> => (await elementHandle.getProperty(prop)).jsonValue();
+export const getPropertyFromHandle = async (elementHandle: ElementHandle, prop: string): Promise<unknown> => {
+  return (await elementHandle.getProperty(prop)).jsonValue();
+}
 
-export const getClassListFromHandle = (node: ElementHandle): Promise<string> => getPropertyFromHandle(node, 'classList').then((x) => Object.values(x).join(' '));
+export const getClassListFromHandle = async (elementHandle: ElementHandle): Promise<string> => {
+  return Object.values(await getPropertyFromHandle(elementHandle, 'classList')).join(' ');
+}
 
-export const waitForSelector = async (page: Page, node: ElementHandle, selector: string, opts: { isGone: boolean } = { isGone: false }): Promise<void> => {
+export const waitForSelector = async (page: Page, elementHandle: ElementHandle, selector: string, opts: { isGone: boolean } = {isGone: false}): Promise<void> => {
   if (opts.isGone) {
-    while ((await getClassListFromHandle(node)).indexOf(selector) >= 0) {
+    while ((await getClassListFromHandle(elementHandle)).indexOf(selector) >= 0) {
       await page.waitFor(10);
     }
   } else {
-    while ((await getClassListFromHandle(node)).indexOf(selector) === -1) {
+    while ((await getClassListFromHandle(elementHandle)).indexOf(selector) === -1) {
       await page.waitFor(10);
     }
   }
