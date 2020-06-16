@@ -1,4 +1,4 @@
-# Functions
+# Scss
 
 ## p-rem($px)
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  

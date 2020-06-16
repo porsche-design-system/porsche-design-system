@@ -1,4 +1,4 @@
-# Helper
+# Js
 
 ## typeScale(size)
 

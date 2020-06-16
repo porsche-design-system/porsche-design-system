@@ -1,5 +1,4 @@
 # Js
-## Variables
 
 ## Color
 

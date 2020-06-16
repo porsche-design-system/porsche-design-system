@@ -1,4 +1,4 @@
-# Mixins
+# Scss
 
 ## Breakpoint / Media query
 Predefined breakpoints can easily be used as in the following examples.
