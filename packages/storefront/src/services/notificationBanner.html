@@ -1,5 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
+<style scoped lang="css">
   #ie11Banner {
     background: #fff5e5;
     border-radius: 0px;
@@ -26,12 +26,17 @@
     width: 748px;
   }
 
-  #ie11Banner svg {
+  #ie11Span {
     margin: 16px 19px 0 193px;
     vertical-align: top;
   }
+  @media (max-width: 600px) {
+    #edgeButton {
+      display: none;
+    }
+  }
 
-  #ie11Banner button {
+  #edgeButton {
     width: 238px;
     height: 48px;
     border: 1px solid rgb(50, 54, 57);
@@ -39,12 +44,6 @@
     margin: 19px 226px 21px 512px;
     vertical-align: top;
     background-color: Transparent;
-  }
-
-  @media (max-width: 600px) {
-    #ie11Banner button {
-      display: none;
-    }
   }
 
   #ie11Banner span {
@@ -59,19 +58,19 @@
 </style>
 
 <div id="ie11Banner">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false">
+  <svg id="ie11Span" xmlns="http://www.w3.org/2000/svg" width="24" height="24" focusable="false">
     <path d="M11.49 13h1.01l.5-6h-2l.49 6zM11 15h2v2h-2z"></path>
     <path d="M12 3a9 9 0 109 9 9 9 0 00-9-9zm0 17a8 8 0 118-8 8 8 0 01-8 8z"></path>
   </svg>
   <p>
-    Please note that the Porsche Design System no longer supports Internet Explorer 11. Support will expires latest by
-    1st of Oktober 2020. We recommend upgrading to the latest
-    <a href="https://www.google.com/intl/en/chrome/" target="_blank">Chrome</a>,
-    <a href="microsoft-edge:aktuelle url">Microsoft Edge Chromium</a>,
-    <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> or
-    <a href="https://www.apple.com/safari/" target="_blank">Safari</a>.
+    Please note that from 1st of October 2020 you wont be able to access this site with your current browser.
+    <br />
+    Use the latest version of <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>,
+    <a href="https://www.microsoft.com/edge" target="_blank">Microsoft Edge</a>, or
+    <a href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a> instead - and get back on track.
   </p>
-  <button onclick="console.log(window.location.href)">
+
+  <button id="edgeButton" href="">
     <svg xmlns="http://www.w3.org/2000/svg" focusable="false" style="margin: 0; width:24px; height: 24px">
       <path d="M15 4v1h3.08L10 13.2l.8.8L19 5.92V9h1V4h-5z"></path>
       <path d="M19 19H5V5h7V4H4v16h16v-8h-1v7z"></path>
