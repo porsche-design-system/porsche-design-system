@@ -17,7 +17,7 @@ $p-spinner-size-large: p-rem(104px);
   display: block;
   stroke-width: 1px;
   animation: rotate 1s linear infinite; // IE11 fallback
-  animation-duration: var(--p-animation-duration__spinner);
+  animation-duration: var(--p-animation-duration__spinner, 2s);
 
   &--theme-light {
     #{$bem-block}__fg,
@@ -178,8 +178,8 @@ $p-spinner-size-large: p-rem(104px);
 
   &__fg {
     transform-origin: center center;
-    animation: rotate var(--p-animation-duration__spinner) linear infinite,
-    dash var(--p-animation-duration__spinner) ease-in-out infinite;
+    animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,
+    dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
     stroke-dasharray: 40, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;

@@ -31,7 +31,6 @@ services:
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
-      - vrt-app-node-modules:/opt/porsche-design-system-app/packages/utilities/src/vrt-app/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
@@ -63,7 +62,6 @@ services:
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utils-node-modules:/opt/porsche-design-system-volumes/utils-node_modules
-      - vrt-app-node-modules:/opt/porsche-design-system-volumes/vrt-app-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
@@ -78,4 +76,3 @@ volumes:
   marque-node-modules:
   utilities-node-modules:
   utils-node-modules:
-  vrt-app-node-modules:
