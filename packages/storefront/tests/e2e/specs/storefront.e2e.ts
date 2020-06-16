@@ -4,7 +4,7 @@ import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
 
-fdescribe('storefront', () => {
+describe('storefront', () => {
   let browserPage: Page;
 
   beforeEach(async () => browserPage = await getBrowser().newPage());
@@ -15,8 +15,6 @@ fdescribe('storefront', () => {
   const getClassNames = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('className')).jsonValue() as string : '';
   const getMainTitle = async (page: Page) => getInnerText(await page.$('#app main h1'));
 
-  const visitedViews = [];
-
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     for (const [page, tabs] of Object.entries(pages)) {
       ((category: string, page: string) => {
@@ -25,35 +23,34 @@ fdescribe('storefront', () => {
 
           await browserPage.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
 
-          const [buttonElement] = await browserPage.$x(`//p-button-pure[contains(., '${category}')]`);
-          const [linkElement] = await browserPage.$x(`//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
+          const [buttonElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`);
+          const [linkElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
 
           await buttonElement.click();
 
-          (expect(await isLinkActive(linkElement)) as any).withContext(`link "${category} > ${page}" should be inactive`).toBe(false);
+          (expect(await isLinkActive(linkElement)) as any).withContext(`link should be inactive initially`).toBe(false);
 
           await linkElement.click();
+          await browserPage.waitFor(40);
 
-          await browserPage.waitFor(element => element.getAttribute('active'), {}, linkElement);
-
-          (expect(await isLinkActive(linkElement)) as any).withContext(`link "${category} > ${page}" should be active`).toBe(true);
-          (expect(await getMainTitle(browserPage)) as any).withContext(`page view "${category} > ${page}" should contain correct main title`).toBe(page);
+          (expect(await isLinkActive(linkElement)) as any).withContext(`link should be active after click`).toBe(true);
+          (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for page view`).toBe(page);
 
           if (!Array.isArray(tabs)) for (const [index, tab] of Object.entries(Object.keys(tabs))) {
-            const tabElements = await browserPage.$$('#app main .tabs a');
-            const tabElement = tabElements[parseInt(index)];
 
-            (expect(tabElements.length) as any).withContext(`page view "${category} > ${page} > ${tab}" should show certain amount of tabs`).toBe(Object.keys(tabs).length);
-            (expect(await getInnerText(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should show correct tab name`).toBe(tab);
+            const [tabElement] = await browserPage.$x(`//nav[@class='tabs']//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(page)}#${paramCase(tab)}']`);
 
             if (parseInt(index) === 0) {
-              (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have first tab active initially`).toContain('router-link-active');
+              (expect(await getClassNames(tabElement)) as any).withContext(`should have first tab active initially`).toContain('router-link-active');
             } else {
-              (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have tab not active initially`).not.toContain('router-link-active');
+              (expect(await getClassNames(tabElement)) as any).withContext(`should have tab not active initially`).not.toContain('router-link-active');
             }
 
             await tabElement.click();
-            (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have tab active after click`).toContain('router-link-active');
+            await browserPage.waitFor(40);
+
+            (expect(await getClassNames(tabElement)) as any).withContext(`should have tab active after click`).toContain('router-link-active');
+            (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for tab view`).toBe(page);
           }
         });
 

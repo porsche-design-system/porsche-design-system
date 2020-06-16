@@ -1,5 +1,4 @@
 # Scss
-## Variables
 
 ## Color
 
