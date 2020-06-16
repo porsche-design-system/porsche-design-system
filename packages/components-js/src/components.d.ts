@@ -127,6 +127,12 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PFieldsetWrapper {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+    }
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -578,6 +584,12 @@ declare global {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
     };
+    interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
+    }
+    var HTMLPFieldsetWrapperElement: {
+        prototype: HTMLPFieldsetWrapperElement;
+        new (): HTMLPFieldsetWrapperElement;
+    };
     interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {
     }
     var HTMLPFlexElement: {
@@ -698,6 +710,7 @@ declare global {
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
+        "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-grid": HTMLPGridElement;
@@ -837,6 +850,12 @@ declare namespace LocalJSX {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
+    }
+    interface PFieldsetWrapper {
+        /**
+          * The label text.
+         */
+        "label"?: string;
     }
     interface PFlex {
         /**
@@ -1266,6 +1285,7 @@ declare namespace LocalJSX {
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
+        "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-grid": PGrid;
@@ -1296,6 +1316,7 @@ declare module "@stencil/core" {
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-grid": LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;
