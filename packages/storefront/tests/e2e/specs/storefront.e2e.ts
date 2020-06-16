@@ -1,90 +1,63 @@
-// TODO: improve log in case test fails
-
 import 'jasmine';
 import { getBrowser, options } from '../helpers/setup';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
 
-describe('storefront', () => {
-  let PAGE: Page;
+fdescribe('storefront', () => {
+  let browserPage: Page;
 
-  beforeEach(async () => PAGE = await getBrowser().newPage());
-  afterEach(async () => await PAGE.close());
+  beforeEach(async () => browserPage = await getBrowser().newPage());
+  afterEach(async () => await browserPage.close());
 
-  const getOuterHTML = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('outerHTML')).jsonValue() as string : '';
   const isLinkActive = async (element: ElementHandle | null): Promise<boolean> => element ? await (await element.getProperty('active')).jsonValue() as boolean : false;
   const getInnerText = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('textContent')).jsonValue() as string : '';
   const getClassNames = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('className')).jsonValue() as string : '';
+  const getMainTitle = async (page: Page) => getInnerText(await page.$('#app main h1'));
 
-  // TODO: split test into multiple describe/it()-blocks
-  it('should navigate through configured pages', async () => {
+  const visitedViews = [];
 
-    await PAGE.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
-    let assertions = 0;
-    // TODO: use string array which includes pages
+  for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
+    for (const [page, tabs] of Object.entries(pages)) {
+      ((category: string, page: string) => {
 
-    for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
-      // TODO: pre-filter with .$()
-      const [buttonElement] = await PAGE.$x(`//p-button-pure[contains(., '${category}')]`);
-      await buttonElement.click();
+        it(`should navigate to "${category} > ${page}"`, async () => {
 
-      for (const [page, tabs] of Object.entries(pages)) {
-        const [linkElement] = await PAGE.$x(`//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
-        (expect(await isLinkActive(linkElement)) as any).withContext(`linkElement "${page}" should be inactive`).toBe(false);
-        assertions++;
+          await browserPage.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
 
-        const a = await getOuterHTML(linkElement);
-        console.log('before click: linkElement outerHTML:', a);
+          const [buttonElement] = await browserPage.$x(`//p-button-pure[contains(., '${category}')]`);
+          const [linkElement] = await browserPage.$x(`//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
 
-        await linkElement.click();
+          await buttonElement.click();
 
-        const foo = await getOuterHTML(linkElement);
-        console.log('after click: linkElement outerHTML:', foo);
+          (expect(await isLinkActive(linkElement)) as any).withContext(`link "${category} > ${page}" should be inactive`).toBe(false);
 
-        await PAGE.waitFor(element => element.getAttribute('active'), {}, linkElement);
+          await linkElement.click();
 
-        const bar = await getOuterHTML(linkElement);
-        console.log('after wait for: linkElement outerHTML:', bar);
+          await browserPage.waitFor(element => element.getAttribute('active'), {}, linkElement);
 
-        (expect(await isLinkActive(linkElement)) as any).withContext(`linkElement "${page}" should be active`).toBe(true);
-        assertions++;
+          (expect(await isLinkActive(linkElement)) as any).withContext(`link "${category} > ${page}" should be active`).toBe(true);
+          (expect(await getMainTitle(browserPage)) as any).withContext(`page view "${category} > ${page}" should contain correct main title`).toBe(page);
 
-        const titleElement = await PAGE.$('#app main h1');
-        (expect(await getInnerText(titleElement)) as any).withContext(`titleElement "${page}" should contain title`).toBe(page);
-        assertions++;
+          if (!Array.isArray(tabs)) for (const [index, tab] of Object.entries(Object.keys(tabs))) {
+            const tabElements = await browserPage.$$('#app main .tabs a');
+            const tabElement = tabElements[parseInt(index)];
 
-        // const bar = await getOuterHTML(titleElement);
-        // console.log('titleElement outerHTML:', bar);
+            (expect(tabElements.length) as any).withContext(`page view "${category} > ${page} > ${tab}" should show certain amount of tabs`).toBe(Object.keys(tabs).length);
+            (expect(await getInnerText(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should show correct tab name`).toBe(tab);
 
-        // if (!Array.isArray(tabs)) {
-        //   const tabElements = await PAGE.$$('#app main .tabs a');
-        //   expect(tabElements.length).toBe(Object.keys(tabs).length);
-        //   assertions++;
-        //
-        //   for (const [index, tab] of Object.entries(Object.keys(tabs))) {
-        //
-        //     const tabElement = tabElements[parseInt(index)];
-        //
-        //     expect(await getInnerText(tabElement)).toBe(tab);
-        //     assertions++;
-        //
-        //     if (parseInt(index) === 0) {
-        //       // TODO: add withContext() or use more it()-blocks
-        //       (expect(await getClassNames(tabElement)) as any).withContext(`failed because something went wrong ${page} > ${tab}`).toContain('router-link-active');
-        //       assertions++;
-        //     } else {
-        //       expect(await getClassNames(tabElement)).not.toContain('router-link-active');
-        //       assertions++;
-        //     }
-        //     await tabElement.click();
-        //     expect(await getClassNames(tabElement)).toContain('router-link-active');
-        //     assertions++;
-        //   }
-        // }
-      }
+            if (parseInt(index) === 0) {
+              (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have first tab active initially`).toContain('router-link-active');
+            } else {
+              (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have tab not active initially`).not.toContain('router-link-active');
+            }
+
+            await tabElement.click();
+            (expect(await getClassNames(tabElement)) as any).withContext(`page view "${category} > ${page} > ${tab}" should have tab active after click`).toContain('router-link-active');
+          }
+        });
+
+      })(category, page);
     }
-
-    // expect(assertions).toBe(386);
-  });
+  }
 });
