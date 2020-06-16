@@ -1,4 +1,4 @@
-import { convertLineHeight, checkIfRem, pxToRem, remToPx, typeScale } from '../../../src/js/helper';
+import { convertLineHeight, checkIfRem, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for pxpx', () => {

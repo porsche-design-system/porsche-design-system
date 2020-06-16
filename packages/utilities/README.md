@@ -1,46 +1,34 @@
-# Porsche Design System SCSS utils
-This package contains helpful SCSS functions, mixins and variables.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Install
-It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/utilities` NPM package. If you don't have an account yet, please first read more about getting started as developer on https://designsystem.porsche.com .
+## Available Scripts
 
-```
-// install with npm:
-npm install @porsche-design-system/utilities --save-dev
+In the project directory, you can run:
 
-// install with yarn:
-yarn add @porsche-design-system/utilities --dev
-```
+### `yarn start`
 
-### Usage
-Assuming a proper SCSS compiler is setup within your project: Simply import the following file 
-at the place where you want to make use of the Porsche Design System SCSS utils.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```
-@import '~@porsche-design-system/utilities/src/scss/index';
-```
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-If your SCSS compiler does not support '~' tilde imports, you can of course also import it via
-path from your node_modules.
+### `yarn test`
 
-```
-@import 'node_modules/@porsche-design-system/utilities/scss/index';
-```
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Sample usage might look like following example.
+### `yarn build`
 
-```
-@import '~@porsche-design-system/utilities/src/scss/index';
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#app {
-  color: $p-color-theme-light-default;
-  
-  @include p-breakpoint('s') {
-    color: $p-color-theme-light-brand;
-  }
-}
-```
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
----
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Full documentation of available SCSS functions, mixins and variables can be found on https://designsystem.porsche.com
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

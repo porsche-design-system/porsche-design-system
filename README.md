@@ -69,6 +69,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-unit` (unit tests for the entire application)
+    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
     * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
     
@@ -89,6 +90,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
+    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
     * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
     * `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
     * `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
