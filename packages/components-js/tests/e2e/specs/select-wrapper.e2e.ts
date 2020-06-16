@@ -1,14 +1,17 @@
 import {
   getAttributeFromHandle,
-  getBoxShadow,
   getClassFromHandle,
+  getElementPosition,
+  getElementStyle,
+  getInnerHTMLFromShadowRoot,
   selectNode,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, waitForEventCallbacks,
   waitForInnerHTMLChange,
   waitForSelector
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
+import { devices } from 'puppeteer';
 
 describe('select-wrapper', () => {
 
@@ -22,6 +25,7 @@ describe('select-wrapper', () => {
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectMessage = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__message');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label-text');
+  const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `
@@ -201,13 +205,11 @@ describe('select-wrapper', () => {
       </p-select-wrapper>`);
 
       const fakeSelect = await getSelectFakeInput();
-      const initialBoxShadow = await getBoxShadow(fakeSelect);
+      const initialBoxShadow = await getElementStyle(fakeSelect, 'boxShadow');
 
       await fakeSelect.hover();
 
-      const updatedBoxShadow = await getBoxShadow(fakeSelect, {waitForTransition: true});
-
-      expect(updatedBoxShadow).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake select when label text is hovered', async () => {
@@ -222,11 +224,344 @@ describe('select-wrapper', () => {
 
       const fakeSelect = await getSelectFakeInput();
       const labelText = await getSelectLabel();
-      const initialBoxShadow = await getBoxShadow(fakeSelect);
+      const initialBoxShadow = await getElementStyle(fakeSelect, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeSelect, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeSelect, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+    });
+  });
+
+  describe('fake drop down', () => {
+    it('should render', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b" disabled>Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionDisabled = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--disabled');
+      const fakeOptionSelected = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--selected');
+      const activeDescendant = await getAttributeFromHandle(fakeOptionList, 'aria-activedescendant');
+      const selectedDescendantId = await getAttributeFromHandle(fakeOptionSelected, 'id');
+
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptionDisabled).not.toBeNull();
+      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(0);
+      expect(await getElementPosition(fakeOptionList, '[aria-disabled=true]')).toBe(1);
+      expect(activeDescendant).toEqual(selectedDescendantId);
+    });
+
+    it('should not render if touch support is detected', async () => {
+      await page.emulate(devices['iPhone X']);
+      await setContentWithDesignSystem(page, `
+        <p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>
+      `);
+      const fakeOptionList = await getSelectOptionList();
+      expect(fakeOptionList).toBeNull();
+    });
+
+    it('should be visible if select is clicked and hidden if clicked outside', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-text>Some text</p-text>
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await getSelectRealInput();
+      const text = await selectNode(page, 'p-text');
+      const fakeOptionList = await getSelectOptionList();
+      const getOpacity = () => getElementStyle(fakeOptionList, 'opacity');
+      expect(await getOpacity()).toBe('0');
+
+      await select.click();
+      await waitForSelector(page, fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', { isGone: true });
+      expect(await getOpacity()).toBe('1');
+
+      await text.click();
+      await waitForSelector(page, fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+
+      await select.click();
+      await waitForSelector(page, fakeOptionList, 'p-select-wrapper__fake-option-list--hidden', { isGone: true });
+      expect(await getOpacity()).toBe('1');
+
+      await select.click();
+      await waitForSelector(page, fakeOptionList, 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+    });
+
+    it('should add fake option item if added to native select programmatically', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const numberOfOptions = await select.evaluate((el: HTMLElement) => {
+        return el.childElementCount;
+      });
+      const numberOfFakeOptions = await fakeOptionList.evaluate((el: HTMLElement) => {
+        return el.childElementCount;
+      });
+      expect(fakeOptionList).not.toBeNull();
+      expect(numberOfFakeOptions).toEqual(numberOfOptions);
+
+      await select.evaluate((el: HTMLSelectElement) => {
+        const option = document.createElement('option');
+        option.text = 'Test';
+        el.add(option, 0);
+      });
+      const text = await getInnerHTMLFromShadowRoot(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:first-child');
+      expect(text).toContain('Test');
+      expect(numberOfFakeOptions + 1).toEqual(numberOfOptions + 1);
+    });
+
+    it('should add/remove disabled state to fake option item if added/removed to native select programmatically', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `);
+      const select = await getSelectRealInput();
+      const fakeOptionList = async () => await getSelectOptionList();
+      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].disabled = true));
+      await waitForSelector(page, fakeOption, 'p-select-wrapper__fake-option--disabled');
+
+      expect(await getClassFromHandle(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
+      expect(await getElementPosition(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
+    });
+
+    it('should handle keyboard and click events', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c" disabled>C Option</option>
+          <option value="d">D Option</option>
+          <option value="e">E Option</option>
+        </select>
+      </p-select-wrapper>
+    `);
+
+      const select = await getSelectRealInput();
+      const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const activeDescendant = async () =>
+        await getAttributeFromHandle(await getSelectOptionList(), 'aria-activedescendant');
+      const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
+      const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
+      const getSelectedIndex = () =>
+        page.evaluate(() => {
+          return document.querySelector('select').selectedIndex;
+        });
+
+      // initial status of highlight and selected fake option
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+
+      // 1 x arrow down and enter
+      await page.keyboard.press('Tab');
+      await select.press('ArrowDown');
+
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden', { isGone: true });
+      expect(await getOpacity()).toBe('1');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(1);
+      expect(await getSelectedIndex()).toBe(0);
+
+      await select.press('Enter');
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(1);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(1);
+      expect(await getElementPosition(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
+      expect(await getSelectedIndex()).toBe(1);
+      expect(await activeDescendant()).toEqual(
+        `option-${await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')}`
+      );
+
+      // 1 x arrow down and 1x arrow up should jump over disabled fake option
+      await select.press('ArrowDown');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(3);
+      await select.press('ArrowUp');
+      await waitForEventCallbacks(page);
+
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(1);
+
+      // 2 x arrow up
+      await select.press('ArrowUp');
+      await waitForEventCallbacks(page);
+      await select.press('ArrowUp');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden', { isGone: true });
+      expect(await getOpacity()).toBe('1');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+
+      // 1 x arrow down
+      await select.press('ArrowDown');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+
+      // Space
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+
+      // 1 x arrow left while list is hidden
+      await select.press('ArrowLeft');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(4);
+      expect(await getSelectedIndex()).toBe(4);
+
+      // 1 x arrow right while list is hidden
+      await select.press('ArrowRight');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+
+      // 1 x arrow left while list is visible
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await select.press('ArrowLeft');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(4);
+      expect(await getSelectedIndex()).toBe(4);
+
+      // 1 x arrow right while list is visible
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await select.press('ArrowRight');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+
+      // 1 x arrow down + ESC
+      await select.press('ArrowDown');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(1);
+      await select.press('Escape');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+      expect(await getOpacity()).toBe('0');
+
+      // PageDown while list is hidden
+      await select.press('PageDown');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+
+      // PageDown while list is visible
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await select.press('PageDown');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getSelectedIndex()).toBe(0);
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(4);
+      expect(await getSelectedIndex()).toBe(4);
+      await select.press('Escape');
+      await waitForEventCallbacks(page);
+
+      // PageUp while list is hidden
+      await select.press('PageUp');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(4);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(4);
+      expect(await getSelectedIndex()).toBe(4);
+
+      // PageUp while list is visible
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await select.press('PageUp');
+      await waitForEventCallbacks(page);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(0);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(4);
+      expect(await getSelectedIndex()).toBe(4);
+      await select.press('Enter');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+
+      // Search for string and select it
+      await select.press('d');
+      await page.waitFor(120);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(3);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(3);
+      expect(await getSelectedIndex()).toBe(3);
+
+      // Click on select while list is hidden
+      await select.click();
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden', { isGone: true });
+      expect(await getOpacity()).toBe('1');
+
+      // Click on select while list is visible
+      await select.click();
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+
+      // Click on select and click on 2nd option
+      await select.click();
+      await fakeOptionInPosOne.click();
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')).toBe(1);
+      expect(await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(1);
+      expect(await getSelectedIndex()).toBe(1);
+
+      // Tab while list is visible
+      await select.press(' ');
+      await waitForEventCallbacks(page);
+      await select.press('Tab');
+      await waitForEventCallbacks(page);
+      await waitForSelector(page, await getSelectOptionList(), 'p-select-wrapper__fake-option-list--hidden');
+      expect(await getOpacity()).toBe('0');
+      expect(await selectHasFocus()).toBe(false);
     });
   });
 });

@@ -42,6 +42,7 @@ Sometimes it’s helpful for the user to get further information on the input. T
 The Select component is available in the following states:
 
 * default
+* active
 * disabled
 * hover
 * focus

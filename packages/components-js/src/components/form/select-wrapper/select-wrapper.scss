@@ -91,6 +91,7 @@
 
   &__label {
     display: block;
+    position: relative;
   }
 
   &__label-text,
@@ -215,14 +216,117 @@
     }
   }
 
+  &__fake-option-list {
+    @include p-text();
+    position: absolute;
+    z-index: 1;
+    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
+    border-top-color: $p-color-theme-light-neutral-contrast-low;
+    left: 0;
+    right: 0;
+    top: calc(100% - 1px);
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: $p-color-theme-light-background;
+    scroll-behavior: smooth;
+
+    // Firefox scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+
+    // Webkit scrollbar styling defaults to visible
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, .4);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: $p-spacing-4;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--hidden {
+      display: block;
+      opacity: 0;
+      overflow: hidden;
+      height: 1px;
+    }
+  }
+
+  &__fake-option {
+    position: relative;
+    display: block;
+    padding: $p-spacing-8 p-rem(12px);
+    cursor: pointer;
+    color: $p-color-theme-light-default;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &:not([aria-disabled]):hover {
+      color: $p-color-theme-light-state-hover;
+    }
+
+    &:focus {
+      outline: $p-color-theme-light-state-focus solid 2px;
+    }
+
+    &--selected {
+      color: $p-color-theme-light-state-active;
+      cursor: default;
+      pointer-events: none;
+      padding-right: $p-spacing-32;
+    }
+
+    &--highlighted:not(&--selected) {
+      color: $p-color-theme-light-state-active;
+      background-color: #ebebeb;
+    }
+
+    &--disabled {
+      color: $p-color-theme-light-state-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  &__fake-option-icon {
+     position: absolute;
+     right: p-rem(12px);
+  }
+
+  &__fake-optgroup-label {
+    display: block;
+    padding: $p-spacing-8 p-rem(12px);
+    margin-top: $p-spacing-8;
+    font-weight: $p-font-weight-bold;
+
+    & ~ #{$bem-block}__fake-option {
+      padding-left: $p-spacing-24;
+    }
+  }
+
   &__icon {
     position: absolute;
     top: p-rem(12px);
     right: p-rem(12px);
     color: $p-color-theme-light-default;
+    transition: transform $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
       color: $p-color-theme-light-state-disabled;
+    }
+
+    &--opened {
+      transform: rotate(180deg);
     }
   }
 

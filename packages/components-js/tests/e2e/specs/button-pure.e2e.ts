@@ -239,6 +239,7 @@ describe('button pure', () => {
     await page.keyboard.press('Tab');
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
+
     await page.keyboard.press('Tab');
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
