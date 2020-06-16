@@ -1,6 +1,6 @@
 import {
   getAttributeFromHandle,
-  getClassListFromHandle, getElementStyle,
+  getClassListFromHandle, getElementStyle, getPropertyFromHandle,
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange
 } from '../helpers';
@@ -37,7 +37,7 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>
     `);
     const input = await getRadioButtonRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
@@ -47,7 +47,7 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>
     `);
     const input = await getRadioButtonRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -81,7 +81,7 @@ describe('radio-button-wrapper', () => {
 
     expect(await getRadioButtonMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toEqual('alert');
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'success'));
     await radioComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
@@ -89,14 +89,14 @@ describe('radio-button-wrapper', () => {
 
     expect(await getRadioButtonMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'none'));
     await radioComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, radioComponent);
 
     expect(await getRadioButtonMessage()).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label');
   });
 
   it('should check radio-button when input is clicked', async () => {

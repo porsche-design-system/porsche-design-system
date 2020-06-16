@@ -40,7 +40,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>
     `);
     const input = await getCheckboxRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
@@ -50,7 +50,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>
     `);
     const input = await getCheckboxRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -83,7 +83,7 @@ describe('checkbox-wrapper', () => {
 
     expect(await getCheckboxMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getCheckboxMessage(), 'role')).toEqual('alert');
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await checkboxHost.evaluate(el => el.setAttribute('state', 'success'));
     await checkboxHost.evaluate(el => el.setAttribute('message', 'Some success message'));
@@ -91,14 +91,14 @@ describe('checkbox-wrapper', () => {
 
     expect(await getCheckboxMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getCheckboxMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await checkboxHost.evaluate(el => el.setAttribute('state', 'none'));
     await checkboxHost.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, checkboxHost);
 
     expect(await getCheckboxMessage()).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label');
   });
 
   it('should toggle checkbox when input is clicked', async () => {

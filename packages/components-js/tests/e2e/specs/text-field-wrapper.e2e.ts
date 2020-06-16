@@ -56,7 +56,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label');
   });
 
   it('should add aria-label with description text to support screen readers properly', async () => {
@@ -69,7 +69,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some description');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some description');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
@@ -82,7 +82,7 @@ describe('Text Field Wrapper', () => {
     `
     );
     const input = await getTextFieldRealInput();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toBe('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -124,7 +124,7 @@ describe('Text Field Wrapper', () => {
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toEqual('alert');
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some error message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'success'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', 'Some success message'));
@@ -132,14 +132,14 @@ describe('Text Field Wrapper', () => {
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label. Some success message');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'null'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, textFieldComponent);
 
     expect(await getTextFieldMessage()).toBeNull();
-    expect(await getAttributeFromHandle(input, 'aria-label')).toEqual('Some label');
+    expect(await getPropertyFromHandle(input, 'ariaLabel')).toEqual('Some label');
   });
 
   it(`should focus input when label text is clicked`, async () => {
@@ -268,17 +268,17 @@ describe('Text Field Wrapper', () => {
     let inputFocusCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusCalls++);
 
-    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
+    expect(await getPropertyFromHandle(input, 'type')).toBe('password');
     expect(inputFocusCalls).toBe(0);
 
     await button.click();
 
-    expect(await getAttributeFromHandle(input, 'type')).toBe('text');
+    expect(await getPropertyFromHandle(input, 'type')).toBe('text');
     expect(inputFocusCalls).toBe(1);
 
     await button.click();
 
-    expect(await getAttributeFromHandle(input, 'type')).toBe('password');
+    expect(await getPropertyFromHandle(input, 'type')).toBe('password');
     expect(inputFocusCalls).toBe(2);
   });
 
