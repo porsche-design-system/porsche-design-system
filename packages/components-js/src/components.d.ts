@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
 import { BreakpointCustomizable, } from "./utils";
 import { NumberOfPageLinks, } from "./components/navigation/pagination/pagination";
 export namespace Components {
@@ -219,7 +219,7 @@ export namespace Components {
         /**
           * Style of the headline.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
@@ -930,7 +930,7 @@ declare namespace LocalJSX {
         /**
           * Style of the headline.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**

@@ -80,8 +80,8 @@ export class Text {
   }
 
   private get hasSlottedTextTag(): boolean {
-    const el: HTMLElement = this.host.querySelector(':first-child');
-    return el ? el.matches('p, span, div, address, blockquote, figcaption, cite, time, legend') : false;
+    const el = this.host.querySelector(':first-child');
+    return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
   }
 
   private bindFontSizeListener(): void {

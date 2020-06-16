@@ -25,8 +25,8 @@ If a custom tag hierarchy is needed, individual headline tags can be set from `h
   <template v-slot="{theme}">
     <p-headline :theme="theme" variant="headline-1" tag="h3">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-3" tag="h1">The quick brown fox jumps over the lazy dog</p-headline>
-    <p-headline :theme="theme" variant="headline-1"><h1>The quick brown fox jumps over the lazy dog</h1></p-headline>
-    <p-headline :theme="theme" variant="headline-3"><h3>The quick brown fox jumps over the lazy dog</h3></p-headline>
+    <p-headline :theme="theme" variant="headline-1"><h3>The quick brown fox jumps over the lazy dog</h3></p-headline>
+    <p-headline :theme="theme" variant="headline-3"><h1>The quick brown fox jumps over the lazy dog</h1></p-headline>
   </template>
 </Playground>
 
