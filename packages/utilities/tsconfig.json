@@ -1,19 +1,25 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2015",
-    "module": "commonjs",
-    "strict": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "lib": ["es2017"]
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react"
   },
-  "exclude": [
-    "../../node_modules",
-    "node_modules",
-    "dist"
+  "include": [
+    "src"
   ]
 }
-// ToDo: Correct setup? Check if all options are needed and if some are missing?.
