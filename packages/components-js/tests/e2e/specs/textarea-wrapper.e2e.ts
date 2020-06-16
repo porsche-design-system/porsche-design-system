@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  getAttributeFromHandle, getElementStyle,
+  getAttributeFromHandle, getElementStyle, getPropertyFromHandle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange
@@ -41,7 +41,7 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>
     `);
     const textarea = await getTextareaRealInput();
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label');
   });
 
   it('should add aria-label with description text to support screen readers properly', async () => {
@@ -51,7 +51,7 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>
     `);
     const textarea = await getTextareaRealInput();
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some description');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label. Some description');
   });
 
   it('should add aria-label with message text to support screen readers properly', async () => {
@@ -61,7 +61,7 @@ describe('Textarea Wrapper', () => {
       </p-textarea-wrapper>
     `);
     const textarea = await getTextareaRealInput();
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -97,7 +97,7 @@ describe('Textarea Wrapper', () => {
 
     expect(await getTextareaMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBe('alert');
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some error message');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label. Some error message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', 'success'));
     await textareaComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
@@ -105,14 +105,14 @@ describe('Textarea Wrapper', () => {
 
     expect(await getTextareaMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBeNull();
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label. Some success message');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label. Some success message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', ''));
     await textareaComponent.evaluate(el => el.setAttribute('message', ''));
     await waitForInnerHTMLChange(page, textareaComponent);
 
     expect(await getTextareaMessage()).toBeNull();
-    expect(await getAttributeFromHandle(textarea, 'aria-label')).toBe('Some label');
+    expect(await getPropertyFromHandle(textarea, 'ariaLabel')).toBe('Some label');
   });
 
   it(`should focus textarea when label text is clicked`, async () => {
