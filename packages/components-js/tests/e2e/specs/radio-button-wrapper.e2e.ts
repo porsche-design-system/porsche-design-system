@@ -1,7 +1,6 @@
 import {
   getAttributeFromHandle,
-  getBoxShadow,
-  getClassFromHandle,
+  getClassFromHandle, getElementStyle,
   selectNode,
   setContentWithDesignSystem, waitForInnerHTMLChange
 } from '../helpers';
@@ -220,11 +219,11 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>`);
 
       const fakeRadioButton = await getRadioButtonFakeInput();
-      const initialBoxShadow = await getBoxShadow(fakeRadioButton);
+      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
 
       await fakeRadioButton.hover();
 
-      expect(await getBoxShadow(fakeRadioButton, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake radio button when label text is hovered', async () => {
@@ -236,11 +235,11 @@ describe('radio-button-wrapper', () => {
       const fakeRadioButton = await getRadioButtonFakeInput();
       const labelText = await getRadioButtonLabel();
 
-      const initialBoxShadow = await getBoxShadow(fakeRadioButton);
+      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeRadioButton, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });

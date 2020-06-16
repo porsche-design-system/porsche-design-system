@@ -1,9 +1,8 @@
 import {
   addEventListener,
   getAttributeFromHandle,
-  getBoxShadow,
   getClassFromHandle,
-  getClassListFromHandle,
+  getClassListFromHandle, getElementStyle,
   getPropertyFromHandle,
   hasAttribute,
   initAddEventListener,
@@ -13,7 +12,7 @@ import {
   waitForInnerHTMLChange,
   waitForSelector
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('Text Field Wrapper', () => {
@@ -326,11 +325,11 @@ describe('Text Field Wrapper', () => {
       );
 
       const fakeInput = await getTextFieldFakeInput();
-      const initialBoxShadow = await getBoxShadow(fakeInput);
+      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await fakeInput.hover();
 
-      expect(await getBoxShadow(fakeInput, { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
@@ -345,11 +344,11 @@ describe('Text Field Wrapper', () => {
 
       const fakeInput = await getTextFieldFakeInput();
       const labelText = await getTextFieldLabel();
-      const initialBoxShadow = await getBoxShadow(fakeInput);
+      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeInput, { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });

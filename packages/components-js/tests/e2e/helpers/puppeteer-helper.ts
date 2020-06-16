@@ -8,19 +8,26 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
     `,
     options
   );
-  await page.waitForSelector('html.hydrated')
+  await page.waitForSelector('html.hydrated');
 };
 
-type GetBoxShadowOptions = { waitForTransition: boolean };
+type GetElementStyleOptions = { waitForTransition: boolean };
 
-export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShadowOptions) =>
-  element.evaluate(async (el, opts?: GetBoxShadowOptions) => {
+export const getElementStyle = (element: ElementHandle, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) =>
+  element.evaluate(async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) => {
     const style = getComputedStyle(el);
     if (opts?.waitForTransition) {
       await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
     }
-    return style.boxShadow;
-  }, opts);
+    return style[property];
+  }, property, opts);
+
+export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el:Element, selector: string) => {
+  let option: ChildNode = el.querySelector(selector);
+  let pos = 0;
+  while((option = option.previousSibling) !== null) pos++;
+  return pos;
+}, selector);
 
 // Node Context
 
