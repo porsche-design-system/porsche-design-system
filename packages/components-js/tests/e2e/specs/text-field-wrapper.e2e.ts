@@ -30,12 +30,10 @@ describe('Text Field Wrapper', () => {
   const getTextFieldMessage = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
   const getTextFieldLabel = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
   const getTextFieldButton = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
-  const getTextFieldButtonDisabled = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button[disabled]');
   const getTextFieldIcon = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon');
   const getTextFieldIconInner = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon >>> i');
 
-  const getIconName = async (): Promise<string> => getPropertyFromHandle(await getTextFieldIcon(), 'name');
-  const isTextFieldButtonDisabled = async (): Promise<boolean> => await getTextFieldButtonDisabled() !== null;
+  const getIconName = async (): Promise<unknown> => getPropertyFromHandle(await getTextFieldIcon(), 'name');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -179,19 +177,19 @@ describe('Text Field Wrapper', () => {
     const input = await getTextFieldRealInput();
 
     expect(await getClassListFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await isTextFieldButtonDisabled()).toBeFalsy();
+    expect(await getPropertyFromHandle(input, 'disabled')).toBeFalsy();
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled');
 
     expect(await getClassFromHandle(fakeInput)).toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await isTextFieldButtonDisabled()).toBeTruthy();
+    expect(await getPropertyFromHandle(input, 'disabled')).toBeTruthy();
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForSelector(page, fakeInput, 'p-text-field-wrapper__fake-input--disabled', { isGone: true });
 
     expect(await getClassFromHandle(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await isTextFieldButtonDisabled()).toBeFalsy();
+    expect(await getPropertyFromHandle(input, 'disabled')).toBeFalsy();
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
