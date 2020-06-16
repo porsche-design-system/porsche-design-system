@@ -28,7 +28,6 @@ describe('Text Field Wrapper', () => {
   const getTextFieldLabel = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
   const getTextFieldButton = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
   const getTextFieldIcon = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon');
-  const getTextFieldIconInner = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon >>> i');
 
   const getIconName = async (): Promise<unknown> => getProperty(await getTextFieldIcon(), 'name');
 
