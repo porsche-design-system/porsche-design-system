@@ -11,25 +11,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   await page.waitForSelector('html.hydrated');
 };
 
-type GetElementStyleOptions = { waitForTransition: boolean };
-
-export const getElementStyle = (element: ElementHandle, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) =>
-  element.evaluate(async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) => {
-    const style = getComputedStyle(el);
-    if (opts?.waitForTransition) {
-      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
-    }
-    return style[property];
-  }, property, opts);
-
-export const getElementPosition = (element: ElementHandle, selector: string) => element.evaluate((el: Element, selector: string): number => {
-  let option: ChildNode = el.querySelector(selector);
-  let pos = 0;
-  while ((option = option.previousSibling) !== null) pos++;
-  return pos;
-}, selector);
-
-// Node Context
+// NODE CONTEXT
 
 export const getPropertyFromHandle = async (elementHandle: ElementHandle, prop: string): Promise<unknown> => {
   return (await elementHandle.getProperty(prop)).jsonValue();
@@ -65,7 +47,7 @@ export const waitForInnerHTMLChange = async (page: Page, node: ElementHandle): P
 export const waitForEventCallbacks = async (page: Page): Promise<void> =>
   await page.waitFor(40);
 
-// Browser Context
+// BROWSER CONTEXT
 
 export const getActiveElementId = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.id);
@@ -88,3 +70,22 @@ export const getInnerHTMLFromShadowRoot = async (page: Page, selector: string): 
   const handle = await selectNode(page, selector);
   return handle.getProperty('innerHTML').then(x => x.jsonValue())
 };
+
+type GetElementStyleOptions = { waitForTransition: boolean };
+
+export const getElementStyle = (element: ElementHandle, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) =>
+  element.evaluate(async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions) => {
+    const style = getComputedStyle(el);
+    if (opts?.waitForTransition) {
+      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
+    }
+    return style[property];
+  }, property, opts);
+
+export const getElementPosition = async (element: ElementHandle, selector: string): Promise<number> =>
+  element.evaluate(async (el: Element, selector: string): Promise<number> => {
+    let option: ChildNode = el.querySelector(selector);
+    let pos = 0;
+    while ((option = option.previousSibling) !== null) pos++;
+    return pos;
+  }, selector);
