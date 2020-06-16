@@ -7,8 +7,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForEventCallbacks,
-  waitForInnerHTMLChange
+  waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -34,14 +33,11 @@ describe('Text Field Wrapper', () => {
   const getIconName = async (): Promise<unknown> => getProperty(await getTextFieldIcon(), 'name');
 
   it('should render', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
+    await setContentWithDesignSystem(page, `
       <p-text-field-wrapper label="Some label">
         <input type="text" name="some-name">
-      </p-text-field-wrapper>
-    `
-    );
+      </p-text-field-wrapper>`);
+
     const el = await getTextFieldLabel();
     expect(el).toBeDefined();
   });
@@ -55,6 +51,7 @@ describe('Text Field Wrapper', () => {
       </p-text-field-wrapper>
     `
     );
+
     const input = await getTextFieldRealInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
   });
@@ -99,7 +96,7 @@ describe('Text Field Wrapper', () => {
     expect(await getTextFieldLabel()).toBeNull();
 
     await textFieldComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextFieldLabel()).not.toBeNull();
   });
@@ -120,7 +117,7 @@ describe('Text Field Wrapper', () => {
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'error'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', 'Some error message'));
-    await waitForInnerHTMLChange(page, textFieldComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toEqual('alert');
@@ -128,7 +125,7 @@ describe('Text Field Wrapper', () => {
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'success'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', 'Some success message'));
-    await waitForInnerHTMLChange(page, textFieldComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeDefined();
     expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toBeNull();
@@ -136,7 +133,7 @@ describe('Text Field Wrapper', () => {
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'null'));
     await textFieldComponent.evaluate((el) => el.setAttribute('message', ''));
-    await waitForInnerHTMLChange(page, textFieldComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
@@ -160,7 +157,7 @@ describe('Text Field Wrapper', () => {
 
     expect(inputFocusSpyCalls).toBe(0);
     await labelText.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(inputFocusSpyCalls).toBe(1);
   });
@@ -177,13 +174,13 @@ describe('Text Field Wrapper', () => {
     expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(false)
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
     expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
     expect(await getProperty(await getTextFieldRealInput(), 'disabled')).toBe(false);
@@ -200,17 +197,16 @@ describe('Text Field Wrapper', () => {
     );
 
     const toggleButton = await getTextFieldButton();
-    const buttonIconInner = await getTextFieldIconInner();
 
     expect(await getIconName()).toBe('view');
 
     await toggleButton.click();
-    await waitForInnerHTMLChange(page, buttonIconInner);
+    await waitForStencilLifecycle(page);
 
     expect(await getIconName()).toBe('view-off');
 
     await toggleButton.click();
-    await waitForInnerHTMLChange(page, buttonIconInner);
+    await waitForStencilLifecycle(page);
 
     expect(await getIconName()).toBe('view');
   });
@@ -226,30 +222,32 @@ describe('Text Field Wrapper', () => {
     );
 
     const input = await getTextFieldRealInput();
+    const fakeInput = await getTextFieldFakeInput();
+    const button = await getTextFieldButton();
 
-    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getProperty(button, 'disabled')).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
-    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(true);
+    expect(await getProperty(button, 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
-    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getProperty(button, 'disabled')).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(await getTextFieldFakeInput())).toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(true);
+    expect(await getCssClasses(fakeInput)).toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getProperty(button, 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.readOnly = false));
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(await getTextFieldFakeInput())).not.toContain('p-text-field-wrapper__fake-input--readonly');
-    expect(await getProperty(await getTextFieldButton(), 'disabled')).toBe(false);
+    expect(await getCssClasses(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--readonly');
+    expect(await getProperty(button, 'disabled')).toBe(false);
   });
 
   it(`should toggle password visibility and focus input correctly`, async () => {
@@ -272,11 +270,13 @@ describe('Text Field Wrapper', () => {
     expect(inputFocusCalls).toBe(0);
 
     await button.click();
+    await waitForStencilLifecycle(page);
 
     expect(await getProperty(input, 'type')).toBe('text');
     expect(inputFocusCalls).toBe(1);
 
     await button.click();
+    await waitForStencilLifecycle(page);
 
     expect(await getProperty(input, 'type')).toBe('password');
     expect(inputFocusCalls).toBe(2);
@@ -300,46 +300,42 @@ describe('Text Field Wrapper', () => {
     await addEventListener(form, 'submit', () => formFocusCalls++);
 
     await searchButton.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
+
     expect(formFocusCalls).toBe(1);
   });
 
   describe('hover state', () => {
     it('should change box-shadow color when fake input is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
+      await setContentWithDesignSystem(page, `
         <p-text-field-wrapper label="Some label">
           <input type="text" name="some-name">
         </p-text-field-wrapper>
-      `
-      );
+      `);
 
       const fakeInput = await getTextFieldFakeInput();
       const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await fakeInput.hover();
+      await waitForStencilLifecycle(page);
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
+      await setContentWithDesignSystem(page, `
         <p-text-field-wrapper label="Some label">
           <input type="text" name="some-name">
-        </p-text-field-wrapper>
-      `
-      );
+        </p-text-field-wrapper>`);
 
       const fakeInput = await getTextFieldFakeInput();
       const labelText = await getTextFieldLabel();
       const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
 
       await labelText.hover();
+      await waitForStencilLifecycle(page);
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
   });
 });
