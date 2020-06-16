@@ -1,6 +1,6 @@
 import { version } from '../../package.json';
 
-const TRACKING_BASE_URL = 'https://d3nll2jx8s265d.cloudfront.net/collect.gif';
+const TRACKING_BASE_URL = 'https://d3nll2jx8s265d.cloudfront.net/hello.gif';
 
 export const trackEvent = (component: string, event?: string): void => {
   if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
