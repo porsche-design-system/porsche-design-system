@@ -1,6 +1,5 @@
 import {
   addEventListener, getActiveElementId,
-  getIdFromNode,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
@@ -28,7 +27,7 @@ describe('button', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-button>Some label</p-button></div>`);
+    await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
 
     const wrapper = await selectNode(page, 'div');
     const host = await getButtonHost();
@@ -43,7 +42,7 @@ describe('button', () => {
 
     expect(events.length).toBe(2);
     for (const event of events) {
-      expect(event.target.id).toBe(await getIdFromNode(host));
+      expect(event.target.id).toBe('hostElement');
     }
   });
 

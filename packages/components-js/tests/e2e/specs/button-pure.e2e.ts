@@ -1,6 +1,5 @@
 import {
   addEventListener, getActiveElementId,
-  getIdFromNode,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
@@ -43,7 +42,7 @@ describe('button pure', () => {
     await waitForEventCallbacks(page);
     expect(events.length).toBe(2);
     for (const event of events) {
-      expect(event.target.id).toBe(await getIdFromNode(host));
+      expect(event.target.id).toBe('hostElement');
     }
   });
 

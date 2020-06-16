@@ -75,9 +75,6 @@ export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 }
 
-export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>): Promise<string> =>
-  await node.evaluate(el => el.id);
-
 export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string): Promise<string> =>
   await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 
