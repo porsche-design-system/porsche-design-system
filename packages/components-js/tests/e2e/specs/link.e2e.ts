@@ -1,7 +1,7 @@
 import {
   addEventListener,
   getActiveElementId,
-  getIdFromNode, initAddEventListener,
+  initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
 } from "../helpers";
@@ -28,7 +28,7 @@ describe('link', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link href="#testpage">Some label</p-link></div>`);
+    await setContentWithDesignSystem(page, `<div><p-link id="hostElement" href="#testpage">Some label</p-link></div>`);
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkHost();
@@ -43,7 +43,7 @@ describe('link', () => {
 
     expect(events.length).toBe(2);
     for (const event of events) {
-      expect(event.target.id).toBe(await getIdFromNode(host));
+      expect(event.target.id).toBe('hostElement');
     }
   });
 

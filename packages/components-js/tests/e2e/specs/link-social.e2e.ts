@@ -1,7 +1,6 @@
 import {
   addEventListener,
   getActiveElementId,
-  getIdFromNode,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
@@ -29,7 +28,7 @@ describe('link social', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link-social href="#" icon="logo-facebook">Some label</p-link-social></div>`);
+    await setContentWithDesignSystem(page, `<div><p-link-social id="hostElement" href="#" icon="logo-facebook">Some label</p-link-social></div>`);
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkSocialHost();
@@ -44,7 +43,7 @@ describe('link social', () => {
 
     expect(events.length).toBe(2);
     for (const event of events) {
-      expect(event.target.id).toBe(await getIdFromNode(host));
+      expect(event.target.id).toBe('hostElement');
     }
   });
 

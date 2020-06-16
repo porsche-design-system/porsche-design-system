@@ -1,7 +1,6 @@
 import {
   addEventListener,
   getActiveElementId,
-  getIdFromNode,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks
@@ -29,7 +28,7 @@ describe('link pure', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link-pure href="#">Some label</p-link-pure></div>`);
+    await setContentWithDesignSystem(page, `<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`);
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkPureHost();
@@ -44,7 +43,7 @@ describe('link pure', () => {
 
     expect(events.length).toBe(2);
     for (const event of events) {
-      expect(event.target.id).toBe(await getIdFromNode(host));
+      expect(event.target.id).toBe('hostElement');
     }
   });
 
