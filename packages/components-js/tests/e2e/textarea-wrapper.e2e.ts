@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  getAttributeFromHandle, getBoxShadow,
+  getAttributeFromHandle, getElementStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange
@@ -138,11 +138,11 @@ describe('Textarea Wrapper', () => {
       `);
 
       const fakeTextarea = await getFakeTextarea();
-      const initialBoxShadow = await getBoxShadow(fakeTextarea);
+      const initialBoxShadow = await getElementStyle(fakeTextarea, 'boxShadow');
 
       await fakeTextarea.hover();
 
-      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeTextarea, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake textarea when label text is hovered', async () => {
@@ -155,11 +155,11 @@ describe('Textarea Wrapper', () => {
 
       const fakeTextarea = await getFakeTextarea();
       const labelText = await selectNode('p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
-      const initialBoxShadow = await getBoxShadow(fakeTextarea);
+      const initialBoxShadow = await getElementStyle(fakeTextarea, 'boxShadow');
 
       await labelText.hover();
 
-      expect(await getBoxShadow(fakeTextarea, {waitForTransition: true})).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeTextarea, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
     });
   });
 });
