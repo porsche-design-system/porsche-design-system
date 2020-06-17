@@ -250,7 +250,7 @@ impact on the origin character of the company typeface. This includes:
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/utilities/src/scss/index';
+  @import '~@porsche-design-system/utilities/scss';
   
   .type-scale {
     display: inline-block;

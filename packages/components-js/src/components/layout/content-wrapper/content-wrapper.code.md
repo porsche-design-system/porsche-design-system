@@ -37,7 +37,7 @@ Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or w
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/src/scss/index';
+  @import '~@porsche-design-system/utilities/scss';
 
   .example-content {
     @include p-text;

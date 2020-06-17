@@ -15,7 +15,8 @@
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Utilities",
   "files": [
-    "dist/"
+    "dist/",
+    "scss.scss"
   ],
   "keywords": [
     "porsche",
@@ -41,10 +42,10 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "build": "rm -rf ./dist && yarn build:lib:module && yarn build:lib:umd && yarn build:scss",
+    "build": "rm -rf ./dist && rm -rf ./scss.scss && yarn build:lib:module && yarn build:lib:umd && yarn build:scss",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "build:scss": "mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'"
+    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'"
   },
   "devDependencies": {
     "typescript": "~3.8.3"
