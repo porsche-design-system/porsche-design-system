@@ -50,5 +50,6 @@ export const insertSlottedStyles = (element: HTMLElement, css: string): void => 
 const minifySlottedStyles = (css: string): string =>
   css
     .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
-    .replace(/\s{/g, '{') // remove space before curly bracket
+    .replace(/\s?{\s?/g, '{') // remove space before and after opening curly bracket
+    .replace(/\s?}\s?/g, '}') // remove space before and after closing curly bracket
     .replace(/:\s/g, ':'); // remove space after colon
