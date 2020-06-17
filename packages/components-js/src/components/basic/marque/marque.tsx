@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
-import { prefix, trackEvent } from '../../../utils';
+import { prefix } from '../../../utils';
 import { CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
 @Component({
@@ -15,7 +15,6 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    trackEvent('marque', 'render');
     const manifestPath: { [size: string]: { [resolution: string]: string } } =
       MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
