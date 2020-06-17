@@ -44,7 +44,7 @@
     "start:components-angular": "yarn --cwd ./packages/components-angular start",
     "start:components-react": "yarn --cwd ./packages/components-react start",
     "start:storefront": "yarn --cwd ./packages/storefront start",
-    "build": "concurrently -n \"utils\" \"yarn build:utils\" && concurrently -n \"utilities\" \"yarn build:utilities\" && concurrently --kill-others-on-fail -n \"icons,fonts,marque\" \"yarn build:icons\" \"yarn build:fonts\" \"yarn build:marque\" && concurrently -n \"components-js\" \"yarn build:components-js\" && concurrently --kill-others-on-fail -n \"components-angular,components-react,storefront\" \"yarn build:components-angular\" \"yarn build:components-react\" \"yarn build:storefront\"",
+    "build": "concurrently -n \"utilities\" \"yarn build:utilities\" && concurrently -n \"utils\" \"yarn build:utils\" && concurrently --kill-others-on-fail -n \"icons,fonts,marque\" \"yarn build:icons\" \"yarn build:fonts\" \"yarn build:marque\" && concurrently -n \"components-js\" \"yarn build:components-js\" && concurrently --kill-others-on-fail -n \"components-angular,components-react,storefront\" \"yarn build:components-angular\" \"yarn build:components-react\" \"yarn build:storefront\"",
     "build:icons": "yarn --cwd ./packages/icons build",
     "build:fonts": "yarn --cwd ./packages/fonts build",
     "build:marque": "yarn --cwd ./packages/marque build",
