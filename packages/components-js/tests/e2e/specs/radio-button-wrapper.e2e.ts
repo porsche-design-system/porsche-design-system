@@ -1,8 +1,8 @@
 import {
-  getAttributeFromHandle,
+  getAttribute,
   getCssClasses, getElementStyle, getProperty,
   selectNode,
-  setContentWithDesignSystem, waitForInnerHTMLChange
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -60,7 +60,8 @@ describe('radio-button-wrapper', () => {
     expect(await getRadioButtonLabel()).toBeNull();
 
     await radioComponent.evaluate(el => el.setAttribute('label', 'Some label'));
-    await waitForInnerHTMLChange(page, radioComponent);
+    await waitForStencilLifecycle(page);
+
     expect(await getRadioButtonLabel()).not.toBeNull();
   });
 
@@ -77,23 +78,23 @@ describe('radio-button-wrapper', () => {
     expect(await getRadioButtonMessage()).toBeNull();
     await radioComponent.evaluate(el => el.setAttribute('state', 'error'));
     await radioComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
-    await waitForInnerHTMLChange(page, radioComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getRadioButtonMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toEqual('alert');
+    expect(await getAttribute(await getRadioButtonMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'success'));
     await radioComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
-    await waitForInnerHTMLChange(page, radioComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getRadioButtonMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getRadioButtonMessage(), 'role')).toBeNull();
+    expect(await getAttribute(await getRadioButtonMessage(), 'role')).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await radioComponent.evaluate(el => el.setAttribute('state', 'none'));
     await radioComponent.evaluate(el => el.setAttribute('message', ''));
-    await waitForInnerHTMLChange(page, radioComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getRadioButtonMessage()).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
@@ -117,12 +118,12 @@ describe('radio-button-wrapper', () => {
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await input1.click();
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await input2.click();
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getCssClasses(fakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -146,12 +147,12 @@ describe('radio-button-wrapper', () => {
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await labelText1.click();
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await labelText2.click();
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getCssClasses(fakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -166,7 +167,6 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const radioComponent1Label = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__label');
     const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
     const fakeRadio1Input = await selectNode(page, '#radio-1 > input');
     const fakeRadio2 = await selectNode(page, '#radio-2 >>> .p-radio-button-wrapper__fake-radio-button');
@@ -176,12 +176,12 @@ describe('radio-button-wrapper', () => {
     expect(await getCssClasses(fakeRadio2)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await fakeRadio1Input.evaluate(el => el.setAttribute('checked', 'true'));
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
 
     await fakeRadio2Input.evaluate(el => el.setAttribute('checked', 'true'));
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--checked');
     expect(await getCssClasses(fakeRadio2)).toContain('p-radio-button-wrapper__fake-radio-button--checked');
@@ -193,19 +193,18 @@ describe('radio-button-wrapper', () => {
         <input type="radio" name="some-name"/>
       </p-radio-button-wrapper>`);
 
-    const radioComponent1Label = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__label');
     const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
     const fakeRadio1Input = await selectNode(page, '#radio-1 > input');
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
 
     await fakeRadio1Input.evaluate((el: HTMLInputElement) => el.disabled = true);
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).toContain('p-radio-button-wrapper__fake-radio-button--disabled');
 
     await fakeRadio1Input.evaluate((el: HTMLInputElement) => el.disabled = false);
-    await waitForInnerHTMLChange(page, radioComponent1Label);
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
   });

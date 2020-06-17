@@ -2,7 +2,7 @@ import {
   addEventListener, getActiveElementId,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForEventCallbacks
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from "../helpers";
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -38,7 +38,7 @@ describe('button', () => {
 
     await button.click();
     await host.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(events.length).toBe(2);
     for (const event of events) {
@@ -82,7 +82,7 @@ describe('button', () => {
     await addEventListener(form, 'submit', () => calls++);
 
     await button.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(calls).toBe(0);
   });
 
@@ -104,7 +104,7 @@ describe('button', () => {
 
     await innerButton.click();
     await outerButton.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(calls).toBe(0);
   });
 
@@ -143,7 +143,7 @@ describe('button', () => {
     expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(0);
     expect(buttonFocusInCalls).toBe(0);
@@ -153,7 +153,7 @@ describe('button', () => {
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
@@ -163,7 +163,7 @@ describe('button', () => {
     expect(await getActiveElementId(page)).toBe('my-button');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(1);
     expect(buttonFocusInCalls).toBe(1);
@@ -175,7 +175,7 @@ describe('button', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
@@ -186,7 +186,7 @@ describe('button', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(2);
     expect(buttonFocusCalls).toBe(2);
     expect(buttonFocusInCalls).toBe(2);
@@ -244,12 +244,12 @@ describe('button', () => {
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
   });

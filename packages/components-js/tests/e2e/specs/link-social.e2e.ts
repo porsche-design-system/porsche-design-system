@@ -3,7 +3,7 @@ import {
   getActiveElementId,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForEventCallbacks
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -39,7 +39,7 @@ describe('link social', () => {
 
     await link.click();
     await host.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(events.length).toBe(2);
     for (const event of events) {
@@ -81,7 +81,7 @@ describe('link social', () => {
     expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(0);
     expect(linkFocusInCalls).toBe(0);
@@ -91,7 +91,7 @@ describe('link social', () => {
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
@@ -101,7 +101,7 @@ describe('link social', () => {
     expect(await getActiveElementId(page)).toBe('my-link-social');
 
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(1);
     expect(linkFocusInCalls).toBe(1);
@@ -113,7 +113,7 @@ describe('link social', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(1);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
@@ -124,7 +124,7 @@ describe('link social', () => {
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
     expect(beforeFocusCalls).toBe(2);
     expect(linkFocusCalls).toBe(2);
     expect(linkFocusInCalls).toBe(2);
