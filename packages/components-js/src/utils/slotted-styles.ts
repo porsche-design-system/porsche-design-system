@@ -13,7 +13,7 @@ export const getElementMap = (element: HTMLElement): Map<any, any> => {
 
 export const getNodeToPrependTo = (rootNode: HTMLElement | Document): HTMLElement => {
   if (rootNode === document) {
-    return (rootNode).head;
+    return rootNode.head;
   }
   return rootNode as HTMLElement;
 };
@@ -32,21 +32,23 @@ export const insertSlottedStyles = (element: HTMLElement, css: string): void => 
   if (elementMap.get(rootNode) === undefined) {
     elementMap.set(rootNode, true);
     const style = document.createElement('style');
-    style.appendChild(document.createTextNode(css));
+    style.appendChild(document.createTextNode(minifySlottedStyles(css)));
 
     const prependTo = getNodeToPrependTo(rootNode);
     const charsetTag = prependTo.querySelector('meta[charset]');
 
     if (charsetTag !== null) {
       prependTo.insertBefore(style, charsetTag.nextSibling);
-      return;
-    }
-
-    if (prependTo.childNodes.length > 0) {
+    } else if (prependTo.childNodes.length > 0) {
       prependTo.insertBefore(style, prependTo.firstChild);
-      return;
+    } else {
+      prependTo.appendChild(style);
     }
-
-    prependTo.appendChild(style);
   }
 };
+
+const minifySlottedStyles = (css: string): string =>
+  css
+    .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
+    .replace(/\s{/g, '{') // remove space before curly bracket
+    .replace(/:\s/g, ':'); // remove space after colon
