@@ -16,7 +16,7 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
           window.removeEventListener('stencil_componentDidUpdate', stencilComponentDidUpdate);
           console.log(`resolveOnLoadedPromise`);
           resolvePromiseOnDidUpdateAll();
-        }, 30);
+        }, 40);
       }
     };
 
