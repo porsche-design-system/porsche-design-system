@@ -3,7 +3,7 @@ import {
   getActiveElementId,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForEventCallbacks
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from "../helpers";
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -39,7 +39,7 @@ describe('link', () => {
 
     await link.click();
     await host.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(events.length).toBe(2);
     for (const event of events) {

@@ -1,8 +1,8 @@
 import {
-  getAttributeFromHandle,
+  getAttribute,
   getCssClasses, getElementStyle, getProperty,
   selectNode,
-  setContentWithDesignSystem, waitForInnerHTMLChange, waitForCssClass
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -63,7 +63,7 @@ describe('checkbox-wrapper', () => {
     expect(await getCheckboxLabel()).toBeNull();
 
     await checkboxComponent.evaluate(el => el.setAttribute('label', 'Some label'));
-    await waitForInnerHTMLChange(page, checkboxComponent);
+    await waitForStencilLifecycle(page);
     expect(await getCheckboxLabel()).not.toBeNull();
   });
 
@@ -79,23 +79,23 @@ describe('checkbox-wrapper', () => {
 
     await checkboxHost.evaluate(el => el.setAttribute('state', 'error'));
     await checkboxHost.evaluate(el => el.setAttribute('message', 'Some error message'));
-    await waitForInnerHTMLChange(page, checkboxHost);
+    await waitForStencilLifecycle(page);
 
     expect(await getCheckboxMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getCheckboxMessage(), 'role')).toEqual('alert');
+    expect(await getAttribute(await getCheckboxMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await checkboxHost.evaluate(el => el.setAttribute('state', 'success'));
     await checkboxHost.evaluate(el => el.setAttribute('message', 'Some success message'));
-    await waitForInnerHTMLChange(page, checkboxHost);
+    await waitForStencilLifecycle(page);
 
     expect(await getCheckboxMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getCheckboxMessage(), 'role')).toBeNull();
+    expect(await getAttribute(await getCheckboxMessage(), 'role')).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await checkboxHost.evaluate(el => el.setAttribute('state', 'none'));
     await checkboxHost.evaluate(el => el.setAttribute('message', ''));
-    await waitForInnerHTMLChange(page, checkboxHost);
+    await waitForStencilLifecycle(page);
 
     expect(await getCheckboxMessage()).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
@@ -113,12 +113,12 @@ describe('checkbox-wrapper', () => {
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.click();
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked');
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.click();
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: true});
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
@@ -137,13 +137,13 @@ describe('checkbox-wrapper', () => {
     expect(await getProperty(input, 'checked')).toBe(false);
 
     await labelText.click();
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked');
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(true);
 
     await labelText.click();
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: true});
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(false);
@@ -161,12 +161,12 @@ describe('checkbox-wrapper', () => {
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.evaluate((el: HTMLInputElement) => el.checked = true);
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked');
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.evaluate((el: HTMLInputElement) => el.checked = false);
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: true});
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
@@ -183,12 +183,12 @@ describe('checkbox-wrapper', () => {
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = true);
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--disabled');
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await input.evaluate((el: HTMLInputElement) => el.disabled = false);
-    await waitForCssClass(fakeCheckbox, 'p-checkbox-wrapper__fake-checkbox--disabled', {isGone: true});
+    await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
   });
@@ -200,7 +200,7 @@ describe('checkbox-wrapper', () => {
         input.indeterminate = indeterminate;
       }, value);
 
-      await waitForInnerHTMLChange(page, await selectNode(page, 'p-checkbox-wrapper >>> p-icon >>> i'));
+      await waitForStencilLifecycle(page);
     };
 
     const setChecked = async (value: boolean) => {
@@ -211,7 +211,7 @@ describe('checkbox-wrapper', () => {
       }, value);
 
       if (!indeterminate){
-        await waitForCssClass(await getCheckboxFakeInput(), 'p-checkbox-wrapper__fake-checkbox--checked', {isGone: !value})
+        await waitForStencilLifecycle(page);
       }
     };
 
@@ -255,7 +255,7 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon()).toBe(true);
 
       await input.click();
-      await waitForInnerHTMLChange(page, innerIcon);
+      await waitForStencilLifecycle(page);
       expect(await getIconName()).toBe('check');
       expect(await showsIcon()).toBe(true);
 
@@ -264,7 +264,7 @@ describe('checkbox-wrapper', () => {
       expect(await showsIcon()).toBe(true);
 
       await input.click();
-      await waitForInnerHTMLChange(page, innerIcon);
+      await waitForStencilLifecycle(page);
       expect(await getIconName()).toBe('check');
       expect(await showsIcon()).toBe(false);
     });

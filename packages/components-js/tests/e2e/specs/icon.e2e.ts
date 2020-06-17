@@ -2,7 +2,7 @@ import {
   getProperty,
   selectNode,
   setContentWithDesignSystem,
-  waitForInnerHTMLChange
+  waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -135,10 +135,9 @@ describe('p-icon', () => {
 
     // check name attribute
     const outerHTML = await iconComponent.evaluate(el => el.outerHTML);
-    expect(outerHTML).not.toContain('name=');
-    // one tick delay to repaint
-    await waitForInnerHTMLChange(page, shadowIcon);
+    await waitForStencilLifecycle(page);
 
+    expect(outerHTML).not.toContain('name=');
     expect(await getIconContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(2);
   });

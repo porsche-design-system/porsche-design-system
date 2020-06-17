@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  getAttributeFromHandle,
+  getAttribute,
   getCssClasses,
   getElementStyle,
   getProperty,
@@ -119,7 +119,7 @@ describe('Text Field Wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toEqual('alert');
+    expect(await getAttribute(await getTextFieldMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'success'));
@@ -127,7 +127,7 @@ describe('Text Field Wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getTextFieldMessage(), 'role')).toBeNull();
+    expect(await getAttribute(await getTextFieldMessage(), 'role')).toBeNull();
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
 
     await textFieldComponent.evaluate((el) => el.setAttribute('state', 'null'));

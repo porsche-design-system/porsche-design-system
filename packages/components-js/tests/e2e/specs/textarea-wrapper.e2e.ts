@@ -1,9 +1,9 @@
 import {
   addEventListener,
-  getAttributeFromHandle, getElementStyle, getProperty,
+  getAttribute, getElementStyle, getProperty,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForEventCallbacks, waitForInnerHTMLChange
+  setContentWithDesignSystem, waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
@@ -75,7 +75,7 @@ describe('Textarea Wrapper', () => {
     expect(await getTextareaLabel()).toBeNull();
 
     await textareaComponent.evaluate(el => el.setAttribute('label', 'Some label'));
-    await waitForInnerHTMLChange(page, textareaComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextareaLabel()).toBeDefined();
   });
@@ -93,23 +93,23 @@ describe('Textarea Wrapper', () => {
 
     await textareaComponent.evaluate(el => el.setAttribute('state', 'error'));
     await textareaComponent.evaluate(el => el.setAttribute('message', 'Some error message'));
-    await waitForInnerHTMLChange(page, textareaComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextareaMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBe('alert');
+    expect(await getAttribute(await getTextareaMessage(), 'role')).toBe('alert');
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', 'success'));
     await textareaComponent.evaluate(el => el.setAttribute('message', 'Some success message'));
-    await waitForInnerHTMLChange(page, textareaComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextareaMessage()).toBeDefined();
-    expect(await getAttributeFromHandle(await getTextareaMessage(), 'role')).toBeNull();
+    expect(await getAttribute(await getTextareaMessage(), 'role')).toBeNull();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some success message');
 
     await textareaComponent.evaluate(el => el.setAttribute('state', ''));
     await textareaComponent.evaluate(el => el.setAttribute('message', ''));
-    await waitForInnerHTMLChange(page, textareaComponent);
+    await waitForStencilLifecycle(page);
 
     expect(await getTextareaMessage()).toBeNull();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
@@ -131,7 +131,7 @@ describe('Textarea Wrapper', () => {
     expect(textareaFocusSpyCalls).toBe(0);
 
     await labelText.click();
-    await waitForEventCallbacks(page);
+    await waitForStencilLifecycle(page);
 
     expect(textareaFocusSpyCalls).toBe(1);
   });
