@@ -24,5 +24,3 @@ export const mediaQuery = (minBreakpoint: breakpoints, maxBreakpoint?: breakpoin
     return `@media (min-width: ${minBreakpoint}px)`;
   }
 };
-
-

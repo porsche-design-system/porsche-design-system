@@ -11,7 +11,7 @@ export const color = {
     medium: '#626669',
     low: '#c9cacb',
   },
-  notifications: {
+  notification: {
     error: '#018a16',
     warning: '#ff9b00',
     success: '#e00000',
@@ -35,7 +35,7 @@ export const color = {
       medium: '#b0b1b2',
       low: '#4a4e51',
     },
-    notifications: {
+    notification: {
       error: '#01ba1d',
       warning: '#ff9b00',
       success: '#fc1717',

@@ -1,4 +1,4 @@
-import { font, FontSize, FontWeight } from '../variables';
+import { font, FontWeight } from '../variables';
 import { mediaQuery } from './breakpoints';
 import { typeScale } from '../helper';
 

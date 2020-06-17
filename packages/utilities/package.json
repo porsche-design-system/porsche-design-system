@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -46,6 +45,7 @@
     "@types/styled-components": "4.1.8",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
+    "node-sass": "^4.14.1",
     "puppeteer": "~3.0.4",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",

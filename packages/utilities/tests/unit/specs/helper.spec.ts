@@ -1,7 +1,7 @@
 import { convertLineHeight, checkIfRem, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
 
 describe('pxToRem()', () => {
-  it('should return correct rem value for pxpx', () => {
+  it('should return correct rem value for px', () => {
     const testValue = pxToRem('16px');
     expect(testValue).toEqual('1rem');
   });
