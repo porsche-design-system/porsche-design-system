@@ -9,7 +9,8 @@
   "contributors": [
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Oliver Hook <oliver.hook@mhp.com>",
-    "Stephan Schröter <stephan.schroeter@mhp.com>"
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Bernd Hacker <bernd.hacker@mhp.com>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Utilities",
