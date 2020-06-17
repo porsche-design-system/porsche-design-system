@@ -62,7 +62,7 @@ As for the social icons that are currently provided in the Porsche Design System
 
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/src/scss/index";
+  @import "~@porsche-design-system/utilities/scss";
   
   .example-grouped {
     &::before {
