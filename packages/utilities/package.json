@@ -1,0 +1,55 @@
+{
+  "name": "utilities",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cd projects/utilities && yarn build",
+    "test": "yarn test:unit && yarn test:vrt",
+    "test:unit": "jest -c='tests/unit/config/jest.config.js'",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "clean": "rm -rf './node_modules' && rm -rf './yarn-error.log' && rm -rf './build'"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@porsche-design-system/visual-regression-tester": "^2.0.1",
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.2.1",
+    "@testing-library/user-event": "^11.3.1",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.12",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "4.1.8",
+    "concurrently": "^5.2.0",
+    "jasmine": "^3.5.0",
+    "node-sass": "^4.14.1",
+    "puppeteer": "~3.0.4",
+    "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "~3.8.3",
+    "wait-on": "^5.0.1"
+  }
+}

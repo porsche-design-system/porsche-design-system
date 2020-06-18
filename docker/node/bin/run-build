@@ -11,6 +11,7 @@ if
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
+  [[ "--utilities" == "${1}" ]] ||
   [[ "--utils" == "${1}" ]]
 then
   yarn build:${1:2}

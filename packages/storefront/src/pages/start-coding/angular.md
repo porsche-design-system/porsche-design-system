@@ -1,4 +1,5 @@
-# Angular - Sample integration
+# Angular
+## Sample integration
 
 You can find the repository of the angular example project here: [Sample integration angular](https://github.com/porscheui/sample-integration-angular)
 
@@ -26,7 +27,7 @@ You can find the repository of the angular example project here: [Sample integra
 ## Reproduce on your own
 To build your own application with the components of the Porsche Design System, follow these steps:
 
-* Follow the instructions at [Introduction](https://designsystem.porsche.com/v1/#/start-coding/introduction) to get the required npm package
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Run `ng new my-app` to create a new Angular workspace and initial project
 * Install the Porsche Design System
 
