@@ -44,9 +44,9 @@ A light and dark theme is available depending on which background it's used. The
 
 |                                                          |             |                                                                       |
 | -------------------------------------------------------- | ----------- | --------------------------------------------------------------------- |
-| <ColorBadge :theme="theme" color="notification-error"/>   | **Error**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notifications.error`   |
-| <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notifications.success` |
-| <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notifications.warning` |
+| <ColorBadge :theme="theme" color="notification-error"/>   | **Error**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.error`   |
+| <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.success` |
+| <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warning` |
 
 #### State colors
 
