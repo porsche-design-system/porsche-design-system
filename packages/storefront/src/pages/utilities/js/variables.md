@@ -147,16 +147,12 @@ font.size[v];
 
 ### Hover
 
+Given variables are:
+
 ```
 animation.hover.duration
 animation.hover.bezier
 ```
 
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  
-  @Component
-  export default class PlaygroundColor extends Vue {
-    public theme: 'light' | 'dark' = 'light';
-  }
-</script>
+These result in predefined `duration: '0.24s'` and `bezier: 'ease'` 
+
