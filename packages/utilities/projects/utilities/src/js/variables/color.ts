@@ -47,6 +47,9 @@ export const color = {
       disabled: '#7c7f81',
     },
   },
+  /**
+   * External brand colors
+   */
   external: {
     facebook: "#1877f2",
     google: "#4285f4",

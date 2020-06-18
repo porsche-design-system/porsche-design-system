@@ -1,5 +1,5 @@
 import { font, FontWeight } from '../variables';
-import { mediaQuery } from './breakpoints';
+import { mediaQuery } from './media-query';
 import { typeScale } from '../helper';
 
 export const title = {
@@ -58,21 +58,21 @@ export const headline = {
   }
 };
 
-export const text = (customSize?: string, customWeight?: FontWeight) => {
-  if (!customSize && !customWeight) {
+export const text = (fontSize?: string, fontWeight?: FontWeight) => {
+  if (!fontSize && !fontWeight) {
     return {
       ...font.size.small,
       fontFamily: font.family,
       fontWeight: font.weight.regular
     };
   } else {
-    const fontSize = typeScale(customSize!) || font.size.small;
-    const fontWeight = font.weight[customWeight!] || font.weight.regular;
+    const size = typeScale(fontSize!) || font.size.small;
+    const weight = font.weight[fontWeight!] || font.weight.regular;
 
     return {
-      ...fontSize,
+      ...size,
       fontFamily: font.family,
-      fontWeight
+      weight
     };
   }
 };

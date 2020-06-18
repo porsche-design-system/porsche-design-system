@@ -1,5 +1,3 @@
-import * as CSS from 'csstype';
-
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
 export const remBase = 16;
@@ -20,19 +18,19 @@ export const remToPx = (rem: string): string => {
   } else return `${parseFloat(`${fontSizeValue}`) * remBase}px`;
 };
 
-export const typeScale = (size: string): CSS.Properties => ({
-  fontSize: checkIfRem(size),
-  lineHeight: convertLineHeight(size)
-});
-
-export const checkIfRem = (fontSize: string): string => {
+export const typeScale = (fontSize: string): {fontSize: string; lineHeight: number;} => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');
   } else if (fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error('fontSize value has to be a Number and not 0');
   }
-  return fontSizeUnit === 'rem' ? fontSize : pxToRem(fontSize);
+  const convertedFontSize = fontSizeUnit === 'rem' ? fontSize : pxToRem(fontSize);
+
+  return {
+    fontSize: convertedFontSize,
+    lineHeight: convertLineHeight(fontSize)
+  };
 };
 
 export const convertLineHeight = (fontSize: string): number => {
