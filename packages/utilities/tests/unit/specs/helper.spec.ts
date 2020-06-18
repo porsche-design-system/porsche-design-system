@@ -1,4 +1,4 @@
-import { convertLineHeight, checkIfRem, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
+import { convertLineHeight, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
@@ -37,50 +37,6 @@ describe('remToPx()', () => {
   it('should convert rem to px', () => {
     const pxValue = remToPx('1rem');
     expect(pxValue).toBe('16px');
-  });
-});
-
-describe('checkIfRem()', () => {
-  it('should return correct fontSize from rem', () => {
-    const fontSizeRem = checkIfRem('2rem');
-    expect(fontSizeRem).toEqual('2rem');
-  });
-
-  it('should return correct fontSize from px', () => {
-    const fontSizeRem = checkIfRem('16px');
-    expect(fontSizeRem).toEqual('1rem');
-  });
-
-  it('should throw error on false fontSize unit rem', () => {
-    try {
-      checkIfRem('2rem');
-    } catch (e) {
-      expect(e).toBeDefined();
-    }
-  });
-
-  it('should throw error on false fontSize unit px', () => {
-    try {
-      checkIfRem('Fpx');
-    } catch (e) {
-      expect(e).toBeDefined();
-    }
-  });
-
-  it('should throw error on wrong unit', () => {
-    try {
-      checkIfRem('12bs');
-    } catch (e) {
-      expect(e).toBeDefined();
-    }
-  });
-
-  it('should throw error on 0 as size value', () => {
-    try {
-      checkIfRem('0px');
-    } catch (e) {
-      expect(e).toBeDefined();
-    }
   });
 });
 
