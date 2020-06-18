@@ -37,7 +37,7 @@ export const checkIfRem = (fontSize: string): string => {
 
 export const convertLineHeight = (fontSize: string): number => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
-    if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
+  if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error('font size needs to be value + px or rem and not 0, e.g. 15rem or 16px');
   }
   const fontSizePx = fontSizeUnit === 'rem' ? remToPx(fontSize) : fontSizeValue;
@@ -53,7 +53,8 @@ export const convertLineHeight = (fontSize: string): number => {
     remainingPx = remainingPx - 4;
   }
 
+  const roundingFactor = 100000;
   const fittedLineHeightPx = exactLineHeightPx - remainingPx;
   const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
-  return Math.round(fittedLineHeightFactor * 100000) / 100000;
+  return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;
 };

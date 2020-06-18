@@ -2,7 +2,11 @@
 
 ## Breakpoints
 
-We provide a type `breakpoints`: `xxs | xs | s | m | l | xl | xxl` and a `breakpointValue` object, which matches all breakpoint types with a value.
+We provide a type `breakpoints`: 
+
+`xxs | xs | s | m | l | xl | xxl` 
+
+and a `breakpointValue` object, which matches all breakpoint types with a value.
 
 The usage is explained in the following examples (where 'v' is the breakpoint value, e.g. breakpointValue.xxs)
 
@@ -149,14 +153,6 @@ const StyledText = styled.p`
 `
 ```
 
-#### Example with specific parameters
-
-```
-const StyledText = styled.p`
-    ${text('large','thin')};
-`
-```
-
 #### Result
 ```
 p {
@@ -165,6 +161,14 @@ p {
   font-size: 1rem;
   line-height: 1.5;
 }
+```
+
+#### Example with specific parameters
+
+```
+const StyledText = styled.p`
+    ${text('large','thin')};
+`
 ```
 
 #### Result

@@ -3,10 +3,10 @@
 ## Porsche Design System utilities
 
 This package contains helpful SCSS functions, mixins and variables. Additionally we provide all scss content as JavaScript variables, 
-functions and helper.
+functions and helpers.
 
 **Note!** The JavaScript utilities are especially made for styled-components which allow the usage of media-queries. 
-Therefore the usage examples are made for styled components. You can still use all variables, helper and functions without media-queries to custom style components tho.  
+Therefore the usage examples are made for styled-components. You can still use all variables, helper and functions without media-queries to custom style components tho.  
 
 ### Install
 It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/utilities` NPM package. If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).

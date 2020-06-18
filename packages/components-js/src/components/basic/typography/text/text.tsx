@@ -72,8 +72,7 @@ export class Text {
 
     insertSlottedStyles(this.element, style);
     transitionListener(this.textTag, 'font-size', () => {
-      const lineHeight = calcLineHeightForElement(this.textTag);
-      this.textTag.style.lineHeight = `${lineHeight}`;
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
     });
   }
 
