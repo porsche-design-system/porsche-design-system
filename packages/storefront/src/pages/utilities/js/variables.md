@@ -115,7 +115,7 @@ font.family
 ### Weight
 
 Given values are:  
-`thin | regular | bold`
+`thin | regular | semibold | bold`
 
 Possible usage (where 'v' is the font weight value):
 
