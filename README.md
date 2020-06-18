@@ -251,14 +251,14 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `git pull origin {current master- or v-branch}`
 
 ### Porsche Design System Utilities
-1. Switch to __project root directory__
-1. Run `./docker.sh run-build --utilities`
-1. Run `./docker.sh run-test-unit --utilities`
-1. Run `./docker.sh run-test-vrt --utilities`
 1. Switch to __packages/utilities/projects/utilities directory__
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
 1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
+1. Switch to __project root directory__
+1. Run `./docker.sh run-build --utilities`
+1. Run `./docker.sh run-test-unit --utilities`
+1. Run `./docker.sh run-test-vrt --utilities`
 
 ### Commit
 1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
