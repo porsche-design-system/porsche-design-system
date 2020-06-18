@@ -2,49 +2,45 @@
 
 ## Breakpoints
 
-We provide a `breakpoint` object with predefined values. The keys are: 
-
-`xxs | xs | s | m | l | xl | xxl` 
-
-The usage is explained in the following examples (where 'v' is the breakpoint, e.g. breakpoint.xxs)
+We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl` 
 
 #### Example
 
 ```
+import { breakpoint } from '@porsche-design-system/utilities';
 
-if (window.matchMedia(`(max-width: ${breakpoint.v}px)`).matches) {
-      /* The viewport is less than, or equal to the breakpointValue wide */
-    } else {
-      /* The viewport is greater than breakpointValue wide */
-    }
-
+if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
+  /* The viewport is greater than, or equal to the breakpointValue wide */
+} else {
+  /* The viewport is less than breakpointValue wide */
+}
 ```
 
-## Function mediaQuery() for styled-components
+## Media Query
 
-The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints)` where the `minBreakpoint` parameter is mandatory.
-You can choose any number as pixel value or our predefined breakpoints as `minBreakpoint`.
+The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints | number)` where the `minBreakpoint` parameter is mandatory.
+You can choose any number as pixel value or our predefined breakpoints as `minBreakpoint` or `maxBreakpoint`.
 
-The type `breakpoint` includes predefined breakpoints:
+The type `breakpoint` includes predefined breakpoints: `xxs | xs | s | m | l | xl | xxl`
 
-`xxs | xs | s | m | l | xl | xxl`
-
-The `mediaQuery()` function returns a `@media (min-width: minBreakpount) || @media (min-width: minBreakpoint) and (max-width: maxBreakpoint)`
+The `mediaQuery()` function returns a `@media (min-width: minBreakpoints) || @media (min-width: minBreakpoint) and (max-width: maxBreakpoint)`
 
 #### Example predefined breakpoint
 
 ```
+import { mediaQuery, breakpoint, font, color } from '@porsche-design-system/utilities';
+
 const StyledDiv = css`{
-    ...font.size['small']
-    color: color.brand,
-    fontFamily: font.family
-    [mediaQuery('s')]: { color: color.external.facebook }
+  ...font.size['small']
+  color: color.brand,
+  fontFamily: font.family
+  [mediaQuery(breakpoint.s)]: { color: color.external.facebook }
 }`
 
 render (
-    <StyledDiv>
-        Styled Text
-    </StyledDiv>
+  <StyledDiv>
+    Styled Text
+  </StyledDiv>
 )
 ```
 
@@ -53,17 +49,19 @@ render (
 #### Example custom breakpoint
 
 ```
+import { mediaQuery, font, color } from '@porsche-design-system/utilities';
+
 const StyledDiv = css`{
-    ...font.size['small']
-    color: color.brand,
-    fontFamily: font.family
-    [mediaQuery(320)]: { color: color.external.facebook }
+  ...font.size['small']
+  color: color.brand,
+  fontFamily: font.family
+  [mediaQuery(320)]: { color: color.external.facebook }
 }`
 
 render (
-    <StyledDiv>
-        Styled Text
-    </StyledDiv>
+  <StyledDiv>
+    Styled Text
+  </StyledDiv>
 )
 ```
 
@@ -72,34 +70,38 @@ render (
 #### Example predefined min and max breakpoint
 
 ```
+import { mediaQuery, font, color } from '@porsche-design-system/utilities';
+
 const StyledDiv = div`{
-    ...font.size['small']
-    color: color.brand,
-    fontFamily: font.family
-    [mediaQuery('s', 'm')]: { color: color.external.facebook }
+  ...font.size['small']
+  color: color.brand,
+  fontFamily: font.family
+  [mediaQuery('s', 'm')]: { color: color.external.facebook }
 }`
 
 render (
-    <StyledDiv>
-        Styled Text
-    </StyledDiv>
+  <StyledDiv>
+    Styled Text
+  </StyledDiv>
 )
 ```
 
 #### Example custom min and max breakpoint
 
 ```
+import { mediaQuery, font, color } from '@porsche-design-system/utilities';
+
 const StyledDiv = css`{
-    ...font.size['small']
-    color: color.brand,
-    fontFamily: font.family
-    mediaQuery(320, 640)]: { color: color.external.facebook }
+  ...font.size['small']
+  color: color.brand,
+  fontFamily: font.family
+  mediaQuery(320, 640)]: { color: color.external.facebook }
 }`
 
 render (
-    <StyledDiv>
-        Styled Text
-    </StyledDiv>
+  <StyledDiv>
+    Styled Text
+  </StyledDiv>
 )
 ```
 
@@ -109,22 +111,21 @@ render (
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
-The predefined variables for `title` and `headline` **only** work with styled-components, due to the necessity of font sizes in relation to breakpoints.
-
-If there is no other option you can follow [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [`<p-headline>`](#/components/typography#headline).
-
 ### Headline
 
-Given variables are:  
-`title.large | headline[1] | headline[2] | headline[3] | headline[4] | headline[5]`
+The predefined variables for `title` and `headline` **only** work with styled-components, due to the necessity of font sizes in relation to breakpoints.
+You can follow [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
-Possible usage with styled-components (where {v} is the value):
+Given variables are:  
+`title.large | headline['1'] | headline['2'] | headline['3'] | headline['4'] | headline['5']`
 
 #### Example
 
 ```
+import { headline } from '@porsche-design-system/utilities';
+
 const PHeadline = styled.h1`
-    ${headline[v]}
+  ${headline['1']}
 `;
 ```
 
@@ -176,15 +177,17 @@ Predefined size values are:
  `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | xSmall | small | medium | large | xLarge`  
 
 Pre defined weight values are:  
- `thin |regular | bold`
+ `thin | regular | semibold | bold`
 
 Default is `font.size.small` and `font.weight.regular`.
 
 #### Example standard usage
 
 ```
+import { text } from '@porsche-design-system/utilities';
+
 const StyledText = styled.p`
-    ${text()};
+  ${text()};
 `
 ```
 
@@ -201,8 +204,10 @@ p {
 #### Example with specific parameters
 
 ```
+import { text } from '@porsche-design-system/utilities';
+
 const StyledText = styled.p`
-    ${text('large','thin')};
+  ${text('large', 'thin')};
 `
 ```
 

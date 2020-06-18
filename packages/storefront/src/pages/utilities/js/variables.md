@@ -84,6 +84,8 @@ Given values are:
 **Example:**
 
 ```
+import { spacing } from '@porsche-design-system/utilities';
+
 // 'v' is the spacing value
 spacing[v]
 ```
@@ -96,6 +98,8 @@ Given values are:
 **Example:**
 
 ```
+import { layout } from '@porsche-design-system/utilities';
+
 // 'v' is the layout value
 layout[v]
 ```
@@ -111,6 +115,8 @@ For font styling it's recommended to use the [`<p-headline>`](#/components/typog
 Contains Porsche Next and predefined fallback fonts:
 
 ```
+import { font } from '@porsche-design-system/utilities';
+
 font.family
 ```
 
@@ -122,6 +128,8 @@ Given values are:
 **Example:**
 
 ```
+import { font } from '@porsche-design-system/utilities';
+
 // 'v' is the spacing value
 font.weight[v]
 ```
@@ -141,6 +149,8 @@ Predefined text sizes are also provided:
 **Example:**
 
 ```
+import { font } from '@porsche-design-system/utilities';
+
 // 'v' is the spacing value
 font.size[v]
 ```
