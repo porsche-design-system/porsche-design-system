@@ -110,7 +110,7 @@ $p-font-primary
 
 ### Weight
 Given values are:  
-`thin | regular | bold`
+`thin | regular | semibold | bold`
 
 Possible variable for usage with SCSS (where {v} is the font weight value):
 

@@ -65,7 +65,7 @@ div {
 ### Headline
 
 Given values are:  
-`large-title | headline-1 | headline-2 | headline-3 | headline-4`
+`large-title | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
 
 Possible headline mixin for usage with SCSS (where {v} is the value):
 ```
