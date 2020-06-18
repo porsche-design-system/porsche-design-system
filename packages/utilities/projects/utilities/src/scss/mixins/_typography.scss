@@ -1,6 +1,6 @@
 @import "../variables/index";
 @import "../functions/index";
-@import "./breakpoint";
+@import "./media-query";
 
 @mixin p-large-title {
   @include p-type-scale($p-font-size-32);
