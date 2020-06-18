@@ -43,7 +43,7 @@
     * `./docker.sh run-build --components-angular` (builds angular components)
     * `./docker.sh run-build --components-react` (builds react components)
     * `./docker.sh run-build --storefront` (builds storefront)
-    * `./docker.sh run-build --utils` (builds utilities)
+    * `./docker.sh run-build --utilities` (builds utilities)
 
 ### Start
 1. Switch to __project root directory__
@@ -266,7 +266,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Publish
 1. Switch to __packages/utilities/projects/utilities directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System SCSS Utils artifact to the Artifactory repository.
+1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Porsche Design System Utilities artifact to private npm repository.
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
