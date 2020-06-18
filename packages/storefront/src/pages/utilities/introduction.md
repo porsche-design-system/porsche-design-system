@@ -11,10 +11,10 @@ If you don't have an account yet, please first [read more about getting started 
 
 ```
 // install with npm:
-npm install @porsche-design-system/utilities --save-dev
+npm install @porsche-design-system/utilities
 
 // install with yarn:
-yarn add @porsche-design-system/utilities --dev
+yarn add @porsche-design-system/utilities
 ```
 
 ### Usage SCSS
