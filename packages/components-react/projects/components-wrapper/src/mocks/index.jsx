@@ -2,6 +2,7 @@ import { PButton } from './p-button-mock';
 import { PButtonPure } from './p-button-pure-mock';
 import { PCheckboxWrapper } from './p-checkbox-wrapper-mock';
 import { PDivider } from './p-divider-mock';
+import { PFieldsetWrapper } from './p-fieldset-wrapper-mock';
 import { PFlex } from './p-flex-mock';
 import { PFlexItem } from './p-flex-item-mock';
 import { PContentWrapper } from './p-content-wrapper-mock';
@@ -28,6 +29,7 @@ module.exports = {
   PButtonPure,
   PCheckboxWrapper,
   PDivider,
+  PFieldsetWrapper,
   PFlex,
   PFlexItem,
   PContentWrapper,
