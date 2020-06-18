@@ -1,4 +1,4 @@
-$p-breakpoints: (
+$p-breakpoint: (
   'xxs': 0,
   'xs': 480px,
   's': 760px,
@@ -8,10 +8,10 @@ $p-breakpoints: (
   'xxl': 1920px
 );
 
-@mixin p-breakpoint($min-breakpoint: null, $max-breakpoint: null) {
+@mixin p-media-query($min-breakpoint: null, $max-breakpoint: null) {
   @if ($min-breakpoint and $max-breakpoint) {
-    @if map-has-key($p-breakpoints, $min-breakpoint) and map-has-key($p-breakpoints, $max-breakpoint) {
-      @media (min-width: #{map-get($p-breakpoints, $min-breakpoint)}) and (max-width: #{map-get($p-breakpoints, $max-breakpoint) - 1px}) {
+    @if map-has-key($p-breakpoint, $min-breakpoint) and map-has-key($p-breakpoint, $max-breakpoint) {
+      @media (min-width: #{map-get($p-breakpoint, $min-breakpoint)}) and (max-width: #{map-get($p-breakpoint, $max-breakpoint) - 1px}) {
         @content;
       }
     } @else {
@@ -27,8 +27,8 @@ $p-breakpoints: (
       }
     }
   } @else if ($min-breakpoint) {
-    @if map-has-key($p-breakpoints, $min-breakpoint) {
-      @media (min-width: #{map-get($p-breakpoints, $min-breakpoint)}) {
+    @if map-has-key($p-breakpoint, $min-breakpoint) {
+      @media (min-width: #{map-get($p-breakpoint, $min-breakpoint)}) {
         @content;
       }
     } @else {
@@ -41,4 +41,9 @@ $p-breakpoints: (
       }
     }
   }
+}
+
+// alias for p-media-query for backwards compatibility
+@mixin p-breakpoint($min-breakpoint: null, $max-breakpoint: null) {
+  @include p-media-query($min-breakpoint, $max-breakpoint);
 }

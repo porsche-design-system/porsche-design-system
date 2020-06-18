@@ -38,7 +38,7 @@ A sample usage might look like as follows:
 #app {
   color: $p-color-default;
   
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     color: $p-color-brand;
   }
 }
