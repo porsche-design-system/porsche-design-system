@@ -298,6 +298,20 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
         ]
+      },
+      'Fieldset': {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`)
+        ]
       }
     },
     Content: {
