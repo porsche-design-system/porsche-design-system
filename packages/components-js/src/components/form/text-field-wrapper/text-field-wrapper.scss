@@ -79,6 +79,19 @@
   cursor: not-allowed !important;
 }
 
+// Hide arrows for number fields
+::slotted(input[type="number"]) {
+  -webkit-appearance: none !important;
+  -moz-appearance: textfield !important;
+}
+::slotted(input[type="number"]::-webkit-outer-spin-button),
+::slotted(input[type="number"]::-webkit-inner-spin-button) {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+}
+
 .#{$p-global-class-prefix}text-field-wrapper {
   $bem-block: &;
 
