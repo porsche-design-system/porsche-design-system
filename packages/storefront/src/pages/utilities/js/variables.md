@@ -2,7 +2,7 @@
 
 ## Color
 
-A light and dark theme is available depending on which background it's used. The porsche standard light theme is used as base of the variable, for darkTheme the color object variable gets extended.
+A light (default) and dark theme is available depending on which background it's used.
 
 <br>
 <select id="theme-selector" @change="theme = $event.target.value" :data-selected="theme">
@@ -79,12 +79,13 @@ A light and dark theme is available depending on which background it's used. The
 ## Spacing
 
 Given values are:  
-`0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+`4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
-Possible variable usage (where 'v' is the spacing value):
+**Example:**
 
 ```
-spacing[v];
+// 'v' is the spacing value
+spacing[v]
 ```
 
 Or the reduced set of spacings which should be used as main layout spacings for spacings between elements:
@@ -92,10 +93,11 @@ Or the reduced set of spacings which should be used as main layout spacings for 
 Given values are:  
 `x-small | small | medium | large | x-large | xx-large`
 
-Possible variable usage (where 'v' is the layout value):
+**Example:**
 
 ```
-layout[v];
+// 'v' is the layout value
+layout[v]
 ```
 
 ---
@@ -117,10 +119,11 @@ font.family
 Given values are:  
 `thin | regular | semibold | bold`
 
-Possible usage (where 'v' is the font weight value):
+**Example:**
 
 ```
-font.weight.v; (e.g. font.weight.thin)
+// 'v' is the spacing value
+font.weight[v]
 ```
 
 ### Size
@@ -135,10 +138,11 @@ Predefined text sizes are also provided:
 
 `x-small | small | medium | large | x-large`
 
-Possible usage (where 'v' is the font size value):
+**Example:**
 
 ```
-font.size[v];
+// 'v' is the spacing value
+font.size[v]
 ```
 
 <script lang="ts">

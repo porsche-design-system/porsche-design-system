@@ -85,7 +85,7 @@ If there is no other option you can follow [React media queries Hooks](https://m
 ### Headline
 
 Given variables are:  
-`title.large | headline[1] | headline[2] | headline[3] | headline[4]`
+`title.large | headline[1] | headline[2] | headline[3] | headline[4] | headline[5]`
 
 Possible usage with styled-components (where {v} is the value):
 
