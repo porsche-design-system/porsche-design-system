@@ -1,8 +1,9 @@
 # Js
 
-## typeScale(size)
+## typeScale(fontSize)
 
-Calculates font-size and line-height to fit into Porsche Vertical Grid System. `size` only accepts value in rem or px, e.g. 12px or 1.5rem.
+Calculates font-size and line-height to fit into Porsche Vertical Grid System. 
+The `fonzSize` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
 
