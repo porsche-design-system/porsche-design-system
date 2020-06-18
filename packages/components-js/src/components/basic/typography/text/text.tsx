@@ -1,11 +1,10 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import {
-  BreakpointCustomizable,
+  BreakpointCustomizable, calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  calcLineHeightForElement
+  transitionListener
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
 import { insertSlottedStyles } from '../../../../utils/slotted-styles';

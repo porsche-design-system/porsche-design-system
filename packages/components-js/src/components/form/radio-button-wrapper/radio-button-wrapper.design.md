@@ -69,5 +69,5 @@ Never use a Radio Button alone.
 
 ## Related Components
 
-* [Checkbox](#/components/form/checkbox)
-* [Select](#/components/form/select)
+* [Checkbox](#/components/checkbox)
+* [Select](#/components/select)

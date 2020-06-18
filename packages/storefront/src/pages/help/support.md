@@ -1,4 +1,5 @@
-# Support and communication channels
+# Support
+
 To drive continuous communication within the community of users, contributors and the Porsche Design System team, specific use-case-related communication channels and methods are provided.
 
 ## Website as information hub
