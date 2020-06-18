@@ -4,32 +4,30 @@ At Porsche we want the best performance, security and modern feature opportuniti
 
 To ensure visual and functional compatibility, we do automatic and manual testing for the defined set of browsers and versions. If a browser is not listed on this page we don’t test it, provide assistance or fix bugs for it.
 
-### Supported Browsers & Platforms:
+## Supported Browsers & Platforms
 
-We support the **latest stable version and the discontinued predecessor**, to bridge the temporal update transition period.
+We support the **following Browsers in the latest stable and deprecated predecessor version**:
 
-* **Chrome** on Windows and macOS, Android and iOS ([see version history](https://en.wikipedia.org/wiki/Google_Chrome_version_history))
+* **Google Chrome** on Windows and macOS, Android and iOS ([see version history](https://en.wikipedia.org/wiki/Google_Chrome_version_history))
 * **Microsoft Edge Chromium** on Windows ([see version history](https://en.wikipedia.org/wiki/Microsoft_Edge#Release_history))
 * **Mozilla Firefox** on Windows and macOS ([see version history](https://en.wikipedia.org/wiki/Firefox_version_history))
-* **Safari** on macOS and iOS ([see version history](https://en.wikipedia.org/wiki/Safari_version_history#Safari_13))
+* **Apple Safari** on macOS and iOS ([see version history](https://en.wikipedia.org/wiki/Safari_version_history#Safari_13))
+ 
+<p-text size="x-small">Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor version, to bridge the temporal updating period of the users.</p-text>
 
-**Annotation**  
-Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0.
+## End of support for IE 11 and reduced support for Edge 18
+We have decided to **end the support for Microsoft Internet Explorer 11**.  
+**Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
 
-## End of support announcement for IE 11 and Edge 15-18
+The Porsche Design System v1.x is the last major version to support Internet Explorer 11 and Microsoft Edge 18. 
+New features introduced with v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
 
-In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 Microsoft Edge versions are based on Chromium, also available for all operating systems.
+### Why do we stop the support?
+To empower the opportunities of modern web standards including our technical foundation of using web components (custom elements), and to deliver the best possible user experience, performance and stability. Also, the share of IE11 and EdgeHTML users is the significant minority of our total users. Thus, we don't want to impair the experience for the vast majority.
 
-### Why do we stop support?
-The share of use of not-supported browsers is the significant minority of our total users. To empower the opportunities of modern web standards including web components, and deliver the best possible user experience, performance and stability across all of our applications for the vast majority, we have decided to end support for Microsoft Internet Explorer 11 and the outdated Edge versions 15-18.
+In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 the new Microsoft Edge versions are based on Chromium, available for all operating systems. Thus, both IE11 and Microsoft Edge 18 are outdated browsers.
 
 ### Can users still access our applications?
 Windows, macOS, iOS and Android have at least one supported browser pre-installed. In most cases continuously or at least frequently updated to the latest version. If a user runs into problems using your site with a not-supported browser, they can easily open it with a different browser.
 
-Please do not create any dead-end for users, but consistently guide them by implement and use our global Browser Notification Component.
-
-### When is this happening?
-
-The Porsche Design System v1.x is the last major version to support Internet Explorer 11 and Microsoft Edge 15-18. 
-
-New features introduced with v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
+**In order to guide the users and avoid dead-ends, we created an easy-to-use Browser Notification snippet, that should be implemented in all applications using the Porsche Design System.**
