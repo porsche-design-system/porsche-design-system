@@ -2,15 +2,9 @@
 
 ## Breakpoints
 
-We provide a `breakpoint` object: 
+We provide a `breakpoint` object with predefined values. The keys are: 
 
-`xxs: 0,
- xs: 480,
- s: 760,
- m: 1000,
- l: 1300,
- xl: 1760,
- xxl: 1920` 
+`xxs | xs | s | m | l | xl | xxl` 
 
 The usage is explained in the following examples (where 'v' is the breakpoint, e.g. breakpoint.xxs)
 
@@ -28,15 +22,16 @@ if (window.matchMedia(`(max-width: ${breakpoint.v}px)`).matches) {
 
 ## Function mediaQuery() for styled-components
 
-The function has two parameter `mediaQuery(minBreakpoint: breakpoints, maxBreakpoint?: breakpoints)` where the `minBreakpoint` parameter is mandatory.
+The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints)` where the `minBreakpoint` parameter is mandatory.
+You can choose any number as pixel value or our predefined breakpoints as `minBreakpoint`.
 
-The type `breakpoints` includes predefined breakpoints:
+The type `breakpoint` includes predefined breakpoints:
 
 `xxs | xs | s | m | l | xl | xxl`
 
 The `mediaQuery()` function returns a `@media (min-width: minBreakpount) || @media (min-width: minBreakpoint) and (max-width: maxBreakpoint)`
 
-#### Example
+#### Example predefined breakpoint
 
 ```
 const StyledDiv = css`{
@@ -55,7 +50,26 @@ render (
 
 ---
 
-#### Example
+#### Example custom breakpoint
+
+```
+const StyledDiv = css`{
+    ...font.size['small']
+    color: color.brand,
+    fontFamily: font.family
+    [mediaQuery(320)]: { color: color.external.facebook }
+}`
+
+render (
+    <StyledDiv>
+        Styled Text
+    </StyledDiv>
+)
+```
+
+---
+
+#### Example predefined min and max breakpoint
 
 ```
 const StyledDiv = div`{
@@ -63,6 +77,23 @@ const StyledDiv = div`{
     color: color.brand,
     fontFamily: font.family
     [mediaQuery('s', 'm')]: { color: color.external.facebook }
+}`
+
+render (
+    <StyledDiv>
+        Styled Text
+    </StyledDiv>
+)
+```
+
+#### Example custom min and max breakpoint
+
+```
+const StyledDiv = css`{
+    ...font.size['small']
+    color: color.brand,
+    fontFamily: font.family
+    mediaQuery(320, 640)]: { color: color.external.facebook }
 }`
 
 render (
