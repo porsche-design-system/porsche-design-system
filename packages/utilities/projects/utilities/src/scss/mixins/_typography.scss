@@ -7,19 +7,19 @@
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-42);
   }
 
-  @include p-breakpoint("m", "l") {
+  @include p-media-query("m", "l") {
     @include p-type-scale($p-font-size-52);
   }
 
-  @include p-breakpoint("l", "xl") {
+  @include p-media-query("l", "xl") {
     @include p-type-scale($p-font-size-62);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     @include p-type-scale($p-font-size-72);
   }
 }
@@ -29,19 +29,19 @@
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-36);
   }
 
-  @include p-breakpoint("m", "l") {
+  @include p-media-query("m", "l") {
     @include p-type-scale($p-font-size-44);
   }
 
-  @include p-breakpoint("l", "xl") {
+  @include p-media-query("l", "xl") {
     @include p-type-scale($p-font-size-52);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     @include p-type-scale($p-font-size-60);
   }
 }
@@ -51,19 +51,19 @@
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-30);
   }
 
-  @include p-breakpoint("m", "l") {
+  @include p-media-query("m", "l") {
     @include p-type-scale($p-font-size-36);
   }
 
-  @include p-breakpoint("l", "xl") {
+  @include p-media-query("l", "xl") {
     @include p-type-scale($p-font-size-42);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     @include p-type-scale($p-font-size-48);
   }
 }
@@ -73,19 +73,19 @@
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-24);
   }
 
-  @include p-breakpoint("m", "l") {
+  @include p-media-query("m", "l") {
     @include p-type-scale($p-font-size-28);
   }
 
-  @include p-breakpoint("l", "xl") {
+  @include p-media-query("l", "xl") {
     @include p-type-scale($p-font-size-32);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     @include p-type-scale($p-font-size-36);
   }
 }
@@ -95,19 +95,19 @@
   font-family: $p-font-primary;
   font-weight: $p-font-weight-semibold;
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-18);
   }
 
-  @include p-breakpoint("m", "l") {
+  @include p-media-query("m", "l") {
     @include p-type-scale($p-font-size-20);
   }
 
-  @include p-breakpoint("l", "xl") {
+  @include p-media-query("l", "xl") {
     @include p-type-scale($p-font-size-22);
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     @include p-type-scale($p-font-size-24);
   }
 }

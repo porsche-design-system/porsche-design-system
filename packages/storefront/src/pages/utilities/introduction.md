@@ -38,10 +38,10 @@ A sample usage might look like as follows:
 @import '~@porsche-design-system/utilities/scss';
 
 #app {
-  color: $p-color-theme-light-default;
+  color: $p-color-default;
   
-  @include p-breakpoint('s') {
-    color: $p-color-theme-light-brand;
+  @include p-media-query('s') {
+    color: $p-color-brand;
   }
 }
 ```
