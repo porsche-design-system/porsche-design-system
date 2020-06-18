@@ -3,32 +3,46 @@
  */
 
 // Porsche brand colors
-$p-color-theme-light-brand: #d5001c;
+$p-color-brand: #d5001c;
+$p-color-theme-light-brand: $p-color-brand;
 
 // Default colors
-$p-color-theme-light-default: #000;
+$p-color-default: #000;
+$p-color-theme-light-default: $p-color-default;
 
 // Surface colors
-$p-color-theme-light-surface: #f2f2f2;
+$p-color-surface: #f2f2f2;
+$p-color-theme-light-surface: $p-color-surface;
 
 // Background colors
-$p-color-theme-light-background: #fff;
+$p-color-background: #fff;
+$p-color-theme-light-background: $p-color-background;
 
 // Neutral colors
-$p-color-theme-light-neutral-contrast-high: #323639;
-$p-color-theme-light-neutral-contrast-medium: #626669;
-$p-color-theme-light-neutral-contrast-low: #c9cacb;
+$p-color-neutral-contrast-high: #323639;
+$p-color-theme-light-neutral-contrast-high: $p-color-neutral-contrast-high;
+$p-color-neutral-contrast-medium: #626669;
+$p-color-theme-light-neutral-contrast-medium: $p-color-neutral-contrast-medium;
+$p-color-neutral-contrast-low: #c9cacb;
+$p-color-theme-light-neutral-contrast-low: $p-color-neutral-contrast-low;
 
 // Notification colors
-$p-color-theme-light-notification-success: #018a16;
-$p-color-theme-light-notification-warning: #ff9b00;
-$p-color-theme-light-notification-error: #e00000;
+$p-color-notification-success: #018a16;
+$p-color-theme-light-notification-success: $p-color-notification-success;
+$p-color-notification-warning: #ff9b00;
+$p-color-theme-light-notification-warning: $p-color-notification-success;
+$p-color-notification-error: #e00000;
+$p-color-theme-light-notification-error: $p-color-notification-success;
 
 // State colors
-$p-color-theme-light-state-hover: #d5001c;
-$p-color-theme-light-state-active: #d5001c;
-$p-color-theme-light-state-focus: #00d5b9;
-$p-color-theme-light-state-disabled: #96989a;
+$p-color-state-hover: #d5001c;
+$p-color-theme-light-state-hover: $p-color-state-hover;
+$p-color-state-active: #d5001c;
+$p-color-theme-light-state-active: $p-color-state-active;
+$p-color-state-focus: #00d5b9;
+$p-color-theme-light-state-focus: $p-color-state-focus;
+$p-color-state-disabled: #96989a;
+$p-color-theme-light-state-disabled: $p-color-state-disabled;
 
 /**
  * Theme dark
