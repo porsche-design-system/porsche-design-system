@@ -243,25 +243,29 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Utils (SCSS)
+## Release management - Porsche Design System Utilities
 
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
 1. Run `git pull origin {current master- or v-branch}`
 
-### Design System SCSS Utils
-1. Switch to __packages/scss-utils directory__
+### Porsche Design System Utilities
+1. Switch to __project root directory__
+1. Run `./docker.sh run-build --utilities`
+1. Run `./docker.sh run-test-unit --utilities`
+1. Run `./docker.sh run-test-vrt --utilities`
+1. Switch to __packages/utilities/projects/utilities directory__
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update version number of `@porsche-design-system/utilities` in the mono repo to corresponding version number
+1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
 
 ### Commit
-1. Create a commit with following message structure `Release Porsche Design System SCSS Utils v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push local commit to release branch `git push origin {current master- or v-branch}`
 
 ### Publish
-1. Switch to __packages/scss-utils directory__
+1. Switch to __packages/utilities/projects/utilities directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System SCSS Utils artifact to the Artifactory repository.
 
 ### Communicate
