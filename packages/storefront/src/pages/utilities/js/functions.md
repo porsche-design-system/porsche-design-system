@@ -2,19 +2,23 @@
 
 ## Breakpoints
 
-We provide a type `breakpoints`: 
+We provide a `breakpoint` object: 
 
-`xxs | xs | s | m | l | xl | xxl` 
+`xxs: 0,
+ xs: 480,
+ s: 760,
+ m: 1000,
+ l: 1300,
+ xl: 1760,
+ xxl: 1920` 
 
-and a `breakpointValue` object, which matches all breakpoint types with a value.
-
-The usage is explained in the following examples (where 'v' is the breakpoint value, e.g. breakpointValue.xxs)
+The usage is explained in the following examples (where 'v' is the breakpoint, e.g. breakpoint.xxs)
 
 #### Example
 
 ```
 
-if (window.matchMedia(`(max-width: ${breakpointValue.v}px)`).matches) {
+if (window.matchMedia(`(max-width: ${breakpoint.v}px)`).matches) {
       /* The viewport is less than, or equal to the breakpointValue wide */
     } else {
       /* The viewport is greater than breakpointValue wide */
