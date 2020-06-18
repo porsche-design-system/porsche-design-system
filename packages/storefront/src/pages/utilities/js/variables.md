@@ -140,19 +140,3 @@ Possible usage (where 'v' is the font size value):
 ```
 font.size[v];
 ```
-
----
-
-## Animation
-
-### Hover
-
-Given variables are:
-
-```
-animation.hover.duration
-animation.hover.bezier
-```
-
-These result in predefined `duration: '0.24s'` and `bezier: 'ease'` 
-
