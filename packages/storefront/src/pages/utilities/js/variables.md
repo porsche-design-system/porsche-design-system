@@ -140,3 +140,12 @@ Possible usage (where 'v' is the font size value):
 ```
 font.size[v];
 ```
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  
+  @Component
+  export default class PlaygroundColor extends Vue {
+    public theme: 'light' | 'dark' = 'light';
+  }
+</script>
