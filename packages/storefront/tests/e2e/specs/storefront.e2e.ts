@@ -6,14 +6,15 @@ import { paramCase } from 'change-case';
 
 describe('storefront', () => {
   let browserPage: Page;
+  const logPages: string[] = [];
+  const logTabs: string[] = [];
 
   beforeEach(async () => browserPage = await getBrowser().newPage());
   afterEach(async () => await browserPage.close());
 
   const isLinkActive = async (element: ElementHandle | null): Promise<boolean> => element ? await (await element.getProperty('active')).jsonValue() as boolean : false;
-  const getInnerText = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('textContent')).jsonValue() as string : '';
   const getClassNames = async (element: ElementHandle | null): Promise<string> => element ? await (await element.getProperty('className')).jsonValue() as string : '';
-  const getMainTitle = async (page: Page) => getInnerText(await page.$('#app main h1'));
+  const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
 
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     for (const [page, tabs] of Object.entries(pages)) {
@@ -51,10 +52,19 @@ describe('storefront', () => {
 
             (expect(await getClassNames(tabElement)) as any).withContext(`should have tab active after click`).toContain('router-link-active');
             (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for tab view`).toBe(page);
+
+            logTabs.push(`${category} > ${page} > ${tab}`);
           }
+
+          logPages.push(`${category} > ${page}`);
         });
 
       })(category, page);
     }
   }
+
+  it('log', async () => {
+    console.log('Visited Pages', logPages);
+    console.log('Visited Tabs', logTabs);
+  });
 });
