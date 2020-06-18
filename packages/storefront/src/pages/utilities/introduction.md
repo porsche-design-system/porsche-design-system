@@ -1,15 +1,14 @@
 # Introduction
 
-## Porsche Design System utilities
+## Porsche Design System - Utilities
 
-This package contains helpful SCSS functions, mixins and variables. Additionally we provide all scss content as JavaScript variables, 
-functions and helpers.
-
-**Note!** The JavaScript utilities are especially made for styled-components which allow the usage of media-queries. 
-Therefore the usage examples are made for styled-components. You can still use all variables, helper and functions without media-queries to custom style components tho.  
+This package contains helpful SCSS functions, mixins and variables.
+Additionally, we provide JavaScript variables, functions and helpers.
 
 ### Install
-It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/utilities` NPM package. If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
+It's necessary to have access to the Porsche Design System private NPM registry to be able to install the `@porsche-design-system/utilities` NPM package. 
+If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
+
 ```
 // install with npm:
 npm install @porsche-design-system/utilities --save-dev
@@ -20,17 +19,17 @@ yarn add @porsche-design-system/utilities --dev
 
 ### Usage SCSS
 
-Assuming a proper SCSS compiler is setup within your project: Simply import the following file 
-at the place where you want to make use of the Porsche Design System SCSS utils.
+Assuming a proper SCSS compiler is set up within your project: Simply import the following file 
+at the place where you want to make use of the **@porsche-design-system/utilities**.
 
 ```
 @import '~@porsche-design-system/utilities/scss';
 ```
 
-If your SCSS compiler does not support '~' (tilde)) imports, you can of course also import it via a path from your node_modules.
+If your SCSS compiler does not support '~' (tilde) imports, you can also import it trough a relative path from your **node_modules**.
 
 ```
-@import 'node_modules/@porsche-design-system/utilities/scss';
+@import 'path-to-your-node_modules/@porsche-design-system/utilities/scss';
 ```
 
 A sample usage might look like as follows:
@@ -47,7 +46,9 @@ A sample usage might look like as follows:
 }
 ```
 
-### Usage JavaScript variables
+### Usage JavaScript
+
+**Note!** The JavaScript utilities are especially made for [styled-components](https://styled-components.com) which allows e.g. the usage of [media queries](https://developer.mozilla.org/de/docs/Web/CSS/Media_Queries/Using_media_queries) in JavaScript. 
 
 ```
 import { headline, color, font } from '@porsche-design-system/utilities';
@@ -63,11 +64,10 @@ const StyledP = styled.p`
 
 render (
     <StyledHeadline>
-        Iam Styled
+        I am styled
     </StyledHeadline>
     <StyledP>
-        Iam Styled
+        I am styled
     </StyledP>
 )
-
 ```
