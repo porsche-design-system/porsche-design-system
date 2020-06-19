@@ -1,4 +1,4 @@
-# Introduction
+# Forms
 
 To help you better understand how to use our form guidelines we provide you with basic form patterns as pre-designed Sketch templates as well as the corresponding coded examples:
 
