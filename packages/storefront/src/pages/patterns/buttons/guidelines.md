@@ -60,7 +60,10 @@ Buttons **on standard pages or in on-page forms** are to be placed **left-justif
 Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) are to be placed **right-justified**, following the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-shaped-pattern-for-reading-web-content-ce1135f92f1c), 2017). Here, users end on the bottom right where they are provided an interaction leading to another / the next step. Also, as this is also common practice in Windows and MacOS, users should be familiar with that ([UX Collective](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019)
 
 <p-text color="brand">📷 [Ansicht Z-shaped pattern auf Porsche Page]</p-text>
-<p-text color="brand">📷 [Beispiele Buttons right-aligned / Beispiel f. Modal Dialog ergänzen]</p-text>
+
+![Description](../../../assets/patterns-buttons-placement-right.png)
+
+
 
 ### Alignment on viewport XS (max. width 759 px)
 
@@ -172,7 +175,7 @@ See horizontal alignment: Buttons on viewport XS or in screen areas with a maxim
 
 No matter if Buttons are placed side by side or on top of each other, you should keep a minimum spacing of 16 px inbetween.
 
-<p-text color="brand">📷 [BEISPIELE]</p-text>
+![Description](../../../assets/patterns-buttons-groups-spacing.png)
 
 ---
 
