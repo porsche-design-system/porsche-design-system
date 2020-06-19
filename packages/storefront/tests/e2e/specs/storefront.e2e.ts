@@ -22,7 +22,7 @@ describe('storefront', () => {
 
         it(`should navigate to "${category} > ${page}"`, async () => {
 
-          await browserPage.goto(`${options.baseURL}`, {waitUntil: 'domcontentloaded'});
+          await browserPage.goto(`${options.baseURL}`, {waitUntil: 'load'});
 
           const [buttonElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`);
           const [linkElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
