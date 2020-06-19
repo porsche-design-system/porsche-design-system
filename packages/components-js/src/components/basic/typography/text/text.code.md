@@ -1,4 +1,6 @@
-# Text
+# Typography
+
+## Text
 
 **Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
 

@@ -42,6 +42,7 @@ Sometimes it’s helpful for the user to get further information on the input. T
 The Select component is available in the following states:
 
 * default
+* active
 * disabled
 * hover
 * focus
@@ -104,5 +105,5 @@ Never use images or symbols within a selection list.
 
 ## Related Components
 
-* [Checkbox](#/components/form/checkbox)
-* [Radio Button](#/components/form/radio-button)
+* [Checkbox](#/components/checkbox)
+* [Radio Button](#/components/radio-button)
