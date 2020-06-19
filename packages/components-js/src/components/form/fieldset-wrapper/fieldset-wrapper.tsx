@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Host, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
 import {
   prefix
@@ -11,8 +11,6 @@ import {
 })
 export class FieldsetWrapper {
 
-  @Element() public host!: HTMLElement;
-
   /** The label text. */
   @Prop() public label?: string = '';
 
@@ -24,9 +22,11 @@ export class FieldsetWrapper {
     return (
       <Host>
         <fieldset class={fieldsetClasses}>
+          {this.label &&
           <legend class={labelClasses}>
             {this.label}
           </legend>
+          }
           <slot/>
         </fieldset>
       </Host>

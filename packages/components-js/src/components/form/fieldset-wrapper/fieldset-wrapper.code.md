@@ -4,7 +4,7 @@ The **Fieldset Wrapper** is a grouping component for wrapping contextual associa
 His visible part is an HTML *legend* element, which can be seen like a headline for describing the form block.
 You can see some usage examples on our [form patterns section](#/patterns/forms#resources).
 
-## Basic example (with form element context)
+## Basic example with label
 
 <Playground>
   <template>
@@ -15,3 +15,18 @@ You can see some usage examples on our [form patterns section](#/patterns/forms#
     </p-fieldset-wrapper>
   </template>
 </Playground>
+
+--- 
+
+## Without label
+
+<Playground>
+  <template>
+    <p-fieldset-wrapper>
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name"/>
+      </p-text-field-wrapper>
+    </p-fieldset-wrapper>
+  </template>
+</Playground>
+
