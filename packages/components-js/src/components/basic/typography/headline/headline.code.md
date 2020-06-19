@@ -1,4 +1,6 @@
-# Headline
+# Typography
+
+## Headline
 
 **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
 
