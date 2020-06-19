@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationDir": "./dist/js/types",
+    "outDir": "./dist/js/module"
+  }
+}

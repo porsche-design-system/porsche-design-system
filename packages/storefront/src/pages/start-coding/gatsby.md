@@ -1,4 +1,5 @@
-# Gatsby - Sample integration
+# Gatsby
+## Sample integration
 
 You can find the repository of the Gatsby example project here: [Sample integration Gatsby](https://github.com/porscheui/sample-integration-gatsby)
 
@@ -51,7 +52,7 @@ module.exports = {
 }
 ```
 * To get full Typescript support, change the .js files to .ts
-* Follow the instructions at [Introduction](https://designsystem.porsche.com/v1/#/start-coding/introduction) to get the required npm package
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Install the Porsche Design System  
 ``` 
 // install with yarn:
