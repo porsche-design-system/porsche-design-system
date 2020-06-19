@@ -34,7 +34,7 @@ services:
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
-      - scss-utils-node-modules:/opt/porsche-design-system-app/packages/scss-utils/node_modules
+      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utils-node-modules:/opt/porsche-design-system-app/packages/utils/node_modules
   design-system-deploy:
     build: ./docker/node
@@ -60,7 +60,7 @@ services:
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
-      - scss-utils-node-modules:/opt/porsche-design-system-volumes/scss-utils-node_modules
+      - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utils-node-modules:/opt/porsche-design-system-volumes/utils-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
@@ -74,5 +74,5 @@ volumes:
   fonts-node-modules:
   icons-node-modules:
   marque-node-modules:
-  scss-utils-node-modules:
+  utilities-node-modules:
   utils-node-modules:

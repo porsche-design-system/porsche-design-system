@@ -1,4 +1,4 @@
-# Blur on Focus
+# Blur On Focus
 
 We don't want the user to get distracted by the focus indication of elements if they click onto it, but keep
 the focus indication for keyboard navigation.
