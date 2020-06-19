@@ -4,7 +4,8 @@ import {
   PGrid as Grid,
   PGridItem as GridItem,
   PHeadline as Headline,
-  PDivider as Divider
+  PDivider as Divider,
+  PText as Text
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -126,6 +127,7 @@ export function Action() {
           <div className="playground light spacing-inline">
             <ButtonPure weight={'thin'}>Thin</ButtonPure>
             <ButtonPure weight={'regular'}>Regular</ButtonPure>
+            <ButtonPure weight={'semibold'}>Semibold</ButtonPure>
             <ButtonPure weight={'bold'}>Bold</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
@@ -133,6 +135,12 @@ export function Action() {
           </div>
           <div className="playground light spacing-inline">
             <ButtonPure style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
+          </div>
+          <div className="playground light spacing-inline">
+            <ButtonPure weight={'semibold'} size={'large'}>
+              Some Label
+            <Text color={'inherit'}>Subline</Text>
+            </ButtonPure>
           </div>
           <Divider/>
         </GridItem>
@@ -154,6 +162,7 @@ export function Action() {
           <div className="playground dark spacing-inline">
             <ButtonPure weight={'thin'} theme={'dark'}>Thin</ButtonPure>
             <ButtonPure weight={'regular'} theme={'dark'}>Regular</ButtonPure>
+            <ButtonPure weight={'semibold'} theme={'dark'}>Semibold</ButtonPure>
             <ButtonPure weight={'bold'} theme={'dark'}>Bold</ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
@@ -162,6 +171,12 @@ export function Action() {
           <div className="playground dark spacing-inline">
             <ButtonPure theme={'dark'} style={{width: '240px'}}>Lorem ipsum dolor sit amet, consetetur
               sadipscing</ButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <ButtonPure theme={'dark'} weight={'semibold'} size={'large'}>
+              Some Label
+              <Text color={'inherit'}>Subline</Text>
+            </ButtonPure>
           </div>
           <Divider/>
         </GridItem>
