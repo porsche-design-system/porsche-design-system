@@ -233,9 +233,51 @@ jobs:
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
+  utilities:
+    name: 'Utilities'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Get yarn cache'
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 'Cache node_modules'
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --utilities
+      - name: 'Unit Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-unit
+          args: --utilities
+      - name: 'VRT Test'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-test-vrt
+          args: --utilities
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: utilities-vrt-regression
+          path: ./packages/utilities/tests/vrt/results
   deployment:
     name: 'Deployment'
-    needs: [components-js, components-angular, components-react, storefront]
+    needs: [components-js, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -251,9 +293,3 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy
-#      - name: 'Slack'
-#        uses: ./docker/node/
-#        env:
-#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-#        with:
-#          entrypoint: run-slack

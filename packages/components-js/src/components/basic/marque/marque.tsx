@@ -15,7 +15,8 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    const manifestPath: {[size: string]: { [resolution: string]: string }} = MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
+    const manifestPath: { [size: string]: { [resolution: string]: string } } =
+      MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
     const buildSrcSet = (size: 'small' | 'medium'): string =>
       Object.entries(manifestPath[size])
@@ -25,9 +26,9 @@ export class Marque {
     const marqueClasses = cx(prefix('marque'));
     return (
       <picture class={marqueClasses}>
-        <source srcSet={buildSrcSet('medium')} media='(min-width: 1300px)' />
+        <source srcSet={buildSrcSet('medium')} media="(min-width: 1300px)" />
         <source srcSet={buildSrcSet('small')} />
-        <img src={`${CDN_BASE_URL}/${manifestPath.medium['2x']}`} alt='Porsche' />
+        <img src={`${CDN_BASE_URL}/${manifestPath.medium['2x']}`} alt="Porsche" />
       </picture>
     );
   }
