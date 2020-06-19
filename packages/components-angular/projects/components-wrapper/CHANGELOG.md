@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `Text` new `weight` property `semibold`
+- `p-button-pure` label with subline pattern
+- `p-link-pure` label with subline pattern
+
 ### Changed
 - `Select Wrapper` is now ready for the catwalk. It is dressed now with a custom drop down list box and gets naked by default on touch devices. 
 
