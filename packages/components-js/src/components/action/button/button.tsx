@@ -64,23 +64,19 @@ export class Button {
         aria-busy={this.loading && 'true'}
       >
         {this.loading ? (
-          <p-spinner
-            class={iconClasses}
-            size='inherit'
-            theme={this.variant === 'tertiary' && this.theme === 'light' ? 'light' : 'dark'}
-          />
+          <p-spinner class={iconClasses} size="inherit" theme={(this.variant === 'tertiary' && this.theme) || 'dark'} />
         ) : (
           <p-icon
             class={iconClasses}
-            size='inherit'
+            size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color='inherit'
-            aria-hidden='true'
+            color="inherit"
+            aria-hidden="true"
           />
         )}
-        <p-text class={labelClasses} tag='span' color='inherit'>
-          <slot/>
+        <p-text class={labelClasses} tag="span" color="inherit">
+          <slot />
         </p-text>
       </button>
     );
