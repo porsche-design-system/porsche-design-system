@@ -1,28 +1,13 @@
 <template>
   <nav>
-    <ul v-if="config.pages" class="list">
-      <li v-for="(pages, category, index) in config.pages" :key="index">
-        <p-headline variant="headline-4" tag="h2">{{ category }}</p-headline>
-        <ul>
-          <li v-for="(v, page, index) in pages" :key="index">
-            <router-link :to="`/${encodeUrl(category)}/${encodeUrl(page)}`"
+    <ul class="list">
+      <li v-for="(pages, category, index) in config" :key="index">
+        <p-button-pure size="small" weight="bold" :icon="isActive(category) ? 'minus' : 'plus'" @click="toggleActive(category)">{{ category }}</p-button-pure>
+        <ul v-show="isActive(category)">
+          <li v-for="(tabs, page, index) in pages" :key="index">
+            <router-link :to="`/${paramCase(category)}/${paramCase(page)}`"
                          v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
-            </router-link>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <p-divider v-if="config.stories" class="divider-spacing-small"></p-divider>
-    <p-headline v-if="config.stories" variant="headline-3" tag="h2">Components</p-headline>
-    <ul v-if="config.stories" class="list">
-      <li v-for="(stories, category, index) in config.stories" :key="index">
-        <p-headline variant="headline-4" tag="h3">{{ category }}</p-headline>
-        <ul>
-          <li v-for="(v, story, index) in stories" :key="index">
-            <router-link :to="`/components/${encodeUrl(category)}/${encodeUrl(story)}`"
-                         v-slot="{ href, navigate, isActive }">
-              <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ story }}</p-link-pure>
             </router-link>
           </li>
         </ul>
@@ -35,21 +20,33 @@
   import { Component, Vue } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/interface';
   import { config as storefrontConfig } from '@/../storefront.config';
-  import { encodeUrl } from '@/services/utils';
+  import { paramCase } from 'change-case';
 
   @Component
   export default class Sidebar extends Vue {
-    public encodeUrl = encodeUrl;
+    public config: StorefrontConfig = storefrontConfig;
+    public paramCase = paramCase;
+    public accordion: {[id: string]: boolean} = {};
 
-    get config(): StorefrontConfig {
-      return storefrontConfig;
+    private created(): void {
+      for (const category of Object.keys(this.config)) {
+        this.accordion[category] = false;
+      }
+    }
+
+    toggleActive(id: string): void {
+      this.accordion[id] = !this.accordion[id];
+      this.accordion = Object.assign({}, this.accordion);
+    }
+
+    isActive(id: string): boolean {
+      return this.accordion[id];
     }
   }
-
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
 
   ul,
   li {
@@ -62,11 +59,15 @@
     margin-top: $p-spacing-24;
 
     &:last-child {
-      margin-bottom: $p-spacing-24;
+      margin-bottom: $p-spacing-16;
     }
 
     > li:not(:first-child) {
-      margin-top: $p-spacing-24;
+      margin-top: $p-spacing-16;
+    }
+
+    ul {
+      margin-top: $p-spacing-8;
     }
   }
 

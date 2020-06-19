@@ -1,7 +1,7 @@
 import 'jasmine';
-import {VisualRegressionTester, VisualRegressionTestOptions} from '@porsche-design-system/visual-regression-tester';
+import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
 import * as puppeteer from 'puppeteer';
-import {Browser} from 'puppeteer';
+import { Browser } from 'puppeteer';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
@@ -30,10 +30,10 @@ afterAll(async () => {
   }
 });
 
-export async function getVisualRegressionTester(): Promise<VisualRegressionTester> {
+export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
     visualRegressionTester = new VisualRegressionTester(browser, testOptions);
   }
 
   return visualRegressionTester;
-}
+};

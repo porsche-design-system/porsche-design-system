@@ -17,5 +17,5 @@
 
 ### Used by
 
- - [p-button](#/components/action/button)
- - [p-button-pure](#/components/action/button-pure)
+ - [p-button](#/components/button)
+ - [p-button-pure](#/components/button-pure)

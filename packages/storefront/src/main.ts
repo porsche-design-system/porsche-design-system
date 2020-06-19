@@ -8,8 +8,8 @@ import ColorBadge from '@/components/ColorBadge.vue';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
- * from https://designsystem.porsche.com/latest/#/components/basic/marque#code
- * to https://designsystem.porsche.com/latest/#/components/basic/marque%23code
+ * from https://designsystem.porsche.com/latest/#/components/marque#code
+ * to https://designsystem.porsche.com/latest/#/components/marque%23code
  * which causes 404)
  */
 window.location.hash = window.location.hash.replace('%23', '#');
