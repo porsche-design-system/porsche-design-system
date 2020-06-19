@@ -25,7 +25,7 @@ The icons themselves are built upon a base grid structure and guidelines for siz
 
 The icon component is by default only supposed to be displayed in monochrome colors (Dark Theme: White, Light Theme: Black).
 
-For interactive icons you should use the [Button Pure](#/components/action/button-pure) that comes with a dedicated click/touch area and with different states (disabled etc.).
+For interactive icons you should use the [Button Pure](#/components/button-pure) that comes with a dedicated click/touch area and with different states (disabled etc.).
 
 ---
 
