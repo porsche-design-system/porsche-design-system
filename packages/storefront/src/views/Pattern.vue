@@ -5,17 +5,18 @@
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
   import { Component as ComponentType } from "vue/types/options";
+  import { paramCase } from 'change-case';
 
   @Component
   export default class Patterns extends Vue {
     public component: ComponentType | null = null;
 
     private get category(): string {
-      return this.$route.params.category.toLowerCase();
+      return paramCase(this.$route.params.category);
     }
 
     private get pattern(): string {
-      return this.$route.params.pattern.toLowerCase();
+      return paramCase(this.$route.params.pattern);
     }
 
     @Watch('$route')
@@ -28,17 +29,18 @@
     }
 
     private async loadComponent(): Promise<void> {
+      this.component = null;
+      await this.$store.dispatch('toggleLoadingAsync', true);
       try {
-        await this.$store.dispatch('toggleLoadingAsync', true);
         this.component = (await (() => import(`@/pages/patterns/${this.category}/${this.pattern}.vue`))()).default;
-        await this.$store.dispatch('toggleLoadingAsync', false);
       } catch (e) {
-        this.redirect();
+        await this.redirect();
       }
+      await this.$store.dispatch('toggleLoadingAsync', false);
     }
 
-    private redirect(): void {
-      this.$router.replace({name: `404`});
+    private async redirect(): Promise<void> {
+      await this.$router.replace({name: `404`});
     }
   }
 </script>

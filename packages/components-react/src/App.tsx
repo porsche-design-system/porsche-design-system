@@ -1,33 +1,27 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { PLinkPure as LinkPure, PText as Text, PDivider as Divider } from '@porsche-design-system/components-react';
-import { Basic } from "./pages/Basic";
-import { Action } from "./pages/Action";
-import { Content } from "./pages/Content";
-import { Form } from "./pages/Form";
-import { Feedback } from "./pages/Feedback";
-import { Icons } from "./pages/Icons";
-import { Layout } from "./pages/Layout";
-import { Navigation } from "./pages/Navigation";
+import { Basic } from './pages/Basic';
+import { Action } from './pages/Action';
+import { Content } from './pages/Content';
+import { Form } from './pages/Form';
+import { Feedback } from './pages/Feedback';
+import { Icons } from './pages/Icons';
+import { Layout } from './pages/Layout';
+import { Navigation } from './pages/Navigation';
 import './App.css';
 
 const App: React.FC = () => {
-
   return (
     <Router>
       <div id="app">
         <Text>
-          <b id="human-readable-browser-name"/>
-          <br/>
-          <span id="system-log"/>
+          <b id="human-readable-browser-name" />
+          <br />
+          <span id="system-log" />
         </Text>
-        <Divider/>
-        <Link to="/basic" className={'removeLinkStyle'} >
+        <Divider />
+        <Link to="/basic" className={'removeLinkStyle'}>
           <LinkPure>Basic</LinkPure>
         </Link>
         <Link to="/action" className={'removeLinkStyle'}>
@@ -51,31 +45,31 @@ const App: React.FC = () => {
         <Link to="/navigation" className={'removeLinkStyle'}>
           <LinkPure>Navigation</LinkPure>
         </Link>
-        <Divider/>
+        <Divider />
         <Switch>
           <Route path="/basic">
-            <Basic/>
+            <Basic />
           </Route>
           <Route path="/action">
-            <Action/>
+            <Action />
           </Route>
           <Route path="/content">
-            <Content/>
+            <Content />
           </Route>
           <Route path="/form">
-            <Form/>
+            <Form />
           </Route>
           <Route path="/feedback">
-            <Feedback/>
+            <Feedback />
           </Route>
           <Route path="/icon">
-            <Icons/>
+            <Icons />
           </Route>
           <Route path="/layout">
-            <Layout/>
+            <Layout />
           </Route>
           <Route path="/navigation">
-            <Navigation/>
+            <Navigation />
           </Route>
         </Switch>
       </div>
