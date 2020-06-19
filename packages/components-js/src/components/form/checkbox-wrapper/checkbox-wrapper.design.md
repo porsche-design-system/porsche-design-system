@@ -79,8 +79,8 @@ Preferably set checkboxes vertically left-aligned, as this supports scannability
 ---
 
 ## Related Components
-* [Radio Button](#/components/form/radio-button)
-* [Select](#/components/form/select)
+* [Radio Button](#/components/radio-button)
+* [Select](#/components/select)
 
 
 
