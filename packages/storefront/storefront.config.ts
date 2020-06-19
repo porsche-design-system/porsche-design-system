@@ -103,7 +103,7 @@ export const config: StorefrontConfig = {
       ]
     },
     Patterns: {
-      'Buttons & Links': {
+      'Buttons': {
         Guidelines: [
           // @ts-ignore
           () => import(`@/pages/patterns/buttons/guidelines.md`)
