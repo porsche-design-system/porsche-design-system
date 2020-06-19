@@ -11,9 +11,13 @@ describe('Home', () => {
 
   it('should have no visual regression', async () => {
     expect(
-      await vrt.test('home', async () => {
-        await vrt.goTo('/');
-      }, '', ['.sidebar .header p-text[size="x-small"]'])
+      await vrt.test(
+        'home',
+        async () => {
+          await vrt.goTo('/');
+        },
+        { maskSelectors: ['.sidebar .header p-text[size="x-small"]'] }
+      )
     ).toBeFalsy();
   });
 });
