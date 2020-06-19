@@ -108,6 +108,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'">Thin</p-link-pure>
           <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'">Regular</p-link-pure>
+          <p-link-pure [weight]="'semibold'" [href]="'https://designsystem.porsche.com'">Semibold</p-link-pure>
           <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'">Bold</p-link-pure>
         </div>
         <div class="playground light spacing-inline">
@@ -120,6 +121,12 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-link-pure [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet,
             consetetur sadipscing
+          </p-link-pure>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link-pure [weight]="'semibold'" [size]="'large'">
+            Some Label
+            <p-text [color]="'inherit'">Subline</p-text>
           </p-link-pure>
         </div>
         <p-divider></p-divider>
@@ -144,6 +151,8 @@ import { Component } from '@angular/core';
           </p-link-pure>
           <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Regular
           </p-link-pure>
+          <p-link-pure [weight]="'semibold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Semibold
+          </p-link-pure>
           <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Bold
           </p-link-pure>
         </div>
@@ -159,6 +168,12 @@ import { Component } from '@angular/core';
         <div class="playground dark spacing-inline">
           <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum
             dolor sit amet, consetetur sadipscing
+          </p-link-pure>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" [weight]="'semibold'" [size]="'large'">
+            Some Label
+            <p-text [color]="'inherit'">Subline</p-text>
           </p-link-pure>
         </div>
         <p-divider></p-divider>
