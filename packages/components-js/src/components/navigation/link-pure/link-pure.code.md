@@ -223,6 +223,19 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   </template>
 </Playground>
 
+---
+
+## Link Pure with subline
+
+With `weight="semibold"` and `size="large"` you can add `<p-text/>` into the component to set as subline. Set the `color` property to `inherit` to get the red hover color on both elements.
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-link-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit">Subline</p-text></p-link-pure>
+  </template>
+</Playground>
+
+
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   

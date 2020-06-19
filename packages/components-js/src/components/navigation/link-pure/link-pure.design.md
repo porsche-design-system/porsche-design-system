@@ -32,9 +32,9 @@ This should be the variant of your choice whenever possible, as icons should pre
 
 When it's enough to indicate an interaction with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
-### Icon, Text and Subline
+### Icon, Text and Subline  
 
-!!! CODE EXAMPLE !!!
+<p-link-pure href="https://designsystem.porsche.com" size="large" weight="semibold"> Some label <p-text color="inherit">Subline</p-text> </p-link-pure>
 
 This should be the variant of your choice if the Link Pure must be supplemented by a subline. 
 However, we recommend that you only use this variant in cases where the user requires additional information. 

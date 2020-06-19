@@ -153,6 +153,18 @@ With setting the `tabbable` property to `false` you can remove the button from t
   </template>
 </Playground>
 
+---
+
+## Button with subline
+
+With `weight="semibold"` and `size="large"` you can add `<p-text/>` into the component to set as subline. Set the `color` property to `inherit` to get the red hover color on both elements.
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-button-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit">Subline</p-text></p-button-pure>
+  </template>
+</Playground>
+
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   
