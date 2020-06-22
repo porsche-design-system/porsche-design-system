@@ -13,8 +13,8 @@ export const breakpoint: { [key in BreakPoint]: number } = {
 type BreakPointOrNumber = BreakPoint | number;
 
 export const mediaQuery = (minBreakpoint: BreakPointOrNumber, maxBreakpoint?: BreakPointOrNumber): string =>
-  `@media (min-width: ${(typeof minBreakpoint !== 'number' && breakpoint[minBreakpoint]) ?? minBreakpoint}px)${
+  `@media (min-width: ${(typeof minBreakpoint !== 'number' && breakpoint[minBreakpoint]) || minBreakpoint}px)${
     maxBreakpoint
-      ? `and (max-width: ${(typeof maxBreakpoint !== 'number' && breakpoint[maxBreakpoint]) ?? maxBreakpoint}px)`
+      ? ` and (max-width: ${(typeof maxBreakpoint !== 'number' && breakpoint[maxBreakpoint]) || maxBreakpoint}px)`
       : ''
   }`;
