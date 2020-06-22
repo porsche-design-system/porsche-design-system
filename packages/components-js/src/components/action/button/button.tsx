@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
@@ -42,7 +42,11 @@ export class Button {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+    improveButtonHandlingForCustomElement(
+      this.element,
+      () => this.type,
+      () => this.isDisabled()
+    );
   }
 
   public render(): JSX.Element {
@@ -80,6 +84,14 @@ export class Button {
         </p-text>
       </button>
     );
+  }
+
+  // this stops click events when button is disabled
+  @Listen('click', { capture: true })
+  public handleOnClick(e) {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
   }
 
   private isDisabled(): boolean {
