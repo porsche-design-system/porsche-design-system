@@ -247,23 +247,26 @@ If you need additional information on your link, we recommend following pattern.
 Use `weight="semibold" size="large"` and add `<p-text size="medium">` into the component, to set it as subline. The `color` property has to be `inherit` to get the hover state of the parent element.
 
 <Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option selected>small</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+    </select>
+  </template>
   <template v-slot={theme}>
-    <p-link-pure size="large" weight="semibold" :theme="theme" href="https://www.porsche.com">
+    <p-link-pure :size="size" weight="semibold" :theme="theme" href="https://www.porsche.com">
        Some label
        <p slot="subline">Some Subline</p>
     </p-link-pure>
-    <p-link-pure size="large" weight="semibold" :theme="theme">
+    <p-link-pure :size="size" weight="semibold" :theme="theme">
        <a href="https://www.porsche.com">
          Some label
        </a>
        <p slot="subline">Some Subline</p>
     </p-link-pure>
-    <a href="https://www.porsche.com">
-      <p-link-pure size="large" weight="semibold" :theme="theme">
-        Some label
-        <p slot="subline">Some Subline</p>
-      </p-link-pure>
-    </a>
   </template>
 </Playground>
 
