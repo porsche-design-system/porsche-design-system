@@ -15,7 +15,9 @@ export const remToPx = (rem: string): string => {
   const [, fontSizeValue, fontSizeUnit] = rem?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit !== 'rem' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 1.5rem');
-  } else return `${parseFloat(`${fontSizeValue}`) * remBase}px`;
+  } else {
+    return `${parseFloat(`${fontSizeValue}`) * remBase}px`;
+  }
 };
 
 export const typeScale = (fontSize: string): { fontSize: string; lineHeight: number } => {
