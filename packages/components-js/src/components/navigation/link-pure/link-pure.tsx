@@ -17,7 +17,7 @@ import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandli
   shadow: true
 })
 export class LinkPure {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -56,14 +56,41 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public componentDidLoad(): void {
-    const tagName= this.element.tagName.toLowerCase();
+    const tagName= this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
-    }`;
+    }
 
-    insertSlottedStyles(this.element, style);
-    improveFocusHandlingForCustomElement(this.element);
+    /* only for IE11/Edge */
+    ${tagName} a {
+      text-decoration: none !important;
+    }
+    ${tagName} a:focus {
+      outline: none !important;
+    }
+
+    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
+    ${tagName} a::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      display: block !important;
+      outline: transparent none !important;
+      transition: outline-color 0.24s ease !important;
+    }
+
+    ${tagName} a:focus::before {
+      outline-offset: 1px !important;
+      outline: #00d5b9 solid 2px !important;
+    }
+    `;
+
+    insertSlottedStyles(this.host, style);
+    improveFocusHandlingForCustomElement(this.host);
     transitionListener(this.linkTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.linkTag);
       this.iconTag.style.width = `${size}em`;
