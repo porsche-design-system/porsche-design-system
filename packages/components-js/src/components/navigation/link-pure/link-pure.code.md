@@ -89,15 +89,14 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ---
 
-## Link wrapped within an anchor tag
+## Framework routing (anchor nesting)
 
-In case the link-pure component must be wrapped within an anchor tag please take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <a href="https://www.porsche.com" class="example-link">
-      <p-link-pure :theme="theme">Some label</p-link-pure>
-    </a>
+    <p-link-pure :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link-pure>
+    <a href="https://www.porsche.com" class="example-link"><p-link-pure :theme="theme">Some label</p-link-pure></a>
   </template>
 </Playground>
 
@@ -127,8 +126,15 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ### Angular
 
-If you wrap `<p-link-pure>` with an `<a>`, it's important to reset `text-decoration` and `outline`, since the inner
-component has no control over the elements that are around it.
+``` 
+# template.html
+<p-link-pure [active]="rla.isActive">
+  <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive"></a>
+</p-link-pure>
+
+```
+
+If you wrap it with an `<a>`, it's important to reset `text-decoration` and `outline`, since the inner component has no control over the elements that are around it.
 
 ``` 
 # style.css
@@ -146,9 +152,18 @@ component has no control over the elements that are around it.
 
 ### React
 
-You can wrap the `<PLinkPure>` component with the `<Link>` component of react router. If you do so, it's important to reset `text-decoration` and `outline`, since the inner
-component has no control over the elements that are around it.  
 Use the spread operator to call props of **PLinkPure**.
+
+``` 
+# Component.tsx
+<PLinkPure {...{active: true}}>
+  <Link to="/path/to/heaven">Some label</Link>
+</PLinkPure>
+
+```
+
+If you wrap it with the `<Link>` component of React Router, it's important to reset `text-decoration` and `outline`, since the inner
+component has no control over the elements that are around it.  
 
 ``` 
 # Style.css
