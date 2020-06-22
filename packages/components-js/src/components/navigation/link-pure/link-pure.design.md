@@ -34,7 +34,7 @@ When it's enough to indicate an interaction with an icon only, the text label ca
 
 ### Icon, Text and Subline  
 
-<p-link-pure href="https://designsystem.porsche.com" size="large" weight="semibold"> Some label <p-text color="inherit">Subline</p-text> </p-link-pure>
+<p-link-pure href="https://designsystem.porsche.com" size="large" weight="semibold">Link Pure label<p-text color="inherit" size="medium">Subline text</p-text> </p-link-pure>
 
 This should be the variant of your choice if the Link Pure must be supplemented by a subline. 
 However, we recommend that you only use this variant in cases where the user requires additional information. 
