@@ -248,7 +248,22 @@ Use `weight="semibold" size="large"` and add `<p-text size="medium">` into the c
 
 <Playground :themeable="true">
   <template v-slot={theme}>
-    <p-link-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit" size="medium">Subline text</p-text></p-link-pure>
+    <p-link-pure size="large" weight="semibold" :theme="theme" href="https://www.porsche.com">
+       Some label
+       <p slot="subline">Some Subline</p>
+    </p-link-pure>
+    <p-link-pure size="large" weight="semibold" :theme="theme">
+       <a href="https://www.porsche.com">
+         Some label
+       </a>
+       <p slot="subline">Some Subline</p>
+    </p-link-pure>
+    <a href="https://www.porsche.com">
+      <p-link-pure size="large" weight="semibold" :theme="theme">
+        Some label
+        <p slot="subline">Some Subline</p>
+      </p-link-pure>
+    </a>
   </template>
 </Playground>
 

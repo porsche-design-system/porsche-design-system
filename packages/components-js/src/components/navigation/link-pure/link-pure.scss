@@ -36,11 +36,42 @@
       width: #{p-line-height($size)}em;
       height: #{p-line-height($size)}em;
     }
+
+    + * {
+      @if $size == $p-text-size-small {
+        @include p-type-scale($p-text-size-x-small);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-medium {
+        @include p-type-scale($p-font-size-20);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-large {
+        @include p-type-scale($p-font-size-30);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-x-large {
+        @include p-type-scale($p-text-size-large);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+    }
   }
 }
 
 :host {
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   position: relative !important;
   cursor: pointer;
@@ -86,12 +117,11 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-  font-size 1ms linear; // used for transitionend event listener
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
   // gives possibility to enlarge click area on host element
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -117,27 +147,42 @@
   }
 
   &--theme-light {
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
+    + * {
+      color: $p-color-default;
+    }
 
     &:focus::before {
-      outline-color: $p-color-theme-light-state-focus;
+      outline-color: $p-color-state-focus;
     }
 
     &:active {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-state-active;
+      + * {
+        color: $p-color-state-active;
+      }
     }
 
     &:hover {
-      color: $p-color-theme-light-state-hover;
+      color: $p-color-state-hover;
+      + * {
+        color: $p-color-state-hover;
+      }
     }
 
     &#{$bem-block}--active {
-      color: $p-color-theme-light-brand;
+      color: $p-color-brand;
+      + * {
+        color: $p-color-brand;
+      }
     }
   }
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
+    + * {
+      color: $p-color-theme-dark-default;
+    }
 
     &:focus::before {
       outline-color: $p-color-theme-dark-state-focus;
@@ -145,19 +190,31 @@
 
     &:active {
       color: $p-color-theme-dark-state-active;
+      + * {
+        color: $p-color-theme-dark-state-active;
+      }
     }
 
     &:hover {
       color: $p-color-theme-dark-state-hover;
+      + * {
+        color: $p-color-theme-dark-state-hover;
+      }
     }
 
     &#{$bem-block}--active {
       color: $p-color-theme-dark-brand;
+      + * {
+        color: $p-color-theme-dark-brand;
+      }
     }
   }
 
   &--size-x-small {
     @include p-link-pure-size($bem-block, $p-text-size-x-small);
+    + * {
+
+    }
   }
 
   &--size-small {
@@ -180,7 +237,7 @@
     @include p-link-pure-size($bem-block, 'inherit');
   }
 
-  @include p-breakpoint("xs") {
+  @include p-breakpoint('xs') {
     &--size-x-small-xs {
       @include p-link-pure-size($bem-block, $p-text-size-x-small);
     }
@@ -201,7 +258,7 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-breakpoint('s') {
     &--size-x-small-s {
       @include p-link-pure-size($bem-block, $p-text-size-x-small);
     }
@@ -222,7 +279,7 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-breakpoint('m') {
     &--size-x-small-m {
       @include p-link-pure-size($bem-block, $p-text-size-x-small);
     }
@@ -243,7 +300,7 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-breakpoint('l') {
     &--size-x-small-l {
       @include p-link-pure-size($bem-block, $p-text-size-x-small);
     }
@@ -264,7 +321,7 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-breakpoint('xl') {
     &--size-x-small-xl {
       @include p-link-pure-size($bem-block, $p-text-size-x-small);
     }
@@ -304,7 +361,7 @@
       @include p-link-pure-label-hidden;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-breakpoint('xs') {
       &--visible-xs {
         @include p-link-pure-label-visible;
       }
@@ -314,7 +371,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-breakpoint('s') {
       &--visible-s {
         @include p-link-pure-label-visible;
       }
@@ -324,7 +381,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-breakpoint('m') {
       &--visible-m {
         @include p-link-pure-label-visible;
       }
@@ -334,7 +391,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-breakpoint('l') {
       &--visible-l {
         @include p-link-pure-label-visible;
       }
@@ -344,7 +401,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-breakpoint('xl') {
       &--visible-xl {
         @include p-link-pure-label-visible;
       }
@@ -352,6 +409,16 @@
       &--hidden-xl {
         @include p-link-pure-label-hidden;
       }
+    }
+  }
+
+  &__subline {
+    display: flex;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &::before {
+      content: '';
+
     }
   }
 }

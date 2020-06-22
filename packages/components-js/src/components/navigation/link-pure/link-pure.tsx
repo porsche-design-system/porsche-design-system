@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -108,45 +108,45 @@ export class LinkPure {
       this.active && prefix('link-pure--active')
     );
 
-    const iconClasses = cx(
-      prefix('link-pure__icon')
-    );
+    const iconClasses = cx(prefix('link-pure__icon'));
 
     const labelClasses = cx(
       prefix('link-pure__label'),
       mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
+    const sublineClasses = cx(prefix('link-pure__subline'));
 
     return (
-      <TagType
-        class={linkPureClasses}
-        {...(TagType === 'a' ? {
-          href: this.href,
-          target: this.target,
-          download: this.download,
-          rel: this.rel
-        } : null)}
-        ref={el => this.linkTag = el as HTMLElement}
-      >
-        <p-icon
-          class={iconClasses}
-          color='inherit'
-          size='inherit'
-          name={this.icon}
-          source={this.iconSource}
-          ref={el => this.iconTag = el as HTMLElement}
-          aria-hidden='true'
-        />
-        <p-text
-          class={labelClasses}
-          tag='span'
-          color='inherit'
-          size='inherit'
-          weight={this.weight}
+      <Host>
+        <TagType
+          class={linkPureClasses}
+          {...(TagType === 'a'
+            ? {
+                href: this.href,
+                target: this.target,
+                download: this.download,
+                rel: this.rel
+              }
+            : null)}
+          ref={(el) => (this.linkTag = el as HTMLElement)}
         >
-          <slot/>
+          <p-icon
+            class={iconClasses}
+            color="inherit"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            ref={(el) => (this.iconTag = el as HTMLElement)}
+            aria-hidden="true"
+          />
+          <p-text class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+            <slot />
+          </p-text>
+        </TagType>
+        <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
+          <slot name="subline" />
         </p-text>
-      </TagType>
+      </Host>
     );
   }
 }
