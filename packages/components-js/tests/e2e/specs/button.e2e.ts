@@ -26,6 +26,31 @@ describe('button', () => {
     expect(el).not.toBeNull();
   });
 
+  it('should not be clickable when disabled', async () => {
+    await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`);
+    const host = await getButtonHost();
+    const button = await getButtonRealButton();
+
+    let calls = 0;
+    await addEventListener(host, 'click', () => calls++);
+
+    await host.click();
+    await button.click();
+
+    const coords = await host.boundingBox();
+    await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+
+    await waitForStencilLifecycle(page);
+
+    expect(calls).toBe(0);
+  });
+
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
 
