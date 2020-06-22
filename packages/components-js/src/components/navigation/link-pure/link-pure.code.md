@@ -227,11 +227,13 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Link Pure with subline
 
-With `weight="semibold"` and `size="large"` you can add `<p-text/>` into the component to set as subline. Set the `color` property to `inherit` to get the red hover color on both elements.
+If you need additional information on your link, we recommend following pattern.
+
+Use `weight="semibold" size="large"` and add `<p-text size="medium">` into the component, to set it as subline. The `color` property has to be `inherit` to get the hover state of the parent element.
 
 <Playground :themeable="true">
   <template v-slot={theme}>
-    <p-link-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit">Subline</p-text></p-link-pure>
+    <p-link-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit" size="medium">Subline text</p-text></p-link-pure>
   </template>
 </Playground>
 
