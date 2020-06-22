@@ -52,6 +52,14 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
 
+  // this stops click events when button is disabled
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
+  }
+
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(
@@ -113,14 +121,6 @@ export class ButtonPure {
         </p-text>
       </button>
     );
-  }
-
-  // this stops click events when button is disabled
-  @Listen('click', { capture: true })
-  public handleOnClick(e) {
-    if (this.isDisabled()) {
-      e.stopPropagation();
-    }
   }
 
   private isDisabled(): boolean {

@@ -40,6 +40,13 @@ export class Button {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
+  }
+
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     improveButtonHandlingForCustomElement(
@@ -84,14 +91,6 @@ export class Button {
         </p-text>
       </button>
     );
-  }
-
-  // this stops click events when button is disabled
-  @Listen('click', { capture: true })
-  public handleOnClick(e) {
-    if (this.isDisabled()) {
-      e.stopPropagation();
-    }
   }
 
   private isDisabled(): boolean {
