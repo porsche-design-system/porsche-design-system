@@ -1,14 +1,15 @@
 import {
-  addEventListener, getActiveElementId,
+  addEventListener,
+  getActiveElementId,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
-} from "../helpers";
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
+} from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('button pure', () => {
-
   let page: Page;
 
   beforeEach(async () => {
@@ -71,8 +72,11 @@ describe('button pure', () => {
     }
   });
 
-  it(`submits outer forms on click, if it's type submit`, async () => {
-    await setContentWithDesignSystem(page, `<form onsubmit="return false;"><p-button-pure type="submit">Some label</p-button-pure></form>`);
+  it("submits outer forms on click, if it's type submit", async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;"><p-button-pure type="submit">Some label</p-button-pure></form>`
+    );
     const button = await getButtonPureRealButton();
     const host = await getButtonPureHost();
     const form = await selectNode(page, 'form');
@@ -86,19 +90,22 @@ describe('button pure', () => {
     expect(calls).toBe(1);
   });
 
-  it(`should not submit the form if default is prevented`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <form onsubmit="return false;">
-              <p-button-pure type="submit">Some label</p-button-pure>
-            </form>
-          </div>
-          <script>
-            document.querySelector('#wrapper').addEventListener('click', function(event) {
-              event.preventDefault();
-            });
-          </script>
-    `);
+  it('should not submit the form if default is prevented', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <form onsubmit="return false;">
+          <p-button-pure type="submit">Some label</p-button-pure>
+        </form>
+      </div>
+      <script>
+        document.querySelector('#wrapper').addEventListener('click', function(event) {
+          event.preventDefault();
+        });
+      </script>
+    `
+    );
 
     const button = await getButtonPureRealButton();
     const form = await selectNode(page, 'form');
@@ -110,14 +117,17 @@ describe('button pure', () => {
     expect(calls).toBe(0);
   });
 
-  it(`should not submit the form if button is disabled`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <form onsubmit="return false;">
-              <p-button-pure type="submit" disabled="true">Some label</p-button-pure>
-            </form>
-          </div>
-    `);
+  it('should not submit the form if button is disabled', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <form onsubmit="return false;">
+          <p-button-pure type="submit" disabled="true">Some label</p-button-pure>
+        </form>
+      </div>
+    `
+    );
     const innerButton = await getButtonPureRealButton();
     const outerButton = await getButtonPureHost();
     const form = await selectNode(page, 'form');
@@ -130,14 +140,17 @@ describe('button pure', () => {
     expect(calls).toBe(0);
   });
 
-  it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(page, `
+  it('should trigger focus&blur events at the correct time', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
       <div id="wrapper">
         <a href="#" id="before">before</a>
         <p-button-pure id="my-button-pure">Some label</p-button-pure>
         <a href="#" id="after">after</a>
       </div>
-    `);
+    `
+    );
 
     const button = await getButtonPureHost();
     const before = await selectNode(page, '#before');
@@ -146,7 +159,7 @@ describe('button pure', () => {
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
     let buttonFocusCalls = 0;
-    await addEventListener(button, 'focus', () => buttonFocusCalls++)
+    await addEventListener(button, 'focus', () => buttonFocusCalls++);
     let buttonFocusInCalls = 0;
     await addEventListener(button, 'focusin', () => buttonFocusInCalls++);
     let buttonBlurCalls = 0;
@@ -220,17 +233,19 @@ describe('button pure', () => {
     await page.keyboard.up('ShiftLeft');
   });
 
-  it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button-pure>Some label</p-button-pure>
-          </div>
-    `);
+  it('should provide methods to focus&blur the element', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button-pure>Some label</p-button-pure>
+      </div>
+    `
+    );
 
-    const buttonHasFocus = () => page.evaluate(() =>
-      document.activeElement === document.querySelector('p-button-pure')
-    )
+    const buttonHasFocus = () =>
+      page.evaluate(() => document.activeElement === document.querySelector('p-button-pure'));
 
     const button = await getButtonPureHost();
     const before = await selectNode(page, '#before');
@@ -245,14 +260,17 @@ describe('button pure', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it(`should be removed from tab order for tabbable false`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button-pure tabbable="false">Some label</p-button-pure>
-            <a href="#" id="after">after</a>
-          </div>
-    `);
+  it('should be removed from tab order for tabbable false', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button-pure tabbable="false">Some label</p-button-pure>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+    );
 
     const button = await getButtonPureHost();
     const before = await selectNode(page, '#before');
