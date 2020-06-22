@@ -59,20 +59,12 @@ export const headline = {
 };
 
 export const text = (fontSize?: string, fontWeight?: FontWeight) => {
-  if (!fontSize && !fontWeight) {
-    return {
-      ...font.size.small,
-      fontFamily: font.family,
-      fontWeight: font.weight.regular
-    };
-  } else {
-    const size = typeScale(fontSize!) || font.size.small;
-    const weight = font.weight[fontWeight!] || font.weight.regular;
+  const { family, size, weight } = font;
+  const fontSizeAndLineHeight = fontSize ? typeScale(fontSize) : size.small;
 
-    return {
-      ...size,
-      fontFamily: font.family,
-      weight
-    };
-  }
+  return {
+    fontFamily: family,
+    ...fontSizeAndLineHeight,
+    weight: weight[fontWeight ?? 'regular']
+  };
 };
