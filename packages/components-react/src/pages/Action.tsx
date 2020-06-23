@@ -4,7 +4,7 @@ import {
   PGrid as Grid,
   PGridItem as GridItem,
   PHeadline as Headline,
-  PDivider as Divider,
+  PDivider as Divider
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
@@ -137,12 +137,12 @@ export function Action() {
           </div>
           <div className="playground light spacing-inline">
             <ButtonPure weight={'semibold'} size={'medium'}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </ButtonPure>
             <ButtonPure weight={'semibold'} size={'medium'} disabled={true}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </ButtonPure>
           </div>
           <Divider/>
@@ -177,12 +177,12 @@ export function Action() {
           </div>
           <div className="playground dark spacing-inline">
             <ButtonPure theme={'dark'} weight={'semibold'} size={'medium'}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </ButtonPure>
             <ButtonPure theme={'dark'} weight={'semibold'} size={'medium'} disabled={true}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </ButtonPure>
           </div>
           <Divider/>

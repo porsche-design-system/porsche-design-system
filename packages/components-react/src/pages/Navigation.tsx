@@ -122,19 +122,19 @@ export function Navigation() {
           </div>
           <div className="playground light spacing-inline">
             <LinkPure href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </LinkPure>
             <LinkPure weight={'semibold'} size={'medium'}>
               <a href={'https://designsystem.porsche.com'}>
-               Some Label
+               Some label
               </a>
-              <p slot="subline">Some Subline</p>
+              <p slot="subline">Some subline</p>
             </LinkPure>
             <a href={'https://designsystem.porsche.com'} style={{display: 'inline-block'}}>
               <LinkPure weight={'semibold'} size={'medium'}>
-                Some Label
-                <p slot="subline">Some Subline</p>
+                Some label
+                <p slot="subline">Some subline</p>
               </LinkPure>
             </a>
           </div>
@@ -171,19 +171,19 @@ export function Navigation() {
           </div>
           <div className="playground dark spacing-inline">
             <LinkPure theme={'dark'} href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
-              Some Label
-              <p slot="subline">Some Subline</p>
+              Some label
+              <p slot="subline">Some subline</p>
             </LinkPure>
             <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
               <a href={'https://designsystem.porsche.com'}>
-                Some Label
+                Some label
               </a>
-              <p slot="subline">Some Subline</p>
+              <p slot="subline">Some subline</p>
             </LinkPure>
             <a href={'https://designsystem.porsche.com'} style={{display: 'inline-block'}}>
               <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
-                Some Label
-                <p slot="subline">Some Subline</p>
+                Some label
+                <p slot="subline">Some subline</p>
               </LinkPure>
             </a>
           </div>
