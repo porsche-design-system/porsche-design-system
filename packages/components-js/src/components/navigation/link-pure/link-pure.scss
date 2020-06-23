@@ -39,7 +39,7 @@
 
     + * {
       @if $size == $p-text-size-small {
-        @include p-type-scale($p-text-size-x-small);
+        @include p-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
