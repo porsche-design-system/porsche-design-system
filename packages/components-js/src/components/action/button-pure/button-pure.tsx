@@ -17,7 +17,7 @@ import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHand
   shadow: true
 })
 export class ButtonPure {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
@@ -61,9 +61,9 @@ export class ButtonPure {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
-      this.element,
+      this.host,
       () => this.type,
       () => this.isDisabled()
     );
@@ -123,9 +123,10 @@ export class ButtonPure {
             <slot />
           </p-text>
         </button>
-        <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
-          <slot name="subline" />
-        </p-text>
+        { this.host.querySelector('[slot="subline"]') &&
+            <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
+              <slot name="subline" />
+            </p-text> }
       </Host>
     );
   }
