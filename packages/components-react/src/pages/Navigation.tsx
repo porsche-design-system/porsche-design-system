@@ -7,7 +7,6 @@ import {
   PLinkPure as LinkPure,
   PLinkSocial as LinkSocial,
   PPagination as Pagination,
-  PText as Text
 } from '@porsche-design-system/components-react';
 import React from 'react';
 
