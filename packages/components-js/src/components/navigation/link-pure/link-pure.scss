@@ -212,9 +212,6 @@
 
   &--size-x-small {
     @include p-link-pure-size($bem-block, $p-text-size-x-small);
-    + * {
-
-    }
   }
 
   &--size-small {
