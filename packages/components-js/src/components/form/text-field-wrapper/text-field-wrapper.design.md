@@ -119,4 +119,4 @@ Don't use the Text Field component if you need to allow users to enter longer te
 
 ## Related Components
 
-* [Textarea](#/components/form/textarea)
+* [Textarea](#/components/textarea)

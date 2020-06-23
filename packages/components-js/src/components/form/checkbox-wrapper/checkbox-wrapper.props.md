@@ -1,4 +1,4 @@
-# Checkbox Wrapper
+# Checkbox
 
 
 
@@ -19,5 +19,5 @@
 
 ### Depends on
 
-- [p-text](#/components/basic/typography/text)
-- [p-icon](#/components/icon/icon)
+- [p-text](#/components/typography#text)
+- [p-icon](#/components/icon)

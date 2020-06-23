@@ -1,0 +1,53 @@
+{
+  "name": "@porsche-design-system/utilities",
+  "version": "1.0.0-rc.0",
+  "scope": "@porsche-design-system",
+  "main": "dist/js/umd/index.js",
+  "module": "dist/js/module/index.js",
+  "types": "dist/js/types/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Bernd Hacker <bernd.hacker@mhp.com>"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Porsche Design System Utilities",
+  "files": [
+    "dist/",
+    "scss.scss"
+  ],
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "scss",
+    "js",
+    "utils",
+    "utilities",
+    "variables",
+    "functions",
+    "mixins"
+  ],
+  "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "publishConfig": {
+    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && rm -rf ./scss.scss && yarn build:lib:module && yarn build:lib:umd && yarn build:scss",
+    "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
+    "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
+    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'"
+  },
+  "devDependencies": {
+    "typescript": "~3.8.3"
+  }
+}
