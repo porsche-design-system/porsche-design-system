@@ -413,7 +413,7 @@
     display: flex;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &::before {
+    &::before { // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
       content: '';
     }
   }
