@@ -13,7 +13,7 @@ It can be used with or without a label. When hiding the label make sure to provi
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-pure :theme="theme">Some label</p-button-pure>
-    <p-button-pure disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure disabled="true" :theme="theme">Some label</p-button-pure>
     <p-button-pure loading="true" :theme="theme">Some label</p-button-pure>
   </template>
 </Playground>
@@ -23,7 +23,7 @@ It can be used with or without a label. When hiding the label make sure to provi
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-pure hide-label="true" :theme="theme">Some label</p-button-pure>
-    <p-button-pure hide-label="true" disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure hide-label="true" disabled="true" :theme="theme">Some label</p-button-pure>
     <p-button-pure hide-label="true" loading="true" :theme="theme">Some label</p-button-pure>
   </template>
 </Playground>
