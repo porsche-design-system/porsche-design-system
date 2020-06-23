@@ -143,9 +143,10 @@ export class LinkPure {
             <slot />
           </p-text>
         </TagType>
-        <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
-          <slot name="subline" />
-        </p-text>
+        { this.host.querySelector('[slot="subline"]') &&
+            <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
+              <slot name="subline" />
+            </p-text> }
       </Host>
     );
   }
