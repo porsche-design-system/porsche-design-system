@@ -8,17 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. <h1>-<h6> or <p>, <blockquote>, etc.) directly as slotted content.
-- Possibility to include anchor tags directly as slots of `p-link`, `p-link-pure` and `p-link-social` 
+- Possibility to include anchor tags directly as slots of `Link`, `Link Pure` and `Link Social` 
 - `Text` new `weight` property `semibold`
-- `p-button-pure` label with subline pattern
-- `p-link-pure` label with subline pattern
+- `Button Pure` label with subline pattern as slot
+- `Link Pure` label with subline pattern as slot
 
 ### Changed
 - `Select Wrapper` is now ready for the catwalk. It is dressed now with a custom drop down list box and gets naked by default on touch devices. 
 
 ### Fixed
-- Minor accessibility improvements of `icons` and `text-field-wrapper`
-- Remove native number spinner buttons of `text-field-wrapper` with type text for Firefox
+- Minor accessibility improvements of `icons` and `Text Field`
+- Remove native number spinner buttons of `Text Field` with type text for Firefox
 
 ## [1.4.0] - 2020-05-14
 

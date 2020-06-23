@@ -124,22 +124,9 @@ import { Component } from '@angular/core';
           </p-link-pure>
         </div>
         <div class="playground light spacing-inline">
-          <p-link-pure [href]="'https://designsystem.porsche.com'" [weight]="'semibold'" [size]="'medium'">
-            Some Label
-            <p [slot]="'subline'">Some Subline</p>
-          </p-link-pure>
-          <p-link-pure [weight]="'semibold'" [size]="'medium'">
-            <a [href]="'https://designsystem.porsche.com'">
-              Some Label
-            </a>
-            <p [slot]="'subline'">Some Subline</p>
-          </p-link-pure>
-          <a [href]="'https://designsystem.porsche.com'" style="display: inline-block">
-            <p-link-pure [weight]="'semibold'" [size]="'medium'">
-              Some Label
-              <p [slot]="'subline'">Some Subline</p>
-            </p-link-pure>
-          </a>
+          <p-link-pure [weight]="'semibold'" [size]="'medium'" [href]="'https://designsystem.porsche.com'">Some Label<p [slot]="'subline'">Some Subline</p></p-link-pure>
+          <p-link-pure [weight]="'semibold'" [size]="'medium'"><a [href]="'https://designsystem.porsche.com'">Some Label</a><p [slot]="'subline'">Some Subline</p></p-link-pure>
+          <a [href]="'https://designsystem.porsche.com'" style="display: inline-block"><p-link-pure [weight]="'semibold'" [size]="'medium'">Some Label<p [slot]="'subline'">Some Subline</p></p-link-pure></a>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
@@ -183,22 +170,9 @@ import { Component } from '@angular/core';
           </p-link-pure>
         </div>
         <div class="playground dark spacing-inline">
-          <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">
-            Some Label
-            <p [slot]="'subline'">Some Subline</p>
-          </p-link-pure>
-          <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">
-            <a [href]="'https://designsystem.porsche.com'">
-              Some Label
-            </a>
-            <p [slot]="'subline'">Some Subline</p>
-          </p-link-pure>
-          <a [href]="'https://designsystem.porsche.com'">
-            <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">
-              Some Label
-              <p [slot]="'subline'">Some Subline</p>
-            </p-link-pure>
-          </a>
+          <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'" [href]="'https://designsystem.porsche.com'">Some Label<p [slot]="'subline'">Some Subline</p></p-link-pure>
+          <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'"><a [href]="'https://designsystem.porsche.com'">Some Label</a><p [slot]="'subline'">Some Subline</p></p-link-pure>
+          <a [href]="'https://designsystem.porsche.com'" style="display: inline-block"><p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">Some Label<p [slot]="'subline'">Some Subline</p></p-link-pure></a>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
