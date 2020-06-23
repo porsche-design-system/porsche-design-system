@@ -50,21 +50,21 @@
           margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
         }
       }
-      @if $size == $p-text-size-medium {
+      @else if $size == $p-text-size-medium {
         @include p-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
           margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
         }
       }
-      @if $size == $p-text-size-large {
+      @else if $size == $p-text-size-large {
         @include p-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
         }
       }
-      @if $size == $p-text-size-x-large {
+      @else if $size == $p-text-size-x-large {
         @include p-type-scale($p-text-size-large);
         &::before {
           font-size: $size;
@@ -399,8 +399,9 @@
   &__subline {
     display: flex;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    margin-top: 4px;
 
-    &::before {
+    &::before { // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
       content: '';
     }
   }
