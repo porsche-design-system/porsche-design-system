@@ -122,10 +122,22 @@ export function Navigation() {
               consetetur sadipscing</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} weight={'semibold'} size={'large'}>
+            <LinkPure href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
               Some Label
-              <Text color={'inherit'}>Subline</Text>
+              <p slot="subline">Some Subline</p>
             </LinkPure>
+            <LinkPure weight={'semibold'} size={'medium'}>
+              <a href={'https://designsystem.porsche.com'}>
+               Some Label
+              </a>
+              <p slot="subline">Some Subline</p>
+            </LinkPure>
+            <a href={'https://designsystem.porsche.com'} style={{display: 'inline-block'}}>
+              <LinkPure weight={'semibold'} size={'medium'}>
+                Some Label
+                <p slot="subline">Some Subline</p>
+              </LinkPure>
+            </a>
           </div>
           <Divider/>
         </GridItem>
@@ -159,10 +171,22 @@ export function Navigation() {
               dolor sit amet, consetetur sadipscing</LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} weight={'semibold'} size={'large'}>
+            <LinkPure theme={'dark'} href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
               Some Label
-              <Text color={'inherit'}>Subline</Text>
+              <p slot="subline">Some Subline</p>
             </LinkPure>
+            <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
+              <a href={'https://designsystem.porsche.com'}>
+                Some Label
+              </a>
+              <p slot="subline">Some Subline</p>
+            </LinkPure>
+            <a href={'https://designsystem.porsche.com'} style={{display: 'inline-block'}}>
+              <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
+                Some Label
+                <p slot="subline">Some Subline</p>
+              </LinkPure>
+            </a>
           </div>
           <Divider/>
         </GridItem>
