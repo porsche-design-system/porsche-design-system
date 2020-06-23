@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -54,7 +54,11 @@ export class ButtonPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+    improveButtonHandlingForCustomElement(
+      this.element,
+      () => this.type,
+      () => this.isDisabled()
+    );
 
     transitionListener(this.buttonTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.buttonTag);
@@ -70,52 +74,51 @@ export class ButtonPure {
       prefix(`button-pure--theme-${this.theme}`)
     );
 
-    const iconClasses = cx(
-      prefix('button-pure__icon')
-    );
+    const iconClasses = cx(prefix('button-pure__icon'));
 
     const labelClasses = cx(
       prefix('button-pure__label'),
       mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
+    const sublineClasses = cx(prefix('button-pure__subline'));
+
     return (
-      <button
-        class={buttonPureClasses}
-        type={this.type}
-        disabled={this.isDisabled()}
-        tabindex={this.tabbable ? 0 : -1}
-        ref={el => this.buttonTag = el as HTMLElement}
-        aria-busy={this.loading && 'true'}
-      >
-        {this.loading ? (
-          <p-spinner
-            class={iconClasses}
-            size='inherit'
-            theme={this.theme}
-            ref={el => this.iconTag = el as HTMLElement}
-          />
-        ) : (
-          <p-icon
-            class={iconClasses}
-            color='inherit'
-            size='inherit'
-            name={this.icon}
-            source={this.iconSource}
-            ref={el => this.iconTag = el as HTMLElement}
-            aria-hidden='true'
-          />
-        )}
-        <p-text
-          class={labelClasses}
-          tag='span'
-          color='inherit'
-          size='inherit'
-          weight={this.weight}
+      <Host>
+        <button
+          class={buttonPureClasses}
+          type={this.type}
+          disabled={this.isDisabled()}
+          tabindex={this.tabbable ? 0 : -1}
+          ref={(el) => (this.buttonTag = el as HTMLElement)}
+          aria-busy={this.loading && 'true'}
         >
-          <slot/>
+          {this.loading ? (
+            <p-spinner
+              class={iconClasses}
+              size="inherit"
+              theme={this.theme}
+              ref={(el) => (this.iconTag = el as HTMLElement)}
+            />
+          ) : (
+            <p-icon
+              class={iconClasses}
+              color="inherit"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              ref={(el) => (this.iconTag = el as HTMLElement)}
+              aria-hidden="true"
+            />
+          )}
+          <p-text class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+            <slot />
+          </p-text>
+        </button>
+        <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
+          <slot name="subline" />
         </p-text>
-      </button>
+      </Host>
     );
   }
 
