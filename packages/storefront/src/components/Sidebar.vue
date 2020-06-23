@@ -2,8 +2,8 @@
   <nav>
     <ul class="list">
       <li v-for="(pages, category, index) in config" :key="index">
-        <p-button-pure size="small" weight="bold" :icon="isActive(category) ? 'minus' : 'plus'" @click="toggleActive(category)">{{ category }}</p-button-pure>
-        <ul v-show="isActive(category)">
+        <p-button-pure size="small" weight="bold" :icon="accordion[category] ? 'minus' : 'plus'" @click="toggleActive(category)">{{ category }}</p-button-pure>
+        <ul v-show="accordion[category]">
           <li v-for="(tabs, page, index) in pages" :key="index">
             <router-link :to="`/${paramCase(category)}/${paramCase(page)}`"
                          v-slot="{ href, navigate, isActive }">
@@ -17,10 +17,11 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import { Component, Vue, Watch } from 'vue-property-decorator';
   import { StorefrontConfig } from '@/interface';
   import { config as storefrontConfig } from '@/../storefront.config';
-  import { paramCase } from 'change-case';
+  import { capitalCase, paramCase } from 'change-case';
+  import { Route } from 'vue-router';
 
   @Component
   export default class Sidebar extends Vue {
@@ -28,9 +29,14 @@
     public paramCase = paramCase;
     public accordion: {[id: string]: boolean} = {};
 
-    private created(): void {
+    @Watch('$route')
+    private async onRouteChange(to: Route): Promise<void> {
       for (const category of Object.keys(this.config)) {
         this.accordion[category] = false;
+        if(category === Sidebar.category(to)) {
+          this.accordion[category] = true;
+          this.accordion = Object.assign({}, this.accordion);
+        }
       }
     }
 
@@ -39,8 +45,11 @@
       this.accordion = Object.assign({}, this.accordion);
     }
 
-    isActive(id: string): boolean {
-      return this.accordion[id];
+    private static category(route: Route): string {
+      if (route.params.category){
+        return capitalCase(route.params.category);
+      }
+      return '';
     }
   }
 </script>
