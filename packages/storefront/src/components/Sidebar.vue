@@ -2,11 +2,16 @@
   <nav>
     <ul class="list">
       <li v-for="(pages, category, index) in config" :key="index">
-        <p-button-pure size="small" weight="bold" :icon="isActive(category) ? 'minus' : 'plus'" @click="toggleActive(category)">{{ category }}</p-button-pure>
+        <p-button-pure
+          size="small"
+          weight="bold"
+          :icon="isActive(category) ? 'minus' : 'plus'"
+          @click="toggleActive(category)"
+          >{{ category }}</p-button-pure
+        >
         <ul v-show="isActive(category)">
           <li v-for="(tabs, page, index) in pages" :key="index">
-            <router-link :to="`/${paramCase(category)}/${paramCase(page)}`"
-                         v-slot="{ href, navigate, isActive }">
+            <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
               <p-link-pure :href="href" @click="navigate" class="link" :active="isActive">{{ page }}</p-link-pure>
             </router-link>
           </li>
@@ -26,21 +31,30 @@
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public paramCase = paramCase;
-    public accordion: {[id: string]: boolean} = {};
+    public accordion: { [id: string]: boolean } = {};
 
     private created(): void {
-      for (const category of Object.keys(this.config)) {
+      Object.keys(this.config).map((category) => {
         this.accordion[category] = false;
-      }
+      });
+
+      // sort components alphabetically
+      const { Components: unorderedComponents } = this.config;
+      const orderedComponents: typeof unorderedComponents = {};
+      Object.keys(this.config.Components)
+        .sort()
+        .forEach((category) => {
+          orderedComponents[category] = unorderedComponents[category];
+        });
+      this.config.Components = orderedComponents;
     }
 
-    toggleActive(id: string): void {
-      this.accordion[id] = !this.accordion[id];
-      this.accordion = Object.assign({}, this.accordion);
+    toggleActive(category: string): void {
+      this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
     }
 
-    isActive(id: string): boolean {
-      return this.accordion[id];
+    isActive(category: string): boolean {
+      return this.accordion[category];
     }
   }
 </script>
