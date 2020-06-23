@@ -56,7 +56,7 @@ export class LinkPure {
   private iconTag: HTMLElement;
 
   public componentDidLoad(): void {
-    const tagName= this.host.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
@@ -122,11 +122,11 @@ export class LinkPure {
           class={linkPureClasses}
           {...(TagType === 'a'
             ? {
-                href: this.href,
-                target: this.target,
-                download: this.download,
-                rel: this.rel
-              }
+              href: this.href,
+              target: this.target,
+              download: this.download,
+              rel: this.rel
+            }
             : null)}
           ref={(el) => (this.linkTag = el as HTMLElement)}
         >
