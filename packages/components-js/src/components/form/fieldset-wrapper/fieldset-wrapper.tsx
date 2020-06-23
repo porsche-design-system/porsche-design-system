@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h} from '@stencil/core';
+import { JSX, Component, Prop, h} from '@stencil/core';
 import cx from 'classnames';
 import {
   prefix
@@ -20,16 +20,14 @@ export class FieldsetWrapper {
     const labelClasses = cx(prefix('fieldset-wrapper__label'));
 
     return (
-      <Host>
-        <fieldset class={fieldsetClasses}>
-          {this.label &&
-          <legend class={labelClasses}>
-            {this.label}
-          </legend>
-          }
-          <slot/>
-        </fieldset>
-      </Host>
+      <fieldset class={fieldsetClasses}>
+        {this.label &&
+        <legend class={labelClasses}>
+          {this.label}
+        </legend>
+        }
+        <slot/>
+      </fieldset>
     );
   }
 }
