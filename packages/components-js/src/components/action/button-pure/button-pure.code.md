@@ -155,7 +155,7 @@ With setting the `tabbable` property to `false` you can remove the button from t
 
 ---
 
-## Button with subline
+## Button with Subline
 
 If you need additional information on your button, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
@@ -171,7 +171,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
     </select>
   </template>
   <template v-slot={theme}>
-  <p-button-pure :size="size" :theme="theme" href="https://www.porsche.com">
+    <p-button-pure :size="size" :theme="theme" href="https://www.porsche.com">
          Some label
          <p slot="subline">Some Subline</p>
       </p-button-pure>

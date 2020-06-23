@@ -240,7 +240,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ---
 
-## Link Pure with subline
+## Link Pure with Subline
 
 If you need additional information on your link, we provide a `<p slot="subline" />`.
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
