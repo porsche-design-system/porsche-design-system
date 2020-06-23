@@ -1,6 +1,6 @@
 # Button
 
-Buttons enable you to execute an action (like "submit", "delete", "add" or "edit") or to change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. Whenever you want to provide navigational elements, stick to the [Link](#/components/navigation/link) component instead.
+Buttons enable you to execute an action (like "submit", "delete", "add" or "edit") or to change the state of an application, which almost always happens on the same page. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (Primary, Secondary, Tertiary) can be used. Whenever you want to provide navigational elements, stick to the [Link](#/components/link) component instead.
 
 ---
 
