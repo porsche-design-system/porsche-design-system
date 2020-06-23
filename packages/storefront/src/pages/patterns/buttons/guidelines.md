@@ -29,8 +29,8 @@ Be careful when to use which, as they differ both semantically and functionally:
 
 | Component | Primary use | Interaction target | Component guideline for further information |
 |---------|------------|----------|------------|
-| **Button** | Executing an action (e.g. "submit", "delete" or "edit") or changing the state of an application. | Same page (in most cases) | [Buttons](#/components/action/button) |
-| **Link** | Navigation to another page. | Another page or information layer. | [Links](#/components/navigation/link) |
+| **Button** | Executing an action (e.g. "submit", "delete" or "edit") or changing the state of an application. | Same page (in most cases) | [Buttons](#/components/button) |
+| **Link** | Navigation to another page. | Another page or information layer. | [Links](#/components/link) |
 
 **Generally, you should always preferably provide the user with labelled Buttons or Links** ("Icon and text" variant). However, this guideline also includes "Icon only" variants, unless stated otherwise. 
 
@@ -42,7 +42,7 @@ Stick to the following basic guidelines when using Buttons (or Links) – either
 
 ## Porsche Design System components
 
-In order to maintain a homogeneous look and feel not only within your product but throughout all Porsche web applications you should **only use the components that are provided in the Porsche Design System** and follow the specific guidelines for [Buttons](#/components/action/button) or [Links](#/components/navigation/link).
+In order to maintain a homogeneous look and feel not only within your product but throughout all Porsche web applications you should **only use the components that are provided in the Porsche Design System** and follow the specific guidelines for [Buttons](#/components/button) or [Links](#/components/link).
 
 ## Placement
 
@@ -93,9 +93,9 @@ Within a web page you should be careful to provide an optimal user guidance, sup
 
 For providing interactive elements (and, by doing so, a clear interaction hierarchy) on your page, there are – for sure – more options to choose from than a Button or Link, just think of:
 
-- [Button Pure](#/components/action/button-pure) / [Link Pure](#/components/navigation/link-pure)
-- [Text links](#/components/basic/typography) (stand-alone or within copy text)
-- Navigational elements like [Paginations](#/components/navigation/pagination) or Tabs
+- [Button Pure](#/components/button-pure) / [Link Pure](#/components/link-pure)
+- [Text links](#/components/typography) (stand-alone or within copy text)
+- Navigational elements like [Paginations](#/components/pagination) or Tabs
 - Interactive areas like Galleries or Image Sliders
 - … and many more!
 
@@ -202,5 +202,5 @@ No matter if Buttons are placed side by side or on top of each other, you should
 
 ## Related components
 
-* [Buttons](#/components/action/button)
-* [Links](#/components/navigation/links)
+* [Buttons](#/components/button)
+* [Links](#/components/link)
