@@ -1,4 +1,4 @@
-import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -26,7 +26,7 @@ export class ButtonPure {
   @Prop() public type?: ButtonType = 'button';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ reflect: true }) public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -51,6 +51,14 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
+
+  // this stops click events when button is disabled
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
+  }
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
