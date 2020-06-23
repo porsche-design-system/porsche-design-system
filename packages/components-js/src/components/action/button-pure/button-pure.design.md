@@ -36,7 +36,7 @@ When it's enough to indicate an action with an icon only, the text label can be 
 
 ### Icon, Text and Subline
 
-<p-button-pure size="large" weight="semibold">Button Pure label<p-text size="medium" color="inherit">Subline text</p-text> </p-button-pure>
+<p-button-pure size="medium">Some label<p slot="subline">Some subline</p-text> </p></p-button-pure>  <p-button-pure size="medium" weight="semibold">Some label<p slot="subline">Some subline</p-text> </p></p-button-pure>
 
 This should be the variant of your choice if the Button Pure must be supplemented by a subline. 
 However, we recommend that you only use this variant in cases where the user requires additional information. 

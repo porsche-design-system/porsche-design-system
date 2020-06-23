@@ -41,11 +41,42 @@
       width: #{p-line-height($size)}em;
       height: #{p-line-height($size)}em;
     }
+
+    + * {
+      @if $size == $p-text-size-small {
+        @include p-type-scale($p-text-size-x-small);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-medium {
+        @include p-type-scale($p-font-size-20);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-large {
+        @include p-type-scale($p-font-size-30);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+      @if $size == $p-text-size-x-large {
+        @include p-type-scale($p-text-size-large);
+        &::before {
+          font-size: $size;
+          margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
+        }
+      }
+    }
   }
 }
 
 :host {
-  display: inline-flex;
+  display: inline-block;
   vertical-align: top;
   position: relative !important;
 }
@@ -97,31 +128,46 @@
   }
 
   &--theme-light {
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
+    + * {
+      color: $p-color-default;
+    }
 
     &:focus::before {
-      outline-color: $p-color-theme-light-state-focus;
+      outline-color: $p-color-state-focus;
     }
 
     &:enabled,
     &:not([disabled]) {
       &:hover {
-        color: $p-color-theme-light-state-hover;
+        color: $p-color-state-hover;
+        + * {
+          color: $p-color-state-hover;
+        }
       }
 
       &:active {
-        color: $p-color-theme-light-state-active;
+        color: $p-color-state-active;
+        + * {
+          color: $p-color-state-active;
+        }
       }
     }
 
     &:disabled,
     &[disabled] {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
+      + * {
+        color: $p-color-state-disabled;
+      }
     }
   }
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
+    + * {
+      color: $p-color-theme-dark-default;
+    }
 
     &:focus::before {
       outline-color: $p-color-theme-dark-state-focus;
@@ -131,16 +177,25 @@
     &:not([disabled]) {
       &:hover {
         color: $p-color-theme-dark-state-hover;
+        + * {
+          color: $p-color-theme-dark-state-hover;
+        }
       }
 
       &:active {
         color: $p-color-theme-dark-state-active;
+        + * {
+          color: $p-color-theme-dark-state-active;
+        }
       }
     }
 
     &:disabled,
     &[disabled] {
       color: $p-color-theme-dark-state-disabled;
+      + * {
+        color: $p-color-theme-dark-state-disabled;
+      }
     }
   }
 
@@ -340,6 +395,14 @@
       &--hidden-xl {
         @include p-button-pure-label-hidden;
       }
+    }
+  }
+  &__subline {
+    display: flex;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &::before {
+      content: '';
     }
   }
 }

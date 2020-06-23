@@ -157,12 +157,28 @@ With setting the `tabbable` property to `false` you can remove the button from t
 
 ## Button with subline
 
-If you need additional information on your button, we recommend following pattern.
-Use `weight="semibold" size="large"` and add `<p-text size="medium">` into the component, to set it as subline. The `color` property has to be `inherit` to get the hover state of the parent element.
+If you need additional information on your button, we provide a `<p slot="subline" />`.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
 
 <Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option selected>small</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+    </select>
+  </template>
   <template v-slot={theme}>
-    <p-button-pure size="large" weight="semibold" :theme="theme">Some label<p-text color="inherit" size="medium">Subline text</p-text></p-button-pure>
+  <p-button-pure :size="size" :theme="theme" href="https://www.porsche.com">
+         Some label
+         <p slot="subline">Some Subline</p>
+      </p-button-pure>
+    <p-button-pure :size="size" weight="semibold" :theme="theme" href="https://www.porsche.com">
+       Some label
+       <p slot="subline">Some Subline</p>
+    </p-button-pure>
   </template>
 </Playground>
 
