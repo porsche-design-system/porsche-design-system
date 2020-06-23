@@ -129,8 +129,8 @@ import { Component } from '@angular/core';
           <p-button-pure style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
         </div>
         <div class="playground light spacing-inline">
-          <p-button-pure [weight]="'semibold'" [size]="'medium'">Some Label<p [slot]="'subline'">Some Subline</p></p-button-pure>
-          <p-button-pure [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some Label<p [slot]="'subline'">Some Subline</p></p-button-pure>
+          <p-button-pure [weight]="'semibold'" [size]="'medium'">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
+          <p-button-pure [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
@@ -163,8 +163,8 @@ import { Component } from '@angular/core';
           </p-button-pure>
         </div>
         <div class="playground dark spacing-inline">
-          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">Some Label<p [slot]="'subline'">Some Subline</p></p-button-pure>
-          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some Label<p [slot]="'subline'">Some Subline</p></p-button-pure>
+          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
+          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
