@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -54,9 +54,84 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
+  private subline: HTMLElement;
+
+  public componentWillLoad(): void {
+    this.setSubline();
+    this.addSlottedStyles();
+  }
 
   public componentDidLoad(): void {
-    const tagName= this.host.tagName.toLowerCase();
+    improveFocusHandlingForCustomElement(this.host);
+    transitionListener(this.linkTag, 'font-size', () => {
+      const size = calcLineHeightForElement(this.linkTag);
+      this.iconTag.style.width = `${size}em`;
+      this.iconTag.style.height = `${size}em`;
+    });
+  }
+
+  public render(): JSX.Element {
+    const TagType = this.href === undefined ? 'span' : 'a';
+
+    const linkPureClasses = cx(
+      prefix('link-pure'),
+      mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
+      prefix(`link-pure--theme-${this.theme}`),
+      this.active && prefix('link-pure--active')
+    );
+
+    const iconClasses = cx(prefix('link-pure__icon'));
+
+    const labelClasses = cx(
+      prefix('link-pure__label'),
+      mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
+    );
+    const sublineClasses = cx(
+      prefix('link-pure__subline'),
+      mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+    );
+
+    return (
+      <Host>
+        <TagType
+          class={linkPureClasses}
+          {...(TagType === 'a'
+            ? {
+              href: this.href,
+              target: this.target,
+              download: this.download,
+              rel: this.rel
+            }
+            : null)}
+          ref={(el) => (this.linkTag = el as HTMLElement)}
+        >
+          <p-icon
+            class={iconClasses}
+            color="inherit"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            ref={(el) => (this.iconTag = el as HTMLElement)}
+            aria-hidden="true"
+          />
+          <p-text class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+            <slot />
+          </p-text>
+        </TagType>
+        {this.subline && (
+          <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
+            <slot name="subline" />
+          </p-text>
+        )}
+      </Host>
+    );
+  }
+  private setSubline(): void {
+    this.subline = this.host.querySelector('[slot="subline"]');
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;
@@ -90,63 +165,5 @@ export class LinkPure {
     `;
 
     insertSlottedStyles(this.host, style);
-    improveFocusHandlingForCustomElement(this.host);
-    transitionListener(this.linkTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.linkTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
-  }
-
-  public render(): JSX.Element {
-    const TagType = this.href === undefined ? 'span' : 'a';
-
-    const linkPureClasses = cx(
-      prefix('link-pure'),
-      mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-      prefix(`link-pure--theme-${this.theme}`),
-      this.active && prefix('link-pure--active')
-    );
-
-    const iconClasses = cx(
-      prefix('link-pure__icon')
-    );
-
-    const labelClasses = cx(
-      prefix('link-pure__label'),
-      mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
-    );
-
-    return (
-      <TagType
-        class={linkPureClasses}
-        {...(TagType === 'a' ? {
-          href: this.href,
-          target: this.target,
-          download: this.download,
-          rel: this.rel
-        } : null)}
-        ref={el => this.linkTag = el as HTMLElement}
-      >
-        <p-icon
-          class={iconClasses}
-          color='inherit'
-          size='inherit'
-          name={this.icon}
-          source={this.iconSource}
-          ref={el => this.iconTag = el as HTMLElement}
-          aria-hidden='true'
-        />
-        <p-text
-          class={labelClasses}
-          tag='span'
-          color='inherit'
-          size='inherit'
-          weight={this.weight}
-        >
-          <slot/>
-        </p-text>
-      </TagType>
-    );
   }
 }
