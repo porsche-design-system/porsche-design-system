@@ -39,7 +39,7 @@
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "scripts": {
-    "preinstall": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
+    "preinstall": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json' && mkdir -p './packages/cdn-local/dist' && touch './packages/cdn-local/dist/start-cdn-local.js'",
     "start": "yarn build && concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn start:components-js\" \"yarn start:storefront\"",
     "start:components-js": "yarn --cwd ./packages/components-js start",
     "start:components-angular": "yarn --cwd ./packages/components-angular start",

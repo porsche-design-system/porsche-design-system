@@ -15,12 +15,15 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
+    const cdnBaseUrl = process.env.NODE_ENV === 'production'
+      ? CDN_BASE_URL
+      : 'http://localhost:3001/marque';
     const manifestPath: { [size: string]: { [resolution: string]: string } } =
       MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
     const buildSrcSet = (size: 'small' | 'medium'): string =>
       Object.entries(manifestPath[size])
-        .map(([resolution, fileName]) => `${CDN_BASE_URL}/${fileName} ${resolution}`)
+        .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
         .join(',');
 
     const marqueClasses = cx(prefix('marque'));
@@ -28,7 +31,7 @@ export class Marque {
       <picture class={marqueClasses}>
         <source srcSet={buildSrcSet('medium')} media="(min-width: 1300px)" />
         <source srcSet={buildSrcSet('small')} />
-        <img src={`${CDN_BASE_URL}/${manifestPath.medium['2x']}`} alt="Porsche" />
+        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
       </picture>
     );
   }
