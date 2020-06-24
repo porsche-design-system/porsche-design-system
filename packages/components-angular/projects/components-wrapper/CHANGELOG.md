@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Minor accessibility improvements of `icons` and `text-field-wrapper`
 - Remove native number spinner buttons of `text-field-wrapper` with type text for Firefox
+- An issue with `p-button` and `p-button-pure` and their `disabled` attribute
 
 ## [1.4.0] - 2020-05-14
 
