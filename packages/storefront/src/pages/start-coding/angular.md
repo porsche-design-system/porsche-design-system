@@ -119,3 +119,92 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
 ```
+
+### Prefixing
+Another way of preventing conflicts is by using a unique custom prefix for the components.
+If you choose to use a prefix you can set it via the `WEB_COMPONENTS_PREFIX` inject token.  
+When using custom prefixed component tags, you've to add also the
+[schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA)
+to the modules that use the prefixed components.
+
+You can provide the token as follows:
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    PorscheDesignSystemModule
+  ],
+  providers: [
+    {
+      provide: WEB_COMPONENTS_PREFIX,
+      useValue: 'sample-prefix'
+    }
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+You can now use the components as follows:
+
+``` 
+import {Component} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div id="app">
+      <sample-prefix-p-headline p-headline variant="headline-1">Headline</sample-prefix-p-headline>
+    </div>
+  `,
+  styles: []
+})
+export class AppComponent {}
+```
+
+Be aware, that you still have to set the component name without the prefix as an
+attribute, else you might get unexpected results in some edge cases.
+
+You can even add more prefixes with the `PrefixService`:
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX, PrefixService } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    PorscheDesignSystemModule
+  ],
+  providers: [
+    {
+      provide: WEB_COMPONENTS_PREFIX,
+      useValue: 'sample-prefix'
+    }
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+  constructor(private prefixService: PrefixService) {
+    prefixService.load('another-prefix');
+  }
+}
+```

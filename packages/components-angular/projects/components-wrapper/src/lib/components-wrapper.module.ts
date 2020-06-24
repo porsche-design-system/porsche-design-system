@@ -1,6 +1,7 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { defineCustomElements, applyPolyfills } from '@porsche-design-system/components-js/loader';
+import { load } from '@porsche-design-system/components-pwcm';
 import { PREVENT_WEB_COMPONENTS_REGISTRATION } from './prevent-web-components-registration.token';
+import { WEB_COMPONENTS_PREFIX } from './web-components-prefix.token';
 
 import {
   PContentWrapper,
@@ -65,18 +66,15 @@ const DECLARATIONS = [
 export class PorscheDesignSystemModule {
   constructor(
     @Inject(PREVENT_WEB_COMPONENTS_REGISTRATION) preventWebComponentsRegistration: boolean,
+    @Inject(WEB_COMPONENTS_PREFIX) webComponentsPrefix: string,
     @Optional() @SkipSelf() porscheDesignSystemModule: PorscheDesignSystemModule
   ) {
     /**
-     * prevent registration of components js web components if this is not the first
-     * instance of this module or if it's prevented explicitly via
-     * PREVENT_WEB_COMPONENTS_REGISTRATION inject token
+     * prevent registration of components pwcm web components if it's prevented
+     * explicitly via PREVENT_WEB_COMPONENTS_REGISTRATION inject token
      */
-    if (!preventWebComponentsRegistration && !porscheDesignSystemModule) {
-      (async () => {
-        await applyPolyfills();
-        await defineCustomElements(window);
-      })();
+    if (!preventWebComponentsRegistration) {
+      load(webComponentsPrefix);
     }
   }
 }

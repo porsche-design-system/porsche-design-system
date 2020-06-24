@@ -2656,6 +2656,11 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
+"@porsche-design-system/components-pwcm@1.4.0":
+  version "1.4.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-pwcm/-/@porsche-design-system/components-pwcm-1.4.0.tgz#42947fd1217b3956e4a2492bc2cb77b0ea078133"
+  integrity sha1-QpR/0SF7OVbkokkrwst3sOoHgTM=
+
 "@porsche-design-system/visual-regression-tester@^1.0.1":
   version "1.0.1"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-1.0.1.tgz#da40955939938b93d6c0405dc870fb4b84ad26c1"
@@ -2808,10 +2813,9 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.0.tgz#623aa40623550e3b94767cffeb096a6fb597ed09"
   integrity sha512-9GvTek+7cVw7r+L7TNGOG1astZJWXz2h5q4BqMXl28KN+24iSCm1xo+RhZOZvwdT3bzNe9hD7riJc/lBoO7mgg==
 
-"@stencil/angular-output-target@^0.0.2":
+"@stencil/angular-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz":
   version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
-  integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
+  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz#9978f3c5c2f1c49cfef2bab641fdc0164666b80a"
 
 "@stencil/core@~1.13.0":
   version "1.13.0"
@@ -2827,10 +2831,9 @@
   dependencies:
     postcss "~7.0.17"
 
-"@stencil/react-output-target@^0.0.6":
+"@stencil/react-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-react-output-target-0.0.6.tgz":
   version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@stencil/react-output-target/-/react-output-target-0.0.6.tgz#542ccf85f7c269d0c72f0ecf5c37326c1d969084"
-  integrity sha512-Z0d1+RLmyxi/SuwYeIt+bKPyAl8hvz971GixmfNL1Kr9NRV45fEg6pyAjU3VzpEQkcsExE2HER2ShRqWI0ubRw==
+  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-react-output-target-0.0.6.tgz#036c58ac2be8ed8db149e7af8664edeb5f62b4f6"
 
 "@stencil/sass@^1.3.1":
   version "1.3.1"
