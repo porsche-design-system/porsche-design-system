@@ -5,7 +5,10 @@ import * as path from 'path';
 
 const PORT = 3001;
 
-const server = createServer({ root: path.resolve(__dirname, 'cdn') });
+const server = createServer({
+  root: path.resolve(__dirname, 'cdn'),
+  cors: true
+});
 server.listen(PORT, 'localhost');
 
 console.log(`started cdn-local on http://localhost:${PORT}`);

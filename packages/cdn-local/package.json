@@ -7,7 +7,10 @@
   },
   "scripts": {
     "start": "yarn build && node ./dist/start-cdn-local.js",
-    "build": "rm -rf ./dist && ts-node --project './tsconfig.json' './scripts/build.ts' && tsc --build './tsconfig.json'",
+    "build": "yarn build:clean && yarn build:contents && yarn build:bin",
+    "build:clean": "rm -rf ./dist",
+    "build:contents": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:bin": "tsc --build './tsconfig.json' && chmod +x dist/start-cdn-local.js",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
