@@ -50,6 +50,7 @@
     "build:fonts": "yarn --cwd ./packages/fonts build",
     "build:marque": "yarn --cwd ./packages/marque build",
     "build:components-js": "yarn --cwd ./packages/components-js build",
+    "build:components-js-prod": "yarn --cwd ./packages/components-js build-prod",
     "build:components-angular": "yarn --cwd ./packages/components-angular build",
     "build:components-react": "yarn --cwd ./packages/components-react build",
     "build:storefront": "yarn --cwd ./packages/storefront build",
