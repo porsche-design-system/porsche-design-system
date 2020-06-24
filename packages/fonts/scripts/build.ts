@@ -5,7 +5,7 @@ import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { buildStyles } from './styles';
 
-interface Manifest {
+export interface Manifest {
   [name: string]: {
     woff: string;
     woff2: string;
@@ -26,11 +26,20 @@ const checkIntegrity = async (manifest: Manifest): Promise<void> => {
   }
 };
 
-const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
-  if (await fs.promises.stat(path.normalize('./dist'))) {
-    await fs.promises.rmdir(path.normalize('./dist'), { recursive: true });
+const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
+  try {
+    await fs.promises.access(path, fs.constants.F_OK);
+    return true;
+  } catch {
+    return false;
   }
-  fs.mkdirSync(path.normalize('./dist/fonts'), { recursive: true });
+}
+
+const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
+  if (await checkIfDirectoryExists(path.resolve('./dist'))) {
+    await fs.promises.rmdir(path.resolve('./dist'), { recursive: true });
+  }
+  fs.mkdirSync(path.resolve('./dist/fonts'), { recursive: true });
 
   const manifest: Manifest = {};
 
@@ -57,8 +66,16 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
 
   await checkIntegrity(manifest);
 
-  const fontFaceFileNameCdn = buildStyles();
-  const fontFaceFileNameLocal = buildStyles({ isStaging: true });
+  const fontFaceFileNameCdn = buildStyles({
+    fontsManifest: manifest,
+    baseUrl: cdn,
+    addContentBasedHash: true
+  });
+  buildStyles({
+    fontsManifest: manifest,
+    baseUrl: 'http://localhost:3001/fonts',
+    addContentBasedHash: false
+  });
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
