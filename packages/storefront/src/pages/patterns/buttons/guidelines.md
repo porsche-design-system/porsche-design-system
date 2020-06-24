@@ -2,16 +2,21 @@
 
 **Buttons and Links** are an essential part of an interactive experience, enabling the user to execute an action or to navigate through a page. Occuring in different cases, they can usually either stand alone or are combined in a Button (or Link) group.
 
-As there can be a lot of ways for grouping, positioning and aligning buttons (even more so when it comes to their responsive behaviour), we should strive for the same principles in Porsche web applications in order to provide the user a consistent UX.
+As there can be a lot of ways for grouping, positioning and aligning buttons (even more so when it comes to their responsive behaviour), we should strive for the same principles in Porsche web applications in order to provide the user with a consistent UX.
 
 <div style="border: 16px #F2F2F2 solid; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-  <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Summary</p-headline>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
-  <p-text><p-icon name="check" aria-label="Check icon" style="margin-right:8px;"></p-icon>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p-text>
+  <p-headline variant="headline-3" tag="h3"">Quick checklist <p-icon name="check" size="medium" aria-label="Check icon" style="margin-right:8px;"></p-icon></p-headline>
+  <p-text style="margin-bottom: 24px;"><b>Whenever you use Buttons in your interface, make sure to …</b></p-text> 
+  <p-text-list style="margin-bottom: 24px;">
+    <p-text-list-item>… use either Buttons or Links (they look the same, but differ both semantically and functionally) from the Porsche Design System.</p-text-list-item>  
+    <p-text-list-item>… define the horizontal alignment (left or right) of Buttons or whole Button groups depending on the use cases, as they come along with different reading patterns.</p-text-list-item>
+    <p-text-list-item>… set Buttons on viewport XS in full-width.</p-text-list-item>
+    <p-text-list-item>… define a clear Button (and general interaction) hierarchy within a page in favour of an optimal user guidance.</p-text-list-item>
+    <p-text-list-item>… stick to only one Button variant ("Icon and Text" or "Icon only") within a Button group.</p-text-list-item>
+    <p-text-list-item>… set the right prioritization within a Button group – use only one Primary Button or two Secondary Buttons combined with Tertiary Button(s).</p-text-list-item>
+    <p-text-list-item>… define the alignment (horizontal or stacked) within a Button group depending on the available screen or container size.</p-text-list-item>
+    <p-text-list-item>… keep a constant minimum spacing of 16 px inbetween Buttons.</p-text-list-item>
+  </p-text-list>
 </div>
 
 ---
