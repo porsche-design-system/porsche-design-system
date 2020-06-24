@@ -29,10 +29,15 @@
     public paramCase = paramCase;
     public accordion: {[id: string]: boolean} = {};
 
+    private created(): void {
+      for (const category of Object.keys(this.config)) {
+        this.accordion[category] = false;
+      }
+    }
+
     @Watch('$route')
     private async onRouteChange(to: Route): Promise<void> {
       for (const category of Object.keys(this.config)) {
-        this.accordion[category] = false;
         if(category === Sidebar.category(to)) {
           this.accordion[category] = true;
           this.accordion = Object.assign({}, this.accordion);
