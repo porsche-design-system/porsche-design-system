@@ -119,6 +119,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-button-pure [weight]="'thin'">Thin</p-button-pure>
           <p-button-pure [weight]="'regular'">Regular</p-button-pure>
+          <p-button-pure [weight]="'semibold'">Semibold</p-button-pure>
           <p-button-pure [weight]="'bold'">Bold</p-button-pure>
         </div>
         <div class="playground light spacing-inline">
@@ -126,6 +127,10 @@ import { Component } from '@angular/core';
         </div>
         <div class="playground light spacing-inline">
           <p-button-pure style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-button-pure [weight]="'semibold'" [size]="'medium'">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
+          <p-button-pure [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
@@ -147,6 +152,7 @@ import { Component } from '@angular/core';
         <div class="playground dark spacing-inline">
           <p-button-pure [weight]="'thin'" [theme]="'dark'">Thin</p-button-pure>
           <p-button-pure [weight]="'regular'" [theme]="'dark'">Regular</p-button-pure>
+          <p-button-pure [weight]="'semibold'" [theme]="'dark'">Semibold</p-button-pure>
           <p-button-pure [weight]="'bold'" [theme]="'dark'">Bold</p-button-pure>
         </div>
         <div class="playground dark spacing-inline">
@@ -155,6 +161,10 @@ import { Component } from '@angular/core';
         <div class="playground dark spacing-inline">
           <p-button-pure [theme]="'dark'" style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing
           </p-button-pure>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
+          <p-button-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'" [disabled]="true">Some label<p [slot]="'subline'">Some subline</p></p-button-pure>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
