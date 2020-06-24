@@ -191,7 +191,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Components (JS/Angular/React)
+## Release management - Porsche Design System Components (JS/PWCM/Angular/React)
 
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
@@ -211,6 +211,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Update CDN assets
 1. Update (only if something has changed!) `/assets/porsche-design-system/styles` on CDN by creating a new folder with version (v1, v2, v3,…) and upload generated `porsche-design-system.css` from __packages/components-js/dist/porsche-design-system directory__.
 1. Make sure CDN path fits in file `inject-global-style.ts` (lives in __packages/components-js/src/utils directory__).
+1. Upload CDN based `pwcm` components from `/packages/components-pwcm/dist/p/cdn` to CDN (`https://cdn.ui.porsche.com/porsche-design-system/pwcm`)
 
 ### Commit
 1. Review local changes
@@ -223,6 +224,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Publish
 1. Switch to __packages/components-js directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components JS artifact to the Artifactory repository.
+1. Switch to __packages/components-pwcm directory__
+1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components PWCM artifact to the Artifactory repository.
 1. Switch to __packages/components-angular/dist/components-wrapper directory__ (make sure to release package within **dist** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
 1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)

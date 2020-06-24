@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "rm -rf ./dist/dev && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && http-server -p 8576 --cors",
+    "start": "rm -rf ./dist/dev && yarn start:prepare && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && http-server -p 8576 --cors",
+    "start:prepare": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
     "build": "rm -rf ./dist/p && webpack && pwcm build",
     "test": "yarn test:vrt",
-    "test:vrt": "yarn test:vrt:build && concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8576 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:vrt:build": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8576 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
