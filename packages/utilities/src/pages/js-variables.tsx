@@ -11,10 +11,11 @@ const Square = styled.div(({ background }: { background?: CSSProperties['backgro
   display: 'inline-block',
   background: background ?? 'grey',
   height: 50,
-  width: 50,
+  minWidth: 50,
   textAlign: 'center',
   lineHeight: '50px',
-  fontSize: 10
+  fontSize: 10,
+  whiteSpace: 'nowrap'
 }));
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
