@@ -45,11 +45,11 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start": "yarn build:types && stencil build --watch --serve",
+    "start": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"yarn build:types && stencil build --dev --watch --serve\"",
     "start:cdn-server": "start-cdn-local",
-    "start:e2e-server": "stencil build --watch --serve --no-open",
-    "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423/www",
-    "start:cbt-server": "yarn build && http-server -p 61424 -P http://localhost:61424/www",
+    "start:e2e-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"stencil build --watch --serve --no-open\"",
+    "start:vrt-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"yarn build && http-server -p 61423 -P http://localhost:61423/www\"",
+    "start:cbt-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"yarn build && http-server -p 61424 -P http://localhost:61424/www\"",
     "build": "yarn build:types && stencil build --docs && yarn build:readme",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
