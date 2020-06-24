@@ -50,26 +50,30 @@ Depending on the usage of the Button(s) we differ **two types of alignment for v
 
 ### Left alignment
 
-Buttons **on standard pages or in on-page forms** are to be placed **left-justified**, supporting a direct user attention flow. This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007).
-
-<p-text color="brand">📷 [Ansicht F-shaped pattern auf Porsche Page]</p-text>
-<p-text color="brand">📷 [Beispiele Buttons left-aligned]</p-text>
+Buttons **on standard pages or in on-page forms** are to be placed **left-justified**, supporting a direct user attention flow:  
+  
+![Button placement left-aligned](../../../assets/patterns-buttons-placement-left-teaser.png)  
+  
+This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007).  
+  
+![F-shaped reading pattern](../../../assets/patterns-buttons-placement-left-form.png)
 
 ### Right alignment
 
-Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) are to be placed **right-justified**, following the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-shaped-pattern-for-reading-web-content-ce1135f92f1c), 2017). Here, users end on the bottom right where they are provided an interaction leading to another / the next step. Also, as this is also common practice in Windows and MacOS, users should be familiar with that ([UX Collective](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019)
-
-<p-text color="brand">📷 [Ansicht Z-shaped pattern auf Porsche Page]</p-text>
-
-![Description](../../../assets/patterns-buttons-placement-right.png)
-
+Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) are to be placed **right-justified**:  
+  
+![Button placement right-aligned](../../../assets/patterns-buttons-placement-right-modal.png)  
+  
+This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-shaped-pattern-for-reading-web-content-ce1135f92f1c), 2017). Here, users end on the bottom right where they are provided an interaction leading to another / the next step. Also, as this is also common practice in Windows and MacOS, users should be familiar with that ([UX Collective](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019)  
+  
+![Z-shaped reading pattern](../../../assets/patterns-buttons-placement-right-basket.png)
 
 
 ### Alignment on viewport XS (max. width 759 px)
 
 On viewport XS Buttons in "Icon and text" variant are always to be set full-width (12 grid columns), independent from their text length. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
 
-<p-text color="brand">📷 [Beispiele]</p-text>
+![Mobile view for Buttons](../../../assets/patterns-buttons-placement-viewport-xs.png)
 
 ## Hierarchy
 
@@ -109,9 +113,9 @@ Sometimes it makes sense to offer two or more actions at once. This can be reali
 
 #### Avoid mixing different variants.
 
-Both Buttons and Links are available as "Icon and Text" and "Icon only" variants in the Porsche Design System. In favor of a seamless UX you should homogeneously **stick to one of these types within a group** and avoid mixing them up.
-
-<p-text color="brand">📷 [Do / Don't graphic]</p-text>
+Both Buttons and Links are available as "Icon and Text" and "Icon only" variants in the Porsche Design System. In favor of a seamless UX you should homogeneously **stick to one of these types within a group** and avoid mixing them up.  
+  
+![Do's and Don'ts for mixing Button variants](../../../assets/patterns-buttons-groups-variants.png)
 
 #### Only group Buttons that are related.
 
@@ -129,10 +133,12 @@ Within a Button group, you have several options to provide a clear interactive h
 Due to the general guidelines, one Button within a group can be set as "Primary" (depending on the rest of the Buttons used on the page). If no primary action is set, but you want to give Buttons  within the group a slightly higher priority, you can go for maximum two secondary actions.  
 
 - **Actions with lower priority:**  
-Buttons with lower priority that come alongside primary or secondary actions can either be set as tertiary actions (outlined Button) or as a Button or Link Pure, in case you want to reduce their priority even more. If this is the case for the whole group, you can also go for 100% tertiary Button or 100% Button/Link Pure groups.
-
-<p-text color="brand">📷 [BEISPIELE]</p-text>
-
+Buttons with lower priority that come alongside primary or secondary actions can either be set as tertiary actions (outlined Button) or as a Button or Link Pure, in case you want to reduce their priority even more. If this is the case for the whole group, you can also go for 100% tertiary Button or 100% Button/Link Pure groups.  
+  
+![Do's for Button hierarchy](../../../assets/patterns-buttons-groups-hierarchy-1.png)  
+  
+![Don'ts for Button hierarchy](../../../assets/patterns-buttons-groups-hierarchy-2.png)  
+  
 ### Ordering Buttons within a group
 
 You can either order Buttons within a group horizontally or vertically. In both cases, you should have an extra eye on the placement of the primary call-to-action – here, consistency is king ([Nielsen Norman Group,](https://www.nngroup.com/articles/ok-cancel-or-cancel-ok/) 2008) and should be kept for all Button groups with the same alignment. 
@@ -145,13 +151,13 @@ A group of Buttons can be aligned side-by-side in a row **whenever you want to**
 
 The primary call-to-action within a horizontal-aligned group is always to be placed on the right, following the reading direction as well as iOS and recent Android app standards most of our users should be familiar with.  
   
-<p-text color="brand">📷 [BEISPIELE]</p-text>
-
+![Horizontal alignment of Button groups](../../../assets/patterns-buttons-groups-horizontal.png)  
+ 
 **Responsive behaviour**
 
 Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 759 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the [Gutenberg Principle](http://people.sunyit.edu/~lepres/thesis/principles/119_pdfsam_POD.pdf) the next best action should then always go to bottom, following the user's scanning direction from upper left to bottom right. ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019)  
 
-<p-text color="brand">📷 [BEISPIELE]</p-text>
+![Responsive behaviour of horizontally aligned buttons](../../../assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
 ### Vertical stacking
 
@@ -167,36 +173,16 @@ On viewport S upwards or in screen areas with a minimum width of 760 px the prim
 
 **Responsive behaviour**
 
-See horizontal alignment: Buttons on viewport XS or in screen areas with a maximum width of 759 px are also stacked and set in full width, whilst the next best action is to be placed on the bottom.
+See horizontal alignment: Buttons on viewport XS or in screen areas with a maximum width of 759 px are also stacked and set in full width, whilst the next best action is to be placed on the bottom.  
   
-<p-text color="brand">📷 [BEISPIELE]</p-text>
+![Vertical alignment of Button groups](../../../assets/patterns-buttons-groups-vertical.png)
 
 ### Spacing in Button groups
 
 No matter if Buttons are placed side by side or on top of each other, you should keep a minimum spacing of 16 px inbetween.
 
-![Description](../../../assets/patterns-buttons-groups-spacing.png)
+![Spacing in vertical and horizontal Button groups](../../../assets/patterns-buttons-groups-spacing.png)
 
----
-
-# Common Button patterns in use
-
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Modal Layer</p-headline>
-    <p-text color="brand">📷 [BEISPIELE]</p-text>
-</div>
-<div style="background:#F2F2F2; width:100%; margin-top: 24px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Forms</p-headline>
-    <p-text color="brand">📷 [BEISPIELE]</p-text>
-</div>
-<div style="background:#F2F2F2; width:100%; margin-top: 24px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Wizards</p-headline>
-    <p-text color="brand">📷 [BEISPIELE]</p-text>
-</div>
-<div style="background:#F2F2F2; width:100%; margin-top: 24px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">File Upload</p-headline>
-    <p-text color="brand">📷 [BEISPIELE]</p-text>
-</div>
 
 ---
 
