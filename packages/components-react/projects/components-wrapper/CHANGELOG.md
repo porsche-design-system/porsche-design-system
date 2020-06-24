@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Minor accessibility improvements of `icons` and `Text Field`
 - Remove native number spinner buttons of `Text Field` with type text for Firefox
+- An issue with `Button` and `Button Pure` and their `disabled` attribute
 
 ## [1.4.0] - 2020-05-14
 
