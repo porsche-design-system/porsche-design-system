@@ -23,6 +23,12 @@ pushd "./packages/components-js"
 popd
 yarn build:components-js
 
+pushd "./packages/components-pwcm"
+  yarn version --no-git-tag-version --new-version "${1}"
+  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+popd
+yarn build:components-pwcm
+
 pushd "./packages/components-angular/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
@@ -49,6 +55,7 @@ yarn lint:components-js
 yarn test:unit:components-js
 yarn test:e2e:components-js
 yarn test:vrt:components-js
+yarn test:vrt:components-pwcm
 yarn test:vrt:components-angular
 yarn test:vrt:components-react
 yarn test:mocks:components-react
