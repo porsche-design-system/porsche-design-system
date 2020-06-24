@@ -171,11 +171,11 @@ The size of the *subline* changes according to the size of the *label*. We do no
     </select>
   </template>
   <template v-slot={theme}>
-    <p-button-pure :size="size" :theme="theme" href="https://www.porsche.com">
+    <p-button-pure :size="size" :theme="theme">
          Some label
          <p slot="subline">Some Subline</p>
       </p-button-pure>
-    <p-button-pure :size="size" weight="semibold" :theme="theme" href="https://www.porsche.com">
+    <p-button-pure :size="size" weight="semibold" :theme="theme">
        Some label
        <p slot="subline">Some Subline</p>
     </p-button-pure>

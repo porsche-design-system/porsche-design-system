@@ -66,6 +66,9 @@
           margin-left: calc(#{p-line-height($size)}em + #{p-rem(4px)});
         }
       }
+      @else {
+        @error "Unknown size #{$size}.";
+      }
     }
   }
 }
