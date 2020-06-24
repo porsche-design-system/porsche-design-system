@@ -1,5 +1,5 @@
 {
-  "name": "cdn-local",
+  "name": "@porsche-design-system/cdn-local",
   "version": "0.0.0",
   "private": true,
   "bin": {

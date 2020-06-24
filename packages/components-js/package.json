@@ -46,6 +46,7 @@
   },
   "scripts": {
     "start": "yarn build:types && stencil build --watch --serve",
+    "start:cdn-server": "start-cdn-local",
     "start:e2e-server": "stencil build --watch --serve --no-open",
     "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423/www",
     "start:cbt-server": "yarn build && http-server -p 61424 -P http://localhost:61424/www",
@@ -65,6 +66,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
+    "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
