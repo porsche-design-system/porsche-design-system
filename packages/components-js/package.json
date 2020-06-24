@@ -45,13 +45,12 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start": "yarn build:types && yarn build:variables && stencil build --watch --serve",
+    "start": "yarn build:types && stencil build --watch --serve",
     "start:e2e-server": "stencil build --watch --serve --no-open",
     "start:vrt-server": "yarn build && http-server -p 61423 -P http://localhost:61423/www",
     "start:cbt-server": "yarn build && http-server -p 61424 -P http://localhost:61424/www",
-    "build": "yarn build:types && yarn build:variables && stencil build --docs && yarn build:readme",
+    "build": "yarn build:types && stencil build --docs && yarn build:readme",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
-    "build:variables": "ts-node --project './tsconfig.node.json' './scripts/variables.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",

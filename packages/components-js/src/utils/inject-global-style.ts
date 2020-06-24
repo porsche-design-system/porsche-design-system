@@ -1,10 +1,15 @@
+import { CDN_BASE_URL, FONT_FACE_CSS_NAME } from '@porsche-design-system/fonts';
+
 export const injectGlobalStyle = (): void => {
   if (typeof document === 'undefined') {
     return;
   }
 
   const link = document.createElement('link');
-  link.href = 'https://cdn.ui.porsche.com/porsche-design-system/styles/v3/porsche-design-system.css';
+  link.href =
+    process.env.NODE_ENV === 'production'
+      ? `${CDN_BASE_URL}/${FONT_FACE_CSS_NAME}`
+      : 'http://localhost:3001/fonts/font-face.min.css';
   link.type = 'text/css';
   link.rel = 'stylesheet';
   document.getElementsByTagName('head')[0].appendChild(link);
