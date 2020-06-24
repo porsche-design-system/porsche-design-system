@@ -81,6 +81,10 @@
   position: relative !important;
 }
 
+::slotted(p) {
+  margin: 0;
+}
+
 .#{$p-global-class-prefix}button-pure {
   $bem-block: &;
   display: flex;
