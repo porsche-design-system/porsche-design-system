@@ -103,6 +103,10 @@
   outline: $p-color-theme-light-state-focus solid 2px !important;
 }
 
+::slotted(p) {
+  margin: 0;
+}
+
 .#{$p-global-class-prefix}link-pure {
   $bem-block: &;
   display: flex;
