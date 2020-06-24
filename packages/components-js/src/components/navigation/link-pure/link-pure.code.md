@@ -238,6 +238,40 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
   </template>
 </Playground>
 
+---
+
+## Link Pure with Subline
+
+If you need additional information on your link, we provide a `<p slot="subline" />`.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
+
+**Note** If you intend to use a `<a>` tag inside of the `<p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly!
+
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option selected>small</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+    </select>
+  </template>
+  <template v-slot={theme}>
+    <p-link-pure :size="size" :theme="theme" href="https://www.porsche.com">
+       Some label
+       <p slot="subline">Some Subline</p>
+    </p-link-pure>
+    <p-link-pure :size="size" weight="semibold" :theme="theme">
+       <a href="https://www.porsche.com">
+         Some label
+       </a>
+       <p slot="subline">Some Subline</p>
+    </p-link-pure>
+  </template>
+</Playground>
+
+
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   
