@@ -123,12 +123,16 @@ export class ButtonPure {
             <slot />
           </p-text>
         </button>
-        { this.host.querySelector('[slot="subline"]') &&
-            <p-text class={sublineClasses} color="inherit" size="inherit" tag="span">
+        { this.withSubline() &&
+            <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
               <slot name="subline" />
             </p-text> }
       </Host>
     );
+  }
+
+  private withSubline(): boolean {
+    return !! this.host.querySelector('[slot="subline"]');
   }
 
   private isDisabled(): boolean {
