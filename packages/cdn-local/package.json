@@ -2,9 +2,12 @@
   "name": "cdn-local",
   "version": "0.0.0",
   "private": true,
+  "bin": {
+    "start-cdn-local": "./dist/start-cdn-local.js"
+  },
   "scripts": {
-    "start": "yarn build && http-server -p 3001 dist",
-    "build": "rm -rf ./dist && ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "start": "yarn build && node ./dist/start-cdn-local.js",
+    "build": "rm -rf ./dist && ts-node --project './tsconfig.json' './scripts/build.ts' && tsc --build './tsconfig.json'",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
@@ -14,6 +17,7 @@
     "http-server": "^0.12.1"
   },
   "devDependencies": {
+    "@types/http-server": "^0.10.0",
     "ts-node": "^8.10.2",
     "typescript": "~3.8.3"
   }

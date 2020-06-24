@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "CommonJS",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
@@ -10,5 +11,8 @@
     "../../node_modules",
     "node_modules",
     "dist"
+  ],
+  "include": [
+    "start-cdn-local.ts"
   ]
 }

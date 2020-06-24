@@ -4,11 +4,10 @@ import * as path from 'path';
 const cdnPathPackageMap = {
   fonts: '@porsche-design-system/fonts',
   icons: '@porsche-design-system/icons',
-  marque: '@porsche-design-system/marque',
-  styles: '@porsche-design-system/fonts'
+  marque: '@porsche-design-system/marque'
 };
 
-const TARGET_DIRECTORY = '../dist';
+const TARGET_DIRECTORY = '../dist/cdn';
 
 (async () => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
