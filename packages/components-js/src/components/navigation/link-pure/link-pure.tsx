@@ -57,8 +57,8 @@ export class LinkPure {
   private subline: HTMLElement;
 
   public componentWillLoad(): void {
-   this.setSubline();
-   this.addSlottedStyles()
+    this.setSubline();
+    this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
@@ -118,10 +118,11 @@ export class LinkPure {
             <slot />
           </p-text>
         </TagType>
-        { this.subline &&
-            <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
-              <slot name="subline" />
-            </p-text> }
+        {this.subline && (
+          <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
+            <slot name="subline" />
+          </p-text>
+        )}
       </Host>
     );
   }

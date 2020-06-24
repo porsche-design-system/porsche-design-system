@@ -61,7 +61,7 @@ export class ButtonPure {
     }
   }
   public componentWillLoad(): void {
-   this.setSubline();
+    this.setSubline();
   }
 
   public componentDidLoad(): void {
@@ -96,7 +96,7 @@ export class ButtonPure {
     const sublineClasses = cx(
       prefix('button-pure__subline'),
       mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible'])
-      );
+    );
 
     return (
       <Host>
@@ -130,10 +130,11 @@ export class ButtonPure {
             <slot />
           </p-text>
         </button>
-        { this.subline &&
-            <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
-              <slot name="subline" />
-            </p-text> }
+        {this.subline && (
+          <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
+            <slot name="subline" />
+          </p-text>
+        )}
       </Host>
     );
   }
