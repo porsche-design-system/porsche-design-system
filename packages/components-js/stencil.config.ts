@@ -58,7 +58,6 @@ export const config: Config = {
       plugins: [autoprefixer()]
     })
   ],
-  globalStyle: 'src/styles/index.scss',
   globalScript: 'src/setup.ts',
   testing: {
     globalSetup: './jest.setup',
