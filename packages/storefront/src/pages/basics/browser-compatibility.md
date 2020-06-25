@@ -19,8 +19,8 @@ We support the **following Browsers in the latest stable and deprecated predeces
 We have decided to **end the support for Microsoft Internet Explorer 11**.  
 **Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
 
-The Porsche Design System v1.x is the last major version to support Internet Explorer 11 and Microsoft Edge 18. 
-New features introduced with v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
+The **Porsche Design System v1.x** is the last major version to support Internet Explorer 11 and Microsoft Edge 18. 
+New features introduced starting with the Porsche Design System v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
 
 ### Why do we stop the support?
 To empower the opportunities of modern web standards including our technical foundation of using web components (custom elements), and to deliver the best possible user experience, performance and stability. Also, the share of IE11 and EdgeHTML users is the significant minority of our total users. Thus, we don't want to impair the experience for the vast majority.

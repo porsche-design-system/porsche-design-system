@@ -25,7 +25,7 @@ In order to make designing forms as easy as possible we provide you with a Sketc
 A typical form in Porsche web applications is made up of five basic elements:
 
 1. **The general structure**  
-  … is defined by how the form is being played out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.  
+  … is defined by how the form is being layed out within the specific page, involving column layout, logical sections as well as proper spacings helping the user to capture the form at first sight.  
   
 2. **Form fields**  
   … provide all input options the user needs to fill out the form, whether it's commonly used free-form text input (Text Fields, Text Areas) or specific data inputs (such as Checkboxes, Radio Buttons, Select). They can have different states and variants that are described in the specific component guidelines.  
@@ -181,7 +181,7 @@ Depending on the viewport you're designing for you should stick to slightly diff
 | **L** | 1300-1759 px  | 6 grid columns | 64/80 px | 48 px | 16 px |
 | **XL** | 1760 px or larger | 6 grid columns | 64/80 px | 48 px | 16 px |
 
-As for the smallest grouped element within a form – label and form field – we recommend using 4 px spacing. This is also pre-defined in the Porsche Design System form elements.
+As for the smallest grouped element within a form – label and form field – we recommend using 4 px spacing. This is also predefined in the Porsche Design System form elements.
   
 ![Form layout with spacings](../../../assets/patterns-forms-anatomy-mobile-spacings.png)
 
@@ -297,7 +297,7 @@ Always stick to the defined [Accessibility criteria](#/accessibility/introductio
 
 * Forms should **provide 100% keyboard navigation**, which means: Users should be able to jump through the whole form using the tab key.
 * Always **provide focus states** to show the user both the starting and when proceeding the current position. The Porsche Design System form components are provided with a focus state on board.
-* **Never use color as a single indicator for a type of use or state**. In form layout, this means that for error or success notifications and for highlighting incorrect form fields it's highly recommended to work with further formatting, e.g. a larger border width. This is also already pre-defined in the Porsche Design System form components.
+* **Never use color as a single indicator for a type of use or state**. In form layout, this means that for error or success notifications and for highlighting incorrect form fields it's highly recommended to work with further formatting, e.g. a larger border width. This is also already predefined in the Porsche Design System form components.
 * **Provide a sufficient click/touch area** for each component. [Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/) suggest providing a tappable area of 44 x 44 px for all controls. As this "safe zone" might result in large spacings between components (just think of a stacked checkbox list) or overlapping of the tappable areas, we'd recommend defining the tappable area component-based, as the size of the tappable area is also a matter of the general height *and* width of a component. You'll find detailed information in the respective component guidelines.
 
 ---

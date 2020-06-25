@@ -59,7 +59,7 @@ describe("The p-text", function() {
 
 ## E2E Tests
 
-Usually, E2E tests are robust enough that the lazy loading shouldn't cause
+Usually E2E tests are robust enough that the lazy loading shouldn't cause
 any issues. However, there are a lot of different setups for E2E tests.
 
 If you face any problems, we would appreciate if you report them. We'll
@@ -72,6 +72,6 @@ ready.
 
 ## Visual Regression Testing
 
-For Visual Regression Testing, we recommend waiting for all network traffic
+For Visual Regression Testing we recommend waiting for all network traffic
 to be finished. This should be handled by the Visual Regression Testing
 tools you use.
