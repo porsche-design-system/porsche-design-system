@@ -22,7 +22,7 @@ To help you better understand how to use our form guidelines we provide you with
 ## Form grid examples
 
 The basic form grid can be achieved nearly out of the box with Porsche Design System capabilities in addition with some extra CSS magic. 
-Basically you can use the following approach to serve the form grid described in the design guidelines.
+Basically you can use the following approach to serve the form grid described in the [design guidelines](#/patterns/forms#guidelines).
 
 ### Form header
 
@@ -98,7 +98,7 @@ Below you can find the explanations of the used class names.
 
 ### Explanation of used class names
 
-Here you can find the scss of the used class names. This is meant to be just **one** possible solution to build the form grid. 
+Here you can find the **SCSS** of the used class names. This is meant to be just **one** possible solution to build the form grid. 
 It's totally up to you and your team how to achieve the form grid described in the [design guidelines](#/patterns/forms#guidelines).
 
 Setting the responsive widths of the flex-items should always be in context to the specific form and application environment.
