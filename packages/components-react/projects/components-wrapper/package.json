@@ -15,9 +15,9 @@
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Web Components React",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
-  "typings": "./dist/types/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "files": [
     "./dist",
     "./mocks"

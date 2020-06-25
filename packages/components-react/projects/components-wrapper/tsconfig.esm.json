@@ -4,9 +4,7 @@
     "module": "esnext",
     "outDir": "./dist/esm",
     "noEmit": false,
-    "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "./dist/types"
+    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["src/mocks", "src/lib"]
