@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently -k -s \"first\" -n \"pwcm,react\" \"yarn start:pwcm-server\" \"react-scripts start\"",
+    "start:pwcm-server": "start-cdn-pwcm",
     "build": "cd projects/components-wrapper && yarn build",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "jest --config='./tests/mocks/config/jest.config.js'",
@@ -15,6 +16,7 @@
     "@porsche-design-system/components-react": "1.4.0"
   },
   "devDependencies": {
+    "@porsche-design-system/cdn-pwcm": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^1.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.8.0",
