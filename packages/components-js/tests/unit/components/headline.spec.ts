@@ -20,4 +20,12 @@ describe('Component <p-headline>', () => {
     });
     expect(page.root.shadowRoot.querySelector('h3.p-headline')).toBeTruthy();
   });
+
+  it('should render correctly with tag of <div> if tag is set as slot', async () => {
+    const page = await newSpecPage({
+      components: [Headline],
+      html: `<p-headline variant="headline-1"><h3>Some headline</h3></p-headline>`,
+    });
+    expect(page.root.shadowRoot.querySelector('div.p-headline')).toBeTruthy();
+  });
 });

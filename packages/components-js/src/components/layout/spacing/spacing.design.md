@@ -1,5 +1,5 @@
 # Spacing
-We use predefined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes development easier. For fluid layouts the spacings should be used in combination with the [Responsive Grid](#/components/layout/grid).
+We use predefined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes development easier. For fluid layouts the spacings should be used in combination with the [Responsive Grid](#/components/grid).
 
 ### 8px spacing system - the Porsche formula
 

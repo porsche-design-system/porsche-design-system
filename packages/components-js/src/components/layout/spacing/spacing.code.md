@@ -5,7 +5,7 @@ The Porsche Design System spacing values are based on an eighth system:
 `4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 For every unit there is an equivalent `SCSS` variable which has to be additionally installed with the `SCSS utility package` provided in an extra repository.
-**[Read installation instructions for the Porsche Design System SCSS utils package](#/scss-utils/introduction)**
+**[Read installation instructions for the Porsche Design System SCSS utils package](#/utilities/scss)**
 
 
 ### Overview of available spacings

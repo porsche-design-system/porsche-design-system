@@ -7,14 +7,3 @@ export const breakpoints: any = {
   xl: '(min-width: 1760px)',
   xxl: '(min-width: 1920px)'
 };
-
-export const matchBreakpoint = (breakpoint: string | undefined): boolean => {
-  if (breakpoint === undefined || breakpoint === '') {
-    return true;
-  }
-  if ((window as any).matchMedia) {
-    const mediaQuery = breakpoints[breakpoint];
-    return window.matchMedia(mediaQuery).matches;
-  }
-  return false;
-};

@@ -16,7 +16,7 @@ describe('Markdown', () => {
         async () => {
           await vrt.goTo('/#/markdown');
         },
-        '#app > .content > .main > .router-view'
+        { elementSelector: '#app > .content > .main > .router-view' }
       )
     ).toBeFalsy();
   });

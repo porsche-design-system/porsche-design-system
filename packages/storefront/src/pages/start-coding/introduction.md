@@ -1,4 +1,5 @@
-# Start Coding
+# Introduction
+## Start Coding
 
 Porsche Design System provides developers with versioned packages of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions.
 
@@ -64,10 +65,10 @@ yarn add @porsche-design-system/components-react
 #### SCSS utils (optional):
 ``` 
 // install with npm:
-npm install @porsche-design-system/scss-utils --save-dev
+npm install @porsche-design-system/utilities --save-dev
 
 // install with yarn:
-yarn add @porsche-design-system/scss-utils --dev
+yarn add @porsche-design-system/utilities --dev
 ``` 
 
 ## Usage
@@ -96,7 +97,7 @@ If you're using web components in a static website, the following page setup is 
 
 ### SCSS utils
 
-SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/scss-utils/introduction) for further information.
+SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
 
 --- 
 
