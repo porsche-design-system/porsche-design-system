@@ -34,7 +34,6 @@ describe('storefront', () => {
 
           await linkElement.click();
           await browserPage.waitForSelector('.vmark');
-/*          await browserPage.waitFor(40);*/
 
           (expect(await isLinkActive(linkElement)) as any).withContext(`link should be active after click`).toBe(true);
           (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for page view`).toBe(page);
@@ -51,7 +50,6 @@ describe('storefront', () => {
 
             await tabElement.click();
             await browserPage.waitForSelector('.vmark');
-/*            await browserPage.waitFor(40);*/
 
             (expect(await getClassNames(tabElement)) as any).withContext(`should have tab active after click`).toContain('router-link-active');
             (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for tab view`).toBe(page);
