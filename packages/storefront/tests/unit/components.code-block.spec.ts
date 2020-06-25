@@ -207,6 +207,7 @@ describe('CodeBlock.vue', () => {
         markup:
           `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
+  <span slot="some-slot">some slot text</span>
 </p-some-tag>`
       }
     });
@@ -216,8 +217,9 @@ describe('CodeBlock.vue', () => {
     await tick();
 
     expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true">
+      `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" [digitAttribute]="6" [booleanAttribute]="true">
   <span>some text</span>
+  <span slot="some-slot">some slot text</span>
 </p-some-tag>`
     );
   });
