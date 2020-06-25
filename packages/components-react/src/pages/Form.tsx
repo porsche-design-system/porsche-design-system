@@ -1,6 +1,7 @@
 import {
   PGrid as Grid,
   PGridItem as GridItem,
+  PFieldsetWrapper as FieldsetWrapper,
   PHeadline as Headline,
   PCheckboxWrapper as CheckboxWrapper,
   PSelectWrapper as SelectWrapper,
@@ -219,6 +220,20 @@ export function Form() {
             </RadioButtonWrapper>
           </div>
           <Divider/>
+        </GridItem>
+      </Grid>
+      <Grid>
+        <GridItem size="2">
+          <Headline variant="headline-4" tag="h4">&lt;p-fieldset-wrapper&gt;</Headline>
+        </GridItem>
+        <GridItem size="10">
+          <div className="playground light spacing-inline">
+            <FieldsetWrapper label="Some label">
+              <TextFieldWrapper label="Some label">
+                <input type="text" name="some-name"/>
+              </TextFieldWrapper>
+            </FieldsetWrapper>
+          </div>
         </GridItem>
       </Grid>
     </div>

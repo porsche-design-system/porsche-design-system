@@ -32,6 +32,16 @@ This should be the variant of your choice whenever possible, as icons should pre
 
 When it's enough to indicate an interaction with an icon only, the text label can be hidden but a minimum height of 40 px must be maintained. Yet, it's recommended to use this variant only in cases when the user is fully aware of the function due to an expressive and internationally comprehensible icon.
 
+### Icon, Text and Subline  
+
+<p-link-pure size="medium" href="https://www.porsche.com">Some label<p slot="subline">Some Subline</p></p-link-pure> <p-link-pure size="medium" weight="semibold" href="https://www.porsche.com">Some label<p slot="subline">Some Subline</p></p-link-pure>
+
+This should be the variant of your choice if the Link Pure must be supplemented by a subline. 
+However, we recommend that you only use this variant in cases where the user requires additional information. 
+
+The standard variant will be used on a monochrome background, whereas the highlight variant should be used 
+on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
+
 
 ---
 
@@ -67,11 +77,8 @@ The text label within a link should always be short and descriptive.
 
 ### Link Pure on images
 
-A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. Make sure that the readability is also guaranteed on images.
-
-### Additional subtext
-
-Links Pure in size medium or larger can be accompanied by an additional copytext with lower hierarchy. In this case, the copytext should be placed left-aligned with the link text in the Link Pure component.
+A Link Pure can be placed on images, e.g. when using it as an additional link on image sliders or teaser images that are clickable themselves. In this case, the Link Pure can give the user an additional hint on the clickability of the whole image. 
+To guarantee the readability on pictures we recommend the highlight variant.
 
 ### Link Pure groups
 
