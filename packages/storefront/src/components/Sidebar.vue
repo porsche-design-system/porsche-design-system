@@ -2,7 +2,13 @@
   <nav>
     <ul class="list">
       <li v-for="(pages, category, index) in config" :key="index">
-        <p-button-pure size="small" weight="bold" :icon="accordion[category] ? 'minus' : 'plus'" @click="toggleActive(category)">{{ category }}</p-button-pure>
+        <p-button-pure
+          size="small"
+          weight="bold"
+          :icon="accordion[category] ? 'minus' : 'plus'"
+          @click="toggleActive(category)"
+          >{{ category }}</p-button-pure
+        >
         <ul v-show="accordion[category]">
           <li v-for="(tabs, page, index) in pages" :key="index">
             <router-link :to="`/${paramCase(category)}/${paramCase(page)}`" v-slot="{ href, navigate, isActive }">
@@ -45,13 +51,8 @@
     }
 
     @Watch('$route')
-    private async onRouteChange(to: Route): Promise<void> {
-      for (const category of Object.keys(this.config)) {
-        if(category === Sidebar.category(to)) {
-          this.accordion[category] = true;
-          this.accordion = Object.assign({}, this.accordion);
-        }
-      }
+    private onRouteChange(to: Route): void {
+      this.accordion = { ...this.accordion, [Sidebar.category(to)]: true };
     }
 
     toggleActive(category: string): void {
@@ -59,10 +60,7 @@
     }
 
     private static category(route: Route): string {
-      if (route.params.category){
-        return capitalCase(route.params.category);
-      }
-      return '';
+      return route.params.category ? capitalCase(route.params.category) : '';
     }
   }
 </script>
