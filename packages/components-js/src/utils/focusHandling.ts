@@ -4,21 +4,23 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus
  */
 
-const getFocusableElements = (element: HTMLElement|ShadowRoot|Document = document): HTMLElement[] => {
+const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = document): HTMLElement[] => {
   /**
    * from https://github.com/salesforce/lwc/blob/28ac669d6f3e318bbebe74290b5a7ee6c6ceaa93/packages/%40lwc/synthetic-shadow/src/faux-shadow/focus.ts#L48
    */
-  const tabbableElementsSelector = `
-    button:not([tabindex="-1"]):not([disabled]),
-    [contenteditable]:not([tabindex="-1"]),
-    video[controls]:not([tabindex="-1"]),
-    audio[controls]:not([tabindex="-1"]),
-    [href]:not([tabindex="-1"]),
-    input:not([tabindex="-1"]):not([disabled]),
-    select:not([tabindex="-1"]):not([disabled]),
-    textarea:not([tabindex="-1"]):not([disabled]),
-    [tabindex="0"]
-  `;
+  const notTabIndex = ':not([tabindex="-1"])';
+  const notDisabled = ':not([disabled])';
+  const tabbableElementsSelector = [
+    `button${notTabIndex}${notDisabled}`,
+    `[contenteditable]${notTabIndex}`,
+    `video[controls]${notTabIndex}`,
+    `audio[controls]${notTabIndex}`,
+    `[href]${notTabIndex}`,
+    `input${notTabIndex}${notDisabled}`,
+    `select${notTabIndex}${notDisabled}`,
+    `textarea${notTabIndex}${notDisabled}`,
+    '[tabindex="0"]'
+  ].join(',');
 
   /**
    * querySelectorAll returns matching elements in DOM order
@@ -43,14 +45,14 @@ const getFocusableElements = (element: HTMLElement|ShadowRoot|Document = documen
 const createFocusEvent = (type: string, bubbles: boolean): FocusEvent => {
   if (typeof FocusEvent === 'function') {
     return new FocusEvent(type, { bubbles });
+  } else {
+    /**
+     * fallback for IE 11
+     */
+    const focusEvent = document.createEvent('FocusEvent');
+    focusEvent.initEvent(type, bubbles, false);
+    return focusEvent;
   }
-
-  /**
-   * fallback for IE 11
-   */
-  const focusEvent = document.createEvent('FocusEvent');
-  focusEvent.initEvent(type, bubbles, false);
-  return focusEvent;
 };
 
 const getActiveElement = (element: HTMLElement): HTMLElement => {
@@ -66,15 +68,15 @@ const getActiveElement = (element: HTMLElement): HTMLElement => {
 };
 
 export const improveFocusHandlingForCustomElement = (element: HTMLElement): void => {
-  const childElementContainer = element.shadowRoot ? element.shadowRoot : element;
-  element.focus = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
-    const [firstFocusableChild, ] = getFocusableElements(childElementContainer);
+  const childElementContainer = element.shadowRoot ?? element;
+  element.focus = (): void => {
+    const [firstFocusableChild] = getFocusableElements(childElementContainer);
     if (firstFocusableChild) {
       firstFocusableChild.focus();
     }
   };
 
-  element.blur = (): void => { // eslint-disable-line @typescript-eslint/unbound-method
+  element.blur = (): void => {
     const activeElement = getActiveElement(element);
     if (activeElement && childElementContainer.contains(activeElement)) {
       activeElement.blur();

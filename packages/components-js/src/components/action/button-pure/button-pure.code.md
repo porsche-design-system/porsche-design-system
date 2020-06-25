@@ -13,7 +13,7 @@ It can be used with or without a label. When hiding the label make sure to provi
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-pure :theme="theme">Some label</p-button-pure>
-    <p-button-pure disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure disabled="true" :theme="theme">Some label</p-button-pure>
     <p-button-pure loading="true" :theme="theme">Some label</p-button-pure>
   </template>
 </Playground>
@@ -23,7 +23,7 @@ It can be used with or without a label. When hiding the label make sure to provi
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-button-pure hide-label="true" :theme="theme">Some label</p-button-pure>
-    <p-button-pure hide-label="true" disabled="disabled" :theme="theme">Some label</p-button-pure>
+    <p-button-pure hide-label="true" disabled="true" :theme="theme">Some label</p-button-pure>
     <p-button-pure hide-label="true" loading="true" :theme="theme">Some label</p-button-pure>
   </template>
 </Playground>
@@ -150,6 +150,35 @@ With setting the `tabbable` property to `false` you can remove the button from t
     <p-button-pure tabbable="true" :theme="theme">Some label</p-button-pure>
     <br>
     <p-button-pure tabbable="false" hide-label="true" :theme="theme">Some label</p-button-pure>
+  </template>
+</Playground>
+
+---
+
+## Button with Subline
+
+If you need additional information on your button, we provide a `<p slot="subline" />`.
+The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
+
+<Playground :themeable="true">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option selected>small</option>
+      <option>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+    </select>
+  </template>
+  <template v-slot={theme}>
+    <p-button-pure :size="size" :theme="theme">
+         Some label
+         <p slot="subline">Some Subline</p>
+      </p-button-pure>
+    <p-button-pure :size="size" weight="semibold" :theme="theme">
+       Some label
+       <p slot="subline">Some Subline</p>
+    </p-button-pure>
   </template>
 </Playground>
 

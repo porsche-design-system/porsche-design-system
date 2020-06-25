@@ -1,4 +1,4 @@
-# Versioning and releasing
+# Versioning
 
 We value stability and transparency. Thus we strive to ensure that our reusable components, Sketch Libraries and familiar practices don't become obsolete often and unexpectedly.
 
