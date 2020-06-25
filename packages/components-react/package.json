@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently -k -s \"first\" -n \"cdn,react\" \"yarn start:cdn-server\" \"react-scripts start\"",
+    "start:cdn-server": "start-cdn-local",
     "build": "cd projects/components-wrapper && yarn build",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "jest --config='./tests/mocks/config/jest.config.js'",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s \"first\" -n \"cdn,server,vrt\" \"yarn start:cdn-server\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:cbt": "concurrently -k -s \"first\" -n \"cdn,server,cbt\" \"yarn start:cdn-server\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
     "clean": "rm -rf './node_modules' && rm -rf './yarn-error.log' && rm -rf './build'"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@porsche-design-system/utilities": "1.0.0-rc.0"
   },
   "devDependencies": {
+    "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^2.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.9.0",
