@@ -7,7 +7,7 @@ export const injectGlobalStyle = (): void => {
 
   const link = document.createElement('link');
   link.href =
-    process.env.NODE_ENV === 'production'
+    ROLLUP_REPLACE_IS_STAGING === 'production'
       ? `${CDN_BASE_URL}/${FONT_FACE_CSS_NAME}`
       : 'http://localhost:3001/fonts/font-face.min.css';
   link.type = 'text/css';
