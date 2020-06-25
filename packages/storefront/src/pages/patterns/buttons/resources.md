@@ -7,6 +7,8 @@ To help you better understand how to use our button guidelines we provide you wi
 ## Grouped button pattern examples
 
 Basically you can use the following approach to serve the grouped button pattern described in the [design guidelines](#/patterns/buttons#guidelines).
+In a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than **"s"** and side by side on viewports larger than **"s"**. 
+You can change these responsive placements to your needs regarding to the context the buttons are placed in by changing the responsive modifier to `--xs, --s, --m, --l, --xl`.
 
 ### Responsive row/column behaviour left aligned
 
