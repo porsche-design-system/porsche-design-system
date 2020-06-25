@@ -14,7 +14,7 @@ Reusing the pre-built design elements ensures a consistent look and feel across 
 Using our centrally built and continuously maintained design system with standardised components and unified toolings leads to high-quality results. Everything meets the latest technical requirements and standards for accessibility, performance and usability.
 
 **Leverage knowledge and clarity.**  
-With everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboarding new members become much easier and faster.
+With everyone having access to the system and using the same language, it is much easier to collaborate and share knowledge with a clear understanding. Onboarding new members becomes much easier and faster.
 
 ## Principles of success for the Porsche Design System
 The Porsche Design System encourages trust rather than policing by empowering self-responsible teamwork. To take full advantage of the benefits, we apply the following principles:

@@ -1,7 +1,7 @@
 # Compliance
 
 ## Accessibility and the law
-In most countries, there are certain laws to protect the civil rights of persons with disabilities. 
+In most countries there are certain laws to protect the civil rights of persons with disabilities. 
 Due to the fact that the internet provides global access to information, stores, education, financial institutions, etc., these laws often include the support of Web Accessibility in web applications.
 
 In some countries (especially in the U.S.) website owners are **going to get sued** by lawyers which complain about the lack of (basic) accessibility support. 
@@ -39,7 +39,7 @@ Although the BITV guidelines apply only for public institutions it is always rec
 ### China
 
 #### Law on the Protection of Persons with Disabilities
-In China, the old standard [Law on the Protection of Persons with Disabilities](http://www.cdpf.org.cn/english/Resources/lawsregulations/201603/t20160303_542879.shtml) which was evolved in 2008 will be replaced in March 2020 by the new standard [Information Technology Requirements and Testing Methods for Accessibility of Web Content](https://www.w3.org/blog/2020/02/updated-chinese-accessibility-standard/) which is also based on the **WCAG 2.0**.
+In China, the old standard [Law on the Protection of Persons with Disabilities](http://www.cdpf.org.cn/english/Resources/lawsregulations/201603/t20160303_542879.shtml) of 2008 will be replaced in March 2020 by the new standard [Information Technology Requirements and Testing Methods for Accessibility of Web Content](https://www.w3.org/blog/2020/02/updated-chinese-accessibility-standard/), which is also based on the **WCAG 2.0**.
 
 --- 
 
