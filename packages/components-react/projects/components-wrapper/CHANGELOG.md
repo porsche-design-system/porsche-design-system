@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `Fieldset Wrapper` component
 - Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. <h1>-<h6> or <p>, <blockquote>, etc.) directly as slotted content.
 - Possibility to include anchor tags directly as slots of `Link`, `Link Pure` and `Link Social` 
 - `Text` new `weight` property `semibold`
