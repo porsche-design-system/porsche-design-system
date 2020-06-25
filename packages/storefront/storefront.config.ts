@@ -246,6 +246,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components-js/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
       ]
     },
+    'Fieldset': {
+      'Design': [
+        // @ts-ignore
+        () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.design.md`)
+      ],
+      'Code': [
+        // @ts-ignore
+        () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.code.md`)
+      ],
+      'Props': [
+        // @ts-ignore
+        () => import(`@/../../components-js/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`)
+      ]
+    },
     'Radio Button': {
       'Design': [
         // @ts-ignore

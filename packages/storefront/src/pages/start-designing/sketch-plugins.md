@@ -1,5 +1,5 @@
 # Sketch Plugins
-Below you can find a curated list of recommended plugins that are very useful for layouting, but not obligatory for use with the Porsche Design System.
+Below you can find a curated list of recommended plugins that are very useful for layouts, but not obligatory for use with the Porsche Design System.
   
 ## Sketch Runner  
 [Sketch Runner](https://sketchrunner.com/)  

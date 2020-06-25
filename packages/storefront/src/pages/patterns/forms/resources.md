@@ -22,12 +22,12 @@ To help you better understand how to use our form guidelines we provide you with
 ## Form grid examples
 
 The basic form grid can be achieved nearly out of the box with Porsche Design System capabilities in addition with some extra CSS magic. 
-Basically you can use the following approach to serve the form grid described in the design guidelines.
+Basically, you can use the following approach to serve the form grid described in the design guidelines.
 
 ### Form header
 
 The form header can be fully styled with **components** and corresponding **properties**. The only extra CSS you need is a `margin-top` for the subline. 
-You have to add your own class based spacing system to you project because it is not bundled with the Porsche Design System.
+You have to add your own class based spacing system to your project because it is not bundled with the Porsche Design System.
 
 <Playground>
   <p-grid class="form-top-spacing">
@@ -47,43 +47,42 @@ Below you can find the explanations of the used class names.
   <p-grid class="form-section-spacing">
     <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
       <form novalidate>
-        <fieldset class="form-fieldset">
-          <legend><p-headline variant="headline-4" tag="span">Form legend text</p-headline></legend>
-        </fieldset>
-        <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
-          <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-quarter'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-        </p-flex>
-        <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
-          <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-third'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-        </p-flex>
-        <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
-          <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-          <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'half'}">
-            <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
-          </p-flex-item>
-        </p-flex>
-        <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
+        <p-fieldset-wrapper label="Form legend text">
+          <p-flex direction="{base: 'column', m: 'row'}" class="form-grid-item-container">
+            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-quarter'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-quarter'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+          </p-flex>
+          <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
+            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'one-third'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'one-third'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+          </p-flex>
+          <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
+            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'half'}">
+              <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
+            </p-flex-item>
+          </p-flex>
+          <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
+        </p-fieldset-wrapper>
         <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
           <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
             <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
@@ -217,7 +216,7 @@ The horizontal form grid spacings of the grid-container and the grid-item.
 
 ### Form item width reset
 
-Actually this can only be used to switch the button widths between `auto` (width of the content) and `full` (100% width) of `p-button` component. 
+Actually, this can only be used to switch the button widths between `auto` (width of the content) and `full` (100% width) of `p-button` component. 
 This functionality will be added to the form components in the future.
 
 ```scss

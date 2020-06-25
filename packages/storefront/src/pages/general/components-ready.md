@@ -1,6 +1,6 @@
 # Components Ready
 
-Since the components are lazy loaded, it might be hard to tell, when they
+Since the components are loaded lazily, it might be hard to tell, when they
 are ready, if you rely programmatically on them. To solve that we provide
 the `componentsReady` function which returns a promise that resolves as
 soon as all currently used components are loaded and ready to use.
