@@ -120,7 +120,7 @@ export class LinkPure {
         </TagType>
         {this.subline && (
           <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
-           <slot name="subline" />
+            <slot name="subline" />
           </p-text>
         )}
       </Host>
