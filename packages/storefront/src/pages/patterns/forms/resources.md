@@ -22,12 +22,12 @@ To help you better understand how to use our form guidelines we provide you with
 ## Form grid examples
 
 The basic form grid can be achieved nearly out of the box with Porsche Design System capabilities in addition with some extra CSS magic. 
-Basically you can use the following approach to serve the form grid described in the [design guidelines](#/patterns/forms#guidelines).
+Basically, you can use the following approach to serve the form grid described in the [design guidelines](#/patterns/forms#guidelines).
 
 ### Form header
 
 The form header can be fully styled with **components** and corresponding **properties**. The only extra CSS you need is a `margin-top` for the subline. 
-You have to add your own class based spacing system to you project because it is not bundled with the Porsche Design System.
+You have to add your own class based spacing system to your project because it is not bundled with the Porsche Design System.
 
 <Playground>
   <p-grid class="form-top-spacing">
@@ -216,7 +216,7 @@ The horizontal form grid spacings of the grid-container and the grid-item.
 
 ### Form item width reset
 
-Actually this can only be used to switch the button widths between `auto` (width of the content) and `full` (100% width) of `p-button` component. 
+Actually, this can only be used to switch the button widths between `auto` (width of the content) and `full` (100% width) of `p-button` component. 
 This functionality will be added to the form components in the future.
 
 ```scss
