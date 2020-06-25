@@ -150,9 +150,15 @@ function. Just provide the desired prefix as first parameter as a string.
 It will return an object with components that will render with the provided prefix.
 The object keys are the component names in upper camel-case, without the prefix.
 
+Caution: `getPrefixedComponents` needs to be deep imported. For usage of the
+unprefixed components the web components will be defined without a prefix
+automatically. That would also happen, if we would provide `getPrefixedComponents`
+components also within the same barrel export. This way we can ensure, that
+only the prefixed web components are getting defined.
+
 ```
 import React from 'react';
-import { getPrefixedComponents } from '@porsche-design-system/components-react';
+import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
 
 const { PHeadline } = getPrefixedComponents('sample-prefix');
 
@@ -173,6 +179,7 @@ there, that you can change the prefix in a single place.
 
 ```
 // PorscheDesignSystem.ts
+import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
 export const PorscheDesignComponents =  getPrefixedComponents('sample-prefix');
 ```
 
