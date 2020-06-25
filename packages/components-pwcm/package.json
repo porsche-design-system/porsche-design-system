@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "rm -rf ./dist/dev && yarn start:prepare && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && http-server -p 8576 --cors",
+    "start": "rm -rf ./dist && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && yarn start:prepare && yarn start:servers",
     "start:prepare": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
-    "build": "rm -rf ./dist/p && webpack && pwcm build",
+    "start:servers": "concurrently -k -s \"first\" -n \"cdn,server\" \"node dist/cdn/start-cdn-pwcm.js\" \"http-server -p 8575 --cors\"",
+    "build": "rm -rf ./dist && yarn build:webpack && yarn build:pwcm && yarn build:cdn",
+    "build:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack",
+    "build:pwcm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} pwcm build",
+    "build:cdn": "tsc --build tsconfig.cdn.json && chmod +x dist/cdn/start-cdn-pwcm.js && cp cdn/package.json dist/cdn/",
+    "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "test": "yarn test:vrt",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8576 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8575 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
   },
   "dependencies": {
@@ -15,10 +20,12 @@
     "@porsche-design-system/components-js": "1.4.0"
   },
   "devDependencies": {
+    "@types/http-server": "^0.10.0",
     "@types/puppeteer": "^2.1.0",
     "@porsche-design-system/web-components-manager-cli": "0.2.5",
     "@porsche-design-system/visual-regression-tester": "^1.0.1",
     "@porsche-design-system/utils": "0.0.0",
+    "concurrently": "^5.2.0",
     "http-server": "^0.12.3",
     "jasmine": "^3.5.0",
     "puppeteer": "^3.0.4",
