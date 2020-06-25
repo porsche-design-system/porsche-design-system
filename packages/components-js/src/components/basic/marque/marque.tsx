@@ -15,7 +15,7 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    const cdnBaseUrl = process.env.NODE_ENV === 'production'
+    const cdnBaseUrl = ROLLUP_REPLACE_IS_STAGING === 'production'
       ? CDN_BASE_URL
       : 'http://localhost:3001/marque';
     const manifestPath: { [size: string]: { [resolution: string]: string } } =

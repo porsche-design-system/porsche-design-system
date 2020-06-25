@@ -24,7 +24,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
 };
 
 export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_NAME): string => {
-  const cdnBaseUrl = process.env.NODE_ENV === 'production'
+  const cdnBaseUrl = ROLLUP_REPLACE_IS_STAGING === 'production'
     ? CDN_BASE_URL
     : 'http://localhost:3001/icons';
 
