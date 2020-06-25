@@ -1,14 +1,15 @@
 import {
-  addEventListener, getActiveElementId,
+  addEventListener,
+  getActiveElementId,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
-} from "../helpers";
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
+} from '../helpers';
 import { Page } from 'puppeteer';
 import { getBrowser } from '../helpers/setup';
 
 describe('button', () => {
-
   let page: Page;
 
   beforeEach(async () => {
@@ -24,6 +25,31 @@ describe('button', () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
     const el = await getButtonRealButton();
     expect(el).not.toBeNull();
+  });
+
+  it('should not be clickable when disabled', async () => {
+    await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`);
+    const host = await getButtonHost();
+    const button = await getButtonRealButton();
+
+    let calls = 0;
+    await addEventListener(host, 'click', () => calls++);
+
+    await host.click();
+    await button.click();
+
+    const coords = await host.boundingBox();
+    await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+
+    await waitForStencilLifecycle(page);
+
+    expect(calls).toBe(0);
   });
 
   it('should dispatch correct click events', async () => {
@@ -46,8 +72,11 @@ describe('button', () => {
     }
   });
 
-  it(`submits outer forms on click, if it's type submit`, async () => {
-    await setContentWithDesignSystem(page, `<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`);
+  it("submits outer forms on click, if it's type submit", async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`
+    );
     const button = await getButtonRealButton();
     const host = await getButtonHost();
     const form = await selectNode(page, 'form');
@@ -61,19 +90,22 @@ describe('button', () => {
     expect(calls).toBe(1);
   });
 
-  it(`should not submit the form if default is prevented`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <form onsubmit="return false;">
-              <p-button type="submit">Some label</p-button>
-            </form>
-          </div>
-          <script>
-            document.querySelector('#wrapper').addEventListener('click', function(event) {
-              event.preventDefault();
-            });
-          </script>
-    `);
+  it('should not submit the form if default is prevented', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <form onsubmit="return false;">
+          <p-button type="submit">Some label</p-button>
+        </form>
+      </div>
+      <script>
+        document.querySelector('#wrapper').addEventListener('click', function(event) {
+          event.preventDefault();
+        });
+      </script>
+    `
+    );
 
     const button = await getButtonRealButton();
     const form = await selectNode(page, 'form');
@@ -86,14 +118,17 @@ describe('button', () => {
     expect(calls).toBe(0);
   });
 
-  it(`should not submit the form if button is disabled`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <form onsubmit="return false;">
-              <p-button type="submit" disabled="true">Some label</p-button>
-            </form>
-          </div>
-    `);
+  it('should not submit the form if button is disabled', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <form onsubmit="return false;">
+          <p-button type="submit" disabled="true">Some label</p-button>
+        </form>
+      </div>
+    `
+    );
 
     const innerButton = await getButtonRealButton();
     const outerButton = await getButtonHost();
@@ -108,14 +143,17 @@ describe('button', () => {
     expect(calls).toBe(0);
   });
 
-  it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button id="my-button">Some label</p-button>
-            <a href="#" id="after">after</a>
-          </div>
-    `);
+  it('should trigger focus&blur events at the correct time', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button id="my-button">Some label</p-button>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+    );
 
     const button = await getButtonHost();
     const before = await selectNode(page, '#before');
@@ -124,7 +162,7 @@ describe('button', () => {
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
     let buttonFocusCalls = 0;
-    await addEventListener(button, 'focus', () => buttonFocusCalls++)
+    await addEventListener(button, 'focus', () => buttonFocusCalls++);
     let buttonFocusInCalls = 0;
     await addEventListener(button, 'focusin', () => buttonFocusInCalls++);
     let buttonBlurCalls = 0;
@@ -198,17 +236,18 @@ describe('button', () => {
     await page.keyboard.up('ShiftLeft');
   });
 
-  it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button>Some label</p-button>
-          </div>
-    `);
+  it('should provide methods to focus&blur the element', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button>Some label</p-button>
+      </div>
+    `
+    );
 
-    const buttonHasFocus = () => page.evaluate(() =>
-      document.activeElement === document.querySelector('p-button')
-    )
+    const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button'));
 
     const button = await getButtonHost();
     const before = await selectNode(page, '#before');
@@ -223,14 +262,17 @@ describe('button', () => {
     expect(await buttonHasFocus()).toBe(false);
   });
 
-  it(`should be removed from tab order for tabbable false`, async () => {
-    await setContentWithDesignSystem(page, `
-          <div id="wrapper">
-            <a href="#" id="before">before</a>
-            <p-button tabbable="false">Some label</p-button>
-            <a href="#" id="after">after</a>
-          </div>
-    `);
+  it('should be removed from tab order for tabbable false', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div id="wrapper">
+        <a href="#" id="before">before</a>
+        <p-button tabbable="false">Some label</p-button>
+        <a href="#" id="after">after</a>
+      </div>
+    `
+    );
 
     const button = await getButtonHost();
     const before = await selectNode(page, '#before');

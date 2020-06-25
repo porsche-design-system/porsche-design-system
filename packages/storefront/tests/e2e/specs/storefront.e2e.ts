@@ -23,6 +23,7 @@ describe('storefront', () => {
         it(`should navigate to "${category} > ${page}"`, async () => {
 
           await browserPage.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
+          await browserPage.waitForSelector('html.hydrated');
 
           const [buttonElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`);
           const [linkElement] = await browserPage.$x(`//div[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(category)}\/${paramCase(page)}']`);
@@ -32,7 +33,7 @@ describe('storefront', () => {
           (expect(await isLinkActive(linkElement)) as any).withContext(`link should be inactive initially`).toBe(false);
 
           await linkElement.click();
-          await browserPage.waitFor(40);
+          await browserPage.waitForSelector('.vmark');
 
           (expect(await isLinkActive(linkElement)) as any).withContext(`link should be active after click`).toBe(true);
           (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for page view`).toBe(page);
@@ -48,7 +49,7 @@ describe('storefront', () => {
             }
 
             await tabElement.click();
-            await browserPage.waitFor(40);
+            await browserPage.waitForSelector('.vmark');
 
             (expect(await getClassNames(tabElement)) as any).withContext(`should have tab active after click`).toContain('router-link-active');
             (expect(await getMainTitle(browserPage)) as any).withContext(`should show correct main title for tab view`).toBe(page);

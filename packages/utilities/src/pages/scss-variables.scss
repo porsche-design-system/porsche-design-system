@@ -4,10 +4,11 @@
   display: inline-block;
   background: grey;
   height: 50px;
-  width: 50px;
+  min-width: 50px;
   text-align: center;
   line-height: 50px;
   font-size: 10px;
+  white-space: nowrap;
 
   &--color-theme-light-brand {
     background: $p-color-brand;
@@ -20,6 +21,9 @@
   }
   &--color-theme-light-background {
     background: $p-color-background;
+  }
+  &--color-theme-light-background-shading {
+    background: $p-color-background-shading;
   }
   &--color-theme-light-neutral-contrast-high {
     background: $p-color-neutral-contrast-high;
@@ -62,6 +66,9 @@
   }
   &--color-theme-dark-background {
     background: $p-color-theme-dark-background;
+  }
+  &--color-theme-dark-background-shading {
+    background: $p-color-theme-dark-background-shading;
   }
   &--color-theme-dark-neutral-contrast-high {
     background: $p-color-theme-dark-neutral-contrast-high;

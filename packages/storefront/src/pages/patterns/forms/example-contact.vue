@@ -9,9 +9,8 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate>
-          <fieldset class="form-fieldset">
-            <legend><p-headline variant="headline-4" tag="span">Your message</p-headline></legend>
-            <p-flex class="form-row-spacing form-grid-item-container">
+          <p-fieldset-wrapper label="Your message">
+            <p-flex class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-select-wrapper label="Category">
                   <select name="category">
@@ -29,10 +28,9 @@
             <p-textarea-wrapper label="Your message" class="form-row-spacing">
               <textarea name="message"></textarea>
             </p-textarea-wrapper>
-          </fieldset>
-          <fieldset class="form-fieldset form-section-spacing">
-            <legend><p-headline variant="headline-4" tag="span">Personal data</p-headline></legend>
-            <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
+          </p-fieldset-wrapper>
+          <p-fieldset-wrapper label="Personal data" class="form-section-spacing">
+            <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
                 <p-select-wrapper label="Salutation">
                   <select name="salutation">
@@ -72,10 +70,9 @@
             <p-text-field-wrapper label="Phone number" class="form-row-spacing">
               <input type="tel" name="phone">
             </p-text-field-wrapper>
-          </fieldset>
-          <fieldset class="form-fieldset form-section-spacing">
-            <legend><p-headline variant="headline-4" tag="span">Your Porsche</p-headline></legend>
-            <p-text-field-wrapper label="VIN (Vehicle Identification Number)" class="form-row-spacing">
+          </p-fieldset-wrapper>
+          <p-fieldset-wrapper label="Your Porsche" class="form-section-spacing">
+            <p-text-field-wrapper label="VIN (Vehicle Identification Number)">
               <input type="text" name="vin">
             </p-text-field-wrapper>
             <p-select-wrapper label="Gear" class="form-row-spacing">
@@ -93,10 +90,9 @@
             <p-text-field-wrapper label="Mileage" class="form-row-spacing">
               <input type="text" name="mileage">
             </p-text-field-wrapper>
-          </fieldset>
-          <fieldset class="form-fieldset form-section-spacing">
-            <legend><p-headline variant="headline-4" tag="span">Your Porsche dealer</p-headline></legend>
-            <p-select-wrapper label="Porsche dealer" class="form-row-spacing">
+          </p-fieldset-wrapper>
+          <p-fieldset-wrapper label="Your Porsche dealer" class="form-section-spacing">
+            <p-select-wrapper label="Porsche dealer">
               <select name="dealer">
                 <option>Choose an option</option>
                 <option value="1">Option 1</option>
@@ -104,7 +100,7 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-          </fieldset>
+          </p-fieldset-wrapper>
           <p-flex class="form-section-spacing form-grid-item-container">
             <p-flex-item class="form-grid-item">
               <p-checkbox-wrapper>
