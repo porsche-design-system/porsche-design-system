@@ -13,6 +13,7 @@
     | 'default'
     | 'surface'
     | 'background'
+    | 'background-shading'
     | 'neutral-contrast-high'
     | 'neutral-contrast-medium'
     | 'neutral-contrast-low'
@@ -47,64 +48,68 @@
   .color-badge {
     width: p-rem(160px);
     height: p-rem(40px);
-    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
+    border: 1px solid $p-color-neutral-contrast-medium;
 
     // Theme light
     &.light {
       &.brand {
-        background: $p-color-theme-light-brand;
+        background: $p-color-brand;
       }
 
       &.default {
-        background: $p-color-theme-light-default;
+        background: $p-color-default;
       }
 
       &.surface {
-        background: $p-color-theme-light-surface;
+        background: $p-color-surface;
       }
 
       &.background {
-        background: $p-color-theme-light-background;
+        background: $p-color-background;
+      }
+
+      &.background-shading {
+        background: $p-color-background-shading;
       }
 
       &.neutral-contrast-high {
-        background: $p-color-theme-light-neutral-contrast-high;
+        background: $p-color-neutral-contrast-high;
       }
 
       &.neutral-contrast-medium {
-        background: $p-color-theme-light-neutral-contrast-medium;
+        background: $p-color-neutral-contrast-medium;
       }
 
       &.neutral-contrast-low {
-        background: $p-color-theme-light-neutral-contrast-low;
+        background: $p-color-neutral-contrast-low;
       }
 
       &.notification-success {
-        background: $p-color-theme-light-notification-success;
+        background: $p-color-notification-success;
       }
 
       &.notification-warning {
-        background: $p-color-theme-light-notification-warning;
+        background: $p-color-notification-warning;
       }
 
       &.notification-error {
-        background: $p-color-theme-light-notification-error;
+        background: $p-color-notification-error;
       }
 
       &.state-hover {
-        background: $p-color-theme-light-state-hover;
+        background: $p-color-state-hover;
       }
 
       &.state-active {
-        background: $p-color-theme-light-state-active;
+        background: $p-color-state-active;
       }
 
       &.state-focus {
-        background: $p-color-theme-light-state-focus;
+        background: $p-color-state-focus;
       }
 
       &.state-disabled {
-        background: $p-color-theme-light-state-disabled;
+        background: $p-color-state-disabled;
       }
     }
 
@@ -124,6 +129,10 @@
 
       &.background {
         background: $p-color-theme-dark-background;
+      }
+
+      &.background-shading {
+        background: $p-color-theme-dark-background-shading;
       }
 
       &.neutral-contrast-high {
