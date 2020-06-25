@@ -231,11 +231,13 @@ jobs:
       - name: 'Build components-js prod'
         uses: ./docker/node/
         with:
-          entrypoint: run-build --components-js-prod
+          entrypoint: run-build
+          args: --components-js-prod
       - name: 'Build storefront prod'
         uses: ./docker/node/
         with:
-          entrypoint: run-build --storefront
+          entrypoint: run-build
+          args: --storefront
       - name: 'Store build artifact'
         uses: actions/upload-artifact@v1
         with:
