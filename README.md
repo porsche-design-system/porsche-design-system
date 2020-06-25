@@ -208,10 +208,17 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-cbt --components-angular`
 1. Run `./docker.sh run-test-cbt --components-react`
 
+### Make production builds
+1. Run `./docker.sh run-build --components-js-prod`
+1. Run `./docker.sh run-build --components-pwcm-prod`
+1. Run `./docker.sh run-build --components-angular`
+1. Run `./docker.sh run-build --components-react`
+1. Run `./docker.sh run-build --storefront`
+
 ### Update CDN assets
 1. Update (only if something has changed!) `/assets/porsche-design-system/styles` on CDN by creating a new folder with version (v1, v2, v3,…) and upload generated `porsche-design-system.css` from __packages/components-js/dist/porsche-design-system directory__.
 1. Make sure CDN path fits in file `inject-global-style.ts` (lives in __packages/components-js/src/utils directory__).
-1. Upload CDN based `pwcm` components from `/packages/components-pwcm/dist/p/cdn` to CDN (`https://cdn.ui.porsche.com/porsche-design-system/pwcm`)
+1. Upload CDN based `pwcm` components from `/packages/components-pwcm/dist/cdn` to CDN (`https://cdn.ui.porsche.com/porsche-design-system/pwcm`)
 
 ### Commit
 1. Review local changes
@@ -224,7 +231,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ### Publish
 1. Switch to __packages/components-js directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components JS artifact to the Artifactory repository.
-1. Switch to __packages/components-pwcm directory__
+1. Switch to __packages/components-pwcm/dist/npm directory__
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components PWCM artifact to the Artifactory repository.
 1. Switch to __packages/components-angular/dist/components-wrapper directory__ (make sure to release package within **dist** folder)
 1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
