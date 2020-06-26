@@ -343,6 +343,8 @@ export class SelectWrapper {
   }
 
   private createFakeOptionList(): JSX.Element[][] {
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
+
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) =>
       [
         (this.optgroups.length > 0 && option === option.parentNode.firstChild) &&
@@ -365,7 +367,7 @@ export class SelectWrapper {
         >
           <span>{option.text}</span>
           {key === this.optionSelected &&
-          <p-icon class={cx(prefix('select-wrapper__fake-option-icon'))} aria-hidden='true' name='check' color='inherit'/>
+          <PrefixedTagNames.pIcon class={cx(prefix('select-wrapper__fake-option-icon'))} aria-hidden='true' name='check' color='inherit'/>
           }
         </div>
       ]
