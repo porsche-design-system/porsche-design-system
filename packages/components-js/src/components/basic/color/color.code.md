@@ -1,7 +1,7 @@
 # Color
 
-There is no color web component available but predefined SCSS variables provided in an NPM package called `@porsche-design-system/scss-utils`.
-**[Read installation instructions for the Porsche Design System SCSS utils package](#/scss-utils/introduction)**
+There is no color web component available but predefined SCSS/JS variables and functions provided in an NPM package called `@porsche-design-system/utilities`.  
+**[Read installation instructions for the Porsche Design System SCSS/JS utilities package](#/utilities/introduction)**
 
 ## Themes
 
@@ -20,45 +20,46 @@ A light and dark theme is available.
 
 |                                                   |       |                     	             |
 |---------------------------------------------------|------|------------------------------------|
-| <ColorBadge :theme="theme" color="brand"/>  	    | **Brand** | `$p-color-theme-{{theme}}-brand`   |
+| <ColorBadge :theme="theme" color="brand"/>  	    | **Brand** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}brand`   |
 
 #### Background colors
 
 |                                                   |                |      	             |
 |---------------------------------------------------|----------------|--------------------|
-| <ColorBadge :theme="theme" color="background"/>   | **Background** | `$p-color-theme-{{theme}}-background` |
-| <ColorBadge :theme="theme" color="surface"/>      | **Surface**    | `$p-color-theme-{{theme}}-surface` |
+| <ColorBadge :theme="theme" color="background"/>   | **Background** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background` |
+| <ColorBadge :theme="theme" color="background-shading"/>   | **Background Shading** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-shading` |
+| <ColorBadge :theme="theme" color="surface"/>      | **Surface**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}surface` |
 
 #### Text / icon color
 
 |                                                   |             |         	             |
 |---------------------------------------------------|-------------|-----------------------|
-| <ColorBadge :theme="theme" color="default"/>      | **Default** | `$p-color-theme-{{theme}}-default` |
+| <ColorBadge :theme="theme" color="default"/>      | **Default** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}default` |
 
 #### Neutral colors
 
 |                                                   |                      	                |                         |
 |---------------------------------------------------|---------------------------------------|-------------------------|
-| <ColorBadge :theme="theme" color="neutral-contrast-high"/>  	| **Neutral Contrast High** | `$p-color-theme-{{theme}}-neutral-contrast-high`   |
-| <ColorBadge :theme="theme" color="neutral-contrast-medium"/>  | **Neutral Contrast Medium** | `$p-color-theme-{{theme}}-neutral-contrast-medium` |
-| <ColorBadge :theme="theme" color="neutral-contrast-low"/>  	| **Neutral Contrast Low** | `$p-color-theme-{{theme}}-neutral-contrast-low`    |
+| <ColorBadge :theme="theme" color="neutral-contrast-high"/>  	| **Neutral Contrast High** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}neutral-contrast-high`   |
+| <ColorBadge :theme="theme" color="neutral-contrast-medium"/>  | **Neutral Contrast Medium** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}neutral-contrast-medium` |
+| <ColorBadge :theme="theme" color="neutral-contrast-low"/>  	| **Neutral Contrast Low** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}neutral-contrast-low`    |
 
 #### Notification colors
 
 |                                                           |            |          	                            |
 |-----------------------------------------------------------|------------|---------------------------------------|
-| <ColorBadge :theme="theme" color="notification-error"/>  	| **Error** | `$p-color-theme-{{theme}}-notification-error`     |
-| <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `$p-color-theme-{{theme}}-notification-success`   |
-| <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `$p-color-theme-{{theme}}-notification-warning`   |
+| <ColorBadge :theme="theme" color="notification-error"/>  	| **Error** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-error`     |
+| <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-success`   |
+| <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-warning`   |
 
 #### State colors
 
 |                                                     |           |                      	                  |
 |-----------------------------------------------------|-----------|-------------------------------------------|
-| <ColorBadge :theme="theme" color="state-hover"/>    | **:hover**    | `$p-color-theme-{{theme}}-state-hover`    |
-| <ColorBadge :theme="theme" color="state-active"/>   | **:active**   | `$p-color-theme-{{theme}}-state-active`   |
-| <ColorBadge :theme="theme" color="state-focus"/>    | **:focus**    | `$p-color-theme-{{theme}}-state-focus`    |
-| <ColorBadge :theme="theme" color="state-disabled"/> | **:disabled** | `$p-color-theme-{{theme}}-state-disabled` |
+| <ColorBadge :theme="theme" color="state-hover"/>    | **:hover**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}state-hover`    |
+| <ColorBadge :theme="theme" color="state-active"/>   | **:active**   | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}state-active`   |
+| <ColorBadge :theme="theme" color="state-focus"/>    | **:focus**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}state-focus`    |
+| <ColorBadge :theme="theme" color="state-disabled"/> | **:disabled** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}state-disabled` |
 
 ---
 

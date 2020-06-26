@@ -1,4 +1,4 @@
-# Checkbox Wrapper
+# Checkbox
 
 
 
@@ -13,3 +13,11 @@
 | `label`     | `label`      | The label text.                                                                  | `string`                                         | `''`     |
 | `message`   | `message`    | The message styled depending on validation state.                                | `string`                                         | `''`     |
 | `state`     | `state`      | The validation state.                                                            | `"error" \| "none" \| "success"`                 | `'none'` |
+
+
+## Dependencies
+
+### Depends on
+
+- [p-text](#/components/typography#text)
+- [p-icon](#/components/icon)

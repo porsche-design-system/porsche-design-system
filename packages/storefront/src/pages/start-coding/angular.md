@@ -1,4 +1,5 @@
-# Angular - Sample integration
+# Angular
+## Sample integration
 
 You can find the repository of the angular example project here: [Sample integration angular](https://github.com/porscheui/sample-integration-angular)
 
@@ -26,7 +27,7 @@ You can find the repository of the angular example project here: [Sample integra
 ## Reproduce on your own
 To build your own application with the components of the Porsche Design System, follow these steps:
 
-* Follow the instructions at [Introduction](https://designsystem.porsche.com/v1/#/start-coding/introduction) to get the required npm package
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Run `ng new my-app` to create a new Angular workspace and initial project
 * Install the Porsche Design System
 
@@ -84,15 +85,15 @@ Run the application by executing `yarn start` or `npm start` and see if the Pors
 You are now ready to build your own Angular application using the Porsche Design System.
 
 ## Advanced usage
-By default the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
+By default, the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
 System Loader automatically.  
-But in some cases, for example if you want to include the Porsche Design System in Web Components that
+But in some cases for example, if you want to include the Porsche Design System in Web Components that
 you build with Angular, you might need more control on who is registering those components to prevent
-conflicts. In this case you can provide the `PREVENT_WEB_COMPONENTS_REGISTRATION` inject token with the
+conflicts. In this case, you can provide the `PREVENT_WEB_COMPONENTS_REGISTRATION` inject token with the
 value `true`. This will prevent the loading of polyfills and registration of the Web Components provided
 by the Porsche Design System, while keeping you able to use the Angular components.  
 Caution, if you opt-out of the automatic registering you've to take care that they are registered in some
-other place, else the Angular components won't work as expected.
+other places, else the Angular components won't work as expected.
 
 You can provide the token as follows:
 ```

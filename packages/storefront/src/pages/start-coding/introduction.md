@@ -1,4 +1,5 @@
-# Start Coding
+# Introduction
+## Start Coding
 
 Porsche Design System provides developers with versioned packages of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions.
 
@@ -64,10 +65,10 @@ yarn add @porsche-design-system/components-react
 #### SCSS utils (optional):
 ``` 
 // install with npm:
-npm install @porsche-design-system/scss-utils --save-dev
+npm install @porsche-design-system/utilities --save-dev
 
 // install with yarn:
-yarn add @porsche-design-system/scss-utils --dev
+yarn add @porsche-design-system/utilities --dev
 ``` 
 
 ## Usage
@@ -121,13 +122,13 @@ do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item
 
 ### SCSS utils
 
-SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/scss-utils/introduction) for further information.
+SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
 
 --- 
 
-### Web components used with non-supported framework
+### Web components used with a not-supported framework
 
-At time of writing we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. 
+At the time of writing, we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. 
 Just follow these guidelines to make our web components work in other frameworks:
 
 - [Guidelines for Vue](https://stenciljs.com/docs/vue)

@@ -1,7 +1,20 @@
-@import '../../../../../../../packages/scss-utils/index';
+@import '../../../../../../../packages/utilities/projects/utilities/scss';
 
 :host {
   display: block;
+}
+
+::slotted(p),
+::slotted(address),
+::slotted(blockquote),
+::slotted(figcaption),
+::slotted(cite),
+::slotted(time),
+::slotted(legend) {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-style: normal !important;
+  font-size: inherit !important;
 }
 
 .#{$p-global-class-prefix}text {
@@ -154,6 +167,10 @@
 
   &--weight-regular {
     font-weight: $p-font-weight-regular;
+  }
+
+  &--weight-semibold {
+    font-weight: $p-font-weight-semibold;
   }
 
   &--weight-bold {

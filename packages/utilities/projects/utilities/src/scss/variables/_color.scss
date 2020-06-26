@@ -1,0 +1,94 @@
+/**
+ * Theme light
+ */
+
+// Porsche brand colors
+$p-color-brand: #d5001c;
+$p-color-theme-light-brand: $p-color-brand;
+
+// Default colors
+$p-color-default: #000;
+$p-color-theme-light-default: $p-color-default;
+
+// Surface colors
+$p-color-surface: #f2f2f2;
+$p-color-theme-light-surface: $p-color-surface;
+
+// Background colors
+$p-color-background: #fff;
+$p-color-theme-light-background: $p-color-background;
+$p-color-background-shading: rgba(#0e1418, 0.9);
+$p-color-theme-light-background-shading: $p-color-background-shading;
+
+// Neutral colors
+$p-color-neutral-contrast-high: #323639;
+$p-color-theme-light-neutral-contrast-high: $p-color-neutral-contrast-high;
+$p-color-neutral-contrast-medium: #626669;
+$p-color-theme-light-neutral-contrast-medium: $p-color-neutral-contrast-medium;
+$p-color-neutral-contrast-low: #c9cacb;
+$p-color-theme-light-neutral-contrast-low: $p-color-neutral-contrast-low;
+
+// Notification colors
+$p-color-notification-success: #018a16;
+$p-color-theme-light-notification-success: $p-color-notification-success;
+$p-color-notification-warning: #ff9b00;
+$p-color-theme-light-notification-warning: $p-color-notification-warning;
+$p-color-notification-error: #e00000;
+$p-color-theme-light-notification-error: $p-color-notification-error;
+
+// State colors
+$p-color-state-hover: #d5001c;
+$p-color-theme-light-state-hover: $p-color-state-hover;
+$p-color-state-active: #d5001c;
+$p-color-theme-light-state-active: $p-color-state-active;
+$p-color-state-focus: #00d5b9;
+$p-color-theme-light-state-focus: $p-color-state-focus;
+$p-color-state-disabled: #96989a;
+$p-color-theme-light-state-disabled: $p-color-state-disabled;
+
+/**
+ * Theme dark
+ */
+
+// Porsche brand colors
+$p-color-theme-dark-brand: #d5001c;
+
+// Default colors
+$p-color-theme-dark-default: #fff;
+
+// Surface colors
+$p-color-theme-dark-surface: #1a2023;
+
+// Background colors
+$p-color-theme-dark-background: #0e1418;
+$p-color-theme-dark-background-shading: rgba($p-color-theme-dark-background, 0.9);
+
+// Neutral colors
+$p-color-theme-dark-neutral-contrast-high: #e3e4e5;
+$p-color-theme-dark-neutral-contrast-medium: #b0b1b2;
+$p-color-theme-dark-neutral-contrast-low: #4a4e51;
+
+// Notification colors
+$p-color-theme-dark-notification-success: #01ba1d;
+$p-color-theme-dark-notification-warning: #ff9b00;
+$p-color-theme-dark-notification-error: #fc1717;
+
+// State colors
+$p-color-theme-dark-state-hover: #d5001c;
+$p-color-theme-dark-state-active: #d5001c;
+$p-color-theme-dark-state-focus: #00d5b9;
+$p-color-theme-dark-state-disabled: #7c7f81;
+
+/**
+ * External brand colors
+ */
+$p-color-external-facebook: #1877f2;
+$p-color-external-google: #4285f4;
+$p-color-external-instagram: #e1306c;
+$p-color-external-linkedin: #0077b5;
+$p-color-external-pinterest: #e60023;
+$p-color-external-twitter: #1da1f2;
+$p-color-external-wechat: #1aad19;
+$p-color-external-whatsapp: #25d366;
+$p-color-external-xing: #006567;
+$p-color-external-youtube: #ff0000;

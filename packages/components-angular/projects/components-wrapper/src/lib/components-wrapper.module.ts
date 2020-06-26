@@ -27,6 +27,7 @@ import {
   PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
+  PFieldsetWrapper,
   PDivider
 } from './components-wrapper.component';
 
@@ -54,6 +55,7 @@ const DECLARATIONS = [
   PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
+  PFieldsetWrapper,
   PDivider
 ];
 
