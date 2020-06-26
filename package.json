@@ -43,7 +43,7 @@
     "preinstall:components-angular": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
     "preinstall:components-pwcm": "yarn preinstall:components-pwcm:npm && yarn preinstall:components-pwcm:cdn",
     "preinstall:components-pwcm:npm": "mkdir -p './packages/components-pwcm/dist/npm' && cp './packages/components-pwcm/src/package.json' './packages/components-pwcm/dist/npm/package.json'",
-    "preinstall:components-pwcm:cdn": "mkdir -p './packages/components-pwcm/dist/cdn' && cp './packages/components-pwcm/cdn/package.json' './packages/components-pwcm/dist/cdn/package.json'",
+    "preinstall:components-pwcm:cdn": "mkdir -p './packages/components-pwcm/dist/cdn' && cp './packages/components-pwcm/cdn/package.json' './packages/components-pwcm/dist/cdn/package.json' && touch './packages/components-pwcm/dist/cdn/start-cdn-pwcm.js'",
     "start": "yarn build && concurrently --kill-others-on-fail -n \"components-js,storefront\" \"yarn start:components-js\" \"yarn start:storefront\" \"yarn start:components-pwcm\"",
     "start:components-js": "yarn --cwd ./packages/components-js start",
     "start:components-angular": "yarn --cwd ./packages/components-angular start",
