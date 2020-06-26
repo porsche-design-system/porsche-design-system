@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+/**
+ * todo: this server is quite a little bit redundant with cdn-local
+ * package. let's see after everything is merged if we can combine it.
+ */
+
 import { createServer } from 'http-server';
 import * as path from 'path';
 
