@@ -43,7 +43,7 @@
     * `./docker.sh run-build --components-angular` (builds angular components)
     * `./docker.sh run-build --components-react` (builds react components)
     * `./docker.sh run-build --storefront` (builds storefront)
-    * `./docker.sh run-build --utils` (builds utilities)
+    * `./docker.sh run-build --utilities` (builds utilities)
 
 ### Start
 1. Switch to __project root directory__
@@ -69,6 +69,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-unit` (unit tests for the entire application)
+    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
     * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
     
@@ -89,6 +90,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
+    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
     * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
     * `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
     * `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
@@ -251,26 +253,30 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Utils (SCSS)
+## Release management - Porsche Design System Utilities
 
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
 1. Run `git pull origin {current master- or v-branch}`
 
-### Design System SCSS Utils
-1. Switch to __packages/scss-utils directory__
+### Porsche Design System Utilities
+1. Switch to __packages/utilities/projects/utilities directory__
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update version number of `@porsche-design-system/scss-utils` in the mono repo to corresponding version number
+1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
+1. Switch to __project root directory__
+1. Run `./docker.sh run-build --utilities`
+1. Run `./docker.sh run-test-unit --utilities`
+1. Run `./docker.sh run-test-vrt --utilities`
 
 ### Commit
-1. Create a commit with following message structure `Release Porsche Design System SCSS Utils v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push local commit to release branch `git push origin {current master- or v-branch}`
 
 ### Publish
-1. Switch to __packages/scss-utils directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System SCSS Utils artifact to the Artifactory repository.
+1. Switch to __packages/utilities/projects/utilities directory__
+1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Porsche Design System Utilities artifact to private npm repository.
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace

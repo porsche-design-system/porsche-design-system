@@ -59,3 +59,7 @@ yarn test:vrt:components-pwcm
 yarn test:vrt:components-angular
 yarn test:vrt:components-react
 yarn test:mocks:components-react
+
+# we have so far the dev build in the dist directory
+# let's create the production build to release it
+yarn build:components-js-prod

@@ -1,18 +1,18 @@
 # Guidelines
 
 ## Level of Web Accessibility we need to support
-As a **global company** Porsche has to fulfill certain accessibility criteria which can be different from country to country. 
-To grant a well balanced and global level of accessibility, we recommend to make all web applications compliant with the **Web Content Accessibility Guidelines 2.0 [WCAG-2.0](https://www.w3.org/TR/WCAG20/)** at **level AA**. 
+As a **global company** Porsche has to fulfil certain accessibility criteria which can be different from country to country. 
+To grant a well balanced and global level of accessibility, we recommend making all web applications compliant with the **Web Content Accessibility Guidelines 2.0 [WCAG-2.0](https://www.w3.org/TR/WCAG20/)** at **level AA**. 
 
 
 ## WCAG 2.0 AA checklist 
-The following list is a breakdown of the most important rules and measures to provide a good level of accessibility and a less risk of legal entanglement from lawyers.
+The following list is a breakdown of the most important rules and measures to provide a good level of accessibility and less risk of legal entanglement from lawyers.
 
 ### Alternatives
 - **Alt text:** All images and non-text content needs alt text (there are exceptions)
-- **Video & Audio alternatives:** All video-only and audio-only content has a text transcript. Transcripts are clearly labeled and linked below the media.
+- **Video & Audio alternatives:** All video-only and audio-only content has a text transcript. Transcripts are clearly labelled and linked below the media.
 - **Closed captioning:** All video with sound contains accurate closed captioning.
-- **Audio description:** For any video, add an alternative video that includes an audio description of information not presented in the original video’s soundtrack (exceptions) or include a text .
+- **Audio description:** For any video, add an alternative video that includes audio description of information not presented in the original video’s soundtrack (exceptions) or include a text.
 - **Live captions:** Any live video presentations must have closed captions.
 - **Audio description:** An audio description is optional under 1.2.3 level A but not in 1.2.5 AA.
 
@@ -40,15 +40,15 @@ The following list is a breakdown of the most important rules and measures to pr
 - **Link anchor text:** The purpose of each link should be clear based on its anchor text (e.g. don’t use “click here”)
 - **Multiple ways:** There are multiple ways to access different pages/information on a website (e.g. search bar, nav menus, sitemap, breadcrumbs, helpful links after content).
 - **Descriptive headings and labels:** Headings and programmatic labels must be clear and descriptive. They do not need to be lengthy.
-- **Focus indicator:** Any “user interface control” that receives focus from a keyboard user should indicate that focus on the current selected element (e.g. add a visible border around a text link).
+- **Focus indicator:** Any “user interface control” that receives focus from a keyboard user should indicate that focus on the currently selected element (e.g. add a visible border around a text link).
 - **Website language:** Set the language for your website.
 - **Language changes:** Indicate any language changes for an entire page or within the content.
 
 ### Predictability
 - **No focus change:** Nothing changes merely because an item receives focus; a user must actively choose to activate an item (e.g. hit enter to submit) before a change takes place.
-- **No input change:** Nothing changes just because information is inputted into a field (e.g. form doesn’t auto submit once all fields are filled out).
+- **No input change:** Nothing changes just because the information is inputted into a field (e.g. form doesn’t auto-submit once all fields are filled out).
 - **Consistent navigation:** Keep navigation layout consistent throughout all pages of the website (e.g. same links in the same order).
-- **Consistent identification:** Components that have the same function within a website are identified consistently (but not necessarily identically) (e.g. two check marks can indicate two different things as long as their function is different — one indicates “approved” on one page but “included” on another).
+- **Consistent identification:** Components that have the same function within a website are identified consistently (but not necessarily identically) (e.g. two checkmarks can indicate two different things as long as their function is different — one indicates “approved” on one page but “included” on another).
 - **Error identification:** Make any form errors easy to identify, understand, and correct.
 - **Form labels and instructions:** Programmatically label all form or input fields so that a user knows what input and what format is expected.
 - **Error suggestions:** If an input error is automatically detected, then suggestions for correcting the error should be provided.
@@ -59,10 +59,10 @@ The following list is a breakdown of the most important rules and measures to pr
 --- 
 
 ## Minified checklist to explicitly reduce the risk of legal exposure
-The following list is a **distilled set of rules** to reduce the risk of legal exposure. It is always recommended to **fulfill the whole WCAG 2.0 ruleset** but as a first step it can be helpful to take this as a starting point.
+The following list is a **distilled set of rules** to reduce the risk of legal exposure. It is always recommended to **fulfil the whole WCAG 2.0 ruleset** but as a first step it can be helpful to take this as a starting point.
 
 1. Test your application with the [WAVE Browser plugin](https://wave.webaim.org/) and fix the red errors (e.g. missing alt-text)
-1. Make your 5 top visited sites accessible and start with your **homepage**
+1. Make your 5 top-visited sites accessible and start with your **homepage**
 1. Optimize your alt-text and add captions to video content
 1. Check all your links to be valid (not broken) and descriptive
 1. Add a skip navigation at the beginning of your website
@@ -88,7 +88,7 @@ The following list is a **distilled set of rules** to reduce the risk of legal e
 ### Design guidelines
 
 ####  Contrasts
-Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast will help you making your site more readable for everyone. Contrast ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
+Best done early in the process, ensuring that the foreground and background colors of your site have sufficient contrast will help you make your site more readable for everyone. Contrast ratio is one tool for checking the contrast of your colors for both standard-vision and color-deficient users.
 
 #### Colors
 * Be sure to layout and develop for some kinds of color blindness
@@ -122,12 +122,12 @@ Always develop your markup with semantics in mind.
 
 Here is a list of [possible HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) you can use (there is so much more than divs!).
 
-For users who either cannot use or choose not to use a mouse, keyboard navigation is their primary means of reaching everything on screen. 
+For users who either cannot use or choose not to use a mouse, keyboard navigation is their primary means of reaching everything on the screen. 
 This audience includes users with motor impairments, such as repetitive stress injury (RSI) or paralysis, as well as screen-reader users. 
 For a good keyboarding experience, aim to have a logical (semantic) tab order and easily discernable focus state styles.
 
 #### WAI-ARIA
-Provide basic implementation of "Web Accessibility Initiative's Accessible Rich Internet Applications" specification (in short: WAI-ARIA) especially for screen-reader usage.
+Provide a basic implementation of "Web Accessibility Initiative's Accessible Rich Internet Applications" specification (in short: WAI-ARIA) especially for screen-reader usage.
 WAI-ARIA can modify existing element semantics or add semantics to elements where no native semantics exist. It can also express semantic patterns that don't exist at all in HTML, like a menu or a tab panel. 
 Often, WAI-ARIA lets us create widget-type elements that wouldn't be possible with plain HTML.
 
@@ -143,7 +143,7 @@ Further information:
 --- 
 
 ## Testing
-Testing Web accessibility is hard an can't be managed by tools only. As a rule of thumb only 30% of testing can be automated. The left 70% should be tested with humans.
+Testing Web accessibility is hard and can't be managed by tools only. As a rule of thumb, only 30% of testing can be automated. The left 70% should be tested with humans.
 
 ### Tools to check Web Accessibility
 #### Chrome Extensions:  

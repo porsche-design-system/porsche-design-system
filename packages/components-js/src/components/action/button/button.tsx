@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -25,7 +25,7 @@ export class Button {
   @Prop() public type?: ButtonType = 'button';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ reflect: true }) public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -45,9 +45,20 @@ export class Button {
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
+  }
+
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+    improveButtonHandlingForCustomElement(
+      this.element,
+      () => this.type,
+      () => this.isDisabled()
+    );
   }
 
   public render(): JSX.Element {
@@ -72,21 +83,21 @@ export class Button {
         {this.loading ? (
           <PrefixedTagNames.pSpinner
             class={iconClasses}
-            size='inherit'
-            theme={this.variant === 'tertiary' && this.theme === 'light' ? 'light' : 'dark'}
+            size="inherit"
+            theme={(this.variant === 'tertiary' && this.theme) || 'dark'}
           />
         ) : (
           <PrefixedTagNames.pIcon
             class={iconClasses}
-            size='inherit'
+            size="inherit"
             name={this.icon}
             source={this.iconSource}
-            color='inherit'
-            aria-hidden='true'
+            color="inherit"
+            aria-hidden="true"
           />
         )}
-        <PrefixedTagNames.pText class={labelClasses} tag='span' color='inherit'>
-          <slot/>
+        <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit">
+          <slot />
         </PrefixedTagNames.pText>
       </button>
     );

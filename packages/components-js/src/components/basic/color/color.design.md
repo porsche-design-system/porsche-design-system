@@ -62,6 +62,7 @@ All colors must always be used in 100% opacity.
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge theme="light" color="background"/>  	                                    | **Background**        	| #FFFFFF 	| 255/255/255   	| Page background  |
 | <ColorBadge theme="light" color="surface"/> 	                                    | **Surface**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
 
 ### Text / icon color
 
@@ -126,6 +127,7 @@ When using notification colors …
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge theme="dark" color="background"/> 	                                    | **Background**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge theme="dark" color="surface"/>                                      | **Surface**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
 
 ### Text / icon color
 
@@ -203,7 +205,7 @@ Sticking to the [Porsche Brand Code](https://brandguide.porsche.com/elements/man
 
 ## Accessibility
 
-In order to make content accessible for a wide range of people and to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/basics/accessibility-criteria) when designing Porsche web applications.
+In order to make content accessible for a wide range of people and to improve the product’s usability in general, we stick to the common [WCAG 2.1 Standard](#/accessibility/guidelines) when designing Porsche web applications.
 
 - Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 for larger text sizes.
 
