@@ -202,11 +202,6 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-build
-      - name: 'Store build artifact'
-        uses: actions/upload-artifact@v1
-        with:
-          name: storefront-build
-          path: ./packages/storefront/dist
       - name: 'Lint'
         uses: ./docker/node/
         with:
@@ -233,6 +228,21 @@ jobs:
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
+      - name: 'Build components-pwcm prod'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --components-pwcm-prod
+      - name: 'Build storefront prod'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --storefront
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
   deployment:
     name: 'Deployment'
     needs: [components-js, components-angular, components-react, storefront]
