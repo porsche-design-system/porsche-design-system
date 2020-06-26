@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-js": "1.5.0-rc.0",
-    "@porsche-design-system/components-pwcm": "1.4.0"
+    "@porsche-design-system/components-pwcm": "1.5.0-rc.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",

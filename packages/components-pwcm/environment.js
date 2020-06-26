@@ -11,5 +11,5 @@ module.exports = {
   cdnBasePath: path.resolve('./dist/cdn'),
   npmDistPath: path.resolve('./dist/npm'),
   version: packageJson.version,
-  snakeCaseVersion: packageJson.version.replace(/\./g, '_')
+  snakeCaseVersion: packageJson.version.replace(/\.|-/g, '_')
 };
