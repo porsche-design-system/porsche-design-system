@@ -41,7 +41,7 @@
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "scripts": {
-    "preinstall": "yarn preinstall:components-angular && yarn preinstall:components-cdn-local && yarn preinstall:components-pwc",
+    "preinstall": "yarn preinstall:components-angular && yarn preinstall:components-cdn-local && yarn preinstall:components-pwcm",
     "preinstall:components-angular": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
     "preinstall:components-cdn-local": "mkdir -p './packages/cdn-local/dist' && touch './packages/cdn-local/dist/start-cdn-local.js'",
     "preinstall:components-pwcm": "yarn preinstall:components-pwcm:npm && yarn preinstall:components-pwcm:cdn",

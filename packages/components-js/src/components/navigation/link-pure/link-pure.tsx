@@ -91,7 +91,7 @@ export class LinkPure {
       mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
       <Host>
