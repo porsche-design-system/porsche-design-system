@@ -4,14 +4,15 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
+    "start": "concurrently -k -s \"first\" -n \"cdn,vue\" \"yarn start:pwcm-server\" \"vue-cli-service serve\"",
+    "start:pwcm-server": "start-cdn-pwcm",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "browser=$(node tests/e2e/support/browser.js) && vue-cli-service test:e2e --browser $browser",
+    "test:e2e": "browser=$(node tests/e2e/support/browser.js) && concurrently -k -s \"first\" -n \"cdn,e2e\" \"yarn start:pwcm-server\" \"vue-cli-service test:e2e --browser $browser\"",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist",
-    "start": "vue-cli-service serve",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\""
+    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -25,6 +26,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@porsche-design-system/cdn-pwcm": "0.0.0",
     "@types/jest": "^25.2.3",
     "@types/js-beautify": "^1.11.0",
     "@types/lodash": "^4.14.153",

@@ -2,9 +2,9 @@ import Vue, { VueConstructor } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import {defineCustomElements, applyPolyfills} from '@porsche-design-system/components-js/loader';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
+import { load } from '@porsche-design-system/components-pwcm';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
@@ -17,10 +17,8 @@ window.location.hash = window.location.hash.replace('%23', '#');
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/p-\w*/];
 
-(async () => {
-  await applyPolyfills();
-  await defineCustomElements(window);
-})();
+// load Porsche Design System
+load();
 
 Vue.use({
   install(vue: VueConstructor) {
