@@ -95,7 +95,9 @@ If you're using web components in a static website, the following page setup is 
 ``` 
 
 You can load the Porsche Design System with a custom unique prefix to prevent conflicts. You've just to pass
-the prefix as a parameter to the `load`-method.
+the prefix as a parameter to the `load`-method.  
+Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
+do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.  
 
 ``` 
 <!DOCTYPE html>
