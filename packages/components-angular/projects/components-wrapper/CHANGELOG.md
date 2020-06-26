@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0-rc.0] - 2020-06-25
+
 ### Added
 - `Fieldset Wrapper` component
 - Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. <h1>-<h6> or <p>, <blockquote>, etc.) directly as slotted content.
