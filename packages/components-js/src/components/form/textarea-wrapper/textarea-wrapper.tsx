@@ -15,7 +15,6 @@ import { FormState } from '../../../types';
   shadow: true
 })
 export class TextareaWrapper {
-
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -51,7 +50,6 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-
     const labelClasses = cx(prefix('textarea-wrapper__label'));
     const labelTextClasses = cx(
       prefix('textarea-wrapper__label-text'),
@@ -69,37 +67,42 @@ export class TextareaWrapper {
       this.disabled && prefix('textarea-wrapper__fake-textarea--disabled'),
       this.readonly && prefix('textarea-wrapper__fake-textarea--readonly')
     );
-    const messageClasses = cx(
-      prefix('textarea-wrapper__message'),
-      prefix(`textarea-wrapper__message--${this.state}`)
-    );
+    const messageClasses = cx(prefix('textarea-wrapper__message'), prefix(`textarea-wrapper__message--${this.state}`));
 
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible &&
-          <p-text class={labelTextClasses} color='inherit' tag='span' onClick={(): void => this.labelClick()}>
-            {this.label ? this.label : <span><slot name='label'/></span>}
-          </p-text>
-          }
-          {this.isDescriptionVisible &&
-          <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
-            {this.description ? this.description : <span><slot name='description'/></span>}
-          </p-text>
-          }
+          {this.isLabelVisible && (
+            <p-text class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
+              {this.label || (
+                <span>
+                  <slot name="label" />
+                </span>
+              )}
+            </p-text>
+          )}
+          {this.isDescriptionVisible && (
+            <p-text class={descriptionTextClasses} tag="span" color="inherit" size="x-small" onClick={this.labelClick}>
+              {this.description || (
+                <span>
+                  <slot name="description" />
+                </span>
+              )}
+            </p-text>
+          )}
           <span class={fakeTextareaClasses}>
-            <slot/>
+            <slot />
           </span>
         </label>
-        {this.isMessageVisible &&
-        <p-text
-          class={messageClasses}
-          color='inherit'
-          role={this.state === 'error' && 'alert'}
-        >
-          {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
-        }
+        {this.isMessageVisible && (
+          <p-text class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+            {this.message || (
+              <span>
+                <slot name="message" />
+              </span>
+            )}
+          </p-text>
+        )}
       </Host>
     );
   }
@@ -132,11 +135,9 @@ export class TextareaWrapper {
   private setAriaAttributes(): void {
     if (this.label && this.message) {
       this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    }
-    else if (this.label && this.description) {
+    } else if (this.label && this.description) {
       this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    }
-    else if (this.label) {
+    } else if (this.label) {
       this.textarea.setAttribute('aria-label', this.label);
     }
 
@@ -147,19 +148,17 @@ export class TextareaWrapper {
     }
   }
 
-  private setState(): void {
+  private setState = (): void => {
     this.disabled = this.textarea.disabled;
     this.readonly = this.textarea.readOnly;
-  }
+  };
 
-  private labelClick(): void {
+  private labelClick = (): void => {
     this.textarea.focus();
-  }
+  };
 
   private bindStateListener(): void {
-    transitionListener(this.textarea, 'border-top-color', () => {
-      this.setState();
-    });
+    transitionListener(this.textarea, 'border-top-color', this.setState);
   }
 
   private addSlottedStyles(): void {
