@@ -12,11 +12,13 @@ echo "task: [$(date)] \"upload assets to cdn\""
 # todo: we shouldn't get the key each time, but save the expected keys and check against
 #       them to prevent man in the middle attacks
 ssh-keygen -f "/root/.ssh/known_hosts" -R "rsync.ams.B2820.taucdn.net"
+touch "/root/.ssh/known_hosts"
 ssh -o StrictHostKeyChecking=no ${CDN_USER}@rsync.ams.B2820.taucdn.net "mkdir -p /assets/porsche-design-system/test/"
 
 function upload {
   ssh-keygen -f "/root/.ssh/known_hosts" -R "rsync.ams.B2820.taucdn.net"
-  rsync -avp -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" "${1}" ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/${2}"
+  touch "/root/.ssh/known_hosts"
+  rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" "${1}" ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/${2}"
 }
 
 upload ./packages/marque/dist/marque/* marque/
