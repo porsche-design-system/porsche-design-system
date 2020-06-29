@@ -54,7 +54,7 @@ jobs:
           args: --components-js
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: components-js-vrt-regression
           path: ./packages/components-js/tests/vrt/results
@@ -68,7 +68,7 @@ jobs:
 #          args: --components-js
 #      - name: 'CBT Regression'
 #        if: failure()
-#        uses: actions/upload-artifact@v1
+#        uses: actions/upload-artifact@v2
 #        with:
 #          name: components-js-cbt-regression
 #          path: ./packages/components-js/tests/cbt/results
@@ -104,7 +104,7 @@ jobs:
           args: --components-angular
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
@@ -118,7 +118,7 @@ jobs:
 #          args: --components-angular
 #      - name: 'CBT Regression'
 #        if: failure()
-#        uses: actions/upload-artifact@v1
+#        uses: actions/upload-artifact@v2
 #        with:
 #          name: components-angular-cbt-regression
 #          path: ./packages/components-angular/tests/cbt/results
@@ -159,7 +159,7 @@ jobs:
           args: --components-react
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
@@ -173,7 +173,7 @@ jobs:
 #          args: --components-react
 #      - name: 'CBT Regression'
 #        if: failure()
-#        uses: actions/upload-artifact@v1
+#        uses: actions/upload-artifact@v2
 #        with:
 #          name: components-react-cbt-regression
 #          path: ./packages/components-react/tests/cbt/results
@@ -224,7 +224,7 @@ jobs:
           args: --storefront
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
@@ -239,7 +239,7 @@ jobs:
           entrypoint: run-build
           args: --storefront
       - name: 'Store build artifact'
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: storefront-build
           path: ./packages/storefront/dist
@@ -282,19 +282,117 @@ jobs:
           args: --utilities
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: utilities-vrt-regression
           path: ./packages/utilities/tests/vrt/results
+  marque:
+    name: 'Marque'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --marque
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: marque-build
+          path: ./packages/marque/dist/marque
+  icons:
+    name: 'Icons'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --icons
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: icons-build
+          path: ./packages/icons/dist/icons
+  fonts:
+    name: 'Fonts'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build utilities'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --utilities
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --fonts
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: fonts-build
+          path: ./packages/fonts/dist/fonts
+  cdn-deployment:
+    name: 'CDN Deployment'
+    needs: [marque, icons, fonts]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Restore marque build artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: marque-build
+          path: ./packages/marque/dist/marque
+      - name: 'Restore icons build artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: icons-build
+          path: ./packages/icons/dist/icons
+      - name: 'Restore fonts build artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: fonts-build
+          path: ./packages/fonts/dist/fonts
+      - name: 'Deploy'
+        uses: ./docker/node/
+        env:
+          CDN_USER: ${{ secrets.CDN_USER }}
+          CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
+        with:
+          entrypoint: run-deploy-assets
   deployment:
     name: 'Deployment'
-    needs: [components-js, components-angular, components-react, storefront, utilities]
+    needs: [components-js, components-angular, components-react, storefront, utilities, cdn-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Restore build artifact'
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: storefront-build
           path: ./packages/storefront/dist
@@ -303,4 +401,4 @@ jobs:
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
-          entrypoint: run-deploy
+          entrypoint: run-deploy-storefront

@@ -10,8 +10,12 @@ export RUN_GID="$(id -g)"
 export COMPOSE_PROJECT_NAME="porsche-design-system-v1"
 
 SERVICE=design-system
-if [[ "run-deploy" == "${1}" ]]; then
+if [[ "run-deploy-storefront" == "${1}" ]]; then
   SERVICE=design-system-deploy
+fi
+
+if [[ "run-deploy-assets" == "${1}" ]]; then
+  SERVICE=design-system-deploy-assets
 fi
 
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" build
