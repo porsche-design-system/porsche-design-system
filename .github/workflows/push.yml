@@ -362,6 +362,8 @@ jobs:
     needs: [marque, icons, fonts]
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
       - name: 'Restore marque build artifact'
         uses: actions/download-artifact@v2
         with:
