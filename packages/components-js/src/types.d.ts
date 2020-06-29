@@ -13,6 +13,13 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
+/**
+ * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
+ */
+declare global {
+  const ROLLUP_REPLACE_IS_STAGING: string;
+}
+
 /* Auto Generated Below */
 
 export type IconName = '360'

@@ -210,6 +210,12 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-cbt --components-angular`
 1. Run `./docker.sh run-test-cbt --components-react`
 
+### Make production builds
+1. Run `./docker.sh run-build --components-js-prod`
+1. Run `./docker.sh run-build --components-angular`
+1. Run `./docker.sh run-build --components-react`
+1. Run `./docker.sh run-build --storefront`
+
 ### Update CDN assets
 1. Update (only if something has changed!) `/assets/porsche-design-system/styles` on CDN by creating a new folder with version (v1, v2, v3,…) and upload generated `porsche-design-system.css` from __packages/components-js/dist/porsche-design-system directory__.
 1. Make sure CDN path fits in file `inject-global-style.ts` (lives in __packages/components-js/src/utils directory__).
