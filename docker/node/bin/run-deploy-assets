@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+
+source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
+
+function upload {
+  rsync -avp -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" "${1}" ${CDN_USER}@sftp://rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/${2}"
+}
+
+upload ./packages/marque/dist/marque marque
+upload ./packages/marque/dist/icons icons
+upload ./packages/fonts/dist/fonts/font-face.min.*.css fonts
+upload ./packages/fonts/dist/fonts/*.woff fonts
+upload ./packages/fonts/dist/fonts/*.woff2 fonts
