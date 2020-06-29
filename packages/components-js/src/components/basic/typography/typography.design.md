@@ -65,7 +65,7 @@ Examples:
 
 The Porsche copytext styles are typically to be used for long-form writing. The default copytext size is 16px, which is represented by the **text small** style. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. Copy text keeps the respective text size throughout all viewports.
 
-| Copy text              | Font size      | Available states                           | 
+| Copy text              | Font size      | Available styles                           | 
 |------------------------- |---------------- |--------------------------------------------- |
 | Text Small (default)     | 16 px           | active, default, disabled, highlight, linked | 
 | Text X-Small  | 12 px    | active, default, disabled, highlight, linked | 
