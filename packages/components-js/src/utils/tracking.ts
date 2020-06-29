@@ -3,7 +3,7 @@ import { version } from '../../package.json';
 const TRACKING_URL = 'https://d3nll2jx8s265d.cloudfront.net/porsche-design-system.png';
 
 export const trackEvent = (component: string, event?: string): void => {
-  if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
+  if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
     fetch(
       `${TRACKING_URL}?${queryString({
         v: version,
