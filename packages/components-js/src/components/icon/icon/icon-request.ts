@@ -24,12 +24,16 @@ export const getSvgContent = async (url: string): Promise<string> => {
 };
 
 export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_NAME): string => {
+  const cdnBaseUrl = ROLLUP_REPLACE_IS_STAGING === 'production'
+    ? CDN_BASE_URL
+    : 'http://localhost:3001/icons';
+
   if(iconNameOrSource === null){
     return buildIconUrl(DEFAULT_ICON_NAME);
   }else if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
   } else if (ICONS_MANIFEST[camelCase(iconNameOrSource)]) { // check if IconName exists
-    return `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(iconNameOrSource)]}`;
+    return `${cdnBaseUrl}/${ICONS_MANIFEST[camelCase(iconNameOrSource)]}`;
   }
   // Only occurs if consumer is not using typescript -> necessary?
   console.warn('Please provide either an name property or a source property!');
