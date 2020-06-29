@@ -20,7 +20,7 @@ cleanup_credentials() {
 setup_credentials() {
   echo "task: [$(date)] \"setup_credentials\""
   mkdir -p "/root/.ssh"
-  ssh-keyscan -t rsa rsync.ams.B2820.taucdn.net > "/root/.ssh/known_hosts"
+  ssh-keyscan -H rsync.ams.B2820.taucdn.net >> "/root/.ssh/known_hosts"
   printf -- "${CDN_SSH_KEY}\n" > "/root/.ssh/id_rsa"
   chmod 600 "/root/.ssh/id_rsa"
 }
