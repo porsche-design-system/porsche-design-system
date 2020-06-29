@@ -13,7 +13,9 @@ echo "task: [$(date)] \"upload assets to cdn\""
 #       them to prevent man in the middle attacks
 touch "/root/.ssh/known_hosts"
 ssh-keygen -f "/root/.ssh/known_hosts" -R "rsync.ams.B2820.taucdn.net"
-ssh -o StrictHostKeyChecking=no ${CDN_USER}@rsync.ams.B2820.taucdn.net "mkdir -p /assets/porsche-design-system/test/"
+
+# from https://stackoverflow.com/a/15416734 since we're not allowed to do a ssh mkdir -p
+rsync -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" /dev/null ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/"
 
 function upload {
   touch "/root/.ssh/known_hosts"
