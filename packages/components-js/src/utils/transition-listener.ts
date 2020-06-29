@@ -8,14 +8,18 @@ import { throttle } from 'throttle-debounce';
  * @param callback
  * @returns void
  */
-export const transitionListener = (tag: HTMLElement, transitionProperty: string, callback: () => void): void => {
+export const transitionListener = (tag: HTMLElement, transitionProperty: string, callback: () => void): number => {
+  return window.requestAnimationFrame(() => {
+    tag.addEventListener(
+      'transitionend',
+      throttle(50, (e) => {
+        if (e.propertyName === transitionProperty) {
+          console.log('requestAnimationFrame transitionend');
+          callback();
+        }
+      })
+    );
 
-  window.requestAnimationFrame(() => {
-    tag.addEventListener('transitionend', throttle(50, e => {
-      if (e.propertyName === transitionProperty) {
-        callback();
-      }
-    }));
     callback();
   });
 };

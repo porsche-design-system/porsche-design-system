@@ -55,6 +55,7 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
   private subline: HTMLElement;
+  private transitionListener: number;
 
   public componentWillLoad(): void {
     this.setSubline();
@@ -63,11 +64,18 @@ export class LinkPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    transitionListener(this.linkTag, 'font-size', () => {
+    this.transitionListener = transitionListener(this.linkTag, 'font-size', () => {
+      console.log('transitionListener callback: link-pure', this.transitionListener, this.linkTag);
       const size = calcLineHeightForElement(this.linkTag);
       this.iconTag.style.width = `${size}em`;
       this.iconTag.style.height = `${size}em`;
     });
+    console.log('componentDidLoad: link-pure', 'registered', this.transitionListener);
+  }
+
+  public disconnectedCallback(): void {
+    console.log('disconnectedCallback: link-pure', this.transitionListener);
+    window.cancelAnimationFrame(this.transitionListener);
   }
 
   public render(): JSX.Element {
@@ -95,15 +103,16 @@ export class LinkPure {
       <Host>
         <TagType
           class={linkPureClasses}
-          {...(TagType === 'a'
-            ? {
-              href: this.href,
-              target: this.target,
-              download: this.download,
-              rel: this.rel
-            }
-            : null)}
-          ref={(el) => (this.linkTag = el as HTMLElement)}
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: this.target,
+            download: this.download,
+            rel: this.rel
+          })}
+          ref={(el) => {
+            console.log('ref set: link-pure');
+            this.linkTag = el as HTMLElement;
+          }}
         >
           <p-icon
             class={iconClasses}
