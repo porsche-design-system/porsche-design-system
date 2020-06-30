@@ -371,7 +371,7 @@ jobs:
   components-js-release:
     name: 'Release components-js'
     needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref === 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -401,7 +401,7 @@ jobs:
   components-angular-release:
     name: 'Release components-angular'
     needs: [components-js-release]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref === 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -421,7 +421,7 @@ jobs:
   components-react-release:
     name: 'Release components-react'
     needs: [components-js-release]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref === 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -446,7 +446,7 @@ jobs:
   utilities-release:
     name: 'Release utilities'
     needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref === 'refs/heads/master'
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
