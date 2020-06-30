@@ -9,18 +9,8 @@ source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
 
 echo "task: [$(date)] \"upload assets to cdn\""
 
-# todo: we shouldn't get the key each time, but save the expected keys and check against
-#       them to prevent man in the middle attacks
-touch "/root/.ssh/known_hosts"
-ssh-keygen -f "/root/.ssh/known_hosts" -R "rsync.ams.B2820.taucdn.net"
-
-# from https://stackoverflow.com/a/15416734 since we're not allowed to do a ssh mkdir -p
-rsync -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" /dev/null ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/"
-
 function upload {
-  touch "/root/.ssh/known_hosts"
-  ssh-keygen -f "/root/.ssh/known_hosts" -R "rsync.ams.B2820.taucdn.net"
-  rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/test/${2}"
+  rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
 }
 
 upload "./packages/marque/dist/marque/*" marque/
