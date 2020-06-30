@@ -169,33 +169,6 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Icons
-
-1. Run `./docker.sh run-build --icons`
-1. Switch to __packages/icons/dist/icons directory__
-1. Upload all `.svg` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/icons directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
-## Release management - Porsche Design System Fonts
-
-1. Run `./docker.sh run-build --fonts`
-1. Switch to __packages/fonts/dist/fonts directory__
-1. Upload all `.woff|.woff2` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/fonts directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
-## Release management - Porsche Design System Marque
-
-1. Run `./docker.sh run-build --marque`
-1. Switch to __packages/marque/dist/marque directory__
-1. Upload all `.png` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/marque directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
 ## Release management - Porsche Design System Components (JS/Angular/React)
 
 ### Preparation
@@ -213,16 +186,6 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-test-cbt --components-angular`
 1. Run `./docker.sh run-test-cbt --components-react`
 
-### Make production builds
-1. Run `./docker.sh run-build --components-js-prod`
-1. Run `./docker.sh run-build --components-angular`
-1. Run `./docker.sh run-build --components-react`
-1. Run `./docker.sh run-build --storefront`
-
-### Update CDN assets
-1. Update (only if something has changed!) `/assets/porsche-design-system/styles` on CDN by creating a new folder with version (v1, v2, v3,…) and upload generated `porsche-design-system.css` from __packages/components-js/dist/porsche-design-system directory__.
-1. Make sure CDN path fits in file `inject-global-style.ts` (lives in __packages/components-js/src/utils directory__).
-
 ### Commit
 1. Review local changes
 1. Create a commit with following message structure `Release Porsche Design System Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
@@ -230,14 +193,6 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Push
 1. Push local commit with tag to release branch `git push origin {current master- or v-branch} && git push --tags`
-
-### Publish
-1. Switch to __packages/components-js directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components JS artifact to the Artifactory repository.
-1. Switch to __packages/components-angular/dist/components-wrapper directory__ (make sure to release package within **dist** folder)
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
-1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components React artifact to the Artifactory repository.
 
 ### Icon platform
 1. Switch to __packages/icons/database directory__
@@ -264,18 +219,10 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
 1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
 1. Open `CHANGELOG.md` and update release notes with proper date and version
-1. Switch to __project root directory__
-1. Run `./docker.sh run-build --utilities`
-1. Run `./docker.sh run-test-unit --utilities`
-1. Run `./docker.sh run-test-vrt --utilities`
 
 ### Commit
 1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push local commit to release branch `git push origin {current master- or v-branch}`
-
-### Publish
-1. Switch to __packages/utilities/projects/utilities directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Porsche Design System Utilities artifact to private npm repository.
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
