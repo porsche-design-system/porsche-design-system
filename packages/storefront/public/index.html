@@ -12,7 +12,10 @@
       }
       gtag("js", new Date());
       gtag("config", "UA-38934327-7", {
-        page_path: location.pathname + location.hash
+        page_path: location.pathname + location.hash,
+        'linker': {
+          'domains': ['icons.porsche.com']
+        }
       })
     </script>
     <% } %>
