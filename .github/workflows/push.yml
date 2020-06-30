@@ -357,7 +357,7 @@ jobs:
         with:
           name: fonts-build
           path: ./packages/fonts/dist/fonts
-  cdn-deployment:
+  assets-deployment:
     name: 'Assets Deployment'
     needs: [marque, icons, fonts]
     runs-on: ubuntu-latest
@@ -386,9 +386,9 @@ jobs:
           CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
         with:
           entrypoint: run-deploy-assets
-  deployment:
+  storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components-js, components-angular, components-react, storefront, utilities, cdn-deployment]
+    needs: [components-js, components-angular, components-react, storefront, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -404,3 +404,26 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy-storefront
+  components-js-release:
+    name: 'Release components-js'
+    needs: [storefront-deployment]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build components-js prod'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --components-js-prod
+      - name: 'Publish npm package'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-release
+          args: packages/components-js/
