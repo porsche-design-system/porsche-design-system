@@ -5,6 +5,7 @@ on:
       - v*
       - issue/*
       - housekeeping/*
+      - release/*
 name: 'Porsche Design System'
 jobs:
   components-js:
@@ -65,20 +66,6 @@ jobs:
         with:
           name: components-js-vrt-regression
           path: ./packages/components-js/tests/vrt/results
-#      - name: 'CBT Test'
-#        uses: ./docker/node/
-#        env:
-#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-#        with:
-#          entrypoint: run-test-cbt
-#          args: --components-js
-#      - name: 'CBT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-js-cbt-regression
-#          path: ./packages/components-js/tests/cbt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -123,20 +110,11 @@ jobs:
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
-#      - name: 'CBT Test'
-#        uses: ./docker/node/
-#        env:
-#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-#        with:
-#          entrypoint: run-test-cbt
-#          args: --components-angular
-#      - name: 'CBT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-angular-cbt-regression
-#          path: ./packages/components-angular/tests/cbt/results
+      - name: 'Store build artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-angular-build
+          path: ./packages/components-angular/dist/components-wrapper
   components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
@@ -186,20 +164,6 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-#      - name: 'CBT Test'
-#        uses: ./docker/node/
-#        env:
-#          BROWSERSTACK_USER_NAME: ${{ secrets.BROWSERSTACK_USER_NAME }}
-#          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-#        with:
-#          entrypoint: run-test-cbt
-#          args: --components-react
-#      - name: 'CBT Regression'
-#        if: failure()
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: components-react-cbt-regression
-#          path: ./packages/components-react/tests/cbt/results
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
@@ -470,6 +434,7 @@ jobs:
   components-js-release:
     name: 'Release components-js'
     needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -501,6 +466,77 @@ jobs:
         uses: ./docker/node/
         with:
           entrypoint: run-release
-          args: packages/components-js/
+          args: packages/components-js
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+  components-angular-release:
+    name: 'Release components-angular'
+    needs: [components-js-release]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Restore build artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-angular-build
+          path: ./packages/components-angular/dist/components-wrapper
+      - name: 'Publish npm package'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-release
+          args: packages/components-angular/dist/components-wrapper
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+  components-react-release:
+    name: 'Release components-react'
+    needs: [components-js-release]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+      - name: 'Publish npm package'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-release
+          args: packages/components-react/projects/components-wrapper
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+  utilities-release:
+    name: 'Release utilities'
+    needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Install'
+        uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
+          args: --utilities
+      - name: 'Publish npm package'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-release
+          args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
