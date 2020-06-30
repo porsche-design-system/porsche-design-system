@@ -28,6 +28,8 @@ jobs:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
