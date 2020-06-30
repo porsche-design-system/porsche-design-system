@@ -6,4 +6,7 @@ set -o pipefail
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
+echo $PWD
+ls
+
 yarn install
