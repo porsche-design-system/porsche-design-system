@@ -8,7 +8,7 @@ const basePath = path.resolve(process.cwd());
 const ensureArtifactoryCredentailsPath = path.resolve(__dirname, '../shared/ensure-artifactory-credentials.sh');
 const artifactoryToken = process.env.PORSCHE_NPM_REGISTRY_TOKEN;
 const [,,packageLocation] = process.argv;
-const pathToPackageJson = path.resolve(basePath,`${packageLocation}package.json`);
+const pathToPackageJson = path.resolve(basePath, packageLocation, 'package.json');
 
 function getPackageVersion(targetPath) {
   return require(targetPath).version;
