@@ -9,11 +9,7 @@ module.exports = {
   scripts: [
     {
       module: true,
-      pattern: `${environment.cdnDistPath}/porsche-design-system.*.js`
-    },
-    {
-      module: false,
-      pattern: `${environment.cdnDistPath}/porsche-design-system.*.js`
+      pattern: `${environment.cdnDistPath}/porsche-design-system.main.*.js`
     }
   ],
   copyFiles: [
