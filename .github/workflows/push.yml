@@ -38,10 +38,10 @@ jobs:
           docker push docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
       - name: 'Lint'
         uses: ./docker/node/
-        container:
-          image: docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
-          volumes:
-            - /node_modules:/node_modules
+#        container:
+#          image: docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
+#          volumes:
+#            - /node_modules:/node_modules
         with:
           entrypoint: run-lint
           args: --components-js
