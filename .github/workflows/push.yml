@@ -36,10 +36,6 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
       - name: 'Lint'
         uses: ./docker/node/
         with:
@@ -50,6 +46,10 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components-js
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
@@ -95,6 +95,14 @@ jobs:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -145,21 +153,29 @@ jobs:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
+      - name: 'Docker login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
       - name: 'Mock Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-mocks
           args: --components-react
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
       - name: 'VRT Test'
         uses: ./docker/node/
         with:
@@ -200,16 +216,20 @@ jobs:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
       - name: 'Lint'
         uses: ./docker/node/
         with:
@@ -220,6 +240,10 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
       - name: 'E2E Test'
         uses: ./docker/node/
         with:
@@ -267,21 +291,29 @@ jobs:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-build
-          args: --utilities
       - name: 'Unit Test'
         uses: ./docker/node/
         with:
           entrypoint: run-test-unit
+          args: --utilities
+      - name: 'Build'
+        uses: ./docker/node/
+        with:
+          entrypoint: run-build
           args: --utilities
       - name: 'VRT Test'
         uses: ./docker/node/
@@ -300,6 +332,14 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -322,6 +362,14 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -344,6 +392,14 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
@@ -355,7 +411,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --utilities
-      - name: 'Build'
+      - name: 'Build fonts'
         uses: ./docker/node/
         with:
           entrypoint: run-build
@@ -419,6 +475,14 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+      - name: 'Docker login'
+          uses: azure/docker-login@v1
+          with:
+            login-server: docker.pkg.github.com
+            username: $GITHUB_ACTOR
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
         env:
