@@ -33,7 +33,7 @@ jobs:
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/builder:latest || true
       - name: 'Install'
         run: |
-          docker build -f docker/node/Dockerfile.build -t docker.pkg.github.com/porscheui/porsche-design-system/builder:latest --build-arg PORSCHE_NPM_REGISTRY_TOKEN=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }} .
+          docker build -t docker.pkg.github.com/porscheui/porsche-design-system/builder:latest -f docker/node/Dockerfile.build --build-arg PORSCHE_NPM_REGISTRY_TOKEN=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }} .
           docker push docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
       - name: 'Lint'
         uses: ./docker/node/
