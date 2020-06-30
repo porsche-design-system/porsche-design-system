@@ -217,11 +217,11 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
       - name: 'Docker login'
-          uses: azure/docker-login@v1
-          with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
@@ -292,11 +292,11 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-yarn-
       - name: 'Docker login'
-          uses: azure/docker-login@v1
-          with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
@@ -333,11 +333,11 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Docker login'
-          uses: azure/docker-login@v1
-          with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
@@ -363,11 +363,11 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Docker login'
-          uses: azure/docker-login@v1
-          with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
@@ -393,11 +393,11 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Docker login'
-          uses: azure/docker-login@v1
-          with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
