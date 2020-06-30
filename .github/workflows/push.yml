@@ -431,3 +431,5 @@ jobs:
         with:
           entrypoint: run-release
           args: packages/components-js/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
