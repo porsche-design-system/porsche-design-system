@@ -32,10 +32,14 @@ export class Pagination {
   @Prop({
     reflect: true,
     mutable: true
-  }) public activePage?: number = 1;
+  })
+  public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
-  @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks| BreakpointCustomizable<NumberOfPageLinks> = { base: 5, xs: 7 };
+  @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks> = {
+    base: 5,
+    xs: 7
+  };
 
   /** Aria label what the pagination is used for. */
   @Prop() public allyLabel?: string = 'Pagination';
@@ -117,16 +121,12 @@ export class Pagination {
                 class={paginationPrevClasses}
                 role={'button'}
                 tabIndex={pageModel.isActive ? 0 : null}
-                onClick={() => {
-                  this.onClick(pageModel.value);
-                }}
-                onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value);
-                }}
+                onClick={() => this.onClick(pageModel.value)}
+                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelPrev}
               >
-                <p-icon name='arrow-head-left' color='inherit' />
+                <p-icon name="arrow-head-left" color="inherit" />
               </span>
             </li>
           ));
@@ -151,12 +151,8 @@ export class Pagination {
                 role={'button'}
                 tabIndex={pageModel.isActive ? null : 0}
                 aria-disabled={pageModel.isActive && 'true'}
-                onClick={() => {
-                  this.onClick(pageModel.value);
-                }}
-                onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value);
-                }}
+                onClick={() => this.onClick(pageModel.value)}
+                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
                 aria-label={`${this.allyLabelPage} ${pageModel.value}`}
                 aria-current={pageModel.isActive && 'page'}
               >
@@ -177,16 +173,12 @@ export class Pagination {
                 class={paginationNextClasses}
                 role={'button'}
                 tabIndex={pageModel.isActive ? 0 : null}
-                onClick={() => {
-                  this.onClick(pageModel.value);
-                }}
-                onKeyDown={(e: KeyboardEvent) => {
-                  this.onKeyDown(e, pageModel.value);
-                }}
+                onClick={() => this.onClick(pageModel.value)}
+                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
                 aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelNext}
               >
-                <p-icon name='arrow-head-right' color='inherit' />
+                <p-icon name="arrow-head-right" color="inherit" />
               </span>
             </li>
           ));
@@ -202,10 +194,11 @@ export class Pagination {
 
     const paginationItems = createPaginationItems();
     return (
-      <nav class={paginationClasses}
-        role='navigation'
+      <nav
+        class={paginationClasses}
+        role="navigation"
         aria-label={this.allyLabel}
-        ref={el => this.navigationElement = el}
+        ref={(el) => (this.navigationElement = el)}
       >
         <ul class={paginationItemsClasses}>
           {paginationItems.prevItem}
