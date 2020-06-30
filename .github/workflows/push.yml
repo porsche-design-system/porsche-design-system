@@ -358,7 +358,7 @@ jobs:
           name: fonts-build
           path: ./packages/fonts/dist/fonts
   cdn-deployment:
-    name: 'CDN Deployment'
+    name: 'Assets Deployment'
     needs: [marque, icons, fonts]
     runs-on: ubuntu-latest
     steps:
@@ -387,7 +387,7 @@ jobs:
         with:
           entrypoint: run-deploy-assets
   deployment:
-    name: 'Deployment'
+    name: 'Storefront Deployment'
     needs: [components-js, components-angular, components-react, storefront, utilities, cdn-deployment]
     runs-on: ubuntu-latest
     steps:
