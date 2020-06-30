@@ -1,0 +1,12 @@
+FROM docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+
+COPY package.json /opt/porsche-design-system-app/
+COPY yarn.lock /opt/porsche-design-system-app/
+COPY packages /opt/porsche-design-system-app/packages/
+
+WORKDIR /opt/porsche-design-system-app
+
+ARG PORSCHE_NPM_REGISTRY_TOKEN
+ENV PORSCHE_NPM_REGISTRY_TOKEN=$PORSCHE_NPM_REGISTRY_TOKEN
+
+RUN exec "run-install"

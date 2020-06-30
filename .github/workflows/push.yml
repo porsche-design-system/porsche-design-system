@@ -30,13 +30,11 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/builder:latest || true
       - name: 'Install'
-        uses: ./docker/node/
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-        with:
-          entrypoint: run-install
+        run: |
+          docker build -f docker/node/Dockerfile.build -t docker.pkg.github.com/porscheui/porsche-design-system/builder:latest --build-arg PORSCHE_NPM_REGISTRY_TOKEN=${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }} .
+          docker push docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
       - name: 'Lint'
         uses: ./docker/node/
         with:
