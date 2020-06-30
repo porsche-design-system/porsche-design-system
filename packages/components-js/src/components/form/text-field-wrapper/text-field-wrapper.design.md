@@ -107,7 +107,7 @@ All types of Text Field are available as disabled state. However, disabled state
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/form-text-field-examples.png" alt="Examples for text field usage"/>
+    <img src="./assets/text-field-examples.png" alt="Examples for text field usage"/>
 </div>
 
 ## Don'ts

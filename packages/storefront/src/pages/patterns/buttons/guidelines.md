@@ -49,36 +49,47 @@ Stick to the following basic guidelines when using Buttons (or Links) – either
 
 In order to maintain a homogeneous look and feel not only within your product but throughout all Porsche web applications you should **only use the components that are provided in the Porsche Design System** and follow the specific guidelines for [Buttons](#/components/button) or [Links](#/components/link).
 
-## Placement
+## Alignment
 
-Depending on the usage of the Button(s) we differ **two types of alignment for viewports S and higher with a minimum screen width of 760 px**. You can use both types of placement within your application. However, you should ensure that both variants are used consistently depending on the specific requirements.
+Depending on the usage of the Button(s) we differ **three types of alignment for viewports S and higher with a minimum screen width of 760 px**. You can use all types of alignment within your application, either for stand-alone or for Button groups. In best case you should stick to the following recommendations. But even if you decide otherwise based on your specific cases: **The most important thing is to maintain consistency within your application when it comes to Button alignments to ensure a good user guidance.**
 
-### Left alignment
+### Left 
 
-Buttons **on standard pages or in on-page forms** are to be placed **left-justified**, supporting a direct user attention flow:  
+Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
   
-![Button placement left-aligned](../../../assets/patterns-buttons-placement-left-teaser.png)  
+![Button placement left-aligned](../../../assets/patterns-buttons-alignment-left-teaser.png)  
   
 This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007).  
   
-![F-shaped reading pattern](../../../assets/patterns-buttons-placement-left-form.png)
+![F-shaped reading pattern](../../../assets/patterns-buttons-alignment-left-form.png)
 
-### Right alignment
+### Right 
 
-Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) are to be placed **right-justified**:  
+Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) should be placed **right-justified**:  
   
-![Button placement right-aligned](../../../assets/patterns-buttons-placement-right-modal.png)  
+![Button placement right-aligned](../../../assets/patterns-buttons-alignment-right-modal.png)  
   
 This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-shaped-pattern-for-reading-web-content-ce1135f92f1c), 2017). Here, users end on the bottom right where they are provided an interaction leading to another / the next step. Also, as this is also common practice in Windows and MacOS, users should be familiar with that ([UX Collective](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019)  
   
-![Z-shaped reading pattern](../../../assets/patterns-buttons-placement-right-basket.png)
+![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-right-basket.png)
+
+### Centered 
+
+**In exceptional cases** it's even possible to place Buttons **centered** to their related content: 
+
+- If the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:
+  
+  ![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-centered-aesthetic.png)
+- If the Button relates to a larger part or even the whole page, e.g. a "Load more" Button:
+  
+  ![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-centered-load-more.png)
 
 
 ### Alignment on viewport XS (max. width 759 px)
 
 On viewport XS Buttons in "Icon and text" variant are always to be set full-width (12 grid columns), independent from their text length. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
 
-![Mobile view for Buttons](../../../assets/patterns-buttons-placement-viewport-xs.png)
+![Mobile view for Buttons](../../../assets/patterns-buttons-alignment-viewport-xs.png)
 
 ## Hierarchy
 
