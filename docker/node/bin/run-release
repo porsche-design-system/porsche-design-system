@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const https = require('https');
+const spawn = require('child_process').spawn;
+
+const basePath = path.resolve(process.cwd());
+const ensureArtifactoryCredentailsPath = path.resolve(__dirname, '../shared/ensure-artifactory-credentials.sh');
+const artifactoryToken = process.env.PORSCHE_NPM_REGISTRY_TOKEN;
+const [,,packageLocation] = process.argv;
+const pathToPackageJson = path.resolve(basePath,`${packageLocation}package.json`);
+
+function getPackageVersion(targetPath) {
+  return require(targetPath).version;
+}
+
+function getPackageName(targetPath) {
+  return require(targetPath).name;
+}
+
+function isVersionPublished(name, version) {
+  return new Promise(resolve => {
+    https.get({
+      host: 'porscheui.jfrog.io',
+      path: `/porscheui/api/npm/npm/${name}/${version}`,
+      headers: {
+        'Authorization': `Bearer ${artifactoryToken}`
+      }
+    }, (resp) => {
+      if(resp.statusCode === 200) {
+        resolve(true);
+        return;
+      }
+
+      resolve(false);
+    }).on("error", (err) => {
+      resolve(false);
+    });
+  });
+}
+
+async function publish(pathToPackage) {
+  const publishCommand = `yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/`;
+  return new Promise(resolve => {
+    const npmPublish = spawn('bash', ['-c', `source ${ensureArtifactoryCredentailsPath} && ${publishCommand}`], {
+      cwd: pathToPackage,
+      stdio: [process.stdin, process.stdout, process.stderr]
+    });
+
+    npmPublish.on('exit', (code) => {
+      if (code !== 0) {
+        console.log(`Publishing failed.`);
+        process.exit(code);
+      }
+
+      resolve();
+    });
+  });
+}
+
+const targetVersion = getPackageVersion(pathToPackageJson);
+const packageName = getPackageName(pathToPackageJson);
+
+(async () => {
+  const alreadyPublished = await isVersionPublished(packageName, targetVersion);
+  if (!alreadyPublished) {
+    await publish(path.resolve(packageLocation));
+    process.exit(0);
+  }
+
+  console.log(`Version ${targetVersion} is already published. Nothing to do.`);
+  process.exit(0);
+})();
