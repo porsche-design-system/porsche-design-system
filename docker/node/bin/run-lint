@@ -3,9 +3,6 @@
 set -o errexit
 set -o pipefail
 
-echo $PWD
-ls
-
 if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]
