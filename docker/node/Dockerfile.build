@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+FROM docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
 
 # COPY package.json yarn.lock .npmrc /opt/porsche-design-system-app/
 # COPY packages /opt/porsche-design-system-app/packages/
