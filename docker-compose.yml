@@ -16,7 +16,6 @@ services:
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
-      - SLACK_WEBHOOK_URL
       - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
