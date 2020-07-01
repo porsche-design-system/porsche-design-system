@@ -45,12 +45,14 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "start": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve\"",
+    "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
     "start:cdn-server": "start-cdn-local",
-    "start:e2e-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"PDS_IS_STAGING=1 stencil build --watch --serve --no-open\"",
-    "start:vrt-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"PDS_IS_STAGING=1 yarn build && http-server -p 61423 -P http://localhost:61423/www\"",
-    "start:cbt-server": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"PDS_IS_STAGING=1 yarn build && http-server -p 61424 -P http://localhost:61424/www\"",
-    "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} sh -c \"stencil build --docs\" && yarn build:readme",
+    "start:e2e-server-old": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"PDS_IS_STAGING=1 stencil build --watch --serve --no-open\"",
+    "start:test": "http-server ./dist/porsche-design-system -p 5555",
+    "start:e2e-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server ./dist/porsche-design-system -p 3333'",
+    "start:vrt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server -p 61423 -P http://localhost:61423/www'",
+    "start:cbt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'PDS_IS_STAGING=1 yarn build && http-server -p 61424 -P http://localhost:61424/www'",
+    "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} sh -c 'stencil build --docs' && yarn build:readme",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
     "build-prod": "PDS_IS_STAGING=0 yarn build",
@@ -61,9 +63,9 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:unit": "jest -c ./tests/unit/config/jest.config.js",
     "test:unit:watch": "jest -c ./tests/unit/config/jest.config.js --watch",
-    "test:e2e": "concurrently -k -s \"first\" -n \"server,e2e\" \"yarn start:e2e-server\" \"wait-on -t 180000 http-get://localhost:3333 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/e2e/config/jasmine.config.json'\"",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start:vrt-server\" \"wait-on -t 180000 http-get://localhost:61423 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"yarn start:cbt-server\" \"wait-on -t 180000 http-get://localhost:61424 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
+    "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start:e2e-server' 'wait-on -t 180000 http-get://localhost:3333 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/e2e/config/jasmine.config.json\"'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start:vrt-server' 'wait-on -t 180000 http-get://localhost:61423 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/vrt/config/jasmine.config.json\"'",
+    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start:cbt-server' 'wait-on -t 180000 http-get://localhost:61424 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/cbt/config/jasmine.config.json\"'",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
