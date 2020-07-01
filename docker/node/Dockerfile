@@ -1,1 +1,1 @@
-FROM docker.pkg.github.com/porscheui/porsche-design-system/builder:latest
+FROM docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
