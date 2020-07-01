@@ -14,7 +14,7 @@ cleanup_credentials() {
   local exit_code=$?
   echo "task: [$(date)] \"cleanup_credentials\""
   rm "${HOME}/.npmrc"
-  exit ${exit_code}
+  exit $exit_code
 }
 
 setup_credentials() {

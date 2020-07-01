@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -s \"first\" -n \"cdn,react\" \"yarn start:cdn-server\" \"react-scripts start\"",
+    "start": "concurrently -k -s 'first' -n 'cdn,react' 'yarn start:cdn-server' 'react-scripts start'",
     "start:cdn-server": "start-cdn-local",
     "build": "cd projects/components-wrapper && yarn build",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "jest --config='./tests/mocks/config/jest.config.js'",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "test:cbt": "concurrently -k -s \"first\" -n \"server,cbt\" \"BROWSER=none yarn start\" \"wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/cbt/config/jasmine.config.json'\"",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/vrt/config/jasmine.config.json\"'",
+    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/cbt/config/jasmine.config.json\"'",
     "clean": "rm -rf './node_modules' && rm -rf './yarn-error.log' && rm -rf './build'"
   },
   "dependencies": {
