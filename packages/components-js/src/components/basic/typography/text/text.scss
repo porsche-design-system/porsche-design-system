@@ -192,7 +192,7 @@
   &--color {
     &-brand {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-brand;
+        color: $p-color-brand;
       }
 
       &#{$bem-block}--theme-dark {
@@ -202,7 +202,7 @@
 
     &-default {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
       }
 
       &#{$bem-block}--theme-dark {
@@ -212,7 +212,7 @@
 
     &-neutral-contrast-high {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-contrast-high;
+        color: $p-color-neutral-contrast-high;
       }
 
       &#{$bem-block}--theme-dark {
@@ -222,7 +222,7 @@
 
     &-neutral-contrast-medium {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-contrast-medium;
+        color: $p-color-neutral-contrast-medium;
       }
 
       &#{$bem-block}--theme-dark {
@@ -232,7 +232,7 @@
 
     &-neutral-contrast-low {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-neutral-contrast-low;
+        color: $p-color-neutral-contrast-low;
       }
 
       &#{$bem-block}--theme-dark {
@@ -242,7 +242,7 @@
 
     &-notification-success {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-success;
+        color: $p-color-notification-success;
       }
 
       &#{$bem-block}--theme-dark {
@@ -252,7 +252,7 @@
 
     &-notification-warning {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-warning;
+        color: $p-color-notification-warning;
       }
 
       &#{$bem-block}--theme-dark {
@@ -262,11 +262,21 @@
 
     &-notification-error {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-notification-error;
+        color: $p-color-notification-error;
       }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-notification-error;
+      }
+    }
+
+    &-notification-neutral {
+      &#{$bem-block}--theme-light {
+        color: $p-color-notification-neutral;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-neutral;
       }
     }
 
