@@ -93,7 +93,7 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   | Error notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
-| <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification (only to be used on default background)	  | ✓  |
+| <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification	  | ✓  |
 
 ### States
 
