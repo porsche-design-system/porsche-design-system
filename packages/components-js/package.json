@@ -47,11 +47,9 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
     "start:cdn-server": "start-cdn-local",
-    "start:e2e-server-old": "concurrently -k -s \"first\" -n \"cdn,stencil\" \"yarn start:cdn-server\" \"PDS_IS_STAGING=1 stencil build --watch --serve --no-open\"",
-    "start:test": "http-server ./dist/porsche-design-system -p 5555",
     "start:e2e-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server ./dist/porsche-design-system -p 3333'",
     "start:vrt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server -p 61423 -P http://localhost:61423/www'",
-    "start:cbt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'PDS_IS_STAGING=1 yarn build && http-server -p 61424 -P http://localhost:61424/www'",
+    "start:cbt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server -p 61424 -P http://localhost:61424/www'",
     "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} sh -c 'stencil build --docs' && yarn build:readme",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",

@@ -18,7 +18,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  if (browser) await browser.close();
+  if (browser) {
+    await browser.close();
+  }
 });
 
 export const getBrowser = (): Browser => browser;
