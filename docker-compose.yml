@@ -23,6 +23,7 @@ services:
       - SKIP_PREFLIGHT_CHECK
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
+      - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached
       - home:/home/design-system
