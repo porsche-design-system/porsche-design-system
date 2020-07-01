@@ -28,32 +28,32 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Lint'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-lint
           args: --components-js
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'Unit Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
           args: --components-js
       - name: 'E2E Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-e2e
           args: --components-js
       - name: 'VRT Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --components-js
@@ -83,17 +83,17 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'VRT Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --components-angular
@@ -128,22 +128,22 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Mock Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-mocks
           args: --components-react
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'VRT Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --components-react
@@ -173,32 +173,32 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Lint'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-lint
           args: --storefront
       - name: 'Unit Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
           args: --storefront
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'E2E Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-e2e
           args: --storefront
       - name: 'VRT Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --storefront
@@ -209,12 +209,12 @@ jobs:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
       - name: 'Build components-js prod'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js-prod
       - name: 'Build storefront prod'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --storefront
@@ -244,23 +244,23 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
       - name: 'Unit Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
           args: --utilities
       - name: 'VRT Test'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --utilities
@@ -290,13 +290,13 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --marque
@@ -325,13 +325,13 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --icons
@@ -360,18 +360,18 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build utilities'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
       - name: 'Build fonts'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --fonts
@@ -411,7 +411,7 @@ jobs:
           name: fonts-build
           path: ./packages/fonts/dist/fonts
       - name: 'Deploy'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           CDN_USER: ${{ secrets.CDN_USER }}
           CDN_SSH_KEY: ${{ secrets.CDN_SSH_KEY }}
@@ -438,7 +438,7 @@ jobs:
           name: storefront-build
           path: ./packages/storefront/dist
       - name: 'Deploy'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
@@ -465,22 +465,22 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'Build components-js prod'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js-prod
       - name: 'Publish npm package'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
           args: packages/components-js
@@ -508,7 +508,7 @@ jobs:
           name: components-angular-build
           path: ./packages/components-angular/dist/components-wrapper
       - name: 'Publish npm package'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
           args: packages/components-angular/dist/components-wrapper
@@ -536,17 +536,17 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
       - name: 'Publish npm package'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
           args: packages/components-react/projects/components-wrapper
@@ -574,18 +574,18 @@ jobs:
       - name: 'Docker pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
       - name: 'Install'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
       - name: 'Publish npm package'
-        uses: ./.github/actions/docker
+        uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
           args: packages/utilities/projects/utilities
