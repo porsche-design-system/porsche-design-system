@@ -100,7 +100,8 @@ verify_deployment() {
   local http_response=""
   while true
   do
-    http_response="$(curl -s -H "Cache-Control: no-cache" "https://designsystem.porsche.com/${1}/version.md")"
+    # verify deployment via aws lambda
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://plygxm12t4.execute-api.eu-central-1.amazonaws.com/prod/verify?${1}")"
     echo "Check deployment status (${1}). Attempt ${n}/${max} (${http_response}). [$(date)]"
     if [[ "${http_response}" == "${GITHUB_SHA}" ]]; then
       echo "All right, deployment was verified (${1})."
