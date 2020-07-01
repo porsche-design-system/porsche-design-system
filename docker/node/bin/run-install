@@ -6,11 +6,6 @@ set -o pipefail
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
-echo $PWD
-ls
-
 echo "task: [$(date)] installing dependencies"
 yarn install
-echo "task: [$(date)] finished installing dependencies";
-
-ls
+echo "task: [$(date)] finished installing dependencies"
