@@ -13,16 +13,14 @@ beforeAll(async () => {
       width: 1920,
       height: 800
     },
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process', '--disable-web-security']
   });
 });
 
 afterAll(async () => {
-  if (browser) await browser.close();
+  if (browser) {
+    await browser.close();
+  }
 });
-
-export const options = {
-  baseURL: 'http://localhost:3333'
-};
 
 export const getBrowser = (): Browser => browser;
