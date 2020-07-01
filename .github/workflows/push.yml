@@ -52,17 +52,17 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-js
-      - name: 'VRT Test'
-        uses: ./docker/node/
-        with:
-          entrypoint: run-test-vrt
-          args: --components-js
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-js-vrt-regression
-          path: ./packages/components-js/tests/vrt/results
+#      - name: 'VRT Test'
+#        uses: ./docker/node/
+#        with:
+#          entrypoint: run-test-vrt
+#          args: --components-js
+#      - name: 'VRT Regression'
+#        if: failure()
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: components-js-vrt-regression
+#          path: ./packages/components-js/tests/vrt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
