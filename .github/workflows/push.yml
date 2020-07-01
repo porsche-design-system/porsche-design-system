@@ -54,6 +54,7 @@ jobs:
           args: --components-js
       - name: 'VRT Test'
         uses: docker://docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
+        with:
           entrypoint: run-test-vrt
           args: --components-js
       - name: 'VRT Regression'
