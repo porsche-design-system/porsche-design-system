@@ -4,14 +4,14 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "start": "concurrently -k -s \"first\" -n \"cdn,vue\" \"yarn start:cdn-server\" \"vue-cli-service serve\"",
+    "start": "concurrently -k -s 'first' -n 'cdn,vue' 'yarn start:cdn-server' 'vue-cli-service serve'",
     "start:cdn-server": "start-cdn-local",
     "build": "vue-cli-service build",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "concurrently -k -s \"first\" -n \"server,e2e\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/e2e/config/jasmine.config.json'\"",
-    "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
+    "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/e2e/config/jasmine.config.json\"'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/vrt/config/jasmine.config.json\"'",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
