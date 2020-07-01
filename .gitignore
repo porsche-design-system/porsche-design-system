@@ -17,6 +17,7 @@ node_modules
 
 # dotenv environment variables file
 .env
+GH_TOKEN.txt
 
 # Mac OS
 .DS_Store
