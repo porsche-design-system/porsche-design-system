@@ -5,7 +5,7 @@ const https = require('https');
 const spawn = require('child_process').spawn;
 
 const basePath = path.resolve(process.cwd());
-const ensureArtifactoryCredentailsPath = path.resolve(__dirname, '../shared/ensure-artifactory-credentials.sh');
+const ensureArtifactoryCredentialsPath = path.resolve(__dirname, '../shared/ensure-artifactory-credentials.sh');
 const artifactoryToken = process.env.PORSCHE_NPM_REGISTRY_TOKEN;
 const [,,packageLocation] = process.argv;
 const pathToPackageJson = path.resolve(basePath, packageLocation, 'package.json');
@@ -42,7 +42,7 @@ function isVersionPublished(name, version) {
 async function publish(pathToPackage) {
   const publishCommand = `yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/`;
   return new Promise(resolve => {
-    const npmPublish = spawn('bash', ['-c', `source ${ensureArtifactoryCredentailsPath} && ${publishCommand}`], {
+    const npmPublish = spawn('bash', ['-c', `source ${ensureArtifactoryCredentialsPath} && ${publishCommand}`], {
       cwd: pathToPackage,
       stdio: [process.stdin, process.stdout, process.stderr]
     });

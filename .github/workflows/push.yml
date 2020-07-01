@@ -223,7 +223,6 @@ jobs:
         with:
           name: storefront-build
           path: ./packages/storefront/dist
-
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest
@@ -443,7 +442,7 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy-storefront
-  components-js-release:
+  release-components-js:
     name: 'Release components-js'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
@@ -486,9 +485,9 @@ jobs:
           args: packages/components-js
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-  components-angular-release:
+  release-components-angular:
     name: 'Release components-angular'
-    needs: [components-js-release]
+    needs: [storefront-deployment, release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -514,9 +513,9 @@ jobs:
           args: packages/components-angular/dist/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-  components-react-release:
+  release-components-react:
     name: 'Release components-react'
-    needs: [components-js-release]
+    needs: [storefront-deployment, release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -552,7 +551,7 @@ jobs:
           args: packages/components-react/projects/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-  utilities-release:
+  release-utilities:
     name: 'Release utilities'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
@@ -591,3 +590,23 @@ jobs:
           args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+  release-sketch-library:
+    name: 'Release Sketch Library'
+    needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch
+      - name: 'Publish RSS feed'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-release-feed

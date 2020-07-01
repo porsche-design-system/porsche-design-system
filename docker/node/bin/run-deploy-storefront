@@ -57,37 +57,11 @@ add_deployment_version() {
   echo "${GITHUB_SHA}" > "/opt/porsche-design-system-gh-pages/${1}/version.md"
 }
 
-copy_latest_stable_sketch_library_and_create_rss_feed() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_library_and_create_rss_feed\" (${1}, ${2})"
-  mkdir -p "/opt/porsche-design-system-gh-pages/latest"
-  cp "./sketch/${2}" "/opt/porsche-design-system-gh-pages/latest"
-  cat << _EOF_ > "/opt/porsche-design-system-gh-pages/${2}.xml"
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <channel>
-    <title>Porsche Design System</title>
-    <description>Porsche Design System Sketch Library</description>
-    <item>
-      <title>${1} (v${P_LATEST_STABLE_SKETCH_VERSION})</title>
-      <pubDate>${P_LATEST_STABLE_SKETCH_PUBLISH_DATE}</pubDate>
-      <enclosure url="https://designsystem.porsche.com/latest/${2}" sparkle:version="${P_LATEST_STABLE_SKETCH_VERSION}" type="application/octet-stream"/>
-    </item>
-  </channel>
-</rss>
-_EOF_
-}
-
-copy_latest_stable_sketch_file() {
-  echo "task: [$(date)] \"copy_latest_stable_sketch_file\" (${1})"
-  mkdir -p "/opt/porsche-design-system-gh-pages/latest"
-  cp "./sketch/${1}" "/opt/porsche-design-system-gh-pages/latest"
-}
-
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "/opt/porsche-design-system-gh-pages"
     git add -A
-    git commit -m "Automated deployment of Porsche Design System (${P_CURRENT_BRANCH}): ${GITHUB_SHA}" --allow-empty
+    git commit -m "Automated deployment of Porsche Design System - Storefront (${P_CURRENT_BRANCH}): ${GITHUB_SHA}" --allow-empty
     git push origin gh-pages --force
   popd
 }
@@ -124,8 +98,6 @@ isCurrentBranchMasterBranch() {
 }
 
 P_CURRENT_BRANCH="${GITHUB_REF:11}"
-P_LATEST_STABLE_SKETCH_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
-P_LATEST_STABLE_SKETCH_VERSION="1.4.1"
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
@@ -136,11 +108,6 @@ if isCurrentBranchMasterBranch; then
   prepare_deployment "latest"
   copy_storefront "latest"
   add_deployment_version "latest"
-  copy_latest_stable_sketch_file "porsche-design-system-layout-template.sketch"
-  copy_latest_stable_sketch_file "porsche-design-system-colors.sketchpalette"
-  copy_latest_stable_sketch_file "porsche-design-system-form-templates.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-design-system-basic.sketch"
-  copy_latest_stable_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-design-system-web.sketch"
   deploy_to_gh_pages
   verify_deployment "latest"
 else

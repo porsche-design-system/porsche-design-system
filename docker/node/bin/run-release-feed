@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${GITHUB_REPOSITORY}" ]]; then
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_ACTOR}" ]]; then
+  echo "Please provide the \$GITHUB_ACTOR environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
+  exit 1
+fi
+
+setup() {
+  echo "task: [$(date)] \"setup\""
+  git config --global user.name "${GITHUB_ACTOR}"
+  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
+}
+
+checkout_gh_pages() {
+  echo "task: [$(date)] \"checkout_gh_pages\""
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-design-system-gh-pages"
+}
+
+prepare_deployment() {
+  echo "task: [$(date)] \"prepare_deployment\""
+  rm -rf "/opt/porsche-design-system-gh-pages/sketch"
+}
+
+copy_sketch_file() {
+  echo "task: [$(date)] \"copy_sketch_file\" (${1})"
+  mkdir -p "/opt/porsche-design-system-gh-pages/sketch"
+  cp "./sketch/${1}" "/opt/porsche-design-system-gh-pages/sketch"
+}
+
+copy_sketch_library_and_create_rss_feed() {
+  echo "task: [$(date)] \"copy_sketch_library_and_create_rss_feed\" (${1}, ${2})"
+  mkdir -p "/opt/porsche-design-system-gh-pages/sketch"
+  cp "./sketch/${2}" "/opt/porsche-design-system-gh-pages/sketch"
+  cat << _EOF_ > "/opt/porsche-design-system-gh-pages/${2}.xml"
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Porsche Design System</title>
+    <description>Porsche Design System Sketch Library</description>
+    <item>
+      <title>${1} (v${SKETCH_LIBRARY_VERSION})</title>
+      <pubDate>${SKETCH_LIBRARY_PUBLISH_DATE}</pubDate>
+      <enclosure url="https://designsystem.porsche.com/sketch/${2}" sparkle:version="${SKETCH_LIBRARY_VERSION}" type="application/octet-stream"/>
+    </item>
+  </channel>
+</rss>
+_EOF_
+}
+
+deploy_to_gh_pages() {
+  echo "task: [$(date)] \"deploy_to_gh_pages\""
+  pushd "/opt/porsche-design-system-gh-pages"
+    git add -A
+    git commit -m "Automated deployment of Porsche Design System - Sketch Library (${P_CURRENT_BRANCH}): ${GITHUB_SHA}" --allow-empty
+    git push origin gh-pages --force
+  popd
+}
+
+add_deployment_version() {
+  echo "task: [$(date)] \"add_deployment_version\""
+  mkdir -p "/opt/porsche-design-system-gh-pages/sketch"
+  echo "${SKETCH_LIBRARY_VERSION}" > "/opt/porsche-design-system-gh-pages/sketch/version.md"
+}
+
+isCurrentSketckLibraryAlreadyReleased() {
+  mkdir -p "/opt/porsche-design-system-gh-pages/sketch"
+  touch "/opt/porsche-design-system-gh-pages/sketch/version.md"
+  version=$(<"/opt/porsche-design-system-gh-pages/sketch/version.md")
+  if [[ "${version}" == "${SKETCH_LIBRARY_VERSION}" ]]; then
+    return 1
+  fi
+  return 0
+}
+
+verify_deployment() {
+  echo "task: [$(date)] \"verify_deployment\""
+  local n=1
+  local max=20
+  local delay=60
+  local http_response=""
+  while true
+  do
+    http_response="$(curl -s -H "Cache-Control: no-cache" "https://designsystem.porsche.com/sketch/version.md")"
+    echo "Check deployment status. Attempt ${n}/${max} (${http_response}). [$(date)]"
+    if [[ "${http_response}" == "${SKETCH_LIBRARY_VERSION}" ]]; then
+      echo "All right, deployment was verified."
+      break
+    elif [[ ${n} -lt ${max} ]]; then
+      ((n++))
+    else
+      echo "Deployment could not be verified after ${n} attempts."
+      exit 1
+    fi
+    sleep ${delay}
+  done
+}
+
+SKETCH_LIBRARY_VERSION="$(grep PORSCHE_DESIGN_SYSTEM_SKETCH_LIBRARY_VERSION './sketch/package.env' | cut -d '=' -f2)"
+SKETCH_LIBRARY_PUBLISH_DATE="$(git log -1 --format=%aD ${GITHUB_SHA} | cat)"
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
+setup
+checkout_gh_pages
+
+if isCurrentSketckLibraryAlreadyReleased; then
+  echo "Try updating Porsche Design System - Sketch Library."
+  prepare_deployment
+  copy_sketch_file "porsche-design-system-layout-template.sketch"
+  copy_sketch_file "porsche-design-system-colors.sketchpalette"
+  copy_sketch_file "porsche-design-system-form-templates.sketch"
+  copy_sketch_library_and_create_rss_feed "Porsche Design System Basic" "porsche-design-system-basic.sketch"
+  copy_sketch_library_and_create_rss_feed "Porsche Design System Web" "porsche-design-system-web.sketch"
+  add_deployment_version
+  deploy_to_gh_pages
+  verify_deployment
+  echo "Porsche Design System - Sketch Library updated."
+else
+  echo "Porsche Design System - Sketch Library is already up-to-date. Nothing to do."
+fi
