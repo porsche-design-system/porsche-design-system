@@ -28,7 +28,6 @@ jobs:
       - name: 'Docker pull'
         run: |
           docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-          docker pull docker.pkg.github.com/porscheui/porsche-design-system/builder:latest || true
       - name: 'Install'
         uses: ./docker/node/
         with:
