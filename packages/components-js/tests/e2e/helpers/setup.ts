@@ -21,8 +21,4 @@ afterAll(async () => {
   if (browser) await browser.close();
 });
 
-export const options = {
-  baseURL: 'http://localhost:3333'
-};
-
 export const getBrowser = (): Browser => browser;
