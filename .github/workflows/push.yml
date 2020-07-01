@@ -30,6 +30,8 @@ jobs:
           docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./docker/node/
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Lint'
