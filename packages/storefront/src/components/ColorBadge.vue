@@ -20,6 +20,7 @@
     | 'notification-success'
     | 'notification-warning'
     | 'notification-error'
+    | 'notification-neutral'
     | 'state-hover'
     | 'state-active'
     | 'state-focus'
@@ -96,6 +97,10 @@
         background: $p-color-notification-error;
       }
 
+      &.notification-neutral {
+        background: $p-color-notification-neutral;
+      }
+
       &.state-hover {
         background: $p-color-state-hover;
       }
@@ -157,6 +162,10 @@
 
       &.notification-error {
         background: $p-color-theme-dark-notification-error;
+      }
+
+      &.notification-neutral {
+        background: $p-color-theme-dark-notification-neutral;
       }
 
       &.state-hover {
