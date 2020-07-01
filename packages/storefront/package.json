@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'yarn start:cdn-server' 'vue-cli-service serve'",
     "start:cdn-server": "start-cdn-local",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
