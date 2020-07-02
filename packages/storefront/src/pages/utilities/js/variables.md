@@ -48,6 +48,7 @@ A light (default) and dark theme is available depending on which background it's
 | <ColorBadge :theme="theme" color="notification-error"/>   | **Error**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.error`   |
 | <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.success` |
 | <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warning` |
+| <ColorBadge :theme="theme" color="notification-neutral"/> | **Neutral** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutral` |
 
 #### State colors
 
