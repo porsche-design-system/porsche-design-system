@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${1}" ]]; then
+  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-utilities 1.2.3'"
+  exit 1
+fi

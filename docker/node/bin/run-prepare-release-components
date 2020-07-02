@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${1}" ]]; then
-  echo "Please provide a version, e.g. './docker.sh run-prepare-release 1.0.0'"
+  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-components 1.2.3'"
   exit 1
 fi
 
