@@ -169,7 +169,9 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Components (JS/Angular/React)
+# Release management
+
+## Porsche Design System - Components (JS/Angular/React)
 
 ### Preparation
 1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
@@ -207,12 +209,12 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Utilities
+## Porsche Design System - Utilities
 
 ### Preparation
-1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
-1. Run `git pull origin {current master- or v-branch}`
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/utilities-v1-2-3__
 
 ### Porsche Design System Utilities
 1. Switch to __packages/utilities/projects/utilities directory__
@@ -229,23 +231,35 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Sketch Libraries (Basic, Web)
+## Porsche Design System - Sketch Libraries
 
 ### Preparation
-1. Export related Sketch file from master, e.g. Web Library (https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e) or Basic Library (https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
-1. Rename exported file to correct naming format, e.g. porsche-design-system-web.sketch
-1. Use existing issue branch or create a new branch (for Sketch Update only)
+1. Export related Sketch file from master branch in Abstract:
+    * [Web Library](https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e)
+    * [Basic Library](https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
+1. Rename the exported file to correct naming format:
+    * `porsche-design-system-web.sketch`
+    * `porsche-design-system-basic.sketch`
+1. Switch to __project root directory__
+1. Run `git pull origin {master- or v-branch}`
+1. Run `./docker.sh run-prepare-sketch-release ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+
+
+
+1. Create a new branch e.g. __release/sketch-v1-2-3__
+
 
 ### Sketch Library
 1. Switch to __sketch directory__
-1. Replace existing file with new file
-1. Switch to __docker/node/bin directory__ and open `run-deploy-storefront`
-1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
-
-### Commit
-1. Create a commit
-1. Push local commit to issue branch `git push`
+1. Make sure all relevant changes for the new release to be documented in `CHANGELOG.md` under __[Unreleased]__ section (this file will also be used to show on Storefront)
+1. Replace the existing Sketch file(s) with new one(s)
+1. Increase version in `package.env` referenced by `PORSCHE_DESIGN_SYSTEM_SKETCH_LIBRARY_VERSION` (keep in mind that major and minor version needs to be in sync with web components release)
 
 ### Release
+1. Create a commit
+1. Push the local commit to release branch, e.g. `git push origin release/sketch-v1-2-3`
 1. Create Pull Request & Review
-1. Merge into "master" branch
+1. Merge into __master- or v-branch__ branch (CI/CD will trigger a release automatically)
+
+### Communicate
+1. Write a Slack notification by coping last entry of `updates-design.md` in Porsche Design System channel of porsche.slack.com workspace
