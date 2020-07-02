@@ -42,5 +42,5 @@ This is the variant of your choice when you want your content to span to the ful
 
 ## Related components
 
-- [Grid](#/components/layout/grid)
-- [Flex](#/components/layout/flex)
+- [Grid](#/components/grid)
+- [Flex](#/components/flex)

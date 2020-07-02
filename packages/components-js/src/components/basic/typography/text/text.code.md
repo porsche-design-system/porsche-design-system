@@ -1,4 +1,6 @@
-# Text
+# Typography
+
+## Text
 
 **Text component** for predefined copy text sizes which are either fixed or can respond to different viewports.
 
@@ -6,7 +8,7 @@
 
 The text component is the most flexible way to display text strings on your page.  
 Rendering defaults to variant `small` and font weight `regular`.  
-The default semantic HTML element is `p`.
+The default semantic HTML element renders as a `p` tag, but you can change it to your needs (see chapter "Semantics").
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -52,6 +54,19 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 --- 
 
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-text :theme="theme" tag="blockquote">The quick brown fox jumps over the lazy dog</p-text>
+    <p-text :theme="theme"><blockquote>The quick brown fox jumps over the lazy dog</blockquote></p-text>
+  </template>
+</Playground>
+
+--- 
+
 ## Color
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
@@ -67,6 +82,7 @@ Predefined colors associated with its theme are available but also inherit mode 
       <option value="notification-success">Notification Success</option>
       <option value="notification-warning">Notification Warning</option>
       <option value="notification-error">Notification Error</option>
+      <option value="notification-neutral">Notification Neutral</option>
       <option value="inherit">Inherit</option>
     </select>
   </template>

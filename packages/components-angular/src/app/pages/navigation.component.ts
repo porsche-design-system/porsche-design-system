@@ -108,6 +108,7 @@ import { Component } from '@angular/core';
         <div class="playground light spacing-inline">
           <p-link-pure [weight]="'thin'" [href]="'https://designsystem.porsche.com'">Thin</p-link-pure>
           <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'">Regular</p-link-pure>
+          <p-link-pure [weight]="'semibold'" [href]="'https://designsystem.porsche.com'">Semibold</p-link-pure>
           <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'">Bold</p-link-pure>
         </div>
         <div class="playground light spacing-inline">
@@ -121,6 +122,11 @@ import { Component } from '@angular/core';
           <p-link-pure [href]="'https://designsystem.porsche.com'" style="width: 240px;">Lorem ipsum dolor sit amet,
             consetetur sadipscing
           </p-link-pure>
+        </div>
+        <div class="playground light spacing-inline">
+          <p-link-pure [weight]="'semibold'" [size]="'medium'" [href]="'https://designsystem.porsche.com'">Some label <p slot="subline">Some subline</p></p-link-pure>
+          <p-link-pure [weight]="'semibold'" [size]="'medium'"><a [href]="'https://designsystem.porsche.com'">Some label</a> <p slot="subline">Some subline</p></p-link-pure>
+          <a [href]="'https://designsystem.porsche.com'" style="display: inline-block"><p-link-pure [weight]="'semibold'" [size]="'medium'">Some label <p slot="subline">Some subline</p></p-link-pure></a>
         </div>
         <p-divider></p-divider>
       </p-grid-item>
@@ -144,6 +150,8 @@ import { Component } from '@angular/core';
           </p-link-pure>
           <p-link-pure [weight]="'regular'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Regular
           </p-link-pure>
+          <p-link-pure [weight]="'semibold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Semibold
+          </p-link-pure>
           <p-link-pure [weight]="'bold'" [href]="'https://designsystem.porsche.com'" [theme]="'dark'">Bold
           </p-link-pure>
         </div>
@@ -160,6 +168,11 @@ import { Component } from '@angular/core';
           <p-link-pure [href]="'https://designsystem.porsche.com'" [theme]="'dark'" style="width: 240px;">Lorem ipsum
             dolor sit amet, consetetur sadipscing
           </p-link-pure>
+        </div>
+        <div class="playground dark spacing-inline">
+          <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'" [href]="'https://designsystem.porsche.com'">Some label <p slot="subline">Some subline</p></p-link-pure>
+          <p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'"><a [href]="'https://designsystem.porsche.com'">Some label</a> <p slot="subline">Some subline</p></p-link-pure>
+          <a [href]="'https://designsystem.porsche.com'" style="display: inline-block"><p-link-pure [theme]="'dark'" [weight]="'semibold'" [size]="'medium'">Some label <p slot="subline">Some subline</p></p-link-pure></a>
         </div>
         <p-divider></p-divider>
       </p-grid-item>

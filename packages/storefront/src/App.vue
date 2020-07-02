@@ -59,7 +59,7 @@
 </script>
 
 <style lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
 
   * {
     margin: 0;
@@ -302,7 +302,7 @@
 </style>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
 
   #app {
     width: 100vw;

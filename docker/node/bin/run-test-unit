@@ -5,7 +5,8 @@ set -o pipefail
 
 if
   [[ "--components-js" == "${1}" ]] ||
-  [[ "--storefront" == "${1}" ]]
+  [[ "--storefront" == "${1}" ]] ||
+  [[ "--utilities" == "${1}" ]]
 then
   yarn test:unit:${1:2}
 else
