@@ -176,24 +176,27 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/components-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in desired `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./packages/components-js/CHANGELOG.md`
+  * `./packages/components-angular/projects/components-wrapper/CHANGELOG.md`
+  * `./packages/components-react/projects/components-wrapper/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
-### Test
+### Test (TODO: needs to be removed as soon as working on PDS@v2)
 1. Switch to __project root directory__
+1. Run `./docker.sh run-install`
+1. Run `./docker.sh run-build`
 1. Run `./docker.sh run-test-cbt --components-js`
 1. Run `./docker.sh run-test-cbt --components-angular`
 1. Run `./docker.sh run-test-cbt --components-react`
 
-### Commit
-1. Review local changes
-1. Create a commit with following message structure `Release Porsche Design System Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Create a Git tag `git tag v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}`
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
 
-### Push
-1. Push local commit with tag to release branch `git push origin {current master- or v-branch} && git push --tags`
-
-### Icon platform
+### Icon platform (TODO: needs to be part of mono repo and automated)
 1. Switch to __"./packages/icons/database" directory__
 1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
 1. Switch to Icon platform Git repository (`https://github.com/porscheui/porsche-icon-frontend`)
@@ -202,7 +205,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Deploy icon platform
 
 ### Communicate
-1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
+1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
@@ -236,7 +239,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/sketch-libraries-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in `./sketch/CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./sketch/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-sketch-libraries ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Sketch Libraries
@@ -250,7 +254,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Replace the existing Sketch file(s) with new one(s)
 
 ### Release
-1. Create a commit
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Libraries v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-libraries-v1.2.3`
 1. Create pull request and start review
 1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
