@@ -482,7 +482,7 @@ jobs:
         with:
           entrypoint: run-deploy-storefront
   release-components-js:
-    name: 'Release components-js'
+    name: 'Release Components JS'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
