@@ -38,6 +38,11 @@ jobs:
         with:
           entrypoint: run-lint
           args: --components-js
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -48,11 +53,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --utils
-      - name: 'Build Utilities'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utilities
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -99,6 +99,11 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Build Utils'
         uses: ./.github/actions/docker-run
         with:
@@ -160,6 +165,11 @@ jobs:
         with:
           entrypoint: run-test-mocks
           args: --components-react
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Build Utils'
         uses: ./.github/actions/docker-run
         with:
@@ -226,16 +236,16 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
-      - name: 'Build Utils'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utils
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
+      - name: 'Build Utils'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utils
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -287,16 +297,16 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build Utils'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utils
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
+      - name: 'Build Utils'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utils
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
