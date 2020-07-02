@@ -19,13 +19,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -74,13 +74,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -103,7 +103,7 @@ jobs:
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
-      - name: 'Store build artifact'
+      - name: 'Store Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: components-angular-build
@@ -119,13 +119,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -153,8 +153,13 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-  storefront:
-    name: 'Storefront'
+      - name: 'Store Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-build
+          path: ./packages/components-react/projects/components-wrapper
+  storefront-dev:
+    name: 'Storefront Dev'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -164,13 +169,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -208,20 +213,54 @@ jobs:
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
-      - name: 'Build components-js prod'
+  storefront-prod:
+    name: 'Storefront Prod'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+      - name: 'Install'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+      - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js-prod
-      - name: 'Build storefront prod'
+      - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --storefront
-      - name: 'Store build artifact'
+      - name: 'Store Components JS Build Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: storefront-build
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Store Storefront Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-prod-build
           path: ./packages/storefront/dist
   utilities:
     name: 'Utilities'
@@ -234,13 +273,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -280,13 +319,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -299,7 +338,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --marque
-      - name: 'Store build artifact'
+      - name: 'Store Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: marque-build
@@ -315,13 +354,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -334,7 +373,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --icons
-      - name: 'Store build artifact'
+      - name: 'Store Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: icons-build
@@ -350,13 +389,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -364,17 +403,17 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build utilities'
+      - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --utilities
-      - name: 'Build fonts'
+      - name: 'Build Fonts'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --fonts
-      - name: 'Store build artifact'
+      - name: 'Store Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: fonts-build
@@ -386,25 +425,25 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore marque build artifact'
+      - name: 'Restore Marque Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
-      - name: 'Restore icons build artifact'
+      - name: 'Restore Icons Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: icons-build
           path: ./packages/icons/dist/icons
-      - name: 'Restore fonts build artifact'
+      - name: 'Restore Fonts Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: fonts-build
@@ -418,23 +457,23 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components-js, components-angular, components-react, storefront, utilities, assets-deployment]
+    needs: [components-js, components-angular, components-react, storefront-dev, storefront-prod, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore build artifact'
+      - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: storefront-build
+          name: storefront-prod-build
           path: ./packages/storefront/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
@@ -455,30 +494,20 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Install'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
         with:
-          entrypoint: run-install
-      - name: 'Build'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-      - name: 'Build components-js prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-js-prod
-      - name: 'Publish npm package'
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
+      - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
@@ -486,27 +515,27 @@ jobs:
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-angular:
-    name: 'Release components-angular'
+    name: 'Release Components Angular'
     needs: [storefront-deployment, release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore build artifact'
+      - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: components-angular-build
           path: ./packages/components-angular/dist/components-wrapper
-      - name: 'Publish npm package'
+      - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
@@ -514,7 +543,7 @@ jobs:
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-react:
-    name: 'Release components-react'
+    name: 'Release Components React'
     needs: [storefront-deployment, release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -526,25 +555,20 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Install'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
         with:
-          entrypoint: run-install
-      - name: 'Build'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-      - name: 'Publish npm package'
+          name: components-react-build
+          path: ./packages/components-react/projects/components-wrapper
+      - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
@@ -552,7 +576,7 @@ jobs:
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-utilities:
-    name: 'Release utilities'
+    name: 'Release Utilities'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -564,13 +588,13 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
@@ -583,30 +607,30 @@ jobs:
         with:
           entrypoint: run-build
           args: --utilities
-      - name: 'Publish npm package'
+      - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-release
           args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-  release-sketch-library:
-    name: 'Release Sketch Library'
+  release-sketch-libraries:
+    name: 'Release Sketch Libraries'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Docker login'
+      - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker pull'
+      - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
       - name: 'Publish RSS feed'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release-sketch-library
+          entrypoint: run-release-sketch-libraries
