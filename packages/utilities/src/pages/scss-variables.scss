@@ -43,6 +43,9 @@
   &--color-theme-light-notification-error {
     background: $p-color-notification-error;
   }
+  &--color-theme-light-notification-neutral {
+    background: $p-color-notification-neutral;
+  }
   &--color-theme-light-state-hover {
     background: $p-color-state-hover;
   }
@@ -87,6 +90,9 @@
   }
   &--color-theme-dark-notification-error {
     background: $p-color-theme-dark-notification-error;
+  }
+  &--color-theme-dark-notification-neutral {
+    background: $p-color-theme-dark-notification-neutral;
   }
   &--color-theme-dark-state-hover {
     background: $p-color-theme-dark-state-hover;

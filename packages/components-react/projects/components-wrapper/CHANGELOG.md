@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Notification Neutral** color to `color` property of `p-text` and `p-icon`
+
 ## [1.5.0-rc.0] - 2020-06-25
 
 ### Added
