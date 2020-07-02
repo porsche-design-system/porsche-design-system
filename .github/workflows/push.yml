@@ -510,7 +510,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-js
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -538,7 +538,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-angular/dist/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -571,7 +571,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-react/projects/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -610,7 +610,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
