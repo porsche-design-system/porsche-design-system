@@ -1,113 +1,57 @@
-import { ElementHandle, JSHandle, NavigationOptions } from 'puppeteer';
+import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 
-export const setContentWithDesignSystem = async (content: string, options: NavigationOptions = {waitUntil: 'networkidle2'}) =>
+export const setContentWithDesignSystem = async (page: Page, content: string, options: NavigationOptions = {waitUntil: 'networkidle0'}): Promise<void> => {
   await page.setContent(`
       <script nomodule src="http://localhost:3333/build/porsche-design-system.js"></script>
       <script type="module" src="http://localhost:3333/build/porsche-design-system.esm.js"></script>
-
       ${content}
     `,
     options
   );
-
-type GetBoxShadowOptions = { waitForTransition: boolean };
-
-export const getBoxShadow = (element: ElementHandle<Element>, opts?: GetBoxShadowOptions) =>
-  element.evaluate(async (el, opts?: GetBoxShadowOptions) => {
-    const style = getComputedStyle(el);
-    if (opts?.waitForTransition) {
-      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
-    }
-    return style.boxShadow;
-  }, opts);
-
-// Node Context
-
-export const getPropertyFromHandle = (node: ElementHandle, prop: string) => node.getProperty(prop).then(x => x.jsonValue());
-
-export const getClassListFromHandle = (node: ElementHandle) => getPropertyFromHandle(node, 'classList').then((x) => Object.values(x).join(' '));
-
-export const waitForSelector = async (node: ElementHandle, selector: string, opts?: { isGone: boolean }) => {
-  if (opts?.isGone) {
-    while ((await getClassListFromHandle(node)).indexOf(selector) >= 0) {
-      await page.waitFor(10);
-    }
-  } else {
-    while ((await getClassListFromHandle(node)).indexOf(selector) === -1) {
-      await page.waitFor(10);
-    }
-  }
+  await page.waitForSelector('html.hydrated');
 };
 
-export const waitForInnerHTMLChange = async (node: ElementHandle) => {
-  const getInnerHTML = () => getPropertyFromHandle(node, 'innerHTML');
-  const initialInnerHTML = await getInnerHTML();
-  let runCounter = 0;
-  // We need an runCounter as exit if the right innerHTML is already loaded
-  while (runCounter < 100 && initialInnerHTML === await getInnerHTML()) {
-    await page.waitFor(10);
-    runCounter++;
-  }
-};
-
-export const waitForEventCallbacks = async () => await page.waitFor(40);
-
-// Browser Context
-
-// TODO: rename to getActiveElementHandle
-export const getActiveElement = () => page.evaluateHandle(() => document.activeElement);
-
-export const getActiveElementId = () => page.evaluate(() => document.activeElement.id);
-
-export const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
-
-export const getIdFromNode = async (node: ElementHandle | JSHandle<Element>) =>
-  await node.evaluate(el => el.id);
-
-export const getAttributeFromHandle = async (node: ElementHandle | JSHandle<Element>, attribute: string) =>
-  await node.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
-
-export const getClassFromHandle = async (node: ElementHandle | JSHandle<Element>) => await getAttributeFromHandle(node, 'class');
-
-export const selectNode = async (selector: string) => {
+export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors = selectorParts.length > 1 ? selectorParts.slice(1).map((x) => `.shadowRoot.querySelector('${x.trim()}')`).join('') : '';
   return (await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)).asElement();
 };
 
-export const getInnerHTMLFromShadowRoot = async (selector: string) => {
-  const handle = await selectNode(selector);
-  return handle.getProperty('innerHTML').then(x => x.jsonValue())
-};
+export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
+  return await element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
+}
 
-export const timeLogger = () => {
-  const now = new Date();
-  return now.getUTCSeconds() + ':' + now.getUTCMilliseconds()
-};
+export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
+  return (await element.getProperty(prop)).jsonValue();
+}
 
-let svgRequestCounter: number;
+export const getCssClasses = async (element: ElementHandle): Promise<string> => {
+  return Object.values(await getProperty(element, 'classList')).join(' ');
+}
 
-export const setSvgRequestInterceptor = (timeouts: number[]) => {
-  svgRequestCounter = 0;
-  page.removeAllListeners('request');
-  page.on('request', (req) => {
-    const url = req.url();
+export const getActiveElementId = async (page: Page): Promise<string> => {
+  return page.evaluate(() => document.activeElement.id);
+}
 
-    if (url.endsWith('.svg')) {
-      const iconName = url.match(/icons\/(.*)\.min/)[1];
-      const delay = timeouts[svgRequestCounter] ?? 0;
+export const getActiveElementTagName = async (page: Page): Promise<string> => {
+  return page.evaluate(() => document.activeElement.tagName);
+}
 
-      console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
-      setTimeout(() => {
-        req.respond({
-          status: 200,
-          contentType: 'image/svg+xml',
-          body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
-        });
-      }, delay);
-      svgRequestCounter++;
-    } else {
-      req.continue();
+type GetElementStyleOptions = { waitForTransition: boolean };
+
+export const getElementStyle = async (element: ElementHandle, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> =>
+  element.evaluate(async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> => {
+    const style = getComputedStyle(el);
+    if (opts?.waitForTransition) {
+      await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
     }
-  });
-};
+    return style[property];
+  }, property, opts);
+
+export const getElementPosition = async (element: ElementHandle, selector: string): Promise<number> =>
+  element.evaluate(async (el: Element, selector: string): Promise<number> => {
+    let option: ChildNode = el.querySelector(selector);
+    let pos = 0;
+    while ((option = option.previousSibling) !== null) pos++;
+    return pos;
+  }, selector);

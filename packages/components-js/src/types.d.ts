@@ -1,7 +1,9 @@
 // common type definitions
 export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
 
-export type TextWeight = 'thin' | 'regular' | 'bold';
+export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
+
+export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
 
 export type Theme = 'light' | 'dark';
 
@@ -10,6 +12,13 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
+
+/**
+ * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
+ */
+declare global {
+  const ROLLUP_REPLACE_IS_STAGING: string;
+}
 
 /* Auto Generated Below */
 

@@ -1,9 +1,9 @@
 # Testing
 
 One problem you might encounter while testing is, that the components get
-lazy loaded. That means, that they might not be ready when your tests start
+lazily loaded. That means, that they might not be ready when your tests start
 to access the elements.  
-You can solve that by using the [componentsReady-function](#/components/general/components-ready)
+You can solve that by using the [componentsReady-function](#/helpers/components-ready)
  to know when all loading is finished.
  
 Detailed information about tests in frameworks like [React](#/start-coding/react), Angular etc. can be found in the respective test projects
@@ -60,19 +60,18 @@ describe("The p-text", function() {
 ## E2E Tests
 
 Usually E2E tests are robust enough that the lazy loading shouldn't cause
-any issues. However there are a lot of different setups for E2E tests.
+any issues. However, there are a lot of different setups for E2E tests.
 
 If you face any problems, we would appreciate if you report them. We'll
 do our best to find a solution.  
-Also  it might be handy to know that all components get a `hydrated` class,
-as soon as they are loaded and ready, that you can wait for. Waiting
-functionality is available in most E2E frameworks.  
+Also, it might be handy to know that all components get a `hydrated` class,
+as soon as they are loaded and ready, that you can wait for. Waiting for the functionality is available in most E2E frameworks.  
 Another option would be to make the `componentsReady` function available
 in the browser and call it from the E2E tests to know when the page is
 ready.
 
 ## Visual Regression Testing
 
-For Visual Regression Testing we recommend to wait for all network traffic
+For Visual Regression Testing we recommend waiting for all network traffic
 to be finished. This should be handled by the Visual Regression Testing
 tools you use.

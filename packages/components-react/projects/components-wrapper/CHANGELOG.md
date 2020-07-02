@@ -6,8 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Notification Neutral** color to `color` property of `p-text` and `p-icon`
+
+## [1.5.0-rc.0] - 2020-06-25
+
+### Added
+- `Fieldset Wrapper` component
+- Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. <h1>-<h6> or <p>, <blockquote>, etc.) directly as slotted content.
+- Possibility to include anchor tags directly as slots of `Link`, `Link Pure` and `Link Social` 
+- `Text` new `weight` property `semibold`
+- `Button Pure` label with subline pattern as slot
+- `Link Pure` label with subline pattern as slot
+
+### Changed
+- `Select Wrapper` is now ready for the catwalk. It is dressed now with a custom drop down list box and gets naked by default on touch devices. 
+
 ### Fixed
-- Minor accessibility improvements of `icons` and `text-field-wrapper`
+- Minor accessibility improvements of `icons` and `Text Field`
+- Remove native number spinner buttons of `Text Field` with type text for Firefox
+- An issue with `Button` and `Button Pure` and their `disabled` attribute
 
 ## [1.4.0] - 2020-05-14
 

@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -17,7 +17,7 @@ import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHand
   shadow: true
 })
 export class ButtonPure {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
@@ -26,7 +26,7 @@ export class ButtonPure {
   @Prop() public type?: ButtonType = 'button';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ reflect: true }) public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
@@ -51,10 +51,26 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
+  private subline: HTMLElement;
+
+  // this stops click events when button is disabled
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (this.isDisabled()) {
+      e.stopPropagation();
+    }
+  }
+  public componentWillLoad(): void {
+    this.setSubline();
+  }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, () => this.type, () => this.isDisabled());
+    improveFocusHandlingForCustomElement(this.host);
+    improveButtonHandlingForCustomElement(
+      this.host,
+      () => this.type,
+      () => this.isDisabled()
+    );
 
     transitionListener(this.buttonTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.buttonTag);
@@ -70,53 +86,61 @@ export class ButtonPure {
       prefix(`button-pure--theme-${this.theme}`)
     );
 
-    const iconClasses = cx(
-      prefix('button-pure__icon')
-    );
+    const iconClasses = cx(prefix('button-pure__icon'));
 
     const labelClasses = cx(
       prefix('button-pure__label'),
       mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
 
-    return (
-      <button
-        class={buttonPureClasses}
-        type={this.type}
-        disabled={this.isDisabled()}
-        tabindex={this.tabbable ? 0 : -1}
-        ref={el => this.buttonTag = el as HTMLElement}
-        aria-busy={this.loading && 'true'}
-      >
-        {this.loading ? (
-          <p-spinner
-            class={iconClasses}
-            size='inherit'
-            theme={this.theme}
-            ref={el => this.iconTag = el as HTMLElement}
-          />
-        ) : (
-          <p-icon
-            class={iconClasses}
-            color='inherit'
-            size='inherit'
-            name={this.icon}
-            source={this.iconSource}
-            ref={el => this.iconTag = el as HTMLElement}
-            aria-hidden='true'
-          />
-        )}
-        <p-text
-          class={labelClasses}
-          tag='span'
-          color='inherit'
-          size='inherit'
-          weight={this.weight}
-        >
-          <slot/>
-        </p-text>
-      </button>
+    const sublineClasses = cx(
+      prefix('button-pure__subline'),
+      mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible'])
     );
+
+    return (
+      <Host>
+        <button
+          class={buttonPureClasses}
+          type={this.type}
+          disabled={this.isDisabled()}
+          tabindex={this.tabbable ? 0 : -1}
+          ref={(el) => (this.buttonTag = el as HTMLElement)}
+          aria-busy={this.loading && 'true'}
+        >
+          {this.loading ? (
+            <p-spinner
+              class={iconClasses}
+              size="inherit"
+              theme={this.theme}
+              ref={(el) => (this.iconTag = el as HTMLElement)}
+            />
+          ) : (
+            <p-icon
+              class={iconClasses}
+              color="inherit"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              ref={(el) => (this.iconTag = el as HTMLElement)}
+              aria-hidden="true"
+            />
+          )}
+          <p-text class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+            <slot />
+          </p-text>
+        </button>
+        {this.subline && (
+          <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
+            <slot name="subline" />
+          </p-text>
+        )}
+      </Host>
+    );
+  }
+
+  private setSubline(): void {
+    this.subline = this.host.querySelector('[slot="subline"]');
   }
 
   private isDisabled(): boolean {

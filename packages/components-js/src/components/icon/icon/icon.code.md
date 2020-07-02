@@ -198,6 +198,7 @@ Predefined colors associated with its theme are available. Furthermore, inherit 
       <option value="notification-success">Notification Success</option>
       <option value="notification-warning">Notification Warning</option>
       <option value="notification-error">Notification Error</option>
+      <option value="notification-neutral">Notification Neutral</option>
       <option value="inherit">Inherit</option>
     </select>
   </template>
@@ -209,7 +210,7 @@ Predefined colors associated with its theme are available. Furthermore, inherit 
 ---
 
 ## Custom icon
-The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/components/icon/icon#design).
+The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be sure that the custom icon serves the specific needs like size and viewbox which are described in the [design documentation](#/components/icon#design).
 
 <Playground :themeable="true">
   <template v-slot="{theme}">

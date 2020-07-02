@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme, } from "./types";
 import { BreakpointCustomizable, } from "./utils";
 import { NumberOfPageLinks, } from "./components/navigation/pagination/pagination";
 export namespace Components {
@@ -127,6 +127,12 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PFieldsetWrapper {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+    }
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -217,15 +223,15 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Style of the text.
+          * Style of the headline.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -464,7 +470,7 @@ export namespace Components {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -577,6 +583,12 @@ declare global {
     var HTMLPDividerElement: {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
+    };
+    interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
+    }
+    var HTMLPFieldsetWrapperElement: {
+        prototype: HTMLPFieldsetWrapperElement;
+        new (): HTMLPFieldsetWrapperElement;
     };
     interface HTMLPFlexElement extends Components.PFlex, HTMLStencilElement {
     }
@@ -698,6 +710,7 @@ declare global {
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
+        "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-grid": HTMLPGridElement;
@@ -838,6 +851,12 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PFieldsetWrapper {
+        /**
+          * The label text.
+         */
+        "label"?: string;
+    }
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
@@ -928,15 +947,15 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Style of the text.
+          * Style of the headline.
          */
-        "variant"?: "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -1178,7 +1197,7 @@ declare namespace LocalJSX {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -1266,6 +1285,7 @@ declare namespace LocalJSX {
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
+        "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-grid": PGrid;
@@ -1296,6 +1316,7 @@ declare module "@stencil/core" {
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
             "p-flex": LocalJSX.PFlex & JSXBase.HTMLAttributes<HTMLPFlexElement>;
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-grid": LocalJSX.PGrid & JSXBase.HTMLAttributes<HTMLPGridElement>;

@@ -1,4 +1,4 @@
-import { JSHandle } from "puppeteer";
+import { JSHandle, Page } from "puppeteer";
 
 /**
  * copied and stripped down from
@@ -11,18 +11,14 @@ type WaitForEvent = {
 }
 
 const events = new Map<number, WaitForEvent>();
-let hasExposedFunction = false;
 
-export const initAddEventListener = async () => {
+export const initAddEventListener = async (page: Page) => {
   events.clear();
 
-  if (!hasExposedFunction) {
-    await page.exposeFunction('puppeteerOnEvent', (id: number, ev: any) => {
-      // NODE CONTEXT
-      nodeContextEvents(events, id, ev);
-    });
-    hasExposedFunction = true;
-  }
+  await page.exposeFunction('puppeteerOnEvent', (id: number, ev: any) => {
+    // NODE CONTEXT
+    nodeContextEvents(events, id, ev);
+  });
 
   // register helpers on window of browser context
   await page.evaluate(browserContextEvents);

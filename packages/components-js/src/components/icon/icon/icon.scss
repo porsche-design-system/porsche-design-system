@@ -1,4 +1,4 @@
-@import "../../../../../../packages/scss-utils/index";
+@import "../../../../../../packages/utilities/projects/utilities/scss";
 
 :host {
   display: inline-flex;
@@ -40,7 +40,7 @@
   &--color {
     &-brand {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-brand;
+        fill: $p-color-brand;
       }
 
       &#{$bem-block}--theme-dark {
@@ -50,7 +50,7 @@
 
     &-default {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-default;
+        fill: $p-color-default;
       }
 
       &#{$bem-block}--theme-dark {
@@ -60,7 +60,7 @@
 
     &-neutral-contrast-high {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-contrast-high;
+        fill: $p-color-neutral-contrast-high;
       }
 
       &#{$bem-block}--theme-dark {
@@ -70,7 +70,7 @@
 
     &-neutral-contrast-medium {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-contrast-medium;
+        fill: $p-color-neutral-contrast-medium;
       }
 
       &#{$bem-block}--theme-dark {
@@ -80,7 +80,7 @@
 
     &-neutral-contrast-low {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-neutral-contrast-low;
+        fill: $p-color-neutral-contrast-low;
       }
 
       &#{$bem-block}--theme-dark {
@@ -90,7 +90,7 @@
 
     &-notification-success {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-notification-success;
+        fill: $p-color-notification-success;
       }
 
       &#{$bem-block}--theme-dark {
@@ -100,7 +100,7 @@
 
     &-notification-warning {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-notification-warning;
+        fill: $p-color-notification-warning;
       }
 
       &#{$bem-block}--theme-dark {
@@ -110,11 +110,21 @@
 
     &-notification-error {
       &#{$bem-block}--theme-light {
-        fill: $p-color-theme-light-notification-error;
+        fill: $p-color-notification-error;
       }
 
       &#{$bem-block}--theme-dark {
         fill: $p-color-theme-dark-notification-error;
+      }
+    }
+
+    &-notification-neutral {
+      &#{$bem-block}--theme-light {
+        fill: $p-color-notification-neutral;
+      }
+
+      &#{$bem-block}--theme-dark {
+        fill: $p-color-theme-dark-notification-neutral;
       }
     }
 
