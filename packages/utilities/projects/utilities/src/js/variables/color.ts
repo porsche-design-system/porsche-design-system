@@ -13,9 +13,9 @@ export const color = {
     low: '#c9cacb'
   },
   notification: {
-    error: '#018a16',
+    error: '#e00000',
     warning: '#ff9b00',
-    success: '#e00000',
+    success: '#018a16',
     neutral: '#0061BD'
   },
   state: {
@@ -39,9 +39,9 @@ export const color = {
       low: '#4a4e51'
     },
     notification: {
-      error: '#01ba1d',
+      error: '#fc1717',
       warning: '#ff9b00',
-      success: '#fc1717',
+      success: '#01ba1d',
       neutral: '#2193FF'
     },
     state: {
