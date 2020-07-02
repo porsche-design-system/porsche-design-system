@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGE=node
-TAG=12.16.1-stretch
+TAG=12.16.1-stretch-slim
 
 docker pull docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:latest
 
