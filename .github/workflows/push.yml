@@ -99,6 +99,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -155,6 +160,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
