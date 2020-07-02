@@ -38,14 +38,20 @@ jobs:
         with:
           entrypoint: run-lint
           args: --components-js
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
+          args: --components-js
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
           args: --components-js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
@@ -88,10 +94,21 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-angular
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -138,10 +155,21 @@ jobs:
         with:
           entrypoint: run-test-mocks
           args: --components-react
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -193,10 +221,21 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'Build Storefront'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --storefront
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -238,10 +277,11 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -482,7 +522,7 @@ jobs:
         with:
           entrypoint: run-deploy-storefront
   release-components-js:
-    name: 'Release components-js'
+    name: 'Release Components JS'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -510,7 +550,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-js
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -538,7 +578,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-angular/dist/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -571,7 +611,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/components-react/projects/components-wrapper
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
@@ -610,7 +650,7 @@ jobs:
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release
+          entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
