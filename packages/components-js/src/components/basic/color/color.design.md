@@ -94,6 +94,10 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
 | <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification	  | ✓  |
+| <ColorBadge theme="light" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #EFAE6E6 	| 250/230/230   | Blindtext 	  | -   |
+| <ColorBadge theme="light" color="notification-success-contrast-low"/> 	                        | **Success Contrast Low**        	| #E5F3E7 	| 229/243/231  	  | Blindtext  	  | -   |
+| <ColorBadge theme="light" color="notification-warning-contrast-low"/> 	                        | **Warning Contrast Low**       	| #FFF5E5 	| 255/245/229  	| Blindtext 	  | - |
+| <ColorBadge theme="light" color="notification-neutral-contrast-low"/> 	                        | **Neutral Contrast Low**       	| #E5EFF8 	| 229/239/248  	| Blindtext	  | -  |
 
 ### States
 
@@ -159,6 +163,10 @@ When using notification colors …
 | <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | Success notification |  ✓   |
 | <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification | ✓   |
 | <ColorBadge theme="dark" color="notification-neutral"/> 	                                    | **Neutral**        	| #2193FF 	| 33/147/255  	| Neutral notification | ✓   |
+| <ColorBadge theme="dark" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #FEE7E7 	| 254/231/231   | Blindtext 	  | -   |
+| <ColorBadge theme="dark" color="notification-success-contrast-low"/> 	                        | **Success Contrast Low**        	| #E5F8E8 	| 229/248/232  	  | Blindtext  	  | -   |
+| <ColorBadge theme="dark" color="notification-warning-contrast-low"/> 	                        | **Warning Contrast Low**       	| #FFF5E5 	| 255/245/229  	| Blindtext 	  | - |
+| <ColorBadge theme="dark" color="notification-neutral-contrast-low"/> 	                        | **Neutral Contrast Low**       	| #E8F4FF 	| 232/244/255  	| Blindtext	  | -  |
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
