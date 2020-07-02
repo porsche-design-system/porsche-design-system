@@ -38,14 +38,20 @@ jobs:
         with:
           entrypoint: run-lint
           args: --components-js
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
+          args: --components-js
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
           args: --components-js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
@@ -88,10 +94,16 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-angular
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -138,10 +150,16 @@ jobs:
         with:
           entrypoint: run-test-mocks
           args: --components-react
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -193,10 +211,21 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'Build Storefront'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --storefront
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -238,10 +267,11 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Build'
+      - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --core-dependencies
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
