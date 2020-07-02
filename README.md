@@ -176,19 +176,18 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/components-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
   * `./packages/components-js/CHANGELOG.md`
   * `./packages/components-angular/projects/components-wrapper/CHANGELOG.md`
   * `./packages/components-react/projects/components-wrapper/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
-### Test (TODO: needs to be removed as soon as working on PDS@v2)
+### Manual Test in Edge 18 (pre Chromium)
 1. Switch to __project root directory__
 1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build`
-1. Run `./docker.sh run-test-cbt --components-js`
-1. Run `./docker.sh run-test-cbt --components-angular`
-1. Run `./docker.sh run-test-cbt --components-react`
+1. Run `./docker.sh run-start --components-js`
+1. Manually check components in BrowserStack launching Edge 18
 
 ### Release
 1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
@@ -215,21 +214,18 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/utilities-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in desired `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./packages/utilities/projects/utilities/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-utilities ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
-### Porsche Design System Utilities
-1. Switch to __"./packages/utilities/projects/utilities" directory__
-1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
-1. Open `CHANGELOG.md` and update release notes with proper date and version
-
-### Commit
-1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push local commit to release branch `git push origin {current master- or v-branch}`
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/utilities-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
-1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
+1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
@@ -239,7 +235,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/sketch-libraries-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` under section __[Unreleased]__ (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
   * `./sketch/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-sketch-libraries ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
