@@ -43,6 +43,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --utilities
+      - name: 'Build Icons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --icons
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -109,6 +114,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --utils
+      - name: 'Build Icons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --icons
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -175,6 +185,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --utils
+      - name: 'Build Icons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --icons
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -246,6 +261,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --utils
+      - name: 'Build Icons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --icons
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -307,6 +327,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --utils
+      - name: 'Build Icons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --icons
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
