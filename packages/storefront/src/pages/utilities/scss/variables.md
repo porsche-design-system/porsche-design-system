@@ -48,6 +48,7 @@ A light and dark theme is available depending on which background it's used.
 | <ColorBadge :theme="theme" color="notification-error"/>  	| **Error** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-error`     |
 | <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-success`   |
 | <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-warning`   |
+| <ColorBadge :theme="theme" color="notification-neutral"/> | **Neutral** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-neutral`   |
 
 #### State colors
 
