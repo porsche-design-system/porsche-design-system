@@ -609,4 +609,4 @@ jobs:
       - name: 'Publish RSS feed'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-release-feed
+          entrypoint: run-release-sketch-library
