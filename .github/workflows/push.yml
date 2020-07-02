@@ -153,8 +153,8 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-  storefront:
-    name: 'Storefront'
+  storefront-dev:
+    name: 'Storefront Dev'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -208,6 +208,31 @@ jobs:
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
+  storefront-prod:
+    name: 'Storefront Prod'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+      - name: 'Install'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
       - name: 'Build components-js prod'
         uses: ./.github/actions/docker-run
         with:
@@ -221,7 +246,7 @@ jobs:
       - name: 'Store build artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: storefront-build
+          name: storefront-prod-build
           path: ./packages/storefront/dist
   utilities:
     name: 'Utilities'
@@ -418,7 +443,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components-js, components-angular, components-react, storefront, utilities, assets-deployment]
+    needs: [components-js, components-angular, components-react, storefront-dev, storefront-prod, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -434,7 +459,7 @@ jobs:
       - name: 'Restore build artifact'
         uses: actions/download-artifact@v2
         with:
-          name: storefront-build
+          name: storefront-prod-build
           path: ./packages/storefront/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
