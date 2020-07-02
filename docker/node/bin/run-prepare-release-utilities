@@ -10,7 +10,7 @@ fi
 
 pushd "packages/utilities/projects/utilities"
   yarn version --no-git-tag-version --new-version "${1}"
-  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-angular"
