@@ -47,7 +47,7 @@ export const config: StorefrontConfig = {
     'Changelog': {
       'Sketch Libraries': [
         // @ts-ignore
-        () => import(`@/../../../sketch/CHANGELOG.md`)
+        () => import(`@/../../../sketch/basic/CHANGELOG.md`)
       ],
       'Components': [
         // @ts-ignore

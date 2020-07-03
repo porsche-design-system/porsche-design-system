@@ -34,13 +34,13 @@ describe('check for dead links in storefront', () => {
   // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
   const whitelistedUrls: string[] = [
     'https://github.com/porscheui/porsche-design-system',
-    'http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch',
+    'https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette',
+    'https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch',
+    'https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch',
     'https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip',
-    'https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette',
     'https://www.sitepoint.com/introduction-wai-aria/',
     'https://adabook.com/',
     'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
-    '/latest/porsche-design-system-form-templates.sketch',
     'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml',
     'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml'
   ];
