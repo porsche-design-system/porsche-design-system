@@ -18,9 +18,13 @@
     | 'neutral-contrast-medium'
     | 'neutral-contrast-low'
     | 'notification-success'
+    | 'notification-success-contras-low'
     | 'notification-warning'
+    | 'notification-warning-contras-low'
     | 'notification-error'
+    | 'notification-error-contras-low'
     | 'notification-neutral'
+    | 'notification-neutral-contras-low'
     | 'state-hover'
     | 'state-active'
     | 'state-focus'
@@ -89,16 +93,32 @@
         background: $p-color-notification-success;
       }
 
+      &.notification-success-contrast-low {
+        background: $p-color-notification-success-contrast-low;
+      }
+
       &.notification-warning {
         background: $p-color-notification-warning;
+      }
+
+      &.notification-warning-contrast-low {
+        background: $p-color-notification-warning-contrast-low;
       }
 
       &.notification-error {
         background: $p-color-notification-error;
       }
 
+      &.notification-error-contrast-low {
+        background: $p-color-notification-error-contrast-low;
+      }
+
       &.notification-neutral {
         background: $p-color-notification-neutral;
+      }
+
+      &.notification-neutral-contrast-low {
+        background: $p-color-notification-neutral-contrast-low;
       }
 
       &.state-hover {
@@ -156,16 +176,32 @@
         background: $p-color-theme-dark-notification-success;
       }
 
+      &.notification-success-contrast-low {
+        background: $p-color-theme-dark-notification-success-contrast-low;
+      }
+
       &.notification-warning {
         background: $p-color-theme-dark-notification-warning;
+      }
+
+      &.notification-warning-contrast-low {
+        background: $p-color-theme-dark-notification-warning-contrast-low;
       }
 
       &.notification-error {
         background: $p-color-theme-dark-notification-error;
       }
 
+      &.notification-error-contrast-low {
+        background: $p-color-theme-dark-notification-error-contrast-low;
+      }
+
       &.notification-neutral {
         background: $p-color-theme-dark-notification-neutral;
+      }
+
+      &.notification-neutral-contrast-low {
+        background: $p-color-theme-dark-notification-neutral-contrast-low;
       }
 
       &.state-hover {

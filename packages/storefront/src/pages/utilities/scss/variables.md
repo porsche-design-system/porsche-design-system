@@ -49,6 +49,10 @@ A light and dark theme is available depending on which background it's used.
 | <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-success`   |
 | <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-warning`   |
 | <ColorBadge :theme="theme" color="notification-neutral"/> | **Neutral** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-neutral`   |
+| <ColorBadge :theme="theme" color="notification-error-contrast-low"/>  	| **Error Contrast Low** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-error-contrast-low`     |
+| <ColorBadge :theme="theme" color="notification-success-contrast-low"/>  	| **Success Contrast Low** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-success-contrast-low`     |
+| <ColorBadge :theme="theme" color="notification-warning-contrast-low"/>  	| **Warning Contrast Low** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-warning-contrast-low`     |
+| <ColorBadge :theme="theme" color="notification-neutral-contrast-low"/>  	| **Neutral Contrast Low** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}notification-neutral-contrast-low`     |
 
 #### State colors
 

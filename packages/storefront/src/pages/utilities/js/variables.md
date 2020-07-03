@@ -49,6 +49,10 @@ A light (default) and dark theme is available depending on which background it's
 | <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.success` |
 | <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warning` |
 | <ColorBadge :theme="theme" color="notification-neutral"/> | **Neutral** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutral` |
+| <ColorBadge :theme="theme" color="notification-error-contrast-low"/>   | **Error Contrast Low**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.errorContrastLow`   |
+| <ColorBadge :theme="theme" color="notification-success-contrast-low"/>   | **Success Contrast Low**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.successContrastLow`   |
+| <ColorBadge :theme="theme" color="notification-warning-contrast-low"/>   | **Warning Contrast Low**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warningContrastLow`   |
+| <ColorBadge :theme="theme" color="notification-neutral-contrast-low"/>   | **Neutral Contrast Low**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutralContrastLow`   |
 
 #### State colors
 
