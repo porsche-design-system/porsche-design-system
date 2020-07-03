@@ -18,6 +18,11 @@ if [[ -z "${GITHUB_SHA}" ]]; then
   exit 1
 fi
 
+if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
+  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
+  exit 1
+fi
+
 setup() {
   echo "task: [$(date)] \"setup\" (${WORK_DIR})"
   git config --global user.name "${GITHUB_ACTOR}"
@@ -99,6 +104,18 @@ is_version_published() {
   fi
 }
 
+add_git_tag() {
+  echo "task: [$(date)] \"add_git_tag\" ${GIT_TAG_NAME}, ${GITHUB_SHA}"
+  curl -s -X POST "https://api.github.com/repos/porscheui/porsche-design-system/git/refs" \
+    -H "Authorization: token ${GIT_DEPLOY_KEY}" \
+    -d @- <<EOF
+{
+  "ref": "refs/tags/${GIT_TAG_NAME}",
+  "sha": "${GITHUB_SHA}"
+}
+EOF
+}
+
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 
@@ -107,11 +124,13 @@ PACKAGE_LOCATION="${1}"
 PACKAGE_INFO="${PACKAGE_LOCATION}/package.env"
 PACKAGE_NAME="$(grep NAME "${PACKAGE_INFO}" | cut -d '=' -f2)"
 PACKAGE_VERSION="$(grep VERSION "${PACKAGE_INFO}" | cut -d '=' -f2)"
+GIT_TAG_NAME="sketch-library-${PACKAGE_NAME:22}-v${PACKAGE_VERSION}"
 
 setup
 if ! is_version_published; then
   copy_sketch_library_and_create_rss_feed
   if publish; then
+    add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library published 🎉"
   else
     echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library failed 😢"
