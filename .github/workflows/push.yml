@@ -524,7 +524,7 @@ jobs:
   release-components-js:
     name: 'Release Components JS'
     needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -557,7 +557,7 @@ jobs:
   release-components-angular:
     name: 'Release Components Angular'
     needs: [release-components-js]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -585,7 +585,7 @@ jobs:
   release-components-react:
     name: 'Release Components React'
     needs: [release-components-js]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -618,7 +618,7 @@ jobs:
   release-utilities:
     name: 'Release Utilities'
     needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -657,7 +657,7 @@ jobs:
   release-sketch-library-basic:
     name: 'Release Sketch Library Basic'
     needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -680,7 +680,7 @@ jobs:
   release-sketch-library-web:
     name: 'Release Sketch Library Web'
     needs: [release-sketch-library-basic]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
