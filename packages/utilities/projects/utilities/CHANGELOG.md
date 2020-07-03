@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **Notification Low Contrast** colors
+- **Notification Contrast Low** colors
 - **Notification Neutral** color
 - **Background Shading** color for overlays
 

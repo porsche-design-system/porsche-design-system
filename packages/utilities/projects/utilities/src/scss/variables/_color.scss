@@ -31,20 +31,20 @@ $p-color-theme-light-neutral-contrast-low: $p-color-neutral-contrast-low;
 // Notification colors
 $p-color-notification-success: #018a16;
 $p-color-theme-light-notification-success: $p-color-notification-success;
-$p-color-notification-success-low-contrast: #e5f3e7;
-$p-color-theme-light-notification-success-low-contrast: $p-color-notification-success-low-contrast;
+$p-color-notification-success-contrast-low: #e5f3e7;
+$p-color-theme-light-notification-success-contrast-low: $p-color-notification-success-contrast-low;
 $p-color-notification-warning: #ff9b00;
 $p-color-theme-light-notification-warning: $p-color-notification-warning;
-$p-color-notification-warning-low-contrast: #fff5e5;
-$p-color-theme-light-notification-warning-low-contrast: $p-color-notification-warning-low-contrast;
+$p-color-notification-warning-contrast-low: #fff5e5;
+$p-color-theme-light-notification-warning-contrast-low: $p-color-notification-warning-contrast-low;
 $p-color-notification-error: #e00000;
 $p-color-theme-light-notification-error: $p-color-notification-error;
-$p-color-notification-error-low-contrast: #fae6e6;
-$p-color-theme-light-notification-error-low-contrast: $p-color-notification-error-low-contrast;
+$p-color-notification-error-contrast-low: #fae6e6;
+$p-color-theme-light-notification-error-contrast-low: $p-color-notification-error-contrast-low;
 $p-color-notification-neutral: #0061BD;
 $p-color-theme-light-notification-neutral: $p-color-notification-neutral;
-$p-color-notification-neutral-low-contrast: #e5eff8;
-$p-color-theme-light-notification-neutral-low-contrast: $p-color-notification-neutral-low-contrast;
+$p-color-notification-neutral-contrast-low: #e5eff8;
+$p-color-theme-light-notification-neutral-contrast-low: $p-color-notification-neutral-contrast-low;
 
 // State colors
 $p-color-state-hover: #d5001c;
@@ -80,13 +80,13 @@ $p-color-theme-dark-neutral-contrast-low: #4a4e51;
 
 // Notification colors
 $p-color-theme-dark-notification-success: #01ba1d;
-$p-color-theme-dark-notification-success-low-contrast: #e5f8e8;
+$p-color-theme-dark-notification-success-contrast-low: #e5f8e8;
 $p-color-theme-dark-notification-warning: #ff9b00;
-$p-color-theme-dark-notification-warning-low-contrast: #fff5e5;
+$p-color-theme-dark-notification-warning-contrast-low: #fff5e5;
 $p-color-theme-dark-notification-error: #fc1717;
-$p-color-theme-dark-notification-error-low-contrast: #fee7e7;
+$p-color-theme-dark-notification-error-contrast-low: #fee7e7;
 $p-color-theme-dark-notification-neutral: #2193FF;
-$p-color-theme-dark-notification-neutral-low-contrast: #e8f4ff;
+$p-color-theme-dark-notification-neutral-contrast-low: #e8f4ff;
 
 // State colors
 $p-color-theme-dark-state-hover: #d5001c;
