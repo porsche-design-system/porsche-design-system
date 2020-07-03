@@ -39,10 +39,10 @@ copy_sketch_library_and_create_rss_feed() {
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>${title}</title>
+    <title>Porsche Design System</title>
     <description>Porsche Design System Sketch Library</description>
     <item>
-      <title>${PACKAGE_NAME} (v${PACKAGE_VERSION})</title>
+      <title>${title} (v${PACKAGE_VERSION})</title>
       <pubDate>${publish_date}</pubDate>
       <enclosure url="https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch" sparkle:version="${PACKAGE_VERSION}" type="application/octet-stream"/>
     </item>
@@ -60,30 +60,32 @@ publish() {
     git push origin gh-pages --force
   popd
 
-  local n=1
-  local max=20
-  local delay=60
-  local http_status_code
-  local return_code=1
-  while true
-  do
-    http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Cache-Control: no-cache" "https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")"
-    echo "Check deployment status. Attempt ${n}/${max} (${http_status_code}). [$(date)]"
-    if [[ $http_status_code == 200 ]]; then
-      echo "All right, deployment was verified."
-      return_code=0 # true
-      break
-    elif [[ ${n} -lt ${max} ]]; then
-      ((n++))
-    else
-      echo "Deployment could not be verified after ${n} attempts."
-      return_code=1 # false
-      break
-    fi
-    sleep ${delay}
-  done
-
-  return $return_code
+#  TODO: can't be used with GH Pages and GH Actions because of super strong caching
+#  local n=1
+#  local max=20
+#  local delay=60
+#  local http_status_code
+#  local return_code=1
+#  while true
+#  do
+#    http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Cache-Control: no-cache" "https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")"
+#    echo "Check deployment status. Attempt ${n}/${max} (${http_status_code}) - https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch [$(date)]"
+#    if [[ $http_status_code == 200 ]]; then
+#      echo "All right, deployment was verified."
+#      return_code=0 # true
+#      break
+#    elif [[ ${n} -lt ${max} ]]; then
+#      ((n++))
+#    else
+#      echo "Deployment could not be verified after ${n} attempts."
+#      return_code=1 # false
+#      break
+#    fi
+#    sleep ${delay}
+#  done
+#
+#  return $return_code
+  return 0
 }
 
 is_version_published() {
@@ -117,5 +119,4 @@ if ! is_version_published; then
   fi
 else
   echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library is already published 🤷‍♂️"
-  exit 78
 fi
