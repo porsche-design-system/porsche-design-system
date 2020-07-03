@@ -15,7 +15,7 @@ After you received your Abstract invitation you can get a smooth and easy onboar
 
 ## 3. Layout setup
 There's no need to design from scratch anymore! Instead, you can use our pre-built Sketch layout templates. They contain artboards in all relevant responsive screen sizes enriched by the right layout and grid presets (which can be turned visible via: View → Canvas → Show Layout).  
-[Download Sketch Layout Template](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch)
+[Download Sketch Layout Template](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch)
 
 ## 4. Sketch libraries and resources
 The components of the Porsche Design System are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
@@ -37,7 +37,7 @@ In order to design Porsche web applications and to use the Porsche Design System
 
 ## Sketch color palette
 Enrich your Porsche design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette in Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
-[Download Porsche color palette](https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette)
+[Download Porsche color palette](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette)
 
 ## Other helpful Sketch plugins
 A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/start-designing/sketch-plugins).

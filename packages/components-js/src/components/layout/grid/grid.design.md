@@ -55,7 +55,7 @@ To provide consistency throughout all Porsche web experiences, all layouts shoul
 ![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
 
 ### Layout template 
-To make layouting from scratch as easy as possible, the optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch). They come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas → Show Layout.
+To make layouting from scratch as easy as possible, the optimized viewport sizes are provided by [Sketch artboard templates](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch). They come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas → Show Layout.
 
 ## Tips for responsive layouting
 
