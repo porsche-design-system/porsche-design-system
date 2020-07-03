@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Porsche Design System</title>
+    <title>Porsche Design System Basic</title>
     <description>Porsche Design System Sketch Library</description>
     <item>
-      <title>Porsche Design System Basic (v1.4.1)</title>
-      <pubDate>Thu, 2 Jul 2020 09:32:22 +0200</pubDate>
-      <enclosure url="https://designsystem.porsche.com/latest/porsche-design-system-basic.sketch" sparkle:version="1.4.1" type="application/octet-stream"/>
+      <title>porsche-design-system-basic (v1.4.1)</title>
+      <pubDate>Fri, 3 Jul 2020 14:57:07 +0200</pubDate>
+      <enclosure url="https://designsystem.porsche.com/sketch/porsche-design-system-basic/1.4.1/porsche-design-system-basic.sketch" sparkle:version="1.4.1" type="application/octet-stream"/>
     </item>
   </channel>
 </rss>
