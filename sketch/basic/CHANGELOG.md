@@ -1,6 +1,6 @@
 # Changelog
 
-## Porsche Design System -  Sketch Libraries
+## Porsche Design System -  Sketch Library "Basic"
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -12,85 +12,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Components |   |  Various structural bugfixes |
-Components | Extended Description text components in Text Field, Textarea and Select |  |
-Components |  Update icon size in components |  |
+Type | Basic Library |
+|---|---|
+Components | Various structural bugfixes |
 
 ### [1.4.0] - 2020-05-14
 
 #### Added
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | Text List |  |
-Components | Text Field Search |  |
-Components | Social Link |  |
-Components | Description text component in Text Field, Textarea and Select |  |
-Components |  | Google Icon |
+Type | Basic Library |
+|---|---|
+Components | Google Icon |
 
 #### Fixed
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Components |   | Icon optimization to base size 24 x 24 px |
-Components | Change icon size in Link & Button in 24 x 24 px  |  |
-Components | Background color for Text Field, Textarea and Select  |  |
-Components | | Optimization size of the Porsche Marque |
+Type | Basic Library |
+|---|---|
+Components | Icon optimization to base size 24 x 24 px |
+Components | Optimization size of the Porsche Marque |
 
 ### [1.3.0] - 2020-04-08
 
 #### Added
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Text Styles |  | Headline 5 |
+Type | Basic Library |
+|---|---|
+Text Styles | Headline 5 |
 
 ### [1.2.0] - 2020-03-25
-
-#### Added
-
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | Password (focus) |  |
-Components | Divider |  |
-Components | Hover state at form elements |  |
-Components | Focus symbol in Textarea, Text Field, Select and Password |  |
-
-#### Fixed
-
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | Icon pinned in password Text Field  |  |
 
 ### [1.1.1] - 2020-03-17
 
 #### Added
     
-Type | Web Library | Basic Library |
-|---|---|---|
-Components |  | Text style warning for copytext small and x-small |
+Type | Basic Library |
+|---|---|
+Components | Text style warning for copytext small and x-small |
 
 #### Changed
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Basic |  | Update notification colors for light and dark theme |
-Components | Update text style for error and success |  |
-Basic |  | Update sketch color palette |
+Type | Basic Library |
+|---|---|
+Basic | Update notification colors for light and dark theme |
+Basic | Update sketch color palette |
 
 ### [1.1.0] - 2020-03-11
 
 #### Added
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | `Checkbox` `Radio Button` `Select` `Text Field` `Textarea` | Icons for "arrow-left", "arrow-right", "plus" and "minus" |
-Text Styles |  | Text styles for error and success |
-Layer Styles | Layer styles for form components |  |
-
-- General forms guideline (in "patterns" section)
+Type | Basic Library |
+|---|---|
+Text Styles | Text styles for error and success |
 
 ### [1.0.3] - 2020-02-28
 
@@ -121,6 +93,6 @@ Layer Styles | Layer styles for form components |  |
 
 #### Added
 
-Type | Web Library | Basic Library |
-|---|---|---|
-Components | `Headline`  `Icon` `Marque` `Text` | `Button` `Button Pure` `Flex` `Grid` `Link` `Link Pure` `Pagination` `Spinner` |
+Type | Basic Library |
+|---|---|
+Components | `Button` `Button Pure` `Flex` `Grid` `Link` `Link Pure` `Pagination` `Spinner` |
