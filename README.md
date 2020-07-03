@@ -229,31 +229,58 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Porsche Design System - Sketch Libraries
+## Porsche Design System - Sketch Library Basic
 
 ### Preparation
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
-1. Create a new branch e.g. __release/sketch-libraries-v1.2.3__
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
-  * `./sketch/CHANGELOG.md`
-1. Run `./docker.sh run-prepare-release-sketch-libraries ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+1. Create a new branch e.g. __release/sketch-library-basic-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./sketch/basic/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-sketch-library basic ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
-### Sketch Libraries
-1. Switch to __"./sketch" directory__
-1. Export related Sketch file(s) from master branch in Abstract:
-    * [Web Library](https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e)
+### Sketch Library
+1. Switch to __"./sketch/basic" directory__
+1. Export related Sketch file from master branch in Abstract:
     * [Basic Library](https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
-1. Rename the exported file(s) to correct naming format:
-    * `porsche-design-system-web.sketch`
+1. Rename the exported file to correct naming format:
     * `porsche-design-system-basic.sketch`
-1. Replace the existing Sketch file(s) with new one(s)
+1. Replace the existing Sketch file with new one
 
 ### Release
-1. Create a commit with following message structure `Release Porsche Design System - Sketch Libraries v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/sketch-libraries-v1.2.3`
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-basic-v1.2.3`
 1. Create pull request and start review
 1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
-1. Write a Slack notification by coping last entry of `./sketch/CHANGELOG.md` in public Porsche Design System Slack channel
+1. Write a Slack notification by coping last entry of `./sketch/basic/CHANGELOG.md` in public Porsche Design System Slack channel
+
+---
+
+## Porsche Design System - Sketch Library Web
+
+### Preparation
+1. Switch to __project root directory__
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/sketch-library-web-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./sketch/web/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+
+### Sketch Library
+1. Switch to __"./sketch/web" directory__
+1. Export related Sketch file from master branch in Abstract:
+    * [Web Library](https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e)
+1. Rename the exported file to correct naming format:
+    * `porsche-design-system-web.sketch`
+1. Replace the existing Sketch file with new one
+
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
+
+### Communicate
+1. Write a Slack notification by coping last entry of `./sketch/web/CHANGELOG.md` in public Porsche Design System Slack channel
