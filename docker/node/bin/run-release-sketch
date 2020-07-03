@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${GITHUB_REPOSITORY}" ]]; then
+  echo "Please provide the \$GITHUB_REPOSITORY environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_ACTOR}" ]]; then
+  echo "Please provide the \$GITHUB_ACTOR environment variable."
+  exit 1
+fi
+
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
+  exit 1
+fi
+
+setup() {
+  echo "task: [$(date)] \"setup\" (${WORK_DIR})"
+  git config --global user.name "${GITHUB_ACTOR}"
+  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git remote set-url origin "git@github.com:${GITHUB_REPOSITORY}.git"
+  git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "${WORK_DIR}"
+}
+
+copy_sketch_library_and_create_rss_feed() {
+  echo "task: [$(date)] \"copy_sketch_library_and_create_rss_feed\" (${WORK_DIR}, ${PACKAGE_LOCATION}, ${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+  local title
+  local publish_date
+  title="$(echo "${PACKAGE_NAME}" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++){ $i=toupper(substr($i,1,1)) substr($i,2) }}1')"
+  publish_date="$(git log -1 --format=%aD "${GITHUB_SHA}" | cat)"
+
+  mkdir -p "${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}"
+  cp "${PACKAGE_LOCATION}/${PACKAGE_NAME}.sketch" "${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch"
+  cat << _EOF_ > "${WORK_DIR}/${PACKAGE_NAME}.sketch.xml"
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>${title}</title>
+    <description>Porsche Design System Sketch Library</description>
+    <item>
+      <title>${PACKAGE_NAME} (v${PACKAGE_VERSION})</title>
+      <pubDate>${publish_date}</pubDate>
+      <enclosure url="https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch" sparkle:version="${PACKAGE_VERSION}" type="application/octet-stream"/>
+    </item>
+  </channel>
+</rss>
+_EOF_
+}
+
+publish() {
+  echo "task: [$(date)] \"publish\" (${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+
+  pushd "${WORK_DIR}"
+    git add -A
+    git commit -m "Automated deployment of Porsche Design System - Sketch Library (${P_CURRENT_BRANCH}): ${GITHUB_SHA}" --allow-empty
+    git push origin gh-pages --force
+  popd
+
+  local n=1
+  local max=20
+  local delay=60
+  local http_status_code
+  local return_code=1
+  while true
+  do
+    http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Cache-Control: no-cache" "https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")"
+    echo "Check deployment status. Attempt ${n}/${max} (${http_status_code}). [$(date)]"
+    if [[ $http_status_code == 200 ]]; then
+      echo "All right, deployment was verified."
+      return_code=0 # true
+      break
+    elif [[ ${n} -lt ${max} ]]; then
+      ((n++))
+    else
+      echo "Deployment could not be verified after ${n} attempts."
+      return_code=1 # false
+      break
+    fi
+    sleep ${delay}
+  done
+
+  return $return_code
+}
+
+is_version_published() {
+  echo "task: [$(date)] \"is_version_published\" (${WORK_DIR}, ${PACKAGE_NAME}, ${PACKAGE_VERSION})"
+  local file="${WORK_DIR}/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch"
+
+  if [[ -f "${file}" ]]; then
+    return 0 # true
+  else
+    return 1 # false
+  fi
+}
+
+SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
+
+WORK_DIR="/opt/porsche-design-system-gh-pages"
+PACKAGE_LOCATION="${1}"
+PACKAGE_INFO="${PACKAGE_LOCATION}/package.env"
+PACKAGE_NAME="$(grep NAME "${PACKAGE_INFO}" | cut -d '=' -f2)"
+PACKAGE_VERSION="$(grep VERSION "${PACKAGE_INFO}" | cut -d '=' -f2)"
+
+setup
+if ! is_version_published; then
+  copy_sketch_library_and_create_rss_feed
+  if publish; then
+    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library published 🎉"
+  else
+    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library failed 😢"
+    exit 1
+  fi
+else
+  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" Sketch Library is already published 🤷‍♂️"
+  exit 78
+fi

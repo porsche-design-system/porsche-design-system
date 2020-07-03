@@ -10,7 +10,7 @@ export RUN_GID="$(id -g)"
 export COMPOSE_PROJECT_NAME="porsche-design-system-v1"
 
 SERVICE=design-system
-if [[ "run-deploy-storefront" == "${1}" || "run-release-feed" == "${1}" ]]; then
+if [[ "run-deploy-storefront" == "${1}" || "run-release-sketch" == "${1}" ]]; then
   SERVICE=design-system-deploy
 fi
 

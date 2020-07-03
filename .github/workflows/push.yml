@@ -654,8 +654,8 @@ jobs:
           args: packages/utilities/projects/utilities
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-  release-sketch-libraries:
-    name: 'Release Sketch Libraries'
+  release-sketch-library-basic:
+    name: 'Release Sketch Library Basic'
     needs: [storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -670,7 +670,33 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Publish RSS feed'
+      - name: 'Publish Sketch Library'
         uses: ./.github/actions/docker-run
+        env:
+          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
-          entrypoint: run-release-sketch-libraries
+          entrypoint: run-release-sketch
+          args: sketch/basic
+  release-sketch-library-web:
+    name: 'Release Sketch Library Web'
+    needs: [storefront-deployment, release-sketch-library-basic]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+      - name: 'Publish Sketch Library'
+        uses: ./.github/actions/docker-run
+        env:
+          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+        with:
+          entrypoint: run-release-sketch
+          args: sketch/web
