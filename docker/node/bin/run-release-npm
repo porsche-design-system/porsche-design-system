@@ -3,6 +3,16 @@
 set -o errexit
 set -o pipefail
 
+if [[ -z "${GITHUB_SHA}" ]]; then
+  echo "Please provide the \$GITHUB_SHA environment variable."
+  exit 1
+fi
+
+if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
+  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
+  exit 1
+fi
+
 publish() {
   echo "task: [$(date)] \"publish\" (${PACKAGE_LOCATION})"
   result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${PACKAGE_LOCATION}")
@@ -25,16 +35,30 @@ is_version_published() {
   fi
 }
 
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
+add_git_tag() {
+  echo "task: [$(date)] \"add_git_tag\" ${GIT_TAG_NAME}, ${GITHUB_SHA}"
+  curl -s -X POST "https://api.github.com/repos/porscheui/porsche-design-system/git/refs" \
+    -H "Authorization: token ${GIT_DEPLOY_KEY}" \
+    -d @- <<EOF
+{
+  "ref": "refs/tags/${GIT_TAG_NAME}",
+  "sha": "${GITHUB_SHA}"
+}
+EOF
+}
+
+SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
 PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
+GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
 
 if ! is_version_published; then
   if publish; then
+    add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
   else
     echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed 😢"
