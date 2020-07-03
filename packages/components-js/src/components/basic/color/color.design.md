@@ -94,7 +94,7 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
 | <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification	  | ✓  |
-| <ColorBadge theme="light" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #EFAE6E6 	| 250/230/230   | Error Contrast Low (only to be used on default background) 	  | -   |
+| <ColorBadge theme="light" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #FAE6E6 	| 250/230/230   | Error Contrast Low (only to be used on default background) 	  | -   |
 | <ColorBadge theme="light" color="notification-success-contrast-low"/> 	                        | **Success Contrast Low**        	| #E5F3E7 	| 229/243/231  	  | Success Contrast Low (only to be used on default background)  	  | -   |
 | <ColorBadge theme="light" color="notification-warning-contrast-low"/> 	                        | **Warning Contrast Low**       	| #FFF5E5 	| 255/245/229  	| Warning Contrast Low (only to be used on default background) 	  | - |
 | <ColorBadge theme="light" color="notification-neutral-contrast-low"/> 	                        | **Neutral Contrast Low**       	| #E5EFF8 	| 229/239/248  	| Neutral Contrast Low (only to be used on default background)	  | -  |
