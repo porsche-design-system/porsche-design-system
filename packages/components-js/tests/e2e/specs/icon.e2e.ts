@@ -119,6 +119,8 @@ describe('p-icon', () => {
 
     await page.waitForResponse(resp => resp.url().indexOf('light') && resp.status() === 200);
 
+    await waitForStencilLifecycle(page);
+
     expect(await getIconContent()).toContain('light');
     expect(responseCounter).toEqual(2);
   });
