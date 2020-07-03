@@ -186,8 +186,8 @@ jobs:
         with:
           name: components-react-build
           path: ./packages/components-react/projects/components-wrapper
-  storefront-dev:
-    name: 'Storefront Dev'
+  storefront:
+    name: 'Storefront'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -252,8 +252,8 @@ jobs:
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
-  storefront-prod:
-    name: 'Storefront Prod'
+  production-builds:
+    name: 'Production Builds'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -497,7 +497,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components-js, components-angular, components-react, storefront-dev, storefront-prod, utilities, assets-deployment]
+    needs: [components-js, components-angular, components-react, storefront, production-builds, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -556,7 +556,7 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-angular:
     name: 'Release Components Angular'
-    needs: [storefront-deployment, release-components-js]
+    needs: [release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -584,7 +584,7 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-react:
     name: 'Release Components React'
-    needs: [storefront-deployment, release-components-js]
+    needs: [release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -679,7 +679,7 @@ jobs:
           args: sketch/basic
   release-sketch-library-web:
     name: 'Release Sketch Library Web'
-    needs: [storefront-deployment, release-sketch-library-basic]
+    needs: [release-sketch-library-basic]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
