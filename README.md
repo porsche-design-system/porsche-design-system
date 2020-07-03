@@ -266,7 +266,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Create a new branch e.g. __release/sketch-library-web-v1.2.3__
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section __[Unreleased]__ (this file will also be used to show on Storefront)
   * `./sketch/web/CHANGELOG.md`
-1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` - __make sure major and minor version is in sync with components release__ (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Sketch Library
 1. Switch to __"./sketch/web" directory__
