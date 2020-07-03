@@ -18,8 +18,8 @@ if [[ -z "${GITHUB_SHA}" ]]; then
   exit 1
 fi
 
-if [[ -z "${GIT_DEPLOY_KEY}" ]]; then
-  echo "Please provide the \$GIT_DEPLOY_KEY environment variable."
+if [[ -z "${GITHUB_TOKEN}" ]]; then
+  echo "Please provide the \$GITHUB_TOKEN environment variable."
   exit 1
 fi
 
@@ -107,7 +107,7 @@ is_version_published() {
 add_git_tag() {
   echo "task: [$(date)] \"add_git_tag\" ${GIT_TAG_NAME}, ${GITHUB_SHA}"
   curl -s -X POST "https://api.github.com/repos/porscheui/porsche-design-system/git/refs" \
-    -H "Authorization: token ${GIT_DEPLOY_KEY}" \
+    -H "Authorization: token ${GITHUB_TOKEN}" \
     -d @- <<EOF
 {
   "ref": "refs/tags/${GIT_TAG_NAME}",

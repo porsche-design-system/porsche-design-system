@@ -20,6 +20,7 @@ services:
       - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
+      - GITHUB_TOKEN
       - SKIP_PREFLIGHT_CHECK
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
@@ -46,6 +47,7 @@ services:
       - GITHUB_ACTOR
       - GITHUB_REF
       - GITHUB_SHA
+      - GITHUB_TOKEN
     volumes:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages

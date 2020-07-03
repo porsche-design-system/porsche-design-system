@@ -549,11 +549,12 @@ jobs:
           path: ./packages/components-js/dist
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
           args: packages/components-js
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-angular:
     name: 'Release Components Angular'
     needs: [release-components-js]
@@ -577,11 +578,12 @@ jobs:
           path: ./packages/components-angular/dist/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
           args: packages/components-angular/dist/components-wrapper
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-components-react:
     name: 'Release Components React'
     needs: [release-components-js]
@@ -610,11 +612,12 @@ jobs:
           path: ./packages/components-react/projects/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
           args: packages/components-react/projects/components-wrapper
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-utilities:
     name: 'Release Utilities'
     needs: [storefront-deployment]
@@ -649,11 +652,12 @@ jobs:
           args: --utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
           args: packages/utilities/projects/utilities
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
   release-sketch-library-basic:
     name: 'Release Sketch Library Basic'
     needs: [storefront-deployment]
@@ -674,6 +678,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch
           args: sketch/basic
@@ -697,6 +702,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-sketch
           args: sketch/web
