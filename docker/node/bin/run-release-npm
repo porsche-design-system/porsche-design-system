@@ -4,8 +4,8 @@ set -o errexit
 set -o pipefail
 
 publish() {
-  echo "task: [$(date)] \"publish\" $1"
-  result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${1}")
+  echo "task: [$(date)] \"publish\" (${PACKAGE_LOCATION})"
+  result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${PACKAGE_LOCATION}")
 
   if [[ $result == *"Done"* ]]; then
     return 0 # true
@@ -15,8 +15,8 @@ publish() {
 }
 
 is_version_published() {
-  echo "task: [$(date)] \"is_version_published\" $1@$2"
-  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $PORSCHE_NPM_REGISTRY_TOKEN" "https://porscheui.jfrog.io/porscheui/api/npm/npm/$1/$2")"
+  echo "task: [$(date)] \"is_version_published\" ${PACKAGE_NAME}@${PACKAGE_VERSION}"
+  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $PORSCHE_NPM_REGISTRY_TOKEN" "https://porscheui.jfrog.io/porscheui/api/npm/npm/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
 
   if [[ $http_status_code == 200 ]]; then
     return 0 # true
@@ -30,15 +30,17 @@ source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
-PACKAGE_VERSION=$(cat "${PACKAGE_JSON}" | grep version | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
-PACKAGE_NAME=$(cat "${PACKAGE_JSON}" | grep name | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
+PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
+PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
 
-if ! is_version_published "${PACKAGE_NAME}" "${PACKAGE_VERSION}"; then
-  if publish "${PACKAGE_LOCATION}"; then
-    echo "Version \"$PACKAGE_VERSION\" of \"$PACKAGE_NAME\" published 🎉"
+if ! is_version_published; then
+  if publish; then
+    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
   else
-    echo "Publishing version \"$PACKAGE_VERSION\" of \"$PACKAGE_NAME\" failed 😢"
+    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed 😢"
+    exit 1
   fi
 else
-  echo "Version \"$PACKAGE_VERSION\" of \"$PACKAGE_NAME\" is already published 🤷‍♂️"
+  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published 🤷‍♂️"
+  exit 78
 fi
