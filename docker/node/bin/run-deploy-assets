@@ -4,12 +4,10 @@ set -o errexit
 set -o pipefail
 
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-
 source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
 
-echo "task: [$(date)] \"upload assets to cdn\""
-
 function upload {
+  echo "task: [$(date)] \"upload\" (${1}, ${2})"
   rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
 }
 

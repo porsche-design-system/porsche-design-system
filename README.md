@@ -38,6 +38,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
+    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts and marque)
     * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --fonts` (builds the font set)
     * `./docker.sh run-build --marque` (builds the marque)
@@ -112,20 +113,7 @@
      * **If yes**: Replace the reference shot in the `/{vrt/cbt}/fixtures` folder with the belonging one in the `/{vrt/cbt}/results` folder and delete the images in the `/{vrt/cbt}/results` directory afterwards manually.
      * **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
-### Prepare Release
-_Caution: only use this task if you know exactly what you are doing. In case something goes wrong make sure to revert all local changes before executing the task again._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-prepare-release ${VERSION}`
-
-### Deploy
-_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-deploy-storefront`
-
-### Slack
-_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-slack`
+--- 
 
 ## Dependency updates
 Every week, we update our NPM packages:

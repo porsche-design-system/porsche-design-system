@@ -42,5 +42,4 @@ if ! is_version_published; then
   fi
 else
   echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published 🤷‍♂️"
-  exit 78
 fi
