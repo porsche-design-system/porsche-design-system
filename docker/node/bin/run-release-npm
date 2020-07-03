@@ -17,7 +17,7 @@ publish() {
   echo "task: [$(date)] \"publish\" (${PACKAGE_LOCATION})"
   result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${PACKAGE_LOCATION}")
 
-  if [[ $result == *"Done"* ]]; then
+  if [[ ${result} == *"Done"* ]]; then
     return 0 # true
   else
     return 1 # false
@@ -26,9 +26,9 @@ publish() {
 
 is_version_published() {
   echo "task: [$(date)] \"is_version_published\" ${PACKAGE_NAME}@${PACKAGE_VERSION}"
-  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $PORSCHE_NPM_REGISTRY_TOKEN" "https://porscheui.jfrog.io/porscheui/api/npm/npm/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
+  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${PORSCHE_NPM_REGISTRY_TOKEN}" "https://porscheui.jfrog.io/porscheui/api/npm/npm/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
 
-  if [[ $http_status_code == 200 ]]; then
+  if [[ ${http_status_code} == 200 ]]; then
     return 0 # true
   else
     return 1 # false
@@ -52,8 +52,8 @@ source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
-PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
-PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print $2 }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
+PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
+PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
 GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
 
 if ! is_version_published; then

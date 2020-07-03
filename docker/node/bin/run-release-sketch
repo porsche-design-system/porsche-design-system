@@ -75,7 +75,7 @@ publish() {
 #  do
 #    http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Cache-Control: no-cache" "https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch")"
 #    echo "Check deployment status. Attempt ${n}/${max} (${http_status_code}) - https://designsystem.porsche.com/sketch/${PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_NAME}.sketch [$(date)]"
-#    if [[ $http_status_code == 200 ]]; then
+#    if [[ ${http_status_code} == 200 ]]; then
 #      echo "All right, deployment was verified."
 #      return_code=0 # true
 #      break
@@ -89,7 +89,7 @@ publish() {
 #    sleep ${delay}
 #  done
 #
-#  return $return_code
+#  return ${return_code}
   return 0
 }
 
