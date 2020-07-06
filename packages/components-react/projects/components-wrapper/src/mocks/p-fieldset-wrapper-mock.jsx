@@ -1,5 +1,5 @@
 const React = require('react');
 
 module.exports = {
-  PFieldsetWrapper: (props) => <p-fieldset-wrapper {...props}/>
+  PFieldsetWrapper: (props) => <p-fieldset-wrapper {...props} />
 };
