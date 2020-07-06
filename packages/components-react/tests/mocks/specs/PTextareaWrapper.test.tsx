@@ -40,6 +40,12 @@ describe('PTextareaWrapper', () => {
       expect(getByText('Message')).toBeDefined();
     });
 
+    it('should render label and message with error state', () => {
+      const { getByText } = render(<PTextareaWrapper state="error" message="Message" label="Label" />);
+      expect(getByText('Label')).toBeDefined();
+      expect(getByText('Message')).toBeDefined();
+    });
+
     it('should render message with success state', () => {
       const { getByText } = render(<PTextareaWrapper state="success" message="Message" />);
       expect(getByText('Message')).toBeDefined();

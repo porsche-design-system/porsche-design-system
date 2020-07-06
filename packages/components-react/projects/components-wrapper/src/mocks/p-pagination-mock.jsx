@@ -1,9 +1,7 @@
 const React = require('react');
 
 module.exports = {
-  PPagination: (props) => {
-    const { activePage, totalItemsCount, onPageChange } = props;
-
+  PPagination: ({ activePage, totalItemsCount, onPageChange, children, ...props }) => {
     const capped = (page) => {
       return Math.min(Math.max(page, 1), totalItemsCount);
     };
@@ -18,7 +16,7 @@ module.exports = {
     const nextPage = capped(activePage + 1);
 
     return (
-      <p-pagination>
+      <p-pagination {...props}>
         <ul>
           <li type="PREVIOUS_PAGE_LINK" value={`${previousPage}`} onClick={() => handleChange(previousPage)} />
           {[...Array(totalItemsCount || 1)].map((i, index) => {
@@ -32,5 +30,5 @@ module.exports = {
         </ul>
       </p-pagination>
     );
-  },
+  }
 };

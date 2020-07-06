@@ -1,5 +1,5 @@
 const React = require('react');
 
 module.exports = {
-  PDivider: () => <p-divider/>
+  PDivider: ({ children, ...props }) => <p-divider {...props} />
 };

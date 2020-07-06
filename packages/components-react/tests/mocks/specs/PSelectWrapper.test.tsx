@@ -45,6 +45,12 @@ describe('PSelectWrapper', () => {
       expect(getByText('Message')).toBeDefined();
     });
 
+    it('should render label and message with error state', () => {
+      const { getByText } = render(<PSelectWrapper state="error" message="Message" label="Label" />);
+      expect(getByText('Label')).toBeDefined();
+      expect(getByText('Message')).toBeDefined();
+    });
+
     it('should render message with success state', () => {
       const { getByText } = render(<PSelectWrapper state="success" message="Message" />);
       expect(getByText('Message')).toBeDefined();

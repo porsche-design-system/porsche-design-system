@@ -1,8 +1,9 @@
 const React = require('react');
 
 module.exports = {
-  PMarque: () =>
-    <p-marque>
+  PMarque: ({ children, ...props }) => (
+    <p-marque {...props}>
       <img />
     </p-marque>
+  )
 };

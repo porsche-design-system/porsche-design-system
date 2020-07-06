@@ -1,5 +1,5 @@
 const React = require('react');
 
 module.exports = {
-  PSpinner: () => <p-spinner />
+  PSpinner: ({ children, ...props }) => <p-spinner {...props} />
 };

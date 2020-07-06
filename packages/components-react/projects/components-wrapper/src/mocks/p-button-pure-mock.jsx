@@ -1,7 +1,9 @@
 const React = require('react');
 
 module.exports = {
-  PButtonPure: (props) => <p-button-pure {...props}>
-    <button>{props.children}</button>
-  </p-button-pure>
+  PButtonPure: ({ children, ...props }) => (
+    <p-button-pure {...props}>
+      <button>{children}</button>
+    </p-button-pure>
+  )
 };
