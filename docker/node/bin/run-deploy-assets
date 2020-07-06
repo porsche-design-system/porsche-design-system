@@ -11,9 +11,9 @@ function upload {
   rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
 }
 
-upload "./packages/marque/dist/marque/*" marque/
-upload "./packages/icons/dist/icons/*" icons/
-upload "./packages/fonts/dist/fonts/font-face.min.*.css" fonts/
-upload "./packages/fonts/dist/fonts/*.woff" fonts/
-upload "./packages/fonts/dist/fonts/*.woff2" fonts/
-upload "./packages/components-pwcm/cdn/data/*" pwcm/
+upload "packages/marque/dist/marque/*" marque/
+upload "packages/icons/dist/icons/*" icons/
+upload "packages/fonts/dist/fonts/font-face.min.*.css" fonts/
+upload "packages/fonts/dist/fonts/*.woff" fonts/
+upload "packages/fonts/dist/fonts/*.woff2" fonts/
+upload "packages/components-pwcm/dist/cdn/data/*" pwcm/
