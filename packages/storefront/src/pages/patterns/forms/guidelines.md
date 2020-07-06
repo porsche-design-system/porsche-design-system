@@ -16,7 +16,7 @@ The digital world cannot be imagined without forms. **Whenever we need informati
 
 In order to make designing forms as easy as possible we provide you with a Sketch file containing **templates for the most common form types for both desktop and mobile**, easily adaptable to your requirements:
 
-<p-link-pure href="/latest/porsche-design-system-form-templates.sketch" icon="download" download>Download Sketch form templates</p-link-pure>
+<p-link-pure href="https://designsystem.porsche.com/sketch/porsche-design-system-form-templates.sketch" icon="download" download>Download Sketch form templates</p-link-pure>
 
 ---
 
