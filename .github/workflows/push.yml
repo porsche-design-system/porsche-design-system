@@ -297,10 +297,10 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
-      - name: 'Store Components JS Build Loader'
+      - name: 'Store Components JS Loader Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: components-js-prod-build
+          name: components-js-prod-loader
           path: ./packages/components-js/loader
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
@@ -547,10 +547,10 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
-      - name: 'Restore Build Loader Artifact'
+      - name: 'Restore Loader Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: components-js-prod-build
+          name: components-js-prod-loader
           path: ./packages/components-js/loader
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
