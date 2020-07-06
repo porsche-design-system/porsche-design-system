@@ -93,6 +93,7 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-error"/> 	                          | **Error**          	| #E00000 	| 224/0/0   | Error notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
+| <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification	  | ✓  |
 
 ### States
 
@@ -157,6 +158,7 @@ When using notification colors …
 | <ColorBadge theme="dark" color="notification-error"/> 	                                        | **Error**          	| #FC1717 	| 252/23/23   	  | Error notification | ✓   |
 | <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | Success notification |  ✓   |
 | <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification | ✓   |
+| <ColorBadge theme="dark" color="notification-neutral"/> 	                                    | **Neutral**        	| #2193FF 	| 33/147/255  	| Neutral notification | ✓   |
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
@@ -218,7 +220,7 @@ In order to make content accessible for a wide range of people and to improve th
 ## Helpful tools and resources
 
 ### Sketch palette
-Feel free to download the [Porsche color palette for Sketch](https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette) in order to use it as "Document Colors" or "Global Colors" in your color picker.
+Feel free to download the [Porsche color palette for Sketch](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette) in order to use it as "Document Colors" or "Global Colors" in your color picker.
 The easiest way to import the palette to Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).
 
 ### Sketch plugins

@@ -12,14 +12,11 @@ const server = createServer({
 
 (server as any).server.on('error', (error: { code: string }) => {
   if (error.code === 'EADDRINUSE') {
-    console.log(`cdn-local port is already in use. maybe it's already started. doing nothing...`);
+    console.log(`cdn-local port ${PORT} is already in use. maybe it's already started. doing nothing...`);
+    // interval keeps the process alive in order to not kill other scripts with concurrently
     setInterval(() => {}, 1 << 30); // https://stackoverflow.com/a/47456805
   }
 });
 
-(server as any).server.on('listen', () => {
-  console.log(`started cdn-local on http://localhost:${PORT}`);
-});
-
-server.listen(PORT, 'localhost');
-
+// @ts-ignore
+server.listen(PORT, () => console.log(`started cdn-local on http://localhost:${PORT}`));

@@ -2,10 +2,11 @@ import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
+  getPrefixedTagNames,
+  insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  insertSlottedStyles, getPrefixedTagNames
+  transitionListener
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -15,7 +16,6 @@ import { FormState } from '../../../types';
   shadow: true
 })
 export class RadioButtonWrapper {
-
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -48,7 +48,6 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-
     const labelClasses = cx(prefix('radio-button-wrapper__label'));
     const fakeRadioButtonClasses = cx(
       prefix('radio-button-wrapper__fake-radio-button'),
@@ -71,24 +70,28 @@ export class RadioButtonWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible &&
-          <PrefixedTagNames.pText class={labelTextClasses} tag='span' color='inherit' onClick={(e: MouseEvent): void => this.labelClick(e)}>
-            {this.label ? this.label : <span><slot name='label'/></span>}
-          </PrefixedTagNames.pText>
-          }
+          {this.isLabelVisible && (
+            <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+              {this.label || (
+                <span>
+                  <slot name="label" />
+                </span>
+              )}
+            </PrefixedTagNames.pText>
+          )}
           <span class={fakeRadioButtonClasses}>
-            <slot/>
+            <slot />
           </span>
         </label>
-        {this.isMessageVisible &&
-        <PrefixedTagNames.pText
-          class={messageClasses}
-          color='inherit'
-          role={this.state === 'error' && 'alert'}
-        >
-          {this.message ? this.message : <span><slot name='message'/></span>}
-        </PrefixedTagNames.pText>
-        }
+        {this.isMessageVisible && (
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+            {this.message || (
+              <span>
+                <slot name="message" />
+              </span>
+            )}
+          </PrefixedTagNames.pText>
+        )}
       </Host>
     );
   }
@@ -102,7 +105,7 @@ export class RadioButtonWrapper {
   }
 
   private get isMessageVisible(): boolean {
-    return ['success','error'].includes(this.state) && this.isMessageDefined;
+    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
   private setInput(): void {
@@ -117,8 +120,7 @@ export class RadioButtonWrapper {
   private setAriaAttributes(): void {
     if (this.label && this.message) {
       this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    }
-    else if (this.label) {
+    } else if (this.label) {
       this.input.setAttribute('aria-label', this.label);
     }
 
@@ -129,29 +131,24 @@ export class RadioButtonWrapper {
     }
   }
 
-  private labelClick(event: MouseEvent): void {
+  private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
      * for real shadow dom, else the native behaviour works out
      * of the box
      */
-    if (
-      this.host.shadowRoot && this.host.shadowRoot.host
-      && (event.target as HTMLElement).closest('a') === null
-    ) {
+    if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.click();
     }
-  }
+  };
 
-  private setState(): void {
+  private setState = (): void => {
     this.checked = this.input.checked;
     this.disabled = this.input.disabled;
-  }
+  };
 
   private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', () => {
-      this.setState();
-    });
+    transitionListener(this.input, 'border-top-color', this.setState);
   }
 
   private addSlottedStyles(): void {

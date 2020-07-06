@@ -2,10 +2,11 @@ import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
+  getPrefixedTagNames,
+  insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  insertSlottedStyles, getPrefixedTagNames
+  transitionListener
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -15,7 +16,6 @@ import { FormState } from '../../../types';
   shadow: true
 })
 export class TextareaWrapper {
-
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -51,7 +51,6 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-
     const labelClasses = cx(prefix('textarea-wrapper__label'));
     const labelTextClasses = cx(
       prefix('textarea-wrapper__label-text'),
@@ -69,39 +68,50 @@ export class TextareaWrapper {
       this.disabled && prefix('textarea-wrapper__fake-textarea--disabled'),
       this.readonly && prefix('textarea-wrapper__fake-textarea--readonly')
     );
-    const messageClasses = cx(
-      prefix('textarea-wrapper__message'),
-      prefix(`textarea-wrapper__message--${this.state}`)
-    );
+    const messageClasses = cx(prefix('textarea-wrapper__message'), prefix(`textarea-wrapper__message--${this.state}`));
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
 
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible &&
-          <PrefixedTagNames.pText class={labelTextClasses} color='inherit' tag='span' onClick={(): void => this.labelClick()}>
-            {this.label ? this.label : <span><slot name='label'/></span>}
-          </PrefixedTagNames.pText>
-          }
-          {this.isDescriptionVisible &&
-          <PrefixedTagNames.pText class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
-            {this.description ? this.description : <span><slot name='description'/></span>}
-          </PrefixedTagNames.pText>
-          }
+          {this.isLabelVisible && (
+            <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
+              {this.label || (
+                <span>
+                  <slot name="label" />
+                </span>
+              )}
+            </PrefixedTagNames.pText>
+          )}
+          {this.isDescriptionVisible && (
+            <PrefixedTagNames.pText
+              class={descriptionTextClasses}
+              tag="span"
+              color="inherit"
+              size="x-small"
+              onClick={this.labelClick}
+            >
+              {this.description || (
+                <span>
+                  <slot name="description" />
+                </span>
+              )}
+            </PrefixedTagNames.pText>
+          )}
           <span class={fakeTextareaClasses}>
-            <slot/>
+            <slot />
           </span>
         </label>
-        {this.isMessageVisible &&
-        <PrefixedTagNames.pText
-          class={messageClasses}
-          color='inherit'
-          role={this.state === 'error' && 'alert'}
-        >
-          {this.message ? this.message : <span><slot name='message'/></span>}
-        </PrefixedTagNames.pText>
-        }
+        {this.isMessageVisible && (
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+            {this.message || (
+              <span>
+                <slot name="message" />
+              </span>
+            )}
+          </PrefixedTagNames.pText>
+        )}
       </Host>
     );
   }
@@ -134,11 +144,9 @@ export class TextareaWrapper {
   private setAriaAttributes(): void {
     if (this.label && this.message) {
       this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    }
-    else if (this.label && this.description) {
+    } else if (this.label && this.description) {
       this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    }
-    else if (this.label) {
+    } else if (this.label) {
       this.textarea.setAttribute('aria-label', this.label);
     }
 
@@ -149,19 +157,17 @@ export class TextareaWrapper {
     }
   }
 
-  private setState(): void {
+  private setState = (): void => {
     this.disabled = this.textarea.disabled;
     this.readonly = this.textarea.readOnly;
-  }
+  };
 
-  private labelClick(): void {
+  private labelClick = (): void => {
     this.textarea.focus();
-  }
+  };
 
   private bindStateListener(): void {
-    transitionListener(this.textarea, 'border-top-color', () => {
-      this.setState();
-    });
+    transitionListener(this.textarea, 'border-top-color', this.setState);
   }
 
   private addSlottedStyles(): void {
