@@ -1,0 +1,60 @@
+#ie11Banner {
+  background: #fff5e5;
+  border-radius: 0;
+  height: 88px;
+  width: 1992px;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+  z-index: 99999;
+}
+
+#ie11Banner a {
+  color: #000;
+  text-decoration: underline;
+}
+#ie11Banner a:hover {
+  color: red;
+}
+#ie11Banner p {
+  height: 48px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-family: PorscheNext-Regular, 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+  line-height: 24px;
+  display: inline-block;
+  margin: 16px 0 24px 0;
+  width: 748px;
+}
+
+#ie11Span {
+  margin: 16px 19px 0 193px;
+  vertical-align: top;
+}
+@media (max-width: 600px) {
+  #edgeButton {
+    display: none;
+  }
+}
+
+#edgeButton {
+  width: 238px;
+  height: 48px;
+  border: 1px solid rgb(50, 54, 57);
+  border-radius: 0px;
+  margin: 19px 226px 21px 512px;
+  vertical-align: top;
+  background-color: Transparent;
+}
+
+#ie11Banner span {
+  width: 260px;
+  height: 24px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-family: PorscheNext-Regular, 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+  line-height: 24px;
+}
