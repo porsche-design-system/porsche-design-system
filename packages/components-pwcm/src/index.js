@@ -1,14 +1,11 @@
 import { defineCustomElements } from '@porsche-design-system/components-js/dist/esm/loader.mjs';
 import { setRegisterComponentsCallback } from '@porsche-design-system/web-components-manager';
 
-setRegisterComponentsCallback('porscheDesignSystem', function(prefix) {
-  defineCustomElements(window, {
-    transformTagName: function(tagName) {
-      if (prefix === '') {
-        return tagName;
-      }
-
-      return prefix + '-' + tagName;
-    }
-  });
-}, PORSCHE_DESIGN_SYSTEM_VERSION);
+setRegisterComponentsCallback(
+  'porscheDesignSystem',
+  (prefix) =>
+    defineCustomElements(window, {
+      transformTagName: (tagName) => (prefix ? prefix + '-' + tagName : tagName)
+    }),
+  PORSCHE_DESIGN_SYSTEM_VERSION
+);
