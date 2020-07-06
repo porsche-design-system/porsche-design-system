@@ -2,27 +2,29 @@ version: "3.5"
 
 services:
   design-system:
-    build: ./docker/node
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
-      - "8080:8080"
-      - "3333:3333"
       - "3000:3000"
-      - "4200:4200"
+      - "3001:3001"
+      - "3333:3333"
       - "3334:3334"
+      - "4200:4200"
+      - "8080:8080"
       - "61423:61423"
       - "61424:61424"
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
-      - SLACK_WEBHOOK_URL
       - GIT_FILTER
       - GITHUB_SHA
       - GITHUB_REF
+      - GITHUB_TOKEN
       - SKIP_PREFLIGHT_CHECK
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
+      - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached
       - home:/home/design-system
@@ -37,7 +39,7 @@ services:
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utils-node-modules:/opt/porsche-design-system-app/packages/utils/node_modules
   design-system-deploy:
-    build: ./docker/node
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - GIT_DEPLOY_KEY
@@ -45,11 +47,20 @@ services:
       - GITHUB_ACTOR
       - GITHUB_REF
       - GITHUB_SHA
+      - GITHUB_TOKEN
     volumes:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages
+  design-system-deploy-assets:
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    working_dir: /opt/porsche-design-system-app
+    environment:
+      - CDN_USER
+      - CDN_SSH_KEY
+    volumes:
+      - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
-    image: node:10.15.3-alpine@sha256:b85a3b0ef76f5543b3f467e8a25694e72594d2c2bfcf140fa584d4f40ace4130
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
