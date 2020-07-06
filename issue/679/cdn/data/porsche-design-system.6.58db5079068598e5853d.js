@@ -1,7 +1,0 @@
-(window.webpackJsonpPorscheDesignSystem_1_5_0_rc_0=window.webpackJsonpPorscheDesignSystem_1_5_0_rc_0||[]).push([[6],{10:function(t,e,n){"use strict";n.r(e),n.d(e,"p_content_wrapper",(function(){return a}));var r=n(0),i=n(32);const a=class{constructor(t){Object(r.r)(this,t),this.width="basic"}render(){const t=Object(i.a)(Object(r.f)("content-wrapper"),Object(r.f)("content-wrapper--"+this.width));return Object(r.i)("div",{class:t},Object(r.i)("slot",null))}};a.style=":host{display:block}.p-content-wrapper{margin:0 auto;padding:0;display:block}.p-content-wrapper--basic{max-width:96rem;padding-left:7vw;padding-right:7vw}@media (min-width: 1760px) and (max-width: 1919px){.p-content-wrapper--basic{padding-left:10vw;padding-right:10vw}}@media (min-width: 1920px){.p-content-wrapper--basic{padding-left:12rem;padding-right:12rem}}.p-content-wrapper--extended{max-width:120rem}"},32:function(t,e,n){"use strict";n.d(e,"a",(function(){return i}));var r=n(0),i=Object(r.d)((function(t){
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-!function(){var e={}.hasOwnProperty;function n(){for(var t=[],r=0;r<arguments.length;r++){var i=arguments[r];if(i){var a=typeof i;if("string"===a||"number"===a)t.push(i);else if(Array.isArray(i)&&i.length){var p=n.apply(null,i);p&&t.push(p)}else if("object"===a)for(var c in i)e.call(i,c)&&i[c]&&t.push(c)}}return t.join(" ")}t.exports?(n.default=n,t.exports=n):window.classNames=n}()}))}}]);
