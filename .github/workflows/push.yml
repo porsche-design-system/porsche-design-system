@@ -104,6 +104,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components PWCM'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-pwcm
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -165,6 +170,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components PWCM'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-pwcm
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -231,6 +241,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Components PWCM'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-pwcm
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
@@ -307,6 +322,11 @@ jobs:
         with:
           name: components-js-prod-loader
           path: ./packages/components-js/loader
+      - name: 'Store Components PWCM Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-prod-build
+          path: ./packages/components-pwcm/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
