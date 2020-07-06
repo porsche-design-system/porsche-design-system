@@ -3,11 +3,11 @@ import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
+  improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
 
 @Component({
