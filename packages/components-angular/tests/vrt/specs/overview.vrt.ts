@@ -6,8 +6,8 @@ import { redraw } from '../../../../components-js/tests/vrt/helpers/redraw';
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
   });
 
   it('should have no visual regression for basic', async () => {
@@ -19,7 +19,8 @@ describe('Components Overview', () => {
   });
 
   it('should have no visual regression for action', async () => {
-    expect( await vrt.test('overview-action', async () => {
+    expect(
+      await vrt.test('overview-action', async () => {
         await vrt.goTo('/action', 1000);
       })
     ).toBeFalsy();
