@@ -38,7 +38,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "ts-node": "^8.10.2",
-    "typescript": "~3.8.3",
+    "typescript": "~3.9.6",
     "wait-on": "^5.0.1"
   },
   "resolutions": {
