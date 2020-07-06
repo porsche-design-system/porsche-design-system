@@ -92,12 +92,12 @@ export class Link {
     return (
       <TagType
         class={linkClasses}
-        {...(TagType === 'a' ? {
+        {...(TagType === 'a' && {
           href: this.href,
           target: `${this.target}`,
           download: this.download,
           rel: this.rel
-        } : null)}
+        })}
       >
         <PrefixedTagNames.pIcon
           class={iconClasses}

@@ -90,11 +90,11 @@ export class LinkSocial {
     return (
       <TagType
         class={linkClasses}
-        {...(TagType === 'a' ? {
+        {...(TagType === 'a' && {
           href: this.href,
           target: this.target,
           rel: this.rel
-        } : null)}
+        })}
       >
         <PrefixedTagNames.pIcon
           class={iconClasses}
