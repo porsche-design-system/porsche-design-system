@@ -2,9 +2,10 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
-  prefix,
+  getPrefixedTagNames,
   insertSlottedStyles,
-  mapBreakpointPropToPrefixedClasses, getPrefixedTagNames
+  mapBreakpointPropToPrefixedClasses,
+  prefix
 } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { LinkTarget, Theme } from '../../../types';
@@ -19,35 +20,35 @@ export class LinkSocial {
 
   /** The icon shown. */
   @Prop() public icon?:
-  'logo-facebook'
-  | 'logo-google'
-  | 'logo-instagram'
-  | 'logo-linkedin'
-  | 'logo-pinterest'
-  | 'logo-twitter'
-  | 'logo-wechat'
-  | 'logo-whatsapp'
-  | 'logo-xing'
-  | 'logo-youtube'
-  | 'logo-baidu'
-  | 'logo-delicious'
-  | 'logo-digg'
-  | 'logo-foursquare'
-  | 'logo-gmail'
-  | 'logo-hatena'
-  | 'logo-kaixin'
-  | 'logo-qq-share'
-  | 'logo-qq'
-  | 'logo-skyrock'
-  | 'logo-sohu'
-  | 'logo-tecent'
-  | 'logo-telegram'
-  | 'logo-tumblr'
-  | 'logo-viber'
-  | 'logo-vk'
-  | 'logo-weibo'
-  | 'logo-yahoo'
-  | 'logo-youku' = undefined;
+    | 'logo-facebook'
+    | 'logo-google'
+    | 'logo-instagram'
+    | 'logo-linkedin'
+    | 'logo-pinterest'
+    | 'logo-twitter'
+    | 'logo-wechat'
+    | 'logo-whatsapp'
+    | 'logo-xing'
+    | 'logo-youtube'
+    | 'logo-baidu'
+    | 'logo-delicious'
+    | 'logo-digg'
+    | 'logo-foursquare'
+    | 'logo-gmail'
+    | 'logo-hatena'
+    | 'logo-kaixin'
+    | 'logo-qq-share'
+    | 'logo-qq'
+    | 'logo-skyrock'
+    | 'logo-sohu'
+    | 'logo-tecent'
+    | 'logo-telegram'
+    | 'logo-tumblr'
+    | 'logo-viber'
+    | 'logo-vk'
+    | 'logo-weibo'
+    | 'logo-yahoo'
+    | 'logo-youku' = undefined;
 
   /** A custom URL path to a custom social icon. */
   @Prop() public iconSource?: string = undefined;
@@ -97,21 +98,21 @@ export class LinkSocial {
       >
         <PrefixedTagNames.pIcon
           class={iconClasses}
-          size='inherit'
+          size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color='inherit'
-          aria-hidden='true'
+          color="inherit"
+          aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag='span' color='inherit' class={labelClasses}>
-          <slot/>
+        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+          <slot />
         </PrefixedTagNames.pText>
       </TagType>
     );
   }
 
   private addSlottedStyles(): void {
-    const tagName= this.host.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
       outline: 2px solid #00d5b9;
       outline-offset: 1px;

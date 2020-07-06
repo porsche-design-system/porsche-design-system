@@ -2,12 +2,12 @@ import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  insertSlottedStyles,
-  getPrefixedTagNames,
-  isTouchDevice
+  transitionListener
 } from '../../../utils';
 import { FormState } from '../../../types';
 

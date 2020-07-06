@@ -2,11 +2,11 @@ import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
-  getPrefixedTagNames
+  mapBreakpointPropToPrefixedClasses,
+  prefix
 } from '../../../utils';
 import { ButtonType, IconName, Theme } from '../../../types';
 

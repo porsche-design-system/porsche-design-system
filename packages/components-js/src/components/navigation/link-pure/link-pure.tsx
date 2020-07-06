@@ -3,10 +3,11 @@ import cx from 'classnames';
 import {
   BreakpointCustomizable,
   calcLineHeightForElement,
+  getPrefixedTagNames,
+  insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
-  insertSlottedStyles, getPrefixedTagNames
+  transitionListener
 } from '../../../utils';
 import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';

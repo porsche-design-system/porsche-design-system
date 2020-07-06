@@ -2,7 +2,8 @@ import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
-  calcLineHeightForElement, getPrefixedTagNames,
+  calcLineHeightForElement,
+  getPrefixedTagNames,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener
