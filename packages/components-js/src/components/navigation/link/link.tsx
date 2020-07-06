@@ -2,10 +2,10 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
+  getPrefixedTagNames,
   insertSlottedStyles,
-  getPrefixedTagNames
+  mapBreakpointPropToPrefixedClasses,
+  prefix
 } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { IconName, LinkTarget, Theme } from '../../../types';
@@ -46,7 +46,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad(): void {
-    const tagName= this.element.tagName.toLowerCase();
+    const tagName = this.element.tagName.toLowerCase();
     const style = `
       a:focus ${tagName} {
       outline: 2px solid #00d5b9;
@@ -101,14 +101,14 @@ export class Link {
       >
         <PrefixedTagNames.pIcon
           class={iconClasses}
-          size='inherit'
+          size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color='inherit'
-          aria-hidden='true'
+          color="inherit"
+          aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag='span' color='inherit' class={labelClasses}>
-          <slot/>
+        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+          <slot />
         </PrefixedTagNames.pText>
       </TagType>
     );
