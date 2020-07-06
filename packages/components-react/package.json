@@ -31,7 +31,7 @@
     "@types/react-router-dom": "^5.1.5",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
-    "puppeteer": "~3.0.4",
+    "puppeteer": "~5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
