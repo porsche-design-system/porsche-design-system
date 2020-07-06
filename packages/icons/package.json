@@ -40,7 +40,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {
-    "@types/js-yaml": "^3.12.4",
+    "@types/js-yaml": "^3.12.5",
     "@types/svgo": "^1.3.3",
     "change-case": "^4.1.1",
     "globby": "^11.0.1",
