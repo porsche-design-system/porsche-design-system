@@ -42,7 +42,7 @@
     "change-case": "^4.1.1",
     "globby": "^11.0.1",
     "ts-node": "^8.10.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.6"
   },
   "files": [
     "dist/"
