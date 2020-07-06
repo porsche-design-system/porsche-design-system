@@ -1,12 +1,12 @@
 import 'jasmine';
-import {VisualRegressionTester} from '@porsche-design-system/visual-regression-tester';
-import {getVisualRegressionTester} from '../helpers/setup';
+import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
+import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Link Social', () => {
   let vrt: VisualRegressionTester;
 
-  beforeAll(async () => {
-    vrt = await getVisualRegressionTester();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
   });
 
   it('should have no visual regression', async () => {
