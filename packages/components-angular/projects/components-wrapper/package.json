@@ -15,7 +15,7 @@
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "Porsche Design System Web Components React",
+  "description": "Porsche Design System Web Components Angular",
   "dependencies": {
     "@porsche-design-system/components-js": "1.5.0-rc.1"
   },
