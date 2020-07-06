@@ -17,6 +17,8 @@
     "@porsche-design-system/utilities": "1.0.0-rc.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^2.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
