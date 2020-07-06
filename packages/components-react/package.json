@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -s 'first' -n 'cdn,react' 'yarn start:cdn-server' 'react-scripts start'",
+    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'yarn start:cdn-server' 'react-scripts start'",
     "start:cdn-server": "start-cdn-local",
     "build": "cd projects/components-wrapper && yarn build",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
