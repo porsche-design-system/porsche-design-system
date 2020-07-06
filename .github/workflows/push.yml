@@ -490,7 +490,7 @@ jobs:
           path: ./packages/fonts/dist/fonts
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [marque, icons, fonts]
+    needs: [marque, icons, fonts, production-builds]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -518,6 +518,11 @@ jobs:
         with:
           name: fonts-build
           path: ./packages/fonts/dist/fonts
+      - name: 'Restore Components PWCM Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-pwcm-prod-build
+          path: ./packages/components-pwcm/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:
@@ -585,6 +590,35 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/components-js
+  release-components-pwcm:
+    name: 'Release Components PWCM'
+    needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-pwcm-prod-build
+          path: ./packages/components-pwcm/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components-pwcm
   release-components-angular:
     name: 'Release Components Angular'
     needs: [release-components-js]
