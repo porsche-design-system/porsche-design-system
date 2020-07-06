@@ -13,9 +13,10 @@ export const color = {
     low: '#c9cacb'
   },
   notification: {
-    error: '#018a16',
+    success: '#018a16',
     warning: '#ff9b00',
-    success: '#e00000'
+    error: '#e00000',
+    neutral: '#0061BD'
   },
   state: {
     hover: '#d5001c',
@@ -38,9 +39,10 @@ export const color = {
       low: '#4a4e51'
     },
     notification: {
-      error: '#01ba1d',
+      success: '#01ba1d',
       warning: '#ff9b00',
-      success: '#fc1717'
+      error: '#fc1717',
+      neutral: '#2193FF'
     },
     state: {
       hover: '#d5001c',

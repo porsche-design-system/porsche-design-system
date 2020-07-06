@@ -231,7 +231,7 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -470,7 +470,7 @@ export namespace Components {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -955,7 +955,7 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -1197,7 +1197,7 @@ declare namespace LocalJSX {
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "inherit";
+        "color"?: "brand" | "default" | "neutral-contrast-high" | "neutral-contrast-medium" | "neutral-contrast-low" | "notification-success" | "notification-warning" | "notification-error" | "notification-neutral" | "inherit";
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */

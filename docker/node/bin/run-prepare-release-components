@@ -4,24 +4,14 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${1}" ]]; then
-  echo "Please provide a version, e.g. './docker.sh run-prepare-release 1.0.0'"
+  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-components 1.2.3'"
   exit 1
 fi
 
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
-
-yarn install
-yarn build:utils
-yarn build:icons
-yarn build:fonts
-yarn build:marque
-
 pushd "./packages/components-js"
   yarn version --no-git-tag-version --new-version "${1}"
-  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
-yarn build:components-js
 
 pushd "./packages/components-pwcm"
   yarn version --no-git-tag-version --new-version "${1}"
@@ -32,34 +22,19 @@ yarn build:components-pwcm
 pushd "./packages/components-angular/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
-  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-angular"
   sed -i -e "s/\"@porsche-design-system\/components-angular\": \".*\"/\"@porsche-design-system\/components-angular\": \"${1}\"/" "./package.json"
 popd
-yarn build:components-angular
 
 pushd "./packages/components-react/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
-  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-react"
   sed -i -e "s/\"@porsche-design-system\/components-react\": \".*\"/\"@porsche-design-system\/components-react\": \"${1}\"/" "./package.json"
 popd
-yarn build:components-react
-
-yarn lint:components-js
-yarn test:unit:components-js
-yarn test:e2e:components-js
-yarn test:vrt:components-js
-yarn test:vrt:components-pwcm
-yarn test:vrt:components-angular
-yarn test:vrt:components-react
-yarn test:mocks:components-react
-
-# we have so far the dev build in the dist directory
-# let's create the production build to release it
-yarn build:components-js-prod

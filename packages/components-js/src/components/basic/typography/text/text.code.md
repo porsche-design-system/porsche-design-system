@@ -82,6 +82,7 @@ Predefined colors associated with its theme are available but also inherit mode 
       <option value="notification-success">Notification Success</option>
       <option value="notification-warning">Notification Warning</option>
       <option value="notification-error">Notification Error</option>
+      <option value="notification-neutral">Notification Neutral</option>
       <option value="inherit">Inherit</option>
     </select>
   </template>
