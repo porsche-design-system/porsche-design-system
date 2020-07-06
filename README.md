@@ -1,6 +1,5 @@
 ![Porsche Marque](https://upload.wikimedia.org/wikipedia/de/thumb/7/70/Porsche_Logo.svg/258px-Porsche_Logo.svg.png)
 
-
 # Porsche Design System
 
 ## Build status
@@ -23,6 +22,9 @@
 1. Create an `.env` file within __project root directory__ (never push this file to Git because it will contain secrets – by default it's ignored by `.gitignore`)
 1. Add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE`
 1. Make sure that Docker app is running
+1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at <https://github.com/settings/tokens>
+1. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
+1. Login to the GitHub docker registry via `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://docker.pkg.github.com -u YOUR_USERNAME --password-stdin`
 1. Run `./docker.sh run-install` - this may take up to several minutes at first start depending on your internet connection
 
 *Note: `./docker.sh run-install` should be executed after every pull.*
@@ -36,6 +38,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
+    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts and marque)
     * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --fonts` (builds the font set)
     * `./docker.sh run-build --marque` (builds the marque)
@@ -110,20 +113,7 @@
      * **If yes**: Replace the reference shot in the `/{vrt/cbt}/fixtures` folder with the belonging one in the `/{vrt/cbt}/results` folder and delete the images in the `/{vrt/cbt}/results` directory afterwards manually.
      * **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
-### Prepare Release
-_Caution: only use this task if you know exactly what you are doing. In case something goes wrong make sure to revert all local changes before executing the task again._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-prepare-release ${VERSION}`
-
-### Deploy
-_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-deploy`
-
-### Slack
-_It's a job exclusively for the CI/CD pipeline, that's why it should not be executed locally._
-1. Switch to __project root directory__
-1. Run `./docker.sh run-slack`
+--- 
 
 ## Dependency updates
 Every week, we update our NPM packages:
@@ -166,78 +156,35 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ---
 
-## Release management - Porsche Design System Icons
+# Release management
 
-1. Run `./docker.sh run-build --icons`
-1. Switch to __packages/icons/dist/icons directory__
-1. Upload all `.svg` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/icons directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
-## Release management - Porsche Design System Fonts
-
-1. Run `./docker.sh run-build --fonts`
-1. Switch to __packages/fonts/dist/fonts directory__
-1. Upload all `.woff|.woff2` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/fonts directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
-## Release management - Porsche Design System Marque
-
-1. Run `./docker.sh run-build --marque`
-1. Switch to __packages/marque/dist/marque directory__
-1. Upload all `.png` files to [CDN](https://cdn.ui.porsche.com) (__/assets/porsche-design-system/marque directory__)
-1. If filename already exists on CDN skip upload for this specific file (__never overwrite/delete a file hosted on CDN!__)
-
----
-
-## Release management - Porsche Design System Components (JS/Angular/React)
+## Porsche Design System - Components (JS/Angular/React)
 
 ### Preparation
-1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
-1. Run `git pull origin {current master- or v-branch}`
-1. Run `./docker.sh run-prepare-release ${VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/components-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./packages/components-js/CHANGELOG.md`
+  * `./packages/components-angular/projects/components-wrapper/CHANGELOG.md`
+  * `./packages/components-react/projects/components-wrapper/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
-### Storefront
-1. Update `updates.md`
-
-### Test
+### Manual Test in Edge 18 (pre Chromium)
 1. Switch to __project root directory__
-1. Run `./docker.sh run-test-cbt --components-js`
-1. Run `./docker.sh run-test-cbt --components-angular`
-1. Run `./docker.sh run-test-cbt --components-react`
+1. Run `./docker.sh run-install`
+1. Run `./docker.sh run-build`
+1. Run `./docker.sh run-start --components-js`
+1. Manually check components in BrowserStack launching Edge 18
 
-### Make production builds
-1. Run `./docker.sh run-build --components-js-prod`
-1. Run `./docker.sh run-build --components-angular`
-1. Run `./docker.sh run-build --components-react`
-1. Run `./docker.sh run-build --storefront`
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
 
-### Update CDN assets
-1. Update (only if something has changed!) `/assets/porsche-design-system/styles` on CDN by creating a new folder with version (v1, v2, v3,…) and upload generated `porsche-design-system.css` from __packages/components-js/dist/porsche-design-system directory__.
-1. Make sure CDN path fits in file `inject-global-style.ts` (lives in __packages/components-js/src/utils directory__).
-
-### Commit
-1. Review local changes
-1. Create a commit with following message structure `Release Porsche Design System Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Create a Git tag `git tag v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}`
-
-### Push
-1. Push local commit with tag to release branch `git push origin {current master- or v-branch} && git push --tags`
-
-### Publish
-1. Switch to __packages/components-js directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components JS artifact to the Artifactory repository.
-1. Switch to __packages/components-angular/dist/components-wrapper directory__ (make sure to release package within **dist** folder)
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components Angular artifact to the Artifactory repository.
-1. Switch to __packages/components-react/projects/components-wrapper directory__ (make sure to release package within **projects** folder)
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Design System Components React artifact to the Artifactory repository.
-
-### Icon platform
-1. Switch to __packages/icons/database directory__
+### Icon platform (TODO: needs to be part of mono repo and automated)
+1. Switch to __"./packages/icons/database" directory__
 1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
 1. Switch to Icon platform Git repository (`https://github.com/porscheui/porsche-icon-frontend`)
 1. Update `@porsche-design-system/components-js` to latest version
@@ -245,57 +192,83 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Deploy icon platform
 
 ### Communicate
-1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
+1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
-## Release management - Porsche Design System Utilities
+## Porsche Design System - Utilities
 
 ### Preparation
-1. After merge requirements of a pull request are fulfilled, it can be merged to given release branch (don't forget to delete the PR branch afterwards)
 1. Switch to __project root directory__
-1. Run `git pull origin {current master- or v-branch}`
-
-### Porsche Design System Utilities
-1. Switch to __packages/utilities/projects/utilities directory__
-1. Execute `yarn version --patch --no-git-tag-version` or `yarn version --minor --no-git-tag-version` and enter new patch or minor version
-1. Update version number of `@porsche-design-system/utilities` within the mono repo to corresponding version number
-1. Open `CHANGELOG.md` and update release notes with proper date and version
-1. Switch to __project root directory__
-1. Run `./docker.sh run-build --utilities`
-1. Run `./docker.sh run-test-unit --utilities`
-1. Run `./docker.sh run-test-vrt --utilities`
-
-### Commit
-1. Create a commit with following message structure `Release Porsche Design System Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push local commit to release branch `git push origin {current master- or v-branch}`
-
-### Publish
-1. Switch to __packages/utilities/projects/utilities directory__
-1. Run `yarn publish --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/` which will deploy the Porsche Design System Utilities artifact to private npm repository.
-
-### Communicate
-1. Write a Slack notification by coping last entry of `CHANGELOG.md` in Porsche Design System channel of porsche.slack.com workspace
-
----
-
-## Release management - Porsche Design System Sketch Libraries (Basic, Web)
-
-### Preparation
-1. Export related Sketch file from master, e.g. Web Library (https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e) or Basic Library (https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
-1. Rename exported file to correct naming format, e.g. porsche-design-system-web.sketch
-1. Use existing issue branch or create a new branch (for Sketch Update only)
-
-### Sketch Library
-1. Switch to __sketch directory__
-1. Replace existing file with new file
-1. Switch to __docker/node/bin directory__ and open `run-deploy`
-1. Increase version increment according to the update `P_LATEST_STABLE_SKETCH_VERSION="{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}"`
-
-### Commit
-1. Create a commit
-1. Push local commit to issue branch `git push`
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/utilities-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./packages/utilities/projects/utilities/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-utilities ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Release
-1. Create Pull Request & Review
-1. Merge into "master" branch
+1. Create a commit with following message structure `Release Porsche Design System - Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/utilities-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
+
+### Communicate
+1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
+
+---
+
+## Porsche Design System - Sketch Library Basic
+
+### Preparation
+1. Switch to __project root directory__
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/sketch-library-basic-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./sketch/basic/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-sketch-library basic ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+
+### Sketch Library
+1. Switch to __"./sketch/basic" directory__
+1. Export related Sketch file from master branch in Abstract:
+    * [Basic Library](https://share.goabstract.com/401193dc-0054-45f1-b034-8e1a9a25590e)
+1. Rename the exported file to correct naming format:
+    * `porsche-design-system-basic.sketch`
+1. Replace the existing Sketch file with new one
+
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-basic-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
+
+### Communicate
+1. Write a Slack notification by coping last entry of `./sketch/basic/CHANGELOG.md` in public Porsche Design System Slack channel
+
+---
+
+## Porsche Design System - Sketch Library Web
+
+### Preparation
+1. Switch to __project root directory__
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/sketch-library-web-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section __[Unreleased]__ (this file will also be used to show on Storefront)
+  * `./sketch/web/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-sketch-library web ${TARGET_VERSION}` - __make sure major and minor version is in sync with components release__ (If something goes wrong, make sure to revert all local changes before executing the task again.)
+
+### Sketch Library
+1. Switch to __"./sketch/web" directory__
+1. Export related Sketch file from master branch in Abstract:
+    * [Web Library](https://share.goabstract.com/e9baaa65-1d0b-472a-a134-a50f2c079d5e)
+1. Rename the exported file to correct naming format:
+    * `porsche-design-system-web.sketch`
+1. Replace the existing Sketch file with new one
+
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
+
+### Communicate
+1. Write a Slack notification by coping last entry of `./sketch/web/CHANGELOG.md` in public Porsche Design System Slack channel
