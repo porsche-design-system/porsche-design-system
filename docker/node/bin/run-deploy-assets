@@ -15,7 +15,7 @@ function upload {
     rsync -av --stats --ignore-existing -e "ssh -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
     echo "matching files in directory '${dir}' have been uploaded to cdn ✅"
   else
-    echo "directory '${dir}' does not exist, skipping upload ⚠️"
+    echo "directory '${dir}' does not exist, skipping upload ⚠️️"
   fi
 }
 
