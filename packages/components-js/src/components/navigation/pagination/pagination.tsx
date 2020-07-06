@@ -3,6 +3,7 @@ import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
+  improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
@@ -15,7 +16,6 @@ import {
 } from './pagination-helper';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 
 export type NumberOfPageLinks = 5 | 7;
 

@@ -4,13 +4,13 @@ import {
   BreakpointCustomizable,
   calcLineHeightForElement,
   getPrefixedTagNames,
+  improveButtonHandlingForCustomElement,
+  improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener
 } from '../../../utils';
 import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
-import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 
 @Component({
   tag: 'p-button-pure',

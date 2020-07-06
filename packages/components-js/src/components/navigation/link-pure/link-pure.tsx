@@ -4,13 +4,13 @@ import {
   BreakpointCustomizable,
   calcLineHeightForElement,
   getPrefixedTagNames,
+  improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener
 } from '../../../utils';
 import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
-import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 
 @Component({
   tag: 'p-link-pure',
