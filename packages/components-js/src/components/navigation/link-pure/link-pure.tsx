@@ -98,14 +98,12 @@ export class LinkPure {
       <Host>
         <TagType
           class={linkPureClasses}
-          {...(TagType === 'a'
-            ? {
-              href: this.href,
-              target: this.target,
-              download: this.download,
-              rel: this.rel
-            }
-            : null)}
+          {...(TagType === 'a' && {
+            href: this.href,
+            target: this.target,
+            download: this.download,
+            rel: this.rel
+          })}
           ref={(el) => (this.linkTag = el as HTMLElement)}
         >
           <PrefixedTagNames.pIcon
