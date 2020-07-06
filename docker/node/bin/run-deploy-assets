@@ -16,3 +16,4 @@ upload "./packages/icons/dist/icons/*" icons/
 upload "./packages/fonts/dist/fonts/font-face.min.*.css" fonts/
 upload "./packages/fonts/dist/fonts/*.woff" fonts/
 upload "./packages/fonts/dist/fonts/*.woff2" fonts/
+upload "./packages/components-pwcm/cdn/data/*" pwcm/
