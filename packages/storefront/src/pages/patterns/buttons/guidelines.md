@@ -51,9 +51,9 @@ In order to maintain a homogeneous look and feel not only within your product bu
 
 ## Alignment
 
-Depending on the usage of the Button(s) we differ **three types of alignment for viewports S and higher with a minimum screen width of 760 px**. You can use all types of alignment within your application, either for stand-alone or for Button groups. In best case you should stick to the following recommendations. But even if you decide otherwise based on your specific cases: **The most important thing is to maintain consistency within your application when it comes to Button alignments to ensure a good user guidance.**
+Depending on the usage of the Button(s) we generally differ **three types of alignment for viewports S and higher with a minimum screen width of 480 px**. You can use all types of alignment within your application, either for stand-alone or for Button groups. 
 
-### Left 
+### Left alignment (F-shaped reading pattern)
 
 Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
   
@@ -63,7 +63,7 @@ This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles
   
 ![F-shaped reading pattern](../../../assets/patterns-buttons-alignment-left-form.png)
 
-### Right 
+### Right alignment (Z-shaped reading pattern) 
 
 Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) should be placed **right-justified**:  
   
@@ -84,10 +84,16 @@ This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-s
   
   ![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-centered-load-more.png)
 
+### How to choose the right alignment
 
-### Alignment on viewport XS (max. width 759 px)
+In order to provide a clear and intuitive user guidance, the most important thing is to **maintain consistency within an application**. So we highly recommend to check the individual user flow before deciding which alignment to go. Example: If 66.6 % of the screens in your user flow are standard pages or forms with an F-shaped reading pattern (and, therefore, should have left-aligned Buttons), you should also go for left-aligned Buttons in the remaining 33.3 % of your screens that are part of the same flow:
 
-On viewport XS Buttons in "Icon and text" variant are always to be set full-width (12 grid columns), independent from their text length. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
+![Button placement left-aligned](../../../assets/patterns-buttons-alignment-majority.png)  
+
+
+### Alignment on smaller viewports 
+
+On smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
 
 ![Mobile view for Buttons](../../../assets/patterns-buttons-alignment-viewport-xs.png)
 
@@ -161,7 +167,7 @@ You can either order Buttons within a group horizontally or vertically. In both 
 
 #### Horizontal alignment
 
-A group of Buttons can be aligned side-by-side in a row **whenever you want to** **emphasize the relationship between the different actions** and give the user an instant overview on the available options. A classical case for that would be a "cancel" / "submit" combination. This is **valid for all screens or screen areas with a minimum width of 760 px.**
+A group of Buttons can be aligned side-by-side in a row **whenever you want to** **emphasize the relationship between the different actions** and give the user an instant overview on the available options. A classical case for that would be a "cancel" / "submit" combination. This is **valid for all screens or screen areas with a width of 480 px or larger.**
 
 **Hierarchical order**
 
@@ -171,7 +177,7 @@ The primary call-to-action within a horizontal-aligned group is always to be pla
  
 **Responsive behaviour**
 
-Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 759 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the [Gutenberg Principle](http://people.sunyit.edu/~lepres/thesis/principles/119_pdfsam_POD.pdf) the next best action should then always go to bottom, following the user's scanning direction from upper left to bottom right. ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019)  
+Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the [Gutenberg Principle](http://people.sunyit.edu/~lepres/thesis/principles/119_pdfsam_POD.pdf) the next best action should then always go to bottom, following the user's scanning direction from upper left to bottom right. ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019)  
 
 ![Responsive behaviour of horizontally aligned buttons](../../../assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
@@ -189,7 +195,7 @@ On viewport S upwards or in screen areas with a minimum width of 760 px the prim
 
 **Responsive behaviour**
 
-See horizontal alignment: Buttons on viewport XS or in screen areas with a maximum width of 759 px are also stacked and set in full width, whilst the next best action is to be placed on the bottom.  
+See horizontal alignment: Buttons on viewports or in screen areas with a maximum width of 479 px are not only stacked, but also to be set in full width, whilst the next best action is to be placed on the bottom.  
   
 ![Vertical alignment of Button groups](../../../assets/patterns-buttons-groups-vertical.png)
 
