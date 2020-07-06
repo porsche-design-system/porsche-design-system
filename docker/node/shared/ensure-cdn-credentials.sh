@@ -5,21 +5,23 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${PORSCHE_NPM_REGISTRY_TOKEN}" ]]; then
-  echo "Please provide the \$PORSCHE_NPM_REGISTRY_TOKEN environment variable. Have a look at README for more information."
+if [[ -z "${CDN_SSH_KEY}" ]]; then
+  echo "Please provide the \$CDN_SSH_KEY environment variable."
   exit 1
 fi
 
 cleanup_credentials() {
   local exit_code=$?
   echo "task: [$(date)] \"cleanup_credentials\""
-  rm "${HOME}/.npmrc"
-  exit $exit_code
+  rm "/root/.ssh/id_rsa"
+  exit ${exit_code}
 }
 
 setup_credentials() {
   echo "task: [$(date)] \"setup_credentials\""
-  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
+  mkdir -p "/root/.ssh"
+  printf -- "${CDN_SSH_KEY}\n" > "/root/.ssh/id_rsa"
+  chmod 600 "/root/.ssh/id_rsa"
 }
 
 trap cleanup_credentials EXIT

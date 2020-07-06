@@ -45,13 +45,19 @@ export const config: StorefrontConfig = {
   },
   'News': {
     'Changelog': {
-      'Design': [
+      'Sketch Libraries': [
         // @ts-ignore
-        () => import(`@/pages/news/updates-design.md`)
+        () => import(`@/../../../sketch/web/CHANGELOG.md`),
+        // @ts-ignore
+        () => import(`@/../../../sketch/basic/CHANGELOG.md`)
       ],
-      'Code': [
+      'Components': [
         // @ts-ignore
-        () => import(`@/pages/news/updates-code.md`)
+        () => import(`@/../../components-js/CHANGELOG.md`)
+      ],
+      'Utilities': [
+        // @ts-ignore
+        () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`)
       ]
     },
     'Versioning': [
