@@ -325,7 +325,7 @@ jobs:
       - name: 'Store Components PWCM Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: storefront-prod-build
+          name: components-pwcm-prod-build
           path: ./packages/components-pwcm/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
