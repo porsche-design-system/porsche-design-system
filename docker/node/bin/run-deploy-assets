@@ -8,7 +8,14 @@ source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
 
 function upload {
   echo "task: [$(date)] \"upload\" (${1}, ${2})"
-  rsync -avp --ignore-existing -e "ssh -v -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
+
+  # check if directory exists after stripping away everything after last slash
+  if [ -d $(echo "${1}" | sed "s|\(.*\)/.*|\1|") ]; then
+    rsync -av --stats --ignore-existing -e "ssh -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
+    echo "files in directory '${1}' have been uploaded to cdn ✅"
+  else
+    echo "directory '${1}' does not exist, skipping upload 🔜"
+  fi
 }
 
 upload "packages/marque/dist/marque/*" marque/
