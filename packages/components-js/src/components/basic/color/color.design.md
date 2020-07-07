@@ -63,6 +63,10 @@ All colors must always be used in 100% opacity.
 | <ColorBadge theme="light" color="background"/>  	                                    | **Background**        	| #FFFFFF 	| 255/255/255   	| Page background  |
 | <ColorBadge theme="light" color="surface"/> 	                                    | **Surface**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
 | <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+| <ColorBadge theme="light" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FAE6E6 	| 250/230/230   | Error Soft (only to be used on default background) 	  | -   |
+| <ColorBadge theme="light" color="notification-success-soft/> 	                        | **Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used on default background)  	  | -   |
+| <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used on default background) 	  | - |
+| <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used on default background)	  | -  |
 
 ### Text / icon color
 
@@ -94,10 +98,6 @@ When using notification colors …
 | <ColorBadge theme="light" color="notification-success"/> 	                        | **Success**        	| #018A16 	| 1/138/22  	  | Success notification 	  | ✓   |
 | <ColorBadge theme="light" color="notification-warning"/> 	                        | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification (only to be used on default background)	  | - |
 | <ColorBadge theme="light" color="notification-neutral"/> 	                        | **Neutral**        	| #0061BD 	| 0/97/189  	| Neutral notification	  | ✓  |
-| <ColorBadge theme="light" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #FAE6E6 	| 250/230/230   | Error Contrast Low (only to be used on default background) 	  | -   |
-| <ColorBadge theme="light" color="notification-success-contrast-low"/> 	                        | **Success Contrast Low**        	| #E5F3E7 	| 229/243/231  	  | Success Contrast Low (only to be used on default background)  	  | -   |
-| <ColorBadge theme="light" color="notification-warning-contrast-low"/> 	                        | **Warning Contrast Low**       	| #FFF5E5 	| 255/245/229  	| Warning Contrast Low (only to be used on default background) 	  | - |
-| <ColorBadge theme="light" color="notification-neutral-contrast-low"/> 	                        | **Neutral Contrast Low**       	| #E5EFF8 	| 229/239/248  	| Neutral Contrast Low (only to be used on default background)	  | -  |
 
 ### States
 
@@ -133,6 +133,10 @@ When using notification colors …
 | <ColorBadge theme="dark" color="background"/> 	                                    | **Background**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge theme="dark" color="surface"/>                                      | **Surface**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
 | <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+| <ColorBadge theme="dark" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FEE7E7 	| 254/231/231   | Error Soft (only to be used on default background) 	  | -   |
+| <ColorBadge theme="dark" color="notification-success-soft"/> 	                        | **Success Soft**        	| #E5F8E8 	| 229/248/232  	  | Success Soft (only to be used on default background)  	  | -   |
+| <ColorBadge theme="dark" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used on default background) 	  | - |
+| <ColorBadge theme="dark" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E8F4FF 	| 232/244/255  	| Neutral Soft (only to be used on default background)	  | -  |
 
 ### Text / icon color
 
@@ -163,10 +167,6 @@ When using notification colors …
 | <ColorBadge theme="dark" color="notification-success"/> 	                                      | **Success**        	| #01BA1D 	| 1/186/29  	  | Success notification |  ✓   |
 | <ColorBadge theme="dark" color="notification-warning"/> 	                                    | **Warning**        	| #FF9B00 	| 255/155/0  	| Warning notification | ✓   |
 | <ColorBadge theme="dark" color="notification-neutral"/> 	                                    | **Neutral**        	| #2193FF 	| 33/147/255  	| Neutral notification | ✓   |
-| <ColorBadge theme="dark" color="notification-error-contrast-low"/> 	                          | **Error Contrast Low**        	| #FEE7E7 	| 254/231/231   | Error Contrast Low (only to be used on default background) 	  | -   |
-| <ColorBadge theme="dark" color="notification-success-contrast-low"/> 	                        | **Success Contrast Low**        	| #E5F8E8 	| 229/248/232  	  | Success Contrast Low (only to be used on default background)  	  | -   |
-| <ColorBadge theme="dark" color="notification-warning-contrast-low"/> 	                        | **Warning Contrast Low**       	| #FFF5E5 	| 255/245/229  	| Warning Contrast Low (only to be used on default background) 	  | - |
-| <ColorBadge theme="dark" color="notification-neutral-contrast-low"/> 	                        | **Neutral Contrast Low**       	| #E8F4FF 	| 232/244/255  	| Neutral Contrast Low (only to be used on default background)	  | -  |
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
