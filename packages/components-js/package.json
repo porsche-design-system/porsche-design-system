@@ -83,7 +83,7 @@
     "@types/autoprefixer": "^9.7.2",
     "@types/classnames": "^2.2.8",
     "@types/expect-puppeteer": "^4.4.3",
-    "@types/jest": "~26.0.3",
+    "@types/jest": "~26.0.4",
     "@types/json5": "^0.0.30",
     "@types/puppeteer": "^3.0.1",
     "@types/throttle-debounce": "^2.1.0",
