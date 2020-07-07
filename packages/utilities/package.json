@@ -42,7 +42,6 @@
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "4.1.8",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
     "node-sass": "^4.14.1",
