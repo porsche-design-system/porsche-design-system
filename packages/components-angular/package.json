@@ -8,8 +8,8 @@
     "start:cdn-server": "start-cdn-local",
     "build": "ng build components-wrapper --prod && cp -r ./projects/components-wrapper/CHANGELOG.md ./dist/components-wrapper",
     "test": "yarn test:vrt && yarn test:cbt",
-    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/vrt/config/jasmine.config.json\"'",
-    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project 'tests/cbt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/cbt/config/jasmine.config.json\"'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
+    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist' && rm -rf 'tmp' && rm -rf 'out-tsc' && rm -rf 'bazel-out'"
   },
   "dependencies": {
