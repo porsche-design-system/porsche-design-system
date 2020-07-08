@@ -34,6 +34,23 @@ describe('PTextFieldWrapper', () => {
     });
   });
 
+  describe('Description', () => {
+    it('should render description', () => {
+      const { getByText } = render(<PTextFieldWrapper description="Description" />);
+      expect(getByText('Description')).toBeDefined();
+    });
+
+    it('should not render label when hide label is set', () => {
+      const { queryByText } = render(<PTextFieldWrapper description="Description" hideLabel={true} />);
+      expect(queryByText('Description')).toBeNull();
+    });
+
+    it('should set label as attribute', () => {
+      const { container } = render(<PTextFieldWrapper description="Description" hideLabel={true} />);
+      expect(container.querySelectorAll('[description="Description"]').length).toBe(1);
+    });
+  });
+
   describe('Error Message', () => {
     it('should render message with error state', () => {
       const { getByText } = render(<PTextFieldWrapper state="error" message="Message" />);

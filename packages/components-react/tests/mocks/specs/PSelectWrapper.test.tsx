@@ -39,6 +39,23 @@ describe('PSelectWrapper', () => {
     });
   });
 
+  describe('Description', () => {
+    it('should render description', () => {
+      const { getByText } = render(<PSelectWrapper description="Description" />);
+      expect(getByText('Description')).toBeDefined();
+    });
+
+    it('should not render label when hide label is set', () => {
+      const { queryByText } = render(<PSelectWrapper description="Description" hideLabel={true} />);
+      expect(queryByText('Description')).toBeNull();
+    });
+
+    it('should set label as attribute', () => {
+      const { container } = render(<PSelectWrapper description="Description" hideLabel={true} />);
+      expect(container.querySelectorAll('[description="Description"]').length).toBe(1);
+    });
+  });
+
   describe('Error Message', () => {
     it('should render message with error state', () => {
       const { getByText } = render(<PSelectWrapper state="error" message="Message" />);
