@@ -18283,10 +18283,10 @@ vmark-loader@^1.0.0:
   dependencies:
     loader-utils "^1.1.0"
 
-vmark@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/vmark/-/vmark-1.1.0.tgz#8166a4791a79e790fdb568b252a7caa59e441108"
-  integrity sha512-1ZAId/ALZ+XM1P4zFHuE56DHf6ZjLjQ7Nc17Q7C3onIycFNLbsyRBnGMpP1hF0zfDIekjI5MBiLXl0tHQ4ZyxQ==
+vmark@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vmark/-/vmark-1.2.0.tgz#2cc25b93da0d2f06ca29cfc0f3aea7bc527201a5"
+  integrity sha512-Eb2Uw9TO5RLBrlQzs4vfEGs/2Diwcw884dHQ5jZF+zyENBUOmK3KcBwYLvpj6EGKuG/dF0sdeOtXjDFSwxotQQ==
   dependencies:
     saber-markdown "^0.0.3"
 

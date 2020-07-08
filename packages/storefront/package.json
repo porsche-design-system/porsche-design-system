@@ -54,7 +54,7 @@
     "sass-loader": "^9.0.2",
     "ts-node": "^8.10.2",
     "typescript": "~3.9.6",
-    "vmark": "~1.1.0",
+    "vmark": "~1.2.0",
     "vmark-loader": "^1.0.0",
     "vue-template-compiler": "^2.6.11"
   },
