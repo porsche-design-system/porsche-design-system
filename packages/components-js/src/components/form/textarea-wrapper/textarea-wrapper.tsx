@@ -95,7 +95,7 @@ export class TextareaWrapper {
           </span>
         </label>
         {this.isMessageVisible && (
-          <p-text class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+          <p-text class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || (
               <span>
                 <slot name="message" />
