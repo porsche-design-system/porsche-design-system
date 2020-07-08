@@ -1,8 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-36b6f399"],{"7efc":function(t,e,n){"use strict";n.d(e,"a",(function(){return a}));n("ef14");var r=n("53ca"),i=n("f8e0"),a=Object(i["d"])((function(t){
-/*!
-    Copyright (c) 2017 Jed Watson.
-    Licensed under the MIT License (MIT), see
-    http://jedwatson.github.io/classnames
-  */
-(function(){var e={}.hasOwnProperty;function n(){for(var t=[],i=0;i<arguments.length;i++){var a=arguments[i];if(a){var p=Object(r["a"])(a);if("string"===p||"number"===p)t.push(a);else if(Array.isArray(a)&&a.length){var c=n.apply(null,a);c&&t.push(c)}else if("object"===p)for(var d in a)e.call(a,d)&&a[d]&&t.push(d)}}return t.join(" ")}t.exports?(n.default=n,t.exports=n):window.classNames=n})()}))},c26b:function(t,e,n){"use strict";n.r(e),n.d(e,"p_content_wrapper",(function(){return p}));var r=n("f8e0"),i=n("7efc"),a=":host{display:block}.p-content-wrapper{margin:0 auto;padding:0;display:block}.p-content-wrapper--basic{max-width:96rem;padding-left:7vw;padding-right:7vw}@media (min-width: 1760px) and (max-width: 1919px){.p-content-wrapper--basic{padding-left:10vw;padding-right:10vw}}@media (min-width: 1920px){.p-content-wrapper--basic{padding-left:12rem;padding-right:12rem}}.p-content-wrapper--extended{max-width:120rem}",p=function(){function t(t){Object(r["q"])(this,t),this.width="basic"}return t.prototype.render=function(){var t=Object(i["a"])(Object(r["e"])("content-wrapper"),Object(r["e"])("content-wrapper--"+this.width));return Object(r["i"])("div",{class:t},Object(r["i"])("slot",null))},t}();p.style=a}}]);
-//# sourceMappingURL=chunk-36b6f399.899daeee.js.map
