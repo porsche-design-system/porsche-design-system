@@ -3114,10 +3114,10 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.1.tgz#f4afffcb36e069a801d5339c90499601c47a2516"
   integrity sha512-zeOomWIE52M9JpYXlsR3iOf7TXTTmNQHnSbqjMsQZ5phzfAenHzL/1+vQ0ZoJfagocK11LNf8vnn2JG0ufRMUQ==
 
-"@stencil/angular-output-target@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.3.tgz#0b0000eaa6a31dbff6ba790d6dd317f38ef0431c"
-  integrity sha512-s9TurO+N+e+Uwrqafq76l20K3m0aIYxXa19dUmBapDJI7KTNc5vOfY6kmOvGTl1Uncjh14fs5CEJyD7hoESdRg==
+"@stencil/angular-output-target@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@stencil/angular-output-target/-/angular-output-target-0.0.2.tgz#e534c736d204f9cc7c95f72c9c4d56739beba836"
+  integrity sha512-GyQ/VTipzzweuNYbs+FrK1q3FSEG4LZkzg+keuMQNRDX77aCy5hsYivspMRMwOXIwUXh9wSIzqQR3JuLiFHzcw==
 
 "@stencil/core@~1.15.0":
   version "1.15.0"
