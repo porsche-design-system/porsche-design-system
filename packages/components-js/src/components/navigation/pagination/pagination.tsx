@@ -123,7 +123,7 @@ export class Pagination {
                 tabIndex={pageModel.isActive ? 0 : null}
                 onClick={() => this.onClick(pageModel.value)}
                 onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
-                aria-disabled={!pageModel.isActive ? 'true' : null}
+                aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelPrev}
               >
                 <p-icon name="arrow-head-left" color="inherit" />
@@ -150,11 +150,11 @@ export class Pagination {
                 class={paginationGoToClasses}
                 role={'button'}
                 tabIndex={pageModel.isActive ? null : 0}
-                aria-disabled={pageModel.isActive ? 'true' : null}
+                aria-disabled={pageModel.isActive && 'true'}
                 onClick={() => this.onClick(pageModel.value)}
                 onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
                 aria-label={`${this.allyLabelPage} ${pageModel.value}`}
-                aria-current={pageModel.isActive ? 'page' : null}
+                aria-current={pageModel.isActive && 'page'}
               >
                 {pageModel.value}
               </span>
@@ -175,7 +175,7 @@ export class Pagination {
                 tabIndex={pageModel.isActive ? 0 : null}
                 onClick={() => this.onClick(pageModel.value)}
                 onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
-                aria-disabled={!pageModel.isActive ? 'true' : null}
+                aria-disabled={!pageModel.isActive && 'true'}
                 aria-label={this.allyLabelNext}
               >
                 <p-icon name="arrow-head-right" color="inherit" />
