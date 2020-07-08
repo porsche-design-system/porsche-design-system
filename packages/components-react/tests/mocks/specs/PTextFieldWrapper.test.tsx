@@ -40,12 +40,12 @@ describe('PTextFieldWrapper', () => {
       expect(getByText('Description')).toBeDefined();
     });
 
-    it('should not render label when hide label is set', () => {
+    it('should not render description when hide label is set', () => {
       const { queryByText } = render(<PTextFieldWrapper description="Description" hideLabel={true} />);
       expect(queryByText('Description')).toBeNull();
     });
 
-    it('should set label as attribute', () => {
+    it('should set description as attribute', () => {
       const { container } = render(<PTextFieldWrapper description="Description" hideLabel={true} />);
       expect(container.querySelectorAll('[description="Description"]').length).toBe(1);
     });
