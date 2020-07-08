@@ -72,7 +72,7 @@ export class Button {
         type={this.type}
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
-        aria-busy={this.loading && 'true'}
+        aria-busy={this.loading ? 'true' : null}
       >
         {this.loading ? (
           <p-spinner class={iconClasses} size="inherit" theme={(this.variant === 'tertiary' && this.theme) || 'dark'} />
