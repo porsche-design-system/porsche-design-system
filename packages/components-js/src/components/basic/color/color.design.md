@@ -63,10 +63,10 @@ All colors must always be used in 100% opacity.
 | <ColorBadge theme="light" color="background"/>  	                                    | **Background**        	| #FFFFFF 	| 255/255/255   	| Page background  |
 | <ColorBadge theme="light" color="surface"/> 	                                    | **Surface**        	| #F2F2F2 	| 242/242/242     | Additional backgrounds, for example for tiles or contrasting content areas |
 | <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
-| <ColorBadge theme="light" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FAE6E6 	| 250/230/230   | Error Soft (only to be used on default background) 	  | -   |
-| <ColorBadge theme="light" color="notification-success-soft/> 	                        | **Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used on default background)  	  | -   |
-| <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used on default background) 	  | - |
-| <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used on default background)	  | -  |
+| <ColorBadge theme="light" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FAE6E6 	| 250/230/230   | Error Soft (only to be used for notification background) 	  | 
+| <ColorBadge theme="light" color="notification-success-soft/> 	                        | **Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used for notification background)  	  |
+| <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used for notification background)	  |
+| <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
 
 ### Text / icon color
 
@@ -133,10 +133,6 @@ When using notification colors …
 | <ColorBadge theme="dark" color="background"/> 	                                    | **Background**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge theme="dark" color="surface"/>                                      | **Surface**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
 | <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
-| <ColorBadge theme="dark" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FEE7E7 	| 254/231/231   | Error Soft (only to be used on default background) 	  | -   |
-| <ColorBadge theme="dark" color="notification-success-soft"/> 	                        | **Success Soft**        	| #E5F8E8 	| 229/248/232  	  | Success Soft (only to be used on default background)  	  | -   |
-| <ColorBadge theme="dark" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used on default background) 	  | - |
-| <ColorBadge theme="dark" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E8F4FF 	| 232/244/255  	| Neutral Soft (only to be used on default background)	  | -  |
 
 ### Text / icon color
 
