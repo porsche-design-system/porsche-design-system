@@ -7,5 +7,5 @@ module.exports = {
         <svg />
       </i>
     </p-icon>
-  ),
+  )
 };
