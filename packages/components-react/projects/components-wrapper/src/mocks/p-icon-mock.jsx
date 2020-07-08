@@ -1,8 +1,11 @@
 const React = require('react');
 
 module.exports = {
-  PIcon: (props) =>
+  PIcon: (props) => (
     <p-icon {...props}>
-      <svg/>
+      <i>
+        <svg />
+      </i>
     </p-icon>
+  ),
 };
