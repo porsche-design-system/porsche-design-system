@@ -3514,10 +3514,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.14.tgz#24a0b5959f16ac141aeb0c5b3cd7a15b7c64cbce"
   integrity sha512-syUgf67ZQpaJj01/tRTknkMNoBBLWJOBODF0Zm4NrXmiSuxjymFrxnTu1QVYRubhVkRcZLYZG8STTwJRdVm/WQ==
 
-"@types/node@^14.0.18", "@types/node@~14.0.18":
-  version "14.0.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.18.tgz#5111b2285659442f9f95697386a2b42b875bd7e9"
-  integrity sha512-0Z3nS5acM0cIV4JPzrj9g/GH0Et5vmADWtip3YOXOp1NpOLU8V3KoZDc8ny9c1pe/YSYYzQkAWob6dyV/EWg4g==
+"@types/node@^14.0.19", "@types/node@~14.0.19":
+  version "14.0.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.19.tgz#994d99708822bca643a2364f8aeed04a16e0f5a1"
+  integrity sha512-yf3BP/NIXF37BjrK5klu//asUWitOEoUP5xE1mhSUjazotwJ/eJDgEmMQNlOeWOVv72j24QQ+3bqXHE++CFGag==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -11955,6 +11955,11 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+lodash@^4.17.17:
+  version "4.17.17"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.17.tgz#d9018b3acc57a95c9dcf4a45c6b63b877b6c2d45"
+  integrity sha512-/B2DjOphAoqi5BX4Gg2oh4UR0Gy/A7xYAMh3aSECEKzwS3eCDEpS0Cals1Ktvxwlal3bBJNc+5W9kNIcADdw5Q==
+
 log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -15951,10 +15956,10 @@ sass-loader@8.0.2:
     schema-utils "^2.6.1"
     semver "^6.3.0"
 
-sass-loader@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-9.0.1.tgz#8ae96ebb0e9debc3748064d32e43596719814c40"
-  integrity sha512-wXFo2VAAzAUsUApOXr5PkGXDa1ad20RYhdJTubopY04i+Suk8b8g3Vtobu3kfMk48S0n5rQyAQeGBdg8WzL8gA==
+sass-loader@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-9.0.2.tgz#847c9b4c95328ddc8c7d35cf28c9d6e54e59a90b"
+  integrity sha512-nphcum3jNI442njnrZ5wJgSNX5lfEOHOKHCLf+PrTIaleploKqAMUuT9CVKjf+lyi6c2MCGPHh1vb9nGsjnZJA==
   dependencies:
     klona "^1.1.1"
     loader-utils "^2.0.0"
