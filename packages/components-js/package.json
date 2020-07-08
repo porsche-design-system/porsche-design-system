@@ -75,7 +75,7 @@
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^2.0.1",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@stencil/angular-output-target": "^0.0.3",
+    "@stencil/angular-output-target": "^0.0.2",
     "@stencil/core": "~1.15.0",
     "@stencil/postcss": "^1.0.1",
     "@stencil/react-output-target": "^0.0.7",
