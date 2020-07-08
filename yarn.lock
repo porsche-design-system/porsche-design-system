@@ -2992,6 +2992,20 @@
     jimp "^0.10.3"
     puppeteer "~3.0.4"
 
+"@porsche-design-system/vmark-loader@^1.0.0":
+  version "1.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/vmark-loader/-/@porsche-design-system/vmark-loader-1.0.0.tgz#e0d880a1349d05f56cc55899f178cedd4bd0e4da"
+  integrity sha1-4NiAoTSdBfVsxViZ8XjO3UvQ5No=
+  dependencies:
+    loader-utils "^1.1.0"
+
+"@porsche-design-system/vmark@~1.2.0":
+  version "1.2.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/vmark/-/@porsche-design-system/vmark-1.2.0.tgz#ff93b110cf8cf6b4810634b8a34b49d8a6f7307d"
+  integrity sha1-/5OxEM+M9rSBBjS4o0tJ2Kb3MH0=
+  dependencies:
+    saber-markdown "^0.0.3"
+
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-ui/cross-browser-tester/-/@porsche-ui/cross-browser-tester-1.0.2.tgz#d6013a3514407b470ee607914bf31d6bff0697d2"
@@ -18275,20 +18289,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vmark-loader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/vmark-loader/-/vmark-loader-1.0.0.tgz#5233819dc6946b70b69a5b06c6d3ec9c09661de5"
-  integrity sha512-DsVJ4aaWCSLcRgUo/kV4ZluhPC+G2EMkYa2uc/wUS3hEy7RIg7/lkHOZEsuib5cf/Y48eeUeJCHQd1FZORbT6g==
-  dependencies:
-    loader-utils "^1.1.0"
-
-vmark@~1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/vmark/-/vmark-1.2.0.tgz#2cc25b93da0d2f06ca29cfc0f3aea7bc527201a5"
-  integrity sha512-Eb2Uw9TO5RLBrlQzs4vfEGs/2Diwcw884dHQ5jZF+zyENBUOmK3KcBwYLvpj6EGKuG/dF0sdeOtXjDFSwxotQQ==
-  dependencies:
-    saber-markdown "^0.0.3"
 
 vue-class-component@^7.2.3:
   version "7.2.3"

@@ -10,8 +10,8 @@
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/e2e/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/e2e/config/jasmine.config.json\"'",
-    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config=\"tests/vrt/config/jasmine.config.json\"'",
+    "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
+    "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 180000 http-get://localhost:8080 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
@@ -29,6 +29,8 @@
   "devDependencies": {
     "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/utilities": "1.0.0-rc.0",
+    "@porsche-design-system/vmark": "~1.2.0",
+    "@porsche-design-system/vmark-loader": "^1.0.0",
     "@types/jest": "^26.0.4",
     "@types/js-beautify": "^1.11.0",
     "@types/lodash": "^4.14.157",
@@ -54,8 +56,6 @@
     "sass-loader": "^9.0.2",
     "ts-node": "^8.10.2",
     "typescript": "~3.9.6",
-    "vmark": "~1.2.0",
-    "vmark-loader": "^1.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "scope": "@porsche-design-system"
