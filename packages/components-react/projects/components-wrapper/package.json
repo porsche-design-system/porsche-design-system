@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "1.5.0-rc.0",
+  "version": "1.5.0-rc.2",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -11,7 +11,8 @@
     "Olivia Pala <olivia.pala@udg.de>",
     "Christoph Stickel <net.christoph.stickel@mhp.com>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Melanie Kolar <melanie.kolar@udg.de>"
+    "Melanie Kolar <melanie.kolar@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Web Components React",
@@ -30,7 +31,7 @@
     "build:mocks": "rm -rf './mocks' && tsc --build './tsconfig.mocks.json'"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "1.5.0-rc.0"
+    "@porsche-design-system/components-js": "1.5.0-rc.2"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",
