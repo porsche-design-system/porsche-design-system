@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Porsche Marque images
+
 ### [1.5.0-rc.2] - 2020-07-06
 
 ### [1.5.0-rc.1] - 2020-07-06
