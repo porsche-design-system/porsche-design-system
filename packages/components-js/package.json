@@ -73,7 +73,7 @@
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/utilities": "1.0.0-rc.0",
     "@porsche-design-system/utils": "0.0.0",
-    "@porsche-design-system/visual-regression-tester": "^2.0.1",
+    "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@stencil/angular-output-target": "^0.0.2",
     "@stencil/core": "~1.14.0",
