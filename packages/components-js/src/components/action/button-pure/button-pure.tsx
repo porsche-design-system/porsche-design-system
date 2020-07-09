@@ -23,31 +23,31 @@ export class ButtonPure {
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'button';
+  @Prop({ reflect: true }) public type?: ButtonType = 'button';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop({ reflect: true }) public disabled?: boolean = false;
 
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
-  @Prop() public loading?: boolean = false;
+  @Prop({ reflect: true }) public loading?: boolean = false;
 
   /** Size of the button. */
-  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
+  @Prop({ reflect: true }) public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text (only has effect with visible label). */
-  @Prop() public weight?: TextWeight = 'regular';
+  @Prop({ reflect: true }) public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  @Prop({ reflect: true }) public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop({ reflect: true }) public iconSource?: string = undefined;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
-  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+  @Prop({ reflect: true }) public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;

@@ -15,12 +15,12 @@ export class Icon {
   /**
    * Specifies which icon to use.
    */
-  @Prop() public name?: IconName = DEFAULT_ICON_NAME;
+  @Prop({ reflect: true }) public name?: IconName = DEFAULT_ICON_NAME;
 
   /**
    * Specifies a whole icon path which can be used for custom icons.
    */
-  @Prop() public source?: string;
+  @Prop({ reflect: true }) public source?: string;
 
   /**
    * @internal
@@ -29,12 +29,12 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop({ reflect: true }) public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
 
   /**
    * The size of the icon.
    */
-  @Prop() public size?: 'small' | 'medium' | 'large' | 'inherit' = 'small';
+  @Prop({ reflect: true }) public size?: 'small' | 'medium' | 'large' | 'inherit' = 'small';
 
   /**
    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
@@ -43,7 +43,7 @@ export class Icon {
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   @State() private svgContent?: string;
   @State() private isVisible = false;

@@ -20,16 +20,16 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Size of the link. */
-  @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
+  @Prop({ reflect: true }) public size?: BreakpointCustomizable<TextSize> = 'small';
 
   /** The weight of the text (only has effect with visible label). */
-  @Prop() public weight?: TextWeight = 'regular';
+  @Prop({ reflect: true }) public weight?: TextWeight = 'regular';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = 'arrow-head-right';
+  @Prop({ reflect: true }) public icon?: IconName = 'arrow-head-right';
 
   /** A custom URL path to a custom icon. */
-  @Prop() public iconSource?: string = undefined;
+  @Prop({ reflect: true }) public iconSource?: string = undefined;
 
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
@@ -38,10 +38,10 @@ export class LinkPure {
   @Prop() public active?: boolean = false;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
-  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+  @Prop({ reflect: true }) public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
