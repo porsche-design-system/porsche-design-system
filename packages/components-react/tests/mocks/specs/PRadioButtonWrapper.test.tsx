@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PRadioButtonWrapper } from '../../../projects/components-wrapper/src';
+import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 
 describe('PRadioButtonWrapper', () => {
   it('should render PRadioButtonWrapper input name', () => {
