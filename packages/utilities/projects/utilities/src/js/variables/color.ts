@@ -14,13 +14,13 @@ export const color = {
   },
   notification: {
     success: '#018a16',
-    successContrastLow: '#e5f3e7',
+    successSoft: '#e5f3e7',
     warning: '#ff9b00',
-    warningContrastLow: '#fff5e5',
+    warningSoft: '#fff5e5',
     error: '#e00000',
-    errorContrastLow: '#fae6e6',
+    errorSoft: '#fae6e6',
     neutral: '#0061bd',
-    neutralContrastLow: '#e5eff8'
+    neutralSoft: '#e5eff8'
   },
   state: {
     hover: '#d5001c',
@@ -44,13 +44,9 @@ export const color = {
     },
     notification: {
       success: '#01ba1d',
-      successContrastLow: '#e5f8e8',
       warning: '#ff9b00',
-      warningContrastLow: '#fff5e5',
       error: '#fc1717',
-      errorContrastLow: '#fee7e7',
-      neutral: '#2193ff',
-      neutralContrastLow: '#e8f4ff'
+      neutral: '#2193ff'
     },
     state: {
       hover: '#d5001c',
