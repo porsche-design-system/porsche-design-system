@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PCheckboxWrapper } from '../../../projects/components-wrapper/src';
+import { PCheckboxWrapper } from '@porsche-design-system/components-react';
 
 describe('PCheckboxWrapper', () => {
   it('should render PCheckboxWrapper input name', () => {

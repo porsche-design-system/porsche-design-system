@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PSelectWrapper } from '../../../projects/components-wrapper/src';
+import { PSelectWrapper } from '@porsche-design-system/components-react';
 
 describe('PSelectWrapper', () => {
   it('should render PSelectWrapper select name', () => {

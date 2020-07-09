@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PTextFieldWrapper } from '../../../projects/components-wrapper/src';
+import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 describe('PTextFieldWrapper', () => {
   it('should render PTextFieldWrapper text input', () => {
