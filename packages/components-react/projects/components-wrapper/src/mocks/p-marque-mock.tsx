@@ -1,8 +1,8 @@
 //@ts-nocheck
 import React from 'react';
 
-export const PMarque = () => (
-  <p-marque>
+export const PMarque = ({ children, ...props }) => (
+  <p-marque {...props}>
     <img />
   </p-marque>
 );
