@@ -14,12 +14,15 @@ Type | Basic Library |
 |---|---|
 Color |  Translucent background color for overlays ("Background Shading") |
 Color | Neutral notification color |
+Color | Background soft for notification colors |
+Icons | Add new Icons | 
 
 #### Fixed
 
 Type | Basic Library |
 |---|---|
 Basic |  Visual issues in Porsche Marque and update of Sketch components and assets  |
+Icons | Various Icon optimizations |
 
 ### [1.4.1] - 2020-05-27
 
