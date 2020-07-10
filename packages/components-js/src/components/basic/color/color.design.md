@@ -68,10 +68,10 @@ All colors must always be used in 100% opacity.
 
 |                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
 |-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
-| <ColorBadge theme="light" color="notification-error-soft"/> 	                          | **Error Soft**        	| #FAE6E6 	| 250/230/230   | Error Soft (only to be used for notification background) 	  | 
-| <ColorBadge theme="light" color="notification-success-soft"/> 	                        | **Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used for notification background)  	  |
-| <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used for notification background)	  |
-| <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
+| <ColorBadge theme="light" color="notification-error-soft"/> 	                          | **Background Error Soft**        	| #FAE6E6 	| 250/230/230   | Error Soft (only to be used for notification background) 	  | 
+| <ColorBadge theme="light" color="notification-success-soft"/> 	                        | **Background Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used for notification background)  	  |
+| <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Background Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used for notification background)	  |
+| <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
 
 ### Text / icon color
 
