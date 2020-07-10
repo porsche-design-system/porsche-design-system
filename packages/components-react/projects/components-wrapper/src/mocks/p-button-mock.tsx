@@ -1,8 +1,8 @@
 //@ts-nocheck
 import React from 'react';
 
-export const PButton = (props) => (
+export const PButton = ({ children, ...props }) => (
   <p-button {...props}>
-    <button>{props.children}</button>
+    <button>{children}</button>
   </p-button>
 );

@@ -14,4 +14,9 @@ describe('PIcon', () => {
     const { container } = render(<PIcon />);
     expect(container.getElementsByTagName('p-icon')).toBeTruthy();
   });
+
+  it('should render i html tag', () => {
+    const { container } = render(<PIcon />);
+    expect(container.getElementsByTagName('i').length).toBe(1);
+  });
 });
