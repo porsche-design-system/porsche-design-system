@@ -113,8 +113,8 @@ render (
 
 ### Headline
 
-The predefined variables for `title` and `headline` **only** work with styled-components, due to the necessity of font sizes in relation to breakpoints.
-You can follow [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
+The predefined variables for `title` and `headline` **only** work with scss in JS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
+You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
 Given variables are:  
 `title.large | headline['1'] | headline['2'] | headline['3'] | headline['4'] | headline['5']`
