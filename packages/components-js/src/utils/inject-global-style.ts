@@ -1,4 +1,5 @@
-import { CDN_BASE_URL, FONT_FACE_CSS_NAME } from '@porsche-design-system/fonts';
+import { CDN_BASE_URL } from '@porsche-design-system/fonts';
+import { FONT_FACE_CSS_NAME } from '@porsche-design-system/utilities';
 
 export const injectGlobalStyle = (): void => {
   if (typeof document === 'undefined') {

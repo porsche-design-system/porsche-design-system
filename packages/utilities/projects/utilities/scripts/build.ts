@@ -31,7 +31,18 @@ const createGlobalCSS = async (files: string[]): Promise<void> => {
     addContentBasedHash: true
   });
 
-  fs.writeFileSync(path.normalize('./index.ts'), `export const FONT_FACE_CSS_NAME = "${fontFaceFileNameCdn}";`);
+  const targetFile = path.normalize('./src/js/index.ts');
+  const separator = '\n/* Auto Generated Below */';
+
+  const oldContent = fs.readFileSync(targetFile, 'utf8');
+  const newContent = `${oldContent.substr(
+    0,
+    oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
+  )}${separator}
+
+export const FONT_FACE_CSS_NAME = "${fontFaceFileNameCdn}";`;
+
+  fs.writeFileSync(targetFile, newContent);
 };
 
 (async (): Promise<void> => {
