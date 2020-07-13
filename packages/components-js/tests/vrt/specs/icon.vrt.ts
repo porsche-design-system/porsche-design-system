@@ -2,7 +2,7 @@ import 'jasmine';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
-fdescribe('Icon', () => {
+describe('Icon', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
