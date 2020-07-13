@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PDivider } from '../../../projects/components-wrapper/src';
+import { PDivider } from '@porsche-design-system/components-react';
 
 describe('PDivider', () => {
-  it('should render TagName of component', ()=> {
-    const {container} = render(<PDivider/>);
+  it('should render TagName of component', () => {
+    const { container } = render(<PDivider />);
     expect(container.getElementsByTagName('p-divider')).toBeTruthy();
   });
 });

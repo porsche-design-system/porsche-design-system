@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PRadioButtonWrapper } from '../../../projects/components-wrapper/src';
+import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 
 describe('PRadioButtonWrapper', () => {
   it('should render PRadioButtonWrapper input name', () => {
@@ -37,6 +37,12 @@ describe('PRadioButtonWrapper', () => {
   describe('Error Message', () => {
     it('should render message with error state', () => {
       const { getByText } = render(<PRadioButtonWrapper state="error" message="Message" />);
+      expect(getByText('Message')).toBeDefined();
+    });
+
+    it('should render label and message with error state', () => {
+      const { getByText } = render(<PRadioButtonWrapper state="error" message="Message" label="Label" />);
+      expect(getByText('Label')).toBeDefined();
       expect(getByText('Message')).toBeDefined();
     });
 
