@@ -1,4 +1,4 @@
-import { mediaQuery, breakpoint } from '@porsche-design-system/utilities';
+import { mediaQuery, breakpoint } from '../../../projects/utilities/src/js';
 
 describe('mediaQuery()', () => {
   it('should return media query when pre defined breakpoint as min parameter is passed', () => {
