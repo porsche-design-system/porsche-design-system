@@ -1,4 +1,10 @@
-import { convertLineHeight, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
+import {
+  convertLineHeight,
+  pxToRem,
+  remToPx,
+  typeScale,
+  getColorHexCode
+} from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
@@ -169,5 +175,23 @@ describe('typeScale()', () => {
     const foo = typeScale('32px');
     expect(foo.lineHeight).toBe(1.375);
     expect(foo.fontSize).toBe('2rem');
+  });
+});
+
+describe('getColorHexCode()', () => {
+  it('should show correct hexcode for brand color', () => {
+    expect(getColorHexCode('brand')).toBe('#d5001c');
+    expect(getColorHexCode('brand', 'light')).toBe('#d5001c');
+    expect(getColorHexCode('brand', 'dark')).toBe('#d5001c');
+  });
+
+  it('should show correct hexcode for neutralContrast high color', () => {
+    expect(getColorHexCode('neutralContrast', 'high', 'light')).toBe('#323639');
+    expect(getColorHexCode('neutralContrast', 'high')).toBe('#323639');
+    expect(getColorHexCode('neutralContrast', 'high', 'dark')).toBe('#e3e4e5');
+  });
+
+  it('should show correct hexcode for external color', () => {
+    expect(getColorHexCode('external', 'facebook')).toBe('#1877f2');
   });
 });
