@@ -3,5 +3,4 @@
 scss.scss
 
 # generated output
-index.ts
 /src/global-css/font-face.variables.scss
