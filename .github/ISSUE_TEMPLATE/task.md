@@ -18,8 +18,4 @@ Share any further information that is relevant for processing.
 
 Subtasks
 ---
-
-Add all related subtasks to be completed in order to finish the issue.
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
+- [ ] Task

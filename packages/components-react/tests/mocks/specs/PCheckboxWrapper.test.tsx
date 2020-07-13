@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PCheckboxWrapper } from '../../../projects/components-wrapper/src';
+import { PCheckboxWrapper } from '@porsche-design-system/components-react';
 
 describe('PCheckboxWrapper', () => {
   it('should render PCheckboxWrapper input name', () => {
@@ -37,6 +37,12 @@ describe('PCheckboxWrapper', () => {
   describe('Error Message', () => {
     it('should render message with error state', () => {
       const { getByText } = render(<PCheckboxWrapper state="error" message="Message" />);
+      expect(getByText('Message')).toBeDefined();
+    });
+
+    it('should render label and message with error state', () => {
+      const { getByText } = render(<PCheckboxWrapper state="error" message="Message" label="Label" />);
+      expect(getByText('Label')).toBeDefined();
       expect(getByText('Message')).toBeDefined();
     });
 
