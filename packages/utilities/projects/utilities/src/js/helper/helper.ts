@@ -1,3 +1,5 @@
+import { color, FontColor, FontSizeLineHeight, Theme } from '../variables';
+
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
 export const remBase = 16;
@@ -20,7 +22,7 @@ export const remToPx = (rem: string): string => {
   }
 };
 
-export const typeScale = (fontSize: string): { fontSize: string; lineHeight: number } => {
+export const typeScale = (fontSize: string): FontSizeLineHeight => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');
@@ -57,3 +59,52 @@ export const convertLineHeight = (fontSize: string): number => {
   const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
   return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;
 };
+
+type AllColor = Omit<FontColor, 'darkTheme'>;
+type RootColorKey = keyof Omit<AllColor, 'state' | 'notification' | 'neutralContrast' | 'external'>;
+type ChildrenColorKey = keyof Pick<AllColor, 'state' | 'notification' | 'neutralContrast'>;
+type ExternalColorKey = keyof Pick<AllColor, 'external'>;
+
+export function getColorHexCode(fontColor: RootColorKey, theme?: Theme): string;
+export function getColorHexCode<K extends ChildrenColorKey, L extends keyof AllColor[K]>(
+  fontColor: K,
+  specification: L,
+  theme?: Theme
+): string;
+export function getColorHexCode<K extends ExternalColorKey, L extends keyof AllColor[K]>(
+  fontColor: K,
+  specification: L
+): string;
+
+export function getColorHexCode(
+  fontColor: RootColorKey | ChildrenColorKey,
+  specificationOrTheme: any | Theme = 'light',
+  theme: Theme = 'light'
+): string {
+  let hexCode: string;
+  console.log('#1', fontColor, specificationOrTheme, theme);
+  if (specificationOrTheme !== 'light' && specificationOrTheme !== 'dark') {
+    console.log('#2', fontColor, specificationOrTheme, theme);
+    hexCode = color[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
+    if (theme === 'dark') {
+      console.log('#3');
+      hexCode = color.darkTheme[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
+    }
+  } else {
+    console.log('#4');
+    if (specificationOrTheme === 'dark') {
+      console.log('#5');
+      hexCode = color.darkTheme[fontColor as RootColorKey];
+    } else {
+      console.log('#6');
+      hexCode = color[fontColor as RootColorKey];
+    }
+  }
+
+  return hexCode;
+}
+/*
+getColorHexCode('brand');
+getColorHexCode('external', 'facebook');
+getColorHexCode('brand', 'dark');
+getColorHexCode('notification', 'success', 'dark');*/

@@ -28,7 +28,13 @@ export type FontSize =
 
 export type FontWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
-type FontType = { family: string; weight: {[key in FontWeight]: number}; size: {[key in FontSize]: CSS.Properties} }
+export type FontSizeLineHeight = Pick<CSS.Properties, 'fontSize' | 'lineHeight'>;
+
+type FontType = {
+  family: string;
+  weight: { [key in FontWeight]: number };
+  size: { [key in FontSize]: FontSizeLineHeight };
+};
 
 export const font: FontType = {
   family: `"Porsche Next", "Arial Narrow", Arial, sans-serif`,
