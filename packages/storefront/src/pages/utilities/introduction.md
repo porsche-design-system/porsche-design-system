@@ -48,7 +48,8 @@ A sample usage might look like as follows:
 
 ### Usage JavaScript
 
-**Note!** The JavaScript utilities are especially made for [styled-components](https://styled-components.com) which allows e.g. the usage of [media queries](https://developer.mozilla.org/de/docs/Web/CSS/Media_Queries/Using_media_queries) in JavaScript. 
+**Note!** The JavaScript utilities are especially made for scss in JS frameworks like [styled-components](https://styled-components.com) which allows e.g. the usage of [media queries](https://developer.mozilla.org/de/docs/Web/CSS/Media_Queries/Using_media_queries) in JavaScript. 
+Therefore examples are made with styled components.
 
 ```
 import { headline, color, font } from '@porsche-design-system/utilities';
