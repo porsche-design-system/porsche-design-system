@@ -16,6 +16,7 @@ We support the **following Browsers in the latest stable and deprecated predeces
 <p-text size="x-small">Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor version, to bridge the temporal updating period of the users.</p-text>
 
 ## End of support for IE 11 and reduced support for Edge 18
+
 We have decided to **end the support for Microsoft Internet Explorer 11**.  
 **Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
 
@@ -23,11 +24,36 @@ The **Porsche Design System v1.x** is the last major version to support Internet
 New features introduced starting with the Porsche Design System v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
 
 ### Why do we stop the support?
+
 To empower the opportunities of modern web standards including our technical foundation of using web components (custom elements), and to deliver the best possible user experience, performance and stability. Also, the share of IE11 and EdgeHTML users is the significant minority of our total users. Thus, we don't want to impair the experience for the vast majority.
 
 In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 the new Microsoft Edge versions are based on Chromium, available for all operating systems. Thus, both IE11 and Microsoft Edge 18 are outdated browsers.
 
 ### Can users still access our applications?
+
 Windows, macOS, iOS and Android have at least one supported browser pre-installed. In most cases continuously or at least frequently updated to the latest version. If a user runs into problems using your site with a not-supported browser, they can easily open it with a different browser.
 
 **In order to guide the users and avoid dead-ends, we created an easy-to-use Browser Notification snippet, that should be implemented in all applications using the Porsche Design System.**
+
+### Notification Banner
+
+To help inform the user the end of support of IE11 and Microsoft Edge <=18 we provide a **Notification Banner** in form of a JS snippet. 
+
+#### Usage
+
+Just drop the JS snippet at the end of the `body` tag of your application. 
+
+``` 
+<body>
+
+...
+
+<script src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+</body>
+```
+
+#### How it works
+
+The `init.js` is an `800 byte` sized file which has a browser detection for IE11 and Edge<=18. 
+If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
+Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
