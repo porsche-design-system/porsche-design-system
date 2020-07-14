@@ -1,4 +1,3 @@
-import { typeScale } from '../helper';
 import * as CSS from 'csstype';
 
 export type FontSize =

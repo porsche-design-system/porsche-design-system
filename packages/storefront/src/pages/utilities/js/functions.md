@@ -111,10 +111,11 @@ render (
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
-### Headline
-
-The predefined variables for `title` and `headline` **only** work with scss in JS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
+The predefined variables for `title`, `headline` and `pdsFont` **only** work with scss in JS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
 You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
+
+
+### Headline
 
 Given variables are:  
 `title.large | headline['1'] | headline['2'] | headline['3'] | headline['4'] | headline['5']`
@@ -166,6 +167,34 @@ PHeadline style = {
     line-height: 1.2;
   }
 }
+```
+
+### Porsche Design System Font
+
+Given variables are:
+`xSmall | small | medium | large | xLarge`
+
+#### Example
+
+```
+import { pdsFont } from '@porsche-design-system/utilities';
+
+const fontSmall = styled.p`
+  ${pdsFont.small}
+`;
+```
+
+#### Result
+
+```
+
+PHeadline style = {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  fontSize: '1rem', 
+  lineHeight: 1.66667
+}
+
 ```
 
 ### Text
