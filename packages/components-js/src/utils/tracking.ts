@@ -1,6 +1,6 @@
 import { version } from '../../package.json';
 
-const TRACKING_URL = 'https://d3nll2jx8s265d.cloudfront.net/porsche-design-system.png';
+const TRACKING_URL = 'https://aws.designsystem.porsche.com/porsche-design-system.png';
 
 export const trackEvent = (component: string, event?: string): void => {
   if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
