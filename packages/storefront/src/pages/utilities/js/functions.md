@@ -188,7 +188,7 @@ const fontSmall = styled.p`
 
 ```
 
-PHeadline style = {
+fontSmall style = {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
   fontSize: '1rem', 
