@@ -73,3 +73,61 @@ div {
   width: 16px;
 }
 ```
+
+## getColorHexCode(pdsColor, specification?, theme?)
+
+If you need a dynamic calculation of our color hexcodes in relation of light and dark theme, the function `getColorHexCode()` can be used.
+There are three parameter `pdsColor`, `specification`, `theme`, where only the first parameter is mandatory.
+Due to the nesting of the `color` object, the second parameter is dynamic and allows a deeper level to be reached. The `theme` parameter lets you choose between `dark` and `light` and defaults to `light`.
+ 
+#### Example 
+
+```
+import { getColorHexCode } from '@porsche-design-system/utilities';
+
+const hexCodeBrand = getColorHexCode('brand');
+``` 
+
+#### Result
+
+The result is the equivalent to `color.brand`
+
+```
+hexCodeBrand = '#d5001c';
+```
+
+#### Example 
+
+Use the `specification` parameter to reach one object level deeper.
+
+```
+import { getColorHexCode } from '@porsche-design-system/utilities';
+
+const hexCodeFacebook = getColorHexCode('external', 'facebook');
+``` 
+
+#### Result
+
+The result is the equivalent to `color.external.facebook`
+
+```
+hexCodeFacebook = '#1877f2';
+```
+
+#### Example 
+
+Use the `specification` parameter to reach one object level deeper and the `dark` theme.
+
+```
+import { getColorHexCode } from '@porsche-design-system/utilities';
+
+const hexCodeNeutralContrastHigh = getColorHexCode('neutralContrast', 'high', 'dark');
+``` 
+
+#### Result
+
+The result is the equivalent to `color.darkTheme.neutralContrast.high`
+
+```
+hexCodeNeutralContrastHigh = '#e3e4e5';
+```

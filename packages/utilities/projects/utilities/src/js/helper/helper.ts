@@ -1,4 +1,4 @@
-import { color, FontColor, FontSizeLineHeight, Theme } from '../variables';
+import { color, Color, FontSizeLineHeight, Theme } from '../variables';
 
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
@@ -60,12 +60,12 @@ export const convertLineHeight = (fontSize: string): number => {
   return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;
 };
 
-type AllColor = Omit<FontColor, 'darkTheme'>;
+type AllColor = Omit<Color, 'darkTheme'>;
 type RootColorKey = keyof Omit<AllColor, 'state' | 'notification' | 'neutralContrast' | 'external'>;
 type ChildrenColorKey = keyof Pick<AllColor, 'state' | 'notification' | 'neutralContrast'>;
 type ExternalColorKey = keyof Pick<AllColor, 'external'>;
 
-export function getColorHexCode(fontColor: RootColorKey, theme?: Theme): string;
+export function getColorHexCode(pdsColor: RootColorKey, theme?: Theme): string;
 export function getColorHexCode<K extends ChildrenColorKey, L extends keyof AllColor[K]>(
   fontColor: K,
   specification: L,
@@ -75,36 +75,23 @@ export function getColorHexCode<K extends ExternalColorKey, L extends keyof AllC
   fontColor: K,
   specification: L
 ): string;
-
 export function getColorHexCode(
   fontColor: RootColorKey | ChildrenColorKey,
   specificationOrTheme: any | Theme = 'light',
   theme: Theme = 'light'
 ): string {
   let hexCode: string;
-  console.log('#1', fontColor, specificationOrTheme, theme);
   if (specificationOrTheme !== 'light' && specificationOrTheme !== 'dark') {
-    console.log('#2', fontColor, specificationOrTheme, theme);
     hexCode = color[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
     if (theme === 'dark') {
-      console.log('#3');
       hexCode = color.darkTheme[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
     }
   } else {
-    console.log('#4');
     if (specificationOrTheme === 'dark') {
-      console.log('#5');
       hexCode = color.darkTheme[fontColor as RootColorKey];
     } else {
-      console.log('#6');
       hexCode = color[fontColor as RootColorKey];
     }
   }
-
   return hexCode;
 }
-/*
-getColorHexCode('brand');
-getColorHexCode('external', 'facebook');
-getColorHexCode('brand', 'dark');
-getColorHexCode('notification', 'success', 'dark');*/
