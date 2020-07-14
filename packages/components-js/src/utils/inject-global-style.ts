@@ -1,4 +1,4 @@
-import { CDN_BASE_URL } from '@porsche-design-system/fonts';
+import { FONTS_CDN_BASE_URL } from '@porsche-design-system/assets';
 import { FONT_FACE_CSS_NAME } from '@porsche-design-system/utilities';
 
 export const injectGlobalStyle = (): void => {
@@ -9,7 +9,7 @@ export const injectGlobalStyle = (): void => {
   const link = document.createElement('link');
   link.href =
     ROLLUP_REPLACE_IS_STAGING === 'production'
-      ? `${CDN_BASE_URL}/${FONT_FACE_CSS_NAME}`
+      ? `${FONTS_CDN_BASE_URL}/${FONT_FACE_CSS_NAME}`
       : 'http://localhost:3001/fonts/font-face.min.css';
   link.type = 'text/css';
   link.rel = 'stylesheet';
