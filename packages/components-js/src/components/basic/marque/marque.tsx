@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
+import { MARQUE_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 
 @Component({
   tag: 'p-marque',
@@ -15,9 +15,8 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   public render(): JSX.Element {
-    const cdnBaseUrl = ROLLUP_REPLACE_IS_STAGING === 'production'
-      ? CDN_BASE_URL
-      : 'http://localhost:3001/marque';
+    const cdnBaseUrl =
+      ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUE_CDN_BASE_URL : 'http://localhost:3001/marque';
     const manifestPath: { [size: string]: { [resolution: string]: string } } =
       MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
 
