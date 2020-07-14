@@ -1,0 +1,50 @@
+{
+  "name": "@porsche-design-system/assets",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "main": "dist/umd/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Melanie Kolar <melanie.kolar@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Porsche Design System Assets",
+  "keywords": [
+    "porsche",
+    "assets"
+  ],
+  "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "scripts": {
+    "build": "yarn build:module && yarn build:umd",
+    "build:module": "tsc --build tsconfig.module.json",
+    "build:umd": "tsc --build tsconfig.umd.json",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@porsche-design-system/icons": "0.0.0",
+    "@porsche-design-system/marque": "0.0.0",
+    "@porsche-design-system/utilities": "1.0.0-rc.0",
+    "typescript": "~3.9.6"
+  },
+  "files": [
+    "dist/"
+  ]
+}
