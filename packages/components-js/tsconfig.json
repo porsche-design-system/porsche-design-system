@@ -14,5 +14,5 @@
     "jsxFactory": "h",
     "resolveJsonModule": true
   },
-  "include": ["src", "types/jsx.d.ts"]
+  "include": ["src"]
 }
