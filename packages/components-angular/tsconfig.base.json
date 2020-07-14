@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
