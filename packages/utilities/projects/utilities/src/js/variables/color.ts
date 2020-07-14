@@ -1,6 +1,6 @@
 export type Theme = 'light' | 'dark';
 
-export type FontColor = typeof color
+export type Color = typeof color
 
 export const color = {
   /**
