@@ -111,7 +111,7 @@ render (
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
-The predefined variables for `title`, `headline` and `pdsFont` **only** work with scss in JS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
+The predefined variables for `title`, `headline` and `pdsFont` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
 You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
 
@@ -187,14 +187,12 @@ const fontSmall = styled.p`
 #### Result
 
 ```
-
 fontSmall style = {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
   fontSize: '1rem', 
   lineHeight: 1.66667
 }
-
 ```
 
 ### Text

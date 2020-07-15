@@ -1,6 +1,6 @@
 import { font, FontWeight } from '../variables';
 import { mediaQuery } from './media-query';
-import { typeScale } from '../helper';
+import { calculateTypeScale } from '../helper';
 
 export const pdsFont = {
   xSmall: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.xSmall },
@@ -68,7 +68,7 @@ export const headline = {
 
 export const text = (fontSize?: string, fontWeight?: FontWeight) => {
   const { family, size, weight } = font;
-  const fontSizeAndLineHeight = fontSize ? typeScale(fontSize) : size.small;
+  const fontSizeAndLineHeight = fontSize ? calculateTypeScale(fontSize) : size.small;
 
   return {
     fontFamily: family,

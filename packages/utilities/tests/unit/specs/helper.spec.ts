@@ -2,7 +2,7 @@ import {
   convertLineHeight,
   pxToRem,
   remToPx,
-  typeScale,
+  calculateTypeScale,
   getColorHexCode
 } from '../../../projects/utilities/src/js';
 
@@ -157,7 +157,7 @@ describe('convertLineHeight()', () => {
 describe('typeScale()', () => {
   it('should throw error if called with undefined', () => {
     try {
-      typeScale(undefined!);
+      calculateTypeScale(undefined!);
     } catch (e) {
       expect(e).toBeDefined();
     }
@@ -165,14 +165,14 @@ describe('typeScale()', () => {
 
   it('should throw error if called with wrong unit', () => {
     try {
-      typeScale('32fx');
+      calculateTypeScale('32fx');
     } catch (e) {
       expect(e).toBeDefined();
     }
   });
 
   it('should return fontSize and lineHeight', () => {
-    const foo = typeScale('32px');
+    const foo = calculateTypeScale('32px');
     expect(foo.lineHeight).toBe(1.375);
     expect(foo.fontSize).toBe('2rem');
   });
