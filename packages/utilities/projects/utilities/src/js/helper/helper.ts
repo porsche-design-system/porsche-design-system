@@ -22,7 +22,7 @@ export const remToPx = (rem: string): string => {
   }
 };
 
-export const typeScale = (fontSize: string): FontSizeLineHeight => {
+export const calculateTypeScale = (fontSize: string): FontSizeLineHeight => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');
