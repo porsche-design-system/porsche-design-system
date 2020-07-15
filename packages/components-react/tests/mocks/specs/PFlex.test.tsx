@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PFlex } from '../../../projects/components-wrapper/src';
+import { PFlex } from '@porsche-design-system/components-react';
 
 describe('PFlex', () => {
   it('should render PFlex children', () => {
@@ -8,8 +8,8 @@ describe('PFlex', () => {
     expect(getByText('FlexChild')).toBeDefined();
   });
 
-  it('should render TagName of component', ()=> {
-    const {container} = render(<PFlex/>);
+  it('should render TagName of component', () => {
+    const { container } = render(<PFlex />);
     expect(container.getElementsByTagName('p-flex')).toBeTruthy();
   });
 });

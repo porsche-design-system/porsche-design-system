@@ -48,6 +48,6 @@
     "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'"
   },
   "devDependencies": {
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.6"
   }
 }
