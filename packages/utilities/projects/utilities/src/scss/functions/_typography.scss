@@ -10,19 +10,19 @@
   @include p-generate-font-definition($p-font-size-32, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
-    @include p-calculate-type-scale($p-font-size-42);
+    @include p-generate-type-scale($p-font-size-42);
   }
 
   @include p-media-query("m", "l") {
-    @include p-calculate-type-scale($p-font-size-52);
+    @include p-generate-type-scale($p-font-size-52);
   }
 
   @include p-media-query("l", "xl") {
-    @include p-calculate-type-scale($p-font-size-62);
+    @include p-generate-type-scale($p-font-size-62);
   }
 
   @include p-media-query("xl") {
-    @include p-calculate-type-scale($p-font-size-72);
+    @include p-generate-type-scale($p-font-size-72);
   }
 }
 
@@ -34,19 +34,19 @@
   @include p-generate-font-definition($p-font-size-28, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
-    @include p-calculate-type-scale($p-font-size-36);
+    @include p-generate-type-scale($p-font-size-36);
   }
 
   @include p-media-query("m", "l") {
-    @include p-calculate-type-scale($p-font-size-44);
+    @include p-generate-type-scale($p-font-size-44);
   }
 
   @include p-media-query("l", "xl") {
-    @include p-calculate-type-scale($p-font-size-52);
+    @include p-generate-type-scale($p-font-size-52);
   }
 
   @include p-media-query("xl") {
-    @include p-calculate-type-scale($p-font-size-60);
+    @include p-generate-type-scale($p-font-size-60);
   }
 }
 
@@ -54,19 +54,19 @@
   @include p-generate-font-definition($p-font-size-24, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
-    @include p-calculate-type-scale($p-font-size-30);
+    @include p-generate-type-scale($p-font-size-30);
   }
 
   @include p-media-query("m", "l") {
-    @include p-calculate-type-scale($p-font-size-36);
+    @include p-generate-type-scale($p-font-size-36);
   }
 
   @include p-media-query("l", "xl") {
-    @include p-calculate-type-scale($p-font-size-42);
+    @include p-generate-type-scale($p-font-size-42);
   }
 
   @include p-media-query("xl") {
-    @include p-calculate-type-scale($p-font-size-48);
+    @include p-generate-type-scale($p-font-size-48);
   }
 }
 
@@ -74,19 +74,19 @@
   @include p-generate-font-definition($p-font-size-20, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
-    @include p-calculate-type-scale($p-font-size-24);
+    @include p-generate-type-scale($p-font-size-24);
   }
 
   @include p-media-query("m", "l") {
-    @include p-calculate-type-scale($p-font-size-28);
+    @include p-generate-type-scale($p-font-size-28);
   }
 
   @include p-media-query("l", "xl") {
-    @include p-calculate-type-scale($p-font-size-32);
+    @include p-generate-type-scale($p-font-size-32);
   }
 
   @include p-media-query("xl") {
-    @include p-calculate-type-scale($p-font-size-36);
+    @include p-generate-type-scale($p-font-size-36);
   }
 }
 
@@ -94,19 +94,19 @@
   @include p-generate-font-definition($p-font-size-16, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
-    @include p-calculate-type-scale($p-font-size-18);
+    @include p-generate-type-scale($p-font-size-18);
   }
 
   @include p-media-query("m", "l") {
-    @include p-calculate-type-scale($p-font-size-20);
+    @include p-generate-type-scale($p-font-size-20);
   }
 
   @include p-media-query("l", "xl") {
-    @include p-calculate-type-scale($p-font-size-22);
+    @include p-generate-type-scale($p-font-size-22);
   }
 
   @include p-media-query("xl") {
-    @include p-calculate-type-scale($p-font-size-24);
+    @include p-generate-type-scale($p-font-size-24);
   }
 }
 

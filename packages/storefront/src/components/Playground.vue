@@ -95,13 +95,13 @@
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
-  @import 'src/styles/pds-internal.variables';
+  @import '../styles/internal.variables';
 
   .tabs {
     display: flex;
 
     .tab {
-      @include p-calculate-type-scale($p-font-size-20);
+      @include p-generate-type-scale($p-font-size-20);
 
       &:not(:last-child) {
         margin-right: $p-spacing-24;

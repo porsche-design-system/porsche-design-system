@@ -1,5 +1,5 @@
 @import "../../../../../../../packages/utilities/projects/utilities/scss";
-@import '../../../../styles/pds-internal.variables';
+@import '../../../../styles/internal.variables';
 
 $p-grid-gutter: p-px-to-rem(16px);
 $p-grid-gutter-s: p-px-to-rem(24px);
@@ -15,14 +15,14 @@ $p-grid-gutter-m: p-px-to-rem(36px);
     right: -$p-grid-gutter / 2 !important;
   }
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     margin: {
       left: -$p-grid-gutter-s / 2 !important;
       right: -$p-grid-gutter-s / 2 !important;
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     margin: {
       left: -$p-grid-gutter-m / 2 !important;
       right: -$p-grid-gutter-m / 2 !important;
@@ -46,7 +46,7 @@ $p-grid-gutter-m: p-px-to-rem(36px);
       flex-direction: row-reverse !important;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-column-xs {
         flex-direction: column !important;
       }
@@ -61,7 +61,7 @@ $p-grid-gutter-m: p-px-to-rem(36px);
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-column-s {
         flex-direction: column !important;
       }
@@ -76,7 +76,7 @@ $p-grid-gutter-m: p-px-to-rem(36px);
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-column-m {
         flex-direction: column !important;
       }
@@ -91,7 +91,7 @@ $p-grid-gutter-m: p-px-to-rem(36px);
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-column-l {
         flex-direction: column !important;
       }
@@ -106,7 +106,7 @@ $p-grid-gutter-m: p-px-to-rem(36px);
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-column-xl {
         flex-direction: column !important;
       }

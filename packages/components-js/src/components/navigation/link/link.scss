@@ -1,5 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 @mixin p-link-with-label() {
   padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
@@ -229,7 +229,7 @@
     }
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--with-label-xs {
       @include p-link-with-label;
 
@@ -255,7 +255,7 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--with-label-s {
       @include p-link-with-label;
 
@@ -281,7 +281,7 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--with-label-m {
       @include p-link-with-label;
 
@@ -307,7 +307,7 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--with-label-l {
       @include p-link-with-label;
 
@@ -333,7 +333,7 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--with-label-xl {
       @include p-link-with-label;
 

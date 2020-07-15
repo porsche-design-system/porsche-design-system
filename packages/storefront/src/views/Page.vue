@@ -101,7 +101,7 @@
 
 <style scoped lang="scss">
   @import "~@porsche-design-system/utilities/scss";
-  @import 'src/styles/pds-internal.variables';
+  @import '../styles/internal.variables';
 
   .tabs {
     position: relative;
@@ -123,7 +123,7 @@
     }
 
     .tab {
-      @include p-calculate-type-scale($p-font-size-28);
+      @include p-generate-type-scale($p-font-size-28);
 
       &:not(:last-child) {
         margin-right: $p-spacing-40;

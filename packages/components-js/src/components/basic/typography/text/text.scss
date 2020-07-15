@@ -1,5 +1,5 @@
 @import '../../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../../styles/pds-internal.variables';
+@import '../../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -28,23 +28,23 @@
   transition: font-size 1ms linear; // used for transitionend event listener
 
   &--size-x-small {
-    @include p-calculate-type-scale($p-font-size-x-small);
+    @include p-generate-type-scale($p-font-size-x-small);
   }
 
   &--size-small {
-    @include p-calculate-type-scale($p-font-size-small);
+    @include p-generate-type-scale($p-font-size-small);
   }
 
   &--size-medium {
-    @include p-calculate-type-scale($p-font-size-medium);
+    @include p-generate-type-scale($p-font-size-medium);
   }
 
   &--size-large {
-    @include p-calculate-type-scale($p-font-size-large);
+    @include p-generate-type-scale($p-font-size-large);
   }
 
   &--size-x-large {
-    @include p-calculate-type-scale($p-font-size-x-large);
+    @include p-generate-type-scale($p-font-size-x-large);
   }
 
   &--size-inherit {
@@ -52,21 +52,21 @@
     line-height: inherit;
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--size-x-small-xs {
-      @include p-calculate-type-scale($p-font-size-x-small);
+      @include p-generate-type-scale($p-font-size-x-small);
     }
     &--size-small-xs {
-      @include p-calculate-type-scale($p-font-size-small);
+      @include p-generate-type-scale($p-font-size-small);
     }
     &--size-medium-xs {
-      @include p-calculate-type-scale($p-font-size-medium);
+      @include p-generate-type-scale($p-font-size-medium);
     }
     &--size-large-xs {
-      @include p-calculate-type-scale($p-font-size-large);
+      @include p-generate-type-scale($p-font-size-large);
     }
     &--size-x-large-xs {
-      @include p-calculate-type-scale($p-font-size-x-large);
+      @include p-generate-type-scale($p-font-size-x-large);
     }
     &--size-inherit-xs {
       font-size: inherit;
@@ -74,21 +74,21 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--size-x-small-s {
-      @include p-calculate-type-scale($p-font-size-x-small);
+      @include p-generate-type-scale($p-font-size-x-small);
     }
     &--size-small-s {
-      @include p-calculate-type-scale($p-font-size-small);
+      @include p-generate-type-scale($p-font-size-small);
     }
     &--size-medium-s {
-      @include p-calculate-type-scale($p-font-size-medium);
+      @include p-generate-type-scale($p-font-size-medium);
     }
     &--size-large-s {
-      @include p-calculate-type-scale($p-font-size-large);
+      @include p-generate-type-scale($p-font-size-large);
     }
     &--size-x-large-s {
-      @include p-calculate-type-scale($p-font-size-x-large);
+      @include p-generate-type-scale($p-font-size-x-large);
     }
     &--size-inherit-s {
       font-size: inherit;
@@ -96,21 +96,21 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--size-x-small-m {
-      @include p-calculate-type-scale($p-font-size-x-small);
+      @include p-generate-type-scale($p-font-size-x-small);
     }
     &--size-small-m {
-      @include p-calculate-type-scale($p-font-size-small);
+      @include p-generate-type-scale($p-font-size-small);
     }
     &--size-medium-m {
-      @include p-calculate-type-scale($p-font-size-medium);
+      @include p-generate-type-scale($p-font-size-medium);
     }
     &--size-large-m {
-      @include p-calculate-type-scale($p-font-size-large);
+      @include p-generate-type-scale($p-font-size-large);
     }
     &--size-x-large-m {
-      @include p-calculate-type-scale($p-font-size-x-large);
+      @include p-generate-type-scale($p-font-size-x-large);
     }
     &--size-inherit-m {
       font-size: inherit;
@@ -118,21 +118,21 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--size-x-small-l {
-      @include p-calculate-type-scale($p-font-size-x-small);
+      @include p-generate-type-scale($p-font-size-x-small);
     }
     &--size-small-l {
-      @include p-calculate-type-scale($p-font-size-small);
+      @include p-generate-type-scale($p-font-size-small);
     }
     &--size-medium-l {
-      @include p-calculate-type-scale($p-font-size-medium);
+      @include p-generate-type-scale($p-font-size-medium);
     }
     &--size-large-l {
-      @include p-calculate-type-scale($p-font-size-large);
+      @include p-generate-type-scale($p-font-size-large);
     }
     &--size-x-large-l {
-      @include p-calculate-type-scale($p-font-size-x-large);
+      @include p-generate-type-scale($p-font-size-x-large);
     }
     &--size-inherit-l {
       font-size: inherit;
@@ -140,21 +140,21 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--size-x-small-xl {
-      @include p-calculate-type-scale($p-font-size-x-small);
+      @include p-generate-type-scale($p-font-size-x-small);
     }
     &--size-small-xl {
-      @include p-calculate-type-scale($p-font-size-small);
+      @include p-generate-type-scale($p-font-size-small);
     }
     &--size-medium-xl {
-      @include p-calculate-type-scale($p-font-size-medium);
+      @include p-generate-type-scale($p-font-size-medium);
     }
     &--size-large-xl {
-      @include p-calculate-type-scale($p-font-size-large);
+      @include p-generate-type-scale($p-font-size-large);
     }
     &--size-x-large-xl {
-      @include p-calculate-type-scale($p-font-size-x-large);
+      @include p-generate-type-scale($p-font-size-x-large);
     }
     &--size-inherit-xl {
       font-size: inherit;
