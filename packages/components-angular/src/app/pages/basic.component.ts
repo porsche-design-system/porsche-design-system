@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
       </p-grid-item>
       <p-grid-item [size]="10">
         <div class="playground light spacing-block">
-          <p-headline [variant]="'title-large'">The quick brown fox jumps over the lazy dog</p-headline>
+          <p-headline [variant]="'large-title'">The quick brown fox jumps over the lazy dog</p-headline>
           <p-headline [variant]="'headline-1'">The quick brown fox jumps over the lazy dog</p-headline>
           <p-headline [variant]="'headline-2'">The quick brown fox jumps over the lazy dog</p-headline>
           <p-headline [variant]="'headline-3'">The quick brown fox jumps over the lazy dog</p-headline>
