@@ -20,7 +20,7 @@
     background: $p-color-surface;
   }
   &--color-theme-light-background {
-    background: $p-color-background;
+    background: $p-color-background-default;
   }
   &--color-theme-light-background-shading {
     background: $p-color-background-shading;
@@ -68,7 +68,7 @@
     background: $p-color-theme-dark-surface;
   }
   &--color-theme-dark-background {
-    background: $p-color-theme-dark-background;
+    background: $p-color-theme-dark-background-default;
   }
   &--color-theme-dark-background-shading {
     background: $p-color-theme-dark-background-shading;

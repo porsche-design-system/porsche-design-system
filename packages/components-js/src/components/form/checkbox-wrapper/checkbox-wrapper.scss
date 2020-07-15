@@ -1,4 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/pds-internal.variables';
 
 @mixin p-checkbox-wrapper-label-text-visible() {
   position: static;
