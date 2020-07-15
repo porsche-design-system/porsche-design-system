@@ -5,11 +5,11 @@
 **Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
 
 ## Variant
-There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `title-large` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
+There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-    <p-headline :theme="theme" variant="title-large">The quick brown fox jumps over the lazy dog</p-headline>
+    <p-headline :theme="theme" variant="large-title">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-1">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-2">The quick brown fox jumps over the lazy dog</p-headline>
     <p-headline :theme="theme" variant="headline-3">The quick brown fox jumps over the lazy dog</p-headline>
