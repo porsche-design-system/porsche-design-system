@@ -142,16 +142,6 @@ Possible variable for usage with SCSS (where {v} is the font size value):
 $p-font-size-{v};
 ```
 
----
-
-## Animation
-
-### Hover
-```
-$p-animation-hover-duration
-$p-animation-hover-bezier
-```
-
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   

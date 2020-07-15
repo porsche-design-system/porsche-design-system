@@ -1,172 +1,20 @@
 # Scss
 
-## Breakpoint / Media query
-Predefined breakpoints can easily be used as in the following examples.
+## p-generate-font-definition($fontSize, $fontWeight)
 
-Available breakpoints:  
-`xxs | xs | s | m | l | xl | xxl`
+With this mixin, it's possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
 
-#### Example
-```
-div {
-  color: inherit;
-  
-  @include p-media-query('s') {
-    color: deeppink;
-  }
-}
-```
+Pre defined **size** values are, `$p-font-size-{v};` where `v` is:  
+`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | x-small | small | medium | large | x-large`
 
-#### Result
-```
-div {
-  color: inherit;
-}
-
-@media (min-width: 760px) {
-  div {
-    color: deeppink;
-  }
-}
-```
-
----
-
-#### Example
-```
-div {
-  color: inherit;
-  
-  @include p-media-query('s', 'm') {
-    color: deeppink;
-  }
-}
-```
-
-#### Result
-```
-div {
-  color: inherit;
-}
-
-@media (min-width: 760px) and (max-width: 999px) {
-  div {
-    color: deeppink;
-  }
-}
-```
-
----
-
-## Typography
-
-**Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
-
-### Text
-
-Given values are:  
-`x-small | small | medium | large | x-large`
-
-Possible text mixin for usage with SCSS (where {v} is the value):
-```
-@include p-text-{v};
-```
-
-#### Example
-```
-h1 {
-  @include p-text-small;
-}
-```
-
-#### Result
-```
-p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-```
-
-### Headline
-
-Given values are:  
-`title-large | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
-
-Possible headline mixin for usage with SCSS (where {v} is the value):
-```
-@include p-{v};
-```
-
-#### Example
-```
-h1 {
-  @include p-headline-1;
-}
-```
-
-#### Result
-```
-h1 {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 600;
-  font-size: 1.75rem;
-  line-height: 1.4285714286;
-}
-
-@media (min-width: 760px) and (max-width: 999px) {
-  h1 {
-    font-size: 2.25rem;
-    line-height: 1.2222222222;
-  }
-}
-
-@media (min-width: 1000px) and (max-width: 1299px) {
-  h1 {
-    font-size: 2.75rem;
-    line-height: 1.1818181818;
-  }
-}
-
-@media (min-width: 1300px) and (max-width: 1759px) {
-  h1 {
-    font-size: 3.25rem;
-    line-height: 1.2307692308;
-  }
-}
-
-@media (min-width: 1760px) {
-  h1 {
-    font-size: 3.75rem;
-    line-height: 1.2;
-  }
-}
-```
-
-### Generic font definition
-
-With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
-
-Pre defined variant values are:  
-`$p-text-size-x-small | $p-text-size-small | $p-text-size-medium | $p-text-size-large | $p-text-size-x-large`  
-
-Or more generic `$p-font-size-{v};` where `v` is:  
-`12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
-
-Pre defined weight values are:  
-`$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
-
-#### Example p-generate-font-definition mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
-```
-@include p-generate-font-definition({size}, {weight});
-```
+Pre defined **weight** values are:  
+`$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-semibold | $p-font-weight-bold`
 
 #### Example
 
 ```
 p {
-  @include p-generate-font-definition($p-text-size-large, $p-font-weight-thin);
+  @include p-generate-font-definition($p-font-size-large, $p-font-weight-thin);
 }
 ```
 
@@ -182,8 +30,8 @@ p {
 
 ---
 
-### p-generate-type-scale($size)
-Calculates font-size and line-height to fit into Porsche Vertical Grid System.
+## p-generate-type-scale($size)
+Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System.
 `$size` only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
@@ -198,5 +46,65 @@ p {
 p {
   font-size: 2rem;
   line-height: 1.375;
+}
+```
+
+---
+
+## p-calculate-line-height($size)
+Calculates line-height to fit into Porsche Vertical Grid System.
+The `$size` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
+
+#### Example
+```
+p {
+  line-height: p-calculate-line-height($p-font-size-32);
+}
+```
+
+#### Result
+```
+p {
+  line-height: 1.375;
+}
+```
+
+---
+
+## p-px-to-rem($px)
+Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
+`$px` only accepts value in px unit, e.g. 12px.
+
+#### Example
+```
+div {
+  width: p-px-to-rem(123px);
+}
+```
+
+#### Result
+```
+div {
+  width: 7.6875rem;
+}
+```
+
+---
+
+## p-rem-to-px($rem)
+Converts rem to px unit. The base for rem calculation is defined with 16px by default.  
+`$rem` only accepts value in rem unit, e.g. 1.5rem.
+
+#### Example
+```
+div {
+  width: p-rem-to-px(1rem);
+}
+```
+
+#### Result
+```
+div {
+  width: 16px;
 }
 ```

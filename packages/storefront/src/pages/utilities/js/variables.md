@@ -95,7 +95,7 @@ spacing[v]
 Or the reduced set of spacings which should be used as main layout spacings for spacings between elements:
 
 Given values are:  
-`xSsmall | small | medium | large | xLarge | xxLarge`
+`xSmall | small | medium | large | xLarge | xxLarge`
 
 **Example:**
 
@@ -148,7 +148,7 @@ Given values are:
 
 Predefined text sizes are also provided:
 
-`x-small | small | medium | large | x-large`
+`xSmall | small | medium | large | xLarge`
 
 **Example general:**
 
