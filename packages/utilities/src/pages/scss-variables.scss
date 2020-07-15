@@ -171,7 +171,7 @@
     margin-left: $p-spacing-80;
   }
 
-  &--layout-x-small {
+  &--layout-xSmall {
     margin-left: $p-layout-x-small;
   }
   &--layout-small {
@@ -183,10 +183,10 @@
   &--layout-large {
     margin-left: $p-layout-large;
   }
-  &--layout-x-large {
+  &--layout-xLarge {
     margin-left: $p-layout-x-large;
   }
-  &--layout-xx-large {
+  &--layout-xxLarge {
     margin-left: $p-layout-xx-large;
   }
 }
@@ -209,58 +209,58 @@
   }
 
   &--size-12 {
-    @include p-generate-font-definition(p-font-size-12);
+    @include p-generate-font-definition($p-font-size-12, $p-font-weight-regular);
   }
   &--size-16 {
-    @include p-generate-font-definition(p-font-size-16);
+    @include p-generate-font-definition($p-font-size-16, $p-font-weight-regular);
   }
   &--size-18 {
-    @include p-generate-font-definition(p-font-size-18);
+    @include p-generate-font-definition($p-font-size-18, $p-font-weight-regular);
   }
   &--size-20 {
-    @include p-generate-font-definition(p-font-size-20);
+    @include p-generate-font-definition($p-font-size-20, $p-font-weight-regular);
   }
   &--size-22 {
-    @include p-generate-font-definition(p-font-size-22);
+    @include p-generate-font-definition($p-font-size-22, $p-font-weight-regular);
   }
   &--size-24 {
-    @include p-generate-font-definition(p-font-size-24);
+    @include p-generate-font-definition($p-font-size-24, $p-font-weight-regular);
   }
   &--size-28 {
-    @include p-generate-font-definition(p-font-size-28);
+    @include p-generate-font-definition($p-font-size-28, $p-font-weight-regular);
   }
   &--size-30 {
-    @include p-generate-font-definition(p-font-size-30);
+    @include p-generate-font-definition($p-font-size-30, $p-font-weight-regular);
   }
   &--size-32 {
-    @include p-generate-font-definition(p-font-size-32);
+    @include p-generate-font-definition($p-font-size-32, $p-font-weight-regular);
   }
   &--size-36 {
-    @include p-generate-font-definition(p-font-size-36);
+    @include p-generate-font-definition($p-font-size-36, $p-font-weight-regular);
   }
   &--size-42 {
-    @include p-generate-font-definition(p-font-size-42);
+    @include p-generate-font-definition($p-font-size-42, $p-font-weight-regular);
   }
   &--size-44 {
-    @include p-generate-font-definition(p-font-size-44);
+    @include p-generate-font-definition($p-font-size-44, $p-font-weight-regular);
   }
   &--size-48 {
-    @include p-generate-font-definition(p-font-size-48);
+    @include p-generate-font-definition($p-font-size-48, $p-font-weight-regular);
   }
   &--size-52 {
-    @include p-generate-font-definition(p-font-size-52);
+    @include p-generate-font-definition($p-font-size-52, $p-font-weight-regular);
   }
   &--size-60 {
-    @include p-generate-font-definition(p-font-size-60);
+    @include p-generate-font-definition($p-font-size-60, $p-font-weight-regular);
   }
   &--size-62 {
-    @include p-generate-font-definition(p-font-size-62);
+    @include p-generate-font-definition($p-font-size-62, $p-font-weight-regular);
   }
   &--size-72 {
-    @include p-generate-font-definition(p-font-size-72);
+    @include p-generate-font-definition($p-font-size-72, $p-font-weight-regular);
   }
   &--size-84 {
-    @include p-generate-font-definition(p-font-size-84);
+    @include p-generate-font-definition($p-font-size-84, $p-font-weight-regular);
   }
   &--size-xSmall {
     @include p-text-x-small;

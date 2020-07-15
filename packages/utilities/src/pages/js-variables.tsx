@@ -20,7 +20,7 @@ const Square = styled.div(({ background }: { background?: CSSProperties['backgro
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
-const Text = styled.div(text());
+const Text = styled.div(text.small);
 
   export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
