@@ -58,7 +58,7 @@ const Text = styled.div(text());
       <div className="playground">
         <h2>Font Weights</h2>
         {Object.entries(font.weight).map(([key, val]) => (
-          <Text key={key} style={{ fontWeight: val }} children={`Font ${key}`} />
+          <Text key={key} style={{ fontWeight: val, lineHeight: 1.5 }} children={`Font ${key}`} />
         ))}
       </div>
 

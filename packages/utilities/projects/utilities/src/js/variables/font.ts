@@ -64,8 +64,8 @@ export const font: FontType = {
     '62': { fontSize: '3.875rem', lineHeight: 1.22581 },
     '72': { fontSize: '4.5rem', lineHeight: 1.22222 },
     '84': { fontSize: '5.25rem', lineHeight: 1.19048 },
-    xSmall: { fontSize: '0.75rem', lineHeight: 1.5 },
-    small: { fontSize: '1rem', lineHeight: 1.66667 },
+    xSmall: { fontSize: '0.75rem', lineHeight: 1.66667 },
+    small: { fontSize: '1rem', lineHeight: 1.5 },
     medium: { fontSize: '1.5rem', lineHeight: 1.5 },
     large: { fontSize: '2.25rem', lineHeight: 1.33333 },
     xLarge: { fontSize: '3.25rem', lineHeight: 1.23077 }

@@ -3,7 +3,7 @@ import {
   pxToRem,
   remToPx,
   calculateTypeScale,
-  getColorHexCode
+  getHexColor
 } from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
@@ -175,23 +175,26 @@ describe('typeScale()', () => {
     const foo = calculateTypeScale('32px');
     expect(foo.lineHeight).toBe(1.375);
     expect(foo.fontSize).toBe('2rem');
+    const test = calculateTypeScale('1rem');
+    expect(test.fontSize).toBe('1rem');
+    expect(test.lineHeight).toBe(1.375);
   });
 });
 
 describe('getColorHexCode()', () => {
   it('should show correct hexcode for brand color', () => {
-    expect(getColorHexCode('brand')).toBe('#d5001c');
-    expect(getColorHexCode('brand', 'light')).toBe('#d5001c');
-    expect(getColorHexCode('brand', 'dark')).toBe('#d5001c');
+    expect(getHexColor('brand')).toBe('#d5001c');
+    expect(getHexColor('brand', 'light')).toBe('#d5001c');
+    expect(getHexColor('brand', 'dark')).toBe('#d5001c');
   });
 
   it('should show correct hexcode for neutralContrast high color', () => {
-    expect(getColorHexCode('neutralContrast', 'high', 'light')).toBe('#323639');
-    expect(getColorHexCode('neutralContrast', 'high')).toBe('#323639');
-    expect(getColorHexCode('neutralContrast', 'high', 'dark')).toBe('#e3e4e5');
+    expect(getHexColor('neutralContrast', 'high', 'light')).toBe('#323639');
+    expect(getHexColor('neutralContrast', 'high')).toBe('#323639');
+    expect(getHexColor('neutralContrast', 'high', 'dark')).toBe('#e3e4e5');
   });
 
   it('should show correct hexcode for external color', () => {
-    expect(getColorHexCode('external', 'facebook')).toBe('#1877f2');
+    expect(getHexColor('external', 'facebook')).toBe('#1877f2');
   });
 });

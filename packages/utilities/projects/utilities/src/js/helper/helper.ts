@@ -65,22 +65,23 @@ type RootColorKey = keyof Omit<AllColor, 'state' | 'notification' | 'neutralCont
 type ChildrenColorKey = keyof Pick<AllColor, 'state' | 'notification' | 'neutralContrast'>;
 type ExternalColorKey = keyof Pick<AllColor, 'external'>;
 
-export function getColorHexCode(pdsColor: RootColorKey, theme?: Theme): string;
-export function getColorHexCode<K extends ChildrenColorKey, L extends keyof AllColor[K]>(
+export function getHexColor(pdsColor: RootColorKey, theme?: Theme): string;
+export function getHexColor<K extends ChildrenColorKey, L extends keyof AllColor[K]>(
   fontColor: K,
   specification: L,
   theme?: Theme
 ): string;
-export function getColorHexCode<K extends ExternalColorKey, L extends keyof AllColor[K]>(
+export function getHexColor<K extends ExternalColorKey, L extends keyof AllColor[K]>(
   fontColor: K,
   specification: L
 ): string;
-export function getColorHexCode(
+export function getHexColor(
   fontColor: RootColorKey | ChildrenColorKey,
   specificationOrTheme: any | Theme = 'light',
   theme: Theme = 'light'
 ): string {
   let hexCode: string;
+
   if (specificationOrTheme !== 'light' && specificationOrTheme !== 'dark') {
     hexCode = color[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
     if (theme === 'dark') {
