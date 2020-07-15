@@ -7,8 +7,10 @@ export const color = {
   brand: '#d5001c',
   default: '#000',
   surface: '#f2f2f2',
-  background: '#fff',
-  backgroundShading: 'rgba(14, 20, 24, 0.9)',
+  background: {
+    default: '#fff',
+    shading: 'rgba(14, 20, 24, 0.9)'
+  },
   neutralContrast: {
     high: '#323639',
     medium: '#626669',
@@ -33,8 +35,10 @@ export const color = {
     brand: '#d5001c',
     default: '#fff',
     surface: '#1a2023',
-    background: '#0e1418',
-    backgroundShading: 'rgba(14, 20, 24, 0.9)',
+    background: {
+      default: '#0e1418',
+      shading: 'rgba(14, 20, 24, 0.9)'
+    },
     neutralContrast: {
       high: '#e3e4e5',
       medium: '#b0b1b2',
