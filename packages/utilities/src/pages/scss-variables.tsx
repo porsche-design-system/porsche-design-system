@@ -113,7 +113,7 @@ export const ScssVariables = (): JSX.Element => (
 
     <div className="playground">
       <h2>Titles</h2>
-      <div className="large-title">Title large</div>
+      <div className="title-large">Title large</div>
     </div>
 
     <div className="playground">

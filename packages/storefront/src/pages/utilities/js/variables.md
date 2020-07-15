@@ -95,7 +95,7 @@ spacing[v]
 Or the reduced set of spacings which should be used as main layout spacings for spacings between elements:
 
 Given values are:  
-`x-small | small | medium | large | x-large | xx-large`
+`xSsmall | small | medium | large | xLarge | xxLarge`
 
 **Example:**
 
@@ -140,6 +140,8 @@ font.weight[v]
 
 #### Font scaling system
 
+By selecting a specific size you will get the according `lineHeight` and `fontSize`.
+
 Given values are:
 
 `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84`
@@ -148,13 +150,27 @@ Predefined text sizes are also provided:
 
 `x-small | small | medium | large | x-large`
 
-**Example:**
+**Example general:**
 
 ```
 import { font } from '@porsche-design-system/utilities';
 
 // 'v' is the spacing value
 font.size[v]
+```
+
+**Example specific:**
+```
+import { font } from '@porsche-design-system/utilities';
+
+font.size['16']
+```
+
+**Result:**
+
+```
+lineHeight: 1.5;
+fontSize: '1rem';
 ```
 
 <script lang="ts">

@@ -31,7 +31,7 @@ export function Basic() {
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-block">
-            <Headline variant={'large-title'}>The quick brown fox jumps over the lazy dog</Headline>
+            <Headline variant={'title-large'}>The quick brown fox jumps over the lazy dog</Headline>
             <Headline variant={'headline-1'}>The quick brown fox jumps over the lazy dog</Headline>
             <Headline variant={'headline-2'}>The quick brown fox jumps over the lazy dog</Headline>
             <Headline variant={'headline-3'}>The quick brown fox jumps over the lazy dog</Headline>

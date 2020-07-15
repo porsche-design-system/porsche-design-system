@@ -92,7 +92,7 @@ p {
 ### Headline
 
 Given values are:  
-`large-title | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
+`title-large | headline-1 | headline-2 | headline-3 | headline-4 | headline-5`
 
 Possible headline mixin for usage with SCSS (where {v} is the value):
 ```
@@ -182,7 +182,7 @@ p {
 
 ---
 
-### p-generate-type-scale($size)
+### p-calculate-type-scale($size)
 Calculates font-size and line-height to fit into Porsche Vertical Grid System.
 `$size` only accepts value in rem or px, e.g. 12px or 1.5rem.
 
