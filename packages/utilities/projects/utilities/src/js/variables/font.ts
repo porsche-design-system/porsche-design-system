@@ -1,4 +1,3 @@
-import { pxToRem, typeScale } from '../helper';
 import * as CSS from 'csstype';
 
 export type FontSize =
@@ -28,41 +27,46 @@ export type FontSize =
 
 export type FontWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
-type FontType = { family: string; weight: {[key in FontWeight]: number}; size: {[key in FontSize]: CSS.Properties} }
+export type FontSizeLineHeight = Pick<CSS.Properties, 'fontSize' | 'lineHeight'>;
+
+type FontType = {
+  family: string;
+  weight: { [key in FontWeight]: number };
+  size: { [key in FontSize]: FontSizeLineHeight };
+};
 
 export const font: FontType = {
-  family: `"Porsche Next", "Arial Narrow", Arial, sans-serif`,
-
+  family: '"Porsche Next", "Arial Narrow", Arial, sans-serif',
   weight: {
     thin: 100,
     regular: 400,
     semibold: 600,
     bold: 700
   },
-
+  // To boost performance, size is defined static.
   size: {
-    '12': typeScale(pxToRem('12px')),
-    '16': typeScale(pxToRem('16px')),
-    '18': typeScale(pxToRem('18px')),
-    '20': typeScale(pxToRem('20px')),
-    '22': typeScale(pxToRem('22px')),
-    '24': typeScale(pxToRem('24px')),
-    '28': typeScale(pxToRem('28px')),
-    '30': typeScale(pxToRem('30px')),
-    '32': typeScale(pxToRem('32px')),
-    '36': typeScale(pxToRem('36px')),
-    '42': typeScale(pxToRem('42px')),
-    '44': typeScale(pxToRem('44px')),
-    '48': typeScale(pxToRem('48px')),
-    '52': typeScale(pxToRem('52px')),
-    '60': typeScale(pxToRem('60px')),
-    '62': typeScale(pxToRem('62px')),
-    '72': typeScale(pxToRem('72px')),
-    '84': typeScale(pxToRem('84px')),
-    xSmall: typeScale(pxToRem('12px')),
-    small: typeScale(pxToRem('16px')),
-    medium: typeScale(pxToRem('24px')),
-    large: typeScale(pxToRem('36px')),
-    xLarge: typeScale(pxToRem('52px'))
+    '12': {fontSize: '0.75rem', lineHeight: 1.66667},
+    '16': {fontSize: '1rem', lineHeight: 1.5},
+    '18': {fontSize: '1.125rem', lineHeight: 1.55556},
+    '20': {fontSize: '1.25rem', lineHeight: 1.4},
+    '22': {fontSize: '1.375rem', lineHeight: 1.45455},
+    '24': {fontSize: '1.5rem', lineHeight: 1.5},
+    '28': {fontSize: '1.75rem', lineHeight: 1.42857},
+    '30': {fontSize: '1.875rem', lineHeight: 1.33333},
+    '32': {fontSize: '2rem', lineHeight: 1.375},
+    '36': {fontSize: '2.25rem', lineHeight: 1.33333},
+    '42': {fontSize: '2.625rem', lineHeight: 1.2381},
+    '44': {fontSize: '2.75rem', lineHeight: 1.18182},
+    '48': {fontSize: '3rem', lineHeight: 1.25},
+    '52': {fontSize: '3.25rem', lineHeight: 1.23077},
+    '60': {fontSize: '3.75rem', lineHeight: 1.2},
+    '62': {fontSize: '3.875rem', lineHeight: 1.22581},
+    '72': {fontSize: '4.5rem', lineHeight: 1.22222},
+    '84': {fontSize: '5.25rem', lineHeight: 1.19048},
+    xSmall: {fontSize: '0.75rem', lineHeight: 1.66667},
+    small: {fontSize: '1rem', lineHeight: 1.5},
+    medium: {fontSize: '1.5rem', lineHeight: 1.5},
+    large: {fontSize: '2.25rem', lineHeight: 1.33333},
+    xLarge: {fontSize: '3.25rem', lineHeight: 1.23077}
   }
 };

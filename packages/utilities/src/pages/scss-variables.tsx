@@ -5,8 +5,8 @@ import './scss-variables.scss';
 const defaultColors = {
   'theme-light-brand': '#d5001c',
   'theme-light-default': '#000',
-  'theme-light-surface': '#f2f2f2',
-  'theme-light-background': '#fff',
+  'theme-light-background-default': '#fff',
+  'theme-light-background-surface': '#f2f2f2',
   'theme-light-background-shading': 'rgba(14, 20, 24, 0.9)',
   'theme-light-neutral-contrast-high': '#323639',
   'theme-light-neutral-contrast-medium': '#626669',
@@ -34,8 +34,8 @@ const defaultColors = {
 const darkThemeColors = {
   'theme-dark-brand': '#d5001c',
   'theme-dark-default': '#fff',
-  'theme-dark-surface': '#1a2023',
-  'theme-dark-background': '#0e1418',
+  'theme-dark-background-default': '#0e1418',
+  'theme-dark-background-surface': '#1a2023',
   'theme-dark-background-shading': 'rgba(14, 20, 24, 0.9)',
   'theme-dark-neutral-contrast-high': '#e3e4e5',
   'theme-dark-neutral-contrast-medium': '#b0b1b2',
@@ -113,7 +113,7 @@ export const ScssVariables = (): JSX.Element => (
 
     <div className="playground">
       <h2>Titles</h2>
-      <div className="large-title">Title large</div>
+      <div className="title-large">Title large</div>
     </div>
 
     <div className="playground">
