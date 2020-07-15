@@ -193,7 +193,7 @@
 
 .font {
   @include p-text-small;
-  font-family: $p-font-primary;
+  font-family: $p-font-family;
 
   &--thin {
     font-weight: $p-font-weight-thin;

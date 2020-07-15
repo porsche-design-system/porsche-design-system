@@ -35,7 +35,7 @@
   width: 100% !important;
   height: 100% !important;
   display: block !important;
-  padding: p-rem(12px) p-rem(48px) p-rem(12px) p-rem(12px) !important;
+  padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
   margin: 0 !important;
   outline: transparent none !important;
   outline-offset: 1px !important;
@@ -45,10 +45,10 @@
   border-top-color: transparent !important;
   background-color: transparent !important;
   opacity: 1 !important;
-  font-family: $p-font-primary !important;
+  font-family: $p-font-family !important;
   font-weight: $p-font-weight-regular !important;
-  font-size: p-font-size($p-font-size-small) !important;
-  line-height: p-line-height($p-font-size-small) !important;
+  font-size: $p-font-size-small !important;
+  line-height: p-calculate-line-height($p-font-size-small) !important;
   color: $p-color-theme-light-default !important;
   text-indent: 0 !important;
   cursor: pointer !important;
@@ -180,7 +180,7 @@
   &__fake-select {
     position: relative;
     width: 100%;
-    height: p-rem(48px);
+    height: p-px-to-rem(48px);
     display: block;
     background-color: $p-color-theme-light-background;
     box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
@@ -266,7 +266,7 @@
   &__fake-option {
     position: relative;
     display: block;
-    padding: $p-spacing-8 p-rem(12px);
+    padding: $p-spacing-8 p-px-to-rem(12px);
     cursor: pointer;
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
@@ -300,12 +300,12 @@
 
   &__fake-option-icon {
      position: absolute;
-     right: p-rem(12px);
+     right: p-px-to-rem(12px);
   }
 
   &__fake-optgroup-label {
     display: block;
-    padding: $p-spacing-8 p-rem(12px);
+    padding: $p-spacing-8 p-px-to-rem(12px);
     margin-top: $p-spacing-8;
     font-weight: $p-font-weight-bold;
 
@@ -316,8 +316,8 @@
 
   &__icon {
     position: absolute;
-    top: p-rem(12px);
-    right: p-rem(12px);
+    top: p-px-to-rem(12px);
+    right: p-px-to-rem(12px);
     color: $p-color-theme-light-default;
     transition: transform $p-animation-hover-duration $p-animation-hover-bezier;
 

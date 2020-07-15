@@ -1,13 +1,13 @@
 # Scss
 
-## p-rem($px)
+## p-px-to-rem($px)
 Converts px to rem unit. The base for rem calculation is defined with 16px by default.  
 `$px` only accepts value in px unit, e.g. 12px.
 
 #### Example
 ```
 div {
-  width: p-rem(123px);
+  width: p-px-to-rem(123px);
 }
 ```
 
@@ -20,14 +20,14 @@ div {
 
 ---
 
-## p-px($rem)
+## p-rem-to-px($rem)
 Converts rem to px unit. The base for rem calculation is defined with 16px by default.  
 `$rem` only accepts value in rem unit, e.g. 1.5rem.
 
 #### Example
 ```
 div {
-  width: p-px(1rem);
+  width: p-rem-to-px(1rem);
 }
 ```
 

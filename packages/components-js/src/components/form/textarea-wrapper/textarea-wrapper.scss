@@ -31,9 +31,9 @@
 ::slotted(textarea) {
   position: relative !important;
   width: 100% !important;
-  min-height: p-rem(188px);
+  min-height: p-px-to-rem(188px);
   display: block !important;
-  padding: p-rem(10px) !important;
+  padding: p-px-to-rem(10px) !important;
   margin: 0 !important;
   outline: transparent none !important;
   outline-offset: 3px !important;
@@ -43,10 +43,10 @@
   border-top-color: transparent !important;
   background-color: transparent !important;
   opacity: 1 !important;
-  font-family: $p-font-primary !important;
+  font-family: $p-font-family !important;
   font-weight: $p-font-weight-regular !important;
-  font-size: p-font-size($p-font-size-small) !important;
-  line-height: p-line-height($p-font-size-small) !important;
+  font-size: $p-font-size-small !important;
+  line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-theme-light-default !important;
   resize: vertical;
@@ -170,7 +170,7 @@
 
   &__fake-textarea {
     display: block;
-    padding: p-rem(2px);
+    padding: p-px-to-rem(2px);
     background-color: $p-color-theme-light-background;
     box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
     box-sizing: border-box;

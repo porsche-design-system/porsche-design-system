@@ -107,7 +107,7 @@ For font styling it's recommended to use the [`<p-headline>`](#/components/typog
 Contains Porsche Next and predefined fallback fonts:
 
 ```
-$p-font-primary
+$p-font-family
 ```
 
 ### Weight

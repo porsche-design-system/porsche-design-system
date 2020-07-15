@@ -47,8 +47,8 @@
   @import "~@porsche-design-system/utilities/scss";
 
   .color-badge {
-    width: p-rem(160px);
-    height: p-rem(40px);
+    width: p-px-to-rem(160px);
+    height: p-px-to-rem(40px);
     border: 1px solid $p-color-neutral-contrast-medium;
 
     // Theme light

@@ -10,7 +10,7 @@
   display: block;
 
   &--basic {
-    max-width: p-rem(1536px);
+    max-width: p-px-to-rem(1536px);
     padding: {
       left: 7vw;
       right: 7vw;
@@ -25,13 +25,13 @@
 
     @include p-breakpoint("xxl") {
       padding: {
-        left: p-rem(192px);
-        right: p-rem(192px);
+        left: p-px-to-rem(192px);
+        right: p-px-to-rem(192px);
       }
     }
   }
 
   &--extended {
-    max-width: p-rem(1920px);
+    max-width: p-px-to-rem(1920px);
   }
 }

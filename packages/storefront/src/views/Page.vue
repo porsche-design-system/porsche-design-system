@@ -115,8 +115,8 @@
       top: 0;
       right: 0;
       bottom: 0;
-      margin-left: p-rem(-48px);
-      width: p-rem(48px);
+      margin-left: p-px-to-rem(-48px);
+      width: p-px-to-rem(48px);
       background: rgb(255,255,255);
       background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
     }
