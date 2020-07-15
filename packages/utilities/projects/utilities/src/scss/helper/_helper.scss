@@ -1,5 +1,4 @@
 @import "internal";
-@import "../variables/font";
 
 /**
  * Converts px to rem unit
@@ -35,7 +34,7 @@
 
 // generates static font definitions
 @mixin p-generate-font-definition($size, $weight) {
-  @include p-calculate-type-scale($size);
+  @include p-generate-type-scale($size);
   font-family: $p-font-family;
   font-weight: $weight;
 }
@@ -44,13 +43,13 @@
  * Calculates font-size and line-height to fit into Porsche Vertical Grid System
  * @param $size - only accepts value in rem or px, e.g. 12px or 1.5rem
  */
-@mixin p-calculate-type-scale($size) {
+@mixin p-generate-type-scale($size) {
   @if __p-is-rem($size) {
     font-size: $size;
   } @else if __p-is-px($size) {
     font-size: p-px-to-rem($size);
   } @else {
-    @error 'p-calculate-type-scale() Scss function only accepts value in rem or px for param $size, e.g. 12px or 1.5rem';
+    @error 'p-generate-type-scale() Scss function only accepts value in rem or px for param $size, e.g. 12px or 1.5rem';
   }
   line-height: p-calculate-line-height($size);
 }

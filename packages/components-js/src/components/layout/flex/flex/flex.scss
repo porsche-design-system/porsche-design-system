@@ -1,5 +1,5 @@
 @import "../../../../../../../packages/utilities/projects/utilities/scss";
-@import '../../../../styles/pds-internal.variables';
+@import '../../../../styles/internal.variables';
 
 /**
  * properties for flex container
@@ -42,7 +42,7 @@
     @include p-flex-inline;
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--default-xs {
       @include p-flex;
     }
@@ -51,7 +51,7 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--default-s {
       @include p-flex;
     }
@@ -60,7 +60,7 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--default-m {
       @include p-flex;
     }
@@ -69,7 +69,7 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--default-l {
       @include p-flex;
     }
@@ -78,7 +78,7 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--default-xl {
       @include p-flex;
     }
@@ -102,7 +102,7 @@
       @include p-flex-wrap(wrap-reverse);
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-wrap-xs {
         @include p-flex-wrap(wrap);
       }
@@ -114,7 +114,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-wrap-s {
         @include p-flex-wrap(wrap);
       }
@@ -126,7 +126,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-wrap-m {
         @include p-flex-wrap(wrap);
       }
@@ -138,7 +138,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-wrap-l {
         @include p-flex-wrap(wrap);
       }
@@ -150,7 +150,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-wrap-xl {
         @include p-flex-wrap(wrap);
       }
@@ -177,7 +177,7 @@
       @include p-flex-direction(row-reverse);
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-column-xs {
         @include p-flex-direction(column);
       }
@@ -192,7 +192,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-column-s {
         @include p-flex-direction(column);
       }
@@ -207,7 +207,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-column-m {
         @include p-flex-direction(column);
       }
@@ -222,7 +222,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-column-l {
         @include p-flex-direction(column);
       }
@@ -237,7 +237,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-column-xl {
         @include p-flex-direction(column);
       }
@@ -273,7 +273,7 @@
       @include p-flex-justify-content(space-evenly);
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-flex-start-xs {
         @include p-flex-justify-content(flex-start);
       }
@@ -294,7 +294,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-flex-start-s {
         @include p-flex-justify-content(flex-start);
       }
@@ -315,7 +315,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-flex-start-m {
         @include p-flex-justify-content(flex-start);
       }
@@ -336,7 +336,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-flex-start-l {
         @include p-flex-justify-content(flex-start);
       }
@@ -357,7 +357,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-flex-start-xl {
         @include p-flex-justify-content(flex-start);
       }
@@ -396,7 +396,7 @@
       @include p-flex-align-items(baseline);
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-flex-start-xs {
         @include p-flex-align-items(flex-start);
       }
@@ -414,7 +414,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-flex-start-s {
         @include p-flex-align-items(flex-start);
       }
@@ -432,7 +432,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-flex-start-m {
         @include p-flex-align-items(flex-start);
       }
@@ -450,7 +450,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-flex-start-l {
         @include p-flex-align-items(flex-start);
       }
@@ -468,7 +468,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-flex-start-xl {
         @include p-flex-align-items(flex-start);
       }
@@ -510,7 +510,7 @@
       @include p-flex-align-content(space-evenly);
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-flex-start-xs {
         @include p-flex-align-content(flex-start);
       }
@@ -534,7 +534,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-flex-start-s {
         @include p-flex-align-content(flex-start);
       }
@@ -558,7 +558,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-flex-start-m {
         @include p-flex-align-content(flex-start);
       }
@@ -582,7 +582,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-flex-start-l {
         @include p-flex-align-content(flex-start);
       }
@@ -606,7 +606,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-flex-start-xl {
         @include p-flex-align-content(flex-start);
       }

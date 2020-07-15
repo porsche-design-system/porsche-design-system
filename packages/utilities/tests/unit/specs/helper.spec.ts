@@ -1,4 +1,10 @@
-import { calculateLineHeight, pxToRem, remToPx, calculateTypeScale } from '../../../projects/utilities/src/js';
+import {
+  calculateLineHeight,
+  pxToRem,
+  remToPx,
+  generateTypeScale,
+  generateFontDefinition
+} from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
@@ -40,7 +46,26 @@ describe('remToPx()', () => {
   });
 });
 
-describe('convertLineHeight()', () => {
+describe('generateFontDefinition()', () => {
+  it('should return correct font definition', () => {
+    const fontDefinition1 = generateFontDefinition('16px', 'regular');
+    const fontDefinition2 = generateFontDefinition('32px', 'bold');
+    expect(fontDefinition1).toEqual({
+      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.5
+    });
+    expect(fontDefinition2).toEqual({
+      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
+      "fontSize": "2rem",
+      "fontWeight": 700,
+      "lineHeight": 1.375
+    });
+  });
+});
+
+describe('calculateLineHeight()', () => {
   it('should throw error if called with wrong unit', () => {
     try {
       calculateLineHeight('2bs');
@@ -148,10 +173,10 @@ describe('convertLineHeight()', () => {
   });
 });
 
-describe('typeScale()', () => {
+describe('generateTypeScale()', () => {
   it('should throw error if called with undefined', () => {
     try {
-      calculateTypeScale(undefined!);
+      generateTypeScale(undefined!);
     } catch (e) {
       expect(e).toBeDefined();
     }
@@ -159,14 +184,14 @@ describe('typeScale()', () => {
 
   it('should throw error if called with wrong unit', () => {
     try {
-      calculateTypeScale('32fx');
+      generateTypeScale('32fx');
     } catch (e) {
       expect(e).toBeDefined();
     }
   });
 
   it('should return fontSize and lineHeight', () => {
-    const foo = calculateTypeScale('32px');
+    const foo = generateTypeScale('32px');
     expect(foo.lineHeight).toBe(1.375);
     expect(foo.fontSize).toBe('2rem');
   });

@@ -6,9 +6,9 @@ export const color = {
    */
   brand: '#d5001c',
   default: '#000',
-  surface: '#f2f2f2',
   background: {
     default: '#fff',
+    surface: '#f2f2f2',
     shading: 'rgba(14, 20, 24, 0.9)'
   },
   neutralContrast: {
@@ -34,9 +34,9 @@ export const color = {
   darkTheme: {
     brand: '#d5001c',
     default: '#fff',
-    surface: '#1a2023',
     background: {
       default: '#0e1418',
+      surface: '#1a2023',
       shading: 'rgba(14, 20, 24, 0.9)'
     },
     neutralContrast: {

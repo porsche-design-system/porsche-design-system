@@ -261,68 +261,68 @@ impact on the origin character of the company typeface. This includes:
     }
     
     &.f-18 {
-      @include p-calculate-type-scale(18px);
+      @include p-generate-type-scale(18px);
     }
     
     &.f-20 {
-      @include p-calculate-type-scale(20px);
+      @include p-generate-type-scale(20px);
     }
     
     &.f-22 {
-      @include p-calculate-type-scale(22px);
+      @include p-generate-type-scale(22px);
     }
     
     &.f-28 {
-      @include p-calculate-type-scale(28px);
+      @include p-generate-type-scale(28px);
     }
     
     &.f-30 {
-      @include p-calculate-type-scale(30px);
+      @include p-generate-type-scale(30px);
     }
     
     &.f-32 {
-      @include p-calculate-type-scale(32px);
+      @include p-generate-type-scale(32px);
     }
     
     &.f-42 {
-      @include p-calculate-type-scale(42px);
+      @include p-generate-type-scale(42px);
     }
     
     &.f-44 {
-      @include p-calculate-type-scale(44px);
+      @include p-generate-type-scale(44px);
     }
     
     &.f-48 {
-      @include p-calculate-type-scale(48px);
+      @include p-generate-type-scale(48px);
     }
     
     &.f-60 {
-      @include p-calculate-type-scale(60px);
+      @include p-generate-type-scale(60px);
     }
     
     &.f-62 {
-      @include p-calculate-type-scale(62px);
+      @include p-generate-type-scale(62px);
     }
     
     &.f-72 {
-      @include p-calculate-type-scale(72px);
+      @include p-generate-type-scale(72px);
     }
     
     &.f-84 {
-      @include p-calculate-type-scale(84px);
+      @include p-generate-type-scale(84px);
     }
   }
 </style>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import { convertLineHeight } from '@porsche-design-system/utilities';
+  import { calculateLineHeight } from '@porsche-design-system/utilities';
   
   @Component
   export default class PlaygroundTypography extends Vue {
     public size: string = '16';
     public typeScale(fontSize: string, comment: boolean = true): string {
-      const fittedLineHeightFactor = convertLineHeight(fontSize);
+      const fittedLineHeightFactor = calculateLineHeight(fontSize);
       const fittedLineHeightPx = Math.round(fontSize.slice(0, -2) * fittedLineHeightFactor);
       const fontSizeRem = fontSize.slice(0, -2) / 16;
       

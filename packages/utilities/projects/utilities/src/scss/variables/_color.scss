@@ -8,11 +8,10 @@ $p-color-theme-light-brand: $p-color-brand;
 $p-color-default: #000;
 $p-color-theme-light-default: $p-color-default;
 
-$p-color-surface: #f2f2f2;
-$p-color-theme-light-surface: $p-color-surface;
-
 $p-color-background-default: #fff;
 $p-color-theme-light-background: $p-color-background-default;
+$p-color-background-surface: #f2f2f2;
+$p-color-theme-light-surface: $p-color-background-surface;
 $p-color-background-shading: rgba(#0e1418, 0.9);
 $p-color-theme-light-background-shading: $p-color-background-shading;
 
@@ -49,9 +48,8 @@ $p-color-theme-dark-brand: #d5001c;
 
 $p-color-theme-dark-default: #fff;
 
-$p-color-theme-dark-surface: #1a2023;
-
 $p-color-theme-dark-background-default: #0e1418;
+$p-color-theme-dark-background-surface: #1a2023;
 $p-color-theme-dark-background-shading: rgba($p-color-theme-dark-background-default, 0.9);
 
 $p-color-theme-dark-neutral-contrast-high: #e3e4e5;

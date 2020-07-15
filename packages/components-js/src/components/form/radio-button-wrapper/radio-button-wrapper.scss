@@ -1,5 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 @mixin p-radio-button-wrapper-label-text-visible() {
   position: static;
@@ -104,7 +104,7 @@
       @include p-radio-button-wrapper-label-text-hidden;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &--visible-xs {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -114,7 +114,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &--visible-s {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -124,7 +124,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &--visible-m {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -134,7 +134,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &--visible-l {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -144,7 +144,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &--visible-xl {
         @include p-radio-button-wrapper-label-text-visible;
       }

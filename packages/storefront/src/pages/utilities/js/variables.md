@@ -23,9 +23,9 @@ A light (default) and dark theme is available depending on which background it's
 
 |                                                 |                |                                                             |
 | ----------------------------------------------- | -------------- | ----------------------------------------------------------- |
-| <ColorBadge :theme="theme" color="background"/> | **Background** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background` |
-| <ColorBadge :theme="theme" color="background-shading"/>    | **Background Shading**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}backgroundShading`    |
-| <ColorBadge :theme="theme" color="surface"/>    | **Surface**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}surface`    |
+| <ColorBadge :theme="theme" color="background-default"/>    | **Default**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.default` |
+| <ColorBadge :theme="theme" color="background-surface"/>    | **Surface**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.surface`    |
+| <ColorBadge :theme="theme" color="background-shading"/>    | **Shading**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.shading`    |
 
 #### Text / icon color
 

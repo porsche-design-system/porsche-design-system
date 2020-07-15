@@ -75,13 +75,13 @@
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
-  @import 'src/styles/pds-internal.variables';
+  @import '../styles/internal.variables';
 
   .teaser {
     &:first-child {
       margin-top: -$p-spacing-32;
 
-      @include p-breakpoint('s') {
+      @include p-media-query('s') {
         margin-top: -$p-spacing-64;
       }
     }
@@ -91,7 +91,7 @@
       right: -$p-spacing-32;
     }
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -123,7 +123,7 @@
     }
     padding: $p-spacing-32;
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -150,7 +150,7 @@
     &:last-child {
       margin-bottom: -$p-spacing-32;
 
-      @include p-breakpoint('s') {
+      @include p-media-query('s') {
         margin-bottom: -$p-spacing-64;
       }
     }
@@ -162,7 +162,7 @@
     padding: $p-spacing-32;
     background: $p-color-theme-light-surface;
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;

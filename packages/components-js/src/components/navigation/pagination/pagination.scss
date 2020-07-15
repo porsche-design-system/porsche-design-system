@@ -1,5 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -20,7 +20,7 @@
       counter-reset: size 7;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-5-xs {
         counter-reset: size 5;
       }
@@ -29,7 +29,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-5-s {
         counter-reset: size 5;
       }
@@ -38,7 +38,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-5-m {
         counter-reset: size 5;
       }
@@ -47,7 +47,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-5-l {
         counter-reset: size 5;
       }
@@ -56,7 +56,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-5-xl {
         counter-reset: size 5;
       }
