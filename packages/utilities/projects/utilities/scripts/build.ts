@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import globby from 'globby';
 import { CDN_BASE_URL, FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { buildStyles } from './styles';
+import { buildStyle } from './style';
 
 const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   try {
@@ -14,18 +14,15 @@ const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
 };
 
 const createGlobalCSS = async (files: string[]): Promise<void> => {
-  if (await checkIfDirectoryExists(path.resolve('./dist'))) {
-    await fs.promises.rmdir(path.resolve('./dist'), { recursive: true });
-  }
-  fs.mkdirSync(path.resolve('./dist/global-css'), { recursive: true });
+  fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
 
-  buildStyles({
+  buildStyle({
     baseUrl: 'http://localhost:3001/fonts',
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: false
   });
 
-  const fontFaceFileNameCdn = buildStyles({
+  const fontFaceCdnFileName = buildStyle({
     baseUrl: CDN_BASE_URL,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true
@@ -40,7 +37,7 @@ const createGlobalCSS = async (files: string[]): Promise<void> => {
     oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
   )}${separator}
 
-export const FONT_FACE_CSS_NAME = "${fontFaceFileNameCdn}";`;
+export const FONT_FACE_CSS_NAME = "${fontFaceCdnFileName}";`;
 
   fs.writeFileSync(targetFile, newContent);
 };

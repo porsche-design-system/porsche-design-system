@@ -10,7 +10,7 @@ type Options = {
 };
 
 const prepareFontFaceVariables = (opts: Options): void => {
-  const file = path.normalize('./src/global-css/font-face.variables.scss');
+  const file = path.normalize('./src/style/font-face.variables.scss');
 
   const { baseUrl, fontsManifest } = opts;
 
@@ -56,22 +56,22 @@ const toHash = (str: string): string =>
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('node-sass');
 
-  const scssPath = path.resolve(__dirname, '../src/global-css/font-face.scss');
+  const scssPath = path.resolve(__dirname, '../src/style/style.scss');
   const result = sass.renderSync({
     file: scssPath,
     outputStyle: 'compressed'
   });
 
   const hash = opts.addContentBasedHash ? `.${toHash(result.css)}` : '';
-  const filename = `font-face.min${hash}.css`;
-  const targetPath = path.normalize(`./dist/global-css/${filename}`);
+  const filename = `style.min${hash}.css`;
+  const targetPath = path.normalize(`./dist/style/${filename}`);
 
   fs.writeFileSync(targetPath, result.css);
 
   return filename;
 };
 
-export function buildStyles(opts: Options): string {
+export function buildStyle(opts: Options): string {
   prepareFontFaceVariables(opts);
   return compileFontFaceScss(opts);
 }
