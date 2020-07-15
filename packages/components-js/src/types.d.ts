@@ -1,13 +1,11 @@
 // common type definitions
-import { Theme } from '@porsche-design-system/utilities';
-
 export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
 export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
 
-export type ComponentTheme = Theme;
+export type Theme = 'light' | 'dark';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 

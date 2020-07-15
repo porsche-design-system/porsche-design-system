@@ -7,7 +7,7 @@ import {
   prefix,
   transitionListener
 } from '../../../utils';
-import { ButtonType, IconName, TextSize, TextWeight, ComponentTheme } from '../../../types';
+import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 
@@ -47,7 +47,7 @@ export class ButtonPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ComponentTheme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;

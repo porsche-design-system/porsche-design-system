@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix, insertSlottedStyles } from '../../../../utils';
-import { HeadlineVariant, ComponentTheme } from '../../../../types';
+import { HeadlineVariant, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -28,7 +28,7 @@ export class Headline {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: ComponentTheme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   public componentWillLoad(): void {
     this.addSlottedStyles();
