@@ -8,41 +8,53 @@ import {
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
-    const testValue = pxToRem('16px');
-    expect(testValue).toEqual('1rem');
+    expect(pxToRem('16px')).toEqual('1rem');
+    expect(pxToRem('32.5px')).toEqual('2.03125rem');
+    expect(pxToRem('20px')).toEqual('1.25rem');
   });
 
-  it('should return correct rem value decimal px', () => {
-    const testValue2 = pxToRem('32.5px');
-    expect(testValue2).toEqual('2.03125rem');
+  it('should throw error if called with wrong unit', (done) => {
+    try {
+      pxToRem('2rem');
+    } catch (e) {
+      expect((e as Error).message).toBeDefined();
+      done();
+    }
   });
 
-  it('should return correct rem value decimal rem return', () => {
-    const testValue3 = pxToRem('20px');
-    expect(testValue3).toEqual('1.25rem');
+  it('should throw error if called with 0 value', (done) => {
+    try {
+      pxToRem('0rem');
+    } catch (e) {
+      expect((e as Error).message).toBeDefined();
+      done();
+    }
   });
 });
 
 describe('remToPx()', () => {
-  it('should throw error if called with wrong unit', () => {
+  it('should convert rem to px', () => {
+    expect(remToPx('1rem')).toBe('16px');
+    expect(remToPx('1.5rem')).toBe('24px');
+    expect(remToPx('1.6rem')).toBe('25.6px');
+  });
+
+  it('should throw error if called with wrong unit', (done) => {
     try {
       remToPx('2px');
     } catch (e) {
       expect((e as Error).message).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with 0 value', () => {
+  it('should throw error if called with 0 value', (done) => {
     try {
       remToPx('0rem');
     } catch (e) {
       expect((e as Error).message).toBeDefined();
+      done();
     }
-  });
-
-  it('should convert rem to px', () => {
-    const pxValue = remToPx('1rem');
-    expect(pxValue).toBe('16px');
   });
 });
 
@@ -66,19 +78,21 @@ describe('generateFontDefinition()', () => {
 });
 
 describe('calculateLineHeight()', () => {
-  it('should throw error if called with wrong unit', () => {
+  it('should throw error if called with wrong unit', (done) => {
     try {
       calculateLineHeight('2bs');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with wrong 0 as value', () => {
+  it('should throw error if called with wrong 0 as value', (done) => {
     try {
       calculateLineHeight('0rem');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
@@ -174,25 +188,27 @@ describe('calculateLineHeight()', () => {
 });
 
 describe('generateTypeScale()', () => {
-  it('should throw error if called with undefined', () => {
+  it('should throw error if called with undefined', (done) => {
     try {
       generateTypeScale(undefined!);
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with wrong unit', () => {
+  it('should throw error if called with wrong unit', (done) => {
     try {
       generateTypeScale('32fx');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
   it('should return fontSize and lineHeight', () => {
-    const foo = generateTypeScale('32px');
-    expect(foo.lineHeight).toBe(1.375);
-    expect(foo.fontSize).toBe('2rem');
+    const typeScale = generateTypeScale('32px');
+    expect(typeScale.lineHeight).toBe(1.375);
+    expect(typeScale.fontSize).toBe('2rem');
   });
 });
