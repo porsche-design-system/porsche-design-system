@@ -48,7 +48,7 @@ Just drop the JS snippet at the end of the `body` tag of your application.
 
 ...
 
-<script src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+<script async src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
 </body>
 ```
 
