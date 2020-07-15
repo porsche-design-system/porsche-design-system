@@ -13,7 +13,7 @@ const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   }
 };
 
-const createGlobalCSS = async (files: string[]): Promise<void> => {
+const createGlobalCSS = async (cdn: string, files: string[]): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
 
   buildStyle({
@@ -37,15 +37,16 @@ const createGlobalCSS = async (files: string[]): Promise<void> => {
     oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
   )}${separator}
 
-export const FONT_FACE_CSS_NAME = "${fontFaceCdnFileName}";`;
+export const STYLE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";`;
 
   fs.writeFileSync(targetFile, newContent);
 };
 
 (async (): Promise<void> => {
+  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/style';
   const files = await globby('./src/**/*.@(woff|woff2)');
 
-  await createGlobalCSS(files).catch((e) => {
+  await createGlobalCSS(cdn, files).catch((e) => {
     console.error(e);
     process.exit(1);
   });
