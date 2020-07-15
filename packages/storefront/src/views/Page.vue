@@ -122,7 +122,7 @@
     }
 
     .tab {
-      @include p-type-scale($p-font-size-28);
+      @include p-calculate-type-scale($p-font-size-28);
 
       &:not(:last-child) {
         margin-right: $p-spacing-40;
