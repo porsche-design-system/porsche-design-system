@@ -3,15 +3,15 @@
 ## generateTypeScale(fontSize)
 
 Calculates font-size and line-height to fit into Porsche Vertical Grid System. 
-The `fonzSize` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
+The `fontSize` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
 
 ```
-import { typeScale } from '@porsche-design-system/utilities';
+import { generateTypeScale } from '@porsche-design-system/utilities';
 
 const StyledP = styled.p`
-  typeScale('32px');
+  generateTypeScale('32px');
 `
 ```
 

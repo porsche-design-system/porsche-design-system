@@ -111,13 +111,13 @@ render (
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
-The predefined variables for `title`, `headline` and `pdsFont` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
+The predefined variables for `text` and `headline` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
 You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
 ### Text
 
 Given values are:  
-`text.xsmall | text.small | text.medium | text.large | text.xlarge`
+`text.xSmall | text.small | text.medium | text.large | text.xLarge`
 
 #### Example
 

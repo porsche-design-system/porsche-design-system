@@ -36,7 +36,7 @@ export class Headline {
 
   public render(): JSX.Element {
     const variantToTagMap: { [key in HeadlineVariant]: string } = {
-      'large-title': 'h1',
+      'title-large': 'h1',
       'headline-1': 'h1',
       'headline-2': 'h2',
       'headline-3': 'h3',

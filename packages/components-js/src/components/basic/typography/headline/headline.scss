@@ -21,8 +21,8 @@
   margin: 0;
 
   &--variant {
-    &-large-title {
-      @include p-large-title;
+    &-title-large {
+      @include p-title-large;
     }
 
     &-headline-1 {
