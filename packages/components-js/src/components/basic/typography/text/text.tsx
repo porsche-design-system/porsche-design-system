@@ -6,7 +6,7 @@ import {
   prefix,
   transitionListener
 } from '../../../../utils';
-import { TextSize, TextWeight, Theme } from '../../../../types';
+import { TextSize, TextWeight, ComponentTheme } from '../../../../types';
 import { insertSlottedStyles } from '../../../../utils/slotted-styles';
 
 @Component({
@@ -46,7 +46,7 @@ export class Text {
   @Prop() public ellipsis?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ComponentTheme = 'light';
 
   private textTag: HTMLElement;
 

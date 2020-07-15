@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses
 } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { LinkTarget, Theme } from '../../../types';
+import { LinkTarget, ComponentTheme } from '../../../types';
 
 @Component({
   tag: 'p-link-social',
@@ -56,7 +56,7 @@ export class LinkSocial {
   @Prop() public href?: string = undefined;
 
   /** Adapts the icon color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ComponentTheme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

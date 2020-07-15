@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
 import cx from 'classnames';
 import { prefix } from '../../../../utils';
-import { Theme } from '../../../../types';
+import { ComponentTheme } from '../../../../types';
 
 @Component({
   tag: 'p-text-list',
@@ -19,7 +19,7 @@ export class TextList {
   @Prop({reflect: true}) public orderType?: 'numbered' | 'alphabetically' = 'numbered';
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ComponentTheme = 'light';
 
   public render(): JSX.Element {
 

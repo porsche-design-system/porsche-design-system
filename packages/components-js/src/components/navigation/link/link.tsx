@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
-import { IconName, LinkTarget, Theme } from '../../../types';
+import { IconName, LinkTarget, ComponentTheme } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -25,7 +25,7 @@ export class Link {
   @Prop() public href?: string = undefined;
 
   /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ComponentTheme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
