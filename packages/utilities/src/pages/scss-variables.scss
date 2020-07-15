@@ -16,11 +16,11 @@
   &--color-theme-light-default {
     background: $p-color-default;
   }
-  &--color-theme-light-surface {
-    background: $p-color-background-surface;
-  }
-  &--color-theme-light-background {
+  &--color-theme-light-background-default {
     background: $p-color-background-default;
+  }
+  &--color-theme-light-background-surface {
+    background: $p-color-background-surface;
   }
   &--color-theme-light-background-shading {
     background: $p-color-background-shading;
@@ -64,11 +64,11 @@
   &--color-theme-dark-default {
     background: $p-color-theme-dark-default;
   }
-  &--color-theme-dark-surface {
-    background: $p-color-theme-dark-background-surface;
-  }
-  &--color-theme-dark-background {
+  &--color-theme-dark-background-default {
     background: $p-color-theme-dark-background-default;
+  }
+  &--color-theme-dark-background-surface {
+    background: $p-color-theme-dark-background-surface;
   }
   &--color-theme-dark-background-shading {
     background: $p-color-theme-dark-background-shading;
