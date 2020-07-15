@@ -169,8 +169,5 @@ describe('typeScale()', () => {
     const foo = calculateTypeScale('32px');
     expect(foo.lineHeight).toBe(1.375);
     expect(foo.fontSize).toBe('2rem');
-    const test = calculateTypeScale('1rem');
-    expect(test.fontSize).toBe('1rem');
-    expect(test.lineHeight).toBe(1.375);
   });
 });
