@@ -101,6 +101,7 @@
 
 <style scoped lang="scss">
   @import "~@porsche-design-system/utilities/scss";
+  @import 'src/styles/pds-internal.variables';
 
   .tabs {
     position: relative;

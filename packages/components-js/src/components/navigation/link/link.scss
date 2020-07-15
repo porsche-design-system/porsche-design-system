@@ -1,4 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/pds-internal.variables';
 
 @mixin p-link-with-label() {
   padding: p-rem(11px) p-rem(15px) p-rem(11px) p-rem(39px);
