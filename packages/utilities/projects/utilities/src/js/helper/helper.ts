@@ -1,15 +1,15 @@
-import { FontSizeLineHeight } from '../variables';
+import { font, FontSizeLineHeight, FontWeight } from '../variables';
+import * as CSS from 'csstype';
 
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
-
-export const remBase = 16;
+const REM_BASE = 16;
 
 export const pxToRem = (px: string): string => {
   const [, fontSizeValue, fontSizeUnit] = px?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit !== 'px' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 16px');
   } else {
-    return `${parseFloat(`${fontSizeValue}`) / remBase}rem`;
+    return `${parseFloat(`${fontSizeValue}`) / REM_BASE}rem`;
   }
 };
 
@@ -18,8 +18,20 @@ export const remToPx = (rem: string): string => {
   if (fontSizeUnit !== 'rem' || fontSizeValue === '0') {
     throw new Error('function only accepts value in rem and not 0, e.g. 1.5rem');
   } else {
-    return `${parseFloat(`${fontSizeValue}`) * remBase}px`;
+    return `${parseFloat(`${fontSizeValue}`) * REM_BASE}px`;
   }
+};
+
+// generates static font definitions
+export const generateFontDefinition = (fontSize: string, fontWeight: FontWeight): Pick<CSS.Properties, 'fontFamily' | 'fontWeight' | 'fontSize' | 'lineHeight'> => {
+  const { family, weight } = font;
+  const fontSizeAndLineHeight = calculateTypeScale(fontSize);
+
+  return {
+    fontFamily: family,
+    fontWeight: weight[fontWeight],
+    ...fontSizeAndLineHeight
+  };
 };
 
 export const calculateTypeScale = (fontSize: string): FontSizeLineHeight => {
@@ -33,11 +45,11 @@ export const calculateTypeScale = (fontSize: string): FontSizeLineHeight => {
 
   return {
     fontSize: convertedFontSize,
-    lineHeight: convertLineHeight(fontSize)
+    lineHeight: calculateLineHeight(fontSize)
   };
 };
 
-export const convertLineHeight = (fontSize: string): number => {
+export const calculateLineHeight = (fontSize: string): number => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
     throw new Error(`font size needs to be value + px or rem and not 0, e.g. 15rem or 16px, received: '${fontSize}'`);

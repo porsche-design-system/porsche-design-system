@@ -12,23 +12,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: p-rem(24px);
-  height: p-rem(24px);
+  width: p-px-to-rem(24px);
+  height: p-px-to-rem(24px);
 
   &--size {
     &-small {
-      width: p-rem(24px);
-      height: p-rem(24px);
+      width: p-px-to-rem(24px);
+      height: p-px-to-rem(24px);
     }
 
     &-medium {
-      width: p-rem(36px);
-      height: p-rem(36px);
+      width: p-px-to-rem(36px);
+      height: p-px-to-rem(36px);
     }
 
     &-large {
-      width: p-rem(48px);
-      height: p-rem(48px);
+      width: p-px-to-rem(48px);
+      height: p-px-to-rem(48px);
     }
 
     &-inherit {

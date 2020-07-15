@@ -32,8 +32,8 @@
   position: absolute !important;
   top: -1px !important; // -1px because of focus box-shadow position
   left: -1px !important;
-  width: p-rem(26px) !important; // 2px wider to enable rounded focus style
-  height: p-rem(26px) !important;
+  width: p-px-to-rem(26px) !important; // 2px wider to enable rounded focus style
+  height: p-px-to-rem(26px) !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -156,8 +156,8 @@
 
   &__fake-radio-button {
     position: relative;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
     display: block;
     flex-shrink: 0;
     border-radius: 50%;
@@ -173,8 +173,8 @@
 
     &::before {
       content: "";
-      width: p-rem(16px);
-      height: p-rem(16px);
+      width: p-px-to-rem(16px);
+      height: p-px-to-rem(16px);
       border-radius: 50%;
       background-color: transparent;
       position: absolute;

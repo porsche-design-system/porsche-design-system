@@ -3,7 +3,7 @@
 @mixin p-link-pure-label-visible() {
   width: 100%;
   height: auto;
-  margin-left: p-rem(4px);
+  margin-left: p-px-to-rem(4px);
   padding: 0 .125em 0 0;
   white-space: normal;
   overflow: visible;
@@ -34,8 +34,8 @@
     @include p-calculate-type-scale($size);
 
     & #{$prefix}__icon {
-      width: #{p-line-height($size)}em;
-      height: #{p-line-height($size)}em;
+      width: #{p-calculate-line-height($size)}em;
+      height: #{p-calculate-line-height($size)}em;
     }
 
     + * {
@@ -43,35 +43,35 @@
         @include p-calculate-type-scale($size);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-small {
         @include p-calculate-type-scale($size);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-medium {
         @include p-calculate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-large {
         @include p-calculate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-x-large {
         @include p-calculate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else {

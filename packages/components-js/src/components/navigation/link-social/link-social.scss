@@ -1,7 +1,7 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 
 @mixin p-link-social-with-label() {
-  padding: p-rem(12px) p-rem(16px) p-rem(12px) p-rem(40px);
+  padding: p-px-to-rem(12px) p-px-to-rem(16px) p-px-to-rem(12px) p-px-to-rem(40px);
 }
 
 @mixin p-link-social-without-label() {
@@ -31,8 +31,8 @@
 }
 
 @mixin p-link-social-icon-with-label() {
-  left: p-rem(12px);
-  top: p-rem(12px);
+  left: p-px-to-rem(12px);
+  top: p-px-to-rem(12px);
   transform: translateX(0) translateY(0);
 }
 
@@ -79,8 +79,8 @@
   $bem-block: &;
   display: flex;
   width: 100%;
-  min-width: p-rem(48px);
-  min-height: p-rem(48px);
+  min-width: p-px-to-rem(48px);
+  min-height: p-px-to-rem(48px);
   position: relative;
   margin: 0;
   padding: 0;
@@ -368,7 +368,7 @@
 
   &__icon {
     position: absolute;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
   }
 }

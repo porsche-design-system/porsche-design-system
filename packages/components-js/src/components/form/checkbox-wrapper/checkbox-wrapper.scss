@@ -176,8 +176,8 @@
 
   &__fake-checkbox {
     position: relative;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
     display: block;
     flex-shrink: 0;
     background-color: $p-color-theme-light-background;

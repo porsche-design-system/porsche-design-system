@@ -8,15 +8,15 @@
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--unordered) {
-  padding-left: p-rem(24px) !important;
+  padding-left: p-px-to-rem(24px) !important;
 
   &::before {
     content: '' !important;
     position: absolute !important;
     left: 0 !important;
     top: calc(1.5em / 2 - 0.125em) !important;
-    width: p-rem(4px) !important;
-    height: p-rem(4px) !important;
+    width: p-px-to-rem(4px) !important;
+    height: p-px-to-rem(4px) !important;
     background-color: currentColor !important;
   }
 }
@@ -24,13 +24,13 @@
 :host(.#{$p-global-class-prefix}text-list-item--unordered.#{$p-global-class-prefix}text-list-item--nested) {
   &::before {
     height: 1px !important;
-    width: p-rem(8px) !important;
+    width: p-px-to-rem(8px) !important;
     top: calc(1.5em / 2) !important;
   }
 }
 
 :host(.#{$p-global-class-prefix}text-list-item--ordered) {
-  padding-left: p-rem(40px) !important;
+  padding-left: p-px-to-rem(40px) !important;
 
   &::before {
     position: absolute !important;

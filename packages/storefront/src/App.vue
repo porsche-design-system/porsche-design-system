@@ -321,7 +321,7 @@
         top: 0;
         left: 0;
         bottom: 0;
-        width: p-rem(280px);
+        width: p-px-to-rem(280px);
         padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
         border-right: 1px solid $p-color-theme-light-neutral-contrast-low;
         background: $p-color-theme-light-background;
@@ -331,7 +331,7 @@
 
         @include p-breakpoint('xxs', 's') {
           opacity: 0;
-          transform: translate3d(p-rem(-140px), 0, 0);
+          transform: translate3d(p-px-to-rem(-140px), 0, 0);
           transition: transform .3s, opacity .3s;
         }
 
@@ -361,12 +361,12 @@
         }
 
         @include p-breakpoint('s') {
-          left: p-rem(280px);
+          left: p-px-to-rem(280px);
         }
 
         &.is-menu-active {
           @include p-breakpoint('xxs', 's') {
-            transform: translate3d(p-rem(280px), 0, 0);
+            transform: translate3d(p-px-to-rem(280px), 0, 0);
           }
         }
 
