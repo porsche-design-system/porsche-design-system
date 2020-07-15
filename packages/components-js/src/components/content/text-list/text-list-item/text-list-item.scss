@@ -38,7 +38,7 @@
     top: 0 !important;
     counter-increment: section !important;
     text-align: right !important;
-    @include p-text;
+    @include p-text-small;
   }
 }
 

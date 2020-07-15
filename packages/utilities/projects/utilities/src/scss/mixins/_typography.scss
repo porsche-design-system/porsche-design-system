@@ -2,10 +2,24 @@
 @import "../functions/index";
 @import "./media-query";
 
+@mixin p-text-x-small {
+  @include p-generate-font-definition($p-font-size-x-small, $p-font-weight-regular)
+}
+@mixin p-text-small {
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-regular)
+}
+@mixin p-text-medium {
+  @include p-generate-font-definition($p-font-size-medium, $p-font-weight-regular)
+}
+@mixin p-text-large {
+  @include p-generate-font-definition($p-font-size-large, $p-font-weight-regular)
+}
+@mixin p-text-x-large {
+  @include p-generate-font-definition($p-font-size-x-large, $p-font-weight-regular)
+}
+
 @mixin p-large-title {
-  @include p-type-scale($p-font-size-32);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-32, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-42);
@@ -25,9 +39,7 @@
 }
 
 @mixin p-headline-1 {
-  @include p-type-scale($p-font-size-28);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-28, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-36);
@@ -47,9 +59,7 @@
 }
 
 @mixin p-headline-2 {
-  @include p-type-scale($p-font-size-24);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-24, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-30);
@@ -69,9 +79,7 @@
 }
 
 @mixin p-headline-3 {
-  @include p-type-scale($p-font-size-20);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-20, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-24);
@@ -91,9 +99,7 @@
 }
 
 @mixin p-headline-4 {
-  @include p-type-scale($p-font-size-16);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-16, $p-font-weight-semibold);
 
   @include p-media-query("s", "m") {
     @include p-type-scale($p-font-size-18);
@@ -113,12 +119,10 @@
 }
 
 @mixin p-headline-5 {
-  @include p-type-scale($p-font-size-16);
-  font-family: $p-font-primary;
-  font-weight: $p-font-weight-semibold;
+  @include p-generate-font-definition($p-font-size-16, $p-font-weight-semibold);
 }
 
-@mixin p-text($size: $p-text-size-small, $weight: $p-font-weight-regular) {
+@mixin p-generate-font-definition($size: $p-font-size-small, $weight: $p-font-weight-regular) {
   @include p-type-scale($size);
   font-family: $p-font-primary;
   font-weight: $weight;

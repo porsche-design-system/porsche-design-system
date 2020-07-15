@@ -2,17 +2,17 @@ import { font, FontWeight } from '../variables';
 import { mediaQuery } from './media-query';
 import { calculateTypeScale } from '../helper';
 
-const basePdsFont = {
+const baseText = {
   fontFamily: font.family,
   fontWeight: font.weight.regular
 };
 
-export const pdsFont = {
-  xSmall: { ...basePdsFont, ...font.size.xSmall },
-  small: { ...basePdsFont, ...font.size.small },
-  medium: { ...basePdsFont, ...font.size.medium },
-  large: { ...basePdsFont, ...font.size.large },
-  xLarge: { ...basePdsFont, ...font.size.xLarge }
+export const text = {
+  xSmall: { ...baseText, ...font.size.xSmall },
+  small: { ...baseText, ...font.size.small },
+  medium: { ...baseText, ...font.size.medium },
+  large: { ...baseText, ...font.size.large },
+  xLarge: { ...baseText, ...font.size.xLarge }
 };
 
 export const title = {
@@ -71,7 +71,8 @@ export const headline = {
   }
 };
 
-export const text = (fontSize?: string, fontWeight?: FontWeight) => {
+// generates static font definitions. We could enhance it and make it responsive if needed
+export const generateFontDefinition = (fontSize?: string, fontWeight?: FontWeight) => {
   const { family, size, weight } = font;
   const fontSizeAndLineHeight = fontSize ? calculateTypeScale(fontSize) : size.small;
 

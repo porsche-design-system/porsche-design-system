@@ -1,4 +1,4 @@
-import { color, Color, FontSizeLineHeight, Theme } from '../variables';
+import { FontSizeLineHeight } from '../variables';
 
 const FONT_SIZE_REGEX = /^(\d+\.?\d*)(rem|px)$/;
 
@@ -59,40 +59,3 @@ export const convertLineHeight = (fontSize: string): number => {
   const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
   return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;
 };
-
-type AllColor = Omit<Color, 'darkTheme'>;
-type RootColorKey = keyof Omit<AllColor, 'state' | 'notification' | 'neutralContrast' | 'external'>;
-type ChildrenColorKey = keyof Pick<AllColor, 'state' | 'notification' | 'neutralContrast'>;
-type ExternalColorKey = keyof Pick<AllColor, 'external'>;
-
-export function getHexColor(pdsColor: RootColorKey, theme?: Theme): string;
-export function getHexColor<K extends ChildrenColorKey, L extends keyof AllColor[K]>(
-  fontColor: K,
-  specification: L,
-  theme?: Theme
-): string;
-export function getHexColor<K extends ExternalColorKey, L extends keyof AllColor[K]>(
-  fontColor: K,
-  specification: L
-): string;
-export function getHexColor(
-  fontColor: RootColorKey | ChildrenColorKey,
-  specificationOrTheme: any | Theme = 'light',
-  theme: Theme = 'light'
-): string {
-  let hexCode: string;
-
-  if (specificationOrTheme !== 'light' && specificationOrTheme !== 'dark') {
-    hexCode = color[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
-    if (theme === 'dark') {
-      hexCode = color.darkTheme[fontColor][specificationOrTheme as keyof AllColor[ChildrenColorKey]];
-    }
-  } else {
-    if (specificationOrTheme === 'dark') {
-      hexCode = color.darkTheme[fontColor as RootColorKey];
-    } else {
-      hexCode = color[fontColor as RootColorKey];
-    }
-  }
-  return hexCode;
-}

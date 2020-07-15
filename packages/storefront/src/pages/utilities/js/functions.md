@@ -114,6 +114,31 @@ render (
 The predefined variables for `title`, `headline` and `pdsFont` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
 You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
+### Text
+
+Given values are:  
+`text.xsmall | text.small | text.medium | text.large | text.xlarge`
+
+#### Example
+
+```
+import { text } from '@porsche-design-system/utilities';
+
+const PTextSmall = styled.p`
+  ${text.small}
+`;
+```
+
+#### Result
+
+```
+PHeadline style = {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+```
 
 ### Headline
 
@@ -169,35 +194,9 @@ PHeadline style = {
 }
 ```
 
-### Porsche Design System Font
+### Generic font definition
 
-Given variables are:
-`xSmall | small | medium | large | xLarge`
-
-#### Example
-
-```
-import { pdsFont } from '@porsche-design-system/utilities';
-
-const fontSmall = styled.p`
-  ${pdsFont.small}
-`;
-```
-
-#### Result
-
-```
-fontSmall style = {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  fontSize: '1rem', 
-  lineHeight: 1.66667
-}
-```
-
-### Text
-
-With the `text()` function it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `fontSize` and `fontWeight`.
+With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by passing two parameters as variables for `fontSize` and `fontWeight`.
 The `fontSize` is freely selectable, for the `fontWeight` one of the predefined weight values must be chosen.
 
 Predefined size values are:  
@@ -211,10 +210,10 @@ Default is `font.size.small` and `font.weight.regular`.
 #### Example standard usage
 
 ```
-import { text } from '@porsche-design-system/utilities';
+import { generateFontDefinition } from '@porsche-design-system/utilities';
 
 const StyledText = styled.p`
-  ${text()};
+  ${generateFontDefinition()};
 `
 ```
 
@@ -231,10 +230,10 @@ p {
 #### Example with specific parameters
 
 ```
-import { text } from '@porsche-design-system/utilities';
+import { generateFontDefinition } from '@porsche-design-system/utilities';
 
 const StyledText = styled.p`
-  ${text('large', 'thin')};
+  ${generateFontDefinition('large', 'thin')};
 `
 ```
 
