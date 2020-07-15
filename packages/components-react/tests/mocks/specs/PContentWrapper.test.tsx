@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PContentWrapper } from '../../../projects/components-wrapper/src';
+import { PContentWrapper } from '@porsche-design-system/components-react';
 
 describe('PContentWrapper', () => {
   it('should render PContentWrapper children', () => {
@@ -8,8 +8,8 @@ describe('PContentWrapper', () => {
     expect(getByText('ContentWrapperChild')).toBeDefined();
   });
 
-  it('should render TagName of component', ()=> {
-    const {container} = render(<PContentWrapper/>);
+  it('should render TagName of component', () => {
+    const { container } = render(<PContentWrapper />);
     expect(container.getElementsByTagName('p-content-wrapper')).toBeTruthy();
   });
 });

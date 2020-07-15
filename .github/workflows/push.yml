@@ -150,11 +150,6 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Mock Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-mocks
-          args: --components-react
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
@@ -169,6 +164,11 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --components-react
+      - name: 'Mock Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-mocks
           args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
