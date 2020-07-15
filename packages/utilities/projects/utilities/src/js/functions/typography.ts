@@ -2,12 +2,17 @@ import { font, FontWeight } from '../variables';
 import { mediaQuery } from './media-query';
 import { calculateTypeScale } from '../helper';
 
+const basePdsFont = {
+  fontFamily: font.family,
+  fontWeight: font.weight.regular
+};
+
 export const pdsFont = {
-  xSmall: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.xSmall },
-  small: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.small },
-  medium: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.medium },
-  large: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.large },
-  xLarge: { fontFamily: font.family, fontWeight: font.weight.regular, ...font.size.xLarge }
+  xSmall: { ...basePdsFont, ...font.size.xSmall },
+  small: { ...basePdsFont, ...font.size.small },
+  medium: { ...basePdsFont, ...font.size.medium },
+  large: { ...basePdsFont, ...font.size.large },
+  xLarge: { ...basePdsFont, ...font.size.xLarge }
 };
 
 export const title = {
