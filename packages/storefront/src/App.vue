@@ -131,7 +131,7 @@
       margin: $p-spacing-24 0;
   }
 
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     .spacing-mt-0-min-m {
       margin-top: 0;
     }
@@ -141,7 +141,7 @@
   .form-top-spacing {
     margin-top: $p-spacing-48;
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       margin-top: $p-spacing-64;
     }
   }
@@ -150,7 +150,7 @@
   .form-bottom-spacing {
     padding-bottom: $p-spacing-64;
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       padding-bottom: $p-spacing-80;
     }
   }
@@ -159,7 +159,7 @@
   .form-section-spacing {
     margin-top: $p-spacing-40;
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       margin-top: $p-spacing-48;
     }
   }
@@ -167,7 +167,7 @@
   // form row spacing
   .form-row-spacing {
     margin-top: $p-spacing-16;
-    @include p-breakpoint('xs') {
+    @include p-media-query('xs') {
       &--xs {
         margin-top: $p-spacing-16;
       }
@@ -176,7 +176,7 @@
       }
     }
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       &--s {
         margin-top: $p-spacing-16;
       }
@@ -185,7 +185,7 @@
       }
     }
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       &--m {
         margin-top: $p-spacing-16;
       }
@@ -194,7 +194,7 @@
       }
     }
 
-    @include p-breakpoint('l') {
+    @include p-media-query('l') {
       &--l {
         margin-top: $p-spacing-16;
       }
@@ -203,7 +203,7 @@
       }
     }
 
-    @include p-breakpoint('xl') {
+    @include p-media-query('xl') {
       &--xl {
         margin-top: $p-spacing-16;
       }
@@ -233,7 +233,7 @@
       width: auto;
     }
 
-    @include p-breakpoint('xs') {
+    @include p-media-query('xs') {
       &--full-xs {
         width: 100%;
       }
@@ -242,7 +242,7 @@
       }
     }
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       &--full-s {
         width: 100%;
       }
@@ -251,7 +251,7 @@
       }
     }
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       &--full-m {
         width: 100%;
       }
@@ -260,7 +260,7 @@
       }
     }
 
-    @include p-breakpoint('l') {
+    @include p-media-query('l') {
       &--full-l {
         width: 100%;
       }
@@ -269,7 +269,7 @@
       }
     }
 
-    @include p-breakpoint('xl') {
+    @include p-media-query('xl') {
       &--full-xl {
         width: 100%;
       }
@@ -329,14 +329,14 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include p-breakpoint('xxs', 's') {
+        @include p-media-query('xxs', 's') {
           opacity: 0;
           transform: translate3d(p-px-to-rem(-140px), 0, 0);
           transition: transform .3s, opacity .3s;
         }
 
         &.is-menu-active {
-          @include p-breakpoint('xxs', 's') {
+          @include p-media-query('xxs', 's') {
             opacity: 1;
             transform: translate3d(0, 0, 0);
           }
@@ -355,17 +355,17 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
 
-        @include p-breakpoint('xxs', 's') {
+        @include p-media-query('xxs', 's') {
           transform: translate3d(0, 0, 0);
           transition: transform 0.3s;
         }
 
-        @include p-breakpoint('s') {
+        @include p-media-query('s') {
           left: p-px-to-rem(280px);
         }
 
         &.is-menu-active {
-          @include p-breakpoint('xxs', 's') {
+          @include p-media-query('xxs', 's') {
             transform: translate3d(p-px-to-rem(280px), 0, 0);
           }
         }
@@ -378,12 +378,12 @@
           opacity: 1;
           transition: opacity .3s;
 
-          @include p-breakpoint('s') {
+          @include p-media-query('s') {
             padding: $p-spacing-64;
           }
 
           &.is-menu-active {
-            @include p-breakpoint('xxs', 's') {
+            @include p-media-query('xxs', 's') {
               opacity: 0.05;
               pointer-events: none;
             }
@@ -416,7 +416,7 @@
         right: 0;
         display: none;
 
-        @include p-breakpoint('xxs', 's') {
+        @include p-media-query('xxs', 's') {
           display: block;
         }
       }

@@ -123,9 +123,9 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/pages/utilities/scss/variables.md`)
       ],
-      'Mixins': [
+      'Helper': [
         // @ts-ignore
-        () => import(`@/pages/utilities/scss/mixins.md`)
+        () => import(`@/pages/utilities/scss/helper.md`)
       ],
       'Functions': [
         // @ts-ignore

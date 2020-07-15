@@ -1,5 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 :host {
   display: inline-flex;
@@ -11,7 +11,7 @@
   width: 100px;
   height: 60px;
 
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     width: 120px;
     height: 72px;
   }

@@ -11,7 +11,7 @@ Available breakpoints:
 div {
   color: inherit;
   
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     color: deeppink;
   }
 }
@@ -37,7 +37,7 @@ div {
 div {
   color: inherit;
   
-  @include p-breakpoint('s', 'm') {
+  @include p-media-query('s', 'm') {
     color: deeppink;
   }
 }
@@ -182,14 +182,14 @@ p {
 
 ---
 
-### p-calculate-type-scale($size)
+### p-generate-type-scale($size)
 Calculates font-size and line-height to fit into Porsche Vertical Grid System.
 `$size` only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
 ```
 p {
-  @include p-calculate-type-scale($p-font-size-32);
+  @include p-generate-type-scale($p-font-size-32);
 }
 ```
 

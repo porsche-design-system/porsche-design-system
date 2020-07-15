@@ -22,10 +22,9 @@ export const remToPx = (rem: string): string => {
   }
 };
 
-// generates static font definitions
 export const generateFontDefinition = (fontSize: string, fontWeight: FontWeight): Pick<CSS.Properties, 'fontFamily' | 'fontWeight' | 'fontSize' | 'lineHeight'> => {
   const { family, weight } = font;
-  const fontSizeAndLineHeight = calculateTypeScale(fontSize);
+  const fontSizeAndLineHeight = generateTypeScale(fontSize);
 
   return {
     fontFamily: family,
@@ -34,7 +33,7 @@ export const generateFontDefinition = (fontSize: string, fontWeight: FontWeight)
   };
 };
 
-export const calculateTypeScale = (fontSize: string): FontSizeLineHeight => {
+export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined) {
     throw new Error('getFontSizeRem() only accepts rem or px as parameter');

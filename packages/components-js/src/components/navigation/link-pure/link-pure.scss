@@ -1,5 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 @mixin p-link-pure-label-visible() {
   width: 100%;
@@ -32,7 +32,7 @@
       height: 1.5em;
     }
   } @else {
-    @include p-calculate-type-scale($size);
+    @include p-generate-type-scale($size);
 
     & #{$prefix}__icon {
       width: #{p-calculate-line-height($size)}em;
@@ -41,35 +41,35 @@
 
     + * {
       @if $size == $p-font-size-x-small {
-        @include p-calculate-type-scale($size);
+        @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-small {
-        @include p-calculate-type-scale($size);
+        @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-medium {
-        @include p-calculate-type-scale($p-font-size-20);
+        @include p-generate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-large {
-        @include p-calculate-type-scale($p-font-size-30);
+        @include p-generate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else if $size == $p-font-size-x-large {
-        @include p-calculate-type-scale($p-font-size-large);
+        @include p-generate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
@@ -250,7 +250,7 @@
     @include p-link-pure-size($bem-block, 'inherit');
   }
 
-  @include p-breakpoint('xs') {
+  @include p-media-query('xs') {
     &--size-x-small-xs {
       @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -271,7 +271,7 @@
     }
   }
 
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     &--size-x-small-s {
       @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -292,7 +292,7 @@
     }
   }
 
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     &--size-x-small-m {
       @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -313,7 +313,7 @@
     }
   }
 
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     &--size-x-small-l {
       @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -334,7 +334,7 @@
     }
   }
 
-  @include p-breakpoint('xl') {
+  @include p-media-query('xl') {
     &--size-x-small-xl {
       @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -387,7 +387,7 @@
       @include p-link-pure-label-hidden;
     }
 
-    @include p-breakpoint('xs') {
+    @include p-media-query('xs') {
       &--visible-xs {
         @include p-link-pure-label-visible;
       }
@@ -397,7 +397,7 @@
       }
     }
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       &--visible-s {
         @include p-link-pure-label-visible;
       }
@@ -407,7 +407,7 @@
       }
     }
 
-    @include p-breakpoint('m') {
+    @include p-media-query('m') {
       &--visible-m {
         @include p-link-pure-label-visible;
       }
@@ -417,7 +417,7 @@
       }
     }
 
-    @include p-breakpoint('l') {
+    @include p-media-query('l') {
       &--visible-l {
         @include p-link-pure-label-visible;
       }
@@ -427,7 +427,7 @@
       }
     }
 
-    @include p-breakpoint('xl') {
+    @include p-media-query('xl') {
       &--visible-xl {
         @include p-link-pure-label-visible;
       }

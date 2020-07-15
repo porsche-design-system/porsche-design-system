@@ -1,5 +1,5 @@
 @import '../../../../../utilities/projects/utilities/scss';
-@import '../../../styles/pds-internal.variables';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -17,14 +17,14 @@
       right: 7vw;
     }
 
-    @include p-breakpoint("xl", "xxl") {
+    @include p-media-query("xl", "xxl") {
       padding: {
         left: 10vw;
         right: 10vw;
       }
     }
 
-    @include p-breakpoint("xxl") {
+    @include p-media-query("xxl") {
       padding: {
         left: p-px-to-rem(192px);
         right: p-px-to-rem(192px);
