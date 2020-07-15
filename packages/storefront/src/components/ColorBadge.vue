@@ -66,7 +66,7 @@
       }
 
       &.background {
-        background: $p-color-background;
+        background: $p-color-background-default;
       }
 
       &.background-shading {
@@ -133,7 +133,7 @@
       }
 
       &.background {
-        background: $p-color-theme-dark-background;
+        background: $p-color-theme-dark-background-default;
       }
 
       &.background-shading {

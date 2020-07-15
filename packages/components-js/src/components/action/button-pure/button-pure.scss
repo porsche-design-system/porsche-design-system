@@ -1,4 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/pds-internal.variables';
 
 @mixin p-button-pure-label-visible() {
   position: static;
