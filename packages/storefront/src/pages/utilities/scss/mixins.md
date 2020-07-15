@@ -147,7 +147,6 @@ h1 {
 ### Generic font definition
 
 With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
-Default is `$p-text-size-small` and `$p-font-weight-regular`.
 
 Pre defined variant values are:  
 `$p-text-size-x-small | $p-text-size-small | $p-text-size-medium | $p-text-size-large | $p-text-size-x-large`  
@@ -163,24 +162,8 @@ Pre defined weight values are:
 @include p-generate-font-definition({size}, {weight});
 ```
 
-#### Example with defaults
-```
-p {
-  @include p-generate-font-definition;
-}
-```
+#### Example
 
-#### Result
-```
-p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-```
-
-#### Example with specific parameters
 ```
 p {
   @include p-generate-font-definition($p-text-size-large, $p-font-weight-thin);
@@ -199,14 +182,14 @@ p {
 
 ---
 
-### p-type-scale($size)
+### p-generate-type-scale($size)
 Calculates font-size and line-height to fit into Porsche Vertical Grid System.
 `$size` only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
 ```
 p {
-  @include p-type-scale($p-font-size-32);
+  @include p-calculate-type-scale($p-font-size-32);
 }
 ```
 

@@ -72,13 +72,13 @@ export const headline = {
 };
 
 // generates static font definitions. We could enhance it and make it responsive if needed
-export const generateFontDefinition = (fontSize?: string, fontWeight?: FontWeight) => {
-  const { family, size, weight } = font;
-  const fontSizeAndLineHeight = fontSize ? calculateTypeScale(fontSize) : size.small;
+export const generateFontDefinition = (fontSize: string, fontWeight: FontWeight) => {
+  const { family, weight } = font;
+  const fontSizeAndLineHeight = calculateTypeScale(fontSize);
 
   return {
     fontFamily: family,
     ...fontSizeAndLineHeight,
-    weight: weight[fontWeight ?? 'regular']
+    weight: weight[fontWeight]
   };
 };

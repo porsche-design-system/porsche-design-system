@@ -205,29 +205,7 @@ Predefined size values are:
 Pre defined weight values are:  
  `thin | regular | semibold | bold`
 
-Default is `font.size.small` and `font.weight.regular`.
-
-#### Example standard usage
-
-```
-import { generateFontDefinition } from '@porsche-design-system/utilities';
-
-const StyledText = styled.p`
-  ${generateFontDefinition()};
-`
-```
-
-#### Result
-```
-p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-```
-
-#### Example with specific parameters
+#### Example usage
 
 ```
 import { generateFontDefinition } from '@porsche-design-system/utilities';
