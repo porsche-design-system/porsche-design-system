@@ -468,7 +468,7 @@ jobs:
         with:
           name: utilities-build
           path: ./packages/utilities/projects/utilities/dist
-      - name: 'Deploy'
+      - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
           CDN_USER: ${{ secrets.CDN_USER }}
