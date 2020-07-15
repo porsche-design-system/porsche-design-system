@@ -11,8 +11,8 @@
   type Color =
     'brand'
     | 'default'
-    | 'surface'
-    | 'background'
+    | 'background-default'
+    | 'background-surface'
     | 'background-shading'
     | 'neutral-contrast-high'
     | 'neutral-contrast-medium'
@@ -61,12 +61,12 @@
         background: $p-color-default;
       }
 
-      &.surface {
-        background: $p-color-surface;
+      &.background-default {
+        background: $p-color-background-default;
       }
 
-      &.background {
-        background: $p-color-background-default;
+      &.background-surface {
+        background: $p-color-background-surface;
       }
 
       &.background-shading {
@@ -128,12 +128,12 @@
         background: $p-color-theme-dark-default;
       }
 
-      &.surface {
-        background: $p-color-theme-dark-surface;
+      &.background-default {
+        background: $p-color-theme-dark-background-default;
       }
 
-      &.background {
-        background: $p-color-theme-dark-background-default;
+      &.background-surface {
+        background: $p-color-theme-dark-background-surface;
       }
 
       &.background-shading {
