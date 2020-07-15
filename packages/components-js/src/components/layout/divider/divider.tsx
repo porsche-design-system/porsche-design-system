@@ -1,7 +1,7 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { ComponentTheme } from '../../../types';
+import { Theme } from '../../../types';
 
 @Component({
   tag: 'p-divider',
@@ -16,7 +16,7 @@ export class Divider {
   @Prop() public orientation?: 'vertical' | 'horizontal' = 'horizontal';
 
   /** Adapts color depending on theme. */
-  @Prop() public theme?: ComponentTheme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
     const dividerClasses = cx(

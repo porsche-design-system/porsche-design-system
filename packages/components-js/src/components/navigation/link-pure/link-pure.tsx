@@ -8,7 +8,7 @@ import {
   transitionListener,
   insertSlottedStyles
 } from '../../../utils';
-import { IconName, LinkTarget, TextSize, TextWeight, ComponentTheme } from '../../../types';
+import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 
 @Component({
@@ -41,7 +41,7 @@ export class LinkPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: ComponentTheme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';

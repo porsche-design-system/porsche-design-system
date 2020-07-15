@@ -2,7 +2,7 @@ import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
 import cx from 'classnames';
 import { prefix } from '../../../utils';
-import { ComponentTheme, IconName } from '../../../types';
+import { Theme, IconName } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -43,7 +43,7 @@ export class Icon {
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: ComponentTheme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   @State() private svgContent?: string;
   @State() private isVisible = false;
