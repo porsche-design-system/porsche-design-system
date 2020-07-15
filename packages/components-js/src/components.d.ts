@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, ComponentTheme, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
@@ -37,7 +37,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Specifies the type of the button.
          */
@@ -79,7 +79,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Specifies the type of the button.
          */
@@ -125,7 +125,7 @@ export namespace Components {
         /**
           * Adapts color depending on theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PFieldsetWrapper {
         /**
@@ -229,7 +229,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Style of the headline.
          */
@@ -259,7 +259,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         "variant"?: 'outline' | 'filled';
     }
     interface PLink {
@@ -294,7 +294,7 @@ export namespace Components {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The style variant of the link.
          */
@@ -340,7 +340,7 @@ export namespace Components {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -402,7 +402,7 @@ export namespace Components {
         /**
           * Adapts the icon color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PMarque {
         /**
@@ -530,7 +530,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The weight of the text.
          */
@@ -570,7 +570,7 @@ export namespace Components {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PTextListItem {
     }
@@ -805,7 +805,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Specifies the type of the button.
          */
@@ -847,7 +847,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Specifies the type of the button.
          */
@@ -893,7 +893,7 @@ declare namespace LocalJSX {
         /**
           * Adapts color depending on theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PFieldsetWrapper {
         /**
@@ -997,7 +997,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * Style of the headline.
          */
@@ -1027,7 +1027,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         "variant"?: 'outline' | 'filled';
     }
     interface PLink {
@@ -1062,7 +1062,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the link color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The style variant of the link.
          */
@@ -1108,7 +1108,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the button color depending on the theme.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The weight of the text (only has effect with visible label).
          */
@@ -1170,7 +1170,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the icon color when used on dark background.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PMarque {
         /**
@@ -1302,7 +1302,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
         /**
           * The weight of the text.
          */
@@ -1342,7 +1342,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "theme"?: Theme;
+        "theme"?: ComponentTheme;
     }
     interface PTextListItem {
     }

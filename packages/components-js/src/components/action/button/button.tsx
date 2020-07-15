@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
-import { ButtonType, IconName, Theme } from '../../../types';
+import { ButtonType, IconName, ComponentTheme } from '../../../types';
 
 @Component({
   tag: 'p-button',
@@ -38,7 +38,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop() public theme?: ComponentTheme = 'light';
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {

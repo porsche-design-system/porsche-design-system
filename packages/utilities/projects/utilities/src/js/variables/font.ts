@@ -44,7 +44,7 @@ export const font: FontType = {
     semibold: 600,
     bold: 700
   },
-
+// To boost performance, size is defined static.
   size: {
     '12': { fontSize: '0.75rem', lineHeight: 1.66667 },
     '16': { fontSize: '1rem', lineHeight: 1.5 },
