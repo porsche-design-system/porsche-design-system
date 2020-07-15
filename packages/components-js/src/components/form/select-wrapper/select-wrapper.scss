@@ -47,8 +47,8 @@
   opacity: 1 !important;
   font-family: $p-font-primary !important;
   font-weight: $p-font-weight-regular !important;
-  font-size: p-font-size($p-text-size-small) !important;
-  line-height: p-line-height($p-text-size-small) !important;
+  font-size: p-font-size($p-font-size-small) !important;
+  line-height: p-line-height($p-font-size-small) !important;
   color: $p-color-theme-light-default !important;
   text-indent: 0 !important;
   cursor: pointer !important;
@@ -217,7 +217,7 @@
   }
 
   &__fake-option-list {
-    @include p-text();
+    @include p-text-small;
     position: absolute;
     z-index: 1;
     border: 1px solid $p-color-theme-light-neutral-contrast-medium;

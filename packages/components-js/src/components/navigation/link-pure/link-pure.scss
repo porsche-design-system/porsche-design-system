@@ -39,36 +39,36 @@
     }
 
     + * {
-      @if $size == $p-text-size-x-small {
+      @if $size == $p-font-size-x-small {
         @include p-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-small {
+      @else if $size == $p-font-size-small {
         @include p-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-medium {
+      @else if $size == $p-font-size-medium {
         @include p-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
           margin-left: #{p-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-large {
+      @else if $size == $p-font-size-large {
         @include p-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: #{p-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-x-large {
-        @include p-type-scale($p-text-size-large);
+      @else if $size == $p-font-size-x-large {
+        @include p-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
           margin-left: #{p-line-height($size)}em;
@@ -226,23 +226,23 @@
   }
 
   &--size-x-small {
-    @include p-link-pure-size($bem-block, $p-text-size-x-small);
+    @include p-link-pure-size($bem-block, $p-font-size-x-small);
   }
 
   &--size-small {
-    @include p-link-pure-size($bem-block, $p-text-size-small);
+    @include p-link-pure-size($bem-block, $p-font-size-small);
   }
 
   &--size-medium {
-    @include p-link-pure-size($bem-block, $p-text-size-medium);
+    @include p-link-pure-size($bem-block, $p-font-size-medium);
   }
 
   &--size-large {
-    @include p-link-pure-size($bem-block, $p-text-size-large);
+    @include p-link-pure-size($bem-block, $p-font-size-large);
   }
 
   &--size-x-large {
-    @include p-link-pure-size($bem-block, $p-text-size-x-large);
+    @include p-link-pure-size($bem-block, $p-font-size-x-large);
   }
 
   &--size-inherit {
@@ -251,19 +251,19 @@
 
   @include p-breakpoint('xs') {
     &--size-x-small-xs {
-      @include p-link-pure-size($bem-block, $p-text-size-x-small);
+      @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-xs {
-      @include p-link-pure-size($bem-block, $p-text-size-small);
+      @include p-link-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-xs {
-      @include p-link-pure-size($bem-block, $p-text-size-medium);
+      @include p-link-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-xs {
-      @include p-link-pure-size($bem-block, $p-text-size-large);
+      @include p-link-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-xs {
-      @include p-link-pure-size($bem-block, $p-text-size-x-large);
+      @include p-link-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-xs {
       @include p-link-pure-size($bem-block, 'inherit');
@@ -272,19 +272,19 @@
 
   @include p-breakpoint('s') {
     &--size-x-small-s {
-      @include p-link-pure-size($bem-block, $p-text-size-x-small);
+      @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-s {
-      @include p-link-pure-size($bem-block, $p-text-size-small);
+      @include p-link-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-s {
-      @include p-link-pure-size($bem-block, $p-text-size-medium);
+      @include p-link-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-s {
-      @include p-link-pure-size($bem-block, $p-text-size-large);
+      @include p-link-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-s {
-      @include p-link-pure-size($bem-block, $p-text-size-x-large);
+      @include p-link-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-s {
       @include p-link-pure-size($bem-block, 'inherit');
@@ -293,19 +293,19 @@
 
   @include p-breakpoint('m') {
     &--size-x-small-m {
-      @include p-link-pure-size($bem-block, $p-text-size-x-small);
+      @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-m {
-      @include p-link-pure-size($bem-block, $p-text-size-small);
+      @include p-link-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-m {
-      @include p-link-pure-size($bem-block, $p-text-size-medium);
+      @include p-link-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-m {
-      @include p-link-pure-size($bem-block, $p-text-size-large);
+      @include p-link-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-m {
-      @include p-link-pure-size($bem-block, $p-text-size-x-large);
+      @include p-link-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-m {
       @include p-link-pure-size($bem-block, 'inherit');
@@ -314,19 +314,19 @@
 
   @include p-breakpoint('l') {
     &--size-x-small-l {
-      @include p-link-pure-size($bem-block, $p-text-size-x-small);
+      @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-l {
-      @include p-link-pure-size($bem-block, $p-text-size-small);
+      @include p-link-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-l {
-      @include p-link-pure-size($bem-block, $p-text-size-medium);
+      @include p-link-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-l {
-      @include p-link-pure-size($bem-block, $p-text-size-large);
+      @include p-link-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-l {
-      @include p-link-pure-size($bem-block, $p-text-size-x-large);
+      @include p-link-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-l {
       @include p-link-pure-size($bem-block, 'inherit');
@@ -335,19 +335,19 @@
 
   @include p-breakpoint('xl') {
     &--size-x-small-xl {
-      @include p-link-pure-size($bem-block, $p-text-size-x-small);
+      @include p-link-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-xl {
-      @include p-link-pure-size($bem-block, $p-text-size-small);
+      @include p-link-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-xl {
-      @include p-link-pure-size($bem-block, $p-text-size-medium);
+      @include p-link-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-xl {
-      @include p-link-pure-size($bem-block, $p-text-size-large);
+      @include p-link-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-xl {
-      @include p-link-pure-size($bem-block, $p-text-size-x-large);
+      @include p-link-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-xl {
       @include p-link-pure-size($bem-block, 'inherit');

@@ -1,10 +1,4 @@
-import {
-  convertLineHeight,
-  pxToRem,
-  remToPx,
-  calculateTypeScale,
-  getHexColor
-} from '../../../projects/utilities/src/js';
+import { convertLineHeight, pxToRem, remToPx, calculateTypeScale } from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
@@ -178,23 +172,5 @@ describe('typeScale()', () => {
     const test = calculateTypeScale('1rem');
     expect(test.fontSize).toBe('1rem');
     expect(test.lineHeight).toBe(1.375);
-  });
-});
-
-describe('getColorHexCode()', () => {
-  it('should show correct hexcode for brand color', () => {
-    expect(getHexColor('brand')).toBe('#d5001c');
-    expect(getHexColor('brand', 'light')).toBe('#d5001c');
-    expect(getHexColor('brand', 'dark')).toBe('#d5001c');
-  });
-
-  it('should show correct hexcode for neutralContrast high color', () => {
-    expect(getHexColor('neutralContrast', 'high', 'light')).toBe('#323639');
-    expect(getHexColor('neutralContrast', 'high')).toBe('#323639');
-    expect(getHexColor('neutralContrast', 'high', 'dark')).toBe('#e3e4e5');
-  });
-
-  it('should show correct hexcode for external color', () => {
-    expect(getHexColor('external', 'facebook')).toBe('#1877f2');
   });
 });

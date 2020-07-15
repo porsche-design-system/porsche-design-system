@@ -62,6 +62,33 @@ div {
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
+### Text
+
+Given values are:  
+`x-small | small | medium | large | x-large`
+
+Possible text mixin for usage with SCSS (where {v} is the value):
+```
+@include p-text-{v};
+```
+
+#### Example
+```
+h1 {
+  @include p-text-small;
+}
+```
+
+#### Result
+```
+p {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+```
+
 ### Headline
 
 Given values are:  
@@ -117,7 +144,7 @@ h1 {
 }
 ```
 
-### Text
+### Generic font definition
 
 With the text mixin, it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `size` and `weight`. 
 Default is `$p-text-size-small` and `$p-font-weight-regular`.
@@ -131,15 +158,15 @@ Or more generic `$p-font-size-{v};` where `v` is:
 Pre defined weight values are:  
 `$p-font-weight-thin | $p-font-weight-regular | $p-font-weight-bold`
 
-#### Example text mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
+#### Example p-generate-font-definition mixin for usage with SCSS (where {size} is the value for text size and {weight} for text weight):
 ```
-@include p-text({size}, {weight});
+@include p-generate-font-definition({size}, {weight});
 ```
 
 #### Example with defaults
 ```
 p {
-  @include p-text;
+  @include p-generate-font-definition;
 }
 ```
 
@@ -156,7 +183,7 @@ p {
 #### Example with specific parameters
 ```
 p {
-  @include p-text($p-text-size-large, $p-font-weight-thin);
+  @include p-generate-font-definition($p-text-size-large, $p-font-weight-thin);
 }
 ```
 

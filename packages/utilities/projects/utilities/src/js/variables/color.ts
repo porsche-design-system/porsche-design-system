@@ -1,7 +1,5 @@
 export type Theme = 'light' | 'dark';
 
-export type Color = typeof color
-
 export const color = {
   /**
    * Theme light as default theme
