@@ -11,8 +11,8 @@
   type Color =
     'brand'
     | 'default'
-    | 'surface'
-    | 'background'
+    | 'background-default'
+    | 'background-surface'
     | 'background-shading'
     | 'neutral-contrast-high'
     | 'neutral-contrast-medium'
@@ -51,8 +51,8 @@
   @import "~@porsche-design-system/utilities/scss";
 
   .color-badge {
-    width: p-rem(160px);
-    height: p-rem(40px);
+    width: p-px-to-rem(160px);
+    height: p-px-to-rem(40px);
     border: 1px solid $p-color-neutral-contrast-medium;
 
     // Theme light
@@ -65,12 +65,12 @@
         background: $p-color-default;
       }
 
-      &.surface {
-        background: $p-color-surface;
+      &.background-default {
+        background: $p-color-background-default;
       }
 
-      &.background {
-        background: $p-color-background;
+      &.background-surface {
+        background: $p-color-background-surface;
       }
 
       &.background-shading {
@@ -148,12 +148,12 @@
         background: $p-color-theme-dark-default;
       }
 
-      &.surface {
-        background: $p-color-theme-dark-surface;
+      &.background-default {
+        background: $p-color-theme-dark-background-default;
       }
 
-      &.background {
-        background: $p-color-theme-dark-background;
+      &.background-surface {
+        background: $p-color-theme-dark-background-surface;
       }
 
       &.background-shading {

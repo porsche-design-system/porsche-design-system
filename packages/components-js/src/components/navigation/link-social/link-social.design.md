@@ -68,12 +68,12 @@ As for the social icons that are currently provided in the Porsche Design System
     &::before {
       content: "";
       display: block;
-      margin-top: p-rem(-8px);
+      margin-top: p-px-to-rem(-8px);
     }
     > * {
-      margin-top: p-rem(8px);
+      margin-top: p-px-to-rem(8px);
       &:not(:last-child) {
-        margin-right: p-rem(8px);
+        margin-right: p-px-to-rem(8px);
       }
     }
   }

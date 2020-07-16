@@ -1,7 +1,8 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 @mixin p-button-with-label() {
-  padding: p-rem(11px) p-rem(15px) p-rem(11px) p-rem(39px);
+  padding: p-px-to-rem(11px) p-px-to-rem(15px) p-px-to-rem(11px) p-px-to-rem(39px);
 }
 
 @mixin p-button-without-label() {
@@ -35,8 +36,8 @@
 }
 
 @mixin p-button-icon-with-label() {
-  left: p-rem(11px);
-  top: p-rem(11px);
+  left: p-px-to-rem(11px);
+  top: p-px-to-rem(11px);
   transform: translateX(0) translateY(0);
 }
 
@@ -55,8 +56,8 @@
   $bem-block: &;
   display: flex;
   width: 100%;
-  min-width: p-rem(48px);
-  min-height: p-rem(48px);
+  min-width: p-px-to-rem(48px);
+  min-height: p-px-to-rem(48px);
   position: relative;
   margin: 0;
   padding: 0;
@@ -265,7 +266,7 @@
     }
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--with-label-xs {
       @include p-button-with-label;
 
@@ -291,7 +292,7 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--with-label-s {
       @include p-button-with-label;
 
@@ -317,7 +318,7 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--with-label-m {
       @include p-button-with-label;
 
@@ -343,7 +344,7 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--with-label-l {
       @include p-button-with-label;
 
@@ -369,7 +370,7 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--with-label-xl {
       @include p-button-with-label;
 
@@ -402,7 +403,7 @@
 
   &__icon {
     position: absolute;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
   }
 }

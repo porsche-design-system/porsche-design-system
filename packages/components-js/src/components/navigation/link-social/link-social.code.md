@@ -89,7 +89,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 // With CSS Grid (The more elegant way but not suppoerted by IE11)
 .example-grouped {
   display: grid;
-  grid-template-columns: repeat(auto-fit, p-rem(48px));
+  grid-template-columns: repeat(auto-fit, p-px-to-rem(48px));
   grid-column-gap: $p-spacing-8;
   grid-row-gap: $p-spacing-8;
 }
