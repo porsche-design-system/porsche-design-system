@@ -1,8 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-6fd4d6d2"],{"4e04":function(e,t,r){"use strict";r.r(t),r.d(t,"p_marque",(function(){return s}));r("ef14"),r("cfce"),r("6559");var i=r("666f"),n=r("b799"),a=r("56e0"),c=":host{display:-ms-inline-flexbox;display:inline-flex;vertical-align:top}.p-marque{display:block;width:100px;height:60px}@media (min-width: 1300px){.p-marque{width:120px;height:72px}}.p-marque>img{display:block;width:100%;height:auto}",s=function(){function e(e){Object(i["k"])(this,e),this.trademark=!0}return e.prototype.render=function(){var e=n["a"],t=n["b"]["porscheMarque"+(this.trademark?"Trademark":"")],r=function(r){return Object.entries(t[r]).map((function(t){var r=t[0],i=t[1];return e+"/"+i+" "+r})).join(",")},c=Object(a["a"])(Object(i["d"])("marque"));return Object(i["i"])("picture",{class:c},Object(i["i"])("source",{srcSet:r("medium"),media:"(min-width: 1300px)"}),Object(i["i"])("source",{srcSet:r("small")}),Object(i["i"])("img",{src:e+"/"+t.medium["2x"],alt:"Porsche"}))},e}();s.style=c},"56e0":function(e,t,r){"use strict";r.d(t,"a",(function(){return a}));r("ef14");var i=r("53ca"),n=r("666f"),a=Object(n["e"])((function(e){
-/*!
-    Copyright (c) 2017 Jed Watson.
-    Licensed under the MIT License (MIT), see
-    http://jedwatson.github.io/classnames
-  */
-(function(){var t={}.hasOwnProperty;function r(){for(var e=[],n=0;n<arguments.length;n++){var a=arguments[n];if(a){var c=Object(i["a"])(a);if("string"===c||"number"===c)e.push(a);else if(Array.isArray(a)&&a.length){var s=r.apply(null,a);s&&e.push(s)}else if("object"===c)for(var u in a)t.call(a,u)&&a[u]&&e.push(u)}}return e.join(" ")}e.exports?(r.default=r,e.exports=r):window.classNames=r})()}))}}]);
-//# sourceMappingURL=chunk-6fd4d6d2.cfded8bb.js.map
