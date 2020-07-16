@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "1.5.0-rc.2",
+  "version": "1.5.0",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -17,9 +17,9 @@
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Web Components Angular",
   "dependencies": {
-    "@porsche-design-system/components-js": "1.5.0-rc.2",
+    "@porsche-design-system/components-js": "1.5.0",
     "tslib": "^2.0.0"
-},
+  },
   "peerDependencies": {
     "@angular/common": ">=8.2.0 <11.0.0",
     "@angular/core": ">=8.2.0 <11.0.0"
