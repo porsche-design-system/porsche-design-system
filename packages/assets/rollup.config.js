@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript2';
-import ttypescript from 'ttypescript';
+import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json';
 
 const commonPlugins = () => [
@@ -9,7 +8,7 @@ const commonPlugins = () => [
     extensions: ['.ts', '.js'],
     resolveOnly: [/^@porsche-design-system\/.*$/]
   }),
-  typescript({ useTsconfigDeclarationDir: true })
+  typescript()
 ];
 
 export default [
@@ -24,18 +23,7 @@ export default [
     },
     plugins: [
       ...commonPlugins(),
-      typescript({
-        typescript: ttypescript,
-        tsconfigDefaults: {
-          compilerOptions: {
-            plugins: [
-              { transform: 'typescript-transform-paths' },
-              { transform: 'typescript-transform-paths', afterDeclarations: true }
-            ]
-          }
-        },
-        useTsconfigDeclarationDir: true
-      }),
+      typescript({ declaration: true, declarationDir: 'dist/types', rootDir: 'src/' }),
       process.env.NODE_ENV === 'production' && terser()
     ]
   },
