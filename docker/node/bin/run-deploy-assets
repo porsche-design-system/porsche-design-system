@@ -23,4 +23,4 @@ upload "packages/fonts/dist/fonts/*.woff" fonts/
 upload "packages/fonts/dist/fonts/*.woff2" fonts/
 upload "packages/icons/dist/icons/*" icons/
 upload "packages/marque/dist/marque/*" marque/
-upload "packages/utilities/projects/utilities/dist/style/style.min.*.css" style/
+upload "packages/utilities/projects/utilities/dist/style/font-face.min.*.css" style/
