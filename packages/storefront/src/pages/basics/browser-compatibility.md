@@ -17,7 +17,7 @@ We support the **following Browsers in the latest stable and deprecated predeces
 
 ## End of support for IE 11 and reduced support for Edge 18
 
-We have decided to **end the support for Microsoft Internet Explorer 11**.  
+Porsche decided to **end the support for Microsoft Internet Explorer 11**.  
 **Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
 
 The **Porsche Design System v1.x** is the last major version to support Internet Explorer 11 and Microsoft Edge 18. 
@@ -48,7 +48,7 @@ Just drop the JS snippet at the end of the `body` tag of your application.
 
 ...
 
-<script async src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+<script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
 </body>
 ```
 
