@@ -1,8 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-bbaa7a08"],{"0156":function(e,t,r){"use strict";r.d(t,"a",(function(){return a}));r("ef14");var i=r("53ca"),n=r("30f4"),a=Object(n["e"])((function(e){
-/*!
-    Copyright (c) 2017 Jed Watson.
-    Licensed under the MIT License (MIT), see
-    http://jedwatson.github.io/classnames
-  */
-(function(){var t={}.hasOwnProperty;function r(){for(var e=[],n=0;n<arguments.length;n++){var a=arguments[n];if(a){var c=Object(i["a"])(a);if("string"===c||"number"===c)e.push(a);else if(Array.isArray(a)&&a.length){var s=r.apply(null,a);s&&e.push(s)}else if("object"===c)for(var u in a)t.call(a,u)&&a[u]&&e.push(u)}}return e.join(" ")}e.exports?(r.default=r,e.exports=r):window.classNames=r})()}))},"4e04":function(e,t,r){"use strict";r.r(t),r.d(t,"p_marque",(function(){return s}));r("ef14"),r("cfce"),r("6559");var i=r("30f4"),n=r("65bd"),a=r("0156"),c=":host{display:-ms-inline-flexbox;display:inline-flex;vertical-align:top}.p-marque{display:block;width:100px;height:60px}@media (min-width: 1300px){.p-marque{width:120px;height:72px}}.p-marque>img{display:block;width:100%;height:auto}",s=function(){function e(e){Object(i["j"])(this,e),this.trademark=!0}return e.prototype.render=function(){var e=n["a"],t=n["c"]["porscheMarque"+(this.trademark?"Trademark":"")],r=function(r){return Object.entries(t[r]).map((function(t){var r=t[0],i=t[1];return e+"/"+i+" "+r})).join(",")},c=Object(a["a"])(Object(i["d"])("marque"));return Object(i["h"])("picture",{class:c},Object(i["h"])("source",{srcSet:r("medium"),media:"(min-width: 1300px)"}),Object(i["h"])("source",{srcSet:r("small")}),Object(i["h"])("img",{src:e+"/"+t.medium["2x"],alt:"Porsche"}))},e}();s.style=c}}]);
-//# sourceMappingURL=chunk-bbaa7a08.5753fe8f.js.map
