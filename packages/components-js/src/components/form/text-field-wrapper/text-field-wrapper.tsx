@@ -16,7 +16,6 @@ import { ButtonType, FormState } from '../../../types';
   shadow: true
 })
 export class TextFieldWrapper {
-
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -58,7 +57,6 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-
     const containerClasses = cx(prefix('text-field-wrapper__container'));
     const labelClasses = cx(prefix('text-field-wrapper__label'));
     const labelTextClasses = cx(
@@ -68,7 +66,10 @@ export class TextFieldWrapper {
     );
     const descriptionTextClasses = cx(
       prefix('text-field-wrapper__description-text'),
-      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
+      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
+        'hidden',
+        'visible'
+      ]),
       this.disabled && prefix('text-field-wrapper__description-text--disabled')
     );
     const fakeInputClasses = cx(
@@ -87,45 +88,59 @@ export class TextFieldWrapper {
       <Host>
         <div class={containerClasses}>
           <label class={labelClasses}>
-            {this.isLabelVisible &&
-            <p-text class={labelTextClasses} tag='span' color='inherit' onClick={(): void => this.labelClick()}>
-              {this.label ? this.label : <span><slot name='label'/></span>}
-            </p-text>
-            }
-            {this.isDescriptionVisible &&
-            <p-text class={descriptionTextClasses} tag='span' color='inherit' size='x-small' onClick={(): void => this.labelClick()}>
-              {this.description ? this.description : <span><slot name='description'/></span>}
-            </p-text>
-            }
+            {this.isLabelVisible && (
+              <p-text class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+                {this.label || (
+                  <span>
+                    <slot name="label" />
+                  </span>
+                )}
+              </p-text>
+            )}
+            {this.isDescriptionVisible && (
+              <p-text
+                class={descriptionTextClasses}
+                tag="span"
+                color="inherit"
+                size="x-small"
+                onClick={this.labelClick}
+              >
+                {this.description || (
+                  <span>
+                    <slot name="description" />
+                  </span>
+                )}
+              </p-text>
+            )}
             <span class={fakeInputClasses}>
-              <slot/>
+              <slot />
             </span>
           </label>
-          {this.isPasswordToggleable &&
-          <button type='button' class={buttonClasses} onClick={(): void => this.togglePassword()} disabled={this.disabled}>
-            <p-icon name={this.showPassword ? 'view-off' : 'view'} color='inherit'/>
-          </button>
-          }
-          {this.isInputTypeSearch &&
-          <button
-            onClick={(event: MouseEvent): void => this.onSubmitHandler(event)}
-            type='submit'
-            class={buttonClasses}
-            disabled={this.disabled || this.readonly}
-          >
-            <p-icon name='search' color='inherit'/>
-          </button>
-          }
+          {this.isPasswordToggleable && (
+            <button type="button" class={buttonClasses} onClick={this.togglePassword} disabled={this.disabled}>
+              <p-icon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
+            </button>
+          )}
+          {this.isInputTypeSearch && (
+            <button
+              onClick={this.onSubmitHandler}
+              type="submit"
+              class={buttonClasses}
+              disabled={this.disabled || this.readonly}
+            >
+              <p-icon name="search" color="inherit" />
+            </button>
+          )}
         </div>
-        {this.isMessageVisible &&
-        <p-text
-          class={messageClasses}
-          color='inherit'
-          role={this.state === 'error' && 'alert'}
-        >
-          {this.message ? this.message : <span><slot name='message'/></span>}
-        </p-text>
-        }
+        {this.isMessageVisible && (
+          <p-text class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+            {this.message || (
+              <span>
+                <slot name="message" />
+              </span>
+            )}
+          </p-text>
+        )}
       </Host>
     );
   }
@@ -158,11 +173,9 @@ export class TextFieldWrapper {
   private setAriaAttributes(): void {
     if (this.label && this.message) {
       this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    }
-    else if (this.label && this.description) {
+    } else if (this.label && this.description) {
       this.input.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    }
-    else if (this.label) {
+    } else if (this.label) {
       this.input.setAttribute('aria-label', this.label);
     }
 
@@ -173,19 +186,17 @@ export class TextFieldWrapper {
     }
   }
 
-  private setState(): void {
+  private setState = (): void => {
     this.disabled = this.input.disabled;
     this.readonly = this.input.readOnly;
-  }
+  };
 
-  private labelClick(): void {
+  private labelClick = (): void => {
     this.input.focus();
-  }
+  };
 
   private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', () => {
-      this.setState();
-    });
+    transitionListener(this.input, 'border-top-color', this.setState);
   }
 
   private updatePasswordToggleable(): void {
@@ -195,11 +206,11 @@ export class TextFieldWrapper {
     }
   }
 
-  private togglePassword(): void {
+  private togglePassword = (): void => {
     this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
     this.labelClick();
-  }
+  };
 
   private initInputTypeSearch(): void {
     this.isInputTypeSearch = this.input.type === 'search';
@@ -208,11 +219,16 @@ export class TextFieldWrapper {
     }
   }
 
-  private onSubmitHandler(event: MouseEvent): void {
+  private onSubmitHandler = (event: MouseEvent): void => {
     if (this.isInputTypeSearch) {
-      handleButtonEvent(event, this.host, () => this.searchButtonType, () => this.disabled);
+      handleButtonEvent(
+        event,
+        this.host,
+        () => this.searchButtonType,
+        () => this.disabled
+      );
     }
-  }
+  };
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();

@@ -1,4 +1,4 @@
-# FAQ
+# Faq
 
 To answer the most frequently asked questions the following list is constantly updated. Please read through before using the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](#/help/support)**
 
@@ -10,12 +10,12 @@ We want to enable continuous communication within the community. Therefore we of
 
 ## How can I access the Porsche Design System files?
 **Developer**  
-The scource code of the Porsche Design System is stored and developed within a private GitHub repository and distributed via a private NPM registry. Both managed by the Porsche Design System team. If you are not yet registered, please sign up via [Start Coding](#/start-coding/introduction).
+The source code of the Porsche Design System is stored and developed within a private GitHub repository and distributed via a private NPM registry. Both managed by the Porsche Design System team. If you are not yet registered, please sign up via [Start Coding](#/start-coding/introduction).
 
 **Designer**  
 The Porsche Design System Sketch library is created and maintained within a private Abstract project. If you are not yet registered, please sign up via [Start Designing](#/start-designing/introduction).
 
-## What is the release strategy and how are the issues priorized?
+## What is the release strategy and how are the issues prioritized?
 All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall business goals and the actual needs of the teams. The upcoming release content is accessible in the [quarterly roadmap](#/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs, feedback and associated requirements.
 
 ## What happens with contents marked as deprecated?

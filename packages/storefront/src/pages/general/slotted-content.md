@@ -21,7 +21,7 @@ In some circumstances it is common to provide such content with the help of inne
 <PText dangerouslySetInnerHTML={theHTMLString()}></PText>
 ```  
 
-The above examples break in case that the component is rendered in polyfill mode without a Shadow DOM (e.g. in IE11).
+The above examples break in the case that the component is rendered in polyfill mode without a Shadow DOM (e.g. in IE11).
 That's because the innerHTML will strip out all the contents of the component.
 
 

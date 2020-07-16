@@ -58,22 +58,22 @@ The icon refers to the logo of the respective social platform. For the specific 
 The label within a link should always be short and descriptive.
 
 ### Hover state
-As for the social icons that are currently provided in the Porsche Design System, the background changes to the specific corporate social platform color on hover. For specific social icons, for which no brand color is currently provided in the Porsche Design System, a dark grey must be used as hover color instead (as defined for the standard [Button](#/components/action/button)/[Link](#/components/navigation/link)).
+As for the social icons that are currently provided in the Porsche Design System, the background changes to the specific corporate social platform color on hover. For specific social icons, for which no brand color is currently provided in the Porsche Design System, a dark grey must be used as hover color instead (as defined for the standard [Button](#/components/button)/[Link](#/components/link)).
 
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/scss-utils/index";
+  @import "~@porsche-design-system/utilities/scss";
   
   .example-grouped {
     &::before {
       content: "";
       display: block;
-      margin-top: p-rem(-8px);
+      margin-top: p-px-to-rem(-8px);
     }
     > * {
-      margin-top: p-rem(8px);
+      margin-top: p-px-to-rem(8px);
       &:not(:last-child) {
-        margin-right: p-rem(8px);
+        margin-right: p-px-to-rem(8px);
       }
     }
   }

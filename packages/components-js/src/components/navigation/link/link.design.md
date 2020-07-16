@@ -1,7 +1,7 @@
 # Link
 
 The Porsche Design System Link enables the user to **navigate to another page**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of links (primary, secondary, tertiary) can be used.
-(In case you want the user to execute an action, you should select the [Button](#/components/action/button) component instead.)
+(In case you want the user to execute an action, you should select the [Button](#/components/button) component instead.)
 
 ---
 

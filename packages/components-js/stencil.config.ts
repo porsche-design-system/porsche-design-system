@@ -5,6 +5,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import autoprefixer = require('autoprefixer');
 import path = require('path');
+import rollupReplacePlugin from 'rollup-plugin-replace';
 
 /**
  * TODO: Remove this workaround
@@ -42,7 +43,9 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: '@porsche-design-system/components-js',
-      proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts'
+      proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
+      includePolyfills: true,
+      includeDefineCustomElements: true
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components-js',
@@ -58,7 +61,13 @@ export const config: Config = {
       plugins: [autoprefixer()]
     })
   ],
-  globalStyle: 'src/styles/index.scss',
+  rollupPlugins: {
+    after: [
+      rollupReplacePlugin({
+        'ROLLUP_REPLACE_IS_STAGING': process.env.PDS_IS_STAGING === "1" ? '"staging"' : '"production"',
+      })
+    ]
+  },
   globalScript: 'src/setup.ts',
   testing: {
     globalSetup: './jest.setup',

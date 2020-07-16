@@ -183,7 +183,8 @@ export default class CodeBlock extends Vue {
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
+  @import '../styles/internal.variables';
 
   .code-block {
 

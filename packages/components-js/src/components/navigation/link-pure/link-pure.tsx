@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import cx from 'classnames';
 import {
   BreakpointCustomizable,
@@ -17,7 +17,7 @@ import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandli
   shadow: true
 })
 export class LinkPure {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -54,16 +54,15 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
+  private subline: HTMLElement;
+
+  public componentWillLoad(): void {
+    this.setSubline();
+    this.addSlottedStyles();
+  }
 
   public componentDidLoad(): void {
-    const tagName= this.element.tagName.toLowerCase();
-    const style = `a:focus ${tagName} {
-      outline: 2px solid #00d5b9;
-      outline-offset: 1px;
-    }`;
-
-    insertSlottedStyles(this.element, style);
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     transitionListener(this.linkTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.linkTag);
       this.iconTag.style.width = `${size}em`;
@@ -81,45 +80,90 @@ export class LinkPure {
       this.active && prefix('link-pure--active')
     );
 
-    const iconClasses = cx(
-      prefix('link-pure__icon')
-    );
+    const iconClasses = cx(prefix('link-pure__icon'));
 
     const labelClasses = cx(
       prefix('link-pure__label'),
       mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
     );
+    const sublineClasses = cx(
+      prefix('link-pure__subline'),
+      mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+    );
 
     return (
-      <TagType
-        class={linkPureClasses}
-        {...(TagType === 'a' ? {
-          href: this.href,
-          target: this.target,
-          download: this.download,
-          rel: this.rel
-        } : null)}
-        ref={el => this.linkTag = el as HTMLElement}
-      >
-        <p-icon
-          class={iconClasses}
-          color='inherit'
-          size='inherit'
-          name={this.icon}
-          source={this.iconSource}
-          ref={el => this.iconTag = el as HTMLElement}
-          aria-hidden='true'
-        />
-        <p-text
-          class={labelClasses}
-          tag='span'
-          color='inherit'
-          size='inherit'
-          weight={this.weight}
+      <Host>
+        <TagType
+          class={linkPureClasses}
+          {...(TagType === 'a'
+            ? {
+              href: this.href,
+              target: this.target,
+              download: this.download,
+              rel: this.rel
+            }
+            : null)}
+          ref={(el) => (this.linkTag = el as HTMLElement)}
         >
-          <slot/>
-        </p-text>
-      </TagType>
+          <p-icon
+            class={iconClasses}
+            color="inherit"
+            size="inherit"
+            name={this.icon}
+            source={this.iconSource}
+            ref={(el) => (this.iconTag = el as HTMLElement)}
+            aria-hidden="true"
+          />
+          <p-text class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
+            <slot />
+          </p-text>
+        </TagType>
+        {this.subline && (
+          <p-text class={sublineClasses} color="inherit" size="inherit" tag="div">
+            <slot name="subline" />
+          </p-text>
+        )}
+      </Host>
     );
+  }
+  private setSubline(): void {
+    this.subline = this.host.querySelector('[slot="subline"]');
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.host.tagName.toLowerCase();
+    const style = `a:focus ${tagName} {
+      outline: 2px solid #00d5b9;
+      outline-offset: 1px;
+    }
+
+    /* only for IE11/Edge */
+    ${tagName} a {
+      text-decoration: none !important;
+    }
+    ${tagName} a:focus {
+      outline: none !important;
+    }
+
+    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
+    ${tagName} a::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      display: block !important;
+      outline: transparent none !important;
+      transition: outline-color 0.24s ease !important;
+    }
+
+    ${tagName} a:focus::before {
+      outline-offset: 1px !important;
+      outline: #00d5b9 solid 2px !important;
+    }
+    `;
+
+    insertSlottedStyles(this.host, style);
   }
 }

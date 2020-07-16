@@ -1,5 +1,5 @@
 # Spacing
-We use predefined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes development easier. For fluid layouts the spacings should be used in combination with the [Responsive Grid](#/components/layout/grid).
+We use predefined spacings to position components vertically and horizontally within a layout. Reusing defined spacings provides a consistent user experience across all pages and makes development easier. For fluid layouts the spacings should be used in combination with the [Responsive Grid](#/components/grid).
 
 ### 8px spacing system - the Porsche formula
 
@@ -66,7 +66,7 @@ increments, but it allows 4px values in a few cases, where greater flexibility i
 needed. We recommend setting up the workspace with a 4px grid system. You can
 change the Sketch grid settings via: View → Canvas → Grid Settings → Grid Block
 Size: 4px. Or, when setting up a totally new UI design file, feel free to use
-the [Porsche Design System layout template](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch) with predefined settings.
+the [Porsche Design System layout template](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch) with predefined settings.
 
 ### Snap to grid
 Most design apps have the option to snap elements to the grid.

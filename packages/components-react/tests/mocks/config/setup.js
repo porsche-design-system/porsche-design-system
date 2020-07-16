@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom/extend-expect';
+require('@testing-library/jest-dom/extend-expect');
 
-jest.mock('../../../projects/components-wrapper/src', () => {
-  return require('../../../projects/components-wrapper/src/mocks');
-});
+jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks'));
