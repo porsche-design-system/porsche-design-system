@@ -1,4 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 @mixin p-radio-button-wrapper-label-text-visible() {
   position: static;
@@ -32,8 +33,8 @@
   position: absolute !important;
   top: -1px !important; // -1px because of focus box-shadow position
   left: -1px !important;
-  width: p-rem(26px) !important; // 2px wider to enable rounded focus style
-  height: p-rem(26px) !important;
+  width: p-px-to-rem(26px) !important; // 2px wider to enable rounded focus style
+  height: p-px-to-rem(26px) !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -103,7 +104,7 @@
       @include p-radio-button-wrapper-label-text-hidden;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &--visible-xs {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -113,7 +114,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &--visible-s {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -123,7 +124,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &--visible-m {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -133,7 +134,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &--visible-l {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -143,7 +144,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &--visible-xl {
         @include p-radio-button-wrapper-label-text-visible;
       }
@@ -156,8 +157,8 @@
 
   &__fake-radio-button {
     position: relative;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
     display: block;
     flex-shrink: 0;
     border-radius: 50%;
@@ -173,8 +174,8 @@
 
     &::before {
       content: "";
-      width: p-rem(16px);
-      height: p-rem(16px);
+      width: p-px-to-rem(16px);
+      height: p-px-to-rem(16px);
       border-radius: 50%;
       background-color: transparent;
       position: absolute;

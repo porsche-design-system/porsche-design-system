@@ -1,17 +1,15 @@
-import { pxToRem } from '../helper';
-
 export const spacing = {
-  '4': pxToRem('4px'),
-  '8': pxToRem('8px'),
-  '16': pxToRem('16px'),
-  '24': pxToRem('24px'),
-  '32': pxToRem('32px'),
-  '40': pxToRem('40px'),
-  '48': pxToRem('48px'),
-  '56': pxToRem('56px'),
-  '64': pxToRem('64px'),
-  '72': pxToRem('72px'),
-  '80': pxToRem('80px')
+  '4': '0.25rem',
+  '8': '0.5rem',
+  '16': '1rem',
+  '24': '1.5rem',
+  '32': '2rem',
+  '40': '2.5rem',
+  '48': '3rem',
+  '56': '3.5rem',
+  '64': '4rem',
+  '72': '4.5rem',
+  '80': '5rem'
 };
 
 export const layout = {
