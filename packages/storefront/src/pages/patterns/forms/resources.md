@@ -111,7 +111,7 @@ Top spacing defines the larger between the beginning of the form and the top of 
 .form-top-spacing {
   margin-top: $p-spacing-48;
 
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     margin-top: $p-spacing-64;
   }
 }
@@ -125,7 +125,7 @@ Bottom spacing defines the larger between the end of the form and the bottom of 
 .form-bottom-spacing {
   padding-bottom: $p-spacing-64;
   
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     padding-bottom: $p-spacing-80;
   }
 }
@@ -138,7 +138,7 @@ This slightly larger spacing is used to separate form sections or fieldsets from
 ```scss
 .form-section-spacing {
   margin-top: $p-spacing-40;
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     margin-top: $p-spacing-48;
   }
 }
@@ -151,7 +151,7 @@ Row spacing is used to add a small spacing between form rows. This should be res
 ```scss
 .form-row-spacing {
   margin-top: $p-spacing-16;
-  @include p-breakpoint('xs') {
+  @include p-media-query('xs') {
     &--xs {
       margin-top: $p-spacing-16;
     }
@@ -160,7 +160,7 @@ Row spacing is used to add a small spacing between form rows. This should be res
     }
   }
   
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     &--s {
       margin-top: $p-spacing-16;
     }
@@ -169,7 +169,7 @@ Row spacing is used to add a small spacing between form rows. This should be res
     }
   }
 
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     &--m {
       margin-top: $p-spacing-16;
     }
@@ -178,7 +178,7 @@ Row spacing is used to add a small spacing between form rows. This should be res
     }
   }
 
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     &--l {
       margin-top: $p-spacing-16;
     }
@@ -187,7 +187,7 @@ Row spacing is used to add a small spacing between form rows. This should be res
     }
   }
 
-  @include p-breakpoint('xl') {
+  @include p-media-query('xl') {
     &--xl {
       margin-top: $p-spacing-16;
     }
@@ -228,7 +228,7 @@ This functionality will be added to the form components in the future.
     width: auto;
   }
 
-  @include p-breakpoint('xs') {
+  @include p-media-query('xs') {
     &--full-xs {
       width: 100%;
     }
@@ -237,7 +237,7 @@ This functionality will be added to the form components in the future.
     }
   }
 
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     &--full-s {
       width: 100%;
     }
@@ -246,7 +246,7 @@ This functionality will be added to the form components in the future.
     }
   }
   
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     &--full-m {
       width: 100%;
     }
@@ -255,7 +255,7 @@ This functionality will be added to the form components in the future.
     }
   }
 
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     &--full-l {
       width: 100%;
     }
@@ -264,7 +264,7 @@ This functionality will be added to the form components in the future.
     }
   }
   
-  @include p-breakpoint('xl') {
+  @include p-media-query('xl') {
     &--full-xl {
       width: 100%;
     }

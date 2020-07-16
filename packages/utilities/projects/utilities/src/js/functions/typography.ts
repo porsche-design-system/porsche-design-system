@@ -1,6 +1,9 @@
-import { font, FontWeight } from '../variables';
+import { font } from '../variables';
 import { mediaQuery } from './media-query';
-import { typeScale } from '../helper';
+
+/*
+ * Title
+ */
 
 const { family, size, weight } = font;
 
@@ -19,6 +22,10 @@ export const title = {
     [mediaQuery('xl')]: size['72']
   }
 };
+
+/*
+ * Headline
+ */
 
 export const headline = {
   '1': {
@@ -59,13 +66,19 @@ export const headline = {
   }
 };
 
-export const text = (fontSize?: string, fontWeight?: FontWeight) => {
-  const { family, size, weight } = font;
-  const fontSizeAndLineHeight = fontSize ? typeScale(fontSize) : size.small;
+/*
+ * Text
+ */
 
-  return {
-    fontFamily: family,
-    ...fontSizeAndLineHeight,
-    weight: weight[fontWeight ?? 'regular']
-  };
+const baseText = {
+  fontFamily: font.family,
+  fontWeight: font.weight.regular
+};
+
+export const text = {
+  xSmall: { ...baseText, ...font.size.xSmall },
+  small: { ...baseText, ...font.size.small },
+  medium: { ...baseText, ...font.size.medium },
+  large: { ...baseText, ...font.size.large },
+  xLarge: { ...baseText, ...font.size.xLarge }
 };

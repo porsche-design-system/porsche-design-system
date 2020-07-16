@@ -1,6 +1,5 @@
 ![Porsche Marque](https://upload.wikimedia.org/wikipedia/de/thumb/7/70/Porsche_Logo.svg/258px-Porsche_Logo.svg.png)
 
-
 # Porsche Design System
 
 ## Build status
