@@ -48,7 +48,7 @@
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
     "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'",
     "build:style": "ts-node --project './tsconfig.json' './scripts/build.ts'",
-    "clean": "rm -rf ./dist && rm -rf ./scss.scss"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
     "typescript": "~3.9.6"
