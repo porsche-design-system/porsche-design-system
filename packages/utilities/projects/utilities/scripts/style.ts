@@ -56,14 +56,14 @@ const toHash = (str: string): string =>
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('node-sass');
 
-  const scssPath = path.resolve(__dirname, '../src/style/style.scss');
+  const scssPath = path.resolve(__dirname, '../src/style/font-face.scss');
   const result = sass.renderSync({
     file: scssPath,
     outputStyle: 'compressed'
   });
 
   const hash = opts.addContentBasedHash ? `.${toHash(result.css)}` : '';
-  const filename = `style.min${hash}.css`;
+  const filename = `font-face.min${hash}.css`;
   const targetPath = path.normalize(`./dist/style/${filename}`);
 
   fs.writeFileSync(targetPath, result.css);
