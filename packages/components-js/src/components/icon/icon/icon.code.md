@@ -157,6 +157,28 @@ To reference an icon just use the `name` property with a predefined icon id.
     <p-icon :theme="theme" name="steering-wheel" aria-label="Steering wheel icon"></p-icon>
     <p-icon :theme="theme" name="tachometer" aria-label="Tachometer icon"></p-icon>
     <p-icon :theme="theme" name="truck" aria-label="Truck icon"></p-icon>
+    <p-icon :theme="theme" name="active-cabin-ventilation" aria-label="Active cabin ventilation icon"></p-icon>
+    <p-icon :theme="theme" name="battery-full" aria-label="Battery full icon"></p-icon>
+    <p-icon :theme="theme" name="bell" aria-label="Bell icon"></p-icon>
+    <p-icon :theme="theme" name="bookmark" aria-label="Bookmark icon"></p-icon>
+    <p-icon :theme="theme" name="car-battery" aria-label="Car battery icon"></p-icon>
+    <p-icon :theme="theme" name="charging-active" aria-label="Charging active icon"></p-icon>
+    <p-icon :theme="theme" name="charging-state" aria-label="Charging state icon"></p-icon>
+    <p-icon :theme="theme" name="climate" aria-label="climate icon"></p-icon>
+    <p-icon :theme="theme" name="climate-control" aria-label="Climate control icon"></p-icon>
+    <p-icon :theme="theme" name="garage" aria-label="Garage icon"></p-icon>
+    <p-icon :theme="theme" name="horn" aria-label="Horn icon"></p-icon>
+    <p-icon :theme="theme" name="key" aria-label="Key icon"></p-icon>
+    <p-icon :theme="theme" name="map" aria-label="Map icon"></p-icon>
+    <p-icon :theme="theme" name="parking-brake" aria-label="Parking brake icon"></p-icon>
+    <p-icon :theme="theme" name="parking-light" aria-label="Parking light icon"></p-icon>
+    <p-icon :theme="theme" name="preheating" aria-label="Preheating icon"></p-icon>
+    <p-icon :theme="theme" name="send" aria-label="Send icon"></p-icon>
+    <p-icon :theme="theme" name="shopping-bag" aria-label="Shopping bag icon"></p-icon>
+    <p-icon :theme="theme" name="sidelights" aria-label="Sidelights icon"></p-icon>
+    <p-icon :theme="theme" name="user-manual" aria-label="User manual icon"></p-icon>
+    <p-icon :theme="theme" name="vehicle" aria-label="Vehicle icon"></p-icon>
+    <p-icon :theme="theme" name="wrenches" aria-label="Wrenches icon"></p-icon>
   </template>
 </Playground>
     
