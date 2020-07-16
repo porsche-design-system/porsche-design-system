@@ -16,11 +16,11 @@
   &--color-theme-light-default {
     background: $p-color-default;
   }
-  &--color-theme-light-surface {
-    background: $p-color-surface;
+  &--color-theme-light-background-default {
+    background: $p-color-background-default;
   }
-  &--color-theme-light-background {
-    background: $p-color-background;
+  &--color-theme-light-background-surface {
+    background: $p-color-background-surface;
   }
   &--color-theme-light-background-shading {
     background: $p-color-background-shading;
@@ -76,11 +76,11 @@
   &--color-theme-dark-default {
     background: $p-color-theme-dark-default;
   }
-  &--color-theme-dark-surface {
-    background: $p-color-theme-dark-surface;
+  &--color-theme-dark-background-default {
+    background: $p-color-theme-dark-background-default;
   }
-  &--color-theme-dark-background {
-    background: $p-color-theme-dark-background;
+  &--color-theme-dark-background-surface {
+    background: $p-color-theme-dark-background-surface;
   }
   &--color-theme-dark-background-shading {
     background: $p-color-theme-dark-background-shading;
@@ -204,8 +204,8 @@
 }
 
 .font {
-  @include p-text();
-  font-family: $p-font-primary;
+  @include p-text-small;
+  font-family: $p-font-family;
 
   &--thin {
     font-weight: $p-font-weight-thin;
@@ -221,78 +221,78 @@
   }
 
   &--size-12 {
-    @include p-text($p-font-size-12);
+    @include p-generate-font-definition($p-font-size-12, $p-font-weight-regular);
   }
   &--size-16 {
-    @include p-text($p-font-size-16);
+    @include p-generate-font-definition($p-font-size-16, $p-font-weight-regular);
   }
   &--size-18 {
-    @include p-text($p-font-size-18);
+    @include p-generate-font-definition($p-font-size-18, $p-font-weight-regular);
   }
   &--size-20 {
-    @include p-text($p-font-size-20);
+    @include p-generate-font-definition($p-font-size-20, $p-font-weight-regular);
   }
   &--size-22 {
-    @include p-text($p-font-size-22);
+    @include p-generate-font-definition($p-font-size-22, $p-font-weight-regular);
   }
   &--size-24 {
-    @include p-text($p-font-size-24);
+    @include p-generate-font-definition($p-font-size-24, $p-font-weight-regular);
   }
   &--size-28 {
-    @include p-text($p-font-size-28);
+    @include p-generate-font-definition($p-font-size-28, $p-font-weight-regular);
   }
   &--size-30 {
-    @include p-text($p-font-size-30);
+    @include p-generate-font-definition($p-font-size-30, $p-font-weight-regular);
   }
   &--size-32 {
-    @include p-text($p-font-size-32);
+    @include p-generate-font-definition($p-font-size-32, $p-font-weight-regular);
   }
   &--size-36 {
-    @include p-text($p-font-size-36);
+    @include p-generate-font-definition($p-font-size-36, $p-font-weight-regular);
   }
   &--size-42 {
-    @include p-text($p-font-size-42);
+    @include p-generate-font-definition($p-font-size-42, $p-font-weight-regular);
   }
   &--size-44 {
-    @include p-text($p-font-size-44);
+    @include p-generate-font-definition($p-font-size-44, $p-font-weight-regular);
   }
   &--size-48 {
-    @include p-text($p-font-size-48);
+    @include p-generate-font-definition($p-font-size-48, $p-font-weight-regular);
   }
   &--size-52 {
-    @include p-text($p-font-size-52);
+    @include p-generate-font-definition($p-font-size-52, $p-font-weight-regular);
   }
   &--size-60 {
-    @include p-text($p-font-size-60);
+    @include p-generate-font-definition($p-font-size-60, $p-font-weight-regular);
   }
   &--size-62 {
-    @include p-text($p-font-size-62);
+    @include p-generate-font-definition($p-font-size-62, $p-font-weight-regular);
   }
   &--size-72 {
-    @include p-text($p-font-size-72);
+    @include p-generate-font-definition($p-font-size-72, $p-font-weight-regular);
   }
   &--size-84 {
-    @include p-text($p-font-size-84);
+    @include p-generate-font-definition($p-font-size-84, $p-font-weight-regular);
   }
   &--size-xSmall {
-    @include p-text($p-text-size-x-small);
+    @include p-text-x-small;
   }
   &--size-small {
-    @include p-text($p-text-size-small);
+    @include p-text-small;
   }
   &--size-medium {
-    @include p-text($p-text-size-medium);
+    @include p-text-medium;
   }
   &--size-large {
-    @include p-text($p-text-size-large);
+    @include p-text-large;
   }
   &--size-xLarge {
-    @include p-text($p-text-size-x-large);
+    @include p-text-x-large;
   }
 }
 
-.large-title {
-  @include p-large-title;
+.title-large {
+  @include p-title-large;
 }
 
 .headline-1 {

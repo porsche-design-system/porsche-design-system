@@ -42,10 +42,3 @@ $p-breakpoint: (
     }
   }
 }
-
-// alias for p-media-query for backwards compatibility
-@mixin p-breakpoint($min-breakpoint: null, $max-breakpoint: null) {
-  @include p-media-query($min-breakpoint, $max-breakpoint) {
-    @content;
-  }
-}

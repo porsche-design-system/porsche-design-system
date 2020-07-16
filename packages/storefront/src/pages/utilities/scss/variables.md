@@ -23,9 +23,9 @@ A light and dark theme is available depending on which background it's used.
 
 |                                                   |                |      	             |
 |---------------------------------------------------|----------------|--------------------|
-| <ColorBadge :theme="theme" color="background"/>   | **Background** | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background` |
-| <ColorBadge :theme="theme" color="background-shading"/>      | **Background Shading**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-shading` |
-| <ColorBadge :theme="theme" color="surface"/>      | **Surface**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}surface` |
+| <ColorBadge :theme="theme" color="background-default"/>      | **Default**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-default` |
+| <ColorBadge :theme="theme" color="background-surface"/>      | **Surface**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-surface` |
+| <ColorBadge :theme="theme" color="background-shading"/>      | **Shading**    | `$p-color{{theme === 'dark' ? '-theme-dark-' : '-'}}background-shading` |
 
 <template v-if="theme === 'light'">
 
@@ -119,7 +119,7 @@ For font styling it's recommended to use the [`<p-headline>`](#/components/typog
 Contains Porsche Next and predefined fallback fonts:
 
 ```
-$p-font-primary
+$p-font-family
 ```
 
 ### Weight
@@ -144,24 +144,14 @@ Possible variable for usage with SCSS (where {v} is the font size value):
 $p-font-size-{v};
 ```
 
-#### Predefined text sizes
+#### Predefined font sizes
 Given values are:  
  
 `x-small | small | medium | large | x-large`
 
 Possible variable for usage with SCSS (where {v} is the font size value):
 ```
-$p-text-size-{v};
-```
-
----
-
-## Animation
-
-### Hover
-```
-$p-animation-hover-duration
-$p-animation-hover-bezier
+$p-font-size-{v};
 ```
 
 <script lang="ts">
