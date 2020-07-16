@@ -29,15 +29,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - shopping-bag
 - sidelights
 - user-manual
-- vehicle
-- wrenches)
+- wrenches
 
 #### Changed
 - arrow-last
 - battery-empty
+- car
 - card
 - charging-station
-- question)
+- question
 
 #### Added
 - Initial icon set
