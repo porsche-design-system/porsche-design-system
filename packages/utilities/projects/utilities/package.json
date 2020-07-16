@@ -42,7 +42,7 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "build": "yarn clean && yarn build:lib && yarn build:scss && yarn build:style",
+    "build": "yarn clean && yarn build:style && yarn build:lib && yarn build:scss",
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
