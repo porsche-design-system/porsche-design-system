@@ -1,7 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
   "scope": "@porsche-design-system",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -48,9 +47,6 @@
     "typescript": "^3.9.6"
   },
   "files": [
-    "dist/cjs/*",
-    "dist/esm/*",
-    "dist/umd/*",
-    "dist/types/*"
+    "dist/"
   ]
 }
