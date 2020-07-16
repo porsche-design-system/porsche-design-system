@@ -177,7 +177,6 @@ To reference an icon just use the `name` property with a predefined icon id.
     <p-icon :theme="theme" name="shopping-bag" aria-label="Shopping bag icon"></p-icon>
     <p-icon :theme="theme" name="sidelights" aria-label="Sidelights icon"></p-icon>
     <p-icon :theme="theme" name="user-manual" aria-label="User manual icon"></p-icon>
-    <p-icon :theme="theme" name="vehicle" aria-label="Vehicle icon"></p-icon>
     <p-icon :theme="theme" name="wrenches" aria-label="Wrenches icon"></p-icon>
   </template>
 </Playground>
