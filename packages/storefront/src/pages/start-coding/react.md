@@ -1,4 +1,5 @@
-# React - Sample integration
+# React
+## Sample integration
 
 You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
 
@@ -95,48 +96,64 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
 They are distributed in the `@porsche-design-system/components-react` npm package.
 
-The mocks must only be used if functionality of the web component is required within the test.
+The mocks must only be used if the functionality of the web component is required within the test.
 As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
-To consume the mocks you can set them up via your **setupTest.ts** file in your root folder and copy the following snippet into the setup file.
-
-```
-// setupTest.ts
-
-jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks');
-});
-```
 You have to access the mocks in the Mock-Factory of the `jest.mock()` function. 
 
-If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
+### Global Mocks
+
+To consume the mocks you can set them up via your **setupTest.{js|ts}** file in your root folder and copy the following snippet into the setup file.
+
+```
+// setupTest.{js|ts}
+
+jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks'));
+```
 
 ```
 // SingleComponent.tsx
 
-export function SingleComponent() {
-    return (
-        <PHeadline>Some headline</PHeadline>
-    )
-}
+export const SingleComponent = () => (
+    <PHeadline>Some headline</PHeadline>
+)
 ```
 
 ```
 // SingleComponent.test.tsx
 
-jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks/p-headline-mock');
+test('renders a headline from Porsche Design System', async () => {
+    const { getByText } = render(<SingleComponent />);
+    const headLineElement = getByText('Some headline');
+    expect(headLineElement).toBeInTheDocument();
 });
+```
+
+### Local Mocks
+If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
+
+```
+// SingleComponent.tsx
+
+export const SingleComponent = () => (
+    <PHeadline>Some headline</PHeadline>
+)
+```
+
+```
+// SingleComponent.test.tsx
+
+jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks/p-headline-mock'));
 
 test('renders a headline from Porsche Design System', async () => {
-    const {getByText} = render(<SingleComponent/>);
+    const { getByText } = render(<SingleComponent />);
     const headLineElement = getByText('Some headline');
     expect(headLineElement).toBeInTheDocument();
 });
 ```
 
 Use this solution until **Creat React App** upgrades to a newer **jsdom** version which provides support for **Web Components**.
-In the meantime we keep providing mocks.
+In the meantime, we keep providing mocks.
  
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
    

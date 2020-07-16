@@ -1,8 +1,9 @@
-@import "../../../../../../../packages/scss-utils/index";
+@import "../../../../../../../packages/utilities/projects/utilities/scss";
+@import '../../../../styles/internal.variables';
 
-$p-grid-gutter: p-rem(16px);
-$p-grid-gutter-s: p-rem(24px);
-$p-grid-gutter-m: p-rem(36px);
+$p-grid-gutter: p-px-to-rem(16px);
+$p-grid-gutter-s: p-px-to-rem(24px);
+$p-grid-gutter-m: p-px-to-rem(36px);
 
 $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333333% 66.666667% 75% 83.333333% 91.666667% 100%;
 
@@ -21,14 +22,14 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
     right: $p-grid-gutter / 2 !important;
   }
 
-  @include p-breakpoint("s", "m") {
+  @include p-media-query("s", "m") {
     padding: {
       left: $p-grid-gutter-s / 2 !important;
       right: $p-grid-gutter-s / 2 !important;
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     padding: {
       left: $p-grid-gutter-m / 2 !important;
       right: $p-grid-gutter-m / 2 !important;
@@ -42,7 +43,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       @for $i from 1 through 12 {
         &-#{$i}-xs {
           @include p-grid-item-size($i + 1);
@@ -50,7 +51,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       @for $i from 1 through 12 {
         &-#{$i}-s {
           @include p-grid-item-size($i + 1);
@@ -58,7 +59,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       @for $i from 1 through 12 {
         &-#{$i}-m {
           @include p-grid-item-size($i + 1);
@@ -66,7 +67,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       @for $i from 1 through 12 {
         &-#{$i}-l {
           @include p-grid-item-size($i + 1);
@@ -74,7 +75,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       @for $i from 1 through 12 {
         &-#{$i}-xl {
           @include p-grid-item-size($i + 1);
@@ -90,7 +91,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       @for $i from 0 through 11 {
         &-#{$i}-xs {
           @include p-grid-item-offset($i + 1);
@@ -98,7 +99,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       @for $i from 0 through 11 {
         &-#{$i}-s {
           @include p-grid-item-offset($i + 1);
@@ -106,7 +107,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       @for $i from 0 through 11 {
         &-#{$i}-m {
           @include p-grid-item-offset($i + 1);
@@ -114,7 +115,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       @for $i from 0 through 11 {
         &-#{$i}-l {
           @include p-grid-item-offset($i + 1);
@@ -122,7 +123,7 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       @for $i from 0 through 11 {
         &-#{$i}-xl {
           @include p-grid-item-offset($i + 1);

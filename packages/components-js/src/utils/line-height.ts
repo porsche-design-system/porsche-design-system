@@ -1,26 +1,7 @@
-/**
- * Scaling method of the line-height regarding its given font-size.
- * This scaling formula also exists in scss utils function p-line-height.
- * @param fontSize
- * @returns number
- */
-export const lineHeightFactor = (fontSize: number): number => {
-  const e = 2.71828;
-  const exactLineHeightFactor = 0.911 / ( 2.97 + 0.005 * Math.pow( e, 0.2 * fontSize ) ) + 1.2;
-  const exactLineHeightPx = fontSize * exactLineHeightFactor;
-  let remainingPx = exactLineHeightPx % 4;
-
-  if (remainingPx > 2) {
-    remainingPx = remainingPx - 4;
-  }
-
-  const fittedLineHeightPx = exactLineHeightPx - remainingPx;
-  const fittedLineHeightFactor = fittedLineHeightPx / fontSize;
-
-  return fittedLineHeightFactor;
-};
+import { calculateLineHeight } from '@porsche-design-system/utilities';
 
 export const calcLineHeightForElement = (tag: HTMLElement): number => {
-  const fontSize = parseInt(window.getComputedStyle(tag).fontSize, 10);
-  return lineHeightFactor(fontSize);
+  const { fontSize } = window.getComputedStyle(tag);
+  // fontSize is "" when element does no longer exist and would throw an exception in calculateLineHeight
+  return fontSize && calculateLineHeight(fontSize);
 };

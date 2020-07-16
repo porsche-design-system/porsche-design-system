@@ -1,4 +1,5 @@
-# Start Designing
+# Introduction
+## Start Designing
 
 The Porsche Design System enables designers to create outstanding digital designs by using the pre-built libraries, styles and templates - fast and high-quality. If you are working for a digital product of Porsche we are happy to invite you to our UX onboarding process and tell you more about our culture of designing great digital experiences and give you access to all of our tools, methods and communication channels: 
 
@@ -10,11 +11,11 @@ To improve output efficiency and reduce maintenance costs, at Porsche we decided
 You can find a [detailed guideline on how to use Abstract here](#/start-designing/design-workflow)
 
 ## 2. Get inspired 
-After you received your Abstract invitation you can get a smooth and easy onboaring experience. You are welcome to have a look into other digital Porsche projects within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects) and use them as starting point.
+After you received your Abstract invitation you can get a smooth and easy onboarding experience. You are welcome to have a look into other digital Porsche projects within our [Porsche Abstract Organisation](https://app.abstract.com/organizations/bc37bb03-3469-4b15-99a2-60dbec187bce/projects) and use them as a starting point.
 
 ## 3. Layout setup
 There's no need to design from scratch anymore! Instead, you can use our pre-built Sketch layout templates. They contain artboards in all relevant responsive screen sizes enriched by the right layout and grid presets (which can be turned visible via: View → Canvas → Show Layout).  
-[Download Sketch Layout Template](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch)
+[Download Sketch Layout Template](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch)
 
 ## 4. Sketch libraries and resources
 The components of the Porsche Design System are provided in two Sketch libraries that can be easily linked with Sketch by clicking on the following RSS library links. Once linked, Sketch will automatically check for updates. 
@@ -30,13 +31,13 @@ The web library provides components like buttons, form elements and many more th
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to be aligned on the version you're using.
 
 ### Porsche Next font
-In order to design Porsche web applications and to use the Porsche Design System libraries properly you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).  
+In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).  
 
 ## 5. Additional tools
 
 ## Sketch color palette
 Enrich your Porsche design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette in Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
-[Download Porsche color palette](https://designsystem.porsche.com/latest/porsche-design-system-colors.sketchpalette)
+[Download Porsche color palette](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette)
 
 ## Other helpful Sketch plugins
 A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/start-designing/sketch-plugins).

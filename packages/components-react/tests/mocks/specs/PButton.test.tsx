@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PButton } from '../../../projects/components-wrapper/src';
+import { PButton } from '@porsche-design-system/components-react';
 
 describe('PButton', () => {
   it('should fire events on button click', () => {
@@ -11,8 +11,8 @@ describe('PButton', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should render TagName of component', ()=> {
-    const {container} = render(<PButton/>);
+  it('should render TagName of component', () => {
+    const { container } = render(<PButton />);
     expect(container.getElementsByTagName('p-button')).toBeTruthy();
   });
 });

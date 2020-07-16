@@ -38,16 +38,14 @@ Choose between a set of pre-defined social icons.
 
 ---
 
-## Wrapped with an anchor tag 
+## Framework routing (anchor nesting)
+
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
-    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener">
-      <p-link-social icon="logo-facebook" :theme="theme">Facebook</p-link-social>
-    </a>
-    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener">
-      <p-link-social icon="logo-facebook" hide-label="true" :theme="theme">Facebook</p-link-social>
-    </a>
+    <p-link-social :theme="theme" icon="logo-facebook"><a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a></p-link-social>
+    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener"><p-link-social icon="logo-facebook" :theme="theme">Facebook</p-link-social></a>
   </template>
 </Playground>
 
@@ -91,7 +89,7 @@ If another icon needs to be implemented, just replace the default icon with anot
 // With CSS Grid (The more elegant way but not suppoerted by IE11)
 .example-grouped {
   display: grid;
-  grid-template-columns: repeat(auto-fit, p-rem(48px));
+  grid-template-columns: repeat(auto-fit, p-px-to-rem(48px));
   grid-column-gap: $p-spacing-8;
   grid-row-gap: $p-spacing-8;
 }
@@ -152,7 +150,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/scss-utils/index";
+  @import "~@porsche-design-system/utilities/scss";
   
   .example-link {
     display: inline-block;

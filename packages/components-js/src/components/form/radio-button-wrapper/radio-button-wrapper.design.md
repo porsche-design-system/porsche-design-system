@@ -28,11 +28,11 @@ The label text (always in copytext) gives the user an information about the opti
 
 ### Validation and error
 For a group of Radio Buttons the validation message is set at the end of the list. This means that the validation for a Radio Button behaves differently from the other form elements where the validation is set for each individual component.
-Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Spacing
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ---
 
@@ -69,5 +69,5 @@ Never use a Radio Button alone.
 
 ## Related Components
 
-* [Checkbox](#/components/form/checkbox)
-* [Select](#/components/form/select)
+* [Checkbox](#/components/checkbox)
+* [Select](#/components/select)

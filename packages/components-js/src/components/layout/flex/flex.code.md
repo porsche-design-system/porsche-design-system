@@ -1,6 +1,6 @@
 # Flex
 
-The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the Flex container and Flex item. It can be used to quickly layout standard content blocks or components. It does not replace the [Grid](#/components/layout/grid) component which should be used to define basic page structures.
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the Flex container and Flex item. It can be used to quickly layout standard content blocks or components. It does not replace the [Grid](#/components/grid) component which should be used to define basic page structures.
 
 ### Flex
 Initialize standard Flexbox container to define Flex context.
@@ -666,7 +666,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 </Playground>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
 
   $color-blue-1: lightskyblue;
   $color-blue-2: deepskyblue;
@@ -676,7 +676,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
   .example-flex {
     & > * {
-      @include p-text;
+      @include p-text-small;
       padding: 0 6vw;
       color: $p-color-theme-dark-default;
       text-align: center;

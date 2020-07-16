@@ -1,0 +1,27 @@
+{
+  "name": "@porsche-design-system/cdn-local",
+  "version": "0.0.0",
+  "private": true,
+  "bin": {
+    "start-cdn-local": "./dist/start-cdn-local.js"
+  },
+  "scripts": {
+    "start": "yarn build && node ./dist/start-cdn-local.js",
+    "build": "yarn build:clean && yarn build:contents && yarn build:bin",
+    "build:clean": "rm -rf ./dist",
+    "build:contents": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:bin": "tsc --build './tsconfig.json' && chmod +x dist/start-cdn-local.js",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@porsche-design-system/icons": "0.0.0",
+    "@porsche-design-system/marque": "0.0.0",
+    "http-server": "^0.12.1"
+  },
+  "devDependencies": {
+    "@types/http-server": "^0.10.0",
+    "ts-node": "^8.10.2",
+    "typescript": "~3.9.6"
+  }
+}

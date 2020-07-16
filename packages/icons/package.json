@@ -14,7 +14,8 @@
     "Stephan Schröter <stephan.schroeter@mhp.com>",
     "Olivia Pala <olivia.pala@udg.de>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Melanie Kolar <melanie.kolar@udg.de>"
+    "Melanie Kolar <melanie.kolar@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Icons",
@@ -40,14 +41,14 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {
-    "@types/js-yaml": "^3.12.4",
+    "@types/js-yaml": "^3.12.5",
     "@types/svgo": "^1.3.3",
     "change-case": "^4.1.1",
-    "globby": "^11.0.0",
+    "globby": "^11.0.1",
     "js-yaml": "^3.14.0",
     "svgo": "^1.3.2",
-    "ts-node": "^8.10.1",
-    "typescript": "~3.9.3"
+    "ts-node": "^8.10.2",
+    "typescript": "~3.9.6"
   },
   "files": [
     "dist/"
