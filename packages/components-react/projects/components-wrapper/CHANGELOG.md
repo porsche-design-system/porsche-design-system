@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.0] - 2020-07-16
+
 #### Added
 - Icons (active-cabin-ventilation, battery-full, bell, bookmark, car-battery, charging-active, charging-state, climate, climate-control, garage, horn, key, map, parking-brake, parking-light, preheating, send, shopping-bag, sidelights, user-manual, wrenches)
 
