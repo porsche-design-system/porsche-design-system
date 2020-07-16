@@ -4,15 +4,6 @@ import globby from 'globby';
 import { CDN_BASE_URL, FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { buildStyle } from './style';
 
-const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
-  try {
-    await fs.promises.access(path, fs.constants.F_OK);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
 const createGlobalCSS = async (cdn: string, files: string[]): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
 
