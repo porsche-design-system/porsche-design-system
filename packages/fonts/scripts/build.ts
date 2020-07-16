@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 
-export type Manifest = {
+type Manifest = {
   [name: string]: {
     woff: string;
     woff2: string;
