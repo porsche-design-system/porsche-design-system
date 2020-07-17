@@ -54,7 +54,7 @@ The language is set by scanning the `html` tag for the `lang` attribute. Support
 
 ...
 
-  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
 </body>
 ```
 
@@ -75,7 +75,7 @@ Add the JS function before the `<script>` tag of the `init.js` reference and pro
      }
    }
  </script>
- <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+ <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
 ```
 
 ##### Case 2 -  You need a custom translation because the language is not provided within the script:
@@ -90,7 +90,7 @@ Add the JS function before the `<script>` tag of the `init.js` reference and pro
      }
    }
  </script>
- <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+ <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
 ```
 
 #### How it works
