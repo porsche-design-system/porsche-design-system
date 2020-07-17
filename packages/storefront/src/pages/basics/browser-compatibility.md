@@ -41,19 +41,61 @@ To help inform the user the end of support of IE11 and Microsoft Edge <=18 we pr
 
 #### Usage
 
-Just drop the JS snippet at the end of the `body` tag of your application. 
+Just drop the JS snippet at the end of the `body` tag of your application. Automatic translations for the following languages are provided: `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh'` 
+
+The language is set by scanning the `html` tag for the `lang` attribute. Supports is given for the following formats:
+- `lang="en"`
+- `lang="en_US"`
+- `lang="en-US"`
+
 
 ``` 
 <body>
 
 ...
 
-<script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
 </body>
+```
+
+#### Advanced usage
+
+Though we provide automatic translations, we cannot guarantee that this works in every environment. 
+If something fails we provide a customized language function which you can use like this:
+
+##### Case 1 - `lang` attribute of `html` tag is not detected or not set by the application:
+
+Add the JS function before the `<script>` tag of the `init.js` reference and provide a custom locale which **must be one of the pre-defined ones**:
+
+```
+ <script>
+   var PDSNB = {
+     locale: function () {
+       return 'fr'; // place your locale string here
+     }
+   }
+ </script>
+ <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
+```
+
+##### Case 2 -  You need a custom translation because the language is not provided within the script:
+
+Add the JS function before the `<script>` tag of the `init.js` reference and provide a custom language string:
+
+```
+ <script>
+   var PDSNB = {
+     language: function () {
+       return '<strong>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</strong><br> Stet clita kasd gubergren, no sea takimata sanctus est <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> o <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.';
+     }
+   }
+ </script>
+ <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/v1/init.js"></script>
 ```
 
 #### How it works
 
 The `init.js` is an `800 byte` sized file which has a browser detection for IE11 and Edge<=18. 
 If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
+TThe language is detected by scanning the `html` tag for the `lang` attribute.
 Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
