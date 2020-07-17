@@ -28,8 +28,8 @@
   @import "~@porsche-design-system/utilities/scss";
 
   .menu {
-    width: p-rem(40px);
-    height: p-rem(40px);
+    width: p-px-to-rem(40px);
+    height: p-px-to-rem(40px);
     padding: $p-spacing-8;
     cursor: pointer;
 
@@ -71,7 +71,7 @@
   .stripe {
     position: absolute;
     top: calc(50% - 1px);
-    width: p-rem(24px);
+    width: p-px-to-rem(24px);
     height: 2px;
     display: block;
     background: $p-color-theme-light-brand;
@@ -82,8 +82,8 @@
     &::before {
       content: "";
       position: absolute;
-      top: p-rem(-11px);
-      width: p-rem(24px);
+      top: p-px-to-rem(-11px);
+      width: p-px-to-rem(24px);
       height: 2px;
       display: block;
       transition-timing-function: ease;
@@ -96,8 +96,8 @@
     &::after {
       content: "";
       position: absolute;
-      bottom: p-rem(-11px);
-      width: p-rem(24px);
+      bottom: p-px-to-rem(-11px);
+      width: p-px-to-rem(24px);
       height: 2px;
       display: block;
       transition-timing-function: ease;
