@@ -20,7 +20,7 @@ const Square = styled.div(({ background }: { background?: CSSProperties['backgro
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
-const Text = styled.div(text());
+const Text = styled.div(text.small);
 
   export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
@@ -58,7 +58,7 @@ const Text = styled.div(text());
       <div className="playground">
         <h2>Font Weights</h2>
         {Object.entries(font.weight).map(([key, val]) => (
-          <Text key={key} style={{ fontWeight: val }} children={`Font ${key}`} />
+          <Text key={key} style={{ fontWeight: val, lineHeight: 1.5 }} children={`Font ${key}`} />
         ))}
       </div>
 

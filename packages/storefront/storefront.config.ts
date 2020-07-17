@@ -133,13 +133,13 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/pages/utilities/scss/variables.md`)
       ],
-      'Mixins': [
-        // @ts-ignore
-        () => import(`@/pages/utilities/scss/mixins.md`)
-      ],
       'Functions': [
         // @ts-ignore
         () => import(`@/pages/utilities/scss/functions.md`)
+      ],
+      'Helper': [
+        // @ts-ignore
+        () => import(`@/pages/utilities/scss/helper.md`)
       ]
     },
     'Js': {
