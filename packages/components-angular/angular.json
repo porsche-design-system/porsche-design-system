@@ -95,13 +95,13 @@
           "options": {
             "tsConfig": "projects/components-wrapper/tsconfig.lib.json",
             "project": "projects/components-wrapper/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/components-wrapper/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

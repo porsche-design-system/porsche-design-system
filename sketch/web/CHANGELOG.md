@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.0] - 2020-07-17
+
+#### Added
+Type | Web Library | 
+|---|---|
+Components | Select Flyout | 
+Components | Button and Link Pure with Subline | 
+
 ### [1.4.1] - 2020-05-27
 
 #### Fixed
