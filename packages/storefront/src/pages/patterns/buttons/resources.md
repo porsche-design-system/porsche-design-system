@@ -71,7 +71,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     @include p-col;
   }
   
-  @include p-breakpoint('xs') {
+  @include p-media-query('xs') {
     &-row--xs {
       @include p-row;
     }
@@ -81,7 +81,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     &-row--s {
       @include p-row;
     }
@@ -91,7 +91,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     &-row--m {
       @include p-row;
     }
@@ -101,7 +101,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     &-row--l {
       @include p-row;
     }
@@ -111,7 +111,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('xl') {
+  @include p-media-query('xl') {
     &-row--xl {
       @include p-row;
     }
@@ -162,7 +162,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     @include p-col;
   }
   
-  @include p-breakpoint('xs') {
+  @include p-media-query('xs') {
     &-row--xs {
       @include p-row;
     }
@@ -172,7 +172,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('s') {
+  @include p-media-query('s') {
     &-row--s {
       @include p-row;
     }
@@ -182,7 +182,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('m') {
+  @include p-media-query('m') {
     &-row--m {
       @include p-row;
     }
@@ -192,7 +192,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('l') {
+  @include p-media-query('l') {
     &-row--l {
       @include p-row;
     }
@@ -202,7 +202,7 @@ It's totally up to you and your team how to achieve the grouped button pattern d
     }
   }
   
-  @include p-breakpoint('xl') {
+  @include p-media-query('xl') {
     &-row--xl {
       @include p-row;
     }
