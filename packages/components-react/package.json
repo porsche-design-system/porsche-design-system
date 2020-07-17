@@ -12,7 +12,7 @@
     "test:mocks:ts": "jest --config='./tests/mocks/config/jest.config-ts.js'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
-    "clean": "rm -rf './node_modules' && rm -rf './yarn-error.log' && rm -rf './build'"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd projects/components-wrapper clean"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "1.5.0",

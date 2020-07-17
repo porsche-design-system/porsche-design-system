@@ -38,7 +38,8 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
-    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts and marque)
+    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts, marque and assets)
+    * `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
     * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --fonts` (builds the font set)
     * `./docker.sh run-build --marque` (builds the marque)
