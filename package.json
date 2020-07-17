@@ -47,7 +47,8 @@
     "start:storefront": "yarn --cwd ./packages/storefront start",
     "start:utilities": "yarn --cwd ./packages/utilities start",
     "build": "yarn build:core-dependencies && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,storefront' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:storefront'",
-    "build:core-dependencies": "concurrently -n 'utilities' 'yarn build:utilities' && concurrently -n 'utils' 'yarn build:utils' && concurrently --kill-others-on-fail -n 'icons,fonts,marque' 'yarn build:icons' 'yarn build:fonts' 'yarn build:marque' && yarn build:cdn-local",
+    "build:core-dependencies": "concurrently -n 'fonts' 'yarn build:fonts' && concurrently -n 'utilities' 'yarn build:utilities' && concurrently -n 'utils' 'yarn build:utils' && concurrently --kill-others-on-fail -n 'icons,marque' 'yarn build:icons' 'yarn build:marque' && yarn build:cdn-local && concurrently -n 'assets' 'yarn build:assets'",
+    "build:assets": "yarn --cwd ./packages/assets build",
     "build:icons": "yarn --cwd ./packages/icons build",
     "build:fonts": "yarn --cwd ./packages/fonts build",
     "build:marque": "yarn --cwd ./packages/marque build",
@@ -82,6 +83,16 @@
     "test:cbt:components-js": "yarn --cwd ./packages/components-js test:cbt",
     "test:cbt:components-angular": "yarn --cwd ./packages/components-angular test:cbt",
     "test:cbt:components-react": "yarn --cwd ./packages/components-react test:cbt",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./packages/icons clean && yarn --cwd ./packages/fonts clean && yarn --cwd ./packages/marque clean && yarn --cwd ./packages/components-js clean && yarn --cwd ./packages/utilities clean && yarn --cwd ./packages/storefront clean && yarn --cwd ./packages/components-angular clean && yarn --cwd ./packages/components-react clean && yarn --cwd ./packages/utils clean"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets && yarn clean:fonts && yarn clean:icons && yarn clean:marque && yarn clean:components && yarn clean:components-angular && yarn clean:components-react && yarn clean:storefront && yarn clean:utilities && yarn clean:utils",
+    "clean:assets": "yarn --cwd ./packages/assets clean",
+    "clean:fonts": "yarn --cwd ./packages/fonts clean",
+    "clean:icons": "yarn --cwd ./packages/icons clean",
+    "clean:marque": "yarn --cwd ./packages/marque clean",
+    "clean:components": "yarn --cwd ./packages/components-js clean",
+    "clean:components-angular": "yarn --cwd ./packages/components-angular clean",
+    "clean:components-react": "yarn --cwd ./packages/components-react clean",
+    "clean:storefront": "yarn --cwd ./packages/storefront clean",
+    "clean:utilities": "yarn --cwd ./packages/utilities clean",
+    "clean:utils": "yarn --cwd ./packages/utils clean"
   }
 }
