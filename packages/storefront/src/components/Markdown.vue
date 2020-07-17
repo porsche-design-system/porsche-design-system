@@ -13,6 +13,7 @@
 
 <style scoped lang="scss">
   @import "~@porsche-design-system/utilities/scss";
+  @import '../styles/internal.variables';
 
   /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
    * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
@@ -92,7 +93,7 @@
         }
 
         p {
-          @include p-text;
+          @include p-text-small;
           margin-top: $p-spacing-24;
         }
 
@@ -127,13 +128,13 @@
         // Blockquote
         blockquote {
           padding-left: $p-spacing-24;
-          border-left: p-rem(5px) solid $p-color-theme-light-neutral-contrast-low;
+          border-left: p-px-to-rem(5px) solid $p-color-theme-light-neutral-contrast-low;
         }
 
         // Lists
         ul,
         ol {
-          @include p-text;
+          @include p-text-small;
           margin-top: $p-spacing-24;
           padding-left: $p-spacing-32;
 
@@ -154,7 +155,7 @@
         // Code
         code,
         pre {
-          @include p-text($p-text-size-x-small);
+          @include p-text-x-small;
           font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
         }
 
@@ -184,11 +185,11 @@
           border-collapse: collapse;
 
           thead {
-            @include p-text;
+            @include p-text-small;
           }
 
           tbody {
-            @include p-text;
+            @include p-text-small;
           }
 
           th {

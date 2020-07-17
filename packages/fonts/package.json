@@ -37,14 +37,14 @@
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
     "change-case": "^4.1.1",
     "globby": "^11.0.1",
     "node-sass": "^4.14.1",
     "ts-node": "^8.10.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.9.6"
   },
   "files": [
     "dist/"

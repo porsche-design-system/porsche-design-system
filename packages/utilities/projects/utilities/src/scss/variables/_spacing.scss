@@ -1,19 +1,17 @@
-@import "./../functions/converter";
+@import "./../helper/index";
 
-// global spacing variables
-$p-spacing-4: p-rem(4px);
-$p-spacing-8: p-rem(8px);
-$p-spacing-16: p-rem(16px);
-$p-spacing-24: p-rem(24px);
-$p-spacing-32: p-rem(32px);
-$p-spacing-40: p-rem(40px);
-$p-spacing-48: p-rem(48px);
-$p-spacing-56: p-rem(56px);
-$p-spacing-64: p-rem(64px);
-$p-spacing-72: p-rem(72px);
-$p-spacing-80: p-rem(80px);
+$p-spacing-4: p-px-to-rem(4px);
+$p-spacing-8: p-px-to-rem(8px);
+$p-spacing-16: p-px-to-rem(16px);
+$p-spacing-24: p-px-to-rem(24px);
+$p-spacing-32: p-px-to-rem(32px);
+$p-spacing-40: p-px-to-rem(40px);
+$p-spacing-48: p-px-to-rem(48px);
+$p-spacing-56: p-px-to-rem(56px);
+$p-spacing-64: p-px-to-rem(64px);
+$p-spacing-72: p-px-to-rem(72px);
+$p-spacing-80: p-px-to-rem(80px);
 
-// reduced layout spacings
 $p-layout-x-small: $p-spacing-4;
 $p-layout-small: $p-spacing-8;
 $p-layout-medium: $p-spacing-16;

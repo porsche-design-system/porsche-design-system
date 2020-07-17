@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { PPagination } from '../../../projects/components-wrapper/src';
+import { PPagination } from '@porsche-design-system/components-react';
 
 describe('PPagination', () => {
   describe('active page in the middle', () => {
@@ -60,8 +60,8 @@ describe('PPagination', () => {
       callback.mockClear();
     });
 
-    it('should render TagName of component', ()=> {
-      const {container} = render(<PPagination/>);
+    it('should render TagName of component', () => {
+      const { container } = render(<PPagination />);
       expect(container.getElementsByTagName('p-pagination')).toBeTruthy();
     });
   });

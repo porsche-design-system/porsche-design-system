@@ -1,10 +1,11 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 @mixin p-button-pure-label-visible() {
   position: static;
   width: 100%;
   height: auto;
-  margin-left: p-rem(4px);
+  margin-left: p-px-to-rem(4px);
   padding: 0 .125em 0 0;
   white-space: normal;
   overflow: visible;
@@ -36,47 +37,47 @@
       height: 1.5em;
     }
   } @else {
-    @include p-type-scale($size);
+    @include p-generate-type-scale($size);
 
     & #{$prefix}__icon {
-      width: #{p-line-height($size)}em;
-      height: #{p-line-height($size)}em;
+      width: #{p-calculate-line-height($size)}em;
+      height: #{p-calculate-line-height($size)}em;
     }
 
     + * {
-      @if $size == $p-text-size-x-small {
-        @include p-type-scale($size);
+      @if $size == $p-font-size-x-small {
+        @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-small {
-        @include p-type-scale($size);
+      @else if $size == $p-font-size-small {
+        @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-medium {
-        @include p-type-scale($p-font-size-20);
+      @else if $size == $p-font-size-medium {
+        @include p-generate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
-          margin-left:#{p-line-height($size)}em;
+          margin-left:#{p-calculate-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-large {
-        @include p-type-scale($p-font-size-30);
+      @else if $size == $p-font-size-large {
+        @include p-generate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
-      @else if $size == $p-text-size-x-large {
-        @include p-type-scale($p-text-size-large);
+      @else if $size == $p-font-size-x-large {
+        @include p-generate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
-          margin-left: #{p-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
       }
       @else {
@@ -214,128 +215,128 @@
   }
 
   &--size-x-small {
-    @include p-button-pure-size($bem-block, $p-text-size-x-small);
+    @include p-button-pure-size($bem-block, $p-font-size-x-small);
   }
 
   &--size-small {
-    @include p-button-pure-size($bem-block, $p-text-size-small);
+    @include p-button-pure-size($bem-block, $p-font-size-small);
   }
 
   &--size-medium {
-    @include p-button-pure-size($bem-block, $p-text-size-medium);
+    @include p-button-pure-size($bem-block, $p-font-size-medium);
   }
 
   &--size-large {
-    @include p-button-pure-size($bem-block, $p-text-size-large);
+    @include p-button-pure-size($bem-block, $p-font-size-large);
   }
 
   &--size-x-large {
-    @include p-button-pure-size($bem-block, $p-text-size-x-large);
+    @include p-button-pure-size($bem-block, $p-font-size-x-large);
   }
 
   &--size-inherit {
     @include p-button-pure-size($bem-block, 'inherit');
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--size-x-small-xs {
-      @include p-button-pure-size($bem-block, $p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-xs {
-      @include p-button-pure-size($bem-block, $p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-xs {
-      @include p-button-pure-size($bem-block, $p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-xs {
-      @include p-button-pure-size($bem-block, $p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-xs {
-      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-xs {
       @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--size-x-small-s {
-      @include p-button-pure-size($bem-block, $p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-s {
-      @include p-button-pure-size($bem-block, $p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-s {
-      @include p-button-pure-size($bem-block, $p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-s {
-      @include p-button-pure-size($bem-block, $p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-s {
-      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-s {
       @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--size-x-small-m {
-      @include p-button-pure-size($bem-block, $p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-m {
-      @include p-button-pure-size($bem-block, $p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-m {
-      @include p-button-pure-size($bem-block, $p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-m {
-      @include p-button-pure-size($bem-block, $p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-m {
-      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-m {
       @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--size-x-small-l {
-      @include p-button-pure-size($bem-block, $p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-l {
-      @include p-button-pure-size($bem-block, $p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-l {
-      @include p-button-pure-size($bem-block, $p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-l {
-      @include p-button-pure-size($bem-block, $p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-l {
-      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-l {
       @include p-button-pure-size($bem-block, 'inherit');
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--size-x-small-xl {
-      @include p-button-pure-size($bem-block, $p-text-size-x-small);
+      @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
     &--size-small-xl {
-      @include p-button-pure-size($bem-block, $p-text-size-small);
+      @include p-button-pure-size($bem-block, $p-font-size-small);
     }
     &--size-medium-xl {
-      @include p-button-pure-size($bem-block, $p-text-size-medium);
+      @include p-button-pure-size($bem-block, $p-font-size-medium);
     }
     &--size-large-xl {
-      @include p-button-pure-size($bem-block, $p-text-size-large);
+      @include p-button-pure-size($bem-block, $p-font-size-large);
     }
     &--size-x-large-xl {
-      @include p-button-pure-size($bem-block, $p-text-size-x-large);
+      @include p-button-pure-size($bem-block, $p-font-size-x-large);
     }
     &--size-inherit-xl {
       @include p-button-pure-size($bem-block, 'inherit');
@@ -374,7 +375,7 @@
       @include p-button-pure-label-hidden;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &--visible-xs {
         @include p-button-pure-label-visible;
       }
@@ -384,7 +385,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &--visible-s {
         @include p-button-pure-label-visible;
       }
@@ -394,7 +395,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &--visible-m {
         @include p-button-pure-label-visible;
       }
@@ -404,7 +405,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &--visible-l {
         @include p-button-pure-label-visible;
       }
@@ -414,7 +415,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &--visible-xl {
         @include p-button-pure-label-visible;
       }

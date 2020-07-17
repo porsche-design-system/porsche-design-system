@@ -1,173 +1,214 @@
-import { convertLineHeight, pxToRem, remToPx, typeScale } from '@porsche-design-system/utilities';
+import {
+  calculateLineHeight,
+  pxToRem,
+  remToPx,
+  generateTypeScale,
+  generateFontDefinition
+} from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
   it('should return correct rem value for px', () => {
-    const testValue = pxToRem('16px');
-    expect(testValue).toEqual('1rem');
+    expect(pxToRem('16px')).toEqual('1rem');
+    expect(pxToRem('32.5px')).toEqual('2.03125rem');
+    expect(pxToRem('20px')).toEqual('1.25rem');
   });
 
-  it('should return correct rem value decimal px', () => {
-    const testValue2 = pxToRem('32.5px');
-    expect(testValue2).toEqual('2.03125rem');
+  it('should throw error if called with wrong unit', (done) => {
+    try {
+      pxToRem('2rem');
+    } catch (e) {
+      expect((e as Error).message).toBeDefined();
+      done();
+    }
   });
 
-  it('should return correct rem value decimal rem return', () => {
-    const testValue3 = pxToRem('20px');
-    expect(testValue3).toEqual('1.25rem');
+  it('should throw error if called with 0 value', (done) => {
+    try {
+      pxToRem('0rem');
+    } catch (e) {
+      expect((e as Error).message).toBeDefined();
+      done();
+    }
   });
 });
 
 describe('remToPx()', () => {
-  it('should throw error if called with wrong unit', () => {
+  it('should convert rem to px', () => {
+    expect(remToPx('1rem')).toBe('16px');
+    expect(remToPx('1.5rem')).toBe('24px');
+    expect(remToPx('1.6rem')).toBe('25.6px');
+  });
+
+  it('should throw error if called with wrong unit', (done) => {
     try {
       remToPx('2px');
     } catch (e) {
       expect((e as Error).message).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with 0 value', () => {
+  it('should throw error if called with 0 value', (done) => {
     try {
       remToPx('0rem');
     } catch (e) {
       expect((e as Error).message).toBeDefined();
+      done();
     }
-  });
-
-  it('should convert rem to px', () => {
-    const pxValue = remToPx('1rem');
-    expect(pxValue).toBe('16px');
   });
 });
 
-describe('convertLineHeight()', () => {
-  it('should throw error if called with wrong unit', () => {
+describe('generateFontDefinition()', () => {
+  it('should return correct font definition', () => {
+    const fontDefinition1 = generateFontDefinition('16px', 'regular');
+    const fontDefinition2 = generateFontDefinition('32px', 'bold');
+    expect(fontDefinition1).toEqual({
+      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
+      "fontSize": "1rem",
+      "fontWeight": 400,
+      "lineHeight": 1.5
+    });
+    expect(fontDefinition2).toEqual({
+      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
+      "fontSize": "2rem",
+      "fontWeight": 700,
+      "lineHeight": 1.375
+    });
+  });
+});
+
+describe('calculateLineHeight()', () => {
+  it('should throw error if called with wrong unit', (done) => {
     try {
-      convertLineHeight('2bs');
+      calculateLineHeight('2bs');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with wrong 0 as value', () => {
+  it('should throw error if called with wrong 0 as value', (done) => {
     try {
-      convertLineHeight('0rem');
+      calculateLineHeight('0rem');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
   it('should return correct lineHeight for 12px', () => {
-    const lineHeight = convertLineHeight('12px');
+    const lineHeight = calculateLineHeight('12px');
     expect(lineHeight).toBe(1.66667);
   });
 
   it('should return correct lineHeight for 16px', () => {
-    const lineHeight = convertLineHeight('16px');
+    const lineHeight = calculateLineHeight('16px');
     expect(lineHeight).toBe(1.5);
   });
 
   it('should return correct lineHeight for 18px', () => {
-    const lineHeight = convertLineHeight('18px');
+    const lineHeight = calculateLineHeight('18px');
     expect(lineHeight).toBe(1.55556);
   });
 
   it('should return correct lineHeight for 20px', () => {
-    const lineHeight = convertLineHeight('20px');
+    const lineHeight = calculateLineHeight('20px');
     expect(lineHeight).toBe(1.4);
   });
 
   it('should return correct lineHeight for 22px', () => {
-    const lineHeight = convertLineHeight('22px');
+    const lineHeight = calculateLineHeight('22px');
     expect(lineHeight).toBe(1.45455);
   });
 
   it('should return correct lineHeight for 24px', () => {
-    const lineHeight = convertLineHeight('24px');
+    const lineHeight = calculateLineHeight('24px');
     expect(lineHeight).toBe(1.5);
   });
 
   it('should return correct lineHeight for 28px', () => {
-    const lineHeight = convertLineHeight('28px');
+    const lineHeight = calculateLineHeight('28px');
     expect(lineHeight).toBe(1.42857);
   });
 
   it('should return correct lineHeight for 30px', () => {
-    const lineHeight = convertLineHeight('30px');
+    const lineHeight = calculateLineHeight('30px');
     expect(lineHeight).toBe(1.33333);
   });
 
   it('should return correct lineHeight for 32px', () => {
-    const lineHeight = convertLineHeight('32px');
+    const lineHeight = calculateLineHeight('32px');
     expect(lineHeight).toBe(1.375);
   });
 
   it('should return correct lineHeight for 36px', () => {
-    const lineHeight = convertLineHeight('36px');
+    const lineHeight = calculateLineHeight('36px');
     expect(lineHeight).toBe(1.33333);
   });
 
   it('should return correct lineHeight for 42px', () => {
-    const lineHeight = convertLineHeight('42px');
+    const lineHeight = calculateLineHeight('42px');
     expect(lineHeight).toBe(1.2381);
   });
 
   it('should return correct lineHeight for 44px', () => {
-    const lineHeight = convertLineHeight('44px');
+    const lineHeight = calculateLineHeight('44px');
     expect(lineHeight).toBe(1.18182);
   });
 
   it('should return correct lineHeight for 48px', () => {
-    const lineHeight = convertLineHeight('48px');
+    const lineHeight = calculateLineHeight('48px');
     expect(lineHeight).toBe(1.25);
   });
 
   it('should return correct lineHeight for 52px', () => {
-    const lineHeight = convertLineHeight('52px');
+    const lineHeight = calculateLineHeight('52px');
     expect(lineHeight).toBe(1.23077);
   });
 
   it('should return correct lineHeight for 60px', () => {
-    const lineHeight = convertLineHeight('60px');
+    const lineHeight = calculateLineHeight('60px');
     expect(lineHeight).toBe(1.2);
   });
 
   it('should return correct lineHeight for 62px', () => {
-    const lineHeight = convertLineHeight('62px');
+    const lineHeight = calculateLineHeight('62px');
     expect(lineHeight).toBe(1.22581);
   });
 
   it('should return correct lineHeight for 72px', () => {
-    const lineHeight = convertLineHeight('72px');
+    const lineHeight = calculateLineHeight('72px');
     expect(lineHeight).toBe(1.22222);
   });
 
   it('should return correct lineHeight for 84px', () => {
-    const lineHeight = convertLineHeight('84px');
+    const lineHeight = calculateLineHeight('84px');
     expect(lineHeight).toBe(1.19048);
   });
 });
 
-describe('typeScale()', () => {
-  it('should throw error if called with undefined', () => {
+describe('generateTypeScale()', () => {
+  it('should throw error if called with undefined', (done) => {
     try {
-      typeScale(undefined!);
+      generateTypeScale(undefined!);
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
-  it('should throw error if called with wrong unit', () => {
+  it('should throw error if called with wrong unit', (done) => {
     try {
-      typeScale('32fx');
+      generateTypeScale('32fx');
     } catch (e) {
       expect(e).toBeDefined();
+      done();
     }
   });
 
   it('should return fontSize and lineHeight', () => {
-    const foo = typeScale('32px');
-    expect(foo.lineHeight).toBe(1.375);
-    expect(foo.fontSize).toBe('2rem');
+    const typeScale = generateTypeScale('32px');
+    expect(typeScale.lineHeight).toBe(1.375);
+    expect(typeScale.fontSize).toBe('2rem');
   });
 });
