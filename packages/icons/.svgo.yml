@@ -10,3 +10,5 @@ plugins:
         - width: '100%' # ensures optimal scaling behaviour
         - height: '100%' # ensures optimal scaling behaviour
         - focusable: false # disables focus in IE11
+  - convertPathData: { noSpaceAfterFlags: false }
+  - mergePaths: { noSpaceAfterFlags: false }

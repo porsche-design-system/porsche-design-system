@@ -4,5 +4,5 @@
     "types": [],
     "resolveJsonModule": false
   },
-  "include": ["./src/js/index.ts"]
+  "include": ["src/js/index.ts"]
 }
