@@ -40,7 +40,7 @@ Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or w
   @import '~@porsche-design-system/utilities/scss';
 
   .example-content {
-    @include p-text;
+    @include p-text-small;
     color: $p-color-theme-dark-default;
     text-align: center;
     background: lightskyblue;

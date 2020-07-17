@@ -28,13 +28,16 @@ The `mediaQuery()` function returns a `@media (min-width: minBreakpoints) || @me
 #### Example predefined breakpoint
 
 ```
-import { mediaQuery, breakpoint, font, color } from '@porsche-design-system/utilities';
+import { mediaQuery, breakpoint } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
-  ...font.size['small']
-  color: color.brand,
-  fontFamily: font.family
-  [mediaQuery(breakpoint.s)]: { color: color.external.facebook }
+  color: 'royalblue',
+
+  // from predefined breakpoint xs to m apply color aqua
+  [mediaQuery(breakpoint.xs, breakpoint.m)]: { color: 'aqua' },
+
+  // from predefined breakpoint m apply color deeppink
+  [mediaQuery(breakpoint.m)]: { color: 'deeppink' }
 }`
 
 render (
@@ -49,53 +52,16 @@ render (
 #### Example custom breakpoint
 
 ```
-import { mediaQuery, font, color } from '@porsche-design-system/utilities';
+import { mediaQuery } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
-  ...font.size['small']
-  color: color.brand,
-  fontFamily: font.family
-  [mediaQuery(320)]: { color: color.external.facebook }
-}`
+  color: 'royalblue',
 
-render (
-  <StyledDiv>
-    Styled Text
-  </StyledDiv>
-)
-```
+  // from 480px to 760px viewport width apply color aqua
+  [mediaQuery(480, 760)]: { color: 'aqua' },
 
----
-
-#### Example predefined min and max breakpoint
-
-```
-import { mediaQuery, font, color } from '@porsche-design-system/utilities';
-
-const StyledDiv = div`{
-  ...font.size['small']
-  color: color.brand,
-  fontFamily: font.family
-  [mediaQuery('s', 'm')]: { color: color.external.facebook }
-}`
-
-render (
-  <StyledDiv>
-    Styled Text
-  </StyledDiv>
-)
-```
-
-#### Example custom min and max breakpoint
-
-```
-import { mediaQuery, font, color } from '@porsche-design-system/utilities';
-
-const StyledDiv = css`{
-  ...font.size['small']
-  color: color.brand,
-  fontFamily: font.family
-  mediaQuery(320, 640)]: { color: color.external.facebook }
+  // from 760px viewport width apply color deeppink
+  [mediaQuery(760)]: { color: 'deeppink' }
 }`
 
 render (
@@ -111,10 +77,36 @@ render (
 
 **Note:** For font-styling it's recommended to use the [`<p-headline>`](#/components/typography#headline)/[`<p-text>`](#/components/typography#text) components.
 
-### Headline
+The predefined variables for `text` and `headline` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
+You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
 
-The predefined variables for `title` and `headline` **only** work with styled-components, due to the necessity of font sizes in relation to breakpoints.
-You can follow [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](#/components/typography).
+### Text
+
+Given values are:  
+`text.xSmall | text.small | text.medium | text.large | text.xLarge`
+
+#### Example
+
+```
+import { text } from '@porsche-design-system/utilities';
+
+const PTextSmall = styled.p`
+  ${text.small}
+`;
+```
+
+#### Result
+
+```
+PHeadline style = {
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+```
+
+### Headline
 
 Given variables are:  
 `title.large | headline['1'] | headline['2'] | headline['3'] | headline['4'] | headline['5']`
@@ -165,59 +157,5 @@ PHeadline style = {
     font-size: 3.75rem;
     line-height: 1.2;
   }
-}
-```
-
-### Text
-
-With the `text()` function it is possible to get various kinds of text variants (size and weight) by passing two parameters as variables for `fontSize` and `fontWeight`.
-The `fontSize` is freely selectable, for the `fontWeight` one of the predefined weight values must be chosen.
-
-Predefined size values are:  
- `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | xSmall | small | medium | large | xLarge`  
-
-Pre defined weight values are:  
- `thin | regular | semibold | bold`
-
-Default is `font.size.small` and `font.weight.regular`.
-
-#### Example standard usage
-
-```
-import { text } from '@porsche-design-system/utilities';
-
-const StyledText = styled.p`
-  ${text()};
-`
-```
-
-#### Result
-```
-p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-```
-
-#### Example with specific parameters
-
-```
-import { text } from '@porsche-design-system/utilities';
-
-const StyledText = styled.p`
-  ${text('large', 'thin')};
-`
-```
-
-#### Result
-
-```
-p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 100;
-  font-size: 2.25rem;
-  line-height: 1.33333;
 }
 ```

@@ -1,4 +1,5 @@
 @import "../../../../../../../packages/utilities/projects/utilities/scss";
+@import '../../../../styles/internal.variables';
 
 $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
 
@@ -86,7 +87,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       @include p-flex-item-none;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &--grow {
         &-0-xs {
           @include p-flex-item-grow(0);
@@ -122,7 +123,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &--grow {
         &-0-s {
           @include p-flex-item-grow(0);
@@ -158,7 +159,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &--grow {
         &-0-m {
           @include p-flex-item-grow(0);
@@ -194,7 +195,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &--grow {
         &-0-l {
           @include p-flex-item-grow(0);
@@ -230,7 +231,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &--grow {
         &-0-xl {
           @include p-flex-item-grow(0);
@@ -286,7 +287,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         @include p-flex-item-align-self(baseline);
       }
 
-      @include p-breakpoint("xs") {
+      @include p-media-query("xs") {
         &-auto-xs {
           @include p-flex-item-align-self(auto);
         }
@@ -307,7 +308,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("s") {
+      @include p-media-query("s") {
         &-auto-s {
           @include p-flex-item-align-self(auto);
         }
@@ -328,7 +329,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("m") {
+      @include p-media-query("m") {
         &-auto-m {
           @include p-flex-item-align-self(auto);
         }
@@ -349,7 +350,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("l") {
+      @include p-media-query("l") {
         &-auto-l {
           @include p-flex-item-align-self(auto);
         }
@@ -370,7 +371,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("xl") {
+      @include p-media-query("xl") {
         &-auto-xl {
           @include p-flex-item-align-self(auto);
         }
@@ -415,7 +416,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         width: auto;
       }
 
-      @include p-breakpoint("xs") {
+      @include p-media-query("xs") {
         &-one-quarter-xs {
           @include p-flex-item-width(1);
         }
@@ -439,7 +440,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("s") {
+      @include p-media-query("s") {
         &-one-quarter-s {
           @include p-flex-item-width(1);
         }
@@ -463,7 +464,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("m") {
+      @include p-media-query("m") {
         &-one-quarter-m {
           @include p-flex-item-width(1);
         }
@@ -487,7 +488,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("l") {
+      @include p-media-query("l") {
         &-one-quarter-l {
           @include p-flex-item-width(1);
         }
@@ -511,7 +512,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("xl") {
+      @include p-media-query("xl") {
         &-one-quarter-xl {
           @include p-flex-item-width(1);
         }
@@ -556,7 +557,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         @include p-flex-item-offset(6);
       }
 
-      @include p-breakpoint("xs") {
+      @include p-media-query("xs") {
         &-none-xs {
           @include p-flex-item-offset(1);
         }
@@ -577,7 +578,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("s") {
+      @include p-media-query("s") {
         &-none-s {
           @include p-flex-item-offset(1);
         }
@@ -598,7 +599,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("m") {
+      @include p-media-query("m") {
         &-none-m {
           @include p-flex-item-offset(1);
         }
@@ -619,7 +620,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("l") {
+      @include p-media-query("l") {
         &-none-l {
           @include p-flex-item-offset(1);
         }
@@ -640,7 +641,7 @@ $p-flex-item-width: 0% 25% 33.333333% 50% 66.666667% 75% 100%;
         }
       }
 
-      @include p-breakpoint("xl") {
+      @include p-media-query("xl") {
         &-none-xl {
           @include p-flex-item-offset(1);
         }

@@ -1,48 +1,139 @@
-@import "converter";
-@import "utils";
+@import "../variables/font";
+@import "../helper/helper";
+@import "./media-query";
 
-/**
- * Converts font-size to rem.
- * @param $font-size - only accepts value in rem or px, e.g. 12px or 1.5rem
+/*
+ * Title
  */
-@function p-font-size($font-size) {
-  @if __p-is-rem($font-size) {
-    $font-size: $font-size;
-  } @else if __p-is-px($font-size) {
-    $font-size: p-rem($font-size);
-  } @else {
-    @error 'p-font-size() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
+
+@mixin p-title-large {
+  @include p-generate-font-definition($p-font-size-32, $p-font-weight-semibold);
+
+  @include p-media-query("s", "m") {
+    @include p-generate-type-scale($p-font-size-42);
   }
 
-  @return $font-size;
+  @include p-media-query("m", "l") {
+    @include p-generate-type-scale($p-font-size-52);
+  }
+
+  @include p-media-query("l", "xl") {
+    @include p-generate-type-scale($p-font-size-62);
+  }
+
+  @include p-media-query("xl") {
+    @include p-generate-type-scale($p-font-size-72);
+  }
 }
 
-/**
- * Calculates line-height depending on font-size that fits into Porsche Vertical Grid System
- * @param $font-size - only accepts value in rem or px, e.g. 12px or 1.5rem
+/*
+ * Headline
  */
-@function p-line-height($font-size) {
 
-  @if __p-is-rem($font-size) {
-    $font-size: p-px($font-size);
-  } @else if __p-is-px($font-size) {
-    $font-size: $font-size;
-  } @else {
-    @error 'p-line-height() Scss function only accepts value in rem or px for param $font-size, e.g. 12px or 1.5rem';
+@mixin p-headline-1 {
+  @include p-generate-font-definition($p-font-size-28, $p-font-weight-semibold);
+
+  @include p-media-query("s", "m") {
+    @include p-generate-type-scale($p-font-size-36);
   }
 
-  $font-size: __p-strip-unit($font-size);
-  $e: 2.71828;
-  $exact-line-height-factor: 0.911 / ( 2.97 + 0.005 * __p-pow( $e, 0.2 * $font-size ) ) + 1.2;
-  $exact-line-height-px: $font-size * $exact-line-height-factor;
-  $remaining-px: $exact-line-height-px % 4;
-
-  @if $remaining-px > 2 {
-    $remaining-px: $remaining-px - 4;
+  @include p-media-query("m", "l") {
+    @include p-generate-type-scale($p-font-size-44);
   }
 
-  $fitted-line-height-px: $exact-line-height-px - $remaining-px;
-  $fitted-line-height-factor: $fitted-line-height-px / $font-size;
+  @include p-media-query("l", "xl") {
+    @include p-generate-type-scale($p-font-size-52);
+  }
 
-  @return $fitted-line-height-factor;
+  @include p-media-query("xl") {
+    @include p-generate-type-scale($p-font-size-60);
+  }
+}
+
+@mixin p-headline-2 {
+  @include p-generate-font-definition($p-font-size-24, $p-font-weight-semibold);
+
+  @include p-media-query("s", "m") {
+    @include p-generate-type-scale($p-font-size-30);
+  }
+
+  @include p-media-query("m", "l") {
+    @include p-generate-type-scale($p-font-size-36);
+  }
+
+  @include p-media-query("l", "xl") {
+    @include p-generate-type-scale($p-font-size-42);
+  }
+
+  @include p-media-query("xl") {
+    @include p-generate-type-scale($p-font-size-48);
+  }
+}
+
+@mixin p-headline-3 {
+  @include p-generate-font-definition($p-font-size-20, $p-font-weight-semibold);
+
+  @include p-media-query("s", "m") {
+    @include p-generate-type-scale($p-font-size-24);
+  }
+
+  @include p-media-query("m", "l") {
+    @include p-generate-type-scale($p-font-size-28);
+  }
+
+  @include p-media-query("l", "xl") {
+    @include p-generate-type-scale($p-font-size-32);
+  }
+
+  @include p-media-query("xl") {
+    @include p-generate-type-scale($p-font-size-36);
+  }
+}
+
+@mixin p-headline-4 {
+  @include p-generate-font-definition($p-font-size-16, $p-font-weight-semibold);
+
+  @include p-media-query("s", "m") {
+    @include p-generate-type-scale($p-font-size-18);
+  }
+
+  @include p-media-query("m", "l") {
+    @include p-generate-type-scale($p-font-size-20);
+  }
+
+  @include p-media-query("l", "xl") {
+    @include p-generate-type-scale($p-font-size-22);
+  }
+
+  @include p-media-query("xl") {
+    @include p-generate-type-scale($p-font-size-24);
+  }
+}
+
+@mixin p-headline-5 {
+  @include p-generate-font-definition($p-font-size-16, $p-font-weight-semibold);
+}
+
+/*
+ * Text
+ */
+
+@mixin p-text-x-small {
+  @include p-generate-font-definition($p-font-size-x-small, $p-font-weight-regular);
+}
+
+@mixin p-text-small {
+  @include p-generate-font-definition($p-font-size-small, $p-font-weight-regular);
+}
+
+@mixin p-text-medium {
+  @include p-generate-font-definition($p-font-size-medium, $p-font-weight-regular);
+}
+
+@mixin p-text-large {
+  @include p-generate-font-definition($p-font-size-large, $p-font-weight-regular);
+}
+
+@mixin p-text-x-large {
+  @include p-generate-font-definition($p-font-size-x-large, $p-font-weight-regular);
 }
