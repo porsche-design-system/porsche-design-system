@@ -2,9 +2,8 @@
   "name": "@porsche-design-system/assets",
   "version": "1.0.0",
   "scope": "@porsche-design-system",
-  "main": "dist/cjs/index.js",
+  "main": "dist/index.js",
   "module": "dist/esm/index.js",
-  "unpkg": "dist/umd/index.js",
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
