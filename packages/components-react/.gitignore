@@ -10,10 +10,6 @@
 /tests/vrt/results
 /tests/cbt/results
 
-# production
-/dist
-/build
-
 # misc
 .DS_Store
 .env.local

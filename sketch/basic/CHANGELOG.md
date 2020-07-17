@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.0] - 2020-07-17
+
+#### Added
+
+Type | Basic Library |
+|---|---|
+Color |  Translucent background color for overlays ("Background Shading") |
+Color | Neutral notification color |
+Color | Background soft for notification colors |
+Icons | Add new Icons | 
+
+#### Fixed
+
+Type | Basic Library |
+|---|---|
+Basic |  Visual issues in Porsche Marque and update of Sketch components and assets  |
+Icons | Various Icon optimizations |
+
 ### [1.4.1] - 2020-05-27
 
 #### Fixed
