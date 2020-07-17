@@ -1,10 +1,9 @@
 {
-  "name": "@porsche-design-system/fonts",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@porsche-design-system/assets",
+  "version": "1.0.0",
   "scope": "@porsche-design-system",
-  "main": "dist/umd/index.js",
-  "module": "dist/module/index.js",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -18,10 +17,10 @@
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "Porsche Fonts",
+  "description": "Porsche Design System Assets",
   "keywords": [
     "porsche",
-    "fonts"
+    "assets"
   ],
   "homepage": "https://designsystem.porsche.com",
   "repository": {
@@ -32,19 +31,19 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn build:fonts && yarn build:lib",
-    "build:fonts": "ts-node --project './tsconfig.json' './scripts/build.ts'",
-    "build:lib": "yarn build:lib:module && yarn build:lib:umd",
-    "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
-    "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./index.ts && rm -rf ./dist"
+    "build": "yarn clean && rollup -c rollup.config.js",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "devDependencies": {
-    "change-case": "^4.1.1",
-    "globby": "^11.0.1",
-    "node-sass": "^4.14.1",
-    "ts-node": "^8.10.2",
-    "typescript": "~3.9.6"
+    "@porsche-design-system/fonts": "0.0.0",
+    "@porsche-design-system/icons": "0.0.0",
+    "@porsche-design-system/marque": "0.0.0",
+    "@porsche-design-system/utilities": "1.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-typescript": "^5.0.2",
+    "rollup": "^2.21.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "typescript": "^3.9.6"
   },
   "files": [
     "dist/"

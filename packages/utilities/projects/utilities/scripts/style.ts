@@ -1,16 +1,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import crypto from 'crypto';
-import { Manifest } from './build';
+import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 
 type Options = {
-  baseUrl: string,
-  fontsManifest: Manifest,
-  addContentBasedHash: boolean
+  baseUrl: string;
+  fontsManifest: typeof FONTS_MANIFEST;
+  addContentBasedHash: boolean;
 };
 
 const prepareFontFaceVariables = (opts: Options): void => {
-  const file = path.normalize('./src/styles/font-face.variables.scss');
+  const file = path.normalize('./src/style/font-face.variables.scss');
 
   const { baseUrl, fontsManifest } = opts;
 
@@ -47,17 +47,16 @@ $p-font-porsche-next-w-cy-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWCy
   );
 };
 
-const toHash = (str: string): string => {
-  return crypto
+const toHash = (str: string): string =>
+  crypto
     .createHash('md5')
     .update(str, 'utf8')
     .digest('hex');
-};
 
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('node-sass');
 
-  const scssPath = path.resolve(__dirname, '../src/styles/font-face.scss');
+  const scssPath = path.resolve(__dirname, '../src/style/font-face.scss');
   const result = sass.renderSync({
     file: scssPath,
     outputStyle: 'compressed'
@@ -65,14 +64,14 @@ const compileFontFaceScss = (opts: Options): string => {
 
   const hash = opts.addContentBasedHash ? `.${toHash(result.css)}` : '';
   const filename = `font-face.min${hash}.css`;
-  const targetPath = path.normalize(`./dist/fonts/${filename}`);
+  const targetPath = path.normalize(`./dist/style/${filename}`);
 
   fs.writeFileSync(targetPath, result.css);
 
   return filename;
 };
 
-export function buildStyles(opts: Options): string {
+export function buildStyle(opts: Options): string {
   prepareFontFaceVariables(opts);
   return compileFontFaceScss(opts);
 }
