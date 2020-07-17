@@ -29,10 +29,7 @@ export default [
   },
   {
     input: 'src/index.ts',
-    output: [
-      { dir: 'dist/esm', format: 'esm' },
-      { dir: 'dist/cjs', format: 'cjs', exports: 'named' }
-    ],
+    output: { dir: 'dist/esm', format: 'esm' },
     plugins: commonPlugins()
   }
 ];
