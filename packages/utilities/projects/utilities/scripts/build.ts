@@ -1,10 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import globby from 'globby';
 import { CDN_BASE_URL, FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { buildStyle } from './style';
 
-const createGlobalCSS = async (cdn: string, files: string[]): Promise<void> => {
+const createGlobalCSS = async (cdn: string): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
 
   buildStyle({
@@ -35,9 +34,8 @@ export const FONT_FACE_STYLE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";`;
 
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/style';
-  const files = await globby('./src/**/*.@(woff|woff2)');
 
-  await createGlobalCSS(cdn, files).catch((e) => {
+  await createGlobalCSS(cdn).catch((e) => {
     console.error(e);
     process.exit(1);
   });
