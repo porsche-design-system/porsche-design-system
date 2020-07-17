@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+
+- **Notification Soft** colors
+
 ### [1.0.0] - 2020-07-15
 
 #### Added
-- **Notification Soft** colors
 - **Notification Neutral** color
 - **Background Shading** color for overlays
 
