@@ -38,7 +38,8 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
-    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts and marque)
+    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts, marque and assets)
+    * `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
     * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --fonts` (builds the font set)
     * `./docker.sh run-build --marque` (builds the marque)
@@ -214,6 +215,27 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ### Communicate
 1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
+
+---
+
+## Porsche Design System - Assets
+
+### Preparation
+1. Switch to __project root directory__
+1. Run `git pull origin {master- or v-branch}`
+1. Create a new branch e.g. __release/assets-v1.2.3__
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__
+  * `./packages/assets/CHANGELOG.md`
+1. Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+
+### Release
+1. Create a commit with following message structure `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
+1. Create pull request and start review
+1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
+
+### Communicate
+1. For the moment it's treated as silent release, so no communication is required
 
 ---
 

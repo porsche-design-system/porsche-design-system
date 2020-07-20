@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- SVGO settings for icons
+
 ### [1.5.0] - 2020-07-16
 
 #### Added
