@@ -179,7 +179,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Manually check components in BrowserStack launching Edge 18
 
 ### Manual ngcc test for Angular
-Run `./docker.sh run-install`
+1. Switch to __project root directory__
+1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build`
 1. Switch to `packages/components-angular`
 1. Copy `dist/components-wrapper`
