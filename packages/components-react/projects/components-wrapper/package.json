@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -32,7 +32,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf './dist' && rm -rf './mocks'"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "1.5.0"
+    "@porsche-design-system/components-js": "1.5.1"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",
