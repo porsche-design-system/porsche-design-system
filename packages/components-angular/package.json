@@ -10,7 +10,8 @@
     "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out",
+    "ngcc": "ngcc"
   },
   "dependencies": {
     "@angular/animations": "^10.0.3",
@@ -40,7 +41,7 @@
     "@types/node": "^14.0.22",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
-    "ng-packagr": "^10.0.1",
+    "ng-packagr": "^9.1.2",
     "puppeteer": "~5.0.0",
     "ts-node": "^8.10.2",
     "tslint": "~6.1.0",

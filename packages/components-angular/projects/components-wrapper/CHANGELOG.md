@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - SVGO settings for icons
+- Angular bug which causes `ngcc` to fail
 
 ### [1.5.0] - 2020-07-16
 
