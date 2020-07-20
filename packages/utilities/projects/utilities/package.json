@@ -42,10 +42,13 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "build": "rm -rf ./dist && rm -rf ./scss.scss && yarn build:lib:module && yarn build:lib:umd && yarn build:scss",
+    "build": "yarn clean && yarn build:style && yarn build:lib && yarn build:scss",
+    "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'"
+    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'",
+    "build:style": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
     "typescript": "~3.9.6"
