@@ -1,0 +1,2 @@
+export const CDN_BASE_URL = "https://cdn.ui.porsche.com/porsche-design-system/metaicons/touchicons";
+export const TOUCHICON_MANIFEST = {"androidChrome_192x192":"android-chrome-192x192.min.ce42cbd2d8d5d3bb4ac9edca18380dcf.png","androidChrome_256x256":"android-chrome-256x256.min.bf8c06b3e254e60e8b336fe620ca2d0f.png","appleTouchIcon":"apple-touch-icon.min.1fee74aa772df3cd9782d4e88da3bfef.png"};
