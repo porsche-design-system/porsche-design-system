@@ -178,6 +178,16 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-start --components-js`
 1. Manually check components in BrowserStack launching Edge 18
 
+### Manual ngcc test for Angular
+1. Switch to __project root directory__
+1. Run `./docker.sh run-install`
+1. Run `./docker.sh run-build`
+1. Switch to `packages/components-angular`
+1. Copy `dist/components-wrapper`
+1. Switch to sample project angular
+1. Insert and overwrite directory `node-modules -> @porsche-design-system -> components-angular` in sample project
+1. Run `yarn ngcc` in sample project and check for errors
+
 ### Release
 1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
