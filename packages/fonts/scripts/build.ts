@@ -3,26 +3,28 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { buildStyles } from './styles';
 
-export interface Manifest {
+type Manifest = {
   [name: string]: {
     woff: string;
     woff2: string;
   };
-}
+};
 
-const toHash = (str: string): string => {
-  return crypto
+const toHash = (str: string): string =>
+  crypto
     .createHash('md5')
     .update(str, 'utf8')
     .digest('hex');
-};
 
 const checkIntegrity = async (manifest: Manifest): Promise<void> => {
   for (const [name, format] of Object.entries(manifest)) {
-    if (!format.woff) throw new Error(`Font declaration .woff is missing in manifest for "${name}".`);
-    if (!format.woff2) throw new Error(`Font declaration .woff2 is missing in manifest for "${name}".`);
+    if (!format.woff) {
+      throw new Error(`Font declaration .woff is missing in manifest for "${name}".`);
+    }
+    if (!format.woff2) {
+      throw new Error(`Font declaration .woff2 is missing in manifest for "${name}".`);
+    }
   }
 };
 
@@ -33,7 +35,7 @@ const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   } catch {
     return false;
   }
-}
+};
 
 const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
   if (await checkIfDirectoryExists(path.resolve('./dist'))) {
@@ -66,22 +68,10 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
 
   await checkIntegrity(manifest);
 
-  const fontFaceFileNameCdn = buildStyles({
-    fontsManifest: manifest,
-    baseUrl: cdn,
-    addContentBasedHash: true
-  });
-  buildStyles({
-    fontsManifest: manifest,
-    baseUrl: 'http://localhost:3001/fonts',
-    addContentBasedHash: false
-  });
-
   fs.writeFileSync(
     path.normalize('./index.ts'),
     `export const CDN_BASE_URL = "${cdn}";
-export const FONTS_MANIFEST = ${JSON.stringify(manifest)};
-export const FONT_FACE_CSS_NAME = "${fontFaceFileNameCdn}";`
+export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
   console.log('Created fonts manifest.');

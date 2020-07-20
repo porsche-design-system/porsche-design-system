@@ -1,12 +1,13 @@
 import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/icon-request';
-import { CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
+import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
 
-const DEFAULT_ICON_URL = 'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
+const DEFAULT_ICON_URL =
+  'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
 
 describe('getSvgContent()', () => {
-  const getIconUrl = (name: IconName) => `${CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
+  const getIconUrl = (name: IconName) => `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
   const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
   const undefinedUrl = undefined;
 
@@ -39,8 +40,8 @@ describe('getSvgContent()', () => {
       const result = getSvgContent(undefinedUrl);
       expect(true).toBe(false);
       // @ts-ignore
-    } catch (e: Error) {
-      expect(e.name).toEqual('Error')
+    } catch (e) {
+      expect(e.name).toEqual('Error');
     }
   });
 
