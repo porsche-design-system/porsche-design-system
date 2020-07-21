@@ -209,7 +209,8 @@ This tool automatically creates a catalog of ui components. For its magic to wor
     * https://github.com/porscheui/sample-integration-nextjs
     * https://github.com/porscheui/sample-integration-gatsby
     * https://github.com/porscheui/sample-integration-vanillajs
-1. Change `@porsche-design-system` version to the new released version.
+1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
+1. Run `yarn`
 1. Run `yarn build`
 1. Run `yarn start` and check if everything works.
 
