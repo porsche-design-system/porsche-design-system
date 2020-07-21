@@ -5,7 +5,9 @@ import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 
 type Manifest = {
-  [name: string]: string;
+  [type: string]: {
+    [name: string]: string;
+  };
 };
 
 
@@ -25,14 +27,20 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
   for (let file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
+    const info = sourcePath.split(/[\/]/g);
+    const type = info[1];
     const name = path.basename(sourcePath, ext);
     const metaicons = fs.readFileSync(sourcePath, {encoding: 'binary'});
     const hash = toHash(metaicons);
-    const filename = `${paramCase(name)}.${hash}.png`;
+    const filename = `${paramCase(name)}.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/metaicons/${filename}`);
 
+    const typeKey = camelCase(type);
     const nameKey = camelCase(name);
-    manifest[nameKey] = filename;
+    manifest[typeKey] = {
+      ...manifest[typeKey],
+        [nameKey]: filename
+    };
 
     fs.writeFileSync(targetPath, metaicons, {encoding: 'binary'});
 
