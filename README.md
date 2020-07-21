@@ -202,6 +202,17 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Build icon platform
 1. Deploy icon platform
 
+### Update sample projects
+1. Go to according examples Projects:
+    * https://github.com/porscheui/sample-integration-angular
+    * https://github.com/porscheui/sample-integration-react
+    * https://github.com/porscheui/sample-integration-nextjs
+    * https://github.com/porscheui/sample-integration-gatsby
+    * https://github.com/porscheui/sample-integration-vanillajs
+1. Change `@porsche-design-system` version to the new released version.
+1. Run `yarn build`
+1. Run `yarn start` and check if everything works.
+
 ### Communicate
 1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design System Slack channel
 
