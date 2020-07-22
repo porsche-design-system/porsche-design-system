@@ -343,7 +343,7 @@ export class SelectWrapper {
       event = new Event('change', { bubbles: true });
     } else {
       event = document.createEvent('Event');
-      event.initEvent('change',true, false);
+      event.initEvent('change', true, false);
     }
     this.select.dispatchEvent(event);
     this.select.focus();
