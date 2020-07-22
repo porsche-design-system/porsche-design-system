@@ -18,7 +18,6 @@ import {
   PLinkSocial,
   PMarque,
   PPagination,
-  PTabs,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
@@ -28,8 +27,9 @@ import {
   PTextFieldWrapper,
   PTextareaWrapper,
   PFieldsetWrapper,
-  PDivider
-
+  PDivider,
+  PTabs,
+  PTab
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -48,7 +48,6 @@ const DECLARATIONS = [
   PLinkSocial,
   PMarque,
   PPagination,
-  PTabs,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
@@ -58,7 +57,9 @@ const DECLARATIONS = [
   PTextFieldWrapper,
   PTextareaWrapper,
   PFieldsetWrapper,
-  PDivider
+  PDivider,
+  PTabs,
+  PTab
 ];
 
 @NgModule({
