@@ -1,4 +1,5 @@
-@import '../../../../../../packages/scss-utils/index';
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 @mixin p-checkbox-wrapper-label-text-visible() {
   position: static;
@@ -123,7 +124,7 @@
       @include p-checkbox-wrapper-label-text-hidden;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &--visible-xs {
         @include p-checkbox-wrapper-label-text-visible;
       }
@@ -133,7 +134,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &--visible-s {
         @include p-checkbox-wrapper-label-text-visible;
       }
@@ -143,7 +144,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &--visible-m {
         @include p-checkbox-wrapper-label-text-visible;
       }
@@ -153,7 +154,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &--visible-l {
         @include p-checkbox-wrapper-label-text-visible;
       }
@@ -163,7 +164,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &--visible-xl {
         @include p-checkbox-wrapper-label-text-visible;
       }
@@ -176,8 +177,8 @@
 
   &__fake-checkbox {
     position: relative;
-    width: p-rem(24px);
-    height: p-rem(24px);
+    width: p-px-to-rem(24px);
+    height: p-px-to-rem(24px);
     display: block;
     flex-shrink: 0;
     background-color: $p-color-theme-light-background;

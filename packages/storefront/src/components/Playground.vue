@@ -94,13 +94,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
+  @import '../styles/internal.variables';
 
   .tabs {
     display: flex;
 
     .tab {
-      @include p-type-scale($p-font-size-20);
+      @include p-generate-type-scale($p-font-size-20);
 
       &:not(:last-child) {
         margin-right: $p-spacing-24;
@@ -147,14 +148,14 @@
     }
 
     &.dark {
-      border-color: $p-color-theme-dark-surface;
-      background-color: $p-color-theme-dark-surface;
+      border-color: $p-color-theme-dark-background-surface;
+      background-color: $p-color-theme-dark-background-surface;
     }
 
     // Child Layout "height"
     &.height-fixed .code {
       > * {
-        height: p-rem(180px);
+        height: p-px-to-rem(180px);
       }
     }
 

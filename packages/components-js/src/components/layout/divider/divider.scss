@@ -1,4 +1,5 @@
-@import '../../../../../scss-utils/index';
+@import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -51,7 +52,7 @@
     width: 1px;
   }
 
-  @include p-breakpoint("xs") {
+  @include p-media-query("xs") {
     &--orientation-horizontal-xs {
       height: 1px;
       width: 100%;
@@ -63,7 +64,7 @@
     }
   }
 
-  @include p-breakpoint("s") {
+  @include p-media-query("s") {
     &--orientation-horizontal-s {
       height: 1px;
       width: 100%;
@@ -75,7 +76,7 @@
     }
   }
 
-  @include p-breakpoint("m") {
+  @include p-media-query("m") {
     &--orientation-horizontal-m {
       height: 1px;
       width: 100%;
@@ -87,7 +88,7 @@
     }
   }
 
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     &--orientation-horizontal-l {
       height: 1px;
       width: 100%;
@@ -99,7 +100,7 @@
     }
   }
 
-  @include p-breakpoint("xl") {
+  @include p-media-query("xl") {
     &--orientation-horizontal-xl {
       height: 1px;
       width: 100%;

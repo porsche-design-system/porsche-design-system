@@ -1,0 +1,6 @@
+# compiled output
+/dist
+scss.scss
+
+# generated output
+/src/style/font-face.variables.scss

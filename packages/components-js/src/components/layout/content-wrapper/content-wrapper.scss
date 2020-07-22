@@ -1,4 +1,5 @@
-@import '../../../../../scss-utils/index';
+@import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -10,28 +11,28 @@
   display: block;
 
   &--basic {
-    max-width: p-rem(1536px);
+    max-width: p-px-to-rem(1536px);
     padding: {
       left: 7vw;
       right: 7vw;
     }
 
-    @include p-breakpoint("xl", "xxl") {
+    @include p-media-query("xl", "xxl") {
       padding: {
         left: 10vw;
         right: 10vw;
       }
     }
 
-    @include p-breakpoint("xxl") {
+    @include p-media-query("xxl") {
       padding: {
-        left: p-rem(192px);
-        right: p-rem(192px);
+        left: p-px-to-rem(192px);
+        right: p-px-to-rem(192px);
       }
     }
   }
 
   &--extended {
-    max-width: p-rem(1920px);
+    max-width: p-px-to-rem(1920px);
   }
 }

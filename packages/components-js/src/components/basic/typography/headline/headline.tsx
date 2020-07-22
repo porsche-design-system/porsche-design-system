@@ -1,8 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import cx from 'classnames';
-import { prefix } from '../../../../utils';
-import { Theme } from '../../../../types';
-import { insertSlottedStyles } from '../../../../utils/slotted-styles';
+import { prefix, insertSlottedStyles } from '../../../../utils';
+import { HeadlineVariant, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -11,16 +10,10 @@ import { insertSlottedStyles } from '../../../../utils/slotted-styles';
 })
 export class Headline {
 
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
-  /** Style of the text. */
-  @Prop() public variant?:
-  | 'large-title'
-  | 'headline-1'
-  | 'headline-2'
-  | 'headline-3'
-  | 'headline-4'
-  | 'headline-5' = 'headline-1';
+  /** Style of the headline. */
+  @Prop() public variant?: HeadlineVariant = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
@@ -37,26 +30,21 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentDidLoad(): void {
-
-    const tagName= this.element.tagName.toLowerCase();
-    const style = `${tagName} a {
-      color: inherit;
-      text-decoration: none;
-    }`;
-
-    insertSlottedStyles(this.element, style);
+  public componentWillLoad(): void {
+    this.addSlottedStyles();
   }
 
   public render(): JSX.Element {
-    const TagType = !this.tag ?
-      this.variant === 'large-title' && 'h1'
-      || this.variant === 'headline-1' && 'h1'
-      || this.variant === 'headline-2' && 'h2'
-      || this.variant === 'headline-3' && 'h3'
-      || this.variant === 'headline-4' && 'h4'
-      || this.variant === 'headline-5' && 'h5'
-      : this.tag;
+    const variantToTagMap: { [key in HeadlineVariant]: string } = {
+      'large-title': 'h1',
+      'headline-1': 'h1',
+      'headline-2': 'h2',
+      'headline-3': 'h3',
+      'headline-4': 'h4',
+      'headline-5': 'h5'
+    };
+
+    const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
 
     const headlineClasses = cx(
       prefix('headline'),
@@ -72,5 +60,20 @@ export class Headline {
         <slot/>
       </TagType>
     );
+  }
+
+  private get hasSlottedHeadlineTag(): boolean {
+    const el = this.host.querySelector(':first-child');
+    return el?.matches('h1, h2, h3, h4, h5, h6');
+  }
+
+  private addSlottedStyles(): void {
+    const tagName= this.host.tagName.toLowerCase();
+    const style = `${tagName} a {
+      color: inherit;
+      text-decoration: none;
+    }`;
+
+    insertSlottedStyles(this.host, style);
   }
 }

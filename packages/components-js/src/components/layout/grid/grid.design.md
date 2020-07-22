@@ -8,7 +8,7 @@ being dividable by 2, 3, 4 or 6. For layouting on mobile screens (widths < 759px
 - **The grid gutter** separates the columns horizontally by in-between-spacings.
 The gutter is defined with fixed pixel sizes and breakpoints to balance size
 ratios between elements on the respective screen size. 
-- **The grid width** is resulting from the total screen width minus gutter widths and minus defined margins resulting from the [Content Wrapper](#/components/layout/content-wrapper) in use. The Grid component can only be combined with the "Basic" content width variant.
+- **The grid width** is resulting from the total screen width minus gutter widths and minus defined margins resulting from the [Content Wrapper](#/components/content-wrapper) in use. The Grid component can only be combined with the "Basic" content width variant.
 
 ![Porsche Design System grid architecture](./assets/grid-components.png)
 
@@ -50,19 +50,19 @@ The main breakpoints (see above) are deliberately chosen with some distance from
 
 ### Viewport range
 
-To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320 px** to a maximum of **1920 px**. For viewport sizes from 1920 px onwards a growing white space outside the left and right edge should be used. This can be done by using the "extended" content width variant of the [Content Wrapper](#/components/layout/content-wrapper) component.
+To provide consistency throughout all Porsche web experiences, all layouts should be optimised for a viewport range from **320 px** to a maximum of **1920 px**. For viewport sizes from 1920 px onwards a growing white space outside the left and right edge should be used. This can be done by using the "extended" content width variant of the [Content Wrapper](#/components/content-wrapper) component.
 
 ![Porsche Design System grid architecture](./assets/grid-maxwidth.png)
 
 ### Layout template 
-To make layouting from scratch as easy as possible, the optimized viewport sizes are provided by [Sketch artboard templates](http://designsystem.porsche.com/latest/porsche-design-system-layout-template.sketch). They come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas → Show Layout.
+To make layouting from scratch as easy as possible, the optimized viewport sizes are provided by [Sketch artboard templates](https://designsystem.porsche.com/sketch/porsche-design-system-layout-template.sketch). They come with final layout settings (including the responsive grid) that can be turned visible via: View → Canvas → Show Layout.
 
 ## Tips for responsive layouting
 
 ### Use the grid purposefully
 
 All content elements that should behave responsively should be placed horizontally within the grid, always starting in a column. The spacing between content elements is therefore defined by the grid gutter. 
-In most cases, this should refer to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should be defined by using the [Spacing](#/components/layout/spacing) component.
+In most cases, this should refer to modules or content boxes, while smaller spaces on a more or less "micro-level" (both vertical and horizontal) should be defined by using the [Spacing](#/components/spacing) component.
 
 ![Porsche Design System grid alignment](./assets/grid-alignment.png)
 
@@ -80,7 +80,7 @@ When designing responsive layouts, always aim to find the solution that works be
 
 ### Don’t be afraid to think outside of the box
 
-It is possible to place elements end-to-end, spanning from left to the right edge of the screen. This can be done by using the "fluid" content width variant of the [Content Wrapper](#/components/layout/content-wrapper) component.
+It is possible to place elements end-to-end, spanning from left to the right edge of the screen. This can be done by using the "fluid" content width variant of the [Content Wrapper](#/components/content-wrapper) component.
 An example would be a full-width image that generates a more emotional and concise side entry. However, this should be a well-contemplated exception.
 
 Also, for image groups, it is possible to break out of the grid in order to create a stronger visual coherence. The outer edges (left and right) of the image group should always be placed within the grid, whereas the edges between the single images can be placed exactly in the middle of the gutter.

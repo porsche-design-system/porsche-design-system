@@ -21,7 +21,7 @@
           <p-headline variant="headline-3" tag="h1">Porsche Design System</p-headline>
           <p-text size="{ base:'small', s: 'medium' }">for web applications</p-text>
           <p-text class="spacing-mt-8">
-            <router-link to="/getting-started/about">Learn more about it</router-link>
+            <router-link to="/about/introduction">Learn more about it</router-link>
           </p-text>
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
@@ -74,13 +74,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
+  @import '../styles/internal.variables';
 
   .teaser {
     &:first-child {
       margin-top: -$p-spacing-32;
 
-      @include p-breakpoint('s') {
+      @include p-media-query('s') {
         margin-top: -$p-spacing-64;
       }
     }
@@ -90,7 +91,7 @@
       right: -$p-spacing-32;
     }
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -122,7 +123,7 @@
     }
     padding: $p-spacing-32;
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
@@ -149,7 +150,7 @@
     &:last-child {
       margin-bottom: -$p-spacing-32;
 
-      @include p-breakpoint('s') {
+      @include p-media-query('s') {
         margin-bottom: -$p-spacing-64;
       }
     }
@@ -161,7 +162,7 @@
     padding: $p-spacing-32;
     background: $p-color-theme-light-surface;
 
-    @include p-breakpoint('s') {
+    @include p-media-query('s') {
       margin: {
         left: -$p-spacing-64;
         right: -$p-spacing-64;
