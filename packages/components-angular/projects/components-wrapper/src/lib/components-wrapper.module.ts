@@ -18,6 +18,7 @@ import {
   PLinkSocial,
   PMarque,
   PPagination,
+  PTabs,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
@@ -28,8 +29,7 @@ import {
   PTextareaWrapper,
   PFieldsetWrapper,
   PDivider
-  PDivider,
-  PTabs
+
 } from './components-wrapper.component';
 
 const DECLARATIONS = [

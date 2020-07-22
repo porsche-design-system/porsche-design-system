@@ -504,7 +504,7 @@ export namespace Components {
         "label": string;
     }
     interface PTabs {
-        "align"?: "left" | "center" | "right";
+        "align"?: 'left' | 'center' | 'right';
         "openTab": (index: number) => Promise<void>;
     }
     interface PText {
@@ -1299,7 +1299,7 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface PTabs {
-        "align"?: "left" | "center" | "right";
+        "align"?: 'left' | 'center' | 'right';
         "onName"?: (event: CustomEvent<any>) => void;
     }
     interface PText {
