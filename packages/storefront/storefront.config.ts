@@ -472,6 +472,20 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           () => import(`@/../../components-js/src/components/navigation/pagination/pagination.props.md`)
         ]
+      },
+      Tab: {
+        Design: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/tabs/tabs.design.md`)
+        ],
+        Code: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/tabs/tabs.code.md`)
+        ],
+        Props: [
+          // @ts-ignore
+          () => import(`@/../../components-js/src/components/navigation/tabs/tabs.props.md`)
+        ]
       }
     }
   }

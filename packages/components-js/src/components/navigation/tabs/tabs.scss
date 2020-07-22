@@ -1,0 +1,71 @@
+@import '../../../../../../packages/scss-utils/index';
+
+$duration: .2s;
+$distance: -8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+.tabs-list {
+  border-bottom: transparent;
+  padding: 0;
+}
+
+.tab-button {
+  position: relative;
+  border: 0;
+  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
+  font-size: $p-font-size-20;
+  font-weight: $p-font-weight-bold;
+  margin:  $p-spacing-8;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  transition: color $duration;
+
+  &:hover:not(:disabled):not(.active) {
+    color: $p-color-theme-light-brand;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &::before {
+    position: absolute;
+    bottom: 0em;
+    width: 100%;
+    display: block;
+    content: "";
+    border-bottom: solid 3px #d5001c;
+    opacity: 0;
+    transform: translateY(- $distance);
+    transition: transform 0s $easeOutBack, opacity 0s;
+  }
+
+  &:after {
+    opacity: 0;
+    transform: translateY(- $distance);
+    transition: transform $duration, opacity $duration;
+  }
+  &.active {
+    color: $p-color-theme-light-brand;
+    &::before,
+    &::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &::before {
+      transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:after {
+      transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+    }
+  }
+}
+
+

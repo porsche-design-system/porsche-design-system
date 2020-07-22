@@ -26,7 +26,8 @@ import {
   PTextListItem,
   PTextFieldWrapper,
   PTextareaWrapper,
-  PDivider
+  PDivider,
+  PTabs
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -45,6 +46,7 @@ const DECLARATIONS = [
   PLinkSocial,
   PMarque,
   PPagination,
+  PTabs,
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,

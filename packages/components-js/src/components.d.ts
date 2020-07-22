@@ -456,6 +456,15 @@ export namespace Components {
          */
         "theme"?: "light" | "dark";
     }
+    interface PTab {
+        "active": boolean;
+        "disabled": boolean;
+        "label": string;
+    }
+    interface PTabs {
+        "align"?: "left" | "center" | "right";
+        "openTab": (index: number) => Promise<void>;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -662,6 +671,18 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPTabElement extends Components.PTab, HTMLStencilElement {
+    }
+    var HTMLPTabElement: {
+        prototype: HTMLPTabElement;
+        new (): HTMLPTabElement;
+    };
+    interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
+    }
+    var HTMLPTabsElement: {
+        prototype: HTMLPTabsElement;
+        new (): HTMLPTabsElement;
+    };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
     var HTMLPTextElement: {
@@ -712,6 +733,8 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-tab": HTMLPTabElement;
+        "p-tabs": HTMLPTabsElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -1170,6 +1193,15 @@ declare namespace LocalJSX {
          */
         "theme"?: "light" | "dark";
     }
+    interface PTab {
+        "active"?: boolean;
+        "disabled"?: boolean;
+        "label"?: string;
+    }
+    interface PTabs {
+        "align"?: "left" | "center" | "right";
+        "onName"?: (event: CustomEvent<any>) => void;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -1280,6 +1312,8 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-tab": PTab;
+        "p-tabs": PTabs;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1310,6 +1344,8 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-tab": LocalJSX.PTab & JSXBase.HTMLAttributes<HTMLPTabElement>;
+            "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
