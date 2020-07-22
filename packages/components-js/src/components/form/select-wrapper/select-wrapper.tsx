@@ -337,6 +337,7 @@ export class SelectWrapper {
     this.optionSelected = key;
     this.optionHighlighted = key;
     this.fakeOptionListHidden = true;
+    this.select.dispatchEvent(new Event('change', { bubbles: true }));
     this.select.focus();
   };
 
