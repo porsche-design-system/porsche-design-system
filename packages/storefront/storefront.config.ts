@@ -486,16 +486,16 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components-js/src/components/navigation/pagination/pagination.props.md`)
       ]
     },
-    Tab: {
-      Design: [
+    'Tabs': {
+      'Design': [
         // @ts-ignore
         () => import(`@/../../components-js/src/components/navigation/tabs/tabs.design.md`)
       ],
-      Code: [
+      'Code': [
         // @ts-ignore
         () => import(`@/../../components-js/src/components/navigation/tabs/tabs.code.md`)
       ],
-      Props: [
+      'Props': [
         // @ts-ignore
         () => import(`@/../../components-js/src/components/navigation/tabs/tabs.props.md`)
       ]
