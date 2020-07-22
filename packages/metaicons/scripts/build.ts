@@ -56,7 +56,7 @@ export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const url = 'https://cdn.ui.porsche.com/porsche-design-system/metaicons/metaicons';
+  const url = 'https://cdn.ui.porsche.com/porsche-design-system/metaicons';
   const icons = await globby('./src/**/*');
 
   await createManifestAndCopyMetaicons(url, icons).catch(e => {
