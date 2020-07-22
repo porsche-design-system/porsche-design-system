@@ -21,7 +21,7 @@
 
 ## Methods
 
-### `openTab(#/components/index: number) => Promise<void>`
+### `openTab(index: number) => Promise<void>`
 
 
 
