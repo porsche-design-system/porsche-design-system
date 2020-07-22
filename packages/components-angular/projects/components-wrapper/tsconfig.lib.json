@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/components-wrapper",
     "target": "es2015",
@@ -17,9 +17,5 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true
-  },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
-  ]
+  }
 }

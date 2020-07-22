@@ -195,6 +195,20 @@ import { Component } from '@angular/core';
         <p-divider></p-divider>
       </p-grid-item>
     </p-grid>
+    <p-grid>
+      <p-grid-item [size]="2">
+        <p-headline [variant]="'headline-4'" [tag]="'h4'">&lt;p-fieldset-wrapper&gt;</p-headline>
+      </p-grid-item>
+      <p-grid-item [size]="10">
+        <div class="playground light spacing-inline">
+          <p-fieldset-wrapper [label]="'Some label'">
+            <p-text-field-wrapper [label]="'Some label'">
+              <input type="text" name="some-name"/>
+            </p-text-field-wrapper>
+          </p-fieldset-wrapper>
+        </div>
+      </p-grid-item>
+    </p-grid>
   `
 })
 export class FormComponent {}

@@ -1,7 +1,9 @@
 // common type definitions
 export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
 
-export type TextWeight = 'thin' | 'regular' | 'bold';
+export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
+
+export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
 
 export type Theme = 'light' | 'dark';
 
@@ -11,9 +13,17 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
+/**
+ * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
+ */
+declare global {
+  const ROLLUP_REPLACE_IS_STAGING: string;
+}
+
 /* Auto Generated Below */
 
 export type IconName = '360'
+| 'active-cabin-ventilation'
 | 'add'
 | 'adjust'
 | 'arrow-double-down'
@@ -32,17 +42,25 @@ export type IconName = '360'
 | 'arrow-up'
 | 'augmented-reality'
 | 'battery-empty'
+| 'battery-full'
+| 'bell'
+| 'bookmark'
 | 'broadcast'
 | 'calculator'
 | 'calendar'
 | 'camera'
 | 'car'
+| 'car-battery'
 | 'card'
+| 'charging-active'
+| 'charging-state'
 | 'charging-station'
 | 'chart'
 | 'chat'
 | 'check'
 | 'city'
+| 'climate'
+| 'climate-control'
 | 'clock'
 | 'close'
 | 'closed-caption'
@@ -63,14 +81,17 @@ export type IconName = '360'
 | 'filter'
 | 'flash'
 | 'fuel-station'
+| 'garage'
 | 'gift'
 | 'globe'
 | 'grid'
 | 'highway'
 | 'home'
+| 'horn'
 | 'image'
 | 'increase'
 | 'information'
+| 'key'
 | 'leaf'
 | 'leather'
 | 'light'
@@ -108,18 +129,22 @@ export type IconName = '360'
 | 'logo-youku'
 | 'logo-youtube'
 | 'logout'
+| 'map'
 | 'menu-dots-horizontal'
 | 'menu-lines'
 | 'minus'
 | 'mobile'
 | 'moon'
 | 'oil-can'
+| 'parking-brake'
+| 'parking-light'
 | 'pause'
 | 'phone'
 | 'pin'
 | 'play'
 | 'plug'
 | 'plus'
+| 'preheating'
 | 'printer'
 | 'purchase'
 | 'question'
@@ -132,8 +157,11 @@ export type IconName = '360'
 | 'save'
 | 'screen'
 | 'search'
+| 'send'
 | 'share'
+| 'shopping-bag'
 | 'shopping-cart'
+| 'sidelights'
 | 'snowflake'
 | 'sort'
 | 'stack'
@@ -149,6 +177,7 @@ export type IconName = '360'
 | 'upload'
 | 'user'
 | 'user-group'
+| 'user-manual'
 | 'video'
 | 'view'
 | 'view-off'
@@ -159,5 +188,6 @@ export type IconName = '360'
 | 'wifi'
 | 'work'
 | 'wrench'
+| 'wrenches'
 | 'zoom-in'
 | 'zoom-out';

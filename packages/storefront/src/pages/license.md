@@ -1,4 +1,4 @@
-# Licence
+# License
 
 By accessing, using or contributing to the Design System of Porsche ('**Porsche Design System**'), you agree to the following licensing agreement ('**Agreement**') with Dr. Ing. h.c. F. Porsche AG, Germany ('**Porsche AG**'). Porsche reserves the right to change and update this licensing agreement at any time.
 

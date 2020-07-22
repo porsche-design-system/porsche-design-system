@@ -1,7 +1,19 @@
-@import "../../../../../../../packages/scss-utils/index";
+@import "../../../../../../../packages/utilities/projects/utilities/scss";
+@import '../../../../styles/internal.variables';
 
 :host {
   display: block;
+}
+
+::slotted(h1),
+::slotted(h2),
+::slotted(h3),
+::slotted(h4),
+::slotted(h5),
+::slotted(h6) {
+  margin: 0 !important;
+  font-weight: $p-font-weight-semibold !important;
+  font-size: inherit !important;
 }
 
 .#{$p-global-class-prefix}headline {
@@ -11,7 +23,7 @@
 
   &--variant {
     &-large-title {
-      @include p-large-title;
+      @include p-title-large;
     }
 
     &-headline-1 {

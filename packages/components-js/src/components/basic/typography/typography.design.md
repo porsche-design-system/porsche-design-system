@@ -113,7 +113,7 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Line height
 
-For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles provided work with a 4 px baseline unit that fits to the [8 px spacing system](#/components/layout/spacing) in order to follow a harmonious overall vertical rhythm.
+For reasons of legibility, the line height should always be adjusted to the respective text size. The text styles provided work with a 4 px baseline unit that fits to the [8 px spacing system](#/components/spacing) in order to follow a harmonious overall vertical rhythm.
 
 ### Type Scale Calculator
   
@@ -121,11 +121,11 @@ Enter a font-size in px unit based on Porsche Type Scale.
 <input type="number" v-model="size" />
 
 ```
-{{this.typeScale(size)}}
+{{this.typeScale(size +'px')}}
 ```
 
 **Example Text**
-<p-text size="inherit" :style="typeScale(size, false)">The quick brown fox jumps over the lazy dog</p-text>
+<p-text size="inherit" :style="typeScale(size +'px', false)">The quick brown fox jumps over the lazy dog</p-text>
 
 ---
 
@@ -133,7 +133,7 @@ Enter a font-size in px unit based on Porsche Type Scale.
 
 ### Text color
 
-The color to be used for Porsche Next depends on the [Porsche color theme](#/basic/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
+The color to be used for Porsche Next depends on the [Porsche color theme](#/components/color) in use. In order to support both simplicity and legibility (sufficient contrast), default text is either to be set in Porsche Black or Porsche Light. For copytext sizes the Porsche color themes also provide different text state colors, such as Porsche Red for active states or Porsche Grey for disabled text.
 
 ### Font weights
 
@@ -218,7 +218,7 @@ of good (micro) typography, such as using the right kind of apostrophes in the r
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/basics/accessibility-criteria),
+As we stick to the common [WCAG 2.1 Standard](#/accessibility/guidelines),
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
@@ -250,7 +250,7 @@ impact on the origin character of the company typeface. This includes:
 ![Example for uppercase text](./assets/typography-donts.png)
 
 <style lang="scss" scoped>
-  @import '~@porsche-design-system/scss-utils/index';
+  @import '~@porsche-design-system/utilities/scss';
   
   .type-scale {
     display: inline-block;
@@ -261,73 +261,73 @@ impact on the origin character of the company typeface. This includes:
     }
     
     &.f-18 {
-      @include p-type-scale(18px);
+      @include p-generate-type-scale(18px);
     }
     
     &.f-20 {
-      @include p-type-scale(20px);
+      @include p-generate-type-scale(20px);
     }
     
     &.f-22 {
-      @include p-type-scale(22px);
+      @include p-generate-type-scale(22px);
     }
     
     &.f-28 {
-      @include p-type-scale(28px);
+      @include p-generate-type-scale(28px);
     }
     
     &.f-30 {
-      @include p-type-scale(30px);
+      @include p-generate-type-scale(30px);
     }
     
     &.f-32 {
-      @include p-type-scale(32px);
+      @include p-generate-type-scale(32px);
     }
     
     &.f-42 {
-      @include p-type-scale(42px);
+      @include p-generate-type-scale(42px);
     }
     
     &.f-44 {
-      @include p-type-scale(44px);
+      @include p-generate-type-scale(44px);
     }
     
     &.f-48 {
-      @include p-type-scale(48px);
+      @include p-generate-type-scale(48px);
     }
     
     &.f-60 {
-      @include p-type-scale(60px);
+      @include p-generate-type-scale(60px);
     }
     
     &.f-62 {
-      @include p-type-scale(62px);
+      @include p-generate-type-scale(62px);
     }
     
     &.f-72 {
-      @include p-type-scale(72px);
+      @include p-generate-type-scale(72px);
     }
     
     &.f-84 {
-      @include p-type-scale(84px);
+      @include p-generate-type-scale(84px);
     }
   }
 </style>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import { lineHeightFactor } from '@/../../components-js/src/utils';
+  import { calculateLineHeight } from '@porsche-design-system/utilities';
   
   @Component
   export default class PlaygroundTypography extends Vue {
-    public size: number = 16;
-    public typeScale(fontSize: number, comment: boolean = true): string {
-      const fittedLineHeightFactor = lineHeightFactor(fontSize);
-      const fittedLineHeightPx = Math.round(fontSize * fittedLineHeightFactor);
-      const fontSizeRem = fontSize / 16;
+    public size: string = '16';
+    public typeScale(fontSize: string, comment: boolean = true): string {
+      const fittedLineHeightFactor = calculateLineHeight(fontSize);
+      const fittedLineHeightPx = Math.round(fontSize.slice(0, -2) * fittedLineHeightFactor);
+      const fontSizeRem = fontSize.slice(0, -2) / 16;
       
       if (comment) {
-        return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"px\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
+        return "font-size: "+ fontSizeRem +"rem; // "+ fontSize +"\nline-height: "+ fittedLineHeightFactor +"; // "+ fittedLineHeightPx +"px";
       }
       
       return "font-size: "+ fontSizeRem +"rem; line-height: "+ fittedLineHeightFactor +";";

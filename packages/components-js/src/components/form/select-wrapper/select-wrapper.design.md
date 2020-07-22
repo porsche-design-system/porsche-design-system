@@ -23,11 +23,11 @@ The component Pure (without label) is only used if the context clearly describes
 
 ### Placeholder
 
-Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. However, using placeholder text is not recommended since users can misinterpret it as already filled in content. Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. However, using placeholder text is not recommended since users can misinterpret it as already filled in content. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Description text
 
-Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 <p-select-wrapper label="Some label" description="Some description"><select name="some-name">
     <option value="a">Option A</option>
@@ -58,15 +58,15 @@ The Select component is available in the following states:
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Width
-The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). For further information we recommend reading the [Form pattern guideline](#/patterns/forms).
+The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 
 ### Validation and error
 Validation text for a Select is placed right below the field box. This places the error next to the offending select,
-so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together. Please find more information on providing extra information in the [Form pattern guideline](#/patterns/forms).
+According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ---
 
@@ -105,5 +105,5 @@ Never use images or symbols within a selection list.
 
 ## Related Components
 
-* [Checkbox](#/components/form/checkbox)
-* [Radio Button](#/components/form/radio-button)
+* [Checkbox](#/components/checkbox)
+* [Radio Button](#/components/radio-button)
