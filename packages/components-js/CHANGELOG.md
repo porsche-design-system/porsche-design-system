@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.2] - 2020-07-22
+
+#### Fixed
+- Dispatch change event in `Select Wrapper`
+- Stencil react-output-target SSR Bug
+
 ### [1.5.1] - 2020-07-20
 
 #### Fixed
