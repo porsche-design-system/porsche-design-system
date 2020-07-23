@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-js",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -69,7 +69,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/cdn-local": "0.0.0",
-    "@porsche-design-system/utilities": "1.0.0",
+    "@porsche-design-system/utilities": "1.0.1",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
