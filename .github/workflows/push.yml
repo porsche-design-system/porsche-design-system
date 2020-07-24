@@ -423,11 +423,16 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
-      - name: 'Store Utilities Artifact'
+      - name: 'Store Utilities dist Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: utilities-build
+          name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
+      - name: 'Store Utilities SCSS Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: utilities-scss-build
+          path: ./packages/utilities/projects/utilities/scss.scss
       - name: 'Store Assets Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -463,11 +468,16 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
-      - name: 'Restore Utilities Artifact'
+      - name: 'Restore Utilities dist Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-build
+          name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
+      - name: 'Restore Utilities SCSS Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: utilities-scss-build
+          path: ./packages/utilities/projects/utilities/scss.scss
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
