@@ -38,14 +38,14 @@
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/jasmine": "^3.5.11",
-    "@types/node": "^14.0.22",
+    "@types/node": "^14.0.24",
     "concurrently": "^5.2.0",
     "jasmine": "^3.5.0",
     "ng-packagr": "^9.1.2",
-    "puppeteer": "~5.0.0",
+    "puppeteer": "~5.2.1",
     "ts-node": "^8.10.2",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.6",
+    "typescript": "~3.9.7",
     "wait-on": "^5.1.0"
   }
 }
