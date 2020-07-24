@@ -51,7 +51,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
-    "typescript": "~3.9.6"
+    "typescript": "~3.9.7"
   },
   "dependencies": {
     "csstype": "^2.6.11"
