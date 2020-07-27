@@ -624,8 +624,8 @@ jobs:
           args: packages/assets
   release-utilities:
     name: 'Release Utilities'
-    needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    needs: [assets]
+   # if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -643,6 +643,12 @@ jobs:
         with:
           name: utilities-full-build
           path: ./packages/utilities/projects # See store artifact comment -> full directory and build of utilities
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./packages/utilities/projects
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./packages/utilities/projects/utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
