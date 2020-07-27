@@ -12,6 +12,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Notification Soft** colors
 
+### [1.0.5] - 2020-07-27
+
+#### Fixed
+- Package content
+- Import of scss
+
+### [1.0.5-rc.1] - 2020-07-27
+
+#### Fixed
+- Package content
+
+### [1.0.5-rc.0] - 2020-07-27
+
+#### Fixed
+- Package content
+
+### [1.0.4] - 2020-07-27
+
+#### Fixed
+- Package content
+
+### [1.0.3] - 2020-07-27
+
+#### Fixed
+- Package content
+
+### [1.0.2] - 2020-07-24
+
+#### Fixed
+- Pipeline output of package
+
 ### [1.0.1] - 2020-07-22
 
 #### Fixed

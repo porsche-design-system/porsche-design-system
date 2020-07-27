@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "scope": "@porsche-design-system",
   "main": "dist/js/umd/index.js",
   "module": "dist/js/module/index.js",
@@ -15,7 +15,8 @@
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "Porsche Design System Utilities",
   "files": [
-    "dist/",
+    "dist/scss",
+    "dist/js",
     "scss.scss"
   ],
   "keywords": [
@@ -51,7 +52,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
-    "typescript": "~3.9.6"
+    "typescript": "~3.9.7"
   },
   "dependencies": {
     "csstype": "^2.6.11"
