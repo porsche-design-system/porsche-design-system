@@ -3,12 +3,6 @@ The roadmap for the Porsche Design System is based on the planned enhancement an
 
 ## Q3 2020
 
-### Operations
-* Improve componentsReady() function
-* Refine quality criteria and browser compatibility
-* Prepare Design Deep Dive for UX Academy
-* Several internal improvements
-
 ### Components & Assets
 * Tabs
 * PIN Text Field
@@ -42,6 +36,12 @@ The roadmap for the Porsche Design System is based on the planned enhancement an
 * Filtering components
 * Memorize selected JS framework
 * Integrate UX writing guidelines
+
+### Operations
+* Improve componentsReady() function
+* Refine quality criteria and browser compatibility
+* Prepare Design Deep Dive for UX Academy
+* Several internal improvements
 
 ## Q2 2020
 
