@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import {defineCustomElements, applyPolyfills} from '@porsche-design-system/components-js/loader';
+import '@porsche-design-system/browser-notification-banner/dist/index.js';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
 
