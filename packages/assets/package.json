@@ -38,7 +38,7 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
-    "@porsche-design-system/utilities": "1.0.5-rc.0",
+    "@porsche-design-system/utilities": "1.0.5-rc.1",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "rollup": "^2.22.2",
