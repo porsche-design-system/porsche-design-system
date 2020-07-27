@@ -423,16 +423,11 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
-      - name: 'Store Utilities dist Artifact'
+      - name: 'Store Utilities Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: utilities-dist-build
-          path: ./packages/utilities/projects/utilities/dist
-      - name: 'Store Utilities scss Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: utilities-scss-build
-          path: ./packages/utilities/projects/utilities/scss.scss
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
       - name: 'Store Assets Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -468,16 +463,11 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
-      - name: 'Restore Utilities dist Artifact'
+      - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-dist-build
-          path: ./packages/utilities/projects/utilities/dist
-      - name: 'Restore Utilities scss Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: utilities-scss-build
-          path: ./packages/utilities/projects/utilities
+          name: utilities-full-build
+          path: ./packages/utilities/projects # See store artifact comment -> full directory and build of utilities
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
