@@ -467,7 +467,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: utilities-full-build
-          path: ./packages/utilities/projects # See store artifact comment -> full directory and build of utilities
+          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
@@ -642,7 +642,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: utilities-full-build
-          path: ./packages/utilities/projects # See store artifact comment -> full directory and build of utilities
+          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
