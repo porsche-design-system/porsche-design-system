@@ -601,11 +601,6 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
