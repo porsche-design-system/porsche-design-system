@@ -432,7 +432,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: utilities-scss-build
-          path: ./packages/utilities/projects/utilities/scss.scss
+          path: ./packages/utilities/projects/utilities
       - name: 'Store Assets Artifact'
         uses: actions/upload-artifact@v2
         with:
