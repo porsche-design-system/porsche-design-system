@@ -658,11 +658,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Utilities dist Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-build
+          name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
+      - name: 'Restore Utilities SCSS Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: utilities-scss-build
+          path: ./packages/utilities/projects/utilities/scss.scss
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
