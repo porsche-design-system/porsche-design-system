@@ -428,11 +428,11 @@ jobs:
         with:
           name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
-      - name: 'Store Utilities SCSS Artifact'
+      - name: 'Store Utilities scss Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: utilities-scss-build
-          path: ./packages/utilities/projects/utilities
+          path: ./packages/utilities/projects/utilities/scss.scss
       - name: 'Store Assets Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -473,11 +473,11 @@ jobs:
         with:
           name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
-      - name: 'Restore Utilities SCSS Artifact'
+      - name: 'Restore Utilities scss Artifact'
         uses: actions/download-artifact@v2
         with:
           name: utilities-scss-build
-          path: ./packages/utilities/projects/utilities/scss.scss
+          path: ./packages/utilities/projects/utilities
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
@@ -663,7 +663,7 @@ jobs:
         with:
           name: utilities-dist-build
           path: ./packages/utilities/projects/utilities/dist
-      - name: 'Restore Utilities SCSS Artifact'
+      - name: 'Restore Utilities scss Artifact'
         uses: actions/download-artifact@v2
         with:
           name: utilities-scss-build
