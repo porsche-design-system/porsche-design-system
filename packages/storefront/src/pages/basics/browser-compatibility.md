@@ -37,65 +37,88 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 ### Notification Banner
 
-To help inform the user the end of support of IE11 and Microsoft Edge <=18 we provide a **Notification Banner** in form of a JS snippet. 
+To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of npm package.
+This package is not part of Porsche Design System and is delivered as self invoking VanillaJS bundle. So it can be used in many Framework environments.
 
-#### Usage
+The package contains just references to the JS files which are hosted on our CDN. 
 
-Just drop the JS snippet at the end of the `body` tag of your application. Automatic translations for the following languages are provided: `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh'` 
+#### Install
+It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification-banner` npm package. 
+If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
 
-The language is set by scanning the `html` tag for the `lang` attribute. Supports is given for the following formats:
-- `lang="en"`
-- `lang="en_US"`
-- `lang="en-US"`
+```
+// install with npm:
+npm install @porsche-design-system/browser-notification-banner
 
+// install with yarn:
+yarn add @porsche-design-system/browser-notification-banner
+```
+
+#### Basic usage
+Simply import `CDN_BASE_URL` and `JS_MANIFEST ` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
+
+
+```
+import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
+```
+
+Then you should insert the main `index.js` file when your app is mounted, e.g.:
+
+```
+private async mounted(): Promise<void> {
+  const url = CDN_BASE_URL;
+  const indexFileName = JS_MANIFEST.index;
+  const body = document.getElementsByTagName('body')[0];
+  const notificationBanner = document.createElement('script');
+  notificationBanner.src = `${url}/${indexFileName}`;
+  body.appendChild(notificationBanner)
+}
+``` 
+
+#### Advanced usage
+If you want to set your own browser detection, just ignore the `index.js` and load the `banner.js` after detection has finished, e.g.:
+
+```
+const ieVersion = (uaString: string) => {
+  uaString = uaString || navigator.userAgent;
+  const match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
+  if (match) return parseInt(match[2])
+}
+if (ieVersion(ua) === 11) {
+  const url = CDN_BASE_URL;
+  const indexFileName = JS_MANIFEST.banner;
+  const body = document.getElementsByTagName('body')[0];
+  const notificationBanner = document.createElement('script');
+  notificationBanner.src = `${url}/${indexFileName}`;
+  body.appendChild(notificationBanner)
+}
+``` 
+
+#### Fallback usage if nor npm package can be installed
+
+Just drop the JS snippet at the end of the `body` tag of your application. Be sure to point to the latest release!
 
 ``` 
 <body>
 
 ...
-
-  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
+  // if used as static file, be sure to point to the latest release
+  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/index.min.1.0.0.js"></script>
 </body>
 ```
 
-#### Advanced usage
+#### Translations
+Automatic translations for the following languages are provided: `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
 
-Though we provide automatic translations, we cannot guarantee that this works in every environment. 
-If something fails we provide a customized language function which you can use like this:
+The language is set by scanning the `html` tag for the `lang` attribute. Support is given for the following formats:
+- `lang="en"`
+- `lang="en_US"`
+- `lang="en-US"`
 
-##### Case 1 - `lang` attribute of `html` tag is not detected or not set by the application:
-
-Add the JS function before the `<script>` tag of the `init.js` reference and provide a custom locale which **must be one of the pre-defined ones**:
-
-```
- <script>
-   var PDSNB = {
-     locale: function () {
-       return 'fr'; // place your locale string here
-     }
-   }
- </script>
- <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
-```
-
-##### Case 2 -  You need a custom translation because the language is not provided within the script:
-
-Add the JS function before the `<script>` tag of the `init.js` reference and provide a custom language string:
-
-```
- <script>
-   var PDSNB = {
-     language: function () {
-       return '<strong>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</strong><br> Stet clita kasd gubergren, no sea takimata sanctus est <a href="https://www.google.com/chrome/" target="_blank" rel="nofollow noopener">Google Chrome</a>, <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="nofollow noopener">Mozilla Firefox</a> o <a href="https://www.microsoft.com/edge" target="_blank" rel="nofollow noopener">Microsoft Edge</a>.';
-     }
-   }
- </script>
- <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/1-0-0-alpha-0/init.js"></script>
-```
+If none of these languages can be found, it will fallback to `en`;
 
 #### How it works
 
-The `init.js` is an `800 byte` sized file which has a browser detection for IE11 and Edge<=18. 
+The `index.js` is an `600 byte` sized file which has a browser detection for **IE11 and Edge<=18**. 
 If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
-TThe language is detected by scanning the `html` tag for the `lang` attribute.
 Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
