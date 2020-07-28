@@ -159,7 +159,7 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 # Release management
 
-## Porsche Design System - Components (JS/PWCM/Angular/React)
+## Porsche Design System - Components (JS/Angular/React)
 
 ### Note
 When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in all sample integration projects. 

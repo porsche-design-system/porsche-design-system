@@ -17,11 +17,11 @@ const server = createServer({
 
 (server as any).server.on('error', (error: { code: string }) => {
   if (error.code === 'EADDRINUSE') {
-    console.log(`cdn-pwcm port ${PORT} is already in use. maybe it's already started. doing nothing...`);
+    console.log(`cdn-components port ${PORT} is already in use. maybe it's already started. doing nothing...`);
     // interval keeps the process alive in order to not kill other scripts with concurrently
     setInterval(() => {}, 1 << 30); // https://stackoverflow.com/a/47456805
   }
 });
 
 // @ts-ignore
-server.listen(PORT, () => console.log(`started cdn-pwcm on http://localhost:${PORT}`));
+server.listen(PORT, () => console.log(`started cdn-components on http://localhost:${PORT}`));

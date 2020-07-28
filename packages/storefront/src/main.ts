@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
-import { load } from '@porsche-design-system/components-pwcm';
+import { load } from '@porsche-design-system/components-js';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url

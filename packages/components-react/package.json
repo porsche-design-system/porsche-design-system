@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,pwcm,react' 'yarn start:cdn-server' 'yarn start:pwcm-server' 'react-scripts start'",
-    "start:cdn-server": "start-cdn-local",
-    "start:pwcm-server": "start-cdn-pwcm",
+    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn-assets,cdn-components,react' 'yarn start:cdn-assets' 'yarn start:cdn-components' 'react-scripts start'",
+    "start:cdn-assets": "start-cdn-local",
+    "start:cdn-components": "start-cdn-components",
     "build": "yarn --cwd projects/components-wrapper build",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/cdn-local": "0.0.0",
-    "@porsche-design-system/cdn-pwcm": "0.0.0",
+    "@porsche-design-system/cdn-components": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.11.1",

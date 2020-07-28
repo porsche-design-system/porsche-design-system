@@ -13,6 +13,6 @@
     "dist"
   ],
   "include": [
-    "cdn/start-cdn-pwcm.ts"
+    "cdn/start-cdn-components.ts"
   ]
 }
