@@ -161,6 +161,15 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ## Porsche Design System - Components (JS/Angular/React)
 
+### Note
+When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in all sample integration projects. 
+The stable release needs to be exactly the same as the RC release to make sure everything works under real conditions. 
+* [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
+* [Angular](https://github.com/porscheui/sample-integration-angular)
+* [React](https://github.com/porscheui/sample-integration-react)
+* [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
+* [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+
 ### Preparation
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
@@ -220,6 +229,15 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 ---
 
 ## Porsche Design System - Utilities
+
+### Note
+When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in all sample integration projects. 
+The stable release needs to be exactly the same as the RC release to make sure everything works under real conditions. 
+* [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
+* [Angular](https://github.com/porscheui/sample-integration-angular)
+* [React](https://github.com/porscheui/sample-integration-react)
+* [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
+* [NextJS](https://github.com/porscheui/sample-integration-nextjs)
 
 ### Preparation
 1. Switch to __project root directory__
