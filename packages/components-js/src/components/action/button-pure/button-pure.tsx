@@ -52,7 +52,7 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
-  private subline: HTMLElement;
+  private hasSubline: boolean;
 
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
@@ -62,7 +62,7 @@ export class ButtonPure {
     }
   }
   public componentWillLoad(): void {
-    this.setSubline();
+    this.checkHasSubline();
   }
 
   public componentDidLoad(): void {
@@ -133,7 +133,7 @@ export class ButtonPure {
             <slot />
           </PrefixedTagNames.pText>
         </button>
-        {this.subline && (
+        {this.hasSubline && (
           <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
@@ -142,8 +142,8 @@ export class ButtonPure {
     );
   }
 
-  private setSubline(): void {
-    this.subline = this.host.querySelector('[slot="subline"]');
+  private checkHasSubline(): void {
+    this.hasSubline = !!this.host.querySelector('[slot="subline"]');
   }
 
   private isDisabled(): boolean {

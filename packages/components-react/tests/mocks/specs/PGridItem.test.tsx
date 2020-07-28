@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
-import { PGridItem } from '../../../projects/components-wrapper/src';
+import { PGridItem } from '@porsche-design-system/components-react';
 
 describe('PGridItem', () => {
   it('should render PGridItem children', () => {
@@ -8,8 +8,8 @@ describe('PGridItem', () => {
     expect(getByText('Headline')).toBeDefined();
   });
 
-  it('should render TagName of component', ()=> {
-    const {container} = render(<PGridItem/>);
+  it('should render TagName of component', () => {
+    const { container } = render(<PGridItem />);
     expect(container.getElementsByTagName('p-grid-item')).toBeTruthy();
   });
 });

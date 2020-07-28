@@ -155,7 +155,7 @@ Nesting inside columns with the following widths should be prevented, because al
   @import '~@porsche-design-system/utilities/scss';
   
   .example-grid p-grid-item {
-    @include p-text;
+    @include p-text-small;
     color: $p-color-theme-dark-default;
     text-align: center;
     background: lightskyblue;

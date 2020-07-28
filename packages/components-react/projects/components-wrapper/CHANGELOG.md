@@ -8,6 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.2] - 2020-07-22
+
+#### Fixed
+- Dispatch change event in `Select Wrapper`
+- Stencil react-output-target SSR Bug
+
+### [1.5.1] - 2020-07-20
+
+#### Fixed
+- SVGO settings for icons
+- Angular bug which causes `ngcc` to fail
+
+### [1.5.0] - 2020-07-16
+
+#### Added
+- Icons (active-cabin-ventilation, battery-full, bell, bookmark, car-battery, charging-active, charging-state, climate, climate-control, garage, horn, key, map, parking-brake, parking-light, preheating, send, shopping-bag, sidelights, user-manual, wrenches)
+
+#### Changed
+- Icons (arrow-first, arrow-last, battery-empty, car, card, charging-station, question)
+
+#### Fixed
+- Porsche Marque images
+
 ### [1.5.0-rc.2] - 2020-07-06
 
 ### [1.5.0-rc.1] - 2020-07-06

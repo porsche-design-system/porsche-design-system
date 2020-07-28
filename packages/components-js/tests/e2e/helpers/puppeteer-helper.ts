@@ -49,7 +49,7 @@ export const getElementStyle = async (element: ElementHandle, property: keyof CS
     if (opts?.waitForTransition) {
       await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
     }
-    return style[property];
+    return style[property].toString();
   }, property, opts);
 
 export const getElementPosition = async (element: ElementHandle, selector: string): Promise<number> =>

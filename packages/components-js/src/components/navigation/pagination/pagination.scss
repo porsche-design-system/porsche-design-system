@@ -1,4 +1,5 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 :host {
   display: block;
@@ -19,7 +20,7 @@
       counter-reset: size 7;
     }
 
-    @include p-breakpoint("xs") {
+    @include p-media-query("xs") {
       &-5-xs {
         counter-reset: size 5;
       }
@@ -28,7 +29,7 @@
       }
     }
 
-    @include p-breakpoint("s") {
+    @include p-media-query("s") {
       &-5-s {
         counter-reset: size 5;
       }
@@ -37,7 +38,7 @@
       }
     }
 
-    @include p-breakpoint("m") {
+    @include p-media-query("m") {
       &-5-m {
         counter-reset: size 5;
       }
@@ -46,7 +47,7 @@
       }
     }
 
-    @include p-breakpoint("l") {
+    @include p-media-query("l") {
       &-5-l {
         counter-reset: size 5;
       }
@@ -55,7 +56,7 @@
       }
     }
 
-    @include p-breakpoint("xl") {
+    @include p-media-query("xl") {
       &-5-xl {
         counter-reset: size 5;
       }
@@ -86,8 +87,8 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
     outline-color $p-animation-hover-duration $p-animation-hover-bezier;
     position: relative;
-    width: p-rem(40px);
-    height: p-rem(40px);
+    width: p-px-to-rem(40px);
+    height: p-px-to-rem(40px);
     box-sizing: border-box;
     outline: none transparent;
 
@@ -118,7 +119,7 @@
   }
 
   &__goto {
-    @include p-text;
+    @include p-text-small;
     text-decoration: none;
     cursor: pointer;
 
@@ -158,9 +159,9 @@
         display: block;
         position: absolute;
         bottom: 0;
-        left: p-rem(6px);
-        right: p-rem(6px);
-        height: p-rem(4px);
+        left: p-px-to-rem(6px);
+        right: p-px-to-rem(6px);
+        height: p-px-to-rem(4px);
 
         #{$bem-block}--theme-light & {
           background-color: $p-color-theme-light-brand;

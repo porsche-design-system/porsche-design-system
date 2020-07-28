@@ -22,7 +22,6 @@ services:
       - GITHUB_SHA
       - GITHUB_REF
       - GITHUB_TOKEN
-      - SKIP_PREFLIGHT_CHECK
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
       - CI

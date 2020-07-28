@@ -1,11 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
     "outDir": "./mocks",
+    "target": "ES2015",
+    "module": "UMD",
     "noEmit": false,
     "sourceMap": false,
-    "declaration": false
+    "declaration": false,
+    "resolveJsonModule": false
   },
   "include": ["src/mocks"]
 }

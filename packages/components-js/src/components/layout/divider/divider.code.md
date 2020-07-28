@@ -70,7 +70,7 @@ Predefined colors associated with its theme are available.
     display: flex;
     height: 100px;
   }
-  @include p-breakpoint("l") {
+  @include p-media-query("l") {
     .divider-vertical-responsive-container-example {
       display: flex;
       height: 100px;

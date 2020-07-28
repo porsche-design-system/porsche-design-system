@@ -5,6 +5,7 @@ set -o pipefail
 
 if
   [[ "--core-dependencies" == "${1}" ]] ||
+  [[ "--assets" == "${1}" ]] ||
   [[ "--icons" == "${1}" ]] ||
   [[ "--fonts" == "${1}" ]] ||
   [[ "--marque" == "${1}" ]] ||
