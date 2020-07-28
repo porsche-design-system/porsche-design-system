@@ -1,5 +1,5 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { load } from '@porsche-design-system/components-pwcm';
+import { load } from '@porsche-design-system/components-js';
 import { PREVENT_WEB_COMPONENTS_REGISTRATION } from './prevent-web-components-registration.token';
 import { WEB_COMPONENTS_PREFIX } from './web-components-prefix.token';
 
@@ -72,7 +72,7 @@ export class PorscheDesignSystemModule {
     @Optional() @SkipSelf() porscheDesignSystemModule: PorscheDesignSystemModule
   ) {
     /**
-     * prevent registration of components pwcm web components if it's prevented
+     * prevent registration of components js web components if it's prevented
      * explicitly via PREVENT_WEB_COMPONENTS_REGISTRATION inject token
      */
     if (!preventWebComponentsRegistration) {

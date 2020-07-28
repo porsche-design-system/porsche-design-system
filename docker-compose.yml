@@ -33,7 +33,7 @@ services:
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
-      - components-pwcm-node-modules:/opt/porsche-design-system-app/packages/components-pwcm/node_modules
+      - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
@@ -69,7 +69,7 @@ services:
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
-      - components-pwcm-node-modules:/opt/porsche-design-system-volumes/components-pwcm-node_modules
+      - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
@@ -84,7 +84,7 @@ volumes:
   components-js-node-modules:
   components-angular-node-modules:
   components-react-node-modules:
-  components-pwcm-node-modules:
+  components-node-modules:
   fonts-node-modules:
   icons-node-modules:
   marque-node-modules:

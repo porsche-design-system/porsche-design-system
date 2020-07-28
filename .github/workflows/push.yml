@@ -8,8 +8,8 @@ on:
       - release/*
 name: 'Porsche Design System'
 jobs:
-  components-js:
-    name: 'Components JS'
+  components:
+    name: 'Components'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -37,7 +37,7 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-lint
-          args: --components-js
+          args: --components
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
@@ -47,28 +47,28 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
-          args: --components-js
-      - name: 'Build Components JS'
+          args: --components
+      - name: 'Build Components'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components-js
+          args: --components
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-e2e
-          args: --components-js
+          args: --components
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
-          args: --components-js
+          args: --components
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: components-js-vrt-regression
-          path: ./packages/components-js/tests/vrt/results
+          name: components-vrt-regression
+          path: ./packages/components/tests/vrt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -99,16 +99,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Components PWCM'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-pwcm
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -160,16 +160,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Components PWCM'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-pwcm
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -236,16 +236,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Components PWCM'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-pwcm
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
@@ -297,36 +297,36 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-prod
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js-prod
-      - name: 'Build Components PWCM Prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-pwcm-prod
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --storefront
-      - name: 'Store Components JS Build Artifact'
+      - name: 'Store Components Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-prod-build
+          path: ./packages/components/dist
+      - name: 'Store Components Loader Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-prod-loader
+          path: ./packages/components/loader
+      - name: 'Store Components JS Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
-      - name: 'Store Components JS Loader Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-js-prod-loader
-          path: ./packages/components-js/loader
-      - name: 'Store Components PWCM Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-pwcm-prod-build
-          path: ./packages/components-pwcm/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -493,11 +493,11 @@ jobs:
         with:
           name: utilities-full-build
           path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
-      - name: 'Restore Components PWCM Artifact'
+      - name: 'Restore Components JS Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: components-pwcm-prod-build
-          path: ./packages/components-pwcm/dist
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
@@ -507,7 +507,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components-js, components-angular, components-react, storefront, production-builds, utilities, assets-deployment]
+    needs: [components, components-angular, components-react, storefront, production-builds, utilities, assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -531,6 +531,40 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy-storefront
+  release-components:
+    name: 'Release Components'
+    needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-prod-build
+          path: ./packages/components/dist
+      - name: 'Restore Loader Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-prod-loader
+          path: ./packages/components/loader
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/components
   release-components-js:
     name: 'Release Components JS'
     needs: [storefront-deployment]
@@ -552,11 +586,6 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
-      - name: 'Restore Loader Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-prod-loader
-          path: ./packages/components-js/loader
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
@@ -565,38 +594,9 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/components-js
-  release-components-pwcm:
-    name: 'Release Components PWCM'
-    needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: azure/docker-login@v1
-        with:
-          login-server: docker.pkg.github.com
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-pwcm-prod-build
-          path: ./packages/components-pwcm/dist
-      - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          entrypoint: run-release-npm
-          args: packages/components-pwcm
   release-components-angular:
     name: 'Release Components Angular'
-    needs: [release-components-js]
+    needs: [release-components]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -625,7 +625,7 @@ jobs:
           args: packages/components-angular/dist/components-wrapper
   release-components-react:
     name: 'Release Components React'
-    needs: [release-components-js]
+    needs: [release-components]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:

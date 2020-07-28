@@ -1,9 +1,9 @@
 {
-  "name": "@porsche-design-system/cdn-pwcm",
+  "name": "@porsche-design-system/cdn-components",
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "start-cdn-pwcm": "./start-cdn-pwcm.js"
+    "start-cdn-components": "./start-cdn-components.js"
   },
   "dependencies": {
     "http-server": "^0.12.1"

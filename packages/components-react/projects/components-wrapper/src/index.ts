@@ -1,4 +1,4 @@
-import { load } from '@porsche-design-system/components-pwcm';
+import { load } from '@porsche-design-system/components-js';
 load();
 
 // Web Components

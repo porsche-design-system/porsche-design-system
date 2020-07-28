@@ -13,7 +13,7 @@ To enable a smooth start with the Porsche Design System we have created sample p
 ### Get required NPM-Packages
 
 All releases of the Porsche Design System are available as versioned NPM packages called
-* `@porsche-design-system/components-pwcm`
+* `@porsche-design-system/components-js`
 * `@porsche-design-system/components-angular`
 * `@porsche-design-system/components-react`
 
@@ -38,10 +38,10 @@ always-auth = true
 #### Vanilla JS:
 ``` 
 // install with npm:
-npm install @porsche-design-system/components-pwcm
+npm install @porsche-design-system/components-js
 
 // install with yarn:
-yarn add @porsche-design-system/components-pwcm
+yarn add @porsche-design-system/components-js
 ```
 
 #### Angular:
@@ -84,7 +84,7 @@ If you're using web components in a static website, the following page setup is 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-pwcm/index.js"></script>
+    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
     <script type="text/javascript">
       porscheDesignSystem.load();
     </script>
@@ -107,7 +107,7 @@ do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-pwcm/index.js"></script>
+    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
     <script type="text/javascript">
       porscheDesignSystem.load('sample-prefix');
     </script>
