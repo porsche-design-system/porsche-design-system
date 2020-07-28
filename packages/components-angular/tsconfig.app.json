@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist/app",
     "types": []
@@ -7,13 +7,6 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "src/test.ts",
-    "src/**/*.spec.ts"
   ],
   "angularCompilerOptions": {
     "enableIvy": false

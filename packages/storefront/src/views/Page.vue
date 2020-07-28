@@ -101,6 +101,7 @@
 
 <style scoped lang="scss">
   @import "~@porsche-design-system/utilities/scss";
+  @import '../styles/internal.variables';
 
   .tabs {
     position: relative;
@@ -115,14 +116,14 @@
       top: 0;
       right: 0;
       bottom: 0;
-      margin-left: p-rem(-48px);
-      width: p-rem(48px);
+      margin-left: p-px-to-rem(-48px);
+      width: p-px-to-rem(48px);
       background: rgb(255,255,255);
       background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
     }
 
     .tab {
-      @include p-type-scale($p-font-size-28);
+      @include p-generate-type-scale($p-font-size-28);
 
       &:not(:last-child) {
         margin-right: $p-spacing-40;

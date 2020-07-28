@@ -62,7 +62,7 @@ p-divider, my-prefix-p-divider {
   }
 
   &.dark {
-    background: $p-color-theme-dark-surface;
+    background: $p-color-theme-dark-background-surface;
   }
 
   &.spacing-inline {
@@ -110,7 +110,7 @@ p-divider, my-prefix-p-divider {
   p-flex-item[class*="--offset"],
   my-prefix-p-flex-item[class*="--offset"] {
     &::before {
-      @include p-text;
+      @include p-text-small;
       content: '';
       background: lightskyblue;
       padding: $p-spacing-4;
@@ -122,7 +122,7 @@ p-divider, my-prefix-p-divider {
   }
 
   .example-content {
-    @include p-text;
+    @include p-text-small;
     background: lightskyblue;
     padding: $p-spacing-4;
     display: block;

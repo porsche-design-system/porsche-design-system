@@ -676,7 +676,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
   .example-flex {
     & > * {
-      @include p-text;
+      @include p-text-small;
       padding: 0 6vw;
       color: $p-color-theme-dark-default;
       text-align: center;
