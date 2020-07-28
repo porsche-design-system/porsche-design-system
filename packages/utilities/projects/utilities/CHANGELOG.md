@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.0.6-rc.0] - 2020-07-28
+
+#### Changed
+- Use rollup to build / bundle package
+
 ### [1.0.5] - 2020-07-27
 
 #### Fixed
