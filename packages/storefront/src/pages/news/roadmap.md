@@ -1,6 +1,40 @@
 # Roadmap 
 The roadmap for the Porsche Design System is based on the planned enhancement and release path for one quarter. It is no delivery commitment as it may be changed based on user needs, feedback and changing requirements.
 
+## Q3 2020
+
+### Components & Assets
+* Tabs
+* Combobox
+* Modal Dialog
+* Banner
+* Favicon and Touch Icons
+* Browser Notification
+* Marque Refinement
+* Improved Porsche Next Font
+* Provide CSS Font-Face definitions
+
+### Icons
+* Refine Basic Icon Set
+* Refine Icon Creation Workflow
+
+### CDN and Infrastructure
+* Adjust CDN security settings
+* Deliver Web Components by CDN
+* Extend optional runtime scoping mechanism of Web Components
+
+### Loading Behavior/FOUC/SSR
+* Spike: Challenge Web Components regarding loading behaviour, Flash of Unstyled Content and Server-Side Rendering
+* Integration example of web components to avoid FOUC
+
+### Storefront Optimization
+* General Storefront Optimization
+
+### Operations
+* Kitchen Sink
+* Improve componentsReady() function
+* Several internal improvements
+
 ## Q2 2020
 
 ### Operations
