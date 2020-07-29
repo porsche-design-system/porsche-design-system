@@ -45,6 +45,7 @@
     "preinstall:components-angular": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json'",
     "preinstall:components-js": "mkdir -p './packages/components-js/dist/components-wrapper' && cp './packages/components-js/projects/components-wrapper/package.json' './packages/components-js/dist/components-wrapper/package.json'",
     "start": "yarn build && concurrently --kill-others-on-fail -n 'components-js,storefront' 'yarn start:components-js' 'yarn start:storefront'",
+    "start:assets": "yarn --cwd ./packages/assets start",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
     "start:components-angular": "yarn --cwd ./packages/components-angular start",

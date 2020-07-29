@@ -15,13 +15,11 @@ popd
 
 pushd "./packages/components-js"
   yarn version --no-git-tag-version --new-version "${1}"
-  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-angular/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
-  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-angular"
@@ -31,7 +29,6 @@ popd
 pushd "./packages/components-react/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
-  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 pushd "./packages/components-react"

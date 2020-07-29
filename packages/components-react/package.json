@@ -6,7 +6,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
-    "build": "yarn --cwd projects/components-wrapper build",
+    "build": "yarn --cwd projects/components-wrapper build && cp -r ../components/CHANGELOG.md ./projects/components-wrapper/dist/CHANGELOG.md",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
     "test:mocks:js": "jest --config='./tests/mocks/config/jest.config-js.js'",
