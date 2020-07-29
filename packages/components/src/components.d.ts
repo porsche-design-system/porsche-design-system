@@ -358,7 +358,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: 'logo-facebook'
+        "icon"?: | 'logo-facebook'
   | 'logo-google'
   | 'logo-instagram'
   | 'logo-linkedin'
@@ -1126,7 +1126,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: 'logo-facebook'
+        "icon"?: | 'logo-facebook'
   | 'logo-google'
   | 'logo-instagram'
   | 'logo-linkedin'
