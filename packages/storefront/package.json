@@ -4,9 +4,7 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "start": "concurrently -k -s 'first' -n 'cdn-assets,cdn-components,vue' 'yarn start:cdn-assets' 'yarn start:cdn-components' 'vue-cli-service serve'",
-    "start:cdn-assets": "start-cdn-local",
-    "start:cdn-components": "start-cdn-components",
+    "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
