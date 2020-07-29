@@ -22,8 +22,7 @@
     "@porsche-design-system/utilities": "1.0.6"
   },
   "devDependencies": {
-    "@porsche-design-system/cdn-local": "0.0.0",
-    "@porsche-design-system/cdn-components": "0.0.0",
+    "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.11.1",

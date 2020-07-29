@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "1.0.0",
-    "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/utilities": "1.0.6-rc.0",
     "@porsche-design-system/utils": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
