@@ -9,16 +9,16 @@ module.exports = {
   scripts: [
     {
       module: true,
-      pattern: `${environment.cdnDistPath}/porsche-design-system.main.*.js`
+      pattern: `${environment.cdnDistPath}/porsche-design-system.v*.js`
     }
   ],
   copyFiles: [
     {
-      pattern: 'CHANGELOG.md',
+      pattern: '../components/CHANGELOG.md',
       targetDirectory: `${environment.npmDistPath}/`
     },
     {
-      pattern: 'src/package.json',
+      pattern: 'projects/components-wrapper/package.json',
       targetDirectory: `${environment.npmDistPath}/`
     }
   ]
