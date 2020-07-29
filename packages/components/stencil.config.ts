@@ -42,19 +42,17 @@ export const config: Config = {
       ]
     },
     reactOutputTarget({
-      componentCorePackage: '@porsche-design-system/components-js',
+      componentCorePackage: '@porsche-design-system/components',
       proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
       includePolyfills: true,
       includeDefineCustomElements: true
     }),
     angularOutputTarget({
-      componentCorePackage: '@porsche-design-system/components-js',
+      componentCorePackage: '@porsche-design-system/components',
       directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/components-wrapper.component.ts'
-    }),
+    })
   ],
-  bundles: [
-    {components: []}
-  ],
+  bundles: [{ components: [] }],
   plugins: [
     sass(),
     postcss({
@@ -64,14 +62,14 @@ export const config: Config = {
   rollupPlugins: {
     after: [
       rollupReplacePlugin({
-        'ROLLUP_REPLACE_IS_STAGING': process.env.PDS_IS_STAGING === "1" ? '"staging"' : '"production"',
+        ROLLUP_REPLACE_IS_STAGING: process.env.PDS_IS_STAGING === '1' ? '"staging"' : '"production"'
       })
     ]
   },
   globalScript: 'src/setup.ts',
   testing: {
     globalSetup: './jest.setup',
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
   },
   extras: {
     lifecycleDOMEvents: true,
