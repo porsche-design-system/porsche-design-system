@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const cdnPathPackageMap = {
+  components: '@porsche-design-system/components-js',
   fonts: '@porsche-design-system/fonts',
   icons: '@porsche-design-system/icons',
   marque: '@porsche-design-system/marque',

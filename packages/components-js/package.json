@@ -5,17 +5,18 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "rm -rf ./dist && PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && yarn start:prepare && yarn start:servers",
+    "start": "PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && yarn start:prepare && yarn start:servers",
     "start:prepare": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
-    "start:servers": "concurrently -k -s \"first\" -n \"cdn,server\" \"node dist/cdn/start-cdn-components.js\" \"http-server -p 8575 --cors\"",
-    "build": "rm -rf ./dist && yarn build:webpack && yarn build:js && yarn build:cdn",
+    "start:servers": "concurrently -k -s \"first\" -n \"cdn,server\" \"serve-cdn\" \"http-server -p 8575 --cors\"",
+    "build": "yarn clean:build && yarn build:webpack && yarn build:js",
     "build:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack",
     "build:js": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} pwcm build",
-    "build:cdn": "tsc --build tsconfig.cdn.json && chmod +x dist/cdn/start-cdn-components.js && cp cdn/package.json dist/cdn/",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "test": "yarn test:vrt",
     "test:vrt": "concurrently -k -s \"first\" -n \"server,vrt\" \"yarn start\" \"wait-on -t 240000 http-get://localhost:8575 && ts-node --project 'tests/vrt/config/tsconfig.json' node_modules/.bin/jasmine --config='tests/vrt/config/jasmine.config.json'\"",
-    "clean": "rm -rf 'node_modules' && rm -rf 'yarn-error.log' && rm -rf 'dist'"
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf 'node_modules' && rm -rf 'yarn-error.log'",
+    "clean:build": "rm -rf 'dist'"
   },
   "dependencies": {
     "@porsche-design-system/web-components-manager": "0.2.5"
@@ -24,7 +25,6 @@
     "@types/http-server": "^0.10.0",
     "@types/puppeteer": "^3.0.0",
     "@porsche-design-system/assets": "1.0.0",
-    "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/components-js": "2.0.0-alpha.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@porsche-design-system/web-components-manager-cli": "0.2.5",
