@@ -3,7 +3,7 @@ on:
     branches:
       - master
       - v*
-      - issue/*
+      # - issue/*
       - housekeeping/*
       - release/*
 name: 'Porsche Design System'
