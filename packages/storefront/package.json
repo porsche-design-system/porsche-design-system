@@ -28,8 +28,7 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@porsche-design-system/cdn-local": "0.0.0",
-    "@porsche-design-system/cdn-components": "0.0.0",
+    "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@porsche-design-system/vmark": "~1.2.0",
     "@porsche-design-system/vmark-loader": "^1.0.0",
