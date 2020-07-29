@@ -9,7 +9,7 @@
     "start": "concurrently -k -s 'first' -n 'cdn-assets,cdn-components,angular' 'yarn start:cdn-assets' 'yarn start:cdn-components' 'ng serve --prod'",
     "start:cdn-assets": "start-cdn-local",
     "start:cdn-components": "start-cdn-components",
-    "build": "ng build components-wrapper --prod && cp -r ./projects/components-wrapper/CHANGELOG.md ./dist/components-wrapper",
+    "build": "ng build components-wrapper --prod && cp -r ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
     "test": "yarn test:vrt && yarn test:cbt",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
