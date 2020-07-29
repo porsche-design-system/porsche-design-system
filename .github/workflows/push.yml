@@ -26,7 +26,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -87,7 +87,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -148,7 +148,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -214,7 +214,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -285,7 +285,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -350,7 +350,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -401,7 +401,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -472,7 +472,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Fonts Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -519,7 +519,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -546,7 +546,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -580,7 +580,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -609,7 +609,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -638,7 +638,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -667,7 +667,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -696,7 +696,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -725,7 +725,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Publish Sketch Library'
         uses: ./.github/actions/docker-run
         env:
@@ -749,7 +749,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
       - name: 'Publish Sketch Library'
         uses: ./.github/actions/docker-run
         env:
