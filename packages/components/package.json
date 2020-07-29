@@ -54,7 +54,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.2",
     "eslint-plugin-react": "^7.20.3",
     "globby": "^11.0.1",
-    "http-server": "^0.12.1",
+    "http-server": "^0.12.3",
     "isomorphic-fetch": "^2.2.1",
     "jasmine": "^3.5.0",
     "jest": "~26.1.0",
