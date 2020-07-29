@@ -3,10 +3,10 @@ const environment = require('./environment');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: './projects/components-wrapper/src/index.js',
   output: {
     path: environment.cdnDistPath,
-    filename: `porsche-design-system.main.${environment.version}.[contenthash].js`,
+    filename: `porsche-design-system.v${environment.version}.js`,
     chunkFilename:`porsche-design-system.[id].[contenthash].js`,
     libraryTarget: 'var',
     library: `PorscheDesignSystem_${environment.snakeCaseVersion}`,

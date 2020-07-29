@@ -1,7 +1,9 @@
 {
-  "name": "components-react",
+  "name": "@porsche-design-system/react",
   "version": "0.0.0",
   "private": true,
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn-assets,cdn-components,react' 'yarn start:cdn-assets' 'yarn start:cdn-components' 'react-scripts start'",
     "start:cdn-assets": "start-cdn-local",
@@ -16,7 +18,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd projects/components-wrapper clean"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "1.5.2",
+    "@porsche-design-system/components-react": "2.0.0-alpha.0",
     "@porsche-design-system/utilities": "1.0.6"
   },
   "devDependencies": {
@@ -49,7 +51,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "browserslist": {
     "production": [
       "last 2 version",

@@ -1,47 +1,9 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "1.5.2",
-  "scope": "@porsche-design-system",
+  "version": "0.0.0",
   "private": true,
+  "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Marcel Bertram <marcel.bertram@porsche.de>",
-    "Anna Krohmer <anna.krohmer@udg.de>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Olivia Pala <olivia.pala@udg.de>",
-    "Christoph Stickel <net.christoph.stickel@mhp.com>",
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Melanie Kolar <melanie.kolar@udg.de>",
-    "Bernd Hacker <bernd.hacker@mhp.com"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "files": [
-    "dist/",
-    "loader/"
-  ],
-  "keywords": [
-    "porsche",
-    "ui",
-    "web-components",
-    "design-system"
-  ],
-  "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'yarn start:cdn-server' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
     "start:cdn-server": "start-cdn-local",
@@ -109,5 +71,15 @@
     "ts-node": "^8.10.2",
     "typescript": "~3.9.7",
     "wait-on": "^5.1.0"
-  }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "files": [
+    "dist/"
+  ]
 }

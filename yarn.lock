@@ -2605,10 +2605,12 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@porsche-design-system/components-js@1.5.2":
-  version "1.5.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-1.5.2.tgz#25d5b34e58a09db6ff2e3c6fa9fd1b16761c0695"
-  integrity sha1-JdWzTlignbb/Ljxvqf0bFnYcBpU=
+"@porsche-design-system/utilities@1.0.6-rc.0":
+  version "1.0.6-rc.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/utilities/-/@porsche-design-system/utilities-1.0.6-rc.0.tgz#541b361722baaa43ff4e9b9b211841e5cbe80351"
+  integrity sha1-VBs2FyK6qkP/TpubIRhB5cvoA1E=
+  dependencies:
+    csstype "^2.6.11"
 
 "@porsche-design-system/visual-regression-tester@^2.0.1":
   version "2.0.1"
