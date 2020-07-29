@@ -55,14 +55,25 @@ yarn add @porsche-design-system/browser-notification-banner
 ```
 
 #### Basic usage
-Simply import `CDN_BASE_URL` and `JS_MANIFEST ` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
+The easiest way to include the **Browser Notification Banner** into your project is just by importing the `index.js` snippet from the package into your main JS file like this:
 
+```
+import '@porsche-design-system/browser-notification-banner';
+```
+
+This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner.
+
+
+#### Basic usage with control of loading the snippet
+If something fails with the above implementation ( e.g. the translations are not recognized correctly) you can load the initial script by yourself.
+Simply import `CDN_BASE_URL` and `JS_MANIFEST ` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
+This grants access to the URL and the file names of the JS files.
 
 ```
 import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
 ```
 
-Then you should insert the main `index.js` file when your app is mounted, e.g.:
+Then insert the main `index.js` file when your app is mounted, e.g.:
 
 ```
 private async mounted(): Promise<void> {
@@ -76,7 +87,7 @@ private async mounted(): Promise<void> {
 ``` 
 
 #### Advanced usage
-If you want to set your own browser detection, just ignore the `index.js` and load the `banner.js` after detection has finished, e.g.:
+If you want to set your own browser detection, just ignore the `index.js` and load the `banner.js` (with `JS_MANIFEST.banner`) after detection has finished, e.g.:
 
 ```
 const ieVersion = (uaString: string) => {
@@ -94,7 +105,7 @@ if (ieVersion(ua) === 11) {
 }
 ``` 
 
-#### Fallback usage if nor npm package can be installed
+#### Fallback usage if neither a npm package can be installed nor be used
 
 Just drop the JS snippet at the end of the `body` tag of your application. Be sure to point to the latest release!
 
