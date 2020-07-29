@@ -3,7 +3,7 @@ on:
     branches:
       - master
       - v*
-      # - issue/*
+      - issue/*
       - housekeeping/*
       - release/*
 name: 'Porsche Design System'
@@ -48,11 +48,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components
-      - name: 'Build Components'
+      - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components
+          args: --components-js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -99,11 +99,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -160,11 +155,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -236,11 +226,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -297,11 +282,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components Prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-prod
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -312,26 +292,31 @@ jobs:
         with:
           entrypoint: run-build
           args: --storefront
-      - name: 'Store Components Build Artifact'
+      - name: 'Store Assets CDN Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: components-prod-build
-          path: ./packages/components/dist
-      - name: 'Store Components Loader Artifact'
+          name: assets-cdn
+          path: ./packages/assets/cdn
+      - name: 'Store Assets Build Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: components-prod-loader
-          path: ./packages/components/loader
-      - name: 'Store Components JS Artifact'
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Store Components JS Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: components-js-prod-build
-          path: ./packages/components-js/dist
+          path: ./packages/components-js/dist/components-wrapper
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: storefront-prod-build
           path: ./packages/storefront/dist
+      - name: 'Store Utilities Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest
@@ -362,7 +347,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --fonts
-      - name: 'Build'
+      - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
@@ -383,84 +368,9 @@ jobs:
         with:
           name: utilities-vrt-regression
           path: ./packages/utilities/tests/vrt/results
-  assets:
-    name: 'Assets'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: azure/docker-login@v1
-        with:
-          login-server: docker.pkg.github.com
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
-      - name: 'Install'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-        with:
-          entrypoint: run-install
-      - name: 'Build Fonts'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --fonts
-      - name: 'Build Icons'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --icons
-      - name: 'Build Marque'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --marque
-      - name: 'Build Utilities'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utilities
-      - name: 'Build Assets'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --assets
-      - name: 'Store Fonts Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: fonts-build
-          path: ./packages/fonts/dist/fonts
-      - name: 'Store Icons Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: icons-build
-          path: ./packages/icons/dist/icons
-      - name: 'Store Marque Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: marque-build
-          path: ./packages/marque/dist/marque
-      - name: 'Store Utilities Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: utilities-full-build
-          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
-      - name: 'Store Assets Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets-build
-          path: ./packages/assets/dist
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [assets, production-builds]
+    needs: [production-builds]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -473,31 +383,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
-      - name: 'Restore Fonts Artifact'
+      - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: fonts-build
-          path: ./packages/fonts/dist/fonts
-      - name: 'Restore Icons Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: icons-build
-          path: ./packages/icons/dist/icons
-      - name: 'Restore Marque Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: marque-build
-          path: ./packages/marque/dist/marque
+          name: assets-cdn
+          path: ./packages/assets/cdn
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
           name: utilities-full-build
           path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
-      - name: 'Restore Components JS Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-prod-build
-          path: ./packages/components-js/dist
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
@@ -531,40 +426,6 @@ jobs:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
         with:
           entrypoint: run-deploy-storefront
-  release-components:
-    name: 'Release Components'
-    needs: [storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: azure/docker-login@v1
-        with:
-          login-server: docker.pkg.github.com
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
-      - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-prod-build
-          path: ./packages/components/dist
-      - name: 'Restore Loader Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-prod-loader
-          path: ./packages/components/loader
-      - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          entrypoint: run-release-npm
-          args: packages/components
   release-components-js:
     name: 'Release Components JS'
     needs: [storefront-deployment]
@@ -585,7 +446,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: components-js-prod-build
-          path: ./packages/components-js/dist
+          path: ./packages/components-js/dist/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
@@ -593,7 +454,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/components-js
+          args: packages/components-js/dist/components-wrapper
   release-components-angular:
     name: 'Release Components Angular'
     needs: [release-components]

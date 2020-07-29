@@ -9,8 +9,6 @@ if
   [[ "--icons" == "${1}" ]] ||
   [[ "--fonts" == "${1}" ]] ||
   [[ "--marque" == "${1}" ]] ||
-  [[ "--components" == "${1}" ]] ||
-  [[ "--components-prod" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-js-prod" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
