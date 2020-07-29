@@ -8,7 +8,7 @@ const cdnPathPackageMap = {
   style: '@porsche-design-system/utilities'
 };
 
-const TARGET_DIRECTORY = '../dist/cdn';
+const TARGET_DIRECTORY = '../cdn';
 
 (async () => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
