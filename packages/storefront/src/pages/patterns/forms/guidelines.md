@@ -239,7 +239,6 @@ The validation should be displayed permanently so that the user can scan the pag
 
 Even though live inline validation should be your first choice from a UX perspective, sometimes it’s unavoidable to give feedback only after the submission of a form. In this case, we should provide…  
 
-- … an **error summary** at the beginning of the form (ideally the user should jump automatically to the summary after submitting). Within the error summary, all errors should be listed and linked so that the user can easily jump to the selected field errors.
 - … **inline error notifications** that are placed below the respective form fields enable the user to perceive errors quickly, also whilst scrolling. In order to avoid double maintenance (and also reading effort for the user), the specific error text should in the best case be written in a style that can also be used 1:1 in the error summary.
 
 ![Form layouts with error summary and inline error notifications](../../../assets/patterns-forms-error-on-submit.png)

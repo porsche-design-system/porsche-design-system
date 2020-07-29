@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "1.5.2",
-    "@porsche-design-system/utilities": "1.0.6-rc.0"
+    "@porsche-design-system/utilities": "1.0.6"
   },
   "devDependencies": {
     "@porsche-design-system/cdn-local": "0.0.0",
