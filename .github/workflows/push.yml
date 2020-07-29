@@ -457,7 +457,7 @@ jobs:
           args: packages/components-js/dist/components-wrapper
   release-components-angular:
     name: 'Release Components Angular'
-    needs: [release-components]
+    needs: [release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -486,7 +486,7 @@ jobs:
           args: packages/components-angular/dist/components-wrapper
   release-components-react:
     name: 'Release Components React'
-    needs: [release-components]
+    needs: [release-components-js]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
