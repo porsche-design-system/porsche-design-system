@@ -6,7 +6,6 @@
       "packages/components-js/dist/components-wrapper",
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/projects/components-wrapper",
-      "packages/components-js/dist/cdn",
       "packages/utilities/projects/utilities"
     ],
     "nohoist": [
