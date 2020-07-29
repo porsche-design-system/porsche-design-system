@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -41,7 +41,7 @@ services:
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utils-node-modules:/opt/porsche-design-system-app/packages/utils/node_modules
   design-system-deploy:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - GIT_DEPLOY_KEY
@@ -54,7 +54,7 @@ services:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages
   design-system-deploy-assets:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - CDN_USER
@@ -62,7 +62,7 @@ services:
     volumes:
       - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
