@@ -36,7 +36,7 @@
     "puppeteer": "~5.2.1",
     "ts-node": "^8.10.1",
     "wait-on": "^5.0.0",
-    "webpack": "^4.42.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.11"
   }
 }
