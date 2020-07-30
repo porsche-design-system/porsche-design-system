@@ -64,7 +64,8 @@ This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-s
 
 ### How to choose the right alignment
 
-In order to provide a clear and intuitive user guidance, the most important thing is to **maintain consistency within an application**. So we highly recommend to check the individual user flow before deciding which alignment to go. Example: If 66.6 % of the screens in your user flow are standard pages or forms with an F-shaped reading pattern (and, therefore, should have left-aligned Buttons), you should also go for left-aligned Buttons in the remaining 33.3 % of your screens that are part of the same flow:
+In order to provide a clear and intuitive user guidance, the most important thing is to **maintain consistency within an application**. So we highly recommend to check the individual user flow before deciding which alignment to go. 
+Example: If 2/3 of the screens in your user flow are standard pages or forms with an F-shaped reading pattern (and, therefore, should have left-aligned Buttons), you should also go for left-aligned Buttons in the remaining 1/3 of your screens that are part of the same flow:
 
 ![Button placement left-aligned](../../../assets/patterns-buttons-alignment-majority.png)  
 
