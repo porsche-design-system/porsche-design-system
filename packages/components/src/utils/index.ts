@@ -1,4 +1,4 @@
-export * from './breakpointCustomizable';
+export * from './breakpoint-customizable';
 export * from './breakpoints';
 export * from './buttonHandling';
 export * from './focusHandling';
