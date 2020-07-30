@@ -1,4 +1,4 @@
-const environment = require('./environment');
+const environment = require('./projects/components-wrapper/environment');
 
 module.exports = {
   name: 'porscheDesignSystem',
@@ -19,6 +19,14 @@ module.exports = {
     },
     {
       pattern: 'projects/components-wrapper/package.json',
+      targetDirectory: `${environment.npmDistPath}/`
+    },
+    {
+      pattern: 'projects/components-wrapper/LICENSE',
+      targetDirectory: `${environment.npmDistPath}/`
+    },
+    {
+      pattern: 'projects/components-wrapper/README.md',
       targetDirectory: `${environment.npmDistPath}/`
     }
   ]

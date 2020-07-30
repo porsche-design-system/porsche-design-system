@@ -185,7 +185,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: components-react-build
-          path: ./packages/components-react/projects/components-wrapper
+          path: ./packages/components-react/dist/components-wrapper
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
@@ -504,7 +504,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: components-react-build
-          path: ./packages/components-react/projects/components-wrapper
+          path: ./packages/components-react/dist/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:
@@ -512,7 +512,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/components-react/projects/components-wrapper
+          args: packages/components-react/dist/components-wrapper
   release-assets:
     name: 'Release Assets'
     needs: [storefront-deployment]
