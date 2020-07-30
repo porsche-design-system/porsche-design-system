@@ -12,7 +12,8 @@
     "Christoph Stickel <net.christoph.stickel@mhp.com>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Melanie Kolar <melanie.kolar@udg.de>",
-    "Bernd Hacker <bernd.hacker@mhp.com"
+    "Bernd Hacker <bernd.hacker@mhp.com>",
+    "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
@@ -23,9 +24,6 @@
   },
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "main": "index.js"
 }

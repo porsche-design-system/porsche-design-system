@@ -6,7 +6,11 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
-    "build": "yarn --cwd projects/components-wrapper build && cp -r ../components/CHANGELOG.md ./projects/components-wrapper/dist/CHANGELOG.md",
+    "build": "yarn clean:build && yarn build:components && yarn build:mocks && cp -r ./projects/components-wrapper/{package.json,README.md,LICENSE} ./dist/components-wrapper/ && cp -r ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
+    "build:components": "yarn build:components:module && yarn build:components:cjs",
+    "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
+    "build:components:cjs": "tsc --build './projects/components-wrapper/tsconfig.cjs.json'",
+    "build:mocks": "tsc --build './projects/components-wrapper/tsconfig.mocks.json'",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
     "test:mocks:js": "jest --config='./tests/mocks/config/jest.config-js.js'",
@@ -15,7 +19,7 @@
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "yarn --cwd projects/components-wrapper clean"
+    "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "2.0.0-alpha.0",

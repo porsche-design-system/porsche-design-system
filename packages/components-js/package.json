@@ -9,7 +9,7 @@
     "start:prepare": "mkdir -p ./dist/vrt/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./dist/vrt",
     "start:servers": "concurrently -k -s 'first' -n 'cdn,server' 'serve-cdn' 'http-server -p 8575 --cors'",
     "build": "yarn clean:build && yarn build:webpack && yarn build:js",
-    "build:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack",
+    "build:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.js",
     "build:js": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} pwcm build",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "test": "yarn test:vrt",

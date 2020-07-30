@@ -175,9 +175,7 @@ The stable release needs to be exactly the same as the RC release to make sure e
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/components-v1.2.3__
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
-  * `./packages/components-js/CHANGELOG.md`
-  * `./packages/components-angular/projects/components-wrapper/CHANGELOG.md`
-  * `./packages/components-react/projects/components-wrapper/CHANGELOG.md`
+  * `./packages/components/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Manual Test in Edge 18 (pre Chromium)

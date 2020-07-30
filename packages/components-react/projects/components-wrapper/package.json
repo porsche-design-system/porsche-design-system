@@ -12,7 +12,8 @@
     "Christoph Stickel <net.christoph.stickel@mhp.com>",
     "Matthias Hägele <matthias.haegele@mhp.com>",
     "Melanie Kolar <melanie.kolar@udg.de>",
-    "Bernd Hacker <bernd.hacker@mhp.com"
+    "Bernd Hacker <bernd.hacker@mhp.com>",
+    "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>"
   ],
   "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
@@ -24,29 +25,14 @@
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
-  "typings": "./dist/index.d.ts",
-  "files": [
-    "./dist",
-    "./mocks"
-  ],
-  "scripts": {
-    "build": "yarn build:components && yarn build:mocks",
-    "build:components": "yarn build:components:module && yarn build:components:cjs",
-    "build:components:module": "tsc --build './tsconfig.esm.json'",
-    "build:components:cjs": "tsc --build './tsconfig.cjs.json'",
-    "build:mocks": "tsc --build './tsconfig.mocks.json'",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./mocks && rm -rf ./src/lib"
-  },
   "dependencies": {
     "@porsche-design-system/components-js": "2.0.0-alpha.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0 <17.0.0",
     "react-dom": ">=16.9.0 <17.0.0"
-  }
+  },
+  "main": "index.js",
+  "module": "esm/index.js",
+  "typings": "index.d.ts"
 }
