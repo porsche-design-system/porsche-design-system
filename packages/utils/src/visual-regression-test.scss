@@ -1,13 +1,7 @@
 @import '~@porsche-design-system/utilities/scss';
 
-// disable animations globally because of Browserstack VRT testing
 :root {
   --p-animation-duration__spinner: 0s !important;
-}
-
-// disable animations for IE11
-p-spinner > .p-spinner, my-prefix-p-spinner > .p-spinner {
-  animation-duration: 0s !important;
 }
 
 #app {
@@ -17,13 +11,6 @@ p-spinner > .p-spinner, my-prefix-p-spinner > .p-spinner {
 p-divider, my-prefix-p-divider {
   margin: $p-spacing-24 0;
 }
-
-/**
- * TODO: @see explanation below
- */
-//p-grid > p-grid-item[size='2']:first-child > p-headline[tag='h4'] {
-//  margin-top: $p-spacing-16;
-//}
 
 #human-readable-browser-name::before {
   content: 'Unknown browser';
@@ -130,30 +117,4 @@ p-divider, my-prefix-p-divider {
     color: $p-color-theme-dark-default;
     min-height: $p-spacing-24;
   }
-
-  /**
-   * TODO: wait for Stencil statement regarding props deletion
-   * Since v0.0.7 od react components wrapper, all attributes are stripped off the compiled components.
-   * Due to this fact (until it is fixed), the VRT fails because there are now contents for these attributes.
-   * To fix the build the content generation is disabled and all VRT's are adapted until its clear if this is a bug or not.
-   */
-  //p-grid-item[size]::before,
-  //p-grid-item[class*="--size"]::before{
-  //  content: 's: ' attr(size);
-  //}
-  //
-  //p-grid-item[offset]::before,
-  //p-grid-item[class*="--offset"]::before{
-  //  content: 'o: ' attr(offset);
-  //}
-  //
-  //p-flex-item[width]::before,
-  //p-flex-item[class*="--width"]::before{
-  //  content: 'w: ' attr(width);
-  //}
-  //
-  //p-flex-item[offset]::before,
-  //p-flex-item[class*="--offset"]::before{
-  //  content: 'o: ' attr(offset);
-  //}
 }
