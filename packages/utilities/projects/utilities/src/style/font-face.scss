@@ -131,20 +131,3 @@
   unicode-range: U+0400-04FF;
   font-display: swap;
 }
-
-#p-font-loader {
-  font-family: "Porsche Next";
-  font-weight: 100;
-  visibility: hidden;
-}
-#p-font-loader::before{
-  font-weight: 400;
-  content: '';
-}
-#p-font-loader::after{
-  font-weight: 600;
-  content: '';
-}
-#p-font-loader::first-letter{
-  font-weight: 700;
-}
