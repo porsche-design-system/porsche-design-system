@@ -146,10 +146,8 @@ Due to the general guidelines, one Button within a group can be set as "Primary"
 
 - **Actions with lower priority:**  
 Buttons with lower priority that come alongside primary or secondary actions can either be set as tertiary actions (outlined Button) or as a Button or Link Pure, in case you want to reduce their priority even more. If this is the case for the whole group, you can also go for 100% tertiary Button or 100% Button/Link Pure groups.  
- 
-| Do's | Don'ts|   
-| :------- | :------: |
-| ![Do's for Button hierarchy](../../../assets/patterns-buttons-groups-hierarchy-1.png)|![Don'ts for Button hierarchy](../../../assets/patterns-buttons-groups-hierarchy-2.png)  |  
+
+![Do's for Button hierarchy](../../../assets/patterns-buttons-groups-hierarchy-1.png)  
 
   
 ---
