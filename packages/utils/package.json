@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "build": "rm -rf ./dist && mkdir ./dist && yarn node ./scripts/build.js",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
     "@porsche-design-system/utilities": "1.0.6",
