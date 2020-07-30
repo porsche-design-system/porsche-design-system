@@ -55,13 +55,13 @@ yarn add @porsche-design-system/browser-notification-banner
 ```
 
 #### Basic usage
-The easiest way to include the **Browser Notification Banner** into your project is just by importing the `index.js` snippet from the package into your main JS file like this:
+The easiest way to include the **Browser Notification Banner** into your project is just by importing the `init.js` snippet from the package into your main JS file like this:
 
 ```
-import '@porsche-design-system/browser-notification-banner';
+import '@porsche-design-system/browser-notification-banner/dist/init';
 ```
 
-This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner.
+This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner and gets bundled with your application code..
 
 
 #### Basic usage with control of loading the snippet
@@ -73,21 +73,21 @@ This grants access to the URL and the file names of the JS files.
 import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
 ```
 
-Then insert the main `index.js` file when your app is mounted, e.g.:
+Then insert the main `init.js` file when your app is mounted, e.g.:
 
 ```
-private async mounted(): Promise<void> {
+componentDidMount() {
   const url = CDN_BASE_URL;
-  const indexFileName = JS_MANIFEST.index;
+  const initFileName = JS_MANIFEST.init;
   const body = document.getElementsByTagName('body')[0];
   const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${url}/${indexFileName}`;
+  notificationBanner.src = `${url}/${initFileName}`;
   body.appendChild(notificationBanner)
 }
 ``` 
 
 #### Advanced usage
-If you want to set your own browser detection, just ignore the `index.js` and load the `banner.js` (with `JS_MANIFEST.banner`) after detection has finished, e.g.:
+If you want to set your own browser detection, just ignore the `init.js` and load the `banner.js` (with `JS_MANIFEST.banner`) after detection has finished, e.g.:
 
 ```
 const ieVersion = (uaString: string) => {
@@ -97,10 +97,10 @@ const ieVersion = (uaString: string) => {
 }
 if (ieVersion(ua) === 11) {
   const url = CDN_BASE_URL;
-  const indexFileName = JS_MANIFEST.banner;
+  const initFileName = JS_MANIFEST.banner;
   const body = document.getElementsByTagName('body')[0];
   const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${url}/${indexFileName}`;
+  notificationBanner.src = `${url}/${initFileName}`;
   body.appendChild(notificationBanner)
 }
 ``` 
@@ -114,7 +114,7 @@ Just drop the JS snippet at the end of the `body` tag of your application. Be su
 
 ...
   // if used as static file, be sure to point to the latest release
-  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/index.min.1.0.0.js"></script>
+  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/init.min.1.0.0.js"></script>
 </body>
 ```
 
@@ -130,6 +130,6 @@ If none of these languages can be found, it will fallback to `en`;
 
 #### How it works
 
-The `index.js` is an `600 byte` sized file which has a browser detection for **IE11 and Edge<=18**. 
+The `init.js` is an `600 byte` sized file which has a browser detection for **IE11 and Edge<=18**. 
 If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
 Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
