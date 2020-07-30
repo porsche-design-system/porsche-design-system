@@ -8,7 +8,7 @@
     "start": "PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && yarn start:app",
     "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors'",
     "build": "yarn clean:build && yarn build:lib && yarn build:app",
-    "build:app": "mkdir -p ./www/ && cp -r ./src/. ./www/ && cp -r ./public/. ./www/ && cp -r ./dist/components-wrapper/index.js ./www/ && cp ../../node_modules/@porsche-design-system/utils/dist/visual-regression-test.css ./www/",
+    "build:app": "mkdir -p ./www/ && cp -r ./src/. ./www/ && cp -r ./public/. ./www/ && cp -r ./dist/components-wrapper/index.js ./www/",
     "build:lib": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.js && pwcm build",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "test": "yarn test:vrt",
