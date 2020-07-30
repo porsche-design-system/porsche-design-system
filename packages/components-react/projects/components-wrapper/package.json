@@ -40,7 +40,7 @@
     "build:components:module": "tsc --build './tsconfig.esm.json'",
     "build:components:cjs": "tsc --build './tsconfig.cjs.json'",
     "build:mocks": "tsc --build './tsconfig.mocks.json'",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf './dist' && rm -rf './mocks'"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist && rm -rf ./mocks && rm -rf ./src/lib"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "2.0.0-alpha.0"
