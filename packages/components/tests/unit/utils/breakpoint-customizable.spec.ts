@@ -1,7 +1,6 @@
 import { mapBreakpointPropToPrefixedClasses } from '../../../src/utils';
 
-describe('breakpointCustomizable', () => {
-
+describe('mapBreakpointPropToPrefixedClasses', () => {
   it('should create class by passing a "string" prop', () => {
     const result = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'some-string');
 
@@ -21,6 +20,19 @@ describe('breakpointCustomizable', () => {
   it('should create class by passing a "boolean" prop', () => {
     const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', true, ['a', 'b']);
     const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', false, ['a', 'b']);
+
+    expect(resultA).toEqual({
+      'p-some-class-prefix-a': true
+    });
+
+    expect(resultB).toEqual({
+      'p-some-class-prefix-b': true
+    });
+  });
+
+  it('should create class by passing a "string" prop containing a boolean', () => {
+    const resultA = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'true', ['a', 'b']);
+    const resultB = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'false', ['a', 'b']);
 
     expect(resultA).toEqual({
       'p-some-class-prefix-a': true
