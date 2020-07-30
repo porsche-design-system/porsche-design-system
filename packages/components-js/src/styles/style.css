@@ -6,7 +6,8 @@
   padding: 2rem
 }
 
-p-divider, my-prefix-p-divider {
+p-divider,
+my-prefix-p-divider {
   margin: 1.5rem 0
 }
 
@@ -22,31 +23,22 @@ p-divider, my-prefix-p-divider {
   background: #1a2023
 }
 
-.playground.spacing-inline::before {
-  content: '';
-  display: block;
-  margin-top: -1rem
-}
-
-.playground.spacing-inline > * {
-  margin-top: 1rem
-}
-
-.playground.spacing-inline > *:not(:last-child) {
-  margin-right: 1rem
-}
-
-.playground.spacing-block::before {
-  content: '';
-  display: block;
-  margin-top: -1rem
-}
-
-.playground.spacing-block > * {
-  margin-top: 1rem
-}
-
-.playground p-grid-item[size]::before, .playground my-prefix-p-grid-item[size]::before, .playground p-grid-item[class*="--size"]::before, .playground my-prefix-p-grid-item[class*="--size"]::before, .playground p-grid-item[offset]::before, .playground my-prefix-p-grid-item[offset]::before, .playground p-grid-item[class*="--offset"]::before, .playground my-prefix-p-grid-item[class*="--offset"]::before, .playground p-flex-item[width]::before, .playground my-prefix-p-flex-item[width]::before, .playground p-flex-item[class*="--width"]::before, .playground my-prefix-p-flex-item[class*="--width"]::before, .playground p-flex-item[offset]::before, .playground my-prefix-p-flex-item[offset]::before, .playground p-flex-item[class*="--offset"]::before, .playground my-prefix-p-flex-item[class*="--offset"]::before {
+.playground p-grid-item[size]::before,
+.playground my-prefix-p-grid-item[size]::before,
+.playground p-grid-item[class*="--size"]::before,
+.playground my-prefix-p-grid-item[class*="--size"]::before,
+.playground p-grid-item[offset]::before,
+.playground my-prefix-p-grid-item[offset]::before,
+.playground p-grid-item[class*="--offset"]::before,
+.playground my-prefix-p-grid-item[class*="--offset"]::before,
+.playground p-flex-item[width]::before,
+.playground my-prefix-p-flex-item[width]::before,
+.playground p-flex-item[class*="--width"]::before,
+.playground my-prefix-p-flex-item[class*="--width"]::before,
+.playground p-flex-item[offset]::before,
+.playground my-prefix-p-flex-item[offset]::before,
+.playground p-flex-item[class*="--offset"]::before,
+.playground my-prefix-p-flex-item[class*="--offset"]::before {
   font-size: 1rem;
   line-height: 1.5;
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
