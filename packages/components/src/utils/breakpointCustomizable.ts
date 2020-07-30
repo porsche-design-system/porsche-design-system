@@ -28,6 +28,7 @@ interface BreakpointValues<T> {
 
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
 
+/* eslint-disable @typescript-eslint/indent */
 const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
