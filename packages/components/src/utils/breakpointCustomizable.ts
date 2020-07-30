@@ -1,5 +1,4 @@
-import JSON5 from 'json5';
-import {prefix} from './prefix';
+import { prefix } from './prefix';
 
 enum Breakpoint {
   base = 'base',
@@ -29,52 +28,45 @@ interface BreakpointValues<T> {
 
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
 
-const parseJSON5 = (prop: BreakpointCustomizable<BreakpointValue>): BreakpointValues<BreakpointValue> | BreakpointValue => {
+const parseJSON = (
+  prop: BreakpointCustomizable<BreakpointValue>
+): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
     try {
-      // prop is JSON5 string, e.g. "{ base: 'block', l: 'inline' }"
-      return JSON5.parse(prop) as BreakpointValues<BreakpointValue>;
-    } catch (error) {
+      // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
+      return JSON.parse(
+        prop
+          .replace(/'/g, '"') // convert single quotes to double quotes
+          .replace(/[\s"]*([\w\d]*)[\s"]?:/g, '"$1":') // wrap keys in double quotes if they don't have them
+      );
+    } catch (e) {
       // prop is string, e.g. "block" or "inline"
       return prop;
     }
+  } else {
+    // prop is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
+    return prop;
   }
-  // prop is object, e.g. { base: 'block', l: 'inline' }
-  // or number, e.g. 123
-  // or boolean, e.g. true
-  return prop;
 };
 
-const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string => {
-  if (typeof value === 'boolean') {
-    return value ? classSuffixes[0] : classSuffixes[1];
-  }
-  return value.toString();
-};
+const getClassName = (value: BreakpointValue, classSuffixes: ClassSuffixes): string =>
+  typeof value === 'boolean' ? classSuffixes[value ? 0 : 1] : value.toString();
 
-const getBreakpointSuffix = (breakpoint: Breakpoint): string => {
-  if (breakpoint !== 'base') {
-    return `-${breakpoint}`;
-  }
+const getBreakpointSuffix = (breakpoint: Breakpoint): string => (breakpoint !== 'base' ? `-${breakpoint}` : '');
 
-  return '';
-};
-
-const createClass = (classPrefix: string, value: BreakpointValue, breakpoint: Breakpoint, classSuffixes: ClassSuffixes): JSXClasses => {
-  if (value === undefined || value === null) {
-    return {};
-  }
-
-  const className = getClassName(value, classSuffixes);
-  const breakpointSuffix = getBreakpointSuffix(breakpoint);
-
-  return {
-    [prefix(`${classPrefix}-${className}${breakpointSuffix}`)]: true
-  };
-};
+const createClass = (
+  classPrefix: string,
+  value: BreakpointValue,
+  breakpoint: Breakpoint,
+  classSuffixes: ClassSuffixes
+): JSXClasses => ({
+  ...(value !== null &&
+    value !== undefined && {
+      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true
+    })
+});
 
 /**
- *
  * @param classPrefix
  * @param prop
  * @param classSuffixes
@@ -86,15 +78,15 @@ export const mapBreakpointPropToPrefixedClasses = (
   prop: BreakpointCustomizable<BreakpointValue>,
   classSuffixes?: ClassSuffixes
 ): JSXClasses => {
+  const parsedProp = parseJSON(prop);
 
-  const parsedProp = parseJSON5(prop);
-
-  if (typeof parsedProp === 'object') {
-    return Object.entries(parsedProp).reduce((classes, [breakpoint, value]) => ({
-      ...classes,
-      ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
-    }), {});
-  }
-
-  return createClass(classPrefix, parsedProp, Breakpoint.base, classSuffixes);
+  return typeof parsedProp === 'object'
+    ? Object.entries(parsedProp).reduce(
+        (classes, [breakpoint, value]) => ({
+          ...classes,
+          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
+        }),
+        {}
+      )
+    : createClass(classPrefix, parsedProp, Breakpoint.base, classSuffixes);
 };
