@@ -7,8 +7,39 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico">
+
+  <style>
+    #loader {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      z-index: 10000;
+    }
+    #loader::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -35px 0 0 -35px;
+      border: 12px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 12px solid #444444;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+      content: '';
+    }
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
+ <div id="loader"></div>
   <div id="root"></div>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -40,6 +71,7 @@
         }, 10000);
       });
     });
+    document.addEventListener('porscheDesignSystemReady', () => document.body.removeChild(document.getElementById('loader')));
   </script>
 </body>
 </html>
