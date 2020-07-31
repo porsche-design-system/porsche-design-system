@@ -1,45 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Porsche Design System Angular</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System Angular</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-  <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-      var html = document.querySelector('html');
-      function callOnHydrated(cb) {
-        setTimeout(function () {
-          if (html.classList.contains('hydrated')) {
-            return cb();
-          }
-
-          return callOnHydrated(cb);
-        }, 1000);
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      #loader {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 10000;
       }
+      #loader::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -35px 0 0 -35px;
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+        content: '';
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader"></div>
+    <app-root></app-root>
+    <script type="text/javascript">
+      document.addEventListener('porscheDesignSystemReady', () =>
+        document.body.removeChild(document.getElementById('loader'))
+      );
+      document.addEventListener('DOMContentLoaded', function() {
+        var html = document.querySelector('html');
+        function callOnHydrated(cb) {
+          setTimeout(function() {
+            if (html.classList.contains('hydrated')) {
+              return cb();
+            }
 
-      callOnHydrated(function () {
-        /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
-        var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
-        txt+= 'Browser Name: ' + navigator.appName + '<br>';
-        txt+= 'Browser Version: ' + navigator.appVersion + '<br>';
-        txt+= 'Platform: ' + navigator.platform + '<br>';
-        txt+= 'User-agent header: ' + navigator.userAgent;
-        document.getElementById('system-log').innerHTML=txt;
+            return callOnHydrated(cb);
+          }, 1000);
+        }
 
-        window.setTimeout(function() {
-          /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
-          document.body.style.display = 'none';
-          document.body.offsetHeight;
-          document.body.style.display = 'block';
-        }, 10000);
+        callOnHydrated(function() {
+          /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
+          var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
+          txt += 'Browser Name: ' + navigator.appName + '<br>';
+          txt += 'Browser Version: ' + navigator.appVersion + '<br>';
+          txt += 'Platform: ' + navigator.platform + '<br>';
+          txt += 'User-agent header: ' + navigator.userAgent;
+          document.getElementById('system-log').innerHTML = txt;
+
+          window.setTimeout(function() {
+            /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
+            document.body.style.display = 'none';
+            document.body.offsetHeight;
+            document.body.style.display = 'block';
+          }, 10000);
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
