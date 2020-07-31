@@ -156,6 +156,10 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
     ],
+    'Flash of unstyled Content': [
+      // @ts-ignore
+      () => import(`@/pages/general/flash-of-unstyled-content.md`)
+    ],
     'Slotted Content': [
       // @ts-ignore
       () => import(`@/pages/general/slotted-content.md`)
