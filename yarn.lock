@@ -2605,10 +2605,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@porsche-design-system/browser-notification-banner@1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification-banner/-/@porsche-design-system/browser-notification-banner-1.0.0-alpha.5.tgz#6233b5cfb5d5a7352fc7599a34bfc6645c493ff9"
-  integrity sha1-YjO1z7XVpzUvx1maNL/GZFxJP/k=
+"@porsche-design-system/browser-notification-banner@1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification-banner/-/@porsche-design-system/browser-notification-banner-1.0.0-alpha.7.tgz#f1c45de63559e966e787e1b319f8d7f8cd3bd23c"
+  integrity sha1-8cRd5jVZ6Wbnh+GzGfjX+M070jw=
 
 "@porsche-design-system/visual-regression-tester@^3.0.0":
   version "3.0.0"
