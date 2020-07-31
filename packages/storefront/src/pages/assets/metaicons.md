@@ -4,7 +4,7 @@
 Metaicons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons**, **Microsoft Windows Tiles** and **Apple Pinned Tab Icon**.
 
 ## Usage
-Once the `@porsche-design-system/assets` [is installed](#/sassets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
+Once the `@porsche-design-system/assets` package [is installed](#/sassets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
 
 ```
 import { METAICONS_CDN_BASE_URL, METAICONS_MANIFEST } from '@porsche-design-system/assets';
