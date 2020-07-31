@@ -8,8 +8,45 @@
     <link rel="stylesheet" href="/visual-regression-test.css" />
     <script nomodule src="/build/porsche-design-system.js"></script>
     <script type="module" src="/build/porsche-design-system.esm.js"></script>
+
+    <link rel="preload" href="http://localhost:3001/style/font-face.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-thin.min.80d6d2d71edf4b00d5dc3dc22ffed418.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-regular.min.1263496c6f00026b958f812a963a424c.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-semi-bold.min.f196c38e31df69088e8d6934dbf32ba5.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-bold.min.a2b8bddadf87ab229724de45b3c81788.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+      #loader {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 10000;
+      }
+      #loader::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -35px 0 0 -35px;
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+        content: '';
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
+  <div id="loader"></div>
   <div id="app">
     <p-text>
       <b id="human-readable-browser-name"></b>
@@ -82,6 +119,7 @@
         updateRoute();
       });
     });
+    document.addEventListener('porscheDesignSystemReady', () => document.body.removeChild(document.getElementById('loader')));
   </script>
   </body>
 </html>
