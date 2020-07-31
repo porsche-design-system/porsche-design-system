@@ -6,7 +6,8 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
-    "build": "yarn clean:build && yarn build:components && yarn build:mocks && cp -r ./projects/components-wrapper/{package.json,README.md,LICENSE} ./dist/components-wrapper/ && cp -r ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
+    "build": "yarn clean:build && yarn build:components && yarn build:mocks && yarn build:meta",
+    "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
     "build:components": "yarn build:components:module && yarn build:components:cjs",
     "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
     "build:components:cjs": "tsc --build './projects/components-wrapper/tsconfig.cjs.json'",
