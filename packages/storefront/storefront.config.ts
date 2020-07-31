@@ -129,11 +129,7 @@ export const config: StorefrontConfig = {
     'Marque': [
       // @ts-ignore
       () => import(`@/pages/assets/marque.md`)
-    ],
-    'Fonts': [
-      // @ts-ignore
-      () => import(`@/pages/assets/fonts.md`)
-    ],
+    ]
   },
   'Utilities': {
     'Introduction': [
