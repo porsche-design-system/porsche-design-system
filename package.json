@@ -42,9 +42,9 @@
   "scripts": {
     "preinstall": "yarn preinstall:assets && yarn preinstall:components-angular && yarn preinstall:components-js && yarn preinstall:components-react",
     "preinstall:assets": "mkdir -p ./packages/assets/bin && touch ./packages/assets/bin/serve-cdn.js",
-    "preinstall:components-angular": "mkdir -p ./packages/components-angular/dist/components-wrapper && cp ./packages/components-angular/projects/components-wrapper/package.json ./packages/components-angular/dist/components-wrapper/",
-    "preinstall:components-js": "mkdir -p ./packages/components-js/dist/components-wrapper && cp ./packages/components-js/projects/components-wrapper/package.json ./packages/components-js/dist/components-wrapper/",
-    "preinstall:components-react": "mkdir -p ./packages/components-react/dist/components-wrapper && cp ./packages/components-react/projects/components-wrapper/package.json ./packages/components-react/dist/components-wrapper/",
+    "preinstall:components-angular": "TARGET=./packages/components-angular/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/components-wrapper/package.json $TARGET",
+    "preinstall:components-js": "TARGET=./packages/components-js/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-js/projects/components-wrapper/package.json $TARGET",
+    "preinstall:components-react": "TARGET=./packages/components-react/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/components-wrapper/package.json $TARGET",
     "start": "yarn build && concurrently --kill-others-on-fail -n 'components-js,storefront' 'yarn start:components-js' 'yarn start:storefront'",
     "start:assets": "yarn --cwd ./packages/assets start",
     "start:components": "yarn --cwd ./packages/components start",
