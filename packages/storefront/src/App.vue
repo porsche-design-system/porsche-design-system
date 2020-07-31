@@ -56,7 +56,7 @@
 
     private async mounted(): Promise<void> {
       const url = CDN_BASE_URL;
-      const indexFileName = JS_MANIFEST.index;
+      const indexFileName = JS_MANIFEST.init;
       const body = document.getElementsByTagName('body')[0];
       const notificationBanner = document.createElement('script');
       notificationBanner.src = `${url}/${indexFileName}`;
