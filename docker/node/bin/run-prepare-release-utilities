@@ -16,7 +16,7 @@ popd
 packages=( "assets" "components-angular" "components-react" "components-js" "storefront" "utils" )
 
 for pkg in ${packages[@]}; do
-	pushd "./packages/${pkg}"
+  pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/utilities": )(".*")$\1"'${1}'"$' package.json
   popd
 done

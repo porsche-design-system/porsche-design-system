@@ -13,9 +13,9 @@ fi
 samples=( "angular" "react" "gatsby" "nextjs" "vanillajs" )
 
 for dir in ${samples[@]}; do
-	echo "Updating '${1}' to '${2}' in 'sample-integration-${dir}'"
+  echo "Updating '${1}' to '${2}' in 'sample-integration-${dir}'"
 
-	pushd "../sample-integration-${dir}"
+  pushd "../sample-integration-${dir}"
     sed -i '' -E -e 's$("@porsche-design-system/'${1}'": )(".*")$\1"'${2}'"$' package.json
     yarn
   popd
