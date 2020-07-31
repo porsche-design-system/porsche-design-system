@@ -351,7 +351,7 @@ export class SelectWrapper {
 
   private createFakeOptionList(): JSX.Element[][] {
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
-      this.optgroups.length > 0 && option === option.parentNode.firstChild && (
+      this.optgroups.length > 0 && option.parentNode.nodeName === 'OPTGROUP' && (
         <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
           {option.closest('optgroup').label}
         </span>
