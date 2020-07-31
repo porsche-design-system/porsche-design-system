@@ -71,11 +71,13 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
-    this.selectObserver.disconnect();
-    this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
-    this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
-    if (!this.isTouch && typeof document !== 'undefined') {
-      document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+    if (!this.isTouch) {
+      this.selectObserver.disconnect();
+      this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
+      this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+      }
     }
   }
 
