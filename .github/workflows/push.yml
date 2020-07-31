@@ -62,7 +62,7 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
-          args: --components
+          args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
