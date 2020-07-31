@@ -5,5 +5,6 @@ module.exports = {
   testMatch: ['**/tests/mocks/specs/**/*.test.tsx'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
-  }
+  },
+  modulePathIgnorePatterns: ['<rootDir>/dist']
 };
