@@ -30,7 +30,7 @@ describe('link social', () => {
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,
-      `<div><p-link-social id="hostElement" href="#" icon="logo-facebook">Some label</p-link-social></div>`
+      `<div><p-link-social id="hostElement" href="about:blank#" icon="logo-facebook">Some label</p-link-social></div>`
     );
 
     const wrapper = await selectNode(page, 'div');
