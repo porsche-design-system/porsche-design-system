@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { PLinkPure as LinkPure, PText as Text, PDivider as Divider } from '@porsche-design-system/components-react';
 import { Basic } from './pages/Basic';
@@ -12,6 +12,12 @@ import { Navigation } from './pages/Navigation';
 import './App.css';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    document.addEventListener('porscheDesignSystemReady', () => {
+      document.body.removeChild(document.getElementById('loader'));
+      document.head.removeChild(document.getElementById('loader-style'));
+    });
+  }, []);
   return (
     <Router>
       <div id="app">
