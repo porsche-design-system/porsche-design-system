@@ -30,7 +30,7 @@ describe('link pure', () => {
   it('should dispatch correct click events', async () => {
     await setContentWithDesignSystem(
       page,
-      `<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`
+      `<div><p-link-pure id="hostElement" href="about:blank#">Some label</p-link-pure></div>`
     );
 
     const wrapper = await selectNode(page, 'div');
