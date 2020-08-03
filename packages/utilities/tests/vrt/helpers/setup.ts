@@ -1,5 +1,6 @@
 import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
 import { Browser, launch } from 'puppeteer';
+import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
@@ -15,6 +16,9 @@ const testOptions: VisualRegressionTestOptions = {
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
+
+jasmine.getEnv().clearReporters();
+jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
   browser = await launch({
