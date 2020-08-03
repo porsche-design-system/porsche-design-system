@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/marque';
 
 // reexports are needed in order to build standalone typings
-export const FONTS_CDN_CSS_FILE_BASE_URL = P_FONTS_CSS_FILE_URL;
+export const FONTS_CDN_CSS_FILE_URL = P_FONTS_CSS_FILE_URL;
 export const FONTS_CDN_BASE_URL = P_FONTS_CDN_BASE_URL;
 export const FONTS_MANIFEST = P_FONTS_MANIFEST;
 export const ICONS_CDN_BASE_URL = P_ICONS_CDN_BASE_URL;
