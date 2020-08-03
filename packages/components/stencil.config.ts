@@ -67,10 +67,6 @@ export const config: Config = {
     ]
   },
   globalScript: 'src/setup.ts',
-  testing: {
-    globalSetup: './jest.setup',
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
-  },
   extras: {
     lifecycleDOMEvents: true,
     tagNameTransform: true
