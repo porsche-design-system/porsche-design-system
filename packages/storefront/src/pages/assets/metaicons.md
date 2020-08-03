@@ -40,7 +40,7 @@ The Manifest must be declared in the `<head>` of your document and can be someth
 ```
 
 ## Browserconfig xml
-Microsoft Tile images are served by referencing the corresponding images in the `browserconfig.xml` file which must be placed in the root of  your application.
+Microsoft Tile images are served by referencing the corresponding images in the `browserconfig.xml` file which must be placed in the root of your application.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
