@@ -5,8 +5,8 @@ import { getCrossBrowserTester } from '../helpers/setup';
 describe('Components Overview', () => {
   let cbt: CrossBrowserTester;
 
-  beforeAll(async () => {
-    cbt = await getCrossBrowserTester();
+  beforeAll(() => {
+    cbt = getCrossBrowserTester();
   });
 
   it('should have no visual regression in IE11 for basic', async () => {
