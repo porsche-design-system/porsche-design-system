@@ -5,31 +5,18 @@ export const designSystemReady = (): void => {
   // By creating a hidden div which gets removed after fonts are loaded we force the browser to load our font immediately, but only if there is no preloading set.
   let preloaded = true;
   const preLoaderId = 'p-font-loader';
-  const hiddenStyleId = 'font-loader-style';
+
   if (!document.querySelector('link[rel="preload"][as="font"]')) {
     preloaded = false;
     const hiddenStyle = document.createElement('style');
-    hiddenStyle.innerHTML = `
-    #p-font-loader {font-family: "Porsche Next";
-      font-weight: 100;
-      visibility: hidden;
-    }
-    #p-font-loader::before{
-      font-weight: 400;
-      content: '';
-    }
-    #p-font-loader::after{
-      font-weight: 600;
-      content: '';
-    }
-    #p-font-loader::first-letter{
-      font-weight: 700;
-    }`;
-    hiddenStyle.id = hiddenStyleId;
+    hiddenStyle.innerHTML =
+      `#${preLoaderId}{font-family:"Porsche Next";font-weight:100;visibility:hidden}` +
+      `#${preLoaderId}::before{font-weight:400;content:''} ` +
+      `#${preLoaderId}::after{font-weight:600;content:''} ` +
+      `#${preLoaderId}::first-letter{font-weight:700}`;
     const hiddenFontLoader = document.createElement('div');
     hiddenFontLoader.id = preLoaderId;
-
-    document.head.append(hiddenStyle);
+    hiddenFontLoader.appendChild(hiddenStyle);
     document.body.appendChild(hiddenFontLoader);
   }
   // Some browsers need time to load the font. While loop crashes safari so we check it recursive
@@ -45,7 +32,6 @@ export const designSystemReady = (): void => {
 
     if (!preloaded) {
       document.body.removeChild(document.getElementById(preLoaderId));
-      document.head.removeChild(document.getElementById(hiddenStyleId));
     }
     document.dispatchEvent(new Event(PORSCHE_DESIGN_SYSTEM_READY_EVENT));
   });
