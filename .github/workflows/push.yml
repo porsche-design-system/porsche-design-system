@@ -57,7 +57,7 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-e2e
-          args: --components
+          args: --components-js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
