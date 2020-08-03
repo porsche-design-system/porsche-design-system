@@ -9,7 +9,7 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   globals: {
     'ts-jest': {
-      isolatedModules: true
+      isolatedModules: true // this fixes typing issues with jasmine
     }
   }
 };
