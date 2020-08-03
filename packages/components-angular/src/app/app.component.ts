@@ -46,4 +46,10 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
+  ngOnInit(){
+    document.addEventListener('porscheDesignSystemReady', () => {
+      document.body.removeChild(document.getElementById('loader'));
+      document.head.removeChild(document.getElementById('loader-style'));
+    });
+  }
 }

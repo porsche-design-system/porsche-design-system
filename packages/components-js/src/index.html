@@ -15,7 +15,7 @@
     <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-semi-bold.min.f196c38e31df69088e8d6934dbf32ba5.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-bold.min.a2b8bddadf87ab229724de45b3c81788.woff2" as="font" type="font/woff2" crossorigin>
 
-    <style>
+    <style id="loader-style">
       #loader {
         position: fixed;
         top: 0;
@@ -119,7 +119,8 @@
         updateRoute();
       });
     });
-    document.addEventListener('porscheDesignSystemReady', () => document.body.removeChild(document.getElementById('loader')));
+    document.addEventListener('porscheDesignSystemReady', () => {document.body.removeChild(document.getElementById('loader'));
+      document.head.removeChild(document.getElementById('loader-style'))});
   </script>
   </body>
 </html>
