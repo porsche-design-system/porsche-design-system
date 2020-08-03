@@ -1,5 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const metaicons = require('@porsche-design-system/assets');
+const cdnUrl = metaicons.METAICONS_CDN_BASE_URL;
+const iconFavicon = metaicons.METAICONS_MANIFEST.favicon;
+const iconTouch = metaicons.METAICONS_MANIFEST.touchicon;
 
 module.exports = {
   publicPath: './',
@@ -38,20 +41,20 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'white',
     iconPaths: {
-      favicon16: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.favicon.favicon_16x16}`,
-      favicon32: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.favicon.favicon_32x32}`,
-      favicon48: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.favicon.favicon_48x48}`,
-      appleTouchIcon: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.touchicon.appleTouchIcon_180x180}`,
-      maskIcon: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.pinnedTab.pinnedTabIcon}`,
-      msTileImage: `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.mstile.mstile_270x270}`,
+      favicon16: `${cdnUrl}/${iconFavicon.favicon_16x16}`,
+      favicon32: `${cdnUrl}/${iconFavicon.favicon_32x32}`,
+      favicon48: `${cdnUrl}/${iconFavicon.favicon_48x48}`,
+      appleTouchIcon: `${cdnUrl}/${iconTouch.appleTouchIcon_180x180}`,
+      maskIcon: `${cdnUrl}/${metaicons.METAICONS_MANIFEST.pinnedTab.pinnedTabIcon}`,
+      msTileImage: `${cdnUrl}/${metaicons.METAICONS_MANIFEST.mstile.mstile_270x270}`,
     },
     manifestOptions: {
       icons: [{
-        'src': `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.touchicon.androidChrome_192x192}`,
+        'src': `${cdnUrl}/${iconTouch.androidChrome_192x192}`,
         'sizes': '192x192',
         'type': 'image/png'
       }, {
-        'src': `${metaicons.METAICONS_CDN_BASE_URL}/${metaicons.METAICONS_MANIFEST.touchicon.androidChrome_512x512}`,
+        'src': `${cdnUrl}/${iconTouch.androidChrome_512x512}`,
         'sizes': '512x512',
         'type': 'image/png'
       }],
