@@ -3,11 +3,11 @@ export const PORSCHE_DESIGN_SYSTEM_READY_EVENT = 'porscheDesignSystemReady';
 
 export const designSystemReady = (): void => {
   // By creating a hidden div which gets removed after fonts are loaded we force the browser to load our font immediately, but only if there is no preloading set.
-  let preload = true;
+  let preloaded = true;
   const preLoaderId = 'p-font-loader';
   const hiddenStyleId = 'font-loader-style';
   if (!document.querySelector('link[rel="preload"][as="font"]')) {
-    preload = false;
+    preloaded = false;
     const hiddenStyle = document.createElement('style');
     hiddenStyle.innerHTML = `
     #p-font-loader {font-family: "Porsche Next";
@@ -43,7 +43,7 @@ export const designSystemReady = (): void => {
     };
     checkForFonts();
 
-    if (!preload) {
+    if (!preloaded) {
       document.body.removeChild(document.getElementById(preLoaderId));
       document.head.removeChild(document.getElementById(hiddenStyleId));
     }
