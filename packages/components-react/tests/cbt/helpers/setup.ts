@@ -6,7 +6,7 @@ let crossBrowserTester: CrossBrowserTester;
 const options: CrossBrowserTestOptions = {
   username: process.env.BROWSERSTACK_USER_NAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-  browserList: [{ os: 'Windows', os_version: '10', browser_version: '11.0', browser: 'ie' }],
+  browserList: [{ os: 'Windows', os_version: '10', browser: 'edge', browser_version: '18.0' }],
   local: true,
   orientation: 'portrait',
   winRes: '1024x768',
