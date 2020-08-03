@@ -2,12 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "es2019",
-    "lib": [
-      "es2019",
-      "dom"
-    ]
+    "lib": ["es2019", "dom"]
   },
-  "include": [
-    "**/*"
-  ]
+  "include": ["**/*"]
 }
