@@ -1,9 +1,12 @@
-import 'jasmine';
 import { Browser, launch } from 'puppeteer';
 
 let browser: Browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
+
+const Reporter = require('jasmine-console-reporter');
+jasmine.getEnv().clearReporters();
+jasmine.getEnv().addReporter(new Reporter());
 
 beforeAll(async () => {
   browser = await launch({
