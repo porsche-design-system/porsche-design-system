@@ -6,7 +6,6 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
-    "start:cbt-server": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'if test \"$CI\" != true; then PDS_IS_STAGING=1 yarn build; fi && http-server -p 61424 -P http://localhost:61424/www'",
     "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:readme",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
@@ -15,10 +14,9 @@
     "lint:scss": "stylelint './src/**/*.scss'",
     "lint:ts": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}'",
     "lint:ts:fix": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}' --fix",
-    "test": "yarn test:unit && yarn test:cbt",
+    "test": "yarn test:unit",
     "test:unit": "jest -c ./tests/unit/config/jest.config.js",
     "test:unit:watch": "yarn test:unit --watch",
-    "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start:cbt-server' 'wait-on -t 300000 http-get://localhost:61424 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
@@ -27,7 +25,6 @@
     "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@porsche-design-system/utils": "0.0.0",
-    "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz",
     "@stencil/core": "~1.14.0",
     "@stencil/postcss": "^1.0.1",

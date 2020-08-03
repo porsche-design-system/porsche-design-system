@@ -1,6 +1,7 @@
 /dist
 /www
 
+/tests/cbt/results
 /tests/vrt/results
 
 *~

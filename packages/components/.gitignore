@@ -2,8 +2,6 @@
 /www/
 /loader/
 
-/tests/cbt/results
-
 *~
 *.sw[mnpcod]
 *.log
