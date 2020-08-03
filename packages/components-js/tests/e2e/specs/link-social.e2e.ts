@@ -1,15 +1,15 @@
 import {
   addEventListener,
   getActiveElementId,
+  getBrowser,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
 describe('link social', () => {
-
   let page: Page;
 
   beforeEach(async () => {
@@ -28,7 +28,10 @@ describe('link social', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link-social id="hostElement" href="#" icon="logo-facebook">Some label</p-link-social></div>`);
+    await setContentWithDesignSystem(
+      page,
+      `<div><p-link-social id="hostElement" href="#" icon="logo-facebook">Some label</p-link-social></div>`
+    );
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkSocialHost();
@@ -48,13 +51,16 @@ describe('link social', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook" id="my-link-social">Some label</p-link-social>
             <a href="#" id="after">after</a>
           </div>
-    `);
+    `
+    );
     const link = await getLinkSocialHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
@@ -62,7 +68,7 @@ describe('link social', () => {
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
     let linkFocusCalls = 0;
-    await addEventListener(link, 'focus', () => linkFocusCalls++)
+    await addEventListener(link, 'focus', () => linkFocusCalls++);
     let linkFocusInCalls = 0;
     await addEventListener(link, 'focusin', () => linkFocusInCalls++);
     let linkBlurCalls = 0;
@@ -137,12 +143,15 @@ describe('link social', () => {
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-social href="#" icon="logo-facebook">Some label</p-link-social>
           </div>
-    `);
+    `
+    );
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-social'));
 
