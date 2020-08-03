@@ -7,8 +7,13 @@ export const setContentWithDesignSystem = async (
 ): Promise<void> => {
   await page.setContent(
     `
-      <script type="module" src="http://localhost:3333/porsche-design-system.esm.js"></script>
-      ${content}
+      <head>
+        <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+      </head>
+      <body>
+        <script type="text/javascript">porscheDesignSystem.load();</script>
+        ${content}
+      </body>
     `,
     options
   );
