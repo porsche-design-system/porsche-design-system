@@ -1,23 +1,23 @@
 const webpack = require('webpack');
-const environment = require('./environment');
+const { cdnDistPath, deployUrl, snakeCaseVersion, version } = require('./environment');
 
 module.exports = {
   mode: 'production',
   entry: './projects/components-wrapper/src/index.js',
   output: {
-    path: environment.cdnDistPath,
-    filename: `porsche-design-system.v${environment.version}.js`,
+    path: cdnDistPath,
+    filename: `porsche-design-system.v${version}.js`,
     chunkFilename: `porsche-design-system.[id].[contenthash].js`,
     libraryTarget: 'var',
-    library: `PorscheDesignSystem_${environment.snakeCaseVersion}`,
-    publicPath: `${environment.deployUrl}/`
+    library: `PorscheDesignSystem_${snakeCaseVersion}`,
+    publicPath: `${deployUrl}/`
   },
   optimization: {
     usedExports: true
   },
   plugins: [
     new webpack.DefinePlugin({
-      PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(environment.version)
+      PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version)
     })
   ]
 };
