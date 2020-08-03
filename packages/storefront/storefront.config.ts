@@ -156,7 +156,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
     ],
-    'Flash of unstyled Content': [
+    'Flash Of Unstyled Content': [
       // @ts-ignore
       () => import(`@/pages/general/flash-of-unstyled-content.md`)
     ],
