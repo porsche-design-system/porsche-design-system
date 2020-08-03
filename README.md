@@ -86,7 +86,7 @@
 ### E2E Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-    * Run `./docker.sh run-test-e2e` (e2e tests for the entire application)
+    * `./docker.sh run-test-e2e` (e2e tests for the entire application)
     * `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
     * `./docker.sh run-test-e2e --storefront` (e2e tests for the storefront)
 

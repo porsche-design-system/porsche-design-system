@@ -4,7 +4,7 @@ set -o errexit
 set -o pipefail
 
 if
-  [[ "--components" == "${1}" ]] ||
+  [[ "--components-js" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]]
 then
