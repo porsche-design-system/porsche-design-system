@@ -1,7 +1,6 @@
-import 'jasmine';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
-import { redraw } from '../../../../components-js/tests/vrt/helpers/redraw';
+import { redraw } from '../helpers/redraw';
 
 describe('Components Overview', () => {
   let vrt: VisualRegressionTester;

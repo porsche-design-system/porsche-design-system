@@ -1,4 +1,3 @@
-import 'jasmine';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionOverviewTester, testOptions } from '../helpers';
 

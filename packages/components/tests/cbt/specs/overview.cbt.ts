@@ -1,4 +1,3 @@
-import 'jasmine';
 import { CrossBrowserTester } from '@porsche-ui/cross-browser-tester';
 import { getCrossBrowserTester } from '../helpers/setup';
 
