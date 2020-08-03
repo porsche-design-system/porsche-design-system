@@ -1,13 +1,12 @@
-import 'jasmine';
 import { getBrowser, options } from '../helpers/setup';
 import { Page } from 'puppeteer';
 
 describe('router', () => {
   let page: Page;
 
-  const getCurrentUrl = async (): Promise<string> => await page.evaluate('location.href') as string;
+  const getCurrentUrl = async (): Promise<string> => (await page.evaluate('location.href')) as string;
 
-  beforeEach(async () => page = await getBrowser().newPage());
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   describe('home view', () => {

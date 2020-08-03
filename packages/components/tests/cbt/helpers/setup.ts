@@ -1,5 +1,4 @@
 require('dotenv').config();
-import 'jasmine';
 import { CrossBrowserTester, CrossBrowserTestOptions } from '@porsche-ui/cross-browser-tester';
 
 let crossBrowserTester: CrossBrowserTester;

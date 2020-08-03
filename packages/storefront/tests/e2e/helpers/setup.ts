@@ -1,4 +1,3 @@
-import 'jasmine';
 import { Browser, launch } from 'puppeteer';
 
 let browser: Browser;
