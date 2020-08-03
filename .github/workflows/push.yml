@@ -67,8 +67,8 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: components-vrt-regression
-          path: ./packages/components/tests/vrt/results
+          name: components-js-vrt-regression
+          path: ./packages/components-js/tests/vrt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
