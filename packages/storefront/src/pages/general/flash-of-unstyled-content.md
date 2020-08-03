@@ -1,13 +1,13 @@
 # Flash Of Unstyled Content
 
-Unstyled components or text when opening an application or website directly create a bad first impression.
+Unstyled components or text when opening an application or website create a bad first impression.
 To prevent this, the Porsche Design System offers various solutions to ensure all necessary Porsche Design System fonts and components are fully loaded.
 
 ## Wait for event
 
 As mentioned, we provide different approaches. The simplest solution is by waiting for the `PORSCHE_DESIGN_SYSTEM_READY_EVENT`.
 We provide it as variable to make sure you always listen to the correct event.
-The event is fired as soon as all our components are ready and it checks if the web-fonts are loaded from the cdn.
+The event is fired as soon as all our components are ready and it checks if the web-fonts are fully loaded from the cdn.
 
 ### Example usage
 
@@ -68,7 +68,7 @@ to the file on the CDN.
 **Note:** Make sure while building your `Link` tags you keep the structure as in the example.
 The preload of the CSS file needs `rel="preload"` and `onload="this.rel="stylesheet"` to be loaded properly.
 
-Alternatively, you can copy the`<link>` tags from our example. Those are valid url´s and will be updated if anything changes.
+Alternatively, you can copy all tags you need from the example beneath. Those are valid url´s and we will updated the example if anything changes.
 
 **Note:** In this case you have to check our changelog and update your `preload links` if the cdn-address or the fonts change.
 
