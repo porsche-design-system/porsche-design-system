@@ -64,7 +64,8 @@
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start:e2e-server' 'wait-on -t 300000 http-get://localhost:3333 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start:vrt-server' 'wait-on -t 300000 http-get://localhost:61423 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'yarn start:cbt-server' 'wait-on -t 300000 http-get://localhost:61424 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
+    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www",
+    "postinstall": "node preload-fonts.js"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "1.0.0",
