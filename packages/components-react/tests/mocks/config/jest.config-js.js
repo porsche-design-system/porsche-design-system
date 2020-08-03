@@ -6,5 +6,10 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
   },
-  modulePathIgnorePatterns: ['<rootDir>/dist']
+  modulePathIgnorePatterns: ['<rootDir>/dist'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true
+    }
+  }
 };
