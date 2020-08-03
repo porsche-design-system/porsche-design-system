@@ -60,6 +60,16 @@ index.js
 In case you only care for flash of unstyled text, because you dont use any of our components,
 you have to preload all webfonts in the head of your application.
 
+It is possible to import the URLs required for the link tag and build them within the project using a script. 
+In our package `@porsche-design-system/assets` we provide `FONTS_CDN_CSS_FILE_BASE_URL` which contains the URL to the style file as well as 
+`FONTS_CDN_BASE_URL` and `FONTS_MANIFEST`. The manifest contains the file name of the desired font and together with the base URL it leads
+to the file on the CDN.
+
+**Note:** Make sure while building your `Link` tags you keep the structure as in the example.
+The preload of the CSS file needs `rel="preload"` and `onload="this.rel="stylesheet"` to be loaded properly.
+
+Alternatively, you can copy the`<link>` tags from our example. Those are valid url´s and will be updated if anything changes.
+
 **Note:** In this case you have to check our changelog and update your `preload links` if the cdn-address or the fonts change.
 
 ```
