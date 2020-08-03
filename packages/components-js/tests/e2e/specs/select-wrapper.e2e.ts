@@ -287,7 +287,7 @@ describe('select-wrapper', () => {
         'p-select-wrapper >>> .p-select-wrapper__fake-option--selected'
       );
       const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
-      const selectedDescendantId = await getProperty(fakeOptionSelected, 'id');
+      const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptionDisabled).not.toBeNull();
