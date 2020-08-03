@@ -1,4 +1,4 @@
-# Flash of unstyled Content
+# Flash Of Unstyled Content
 
 Unstyled components or text when opening an application or website directly create a bad first impression.
 To prevent this, the Porsche Design System offers various solutions to ensure all necessary Porsche Design System fonts and components are fully loaded.
