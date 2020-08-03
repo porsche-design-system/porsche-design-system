@@ -9,7 +9,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('button pure', () => {
+describe('button-pure', () => {
   let page: Page;
 
   beforeEach(async () => {

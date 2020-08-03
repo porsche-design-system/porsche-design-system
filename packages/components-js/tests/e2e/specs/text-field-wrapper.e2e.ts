@@ -12,7 +12,7 @@ import {
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
-describe('Text Field Wrapper', () => {
+describe('text-field-wrapper', () => {
   let page: Page;
 
   beforeEach(async () => {

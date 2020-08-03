@@ -11,7 +11,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('Textarea Wrapper', () => {
+describe('textarea-wrapper', () => {
   let page: Page;
 
   beforeEach(async () => {
