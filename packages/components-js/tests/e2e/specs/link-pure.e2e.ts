@@ -1,15 +1,15 @@
 import {
   addEventListener,
   getActiveElementId,
+  getBrowser,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
 describe('link pure', () => {
-
   let page: Page;
 
   beforeEach(async () => {
@@ -28,7 +28,10 @@ describe('link pure', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`);
+    await setContentWithDesignSystem(
+      page,
+      `<div><p-link-pure href="#" id="hostElement">Some label</p-link-pure></div>`
+    );
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkPureHost();
@@ -48,13 +51,16 @@ describe('link pure', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-pure href="#" id="my-link-pure">Some label</p-link-pure>
             <a href="#" id="after">after</a>
           </div>
-    `);
+    `
+    );
     const link = await getLinkPureHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
@@ -62,7 +68,7 @@ describe('link pure', () => {
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
     let linkFocusCalls = 0;
-    await addEventListener(link, 'focus', () => linkFocusCalls++)
+    await addEventListener(link, 'focus', () => linkFocusCalls++);
     let linkFocusInCalls = 0;
     await addEventListener(link, 'focusin', () => linkFocusInCalls++);
     let linkBlurCalls = 0;
@@ -137,12 +143,15 @@ describe('link pure', () => {
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
           <div id="wrapper">
             <a href="#" id="before">before</a>
             <p-link-pure href="#">Some label</p-link-pure>
           </div>
-    `);
+    `
+    );
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-pure'));
 
