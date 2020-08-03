@@ -1,13 +1,12 @@
 import 'jasmine';
-import * as puppeteer from 'puppeteer';
-import { Browser } from 'puppeteer';
+import { Browser, launch } from 'puppeteer';
 
 let browser: Browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch({
+  browser = await launch({
     headless: true,
     defaultViewport: {
       width: 1920,
@@ -18,7 +17,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  if (browser) await browser.close();
+  if (browser) {
+    await browser.close();
+  }
 });
 
 export const options = {
