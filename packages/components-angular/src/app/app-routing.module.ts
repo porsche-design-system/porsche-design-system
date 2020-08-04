@@ -1,13 +1,6 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { BasicComponent } from "./pages/basic.component";
-import { ActionComponent } from "./pages/action.component";
-import { ContentComponent } from "./pages/content.component";
-import { FormComponent } from './pages/form.component';
-import { FeedbackComponent } from "./pages/feedback.component";
-import { IconComponent } from "./pages/icon.component";
-import { LayoutComponent } from "./pages/layout.component";
-import { NavigationComponent } from "./pages/navigation.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import * as fromPages from './pages';
 
 const appRoutes: Routes = [
   {
@@ -17,48 +10,44 @@ const appRoutes: Routes = [
   },
   {
     path: 'basic',
-    component: BasicComponent
+    component: fromPages.BasicComponent
   },
   {
     path: 'action',
-    component: ActionComponent
+    component: fromPages.ActionComponent
   },
   {
     path: 'content',
-    component: ContentComponent
+    component: fromPages.ContentComponent
   },
   {
     path: 'form',
-    component: FormComponent
+    component: fromPages.FormComponent
   },
   {
     path: 'feedback',
-    component: FeedbackComponent
+    component: fromPages.FeedbackComponent
   },
   {
     path: 'icon',
-    component: IconComponent
+    component: fromPages.IconComponent
   },
   {
     path: 'layout',
-    component: LayoutComponent
+    component: fromPages.LayoutComponent
   },
   {
     path: 'navigation',
-    component: NavigationComponent
+    component: fromPages.NavigationComponent
+  },
+  {
+    path: 'overview-prefixed',
+    component: fromPages.OverviewPrefixedComponent
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
