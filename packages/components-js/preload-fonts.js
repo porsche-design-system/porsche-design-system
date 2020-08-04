@@ -4,12 +4,11 @@ const cdnBaseUrl = assets.FONTS_CDN_BASE_URL;
 const fontsObject = assets.FONTS_MANIFEST;
 const cdnFontsCssFile = assets.FONTS_CDN_CSS_FILE_URL;
 const flatFontsObject = Object.values(fontsObject)
-  .map(Object.values)
+  .map(Object.entries)
   .flat();
-const linkArray = flatFontsObject.map(
-  (x) => `<link rel="preload" href="${cdnBaseUrl}/${x}" as="font" type="font/woff2" crossorigin>`
+const linkArray = Object.entries(flatFontsObject).map(
+  ([, entries]) => `<link rel="preload" href="${cdnBaseUrl}/${entries[1]}" as="font" type="font/${entries[0]}" crossorigin>`
 );
-
 // ToDo: export const with hashed font-face.min.css in Asset package and load it here
 
 console.log(`

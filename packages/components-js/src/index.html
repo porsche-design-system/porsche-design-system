@@ -117,6 +117,9 @@
         };
         window.addEventListener("hashchange", updateRoute);
         updateRoute();
+      document.addEventListener('porscheDesignSystemReady', () => {
+        document.body.removeChild(document.getElementById('loader'));
+        document.head.removeChild(document.getElementById('loader-style'));
       });
     });
     document.addEventListener('porscheDesignSystemReady', () => {document.body.removeChild(document.getElementById('loader'));
