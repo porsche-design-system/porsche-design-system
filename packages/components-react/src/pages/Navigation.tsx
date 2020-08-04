@@ -13,56 +13,56 @@ import React from 'react';
 export const NavigationPage = (): JSX.Element => {
   return (
     <div>
-      <Headline variant={'headline-2'}>Navigation</Headline>
+      <Headline variant="headline-2">Navigation</Headline>
       <Divider />
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-link&gt;
           </Headline>
         </GridItem>
         <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <Link variant={'primary'} href={'https://designsystem.porsche.com'}>
+            <Link variant="primary" href="https://designsystem.porsche.com">
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link href={'https://designsystem.porsche.com'}>Some label</Link>
+            <Link href="https://designsystem.porsche.com">Some label</Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'}>
+            <Link variant="tertiary" href="https://designsystem.porsche.com">
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link icon={'phone'} href={'https://designsystem.porsche.com'}>
+            <Link icon="phone" href="https://designsystem.porsche.com">
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>
+            <Link href="https://designsystem.porsche.com" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </Link>
           </div>
           <Divider />
           <div className="playground light spacing-inline">
-            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true}>
+            <Link variant="primary" href="https://designsystem.porsche.com" hideLabel={true}>
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} hideLabel={true}>
+            <Link href="https://designsystem.porsche.com" hideLabel={true}>
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true}>
+            <Link variant="tertiary" href="https://designsystem.porsche.com" hideLabel={true}>
               Some label
             </Link>
           </div>
           <div className="playground light spacing-inline">
-            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true}>
+            <Link icon="phone" href="https://designsystem.porsche.com" hideLabel={true}>
               Some label
             </Link>
           </div>
@@ -70,48 +70,48 @@ export const NavigationPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <Link variant={'primary'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <Link variant="primary" href="https://designsystem.porsche.com" theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <Link href="https://designsystem.porsche.com" theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <Link variant="tertiary" href="https://designsystem.porsche.com" theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <Link icon="phone" href="https://designsystem.porsche.com" theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>
+            <Link href="https://designsystem.porsche.com" theme="dark" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </Link>
           </div>
           <Divider />
           <div className="playground dark spacing-inline">
-            <Link variant={'primary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>
+            <Link variant="primary" href="https://designsystem.porsche.com" hideLabel={true} theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>
+            <Link href="https://designsystem.porsche.com" hideLabel={true} theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link variant={'tertiary'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>
+            <Link variant="tertiary" href="https://designsystem.porsche.com" hideLabel={true} theme="dark">
               Some label
             </Link>
           </div>
           <div className="playground dark spacing-inline">
-            <Link icon={'phone'} href={'https://designsystem.porsche.com'} hideLabel={true} theme={'dark'}>
+            <Link icon="phone" href="https://designsystem.porsche.com" hideLabel={true} theme="dark">
               Some label
             </Link>
           </div>
@@ -120,67 +120,67 @@ export const NavigationPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-link-pure&gt;
           </Headline>
         </GridItem>
         <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'}>Some label</LinkPure>
+            <LinkPure href="https://designsystem.porsche.com">Some label</LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure hideLabel={true} href={'https://designsystem.porsche.com'}>
+            <LinkPure hideLabel={true} href="https://designsystem.porsche.com">
               Some label
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure size={'medium'} href={'https://designsystem.porsche.com'}>
+            <LinkPure size="medium" href="https://designsystem.porsche.com">
               Medium
             </LinkPure>
-            <LinkPure size={'inherit'} href={'https://designsystem.porsche.com'} style={{ fontSize: '48px' }}>
+            <LinkPure size="inherit" href="https://designsystem.porsche.com" style={{ fontSize: '48px' }}>
               Inherit
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'}>
+            <LinkPure weight="thin" href="https://designsystem.porsche.com">
               Thin
             </LinkPure>
-            <LinkPure weight={'regular'} href={'https://designsystem.porsche.com'}>
+            <LinkPure weight="regular" href="https://designsystem.porsche.com">
               Regular
             </LinkPure>
-            <LinkPure weight={'semibold'} href={'https://designsystem.porsche.com'}>
+            <LinkPure weight="semibold" href="https://designsystem.porsche.com">
               Semibold
             </LinkPure>
-            <LinkPure weight={'bold'} href={'https://designsystem.porsche.com'}>
+            <LinkPure weight="bold" href="https://designsystem.porsche.com">
               Bold
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure active={true} href={'https://designsystem.porsche.com'}>
+            <LinkPure active={true} href="https://designsystem.porsche.com">
               Some label
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'}>
+            <LinkPure icon="phone" href="https://designsystem.porsche.com">
               Some link with a custom icon
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} style={{ width: '240px' }}>
+            <LinkPure href="https://designsystem.porsche.com" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </LinkPure>
           </div>
           <div className="playground light spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
+            <LinkPure href="https://designsystem.porsche.com" weight="semibold" size="medium">
               Some label
               <p slot="subline">Some subline</p>
             </LinkPure>
-            <LinkPure weight={'semibold'} size={'medium'}>
-              <a href={'https://designsystem.porsche.com'}>Some label</a>
+            <LinkPure weight="semibold" size="medium">
+              <a href="https://designsystem.porsche.com">Some label</a>
               <p slot="subline">Some subline</p>
             </LinkPure>
-            <a href={'https://designsystem.porsche.com'} style={{ display: 'inline-block' }}>
-              <LinkPure weight={'semibold'} size={'medium'}>
+            <a href="https://designsystem.porsche.com" style={{ display: 'inline-block' }}>
+              <LinkPure weight="semibold" size="medium">
                 Some label
                 <p slot="subline">Some subline</p>
               </LinkPure>
@@ -190,68 +190,63 @@ export const NavigationPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure href="https://designsystem.porsche.com" theme="dark">
               Some label
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure hideLabel={true} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure hideLabel={true} href="https://designsystem.porsche.com" theme="dark">
               Some label
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure size={'medium'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure size="medium" href="https://designsystem.porsche.com" theme="dark">
               Medium
             </LinkPure>
-            <LinkPure
-              size={'inherit'}
-              href={'https://designsystem.porsche.com'}
-              theme={'dark'}
-              style={{ fontSize: '48px' }}
-            >
+            <LinkPure size="inherit" href="https://designsystem.porsche.com" theme="dark" style={{ fontSize: '48px' }}>
               Inherit
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure weight={'thin'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure weight="thin" href="https://designsystem.porsche.com" theme="dark">
               Thin
             </LinkPure>
-            <LinkPure weight={'regular'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure weight="regular" href="https://designsystem.porsche.com" theme="dark">
               Regular
             </LinkPure>
-            <LinkPure weight={'semibold'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure weight="semibold" href="https://designsystem.porsche.com" theme="dark">
               Semibold
             </LinkPure>
-            <LinkPure weight={'bold'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure weight="bold" href="https://designsystem.porsche.com" theme="dark">
               Bold
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure active={true} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure active={true} href="https://designsystem.porsche.com" theme="dark">
               Some label
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure icon={'phone'} href={'https://designsystem.porsche.com'} theme={'dark'}>
+            <LinkPure icon="phone" href="https://designsystem.porsche.com" theme="dark">
               Some link with a custom icon
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure href={'https://designsystem.porsche.com'} theme={'dark'} style={{ width: '240px' }}>
+            <LinkPure href="https://designsystem.porsche.com" theme="dark" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </LinkPure>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkPure theme={'dark'} href={'https://designsystem.porsche.com'} weight={'semibold'} size={'medium'}>
+            <LinkPure theme="dark" href="https://designsystem.porsche.com" weight="semibold" size="medium">
               Some label
               <p slot="subline">Some subline</p>
             </LinkPure>
-            <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
-              <a href={'https://designsystem.porsche.com'}>Some label</a>
+            <LinkPure theme="dark" weight="semibold" size="medium">
+              <a href="https://designsystem.porsche.com">Some label</a>
               <p slot="subline">Some subline</p>
             </LinkPure>
-            <a href={'https://designsystem.porsche.com'} style={{ display: 'inline-block' }}>
-              <LinkPure theme={'dark'} weight={'semibold'} size={'medium'}>
+            <a href="https://designsystem.porsche.com" style={{ display: 'inline-block' }}>
+              <LinkPure theme="dark" weight="semibold" size="medium">
                 Some label
                 <p slot="subline">Some subline</p>
               </LinkPure>
@@ -262,28 +257,28 @@ export const NavigationPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-link-social&gt;
           </Headline>
         </GridItem>
         <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'}>
+            <LinkSocial href="https://www.facebook.com" icon="logo-facebook">
               Some label
             </LinkSocial>
           </div>
           <div className="playground light spacing-inline">
-            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} hideLabel={true}>
+            <LinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel={true}>
               Some label
             </LinkSocial>
           </div>
           <div className="playground light spacing-inline">
-            <LinkSocial icon={'logo-delicious'} href={'https://www.delicious.com'}>
+            <LinkSocial icon="logo-delicious" href="https://www.delicious.com">
               Some label
             </LinkSocial>
           </div>
           <div className="playground light spacing-inline">
-            <LinkSocial style={{ width: '240px' }} icon={'logo-facebook'} href={'https://www.facebook.com'}>
+            <LinkSocial style={{ width: '240px' }} icon="logo-facebook" href="https://www.facebook.com">
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </LinkSocial>
           </div>
@@ -291,27 +286,22 @@ export const NavigationPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} theme={'dark'}>
+            <LinkSocial href="https://www.facebook.com" icon="logo-facebook" theme="dark">
               Some label
             </LinkSocial>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkSocial href={'https://www.facebook.com'} icon={'logo-facebook'} hideLabel={true} theme={'dark'}>
+            <LinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel={true} theme="dark">
               Some label
             </LinkSocial>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkSocial icon={'logo-delicious'} href={'https://www.delicious.com'} theme={'dark'}>
+            <LinkSocial icon="logo-delicious" href="https://www.delicious.com" theme="dark">
               Some label
             </LinkSocial>
           </div>
           <div className="playground dark spacing-inline">
-            <LinkSocial
-              style={{ width: '240px' }}
-              icon={'logo-facebook'}
-              href={'https://www.facebook.com'}
-              theme={'dark'}
-            >
+            <LinkSocial style={{ width: '240px' }} icon="logo-facebook" href="https://www.facebook.com" theme="dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </LinkSocial>
           </div>
@@ -320,7 +310,7 @@ export const NavigationPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-pagination&gt;
           </Headline>
         </GridItem>
@@ -332,7 +322,7 @@ export const NavigationPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-block">
-            <Pagination theme={'dark'} totalItemsCount={500} itemsPerPage={25} activePage={1} />
+            <Pagination theme="dark" totalItemsCount={500} itemsPerPage={25} activePage={1} />
           </div>
           <Divider />
         </GridItem>

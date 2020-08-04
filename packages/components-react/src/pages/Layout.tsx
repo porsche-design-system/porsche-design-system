@@ -12,11 +12,11 @@ import React from 'react';
 export const LayoutPage = (): JSX.Element => {
   return (
     <div>
-      <Headline variant={'headline-2'}>Layout</Headline>
+      <Headline variant="headline-2">Layout</Headline>
       <Divider />
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-grid&gt;
             <br />
             &lt;p-grid-item&gt;
@@ -112,7 +112,7 @@ export const LayoutPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-flex&gt;
             <br />
             &lt;p-flex-item&gt;
@@ -121,22 +121,22 @@ export const LayoutPage = (): JSX.Element => {
         <GridItem size={10}>
           <div className="playground light spacing-block">
             <Flex>
-              <FlexItem width={'full'} />
+              <FlexItem width="full" />
             </Flex>
             <Flex>
-              <FlexItem offset={'one-quarter'} width={'three-quarters'} />
+              <FlexItem offset="one-quarter" width="three-quarters" />
             </Flex>
             <Flex>
-              <FlexItem offset={'one-third'} width={'two-thirds'} />
+              <FlexItem offset="one-third" width="two-thirds" />
             </Flex>
             <Flex>
-              <FlexItem offset={'half'} width={'half'} />
+              <FlexItem offset="half" width="half" />
             </Flex>
             <Flex>
-              <FlexItem offset={'two-thirds'} width={'one-third'} />
+              <FlexItem offset="two-thirds" width="one-third" />
             </Flex>
             <Flex>
-              <FlexItem offset={'three-quarters'} width={'one-quarter'} />
+              <FlexItem offset="three-quarters" width="one-quarter" />
             </Flex>
           </div>
           <Divider />
@@ -144,7 +144,7 @@ export const LayoutPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-divider&gt;
           </Headline>
         </GridItem>
@@ -153,20 +153,20 @@ export const LayoutPage = (): JSX.Element => {
             <Divider />
             <br />
             <br />
-            <Divider color={'neutral-contrast-medium'} />
+            <Divider color="neutral-contrast-medium" />
             <br />
             <br />
-            <Divider color={'neutral-contrast-high'} />
+            <Divider color="neutral-contrast-high" />
             <br />
             <br />
-            <Divider orientation={'vertical'} style={{ height: '100px' }} />
+            <Divider orientation="vertical" style={{ height: '100px' }} />
           </div>
           <Divider />
         </GridItem>
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-content-wrapper&gt;
           </Headline>
         </GridItem>
