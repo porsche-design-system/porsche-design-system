@@ -4,16 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Porsche Design System JS</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/visual-regression-test.css" />
     <script nomodule src="/build/porsche-design-system.js"></script>
     <script type="module" src="/build/porsche-design-system.esm.js"></script>
 
-    <link rel="preload" href="http://localhost:3001/style/font-face.min.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-thin.min.80d6d2d71edf4b00d5dc3dc22ffed418.woff2" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-regular.min.1263496c6f00026b958f812a963a424c.woff2" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-semi-bold.min.f196c38e31df69088e8d6934dbf32ba5.woff2" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="http://localhost:3001/fonts/porsche-next-w-la-bold.min.a2b8bddadf87ab229724de45b3c81788.woff2" as="font" type="font/woff" crossorigin>
+    <link
+      rel="preload"
+      href="http://localhost:3001/style/font-face.min.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="http://localhost:3001/fonts/porsche-next-w-la-thin.min.80d6d2d71edf4b00d5dc3dc22ffed418.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="http://localhost:3001/fonts/porsche-next-w-la-regular.min.1263496c6f00026b958f812a963a424c.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="http://localhost:3001/fonts/porsche-next-w-la-semi-bold.min.f196c38e31df69088e8d6934dbf32ba5.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="http://localhost:3001/fonts/porsche-next-w-la-bold.min.a2b8bddadf87ab229724de45b3c81788.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <style id="loader-style">
       #loader {
@@ -25,106 +54,146 @@
         background: white;
         z-index: 10000;
       }
-      #loader::before {
+      .spinner {
         position: absolute;
+        width: 104px;
         top: 50%;
         left: 50%;
-        margin: -35px 0 0 -35px;
-        border: 12px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 12px solid #444444;
-        width: 70px;
-        height: 70px;
-        animation: spin 1s linear infinite;
-        content: '';
+        margin: -52px 0 0 -52px;
+        fill: none;
+        transform: translate3d(0, 0, 0);
+        stroke-width: 1px;
+        stroke: #323639;
       }
-      @keyframes spin {
+      .fg {
+        stroke-linecap: round;
+        transform-origin: center center;
+        stroke-dashoffset: 0;
+        stroke-dasharray: 40, 200;
+        animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+      }
+      .bg {
+        opacity: 0.4;
+      }
+
+      @keyframes rotate {
         100% {
           transform: rotate(360deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 3, 1000;
+        }
+
+        50% {
+          stroke-dasharray: 42, 1000;
+        }
+
+        100% {
+          stroke-dasharray: 30, 1000;
+          stroke-dashoffset: -52;
         }
       }
     </style>
   </head>
   <body>
-  <div id="loader"></div>
-  <div id="app">
-    <p-text>
-      <b id="human-readable-browser-name"></b>
-      <br>
-      <span id="system-log"></span>
-    </p-text>
-    <p-divider></p-divider>
-    <div>
-    <p-link-pure href="/index.html#basic">Basic</p-link-pure><!--
-    --><p-link-pure href="/index.html#action">Action</p-link-pure><!--
-    --><p-link-pure href="/index.html#content">Content</p-link-pure><!--
-    --><p-link-pure href="/index.html#form">Form</p-link-pure><!--
-    --><p-link-pure href="/index.html#feedback">Feedback</p-link-pure><!--
-    --><p-link-pure href="/index.html#icon">Icon</p-link-pure><!--
-    --><p-link-pure href="/index.html#layout">Layout</p-link-pure><!--
-    --><p-link-pure href="/index.html#navigation">Navigation</p-link-pure><!--
-    --></div>
-    <p-divider></p-divider>
-    <div data-router-outlet></div>
-  </div>
-  <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-      var html = document.querySelector('html');
-      function callOnHydrated(cb) {
-        setTimeout(function () {
-          if (html.classList.contains('hydrated')) {
-            return cb();
-          }
+    <div id="loader">
+      <div class="spinner">
+        <svg viewBox="0 0 32 32">
+          <circle class="fg" cx="16" cy="16" r="9" />
+          <circle class="bg" cx="16" cy="16" r="9" />
+        </svg>
+      </div>
+    </div>
+    <div id="app">
+      <p-text>
+        <b id="human-readable-browser-name"></b>
+        <br />
+        <span id="system-log"></span>
+      </p-text>
+      <p-divider></p-divider>
+      <div>
+        <p-link-pure href="/index.html#basic">Basic</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#action">Action</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#content">Content</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#form">Form</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#feedback">Feedback</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#icon">Icon</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#layout">Layout</p-link-pure
+        ><!--
+    --><p-link-pure href="/index.html#navigation">Navigation</p-link-pure
+        ><!--
+    -->
+      </div>
+      <p-divider></p-divider>
+      <div data-router-outlet></div>
+    </div>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var html = document.querySelector('html');
+        function callOnHydrated(cb) {
+          setTimeout(function() {
+            if (html.classList.contains('hydrated')) {
+              return cb();
+            }
 
-          return callOnHydrated(cb);
-        }, 1000);
-      }
+            return callOnHydrated(cb);
+          }, 1000);
+        }
 
-      callOnHydrated(function () {
-        /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
-        var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
-        txt+= 'Browser Name: ' + navigator.appName + '<br>';
-        txt+= 'Browser Version: ' + navigator.appVersion + '<br>';
-        txt+= 'Platform: ' + navigator.platform + '<br>';
-        txt+= 'User-agent header: ' + navigator.userAgent;
-        document.getElementById('system-log').innerHTML=txt;
+        callOnHydrated(function() {
+          /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
+          var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
+          txt += 'Browser Name: ' + navigator.appName + '<br>';
+          txt += 'Browser Version: ' + navigator.appVersion + '<br>';
+          txt += 'Platform: ' + navigator.platform + '<br>';
+          txt += 'User-agent header: ' + navigator.userAgent;
+          document.getElementById('system-log').innerHTML = txt;
 
-        window.setTimeout(function() {
-          /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
-          document.body.style.display = 'none';
-          document.body.offsetHeight;
-          document.body.style.display = 'block';
-        }, 10000);
-        /* Router to reduce page size for VRT/CBT tests*/
-        const routerOutlet = document.querySelector('[data-router-outlet]');
-        const updateRoute = function() {
-          if(['#', ''].indexOf(document.location.hash) > -1) {
-            document.location.hash = 'basic';
-            return;
-          }
+          window.setTimeout(function() {
+            /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
+            document.body.style.display = 'none';
+            document.body.offsetHeight;
+            document.body.style.display = 'block';
+          }, 10000);
+          /* Router to reduce page size for VRT/CBT tests*/
+          const routerOutlet = document.querySelector('[data-router-outlet]');
+          const updateRoute = function() {
+            if (['#', ''].indexOf(document.location.hash) > -1) {
+              document.location.hash = 'basic';
+              return;
+            }
 
-          const target = document.location.hash.substr(1);
+            const target = document.location.hash.substr(1);
 
-          fetch('pages/' + target + '.html').then(function(template) {
-            return template.text();
-          }).then(function (text) {
-            routerOutlet.innerHTML = text;
+            fetch('pages/' + target + '.html')
+              .then(function(template) {
+                return template.text();
+              })
+              .then(function(text) {
+                routerOutlet.innerHTML = text;
 
-            document.querySelectorAll('.example-set-to-indeterminate').forEach(function(checkbox) {
-              checkbox.indeterminate = true;
-            });
-          });
-        };
-        window.addEventListener("hashchange", updateRoute);
-        updateRoute();
+                document.querySelectorAll('.example-set-to-indeterminate').forEach(function(checkbox) {
+                  checkbox.indeterminate = true;
+                });
+              });
+          };
+          window.addEventListener('hashchange', updateRoute);
+          updateRoute();
+        });
+      });
       document.addEventListener('porscheDesignSystemReady', () => {
         document.body.removeChild(document.getElementById('loader'));
         document.head.removeChild(document.getElementById('loader-style'));
-      });
-    });
-    document.addEventListener('porscheDesignSystemReady', () => {document.body.removeChild(document.getElementById('loader'));
-      document.head.removeChild(document.getElementById('loader-style'))});
-  </script>
       }, {once: true});
+    </script>
   </body>
 </html>
