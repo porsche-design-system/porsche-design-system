@@ -25,7 +25,8 @@
   "collection:main": "dist/collection/index.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "bin/"
   ],
   "keywords": [
     "porsche",
