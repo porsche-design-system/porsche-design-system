@@ -7,19 +7,23 @@ import './App.css';
 export const App = (): JSX.Element => {
   return (
     <Router>
+      <Text>
+        <b id="human-readable-browser-name" />
+        <br />
+        <span id="system-log" />
+      </Text>
+
+      <Divider />
+
+      {routes.map((route) => (
+        <Link key={route.path} to={route.path} className="removeLinkStyle">
+          <LinkPure>{route.name}</LinkPure>
+        </Link>
+      ))}
+
+      <Divider />
+
       <div id="app">
-        <Text>
-          <b id="human-readable-browser-name" />
-          <br />
-          <span id="system-log" />
-        </Text>
-        <Divider />
-        {routes.map((route) => (
-          <Link key={route.path} to={route.path} className="removeLinkStyle">
-            <LinkPure>{route.name}</LinkPure>
-          </Link>
-        ))}
-        <Divider />
         <Switch>
           {routes.map((route) => (
             <Route key={route.path} {...route} />

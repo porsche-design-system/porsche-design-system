@@ -46,5 +46,10 @@ export const routes: RouteType[] = [
     name: 'Navigation',
     path: '/navigation',
     component: fromPages.NavigationPage
+  },
+  {
+    name: 'Overview Prefixed',
+    path: '/overview-prefixed',
+    component: fromPages.OverviewPrefixedPage
   }
 ];
