@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/components-js/src';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +48,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   ngOnInit(){
-    document.addEventListener('porscheDesignSystemReady', () => {
+    document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
       document.body.removeChild(document.getElementById('loader'));
       document.head.removeChild(document.getElementById('loader-style'));
     });
