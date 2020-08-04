@@ -17,7 +17,7 @@ const App: React.FC = () => {
     document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
       document.body.removeChild(document.getElementById('loader'));
       document.head.removeChild(document.getElementById('loader-style'));
-    });
+    },{once: true});
   }, []);
   return (
     <Router>
