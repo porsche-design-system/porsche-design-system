@@ -15,50 +15,50 @@ import React from 'react';
 export const FormPage = (): JSX.Element => {
   return (
     <div>
-      <Headline variant={'headline-2'}>Form</Headline>
+      <Headline variant="headline-2">Form</Headline>
       <Divider />
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-text-field-wrapper&gt;
           </Headline>
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-block">
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="text" name="some-name" placeholder="Some placeholder text" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'} description={'Some description'}>
+            <TextFieldWrapper label="Some label" description="Some description">
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'} hideLabel={true}>
+            <TextFieldWrapper label="Some label" hideLabel={true}>
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'} hideLabel={{ base: true, l: false }}>
+            <TextFieldWrapper label="Some label" hideLabel={{ base: true, l: false }}>
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="text" name="some-name" disabled />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="text" name="some-name" readOnly value="Some value" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="password" name="some-name" value="some-password" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'}>
+            <TextFieldWrapper label="Some label">
               <input type="search" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'} state={'error'} message={'Error message'}>
+            <TextFieldWrapper label="Some label" state="error" message="Error message">
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper label={'Some label'} state={'success'} message={'Success message'}>
+            <TextFieldWrapper label="Some label" state="success" message="Success message">
               <input type="text" name="some-name" />
             </TextFieldWrapper>
-            <TextFieldWrapper state={'error'}>
+            <TextFieldWrapper state="error">
               <span slot="label">
                 Some label with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
@@ -76,41 +76,41 @@ export const FormPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-select-wrapper&gt;
           </Headline>
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-block">
-            <SelectWrapper label={'Some label'}>
+            <SelectWrapper label="Some label">
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
             </SelectWrapper>
-            <SelectWrapper label={'Some label'} description={'Some description'}>
+            <SelectWrapper label="Some label" description="Some description">
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
             </SelectWrapper>
-            <SelectWrapper label={'Some label'}>
+            <SelectWrapper label="Some label">
               <select name="some-name" disabled={true}>
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
             </SelectWrapper>
-            <SelectWrapper label={'Some label'} state={'error'} message={'Some error message.'}>
+            <SelectWrapper label="Some label" state="error" message="Some error message.">
               <select name="some-name">
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
             </SelectWrapper>
-            <SelectWrapper state={'success'}>
+            <SelectWrapper state="success">
               <span slot="label">
                 Some label with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
@@ -132,32 +132,32 @@ export const FormPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-checkbox-wrapper&gt;
           </Headline>
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-inline">
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input type="checkbox" name="some-name" checked={true} />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} hideLabel={true}>
+            <CheckboxWrapper label="Some label" hideLabel={true}>
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} hideLabel={true}>
+            <CheckboxWrapper label="Some label" hideLabel={true}>
               <input type="checkbox" name="some-name" checked={true} />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input
                 type="checkbox"
                 ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
                 name="some-name"
               />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input
                 type="checkbox"
                 name="some-name"
@@ -165,16 +165,16 @@ export const FormPage = (): JSX.Element => {
                 checked={true}
               />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input type="checkbox" name="some-name" disabled={true} />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'}>
+            <CheckboxWrapper label="Some label">
               <input type="checkbox" name="some-name" checked={true} disabled={true} />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} state={'success'}>
+            <CheckboxWrapper label="Some label" state="success">
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} state={'success'} message={'Some success validation message.'}>
+            <CheckboxWrapper label="Some label" state="success" message="Some success validation message.">
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
             <CheckboxWrapper state="success">
@@ -186,10 +186,10 @@ export const FormPage = (): JSX.Element => {
                 Some success message with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} state={'error'}>
+            <CheckboxWrapper label="Some label" state="error">
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
-            <CheckboxWrapper label={'Some label'} state={'error'} message={'Some error validation message.'}>
+            <CheckboxWrapper label="Some label" state="error" message="Some error validation message.">
               <input type="checkbox" name="some-name" />
             </CheckboxWrapper>
             <CheckboxWrapper state="error">
@@ -207,42 +207,42 @@ export const FormPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-textarea-wrapper&gt;
           </Headline>
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-block">
-            <TextareaWrapper label={'Some label'}>
+            <TextareaWrapper label="Some label">
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'}>
+            <TextareaWrapper label="Some label">
               <textarea name="some-name" placeholder="Some placeholder text"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'} description={'Some description'}>
+            <TextareaWrapper label="Some label" description="Some description">
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'} hideLabel={true}>
+            <TextareaWrapper label="Some label" hideLabel={true}>
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'} hideLabel={{ base: true, l: false }}>
+            <TextareaWrapper label="Some label" hideLabel={{ base: true, l: false }}>
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'}>
+            <TextareaWrapper label="Some label">
               <textarea name="some-name" disabled={true}></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'}>
+            <TextareaWrapper label="Some label">
               <textarea name="some-name" readOnly={true}>
                 Some value
               </textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}>
+            <TextareaWrapper label="Some label" state="error" message="error message">
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper label={'Some label'} state={'success'} message={'success message'}>
+            <TextareaWrapper label="Some label" state="success" message="success message">
               <textarea name="some-name"></textarea>
             </TextareaWrapper>
-            <TextareaWrapper state={'error'}>
+            <TextareaWrapper state="error">
               <span slot="label">
                 Some label with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
@@ -260,31 +260,31 @@ export const FormPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-radio-button&gt;
           </Headline>
         </GridItem>
         <GridItem size={10}>
           <div className="playground light spacing-inline">
-            <RadioButtonWrapper label={'Some label'}>
+            <RadioButtonWrapper label="Some label">
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'}>
+            <RadioButtonWrapper label="Some label">
               <input type="radio" name="some-name-1" checked={true} />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'} hideLabel={true}>
+            <RadioButtonWrapper label="Some label" hideLabel={true}>
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'}>
+            <RadioButtonWrapper label="Some label">
               <input type="radio" name="some-name-1" disabled={true} />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'} state={'success'}>
+            <RadioButtonWrapper label="Some label" state="success">
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'} state={'success'} message={'Some success validation message.'}>
+            <RadioButtonWrapper label="Some label" state="success" message="Some success validation message.">
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper state={'success'}>
+            <RadioButtonWrapper state="success">
               <span slot="label">
                 Some label with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
@@ -293,13 +293,13 @@ export const FormPage = (): JSX.Element => {
                 Some success message with a <a href="https://designsystem.porsche.com">link</a>.
               </span>
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'} state={'error'}>
+            <RadioButtonWrapper label="Some label" state="error">
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper label={'Some label'} state={'error'} message={'Some error validation message.'}>
+            <RadioButtonWrapper label="Some label" state="error" message="Some error validation message.">
               <input type="radio" name="some-name-1" />
             </RadioButtonWrapper>
-            <RadioButtonWrapper state={'error'}>
+            <RadioButtonWrapper state="error">
               <span slot="label">
                 Some label with a <a href="https://designsystem.porsche.com">link</a>.
               </span>

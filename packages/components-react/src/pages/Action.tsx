@@ -11,21 +11,21 @@ import React from 'react';
 export const ActionPage = (): JSX.Element => {
   return (
     <div>
-      <Headline variant={'headline-2'}>Action</Headline>
+      <Headline variant="headline-2">Action</Headline>
       <Divider />
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-button&gt;
           </Headline>
         </GridItem>
         <GridItem size={5}>
           <div className="playground light spacing-inline">
-            <Button variant={'primary'}>Some label</Button>
-            <Button variant={'primary'} disabled={true}>
+            <Button variant="primary">Some label</Button>
+            <Button variant="primary" disabled={true}>
               Some label
             </Button>
-            <Button variant={'primary'} loading={true}>
+            <Button variant="primary" loading={true}>
               Some label
             </Button>
           </div>
@@ -35,29 +35,29 @@ export const ActionPage = (): JSX.Element => {
             <Button loading={true}>Some label</Button>
           </div>
           <div className="playground light spacing-inline">
-            <Button variant={'tertiary'}>Some label</Button>
-            <Button variant={'tertiary'} disabled={true}>
+            <Button variant="tertiary">Some label</Button>
+            <Button variant="tertiary" disabled={true}>
               Some label
             </Button>
-            <Button variant={'tertiary'} loading={true}>
+            <Button variant="tertiary" loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground light spacing-inline">
-            <Button icon={'phone'}>Some label</Button>
+            <Button icon="phone">Some label</Button>
           </div>
           <div className="playground light spacing-inline">
             <Button style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
           </div>
           <Divider />
           <div className="playground light spacing-inline">
-            <Button variant={'primary'} hideLabel={true}>
+            <Button variant="primary" hideLabel={true}>
               Some label
             </Button>
-            <Button variant={'primary'} hideLabel={true} disabled={true}>
+            <Button variant="primary" hideLabel={true} disabled={true}>
               Some label
             </Button>
-            <Button variant={'primary'} hideLabel={true} loading={true}>
+            <Button variant="primary" hideLabel={true} loading={true}>
               Some label
             </Button>
           </div>
@@ -71,18 +71,18 @@ export const ActionPage = (): JSX.Element => {
             </Button>
           </div>
           <div className="playground light spacing-inline">
-            <Button variant={'tertiary'} hideLabel={true}>
+            <Button variant="tertiary" hideLabel={true}>
               Some label
             </Button>
-            <Button variant={'tertiary'} hideLabel={true} disabled={true}>
+            <Button variant="tertiary" hideLabel={true} disabled={true}>
               Some label
             </Button>
-            <Button variant={'tertiary'} hideLabel={true} loading={true}>
+            <Button variant="tertiary" hideLabel={true} loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground light spacing-inline">
-            <Button icon={'phone'} hideLabel={true}>
+            <Button icon="phone" hideLabel={true}>
               Some label
             </Button>
           </div>
@@ -90,82 +90,82 @@ export const ActionPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <Button variant={'primary'} theme={'dark'}>
+            <Button variant="primary" theme="dark">
               Some label
             </Button>
-            <Button variant={'primary'} theme={'dark'} disabled={true}>
+            <Button variant="primary" theme="dark" disabled={true}>
               Some label
             </Button>
-            <Button variant={'primary'} theme={'dark'} loading={true}>
-              Some label
-            </Button>
-          </div>
-          <div className="playground dark spacing-inline">
-            <Button theme={'dark'}>Some label</Button>
-            <Button theme={'dark'} disabled={true}>
-              Some label
-            </Button>
-            <Button theme={'dark'} loading={true}>
+            <Button variant="primary" theme="dark" loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground dark spacing-inline">
-            <Button theme={'dark'} variant={'tertiary'}>
+            <Button theme="dark">Some label</Button>
+            <Button theme="dark" disabled={true}>
               Some label
             </Button>
-            <Button theme={'dark'} variant={'tertiary'} disabled={true}>
-              Some label
-            </Button>
-            <Button theme={'dark'} variant={'tertiary'} loading={true}>
-              Some label
-            </Button>
-          </div>
-          <div className="playground dark spacing-inline">
-            <Button theme={'dark'} icon={'phone'}>
+            <Button theme="dark" loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground dark spacing-inline">
-            <Button theme={'dark'} style={{ width: '240px' }}>
+            <Button theme="dark" variant="tertiary">
+              Some label
+            </Button>
+            <Button theme="dark" variant="tertiary" disabled={true}>
+              Some label
+            </Button>
+            <Button theme="dark" variant="tertiary" loading={true}>
+              Some label
+            </Button>
+          </div>
+          <div className="playground dark spacing-inline">
+            <Button theme="dark" icon="phone">
+              Some label
+            </Button>
+          </div>
+          <div className="playground dark spacing-inline">
+            <Button theme="dark" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </Button>
           </div>
           <Divider />
           <div className="playground dark spacing-inline">
-            <Button variant={'primary'} hideLabel={true} theme={'dark'}>
+            <Button variant="primary" hideLabel={true} theme="dark">
               Some label
             </Button>
-            <Button variant={'primary'} hideLabel={true} theme={'dark'} disabled={true}>
+            <Button variant="primary" hideLabel={true} theme="dark" disabled={true}>
               Some label
             </Button>
-            <Button variant={'primary'} hideLabel={true} theme={'dark'} loading={true}>
-              Some label
-            </Button>
-          </div>
-          <div className="playground dark spacing-inline">
-            <Button theme={'dark'} hideLabel={true}>
-              Some label
-            </Button>
-            <Button theme={'dark'} hideLabel={true} disabled={true}>
-              Some label
-            </Button>
-            <Button theme={'dark'} hideLabel={true} loading={true}>
+            <Button variant="primary" hideLabel={true} theme="dark" loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground dark spacing-inline">
-            <Button theme={'dark'} hideLabel={true} variant={'tertiary'}>
+            <Button theme="dark" hideLabel={true}>
               Some label
             </Button>
-            <Button theme={'dark'} hideLabel={true} variant={'tertiary'} disabled={true}>
+            <Button theme="dark" hideLabel={true} disabled={true}>
               Some label
             </Button>
-            <Button theme={'dark'} hideLabel={true} variant={'tertiary'} loading={true}>
+            <Button theme="dark" hideLabel={true} loading={true}>
               Some label
             </Button>
           </div>
           <div className="playground dark spacing-inline">
-            <Button theme={'dark'} hideLabel={true} icon={'phone'}>
+            <Button theme="dark" hideLabel={true} variant="tertiary">
+              Some label
+            </Button>
+            <Button theme="dark" hideLabel={true} variant="tertiary" disabled={true}>
+              Some label
+            </Button>
+            <Button theme="dark" hideLabel={true} variant="tertiary" loading={true}>
+              Some label
+            </Button>
+          </div>
+          <div className="playground dark spacing-inline">
+            <Button theme="dark" hideLabel={true} icon="phone">
               Some label
             </Button>
           </div>
@@ -174,7 +174,7 @@ export const ActionPage = (): JSX.Element => {
       </Grid>
       <Grid>
         <GridItem size={2}>
-          <Headline variant={'headline-4'} tag={'h4'}>
+          <Headline variant="headline-4" tag="h4">
             &lt;p-button-pure&gt;
           </Headline>
         </GridItem>
@@ -194,29 +194,29 @@ export const ActionPage = (): JSX.Element => {
             </ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <ButtonPure size={'medium'}>Medium</ButtonPure>
-            <ButtonPure size={'inherit'} style={{ fontSize: '48px' }}>
+            <ButtonPure size="medium">Medium</ButtonPure>
+            <ButtonPure size="inherit" style={{ fontSize: '48px' }}>
               Inherit
             </ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <ButtonPure weight={'thin'}>Thin</ButtonPure>
-            <ButtonPure weight={'regular'}>Regular</ButtonPure>
-            <ButtonPure weight={'semibold'}>Semibold</ButtonPure>
-            <ButtonPure weight={'bold'}>Bold</ButtonPure>
+            <ButtonPure weight="thin">Thin</ButtonPure>
+            <ButtonPure weight="regular">Regular</ButtonPure>
+            <ButtonPure weight="semibold">Semibold</ButtonPure>
+            <ButtonPure weight="bold">Bold</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <ButtonPure icon={'delete'}>Some button with a custom icon</ButtonPure>
+            <ButtonPure icon="delete">Some button with a custom icon</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
             <ButtonPure style={{ width: '240px' }}>Lorem ipsum dolor sit amet, consetetur sadipscing</ButtonPure>
           </div>
           <div className="playground light spacing-inline">
-            <ButtonPure weight={'semibold'} size={'medium'}>
+            <ButtonPure weight="semibold" size="medium">
               Some label
               <p slot="subline">Some subline</p>
             </ButtonPure>
-            <ButtonPure weight={'semibold'} size={'medium'} disabled={true}>
+            <ButtonPure weight="semibold" size="medium" disabled={true}>
               Some label
               <p slot="subline">Some subline</p>
             </ButtonPure>
@@ -225,63 +225,63 @@ export const ActionPage = (): JSX.Element => {
         </GridItem>
         <GridItem size={5}>
           <div className="playground dark spacing-inline">
-            <ButtonPure theme={'dark'}>Some label</ButtonPure>
-            <ButtonPure disabled={true} theme={'dark'}>
+            <ButtonPure theme="dark">Some label</ButtonPure>
+            <ButtonPure disabled={true} theme="dark">
               Some label
             </ButtonPure>
-            <ButtonPure loading={true} theme={'dark'}>
-              Some label
-            </ButtonPure>
-          </div>
-          <div className="playground dark spacing-inline">
-            <ButtonPure hideLabel={true} theme={'dark'}>
-              Some label
-            </ButtonPure>
-            <ButtonPure hideLabel={true} disabled={true} theme={'dark'}>
-              Some label
-            </ButtonPure>
-            <ButtonPure hideLabel={true} loading={true} theme={'dark'}>
+            <ButtonPure loading={true} theme="dark">
               Some label
             </ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure size={'medium'} theme={'dark'}>
+            <ButtonPure hideLabel={true} theme="dark">
+              Some label
+            </ButtonPure>
+            <ButtonPure hideLabel={true} disabled={true} theme="dark">
+              Some label
+            </ButtonPure>
+            <ButtonPure hideLabel={true} loading={true} theme="dark">
+              Some label
+            </ButtonPure>
+          </div>
+          <div className="playground dark spacing-inline">
+            <ButtonPure size="medium" theme="dark">
               Medium
             </ButtonPure>
-            <ButtonPure size={'inherit'} theme={'dark'} style={{ fontSize: '48px' }}>
+            <ButtonPure size="inherit" theme="dark" style={{ fontSize: '48px' }}>
               Inherit
             </ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure weight={'thin'} theme={'dark'}>
+            <ButtonPure weight="thin" theme="dark">
               Thin
             </ButtonPure>
-            <ButtonPure weight={'regular'} theme={'dark'}>
+            <ButtonPure weight="regular" theme="dark">
               Regular
             </ButtonPure>
-            <ButtonPure weight={'semibold'} theme={'dark'}>
+            <ButtonPure weight="semibold" theme="dark">
               Semibold
             </ButtonPure>
-            <ButtonPure weight={'bold'} theme={'dark'}>
+            <ButtonPure weight="bold" theme="dark">
               Bold
             </ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure icon={'delete'} theme={'dark'}>
+            <ButtonPure icon="delete" theme="dark">
               Some button with a custom icon
             </ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure theme={'dark'} style={{ width: '240px' }}>
+            <ButtonPure theme="dark" style={{ width: '240px' }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing
             </ButtonPure>
           </div>
           <div className="playground dark spacing-inline">
-            <ButtonPure theme={'dark'} weight={'semibold'} size={'medium'}>
+            <ButtonPure theme="dark" weight="semibold" size="medium">
               Some label
               <p slot="subline">Some subline</p>
             </ButtonPure>
-            <ButtonPure theme={'dark'} weight={'semibold'} size={'medium'} disabled={true}>
+            <ButtonPure theme="dark" weight="semibold" size="medium" disabled={true}>
               Some label
               <p slot="subline">Some subline</p>
             </ButtonPure>
