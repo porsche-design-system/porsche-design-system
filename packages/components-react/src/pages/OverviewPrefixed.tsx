@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
+import './OverviewPrefixed.css';
+
 const {
   PButton: Button,
   PButtonPure: ButtonPure,
