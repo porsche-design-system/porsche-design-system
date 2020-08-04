@@ -10,7 +10,7 @@ import { Icons } from './pages/Icons';
 import { Layout } from './pages/Layout';
 import { Navigation } from './pages/Navigation';
 import './App.css';
-import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/components-js/src';
+import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/components-js';
 
 const App: React.FC = () => {
   useEffect(() => {

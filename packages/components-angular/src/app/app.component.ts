@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/components-js/src';
+import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/components-js';
 
 @Component({
   selector: 'app-root',
