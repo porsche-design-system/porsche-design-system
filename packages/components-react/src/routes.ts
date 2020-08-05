@@ -43,6 +43,11 @@ export const routes: RouteType[] = [
     component: fromPages.FlexPage
   },
   {
+    name: 'Grid',
+    path: '/grid',
+    component: fromPages.GridPage
+  },
+  {
     name: 'Icon',
     path: '/icon',
     component: fromPages.IconPage
