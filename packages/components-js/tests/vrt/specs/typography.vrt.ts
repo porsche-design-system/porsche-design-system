@@ -7,7 +7,7 @@ describe('Typography', () => {
       await vrt.test(
         'typography',
         async () => {
-          await vrt.goTo('#typography');
+          await vrt.goTo('/#typography');
         },
         testOptions
       )

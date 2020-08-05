@@ -7,7 +7,7 @@ describe('Divider', () => {
       await vrt.test(
         'divider',
         async () => {
-          await vrt.goTo('#divider');
+          await vrt.goTo('/#divider');
         },
         testOptions
       )

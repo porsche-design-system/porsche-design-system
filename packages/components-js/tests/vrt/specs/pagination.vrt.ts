@@ -7,7 +7,7 @@ describe('Pagination', () => {
       await vrt.test(
         'pagination',
         async () => {
-          await vrt.goTo('#pagination');
+          await vrt.goTo('/#pagination');
         },
         testOptions
       )

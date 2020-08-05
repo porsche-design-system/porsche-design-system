@@ -7,7 +7,7 @@ describe('Textarea Wrapper', () => {
       await vrt.test(
         'textarea-wrapper',
         async () => {
-          await vrt.goTo('#textarea-wrapper');
+          await vrt.goTo('/#textarea-wrapper');
           await vrt.focus('#test-focus-state');
         },
         testOptions

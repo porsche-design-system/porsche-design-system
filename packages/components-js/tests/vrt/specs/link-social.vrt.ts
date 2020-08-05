@@ -7,7 +7,7 @@ describe('Link Social', () => {
       await vrt.test(
         'link-social',
         async () => {
-          await vrt.goTo('#link-social');
+          await vrt.goTo('/#link-social');
           await vrt.focus('#test-focus-state');
         },
         testOptions
