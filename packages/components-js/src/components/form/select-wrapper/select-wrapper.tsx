@@ -33,6 +33,9 @@ export class SelectWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Filter results by typing a charcter */
+  @Prop() public filter?: boolean = false;
+
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionSelected: number;
@@ -46,6 +49,7 @@ export class SelectWrapper {
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
+  private filterInput: HTMLInputElement;
 
   public componentWillLoad(): void {
     this.initSelect();
@@ -63,6 +67,14 @@ export class SelectWrapper {
       if (typeof document !== 'undefined') {
         document.addEventListener('mousedown', this.handleClickOutside.bind(this), false);
       }
+    }
+
+  }
+
+  public componentDidLoad(): void {
+    if(this.filter) {
+      this.filterInput.addEventListener('focus', this.handleFilterFocus.bind(this), true);
+      this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
     }
   }
 
@@ -107,6 +119,7 @@ export class SelectWrapper {
     const messageClasses = cx(prefix('select-wrapper__message'), {
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
     });
+    const filterClasses = cx(prefix('select-wrapper__filter'));
 
     return (
       <Host>
@@ -141,6 +154,13 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
+          {this.filter && (
+            <input
+              type="text"
+              class={filterClasses}
+              ref={(el) => (this.filterInput = el)}
+            />
+          )}
           {!this.isTouch && (
             <div
               class={fakeOptionListClasses}
@@ -189,6 +209,9 @@ export class SelectWrapper {
    */
   private initSelect(): void {
     this.select = this.host.querySelector('select');
+    if(this.filter) {
+      this.select.setAttribute('tabindex', '-1');
+    }
   }
 
   /*
@@ -223,6 +246,16 @@ export class SelectWrapper {
   private bindStateListener(): void {
     transitionListener(this.select, 'border-top-color', this.setState);
   }
+
+
+  /*
+   * <START CUSTOM FILTER>
+   */
+  private handleFilterFocus(ev):void {
+    console.log(ev);
+    this.fakeOptionListHidden = false;
+  }
+
 
   /*
    * <START CUSTOM SELECT DROPDOWN>
