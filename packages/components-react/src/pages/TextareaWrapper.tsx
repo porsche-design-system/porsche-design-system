@@ -23,7 +23,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <TextareaWrapper label="Some label" description="Some description" hide-label={true}>
+        <TextareaWrapper label="Some label" description="Some description" hideLabel={true}>
           <textarea name="some-name"></textarea>
         </TextareaWrapper>
       </div>
@@ -32,7 +32,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
         <TextareaWrapper
           label="Some label"
           description="Some description"
-          hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
           <textarea name="some-name"></textarea>
         </TextareaWrapper>

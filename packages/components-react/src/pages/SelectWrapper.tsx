@@ -25,7 +25,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <SelectWrapper label="Some label" description="Some description" hide-label={true}>
+        <SelectWrapper label="Some label" description="Some description" hideLabel={true}>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -38,7 +38,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         <SelectWrapper
           label="Some label"
           description="Some description"
-          hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
           <select name="some-name">
             <option value="a">Option A</option>

@@ -26,24 +26,24 @@ export const ButtonPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button primary without label">
-        <Button variant="primary" hide-label={true}>
+        <Button variant="primary" hideLabel={true}>
           Some label
         </Button>
-        <Button variant="primary" hide-label={true} disabled={true}>
+        <Button variant="primary" hideLabel={true} disabled={true}>
           Some label
         </Button>
-        <Button variant="primary" hide-label={true} loading={true}>
+        <Button variant="primary" hideLabel={true} loading={true}>
           Some label
         </Button>
       </div>
       <div className="playground dark" title="should render button primary without label on dark theme">
-        <Button variant="primary" hide-label={true} theme="dark">
+        <Button variant="primary" hideLabel={true} theme="dark">
           Some label
         </Button>
-        <Button variant="primary" hide-label={true} theme="dark" disabled={true}>
+        <Button variant="primary" hideLabel={true} theme="dark" disabled={true}>
           Some label
         </Button>
-        <Button variant="primary" hide-label={true} theme="dark" loading={true}>
+        <Button variant="primary" hideLabel={true} theme="dark" loading={true}>
           Some label
         </Button>
       </div>
@@ -64,22 +64,22 @@ export const ButtonPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button secondary without label">
-        <Button hide-label={true}>Some label</Button>
-        <Button hide-label={true} disabled={true}>
+        <Button hideLabel={true}>Some label</Button>
+        <Button hideLabel={true} disabled={true}>
           Some label
         </Button>
-        <Button hide-label={true} loading={true}>
+        <Button hideLabel={true} loading={true}>
           Some label
         </Button>
       </div>
       <div className="playground dark" title="should render button secondary without label on dark theme">
-        <Button hide-label={true} theme="dark">
+        <Button hideLabel={true} theme="dark">
           Some label
         </Button>
-        <Button hide-label={true} theme="dark" disabled={true}>
+        <Button hideLabel={true} theme="dark" disabled={true}>
           Some label
         </Button>
-        <Button hide-label={true} theme="dark" loading={true}>
+        <Button hideLabel={true} theme="dark" loading={true}>
           Some label
         </Button>
       </div>
@@ -106,30 +106,30 @@ export const ButtonPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button tertiary without label">
-        <Button variant="tertiary" hide-label={true}>
+        <Button variant="tertiary" hideLabel={true}>
           Some label
         </Button>
-        <Button variant="tertiary" hide-label={true} disabled={true}>
+        <Button variant="tertiary" hideLabel={true} disabled={true}>
           Some label
         </Button>
-        <Button variant="tertiary" hide-label={true} loading={true}>
+        <Button variant="tertiary" hideLabel={true} loading={true}>
           Some label
         </Button>
       </div>
       <div className="playground dark" title="should render button tertiary without label on dark theme">
-        <Button variant="tertiary" hide-label={true} theme="dark">
+        <Button variant="tertiary" hideLabel={true} theme="dark">
           Some label
         </Button>
-        <Button variant="tertiary" hide-label={true} theme="dark" disabled={true}>
+        <Button variant="tertiary" hideLabel={true} theme="dark" disabled={true}>
           Some label
         </Button>
-        <Button variant="tertiary" hide-label={true} theme="dark" loading={true}>
+        <Button variant="tertiary" hideLabel={true} theme="dark" loading={true}>
           Some label
         </Button>
       </div>
 
       <div className="playground light" title="should render button secondary with responsive label">
-        <Button hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+        <Button hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
           Some label
         </Button>
       </div>
