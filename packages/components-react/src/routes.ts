@@ -80,6 +80,11 @@ export const routes: RouteType[] = [
   {
     name: 'Overview',
     path: '/overview',
-    component: fromPages.OverviewPrefixedPage
+    component: fromPages.OverviewPage
+  },
+  {
+    name: 'Pagination',
+    path: '/pagination',
+    component: fromPages.PaginationPage
   }
 ];
