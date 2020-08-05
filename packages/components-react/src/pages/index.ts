@@ -11,5 +11,5 @@ export * from './Icon';
 export * from './Link';
 export * from './LinkPure';
 export * from './LinkSocial';
-export * from './Navigation';
+export * from './Marque';
 export * from './Overview';
