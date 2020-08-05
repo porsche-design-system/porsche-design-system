@@ -4,10 +4,10 @@ import {
   BreakpointCustomizable, calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
+  insertSlottedStyles
 } from '../../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../../types';
-import { insertSlottedStyles } from '../../../../utils/slotted-styles';
 
 @Component({
   tag: 'p-text',

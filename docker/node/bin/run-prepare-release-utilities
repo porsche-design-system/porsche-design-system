@@ -13,7 +13,7 @@ pushd "packages/utilities/projects/utilities"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
-packages=( "assets" "components-angular" "components-react" "components-js" "storefront" "utils" )
+packages=( "assets" "components-angular" "components-react" "components-js" "storefront" )
 
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"

@@ -26,7 +26,6 @@
     "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/components-js": "2.0.0-alpha.0",
     "@porsche-design-system/utilities": "1.0.6",
-    "@porsche-design-system/utils": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-design-system/web-components-manager-cli": "0.2.5",
     "@porsche-ui/cross-browser-tester": "^1.0.2",

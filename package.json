@@ -54,7 +54,7 @@
     "start:storefront": "yarn --cwd ./packages/storefront start",
     "start:utilities": "yarn --cwd ./packages/utilities start",
     "build": "yarn build:core-dependencies && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,storefront' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:storefront'",
-    "build:core-dependencies": "concurrently -n 'fonts' 'yarn build:fonts' && concurrently -n 'utilities' 'yarn build:utilities' && concurrently -n 'utils' 'yarn build:utils' && concurrently --kill-others-on-fail -n 'icons,marque' 'yarn build:icons' 'yarn build:marque' && concurrently -n 'assets' 'yarn build:assets'",
+    "build:core-dependencies": "concurrently -n 'fonts' 'yarn build:fonts' && concurrently -n 'utilities' 'yarn build:utilities' && concurrently --kill-others-on-fail -n 'icons,marque' 'yarn build:icons' 'yarn build:marque' && concurrently -n 'assets' 'yarn build:assets'",
     "build:assets": "yarn --cwd ./packages/assets build",
     "build:icons": "yarn --cwd ./packages/icons build",
     "build:fonts": "yarn --cwd ./packages/fonts build",
@@ -65,7 +65,6 @@
     "build:components-react": "yarn --cwd ./packages/components-react build",
     "build:storefront": "yarn --cwd ./packages/storefront build",
     "build:utilities": "yarn --cwd ./packages/utilities build",
-    "build:utils": "yarn --cwd ./packages/utils build",
     "lint": "concurrently --kill-others-on-fail -n 'components,storefront' 'yarn lint:components' 'yarn lint:storefront'",
     "lint:components": "yarn --cwd ./packages/components lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
@@ -90,8 +89,8 @@
     "test:cbt:components-angular": "yarn --cwd ./packages/components-angular test:cbt",
     "test:cbt:components-react": "yarn --cwd ./packages/components-react test:cbt",
     "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules && yarn clean:utils:node_modules",
-    "clean:build": "yarn clean:assets:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:fonts:build && yarn clean:icons:build && yarn clean:marque:build && yarn clean:storefront:build && yarn clean:utilities:build && yarn clean:utils:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules",
+    "clean:build": "yarn clean:assets:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:fonts:build && yarn clean:icons:build && yarn clean:marque:build && yarn clean:storefront:build && yarn clean:utilities:build",
     "clean:assets:node_modules": "yarn --cwd ./packages/assets clean:node_modules",
     "clean:assets:build": "yarn --cwd ./packages/assets clean:build",
     "clean:components:node_modules": "yarn --cwd ./packages/components clean:node_modules",
@@ -111,8 +110,6 @@
     "clean:storefront:node_modules": "yarn --cwd ./packages/storefront clean:node_modules",
     "clean:storefront:build": "yarn --cwd ./packages/storefront clean:build",
     "clean:utilities:node_modules": "yarn --cwd ./packages/utilities clean:node_modules",
-    "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build",
-    "clean:utils:node_modules": "yarn --cwd ./packages/utils clean:node_modules",
-    "clean:utils:build": "yarn --cwd ./packages/utils clean:build"
+    "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   }
 }
