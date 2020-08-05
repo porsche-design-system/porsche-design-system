@@ -38,9 +38,9 @@ export const routes: RouteType[] = [
     component: fromPages.FieldsetWrapperPage
   },
   {
-    name: 'Form',
-    path: '/form',
-    component: fromPages.FormPage
+    name: 'Flex',
+    path: '/flex',
+    component: fromPages.FlexPage
   },
   {
     name: 'Icon',

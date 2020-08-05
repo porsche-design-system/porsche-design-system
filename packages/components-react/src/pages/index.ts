@@ -4,7 +4,7 @@ export * from './CheckboxWrapper';
 export * from './ContentWrapper';
 export * from './Divider';
 export * from './FieldsetWrapper';
-export * from './Form';
+export * from './Flex';
 export * from './Icon';
 export * from './Layout';
 export * from './Navigation';
