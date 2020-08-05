@@ -121,5 +121,10 @@ export const routes: RouteType[] = [
     name: 'Textarea',
     path: '/textarea-wrapper',
     component: fromPages.TextareaWrapperPage
+  },
+  {
+    name: 'Typography',
+    path: '/typography',
+    component: fromPages.TypographyPage
   }
 ];
