@@ -1,21 +1,14 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionTester, redraw, testOptions } from '../helpers';
+import { getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Textarea Wrapper', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
         'textarea-wrapper',
         async () => {
           await vrt.goTo('#textarea-wrapper');
           await vrt.focus('#test-focus-state');
-          await redraw(vrt.getPage());
         },
         testOptions
       )

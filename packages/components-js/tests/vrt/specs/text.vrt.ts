@@ -1,14 +1,8 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Text', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
         'text',
