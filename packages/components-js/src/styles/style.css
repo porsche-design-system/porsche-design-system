@@ -2,6 +2,11 @@
   --p-animation-duration__spinner: 0s !important
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   padding: 2rem
 }
