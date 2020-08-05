@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-overview-prefixed',
+  selector: 'page-overview',
   template: `
     <p-grid p-grid>
       <p-grid-item p-grid-item size="6">
@@ -17,13 +17,13 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render prefixed default checkbox-wrapper">
           <p-checkbox-wrapper label="Some label">
-            <input type="checkbox" />
+            <input type="checkbox"/>
           </p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render prefixed default radio-button-wrapper">
           <p-radio-button-wrapper label="Some label">
-            <input type="radio" />
+            <input type="radio"/>
           </p-radio-button-wrapper>
         </div>
 
@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render prefixed default text-field-wrapper">
           <p-text-field-wrapper label="Some label">
-            <input type="text" />
+            <input type="text"/>
           </p-text-field-wrapper>
         </div>
 
@@ -133,13 +133,13 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render prefixed default checkbox-wrapper">
           <my-prefix-p-checkbox-wrapper p-checkbox-wrapper label="Some label">
-            <input type="checkbox" />
+            <input type="checkbox"/>
           </my-prefix-p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render prefixed default radio-button-wrapper">
           <my-prefix-p-radio-button-wrapper p-radio-button-wrapper label="Some label">
-            <input type="radio" />
+            <input type="radio"/>
           </my-prefix-p-radio-button-wrapper>
         </div>
 
@@ -155,7 +155,7 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render prefixed default text-field-wrapper">
           <my-prefix-p-text-field-wrapper p-text-field-wrapper label="Some label">
-            <input type="text" />
+            <input type="text"/>
           </my-prefix-p-text-field-wrapper>
         </div>
 
@@ -190,7 +190,8 @@ import { Component } from '@angular/core';
         <div class="playground light" title="should render prefixed default text-list">
           <my-prefix-p-text-list p-text-list>
             <my-prefix-p-text-list-item p-text-list-item
-              >The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item
+            >The quick brown fox jumps over the lazy dog
+            </my-prefix-p-text-list-item
             >
           </my-prefix-p-text-list>
         </div>
@@ -209,7 +210,8 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render prefixed default link-social">
           <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook"
-            >Some label</my-prefix-p-link-social
+          >Some label
+          </my-prefix-p-link-social
           >
         </div>
 
@@ -246,29 +248,28 @@ import { Component } from '@angular/core';
       </p-grid-item>
     </p-grid>
   `,
-  styles: [
-    `
-      p-flex-item p,
-      my-prefix-p-flex-item p {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 4px 2vw;
-        box-sizing: border-box;
-        text-align: center;
-        color: #fff;
-      }
+  styles: [`
+    p-flex-item p,
+    my-prefix-p-flex-item p {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 4px 2vw;
+      box-sizing: border-box;
+      text-align: center;
+      color: #fff;
+    }
 
-      p-flex-item:nth-child(1n) p,
-      my-prefix-p-flex-item:nth-child(1n) p {
-        background-color: skyblue;
-      }
+    p-flex-item:nth-child(1n) p,
+    my-prefix-p-flex-item:nth-child(1n) p {
+      background-color: skyblue;
+    }
 
-      p-flex-item:nth-child(2n) p,
-      my-prefix-p-flex-item:nth-child(2n) p {
-        background-color: deepskyblue;
-      }
-    `
-  ]
+    p-flex-item:nth-child(2n) p,
+    my-prefix-p-flex-item:nth-child(2n) p {
+      background-color: deepskyblue;
+    }
+  `]
 })
-export class OverviewComponent {}
+export class OverviewComponent {
+}
