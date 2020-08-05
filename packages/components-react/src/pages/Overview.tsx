@@ -58,24 +58,30 @@ const {
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
-    p-flex-item p,
-    my-prefix-p-flex-item p {
-      width: 100%;
-      height: 100%;
+    p-flex-item > p,
+    my-prefix-p-flex-item > p,
+    p-grid-item > p,
+    my-prefix-p-grid-item > p,
+    p-content-wrapper > p,
+    my-prefix-p-content-wrapper > p {
       margin: 0;
       padding: 4px 2vw;
-      box-sizing: border-box;
       text-align: center;
-      color: #fff;
+      color: white;
+      background-color: lightskyblue;
     }
 
-    p-flex-item:nth-child(1n) p,
-    my-prefix-p-flex-item:nth-child(1n) p {
+    p-flex-item:nth-child(1n) > p,
+    my-prefix-p-flex-item:nth-child(1n) > p,
+    p-grid-item:nth-child(1n) > p,
+    my-prefix-p-grid-item:nth-child(1n) > p {
       background-color: skyblue;
     }
 
-    p-flex-item:nth-child(2n) p,
-    my-prefix-p-flex-item:nth-child(2n) p {
+    p-flex-item:nth-child(2n) > p,
+    my-prefix-p-flex-item:nth-child(2n) > p,
+    p-grid-item:nth-child(2n) > p,
+    my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
   `;

@@ -2,17 +2,8 @@ import { PLink as Link } from '@porsche-design-system/components-react';
 import React from 'react';
 
 export const LinkPage = (): JSX.Element => {
-  const style = `
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `;
   return (
     <>
-      <style children={style} />
-
       <div className="playground light" title="should render primary with label">
         <Link variant="primary" href="https://www.porsche.com">
           Some label
@@ -146,9 +137,6 @@ export const LinkPage = (): JSX.Element => {
             Some label
           </a>
         </Link>
-        <a className="example-link" href="#">
-          <Link>Some label</Link>
-        </a>
       </div>
     </>
   );

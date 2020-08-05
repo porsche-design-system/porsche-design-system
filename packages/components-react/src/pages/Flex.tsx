@@ -3,38 +3,39 @@ import React from 'react';
 
 export const FlexPage = (): JSX.Element => {
   const style = `
-    p-flex-item p {
+    p-flex-item > p {
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 4px 2vw;
       box-sizing: border-box;
       text-align: center;
-      color: #fff;
+      color: white;
+      background-color: lightskyblue;
     }
 
-    p-flex-item:nth-child(1n) p {
+    p-flex-item:nth-child(1n) > p {
       background-color: skyblue;
     }
 
-    p-flex-item:nth-child(2n) p {
+    p-flex-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
 
-    p-flex-item:nth-child(3n) p {
+    p-flex-item:nth-child(3n) > p {
       background-color: dodgerblue;
     }
 
-    p-flex-item:nth-child(4n) p {
+    p-flex-item:nth-child(4n) > p {
       background-color: royalblue;
     }
 
-    p-flex-item[align-self] p {
+    p-flex-item[align-self] > p {
       background-color: deeppink;
     }
 
     p-flex[wrap] p {
-      min - width: 10rem;
+      min-width: 10rem;
     }
   `;
   return (
