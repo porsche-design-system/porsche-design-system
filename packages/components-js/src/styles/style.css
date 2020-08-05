@@ -1,14 +1,10 @@
 :root {
-  --p-animation-duration__spinner: 0s !important;
+  --p-animation-duration__spinner: 0s;
 }
 
-/*html, body {*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*}*/
-
-#app {
-  padding: 2rem;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 .playground {
