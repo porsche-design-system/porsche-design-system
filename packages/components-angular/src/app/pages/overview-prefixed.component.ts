@@ -86,7 +86,9 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render prefixed default link-social">
-      <my-prefix-p-link-social p-link-social href="https://www.porsche.com">Some label</my-prefix-p-link-social>
+      <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook"
+        >Some label</my-prefix-p-link-social
+      >
     </div>
 
     <div class="playground light" title="should render prefixed default marque">

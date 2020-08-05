@@ -116,7 +116,9 @@ export const OverviewPrefixedPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render prefixed default link-social">
-        <LinkSocial href="https://www.porsche.com">Some label</LinkSocial>
+        <LinkSocial href="https://www.porsche.com" icon="logo-facebook">
+          Some label
+        </LinkSocial>
       </div>
 
       <div className="playground light" title="should render prefixed default marque">
