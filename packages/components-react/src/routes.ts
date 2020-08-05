@@ -18,6 +18,11 @@ export const routes: RouteType[] = [
     component: fromPages.ButtonPurePage
   },
   {
+    name: 'Checkbox',
+    path: '/checkbox-wrapper',
+    component: fromPages.CheckboxWrapperPage
+  },
+  {
     name: 'Content',
     path: '/content',
     component: fromPages.ContentPage
