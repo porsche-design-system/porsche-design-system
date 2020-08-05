@@ -1,49 +1,52 @@
 import { Component } from '@angular/core';
 
+type Route = {
+  name: string;
+  path: string;
+};
+
 @Component({
   selector: 'app-root',
   template: `
-    <style>
+    <p-text>
+      <b id="human-readable-browser-name"></b>
+      <br />
+      <span id="system-log"></span>
+    </p-text>
+
+    <p-divider></p-divider>
+
+    <ng-container *ngFor="let route of routes">
+      <a [routerLink]="route.path">
+        <p-link-pure>{{ route.name }}</p-link-pure>
+      </a>
+    </ng-container>
+
+    <p-divider></p-divider>
+
+    <div id="app">
+      <router-outlet></router-outlet>
+    </div>
+  `,
+  styles: [
+    `
       a {
         text-decoration: none;
         outline: none;
       }
-    </style>
-    <div id="app">
-      <p-text>
-        <b id="human-readable-browser-name"></b>
-        <br>
-        <span id="system-log"></span>
-      </p-text>
-      <p-divider></p-divider>
-      <a [routerLink]="['basic']">
-        <p-link-pure>Basic</p-link-pure>
-      </a>
-      <a [routerLink]="['action']">
-        <p-link-pure>Action</p-link-pure>
-      </a>
-      <a [routerLink]="['content']">
-        <p-link-pure>Content</p-link-pure>
-      </a>
-      <a [routerLink]="['form']">
-        <p-link-pure>Form</p-link-pure>
-      </a>
-      <a [routerLink]="['feedback']">
-        <p-link-pure>Feedback</p-link-pure>
-      </a>
-      <a [routerLink]="['icon']">
-        <p-link-pure>Icon</p-link-pure>
-      </a>
-      <a [routerLink]="['layout']">
-        <p-link-pure>Layout</p-link-pure>
-      </a>
-      <a [routerLink]="['navigation']">
-        <p-link-pure>Navigation</p-link-pure>
-      </a>
-      <p-divider></p-divider>
-      <router-outlet></router-outlet>
-    </div>
-  `
+    `
+  ]
 })
 export class AppComponent {
+  public routes: Route[] = [
+    { path: 'basic', name: 'Basic' },
+    { path: 'action', name: 'Action' },
+    { path: 'content', name: 'Content' },
+    { path: 'form', name: 'Form' },
+    { path: 'feedback', name: 'Feedback' },
+    { path: 'icon', name: 'Icon' },
+    { path: 'layout', name: 'Layout' },
+    { path: 'navigation', name: 'Navigation' },
+    { path: 'overview', name: 'Overview' }
+  ];
 }
