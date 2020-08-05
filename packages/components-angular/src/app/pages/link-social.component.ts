@@ -49,18 +49,8 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should render with explicit anchor tag">
       <p-link-social icon="logo-facebook"><a href="https://www.facebook.com" id="test-focus-state">Some label</a>
       </p-link-social>
-      <a class="example-link" href="#">
-        <p-link-social icon="logo-facebook">Some label</p-link-social>
-      </a>
     </div>
-  `,
-  styles: [`
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `]
+  `
 })
 export class LinkSocialComponent {
 }

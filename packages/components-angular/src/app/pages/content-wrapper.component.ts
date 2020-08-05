@@ -34,11 +34,11 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [`
-    p-content-wrapper p {
+    p-content-wrapper > p {
       margin: 0;
-      padding: 4px 0;
+      padding: 4px 2vw;
       text-align: center;
-      color: #fff;
+      color: white;
       background-color: lightskyblue;
     }
   `]

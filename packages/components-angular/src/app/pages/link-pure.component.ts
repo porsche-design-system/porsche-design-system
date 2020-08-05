@@ -94,19 +94,10 @@ import { Component } from '@angular/core';
       <p-link-pure style="padding: 1rem;"><a href="https://www.porsche.com">Some label</a></p-link-pure>
       <p-link-pure hide-label="true" style="padding: 1rem;"><a href="https://www.porsche.com">Some label</a>
       </p-link-pure>
-      <a href="https://www.porsche.com" class="example-link">
-        <p-link-pure style="padding: 1rem;">Some label</p-link-pure>
-      </a>
-      <a href="https://www.porsche.com" class="example-link">
-        <p-link-pure hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
-      </a>
     </div>
 
     <div class="playground light" title="should render with explicit anchor tag">
       <p-link-pure><a href="https://www.porsche.com" id="test-focus-state">Some label</a></p-link-pure>
-      <a class="example-link" href="#">
-        <p-link-pure>Some label</p-link-pure>
-      </a>
     </div>
 
     <div class="playground light" title="should render with subline">
@@ -124,14 +115,7 @@ import { Component } from '@angular/core';
         <p-link-pure size="large">Some label<p slot="subline">Some subline</p></p-link-pure>
       </a>
     </div>
-  `,
-  styles: [`
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `]
+  `
 })
 export class LinkPureComponent {
 }
