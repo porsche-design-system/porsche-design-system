@@ -96,5 +96,10 @@ export const routes: RouteType[] = [
     name: 'Select',
     path: '/select-wrapper',
     component: fromPages.SelectWrapperPage
+  },
+  {
+    name: 'Spinner',
+    path: '/spinner',
+    component: fromPages.SpinnerPage
   }
 ];
