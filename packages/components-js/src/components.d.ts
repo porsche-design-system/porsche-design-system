@@ -472,6 +472,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Filter results by typing a charcter
+         */
+        "filter"?: boolean;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1243,6 +1247,10 @@ declare namespace LocalJSX {
           * The description text.
          */
         "description"?: string;
+        /**
+          * Filter results by typing a charcter
+         */
+        "filter"?: boolean;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */

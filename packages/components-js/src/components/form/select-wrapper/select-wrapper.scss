@@ -344,4 +344,35 @@
       color: $p-color-theme-light-notification-error;
     }
   }
+
+  &__filter {
+    position: absolute;
+    z-index: 1;
+    bottom: 1px;
+    left: 1px;
+    height: p-px-to-rem(46px);
+    width: calc(100% - 2px);
+    display: block;
+    padding: p-px-to-rem(11px) p-px-to-rem(47px) p-px-to-rem(11px) p-px-to-rem(11px);
+    margin: 0;
+    outline: transparent none;
+    outline-offset: 2px;
+    appearance: none;
+    box-sizing: border-box;
+    border: none;
+    background-color: $p-color-background-default;
+    opacity: 0.5;
+    font-family: $p-font-family;
+    font-weight: $p-font-weight-regular;
+    font-size: $p-font-size-small;
+    line-height: p-calculate-line-height($p-font-size-small);
+    color: $p-color-theme-light-default;
+    text-indent: 0;
+    cursor: text;
+
+    &:focus {
+      opacity: 1;
+      outline: $p-color-theme-light-state-active solid 2px;
+    }
+  }
 }
