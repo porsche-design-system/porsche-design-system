@@ -272,11 +272,11 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [`
-    p-grid-item p {
+    p-grid-item > p {
       margin: 0;
       padding: 4px 0;
       text-align: center;
-      color: #fff;
+      color: white;
       background-color: lightskyblue;
     }
 

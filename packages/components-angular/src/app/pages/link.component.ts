@@ -82,18 +82,8 @@ import { Component } from '@angular/core';
 
     <div class="playground light" title="should render with explicit anchor tag">
       <p-link><a href="https://www.porsche.com" id="test-focus-state">Some label</a></p-link>
-      <a class="example-link" href="#">
-        <p-link>Some label</p-link>
-      </a>
     </div>
-  `,
-  styles: [`
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `]
+  `
 })
 export class LinkComponent {
 }
