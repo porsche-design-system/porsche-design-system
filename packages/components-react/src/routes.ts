@@ -48,6 +48,11 @@ export const routes: RouteType[] = [
     component: fromPages.GridPage
   },
   {
+    name: 'Headline',
+    path: '/headline',
+    component: fromPages.HeadlinePage
+  },
+  {
     name: 'Icon',
     path: '/icon',
     component: fromPages.IconPage

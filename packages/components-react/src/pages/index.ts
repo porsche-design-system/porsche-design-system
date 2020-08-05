@@ -6,6 +6,7 @@ export * from './Divider';
 export * from './FieldsetWrapper';
 export * from './Flex';
 export * from './Grid';
+export * from './Headline';
 export * from './Icon';
 export * from './Layout';
 export * from './Navigation';
