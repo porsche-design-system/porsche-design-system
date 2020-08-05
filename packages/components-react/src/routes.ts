@@ -101,5 +101,10 @@ export const routes: RouteType[] = [
     name: 'Spinner',
     path: '/spinner',
     component: fromPages.SpinnerPage
+  },
+  {
+    name: 'Text',
+    path: '/text',
+    component: fromPages.TextPage
   }
 ];
