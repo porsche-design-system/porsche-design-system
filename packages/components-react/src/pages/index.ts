@@ -21,3 +21,4 @@ export * from './Text';
 export * from './TextFieldWrapper';
 export * from './TextList';
 export * from './TextareaWrapper';
+export * from './Typography';
