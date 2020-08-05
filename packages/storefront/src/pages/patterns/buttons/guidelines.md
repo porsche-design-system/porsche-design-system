@@ -9,7 +9,7 @@ Though we generally always speak of "Buttons" for the sake of simplicity (also w
   <p-text style="margin-bottom: 24px;"><b>Whenever you use Buttons in your interface, make sure to</b></p-text> 
   <p-text-list style="margin-bottom: 24px;">
     <p-text-list-item>use either Buttons or Links (they look the same, but differ both semantically and functionally). </p-text-list-item><br>  
-    <p-text-list-item>define the horizontal alignment (left or right) of Buttons or whole Button groups depending on the use cases, as they come along with different reading patterns.</p-text-list-item><br>
+    <p-text-list-item>the horizontal alignment of Buttons or whole Button groups should be always left aligned. </p-text-list-item><br>
     <p-text-list-item>set Buttons on viewport XS in full-width.</p-text-list-item><br>
     <p-text-list-item>define a clear Button (and general interaction) hierarchy within a page in favour of an optimal user guidance.</p-text-list-item><br>
     <p-text-list-item>stick to only one Button variant ("Icon and Text" or "Icon only") within a Button group.</p-text-list-item><br>
@@ -29,27 +29,15 @@ In order to maintain a homogeneous look and feel not only within your product bu
 
 ## Alignment
 
-Depending on the usage of the Button(s) we generally differ **three types of alignment for viewports S and higher with a minimum screen width of 480 px**. You can use all types of alignment within your application, either for stand-alone or for Button groups. 
+To ensure general consistency across all user flows, we recommend aligning the buttons to the left. The CTA should also always be placed on the left. 
 
 ### Left alignment (F-shaped reading pattern)
 
 Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
   
-![Button placement left-aligned](../../../assets/patterns-buttons-alignment-left-teaser.png)  
-  
-This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007).  
+This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/) which is still followed by the majority of users on common web pages both on mobile and desktop ([Nielsen Norman](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/), 2017) and has also been proven in a usability study on forms [by Luke Wroblewski](https://www.lukew.com/ff/entry.asp?571) (2007). 
   
 ![F-shaped reading pattern](../../../assets/patterns-buttons-alignment-left-form.png)
-
-### Right alignment (Z-shaped reading pattern) 
-
-Buttons that are used **in dialogs or wizards** (multi-step flows like a checkout process, for example) should be placed **right-justified**:  
-  
-![Button placement right-aligned](../../../assets/patterns-buttons-alignment-right-modal.png)  
-  
-This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-shaped-pattern-for-reading-web-content-ce1135f92f1c), 2017). Here, users end on the bottom right where they are provided an interaction leading to another / the next step. Also, as this is also common practice in Windows and MacOS, users should be familiar with that ([UX Collective](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019)  
-  
-![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-right-basket.png)
 
 ### Centered 
 
@@ -61,13 +49,6 @@ This supports the Z-shaped reading pattern ([UX Planet](https://uxplanet.org/z-s
 - If the Button relates to a larger part or even the whole page, e.g. a "Load more" Button:
   
   ![Z-shaped reading pattern](../../../assets/patterns-buttons-alignment-centered-load-more.png)
-
-### How to choose the right alignment
-
-In order to provide a clear and intuitive user guidance, the most important thing is to **maintain consistency within an application**. So we highly recommend to check the individual user flow before deciding which alignment to go. 
-Example: If 2/3 of the screens in your user flow are standard pages or forms with an F-shaped reading pattern (and, therefore, should have left-aligned Buttons), you should also go for left-aligned Buttons in the remaining 1/3 of your screens that are part of the same flow:
-
-![Button placement left-aligned](../../../assets/patterns-buttons-alignment-majority.png)  
 
 
 ### Alignment on smaller viewports 
@@ -90,7 +71,7 @@ No matter if Buttons are placed side by side or on top of each other, you should
 
 ### Ordering Buttons within a group
 
-You can either order Buttons within a group horizontally or vertically. In both cases, you should have an extra eye on the placement of the primary call-to-action – here, consistency is king ([Nielsen Norman Group,](https://www.nngroup.com/articles/ok-cancel-or-cancel-ok/) 2008). 
+You can either order Buttons within a group horizontally or vertically. In both cases, you should have an extra eye on the placement of the primary call-to-action – here, consistency is king ([Nielsen Norman Group,](https://www.nngroup.com/articles/ok-cancel-or-cancel-ok/) 2008). Our general recommendation is to place the CTA on the left.
 
 #### Horizontal alignment
 
@@ -99,13 +80,13 @@ A group of Buttons can be aligned side-by-side in a row **whenever you want to**
 
 **Hierarchical order**
 
-The primary call-to-action within a horizontal-aligned group is always to be placed on the right, following the reading direction as well as iOS and recent Android app standards most of our users should be familiar with.  
+The primary call-to-action within a horizontal-aligned group is always to be placed on the left.
   
 ![Horizontal alignment of Button groups](../../../assets/patterns-buttons-groups-horizontal.png)  
  
 **Responsive behaviour**
 
-Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the [Gutenberg Principle](http://people.sunyit.edu/~lepres/thesis/principles/119_pdfsam_POD.pdf) the next best action should then always go to bottom, following the user's scanning direction from upper left to bottom right. ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019)  
+Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the F pattern the primary call-to-action button should always be placed on top of the button group ([UX Design](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019). 
   
 ![Responsive behaviour of horizontally aligned buttons](../../../assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
