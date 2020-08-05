@@ -1,5 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { METAICONS_MANIFEST, METAICONS_CDN_BASE_URL } = require('@porsche-design-system/assets');
+const { METAICONS_MANIFEST, METAICONS_CDN_BASE_URL }  =
+  process.env.NODE_ENV === 'production'
+    ? require('@porsche-design-system/assets')
+    : require('./tests/unit/assets.package.mock.js');
 const { favicon, touchicon, pinnedTab, mstile } = METAICONS_MANIFEST;
 
 module.exports = {
