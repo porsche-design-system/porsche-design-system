@@ -1,8 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const metaicons = require('@porsche-design-system/assets');
-const cdnUrl = metaicons.METAICONS_CDN_BASE_URL;
-const iconFavicon = metaicons.METAICONS_MANIFEST.favicon;
-const iconTouch = metaicons.METAICONS_MANIFEST.touchicon;
+const { METAICONS_MANIFEST, METAICONS_CDN_BASE_URL } = require('@porsche-design-system/assets');
+const { favicon, touchicon, pinnedTab, mstile } = METAICONS_MANIFEST;
 
 module.exports = {
   publicPath: './',
@@ -41,20 +39,20 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'white',
     iconPaths: {
-      favicon16: `${cdnUrl}/${iconFavicon.favicon_16x16}`,
-      favicon32: `${cdnUrl}/${iconFavicon.favicon_32x32}`,
-      favicon48: `${cdnUrl}/${iconFavicon.favicon_48x48}`,
-      appleTouchIcon: `${cdnUrl}/${iconTouch.appleTouchIcon_180x180}`,
-      maskIcon: `${cdnUrl}/${metaicons.METAICONS_MANIFEST.pinnedTab.pinnedTabIcon}`,
-      msTileImage: `${cdnUrl}/${metaicons.METAICONS_MANIFEST.mstile.mstile_270x270}`,
+      favicon16: `${METAICONS_CDN_BASE_URL}/${favicon.favicon_16x16}`,
+      favicon32: `${METAICONS_CDN_BASE_URL}/${favicon.favicon_32x32}`,
+      favicon48: `${METAICONS_CDN_BASE_URL}/${favicon.favicon_48x48}`,
+      appleTouchIcon: `${METAICONS_CDN_BASE_URL}/${touchicon.appleTouchIcon_180x180}`,
+      maskIcon: `${METAICONS_CDN_BASE_URL}/${pinnedTab.pinnedTabIcon}`,
+      msTileImage: `${METAICONS_CDN_BASE_URL}/${mstile.mstile_270x270}`,
     },
     manifestOptions: {
       icons: [{
-        'src': `${cdnUrl}/${iconTouch.androidChrome_192x192}`,
+        'src': `${METAICONS_CDN_BASE_URL}/${touchicon.androidChrome_192x192}`,
         'sizes': '192x192',
         'type': 'image/png'
       }, {
-        'src': `${cdnUrl}/${iconTouch.androidChrome_512x512}`,
+        'src': `${METAICONS_CDN_BASE_URL}/${touchicon.androidChrome_512x512}`,
         'sizes': '512x512',
         'type': 'image/png'
       }],
