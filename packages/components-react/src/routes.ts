@@ -116,5 +116,10 @@ export const routes: RouteType[] = [
     name: 'Text List',
     path: '/text-list',
     component: fromPages.TextListPage
+  },
+  {
+    name: 'Textarea',
+    path: '/textarea-wrapper',
+    component: fromPages.TextareaWrapperPage
   }
 ];
