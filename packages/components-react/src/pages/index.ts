@@ -3,6 +3,7 @@ export * from './ButtonPure';
 export * from './CheckboxWrapper';
 export * from './ContentWrapper';
 export * from './Divider';
+export * from './FieldsetWrapper';
 export * from './Form';
 export * from './Icon';
 export * from './Layout';
