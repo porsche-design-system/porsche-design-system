@@ -16,3 +16,4 @@ export * from './Overview';
 export * from './Pagination';
 export * from './RadioButtonWrapper';
 export * from './SelectWrapper';
+export * from './Spinner';
