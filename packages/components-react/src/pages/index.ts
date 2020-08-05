@@ -19,3 +19,4 @@ export * from './SelectWrapper';
 export * from './Spinner';
 export * from './Text';
 export * from './TextFieldWrapper';
+export * from './TextList';
