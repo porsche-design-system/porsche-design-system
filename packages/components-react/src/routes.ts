@@ -23,9 +23,9 @@ export const routes: RouteType[] = [
     component: fromPages.CheckboxWrapperPage
   },
   {
-    name: 'Content',
-    path: '/content',
-    component: fromPages.ContentPage
+    name: 'Content Wrapper',
+    path: '/content-wrapper',
+    component: fromPages.ContentWrapperPage
   },
   {
     name: 'Form',
