@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Switch, Route, Link, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import { routes } from './routes';
-import './App.css';
 
 export const App = (): JSX.Element => {
   const history = useHistory();
