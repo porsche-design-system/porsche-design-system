@@ -1,5 +1,5 @@
-export * from './Action';
-export * from './Basic';
+export * from './Button';
+export * from './ButtonPure';
 export * from './Content';
 export * from './Feedback';
 export * from './Form';
