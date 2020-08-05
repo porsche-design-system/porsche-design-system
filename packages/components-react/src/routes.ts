@@ -33,6 +33,11 @@ export const routes: RouteType[] = [
     component: fromPages.DividerPage
   },
   {
+    name: 'Fieldset',
+    path: '/fieldset-wrapper',
+    component: fromPages.FieldsetWrapperPage
+  },
+  {
     name: 'Form',
     path: '/form',
     component: fromPages.FormPage
