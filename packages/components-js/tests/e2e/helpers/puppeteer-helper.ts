@@ -8,7 +8,7 @@ export const setContentWithDesignSystem = async (
   await page.setContent(
     `
       <head>
-        <base href="https://google.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about: blank" -->
+        <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
       </head>
       <body>
