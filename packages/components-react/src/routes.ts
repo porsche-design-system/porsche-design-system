@@ -106,5 +106,10 @@ export const routes: RouteType[] = [
     name: 'Text',
     path: '/text',
     component: fromPages.TextPage
+  },
+  {
+    name: 'Text Field',
+    path: '/text-field-wrapper',
+    component: fromPages.TextFieldWrapperPage
   }
 ];
