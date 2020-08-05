@@ -8,6 +8,7 @@ export * from './Flex';
 export * from './Grid';
 export * from './Headline';
 export * from './Icon';
+export * from './Link';
 export * from './Layout';
 export * from './Navigation';
 export * from './Overview';
