@@ -28,14 +28,14 @@ export const routes: RouteType[] = [
     component: fromPages.ContentWrapperPage
   },
   {
+    name: 'Divider',
+    path: '/divider',
+    component: fromPages.DividerPage
+  },
+  {
     name: 'Form',
     path: '/form',
     component: fromPages.FormPage
-  },
-  {
-    name: 'Feedback',
-    path: '/feedback',
-    component: fromPages.FeedbackPage
   },
   {
     name: 'Icon',
