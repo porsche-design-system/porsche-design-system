@@ -9,13 +9,13 @@ Though we generally always speak of "Buttons" for the sake of simplicity (also w
   <p-text style="margin-bottom: 24px;"><b>Whenever you use Buttons in your interface, make sure to</b></p-text> 
   <p-text-list style="margin-bottom: 24px;">
     <p-text-list-item>use either Buttons or Links (they look the same, but differ both semantically and functionally). </p-text-list-item><br>  
-    <p-text-list-item>the horizontal alignment of Buttons or whole Button groups should be always left aligned. </p-text-list-item><br>
+    <p-text-list-item>align Buttons to the left within a page or module.</p-text-list-item><br>
+    <p-text-list-item>place the primary call-to-action within a horizontal-aligned group on the left.</p-text-list-item><br>
     <p-text-list-item>set Buttons on viewport XS in full-width.</p-text-list-item><br>
-    <p-text-list-item>define a clear Button (and general interaction) hierarchy within a page in favour of an optimal user guidance.</p-text-list-item><br>
-    <p-text-list-item>stick to only one Button variant ("Icon and Text" or "Icon only") within a Button group.</p-text-list-item><br>
-    <p-text-list-item>set the right prioritization within a Button group – use only one Primary Button or two Secondary Buttons combined with Tertiary Button(s).</p-text-list-item><br>
+    <p-text-list-item>keep a constant minimum spacing of 16 px inbetween Buttons.</p-text-list-item><br>
+    <p-text-list-item>define a clear Button hierarchy within a page and use only one Primary Button or two Secondary Buttons combined with Tertiary Button(s).</p-text-list-item><br>
+    <p-text-list-item>stick to only one Button variant (“Icon and Text” or “Icon only”) within a Button group.</p-text-list-item><br>
     <p-text-list-item>define the alignment (horizontal or stacked) within a Button group depending on the available screen or container size.</p-text-list-item><br>
-    <p-text-list-item>keep a constant minimum spacing of 16 px inbetween Buttons.</p-text-list-item>
   </p-text-list>
 </div>
 
