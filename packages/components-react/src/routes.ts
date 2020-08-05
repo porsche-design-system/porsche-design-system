@@ -58,6 +58,11 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage
   },
   {
+    name: 'Link',
+    path: '/link',
+    component: fromPages.LinkPage
+  },
+  {
     name: 'Layout',
     path: '/layout',
     component: fromPages.LayoutPage
