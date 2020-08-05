@@ -91,5 +91,10 @@ export const routes: RouteType[] = [
     name: 'Radio Button',
     path: '/radio-button-wrapper',
     component: fromPages.RadioButtonWrapperPage
+  },
+  {
+    name: 'Select',
+    path: '/select-wrapper',
+    component: fromPages.SelectWrapperPage
   }
 ];
