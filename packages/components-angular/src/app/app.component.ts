@@ -47,6 +47,6 @@ export class AppComponent {
     { path: 'icon', name: 'Icon' },
     { path: 'layout', name: 'Layout' },
     { path: 'navigation', name: 'Navigation' },
-    { path: 'overview-prefixed', name: 'Overview Prefixed' }
+    { path: 'overview', name: 'Overview' }
   ];
 }

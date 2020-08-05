@@ -41,8 +41,8 @@ const appRoutes: Routes = [
     component: fromPages.NavigationComponent
   },
   {
-    path: 'overview-prefixed',
-    component: fromPages.OverviewPrefixedComponent
+    path: 'overview',
+    component: fromPages.OverviewComponent
   }
 ];
 

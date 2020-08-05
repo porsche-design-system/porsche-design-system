@@ -6,7 +6,7 @@ import { FormComponent } from './form.component';
 import { IconComponent } from './icon.component';
 import { LayoutComponent } from './layout.component';
 import { NavigationComponent } from './navigation.component';
-import { OverviewPrefixedComponent } from './overview-prefixed.component';
+import { OverviewComponent } from './overview.component';
 
 export const pages = [
   ActionComponent,
@@ -17,7 +17,7 @@ export const pages = [
   IconComponent,
   LayoutComponent,
   NavigationComponent,
-  OverviewPrefixedComponent
+  OverviewComponent
 ];
 
 export * from './action.component';
@@ -28,4 +28,4 @@ export * from './form.component';
 export * from './icon.component';
 export * from './layout.component';
 export * from './navigation.component';
-export * from './overview-prefixed.component';
+export * from './overview.component';

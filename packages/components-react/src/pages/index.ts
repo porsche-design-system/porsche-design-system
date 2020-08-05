@@ -6,4 +6,4 @@ export * from './Form';
 export * from './Icon';
 export * from './Layout';
 export * from './Navigation';
-export * from './OverviewPrefixed';
+export * from './Overview';
