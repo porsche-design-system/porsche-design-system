@@ -83,7 +83,7 @@ The whole Select area is clickable. They can be removed by clicking outside the 
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-   <img src="./assets/form-select-examples.png" alt="Examples for select usage"/>
+   <img src="./assets/select-examples.png" alt="Examples for select usage"/>
 </div>
 
 ## Don'ts
@@ -91,12 +91,12 @@ The whole Select area is clickable. They can be removed by clicking outside the 
 ### Content
 Avoid Select boxes for data that is highly familiar such as the day, month or year. Having to find these options in a long menu is tedious, breaks the previous guideline and can create even more work for users.
 
-![Example for alignment](./assets/dont-typing-may-be-faster-select.png)
+![Example for alignment](./assets/select-dont-content.png)
 
 ### Number of options in view
 Very long Select boxes that require scrolling make it impossible for users to see all their choices in one glance. However this cannot always be avoided. Therefore make sure that when open there is only a maximum of 7 elements in the field of view without having to scroll.
 
-![Example for alignment](./assets/dont-include-too-many-items-select.png)
+![Example for alignment](./assets/select-dont-items.png)
 
 ### Text only
 Never use images or symbols within a selection list.
