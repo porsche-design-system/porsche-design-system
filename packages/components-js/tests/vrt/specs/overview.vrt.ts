@@ -1,5 +1,5 @@
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionOverviewTester, redraw, testOptions } from '../helpers';
+import { getVisualRegressionOverviewTester, testOptions } from '../helpers';
 
 xdescribe('Components Overview', () => {
   let vrt: VisualRegressionTester;
@@ -50,7 +50,6 @@ xdescribe('Components Overview', () => {
         'overview-form',
         async () => {
           await vrt.goTo('/index.html#form', 1000);
-          await redraw(vrt.getPage());
         },
         testOptions
       )

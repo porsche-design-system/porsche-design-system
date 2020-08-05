@@ -1,4 +1,3 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import {
   getVisualRegressionMarque2xTester,
   getVisualRegressionMarque3xTester,
@@ -7,17 +6,8 @@ import {
 } from '../helpers';
 
 describe('Marque', () => {
-  let vrt: VisualRegressionTester;
-  let vrt2x: VisualRegressionTester;
-  let vrt3x: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-    vrt2x = getVisualRegressionMarque2xTester();
-    vrt3x = getVisualRegressionMarque3xTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
         'marque',
@@ -30,11 +20,12 @@ describe('Marque', () => {
   });
 
   it('should have no visual regression on retina 2x display', async () => {
+    const vrt = getVisualRegressionMarque2xTester();
     expect(
-      await vrt2x.test(
+      await vrt.test(
         'marque-2x',
         async () => {
-          await vrt2x.goTo('#marque');
+          await vrt.goTo('#marque');
         },
         testOptions
       )
@@ -42,11 +33,12 @@ describe('Marque', () => {
   });
 
   it('should have no visual regression on retina 3x display', async () => {
+    const vrt = getVisualRegressionMarque3xTester();
     expect(
-      await vrt3x.test(
+      await vrt.test(
         'marque-3x',
         async () => {
-          await vrt3x.goTo('#marque');
+          await vrt.goTo('#marque');
         },
         testOptions
       )
