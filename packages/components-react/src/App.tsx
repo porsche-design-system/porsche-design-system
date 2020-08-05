@@ -1,27 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { PLinkPure as LinkPure, PText as Text, PDivider as Divider } from '@porsche-design-system/components-react';
+import React, { useState } from 'react';
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
 import { routes } from './routes';
 import './App.css';
 
 export const App = (): JSX.Element => {
+  const history = useHistory();
+  const [selected, setSelected] = useState(history.location.pathname);
+
   return (
-    <Router>
-      <Text>
-        <b id="human-readable-browser-name" />
-        <br />
-        <span id="system-log" />
-      </Text>
-
-      <Divider />
-
-      {routes.map((route) => (
-        <Link key={route.path} to={route.path} className="removeLinkStyle">
-          <LinkPure>{route.name}</LinkPure>
-        </Link>
-      ))}
-
-      <Divider />
+    <>
+      <select
+        value={selected}
+        onChange={(e) => {
+          const { value } = e.target;
+          history.push(value);
+          setSelected(value);
+        }}
+      >
+        <option disabled value="">
+          Select a page
+        </option>
+        {routes.map((route) => (
+          <option key={route.path} value={route.path} children={route.name} />
+        ))}
+      </select>
 
       <div id="app">
         <Switch>
@@ -30,6 +32,6 @@ export const App = (): JSX.Element => {
           ))}
         </Switch>
       </div>
-    </Router>
+    </>
   );
 };

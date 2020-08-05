@@ -8,29 +8,49 @@ export type RouteType = RouteProps & {
 
 export const routes: RouteType[] = [
   {
-    name: 'Basic',
-    path: '/basic',
-    component: fromPages.BasicPage
+    name: 'Button',
+    path: '/button',
+    component: fromPages.ButtonPage
   },
   {
-    name: 'Action',
-    path: '/action',
-    component: fromPages.ActionPage
+    name: 'Button Pure',
+    path: '/button-pure',
+    component: fromPages.ButtonPurePage
   },
   {
-    name: 'Content',
-    path: '/content',
-    component: fromPages.ContentPage
+    name: 'Checkbox',
+    path: '/checkbox-wrapper',
+    component: fromPages.CheckboxWrapperPage
   },
   {
-    name: 'Form',
-    path: '/form',
-    component: fromPages.FormPage
+    name: 'Content Wrapper',
+    path: '/content-wrapper',
+    component: fromPages.ContentWrapperPage
   },
   {
-    name: 'Feedback',
-    path: '/feedback',
-    component: fromPages.FeedbackPage
+    name: 'Divider',
+    path: '/divider',
+    component: fromPages.DividerPage
+  },
+  {
+    name: 'Fieldset',
+    path: '/fieldset-wrapper',
+    component: fromPages.FieldsetWrapperPage
+  },
+  {
+    name: 'Flex',
+    path: '/flex',
+    component: fromPages.FlexPage
+  },
+  {
+    name: 'Grid',
+    path: '/grid',
+    component: fromPages.GridPage
+  },
+  {
+    name: 'Headline',
+    path: '/headline',
+    component: fromPages.HeadlinePage
   },
   {
     name: 'Icon',
@@ -38,18 +58,73 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage
   },
   {
-    name: 'Layout',
-    path: '/layout',
-    component: fromPages.LayoutPage
+    name: 'Link',
+    path: '/link',
+    component: fromPages.LinkPage
   },
   {
-    name: 'Navigation',
-    path: '/navigation',
-    component: fromPages.NavigationPage
+    name: 'LinkPure',
+    path: '/link-pure',
+    component: fromPages.LinkPurePage
+  },
+  {
+    name: 'LinkSocial',
+    path: '/link-social',
+    component: fromPages.LinkSocialPage
+  },
+  {
+    name: 'Marque',
+    path: '/marque',
+    component: fromPages.MarquePage
   },
   {
     name: 'Overview',
     path: '/overview',
-    component: fromPages.OverviewPrefixedPage
+    component: fromPages.OverviewPage
+  },
+  {
+    name: 'Pagination',
+    path: '/pagination',
+    component: fromPages.PaginationPage
+  },
+  {
+    name: 'Radio Button',
+    path: '/radio-button-wrapper',
+    component: fromPages.RadioButtonWrapperPage
+  },
+  {
+    name: 'Select',
+    path: '/select-wrapper',
+    component: fromPages.SelectWrapperPage
+  },
+  {
+    name: 'Spinner',
+    path: '/spinner',
+    component: fromPages.SpinnerPage
+  },
+  {
+    name: 'Text',
+    path: '/text',
+    component: fromPages.TextPage
+  },
+  {
+    name: 'Text Field',
+    path: '/text-field-wrapper',
+    component: fromPages.TextFieldWrapperPage
+  },
+  {
+    name: 'Text List',
+    path: '/text-list',
+    component: fromPages.TextListPage
+  },
+  {
+    name: 'Textarea',
+    path: '/textarea-wrapper',
+    component: fromPages.TextareaWrapperPage
+  },
+  {
+    name: 'Typography',
+    path: '/typography',
+    component: fromPages.TypographyPage
   }
 ];
