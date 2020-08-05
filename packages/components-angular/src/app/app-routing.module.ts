@@ -1,48 +1,111 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import * as fromPages from './pages';
+import * as pages from './pages';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'basic',
-    pathMatch: 'full'
+    children: []
   },
   {
-    path: 'basic',
-    component: fromPages.BasicComponent
+    path: 'button',
+    component: pages.ButtonComponent
   },
   {
-    path: 'action',
-    component: fromPages.ActionComponent
+    path: 'button-pure',
+    component: pages.ButtonPureComponent
   },
   {
-    path: 'content',
-    component: fromPages.ContentComponent
+    path: 'checkbox-wrapper',
+    component: pages.CheckboxWrapperComponent
   },
   {
-    path: 'form',
-    component: fromPages.FormComponent
+    path: 'content-wrapper',
+    component: pages.ContentWrapperComponent
   },
   {
-    path: 'feedback',
-    component: fromPages.FeedbackComponent
+    path: 'divider',
+    component: pages.DividerComponent
+  },
+  {
+    path: 'fieldset-wrapper',
+    component: pages.FieldsetWrapperComponent
+  },
+  {
+    path: 'flex',
+    component: pages.FlexComponent
+  },
+  {
+    path: 'grid',
+    component: pages.GridComponent
+  },
+  {
+    path: 'headline',
+    component: pages.HeadlineComponent
   },
   {
     path: 'icon',
-    component: fromPages.IconComponent
+    component: pages.IconComponent
   },
   {
-    path: 'layout',
-    component: fromPages.LayoutComponent
+    path: 'link',
+    component: pages.LinkComponent
   },
   {
-    path: 'navigation',
-    component: fromPages.NavigationComponent
+    path: 'link-pure',
+    component: pages.LinkPureComponent
+  },
+  {
+    path: 'link-social',
+    component: pages.LinkSocialComponent
+  },
+  {
+    path: 'marque',
+    component: pages.MarqueComponent
   },
   {
     path: 'overview',
-    component: fromPages.OverviewComponent
+    component: pages.OverviewComponent
+  },
+  {
+    path: 'pagination',
+    component: pages.PaginationComponent
+  },
+  {
+    path: 'radio-button-wrapper',
+    component: pages.RadioButtonWrapperComponent
+  },
+  {
+    path: 'select-wrapper',
+    component: pages.SelectWrapperComponent
+  },
+  {
+    path: 'spinner',
+    component: pages.SpinnerComponent
+  },
+  {
+    path: 'text',
+    component: pages.TextComponent
+  },
+  {
+    path: 'text-field-wrapper',
+    component: pages.TextFieldWrapperComponent
+  },
+  {
+    path: 'text-list',
+    component: pages.TextListComponent
+  },
+  {
+    path: 'textarea-wrapper',
+    component: pages.TextareaWrapperComponent
+  },
+  {
+    path: 'textarea-wrapper',
+    component: pages.TextareaWrapperComponent
+  },
+  {
+    path: 'typography',
+    component: pages.TypographyComponent
   }
 ];
 
