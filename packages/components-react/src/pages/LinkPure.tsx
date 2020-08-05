@@ -2,16 +2,8 @@ import { PLinkPure as LinkPure } from '@porsche-design-system/components-react';
 import React from 'react';
 
 export const LinkPurePage = (): JSX.Element => {
-  const style = `
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `;
   return (
     <>
-      <style children={style} />
       <div className="playground light" title="should render with label">
         <LinkPure href="https://www.porsche.com">Some label</LinkPure>
         <LinkPure>
@@ -175,14 +167,6 @@ export const LinkPurePage = (): JSX.Element => {
         <LinkPure hideLabel={true} style={{ padding: '1rem' }}>
           <a href="https://www.porsche.com">Some label</a>
         </LinkPure>
-        <a href="https://www.porsche.com" className="example-link">
-          <LinkPure style={{ padding: '1rem' }}>Some label</LinkPure>
-        </a>
-        <a href="https://www.porsche.com" className="example-link">
-          <LinkPure hideLabel={true} style={{ padding: '1rem' }}>
-            Some label
-          </LinkPure>
-        </a>
       </div>
 
       <div className="playground light" title="should render with explicit anchor tag">
@@ -191,9 +175,6 @@ export const LinkPurePage = (): JSX.Element => {
             Some label
           </a>
         </LinkPure>
-        <a className="example-link" href="#">
-          <LinkPure>Some label</LinkPure>
-        </a>
       </div>
 
       <div className="playground light" title="should render with subline">

@@ -1,13 +1,13 @@
 import { getVisualRegressionOverviewTester, testOptions } from '../helpers';
 
-describe('Overview', () => {
+describe('Typography', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionOverviewTester();
     expect(
       await vrt.test(
-        'overview',
+        'typography',
         async () => {
-          await vrt.goTo('/overview');
+          await vrt.goTo('/typography');
         },
         testOptions
       )

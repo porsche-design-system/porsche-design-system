@@ -4,9 +4,13 @@ import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
+let visualRegressionOverviewTester: VisualRegressionTester;
+let visualRegressionGridTester: VisualRegressionTester;
+let visualRegressionMarque2xTester: VisualRegressionTester;
+let visualRegressionMarque3xTester: VisualRegressionTester;
 
-const testOptions: VisualRegressionTestOptions = {
-  viewports: [1920],
+const vrtTestOptions: VisualRegressionTestOptions = {
+  viewports: [320, 480, 760, 1000, 1300, 1760],
   fixturesDir: '../components-js/tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
@@ -33,8 +37,63 @@ afterAll(async () => {
 
 export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
-    visualRegressionTester = new VisualRegressionTester(browser, testOptions);
+    visualRegressionTester = new VisualRegressionTester(browser, vrtTestOptions);
   }
 
   return visualRegressionTester;
 };
+
+export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
+  if (!visualRegressionOverviewTester) {
+    visualRegressionOverviewTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: [1920]
+    });
+  }
+
+  return visualRegressionOverviewTester;
+};
+
+export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
+  if (!visualRegressionGridTester) {
+    visualRegressionGridTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: vrtTestOptions.viewports.concat([1920, 2560])
+    });
+  }
+
+  return visualRegressionGridTester;
+};
+
+export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
+  if (!visualRegressionMarque2xTester) {
+    visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: [1299, 1300],
+      deviceScaleFactor: 2
+    });
+  }
+
+  return visualRegressionMarque2xTester;
+};
+
+export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
+  if (!visualRegressionMarque3xTester) {
+    visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
+      ...vrtTestOptions,
+      viewports: [1299, 1300],
+      deviceScaleFactor: 3
+    });
+  }
+
+  return visualRegressionMarque3xTester;
+};
+
+// TODO: export this interface from @porsche-design-system/visual-regression-tester
+interface TestOptions {
+  elementSelector?: string;
+  maskSelectors?: string[];
+  regressionSuffix?: string;
+}
+
+export const testOptions: TestOptions = { elementSelector: '#app' };

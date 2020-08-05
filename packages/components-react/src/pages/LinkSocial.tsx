@@ -2,13 +2,6 @@ import { PLinkSocial as LinkSocial } from '@porsche-design-system/components-rea
 import React from 'react';
 
 export const LinkSocialPage = (): JSX.Element => {
-  const style = `
-    .example-link {
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-    }
-  `;
   return (
     <>
       <div className="playground light" title="should render with label">
@@ -79,9 +72,6 @@ export const LinkSocialPage = (): JSX.Element => {
             Some label
           </a>
         </LinkSocial>
-        <a className="example-link" href="#">
-          <LinkSocial icon="logo-facebook">Some label</LinkSocial>
-        </a>
       </div>
     </>
   );

@@ -3,21 +3,21 @@ import React from 'react';
 
 export const GridPage = (): JSX.Element => {
   const style = `
-    p-grid-item p {
+    p-grid-item > p {
       margin: 0;
       padding: 4px 0;
       text-align: center;
-      color: #fff;
+      color: white;
       background-color: lightskyblue;
     }
 
     p-grid ~ p-grid p {
-      margin - top: 4px;
+      margin-top: 4px;
     }
   `;
   return (
     <>
-      <style children={style} />
+      <style children={style}/>
 
       <div className="playground" title="should render by defined size">
         <Grid>
