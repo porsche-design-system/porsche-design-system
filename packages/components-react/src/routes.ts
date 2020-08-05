@@ -63,9 +63,9 @@ export const routes: RouteType[] = [
     component: fromPages.LinkPage
   },
   {
-    name: 'Layout',
-    path: '/layout',
-    component: fromPages.LayoutPage
+    name: 'LinkPure',
+    path: '/link-pure',
+    component: fromPages.LinkPurePage
   },
   {
     name: 'Navigation',
