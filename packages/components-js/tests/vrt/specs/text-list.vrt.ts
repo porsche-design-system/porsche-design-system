@@ -7,7 +7,7 @@ describe('Text List', () => {
       await vrt.test(
         'text-list',
         async () => {
-          await vrt.goTo('#text-list');
+          await vrt.goTo('/#text-list');
         },
         testOptions
       )

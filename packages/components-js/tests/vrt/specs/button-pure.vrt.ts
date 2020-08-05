@@ -7,7 +7,7 @@ describe('Button Pure', () => {
       await vrt.test(
         'button-pure',
         async () => {
-          await vrt.goTo('#button-pure');
+          await vrt.goTo('/#button-pure');
         },
         testOptions
       )

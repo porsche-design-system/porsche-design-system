@@ -7,7 +7,7 @@ describe('Checkbox Wrapper', () => {
       await vrt.test(
         'checkbox-wrapper',
         async () => {
-          await vrt.goTo('#checkbox-wrapper');
+          await vrt.goTo('/#checkbox-wrapper');
           await vrt.focus('#test-focus-state');
         },
         testOptions

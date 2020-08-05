@@ -7,7 +7,7 @@ describe('Grid', () => {
       await vrt.test(
         'grid',
         async () => {
-          await vrt.goTo('#grid');
+          await vrt.goTo('/#grid');
         },
         testOptions
       )

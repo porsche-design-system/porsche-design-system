@@ -7,7 +7,7 @@ describe('Icon', () => {
       await vrt.test(
         'icon',
         async () => {
-          await vrt.goTo('#icon');
+          await vrt.goTo('/#icon');
         },
         testOptions
       )

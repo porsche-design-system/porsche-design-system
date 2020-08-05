@@ -7,7 +7,7 @@ describe('Radio Button Wrapper', () => {
       await vrt.test(
         'radio-button-wrapper',
         async () => {
-          await vrt.goTo('#radio-button-wrapper');
+          await vrt.goTo('/#radio-button-wrapper');
           await vrt.focus('#test-focus-state');
         },
         testOptions

@@ -7,7 +7,7 @@ describe('Fieldset Wrapper', () => {
       await vrt.test(
         'fieldset-wrapper',
         async () => {
-          await vrt.goTo('#fieldset-wrapper');
+          await vrt.goTo('/#fieldset-wrapper');
         },
         testOptions
       )

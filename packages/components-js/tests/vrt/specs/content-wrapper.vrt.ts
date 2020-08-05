@@ -7,7 +7,7 @@ describe('Content Wrapper', () => {
       await vrt.test(
         'content-wrapper',
         async () => {
-          await vrt.goTo('#content-wrapper');
+          await vrt.goTo('/#content-wrapper');
         },
         testOptions
       )

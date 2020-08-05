@@ -7,7 +7,7 @@ describe('Flex', () => {
       await vrt.test(
         'flex',
         async () => {
-          await vrt.goTo('#flex');
+          await vrt.goTo('/#flex');
         },
         testOptions
       )

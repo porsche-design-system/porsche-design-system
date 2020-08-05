@@ -12,7 +12,7 @@ describe('Marque', () => {
       await vrt.test(
         'marque',
         async () => {
-          await vrt.goTo('#marque');
+          await vrt.goTo('/#marque');
         },
         testOptions
       )
@@ -25,7 +25,7 @@ describe('Marque', () => {
       await vrt.test(
         'marque-2x',
         async () => {
-          await vrt.goTo('#marque');
+          await vrt.goTo('/#marque');
         },
         testOptions
       )
@@ -38,7 +38,7 @@ describe('Marque', () => {
       await vrt.test(
         'marque-3x',
         async () => {
-          await vrt.goTo('#marque');
+          await vrt.goTo('/#marque');
         },
         testOptions
       )
