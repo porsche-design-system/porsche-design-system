@@ -14,10 +14,10 @@ export const CheckboxWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <CheckboxWrapper label="Some label" hide-label="true">
+        <CheckboxWrapper label="Some label" hideLabel="true">
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" hide-label="true">
+        <CheckboxWrapper label="Some label" hideLabel="true">
           <input type="checkbox" name="some-name" defaultChecked={true} />
         </CheckboxWrapper>
       </div>
@@ -25,13 +25,13 @@ export const CheckboxWrapperPage = (): JSX.Element => {
       <div className="playground light" title="should render with responsive label">
         <CheckboxWrapper
           label="Some label"
-          hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper
           label="Some label"
-          hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
           <input type="checkbox" name="some-name" defaultChecked={true} />
         </CheckboxWrapper>

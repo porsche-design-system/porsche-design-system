@@ -23,7 +23,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <TextFieldWrapper label="Some label" description="Some description" hide-label={true}>
+        <TextFieldWrapper label="Some label" description="Some description" hideLabel={true}>
           <input type="text" name="some-name" />
         </TextFieldWrapper>
       </div>
@@ -32,7 +32,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <TextFieldWrapper
           label="Some label"
           description="Some description"
-          hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
           <input type="text" name="some-name" />
         </TextFieldWrapper>
