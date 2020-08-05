@@ -56,7 +56,7 @@ const {
   PLinkSocial: PrefixedLinkSocial
 } = getPrefixedComponents('my-prefix');
 
-export const OverviewPrefixedPage = (): JSX.Element => {
+export const OverviewPage = (): JSX.Element => {
   const style = `
     p-flex-item p,
     my-prefix-p-flex-item p {
