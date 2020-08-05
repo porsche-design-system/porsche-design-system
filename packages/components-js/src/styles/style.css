@@ -1,71 +1,24 @@
 :root {
-  --p-animation-duration__spinner: 0s !important
+  --p-animation-duration__spinner: 0s !important;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+/*html, body {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
 
 #app {
-  padding: 2rem
-}
-
-p-divider,
-my-prefix-p-divider {
-  margin: 1.5rem 0
+  padding: 2rem;
 }
 
 .playground {
-  padding: 1rem
+  padding: 1rem;
 }
 
 .playground.light {
-  background: #fff
+  background: #fff;
 }
 
 .playground.dark {
-  background: #1a2023
-}
-
-.playground p-grid-item[size]::before,
-.playground my-prefix-p-grid-item[size]::before,
-.playground p-grid-item[class*="--size"]::before,
-.playground my-prefix-p-grid-item[class*="--size"]::before,
-.playground p-grid-item[offset]::before,
-.playground my-prefix-p-grid-item[offset]::before,
-.playground p-grid-item[class*="--offset"]::before,
-.playground my-prefix-p-grid-item[class*="--offset"]::before,
-.playground p-flex-item[width]::before,
-.playground my-prefix-p-flex-item[width]::before,
-.playground p-flex-item[class*="--width"]::before,
-.playground my-prefix-p-flex-item[class*="--width"]::before,
-.playground p-flex-item[offset]::before,
-.playground my-prefix-p-flex-item[offset]::before,
-.playground p-flex-item[class*="--offset"]::before,
-.playground my-prefix-p-flex-item[class*="--offset"]::before {
-  font-size: 1rem;
-  line-height: 1.5;
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  content: '';
-  background: lightskyblue;
-  padding: .25rem;
-  display: block;
-  text-align: center;
-  color: #fff;
-  min-height: 1.5rem
-}
-
-.playground .example-content {
-  font-size: 1rem;
-  line-height: 1.5;
-  font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
-  font-weight: 400;
-  background: lightskyblue;
-  padding: .25rem;
-  display: block;
-  text-align: center;
-  color: #fff;
-  min-height: 1.5rem
+  background: #1a2023;
 }
