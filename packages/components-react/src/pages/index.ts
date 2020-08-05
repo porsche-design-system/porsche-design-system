@@ -1,5 +1,6 @@
 export * from './Button';
 export * from './ButtonPure';
+export * from './CheckboxWrapper';
 export * from './Content';
 export * from './Feedback';
 export * from './Form';
