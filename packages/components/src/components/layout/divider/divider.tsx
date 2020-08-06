@@ -11,7 +11,7 @@ import { Theme } from '../../../types';
 export class Divider {
   /** Defines color depending on theme. */
   @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' =
-    'neutral-contrast-low';
+  'neutral-contrast-low';
 
   /** Defines orientation. */
   @Prop() public orientation?: BreakpointCustomizable<'vertical' | 'horizontal'> = 'horizontal';
