@@ -43,6 +43,7 @@
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
     "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-pwa": "^4.4.6",
     "@vue/cli-plugin-router": "^4.4.6",
     "@vue/cli-plugin-typescript": "^4.4.6",
     "@vue/cli-plugin-unit-jest": "^4.4.6",
