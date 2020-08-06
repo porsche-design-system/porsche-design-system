@@ -38,16 +38,23 @@
       <option value="textarea-wrapper">Textarea</option>
       <option value="typography">Typography</option>
     </select>
-    <div id="app" data-router-view></div>
+    <div id="app"></div>
     <script type="text/javascript">
       const updateRoute = async () => {
         if (['#', ''].includes(document.location.hash)) {
           return;
         }
 
+        const app = document.getElementById('app');
         const page = document.location.hash.substr(1);
         const template = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><'); // remove new lines from raw html
-        document.querySelector('[data-router-view]').innerHTML = template;
+        app.innerHTML = template;
+
+        // execute scripts inserted via innerHTML
+        const scripts = app.getElementsByTagName('script');
+        for (let i = 0; i < scripts.length; i++) {
+          eval(scripts[i].innerText);
+        }
       };
 
       porscheDesignSystem.load();
