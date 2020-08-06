@@ -63,12 +63,12 @@ export const routes: RouteType[] = [
     component: fromPages.LinkPage
   },
   {
-    name: 'LinkPure',
+    name: 'Link Pure',
     path: '/link-pure',
     component: fromPages.LinkPurePage
   },
   {
-    name: 'LinkSocial',
+    name: 'Link Social',
     path: '/link-social',
     component: fromPages.LinkSocialPage
   },
