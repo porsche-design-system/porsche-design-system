@@ -1,6 +1,6 @@
 # Flash Of Unstyled Content
 
-Unstyled content when opening an application or website create a bad first impression.
+Unstyled content when opening an application or website creates a bad first impression.
 To prevent this, the Porsche Design System offers various solutions to ensure all necessary Porsche Design System fonts and components are fully loaded.
 
 On this page you find detailed instructions on how to prevent Flash of Unstyled Components and Flash of Unstyled Text where we provide options to
@@ -124,7 +124,7 @@ index.html
 ``` 
 
 The second approach is similar to the very first example. You can do it as shown and place the loading spinner before the `root` element and remove
-it as soon as your application is bootstrapped and got the `porscheDesignSystemReady`.
+it as soon as your application is bootstrapped and got the `porscheDesignSystemReady` event.
 
 ``` 
 App.tsx (react)
@@ -148,7 +148,8 @@ ngOnInit(){
 
 ## Flash of unstyled Text
 
-The Porsche Design System provides font face definitions and loads all needed fonts dynamically from our cdn. 
+The Porsche Design System provides font face definitions and loads all needed fonts dynamically from our cdn. Until the fonts are fully loaded
+the components use the fallback and you can see a little change as soon as loading is finished.
 
 ### Inject Porsche Design System Stylesheet
 
@@ -164,7 +165,7 @@ provide a ready to use html template `fontFaceCssElement` there.
 ```
 index.html
 <head>
-  <link rel="stylesheet" href="http://path-to-cdn/font-face.min.css"/>
+  <link rel="stylesheet" href="http://path/to/cdn/font-face.css"/>
 </head>
 
 Using template syntax
@@ -185,8 +186,8 @@ the loading of our webfont in all different weights that we provide.
 If you dont want all weights to be loaded we provide the `loaderRegular` which only loads the regular font per default. Add `loaderThin`, `loaderSemibold` or `loaderBold`
 to customize which font-weights you want to load.
 
-The second approach works with preloading the fonts. If you choose this approach, we provide all necessary URL´s in the `@porsche-design-system/assets` package.
-You find there the `FONTS_CDN_BASE_URL` and the `FONTS_MANIFEST` which contains all filenames for the different fonts. Combine both
+The second solution works with manually preloading the fonts. If you choose this way, we provide all necessary URL´s in the `@porsche-design-system/assets` package.
+Use the `FONTS_CDN_BASE_URL` and the `FONTS_MANIFEST` which contains all filenames for all the different fonts. Combine both
 and preload it as the second example shows.
 
 #### Example with loader
