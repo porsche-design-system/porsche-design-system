@@ -1,14 +1,12 @@
-import { setContentWithDesignSystem } from '../helpers';
+import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
 describe('marque', () => {
-
   let page: Page;
   let requestedImagePath: string;
 
   beforeEach(async () => {
-    page = await getBrowser().newPage()
+    page = await getBrowser().newPage();
     requestedImagePath = '';
 
     await page.setRequestInterception(true);

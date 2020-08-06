@@ -33,14 +33,14 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:tmp && yarn build:metaicons && yarn build:lib",
+    "build": "yarn clean:build && yarn build:metaicons && yarn build:lib",
     "build:metaicons": "ts-node --project './tsconfig.json' './scripts/build.ts'",
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
-    "clean": "yarn clean:modules && clean:tmp",
-    "clean:modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:tmp": "rm -rf ./dist && rm -rf ./index.ts"
+    "clean": "yarn clean:node_modules && clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./index.ts"
   },
   "devDependencies": {
     "change-case": "^4.1.1",

@@ -158,3 +158,59 @@ In the meantime, we keep providing mocks.
 You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
    
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
+
+### Advanced usage
+### Prefixing
+A way of preventing conflicts is by using a unique custom prefix for the components.  
+You can create components with your prefix with the provided `getPrefixedComponents`
+function. Just provide the desired prefix as first parameter as a string.  
+It will return an object with components that will render with the provided prefix.
+The object keys are the component names in upper camel-case, without the prefix.  
+Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
+do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
+
+Caution: `getPrefixedComponents` needs to be deep imported. For usage of the
+unprefixed components the web components will be defined without a prefix
+automatically. That would also happen, if we would provide `getPrefixedComponents`
+components also within the same barrel export. This way we can ensure, that
+only the prefixed web components are getting defined.
+
+```
+import React from 'react';
+import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
+
+const { PHeadline } = getPrefixedComponents('sample-prefix');
+
+export function App() {
+  return (
+    <div className="App">
+      <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
+    </div>
+  );
+}
+
+export default App;
+```
+
+In the example the `PHeadline` component will render as `<sample-prefix-p-headline>`.
+We recommend to call `getPrefixedComponents` only once in your app and import it from
+there, that you can change the prefix in a single place.
+
+```
+// PorscheDesignSystem.ts
+import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
+export const PorscheDesignComponents =  getPrefixedComponents('sample-prefix');
+```
+
+```
+// SingleComponent.tsx
+
+import { PorscheDesignComponents } from './PorscheDesignSystem';
+const { PHeadline } = PorscheDesignComponents;
+
+export function SingleComponent() {
+    return (
+        <PHeadline>Some headline</PHeadline>
+    )
+}
+```

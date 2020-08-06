@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -12,8 +12,7 @@ services:
       - "3334:3334"
       - "4200:4200"
       - "8080:8080"
-      - "61423:61423"
-      - "61424:61424"
+      - "8575:8575"
     environment:
       - HOME=/home/design-system
       - PORSCHE_NPM_REGISTRY_TOKEN
@@ -29,6 +28,8 @@ services:
       - home:/home/design-system
       - monorepo-node-modules:/opt/porsche-design-system-app/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
+      - assets-node-modules:/opt/porsche-design-system-app/packages/assets/node_modules
+      - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
@@ -37,9 +38,8 @@ services:
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
       - metaicons-node-modules:/opt/porsche-design-system-app/packages/metaicons/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
-      - utils-node-modules:/opt/porsche-design-system-app/packages/utils/node_modules
   design-system-deploy:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - GIT_DEPLOY_KEY
@@ -52,7 +52,7 @@ services:
       - ./:/opt/porsche-design-system-app:cached
       - /opt/porsche-design-system-gh-pages
   design-system-deploy-assets:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     environment:
       - CDN_USER
@@ -60,11 +60,13 @@ services:
     volumes:
       - ./:/opt/porsche-design-system-app:cached
   change-volume-owner:
-    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
+    image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
+      - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
+      - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
@@ -73,13 +75,14 @@ services:
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
       - metaicons-node-modules:/opt/porsche-design-system-volumes/metaicons-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
-      - utils-node-modules:/opt/porsche-design-system-volumes/utils-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
   home:
   monorepo-node-modules:
   storefront-node-modules:
+  assets-node-modules:
+  components-node-modules:
   components-js-node-modules:
   components-angular-node-modules:
   components-react-node-modules:
@@ -88,4 +91,3 @@ volumes:
   marque-node-modules:
   metaicons-node-modules:
   utilities-node-modules:
-  utils-node-modules:
