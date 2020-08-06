@@ -216,16 +216,16 @@ jobs:
         with:
           entrypoint: run-lint
           args: --storefront
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
           args: --storefront
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
