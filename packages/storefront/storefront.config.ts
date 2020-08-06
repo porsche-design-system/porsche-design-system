@@ -127,30 +127,30 @@ export const config: StorefrontConfig = {
       ]
     }
   },
-  'Assets': {
-    'Introduction': [
+  Assets: {
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/assets/introduction.md`)
     ],
-    'Icons': [
+    Icons: [
       // @ts-ignore
       () => import(`@/pages/assets/icons.md`)
     ],
-    'Metaicons': [
+    Metaicons: [
       // @ts-ignore
       () => import(`@/pages/assets/metaicons.md`)
     ],
-    'Marque': [
+    Marque: [
       // @ts-ignore
       () => import(`@/pages/assets/marque.md`)
     ],
-    'Fonts': [
+    Fonts: [
       // @ts-ignore
       () => import(`@/pages/assets/fonts.md`)
     ]
   },
-  'Utilities': {
-    'Introduction': [
+  Utilities: {
+    Introduction: [
       // @ts-ignore
       () => import(`@/pages/utilities/introduction.md`)
     ],
