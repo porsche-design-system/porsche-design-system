@@ -112,7 +112,6 @@ export const config: StorefrontConfig = {
         () => import(`@/pages/patterns/buttons/resources.md`)
       ]
     },
-
     Forms: {
       Guidelines: [
         // @ts-ignore
