@@ -17,11 +17,12 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
+    "@porsche-design-system/metaicons": "0.0.0",
     "http-server": "^0.12.1"
   },
   "devDependencies": {
     "@types/http-server": "^0.10.0",
     "ts-node": "^8.10.2",
-    "typescript": "~3.9.6"
+    "typescript": "~3.9.7"
   }
 }

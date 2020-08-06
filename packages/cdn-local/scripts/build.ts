@@ -5,6 +5,7 @@ const cdnPathPackageMap = {
   fonts: '@porsche-design-system/fonts',
   icons: '@porsche-design-system/icons',
   marque: '@porsche-design-system/marque',
+  metaicons: '@porsche-design-system/metaicons',
   style: '@porsche-design-system/utilities'
 };
 
@@ -13,7 +14,7 @@ const TARGET_DIRECTORY = '../dist/cdn';
 (async () => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
     const pathToPackage = require.resolve(cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap]);
-    const relativePathToPackageFiles = `${cdnPath === 'style' ? '../' : ''}../${cdnPath}`; // style is one level up
+    const relativePathToPackageFiles = `../${cdnPath}`;
     const pathToFiles = path.resolve(path.dirname(pathToPackage), relativePathToPackageFiles);
 
     const files = await fs.promises.readdir(pathToFiles);

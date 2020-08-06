@@ -15,6 +15,11 @@ Formally, the impression of the Porsche Next is largely determined by the visual
 
 You can download the [Porsche Next font here](https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).
 
+### Fallback fonts
+
+If in some cases the Porsche Next webfont can't be rendered by the browser (e.g. due to download errors) yo have to provide fallback fonts which should be stacked like this: 
+`font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;` 
+
 ### Language versions
 
 The Porsche Next contains all typeface characters required for European, Greek and Cyrillic languages. Arabic, Pashtu, Persian and Urdu are not yet supported by the Porsche Design System but available as separate typeface packages on request.
