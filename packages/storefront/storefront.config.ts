@@ -58,6 +58,10 @@ export const config: StorefrontConfig = {
       'Utilities': [
         // @ts-ignore
         () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`)
+      ],
+      'Assets': [
+        // @ts-ignore
+        () => import(`@/../../assets/CHANGELOG.md`)
       ]
     },
     'Versioning': [
@@ -139,6 +143,10 @@ export const config: StorefrontConfig = {
     'Marque': [
       // @ts-ignore
       () => import(`@/pages/assets/marque.md`)
+    ],
+    'Fonts': [
+      // @ts-ignore
+      () => import(`@/pages/assets/fonts.md`)
     ]
   },
   'Utilities': {
