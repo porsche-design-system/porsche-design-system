@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-link-social',
+  styles: [`
+    p-link-social:not(:last-child) {
+      margin-right: 8px;
+    }
+  `],
   template: `
     <div class="playground light" title="should render with label">
       <p-link-social href="https://www.facebook.com" icon="logo-facebook">Some label</p-link-social>

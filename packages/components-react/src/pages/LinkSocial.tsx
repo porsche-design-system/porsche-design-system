@@ -2,8 +2,16 @@ import { PLinkSocial as LinkSocial } from '@porsche-design-system/components-rea
 import React from 'react';
 
 export const LinkSocialPage = (): JSX.Element => {
+  const style = `
+    p-link-social:not(:last-child) {
+      margin-right: 8px;
+    }
+  `;
+
   return (
     <>
+      <style children={style}/>
+
       <div className="playground light" title="should render with label">
         <LinkSocial href="https://www.facebook.com" icon="logo-facebook">
           Some label

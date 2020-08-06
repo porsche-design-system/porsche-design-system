@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-button-pure',
+  styles: [`
+    p-button-pure:not(:last-child) {
+      margin-right: 8px;
+    }
+  `],
   template: `
     <div class="playground light" title="should render button with label">
       <p-button-pure>Some label</p-button-pure>

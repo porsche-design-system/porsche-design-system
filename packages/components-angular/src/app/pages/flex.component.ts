@@ -2,6 +2,42 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-flex',
+  styles: [`
+    p-flex-item > p {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 4px 2vw;
+      box-sizing: border-box;
+      text-align: center;
+      color: white;
+      background-color: lightskyblue;
+    }
+
+    p-flex-item:nth-child(1n) > p {
+      background-color: skyblue;
+    }
+
+    p-flex-item:nth-child(2n) > p {
+      background-color: deepskyblue;
+    }
+
+    p-flex-item:nth-child(3n) > p {
+      background-color: dodgerblue;
+    }
+
+    p-flex-item:nth-child(4n) > p {
+      background-color: royalblue;
+    }
+
+    p-flex-item[align-self] > p {
+      background-color: deeppink;
+    }
+
+    p-flex[wrap] p {
+      min-width: 10rem;
+    }
+  `],
   template: `
     <div class="playground" title="should show basic usage">
       <p-flex>
@@ -1090,43 +1126,7 @@ import { Component } from '@angular/core';
         </p-flex-item>
       </p-flex>
     </div>
-  `,
-  styles: [`
-    p-flex-item > p {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 4px 2vw;
-      box-sizing: border-box;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
-
-    p-flex-item:nth-child(1n) > p {
-      background-color: skyblue;
-    }
-
-    p-flex-item:nth-child(2n) > p {
-      background-color: deepskyblue;
-    }
-
-    p-flex-item:nth-child(3n) > p {
-      background-color: dodgerblue;
-    }
-
-    p-flex-item:nth-child(4n) > p {
-      background-color: royalblue;
-    }
-
-    p-flex-item[align-self] > p {
-      background-color: deeppink;
-    }
-
-    p-flex[wrap] p {
-      min-width: 10rem;
-    }
-  `]
+  `
 })
 export class FlexComponent {
 }

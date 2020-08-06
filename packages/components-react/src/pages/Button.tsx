@@ -2,8 +2,15 @@ import { PButton as Button } from '@porsche-design-system/components-react';
 import React from 'react';
 
 export const ButtonPage = (): JSX.Element => {
+  const style = `
+    p-button:not(:last-child) {
+      margin-right: 8px;
+    }
+  `;
   return (
     <>
+      <style children={style}/>
+
       <div className="playground light" title="should render button primary with label">
         <Button variant="primary">Some label</Button>
         <Button variant="primary" disabled={true}>

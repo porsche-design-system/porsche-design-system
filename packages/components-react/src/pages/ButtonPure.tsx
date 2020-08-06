@@ -2,8 +2,16 @@ import { PButtonPure as ButtonPure } from '@porsche-design-system/components-rea
 import React from 'react';
 
 export const ButtonPurePage = (): JSX.Element => {
+  const style = `
+    p-button-pure:not(:last-child) {
+      margin-right: 8px;
+    }
+  `;
+
   return (
     <>
+      <style children={style}/>
+
       <div className="playground light" title="should render button with label">
         <ButtonPure>Some label</ButtonPure>
         <ButtonPure disabled={true}>Some label</ButtonPure>

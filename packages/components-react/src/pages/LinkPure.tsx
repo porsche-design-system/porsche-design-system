@@ -2,8 +2,15 @@ import { PLinkPure as LinkPure } from '@porsche-design-system/components-react';
 import React from 'react';
 
 export const LinkPurePage = (): JSX.Element => {
+  const style = `
+    p-link-pure:not(:last-child) {
+      margin-right: 8px;
+    }
+  `;
   return (
     <>
+      <style children={style}/>
+
       <div className="playground light" title="should render with label">
         <LinkPure href="https://www.porsche.com">Some label</LinkPure>
         <LinkPure>
