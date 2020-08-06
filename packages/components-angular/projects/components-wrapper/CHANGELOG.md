@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- `designSystemReadyEvent` to avoid FOUC
+- `designSystemReadyEvent` to avoid Flash of Unstyled Content
+
+#### Fixed
+- Mix of `Optgroups` and `Options` on same level in `Select Wrapper` component
 
 ### [1.5.2] - 2020-07-22
 
