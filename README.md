@@ -53,6 +53,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-start` (starts the entire application)
+    * `./docker.sh run-start --components` (starts playground)
     * `./docker.sh run-start --components-js` (starts native web components)
     * `./docker.sh run-start --components-angular` (starts angular components)
     * `./docker.sh run-start --components-react` (starts react components)
@@ -73,9 +74,9 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-unit` (unit tests for the entire application)
-    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
     * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
+    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     
 ### Mock Tests
 1. Switch to __project root directory__
@@ -94,11 +95,11 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
-    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
     * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
     * `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
     * `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
     * `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
+    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 
 ### Cross Browser Tests
 1. Switch to __project root directory__
