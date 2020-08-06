@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Porsche Design System - JS</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - JS</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css">
-  <script type="text/javascript" src="index.js"></script>
-</head>
-<body>
-<select onchange="document.location.hash = `#${this.value}`">
-  <option disabled selected>Select a page</option>
-  <option value="button">Button</option>
-  <option value="button-pure">Button Pure</option>
-  <option value="checkbox-wrapper">Checkbox</option>
-  <option value="content-wrapper">Content Wrapper</option>
-  <option value="divider">Divider</option>
-  <option value="fieldset-wrapper">Fieldset</option>
-  <option value="flex">Flex</option>
-  <option value="grid">Grid</option>
-  <option value="headline">Headline</option>
-  <option value="icon">Icon</option>
-  <option value="link">Link</option>
-  <option value="link-pure">Link Pure</option>
-  <option value="link-social">Link Social</option>
-  <option value="marque">Marque</option>
-  <option value="overview">Overview</option>
-  <option value="pagination">Pagination</option>
-  <option value="radio-button-wrapper">Radio Button</option>
-  <option value="select-wrapper">Select</option>
-  <option value="spinner">Spinner</option>
-  <option value="text">Text</option>
-  <option value="text-field-wrapper">Text Field</option>
-  <option value="text-list">Text List</option>
-  <option value="textarea-wrapper">Textarea</option>
-  <option value="typography">Typography</option>
-</select>
-<div id="app" data-router-view></div>
-<script type="text/javascript">
-  const updateRoute = async () => {
-    if (['#', ''].includes(document.location.hash)) {
-      return;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <select onchange="document.location.hash = `#${this.value}`">
+      <option disabled selected>Select a page</option>
+      <option value="button">Button</option>
+      <option value="button-pure">Button Pure</option>
+      <option value="checkbox-wrapper">Checkbox</option>
+      <option value="content-wrapper">Content Wrapper</option>
+      <option value="divider">Divider</option>
+      <option value="fieldset-wrapper">Fieldset</option>
+      <option value="flex">Flex</option>
+      <option value="grid">Grid</option>
+      <option value="headline">Headline</option>
+      <option value="icon">Icon</option>
+      <option value="link">Link</option>
+      <option value="link-pure">Link Pure</option>
+      <option value="link-social">Link Social</option>
+      <option value="marque">Marque</option>
+      <option value="overview">Overview</option>
+      <option value="pagination">Pagination</option>
+      <option value="radio-button-wrapper">Radio Button</option>
+      <option value="select-wrapper">Select</option>
+      <option value="spinner">Spinner</option>
+      <option value="text">Text</option>
+      <option value="text-field-wrapper">Text Field</option>
+      <option value="text-list">Text List</option>
+      <option value="textarea-wrapper">Textarea</option>
+      <option value="typography">Typography</option>
+    </select>
+    <div id="app" data-router-view></div>
+    <script type="text/javascript">
+      const updateRoute = async () => {
+        if (['#', ''].includes(document.location.hash)) {
+          return;
+        }
 
-    const page = document.location.hash.substr(1);
-    const template = await (await fetch(`/pages/${page}.html`)).text();
-    document.querySelector('[data-router-view]').innerHTML = template;
-  };
+        const page = document.location.hash.substr(1);
+        const template = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><'); // remove new lines from raw html
+        document.querySelector('[data-router-view]').innerHTML = template;
+      };
 
-  porscheDesignSystem.load();
-  porscheDesignSystem.load('my-prefix');
-  window.addEventListener('hashchange', updateRoute);
-  updateRoute();
-</script>
-</body>
+      porscheDesignSystem.load();
+      porscheDesignSystem.load('my-prefix');
+      window.addEventListener('hashchange', updateRoute);
+      updateRoute();
+    </script>
+  </body>
 </html>
