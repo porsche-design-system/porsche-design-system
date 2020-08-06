@@ -4,10 +4,12 @@ import {
   CDN_BASE_URL as P_MARQUE_CDN_BASE_URL,
   MARQUES_MANIFEST as P_MARQUES_MANIFEST
 } from '@porsche-design-system/marque';
-import { FONT_FACE_STYLE_CDN_URL } from '@porsche-design-system/utilities';
+import { FONT_FACE_STYLE_CDN_URL } from '@porsche-design-system/utilities'; // Rollup plugin node-resolve resolves to much of the utilities package. We have to restrict it
 
+
+export * from './preloading'
 // reexports are needed in order to build standalone typings
-export const FONTS_CDN_CSS_FILE_URL = FONT_FACE_STYLE_CDN_URL;
+export const FONTS_STYLESHEET_CDN_URL = FONT_FACE_STYLE_CDN_URL;
 export const FONTS_CDN_BASE_URL = P_FONTS_CDN_BASE_URL;
 export const FONTS_MANIFEST = P_FONTS_MANIFEST;
 export const ICONS_CDN_BASE_URL = P_ICONS_CDN_BASE_URL;
