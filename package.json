@@ -105,7 +105,7 @@
     "clean:fonts:node_modules": "yarn --cwd ./packages/fonts clean:node_modules",
     "clean:fonts:build": "yarn --cwd ./packages/fonts clean:build",
     "clean:icons:node_modules": "yarn --cwd ./packages/icons clean:node_modules",
-    "clean:icons:build": "yarn --cw d ./packages/icons clean:build",
+    "clean:icons:build": "yarn --cwd ./packages/icons clean:build",
     "clean:marque:node_modules": "yarn --cwd ./packages/marque clean:node_modules",
     "clean:marque:build": "yarn --cwd ./packages/marque clean:build",
     "clean:metaicons:node_modules": "yarn --cwd ./packages/metaicons clean:node_modules",
