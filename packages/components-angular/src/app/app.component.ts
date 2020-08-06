@@ -47,10 +47,4 @@ import { PORSCHE_DESIGN_SYSTEM_READY_EVENT } from '@porsche-design-system/compon
   `
 })
 export class AppComponent {
-  ngOnInit(){
-    document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
-      document.body.removeChild(document.getElementById('loader'));
-      document.head.removeChild(document.getElementById('loader-style'));
-    },{once: true});
-  }
 }
