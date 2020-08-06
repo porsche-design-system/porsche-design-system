@@ -4,43 +4,43 @@ import { Component } from '@angular/core';
   selector: 'page-pagination',
   template: `
     <div class="playground light" title="should show default pagination">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
     </div>
 
     <div class="playground dark" title="should show pagination in dark mode">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="1" theme="dark"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1" [theme]="'dark'"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with ellipsis on both sides">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="10"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="10"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with last page selected">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="20"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="20"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with less than maximum pages">
-      <p-pagination total-items-count="75" items-per-page="25" active-page="2"></p-pagination>
+      <p-pagination [totalItemsCount]="75" [itemsPerPage]="25" [activePage]="2"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with 3rd item set as active">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="3"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="3"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with 7 items (including ellipsis)">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="1"
-                    max-number-of-page-links="7"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
+                    [maxNumberOfPageLinks]="7"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with 5 items (including ellipsis)">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="1"
-                    max-number-of-page-links="5"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
+                    [maxNumberOfPageLinks]="5"></p-pagination>
     </div>
 
     <div class="playground light"
          title="should show pagination with 5 or 7 items depending on window size (including ellipsis)">
-      <p-pagination total-items-count="500" items-per-page="25" active-page="1"
-                    max-number-of-page-links="{ base: 5, s: 7, l: 5 }"></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
+                    [maxNumberOfPageLinks]="{ base: 5, s: 7, l: 5 }"></p-pagination>
     </div>
   `
 })

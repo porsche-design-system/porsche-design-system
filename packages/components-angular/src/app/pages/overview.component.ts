@@ -34,7 +34,7 @@ import { Component } from '@angular/core';
     <p-grid>
       <p-grid-item size="6">
         <div class="playground light" title="should render default headline">
-          <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
+          <p-headline>Default Components</p-headline>
         </div>
 
         <div class="playground light" title="should render default divider">
@@ -148,7 +148,7 @@ import { Component } from '@angular/core';
 
       <p-grid-item p-grid-item size="6">
         <div class="playground light" title="should render default headline with custom prefix">
-          <my-prefix-p-headline p-headline>The quick brown fox jumps over the lazy dog</my-prefix-p-headline>
+          <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
