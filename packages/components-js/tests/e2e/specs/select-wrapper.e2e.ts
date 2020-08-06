@@ -297,7 +297,9 @@ describe('select-wrapper', () => {
     });
 
     it('should render with optgroups', async () => {
-      await setContentWithDesignSystem(page, `
+      await setContentWithDesignSystem(
+        page,
+        `
       <p-select-wrapper label="Some label">
         <select name="some-name">
           <optgroup label="Some optgroup label 1">
@@ -309,14 +311,18 @@ describe('select-wrapper', () => {
             <option value="b">Option B</option>
           </optgroup>
         </select>
-      </p-select-wrapper>`);
+      </p-select-wrapper>`
+      );
 
       const select = await getSelectRealInput();
       const fakeOptionList = await getSelectOptionList();
-      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label')
-      const fakeOptionSelected = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--selected');
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label');
+      const fakeOptionSelected = await selectNode(
+        page,
+        'p-select-wrapper >>> .p-select-wrapper__fake-option--selected'
+      );
       const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
-      const selectedDescendantId = await getProperty(fakeOptionSelected, 'id');
+      const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
       const numberOfOptgroups = await select.evaluate((el: HTMLElement) => {
         return el.querySelectorAll('optgroup').length;
@@ -324,7 +330,6 @@ describe('select-wrapper', () => {
       const numberOfFakeOptgroups = await fakeOptionList.evaluate((el: HTMLElement) => {
         return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
       });
-
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptgroup).not.toBeNull();
@@ -334,7 +339,9 @@ describe('select-wrapper', () => {
     });
 
     it('should render with mix of options and optgroup', async () => {
-      await setContentWithDesignSystem(page, `
+      await setContentWithDesignSystem(
+        page,
+        `
       <p-select-wrapper label="Some label">
         <select name="some-name">
           <option value="a">Option A</option>
@@ -344,11 +351,12 @@ describe('select-wrapper', () => {
             <option value="d">Option D</option>
           </optgroup>
         </select>
-      </p-select-wrapper>`);
+      </p-select-wrapper>`
+      );
 
       const select = await getSelectRealInput();
       const fakeOptionList = await getSelectOptionList();
-      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label')
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label');
 
       const numberOfOptgroups = await select.evaluate((el: HTMLElement) => {
         return el.querySelectorAll('optgroup').length;
