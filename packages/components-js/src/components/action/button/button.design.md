@@ -117,4 +117,4 @@ All types of Button are available in disabled state. However, disabled states sh
 
 It is not recommended to use "icon and text" and "icon only" Button variants in direct combination. Always try to stick to a homogeneous usage of Button variants in favour of a seamless UX. 
   
-![Example for uppercase text](./assets/button-do-not.png)
+![Example for uppercase text](./assets/button-dont.png)

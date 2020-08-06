@@ -29,8 +29,8 @@ export function Form() {
             <TextFieldWrapper label={"Some label"} hideLabel={true}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"} hideLabel={{base: true, l: false}}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" disabled/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" readOnly value="Some value"/></TextFieldWrapper>
-            <TextFieldWrapper label={"Some label"}><input type="password" name="some-name" value="some-password"/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="text" name="some-name" readOnly defaultValue={"Some value"}/></TextFieldWrapper>
+            <TextFieldWrapper label={"Some label"}><input type="password" name="some-name" defaultValue={"some-password"}/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"}><input type="search" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"} state={"error"} message={"Error message"}><input type="text" name="some-name"/></TextFieldWrapper>
             <TextFieldWrapper label={"Some label"} state={"success"} message={"Success message"}><input type="text" name="some-name"/></TextFieldWrapper>
@@ -103,13 +103,13 @@ export function Form() {
               <input type="checkbox" name="some-name"/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
-              <input type="checkbox" name="some-name" checked={true}/>
+              <input type="checkbox" name="some-name" defaultChecked/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'} hideLabel={true}>
               <input type="checkbox" name="some-name"/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'} hideLabel={true}>
-              <input type="checkbox" name="some-name" checked={true}/>
+              <input type="checkbox" name="some-name" defaultChecked/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
               <input type="checkbox" ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
@@ -117,13 +117,13 @@ export function Form() {
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
               <input type="checkbox" name="some-name"
-                     ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)} checked={true}/>
+                     ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)} defaultChecked/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
               <input type="checkbox" name="some-name" disabled={true}/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'}>
-              <input type="checkbox" name="some-name" checked={true} disabled={true}/>
+              <input type="checkbox" name="some-name" defaultChecked disabled={true}/>
             </CheckboxWrapper>
             <CheckboxWrapper label={'Some label'} state={'success'}>
               <input type="checkbox" name="some-name"/>
@@ -164,13 +164,13 @@ export function Form() {
             <TextareaWrapper label={'Some label'} hideLabel={true}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'} hideLabel={{base: true, l: false}}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'}><textarea name="some-name" disabled={true}></textarea></TextareaWrapper>
-            <TextareaWrapper label={'Some label'}><textarea name="some-name" readOnly={true}>Some value</textarea></TextareaWrapper>
+            <TextareaWrapper label={'Some label'}><textarea name="some-name" readOnly={true} defaultValue={"Some value"}></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'} state={'error'} message={'error message'}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper label={'Some label'} state={'success'} message={'success message'}><textarea name="some-name"></textarea></TextareaWrapper>
             <TextareaWrapper state={'error'}>
               <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
               <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-              <textarea name="some-name">Some value</textarea>
+              <textarea name="some-name" defaultValue={"Some value"}></textarea>
               <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
             </TextareaWrapper>
           </div>
@@ -187,7 +187,7 @@ export function Form() {
               <input type="radio" name="some-name-1"/>
             </RadioButtonWrapper>
             <RadioButtonWrapper label={"Some label"}>
-              <input type="radio" name="some-name-1" checked={true}/>
+              <input type="radio" name="some-name-1" defaultChecked/>
             </RadioButtonWrapper>
             <RadioButtonWrapper label={"Some label"} hideLabel={true}>
               <input type="radio" name="some-name-1"/>
