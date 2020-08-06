@@ -34,3 +34,7 @@ popd
 pushd "./packages/components-react"
   sed -i -e "s/\"@porsche-design-system\/components-react\": \".*\"/\"@porsche-design-system\/components-react\": \"${1}\"/" "./package.json"
 popd
+
+pushd "./packages/storefront"
+  sed -i -e "s/\"@porsche-design-system\/components-js\": \".*\"/\"@porsche-design-system\/components-js\": \"${1}\"/" "./package.json"
+popd
