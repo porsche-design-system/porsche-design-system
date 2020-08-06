@@ -88,16 +88,16 @@ export const OverviewPage = (): JSX.Element => {
 
   return (
     <div>
-      <style children={style}/>
+      <style children={style} />
 
       <Grid>
         <GridItem size="6">
           <div className="playground light" title="should render default headline">
-            <Headline>The quick brown fox jumps over the lazy dog</Headline>
+            <Headline>Default Components</Headline>
           </div>
 
           <div className="playground light" title="should render default divider">
-            <Divider/>
+            <Divider />
           </div>
 
           <div className="playground light" title="should render default button">
@@ -110,13 +110,13 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default checkbox-wrapper">
             <CheckboxWrapper label="Some label">
-              <input type="checkbox"/>
+              <input type="checkbox" />
             </CheckboxWrapper>
           </div>
 
           <div className="playground light" title="should render default radio-button-wrapper">
             <RadioButtonWrapper label="Some label">
-              <input type="radio"/>
+              <input type="radio" />
             </RadioButtonWrapper>
           </div>
 
@@ -132,7 +132,7 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default text-field-wrapper">
             <TextFieldWrapper label="Some label">
-              <input type="text"/>
+              <input type="text" />
             </TextFieldWrapper>
           </div>
 
@@ -163,7 +163,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default icon">
-            <Icon/>
+            <Icon />
           </div>
 
           <div className="playground light" title="should render default link">
@@ -181,15 +181,15 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default marque">
-            <Marque/>
+            <Marque />
           </div>
 
           <div className="playground light" title="should render default pagination">
-            <Pagination total-items-count="500" items-per-page="25" active-page="1"/>
+            <Pagination total-items-count="500" items-per-page="25" active-page="1" />
           </div>
 
           <div className="playground light" title="should render default spinner">
-            <Spinner/>
+            <Spinner />
           </div>
 
           <div className="playground light" title="should render default flex">
@@ -217,11 +217,11 @@ export const OverviewPage = (): JSX.Element => {
 
         <GridItem size="6">
           <div className="playground light" title="should render default headline with custom prefix">
-            <PrefixedHeadline>The quick brown fox jumps over the lazy dog</PrefixedHeadline>
+            <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
           </div>
 
           <div className="playground light" title="should render default divider with custom prefix">
-            <PrefixedDivider/>
+            <PrefixedDivider />
           </div>
 
           <div className="playground light" title="should render default button with custom prefix">
@@ -234,13 +234,13 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default checkbox-wrapper with custom prefix">
             <PrefixedCheckboxWrapper label="Some label">
-              <input type="checkbox"/>
+              <input type="checkbox" />
             </PrefixedCheckboxWrapper>
           </div>
 
           <div className="playground light" title="should render default radio-button-wrapper with custom prefix">
             <PrefixedRadioButtonWrapper label="Some label">
-              <input type="radio"/>
+              <input type="radio" />
             </PrefixedRadioButtonWrapper>
           </div>
 
@@ -256,7 +256,7 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default text-field-wrapper with custom prefix">
             <PrefixedTextFieldWrapper label="Some label">
-              <input type="text"/>
+              <input type="text" />
             </PrefixedTextFieldWrapper>
           </div>
 
@@ -287,7 +287,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default icon with custom prefix">
-            <PrefixedIcon/>
+            <PrefixedIcon />
           </div>
 
           <div className="playground light" title="should render default link with custom prefix">
@@ -305,15 +305,15 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default marque with custom prefix">
-            <PrefixedMarque/>
+            <PrefixedMarque />
           </div>
 
           <div className="playground light" title="should render default pagination with custom prefix">
-            <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1"/>
+            <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1" />
           </div>
 
           <div className="playground light" title="should render default spinner with custom prefix">
-            <PrefixedSpinner/>
+            <PrefixedSpinner />
           </div>
 
           <div className="playground light" title="should render default flex with custom prefix">
