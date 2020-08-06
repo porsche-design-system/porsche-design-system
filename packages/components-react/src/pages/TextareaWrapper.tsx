@@ -52,39 +52,37 @@ export const TextareaWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in readonly state">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" readOnly={true}>
-            Some value
-          </textarea>
+          <textarea name="some-name" defaultValue="Some value" readOnly={true} />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and error message">
         <TextareaWrapper label="Some label" state="error" message="error message">
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and no error message">
         <TextareaWrapper label="Some label" state="error">
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and success message">
         <TextareaWrapper label="Some label" state="success" message="success message">
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and no success message">
         <TextareaWrapper label="Some label" state="success">
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with default state and no message">
         <TextareaWrapper label="Some label" state="none" message="this message should be hidden">
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
         </TextareaWrapper>
       </div>
 
@@ -99,7 +97,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
           <span slot="description">
             Some description with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
           <span slot="message">
             Some error message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
@@ -117,7 +115,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
           <span slot="description">
             Some description with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-          <textarea name="some-name">Some value</textarea>
+          <textarea name="some-name" defaultValue="Some value" />
           <span slot="message">
             Some success message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
@@ -126,7 +124,7 @@ export const TextareaWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in focus state">
         <TextareaWrapper label="Some label">
-          <textarea id="test-focus-state" name="some-name" style={{ caretColor: 'transparent' }}></textarea>
+          <textarea id="test-focus-state" name="some-name" style={{ caretColor: 'transparent' }} />
         </TextareaWrapper>
       </div>
 
@@ -141,8 +139,9 @@ export const TextareaWrapperPage = (): JSX.Element => {
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           style={{ width: 240 }}
         >
-          <textarea name="some-name">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          <textarea
+            name="some-name"
+            defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
             clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
             consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
@@ -153,15 +152,16 @@ export const TextareaWrapperPage = (): JSX.Element => {
             Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
             consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
             blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit
-            amet,
-          </textarea>
+            amet,"
+          />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with label and multiline text">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          <textarea
+            name="some-name"
+            defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
             clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
             consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
@@ -172,8 +172,8 @@ export const TextareaWrapperPage = (): JSX.Element => {
             Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
             consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
             blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit
-            amet,
-          </textarea>
+            amet,"
+          />
         </TextareaWrapper>
       </div>
     </>

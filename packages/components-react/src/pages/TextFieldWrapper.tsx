@@ -106,7 +106,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with type password in different states">
         <TextFieldWrapper label="Some label">
-          <input type="password" name="some-name" value="some password" />
+          <input type="password" name="some-name" defaultValue="some password" />
         </TextFieldWrapper>
         <br />
         <TextFieldWrapper label="Some label">
@@ -209,7 +209,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           style={{ width: 240 }}
         >
-          <input type="text" name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
+          <input type="text" name="some-name" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </TextFieldWrapper>
       </div>
 
