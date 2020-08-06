@@ -1,107 +1,220 @@
 # Flash Of Unstyled Content
 
-Unstyled components or text when opening an application or website create a bad first impression.
+Unstyled content when opening an application or website create a bad first impression.
 To prevent this, the Porsche Design System offers various solutions to ensure all necessary Porsche Design System fonts and components are fully loaded.
 
-## Wait for event
+On this page you find detailed instructions on how to prevent Flash of Unstyled Components and Flash of Unstyled Text where we provide options to
+boost your application performance, so make sure to keep reading.
 
-As mentioned, we provide different approaches. The simplest solution is by waiting for the `porscheDesignSystemReady` event.
-We provide it as constant `PORSCHE_DESIGN_SYSTEM_READY_EVENT` to make sure you always listen to the correct event.
-The event is fired as soon as all our components are ready and it checks if the web-fonts are fully loaded from the cdn.
+## Flash of Unstyled Components
 
-### Example usage
+The Porsche Design System fires the `porscheDesignSystemReady` event as soon as our core is loaded.
+We export the event as constant called `PORSCHE_DESIGN_SYSTEM_READY_EVENT` to make sure you always listen to the correct event.
 
-Hide your application until you receive the event.
+While waiting for the Event you should show a loading spinner which also hides the content of the page.
+You can access a template called `loaderAllFonts` in our `@porsche-design-system/assets` package. Have a look at the examples to see how to use the
+loader with template syntax. We provide a more detailed description of the provided loader at the end of the page.
+
+### Example usage without Framework
+
+The following example shows a spinner until the `porscheDesignSystemReady` event is fired and removes the style and loader afterwards.
+
+```
+<style>
+index.html
+
+<head>
+  <style id="pdsLoaderStyle">
+    .loader {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background:  #fff;
+      z-index: 10000;
+      font-family: "Porsche Next","Arial Narrow", Arial, sans-serif;
+    }
+    .spinner {
+      position: absolute;
+      width: 72px;
+      top: 50%;
+      left: 50%;
+      margin: -36px 0 0 -36px;
+      fill: none;
+      transform: translate3d(0, 0, 0);
+      stroke-width: 1px;
+      stroke: #323639;
+    }
+    .fg {
+      stroke-linecap: round;
+      transform-origin: center center;
+      stroke-dashoffset: 0;
+      stroke-dasharray: 40, 200;
+      animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+    }
+    .bg {
+      opacity: 0.4;
+    }
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 3, 1000;
+      }
+      50% {
+        stroke-dasharray: 42, 1000;
+      }
+      100% {
+        stroke-dasharray: 30, 1000;
+        stroke-dashoffset: -52;
+      }
+    }
+    .loader--all::before {
+      content:'';
+      font-weight: 100;
+    }
+    .loader--all::after {
+      content: '';
+      font-weight: 600;
+    }
+    .loader--all::first-line {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader loader--all" id="pdsLoader">
+    <div class="spinner">
+      <svg viewBox="0 0 32 32">
+        <circle class="fg" cx="16" cy="16" r="9" />
+        <circle class="bg" cx="16" cy="16" r="9" /
+      </svg>
+    </div>
+  </div>
+<script>
+  document.addEventListener('porscheDesignSystemReady', () => {
+     document.body.removeChild(document.getElementById('pdsLoader'));
+     document.head.removeChild(document.getElementById('pdsLoaderStyle'));
+  }, { once: true });
+  </script>
+</body>
+``` 
+
+### Example usage with Frameworks
+
+If you use a framework like `react`, `vue`, `angular` ... there are two different approaches on how to handle the display of the Spinner.
+
+First, implement the spinner and the style in the `<div id="root">` (react) / `<app-root>` (angular). While doing so the spinner is shown until your
+application is bootstrapped and hides any flash.
+
+For this example we use loadash template syntax which works in most frameworks. We recommend using templates to keep your workload at a minimum
+and ensure you are always using the latest styles. If you have no option of using templates, you can copy the style and spinner from the example above and
+put it there instead.
 
 ``` 
 index.html
 
-<body>
-  <div id="app"><div/>
-  <script type="text/javascript">
-    document.getElementById('app').style.visibility = "hidden";
-    document.addEventListener('porscheDesignSystemReady', () => document.getElementById('app').style.visibility = "visible";);
-  </script>
-</body>
+<div id="root">
+  <%= require('@porsche-design-system/assets').loaderAllFonts %>
+</div>
+``` 
+
+The second approach is similar to the very first example. You can do it as shown and place the loading spinner before the `root` element and remove
+it as soon as your application is bootstrapped and got the `porscheDesignSystemReady`.
+
+``` 
+App.tsx (react)
+
+useEffect(() => {
+ document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
+   document.body.removeChild(document.getElementById('pdsLoader'));
+   document.body.removeChild(document.getElementById('pdsLoaderStyle'));
+ });
+}, []);
+
+app.components.ts (angular)
+
+ngOnInit(){
+ document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
+   document.body.removeChild(document.getElementById('pdsLoader'));
+   document.head.removeChild(document.getElementById('pdsLoaderStyle'));
+ });
+}
 ```
 
-## Preloading web-fonts 
+## Flash of unstyled Text
 
-The second approach is via preloading. If you want all fonts to be loaded directly and as fast as possible you have to
-*preload* all needed web-fonts to guarantee no flash of unstyled text.
+The Porsche Design System provides font face definitions and loads all needed fonts dynamically from our cdn. 
 
-### Example usage
+### Inject Porsche Design System Stylesheet
 
-While installing the `@porsche-design-system/components-js` we list all current cdn paths to the webfonts in your console.
-Copy and paste them into the `<head>` of your application. 
+So far, if you use the Porsche Design System components we inject the stylesheet into the head of your application as soon as our core is loaded.
+We recommend that you load the stylesheet on your own. We dont wont to interfere with you application if we dont have to. Also you got more
+control over resources that are loaded.
 
-**NOTE:** It is still necessary to wait for the `porscheDesignSystemReady` event to recall if all components are loaded.
+We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONTS_STYLESHEET_CDN_URL`. We also
+provide a ready to use html template `fontFaceCssElement` there.
+
+#### Example
 
 ```
-index.js
+index.html
 <head>
-// Porsche Design System stylesheet which contains all paths to the webfonts, has to be in this format.
-<link rel="preload" href="path/to/stylesheet" as="style" onload="this.rel='stylesheet'">
-
-// All of the Porsche Design System web-fonts have to be in this format.
-<link rel="preload" href="path/to/webfont" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="http://path-to-cdn/font-face.min.css"/>
 </head>
-<body>
-  <div id="app"><div/>
-  <script type="text/javascript">
-        document.getElementById('app').style.visibility = "hidden";
-        document.addEventListener('porscheDesignSystemReady', () => document.getElementById('app').style.visibility = "visible";);
-  </script>
-</body>
-```
 
-## Usage without Porsche Design System Components
-
-In case you only care for flash of unstyled text, because you dont use any of our components,
-you have to preload all webfonts in the head of your application.
-
-It is possible to import the URLs required for the link tag and build them within the project using a script. 
-In our package `@porsche-design-system/assets` we provide `FONTS_CDN_CSS_FILE_URL` which contains the URL to the style file as well as 
-`FONTS_CDN_BASE_URL` and `FONTS_MANIFEST` to reach the actual fonts. The manifest contains the file name of the desired font and together with the base URL it leads
-to the file on the CDN.
-
-**Note:** Make sure while building your `Link` tags you keep the structure as in the example.
-The preload of the CSS file needs `rel="preload"` and `onload="this.rel="stylesheet"` to be loaded properly.
-
-Alternatively, you can copy all tags you need from the example beneath. Those are valid url´s and we will updated the example if anything changes.
-
-**Note:** In this case you have to check our changelog and update your `preload links` if the cdn-address or the fonts change.
-
-```
-index.js
+Using template syntax
 <head>
-// Porsche Design System stylesheet which contains all paths to the webfonts
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/style/font-face.min.677d41d9905a04aadcb253f71e5f71e9.css" as="style" onload="this.rel='stylesheet'">
+  <%= require('@porsche-design-system/assets').fontFaceCssElement %>
+</head>
+```
 
-// All of the Porsche Design System web-fonts. Pick all you need!
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-bold.min.7cdedd410a2c4d5eff06f422dd91f17f.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-bold.min.0ac00809c450f03d979c9880d9bac8d5.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-regular.min.15a059a5cb66ae52ef50bc5a7b682e5e.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-regular.min.55de106262f6ca384ffd47d3c7bafa72.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-semi-bold.min.f62d70671810191bbf1e62d5ef8ff650.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-semi-bold.min.c8e7952de2dd408b531fd4f65cfef779.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-thin.min.8031071403f0a7abe75253e74fb5c9e5.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-cy-thin.min.bb8916ec087455512d06285219552380.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-bold.min.870d2b04a828a5a5b143dd4e133459bc.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-bold.min.1432bec38ec3a9a177e69866c4731379.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-regular.min.8a53f011968865488fd12487346a269e.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-regular.min.edae5100c766fc03349d97628ea19a41.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-semi-bold.min.30441ea9bc5ca88558d7233d15c9d59b.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-semi-bold.min.29b741a0f8c53e50f0c3f70dbaff0746.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-thin.min.8375ae0c13874373956106261ccc4560.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-gr-thin.min.64ca0f5f95ffb2931058271e4e2ebaad.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-bold.min.d7a769e25c499039363825694211d103.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-bold.min.a2b8bddadf87ab229724de45b3c81788.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-regular.min.314aeb122ecbd00b542440e3cfeed1ae.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-regular.min.1263496c6f00026b958f812a963a424c.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-semi-bold.min.0bc2fac61123dd3accc735996033d286.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-semi-bold.min.f196c38e31df69088e8d6934dbf32ba5.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-thin.min.bd904ad79a4507e1ddabe089de9241da.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-la-thin.min.80d6d2d71edf4b00d5dc3dc22ffed418.woff2" as="font" type="font/woff2" crossorigin>
+### Preload specific Fonts
+
+Fonts should be loaded as soon as possible but only those which are needed. The Porsche Design System is not able to determine which components
+you use on the site and which fonts we have to provide initially but we provide two solutions on how you can preload fonts on starting your application.
+This will help you boost the performance of your application.
+
+First approach via the `pdsLoader`. Maybe you already wondered why there is a `before`, `after` and  `first-line` in the loader style. If you use the
+`loaderAllFonts` from the `@porsche-design-system/assets` package and you statically inject the stylesheet in the head of your application, the `pdsLoader` triggers
+the loading of our webfont in all different weights that we provide.
+If you dont want all weights to be loaded we provide the `loaderRegular` which only loads the regular font per default. Add `loaderThin`, `loaderSemibold` or `loaderBold`
+to customize which font-weights you want to load.
+
+The second approach works with preloading the fonts. If you choose this approach, we provide all necessary URL´s in the `@porsche-design-system/assets` package.
+You find there the `FONTS_CDN_BASE_URL` and the `FONTS_MANIFEST` which contains all filenames for the different fonts. Combine both
+and preload it as the second example shows.
+
+#### Example with loader
+
+Use only the font-weights you also use on your site. 
+**Note:** Make sure the `laoderRegular` is on the last position otherwise you wont see the spinner.
+
+```
+index.html
+
+<div id="root">
+  <%= require('@porsche-design-system/assets').loaderThin %>
+  <%= require('@porsche-design-system/assets').loaderSemibold %>
+  <%= require('@porsche-design-system/assets').loaderBold %>
+  <%= require('@porsche-design-system/assets').loaderRegular %>
+</head>
+```
+
+#### Example with preload
+
+```
+<head>
+ <link
+   rel="preload"
+   href="path/to/webfont"
+   as="font"
+   type="font/woff2"
+   crossorigin
+ />
 </head>
 ```
