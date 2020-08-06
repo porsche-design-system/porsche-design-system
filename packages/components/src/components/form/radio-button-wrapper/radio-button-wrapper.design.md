@@ -49,7 +49,7 @@ The whole Radio Button area is clickable.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/form-radio-button-examples.png" alt="Examples for radio button usage"/>
+    <img src="./assets/radio-button-examples.png" alt="Examples for radio button usage"/>
 </div>
 
 
@@ -58,12 +58,12 @@ The whole Radio Button area is clickable.
 ### Alignment
 Always align Radio Buttons with more than 2 items vertically left-aligned, as a horizontal alignment is more difficult to scan for the user and more difficult to see which label belongs to which radio.
 
-![Example for alignment](./assets/dont-spacing-radio-button-alignment.png)
+![Example for alignment](./assets/radio-button-dont-alignment.png)
 
 ### Single choice
 Never use a Radio Button alone.
 
-![Example for single choice](./assets/dont-spacing-radio-button-vs-checkbox.png)
+![Example for single choice](./assets/radio-button-dont-single-choice.png)
 
 ---
 
