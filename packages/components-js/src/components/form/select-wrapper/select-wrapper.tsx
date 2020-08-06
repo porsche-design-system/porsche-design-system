@@ -42,7 +42,6 @@ export class SelectWrapper {
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
-  private optgroups: NodeListOf<HTMLOptGroupElement>;
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
@@ -71,11 +70,13 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
-    this.selectObserver.disconnect();
-    this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
-    this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
-    if (!this.isTouch && typeof document !== 'undefined') {
-      document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+    if (!this.isTouch) {
+      this.selectObserver.disconnect();
+      this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
+      this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+      }
     }
   }
 
@@ -318,7 +319,6 @@ export class SelectWrapper {
 
   private setOptionList = (): void => {
     this.options = this.select.querySelectorAll('option');
-    this.optgroups = this.select.querySelectorAll('optgroup');
     this.optionSelected = this.select.selectedIndex;
     this.setOptionsDisabled();
   };
@@ -351,7 +351,7 @@ export class SelectWrapper {
 
   private createFakeOptionList(): JSX.Element[][] {
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
-      this.optgroups.length > 0 && option === option.parentNode.firstChild && (
+      (option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null) && (
         <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
           {option.closest('optgroup').label}
         </span>
