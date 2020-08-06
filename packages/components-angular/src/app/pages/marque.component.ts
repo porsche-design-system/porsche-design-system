@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show marque without trademark sign">
-      <p-marque trademark="false"></p-marque>
+      <p-marque [trademark]="false"></p-marque>
     </div>
   `
 })
