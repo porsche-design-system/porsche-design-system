@@ -9,6 +9,7 @@ if
   [[ "--icons" == "${1}" ]] ||
   [[ "--fonts" == "${1}" ]] ||
   [[ "--marque" == "${1}" ]] ||
+  [[ "--metaicons" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-js-prod" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||

@@ -23,4 +23,5 @@ upload "packages/assets/cdn/components/*" components/
 upload "packages/assets/cdn/fonts/*" fonts/
 upload "packages/assets/cdn/icons/*" icons/
 upload "packages/assets/cdn/marque/*" marque/
+upload "packages/assets/cdn/metaicons/*" metaicons/
 upload "packages/assets/cdn/style/font-face.min.*.css" style/
