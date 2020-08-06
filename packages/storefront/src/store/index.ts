@@ -30,7 +30,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    toggleLoadingAsync({commit, state}, payload): void {
+    toggleLoadingAsync({ commit, state }, payload): void {
       const delay = 200;
       const timeout = setTimeout(() => {
         commit('setIsLoading', payload);

@@ -14,5 +14,5 @@ Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/form-fieldset-examples.png" alt="Examples for fieldset"/>
+    <img src="./assets/fieldset-examples.png" alt="Examples for fieldset"/>
 </div>
