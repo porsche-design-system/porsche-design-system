@@ -6,7 +6,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build && yarn start:app",
-    "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors'",
+    "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors -s'",
     "build": "yarn clean:build && yarn build:lib && yarn build:app",
     "build:app": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www && cp ./dist/components-wrapper/index.js ./www",
     "build:lib": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.js && pwcm build",
