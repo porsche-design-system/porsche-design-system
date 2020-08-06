@@ -398,6 +398,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --marque
+      - name: 'Build Metaicons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --metaicons
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
@@ -423,11 +428,16 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
+      - name: 'Store Metaicons Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: metaicons-build
+          path: ./packages/metaicons/dist/metaicons
       - name: 'Store Utilities Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: utilities-build
-          path: ./packages/utilities/projects/utilities/dist
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
       - name: 'Store Assets Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -463,11 +473,16 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
+      - name: 'Restore Metaicons Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: metaicons-build
+          path: ./packages/metaicons/dist/metaicons
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-build
-          path: ./packages/utilities/projects/utilities/dist
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run
         env:
@@ -601,11 +616,6 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
@@ -635,11 +645,6 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Docker Login'
         uses: azure/docker-login@v1
         with:
@@ -648,11 +653,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.16.1-stretch-slim
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-build
-          path: ./packages/utilities/projects/utilities/dist
+          name: utilities-full-build
+          path: ./packages/utilities/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
         env:

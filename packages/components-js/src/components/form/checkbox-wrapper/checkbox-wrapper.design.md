@@ -17,7 +17,7 @@ All Checkboxes are available in the following states:
 
 The indeterminate state is only a visual state and cannot be achieved by direct user interaction. The indeterminate state occurs if the checkbox contains a sublist of selections, some of which are selected, and some unselected.
 
-![Example of indeterminate checkbox](./assets/example-indeterminate-checkbox.png)
+![Example of indeterminate checkbox](./assets/checkbox-indeterminate.png)
 
 * error
 * success
@@ -55,7 +55,7 @@ The whole Checkbox area is clickable.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/form-checkbox-examples.png" alt="Example"/>
+    <img src="./assets/checkbox-examples.png" alt="Examples"/>
 </div>
 
 ---
@@ -66,15 +66,15 @@ The whole Checkbox area is clickable.
 
 Never mix Radio Buttons and Checkboxes.
 
-![Don't mix Checkboxes and Radio Buttons](./assets/dont-mix-buttons-checkbox.png)
+![Don't mix Checkboxes and Radio Buttons](./assets/checkbox-dont-mix.png)
 
 ### Alignment
 
 Preferably set checkboxes vertically left-aligned, as this supports scannability way better than a horizontal alignment.
 
-![Don't set checkboxes vertically](./assets/dont-alignment-checkbox.png)
+![Don't set checkboxes vertically](./assets/checkbox-dont-alignment.png)
 
-![Example for alignment](./assets/dont-position-checkbox.png)
+![Example for alignment](./assets/checkbox-dont-position.png)
 
 ---
 

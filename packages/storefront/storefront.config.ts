@@ -58,6 +58,10 @@ export const config: StorefrontConfig = {
       'Utilities': [
         // @ts-ignore
         () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`)
+      ],
+      'Assets': [
+        // @ts-ignore
+        () => import(`@/../../assets/CHANGELOG.md`)
       ]
     },
     'Versioning': [
@@ -102,6 +106,16 @@ export const config: StorefrontConfig = {
     ]
   },
   'Patterns': {
+    'Buttons': {
+      'Guidelines': [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/guidelines.md`)
+      ],
+      'Resources': [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/resources.md`)
+      ]
+    },
     'Forms': {
       'Guidelines': [
         // @ts-ignore
@@ -112,6 +126,28 @@ export const config: StorefrontConfig = {
         () => import(`@/pages/patterns/forms/resources.md`)
       ]
     }
+  },
+  'Assets': {
+    'Introduction': [
+      // @ts-ignore
+      () => import(`@/pages/assets/introduction.md`)
+    ],
+    'Icons': [
+      // @ts-ignore
+      () => import(`@/pages/assets/icons.md`)
+    ],
+    'Metaicons': [
+      // @ts-ignore
+      () => import(`@/pages/assets/metaicons.md`)
+    ],
+    'Marque': [
+      // @ts-ignore
+      () => import(`@/pages/assets/marque.md`)
+    ],
+    'Fonts': [
+      // @ts-ignore
+      () => import(`@/pages/assets/fonts.md`)
+    ]
   },
   'Utilities': {
     'Introduction': [

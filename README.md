@@ -161,6 +161,15 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 
 ## Porsche Design System - Components (JS/Angular/React)
 
+### Note
+When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in all sample integration projects. 
+The stable release needs to be exactly the same as the RC release to make sure everything works under real conditions. 
+* [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
+* [Angular](https://github.com/porscheui/sample-integration-angular)
+* [React](https://github.com/porscheui/sample-integration-react)
+* [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
+* [NextJS](https://github.com/porscheui/sample-integration-nextjs)
+
 ### Preparation
 1. Switch to __project root directory__
 1. Run `git pull origin {master- or v-branch}`
@@ -178,6 +187,16 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Run `./docker.sh run-start --components-js`
 1. Manually check components in BrowserStack launching Edge 18
 
+### Manual ngcc test for Angular
+1. Switch to __project root directory__
+1. Run `./docker.sh run-install`
+1. Run `./docker.sh run-build`
+1. Switch to `packages/components-angular`
+1. Copy `dist/components-wrapper`
+1. Switch to sample project angular
+1. Insert and overwrite directory `node-modules -> @porsche-design-system -> components-angular` in sample project
+1. Run `yarn ngcc` in sample project and check for errors
+
 ### Release
 1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
@@ -192,12 +211,33 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 1. Build icon platform
 1. Deploy icon platform
 
+### Update sample projects
+1. Go to according examples Projects:
+    * https://github.com/porscheui/sample-integration-angular
+    * https://github.com/porscheui/sample-integration-react
+    * https://github.com/porscheui/sample-integration-nextjs
+    * https://github.com/porscheui/sample-integration-gatsby
+    * https://github.com/porscheui/sample-integration-vanillajs
+1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
+1. Run `yarn`
+1. Run `yarn build`
+1. Run `yarn start` and check if everything works.
+
 ### Communicate
 1. Write a Slack notification by coping last entry of `./packages/components-js/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
 ## Porsche Design System - Utilities
+
+### Note
+When publishing a stable release then it's necessary an RC release is made immediately before, integrated and tested in all sample integration projects. 
+The stable release needs to be exactly the same as the RC release to make sure everything works under real conditions. 
+* [Vanilla JS](https://github.com/porscheui/sample-integration-vanillajs)
+* [Angular](https://github.com/porscheui/sample-integration-angular)
+* [React](https://github.com/porscheui/sample-integration-react)
+* [Gatsby](https://github.com/porscheui/sample-integration-gatsby)
+* [NextJS](https://github.com/porscheui/sample-integration-nextjs)
 
 ### Preparation
 1. Switch to __project root directory__
