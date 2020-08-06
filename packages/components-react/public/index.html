@@ -7,71 +7,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
-
-    <style id="loader-style">
-      #loader {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: white;
-        z-index: 10000;
-      }
-      .spinner {
-        position: absolute;
-        width: 104px;
-        top: 50%;
-        left: 50%;
-        margin: -52px 0 0 -52px;
-        fill: none;
-        transform: translate3d(0, 0, 0);
-        stroke-width: 1px;
-        stroke: #323639;
-      }
-      .fg {
-        stroke-linecap: round;
-        transform-origin: center center;
-        stroke-dashoffset: 0;
-        stroke-dasharray: 40, 200;
-        animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
-      }
-      .bg {
-        opacity: 0.4;
-      }
-
-      @keyframes rotate {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 3, 1000;
-        }
-
-        50% {
-          stroke-dasharray: 42, 1000;
-        }
-
-        100% {
-          stroke-dasharray: 30, 1000;
-          stroke-dashoffset: -52;
-        }
-      }
-    </style>
+    <%= require('@porsche-design-system/assets').fontFaceCssElement %>
   </head>
   <body>
-    <div id="loader">
-      <div class="spinner">
-        <svg viewBox="0 0 32 32">
-          <circle class="fg" cx="16" cy="16" r="9" />
-          <circle class="bg" cx="16" cy="16" r="9" />
-        </svg>
-      </div>
+    <div id="root">
+      <%= require('@porsche-design-system/assets').loaderAllFonts %>
     </div>
-    <div id="root"></div>
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function() {
         var html = document.querySelector('html');
