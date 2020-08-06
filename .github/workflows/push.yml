@@ -398,6 +398,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --marque
+      - name: 'Build Metaicons'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --metaicons
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run
         with:
@@ -423,6 +428,11 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
+      - name: 'Store Metaicons Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: metaicons-build
+          path: ./packages/metaicons/dist/metaicons
       - name: 'Store Utilities Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -463,6 +473,11 @@ jobs:
         with:
           name: marque-build
           path: ./packages/marque/dist/marque
+      - name: 'Restore Metaicons Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: metaicons-build
+          path: ./packages/metaicons/dist/metaicons
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
