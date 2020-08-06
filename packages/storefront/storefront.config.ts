@@ -102,6 +102,16 @@ export const config: StorefrontConfig = {
     ]
   },
   'Patterns': {
+    'Buttons': {
+      'Guidelines': [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/guidelines.md`)
+      ],
+      'Resources': [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/resources.md`)
+      ]
+    },
     'Forms': {
       'Guidelines': [
         // @ts-ignore
