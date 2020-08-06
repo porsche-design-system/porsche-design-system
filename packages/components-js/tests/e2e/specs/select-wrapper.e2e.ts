@@ -296,6 +296,72 @@ describe('select-wrapper', () => {
       expect(activeDescendant).toEqual(selectedDescendantId);
     });
 
+    it('should render with optgroups', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <optgroup label="Some optgroup label 1">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+          </optgroup>
+          <optgroup label="Some optgroup label 1">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+          </optgroup>
+        </select>
+      </p-select-wrapper>`);
+
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label')
+      const fakeOptionSelected = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--selected');
+      const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
+      const selectedDescendantId = await getProperty(fakeOptionSelected, 'id');
+
+      const numberOfOptgroups = await select.evaluate((el: HTMLElement) => {
+        return el.querySelectorAll('optgroup').length;
+      });
+      const numberOfFakeOptgroups = await fakeOptionList.evaluate((el: HTMLElement) => {
+        return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
+      });
+
+
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptgroup).not.toBeNull();
+      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(1);
+      expect(activeDescendant).toEqual(selectedDescendantId);
+      expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
+    });
+
+    it('should render with mix of options and optgroup', async () => {
+      await setContentWithDesignSystem(page, `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <optgroup label="Some optgroup label 2">
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+          </optgroup>
+        </select>
+      </p-select-wrapper>`);
+
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptgroup = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-optgroup-label')
+
+      const numberOfOptgroups = await select.evaluate((el: HTMLElement) => {
+        return el.querySelectorAll('optgroup').length;
+      });
+      const numberOfFakeOptgroups = await fakeOptionList.evaluate((el: HTMLElement) => {
+        return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
+      });
+
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptgroup).not.toBeNull();
+      expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
+    });
+
     it('should not render if touch support is detected', async () => {
       await page.emulate(devices['iPhone X']);
       await setContentWithDesignSystem(
