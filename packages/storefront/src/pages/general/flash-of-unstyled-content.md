@@ -182,7 +182,7 @@ This will help you boost the performance of your application.
 
 First approach via the `pdsLoader`. Maybe you already wondered why there is a `before`, `after` and  `first-line` in the loader style. If you use the
 `loaderAllFonts` from the `@porsche-design-system/assets` package and you statically inject the stylesheet in the head of your application, the `pdsLoader` triggers
-the loading of our webfont in all different weights that we provide.
+the loading of our latin webfont in all different weights that we provide.
 If you dont want all weights to be loaded we provide the `loaderRegular` which only loads the regular font per default. Add `loaderThin`, `loaderSemibold` or `loaderBold`
 to customize which font-weights you want to load.
 
