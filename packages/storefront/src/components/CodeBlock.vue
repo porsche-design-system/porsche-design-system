@@ -126,6 +126,14 @@ export default class CodeBlock extends Vue {
         .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
           return ` [${camelCase($key)}]="${$value}"`;
         })
+        // remove brackets from "class" attributes
+        .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
+          return ` class="${$value}"`;
+        })
+        // remove brackets from "slot" attributes
+        .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
+          return ` slot="${$value}"`;
+        })
 
     );
   }
