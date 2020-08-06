@@ -19,9 +19,9 @@ function upload {
   fi
 }
 
-upload "packages/fonts/dist/fonts/*.woff" fonts/
-upload "packages/fonts/dist/fonts/*.woff2" fonts/
-upload "packages/icons/dist/icons/*" icons/
-upload "packages/marque/dist/marque/*" marque/
-upload "packages/metaicons/dist/metaicons/*" metaicons/
-upload "packages/utilities/projects/utilities/dist/style/font-face.min.*.css" style/
+upload "packages/assets/cdn/components/*" components/
+upload "packages/assets/cdn/fonts/*" fonts/
+upload "packages/assets/cdn/icons/*" icons/
+upload "packages/assets/cdn/marque/*" marque/
+upload "packages/assets/cdn/metaicons/*" metaicons/
+upload "packages/assets/cdn/style/font-face.min.*.css" style/

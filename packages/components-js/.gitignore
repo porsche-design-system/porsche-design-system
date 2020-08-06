@@ -1,10 +1,8 @@
-/dist/
-/www/
-/loader/
-/src/styles/font-face.variables.scss
+/dist
+/www
 
-/tests/vrt/results
 /tests/cbt/results
+/tests/vrt/results
 
 *~
 *.sw[mnpcod]
@@ -15,15 +13,7 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
-.stencil/
-.idea/
-.vscode/
-.sass-cache/
-.versions/
-node_modules/
-$RECYCLE.BIN/
+/node_modules
 
 .DS_Store
 Thumbs.db
-UserInterfaceState.xcuserstate
-.env

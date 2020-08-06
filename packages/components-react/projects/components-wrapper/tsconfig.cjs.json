@@ -2,10 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "./dist/cjs",
+    "outDir": "../../dist/components-wrapper",
     "noEmit": false,
     "sourceMap": true,
-    "declaration": false
+    "declaration": true
   },
   "include": ["src"],
   "exclude": ["src/mocks", "src/lib"]

@@ -10,17 +10,15 @@ type Manifest = {
   };
 };
 
-
-const toHash = (str: string): string => {
-  return crypto
+const toHash = (str: string): string =>
+  crypto
     .createHash('md5')
     .update(str, 'utf8')
     .digest('hex');
-};
 
 const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Promise<void> => {
-  fs.rmdirSync(path.normalize('./dist'), {recursive: true});
-  fs.mkdirSync(path.normalize('./dist/metaicons'), {recursive: true});
+  fs.rmdirSync(path.normalize('./dist'), { recursive: true });
+  fs.mkdirSync(path.normalize('./dist/metaicons'), { recursive: true });
 
   const manifest: Manifest = {};
 
@@ -30,7 +28,7 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
     const info = sourcePath.split(/[\/]/g);
     const type = info[1];
     const name = path.basename(sourcePath, ext);
-    const metaicons = fs.readFileSync(sourcePath, {encoding: 'binary'});
+    const metaicons = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(metaicons);
     const filename = `${paramCase(name)}.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/metaicons/${filename}`);
@@ -39,15 +37,16 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
     const nameKey = camelCase(name);
     manifest[typeKey] = {
       ...manifest[typeKey],
-        [nameKey]: filename
+      [nameKey]: filename
     };
 
-    fs.writeFileSync(targetPath, metaicons, {encoding: 'binary'});
+    fs.writeFileSync(targetPath, metaicons, { encoding: 'binary' });
 
     console.log(`Metaicon "${name}" copied.`);
   }
 
-  fs.writeFileSync(path.normalize('./index.ts'),
+  fs.writeFileSync(
+    path.normalize('./index.ts'),
     `export const CDN_BASE_URL = "${cdn}";
 export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
   );
@@ -59,7 +58,7 @@ export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
   const url = 'https://cdn.ui.porsche.com/porsche-design-system/metaicons';
   const icons = await globby('./src/**/*');
 
-  await createManifestAndCopyMetaicons(url, icons).catch(e => {
+  await createManifestAndCopyMetaicons(url, icons).catch((e) => {
     console.error(e);
     process.exit(1);
   });
