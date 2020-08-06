@@ -2,9 +2,45 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-overview',
+  styles: [`
+    p-flex-item > p,
+    my-prefix-p-flex-item > p,
+    p-grid-item > p,
+    my-prefix-p-grid-item > p,
+    p-content-wrapper > p,
+    my-prefix-p-content-wrapper > p {
+      margin: 0;
+      padding: 4px 2vw;
+      text-align: center;
+      color: white;
+      background-color: lightskyblue;
+    }
+
+    p-flex-item:nth-child(1n) > p,
+    my-prefix-p-flex-item:nth-child(1n) > p,
+    p-grid-item:nth-child(1n) > p,
+    my-prefix-p-grid-item:nth-child(1n) > p {
+      background-color: skyblue;
+    }
+
+    p-flex-item:nth-child(2n) > p,
+    my-prefix-p-flex-item:nth-child(2n) > p,
+    p-grid-item:nth-child(2n) > p,
+    my-prefix-p-grid-item:nth-child(2n) > p {
+      background-color: deepskyblue;
+    }
+  `],
   template: `
     <p-grid>
       <p-grid-item size="6">
+        <div class="playground light" title="should render default headline">
+          <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
+        </div>
+
+        <div class="playground light" title="should render default divider">
+          <p-divider></p-divider>
+        </div>
+
         <div class="playground light" title="should render default button">
           <p-button>Some label</p-button>
         </div>
@@ -55,14 +91,6 @@ import { Component } from '@angular/core';
           <p-content-wrapper>
             <p>Some content</p>
           </p-content-wrapper>
-        </div>
-
-        <div class="playground light" title="should render default divider">
-          <p-divider></p-divider>
-        </div>
-
-        <div class="playground light" title="should render default headline">
-          <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
         </div>
 
         <div class="playground light" title="should render default text">
@@ -119,6 +147,14 @@ import { Component } from '@angular/core';
       </p-grid-item>
 
       <p-grid-item p-grid-item size="6">
+        <div class="playground light" title="should render default headline with custom prefix">
+          <my-prefix-p-headline p-headline>The quick brown fox jumps over the lazy dog</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render default divider with custom prefix">
+          <my-prefix-p-divider p-divider></my-prefix-p-divider>
+        </div>
+
         <div class="playground light" title="should render default button with custom prefix">
           <my-prefix-p-button p-button>Some label</my-prefix-p-button>
         </div>
@@ -169,14 +205,6 @@ import { Component } from '@angular/core';
           <my-prefix-p-content-wrapper p-content-wrapper>
             <p>Some content</p>
           </my-prefix-p-content-wrapper>
-        </div>
-
-        <div class="playground light" title="should render default divider with custom prefix">
-          <my-prefix-p-divider p-divider></my-prefix-p-divider>
-        </div>
-
-        <div class="playground light" title="should render default headline with custom prefix">
-          <my-prefix-p-headline p-headline>The quick brown fox jumps over the lazy dog</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default text with custom prefix">
@@ -235,35 +263,7 @@ import { Component } from '@angular/core';
         </div>
       </p-grid-item>
     </p-grid>
-  `,
-  styles: [`
-    p-flex-item > p,
-    my-prefix-p-flex-item > p,
-    p-grid-item > p,
-    my-prefix-p-grid-item > p,
-    p-content-wrapper > p,
-    my-prefix-p-content-wrapper > p {
-      margin: 0;
-      padding: 4px 2vw;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
-
-    p-flex-item:nth-child(1n) > p,
-    my-prefix-p-flex-item:nth-child(1n) > p,
-    p-grid-item:nth-child(1n) > p,
-    my-prefix-p-grid-item:nth-child(1n) > p {
-      background-color: skyblue;
-    }
-
-    p-flex-item:nth-child(2n) > p,
-    my-prefix-p-flex-item:nth-child(2n) > p,
-    p-grid-item:nth-child(2n) > p,
-    my-prefix-p-grid-item:nth-child(2n) > p {
-      background-color: deepskyblue;
-    }
-  `]
+  `
 })
 export class OverviewComponent {
 }

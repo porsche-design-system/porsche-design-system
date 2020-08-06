@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-link-pure',
+  styles: [`
+    p-link-pure:not(:last-child) {
+      margin-right: 8px;
+    }
+  `],
   template: `
     <div class="playground light" title="should render with label">
       <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>

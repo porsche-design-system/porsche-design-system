@@ -2,6 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-typography',
+  styles: [`
+    .playground:nth-child(-n+3) p-text {
+      display: inline-block !important;
+      vertical-align: top;
+      margin: 4px;
+      padding: 4px;
+      background: #f1f1f1;
+      width: 36px;
+      height: 36px;
+    }
+  `],
   template: `
     <div class="playground" title="should show typography in basic latin charset">
       <p-headline>Latin</p-headline>
@@ -2946,18 +2957,7 @@ import { Component } from '@angular/core';
       <p-headline variant="headline-5">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-headline>
       <p-text weight="bold">Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text>
     </div>
-  `,
-  styles: [`
-    .playground:nth-child(-n+3) p-text {
-      display: inline-block !important;
-      vertical-align: top;
-      margin: 4px;
-      padding: 4px;
-      background: #f1f1f1;
-      width: 36px;
-      height: 36px;
-    }
-  `]
+  `
 })
 export class TypographyComponent {
 }

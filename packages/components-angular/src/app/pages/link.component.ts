@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-link',
+  styles: [`
+    p-link:not(:last-child) {
+      margin-right: 8px;
+    }
+  `],
   template: `
     <div class="playground light" title="should render primary with label">
       <p-link variant="primary" href="https://www.porsche.com">Some label</p-link>

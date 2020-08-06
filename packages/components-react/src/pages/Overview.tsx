@@ -88,33 +88,39 @@ export const OverviewPage = (): JSX.Element => {
 
   return (
     <div>
-      <style children={style} />
+      <style children={style}/>
 
       <Grid>
         <GridItem size="6">
-          <Headline>Default Components</Headline>
+          <div className="playground light" title="should render default headline">
+            <Headline>The quick brown fox jumps over the lazy dog</Headline>
+          </div>
 
-          <div className="playground light" title="should render prefixed default button">
+          <div className="playground light" title="should render default divider">
+            <Divider/>
+          </div>
+
+          <div className="playground light" title="should render default button">
             <Button>Some label</Button>
           </div>
 
-          <div className="playground light" title="should render prefixed default button-pure">
+          <div className="playground light" title="should render default button-pure">
             <ButtonPure>Some label</ButtonPure>
           </div>
 
-          <div className="playground light" title="should render prefixed default checkbox-wrapper">
+          <div className="playground light" title="should render default checkbox-wrapper">
             <CheckboxWrapper label="Some label">
-              <input type="checkbox" />
+              <input type="checkbox"/>
             </CheckboxWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default radio-button-wrapper">
+          <div className="playground light" title="should render default radio-button-wrapper">
             <RadioButtonWrapper label="Some label">
-              <input type="radio" />
+              <input type="radio"/>
             </RadioButtonWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default select-wrapper">
+          <div className="playground light" title="should render default select-wrapper">
             <SelectWrapper label="Some label">
               <select>
                 <option value="a">Option A</option>
@@ -124,77 +130,69 @@ export const OverviewPage = (): JSX.Element => {
             </SelectWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default text-field-wrapper">
+          <div className="playground light" title="should render default text-field-wrapper">
             <TextFieldWrapper label="Some label">
-              <input type="text" />
+              <input type="text"/>
             </TextFieldWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default textarea-wrapper">
+          <div className="playground light" title="should render default textarea-wrapper">
             <TextareaWrapper label="Some label">
               <textarea></textarea>
             </TextareaWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default fieldset-wrapper">
+          <div className="playground light" title="should render default fieldset-wrapper">
             <FieldsetWrapper label="Some label"></FieldsetWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default content-wrapper">
+          <div className="playground light" title="should render default content-wrapper">
             <ContentWrapper>
               <p>Some content</p>
             </ContentWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default divider">
-            <Divider />
-          </div>
-
-          <div className="playground light" title="should render prefixed default headline">
-            <Headline>The quick brown fox jumps over the lazy dog</Headline>
-          </div>
-
-          <div className="playground light" title="should render prefixed default text">
+          <div className="playground light" title="should render default text">
             <Text>The quick brown fox jumps over the lazy dog</Text>
           </div>
 
-          <div className="playground light" title="should render prefixed default text-list">
+          <div className="playground light" title="should render default text-list">
             <TextList>
               <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
             </TextList>
           </div>
 
-          <div className="playground light" title="should render prefixed default icon">
-            <Icon />
+          <div className="playground light" title="should render default icon">
+            <Icon/>
           </div>
 
-          <div className="playground light" title="should render prefixed default link">
+          <div className="playground light" title="should render default link">
             <Link href="https://www.porsche.com">Some label</Link>
           </div>
 
-          <div className="playground light" title="should render prefixed default link-pure">
+          <div className="playground light" title="should render default link-pure">
             <LinkPure href="https://www.porsche.com">Some label</LinkPure>
           </div>
 
-          <div className="playground light" title="should render prefixed default link-social">
+          <div className="playground light" title="should render default link-social">
             <LinkSocial href="https://www.porsche.com" icon="logo-facebook">
               Some label
             </LinkSocial>
           </div>
 
-          <div className="playground light" title="should render prefixed default marque">
-            <Marque />
+          <div className="playground light" title="should render default marque">
+            <Marque/>
           </div>
 
-          <div className="playground light" title="should render prefixed default pagination">
-            <Pagination total-items-count="500" items-per-page="25" active-page="1" />
+          <div className="playground light" title="should render default pagination">
+            <Pagination total-items-count="500" items-per-page="25" active-page="1"/>
           </div>
 
-          <div className="playground light" title="should render prefixed default spinner">
-            <Spinner />
+          <div className="playground light" title="should render default spinner">
+            <Spinner/>
           </div>
 
-          <div className="playground light" title="should render prefixed default flex">
+          <div className="playground light" title="should render default flex">
             <Flex>
               <FlexItem>
                 <p>1</p>
@@ -205,38 +203,48 @@ export const OverviewPage = (): JSX.Element => {
             </Flex>
           </div>
 
-          <div className="playground light" title="should render prefixed default grid">
+          <div className="playground light" title="should render default grid">
             <Grid>
-              <GridItem size="6"></GridItem>
-              <GridItem size="6"></GridItem>
+              <GridItem size="6">
+                <p>1</p>
+              </GridItem>
+              <GridItem size="6">
+                <p>2</p>
+              </GridItem>
             </Grid>
           </div>
         </GridItem>
 
         <GridItem size="6">
-          <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
+          <div className="playground light" title="should render default headline with custom prefix">
+            <PrefixedHeadline>The quick brown fox jumps over the lazy dog</PrefixedHeadline>
+          </div>
 
-          <div className="playground light" title="should render prefixed default button">
+          <div className="playground light" title="should render default divider with custom prefix">
+            <PrefixedDivider/>
+          </div>
+
+          <div className="playground light" title="should render default button with custom prefix">
             <PrefixedButton>Some label</PrefixedButton>
           </div>
 
-          <div className="playground light" title="should render prefixed default button-pure">
+          <div className="playground light" title="should render default button-pure with custom prefix">
             <PrefixedButtonPure>Some label</PrefixedButtonPure>
           </div>
 
-          <div className="playground light" title="should render prefixed default checkbox-wrapper">
+          <div className="playground light" title="should render default checkbox-wrapper with custom prefix">
             <PrefixedCheckboxWrapper label="Some label">
-              <input type="checkbox" />
+              <input type="checkbox"/>
             </PrefixedCheckboxWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default radio-button-wrapper">
+          <div className="playground light" title="should render default radio-button-wrapper with custom prefix">
             <PrefixedRadioButtonWrapper label="Some label">
-              <input type="radio" />
+              <input type="radio"/>
             </PrefixedRadioButtonWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default select-wrapper">
+          <div className="playground light" title="should render default select-wrapper with custom prefix">
             <PrefixedSelectWrapper label="Some label">
               <select>
                 <option value="a">Option A</option>
@@ -246,77 +254,69 @@ export const OverviewPage = (): JSX.Element => {
             </PrefixedSelectWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default text-field-wrapper">
+          <div className="playground light" title="should render default text-field-wrapper with custom prefix">
             <PrefixedTextFieldWrapper label="Some label">
-              <input type="text" />
+              <input type="text"/>
             </PrefixedTextFieldWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default textarea-wrapper">
+          <div className="playground light" title="should render default textarea-wrapper with custom prefix">
             <PrefixedTextareaWrapper label="Some label">
               <textarea></textarea>
             </PrefixedTextareaWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default fieldset-wrapper">
+          <div className="playground light" title="should render default fieldset-wrapper with custom prefix">
             <PrefixedFieldsetWrapper label="Some label"></PrefixedFieldsetWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default content-wrapper">
+          <div className="playground light" title="should render default content-wrapper with custom prefix">
             <PrefixedContentWrapper>
               <p>Some content</p>
             </PrefixedContentWrapper>
           </div>
 
-          <div className="playground light" title="should render prefixed default divider">
-            <PrefixedDivider />
-          </div>
-
-          <div className="playground light" title="should render prefixed default headline">
-            <PrefixedHeadline>The quick brown fox jumps over the lazy dog</PrefixedHeadline>
-          </div>
-
-          <div className="playground light" title="should render prefixed default text">
+          <div className="playground light" title="should render default text with custom prefix">
             <PrefixedText>The quick brown fox jumps over the lazy dog</PrefixedText>
           </div>
 
-          <div className="playground light" title="should render prefixed default text-list">
+          <div className="playground light" title="should render default text-list with custom prefix">
             <PrefixedTextList>
               <PrefixedTextListItem>The quick brown fox jumps over the lazy dog</PrefixedTextListItem>
             </PrefixedTextList>
           </div>
 
-          <div className="playground light" title="should render prefixed default icon">
-            <PrefixedIcon />
+          <div className="playground light" title="should render default icon with custom prefix">
+            <PrefixedIcon/>
           </div>
 
-          <div className="playground light" title="should render prefixed default link">
+          <div className="playground light" title="should render default link with custom prefix">
             <PrefixedLink href="https://www.porsche.com">Some label</PrefixedLink>
           </div>
 
-          <div className="playground light" title="should render prefixed default link-pure">
+          <div className="playground light" title="should render default link-pure with custom prefix">
             <PrefixedLinkPure href="https://www.porsche.com">Some label</PrefixedLinkPure>
           </div>
 
-          <div className="playground light" title="should render prefixed default link-social">
+          <div className="playground light" title="should render default link-social with custom prefix">
             <PrefixedLinkSocial href="https://www.porsche.com" icon="logo-facebook">
               Some label
             </PrefixedLinkSocial>
           </div>
 
-          <div className="playground light" title="should render prefixed default marque">
-            <PrefixedMarque />
+          <div className="playground light" title="should render default marque with custom prefix">
+            <PrefixedMarque/>
           </div>
 
-          <div className="playground light" title="should render prefixed default pagination">
-            <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1" />
+          <div className="playground light" title="should render default pagination with custom prefix">
+            <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1"/>
           </div>
 
-          <div className="playground light" title="should render prefixed default spinner">
-            <PrefixedSpinner />
+          <div className="playground light" title="should render default spinner with custom prefix">
+            <PrefixedSpinner/>
           </div>
 
-          <div className="playground light" title="should render prefixed default flex">
+          <div className="playground light" title="should render default flex with custom prefix">
             <PrefixedFlex>
               <PrefixedFlexItem>
                 <p>1</p>
@@ -327,10 +327,14 @@ export const OverviewPage = (): JSX.Element => {
             </PrefixedFlex>
           </div>
 
-          <div className="playground light" title="should render prefixed default grid">
+          <div className="playground light" title="should render default grid with custom prefix">
             <PrefixedGrid>
-              <PrefixedGridItem size="6"></PrefixedGridItem>
-              <PrefixedGridItem size="6"></PrefixedGridItem>
+              <PrefixedGridItem size="6">
+                <p>1</p>
+              </PrefixedGridItem>
+              <PrefixedGridItem size="6">
+                <p>2</p>
+              </PrefixedGridItem>
             </PrefixedGrid>
           </div>
         </GridItem>
