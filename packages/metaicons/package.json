@@ -1,0 +1,54 @@
+{
+  "name": "@porsche-design-system/metaicons",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "main": "dist/umd/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Melanie Kolar <melanie.kolar@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Porsche Metaicons",
+  "keywords": [
+    "porsche",
+    "favicon",
+    "touch icon"
+  ],
+  "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "scripts": {
+    "build": "yarn clean:build && yarn build:metaicons && yarn build:lib",
+    "build:metaicons": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:lib": "yarn build:lib:module && yarn build:lib:umd",
+    "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
+    "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
+    "clean": "yarn clean:node_modules && clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./index.ts"
+  },
+  "devDependencies": {
+    "change-case": "^4.1.1",
+    "globby": "^11.0.1",
+    "ts-node": "^8.10.2",
+    "typescript": "~3.9.6"
+  },
+  "files": [
+    "dist/"
+  ]
+}

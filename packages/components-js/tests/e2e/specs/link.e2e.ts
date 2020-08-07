@@ -1,15 +1,15 @@
 import {
   addEventListener,
   getActiveElementId,
+  getBrowser,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
-} from "../helpers";
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
+} from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
 describe('link', () => {
-
   let page: Page;
 
   beforeEach(async () => {
@@ -28,7 +28,10 @@ describe('link', () => {
   });
 
   it('should dispatch correct click events', async () => {
-    await setContentWithDesignSystem(page, `<div><p-link id="hostElement" href="#testpage">Some label</p-link></div>`);
+    await setContentWithDesignSystem(
+      page,
+      `<div><p-link id="hostElement" href="about:blank#">Some label</p-link></div>`
+    );
 
     const wrapper = await selectNode(page, 'div');
     const host = await getLinkHost();
@@ -48,13 +51,16 @@ describe('link', () => {
   });
 
   it(`should trigger focus&blur events at the correct time`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <div id="wrapper">
         <a href="#" id="before">before</a>
         <p-link href="#" id="my-link">Some label</p-link>
         <a href="#" id="after">after</a>
       </div>
-    `);
+    `
+    );
 
     const link = await getLinkHost();
     const before = await selectNode(page, '#before');
@@ -63,7 +69,7 @@ describe('link', () => {
     let beforeFocusCalls = 0;
     await addEventListener(before, 'focus', () => beforeFocusCalls++);
     let linkFocusCalls = 0;
-    await addEventListener(link, 'focus', () => linkFocusCalls++)
+    await addEventListener(link, 'focus', () => linkFocusCalls++);
     let linkFocusInCalls = 0;
     await addEventListener(link, 'focusin', () => linkFocusInCalls++);
     let linkBlurCalls = 0;
@@ -133,12 +139,15 @@ describe('link', () => {
   });
 
   it(`should provide methods to focus&blur the element`, async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <div id="wrapper">
         <a href="#" id="before">before</a>
         <p-link href="#">Some label</p-link>
       </div>
-    `);
+    `
+    );
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link'));
 

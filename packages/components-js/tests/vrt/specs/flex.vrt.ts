@@ -1,19 +1,16 @@
-import 'jasmine';
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionTester } from '../helpers/setup';
+import { getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Flex', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
-      await vrt.test('flex', async () => {
-        await vrt.goTo('/src/components/layout/flex/flex.test.html');
-      })
+      await vrt.test(
+        'flex',
+        async () => {
+          await vrt.goTo('/#flex');
+        },
+        testOptions
+      )
     ).toBeFalsy();
   });
 });

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./mocks",
+    "outDir": "../../dist/components-wrapper/mocks",
     "target": "ES2015",
     "module": "UMD",
     "noEmit": false,

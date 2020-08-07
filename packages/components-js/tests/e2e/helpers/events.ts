@@ -1,4 +1,4 @@
-import { JSHandle, Page } from "puppeteer";
+import { JSHandle, Page } from 'puppeteer';
 
 /**
  * copied and stripped down from
@@ -8,7 +8,7 @@ import { JSHandle, Page } from "puppeteer";
 type WaitForEvent = {
   eventName: string;
   callback: (ev: any) => void;
-}
+};
 
 const events = new Map<number, WaitForEvent>();
 
@@ -22,14 +22,14 @@ export const initAddEventListener = async (page: Page) => {
 
   // register helpers on window of browser context
   await page.evaluate(browserContextEvents);
-}
+};
 
 export const addEventListener = async (elmHandle: JSHandle, eventName: string, callback: (ev: any) => void) => {
   // NODE CONTEXT
   const id = events.size;
   events.set(id, {
     eventName,
-    callback,
+    callback
   });
 
   const executionContext = elmHandle.executionContext();
@@ -43,14 +43,14 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
     },
     elmHandle,
     id,
-    eventName,
+    eventName
   );
-}
+};
 
 const nodeContextEvents = (waitForEvents: Map<number, WaitForEvent>, eventId: number, ev: any) => {
   // NODE CONTEXT
   waitForEvents.get(eventId)?.callback(ev);
-}
+};
 
 const browserContextEvents = () => {
   // BROWSER CONTEXT
@@ -59,14 +59,11 @@ const browserContextEvents = () => {
     // BROWSER CONTEXT
     if (!target) {
       return null;
-    }
-    if (target === window) {
-      return {serializedWindow: true};
-    }
-    if (target === document) {
-      return {serializedDocument: true};
-    }
-    if (target.nodeType != null) {
+    } else if (target === window) {
+      return { serializedWindow: true };
+    } else if (target === document) {
+      return { serializedDocument: true };
+    } else if (target.nodeType != null) {
       return {
         serializedElement: true,
         nodeName: target.nodeName,
@@ -74,10 +71,11 @@ const browserContextEvents = () => {
         nodeType: target.nodeType,
         tagName: target.tagName,
         className: target.className,
-        id: target.id,
+        id: target.id
       };
+    } else {
+      return null;
     }
-    return null;
   };
 
   (window as any).puppeteerSerializeEvent = (orgEv: any) => ({
@@ -96,6 +94,6 @@ const browserContextEvents = () => {
     target: (window as any).puppeteerSerializeEventTarget(orgEv.target),
     timeStamp: orgEv.timeStamp,
     type: orgEv.type,
-    isSerializedEvent: true,
+    isSerializedEvent: true
   });
-}
+};
