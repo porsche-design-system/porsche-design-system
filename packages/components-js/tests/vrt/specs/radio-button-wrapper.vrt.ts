@@ -1,20 +1,17 @@
-import 'jasmine';
-import {VisualRegressionTester} from '@porsche-design-system/visual-regression-tester';
-import {getVisualRegressionTester} from '../helpers/setup';
+import { getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Radio Button Wrapper', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
-      await vrt.test('radio-button-wrapper', async () => {
-        await vrt.goTo('/src/components/form/radio-button-wrapper/radio-button-wrapper.test.html');
-        await vrt.focus('#test-focus-state');
-      })
+      await vrt.test(
+        'radio-button-wrapper',
+        async () => {
+          await vrt.goTo('/#radio-button-wrapper');
+          await vrt.focus('#test-focus-state');
+        },
+        testOptions
+      )
     ).toBeFalsy();
   });
 });

@@ -1,64 +1,116 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { BasicComponent } from "./pages/basic.component";
-import { ActionComponent } from "./pages/action.component";
-import { ContentComponent } from "./pages/content.component";
-import { FormComponent } from './pages/form.component';
-import { FeedbackComponent } from "./pages/feedback.component";
-import { IconComponent } from "./pages/icon.component";
-import { LayoutComponent } from "./pages/layout.component";
-import { NavigationComponent } from "./pages/navigation.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import * as pages from './pages';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'basic',
-    pathMatch: 'full'
+    children: []
   },
   {
-    path: 'basic',
-    component: BasicComponent
+    path: 'button',
+    component: pages.ButtonComponent
   },
   {
-    path: 'action',
-    component: ActionComponent
+    path: 'button-pure',
+    component: pages.ButtonPureComponent
   },
   {
-    path: 'content',
-    component: ContentComponent
+    path: 'checkbox-wrapper',
+    component: pages.CheckboxWrapperComponent
   },
   {
-    path: 'form',
-    component: FormComponent
+    path: 'content-wrapper',
+    component: pages.ContentWrapperComponent
   },
   {
-    path: 'feedback',
-    component: FeedbackComponent
+    path: 'divider',
+    component: pages.DividerComponent
+  },
+  {
+    path: 'fieldset-wrapper',
+    component: pages.FieldsetWrapperComponent
+  },
+  {
+    path: 'flex',
+    component: pages.FlexComponent
+  },
+  {
+    path: 'grid',
+    component: pages.GridComponent
+  },
+  {
+    path: 'headline',
+    component: pages.HeadlineComponent
   },
   {
     path: 'icon',
-    component: IconComponent
+    component: pages.IconComponent
   },
   {
-    path: 'layout',
-    component: LayoutComponent
+    path: 'link',
+    component: pages.LinkComponent
   },
   {
-    path: 'navigation',
-    component: NavigationComponent
+    path: 'link-pure',
+    component: pages.LinkPureComponent
+  },
+  {
+    path: 'link-social',
+    component: pages.LinkSocialComponent
+  },
+  {
+    path: 'marque',
+    component: pages.MarqueComponent
+  },
+  {
+    path: 'overview',
+    component: pages.OverviewComponent
+  },
+  {
+    path: 'pagination',
+    component: pages.PaginationComponent
+  },
+  {
+    path: 'radio-button-wrapper',
+    component: pages.RadioButtonWrapperComponent
+  },
+  {
+    path: 'select-wrapper',
+    component: pages.SelectWrapperComponent
+  },
+  {
+    path: 'spinner',
+    component: pages.SpinnerComponent
+  },
+  {
+    path: 'text',
+    component: pages.TextComponent
+  },
+  {
+    path: 'text-field-wrapper',
+    component: pages.TextFieldWrapperComponent
+  },
+  {
+    path: 'text-list',
+    component: pages.TextListComponent
+  },
+  {
+    path: 'textarea-wrapper',
+    component: pages.TextareaWrapperComponent
+  },
+  {
+    path: 'textarea-wrapper',
+    component: pages.TextareaWrapperComponent
+  },
+  {
+    path: 'typography',
+    component: pages.TypographyComponent
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-    )
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

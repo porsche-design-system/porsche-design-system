@@ -1,15 +1,15 @@
 import {
   addEventListener,
   getActiveElementId,
+  getBrowser,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
-describe('button pure', () => {
+describe('button-pure', () => {
   let page: Page;
 
   beforeEach(async () => {

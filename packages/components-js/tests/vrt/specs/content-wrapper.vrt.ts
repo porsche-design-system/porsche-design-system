@@ -1,19 +1,16 @@
-import 'jasmine';
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionContentWrapperTester } from '../helpers/setup';
+import { getVisualRegressionContentWrapperTester, getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Content Wrapper', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionContentWrapperTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionContentWrapperTester();
     expect(
-      await vrt.test('content-wrapper', async () => {
-        await vrt.goTo('/src/components/layout/content-wrapper/content-wrapper.test.html');
-      })
+      await vrt.test(
+        'content-wrapper',
+        async () => {
+          await vrt.goTo('/#content-wrapper');
+        },
+        testOptions
+      )
     ).toBeFalsy();
   });
 });
