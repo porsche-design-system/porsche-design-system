@@ -1,7 +1,9 @@
-import { color, font, FONT_FACE_STYLE_CDN_URL } from '@porsche-design-system/utilities';
+import { color, font } from '@porsche-design-system/utilities';
+
+const CLASS_NAME = 'loader';
 
 const defaultLoaderStyles = `
-.loader {
+.${CLASS_NAME} {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -56,32 +58,32 @@ export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: 
   if (options) {
     if (options.thin || options.all) {
       loaderStyles = `
-        .loader::before {
-          content:'';
+        .${CLASS_NAME}::before {
+          content: '';
           font-weight: ${font.weight.thin};
         }`;
     }
     if (options.semibold || options.all) {
       loaderStyles += `
-        .loader::after {
-          content:'';
+        .${CLASS_NAME}::after {
+          content: '';
           font-weight: ${font.weight.semibold};
         }`;
     }
     if (options.bold || options.all) {
       loaderStyles += `
-        .loader::first-line {
-          content:'';
+        .${CLASS_NAME}::first-line {
+          content: '';
           font-weight: ${font.weight.bold};
         }`;
     }
   }
   return `
-  <div class="loader" id="pdsLoader">
-  <style>
-    ${defaultLoaderStyles}
-    ${loaderStyles}
-  </style>
+  <div class="${CLASS_NAME}" id="pdsLoader">
+    <style>
+      ${defaultLoaderStyles}
+      ${loaderStyles}
+    </style>
     <div class="spinner">
       <svg viewBox="0 0 32 32">
         <circle class="fg" cx="16" cy="16" r="9" />
@@ -90,10 +92,3 @@ export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: 
     </div>
   </div>`;
 };
-
-export const fontFaceCssElement = `<link rel="stylesheet" href="http://localhost:3001/style/font-face.min.css">`;
-
-// Needs to be extended everytime a new component gets added
-export const waitForPDSComponents = `<style> p-marque,p-button,p-button-pure,p-checkbox-wrapper,p-link,p-link-pure,p-link-social,p-select-wrapper,
-p-text-field-wrapper,p-pagination,p-radio-button-wrapper,p-textarea-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-flex-item,p-grid,
-p-grid-item,p-headline,p-marque,p-text-list,p-text-list-item,p-spinner,p-icon,p-text { visibility: hidden }</style>`;
