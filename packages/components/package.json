@@ -6,9 +6,10 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
-    "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:readme",
+    "build": "yarn build:types && PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:readme && yarn build:tags",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
+    "build:tags": "ts-node --project './tsconfig.node.json' './scripts/tags.ts'",
     "build-prod": "PDS_IS_STAGING=0 yarn build",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
