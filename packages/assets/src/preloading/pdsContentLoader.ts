@@ -50,31 +50,13 @@ const defaultLoaderStyles = `
       }
     }
 `;
-export const loaderRegular = `
-  <style id="pdsLoaderStyle">
-    ${defaultLoaderStyles}
-    .loader__thin {
-      font-weight: ${font.weight.thin};
-    }
-    .loader__semibold {
-      font-weight: ${font.weight.semibold};
-    }
-    .loader__bold {
-      font-weight: ${font.weight.bold};
-    }
-  </style>
-  <div class="loader" id="pdsLoader">
-    <div class="spinner">
-      <svg viewBox="0 0 32 32">
-        <circle class="fg" cx="16" cy="16" r="9" />
-        <circle class="bg" cx="16" cy="16" r="9" />
-      </svg>
-    </div>
-  </div>
-`;
 
-export const loaderAllFonts = `<style id="pdsLoaderStyle">
-    ${defaultLoaderStyles}
+export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: boolean; bold?: boolean }) => {
+  let loaderClasses = '';
+  let loaderStyles = '';
+  if (options) {
+    if (options.all) {
+      loaderStyles = `
     .loader--all::before {
         content:'';
         font-weight: ${font.weight.thin};
@@ -85,9 +67,41 @@ export const loaderAllFonts = `<style id="pdsLoaderStyle">
     }
     .loader--all::first-line {
         font-weight: ${font.weight.bold};
+    }`;
+      loaderClasses = 'loader--all';
+    } else {
+      if (options.thin) {
+        loaderStyles = `
+          .loader--thin::before {
+            content:'';
+            font-weight: ${font.weight.thin};
+          }`;
+        loaderClasses = 'loader--thin';
+      }
+      if (options.semibold) {
+        loaderStyles = `
+          .loader--semibold::after {
+            content:'';
+            font-weight: ${font.weight.semibold};
+          }`;
+        loaderClasses = 'loader--semibold';
+      }
+      if (options.bold) {
+        loaderStyles = `
+          .loader--bold::first-line {
+            content:'';
+            font-weight: ${font.weight.bold};
+          }`;
+        loaderClasses = 'loader--bold';
+      }
     }
+  }
+  return `
+  <div class="loader ${loaderClasses}" id="pdsLoader">
+  <style>
+    ${defaultLoaderStyles}
+    ${loaderStyles}
   </style>
-  <div class="loader loader--all" id="pdsLoader">
     <div class="spinner">
       <svg viewBox="0 0 32 32">
         <circle class="fg" cx="16" cy="16" r="9" />
@@ -95,9 +109,11 @@ export const loaderAllFonts = `<style id="pdsLoaderStyle">
       </svg>
     </div>
   </div>`;
+};
 
-export const loaderThin = '<div class="loader loader__thin"></div>';
-export const loaderSemibold = '<div class="loader loader__semibold"></div>';
-export const loaderBold = '<div class="loader loader__bold"></div>';
+export const fontFaceCssElement = `<link rel="stylesheet" href="${FONT_FACE_STYLE_CDN_URL}">`;
 
-export const fontFaceCssElement = `<link rel="stylesheet" href="http://localhost:3001/style/font-face.min.css">`;
+// Needs to be extended everytime a new component gets added
+export const waitForPDSComponents = `<style> p-marque,p-button,p-button-pure,p-checkbox-wrapper,p-link,p-link-pure,p-link-social,p-select-wrapper,
+p-text-field-wrapper,p-pagination,p-radio-button-wrapper,p-textarea-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-flex-item,p-grid,
+p-grid-item,p-headline,p-marque,p-text-list,p-text-list-item,p-spinner,p-icon,p-text { visibility: hidden }</style>`;
