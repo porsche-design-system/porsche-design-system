@@ -1,36 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { PorscheDesignSystemModule, PrefixService } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './pages/navigation.component';
-import { BasicComponent } from './pages/basic.component';
-import { ActionComponent } from './pages/action.component';
-import { ContentComponent } from './pages/content.component';
-import { FormComponent } from './pages/form.component';
-import { FeedbackComponent } from './pages/feedback.component';
-import { IconComponent } from './pages/icon.component';
-import { LayoutComponent } from './pages/layout.component';
 import { AppRoutingModule } from './app-routing.module';
+import * as fromPages from './pages';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    BasicComponent,
-    ActionComponent,
-    ContentComponent,
-    FormComponent,
-    FeedbackComponent,
-    IconComponent,
-    LayoutComponent
-  ],
-  imports: [
-    BrowserModule,
-    PorscheDesignSystemModule,
-    AppRoutingModule,
-  ],
+  declarations: [AppComponent, ...fromPages.pages],
+  imports: [BrowserModule, PorscheDesignSystemModule, AppRoutingModule],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(private prefixService: PrefixService) {
+    prefixService.load('my-prefix');
+  }
 }

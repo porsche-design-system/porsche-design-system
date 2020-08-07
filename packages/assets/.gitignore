@@ -5,6 +5,8 @@
 
 # production
 /dist
+/cdn
+/bin
 
 # misc
 .DS_Store

@@ -30,6 +30,6 @@ export default [
   {
     input: 'src/index.ts',
     output: { dir: 'dist/esm', format: 'esm' },
-    plugins: commonPlugins()
+    plugins: [...commonPlugins(), process.env.NODE_ENV === 'production' && terser()]
   }
 ];

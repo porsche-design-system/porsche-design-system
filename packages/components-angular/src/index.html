@@ -1,67 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Porsche Design System Angular</title>
-    <base href="/" />
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Porsche Design System - Angular</title>
+  <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="http://localhost:3001/style/font-face.min.css" />
 
-    <link rel="stylesheet" href="http://localhost:3001/style/font-face.min.css" />
-
-  </head>
-  <body>
-    <app-root>
-      <style>
-        .loader {
-          position: fixed;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background:  #fff;
-          z-index: 10000;
-          font-family: "Porsche Next","Arial Narrow", Arial, sans-serif;
+</head>
+<body>
+  <app-root>
+    <style>
+      .loader {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background:  #fff;
+        z-index: 10000;
+        font-family: "Porsche Next","Arial Narrow", Arial, sans-serif;
+      }
+      .spinner {
+        position: absolute;
+        width: 72px;
+        top: 50%;
+        left: 50%;
+        margin: -36px 0 0 -36px;
+        fill: none;
+        transform: translate3d(0, 0, 0);
+        stroke-width: 1px;
+        stroke: #323639;
+      }
+      .fg {
+        stroke-linecap: round;
+        transform-origin: center center;
+        stroke-dashoffset: 0;
+        stroke-dasharray: 40, 200;
+        animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+      }
+      .bg {
+        opacity: 0.4;
+      }
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
         }
-        .spinner {
-          position: absolute;
-          width: 72px;
-          top: 50%;
-          left: 50%;
-          margin: -36px 0 0 -36px;
-          fill: none;
-          transform: translate3d(0, 0, 0);
-          stroke-width: 1px;
-          stroke: #323639;
+      }
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 3, 1000;
         }
-        .fg {
-          stroke-linecap: round;
-          transform-origin: center center;
-          stroke-dashoffset: 0;
-          stroke-dasharray: 40, 200;
-          animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+        50% {
+          stroke-dasharray: 42, 1000;
         }
-        .bg {
-          opacity: 0.4;
+        100% {
+          stroke-dasharray: 30, 1000;
+          stroke-dashoffset: -52;
         }
-        @keyframes rotate {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        @keyframes dash {
-          0% {
-            stroke-dasharray: 3, 1000;
-          }
-          50% {
-            stroke-dasharray: 42, 1000;
-          }
-          100% {
-            stroke-dasharray: 30, 1000;
-            stroke-dashoffset: -52;
-          }
-        }
+      }
       .loader--all::before {
         content:'';
         font-weight: 100;
@@ -74,45 +73,13 @@
         font-weight: 700;
       }
     </style>
-      <div class="loader loader--all">
-        <div class="spinner">
-          <svg viewBox="0 0 32 32">
-            <circle class="fg" cx="16" cy="16" r="9" />
-            <circle class="bg" cx="16" cy="16" r="9" />
-          </svg>
-        </div>
+    <div class="loader loader--all">
+      <div class="spinner">
+        <svg viewBox="0 0 32 32">
+          <circle class="fg" cx="16" cy="16" r="9" />
+          <circle class="bg" cx="16" cy="16" r="9" />
+        </svg>
       </div>
-    </app-root>
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', function() {
-        var html = document.querySelector('html');
-        function callOnHydrated(cb) {
-          setTimeout(function() {
-            if (html.classList.contains('hydrated')) {
-              return cb();
-            }
-
-            return callOnHydrated(cb);
-          }, 1000);
-        }
-
-        callOnHydrated(function() {
-          /* Why? To see which browser is used to create cross browser tests by BrowserStack Screenshot API */
-          var txt = 'Browser CodeName: ' + navigator.appCodeName + '<br>';
-          txt += 'Browser Name: ' + navigator.appName + '<br>';
-          txt += 'Browser Version: ' + navigator.appVersion + '<br>';
-          txt += 'Platform: ' + navigator.platform + '<br>';
-          txt += 'User-agent header: ' + navigator.userAgent;
-          document.getElementById('system-log').innerHTML = txt;
-
-          window.setTimeout(function() {
-            /* Why? To force a redraw after everything has loaded to ensure IE11 renders the same each time */
-            document.body.style.display = 'none';
-            document.body.offsetHeight;
-            document.body.style.display = 'block';
-          }, 10000);
-        });
-      });
-    </script>
-  </body>
+  </app-root>
+</body>
 </html>
