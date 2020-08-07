@@ -1,7 +1,6 @@
-import 'jasmine';
 import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
-import * as puppeteer from 'puppeteer';
-import { Browser } from 'puppeteer';
+import { Browser, launch } from 'puppeteer';
+import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
@@ -10,19 +9,22 @@ let visualRegressionGridTester: VisualRegressionTester;
 let visualRegressionMarque2xTester: VisualRegressionTester;
 let visualRegressionMarque3xTester: VisualRegressionTester;
 
-const testOptions: VisualRegressionTestOptions = {
+const vrtTestOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61423',
+  baseUrl: 'http://localhost:8575',
   timeout: 90000
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
+jasmine.getEnv().clearReporters();
+jasmine.getEnv().addReporter(new SpecReporter());
+
 beforeAll(async () => {
-  browser = await puppeteer.launch({
+  browser = await launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
   });
 });
@@ -35,7 +37,7 @@ afterAll(async () => {
 
 export const getVisualRegressionTester = (): VisualRegressionTester => {
   if (!visualRegressionTester) {
-    visualRegressionTester = new VisualRegressionTester(browser, testOptions);
+    visualRegressionTester = new VisualRegressionTester(browser, vrtTestOptions);
   }
 
   return visualRegressionTester;
@@ -44,7 +46,7 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
 export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
     visualRegressionOverviewTester = new VisualRegressionTester(browser, {
-      ...testOptions,
+      ...vrtTestOptions,
       viewports: [1920]
     });
   }
@@ -55,8 +57,8 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
 export const getVisualRegressionContentWrapperTester = (): VisualRegressionTester => {
   if (!visualRegressionGridTester) {
     visualRegressionGridTester = new VisualRegressionTester(browser, {
-      ...testOptions,
-      viewports: testOptions.viewports.concat([1920, 2560])
+      ...vrtTestOptions,
+      viewports: vrtTestOptions.viewports.concat([1920, 2560])
     });
   }
 
@@ -66,7 +68,7 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
 export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
   if (!visualRegressionMarque2xTester) {
     visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
-      ...testOptions,
+      ...vrtTestOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 2
     });
@@ -78,7 +80,7 @@ export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
 export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
   if (!visualRegressionMarque3xTester) {
     visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
-      ...testOptions,
+      ...vrtTestOptions,
       viewports: [1299, 1300],
       deviceScaleFactor: 3
     });
@@ -86,3 +88,12 @@ export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
 
   return visualRegressionMarque3xTester;
 };
+
+// TODO: export this interface from @porsche-design-system/visual-regression-tester
+interface TestOptions {
+  elementSelector?: string;
+  maskSelectors?: string[];
+  regressionSuffix?: string;
+}
+
+export const testOptions: TestOptions = { elementSelector: '#app' };

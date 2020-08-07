@@ -1,20 +1,17 @@
-import 'jasmine';
-import {VisualRegressionTester} from '@porsche-design-system/visual-regression-tester';
-import {getVisualRegressionTester} from '../helpers/setup';
+import { getVisualRegressionTester, testOptions } from '../helpers';
 
 describe('Select Wrapper', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
-      await vrt.test('select-wrapper', async () => {
-        await vrt.goTo('/src/components/form/select-wrapper/select-wrapper.test.html');
-        await vrt.focus('#test-focus-state');
-      })
+      await vrt.test(
+        'select-wrapper',
+        async () => {
+          await vrt.goTo('/#select-wrapper');
+          await vrt.focus('#test-focus-state');
+        },
+        testOptions
+      )
     ).toBeFalsy();
   });
 });
