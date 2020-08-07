@@ -1,4 +1,4 @@
-FROM node:12.16.1-stretch-slim
+FROM node:12.18.3-stretch-slim
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 

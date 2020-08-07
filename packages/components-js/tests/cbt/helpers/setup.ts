@@ -1,15 +1,14 @@
-require('dotenv').config();
-import 'jasmine';
+import { SpecReporter } from 'jasmine-spec-reporter';
 import { CrossBrowserTester, CrossBrowserTestOptions } from '@porsche-ui/cross-browser-tester';
+import { config } from 'dotenv';
 
+config();
 let crossBrowserTester: CrossBrowserTester;
 
 const options: CrossBrowserTestOptions = {
   username: process.env.BROWSERSTACK_USER_NAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-  browserList: [
-    {'os': 'Windows', 'os_version': '10', 'browser_version': '11.0', 'browser': 'ie'}
-  ],
+  browserList: [{ os: 'Windows', os_version: '10', browser: 'edge', browser_version: '18.0' }],
   local: true,
   orientation: 'portrait',
   winRes: '1024x768',
@@ -17,16 +16,19 @@ const options: CrossBrowserTestOptions = {
   fixturesDir: 'tests/cbt/fixtures',
   resultsDir: 'tests/cbt/results',
   tolerance: 0,
-  baseUrl: 'http://localhost:61424',
+  baseUrl: 'http://localhost:8575',
   timeout: 20
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
-export async function getCrossBrowserTester(): Promise<CrossBrowserTester> {
+jasmine.getEnv().clearReporters();
+jasmine.getEnv().addReporter(new SpecReporter());
+
+export const getCrossBrowserTester = (): CrossBrowserTester => {
   if (!crossBrowserTester) {
     crossBrowserTester = new CrossBrowserTester(options);
   }
 
   return crossBrowserTester;
-}
+};
