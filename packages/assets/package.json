@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
