@@ -1,4 +1,3 @@
-import 'jasmine';
 import { getBrowser, options } from '../helpers/setup';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
