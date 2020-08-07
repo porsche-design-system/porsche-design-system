@@ -10,7 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - **Experimental:** Optional web component scoping mechanism during runtime to enable micro service architecture
-- `designSystemReadyEvent` to avoid Flash of Unstyled Content
 
 #### Changed
 - Web components get lazy loaded from central CDN to improve caching strategy across Porsche's digital eco system
