@@ -31,21 +31,34 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean && rollup -c rollup.config.js",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
+    "start": "yarn build && node ./bin/serve-cdn.js",
+    "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:contents",
+    "build:bin": "tsc --build './tsconfig.cdn.json' && chmod +x bin/serve-cdn.js",
+    "build:contents": "ts-node --project './tsconfig.cdn.json' './scripts/build.ts'",
+    "build:manifest": "rollup -c rollup.config.js",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./bin"
   },
   "devDependencies": {
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
+    "@porsche-design-system/metaicons": "0.0.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/http-server": "^0.10.0",
+    "http-server": "^0.12.3",
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^6.1.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "files": [
     "dist/"
-  ]
+  ],
+  "bin": {
+    "serve-cdn": "./bin/serve-cdn.js"
+  }
 }

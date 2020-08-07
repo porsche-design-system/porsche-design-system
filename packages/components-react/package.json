@@ -1,36 +1,46 @@
 {
-  "name": "components-react",
+  "name": "@porsche-design-system/react",
   "version": "0.0.0",
   "private": true,
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'yarn start:cdn-server' 'react-scripts start'",
-    "start:cdn-server": "start-cdn-local",
-    "build": "yarn --cwd projects/components-wrapper build",
+    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
+    "build": "yarn clean:build && yarn build:components && yarn build:mocks && yarn build:meta",
+    "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
+    "build:components": "yarn build:components:module && yarn build:components:cjs",
+    "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
+    "build:components:cjs": "tsc --build './projects/components-wrapper/tsconfig.cjs.json'",
+    "build:mocks": "tsc --build './projects/components-wrapper/tsconfig.mocks.json'",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
     "test:mocks:js": "jest --config='./tests/mocks/config/jest.config-js.js'",
     "test:mocks:ts": "jest --config='./tests/mocks/config/jest.config-ts.js'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
-    "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd projects/components-wrapper clean"
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "1.5.2",
+    "@porsche-design-system/components-react": "2.0.0-alpha.0",
     "@porsche-design-system/utilities": "1.0.6"
   },
   "devDependencies": {
-    "@porsche-design-system/cdn-local": "0.0.0",
+    "@porsche-design-system/assets": "1.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@testing-library/jest-dom": "^5.11.1",
-    "@testing-library/react": "^10.4.7",
-    "@types/jest": "^26.0.5",
-    "@types/node": "^14.0.24",
-    "@types/react": "^16.9.43",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/react": "^10.4.8",
+    "@types/jasmine": "^3.5.12",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "concurrently": "^5.2.0",
-    "jasmine": "^3.5.0",
+    "jasmine": "^3.6.1",
+    "jasmine-spec-reporter": "^5.0.2",
     "puppeteer": "~5.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -47,7 +57,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
   "browserslist": {
     "production": [
       "last 2 version",

@@ -1,14 +1,7 @@
-import {
-  getProperty,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
-} from '../helpers';
+import { getBrowser, getProperty, selectNode, setContentWithDesignSystem, waitForStencilLifecycle } from '../helpers';
 import { Page } from 'puppeteer';
-import { getBrowser } from '../helpers/setup';
 
 describe('p-icon', () => {
-
   let page: Page;
   let responseCounter: number;
   let svgRequestCounter: number;
@@ -38,7 +31,7 @@ describe('p-icon', () => {
 
   const timeLogger = (): string => {
     const now = new Date();
-    return now.getUTCSeconds() + ':' + now.getUTCMilliseconds()
+    return now.getUTCSeconds() + ':' + now.getUTCMilliseconds();
   };
 
   const setSvgRequestInterceptor = async (page: Page, timeouts: number[]): Promise<void> => {
@@ -56,7 +49,7 @@ describe('p-icon', () => {
           req.respond({
             status: 200,
             contentType: 'image/svg+xml',
-            body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
+            body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`
           });
         }, delay);
         svgRequestCounter++;
@@ -87,11 +80,11 @@ describe('p-icon', () => {
     await setSvgRequestInterceptor(page, [delay, 0]);
 
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(page, `<p-icon></p-icon>`, {waitUntil: 'networkidle2'});
+    await setContentWithDesignSystem(page, `<p-icon></p-icon>`, { waitUntil: 'networkidle2' });
     const iconComponent = await getIconHost();
 
     // change icon name to "question"
-    await iconComponent.evaluate(el => el.setAttribute('name', 'question'));
+    await iconComponent.evaluate((el) => el.setAttribute('name', 'question'));
 
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
     await page.waitFor(delay);
@@ -114,10 +107,10 @@ describe('p-icon', () => {
     const iconComponent = await getIconHost();
     expect(await getIconContent()).toContain('highway');
 
-    await iconComponent.evaluate(el => el.setAttribute('name', 'light'));
+    await iconComponent.evaluate((el) => el.setAttribute('name', 'light'));
     expect(await getIconContent()).toEqual('');
 
-    await page.waitForResponse(resp => resp.url().indexOf('light') && resp.status() === 200);
+    await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
 
     await waitForStencilLifecycle(page);
 
@@ -133,10 +126,10 @@ describe('p-icon', () => {
     const shadowIcon = await getIconIcon();
     expect(await getIconContent()).toContain('highway');
 
-    await iconComponent.evaluate(el => el.removeAttribute('name'));
+    await iconComponent.evaluate((el) => el.removeAttribute('name'));
 
     // check name attribute
-    const outerHTML = await iconComponent.evaluate(el => el.outerHTML);
+    const outerHTML = await iconComponent.evaluate((el) => el.outerHTML);
     await waitForStencilLifecycle(page);
 
     expect(outerHTML).not.toContain('name=');
