@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Porsche Design System</title>
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
-        dataLayer.push(arguments)
+        dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "UA-38934327-7", {
+      gtag('js', new Date());
+      gtag('config', 'UA-38934327-7', {
         page_path: location.pathname + location.hash,
-        'linker': {
-          'domains': ['icons.porsche.com']
+        linker: {
+          domains: ['icons.porsche.com']
         }
-      })
+      });
     </script>
     <% } %>
-    <meta name="robots" content="noindex, nofollow">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <%= require('@porsche-design-system/assets').getFontFaceCSS() %>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but Porsche Design System doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but Porsche Design System doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
-    <div id="app"><%= require('@porsche-design-system/assets').getLoader({all: true}) %></div>
+    <div id="app">
+      <%= require('@porsche-design-system/assets/src/templates/font-loader.ts').getLoader({all: true}) %>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
