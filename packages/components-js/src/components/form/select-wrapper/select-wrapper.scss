@@ -297,6 +297,10 @@
       color: $p-color-theme-light-state-disabled;
       cursor: not-allowed;
     }
+
+    &--hidden {
+      display: none;
+    }
   }
 
   &__fake-option-icon {
