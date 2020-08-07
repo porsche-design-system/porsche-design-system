@@ -38,7 +38,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-build` (builds the entire application)
-    * `./docker.sh run-build --core-dependencies` (builds utils, utilities, icons, fonts, marque and assets)
+    * `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
     * `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
     * `./docker.sh run-build --icons` (builds the optimized icon set)
     * `./docker.sh run-build --fonts` (builds the font set)
@@ -53,6 +53,7 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-start` (starts the entire application)
+    * `./docker.sh run-start --components` (starts playground)
     * `./docker.sh run-start --components-js` (starts native web components)
     * `./docker.sh run-start --components-angular` (starts angular components)
     * `./docker.sh run-start --components-react` (starts react components)
@@ -73,9 +74,9 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-unit` (unit tests for the entire application)
-    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     * `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
     * `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
+    * `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
     
 ### Mock Tests
 1. Switch to __project root directory__
@@ -86,7 +87,7 @@
 ### E2E Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
-    * Run `./docker.sh run-test-e2e` (e2e tests for the entire application)
+    * `./docker.sh run-test-e2e` (e2e tests for the entire application)
     * `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
     * `./docker.sh run-test-e2e --storefront` (e2e tests for the storefront)
 
@@ -94,11 +95,11 @@
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-vrt` (vrt tests for the entire application)
-    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
     * `./docker.sh run-test-vrt --components-js` (vrt tests for the native web components)
     * `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
     * `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
     * `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
+    * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 
 ### Cross Browser Tests
 1. Switch to __project root directory__
@@ -175,9 +176,7 @@ The stable release needs to be exactly the same as the RC release to make sure e
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. __release/components-v1.2.3__
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section __[Unreleased]__ (this file will also be used to show on Storefront)
-  * `./packages/components-js/CHANGELOG.md`
-  * `./packages/components-angular/projects/components-wrapper/CHANGELOG.md`
-  * `./packages/components-react/projects/components-wrapper/CHANGELOG.md`
+  * `./packages/components/CHANGELOG.md`
 1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Manual Test in Edge 18 (pre Chromium)
