@@ -1,2 +1,2 @@
-export * from './font-loader';
+/*export * from './font-loader';*/ // Not public yet.
 export * from './styles'
