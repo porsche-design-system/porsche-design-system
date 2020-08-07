@@ -41,6 +41,7 @@ export class SelectWrapper {
   @State() private optionSelected: number;
   @State() private optionHighlighted: number;
   @State() private optionDisabled: number[] = [];
+  @State() private optionHidden: number[] = [];
   @State() private isTouch: boolean = isTouchDevice();
 
   private select: HTMLSelectElement;
@@ -49,6 +50,7 @@ export class SelectWrapper {
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
   private filterInput: HTMLInputElement;
+  private optionsText: string[];
 
   public componentWillLoad(): void {
     this.initSelect();
@@ -72,8 +74,10 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if(this.filter) {
+      this.initFilter();
       this.filterInput.addEventListener('focus', this.handleFilterFocus.bind(this), true);
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      this.filterInput.addEventListener('input', this.handleFilterInputEvents.bind(this));
     }
   }
 
@@ -252,9 +256,24 @@ export class SelectWrapper {
   /*
    * <START CUSTOM FILTER>
    */
-  private handleFilterFocus(ev):void {
-    console.log(ev);
+  private initFilter():void {
+    this.optionsText = [...Array.from(this.options)].map((option: HTMLOptionElement) => option.text);
+  }
+
+  private handleFilterFocus():void {
     this.fakeOptionListHidden = false;
+  }
+
+  private handleFilterInputEvents(ev):void {
+    const val = ev.target.value;
+    this.optionHidden = [];
+    this.optionsText.map((e,key) => {
+      if(!e.toLowerCase().includes(val.toLowerCase())) {
+        this.optionHidden = [...this.optionHidden, key];
+      }
+    });
+
+    console.log(this.optionHidden)
   }
 
 
@@ -396,11 +415,13 @@ export class SelectWrapper {
         class={cx(prefix('select-wrapper__fake-option'), {
           [prefix('select-wrapper__fake-option--selected')]: this.optionSelected === key,
           [prefix('select-wrapper__fake-option--highlighted')]: this.optionHighlighted === key,
-          [prefix('select-wrapper__fake-option--disabled')]: this.optionDisabled.includes(key)
+          [prefix('select-wrapper__fake-option--disabled')]: this.optionDisabled.includes(key),
+          [prefix('select-wrapper__fake-option--hidden')]: this.optionHidden.includes(key),
         })}
         onClick={() => (!this.optionDisabled.includes(key) ? this.setOptionSelected(key) : this.select.focus())}
         aria-selected={this.optionSelected === key && 'true'}
         aria-disabled={this.optionDisabled.includes(key) && 'true'}
+        aria-hidden={this.optionHidden.includes(key) && 'true'}
       >
         <span>{option.text}</span>
         {key === this.optionSelected && (

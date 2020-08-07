@@ -279,7 +279,7 @@ A `label` is a caption which informs the user what information a particular form
 ## With optgroups
 
 <Playground>
-  <p-select-wrapper label="Some label">
+  <p-select-wrapper label="Some label" filter="true">
     <select name="some-name">
       <optgroup label="Some optgroup label 1">
         <option value="a">Option A</option>
