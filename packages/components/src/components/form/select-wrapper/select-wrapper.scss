@@ -288,7 +288,7 @@
       padding-right: $p-spacing-32;
     }
 
-    &--highlighted:not(&--selected) {
+    &--highlighted {
       color: $p-color-theme-light-state-active;
       background-color: #ebebeb;
     }
