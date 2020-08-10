@@ -37,6 +37,7 @@ services:
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
       - metaicons-node-modules:/opt/porsche-design-system-app/packages/metaicons/node_modules
+      - partials-node-modules:/opt/porsche-design-system-app/packages/partials/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
   design-system-deploy:
     image: docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
@@ -74,6 +75,7 @@ services:
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
       - metaicons-node-modules:/opt/porsche-design-system-volumes/metaicons-node_modules
+      - partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
@@ -90,4 +92,5 @@ volumes:
   icons-node-modules:
   marque-node-modules:
   metaicons-node-modules:
+  partials-node-modules:
   utilities-node-modules:
