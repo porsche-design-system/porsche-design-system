@@ -49,6 +49,7 @@ export class SelectWrapper {
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionsMap: optionMap[] = [];
+  @State() private filterHasResult = true;
   @State() private isTouch: boolean = isTouchDevice();
 
   private select: HTMLSelectElement;
@@ -387,41 +388,44 @@ export class SelectWrapper {
     this.select.focus();
   };
 
-  private createFakeOptionList(): JSX.Element[][] {
+  private createFakeOptionList(): JSX.Element[][] | string {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
-
-    return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
-      (option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null) && (
-        <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
-          {option.closest('optgroup').label}
-        </span>
-      ),
-      <div
-        id={`option-${key}`}
-        role="option"
-        color="inherit"
-        class={cx(prefix('select-wrapper__fake-option'), {
-          [prefix('select-wrapper__fake-option--selected')]: this.optionsMap[key].selected,
-          [prefix('select-wrapper__fake-option--highlighted')]: this.optionsMap[key].highlighted,
-          [prefix('select-wrapper__fake-option--disabled')]: this.optionsMap[key].disabled,
-          [prefix('select-wrapper__fake-option--hidden')]: this.optionsMap[key].hidden,
-        })}
-        onClick={() => (!this.optionsMap[key].disabled ? this.setOptionSelected(key) : this.select.focus())}
-        aria-selected={this.optionsMap[key].selected && 'true'}
-        aria-disabled={this.optionsMap[key].disabled && 'true'}
-        aria-hidden={this.optionsMap[key].hidden && 'true'}
-      >
-        <span>{option.text}</span>
-        {this.optionsMap[key].selected && (
-          <PrefixedTagNames.pIcon
-            class={cx(prefix('select-wrapper__fake-option-icon'))}
-            aria-hidden="true"
-            name="check"
-            color="inherit"
-          />
-        )}
-      </div>
-    ]);
+    if(!this.filterHasResult) {
+      return (<div class={cx(prefix('select-wrapper__fake-option'))}><span>---</span></div>);
+    } else {
+      return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
+        (option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null) && (
+          <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
+            {option.closest('optgroup').label}
+          </span>
+        ),
+        <div
+          id={`option-${key}`}
+          role="option"
+          color="inherit"
+          class={cx(prefix('select-wrapper__fake-option'), {
+            [prefix('select-wrapper__fake-option--selected')]: this.optionsMap[key].selected,
+            [prefix('select-wrapper__fake-option--highlighted')]: this.optionsMap[key].highlighted,
+            [prefix('select-wrapper__fake-option--disabled')]: this.optionsMap[key].disabled,
+            [prefix('select-wrapper__fake-option--hidden')]: this.optionsMap[key].hidden,
+          })}
+          onClick={() => (!this.optionsMap[key].disabled ? this.setOptionSelected(key) : this.select.focus())}
+          aria-selected={this.optionsMap[key].selected && 'true'}
+          aria-disabled={this.optionsMap[key].disabled && 'true'}
+          aria-hidden={this.optionsMap[key].hidden && 'true'}
+        >
+          <span>{option.text}</span>
+          {this.optionsMap[key].selected && (
+            <PrefixedTagNames.pIcon
+              class={cx(prefix('select-wrapper__fake-option-icon'))}
+              aria-hidden="true"
+              name="check"
+              color="inherit"
+            />
+          )}
+        </div>
+      ]);
+    }
   }
 
   private cycleFakeOptionList(direction: string): void {
@@ -486,6 +490,8 @@ export class SelectWrapper {
       item.hidden = !item.value.toLowerCase().startsWith(val.toLowerCase());
     });
     this.optionsMap = [ ...this.optionsMap];
+    const hiddenItems = this.optionsMap.filter(e => e.hidden === true).length;
+    hiddenItems === Object.keys(this.optionsMap).length ? this.filterHasResult = false : this.filterHasResult = true;
   }
 
   private addSlottedStyles(): void {
