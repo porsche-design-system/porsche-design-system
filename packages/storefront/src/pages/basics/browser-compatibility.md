@@ -106,7 +106,6 @@ if (ieVersion(ua) === 11) {
 ``` 
 
 #### Fallback usage if neither a npm package can be installed nor be used
-
 Just drop the JS snippet at the end of the `body` tag of your application. Be sure to point to the latest release!
 
 ``` 
@@ -114,7 +113,7 @@ Just drop the JS snippet at the end of the `body` tag of your application. Be su
 
 ...
   // if used as static file, be sure to point to the latest release
-  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/notification-banner/init.min.1.0.0.js"></script>
+  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/browser-notification-banner/init.min.{MAJOR}.{MINOR}.{PATCH}.js"></script>
 </body>
 ```
 
@@ -129,7 +128,16 @@ The language is set by scanning the `html` tag for the `lang` attribute. Support
 If none of these languages can be found, it will fallback to `en`;
 
 #### How it works
-
 The `init.js` is an `600 byte` sized file which has a browser detection for **IE11 and Edge<=18**. 
 If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
 Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
+
+#### Troubleshooting
+There always might be a case where something goes wrong. Here are some possible answers:
+
+1. **Q:** Why does the translation not get recognized automatically?
+**A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's always recommended loading the init.js script as late as possible (e.g. after everything has mounted).  
+**A:** The translation key is not part of the provides keys (see "Translations")  
+**A:** The translation key has not the correct format (see "Translations")  
+2. **Q:** Why are there no implementation guidelines for my framework (e.g. Angular, React)?  
+**A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
