@@ -3,8 +3,6 @@ import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-des
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 import { CDN_BASE_URL as METAICONS_CDN_BASE_URL, METAICONS_MANIFEST } from '@porsche-design-system/metaicons';
 
-export * from './templates'
-
 // reexports are needed in order to build standalone typings
 export {
   FONTS_CDN_BASE_URL,

@@ -1,0 +1,57 @@
+{
+  "name": "@porsche-design-system/partials",
+  "version": "0.0.0",
+  "scope": "@porsche-design-system",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Oliver Hook <oliver.hook@mhp.com>",
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Anna Krohmer <anna.krohmer@udg.de>",
+    "Melanie Kolar <melanie.kolar@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "description": "Porsche Design System Assets",
+  "keywords": [
+    "porsche",
+    "partials"
+  ],
+  "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "scripts": {
+    "build": "yarn clean:build && rollup -c rollup.config.js",
+    "test": "yarn test:unit",
+    "test:unit": "jest -c=tests/unit/config/jest.config.js",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/components": "0.0.0",
+    "@porsche-design-system/utilities": "1.0.6",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-typescript": "^5.0.2",
+    "@types/jest": "^26.0.9",
+    "jest": "~26.2.2",
+    "rollup": "^2.23.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "ts-jest": "^26.1.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "files": [
+    "dist/"
+  ]
+}

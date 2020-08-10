@@ -8,142 +8,33 @@ boost your application performance, so make sure to keep reading.
 
 ## Flash of Unstyled Components
 
-The Porsche Design System fires the `porscheDesignSystemReady` event as soon as our core is loaded.
-We export the event as constant called `PORSCHE_DESIGN_SYSTEM_READY_EVENT` to make sure you always listen to the correct event.
 
-While waiting for the Event you should show a loading spinner which also hides the content of the page.
-You can access a template called `loaderAllFonts` in our `@porsche-design-system/assets` package. Have a look at the examples to see how to use the
-loader with template syntax. We provide a more detailed description of the provided loader at the end of the page.
+### Example usage with template 
 
-### Example usage without Framework
+We provide partials which you can use. Following example shows usage in a webpack project.
 
-The following example shows a spinner until the `porscheDesignSystemReady` event is fired and removes the style and loader afterwards.
-
-```
-<style>
+``` 
 index.html
 
 <head>
-  <style id="pdsLoaderStyle">
-    .loader {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background:  #fff;
-      z-index: 10000;
-      font-family: "Porsche Next","Arial Narrow", Arial, sans-serif;
-    }
-    .spinner {
-      position: absolute;
-      width: 72px;
-      top: 50%;
-      left: 50%;
-      margin: -36px 0 0 -36px;
-      fill: none;
-      transform: translate3d(0, 0, 0);
-      stroke-width: 1px;
-      stroke: #323639;
-    }
-    .fg {
-      stroke-linecap: round;
-      transform-origin: center center;
-      stroke-dashoffset: 0;
-      stroke-dasharray: 40, 200;
-      animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
-    }
-    .bg {
-      opacity: 0.4;
-    }
-    @keyframes rotate {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    @keyframes dash {
-      0% {
-        stroke-dasharray: 3, 1000;
-      }
-      50% {
-        stroke-dasharray: 42, 1000;
-      }
-      100% {
-        stroke-dasharray: 30, 1000;
-        stroke-dashoffset: -52;
-      }
-    }
-    .loader--all::before {
-      content:'';
-      font-weight: 100;
-    }
-    .loader--all::after {
-      content: '';
-      font-weight: 600;
-    }
-    .loader--all::first-line {
-      font-weight: 700;
-    }
-  </style>
+  <%= require('@porsche-design-system/components').getPorscheDesignSystemCoreStyles %>
 </head>
-<body>
-  <div class="loader loader--all" id="pdsLoader">
-    <div class="spinner">
-      <svg viewBox="0 0 32 32">
-        <circle class="fg" cx="16" cy="16" r="9" />
-        <circle class="bg" cx="16" cy="16" r="9" /
-      </svg>
-    </div>
-  </div>
-<script>
-  document.addEventListener('porscheDesignSystemReady', () => {
-     document.body.removeChild(document.getElementById('pdsLoader'));
-     document.head.removeChild(document.getElementById('pdsLoaderStyle'));
-  }, { once: true });
-  </script>
-</body>
 ``` 
 
-### Example usage with Frameworks
+### Example usage static
 
-If you use a framework like `react`, `vue`, `angular` ... there are two different approaches on how to handle the display of the Spinner.
+If you implement this static solution you have to keep track on the list and add every new component you use.
 
-First, implement the spinner and the style in the `<div id="root">` (react) / `<app-root>` (angular). While doing so the spinner is shown until your
-application is bootstrapped and hides any flash.
+```
 
-For this example we use loadash template syntax which works in most frameworks. We recommend using templates to keep your workload at a minimum
-and ensure you are always using the latest styles. If you have no option of using templates, you can copy the style and spinner from the example above and
-put it there instead.
-
-``` 
 index.html
 
-<div id="root">
-  <%= require('@porsche-design-system/assets').loaderAllFonts %>
-</div>
-``` 
-
-The second approach is similar to the very first example. You can do it as shown and place the loading spinner before the `root` element and remove
-it as soon as your application is bootstrapped and got the `porscheDesignSystemReady` event.
-
-``` 
-App.tsx (react)
-
-useEffect(() => {
- document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
-   document.body.removeChild(document.getElementById('pdsLoader'));
-   document.body.removeChild(document.getElementById('pdsLoaderStyle'));
- });
-}, []);
-
-app.components.ts (angular)
-
-ngOnInit(){
- document.addEventListener(PORSCHE_DESIGN_SYSTEM_READY_EVENT, () => {
-   document.body.removeChild(document.getElementById('pdsLoader'));
-   document.head.removeChild(document.getElementById('pdsLoaderStyle'));
- });
-}
+<head>
+ <style>
+    p-marque,p-button,p-button-pure,p-checkbox-wrapper,p-link,p-link-pure,p-link-social,p-select-wrapper,p-text-field-wrapper,p-pagination,p-radio-button-wrapper,p-textarea-wrapper,p-content-wrapper,p-divider,p-fieldset-wrapper,p-flex,p-flex-item,p-grid,
+    p-grid-item,p-headline,p-marque,p-text-list,p-text-list-item,p-spinner,p-icon,p-text { visibility: hidden }
+ </style>
+</head>
 ```
 
 ## Flash of unstyled Text
@@ -189,22 +80,6 @@ to customize which font-weights you want to load.
 The second solution works with manually preloading the fonts. If you choose this way, we provide all necessary URL´s in the `@porsche-design-system/assets` package.
 Use the `FONTS_CDN_BASE_URL` and the `FONTS_MANIFEST` which contains all filenames for all the different fonts. Combine both
 and preload it as the second example shows.
-
-#### Example with loader
-
-Use only the font-weights you also use on your site. 
-**Note:** Make sure the `laoderRegular` is on the last position otherwise you wont see the spinner.
-
-```
-index.html
-
-<div id="root">
-  <%= require('@porsche-design-system/assets').loaderThin %>
-  <%= require('@porsche-design-system/assets').loaderSemibold %>
-  <%= require('@porsche-design-system/assets').loaderBold %>
-  <%= require('@porsche-design-system/assets').loaderRegular %>
-</head>
-```
 
 #### Example with preload
 

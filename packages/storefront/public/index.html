@@ -23,7 +23,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <%= require('@porsche-design-system/assets').getFontFaceCSS() %>
+    <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+    <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
   </head>
   <body>
     <noscript>
@@ -33,7 +34,6 @@
       >
     </noscript>
     <div id="app">
-      <%= require('@porsche-design-system/assets/src/templates/font-loader.ts').getLoader({all: true}) %>
     </div>
     <!-- built files will be auto injected -->
   </body>
