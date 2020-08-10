@@ -67,7 +67,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.0.0",
+    "@porsche-design-system/assets": "1.1.0",
     "@porsche-design-system/cdn-local": "0.0.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@porsche-design-system/utils": "0.0.0",
