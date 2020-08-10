@@ -14,12 +14,12 @@ const tags = Object.keys(JSON.parse(rawJson));
 
 console.log(`Identified tags:\n${tags.map((x) => `  - ${x}`).join('\n')}`);
 
-const file = path.normalize('./src/tags.js');
+const file = path.normalize('./src/tags.ts');
 
 fs.writeFileSync(
   file,
   `
 /* Auto Generated Below */
 
-export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}]`
+export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}];`
 );
