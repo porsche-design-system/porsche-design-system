@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "1.1.0",
+    "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/utilities": "1.0.6",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz",
     "@stencil/core": "~1.14.0",
