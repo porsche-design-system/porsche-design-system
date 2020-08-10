@@ -118,5 +118,8 @@
     "clean:storefront:build": "yarn --cwd ./packages/storefront clean:build",
     "clean:utilities:node_modules": "yarn --cwd ./packages/utilities clean:node_modules",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
+  },
+  "resolutions": {
+    "jest": "~26.3.0"
   }
 }
