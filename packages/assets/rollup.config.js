@@ -5,10 +5,8 @@ import pkg from './package.json';
 
 const commonPlugins = () => [
   resolve({
-    extensions: ['.ts', '.js'],
     resolveOnly: [/^@porsche-design-system\/.*$/]
-  }),
-  typescript()
+  })
 ];
 
 export default [
@@ -30,6 +28,6 @@ export default [
   {
     input: 'src/index.ts',
     output: { dir: 'dist/esm', format: 'esm' },
-    plugins: [...commonPlugins(), process.env.NODE_ENV === 'production' && terser()]
+    plugins: [...commonPlugins(), typescript(), process.env.NODE_ENV === 'production' && terser()]
   }
 ];
