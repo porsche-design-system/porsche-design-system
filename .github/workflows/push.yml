@@ -211,6 +211,16 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
+      - name: 'Build Fonts'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --fonts
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
