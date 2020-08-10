@@ -43,7 +43,7 @@
     "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
   },
   "scripts": {
-    "build": "yarn clean && yarn build:style && yarn build:lib && yarn build:scss",
+    "build": "yarn clean:build && yarn build:lib && yarn build:scss && yarn build:style",
     "build:lib": "rollup -c rollup.config.js",
     "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'",
     "build:style": "ts-node --project './tsconfig.style.json' './scripts/build.ts'",
