@@ -1,14 +1,12 @@
 import resolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const commonPlugins = () => [
   resolve({
-    extensions: ['.ts', '.js'],
     resolveOnly: [/^@porsche-design-system\/.*$/]
-  }),
-  typescript()
+  })
 ];
 
 export default [
@@ -30,6 +28,6 @@ export default [
   {
     input: 'src/js/index.ts',
     output: { dir: 'dist/js/esm', format: 'esm' },
-    plugins: commonPlugins()
+    plugins: [...commonPlugins(), typescript(), process.env.NODE_ENV === 'production' && terser()]
   }
 ];
