@@ -27,7 +27,7 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
     oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
   )}${separator}
 
-export const FONT_FACE_STYLE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";`;
+export const FONT_FACE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";`;
 
   fs.writeFileSync(targetFile, newContent);
 };
