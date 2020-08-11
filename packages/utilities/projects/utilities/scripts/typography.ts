@@ -76,21 +76,11 @@ const file = path.normalize('./src/js/functions/typography.ts');
 
 fs.writeFileSync(
   file,
-  `
-/* Auto Generated Below */
+  `/* Auto Generated File */
 
-/*
- * Title
- */
 export const title = ${JSON.stringify(title)};
 
-/*
- * Headline
- */
 export const headline = ${JSON.stringify(headline)};
 
-/*
- * Text
- */
 export const text = ${JSON.stringify(text)};`
 );
