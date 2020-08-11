@@ -177,7 +177,7 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {this.filter && (
+          {(this.filter && !this.isTouch) && (
             <div
               class={filterClasses}
               ref={(el) => (this.filterWrapper = el)}
@@ -185,6 +185,10 @@ export class SelectWrapper {
               <input
                 type="text"
                 class={filterInputClasses}
+                role="combobox"
+                aria-autocomplete="both"
+                aria-controls="p-listbox"
+                aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
                 ref={(el) => (this.filterInput = el)}
               />
               <span/>
@@ -194,6 +198,7 @@ export class SelectWrapper {
             <div
               class={fakeOptionListClasses}
               role="listbox"
+              id="p-listbox"
               aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.selected)}`}
               tabIndex={-1}
               aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
@@ -300,6 +305,15 @@ export class SelectWrapper {
     e.preventDefault();
     this.select.focus();
     this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+  }
+
+  private handleFocus(e: MouseEvent): void {
+    if(!this.filter) {
+      this.select.focus();
+    } else {
+      e.preventDefault();
+      this.filterInput.focus();
+    }
   }
 
   private handleKeyboardEvents(e: KeyboardEvent): void {
@@ -433,8 +447,8 @@ export class SelectWrapper {
             [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[key].disabled,
             [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden,
           })}
-          onClick={() => (!this.optionMaps[key].disabled ? this.setOptionSelected(key) : this.select.focus())}
-          aria-selected={this.optionMaps[key].selected && 'true'}
+          onMouseDown={(e) => (!this.optionMaps[key].disabled && !this.optionMaps[key].selected ? this.setOptionSelected(key) : this.handleFocus(e))}
+          aria-selected={this.optionMaps[key].highlighted && 'true'}
           aria-disabled={this.optionMaps[key].disabled && 'true'}
           aria-hidden={this.optionMaps[key].hidden && 'true'}
         >
