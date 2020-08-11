@@ -51,7 +51,7 @@ So far, if you use the Porsche Design System components we inject the stylesheet
 We recommend that you load the stylesheet on your own. We don't want to interfere with you application if we don't have to. Also you got more
 control over resources that are loaded.
 
-We provide the URL to our stylesheet in our `@porsche-design-system/utilities` package with the name `FONT_FACE_CDN_URL`. We also
+We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also
 provide a ready to use partial in the `@porsche-design-system/partials` package called `getFontFaceCSS()`.
 
 If you use the static solution you have to update the `<Link>` if changes are made in our font face definitions. But don't worry, we don't remove old files
