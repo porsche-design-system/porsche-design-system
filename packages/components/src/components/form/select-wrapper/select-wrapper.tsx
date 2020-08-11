@@ -342,7 +342,13 @@ export class SelectWrapper {
         break;
       case 'Escape':
       case 'Esc':
-        this.fakeOptionListHidden = true;
+        if (!this.fakeOptionListHidden) {
+          this.fakeOptionListHidden = true;
+          this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+            ...item,
+            highlighted: num === this.select.selectedIndex
+          }));
+        }
         break;
       case 'PageUp':
         e.preventDefault();
