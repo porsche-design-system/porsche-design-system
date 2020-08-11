@@ -37,7 +37,7 @@ const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   }
 };
 
-const createManifestAndCopyFonts = async (fontCdnPath: string, files: string[]): Promise<void> => {
+const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
   if (await checkIfDirectoryExists(path.resolve('./dist'))) {
     await fs.promises.rmdir(path.resolve('./dist'), { recursive: true });
   }
@@ -70,7 +70,7 @@ const createManifestAndCopyFonts = async (fontCdnPath: string, files: string[]):
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `export const CDN_BASE_URL = "${fontCdnPath}";
+    `export const CDN_BASE_URL = "${cdn}";
 export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
@@ -78,11 +78,11 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const fontCdnPath = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
+  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
   // ToDo: Write the hashed css file dynamic
   const files = await globby('./src/**/*.@(woff|woff2)');
 
-  await createManifestAndCopyFonts(fontCdnPath, files).catch((e) => {
+  await createManifestAndCopyFonts(cdn, files).catch((e) => {
     console.error(e);
     process.exit(1);
   });
