@@ -54,6 +54,16 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
+    <div class="playground light" title="should render in disabled state with custom filter">
+      <p-select-wrapper [label]="'Some label'" [filter]="true">
+        <select name="some-name" disabled="disabled">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    </div>
+
     <div class="playground light" title="should render with disabled state">
       <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
         <select name="some-name" disabled="disabled">
