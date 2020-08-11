@@ -48,6 +48,16 @@ export const SelectWrapperPage = (): JSX.Element => {
         </SelectWrapper>
       </div>
 
+      <div className="playground light" title="should render with custom filter">
+        <SelectWrapper label="Some label" filter={true}>
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </SelectWrapper>
+      </div>
+
       <div className="playground light" title="should render with disabled state">
         <SelectWrapper label="Some label" description="Some description">
           <select name="some-name" disabled={true}>
