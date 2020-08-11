@@ -352,15 +352,18 @@
   &__filter {
     position: absolute;
     z-index: 1;
-    bottom: 1px;
-    left: 1px;
-    height: p-px-to-rem(46px);
-    width: calc(100% - 2px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__filter-input {
     display: block;
+    width: calc(100% - #{p-px-to-rem(46px)});
+    height: p-px-to-rem(46px);
     padding: p-px-to-rem(11px) p-px-to-rem(47px) p-px-to-rem(11px) p-px-to-rem(11px);
-    margin: 0;
+    margin: 1px;
     outline: transparent none;
-    outline-offset: 2px;
     appearance: none;
     box-sizing: border-box;
     border: none;
@@ -376,7 +379,15 @@
 
     &:focus {
       opacity: 1;
-      outline: $p-color-theme-light-state-active solid 2px;
+      + span {
+        position: absolute;
+        bottom: 1px;
+        left: 1px;
+        right: 1px;
+        height: p-px-to-rem(46px);
+        outline-offset: 2px;
+        outline: $p-color-theme-light-state-focus solid 2px;
+      }
     }
   }
 }
