@@ -120,6 +120,11 @@
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
   "resolutions": {
-    "jest": "~26.3.0"
+    "**/@angular-devkit/build-angular/@babel/core": "^7.11.0",
+    "**/babel-preset-react-app/@babel/core": "^7.11.0",
+    "**/react-scripts/@babel/core": "^7.11.0",
+    "**/react-scripts/jest": "^26.3.0",
+    "**/@vue/cli-plugin-unit-jest/jest": "^26.3.0",
+    "**/@vue/cli-plugin-unit-jest/@types/jest": "^26.0.9"
   }
 }
