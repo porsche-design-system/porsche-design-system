@@ -18,8 +18,6 @@ const file = path.normalize('./src/tags.ts');
 
 fs.writeFileSync(
   file,
-  `
-/* Auto Generated Below */
-
+  `/* Auto Generated File */
 export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}];`
 );
