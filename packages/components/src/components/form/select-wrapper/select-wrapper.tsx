@@ -88,7 +88,7 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if(this.filter) {
+    if(!this.isTouch && this.filter) {
       this.filterWrapper.addEventListener('mousedown', this.handleFilterWrapperClick.bind(this));
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
       this.filterInput.addEventListener('input', this.handleFilterInputEvents.bind(this));
@@ -188,6 +188,7 @@ export class SelectWrapper {
                 role="combobox"
                 aria-autocomplete="both"
                 aria-controls="p-listbox"
+                disabled={this.disabled}
                 aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
                 ref={(el) => (this.filterInput = el)}
               />
@@ -423,6 +424,7 @@ export class SelectWrapper {
       event.initEvent('change', true, false);
     }
     this.select.dispatchEvent(event);
+
     this.select.focus();
   };
 
@@ -447,7 +449,7 @@ export class SelectWrapper {
             [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[key].disabled,
             [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden,
           })}
-          onMouseDown={(e) => (!this.optionMaps[key].disabled && !this.optionMaps[key].selected ? this.setOptionSelected(key) : this.handleFocus(e))}
+          onClick={(e) => (!this.optionMaps[key].disabled && !this.optionMaps[key].selected ? this.setOptionSelected(key) : this.handleFocus(e))}
           aria-selected={this.optionMaps[key].highlighted && 'true'}
           aria-disabled={this.optionMaps[key].disabled && 'true'}
           aria-hidden={this.optionMaps[key].hidden && 'true'}
@@ -521,8 +523,10 @@ export class SelectWrapper {
    */
   private handleFilterWrapperClick(e): void {
     e.preventDefault();
-    this.filterInput.focus();
-    this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+    if(!this.disabled) {
+      this.filterInput.focus();
+      this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+    }
   }
 
   private handleFilterInputEvents(ev):void {
