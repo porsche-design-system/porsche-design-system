@@ -1,4 +1,4 @@
-import { FONT_FACE_STYLE_CDN_URL } from '@porsche-design-system/utilities';
+import { FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
 import { getFontFaceCSS } from '@porsche-design-system/partials';
 
 export const injectGlobalStyle = (): void => {
@@ -7,7 +7,7 @@ export const injectGlobalStyle = (): void => {
   }
   const styleUrl =
     ROLLUP_REPLACE_IS_STAGING === 'production'
-      ? FONT_FACE_STYLE_CDN_URL
+      ? FONT_FACE_CDN_URL
       : 'http://localhost:3001/style/font-face.min.css';
 
   if (!document.querySelector(`link[href="${styleUrl}"]`)) {
