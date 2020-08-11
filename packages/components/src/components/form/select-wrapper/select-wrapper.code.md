@@ -17,7 +17,7 @@ A `label` is a caption which informs the user what information a particular form
     </select>
   </template>
   <template>
-    <p-select-wrapper label="Some label" filter="true" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+    <p-select-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
       <select name="some-name">
         <option value="">Select a country</option>
         <option value="AF">Afghanistan</option>
@@ -279,7 +279,7 @@ A `label` is a caption which informs the user what information a particular form
 ## With optgroups
 
 <Playground>
-  <p-select-wrapper label="Some label" filter="true">
+  <p-select-wrapper label="Some label">
     <select name="some-name">
       <optgroup label="Some optgroup label 1">
         <option value="a">Option A</option>
