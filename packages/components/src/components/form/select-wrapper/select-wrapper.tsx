@@ -1,5 +1,4 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -82,33 +81,35 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = cx(prefix('select-wrapper__label'));
-    const labelTextClasses = cx(
-      prefix('select-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('select-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      { [prefix('select-wrapper__label-text--disabled')]: this.disabled }
-    );
-    const descriptionTextClasses = cx(
-      prefix('select-wrapper__description-text'),
-      mapBreakpointPropToPrefixedClasses('select-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
-      { [prefix('select-wrapper__description-text--disabled')]: this.disabled }
-    );
-    const fakeSelectClasses = cx(
-      prefix('select-wrapper__fake-select'),
-      { [prefix('select-wrapper__fake-select--disabled')]: this.disabled },
-      { [prefix(`select-wrapper__fake-select--${this.state}`)]: this.state !== 'none' }
-    );
-    const fakeOptionListClasses = cx(prefix('select-wrapper__fake-option-list'), {
+    const labelClasses = prefix('select-wrapper__label');
+    const labelTextClasses = {
+      [prefix('select-wrapper__label-text')]: true,
+      [prefix('select-wrapper__label-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const descriptionTextClasses = {
+      [prefix('select-wrapper__description-text')]: true,
+      [prefix('select-wrapper__description-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('select-wrapper__description-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const fakeSelectClasses = {
+      [prefix('select-wrapper__fake-select')]: true,
+      [prefix('select-wrapper__fake-select--disabled')]: this.disabled,
+      [prefix(`select-wrapper__fake-select--${this.state}`)]: this.state !== 'none'
+    };
+    const fakeOptionListClasses = {
+      [prefix('select-wrapper__fake-option-list')]: true,
       [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden
-    });
-    const iconClasses = cx(
-      prefix('select-wrapper__icon'),
-      { [prefix('select-wrapper__icon--disabled')]: this.disabled },
-      { [prefix('select-wrapper__icon--opened')]: !this.fakeOptionListHidden }
-    );
-    const messageClasses = cx(prefix('select-wrapper__message'), {
+    };
+    const iconClasses = {
+      [prefix('select-wrapper__icon')]: true,
+      [prefix('select-wrapper__icon--disabled')]: this.disabled,
+      [prefix('select-wrapper__icon--opened')]: !this.fakeOptionListHidden
+    };
+    const messageClasses = {
+      [prefix('select-wrapper__message')]: true,
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
-    });
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
@@ -356,7 +357,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
 
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
-      (option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null) && (
+      option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null && (
         <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
           {option.closest('optgroup').label}
         </span>
