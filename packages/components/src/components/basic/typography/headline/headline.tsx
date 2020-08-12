@@ -1,5 +1,4 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import cx from 'classnames';
 import { prefix, insertSlottedStyles } from '../../../../utils';
 import { HeadlineVariant, Theme } from '../../../../types';
 
@@ -9,7 +8,6 @@ import { HeadlineVariant, Theme } from '../../../../types';
   shadow: true
 })
 export class Headline {
-
   @Element() public host!: HTMLElement;
 
   /** Style of the headline. */
@@ -46,18 +44,18 @@ export class Headline {
 
     const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
 
-    const headlineClasses = cx(
-      prefix('headline'),
-      prefix(`headline--variant-${this.variant}`),
-      prefix(`headline--align-${this.align}`),
-      prefix(`headline--color-${this.color}`),
-      this.ellipsis && prefix('headline--ellipsis'),
-      this.color !== 'inherit' && prefix(`headline--theme-${this.theme}`)
-    );
+    const headlineClasses = {
+      [prefix('headline')]: true,
+      [prefix(`headline--variant-${this.variant}`)]: true,
+      [prefix(`headline--align-${this.align}`)]: true,
+      [prefix(`headline--color-${this.color}`)]: true,
+      [prefix('headline--ellipsis')]: this.ellipsis,
+      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit'
+    };
 
     return (
       <TagType class={headlineClasses}>
-        <slot/>
+        <slot />
       </TagType>
     );
   }
@@ -68,7 +66,7 @@ export class Headline {
   }
 
   private addSlottedStyles(): void {
-    const tagName= this.host.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
       color: inherit;
       text-decoration: none;
