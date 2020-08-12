@@ -31,7 +31,7 @@
     "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/jest-dom": "^5.11.3",
     "@testing-library/react": "^10.4.8",
     "@types/jasmine": "^3.5.12",
     "@types/jest": "^26.0.9",
@@ -48,7 +48,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.2",
     "ts-node": "^8.10.2",
     "typescript": "~3.9.7",
     "wait-on": "^5.2.0"
