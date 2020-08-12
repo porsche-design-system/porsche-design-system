@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/partials",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/components": "0.0.0",
-    "@porsche-design-system/utilities": "1.0.6",
+    "@porsche-design-system/utilities": "1.1.0-rc.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/jest": "^26.0.9",
