@@ -27,7 +27,7 @@
     "@angular/router": "^10.0.8",
     "@porsche-design-system/components-angular": "2.0.0-alpha.0",
     "rxjs": "^6.6.2",
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
@@ -36,13 +36,13 @@
     "@angular/cli": "^10.0.5",
     "@angular/compiler-cli": "^10.0.8",
     "@angular/language-service": "^10.0.8",
-    "@porsche-design-system/assets": "1.1.0",
-    "@porsche-design-system/utilities": "1.0.6",
+    "@porsche-design-system/assets": "1.2.0",
+    "@porsche-design-system/utilities": "1.1.0-rc.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/jasmine": "^3.5.12",
     "@types/node": "^14.0.27",
-    "concurrently": "^5.2.0",
+    "concurrently": "^5.3.0",
     "jasmine": "^3.6.1",
     "jasmine-spec-reporter": "^5.0.2",
     "ng-packagr": "^9.1.2",
@@ -50,6 +50,6 @@
     "ts-node": "^8.10.2",
     "tslint": "~6.1.3",
     "typescript": "~3.9.7",
-    "wait-on": "^5.1.0"
+    "wait-on": "^5.2.0"
   }
 }

@@ -23,22 +23,22 @@
     "@porsche-design-system/web-components-manager": "0.2.5"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.1.0",
+    "@porsche-design-system/assets": "1.2.0",
     "@porsche-design-system/components-js": "2.0.0-alpha.0",
-    "@porsche-design-system/utilities": "1.0.6",
+    "@porsche-design-system/utilities": "1.1.0-rc.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-design-system/web-components-manager-cli": "0.2.5",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/http-server": "^0.10.0",
     "@types/jasmine": "^3.5.12",
     "@types/puppeteer": "^3.0.0",
-    "concurrently": "^5.2.0",
+    "concurrently": "^5.3.0",
     "http-server": "^0.12.3",
     "jasmine": "^3.6.1",
     "jasmine-spec-reporter": "^5.0.2",
     "puppeteer": "~5.2.1",
     "ts-node": "^8.10.1",
-    "wait-on": "^5.0.0",
+    "wait-on": "^5.2.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.11"
   }
