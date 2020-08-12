@@ -21,13 +21,12 @@ export default [
     },
     plugins: [
       ...commonPlugins(),
-      typescript({ declaration: true, declarationDir: 'dist/types', rootDir: 'src/' }),
-      process.env.NODE_ENV === 'production' && terser()
+      typescript({ declaration: true, declarationDir: 'dist/types', rootDir: 'src/' })
     ]
   },
   {
     input: 'src/index.ts',
     output: { dir: 'dist/esm', format: 'esm' },
-    plugins: [...commonPlugins(), typescript(), process.env.NODE_ENV === 'production' && terser()]
+    plugins: [...commonPlugins(), typescript()]
   }
 ];
