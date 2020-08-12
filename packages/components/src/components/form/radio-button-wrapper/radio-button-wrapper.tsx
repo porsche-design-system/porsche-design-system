@@ -1,5 +1,4 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -48,22 +47,22 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = cx(prefix('radio-button-wrapper__label'));
-    const fakeRadioButtonClasses = cx(
-      prefix('radio-button-wrapper__fake-radio-button'),
-      this.checked && prefix('radio-button-wrapper__fake-radio-button--checked'),
-      this.disabled && prefix('radio-button-wrapper__fake-radio-button--disabled'),
-      this.state !== 'none' && prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)
-    );
-    const labelTextClasses = cx(
-      prefix('radio-button-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('radio-button-wrapper__label-text--disabled')
-    );
-    const messageClasses = cx(
-      prefix('radio-button-wrapper__message'),
-      this.state !== 'none' && prefix(`radio-button-wrapper__message--${this.state}`)
-    );
+    const labelClasses = prefix('radio-button-wrapper__label');
+    const fakeRadioButtonClasses = {
+      [prefix('radio-button-wrapper__fake-radio-button')]: true,
+      [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
+      [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
+      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none'
+    };
+    const labelTextClasses = {
+      [prefix('radio-button-wrapper__label-text')]: true,
+      [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const messageClasses = {
+      [prefix('radio-button-wrapper__message')]: true,
+      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none'
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
 
