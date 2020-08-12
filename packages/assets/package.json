@@ -41,7 +41,6 @@
     "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./bin"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "0.0.0",
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
