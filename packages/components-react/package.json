@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "1.1.0",
-    "@porsche-design-system/partials": "0.0.0",
+    "@porsche-design-system/partials": "1.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@testing-library/jest-dom": "^5.11.3",
