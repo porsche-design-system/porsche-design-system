@@ -16,7 +16,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.2",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "jest": "^26.3.0",
     "node-sass": "^4.14.1",
     "puppeteer": "~5.2.1",
-    "ts-jest": "^26.1.4",
+    "ts-jest": "^26.2.0",
     "ts-node": "^8.10.2",
     "typescript": "~3.9.7",
     "wait-on": "^5.1.0"
