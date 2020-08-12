@@ -1,5 +1,4 @@
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   calcLineHeightForElement,
@@ -81,23 +80,23 @@ export class ButtonPure {
   }
 
   public render(): JSX.Element {
-    const buttonPureClasses = cx(
-      prefix('button-pure'),
-      mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
-      prefix(`button-pure--theme-${this.theme}`)
-    );
+    const buttonPureClasses = {
+      [prefix('button-pure')]: true,
+      [prefix(`button-pure--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size)
+    };
 
-    const iconClasses = cx(prefix('button-pure__icon'));
+    const iconClasses = prefix('button-pure__icon');
 
-    const labelClasses = cx(
-      prefix('button-pure__label'),
-      mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
-    );
+    const labelClasses = {
+      [prefix('button-pure__label')]: true,
+      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
+    };
 
-    const sublineClasses = cx(
-      prefix('button-pure__subline'),
-      mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible'])
-    );
+    const sublineClasses = {
+      [prefix('button-pure__subline')]: true,
+      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text', 'p-spinner']);
 
