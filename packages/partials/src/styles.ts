@@ -1,8 +1,13 @@
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 
-// We need to determine if we are local or production to change the url
-export const getFontFaceCSS = () => `<link rel="stylesheet" href="${FONT_FACE_CDN_URL}">`;
+type Options = { withoutTags: boolean };
 
-export const getPorscheDesignSystemCoreStyles = () =>
-  `<style>${TAG_NAMES.join(',')} { visibility: hidden }</style>`;
+// We need to determine if we are local or production to change the url
+export const getFontFaceCSS = (options?: Options) =>
+  options?.withoutTags ? FONT_FACE_CDN_URL : `<link rel="stylesheet" href="${FONT_FACE_CDN_URL}">`;
+
+export const getPorscheDesignSystemCoreStyles = (options?: Options) => {
+  const styleInnerHtml = `${TAG_NAMES.join(',')} { visibility: hidden }`;
+  return options?.withoutTags ? styleInnerHtml : `<style>${styleInnerHtml}</style>`;
+};
