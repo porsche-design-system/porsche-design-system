@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.1.0] - 2020-08-12
+
+### [1.1.0-rc.0] - 2020-08-12
+
+#### Changed
+- Generate typography.ts static
+- Deprecated FONT_FACE_STYLE_CDN_URL. Use FONT_FACE_CDN_URL instead
+
 ### [1.0.6] - 2020-07-28
 
 ### [1.0.6-rc.0] - 2020-07-28
