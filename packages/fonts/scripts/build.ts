@@ -79,7 +79,6 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
-  // ToDo: Write the hashed css file dynamic
   const files = await globby('./src/**/*.@(woff|woff2)');
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
