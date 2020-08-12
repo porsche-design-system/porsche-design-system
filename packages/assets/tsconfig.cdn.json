@@ -7,7 +7,5 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src/serve-cdn.ts"
-  ]
+  "include": ["src/serve-cdn.ts"]
 }

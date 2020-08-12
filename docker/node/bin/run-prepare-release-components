@@ -9,11 +9,10 @@ if [[ -z "${1}" ]]; then
 fi
 
 pushd "./packages/components"
-  yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
-pushd "./packages/components-js"
+pushd "./packages/components-js/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${1}"
 popd
 
