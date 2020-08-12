@@ -146,7 +146,7 @@ $p-font-size-{v};
   import { Component, Vue } from 'vue-property-decorator';
   
   @Component
-  export default class PlaygroundColor extends Vue {
+  export default class Variables extends Vue {
     public theme: 'light' | 'dark' = 'light';
   }
 </script>

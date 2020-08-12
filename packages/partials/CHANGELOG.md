@@ -1,6 +1,6 @@
 # Changelog
  
-## Porsche Design System - Assets
+## Porsche Design System - Partials
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -8,17 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [1.2.0] - 2020-08-12
-
-#### Added
-- FONT_FACE_CDN_URL
-
-### [1.1.0] - 2020-08-07
-
-#### Added
-- Metaicons manifest and CDN URLs
-
-### [1.0.0] - 2020-07-17
+### [1.0.0] - 2020-08-12
 
 #### Added
 - Initial release
