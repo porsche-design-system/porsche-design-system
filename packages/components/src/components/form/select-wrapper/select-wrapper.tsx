@@ -358,7 +358,7 @@ export class SelectWrapper {
 
     return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
       option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null && (
-        <span class={cx(prefix('select-wrapper__fake-optgroup-label'))} role="presentation">
+        <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
           {option.closest('optgroup').label}
         </span>
       ),
@@ -366,11 +366,12 @@ export class SelectWrapper {
         id={`option-${key}`}
         role="option"
         color="inherit"
-        class={cx(prefix('select-wrapper__fake-option'), {
+        class={{
+          [prefix('select-wrapper__fake-option')]: true,
           [prefix('select-wrapper__fake-option--selected')]: this.optionSelected === key,
           [prefix('select-wrapper__fake-option--highlighted')]: this.optionHighlighted === key,
           [prefix('select-wrapper__fake-option--disabled')]: this.optionDisabled.includes(key)
-        })}
+        }}
         onClick={() => (!this.optionDisabled.includes(key) ? this.setOptionSelected(key) : this.select.focus())}
         aria-selected={this.optionSelected === key && 'true'}
         aria-disabled={this.optionDisabled.includes(key) && 'true'}
@@ -378,7 +379,7 @@ export class SelectWrapper {
         <span>{option.text}</span>
         {key === this.optionSelected && (
           <PrefixedTagNames.pIcon
-            class={cx(prefix('select-wrapper__fake-option-icon'))}
+            class={prefix('select-wrapper__fake-option-icon')}
             aria-hidden="true"
             name="check"
             color="inherit"
