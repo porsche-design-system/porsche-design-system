@@ -46,7 +46,7 @@
     "build": "yarn clean:build && yarn build:typography && yarn build:lib && yarn build:scss && yarn build:style",
     "build:typography": "ts-node --project 'tsconfig.node.json' './scripts/typography.ts'",
     "build:lib": "rollup -c rollup.config.js",
-    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && mkdir -p './dist' && cp -r './src/scss/.' './dist/scss'",
+    "build:scss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
     "build:style": "ts-node --project 'tsconfig.node.json' './scripts/build.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
