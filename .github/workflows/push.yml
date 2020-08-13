@@ -586,7 +586,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/assets
+          args: packages/assets/dist
   release-partials:
     name: 'Release Partials'
     needs: [storefront-deployment]
