@@ -1,5 +1,8 @@
 const { cdnDistPath, npmDistPath, deployUrl, version } = require('./projects/components-wrapper/environment');
 
+console.log('Version:', version);
+console.log('Deploy URL:', deployUrl);
+
 module.exports = {
   name: 'porscheDesignSystem',
   supportPrefixes: true,
