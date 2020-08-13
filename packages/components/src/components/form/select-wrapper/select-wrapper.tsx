@@ -189,6 +189,7 @@ export class SelectWrapper {
                 aria-autocomplete="both"
                 aria-controls="p-listbox"
                 disabled={this.disabled}
+                aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
                 aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
                 ref={(el) => (this.filterInput = el)}
               />
@@ -200,9 +201,9 @@ export class SelectWrapper {
               class={fakeOptionListClasses}
               role="listbox"
               id="p-listbox"
-              aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.selected)}`}
+              aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex(e => e.selected)}`}
               tabIndex={-1}
-              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-expanded={!this.filter && this.fakeOptionListHidden ? 'false' : 'true'}
               aria-labelledby={this.label}
               ref={(el) => (this.fakeOptionListNode = el)}
             >
@@ -267,6 +268,10 @@ export class SelectWrapper {
       this.select.setAttribute('aria-invalid', 'true');
     } else {
       this.select.removeAttribute('aria-invalid');
+    }
+
+    if(this.filter) {
+      this.select.setAttribute('aria-hidden', 'true');
     }
   }
 
@@ -354,6 +359,7 @@ export class SelectWrapper {
         e.preventDefault();
         this.fakeOptionListHidden = true;
         this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+        if(this.filter) {this.filterInput.value = this.options[this.select.selectedIndex].text;}
         break;
       case 'Escape':
       case 'Esc':
@@ -364,10 +370,11 @@ export class SelectWrapper {
             highlighted: num === this.select.selectedIndex
           }));
         }
+        this.filterInput.value = '';
         break;
       case 'PageUp':
         e.preventDefault();
-        if (!this.fakeOptionListHidden) {
+        if (!this.filter && !this.fakeOptionListHidden) {
           this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
             ...item,
             highlighted: num === 0
@@ -377,7 +384,7 @@ export class SelectWrapper {
         break;
       case 'PageDown':
         e.preventDefault();
-        if (!this.fakeOptionListHidden) {
+        if (!this.filter && !this.fakeOptionListHidden) {
           this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
             ...item,
             highlighted: num === this.options.length - 1
@@ -414,6 +421,7 @@ export class SelectWrapper {
       highlighted: num === this.select.selectedIndex
     }));
     this.fakeOptionListHidden = true;
+    if(this.filter) {this.filterInput.value = this.options[this.select.selectedIndex].text;}
 
     // IE11 workaround for dispatchEvent
     let event: Event;
