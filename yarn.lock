@@ -2605,6 +2605,23 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@porsche-design-system/assets@1.1.0":
+  version "1.1.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/assets/-/@porsche-design-system/assets-1.1.0.tgz#f04e31397089dfc3e2d8948f61129d90200e03ec"
+  integrity sha1-8E4xOXCJ38Pi2JSPYRKdkCAOA+w=
+
+"@porsche-design-system/partials@^1.1.0":
+  version "1.1.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/partials/-/@porsche-design-system/partials-1.1.0.tgz#c781b5ad1e48f27a9167dacf73e3fd7a5e5b17e1"
+  integrity sha1-x4G1rR5I8nqRZ9rPc+P9el5bF+E=
+
+"@porsche-design-system/utilities@1.0.6":
+  version "1.0.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/utilities/-/@porsche-design-system/utilities-1.0.6.tgz#ec1aa0b51598f40a3cf4efda949acb6c757359ec"
+  integrity sha1-7BqgtRWY9Ao89O/alJrLbHVzWew=
+  dependencies:
+    csstype "^2.6.11"
+
 "@porsche-design-system/visual-regression-tester@^3.0.0":
   version "3.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-3.0.0.tgz#d6fcc4ac8add2063c192f93a8f6cde3affe972fe"
