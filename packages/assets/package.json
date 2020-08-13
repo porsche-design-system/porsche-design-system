@@ -45,7 +45,7 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/metaicons": "0.0.0",
-    "@porsche-design-system/utilities": "1.1.0-rc.0",
+    "@porsche-design-system/utilities": "1.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/http-server": "^0.10.0",
