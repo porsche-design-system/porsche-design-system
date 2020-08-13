@@ -27,7 +27,7 @@
     "@porsche-design-system/utilities": "1.1.0"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.2.1-rc.0",
+    "@porsche-design-system/assets": "1.2.1",
     "@porsche-design-system/partials": "1.1.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
