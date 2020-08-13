@@ -9,7 +9,7 @@
     "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors -s'",
     "build": "yarn clean:build && yarn build:lib && yarn build:app",
     "build:app": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www && cp ./dist/components-wrapper/index.js ./www",
-    "build:lib": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.js && pwcm build",
+    "build:lib": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.js && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} pwcm build",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "test": "yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 240000 http-get://localhost:8575 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
@@ -23,7 +23,7 @@
     "@porsche-design-system/web-components-manager": "0.2.5"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.2.0",
+    "@porsche-design-system/assets": "1.2.1",
     "@porsche-design-system/components-js": "2.0.0-alpha.0",
     "@porsche-design-system/utilities": "1.1.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
