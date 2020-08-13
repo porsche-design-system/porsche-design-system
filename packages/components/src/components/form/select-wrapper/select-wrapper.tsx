@@ -57,8 +57,9 @@ export class SelectWrapper {
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
-  private filterWrapper: HTMLDivElement;
   private filterInput: HTMLInputElement;
+  private fakeFilter: HTMLSpanElement;
+  private searchString: string;
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -89,9 +90,10 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if(!this.isTouch && this.filter) {
-      this.filterWrapper.addEventListener('mousedown', this.handleFilterWrapperClick.bind(this));
+      this.fakeFilter.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
+      this.filterInput.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
-      this.filterInput.addEventListener('input', this.handleFilterInputEvents.bind(this));
+      this.filterInput.addEventListener('input', this.handleFilterSearch.bind(this));
     }
   }
 
@@ -138,10 +140,7 @@ export class SelectWrapper {
     const messageClasses = cx(prefix('select-wrapper__message'), {
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
     });
-
-    const filterClasses = cx(prefix('select-wrapper__filter'));
     const filterInputClasses = cx(prefix('select-wrapper__filter-input'));
-
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
@@ -177,24 +176,19 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {(this.filter && !this.isTouch) && (
-            <div
-              class={filterClasses}
-              ref={(el) => (this.filterWrapper = el)}
-            >
-              <input
-                type="text"
-                class={filterInputClasses}
-                role="combobox"
-                aria-autocomplete="both"
-                aria-controls="p-listbox"
-                disabled={this.disabled}
-                aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
-                aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
-                ref={(el) => (this.filterInput = el)}
-              />
-              <span/>
-            </div>
+          {(this.filter && !this.isTouch) && ([
+            <input
+              type="text"
+              class={filterInputClasses}
+              role="combobox"
+              aria-autocomplete="both"
+              aria-controls="p-listbox"
+              disabled={this.disabled}
+              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
+              ref={(el) => (this.filterInput = el)}
+            />,
+            <span ref={(el) => (this.fakeFilter = el)}/>]
           )}
           {!this.isTouch && (
             <div
@@ -280,7 +274,11 @@ export class SelectWrapper {
   };
 
   private labelClick = (): void => {
-    this.select.focus();
+    if(!this.filter) {
+      this.select.focus();
+    } else {
+      this.filterInput.focus();
+    }
   };
 
   private bindStateListener(): void {
@@ -349,28 +347,36 @@ export class SelectWrapper {
         break;
       case ' ':
       case 'Spacebar':
-        e.preventDefault();
-        this.fakeOptionListHidden = this.fakeOptionListHidden === false;
-        if (this.fakeOptionListHidden) {
-          this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+        if(!this.filter) {
+          e.preventDefault();
+          this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+          if (this.fakeOptionListHidden) {
+            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+          }
         }
         break;
       case 'Enter':
         e.preventDefault();
         this.fakeOptionListHidden = true;
         this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
-        if(this.filter) {this.filterInput.value = this.options[this.select.selectedIndex].text;}
+        if(this.filter) {
+          const itemValue = this.optionMaps.filter(item => item.value.toLowerCase() === this.searchString.toLowerCase());
+          if(itemValue.length === 1) {this.setOptionSelected(itemValue[0].key);}
+        }
         break;
       case 'Escape':
       case 'Esc':
-        if (!this.fakeOptionListHidden) {
-          this.fakeOptionListHidden = true;
-          this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
-            ...item,
-            highlighted: num === this.select.selectedIndex
-          }));
+        if(this.filterInput) {
+          // this.filterInput.value = this.options[this.select.selectedIndex].text;
+          this.filterInput.value = '';
         }
-        this.filterInput.value = '';
+        this.fakeOptionListHidden = true;
+        this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+          ...item,
+          hidden: false,
+          highlighted: num === this.select.selectedIndex
+        }));
+        this.fakeOptionListHidden = true;
         break;
       case 'PageUp':
         e.preventDefault();
@@ -407,8 +413,8 @@ export class SelectWrapper {
     this.options = this.select.querySelectorAll('option');
     [...Array.from(this.options)].map((option: HTMLOptionElement, key:number) => {
       const disabled = option.hasAttribute('disabled');
-      const selected = option.selected;
-      const highlighted = option.selected;
+      const selected = option.selected && !option.disabled;
+      const highlighted = option.selected && !option.disabled;
       this.optionMaps = [...this.optionMaps, {key, value:option.text, disabled, hidden: false, selected, highlighted}];
     });
   };
@@ -433,7 +439,11 @@ export class SelectWrapper {
     }
     this.select.dispatchEvent(event);
 
-    this.select.focus();
+    if(this.filter) {
+      this.filterInput.focus();
+    } else {
+      this.select.focus();
+    }
   };
 
   private createFakeOptionList(): JSX.Element[][] | string {
@@ -479,6 +489,9 @@ export class SelectWrapper {
   private cycleFakeOptionList(direction: string): void {
     const validItems = this.optionMaps.filter(e => e.hidden !== true && e.disabled !== true);
     const validMax = validItems.length-1;
+    if(validMax === -1) {
+      return;
+    }
     let i = validItems.findIndex(e => e.highlighted);
     if (direction === 'down' || direction === 'right') {
       i = i < validMax ? i+1 : 0;
@@ -529,24 +542,24 @@ export class SelectWrapper {
   /*
    * <START CUSTOM FILTER>
    */
-  private handleFilterWrapperClick(e): void {
-    e.preventDefault();
+  private handleFilterInputClick(): void {
     if(!this.disabled) {
       this.filterInput.focus();
       this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     }
   }
 
-  private handleFilterInputEvents(ev):void {
-    const val = ev.target.value;
+  private handleFilterSearch(ev):void {
+    this.searchString = '';
+    this.searchString = ev.target.value;
     this.optionMaps = this.optionMaps.map((item: optionMap) => ({
       ...item,
-      hidden: !item.value.toLowerCase().startsWith(val.toLowerCase()),
+      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase()),
     }));
 
     const hiddenItems = this.optionMaps.filter(e => e.hidden === true).length;
     this.filterHasResult = hiddenItems !== Object.keys(this.optionMaps).length;
-    this.fakeOptionListHidden = val > 0;
+    this.fakeOptionListHidden = false;
   }
 
   private addSlottedStyles(): void {

@@ -349,15 +349,11 @@
     }
   }
 
-  &__filter {
+  &__filter-input {
     position: absolute;
     z-index: 1;
     bottom: 0;
     left: 0;
-    right: 0;
-  }
-
-  &__filter-input {
     display: block;
     width: calc(100% - #{p-px-to-rem(46px)});
     height: p-px-to-rem(46px);
@@ -377,15 +373,29 @@
     text-indent: 0;
     cursor: text;
 
+    + span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+      height: p-px-to-rem(48px);
+      outline: transparent none;
+      transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+      outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+      pointer-events: all;
+    }
+
+    &:hover {
+      + span {
+        box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-high;
+      }
+    }
+
     &:focus {
       opacity: 1;
       + span {
-        position: absolute;
-        bottom: 1px;
-        left: 1px;
-        right: 1px;
-        height: p-px-to-rem(46px);
-        outline-offset: 2px;
+        outline-offset: 1px;
         outline: $p-color-theme-light-state-focus solid 2px;
       }
     }
