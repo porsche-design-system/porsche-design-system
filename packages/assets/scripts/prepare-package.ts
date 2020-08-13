@@ -4,9 +4,6 @@ import * as path from 'path';
 const rootDirectory = path.resolve(__dirname, '..');
 const targetDirectory = path.resolve(rootDirectory, 'dist');
 
-fs.rmdirSync(targetDirectory, { recursive: true });
-fs.mkdirSync(targetDirectory);
-
 // copy all necessary files
 const files = ['README.md', 'CHANGELOG.md', 'LICENSE'];
 files.forEach((file) =>
