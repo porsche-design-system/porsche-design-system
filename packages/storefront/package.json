@@ -28,7 +28,7 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.2.1",
+    "@porsche-design-system/assets": "2.0.0",
     "@porsche-design-system/components-js": "2.0.0-alpha.0",
     "@porsche-design-system/partials": "1.1.0",
     "@porsche-design-system/utilities": "1.1.0",
