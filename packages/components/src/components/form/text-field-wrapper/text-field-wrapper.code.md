@@ -45,7 +45,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>    
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" value="Some value" disabled="true" />
+    <input type="text" name="some-name" value="Some value" disabled />
   </p-text-field-wrapper>
 </Playground>
 
@@ -55,7 +55,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>    
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name" value="Some value" readonly="true" />
+    <input type="text" name="some-name" value="Some value" readonly />
   </p-text-field-wrapper>
 </Playground>
 

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-1" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'">
-        <input type="radio" name="some-name-1" checked="true" />
+        <input type="radio" name="some-name-1" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-2" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'" [hideLabel]="true">
-        <input type="radio" name="some-name-2" checked="true" />
+        <input type="radio" name="some-name-2" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -32,16 +32,16 @@ import { Component } from '@angular/core';
         [label]="'Some label'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input type="radio" name="some-name-3" checked="true" />
+        <input type="radio" name="some-name-3" checked />
       </p-radio-button-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">
       <p-radio-button-wrapper [label]="'Some label'">
-        <input type="radio" name="some-name-4" disabled="true" />
+        <input type="radio" name="some-name-4" disabled />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'">
-        <input type="radio" name="some-name-4" checked="true" disabled="true" />
+        <input type="radio" name="some-name-4" checked disabled />
       </p-radio-button-wrapper>
     </div>
 
@@ -50,7 +50,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-5" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'" [state]="'success'" [message]="'Some success validation message.'">
-        <input type="radio" name="some-name-5" checked="true" />
+        <input type="radio" name="some-name-5" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -59,7 +59,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-6" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'" [state]="'success'">
-        <input type="radio" name="some-name-6" checked="true" />
+        <input type="radio" name="some-name-6" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -68,7 +68,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-7" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'" [state]="'error'" [message]="'Some error validation message.'">
-        <input type="radio" name="some-name-7" checked="true" />
+        <input type="radio" name="some-name-7" checked />
       </p-radio-button-wrapper>
     </div>
 
@@ -77,7 +77,7 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-8" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'" [state]="'error'">
-        <input type="radio" name="some-name-8" checked="true" />
+        <input type="radio" name="some-name-8" checked />
       </p-radio-button-wrapper>
     </div>
 
