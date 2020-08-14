@@ -153,20 +153,20 @@
           .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
             return ` ${camelCase($key)}={{${$value}}}`;
           })
-          // transform all standard attributes to camel case and add brackets
+          // transform all standard attributes to camel case
           .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}={"${$value}"}`;
+            return ` ${camelCase($key)}="${$value}"`;
           })
           // transform class attribute to JSX compatible one
-          .replace(/\sclass={"(.*?)"}/g, (m, $value) => {
-            return ` className={"${$value}"}`;
+          .replace(/\sclass="(.*?)"/g, (m, $value) => {
+            return ` className="${$value}"`;
           })
           // transform to camelCase event binding syntax
           .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
             return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
           })
           // transform boolean
-          .replace(/\s(\S+)={"(true|false)"}/g, (m, $key, $value) => {
+          .replace(/\s(\S+)="(true|false)"/g, (m, $key, $value) => {
             return ` ${$key}={${$value}}`;
           })
           // transform all keys to camel case which have digits as a value
