@@ -41,20 +41,20 @@
 
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
-  import Prism from 'prismjs';
+  import * as Prism from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import { html } from 'js-beautify';
   import { camelCase, upperFirst } from 'lodash';
-
-  type Framework = 'vanilla-js' | 'angular' | 'react';
-  type Theme = 'light' | 'dark';
+  import { Framework, Theme } from '@/models';
 
   @Component
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
 
-    private framework: Framework = 'vanilla-js';
+    public get framework(): Framework {
+      return this.$store.getters.selectedFramework;
+    }
 
     get isVanillaJS(): boolean {
       return this.framework === 'vanilla-js';
@@ -73,7 +73,7 @@
     }
 
     public updateFramework(framework: Framework): void {
-      this.framework = framework;
+      this.$store.commit('setSelectedFramework', framework);
     }
 
     private convert(markup: string, framework: Framework): string {
