@@ -50,7 +50,7 @@ export class SelectWrapper {
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly optionMap[] = [];
   @State() private filterHasResult = true;
-  @State() private isTouch: boolean = isTouchDevice();
+  @State() private isTouchWithoutFilter: boolean = isTouchDevice() && !this.filter;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -76,7 +76,7 @@ export class SelectWrapper {
     this.bindStateListener();
     this.addSlottedStyles();
 
-    if (!this.isTouch) {
+    if (!this.isTouchWithoutFilter) {
       this.observeSelect();
       this.setOptionList();
       if (!this.filter) {this.select.addEventListener('mousedown', this.handleMouseEvents.bind(this));}
@@ -89,7 +89,7 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if(!this.isTouch && this.filter) {
+    if(!this.isTouchWithoutFilter && this.filter) {
       this.fakeFilter.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
@@ -102,7 +102,7 @@ export class SelectWrapper {
   }
 
   public componentDidUnload(): void {
-    if (!this.isTouch) {
+    if (!this.isTouchWithoutFilter) {
       this.selectObserver.disconnect();
       this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
       this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
@@ -176,7 +176,7 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {(this.filter && !this.isTouch) && ([
+          {(this.filter && !this.isTouchWithoutFilter) && ([
             <input
               type="text"
               class={filterInputClasses}
@@ -190,7 +190,7 @@ export class SelectWrapper {
             />,
             <span ref={(el) => (this.fakeFilter = el)}/>]
           )}
-          {!this.isTouch && (
+          {!this.isTouchWithoutFilter && (
             <div
               class={fakeOptionListClasses}
               role="listbox"
