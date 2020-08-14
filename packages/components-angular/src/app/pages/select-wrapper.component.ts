@@ -34,8 +34,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with responsive label and description">
-      <p-select-wrapper [label]="'Some label'" [description]="'Some description'"
-                        [hideLabel]="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+      <p-select-wrapper
+        [label]="'Some label'"
+        [description]="'Some description'"
+        [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -46,7 +49,7 @@ import { Component } from '@angular/core';
 
     <div class="playground light" title="should render with disabled state">
       <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
-        <select name="some-name" disabled="disabled">
+        <select name="some-name" disabled="true">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
@@ -95,7 +98,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with default state and no message">
-      <p-select-wrapper [label]="'Some label'" [state]="'none'" [message]="'Some message which should not be rendered.'">
+      <p-select-wrapper
+        [label]="'Some label'"
+        [state]="'none'"
+        [message]="'Some message which should not be rendered.'"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -104,8 +111,10 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light"
-         title="should render label, description and message by slotted content with error state">
+    <div
+      class="playground light"
+      title="should render label, description and message by slotted content with error state"
+    >
       <p-select-wrapper [state]="'error'">
         <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
         <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
@@ -118,8 +127,10 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light"
-         title="should render label, description and message by slotted content with success state">
+    <div
+      class="playground light"
+      title="should render label, description and message by slotted content with success state"
+    >
       <p-select-wrapper [state]="'success'">
         <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
         <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
@@ -132,12 +143,17 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light"
-         title="should render with multiline label, description and message and cut off too long option text">
-      <p-select-wrapper [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
-                        [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
-                        [state]="'error'" [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
-                        style="width: 240px;">
+    <div
+      class="playground light"
+      title="should render with multiline label, description and message and cut off too long option text"
+    >
+      <p-select-wrapper
+        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
+        [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
+        [state]="'error'"
+        [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
+        style="width: 240px;"
+      >
         <select name="some-name">
           <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
           <option value="b">sed diam nonumy eirmod tempor invidunt ut labore</option>
@@ -157,5 +173,4 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class SelectWrapperComponent {
-}
+export class SelectWrapperComponent {}

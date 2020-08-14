@@ -30,10 +30,10 @@ A `label` is a caption which informs the user what information a particular form
 
 <Playground :childElementLayout="{spacing: 'block'}">    
   <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" disabled="disabled"/>
+    <input type="radio" name="some-name-4" disabled="true"/>
   </p-radio-button-wrapper>
   <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" checked="checked" disabled="disabled"/>
+    <input type="radio" name="some-name-4" checked="true" disabled="true"/>
   </p-radio-button-wrapper>
 </Playground>
 
