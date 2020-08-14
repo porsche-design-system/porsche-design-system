@@ -1,4 +1,4 @@
-import { StorefrontConfig } from './src/interface';
+import { StorefrontConfig } from '@/models';
 
 export const config: StorefrontConfig = {
   About: {
