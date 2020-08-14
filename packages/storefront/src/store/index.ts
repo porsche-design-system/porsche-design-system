@@ -4,7 +4,7 @@ import { Framework } from '@/models';
 
 Vue.use(Vuex);
 
-type State = {
+export type State = {
   isLoading: boolean;
   lastTimeout?: number;
   isMenuActive: boolean;
