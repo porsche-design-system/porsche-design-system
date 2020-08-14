@@ -23,7 +23,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.2.0",
+    "@porsche-design-system/assets": "1.2.1",
     "@porsche-design-system/partials": "1.1.0",
     "@porsche-design-system/utilities": "1.1.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz",
