@@ -1,32 +1,38 @@
 <template>
-  <div class="code-block" :class="{'light': (theme === 'light'), 'dark': (theme === 'dark')}">
+  <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
     <div class="tabs" role="tablist">
       <p-text class="tab" tag="div" color="inherit">
         <button
           type="button"
           role="tab"
           :aria-selected="isVanillaJS ? 'true' : 'false'"
-          :class="{'is-active': isVanillaJS}"
+          :class="{ 'is-active': isVanillaJS }"
           @click="updateFramework('vanilla-js')"
-        >Vanilla JS</button>
+        >
+          Vanilla JS
+        </button>
       </p-text>
       <p-text class="tab" tag="div" color="inherit">
         <button
           type="button"
           role="tab"
           :aria-selected="isAngular ? 'true' : 'false'"
-          :class="{'is-active': isAngular}"
+          :class="{ 'is-active': isAngular }"
           @click="updateFramework('angular')"
-        >Angular</button>
+        >
+          Angular
+        </button>
       </p-text>
       <p-text class="tab" tag="div" color="inherit">
         <button
           type="button"
           role="tab"
           :aria-selected="isReact ? 'true' : 'false'"
-          :class="{'is-active': isReact}"
+          :class="{ 'is-active': isReact }"
           @click="updateFramework('react')"
-        >React</button>
+        >
+          React
+        </button>
       </p-text>
     </div>
     <pre><code v-html="formattedMarkup"></code></pre>
@@ -34,160 +40,162 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
-import Prism from 'prismjs';
-import 'prismjs/components/prism-jsx';
-import {html} from 'js-beautify';
-import {camelCase, upperFirst} from 'lodash';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-jsx';
+  import { html } from 'js-beautify';
+  import { camelCase, upperFirst } from 'lodash';
 
-type Framework = 'vanilla-js' | 'angular' | 'react';
-type Theme = 'light' | 'dark';
+  type Framework = 'vanilla-js' | 'angular' | 'react';
+  type Theme = 'light' | 'dark';
 
-@Component
-export default class CodeBlock extends Vue {
+  @Component
+  export default class CodeBlock extends Vue {
+    @Prop({ default: '' }) public markup!: string;
+    @Prop({ default: 'light' }) public theme!: Theme;
 
-  @Prop({default: ''}) public markup!: string;
-  @Prop({default: 'light'}) public theme!: Theme;
+    private framework: Framework = 'vanilla-js';
 
-  private framework: Framework = 'vanilla-js';
-
-  get isVanillaJS(): boolean {
-    return this.framework === 'vanilla-js';
-  }
-
-  get isAngular(): boolean {
-    return this.framework === 'angular';
-  }
-
-  get isReact(): boolean {
-    return this.framework === 'react';
-  }
-
-  get formattedMarkup(): string {
-    return this.highlight(this.beautify(this.convert(this.cleanup(this.markup), this.framework)));
-  }
-
-  public updateFramework(framework: Framework): void {
-    this.framework = framework;
-  }
-
-  private convert(markup: string, framework: Framework): string {
-    switch (framework) {
-      case 'vanilla-js':
-        return markup;
-      case 'angular':
-        return this.convertToAngular(markup);
-      case 'react':
-        return this.convertToReact(markup);
-      default:
-        return markup;
-    }
-  }
-
-  private cleanup(markup: string): string {
-    return (
-      markup
-        // remove default web component attributes
-        .replace(/theme="light"/g, '')
-        // remove empty comments
-        .replace(/<!---->/g, '')
-        // remove all attributes added by Vue JS
-        .replace(/data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
-        // remove all class values added by Stencil JS
-        .replace(/class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
-          if (/\S/.test($1) || /\S/.test($2)) {
-            return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
-          }
-          return '';
-        })
-    );
-  }
-
-  private convertToAngular(markup: string): string {
-    return (
-      markup
-        // transform to event binding syntax
-        .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-          return ` (${$key.substring(2)})="${$value}"`;
-        })
-        // transform all keys of object values to camel case and surround them in brackets
-        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return ` [${camelCase($key)}]="{${$value}}"`;
-        })
-        // transform all other keys to camel case, surround them in brackets and surround all values with ''
-        .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
-          return ` [${camelCase($key)}]="'${$value}'"`;
-        })
-        // transform all keys to camel case which have digits as a value
-        .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
-          return ` [${camelCase($key)}]="${$value}"`;
-        })
-        // remove single quotes from boolean values
-        .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
-          return ` [${camelCase($key)}]="${$value}"`;
-        })
-        // remove brackets from "class" attributes
-        .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
-          return ` class="${$value}"`;
-        })
-        // remove brackets from "slot" attributes
-        .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
-          return ` slot="${$value}"`;
-        })
-
-    );
-  }
-
-  private convertToReact(markup: string): string {
-    return (
-      markup
-        // remove quotes from object values but add double brackets and camelCase
-        .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-          return ` ${camelCase($key)}={{${$value}}}`;
-        })
-        // transform all standard attributes to camel case and add brackets
-        .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
-          return ` ${camelCase($key)}={"${$value}"}`;
-        })
-        // transform class attribute to JSX compatible one
-        .replace(/\sclass={"(.*?)"}/g, (m, $value) => {
-          return ` className={"${$value}"}`;
-        })
-        // transform to camelCase event binding syntax
-        .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
-          return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
-        })
-        // transform boolean
-        .replace(/\s(\S+)={"(true|false)"}/g, (m, $key, $value) => {
-          return ` ${$key}={${$value}}`;
-        })
-        // transform all keys to camel case which have digits as a value
-        .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
-          return ` ${$key}={${$value}}`;
-        })
-        // transform custom element opening tags to pascal case
-        .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
-          return `<${upperFirst(camelCase($tag))}${$attributes}>`;
-        })
-        // transform custom element closing tags to pascal case
-        .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
-          return `</${upperFirst(camelCase($tag))}>`;
-        })
-    );
-  }
-
-  private beautify(markup: string): string {
-    return html(markup, {indent_size: 2});
-  }
-
-  private highlight(markup: string): string {
-    if (this.isReact) {
-      return Prism.highlight(markup, Prism.languages.jsx, 'language-jsx');
+    get isVanillaJS(): boolean {
+      return this.framework === 'vanilla-js';
     }
 
-    return Prism.highlight(markup, Prism.languages.markup, 'markup');
+    get isAngular(): boolean {
+      return this.framework === 'angular';
+    }
+
+    get isReact(): boolean {
+      return this.framework === 'react';
+    }
+
+    get formattedMarkup(): string {
+      return this.highlight(this.beautify(this.convert(this.cleanup(this.markup), this.framework)));
+    }
+
+    public updateFramework(framework: Framework): void {
+      this.framework = framework;
+    }
+
+    private convert(markup: string, framework: Framework): string {
+      switch (framework) {
+        case 'vanilla-js':
+          return markup;
+        case 'angular':
+          return this.convertToAngular(markup);
+        case 'react':
+          return this.convertToReact(markup);
+        default:
+          return markup;
+      }
+    }
+
+    private cleanup(markup: string): string {
+      return (
+        markup
+          // remove default web component attributes
+          .replace(/theme="light"/g, '')
+          // remove empty comments
+          .replace(/<!---->/g, '')
+          // remove all attributes added by Vue JS
+          .replace(/data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
+          // remove all class values added by Stencil JS
+          .replace(/class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
+            if (/\S/.test($1) || /\S/.test($2)) {
+              return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+            }
+            return '';
+          })
+          // add closing slash to inputs for valid jsx
+          .replace(/(<input(?:.[^/]*?))>/g, '$1/>')
+          // add line breaks between tags
+          .replace(/></g, '>\n<')
+      );
+    }
+
+    private convertToAngular(markup: string): string {
+      return (
+        markup
+          // transform to event binding syntax
+          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
+            return ` (${$key.substring(2)})="${$value}"`;
+          })
+          // transform all keys of object values to camel case and surround them in brackets
+          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+            return ` [${camelCase($key)}]="{${$value}}"`;
+          })
+          // transform all other keys to camel case, surround them in brackets and surround all values with ''
+          .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
+            return ` [${camelCase($key)}]="'${$value}'"`;
+          })
+          // transform all keys to camel case which have digits as a value
+          .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
+            return ` [${camelCase($key)}]="${$value}"`;
+          })
+          // remove single quotes from boolean values
+          .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
+            return ` [${camelCase($key)}]="${$value}"`;
+          })
+          // remove brackets from "class" attributes
+          .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
+            return ` class="${$value}"`;
+          })
+          // remove brackets from "slot" attributes
+          .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
+            return ` slot="${$value}"`;
+          })
+      );
+    }
+
+    private convertToReact(markup: string): string {
+      return (
+        markup
+          // remove quotes from object values but add double brackets and camelCase
+          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
+            return ` ${camelCase($key)}={{${$value}}}`;
+          })
+          // transform all standard attributes to camel case and add brackets
+          .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
+            return ` ${camelCase($key)}={"${$value}"}`;
+          })
+          // transform class attribute to JSX compatible one
+          .replace(/\sclass={"(.*?)"}/g, (m, $value) => {
+            return ` className={"${$value}"}`;
+          })
+          // transform to camelCase event binding syntax
+          .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
+            return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
+          })
+          // transform boolean
+          .replace(/\s(\S+)={"(true|false)"}/g, (m, $key, $value) => {
+            return ` ${$key}={${$value}}`;
+          })
+          // transform all keys to camel case which have digits as a value
+          .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
+            return ` ${$key}={${$value}}`;
+          })
+          // transform custom element opening tags to pascal case
+          .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
+            return `<${upperFirst(camelCase($tag))}${$attributes}>`;
+          })
+          // transform custom element closing tags to pascal case
+          .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
+            return `</${upperFirst(camelCase($tag))}>`;
+          })
+      );
+    }
+
+    private beautify(markup: string): string {
+      return html(markup, { indent_size: 2 });
+    }
+
+    private highlight(markup: string): string {
+      if (this.isReact) {
+        return Prism.highlight(markup, Prism.languages.jsx, 'language-jsx');
+      }
+
+      return Prism.highlight(markup, Prism.languages.markup, 'markup');
+    }
   }
-}
 </script>
 
 <style scoped lang="scss">
@@ -195,7 +203,6 @@ export default class CodeBlock extends Vue {
   @import '../styles/internal.variables';
 
   .code-block {
-
     &.light {
       .tabs {
         color: $p-color-theme-light-default;
@@ -204,7 +211,7 @@ export default class CodeBlock extends Vue {
       code,
       pre {
         color: $p-color-theme-light-default;
-        text-shadow: 0 1px rgba(255, 255, 255, .3);
+        text-shadow: 0 1px rgba(255, 255, 255, 0.3);
       }
 
       pre {
@@ -277,7 +284,7 @@ export default class CodeBlock extends Vue {
       code,
       pre {
         color: $p-color-theme-dark-default;
-        text-shadow: 0 1px rgba(0, 0, 0, .3);
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
       }
 
       pre {
@@ -375,7 +382,7 @@ export default class CodeBlock extends Vue {
   pre {
     background: transparent;
     font-family: Monaco, Menlo, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     tab-size: 2;
     text-align: left;
@@ -395,7 +402,7 @@ export default class CodeBlock extends Vue {
 
     code ::v-deep {
       .namespace {
-        opacity: .7;
+        opacity: 0.7;
       }
 
       .token.important,
