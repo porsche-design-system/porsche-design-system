@@ -50,7 +50,7 @@
   font-weight: $p-font-weight-regular !important;
   font-size: $p-font-size-small !important;
   line-height: p-calculate-line-height($p-font-size-small) !important;
-  color: $p-color-theme-light-default !important;
+  color: $p-color-default !important;
   text-indent: 0 !important;
   cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
@@ -61,7 +61,7 @@
 // avoid dotted outline in Firefox
 ::slotted(select:-moz-focusring) {
   color: transparent !important;
-  text-shadow: 0 0 0 $p-color-theme-light-default !important;
+  text-shadow: 0 0 0 $p-color-default !important;
 }
 
 // avoid styling of select in IE
@@ -72,18 +72,18 @@
 // avoid styling of select in IE
 ::slotted(select:focus::-ms-value) {
   background-color: transparent !important;
-  color: $p-color-theme-light-default !important;
+  color: $p-color-default !important;
 }
 
 // Focus
 ::slotted(select:focus) {
-  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline: $p-color-state-focus solid 2px !important;
 }
 
 // Disabled
 ::slotted(select:disabled) {
   border-top-color: rgba(255, 255, 255, 0.01) !important;
-  color: $p-color-theme-light-state-disabled !important;
+  color: $p-color-state-disabled !important;
   cursor: not-allowed !important;
 }
 
@@ -99,11 +99,11 @@
   &__description-text {
     display: block;
     width: fit-content;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     &--visible {
@@ -166,10 +166,10 @@
   }
 
   &__description-text {
-    color: $p-color-theme-light-neutral-contrast-medium;
+    color: $p-color-neutral-contrast-medium;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     #{$bem-block}__label-text ~ & {
@@ -183,36 +183,36 @@
     width: 100%;
     height: p-px-to-rem(48px);
     display: block;
-    background-color: $p-color-theme-light-background;
-    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+    background-color: $p-color-background-default;
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover:not(&--disabled):not(&--success):not(&--error),
     #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+      box-shadow: inset 0 0 0 1px $p-color-default;
     }
 
     &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
-      background-color: $p-color-theme-light-background;
+      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      background-color: $p-color-background-default;
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
       }
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
       }
     }
   }
@@ -221,14 +221,14 @@
     @include p-text-small;
     position: absolute;
     z-index: 1;
-    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
-    border-top-color: $p-color-theme-light-neutral-contrast-low;
+    border: 1px solid $p-color-neutral-contrast-medium;
+    border-top-color: $p-color-neutral-contrast-low;
     left: 0;
     right: 0;
     top: calc(100% - 1px);
     max-height: 200px;
     overflow-y: auto;
-    background-color: $p-color-theme-light-background;
+    background-color: $p-color-background-default;
     scroll-behavior: smooth;
 
     // Firefox scrollbar styling
@@ -269,32 +269,32 @@
     display: block;
     padding: $p-spacing-8 p-px-to-rem(12px);
     cursor: pointer;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:not([aria-disabled]):hover {
-      color: $p-color-theme-light-state-hover;
+      color: $p-color-state-hover;
     }
 
     &:focus {
-      outline: $p-color-theme-light-state-focus solid 2px;
+      outline: $p-color-state-focus solid 2px;
     }
 
     &--selected {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-state-active;
       cursor: default;
       pointer-events: none;
       padding-right: $p-spacing-32;
     }
 
     &--highlighted {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-state-active;
       background-color: #ebebeb;
     }
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
       cursor: not-allowed;
     }
 
@@ -323,11 +323,11 @@
     position: absolute;
     top: p-px-to-rem(12px);
     right: p-px-to-rem(12px);
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: transform $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     &--opened {
@@ -337,15 +337,15 @@
 
   &__message {
     margin-top: $p-spacing-4;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--success {
-      color: $p-color-theme-light-notification-success;
+      color: $p-color-notification-success;
     }
 
     &--error {
-      color: $p-color-theme-light-notification-error;
+      color: $p-color-notification-error;
     }
   }
 
@@ -369,7 +369,7 @@
     font-weight: $p-font-weight-regular;
     font-size: $p-font-size-small;
     line-height: p-calculate-line-height($p-font-size-small);
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     text-indent: 0;
     cursor: text;
 
@@ -378,7 +378,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
       height: p-px-to-rem(48px);
       outline: transparent none;
       transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
@@ -388,7 +388,7 @@
 
     &:hover {
       + span {
-        box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-high;
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
       }
     }
 
@@ -396,12 +396,15 @@
       opacity: 1;
       + span {
         outline-offset: 1px;
-        outline: $p-color-theme-light-state-focus solid 2px;
+        outline: $p-color-state-focus solid 2px;
       }
     }
 
     &:disabled {
       cursor: not-allowed;
+      + span {
+        box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      }
     }
   }
 }
