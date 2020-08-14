@@ -373,6 +373,14 @@
     text-indent: 0;
     cursor: text;
 
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
+    &:-moz-placeholder {
+      color:$p-color-neutral-contrast-medium;
+      opacity: 1;
+    }
+
     + span {
       position: absolute;
       bottom: 0;
@@ -382,7 +390,8 @@
       height: p-px-to-rem(48px);
       outline: transparent none;
       transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-      outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+      outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+      opacity $p-animation-hover-duration $p-animation-hover-bezier;
       pointer-events: all;
     }
 
