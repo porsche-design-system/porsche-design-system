@@ -107,8 +107,10 @@
           })
           // add closing slash to inputs for valid jsx
           .replace(/(<input(?:.[^/]*?))>/g, '$1/>')
-          // add line breaks between tags
-          .replace(/></g, '>\n<')
+          // add line breaks between tags that are not followed by comment
+          .replace(/(><)([^!])/g, '>\n<$2')
+          // remove line breaks between tags that close immediately
+          .replace(/<([\w-]+)(.*)>(\n)<\/\1>/g, '<$1$2></$1>')
       );
     }
 
@@ -162,11 +164,11 @@
             return ` className="${$value}"`;
           })
           // transform to camelCase event binding syntax
-          .replace(/\s(on.+?)={"(.*?)"}/g, (m, $key, $value) => {
+          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
             return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
           })
-          // transform boolean
-          .replace(/\s(\S+)="(true|false)"/g, (m, $key, $value) => {
+          // transform boolean and number
+          .replace(/\s(\S+)="(true|false|\d)"/g, (m, $key, $value) => {
             return ` ${$key}={${$value}}`;
           })
           // transform all keys to camel case which have digits as a value
