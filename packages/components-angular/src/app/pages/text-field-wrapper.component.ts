@@ -39,19 +39,19 @@ import { Component } from '@angular/core';
 
     <div class="playground light" title="should render with disabled state">
       <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'">
-        <input type="text" name="some-name" disabled="true" />
+        <input type="text" name="some-name" disabled />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with placeholder with disabled state">
       <p-text-field-wrapper [label]="'Some label'">
-        <input type="text" name="some-name" placeholder="Some placeholder" disabled="true" />
+        <input type="text" name="some-name" placeholder="Some placeholder" disabled />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with readonly state">
       <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'">
-        <input type="text" name="some-name" value="Some value" readonly="true" />
+        <input type="text" name="some-name" value="Some value" readonly />
       </p-text-field-wrapper>
     </div>
 
@@ -109,11 +109,11 @@ import { Component } from '@angular/core';
       </p-text-field-wrapper>
       <br />
       <p-text-field-wrapper [label]="'Some label'">
-        <input type="password" name="some-name" value="some password" disabled="true" />
+        <input type="password" name="some-name" value="some password" disabled />
       </p-text-field-wrapper>
       <br />
       <p-text-field-wrapper [label]="'Some label'">
-        <input type="password" name="some-name" value="some password" readonly="true" />
+        <input type="password" name="some-name" value="some password" readonly />
       </p-text-field-wrapper>
     </div>
 
@@ -123,11 +123,11 @@ import { Component } from '@angular/core';
       </p-text-field-wrapper>
       <br />
       <p-text-field-wrapper [label]="'Some label'">
-        <input type="search" name="some-name" disabled="true" />
+        <input type="search" name="some-name" disabled />
       </p-text-field-wrapper>
       <br />
       <p-text-field-wrapper [label]="'Some label'">
-        <input type="search" name="some-name" readonly="true" />
+        <input type="search" name="some-name" readonly />
       </p-text-field-wrapper>
     </div>
 

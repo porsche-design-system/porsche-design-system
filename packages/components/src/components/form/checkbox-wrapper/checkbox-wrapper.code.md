@@ -19,7 +19,7 @@ A `label` is a caption which informs the user what information a particular form
       <input type="checkbox" name="some-name"/>
     </p-checkbox-wrapper>
     <p-checkbox-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="checkbox" name="some-name" checked="true"/>
+      <input type="checkbox" name="some-name" checked/>
     </p-checkbox-wrapper>
   </template>
 </Playground>
@@ -43,7 +43,7 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
     <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
   </p-checkbox-wrapper>
   <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked="true"/>
+    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked/>
   </p-checkbox-wrapper>
 </Playground>
 
@@ -53,10 +53,10 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
 
 <Playground :childElementLayout="{spacing: 'inline'}">    
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" disabled="true"/>
+    <input type="checkbox" name="some-name" disabled/>
   </p-checkbox-wrapper>
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" checked="true" disabled="true"/>
+    <input type="checkbox" name="some-name" checked disabled/>
   </p-checkbox-wrapper>
 </Playground>
 

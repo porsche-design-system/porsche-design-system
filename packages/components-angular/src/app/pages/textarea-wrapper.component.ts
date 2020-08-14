@@ -39,19 +39,19 @@ import { Component } from '@angular/core';
 
     <div class="playground light" title="should render in disabled state">
       <p-textarea-wrapper [label]="'Some label'" [description]="'Some description'">
-        <textarea name="some-name" disabled="true"></textarea>
+        <textarea name="some-name" disabled></textarea>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render with placeholder with disabled state">
       <p-textarea-wrapper [label]="'Some label'">
-        <textarea name="some-name" disabled="true" placeholder="Some placeholder"></textarea>
+        <textarea name="some-name" disabled placeholder="Some placeholder"></textarea>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render in readonly state">
       <p-textarea-wrapper [label]="'Some label'">
-        <textarea name="some-name" readonly="true">Some value</textarea>
+        <textarea name="some-name" readonly>Some value</textarea>
       </p-textarea-wrapper>
     </div>
 

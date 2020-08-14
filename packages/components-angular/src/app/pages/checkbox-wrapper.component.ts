@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'" [hideLabel]="true">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
         [label]="'Some label'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
       >
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -41,16 +41,16 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
-        <input type="checkbox" name="some-name" checked="true" class="example-set-to-indeterminate" />
+        <input type="checkbox" name="some-name" checked class="example-set-to-indeterminate" />
       </p-checkbox-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">
       <p-checkbox-wrapper [label]="'Some label'">
-        <input type="checkbox" name="some-name" disabled="true" />
+        <input type="checkbox" name="some-name" disabled />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
-        <input type="checkbox" name="some-name" checked="true" disabled="true" />
+        <input type="checkbox" name="some-name" checked disabled />
       </p-checkbox-wrapper>
     </div>
 
@@ -59,7 +59,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'" [state]="'success'" [message]="'Some success message.'">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -68,7 +68,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'" [state]="'success'">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -77,7 +77,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'" [state]="'error'" [message]="'Some error validation message.'">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
@@ -86,7 +86,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'" [state]="'error'">
-        <input type="checkbox" name="some-name" checked="true" />
+        <input type="checkbox" name="some-name" checked />
       </p-checkbox-wrapper>
     </div>
 
