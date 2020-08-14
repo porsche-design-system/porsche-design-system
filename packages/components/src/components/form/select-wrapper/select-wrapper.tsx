@@ -82,7 +82,7 @@ export class SelectWrapper {
       if (!this.filter) {this.select.addEventListener('mousedown', this.handleMouseEvents.bind(this));}
       this.select.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
       if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.handleClickOutside.bind(this), false);
+        document.addEventListener('mousedown', this.handleClickOutside.bind(this), true);
       }
     }
 
@@ -90,7 +90,7 @@ export class SelectWrapper {
 
   public componentDidLoad(): void {
     if(!this.isTouchWithoutFilter && this.filter) {
-      this.fakeFilter.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
+      this.fakeFilter.addEventListener('click', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
       this.filterInput.addEventListener('input', this.handleFilterSearch.bind(this));
@@ -107,7 +107,7 @@ export class SelectWrapper {
       this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
       this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
       if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.handleClickOutside.bind(this), false);
+        document.removeEventListener('mousedown', this.handleClickOutside.bind(this), true);
       }
     }
   }
@@ -301,12 +301,14 @@ export class SelectWrapper {
   private handleClickOutside(e): void {
     if (this.host.contains(e.target)) {
       return;
+    } else {
+      this.setOptionSelected(this.select.selectedIndex);
     }
-    this.fakeOptionListHidden = true;
   }
 
   private handleMouseEvents(e: MouseEvent): void {
     e.preventDefault();
+    e.stopPropagation();
     this.select.focus();
     this.fakeOptionListHidden = this.fakeOptionListHidden === false;
   }
@@ -358,25 +360,22 @@ export class SelectWrapper {
       case 'Enter':
         e.preventDefault();
         this.fakeOptionListHidden = true;
-        this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+        if(!this.filter) {this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));}
         if(this.filter) {
-          const itemValue = this.optionMaps.filter(item => item.value.toLowerCase() === this.searchString.toLowerCase());
-          if(itemValue.length === 1) {this.setOptionSelected(itemValue[0].key);}
+          const itemValue = !!this.searchString && this.optionMaps.filter(item => item.value.toLowerCase() === this.searchString.toLowerCase());
+          if(itemValue.length === 1) {
+            this.setOptionSelected(itemValue[0].key);
+          } else {
+            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+          }
         }
         break;
       case 'Escape':
       case 'Esc':
-        if(this.filterInput) {
-          // this.filterInput.value = this.options[this.select.selectedIndex].text;
+        if(this.filter) {
           this.filterInput.value = '';
         }
-        this.fakeOptionListHidden = true;
-        this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
-          ...item,
-          hidden: false,
-          highlighted: num === this.select.selectedIndex
-        }));
-        this.fakeOptionListHidden = true;
+        this.setOptionSelected(this.select.selectedIndex);
         break;
       case 'PageUp':
         e.preventDefault();
@@ -420,29 +419,38 @@ export class SelectWrapper {
   };
 
   private setOptionSelected = (key: number): void => {
+    const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.select.selectedIndex = key;
-    this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
-      ...item,
-      selected: num === this.select.selectedIndex,
-      highlighted: num === this.select.selectedIndex
-    }));
+    const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.fakeOptionListHidden = true;
-    if(this.filter) {this.filterInput.value = this.options[this.select.selectedIndex].text;}
-
-    // IE11 workaround for dispatchEvent
-    let event: Event;
-    if (typeof Event === 'function') {
-      event = new Event('change', { bubbles: true });
-    } else {
-      event = document.createEvent('Event');
-      event.initEvent('change', true, false);
-    }
-    this.select.dispatchEvent(event);
 
     if(this.filter) {
+      this.filterInput.value = '';
+      this.searchString = '';
+      this.filterHasResult = true;
+      this.filterInput.setAttribute('placeholder',  this.options[this.select.selectedIndex].text);
       this.filterInput.focus();
     } else {
       this.select.focus();
+    }
+
+    this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+      ...item,
+      selected: num === this.select.selectedIndex,
+      highlighted: num === this.select.selectedIndex,
+      hidden: false
+    }));
+
+    if(oldSelectedValue !== newSelectedValue) {
+      // IE11 workaround for dispatchEvent
+      let event: Event;
+      if (typeof Event === 'function') {
+        event = new Event('change', { bubbles: true });
+      } else {
+        event = document.createEvent('Event');
+        event.initEvent('change', true, false);
+      }
+      this.select.dispatchEvent(event);
     }
   };
 
@@ -545,11 +553,13 @@ export class SelectWrapper {
   private handleFilterInputClick(): void {
     if(!this.disabled) {
       this.filterInput.focus();
+      this.filterInput.value = '';
+      this.searchString = '';
       this.fakeOptionListHidden = this.fakeOptionListHidden === false;
     }
   }
 
-  private handleFilterSearch(ev):void {
+  private handleFilterSearch(ev): void {
     this.searchString = '';
     this.searchString = ev.target.value;
     this.optionMaps = this.optionMaps.map((item: optionMap) => ({
