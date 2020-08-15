@@ -302,7 +302,7 @@ export class SelectWrapper {
     if (this.host.contains(e.target)) {
       return;
     } else {
-      this.setOptionSelected(this.select.selectedIndex);
+      this.fakeOptionListHidden = true;
     }
   }
 
@@ -429,9 +429,9 @@ export class SelectWrapper {
       this.searchString = '';
       this.filterHasResult = true;
       this.filterInput.setAttribute('placeholder',  this.options[this.select.selectedIndex].text);
-      this.filterInput.focus();
+      if(document.activeElement !== this.filterInput) {this.filterInput.focus();}
     } else {
-      this.select.focus();
+      if(document.activeElement !== this.select) {this.select.focus();}
     }
 
     this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
