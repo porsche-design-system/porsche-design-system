@@ -767,7 +767,7 @@ describe('select-wrapper', () => {
     });
   });
 
-  fdescribe('fake drop down with filter (combobox)', () => {
+  describe('fake drop down with filter (combobox)', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(
         page,
