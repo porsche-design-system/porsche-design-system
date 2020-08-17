@@ -22,6 +22,7 @@ process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
 export const config: Config = {
   namespace: 'porsche-design-system',
+  taskQueue: 'async',
   outputTargets: [
     { type: 'dist', esmLoaderPath: '../loader' },
     {
