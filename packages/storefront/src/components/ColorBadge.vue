@@ -1,15 +1,13 @@
 <template>
-  <div class="color-badge" :class="[theme, color]">
-  </div>
+  <div class="color-badge" :class="[theme, color]"></div>
 </template>
 
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
-
-  type Theme = 'light' | 'dark';
+  import { Theme } from '@/models';
 
   type Color =
-    'brand'
+    | 'brand'
     | 'default'
     | 'background-default'
     | 'background-surface'
@@ -38,13 +36,13 @@
 
   @Component
   export default class ColorBadge extends Vue {
-    @Prop({default: 'light'}) public theme!: Theme;
-    @Prop({default: 'brand'}) public color!: Color;
+    @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: 'brand' }) public color!: Color;
   }
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/scss";
+  @import '~@porsche-design-system/utilities/scss';
 
   .color-badge {
     width: p-px-to-rem(160px);

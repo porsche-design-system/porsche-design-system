@@ -1,5 +1,4 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -88,11 +87,14 @@ export class Pagination {
   }
 
   public render(): JSX.Element {
-    const breakpointClasses = mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks);
     const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
-    const paginationClasses = cx(breakpointClasses, prefix('pagination'), prefix(`pagination--theme-${this.theme}`));
-    const paginationItemsClasses = cx(prefix('pagination__items'));
+    const paginationClasses = {
+      [prefix('pagination')]: true,
+      [prefix(`pagination--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks)
+    };
+    const paginationItemsClasses = prefix('pagination__items');
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
 
@@ -111,16 +113,16 @@ export class Pagination {
       let prevItem: JSX.Element[];
       let nextItem: JSX.Element[];
 
-      const paginationItemClasses = cx(prefix('pagination__item'));
+      const paginationItemClasses = prefix('pagination__item');
 
       const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
 
       paginationModel.forEach((pageModel: PaginationModelItem) => {
         if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
-          const paginationPrevClasses = cx(
-            prefix('pagination__prev'),
-            !pageModel.isActive && prefix('pagination__prev--disabled')
-          );
+          const paginationPrevClasses = {
+            [prefix('pagination__prev')]: true,
+            [prefix('pagination__prev--disabled')]: !pageModel.isActive
+          };
 
           return (prevItem = (
             <li {...pageModel} class={paginationItemClasses}>
@@ -139,7 +141,10 @@ export class Pagination {
           ));
         }
         if (pageModel.type === itemTypes.ELLIPSIS) {
-          const paginationGoToClasses = cx(prefix('pagination__goto'), prefix('pagination__goto--ellipsis'));
+          const paginationGoToClasses = {
+            [prefix('pagination__goto')]: true,
+            [prefix('pagination__goto--ellipsis')]: true
+          };
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
               <span class={paginationGoToClasses} />
@@ -147,10 +152,10 @@ export class Pagination {
           );
         }
         if (pageModel.type === itemTypes.PAGE) {
-          const paginationGoToClasses = cx(
-            prefix('pagination__goto'),
-            pageModel.isActive && prefix('pagination__goto--current')
-          );
+          const paginationGoToClasses = {
+            [prefix('pagination__goto')]: true,
+            [prefix('pagination__goto--current')]: pageModel.isActive
+          };
           pageItems.push(
             <li {...pageModel} class={paginationItemClasses}>
               <span
@@ -169,10 +174,10 @@ export class Pagination {
           );
         }
         if (pageModel.type === itemTypes.NEXT_PAGE_LINK) {
-          const paginationNextClasses = cx(
-            prefix('pagination__next'),
-            !pageModel.isActive && prefix('pagination__next--disabled')
-          );
+          const paginationNextClasses = {
+            [prefix('pagination__next')]: true,
+            [prefix('pagination__next--disabled')]: !pageModel.isActive
+          };
 
           return (nextItem = (
             <li {...pageModel} class={paginationItemClasses}>
