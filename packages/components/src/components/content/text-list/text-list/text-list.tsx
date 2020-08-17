@@ -1,5 +1,4 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
-import cx from 'classnames';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
 import { Theme } from '../../../../types';
 
@@ -23,12 +22,12 @@ export class TextList {
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
 
-    const textListClasses = cx(
-      prefix('text-list'),
-      prefix(`text-list--${this.listType}`),
-      prefix(`text-list--theme-${this.theme}`),
-      this.isNestedList && prefix('text-list--nested')
-    );
+    const textListClasses = {
+      [prefix('text-list')]: true,
+      [prefix(`text-list--${this.listType}`)]: true,
+      [prefix(`text-list--theme-${this.theme}`)]: true,
+      [prefix('text-list--nested')]: this.isNestedList
+    };
 
     return (
       <Host nested={this.isNestedList}>

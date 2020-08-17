@@ -1,5 +1,4 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -78,12 +77,12 @@ export class Link {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkClasses = cx(
-      prefix('link'),
-      prefix(`link--${this.variant}`),
-      mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
-      prefix(`link--theme-${this.theme}`)
-    );
+    const linkClasses = {
+      [prefix('link')]: true,
+      [prefix(`link--${this.variant}`)]: true,
+      [prefix(`link--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'])
+    };
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
 
