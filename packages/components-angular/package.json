@@ -25,7 +25,7 @@
     "@angular/platform-browser": "^10.0.8",
     "@angular/platform-browser-dynamic": "^10.0.8",
     "@angular/router": "^10.0.8",
-    "@porsche-design-system/components-angular": "2.0.0-alpha.0",
+    "@porsche-design-system/components-angular": "2.0.0-alpha.1",
     "rxjs": "^6.6.2",
     "tslib": "^2.0.1",
     "zone.js": "~0.10.3"
