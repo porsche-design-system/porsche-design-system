@@ -1,5 +1,4 @@
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   calcLineHeightForElement,
@@ -74,23 +73,23 @@ export class LinkPure {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkPureClasses = cx(
-      prefix('link-pure'),
-      mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
-      prefix(`link-pure--theme-${this.theme}`),
-      this.active && prefix('link-pure--active')
-    );
+    const linkPureClasses = {
+      [prefix('link-pure')]: true,
+      [prefix(`link-pure--theme-${this.theme}`)]: true,
+      [prefix('link-pure--active')]: this.active,
+      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size)
+    };
 
-    const iconClasses = cx(prefix('link-pure__icon'));
+    const iconClasses = prefix('link-pure__icon');
 
-    const labelClasses = cx(
-      prefix('link-pure__label'),
-      mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
-    );
-    const sublineClasses = cx(
-      prefix('link-pure__subline'),
-      mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
-    );
+    const labelClasses = {
+      [prefix('link-pure__label')]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const sublineClasses = {
+      [prefix('link-pure__subline')]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 

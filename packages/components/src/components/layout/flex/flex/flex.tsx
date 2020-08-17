@@ -1,10 +1,5 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import cx from 'classnames';
-import {
-  BreakpointCustomizable,
-  mapBreakpointPropToPrefixedClasses,
-  prefix
-} from '../../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-flex',
@@ -34,18 +29,18 @@ export class Flex {
   > = 'stretch';
 
   public render(): JSX.Element {
-    const flexClasses = cx(
-      prefix('flex'),
-      this.inline !== false && mapBreakpointPropToPrefixedClasses('flex-', this.inline, ['inline', 'default']),
-      this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap),
-      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction),
-      this.justifyContent !== 'flex-start' && mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent),
-      this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems),
-      this.alignContent !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent)
-    );
+    const flexClasses = {
+      [prefix('flex')]: true,
+      ...(this.inline !== false && mapBreakpointPropToPrefixedClasses('flex-', this.inline, ['inline', 'default'])),
+      ...(this.wrap !== 'nowrap' && mapBreakpointPropToPrefixedClasses('flex--wrap', this.wrap)),
+      ...(this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('flex--direction', this.direction)),
+      ...(this.justifyContent !== 'flex-start' &&
+        mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent)),
+      ...(this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems)),
+      ...(this.alignContent !== 'stretch' &&
+        mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent))
+    };
 
-    return (
-      <Host class={flexClasses} />
-    );
+    return <Host class={flexClasses} />;
   }
 }
