@@ -1,6 +1,5 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
-import cx from 'classnames';
-import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { Theme } from '../../../types';
 
 @Component({
@@ -13,18 +12,18 @@ export class Divider {
   @Prop() public color?: 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' = 'neutral-contrast-low';
 
   /** Defines orientation. */
-  @Prop() public orientation?: 'vertical' | 'horizontal' = 'horizontal';
+  @Prop() public orientation?: BreakpointCustomizable<'vertical' | 'horizontal'> = 'horizontal';
 
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
-    const dividerClasses = cx(
-      prefix('divider'),
-      prefix(`divider--color-${this.color}`),
-      prefix(`divider--theme-${this.theme}`),
-      mapBreakpointPropToPrefixedClasses('divider--orientation', this.orientation)
-    );
+    const dividerClasses = {
+      [prefix('divider')]: true,
+      [prefix(`divider--color-${this.color}`)]: true,
+      [prefix(`divider--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('divider--orientation', this.orientation)
+    };
 
     return (
       <hr class={dividerClasses}/>

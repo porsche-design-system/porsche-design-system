@@ -1,6 +1,9 @@
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
-import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
 import { improveButtonHandlingForCustomElement } from '../../../utils/buttonHandling';
 import { ButtonType, IconName, Theme } from '../../../types';
@@ -57,12 +60,12 @@ export class Button {
   }
 
   public render(): JSX.Element {
-    const buttonClasses = cx(
-      prefix('button'),
-      prefix(`button--${this.variant}`),
-      mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
-      prefix(`button--theme-${this.theme}`)
-    );
+    const buttonClasses = {
+      [prefix('button')]: true,
+      [prefix(`button--${this.variant}`)]: true,
+      [prefix(`button--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label'])
+    };
     const iconClasses = prefix('button__icon');
     const labelClasses = prefix('button__label');
 
