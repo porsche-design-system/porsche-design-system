@@ -1,6 +1,5 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
-import cx from 'classnames';
 import { prefix } from '../../../utils';
 import { Theme, IconName } from '../../../types';
 
@@ -57,7 +56,8 @@ export class Icon {
       this.svgContent = undefined; // reset svg content while new icon is loaded
       const url = buildIconUrl(this.source ?? this.name);
       getSvgContent(url).then((iconContent) => {
-        if (url === buildIconUrl(this.source ?? this.name)) { // check if response matches current icon source
+        // check if response matches current icon source
+        if (url === buildIconUrl(this.source ?? this.name)) {
           this.svgContent = iconContent;
         }
       });
@@ -82,32 +82,34 @@ export class Icon {
   }
 
   public render(): JSX.Element {
-    const iconClasses = cx(
-      prefix('icon'),
-      prefix(`icon--size-${this.size}`),
-      prefix(`icon--color-${this.color}`),
-      this.color !== 'inherit' && prefix(`icon--theme-${this.theme}`)
-    );
+    const iconClasses = {
+      [prefix('icon')]: true,
+      [prefix(`icon--size-${this.size}`)]: true,
+      [prefix(`icon--color-${this.color}`)]: true,
+      [prefix(`icon--theme-${this.theme}`)]: this.color !== 'inherit'
+    };
 
     return (
       <Host>
-        <i class={iconClasses} innerHTML={this.svgContent}/>
+        <i class={iconClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }
 
   private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
     if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
-      const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
-        if (data[0].isIntersecting) {
-          io.disconnect();
-          this.io = undefined;
-          cb();
-        }
-      }, {rootMargin});
+      const io = (this.io = new (window as any).IntersectionObserver(
+        (data: IntersectionObserverEntry[]) => {
+          if (data[0].isIntersecting) {
+            io.disconnect();
+            this.io = undefined;
+            cb();
+          }
+        },
+        { rootMargin }
+      ));
 
       io.observe(el);
-
     } else {
       // browser doesn't support IntersectionObserver
       // so just fallback to always show it

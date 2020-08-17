@@ -1,10 +1,5 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import cx from 'classnames';
-import {
-  BreakpointCustomizable,
-  mapBreakpointPropToPrefixedClasses,
-  prefix
-} from '../../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-grid',
@@ -15,10 +10,10 @@ export class Grid {
   @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
 
   public render(): JSX.Element {
-    const gridClasses = cx(
-      prefix('grid'),
-      this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction)
-    );
+    const gridClasses = {
+      [prefix('grid')]: true,
+      ...(this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('grid--direction', this.direction))
+    };
 
     return <Host class={gridClasses} />;
   }

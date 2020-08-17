@@ -9,7 +9,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -18,7 +18,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label" hideLabel="true">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -33,7 +33,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           label="Some label"
           hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -49,7 +49,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input
             type="checkbox"
             name="some-name"
-            defaultChecked={true}
+            defaultChecked
             ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
           />
         </CheckboxWrapper>
@@ -57,10 +57,10 @@ export const CheckboxWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in disabled state">
         <CheckboxWrapper label="Some label">
-          <input type="checkbox" name="some-name" disabled={true} />
+          <input type="checkbox" name="some-name" disabled />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label">
-          <input type="checkbox" name="some-name" defaultChecked={true} disabled={true} />
+          <input type="checkbox" name="some-name" defaultChecked disabled />
         </CheckboxWrapper>
       </div>
 
@@ -69,7 +69,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label" state="success" message="Some success message.">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -78,7 +78,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label" state="success">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -87,7 +87,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label" state="error" message="Some error validation message.">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
@@ -96,7 +96,7 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <input type="checkbox" name="some-name" />
         </CheckboxWrapper>
         <CheckboxWrapper label="Some label" state="error">
-          <input type="checkbox" name="some-name" defaultChecked={true} />
+          <input type="checkbox" name="some-name" defaultChecked />
         </CheckboxWrapper>
       </div>
 
