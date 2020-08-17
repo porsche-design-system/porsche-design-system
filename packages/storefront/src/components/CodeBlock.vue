@@ -78,8 +78,6 @@
 
     private convert(markup: string, framework: Framework): string {
       switch (framework) {
-        case 'vanilla-js':
-          return markup;
         case 'angular':
           return this.convertToAngular(markup);
         case 'react':
@@ -107,10 +105,16 @@
           })
           // add closing slash to inputs for valid jsx
           .replace(/(<input(?:.[^/]*?))>/g, '$1/>')
+          // replace <br> tags with new line
+          .replace(/<br[\s/]*>/g, '\n')
           // add line breaks between tags that are not followed by comment
           .replace(/(><)([^!])/g, '>\n<$2')
           // remove line breaks between tags that close immediately
-          .replace(/<([\w-]+)(.*)>(\n)<\/\1>/g, '<$1$2></$1>')
+          .replace(/<([\w-]+)(.*)>\n<\/\1>/g, '<$1$2></$1>')
+          // remove multiple new lines
+          .replace(/\n{3,}/g, '\n\n')
+          // clean checked, disabled and readonly attributes
+          .replace(/(checked|disabled|readonly)="\1"/g, '$1')
       );
     }
 
