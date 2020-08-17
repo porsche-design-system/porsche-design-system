@@ -9,7 +9,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-1" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-1" defaultChecked={true} />
+          <input type="radio" name="some-name-1" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
@@ -18,7 +18,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-2" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label" hideLabel="true">
-          <input type="radio" name="some-name-2" defaultChecked={true} />
+          <input type="radio" name="some-name-2" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
@@ -33,16 +33,16 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           label="Some label"
           hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
         >
-          <input type="radio" name="some-name-3" defaultChecked={true} />
+          <input type="radio" name="some-name-3" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">
         <RadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-4" disabled={true} />
+          <input type="radio" name="some-name-4" disabled />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-4" defaultChecked={true} disabled={true} />
+          <input type="radio" name="some-name-4" defaultChecked disabled />
         </RadioButtonWrapper>
       </div>
 
@@ -51,7 +51,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-5" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label" state="success" message="Some success validation message.">
-          <input type="radio" name="some-name-5" defaultChecked={true} />
+          <input type="radio" name="some-name-5" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
@@ -63,7 +63,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-6" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label" state="success">
-          <input type="radio" name="some-name-6" defaultChecked={true} />
+          <input type="radio" name="some-name-6" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
@@ -72,7 +72,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-7" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label" state="error" message="Some error validation message.">
-          <input type="radio" name="some-name-7" defaultChecked={true} />
+          <input type="radio" name="some-name-7" defaultChecked />
         </RadioButtonWrapper>
       </div>
 
@@ -84,7 +84,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <input type="radio" name="some-name-8" />
         </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label" state="error">
-          <input type="radio" name="some-name-8" defaultChecked={true} />
+          <input type="radio" name="some-name-8" defaultChecked />
         </RadioButtonWrapper>
       </div>
 

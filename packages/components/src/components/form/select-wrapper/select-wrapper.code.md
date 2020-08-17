@@ -588,7 +588,7 @@ A description text can be added to explain the meaning of a specific form field.
 <Playground :themeable="true">
   <template v-slot={theme}>
     <p-select-wrapper label="Some label" :theme="theme">
-      <select name="some-name" disabled="disabled">
+      <select name="some-name" disabled>
         <option value="a">Option A</option>
         <option value="b">Option B</option>
         <option value="c">Option C</option>
