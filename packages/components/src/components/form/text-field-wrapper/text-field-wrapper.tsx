@@ -1,5 +1,4 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -58,32 +57,32 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const containerClasses = cx(prefix('text-field-wrapper__container'));
-    const labelClasses = cx(prefix('text-field-wrapper__label'));
-    const labelTextClasses = cx(
-      prefix('text-field-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('text-field-wrapper__label-text--disabled')
-    );
-    const descriptionTextClasses = cx(
-      prefix('text-field-wrapper__description-text'),
-      mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
+    const containerClasses = prefix('text-field-wrapper__container');
+    const labelClasses = prefix('text-field-wrapper__label');
+    const labelTextClasses = {
+      [prefix('text-field-wrapper__label-text')]: true,
+      [prefix('text-field-wrapper__label-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const descriptionTextClasses = {
+      [prefix('text-field-wrapper__description-text')]: true,
+      [prefix('text-field-wrapper__description-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
         'hidden',
         'visible'
-      ]),
-      this.disabled && prefix('text-field-wrapper__description-text--disabled')
-    );
-    const fakeInputClasses = cx(
-      prefix('text-field-wrapper__fake-input'),
-      this.state !== 'none' && prefix(`text-field-wrapper__fake-input--${this.state}`),
-      this.disabled && prefix('text-field-wrapper__fake-input--disabled'),
-      this.readonly && prefix('text-field-wrapper__fake-input--readonly')
-    );
-    const buttonClasses = cx(prefix('text-field-wrapper__button'));
-    const messageClasses = cx(
-      prefix('text-field-wrapper__message'),
-      this.state !== 'none' && prefix(`text-field-wrapper__message--${this.state}`)
-    );
+      ])
+    };
+    const fakeInputClasses = {
+      [prefix('text-field-wrapper__fake-input')]: true,
+      [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
+      [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
+      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly
+    };
+    const buttonClasses = prefix('text-field-wrapper__button');
+    const messageClasses = {
+      [prefix('text-field-wrapper__message')]: true,
+      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none'
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 

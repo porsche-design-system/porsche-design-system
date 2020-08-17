@@ -1,7 +1,6 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
-import cx from 'classnames';
-import { prefix } from '../../../utils';
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
+import { prefix } from '../../../utils';
 
 @Component({
   tag: 'p-marque',
@@ -25,7 +24,8 @@ export class Marque {
         .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
         .join(',');
 
-    const marqueClasses = cx(prefix('marque'));
+    const marqueClasses = prefix('marque');
+
     return (
       <picture class={marqueClasses}>
         <source srcSet={buildSrcSet('medium')} media="(min-width: 1300px)" />

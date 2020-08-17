@@ -40,19 +40,19 @@ export const TextFieldWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with disabled state">
         <TextFieldWrapper label="Some label" description="Some description">
-          <input type="text" name="some-name" disabled={true} />
+          <input type="text" name="some-name" disabled />
         </TextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with placeholder with disabled state">
         <TextFieldWrapper label="Some label">
-          <input type="text" name="some-name" placeholder="Some placeholder" disabled={true} />
+          <input type="text" name="some-name" placeholder="Some placeholder" disabled />
         </TextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with readonly state">
         <TextFieldWrapper label="Some label" description="Some description">
-          <input type="text" name="some-name" value="Some value" readOnly={true} />
+          <input type="text" name="some-name" value="Some value" readOnly />
         </TextFieldWrapper>
       </div>
 
@@ -110,11 +110,11 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </TextFieldWrapper>
         <br />
         <TextFieldWrapper label="Some label">
-          <input type="password" name="some-name" value="some password" disabled={true} />
+          <input type="password" name="some-name" value="some password" disabled />
         </TextFieldWrapper>
         <br />
         <TextFieldWrapper label="Some label">
-          <input type="password" name="some-name" value="some password" readOnly={true} />
+          <input type="password" name="some-name" value="some password" readOnly />
         </TextFieldWrapper>
       </div>
 
@@ -124,11 +124,11 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </TextFieldWrapper>
         <br />
         <TextFieldWrapper label="Some label">
-          <input type="search" name="some-name" disabled={true} />
+          <input type="search" name="some-name" disabled />
         </TextFieldWrapper>
         <br />
         <TextFieldWrapper label="Some label">
-          <input type="search" name="some-name" readOnly={true} />
+          <input type="search" name="some-name" readOnly />
         </TextFieldWrapper>
       </div>
 
