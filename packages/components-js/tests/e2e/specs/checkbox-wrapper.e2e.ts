@@ -1,4 +1,5 @@
 import {
+  getActiveElementTagName,
   getAttribute,
   getCssClasses, getElementStyle, getProperty,
   selectNode,
@@ -135,18 +136,21 @@ describe('checkbox-wrapper', () => {
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(false);
+    expect(await getActiveElementTagName(page)).not.toBe('INPUT');
 
     await labelText.click();
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(true);
+    expect(await getActiveElementTagName(page)).toBe('INPUT');
 
     await labelText.click();
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(false);
+    expect(await getActiveElementTagName(page)).toBe('INPUT');
   });
 
   it('should check/uncheck checkbox when checkbox is changed programmatically', async () => {

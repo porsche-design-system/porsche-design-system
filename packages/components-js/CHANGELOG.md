@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
 ### [1.5.3] - 2020-08-10
 
 ### [1.5.3-rc.0] - 2020-08-10
