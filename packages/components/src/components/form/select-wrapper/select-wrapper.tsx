@@ -349,12 +349,15 @@ export class SelectWrapper {
         break;
       case ' ':
       case 'Spacebar':
-        if(!this.filter) {
+        if(this.filter) {
+          this.fakeOptionListHidden = false;
+        }
+        else {
           e.preventDefault();
           this.fakeOptionListHidden = this.fakeOptionListHidden === false;
-          if (this.fakeOptionListHidden) {
-            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
-          }
+        }
+        if (this.fakeOptionListHidden) {
+          this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
         }
         break;
       case 'Enter':
@@ -564,7 +567,7 @@ export class SelectWrapper {
     this.searchString = ev.target.value;
     this.optionMaps = this.optionMaps.map((item: optionMap) => ({
       ...item,
-      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase()),
+      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
     }));
 
     const hiddenItems = this.optionMaps.filter(e => e.hidden === true).length;
