@@ -137,6 +137,7 @@ export class RadioButtonWrapper {
      * of the box
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
+      this.input.focus();
       this.input.click();
     }
   };
