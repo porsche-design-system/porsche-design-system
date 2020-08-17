@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.0.0] - 2020-08-14
+### [2.0.0-rc.0] - 2020-08-17
 
 #### Changed
-- Refactored Fonts
+- Fonts metric letter spacing
 
 ### [1.2.1] - 2020-08-13
 
