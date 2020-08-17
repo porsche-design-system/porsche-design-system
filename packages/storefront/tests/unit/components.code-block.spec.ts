@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, Wrapper } from '@vue/test-utils';
 import CodeBlock from '@/components/CodeBlock.vue';
 import Vuex, { Store } from 'vuex';
 import Vue from 'vue';
@@ -31,6 +31,9 @@ describe('CodeBlock.vue', () => {
     }
   });
 
+  const getTabButton = (wrapper: Wrapper<Vue>, type: 'vanillajs' | 'angular' | 'react'): Wrapper<Vue> =>
+    wrapper.find(`.tabs .tab:nth-child(${['vanillajs', 'angular', 'react'].indexOf(type) + 1}) button`);
+
   beforeEach(() => {
     store.commit('setSelectedFramework', 'vanilla-js');
   });
@@ -46,8 +49,9 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    expect(wrapper.find('.tabs .tab:nth-child(1) button').text()).toBe('Vanilla JS');
-    expect(wrapper.find('.tabs .tab:nth-child(1) button').classes()).toContain('is-active');
+    const btn = getTabButton(wrapper, 'vanillajs');
+    expect(btn.text()).toBe('Vanilla JS');
+    expect(btn.classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
       `<p-some-tag some-attribute="some value">
   <span>some text</span>
@@ -66,7 +70,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    const btn = wrapper.find('.tabs .tab:nth-child(2) button');
+    const btn = getTabButton(wrapper, 'angular');
     expect(btn.text()).toBe('Angular');
     expect(btn.classes()).not.toContain('is-active');
 
@@ -93,7 +97,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    const btn = wrapper.find('.tabs .tab:nth-child(3) button');
+    const btn = getTabButton(wrapper, 'react');
     expect(btn.text()).toBe('React');
     expect(btn.classes()).not.toContain('is-active');
 
@@ -243,7 +247,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    wrapper.find('.tabs .tab:nth-child(2) button').trigger('click');
+    getTabButton(wrapper, 'angular').trigger('click');
 
     await tick();
 
@@ -266,7 +270,7 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    wrapper.find('.tabs .tab:nth-child(3) button').trigger('click');
+    getTabButton(wrapper, 'react').trigger('click');
 
     await tick();
 
@@ -275,5 +279,86 @@ describe('CodeBlock.vue', () => {
   <span>some text</span>
 </PSomeTag>`
     );
+  });
+
+  it('should add closing slash on input tags', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<input type="checkbox">`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<input type="checkbox" />`);
+  });
+
+  it('should add new line between tags for readability', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<div><span></span></div>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<div>
+  <span></span>
+</div>`);
+  });
+
+  it('should remove new line when tag closes immediately', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<div>
+</div>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<div></div>`);
+  });
+
+  it('should remove br tags', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<div></div><br><div></div><br><div></div>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<div></div>
+<div></div>
+<div></div>`);
+  });
+
+  it('should replace multiple new lines', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<div></div><br><br><div></div><br><br><br><div></div>`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<div></div>
+
+<div></div>
+
+<div></div>`);
+  });
+
+  it('should clean checked, disabled and readonly attributes', () => {
+    const wrapper = shallowMount(CodeBlock, {
+      stubs,
+      store,
+      propsData: {
+        markup: `<input type="checkbox" checked="checked" disabled="disabled" readonly="readonly">`
+      }
+    });
+
+    expect(wrapper.find('code').text()).toBe(`<input type="checkbox" checked disabled readonly />`);
   });
 });
