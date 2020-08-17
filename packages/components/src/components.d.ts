@@ -491,6 +491,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -1267,6 +1271,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
