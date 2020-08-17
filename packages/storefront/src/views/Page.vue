@@ -15,7 +15,7 @@
   import { Component, Vue, Watch } from 'vue-property-decorator';
   import { config as STOREFRONT_CONFIG } from '@/../storefront.config';
   import Markdown from '@/components/Markdown.vue';
-  import { ComponentListImport } from '@/interface';
+  import { ComponentListImport } from '@/models';
   import { Component as ComponentType } from 'vue/types/options';
   import { capitalCase, paramCase } from 'change-case';
 
@@ -93,14 +93,14 @@
       if (this.hasTabs) {
         await this.$router.replace(this.createTabLink(this.tabs[0]));
       } else {
-        await this.$router.replace({name: `404`});
+        await this.$router.replace({ name: `404` });
       }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  @import "~@porsche-design-system/utilities/scss";
+  @import '~@porsche-design-system/utilities/scss';
   @import '../styles/internal.variables';
 
   .tabs {
@@ -118,8 +118,8 @@
       bottom: 0;
       margin-left: p-px-to-rem(-48px);
       width: p-px-to-rem(48px);
-      background: rgb(255,255,255);
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%);
+      background: rgb(255, 255, 255);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
     }
 
     .tab {
