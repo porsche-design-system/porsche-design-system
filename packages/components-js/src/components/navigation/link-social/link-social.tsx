@@ -1,5 +1,4 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   prefix,
@@ -75,12 +74,12 @@ export class LinkSocial {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkClasses = cx(
-      prefix('link-social'),
-      mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
-      prefix(`link-social--${this.icon}`),
-      prefix(`link-social--theme-${this.theme}`)
-    );
+    const linkClasses = {
+      [prefix('link-social')]: true,
+      [prefix(`link-social--${this.icon}`)]: true,
+      [prefix(`link-social--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label'])
+    };
     const iconClasses = prefix('link-social__icon');
     const labelClasses = prefix('link-social__label');
 

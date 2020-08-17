@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import cx from 'classnames';
 import {
-  BreakpointCustomizable, calcLineHeightForElement,
+  BreakpointCustomizable,
+  calcLineHeightForElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener
@@ -15,7 +15,6 @@ import { insertSlottedStyles } from '../../../../utils/slotted-styles';
   shadow: true
 })
 export class Text {
-
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
@@ -61,19 +60,19 @@ export class Text {
   public render(): JSX.Element {
     const TagType = this.hasSlottedTextTag ? 'div' : this.tag;
 
-    const textClasses = cx(
-      prefix('text'),
-      mapBreakpointPropToPrefixedClasses('text--size', this.size),
-      prefix(`text--weight-${this.weight}`),
-      prefix(`text--align-${this.align}`),
-      prefix(`text--color-${this.color}`),
-      this.ellipsis && prefix('text--ellipsis'),
-      this.color !== 'inherit' && prefix(`text--theme-${this.theme}`)
-    );
+    const textClasses = {
+      [prefix('text')]: true,
+      [prefix(`text--weight-${this.weight}`)]: true,
+      [prefix(`text--align-${this.align}`)]: true,
+      [prefix(`text--color-${this.color}`)]: true,
+      [prefix('text--ellipsis')]: this.ellipsis,
+      [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
+      ...mapBreakpointPropToPrefixedClasses('text--size', this.size)
+    };
 
     return (
-      <TagType class={textClasses} ref={el => this.textTag = el as HTMLElement}>
-        <slot/>
+      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
+        <slot />
       </TagType>
     );
   }
@@ -90,7 +89,7 @@ export class Text {
   }
 
   private addSlottedStyles(): void {
-    const tagName= this.host.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
       outline: none transparent;
       color: inherit;
