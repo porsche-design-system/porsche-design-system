@@ -9,7 +9,7 @@ import {
   prefix,
   transitionListener
 } from '../../../utils';
-import { FormState } from '../../../types';
+import { FormState, Theme } from '../../../types';
 
 interface optionMap {
   readonly key: number;
@@ -45,6 +45,9 @@ export class SelectWrapper {
 
   /** Filter results by typing a charcter */
   @Prop() public filter?: boolean = false;
+
+  /** Adapts the button color depending on the theme. */
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -113,16 +116,17 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = cx(prefix('select-wrapper__label'));
-    const labelTextClasses = cx(
-      prefix('select-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('select-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      { [prefix('select-wrapper__label-text--disabled')]: this.disabled }
+    const selectClasses = cx(prefix('select-wrapper'),
+      prefix(`select-wrapper--theme-${this.theme}`));
+    const labelClasses = cx(
+      prefix('select-wrapper__label'),
+      mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
+      { [prefix('select-wrapper__label--disabled')]: this.disabled }
     );
-    const descriptionTextClasses = cx(
-      prefix('select-wrapper__description-text'),
-      mapBreakpointPropToPrefixedClasses('select-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
-      { [prefix('select-wrapper__description-text--disabled')]: this.disabled }
+    const descriptionClasses = cx(
+      prefix('select-wrapper__description'),
+      mapBreakpointPropToPrefixedClasses('select-wrapper__description-', this.hideLabel, ['hidden', 'visible']),
+      { [prefix('select-wrapper__description--disabled')]: this.disabled }
     );
     const fakeSelectClasses = cx(
       prefix('select-wrapper__fake-select'),
@@ -137,18 +141,20 @@ export class SelectWrapper {
       { [prefix('select-wrapper__icon--disabled')]: this.disabled },
       { [prefix('select-wrapper__icon--opened')]: !this.fakeOptionListHidden }
     );
-    const messageClasses = cx(prefix('select-wrapper__message'), {
-      [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
-    });
-    const filterInputClasses = cx(prefix('select-wrapper__filter-input'));
+    const messageClasses = cx(prefix('select-wrapper__message'),
+      prefix(`select-wrapper--theme-${this.theme}`),
+      { [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none' },
+    );
+    const filterInputClasses = cx(prefix('select-wrapper__filter-input'),
+      prefix(`select-wrapper__filter-input--theme-${this.theme}`));
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
       <Host>
-        <div class={labelClasses}>
+        <div class={selectClasses}>
           <label>
             {this.isLabelVisible && (
-              <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+              <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || (
                   <span>
                     <slot name="label" />
@@ -158,7 +164,7 @@ export class SelectWrapper {
             )}
             {this.isDescriptionVisible && (
               <PrefixedTagNames.pText
-                class={descriptionTextClasses}
+                class={descriptionClasses}
                 tag="span"
                 color="inherit"
                 size="x-small"
