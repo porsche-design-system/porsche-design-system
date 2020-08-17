@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   mapBreakpointPropToPrefixedClasses,
@@ -50,24 +49,30 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = cx(prefix('textarea-wrapper__label'));
-    const labelTextClasses = cx(
-      prefix('textarea-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('textarea-wrapper__label-text--disabled')
-    );
-    const descriptionTextClasses = cx(
-      prefix('textarea-wrapper__description-text'),
-      mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('textarea-wrapper__description-text--disabled')
-    );
-    const fakeTextareaClasses = cx(
-      prefix('textarea-wrapper__fake-textarea'),
-      prefix(`textarea-wrapper__fake-textarea--${this.state}`),
-      this.disabled && prefix('textarea-wrapper__fake-textarea--disabled'),
-      this.readonly && prefix('textarea-wrapper__fake-textarea--readonly')
-    );
-    const messageClasses = cx(prefix('textarea-wrapper__message'), prefix(`textarea-wrapper__message--${this.state}`));
+    const labelClasses = prefix('textarea-wrapper__label');
+    const labelTextClasses = {
+      [prefix('textarea-wrapper__label-text')]: true,
+      [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const descriptionTextClasses = {
+      [prefix('textarea-wrapper__description-text')]: true,
+      [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
+        'hidden',
+        'visible'
+      ])
+    };
+    const fakeTextareaClasses = {
+      [prefix('textarea-wrapper__fake-textarea')]: true,
+      [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
+      [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
+      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly
+    };
+    const messageClasses = {
+      [prefix('textarea-wrapper__message')]: true,
+      [prefix(`textarea-wrapper__message--${this.state}`)]: true
+    };
 
     return (
       <Host>

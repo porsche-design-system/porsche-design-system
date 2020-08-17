@@ -1,7 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import cx from 'classnames';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix, insertSlottedStyles } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  insertSlottedStyles,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../utils';
 import { improveFocusHandlingForCustomElement } from '../../../utils/focusHandling';
+
 import { IconName, LinkTarget, Theme } from '../../../types';
 
 @Component({
@@ -40,7 +45,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   public componentDidLoad(): void {
-    const tagName= this.element.tagName.toLowerCase();
+    const tagName = this.element.tagName.toLowerCase();
     const style = `
       a:focus ${tagName} {
       outline: 2px solid #00d5b9;
@@ -72,34 +77,34 @@ export class Link {
   public render(): JSX.Element {
     const TagType = this.href === undefined ? 'span' : 'a';
 
-    const linkClasses = cx(
-      prefix('link'),
-      prefix(`link--${this.variant}`),
-      mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
-      prefix(`link--theme-${this.theme}`)
-    );
+    const linkClasses = {
+      [prefix('link')]: true,
+      [prefix(`link--${this.variant}`)]: true,
+      [prefix(`link--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'])
+    };
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
 
     return (
       <TagType
         class={linkClasses}
-        {...(TagType === 'a' ? {
+        {...(TagType === 'a' && {
           href: this.href,
           target: `${this.target}`,
           download: this.download,
           rel: this.rel
-        } : null)}
+        })}
       >
         <p-icon
           class={iconClasses}
-          size='inherit'
+          size="inherit"
           name={this.icon}
           source={this.iconSource}
-          color='inherit'
-          aria-hidden='true'
+          color="inherit"
+          aria-hidden="true"
         />
-        <p-text tag='span' color='inherit' class={labelClasses}>
+        <p-text tag="span" color="inherit" class={labelClasses}>
           <slot/>
         </p-text>
       </TagType>

@@ -1,5 +1,4 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import cx from 'classnames';
 import { insertSlottedStyles, prefix } from '../../../../utils';
 
 @Component({
@@ -8,7 +7,6 @@ import { insertSlottedStyles, prefix } from '../../../../utils';
   shadow: true
 })
 export class TextListItem {
-
   @Element() public host!: HTMLElement;
 
   public componentDidLoad(): void {
@@ -16,33 +14,31 @@ export class TextListItem {
   }
 
   public render(): JSX.Element {
-    const textListItemClasses = cx(
-      prefix('text-list-item'),
-      prefix(`text-list-item--${this.typeOfList}`),
-      {
-        [prefix(`text-list-item--ordered-${this.typeOfOrderedList}`)]: this.typeOfList === 'ordered',
-        [prefix('text-list-item--nested')]: this.isNestedList
-      }
-    );
+    const textListItemClasses = {
+      [prefix('text-list-item')]: true,
+      [prefix(`text-list-item--${this.typeOfList}`)]: true,
+      [prefix(`text-list-item--ordered-${this.typeOfOrderedList}`)]: this.typeOfList === 'ordered',
+      [prefix('text-list-item--nested')]: this.isNestedList
+    };
 
     return (
-      <Host role='listitem' class={textListItemClasses}>
+      <Host role="listitem" class={textListItemClasses}>
         <slot />
       </Host>
     );
   }
 
-  private get typeOfList():string {
+  private get typeOfList(): string {
     const list = this.host.closest(prefix('text-list'));
     return list.getAttribute('list-type');
   }
 
-  private get typeOfOrderedList():string {
+  private get typeOfOrderedList(): string {
     const list = this.host.closest(prefix('text-list'));
     return list.getAttribute('order-type');
   }
 
-  private get isNestedList():boolean {
+  private get isNestedList(): boolean {
     return !!this.host.closest(prefix('text-list[nested]'));
   }
 
@@ -68,5 +64,4 @@ export class TextListItem {
 
     insertSlottedStyles(this.host, style);
   }
-
 }
