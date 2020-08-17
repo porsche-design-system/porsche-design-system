@@ -121,7 +121,7 @@ export namespace Components {
         /**
           * Defines orientation.
          */
-        "orientation"?: 'vertical' | 'horizontal';
+        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
         /**
           * Adapts color depending on theme.
          */
@@ -889,7 +889,7 @@ declare namespace LocalJSX {
         /**
           * Defines orientation.
          */
-        "orientation"?: 'vertical' | 'horizontal';
+        "orientation"?: BreakpointCustomizable<'vertical' | 'horizontal'>;
         /**
           * Adapts color depending on theme.
          */
