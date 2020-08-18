@@ -147,9 +147,10 @@ export class SelectWrapper {
       [prefix(`select-wrapper--theme-${this.theme}`)]: true,
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
     };
-    // TODO: check theming classes
     const filterInputClasses = { [prefix('select-wrapper__filter-input')]: true,
-      [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true
+      [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true,
+      [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
+      [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none'
     };
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
@@ -312,6 +313,9 @@ export class SelectWrapper {
       return;
     } else {
       this.fakeOptionListHidden = true;
+      if(this.filter) {
+        this.filterInput.value = '';
+      }
     }
   }
 
