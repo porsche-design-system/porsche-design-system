@@ -17,6 +17,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
 
+### [1.5.4-rc.0] - 2020-08-17
+
+#### Changed
+- Removed classnames dependency
+- Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
+
+#### Fixed
+- Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+- Fix typings for `orientation` of `Divider` component
+
 ### [2.0.0-alpha.0] - 2020-08-06
 
 #### Added
