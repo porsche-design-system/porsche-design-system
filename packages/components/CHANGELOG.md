@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.1] - 2020-08-17
+
+#### Changed
+- Removed classnames dependency
+- Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
+
+#### Fixed
+- Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
+### [1.5.4-rc.0] - 2020-08-17
+
+#### Changed
+- Removed classnames dependency
+- Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
+
+#### Fixed
+- Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+- Fix typings for `orientation` of `Divider` component
+
+### [2.0.0-alpha.0] - 2020-08-06
+
 #### Added
 - **Experimental:** Optional web component scoping mechanism during runtime to enable micro service architecture
 
@@ -20,6 +41,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Mix of `Optgroups` and `Options` on same level in `Select Wrapper` component
 - Fix typings for `orientation` of `Divider` component
+
+### [1.5.3] - 2020-08-10
+
+### [1.5.3-rc.0] - 2020-08-10
+
+#### Fixed
+- Mix of `Optgroups` and `Options` on same level in `Select Wrapper` component
 
 ### [1.5.2] - 2020-07-22
 

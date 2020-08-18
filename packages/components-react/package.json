@@ -14,8 +14,8 @@
     "build:mocks": "tsc --build './projects/components-wrapper/tsconfig.mocks.json'",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
-    "test:mocks:js": "jest --config='./tests/mocks/config/jest.config-js.js'",
-    "test:mocks:ts": "jest --config='./tests/mocks/config/jest.config-ts.js'",
+    "test:mocks:js": "jest -c tests/mocks/config/jest.config-js.js",
+    "test:mocks:ts": "jest -c tests/mocks/config/jest.config-ts.js",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -23,14 +23,15 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.0.0-alpha.0",
-    "@porsche-design-system/utilities": "1.0.6"
+    "@porsche-design-system/components-react": "2.0.0-alpha.1",
+    "@porsche-design-system/utilities": "2.0.0-rc.0"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "1.0.0",
+    "@porsche-design-system/assets": "2.0.0-rc.0",
+    "@porsche-design-system/partials": "2.0.0-rc.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
-    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/jest-dom": "^5.11.3",
     "@testing-library/react": "^10.4.8",
     "@types/jasmine": "^3.5.12",
     "@types/jest": "^26.0.9",
@@ -38,21 +39,19 @@
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
-    "concurrently": "^5.2.0",
+    "concurrently": "^5.3.0",
     "jasmine": "^3.6.1",
     "jasmine-spec-reporter": "^5.0.2",
+    "jest": "^26.3.0",
     "puppeteer": "~5.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.2",
     "ts-node": "^8.10.2",
     "typescript": "~3.9.7",
-    "wait-on": "^5.1.0"
-  },
-  "resolutions": {
-    "@types/react": "^16.9.17"
+    "wait-on": "^5.2.0"
   },
   "eslintConfig": {
     "extends": "react-app"
