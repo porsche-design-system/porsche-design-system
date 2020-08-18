@@ -48,6 +48,9 @@ export class SelectWrapper {
   /** Adapts the button color depending on the theme. */
   @Prop({ reflect: true }) public theme?: Theme = 'light';
 
+  /** Changes the direction to which the dropdown list appears. */
+  @Prop() public dropdownDirection?: 'auto' | 'up' | 'down' = 'down';
+
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly optionMap[] = [];
@@ -135,7 +138,8 @@ export class SelectWrapper {
     };
     const fakeOptionListClasses = {
       [prefix('select-wrapper__fake-option-list')]: true,
-      [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden
+      [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
+      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection}`)]: this.dropdownDirection !== 'auto'
     };
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,

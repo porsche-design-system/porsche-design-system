@@ -472,6 +472,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: 'auto' | 'up' | 'down';
+        /**
           * Filter results by typing a charcter
          */
         "filter"?: boolean;
@@ -1251,6 +1255,10 @@ declare namespace LocalJSX {
           * The description text.
          */
         "description"?: string;
+        /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: 'auto' | 'up' | 'down';
         /**
           * Filter results by typing a charcter
          */
