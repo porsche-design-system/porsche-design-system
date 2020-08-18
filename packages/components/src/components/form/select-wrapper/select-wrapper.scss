@@ -614,6 +614,18 @@
       }
     }
 
+    #{$bem-block}--theme-light label:hover + & {
+      + span {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      }
+    }
+
+    #{$bem-block}--theme-dark label:hover + & {
+      + span {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
+
     &:focus {
       opacity: 1;
       + span {
