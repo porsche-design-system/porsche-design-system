@@ -301,21 +301,42 @@
     border: 1px solid;
     left: 0;
     right: 0;
-    top: calc(100% - 1px);
     max-height: 200px;
     overflow-y: auto;
     scroll-behavior: smooth;
 
     #{$bem-block}--theme-light & {
       border-color: $p-color-neutral-contrast-medium;
-      border-top-color: $p-color-neutral-contrast-low;
       background-color: $p-color-background-default;
     }
 
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
-      border-top-color: $p-color-theme-dark-neutral-contrast-low;
       background-color: $p-color-default;
+    }
+
+    &--direction {
+      &-down {
+        top: calc(100% - 1px);
+
+        #{$bem-block}--theme-light & {
+          border-top-color: $p-color-neutral-contrast-low;
+        }
+        #{$bem-block}--theme-dark & {
+          border-top-color: $p-color-theme-dark-neutral-contrast-low;
+        }
+      }
+
+      &-up {
+        bottom: p-px-to-rem(47px);
+
+        #{$bem-block}--theme-light & {
+          border-bottom-color: $p-color-neutral-contrast-low;
+        }
+        #{$bem-block}--theme-dark & {
+          border-bottom-color: $p-color-theme-dark-neutral-contrast-low;
+        }
+      }
     }
 
     // Firefox scrollbar styling
