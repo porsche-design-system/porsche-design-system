@@ -26,7 +26,7 @@ describe('select-wrapper', () => {
   const getSelectFakeInput = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectMessage = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__message');
-  const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label-text');
+  const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
 
   it('should render', async () => {
