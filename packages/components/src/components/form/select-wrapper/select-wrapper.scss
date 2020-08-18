@@ -345,6 +345,7 @@
 
     &--hidden {
       display: block;
+      top: calc(100% - 3px);
       opacity: 0;
       overflow: hidden;
       height: 1px;
@@ -503,13 +504,12 @@
   &__filter-input {
     position: absolute;
     z-index: 1;
-    bottom: 0;
-    left: 0;
+    bottom: 2px;
+    left: 2px;
     display: block;
-    width: calc(100% - #{p-px-to-rem(46px)});
-    height: p-px-to-rem(46px);
-    padding: p-px-to-rem(11px) p-px-to-rem(47px) p-px-to-rem(11px) p-px-to-rem(11px);
-    margin: 1px;
+    width: calc(100% - #{p-px-to-rem(44px)});
+    height: p-px-to-rem(44px);
+    padding: p-px-to-rem(10px) p-px-to-rem(47px) p-px-to-rem(10px) p-px-to-rem(11px);
     outline: transparent none;
     appearance: none;
     box-sizing: border-box;
@@ -602,28 +602,22 @@
       }
     }
 
-    &:hover {
-      + span {
-        #{$bem-block}--theme-light & {
-          box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-        }
-
-        #{$bem-block}--theme-dark & {
-          box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
-        }
-      }
-    }
-
-    #{$bem-block}--theme-light label:hover + & {
-      + span {
+    &:hover:not(&--disabled):not(&--success):not(&--error) + span {
+      #{$bem-block}--theme-light & {
         box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
       }
-    }
 
-    #{$bem-block}--theme-dark label:hover + & {
-      + span {
+      #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
       }
+    }
+
+    #{$bem-block}--theme-light label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+    }
+
+    #{$bem-block}--theme-dark label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
     }
 
     &:focus {
@@ -645,6 +639,7 @@
     &:disabled {
       cursor: not-allowed;
       + span {
+        cursor: not-allowed;
         #{$bem-block}--theme-light & {
           box-shadow: inset 0 0 0 1px $p-color-state-disabled;
         }
@@ -652,6 +647,66 @@
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
         }
+      }
+    }
+
+    &--success {
+      + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-success;
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
+        }
+      }
+
+      &:hover + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+        }
+      }
+
+      #{$bem-block}--theme-light label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+      }
+
+      #{$bem-block}--theme-dark label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+      }
+    }
+
+    &--error {
+      + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-error;
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
+        }
+      }
+
+      &:hover + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
+        }
+      }
+
+      #{$bem-block}--theme-light label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+      }
+
+      #{$bem-block}--theme-dark label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
       }
     }
   }
