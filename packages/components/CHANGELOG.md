@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.1] - 2020-08-17
+
 #### Changed
 - Removed classnames dependency
+- Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
 
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
