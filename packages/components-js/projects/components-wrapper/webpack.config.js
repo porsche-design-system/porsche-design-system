@@ -6,7 +6,7 @@ module.exports = {
   entry: './projects/components-wrapper/src/index.js',
   output: {
     path: cdnDistPath,
-    filename: `porsche-design-system.v${version}.js`,
+    filename: `porsche-design-system.v${version}.[contenthash].js`,
     chunkFilename: `porsche-design-system.[id].[contenthash].js`,
     libraryTarget: 'var',
     library: `PorscheDesignSystem_${snakeCaseVersion}`,

@@ -5,6 +5,7 @@ set -o pipefail
 
 if
   [[ "--components" == "${1}" ]] ||
+  [[ "--partials" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then

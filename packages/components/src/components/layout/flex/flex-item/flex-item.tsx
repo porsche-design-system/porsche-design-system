@@ -1,10 +1,5 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import cx from 'classnames';
-import {
-  BreakpointCustomizable,
-  mapBreakpointPropToPrefixedClasses,
-  prefix
-} from '../../../../utils';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-flex-item',
@@ -35,15 +30,15 @@ export class FlexItem {
   @Prop() public flex?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'> = 'initial';
 
   public render(): JSX.Element {
-    const flexItemClasses = cx(
-      prefix('flex__item'),
-      this.width !== 'auto' && mapBreakpointPropToPrefixedClasses('flex__item--width', this.width),
-      this.offset !== 'none' && mapBreakpointPropToPrefixedClasses('flex__item--offset', this.offset),
-      this.alignSelf !== 'auto' && mapBreakpointPropToPrefixedClasses('flex__item--align-self', this.alignSelf),
-      this.grow !== 0 && mapBreakpointPropToPrefixedClasses('flex__item--grow', this.grow),
-      this.shrink !== 1 && mapBreakpointPropToPrefixedClasses('flex__item--shrink', this.shrink),
-      this.flex !== 'initial' && mapBreakpointPropToPrefixedClasses('flex__item-', this.flex)
-    );
+    const flexItemClasses = {
+      [prefix('flex__item')]: true,
+      ...(this.width !== 'auto' && mapBreakpointPropToPrefixedClasses('flex__item--width', this.width)),
+      ...(this.offset !== 'none' && mapBreakpointPropToPrefixedClasses('flex__item--offset', this.offset)),
+      ...(this.alignSelf !== 'auto' && mapBreakpointPropToPrefixedClasses('flex__item--align-self', this.alignSelf)),
+      ...(this.grow !== 0 && mapBreakpointPropToPrefixedClasses('flex__item--grow', this.grow)),
+      ...(this.shrink !== 1 && mapBreakpointPropToPrefixedClasses('flex__item--shrink', this.shrink)),
+      ...(this.flex !== 'initial' && mapBreakpointPropToPrefixedClasses('flex__item-', this.flex))
+    };
 
     return <Host class={flexItemClasses} />;
   }
