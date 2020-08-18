@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-js": "2.0.0-alpha.1",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.1"
   },
   "peerDependencies": {
     "@angular/common": ">=8.2.0 <11.0.0",
