@@ -43,9 +43,9 @@
     "@porsche-design-system/utilities": "2.0.0-rc.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
-    "@types/jest": "^26.0.9",
-    "jest": "^26.3.0",
-    "rollup": "^2.23.1",
+    "@types/jest": "^26.0.10",
+    "jest": "^26.4.0",
+    "rollup": "^2.26.3",
     "ts-jest": "^26.2.0",
     "tslib": "^2.0.1",
     "typescript": "^3.9.7"
