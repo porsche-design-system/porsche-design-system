@@ -49,7 +49,7 @@ export class SelectWrapper {
   @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'auto' | 'up' | 'down' = 'down';
+  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -65,6 +65,8 @@ export class SelectWrapper {
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
+  private dropdownDirectionAuto: boolean = this.dropdownDirection === 'auto';
+  private dropdownDirectionIntern: 'down' | 'up' = 'down';
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -139,7 +141,8 @@ export class SelectWrapper {
     const fakeOptionListClasses = {
       [prefix('select-wrapper__fake-option-list')]: true,
       [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
-      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection}`)]: this.dropdownDirection !== 'auto'
+      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection}`)]: this.dropdownDirection !== 'auto',
+      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirectionIntern}`)]: this.dropdownDirection === 'auto'
     };
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,
@@ -327,7 +330,7 @@ export class SelectWrapper {
     e.preventDefault();
     e.stopPropagation();
     this.select.focus();
-    this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+    this.handleVisibilityOfFakeOptionList('toggle');
   }
 
   private handleFocus(e: MouseEvent): void {
@@ -339,19 +342,50 @@ export class SelectWrapper {
     }
   }
 
+  private handleDropdownDirection(): void {
+    if(this.dropdownDirectionAuto) {
+      const listNodePageOffset = this.fakeOptionListNode.getBoundingClientRect().top;
+      const listNodeOffset = this.fakeOptionListNode.offsetTop;
+      const listNodeChildrenHeight = this.fakeOptionListNode.children[0].clientHeight;
+      const numberOfChildNodes = this.fakeOptionListNode.children.length;
+      const listNodeHeight =  numberOfChildNodes >= 5 ? 200 : listNodeChildrenHeight * numberOfChildNodes;
+      const spaceTop = (listNodePageOffset - listNodeOffset - listNodeHeight) - window.scrollY;
+      const spaceBottom = window.scrollY + window.innerHeight - (listNodePageOffset + listNodeHeight);
+      if (spaceBottom < 0 && (spaceTop >= 0 || spaceTop > spaceBottom)) {
+        this.dropdownDirectionIntern = 'up';
+      } else {
+        this.dropdownDirectionIntern = 'down';
+      }
+    }
+  }
+
+  private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
+    if(type === 'show' && this.fakeOptionListHidden) {
+      this.fakeOptionListHidden = false;
+      this.handleDropdownDirection();
+    } else if (type === 'hide' && !this.fakeOptionListHidden) {
+      this.fakeOptionListHidden = true;
+    } else if (type === 'toggle' && this.fakeOptionListHidden) {
+      this.fakeOptionListHidden = false;
+      this.handleDropdownDirection();
+    } else if (type === 'toggle' && !this.fakeOptionListHidden) {
+      this.fakeOptionListHidden = true;
+    }
+  }
+
   private handleKeyboardEvents(e: KeyboardEvent): void {
     const key = e.key;
     switch (key) {
       case 'ArrowUp':
       case 'Up':
         e.preventDefault();
-        this.fakeOptionListHidden = false;
+        this.handleVisibilityOfFakeOptionList('show');
         this.cycleFakeOptionList('up');
         break;
       case 'ArrowDown':
       case 'Down':
         e.preventDefault();
-        this.fakeOptionListHidden = false;
+        this.handleVisibilityOfFakeOptionList('show');
         this.cycleFakeOptionList('down');
         break;
       case 'ArrowLeft':
@@ -367,11 +401,11 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if(this.filter) {
-          this.fakeOptionListHidden = false;
+          this.handleVisibilityOfFakeOptionList('show');
         }
         else {
           e.preventDefault();
-          this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+          this.handleVisibilityOfFakeOptionList('toggle');
         }
         if (this.fakeOptionListHidden) {
           this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
@@ -379,7 +413,7 @@ export class SelectWrapper {
         break;
       case 'Enter':
         e.preventDefault();
-        this.fakeOptionListHidden = true;
+        this.handleVisibilityOfFakeOptionList('hide');
         if(!this.filter) {this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));}
         if(this.filter) {
           const itemValue = !!this.searchString && this.optionMaps.filter(item => item.value.toLowerCase() === this.searchString.toLowerCase());
@@ -419,7 +453,7 @@ export class SelectWrapper {
         break;
       case 'Tab':
         if (!this.fakeOptionListHidden) {
-          this.fakeOptionListHidden = true;
+          this.handleVisibilityOfFakeOptionList('hide');
         }
         break;
       default:
@@ -442,7 +476,7 @@ export class SelectWrapper {
     const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.select.selectedIndex = key;
     const newSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.fakeOptionListHidden = true;
+    this.handleVisibilityOfFakeOptionList('hide');
 
     if(this.filter) {
       this.filterInput.value = '';
@@ -576,7 +610,8 @@ export class SelectWrapper {
       this.filterInput.focus();
       this.filterInput.value = '';
       this.searchString = '';
-      this.fakeOptionListHidden = this.fakeOptionListHidden === false;
+      this.handleVisibilityOfFakeOptionList('toggle');
+      this.handleScroll();
     }
   }
 
@@ -590,7 +625,7 @@ export class SelectWrapper {
 
     const hiddenItems = this.optionMaps.filter(e => e.hidden === true).length;
     this.filterHasResult = hiddenItems !== Object.keys(this.optionMaps).length;
-    this.fakeOptionListHidden = false;
+    this.handleVisibilityOfFakeOptionList('show');
   }
 
   private addSlottedStyles(): void {

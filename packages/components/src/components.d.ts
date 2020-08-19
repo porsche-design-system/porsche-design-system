@@ -474,7 +474,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'auto' | 'up' | 'down';
+        "dropdownDirection"?: 'down' | 'up' | 'auto';
         /**
           * Filter results by typing a charcter
          */
@@ -1258,7 +1258,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: 'auto' | 'up' | 'down';
+        "dropdownDirection"?: 'down' | 'up' | 'auto';
         /**
           * Filter results by typing a charcter
          */
