@@ -329,6 +329,7 @@ A `label` is a caption which informs the user what information a particular form
       <option disabled>Select a dropdown mode</option>
       <option selected value="down">Direction down</option>
       <option value="up">Direction up</option>
+      <option value="auto">Direction auto</option>
     </select>
   </template>
   <template v-slot={theme}>
