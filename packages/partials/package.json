@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/components": "0.0.0",
-    "@porsche-design-system/utilities": "2.0.0-rc.0",
+    "@porsche-design-system/utilities": "2.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/jest": "^26.0.10",
