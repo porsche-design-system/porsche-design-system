@@ -3,6 +3,7 @@ const { cdnDistPath, npmDistPath, deployUrl, version } = require('./projects/com
 console.log('Version:', version);
 console.log('Deploy URL:', deployUrl);
 
+// type: PorscheWebComponentManagerConfig
 module.exports = {
   name: 'porscheDesignSystem',
   supportPrefixes: true,
