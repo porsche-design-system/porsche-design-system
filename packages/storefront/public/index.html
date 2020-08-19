@@ -25,6 +25,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
+    <script src="http://localhost:3001/components/index.js"></script>
   </head>
   <body>
     <noscript>
@@ -35,6 +36,9 @@
     </noscript>
     <div id="app">
       <%= require('@porsche-design-system/partials/src/font-loader').getLoader({all: true}) %>
+      <script>
+        porscheDesignSystem.load();
+      </script>
     </div>
     <!-- built files will be auto injected -->
   </body>
