@@ -402,10 +402,12 @@ export class SelectWrapper {
       case 'Spacebar':
         if(this.filter) {
           this.handleVisibilityOfFakeOptionList('show');
+          this.handleScroll();
         }
         else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
+          this.handleScroll();
         }
         if (this.fakeOptionListHidden) {
           this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
