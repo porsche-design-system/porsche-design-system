@@ -1,4 +1,5 @@
 import { trackEvent } from '../../../src/utils';
+import { version } from '../../../package.json';
 
 describe('trackEvent', () => {
   it('does a call via fetch', () => {
@@ -13,6 +14,7 @@ describe('trackEvent', () => {
     trackEvent('test', 'test');
 
     expect(requestUri).toContain('aws.designsystem.porsche.com');
+    expect(requestUri).toContain(version);
     expect(requestUri).not.toContain('0.0.0');
     expect(spy).toHaveBeenCalledTimes(1);
     spy.mockRestore();
