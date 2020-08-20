@@ -12,7 +12,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-fdescribe('select-wrapper combobox', () => {
+describe('select-wrapper combobox', () => {
   let page: Page;
 
   beforeEach(async () => {
