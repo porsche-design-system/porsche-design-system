@@ -31,9 +31,12 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:build && rollup -c rollup.config.js",
+    "build": "yarn clean:build && yarn build:src && yarn build:lib",
+    "build:lib": "rollup -c rollup.config.js",
+    "build:src": "ts-node --project 'tsconfig.node.json' './scripts/build.ts'",
     "test": "yarn test:unit",
     "test:unit": "jest -c tests/unit/config/jest.config.js",
+    "test:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
@@ -43,7 +46,9 @@
     "@porsche-design-system/utilities": "2.0.0-rc.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/html-minifier": "^4.0.0",
     "@types/jest": "^26.0.10",
+    "html-minifier": "^4.0.0",
     "jest": "^26.4.0",
     "rollup": "^2.26.3",
     "ts-jest": "^26.2.0",
