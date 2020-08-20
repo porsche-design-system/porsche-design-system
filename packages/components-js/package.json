@@ -20,12 +20,11 @@
     "clean:build": "rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
-    "@porsche-design-system/web-components-manager": "0.2.5"
+    "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.0"
   },
   "devDependencies": {
     "@porsche-design-system/components": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
-    "@porsche-design-system/web-components-manager-cli": "0.2.5",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/http-server": "^0.10.0",
     "@types/jasmine": "^3.5.12",
