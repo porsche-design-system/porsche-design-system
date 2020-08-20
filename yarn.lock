@@ -2727,26 +2727,26 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@0.2.5":
-  version "0.2.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-0.2.5.tgz#5ae130309a21e3e699b52559d8d7e92d47595279"
-  integrity sha1-WuEwMJoh4+aZtSVZ2NfpLUdZUnk=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.0.tgz#08725f54cc86639b650f9518b7dae435318e45c5"
+  integrity sha1-CHJfVMyGY5tlD5UYt9rkNTGORcU=
   dependencies:
-    "@porsche-design-system/web-components-manager" "0.2.5"
+    "@porsche-design-system/web-components-manager" "1.0.0-alpha.0"
     glob "^7.1.6"
     webpack "^4.43.0"
 
-"@porsche-design-system/web-components-manager-polyfills@0.0.6":
-  version "0.0.6"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-0.0.6.tgz#8d14957a8673c09054c952010de313eb199e48a7"
-  integrity sha1-jRSVeoZzwJBUyVIBDeMT6xmeSKc=
+"@porsche-design-system/web-components-manager-polyfills@1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-1.0.0-alpha.0.tgz#a4f012f2b5aad2e9b1d00edfd33c64c836524f2c"
+  integrity sha1-pPAS8rWq0umx0A7f0zxkyDZSTyw=
 
-"@porsche-design-system/web-components-manager@0.2.5":
-  version "0.2.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-0.2.5.tgz#7fb4349cee3ae35ac6bf67ef07104207049bf91f"
-  integrity sha1-f7Q0nO4641rGv2fvBxBCBwSb+R8=
+"@porsche-design-system/web-components-manager@1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.0.tgz#c0df0445c99ab9485895073bf19a1d667068ea5a"
+  integrity sha1-wN8ERcmauUhYlQc78ZodZnBo6lo=
   dependencies:
-    "@porsche-design-system/web-components-manager-polyfills" "0.0.6"
+    "@porsche-design-system/web-components-manager-polyfills" "1.0.0-alpha.0"
 
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
