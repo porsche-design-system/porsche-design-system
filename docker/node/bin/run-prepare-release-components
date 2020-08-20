@@ -23,7 +23,7 @@ for pkg in ${packages[@]}; do
 done
 
 # update "components-js" in wrapper projects
-packages=( "components-angular" "components-react" )
+packages=( "components-js" "components-angular" "components-react" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}/projects/components-wrapper"
     yarn version --no-git-tag-version --new-version "${1}"
