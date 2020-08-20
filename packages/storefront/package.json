@@ -4,6 +4,7 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
+    "prestart": "cp ../components-js/dist/components-wrapper/index.js public/pds-loader.js",
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",

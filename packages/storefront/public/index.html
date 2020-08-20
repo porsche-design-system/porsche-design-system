@@ -23,9 +23,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
-    <script src="http://localhost:3001/components/index.js"></script>
+    <script src="./pds-loader.js"></script>
   </head>
   <body>
     <noscript>
