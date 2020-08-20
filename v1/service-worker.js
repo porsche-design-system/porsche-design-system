@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.8b4f5c05f7fd1ffb743fd742ad5aa2e0.js"
+  "precache-manifest.0586f2c0afa1179c0d5d74d4dd86b821.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "@porsche-design-system/storefront"});
