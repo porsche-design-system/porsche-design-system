@@ -253,14 +253,14 @@ describe('select-wrapper', () => {
       );
       const select = await getSelectRealInput();
       const fakeOptionList = await getSelectOptionList();
-      const numberOfOptions = await select.evaluate((el: HTMLElement) => {
+      const getNumberOfOptions = async () => await select.evaluate((el: HTMLElement) => {
         return el.childElementCount;
       });
-      const numberOfFakeOptions = await fakeOptionList.evaluate((el: HTMLElement) => {
+      const getNumberOfFakeOptions = async () => await fakeOptionList.evaluate((el: HTMLElement) => {
         return el.childElementCount;
       });
       expect(fakeOptionList).not.toBeNull();
-      expect(numberOfFakeOptions).toEqual(numberOfOptions);
+      expect(await getNumberOfFakeOptions()).toEqual(await getNumberOfOptions());
 
       await select.evaluate((el: HTMLSelectElement) => {
         const option = document.createElement('option');
@@ -272,7 +272,8 @@ describe('select-wrapper', () => {
         'innerHTML'
       );
       expect(text).toContain('Test');
-      expect(numberOfFakeOptions + 1).toEqual(numberOfOptions + 1);
+      await waitForStencilLifecycle(page);
+      expect(await getNumberOfOptions()).toEqual(await getNumberOfFakeOptions());
     });
 
     it('should add/remove disabled state to fake option item if added/removed to native select programmatically', async () => {
