@@ -1,4 +1,5 @@
 /* Auto Generated Below */
+  
 type Options = { withoutTags: boolean };
 
 export const getFontFaceCSS = (options?: Options): string =>
