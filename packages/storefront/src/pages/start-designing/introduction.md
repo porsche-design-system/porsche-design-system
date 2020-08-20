@@ -31,7 +31,7 @@ The web library provides components like buttons, form elements and many more th
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to be aligned on the version you're using.
 
 ### Porsche Next font
-In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).  
+In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).  
 
 ## 5. Additional tools
 
