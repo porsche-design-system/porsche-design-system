@@ -298,6 +298,7 @@
     max-height: 200px;
     overflow-y: auto;
     scroll-behavior: smooth;
+    transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
 
     #{$bem-block}--theme-light & {
       border-color: $p-color-neutral-contrast-medium;

@@ -141,8 +141,7 @@ export class SelectWrapper {
     const fakeOptionListClasses = {
       [prefix('select-wrapper__fake-option-list')]: true,
       [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
-      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection}`)]: this.dropdownDirection !== 'auto',
-      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirectionIntern}`)]: this.dropdownDirection === 'auto'
+      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection === 'auto' ? this.dropdownDirectionIntern : this.dropdownDirection}`)]: true
     };
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,
@@ -154,7 +153,8 @@ export class SelectWrapper {
       [prefix(`select-wrapper--theme-${this.theme}`)]: true,
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none'
     };
-    const filterInputClasses = { [prefix('select-wrapper__filter-input')]: true,
+    const filterInputClasses = {
+      [prefix('select-wrapper__filter-input')]: true,
       [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true,
       [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none'
@@ -213,7 +213,7 @@ export class SelectWrapper {
               class={fakeOptionListClasses}
               role="listbox"
               id="p-listbox"
-              aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex(e => e.selected)}`}
+              aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex(e => e.highlighted)}`}
               tabIndex={-1}
               aria-expanded={!this.filter && this.fakeOptionListHidden ? 'false' : 'true'}
               aria-labelledby={this.label}
