@@ -23,7 +23,7 @@
     "@porsche-design-system/web-components-manager": "0.2.5"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "0.0.0",
+    "@porsche-design-system/components": "2.0.0-alpha.1",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-design-system/web-components-manager-cli": "0.2.5",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
