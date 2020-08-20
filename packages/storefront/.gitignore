@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# ignored since it is copied dynamically
+/public/pds-loader.js
+
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 /tests/vrt/results
