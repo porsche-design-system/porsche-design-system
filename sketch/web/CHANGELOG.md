@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0] - 2020-08-21
+
+#### Fixed
+
+Type | Basic Library |
+|---|---|
+Components |  Update al components regarding font with new metrics |
+Components |  Update Button and Link for Viewport 320+ (XS) |
+
 ### [1.5.1] - 2020-07-29
 
 #### Fixed
