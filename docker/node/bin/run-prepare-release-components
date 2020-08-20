@@ -23,7 +23,7 @@ for pkg in ${packages[@]}; do
 done
 
 # update "components-js" in wrapper projects
-packages=( "components-js" "components-angular" "components-react" )
+packages=( "components-angular" "components-react" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}/projects/components-wrapper"
     yarn version --no-git-tag-version --new-version "${1}"
@@ -40,7 +40,7 @@ for pkg in ${packages[@]}; do
 done
 
 # update "components-js" in packages
-packages=( "components-js" "storefront" )
+packages=( "storefront" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/components-js": )(".*")$\1"'${1}'"$' package.json
