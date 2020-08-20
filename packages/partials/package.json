@@ -42,7 +42,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "2.0.0-alpha.1",
+    "@porsche-design-system/components": "2.0.0-alpha.2",
     "@porsche-design-system/utilities": "2.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",

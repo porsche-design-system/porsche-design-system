@@ -23,7 +23,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.0.0-alpha.1",
+    "@porsche-design-system/components-react": "2.0.0-alpha.2",
     "@porsche-design-system/utilities": "2.0.0"
   },
   "devDependencies": {

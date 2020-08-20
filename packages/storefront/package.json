@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "2.0.0",
-    "@porsche-design-system/components-js": "2.0.0-alpha.1",
+    "@porsche-design-system/components-js": "2.0.0-alpha.2",
     "@porsche-design-system/partials": "2.1.0",
     "@porsche-design-system/utilities": "2.0.0",
     "@porsche-design-system/vmark": "~1.2.0",
