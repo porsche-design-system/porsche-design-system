@@ -4,16 +4,18 @@ import { color, font, FONT_FACE_CDN_URL } from '@porsche-design-system/utilities
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { minifyHTML, minifyCSS } from './utils';
 
-const separator = '/* Auto Generated Below */';
+const updateContent = (oldContent: string, newContent: string): string => {
+  const separator = '/* Auto Generated Below */';
+  const separatorPosition = oldContent.indexOf(separator);
+  return `${oldContent.substr(0, separatorPosition >= 0 ? separatorPosition : undefined)}${separator}
+  ${newContent}`;
+};
 
 const generateStylesPartials = async (): Promise<void> => {
   const targetFile = path.normalize('./src/styles.ts');
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
-  const newContent = `${oldContent.substr(
-    0,
-    oldContent.indexOf(separator) >= 0 ? oldContent.indexOf(separator) : undefined
-  )}${separator}
+  const newContent = `
 type Options = { withoutTags: boolean };
 
 export const getFontFaceCSS = (options?: Options): string =>
@@ -26,7 +28,7 @@ export const getPorscheDesignSystemCoreStyles = (options?: Options): string => {
   return options?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
 };`;
 
-  fs.writeFileSync(targetFile, newContent);
+  fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
 const generateFontLoaderPartials = async (): Promise<void> => {
@@ -86,10 +88,7 @@ const generateFontLoaderPartials = async (): Promise<void> => {
   `;
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');
-  const newContent = `${oldContent.substr(
-    0,
-    oldContent.indexOf(separator) >= 0 ? oldContent.indexOf(separator) : undefined
-  )}${separator}
+  const newContent = `
 export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: boolean; bold?: boolean }): string => {
   let loaderStyles = '';
   if (options) {
@@ -131,7 +130,7 @@ export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: 
   return output;
 }`;
 
-  fs.writeFileSync(targetFile, newContent);
+  fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
 (async (): Promise<void> => {

@@ -1,4 +1,5 @@
 /* Auto Generated Below */
+  
 export const getLoader = (options?: { all?: boolean; thin?: boolean; semibold?: boolean; bold?: boolean }): string => {
   let loaderStyles = '';
   if (options) {
