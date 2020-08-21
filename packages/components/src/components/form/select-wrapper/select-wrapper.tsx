@@ -65,7 +65,6 @@ export class SelectWrapper {
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
-  private dropdownDirectionAuto: boolean = this.dropdownDirection === 'auto';
   private dropdownDirectionIntern: 'down' | 'up' = 'down';
 
   // this stops click events when filter input is clicked
@@ -343,7 +342,7 @@ export class SelectWrapper {
   }
 
   private handleDropdownDirection(): void {
-    if(this.dropdownDirectionAuto) {
+    if(this.dropdownDirection === 'auto') {
       const listNodePageOffset = this.fakeOptionListNode.getBoundingClientRect().top;
       const listNodeOffset = this.fakeOptionListNode.offsetTop;
       const listNodeChildrenHeight = this.fakeOptionListNode.children[0].clientHeight;
