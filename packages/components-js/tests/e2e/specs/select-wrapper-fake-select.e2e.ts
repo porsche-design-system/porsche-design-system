@@ -71,6 +71,63 @@ describe('select-wrapper fake-select', () => {
     });
   });
 
+  it('should set dropdown direction to up', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+    <p-select-wrapper label="Some label" dropdown-direction="up">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>`
+    );
+
+    const fakeOptionListDirectionUp = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+    );
+
+    expect(fakeOptionListDirectionUp).not.toBeNull();
+  });
+
+  it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
+    await page.setViewport({
+      width: 800,
+      height: 600
+    });
+    await setContentWithDesignSystem(
+      page,
+      `
+    <div style="height: 400px;"></div>
+    <p-select-wrapper label="Some label" dropdown-direction="auto">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+        <option value="d">Option D</option>
+        <option value="e">Option E</option>
+        <option value="f">Option F</option>
+        <option value="g">Option G</option>
+        <option value="h">Option H</option>
+      </select>
+    </p-select-wrapper>
+    `
+    );
+
+    const select = await getSelectRealInput();
+    await select.click();
+    await waitForStencilLifecycle(page);
+
+    const fakeOptionListDirectionUp = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+    );
+
+    expect(fakeOptionListDirectionUp).not.toBeNull();
+  });
+
   describe('fake drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(
