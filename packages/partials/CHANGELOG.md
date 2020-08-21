@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.1.0] - 2020-08-20
+
+#### Added
+- Minification of partials
+
 ### [2.0.0] - 2020-08-19
 
 ### [2.0.0-rc.0] - 2020-08-17
