@@ -374,6 +374,7 @@
     display: block;
     padding: $p-spacing-8 p-px-to-rem(12px);
     cursor: pointer;
+    text-align: left;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier,
     outline-color $p-animation-hover-duration $p-animation-hover-bezier;
