@@ -435,7 +435,7 @@ export class SelectWrapper {
         break;
       case 'PageUp':
         e.preventDefault();
-        if (!this.filter && !this.fakeOptionListHidden) {
+        if (!this.fakeOptionListHidden) {
           this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
             ...item,
             highlighted: num === 0
@@ -445,7 +445,7 @@ export class SelectWrapper {
         break;
       case 'PageDown':
         e.preventDefault();
-        if (!this.filter && !this.fakeOptionListHidden) {
+        if (!this.fakeOptionListHidden) {
           this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
             ...item,
             highlighted: num === this.options.length - 1

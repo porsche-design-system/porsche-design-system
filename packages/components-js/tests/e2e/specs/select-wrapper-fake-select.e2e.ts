@@ -13,7 +13,7 @@ import {
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
-fdescribe('select-wrapper fake-select', () => {
+describe('select-wrapper fake-select', () => {
   let page: Page;
 
   beforeEach(async () => {
@@ -437,9 +437,9 @@ fdescribe('select-wrapper fake-select', () => {
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
           <option value="b" disabled>B Option</option>
-          <option value="c" >C Option</option>
-          <option value="d" >D Option</option>
-          <option value="e" >E Option</option>
+          <option value="c">C Option</option>
+          <option value="d">D Option</option>
+          <option value="e">E Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -468,8 +468,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -496,8 +496,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -532,8 +532,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -560,8 +560,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -581,15 +581,15 @@ fdescribe('select-wrapper fake-select', () => {
         expect(calls).toBe(1);
       });
 
-      it('should change selected option on ArrowLeft while list is open', async () => {
+      it('should change selected option on ArrowLeft while list is open and should close the list', async () => {
         await setContentWithDesignSystem(
           page,
           `
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -608,18 +608,19 @@ fdescribe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(2);
         expect(await getSelectedFakeOption()).toBe(2);
         expect(await getSelectedIndex()).toBe(2);
+        expect(await getOpacity()).toBe('0');
         expect(calls).toBe(1);
       });
 
-      it('should change selected option on ArrowRight while list is open', async () => {
+      it('should change selected option on ArrowRight while list is open and should close the list', async () => {
         await setContentWithDesignSystem(
           page,
           `
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -638,6 +639,7 @@ fdescribe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(1);
         expect(await getSelectedFakeOption()).toBe(1);
         expect(await getSelectedIndex()).toBe(1);
+        expect(await getOpacity()).toBe('0');
         expect(calls).toBe(1);
       });
 
@@ -648,8 +650,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -676,8 +678,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -699,8 +701,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -715,15 +717,15 @@ fdescribe('select-wrapper fake-select', () => {
         expect(await getSelectedIndex()).toBe(0);
       });
 
-      it('should select last option on PageDown while list is visible', async () => {
+      it('should highlight and select last option on PageDown while list is visible', async () => {
         await setContentWithDesignSystem(
           page,
           `
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -747,14 +749,14 @@ fdescribe('select-wrapper fake-select', () => {
         expect(await getSelectedIndex()).toBe(2);
       });
 
-      it('should select first option on PageUp while list is visible', async () => {
+      it('should highlight and select first option on PageUp while list is visible', async () => {
         await setContentWithDesignSystem(
           page,
           `
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
+          <option value="b">B Option</option>
           <option value="c" selected>C Option</option>
         </select>
       </p-select-wrapper>
@@ -786,8 +788,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -802,15 +804,15 @@ fdescribe('select-wrapper fake-select', () => {
         expect(await getSelectedIndex()).toBe(2);
       });
 
-      it('should select open/close fake select on mouseclick', async () => {
+      it('should open/close fake select on mouseclick', async () => {
         await setContentWithDesignSystem(
           page,
           `
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -837,8 +839,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
@@ -863,8 +865,8 @@ fdescribe('select-wrapper fake-select', () => {
       <p-select-wrapper label="Some label">
         <select name="some-name" id="realSelect">
           <option value="a">A Option</option>
-          <option value="b" >B Option</option>
-          <option value="c" >C Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
         </select>
       </p-select-wrapper>
     `
