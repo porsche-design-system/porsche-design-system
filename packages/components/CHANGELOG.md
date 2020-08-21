@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
 
+### [2.0.0-alpha.2] - 2020-08-20
+
 ### [2.0.0-alpha.1] - 2020-08-17
 
 #### Changed

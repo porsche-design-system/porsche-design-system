@@ -25,7 +25,7 @@
     "@angular/platform-browser": "^10.0.10",
     "@angular/platform-browser-dynamic": "^10.0.10",
     "@angular/router": "^10.0.10",
-    "@porsche-design-system/components-angular": "2.0.0-alpha.1",
+    "@porsche-design-system/components-angular": "2.0.0-alpha.2",
     "rxjs": "^6.6.2",
     "tslib": "^2.0.1",
     "zone.js": "~0.10.3"
@@ -45,7 +45,7 @@
     "concurrently": "^5.3.0",
     "jasmine": "^3.6.1",
     "jasmine-spec-reporter": "^5.0.2",
-    "ng-packagr": "^10.0.4",
+    "ng-packagr": "^9.1.2",
     "puppeteer": "~5.2.1",
     "ts-node": "^8.10.2",
     "tslint": "~6.1.3",
