@@ -4,7 +4,6 @@ import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
-import { load } from '@porsche-design-system/components-js';
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
@@ -16,9 +15,6 @@ window.location.hash = window.location.hash.replace('%23', '#');
 
 Vue.config.productionTip = false;
 Vue.config.ignoredElements = [/p-\w*/];
-
-// load Porsche Design System
-load();
 
 Vue.use({
   install(vue: VueConstructor) {

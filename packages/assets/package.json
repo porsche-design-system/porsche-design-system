@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0",
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -46,12 +46,12 @@
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/metaicons": "0.0.0",
-    "@porsche-design-system/utilities": "2.0.0-rc.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@porsche-design-system/utilities": "2.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/http-server": "^0.10.0",
     "http-server": "^0.12.3",
-    "rollup": "^2.23.1",
+    "rollup": "^2.26.3",
     "ts-node": "^8.10.2",
     "tslib": "^2.0.1",
     "typescript": "^3.9.7"
