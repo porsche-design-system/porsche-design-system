@@ -51,12 +51,11 @@ Choose between predefined styling variants.
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link>
-    <a href="https://www.porsche.com" class="example-link"><p-link :theme="theme">Some label</p-link></a>
   </template>
 </Playground>
 
