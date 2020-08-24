@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "ES2015",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src"]
+  "include": ["src/index.ts"]
 }

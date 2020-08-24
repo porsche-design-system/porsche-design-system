@@ -1,5 +1,17 @@
 const { cdnDistPath, npmDistPath, deployUrl, version } = require('./projects/components-wrapper/environment');
 
+console.log('Version:', version);
+console.log('Deploy URL:', deployUrl);
+
+// interface PorscheWebComponentManagerConfig extends CommonConfig {
+//   deployUrl?: string;
+//   targetDirectory?: string;
+//   supportPrefixes?: boolean;
+//   globalStyles?: GlobalStyles;
+//   inlineStyles?: string;
+//   scripts?: DifferentialLoadingScripts[];
+//   copyFiles: CopyFile[];
+// }
 module.exports = {
   name: 'porscheDesignSystem',
   supportPrefixes: true,
