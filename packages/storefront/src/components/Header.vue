@@ -7,16 +7,16 @@
       Design System
     </p-headline>
 
+    <p-text size="x-small" align="center">
+      <strong>Web v{{ this.version }}</strong>
+    </p-text>
+
     <select v-on:change="onVersionChange" class="versionSelect">
       <optgroup class="versionSelectOptGroup">
         <option disabled selected>Switch Version</option>
         <option v-for="option in versionOptions" :key="option" v-bind:value="option">{{ option }}</option>
       </optgroup>
     </select>
-
-    <p-text size="x-small" align="center">
-      <strong>Web v{{ this.version }}</strong>
-    </p-text>
   </header>
 </template>
 
@@ -30,7 +30,7 @@
 
     public versionOptions: string[] = ['v1', 'v2', 'latest'];
     public onVersionChange = (event: Event) => {
-      /*      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`*/
+      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
     };
   }
 </script>
@@ -49,10 +49,11 @@
     background: url('https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.fdb5ae2bcbe9e89a4ca462ff709c0ea8.svg');
     background-repeat: no-repeat;
     background-position-x: 100%;
-    padding-right: 1.5rem;
+    padding-right: 1rem;
     padding-left: 0.5rem;
     padding-bottom: 0.2rem;
     padding-top: 0.2rem;
+    margin-top: 0.5rem;
   }
   .versionSelect:hover {
     border: 1px solid $p-color-neutral-contrast-high;
