@@ -1,4 +1,4 @@
-import { StorefrontConfig } from './src/interface';
+import { StorefrontConfig } from './src/models';
 
 export const config: StorefrontConfig = {
   About: {
@@ -191,6 +191,10 @@ export const config: StorefrontConfig = {
     'Components Ready': [
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
+    ],
+    'Flash Of Unstyled Content': [
+      // @ts-ignore
+      () => import(`@/pages/general/flash-of-unstyled-content.md`)
     ],
     'Slotted Content': [
       // @ts-ignore

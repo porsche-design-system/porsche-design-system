@@ -50,7 +50,7 @@ export const SelectWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with disabled state">
         <SelectWrapper label="Some label" description="Some description">
-          <select name="some-name" disabled={true}>
+          <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>

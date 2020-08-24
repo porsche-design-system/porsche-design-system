@@ -1,5 +1,4 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
-import cx from 'classnames';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -49,26 +48,26 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = cx(prefix('checkbox-wrapper__label'));
-    const fakeCheckboxClasses = cx(
-      prefix('checkbox-wrapper__fake-checkbox'),
-      (this.checked || this.indeterminate) && prefix('checkbox-wrapper__fake-checkbox--checked'),
-      this.disabled && prefix('checkbox-wrapper__fake-checkbox--disabled'),
-      this.state !== 'none' && prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)
-    );
-    const iconClasses = cx(
-      prefix('checkbox-wrapper__icon'),
-      (this.checked || this.indeterminate) && prefix('checkbox-wrapper__icon--checked')
-    );
-    const labelTextClasses = cx(
-      prefix('checkbox-wrapper__label-text'),
-      mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-      this.disabled && prefix('checkbox-wrapper__label-text--disabled')
-    );
-    const messageClasses = cx(
-      prefix('checkbox-wrapper__message'),
-      this.state !== 'none' && prefix(`checkbox-wrapper__message--${this.state}`)
-    );
+    const labelClasses = prefix('checkbox-wrapper__label');
+    const fakeCheckboxClasses = {
+      [prefix('checkbox-wrapper__fake-checkbox')]: true,
+      [prefix('checkbox-wrapper__fake-checkbox--checked')]: this.checked || this.indeterminate,
+      [prefix('checkbox-wrapper__fake-checkbox--disabled')]: this.disabled,
+      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none'
+    };
+    const iconClasses = {
+      [prefix('checkbox-wrapper__icon')]: true,
+      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate
+    };
+    const labelTextClasses = {
+      [prefix('checkbox-wrapper__label-text')]: true,
+      [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
+      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+    };
+    const messageClasses = {
+      [prefix('checkbox-wrapper__message')]: true,
+      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none'
+    };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
@@ -152,6 +151,7 @@ export class CheckboxWrapper {
      * clicked.
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
+      this.input.focus();
       this.input.click();
     }
   };
