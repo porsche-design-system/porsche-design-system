@@ -38,32 +38,6 @@
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  .versionSelect {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    outline: none !important;
-    font-family: $p-font-family;
-    border-radius: 0;
-    border: 1px solid $p-color-neutral-contrast-medium;
-    background: url('https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.min.fdb5ae2bcbe9e89a4ca462ff709c0ea8.svg');
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-    padding-right: 1rem;
-    padding-left: 0.5rem;
-    padding-bottom: 0.2rem;
-    padding-top: 0.2rem;
-    margin-top: 0.5rem;
-  }
-  .versionSelect:hover {
-    border: 1px solid $p-color-neutral-contrast-high;
-    animation-duration: 0.24s;
-    transition-timing-function: ease;
-  }
-  .versionSelect:focus {
-    border: 1px solid $p-color-theme-light-state-focus;
-  }
-
   .header {
     text-align: center;
   }
