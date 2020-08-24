@@ -5,50 +5,51 @@
         <button
           type="button"
           role="tab"
-          :aria-selected="(theme === 'light') ? 'true' : 'false'"
-          :class="{'is-active': (theme === 'light')}"
+          :aria-selected="theme === 'light' ? 'true' : 'false'"
+          :class="{ 'is-active': theme === 'light' }"
           @click="switchTheme('light')"
-        >Light theme
+        >
+          Light theme
         </button>
       </p-text>
       <p-text class="tab" size="inherit" weight="thin" tag="div">
         <button
           type="button"
           role="tab"
-          :aria-selected="(theme === 'dark') ? 'true' : 'false'"
-          :class="{'is-active': (theme === 'dark')}"
+          :aria-selected="theme === 'dark' ? 'true' : 'false'"
+          :class="{ 'is-active': theme === 'dark' }"
           @click="switchTheme('dark')"
-        >Dark theme
+        >
+          Dark theme
         </button>
       </p-text>
     </div>
     <div
       class="example"
       :class="{
-        'light': (themeable && theme === 'light' || themeable === false),
-        'dark': (themeable && theme === 'dark'),
-        'height-fixed': (childElementLayout.height === 'fixed'),
-        'spacing-inline': (childElementLayout.spacing === 'inline'),
-        'spacing-block': (childElementLayout.spacing === 'block'),
-        'spacing-block-small': (childElementLayout.spacing === 'block-small')
+        light: (themeable && theme === 'light') || themeable === false,
+        dark: themeable && theme === 'dark',
+        'height-fixed': childElementLayout.height === 'fixed',
+        'spacing-inline': childElementLayout.spacing === 'inline',
+        'spacing-block': childElementLayout.spacing === 'block',
+        'spacing-block-small': childElementLayout.spacing === 'block-small'
       }"
     >
       <div class="configurator" v-if="isSlotSet('configurator')">
-        <slot name="configurator" :theme="theme"/>
+        <slot name="configurator" :theme="theme" />
       </div>
       <div class="code">
-        <slot :theme="theme"/>
+        <slot :theme="theme" />
       </div>
-      <CodeBlock :markup="markup" :theme="theme"/>
+      <CodeBlock :markup="markup" :theme="theme" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
-
-  type Theme = 'light' | 'dark';
+  import { Theme } from '@/models';
 
   interface ChildElementLayout {
     height: 'auto' | 'fixed';
@@ -61,8 +62,8 @@
     }
   })
   export default class Playground extends Vue {
-    @Prop({default: false}) public themeable!: boolean;
-    @Prop({default: () => ({height: 'auto', spacing: 'none'})}) public childElementLayout!: ChildElementLayout;
+    @Prop({ default: false }) public themeable!: boolean;
+    @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
 
     public theme: Theme = 'light';
     public markup = '';

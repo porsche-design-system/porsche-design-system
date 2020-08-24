@@ -186,6 +186,46 @@ jobs:
         with:
           name: components-react-build
           path: ./packages/components-react/dist/components-wrapper
+  partials:
+    name: 'Partials'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+      - name: 'Install'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build Fonts'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --fonts
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --utilities
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --partials
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
@@ -307,10 +347,15 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Store Partials Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: partials-build
+          path: ./packages/partials/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: storefront-prod-build
+          name: storefront-build
           path: ./packages/storefront/dist
       - name: 'Store Utilities Artifact'
         uses: actions/upload-artifact@v2
@@ -418,7 +463,7 @@ jobs:
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: storefront-prod-build
+          name: storefront-build
           path: ./packages/storefront/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
@@ -541,7 +586,36 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/assets
+          args: packages/assets/dist
+  release-partials:
+    name: 'Release Partials'
+    needs: [storefront-deployment]
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Docker Login'
+        uses: azure/docker-login@v1
+        with:
+          login-server: docker.pkg.github.com
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Docker Pull'
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+      - name: 'Restore Partials Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: partials-build
+          path: ./packages/partials/dist
+      - name: 'Publish NPM Package'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: run-release-npm
+          args: packages/partials
   release-utilities:
     name: 'Release Utilities'
     needs: [storefront-deployment]

@@ -40,19 +40,19 @@ export const TextareaWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render in disabled state">
         <TextareaWrapper label="Some label" description="Some description">
-          <textarea name="some-name" disabled={true}></textarea>
+          <textarea name="some-name" disabled></textarea>
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with placeholder with disabled state">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" disabled={true} placeholder="Some placeholder"></textarea>
+          <textarea name="some-name" disabled placeholder="Some placeholder"></textarea>
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render in readonly state">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" defaultValue="Some value" readOnly={true} />
+          <textarea name="some-name" defaultValue="Some value" readOnly />
         </TextareaWrapper>
       </div>
 

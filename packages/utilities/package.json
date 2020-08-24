@@ -2,22 +2,42 @@
   "name": "utilities",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "styled-components": "^5.1.1"
-  },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "build": "yarn --cwd ./projects/utilities build",
     "test": "yarn test:unit && yarn test:vrt",
-    "test:unit": "jest -c=tests/unit/config/jest.config.js",
+    "test:unit": "jest -c tests/unit/config/jest.config.js",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && yarn --cwd ./projects/utilities clean"
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./projects/utilities clean:node_modules",
+    "clean:build": "rm -rf ./dist && yarn --cwd ./projects/utilities clean:build"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@porsche-design-system/visual-regression-tester": "^3.0.0",
+    "@types/jasmine": "^3.5.12",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.44",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "concurrently": "^5.2.0",
+    "jasmine": "^3.6.1",
+    "jasmine-spec-reporter": "^5.0.2",
+    "jest": "^26.4.0",
+    "node-sass": "^4.14.1",
+    "puppeteer": "~5.2.1",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "~3.9.7",
+    "wait-on": "^5.1.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,26 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@porsche-design-system/visual-regression-tester": "^3.0.0",
-    "@testing-library/jest-dom": "^5.11.2",
-    "@testing-library/react": "^10.4.8",
-    "@testing-library/user-event": "^12.1.0",
-    "@types/jasmine": "^3.5.12",
-    "@types/jest": "^26.0.9",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-router-dom": "^5.1.5",
-    "concurrently": "^5.2.0",
-    "jasmine": "^3.6.1",
-    "jasmine-spec-reporter": "^5.0.2",
-    "node-sass": "^4.14.1",
-    "puppeteer": "~5.2.1",
-    "ts-jest": "^26.1.4",
-    "ts-node": "^8.10.2",
-    "typescript": "~3.9.7",
-    "wait-on": "^5.1.0"
   }
 }

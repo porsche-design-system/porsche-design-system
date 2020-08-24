@@ -45,7 +45,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>    
   <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" disabled="disabled">Some value</textarea>
+    <textarea name="some-name" disabled>Some value</textarea>
   </p-textarea-wrapper>
 </Playground>
 
@@ -55,7 +55,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>    
   <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" readonly="readonly">Some value</textarea>
+    <textarea name="some-name" readonly>Some value</textarea>
   </p-textarea-wrapper>
 </Playground>
 

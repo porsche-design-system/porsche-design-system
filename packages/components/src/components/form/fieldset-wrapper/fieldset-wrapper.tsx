@@ -1,5 +1,4 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
-import cx from 'classnames';
 import { prefix } from '../../../utils';
 
 @Component({
@@ -12,8 +11,8 @@ export class FieldsetWrapper {
   @Prop() public label?: string = '';
 
   public render(): JSX.Element {
-    const fieldsetClasses = cx(prefix('fieldset-wrapper'));
-    const labelClasses = cx(prefix('fieldset-wrapper__label'));
+    const fieldsetClasses = prefix('fieldset-wrapper');
+    const labelClasses = prefix('fieldset-wrapper__label');
 
     return (
       <fieldset class={fieldsetClasses}>

@@ -26,8 +26,12 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
     0,
     oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
   )}${separator}
-
-export const FONT_FACE_STYLE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";`;
+export const FONT_FACE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";
+/**
+ * @deprecated since v1.1.0.
+ * Please use FONT_FACE_CDN_URL instead.
+ */
+export const FONT_FACE_STYLE_CDN_URL = FONT_FACE_CDN_URL;`;
 
   fs.writeFileSync(targetFile, newContent);
 };
