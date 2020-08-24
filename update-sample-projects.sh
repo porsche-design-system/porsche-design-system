@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ -z "${1}" || "${1}" != "components-angular" && "${1}" != "components-react" && "${1}" != "utilities" ]]; then
-  echo "Please provide a valid package name, e.g. 'components-angular'"
+if [[ -z "${1}" || "${1}" != "components-angular" && "${1}" != "components-react" && "${1}" != "assets" && "${1}" != "partials" && "${1}" != "utilities" ]]; then
+  echo "Please provide a valid package name, e.g. 'components-angular', 'components-react', 'assets', 'partials' or 'utilities'"
   exit 1
 fi
 

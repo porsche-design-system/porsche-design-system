@@ -23,7 +23,7 @@
 
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
-  import { StorefrontConfig } from '@/interface';
+  import { StorefrontConfig } from '@/models';
   import { config as storefrontConfig } from '@/../storefront.config';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';

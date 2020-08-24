@@ -320,7 +320,7 @@ A description text can be added to explain the meaning of a specific form field.
 
 <Playground>
   <p-select-wrapper label="Some label">
-    <select name="some-name" disabled="disabled">
+    <select name="some-name" disabled>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
       <option value="c">Option C</option>

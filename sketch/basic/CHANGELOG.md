@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0] - 2020-08-21
+
+#### Fixed
+
+Type | Basic Library |
+|---|---|
+Font |  Update font with new metrics |
+
 ### [1.5.0] - 2020-07-17
 
 #### Added
