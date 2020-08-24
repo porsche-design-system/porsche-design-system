@@ -214,7 +214,7 @@ export class SelectWrapper {
               id="p-listbox"
               aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex(e => e.highlighted)}`}
               tabIndex={-1}
-              aria-expanded={!this.filter && this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
               aria-labelledby={this.label}
               ref={(el) => (this.fakeOptionListNode = el)}
             >
