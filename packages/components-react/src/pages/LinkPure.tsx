@@ -201,11 +201,6 @@ export const LinkPurePage = (): JSX.Element => {
           <a href="https://www.porsche.com">Some label</a>
           <p slot="subline">Some subline</p>
         </LinkPure>
-        <a href="#">
-          <LinkPure size="large">
-            Some label<p slot="subline">Some subline</p>
-          </LinkPure>
-        </a>
       </div>
     </>
   );
