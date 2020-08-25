@@ -40,12 +40,11 @@ Choose between a set of pre-defined social icons.
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component. 
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link-social :theme="theme" icon="logo-facebook"><a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a></p-link-social>
-    <a href="https://www.facebook.com/" class="example-link" target="_blank" rel="nofollow noopener"><p-link-social icon="logo-facebook" :theme="theme">Facebook</p-link-social></a>
   </template>
 </Playground>
 
