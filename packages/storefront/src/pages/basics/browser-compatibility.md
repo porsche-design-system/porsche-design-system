@@ -113,12 +113,13 @@ Just drop the JS snippet at the end of the `body` tag of your application. Be su
 
 ...
   // if used as static file, be sure to point to the latest release
-  <script defer src="https://cdn.ui.porsche.com/porsche-design-system/browser-notification-banner/init.min.{MAJOR}.{MINOR}.{PATCH}.js"></script>
+  <script defer src="{{cdnUr}}/{{fileInit}}"></script>
 </body>
 ```
 
 #### Translations
-Automatic translations for the following languages are provided: `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
+Automatic translations for the following languages are provided:  
+`'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
 
 The language is set by scanning the `html` tag for the `lang` attribute. Support is given for the following formats:
 - `lang="en"`
@@ -141,3 +142,14 @@ There always might be a case where something goes wrong. Here are some possible 
 **A:** The translation key has not the correct format (see "Translations")  
 2. **Q:** Why are there no implementation guidelines for my framework (e.g. Angular, React)?  
 **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
+
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
+  
+  @Component
+  export default class BrowserNotificationBanner extends Vue {
+    public cdnUr = CDN_BASE_URL;
+    public fileInit = JS_MANIFEST.init;
+  }
+</script>
