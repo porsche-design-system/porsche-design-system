@@ -373,8 +373,8 @@ export class SelectWrapper {
           [prefix('select-wrapper__fake-option--disabled')]: this.optionDisabled.includes(key)
         }}
         onClick={() => (!this.optionDisabled.includes(key) ? this.setOptionSelected(key) : this.select.focus())}
-        aria-selected={this.optionSelected === key && 'true'}
-        aria-disabled={this.optionDisabled.includes(key) && 'true'}
+        aria-selected={this.optionSelected === key ? 'true' : null}
+        aria-disabled={this.optionDisabled.includes(key) ? 'true' : null}
       >
         <span>{option.text}</span>
         {key === this.optionSelected && (
