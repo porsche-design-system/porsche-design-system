@@ -360,8 +360,6 @@ describe('select-wrapper fake-select', () => {
     });
 
     describe('keyboard and click events', () => {
-      const getFakeOptionInPosOne = async () =>
-        await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
       const getActiveDescendant = async () => await getAttribute(await getSelectOptionList(), 'aria-activedescendant');
       const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
       const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
@@ -434,9 +432,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
 
-        expect(
-          await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted')
-        ).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(2);
       });
 
       it('should skip disabled option on arrow up', async () => {
@@ -903,7 +899,7 @@ describe('select-wrapper fake-select', () => {
     `
         );
         const select = await getSelectRealInput();
-        const fakeOptionInPosOne = await getFakeOptionInPosOne();
+        const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
         await select.click();
         await fakeOptionInPosOne.click();
