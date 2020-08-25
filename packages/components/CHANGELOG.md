@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Removed
+- Support for `<a>` wrapped `Link` and `LinkPure`
+
 ### [2.0.0-alpha.2] - 2020-08-20
 
 ### [2.0.0-alpha.1] - 2020-08-17
