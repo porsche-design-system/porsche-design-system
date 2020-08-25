@@ -91,12 +91,11 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component or as a wrapper element. If using the latter, take care of the correct styling of the rendered router `<a>` tag like in the example below (in most cases `outline` and `text-decoration` must be set to `none`).
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component.
 
 <Playground :themeable="true" :childElementLayout="{spacing: 'inline'}">
   <template v-slot={theme}>
     <p-link-pure :theme="theme"><a href="https://www.porsche.com">Some label</a></p-link-pure>
-    <a href="https://www.porsche.com" class="example-link"><p-link-pure :theme="theme">Some label</p-link-pure></a>
   </template>
 </Playground>
 
@@ -134,22 +133,6 @@ If the active state should not render a clickable anchor tag, just remove the `h
 
 ```
 
-If you wrap it with an `<a>`, it's important to reset `text-decoration` and `outline`, since the inner component has no control over the elements that are around it.
-
-``` 
-# style.css
-.link {
-  text-decoration:none;
-  outline: none;
-}
-
-# template.html
-<a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive" class="link">
-  <p-link-pure [active]="rla.isActive">Some label</p-link-pure>
-</a>
-
-```
-
 ### React
 
 Use the spread operator to call props of **PLinkPure**.
@@ -160,22 +143,6 @@ Use the spread operator to call props of **PLinkPure**.
   <Link to="/path/to/heaven">Some label</Link>
 </PLinkPure>
 
-```
-
-If you wrap it with the `<Link>` component of React Router, it's important to reset `text-decoration` and `outline`, since the inner
-component has no control over the elements that are around it.  
-
-``` 
-# Style.css
-.link {
-  text-decoration:none;
-  outline: none;
-}
-
-# Component.tsx
-<Link to="/path/to/heaven" className={"link"}>
-  <PLinkPure {...{active: true}}>Some label</PLinkPure>
-</Link>
 ```
 
 ### VueJs
