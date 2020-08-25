@@ -118,9 +118,6 @@ import { Component } from '@angular/core';
         <a href="https://www.porsche.com">Some label</a>
         <p slot="subline">Some subline</p>
       </p-link-pure>
-      <a href="#">
-        <p-link-pure [size]="'large'">Some label<p slot="subline">Some subline</p></p-link-pure>
-      </a>
     </div>
   `
 })
