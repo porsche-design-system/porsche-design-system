@@ -250,6 +250,12 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/basic/typography/text/text.props.md`)
       ]
     },
+    Banner: {
+      Design: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/overlay/banner/banner.design.md`)
+      ]
+    },
     Button: {
       Design: [
         // @ts-ignore
