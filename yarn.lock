@@ -2610,6 +2610,11 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/assets/-/@porsche-design-system/assets-1.1.0.tgz#f04e31397089dfc3e2d8948f61129d90200e03ec"
   integrity sha1-8E4xOXCJ38Pi2JSPYRKdkCAOA+w=
 
+"@porsche-design-system/browser-notification-banner@^1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification-banner/-/@porsche-design-system/browser-notification-banner-1.0.0-beta.1.tgz#1b9411e14e128971c8c2ec6d095dadd0450107af"
+  integrity sha1-G5QR4U4SiXHIwuxtCV2t0EUBB68=
+
 "@porsche-design-system/partials@^1.1.0":
   version "1.1.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/partials/-/@porsche-design-system/partials-1.1.0.tgz#c781b5ad1e48f27a9167dacf73e3fd7a5e5b17e1"
