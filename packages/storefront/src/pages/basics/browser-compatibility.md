@@ -97,7 +97,7 @@ const ieVersion = (uaString: string) => {
 }
 if (ieVersion(ua) === 11) {
   const url = CDN_BASE_URL;
-  const initFileName = JS_MANIFEST.banner;
+  const initFileName = JS_MANIFEST.notificationBanner;
   const body = document.getElementsByTagName('body')[0];
   const notificationBanner = document.createElement('script');
   notificationBanner.src = `${url}/${initFileName}`;
