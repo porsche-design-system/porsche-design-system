@@ -223,7 +223,7 @@ export class SelectWrapper {
           )}
         </div>
         {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || (
               <span>
                 <slot name="message" />
@@ -532,9 +532,9 @@ export class SelectWrapper {
             [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden,
           }}
           onClick={(e) => (!this.optionMaps[key].disabled && !this.optionMaps[key].selected ? this.setOptionSelected(key) : this.handleFocus(e))}
-          aria-selected={this.optionMaps[key].highlighted && 'true'}
-          aria-disabled={this.optionMaps[key].disabled && 'true'}
-          aria-hidden={this.optionMaps[key].hidden && 'true'}
+          aria-selected={this.optionMaps[key].highlighted ? 'true' : null}
+          aria-disabled={this.optionMaps[key].disabled ? 'true' : null}
+          aria-hidden={this.optionMaps[key].hidden ? 'true' : null}
         >
           <span>{option.text}</span>
           {this.optionMaps[key].selected && (
