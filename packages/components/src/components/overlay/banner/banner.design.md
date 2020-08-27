@@ -1,6 +1,6 @@
 # Banner
 
-Banner are used to provide action-based feedback messages or to convey informational and/or critical account-related notification.
+Banner are used to provide action-based feedback messages or to convey informational and/or critical related notification.
 Whenever you want to provide short, non-disruptive feedback or confirmation messages that communicate information to the user directly after taking an action,
 stick to the [Toast](#/components/toast) component instead.
 
@@ -126,5 +126,5 @@ or simultaneously triggered, their display and behavior should follow a priority
 
 ## Related Components
 * [Toast](#/components/toast)
-* [Modal](#/components/modal)
+* [Modal Dialog](#/components/modaldialog)
 
