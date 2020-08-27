@@ -65,7 +65,7 @@ export class SelectWrapper {
   private filterInput: HTMLInputElement;
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
-  private dropdownDirectionIntern: 'down' | 'up' = 'down';
+  private dropdownDirectionInternal: 'down' | 'up' = 'down';
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -140,7 +140,7 @@ export class SelectWrapper {
     const fakeOptionListClasses = {
       [prefix('select-wrapper__fake-option-list')]: true,
       [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
-      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection === 'auto' ? this.dropdownDirectionIntern : this.dropdownDirection}`)]: true
+      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection === 'auto' ? this.dropdownDirectionInternal : this.dropdownDirection}`)]: true
     };
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,
@@ -347,13 +347,14 @@ export class SelectWrapper {
       const listNodeOffset = this.fakeOptionListNode.offsetTop;
       const listNodeChildrenHeight = this.fakeOptionListNode.children[0].clientHeight;
       const numberOfChildNodes = this.fakeOptionListNode.children.length;
-      const listNodeHeight =  numberOfChildNodes >= 5 ? 200 : listNodeChildrenHeight * numberOfChildNodes;
+      // Max number of children visible is set to 5 (which equals fixed max-height of 200px defined in CSS)
+      const listNodeHeight =  numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
       const spaceTop = (listNodePageOffset - listNodeOffset - listNodeHeight) - window.scrollY;
       const spaceBottom = window.scrollY + window.innerHeight - (listNodePageOffset + listNodeHeight);
       if (spaceBottom < 0 && (spaceTop >= 0 || spaceTop > spaceBottom)) {
-        this.dropdownDirectionIntern = 'up';
+        this.dropdownDirectionInternal = 'up';
       } else {
-        this.dropdownDirectionIntern = 'down';
+        this.dropdownDirectionInternal = 'down';
       }
     }
   }
@@ -407,9 +408,9 @@ export class SelectWrapper {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
           this.handleScroll();
-        }
-        if (this.fakeOptionListHidden) {
-          this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+          if (this.fakeOptionListHidden) {
+            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+          }
         }
         break;
       case 'Enter':
@@ -551,7 +552,7 @@ export class SelectWrapper {
   }
 
   private cycleFakeOptionList(direction: string): void {
-    const validItems = this.optionMaps.filter(e => e.hidden !== true && e.disabled !== true);
+    const validItems = this.optionMaps.filter(e => !e.hidden && !e.disabled);
     const validMax = validItems.length-1;
     if(validMax === -1) {
       return;
@@ -616,9 +617,9 @@ export class SelectWrapper {
     }
   }
 
-  private handleFilterSearch(ev): void {
+  private handleFilterSearch(ev: InputEvent): void {
     this.searchString = '';
-    this.searchString = ev.target.value;
+    this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item: optionMap) => ({
       ...item,
       hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
