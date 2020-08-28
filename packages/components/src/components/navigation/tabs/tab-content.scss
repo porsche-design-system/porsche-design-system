@@ -1,0 +1,17 @@
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+
+.#{$p-global-class-prefix}tab-content {
+  $bem-block: &;
+  visibility: hidden;
+
+  &__selected {
+    visibility: visible;
+  }
+
+}
