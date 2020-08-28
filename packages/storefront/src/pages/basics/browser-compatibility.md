@@ -77,12 +77,10 @@ Then insert the main `init.js` file when your app is mounted, e.g.:
 
 ```
 applicationDidMount() {
-  const url = CDN_BASE_URL;
-  const initFileName = JS_MANIFEST.init;
   const body = document.getElementsByTagName('body')[0];
   const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${url}/${initFileName}`;
-  body.appendChild(notificationBanner)
+  notificationBanner.src = `${CDN_BASE_URL}/${JS_MANIFEST.init}`;
+  body.appendChild(notificationBanner);
 }
 ``` 
 
