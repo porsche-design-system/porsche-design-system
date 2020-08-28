@@ -166,8 +166,8 @@ Depending on the component it can be implemented in different ways, for example 
 
 |                                                        |                 | HEX     	| RGB         	| Usage              |
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
-| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
-| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #FF0223	| 255/2/35      | Hover state    |
+| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #FF0223 	| 255/2/35     | Active state   |
 | <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
