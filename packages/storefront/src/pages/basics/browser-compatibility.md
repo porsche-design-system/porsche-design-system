@@ -87,7 +87,7 @@ componentDidMount() {
 ``` 
 
 #### Advanced usage
-If you want to set your own browser detection, just ignore the `init.js` and load the `banner.js` (with `JS_MANIFEST.banner`) after detection has finished, e.g.:
+If you want to set your own browser detection, just ignore the `init.js` and load the `notification-banner.js` (with `JS_MANIFEST.notificationBanner    `) after detection has finished, e.g.:
 
 ```
 const ieVersion = (uaString: string) => {
