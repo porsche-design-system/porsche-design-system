@@ -2,6 +2,7 @@ import { Component, h, Element, Event, EventEmitter, Prop, Host, State, Watch } 
 import { prefix } from '../../../utils';
 
 export type ChangeTabEvent = { tabIndex: number };
+export type InitTabsEvent = { activeTab: number  }
 
 @Component({
   tag: 'p-tab',
@@ -20,7 +21,7 @@ export class Tab {
   @Prop() public activeTab?: number = 0;
 
   @Event({ eventName: 'initTabs', composed: true })
-  onLoad: EventEmitter;
+  onLoad: EventEmitter<InitTabsEvent>;
 
   @Event({ eventName: 'changeTab', composed: true })
   onChange: EventEmitter<ChangeTabEvent>;
@@ -44,6 +45,8 @@ export class Tab {
     this.onChange.emit({ tabIndex: this.tabSelected });
   }
 
+  public tabType: 'button' | 'aTag' = 'button';
+
   public render(): JSX.Element {
     const tabHeaderClasses = {
       [prefix(`tab__header--align-${this.align}`)]: true,
@@ -56,7 +59,7 @@ export class Tab {
 
     return (
       <Host>
-        <span class={tabHeaderClasses}>{this.renderButtons()}</span>
+        <span class={tabHeaderClasses}>{this.tabType === 'button' ? this.renderButtons() : this.renderATags()}</span>
         <div class={tabContentClasses}>
           <slot />
         </div>
@@ -91,12 +94,39 @@ export class Tab {
     return buttons;
   };
 
+  private renderATags = () => {
+    const aTags: Array<HTMLPTabContentElement> = [];
+
+    this.tabContentElements.map((tab: HTMLPTabContentElement, index: number) => {
+      const tabAClasses = {
+        [prefix(`tab__aTag`)]: true,
+        [prefix(`tab__aTag--${this.weight}`)]: true,
+        [prefix(`tab__aTag--selected`)]: tab.selected,
+        [prefix(`tab__aTag--disabled`)]: tab.disabled
+      };
+
+      aTags.push(
+        <a
+          href={tab.href}
+          class={tabAClasses}
+          onClick={() => {
+            this.handleOnClick(index);
+          }}
+        >
+          {tab.label}
+        </a>
+      );
+    });
+    return aTags;
+  };
+
   private handleOnClick = (index: number): void => {
     this.tabSelected = index;
   };
 
   private getTabContentElements = (): void => {
     this.tabContentElements = Array.from(this.host.querySelectorAll('p-tab-content'));
+    this.tabContentElements.find(tab => tab.href !== undefined ? this.tabType = 'aTag' : this.tabType = 'button');
   };
 
   private setTabContentIndex = (): void => {

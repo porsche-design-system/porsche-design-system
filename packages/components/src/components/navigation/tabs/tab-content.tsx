@@ -1,6 +1,6 @@
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { prefix } from '../../../utils';
-import { ChangeTabEvent } from './tab';
+import { ChangeTabEvent, InitTabsEvent } from './tab';
 
 @Component({
   tag: 'p-tab-content',
@@ -21,7 +21,7 @@ export class TabContent {
   @Prop() selected?: boolean;
 
   @Listen('initTabs', { target: 'parent', capture: true })
-  setActiveTabHandler(event: CustomEvent) {
+  setActiveTabHandler(event: CustomEvent<InitTabsEvent>) {
     event.detail.activeTab === this.index ? (this.selected = true) : (this.selected = false);
   }
 
