@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
-import { ChangeTabEvent } from "./components/navigation/tabs/tab";
+import { ChangeTabEvent, InitTabsEvent } from "./components/navigation/tabs/tab";
 export namespace Components {
     interface PButton {
         /**
@@ -1303,7 +1303,7 @@ declare namespace LocalJSX {
         "align"?: 'left' | 'center' | 'right';
         "disabled"?: boolean;
         "onChangeTab"?: (event: CustomEvent<ChangeTabEvent>) => void;
-        "onInitTabs"?: (event: CustomEvent<any>) => void;
+        "onInitTabs"?: (event: CustomEvent<InitTabsEvent>) => void;
         "weight"?: 'regular' | 'semiBold';
     }
     interface PTabContent {
