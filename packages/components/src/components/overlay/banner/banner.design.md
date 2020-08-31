@@ -90,17 +90,15 @@ The banner is always as width as the content and therefore stretches over all gr
 
 ### Placement
 
-Banners are displayed at the top of the screen. By default, a banner is placed 
-in the top center of the application, within the grid of the viewport. !!! TBD !!!
+!!! TBD !!!
+
+On desktop the Banners are displayed at the top of the screen. By default, a banner is placed 
+in the top center of the application, within the grid of the viewport. Exception is the Cookie Banner. 
+This is placed on the desktop and mobile at the bottom of the screen
+
+On mobile, all Banners are displayed at the bottom of the screen. 
 
 ## Don'ts
-
-### Don’t place mobile toasts over navigation
-
-On mobile viewports, be mindful of important navigation bars at 
-the bottom of the screen by placing toasts vertically above these components.
-
-!!! Image !!!
 
 ### Don’t display more than one action
 
@@ -116,6 +114,8 @@ For example, “dismiss” would be redundant. Use the basic instead.
 !!! Image !!!
 
 ### Multiple Banners
+
+!!! TBD !!!
 
 Do not display multiple Banners at the same time. When Banners are consecutively 
 or simultaneously triggered, their display and behavior should follow a priority queue. !!! TBD !!!
