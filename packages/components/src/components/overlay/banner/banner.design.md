@@ -33,6 +33,7 @@ Use neutral Banners to make a general announcement.
 
 Use the cookie banner to inform about the usecase of cookies, e.g. users can 
 gain access to more information (cookie policy or cookie settings) about.
+A cookie Banner can have up to two buttons. 
 
 !!! Code Beispiel !!!
 
@@ -102,7 +103,7 @@ On mobile, all Banners are displayed at the bottom of the screen.
 
 ### Don’t display more than one action
 
-Actionable Banners should only have one button.
+Actionable Banners should only have one button (except the cookie banner).
 
 !!! Image !!!
 
