@@ -133,7 +133,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 </Playground>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundLinkSocial extends Vue {
