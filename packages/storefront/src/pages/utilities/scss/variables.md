@@ -93,7 +93,7 @@ A light and dark theme is available depending on which background it's used.
 ## Spacing
 
 Given values are:  
-`0 | 4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
+`4 | 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 | 80`
 
 Possible variable for usage with SCSS (where {v} is the spacing value):
 ```
