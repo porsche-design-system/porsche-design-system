@@ -37,7 +37,7 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 ### Notification Banner
 
-To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of npm package.
+To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of an npm package.
 This package is not part of Porsche Design System and is delivered as self invoking VanillaJS bundle. So it can be used in many Framework environments.
 
 The package contains just references to the JS files which are hosted on our CDN. 
@@ -61,12 +61,12 @@ The easiest way to include the **Browser Notification Banner** into your project
 import '@porsche-design-system/browser-notification-banner/dist/init';
 ```
 
-This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner and gets bundled with your application code..
+This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner and gets bundled with your application code.
 
 
 #### Basic usage with control of loading the snippet
 If something fails with the above implementation ( e.g. the translations are not recognized correctly) you can load the initial script by yourself.
-Simply import `CDN_BASE_URL` and `JS_MANIFEST ` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
+Simply import `CDN_BASE_URL` and `JS_MANIFEST` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
 This grants access to the URL and the file names of the JS files.
 
 ```
@@ -76,24 +76,22 @@ import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notifi
 Then insert the main `init.js` file when your app is mounted, e.g.:
 
 ```
-componentDidMount() {
-  const url = CDN_BASE_URL;
-  const initFileName = JS_MANIFEST.init;
+applicationDidMount() {
   const body = document.getElementsByTagName('body')[0];
   const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${url}/${initFileName}`;
-  body.appendChild(notificationBanner)
+  notificationBanner.src = `${CDN_BASE_URL}/${JS_MANIFEST.init}`;
+  body.appendChild(notificationBanner);
 }
 ``` 
 
 #### Advanced usage
-If you want to set your own browser detection, just ignore the `init.js` and load the `notification-banner.js` (with `JS_MANIFEST.notificationBanner    `) after detection has finished, e.g.:
+If you want to set your own browser detection, just ignore the `init.js` and load the `notification-banner.js` (with `JS_MANIFEST.notificationBanner`) after detection has finished, e.g.:
 
 ```
-const ieVersion = (uaString: string) => {
+const ieVersion = (uaString: string): void | number => {
   uaString = uaString || navigator.userAgent;
   const match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
-  if (match) return parseInt(match[2])
+  if (match) return parseInt(match[2]);
 }
 if (ieVersion(ua) === 11) {
   const url = CDN_BASE_URL;
@@ -104,6 +102,18 @@ if (ieVersion(ua) === 11) {
   body.appendChild(notificationBanner)
 }
 ``` 
+
+#### Fallback usage if neither a npm package can be installed nor be used
+Just drop the JS snippet at the end of the `body` tag of your application. Be sure to point to the latest release!
+
+``` 
+<body>
+
+...
+  // if used as static file, be sure to point to the latest release
+  <script defer src="{{cdnUr}}/{{fileInit}}"></script>
+</body>
+```
 
 #### Translations
 Automatic translations for the following languages are provided:  
