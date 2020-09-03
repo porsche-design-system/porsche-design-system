@@ -151,7 +151,8 @@ Please make sure to set the corresponding **aria** attributes.
 </Playground>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundTextFieldWrapper extends Vue {
