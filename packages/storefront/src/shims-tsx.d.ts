@@ -8,7 +8,4 @@ declare global {
       [elem: string]: any;
     }
   }
-  interface Document {
-    documentMode?: any;
-  }
 }

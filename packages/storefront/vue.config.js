@@ -27,12 +27,7 @@ module.exports = {
         {
           test: /\.(md)(\?.*)?$/,
           use: ['vue-loader', '@porsche-design-system/vmark-loader']
-        },
-        {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/
-        },
+        }
       ]
     }
   },
@@ -66,6 +61,5 @@ module.exports = {
       }],
       background_color: '#FFFFFF'
     }
-
   }
 };
