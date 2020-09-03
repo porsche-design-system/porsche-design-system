@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <router-link class="link" :to="`/`">
-      <p-marque />
+      <p-marque/>
     </router-link>
     <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center">
       Design System
@@ -21,33 +21,34 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import { version } from '@porsche-design-system/components-js/package.json';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { version } from '@porsche-design-system/components-js/package.json';
 
-  @Component
-  export default class Header extends Vue {
-    public version: string = version;
+@Component
+export default class Header extends Vue {
+  public version: string = version;
 
-    public versionOptions: string[] = ['v1', 'v2', 'latest'];
-    public onVersionChange = (event: Event) => {
-      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
-    };
-  }
+  public versionOptions: string[] = ['v1', 'v2', 'latest'];
+  public onVersionChange = (event: Event) => {
+    window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
+  };
+}
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+@import '~@porsche-design-system/utilities/scss';
 
-  .header {
-    text-align: center;
+.header {
+  text-align: center;
+}
+
+.link {
+  display: inline-block;
+
+  &:focus {
+    outline: 1px solid $p-color-theme-light-state-focus;
+    outline-offset: 4px;
   }
-
-  .link {
-    display: inline-block;
-
-    &:focus {
-      outline: 1px solid $p-color-theme-light-state-focus;
-      outline-offset: 4px;
-    }
-  }
+}
 </style>

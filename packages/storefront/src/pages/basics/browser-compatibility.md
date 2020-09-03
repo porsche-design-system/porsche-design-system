@@ -144,7 +144,8 @@ There always might be a case where something goes wrong. Here are some possible 
 **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
   
   @Component
