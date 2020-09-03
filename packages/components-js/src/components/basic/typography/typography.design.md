@@ -320,7 +320,8 @@ impact on the origin character of the company typeface. This includes:
 </style>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   import { calculateLineHeight } from '@porsche-design-system/utilities';
   
   @Component

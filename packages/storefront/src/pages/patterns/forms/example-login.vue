@@ -3,7 +3,9 @@
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Welcome to Porsche</p-headline>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Log in to your Porsche account to manage your vehicles and services.</p-text>
+        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Log in to your Porsche account to manage your
+          vehicles and services.
+        </p-text>
       </p-grid-item>
     </p-grid>
     <p-grid class="form-section-spacing">

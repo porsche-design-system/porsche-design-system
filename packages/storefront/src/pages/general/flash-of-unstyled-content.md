@@ -97,7 +97,8 @@ and according `weights` in either `woff` or `woff2` file format. Combine the pat
 ```
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   import { getFontFaceCSS, getPorscheDesignSystemCoreStyles } from '@porsche-design-system/partials';
   
   @Component
