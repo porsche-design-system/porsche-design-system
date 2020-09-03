@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square128x128logo src="https://cdn.ui.porsche.com/porsche-design-system/metaicons/mstile-128x128.e00d29ccef65de6b5c62aafdc36d6aad.png"/>
+      <square144x144logo src="https://cdn.ui.porsche.com/porsche-design-system/metaicons/mstile-144x144.91ce9eb71da441fbc41399980e495327.png"/>
+      <square270x270logo src="https://cdn.ui.porsche.com/porsche-design-system/metaicons/mstile-270x270.6003b0be8d72c03282c5e43a94cf713c.png"/>
+      <square585x585logo src="https://cdn.ui.porsche.com/porsche-design-system/metaicons/mstile-585x585.f2742672eb0c17a1008c3a080fd8e6ac.png"/>
+      <square585x270logo src="https://cdn.ui.porsche.com/porsche-design-system/metaicons/mstile-585x270.a028a270b407697f8bdfa88fac529a02.png"/>
+      <TileColor>#FFFFFF</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>
