@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "70d1ffb466adcc3c6790",
-    "url": "css/app.7ceb6af0.css"
+    "revision": "f92563704bbfdb10928f",
+    "url": "css/app.fe3feaea.css"
   },
   {
     "revision": "f3b7a17cecd6bec991e8",
@@ -324,12 +324,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "5e6cad03991c462e35ba343716988d11",
+    "revision": "1869d04c61538ded8c2beeddead1bb5f",
     "url": "index.html"
   },
   {
-    "revision": "70d1ffb466adcc3c6790",
-    "url": "js/app.7484fd9f.js"
+    "revision": "f92563704bbfdb10928f",
+    "url": "js/app.fb7f4f1b.js"
   },
   {
     "revision": "8be4533bfc8ae3ca7fa6",
