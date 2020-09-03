@@ -90,7 +90,7 @@ Support is given for the following formats, e.g.:
 - `lang="en_US"`
 - `lang="en-US"`
 
-If none of these languages can be found, it will fallback to `en`.
+If none of these languages can be found, it will fall back to `en`.
 
 #### How it works
 The `<script>` tag points to a **< 1kb** sized file hosted on a CDN which has a browser detection for **IE11 and Edge<=18**. 
