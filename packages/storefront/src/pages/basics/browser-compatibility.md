@@ -25,7 +25,7 @@ New features introduced starting with the Porsche Design System v2.x are only co
 
 ### Why do we stop the support?
 
-To empower the opportunities of modern web standards including our technical foundation of using web components (custom elements), and to deliver the best possible user experience, performance and stability. Also, the share of IE11 and EdgeHTML users is the significant minority of our total users. Thus, we don't want to impair the experience for the vast majority.
+To empower the opportunities of modern web standards including our technical foundation of using web components (Custom Elements, Shadow DOM, CSS Variables), and to deliver the best possible user experience, performance and stability. Also, the share of IE11 and EdgeHTML users is the significant minority of our total users. Thus, we don't want to impair the experience for the vast majority.
 
 In 2015 Microsoft released Edge to supersede Internet Explorer, pre-installed on Windows 10 and also [recommended by Microsoft to be used as default browser](https://docs.microsoft.com/de-de/lifecycle/faq/internet-explorer-microsoft-edge). Since 2020 the new Microsoft Edge versions are based on Chromium, available for all operating systems. Thus, both IE11 and Microsoft Edge 18 are outdated browsers.
 
@@ -35,12 +35,9 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 **In order to guide the users and avoid dead-ends, we created an easy-to-use Browser Notification snippet, that should be implemented in all applications using the Porsche Design System.**
 
-### Notification Banner
+### Browser Notification Banner
 
-To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of an npm package.
-This package is not part of Porsche Design System and is delivered as self invoking VanillaJS bundle. So it can be used in many Framework environments.
-
-The package contains just references to the JS files which are hosted on our CDN. 
+To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of an npm package `@porsche-design-system/browser-notification-banner`.
 
 #### Install
 It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification-banner` npm package. 
@@ -55,88 +52,57 @@ yarn add @porsche-design-system/browser-notification-banner
 ```
 
 #### Basic usage
-The easiest way to include the **Browser Notification Banner** into your project is just by importing the `init.js` snippet from the package into your main JS file like this:
+The easiest way to include the **Browser Notification Banner** into your project is by importing and calling the provided `init()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
+This adds a `<script>` tag pointing to the browser notification banner JS snippet hosted on a CDN. When only the url to the JS snippet is needed then the function can be called with following parameter `init({ withoutTags: true })`.
 
+#### Integration examples
+
+##### React / Vue JS
 ```
-import '@porsche-design-system/browser-notification-banner/dist/init';
-```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Some title</title>
+  </head>
+  <body>
+    <div id="app"></div>
 
-This adds a small self invoking function with the browser detection and the loading mechanism of the notification banner and gets bundled with your application code.
+    <!-- Recommended integration: -->
+    <%= require('@porsche-design-system/browser-notification-banner').init() %>
 
+    <!-- Advanced integration: This way only the JS url is returned which gives more flexibility by defining the <script> tag.
+    In addition it gives the possibility to use and load it by your application JS code rather than in the index.html (be aware that 
+    in this scenario your application code needs to be excectuable in IE11 and Edge<=18). -->
+    <script defer src="<%= require('@porsche-design-system/browser-notification-banner').init({withoutTags: true}) %>"></script>
 
-#### Basic usage with control of loading the snippet
-If something fails with the above implementation ( e.g. the translations are not recognized correctly) you can load the initial script by yourself.
-Simply import `CDN_BASE_URL` and `JS_MANIFEST` in you main app file where you want to make use of the **@porsche-design-system/browser-notification-banner**.
-This grants access to the URL and the file names of the JS files.
-
-```
-import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
-```
-
-Then insert the main `init.js` file when your app is mounted, e.g.:
-
-```
-applicationDidMount() {
-  const body = document.getElementsByTagName('body')[0];
-  const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${CDN_BASE_URL}/${JS_MANIFEST.init}`;
-  body.appendChild(notificationBanner);
-}
-``` 
-
-#### Advanced usage
-If you want to set your own browser detection, just ignore the `init.js` and load the `notification-banner.js` (with `JS_MANIFEST.notificationBanner`) after detection has finished, e.g.:
-
-```
-const ieVersion = (uaString: string): void | number => {
-  uaString = uaString || navigator.userAgent;
-  const match = /\b(MSIE |Trident.*?rv:|Edge\/)(\d+)/.exec(uaString);
-  if (match) return parseInt(match[2]);
-}
-if (ieVersion(ua) === 11) {
-  const url = CDN_BASE_URL;
-  const initFileName = JS_MANIFEST.notificationBanner;
-  const body = document.getElementsByTagName('body')[0];
-  const notificationBanner = document.createElement('script');
-  notificationBanner.src = `${url}/${initFileName}`;
-  body.appendChild(notificationBanner)
-}
-``` 
-
-#### Fallback usage if neither a npm package can be installed nor be used
-Just drop the JS snippet at the end of the `body` tag of your application. Be sure to point to the latest release!
-
-``` 
-<body>
-
-...
-  // if used as static file, be sure to point to the latest release
-  <script defer src="{{cdnUr}}/{{fileInit}}"></script>
-</body>
+  </body>
+</html>
 ```
 
 #### Translations
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
 
-The language is set by scanning the `html` tag for the `lang` attribute. Support is given for the following formats:
+The **Browser Notification Banner** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. 
+Support is given for the following formats, e.g.:
 - `lang="en"`
 - `lang="en_US"`
 - `lang="en-US"`
 
-If none of these languages can be found, it will fallback to `en`;
+If none of these languages can be found, it will fallback to `en`.
 
 #### How it works
-The `init.js` is an `600 byte` sized file which has a browser detection for **IE11 and Edge<=18**. 
+The `<script>` tag points to a **< 1kb** sized file hosted on a CDN which has a browser detection for **IE11 and Edge<=18**. 
 If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
-Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session cookie is added to prevent popping up the banner again on route change.
+Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session storage is defined to prevent popping up the banner again on route changes as long as staying on the same domain/subdomain and browser tab.
 
 #### Troubleshooting
 There always might be a case where something goes wrong. Here are some possible answers:
 
-1. **Q:** Why does the translation not get recognized automatically?
-**A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's always recommended loading the init.js script as late as possible (e.g. after everything has mounted).  
-**A:** The translation key is not part of the provides keys (see "Translations")  
+1. **Q:** Why does the translation not get recognized automatically?  
+**A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's required that the `lang` attribute in the `html` tag is defined with the correct value before the **Browser Notification Banner** script gets initialized.  
+**A:** The translation key is not part of the provided keys (see "Translations")  
 **A:** The translation key has not the correct format (see "Translations")  
-2. **Q:** Why are there no implementation guidelines for my framework (e.g. Angular, React)?  
+2. **Q:** Why are there no implementation guidelines for my JS framework (e.g. Vanilla JS ;-))?  
 **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
