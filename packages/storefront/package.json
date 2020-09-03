@@ -16,7 +16,7 @@
     "clean": "rm -rf ./node_modules && rm -rf ./yarn-error.log && rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification-banner": "1.0.0-beta.2",
+    "@porsche-design-system/browser-notification-banner": "1.0.0-rc.0",
     "@porsche-design-system/partials": "^1.1.0",
     "change-case": "^4.1.1",
     "core-js": "^3.6.5",

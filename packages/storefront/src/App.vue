@@ -24,13 +24,13 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
   import Disclaimer from '@/components/Disclaimer.vue';
   import Header from '@/components/Header.vue';
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
   import Menu from '@/components/Menu.vue';
-  import { CDN_BASE_URL, JS_MANIFEST } from '@porsche-design-system/browser-notification-banner';
 
   @Component({
     components: {
@@ -52,15 +52,6 @@
 
     public get isStandalone(): boolean {
       return this.$route.meta.standalone;
-    }
-
-    private async mounted(): Promise<void> {
-      const url = CDN_BASE_URL;
-      const indexFileName = JS_MANIFEST.init;
-      const body = document.getElementsByTagName('body')[0];
-      const notificationBanner = document.createElement('script');
-      notificationBanner.src = `${url}/${indexFileName}`;
-      body.appendChild(notificationBanner)
     }
   }
 </script>
