@@ -95,7 +95,7 @@ export class CheckboxWrapper {
           </span>
         </label>
         {this.isMessageVisible && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' && 'alert'}>
+          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || (
               <span>
                 <slot name="message" />
