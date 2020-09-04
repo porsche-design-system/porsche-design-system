@@ -30,7 +30,7 @@ export default class Header extends Vue {
   public version: string = version;
 
   public versionOptions: string[] = ['v1', 'v2', 'latest'];
-  public onVersionChange = (event: Event) => {
+  public onVersionChange = (event: Event): void => {
     window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
   };
 }
