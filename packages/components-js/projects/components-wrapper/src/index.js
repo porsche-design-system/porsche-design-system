@@ -1,5 +1,5 @@
-import { defineCustomElements } from '@porsche-design-system/components/dist/esm/loader.mjs';
-import { setRegisterComponentsCallback } from '@porsche-design-system/web-components-manager';
+import {defineCustomElements} from "@porsche-design-system/components/dist/esm/loader";
+import {setRegisterComponentsCallback} from '@porsche-design-system/web-components-manager';
 
 setRegisterComponentsCallback(
   'porscheDesignSystem',

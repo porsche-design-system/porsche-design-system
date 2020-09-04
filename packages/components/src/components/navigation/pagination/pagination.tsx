@@ -82,7 +82,7 @@ export class Pagination {
     this.updateMaxNumberOfPageLinks();
   }
 
-  public componentDidUnload(): void {
+  public disconnectedCallback(): void {
     this.unlistenResize();
   }
 
