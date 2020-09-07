@@ -1,9 +1,7 @@
-import { Component, Element, h, Prop } from '@stencil/core';
-import { prefix } from '../../../utils';
+import { Component, Element, h, Prop, Host } from '@stencil/core';
 
 @Component({
   tag: 'p-tabs-item',
-  styleUrl: 'tabs-item.scss',
   shadow: true
 })
 export class TabsItem {
@@ -20,12 +18,6 @@ export class TabsItem {
   @Prop() selected?: boolean;
 
   public render(): JSX.Element {
-    const tabContentClasses = {
-      [prefix('tabs-item')]: true,
-      [prefix('tabs-item__disabled')]: this.disabled,
-      [prefix('tabs-item__selected')]: this.selected
-    };
-
-    return <span class={tabContentClasses}>{this.selected && <slot />}</span>;
+    return <Host>{this.selected && <slot />}</Host>;
   }
 }
