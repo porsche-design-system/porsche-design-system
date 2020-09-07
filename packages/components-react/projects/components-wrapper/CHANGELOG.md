@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.5-rc.0] - 2020-09-07
+
+### Changed
+- Deprecated stencil lifecycle-method `componentDidUnload` to `disconnectedCallback` to fix "`selectObserver` is undefined" bug in `Select Wrapper` and `Pagination`
+
 ### [1.5.4] - 2020-08-25
 
 ### [1.5.4-rc.0] - 2020-08-17

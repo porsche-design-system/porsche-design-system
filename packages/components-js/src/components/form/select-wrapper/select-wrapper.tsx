@@ -68,7 +68,7 @@ export class SelectWrapper {
     this.setAriaAttributes();
   }
 
-  public componentDidUnload(): void {
+  public disconnectedCallback(): void {
     if (!this.isTouch) {
       this.selectObserver.disconnect();
       this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
