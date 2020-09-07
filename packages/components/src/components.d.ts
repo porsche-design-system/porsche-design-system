@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
-import { ChangeTabEvent, InitTabsEvent } from "./components/navigation/tabs/tab";
 export namespace Components {
     interface PButton {
         /**
@@ -499,16 +498,15 @@ export namespace Components {
          */
         "theme"?: 'light' | 'dark';
     }
-    interface PTab {
+    interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
         "disabled"?: boolean;
         "weight"?: 'regular' | 'semiBold';
     }
-    interface PTabContent {
+    interface PTabsItem {
         "disabled": boolean;
         "href"?: string;
-        "index"?: number;
         "label": string;
         "selected"?: boolean;
     }
@@ -732,17 +730,17 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
-    interface HTMLPTabElement extends Components.PTab, HTMLStencilElement {
+    interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
-    var HTMLPTabElement: {
-        prototype: HTMLPTabElement;
-        new (): HTMLPTabElement;
+    var HTMLPTabsElement: {
+        prototype: HTMLPTabsElement;
+        new (): HTMLPTabsElement;
     };
-    interface HTMLPTabContentElement extends Components.PTabContent, HTMLStencilElement {
+    interface HTMLPTabsItemElement extends Components.PTabsItem, HTMLStencilElement {
     }
-    var HTMLPTabContentElement: {
-        prototype: HTMLPTabContentElement;
-        new (): HTMLPTabContentElement;
+    var HTMLPTabsItemElement: {
+        prototype: HTMLPTabsItemElement;
+        new (): HTMLPTabsItemElement;
     };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
@@ -795,8 +793,8 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
-        "p-tab": HTMLPTabElement;
-        "p-tab-content": HTMLPTabContentElement;
+        "p-tabs": HTMLPTabsElement;
+        "p-tabs-item": HTMLPTabsItemElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -1298,18 +1296,15 @@ declare namespace LocalJSX {
          */
         "theme"?: 'light' | 'dark';
     }
-    interface PTab {
+    interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
         "disabled"?: boolean;
-        "onChangeTab"?: (event: CustomEvent<ChangeTabEvent>) => void;
-        "onInitTabs"?: (event: CustomEvent<InitTabsEvent>) => void;
         "weight"?: 'regular' | 'semiBold';
     }
-    interface PTabContent {
+    interface PTabsItem {
         "disabled"?: boolean;
         "href"?: string;
-        "index"?: number;
         "label"?: string;
         "selected"?: boolean;
     }
@@ -1432,8 +1427,8 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
-        "p-tab": PTab;
-        "p-tab-content": PTabContent;
+        "p-tabs": PTabs;
+        "p-tabs-item": PTabsItem;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1465,8 +1460,8 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
-            "p-tab": LocalJSX.PTab & JSXBase.HTMLAttributes<HTMLPTabElement>;
-            "p-tab-content": LocalJSX.PTabContent & JSXBase.HTMLAttributes<HTMLPTabContentElement>;
+            "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
+            "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;

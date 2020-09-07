@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.#{$p-global-class-prefix}tab-content {
+.#{$p-global-class-prefix}tabs-item {
   $bem-block: &;
   visibility: hidden;
 
