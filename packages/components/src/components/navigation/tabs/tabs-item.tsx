@@ -15,6 +15,8 @@ export class TabsItem {
 
   @Prop() href?: string;
 
+  @Prop() target?: string;
+
   @Prop() selected?: boolean;
 
   public render(): JSX.Element {
