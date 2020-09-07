@@ -10,7 +10,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-sizing: border-box;
 }
 
-.#{$p-global-class-prefix}tab {
+.#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
   &__header {
