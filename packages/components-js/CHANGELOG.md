@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.5-rc.0] - 2020-09-07
+
 ### Changed
 - Stencil lifecycle-method `componentDidUnload` to `disconnectedCallback` in `Select Wrapper` and `Pagination`
 
