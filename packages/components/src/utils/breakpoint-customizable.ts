@@ -1,5 +1,6 @@
 import { prefix } from './prefix';
 
+/* eslint-disable no-shadow */
 enum Breakpoint {
   base = 'base',
   xs = 'xs',
