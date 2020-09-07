@@ -501,14 +501,14 @@ export namespace Components {
     interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
-        "disabled"?: boolean;
-        "weight"?: 'regular' | 'semiBold';
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
         "disabled": boolean;
         "href"?: string;
         "label": string;
         "selected"?: boolean;
+        "target"?: string;
     }
     interface PText {
         /**
@@ -1299,14 +1299,14 @@ declare namespace LocalJSX {
     interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
-        "disabled"?: boolean;
-        "weight"?: 'regular' | 'semiBold';
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
         "disabled"?: boolean;
         "href"?: string;
         "label"?: string;
         "selected"?: boolean;
+        "target"?: string;
     }
     interface PText {
         /**
