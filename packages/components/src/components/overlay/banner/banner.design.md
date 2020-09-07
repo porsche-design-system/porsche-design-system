@@ -29,15 +29,6 @@ Use neutral Banners to make a general announcement.
 !!! Code Beispiel !!!
 
 
-### Cookie
-
-Use the cookie banner to inform about the usecase of cookies, e.g. users can 
-gain access to more information (cookie policy or cookie settings) about.
-A cookie Banner can have up to two buttons. 
-
-!!! Code Beispiel !!!
-
-
 
 ---
 
@@ -62,14 +53,6 @@ These Banners are reserved for issues like compliance and system errors. As such
 
 !!! Code Beispiel !!!
 
-
-### Inline
-
-Inline Banners are a variant of the Banner notification, providing immediate feedback as marketing or pure information somewhere inline on the page.
-
-!!! Code Beispiel !!!
-
-
 ---
 
 ## Styling
@@ -79,6 +62,10 @@ The Banner text (always in copytext) gives the user an information about the pri
 Try to keep the feedback message short and descriptive.
 
 ### Width
+
+!!! TBD !!!
+
+
 The banner is always as width as the content and therefore stretches over all grid columns. 
 
 ---
@@ -94,16 +81,14 @@ The banner is always as width as the content and therefore stretches over all gr
 !!! TBD !!!
 
 On desktop the Banners are displayed at the top of the screen. By default, a banner is placed 
-in the top center of the application, within the grid of the viewport. Exception is the Cookie Banner. 
-This is placed on the desktop and mobile at the bottom of the screen
-
-On mobile, all Banners are displayed at the bottom of the screen. 
+in the top center of the application, within the grid of the viewport. On mobile, all Banners 
+are displayed at the bottom of the screen. 
 
 ## Don'ts
 
 ### Don’t display more than one action
 
-Actionable Banners should only have one button (except the cookie banner).
+Actionable Banners should only have one button.
 
 !!! Image !!!
 
