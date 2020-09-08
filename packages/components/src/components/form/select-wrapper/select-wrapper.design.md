@@ -39,7 +39,7 @@ Sometimes it’s helpful for the user to get further information on the input. T
 
 For a large amount of select options (e.g. country/state select), we offer the custom filter to select easily and fast the desired of the available options. 
 
-  <p-select-wrapper filter="true" label="Some label" :theme="theme">
+  <p-select-wrapper filter="true" label="Some label">
       <select name="some-name">
         <option value="">Select a country</option>
         <option value="AF">Afghanistan</option>
