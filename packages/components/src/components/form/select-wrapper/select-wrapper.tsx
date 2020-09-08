@@ -484,9 +484,9 @@ export class SelectWrapper {
     });
   };
 
-  private setOptionSelected = (index: number): void => {
+  private setOptionSelected = (newIndex: number): void => {
     const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.select.selectedIndex = index;
+    this.select.selectedIndex = newIndex;
     const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.handleVisibilityOfFakeOptionList('hide');
 
