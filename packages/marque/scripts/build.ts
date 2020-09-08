@@ -87,7 +87,7 @@ export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/marque';
-  const files = await globby('./src/**/*.png');
+  const files = (await globby('./src/**/*.png')).sort();
 
   await createManifestAndCopyMarque(cdn, files).catch((e) => {
     console.error(e);

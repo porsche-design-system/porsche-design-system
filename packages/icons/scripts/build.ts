@@ -70,7 +70,7 @@ export const ICONS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
-  const files = await globby('./src/**/*.svg');
+  const files = (await globby('./src/**/*.svg')).sort();
   const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
 
   await createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
