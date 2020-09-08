@@ -368,22 +368,20 @@ export class SelectWrapper {
   }
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if (type === 'show' && this.fakeOptionListHidden) {
-      this.fakeOptionListHidden = false;
-      this.handleDropdownDirection();
-    } else if (type === 'hide' && !this.fakeOptionListHidden) {
-      this.fakeOptionListHidden = true;
-    } else if (type === 'toggle' && this.fakeOptionListHidden) {
-      this.fakeOptionListHidden = false;
-      this.handleDropdownDirection();
-    } else if (type === 'toggle' && !this.fakeOptionListHidden) {
-      this.fakeOptionListHidden = true;
+    if (this.fakeOptionListHidden) {
+      if (type === 'show' || type === 'toggle') {
+        this.fakeOptionListHidden = false;
+        this.handleDropdownDirection();
+      }
+    } else {
+      if (type === 'hide' || type === 'toggle') {
+        this.fakeOptionListHidden = true;
+      }
     }
   }
 
   private handleKeyboardEvents(e: KeyboardEvent): void {
-    const { key } = e;
-    switch (key) {
+    switch (e.key) {
       case 'ArrowUp':
       case 'Up':
         e.preventDefault();
@@ -457,9 +455,10 @@ export class SelectWrapper {
       case 'PageDown':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
+          const lastIndex = this.options.length - 1;
           this.optionMaps = this.optionMaps.map((item, index) => ({
             ...item,
-            highlighted: index === this.options.length - 1
+            highlighted: index === lastIndex
           }));
           this.handleScroll();
         }
@@ -533,43 +532,42 @@ export class SelectWrapper {
         <span>---</span>
       </div>
     ) : (
-      Array.from(this.options).map((option, index) => [
-        option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null && (
-          <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
-            {option.closest('optgroup').label}
-          </span>
-        ),
-        <div
-          id={`option-${index}`}
-          role="option"
-          color="inherit"
-          class={{
-            [prefix('select-wrapper__fake-option')]: true,
-            [prefix('select-wrapper__fake-option--selected')]: this.optionMaps[index].selected,
-            [prefix('select-wrapper__fake-option--highlighted')]: this.optionMaps[index].highlighted,
-            [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[index].disabled,
-            [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[index].hidden
-          }}
-          onClick={(e) =>
-            !this.optionMaps[index].disabled && !this.optionMaps[index].selected
-              ? this.setOptionSelected(index)
-              : this.handleFocus(e)
-          }
-          aria-selected={this.optionMaps[index].highlighted ? 'true' : null}
-          aria-disabled={this.optionMaps[index].disabled ? 'true' : null}
-          aria-hidden={this.optionMaps[index].hidden ? 'true' : null}
-        >
-          <span>{option.text}</span>
-          {this.optionMaps[index].selected && (
-            <PrefixedTagNames.pIcon
-              class={prefix('select-wrapper__fake-option-icon')}
-              aria-hidden="true"
-              name="check"
-              color="inherit"
-            />
-          )}
-        </div>
-      ])
+      Array.from(this.options).map((item, index) => {
+        const { disabled, hidden, selected, highlighted } = this.optionMaps[index];
+        return [
+          item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
+            <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
+              {item.closest('optgroup').label}
+            </span>
+          ),
+          <div
+            id={`option-${index}`}
+            role="option"
+            color="inherit"
+            class={{
+              [prefix('select-wrapper__fake-option')]: true,
+              [prefix('select-wrapper__fake-option--selected')]: selected,
+              [prefix('select-wrapper__fake-option--highlighted')]: highlighted,
+              [prefix('select-wrapper__fake-option--disabled')]: disabled,
+              [prefix('select-wrapper__fake-option--hidden')]: hidden
+            }}
+            onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.handleFocus(e))}
+            aria-selected={highlighted ? 'true' : null}
+            aria-disabled={disabled ? 'true' : null}
+            aria-hidden={hidden ? 'true' : null}
+          >
+            <span>{item.text}</span>
+            {selected && (
+              <PrefixedTagNames.pIcon
+                class={prefix('select-wrapper__fake-option-icon')}
+                aria-hidden="true"
+                name="check"
+                color="inherit"
+              />
+            )}
+          </div>
+        ];
+      })
     );
   }
 
@@ -641,15 +639,14 @@ export class SelectWrapper {
   }
 
   private handleFilterSearch(ev: InputEvent): void {
-    this.searchString = '';
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
       hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
     }));
 
-    const hiddenItems = this.optionMaps.filter((e) => e.hidden === true).length;
-    this.filterHasResult = hiddenItems !== this.optionMaps.length;
+    const hiddenItems = this.optionMaps.filter((e) => e.hidden);
+    this.filterHasResult = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   }
 
