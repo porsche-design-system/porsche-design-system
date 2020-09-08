@@ -7,7 +7,6 @@ import { TextWeight } from '../../../types';
   styleUrl: 'tabs.scss',
   shadow: true
 })
-
 export class Tabs {
   @Element() public host!: HTMLElement;
 
@@ -15,26 +14,30 @@ export class Tabs {
 
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
-  @Prop({ reflect: true }) public activeTab?: number = 0;
+  @State() private tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
-  @State() private tabsItems: HTMLPTabsItemElement[];
+  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
 
   @Watch('activeTab')
   activeTabHandler(activeTab: number) {
-    this.handleOnClick(activeTab);
+    this.handleTabChange(activeTab);
   }
 
   @Watch('tabsItems')
   handleTabsItemChange() {
-    this.handleOnClick(this.activeTab);
+    this.handleTabChange();
   }
 
-  componentWillLoad() {
+  connectedCallback() {
     this.updateTabItems();
-    this.setActiveTab(this.activeTab);
+    this.handleTabChange();
     this.observeHost();
+  }
+
+  disconnectedCallback() {
+    this.hostObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -63,7 +66,7 @@ export class Tabs {
 
             return (
               // use p-button-pure?
-              <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleOnClick(index)}>
+              <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
                 {tab.label}
               </Tag>
             );
@@ -87,9 +90,9 @@ export class Tabs {
     allTabElements[this.activeTab].selected = true;
   };
 
-  private handleOnClick = (index: number): void => {
+  private handleTabChange = (newActiveTab?: number): void => {
     this.resetTabs();
-    this.setActiveTab(index);
+    this.setActiveTab(newActiveTab ?? this.activeTab);
   };
 
   private updateTabItems = (): void => {
@@ -97,11 +100,15 @@ export class Tabs {
   };
 
   private observeHost(): void {
-    this.hostObserver = new MutationObserver((mutations: MutationRecord[]) => {
-      if (mutations.filter((mutation) => mutation.type === 'childList').length) {
+    this.hostObserver = new MutationObserver((mutations): void => {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
-    this.hostObserver.observe(this.host, { childList: true });
+    this.hostObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      attributeFilter: ['label', 'href', 'target']
+    });
   }
 }
