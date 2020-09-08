@@ -26,12 +26,16 @@
         </p-grid-item>
         <p-grid-item class="spacing-mt-32 spacing-mt-0-min-m" size='{"base": 12, "m": 8}'>
           <p-text size="medium">
-            The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality
-            web applications, including easy-to-use Sketch libraries, coded Web Components and comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards and corporate design
+            The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic
+            and high-quality
+            web applications, including easy-to-use Sketch libraries, coded Web Components and comprehensive usage
+            guidelines. Everything is built and tested following the Porsche quality standards and corporate design
             principles.
           </p-text>
           <p-text class="spacing-mt-32">
-            We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong> and <strong>React</strong> based on Web Components and appreciate any feedback, feature requests or suggestions on our public <a href="https://github.com/porscheui/porsche-design-system-contribution/issues">Contribution Board</a>.
+            We provide releases for <strong>Vanilla JS</strong>, <strong>Angular</strong> and <strong>React</strong>
+            based on Web Components and appreciate any feedback, feature requests or suggestions on our public <a
+            href="https://github.com/porscheui/porsche-design-system-contribution/issues">Contribution Board</a>.
           </p-text>
           <p-flex class="spacing-mt-16" gap="16" wrap="wrap">
             <p-flex-item>
@@ -55,7 +59,8 @@
         </p-grid-item>
         <p-grid-item size='{"base": 12, "m": 8}' offset='{"base": 0, "m": 1}'>
           <p-text
-            size="medium">Are you working for a digital product or application at Porsche? We are happy to invite you to our UX onboarding and tell you more about our culture of digital experience design.
+            size="medium">Are you working for a digital product or application at Porsche? We are happy to invite you to
+            our UX onboarding and tell you more about our culture of digital experience design.
           </p-text>
           <p-text variant="18" class="spacing-mt-16">
             <p-link variant="tertiary" href="https://ux.porsche.com">Sign Up for UX Onboarding</p-link>
@@ -67,116 +72,118 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  @Component
-  export default class Home extends Vue {}
+@Component
+export default class Home extends Vue {
+}
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
-  @import '../styles/internal.variables';
+@import '~@porsche-design-system/utilities/scss';
+@import '../styles/internal.variables';
 
-  .teaser {
-    &:first-child {
-      margin-top: -$p-spacing-32;
-
-      @include p-media-query('s') {
-        margin-top: -$p-spacing-64;
-      }
-    }
-
-    margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
-    }
+.teaser {
+  &:first-child {
+    margin-top: -$p-spacing-32;
 
     @include p-media-query('s') {
-      margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
-      }
+      margin-top: -$p-spacing-64;
     }
   }
 
-  .cover {
-    position: relative;
-    padding-top: 34%;
-    overflow: hidden;
-    background: $p-color-theme-light-neutral-contrast-low;
-    border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
   }
 
-  .video {
-    width: calc(100% + 4px);
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .intro {
+  @include p-media-query('s') {
     margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
     }
-    padding: $p-spacing-32;
+  }
+}
+
+.cover {
+  position: relative;
+  padding-top: 34%;
+  overflow: hidden;
+  background: $p-color-theme-light-neutral-contrast-low;
+  border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+}
+
+.video {
+  width: calc(100% + 4px);
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro {
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+
+  @include p-media-query('s') {
+    margin: {
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
+    }
+    padding: $p-spacing-64;
+  }
+
+  p a {
+    text-decoration: none;
+    color: $p-color-theme-light-brand;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+
+    &:hover {
+      color: darken($p-color-theme-light-state-hover, 10%);
+    }
+  }
+
+  h2 + p a {
+    border-bottom: 1px solid $p-color-theme-light-brand;
+  }
+}
+
+.newsletter {
+  &:last-child {
+    margin-bottom: -$p-spacing-32;
 
     @include p-media-query('s') {
-      margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
-      }
-      padding: $p-spacing-64;
-    }
-
-    p a {
-      text-decoration: none;
-      color: $p-color-theme-light-brand;
-      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-      &:hover {
-        color: darken($p-color-theme-light-state-hover, 10%);
-      }
-    }
-
-    h2 + p a {
-      border-bottom: 1px solid $p-color-theme-light-brand;
+      margin-bottom: -$p-spacing-64;
     }
   }
 
-  .newsletter {
-    &:last-child {
-      margin-bottom: -$p-spacing-32;
+  margin: {
+    left: -$p-spacing-32;
+    right: -$p-spacing-32;
+  }
+  padding: $p-spacing-32;
+  background: $p-color-theme-light-surface;
 
-      @include p-media-query('s') {
-        margin-bottom: -$p-spacing-64;
-      }
-    }
-
+  @include p-media-query('s') {
     margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
+      left: -$p-spacing-64;
+      right: -$p-spacing-64;
     }
-    padding: $p-spacing-32;
-    background: $p-color-theme-light-surface;
+    padding: $p-spacing-64;
+  }
 
-    @include p-media-query('s') {
-      margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
-      }
-      padding: $p-spacing-64;
-    }
+  a {
+    color: $p-color-theme-light-brand;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    a {
-      color: $p-color-theme-light-brand;
-      transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-      &:hover {
-        color: darken($p-color-theme-light-state-hover, 10%);
-      }
+    &:hover {
+      color: darken($p-color-theme-light-state-hover, 10%);
     }
   }
+}
 </style>

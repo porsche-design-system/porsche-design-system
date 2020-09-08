@@ -61,6 +61,5 @@ module.exports = {
       }],
       background_color: '#FFFFFF'
     }
-
   }
 };
