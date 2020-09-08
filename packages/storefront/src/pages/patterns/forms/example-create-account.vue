@@ -23,7 +23,8 @@
                 </select>
               </p-select-wrapper>
             </p-flex-item>
-            <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
+            <p-flex-item width="{base: 'full', m: 'one-third'}"
+                         class="form-row-spacing form-row-spacing--zero-m form-grid-item">
               <p-select-wrapper label="Title">
                 <select name="title">
                   <option>Choose an option</option>
@@ -40,7 +41,8 @@
                 <input type="text" name="first-name">
               </p-text-field-wrapper>
             </p-flex-item>
-            <p-flex-item width="{base: 'full', m: 'half'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
+            <p-flex-item width="{base: 'full', m: 'half'}"
+                         class="form-row-spacing form-row-spacing--zero-m form-grid-item">
               <p-text-field-wrapper label="Last name">
                 <input type="text" name="last-name">
               </p-text-field-wrapper>
@@ -60,12 +62,17 @@
             <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
             <input type="checkbox" name="privacy">
           </p-checkbox-wrapper>
-          <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
+          <p-flex direction="{ base: 'column', s: 'row' }"
+                  class="form-section-spacing form-bottom-spacing form-grid-item-container">
             <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-              <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
+              <p-button variant="tertiary" icon="close" type="reset"
+                        class="form-item-width--full form-item-width--auto-s">Cancel
+              </p-button>
             </p-flex-item>
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-row-spacing form-row-spacing--zero-s form-grid-item">
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Create Porsche account</p-button>
+            <p-flex-item width="{base: 'full', s: 'auto'}"
+                         class="form-row-spacing form-row-spacing--zero-s form-grid-item">
+              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Create Porsche account
+              </p-button>
             </p-flex-item>
           </p-flex>
         </form>
