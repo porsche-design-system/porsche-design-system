@@ -484,6 +484,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/link/link.props.md`)
       ]
     },
+    Tabs: {
+      Design: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs/tabs.design.md`)
+      ],
+      Code: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs/tabs.code.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs/tabs.props.md`)
+      ]
+    },
     'Link Pure': {
       Design: [
         // @ts-ignore
@@ -526,19 +540,5 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
       ]
     },
-    'Tabs': {
-      'Design': [
-        // @ts-ignore
-        () => import(`@/../../components-js/src/components/navigation/tabs/tabs.design.md`)
-      ],
-      'Code': [
-        // @ts-ignore
-        () => import(`@/../../components-js/src/components/navigation/tabs/tabs.code.md`)
-      ],
-      'Props': [
-        // @ts-ignore
-        () => import(`@/../../components-js/src/components/navigation/tabs/tabs.props.md`)
-      ]
-    }
   }
 };

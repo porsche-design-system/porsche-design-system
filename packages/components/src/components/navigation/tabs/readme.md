@@ -13,3 +13,4 @@
 | `href`     | `href`     |             | `string`  | `undefined` |
 | `label`    | `label`    |             | `string`  | `undefined` |
 | `selected` | `selected` |             | `boolean` | `undefined` |
+| `target`   | `target`   |             | `string`  | `undefined` |
