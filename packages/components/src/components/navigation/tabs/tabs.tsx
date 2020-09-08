@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Host, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
 import { prefix } from '../../../utils';
 import { TextWeight } from '../../../types';
 
@@ -7,6 +7,7 @@ import { TextWeight } from '../../../types';
   styleUrl: 'tabs.scss',
   shadow: true
 })
+
 export class Tabs {
   @Element() public host!: HTMLElement;
 
@@ -16,13 +17,24 @@ export class Tabs {
 
   @Prop({ reflect: true }) public activeTab?: number = 0;
 
+  @State() private tabsItems: HTMLPTabsItemElement[];
+
+  private hostObserver: MutationObserver;
+
   @Watch('activeTab')
   activeTabHandler(activeTab: number) {
     this.handleOnClick(activeTab);
   }
 
+  @Watch('tabsItems')
+  handleTabsItemChange() {
+    this.handleOnClick(this.activeTab);
+  }
+
   componentWillLoad() {
+    this.updateTabItems();
     this.setActiveTab(this.activeTab);
+    this.observeHost();
   }
 
   public render(): JSX.Element {
@@ -38,7 +50,7 @@ export class Tabs {
     return (
       <Host>
         <nav class={tabHeaderClasses}>
-          {this.getTabContentElements().map((tab, index) => {
+          {this.tabsItems.map((tab, index) => {
             const tabButtonClasses = {
               [prefix(`tabs__button`)]: true,
               [prefix(`tabs__button--${this.weight}`)]: true,
@@ -65,11 +77,11 @@ export class Tabs {
   }
 
   private resetTabs = (): void => {
-    this.getTabContentElements().forEach((tab) => (tab.selected = false));
+    this.tabsItems.forEach((tab) => (tab.selected = false));
   };
 
   private setActiveTab = (index: number): void => {
-    const allTabElements = this.getTabContentElements();
+    const allTabElements = this.tabsItems;
     const maxIndex = allTabElements.length - 1;
     this.activeTab = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
     allTabElements[this.activeTab].selected = true;
@@ -80,7 +92,16 @@ export class Tabs {
     this.setActiveTab(index);
   };
 
-  private getTabContentElements = (): HTMLPTabsItemElement[] => {
-    return Array.from(this.host.querySelectorAll('p-tabs-item'));
+  private updateTabItems = (): void => {
+    this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item'));
   };
+
+  private observeHost(): void {
+    this.hostObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      if (mutations.filter((mutation) => mutation.type === 'childList').length) {
+        this.updateTabItems();
+      }
+    });
+    this.hostObserver.observe(this.host, { childList: true });
+  }
 }
