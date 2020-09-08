@@ -79,7 +79,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
-  const files = await globby('./src/**/*.@(woff|woff2)');
+  const files = (await globby('./src/**/*.@(woff|woff2)')).sort();
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
     console.error(e);
