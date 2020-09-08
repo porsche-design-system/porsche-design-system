@@ -10,14 +10,14 @@ import {
 } from '../../../utils';
 import { FormState, Theme } from '../../../types';
 
-interface optionMap {
+type OptionMap = {
   readonly key: number;
   readonly value: string;
   readonly disabled: boolean;
   readonly hidden: boolean;
   readonly selected: boolean;
   readonly highlighted: boolean;
-}
+};
 
 @Component({
   tag: 'p-select-wrapper',
@@ -53,7 +53,7 @@ export class SelectWrapper {
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
-  @State() private optionMaps: readonly optionMap[] = [];
+  @State() private optionMaps: readonly OptionMap[] = [];
   @State() private filterHasResult = true;
   @State() private isTouchWithoutFilter: boolean = isTouchDevice() && !this.filter;
 
@@ -313,7 +313,7 @@ export class SelectWrapper {
    * <START CUSTOM SELECT DROPDOWN>
    */
   private observeSelect(): void {
-    this.selectObserver = new MutationObserver((mutations: MutationRecord[]) => {
+    this.selectObserver = new MutationObserver((mutations) => {
       mutations.filter((mutation) => mutation.type === 'childList').forEach(this.setOptionList);
       mutations.filter((mutation) => mutation.type === 'attributes').forEach(this.setOptionList);
     });
@@ -382,7 +382,7 @@ export class SelectWrapper {
   }
 
   private handleKeyboardEvents(e: KeyboardEvent): void {
-    const key = e.key;
+    const { key } = e;
     switch (key) {
       case 'ArrowUp':
       case 'Up':
@@ -447,9 +447,9 @@ export class SelectWrapper {
       case 'PageUp':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
-          this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+          this.optionMaps = this.optionMaps.map((item, index) => ({
             ...item,
-            highlighted: num === 0
+            highlighted: index === 0
           }));
           this.handleScroll();
         }
@@ -457,9 +457,9 @@ export class SelectWrapper {
       case 'PageDown':
         e.preventDefault();
         if (!this.fakeOptionListHidden) {
-          this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+          this.optionMaps = this.optionMaps.map((item, index) => ({
             ...item,
-            highlighted: num === this.options.length - 1
+            highlighted: index === this.options.length - 1
           }));
           this.handleScroll();
         }
@@ -475,22 +475,19 @@ export class SelectWrapper {
   }
 
   private setOptionList = (): void => {
-    this.optionMaps = [];
     this.options = this.select.querySelectorAll('option');
-    [...Array.from(this.options)].map((option: HTMLOptionElement, key: number) => {
-      const disabled = option.hasAttribute('disabled');
-      const selected = option.selected && !option.disabled;
-      const highlighted = option.selected && !option.disabled;
-      this.optionMaps = [
-        ...this.optionMaps,
-        { key, value: option.text, disabled, hidden: false, selected, highlighted }
-      ];
+    this.optionMaps = Array.from(this.options).map((item, index) => {
+      const disabled = item.hasAttribute('disabled');
+      const selected = item.selected && !item.disabled;
+      const highlighted = selected;
+      const option: OptionMap = { key: index, value: item.text, disabled, hidden: false, selected, highlighted };
+      return option;
     });
   };
 
-  private setOptionSelected = (key: number): void => {
+  private setOptionSelected = (index: number): void => {
     const oldSelectedValue = this.select.options[this.select.selectedIndex].text;
-    this.select.selectedIndex = key;
+    this.select.selectedIndex = index;
     const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.handleVisibilityOfFakeOptionList('hide');
 
@@ -508,10 +505,11 @@ export class SelectWrapper {
       }
     }
 
-    this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
+    const { selectedIndex } = this.select;
+    this.optionMaps = this.optionMaps.map((item, index) => ({
       ...item,
-      selected: num === this.select.selectedIndex,
-      highlighted: num === this.select.selectedIndex,
+      selected: index === selectedIndex,
+      highlighted: index === selectedIndex,
       hidden: false
     }));
 
@@ -528,43 +526,41 @@ export class SelectWrapper {
     }
   };
 
-  private createFakeOptionList(): JSX.Element[][] | string {
+  private createFakeOptionList(): JSX.Element[][] {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
-    if (!this.filterHasResult) {
-      return (
-        <div class={prefix('select-wrapper__fake-option')}>
-          <span>---</span>
-        </div>
-      );
-    } else {
-      return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
+    return !this.filterHasResult ? (
+      <div class={prefix('select-wrapper__fake-option')}>
+        <span>---</span>
+      </div>
+    ) : (
+      Array.from(this.options).map((option, index) => [
         option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null && (
           <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
             {option.closest('optgroup').label}
           </span>
         ),
         <div
-          id={`option-${key}`}
+          id={`option-${index}`}
           role="option"
           color="inherit"
           class={{
             [prefix('select-wrapper__fake-option')]: true,
-            [prefix('select-wrapper__fake-option--selected')]: this.optionMaps[key].selected,
-            [prefix('select-wrapper__fake-option--highlighted')]: this.optionMaps[key].highlighted,
-            [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[key].disabled,
-            [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden
+            [prefix('select-wrapper__fake-option--selected')]: this.optionMaps[index].selected,
+            [prefix('select-wrapper__fake-option--highlighted')]: this.optionMaps[index].highlighted,
+            [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[index].disabled,
+            [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[index].hidden
           }}
           onClick={(e) =>
-            !this.optionMaps[key].disabled && !this.optionMaps[key].selected
-              ? this.setOptionSelected(key)
+            !this.optionMaps[index].disabled && !this.optionMaps[index].selected
+              ? this.setOptionSelected(index)
               : this.handleFocus(e)
           }
-          aria-selected={this.optionMaps[key].highlighted ? 'true' : null}
-          aria-disabled={this.optionMaps[key].disabled ? 'true' : null}
-          aria-hidden={this.optionMaps[key].hidden ? 'true' : null}
+          aria-selected={this.optionMaps[index].highlighted ? 'true' : null}
+          aria-disabled={this.optionMaps[index].disabled ? 'true' : null}
+          aria-hidden={this.optionMaps[index].hidden ? 'true' : null}
         >
           <span>{option.text}</span>
-          {this.optionMaps[key].selected && (
+          {this.optionMaps[index].selected && (
             <PrefixedTagNames.pIcon
               class={prefix('select-wrapper__fake-option-icon')}
               aria-hidden="true"
@@ -573,8 +569,8 @@ export class SelectWrapper {
             />
           )}
         </div>
-      ]);
-    }
+      ])
+    );
   }
 
   private cycleFakeOptionList(direction: string): void {
@@ -589,9 +585,9 @@ export class SelectWrapper {
     } else if (direction === 'up' || direction === 'left') {
       i = i > 0 ? i - 1 : validMax;
     }
-    this.optionMaps = this.optionMaps.map((item: optionMap, key) => ({
+    this.optionMaps = this.optionMaps.map((item, index) => ({
       ...item,
-      highlighted: key === validItems[i].key
+      highlighted: index === validItems[i].key
     }));
 
     if (direction === 'left' || direction === 'right') {
@@ -620,11 +616,11 @@ export class SelectWrapper {
   private nativeSearchOptions(): void {
     // timeout is needed if fast keyboard events are triggered and dom needs time to update state
     setTimeout(() => {
-      const selected = this.select.selectedIndex;
-      this.optionMaps = this.optionMaps.map((item: optionMap, key) => ({
+      const { selectedIndex } = this.select;
+      this.optionMaps = this.optionMaps.map((item, index) => ({
         ...item,
-        highlighted: key === selected,
-        selected: key === selected
+        highlighted: index === selectedIndex,
+        selected: index === selectedIndex
       }));
 
       this.handleScroll();
@@ -647,13 +643,13 @@ export class SelectWrapper {
   private handleFilterSearch(ev: InputEvent): void {
     this.searchString = '';
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = this.optionMaps.map((item: optionMap) => ({
+    this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
       hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
     }));
 
     const hiddenItems = this.optionMaps.filter((e) => e.hidden === true).length;
-    this.filterHasResult = hiddenItems !== Object.keys(this.optionMaps).length;
+    this.filterHasResult = hiddenItems !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   }
 
