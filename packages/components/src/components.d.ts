@@ -476,7 +476,7 @@ export namespace Components {
          */
         "dropdownDirection"?: 'down' | 'up' | 'auto';
         /**
-          * Filter results by typing a charcter
+          * Filters select options by typing a character
          */
         "filter"?: boolean;
         /**
@@ -1260,7 +1260,7 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: 'down' | 'up' | 'auto';
         /**
-          * Filter results by typing a charcter
+          * Filters select options by typing a character
          */
         "filter"?: boolean;
         /**
