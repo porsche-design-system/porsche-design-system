@@ -42,7 +42,7 @@ export class SelectWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Filter results by typing a charcter */
+  /** Filters select options by typing a character */
   @Prop() public filter?: boolean = false;
 
   /** Adapts the button color depending on the theme. */
@@ -85,7 +85,9 @@ export class SelectWrapper {
     if (!this.isTouchWithoutFilter) {
       this.observeSelect();
       this.setOptionList();
-      if (!this.filter) {this.select.addEventListener('mousedown', this.handleMouseEvents.bind(this));}
+      if (!this.filter) {
+        this.select.addEventListener('mousedown', this.handleMouseEvents.bind(this));
+      }
       this.select.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
       if (typeof document !== 'undefined') {
         document.addEventListener('mousedown', this.handleClickOutside.bind(this), true);
@@ -94,7 +96,7 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if(!this.isTouchWithoutFilter && this.filter) {
+    if (!this.isTouchWithoutFilter && this.filter) {
       this.fakeFilter.addEventListener('click', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
@@ -140,7 +142,11 @@ export class SelectWrapper {
     const fakeOptionListClasses = {
       [prefix('select-wrapper__fake-option-list')]: true,
       [prefix('select-wrapper__fake-option-list--hidden')]: this.fakeOptionListHidden,
-      [prefix(`select-wrapper__fake-option-list--direction-${this.dropdownDirection === 'auto' ? this.dropdownDirectionInternal : this.dropdownDirection}`)]: true
+      [prefix(
+        `select-wrapper__fake-option-list--direction-${
+          this.dropdownDirection === 'auto' ? this.dropdownDirectionInternal : this.dropdownDirection
+        }`
+      )]: true
     };
     const iconClasses = {
       [prefix('select-wrapper__icon')]: true,
@@ -193,26 +199,27 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {(this.filter && !this.isTouchWithoutFilter) && ([
-            <input
-              type="text"
-              class={filterInputClasses}
-              role="combobox"
-              aria-autocomplete="both"
-              aria-controls="p-listbox"
-              disabled={this.disabled}
-              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
-              aria-activedescendant={`option-${this.optionMaps.findIndex(e => e.highlighted)}`}
-              ref={(el) => (this.filterInput = el)}
-            />,
-            <span ref={(el) => (this.fakeFilter = el)}/>]
-          )}
+          {this.filter &&
+            !this.isTouchWithoutFilter && [
+              <input
+                type="text"
+                class={filterInputClasses}
+                role="combobox"
+                aria-autocomplete="both"
+                aria-controls="p-listbox"
+                disabled={this.disabled}
+                aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+                aria-activedescendant={`option-${this.optionMaps.findIndex((e) => e.highlighted)}`}
+                ref={(el) => (this.filterInput = el)}
+              />,
+              <span ref={(el) => (this.fakeFilter = el)} />
+            ]}
           {!this.isTouchWithoutFilter && (
             <div
               class={fakeOptionListClasses}
               role="listbox"
               id="p-listbox"
-              aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex(e => e.highlighted)}`}
+              aria-activedescendant={!this.filter && `option-${this.optionMaps.findIndex((e) => e.highlighted)}`}
               tabIndex={-1}
               aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
               aria-labelledby={this.label}
@@ -256,7 +263,7 @@ export class SelectWrapper {
    */
   private initSelect(): void {
     this.select = this.host.querySelector('select');
-    if(this.filter) {
+    if (this.filter) {
       this.select.setAttribute('tabindex', '-1');
     }
   }
@@ -281,7 +288,7 @@ export class SelectWrapper {
       this.select.removeAttribute('aria-invalid');
     }
 
-    if(this.filter) {
+    if (this.filter) {
       this.select.setAttribute('aria-hidden', 'true');
     }
   }
@@ -291,7 +298,7 @@ export class SelectWrapper {
   };
 
   private labelClick = (): void => {
-    if(!this.filter) {
+    if (!this.filter) {
       this.select.focus();
     } else {
       this.filterInput.focus();
@@ -319,7 +326,7 @@ export class SelectWrapper {
       return;
     } else {
       this.fakeOptionListHidden = true;
-      if(this.filter) {
+      if (this.filter) {
         this.filterInput.value = '';
       }
     }
@@ -333,7 +340,7 @@ export class SelectWrapper {
   }
 
   private handleFocus(e: MouseEvent): void {
-    if(!this.filter) {
+    if (!this.filter) {
       this.select.focus();
     } else {
       e.preventDefault();
@@ -342,14 +349,15 @@ export class SelectWrapper {
   }
 
   private handleDropdownDirection(): void {
-    if(this.dropdownDirection === 'auto') {
+    if (this.dropdownDirection === 'auto') {
       const listNodePageOffset = this.fakeOptionListNode.getBoundingClientRect().top;
       const listNodeOffset = this.fakeOptionListNode.offsetTop;
       const listNodeChildrenHeight = this.fakeOptionListNode.children[0].clientHeight;
       const numberOfChildNodes = this.fakeOptionListNode.children.length;
       // Max number of children visible is set to 5 (which equals fixed max-height of 200px defined in CSS)
-      const listNodeHeight =  numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
-      const spaceTop = (listNodePageOffset - listNodeOffset - listNodeHeight) - window.scrollY;
+      const listNodeHeight =
+        numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
+      const spaceTop = listNodePageOffset - listNodeOffset - listNodeHeight - window.scrollY;
       const spaceBottom = window.scrollY + window.innerHeight - (listNodePageOffset + listNodeHeight);
       if (spaceBottom < 0 && (spaceTop >= 0 || spaceTop > spaceBottom)) {
         this.dropdownDirectionInternal = 'up';
@@ -360,7 +368,7 @@ export class SelectWrapper {
   }
 
   private handleVisibilityOfFakeOptionList(type: 'show' | 'hide' | 'toggle'): void {
-    if(type === 'show' && this.fakeOptionListHidden) {
+    if (type === 'show' && this.fakeOptionListHidden) {
       this.fakeOptionListHidden = false;
       this.handleDropdownDirection();
     } else if (type === 'hide' && !this.fakeOptionListHidden) {
@@ -400,35 +408,38 @@ export class SelectWrapper {
         break;
       case ' ':
       case 'Spacebar':
-        if(this.filter) {
+        if (this.filter) {
           this.handleVisibilityOfFakeOptionList('show');
           this.handleScroll();
-        }
-        else {
+        } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
           this.handleScroll();
           if (this.fakeOptionListHidden) {
-            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+            this.setOptionSelected(this.optionMaps.findIndex((item) => item.highlighted));
           }
         }
         break;
       case 'Enter':
         e.preventDefault();
         this.handleVisibilityOfFakeOptionList('hide');
-        if(!this.filter) {this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));}
-        if(this.filter) {
-          const itemValue = !!this.searchString && this.optionMaps.filter(item => item.value.toLowerCase() === this.searchString.toLowerCase());
-          if(itemValue.length === 1) {
+        if (!this.filter) {
+          this.setOptionSelected(this.optionMaps.findIndex((item) => item.highlighted));
+        }
+        if (this.filter) {
+          const itemValue =
+            !!this.searchString &&
+            this.optionMaps.filter((item) => item.value.toLowerCase() === this.searchString.toLowerCase());
+          if (itemValue.length === 1) {
             this.setOptionSelected(itemValue[0].key);
           } else {
-            this.setOptionSelected(this.optionMaps.findIndex(item => item.highlighted));
+            this.setOptionSelected(this.optionMaps.findIndex((item) => item.highlighted));
           }
         }
         break;
       case 'Escape':
       case 'Esc':
-        if(this.filter) {
+        if (this.filter) {
           this.filterInput.value = '';
         }
         this.setOptionSelected(this.select.selectedIndex);
@@ -466,11 +477,14 @@ export class SelectWrapper {
   private setOptionList = (): void => {
     this.optionMaps = [];
     this.options = this.select.querySelectorAll('option');
-    [...Array.from(this.options)].map((option: HTMLOptionElement, key:number) => {
+    [...Array.from(this.options)].map((option: HTMLOptionElement, key: number) => {
       const disabled = option.hasAttribute('disabled');
       const selected = option.selected && !option.disabled;
       const highlighted = option.selected && !option.disabled;
-      this.optionMaps = [...this.optionMaps, {key, value:option.text, disabled, hidden: false, selected, highlighted}];
+      this.optionMaps = [
+        ...this.optionMaps,
+        { key, value: option.text, disabled, hidden: false, selected, highlighted }
+      ];
     });
   };
 
@@ -480,14 +494,18 @@ export class SelectWrapper {
     const newSelectedValue = this.select.options[this.select.selectedIndex].text;
     this.handleVisibilityOfFakeOptionList('hide');
 
-    if(this.filter) {
+    if (this.filter) {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResult = true;
-      this.filterInput.setAttribute('placeholder',  this.options[this.select.selectedIndex].text);
-      if(document.activeElement !== this.filterInput) {this.filterInput.focus();}
+      this.filterInput.setAttribute('placeholder', this.options[this.select.selectedIndex].text);
+      if (document.activeElement !== this.filterInput) {
+        this.filterInput.focus();
+      }
     } else {
-      if(document.activeElement !== this.select) {this.select.focus();}
+      if (document.activeElement !== this.select) {
+        this.select.focus();
+      }
     }
 
     this.optionMaps = this.optionMaps.map((item: optionMap, num) => ({
@@ -497,7 +515,7 @@ export class SelectWrapper {
       hidden: false
     }));
 
-    if(oldSelectedValue !== newSelectedValue) {
+    if (oldSelectedValue !== newSelectedValue) {
       // IE11 workaround for dispatchEvent
       let event: Event;
       if (typeof Event === 'function') {
@@ -512,11 +530,15 @@ export class SelectWrapper {
 
   private createFakeOptionList(): JSX.Element[][] | string {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
-    if(!this.filterHasResult) {
-      return (<div class={prefix('select-wrapper__fake-option')}><span>---</span></div>);
+    if (!this.filterHasResult) {
+      return (
+        <div class={prefix('select-wrapper__fake-option')}>
+          <span>---</span>
+        </div>
+      );
     } else {
       return Array.from(this.options).map((option: HTMLOptionElement, key: number) => [
-        (option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null) && (
+        option.parentElement.tagName === 'OPTGROUP' && option.previousElementSibling === null && (
           <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
             {option.closest('optgroup').label}
           </span>
@@ -530,9 +552,13 @@ export class SelectWrapper {
             [prefix('select-wrapper__fake-option--selected')]: this.optionMaps[key].selected,
             [prefix('select-wrapper__fake-option--highlighted')]: this.optionMaps[key].highlighted,
             [prefix('select-wrapper__fake-option--disabled')]: this.optionMaps[key].disabled,
-            [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden,
+            [prefix('select-wrapper__fake-option--hidden')]: this.optionMaps[key].hidden
           }}
-          onClick={(e) => (!this.optionMaps[key].disabled && !this.optionMaps[key].selected ? this.setOptionSelected(key) : this.handleFocus(e))}
+          onClick={(e) =>
+            !this.optionMaps[key].disabled && !this.optionMaps[key].selected
+              ? this.setOptionSelected(key)
+              : this.handleFocus(e)
+          }
           aria-selected={this.optionMaps[key].highlighted ? 'true' : null}
           aria-disabled={this.optionMaps[key].disabled ? 'true' : null}
           aria-hidden={this.optionMaps[key].hidden ? 'true' : null}
@@ -552,16 +578,16 @@ export class SelectWrapper {
   }
 
   private cycleFakeOptionList(direction: string): void {
-    const validItems = this.optionMaps.filter(e => !e.hidden && !e.disabled);
-    const validMax = validItems.length-1;
-    if(validMax === -1) {
+    const validItems = this.optionMaps.filter((e) => !e.hidden && !e.disabled);
+    const validMax = validItems.length - 1;
+    if (validMax === -1) {
       return;
     }
-    let i = validItems.findIndex(e => e.highlighted);
+    let i = validItems.findIndex((e) => e.highlighted);
     if (direction === 'down' || direction === 'right') {
-      i = i < validMax ? i+1 : 0;
+      i = i < validMax ? i + 1 : 0;
     } else if (direction === 'up' || direction === 'left') {
-      i = i > 0 ? i-1 : validMax;
+      i = i > 0 ? i - 1 : validMax;
     }
     this.optionMaps = this.optionMaps.map((item: optionMap, key) => ({
       ...item,
@@ -569,7 +595,7 @@ export class SelectWrapper {
     }));
 
     if (direction === 'left' || direction === 'right') {
-      this.setOptionSelected(this.optionMaps.findIndex(e => e.highlighted));
+      this.setOptionSelected(this.optionMaps.findIndex((e) => e.highlighted));
     }
 
     this.handleScroll();
@@ -578,7 +604,9 @@ export class SelectWrapper {
   private handleScroll(): void {
     const fakeOptionListNodeHeight = 200;
     if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[this.optionMaps.findIndex(e => e.highlighted)];
+      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[
+        this.optionMaps.findIndex((e) => e.highlighted)
+      ];
       const scrollBottom = fakeOptionListNodeHeight + this.fakeOptionListNode.scrollTop;
       const elementBottom = this.fakeOptionHighlightedNode.offsetTop + this.fakeOptionHighlightedNode.offsetHeight;
       if (elementBottom > scrollBottom) {
@@ -603,12 +631,11 @@ export class SelectWrapper {
     }, 100);
   }
 
-
   /*
    * <START CUSTOM FILTER>
    */
   private handleFilterInputClick(): void {
-    if(!this.disabled) {
+    if (!this.disabled) {
       this.filterInput.focus();
       this.filterInput.value = '';
       this.searchString = '';
@@ -622,10 +649,10 @@ export class SelectWrapper {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item: optionMap) => ({
       ...item,
-      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
+      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
     }));
 
-    const hiddenItems = this.optionMaps.filter(e => e.hidden === true).length;
+    const hiddenItems = this.optionMaps.filter((e) => e.hidden === true).length;
     this.filterHasResult = hiddenItems !== Object.keys(this.optionMaps).length;
     this.handleVisibilityOfFakeOptionList('show');
   }
