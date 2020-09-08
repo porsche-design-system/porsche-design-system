@@ -5,45 +5,47 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Watch } from 'vue-property-decorator';
-  import Markdown from '@/components/Markdown.vue';
-  import { Component as ComponentType } from 'vue/types/options';
-  import { paramCase } from 'change-case';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
+import Markdown from '@/components/Markdown.vue';
+import { Component as ComponentType } from 'vue/types/options';
+import { paramCase } from 'change-case';
 
-  @Component({
-    components: {
-      Markdown
-    }
-  })
-  export default class Custom extends Vue {
-    public component: ComponentType | null = null;
-
-    private get page(): string {
-      return paramCase(this.$route.params.page);
-    }
-
-    @Watch('$route')
-    private async onRouteChange(): Promise<void> {
-      await this.loadComponent();
-    }
-
-    private async mounted(): Promise<void> {
-      await this.loadComponent();
-    }
-
-    private async loadComponent(): Promise<void> {
-      this.component = null;
-      await this.$store.dispatch('toggleLoadingAsync', true);
-      try {
-        this.component = (await (() => import(`@/pages/${this.page}.md`))()).default;
-      } catch (e) {
-        await this.redirect();
-      }
-      await this.$store.dispatch('toggleLoadingAsync', false);
-    }
-
-    private async redirect(): Promise<void> {
-      await this.$router.replace({name: `404`});
-    }
+@Component({
+  components: {
+    Markdown
   }
+})
+export default class Custom extends Vue {
+  public component: ComponentType | null = null;
+
+  private get page(): string {
+    return paramCase(this.$route.params.page);
+  }
+
+  @Watch('$route')
+  private async onRouteChange(): Promise<void> {
+    await this.loadComponent();
+  }
+
+  private async mounted(): Promise<void> {
+    await this.loadComponent();
+  }
+
+  private async loadComponent(): Promise<void> {
+    this.component = null;
+    await this.$store.dispatch('toggleLoadingAsync', true);
+    try {
+      this.component = (await (() => import(`@/pages/${this.page}.md`))()).default;
+    } catch (e) {
+      await this.redirect();
+    }
+    await this.$store.dispatch('toggleLoadingAsync', false);
+  }
+
+  private async redirect(): Promise<void> {
+    await this.$router.replace({name: `404`});
+  }
+}
 </script>

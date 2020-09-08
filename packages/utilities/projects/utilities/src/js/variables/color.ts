@@ -18,9 +18,13 @@ export const color = {
   },
   notification: {
     success: '#018a16',
+    successSoft: '#e5f3e7',
     warning: '#ff9b00',
+    warningSoft: '#fff5e5',
     error: '#e00000',
-    neutral: '#0061BD'
+    errorSoft: '#fae6e6',
+    neutral: '#0061bd',
+    neutralSoft: '#e5eff8'
   },
   state: {
     hover: '#d5001c',
@@ -48,7 +52,7 @@ export const color = {
       success: '#01ba1d',
       warning: '#ff9b00',
       error: '#fc1717',
-      neutral: '#2193FF'
+      neutral: '#2193ff'
     },
     state: {
       hover: '#d5001c',
