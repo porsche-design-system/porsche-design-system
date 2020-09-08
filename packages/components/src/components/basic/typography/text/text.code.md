@@ -152,7 +152,8 @@ This will force any text to never wrap into a new line and in case it's to long 
 
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundTypography extends Vue {

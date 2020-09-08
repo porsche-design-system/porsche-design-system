@@ -183,7 +183,8 @@ The size of the *subline* changes according to the size of the *label*. We do no
 </Playground>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundButtonPure extends Vue {
