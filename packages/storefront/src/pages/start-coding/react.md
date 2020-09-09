@@ -179,7 +179,7 @@ only the prefixed web components are getting defined.
 import React from 'react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
 
-const { PHeadline } = getPrefixedComponents('sample-prefix');
+const { PHeadline } = getPrefixedComponents({ 'sample-prefix' });
 
 export function App() {
   return (
@@ -199,7 +199,7 @@ there, that you can change the prefix in a single place.
 ```
 // PorscheDesignSystem.ts
 import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
-export const PorscheDesignComponents =  getPrefixedComponents('sample-prefix');
+export const PorscheDesignComponents =  getPrefixedComponents({ prefix: 'sample-prefix' });
 ```
 
 ```
