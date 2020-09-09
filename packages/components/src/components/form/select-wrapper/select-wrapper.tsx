@@ -46,7 +46,7 @@ export class SelectWrapper {
   @Prop() public filter?: boolean = false;
 
   /** Adapts the button color depending on the theme. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
@@ -54,7 +54,7 @@ export class SelectWrapper {
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly OptionMap[] = [];
-  @State() private filterHasResult = true;
+  @State() private filterHasResults = true;
   @State() private isTouchWithoutFilter: boolean = isTouchDevice() && !this.filter;
 
   private select: HTMLSelectElement;
@@ -492,7 +492,7 @@ export class SelectWrapper {
     if (this.filter) {
       this.filterInput.value = '';
       this.searchString = '';
-      this.filterHasResult = true;
+      this.filterHasResults = true;
       this.filterInput.setAttribute('placeholder', this.options[this.select.selectedIndex].text);
       if (document.activeElement !== this.filterInput) {
         this.filterInput.focus();
@@ -526,7 +526,7 @@ export class SelectWrapper {
 
   private createFakeOptionList(): JSX.Element[][] {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
-    return !this.filterHasResult ? (
+    return !this.filterHasResults ? (
       <div class={prefix('select-wrapper__fake-option')}>
         <span>---</span>
       </div>
@@ -650,7 +650,7 @@ export class SelectWrapper {
     }));
 
     const hiddenItems = this.optionMaps.filter((item) => item.hidden);
-    this.filterHasResult = hiddenItems.length !== this.optionMaps.length;
+    this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   }
 
