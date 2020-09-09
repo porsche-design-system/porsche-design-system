@@ -54,7 +54,7 @@ const {
   PLink: PrefixedLink,
   PLinkPure: PrefixedLinkPure,
   PLinkSocial: PrefixedLinkSocial
-} = getPrefixedComponents('my-prefix');
+} = getPrefixedComponents({ prefix: 'my-prefix' });
 
 export const OverviewPage = (): JSX.Element => {
   const style = `
