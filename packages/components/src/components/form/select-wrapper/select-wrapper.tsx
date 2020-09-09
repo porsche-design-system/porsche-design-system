@@ -353,8 +353,8 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const { getBoundingClientRect, offsetTop: listNodeOffset, children } = this.fakeOptionListNode;
-      const { top: listNodePageOffset } = getBoundingClientRect();
+      const { offsetTop: listNodeOffset, children } = this.fakeOptionListNode;
+      const { top: listNodePageOffset } = this.fakeOptionListNode.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
 
