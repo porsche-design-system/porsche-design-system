@@ -32,7 +32,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &::before {
       position: absolute;
-      bottom: 0em;
+      bottom: 0;
       width: 100%;
       display: block;
       content: '';
@@ -52,7 +52,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       &::before {
         transition: transform $duration $easeOutBack, opacity $duration;
       }
-      &:after {
+      &::after {
         transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
       }
     }
@@ -66,7 +66,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       color: $p-color-theme-light-brand;
     }
 
-    &:after {
+    &::after {
       opacity: 0;
       transform: translateY(-$distance);
       transition: transform $duration, opacity $duration;
@@ -89,7 +89,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &::before {
       position: absolute;
-      bottom: 0em;
+      bottom: 0;
       width: 100%;
       display: block;
       content: '';
@@ -109,7 +109,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       &::before {
         transition: transform $duration $easeOutBack, opacity $duration;
       }
-      &:after {
+      &::after {
         transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
       }
     }
@@ -123,7 +123,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       color: $p-color-theme-light-brand;
     }
 
-    &:after {
+    &::after {
       opacity: 0;
       transform: translateY(-$distance);
       transition: transform $duration, opacity $duration;
