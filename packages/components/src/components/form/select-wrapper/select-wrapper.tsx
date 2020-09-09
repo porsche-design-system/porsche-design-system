@@ -353,10 +353,11 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const listNodePageOffset = this.fakeOptionListNode.getBoundingClientRect().top;
-      const listNodeOffset = this.fakeOptionListNode.offsetTop;
-      const listNodeChildrenHeight = this.fakeOptionListNode.children[0].clientHeight;
-      const numberOfChildNodes = this.fakeOptionListNode.children.length;
+      const { getBoundingClientRect, offsetTop: listNodeOffset, children } = this.fakeOptionListNode;
+      const { top: listNodePageOffset } = getBoundingClientRect();
+      const listNodeChildrenHeight = children[0].clientHeight;
+      const numberOfChildNodes = children.length;
+
       // Max number of children visible is set to 5 (which equals fixed max-height of 200px defined in CSS)
       const listNodeHeight =
         numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
