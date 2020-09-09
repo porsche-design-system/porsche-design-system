@@ -472,7 +472,7 @@ export class SelectWrapper {
         }
         break;
       default:
-        this.nativeSearchOptions();
+        this.handleNativeSearchOptions();
     }
   }
 
@@ -617,7 +617,7 @@ export class SelectWrapper {
     }
   }
 
-  private nativeSearchOptions(): void {
+  private handleNativeSearchOptions(): void {
     // timeout is needed if fast keyboard events are triggered and dom needs time to update state
     setTimeout(() => {
       const { selectedIndex } = this.select;
