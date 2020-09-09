@@ -29,14 +29,6 @@
   display: block;
 }
 
-:host([theme="light"]) {
-  color: $p-color-default !important;
-}
-
-:host([theme="dark"]) {
-  color: $p-color-theme-dark-default !important;
-}
-
 ::slotted(select) {
   position: absolute !important;
   top: 0 !important;
@@ -93,6 +85,14 @@
   $bem-block: &;
   display: block;
   position: relative;
+
+  &--theme-light {
+    color: $p-color-default !important;
+  }
+
+  &--theme-dark {
+    color: $p-color-theme-dark-default !important;
+  }
 
   &__label,
   &__description {
