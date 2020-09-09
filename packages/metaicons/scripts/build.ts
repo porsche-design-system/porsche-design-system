@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
+import { CDN_BASE_URL, CDN_BASE_PATH_META_ICONS } from '../../../cdn.config';
 
 type Manifest = {
   [type: string]: {
@@ -55,10 +56,10 @@ export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const url = 'https://cdn.ui.porsche.com/porsche-design-system/metaicons';
+  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}`;
   const icons = (await globby('./src/**/*')).sort();
 
-  await createManifestAndCopyMetaicons(url, icons).catch((e) => {
+  await createManifestAndCopyMetaicons(cdn, icons).catch((e) => {
     console.error(e);
     process.exit(1);
   });

@@ -2,6 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Icon } from '../../../src/components/icon/icon/icon';
 import { isUrl } from '../../../src/components/icon/icon/icon-helper';
 import { isValid } from '../../../src/components/icon/icon/icon-validation';
+import { CDN_BASE_URL } from '../../../../../cdn.config';
 
 describe('Component <p-icon>', () => {
 
@@ -18,7 +19,7 @@ describe('Component <p-icon>', () => {
 
 describe('isUrl', () => {
   it('should return true if url is valid', () => {
-    expect(isUrl('https://cdn.ui.porsche.com/some-path/some-icon.svg')).toBe(true);
+    expect(isUrl(`${CDN_BASE_URL}/some-path/some-icon.svg`)).toBe(true);
     expect(isUrl('./assets/some_icon.svg')).toBe(true);
     expect(isUrl('/some_icon.svg')).toBe(true);
   });

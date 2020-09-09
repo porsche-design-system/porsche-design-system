@@ -5,6 +5,7 @@ import * as yaml from 'js-yaml';
 import SVGO = require('svgo');
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
+import { CDN_BASE_URL, CDN_BASE_PATH_ICONS } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;
@@ -69,7 +70,7 @@ export const ICONS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
+  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_ICONS}`;
   const files = (await globby('./src/**/*.svg')).sort();
   const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
 
