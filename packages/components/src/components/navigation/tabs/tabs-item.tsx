@@ -7,15 +7,15 @@ import { Component, Element, h, Prop, Host } from '@stencil/core';
 export class TabsItem {
   @Element() public host!: HTMLElement;
 
-  @Prop() label: string;
+  @Prop() public label: string;
 
-  @Prop({ reflect: true }) disabled: boolean;
+  @Prop({ reflect: true }) public disabled: boolean;
 
-  @Prop() href?: string;
+  @Prop() public href?: string;
 
-  @Prop() target?: string;
+  @Prop() public target?: string;
 
-  @Prop({ reflect: true }) selected?: boolean;
+  @Prop({ reflect: true }) public selected?: boolean;
 
   public render(): JSX.Element {
     return <Host>{this.selected && <slot />}</Host>;

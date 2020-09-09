@@ -14,36 +14,36 @@ export class Tabs {
 
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
-  @State() private tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
+  @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
   @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
 
   @Watch('activeTab')
-  activeTabHandler(activeTab: number) {
+  public activeTabHandler(activeTab: number): void {
     this.handleTabChange(activeTab);
   }
 
   @Watch('tabsItems')
-  handleTabsItemChange() {
+  public handleTabsItemChange(): void {
     this.handleTabChange();
   }
 
-  connectedCallback() {
+  public connectedCallback(): void {
     this.updateTabItems();
     this.handleTabChange();
     this.observeHost();
   }
 
-  disconnectedCallback() {
+  public disconnectedCallback(): void {
     this.hostObserver.disconnect();
   }
 
   public render(): JSX.Element {
     const tabHeaderClasses = {
       [prefix(`tabs__header--align-${this.align}`)]: true,
-      [prefix(`tabs__header`)]: true
+      [prefix('tabs__header')]: true
     };
 
     const tabContentClasses = {
@@ -55,10 +55,10 @@ export class Tabs {
         <nav class={tabHeaderClasses}>
           {this.tabsItems.map((tab, index) => {
             const tabButtonClasses = {
-              [prefix(`tabs__button`)]: true,
+              [prefix('tabs__button')]: true,
               [prefix(`tabs__button--${this.weight}`)]: true,
-              [prefix(`tabs__button--selected`)]: tab.selected,
-              [prefix(`tabs__button--disabled`)]: tab.disabled
+              [prefix('tabs__button--selected')]: tab.selected,
+              [prefix('tabs__button--disabled')]: tab.disabled
             };
 
             const Tag = tab.href === undefined ? 'button' : 'a';
