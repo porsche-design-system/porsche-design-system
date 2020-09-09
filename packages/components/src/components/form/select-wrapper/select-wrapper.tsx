@@ -314,11 +314,14 @@ export class SelectWrapper {
    */
   private observeSelect(): void {
     this.selectObserver = new MutationObserver((mutations) => {
-      mutations.filter((mutation) => mutation.type === 'childList').forEach(this.setOptionList);
-      mutations.filter((mutation) => mutation.type === 'attributes').forEach(this.setOptionList);
+      mutations.filter(({ type }) => type === 'childList' || type === 'attributes').forEach(this.setOptionList);
     });
-    const config = { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled'] };
-    this.selectObserver.observe(this.select, config);
+    this.selectObserver.observe(this.select, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['disabled']
+    });
   }
 
   private handleClickOutside(e): void {
