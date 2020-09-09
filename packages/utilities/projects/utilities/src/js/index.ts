@@ -3,7 +3,7 @@ export * from './helper';
 export * from './variables';
 
 /* Auto Generated Below */
-export const FONT_FACE_CDN_URL = "https://cdn.ui.porsche.com/porsche-design-system/style/font-face.min.de7353ac41430a74da152a5bf0e7bb5b.css";
+export const FONT_FACE_CDN_URL = "https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min.02a9c7ba97467baa51aa8a2ac5d1a777.css";
 /**
  * @deprecated since v1.1.0.
  * Please use FONT_FACE_CDN_URL instead.

@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { CDN_BASE_URL, FONTS_MANIFEST } from '@porsche-design-system/fonts';
+import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { buildStyle } from './style';
+import { CDN_BASE_URL, CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
 
 const createGlobalCSS = async (cdn: string): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
@@ -37,7 +38,7 @@ export const FONT_FACE_STYLE_CDN_URL = FONT_FACE_CDN_URL;`;
 };
 
 (async (): Promise<void> => {
-  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/style';
+  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
 
   await createGlobalCSS(cdn).catch((e) => {
     console.error(e);

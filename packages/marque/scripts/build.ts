@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
+import { CDN_BASE_URL, CDN_BASE_PATH_MARQUE } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: {
@@ -86,7 +87,7 @@ export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/marque';
+  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_MARQUE}`;
   const files = (await globby('./src/**/*.png')).sort();
 
   await createManifestAndCopyMarque(cdn, files).catch((e) => {

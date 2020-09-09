@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
+import { CDN_BASE_URL, CDN_BASE_PATH_FONTS } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: {
@@ -78,7 +79,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/fonts';
+  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`;
   const files = (await globby('./src/**/*.@(woff|woff2)')).sort();
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {

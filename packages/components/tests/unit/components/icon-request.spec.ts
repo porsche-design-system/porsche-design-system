@@ -2,13 +2,13 @@ import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/i
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
+import { CDN_BASE_URL, CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 
-const DEFAULT_ICON_URL =
-  'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg';
+const DEFAULT_ICON_URL = `${CDN_BASE_URL}/${CDN_BASE_PATH_ICONS}/arrow-head-right.min.490cb49eb241569ee5d537730ee9658f.svg`;
 
 describe('getSvgContent()', () => {
   const getIconUrl = (name: IconName) => `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
-  const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
+  const emptyIconUrl = `${CDN_BASE_URL}/some-path/some-icon.svg`;
   const undefinedUrl = undefined;
 
   /**
