@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "d335635210fe8f260ea2",
+    "revision": "a66cbbf0841dd15f1b7a",
     "url": "css/app.a4234bdb.css"
   },
   {
@@ -324,12 +324,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "136ffe7dc06aa6b8c2dd0be037329bb7",
+    "revision": "569be8d5b36fa8be5d994fb992abad1a",
     "url": "index.html"
   },
   {
-    "revision": "d335635210fe8f260ea2",
-    "url": "js/app.34df5bc8.js"
+    "revision": "a66cbbf0841dd15f1b7a",
+    "url": "js/app.4d0be111.js"
   },
   {
     "revision": "f46712e34b1aabc6a702",
@@ -544,6 +544,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d0d0ba9.441edb8b.js"
   },
   {
+    "revision": "817c1fe7e27c81f96dc2",
+    "url": "js/chunk-2d0d0f67.f4917535.js"
+  },
+  {
     "revision": "abc385c56ea1a0becd94",
     "url": "js/chunk-2d0d3500.a774c734.js"
   },
@@ -636,8 +640,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d207763.9f07ca29.js"
   },
   {
-    "revision": "57bd5ffdde0b66585b43",
-    "url": "js/chunk-2d2080b9.cd10c5c1.js"
+    "revision": "164f293351de2c21d3da",
+    "url": "js/chunk-2d2080b9.a2e402a8.js"
   },
   {
     "revision": "84d576b02634ecf034cd",
@@ -856,10 +860,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-ae7bdf22.6934fca8.js"
   },
   {
-    "revision": "24a14d7a10d29c085e51",
-    "url": "js/chunk-ae7d1352.3969cf84.js"
-  },
-  {
     "revision": "2cb9ff1f2fb53468d5b0",
     "url": "js/chunk-ae80dfcc.c567b417.js"
   },
@@ -900,7 +900,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "0b727f3fe97dff536dbd38ad38d48474",
+    "revision": "dc84fd65dbfc5e2d987017ae932d52fb",
     "url": "pds-loader.js"
   }
 ]);
