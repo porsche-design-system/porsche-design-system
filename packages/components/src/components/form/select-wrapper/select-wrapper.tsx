@@ -172,11 +172,7 @@ export class SelectWrapper {
           <label>
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
-                {this.label || (
-                  <span>
-                    <slot name="label" />
-                  </span>
-                )}
+                {this.label || <slot name="label" />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -187,11 +183,7 @@ export class SelectWrapper {
                 size="x-small"
                 onClick={this.labelClick}
               >
-                {this.description || (
-                  <span>
-                    <slot name="description" />
-                  </span>
-                )}
+                {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
             <span class={fakeSelectClasses}>
@@ -231,11 +223,7 @@ export class SelectWrapper {
         </div>
         {this.isMessageVisible && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || (
-              <span>
-                <slot name="message" />
-              </span>
-            )}
+            {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
