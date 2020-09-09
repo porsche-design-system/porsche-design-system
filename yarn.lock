@@ -2569,12 +2569,12 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.1.tgz#a2e3c66986e5ea2a24547fbb9257d8e9dd273fc0"
-  integrity sha1-ouPGaYbl6iokVH+7klfY6d0nP8A=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.2.tgz#7a36a1396c2ae2c41004088acd5cd6297dcecc73"
+  integrity sha1-ejahOWwq4sQQBAiKzVzWKX3OzHM=
   dependencies:
-    "@porsche-design-system/web-components-manager" "1.0.0-alpha.1"
+    "@porsche-design-system/web-components-manager" "1.0.0-alpha.2"
     glob "^7.1.6"
     webpack "^4.43.0"
 
@@ -2583,10 +2583,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-1.0.0-alpha.0.tgz#a4f012f2b5aad2e9b1d00edfd33c64c836524f2c"
   integrity sha1-pPAS8rWq0umx0A7f0zxkyDZSTyw=
 
-"@porsche-design-system/web-components-manager@1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.1.tgz#bfc2cb4a996c2983c2bb532261d0ad026c71835e"
-  integrity sha1-v8LLSplsKYPCu1MiYdCtAmxxg14=
+"@porsche-design-system/web-components-manager@1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.2.tgz#35c801e9dadf10a4274b7d518c005a5d355dfd52"
+  integrity sha1-NcgB6drfEKQnS31RjABaXTVd/VI=
   dependencies:
     "@porsche-design-system/web-components-manager-polyfills" "1.0.0-alpha.0"
 
