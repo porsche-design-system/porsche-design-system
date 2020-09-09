@@ -76,7 +76,7 @@ export class PorscheDesignSystemModule {
      * explicitly via PREVENT_WEB_COMPONENTS_REGISTRATION inject token
      */
     if (!preventWebComponentsRegistration) {
-      load(webComponentsPrefix);
+      load({ prefix: webComponentsPrefix });
     }
   }
 }

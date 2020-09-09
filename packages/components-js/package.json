@@ -20,7 +20,7 @@
     "clean:build": "rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
-    "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.0"
+    "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.1"
   },
   "devDependencies": {
     "@porsche-design-system/components": "2.0.0-alpha.2",
