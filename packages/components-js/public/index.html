@@ -67,7 +67,7 @@
       <option value="typography">Typography</option>
     </select>
     <div id="app"></div>
-    <script type="text/javascript">
+    <script>
       const updateRoute = async () => {
         if (['#', ''].includes(document.location.hash)) {
           return;
@@ -75,8 +75,7 @@
 
         const app = document.getElementById('app');
         const page = document.location.hash.substr(1);
-        const template = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><'); // remove new lines from raw html
-        app.innerHTML = template;
+        app.innerHTML = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
 
         // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');
