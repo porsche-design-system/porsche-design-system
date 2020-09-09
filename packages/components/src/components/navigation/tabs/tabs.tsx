@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
 import { prefix } from '../../../utils';
-import { TextWeight } from '../../../types';
+import { TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-tabs',
@@ -13,6 +13,8 @@ export class Tabs {
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
 
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
+
+  @Prop() public theme?: Theme = 'light';
 
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
@@ -42,8 +44,9 @@ export class Tabs {
 
   public render(): JSX.Element {
     const tabHeaderClasses = {
+      [prefix('tabs__header')]: true,
       [prefix(`tabs__header--align-${this.align}`)]: true,
-      [prefix('tabs__header')]: true
+      [prefix(`tabs__header--theme-${this.theme}`)]: true,
     };
 
     const tabContentClasses = {
