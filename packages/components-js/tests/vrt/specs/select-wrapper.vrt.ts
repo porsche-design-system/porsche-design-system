@@ -9,6 +9,7 @@ describe('Select Wrapper', () => {
         async () => {
           await vrt.goTo('/#select-wrapper');
           await vrt.click('#test-focus-state');
+          await vrt.getPage().waitFor(200);
         },
         testOptions
       )
