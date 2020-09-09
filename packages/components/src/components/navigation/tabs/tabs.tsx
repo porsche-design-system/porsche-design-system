@@ -16,6 +16,8 @@ export class Tabs {
 
   @Prop() public theme?: Theme = 'light';
 
+  @Prop() public size?: 'small' | 'medium' = 'medium';
+
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
   @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
@@ -47,10 +49,12 @@ export class Tabs {
       [prefix('tabs__header')]: true,
       [prefix(`tabs__header--align-${this.align}`)]: true,
       [prefix(`tabs__header--theme-${this.theme}`)]: true,
+      [prefix(`tabs__header--size-${this.size}`)]: true
     };
 
     const tabContentClasses = {
-      [prefix('tabs__content')]: true
+      [prefix('tabs__content')]: true,
+      [prefix(`tabs__content--theme-${this.theme}`)]: true
     };
 
     return (

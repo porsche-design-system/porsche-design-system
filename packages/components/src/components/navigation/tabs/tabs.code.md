@@ -20,6 +20,27 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
   </template>
 </Playground>
 
+## Switch size
+
+You can choose between two button sizes, `small` or `medium`. It defaults to `medium` and an be set by selecting the property on the `p-tabs` component.
+
+<Playground>
+  <template #configurator>
+    <select v-model="size">
+      <option disabled>Select size</option>
+      <option value="small">Small</option>
+      <option selected value="medium">Medium</option>
+    </select>
+  </template>
+  <template>
+     <p-tabs :size="size">
+       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+     </p-tabs>
+  </template>
+</Playground>
+
 ## Scrollable Tab buttons
 
 If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable. 
@@ -74,7 +95,7 @@ The tabs component comes with two text-weights `regular` or `semibold` where it 
     </select>
   </template>
   <template>
-     <p-tabs :weight="semibold">
+     <p-tabs :weight="weight">
        <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
        <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
        <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
@@ -87,19 +108,12 @@ The tabs component comes with two text-weights `regular` or `semibold` where it 
 Choose between `light` and `dark` theme by using the `theme` property. Default theme is `light`.
 The Theme changes the Background of the buttons and content-container.
 
-<Playground>
-  <template #configurator>
-    <select v-model="theme">
-      <option disabled>Select theme</option>
-      <option selected value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
-  </template>
-  <template>
-     <p-tabs theme="dark">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+     <p-tabs :theme="theme">
+       <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
+       <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
+       <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
      </p-tabs>
   </template>
 </Playground>
@@ -155,6 +169,6 @@ import Component from 'vue-class-component';
    public alignment: string = 'left';
    public theme: string = 'light';
    public weight: string = 'regular';
-   
+   public size: string = 'medium';
   }
 </script>

@@ -1,7 +1,7 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
-$duration: 0.2s;
+$duration: 0.5s;
 $distance: -8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -16,91 +16,76 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &__header {
     border-bottom: transparent;
     padding: 0;
+    color: $p-color-default;
+    font-family: $p-font-family;
+    background-color: $p-color-theme-light-background;
+    font-size: $p-font-size-20;
+
+    &--theme-dark {
+      background-color: $p-color-theme-dark-background-default;
+      color: $p-color-theme-dark-default;
+    }
+
+    &--size-small {
+      font-size: $p-font-size-16;
+    }
+
   }
 
   &__button {
     position: relative;
-    border: 0;
-    font-family: $p-font-family;
-    font-size: $p-font-size-20;
-    font-weight: $p-font-weight-regular;
-    margin: $p-spacing-8;
-    outline: none;
-    cursor: pointer;
-    background-color: white;
-    transition: color $duration;
-
-    &::before {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: block;
-      content: '';
-      border-bottom: solid 2px #d5001c;
-      opacity: 0;
-      transform: translateY(-$distance);
-      transition: transform 0s $easeOutBack, opacity 0s;
-    }
-
-    &--selected {
-      color: $p-color-theme-light-brand;
-      &::before,
-      &::after {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      &::before {
-        transition: transform $duration $easeOutBack, opacity $duration;
-      }
-      &::after {
-        transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
-      }
-    }
-
-    &--disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    &:hover:not(:disabled):not(.active) {
-      color: $p-color-theme-light-brand;
-    }
-
-    &::after {
-      opacity: 0;
-      transform: translateY(-$distance);
-      transition: transform $duration, opacity $duration;
-    }
-  }
-
-  &__aTag {
+    margin: $p-spacing-16;
+    padding: 0;
+    box-sizing: border-box;
+    outline: transparent none;
+    appearance: none;
+    border: none;
     text-decoration: none;
-    color: $p-color-brand;
-    position: relative;
-    border: 0;
-    font-family: $p-font-family;
-    font-size: $p-font-size-20;
-    font-weight: $p-font-weight-regular;
-    margin: $p-spacing-8;
-    outline: none;
+    text-align: left;
+    background: transparent;
     cursor: pointer;
-    background-color: white;
-    transition: color $duration;
+    color: inherit;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+    font-size 1ms linear;
+    font-family: $p-font-family;
+    font-size: inherit;
 
     &::before {
       position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       bottom: 0;
       width: 100%;
       display: block;
       content: '';
-      border-bottom: solid 2px #d5001c;
+      border-bottom: solid 2px $p-color-brand;
       opacity: 0;
       transform: translateY(-$distance);
       transition: transform 0s $easeOutBack, opacity 0s;
+      transition-duration: 0.5s;
+    }
+
+    &:focus::before {
+      outline-width: 2px;
+      outline-style: solid;
+      outline-offset: 1px;
+    }
+
+    &:focus::before {
+      outline-color: $p-color-state-focus;
+    }
+
+    &::-moz-focus-inner {
+      border: 0; // fix for Firefox, avoid dotted outline in button on focus
+    }
+
+    &:hover:not(:disabled):not(.active) {
+      color: $p-color-brand;
     }
 
     &--selected {
-      color: $p-color-theme-light-brand;
+      color: $p-color-brand;
       &::before,
       &::after {
         opacity: 1;
@@ -119,20 +104,24 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: not-allowed;
     }
 
-    &:hover:not(:disabled):not(.active) {
-      color: $p-color-theme-light-brand;
+    &--regular {
+      font-weight: $p-font-weight-regular;
     }
 
-    &::after {
-      opacity: 0;
-      transform: translateY(-$distance);
-      transition: transform $duration, opacity $duration;
+    &--semibold {
+      font-weight: $p-font-weight-semibold;
     }
   }
-
 
   &__content {
-    margin: $p-spacing-16;
+    padding: $p-spacing-16;
+    background-color: $p-color-theme-light-background;
+    &--theme-dark {
+      background-color: $p-color-theme-dark-background-default;
+    }
+    ::slotted(*) {
+      margin: $p-spacing-16;
+    }
   }
 }
 
