@@ -5,7 +5,7 @@ import * as yaml from 'js-yaml';
 import SVGO = require('svgo');
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { CDN_BASE_URL, CDN_BASE_PATH_ICONS } from '../../../cdn.config';
+const { CDN_BASE_URL, CDN_BASE_PATH_ICONS } = require('../../../cdn.config');
 
 type Manifest = {
   [name: string]: string;

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { buildStyle } from './style';
-import { CDN_BASE_URL, CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
+const { CDN_BASE_URL, CDN_BASE_PATH_STYLES } = require('../../../../../cdn.config');
 
 const createGlobalCSS = async (cdn: string): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });

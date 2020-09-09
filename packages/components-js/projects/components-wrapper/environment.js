@@ -1,4 +1,4 @@
-import {CDN_BASE_PATH_COMPONENTS, CDN_BASE_URL} from '../../../../cdn.config';
+const { CDN_BASE_PATH_COMPONENTS, CDN_BASE_URL } = require('../../../../cdn.config');
 
 const path = require('path');
 const { version } = require('./package.json');

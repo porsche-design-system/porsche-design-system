@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { CDN_BASE_URL, CDN_BASE_PATH_MARQUE } from '../../../cdn.config';
+const { CDN_BASE_URL, CDN_BASE_PATH_MARQUE } = require('../../../cdn.config');
 
 type Manifest = {
   [name: string]: {
