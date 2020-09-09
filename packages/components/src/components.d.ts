@@ -501,6 +501,8 @@ export namespace Components {
     interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
+        "size"?: 'small' | 'medium';
+        "theme"?: Theme;
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
@@ -1299,6 +1301,8 @@ declare namespace LocalJSX {
     interface PTabs {
         "activeTab"?: number;
         "align"?: 'left' | 'center' | 'right';
+        "size"?: 'small' | 'medium';
+        "theme"?: Theme;
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
