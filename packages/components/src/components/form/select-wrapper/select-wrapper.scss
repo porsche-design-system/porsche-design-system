@@ -87,11 +87,11 @@
   position: relative;
 
   &--theme-light {
-    color: $p-color-default !important;
+    color: $p-color-default;
   }
 
   &--theme-dark {
-    color: $p-color-theme-dark-default !important;
+    color: $p-color-theme-dark-default;
   }
 
   &__label,
