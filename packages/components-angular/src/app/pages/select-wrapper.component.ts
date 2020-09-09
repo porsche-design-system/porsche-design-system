@@ -173,8 +173,17 @@ import { Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div class="playground dark" title="should render with error state and error message with custom filter on dark theme">
-      <p-select-wrapper [label]="'Some label'" [filter]="true"  [state]="'error'" [message]="'Some error message.'" [theme]="'dark'">
+    <div
+      class="playground dark"
+      title="should render with error state and error message with custom filter on dark theme"
+    >
+      <p-select-wrapper
+        [label]="'Some label'"
+        [filter]="true"
+        [state]="'error'"
+        [message]="'Some error message.'"
+        [theme]="'dark'"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -230,8 +239,17 @@ import { Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div class="playground dark" title="should render with success state and success message with custom filter on dark theme">
-      <p-select-wrapper [label]="'Some label'" [filter]="true" [state]="'success'" [message]="'Some success message.'" [theme]="'dark'">
+    <div
+      class="playground dark"
+      title="should render with success state and success message with custom filter on dark theme"
+    >
+      <p-select-wrapper
+        [label]="'Some label'"
+        [filter]="true"
+        [state]="'success'"
+        [message]="'Some success message.'"
+        [theme]="'dark'"
+      >
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -387,7 +405,11 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render in focus state">
+    <div
+      class="playground light"
+      title="should render in focus state and be open"
+      style="padding-bottom: calc(1rem + 126px)"
+    >
       <p-select-wrapper [label]="'Some label'">
         <select id="test-focus-state" name="some-name">
           <option value="a">Option A</option>
