@@ -179,7 +179,7 @@ only the prefixed web components are getting defined.
 import React from 'react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
 
-const { PHeadline } = getPrefixedComponents({ 'sample-prefix' });
+const { PHeadline } = getPrefixedComponents({ prefix: 'sample-prefix' });
 
 export function App() {
   return (
