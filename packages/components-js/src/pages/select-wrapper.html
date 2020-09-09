@@ -225,7 +225,10 @@
     </select>
   </p-select-wrapper>
 </div>
-<div class="playground dark" title="should render with success state and success message with custom filter on dark theme">
+<div
+  class="playground dark"
+  title="should render with success state and success message with custom filter on dark theme"
+>
   <p-select-wrapper label="Some label" filter="true" state="success" message="Some success message." theme="dark">
     <select name="some-name">
       <option value="a">Option A</option>
@@ -285,7 +288,10 @@
     <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
   </p-select-wrapper>
 </div>
-<div class="playground dark" title="should render label, description and message by slotted content with error state on dark theme">
+<div
+  class="playground dark"
+  title="should render label, description and message by slotted content with error state on dark theme"
+>
   <p-select-wrapper state="error" theme="dark">
     <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
     <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
@@ -367,7 +373,11 @@
   </p-select-wrapper>
 </div>
 
-<div class="playground light" title="should render in focus state">
+<div
+  class="playground light"
+  title="should render in focus state and be open"
+  style="padding-bottom: calc(1rem + 126px)"
+>
   <p-select-wrapper label="Some label">
     <select id="test-focus-state" name="some-name">
       <option value="a">Option A</option>

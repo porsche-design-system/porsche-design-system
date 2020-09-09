@@ -174,7 +174,10 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </SelectWrapper>
       </div>
-      <div className="playground dark" title="should render with error state and error message with custom filter on dark theme">
+      <div
+        className="playground dark"
+        title="should render with error state and error message with custom filter on dark theme"
+      >
         <SelectWrapper label="Some label" filter={true} state="error" message="Some error message." theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
@@ -231,7 +234,10 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </SelectWrapper>
       </div>
-      <div className="playground dark" title="should render with success state and success message with custom filter on dark theme">
+      <div
+        className="playground dark"
+        title="should render with success state and success message with custom filter on dark theme"
+      >
         <SelectWrapper label="Some label" filter={true} state="success" message="Some success message." theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
@@ -270,7 +276,12 @@ export const SelectWrapperPage = (): JSX.Element => {
         </SelectWrapper>
       </div>
       <div className="playground dark" title="should render with default state and no message on dark theme">
-        <SelectWrapper label="Some label" state="none" message="Some message which should not be rendered." theme="dark">
+        <SelectWrapper
+          label="Some label"
+          state="none"
+          message="Some message which should not be rendered."
+          theme="dark"
+        >
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -403,7 +414,11 @@ export const SelectWrapperPage = (): JSX.Element => {
         </SelectWrapper>
       </div>
 
-      <div className="playground light" title="should render in focus state">
+      <div
+        className="playground light"
+        title="should render in focus state and be open"
+        style={{ paddingBottom: 'calc(1rem + 126px)' }}
+      >
         <SelectWrapper label="Some label">
           <select id="test-focus-state" name="some-name">
             <option value="a">Option A</option>
