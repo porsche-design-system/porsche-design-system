@@ -90,8 +90,8 @@ export const OverviewPage = (): JSX.Element => {
     <div>
       <style children={style} />
 
-      <Grid>
-        <GridItem size="6">
+      <div style={{display: 'flex'}}>
+        <div style={{flex: 1}}>
           <div className="playground light" title="should render default headline">
             <Headline>Default Components</Headline>
           </div>
@@ -213,9 +213,9 @@ export const OverviewPage = (): JSX.Element => {
               </GridItem>
             </Grid>
           </div>
-        </GridItem>
+        </div>
 
-        <GridItem size="6">
+        <div style={{flex: 1}}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
           </div>
@@ -337,8 +337,8 @@ export const OverviewPage = (): JSX.Element => {
               </PrefixedGridItem>
             </PrefixedGrid>
           </div>
-        </GridItem>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 };
