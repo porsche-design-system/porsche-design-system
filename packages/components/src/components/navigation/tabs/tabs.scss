@@ -45,18 +45,19 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &--right {
       position: absolute;
+      margin: $p-spacing-16;
       right: 0;
-      padding: $p-spacing-16;
       background-color: white;
-      box-shadow: 0 0 12px 14px white;
+      box-shadow: 0 10px 22px 24px white;
       z-index: 1000;
     }
 
     &--left {
       position: relative;
-      padding: $p-spacing-16;
+      margin-top: $p-spacing-16;
+      margin-bottom: $p-spacing-16;
       background-color: white;
-      box-shadow: 0 0 12px 14px white;
+      box-shadow: 0 10px 22px 24px white;
       z-index: 1000;
     }
 
@@ -72,7 +73,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &__button {
     position: relative;
     margin: $p-spacing-16;
-    box-sizing: border-box;
+    padding: 0;
     outline: transparent none;
     appearance: none;
     border: none;
@@ -81,12 +82,12 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: transparent;
     cursor: pointer;
     color: inherit;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
+    transition: 0.5s,
     font-size 1ms linear;
     font-family: $p-font-family;
     font-size: inherit;
 
-    &::before {
+    &:before {
       position: absolute;
       top: 0;
       left: 0;
@@ -97,9 +98,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       content: '';
       border-bottom: solid 2px $p-color-brand;
       opacity: 0;
-      transform: translateY(-$distance);
-      transition: transform 0s $easeOutBack, opacity 0s;
-      transition-duration: 0.5s;
+      transition: 0.5s;
     }
 
     &:focus {
