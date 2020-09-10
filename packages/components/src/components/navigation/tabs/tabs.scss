@@ -13,6 +13,14 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
+  &__slider {
+    height: 2px;
+    width: 100%;
+    background-color: $p-color-brand;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
   &__header {
     border-bottom: transparent;
     padding: 0;
@@ -87,7 +95,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-family: $p-font-family;
     font-size: inherit;
 
-    &:before {
+    &::before {
       position: absolute;
       top: 0;
       left: 0;
