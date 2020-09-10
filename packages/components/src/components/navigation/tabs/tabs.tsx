@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
-import { prefix } from '../../../utils';
+import { isTouchDevice, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 @Component({
@@ -23,6 +23,8 @@ export class Tabs {
   @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
+  private intersectionObserver: IntersectionObserver;
+  private firstButton: HTMLElement;
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -38,6 +40,10 @@ export class Tabs {
     this.updateTabItems();
     this.handleTabChange();
     this.observeHost();
+  }
+
+  public componentDidLoad(): void {
+    this.addIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
@@ -57,9 +63,14 @@ export class Tabs {
       [prefix(`tabs__content--theme-${this.theme}`)]: true
     };
 
+    const tabIconClasses = {
+      [prefix('tabs__icon')]: true
+    };
+
     return (
       <Host>
         <nav class={tabHeaderClasses}>
+          <p-icon class={tabIconClasses} name="arrow-head-left" aria-label="Arrow head left icon" />
           {this.tabsItems.map((tab, index) => {
             const tabButtonClasses = {
               [prefix('tabs__button')]: true,
@@ -78,6 +89,7 @@ export class Tabs {
               </Tag>
             );
           })}
+          <p-icon class={tabIconClasses} name="arrow-head-right" aria-label="Arrow head right icon" />
         </nav>
         <div class={tabContentClasses}>
           <slot />
@@ -117,5 +129,30 @@ export class Tabs {
       subtree: true,
       attributeFilter: ['label', 'href', 'target']
     });
+  }
+
+  private addIntersectionObserver(): void {
+    const allArrows = this.host.shadowRoot.querySelectorAll('.p-tabs__icon');
+
+    if (isTouchDevice()) {
+      allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
+      return;
+    }
+
+    this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
+
+    this.intersectionObserver = new IntersectionObserver(
+      (entry: any) => {
+        if (!entry[0].isIntersecting) {
+          allArrows.forEach((el) => el.classList.add('p-tabs__icon--visible'));
+        } else {
+          allArrows.forEach((el) => el.classList.remove('p-tabs__icon--visible'));
+          allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
+        }
+      },
+      { threshold: 1 }
+    );
+
+    this.intersectionObserver.observe(this.firstButton);
   }
 }

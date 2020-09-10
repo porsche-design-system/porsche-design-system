@@ -34,10 +34,26 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   }
 
+  &__icon {
+    position: fixed;
+    padding: $p-spacing-16;
+    background-color: white;
+    box-shadow: 0 0 12px 14px white;
+    transition: transform 1s ease;
+    z-index: 10000;
+
+    &--hidden {
+      visibility: hidden;
+    }
+
+    &--visible {
+      visibility: visible;
+    }
+  }
+
   &__button {
     position: relative;
     margin: $p-spacing-16;
-    padding: 0;
     box-sizing: border-box;
     outline: transparent none;
     appearance: none;
@@ -68,7 +84,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition-duration: 0.5s;
     }
 
-    &:focus::before {
+    &:focus {
       outline-offset: 1px;
       outline: $p-color-state-focus solid 2px;
     }
@@ -115,9 +131,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background-color: $p-color-theme-light-background;
     &--theme-dark {
       background-color: $p-color-theme-dark-background-default;
-    }
-    ::slotted(*) {
-      margin: $p-spacing-16;
     }
   }
 }
