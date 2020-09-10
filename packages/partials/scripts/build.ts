@@ -3,6 +3,7 @@ import * as path from 'path';
 import { color, font, FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { minifyHTML, minifyCSS } from './utils';
+import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES, CDN_KEY } from '../../../cdn.config';
 
 const updateContent = (oldContent: string, newContent: string): string => {
   const separator = '/* Auto Generated Below */';
@@ -14,18 +15,26 @@ const updateContent = (oldContent: string, newContent: string): string => {
 const generateStylesPartials = async (): Promise<void> => {
   const targetFile = path.normalize('./src/styles.ts');
 
+  const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities')).toString();
+  const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
+
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = `
-type Options = { withoutTags: boolean };
+type Options = {
+  cdn?: 'auto' | 'cn';
+  withoutTags?: boolean;
+};
 
-export const getFontFaceCSS = (options?: Options): string =>
-  options?.withoutTags ? '${FONT_FACE_CDN_URL}' : '${minifyHTML(
-    `<link rel="stylesheet" href="${FONT_FACE_CDN_URL}">`
-  )}';
+export const getFontFaceCSS = (opts?: Options): string => {
+  const url = \`\${opts?.cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}'}/${CDN_BASE_PATH_STYLES}/\${opts?.cdn === 'cn' ? '${hashedFontFaceCssFiles.find(
+    (x) => x.includes('.cn.')
+  )}' : '${hashedFontFaceCssFiles.find((x) => !x.includes('.cn.'))}'}\`;
+  return opts?.withoutTags ? url : '${minifyHTML('<link rel="stylesheet" href="$URL$">')}'.replace('$URL$', url);
+}
 
-export const getPorscheDesignSystemCoreStyles = (options?: Options): string => {
+export const getPorscheDesignSystemCoreStyles = (opts?: Options): string => {
   const styleInnerHtml = '${minifyCSS(`${TAG_NAMES.join(',')} { visibility: hidden }`)}';
-  return options?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
+  return opts?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
 };`;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
