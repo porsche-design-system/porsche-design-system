@@ -33,7 +33,7 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   });
 
   // extract the condition from cdn config to use its result in a constant
-  const cdnCondition = CDN_BASE_URL_DYNAMIC.substr(0, CDN_BASE_URL_DYNAMIC.lastIndexOf('?') - 1);
+  const cdnCondition = CDN_BASE_URL_DYNAMIC.substr(0, CDN_BASE_URL_DYNAMIC.lastIndexOf('?') - 1).slice(1);
   const cdnResult = `const isCdnCn = ${cdnCondition};`;
   const url = `${cdn.replace(
     cdnCondition,
@@ -63,7 +63,7 @@ export const FONT_FACE_STYLE_CDN_URL = FONT_FACE_CDN_URL;`;
 };
 
 (async (): Promise<void> => {
-  const cdn = `(${CDN_BASE_URL_DYNAMIC}) + '/${CDN_BASE_PATH_STYLES}/'`;
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_STYLES}/'`;
 
   await createGlobalCSS(cdn).catch((e) => {
     console.error(e);
