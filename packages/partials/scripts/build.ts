@@ -32,7 +32,7 @@ export const getFontFaceCSS = (opts?: Options): string => {
   return opts?.withoutTags ? url : '${minifyHTML('<link rel="stylesheet" href="$URL$">')}'.replace('$URL$', url);
 }
 
-export const getPorscheDesignSystemCoreStyles = (opts?: Options): string => {
+export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags'>): string => {
   const styleInnerHtml = '${minifyCSS(`${TAG_NAMES.join(',')} { visibility: hidden }`)}';
   return opts?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
 };`;
