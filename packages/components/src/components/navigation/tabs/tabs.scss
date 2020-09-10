@@ -67,13 +67,8 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     &:focus::before {
-      outline-width: 2px;
-      outline-style: solid;
       outline-offset: 1px;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-state-focus;
+      outline: $p-color-state-focus solid 2px;
     }
 
     &::-moz-focus-inner {
