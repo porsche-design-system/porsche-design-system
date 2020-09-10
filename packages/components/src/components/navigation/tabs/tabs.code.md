@@ -43,7 +43,23 @@ You can choose between two button sizes, `small` or `medium`. It defaults to `me
 
 ## Scrollable Tab buttons
 
-If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable. 
+If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
+
+<Playground>
+  <template>
+     <p-tabs>
+       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+       <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
+       <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
+       <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
+       <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
+       <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
+       <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
+     </p-tabs>
+  </template>
+</Playground>
 
 ## Navigation Tabs
 
