@@ -154,8 +154,8 @@ export class Tabs {
     this.lastButton = this.host.shadowRoot.querySelector('.p-tabs__header').lastElementChild as HTMLElement;
 
     this.intersectionObserver = new IntersectionObserver(
-      (entry: any) => {
-        entry.forEach((entry) => {
+      (entries: any) => {
+        entries.forEach((entry) => {
           const arrow = entry.target === this.firstButton ? arrowLeft : arrowRight;
           if (entry.isIntersecting) {
             arrow.classList.remove('p-tabs__icon--visible');
