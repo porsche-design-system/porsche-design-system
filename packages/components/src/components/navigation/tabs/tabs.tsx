@@ -23,8 +23,10 @@ export class Tabs {
   @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
-  private intersectionObserver: IntersectionObserver;
+  private intersectionObserverLeft: IntersectionObserver;
+  private intersectionObserverRight: IntersectionObserver;
   private firstButton: HTMLElement;
+  private lastButton: HTMLElement;
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -66,11 +68,20 @@ export class Tabs {
     const tabIconClasses = {
       [prefix('tabs__icon')]: true
     };
+    const tabIconRight = {
+      [prefix('tabs__icon--right')]: true
+    };
+    const tabIconLeft = {
+      [prefix('tabs__icon--left')]: true
+    };
 
     return (
       <Host>
+        <div class={tabIconClasses}>
+          <p-icon class={tabIconLeft} name="arrow-head-left" aria-label="Arrow head left icon" />
+          <p-icon class={tabIconRight} name="arrow-head-right" aria-label="Arrow head right icon" />
+        </div>
         <nav class={tabHeaderClasses}>
-          <p-icon class={tabIconClasses} name="arrow-head-left" aria-label="Arrow head left icon" />
           {this.tabsItems.map((tab, index) => {
             const tabButtonClasses = {
               [prefix('tabs__button')]: true,
@@ -89,7 +100,6 @@ export class Tabs {
               </Tag>
             );
           })}
-          <p-icon class={tabIconClasses} name="arrow-head-right" aria-label="Arrow head right icon" />
         </nav>
         <div class={tabContentClasses}>
           <slot />
@@ -133,6 +143,9 @@ export class Tabs {
 
   private addIntersectionObserver(): void {
     const allArrows = this.host.shadowRoot.querySelectorAll('.p-tabs__icon');
+    const arrowLeft = this.host.shadowRoot.querySelector('.p-tabs__icon--left');
+    const arrowRight = this.host.shadowRoot.querySelector('.p-tabs__icon--right');
+
 
     if (isTouchDevice()) {
       allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
@@ -140,19 +153,35 @@ export class Tabs {
     }
 
     this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
+    this.lastButton = this.host.shadowRoot.querySelector('.p-tabs__header').lastElementChild as HTMLElement;
 
-    this.intersectionObserver = new IntersectionObserver(
+    this.intersectionObserverLeft = new IntersectionObserver(
       (entry: any) => {
-        if (!entry[0].isIntersecting) {
-          allArrows.forEach((el) => el.classList.add('p-tabs__icon--visible'));
+        if (entry[0].isIntersecting) {
+          arrowLeft.classList.remove('p-tabs__icon--visible');
+          arrowLeft.classList.add('p-tabs__icon--hidden');
         } else {
-          allArrows.forEach((el) => el.classList.remove('p-tabs__icon--visible'));
-          allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
+         arrowLeft.classList.remove('p-tabs__icon--hidden');
+         arrowLeft.classList.add('p-tabs__icon--visible');
         }
       },
       { threshold: 1 }
     );
 
-    this.intersectionObserver.observe(this.firstButton);
+    this.intersectionObserverRight = new IntersectionObserver(
+      (entry: any) => {
+        if (entry[0].isIntersecting) {
+         arrowRight.classList.remove('p-tabs__icon--visible');
+         arrowRight.classList.add('p-tabs__icon--hidden');
+        } else {
+         arrowRight.classList.remove('p-tabs__icon--hidden');
+         arrowRight.classList.add('p-tabs__icon--visible');
+        }
+      },
+      { threshold: 1 }
+    );
+
+    this.intersectionObserverLeft.observe(this.firstButton);
+    this.intersectionObserverRight.observe(this.lastButton);
   }
 }
