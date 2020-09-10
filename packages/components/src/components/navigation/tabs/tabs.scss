@@ -13,22 +13,15 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
-  &__slider {
-    height: 2px;
-    width: 100%;
-    background-color: $p-color-brand;
-    opacity: 0;
-    transition: 0.5s;
-  }
-
   &__header {
     border-bottom: transparent;
     padding: 0;
+    margin: $p-spacing-16;
     color: $p-color-default;
     font-family: $p-font-family;
     background-color: $p-color-theme-light-background;
     font-size: $p-font-size-20;
-    overflow: auto;
+    overflow: scroll;
     white-space: nowrap;
 
     &--theme-dark {
@@ -48,13 +41,12 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__icon {
     position: absolute;
-    transition: transform 1s ease;
     width: 100%;
 
     &--right {
-      position: absolute;
-      margin: $p-spacing-16;
-      right: 0;
+      position: relative;
+      margin: $p-spacing-4;
+      float: right;
       background-color: white;
       box-shadow: 0 10px 22px 24px white;
       z-index: 1000;
@@ -62,8 +54,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &--left {
       position: relative;
-      margin-top: $p-spacing-16;
-      margin-bottom: $p-spacing-16;
+      margin: $p-spacing-4;
       background-color: white;
       box-shadow: 0 10px 22px 24px white;
       z-index: 1000;
@@ -80,7 +71,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__button {
     position: relative;
-    margin: $p-spacing-16;
+    margin-right: $p-spacing-32;
     padding: 0;
     outline: transparent none;
     appearance: none;
