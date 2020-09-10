@@ -32,6 +32,14 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
     suffix: 'cn'
   });
 
+  // extract the condition from cdn config to use its result in a constant
+  const cdnCondition = CDN_BASE_URL_DYNAMIC.substr(0, CDN_BASE_URL_DYNAMIC.lastIndexOf('?') - 1);
+  const cdnResult = `const isCdnCn = ${cdnCondition};`;
+  const url = `${cdn.replace(
+    cdnCondition,
+    'isCdnCn'
+  )} + '/' + isCdnCn ? '${fontFaceCdnFileNameCn}' : '${fontFaceCdnFileName}'`;
+
   const targetFile = path.normalize('./src/js/index.ts');
   const separator = '\n/* Auto Generated Below */';
 
@@ -42,7 +50,9 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   )}${separator}
 ${CDN_KEY_TYPE_DEFINITION}
 
-export const FONT_FACE_CDN_URL = ${cdn} + '/${fontFaceCdnFileName}';
+${cdnResult}
+export const FONT_FACE_CDN_URL = ${url};
+
 /**
  * @deprecated since v1.1.0.
  * Please use FONT_FACE_CDN_URL instead.
