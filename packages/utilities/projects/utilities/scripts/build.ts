@@ -38,7 +38,7 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   const url = `${cdn.replace(
     cdnCondition,
     'isCdnCn'
-  )} + '/' + isCdnCn ? '${fontFaceCdnFileNameCn}' : '${fontFaceCdnFileName}'`;
+  )} + (isCdnCn ? '${fontFaceCdnFileNameCn}' : '${fontFaceCdnFileName}')`;
 
   const targetFile = path.normalize('./src/js/index.ts');
   const separator = '\n/* Auto Generated Below */';
@@ -63,7 +63,7 @@ export const FONT_FACE_STYLE_CDN_URL = FONT_FACE_CDN_URL;`;
 };
 
 (async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_STYLES}'`;
+  const cdn = `(${CDN_BASE_URL_DYNAMIC}) + '/${CDN_BASE_PATH_STYLES}/'`;
 
   await createGlobalCSS(cdn).catch((e) => {
     console.error(e);
