@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-const { CDN_BASE_URL, CDN_BASE_PATH_FONTS } = require('../../../cdn.config');
+import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_FONTS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: {
@@ -71,7 +71,9 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `export const CDN_BASE_URL = "${cdn}";
+    `${CDN_KEY_TYPE_DEFINITION}
+
+export const CDN_BASE_URL = ${cdn};
 export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
@@ -79,7 +81,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`;
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FONTS}'`;
   const files = (await globby('./src/**/*.@(woff|woff2)')).sort();
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
