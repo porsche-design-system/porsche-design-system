@@ -23,8 +23,7 @@ export class Tabs {
   @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
-  private intersectionObserverLeft: IntersectionObserver;
-  private intersectionObserverRight: IntersectionObserver;
+  private intersectionObserver: IntersectionObserver;
   private firstButton: HTMLElement;
   private lastButton: HTMLElement;
 
@@ -146,7 +145,6 @@ export class Tabs {
     const arrowLeft = this.host.shadowRoot.querySelector('.p-tabs__icon--left');
     const arrowRight = this.host.shadowRoot.querySelector('.p-tabs__icon--right');
 
-
     if (isTouchDevice()) {
       allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
       return;
@@ -155,33 +153,23 @@ export class Tabs {
     this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
     this.lastButton = this.host.shadowRoot.querySelector('.p-tabs__header').lastElementChild as HTMLElement;
 
-    this.intersectionObserverLeft = new IntersectionObserver(
+    this.intersectionObserver = new IntersectionObserver(
       (entry: any) => {
-        if (entry[0].isIntersecting) {
-          arrowLeft.classList.remove('p-tabs__icon--visible');
-          arrowLeft.classList.add('p-tabs__icon--hidden');
-        } else {
-         arrowLeft.classList.remove('p-tabs__icon--hidden');
-         arrowLeft.classList.add('p-tabs__icon--visible');
-        }
+        entry.forEach((entry) => {
+          const arrow = entry.target === this.firstButton ? arrowLeft : arrowRight;
+          if (entry.isIntersecting) {
+            arrow.classList.remove('p-tabs__icon--visible');
+            arrow.classList.add('p-tabs__icon--hidden');
+          } else {
+            arrow.classList.remove('p-tabs__icon--hidden');
+            arrow.classList.add('p-tabs__icon--visible');
+          }
+        });
       },
       { threshold: 1 }
     );
 
-    this.intersectionObserverRight = new IntersectionObserver(
-      (entry: any) => {
-        if (entry[0].isIntersecting) {
-         arrowRight.classList.remove('p-tabs__icon--visible');
-         arrowRight.classList.add('p-tabs__icon--hidden');
-        } else {
-         arrowRight.classList.remove('p-tabs__icon--hidden');
-         arrowRight.classList.add('p-tabs__icon--visible');
-        }
-      },
-      { threshold: 1 }
-    );
-
-    this.intersectionObserverLeft.observe(this.firstButton);
-    this.intersectionObserverRight.observe(this.lastButton);
+    this.intersectionObserver.observe(this.firstButton);
+    this.intersectionObserver.observe(this.lastButton);
   }
 }
