@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="388px" height="86px" viewBox="0 0 388 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g id="tab-divider" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="388" height="86"></rect>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(126.000000, 19.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-3" transform="translate(24.000000, 19.000000)">
+            <g id="Container"></g>
+            <rect id="Active-tab-indicator" fill="#D5001C" fill-rule="evenodd" x="10" y="37" width="63" height="3"></rect>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(228.000000, 19.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <line x1="116.5" y1="33.5" x2="116.5" y2="49.5" id="Line" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="221.5" y1="33.5" x2="221.5" y2="49.5" id="Line-Copy" stroke="#979797" stroke-linecap="square"></line>
+    </g>
+</svg>
