@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-const { CDN_BASE_URL, CDN_BASE_PATH_META_ICONS } = require('../../../cdn.config');
+import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_META_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 type Manifest = {
   [type: string]: {
@@ -48,7 +48,9 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `export const CDN_BASE_URL = "${cdn}";
+    `${CDN_KEY_TYPE_DEFINITION}
+
+export const CDN_BASE_URL = ${cdn};
 export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
@@ -56,7 +58,7 @@ export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}`;
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_META_ICONS}'`;
   const icons = (await globby('./src/**/*')).sort();
 
   await createManifestAndCopyMetaicons(cdn, icons).catch((e) => {
