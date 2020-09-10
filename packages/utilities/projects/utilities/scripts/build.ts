@@ -2,7 +2,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { buildStyle } from './style';
-const { CDN_BASE_URL, CDN_BASE_PATH_STYLES } = require('../../../../../cdn.config');
+import {
+  CDN_BASE_URL,
+  CDN_BASE_URL_CN,
+  CDN_BASE_URL_DYNAMIC,
+  CDN_BASE_PATH_STYLES,
+  CDN_KEY_TYPE_DEFINITION
+} from '../../../../../cdn.config';
 
 const createGlobalCSS = async (cdn: string): Promise<void> => {
   fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
@@ -19,6 +25,13 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
     addContentBasedHash: true
   });
 
+  const fontFaceCdnFileNameCn = buildStyle({
+    baseUrl: CDN_BASE_URL_CN,
+    fontsManifest: FONTS_MANIFEST,
+    addContentBasedHash: true,
+    suffix: 'cn'
+  });
+
   const targetFile = path.normalize('./src/js/index.ts');
   const separator = '\n/* Auto Generated Below */';
 
@@ -27,7 +40,9 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
     0,
     oldContent.indexOf(separator) > 0 ? oldContent.indexOf(separator) : undefined
   )}${separator}
-export const FONT_FACE_CDN_URL = "${cdn}/${fontFaceCdnFileName}";
+${CDN_KEY_TYPE_DEFINITION}
+
+export const FONT_FACE_CDN_URL = ${cdn} + '/${fontFaceCdnFileName}';
 /**
  * @deprecated since v1.1.0.
  * Please use FONT_FACE_CDN_URL instead.
@@ -38,7 +53,7 @@ export const FONT_FACE_STYLE_CDN_URL = FONT_FACE_CDN_URL;`;
 };
 
 (async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_STYLES}'`;
 
   await createGlobalCSS(cdn).catch((e) => {
     console.error(e);
