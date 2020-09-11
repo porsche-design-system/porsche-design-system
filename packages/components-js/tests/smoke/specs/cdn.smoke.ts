@@ -18,7 +18,6 @@ describe('cdn', () => {
 
     page.on('request', (req) => {
       const url = req.url();
-      console.log('request', url);
 
       if (url.includes('cdn.ui.porsche')) {
         requests.push({ url });
@@ -45,34 +44,53 @@ describe('cdn', () => {
   <p-button>Some label</p-button>
 </p-content-wrapper>`;
 
-  // 6 because of core, marque chunk + asset, headline chunk + font, button chunk
-  const minAmountOfRequests = 6;
-
-  fit('should request from .com cdn for { cdn: "auto" } when outside of china', async () => {
+  it('should request from .com cdn for { cdn: "auto" } when outside of china', async () => {
     await setContentWithDesignSystem(page, content, 'auto');
 
-    console.log('requestedUrls', requests);
-    console.log('respondedUrls', responses);
-
-    expect(requests.length).toBeGreaterThanOrEqual(minAmountOfRequests);
-    expect(responses.length).toBeGreaterThanOrEqual(minAmountOfRequests);
     expect(requests.length).toBe(responses.length);
 
     expect(responses.filter((item) => item.status !== 200).length).toBe(0);
     expect(responses.filter((item) => item.url.includes('cdn.ui.porsche.com')).length).toBe(responses.length);
+
+    const baseUrl = 'https://cdn.ui.porsche.com/porsche-design-system';
+
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/components/porsche-design-system.v`)).length).toBe(1);
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/styles/font-face.min.`)).length).toBe(1);
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/icons/arrow-head-right.min.`)).length).toBe(1);
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/fonts/porsche-next-w-la-regular.min.`)).length).toBe(1);
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/marque/porsche-marque-trademark.medium.min.`)).length).toBe(1);
+
+    const responseErrors = responses.filter((item) => item.status === 400);
+    if (responseErrors.length) {
+      console.log('status 400', responseErrors);
+    }
   });
 
   it('should request always from .cn cdn for { cdn: "cn" }', async () => {
     await setContentWithDesignSystem(page, content, 'cn');
 
-    console.log('requestedUrls', requests);
-    console.log('respondedUrls', responses);
-
-    expect(requests.length).toBeGreaterThanOrEqual(minAmountOfRequests);
-    expect(responses.length).toBeGreaterThanOrEqual(minAmountOfRequests);
     expect(requests.length).toBe(responses.length);
 
     expect(responses.filter((item) => item.status !== 200).length).toBe(0);
     expect(responses.filter((item) => item.url.includes('cdn.ui.porsche.cn')).length).toBe(responses.length);
+
+    const baseUrl = 'https://cdn.ui.porsche.cn/porsche-design-system';
+
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/components/porsche-design-system.v`)).length).toBe(1);
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/styles/font-face.min.`)).length).toBe(1);
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/icons/arrow-head-right.min.`)).length).toBe(1);
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/fonts/porsche-next-w-la-regular.min.`)).length).toBe(1);
+    // prettier-ignore
+    expect(responses.filter((item) => item.url.startsWith(`${baseUrl}/marque/porsche-marque-trademark.medium.min.`)).length).toBe(1);
+
+    const responseErrors = responses.filter((item) => item.status === 400);
+    if (responseErrors.length) {
+      console.log('status 400', responseErrors);
+    }
   });
 });
