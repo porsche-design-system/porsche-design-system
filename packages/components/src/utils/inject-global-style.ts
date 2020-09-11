@@ -8,7 +8,7 @@ export const injectGlobalStyle = (): void => {
   const styleUrl =
     ROLLUP_REPLACE_IS_STAGING === 'production'
       ? FONT_FACE_CDN_URL
-      : 'http://localhost:3001/style/font-face.min.css';
+      : 'http://localhost:3001/styles/font-face.min.css';
 
   if (!document.querySelector(`link[href="${styleUrl}"]`)) {
     const link = document.createElement('link');
