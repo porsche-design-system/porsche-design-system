@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if
+  [[ "--components-js" == "${1}" ]] ||
+then
+  yarn test:smoke:${1:2}
+else
+  yarn test:smoke
+fi
