@@ -1,10 +1,10 @@
 import { componentsFactory } from './lib/components-provider';
-import { load } from '@porsche-design-system/components-js';
+import { load, LoadOptions } from '@porsche-design-system/components-js';
 
-export const getPrefixedComponents = (prefix: string = '', preventComponentLibraryLoading: boolean = false) => {
+export const getPrefixedComponents = (opts: LoadOptions, preventComponentLibraryLoading: boolean = false) => {
   if (!preventComponentLibraryLoading) {
-    load(prefix);
+    load(opts);
   }
 
-  return componentsFactory((tagName: string) => `${prefix}-${tagName}`);
+  return componentsFactory((tagName: string) => `${opts.prefix ?? ''}-${tagName}`);
 };

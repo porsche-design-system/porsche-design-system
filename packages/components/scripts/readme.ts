@@ -13,7 +13,7 @@ import globby from 'globby';
     str.replace(/----------------------------------------------\s+\*Built with.*/g, '');
   const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
 
-  const files = await globby('./src/components/**/readme.md');
+  const files = (await globby('./src/components/**/readme.md')).sort();
   for (const file of files) {
     const dir = path.dirname(path.normalize(file));
     const name = dir.split('/').pop();
