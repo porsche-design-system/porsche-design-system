@@ -22,12 +22,12 @@ The Manifest must be declared in the `<head>` of your document and can be someth
     "short_name": "",
     "icons": [
         {
-            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchicon.androidChrome_192x192}",
+            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchIcon.androidChrome_192x192}",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchicon.androidChrome_512x512}",
+            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchIcon.androidChrome_512x512}",
             "sizes": "512x512",
             "type": "image/png"
           }
