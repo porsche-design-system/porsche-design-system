@@ -7,6 +7,7 @@ import {
   CDN_BASE_URL_CN,
   CDN_BASE_URL_DYNAMIC,
   CDN_BASE_PATH_STYLES,
+  CDN_BASE_PATH_FONTS,
   CDN_KEY_TYPE_DEFINITION
 } from '../../../../../cdn.config';
 
@@ -20,13 +21,13 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   });
 
   const fontFaceCdnFileName = buildStyle({
-    baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`,
+    baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true
   });
 
   const fontFaceCdnFileNameCn = buildStyle({
-    baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_STYLES}`,
+    baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true,
     suffix: 'cn'
