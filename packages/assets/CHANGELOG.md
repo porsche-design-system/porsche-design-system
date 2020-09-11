@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [3.0.0] - 2020-09-11
+
 #### Changed
 - Rename `METAICONS_CDN_BASE_URL` to `META_ICONS_CDN_BASE_URL`
 - Rename `METAICONS_MANIFEST` to `META_ICONS_MANIFEST`
