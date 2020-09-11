@@ -51,7 +51,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   &__icon {
-    visibility: hidden;
+    display: none;
 
     &--right {
       position: relative;
@@ -78,6 +78,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     &--visible {
+      display: unset;
       visibility: visible;
     }
   }
@@ -88,7 +89,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__button {
     position: relative;
-    justify-content: $p-spacing-16;
     padding: 0;
     outline: transparent none;
     appearance: none;

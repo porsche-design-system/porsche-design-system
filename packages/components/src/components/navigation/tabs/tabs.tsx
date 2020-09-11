@@ -194,7 +194,7 @@ export class Tabs {
           }
         });
       },
-      { threshold: 0.9}
+      { threshold: 0.75}
     );
 
     this.intersectionObserver.observe(this.firstButton);
