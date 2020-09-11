@@ -101,6 +101,12 @@
     * `./docker.sh run-test-vrt --storefront` (vrt tests for the storefront)
     * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 
+### Smoke Tests
+1. Switch to __project root directory__
+1. For the different applications, select one of the following commands:
+    * `./docker.sh run-test-smoke` (smoke tests for the entire application)
+    * `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
+
 ### Cross Browser Tests
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
