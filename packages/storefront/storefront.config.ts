@@ -183,6 +183,16 @@ export const config: StorefrontConfig = {
       ]
     }
   },
+  Performance: {
+    'Cdn': [
+      // @ts-ignore
+      () => import(`@/pages/performance/cdn.md`)
+    ],
+    'Loading Behaviour': [
+      // @ts-ignore
+      () => import(`@/pages/performance/loading-behaviour.md`)
+    ]
+  },
   Helpers: {
     'Blur On Focus': [
       // @ts-ignore
@@ -191,10 +201,6 @@ export const config: StorefrontConfig = {
     'Components Ready': [
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
-    ],
-    'Flash Of Unstyled Content': [
-      // @ts-ignore
-      () => import(`@/pages/general/flash-of-unstyled-content.md`)
     ],
     'Slotted Content': [
       // @ts-ignore
