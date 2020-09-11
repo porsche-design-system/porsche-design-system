@@ -17,7 +17,7 @@ const readAndWriteFile = (targetFile: string): void => {
 
 const replaceCdnBaseUrlDynamicPlaceholder = async () => {
   readAndWriteFile(path.normalize('./dist/components-wrapper/index.js')); // core loader
-  readAndWriteFile(path.normalize((await globby('./dist/components/*.v*'))[0])); // core on cdn
+  readAndWriteFile(path.normalize((await globby('./dist/components/porsche-design-system.v*'))[0])); // core on cdn
 
   console.log(`Replaced "%%%CDN_BASE_URL_DYNAMIC%%%" with "${CDN_BASE_URL_DYNAMIC}"`);
 };
