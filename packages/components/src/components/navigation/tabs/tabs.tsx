@@ -58,12 +58,12 @@ export class Tabs {
     };
 
     const tabHeaderClasses = {
-      [prefix('tabs__header')]: true
+      [prefix('tabs__header')]: true,
+      [prefix(`tabs__header--align-${this.align}`)]: true
     };
 
     const tabNavClasses = {
       [prefix('tabs__nav')]: true,
-      [prefix(`tabs__nav--align-${this.align}`)]: true,
       [prefix(`tabs__nav--theme-${this.theme}`)]: true,
       [prefix(`tabs__nav--size-${this.size}`)]: true
     };
@@ -172,7 +172,7 @@ export class Tabs {
 
     this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
     const allButtons = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
-    this.lastButton = allButtons[allButtons.length - 1]  as HTMLElement;
+    this.lastButton = allButtons[allButtons.length - 1] as HTMLElement;
 
     this.intersectionObserver = new IntersectionObserver(
       (entries: any) => {
@@ -194,7 +194,7 @@ export class Tabs {
           }
         });
       },
-      { threshold: 0.75}
+      { threshold: 0.75 }
     );
 
     this.intersectionObserver.observe(this.firstButton);
