@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+    <%= require('@porsche-design-system/partials').getFontFaceCSS({ cdn: 'cn' }) %>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
     <script src="./pds-loader.js"></script>
@@ -36,6 +36,9 @@
         continue.</strong
       >
     </noscript>
+    <script>
+      PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
+    </script>
     <div id="app">
       <%= require('@porsche-design-system/partials/src/font-loader').getLoader({all: true}) %>
       <script>
