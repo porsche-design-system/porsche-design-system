@@ -52,56 +52,76 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
+    const hostClasses = {
+      [prefix('tabs__host')]: true,
+      [prefix(`tabs__host--theme-${this.theme}`)]: true
+    };
+
     const tabHeaderClasses = {
-      [prefix('tabs__header')]: true,
-      [prefix(`tabs__header--align-${this.align}`)]: true,
-      [prefix(`tabs__header--theme-${this.theme}`)]: true,
-      [prefix(`tabs__header--size-${this.size}`)]: true
+      [prefix('tabs__header')]: true
+    };
+
+    const tabNavClasses = {
+      [prefix('tabs__nav')]: true,
+      [prefix(`tabs__nav--align-${this.align}`)]: true,
+      [prefix(`tabs__nav--theme-${this.theme}`)]: true,
+      [prefix(`tabs__nav--size-${this.size}`)]: true
     };
 
     const tabContentClasses = {
-      [prefix('tabs__content')]: true,
-      [prefix(`tabs__content--theme-${this.theme}`)]: true
+      [prefix('tabs__content')]: true
     };
 
     const tabIconClasses = {
       [prefix('tabs__icon')]: true
     };
+
     const tabIconRight = {
-      [prefix('tabs__icon--right')]: true
+      ...tabIconClasses,
+      [prefix('tabs__icon--right')]: true,
+      [prefix(`tabs__icon--right--theme-${this.theme}`)]: true
     };
     const tabIconLeft = {
-      [prefix('tabs__icon--left')]: true
+      ...tabIconClasses,
+      [prefix('tabs__icon--left')]: true,
+      [prefix(`tabs__icon--left--theme-${this.theme}`)]: true
     };
 
     return (
       <Host>
-        <div class={tabIconClasses}>
-          <p-icon class={tabIconLeft} name="arrow-head-left" aria-label="Arrow head left icon" />
-          <p-icon class={tabIconRight} name="arrow-head-right" aria-label="Arrow head right icon" />
-        </div>
-        <nav class={tabHeaderClasses}>
-          {this.tabsItems.map((tab, index) => {
-            const tabButtonClasses = {
-              [prefix('tabs__button')]: true,
-              [prefix(`tabs__button--${this.weight}`)]: true,
-              [prefix('tabs__button--selected')]: tab.selected,
-              [prefix('tabs__button--disabled')]: tab.disabled
-            };
+        <div class={hostClasses}>
+          <div class={tabHeaderClasses}>
+            <p-icon class={tabIconLeft} theme={this.theme} name="arrow-head-left" aria-label="Arrow head left icon" />
+            <nav class={tabNavClasses}>
+              {this.tabsItems.map((tab, index) => {
+                const tabButtonClasses = {
+                  [prefix('tabs__button')]: true,
+                  [prefix(`tabs__button--${this.weight}`)]: true,
+                  [prefix('tabs__button--selected')]: tab.selected,
+                  [prefix('tabs__button--disabled')]: tab.disabled
+                };
 
-            const Tag = tab.href === undefined ? 'button' : 'a';
-            const props = (({ href, target, disabled }) => ({ href, target, disabled }))(tab);
+                const Tag = tab.href === undefined ? 'button' : 'a';
+                const props = (({ href, target, disabled }) => ({ href, target, disabled }))(tab);
 
-            return (
-              // use p-button-pure?
-              <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
-                {tab.label}
-              </Tag>
-            );
-          })}
-        </nav>
-        <div class={tabContentClasses}>
-          <slot />
+                return (
+                  // use p-button-pure?
+                  <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
+                    {tab.label}
+                  </Tag>
+                );
+              })}
+            </nav>
+            <p-icon
+              class={tabIconRight}
+              theme={this.theme}
+              name="arrow-head-right"
+              aria-label="Arrow head right icon"
+            />
+          </div>
+          <div class={tabContentClasses}>
+            <slot />
+          </div>
         </div>
       </Host>
     );
@@ -151,22 +171,30 @@ export class Tabs {
     }
 
     this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
-    this.lastButton = this.host.shadowRoot.querySelector('.p-tabs__header').lastElementChild as HTMLElement;
+    const allButtons = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
+    this.lastButton = allButtons[allButtons.length - 1]  as HTMLElement;
 
     this.intersectionObserver = new IntersectionObserver(
       (entries: any) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry: { target: HTMLElement; isIntersecting: boolean }) => {
           const arrow = entry.target === this.firstButton ? arrowLeft : arrowRight;
-          if (entry.isIntersecting) {
-            arrow.classList.remove('p-tabs__icon--visible');
+          console.log(entry.target);
+          if (arrow === arrowLeft && entry.isIntersecting) {
             arrow.classList.add('p-tabs__icon--hidden');
+            arrow.classList.remove('p-tabs__icon--visible');
+          } else if (arrow === arrowRight && !entry.isIntersecting) {
+            arrow.classList.remove('p-tabs__icon--hidden');
+            arrow.classList.add('p-tabs__icon--visible');
+          } else if (arrow === arrowRight && entry.isIntersecting) {
+            arrow.classList.add('p-tabs__icon--hidden');
+            arrow.classList.remove('p-tabs__icon--visible');
           } else {
             arrow.classList.remove('p-tabs__icon--hidden');
             arrow.classList.add('p-tabs__icon--visible');
           }
         });
       },
-      { threshold: 1 }
+      { threshold: 0.9}
     );
 
     this.intersectionObserver.observe(this.firstButton);
