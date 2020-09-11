@@ -1,8 +1,8 @@
 import { getFontFaceCSS, getPorscheDesignSystemCoreStyles } from '../../../src';
 
 describe('getFontFaceCSS', () => {
-  const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/styles/font-face.min`;
-  const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/styles/font-face.min`;
+  const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
+  const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/styles/font-face.min`;
 
   it('should return link with FONT_FACE_STYLE_CDN_URL', () => {
     const result = getFontFaceCSS();
