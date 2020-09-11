@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
     chunkFilename: `porsche-design-system.[id].[contenthash].js`,
     libraryTarget: 'var',
     library: `PorscheDesignSystem_${snakeCaseVersion}`,
-    publicPath: deployUrl + '/'
+    publicPath: `${deployUrl}/`
   },
   optimization: {
     usedExports: true
