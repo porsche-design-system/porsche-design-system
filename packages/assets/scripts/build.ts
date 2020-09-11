@@ -7,7 +7,7 @@ const cdnPathPackageMap = {
   icons: '@porsche-design-system/icons',
   marque: '@porsche-design-system/marque',
   metaicons: '@porsche-design-system/metaicons',
-  style: '@porsche-design-system/utilities'
+  styles: '@porsche-design-system/utilities'
 };
 
 const TARGET_DIRECTORY = '../cdn';

@@ -11,7 +11,7 @@ import {
 } from '../../../../../cdn.config';
 
 const createGlobalCSS = async (cdn: string): Promise<void> => {
-  fs.mkdirSync(path.resolve('./dist/style'), { recursive: true });
+  fs.mkdirSync(path.resolve('./dist/styles'), { recursive: true });
 
   buildStyle({
     baseUrl: 'http://localhost:3001/fonts',
