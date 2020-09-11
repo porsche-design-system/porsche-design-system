@@ -13,10 +13,21 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
+  &__host {
+    background-color: $p-color-theme-light-background;
+    &--theme-dark {
+      background-color: $p-color-theme-dark-background-default;
+    }
+  }
+
   &__header {
+    display: flex;
+  }
+
+  &__nav {
     border-bottom: transparent;
-    padding: 0;
     margin: $p-spacing-16;
+    padding: 0;
     color: $p-color-default;
     font-family: $p-font-family;
     background-color: $p-color-theme-light-background;
@@ -35,33 +46,35 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   }
 
-  &__header::-webkit-scrollbar {
+  &__nav::-webkit-scrollbar {
     display: none;
   }
 
   &__icon {
-    position: absolute;
-    width: 100%;
+    visibility: hidden;
 
     &--right {
       position: relative;
-      margin: $p-spacing-4;
-      float: right;
+      align-self: center;
       background-color: white;
-      box-shadow: 0 10px 22px 24px white;
-      z-index: 1000;
+      box-shadow: -24px 0 16px 10px white;
+      z-index: 9999;
+      &--theme-dark {
+        background-color: $p-color-theme-dark-background-default;
+        box-shadow: -24px 0 16px 10px $p-color-theme-dark-background-default;
+      }
     }
 
     &--left {
       position: relative;
-      margin: $p-spacing-4;
+      align-self: center;
       background-color: white;
-      box-shadow: 0 10px 22px 24px white;
-      z-index: 1000;
-    }
-
-    &--hidden {
-      visibility: hidden;
+      box-shadow: 24px 10px 16px 10px white;
+      z-index: 9999;
+      &--theme-dark {
+        background-color: $p-color-theme-dark-background-default;
+        box-shadow: 24px 10px 16px 10px $p-color-theme-dark-background-default;
+      }
     }
 
     &--visible {
@@ -69,9 +82,13 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 
+  &__button + &__button {
+    margin-left: $p-spacing-32;
+  }
+
   &__button {
     position: relative;
-    margin-right: $p-spacing-32;
+    justify-content: $p-spacing-16;
     padding: 0;
     outline: transparent none;
     appearance: none;
@@ -144,10 +161,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__content {
     padding: $p-spacing-16;
-    background-color: $p-color-theme-light-background;
-    &--theme-dark {
-      background-color: $p-color-theme-dark-background-default;
-    }
   }
 }
 
