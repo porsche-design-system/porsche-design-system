@@ -491,17 +491,17 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist/components-wrapper
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
-      - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-prod-build
-          path: ./packages/components-js/dist/components-wrapper
       - name: 'Smoke Test'
         uses: ./.github/actions/docker-run
         with:
