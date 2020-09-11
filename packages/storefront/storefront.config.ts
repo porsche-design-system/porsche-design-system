@@ -136,9 +136,9 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/assets/icons.md`)
     ],
-    Metaicons: [
+    'Meta Icons': [
       // @ts-ignore
-      () => import(`@/pages/assets/metaicons.md`)
+      () => import(`@/pages/assets/meta-icons.md`)
     ],
     Marque: [
       // @ts-ignore
