@@ -102,6 +102,7 @@
     * `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 
 ### Smoke Tests
+**Note:** In most of the cases this test only make sense to be executed in CI/CD
 1. Switch to __project root directory__
 1. For the different applications, select one of the following commands:
     * `./docker.sh run-test-smoke` (smoke tests for the entire application)
