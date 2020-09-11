@@ -12,7 +12,7 @@ declare global {
 }
 
 const isCdnCn = typeof window !== 'undefined' && (window[CDN_KEY] || 'auto') === 'cn';
-export const FONT_FACE_CDN_URL = (isCdnCn ? 'https://cdn.ui.porsche.cn' : 'https://cdn.ui.porsche.com') + '/porsche-design-system/styles/' + (isCdnCn ? 'font-face.min.cn.172e88acd22bc094e313d6d7bd56a11a.css' : 'font-face.min.b0ce2316e7754d7e76bbc1ff9fcc7932.css');
+export const FONT_FACE_CDN_URL = (isCdnCn ? 'https://cdn.ui.porsche.cn' : 'https://cdn.ui.porsche.com') + '/porsche-design-system/styles/' + (isCdnCn ? 'font-face.min.cn.c1b46971322e96095de49987cdc90226.css' : 'font-face.min.de7353ac41430a74da152a5bf0e7bb5b.css');
 
 /**
  * @deprecated since v1.1.0.
