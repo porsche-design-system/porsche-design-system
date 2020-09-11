@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Extend options of `getFontFaceCSS(opts)` by `{ cdn: 'auto' | 'cn' }`
+
 ### [2.1.0] - 2020-08-20
 
 #### Added
