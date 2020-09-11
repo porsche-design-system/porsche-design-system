@@ -324,7 +324,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "c7ca166e36350558e9ea674ce9f7aedb",
+    "revision": "26e3d91c813fce6d124cdeb415728f4a",
     "url": "index.html"
   },
   {
