@@ -1,7 +1,7 @@
 const META_ICONS_CDN_BASE_URL = '';
 const META_ICONS_MANIFEST = {
   favicon: {},
-  touchicon: {},
+  touchIcon: {},
   pinnedTab: {},
   mstile: {}
 };
