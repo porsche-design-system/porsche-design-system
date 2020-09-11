@@ -17,9 +17,9 @@ const toHash = (str: string): string =>
     .update(str, 'utf8')
     .digest('hex');
 
-const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Promise<void> => {
+const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
-  fs.mkdirSync(path.normalize('./dist/metaicons'), { recursive: true });
+  fs.mkdirSync(path.normalize('./dist/meta-icons'), { recursive: true });
 
   const manifest: Manifest = {};
 
@@ -29,10 +29,10 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
     const info = sourcePath.split(/[\/]/g);
     const type = info[1];
     const name = path.basename(sourcePath, ext);
-    const metaicons = fs.readFileSync(sourcePath, { encoding: 'binary' });
-    const hash = toHash(metaicons);
+    const metaIcons = fs.readFileSync(sourcePath, { encoding: 'binary' });
+    const hash = toHash(metaIcons);
     const filename = `${paramCase(name)}.${hash}${ext}`;
-    const targetPath = path.normalize(`./dist/metaicons/${filename}`);
+    const targetPath = path.normalize(`./dist/meta-icons/${filename}`);
 
     const typeKey = camelCase(type);
     const nameKey = camelCase(name);
@@ -41,27 +41,30 @@ const createManifestAndCopyMetaicons = async (cdn: string, files: string[]): Pro
       [nameKey]: filename
     };
 
-    fs.writeFileSync(targetPath, metaicons, { encoding: 'binary' });
+    fs.writeFileSync(targetPath, metaIcons, { encoding: 'binary' });
 
-    console.log(`Metaicon "${name}" copied.`);
+    console.log(`Meta Icon "${name}" copied.`);
   }
+
+  const separator = '/* Auto Generated Below */\n';
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${CDN_KEY_TYPE_DEFINITION}
+    `${separator}
+${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
-export const METAICONS_MANIFEST = ${JSON.stringify(manifest)};`
+export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
-  console.log('Created metaicons manifest.');
+  console.log('Created meta-icons manifest.');
 };
 
 (async (): Promise<void> => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_META_ICONS}'`;
   const icons = (await globby('./src/**/*')).sort();
 
-  await createManifestAndCopyMetaicons(cdn, icons).catch((e) => {
+  await createManifestAndCopyMetaIcons(cdn, icons).catch((e) => {
     console.error(e);
     process.exit(1);
   });

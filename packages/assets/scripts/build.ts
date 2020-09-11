@@ -6,7 +6,7 @@ const cdnPathPackageMap = {
   fonts: '@porsche-design-system/fonts',
   icons: '@porsche-design-system/icons',
   marque: '@porsche-design-system/marque',
-  metaicons: '@porsche-design-system/metaicons',
+  'meta-icons': '@porsche-design-system/meta-icons',
   styles: '@porsche-design-system/utilities'
 };
 
