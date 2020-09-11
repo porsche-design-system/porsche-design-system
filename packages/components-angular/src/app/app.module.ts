@@ -14,6 +14,6 @@ import * as fromPages from './pages';
 })
 export class AppModule {
   constructor(private prefixService: PrefixService) {
-    prefixService.load('my-prefix');
+    prefixService.load({ prefix: 'my-prefix' });
   }
 }

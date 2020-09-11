@@ -1,7 +1,8 @@
 import { getFontFaceCSS, getPorscheDesignSystemCoreStyles } from '../../../src';
 
 describe('getFontFaceCSS', () => {
-  const cdnStyleUrlWithoutHash = 'https://cdn.ui.porsche.com/porsche-design-system/style/font-face.min';
+  const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
+  const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/styles/font-face.min`;
 
   it('should return link with FONT_FACE_STYLE_CDN_URL', () => {
     const result = getFontFaceCSS();
@@ -14,6 +15,15 @@ describe('getFontFaceCSS', () => {
     const result = getFontFaceCSS({ withoutTags: true });
     expect(result).not.toContain('<link');
     expect(result).not.toContain('stylsheet');
+    expect(result).not.toContain('.cn.');
+    expect(result).toContain(cdnStyleUrlWithoutHash);
+  });
+
+  it('should return only href with cdn: "auto"', () => {
+    const result = getFontFaceCSS({ withoutTags: true, cdn: 'auto' });
+    expect(result).not.toContain('<link');
+    expect(result).not.toContain('stylsheet');
+    expect(result).not.toContain('.cn.');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
 
@@ -21,6 +31,16 @@ describe('getFontFaceCSS', () => {
     const result = getFontFaceCSS();
     expect(result).not.toContain('"');
     expect(result).not.toContain("'");
+  });
+
+  describe('option: { cdn: "cn" }', () => {
+    it('should return correct url for china cdn', () => {
+      const result = getFontFaceCSS({ withoutTags: true, cdn: 'cn' });
+      expect(result).not.toContain('<link');
+      expect(result).not.toContain('stylsheet');
+      expect(result).toContain(cdnStyleUrlCnWithoutHash);
+      expect(result).toContain('.cn.');
+    });
   });
 });
 
