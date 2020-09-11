@@ -20,13 +20,13 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   });
 
   const fontFaceCdnFileName = buildStyle({
-    baseUrl: CDN_BASE_URL,
+    baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true
   });
 
   const fontFaceCdnFileNameCn = buildStyle({
-    baseUrl: CDN_BASE_URL_CN,
+    baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_STYLES}`,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true,
     suffix: 'cn'
