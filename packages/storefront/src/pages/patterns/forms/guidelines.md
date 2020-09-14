@@ -217,6 +217,7 @@ Good forms provide **valuable support** – both **for success**, when the user
 
 
 ![Form layouts with error and success notification](../../../assets/patterns-forms-validation.svg)
+
 _Example input field with error_
 
 
@@ -242,6 +243,7 @@ _Example input field with error_
 
 - **Error summary.** Additional to the error message beneath the input fields, you can include an error summary at the top of the form to summarise the mistakes a user has made.
 It might also make sense if you don't want to show which field has an error, f.e. login or have a required group of fields rather than a specific one.
+---
 
 # Error messages
 
@@ -262,21 +264,74 @@ Keep in my mind that experiencing an error is frustrating for the user and ask y
 - visible immediately after lost focus
 - removed after successfully corrected input
 
---- 
-**Example:** 
+
+
+**The following questions should be answered to create a good error message:**
+1.	What did the user try to do when the error message appeared?
+2.	Why was the error message displayed?
+3.	How can the user continue and complete the process?
+4.	If there is no immediate solution, can we offer the user alternatives? E.g. a search input field or a contact of the support team
+
+---
+
+### **Writing examples:** 
+
 Credit card number is incorrect
 
-- **Instead of saying:** Invalid input
+ **Instead of saying:** 
+ *Invalid input*
 
-- **Describe the problem:**
-  Numbers are missing in your credit card number.
+**Describe the problem:**
+*Numbers are missing in your credit card number.*
 
-- **Offer a solution:**
-Numbers are missing in your credit card number. Please check your input.
+**Offer a solution:**
+*Numbers are missing in your credit card number. Please check your input.*
 
-- **Add a human touch:**
-Is the card number complete? Please check your input.
+**Add a human touch:**
+*Is the card number complete? Please check your input.*
 
+---
+
+Mandatory free text input field is not filled
+
+ **Instead of saying:** 
+ *This field is obligatory.*
+
+**Describe the problem:**
+*Please enter your message.*
+
+**Add a human touch:**
+*What would you like to tell us?*
+
+---
+
+Mandatory free text input field is not filled
+
+ **Instead of saying:** 
+ *Service not available. The server is temporarily busy. Please try again later.*
+
+**Describe the problem:**
+*Unfortunately, we can’t load the site because of a problem with our server.*
+
+**Offer a solution:**
+*Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:
+- Porsche Website
+- My Porsche
+- Porsche Shop*
+
+**Add a human touch:**
+*Not our claim to performance.
+Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site, while we’re working on a solution:
+- Porsche Website
+- My Porsche
+- Porsche Shop*
+
+
+---
+
+**Prevent errors:** 
+
+Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input is required for a certain input field. E.g. List the necessary characters that a password must contain. 
 
 ---
 
