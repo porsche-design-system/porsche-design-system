@@ -24,7 +24,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
+    <% if (process.env.NODE_ENV === 'production') { %>
     <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+    <% } else { %>
+    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
+    <% } %>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
     <script src="./pds-loader.js"></script>
@@ -42,6 +46,7 @@
         porscheDesignSystem.load();
       </script>
     </div>
+    <%= require('@porsche-design-system/browser-notification-banner').init() %>
     <!-- built files will be auto injected -->
   </body>
 </html>

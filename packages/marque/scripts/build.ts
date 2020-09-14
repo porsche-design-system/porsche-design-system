@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
+import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_MARQUE, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: {
@@ -78,7 +79,9 @@ const createManifestAndCopyMarque = async (cdn: string, files: string[]): Promis
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `export const CDN_BASE_URL = "${cdn}";
+    `${CDN_KEY_TYPE_DEFINITION}
+
+export const CDN_BASE_URL = ${cdn};
 export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
   );
 
@@ -86,8 +89,8 @@ export const MARQUES_MANIFEST = ${JSON.stringify(manifest)};`
 };
 
 (async (): Promise<void> => {
-  const cdn = 'https://cdn.ui.porsche.com/porsche-design-system/marque';
-  const files = await globby('./src/**/*.png');
+  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_MARQUE}'`;
+  const files = (await globby('./src/**/*.png')).sort();
 
   await createManifestAndCopyMarque(cdn, files).catch((e) => {
     console.error(e);

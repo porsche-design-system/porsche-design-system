@@ -31,8 +31,8 @@ import { Component } from '@angular/core';
     }
   `],
   template: `
-    <p-grid>
-      <p-grid-item size="6">
+    <div style="display: flex;">
+      <div style="flex: 1;">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
         </div>
@@ -144,9 +144,9 @@ import { Component } from '@angular/core';
             <p-grid-item size="6"><p>2</p></p-grid-item>
           </p-grid>
         </div>
-      </p-grid-item>
+      </div>
 
-      <p-grid-item p-grid-item size="6">
+      <div style="flex: 1;">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
         </div>
@@ -261,8 +261,8 @@ import { Component } from '@angular/core';
             <my-prefix-p-grid-item p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
         </div>
-      </p-grid-item>
-    </p-grid>
+      </div>
+    </div>
   `
 })
 export class OverviewComponent {

@@ -8,7 +8,7 @@ To give teams the possibility to get the versioned file paths to these static as
 
 **Actually we provide assets for:**
 - [Icons](#/assets/icons)
-- [Metaicons](#/assets/metaicons) (like favicon and touch icons)
+- [Meta Icons](#/assets/meta-icons) (like favicon and touch icons)
 - [Marque](#/assets/marque)
 - [Fonts](#/assets/fonts)
 
@@ -25,4 +25,4 @@ yarn add @porsche-design-system/assets
 ```
 
 ### Usage
-See corresponding section of [Icons](#/assets/icons), [Metaicons](#/assets/metaicons) (like favicon and touch icons), [Marque](#/assets/marque) and [Fonts](#/assets/fonts)
+See corresponding section of [Icons](#/assets/icons), [Meta Icons](#/assets/meta-icons) (like favicon and touch icons), [Marque](#/assets/marque) and [Fonts](#/assets/fonts)

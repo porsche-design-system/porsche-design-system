@@ -207,7 +207,7 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {
   constructor(private prefixService: PrefixService) {
-    prefixService.load('another-prefix');
+    prefixService.load({ prefix: 'another-prefix' });
   }
 }
 ```
