@@ -10,22 +10,24 @@ import { TextWeight, Theme } from '../../../types';
 export class Tabs {
   @Element() public host!: HTMLElement;
 
-  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+  /** The text size. */
+  @Prop() public size?: 'small' | 'medium' = 'medium';
 
+  /** The text weight. */
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
+  /** Adapts color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
-
-  @Prop() public size?: 'small' | 'medium' = 'medium';
 
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
-  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  /** Defines the tab to be activated (index: zero-based). */
+  @Prop({reflect: true}) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private firstButton: HTMLElement;
-  private lastButton: HTMLElement;
+  private firstTab: HTMLElement;
+  private lastTab: HTMLElement;
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -54,58 +56,65 @@ export class Tabs {
 
   public render(): JSX.Element {
     const tabHeaderClasses = {
-      [prefix('tabs__header')]: true,
-      [prefix(`tabs__header--align-${this.align}`)]: true
+      [prefix('tabs__header')]: true
+    };
+
+    const tabActionClasses = {
+      [prefix('tabs__action')]: true
+    };
+
+    const tabPrevClasses = {
+      ...tabActionClasses,
+      [prefix('tabs__action--prev')]: true,
+      [prefix(`tabs__action--theme-${this.theme}`)]: true
+    };
+
+    const tabNextClasses = {
+      ...tabActionClasses,
+      [prefix('tabs__action--next')]: true,
+      [prefix(`tabs__action--theme-${this.theme}`)]: true
     };
 
     const tabNavClasses = {
-      [prefix('tabs__nav')]: true,
-      [prefix(`tabs__nav--theme-${this.theme}`)]: true,
-      [prefix(`tabs__nav--size-${this.size}`)]: true
+      [prefix('tabs__nav')]: true
     };
 
-    const tabIconClasses = {
-      [prefix('tabs__icon')]: true
-    };
-
-    const tabIconRight = {
-      ...tabIconClasses,
-      [prefix('tabs__icon--right')]: true,
-      [prefix(`tabs__icon--right--theme-${this.theme}`)]: true
-    };
-    const tabIconLeft = {
-      ...tabIconClasses,
-      [prefix('tabs__icon--left')]: true,
-      [prefix(`tabs__icon--left--theme-${this.theme}`)]: true
+    const tabButtonClasses = {
+      [prefix('tabs__button')]: true,
+      [prefix(`tabs__button--theme-${this.theme}`)]: true,
+      [prefix(`tabs__button--size-${this.size}`)]: true,
+      [prefix(`tabs__button--weight-${this.weight}`)]: true
     };
 
     return (
       <Host>
         <div class={tabHeaderClasses}>
-          <p-icon class={tabIconLeft} theme={this.theme} name="arrow-head-left" aria-label="Arrow head left icon" />
+          <div class={tabPrevClasses}>
+            <p-button-pure theme={this.theme} hide-label="true" icon="arrow-head-left">Prev</p-button-pure>
+          </div>
+          <div class={tabNextClasses}>
+            <p-button-pure theme={this.theme} hide-label="true" icon="arrow-head-right">Next</p-button-pure>
+          </div>
           <nav class={tabNavClasses}>
+
             {this.tabsItems.map((tab, index) => {
-              const tabButtonClasses = {
-                [prefix('tabs__button')]: true,
-                [prefix(`tabs__button--${this.weight}`)]: true,
-                [prefix('tabs__button--selected')]: tab.selected,
-                [prefix('tabs__button--disabled')]: tab.disabled
+              const extendedTabButtonClasses = {
+                ...tabButtonClasses,
+                [prefix('tabs__button--selected')]: tab.selected
               };
 
               const Tag = tab.href === undefined ? 'button' : 'a';
-              const props = (({ href, target, disabled }) => ({ href, target, disabled }))(tab);
+              const props = (({href, target}) => ({href, target}))(tab);
 
               return (
-                // use p-button-pure?
-                <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
+                <Tag class={extendedTabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
                   {tab.label}
                 </Tag>
               );
             })}
           </nav>
-          <p-icon class={tabIconRight} theme={this.theme} name="arrow-head-right" aria-label="Arrow head right icon" />
         </div>
-        <slot />
+        <slot/>
       </Host>
     );
   }
@@ -132,7 +141,7 @@ export class Tabs {
 
   private observeHost(): void {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -144,42 +153,44 @@ export class Tabs {
   }
 
   private observeIntersection(): void {
-    const allArrows = this.host.shadowRoot.querySelectorAll('.p-tabs__icon');
-    const arrowLeft = this.host.shadowRoot.querySelector('.p-tabs__icon--left');
-    const arrowRight = this.host.shadowRoot.querySelector('.p-tabs__icon--right');
+    const actions = this.host.shadowRoot.querySelectorAll('.p-tabs__action');
+    const prev = this.host.shadowRoot.querySelector('.p-tabs__action--prev');
+    const next = this.host.shadowRoot.querySelector('.p-tabs__action--next');
 
     if (isTouchDevice()) {
-      allArrows.forEach((el) => el.classList.add('p-tabs__icon--hidden'));
+      for (const action of Object.values(actions)) {
+        action.classList.add('p-tabs__action--hidden');
+      }
       return;
     }
 
-    this.firstButton = this.host.shadowRoot.querySelector('.p-tabs__button');
-    const allButtons = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
-    this.lastButton = allButtons[allButtons.length - 1] as HTMLElement;
+    const tabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
+    this.firstTab = tabs[0] as HTMLElement;
+    this.lastTab = tabs[tabs.length - 1] as HTMLElement;
 
     this.intersectionObserver = new IntersectionObserver(
-      (entries: any) => {
-        entries.forEach((entry: { target: HTMLElement; isIntersecting: boolean }) => {
-          const arrow = entry.target === this.firstButton ? arrowLeft : arrowRight;
-          if (arrow === arrowLeft && entry.isIntersecting) {
-            arrow.classList.add('p-tabs__icon--hidden');
-            arrow.classList.remove('p-tabs__icon--visible');
-          } else if (arrow === arrowRight && !entry.isIntersecting) {
-            arrow.classList.remove('p-tabs__icon--hidden');
-            arrow.classList.add('p-tabs__icon--visible');
-          } else if (arrow === arrowRight && entry.isIntersecting) {
-            arrow.classList.add('p-tabs__icon--hidden');
-            arrow.classList.remove('p-tabs__icon--visible');
+      (entries: IntersectionObserverEntry[]) => {
+        for (const entry of entries) {
+          const action = entry.target === this.firstTab ? prev : next;
+          if (action === prev && entry.isIntersecting) {
+            action.classList.add('p-tabs__action--hidden');
+            action.classList.remove('p-tabs__action--visible');
+          } else if (action === next && !entry.isIntersecting) {
+            action.classList.remove('p-tabs__action--hidden');
+            action.classList.add('p-tabs__action--visible');
+          } else if (action === next && entry.isIntersecting) {
+            action.classList.add('p-tabs__action--hidden');
+            action.classList.remove('p-tabs__action--visible');
           } else {
-            arrow.classList.remove('p-tabs__icon--hidden');
-            arrow.classList.add('p-tabs__icon--visible');
+            action.classList.remove('p-tabs__action--hidden');
+            action.classList.add('p-tabs__action--visible');
           }
-        });
+        }
       },
-      { threshold: 0.75 }
+      {threshold: 0.75}
     );
 
-    this.intersectionObserver.observe(this.firstButton);
-    this.intersectionObserver.observe(this.lastButton);
+    this.intersectionObserver.observe(this.firstTab);
+    this.intersectionObserver.observe(this.lastTab);
   }
 }
