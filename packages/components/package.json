@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "private": true,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -23,8 +23,8 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "2.0.0",
-    "@porsche-design-system/partials": "2.1.0",
+    "@porsche-design-system/assets": "3.0.0",
+    "@porsche-design-system/partials": "2.2.0",
     "@porsche-design-system/utilities": "2.0.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz",
     "@stencil/core": "~2.0.3",

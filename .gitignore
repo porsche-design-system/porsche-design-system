@@ -15,6 +15,9 @@ node_modules
 # Yarn Integrity file
 .yarn-integrity
 
+# temporary files
+cdn.config.js
+
 # dotenv environment variables file
 .env
 
