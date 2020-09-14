@@ -47,11 +47,6 @@ export class Link {
   public componentDidLoad(): void {
     const tagName = this.element.tagName.toLowerCase();
     const style = `
-      a:focus ${tagName} {
-      outline: 2px solid #00d5b9;
-      outline-offset: 1px;
-    }
-
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
       content: "" !important;

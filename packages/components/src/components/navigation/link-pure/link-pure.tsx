@@ -132,11 +132,7 @@ export class LinkPure {
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
-    const style = `a:focus ${tagName} {
-      outline: 2px solid #00d5b9;
-      outline-offset: 1px;
-    }
-
+    const style = `
     /* only for IE11/Edge */
     ${tagName} a {
       text-decoration: none !important;
