@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="659px" height="256px" viewBox="0 0 659 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>validation</title>
+    <desc>Created with Sketch.</desc>
+    <g id="validation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F3F3F3" x="0" y="0" width="659" height="256"></rect>
+        <rect id="Rectangle" stroke="#D5001C" x="111.5" y="97.5" width="438" height="47"></rect>
+        <text id="Label*" font-family="PorscheNext-Regular, Porsche Next" font-size="16" font-weight="normal" letter-spacing="-0.056">
+            <tspan x="111" y="87" fill="#000000">Label</tspan>
+            <tspan x="145.056" y="87" fill="#D5001C">*</tspan>
+        </text>
+        <text id="Brief-error-message" font-family="PorscheNext-Regular, Porsche Next" font-size="16" font-weight="normal" letter-spacing="-0.056" fill="#D5001C">
+            <tspan x="111" y="166">Brief error message</tspan>
+        </text>
+    </g>
+</svg>
