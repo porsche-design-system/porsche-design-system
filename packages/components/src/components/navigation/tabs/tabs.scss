@@ -13,13 +13,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
-  &__host {
-    background-color: $p-color-theme-light-background;
-    &--theme-dark {
-      background-color: $p-color-theme-dark-background-default;
-    }
-  }
-
   &__header {
     display: inline-flex;
     justify-content: flex-start;
@@ -36,7 +29,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__nav {
     border-bottom: transparent;
-    margin: $p-spacing-16;
+    margin: 0;
     padding: 0;
     color: $p-color-default;
     font-family: $p-font-family;
@@ -62,6 +55,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__icon {
     display: none;
+    cursor: pointer;
 
     &--right {
       position: relative;
@@ -167,10 +161,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &--semibold {
       font-weight: $p-font-weight-semibold;
     }
-  }
-
-  &__content {
-    padding: $p-spacing-16;
   }
 }
 
