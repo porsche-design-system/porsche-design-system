@@ -1,18 +1,18 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 
 type Options = {
   baseUrl: string;
   fontsManifest: typeof FONTS_MANIFEST;
   addContentBasedHash: boolean;
+  suffix?: string;
 };
 
 const prepareFontFaceVariables = (opts: Options): void => {
-  const file = path.normalize('./src/style/font-face.variables.scss');
-
-  const { baseUrl, fontsManifest } = opts;
+  const { baseUrl, fontsManifest, suffix } = opts;
+  const file = path.normalize(`./src/styles/font-face.variables${suffix ? '.' + suffix : ''}.scss`);
 
   fs.writeFileSync(
     file,
@@ -56,15 +56,20 @@ const toHash = (str: string): string =>
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('node-sass');
 
-  const scssPath = path.resolve(__dirname, '../src/style/font-face.scss');
+  const { addContentBasedHash, suffix } = opts;
+  const scssPath = path.resolve(__dirname, '../src/styles/font-face.scss');
+
+  // read raw css to replace import of font-face-variables for other cdn
+  const rawScss = fs.readFileSync(scssPath).toString();
   const result = sass.renderSync({
-    file: scssPath,
+    data: suffix ? rawScss.replace(/(@import 'font-face.variables)(';)/, `$1.${suffix}$2`) : rawScss,
+    includePaths: [path.resolve(__dirname, '../src/scss'), path.resolve(__dirname, '../src/styles')],
     outputStyle: 'compressed'
   });
 
-  const hash = opts.addContentBasedHash ? `.${toHash(result.css)}` : '';
-  const filename = `font-face.min${hash}.css`;
-  const targetPath = path.normalize(`./dist/style/${filename}`);
+  const hash = addContentBasedHash ? `.${toHash(result.css)}` : '';
+  const filename = `font-face.min${suffix ? `.${suffix}` : ''}${hash}.css`;
+  const targetPath = path.normalize(`./dist/styles/${filename}`);
 
   fs.writeFileSync(targetPath, result.css);
 
