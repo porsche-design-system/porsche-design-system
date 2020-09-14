@@ -44,19 +44,15 @@ export class Tabs {
   }
 
   public componentDidLoad(): void {
-    this.addIntersectionObserver();
+    this.observeIntersection();
   }
 
   public disconnectedCallback(): void {
     this.hostObserver.disconnect();
+    this.intersectionObserver.disconnect();
   }
 
   public render(): JSX.Element {
-    const hostClasses = {
-      [prefix('tabs__host')]: true,
-      [prefix(`tabs__host--theme-${this.theme}`)]: true
-    };
-
     const tabHeaderClasses = {
       [prefix('tabs__header')]: true,
       [prefix(`tabs__header--align-${this.align}`)]: true
@@ -66,10 +62,6 @@ export class Tabs {
       [prefix('tabs__nav')]: true,
       [prefix(`tabs__nav--theme-${this.theme}`)]: true,
       [prefix(`tabs__nav--size-${this.size}`)]: true
-    };
-
-    const tabContentClasses = {
-      [prefix('tabs__content')]: true
     };
 
     const tabIconClasses = {
@@ -89,40 +81,31 @@ export class Tabs {
 
     return (
       <Host>
-        <div class={hostClasses}>
-          <div class={tabHeaderClasses}>
-            <p-icon class={tabIconLeft} theme={this.theme} name="arrow-head-left" aria-label="Arrow head left icon" />
-            <nav class={tabNavClasses}>
-              {this.tabsItems.map((tab, index) => {
-                const tabButtonClasses = {
-                  [prefix('tabs__button')]: true,
-                  [prefix(`tabs__button--${this.weight}`)]: true,
-                  [prefix('tabs__button--selected')]: tab.selected,
-                  [prefix('tabs__button--disabled')]: tab.disabled
-                };
+        <div class={tabHeaderClasses}>
+          <p-icon class={tabIconLeft} theme={this.theme} name="arrow-head-left" aria-label="Arrow head left icon" />
+          <nav class={tabNavClasses}>
+            {this.tabsItems.map((tab, index) => {
+              const tabButtonClasses = {
+                [prefix('tabs__button')]: true,
+                [prefix(`tabs__button--${this.weight}`)]: true,
+                [prefix('tabs__button--selected')]: tab.selected,
+                [prefix('tabs__button--disabled')]: tab.disabled
+              };
 
-                const Tag = tab.href === undefined ? 'button' : 'a';
-                const props = (({ href, target, disabled }) => ({ href, target, disabled }))(tab);
+              const Tag = tab.href === undefined ? 'button' : 'a';
+              const props = (({ href, target, disabled }) => ({ href, target, disabled }))(tab);
 
-                return (
-                  // use p-button-pure?
-                  <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
-                    {tab.label}
-                  </Tag>
-                );
-              })}
-            </nav>
-            <p-icon
-              class={tabIconRight}
-              theme={this.theme}
-              name="arrow-head-right"
-              aria-label="Arrow head right icon"
-            />
-          </div>
-          <div class={tabContentClasses}>
-            <slot />
-          </div>
+              return (
+                // use p-button-pure?
+                <Tag class={tabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
+                  {tab.label}
+                </Tag>
+              );
+            })}
+          </nav>
+          <p-icon class={tabIconRight} theme={this.theme} name="arrow-head-right" aria-label="Arrow head right icon" />
         </div>
+        <slot />
       </Host>
     );
   }
@@ -160,7 +143,7 @@ export class Tabs {
     });
   }
 
-  private addIntersectionObserver(): void {
+  private observeIntersection(): void {
     const allArrows = this.host.shadowRoot.querySelectorAll('.p-tabs__icon');
     const arrowLeft = this.host.shadowRoot.querySelector('.p-tabs__icon--left');
     const arrowRight = this.host.shadowRoot.querySelector('.p-tabs__icon--right');
@@ -178,7 +161,6 @@ export class Tabs {
       (entries: any) => {
         entries.forEach((entry: { target: HTMLElement; isIntersecting: boolean }) => {
           const arrow = entry.target === this.firstButton ? arrowLeft : arrowRight;
-          console.log(entry.target);
           if (arrow === arrowLeft && entry.isIntersecting) {
             arrow.classList.add('p-tabs__icon--hidden');
             arrow.classList.remove('p-tabs__icon--visible');
