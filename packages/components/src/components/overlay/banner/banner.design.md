@@ -40,11 +40,6 @@ By default, a Banner will dismiss when the user clicks the “x” close button.
 
 !!! Code Beispiel !!!
 
-### Action
-
-A action Banner can have up to one button. This should be kept concise and only used when there’s an actionable item related to the Banner text.
-
-!!! Code Beispiel !!!
 
 ### System
 
@@ -86,19 +81,6 @@ are displayed at the bottom of the screen.
 
 ## Don'ts
 
-### Don’t display more than one action
-
-Actionable Banners should only have one button.
-
-!!! Image !!!
-
-### Don't include a redundant action
-
-Actionable Banners should not have a button with a redundant action. 
-For example, “dismiss” would be redundant. Use the basic instead.
-
-!!! Image !!!
-
 ### Multiple Banners
 
 !!! TBD !!!
@@ -111,6 +93,5 @@ or simultaneously triggered, their display and behavior should follow a priority
 ---
 
 ## Related Components
-* [Toast](#/components/toast)
 * [Modal Dialog](#/components/modaldialog)
 
