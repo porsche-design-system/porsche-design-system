@@ -173,13 +173,13 @@ This is why:
 According to the ["law of proximity" in Gestalt psychology](https://lawsofux.com/law-of-proximity) objects that are near or proximate to each other tend to be grouped together. So in order to make it easy for the user to scan the form you should cluster the form in logical, coherent parts by working with spacings. We differ the following spacings (according to the **Porsche Design System spacing system**): 
 Depending on the viewport you're designing for you should stick to slightly different spacings for your form:
 
-| Viewport | Range | Total max. width of the form | Min. form top / bottom spacing (A) | Section spacing (B) |  Min. vertical/horizontal form field spacing (C) |
-| -------- | -------- | -------- | -------- | -------- | -------- |
-| **XS** | 320-759 px | 12 grid columns | 48/64 px | 40 px | 16 px |
-| **S** | 760-999 px | 10 grid columns | 48/64 px | 40 px | 16 px |
-| **M** | 1000-1299 px | 8 grid columns | 64/80 px | 48 px | 16 px |
-| **L** | 1300-1759 px  | 6 grid columns | 64/80 px | 48 px | 16 px |
-| **XL** | 1760 px or larger | 6 grid columns | 64/80 px | 48 px | 16 px |
+| Viewport | Range             | Total max. width of the form | Min. form top / bottom spacing (A) | Section spacing (B) | Min. vertical/horizontal form field spacing (C) |
+| -------- | ----------------- | ---------------------------- | ---------------------------------- | ------------------- | ----------------------------------------------- |
+| **XS**   | 320-759 px        | 12 grid columns              | 48/64 px                           | 40 px               | 16 px                                           |
+| **S**    | 760-999 px        | 10 grid columns              | 48/64 px                           | 40 px               | 16 px                                           |
+| **M**    | 1000-1299 px      | 8 grid columns               | 64/80 px                           | 48 px               | 16 px                                           |
+| **L**    | 1300-1759 px      | 6 grid columns               | 64/80 px                           | 48 px               | 16 px                                           |
+| **XL**   | 1760 px or larger | 6 grid columns               | 64/80 px                           | 48 px               | 16 px                                           |
 
 As for the smallest grouped element within a form – label and form field – we recommend using 4 px spacing. This is also predefined in the Porsche Design System form elements.
   
@@ -213,52 +213,70 @@ The % values always refer to the full maximum width of the form (see table above
 
 # Form validation
 
-Good forms provide **valuable support** – both **for success**, when the user completes form fields correctly, and **for error cases**, when the user makes a wrong entry. However, there's a direct correlation between *how* and *when* users are presented with form validation errors and the pace and effort with which they are able to resolve them ([Baymard, 2016](https://baymard.com/blog/inline-form-validation)).  
-
-As we know different cases in which we should provide validation feedback, we provide different types of feedback to be used for designing Porsche forms:
-
-### Live inline validation
-
-**In the best case, you should always give direct feedback** on the correctness of the user's input whilst filling out the form, whether it's about existence or formatting of the data (think of unique user names, ZIP codes or credit card numbers) or having filled out all mandatory fields. This way, we enable users to correct errors quickly and easily and prevent them from being frustrated when one or more errors pop up after already having submitted the form.  
-
-Technically, the feedback should be displayed when the input is already done, **directly after leaving the form field**, as this speeds up progressing time and lowers error rates (as we all know how frustrating and time-consuming it is to get a hint that the "@" is still missing when you only started typing in your e-mail address).
-
-**Position and styling**  
-Inline validation feedback should always be displayed in the direct context of the action, ideally **below the respective form field** (you can find this as a preset property in the Porsche Design System form components).
-
-**Feedback for error and success**  
-We should give the user not only feedback on errors but also on successful input as positive reinforcement is a motivation for the user ([Userlutions, 2019](https://userlutions.com/blog/usability-insights/inline-validation)).
-
-![Form layouts with error and success notification](../../../assets/patterns-forms-feedback-error-success.png)
+Good forms provide **valuable support** – both **for success**, when the user completes form fields correctly, and **for error cases**, when the user makes a wrong entry. However, there's a direct correlation between *how* and *when* users are presented with form validation errors and the pace and effort with which they are able to resolve them.
 
 
-**Permanent view**  
-The validation should be displayed permanently so that the user can scan the page again for possible errors at any time until finally submitting the form.
+![Form layouts with error and success notification](../../../assets/patterns-forms-validation.svg)
+_Example input field with error_
 
-### Error on submit
 
-Even though live inline validation should be your first choice from a UX perspective, sometimes it’s unavoidable to give feedback only after the submission of a form. In this case, we should provide…  
+### Client-side validation
 
-- … **inline error notifications** that are placed below the respective form fields enable the user to perceive errors quickly, also whilst scrolling. In order to avoid double maintenance (and also reading effort for the user), the specific error text should in the best case be written in a style that can also be used 1:1 in the error summary.
+**In the best case, you should always give direct feedback**. This is why we recommend validating the user’s data before submitting the form (called client-side validation). This type of inline validation should be done at the moment after the input field is out of focus. This will help quickly identify the elements that need to be corrected and help users get through forms better and faster.
 
-![Form layouts with error summary and inline error notifications](../../../assets/patterns-forms-error-on-submit.png)
+**Common reasons for errors:**
 
+- input incorrectly formatting data
+- leaving a mandatory field blank
+- leaving a mandatory field incomplete
+
+**Form validation guideline**
+
+- **Mark required fields.** Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms.
+
+- **Display of the error message.** Inline validation feedback should always be displayed in the direct context of the action, ideally below the respective form field 
+
+- **Validate input fields directly.** Validation should happen at the moment after the input field is out of focus.
+
+- **Scroll to first error.** When the user tries to send a form that includes an error, the user should automatically be scroll to the first error field and set the focus on the input.
+
+- **Error summary.** Additional to the error message beneath the input fields, you can include an error summary at the top of the form to summarise the mistakes a user has made.
+It might also make sense if you don't want to show which field has an error, f.e. login or have a required group of fields rather than a specific one.
+
+# Error messages
 
 ### Tonality and content
 
-Sure, nobody likes error messages! But as they're sometimes inevitable, we should focus on how we talk to our users. Error messages should never be scaring or intrusive, as this might (in the worst case) lead the user to cancel the form. Error messages rather should give the user security and make it easy to correct the error, so that the delay caused by the error appears as short as possible. So, designing custom error messages is key for a good UX and to increase conversions ([90 Percent of Everything, 2009](https://www.90percentofeverything.com/2009/02/16/karl-sabino-on-the-roi-of-well-designed-error-messages/)).
+Error messages explain clearly and simply what the problem is. Avoid the word "error" and technical terms or abbreviations.
 
-**How we write error messages in Porsche web applications:**
+You should offer a solution so that users can repeat a step to complete a task or try another route to proceed their action.
 
-|               | <p-text color="notification-success">DO</p-text> 👍  | <p-text color="notification-error">DON'T</p-text> 👎 |
-|---------------|------------------------------------------------------|------------------------------------------------------|
-| We always state **why** the user's input was not correct and – very important! – we **always** **provide opportunities** on how the user can quickly and easily correct the error. | <p-text color="notification-success">"The credit card number seems to be incomplete. Please check it again."</p-text> | <p-text color="notification-error">"Invalid input."</p-text> |
-| Error messages should be **short, specific and descriptive**. | <p-text color="notification-success">"The e-mail needs an 'at' symbol."</p-text> | <p-text color="notification-error">"The e-mail is invalid."</p-text> |
-| We always **address users directly** and at eye level – just like if we talked to them in real life. | <p-text color="notification-success">"Please check your input."</p-text>| <p-text color="notification-error">"Invalid input."</p-text> |
-| We **use our voice dynamically** – depending to the current situation we speak for example rather descriptive, clearly or motivating. Whenever the user needs help, **we speak empathetic and encouraging**. | <p-text color="notification-success">"What would you like to tell us?"</p-text> | <p-text color="notification-error">"Please enter your message."</p-text> |
-| We use **active voice** in case of instructions. | <p-text color="notification-success">"Enter your name."</p-text> | <p-text color="notification-error">"First name must be entered."</p-text> |
-| We **avoid using negative words** like "invalid", "forbidden", "error" or "problem". We should never make the user feel bad or guilty. | <p-text color="notification-success">"The credit card expiration date must be in the future."</p-text> | <p-text color="notification-error">"The credit card is invalid."</p-text> |
-| We should **always provide positive submission notifications**, showing the user that the process is completely and correctly finished and providing them information for next steps. This good feeling directly relates to a good brand experience. | <p-text color="notification-success">"You have successfully completed your registration. We now wish you a pleasant visit to the Porsche website."</p-text>| <p-text color="notification-error">"You have successfully completed your registration. Now you can make orders in the Porsche Shop, manage your personal data and much more. We wish you a lot of fun. We also recommend the following services: …"</p-text> |
+Keep in my mind that experiencing an error is frustrating for the user and ask yourself what you can do or say to absorb frustration and improve the experience. For example, with a bit of humor. But don’t go overboard. And do not neglect the clarity within your copy.
+
+**Error messages should be:**
+
+- brief
+- written out
+- describe the solution
+- displayed below the form field
+- visible immediately after lost focus
+- removed after successfully corrected input
+
+--- 
+**Example:** 
+Credit card number is incorrect
+
+- **Instead of saying:** Invalid input
+
+- **Describe the problem:**
+  Numbers are missing in your credit card number.
+
+- **Offer a solution:**
+Numbers are missing in your credit card number. Please check your input.
+
+- **Add a human touch:**
+Is the card number complete? Please check your input.
+
 
 ---
 
