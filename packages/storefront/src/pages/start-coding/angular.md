@@ -86,7 +86,7 @@ You are now ready to build your own Angular application using the Porsche Design
 
 ## Advanced usage
 By default, the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
-System Loader automatically.
+System Loader automatically.  
 But in some cases for example, if you want to include the Porsche Design System in Web Components that
 you build with Angular, you might need more control on who is registering those components to prevent
 conflicts. In this case, you can provide the `PREVENT_WEB_COMPONENTS_REGISTRATION` inject token with the
@@ -123,10 +123,10 @@ export class AppModule { }
 
 ### Prefixing
 Another way of preventing conflicts is by using a unique custom prefix for the components.
-If you choose to use a prefix you can set it via the `WEB_COMPONENTS_PREFIX` inject token.
+If you choose to use a prefix you can set it via the `WEB_COMPONENTS_PREFIX` inject token.  
 When using custom prefixed component tags, you've to add also the
 [schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA)
-to the modules that use the prefixed components.
+to the modules that use the prefixed components.  
 Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
 do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
 
