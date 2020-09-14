@@ -45,7 +45,7 @@ export class SelectWrapper {
   /** Filters select options by typing a character */
   @Prop() public filter?: boolean = false;
 
-  /** Adapts the button color depending on the theme. */
+  /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
