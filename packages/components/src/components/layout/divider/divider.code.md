@@ -56,7 +56,8 @@ Predefined colors associated with its theme are available.
 </Playground>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundDivider extends Vue {

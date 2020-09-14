@@ -1,15 +1,15 @@
-# Metaicons
+# Meta Icons
 
 ## Introduction
-Metaicons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons**, **Microsoft Windows Tiles** and **Apple Pinned Tab Icon**.
+Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons**, **Microsoft Windows Tiles** and **Apple Pinned Tab Icon**.
 
 ## Usage
 Once the `@porsche-design-system/assets` package [is installed](#/assets/introduction) you have access to the CDN path and the corresponding file names, e.g.:
 
 ```
-import { METAICONS_CDN_BASE_URL, METAICONS_MANIFEST } from '@porsche-design-system/assets';
+import { META_ICONS_CDN_BASE_URL, META_ICONS_MANIFEST } from '@porsche-design-system/assets';
 
-const metaiconsUrl = `${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.favicon.favicon_32x32}`;
+const metaIconsUrl = `${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.favicon.favicon_32x32}`;
 ```
 
 ## Site Manifest
@@ -22,12 +22,12 @@ The Manifest must be declared in the `<head>` of your document and can be someth
     "short_name": "",
     "icons": [
         {
-            "src": "${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.touchicon.androidChrome_192x192}",
+            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchIcon.androidChrome_192x192}",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.touchicon.androidChrome_512x512}",
+            "src": "${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.touchIcon.androidChrome_512x512}",
             "sizes": "512x512",
             "type": "image/png"
           }
@@ -47,11 +47,11 @@ Microsoft Tile images are served by referencing the corresponding images in the 
 <browserconfig>
   <msapplication>
     <tile>
-      <square128x128logo src="${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.mstile.mstile_128x128}"/>
-      <square144x144logo src="${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.mstile.mstile_144x144}"/>
-      <square270x270logo src="${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.mstile.mstile_270x270}"/>
-      <wide585x270logo src="${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.mstile.mstile_585x270}"/>
-      <wide585x585logo src="${METAICONS_CDN_BASE_URL}/${METAICONS_MANIFEST.mstile.mstile_585x585}"/>
+      <square128x128logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_128x128}"/>
+      <square144x144logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_144x144}"/>
+      <square270x270logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_270x270}"/>
+      <wide585x270logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_585x270}"/>
+      <wide585x585logo src="${META_ICONS_CDN_BASE_URL}/${META_ICONS_MANIFEST.mstile.mstile_585x585}"/>
       <TileColor>#FFFFFF</TileColor>
     </tile>
   </msapplication>

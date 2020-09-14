@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="index.js"></script>
-    <link rel="stylesheet" href="http://localhost:3001/style/font-face.min.css" />
+    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <style>
       p-button,
       p-button-pure,
@@ -67,7 +67,7 @@
       <option value="typography">Typography</option>
     </select>
     <div id="app"></div>
-    <script type="text/javascript">
+    <script>
       const updateRoute = async () => {
         if (['#', ''].includes(document.location.hash)) {
           return;
@@ -75,8 +75,7 @@
 
         const app = document.getElementById('app');
         const page = document.location.hash.substr(1);
-        const template = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><'); // remove new lines from raw html
-        app.innerHTML = template;
+        app.innerHTML = (await (await fetch(`/pages/${page}.html`)).text()).replace(/>(\s|\n|\r)*</g, '><');
 
         // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');
@@ -86,7 +85,7 @@
       };
 
       porscheDesignSystem.load();
-      porscheDesignSystem.load('my-prefix');
+      porscheDesignSystem.load({ prefix: 'my-prefix' });
       window.addEventListener('hashchange', updateRoute);
       updateRoute();
     </script>

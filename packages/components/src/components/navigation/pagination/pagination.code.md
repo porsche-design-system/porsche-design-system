@@ -61,7 +61,8 @@ By changing values for total amount of items, items to display per page and numb
 </Playground>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundPagination extends Vue {

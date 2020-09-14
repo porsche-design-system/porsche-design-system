@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Support to load `font-face.css` from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
+- **Notification Soft** colors
+
 ### [2.0.0] - 2020-08-19
 
 ### [2.0.0-rc.0] - 2020-08-17
 
 #### Changed
-- FONT_FACE_CDN_URL with changed UPM (units per em): different character size, letter spacing and vertical alignment
+- `FONT_FACE_CDN_URL` with changed UPM (units per em): different character size, letter spacing and vertical alignment
 
 ### [1.1.0] - 2020-08-12
 
@@ -21,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 - Generate typography.ts static
-- Deprecated FONT_FACE_STYLE_CDN_URL. Use FONT_FACE_CDN_URL instead
+- Deprecated `FONT_FACE_STYLE_CDN_URL`, use `FONT_FACE_CDN_URL` instead
 
 ### [1.0.6] - 2020-07-28
 
