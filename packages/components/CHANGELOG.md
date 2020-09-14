@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
 
+### [2.0.0-alpha.3] - 2020-09-11
+
+#### Added
+- Support to load assets from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
+
 #### Removed
 - Support for `<a>` wrapped `Link` and `LinkPure`
 
