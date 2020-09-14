@@ -125,22 +125,6 @@ Sometimes it's helpful to give some more information on the "why" of a required 
 **Respect GDPR and other legal regulations.**  
 The user should be asked to enter only information that is absolutely necessary.
 
-### Mandatory and optional fields
-
-Due to the form design mantra "Less is more" optional fields should be avoided whenever possible ([Nielsen Norman Group, 2016](https://www.nngroup.com/articles/web-form-design/)). So the majority of form fields should always be mandatory. 
-Due to this fact, we can avoid visual and cognitive overload by **marking only the optional fields which are in the minority.** We recommend adding an "… (optional)" to the respective form label.   
-  
-
-Further benefits:
-
-* This also gives the user a more positive feeling, as people are more likely to share optional information from a psychological perspective.
-* Users are not supposed to read a global explanation ("All fields marked with *…").
-* The asterisk (*) is freely available for other purposes, for example footnotes.
-* Generally, the form looks cleaner and we avoid distraction.
-  
-  
-![Mobile form with optional form field](../../../assets/patterns-forms-optional-fields.png)
-
 ---
 
 ## Form layout
