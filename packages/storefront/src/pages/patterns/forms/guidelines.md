@@ -314,17 +314,17 @@ Mandatory free text input field is not filled
 *Unfortunately, we can’t load the site because of a problem with our server.*
 
 **Offer a solution:**
-*Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:
+*Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:*
 - Porsche Website
 - My Porsche
-- Porsche Shop*
+- Porsche Shop
 
 **Add a human touch:**
 *Not our claim to performance.
-Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site, while we’re working on a solution:
+Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site, while we’re working on a solution:*
 - Porsche Website
 - My Porsche
-- Porsche Shop*
+- Porsche Shop
 
 
 ---
