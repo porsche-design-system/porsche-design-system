@@ -7,159 +7,149 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 :host {
   display: block;
-  box-sizing: border-box;
 }
 
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
 
   &__header {
-    display: inline-flex;
-    justify-content: flex-start;
-    width: 100%;
+    position: relative;
+  }
 
-    &--align-center {
-     justify-content: center;
+  &__action {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: p-px-to-rem(48px);
+
+    &--hidden {
+      display: none;
     }
 
-    &--align-right {
+    &--visible {
+      display: flex;
+    }
+
+    &--prev {
+      left: 0;
+      justify-content: flex-start;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+
+      &#{$bem-block}__action--theme-dark {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    &--next {
+      right: 0;
       justify-content: flex-end;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+
+      &#{$bem-block}__action--theme-dark {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%);
+      }
     }
   }
 
   &__nav {
-    border-bottom: transparent;
-    margin: 0;
-    padding: 0;
-    color: $p-color-default;
-    font-family: $p-font-family;
-    background-color: $p-color-theme-light-background;
-    font-size: $p-font-size-20;
-    overflow: scroll;
+    margin-bottom: $p-spacing-16;
+    overflow-y: hidden;
+    overflow-x: scroll;
     white-space: nowrap;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 
-    &--theme-dark {
-      background-color: $p-color-theme-dark-background-default;
-      color: $p-color-theme-dark-default;
+    &::-webkit-scrollbar {
+      display: none;
     }
-
-    &--size-small {
-      font-size: $p-font-size-16;
-    }
-
-  }
-
-  &__nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  &__icon {
-    display: none;
-    cursor: pointer;
-
-    &--right {
-      position: relative;
-      align-self: center;
-      background-color: white;
-      box-shadow: -24px 0 16px 10px white;
-      z-index: 9999;
-      &--theme-dark {
-        background-color: $p-color-theme-dark-background-default;
-        box-shadow: -24px 0 16px 10px $p-color-theme-dark-background-default;
-      }
-    }
-
-    &--left {
-      position: relative;
-      align-self: center;
-      background-color: white;
-      box-shadow: 24px 10px 16px 10px white;
-      z-index: 9999;
-      &--theme-dark {
-        background-color: $p-color-theme-dark-background-default;
-        box-shadow: 24px 10px 16px 10px $p-color-theme-dark-background-default;
-      }
-    }
-
-    &--visible {
-      display: unset;
-      visibility: visible;
-    }
-  }
-
-  &__button + &__button {
-    margin-left: $p-spacing-32;
   }
 
   &__button {
-    position: relative;
+    @include p-text-medium;
+    margin: 0;
     padding: 0;
-    outline: transparent none;
+    box-sizing: border-box;
     appearance: none;
-    border: none;
+    outline: none transparent;
     text-decoration: none;
     text-align: left;
+    border: 0;
     background: transparent;
     cursor: pointer;
-    color: inherit;
-    transition: 0.5s,
-    font-size 1ms linear;
-    font-family: $p-font-family;
-    font-size: inherit;
-
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      display: block;
-      content: '';
-      border-bottom: solid 2px $p-color-brand;
-      opacity: 0;
-      transition: 0.5s;
-    }
-
-    &:focus {
-      outline-offset: 1px;
-      outline: $p-color-state-focus solid 2px;
-    }
+    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &::-moz-focus-inner {
       border: 0; // fix for Firefox, avoid dotted outline in button on focus
     }
 
-    &:hover:not(:disabled):not(.active) {
-      color: $p-color-brand;
+    &:focus {
+      outline-width: 2px;
+      outline-style: solid;
+      outline-offset: 1px;
     }
 
-    &--selected {
-      color: $p-color-brand;
-      &::before,
-      &::after {
-        opacity: 1;
-        transform: translateY(0);
+    &--theme-light {
+      color: $p-color-theme-light-default;
+
+      &:hover {
+        color: $p-color-theme-light-state-hover;
       }
-      &::before {
-        transition: transform $duration $easeOutBack, opacity $duration;
+
+      &:active {
+        color: $p-color-theme-light-state-active;
       }
-      &::after {
-        transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+
+      &:focus {
+        outline-color: $p-color-theme-light-state-focus;
+      }
+
+      &#{$bem-block}__button--selected {
+        color: $p-color-theme-light-state-active;
       }
     }
 
-    &--disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
+    &--theme-dark {
+      color: $p-color-theme-dark-default;
+
+      &:hover {
+        color: $p-color-theme-dark-state-hover;
+      }
+
+      &:active {
+        color: $p-color-theme-dark-state-active;
+      }
+
+      &:focus {
+        outline-color: $p-color-theme-dark-state-focus;
+      }
+
+      &#{$bem-block}__button--selected {
+        color: $p-color-theme-dark-state-active;
+      }
     }
 
-    &--regular {
+    &--size-small {
+      font-size: $p-font-size-small;
+    }
+
+    &--size-medium {
+      font-size: $p-font-size-medium;
+    }
+
+    &--weight-regular {
       font-weight: $p-font-weight-regular;
     }
 
-    &--semibold {
+    &--weight-semibold {
       font-weight: $p-font-weight-semibold;
+    }
+
+    &:not(:last-child) {
+      margin-right: $p-spacing-32;
     }
   }
 }

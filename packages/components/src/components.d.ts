@@ -499,18 +499,37 @@ export namespace Components {
         "theme"?: 'light' | 'dark';
     }
     interface PTabs {
+        /**
+          * Defines the tab to be activated (index: zero-based).
+         */
         "activeTab"?: number;
-        "align"?: 'left' | 'center' | 'right';
+        /**
+          * The text size.
+         */
         "size"?: 'small' | 'medium';
+        /**
+          * Adapts color when used on dark background.
+         */
         "theme"?: Theme;
+        /**
+          * The text weight.
+         */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
-        "disabled": boolean;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
         "href"?: string;
+        /**
+          * Defines the label used in tabs.
+         */
         "label": string;
         "selected"?: boolean;
-        "target"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
     }
     interface PText {
         /**
@@ -1299,18 +1318,37 @@ declare namespace LocalJSX {
         "theme"?: 'light' | 'dark';
     }
     interface PTabs {
+        /**
+          * Defines the tab to be activated (index: zero-based).
+         */
         "activeTab"?: number;
-        "align"?: 'left' | 'center' | 'right';
+        /**
+          * The text size.
+         */
         "size"?: 'small' | 'medium';
+        /**
+          * Adapts color when used on dark background.
+         */
         "theme"?: Theme;
+        /**
+          * The text weight.
+         */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
     interface PTabsItem {
-        "disabled"?: boolean;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
         "href"?: string;
+        /**
+          * Defines the label used in tabs.
+         */
         "label"?: string;
         "selected"?: boolean;
-        "target"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
     }
     interface PText {
         /**
