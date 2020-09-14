@@ -157,11 +157,11 @@ We also provide test examples in our [sample integration project](https://github
 
 ### Advanced usage
 ### Prefixing
-A way of preventing conflicts is by using a unique custom prefix for the components.
+A way of preventing conflicts is by using a unique custom prefix for the components.  
 You can create components with your prefix with the provided `getPrefixedComponents`
-function. Just provide the desired prefix as first parameter as a string.
+function. Just provide the desired prefix as first parameter as a string.  
 It will return an object with components that will render with the provided prefix.
-The object keys are the component names in upper camel-case, without the prefix.
+The object keys are the component names in upper camel-case, without the prefix.  
 Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
 do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
 
