@@ -154,11 +154,20 @@ export class Tabs {
   };
 
   private handleTabButtonClick = (tabIndex: number): void => {
-    const activeTabOnClick = tabIndex;
+    const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
     const allTabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
-    const nextTabElement = allTabs[tabIndex >= activeTabOnClick ? this.activeTab + 1 : this.activeTab - 1] as HTMLElement;
+    let nextTabIndex = 0;
+
+    if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1){
+       nextTabIndex = this.activeTab + 1;
+    } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
+       nextTabIndex = this.activeTab - 1
+    } else nextTabIndex = tabIndex;
+
+    const nextTabElement = allTabs[nextTabIndex] as HTMLElement;
+
     nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center' });
   };
 
