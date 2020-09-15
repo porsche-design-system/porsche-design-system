@@ -170,28 +170,17 @@ export class Tabs {
   };
 
   private handleArrowClick = (direction: string): void => {
-    const nav = this.host.shadowRoot.querySelector('.p-tabs__nav') as HTMLElement;
+    const nav = this.host.shadowRoot.querySelector(`.${prefix('tabs__nav')}`) as HTMLElement;
     const navWidth = nav.offsetWidth;
-    const scrollWidth = (navWidth / 100) * 20;
+    const scrollPercentage = 20;
+    const scrollWidth = (navWidth / 100) * scrollPercentage;
+    const scrollPosition = nav.scrollLeft;
+    const scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
 
-    let scrollPosition;
-    let scrollTo;
-
-    if (scrollPosition >= navWidth || scrollPosition <= 0) {
-      scrollTo = direction === 'right' ? navWidth : 0;
-    } else {
-      scrollPosition = +nav.scrollLeft;
-      scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
-    }
-    direction === 'right'
-      ? nav.scrollTo({
-          left: scrollTo,
-          behavior: 'smooth'
-        })
-      : nav.scrollTo({
-          left: scrollTo,
-          behavior: 'smooth'
-        });
+    nav.scrollTo({
+      left: scrollTo,
+      behavior: 'smooth'
+    });
   };
 
   private updateTabItems = (): void => {
