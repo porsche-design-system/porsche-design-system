@@ -24,8 +24,14 @@ export class Tabs {
   /** Defines the tab to be activated (index: zero-based). */
   @Prop({reflect: true}) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
+  @State() public isPrevVisible = false;
+  @State() public isNextVisible = false;
+  @State() public statusWidth = 0;
+  @State() public statusPositionLeft = 0;
+
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
+
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -44,8 +50,12 @@ export class Tabs {
   }
 
   public componentDidLoad(): void {
-    this.setSliderPosition(this.activeTab);
+    this.setStatusStyle(this.activeTab);
     this.observeIntersection();
+  }
+
+  public componentDidUpdate(): void {
+    this.setStatusStyle(this.activeTab);
   }
 
   public disconnectedCallback(): void {
@@ -65,13 +75,15 @@ export class Tabs {
     const tabPrevClasses = {
       ...tabActionClasses,
       [prefix('tabs__action--prev')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true
+      [prefix(`tabs__action--theme-${this.theme}`)]: true,
+      [prefix('tabs__action--visible')]: this.isPrevVisible
     };
 
     const tabNextClasses = {
       ...tabActionClasses,
       [prefix('tabs__action--next')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true
+      [prefix(`tabs__action--theme-${this.theme}`)]: true,
+      [prefix('tabs__action--visible')]: this.isNextVisible
     };
 
     const tabNavClasses = {
@@ -89,9 +101,9 @@ export class Tabs {
       [prefix('tabs__button-list')]: true,
     };
 
-    const sliderClasses = {
-      [prefix('tabs__slider')]: true,
-      [prefix(`tabs__slider--theme-${this.theme}`)]: true
+    const statusClasses = {
+      [prefix('tabs__status')]: true,
+      [prefix(`tabs__status--theme-${this.theme}`)]: true
     };
 
     return (
@@ -122,14 +134,14 @@ export class Tabs {
                 );
               })}
             </ul>
-            <span class={sliderClasses}/>
+            <span class={statusClasses} style={{width: `${this.statusWidth}px`, left: `${this.statusPositionLeft}px`}}/>
           </nav>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-left"
-              onClick={() => this.handleArrowClick('left')}
+              onClick={() => this.handleAction('prev')}
             >
               Prev
             </p-button-pure>
@@ -139,7 +151,7 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-right"
-              onClick={() => this.handleArrowClick('right')}
+              onClick={() => this.handleAction('next')}
             >
               Next
             </p-button-pure>
@@ -155,36 +167,30 @@ export class Tabs {
   };
 
   private setActiveTab = (index: number): void => {
-    const allTabElements = this.tabsItems;
-    const maxIndex = allTabElements.length - 1;
+    const tabs = this.tabsItems;
+    const maxIndex = tabs.length - 1;
     this.activeTab = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    allTabElements[this.activeTab].selected = true;
+    tabs[this.activeTab].selected = true;
   };
 
-  private handleTabChange = (newActiveTab?: number): void => {
+  private handleTabChange = (activeTabIndex?: number): void => {
     this.resetTabs();
-    this.setSliderPosition(newActiveTab ?? this.activeTab);
-    this.setActiveTab(newActiveTab ?? this.activeTab);
+    this.setStatusStyle(activeTabIndex ?? this.activeTab);
+    this.setActiveTab(activeTabIndex ?? this.activeTab);
   };
 
-  private setSliderPosition = (newActiveTab: number): void => {
-    const slider = this.getHTMLElement('slider');
-    const allTabs = this.getHTMLElements('tabs');
-    if (allTabs.length === 0) {
-      return;
-    }
-    const newActiveButton = allTabs[newActiveTab] as HTMLElement;
-    const sliderWidth = newActiveButton.offsetWidth;
-    const newSliderPosition = newActiveButton.offsetLeft;
-
-    slider.setAttribute('style', `width: ${sliderWidth}px; left:${newSliderPosition}px`);
+  private setStatusStyle = (activeTabIndex: number): void => {
+    const tabs = this.getHTMLElements('tabs');
+    const activeTab = tabs[activeTabIndex];
+    this.statusWidth = (activeTab !== undefined) ? activeTab.offsetWidth : 0;
+    this.statusPositionLeft = (activeTab !== undefined) ? activeTab.offsetLeft : 0;
   };
 
   private handleTabButtonClick = (tabIndex: number): void => {
     const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
-    const allTabs = this.getHTMLElements('tabs');
+    const tabs = this.getHTMLElements('tabs');
     let nextTabIndex = 0;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
@@ -193,31 +199,9 @@ export class Tabs {
       nextTabIndex = this.activeTab - 1;
     } else nextTabIndex = tabIndex;
 
-    const nextTabElement = allTabs[nextTabIndex] as HTMLElement;
+    const nextTabElement = tabs[nextTabIndex];
 
     nextTabElement.scrollIntoView({behavior: 'smooth', inline: 'center'});
-  };
-
-  private handleArrowClick = (direction: string): void => {
-    const nav = this.getHTMLElement('nav');
-    const tabs = this.getHTMLElements('tabs');
-    const lastTab = tabs[tabs.length - 1] as HTMLElement;
-    const navWidth = nav.offsetWidth;
-    const scrollPercentage = 20;
-    const scrollWidth = (navWidth / 100) * scrollPercentage;
-    const scrollPosition = nav.scrollLeft;
-    const maxScrollTo = lastTab.offsetLeft + lastTab.offsetWidth - navWidth;
-    let scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
-    if (scrollTo + scrollWidth > maxScrollTo) {
-      scrollTo = maxScrollTo;
-    } else if (scrollTo - scrollWidth < 0) {
-      scrollTo = 0;
-    }
-
-    nav.scrollTo({
-      left: scrollTo,
-      behavior: 'smooth'
-    });
   };
 
   private updateTabItems = (): void => {
@@ -237,45 +221,64 @@ export class Tabs {
     });
   }
 
+  private handleAction = (action: 'prev' | 'next'): void => {
+    const nav = this.getHTMLElement('nav');
+    const tabs = this.getHTMLElements('tabs');
+    const lastTab = tabs[tabs.length - 1];
+    const navWidth = nav.offsetWidth;
+    const currentScrollPosition = nav.scrollLeft;
+    const scrollToStep = navWidth * 0.2;
+    const scrollToMax = lastTab.offsetLeft + lastTab.offsetWidth - navWidth;
+
+    let scrollTo: number;
+
+    if (action === 'next') {
+      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
+        scrollTo = scrollToMax;
+      } else {
+        scrollTo = currentScrollPosition + scrollToStep;
+      }
+    } else {
+      if (currentScrollPosition - scrollToStep * 2 < 0) {
+        scrollTo = 0;
+      } else {
+        scrollTo = currentScrollPosition - scrollToStep;
+      }
+    }
+
+    nav.scrollTo({
+      left: scrollTo,
+      behavior: 'smooth'
+    });
+  };
+
   private observeIntersection(): void {
     if (isTouchDevice()) {
       return;
     }
 
-    const prev = this.getHTMLElement('prev');
-    const next = this.getHTMLElement('next');
     const tabs = this.getHTMLElements('tabs');
-    const firstTab = tabs[0] as HTMLElement;
-    const lastTab = tabs[tabs.length - 1] as HTMLElement;
-    const actionVisibilityCSSClass = prefix('tabs__action--visible');
+    const firstTab = tabs[0];
+    const lastTab = tabs[tabs.length - 1];
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.target === firstTab && entry.isIntersecting) {
-            prev.classList.remove(actionVisibilityCSSClass);
-          } else if (entry.target === firstTab && !entry.isIntersecting) {
-            prev.classList.add(actionVisibilityCSSClass);
-          } else if (entry.target === lastTab && entry.isIntersecting) {
-            next.classList.remove(actionVisibilityCSSClass);
-          } else if (entry.target === lastTab && !entry.isIntersecting) {
-            next.classList.add(actionVisibilityCSSClass);
-          }
+          if (entry.target === firstTab) this.isPrevVisible = !entry.isIntersecting;
+          if (entry.target === lastTab) this.isNextVisible = !entry.isIntersecting;
         }
       },
-      {threshold: 0.75}
+      {threshold: 0.9}
     );
 
     this.intersectionObserver.observe(firstTab);
     this.intersectionObserver.observe(lastTab);
   }
 
-  private getHTMLElement(element: 'prev' | 'next' | 'nav' | 'slider'): HTMLElement {
+  private getHTMLElement(element: 'nav'): HTMLElement {
     const selector = {
-      prev: 'tabs__action--prev',
-      next: 'tabs__action--next',
-      slider: 'tabs__slider',
-      nav: 'tabs__nav'
+      nav: 'tabs__nav',
+      status: 'tabs__status'
     }
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
