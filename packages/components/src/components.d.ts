@@ -496,7 +496,7 @@ export namespace Components {
          */
         "state"?: FormState;
         /**
-          * Adapts the button color depending on the theme.
+          * Adapts the select color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -1280,7 +1280,7 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
         /**
-          * Adapts the button color depending on the theme.
+          * Adapts the select color depending on the theme.
          */
         "theme"?: Theme;
     }
