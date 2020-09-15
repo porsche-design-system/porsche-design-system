@@ -44,6 +44,7 @@ export class Tabs {
   }
 
   public componentDidLoad(): void {
+    this.setSliderPosition(this.activeTab);
     this.observeIntersection();
   }
 
@@ -84,6 +85,15 @@ export class Tabs {
       [prefix(`tabs__button--weight-${this.weight}`)]: true
     };
 
+    const tabButtonListClasses = {
+      [prefix('tabs__button-list')]: true,
+    };
+
+    const sliderClasses = {
+      [prefix('tabs__slider')]: true,
+      [prefix(`tabs__slider--theme-${this.theme}`)]: true
+    };
+
     return (
       <Host>
         <div class={tabHeaderClasses}>
@@ -108,26 +118,31 @@ export class Tabs {
             </p-button-pure>
           </div>
           <nav class={tabNavClasses}>
-            {this.tabsItems.map((tab, index) => {
-              const extendedTabButtonClasses = {
-                ...tabButtonClasses,
-                [prefix('tabs__button--selected')]: tab.selected
-              };
+            <ul class={tabButtonListClasses}>
+              {this.tabsItems.map((tab, index) => {
+                const extendedTabButtonClasses = {
+                  ...tabButtonClasses,
+                  [prefix('tabs__button--selected')]: tab.selected
+                };
 
-              const Tag = tab.href === undefined ? 'button' : 'a';
-              const props = (({ href, target }) => ({ href, target }))(tab);
+                const Tag = tab.href === undefined ? 'button' : 'a';
+                const props = (({ href, target }) => ({ href, target }))(tab);
 
-              return (
-                <Tag
-                  class={extendedTabButtonClasses}
-                  role="tab"
-                  {...props}
-                  onClick={() => this.handleTabButtonClick(index)}
-                >
-                  {tab.label}
-                </Tag>
-              );
-            })}
+                return (
+                  <li>
+                    <Tag
+                      class={extendedTabButtonClasses}
+                      role="tab"
+                      {...props}
+                      onClick={() => this.handleTabButtonClick(index)}
+                    >
+                      {tab.label}
+                    </Tag>
+                  </li>
+                );
+              })}
+            </ul>
+            <span class={sliderClasses} />
           </nav>
         </div>
         <slot />
@@ -148,7 +163,20 @@ export class Tabs {
 
   private handleTabChange = (newActiveTab?: number): void => {
     this.resetTabs();
+    this.setSliderPosition(newActiveTab ?? this.activeTab);
     this.setActiveTab(newActiveTab ?? this.activeTab);
+  };
+
+  private setSliderPosition = (newActiveTab: number): void => {
+    const nav = this.host.shadowRoot.querySelector(`.${prefix('tabs__nav')}`) as HTMLElement;
+    const slider = this.host.shadowRoot.querySelector(`.${prefix('tabs__slider')}`);
+    const allTabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    if (allTabs.length === 0) return;
+    const newActiveButton = allTabs[newActiveTab] as HTMLElement;
+    const sliderWidth = newActiveButton.offsetWidth;
+    const newSliderPosition = newActiveButton.offsetLeft - nav.scrollLeft;
+
+    slider.setAttribute('style', `width: ${sliderWidth}px; left:${newSliderPosition}px`);
   };
 
   private handleTabButtonClick = (tabIndex: number): void => {
