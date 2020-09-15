@@ -56,6 +56,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__nav {
     margin-bottom: $p-spacing-16;
+    padding: 3px;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
