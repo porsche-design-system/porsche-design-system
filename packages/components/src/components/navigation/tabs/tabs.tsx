@@ -155,13 +155,13 @@ export class Tabs {
     const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
-    const allTabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
+    const allTabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
     let nextTabIndex = 0;
 
-    if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1){
-       nextTabIndex = this.activeTab + 1;
+    if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
+      nextTabIndex = this.activeTab + 1;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-       nextTabIndex = this.activeTab - 1
+      nextTabIndex = this.activeTab - 1;
     } else nextTabIndex = tabIndex;
 
     const nextTabElement = allTabs[nextTabIndex] as HTMLElement;
@@ -171,11 +171,19 @@ export class Tabs {
 
   private handleArrowClick = (direction: string): void => {
     const nav = this.host.shadowRoot.querySelector(`.${prefix('tabs__nav')}`) as HTMLElement;
+    const tabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const lastTab = tabs[tabs.length - 1] as HTMLElement;
     const navWidth = nav.offsetWidth;
     const scrollPercentage = 20;
     const scrollWidth = (navWidth / 100) * scrollPercentage;
     const scrollPosition = nav.scrollLeft;
-    const scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
+    const maxScrollTo = lastTab.offsetLeft + lastTab.offsetWidth - navWidth;
+    let scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
+    if (scrollTo + scrollWidth > maxScrollTo) {
+      scrollTo = maxScrollTo;
+    } else if (scrollTo - scrollWidth < 0) {
+      scrollTo = 0;
+    }
 
     nav.scrollTo({
       left: scrollTo,
@@ -201,7 +209,6 @@ export class Tabs {
   }
 
   private observeIntersection(): void {
-
     if (isTouchDevice()) {
       return;
     }
