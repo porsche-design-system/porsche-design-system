@@ -107,7 +107,7 @@ export class Tabs {
               const props = (({href, target}) => ({href, target}))(tab);
 
               return (
-                <Tag class={extendedTabButtonClasses} role="tab" {...props} onClick={() => this.handleTabChange(index)}>
+                <Tag class={extendedTabButtonClasses} role="tab" {...props} onClick={() => this.handleTabButtonClick(index)}>
                   {tab.label}
                 </Tag>
               );
@@ -134,6 +134,14 @@ export class Tabs {
     this.resetTabs();
     this.setActiveTab(newActiveTab ?? this.activeTab);
   };
+
+  private handleTabButtonClick = (tabIndex): void => {
+    this.handleTabChange(tabIndex);
+
+    const allTabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
+    const nextTabElement = allTabs[this.activeTab + 1] as HTMLElement;
+    nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center'});
+  }
 
   private updateTabItems = (): void => {
     this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item'));
