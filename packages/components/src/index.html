@@ -9,9 +9,47 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <script nomodule src="build/porsche-design-system.js"></script>
   <script type="module" src="build/porsche-design-system.esm.js"></script>
+
+  <style type="text/css">
+    .foo {
+      background-image: url("https://my.porsche.com/static/login/row/myporsche-login-lights-on.39d0f06ac7c0e71c6884.jpg");
+      background-size: cover;
+      background-position: center center;
+    }
+  </style>
+  <script>
+    const updateSize = (size) => {
+      for (let element of document.querySelectorAll('p-tabs')) {
+        element.setAttribute('size', size);
+      }
+    }
+
+    const updateWeight = (weight) => {
+      for (let element of document.querySelectorAll('p-tabs')) {
+        element.setAttribute('weight', weight);
+      }
+    }
+  </script>
 </head>
 <body>
-<p-tabs>
+<select onchange="updateSize(this.value)">
+  <option disabled selected>Select a size</option>
+  <option value="small">Small</option>
+  <option value="medium">Medium</option>
+</select>
+
+<select onchange="updateWeight(this.value)">
+  <option disabled selected>Select a weight</option>
+  <option value="regular">Regular</option>
+  <option value="semibold">Semibold</option>
+</select>
+
+<br>
+<br>
+<br>
+<br>
+
+<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">
   <p-tabs-item label="Hello World!">
     <p-text>Hallo Welt 1</p-text>
   </p-tabs-item>
@@ -19,12 +57,16 @@
     <p-text>Hallo Welt 2</p-text>
   </p-tabs-item>
   <p-tabs-item label="A longer one">
+    <p-text>Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="Whatever">
+    <p-text>Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="test">
+    <p-text>Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="Die letzte aller Möglichkeiten">
+    <p-text>Hallo Welt 1</p-text>
   </p-tabs-item>
 </p-tabs>
 
@@ -33,7 +75,7 @@
 <br>
 <br>
 
-<p-tabs style="background-color: black;" theme="dark">
+<p-tabs style="background-color: black; padding: 3rem;" theme="dark" size="medium">
   <p-tabs-item label="Hello World!">
     <p-text theme="dark">Hallo Welt 1</p-text>
   </p-tabs-item>
@@ -41,12 +83,42 @@
     <p-text theme="dark">Hallo Welt 2</p-text>
   </p-tabs-item>
   <p-tabs-item label="A longer one">
+    <p-text theme="dark">Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="Whatever">
+    <p-text theme="dark">Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="test">
+    <p-text theme="dark">Hallo Welt 1</p-text>
   </p-tabs-item>
   <p-tabs-item label="Die letzte aller Möglichkeiten">
+    <p-text theme="dark">Hallo Welt 1</p-text>
+  </p-tabs-item>
+</p-tabs>
+
+<br>
+<br>
+<br>
+<br>
+
+<p-tabs class="foo" style="padding: 3rem;" theme="dark" size="medium">
+  <p-tabs-item label="Hello World!">
+    <p-text theme="dark">Hallo Welt 1</p-text>
+  </p-tabs-item>
+  <p-tabs-item label="second">
+    <p-text theme="dark">Hallo Welt 2</p-text>
+  </p-tabs-item>
+  <p-tabs-item label="A longer one">
+    <p-text theme="dark">Hallo Welt 1</p-text>
+  </p-tabs-item>
+  <p-tabs-item label="Whatever">
+    <p-text theme="dark">Hallo Welt 1</p-text>
+  </p-tabs-item>
+  <p-tabs-item label="test">
+    <p-text theme="dark">Hallo Welt 1</p-text>
+  </p-tabs-item>
+  <p-tabs-item label="Die letzte aller Möglichkeiten">
+    <p-text theme="dark">Hallo Welt 1</p-text>
   </p-tabs-item>
 </p-tabs>
 

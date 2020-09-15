@@ -168,8 +168,8 @@ export class Tabs {
   };
 
   private setSliderPosition = (newActiveTab: number): void => {
-    const slider = this.host.shadowRoot.querySelector(`.${prefix('tabs__slider')}`) as HTMLElement;
-    const allTabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const slider = this.getHTMLElement('slider');
+    const allTabs = this.getHTMLElements('tabs');
     if (allTabs.length === 0) {
       return;
     }
@@ -184,7 +184,7 @@ export class Tabs {
     const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
-    const allTabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const allTabs = this.getHTMLElements('tabs');
     let nextTabIndex = 0;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
@@ -199,8 +199,8 @@ export class Tabs {
   };
 
   private handleArrowClick = (direction: string): void => {
-    const nav = this.host.shadowRoot.querySelector(`.${prefix('tabs__nav')}`) as HTMLElement;
-    const tabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const nav = this.getHTMLElement('nav');
+    const tabs = this.getHTMLElements('tabs');
     const lastTab = tabs[tabs.length - 1] as HTMLElement;
     const navWidth = nav.offsetWidth;
     const scrollPercentage = 20;
@@ -242,9 +242,9 @@ export class Tabs {
       return;
     }
 
-    const prev = this.host.shadowRoot.querySelector(`.${prefix('tabs__action--prev')}`);
-    const next = this.host.shadowRoot.querySelector(`.${prefix('tabs__action--next')}`);
-    const tabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const prev = this.getHTMLElement('prev');
+    const next = this.getHTMLElement('next');
+    const tabs = this.getHTMLElements('tabs');
     const firstTab = tabs[0] as HTMLElement;
     const lastTab = tabs[tabs.length - 1] as HTMLElement;
     const actionVisibilityCSSClass = prefix('tabs__action--visible');
@@ -268,5 +268,24 @@ export class Tabs {
 
     this.intersectionObserver.observe(firstTab);
     this.intersectionObserver.observe(lastTab);
+  }
+
+  private getHTMLElement(element: 'prev' | 'next' | 'nav' | 'slider'): HTMLElement {
+    const selector = {
+      prev: 'tabs__action--prev',
+      next: 'tabs__action--next',
+      slider: 'tabs__slider',
+      nav: 'tabs__nav'
+    }
+
+    return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
+  }
+
+  private getHTMLElements(elements: 'tabs'): HTMLElement[] {
+    const selector = {
+      tabs: 'tabs__button'
+    }
+
+    return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
   }
 }
