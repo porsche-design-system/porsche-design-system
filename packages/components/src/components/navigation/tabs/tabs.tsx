@@ -26,8 +26,6 @@ export class Tabs {
 
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
-  @State() public statusWidth = 0;
-  @State() public statusPositionLeft = 0;
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
@@ -50,12 +48,7 @@ export class Tabs {
   }
 
   public componentDidLoad(): void {
-    this.setStatusStyle(this.activeTab);
     this.observeIntersection();
-  }
-
-  public componentDidUpdate(): void {
-    this.setStatusStyle(this.activeTab);
   }
 
   public disconnectedCallback(): void {
@@ -134,7 +127,7 @@ export class Tabs {
                 );
               })}
             </ul>
-            <span class={statusClasses} style={{width: `${this.statusWidth}px`, left: `${this.statusPositionLeft}px`}}/>
+            <span class={statusClasses} style={this.calcStatusStyle()}/>
           </nav>
           <div class={tabPrevClasses}>
             <p-button-pure
@@ -163,7 +156,7 @@ export class Tabs {
   }
 
   private resetTabs = (): void => {
-    this.tabsItems.forEach((tab) => (tab.selected = false));
+    for (const tab of this.tabsItems) tab.selected = false;
   };
 
   private setActiveTab = (index: number): void => {
@@ -175,15 +168,7 @@ export class Tabs {
 
   private handleTabChange = (activeTabIndex?: number): void => {
     this.resetTabs();
-    this.setStatusStyle(activeTabIndex ?? this.activeTab);
     this.setActiveTab(activeTabIndex ?? this.activeTab);
-  };
-
-  private setStatusStyle = (activeTabIndex: number): void => {
-    const tabs = this.getHTMLElements('tabs');
-    const activeTab = tabs[activeTabIndex];
-    this.statusWidth = (activeTab !== undefined) ? activeTab.offsetWidth : 0;
-    this.statusPositionLeft = (activeTab !== undefined) ? activeTab.offsetLeft : 0;
   };
 
   private handleTabButtonClick = (tabIndex: number): void => {
@@ -219,6 +204,18 @@ export class Tabs {
       subtree: true,
       attributeFilter: ['label', 'href', 'target']
     });
+  }
+
+  private calcStatusStyle(): { width: string, left: string } {
+    const tabs = this.getHTMLElements('tabs');
+    const activeTab = tabs[this.activeTab];
+    const statusWidth = (activeTab !== undefined) ? activeTab.offsetWidth : 0;
+    const statusPositionLeft = (activeTab !== undefined) ? activeTab.offsetLeft : 0;
+
+    return {
+      width: `${statusWidth}px`,
+      left: `${statusPositionLeft}px`
+    };
   }
 
   private handleAction = (action: 'prev' | 'next'): void => {
