@@ -26,8 +26,6 @@ export class Tabs {
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private firstTab: HTMLElement;
-  private lastTab: HTMLElement;
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -214,44 +212,36 @@ export class Tabs {
   }
 
   private observeIntersection(): void {
-    const actions = this.host.shadowRoot.querySelectorAll('.p-tabs__action');
-    const prev = this.host.shadowRoot.querySelector('.p-tabs__action--prev');
-    const next = this.host.shadowRoot.querySelector('.p-tabs__action--next');
 
     if (isTouchDevice()) {
-      for (const action of Object.values(actions)) {
-        action.classList.add('p-tabs__action--hidden');
-      }
       return;
     }
 
-    const tabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
-    this.firstTab = tabs[0] as HTMLElement;
-    this.lastTab = tabs[tabs.length - 1] as HTMLElement;
+    const prev = this.host.shadowRoot.querySelector(`.${prefix('tabs__action--prev')}`);
+    const next = this.host.shadowRoot.querySelector(`.${prefix('tabs__action--next')}`);
+    const tabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
+    const firstTab = tabs[0] as HTMLElement;
+    const lastTab = tabs[tabs.length - 1] as HTMLElement;
+    const actionVisibilityCSSClass = prefix('tabs__action--visible');
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          const action = entry.target === this.firstTab ? prev : next;
-          if (action === prev && entry.isIntersecting) {
-            action.classList.add('p-tabs__action--hidden');
-            action.classList.remove('p-tabs__action--visible');
-          } else if (action === next && !entry.isIntersecting) {
-            action.classList.remove('p-tabs__action--hidden');
-            action.classList.add('p-tabs__action--visible');
-          } else if (action === next && entry.isIntersecting) {
-            action.classList.add('p-tabs__action--hidden');
-            action.classList.remove('p-tabs__action--visible');
-          } else {
-            action.classList.remove('p-tabs__action--hidden');
-            action.classList.add('p-tabs__action--visible');
+          if (entry.target === firstTab && entry.isIntersecting) {
+            prev.classList.remove(actionVisibilityCSSClass);
+          } else if (entry.target === firstTab && !entry.isIntersecting) {
+            prev.classList.add(actionVisibilityCSSClass);
+          } else if (entry.target === lastTab && entry.isIntersecting) {
+            next.classList.remove(actionVisibilityCSSClass);
+          } else if (entry.target === lastTab && !entry.isIntersecting) {
+            next.classList.add(actionVisibilityCSSClass);
           }
         }
       },
       { threshold: 0.75 }
     );
 
-    this.intersectionObserver.observe(this.firstTab);
-    this.intersectionObserver.observe(this.lastTab);
+    this.intersectionObserver.observe(firstTab);
+    this.intersectionObserver.observe(lastTab);
   }
 }
