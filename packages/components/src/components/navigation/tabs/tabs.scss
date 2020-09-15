@@ -145,8 +145,31 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       font-weight: $p-font-weight-semibold;
     }
 
-    &:not(:last-child) {
+  }
+
+  &__button-list {
+    list-style: none;
+    display: flex;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+
+    & li:not(:last-child) {
       margin-right: $p-spacing-32;
+    }
+  }
+
+  &__slider {
+    height: 2px;
+    position: fixed;
+    display: flex;
+    transition: width 1s, left 1s ;
+
+    &--theme-light {
+      background-color: $p-color-state-active;
+    }
+    &--theme-dark {
+      background-color: $p-color-theme-dark-state-active;
     }
   }
 }
