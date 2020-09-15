@@ -153,11 +153,12 @@ export class Tabs {
     this.setActiveTab(newActiveTab ?? this.activeTab);
   };
 
-  private handleTabButtonClick = (tabIndex): void => {
+  private handleTabButtonClick = (tabIndex: number): void => {
+    const activeTabOnClick = tabIndex;
     this.handleTabChange(tabIndex);
 
     const allTabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
-    const nextTabElement = allTabs[this.activeTab + 1] as HTMLElement;
+    const nextTabElement = allTabs[tabIndex >= activeTabOnClick ? this.activeTab + 1 : this.activeTab - 1] as HTMLElement;
     nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center' });
   };
 
@@ -173,7 +174,7 @@ export class Tabs {
       scrollTo = direction === 'right' ? navWidth : 0;
     } else {
       scrollPosition = +nav.scrollLeft;
-      scrollTo = direction === 'right' ? scrollPosition + scrollWidth :  scrollPosition - scrollWidth;
+      scrollTo = direction === 'right' ? scrollPosition + scrollWidth : scrollPosition - scrollWidth;
     }
     direction === 'right'
       ? nav.scrollTo({
