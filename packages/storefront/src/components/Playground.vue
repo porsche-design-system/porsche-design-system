@@ -132,7 +132,7 @@
 
         &.is-active {
           cursor: default;
-          color: $p-color-theme-light-state-active;
+          color: $p-color-theme-light-default;
           border-bottom-color: $p-color-theme-light-state-active;
         }
       }
