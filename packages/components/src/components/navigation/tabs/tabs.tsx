@@ -22,7 +22,7 @@ export class Tabs {
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
   /** Defines the tab to be activated (index: zero-based). */
-  @Prop({reflect: true}) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
@@ -90,13 +90,26 @@ export class Tabs {
       <Host>
         <div class={tabHeaderClasses}>
           <div class={tabPrevClasses}>
-            <p-button-pure theme={this.theme} hide-label="true" icon="arrow-head-left">Prev</p-button-pure>
+            <p-button-pure
+              theme={this.theme}
+              hide-label="true"
+              icon="arrow-head-left"
+              onClick={() => this.handleArrowClick('left')}
+            >
+              Prev
+            </p-button-pure>
           </div>
           <div class={tabNextClasses}>
-            <p-button-pure theme={this.theme} hide-label="true" icon="arrow-head-right">Next</p-button-pure>
+            <p-button-pure
+              theme={this.theme}
+              hide-label="true"
+              icon="arrow-head-right"
+              onClick={() => this.handleArrowClick('right')}
+            >
+              Next
+            </p-button-pure>
           </div>
           <nav class={tabNavClasses}>
-
             {this.tabsItems.map((tab, index) => {
               const extendedTabButtonClasses = {
                 ...tabButtonClasses,
@@ -104,17 +117,22 @@ export class Tabs {
               };
 
               const Tag = tab.href === undefined ? 'button' : 'a';
-              const props = (({href, target}) => ({href, target}))(tab);
+              const props = (({ href, target }) => ({ href, target }))(tab);
 
               return (
-                <Tag class={extendedTabButtonClasses} role="tab" {...props} onClick={() => this.handleTabButtonClick(index)}>
+                <Tag
+                  class={extendedTabButtonClasses}
+                  role="tab"
+                  {...props}
+                  onClick={() => this.handleTabButtonClick(index)}
+                >
                   {tab.label}
                 </Tag>
               );
             })}
           </nav>
         </div>
-        <slot/>
+        <slot />
       </Host>
     );
   }
@@ -140,8 +158,33 @@ export class Tabs {
 
     const allTabs = this.host.shadowRoot.querySelectorAll('.p-tabs__button');
     const nextTabElement = allTabs[this.activeTab + 1] as HTMLElement;
-    nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center'});
-  }
+    nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+  };
+
+  private handleArrowClick = (direction: string): void => {
+    const nav = this.host.shadowRoot.querySelector('.p-tabs__nav') as HTMLElement;
+    const navWidth = nav.offsetWidth;
+    const scrollWidth = (navWidth / 100) * 20;
+
+    let scrollPosition;
+    let scrollTo;
+
+    if (scrollPosition >= navWidth || scrollPosition <= 0) {
+      scrollTo = direction === 'right' ? navWidth : 0;
+    } else {
+      scrollPosition = +nav.scrollLeft;
+      scrollTo = direction === 'right' ? scrollPosition + scrollWidth :  scrollPosition - scrollWidth;
+    }
+    direction === 'right'
+      ? nav.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        })
+      : nav.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        });
+  };
 
   private updateTabItems = (): void => {
     this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item'));
@@ -149,7 +192,7 @@ export class Tabs {
 
   private observeHost(): void {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -177,7 +220,7 @@ export class Tabs {
     this.lastTab = tabs[tabs.length - 1] as HTMLElement;
 
     this.intersectionObserver = new IntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
+      (entries) => {
         for (const entry of entries) {
           const action = entry.target === this.firstTab ? prev : next;
           if (action === prev && entry.isIntersecting) {
@@ -195,7 +238,7 @@ export class Tabs {
           }
         }
       },
-      {threshold: 0.75}
+      { threshold: 0.75 }
     );
 
     this.intersectionObserver.observe(this.firstTab);
