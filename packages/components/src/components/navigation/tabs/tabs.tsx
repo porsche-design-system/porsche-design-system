@@ -22,7 +22,7 @@ export class Tabs {
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
   /** Defines the tab to be activated (index: zero-based). */
-  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  @Prop({reflect: true}) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
@@ -97,6 +97,33 @@ export class Tabs {
     return (
       <Host>
         <div class={tabHeaderClasses}>
+          <nav class={tabNavClasses}>
+            <ul class={tabButtonListClasses}>
+              {this.tabsItems.map((tab, index) => {
+                const extendedTabButtonClasses = {
+                  ...tabButtonClasses,
+                  [prefix('tabs__button--selected')]: tab.selected
+                };
+
+                const Tag = tab.href === undefined ? 'button' : 'a';
+                const props = (({href, target}) => ({href, target}))(tab);
+
+                return (
+                  <li>
+                    <Tag
+                      class={extendedTabButtonClasses}
+                      role="tab"
+                      {...props}
+                      onClick={() => this.handleTabButtonClick(index)}
+                    >
+                      {tab.label}
+                    </Tag>
+                  </li>
+                );
+              })}
+            </ul>
+            <span class={sliderClasses}/>
+          </nav>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
@@ -117,35 +144,8 @@ export class Tabs {
               Next
             </p-button-pure>
           </div>
-          <nav class={tabNavClasses}>
-            <ul class={tabButtonListClasses}>
-              {this.tabsItems.map((tab, index) => {
-                const extendedTabButtonClasses = {
-                  ...tabButtonClasses,
-                  [prefix('tabs__button--selected')]: tab.selected
-                };
-
-                const Tag = tab.href === undefined ? 'button' : 'a';
-                const props = (({ href, target }) => ({ href, target }))(tab);
-
-                return (
-                  <li>
-                    <Tag
-                      class={extendedTabButtonClasses}
-                      role="tab"
-                      {...props}
-                      onClick={() => this.handleTabButtonClick(index)}
-                    >
-                      {tab.label}
-                    </Tag>
-                  </li>
-                );
-              })}
-            </ul>
-            <span class={sliderClasses} />
-          </nav>
         </div>
-        <slot />
+        <slot/>
       </Host>
     );
   }
@@ -168,13 +168,14 @@ export class Tabs {
   };
 
   private setSliderPosition = (newActiveTab: number): void => {
-    const nav = this.host.shadowRoot.querySelector(`.${prefix('tabs__nav')}`) as HTMLElement;
-    const slider = this.host.shadowRoot.querySelector(`.${prefix('tabs__slider')}`);
+    const slider = this.host.shadowRoot.querySelector(`.${prefix('tabs__slider')}`) as HTMLElement;
     const allTabs = this.host.shadowRoot.querySelectorAll(`.${prefix('tabs__button')}`);
-    if (allTabs.length === 0) return;
+    if (allTabs.length === 0) {
+      return;
+    }
     const newActiveButton = allTabs[newActiveTab] as HTMLElement;
     const sliderWidth = newActiveButton.offsetWidth;
-    const newSliderPosition = newActiveButton.offsetLeft - nav.scrollLeft;
+    const newSliderPosition = newActiveButton.offsetLeft;
 
     slider.setAttribute('style', `width: ${sliderWidth}px; left:${newSliderPosition}px`);
   };
@@ -194,7 +195,7 @@ export class Tabs {
 
     const nextTabElement = allTabs[nextTabIndex] as HTMLElement;
 
-    nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    nextTabElement.scrollIntoView({behavior: 'smooth', inline: 'center'});
   };
 
   private handleArrowClick = (direction: string): void => {
@@ -225,7 +226,7 @@ export class Tabs {
 
   private observeHost(): void {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -262,7 +263,7 @@ export class Tabs {
           }
         }
       },
-      { threshold: 0.75 }
+      {threshold: 0.75}
     );
 
     this.intersectionObserver.observe(firstTab);

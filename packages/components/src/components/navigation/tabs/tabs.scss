@@ -1,10 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
-$duration: 0.5s;
-$distance: -8px;
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
 :host {
   display: block;
 }
@@ -51,6 +47,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   &__nav {
+    position: relative;
     margin-bottom: $p-spacing-16;
     padding: 3px;
     overflow-y: hidden;
@@ -161,9 +158,9 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__slider {
     height: 2px;
-    position: fixed;
+    position: absolute;
     display: flex;
-    transition: width 1s, left 1s ;
+    transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
 
     &--theme-light {
       background-color: $p-color-state-active;
