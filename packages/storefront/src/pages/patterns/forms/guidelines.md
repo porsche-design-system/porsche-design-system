@@ -227,7 +227,7 @@ When it makes sense you should set input constraints to your Text Fields and Tex
 Good forms provide **valuable support** – both **for success**, when the user completes form fields correctly, and **for error cases**, when the user makes a wrong entry. However, there's a direct correlation between *how* and *when* users are presented with form validation errors and the pace and effort with which they are able to resolve them.
 
 
-![Form layouts with error and success notification](../../../assets/patterns-forms-validation.svg)
+![Form layouts with error and success notification](../../../assets/patterns-forms-validation.png)
 
 _Example input field with error_
 
