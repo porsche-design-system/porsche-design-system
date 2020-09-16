@@ -51,6 +51,7 @@ export class Tabs {
 
   public componentDidRender(): void {
     this.setStatusStyle();
+    this.scrollIntoView();
   }
 
   public componentDidLoad(): void {
@@ -166,6 +167,11 @@ export class Tabs {
       </Host>
     );
   }
+
+  private scrollIntoView = (): void  => {
+    const tabs = this.getAllHTMLElements('tabs');
+    tabs[this.activeTab].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
 
   private resetTabs = (): void => {
     for (const tab of this.tabsItems) {
