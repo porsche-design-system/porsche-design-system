@@ -169,5 +169,9 @@
       background-color: $p-color-theme-dark-state-active;
     }
   }
+
+  &__slot {
+    padding: 3px;
+  }
 }
 
