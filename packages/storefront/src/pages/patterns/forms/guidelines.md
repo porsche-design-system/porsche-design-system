@@ -254,6 +254,7 @@ _Example input field with error_
 
 - **Error summary.** Additional to the error message beneath the input fields, you can include an error summary at the top of the form to summarise the mistakes a user has made.
 It might also make sense if you don't want to show which field has an error, f.e. login or have a required group of fields rather than a specific one.
+
 ---
 
 # Error messages
@@ -287,60 +288,58 @@ Keep in my mind that experiencing an error is frustrating for the user and ask y
 
 ### **Writing examples:** 
 
-Credit card number is incorrect
+### Credit card number is incorrect
 
- **Instead of saying:** 
- *Invalid input*
+**Instead of saying:**  
+*Invalid input*
 
-**Describe the problem:**
+**Describe the problem:**  
 *Numbers are missing in your credit card number.*
 
-**Offer a solution:**
+**Offer a solution:**  
 *Numbers are missing in your credit card number. Please check your input.*
 
-**Add a human touch:**
+**Add a human touch:**  
 *Is the card number complete? Please check your input.*
 
 ---
 
-Mandatory free text input field is not filled
+### Mandatory free text input field is not filled
 
- **Instead of saying:** 
- *This field is obligatory.*
+**Instead of saying:**  
+*This field is obligatory.*
 
-**Describe the problem:**
+**Describe the problem:**  
 *Please enter your message.*
 
-**Add a human touch:**
+**Add a human touch:**  
 *What would you like to tell us?*
 
 ---
 
-Mandatory free text input field is not filled
+### Server error on website
 
- **Instead of saying:** 
- *Service not available. The server is temporarily busy. Please try again later.*
+**Instead of saying:**  
+Service not available. The server is temporarily busy. Please try again later.
 
-**Describe the problem:**
+**Describe the problem:**  
 *Unfortunately, we can’t load the site because of a problem with our server.*
 
-**Offer a solution:**
+**Offer a solution:**  
 *Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:*
 - Porsche Website
 - My Porsche
 - Porsche Shop
 
-**Add a human touch:**
+**Add a human touch:**  
 *Not our claim to performance.
 Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site, while we’re working on a solution:*
 - Porsche Website
 - My Porsche
 - Porsche Shop
 
-
 ---
-
-**Prevent errors:** 
+### **Prevent errors:** 
 
 Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input is required for a certain input field. E.g. List the necessary characters that a password must contain. 
 
