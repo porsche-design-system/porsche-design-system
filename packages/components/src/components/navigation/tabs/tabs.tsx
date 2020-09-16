@@ -44,7 +44,7 @@ export class Tabs {
     this.updateTabItems();
     this.handleTabChange();
     this.observeHost();
-    this.calcStatusStyle()
+    this.calcStatusStyle();
   }
 
   public componentDidLoad(): void {
@@ -156,7 +156,9 @@ export class Tabs {
   }
 
   private resetTabs = (): void => {
-    for (const tab of this.tabsItems) tab.selected = false;
+    for (const tab of this.tabsItems) {
+      tab.selected = false;
+    }
   };
 
   private setActiveTab = (index: number): void => {
@@ -182,7 +184,9 @@ export class Tabs {
       nextTabIndex = this.activeTab + 1;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
       nextTabIndex = this.activeTab - 1;
-    } else nextTabIndex = tabIndex;
+    } else {
+      nextTabIndex = tabIndex;
+    }
 
     const nextTabElement = tabs[nextTabIndex];
 
@@ -261,8 +265,12 @@ export class Tabs {
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.target === firstTab) this.isPrevVisible = !entry.isIntersecting;
-          if (entry.target === lastTab) this.isNextVisible = !entry.isIntersecting;
+          if (entry.target === firstTab) {
+            this.isPrevVisible = !entry.isIntersecting;
+          }
+          if (entry.target === lastTab) {
+            this.isNextVisible = !entry.isIntersecting;
+          }
         }
       },
       { threshold: 0.9 }
