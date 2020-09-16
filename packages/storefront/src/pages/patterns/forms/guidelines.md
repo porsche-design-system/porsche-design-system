@@ -236,7 +236,7 @@ _Example input field with error_
 
 **In the best case, you should always give direct feedback**. This is why we recommend validating the user’s data before submitting the form (called client-side validation). This type of inline validation should be done at the moment after the input field is out of focus. This will help quickly identify the elements that need to be corrected and help users get through forms better and faster.
 
-**Common reasons for errors:**
+**Common reasons for errors**
 
 - input incorrectly formatting data
 - leaving a mandatory field blank
@@ -267,7 +267,7 @@ You should offer a solution so that users can repeat a step to complete a task o
 
 Keep in my mind that experiencing an error is frustrating for the user and ask yourself what you can do or say to absorb frustration and improve the experience. For example, with a bit of humor. But don’t go overboard. And do not neglect the clarity within your copy.
 
-**Error messages should be:**
+**Error messages should be**
 
 - brief
 - written out
@@ -278,7 +278,7 @@ Keep in my mind that experiencing an error is frustrating for the user and ask y
 
 
 
-**The following questions should be answered to create a good error message:**
+**The following questions should be answered to create a good error message**
 1.	What did the user try to do when the error message appeared?
 2.	Why was the error message displayed?
 3.	How can the user continue and complete the process?
@@ -286,52 +286,52 @@ Keep in my mind that experiencing an error is frustrating for the user and ask y
 
 ---
 
-### **Writing examples:** 
+### **Writing examples** 
 
 ### Credit card number is incorrect
 
-**Instead of saying:**  
+**Instead of saying**  
 *Invalid input*
 
-**Describe the problem:**  
+**Describe the problem**  
 *Numbers are missing in your credit card number.*
 
-**Offer a solution:**  
+**Offer a solution**  
 *Numbers are missing in your credit card number. Please check your input.*
 
-**Add a human touch:**  
+**Add a human touch**  
 *Is the card number complete? Please check your input.*
 
 ---
 
 ### Mandatory free text input field is not filled
 
-**Instead of saying:**  
+**Instead of saying**  
 *This field is obligatory.*
 
-**Describe the problem:**  
+**Describe the problem**  
 *Please enter your message.*
 
-**Add a human touch:**  
+**Add a human touch**  
 *What would you like to tell us?*
 
 ---
 
 ### Server error on website
 
-**Instead of saying:**  
+**Instead of saying**  
 Service not available. The server is temporarily busy. Please try again later.
 
-**Describe the problem:**  
+**Describe the problem**  
 *Unfortunately, we can’t load the site because of a problem with our server.*
 
-**Offer a solution:**  
+**Offer a solution**  
 *Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:*
 - Porsche Website
 - My Porsche
 - Porsche Shop
 
-**Add a human touch:**  
+**Add a human touch**  
 *Not our claim to performance.
 Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site, while we’re working on a solution:*
 - Porsche Website
@@ -339,7 +339,7 @@ Unfortunately, we can’t load the site because of a problem with our server. Tr
 - Porsche Shop
 
 ---
-### **Prevent errors:** 
+### **Prevent errors** 
 
 Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input is required for a certain input field. E.g. List the necessary characters that a password must contain. 
 
