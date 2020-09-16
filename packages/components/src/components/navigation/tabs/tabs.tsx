@@ -50,7 +50,7 @@ export class Tabs {
   }
 
   public componentDidRender(): void {
-    this.setStatusStyle ();
+    this.setStatusStyle();
   }
 
   public componentDidLoad(): void {
@@ -105,6 +105,10 @@ export class Tabs {
       [prefix(`tabs__status--theme-${this.theme}`)]: true
     };
 
+    const slotContentClasses = {
+      [prefix('tabs__slot')]: true
+    };
+
     return (
       <Host>
         <div class={tabHeaderClasses}>
@@ -156,7 +160,9 @@ export class Tabs {
             </p-button-pure>
           </div>
         </div>
-        <slot />
+        <div class={slotContentClasses}>
+          <slot />
+        </div>
       </Host>
     );
   }
