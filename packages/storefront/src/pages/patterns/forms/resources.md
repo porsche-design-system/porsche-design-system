@@ -10,13 +10,13 @@ To help you better understand how to use our form guidelines we provide you with
 
 ## Form pattern example pages
 
-| Form type        | View code example                                                                                                                  |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Login            | <p-link-pure href="#/patterns/forms/example-login" icon="external" target="_blank">Example - Login</p-link-pure>                   |
-| Create Account   | <p-link-pure href="#/patterns/forms/example-create-account" icon="external" target="_blank">Example - Create Account</p-link-pure> |
-| Contact          | <p-link-pure href="#/patterns/forms/example-contact" icon="external" target="_blank">Example - Contact</p-link-pure>               |
-| Various examples | <p-link-pure href="#/patterns/forms/example-various" icon="external" target="_blank">Example - Various</p-link-pure>               |
-| Validation       | <p-link-pure href="#/patterns/forms/example-various" icon="external" target="_blank">Example - Validation</p-link-pure>            |
+| Form type        | View code example                                                                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Login            | <p-link-pure href="#/patterns/forms/example-login" icon="external" target="_blank">Example - Login</p-link-pure>                            |
+| Create Account   | <p-link-pure href="#/patterns/forms/example-create-account" icon="external" target="_blank">Example - Create Account</p-link-pure>          |
+| Contact          | <p-link-pure href="#/patterns/forms/example-contact" icon="external" target="_blank">Example - Contact</p-link-pure>                        |
+| Various examples | <p-link-pure href="#/patterns/forms/example-various" icon="external" target="_blank">Example - Various</p-link-pure>                        |
+| Validation       | <p-link-pure href="https://porscheui.github.io/ux-prototype/validation/" icon="external" target="_blank">Example - Validation</p-link-pure> |
 
 --- 
 
