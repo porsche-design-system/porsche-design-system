@@ -192,6 +192,33 @@ The % values always refer to the full maximum width of the form (see table above
 
 ![Form field widths](../../../assets/patterns-forms-field-widths.png)
 
+--- 
+
+## Designing forms for mobile
+
+In favor of a better conversion rate, it's highly recommended to put an extra eye on the mobile version – not only for your website in general but especially for the forms provided on your website. Instead of copy-and-paste-ing the desktop view (as this might lead to problems with readability and perception), optimize your forms on smaller viewports for a mobile-friendly experience and focus especially on the following aspects:
+
+### Provide state information
+
+Set the visual focus to the current form field to give orientation and enable the user to perceive information quickly. Also, you should always give the user information about the **current progress status** by providing a progress bar (% or "step 1 of 3"). This is not only relevant for longer or multi-step forms in general, but especially on mobile viewports, where the user has no clear overview of the length of the complete form. 
+
+### Use native components
+
+Users are familiar with device-specific UI patterns (for example the iOS date picker). So the first choice for a good mobile UX should be to go for native elements instead of individual UI patterns.
+
+![iPhone screen with native date picker](../../../assets/patterns-forms-native-date-picker.png)
+
+### Provide correct input types
+
+Whenever possible, the required input type should be technically preset, so that users are provided automatically with the correct UI controls. This helps fill out the form much faster.
+
+### Automate actions (when possible)
+
+Make it easy for users by providing autocorrect (meaning the form automatically corrects e.g. spelling errors) and autocomplete (specific fields are automatically completed such as filling in the user's ZIP code based on the location).
+
+### Use input contraints
+
+When it makes sense you should set input constraints to your Text Fields and Textareas to limit the input length, as some users tend to over-explain and therefore spend much time filling out the form, which might lead to frustrating and bad ratings in the end.
 
 ---
 
@@ -316,34 +343,6 @@ Unfortunately, we can’t load the site because of a problem with our server. Tr
 **Prevent errors:** 
 
 Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input is required for a certain input field. E.g. List the necessary characters that a password must contain. 
-
----
-
-## Designing forms for mobile
-
-In favor of a better conversion rate, it's highly recommended to put an extra eye on the mobile version – not only for your website in general but especially for the forms provided on your website. Instead of copy-and-paste-ing the desktop view (as this might lead to problems with readability and perception), optimize your forms on smaller viewports for a mobile-friendly experience and focus especially on the following aspects:
-
-### Provide state information
-
-Set the visual focus to the current form field to give orientation and enable the user to perceive information quickly. Also, you should always give the user information about the **current progress status** by providing a progress bar (% or "step 1 of 3"). This is not only relevant for longer or multi-step forms in general, but especially on mobile viewports, where the user has no clear overview of the length of the complete form. 
-
-### Use native components
-
-Users are familiar with device-specific UI patterns (for example the iOS date picker). So the first choice for a good mobile UX should be to go for native elements instead of individual UI patterns.
-
-![iPhone screen with native date picker](../../../assets/patterns-forms-native-date-picker.png)
-
-### Provide correct input types
-
-Whenever possible, the required input type should be technically preset, so that users are provided automatically with the correct UI controls. This helps fill out the form much faster.
-
-### Automate actions (when possible)
-
-Make it easy for users by providing autocorrect (meaning the form automatically corrects e.g. spelling errors) and autocomplete (specific fields are automatically completed such as filling in the user's ZIP code based on the location).
-
-### Use input contraints
-
-When it makes sense you should set input constraints to your Text Fields and Textareas to limit the input length, as some users tend to over-explain and therefore spend much time filling out the form, which might lead to frustrating and bad ratings in the end.
 
 ---
 
