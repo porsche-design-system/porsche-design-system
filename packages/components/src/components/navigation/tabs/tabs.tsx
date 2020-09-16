@@ -190,7 +190,7 @@ export class Tabs {
 
     const nextTabElement = tabs[nextTabIndex];
 
-    nextTabElement.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    nextTabElement.scrollIntoView({ behavior: 'smooth',  block: 'nearest', inline: 'center' });
   };
 
   private updateTabItems = (): void => {
