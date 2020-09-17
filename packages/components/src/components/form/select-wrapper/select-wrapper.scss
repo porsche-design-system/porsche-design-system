@@ -555,15 +555,27 @@
       background-color: $p-color-default;
     }
 
+    &::placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
     &::-webkit-input-placeholder {
       opacity: 1;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-neutral-contrast-medium;
+        color: $p-color-default;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-neutral-contrast-high;
+        color: $p-color-theme-dark-default;
       }
     }
 
@@ -571,11 +583,11 @@
       opacity: 1;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-neutral-contrast-medium;
+        color: $p-color-default;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-neutral-contrast-high;
+        color: $p-color-theme-dark-default;
       }
     }
 
@@ -583,11 +595,11 @@
       opacity: 1;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-neutral-contrast-medium;
+        color: $p-color-default;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-neutral-contrast-high;
+        color: $p-color-theme-dark-default;
       }
     }
 
@@ -595,11 +607,11 @@
       opacity: 1;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-neutral-contrast-medium;
+        color: $p-color-default;
       }
 
       #{$bem-block}--theme-dark & {
-        color: $p-color-theme-dark-neutral-contrast-high;
+        color: $p-color-theme-dark-default;
       }
     }
 

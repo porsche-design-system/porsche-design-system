@@ -504,15 +504,7 @@ export class SelectWrapper {
     }));
 
     if (oldSelectedValue !== newSelectedValue) {
-      // IE11 workaround for dispatchEvent
-      let event: Event;
-      if (typeof Event === 'function') {
-        event = new Event('change', { bubbles: true });
-      } else {
-        event = document.createEvent('Event');
-        event.initEvent('change', true, false);
-      }
-      this.select.dispatchEvent(event);
+      this.select.dispatchEvent(new Event('change', { bubbles: true }));
     }
   };
 
