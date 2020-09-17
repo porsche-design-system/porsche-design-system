@@ -472,6 +472,14 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        /**
+          * Filters select options by typing a character
+         */
+        "filter"?: boolean;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -487,6 +495,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -1291,6 +1303,14 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: 'down' | 'up' | 'auto';
+        /**
+          * Filters select options by typing a character
+         */
+        "filter"?: boolean;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1306,6 +1326,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FormState;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PSpinner {
         /**
