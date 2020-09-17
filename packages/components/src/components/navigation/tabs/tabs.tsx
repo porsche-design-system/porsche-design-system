@@ -112,8 +112,8 @@ export class Tabs {
     return (
       <Host>
         <div class={tabHeaderClasses}>
-          <nav class={tabNavClasses}>
-            <ul class={tabButtonListClasses}>
+          <div class={tabNavClasses}>
+            <ul class={tabButtonListClasses} role="tablist">
               {this.tabsItems.map((tab, index) => {
                 const extendedTabButtonClasses = {
                   ...tabButtonClasses,
@@ -124,11 +124,14 @@ export class Tabs {
                 const props = (({ href, target }) => ({ href, target }))(tab);
 
                 return (
-                  <li>
+                  <li role="presentation">
                     <Tag
+                      id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
                       role="tab"
                       {...props}
+                      tabindex={!tab.selected ? -1 : 0}
+                      aria-selected={tab.selected && 'true'}
                       onClick={() => this.handleTabButtonClick(index)}
                     >
                       {tab.label}
@@ -138,7 +141,7 @@ export class Tabs {
               })}
             </ul>
             <span class={statusClasses} />
-          </nav>
+          </div>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
@@ -161,7 +164,9 @@ export class Tabs {
           </div>
         </div>
         <div class={slotContentClasses}>
-          <slot />
+          {this.tabsItems.map((tab, index) =>
+            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={prefix(`tab-item-${index}`)}/>
+          )}
         </div>
       </Host>
     );
