@@ -50,18 +50,12 @@
   font-weight: $p-font-weight-regular !important;
   font-size: $p-font-size-small !important;
   line-height: p-calculate-line-height($p-font-size-small) !important;
-  color: $p-color-theme-light-default !important;
+  color: inherit;
   text-indent: 0 !important;
   cursor: pointer !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-top-color 1ms linear !important; // used for transitionend event listener;
-}
-
-// avoid dotted outline in Firefox
-::slotted(select:-moz-focusring) {
-  color: transparent !important;
-  text-shadow: 0 0 0 $p-color-theme-light-default !important;
+  transition: outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+    color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+    border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // avoid styling of select in IE
@@ -72,39 +66,39 @@
 // avoid styling of select in IE
 ::slotted(select:focus::-ms-value) {
   background-color: transparent !important;
-  color: $p-color-theme-light-default !important;
+  color: $p-color-default !important;
 }
 
 // Focus
 ::slotted(select:focus) {
-  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline: $p-color-state-focus solid 2px !important;
 }
 
 // Disabled
 ::slotted(select:disabled) {
   border-top-color: rgba(255, 255, 255, 0.01) !important;
-  color: $p-color-theme-light-state-disabled !important;
+  color: $p-color-state-disabled !important;
   cursor: not-allowed !important;
 }
 
 .#{$p-global-class-prefix}select-wrapper {
   $bem-block: &;
+  display: block;
+  position: relative;
 
-  &__label {
-    display: block;
-    position: relative;
+  &--theme-light {
+    color: $p-color-default;
   }
 
-  &__label-text,
-  &__description-text {
+  &--theme-dark {
+    color: $p-color-theme-dark-default;
+  }
+
+  &__label,
+  &__description {
     display: block;
     width: fit-content;
-    color: $p-color-theme-light-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &--disabled {
-      color: $p-color-theme-light-state-disabled;
-    }
+    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
     &--visible {
       @include p-text-field-wrapper-label-text-visible;
@@ -114,7 +108,7 @@
       @include p-text-field-wrapper-label-text-hidden;
     }
 
-    @include p-media-query("xs") {
+    @include p-media-query('xs') {
       &--visible-xs {
         @include p-text-field-wrapper-label-text-visible;
       }
@@ -124,7 +118,7 @@
       }
     }
 
-    @include p-media-query("s") {
+    @include p-media-query('s') {
       &--visible-s {
         @include p-text-field-wrapper-label-text-visible;
       }
@@ -134,7 +128,7 @@
       }
     }
 
-    @include p-media-query("m") {
+    @include p-media-query('m') {
       &--visible-m {
         @include p-text-field-wrapper-label-text-visible;
       }
@@ -144,7 +138,7 @@
       }
     }
 
-    @include p-media-query("l") {
+    @include p-media-query('l') {
       &--visible-l {
         @include p-text-field-wrapper-label-text-visible;
       }
@@ -154,7 +148,7 @@
       }
     }
 
-    @include p-media-query("xl") {
+    @include p-media-query('xl') {
       &--visible-xl {
         @include p-text-field-wrapper-label-text-visible;
       }
@@ -165,14 +159,46 @@
     }
   }
 
-  &__description-text {
-    color: $p-color-theme-light-neutral-contrast-medium;
-
-    &--disabled {
-      color: $p-color-theme-light-state-disabled;
+  &__label {
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
     }
 
-    #{$bem-block}__label-text ~ & {
+    #{$bem-block}--theme-dark & {
+      color: $p-color-theme-dark-default;
+    }
+
+    &--disabled {
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-disabled;
+      }
+    }
+  }
+
+  &__description {
+    #{$bem-block}--theme-light & {
+      color: $p-color-neutral-contrast-medium;
+    }
+
+    #{$bem-block}--theme-dark & {
+      color: $p-color-theme-dark-neutral-contrast-medium;
+    }
+
+    &--disabled {
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-disabled;
+      }
+    }
+
+    #{$bem-block}__label ~ & {
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
@@ -183,36 +209,81 @@
     width: 100%;
     height: p-px-to-rem(48px);
     display: block;
-    background-color: $p-color-theme-light-background;
-    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
-    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+
+    #{$bem-block}--theme-light & {
+      background-color: $p-color-background-default;
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+    }
+
+    #{$bem-block}--theme-dark & {
+      background-color: $p-color-default;
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
+    }
 
     &:hover:not(&--disabled):not(&--success):not(&--error),
-    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+    #{$bem-block}__label:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 1px $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-default;
+      }
     }
 
     &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
-      background-color: $p-color-theme-light-background;
+      #{$bem-block}--theme-light & {
+        background-color: $p-color-background-default;
+        box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      }
+
+      #{$bem-block}--theme-dark & {
+        background-color: $p-color-default;
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
+      }
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 2px $p-color-notification-success;
+      }
+
+      #{$bem-block}--theme-dark & {
+        box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
+      }
 
       &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+      #{$bem-block}__label:hover ~ & {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+        }
       }
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 2px $p-color-notification-error;
+      }
+
+      #{$bem-block}--theme-dark & {
+        box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
+      }
 
       &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+      #{$bem-block}__label:hover ~ & {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
+        }
       }
     }
   }
@@ -221,15 +292,47 @@
     @include p-text-small;
     position: absolute;
     z-index: 1;
-    border: 1px solid $p-color-theme-light-neutral-contrast-medium;
-    border-top-color: $p-color-theme-light-neutral-contrast-low;
+    border: 1px solid;
     left: 0;
     right: 0;
-    top: calc(100% - 1px);
     max-height: 200px;
     overflow-y: auto;
-    background-color: $p-color-theme-light-background;
     scroll-behavior: smooth;
+    transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
+
+    #{$bem-block}--theme-light & {
+      border-color: $p-color-neutral-contrast-medium;
+      background-color: $p-color-background-default;
+    }
+
+    #{$bem-block}--theme-dark & {
+      border-color: $p-color-theme-dark-neutral-contrast-medium;
+      background-color: $p-color-default;
+    }
+
+    &--direction {
+      &-down {
+        top: calc(100% - 1px);
+
+        #{$bem-block}--theme-light & {
+          border-top-color: $p-color-neutral-contrast-low;
+        }
+        #{$bem-block}--theme-dark & {
+          border-top-color: $p-color-theme-dark-neutral-contrast-low;
+        }
+      }
+
+      &-up {
+        bottom: p-px-to-rem(47px);
+
+        #{$bem-block}--theme-light & {
+          border-bottom-color: $p-color-neutral-contrast-low;
+        }
+        #{$bem-block}--theme-dark & {
+          border-bottom-color: $p-color-theme-dark-neutral-contrast-low;
+        }
+      }
+    }
 
     // Firefox scrollbar styling
     scrollbar-width: thin;
@@ -243,11 +346,17 @@
 
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: rgba(0, 0, 0, .4);
+
+      #{$bem-block}--theme-light & {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      #{$bem-block}--theme-dark & {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
     }
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: $p-spacing-4;
     }
@@ -258,9 +367,11 @@
 
     &--hidden {
       display: block;
+      top: calc(100% - 3px);
       opacity: 0;
       overflow: hidden;
       height: 1px;
+      pointer-events: none;
     }
   }
 
@@ -269,39 +380,75 @@
     display: block;
     padding: $p-spacing-8 p-px-to-rem(12px);
     cursor: pointer;
-    color: $p-color-theme-light-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+    text-align: left;
+    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+      outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
-    &:not([aria-disabled]):hover {
-      color: $p-color-theme-light-state-hover;
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
     }
 
-    &:focus {
-      outline: $p-color-theme-light-state-focus solid 2px;
+    #{$bem-block}--theme-dark & {
+      color: $p-color-theme-dark-default;
+    }
+
+    &:not([aria-disabled]):hover {
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-hover;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-hover;
+      }
     }
 
     &--selected {
-      color: $p-color-theme-light-state-active;
       cursor: default;
       pointer-events: none;
       padding-right: $p-spacing-32;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-active;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-active;
+      }
     }
 
-    &--highlighted:not(&--selected) {
-      color: $p-color-theme-light-state-active;
-      background-color: #ebebeb;
+    &--highlighted {
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-active;
+        background-color: #ebebeb;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-active;
+        background-color: #20262a;
+      }
     }
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
       cursor: not-allowed;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-disabled;
+      }
+    }
+
+    &--hidden {
+      display: none;
     }
   }
 
   &__fake-option-icon {
-     position: absolute;
-     right: p-px-to-rem(12px);
+    position: absolute;
+    right: p-px-to-rem(12px);
   }
 
   &__fake-optgroup-label {
@@ -319,11 +466,24 @@
     position: absolute;
     top: p-px-to-rem(12px);
     right: p-px-to-rem(12px);
-    color: $p-color-theme-light-default;
-    transition: transform $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: transform var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+    }
+
+    #{$bem-block}--theme-dark & {
+      color: $p-color-theme-dark-default;
+    }
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-state-disabled;
+      }
     }
 
     &--opened {
@@ -333,15 +493,256 @@
 
   &__message {
     margin-top: $p-spacing-4;
-    color: $p-color-theme-light-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+
+    &#{$bem-block}--theme-light {
+      color: $p-color-default;
+    }
+
+    &#{$bem-block}--theme-dark {
+      color: $p-color-theme-dark-default;
+    }
 
     &--success {
-      color: $p-color-theme-light-notification-success;
+      &#{$bem-block}--theme-light {
+        color: $p-color-notification-success;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-success;
+      }
     }
 
     &--error {
-      color: $p-color-theme-light-notification-error;
+      &#{$bem-block}--theme-light {
+        color: $p-color-notification-error;
+      }
+
+      &#{$bem-block}--theme-dark {
+        color: $p-color-theme-dark-notification-error;
+      }
+    }
+  }
+
+  &__filter-input {
+    position: absolute;
+    z-index: 1;
+    bottom: 2px;
+    left: 2px;
+    display: block;
+    width: calc(100% - #{p-px-to-rem(44px)});
+    height: p-px-to-rem(44px);
+    padding: p-px-to-rem(10px) p-px-to-rem(47px) p-px-to-rem(10px) p-px-to-rem(11px);
+    outline: transparent none;
+    appearance: none;
+    box-sizing: border-box;
+    border: none;
+    opacity: 0;
+    font-family: $p-font-family;
+    font-weight: $p-font-weight-regular;
+    font-size: $p-font-size-small;
+    line-height: p-calculate-line-height($p-font-size-small);
+    text-indent: 0;
+    cursor: text;
+
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+      background-color: $p-color-background-default;
+    }
+
+    #{$bem-block}--theme-dark & {
+      color: $p-color-theme-dark-default;
+      background-color: $p-color-default;
+    }
+
+    &::placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &::-webkit-input-placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &::-moz-placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &:-ms-input-placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    &:-moz-placeholder {
+      opacity: 1;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
+
+      #{$bem-block}--theme-dark & {
+        color: $p-color-theme-dark-default;
+      }
+    }
+
+    + span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: p-px-to-rem(48px);
+      outline: transparent none;
+      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+        outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+        opacity var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      pointer-events: all;
+      cursor: pointer;
+
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+      }
+
+      #{$bem-block}--theme-dark & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
+      }
+    }
+
+    &:hover:not(&--disabled):not(&--success):not(&--error) + span {
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      }
+
+      #{$bem-block}--theme-dark & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+      }
+    }
+
+    #{$bem-block}--theme-light label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+    }
+
+    #{$bem-block}--theme-dark label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
+    }
+
+    &:focus {
+      opacity: 1;
+      + span {
+        outline-offset: 1px;
+        outline: solid 2px;
+
+        #{$bem-block}--theme-light & {
+          outline-color: $p-color-state-focus;
+        }
+
+        #{$bem-block}--theme-dark & {
+          outline-color: $p-color-theme-dark-state-focus;
+        }
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      + span {
+        cursor: not-allowed;
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
+        }
+      }
+    }
+
+    &--success {
+      + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-success;
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
+        }
+      }
+
+      &:hover + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+        }
+      }
+
+      #{$bem-block}--theme-light label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+      }
+
+      #{$bem-block}--theme-dark label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
+      }
+    }
+
+    &--error {
+      + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-error;
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
+        }
+      }
+
+      &:hover + span {
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        }
+
+        #{$bem-block}--theme-dark & {
+          box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
+        }
+      }
+
+      #{$bem-block}--theme-light label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+      }
+
+      #{$bem-block}--theme-dark label:hover + & + span {
+        box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
+      }
     }
   }
 }

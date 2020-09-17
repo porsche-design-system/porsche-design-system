@@ -8,7 +8,7 @@ describe('Select Wrapper', () => {
         'select-wrapper',
         async () => {
           await vrt.goTo('/select-wrapper');
-          await vrt.focus('#test-focus-state');
+          await vrt.click('#test-focus-state');
         },
         testOptions
       )
