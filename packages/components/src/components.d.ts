@@ -500,10 +500,6 @@ export namespace Components {
     }
     interface PTabs {
         /**
-          * Defines the tab to be activated (index: zero-based).
-         */
-        "activeTab"?: number;
-        /**
           * The text size.
          */
         "size"?: 'small' | 'medium';
@@ -1318,10 +1314,6 @@ declare namespace LocalJSX {
         "theme"?: 'light' | 'dark';
     }
     interface PTabs {
-        /**
-          * Defines the tab to be activated (index: zero-based).
-         */
-        "activeTab"?: number;
         /**
           * The text size.
          */
