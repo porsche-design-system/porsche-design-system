@@ -9,7 +9,7 @@ import {
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
-fdescribe('tabs', () => {
+describe('tabs', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
