@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
-import { isTouchDevice, prefix } from '../../../utils';
+import { prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
@@ -22,18 +22,17 @@ export class Tabs {
   /** Adapts color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  // TODO: colorMode: default (volltonfarbe) | surface (volltonfarbe) | picture
+
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
-
-  /** Defines the tab to be activated (index: zero-based). */
-  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
-
+  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => { console.log('hello', tab.selected); return tab.selected});
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
 
-  @Watch('activeTab')
+  @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
     this.handleTabChange(activeTab);
   }
@@ -44,8 +43,6 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    this.updateTabItems();
-    this.handleTabChange();
     this.observeHost();
   }
 
@@ -132,7 +129,7 @@ export class Tabs {
                       {...props}
                       tabindex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
-                      onClick={() => this.handleTabButtonClick(index)}
+                      onClick={() => this.handleTabClick(index)}
                     >
                       {tab.label}
                     </Tag>
@@ -186,26 +183,26 @@ export class Tabs {
   private setActiveTab = (index: number): void => {
     const tabs = this.tabsItems;
     const maxIndex = tabs.length - 1;
-    this.activeTab = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    tabs[this.activeTab].selected = true;
+    this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
+    tabs[this.activeTabIndex].selected = true;
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
     this.resetTabs();
-    this.setActiveTab(activeTabIndex ?? this.activeTab);
+    this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
-  private handleTabButtonClick = (tabIndex: number): void => {
-    const activeTabOnClick = this.activeTab;
+  private handleTabClick = (tabIndex: number): void => {
+    const activeTabOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
 
     const tabs = this.getHTMLElements('tabs');
     let nextTabIndex = 0;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTabIndex = this.activeTab + 1;
+      nextTabIndex = this.activeTabIndex + 1;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTabIndex = this.activeTab - 1;
+      nextTabIndex = this.activeTabIndex - 1;
     } else {
       nextTabIndex = tabIndex;
     }
@@ -228,14 +225,14 @@ export class Tabs {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      attributeFilter: ['label', 'href', 'target']
+      attributeFilter: ['label']
     });
   };
 
   private setStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
     const tabs = this.getHTMLElements('tabs');
-    const activeTab = tabs[this.activeTab];
+    const activeTab = tabs[this.activeTabIndex];
     const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
     const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
     const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
@@ -275,10 +272,6 @@ export class Tabs {
   };
 
   private observeIntersection = (): void => {
-    if (isTouchDevice()) {
-      return;
-    }
-
     const tabs = this.getHTMLElements('tabs');
     const firstTab = tabs[0];
     const lastTab = tabs[tabs.length - 1];
