@@ -9,7 +9,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('tabs', () => {
+fdescribe('tabs', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -17,11 +17,10 @@ describe('tabs', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTabs = () => selectNode(page, 'p-tabs');
+  const getTab = () => selectNode(page, 'p-tabs');
   const getAllTabItems = () => page.$$('p-tabs-item');
   const getNav = () => selectNode(page, 'p-tabs >>> nav');
-  const getAllButtons = async () => (await getNav()).$$('button');
-  const getAllAnchorTags = async () => (await getNav()).$$('a');
+  const getAllButtons = async () => (await getNav()).$$('.p-tabs__button');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -40,7 +39,7 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const tabs = await getTabs();
+    const tabs = await getTab();
     const tabItems = await getAllTabItems();
 
     expect(tabs).toBeDefined();
@@ -98,10 +97,8 @@ describe('tabs', () => {
     `
     );
     const allButtons = await getAllButtons();
-    const allAnchorTags = await getAllAnchorTags();
 
-    expect(allButtons.length).toBe(2);
-    expect(allAnchorTags.length).toBe(1);
+    expect(allButtons.length).toBe(3);
   });
 
   it('should update buttons when tab-item is added', async () => {
@@ -121,7 +118,7 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const tabsElement = await getTabs();
+    const tabsElement = await getTab();
     const buttonsInitial = await getAllButtons();
     expect(buttonsInitial.length).toBe(3);
 
@@ -154,7 +151,7 @@ describe('tabs', () => {
     `
     );
 
-    const tabsElement = await getTabs();
+    const tabsElement = await getTab();
     const buttonsInitial = await getAllButtons();
     expect(buttonsInitial.length).toBe(3);
 
@@ -187,18 +184,18 @@ describe('tabs', () => {
     );
     const allTabsItems = await getAllTabItems();
     const allButtons = await getAllButtons();
-    const allAnchors = await getAllAnchorTags();
+    const anchor = allButtons[2];
     const getLabelOfFirstButton = () => getProperty(allButtons[0], 'innerHTML');
-    const getHrefOfAnchor = () => getAttribute(allAnchors[0], 'href');
-    const getTargetOfAnchor = () => getAttribute(allAnchors[0], 'target');
+    const getHrefOfAnchor = () => getAttribute(anchor, 'href');
+    const getTargetOfAnchor = () => getAttribute(anchor, 'target');
 
     expect(await getLabelOfFirstButton()).toBe('Button1');
     expect(await getHrefOfAnchor()).toBe('https://porsche.com');
     expect(await getTargetOfAnchor()).toBe('_blank');
 
     await allTabsItems[0].evaluate((el) => el.setAttribute('label', 'newButtonName'));
-    await allAnchors[0].evaluate((el) => el.setAttribute('href', 'https://newHref.com'));
-    await allAnchors[0].evaluate((el) => el.setAttribute('target', '_self'));
+    await anchor.evaluate((el) => el.setAttribute('href', 'https://newHref.com'));
+    await anchor.evaluate((el) => el.setAttribute('target', '_self'));
     await waitForStencilLifecycle(page);
 
     expect(await getLabelOfFirstButton()).toBe('newButtonName');
