@@ -40,7 +40,7 @@ export const color = {
     default: '#fff',
     background: {
       default: '#0e1418',
-      surface: '#1a2023',
+      surface: '#262b2e',
       shading: 'rgba(14, 20, 24, 0.9)'
     },
     neutralContrast: {
@@ -55,8 +55,8 @@ export const color = {
       neutral: '#2193ff'
     },
     state: {
-      hover: '#d5001c',
-      active: '#d5001c',
+      hover: '#ff0223',
+      active: '#ff0223',
       focus: '#00d5b9',
       disabled: '#7c7f81'
     }
