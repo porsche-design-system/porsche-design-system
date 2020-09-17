@@ -23,8 +23,12 @@ export class Tabs {
   @Prop() public theme?: Theme = 'light';
 
   // TODO: colorMode: default (volltonfarbe) | surface (volltonfarbe) | picture
+  // TODO: timebox router (link) support
+  // TODO: ScrollIntoView (horizontal)
+  // TODO: Focus Styling
+  // TODO: Keyboard Support
 
-  @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
+  @State() public tabsItems: any = Array.from(this.host.children);
   @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => { console.log('hello', tab.selected); return tab.selected});
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
@@ -215,7 +219,7 @@ export class Tabs {
   };
 
   private updateTabItems = (): void => {
-    this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item'));
+    this.tabsItems = Array.from(this.host.children);
   };
 
   private observeHost = (): void => {
