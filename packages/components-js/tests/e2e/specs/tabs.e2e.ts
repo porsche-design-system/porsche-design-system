@@ -19,7 +19,7 @@ describe('tabs', () => {
 
   const getTab = () => selectNode(page, 'p-tabs');
   const getAllTabItems = () => page.$$('p-tabs-item');
-  const getNav = () => selectNode(page, 'p-tabs >>> nav');
+  const getNav = () => selectNode(page, 'p-tabs >>> .p-tabs__nav');
   const getAllButtons = async () => (await getNav()).$$('.p-tabs__button');
   const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status');
   const getElementPositions = async (element: ElementHandle) => {

@@ -164,9 +164,14 @@ export class Tabs {
           </div>
         </div>
         <div class={slotContentClasses}>
-          {this.tabsItems.map((tab, index) =>
-            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={prefix(`tab-item-${index}`)}/>
-          )}
+          {this.tabsItems.map((tab, index) => (
+            <section
+              role="tabpanel"
+              hidden={!tab.selected}
+              innerHTML={tab.outerHTML}
+              aria-labelledby={prefix(`tab-item-${index}`)}
+            />
+          ))}
         </div>
       </Host>
     );
