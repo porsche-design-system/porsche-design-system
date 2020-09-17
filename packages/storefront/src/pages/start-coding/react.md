@@ -34,7 +34,7 @@ yarn add typescript @types/node @types/react @types/react-dom @types/jest
 // install with npm:
 npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
-* Install the Porsche Design System  
+* Install the Porsche Design System
 
 ``` 
 // install with yarn:
@@ -46,7 +46,7 @@ npm install @porsche-design-system/components-react
 
 You are ready to start building your own application.
 
-The following project is a standard React Scripts (Create React App) setup:
+The following project is a standard React (Create React App) setup:
 
 ### Index file
 ``` 
@@ -74,15 +74,11 @@ Change your App file to use at least one Porsche Design System Component, for ex
 import React from 'react';
 import { PHeadline } from '@porsche-design-system/components-react';
 
-export function App() {
-  return (
-    <div className="App">
-      <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+  <div className="App">
+    <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
+  </div>
+);
 ```
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
@@ -115,7 +111,7 @@ jest.mock('@porsche-design-system/components-react', () => require('@porsche-des
 // SingleComponent.tsx
 
 export const SingleComponent = () => (
-    <PHeadline>Some headline</PHeadline>
+  <PHeadline>Some headline</PHeadline>
 )
 ```
 
@@ -123,9 +119,9 @@ export const SingleComponent = () => (
 // SingleComponent.test.tsx
 
 test('renders a headline from Porsche Design System', async () => {
-    const { getByText } = render(<SingleComponent />);
-    const headLineElement = getByText('Some headline');
-    expect(headLineElement).toBeInTheDocument();
+  const { getByText } = render(<SingleComponent />);
+  const headLineElement = getByText('Some headline');
+  expect(headLineElement).toBeInTheDocument();
 });
 ```
 
@@ -136,7 +132,7 @@ If you only need a single component mock you can also consume the mock directly 
 // SingleComponent.tsx
 
 export const SingleComponent = () => (
-    <PHeadline>Some headline</PHeadline>
+  <PHeadline>Some headline</PHeadline>
 )
 ```
 
@@ -146,9 +142,9 @@ export const SingleComponent = () => (
 jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks/p-headline-mock'));
 
 test('renders a headline from Porsche Design System', async () => {
-    const { getByText } = render(<SingleComponent />);
-    const headLineElement = getByText('Some headline');
-    expect(headLineElement).toBeInTheDocument();
+  const { getByText } = render(<SingleComponent />);
+  const headLineElement = getByText('Some headline');
+  expect(headLineElement).toBeInTheDocument();
 });
 ```
 
@@ -181,15 +177,11 @@ import { getPrefixedComponents } from '@porsche-design-system/components-react/d
 
 const { PHeadline } = getPrefixedComponents({ prefix: 'sample-prefix' });
 
-export function App() {
-  return (
-    <div className="App">
-      <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+  <div className="App">
+    <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
+  </div>
+);
 ```
 
 In the example the `PHeadline` component will render as `<sample-prefix-p-headline>`.
@@ -198,8 +190,9 @@ there, that you can change the prefix in a single place.
 
 ```
 // PorscheDesignSystem.ts
+
 import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
-export const PorscheDesignComponents =  getPrefixedComponents({ prefix: 'sample-prefix' });
+export const PorscheDesignComponents = getPrefixedComponents({ prefix: 'sample-prefix' });
 ```
 
 ```
@@ -208,9 +201,7 @@ export const PorscheDesignComponents =  getPrefixedComponents({ prefix: 'sample-
 import { PorscheDesignComponents } from './PorscheDesignSystem';
 const { PHeadline } = PorscheDesignComponents;
 
-export function SingleComponent() {
-    return (
-        <PHeadline>Some headline</PHeadline>
-    )
-}
+export const SingleComponent = () => (
+  <PHeadline>Some headline</PHeadline>
+)
 ```

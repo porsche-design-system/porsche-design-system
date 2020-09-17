@@ -10,6 +10,7 @@
   font-size: 10px;
   white-space: nowrap;
 
+  // light
   &--color-theme-light-brand {
     background: $p-color-brand;
   }
@@ -70,6 +71,8 @@
   &--color-theme-light-state-disabled {
     background: $p-color-state-disabled;
   }
+
+  // dark
   &--color-theme-dark-brand {
     background: $p-color-theme-dark-brand;
   }
