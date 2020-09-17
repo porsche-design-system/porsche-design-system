@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support to load `font-face.css` from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
 - **Notification Soft** colors
 
+#### Changed
+- Background surface and hover/active state colors for dark theme
+
 ### [2.0.0] - 2020-08-19
 
 ### [2.0.0-rc.0] - 2020-08-17
