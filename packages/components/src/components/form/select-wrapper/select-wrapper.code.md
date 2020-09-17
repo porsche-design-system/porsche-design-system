@@ -32,7 +32,9 @@ A `label` is a caption which informs the user what information a particular form
 
 ---
 
-## With custom filter
+## With filter
+This option enhances the native select filter by providing an additional search field where the user can type his own search string. 
+The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
 
 <Playground :themeable="true">
   <template v-slot={theme}>
