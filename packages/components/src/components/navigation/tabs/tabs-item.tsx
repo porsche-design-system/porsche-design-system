@@ -21,6 +21,6 @@ export class TabsItem {
   @Prop({ reflect: true }) public selected?: boolean;
 
   public render(): JSX.Element {
-    return <Host>{this.selected && <slot />}</Host>;
+    return <Host><slot /></Host>;
   }
 }
