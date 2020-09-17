@@ -2,6 +2,9 @@ import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
 import { isTouchDevice, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
+type GetHTMLElementSelector = 'nav' | 'status';
+type GetAllHTMLElementSelector = 'tabs';
+
 @Component({
   tag: 'p-tabs',
   styleUrl: 'tabs.scss',
@@ -22,14 +25,13 @@ export class Tabs {
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
 
   /** Defines the tab to be activated (index: zero-based). */
-  @Prop({reflect: true}) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  @Prop({ reflect: true }) public activeTab?: number = this.tabsItems.findIndex((tab) => tab.selected);
 
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-
 
   @Watch('activeTab')
   public activeTabHandler(activeTab: number): void {
@@ -45,6 +47,11 @@ export class Tabs {
     this.updateTabItems();
     this.handleTabChange();
     this.observeHost();
+  }
+
+  public componentDidRender(): void {
+    this.setStatusStyle();
+    this.scrollIntoView();
   }
 
   public componentDidLoad(): void {
@@ -91,12 +98,16 @@ export class Tabs {
     };
 
     const tabButtonListClasses = {
-      [prefix('tabs__button-list')]: true,
+      [prefix('tabs__button-list')]: true
     };
 
     const statusClasses = {
       [prefix('tabs__status')]: true,
       [prefix(`tabs__status--theme-${this.theme}`)]: true
+    };
+
+    const slotContentClasses = {
+      [prefix('tabs__slot')]: true
     };
 
     return (
@@ -111,7 +122,7 @@ export class Tabs {
                 };
 
                 const Tag = tab.href === undefined ? 'button' : 'a';
-                const props = (({href, target}) => ({href, target}))(tab);
+                const props = (({ href, target }) => ({ href, target }))(tab);
 
                 return (
                   <li role="presentation">
@@ -130,14 +141,14 @@ export class Tabs {
                 );
               })}
             </ul>
-            <span class={statusClasses} style={this.calcStatusStyle()}/>
+            <span class={statusClasses} />
           </div>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-left"
-              onClick={() => this.handleAction('prev')}
+              onClick={() => this.handleArrowButtonClick('prev')}
             >
               Prev
             </p-button-pure>
@@ -147,20 +158,27 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-right"
-              onClick={() => this.handleAction('next')}
+              onClick={() => this.handleArrowButtonClick('next')}
             >
               Next
             </p-button-pure>
           </div>
         </div>
-        {this.tabsItems.map((tab, index) => {
-          return (
-            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={`xx-${index}`}/>
-          );
-        })}
+        <div class={slotContentClasses}>
+          {this.tabsItems.map((tab, index) => {
+            return (
+              <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={`xx-${index}`}/>
+            );
+          })}
+        </div>
       </Host>
     );
   }
+
+  private scrollIntoView = (): void  => {
+    const tabs = this.getAllHTMLElements('tabs');
+    tabs[this.activeTab].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
 
   private resetTabs = (): void => {
     for (const tab of this.tabsItems) {
@@ -184,7 +202,7 @@ export class Tabs {
     const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = this.getAllHTMLElements('tabs');
     let nextTabIndex = 0;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
@@ -197,16 +215,16 @@ export class Tabs {
 
     const nextTabElement = tabs[nextTabIndex];
 
-    nextTabElement.scrollIntoView({behavior: 'smooth', inline: 'center'});
+    nextTabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   };
 
   private updateTabItems = (): void => {
     this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item'));
   };
 
-  private observeHost(): void {
+  private observeHost = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -215,23 +233,25 @@ export class Tabs {
       subtree: true,
       attributeFilter: ['label', 'href', 'target']
     });
-  }
+  };
 
-  private calcStatusStyle(): { width: string, left: string } {
-    const tabs = this.getHTMLElements('tabs');
+  private setStatusStyle = (): void => {
+    const styleBar = this.getHTMLElement('status');
+    const tabs = this.getAllHTMLElements('tabs');
+    if (tabs.length === 0 || styleBar === undefined) {
+      return;
+    }
     const activeTab = tabs[this.activeTab];
-    const statusWidth = (activeTab !== undefined) ? activeTab.offsetWidth : 0;
-    const statusPositionLeft = (activeTab !== undefined) ? activeTab.offsetLeft : 0;
+    const statusWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
+    const statusPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
+    const statusStyle = `width: ${statusWidth}px; left: ${statusPositionLeft}px`;
 
-    return {
-      width: `${statusWidth}px`,
-      left: `${statusPositionLeft}px`
-    };
-  }
+    styleBar.setAttribute('style', statusStyle);
+  };
 
-  private handleAction = (action: 'prev' | 'next'): void => {
+  private handleArrowButtonClick = (buttonType: 'prev' | 'next'): void => {
     const nav = this.getHTMLElement('nav');
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = this.getAllHTMLElements('tabs');
     const lastTab = tabs[tabs.length - 1];
     const navWidth = nav.offsetWidth;
     const currentScrollPosition = nav.scrollLeft;
@@ -240,7 +260,7 @@ export class Tabs {
 
     let scrollTo: number;
 
-    if (action === 'next') {
+    if (buttonType === 'next') {
       if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
         scrollTo = scrollToMax;
       } else {
@@ -260,43 +280,47 @@ export class Tabs {
     });
   };
 
-  private observeIntersection(): void {
+  private observeIntersection = (): void => {
     if (isTouchDevice()) {
       return;
     }
 
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = this.getAllHTMLElements('tabs');
     const firstTab = tabs[0];
     const lastTab = tabs[tabs.length - 1];
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.target === firstTab) this.isPrevVisible = !entry.isIntersecting;
-          if (entry.target === lastTab) this.isNextVisible = !entry.isIntersecting;
+          if (entry.target === firstTab) {
+            this.isPrevVisible = !entry.isIntersecting;
+          }
+          if (entry.target === lastTab) {
+            this.isNextVisible = !entry.isIntersecting;
+          }
         }
       },
-      {threshold: 0.9}
+      { threshold: 0.9 }
     );
 
     this.intersectionObserver.observe(firstTab);
     this.intersectionObserver.observe(lastTab);
-  }
+  };
 
-  private getHTMLElement(element: 'nav'): HTMLElement {
+  private getHTMLElement = (element: GetHTMLElementSelector): HTMLElement => {
     const selector = {
       nav: 'tabs__nav',
       status: 'tabs__status'
-    }
+    };
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
-  }
+  };
 
-  private getHTMLElements(elements: 'tabs'): HTMLElement[] {
+  private getAllHTMLElements = (elements: GetAllHTMLElementSelector): HTMLElement[] => {
     const selector = {
       tabs: 'tabs__button'
-    }
+    };
 
     return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
-  }
+  };
 }
