@@ -127,11 +127,11 @@ export class Tabs {
                 return (
                   <li role="presentation">
                     <Tag
-                      id={`xx-${index}`}
+                      id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
                       role="tab"
                       {...props}
-                      tabindex={!tab.selected && -1}
+                      tabindex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
                       onClick={() => this.handleTabButtonClick(index)}
                     >
@@ -165,11 +165,9 @@ export class Tabs {
           </div>
         </div>
         <div class={slotContentClasses}>
-          {this.tabsItems.map((tab, index) => {
-            return (
-              <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={`xx-${index}`}/>
-            );
-          })}
+          {this.tabsItems.map((tab, index) =>
+            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={prefix(`tab-item-${index}`)}/>
+          )}
         </div>
       </Host>
     );
