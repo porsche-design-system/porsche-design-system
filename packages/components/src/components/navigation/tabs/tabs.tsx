@@ -2,8 +2,8 @@ import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
 import { isTouchDevice, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
-type GetHTMLElementSelector = 'nav' | 'status';
-type GetAllHTMLElementSelector = 'tabs';
+type HTMLElementSelector = 'nav' | 'statusBar';
+type HTMLElementsSelector = 'tabs';
 
 @Component({
   tag: 'p-tabs',
@@ -50,7 +50,7 @@ export class Tabs {
   }
 
   public componentDidRender(): void {
-    this.setStatusStyle();
+    this.setStatusBarStyle();
   }
 
   public componentDidLoad(): void {
@@ -100,9 +100,9 @@ export class Tabs {
       [prefix('tabs__button-list')]: true
     };
 
-    const statusClasses = {
-      [prefix('tabs__status')]: true,
-      [prefix(`tabs__status--theme-${this.theme}`)]: true
+    const statusBarClasses = {
+      [prefix('tabs__status-bar')]: true,
+      [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
     };
 
     const slotContentClasses = {
@@ -140,14 +140,14 @@ export class Tabs {
                 );
               })}
             </ul>
-            <span class={statusClasses} />
+            <span class={statusBarClasses} />
           </div>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-left"
-              onClick={() => this.handleArrowButtonClick('prev')}
+              onClick={() => this.handlePrevNextClick('prev')}
             >
               Prev
             </p-button-pure>
@@ -157,7 +157,7 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-right"
-              onClick={() => this.handleArrowButtonClick('next')}
+              onClick={() => this.handlePrevNextClick('next')}
             >
               Next
             </p-button-pure>
@@ -199,7 +199,7 @@ export class Tabs {
     const activeTabOnClick = this.activeTab;
     this.handleTabChange(tabIndex);
 
-    const tabs = this.getAllHTMLElements('tabs');
+    const tabs = this.getHTMLElements('tabs');
     let nextTabIndex = 0;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
@@ -232,23 +232,20 @@ export class Tabs {
     });
   };
 
-  private setStatusStyle = (): void => {
-    const styleBar = this.getHTMLElement('status');
-    const tabs = this.getAllHTMLElements('tabs');
-    if (tabs.length === 0 || styleBar === undefined) {
-      return;
-    }
+  private setStatusBarStyle = (): void => {
+    const statusBar = this.getHTMLElement('statusBar');
+    const tabs = this.getHTMLElements('tabs');
     const activeTab = tabs[this.activeTab];
-    const statusWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
-    const statusPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
-    const statusStyle = `width: ${statusWidth}px; left: ${statusPositionLeft}px`;
+    const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
+    const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
+    const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
 
-    styleBar.setAttribute('style', statusStyle);
+    statusBar.setAttribute('style', statusBarStyle);
   };
 
-  private handleArrowButtonClick = (buttonType: 'prev' | 'next'): void => {
+  private handlePrevNextClick = (action: 'prev' | 'next'): void => {
     const nav = this.getHTMLElement('nav');
-    const tabs = this.getAllHTMLElements('tabs');
+    const tabs = this.getHTMLElements('tabs');
     const lastTab = tabs[tabs.length - 1];
     const navWidth = nav.offsetWidth;
     const currentScrollPosition = nav.scrollLeft;
@@ -257,7 +254,7 @@ export class Tabs {
 
     let scrollTo: number;
 
-    if (buttonType === 'next') {
+    if (action === 'next') {
       if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
         scrollTo = scrollToMax;
       } else {
@@ -282,7 +279,7 @@ export class Tabs {
       return;
     }
 
-    const tabs = this.getAllHTMLElements('tabs');
+    const tabs = this.getHTMLElements('tabs');
     const firstTab = tabs[0];
     const lastTab = tabs[tabs.length - 1];
 
@@ -304,16 +301,16 @@ export class Tabs {
     this.intersectionObserver.observe(lastTab);
   };
 
-  private getHTMLElement = (element: GetHTMLElementSelector): HTMLElement => {
+  private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
     const selector = {
       nav: 'tabs__nav',
-      status: 'tabs__status'
+      statusBar: 'tabs__status-bar'
     };
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
   };
 
-  private getAllHTMLElements = (elements: GetAllHTMLElementSelector): HTMLElement[] => {
+  private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
     const selector = {
       tabs: 'tabs__button'
     };
