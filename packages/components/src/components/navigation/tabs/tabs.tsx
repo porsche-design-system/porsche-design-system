@@ -130,9 +130,10 @@ export class Tabs {
                       id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
                       role="tab"
-                      {...props}
                       tabindex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
+                      aria-controls={prefix(`tab-panel-${index}`)}
+                      {...props}
                       onClick={() => this.handleTabButtonClick(index)}
                     >
                       {tab.label}
@@ -166,7 +167,7 @@ export class Tabs {
         </div>
         <div class={slotContentClasses}>
           {this.tabsItems.map((tab, index) =>
-            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={prefix(`tab-item-${index}`)}/>
+            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} id={prefix(`tab-panel-${index}`)} aria-labelledby={prefix(`tab-item-${index}`)}/>
           )}
         </div>
       </Host>
