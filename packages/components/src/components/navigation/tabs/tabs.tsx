@@ -102,8 +102,8 @@ export class Tabs {
     return (
       <Host>
         <div class={tabHeaderClasses}>
-          <nav class={tabNavClasses}>
-            <ul class={tabButtonListClasses}>
+          <div class={tabNavClasses}>
+            <ul class={tabButtonListClasses} role="tablist">
               {this.tabsItems.map((tab, index) => {
                 const extendedTabButtonClasses = {
                   ...tabButtonClasses,
@@ -114,11 +114,14 @@ export class Tabs {
                 const props = (({href, target}) => ({href, target}))(tab);
 
                 return (
-                  <li>
+                  <li role="presentation">
                     <Tag
+                      id={`xx-${index}`}
                       class={extendedTabButtonClasses}
                       role="tab"
                       {...props}
+                      tabindex={!tab.selected && -1}
+                      aria-selected={tab.selected && 'true'}
                       onClick={() => this.handleTabButtonClick(index)}
                     >
                       {tab.label}
@@ -128,7 +131,7 @@ export class Tabs {
               })}
             </ul>
             <span class={statusClasses} style={this.calcStatusStyle()}/>
-          </nav>
+          </div>
           <div class={tabPrevClasses}>
             <p-button-pure
               theme={this.theme}
@@ -150,13 +153,19 @@ export class Tabs {
             </p-button-pure>
           </div>
         </div>
-        <slot/>
+        {this.tabsItems.map((tab, index) => {
+          return (
+            <section role="tabpanel" hidden={!tab.selected} innerHTML={tab.outerHTML} aria-labelledby={`xx-${index}`}/>
+          );
+        })}
       </Host>
     );
   }
 
   private resetTabs = (): void => {
-    for (const tab of this.tabsItems) tab.selected = false;
+    for (const tab of this.tabsItems) {
+      tab.selected = false;
+    }
   };
 
   private setActiveTab = (index: number): void => {
@@ -182,7 +191,9 @@ export class Tabs {
       nextTabIndex = this.activeTab + 1;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
       nextTabIndex = this.activeTab - 1;
-    } else nextTabIndex = tabIndex;
+    } else {
+      nextTabIndex = tabIndex;
+    }
 
     const nextTabElement = tabs[nextTabIndex];
 
