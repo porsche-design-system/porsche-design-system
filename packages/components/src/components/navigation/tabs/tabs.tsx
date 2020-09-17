@@ -126,9 +126,10 @@ export class Tabs {
                       id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
                       role="tab"
-                      {...props}
                       tabindex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
+                      aria-controls={prefix(`tab-panel-${index}`)}
+                      {...props}
                       onClick={() => this.handleTabClick(index)}
                     >
                       {tab.label}
@@ -166,6 +167,7 @@ export class Tabs {
               role="tabpanel"
               hidden={!tab.selected}
               innerHTML={tab.outerHTML}
+              id={prefix(`tab-panel-${index}`)}
               aria-labelledby={prefix(`tab-item-${index}`)}
             />
           ))}
