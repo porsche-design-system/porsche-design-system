@@ -31,7 +31,9 @@ export class Tabs {
   // TODO: Keyboard Support
 
   @State() public tabsItems: any = Array.from(this.host.children);
-  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => { console.log('hello', tab.selected); return tab.selected});
+  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => {
+    return tab.selected;
+  });
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
@@ -49,15 +51,17 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
+    this.setActiveTab(this.activeTabIndex);
     this.observeHost();
   }
 
-  public componentDidRender(): void {
+  public componentDidRender = (): void => {
     this.setStatusBarStyle();
-  }
+  };
 
   public componentDidLoad(): void {
     this.observeIntersection();
+    this.moveSelectedTabIntoView();
   }
 
   public disconnectedCallback(): void {
@@ -179,6 +183,11 @@ export class Tabs {
       </Host>
     );
   }
+
+  private moveSelectedTabIntoView = (): void => {
+    const tabs = this.getHTMLElements('tabs');
+    tabs[this.activeTabIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  };
 
   private resetTabs = (): void => {
     for (const tab of this.tabsItems) {
