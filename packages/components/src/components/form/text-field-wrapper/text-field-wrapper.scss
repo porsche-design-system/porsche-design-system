@@ -93,6 +93,12 @@
   margin: 0 !important;
 }
 
+// Reset webkit autofill styles
+::slotted(input:-internal-autofill-selected),
+::slotted(input:-internal-autofill-previewed) {
+  -webkit-background-clip: text !important;
+}
+
 .#{$p-global-class-prefix}text-field-wrapper {
   $bem-block: &;
 
