@@ -19,12 +19,20 @@
   </style>
   <script>
     const updateSize = (size) => {
+      for (let element of document.querySelectorAll('p-tabs-nav')) {
+        element.setAttribute('size', size);
+      }
+
       for (let element of document.querySelectorAll('p-tabs')) {
         element.setAttribute('size', size);
       }
     }
 
     const updateWeight = (weight) => {
+      for (let element of document.querySelectorAll('p-tabs-nav')) {
+        element.setAttribute('weight', weight);
+      }
+
       for (let element of document.querySelectorAll('p-tabs')) {
         element.setAttribute('weight', weight);
       }
@@ -49,31 +57,40 @@
 <br>
 <br>
 
-<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">
-  <p-tabs-item label="Hello World!">
-    <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
-  </p-tabs-item>
-  <p-tabs-item label="second">
-    <p-text>Hallo Welt 2 <a href="#">link</a></p-text>
-  </p-tabs-item>
-  <p-tabs-item selected label="A longer one">
-    <p-text>Hallo Welt 3 <a href="#">link</a></p-text>
-  </p-tabs-item>
-  <p-tabs-item label="Whatever">
-    <p-text>Hallo Welt 4 <a href="#">link</a></p-text>
-  </p-tabs-item>
-  <p-tabs-item label="test">
-    <p-text>Hallo Welt 5</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="Die letzte aller Möglichkeiten">
-    <p-text>Hallo Welt 6</p-text>
-  </p-tabs-item>
-</p-tabs>
+<!-- Nav element (links list) but looks like Tabs -->
+<p-tabs-nav style="border: 1px solid #ccc; padding: 3rem;" size="medium">
+  <a href="">Label 1</a>
+  <a href="">Label 2</a>
+  <a href="">Label 3</a>
+  <a href="">Label 4</a>
+</p-tabs-nav>
 
-<br>
-<br>
-<br>
-<br>
+<!-- Simple Button based Tabs -->
+<!--<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">-->
+<!--  <p-tabs-item label="Hello World!">-->
+<!--    <p-text>Hallo Welt 1 <a href="#">link</a></p-text>-->
+<!--  </p-tabs-item>-->
+<!--  <p-tabs-item label="second">-->
+<!--    <p-text>Hallo Welt 2 <a href="#">link</a></p-text>-->
+<!--  </p-tabs-item>-->
+<!--  <p-tabs-item selected label="A longer one">-->
+<!--    <p-text>Hallo Welt 3 <a href="#">link</a></p-text>-->
+<!--  </p-tabs-item>-->
+<!--  <p-tabs-item label="Whatever">-->
+<!--    <p-text>Hallo Welt 4 <a href="#">link</a></p-text>-->
+<!--  </p-tabs-item>-->
+<!--  <p-tabs-item label="test">-->
+<!--    <p-text>Hallo Welt 5</p-text>-->
+<!--  </p-tabs-item>-->
+<!--  <p-tabs-item label="Die letzte aller Möglichkeiten">-->
+<!--    <p-text>Hallo Welt 6</p-text>-->
+<!--  </p-tabs-item>-->
+<!--</p-tabs>-->
+
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
 
 <!--<p-tabs style="background-color: black; padding: 3rem;" theme="dark" size="medium">-->
 <!--  <p-tabs-item label="Hello World!">-->
