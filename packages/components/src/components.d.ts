@@ -526,18 +526,10 @@ export namespace Components {
     }
     interface PTabsItem {
         /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
           * Defines the label used in tabs.
          */
         "label": string;
         "selected"?: boolean;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
     }
     interface PTabsNav {
         /**
@@ -1378,18 +1370,10 @@ declare namespace LocalJSX {
     }
     interface PTabsItem {
         /**
-          * When providing an url then the component will be rendered as `<a>`.
-         */
-        "href"?: string;
-        /**
           * Defines the label used in tabs.
          */
         "label"?: string;
         "selected"?: boolean;
-        /**
-          * Target attribute where the link should be opened.
-         */
-        "target"?: LinkTarget;
     }
     interface PTabsNav {
         /**
