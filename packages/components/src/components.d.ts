@@ -539,6 +539,24 @@ export namespace Components {
          */
         "target"?: LinkTarget;
     }
+    interface PTabsNav {
+        /**
+          * Defines which tab to be visualized as selected.
+         */
+        "activeTabIndex"?: number;
+        /**
+          * The text size.
+         */
+        "size"?: 'small' | 'medium';
+        /**
+          * Adapts color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -771,6 +789,12 @@ declare global {
         prototype: HTMLPTabsItemElement;
         new (): HTMLPTabsItemElement;
     };
+    interface HTMLPTabsNavElement extends Components.PTabsNav, HTMLStencilElement {
+    }
+    var HTMLPTabsNavElement: {
+        prototype: HTMLPTabsNavElement;
+        new (): HTMLPTabsNavElement;
+    };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
     var HTMLPTextElement: {
@@ -824,6 +848,7 @@ declare global {
         "p-spinner": HTMLPSpinnerElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-item": HTMLPTabsItemElement;
+        "p-tabs-nav": HTMLPTabsNavElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -1366,6 +1391,24 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
     }
+    interface PTabsNav {
+        /**
+          * Defines which tab to be visualized as selected.
+         */
+        "activeTabIndex"?: number;
+        /**
+          * The text size.
+         */
+        "size"?: 'small' | 'medium';
+        /**
+          * Adapts color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -1487,6 +1530,7 @@ declare namespace LocalJSX {
         "p-spinner": PSpinner;
         "p-tabs": PTabs;
         "p-tabs-item": PTabsItem;
+        "p-tabs-nav": PTabsNav;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1520,6 +1564,7 @@ declare module "@stencil/core" {
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
+            "p-tabs-nav": LocalJSX.PTabsNav & JSXBase.HTMLAttributes<HTMLPTabsNavElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;

@@ -504,6 +504,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/tabs/tabs.props.md`)
       ]
     },
+    'Tabs Nav': {
+      Design: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-nav/tabs-nav.design.md`)
+      ],
+      Code: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-nav/tabs-nav.code.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-nav/tabs-nav.props.md`)
+      ]
+    },
     'Link Pure': {
       Design: [
         // @ts-ignore
