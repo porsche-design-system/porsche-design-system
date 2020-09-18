@@ -22,7 +22,9 @@ export class Tabs {
   /** Adapts color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  // TODO: colorMode: default (volltonfarbe) | surface (volltonfarbe) | picture
+  /** Adapts the background color of prev and next buttons */
+  @Prop() public colorScheme?: 'default' | 'surface' = 'default';
+
   // TODO: timebox router (link) support
   // TODO: ScrollIntoView (horizontal)
   // TODO: Focus Styling
@@ -76,6 +78,7 @@ export class Tabs {
       ...tabActionClasses,
       [prefix('tabs__action--prev')]: true,
       [prefix(`tabs__action--theme-${this.theme}`)]: true,
+      [prefix(`tabs__action--color-scheme-${this.colorScheme}`)]: true,
       [prefix('tabs__action--visible')]: this.isPrevVisible
     };
 
@@ -83,6 +86,7 @@ export class Tabs {
       ...tabActionClasses,
       [prefix('tabs__action--next')]: true,
       [prefix(`tabs__action--theme-${this.theme}`)]: true,
+      [prefix(`tabs__action--color-scheme-${this.colorScheme}`)]: true,
       [prefix('tabs__action--visible')]: this.isNextVisible
     };
 

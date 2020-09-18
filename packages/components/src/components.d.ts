@@ -512,6 +512,10 @@ export namespace Components {
     }
     interface PTabs {
         /**
+          * Adapts the background color of prev and next buttons
+         */
+        "colorScheme"?: 'default' | 'surface';
+        /**
           * The text size.
          */
         "size"?: 'small' | 'medium';
@@ -1355,6 +1359,10 @@ declare namespace LocalJSX {
         "theme"?: 'light' | 'dark';
     }
     interface PTabs {
+        /**
+          * Adapts the background color of prev and next buttons
+         */
+        "colorScheme"?: 'default' | 'surface';
         /**
           * The text size.
          */
