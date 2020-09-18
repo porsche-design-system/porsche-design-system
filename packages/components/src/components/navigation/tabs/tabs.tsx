@@ -121,23 +121,19 @@ export class Tabs {
                   [prefix('tabs__button--selected')]: tab.selected
                 };
 
-                const Tag = tab.href === undefined ? 'button' : 'a';
-                const props = (({ href, target }) => ({ href, target }))(tab);
-
                 return (
                   <li role="presentation">
-                    <Tag
+                    <button
                       id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
                       role="tab"
-                      tabindex={!tab.selected ? -1 : 0}
+                      tabIndex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
                       aria-controls={prefix(`tab-panel-${index}`)}
-                      {...props}
                       onClick={() => this.handleTabClick(index)}
                     >
                       {tab.label}
-                    </Tag>
+                    </button>
                   </li>
                 );
               })}
