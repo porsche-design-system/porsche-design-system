@@ -34,6 +34,7 @@ export class Tabs {
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
+  private navigation: HTMLElement;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
 
@@ -57,6 +58,7 @@ export class Tabs {
   };
 
   public componentDidLoad(): void {
+    this.setKeyboardEventListener();
     this.observeIntersection();
     this.scrollToSelectedTab();
   }
@@ -114,7 +116,6 @@ export class Tabs {
     const slotContentClasses = {
       [prefix('tabs__slot')]: true
     };
-
     return (
       <Host>
         <div class={tabHeaderClasses}>
@@ -131,8 +132,9 @@ export class Tabs {
                     <button
                       id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
+                      type="button"
                       role="tab"
-                      tabIndex={!tab.selected ? -1 : 0}
+                      tabindex={!tab.selected ? -1 : 0}
                       aria-selected={tab.selected && 'true'}
                       aria-controls={prefix(`tab-panel-${index}`)}
                       onClick={() => this.handleTabClick(index)}
@@ -150,6 +152,7 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-left"
+              tabindex={-1}
               onClick={() => this.handlePrevNextClick('prev')}
             >
               Prev
@@ -160,6 +163,7 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-right"
+              tabindex={-1}
               onClick={() => this.handlePrevNextClick('next')}
             >
               Next
@@ -193,6 +197,42 @@ export class Tabs {
     }
   };
 
+  private setKeyboardEventListener = (): void => {
+    this.navigation = this.getHTMLElement('nav');
+    this.navigation.addEventListener('keydown', this.handleKeydown);
+  };
+
+  private handleKeydown = (e: KeyboardEvent): void => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTab;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'Left':
+        newTab = this.prevTab();
+        break;
+
+      case 'ArrowRight':
+      case 'Right':
+        newTab = this.nextTab();
+        break;
+
+      case 'Home':
+        e.preventDefault();
+        newTab = 0;
+        break;
+
+      case 'End':
+        e.preventDefault();
+        newTab = this.tabsItems.length - 1;
+        break;
+
+      default:
+        return;
+    }
+    this.handleTabClick(newTab);
+    tabs[this.activeTabIndex].focus();
+  };
+
   private setActiveTab = (index: number): void => {
     const tabs = this.tabsItems;
     const maxIndex = tabs.length - 1;
@@ -209,13 +249,13 @@ export class Tabs {
   private nextTab = () => {
     const tabs = this.getHTMLElements('tabs');
     let newTabIndex = this.activeTabIndex + 1;
-    return tabs[(newTabIndex + tabs.length) % tabs.length];
+    return (newTabIndex + tabs.length) % tabs.length;
   };
 
   private prevTab = () => {
     const tabs = this.getHTMLElements('tabs');
-    let newTabIndex =this.activeTabIndex - 1;
-    return tabs[(newTabIndex + tabs.length) % tabs.length];
+    let newTabIndex = this.activeTabIndex - 1;
+    return (newTabIndex + tabs.length) % tabs.length;
   };
 
   private handleTabClick = (tabIndex: number): void => {
@@ -230,10 +270,10 @@ export class Tabs {
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
       nextTab = this.prevTab();
     } else {
-      nextTab = tabs[tabIndex];
+      nextTab = tabIndex;
     }
 
-    nextTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    tabs[nextTab].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   };
 
   private updateTabItems = (): void => {
