@@ -205,24 +205,35 @@ export class Tabs {
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
+  // TO-DO: typing of host.children
+  private nextTab = () => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTabIndex = this.activeTabIndex + 1;
+    return tabs[(newTabIndex + tabs.length) % tabs.length];
+  };
+
+  private prevTab = () => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTabIndex =this.activeTabIndex - 1;
+    return tabs[(newTabIndex + tabs.length) % tabs.length];
+  };
+
   private handleTabClick = (tabIndex: number): void => {
     const activeTabOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
 
     const tabs = this.getHTMLElements('tabs');
-    let nextTabIndex = 0;
+    let nextTab;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTabIndex = this.activeTabIndex + 1;
+      nextTab = this.nextTab();
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTabIndex = this.activeTabIndex - 1;
+      nextTab = this.prevTab();
     } else {
-      nextTabIndex = tabIndex;
+      nextTab = tabs[tabIndex];
     }
 
-    const nextTabElement = tabs[nextTabIndex];
-
-    nextTabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    nextTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   };
 
   private updateTabItems = (): void => {
