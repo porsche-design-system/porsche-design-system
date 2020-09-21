@@ -30,9 +30,7 @@ export class Tabs {
   // TODO: Keyboard Support
 
   @State() public tabsItems: any = Array.from(this.host.children);
-  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => {
-    return tab.selected;
-  });
+  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => tab.selected);
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
