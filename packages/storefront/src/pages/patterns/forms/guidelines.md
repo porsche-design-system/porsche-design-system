@@ -139,10 +139,10 @@ The user should be asked to enter only information that is absolutely necessary.
    Thus form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". 
    Each fieldset should be initiated by a title that gives the user short information on what data is required in this section.
    
-   | Viewport | Range             | Headline | Subline | Section Headline | Section |
-| -------- | ----------------- | ---------------------------- | ---------------------------------- | ------------------- | ----------------------------------------------- |
-| **XS-S**   | 320-999 px        | Headline  1             | Text Small                          | Headline 4              | Headline 5                                          |
-| **M-XL**    | 1000-1760 px or larger        | Headline  1             | Text Medium                           | Headline 4              | Headline 5                                          |
+   | Viewport | Range                  | Headline    | Subline     | Section Headline | Section    |
+   | -------- | ---------------------- | ----------- | ----------- | ---------------- | ---------- |
+   | **XS-S** | 320-999 px             | Headline  1 | Text Small  | Headline 4       | Headline 5 |
+   | **M-XL** | 1000-1760 px or larger | Headline  1 | Text Medium | Headline 4       | Headline 5 |
 
 
 3. **Call-to-actions**  
@@ -233,9 +233,9 @@ When it makes sense you should set input constraints to your Text Fields and Tex
 Good forms provide **valuable support** – both **for success**, when the user completes form fields correctly, and **for error cases**, when the user makes a wrong entry. However, there's a direct correlation between *how* and *when* users are presented with form validation errors and the pace and effort with which they are able to resolve them.
 
 
-![Form layouts with error and success notification](../../../assets/patterns-forms-validation.png)
+![Form layouts with error and success notification](../../../assets/patterns-forms-validation.svg)
 
-_Example input field with error_
+_Example input field with error | 1.Asterisk, 2.Error message, 3.Border highlight_
 
 
 ### Client-side validation
