@@ -99,6 +99,11 @@
   -webkit-background-clip: text !important;
 }
 
+::slotted(input:-webkit-autofill),
+::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: text !important;
+}
+
 .#{$p-global-class-prefix}text-field-wrapper {
   $bem-block: &;
 
