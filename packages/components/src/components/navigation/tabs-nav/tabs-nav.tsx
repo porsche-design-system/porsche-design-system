@@ -23,7 +23,7 @@ export class TabsNav {
   @Prop() public theme?: Theme = 'light';
 
   /** Defines which tab to be visualized as selected. */
-  @Prop({reflect: true}) public activeTabIndex?: number = 0;
+  @Prop({ reflect: true }) public activeTabIndex?: number = 0;
 
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
@@ -98,7 +98,7 @@ export class TabsNav {
         <div class={tabHeaderClasses}>
           <div class={tabNavClasses}>
             <nav class={tabButtonListClasses} role="tablist">
-              <slot/>
+              <slot />
             </nav>
             <span class={statusBarClasses} />
           </div>
@@ -131,7 +131,6 @@ export class TabsNav {
     const navList = Array.from(this.host.children);
 
     const handleTabClick = (e) => {
-
       for (const [index, link] of Object.entries(navList)) {
         if (link === e.target) {
           this.handleTabChange(+index);
@@ -140,7 +139,7 @@ export class TabsNav {
 
       e.preventDefault();
       e.stopPropagation();
-    }
+    };
 
     for (const link of navList) {
       link.addEventListener('click', handleTabClick);
