@@ -129,7 +129,7 @@ The user should be asked to enter only information that is absolutely necessary.
 
 ## Form layout
 
-### The anatomy of a form
+### Example of the anatomy of a form
 
 1. **Headline and subline**  
    A clear title gives the user some information on what to expect when filling out the form.  
@@ -137,8 +137,14 @@ The user should be asked to enter only information that is absolutely necessary.
 2. **Sections including form elements**  
    The longer a form, the more crucial it is to split it into content-related sub-areas in order to increase scannability.  
    Thus form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". 
-   Each fieldset should be initiated by a title (we recommend h4 of the respective viewport) that gives the user short information on what data is required in this section.
+   Each fieldset should be initiated by a title that gives the user short information on what data is required in this section.
    
+   | Viewport | Range             | Headline | Subline | Section Headline | Section |
+| -------- | ----------------- | ---------------------------- | ---------------------------------- | ------------------- | ----------------------------------------------- |
+| **XS-S**   | 320-999 px        | Headline  1             | Text Small                          | Headline 4              | Headline 5                                          |
+| **M-XL**    | 1000-1760 px or larger        | Headline  1             | Text Medium                           | Headline 4              | Headline 5                                          |
+
+
 3. **Call-to-actions**  
    Call-to-actions are needed to submit or cancel the form input and should always be placed left-aligned.
    
