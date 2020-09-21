@@ -26,7 +26,6 @@ export class Tabs {
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
   // TODO: timebox router (link) support
-  // TODO: ScrollIntoView (horizontal)
   // TODO: Focus Styling
   // TODO: Keyboard Support
 
@@ -61,7 +60,7 @@ export class Tabs {
 
   public componentDidLoad(): void {
     this.observeIntersection();
-    this.moveSelectedTabIntoView();
+    this.scrollToSelectedTab();
   }
 
   public disconnectedCallback(): void {
@@ -184,9 +183,10 @@ export class Tabs {
     );
   }
 
-  private moveSelectedTabIntoView = (): void => {
+  private scrollToSelectedTab = (): void => {
     const tabs = this.getHTMLElements('tabs');
-    tabs[this.activeTabIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const nav = this.getHTMLElement('nav');
+    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft;
   };
 
   private resetTabs = (): void => {
