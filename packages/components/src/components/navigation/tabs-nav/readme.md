@@ -7,9 +7,16 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                         | Type      | Default     |
-| ---------- | ---------- | ------------------------------------------------------------------- | --------- | ----------- |
-| `href`     | `href`     | When providing an url then the component will be rendered as `<a>`. | `string`  | `undefined` |
-| `label`    | `label`    | Defines the label used in tabs.                                     | `string`  | `undefined` |
-| `selected` | `selected` |                                                                     | `boolean` | `undefined` |
-| `target`   | `target`   | Target attribute where the link should be opened.                   | `string`  | `'_self'`   |
+| Property         | Attribute          | Description                                     | Type                      | Default     |
+| ---------------- | ------------------ | ----------------------------------------------- | ------------------------- | ----------- |
+| `activeTabIndex` | `active-tab-index` | Defines which tab to be visualized as selected. | `number`                  | `0`         |
+| `size`           | `size`             | The text size.                                  | `"medium" \| "small"`     | `'medium'`  |
+| `theme`          | `theme`            | Adapts color when used on dark background.      | `"dark" \| "light"`       | `'light'`   |
+| `weight`         | `weight`           | The text weight.                                | `"regular" \| "semibold"` | `'regular'` |
+
+
+## Dependencies
+
+### Depends on
+
+- [p-button-pure](../../action/button-pure)
