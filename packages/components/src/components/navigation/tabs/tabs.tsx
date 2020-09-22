@@ -48,7 +48,7 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    this.setActiveTab(this.activeTabIndex);
+    this.handleTabChange(this.activeTabIndex); //We have to reset to ensure
     this.observeHost();
   }
 
@@ -131,7 +131,7 @@ export class Tabs {
                       type="button"
                       role="tab"
                       tabindex={!tab.selected ? -1 : 0}
-                      aria-selected={tab.selected && 'true'}
+                      aria-selected={tab.selected ? 'true' : 'false'}
                       aria-controls={prefix(`tab-panel-${index}`)}
                       onClick={() => this.handleTabClick(index)}
                     >
@@ -282,7 +282,7 @@ export class Tabs {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      attributeFilter: ['label']
+      attributeFilter: ['label', 'selected']
     });
   };
 
