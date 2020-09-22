@@ -78,7 +78,7 @@
 
   &__nav {
     position: relative;
-    padding: 3px;
+    padding: 3px 3px .5em;
     margin-bottom: $p-spacing-16;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -176,10 +176,14 @@
 
   &__button-list {
     list-style: none;
-    display: flex;
     white-space: nowrap;
     margin: 0;
     padding: 0;
+
+    & li {
+      vertical-align: top;
+      display: inline-block;
+    }
 
     & li:not(:last-child) {
       margin-right: $p-spacing-32;
@@ -187,6 +191,7 @@
   }
 
   &__status-bar {
+    bottom: 0;
     height: 2px;
     position: absolute;
     display: flex;
