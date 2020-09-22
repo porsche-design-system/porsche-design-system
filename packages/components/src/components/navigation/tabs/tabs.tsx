@@ -28,12 +28,12 @@ export class Tabs {
   // TODO: Focus Styling, - margin
   // TODO: Scroll on Key-Press
 
-  @State() public tabsItems: any = Array.from(this.host.children);
-  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
+  @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
-  private navigation: HTMLElement;
+  private tabsNavElement: HTMLElement;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
 
@@ -192,13 +192,13 @@ export class Tabs {
   };
 
   private setKeyboardEventListener = (): void => {
-    this.navigation = this.getHTMLElement('nav');
-    this.navigation.addEventListener('keydown', this.handleKeydown);
+    this.tabsNavElement = this.getHTMLElement('nav');
+    this.tabsNavElement.addEventListener('keydown', this.handleKeydown);
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
     const tabs = this.getHTMLElements('tabs');
-    let newTab;
+    let newTab: number;
     switch (e.key) {
       case 'ArrowLeft':
       case 'Left':
@@ -239,7 +239,6 @@ export class Tabs {
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
-  // TO-DO: typing of host.children
   private nextTab = () => {
     const tabs = this.getHTMLElements('tabs');
     let newTabIndex = this.activeTabIndex + 1;
@@ -257,7 +256,7 @@ export class Tabs {
     this.handleTabChange(tabIndex);
 
     const tabs = this.getHTMLElements('tabs');
-    let nextTab;
+    let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
       nextTab = this.nextTab();
@@ -271,7 +270,7 @@ export class Tabs {
   };
 
   private updateTabItems = (): void => {
-    this.tabsItems = Array.from(this.host.children);
+    this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
   private observeHost = (): void => {
