@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="563px" height="114px" viewBox="0 0 563 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Tab Item - Overflow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="-2.22044605e-14%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="6.25 17.5 11.95 10.0005078 6.25 2.5 8.05 2.5 13.75 10.0005078 8.05 17.5"></polygon>
+    </defs>
+    <g id="Tab-Item---Overflow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="563" height="114"></rect>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(519.000000, 32.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <rect id="Rectangle" fill="#FFFFFF" x="92" y="0" width="379" height="114"></rect>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(234.000000, 32.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-3" transform="translate(139.000000, 32.000000)">
+            <g id="Container"></g>
+            <rect id="Active-tab-indicator" fill="#D5001C" fill-rule="evenodd" x="10" y="37" width="63" height="3"></rect>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(329.000000, 32.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-8" transform="translate(424.000000, 32.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#000000">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <rect id="Rectangle-Copy-2" fill-opacity="0.683621066" fill="#FFE2E2" x="471" y="0" width="93" height="114"></rect>
+        <rect id="Rectangle" fill="#FFFFFF" x="444" y="29" width="27" height="50"></rect>
+        <rect id="Rectangle-Copy-3" fill="url(#linearGradient-1)" x="406" y="29" width="38" height="50"></rect>
+        <g id="icon/arrow-right-hair" transform="translate(444.000000, 44.000000)">
+            <rect id="16x16" fill-rule="nonzero" x="0" y="0" width="20" height="20"></rect>
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <use id="🌈-Icon-color" fill="#313639" fill-rule="nonzero" xlink:href="#path-2"></use>
+        </g>
+        <rect id="Rectangle-Copy-7" fill-opacity="0.683621066" fill="#FFE2E2" x="0" y="0" width="93" height="114"></rect>
+    </g>
+</svg>

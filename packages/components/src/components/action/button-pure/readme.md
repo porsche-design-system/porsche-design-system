@@ -26,3 +26,4 @@
 ### Used by
 
  - [p-tabs](../../navigation/tabs)
+ - [p-tabs-nav](../../navigation/tabs-nav)
