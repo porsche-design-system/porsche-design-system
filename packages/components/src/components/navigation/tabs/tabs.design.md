@@ -8,7 +8,7 @@ Tabs are an intuitive way to organize content and allow navigation between group
 
 ### 1. Small
 
-<p-tabs :size="small">
+<p-tabs size="small">
     <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
     <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
     <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
@@ -17,7 +17,7 @@ Tabs are an intuitive way to organize content and allow navigation between group
 
 ### 2. Medium
 
-<p-tabs :size="medium">
+<p-tabs size="medium">
     <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
     <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
     <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
@@ -109,4 +109,3 @@ Tab labels provide clear and concise explanations of the content within. Each ta
 ### Navigation
 
 Not be used for primary navigation.
----
