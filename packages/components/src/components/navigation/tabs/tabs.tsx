@@ -25,9 +25,8 @@ export class Tabs {
   /** Adapts the background color of prev and next buttons */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
-  // TODO: timebox router (link) support
-  // TODO: Focus Styling
-  // TODO: Keyboard Support
+  // TODO: Focus Styling, - margin
+  // TODO: Scroll on Key-Press
 
   @State() public tabsItems: any = Array.from(this.host.children);
   @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => tab.selected);
@@ -113,9 +112,6 @@ export class Tabs {
       [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
     };
 
-    const slotContentClasses = {
-      [prefix('tabs__slot')]: true
-    };
     return (
       <Host>
         <div class={tabHeaderClasses}>
@@ -170,17 +166,15 @@ export class Tabs {
             </p-button-pure>
           </div>
         </div>
-        <div class={slotContentClasses}>
-          {this.tabsItems.map((tab, index) => (
-            <section
-              role="tabpanel"
-              hidden={!tab.selected}
-              innerHTML={tab.outerHTML}
-              id={prefix(`tab-panel-${index}`)}
-              aria-labelledby={prefix(`tab-item-${index}`)}
-            />
-          ))}
-        </div>
+        {this.tabsItems.map((tab, index) => (
+          <section
+            role="tabpanel"
+            hidden={!tab.selected}
+            innerHTML={tab.outerHTML}
+            id={prefix(`tab-panel-${index}`)}
+            aria-labelledby={prefix(`tab-item-${index}`)}
+          />
+        ))}
       </Host>
     );
   }

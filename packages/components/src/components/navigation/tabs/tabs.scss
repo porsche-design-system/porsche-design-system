@@ -10,6 +10,7 @@
 
   &__header {
     position: relative;
+    margin: p-px-to-rem(-3px);
   }
 
   &__action {
@@ -77,8 +78,8 @@
 
   &__nav {
     position: relative;
-    margin-bottom: $p-spacing-16;
     padding: 3px;
+    margin-bottom: $p-spacing-16;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -197,10 +198,6 @@
     &--theme-dark {
       background-color: $p-color-theme-dark-state-active;
     }
-  }
-
-  &__slot {
-    padding: 3px;
   }
 }
 
