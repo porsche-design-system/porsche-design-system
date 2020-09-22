@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="388px" height="121px" viewBox="0 0 388 121" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>tab-dark-theme</title>
+    <desc>Created with Sketch.</desc>
+    <g id="tab-dark-theme" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#090909" x="0" y="0" width="388" height="121"></rect>
+        <g id="Tab/Pure/Active-Small-Copy-7" transform="translate(132.000000, 35.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-Bold, Porsche Next" font-size="18" font-weight="bold" fill="#FFFFFF">
+                <tspan x="9.716" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-7" transform="translate(229.000000, 35.000000)">
+            <g id="Container"></g>
+            <text id="Label" font-family="PorscheNext-Bold, Porsche Next" font-size="18" font-weight="bold" fill="#FFFFFF">
+                <tspan x="9.716" y="27">Tab Item</tspan>
+            </text>
+        </g>
+        <g id="Tab/Pure/Active-Small-Copy-6" transform="translate(35.000000, 35.000000)">
+            <g id="Container"></g>
+            <rect id="Active-tab-indicator" fill="#D5001C" fill-rule="evenodd" x="10" y="37" width="63" height="3"></rect>
+            <text id="Label" font-family="PorscheNext-SemiBold, Porsche Next" font-size="18" font-weight="500" fill="#FFFFFF">
+                <tspan x="9.86" y="27">Tab Item</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
