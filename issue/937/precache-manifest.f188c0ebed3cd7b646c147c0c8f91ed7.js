@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "9d25e46c9ed16a52a5d5",
+    "revision": "9f31e92451a9df8f1b3a",
     "url": "css/app.7d4f6ba5.css"
   },
   {
@@ -18,6 +18,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "8c0ce61cdd80ef129956",
     "url": "css/chunk-0b8fd983.daf8700f.css"
+  },
+  {
+    "revision": "e2f805d0ed823ae92e5b",
+    "url": "css/chunk-1274ae43.fafbfeac.css"
   },
   {
     "revision": "1cfaf154bcc10f0983f2",
@@ -46,10 +50,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "dadee0e32ed54593eddb",
     "url": "css/chunk-b583cef8.c9be8ef3.css"
-  },
-  {
-    "revision": "b14485e7a8fd669b373e",
-    "url": "css/chunk-c7f3501e.fafbfeac.css"
   },
   {
     "revision": "7f7d363f2ed065a181f9",
@@ -324,12 +324,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "b539fb8252768c45a31dfca58e0e14e5",
+    "revision": "40ac97865a29e841cafc438f5de0fac0",
     "url": "index.html"
   },
   {
-    "revision": "9d25e46c9ed16a52a5d5",
-    "url": "js/app.0289262a.js"
+    "revision": "9f31e92451a9df8f1b3a",
+    "url": "js/app.0deaa059.js"
   },
   {
     "revision": "f46712e34b1aabc6a702",
@@ -354,6 +354,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f47e7d7bc678d7b220e3",
     "url": "js/chunk-10340138.154a79c9.js"
+  },
+  {
+    "revision": "a2bfb06cc1bad233912a",
+    "url": "js/chunk-111da1c4.1ce76138.js"
+  },
+  {
+    "revision": "e2f805d0ed823ae92e5b",
+    "url": "js/chunk-1274ae43.9cd02fed.js"
   },
   {
     "revision": "1cfaf154bcc10f0983f2",
@@ -434,6 +442,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "99a15834c8298f8bca9f",
     "url": "js/chunk-2d0af48d.8d2899ba.js"
+  },
+  {
+    "revision": "a9d1e9a49c578cf61ca8",
+    "url": "js/chunk-2d0b292a.1b6029d8.js"
   },
   {
     "revision": "12478d6ab6784d7ccabf",
@@ -566,6 +578,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6f1bb2808b3a01ee4846",
     "url": "js/chunk-2d0d83f6.954c3340.js"
+  },
+  {
+    "revision": "ccecbaf506331541ad66",
+    "url": "js/chunk-2d0da97f.d7f4c648.js"
   },
   {
     "revision": "e94c68ee48f3f3930c1d",
@@ -760,10 +776,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-3f517d48.e26bb9a3.js"
   },
   {
-    "revision": "7a02ad57ac95c6b09b35",
-    "url": "js/chunk-4543ca7e.6763ae82.js"
-  },
-  {
     "revision": "032ce901d1de720d2e99",
     "url": "js/chunk-45a4c399.571ceef5.js"
   },
@@ -832,24 +844,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-9eeaf994.e93cbde1.js"
   },
   {
-    "revision": "57306d7363958004f828",
-    "url": "js/chunk-ae7bdf22.6934fca8.js"
-  },
-  {
-    "revision": "2cb9ff1f2fb53468d5b0",
-    "url": "js/chunk-ae80dfcc.c567b417.js"
-  },
-  {
     "revision": "dadee0e32ed54593eddb",
     "url": "js/chunk-b583cef8.d36ce4d6.js"
   },
   {
     "revision": "de3e38c60723ff7c5a85",
     "url": "js/chunk-b9dbf8cc.c87b2207.js"
-  },
-  {
-    "revision": "b14485e7a8fd669b373e",
-    "url": "js/chunk-c7f3501e.2c82304e.js"
   },
   {
     "revision": "5d21a667b623d1d1bcfc",
@@ -876,8 +876,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-f9d20386.916670e7.js"
   },
   {
-    "revision": "45eb4a050f0989a26899",
-    "url": "js/chunk-vendors.5fcd7fc4.js"
+    "revision": "ee29248a499dc39e95f7",
+    "url": "js/chunk-vendors.357151d0.js"
   },
   {
     "revision": "c003ee4a33d5c62544d8941a7694344c",
@@ -888,7 +888,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "a9baf88c3124e31f6b9531b7eb1d901e",
+    "revision": "e400c0bacfb2dd79ff12224f0da54a62",
     "url": "pds-loader.js"
   }
 ]);
