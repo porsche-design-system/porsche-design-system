@@ -3,7 +3,6 @@ import { prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
-type HTMLElementsSelector = 'tabs';
 
 @Component({
   tag: 'p-tabs-nav',
@@ -23,10 +22,10 @@ export class TabsNav {
   @Prop() public theme?: Theme = 'light';
 
   /** Defines which tab to be visualized as selected. */
-  @Prop({ reflect: true }) public activeTabIndex?: number = 0;
+  @Prop({reflect: true}) public activeTabIndex?: number = 0;
 
-  @State() public isPrevVisible = false;
-  @State() public isNextVisible = false;
+  @State() public isPrevHidden = false;
+  @State() public isNextHidden = false;
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
@@ -42,7 +41,8 @@ export class TabsNav {
 
   public componentDidLoad(): void {
     this.init();
-    // this.observeIntersection();
+    this.setActiveTab(0);
+    this.observeIntersection();
   }
 
   public disconnectedCallback(): void {
@@ -51,71 +51,60 @@ export class TabsNav {
   }
 
   public render(): JSX.Element {
-    const tabHeaderClasses = {
-      [prefix('tabs__header')]: true
+    const tabsNavClasses = {
+      [prefix('tabs-nav')]: true,
+      [prefix(`tabs-nav--size-${this.size}`)]: true,
+      [prefix(`tabs-nav--weight-${this.weight}`)]: true
     };
 
-    const tabActionClasses = {
-      [prefix('tabs__action')]: true
-    };
-
-    const tabPrevClasses = {
-      ...tabActionClasses,
-      [prefix('tabs__action--prev')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true,
-      [prefix('tabs__action--visible')]: this.isPrevVisible
-    };
-
-    const tabNextClasses = {
-      ...tabActionClasses,
-      [prefix('tabs__action--next')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true,
-      [prefix('tabs__action--visible')]: this.isNextVisible
-    };
-
-    const tabNavClasses = {
-      [prefix('tabs__nav')]: true
-    };
-    //
-    // const tabButtonClasses = {
-    //   [prefix('tabs__button')]: true,
-    //   [prefix(`tabs__button--theme-${this.theme}`)]: true,
-    //   [prefix(`tabs__button--size-${this.size}`)]: true,
-    //   [prefix(`tabs__button--weight-${this.weight}`)]: true
-    // };
-
-    const tabButtonListClasses = {
-      [prefix('tabs__button-list')]: true
+    const navClasses = {
+      [prefix('tabs-nav__nav')]: true
     };
 
     const statusBarClasses = {
-      [prefix('tabs__status-bar')]: true,
-      [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
+      [prefix('tabs-nav__status-bar')]: true,
+      [prefix(`tabs-nav__status-bar--theme-${this.theme}`)]: true
+    };
+
+    const prevClasses = {
+      [prefix('tabs-nav__action')]: true,
+      [prefix('tabs-nav__action--prev')]: true,
+      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
+      [prefix('tabs-nav__action--hidden')]: this.isPrevHidden
+    };
+
+    const nextClasses = {
+      [prefix('tabs-nav__action')]: true,
+      [prefix('tabs-nav__action--next')]: true,
+      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
+      [prefix('tabs-nav__action--hidden')]: this.isNextHidden
     };
 
     return (
       <Host>
-        <div class={tabHeaderClasses}>
-          <div class={tabNavClasses}>
-            <nav class={tabButtonListClasses} role="tablist">
-              <slot />
-            </nav>
-            <span class={statusBarClasses} />
-          </div>
-          <div class={tabPrevClasses}>
+        <div class={tabsNavClasses}>
+          <nav class={navClasses}>
+            <slot/>
+            <span class={statusBarClasses}/>
+          </nav>
+          <div class={prevClasses}>
             <p-button-pure
+              tabindex={-1}
               theme={this.theme}
               hide-label="true"
+              size="inherit"
               icon="arrow-head-left"
               onClick={() => this.handlePrevNextClick('prev')}
             >
               Prev
             </p-button-pure>
           </div>
-          <div class={tabNextClasses}>
+          <div class={nextClasses}>
             <p-button-pure
+              tabindex={-1}
               theme={this.theme}
               hide-label="true"
+              size="inherit"
               icon="arrow-head-right"
               onClick={() => this.handlePrevNextClick('next')}
             >
@@ -149,6 +138,11 @@ export class TabsNav {
   private setActiveTab = (index: number): void => {
     const maxIndex = this.host.children.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
+
+    const tabs = Array.from(this.host.children) as HTMLElement[];
+
+    tabs.forEach((tab) => tab.classList.remove('selected'));
+    tabs[this.activeTabIndex].classList.add('selected');
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
@@ -177,7 +171,7 @@ export class TabsNav {
 
   private setStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = Array.from(this.host.children) as HTMLElement[];
     const activeTab = tabs[this.activeTabIndex];
     const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
     const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
@@ -188,7 +182,7 @@ export class TabsNav {
 
   private handlePrevNextClick = (action: 'prev' | 'next'): void => {
     const nav = this.getHTMLElement('nav');
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = Array.from(this.host.children) as HTMLElement[];
     const lastTab = tabs[tabs.length - 1];
     const navWidth = nav.offsetWidth;
     const currentScrollPosition = nav.scrollLeft;
@@ -217,20 +211,35 @@ export class TabsNav {
     });
   };
 
+  private observeIntersection = (): void => {
+    const tabs = this.host.children;
+    const firstTab = tabs[0];
+    const lastTab = tabs[tabs.length - 1];
+
+    this.intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === firstTab) {
+            this.isPrevHidden = entry.isIntersecting;
+          }
+          if (entry.target === lastTab) {
+            this.isNextHidden = entry.isIntersecting;
+          }
+        }
+      },
+      {threshold: 1}
+    );
+
+    this.intersectionObserver.observe(firstTab);
+    this.intersectionObserver.observe(lastTab);
+  };
+
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
     const selector = {
-      nav: 'tabs__nav',
-      statusBar: 'tabs__status-bar'
+      nav: 'tabs-nav__nav',
+      statusBar: 'tabs-nav__status-bar'
     };
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
-  };
-
-  private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
-    const selector = {
-      tabs: 'tabs__button'
-    };
-
-    return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
   };
 }
