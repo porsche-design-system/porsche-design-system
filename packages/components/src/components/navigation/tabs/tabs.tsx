@@ -29,8 +29,8 @@ export class Tabs {
 
   @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
-  @State() public isPrevVisible = false;
-  @State() public isNextVisible = false;
+  @State() public isPrevHidden = false;
+  @State() public isNextHidden = false;
 
   private tabsNavElement: HTMLElement;
   private hostObserver: MutationObserver;
@@ -67,43 +67,23 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
-    const tabHeaderClasses = {
-      [prefix('tabs__header')]: true
+    const tabsClasses = {
+      [prefix('tabs')]: true,
+      [prefix(`tabs--size-${this.size}`)]: true,
+      [prefix(`tabs--weight-${this.weight}`)]: true
     };
 
-    const tabActionClasses = {
-      [prefix('tabs__action')]: true
+    const scrollAreaClasses = {
+      [prefix('tabs__scroll-area')]: true
     };
 
-    const tabPrevClasses = {
-      ...tabActionClasses,
-      [prefix('tabs__action--prev')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true,
-      [prefix(`tabs__action--color-scheme-${this.colorScheme}`)]: true,
-      [prefix('tabs__action--visible')]: this.isPrevVisible
+    const tabListClasses = {
+      [prefix('tabs__tab-list')]: true
     };
 
-    const tabNextClasses = {
-      ...tabActionClasses,
-      [prefix('tabs__action--next')]: true,
-      [prefix(`tabs__action--theme-${this.theme}`)]: true,
-      [prefix(`tabs__action--color-scheme-${this.colorScheme}`)]: true,
-      [prefix('tabs__action--visible')]: this.isNextVisible
-    };
-
-    const tabNavClasses = {
-      [prefix('tabs__nav')]: true
-    };
-
-    const tabButtonClasses = {
-      [prefix('tabs__button')]: true,
-      [prefix(`tabs__button--theme-${this.theme}`)]: true,
-      [prefix(`tabs__button--size-${this.size}`)]: true,
-      [prefix(`tabs__button--weight-${this.weight}`)]: true
-    };
-
-    const tabButtonListClasses = {
-      [prefix('tabs__button-list')]: true
+    const tabClasses = {
+      [prefix('tabs__tab')]: true,
+      [prefix(`tabs__tab--theme-${this.theme}`)]: true
     };
 
     const statusBarClasses = {
@@ -111,22 +91,53 @@ export class Tabs {
       [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
     };
 
+    const actionClasses = {
+      [prefix('tabs__action')]: true,
+      [prefix(`tabs__action--theme-${this.theme}`)]: true
+    }
+
+    const actionPrevClasses = {
+      ...actionClasses,
+      [prefix('tabs__action--prev')]: true,
+      [prefix('tabs__action--hidden')]: this.isPrevHidden
+    };
+
+    const actionNextClasses = {
+      ...actionClasses,
+      [prefix('tabs__action--next')]: true,
+      [prefix('tabs__action--hidden')]: this.isNextHidden
+    };
+
+    const gradientClasses = {
+      [prefix('tabs__gradient')]: true,
+      [prefix(`tabs__gradient--theme-${this.theme}`)]: true,
+      [prefix(`tabs__gradient--color-scheme-${this.colorScheme}`)]: true,
+    };
+
+    const gradientClassesPrev = {
+      ...gradientClasses,
+      [prefix('tabs__gradient--prev')]: true
+    };
+
+    const gradientClassesNext = {
+      ...gradientClasses,
+      [prefix('tabs__gradient--next')]: true
+    };
+
     return (
       <Host>
-        <div class={tabHeaderClasses}>
-          <div class={tabNavClasses}>
-            <ul class={tabButtonListClasses} role="tablist">
+        <div class={tabsClasses}>
+          <div class={scrollAreaClasses}>
+            <ul class={tabListClasses} role="tablist">
               {this.tabsItems.map((tab, index) => {
-                const extendedTabButtonClasses = {
-                  ...tabButtonClasses,
-                  [prefix('tabs__button--selected')]: tab.selected
-                };
-
                 return (
                   <li role="presentation">
                     <button
                       id={prefix(`tab-item-${index}`)}
-                      class={extendedTabButtonClasses}
+                      class={{
+                        ...tabClasses,
+                        [prefix('tabs__tab--selected')]: tab.selected
+                      }}
                       type="button"
                       role="tab"
                       tabindex={!tab.selected ? -1 : 0}
@@ -142,23 +153,27 @@ export class Tabs {
             </ul>
             <span class={statusBarClasses} />
           </div>
-          <div class={tabPrevClasses}>
+          <div class={actionPrevClasses}>
+            <span class={gradientClassesPrev}/>
             <p-button-pure
+              tabindex={-1}
               theme={this.theme}
               hide-label="true"
+              size="inherit"
               icon="arrow-head-left"
-              tabindex={-1}
               onClick={() => this.handlePrevNextClick('prev')}
             >
               Prev
             </p-button-pure>
           </div>
-          <div class={tabNextClasses}>
+          <div class={actionNextClasses}>
+            <span class={gradientClassesNext}/>
             <p-button-pure
+              tabindex={-1}
               theme={this.theme}
               hide-label="true"
+              size="inherit"
               icon="arrow-head-right"
-              tabindex={-1}
               onClick={() => this.handlePrevNextClick('next')}
             >
               Next
@@ -346,14 +361,14 @@ export class Tabs {
       (entries) => {
         for (const entry of entries) {
           if (entry.target === firstTab) {
-            this.isPrevVisible = !entry.isIntersecting;
+            this.isPrevHidden = entry.isIntersecting;
           }
           if (entry.target === lastTab) {
-            this.isNextVisible = !entry.isIntersecting;
+            this.isNextHidden = entry.isIntersecting;
           }
         }
       },
-      { threshold: 0.9 }
+      {threshold: 1}
     );
 
     this.intersectionObserver.observe(firstTab);
@@ -362,7 +377,7 @@ export class Tabs {
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
     const selector = {
-      nav: 'tabs__nav',
+      nav: 'tabs__scroll-area',
       statusBar: 'tabs__status-bar'
     };
 
@@ -371,7 +386,7 @@ export class Tabs {
 
   private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
     const selector = {
-      tabs: 'tabs__button'
+      tabs: 'tabs__tab'
     };
 
     return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));

@@ -7,73 +7,23 @@
 
 .#{$p-global-class-prefix}tabs {
   $bem-block: &;
+  @include p-generate-type-scale($p-font-size-small);
+  font-weight: $p-font-weight-regular;
+  position: relative;
+  margin: 0 -3px; /* preserve space for focused tab outline */
 
-  &__header {
-    position: relative;
-    margin: p-px-to-rem(-3px);
+  &--weight-semibold {
+    font-weight: $p-font-weight-semibold;
   }
 
-  &__action {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    align-items: center;
-    box-sizing: border-box;
-    width: p-px-to-rem(48px);
-    display: none;
-
-    &--visible {
-      display: flex;
-    }
-
-    &--prev {
-      left: 0;
-      justify-content: flex-start;
-
-      &#{$bem-block}__action--color-scheme-default {
-        background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
-      }
-      &#{$bem-block}__action--color-scheme-surface {
-        background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
-      }
-
-      &#{$bem-block}__action--theme-dark {
-        &#{$bem-block}__action--color-scheme-default {
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
-        }
-        &#{$bem-block}__action--color-scheme-surface {
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
-        }
-      }
-    }
-
-    &--next {
-      right: 0;
-      justify-content: flex-end;
-
-      &#{$bem-block}__action--color-scheme-default {
-        background: linear-gradient(90deg, rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
-      }
-      &#{$bem-block}__action--color-scheme-surface {
-        background: linear-gradient(90deg, rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
-      }
-
-
-      &#{$bem-block}__action--theme-dark {
-        &#{$bem-block}__action--color-scheme-default {
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
-        }
-        &#{$bem-block}__action--color-scheme-surface {
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
-        }
-      }
-    }
+  &--size-medium {
+    @include p-generate-type-scale($p-font-size-medium);
   }
 
-  &__nav {
+  &__scroll-area {
     position: relative;
     padding: 3px 3px .5em;
-    margin-bottom: $p-spacing-16;
+    margin-bottom: 2em;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -85,8 +35,11 @@
     }
   }
 
-  &__button {
-    @include p-text-medium;
+  &__tab {
+    font-family: $p-font-family;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -96,6 +49,9 @@
     text-align: left;
     border: 0;
     background: transparent;
+    display: inline-block;
+    vertical-align: top;
+    color: $p-color-default;
     cursor: pointer;
     transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
@@ -104,30 +60,18 @@
       border: 0; // fix for Firefox, avoid dotted outline in button on focus
     }
 
-    &:focus {
-      outline-width: 2px;
-      outline-style: solid;
-      outline-offset: 1px;
+    &:hover {
+      color: $p-color-state-hover;
     }
 
-    &--theme-light {
-      color: $p-color-theme-light-default;
+    &:active,
+    &#{$bem-block}__tab--selected {
+      color: $p-color-state-active;
+    }
 
-      &:hover {
-        color: $p-color-theme-light-state-hover;
-      }
-
-      &:active {
-        color: $p-color-theme-light-state-active;
-      }
-
-      &:focus {
-        outline-color: $p-color-theme-light-state-focus;
-      }
-
-      &#{$bem-block}__button--selected {
-        color: $p-color-theme-light-state-active;
-      }
+    &:focus {
+      outline-offset: 1px;
+      outline: $p-color-state-focus solid 2px;
     }
 
     &--theme-dark {
@@ -137,42 +81,23 @@
         color: $p-color-theme-dark-state-hover;
       }
 
-      &:active {
+      &:active,
+      &#{$bem-block}__tab--selected {
         color: $p-color-theme-dark-state-active;
       }
 
       &:focus {
         outline-color: $p-color-theme-dark-state-focus;
       }
-
-      &#{$bem-block}__button--selected {
-        color: $p-color-theme-dark-state-active;
-      }
     }
-
-    &--size-small {
-      font-size: $p-font-size-small;
-    }
-
-    &--size-medium {
-      font-size: $p-font-size-medium;
-    }
-
-    &--weight-regular {
-      font-weight: $p-font-weight-regular;
-    }
-
-    &--weight-semibold {
-      font-weight: $p-font-weight-semibold;
-    }
-
   }
 
-  &__button-list {
+  &__tab-list {
     list-style: none;
-    white-space: nowrap;
     margin: 0;
     padding: 0;
+    vertical-align: top;
+    display: inline-block;
 
     & li {
       vertical-align: top;
@@ -180,23 +105,89 @@
     }
 
     & li:not(:last-child) {
-      margin-right: $p-spacing-32;
+      margin-right: 1em;
     }
   }
 
   &__status-bar {
-    bottom: 0;
-    height: 2px;
     position: absolute;
-    display: flex;
+    bottom: 0;
+    height: .125em;
+    display: block;
     transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
+    background-color: $p-color-state-active;
 
-    &--theme-light {
-      background-color: $p-color-state-active;
-    }
     &--theme-dark {
       background-color: $p-color-theme-dark-state-active;
     }
   }
-}
 
+  &__action {
+    position: absolute;
+    top: 3px;
+    display: flex;
+
+    &--prev {
+      left: 0;
+      justify-content: flex-start;
+    }
+
+    &--next {
+      right: 0;
+      justify-content: flex-end;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__gradient {
+    content: '';
+    position: absolute;
+    top: -3px;
+    bottom: -.5em;
+    width: 2em;
+    pointer-events: none;
+
+    &--prev {
+      &#{$bem-block}__gradient--color-scheme-default {
+        background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
+      }
+
+      &#{$bem-block}__gradient--color-scheme-surface {
+        background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
+      }
+
+      &#{$bem-block}__gradient--theme-dark {
+        &#{$bem-block}__gradient--color-scheme-default {
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
+        }
+
+        &#{$bem-block}__gradient--color-scheme-surface {
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
+        }
+      }
+    }
+
+    &--next {
+      &#{$bem-block}__gradient--color-scheme-default {
+        background: linear-gradient(90deg, rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
+      }
+
+      &#{$bem-block}__gradient--color-scheme-surface {
+        background: linear-gradient(90deg, rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
+      }
+
+      &#{$bem-block}__gradient--theme-dark {
+        &#{$bem-block}__gradient--color-scheme-default {
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
+        }
+
+        &#{$bem-block}__gradient--color-scheme-surface {
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
+        }
+      }
+    }
+  }
+}
