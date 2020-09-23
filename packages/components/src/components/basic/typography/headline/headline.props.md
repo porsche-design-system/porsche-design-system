@@ -17,3 +17,10 @@
 | `tag`      | `tag`      | Sets a custom HTML tag depending of the usage of the headline component.                         | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`                                                  | `undefined`    |
 | `theme`    | `theme`    | Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. | `"dark" \| "light"`                                                                             | `'light'`      |
 | `variant`  | `variant`  | Style of the headline.                                                                           | `"headline-1" \| "headline-2" \| "headline-3" \| "headline-4" \| "headline-5" \| "large-title"` | `'headline-1'` |
+
+
+## Dependencies
+
+### Used by
+
+ - [p-banner](#/components/banner)

@@ -259,7 +259,15 @@ export const config: StorefrontConfig = {
     Banner: {
       Design: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/overlay/banner/banner.design.md`)
+        () => import(`@/../../components/src/components/feedback/banner/banner.design.md`)
+      ],
+      Code: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/banner/banner.code.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/banner/banner.props.md`)
       ]
     },
     Button: {
