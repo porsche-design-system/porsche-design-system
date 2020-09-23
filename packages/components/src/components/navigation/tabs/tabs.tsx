@@ -25,15 +25,15 @@ export class Tabs {
   /** Adapts the background color of prev and next buttons */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
-  // TODO: timebox router (link) support
-  // TODO: Focus Styling
-  // TODO: Keyboard Support
+  // TODO: Focus Styling, - margin
+  // TODO: Scroll on Key-Press
 
-  @State() public tabsItems: any = Array.from(this.host.children);
-  @State() public activeTabIndex?: number = this.tabsItems.findIndex((tab) => tab.selected);
+  @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
+  @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
   @State() public isPrevVisible = false;
   @State() public isNextVisible = false;
 
+  private tabsNavElement: HTMLElement;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
 
@@ -48,7 +48,7 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    this.setActiveTab(this.activeTabIndex);
+    this.handleTabChange(this.activeTabIndex); //We have to reset to ensure
     this.observeHost();
   }
 
@@ -57,6 +57,7 @@ export class Tabs {
   };
 
   public componentDidLoad(): void {
+    this.setKeyboardEventListener();
     this.observeIntersection();
     this.scrollToSelectedTab();
   }
@@ -111,10 +112,6 @@ export class Tabs {
       [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
     };
 
-    const slotContentClasses = {
-      [prefix('tabs__slot')]: true
-    };
-
     return (
       <Host>
         <div class={tabHeaderClasses}>
@@ -131,9 +128,10 @@ export class Tabs {
                     <button
                       id={prefix(`tab-item-${index}`)}
                       class={extendedTabButtonClasses}
+                      type="button"
                       role="tab"
-                      tabIndex={!tab.selected ? -1 : 0}
-                      aria-selected={tab.selected && 'true'}
+                      tabindex={!tab.selected ? -1 : 0}
+                      aria-selected={tab.selected ? 'true' : 'false'}
                       aria-controls={prefix(`tab-panel-${index}`)}
                       onClick={() => this.handleTabClick(index)}
                     >
@@ -150,6 +148,7 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-left"
+              tabindex={-1}
               onClick={() => this.handlePrevNextClick('prev')}
             >
               Prev
@@ -160,23 +159,22 @@ export class Tabs {
               theme={this.theme}
               hide-label="true"
               icon="arrow-head-right"
+              tabindex={-1}
               onClick={() => this.handlePrevNextClick('next')}
             >
               Next
             </p-button-pure>
           </div>
         </div>
-        <div class={slotContentClasses}>
-          {this.tabsItems.map((tab, index) => (
-            <section
-              role="tabpanel"
-              hidden={!tab.selected}
-              innerHTML={tab.outerHTML}
-              id={prefix(`tab-panel-${index}`)}
-              aria-labelledby={prefix(`tab-item-${index}`)}
-            />
-          ))}
-        </div>
+        {this.tabsItems.map((tab, index) => (
+          <section
+            role="tabpanel"
+            hidden={!tab.selected}
+            innerHTML={tab.outerHTML}
+            id={prefix(`tab-panel-${index}`)}
+            aria-labelledby={prefix(`tab-item-${index}`)}
+          />
+        ))}
       </Host>
     );
   }
@@ -193,6 +191,44 @@ export class Tabs {
     }
   };
 
+  private setKeyboardEventListener = (): void => {
+    this.tabsNavElement = this.getHTMLElement('nav');
+    this.tabsNavElement.addEventListener('keydown', this.handleKeydown);
+  };
+
+  private handleKeydown = (e: KeyboardEvent): void => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTab: number;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'Left':
+        newTab = this.prevTab();
+        e.preventDefault();
+        break;
+
+      case 'ArrowRight':
+      case 'Right':
+        newTab = this.nextTab();
+        e.preventDefault();
+        break;
+
+      case 'Home':
+        e.preventDefault();
+        newTab = 0;
+        break;
+
+      case 'End':
+        e.preventDefault();
+        newTab = this.tabsItems.length - 1;
+        break;
+
+      default:
+        return;
+    }
+    this.handleTabClick(newTab);
+    tabs[this.activeTabIndex].focus();
+  };
+
   private setActiveTab = (index: number): void => {
     const tabs = this.tabsItems;
     const maxIndex = tabs.length - 1;
@@ -205,28 +241,44 @@ export class Tabs {
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
+  private nextTab = () => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTabIndex = this.activeTabIndex + 1;
+    return (newTabIndex + tabs.length) % tabs.length;
+  };
+
+  private prevTab = () => {
+    const tabs = this.getHTMLElements('tabs');
+    let newTabIndex = this.activeTabIndex - 1;
+    return (newTabIndex + tabs.length) % tabs.length;
+  };
+
   private handleTabClick = (tabIndex: number): void => {
     const activeTabOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
 
+    const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
-    let nextTabIndex = 0;
+    const actionButtonWidth = 48;
+    const activeTab = tabs[this.activeTabIndex];
+    let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTabIndex = this.activeTabIndex + 1;
+      nextTab = activeTab.offsetLeft - actionButtonWidth;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTabIndex = this.activeTabIndex - 1;
+      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + actionButtonWidth - nav.offsetWidth;
     } else {
-      nextTabIndex = tabIndex;
+      nextTab = activeTab.offsetLeft;
     }
 
-    const nextTabElement = tabs[nextTabIndex];
-
-    nextTabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    nav.scrollTo({
+      left: nextTab,
+      behavior: 'smooth'
+    });
   };
 
   private updateTabItems = (): void => {
-    this.tabsItems = Array.from(this.host.children);
+    this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
   private observeHost = (): void => {
@@ -238,7 +290,7 @@ export class Tabs {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      attributeFilter: ['label']
+      attributeFilter: ['label', 'selected']
     });
   };
 
