@@ -203,11 +203,13 @@ export class Tabs {
       case 'ArrowLeft':
       case 'Left':
         newTab = this.prevTab();
+        e.preventDefault();
         break;
 
       case 'ArrowRight':
       case 'Right':
         newTab = this.nextTab();
+        e.preventDefault();
         break;
 
       case 'Home':
@@ -255,18 +257,24 @@ export class Tabs {
     const activeTabOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
 
+    const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
+    const actionButtonWidth = 48;
+    const activeTab = tabs[this.activeTabIndex];
     let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTab = this.nextTab();
+      nextTab = activeTab.offsetLeft - actionButtonWidth;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTab = this.prevTab();
+      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + actionButtonWidth - nav.offsetWidth;
     } else {
-      nextTab = tabIndex;
+      nextTab = activeTab.offsetLeft;
     }
 
-    tabs[nextTab].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    nav.scrollTo({
+      left: nextTab,
+      behavior: 'smooth'
+    });
   };
 
   private updateTabItems = (): void => {
