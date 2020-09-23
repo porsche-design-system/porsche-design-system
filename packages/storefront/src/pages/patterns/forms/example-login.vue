@@ -23,6 +23,7 @@
                   v-bind:name="validateName('email')"
                   v-model="formData.email"
                   v-on:blur="onFieldBlur"
+                  required
                 />
               </p-text-field-wrapper>
             </p-flex-item>
@@ -39,6 +40,7 @@
                   v-bind:name="validateName('password')"
                   v-model="formData.password"
                   v-on:blur="onFieldBlur"
+                  required
                 />
               </p-text-field-wrapper>
               <div class="spacing-mt-8">
