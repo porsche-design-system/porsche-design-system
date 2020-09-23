@@ -512,7 +512,7 @@ export namespace Components {
     }
     interface PTabs {
         /**
-          * Adapts the background color of prev and next buttons
+          * Adapts the background gradient color of prev and next button.
          */
         "colorScheme"?: 'default' | 'surface';
         /**
@@ -540,6 +540,10 @@ export namespace Components {
           * Defines which tab to be visualized as selected.
          */
         "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "colorScheme"?: 'default' | 'surface';
         /**
           * The text size.
          */
@@ -1360,7 +1364,7 @@ declare namespace LocalJSX {
     }
     interface PTabs {
         /**
-          * Adapts the background color of prev and next buttons
+          * Adapts the background gradient color of prev and next button.
          */
         "colorScheme"?: 'default' | 'surface';
         /**
@@ -1388,6 +1392,10 @@ declare namespace LocalJSX {
           * Defines which tab to be visualized as selected.
          */
         "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "colorScheme"?: 'default' | 'surface';
         /**
           * The text size.
          */

@@ -21,8 +21,11 @@ export class TabsNav {
   /** Adapts color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Adapts the background gradient color of prev and next button. */
+  @Prop() public colorScheme?: 'default' | 'surface' = 'default';
+
   /** Defines which tab to be visualized as selected. */
-  @Prop({reflect: true}) public activeTabIndex?: number = 0;
+  @Prop() public activeTabIndex?: number = 0;
 
   @State() public isPrevHidden = false;
   @State() public isNextHidden = false;
@@ -66,18 +69,37 @@ export class TabsNav {
       [prefix(`tabs-nav__status-bar--theme-${this.theme}`)]: true
     };
 
-    const prevClasses = {
+    const actionClasses = {
       [prefix('tabs-nav__action')]: true,
+      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true
+    }
+
+    const actionPrevClasses = {
+      ...actionClasses,
       [prefix('tabs-nav__action--prev')]: true,
-      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
       [prefix('tabs-nav__action--hidden')]: this.isPrevHidden
     };
 
-    const nextClasses = {
-      [prefix('tabs-nav__action')]: true,
+    const actionNextClasses = {
+      ...actionClasses,
       [prefix('tabs-nav__action--next')]: true,
-      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
       [prefix('tabs-nav__action--hidden')]: this.isNextHidden
+    };
+
+    const gradientClasses = {
+      [prefix('tabs-nav__gradient')]: true,
+      [prefix(`tabs-nav__gradient--theme-${this.theme}`)]: true,
+      [prefix(`tabs-nav__gradient--color-scheme-${this.colorScheme}`)]: true,
+    };
+
+    const gradientClassesPrev = {
+      ...gradientClasses,
+      [prefix('tabs-nav__gradient--prev')]: true
+    };
+
+    const gradientClassesNext = {
+      ...gradientClasses,
+      [prefix('tabs-nav__gradient--next')]: true
     };
 
     return (
@@ -87,7 +109,8 @@ export class TabsNav {
             <slot/>
             <span class={statusBarClasses}/>
           </nav>
-          <div class={prevClasses}>
+          <div class={actionPrevClasses}>
+            <span class={gradientClassesPrev}/>
             <p-button-pure
               tabindex={-1}
               theme={this.theme}
@@ -99,7 +122,8 @@ export class TabsNav {
               Prev
             </p-button-pure>
           </div>
-          <div class={nextClasses}>
+          <div class={actionNextClasses}>
+            <span class={gradientClassesNext}/>
             <p-button-pure
               tabindex={-1}
               theme={this.theme}

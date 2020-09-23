@@ -22,7 +22,7 @@ export class Tabs {
   /** Adapts color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Adapts the background color of prev and next buttons */
+  /** Adapts the background gradient color of prev and next button. */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
   // TODO: Focus Styling, - margin

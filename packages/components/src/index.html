@@ -10,13 +10,6 @@
   <script nomodule src="build/porsche-design-system.js"></script>
   <script type="module" src="build/porsche-design-system.esm.js"></script>
 
-  <style type="text/css">
-    .foo {
-      background-image: url("https://my.porsche.com/static/login/row/myporsche-login-lights-on.39d0f06ac7c0e71c6884.jpg");
-      background-size: cover;
-      background-position: center center;
-    }
-  </style>
   <script>
     const updateSize = (size) => {
       for (let element of document.querySelectorAll('p-tabs-nav')) {
@@ -37,6 +30,16 @@
         element.setAttribute('weight', weight);
       }
     }
+
+    const updateColorScheme = (colorScheme) => {
+      for (let element of document.querySelectorAll('p-tabs-nav')) {
+        element.setAttribute('color-scheme', colorScheme);
+      }
+
+      for (let element of document.querySelectorAll('p-tabs')) {
+        element.setAttribute('color-scheme', colorScheme);
+      }
+    }
   </script>
 </head>
 <body>
@@ -50,6 +53,12 @@
   <option disabled selected>Select a weight</option>
   <option value="regular">Regular</option>
   <option value="semibold">Semibold</option>
+</select>
+
+<select onchange="updateColorScheme(this.value)">
+  <option disabled selected>Select a color scheme</option>
+  <option value="default">Default</option>
+  <option value="surface">Surface</option>
 </select>
 
 <br>
