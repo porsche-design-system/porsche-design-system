@@ -26,7 +26,6 @@ export class Tabs {
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
   // TODO: Focus Styling, - margin
-  // TODO: Scroll on Key-Press
 
   @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
@@ -182,6 +181,7 @@ export class Tabs {
   private scrollToSelectedTab = (): void => {
     const tabs = this.getHTMLElements('tabs');
     const nav = this.getHTMLElement('nav');
+    // TODO: Add Action Prev width to scrollLeft
     nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft;
   };
 
@@ -259,16 +259,17 @@ export class Tabs {
 
     const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
-    const actionButtonWidth = 48;
+    // TODO: Take size of gradient
+    const gradientWidth = 48;
     const activeTab = tabs[this.activeTabIndex];
     let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTab = activeTab.offsetLeft - actionButtonWidth;
+      nextTab = activeTab.offsetLeft - gradientWidth;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + actionButtonWidth - nav.offsetWidth;
+      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientWidth - nav.offsetWidth;
     } else {
-      nextTab = activeTab.offsetLeft;
+      nextTab = activeTab.offsetLeft - 3;
     }
 
     nav.scrollTo({
@@ -318,7 +319,7 @@ export class Tabs {
 
     if (action === 'next') {
       if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-        scrollTo = scrollToMax;
+        scrollTo = scrollToMax - 3;
       } else {
         scrollTo = currentScrollPosition + scrollToStep;
       }
