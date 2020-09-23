@@ -50,9 +50,13 @@ export const color = {
     },
     notification: {
       success: '#01ba1d',
+      successSoft: '#e5f3e7',
       warning: '#ff9b00',
+      warningSoft: '#fff5e5',
       error: '#fc1717',
-      neutral: '#2193ff'
+      errorSoft: '#fae6e6',
+      neutral: '#2193ff',
+      neutralSoft: '#e5eff8'
     },
     state: {
       hover: '#ff0223',
