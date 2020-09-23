@@ -9,18 +9,18 @@ Tabs are an intuitive way to organize content and allow navigation between group
 ### 1. Small
 
 <p-tabs size="small">
-    <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-    <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-    <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
 </p-tabs>
 
 
 ### 2. Medium
 
 <p-tabs size="medium">
-    <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-    <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-    <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
 </p-tabs>
 
 
@@ -30,10 +30,10 @@ Tabs are an intuitive way to organize content and allow navigation between group
 
 ### Default
 
-<p-tabs>
-    <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-    <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-    <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+<p-tabs size="small">
+  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
 </p-tabs>
 
 
@@ -42,15 +42,15 @@ Tabs are an intuitive way to organize content and allow navigation between group
 If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
 
 <p-tabs>
-    <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-    <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-    <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-    <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
-    <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
-    <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
-    <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
-    <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
-    <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
+  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+  <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
+  <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
+  <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
+  <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
+  <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
+  <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
 </p-tabs>
 
 
@@ -74,7 +74,7 @@ The link covers the following states:
 
 ### Clickability
 
-Each Tabs item (arrows and text) spans over a clickable area of 40 x 40 px to guarantee a proper click- and touch-ability (on mobile devices).
+Each Tabs item (arrows and text) spans over a clickable area of 24 x 24 px to guarantee a proper click- and touch-ability.
 
 ### Skipping pages
 
