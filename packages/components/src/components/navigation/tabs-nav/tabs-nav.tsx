@@ -60,8 +60,8 @@ export class TabsNav {
       [prefix(`tabs-nav--weight-${this.weight}`)]: true
     };
 
-    const navClasses = {
-      [prefix('tabs-nav__nav')]: true
+    const scrollAreaClasses = {
+      [prefix('tabs-nav__scroll-area')]: true
     };
 
     const statusBarClasses = {
@@ -105,7 +105,7 @@ export class TabsNav {
     return (
       <Host>
         <div class={tabsNavClasses}>
-          <nav class={navClasses}>
+          <nav class={scrollAreaClasses}>
             <slot/>
             <span class={statusBarClasses}/>
           </nav>
@@ -260,7 +260,7 @@ export class TabsNav {
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
     const selector = {
-      nav: 'tabs-nav__nav',
+      nav: 'tabs-nav__scroll-area',
       statusBar: 'tabs-nav__status-bar'
     };
 

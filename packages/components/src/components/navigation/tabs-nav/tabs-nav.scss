@@ -16,6 +16,7 @@
   appearance: none;
   outline: none transparent;
   text-decoration: none;
+  text-align: left;
   border: 0;
   background: transparent;
   display: inline-block;
@@ -63,26 +64,20 @@
 
 .#{$p-global-class-prefix}tabs-nav {
   $bem-block: &;
+  @include p-generate-type-scale($p-font-size-small);
+  font-weight: $p-font-weight-regular;
   position: relative;
   margin: 0 -3px; /* preserve space for focused tab outline */
 
-  &--weight-regular {
-    font-weight: $p-font-weight-regular;
-  }
-
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
-  }
-
-  &--size-small {
-    @include p-generate-type-scale($p-font-size-small);
   }
 
   &--size-medium {
     @include p-generate-type-scale($p-font-size-medium);
   }
 
-  &__nav {
+  &__scroll-area {
     position: relative;
     padding: 3px 3px .5em;
     overflow-y: hidden;
@@ -102,10 +97,7 @@
     height: .125em;
     display: block;
     transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
-
-    &--theme-light {
-      background-color: $p-color-state-active;
-    }
+    background-color: $p-color-state-active;
 
     &--theme-dark {
       background-color: $p-color-theme-dark-state-active;
