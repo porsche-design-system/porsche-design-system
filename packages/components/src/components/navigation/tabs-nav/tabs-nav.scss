@@ -5,51 +5,86 @@
   display: block;
 }
 
-.#{$p-global-class-prefix}tabs {
-  $bem-block: &;
+::slotted(a) {
+  font-family: $p-font-family;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  outline: none transparent;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  display: inline-block;
+  vertical-align: top;
+  color: $p-color-default;
+  cursor: pointer;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier;
+}
 
-  &__header {
-    position: relative;
+:host([theme="dark"]) ::slotted(a) {
+  color: $p-color-theme-dark-default;
+}
+
+::slotted(a:hover) {
+  color: $p-color-state-hover;
+}
+
+:host([theme="dark"]) ::slotted(a:hover) {
+  color: $p-color-theme-dark-state-hover;
+}
+
+::slotted(a:active),
+::slotted(a.selected) {
+  color: $p-color-state-active;
+}
+
+:host([theme="dark"]) ::slotted(a:active),
+:host([theme="dark"]) ::slotted(a.selected) {
+  color: $p-color-theme-dark-state-active;
+}
+
+::slotted(a:focus) {
+  outline-offset: 1px;
+  outline: $p-color-state-focus solid 2px;
+}
+
+:host([theme="dark"]) ::slotted(a:focus) {
+  outline-color: $p-color-theme-dark-state-focus;
+}
+
+::slotted(a:not(:last-child)) {
+  margin-right: 1em;
+}
+
+.#{$p-global-class-prefix}tabs-nav {
+  $bem-block: &;
+  position: relative;
+  margin: 0 -3px; /* preserve space for focused tab outline */
+
+  &--weight-regular {
+    font-weight: $p-font-weight-regular;
   }
 
-  &__action {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    align-items: center;
-    box-sizing: border-box;
-    width: p-px-to-rem(48px);
-    display: none;
+  &--weight-semibold {
+    font-weight: $p-font-weight-semibold;
+  }
 
-    &--visible {
-      display: flex;
-    }
+  &--size-small {
+    @include p-generate-type-scale($p-font-size-small);
+  }
 
-    &--prev {
-      left: 0;
-      justify-content: flex-start;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
-
-      &#{$bem-block}__action--theme-dark {
-        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-      }
-    }
-
-    &--next {
-      right: 0;
-      justify-content: flex-end;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
-
-      &#{$bem-block}__action--theme-dark {
-        background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%);
-      }
-    }
+  &--size-medium {
+    @include p-generate-type-scale($p-font-size-medium);
   }
 
   &__nav {
     position: relative;
-    margin-bottom: $p-spacing-16;
-    padding: 3px;
+    padding: 3px 3px .5em;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -61,117 +96,64 @@
     }
   }
 
-  &__button {
-    @include p-text-medium;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    appearance: none;
-    outline: none transparent;
-    text-decoration: none;
-    text-align: left;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &::-moz-focus-inner {
-      border: 0; // fix for Firefox, avoid dotted outline in button on focus
-    }
-
-    &:focus {
-      outline-width: 2px;
-      outline-style: solid;
-      outline-offset: 1px;
-    }
-
-    &--theme-light {
-      color: $p-color-theme-light-default;
-
-      &:hover {
-        color: $p-color-theme-light-state-hover;
-      }
-
-      &:active {
-        color: $p-color-theme-light-state-active;
-      }
-
-      &:focus {
-        outline-color: $p-color-theme-light-state-focus;
-      }
-
-      &#{$bem-block}__button--selected {
-        color: $p-color-theme-light-state-active;
-      }
-    }
-
-    &--theme-dark {
-      color: $p-color-theme-dark-default;
-
-      &:hover {
-        color: $p-color-theme-dark-state-hover;
-      }
-
-      &:active {
-        color: $p-color-theme-dark-state-active;
-      }
-
-      &:focus {
-        outline-color: $p-color-theme-dark-state-focus;
-      }
-
-      &#{$bem-block}__button--selected {
-        color: $p-color-theme-dark-state-active;
-      }
-    }
-
-    &--size-small {
-      font-size: $p-font-size-small;
-    }
-
-    &--size-medium {
-      font-size: $p-font-size-medium;
-    }
-
-    &--weight-regular {
-      font-weight: $p-font-weight-regular;
-    }
-
-    &--weight-semibold {
-      font-weight: $p-font-weight-semibold;
-    }
-
-  }
-
-  &__button-list {
-    list-style: none;
-    display: flex;
-    white-space: nowrap;
-    margin: 0;
-    padding: 0;
-
-    & li:not(:last-child) {
-      margin-right: $p-spacing-32;
-    }
-  }
-
   &__status-bar {
-    height: 2px;
     position: absolute;
-    display: flex;
+    bottom: 0;
+    height: .125em;
+    display: block;
     transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
 
     &--theme-light {
       background-color: $p-color-state-active;
     }
+
     &--theme-dark {
       background-color: $p-color-theme-dark-state-active;
     }
   }
 
-  &__slot {
-    padding: 3px;
+  &__action {
+    position: absolute;
+    top: 3px;
+    display: flex;
+
+    &--prev {
+      left: 0;
+      justify-content: flex-start;
+    }
+
+    &--next {
+      right: 0;
+      justify-content: flex-end;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      bottom: -.5em;
+      width: 2em;
+      pointer-events: none;
+    }
+
+    &--prev::before {
+      background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
+    }
+
+    &--prev#{$bem-block}__action--theme-dark::before {
+      background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
+    }
+
+    &--next::before {
+      background: linear-gradient(90deg, rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
+    }
+
+    &--next#{$bem-block}__action--theme-dark::before {
+      background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
+    }
   }
 }
-
