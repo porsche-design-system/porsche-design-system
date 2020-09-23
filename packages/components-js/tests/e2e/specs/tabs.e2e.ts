@@ -21,7 +21,7 @@ describe('tabs', () => {
   const getAllTabItems = () => page.$$('p-tabs-item');
   const getNav = () => selectNode(page, 'p-tabs >>> .p-tabs__nav');
   const getAllButtons = async () => (await getNav()).$$('.p-tabs__button');
-  const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status');
+  const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status-bar');
   const getElementPositions = async (element: ElementHandle) => {
     return await page.evaluate((element) => {
       const { top, left, bottom, right } = element.getBoundingClientRect();
@@ -91,93 +91,7 @@ describe('tabs', () => {
     expect(await getAttribute(secondTabItem, 'selected')).toBe('');
   });
 
-  it('should render buttons and a tags', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3" href="https://porsche.com">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-    const allButtons = await getAllButtons();
-
-    expect(allButtons.length).toBe(3);
-  });
-
-  it('should update buttons when tab-item is added', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-    const tabsElement = await getTab();
-    const buttonsInitial = await getAllButtons();
-    expect(buttonsInitial.length).toBe(3);
-
-    await tabsElement.evaluate((el) => {
-      const tabsItem = document.createElement('p-tabs-item');
-      (tabsItem as any).label = 'NewContent';
-      el.appendChild(tabsItem);
-    });
-
-    await waitForStencilLifecycle(page);
-    const buttonsUpdated = await getAllButtons();
-    expect(buttonsUpdated.length).toBe(4);
-  });
-
-  it('should update buttons when tabs-item is removed', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-
-    const tabsElement = await getTab();
-    const buttonsInitial = await getAllButtons();
-    expect(buttonsInitial.length).toBe(3);
-
-    await tabsElement.evaluate((el) => {
-      const tabItem = document.querySelector('p-tabs-item[label="Button3"]');
-      el.removeChild(tabItem);
-    });
-
-    await waitForStencilLifecycle(page);
-    const buttonsUpdated = await getAllButtons();
-    expect(buttonsUpdated.length).toBe(2);
-  });
-
-  it('should update buttons when tab label/href/target is changed', async () => {
+  it('should update buttons when tab label is changed', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -196,34 +110,25 @@ describe('tabs', () => {
     );
     const allTabsItems = await getAllTabItems();
     const allButtons = await getAllButtons();
-    const anchor = allButtons[2];
     const getLabelOfFirstButton = () => getProperty(allButtons[0], 'innerHTML');
-    const getHrefOfAnchor = () => getAttribute(anchor, 'href');
-    const getTargetOfAnchor = () => getAttribute(anchor, 'target');
 
     expect(await getLabelOfFirstButton()).toBe('Button1');
-    expect(await getHrefOfAnchor()).toBe('https://porsche.com');
-    expect(await getTargetOfAnchor()).toBe('_blank');
 
     await allTabsItems[0].evaluate((el) => el.setAttribute('label', 'newButtonName'));
-    await anchor.evaluate((el) => el.setAttribute('href', 'https://newHref.com'));
-    await anchor.evaluate((el) => el.setAttribute('target', '_self'));
     await waitForStencilLifecycle(page);
 
     expect(await getLabelOfFirstButton()).toBe('newButtonName');
-    expect(await getHrefOfAnchor()).toBe('https://newHref.com');
-    expect(await getTargetOfAnchor()).toBe('_self');
   });
 
-  it('should render correct tab-item when active-tab is set', async () => {
+  it('should select correct button when selected attribute is set', async () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-tabs active-tab="1">
+      <p-tabs>
         <p-tabs-item label="Button1">
           Content1
         </p-tabs-item>
-        <p-tabs-item label="Button2">
+        <p-tabs-item label="Button2" selected>
           Content2
         </p-tabs-item>
         <p-tabs-item label="Button3">
@@ -232,68 +137,14 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const allTabItems = await getAllTabItems();
-    const firstTabItem = allTabItems[0];
-    const secondTabItem = allTabItems[1];
-    const thirdTabItem = allTabItems[2];
+    const allButtons = await getAllButtons();
+    const firstButton = allButtons[0];
+    const secondButton = allButtons[1];
+    const thirdButton = allButtons[2];
 
-    expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(secondTabItem, 'selected')).toBe('');
-    expect(await getAttribute(thirdTabItem, 'selected')).toBeNull();
-  });
-
-  it('should behave correctly when activeTab index is negative', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs active-tab="-1">
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3" selected>
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-    const allTabItems = await getAllTabItems();
-    const firstTabItem = allTabItems[0];
-    const secondTabItem = allTabItems[1];
-    const thirdTabItem = allTabItems[2];
-
-    expect(await getAttribute(firstTabItem, 'selected')).toBe('');
-    expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(thirdTabItem, 'selected')).toBeNull();
-  });
-
-  it('should behave correctly when activeTab index is larger than amount of tabs', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs active-tab="4">
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-    const allTabItems = await getAllTabItems();
-    const firstTabItem = allTabItems[0];
-    const secondTabItem = allTabItems[1];
-    const thirdTabItem = allTabItems[2];
-
-    expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(thirdTabItem, 'selected')).toBe('');
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
   it('should behave correctly when multiple tabs have selected attribute', async () => {
@@ -313,41 +164,149 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const allTabItems = await getAllTabItems();
-    const firstTabItem = allTabItems[0];
-    const secondTabItem = allTabItems[1];
-    const thirdTabItem = allTabItems[2];
+    const allButtons = await getAllButtons();
+    const firstButton = allButtons[0];
+    const secondButton = allButtons[1];
+    const thirdButton = allButtons[2];
 
-    expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(secondTabItem, 'selected')).toBe('');
-    expect(await getAttribute(thirdTabItem, 'selected')).toBeNull();
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
-  it('should behave correctly when activeTab index is used together with selected attribute on tab', async () => {
+  it('should focus first button on tab click', async () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-tabs active-tab="0">
+      <p-tabs>
         <p-tabs-item label="Button1">
           Content1
         </p-tabs-item>
         <p-tabs-item label="Button2">
           Content2
         </p-tabs-item>
-        <p-tabs-item label="Button3" selected>
+        <p-tabs-item label="Button3">
           Content3
         </p-tabs-item>
       </p-tabs>
     `
     );
-    const allTabItems = await getAllTabItems();
-    const firstTabItem = allTabItems[0];
-    const secondTabItem = allTabItems[1];
-    const thirdTabItem = allTabItems[2];
+    const getButtonFocus = async () => {
+      const snapshot = await page.accessibility.snapshot();
+      const button = snapshot.children[0];
+      return button.focused;
+    };
+    expect(await getButtonFocus()).toBeUndefined();
 
-    expect(await getAttribute(firstTabItem, 'selected')).toBe('');
-    expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(thirdTabItem, 'selected')).toBeNull();
+    await page.keyboard.press('Tab');
+
+    expect(await getButtonFocus()).toBe(true);
+  });
+
+  it('should focus content on tab click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs>
+        <p-tabs-item label="Button1">
+          Content1 <a href="porsche.com">Link</a>
+        </p-tabs-item>
+        <p-tabs-item label="Button2">
+          Content2
+        </p-tabs-item>
+        <p-tabs-item label="Button3">
+          Content3
+        </p-tabs-item>
+      </p-tabs>
+    `
+    );
+    const getLinkFocus = async () => {
+      const snapshot = await page.accessibility.snapshot();
+      const link = snapshot.children[snapshot.children.length -1];
+      return link.focused;
+    };
+    expect(await getLinkFocus()).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+
+    expect(await getLinkFocus()).toBe(true);
+  });
+
+  it('should switch active tab on arrow-key press', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs>
+        <p-tabs-item label="Button1">
+          Content1
+        </p-tabs-item>
+        <p-tabs-item label="Button2">
+          Content2
+        </p-tabs-item>
+        <p-tabs-item label="Button3">
+          Content3
+        </p-tabs-item>
+      </p-tabs>
+    `
+    );
+    const allButtons = await getAllButtons();
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
+  });
+
+  it('should set active tab as first/last on home/end press', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs>
+        <p-tabs-item label="Button1">
+          Content1
+        </p-tabs-item>
+        <p-tabs-item selected label="Button2">
+          Content2
+        </p-tabs-item>
+        <p-tabs-item label="Button3">
+          Content3
+        </p-tabs-item>
+      </p-tabs>
+    `
+    );
+    const allButtons = await getAllButtons();
+    const firstButton = allButtons[0];
+    const lastButton = allButtons[allButtons.length - 1];
+
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('End');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+
+    await page.keyboard.press('Home');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
+
   });
 
   it('should scroll 20% on Button next', async () => {
@@ -383,16 +342,16 @@ describe('tabs', () => {
     const width = await getProperty(nav, 'offsetWidth');
     const scrollDistance = +width * 0.2;
 
-    expect(await getScrollLeft(nav)).toEqual(0);
+    expect(await getScrollLeft(nav)).toEqual(3);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
     await page.waitFor(1000);
 
-    expect(await getScrollLeft(nav)).toEqual(scrollDistance);
+    expect(await getScrollLeft(nav)).toEqual(Math.round(scrollDistance) + 3);
   });
 
-  it('should scroll 20% on Button prev', async () => {
+  xit('should scroll 20% on Button prev', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -427,13 +386,13 @@ describe('tabs', () => {
     const width = await getProperty(nav, 'offsetWidth');
     const scrollDistance = +width * 0.2;
 
-    expect(await getScrollLeft(nav)).toEqual(0);
+    expect(await getScrollLeft(nav)).toEqual(3);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
     await page.waitFor(1000);
 
-    expect(await getScrollLeft(nav)).toEqual(scrollDistance);
+    expect(await getScrollLeft(nav)).toEqual(scrollDistance + 3);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
@@ -445,21 +404,21 @@ describe('tabs', () => {
     await waitForStencilLifecycle(page);
     await page.waitFor(1000);
 
-    expect(await getScrollLeft(nav)).toEqual(scrollDistance);
+    expect(await getScrollLeft(nav)).toEqual(scrollDistance + 3);
   });
 
   it('should have same offsetLeft on Statusbar and active tab', async () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-tabs active-tab="0">
-        <p-tabs-item label="Button1" id="firstButton">
+      <p-tabs>
+        <p-tabs-item label="Button1">
           Content1
         </p-tabs-item>
-        <p-tabs-item label="Button2" id="secondButton">
+        <p-tabs-item label="Button2">
           Content2
         </p-tabs-item>
-        <p-tabs-item label="Button3" selected>
+        <p-tabs-item label="Button3">
           Content3
         </p-tabs-item>
       </p-tabs>
@@ -474,7 +433,7 @@ describe('tabs', () => {
     await waitForStencilLifecycle(page);
     await page.waitFor(1000);
 
-    expect(Math.round((await getElementPositions(allButtons[2])).left)).toEqual(
+    expect((await getElementPositions(allButtons[2])).left).toEqual(
       (await getElementPositions(statusBar)).left
     );
   });
