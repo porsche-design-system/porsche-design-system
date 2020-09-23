@@ -9,6 +9,20 @@ import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize,
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
+    interface PBanner {
+        /**
+          * State of the banner.
+         */
+        "state"?: 'error' | 'warning' | 'neutral';
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: 'light' | 'dark';
+        /**
+          * Variant of the banner.
+         */
+        "variant"?: 'inline' | 'overlay';
+    }
     interface PButton {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -610,6 +624,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
+    }
+    var HTMLPBannerElement: {
+        prototype: HTMLPBannerElement;
+        new (): HTMLPBannerElement;
+    };
     interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {
     }
     var HTMLPButtonElement: {
@@ -761,6 +781,7 @@ declare global {
         new (): HTMLPTextareaWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
@@ -789,6 +810,24 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PBanner {
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onCloseOnClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * State of the banner.
+         */
+        "state"?: 'error' | 'warning' | 'neutral';
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: 'light' | 'dark';
+        /**
+          * Variant of the banner.
+         */
+        "variant"?: 'inline' | 'overlay';
+    }
     interface PButton {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -1393,6 +1432,7 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface IntrinsicElements {
+        "p-banner": PBanner;
         "p-button": PButton;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
@@ -1424,6 +1464,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;

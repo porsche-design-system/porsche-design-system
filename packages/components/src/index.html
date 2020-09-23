@@ -10,5 +10,33 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
-  <body></body>
+  <body>
+  <p-banner state="neutral">
+    <span slot="title">Some notification title</span>
+    <span slot="description">Some notification description.</span>
+  </p-banner>
+  <p-banner state="warning">
+    <span slot="title">Some notification title</span>
+    <span slot="description">Some notification description.</span>
+  </p-banner>
+  <p-banner state="error">
+    <span slot="title">Some notification title</span>
+    <span slot="description">Some notification description with some <a href="#">link</a>.</span>
+  </p-banner>
+
+  <div style="padding: 20px; background-color: #1a2023">
+    <p-banner state="neutral" theme="dark">
+      <span slot="title">Some notification title</span>
+      <span slot="description">Some notification description.</span>
+    </p-banner>
+    <p-banner state="warning" theme="dark">
+      <span slot="title">Some notification title</span>
+      <span slot="description">Some notification description.</span>
+    </p-banner>
+    <p-banner state="error" theme="dark">
+      <span slot="title">Some notification title</span>
+      <span slot="description">Some notification description <a href="#">link</a>.</span>
+    </p-banner>
+  </div>
+  </body>
 </html>

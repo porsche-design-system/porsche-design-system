@@ -1,0 +1,64 @@
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+:host {
+  display: block;
+}
+
+.#{$p-global-class-prefix}banner {
+  $bem-block: &;
+  display: flex;
+  position: relative;
+  padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: p-px-to-rem(4px);
+  }
+
+  &--neutral {
+    &#{$bem-block}--theme-light {
+      background-color: $p-color-notification-neutral-soft;
+      &::before {
+        background-color: $p-color-notification-neutral;
+      }
+    }
+
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-notification-neutral-soft;
+      &::before {
+        background-color: $p-color-notification-neutral;
+      }
+    }
+  }
+
+  &--warning {
+    background-color: $p-color-notification-warning-soft;
+
+    &::before {
+      background-color: $p-color-notification-warning;
+    }
+  }
+
+  &--error {
+    background-color: $p-color-notification-error-soft;
+
+    &::before {
+      background-color: $p-color-notification-error;
+    }
+  }
+
+  &__icon {
+    padding-right: p-px-to-rem(12px);
+  }
+
+  &__button {
+    position: absolute;
+    right: p-px-to-rem(16px);
+    top: p-px-to-rem(16px);
+  }
+}
