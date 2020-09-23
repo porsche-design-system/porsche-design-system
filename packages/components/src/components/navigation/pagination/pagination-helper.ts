@@ -15,33 +15,33 @@ export type PreviousPageLinkItemType = 'PREVIOUS_PAGE_LINK';
 export type NextPageLinkItemType = 'NEXT_PAGE_LINK';
 export type PaginationItemType = PageItemType | EllipsisItemType | PreviousPageLinkItemType | NextPageLinkItemType;
 
-export interface ItemTypes {
+export type ItemTypes = {
   PAGE: PageItemType;
   ELLIPSIS: EllipsisItemType;
   PREVIOUS_PAGE_LINK: PreviousPageLinkItemType;
   NEXT_PAGE_LINK: NextPageLinkItemType;
-}
+};
 
-export interface ItemKeys {
+export type ItemKeys = {
   [type: string]: number;
   FIRST_ELLIPSIS: number;
   SECOND_ELLIPSIS: number;
   PREVIOUS_PAGE_LINK: number;
   NEXT_PAGE_LINK: number;
-}
+};
 
-export interface PaginationModelOptions {
+export type PaginationModelOptions = {
   activePage: number;
   pageTotal: number;
   pageRange: number;
-}
+};
 
-export interface PaginationModelItem {
+export type PaginationModelItem = {
   key: number;
   value: number;
   isActive: boolean;
   type: PaginationItemType;
-}
+};
 
 export const itemTypes: ItemTypes = {
   PAGE: 'PAGE',
@@ -93,7 +93,7 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
   };
 };
 
-const createPageFunctionFactory = (options: PaginationModelOptions): (pageNumber: number) => PaginationModelItem => {
+const createPageFunctionFactory = (options: PaginationModelOptions): ((pageNumber: number) => PaginationModelItem) => {
   const { activePage } = options;
 
   return (pageNumber: number): PaginationModelItem => ({
@@ -114,7 +114,9 @@ const createRange = (start: number, end: number): number[] => {
 
 export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
   // exception tests
-  if (options == null) { throw new Error('createPaginationModel(): options object should be a passed'); }
+  if (options == null) {
+    throw new Error('createPaginationModel(): options object should be a passed');
+  }
 
   const { pageTotal, activePage, pageRange } = options;
 
@@ -179,7 +181,9 @@ export const createPaginationModel = (options: PaginationModelOptions): Paginati
 
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
   // exception tests
-  if (activePage === undefined || totalPages === undefined) { throw new Error('getCurrentActivePage(): activePage and totalPages props must be provided'); }
+  if (activePage === undefined || totalPages === undefined) {
+    throw new Error('getCurrentActivePage(): activePage and totalPages props must be provided');
+  }
 
   // Obviously we can't be on a negative or 0 page.
   if (activePage < 1) {
@@ -196,7 +200,9 @@ export const getCurrentActivePage = (activePage: number, totalPages: number): nu
 
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): number => {
   // exception test
-  if (totalItemsCount === undefined || itemsPerPage === undefined) { throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided'); }
+  if (totalItemsCount === undefined || itemsPerPage === undefined) {
+    throw new Error('getTotalPages(): totalItemsCount and itemsPerPage props must be provided');
+  }
 
   if (totalItemsCount < 1) {
     totalItemsCount = 1;

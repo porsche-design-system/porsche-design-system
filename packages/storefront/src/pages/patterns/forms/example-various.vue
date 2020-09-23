@@ -4,7 +4,9 @@
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Validation of grouped form elements</p-headline>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">How to implement validation messages to grouped form elements like checkbox- and radio groups.</p-text>
+        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">How to implement validation messages to
+          grouped form elements like checkbox- and radio groups.
+        </p-text>
       </p-grid-item>
     </p-grid>
     <p-grid class="form-section-spacing">
@@ -20,7 +22,8 @@
             <p-checkbox-wrapper label="Some checkbox label 3" state="error" class="form-row-spacing">
               <input type="checkbox" name="check3">
             </p-checkbox-wrapper>
-            <p-text color="notification-error" class="form-row-spacing">Please check at least one item from the list.</p-text>
+            <p-text color="notification-error" class="form-row-spacing">Please check at least one item from the list.
+            </p-text>
           </p-fieldset-wrapper>
 
           <p-fieldset-wrapper label="Grouped list of radio buttons" class="form-section-spacing">
@@ -56,7 +59,9 @@
                     </p-text-field-wrapper>
                   </p-flex-item>
                 </p-flex>
-                <p-text color="notification-error" id="error-message-1" class="form-row-spacing">Please provide a valid day</p-text>
+                <p-text color="notification-error" id="error-message-1" class="form-row-spacing">Please provide a valid
+                  day
+                </p-text>
                 <p-text color="notification-error" id="error-message-2">Please provide a valid month</p-text>
               </p-grid-item>
             </p-grid>

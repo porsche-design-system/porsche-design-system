@@ -10,6 +10,7 @@
   font-size: 10px;
   white-space: nowrap;
 
+  // light
   &--color-theme-light-brand {
     background: $p-color-brand;
   }
@@ -37,14 +38,26 @@
   &--color-theme-light-notification-success {
     background: $p-color-notification-success;
   }
+  &--color-theme-light-notification-success-soft {
+    background: $p-color-notification-success-soft;
+  }
   &--color-theme-light-notification-warning {
     background: $p-color-notification-warning;
+  }
+  &--color-theme-light-notification-warning-soft {
+    background: $p-color-notification-warning-soft;
   }
   &--color-theme-light-notification-error {
     background: $p-color-notification-error;
   }
+  &--color-theme-light-notification-error-soft {
+    background: $p-color-notification-error-soft;
+  }
   &--color-theme-light-notification-neutral {
     background: $p-color-notification-neutral;
+  }
+  &--color-theme-light-notification-neutral-soft {
+    background: $p-color-notification-neutral-soft;
   }
   &--color-theme-light-state-hover {
     background: $p-color-state-hover;
@@ -58,6 +71,8 @@
   &--color-theme-light-state-disabled {
     background: $p-color-state-disabled;
   }
+
+  // dark
   &--color-theme-dark-brand {
     background: $p-color-theme-dark-brand;
   }

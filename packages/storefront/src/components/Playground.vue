@@ -47,7 +47,9 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import { Theme } from '@/models';
 
@@ -131,7 +133,7 @@
         &.is-active {
           cursor: default;
           color: $p-color-theme-light-default;
-          border-bottom-color: $p-color-theme-light-brand;
+          border-bottom-color: $p-color-theme-light-state-active;
         }
       }
     }
@@ -151,6 +153,9 @@
     &.dark {
       border-color: $p-color-theme-dark-background-surface;
       background-color: $p-color-theme-dark-background-surface;
+
+      .tabs .tab button.is-active {
+      }
     }
 
     // Child Layout "height"

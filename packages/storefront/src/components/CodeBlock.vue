@@ -1,6 +1,6 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
-    <div class="tabs" role="tablist">
+    <div class="tabs" role="tablist" :class="{ light: theme === 'light', dark: theme === 'dark' }">
       <p-text class="tab" tag="div" color="inherit">
         <button
           type="button"
@@ -40,7 +40,9 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { Prop } from 'vue-property-decorator';
   import * as Prism from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import { html } from 'js-beautify';
@@ -378,7 +380,23 @@
 
         &.is-active {
           cursor: default;
-          color: $p-color-theme-light-brand;
+          color: $p-color-theme-light-state-active;
+        }
+      }
+    }
+
+    &.dark {
+      .tab button {
+        &:hover {
+          color: $p-color-theme-dark-state-hover;
+        }
+
+        &:focus {
+          outline: 1px solid $p-color-theme-dark-state-focus;
+        }
+
+        &.is-active {
+          color: $p-color-theme-dark-state-active;
         }
       }
     }

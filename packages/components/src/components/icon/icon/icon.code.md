@@ -261,7 +261,8 @@ With the use of SVG icons, there are options to give more accessibility to users
 ```
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundIcon extends Vue {

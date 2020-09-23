@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const { cdnDistPath, deployUrl, snakeCaseVersion, version } = require('./environment');
+import webpack from 'webpack';
+import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
 
-module.exports = {
+const config: webpack.Configuration = {
   mode: 'production',
   entry: './projects/components-wrapper/src/index.js',
   output: {
@@ -21,3 +21,5 @@ module.exports = {
     })
   ]
 };
+
+export default config;
