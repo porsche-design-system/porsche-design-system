@@ -45,7 +45,8 @@ For automated visual regression tests the spinner animation can be disabled by s
 ```
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+  import Vue from 'vue';
+import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundButtonPure extends Vue {

@@ -3,7 +3,9 @@
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Get in touch with Porsche</p-headline>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Do you have any specific questions about your Porsche vehicle? Please use the form below so that we can process your inquiry as quickly as possible.</p-text>
+        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">Do you have any specific questions about your
+          Porsche vehicle? Please use the form below so that we can process your inquiry as quickly as possible.
+        </p-text>
       </p-grid-item>
     </p-grid>
     <p-grid class="form-section-spacing">
@@ -41,7 +43,8 @@
                   </select>
                 </p-select-wrapper>
               </p-flex-item>
-              <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
+              <p-flex-item width="{base: 'full', m: 'one-third'}"
+                           class="form-row-spacing form-row-spacing--zero-m form-grid-item">
                 <p-select-wrapper label="Title">
                   <select name="title">
                     <option>Choose an option</option>
@@ -58,7 +61,8 @@
                   <input type="text" name="firstname">
                 </p-text-field-wrapper>
               </p-flex-item>
-              <p-flex-item width="{base: 'full', m: 'half'}" class="form-row-spacing form-row-spacing--zero-m form-grid-item">
+              <p-flex-item width="{base: 'full', m: 'half'}"
+                           class="form-row-spacing form-row-spacing--zero-m form-grid-item">
                 <p-text-field-wrapper label="Last name">
                   <input type="text" name="lastname">
                 </p-text-field-wrapper>
@@ -109,11 +113,15 @@
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
+          <p-flex direction="{ base: 'column', s: 'row' }"
+                  class="form-section-spacing form-bottom-spacing form-grid-item-container">
             <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-              <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
+              <p-button variant="tertiary" icon="close" type="reset"
+                        class="form-item-width--full form-item-width--auto-s">Cancel
+              </p-button>
             </p-flex-item>
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-row-spacing form-row-spacing--zero-s form-grid-item">
+            <p-flex-item width="{base: 'full', s: 'auto'}"
+                         class="form-row-spacing form-row-spacing--zero-s form-grid-item">
               <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
             </p-flex-item>
           </p-flex>

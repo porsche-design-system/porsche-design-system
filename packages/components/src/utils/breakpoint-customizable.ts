@@ -1,5 +1,6 @@
 import { prefix } from './prefix';
 
+/* eslint-disable no-shadow */
 enum Breakpoint {
   base = 'base',
   xs = 'xs',
@@ -13,18 +14,18 @@ type BreakpointValue = string | number | boolean;
 type JSON5String = string;
 type ClassSuffixes = [string, string];
 
-interface JSXClasses {
+type JSXClasses = {
   [className: string]: boolean;
-}
+};
 
-interface BreakpointValues<T> {
+type BreakpointValues<T> = {
   [Breakpoint.base]: T;
   [Breakpoint.xs]?: T;
   [Breakpoint.s]?: T;
   [Breakpoint.m]?: T;
   [Breakpoint.l]?: T;
   [Breakpoint.xl]?: T;
-}
+};
 
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
 

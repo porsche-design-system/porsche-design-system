@@ -18,9 +18,13 @@ export const color = {
   },
   notification: {
     success: '#018a16',
+    successSoft: '#e5f3e7',
     warning: '#ff9b00',
+    warningSoft: '#fff5e5',
     error: '#e00000',
-    neutral: '#0061BD'
+    errorSoft: '#fae6e6',
+    neutral: '#0061bd',
+    neutralSoft: '#e5eff8'
   },
   state: {
     hover: '#d5001c',
@@ -36,7 +40,7 @@ export const color = {
     default: '#fff',
     background: {
       default: '#0e1418',
-      surface: '#1a2023',
+      surface: '#262b2e',
       shading: 'rgba(14, 20, 24, 0.9)'
     },
     neutralContrast: {
@@ -48,11 +52,11 @@ export const color = {
       success: '#01ba1d',
       warning: '#ff9b00',
       error: '#fc1717',
-      neutral: '#2193FF'
+      neutral: '#2193ff'
     },
     state: {
-      hover: '#d5001c',
-      active: '#d5001c',
+      hover: '#ff0223',
+      active: '#ff0223',
       focus: '#00d5b9',
       disabled: '#7c7f81'
     }
