@@ -36,9 +36,6 @@
       &#{$bem-block}__action--color-scheme-surface {
         background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
       }
-      &#{$bem-block}__action--color-scheme-picture {
-        background: transparent;
-      }
 
       &#{$bem-block}__action--theme-dark {
         &#{$bem-block}__action--color-scheme-default {
@@ -46,9 +43,6 @@
         }
         &#{$bem-block}__action--color-scheme-surface {
           background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
-        }
-        &#{$bem-block}__action--color-scheme-picture {
-          background: transparent;
         }
       }
     }
