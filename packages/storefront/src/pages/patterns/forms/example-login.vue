@@ -18,7 +18,12 @@
                 v-bind:message="errors.email"
                 v-bind:state="errors.email && 'error'"
               >
-                <input type="email" name="email" v-model="formData.email" />
+                <input
+                  type="email"
+                  v-bind:name="validateName('email')"
+                  v-model="formData.email"
+                  v-on:blur="onFieldBlur"
+                />
               </p-text-field-wrapper>
             </p-flex-item>
           </p-flex>
@@ -29,7 +34,12 @@
                 v-bind:message="errors.password"
                 v-bind:state="errors.password && 'error'"
               >
-                <input type="password" name="password" v-model="formData.password" />
+                <input
+                  type="password"
+                  v-bind:name="validateName('password')"
+                  v-model="formData.password"
+                  v-on:blur="onFieldBlur"
+                />
               </p-text-field-wrapper>
               <div class="spacing-mt-8">
                 <p-link-pure href="#">Forgot password?</p-link-pure>
@@ -40,7 +50,7 @@
             <p-flex-item width="{base: 'full', s: 'auto'}">
               <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Log in</p-button>
               <p-checkbox-wrapper label="Keep me logged in" class="form-row-spacing">
-                <input type="checkbox" name="login" v-model="formData.isChecked" />
+                <input type="checkbox" v-bind:name="validateName('isChecked')" v-model="formData.isChecked" />
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
@@ -68,10 +78,10 @@
     isChecked: boolean;
   };
 
-  const validateName = (key: keyof FormModel): string => key;
-
   @Component
   export default class LoginForm extends Vue {
+    private validateName = (key: keyof FormModel): string => key;
+
     private formData: FormModel = {
       email: '',
       password: '',
@@ -94,7 +104,7 @@
 
     private validateField = async (field: keyof FormModel): Promise<boolean> => {
       this.errors[field] = await this.schema
-        .validateAt(validateName(field), this.formData)
+        .validateAt(this.validateName(field), this.formData)
         .then(() => '')
         .catch((err: ValidationError) => err.message);
       return !this.errors[field];
@@ -108,13 +118,19 @@
         .validate(this.formData, { abortEarly: false })
         .then(() => true)
         .catch((err: ValidationError) => {
-          err.inner.forEach((err) => (this.errors[err.path as keyof FormModel] = err.message));
+          err.inner.forEach(({ path, message }) => (this.errors[path as keyof FormModel] = message));
           return false;
         });
     };
 
-    @Watch('formData.email')
-    onEmailChange = () => this.validateField('email');
+    // @Watch('formData.email') // validate while typing
+    // onEmailChange = (): void => {
+    //   this.validateField('email');
+    // };
+
+    onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
+      this.validateField(target.name as keyof FormModel);
+    };
 
     onSubmit = async () => {
       const isValid = await this.validateForm();
