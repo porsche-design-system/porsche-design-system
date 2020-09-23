@@ -56,6 +56,7 @@ export class RadioButtonWrapper {
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
+      [prefix('radio-button-wrapper__label-text--required')]: this.isRequired,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -71,11 +72,7 @@ export class RadioButtonWrapper {
         <label class={labelClasses}>
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
-              {this.label || (
-                <span>
-                  <slot name="label" />
-                </span>
-              )}
+              {this.label || <slot name="label" />}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeRadioButtonClasses}>
@@ -84,11 +81,7 @@ export class RadioButtonWrapper {
         </label>
         {this.isMessageVisible && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || (
-              <span>
-                <slot name="message" />
-              </span>
-            )}
+            {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
@@ -107,6 +100,10 @@ export class RadioButtonWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
+  private get isRequired(): boolean {
+    return this.input.getAttribute('required') !== null;
+  }
+
   private setInput(): void {
     this.input = this.host.querySelector('input[type="radio"]');
   }
@@ -117,10 +114,8 @@ export class RadioButtonWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
    */
   private setAriaAttributes(): void {
-    if (this.label && this.message) {
-      this.input.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    } else if (this.label) {
-      this.input.setAttribute('aria-label', this.label);
+    if (this.label) {
+      this.input.setAttribute('aria-label', `${this.label}${this.message ? `. ${this.message}` : ''}`);
     }
 
     if (this.state === 'error') {

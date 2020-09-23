@@ -12,7 +12,7 @@ const rawTags = src
 const rawJson = rawTags.slice(0, rawTags.lastIndexOf(',')) + '}';
 const tags = Object.keys(JSON.parse(rawJson));
 
-console.log(`Identified tags:\n${tags.map((x) => `  - ${x}`).join('\n')}`);
+console.log(`Identified tags (${tags.length} total):\n${tags.map((x) => `  - ${x}`).join('\n')}`);
 
 const file = path.normalize('./src/tags.ts');
 

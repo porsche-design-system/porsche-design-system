@@ -136,7 +136,7 @@ When using notification colors …
 |                                                                       	|                      	    | HEX     	| RGB           	| Usage            |
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge theme="dark" color="background-default"/> 	                                    | **Background Default**        	| #0E1418 	| 14/20/24      	| Page background  |
-| <ColorBadge theme="dark" color="background-surface"/>                                      | **Background Surface**        	| #1A2023 	| 26/32/35        | Additional backgrounds, for example for tiles or contrasting content areas |
+| <ColorBadge theme="dark" color="background-surface"/>                                      | **Background Surface**        	| #262B2E 	| 38/43/46        | Additional backgrounds, for example for tiles or contrasting content areas |
 | <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
 
 ### Text / icon color
@@ -175,8 +175,8 @@ Depending on the component it can be implemented in different ways, for example 
 
 |                                                        |                 | HEX     	| RGB         	| Usage              |
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
-| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
-| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #D5001C 	| 213/0/28      | Active state   |
+| <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #FF0223	| 255/2/35      | Hover state    |
+| <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #FF0223 	| 255/2/35     | Active state   |
 | <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #00D5B9 	| 0/213/185  	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
