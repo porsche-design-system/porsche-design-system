@@ -1,6 +1,7 @@
 # Tabs
 
-Tabs are an intuitive way to organize content and allow navigation between groups of content that are related and at the same level of hierarchy.
+The Porsche Design System Tabs enables the user to **to execute an action or changes the content**. 
+In case you want the user to navigate to another page, you should select the [Tabs Nav](#/components/tabs-nav) component instead.
 
 ---
 
@@ -8,20 +9,12 @@ Tabs are an intuitive way to organize content and allow navigation between group
 
 ### 1. Small
 
-<p-tabs size="small">
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-</p-tabs>
+!!! Code Beispiel !!!
 
 
 ### 2. Medium
 
-<p-tabs size="medium">
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-</p-tabs>
+!!! Code Beispiel !!!
 
 
 ---
@@ -41,17 +34,7 @@ Tabs are an intuitive way to organize content and allow navigation between group
 
 If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
 
-<p-tabs>
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-  <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
-  <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
-  <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
-  <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
-  <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
-  <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
-</p-tabs>
+!!! Code Beispiel !!!
 
 
 
@@ -65,7 +48,6 @@ The link covers the following states:
 * Default
 * Active
 * Hover
-* Disabled
 * Focus
 
 ---
@@ -95,7 +77,6 @@ When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable
 - Scrolling horizontally
 - Use the arrows to navigate back and forth
 - Click on the Tab Item witch then will center the clicked element
-- You can jump through Tabs via the Tab key
 
 ![Possible overflow](./assets/tab-overflow.png)
 
@@ -107,19 +88,11 @@ As Tabs can horizontally scroll, technically a UI could have as many tabs as nee
 
 Standard
 
-<p-tabs weight="regular">
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-</p-tabs>
+!!! Code Beispiel !!!
 
 Highlight
 
-<p-tabs weight="semibold">
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-</p-tabs>
+!!! Code Beispiel !!!
 
 The standard variant (regular) will be used on a monochrome background, whereas the highlight variant (semibold) should be 
 used on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
@@ -135,3 +108,9 @@ Tab labels provide clear and concise explanations of the content within. Each ta
 ### Navigation
 
 Not be used for primary navigation.
+
+
+---
+
+## Related Component
+* [Tabs Nav](#/components/tabs-nav)
