@@ -11,6 +11,14 @@ import { NumberOfPageLinks } from "./components/navigation/pagination/pagination
 export namespace Components {
     interface PBanner {
         /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * Position of the banner.
+         */
+        "position"?: 'inline' | 'overlay';
+        /**
           * State of the banner.
          */
         "state"?: 'error' | 'warning' | 'neutral';
@@ -18,10 +26,6 @@ export namespace Components {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: 'light' | 'dark';
-        /**
-          * Variant of the banner.
-         */
-        "variant"?: 'inline' | 'overlay';
     }
     interface PButton {
         /**
@@ -816,6 +820,14 @@ declare namespace LocalJSX {
          */
         "onCloseOnClick"?: (event: CustomEvent<any>) => void;
         /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * Position of the banner.
+         */
+        "position"?: 'inline' | 'overlay';
+        /**
           * State of the banner.
          */
         "state"?: 'error' | 'warning' | 'neutral';
@@ -823,10 +835,6 @@ declare namespace LocalJSX {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: 'light' | 'dark';
-        /**
-          * Variant of the banner.
-         */
-        "variant"?: 'inline' | 'overlay';
     }
     interface PButton {
         /**

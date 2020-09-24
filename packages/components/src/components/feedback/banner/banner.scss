@@ -52,8 +52,27 @@
     }
   }
 
+  &--overlay {
+    box-shadow: p-px-to-rem(-6px) p-px-to-rem(6px) p-px-to-rem(15px) 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    max-width: p-px-to-rem(800px);
+  }
+
   &__icon {
-    padding-right: p-px-to-rem(12px);
+    display: none;
+  }
+
+  &__title + &__description {
+    margin-top: p-px-to-rem(8px);
+  }
+
+  @include p-media-query('s') {
+    &__icon {
+      display: block;
+      padding-right: p-px-to-rem(12px);
+    }
   }
 
   &__button {
