@@ -73,8 +73,62 @@
     font-weight: $p-font-weight-semibold;
   }
 
+  &--size-small {
+    @include p-generate-type-scale($p-font-size-small);
+  }
+
   &--size-medium {
     @include p-generate-type-scale($p-font-size-medium);
+  }
+
+  @include p-media-query("xs") {
+    &--size-small-xs {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-xs {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("s") {
+    &--size-small-s {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-s {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("m") {
+    &--size-small-m {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-m {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("l") {
+    &--size-small-l {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-l {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("xl") {
+    &--size-small-xl {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-xl {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
   }
 
   &__scroll-area {
