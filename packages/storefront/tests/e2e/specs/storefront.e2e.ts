@@ -82,9 +82,4 @@ describe('storefront', () => {
       })(category, page);
     }
   }
-
-  it('log', async () => {
-    console.log('Visited Pages', logPages);
-    console.log('Visited Tabs', logTabs);
-  });
 });
