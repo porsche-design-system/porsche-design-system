@@ -1,21 +1,22 @@
 import { ObjectSchema, ValidationError } from 'yup';
 
+/* eslint-disable @typescript-eslint/ban-types */
 export type ValidationBag<T extends object> = {
   data: T;
   errors: { [key in keyof T]: string };
-  schema: ObjectSchema<T | undefined>;
+  schema: ObjectSchema<T>;
 };
 
 export const getInitialErrors = <T>(data: T): { [key in keyof T]: string } => {
-  // @ts-ignore
-  const errors: { [key in keyof T]: string } = {};
+  const errors: { [key in keyof T]: string } = {} as { [key in keyof T]: string };
   Object.keys(data).forEach((key) => (errors[key as keyof T] = ''));
   return errors;
 };
 
-export const validateName = <T>(key: keyof T) => key;
+export const validateName = <T>(key: keyof T): keyof T => key;
 
-export const getState = <T extends object>(field: keyof T, bag: ValidationBag<T>) => bag.errors[field] && 'error';
+export const getState = <T extends object>(field: keyof T, bag: ValidationBag<T>): string =>
+  bag.errors[field] && 'error';
 
 export const validateField = async <T extends object>(field: keyof T, bag: ValidationBag<T>): Promise<boolean> => {
   bag.errors[field] = await bag.schema
