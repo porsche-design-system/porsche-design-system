@@ -92,7 +92,7 @@
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 
     private bag: ValidationBag<FormModel> = {
-      data: initialData,
+      data: { ...initialData },
       errors: getInitialErrors(initialData),
       schema: object<FormModel>({
         email: string()
@@ -107,7 +107,7 @@
       validateField(target.name, this.bag);
     };
 
-    onSubmit = async () => {
+    onSubmit = async (): void => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
     };
