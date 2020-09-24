@@ -156,7 +156,7 @@ export class Tabs {
           <div class={actionPrevClasses}>
             <span class={gradientClassesPrev}/>
             <p-button-pure
-              tabindex={-1}
+              tabbable={false}
               theme={this.theme}
               hide-label="true"
               size="inherit"
@@ -169,7 +169,7 @@ export class Tabs {
           <div class={actionNextClasses}>
             <span class={gradientClassesNext}/>
             <p-button-pure
-              tabindex={-1}
+              tabbable={false}
               theme={this.theme}
               hide-label="true"
               size="inherit"
