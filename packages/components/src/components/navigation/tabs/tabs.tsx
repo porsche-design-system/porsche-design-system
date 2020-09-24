@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, State, Host } from '@stencil/core';
 import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 import {
@@ -133,56 +133,58 @@ export class Tabs {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
 
     return (
-      <div class={tabsClasses}>
-        <div class={scrollAreaClasses}>
-          <ul class={tabListClasses} role="tablist">
-            {this.tabsItems.map((tab, index) => {
-              return (
-                <li role="presentation">
-                  <button
-                    id={prefix(`tab-item-${index}`)}
-                    class={{
-                      ...tabClasses,
-                      [prefix('tabs__tab--selected')]: tab.selected
-                    }}
-                    type="button"
-                    role="tab"
-                    tabindex={!tab.selected ? -1 : 0}
-                    aria-selected={tab.selected ? 'true' : 'false'}
-                    aria-controls={prefix(`tab-panel-${index}`)}
-                    onClick={() => this.handleTabClick(index)}
-                  >
-                    {tab.label}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-          <span class={statusBarClasses} />
-        </div>
-        <div class={actionPrevClasses}>
-          <span class={gradientClassesPrev} />
-          <PrefixedTagNames.pButtonPure
-            aria-hidden="true"
-            tabbable={false}
-            theme={this.theme}
-            hide-label="true"
-            size="inherit"
-            icon="arrow-head-left"
-            onClick={() => this.handlePrevNextClick('prev')}
-          />
-        </div>
-        <div class={actionNextClasses}>
-          <span class={gradientClassesNext} />
-          <PrefixedTagNames.pButtonPure
-            aria-hidden="true"
-            tabbable={false}
-            theme={this.theme}
-            hide-label="true"
-            size="inherit"
-            icon="arrow-head-right"
-            onClick={() => this.handlePrevNextClick('next')}
-          />
+      <Host>
+        <div class={tabsClasses}>
+          <div class={scrollAreaClasses}>
+            <ul class={tabListClasses} role="tablist">
+              {this.tabsItems.map((tab, index) => {
+                return (
+                  <li role="presentation">
+                    <button
+                      id={prefix(`tab-item-${index}`)}
+                      class={{
+                        ...tabClasses,
+                        [prefix('tabs__tab--selected')]: tab.selected
+                      }}
+                      type="button"
+                      role="tab"
+                      tabindex={!tab.selected ? -1 : 0}
+                      aria-selected={tab.selected ? 'true' : 'false'}
+                      aria-controls={prefix(`tab-panel-${index}`)}
+                      onClick={() => this.handleTabClick(index)}
+                    >
+                      {tab.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            <span class={statusBarClasses}/>
+          </div>
+          <div class={actionPrevClasses}>
+            <span class={gradientClassesPrev}/>
+            <PrefixedTagNames.pButtonPure
+              aria-hidden="true"
+              tabbable={false}
+              theme={this.theme}
+              hide-label="true"
+              size="inherit"
+              icon="arrow-head-left"
+              onClick={() => this.handlePrevNextClick('prev')}
+            />
+          </div>
+          <div class={actionNextClasses}>
+            <span class={gradientClassesNext}/>
+            <PrefixedTagNames.pButtonPure
+              aria-hidden="true"
+              tabbable={false}
+              theme={this.theme}
+              hide-label="true"
+              size="inherit"
+              icon="arrow-head-right"
+              onClick={() => this.handlePrevNextClick('next')}
+            />
+          </div>
         </div>
         {this.tabsItems.map((tab, index) => (
           <section
@@ -193,7 +195,7 @@ export class Tabs {
             aria-labelledby={prefix(`tab-item-${index}`)}
           />
         ))}
-      </div>
+      </Host>
     );
   }
 
@@ -206,7 +208,7 @@ export class Tabs {
 
   private observeHost = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -220,7 +222,7 @@ export class Tabs {
   private initIntersectionObserver = (): void => {
     const tabs = this.getHTMLElements('tabs');
     this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
-        this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
     }, tabs);
   };
 
