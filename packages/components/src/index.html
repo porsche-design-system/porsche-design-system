@@ -11,29 +11,29 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-  <p-banner state="neutral">
+  <p-banner state="neutral" style="margin:16px;">
     <span slot="title">Some notification title</span>
     <span slot="description">Some notification description.</span>
   </p-banner>
-  <p-banner state="warning">
+  <p-banner state="warning" position="inline" style="margin:16px;">
     <span slot="title">Some notification title</span>
-    <span slot="description">Some notification description.</span>
+    <span slot="description">Some notification description. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
   </p-banner>
-  <p-banner state="error">
+  <p-banner state="error" persistent="true" style="margin:16px;">
     <span slot="title">Some notification title</span>
     <span slot="description">Some notification description with some <a href="#">link</a>.</span>
   </p-banner>
 
-  <div style="padding: 20px; background-color: #1a2023">
-    <p-banner state="neutral" theme="dark">
+  <div style="padding: 1px 0; background-color: #1a2023">
+    <p-banner state="neutral" theme="dark" style="margin:16px;">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description.</span>
     </p-banner>
-    <p-banner state="warning" theme="dark">
+    <p-banner state="warning" theme="dark" style="margin:16px;">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description.</span>
     </p-banner>
-    <p-banner state="error" theme="dark">
+    <p-banner state="error" theme="dark" style="margin:16px;">
       <span slot="title">Some notification title</span>
       <span slot="description">Some notification description <a href="#">link</a>.</span>
     </p-banner>
