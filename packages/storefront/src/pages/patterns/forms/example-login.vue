@@ -15,13 +15,13 @@
             <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-grid-item">
               <p-text-field-wrapper
                 label="Porsche ID (email address)"
-                v-bind:message="errors.email"
+                v-bind:message="bag.errors.email"
                 v-bind:state="getState('email')"
               >
                 <input
                   type="email"
-                  v-bind:name="validateName('email')"
-                  v-model="formData.email"
+                  v-bind:name="validateFieldName('email')"
+                  v-model="bag.data.email"
                   v-on:blur="onFieldBlur"
                   required
                 />
@@ -32,13 +32,13 @@
             <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-row-spacing form-grid-item">
               <p-text-field-wrapper
                 label="Password"
-                v-bind:message="errors.password"
+                v-bind:message="bag.errors.password"
                 v-bind:state="getState('password')"
               >
                 <input
                   type="password"
-                  v-bind:name="validateName('password')"
-                  v-model="formData.password"
+                  v-bind:name="validateFieldName('password')"
+                  v-model="bag.data.password"
                   v-on:blur="onFieldBlur"
                   required
                 />
@@ -52,7 +52,7 @@
             <p-flex-item width="{base: 'full', s: 'auto'}">
               <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Log in</p-button>
               <p-checkbox-wrapper label="Keep me logged in" class="form-row-spacing">
-                <input type="checkbox" v-bind:name="validateName('isChecked')" v-model="formData.isChecked" />
+                <input type="checkbox" v-bind:name="validateFieldName('isChecked')" v-model="bag.data.isChecked" />
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
@@ -71,8 +71,8 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  // import { Watch } from 'vue-property-decorator'; // to validate while typing
-  import { boolean, object, string, ValidationError } from 'yup';
+  import { boolean, object, string } from 'yup';
+  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
 
   type FormModel = {
     email: string;
@@ -80,64 +80,35 @@
     isChecked: boolean;
   };
 
+  const initialData: FormModel = {
+    email: '',
+    password: '',
+    isChecked: false
+  };
+
   @Component
   export default class LoginForm extends Vue {
-    private validateName = (key: keyof FormModel): string => key;
+    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+    private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-    private formData: FormModel = {
-      email: '',
-      password: '',
-      isChecked: false
+    private bag: ValidationBag<FormModel> = {
+      data: initialData,
+      errors: getInitialErrors(initialData),
+      schema: object<FormModel>({
+        email: string()
+          .email()
+          .required(),
+        password: string().required(),
+        isChecked: boolean()
+      })
     };
-
-    private errors: { [key in keyof FormModel]: string } = {
-      email: '',
-      password: '',
-      isChecked: ''
-    };
-
-    private schema = object().shape<FormModel>({
-      email: string()
-        .email()
-        .required(),
-      password: string().required(),
-      isChecked: boolean()
-    });
-
-    private getState = (field: keyof FormModel) => this.errors[field] && 'error';
-
-    private validateField = async (field: keyof FormModel): Promise<boolean> => {
-      this.errors[field] = await this.schema
-        .validateAt(field, this.formData)
-        .then(() => '')
-        .catch((err: ValidationError) => err.message);
-      return !this.errors[field];
-    };
-
-    private validateForm = async (): Promise<boolean> => {
-      // reset all errors
-      Object.keys(this.errors).forEach((key) => (this.errors[key as keyof FormModel] = ''));
-
-      return this.schema
-        .validate(this.formData, { abortEarly: false })
-        .then(() => true)
-        .catch((err: ValidationError) => {
-          err.inner.forEach(({ path, message }) => (this.errors[path as keyof FormModel] = message));
-          return false;
-        });
-    };
-
-    // @Watch('formData.email') // validate while typing
-    // onEmailChange = (): void => {
-    //   this.validateField('email');
-    // };
 
     onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
-      this.validateField(target.name as keyof FormModel);
+      validateField(target.name, this.bag);
     };
 
     onSubmit = async () => {
-      const isValid = await this.validateForm();
+      const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
     };
   }
