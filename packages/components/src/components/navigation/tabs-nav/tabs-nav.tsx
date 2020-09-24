@@ -152,9 +152,6 @@ export class TabsNav {
           this.handleTabClick(+index);
         }
       }
-
-      e.preventDefault();
-      e.stopPropagation();
     };
 
     for (const link of navList) {

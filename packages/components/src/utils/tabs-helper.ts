@@ -15,17 +15,25 @@ export const scrollOnTabClick = (
   tabs: HTMLElement[],
   gradients: HTMLElement[]
 ): void => {
-  const gradientprevWidth = gradients[0].offsetWidth;
+  const gradientPrevWidth = gradients[0].offsetWidth;
   const gradientNextWidth = gradients[1].offsetWidth;
   const activeTab = tabs[activeTabIndex];
   let nextTab: number;
 
+  // go to next tab
   if (tabIndex > activeTabIndexOnClick && tabIndex < tabsItems.length - 1) {
     nextTab = activeTab.offsetLeft - gradientNextWidth;
+  // go to prev tab
   } else if (tabIndex < activeTabIndexOnClick && tabIndex > 0) {
-    nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientprevWidth - nav.offsetWidth;
+    nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientPrevWidth - nav.offsetWidth;
+  // go no where
+  } else if (tabIndex === activeTabIndexOnClick) {
+  // go first tab
+  } else if (tabIndex === 0) {
+    nextTab = 0;
+  // go to last tab
   } else {
-    nextTab = activeTab.offsetLeft - 3;
+    nextTab = activeTab.offsetLeft - 4;
   }
 
   nav.scrollTo({
