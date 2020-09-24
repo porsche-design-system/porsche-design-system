@@ -1,9 +1,15 @@
 import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../types';
-import { registerIntersectionObserver, scrollToSelectedTab } from '../../../utils/tabs-helper';
+import {
+  getStatusBarStyle,
+  registerIntersectionObserver,
+  scrollOnPrevNext, scrollOnTabClick,
+  scrollToSelectedTab
+} from '../../../utils/tabs-helper';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
+type HTMLElementsSelector = 'gradient';
 
 @Component({
   tag: 'p-tabs-nav',
@@ -20,7 +26,7 @@ export class TabsNav {
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
   /** Adapts color when used on dark background. */
-  @Prop({reflect: true}) public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
@@ -30,8 +36,7 @@ export class TabsNav {
 
   @State() public isPrevHidden = false;
   @State() public isNextHidden = false;
-
-/*  private hostObserver: MutationObserver;*/
+  
   private intersectionObserver: IntersectionObserver;
 
   @Watch('activeTabIndex')
@@ -46,10 +51,8 @@ export class TabsNav {
   public componentDidLoad(): void {
     this.init();
     this.setActiveTab(0);
-    this.intersectionObserver = registerIntersectionObserver(this.host, (direction, isIntersecting) => {
-      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
-    });
-    scrollToSelectedTab(this.host, this.activeTabIndex);
+    this.initIntersectionObserver();
+    this.initView();
   }
 
   public disconnectedCallback(): void {
@@ -76,7 +79,7 @@ export class TabsNav {
     const actionClasses = {
       [prefix('tabs-nav__action')]: true,
       [prefix(`tabs-nav__action--theme-${this.theme}`)]: true
-    }
+    };
 
     const actionPrevClasses = {
       ...actionClasses,
@@ -93,7 +96,7 @@ export class TabsNav {
     const gradientClasses = {
       [prefix('tabs-nav__gradient')]: true,
       [prefix(`tabs-nav__gradient--theme-${this.theme}`)]: true,
-      [prefix(`tabs-nav__gradient--color-scheme-${this.colorScheme}`)]: true,
+      [prefix(`tabs-nav__gradient--color-scheme-${this.colorScheme}`)]: true
     };
 
     const gradientClassesPrev = {
@@ -109,11 +112,11 @@ export class TabsNav {
     return (
       <div class={tabsNavClasses}>
         <nav class={scrollAreaClasses}>
-          <slot/>
-          <span class={statusBarClasses}/>
+          <slot />
+          <span class={statusBarClasses} />
         </nav>
         <div class={actionPrevClasses}>
-          <span class={gradientClassesPrev}/>
+          <span class={gradientClassesPrev} />
           <p-button-pure
             aria-hidden="true"
             tabbable={false}
@@ -125,7 +128,7 @@ export class TabsNav {
           />
         </div>
         <div class={actionNextClasses}>
-          <span class={gradientClassesNext}/>
+          <span class={gradientClassesNext} />
           <p-button-pure
             aria-hidden="true"
             tabbable={false}
@@ -143,10 +146,10 @@ export class TabsNav {
   public init = () => {
     const navList = Array.from(this.host.children);
 
-    const handleTabClick = (e) => {
+    const handleAnchorClick = (e) => {
       for (const [index, link] of Object.entries(navList)) {
         if (link === e.target) {
-          this.handleTabChange(+index);
+          this.handleTabClick(+index);
         }
       }
 
@@ -155,8 +158,22 @@ export class TabsNav {
     };
 
     for (const link of navList) {
-      link.addEventListener('click', handleTabClick);
+      link.addEventListener('click', handleAnchorClick);
     }
+  };
+
+  private initView = (): void => {
+    const nav = this.getHTMLElement('nav');
+    const tabs = Array.from(this.host.children) as HTMLElement[];
+    const gradients = this.getHTMLElements('gradient');
+    scrollToSelectedTab(this.activeTabIndex, nav, tabs, gradients);
+  };
+
+  private initIntersectionObserver = (): void => {
+    const tabs = Array.from(this.host.children) as HTMLElement[];
+    this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
+      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+    }, tabs);
   };
 
   private setActiveTab = (index: number): void => {
@@ -173,66 +190,25 @@ export class TabsNav {
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
-  // private handleTabClick = (tabIndex: number): void => {
-  //   const activeTabOnClick = this.activeTabIndex;
-  //   this.handleTabChange(tabIndex);
-  //
-  //   const tabs = this.getHTMLElements('tabs');
-  //   let nextTabIndex = 0;
-  //
-  //   if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-  //     nextTabIndex = this.activeTabIndex + 1;
-  //   } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-  //     nextTabIndex = this.activeTabIndex - 1;
-  //   } else {
-  //     nextTabIndex = tabIndex;
-  //   }
-  //
-  //   const nextTabElement = tabs[nextTabIndex];
-  //
-  //   nextTabElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  // };
+  private handleTabClick = (tabIndex: number): void => {
+    const activeTabIndexOnClick = this.activeTabIndex;
+    this.handleTabChange(tabIndex);
+    const nav = this.getHTMLElement('nav');
+    const tabs = Array.from(this.host.children) as HTMLElement[];
+    const gradients = this.getHTMLElements('gradient');
+    scrollOnTabClick(tabs, activeTabIndexOnClick, tabIndex, this.activeTabIndex, nav, tabs, gradients);
+  };
 
   private setStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
     const tabs = Array.from(this.host.children) as HTMLElement[];
-    const activeTab = tabs[this.activeTabIndex];
-    const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
-    const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
-    const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
-
-    statusBar.setAttribute('style', statusBarStyle);
+    statusBar.setAttribute('style', getStatusBarStyle(this.activeTabIndex, tabs));
   };
 
-  private handlePrevNextClick = (action: 'prev' | 'next'): void => {
+  private handlePrevNextClick = (action: 'next' | 'prev'): void => {
     const nav = this.getHTMLElement('nav');
     const tabs = Array.from(this.host.children) as HTMLElement[];
-    const lastTab = tabs[tabs.length - 1];
-    const navWidth = nav.offsetWidth;
-    const currentScrollPosition = nav.scrollLeft;
-    const scrollToStep = navWidth * 0.2;
-    const scrollToMax = lastTab.offsetLeft + lastTab.offsetWidth - navWidth;
-
-    let scrollTo: number;
-
-    if (action === 'next') {
-      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-        scrollTo = scrollToMax;
-      } else {
-        scrollTo = currentScrollPosition + scrollToStep;
-      }
-    } else {
-      if (currentScrollPosition - scrollToStep * 2 < 0) {
-        scrollTo = 0;
-      } else {
-        scrollTo = currentScrollPosition - scrollToStep;
-      }
-    }
-
-    nav.scrollTo({
-      left: scrollTo,
-      behavior: 'smooth'
-    });
+    scrollOnPrevNext(action, nav, tabs);
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
@@ -242,5 +218,13 @@ export class TabsNav {
     };
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
+  };
+
+  private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
+    const selector = {
+      gradient: 'tabs-nav__gradient'
+    };
+
+    return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
   };
 }
