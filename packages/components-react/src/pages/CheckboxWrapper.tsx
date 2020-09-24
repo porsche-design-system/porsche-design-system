@@ -55,6 +55,21 @@ export const CheckboxWrapperPage = (): JSX.Element => {
         </CheckboxWrapper>
       </div>
 
+      <div className="playground light" title="should render in required state">
+        <CheckboxWrapper label="Some label">
+          <input type="checkbox" name="some-name" required />
+        </CheckboxWrapper>
+        <CheckboxWrapper label="Some label">
+          <input type="checkbox" name="some-name" required disabled />
+        </CheckboxWrapper>
+        <CheckboxWrapper label="Some label">
+          <input type="checkbox" name="some-name" required defaultChecked />
+        </CheckboxWrapper>
+        <CheckboxWrapper label="Some label">
+          <input type="checkbox" name="some-name" required defaultChecked disabled />
+        </CheckboxWrapper>
+      </div>
+
       <div className="playground light" title="should render in disabled state">
         <CheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" disabled />
