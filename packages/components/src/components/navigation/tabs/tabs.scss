@@ -112,13 +112,17 @@
   &__status-bar {
     position: absolute;
     bottom: 0;
-    height: .125em;
+    height: .09375em;
     display: block;
     transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
     background-color: $p-color-state-active;
 
     &--theme-dark {
       background-color: $p-color-theme-dark-state-active;
+    }
+
+    &--weight-semibold {
+      height: .125em;
     }
   }
 

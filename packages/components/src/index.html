@@ -66,6 +66,19 @@
 <br>
 <br>
 
+<!--
+TODO: responsive size
+TODO: span for disabled on tabs-nav
+TODO: 4px instead of 3px safe-zone
+TODO: move panel into tabs and remove host
+-->
+
+<!--
+Common: Consumer can pass links with their full native functionality
+1. Step Navigation (disabled one after each other)
+2. Jump Down Navigation (use aria-labels, e.g. skip to label 1, 2, 3,…)
+3. Link List / Page Navigation (either with page refresh or without)
+-->
 <!-- Nav element (links list) but looks like Tabs -->
 <div style="border: 1px solid #ccc; padding: 3rem;">
   <p-tabs-nav size="medium">
@@ -97,6 +110,11 @@
 <br>
 <br>
 <br>
+
+<!--
+Not url based but "rundumsorglos" variant, content will be preloaded and the component itself handles which
+tabs content to show. Should not be used to switch between pages (url) but to switch between smaller content blocks.
+-->
 
 <!-- Simple Button based Tabs -->
 <p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">

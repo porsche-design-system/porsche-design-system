@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 import { prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
@@ -19,7 +19,7 @@ export class TabsNav {
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
   /** Adapts color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({reflect: true}) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
@@ -66,7 +66,8 @@ export class TabsNav {
 
     const statusBarClasses = {
       [prefix('tabs-nav__status-bar')]: true,
-      [prefix(`tabs-nav__status-bar--theme-${this.theme}`)]: true
+      [prefix(`tabs-nav__status-bar--theme-${this.theme}`)]: true,
+      [prefix(`tabs-nav__status-bar--weight-${this.weight}`)]: true
     };
 
     const actionClasses = {
@@ -103,40 +104,36 @@ export class TabsNav {
     };
 
     return (
-      <Host>
-        <div class={tabsNavClasses}>
-          <nav class={scrollAreaClasses}>
-            <slot/>
-            <span class={statusBarClasses}/>
-          </nav>
-          <div class={actionPrevClasses}>
-            <span class={gradientClassesPrev}/>
-            <p-button-pure
-              tabbable={false}
-              theme={this.theme}
-              hide-label="true"
-              size="inherit"
-              icon="arrow-head-left"
-              onClick={() => this.handlePrevNextClick('prev')}
-            >
-              Prev
-            </p-button-pure>
-          </div>
-          <div class={actionNextClasses}>
-            <span class={gradientClassesNext}/>
-            <p-button-pure
-              tabbable={false}
-              theme={this.theme}
-              hide-label="true"
-              size="inherit"
-              icon="arrow-head-right"
-              onClick={() => this.handlePrevNextClick('next')}
-            >
-              Next
-            </p-button-pure>
-          </div>
+      <div class={tabsNavClasses}>
+        <nav class={scrollAreaClasses}>
+          <slot/>
+          <span class={statusBarClasses}/>
+        </nav>
+        <div class={actionPrevClasses}>
+          <span class={gradientClassesPrev}/>
+          <p-button-pure
+            aria-hidden="true"
+            tabbable={false}
+            theme={this.theme}
+            hide-label="true"
+            size="inherit"
+            icon="arrow-head-left"
+            onClick={() => this.handlePrevNextClick('prev')}
+          />
         </div>
-      </Host>
+        <div class={actionNextClasses}>
+          <span class={gradientClassesNext}/>
+          <p-button-pure
+            aria-hidden="true"
+            tabbable={false}
+            theme={this.theme}
+            hide-label="true"
+            size="inherit"
+            icon="arrow-head-right"
+            onClick={() => this.handlePrevNextClick('next')}
+          />
+        </div>
+      </div>
     );
   }
 
