@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
-import { prefix } from '../../../utils';
-import { TextWeight, Theme } from '../../../types';
+import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { TextSize, TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
 
@@ -13,7 +13,7 @@ export class TabsNav {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: 'small' | 'medium' = 'medium';
+  @Prop() public size?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>> = 'medium';
 
   /** The text weight. */
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
@@ -56,8 +56,8 @@ export class TabsNav {
   public render(): JSX.Element {
     const tabsNavClasses = {
       [prefix('tabs-nav')]: true,
-      [prefix(`tabs-nav--size-${this.size}`)]: true,
-      [prefix(`tabs-nav--weight-${this.weight}`)]: true
+      [prefix(`tabs-nav--weight-${this.weight}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('tabs-nav--size', this.size)
     };
 
     const scrollAreaClasses = {

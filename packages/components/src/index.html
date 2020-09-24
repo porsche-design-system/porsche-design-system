@@ -67,8 +67,6 @@
 <br>
 
 <!--
-TODO: responsive size
-TODO: 4px instead of 3px safe-zone
 TODO: move panel into tabs and remove host
 -->
 
@@ -105,6 +103,18 @@ Common: Consumer can pass links with their full native functionality
   <a href="">Label 9</a>
 </p-tabs-nav>
 
+<p-tabs-nav style="background-color: black; padding: 3rem;" size="{base: 'small', m: 'medium'}" theme="dark" active-tab-index="8">
+  <a href="">Label 1</a>
+  <a href="">Label 2</a>
+  <a href="">Label 3</a>
+  <a href="">Label 4</a>
+  <a href="">Label 5</a>
+  <a href="">Label 6</a>
+  <a href="">Label 7</a>
+  <a href="">Label 8</a>
+  <a href="">Label 9</a>
+</p-tabs-nav>
+
 <br>
 <br>
 <br>
@@ -117,6 +127,27 @@ tabs content to show. Should not be used to switch between pages (url) but to sw
 
 <!-- Simple Button based Tabs -->
 <p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">
+  <p-tabs-item label="Hello World!">
+    <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
+  </p-tabs-item>
+  <p-tabs-item label="second">
+    <p-text>Hallo Welt 2 <a href="#">link</a></p-text>
+  </p-tabs-item>
+  <p-tabs-item label="A longer one">
+    <p-text>Hallo Welt 3 <a href="#">link</a></p-text>
+  </p-tabs-item>
+  <p-tabs-item label="Whatever">
+    <p-text>Hallo Welt 4 <a href="#">link</a></p-text>
+  </p-tabs-item>
+  <p-tabs-item label="test">
+    <p-text>Hallo Welt 5</p-text>
+  </p-tabs-item>
+  <p-tabs-item selected label="Die letzte aller Möglichkeiten">
+    <p-text>Hallo Welt 6</p-text>
+  </p-tabs-item>
+</p-tabs>
+
+<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="{base: 'small', m: 'medium'}">
   <p-tabs-item label="Hello World!">
     <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
   </p-tabs-item>

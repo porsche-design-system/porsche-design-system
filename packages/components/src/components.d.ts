@@ -547,7 +547,7 @@ export namespace Components {
         /**
           * The text size.
          */
-        "size"?: 'small' | 'medium';
+        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
         /**
           * Adapts color when used on dark background.
          */
@@ -1399,7 +1399,7 @@ declare namespace LocalJSX {
         /**
           * The text size.
          */
-        "size"?: 'small' | 'medium';
+        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
         /**
           * Adapts color when used on dark background.
          */

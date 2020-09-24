@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, Host, Watch, State } from '@stencil/core';
-import { prefix } from '../../../utils';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
@@ -67,8 +67,8 @@ export class Tabs {
   public render(): JSX.Element {
     const tabsClasses = {
       [prefix('tabs')]: true,
-      [prefix(`tabs--size-${this.size}`)]: true,
-      [prefix(`tabs--weight-${this.weight}`)]: true
+      [prefix(`tabs--weight-${this.weight}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('tabs--size', this.size)
     };
 
     const scrollAreaClasses = {
