@@ -53,6 +53,7 @@ export class TextareaWrapper {
     const labelClasses = prefix('textarea-wrapper__label');
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
+      [prefix('textarea-wrapper__label-text--required')]: this.isRequired,
       [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -137,6 +138,10 @@ export class TextareaWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
+  private get isRequired(): boolean {
+    return this.textarea.getAttribute('required') !== null;
+  }
+
   private setTextarea(): void {
     this.textarea = this.host.querySelector('textarea');
   }
@@ -147,12 +152,12 @@ export class TextareaWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label && this.message) {
-      this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    } else if (this.label && this.description) {
-      this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    } else if (this.label) {
-      this.textarea.setAttribute('aria-label', this.label);
+    if (this.label) {
+      const messageOrDescription = this.message || this.description;
+      this.textarea.setAttribute(
+        'aria-label',
+        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
+      );
     }
 
     if (this.state === 'error') {
