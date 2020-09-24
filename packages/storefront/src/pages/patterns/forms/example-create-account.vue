@@ -16,12 +16,12 @@
             <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
               <p-select-wrapper
                 label="Salutation"
-                v-bind:message="errors.salutation"
+                v-bind:message="bag.errors.salutation"
                 v-bind:state="getState('salutation')"
               >
                 <select
-                  v-bind:name="validateName('salutation')"
-                  v-model="formData.salutation"
+                  v-bind:name="validateFieldName('salutation')"
+                  v-model="bag.data.salutation"
                   v-on:change="onFieldBlur"
                   required
                 >
@@ -36,7 +36,7 @@
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
               <p-select-wrapper label="Title">
-                <select v-bind:name="validateName('title')" v-model="formData.title">
+                <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
                   <option>Choose an option</option>
                   <option value="option 1">Dr.</option>
                   <option value="option 2">Prof.</option>
@@ -49,13 +49,13 @@
             <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
               <p-text-field-wrapper
                 label="First name"
-                v-bind:message="errors.firstName"
+                v-bind:message="bag.errors.firstName"
                 v-bind:state="getState('firstName')"
               >
                 <input
                   type="text"
-                  v-bind:name="validateName('firstName')"
-                  v-model="formData.firstName"
+                  v-bind:name="validateFieldName('firstName')"
+                  v-model="bag.data.firstName"
                   v-on:blur="onFieldBlur"
                   required
                 />
@@ -67,13 +67,13 @@
             >
               <p-text-field-wrapper
                 label="Last name"
-                v-bind:message="errors.lastName"
+                v-bind:message="bag.errors.lastName"
                 v-bind:state="getState('lastName')"
               >
                 <input
                   type="text"
-                  v-bind:name="validateName('lastName')"
-                  v-model="formData.lastName"
+                  v-bind:name="validateFieldName('lastName')"
+                  v-model="bag.data.lastName"
                   v-on:blur="onFieldBlur"
                   required
                 />
@@ -83,13 +83,13 @@
           <p-text-field-wrapper
             label="Email address"
             class="form-row-spacing"
-            v-bind:message="errors.email"
+            v-bind:message="bag.errors.email"
             v-bind:state="getState('email')"
           >
             <input
               type="email"
-              v-bind:name="validateName('email')"
-              v-model="formData.email"
+              v-bind:name="validateFieldName('email')"
+              v-model="bag.data.email"
               v-on:blur="onFieldBlur"
               required
             />
@@ -97,41 +97,41 @@
           <p-text-field-wrapper
             label="Password"
             class="form-row-spacing"
-            v-bind:message="errors.password"
+            v-bind:message="bag.errors.password"
             v-bind:state="getState('password')"
           >
             <input
               type="password"
-              v-bind:name="validateName('password')"
-              v-model="formData.password"
+              v-bind:name="validateFieldName('password')"
+              v-model="bag.data.password"
               v-on:blur="onFieldBlur"
               required
             />
           </p-text-field-wrapper>
           <p-checkbox-wrapper
             class="form-section-spacing"
-            v-bind:message="errors.terms"
+            v-bind:message="bag.errors.terms"
             v-bind:state="getState('terms')"
           >
             <span slot="label">I have read the <a href="#">general terms ans conditions</a> and I accept them.</span>
             <input
               type="checkbox"
-              v-bind:name="validateName('terms')"
-              v-model="formData.terms"
+              v-bind:name="validateFieldName('terms')"
+              v-model="bag.data.terms"
               v-on:change="onFieldBlur"
               required
             />
           </p-checkbox-wrapper>
           <p-checkbox-wrapper
             class="form-row-spacing"
-            v-bind:message="errors.privacy"
+            v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
           >
             <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
             <input
               type="checkbox"
-              v-bind:name="validateName('privacy')"
-              v-model="formData.privacy"
+              v-bind:name="validateFieldName('privacy')"
+              v-model="bag.data.privacy"
               v-on:change="onFieldBlur"
               required
             />
@@ -167,7 +167,8 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { boolean, object, string, ValidationError } from 'yup';
+  import { boolean, object, string } from 'yup';
+  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
 
   type FormModel = {
     title: string;
@@ -180,78 +181,49 @@
     privacy: boolean;
   };
 
+  const initialData: FormModel = {
+    salutation: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    terms: false,
+    privacy: false
+  };
+
   @Component
   export default class CreateAccountForm extends Vue {
-    private validateName = (key: keyof FormModel): string => key;
+    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+    private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-    private formData: FormModel = {
-      salutation: '',
-      title: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      terms: false,
-      privacy: false
-    };
-
-    private errors: { [key in keyof FormModel]: string } = {
-      salutation: '',
-      title: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      terms: '',
-      privacy: ''
-    };
-
-    private schema = object().shape<FormModel>({
-      salutation: string().required(),
-      title: string(),
-      firstName: string().required(),
-      lastName: string().required(),
-      email: string()
-        .email()
-        .required(),
-      password: string().required(),
-      terms: boolean()
-        .required()
-        .oneOf([true]),
-      privacy: boolean()
-        .required()
-        .oneOf([true])
-    });
-
-    private getState = (field: keyof FormModel) => this.errors[field] && 'error';
-
-    private validateField = async (field: keyof FormModel): Promise<boolean> => {
-      this.errors[field] = await this.schema
-        .validateAt(field, this.formData)
-        .then(() => '')
-        .catch((err: ValidationError) => err.message);
-      return !this.errors[field];
-    };
-
-    private validateForm = async (): Promise<boolean> => {
-      // reset all errors
-      Object.keys(this.errors).forEach((key) => (this.errors[key as keyof FormModel] = ''));
-
-      return this.schema
-        .validate(this.formData, { abortEarly: false })
-        .then(() => true)
-        .catch((err: ValidationError) => {
-          err.inner.forEach(({ path, message }) => (this.errors[path as keyof FormModel] = message));
-          return false;
-        });
+    private bag: ValidationBag<FormModel> = {
+      data: initialData,
+      errors: getInitialErrors(initialData),
+      schema: object<FormModel>({
+        salutation: string().required(),
+        title: string(),
+        firstName: string().required(),
+        lastName: string().required(),
+        email: string()
+          .email()
+          .required(),
+        password: string().required(),
+        terms: boolean()
+          .required()
+          .oneOf([true]),
+        privacy: boolean()
+          .required()
+          .oneOf([true])
+      })
     };
 
     onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
-      this.validateField(target.name as keyof FormModel);
+      validateField(target.name, this.bag);
     };
 
     onSubmit = async () => {
-      const isValid = await this.validateForm();
+      const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
     };
   }
