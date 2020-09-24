@@ -16,7 +16,7 @@
               <p-text-field-wrapper
                 label="Porsche ID (email address)"
                 v-bind:message="errors.email"
-                v-bind:state="errors.email && 'error'"
+                v-bind:state="getState('email')"
               >
                 <input
                   type="email"
@@ -33,7 +33,7 @@
               <p-text-field-wrapper
                 label="Password"
                 v-bind:message="errors.password"
-                v-bind:state="errors.password && 'error'"
+                v-bind:state="getState('password')"
               >
                 <input
                   type="password"
@@ -104,9 +104,11 @@
       isChecked: boolean()
     });
 
+    private getState = (field: keyof FormModel) => this.errors[field] && 'error';
+
     private validateField = async (field: keyof FormModel): Promise<boolean> => {
       this.errors[field] = await this.schema
-        .validateAt(this.validateName(field), this.formData)
+        .validateAt(field, this.formData)
         .then(() => '')
         .catch((err: ValidationError) => err.message);
       return !this.errors[field];
