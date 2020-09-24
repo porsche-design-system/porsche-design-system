@@ -25,5 +25,4 @@
 
 ### Used by
 
- - [p-tabs](#/components/tabs)
  - [p-tabs-nav](#/components/tabs-nav)

@@ -67,8 +67,15 @@
 <br>
 
 <!--
+TODO: responsive size
+TODO: span for disabled on tabs-nav
+TODO: 4px instead of 3px safe-zone
+TODO: move panel into tabs and remove host
+-->
+
+<!--
 Common: Consumer can pass links with their full native functionality
-1. Step Navigation (disabled one after each other) => maybe in a future release
+1. Step Navigation (disabled one after each other)
 2. Jump Down Navigation (use aria-labels, e.g. skip to label 1, 2, 3,…)
 3. Link List / Page Navigation (either with page refresh or without)
 -->
@@ -86,6 +93,45 @@ Common: Consumer can pass links with their full native functionality
     <a href="#">Label 9</a>
   </p-tabs-nav>
 </div>
+
+<!--
+<div style="width: 400px">
+  <p-tabs size="medium">
+    <p-tabs-item label="Button1">
+      Content1
+    </p-tabs-item>
+    <p-tabs-item label="Button2">
+      Content2
+    </p-tabs-item>
+    <p-tabs-item label="Button3">
+      Content3
+    </p-tabs-item>
+    <p-tabs-item label="Button4">
+      Content4
+    </p-tabs-item>
+    <p-tabs-item label="Button5">
+      Content5
+    </p-tabs-item>
+    <p-tabs-item label="Button6">
+      Content6
+    </p-tabs-item>
+  </p-tabs>
+</div>
+
+&lt;!&ndash;
+TODO: responsive size
+TODO: span for disabled on tabs-nav
+TODO: 4px instead of 3px safe-zone
+TODO: move panel into tabs and remove host
+&ndash;&gt;
+
+&lt;!&ndash;
+Common: Consumer can pass links with their full native functionality
+1. Step Navigation (disabled one after each other)
+2. Jump Down Navigation (use aria-labels, e.g. skip to label 1, 2, 3,…)
+3. Link List / Page Navigation (either with page refresh or without)
+&ndash;&gt;
+&lt;!&ndash; Nav element (links list) but looks like Tabs &ndash;&gt;
 
 <p-tabs-nav style="background-color: black; padding: 3rem;" size="medium" theme="dark" active-tab-index="8">
   <a href="">Label 1</a>
@@ -116,13 +162,13 @@ Common: Consumer can pass links with their full native functionality
 <br>
 <br>
 
-<!--
+&lt;!&ndash;
 Not url based but "rundumsorglos" variant, content will be preloaded and the component itself handles which
 tabs content to show. Should not be used to switch between pages (url) but to switch between smaller content blocks.
--->
+&ndash;&gt;
 
-<!-- Simple Button based Tabs -->
-<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="medium">
+&lt;!&ndash; Simple Button based Tabs &ndash;&gt;
+<p-tabs style="border: 1px solid #ccc; padding: 3rem;">
   <p-tabs-item label="Hello World!">
     <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
   </p-tabs-item>
@@ -141,47 +187,26 @@ tabs content to show. Should not be used to switch between pages (url) but to sw
   <p-tabs-item selected label="Die letzte aller Möglichkeiten">
     <p-text>Hallo Welt 6</p-text>
   </p-tabs-item>
-</p-tabs>
+</p-tabs>-->
 
-<p-tabs style="border: 1px solid #ccc; padding: 3rem;" size="{base: 'small', m: 'medium'}">
-  <p-tabs-item label="Hello World!">
-    <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
+<p-tabs style="background-color: black; padding: 3rem;" theme="dark">
+  <p-tabs-item label="Label 1">
+    <p-text theme="dark">Label 1</p-text>
   </p-tabs-item>
-  <p-tabs-item label="second">
-    <p-text>Hallo Welt 2 <a href="#">link</a></p-text>
+  <p-tabs-item label="Label 2">
+    <p-text theme="dark">Label 2</p-text>
   </p-tabs-item>
-  <p-tabs-item label="A longer one">
-    <p-text>Hallo Welt 3 <a href="#">link</a></p-text>
+  <p-tabs-item selected label="Label 3">
+    <p-text theme="dark">Label 3</p-text>
   </p-tabs-item>
-  <p-tabs-item label="Whatever">
-    <p-text>Hallo Welt 4 <a href="#">link</a></p-text>
+  <p-tabs-item label="Label 4">
+    <p-text theme="dark">Label 4</p-text>
   </p-tabs-item>
-  <p-tabs-item label="test">
-    <p-text>Hallo Welt 5</p-text>
+  <p-tabs-item label="Label 5">
+    <p-text theme="dark">Label 5</p-text>
   </p-tabs-item>
-  <p-tabs-item selected label="Die letzte aller Möglichkeiten">
-    <p-text>Hallo Welt 6</p-text>
-  </p-tabs-item>
-</p-tabs>
-
-<p-tabs style="background-color: black; padding: 3rem;" theme="dark" size="medium">
-  <p-tabs-item label="Hello World!">
-    <p-text theme="dark">Hallo Welt 1</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="second">
-    <p-text theme="dark">Hallo Welt 2</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="A longer one">
-    <p-text theme="dark">Hallo Welt 1</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="Whatever">
-    <p-text theme="dark">Hallo Welt 1</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="test">
-    <p-text theme="dark">Hallo Welt 1</p-text>
-  </p-tabs-item>
-  <p-tabs-item label="Die letzte aller Möglichkeiten">
-    <p-text theme="dark">Hallo Welt 1</p-text>
+  <p-tabs-item label="Label 6">
+    <p-text theme="dark">Label 6</p-text>
   </p-tabs-item>
 </p-tabs>
 

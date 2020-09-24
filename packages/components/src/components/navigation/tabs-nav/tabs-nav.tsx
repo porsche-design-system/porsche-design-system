@@ -1,6 +1,7 @@
 import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../types';
+import { registerIntersectionObserver, scrollToSelectedTab } from '../../../utils/tabs-helper';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
 
@@ -30,7 +31,7 @@ export class TabsNav {
   @State() public isPrevHidden = false;
   @State() public isNextHidden = false;
 
-  private hostObserver: MutationObserver;
+/*  private hostObserver: MutationObserver;*/
   private intersectionObserver: IntersectionObserver;
 
   @Watch('activeTabIndex')
@@ -45,11 +46,13 @@ export class TabsNav {
   public componentDidLoad(): void {
     this.init();
     this.setActiveTab(0);
-    this.observeIntersection();
+    this.intersectionObserver = registerIntersectionObserver(this.host, (direction, isIntersecting) => {
+      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+    });
+    scrollToSelectedTab(this.host, this.activeTabIndex);
   }
 
   public disconnectedCallback(): void {
-    this.hostObserver.disconnect();
     this.intersectionObserver.disconnect();
   }
 
@@ -230,29 +233,6 @@ export class TabsNav {
       left: scrollTo,
       behavior: 'smooth'
     });
-  };
-
-  private observeIntersection = (): void => {
-    const tabs = this.host.children;
-    const firstTab = tabs[0];
-    const lastTab = tabs[tabs.length - 1];
-
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.target === firstTab) {
-            this.isPrevHidden = entry.isIntersecting;
-          }
-          if (entry.target === lastTab) {
-            this.isNextHidden = entry.isIntersecting;
-          }
-        }
-      },
-      {threshold: 1}
-    );
-
-    this.intersectionObserver.observe(firstTab);
-    this.intersectionObserver.observe(lastTab);
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
