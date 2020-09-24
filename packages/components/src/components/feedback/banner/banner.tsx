@@ -57,7 +57,7 @@ export class Banner {
             <PrefixedTagNames.pText class={descriptionClasses}><slot name="description"/></PrefixedTagNames.pText>
           )}
           {!this.persistent && (
-            <PrefixedTagNames.pButtonPure icon="close" hideLabel={true} class={buttonClasses} onClick={(e: MouseEvent) => this.handleClick(e)}>Close notification</PrefixedTagNames.pButtonPure>
+            <div class={buttonClasses}><PrefixedTagNames.pButtonPure icon="close" hideLabel={true} onClick={(e: MouseEvent) => this.handleClick(e)}>Close notification</PrefixedTagNames.pButtonPure></div>
           )}
         </div>
       </div>
