@@ -86,7 +86,8 @@ export class Tabs {
 
     const statusBarClasses = {
       [prefix('tabs__status-bar')]: true,
-      [prefix(`tabs__status-bar--theme-${this.theme}`)]: true
+      [prefix(`tabs__status-bar--theme-${this.theme}`)]: true,
+      [prefix(`tabs__status-bar--weight-${this.weight}`)]: true
     };
 
     const actionClasses = {
@@ -154,28 +155,26 @@ export class Tabs {
           <div class={actionPrevClasses}>
             <span class={gradientClassesPrev} />
             <p-button-pure
+              aria-hidden="true"
               tabbable={false}
               theme={this.theme}
               hide-label="true"
               size="inherit"
               icon="arrow-head-left"
               onClick={() => this.handlePrevNextClick('prev')}
-            >
-              Prev
-            </p-button-pure>
+            />
           </div>
           <div class={actionNextClasses}>
             <span class={gradientClassesNext} />
             <p-button-pure
+              aria-hidden="true"
               tabbable={false}
               theme={this.theme}
               hide-label="true"
               size="inherit"
               icon="arrow-head-right"
               onClick={() => this.handlePrevNextClick('next')}
-            >
-              Next
-            </p-button-pure>
+            />
           </div>
         </div>
         {this.tabsItems.map((tab, index) => (
