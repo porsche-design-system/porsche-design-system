@@ -83,9 +83,6 @@ export const registerIntersectionObserver = (
   const intersectionObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (entry.boundingClientRect.y < 0 || entry.boundingClientRect.y > entry.rootBounds.height - entry.boundingClientRect.height) {
-          return;
-        }
         if (entry.target === firstTab) {
           cb('prev', entry.isIntersecting);
         }
