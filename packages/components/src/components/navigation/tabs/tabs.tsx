@@ -14,7 +14,7 @@ export class Tabs {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: 'small' | 'medium' = 'medium';
+  @Prop() public size?: 'small' | 'medium' = 'small';
 
   /** The text weight. */
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
@@ -275,14 +275,15 @@ export class Tabs {
     const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
     const gradient = this.getHTMLElements('gradient');
-    const gradientWidth = gradient[0].offsetWidth;
+    const gradientprevWidth = gradient[0].offsetWidth;
+    const gradientNextWidth = gradient[1].offsetWidth;
     const activeTab = tabs[this.activeTabIndex];
     let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTab = activeTab.offsetLeft - gradientWidth;
+      nextTab = activeTab.offsetLeft - gradientNextWidth;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientWidth - nav.offsetWidth;
+      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientprevWidth - nav.offsetWidth;
     } else {
       nextTab = activeTab.offsetLeft - 3;
     }
