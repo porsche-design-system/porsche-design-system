@@ -71,7 +71,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { Watch } from 'vue-property-decorator';
+  // import { Watch } from 'vue-property-decorator'; // to validate while typing
   import { boolean, object, string, ValidationError } from 'yup';
 
   type FormModel = {
