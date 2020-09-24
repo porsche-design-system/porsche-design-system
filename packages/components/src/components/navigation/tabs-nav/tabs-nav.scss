@@ -67,7 +67,7 @@
   @include p-generate-type-scale($p-font-size-small);
   font-weight: $p-font-weight-regular;
   position: relative;
-  margin: 0 -3px; /* preserve space for focused tab outline */
+  margin: 0 -4px; /* preserve space for focused tab outline */
 
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
@@ -79,7 +79,7 @@
 
   &__scroll-area {
     position: relative;
-    padding: 3px 3px .5em;
+    padding: 4px 4px .5em;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -110,7 +110,7 @@
 
   &__action {
     position: absolute;
-    top: 3px;
+    top: 4px;
     display: flex;
 
     &--prev {
@@ -131,7 +131,7 @@
   &__gradient {
     content: '';
     position: absolute;
-    top: -3px;
+    top: -4px;
     bottom: -.5em;
     width: 2em;
     pointer-events: none;
