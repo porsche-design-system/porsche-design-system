@@ -3,7 +3,7 @@ import { prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
-type HTMLElementsSelector = 'tabs';
+type HTMLElementsSelector = 'tabs' | 'gradient';
 
 @Component({
   tag: 'p-tabs',
@@ -196,8 +196,8 @@ export class Tabs {
   private scrollToSelectedTab = (): void => {
     const tabs = this.getHTMLElements('tabs');
     const nav = this.getHTMLElement('nav');
-    // TODO: Add Action Prev width to scrollLeft
-    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft;
+    const gradient = this.getHTMLElements('gradient');
+    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft - gradient[0].offsetWidth;
   };
 
   private resetTabs = (): void => {
@@ -274,8 +274,8 @@ export class Tabs {
 
     const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
-    // TODO: Take size of gradient
-    const gradientWidth = 48;
+    const gradient = this.getHTMLElements('gradient');
+    const gradientWidth = gradient[0].offsetWidth;
     const activeTab = tabs[this.activeTabIndex];
     let nextTab: number;
 
@@ -386,7 +386,8 @@ export class Tabs {
 
   private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
     const selector = {
-      tabs: 'tabs__tab'
+      tabs: 'tabs__tab',
+      gradient: 'tabs__gradient'
     };
 
     return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
