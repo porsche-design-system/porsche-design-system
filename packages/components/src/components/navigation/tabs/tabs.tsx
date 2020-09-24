@@ -1,9 +1,12 @@
 import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
-
-type HTMLElementSelector = 'nav' | 'statusBar';
-type HTMLElementsSelector = 'tabs' | 'gradient';
+import {
+  getHTMLElement,
+  getHTMLElements, getStatusBarStyle, handlePrevNextClick,
+  registerIntersectionObserver, scrollOnTabClick,
+  scrollToSelectedTab
+} from '../../../utils/tabs-helper';
 
 @Component({
   tag: 'p-tabs',
@@ -55,8 +58,10 @@ export class Tabs {
 
   public componentDidLoad(): void {
     this.setKeyboardEventListener();
-    this.observeIntersection();
-    this.scrollToSelectedTab();
+    this.intersectionObserver = registerIntersectionObserver(this.host, (direction, isIntersecting) => {
+      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+    });
+    scrollToSelectedTab(this.host, this.activeTabIndex);
   }
 
   public disconnectedCallback(): void {
@@ -123,6 +128,8 @@ export class Tabs {
       [prefix('tabs__gradient--next')]: true
     };
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
+
     return (
       <div class={tabsClasses}>
         <div class={scrollAreaClasses}>
@@ -153,26 +160,26 @@ export class Tabs {
         </div>
         <div class={actionPrevClasses}>
           <span class={gradientClassesPrev}/>
-          <p-button-pure
+          <PrefixedTagNames.pButtonPure
             aria-hidden="true"
             tabbable={false}
             theme={this.theme}
             hide-label="true"
             size="inherit"
             icon="arrow-head-left"
-            onClick={() => this.handlePrevNextClick('prev')}
+            onClick={() => handlePrevNextClick('prev', this.host)}
           />
         </div>
         <div class={actionNextClasses}>
           <span class={gradientClassesNext}/>
-          <p-button-pure
+          <PrefixedTagNames.pButtonPure
             aria-hidden="true"
             tabbable={false}
             theme={this.theme}
             hide-label="true"
             size="inherit"
             icon="arrow-head-right"
-            onClick={() => this.handlePrevNextClick('next')}
+            onClick={() => handlePrevNextClick('next', this.host)}
           />
         </div>
         {this.tabsItems.map((tab, index) => (
@@ -220,23 +227,17 @@ export class Tabs {
   };
 
   private setStatusBarStyle = (): void => {
-    const statusBar = this.getHTMLElement('statusBar');
-    const tabs = this.getHTMLElements('tabs');
-    const activeTab = tabs[this.activeTabIndex];
-    const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
-    const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
-    const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
-
-    statusBar.setAttribute('style', statusBarStyle);
+    const statusBar = getHTMLElement('statusBar', this.host);
+    statusBar.setAttribute('style', getStatusBarStyle(this.host, this.activeTabIndex));
   };
 
   private setKeyboardEventListener = (): void => {
-    this.tabsNavElement = this.getHTMLElement('nav');
+    this.tabsNavElement = getHTMLElement('nav', this.host);
     this.tabsNavElement.addEventListener('keydown', this.handleKeydown);
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = getHTMLElements('tabs', this.host);
     let newTab: number;
     switch (e.key) {
       case 'ArrowLeft':
@@ -269,123 +270,25 @@ export class Tabs {
   };
 
   private nextTab = () => {
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = getHTMLElements('tabs', this.host);
     let newTabIndex = this.activeTabIndex + 1;
     return (newTabIndex + tabs.length) % tabs.length;
   };
 
   private prevTab = () => {
-    const tabs = this.getHTMLElements('tabs');
+    const tabs = getHTMLElements('tabs', this.host);
     let newTabIndex = this.activeTabIndex - 1;
     return (newTabIndex + tabs.length) % tabs.length;
   };
 
   private handleTabClick = (tabIndex: number): void => {
-    const activeTabOnClick = this.activeTabIndex;
+    const activeTabIndexOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
-
-    const nav = this.getHTMLElement('nav');
-    const tabs = this.getHTMLElements('tabs');
-    const gradient = this.getHTMLElements('gradient');
-    const gradientprevWidth = gradient[0].offsetWidth;
-    const gradientNextWidth = gradient[1].offsetWidth;
-    const activeTab = tabs[this.activeTabIndex];
-    let nextTab: number;
-
-    if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTab = activeTab.offsetLeft - gradientNextWidth;
-    } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientprevWidth - nav.offsetWidth;
-    } else {
-      nextTab = activeTab.offsetLeft - 3;
-    }
-
-    nav.scrollTo({
-      left: nextTab,
-      behavior: 'smooth'
-    });
+    scrollOnTabClick(this.host, this.tabsItems, activeTabIndexOnClick, tabIndex, this.activeTabIndex)
   };
 
   private updateTabItems = (): void => {
     this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
-  private handlePrevNextClick = (action: 'prev' | 'next'): void => {
-    const nav = this.getHTMLElement('nav');
-    const tabs = this.getHTMLElements('tabs');
-    const lastTab = tabs[tabs.length - 1];
-    const navWidth = nav.offsetWidth;
-    const currentScrollPosition = nav.scrollLeft;
-    const scrollToStep = navWidth * 0.2;
-    const scrollToMax = lastTab.offsetLeft + lastTab.offsetWidth - navWidth;
-
-    let scrollTo: number;
-
-    if (action === 'next') {
-      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-        scrollTo = scrollToMax - 3;
-      } else {
-        scrollTo = currentScrollPosition + scrollToStep;
-      }
-    } else {
-      if (currentScrollPosition - scrollToStep * 2 < 0) {
-        scrollTo = 0;
-      } else {
-        scrollTo = currentScrollPosition - scrollToStep;
-      }
-    }
-
-    nav.scrollTo({
-      left: scrollTo,
-      behavior: 'smooth'
-    });
-  };
-
-  private observeIntersection = (): void => {
-    const tabs = this.getHTMLElements('tabs');
-    const firstTab = tabs[0];
-    const lastTab = tabs[tabs.length - 1];
-
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.target === firstTab) {
-            this.isPrevHidden = entry.isIntersecting;
-          }
-          if (entry.target === lastTab) {
-            this.isNextHidden = entry.isIntersecting;
-          }
-        }
-      },
-      {threshold: 1}
-    );
-
-    this.intersectionObserver.observe(firstTab);
-    this.intersectionObserver.observe(lastTab);
-  };
-
-  private scrollToSelectedTab = (): void => {
-    const tabs = this.getHTMLElements('tabs');
-    const nav = this.getHTMLElement('nav');
-    const gradient = this.getHTMLElements('gradient');
-    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft - gradient[0].offsetWidth;
-  };
-
-  private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
-    const selector = {
-      nav: 'tabs__scroll-area',
-      statusBar: 'tabs__status-bar'
-    };
-
-    return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
-  };
-
-  private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
-    const selector = {
-      tabs: 'tabs__tab',
-      gradient: 'tabs__gradient'
-    };
-
-    return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
-  };
 }
