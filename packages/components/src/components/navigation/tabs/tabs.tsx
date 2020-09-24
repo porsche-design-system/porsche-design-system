@@ -220,7 +220,7 @@ export class Tabs {
   private initIntersectionObserver = (): void => {
     const tabs = this.getHTMLElements('tabs');
     this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
-      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+        this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
     }, tabs);
   };
 
