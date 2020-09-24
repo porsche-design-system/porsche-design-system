@@ -37,6 +37,21 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         </RadioButtonWrapper>
       </div>
 
+      <div className="playground light" title="should render in required state">
+        <RadioButtonWrapper label="Some label">
+          <input type="radio" name="some-name-3a" required />
+        </RadioButtonWrapper>
+        <RadioButtonWrapper label="Some label">
+          <input type="radio" name="some-name-3a" required disabled />
+        </RadioButtonWrapper>
+        <RadioButtonWrapper label="Some label">
+          <input type="radio" name="some-name-3a" required defaultChecked />
+        </RadioButtonWrapper>
+        <RadioButtonWrapper label="Some label">
+          <input type="radio" name="some-name-3b" required defaultChecked disabled />
+        </RadioButtonWrapper>
+      </div>
+
       <div className="playground light" title="should render in disabled state">
         <RadioButtonWrapper label="Some label">
           <input type="radio" name="some-name-4" disabled />
