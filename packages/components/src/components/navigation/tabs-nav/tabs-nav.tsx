@@ -36,7 +36,7 @@ export class TabsNav {
 
   @State() public isPrevHidden = false;
   @State() public isNextHidden = false;
-  
+
   private intersectionObserver: IntersectionObserver;
 
   @Watch('activeTabIndex')
@@ -50,7 +50,7 @@ export class TabsNav {
 
   public componentDidLoad(): void {
     this.init();
-    this.setActiveTab(0);
+    this.setActiveTab(this.activeTabIndex ?? 0);
     this.initIntersectionObserver();
     this.initView();
   }

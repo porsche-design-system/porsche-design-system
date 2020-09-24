@@ -81,7 +81,7 @@ Common: Consumer can pass links with their full native functionality
 -->
 <!-- Nav element (links list) but looks like Tabs -->
 <div style="border: 1px solid #ccc; padding: 3rem;">
-  <p-tabs-nav active-tab-index="4" size="medium">
+  <p-tabs-nav active-tab-index="4" size="medium" weight="semibold">
     <a href="#">Label 1</a>
     <a href="#">Label 2</a>
     <a href="#">Label 3</a>
@@ -94,7 +94,6 @@ Common: Consumer can pass links with their full native functionality
   </p-tabs-nav>
 </div>
 
-<!--
 <div style="width: 400px">
   <p-tabs size="medium">
     <p-tabs-item label="Button1">
@@ -118,20 +117,20 @@ Common: Consumer can pass links with their full native functionality
   </p-tabs>
 </div>
 
-&lt;!&ndash;
+<!--
 TODO: responsive size
 TODO: span for disabled on tabs-nav
 TODO: 4px instead of 3px safe-zone
 TODO: move panel into tabs and remove host
-&ndash;&gt;
+-->
 
-&lt;!&ndash;
+<!--
 Common: Consumer can pass links with their full native functionality
 1. Step Navigation (disabled one after each other)
 2. Jump Down Navigation (use aria-labels, e.g. skip to label 1, 2, 3,…)
 3. Link List / Page Navigation (either with page refresh or without)
-&ndash;&gt;
-&lt;!&ndash; Nav element (links list) but looks like Tabs &ndash;&gt;
+-->
+<!-- Nav element (links list) but looks like Tabs -->
 
 <p-tabs-nav style="background-color: black; padding: 3rem;" size="medium" theme="dark" active-tab-index="8">
   <a href="">Label 1</a>
@@ -162,12 +161,12 @@ Common: Consumer can pass links with their full native functionality
 <br>
 <br>
 
-&lt;!&ndash;
+<!--
 Not url based but "rundumsorglos" variant, content will be preloaded and the component itself handles which
 tabs content to show. Should not be used to switch between pages (url) but to switch between smaller content blocks.
-&ndash;&gt;
+-->
 
-&lt;!&ndash; Simple Button based Tabs &ndash;&gt;
+<!-- Simple Button based Tabs -->
 <p-tabs style="border: 1px solid #ccc; padding: 3rem;">
   <p-tabs-item label="Hello World!">
     <p-text>Hallo Welt 1 <a href="#">link</a></p-text>
@@ -187,7 +186,7 @@ tabs content to show. Should not be used to switch between pages (url) but to sw
   <p-tabs-item selected label="Die letzte aller Möglichkeiten">
     <p-text>Hallo Welt 6</p-text>
   </p-tabs-item>
-</p-tabs>-->
+</p-tabs>
 
 <p-tabs style="background-color: black; padding: 3rem;" theme="dark" size="medium">
   <p-tabs-item label="Label 1">

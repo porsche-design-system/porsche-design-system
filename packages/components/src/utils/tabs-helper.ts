@@ -64,7 +64,12 @@ export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs
   });
 };
 
-export const scrollToSelectedTab = (activeTabIndex: number, nav: HTMLElement, tabs: HTMLElement[], gradients: HTMLElement[]): void => {
+export const scrollToSelectedTab = (
+  activeTabIndex: number,
+  nav: HTMLElement,
+  tabs: HTMLElement[],
+  gradients: HTMLElement[]
+): void => {
   nav.scrollLeft = tabs[activeTabIndex].offsetLeft - gradients[1].offsetWidth;
 };
 
@@ -78,6 +83,9 @@ export const registerIntersectionObserver = (
   const intersectionObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
+        if (entry.boundingClientRect.y < 0) {
+          return;
+        }
         if (entry.target === firstTab) {
           cb('prev', entry.isIntersecting);
         }
