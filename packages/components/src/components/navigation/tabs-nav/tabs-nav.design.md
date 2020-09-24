@@ -1,83 +1,103 @@
-# Tabs
+# Tabs Nav
 
-Tabs are an intuitive way to organize content and allow navigation between groups of content that are related and at the same level of hierarchy.
+The Porsche Design System Tabs Nav enables the user to **navigate to another page**. 
+In case you want the user to execute an action or changes the content, you should select the [Tabs](#/components/tabs) component instead.
 
-#### Jump to:
-
-[<p-icon name="arrow-head-down" aria-label="Arrow head down icon"></p-icon>Styles](#styles)  
-[<p-icon name="arrow-head-down" aria-label="Arrow head down icon"></p-icon>States](#states)  
-[<p-icon name="arrow-head-down" aria-label="Arrow head down icon"></p-icon>Overflow](#overflow)
 
 ---
 
-## Principles
+## Types
 
-**Scalable**<br/> As tabs can horizontally scroll, technically a UI could have as many tabs as needed.
+### 1. Small
 
-**Informative**<br/> Tabs organize content into categories to help users easily find different types of information.
+!!! Code Beispiel !!!
 
----
 
-<a name="styles"></a>
+### 2. Medium
 
-## Styles
+!!! Code Beispiel !!!
 
-Tabs come with two size and two weight modifiers. Each size or weight adjustmets will gradually effect the gap and the thickness of the active border.
-
-### Sizes
-
-![Possible sizes](./assets/tab-size.svg)
-
-1 | default (16px) 2 | large (24px)
 
 ---
 
-### Weights
+## Variants
 
-![Possible weights](./assets/tab-weight.svg)
+### Default
 
-1 | regular  
-2 | semibold
+!!! Code Beispiel !!!
 
----
+### Scrollable
 
-### Divider
+If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
 
-![Possible divider](./assets/tab-divider.svg)
+!!! Code Beispiel !!!
 
----
 
-### Dark Theme / Images
 
-Dark backgrounds and images will limit the weight options to semibold. We do this due to prevent contrast problems you could run into.
-
-![Possible theme](./assets/tab-dark-theme.svg)
-
-![Possible images](./assets/tab-images.svg)
 
 ---
-
-<a name="states"></a>
 
 ## States
 
-![Possible states](./assets/tab-states.svg)
+The link covers the following states:
 
-1 | active <br/> 2 | inactive <br/> 3 | hover + focus <br/> 4 | disabled
+* Default
+* Active
+* Hover
+* Focus
 
 ---
 
-<a name="overflow"></a>
+## Interaction
 
-## Overflow
+### Clickability
 
-When a set of tabs cannot fit on screen the tab bar becomes horizontal scrollable and navigable with arrows.
+Each Tabs item (arrows and text) spans over a clickable area of 24 x 24 px to guarantee a proper click- and touch-ability.
+
+### Skipping pages
+
+The arrows allow to skip to the previous or next tab and therefore interactive by default. 
+
+### Current tab
+
+The current tab position is always marked by a red underline. By default, the current page item is not clickable.
+
+---
+
+## Usage
+
+### Overflow
+
+When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable and navigable with arrows.
 
 - Scrolling horizontally
-- Use the arrows to navigate back and forth
+- Use the tab key to navigate back and forth 
 - Click on the Tab Item witch then will center the clicked element
-- You can jump through tabs via the Tab key
 
-![Possible overflow](./assets/tab-overflow.svg)
+![Possible overflow](./assets/tab-overflow.png)
+
+### Scalable
+
+As Tabs can horizontally scroll, technically a UI could have as many tabs as needed.
+
+### Weight
+
+Standard
+
+!!! Code Beispiel !!!
+
+Highlight
+
+!!! Code Beispiel !!!
+
+The standard variant (regular) will be used on a monochrome background, whereas the highlight variant (semibold) should be 
+used on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
+
+### Content
+
+Tab labels provide clear and concise explanations of the content within. Each tab's content is independently categorized and mutually exclusive of the content of other Tabs.
 
 ---
+
+## Related Component
+* [Tabs](#/components/tabs)
