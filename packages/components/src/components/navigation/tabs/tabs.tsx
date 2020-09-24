@@ -3,7 +3,7 @@ import { prefix } from '../../../utils';
 import { TextWeight, Theme } from '../../../types';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
-type HTMLElementsSelector = 'tabs';
+type HTMLElementsSelector = 'tabs' | 'gradient';
 
 @Component({
   tag: 'p-tabs',
@@ -14,7 +14,7 @@ export class Tabs {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: 'small' | 'medium' = 'medium';
+  @Prop() public size?: 'small' | 'medium' = 'small';
 
   /** The text weight. */
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
@@ -24,8 +24,6 @@ export class Tabs {
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
-
-  // TODO: Focus Styling, - margin
 
   @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
   @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
@@ -94,7 +92,7 @@ export class Tabs {
     const actionClasses = {
       [prefix('tabs__action')]: true,
       [prefix(`tabs__action--theme-${this.theme}`)]: true
-    }
+    };
 
     const actionPrevClasses = {
       ...actionClasses,
@@ -111,7 +109,7 @@ export class Tabs {
     const gradientClasses = {
       [prefix('tabs__gradient')]: true,
       [prefix(`tabs__gradient--theme-${this.theme}`)]: true,
-      [prefix(`tabs__gradient--color-scheme-${this.colorScheme}`)]: true,
+      [prefix(`tabs__gradient--color-scheme-${this.colorScheme}`)]: true
     };
 
     const gradientClassesPrev = {
@@ -154,7 +152,7 @@ export class Tabs {
             <span class={statusBarClasses} />
           </div>
           <div class={actionPrevClasses}>
-            <span class={gradientClassesPrev}/>
+            <span class={gradientClassesPrev} />
             <p-button-pure
               tabbable={false}
               theme={this.theme}
@@ -167,7 +165,7 @@ export class Tabs {
             </p-button-pure>
           </div>
           <div class={actionNextClasses}>
-            <span class={gradientClassesNext}/>
+            <span class={gradientClassesNext} />
             <p-button-pure
               tabbable={false}
               theme={this.theme}
@@ -193,17 +191,46 @@ export class Tabs {
     );
   }
 
-  private scrollToSelectedTab = (): void => {
-    const tabs = this.getHTMLElements('tabs');
-    const nav = this.getHTMLElement('nav');
-    // TODO: Add Action Prev width to scrollLeft
-    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft;
+  private observeHost = (): void => {
+    this.hostObserver = new MutationObserver((mutations): void => {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
+        this.updateTabItems();
+      }
+    });
+    this.hostObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      attributeFilter: ['label', 'selected']
+    });
+  };
+
+  private handleTabChange = (activeTabIndex?: number): void => {
+    this.resetTabs();
+    this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
   private resetTabs = (): void => {
     for (const tab of this.tabsItems) {
       tab.selected = false;
     }
+  };
+
+  private setActiveTab = (index: number): void => {
+    const tabs = this.tabsItems;
+    const maxIndex = tabs.length - 1;
+    this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
+    tabs[this.activeTabIndex].selected = true;
+  };
+
+  private setStatusBarStyle = (): void => {
+    const statusBar = this.getHTMLElement('statusBar');
+    const tabs = this.getHTMLElements('tabs');
+    const activeTab = tabs[this.activeTabIndex];
+    const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
+    const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
+    const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
+
+    statusBar.setAttribute('style', statusBarStyle);
   };
 
   private setKeyboardEventListener = (): void => {
@@ -244,18 +271,6 @@ export class Tabs {
     tabs[this.activeTabIndex].focus();
   };
 
-  private setActiveTab = (index: number): void => {
-    const tabs = this.tabsItems;
-    const maxIndex = tabs.length - 1;
-    this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    tabs[this.activeTabIndex].selected = true;
-  };
-
-  private handleTabChange = (activeTabIndex?: number): void => {
-    this.resetTabs();
-    this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
-  };
-
   private nextTab = () => {
     const tabs = this.getHTMLElements('tabs');
     let newTabIndex = this.activeTabIndex + 1;
@@ -274,15 +289,16 @@ export class Tabs {
 
     const nav = this.getHTMLElement('nav');
     const tabs = this.getHTMLElements('tabs');
-    // TODO: Take size of gradient
-    const gradientWidth = 48;
+    const gradient = this.getHTMLElements('gradient');
+    const gradientprevWidth = gradient[0].offsetWidth;
+    const gradientNextWidth = gradient[1].offsetWidth;
     const activeTab = tabs[this.activeTabIndex];
     let nextTab: number;
 
     if (tabIndex > activeTabOnClick && tabIndex < this.tabsItems.length - 1) {
-      nextTab = activeTab.offsetLeft - gradientWidth;
+      nextTab = activeTab.offsetLeft - gradientNextWidth;
     } else if (tabIndex < activeTabOnClick && tabIndex > 0) {
-      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientWidth - nav.offsetWidth;
+      nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientprevWidth - nav.offsetWidth;
     } else {
       nextTab = activeTab.offsetLeft - 3;
     }
@@ -295,30 +311,6 @@ export class Tabs {
 
   private updateTabItems = (): void => {
     this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
-  };
-
-  private observeHost = (): void => {
-    this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
-        this.updateTabItems();
-      }
-    });
-    this.hostObserver.observe(this.host, {
-      childList: true,
-      subtree: true,
-      attributeFilter: ['label', 'selected']
-    });
-  };
-
-  private setStatusBarStyle = (): void => {
-    const statusBar = this.getHTMLElement('statusBar');
-    const tabs = this.getHTMLElements('tabs');
-    const activeTab = tabs[this.activeTabIndex];
-    const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
-    const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
-    const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
-
-    statusBar.setAttribute('style', statusBarStyle);
   };
 
   private handlePrevNextClick = (action: 'prev' | 'next'): void => {
@@ -368,11 +360,18 @@ export class Tabs {
           }
         }
       },
-      {threshold: 1}
+      { threshold: 1 }
     );
 
     this.intersectionObserver.observe(firstTab);
     this.intersectionObserver.observe(lastTab);
+  };
+
+  private scrollToSelectedTab = (): void => {
+    const tabs = this.getHTMLElements('tabs');
+    const nav = this.getHTMLElement('nav');
+    const gradient = this.getHTMLElements('gradient');
+    nav.scrollLeft = tabs[this.activeTabIndex].offsetLeft - gradient[0].offsetWidth;
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
@@ -386,7 +385,8 @@ export class Tabs {
 
   private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
     const selector = {
-      tabs: 'tabs__tab'
+      tabs: 'tabs__tab',
+      gradient: 'tabs__gradient'
     };
 
     return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
