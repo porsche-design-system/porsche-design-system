@@ -4,7 +4,7 @@ import { ObjectSchema, ValidationError } from 'yup';
 export type ValidationBag<T extends object> = {
   data: T;
   errors: { [key in keyof T]: string };
-  schema: ObjectSchema<T>;
+  schema: ObjectSchema<T | undefined>;
 };
 
 export const getInitialErrors = <T>(data: T): { [key in keyof T]: string } => {
