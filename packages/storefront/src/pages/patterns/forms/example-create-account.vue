@@ -144,8 +144,8 @@
               <p-button
                 variant="tertiary"
                 icon="close"
-                type="reset"
                 class="form-item-width--full form-item-width--auto-s"
+                @click="onReset"
                 >Cancel
               </p-button>
             </p-flex-item>
@@ -198,7 +198,7 @@
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 
     private bag: ValidationBag<FormModel> = {
-      data: initialData,
+      data: { ...initialData },
       errors: getInitialErrors(initialData),
       schema: object<FormModel>({
         salutation: string().required(),
@@ -222,9 +222,14 @@
       validateField(target.name, this.bag);
     };
 
-    onSubmit = async () => {
+    onSubmit = async (): void => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
+    };
+
+    onReset = (): void => {
+      this.bag.data = { ...initialData };
+      this.bag.errors = getInitialErrors(initialData);
     };
   }
 </script>
