@@ -46,7 +46,7 @@ export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs
   const lastTab = tabs[tabs.length - 1];
   const navWidth = nav.offsetWidth;
   const currentScrollPosition = nav.scrollLeft;
-  const scrollToStep = navWidth * 0.2;
+  const scrollToStep = Math.round(navWidth * 0.2);
   const focusPaddingWidth = 4;
   const scrollToMax = lastTab.offsetLeft + lastTab.offsetWidth - navWidth + focusPaddingWidth;
 
