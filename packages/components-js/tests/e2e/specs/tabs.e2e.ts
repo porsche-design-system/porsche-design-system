@@ -8,8 +8,9 @@ import {
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
+import { disconnect } from 'cluster';
 
-fdescribe('tabs', () => {
+describe('tabs', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -22,6 +23,7 @@ fdescribe('tabs', () => {
   const getScrollArea = () => selectNode(page, 'p-tabs >>> .p-tabs__scroll-area');
   const getAllTabs = async () => (await getScrollArea()).$$('.p-tabs__tab');
   const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status-bar');
+  const getGradient = () => selectNode(page, 'p-tabs >>> .p-tabs__gradient--next');
   const getElementPositions = async (element: ElementHandle) => {
     return await page.evaluate((element) => {
       const { top, left, bottom, right } = element.getBoundingClientRect();
@@ -419,6 +421,114 @@ fdescribe('tabs', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
 
+  it('should scroll to selected button on render', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs size="medium">
+          <p-tabs-item label="Button1">
+            Content1
+          </p-tabs-item>
+          <p-tabs-item label="Button2">
+            Content2
+          </p-tabs-item>
+          <p-tabs-item label="Button3">
+            Content3
+          </p-tabs-item>
+          <p-tabs-item selected label="Button4">
+            Content4
+          </p-tabs-item>
+          <p-tabs-item label="Button5">
+            Content5
+          </p-tabs-item>
+          <p-tabs-item label="Button6">
+            Content6
+          </p-tabs-item>
+              <p-tabs-item label="Button7">
+          Content7
+          </p-tabs-item>
+          <p-tabs-item label="Button8">
+          Content8
+          </p-tabs-item>
+        </p-tabs>
+      </div>
+    `
+    );
+
+    const allTabs = await getAllTabs();
+    const selectedTabOffset = await getProperty(allTabs[3], 'offsetLeft');
+    const gradient = await getGradient();
+    const gradientWidth = await getProperty(gradient, 'offsetWidth');
+    const scrollArea = await getScrollArea();
+    const scrollDistance = +selectedTabOffset - +gradientWidth;
+
+    await waitForStencilLifecycle(page);
+
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+  });
+
+  it('should scroll to button on button click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs size="medium">
+          <p-tabs-item label="Button1">
+            Content1
+          </p-tabs-item>
+          <p-tabs-item label="Button2">
+            Content2
+          </p-tabs-item>
+          <p-tabs-item label="Button3">
+            Content3
+          </p-tabs-item>
+          <p-tabs-item label="Button4">
+            Content4
+          </p-tabs-item>
+          <p-tabs-item label="Button5">
+            Content5
+          </p-tabs-item>
+          <p-tabs-item label="Button6">
+            Content6
+          </p-tabs-item>
+              <p-tabs-item label="Button7">
+          Content7
+          </p-tabs-item>
+          <p-tabs-item label="Button8">
+          Content8
+          </p-tabs-item>
+        </p-tabs>
+      </div>
+    `
+    );
+
+    const allTabs = await getAllTabs();
+    const gradient = await getGradient();
+    const gradientWidth = await getProperty(gradient, 'offsetWidth');
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
+
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
+
+    await allTabs[4].click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(1000);
+
+    const tab3offset = await getProperty(allTabs[4], 'offsetLeft');
+    const scrollDistanceRight = +tab3offset - +gradientWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+
+    await allTabs[3].click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(1000);
+
+    const tab2offset = await getProperty(allTabs[3], 'offsetLeft');
+    const tabWidth = await getProperty(allTabs[3], 'offsetWidth');
+    const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
+
   it('should have same offsetLeft on Statusbar and active tab', async () => {
     await setContentWithDesignSystem(
       page,
@@ -430,7 +540,7 @@ fdescribe('tabs', () => {
         <p-tabs-item label="Button2">
           Content2
         </p-tabs-item>
-        <p-tabs-item label="Button3">
+        <p-tabs-item selected label="Button3">
           Content3
         </p-tabs-item>
       </p-tabs>
@@ -438,13 +548,14 @@ fdescribe('tabs', () => {
     );
     const allTabs = await getAllTabs();
     const statusBar = await getStatusBar();
+    const tab3Position = (await getElementPositions(allTabs[2])).left;
 
-    expect((await getElementPositions(allTabs[0])).left).toEqual((await getElementPositions(statusBar)).left);
+    expect(Math.round(tab3Position)).toEqual((await getElementPositions(statusBar)).left);
 
-    await allTabs[2].click();
+    await allTabs[0].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(1000);
 
-    expect((await getElementPositions(allTabs[2])).left).toEqual((await getElementPositions(statusBar)).left);
+    expect((await getElementPositions(allTabs[0])).left).toEqual((await getElementPositions(statusBar)).left);
   });
 });
