@@ -74,17 +74,13 @@
   import { boolean, object, string } from 'yup';
   import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
 
-  type FormModel = {
-    email: string;
-    password: string;
-    isChecked: boolean;
-  };
-
-  const initialData: FormModel = {
+  const initialData = {
     email: '',
     password: '',
     isChecked: false
   };
+
+  type FormModel = typeof initialData;
 
   @Component
   export default class LoginForm extends Vue {
@@ -104,10 +100,10 @@
     };
 
     onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
-      validateField(target.name, this.bag);
+      validateField(target.name as keyof FormModel, this.bag);
     };
 
-    onSubmit = async (): void => {
+    onSubmit = async (): Promise<void> => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
     };
