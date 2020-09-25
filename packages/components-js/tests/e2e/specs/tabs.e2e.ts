@@ -29,9 +29,9 @@ fdescribe('tabs', () => {
     }, element);
   };
   const getPrev = async () =>
-    (await selectNode(page, 'p-tabs >>> .p-tabs__action--prev')).$('.p-tabs__action--prev p-button-pure');
+    (await selectNode(page, 'p-tabs >>> .p-tabs__action--prev')).$('.p-tabs__action--prev > p-button-pure');
   const getNext = async () =>
-    (await selectNode(page, 'p-tabs >>> .p-tabs__action--next ')).$('.p-tabs__action--next p-button-pure');
+    (await selectNode(page, 'p-tabs >>> .p-tabs__action--next ')).$('.p-tabs__action--next > p-button-pure');
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
 
   it('should render', async () => {
@@ -308,12 +308,12 @@ fdescribe('tabs', () => {
     expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
   });
 
-  fit('should scroll 20% on Button next', async () => {
+  it('should scroll 20% on Button next', async () => {
     await setContentWithDesignSystem(
       page,
       `
-      <div style="width: 400px" size="medium">
-        <p-tabs>
+      <div style="width: 400px">
+        <p-tabs size="medium">
           <p-tabs-item label="Button1">
             Content1
           </p-tabs-item>
@@ -332,22 +332,29 @@ fdescribe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
+              <p-tabs-item label="Button7">
+          Content7
+          </p-tabs-item>
+          <p-tabs-item label="Button8">
+          Content8
+          </p-tabs-item>
         </p-tabs>
       </div>
     `
     );
-    const nextButton = await getNext();
-    const nav = await getScrollArea();
-    const width = await getProperty(nav, 'offsetWidth');
-    const scrollDistance = +width * 0.2;
 
-    expect(await getScrollLeft(nav)).toEqual(0);
+    const nextButton = await getNext();
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
+    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
+
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(10000);
+    await page.waitFor(1000);
 
-    expect(await getScrollLeft(nav)).toEqual(Math.round(scrollDistance));
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
 
   it('should scroll 20% on Button prev', async () => {
@@ -374,6 +381,12 @@ fdescribe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
+              <p-tabs-item label="Button7">
+          Content7
+          </p-tabs-item>
+          <p-tabs-item label="Button8">
+          Content8
+          </p-tabs-item>
         </p-tabs>
       </div>
     `
@@ -383,7 +396,7 @@ fdescribe('tabs', () => {
     const prevButton = await getPrev();
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const scrollDistance = +scrollAreaWidth * 0.2;
+    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
