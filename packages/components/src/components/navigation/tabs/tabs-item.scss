@@ -1,3 +1,7 @@
 :host {
+  display: none;
+}
+
+:host([selected="true"]){
   display: block;
 }

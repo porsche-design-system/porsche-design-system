@@ -6,6 +6,12 @@ export const getStatusBarStyle = (activeTabIndex: number, tabs: HTMLElement[]): 
   return statusBarStyle;
 };
 
+export const setAttributes = (tab: HTMLElement, attrs: { role: string; hidden: string; 'aria-labelledby': string; id: string }) => {
+  for(var key in attrs) {
+    tab.setAttribute(key, attrs[key]);
+  }
+};
+
 export const scrollOnTabClick = (
   tabsItems: HTMLElement[],
   activeTabIndexOnClick: number,
@@ -36,10 +42,12 @@ export const scrollOnTabClick = (
     nextTab = activeTab.offsetLeft - 4;
   }
 
-  nav.scrollTo({
+  nav.scrollLeft = nextTab;
+
+  /*nav.scrollTo({
     left: nextTab,
     behavior: 'smooth'
-  });
+  });*/
 };
 
 export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs: HTMLElement[]): void => {
@@ -66,10 +74,11 @@ export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs
     }
   }
 
-  nav.scrollTo({
+  nav.scrollLeft = scrollTo;
+  /*nav.scrollTo({
     left: scrollTo,
     behavior: 'smooth'
-  });
+  });*/
 };
 
 export const scrollToSelectedTab = (

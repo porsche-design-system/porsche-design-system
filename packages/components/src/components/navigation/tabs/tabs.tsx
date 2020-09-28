@@ -6,7 +6,7 @@ import {
   registerIntersectionObserver,
   scrollOnPrevNext,
   scrollOnTabClick,
-  scrollToSelectedTab
+  scrollToSelectedTab, setAttributes
 } from '../../../utils/tabs-helper';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
@@ -32,7 +32,7 @@ export class Tabs {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public colorScheme?: 'default' | 'surface' = 'default';
 
-  @State() public tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
+  @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
   @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
   @State() public isPrevHidden = false;
   @State() public isNextHidden = false;
@@ -138,18 +138,20 @@ export class Tabs {
           <div class={scrollAreaClasses}>
             <ul class={tabListClasses} role="tablist">
               {this.tabsItems.map((tab, index) => {
+                const isSelected = this.activeTabIndex === index;
+
                 return (
                   <li role="presentation">
                     <button
                       id={prefix(`tab-item-${index}`)}
                       class={{
                         ...tabClasses,
-                        [prefix('tabs__tab--selected')]: tab.selected
+                        [prefix('tabs__tab--selected')]: isSelected
                       }}
                       type="button"
                       role="tab"
-                      tabindex={!tab.selected ? -1 : 0}
-                      aria-selected={tab.selected ? 'true' : 'false'}
+                      tabindex={isSelected ? 0 : -1}
+                      aria-selected={isSelected ? 'true' : 'false'}
                       aria-controls={prefix(`tab-panel-${index}`)}
                       onClick={() => this.handleTabClick(index)}
                     >
@@ -186,15 +188,7 @@ export class Tabs {
             />
           </div>
         </div>
-        {this.tabsItems.map((tab, index) => (
-          <section
-            role="tabpanel"
-            hidden={!tab.selected}
-            innerHTML={tab.outerHTML}
-            id={prefix(`tab-panel-${index}`)}
-            aria-labelledby={prefix(`tab-item-${index}`)}
-          />
-        ))}
+        <slot />
       </Host>
     );
   }
@@ -204,6 +198,14 @@ export class Tabs {
     const tabs = this.getHTMLElements('tabs');
     const gradients = this.getHTMLElements('gradient');
     scrollToSelectedTab(this.activeTabIndex, nav, tabs, gradients);
+    this.tabsItems.map((tab, index) => (
+      setAttributes(tab, {
+        'role': 'tabpanel',
+        'hidden': `${!tab.selected}`,
+        'id': prefix(`tab-panel-${index}`),
+        'aria-labelledby': prefix(`tab-item-${index}`)
+      })
+    ))
   };
 
   private observeHost = (): void => {
@@ -233,7 +235,7 @@ export class Tabs {
 
   private resetTabs = (): void => {
     for (const tab of this.tabsItems) {
-      tab.selected = false;
+      tab.removeAttribute('selected');
     }
   };
 
@@ -316,7 +318,7 @@ export class Tabs {
   };
 
   private updateTabItems = (): void => {
-    this.tabsItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
+    this.tabsItems = Array.from(this.host.querySelectorAll('p-tabs-item')) as HTMLPTabsItemElement[];
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
