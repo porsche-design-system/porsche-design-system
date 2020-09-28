@@ -1,16 +1,24 @@
-export const getStatusBarStyle = (activeTabIndex: number, tabs: HTMLElement[]): string => {
-  const activeTab = tabs[activeTabIndex];
-  const statusBarWidth = activeTab !== undefined ? activeTab.offsetWidth : 0;
-  const statusBarPositionLeft = activeTab !== undefined ? activeTab.offsetLeft : 0;
-  const statusBarStyle = `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
-  return statusBarStyle;
+// TODO: Unit tests?
+
+import { prefix } from './prefix';
+
+export const getStatusBarStyle = (activeTab: HTMLElement): string => {
+  const statusBarWidth = activeTab?.offsetWidth || 0;
+  const statusBarPositionLeft = activeTab?.offsetLeft || 0;
+  return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
 };
 
-export const setAttributes = (
-  tab: HTMLElement,
-  attrs: { role: string; hidden: string; 'aria-labelledby': string; id: string }
-) => {
-  for (var key in attrs) {
+export const setSectionAttributes = (
+  tab: HTMLPTabsItemElement,
+  index: number
+): void => {
+  const attrs = {
+    'role': 'tabpanel',
+      'hidden': `${!tab.selected}`,
+      'id': prefix(`tab-panel-${index}`),
+      'aria-labelledby': prefix(`tab-item-${index}`)
+  };
+  for (const key in attrs) {
     tab.setAttribute(key, attrs[key]);
   }
 };
@@ -100,16 +108,15 @@ export const registerIntersectionObserver = (
   cb: (direction: 'next' | 'prev', isIntersecting: boolean) => void,
   tabs: HTMLElement[]
 ): IntersectionObserver => {
-  const firstTab = tabs[0];
-  const lastTab = tabs[tabs.length - 1];
+  const [firstTab] = tabs;
+  const [lastTab] = tabs.slice(-1);
 
   const intersectionObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (entry.target === firstTab) {
           cb('prev', entry.isIntersecting);
-        }
-        if (entry.target === lastTab) {
+        } else if (entry.target === lastTab) {
           cb('next', entry.isIntersecting);
         }
       }
