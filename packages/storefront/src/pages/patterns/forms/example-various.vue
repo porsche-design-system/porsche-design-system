@@ -16,7 +16,6 @@
             <p-checkbox-wrapper label="Some checkbox label 1" v-bind:state="getState('check')">
               <input
                 type="checkbox"
-                value="check1"
                 v-bind:name="validateFieldName('check')"
                 v-model="bag.data.check.check1"
                 v-on:change="onFieldBlur"
@@ -25,7 +24,6 @@
             <p-checkbox-wrapper label="Some checkbox label 2" v-bind:state="getState('check')" class="form-row-spacing">
               <input
                 type="checkbox"
-                value="check2"
                 v-bind:name="validateFieldName('check')"
                 v-model="bag.data.check.check2"
                 v-on:change="onFieldBlur"
@@ -34,7 +32,6 @@
             <p-checkbox-wrapper label="Some checkbox label 3" v-bind:state="getState('check')" class="form-row-spacing">
               <input
                 type="checkbox"
-                value="check3"
                 v-bind:name="validateFieldName('check')"
                 v-model="bag.data.check.check3"
                 v-on:change="onFieldBlur"
