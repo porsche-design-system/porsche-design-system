@@ -180,7 +180,9 @@
           check3: boolean()
         })
           .required()
-          .test('customTest', 'Need to select at least one option', (obj) => Object.values(obj!).some((val) => val)),
+          .test('customTest', 'Need to select at least one option', (obj) =>
+            obj ? Object.values(obj).some((val) => val) : false
+          ),
         radio: string().required(),
         day: number()
           .required()
