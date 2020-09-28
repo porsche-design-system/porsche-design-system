@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, Host } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'p-tabs-item',
@@ -14,6 +14,10 @@ export class TabsItem {
   @Prop({ reflect: true }) public selected?: boolean;
 
   public render(): JSX.Element {
-    return <Host><slot /></Host>;
+    return (
+      <section>
+        <slot />
+      </section>
+    );
   }
 }

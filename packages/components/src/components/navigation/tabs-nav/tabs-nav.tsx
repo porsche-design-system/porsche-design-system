@@ -38,6 +38,7 @@ export class TabsNav {
   @State() public isNextHidden = false;
 
   private intersectionObserver: IntersectionObserver;
+  private allAnchorTags: HTMLElement[] = Array.from(this.host.querySelectorAll('a'));
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -144,7 +145,7 @@ export class TabsNav {
   }
 
   public init = () => {
-    const navList = Array.from(this.host.children);
+    const navList = Array.from(this.host.querySelectorAll('a')) as HTMLElement[];
 
     const handleAnchorClick = (e) => {
       for (const [index, link] of Object.entries(navList)) {
@@ -161,26 +162,21 @@ export class TabsNav {
 
   private initView = (): void => {
     const nav = this.getHTMLElement('nav');
-    const tabs = Array.from(this.host.children) as HTMLElement[];
     const gradients = this.getHTMLElements('gradient');
-    scrollToSelectedTab(this.activeTabIndex, nav, tabs, gradients);
+    scrollToSelectedTab(this.activeTabIndex, nav, this.allAnchorTags, gradients);
   };
 
   private initIntersectionObserver = (): void => {
-    const tabs = Array.from(this.host.children) as HTMLElement[];
     this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
       this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
-    }, tabs);
+    }, this.allAnchorTags);
   };
 
   private setActiveTab = (index: number): void => {
-    const maxIndex = this.host.children.length - 1;
+    const maxIndex = this.allAnchorTags.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-
-    const tabs = Array.from(this.host.children) as HTMLElement[];
-
-    tabs.forEach((tab) => tab.classList.remove('selected'));
-    tabs[this.activeTabIndex].classList.add('selected');
+    this.allAnchorTags.forEach((tab) => tab.classList.remove('selected'));
+    this.allAnchorTags[this.activeTabIndex].classList.add('selected');
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
@@ -191,21 +187,18 @@ export class TabsNav {
     const activeTabIndexOnClick = this.activeTabIndex;
     this.handleTabChange(tabIndex);
     const nav = this.getHTMLElement('nav');
-    const tabs = Array.from(this.host.children) as HTMLElement[];
     const gradients = this.getHTMLElements('gradient');
-    scrollOnTabClick(tabs, activeTabIndexOnClick, tabIndex, this.activeTabIndex, nav, tabs, gradients);
+    scrollOnTabClick(this.allAnchorTags, activeTabIndexOnClick, tabIndex, this.activeTabIndex, nav, this.allAnchorTags, gradients);
   };
 
   private setStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
-    const tabs = Array.from(this.host.children) as HTMLElement[];
-    statusBar.setAttribute('style', getStatusBarStyle(this.activeTabIndex, tabs));
+    statusBar.setAttribute('style', getStatusBarStyle(this.activeTabIndex, this.allAnchorTags));
   };
 
   private handlePrevNextClick = (action: 'next' | 'prev'): void => {
     const nav = this.getHTMLElement('nav');
-    const tabs = Array.from(this.host.children) as HTMLElement[];
-    scrollOnPrevNext(action, nav, tabs);
+    scrollOnPrevNext(action, nav, this.allAnchorTags);
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
