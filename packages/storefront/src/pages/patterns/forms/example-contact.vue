@@ -371,7 +371,7 @@
 
       if (!isValid) {
         const firstError = getFirstErrorKey(this.bag);
-        (this.$refs[firstError!] as HTMLElement).focus();
+        firstError && (this.$refs[firstError] as HTMLElement).focus();
       }
     }
 
