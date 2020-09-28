@@ -20,6 +20,7 @@
                 v-bind:state="getState('salutation')"
               >
                 <select
+                  :ref="validateFieldName('salutation')"
                   v-bind:name="validateFieldName('salutation')"
                   v-model="bag.data.salutation"
                   v-on:change="onFieldBlur"
@@ -54,6 +55,7 @@
               >
                 <input
                   type="text"
+                  :ref="validateFieldName('firstName')"
                   v-bind:name="validateFieldName('firstName')"
                   v-model="bag.data.firstName"
                   v-on:blur="onFieldBlur"
@@ -72,6 +74,7 @@
               >
                 <input
                   type="text"
+                  :ref="validateFieldName('lastName')"
                   v-bind:name="validateFieldName('lastName')"
                   v-model="bag.data.lastName"
                   v-on:blur="onFieldBlur"
@@ -88,6 +91,7 @@
           >
             <input
               type="email"
+              :ref="validateFieldName('email')"
               v-bind:name="validateFieldName('email')"
               v-model="bag.data.email"
               v-on:blur="onFieldBlur"
@@ -102,6 +106,7 @@
           >
             <input
               type="password"
+              :ref="validateFieldName('password')"
               v-bind:name="validateFieldName('password')"
               v-model="bag.data.password"
               v-on:blur="onFieldBlur"
@@ -116,6 +121,7 @@
             <span slot="label">I have read the <a href="#">general terms ans conditions</a> and I accept them.</span>
             <input
               type="checkbox"
+              :ref="validateFieldName('terms')"
               v-bind:name="validateFieldName('terms')"
               v-model="bag.data.terms"
               v-on:change="onFieldBlur"
@@ -130,6 +136,7 @@
             <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
             <input
               type="checkbox"
+              :ref="validateFieldName('privacy')"
               v-bind:name="validateFieldName('privacy')"
               v-model="bag.data.privacy"
               v-on:change="onFieldBlur"
@@ -168,7 +175,15 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
+  import {
+    validateName,
+    getState,
+    validateField,
+    validateForm,
+    ValidationBag,
+    getInitialErrors,
+    getFirstErrorKey
+  } from '../../../utils';
 
   const initialData = {
     salutation: '',
@@ -216,6 +231,12 @@
     onSubmit = async (): Promise<void> => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
+
+      if (!isValid) {
+        const firstError = getFirstErrorKey(this.bag);
+        console.log(firstError);
+        (this.$refs[firstError!] as HTMLElement).focus();
+      }
     };
 
     onReset = (): void => {

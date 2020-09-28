@@ -38,3 +38,6 @@ export const validateForm = async <T extends object>(bag: ValidationBag<T>): Pro
       return false;
     });
 };
+
+export const getFirstErrorKey = <T extends object>(bag: ValidationBag<T>): keyof T | undefined =>
+  (Object.keys(bag.errors) as Array<keyof T>).find((key) => bag.errors[key as keyof T] !== '');

@@ -21,6 +21,7 @@
                   v-bind:state="getState('category')"
                 >
                   <select
+                    :ref="validateFieldName('category')"
                     v-bind:name="validateFieldName('category')"
                     v-model="bag.data.category"
                     v-on:change="onFieldBlur"
@@ -42,6 +43,7 @@
             >
               <input
                 type="text"
+                :ref="validateFieldName('subject')"
                 v-bind:name="validateFieldName('subject')"
                 v-model="bag.data.subject"
                 v-on:blur="onFieldBlur"
@@ -55,6 +57,7 @@
               v-bind:state="getState('message')"
             >
               <textarea
+                :ref="validateFieldName('message')"
                 v-bind:name="validateFieldName('message')"
                 v-model="bag.data.message"
                 v-on:blur="onFieldBlur"
@@ -71,6 +74,7 @@
                   v-bind:state="getState('salutation')"
                 >
                   <select
+                    :ref="validateFieldName('salutation')"
                     v-bind:name="validateFieldName('salutation')"
                     v-model="bag.data.salutation"
                     v-on:change="onFieldBlur"
@@ -105,6 +109,7 @@
                 >
                   <input
                     type="text"
+                    :ref="validateFieldName('firstName')"
                     v-bind:name="validateFieldName('firstName')"
                     v-model="bag.data.firstName"
                     v-on:blur="onFieldBlur"
@@ -123,6 +128,7 @@
                 >
                   <input
                     type="text"
+                    :ref="validateFieldName('lastName')"
                     v-bind:name="validateFieldName('lastName')"
                     v-model="bag.data.lastName"
                     v-on:blur="onFieldBlur"
@@ -139,6 +145,7 @@
             >
               <input
                 type="email"
+                :ref="validateFieldName('email')"
                 v-bind:name="validateFieldName('email')"
                 v-model="bag.data.email"
                 v-on:blur="onFieldBlur"
@@ -167,6 +174,7 @@
             >
               <input
                 type="text"
+                :ref="validateFieldName('vin')"
                 v-bind:name="validateFieldName('vin')"
                 v-model="bag.data.vin"
                 v-on:blur="onFieldBlur"
@@ -180,6 +188,7 @@
               v-bind:state="getState('gear')"
             >
               <select
+                :ref="validateFieldName('gear')"
                 v-bind:name="validateFieldName('gear')"
                 v-model="bag.data.gear"
                 v-on:change="onFieldBlur"
@@ -200,6 +209,7 @@
             >
               <input
                 type="date"
+                :ref="validateFieldName('date')"
                 v-bind:name="validateFieldName('date')"
                 v-model="bag.data.date"
                 v-on:blur="onFieldBlur"
@@ -214,6 +224,7 @@
             >
               <input
                 type="number"
+                :ref="validateFieldName('mileage')"
                 v-bind:name="validateFieldName('mileage')"
                 v-model="bag.data.mileage"
                 v-on:blur="onFieldBlur"
@@ -228,6 +239,7 @@
               v-bind:state="getState('dealer')"
             >
               <select
+                :ref="validateFieldName('dealer')"
                 v-bind:name="validateFieldName('dealer')"
                 v-model="bag.data.dealer"
                 v-on:change="onFieldBlur"
@@ -246,6 +258,7 @@
                 <span slot="label">I have read and understood the <a href="#" target="_blank">Privacy Policy</a></span>
                 <input
                   type="checkbox"
+                  :ref="validateFieldName('privacy')"
                   v-bind:name="validateFieldName('privacy')"
                   v-model="bag.data.privacy"
                   v-on:change="onFieldBlur"
@@ -284,7 +297,15 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, date, number, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
+  import {
+    validateName,
+    getState,
+    validateField,
+    validateForm,
+    ValidationBag,
+    getInitialErrors,
+    getFirstErrorKey
+  } from '../../../utils';
 
   const initialData = {
     category: '',
@@ -347,6 +368,11 @@
     onSubmit = async (): Promise<void> => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
+
+      if (!isValid) {
+        const firstError = getFirstErrorKey(this.bag);
+        (this.$refs[firstError!] as HTMLElement).focus();
+      }
     };
 
     onReset = (): void => {
