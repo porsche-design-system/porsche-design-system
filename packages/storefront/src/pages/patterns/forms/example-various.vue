@@ -201,18 +201,18 @@
       this.onSubmit();
     }
 
-    onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
+    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
       validateField(target.name as keyof FormModel, this.bag);
-    };
+    }
 
-    onSubmit = async (): Promise<void> => {
+    async onSubmit(): Promise<void> {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
-    };
+    }
 
-    onReset = (): void => {
+    onReset(): void {
       this.bag.data = { ...initialData };
       this.bag.errors = getInitialErrors(initialData);
-    };
+    }
   }
 </script>
