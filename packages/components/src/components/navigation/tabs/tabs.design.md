@@ -9,12 +9,20 @@ In case you want the user to navigate to another page, you should select the [Ta
 
 ### 1. Small
 
-!!! Code Beispiel !!!
+<p-tabs size="small">
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
+  <p-tabs-item label="Item Two"><p-text>Tab Content Two</p-text></p-tabs-item>
+  <p-tabs-item label="Item Three"><p-text>Tab Content Three</p-text></p-tabs-item>
+</p-tabs>
 
 
 ### 2. Medium
 
-!!! Code Beispiel !!!
+<p-tabs size="medium">
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+</p-tabs>
 
 
 ---
@@ -24,7 +32,7 @@ In case you want the user to navigate to another page, you should select the [Ta
 ### Default
 
 <p-tabs size="small">
-  <p-tabs-item label="Item One" selected="">Tab Content One</p-tabs-item>
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
   <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
   <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
 </p-tabs>
@@ -34,7 +42,17 @@ In case you want the user to navigate to another page, you should select the [Ta
 
 If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
 
-!!! Code Beispiel !!!
+<p-tabs>
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+  <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
+  <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
+  <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
+  <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
+  <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
+  <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
+</p-tabs>
 
 
 
@@ -88,11 +106,19 @@ As Tabs can horizontally scroll, technically a UI could have as many tabs as nee
 
 Standard
 
-!!! Code Beispiel !!!
+<p-tabs weight="regular">
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+</p-tabs>
 
 Highlight
 
-!!! Code Beispiel !!!
+<p-tabs weight="semibold">
+  <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
+  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+</p-tabs>
 
 The standard variant (regular) will be used on a monochrome background, whereas the highlight variant (semibold) should be 
 used on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
