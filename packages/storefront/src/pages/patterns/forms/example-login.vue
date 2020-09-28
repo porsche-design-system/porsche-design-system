@@ -11,6 +11,9 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate @submit.prevent="onSubmit">
+          <p-text v-if="showGlobalError" color="notification-error" style="margin-bottom: 20px"
+            >Login has failed. Please try again.</p-text
+          >
           <p-flex class="form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'two-thirds'}" class="form-grid-item">
               <p-text-field-wrapper
@@ -96,6 +99,7 @@
   export default class LoginForm extends Vue {
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
+    public showGlobalError = false;
 
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
@@ -109,19 +113,21 @@
       })
     };
 
-    onFieldBlur = ({ target }: FocusEvent & { target: HTMLInputElement }): void => {
+    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
       validateField(target.name as keyof FormModel, this.bag);
-    };
+    }
 
-    onSubmit = async (): Promise<void> => {
+    async onSubmit(): Promise<void> {
+      this.showGlobalError = false;
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
 
       if (!isValid) {
         const firstError = getFirstErrorKey(this.bag);
-        console.log(firstError);
         (this.$refs[firstError!] as HTMLElement).focus();
+      } else {
+        this.showGlobalError = true;
       }
-    };
+    }
   }
 </script>
