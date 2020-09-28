@@ -93,7 +93,7 @@ describe('tabs', () => {
     expect(await getAttribute(secondTabItem, 'selected')).toBe('');
   });
 
-  it('should update buttons when tab label is changed', async () => {
+  it('should render updated tabs when tab label is changed', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -122,7 +122,7 @@ describe('tabs', () => {
     expect(await getLabelOfFirstButton()).toBe('newButtonName');
   });
 
-  it('should select correct button when selected attribute is set', async () => {
+  it('should render correct tab when selected attribute is set', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -149,7 +149,7 @@ describe('tabs', () => {
     expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
-  it('should behave correctly when multiple tabs have selected attribute', async () => {
+  it('should render correct selected tab when multiple tabs have selected attribute', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -176,7 +176,7 @@ describe('tabs', () => {
     expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
-  it('should focus first button on tab click', async () => {
+  it('should render focus on selected tab on keyboard "tab" click', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -205,7 +205,7 @@ describe('tabs', () => {
     expect(await getButtonFocus()).toBe(true);
   });
 
-  it('should focus content on tab click', async () => {
+  it('should render focus on content on keyboard "tab" click', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -235,7 +235,7 @@ describe('tabs', () => {
     expect(await getLinkFocus()).toBe(true);
   });
 
-  it('should switch active tab on arrow-key press', async () => {
+  it('should render correct active tab on arrow-key press', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -271,7 +271,7 @@ describe('tabs', () => {
     expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('false');
   });
 
-  it('should set active tab as first/last on home/end press', async () => {
+  it('should render correct active tab on first/last or home/end press', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -310,7 +310,7 @@ describe('tabs', () => {
     expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
   });
 
-  it('should scroll 20% on Button next', async () => {
+  it('should render scroll 20% on Button next', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -359,7 +359,7 @@ describe('tabs', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
 
-  it('should scroll 20% on Button prev', async () => {
+  it('should render scroll 20% on Button prev', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -421,7 +421,7 @@ describe('tabs', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
 
-  it('should scroll to selected button on render', async () => {
+  it('should render correct scroll-position on selected tab', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -468,7 +468,7 @@ describe('tabs', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
 
-  it('should scroll to button on button click', async () => {
+  it('should render correct scroll position on tab click', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -529,7 +529,7 @@ describe('tabs', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should have same offsetLeft on Statusbar and active tab', async () => {
+  it('should render same offsetLeft on Statusbar and active tab', async () => {
     await setContentWithDesignSystem(
       page,
       `
