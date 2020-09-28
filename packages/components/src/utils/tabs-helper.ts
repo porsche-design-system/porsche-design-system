@@ -6,8 +6,11 @@ export const getStatusBarStyle = (activeTabIndex: number, tabs: HTMLElement[]): 
   return statusBarStyle;
 };
 
-export const setAttributes = (tab: HTMLElement, attrs: { role: string; hidden: string; 'aria-labelledby': string; id: string }) => {
-  for(var key in attrs) {
+export const setAttributes = (
+  tab: HTMLElement,
+  attrs: { role: string; hidden: string; 'aria-labelledby': string; id: string }
+) => {
+  for (var key in attrs) {
     tab.setAttribute(key, attrs[key]);
   }
 };
@@ -29,25 +32,26 @@ export const scrollOnTabClick = (
   // go to next tab
   if (tabIndex > activeTabIndexOnClick && tabIndex < tabsItems.length - 1) {
     nextTab = activeTab.offsetLeft - gradientNextWidth;
-  // go to prev tab
+    // go to prev tab
   } else if (tabIndex < activeTabIndexOnClick && tabIndex > 0) {
     nextTab = activeTab.offsetLeft + activeTab.offsetWidth + gradientPrevWidth - nav.offsetWidth;
-  // go no where
+    // go no where
   } else if (tabIndex === activeTabIndexOnClick) {
-  // go first tab
+    // go first tab
   } else if (tabIndex === 0) {
     nextTab = 0;
-  // go to last tab
+    // go to last tab
   } else {
     nextTab = activeTab.offsetLeft - 4;
   }
-
-  nav.scrollLeft = nextTab;
-
-  /*nav.scrollTo({
-    left: nextTab,
-    behavior: 'smooth'
-  });*/
+  if (navigator.userAgent.includes('Edge/18')) {
+    nav.scrollLeft = nextTab;
+  } else {
+    nav.scrollTo({
+      left: nextTab,
+      behavior: 'smooth'
+    });
+  }
 };
 
 export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs: HTMLElement[]): void => {
@@ -73,12 +77,14 @@ export const scrollOnPrevNext = (action: 'prev' | 'next', nav: HTMLElement, tabs
       scrollTo = currentScrollPosition - scrollToStep;
     }
   }
-
-  nav.scrollLeft = scrollTo;
-  /*nav.scrollTo({
-    left: scrollTo,
-    behavior: 'smooth'
-  });*/
+  if (navigator.userAgent.includes('Edge/18')) {
+    nav.scrollLeft = scrollTo;
+  } else {
+    nav.scrollTo({
+      left: scrollTo,
+      behavior: 'smooth'
+    });
+  }
 };
 
 export const scrollToSelectedTab = (
