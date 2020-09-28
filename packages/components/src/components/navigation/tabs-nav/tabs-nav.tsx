@@ -193,7 +193,7 @@ export class TabsNav {
 
   private setStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
-    statusBar.setAttribute('style', getStatusBarStyle(this.activeTabIndex, this.allAnchorTags));
+    statusBar.setAttribute('style', getStatusBarStyle(this.allAnchorTags[this.activeTabIndex]));
   };
 
   private handlePrevNextClick = (action: 'next' | 'prev'): void => {

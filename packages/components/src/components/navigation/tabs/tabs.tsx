@@ -6,7 +6,8 @@ import {
   registerIntersectionObserver,
   scrollOnPrevNext,
   scrollOnTabClick,
-  scrollToSelectedTab, setAttributes
+  scrollToSelectedTab,
+  setSectionAttributes
 } from '../../../utils/tabs-helper';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
@@ -30,12 +31,14 @@ export class Tabs {
   @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public colorScheme?: 'default' | 'surface' = 'default';
+  @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
   @State() public tabsItems: HTMLPTabsItemElement[] = Array.from(this.host.querySelectorAll('p-tabs-item'));
   @State() public activeTabIndex: number = this.tabsItems.findIndex((tab) => tab.selected);
-  @State() public isPrevHidden = false;
-  @State() public isNextHidden = false;
+  @State() public actionState: { readonly isPrevHidden: boolean; readonly isNextHidden: boolean } = {
+    isPrevHidden: false,
+    isNextHidden: false
+  };
 
   private tabsNavElement: HTMLElement;
   private hostObserver: MutationObserver;
@@ -52,18 +55,18 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
-    this.handleTabChange(this.activeTabIndex); //We have to reset to ensure
-    this.observeHost();
+    this.handleTabChange();
+    this.initObserveHost();
   }
 
-  public componentDidRender = (): void => {
-    this.setStatusBarStyle();
-  };
+  public componentDidRender(): void {
+    this.updateStatusBarStyle();
+  }
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
-    this.setKeyboardEventListener();
     this.initView();
+    this.initKeyboardEventListener();
   }
 
   public disconnectedCallback(): void {
@@ -105,19 +108,19 @@ export class Tabs {
     const actionPrevClasses = {
       ...actionClasses,
       [prefix('tabs__action--prev')]: true,
-      [prefix('tabs__action--hidden')]: this.isPrevHidden
+      [prefix('tabs__action--hidden')]: this.actionState.isPrevHidden
     };
 
     const actionNextClasses = {
       ...actionClasses,
       [prefix('tabs__action--next')]: true,
-      [prefix('tabs__action--hidden')]: this.isNextHidden
+      [prefix('tabs__action--hidden')]: this.actionState.isNextHidden
     };
 
     const gradientClasses = {
       [prefix('tabs__gradient')]: true,
       [prefix(`tabs__gradient--theme-${this.theme}`)]: true,
-      [prefix(`tabs__gradient--color-scheme-${this.colorScheme}`)]: true
+      [prefix(`tabs__gradient--color-scheme-${this.gradientColorScheme}`)]: true
     };
 
     const gradientClassesPrev = {
@@ -161,10 +164,10 @@ export class Tabs {
                 );
               })}
             </ul>
-            <span class={statusBarClasses}/>
+            <span class={statusBarClasses} />
           </div>
           <div class={actionPrevClasses}>
-            <span class={gradientClassesPrev}/>
+            <span class={gradientClassesPrev} />
             <PrefixedTagNames.pButtonPure
               aria-hidden="true"
               tabbable={false}
@@ -176,7 +179,7 @@ export class Tabs {
             />
           </div>
           <div class={actionNextClasses}>
-            <span class={gradientClassesNext}/>
+            <span class={gradientClassesNext} />
             <PrefixedTagNames.pButtonPure
               aria-hidden="true"
               tabbable={false}
@@ -198,19 +201,11 @@ export class Tabs {
     const tabs = this.getHTMLElements('tabs');
     const gradients = this.getHTMLElements('gradient');
     scrollToSelectedTab(this.activeTabIndex, nav, tabs, gradients);
-    this.tabsItems.map((tab, index) => (
-      setAttributes(tab, {
-        'role': 'tabpanel',
-        'hidden': `${!tab.selected}`,
-        'id': prefix(`tab-panel-${index}`),
-        'aria-labelledby': prefix(`tab-item-${index}`)
-      })
-    ))
   };
 
-  private observeHost = (): void => {
+  private initObserveHost = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({type}) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
         this.updateTabItems();
       }
     });
@@ -224,13 +219,17 @@ export class Tabs {
   private initIntersectionObserver = (): void => {
     const tabs = this.getHTMLElements('tabs');
     this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
-      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+      this.actionState = {
+        ...this.actionState,
+        [direction === 'next' ? 'isNextHidden' : 'isPrevHidden']: isIntersecting
+      };
     }, tabs);
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
     this.resetTabs();
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
+    this.tabsItems.forEach(setSectionAttributes);
   };
 
   private resetTabs = (): void => {
@@ -240,19 +239,18 @@ export class Tabs {
   };
 
   private setActiveTab = (index: number): void => {
-    const tabs = this.tabsItems;
-    const maxIndex = tabs.length - 1;
+    const maxIndex = this.tabsItems.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    tabs[this.activeTabIndex].selected = true;
+    this.tabsItems[this.activeTabIndex].selected = true;
   };
 
-  private setStatusBarStyle = (): void => {
+  private updateStatusBarStyle = (): void => {
     const statusBar = this.getHTMLElement('statusBar');
     const tabs = this.getHTMLElements('tabs');
-    statusBar.setAttribute('style', getStatusBarStyle(this.activeTabIndex, tabs));
+    statusBar.setAttribute('style', getStatusBarStyle(tabs[this.activeTabIndex]));
   };
 
-  private setKeyboardEventListener = (): void => {
+  private initKeyboardEventListener = (): void => {
     this.tabsNavElement = this.getHTMLElement('nav');
     this.tabsNavElement.addEventListener('keydown', this.handleKeydown);
   };
