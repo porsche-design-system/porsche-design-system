@@ -20,6 +20,7 @@
               >
                 <input
                   type="email"
+                  :ref="validateFieldName('email')"
                   v-bind:name="validateFieldName('email')"
                   v-model="bag.data.email"
                   v-on:blur="onFieldBlur"
@@ -37,6 +38,7 @@
               >
                 <input
                   type="password"
+                  :ref="validateFieldName('password')"
                   v-bind:name="validateFieldName('password')"
                   v-model="bag.data.password"
                   v-on:blur="onFieldBlur"
@@ -72,7 +74,15 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
+  import {
+    validateName,
+    getState,
+    validateField,
+    validateForm,
+    ValidationBag,
+    getInitialErrors,
+    getFirstErrorKey
+  } from '../../../utils';
 
   const initialData = {
     email: '',
@@ -106,6 +116,12 @@
     onSubmit = async (): Promise<void> => {
       const isValid = await validateForm(this.bag);
       console.log('isValid', isValid);
+
+      if (!isValid) {
+        const firstError = getFirstErrorKey(this.bag);
+        console.log(firstError);
+        (this.$refs[firstError!] as HTMLElement).focus();
+      }
     };
   }
 </script>
