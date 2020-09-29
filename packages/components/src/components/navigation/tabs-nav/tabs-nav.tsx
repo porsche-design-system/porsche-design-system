@@ -1,15 +1,22 @@
 import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import {
+  BreakpointCustomizable,
+  getPrefixedTagNames,
+  mapBreakpointPropToPrefixedClasses,
+  prefix
+} from '../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../types';
 import {
+  ActionState,
   Direction,
+  getHTMLElement,
+  getHTMLElements,
   getStatusBarStyle,
   registerIntersectionObserver,
-  scrollOnPrevNext, scrollOnTabClick,
-  scrollToSelectedTab
+  scrollOnPrevNextClick,
+  scrollOnTabClick,
+  setInitialScroll
 } from '../../../utils/tabs-helper';
-
-type HTMLElementSelector = 'nav' | 'statusBar';
 
 @Component({
   tag: 'p-tabs-nav',
@@ -29,16 +36,18 @@ export class TabsNav {
   @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public colorScheme?: 'default' | 'surface' = 'default';
+  @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
   /** Defines which tab to be visualized as selected. */
   @Prop() public activeTabIndex?: number = 0;
 
-  @State() public isPrevHidden = false;
-  @State() public isNextHidden = false;
+  @State() public actionState: ActionState = {
+    isPrevHidden: false,
+    isNextHidden: false
+  };
 
   private intersectionObserver: IntersectionObserver;
-  private allAnchorTags: HTMLElement[] = Array.from(this.host.querySelectorAll('a'));
+  private allAnchorTags: HTMLElement[] = getHTMLElements(this.host, 'a');
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -46,14 +55,13 @@ export class TabsNav {
   }
 
   public componentDidRender(): void {
-    this.setStatusBarStyle();
+    this.updateStatusBarStyle();
   }
 
   public componentDidLoad(): void {
-    this.init();
-    this.setActiveTab(this.activeTabIndex ?? 0);
-    this.initIntersectionObserver();
     this.initView();
+    this.setActiveTab(this.activeTabIndex);
+    this.initIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
@@ -77,104 +85,74 @@ export class TabsNav {
       [prefix(`tabs-nav__status-bar--weight-${this.weight}`)]: true
     };
 
-    const actionClasses = {
-      [prefix('tabs-nav__action')]: true,
-      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true
-    };
-
-    const actionPrevClasses = {
-      ...actionClasses,
-      [prefix('tabs-nav__action--prev')]: true,
-      [prefix('tabs-nav__action--hidden')]: this.isPrevHidden
-    };
-
-    const actionNextClasses = {
-      ...actionClasses,
-      [prefix('tabs-nav__action--next')]: true,
-      [prefix('tabs-nav__action--hidden')]: this.isNextHidden
-    };
-
-    const gradientClasses = {
-      [prefix('tabs-nav__gradient')]: true,
-      [prefix(`tabs-nav__gradient--theme-${this.theme}`)]: true,
-      [prefix(`tabs-nav__gradient--color-scheme-${this.colorScheme}`)]: true
-    };
-
-    const gradientClassesPrev = {
-      ...gradientClasses,
-      [prefix('tabs-nav__gradient--prev')]: true
-    };
-
-    const gradientClassesNext = {
-      ...gradientClasses,
-      [prefix('tabs-nav__gradient--next')]: true
-    };
-
     return (
       <div class={tabsNavClasses}>
         <nav class={scrollAreaClasses}>
           <slot />
           <span class={statusBarClasses} />
         </nav>
-        <div class={actionPrevClasses}>
-          <span class={gradientClassesPrev} />
-          <p-button-pure
-            aria-hidden="true"
-            tabbable={false}
-            theme={this.theme}
-            hide-label="true"
-            size="inherit"
-            icon="arrow-head-left"
-            onClick={() => this.handlePrevNextClick('prev')}
-          />
-        </div>
-        <div class={actionNextClasses}>
-          <span class={gradientClassesNext} />
-          <p-button-pure
-            aria-hidden="true"
-            tabbable={false}
-            theme={this.theme}
-            hide-label="true"
-            size="inherit"
-            icon="arrow-head-right"
-            onClick={() => this.handlePrevNextClick('next')}
-          />
-        </div>
+        {this.renderPrevNextButton('prev')}
+        {this.renderPrevNextButton('next')}
       </div>
     );
   }
 
-  public init = () => {
-    const navList = Array.from(this.host.querySelectorAll('a')) as HTMLElement[];
-
-    const handleAnchorClick = (e) => {
-      for (const [index, link] of Object.entries(navList)) {
-        if (link === e.target) {
-          this.handleTabClick(+index);
-        }
-      }
+  private renderPrevNextButton = (direction: Direction): JSX.Element => {
+    const actionClasses = {
+      [prefix('tabs-nav__action')]: true,
+      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
+      [prefix(`tabs-nav__action--${direction}`)]: true,
+      [prefix('tabs-nav__action--hidden')]: this.actionState[direction === 'prev' ? 'isPrevHidden' : 'isNextHidden']
     };
 
-    for (const link of navList) {
-      link.addEventListener('click', handleAnchorClick);
-    }
+    const gradientClasses = {
+      [prefix('tabs-nav__gradient')]: true,
+      [prefix(`tabs-nav__gradient--theme-${this.theme}`)]: true,
+      [prefix(`tabs-nav__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
+      [prefix(`tabs-nav__gradient--${direction}`)]: true
+    };
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
+
+    return (
+      <div class={actionClasses}>
+        <span class={gradientClasses} />
+        <PrefixedTagNames.pButtonPure
+          aria-hidden="true"
+          tabbable={false}
+          theme={this.theme}
+          hide-label="true"
+          size="inherit"
+          icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+          onClick={() => this.handlePrevNextClick(direction)}
+        />
+      </div>
+    );
   };
 
   private initView = (): void => {
-    scrollToSelectedTab(this.host, this.activeTabIndex, 'a');
+    const navList = getHTMLElements(this.host, 'a');
+    for (const [index, link] of Object.entries(navList)) {
+      link.addEventListener('click', () => this.handleTabClick(+index));
+    }
+    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a' });
   };
 
   private initIntersectionObserver = (): void => {
-    this.intersectionObserver = registerIntersectionObserver((direction, isIntersecting) => {
-      this[direction === 'next' ? 'isNextHidden' : 'isPrevHidden'] = isIntersecting;
+    this.intersectionObserver = registerIntersectionObserver((actionState) => {
+      this.actionState = {
+        ...this.actionState,
+        ...actionState
+      };
     }, this.allAnchorTags);
   };
 
   private setActiveTab = (index: number): void => {
     const maxIndex = this.allAnchorTags.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    this.allAnchorTags.forEach((tab) => tab.classList.remove('selected'));
-    this.allAnchorTags[this.activeTabIndex].classList.add('selected');
+    const activeTabClassName = 'selected';
+    this.allAnchorTags.forEach((tab) => tab.classList.remove(activeTabClassName));
+    this.allAnchorTags[this.activeTabIndex].classList.add(activeTabClassName);
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
@@ -184,24 +162,15 @@ export class TabsNav {
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
-    scrollOnTabClick(this.host, {newTabIndex, direction, tabSelector: 'a'});
+    scrollOnTabClick(this.host, { newTabIndex, direction, tabSelector: 'a' });
   };
 
-  private setStatusBarStyle = (): void => {
-    const statusBar = this.getHTMLElement('statusBar');
+  private updateStatusBarStyle = (): void => {
+    const statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-nav__status-bar')}`);
     statusBar.setAttribute('style', getStatusBarStyle(this.allAnchorTags[this.activeTabIndex]));
   };
 
   private handlePrevNextClick = (direction: Direction): void => {
-    scrollOnPrevNext(this.host, {direction, tabSelector: 'a'});
-  };
-
-  private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
-    const selector = {
-      nav: 'tabs-nav__scroll-area',
-      statusBar: 'tabs-nav__status-bar'
-    };
-
-    return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
+    scrollOnPrevNextClick(this.host, { direction, tabSelector: 'a' });
   };
 }

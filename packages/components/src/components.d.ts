@@ -543,7 +543,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "colorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: 'default' | 'surface';
         /**
           * The text size.
          */
@@ -1395,7 +1395,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "colorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: 'default' | 'surface';
         /**
           * The text size.
          */
