@@ -40,6 +40,9 @@ import { Component } from '@angular/core';
       <p-radio-button-wrapper [label]="'Some label'">
         <input type="radio" name="some-name-3a" required />
       </p-radio-button-wrapper>
+      <p-radio-button-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <input type="radio" name="some-name-3a" required />
+      </p-radio-button-wrapper>
       <p-radio-button-wrapper [label]="'Some label'">
         <input type="radio" name="some-name-3a" required disabled />
       </p-radio-button-wrapper>

@@ -134,6 +134,13 @@ import { Component } from '@angular/core';
           <option value="c">Option C</option>
         </select>
       </p-select-wrapper>
+      <p-select-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <select name="some-name" required>
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">
