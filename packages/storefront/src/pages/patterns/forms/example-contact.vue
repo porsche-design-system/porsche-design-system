@@ -283,13 +283,13 @@
             direction="{ base: 'column', s: 'row' }"
             class="form-section-spacing form-bottom-spacing form-grid-item-container"
           >
+            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
+              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
+            </p-flex-item>
             <p-flex-item
               width="{base: 'full', s: 'auto'}"
               class="form-row-spacing form-row-spacing--zero-s form-grid-item"
             >
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
-            </p-flex-item>
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
               <p-button
                 variant="tertiary"
                 icon="close"
@@ -347,24 +347,26 @@ export default class ExampleContactForm extends Vue {
     data: { ...initialData },
     errors: getInitialErrors(initialData),
     schema: object<FormModel>({
-      category: string().required('Please select a category'),
-      subject: string().required('Plaase enter a subject'),
-      message: string().required('Please describe your request in a few sentences'),
+      category: string().required('What kind of request do you have?'),
+      subject: string().required('Let us know what your inquiry is about'),
+      message: string().required(
+        'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
+      ),
       salutation: string().required('Please select a form of salutation'),
       title: string(),
       firstName: string().required('Please enter your name'),
       lastName: string().required('Please enter your last name'),
       email: string()
-        .email()
-        .required('Please enter an email address'),
+        .email('Email address seems invalid')
+        .required('Please enter your email address'),
       phone: string(),
-      vin: string().required('Please enter valid 17 digits long VIN'),
-      gear: string().required('Please tell us the type of transmission'),
+      vin: string().required('We can’t find the vehicle. Please check your entry'),
+      gear: string().required('Please tell us the type of your vehicles transmission'),
       date: date()
         .required('Please enter the date of first registration')
         .typeError('Please enter the date of first registration'),
       mileage: number()
-        .required('Please enter the current mileage')
+        .required('What is the mileage of your Porsche?')
         .typeError('Please enter the current mileage'),
       dealer: string().required('Please choose a Porsche Dealer of your choice'),
       privacy: boolean()
