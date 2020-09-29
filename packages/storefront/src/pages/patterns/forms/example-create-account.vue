@@ -4,8 +4,8 @@
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Create a new Porsche account</p-headline>
         <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
-          Please enter your registration details in the following fields.<br />
-          This text can be enhanced by some information on the benefits of a Porsche account registration.
+          Please enter your registration details in the following fields.
+          <br />This text can be enhanced by some information on the benefits of a Porsche account registration.
         </p-text>
       </p-grid-item>
     </p-grid>
@@ -26,7 +26,7 @@
                   v-on:change="onFieldBlur"
                   required
                 >
-                  <option value="">Choose an option</option>
+                  <option value>Choose an option</option>
                   <option value="Mr.">Mr.</option>
                   <option value="Mrs.">Mrs.</option>
                 </select>
@@ -46,7 +46,10 @@
               </p-select-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
+          <p-flex
+            direction="{ base: 'column', m: 'row' }"
+            class="form-row-spacing form-grid-item-container"
+          >
             <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
               <p-text-field-wrapper
                 label="First name"
@@ -118,7 +121,10 @@
             v-bind:message="bag.errors.terms"
             v-bind:state="getState('terms')"
           >
-            <span slot="label">I have read the <a href="#">general terms ans conditions</a> and I accept them.</span>
+            <span slot="label">
+              I have read the
+              <a href="#">general terms ans conditions</a> and I accept them.
+            </span>
             <input
               type="checkbox"
               :ref="validateFieldName('terms')"
@@ -133,7 +139,10 @@
             v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
           >
-            <span slot="label">I have read the <a href="#">Data Privacy Statement</a>.</span>
+            <span slot="label">
+              I have read the
+              <a href="#">Data Privacy Statement</a>.
+            </span>
             <input
               type="checkbox"
               :ref="validateFieldName('privacy')"
@@ -147,22 +156,22 @@
             direction="{ base: 'column', s: 'row' }"
             class="form-section-spacing form-bottom-spacing form-grid-item-container"
           >
+            <p-flex-item
+              width="{base: 'full', s: 'auto'}"
+              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
+            >
+              <p-button
+                type="submit"
+                class="form-item-width--full form-item-width--auto-s"
+              >Create Porsche account</p-button>
+            </p-flex-item>
             <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
               <p-button
                 variant="tertiary"
                 icon="close"
                 class="form-item-width--full form-item-width--auto-s"
                 @click="onReset"
-                >Cancel
-              </p-button>
-            </p-flex-item>
-            <p-flex-item
-              width="{base: 'full', s: 'auto'}"
-              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
-            >
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s"
-                >Create Porsche account
-              </p-button>
+              >Cancel</p-button>
             </p-flex-item>
           </p-flex>
         </form>
@@ -172,76 +181,78 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, object, string } from 'yup';
-  import {
-    validateName,
-    getState,
-    validateField,
-    validateForm,
-    ValidationBag,
-    getInitialErrors,
-    getFirstErrorKey
-  } from '../../../utils';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, object, string } from 'yup';
+import {
+  validateName,
+  getState,
+  validateField,
+  validateForm,
+  ValidationBag,
+  getInitialErrors,
+  getFirstErrorKey
+} from '../../../utils';
 
-  const initialData = {
-    salutation: '',
-    title: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    terms: false,
-    privacy: false
+const initialData = {
+  salutation: '',
+  title: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  terms: false,
+  privacy: false
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class CreateAccountForm extends Vue {
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object<FormModel>({
+      salutation: string().required('Please select a form of salutation'),
+      title: string(),
+      firstName: string().required('Please enter your name'),
+      lastName: string().required('Please enter your last name'),
+      email: string()
+        .email()
+        .required('Please enter an email address'),
+      password: string()
+        .required('Please enter a password')
+        .min(6, 'Passwords must contain at least 6 characters'),
+      terms: boolean()
+        .required()
+        .oneOf([true], 'Please agree to the terms ans conditions'),
+      privacy: boolean()
+        .required()
+        .oneOf([true], 'Please agree to the data privacy')
+    })
   };
 
-  type FormModel = typeof initialData;
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
+  }
 
-  @Component
-  export default class CreateAccountForm extends Vue {
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
+  async onSubmit(): Promise<void> {
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
 
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
-        salutation: string().required(),
-        title: string(),
-        firstName: string().required(),
-        lastName: string().required(),
-        email: string()
-          .email()
-          .required(),
-        password: string().required(),
-        terms: boolean()
-          .required()
-          .oneOf([true]),
-        privacy: boolean()
-          .required()
-          .oneOf([true])
-      })
-    };
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-
-      if (!isValid) {
-        const firstError = getFirstErrorKey(this.bag);
-        console.log(firstError);
-        firstError && (this.$refs[firstError] as HTMLElement).focus();
-      }
-    }
-
-    onReset(): void {
-      this.bag.data = { ...initialData };
-      this.bag.errors = getInitialErrors(initialData);
+    if (!isValid) {
+      const firstError = getFirstErrorKey(this.bag);
+      console.log(firstError);
+      firstError && (this.$refs[firstError] as HTMLElement).focus();
     }
   }
+
+  onReset(): void {
+    this.bag.data = { ...initialData };
+    this.bag.errors = getInitialErrors(initialData);
+  }
+}
 </script>
