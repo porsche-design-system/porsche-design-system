@@ -49,6 +49,9 @@ import { Component } from '@angular/core';
       <p-checkbox-wrapper [label]="'Some label'">
         <input type="checkbox" name="some-name" required />
       </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <input type="checkbox" name="some-name" required />
+      </p-checkbox-wrapper>
       <p-checkbox-wrapper [label]="'Some label'">
         <input type="checkbox" name="some-name" required disabled />
       </p-checkbox-wrapper>

@@ -41,6 +41,9 @@ import { Component } from '@angular/core';
       <p-textarea-wrapper [label]="'Some label'">
         <textarea name="some-name" required></textarea>
       </p-textarea-wrapper>
+      <p-textarea-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <textarea name="some-name" required></textarea>
+      </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">

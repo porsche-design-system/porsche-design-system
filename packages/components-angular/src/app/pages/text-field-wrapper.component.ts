@@ -41,6 +41,9 @@ import { Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Some label'">
         <input type="text" name="some-name" required />
       </p-text-field-wrapper>
+      <p-text-field-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <input type="text" name="some-name" required />
+      </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render in disabled state">
