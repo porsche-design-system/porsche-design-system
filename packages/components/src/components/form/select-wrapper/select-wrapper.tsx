@@ -126,7 +126,6 @@ export class SelectWrapper {
     };
     const labelClasses = {
       [prefix('select-wrapper__label')]: true,
-      [prefix('select-wrapper__label--required')]: this.isRequired,
       [prefix('select-wrapper__label--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -174,6 +173,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
+                {this.isRequired && <span class={prefix('select-wrapper__required')}></span>}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (

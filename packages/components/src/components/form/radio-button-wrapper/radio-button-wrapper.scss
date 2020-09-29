@@ -90,14 +90,6 @@
     color: $p-color-theme-light-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &--required {
-      display: inline-flex;
-      &::after {
-        content: '*';
-        color: $p-color-notification-error;
-      }
-    }
-
     &--disabled {
       color: $p-color-theme-light-state-disabled;
       cursor: default;
@@ -159,6 +151,13 @@
       &--hidden-xl {
         @include p-radio-button-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  &__required {
+    &::after {
+      content: '*';
+      color: $p-color-notification-error;
     }
   }
 

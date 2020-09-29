@@ -61,7 +61,6 @@ export class CheckboxWrapper {
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
-      [prefix('checkbox-wrapper__label-text--required')]: this.isRequired,
       [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -78,6 +77,7 @@ export class CheckboxWrapper {
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
+              {this.isRequired && <span class={prefix('checkbox-wrapper__required')}></span>}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeCheckboxClasses}>
