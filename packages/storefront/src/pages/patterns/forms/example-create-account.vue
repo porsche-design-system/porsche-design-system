@@ -46,10 +46,7 @@
               </p-select-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex
-            direction="{ base: 'column', m: 'row' }"
-            class="form-row-spacing form-grid-item-container"
-          >
+          <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
               <p-text-field-wrapper
                 label="First name"
@@ -157,10 +154,9 @@
             class="form-section-spacing form-bottom-spacing form-grid-item-container"
           >
             <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-              <p-button
-                type="submit"
-                class="form-item-width--full form-item-width--auto-s"
-              >Create Porsche account</p-button>
+              <p-button type="submit" class="form-item-width--full form-item-width--auto-s"
+                >Create Porsche account</p-button
+              >
             </p-flex-item>
             <p-flex-item
               width="{base: 'full', s: 'auto'}"
@@ -171,7 +167,8 @@
                 icon="close"
                 class="form-item-width--full form-item-width--auto-s"
                 @click="onReset"
-              >Cancel</p-button>
+                >Cancel</p-button
+              >
             </p-flex-item>
           </p-flex>
         </form>
@@ -181,78 +178,78 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { boolean, object, string } from 'yup';
-import {
-  validateName,
-  getState,
-  validateField,
-  validateForm,
-  ValidationBag,
-  getInitialErrors,
-  getFirstErrorKey
-} from '../../../utils';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { boolean, object, string } from 'yup';
+  import {
+    validateName,
+    getState,
+    validateField,
+    validateForm,
+    ValidationBag,
+    getInitialErrors,
+    getFirstErrorKey
+  } from '../../../utils';
 
-const initialData = {
-  salutation: '',
-  title: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  terms: false,
-  privacy: false
-};
-
-type FormModel = typeof initialData;
-
-@Component
-export default class CreateAccountForm extends Vue {
-  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-  private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-  private bag: ValidationBag<FormModel> = {
-    data: { ...initialData },
-    errors: getInitialErrors(initialData),
-    schema: object<FormModel>({
-      salutation: string().required('Please select a form of salutation'),
-      title: string(),
-      firstName: string().required('Please enter your name'),
-      lastName: string().required('Please enter your last name'),
-      email: string()
-        .email('Email address seems invalid')
-        .required('Please enter your email address'),
-      password: string()
-        .required('Please enter a password')
-        .min(6, 'Passwords must contain at least 6 characters'),
-      terms: boolean()
-        .required()
-        .oneOf([true], 'Please agree to the terms ans conditions'),
-      privacy: boolean()
-        .required()
-        .oneOf([true], 'Please agree to the data privacy')
-    })
+  const initialData = {
+    salutation: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    terms: false,
+    privacy: false
   };
 
-  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-    validateField(target.name as keyof FormModel, this.bag);
-  }
+  type FormModel = typeof initialData;
 
-  async onSubmit(): Promise<void> {
-    const isValid = await validateForm(this.bag);
-    console.log('isValid', isValid);
+  @Component
+  export default class CreateAccountForm extends Vue {
+    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+    private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-    if (!isValid) {
-      const firstError = getFirstErrorKey(this.bag);
-      console.log(firstError);
-      firstError && (this.$refs[firstError] as HTMLElement).focus();
+    private bag: ValidationBag<FormModel> = {
+      data: { ...initialData },
+      errors: getInitialErrors(initialData),
+      schema: object<FormModel>({
+        salutation: string().required('Please select a form of salutation'),
+        title: string(),
+        firstName: string().required('Please enter your name'),
+        lastName: string().required('Please enter your last name'),
+        email: string()
+          .email('Email address seems invalid')
+          .required('Please enter your email address'),
+        password: string()
+          .required('Please enter a password')
+          .min(6, 'Passwords must contain at least 6 characters'),
+        terms: boolean()
+          .required()
+          .oneOf([true], 'Please agree to the terms ans conditions'),
+        privacy: boolean()
+          .required()
+          .oneOf([true], 'Please agree to the data privacy')
+      })
+    };
+
+    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+      validateField(target.name as keyof FormModel, this.bag);
+    }
+
+    async onSubmit(): Promise<void> {
+      const isValid = await validateForm(this.bag);
+      console.log('isValid', isValid);
+
+      if (!isValid) {
+        const firstError = getFirstErrorKey(this.bag);
+        console.log(firstError);
+        firstError && (this.$refs[firstError] as HTMLElement).focus();
+      }
+    }
+
+    onReset(): void {
+      this.bag.data = { ...initialData };
+      this.bag.errors = getInitialErrors(initialData);
     }
   }
-
-  onReset(): void {
-    this.bag.data = { ...initialData };
-    this.bag.errors = getInitialErrors(initialData);
-  }
-}
 </script>
