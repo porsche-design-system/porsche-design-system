@@ -155,13 +155,10 @@
     }
   }
 
-  &__label-text {
-    &--required {
-      display: inline-block;
-      &::after {
-        content: '*';
-        color: $p-color-notification-error;
-      }
+  &__required {
+    &::after {
+      content: '*';
+      color: $p-color-notification-error;
     }
   }
 

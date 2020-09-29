@@ -56,7 +56,6 @@ export class RadioButtonWrapper {
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
-      [prefix('radio-button-wrapper__label-text--required')]: this.isRequired,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -73,6 +72,7 @@ export class RadioButtonWrapper {
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
+              {this.isRequired && <span class={prefix('radio-button-wrapper__required')}></span>}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeRadioButtonClasses}>

@@ -168,14 +168,6 @@
       color: $p-color-theme-dark-default;
     }
 
-    &--required {
-      display: inline-block;
-      &::after {
-        content: '*';
-        color: $p-color-notification-error;
-      }
-    }
-
     &--disabled {
       #{$bem-block}--theme-light & {
         color: $p-color-state-disabled;
@@ -184,6 +176,13 @@
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-disabled;
       }
+    }
+  }
+
+  &__required {
+    &::after {
+      content: '*';
+      color: $p-color-notification-error;
     }
   }
 

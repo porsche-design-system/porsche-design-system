@@ -61,7 +61,6 @@ export class TextFieldWrapper {
     const labelClasses = prefix('text-field-wrapper__label');
     const labelTextClasses = {
       [prefix('text-field-wrapper__label-text')]: true,
-      [prefix('text-field-wrapper__label-text--required')]: this.isRequired,
       [prefix('text-field-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -94,6 +93,7 @@ export class TextFieldWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
+                {this.isRequired && <span class={prefix('text-field-wrapper__required')}></span>}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (

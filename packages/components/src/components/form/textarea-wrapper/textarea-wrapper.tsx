@@ -53,7 +53,6 @@ export class TextareaWrapper {
     const labelClasses = prefix('textarea-wrapper__label');
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
-      [prefix('textarea-wrapper__label-text--required')]: this.isRequired,
       [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
     };
@@ -83,11 +82,8 @@ export class TextareaWrapper {
         <label class={labelClasses}>
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
-              {this.label || (
-                <span>
-                  <slot name="label" />
-                </span>
-              )}
+              {this.label || <slot name="label" />}
+              {this.isRequired && <span class={prefix('textarea-wrapper__required')}></span>}
             </PrefixedTagNames.pText>
           )}
           {this.isDescriptionVisible && (
@@ -98,11 +94,7 @@ export class TextareaWrapper {
               size="x-small"
               onClick={this.labelClick}
             >
-              {this.description || (
-                <span>
-                  <slot name="description" />
-                </span>
-              )}
+              {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeTextareaClasses}>
@@ -111,11 +103,7 @@ export class TextareaWrapper {
         </label>
         {this.isMessageVisible && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || (
-              <span>
-                <slot name="message" />
-              </span>
-            )}
+            {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
