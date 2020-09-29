@@ -59,6 +59,9 @@ export const CheckboxWrapperPage = (): JSX.Element => {
         <CheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required />
         </CheckboxWrapper>
+        <CheckboxWrapper label="This is a very insanely super long label across multiple lines">
+          <input type="checkbox" name="some-name" required />
+        </CheckboxWrapper>
         <CheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required disabled />
         </CheckboxWrapper>

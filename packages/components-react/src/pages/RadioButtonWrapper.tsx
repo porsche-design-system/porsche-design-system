@@ -41,6 +41,9 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         <RadioButtonWrapper label="Some label">
           <input type="radio" name="some-name-3a" required />
         </RadioButtonWrapper>
+        <RadioButtonWrapper label="This is a very insanely super long label across multiple lines">
+          <input type="radio" name="some-name-3a" required />
+        </RadioButtonWrapper>
         <RadioButtonWrapper label="Some label">
           <input type="radio" name="some-name-3a" required disabled />
         </RadioButtonWrapper>
