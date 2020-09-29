@@ -261,7 +261,8 @@ export class Tabs {
   };
 
   private updateTabItems = (): void => {
-    this.tabsItems = getHTMLElements(this.host, 'p-tabs-item') as HTMLPTabsItemElement[];
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
+    this.tabsItems = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
   };
 
   private getPrevNextTabIndex = (direction: Direction): number => {
