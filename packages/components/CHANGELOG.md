@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
+- Display `*` after label when `input`, `textarea` or `select` have `required` attribute within form wrapper components
 
 ### [2.0.0-alpha.3] - 2020-09-11
 
