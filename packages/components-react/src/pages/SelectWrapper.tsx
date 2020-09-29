@@ -135,6 +135,13 @@ export const SelectWrapperPage = (): JSX.Element => {
             <option value="c">Option C</option>
           </select>
         </SelectWrapper>
+        <SelectWrapper label="This is a very insanely super long label across multiple lines">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </SelectWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">

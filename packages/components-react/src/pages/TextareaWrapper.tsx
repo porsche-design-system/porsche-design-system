@@ -42,6 +42,9 @@ export const TextareaWrapperPage = (): JSX.Element => {
         <TextareaWrapper label="Some label">
           <textarea name="some-name" required></textarea>
         </TextareaWrapper>
+        <TextareaWrapper label="This is a very insanely super long label across multiple lines">
+          <textarea name="some-name" required></textarea>
+        </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">
