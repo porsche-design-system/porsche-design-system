@@ -2,6 +2,6 @@
   display: none;
 }
 
-:host([selected="true"]){
+:host([selected]){
   display: block;
 }
