@@ -1,14 +1,94 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
 
+$easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
+$easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
+
+@keyframes animateMobile {
+  from {
+    bottom: -100%;
+    opacity: 0;
+  }
+  to {
+    bottom: p-px-to-rem(50px);
+    opacity: 1;
+  }
+}
+
+@keyframes animateMobileOut {
+  from {
+    bottom: p-px-to-rem(50px);
+    opacity: 1;
+  }
+  to {
+    bottom: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes animateDesktop {
+  from {
+    top: -100%;
+    opacity: 0;
+  }
+  to {
+    top: p-px-to-rem(50px);
+    opacity: 1;
+  }
+}
+
+@keyframes animateDesktopOut {
+  from {
+    top: p-px-to-rem(50px);
+    opacity: 1;
+  }
+  to {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
 :host {
-  display: block;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  opacity: 0;
+}
+
+@include p-media-query('xxs', 's') {
+  :host {
+    bottom: -100%;
+    will-change: opacity, bottom;
+  }
+  :host(.hydrated) {
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobile $easeInQuad forwards;
+  }
+
+  :host(.#{$p-global-class-prefix}banner--close) {
+    animation: var(--p-animation-duration__banner, 600ms) 0s animateMobileOut $easeOutQuad forwards;
+  }
+}
+
+@include p-media-query('s') {
+  :host {
+    top: -100%;
+    will-change: opacity, top;
+  }
+
+  :host(.hydrated) {
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktop $easeInQuad forwards;
+  }
+
+  :host(.#{$p-global-class-prefix}banner--close) {
+    animation: var(--p-animation-duration__banner, 600ms) 0s animateDesktopOut $easeOutQuad forwards;
+  }
 }
 
 .#{$p-global-class-prefix}banner {
   $bem-block: &;
   display: flex;
   position: relative;
+  box-shadow: p-px-to-rem(-6px) p-px-to-rem(6px) p-px-to-rem(15px) 0 rgba(0, 0, 0, 0.3);
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
 
   &::before {
@@ -50,10 +130,6 @@
     &::before {
       background-color: $p-color-notification-error;
     }
-  }
-
-  &--overlay {
-    box-shadow: p-px-to-rem(-6px) p-px-to-rem(6px) p-px-to-rem(15px) 0 rgba(0, 0, 0, 0.5);
   }
 
   &__content {

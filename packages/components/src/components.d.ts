@@ -15,10 +15,6 @@ export namespace Components {
          */
         "persistent"?: boolean;
         /**
-          * Position of the banner.
-         */
-        "position"?: 'inline' | 'overlay';
-        /**
           * State of the banner.
          */
         "state"?: 'error' | 'warning' | 'neutral';
@@ -26,6 +22,10 @@ export namespace Components {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: 'light' | 'dark';
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
         /**
@@ -816,17 +816,9 @@ declare global {
 declare namespace LocalJSX {
     interface PBanner {
         /**
-          * Emitted when the close button is clicked.
-         */
-        "onCloseOnClick"?: (event: CustomEvent<any>) => void;
-        /**
           * Defines if the banner can be closed/removed by the user.
          */
         "persistent"?: boolean;
-        /**
-          * Position of the banner.
-         */
-        "position"?: 'inline' | 'overlay';
         /**
           * State of the banner.
          */
@@ -835,6 +827,10 @@ declare namespace LocalJSX {
           * Adapts the banner color depending on the theme.
          */
         "theme"?: 'light' | 'dark';
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
     }
     interface PButton {
         /**
