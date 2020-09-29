@@ -3,6 +3,7 @@
 import { prefix } from './prefix';
 
 export type Direction = 'next' | 'prev';
+export type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean}
 
 export const getStatusBarStyle = (activeTab: HTMLElement): string => {
   const statusBarWidth = activeTab?.offsetWidth || 0;
@@ -37,7 +38,7 @@ export const scrollOnTabClick = (
   const baseClass = host.tagName.toLowerCase();
   const gradientWidths = getHTMLElements(host.shadowRoot, `.${baseClass}__gradient`).map((item) => item.offsetWidth);
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
-  const tabs = getHTMLElements((queryInShadowRoot ? host.shadowRoot : host), tabSelector);
+  const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
   const activeTab = tabs[newTabIndex];
 
   let scrollPosition: number;
@@ -58,7 +59,7 @@ export const scrollOnTabClick = (
   scrollToHorizontal(scrollArea, scrollPosition);
 };
 
-export const scrollOnPrevNext = (
+export const scrollOnPrevNextClick = (
   host: HTMLElement,
   {
     direction,
@@ -68,10 +69,10 @@ export const scrollOnPrevNext = (
 ): void => {
   const baseClass = host.tagName.toLowerCase();
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
-  const tabs = getHTMLElements((queryInShadowRoot ? host.shadowRoot : host), tabSelector);
+  const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
 
-  const {offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth} = tabs[tabs.length - 1];
-  const {offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition} = scrollArea;
+  const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = tabs[tabs.length - 1];
+  const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollArea;
   const scrollToStep = Math.round(scrollAreaWidth * 0.2);
   const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH;
 
@@ -106,21 +107,24 @@ const scrollToHorizontal = (scrollArea: HTMLElement, scrollPosition: number): vo
   }
 };
 
-export const scrollToSelectedTab = (
+export const setInitialScroll = (
   host: HTMLElement,
-  activeTabIndex: number,
-  tabSelector: string,
-  queryInShadowRoot?: boolean,
+  {
+    activeTabIndex,
+    tabSelector,
+    queryInShadowRoot
+  }: { activeTabIndex: number; tabSelector: string; queryInShadowRoot?: boolean }
 ): void => {
   const baseClass = host.tagName.toLowerCase();
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
   const gradientWidths = getHTMLElements(host.shadowRoot, `.${baseClass}__gradient`).map((item) => item.offsetWidth);
-  const tabs = getHTMLElements((queryInShadowRoot ? host.shadowRoot : host), tabSelector);
+  const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
   scrollArea.scrollLeft = tabs[activeTabIndex].offsetLeft - gradientWidths[1];
 };
 
+
 export const registerIntersectionObserver = (
-  cb: (direction: 'next' | 'prev', isIntersecting: boolean) => void,
+  cb: (actionState: Partial<ActionState>) => void,
   tabs: HTMLElement[]
 ): IntersectionObserver => {
   const [firstTab] = tabs;
@@ -130,9 +134,9 @@ export const registerIntersectionObserver = (
     (entries) => {
       for (const entry of entries) {
         if (entry.target === firstTab) {
-          cb('prev', entry.isIntersecting);
+          cb({isPrevHidden: entry.isIntersecting});
         } else if (entry.target === lastTab) {
-          cb('next', entry.isIntersecting);
+          cb({isNextHidden: entry.isIntersecting});
         }
       }
     },
