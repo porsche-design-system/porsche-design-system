@@ -347,29 +347,29 @@ export default class ExampleContactForm extends Vue {
     data: { ...initialData },
     errors: getInitialErrors(initialData),
     schema: object<FormModel>({
-      category: string().required('Please select a category.'),
-      subject: string().required('Plaase enter a subject.'),
-      message: string().required('Please describe your request in a few sentences.'),
-      salutation: string().required('Please select a form of salutation.'),
+      category: string().required('Please select a category'),
+      subject: string().required('Plaase enter a subject'),
+      message: string().required('Please describe your request in a few sentences'),
+      salutation: string().required('Please select a form of salutation'),
       title: string(),
-      firstName: string().required('Please enter your surname.'),
-      lastName: string().required('Please enter your family name.'),
+      firstName: string().required('Please enter your name'),
+      lastName: string().required('Please enter your last name'),
       email: string()
         .email()
-        .required('Please enter your email address in format: yourname@example.com'),
+        .required('Please enter an email address'),
       phone: string(),
-      vin: string().required('Please enter valid 17 digits long VIN.'),
-      gear: string().required('Please tell us the type of transmission.'),
+      vin: string().required('Please enter valid 17 digits long VIN'),
+      gear: string().required('Please tell us the type of transmission'),
       date: date()
-        .required('Please enter the date of first registration.')
-        .typeError('Please enter the date of first registration.'),
+        .required('Please enter the date of first registration')
+        .typeError('Please enter the date of first registration'),
       mileage: number()
-        .required('Please enter the current mileage.')
-        .typeError('Please enter the current mileage.'),
-      dealer: string().required('Please choose a Porsche Dealer of your choice.'),
+        .required('Please enter the current mileage')
+        .typeError('Please enter the current mileage'),
+      dealer: string().required('Please choose a Porsche Dealer of your choice'),
       privacy: boolean()
-        .required('Please accept our privacy policy so that we can process your request.')
-        .oneOf([true], 'Please accept our privacy policy so that we can process your request.')
+        .required('Please accept our privacy policy so that we can process your request')
+        .oneOf([true], 'Please accept our privacy policy so that we can process your request')
     })
   };
 
