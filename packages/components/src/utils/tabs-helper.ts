@@ -35,7 +35,7 @@ export const scrollOnTabClick = (
     queryInShadowRoot
   }: { newTabIndex: number; direction: Direction; tabSelector: string; queryInShadowRoot?: boolean }
 ): void => {
-  const baseClass = host.tagName.toLowerCase();
+  const [baseClass] = Array.from(host.shadowRoot.firstElementChild.classList);
   const gradientWidths = getHTMLElements(host.shadowRoot, `.${baseClass}__gradient`).map((item) => item.offsetWidth);
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
   const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
@@ -67,7 +67,7 @@ export const scrollOnPrevNextClick = (
     queryInShadowRoot
   }: { direction: Direction; tabSelector: string; queryInShadowRoot?: boolean }
 ): void => {
-  const baseClass = host.tagName.toLowerCase();
+  const [baseClass] = Array.from(host.shadowRoot.firstElementChild.classList);
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
   const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
 
@@ -115,7 +115,7 @@ export const setInitialScroll = (
     queryInShadowRoot
   }: { activeTabIndex: number; tabSelector: string; queryInShadowRoot?: boolean }
 ): void => {
-  const baseClass = host.tagName.toLowerCase();
+  const [baseClass] = Array.from(host.shadowRoot.firstElementChild.classList);
   const scrollArea = getHTMLElement(host.shadowRoot, `.${baseClass}__scroll-area`);
   const gradientWidths = getHTMLElements(host.shadowRoot, `.${baseClass}__gradient`).map((item) => item.offsetWidth);
   const tabs = getHTMLElements(queryInShadowRoot ? host.shadowRoot : host, tabSelector);
