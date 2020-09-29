@@ -2,6 +2,7 @@ import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../types';
 import {
+  Direction,
   getStatusBarStyle,
   registerIntersectionObserver,
   scrollOnPrevNext, scrollOnTabClick,
@@ -9,7 +10,6 @@ import {
 } from '../../../utils/tabs-helper';
 
 type HTMLElementSelector = 'nav' | 'statusBar';
-type HTMLElementsSelector = 'gradient';
 
 @Component({
   tag: 'p-tabs-nav',
@@ -161,9 +161,7 @@ export class TabsNav {
   };
 
   private initView = (): void => {
-    const nav = this.getHTMLElement('nav');
-    const gradients = this.getHTMLElements('gradient');
-    scrollToSelectedTab(this.activeTabIndex, nav, this.allAnchorTags, gradients);
+    scrollToSelectedTab(this.host, this.activeTabIndex, 'a');
   };
 
   private initIntersectionObserver = (): void => {
@@ -183,12 +181,10 @@ export class TabsNav {
     this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
   };
 
-  private handleTabClick = (tabIndex: number): void => {
-    const activeTabIndexOnClick = this.activeTabIndex;
-    this.handleTabChange(tabIndex);
-    const nav = this.getHTMLElement('nav');
-    const gradients = this.getHTMLElements('gradient');
-    scrollOnTabClick(this.allAnchorTags, activeTabIndexOnClick, tabIndex, this.activeTabIndex, nav, this.allAnchorTags, gradients);
+  private handleTabClick = (newTabIndex: number): void => {
+    const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
+    this.handleTabChange(newTabIndex);
+    scrollOnTabClick(this.host, {newTabIndex, direction, tabSelector: 'a'});
   };
 
   private setStatusBarStyle = (): void => {
@@ -196,9 +192,8 @@ export class TabsNav {
     statusBar.setAttribute('style', getStatusBarStyle(this.allAnchorTags[this.activeTabIndex]));
   };
 
-  private handlePrevNextClick = (action: 'next' | 'prev'): void => {
-    const nav = this.getHTMLElement('nav');
-    scrollOnPrevNext(action, nav, this.allAnchorTags);
+  private handlePrevNextClick = (direction: Direction): void => {
+    scrollOnPrevNext(this.host, {direction, tabSelector: 'a'});
   };
 
   private getHTMLElement = (element: HTMLElementSelector): HTMLElement => {
@@ -208,13 +203,5 @@ export class TabsNav {
     };
 
     return this.host.shadowRoot.querySelector(`.${prefix(selector[element])}`);
-  };
-
-  private getHTMLElements = (elements: HTMLElementsSelector): HTMLElement[] => {
-    const selector = {
-      gradient: 'tabs-nav__gradient'
-    };
-
-    return Array.from(this.host.shadowRoot.querySelectorAll(`.${prefix(selector[elements])}`));
   };
 }
