@@ -11,6 +11,7 @@
     <script type="text/javascript" src="index.js"></script>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <style>
+      p-banner,
       p-button,
       p-button-pure,
       p-checkbox-wrapper,
@@ -41,6 +42,7 @@
   <body>
     <select onchange="document.location.hash = `#${this.value}`">
       <option disabled selected>Select a page</option>
+      <option value="banner">Banner</option>
       <option value="button">Button</option>
       <option value="button-pure">Button Pure</option>
       <option value="checkbox-wrapper">Checkbox</option>

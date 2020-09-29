@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
+import { JSX, Component, Prop, h, Element} from '@stencil/core';
 import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
 
 @Component({
@@ -12,27 +12,38 @@ export class Banner {
   /** State of the banner. */
   @Prop() public state?: 'error' | 'warning' | 'neutral' = 'neutral';
 
-  /** Position of the banner. */
-  @Prop() public position?: 'inline' | 'overlay' = 'overlay';
-
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
+
+  /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
+  @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
-  /** Emitted when the close button is clicked. */
-  @Event() public closeOnClick?: EventEmitter;
+  private closeButton: HTMLButtonElement;
 
   public componentWillLoad(): void {
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    if (!this.persistent) {
+      document.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      this.closeButton.focus();
+    }
+  }
+
+  public disconnectedCallback(): void {
+    if (!this.persistent) {
+      document.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
+    }
   }
 
   public render(): JSX.Element {
     const bannerClasses = {
       [prefix('banner')]: true,
       [prefix(`banner--${this.state}`)]: true,
-      [prefix(`banner--${this.position}`)]: true,
       [prefix(`banner--theme-${this.theme}`)]: true
     };
 
@@ -42,30 +53,63 @@ export class Banner {
     const descriptionClasses = prefix('banner__description');
     const buttonClasses = prefix('banner__button');
 
+    const bannerLabelId = prefix('banner-label');
+    const bannerDescriptionId = prefix('banner-description');
+
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-text', 'p-icon', 'p-button-pure']);
 
     return (
-      <div class={bannerClasses} role="alert">
-        {this.state !== 'neutral' && (
-          <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses}/>
-        )}
-        <div class={contentClasses}>
-          {this.isTitleDefined && (
-            <PrefixedTagNames.pHeadline variant="headline-5" class={titleClasses}><slot name="title"/></PrefixedTagNames.pHeadline>
+      <p-content-wrapper
+        width={this.width}
+        role="alertdialog"
+        aria-labelledby={bannerLabelId}
+        aria-describedby={bannerDescriptionId}
+      >
+        <div class={bannerClasses}>
+          {this.state !== 'neutral' && (
+            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses}/>
           )}
-          {this.isDescriptionDefined && (
-            <PrefixedTagNames.pText class={descriptionClasses}><slot name="description"/></PrefixedTagNames.pText>
-          )}
-          {!this.persistent && (
-            <div class={buttonClasses}><PrefixedTagNames.pButtonPure icon="close" hideLabel={true} onClick={(e: MouseEvent) => this.handleClick(e)}>Close notification</PrefixedTagNames.pButtonPure></div>
-          )}
+          <div class={contentClasses}>
+            {this.isTitleDefined && (
+              <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId} class={titleClasses}>
+                <slot name="title"/>
+              </PrefixedTagNames.pHeadline>
+            )}
+            {this.isDescriptionDefined && (
+              <PrefixedTagNames.pText id={bannerDescriptionId} class={descriptionClasses}>
+                <slot name="description"/>
+              </PrefixedTagNames.pText>
+            )}
+            {!this.persistent && (
+              <div class={buttonClasses}>
+                <PrefixedTagNames.pButtonPure
+                  icon="close"
+                  hideLabel={true}
+                  onClick={() => this.removeBanner()}
+                  ref={(el) => (this.closeButton = el)}
+                >
+                  Close notification
+                </PrefixedTagNames.pButtonPure>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </p-content-wrapper>
     );
   }
 
-  private handleClick (e: MouseEvent): void {
-    this.closeOnClick.emit(e);
+  private handleKeyboardEvents(e: KeyboardEvent): void {
+    if(e.key === 'Esc' || e.key === 'Escape') {
+      this.removeBanner();
+    }
+  }
+
+  private removeBanner(): void {
+    this.host.classList.add(prefix('banner--close'));
+    setTimeout(() => {
+      this.host.remove();
+    }, 1000);
+
   }
 
   private get isTitleDefined(): boolean {
