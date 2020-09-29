@@ -3,8 +3,8 @@
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Get in touch with Porsche</p-headline>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
-          >Do you have any specific questions about your Porsche vehicle? Please use the form below so that we can
+        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
+          Do you have any specific questions about your Porsche vehicle? Please use the form below so that we can
           process your inquiry as quickly as possible.
         </p-text>
       </p-grid-item>
@@ -27,7 +27,7 @@
                     v-on:change="onFieldBlur"
                     required
                   >
-                    <option value="">Choose an option</option>
+                    <option value>Choose an option</option>
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
@@ -80,7 +80,7 @@
                     v-on:change="onFieldBlur"
                     required
                   >
-                    <option value="">Choose an option</option>
+                    <option value>Choose an option</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Mrs.">Mrs.</option>
                   </select>
@@ -92,7 +92,7 @@
               >
                 <p-select-wrapper label="Title">
                   <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
-                    <option value="">Choose an option</option>
+                    <option value>Choose an option</option>
                     <option value="option 1">Dr.</option>
                     <option value="option 2">Prof.</option>
                     <option value="option 3">Prof. Dr.</option>
@@ -100,7 +100,10 @@
                 </p-select-wrapper>
               </p-flex-item>
             </p-flex>
-            <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
+            <p-flex
+              direction="{ base: 'column', m: 'row' }"
+              class="form-row-spacing form-grid-item-container"
+            >
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-text-field-wrapper
                   label="First name"
@@ -182,7 +185,7 @@
               />
             </p-text-field-wrapper>
             <p-select-wrapper
-              label="Gear"
+              label="Transmission"
               class="form-row-spacing"
               v-bind:message="bag.errors.gear"
               v-bind:state="getState('gear')"
@@ -192,15 +195,18 @@
                 v-bind:name="validateFieldName('gear')"
                 v-model="bag.data.gear"
                 v-on:change="onFieldBlur"
-                required
               >
-                <option value="">Choose an option</option>
+                <option value>Choose an option</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-            <p-headline variant="headline-5" tag="h3" class="spacing-mt-24">Date of first registration</p-headline>
+            <p-headline
+              variant="headline-5"
+              tag="h3"
+              class="spacing-mt-24"
+            >Date of first registration</p-headline>
             <p-text-field-wrapper
               label="Date"
               class="form-row-spacing"
@@ -245,7 +251,7 @@
                 v-on:change="onFieldBlur"
                 required
               >
-                <option value="">Choose an option</option>
+                <option value>Choose an option</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
                 <option value="3">Option 3</option>
@@ -254,8 +260,14 @@
           </p-fieldset-wrapper>
           <p-flex class="form-section-spacing form-grid-item-container">
             <p-flex-item class="form-grid-item">
-              <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
-                <span slot="label">I have read and understood the <a href="#" target="_blank">Privacy Policy</a></span>
+              <p-checkbox-wrapper
+                v-bind:message="bag.errors.privacy"
+                v-bind:state="getState('privacy')"
+              >
+                <span slot="label">
+                  I have read and understood the
+                  <a href="#" target="_blank">Privacy Policy</a>
+                </span>
                 <input
                   type="checkbox"
                   :ref="validateFieldName('privacy')"
@@ -271,20 +283,19 @@
             direction="{ base: 'column', s: 'row' }"
             class="form-section-spacing form-bottom-spacing form-grid-item-container"
           >
+            <p-flex-item
+              width="{base: 'full', s: 'auto'}"
+              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
+            >
+              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
+            </p-flex-item>
             <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
               <p-button
                 variant="tertiary"
                 icon="close"
                 class="form-item-width--full form-item-width--auto-s"
                 @click="onReset"
-                >Cancel
-              </p-button>
-            </p-flex-item>
-            <p-flex-item
-              width="{base: 'full', s: 'auto'}"
-              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
-            >
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
+              >Cancel</p-button>
             </p-flex-item>
           </p-flex>
         </form>
@@ -294,90 +305,91 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, date, number, object, string } from 'yup';
-  import {
-    validateName,
-    getState,
-    validateField,
-    validateForm,
-    ValidationBag,
-    getInitialErrors,
-    getFirstErrorKey
-  } from '../../../utils';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, date, number, object, string } from 'yup';
+import {
+  validateName,
+  getState,
+  validateField,
+  validateForm,
+  ValidationBag,
+  getInitialErrors,
+  getFirstErrorKey
+} from '../../../utils';
 
-  const initialData = {
-    category: '',
-    subject: '',
-    message: '',
-    salutation: '',
-    title: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    vin: '',
-    gear: '',
-    date: ('' as unknown) as Date,
-    mileage: ('' as unknown) as number,
-    dealer: '',
-    privacy: false
+const initialData = {
+  category: '',
+  subject: '',
+  message: '',
+  salutation: '',
+  title: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  vin: '',
+  gear: '',
+  date: ('' as unknown) as Date,
+  mileage: ('' as unknown) as number,
+  dealer: '',
+  privacy: false
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class ExampleContactForm extends Vue {
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object<FormModel>({
+      category: string().required('Please select a category.'),
+      subject: string().required('Plaase enter a subject.'),
+      message: string().required('Please describe your request in a few sentences.'),
+      salutation: string().required('Please select a form of salutation.'),
+      title: string(),
+      firstName: string().required('Please enter your surname.'),
+      lastName: string().required('Please enter your family name.'),
+      email: string()
+        .email()
+        .required('Please enter your email address in format: yourname@example.com'),
+      phone: string(),
+      vin: string().required('Please enter valid 17 digits long VIN.'),
+      gear: string().required('Please tell us the type of transmission.'),
+      date: date()
+        .required('Please enter the date of first registration.')
+        .typeError('Please enter the date of first registration.'),
+      mileage: number()
+        .required('Please enter the current mileage.')
+        .typeError('Please enter the current mileage.'),
+      dealer: string().required('Please choose a Porsche Dealer of your choice.'),
+      privacy: boolean()
+        .required('Please accept our privacy policy so that we can process your request.')
+        .oneOf([true], 'Please accept our privacy policy so that we can process your request.')
+    })
   };
 
-  type FormModel = typeof initialData;
-
-  @Component
-  export default class ExampleContactForm extends Vue {
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
-        category: string().required(),
-        subject: string().required(),
-        message: string().required(),
-        salutation: string().required(),
-        title: string(),
-        firstName: string().required(),
-        lastName: string().required(),
-        email: string()
-          .email()
-          .required(),
-        phone: string().required(),
-        vin: string()
-          .required()
-          .min(12)
-          .max(17),
-        gear: string().required(),
-        date: date().required(),
-        mileage: number().required(),
-        dealer: string().required(),
-        privacy: boolean()
-          .required()
-          .oneOf([true])
-      })
-    };
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-
-      if (!isValid) {
-        const firstError = getFirstErrorKey(this.bag);
-        firstError && (this.$refs[firstError] as HTMLElement).focus();
-      }
-    }
-
-    onReset = (): void => {
-      this.bag.data = { ...initialData };
-      this.bag.errors = getInitialErrors(initialData);
-    };
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
   }
+
+  async onSubmit(): Promise<void> {
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
+
+    if (!isValid) {
+      const firstError = getFirstErrorKey(this.bag);
+      firstError && (this.$refs[firstError] as HTMLElement).focus();
+    }
+  }
+
+  onReset = (): void => {
+    this.bag.data = { ...initialData };
+    this.bag.errors = getInitialErrors(initialData);
+  };
+}
 </script>
