@@ -202,7 +202,7 @@ export default class VariousForm extends Vue {
         .test('customTest', 'Please select at least one option', (obj) =>
           obj ? Object.values(obj).some((val) => val) : false
         ),
-      radio: string().required('Please select at one option'),
+      radio: string().required('Please select one option'),
       day: number()
         .required()
         .min(1, 'Please enter valid day 01-31')

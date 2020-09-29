@@ -116,7 +116,7 @@ export default class LoginForm extends Vue {
     errors: getInitialErrors(initialData),
     schema: object<FormModel>({
       email: string()
-        .email()
+        .email('Please check your entry')
         .required('Please enter your email address or Porsche ID'),
       password: string().required('Please enter your password'),
       isChecked: boolean()

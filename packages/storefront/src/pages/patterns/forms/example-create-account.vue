@@ -156,16 +156,16 @@
             direction="{ base: 'column', s: 'row' }"
             class="form-section-spacing form-bottom-spacing form-grid-item-container"
           >
-            <p-flex-item
-              width="{base: 'full', s: 'auto'}"
-              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
-            >
+            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
               <p-button
                 type="submit"
                 class="form-item-width--full form-item-width--auto-s"
               >Create Porsche account</p-button>
             </p-flex-item>
-            <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
+            <p-flex-item
+              width="{base: 'full', s: 'auto'}"
+              class="form-row-spacing form-row-spacing--zero-s form-grid-item"
+            >
               <p-button
                 variant="tertiary"
                 icon="close"
@@ -216,22 +216,22 @@ export default class CreateAccountForm extends Vue {
     data: { ...initialData },
     errors: getInitialErrors(initialData),
     schema: object<FormModel>({
-      salutation: string().required('Please select a form of salutation'),
+      salutation: string().required('How can we address you?'),
       title: string(),
       firstName: string().required('Please enter your name'),
       lastName: string().required('Please enter your last name'),
       email: string()
-        .email()
-        .required('Please enter an email address'),
+        .email('Email address seems invalid. Please check your entry')
+        .required('Please enter your email address'),
       password: string()
         .required('Please enter a password')
-        .min(6, 'Passwords must contain at least 6 characters'),
+        .min(6, 'Your password must contain at least 6 characters'),
       terms: boolean()
         .required()
-        .oneOf([true], 'Please agree to the terms ans conditions'),
+        .oneOf([true], 'Please agree to our terms and conditions'),
       privacy: boolean()
         .required()
-        .oneOf([true], 'Please agree to the data privacy')
+        .oneOf([true], 'Please agree to our data privacy policy')
     })
   };
 
