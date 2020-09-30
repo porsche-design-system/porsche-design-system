@@ -54,13 +54,17 @@ export class TabsNav {
     this.handleTabChange(activeTab);
   }
 
+  public connectedCallback(): void {
+    this.initView();
+    this.setActiveTab(this.activeTabIndex);
+  }
+
   public componentDidRender(): void {
     this.updateStatusBarStyle();
   }
 
   public componentDidLoad(): void {
-    this.initView();
-    this.setActiveTab(this.activeTabIndex);
+    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a' });
     this.initIntersectionObserver();
   }
 
@@ -135,7 +139,6 @@ export class TabsNav {
     for (const [index, link] of Object.entries(navList)) {
       link.addEventListener('click', () => this.handleTabClick(+index));
     }
-    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a' });
   };
 
   private initIntersectionObserver = (): void => {

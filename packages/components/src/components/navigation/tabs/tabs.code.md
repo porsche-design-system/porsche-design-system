@@ -29,8 +29,8 @@ You can choose between two tab sizes, `small` or `medium`. It defaults to `small
   <template #configurator>
     <select v-model="size">
       <option disabled>Select size</option>
-      <option value="small">Small</option>
-      <option selected value="medium">Medium</option>
+      <option selected value="small">Small</option>
+      <option value="medium">Medium</option>
     </select>
   </template>
   <template>
@@ -152,7 +152,7 @@ import Component from 'vue-class-component';
   export default class PlaygroundTabs extends Vue {
    public theme: string = 'light';
    public weight: string = 'regular';
-   public size: string = 'medium';
+   public size: string = 'small';
    public gradientColorScheme: string = 'default';
   }
 </script>
