@@ -8,7 +8,7 @@ import {
   setContentWithDesignSystem, waitForStencilLifecycle
 } from '../helpers';
 
-describe('tabs', () => {
+describe('tabs-nav', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -20,7 +20,7 @@ describe('tabs', () => {
   const getAllAnchorElements = () => page.$$('a');
   const getScrollArea = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__status-bar');
-  const getGradient = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__gradient--next');
+  const getGradientNext = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__gradient--next');
   const getElementPositions = async (element: ElementHandle) => {
     return await page.evaluate((element) => {
       const { top, left, bottom, right } = element.getBoundingClientRect();
@@ -254,7 +254,7 @@ describe('tabs', () => {
     );
     const allAnchors = await getAllAnchorElements();
     const selectedTabOffset = await getProperty(allAnchors[3], 'offsetLeft');
-    const gradient = await getGradient();
+    const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
     const scrollDistance = +selectedTabOffset - +gradientWidth;
@@ -299,7 +299,7 @@ describe('tabs', () => {
     `
     );
     const allAnchors = await getAllAnchorElements();
-    const gradient = await getGradient();
+    const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
