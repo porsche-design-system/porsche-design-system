@@ -129,9 +129,9 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default tabs with custom prefix">
           <p-tabs>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
-            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+            <p-tabs-item label="Tab1">Content 1</p-tabs-item>
+            <p-tabs-item label="Tab2">Content 2</p-tabs-item>
+            <p-tabs-item label="Tab3">Content 3</p-tabs-item>
           </p-tabs>
         </div>
 
