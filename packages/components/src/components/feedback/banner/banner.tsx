@@ -85,7 +85,7 @@ export class Banner {
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
-                  onClick={() => this.removeBanner()}
+                  onClick={this.removeBanner()}
                   ref={(el) => (this.closeButton = el)}
                 >
                   Close notification
