@@ -9,9 +9,12 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
-{/*
+
     <div className="playground dark" title="should render tabs on dark background">
       <Tabs theme="dark">
         <TabsItem label="Tab 1">
@@ -20,6 +23,35 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
+      </Tabs>
+    </div>
+
+    <div className="playground light" title="should render tabs with last tab selected on light background">
+      <Tabs>
+        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
+        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
+        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
+        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem selected={true} label="Tab 7">Tab Content 7</TabsItem>
+      </Tabs>
+    </div>
+
+    <div className="playground dark" title="should render tabs with last tab selected on dark background">
+      <Tabs theme="dark">
+        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
+        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
+        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
+        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem selected={true} label="Tab 7">
+          <div style={{color: "white"}}>Tab Content 7</div>
+        </TabsItem>
       </Tabs>
     </div>
 
@@ -29,6 +61,9 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
@@ -40,6 +75,35 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
+      </Tabs>
+    </div>
+
+    <div className="playground light" title="should render tabs size medium with last tab selected on light background">
+      <Tabs size="medium">
+        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
+        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
+        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
+        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem selected={true} label="Tab 7">Tab Content 7</TabsItem>
+      </Tabs>
+    </div>
+
+    <div className="playground dark" title="should render tabs size medium with last tab selected on dark background">
+      <Tabs theme="dark" size="medium">
+        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
+        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
+        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
+        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem selected={true} label="Tab 7">
+          <div style={{color: "white"}}>Tab Content 7</div>
+        </TabsItem>
       </Tabs>
     </div>
 
@@ -49,6 +113,9 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
@@ -60,6 +127,9 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
@@ -69,6 +139,9 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
@@ -80,24 +153,26 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
+        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
+        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
-    <div className="playground light" title="should render tabs colorScheme surface on light background"
-         style={{width: "200px"}}>
-      <Tabs color-scheme="surface">
+    <div className="playground light" title="should render tabs gradientColorScheme surface on light background">
+      <Tabs gradient-color-scheme="surface">
         <TabsItem label="Tab 1">Tab Content 1</TabsItem>
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
         <TabsItem label="Tab 3">Tab Content 3</TabsItem>
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
         <TabsItem label="Tab 5">Tab Content 5</TabsItem>
         <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
-    <div className="playground dark" title="should render tabs colorScheme surface on dark background"
-         style={{width: "200px"}}>
-      <Tabs theme="dark" color-scheme="surface">
+    <div className="playground dark" title="should render tabs gradientColorScheme surface on dark background">
+      <Tabs theme="dark" gradient-color-scheme="surface">
         <TabsItem label="Tab 1">
           <div style={{color: "white"}}>Tab Content 1</div>
         </TabsItem>
@@ -106,63 +181,11 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 4">Tab Content 4</TabsItem>
         <TabsItem label="Tab 5">Tab Content 5</TabsItem>
         <TabsItem label="Tab 6">Tab Content 6</TabsItem>
+        <TabsItem label="Tab 7">Tab Content 7</TabsItem>
       </Tabs>
     </div>
 
-    <div className="playground light"
-         title="should render tabs with arrow right on smaller viewport on light background" style={{width: "200px"}}>
-      <Tabs>
-        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
-        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
-        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
-        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
-        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
-        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
-      </Tabs>
-    </div>
-
-    <div className="playground dark" title="should render tabs with arrow right on smaller viewport on dark background"
-         style={{width: "200px"}}>
-      <Tabs theme="dark">
-        <TabsItem label="Tab 1">
-          <div style={{color: "white"}}>Tab Content 1</div>
-        </TabsItem>
-        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
-        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
-        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
-        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
-        <TabsItem label="Tab 6">Tab Content 6</TabsItem>
-      </Tabs>
-    </div>
-
-    <div className="playground light" title="should render tabs with arrow left on smaller viewport on light background"
-         style={{width: "200px"}}>
-      <Tabs>
-        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
-        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
-        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
-        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
-        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
-        <TabsItem selected={true} label="Tab 6">Tab Content 6</TabsItem>
-      </Tabs>
-    </div>
-
-    <div className="playground dark" title="should render tabs with arrow left on smaller viewport on dark background"
-         style={{width: "200px"}}>
-      <Tabs theme="dark">
-        <TabsItem label="Tab 1">Tab Content 1</TabsItem>
-        <TabsItem label="Tab 2">Tab Content 2</TabsItem>
-        <TabsItem label="Tab 3">Tab Content 3</TabsItem>
-        <TabsItem label="Tab 4">Tab Content 4</TabsItem>
-        <TabsItem label="Tab 5">Tab Content 5</TabsItem>
-        <TabsItem selected={true} label="Tab 6">
-          <div style={{color: "white"}}>Tab Content 6</div>
-        </TabsItem>
-      </Tabs>
-    </div>
-
-    <div className="playground light" title="should render selected=true tab in viewport on light background"
-         style={{width: "200px"}}>
+    <div className="playground light" title="should render selected tab in viewport on light background">
       <Tabs>
         <TabsItem label="Tab 1">Tab Content 1</TabsItem>
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
@@ -177,8 +200,7 @@ export const TabsPage = (): JSX.Element => {
       </Tabs>
     </div>
 
-    <div className="playground dark" title="should render selected=true tab in viewport in viewport on dark background"
-         style={{width: "200px"}}>
+    <div className="playground dark" title="should render selected tab in viewport in viewport on dark background">
       <Tabs theme="dark">
         <TabsItem label="Tab 1">Tab Content 1</TabsItem>
         <TabsItem label="Tab 2">Tab Content 2</TabsItem>
@@ -193,6 +215,7 @@ export const TabsPage = (): JSX.Element => {
         <TabsItem label="Tab 9">Tab Content 9</TabsItem>
         <TabsItem label="Tab 10">Tab Content 10</TabsItem>
       </Tabs>
-    </div>*/}
+    </div>
+
   </>;
 };

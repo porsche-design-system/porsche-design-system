@@ -127,6 +127,22 @@ import { Component } from '@angular/core';
           <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         </div>
 
+        <div class="playground light" title="should render default tabs with custom prefix">
+          <p-tabs>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+          </p-tabs>
+        </div>
+
+        <div class="playground light" title="should render default tabs-nav with custom prefix">
+          <p-tabs-nav>
+            <a>Tab1</a>
+            <a>Tab2</a>
+            <a>Tab3</a>
+          </p-tabs-nav>
+        </div>
+
         <div class="playground light" title="should render default spinner">
           <p-spinner></p-spinner>
         </div>
@@ -242,6 +258,22 @@ import { Component } from '@angular/core';
         <div class="playground light" title="should render default pagination with custom prefix">
           <my-prefix-p-pagination p-pagination total-items-count="500" items-per-page="25"
                                   active-page="1"></my-prefix-p-pagination>
+        </div>
+
+        <div class="playground light" title="should render default tabs with custom prefix">
+          <my-prefix-p-tabs p-tabs>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+          </my-prefix-p-tabs>
+        </div>
+
+        <div class="playground light" title="should render default tabs-nav with custom prefix">
+          <my-prefix-p-tabs-nav p-tabs-nav>
+            <a>Tab1</a>
+            <a>Tab2</a>
+            <a>Tab3</a>
+          </my-prefix-p-tabs-nav>
         </div>
 
         <div class="playground light" title="should render default spinner with custom prefix">
