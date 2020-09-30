@@ -8,7 +8,6 @@ import {
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-import { disconnect } from 'cluster';
 
 describe('tabs', () => {
   let page: Page;
@@ -23,7 +22,7 @@ describe('tabs', () => {
   const getScrollArea = () => selectNode(page, 'p-tabs >>> .p-tabs__scroll-area');
   const getAllTabs = async () => (await getScrollArea()).$$('.p-tabs__tab');
   const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status-bar');
-  const getGradient = () => selectNode(page, 'p-tabs >>> .p-tabs__gradient--next');
+  const getGradientNext = () => selectNode(page, 'p-tabs >>> .p-tabs__gradient--next');
   const getElementPositions = async (element: ElementHandle) => {
     return await page.evaluate((element) => {
       const { top, left, bottom, right } = element.getBoundingClientRect();
@@ -458,7 +457,7 @@ describe('tabs', () => {
 
     const allTabs = await getAllTabs();
     const selectedTabOffset = await getProperty(allTabs[3], 'offsetLeft');
-    const gradient = await getGradient();
+    const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
     const scrollDistance = +selectedTabOffset - +gradientWidth;
@@ -504,7 +503,7 @@ describe('tabs', () => {
     );
 
     const allTabs = await getAllTabs();
-    const gradient = await getGradient();
+    const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
