@@ -100,10 +100,7 @@
                 </p-select-wrapper>
               </p-flex-item>
             </p-flex>
-            <p-flex
-              direction="{ base: 'column', m: 'row' }"
-              class="form-row-spacing form-grid-item-container"
-            >
+            <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-text-field-wrapper
                   label="First name"
@@ -202,11 +199,7 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-            <p-headline
-              variant="headline-5"
-              tag="h3"
-              class="spacing-mt-24"
-            >Date of first registration</p-headline>
+            <p-headline variant="headline-5" tag="h3" class="spacing-mt-24">Date of first registration</p-headline>
             <p-text-field-wrapper
               label="Date"
               class="form-row-spacing"
@@ -260,10 +253,7 @@
           </p-fieldset-wrapper>
           <p-flex class="form-section-spacing form-grid-item-container">
             <p-flex-item class="form-grid-item">
-              <p-checkbox-wrapper
-                v-bind:message="bag.errors.privacy"
-                v-bind:state="getState('privacy')"
-              >
+              <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
                 <span slot="label">
                   I have read and understood the
                   <a href="#" target="_blank">Privacy Policy</a>
@@ -295,7 +285,8 @@
                 icon="close"
                 class="form-item-width--full form-item-width--auto-s"
                 @click="onReset"
-              >Cancel</p-button>
+                >Cancel</p-button
+              >
             </p-flex-item>
           </p-flex>
         </form>
@@ -305,93 +296,94 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { boolean, date, number, object, string } from 'yup';
-import {
-  validateName,
-  getState,
-  validateField,
-  validateForm,
-  ValidationBag,
-  getInitialErrors,
-  getFirstErrorKey
-} from '../../../utils';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { boolean, date, number, object, string } from 'yup';
+  import {
+    validateName,
+    getState,
+    validateField,
+    validateForm,
+    ValidationBag,
+    getInitialErrors,
+    getFirstErrorKey
+  } from '../../../utils';
 
-const initialData = {
-  category: '',
-  subject: '',
-  message: '',
-  salutation: '',
-  title: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  vin: '',
-  gear: '',
-  date: ('' as unknown) as Date,
-  mileage: ('' as unknown) as number,
-  dealer: '',
-  privacy: false
-};
-
-type FormModel = typeof initialData;
-
-@Component
-export default class ExampleContactForm extends Vue {
-  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-  private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-  private bag: ValidationBag<FormModel> = {
-    data: { ...initialData },
-    errors: getInitialErrors(initialData),
-    schema: object<FormModel>({
-      category: string().required('What kind of request do you have?'),
-      subject: string().required('Let us know what your inquiry is about'),
-      message: string().required(
-        'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
-      ),
-      salutation: string().required('Please select a form of salutation'),
-      title: string(),
-      firstName: string().required('Please enter your name'),
-      lastName: string().required('Please enter your last name'),
-      email: string()
-        .email('Email address seems invalid')
-        .required('Please enter your email address'),
-      phone: string(),
-      vin: string().required('We can’t find the vehicle. Please check your entry'),
-      gear: string().required('Please tell us the type of your vehicles transmission'),
-      date: date()
-        .required('Please enter the date of first registration')
-        .typeError('Please enter the date of first registration'),
-      mileage: number()
-        .required('What is the mileage of your Porsche?')
-        .typeError('Please enter the current mileage'),
-      dealer: string().required('Please choose a Porsche Dealer of your choice'),
-      privacy: boolean()
-        .required('Please accept our privacy policy so that we can process your request')
-        .oneOf([true], 'Please accept our privacy policy so that we can process your request')
-    })
+  const initialData = {
+    category: '',
+    subject: '',
+    message: '',
+    salutation: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    vin: '',
+    gear: '',
+    date: ('' as unknown) as Date,
+    mileage: ('' as unknown) as number,
+    dealer: '',
+    privacy: false
   };
 
-  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-    validateField(target.name as keyof FormModel, this.bag);
-  }
+  type FormModel = typeof initialData;
 
-  async onSubmit(): Promise<void> {
-    const isValid = await validateForm(this.bag);
-    console.log('isValid', isValid);
+  @Component
+  export default class ExampleContactForm extends Vue {
+    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+    private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-    if (!isValid) {
-      const firstError = getFirstErrorKey(this.bag);
-      firstError && (this.$refs[firstError] as HTMLElement).focus();
+    private bag: ValidationBag<FormModel> = {
+      data: { ...initialData },
+      errors: getInitialErrors(initialData),
+      schema: object<FormModel>({
+        category: string().required('What kind of request do you have?'),
+        subject: string().required('Let us know what your inquiry is about'),
+        message: string().required(
+          'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
+        ),
+        salutation: string().required('Please select a form of salutation'),
+        title: string(),
+        firstName: string().required('Please enter your name'),
+        lastName: string().required('Please enter your last name'),
+        email: string()
+          .email('Email address seems invalid')
+          .required('Please enter your email address'),
+        phone: string(),
+        vin: string().required('We can’t find the vehicle. Please check your entry'),
+        gear: string().required('Please tell us the type of your vehicles transmission'),
+        date: date()
+          .required('Please enter the date of first registration')
+          .typeError('Please enter the date of first registration'),
+        mileage: number()
+          .required('What is the mileage of your Porsche?')
+          .typeError('Please enter the current mileage'),
+        dealer: string().required('Please choose a Porsche Dealer of your choice'),
+        privacy: boolean()
+          .required('Please accept our privacy policy so that we can process your request')
+          .oneOf([true], 'Please accept our privacy policy so that we can process your request')
+      })
+    };
+
+    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+      validateField(target.name as keyof FormModel, this.bag);
     }
-  }
 
-  onReset = (): void => {
-    this.bag.data = { ...initialData };
-    this.bag.errors = getInitialErrors(initialData);
-  };
-}
+    async onSubmit(): Promise<void> {
+      const isValid = await validateForm(this.bag);
+      console.log('isValid', isValid);
+
+      if (!isValid) {
+        const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
+        input.focus();
+        input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
+      }
+    }
+
+    onReset = (): void => {
+      this.bag.data = { ...initialData };
+      this.bag.errors = getInitialErrors(initialData);
+    };
+  }
 </script>

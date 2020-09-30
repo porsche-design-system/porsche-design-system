@@ -4,10 +4,9 @@
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-headline variant="headline-2" tag="h1">Validation of grouped form elements</p-headline>
-        <p-text
-          size="{ base: 'small', l: 'medium' }"
-          class="spacing-mt-8"
-        >How to implement validation messages to grouped form elements like checkbox- and radio groups.</p-text>
+        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
+          >How to implement validation messages to grouped form elements like checkbox- and radio groups.</p-text
+        >
       </p-grid-item>
     </p-grid>
     <p-grid class="form-section-spacing">
@@ -22,11 +21,7 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper
-              label="Some checkbox label 2"
-              v-bind:state="getState('check')"
-              class="form-row-spacing"
-            >
+            <p-checkbox-wrapper label="Some checkbox label 2" v-bind:state="getState('check')" class="form-row-spacing">
               <input
                 type="checkbox"
                 v-bind:name="validateFieldName('check')"
@@ -34,11 +29,7 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper
-              label="Some checkbox label 3"
-              v-bind:state="getState('check')"
-              class="form-row-spacing"
-            >
+            <p-checkbox-wrapper label="Some checkbox label 3" v-bind:state="getState('check')" class="form-row-spacing">
               <input
                 type="checkbox"
                 v-bind:name="validateFieldName('check')"
@@ -46,11 +37,9 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-text
-              v-if="bag.errors.check"
-              color="notification-error"
-              class="form-row-spacing"
-            >{{ bag.errors.check }}</p-text>
+            <p-text v-if="bag.errors.check" color="notification-error" class="form-row-spacing">{{
+              bag.errors.check
+            }}</p-text>
           </p-fieldset-wrapper>
 
           <p-fieldset-wrapper label="Grouped list of radio buttons" class="form-section-spacing">
@@ -90,9 +79,7 @@
               />
             </p-radio-button-wrapper>
             <p-text v-if="bag.errors.radio" color="notification-error" class="form-row-spacing">
-              {{
-              bag.errors.radio
-              }}
+              {{ bag.errors.radio }}
             </p-text>
           </p-fieldset-wrapper>
 
@@ -144,16 +131,13 @@
                   color="notification-error"
                   id="error-message-1"
                   class="form-row-spacing"
-                >{{ bag.errors.day }}</p-text>
+                  >{{ bag.errors.day }}</p-text
+                >
                 <p-text v-if="bag.errors.month" color="notification-error" id="error-message-2">
-                  {{
-                  bag.errors.month
-                  }}
+                  {{ bag.errors.month }}
                 </p-text>
                 <p-text v-if="bag.errors.year" color="notification-error" id="error-message-3">
-                  {{
-                  bag.errors.year
-                  }}
+                  {{ bag.errors.year }}
                 </p-text>
               </p-grid-item>
             </p-grid>
@@ -165,74 +149,74 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { boolean, number, object, string } from 'yup';
-import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { boolean, number, object, string } from 'yup';
+  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
 
-const initialData = {
-  check: {
-    check1: false,
-    check2: false,
-    check3: false
-  },
-  radio: '',
-  day: ('' as unknown) as number,
-  month: ('' as unknown) as number,
-  year: 1998
-};
-
-type FormModel = typeof initialData;
-
-@Component
-export default class VariousForm extends Vue {
-  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-  private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-  private bag: ValidationBag<FormModel> = {
-    data: { ...initialData },
-    errors: getInitialErrors(initialData),
-    schema: object<FormModel>({
-      check: object<FormModel['check']>({
-        check1: boolean(),
-        check2: boolean(),
-        check3: boolean()
-      })
-        .required()
-        .test('customTest', 'Please select at least one option', (obj) =>
-          obj ? Object.values(obj).some((val) => val) : false
-        ),
-      radio: string().required('Please select one option'),
-      day: number()
-        .required()
-        .min(1, 'Please enter valid day 01-31')
-        .max(31, 'Please enter valid day 01-31')
-        .typeError('Please enter a day'),
-      month: number()
-        .required()
-        .min(1, 'Please enter valid month 01-12')
-        .max(12, 'Please enter valid month 01-12')
-        .typeError('Please enter a month'),
-      year: number()
-    })
+  const initialData = {
+    check: {
+      check1: false,
+      check2: false,
+      check3: false
+    },
+    radio: '',
+    day: ('' as unknown) as number,
+    month: ('' as unknown) as number,
+    year: 1998
   };
 
-  created(): void {
-    this.onSubmit();
-  }
+  type FormModel = typeof initialData;
 
-  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-    validateField(target.name as keyof FormModel, this.bag);
-  }
+  @Component
+  export default class VariousForm extends Vue {
+    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+    private getState = (field: keyof FormModel) => getState(field, this.bag);
 
-  async onSubmit(): Promise<void> {
-    const isValid = await validateForm(this.bag);
-    console.log('isValid', isValid);
-  }
+    private bag: ValidationBag<FormModel> = {
+      data: { ...initialData },
+      errors: getInitialErrors(initialData),
+      schema: object<FormModel>({
+        check: object<FormModel['check']>({
+          check1: boolean(),
+          check2: boolean(),
+          check3: boolean()
+        })
+          .required()
+          .test('customTest', 'Please select at least one option', (obj) =>
+            obj ? Object.values(obj).some((val) => val) : false
+          ),
+        radio: string().required('Please select one option'),
+        day: number()
+          .required()
+          .min(1, 'Please enter valid day 01-31')
+          .max(31, 'Please enter valid day 01-31')
+          .typeError('Please enter a day'),
+        month: number()
+          .required()
+          .min(1, 'Please enter valid month 01-12')
+          .max(12, 'Please enter valid month 01-12')
+          .typeError('Please enter a month'),
+        year: number()
+      })
+    };
 
-  onReset(): void {
-    this.bag.data = { ...initialData };
-    this.bag.errors = getInitialErrors(initialData);
+    created(): void {
+      this.onSubmit();
+    }
+
+    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+      validateField(target.name as keyof FormModel, this.bag);
+    }
+
+    async onSubmit(): Promise<void> {
+      const isValid = await validateForm(this.bag);
+      console.log('isValid', isValid);
+    }
+
+    onReset(): void {
+      this.bag.data = { ...initialData };
+      this.bag.errors = getInitialErrors(initialData);
+    }
   }
-}
 </script>
