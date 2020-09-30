@@ -1,28 +1,30 @@
-# Tabs
+# Tabs Nav
 
-The Tabs component makes it easy to explore and switch between different views. You can organize and allow navigation
-between groups of content that are related and at the same level of hierarchy.
+The `<p-tab-nav>` component is a styled link list for multiple purposes. You can use it with your framework router to ensure
+your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash or as skip navigation
+to move on a longer page.
+
+**Note**: Due to presentation purposes we use `<a>` tags without `href` in our examples. Keep in mind that you have to use them with `href`
+in your application!
 
 ## Basic example
 
-Basic implementation is a `left-aligned` tab bar with buttons to switch between the content. For every `p-tabs-item` inside of the `p-tabs` component, a button
-will be created. The assigned `label` property defines also the name of the Button.
-
-Every `p-tabs-item` holds a `slot` to display content which can be individually designed. 
+Basic implementation is a tab bar with tabs to switch between the content. Just put your `<a>` tags inside the `<p-tabs-nav>` 
+component and it will handle all styling behaviors. 
 
 <Playground>
   <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav>
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
 ## Switch size
 
-You can choose between two button sizes, `small` or `medium`. It defaults to `medium` and an be set by selecting the property on the `p-tabs` component.
+You can choose between two button sizes, `small` or `medium`. It defaults to `small` and can be set by selecting the property on the `p-tabs-nav` component.
 
 <Playground>
   <template #configurator>
@@ -33,74 +35,37 @@ You can choose between two button sizes, `small` or `medium`. It defaults to `me
     </select>
   </template>
   <template>
-     <p-tabs :size="size">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav :size="size">
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
 ## Scrollable Tab buttons
 
-If the amount of `p-tabs-item` exceed the viewport, the buttons become horizontal scrollable.
+If the amount of `<a>` tags exceed the viewport, the tabs become horizontal scrollable.
 
 <Playground>
   <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-       <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
-       <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
-       <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
-       <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
-       <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
-       <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
-     </p-tabs>
-  </template>
-</Playground>
-
-## Navigation Tabs
-
-By default tabs use a button element, but if you define the `href` property on `p-tabs-item` it is changed to an `a` tag where you can also define the property `target`.
-It is possible to have buttons and anchor-tags simultaneously. 
-
-<Playground>
-  <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three" href="https://porsche.com" target="_blank"></p-tabs-item>
-     </p-tabs>
-  </template>
-</Playground>
-
-## Alignment variants
-
-Use the property `align` to choose between three alignments `left` | `center` | `right`. Default alignment is `left`.
-
-<Playground>
-  <template #configurator>
-    <select v-model="alignment">
-      <option disabled>Select alignment mode</option>
-      <option selected value="left">Left</option>
-      <option value="center">Center</option>
-      <option value="right">Right</option>
-    </select>
-  </template>
-  <template>
-     <p-tabs :align="alignment">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav>
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+       <a>Tab Four</a>
+       <a>Tab Five</a>
+       <a>Tab Long Label Six</a>
+       <a>Tab Seven</a>
+       <a>Tab Eight</a>
+       <a>Tab Nine</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
 ## Weight variants
 
-The tabs component comes with two text-weights `regular` or `semibold` where it defaults to `regular`.
+The `<tabs-nav>` component comes with two text-weights `regular` or `semibold` where it defaults to `regular`.
 
 <Playground>
   <template #configurator>
@@ -111,68 +76,72 @@ The tabs component comes with two text-weights `regular` or `semibold` where it 
     </select>
   </template>
   <template>
-     <p-tabs :weight="weight">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav :weight="weight">
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
 ## Theme variants
 
 Choose between `light` and `dark` theme by using the `theme` property. Default theme is `light`.
-The Theme changes the Background of the buttons and content-container.
+The Theme changes the Background and text color of the tabs.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-     <p-tabs :theme="theme">
-       <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav :theme="theme">
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+     </p-tabs-nav>
+  </template>
+</Playground>
+
+## Gradient Color Scheme variants
+
+If the amount of tabs exceed the viewport, the component renders arrow-buttons to help with horizontal scrolling.
+The background and gradient has to align to your chosen background.
+
+There are two different background types `default` and `surface`, you can choose between them by using the `gradient-color-scheme` property. It defaults to the value `default`.
+The `gradient-color-scheme` has impact on `light` and `dark` theme.
+
+<Playground :themeable="true">
+<template #configurator>
+    <select v-model="gradientColorScheme">
+      <option disabled>Select gradient-color-scheme</option>
+      <option selected value="default">Default</option>
+      <option value="surface">Surface</option>
+    </select>
+  </template>
+  <template v-slot="{theme}">
+     <p-tabs-nav :theme="theme" :gradient-color-scheme="gradientColorScheme">
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+       <a>Tab Four</a>
+       <a>Tab Five</a>
+       <a>Tab Long Label Six</a>
+       <a>Tab Seven</a>
+       <a>Tab Eight</a>
+       <a>Tab Nine</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
 ## Set active Tab
 
-You may need to change the initial active tab. To do so you got two options. You can use the property `active-tab` on the `tabs` component to define the
-selected tab. Keep in mind the tabs are a array and therefore start with 0. You´re unable to set `active-tab` greater than the amount of `p-tabs-item` or less than `0`.
-It will automatically select the last or first `p-tabs-item`.
-
-The second approach is to use the `selected` property on the `p-tabs-item` you want to select on first render.
+You may need to change the initial active tab. To do so, use the `active-tab-index` property on the `<p-tabs-nav>` component.
+Keep in mind that the `active-tab-index` is counted like an array, so it starts with 0.
 
 <Playground>
   <template>
-     <p-tabs active-tab="1">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
-  </template>
-</Playground>
-
-<Playground>
-  <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two" selected>Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
-  </template>
-</Playground>
-
-## Disable Tab
-
-If you need to disable a tab you can use the `disabled` property on the `p-tabs-item` you want to disable. This should be avoided if possible.
-
-<Playground>
-  <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three" disabled>Tab Content Three</p-tabs-item>
-     </p-tabs>
+     <p-tabs-nav active-tab-index="1">
+       <a>Tab One</a>
+       <a>Tab Two</a>
+       <a>Tab Three</a>
+     </p-tabs-nav>
   </template>
 </Playground>
 
@@ -182,9 +151,9 @@ import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundTabs extends Vue {
-   public alignment: string = 'left';
    public theme: string = 'light';
    public weight: string = 'regular';
    public size: string = 'medium';
+   public gradientColorScheme: string = 'default';
   }
 </script>
