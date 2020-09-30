@@ -50,7 +50,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jasmine": "^3.6.1",
     "jest": "^26.4.2",
-    "puppeteer": "~5.2.1",
+    "puppeteer": "~5.3.1",
     "rollup-plugin-replace": "^2.2.0",
     "stylelint": "^13.7.0",
     "stylelint-config-prettier": "^8.0.2",
