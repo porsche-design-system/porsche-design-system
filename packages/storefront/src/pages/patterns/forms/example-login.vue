@@ -123,8 +123,9 @@
       console.log('isValid', isValid);
 
       if (!isValid) {
-        const firstError = getFirstErrorKey(this.bag);
-        firstError && (this.$refs[firstError] as HTMLElement).focus();
+        const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
+        input.focus();
+        input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
       } else {
         this.showGlobalError = true;
       }
