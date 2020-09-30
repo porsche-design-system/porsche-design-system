@@ -7,7 +7,7 @@ describe('Banner', () => {
       await vrt.test(
         'banner',
         async () => {
-          await vrt.goTo('/#banner');
+          await vrt.goTo('/banner');
         },
         testOptions
       )

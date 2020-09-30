@@ -22,6 +22,7 @@ type Route = {
 })
 export class AppComponent {
   public routes: Route[] = [
+    {path: 'banner', name: 'Banner'},
     {path: 'button', name: 'Button'},
     {path: 'button-pure', name: 'Button Pure'},
     {path: 'checkbox-wrapper', name: 'Checkbox'},
