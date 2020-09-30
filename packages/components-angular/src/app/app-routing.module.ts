@@ -88,6 +88,10 @@ const appRoutes: Routes = [
     component: pages.TabsComponent
   },
   {
+    path: 'tabs-nav',
+    component: pages.TabsNavComponent
+  },
+  {
     path: 'text',
     component: pages.TextComponent
   },

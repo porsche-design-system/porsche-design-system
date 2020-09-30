@@ -19,6 +19,7 @@ import {
   PFlexItem as FlexItem,
   PTabs as Tabs,
   PTabsItem as TabsItem,
+  PTabsNav as TabsNav,
   PTextList as TextList,
   PTextListItem as TextListItem,
   PSpinner as Spinner,
