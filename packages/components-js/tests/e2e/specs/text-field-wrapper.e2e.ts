@@ -10,7 +10,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 
 describe('text-field-wrapper', () => {
   let page: Page;
@@ -21,17 +21,17 @@ describe('text-field-wrapper', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTextFieldHost = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper');
-  const getTextFieldFakeInput = (): Promise<ElementHandle> =>
+  const getTextFieldHost = () => selectNode(page, 'p-text-field-wrapper');
+  const getTextFieldFakeInput = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-  const getTextFieldRealInput = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper input');
-  const getTextFieldMessage = (): Promise<ElementHandle> =>
+  const getTextFieldRealInput = () => selectNode(page, 'p-text-field-wrapper input');
+  const getTextFieldMessage = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
-  const getTextFieldLabel = (): Promise<ElementHandle> =>
+  const getTextFieldLabel = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
-  const getTextFieldButton = (): Promise<ElementHandle> =>
+  const getTextFieldButton = () =>
     selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
-  const getTextFieldIcon = (): Promise<ElementHandle> => selectNode(page, 'p-text-field-wrapper >>> p-icon');
+  const getTextFieldIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
 
   const getIconName = async (): Promise<unknown> => getProperty(await getTextFieldIcon(), 'name');
 
