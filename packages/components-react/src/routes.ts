@@ -8,6 +8,11 @@ export type RouteType = RouteProps & {
 
 export const routes: RouteType[] = [
   {
+    name: 'Banner',
+    path: '/banner',
+    component: fromPages.BannerPage
+  },
+  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage

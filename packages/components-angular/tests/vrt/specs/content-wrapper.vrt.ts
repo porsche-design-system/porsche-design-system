@@ -1,4 +1,4 @@
-import { getVisualRegressionContentWrapperTester, getVisualRegressionTester, testOptions } from '../helpers';
+import { getVisualRegressionContentWrapperTester, testOptions } from '../helpers';
 
 describe('Content Wrapper', () => {
   it('should have no visual regression', async () => {
