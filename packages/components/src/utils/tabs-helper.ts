@@ -3,7 +3,7 @@
 import { prefix } from './prefix';
 
 export type Direction = 'next' | 'prev';
-export type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean}
+export type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
 
 export const getStatusBarStyle = (activeTab: HTMLElement): string => {
   const statusBarWidth = activeTab?.offsetWidth || 0;
@@ -19,7 +19,9 @@ export const setSectionAttributes = (tab: HTMLPTabsItemElement, index: number): 
     'aria-labelledby': prefix(`tab-item-${index}`)
   };
   for (const key in attrs) {
-    tab.setAttribute(key, attrs[key]);
+    if (attrs.hasOwnProperty(key)){
+      tab.setAttribute(key, attrs[key]);
+    }
   }
 };
 
@@ -122,7 +124,6 @@ export const setInitialScroll = (
   scrollArea.scrollLeft = tabs[activeTabIndex].offsetLeft - gradientWidths[1];
 };
 
-
 export const registerIntersectionObserver = (
   cb: (actionState: Partial<ActionState>) => void,
   tabs: HTMLElement[]
@@ -134,9 +135,9 @@ export const registerIntersectionObserver = (
     (entries) => {
       for (const entry of entries) {
         if (entry.target === firstTab) {
-          cb({isPrevHidden: entry.isIntersecting});
+          cb({ isPrevHidden: entry.isIntersecting });
         } else if (entry.target === lastTab) {
-          cb({isNextHidden: entry.isIntersecting});
+          cb({ isNextHidden: entry.isIntersecting });
         }
       }
     },
@@ -149,10 +150,8 @@ export const registerIntersectionObserver = (
   return intersectionObserver;
 };
 
-export const getHTMLElement = (host: HTMLElement | ShadowRoot, selector: string): HTMLElement => {
-  return host.querySelector(selector);
-};
+export const getHTMLElement = (host: HTMLElement | ShadowRoot, selector: string): HTMLElement =>
+  host.querySelector(selector);
 
-export const getHTMLElements = (host: HTMLElement | ShadowRoot, selector: string): HTMLElement[] => {
-  return Array.from(host.querySelectorAll(selector));
-};
+export const getHTMLElements = (host: HTMLElement | ShadowRoot, selector: string): HTMLElement[] =>
+  Array.from(host.querySelectorAll(selector));

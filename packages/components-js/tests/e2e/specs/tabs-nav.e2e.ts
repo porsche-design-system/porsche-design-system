@@ -5,7 +5,8 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, waitForStencilLifecycle
+  setContentWithDesignSystem,
+  waitForStencilLifecycle
 } from '../helpers';
 
 describe('tabs-nav', () => {
@@ -30,7 +31,9 @@ describe('tabs-nav', () => {
   const getPrev = async () =>
     (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--prev')).$('.p-tabs-nav__action--prev > p-button-pure');
   const getNext = async () =>
-    (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--next ')).$('.p-tabs-nav__action--next > p-button-pure');
+    (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--next ')).$(
+      '.p-tabs-nav__action--next > p-button-pure'
+    );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
 
   it('should render', async () => {
@@ -153,7 +156,6 @@ describe('tabs-nav', () => {
     await page.waitFor(1000);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-
   });
 
   it('should render scroll 20% on Button prev', async () => {
@@ -215,7 +217,6 @@ describe('tabs-nav', () => {
     await page.waitFor(1000);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-
   });
 
   it('should render correct scroll-position on selected tab', async () => {
