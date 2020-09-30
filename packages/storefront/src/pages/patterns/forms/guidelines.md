@@ -139,17 +139,10 @@ The user should be asked to enter only information that is absolutely necessary.
    Thus form fields that require similar information should be grouped together to create a logical order. This can be set as a coding property "fieldset". 
    Each fieldset should be initiated by a title that gives the user short information on what data is required in this section.
    
-<<<<<<< HEAD
    | Viewport | Range                  | Headline    | Subline     | Section Headline | Section    |
    | -------- | ---------------------- | ----------- | ----------- | ---------------- | ---------- |
    | **XS-S** | 320-999 px             | Headline  1 | Text Small  | Headline 4       | Headline 5 |
    | **M-XL** | 1000-1760 px or larger | Headline  1 | Text Medium | Headline 4       | Headline 5 |
-=======
-| Viewport | Range             | Headline | Subline | Section Headline | Section |
-| -------- | ----------------- | ---------------------------- | ---------------------------------- | ------------------- | ----------------------------------------------- |
-| **XS-S**   | 320-999 px        | Headline  1             | Text Small                          | Headline 4              | Headline 5                                          |
-| **M-XL**    | 1000-1760 px or larger        | Headline  1             | Text Medium                           | Headline 4              | Headline 5                                          |
->>>>>>> c9927d680c1c5e8b4264bd9153bb457cf427cf45
 
 
 3. **Call-to-actions**  
