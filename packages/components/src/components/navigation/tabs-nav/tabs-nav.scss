@@ -6,60 +6,60 @@
 }
 
 ::slotted(a) {
-  font-family: $p-font-family;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  appearance: none;
-  outline: none transparent;
-  text-decoration: none;
-  text-align: left;
-  border: 0;
-  background: transparent;
-  display: inline-block;
-  vertical-align: top;
-  color: $p-color-default;
-  cursor: pointer;
+  font-family: $p-font-family !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  appearance: none !important;
+  outline: none transparent !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  border: 0 !important;
+  background: transparent !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  color: $p-color-default !important;
+  cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier;
+  color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
 :host([theme="dark"]) ::slotted(a) {
-  color: $p-color-theme-dark-default;
+  color: $p-color-theme-dark-default !important;
 }
 
 ::slotted(a:hover) {
-  color: $p-color-state-hover;
+  color: $p-color-state-hover !important;
 }
 
 :host([theme="dark"]) ::slotted(a:hover) {
-  color: $p-color-theme-dark-state-hover;
+  color: $p-color-theme-dark-state-hover !important;
 }
 
 ::slotted(a:active),
 ::slotted(a.selected) {
-  color: $p-color-state-active;
+  color: $p-color-state-active !important;
 }
 
 :host([theme="dark"]) ::slotted(a:active),
 :host([theme="dark"]) ::slotted(a.selected) {
-  color: $p-color-theme-dark-state-active;
+  color: $p-color-theme-dark-state-active !important;
 }
 
 ::slotted(a:focus) {
-  outline-offset: 1px;
-  outline: $p-color-state-focus solid 2px;
+  outline-offset: 1px !important;
+  outline: $p-color-state-focus solid 2px !important;
 }
 
 :host([theme="dark"]) ::slotted(a:focus) {
-  outline-color: $p-color-theme-dark-state-focus;
+  outline-color: $p-color-theme-dark-state-focus !important;
 }
 
 ::slotted(a:not(:last-child)) {
-  margin-right: 1em;
+  margin-right: 1em !important;
 }
 
 .#{$p-global-class-prefix}tabs-nav {
