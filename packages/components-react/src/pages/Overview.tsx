@@ -17,6 +17,8 @@ import {
   PGridItem as GridItem,
   PFlex as Flex,
   PFlexItem as FlexItem,
+  PTabs as Tabs,
+  PTabsItem as TabsItem,
   PTextList as TextList,
   PTextListItem as TextListItem,
   PSpinner as Spinner,
@@ -46,6 +48,9 @@ const {
   PGridItem: PrefixedGridItem,
   PFlex: PrefixedFlex,
   PFlexItem: PrefixedFlexItem,
+  PTabs: PrefixedTabs,
+  PTabsItem: PrefixedTabsItem,
+  PTabsNav: PrefixedTabsNav,
   PTextList: PrefixedTextList,
   PTextListItem: PrefixedTextListItem,
   PSpinner: PrefixedSpinner,
@@ -188,6 +193,22 @@ export const OverviewPage = (): JSX.Element => {
             <Pagination total-items-count="500" items-per-page="25" active-page="1" />
           </div>
 
+          <div className="playground light" title="should render default tabs">
+            <Tabs>
+              <TabsItem label="Tab1">Content 1</TabsItem>
+              <TabsItem label="Tab2">Content 2</TabsItem>
+              <TabsItem label="Tab3">Content 3</TabsItem>
+            </Tabs>
+          </div>
+
+          <div className="playground light" title="should render default tabs-nav">
+            <TabsNav>
+              <a>Tab1</a>
+              <a>Tab2</a>
+              <a>Tab3</a>
+            </TabsNav>
+          </div>
+
           <div className="playground light" title="should render default spinner">
             <Spinner />
           </div>
@@ -310,6 +331,22 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default pagination with custom prefix">
             <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1" />
+          </div>
+
+          <div className="playground light" title="should render default tabs with custom prefix">
+            <PrefixedTabs>
+              <PrefixedTabsItem label="Tab1">Content 1</PrefixedTabsItem>
+              <PrefixedTabsItem label="Tab2">Content 2</PrefixedTabsItem>
+              <PrefixedTabsItem label="Tab3">Content 3</PrefixedTabsItem>
+            </PrefixedTabs>
+          </div>
+
+          <div className="playground light" title="should render default tabs-nav with custom prefix">
+            <PrefixedTabsNav>
+              <a>Tab1</a>
+              <a>Tab2</a>
+              <a>Tab3</a>
+            </PrefixedTabsNav>
           </div>
 
           <div className="playground light" title="should render default spinner with custom prefix">

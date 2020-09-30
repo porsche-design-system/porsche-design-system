@@ -84,6 +84,10 @@ const appRoutes: Routes = [
     component: pages.SpinnerComponent
   },
   {
+    path: 'tabs',
+    component: pages.TabsComponent
+  },
+  {
     path: 'text',
     component: pages.TextComponent
   },
