@@ -51,7 +51,7 @@ import { Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground light" title="should render tabs [size] m'edium 'on light background">
+    <div class="playground light" title="should render tabs size medium on light background">
       <p-tabs [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
@@ -63,7 +63,7 @@ import { Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground dark" title="should render tabs [size] m'edium 'on dark background">
+    <div class="playground dark" title="should render tabs size medium on dark background">
       <p-tabs [theme]="'dark'" [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'"><div style="color: white">Tab Content 1</div></p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
@@ -75,7 +75,7 @@ import { Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground light" title="should render tabs [size] m'edium 'with last tab selected on light background">
+    <div class="playground light" title="should render tabs size medium with last tab selected on light background">
       <p-tabs [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
@@ -87,7 +87,7 @@ import { Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground dark" title="should render tabs [size] m'edium 'with last tab selected on dark background">
+    <div class="playground dark" title="should render tabs size medium with last tab selected on dark background">
       <p-tabs [theme]="'dark'" [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>

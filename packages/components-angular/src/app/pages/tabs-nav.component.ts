@@ -51,7 +51,7 @@ import { Component } from '@angular/core';
       </p-tabs-nav>
     </div>
 
-    <div class="playground light" title="should render tabs [size] m'edium 'on light background">
+    <div class="playground light" title="should render tabs size medium on light background">
       <p-tabs-nav [size]="'medium'">
         <a>Tab 1</a>
         <a>Tab 2</a>
@@ -63,7 +63,7 @@ import { Component } from '@angular/core';
       </p-tabs-nav>
     </div>
 
-    <div class="playground dark" title="should render tabs [size] m'edium 'on dark background">
+    <div class="playground dark" title="should render tabs size medium on dark background">
       <p-tabs-nav [theme]="'dark'" [size]="'medium'">
         <a>Tab 1</a>
         <a>Tab 2</a>
@@ -75,7 +75,7 @@ import { Component } from '@angular/core';
       </p-tabs-nav>
     </div>
 
-    <div class="playground light" title="should render tabs [size] m'edium 'with last tab selected on light background">
+    <div class="playground light" title="should render tabs size medium with last tab selected on light background">
       <p-tabs-nav [activeTabIndex]="6" [size]="'medium'">
         <a>Tab 1</a>
         <a>Tab 2</a>
@@ -87,7 +87,7 @@ import { Component } from '@angular/core';
       </p-tabs-nav>
     </div>
 
-    <div class="playground dark" title="should render tabs [size] m'edium 'with last tab selected on dark background">
+    <div class="playground dark" title="should render tabs size medium with last tab selected on dark background">
       <p-tabs-nav [activeTabIndex]="6" [theme]="'dark'" [size]="'medium'">
         <a>Tab 1</a>
         <a>Tab 2</a>

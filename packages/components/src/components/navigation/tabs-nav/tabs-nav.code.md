@@ -2,7 +2,7 @@
 
 The `<p-tab-nav>` component is a styled link list for multiple purposes. You can use it with your framework router to ensure
 your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash or as skip navigation
-to move on a longer page.
+to move on a longer page. If you intend to only change content on tab-click without location changes, have a look at the [Tabs](#/components/tabs#code) component.
 
 **Note**: Due to presentation purposes we use `<a>` tags without `href` in our examples. Keep in mind that you have to use them with `href`
 in your application!
