@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e490e"],{9188:function(e,n,t){"use strict";t.r(n);var s=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"vmark"},[t("p-tabs",[e._v(" 保时捷原则 ")])],1)},a=[],c=t("2877"),l={},u=Object(c["a"])(l,s,a,!1,null,null,null);n["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d0e490e.9a9789fe.js.map
