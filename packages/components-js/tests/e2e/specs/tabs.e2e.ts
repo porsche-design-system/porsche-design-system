@@ -5,11 +5,12 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
+  TABS_SCROLL_PERCENTAGE,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
-describe('tabs', () => {
+fdescribe('tabs', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -17,7 +18,7 @@ describe('tabs', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTab = () => selectNode(page, 'p-tabs');
+  const getTabs = () => selectNode(page, 'p-tabs');
   const getAllTabItems = () => page.$$('p-tabs-item');
   const getScrollArea = () => selectNode(page, 'p-tabs >>> .p-tabs__scroll-area');
   const getAllTabs = async () => (await getScrollArea()).$$('.p-tabs__tab');
@@ -29,9 +30,9 @@ describe('tabs', () => {
       return { top, left, bottom, right };
     }, element);
   };
-  const getPrev = async () =>
+  const getPrevButton = async () =>
     (await selectNode(page, 'p-tabs >>> .p-tabs__action--prev')).$('.p-tabs__action--prev > p-button-pure');
-  const getNext = async () =>
+  const getNextButton = async () =>
     (await selectNode(page, 'p-tabs >>> .p-tabs__action--next ')).$('.p-tabs__action--next > p-button-pure');
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
 
@@ -52,11 +53,11 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const tabs = await getTab();
-    const tabItems = await getAllTabItems();
+    const tabs = await getTabs();
+    const allTabs = await getAllTabs();
 
     expect(tabs).toBeDefined();
-    expect(tabItems.length).toBe(3);
+    expect(allTabs.length).toBe(3);
   });
 
   it('should render correct content of tab-item on click', async () => {
@@ -92,7 +93,7 @@ describe('tabs', () => {
     expect(await getAttribute(secondTabItem, 'selected')).toBe('');
   });
 
-  it('should render updated tabs when tab label is changed', async () => {
+  fit('should render updated tabs when tab label is changed', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -103,7 +104,7 @@ describe('tabs', () => {
         <p-tabs-item label="Button2">
           Content2
         </p-tabs-item>
-        <p-tabs-item label="Button3" href="https://porsche.com" target="_blank">
+        <p-tabs-item label="Button3" target="_blank">
           Content3
         </p-tabs-item>
       </p-tabs>
@@ -112,13 +113,14 @@ describe('tabs', () => {
     const allTabsItems = await getAllTabItems();
     const allTabs = await getAllTabs();
     const getLabelOfFirstButton = () => getProperty(allTabs[0], 'innerHTML');
+    const getLableOfFirstTabsItem = () => getProperty(allTabsItems[0], 'label');
 
-    expect(await getLabelOfFirstButton()).toBe('Button1');
+    expect(await getLabelOfFirstButton()).toBe(await getLableOfFirstTabsItem());
 
     await allTabsItems[0].evaluate((el) => el.setAttribute('label', 'newButtonName'));
     await waitForStencilLifecycle(page);
 
-    expect(await getLabelOfFirstButton()).toBe('newButtonName');
+    expect(await getLabelOfFirstButton()).toBe(await getLableOfFirstTabsItem());
   });
 
   it('should render correct tab when selected attribute is set', async () => {
@@ -138,10 +140,7 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const allTabs = await getAllTabs();
-    const firstButton = allTabs[0];
-    const secondButton = allTabs[1];
-    const thirdButton = allTabs[2];
+    const [firstButton, secondButton, thirdButton] = await getAllTabs();
 
     expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
     expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
@@ -344,10 +343,10 @@ describe('tabs', () => {
     `
     );
 
-    const nextButton = await getNext();
+    const nextButton = await getNextButton();
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
+    const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -393,11 +392,11 @@ describe('tabs', () => {
     `
     );
 
-    const nextButton = await getNext();
-    const prevButton = await getPrev();
+    const nextButton = await getNextButton();
+    const prevButton = await getPrevButton();
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
+    const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
