@@ -88,8 +88,9 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   $bem-block: &;
   display: flex;
   position: relative;
-  box-shadow: p-px-to-rem(-6px) p-px-to-rem(6px) p-px-to-rem(15px) 0 rgba(0, 0, 0, 0.3);
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
+  box-shadow: 0 p-px-to-rem(2px) p-px-to-rem(4px) 0 rgba(0, 0, 0, 0.5),
+  0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
 
   &::before {
     content: '';
