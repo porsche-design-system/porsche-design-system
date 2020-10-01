@@ -31,19 +31,19 @@
         </g>
         <circle id="Oval-Copy-5" fill="#00D5B9" cx="454.375" cy="91" r="16"></circle>
         <circle id="Oval-Copy-5" fill="#00D5B9" cx="210.375" cy="131" r="16"></circle>
-        <circle id="Oval-Copy-5" fill="#00D5B9" cx="127.375" cy="46" r="16"></circle>
-        <text id="3" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="449.669118" y="97">3</tspan>
+        <circle id="Oval-Copy-5" fill="#00D5B9" cx="125.375" cy="47" r="16"></circle>
+        <text id="2" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+            <tspan x="449.669118" y="97">2</tspan>
         </text>
-        <text id="2-copy-5" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="205.669118" y="137">2</tspan>
+        <text id="3" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+            <tspan x="205.669118" y="137">3</tspan>
         </text>
         <text id="1" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="122.669118" y="52">1</tspan>
+            <tspan x="120.669118" y="53">1</tspan>
         </text>
         <line x1="452.75" y1="91.375" x2="417" y2="91.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
         <line x1="208.75" y1="131.375" x2="173" y2="131.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
-        <line x1="125.75" y1="46.375" x2="90" y2="46.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="123.75" y1="47.375" x2="88" y2="47.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
         <mask id="mask-2" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
