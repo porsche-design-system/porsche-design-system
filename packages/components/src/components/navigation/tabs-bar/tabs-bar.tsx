@@ -19,11 +19,11 @@ import {
 } from '../../../utils/tabs-helper';
 
 @Component({
-  tag: 'p-tabs-nav',
-  styleUrl: 'tabs-nav.scss',
+  tag: 'p-tabs-bar',
+  styleUrl: 'tabs-bar.scss',
   shadow: true
 })
-export class TabsNav {
+export class TabsBar {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
@@ -47,7 +47,7 @@ export class TabsNav {
   };
 
   private intersectionObserver: IntersectionObserver;
-  private allAnchorTags: HTMLElement[] = getHTMLElements(this.host, 'a');
+  private allAnchorTags: HTMLElement[] = getHTMLElements(this.host, 'a,button');
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -64,7 +64,7 @@ export class TabsNav {
   }
 
   public componentDidLoad(): void {
-    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a' });
+    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a,button' });
     this.initIntersectionObserver();
   }
 
@@ -135,7 +135,7 @@ export class TabsNav {
   };
 
   private initView = (): void => {
-    const navList = getHTMLElements(this.host, 'a');
+    const navList = getHTMLElements(this.host, 'a,button');
     for (const [index, link] of Object.entries(navList)) {
       link.addEventListener('click', () => this.handleTabClick(+index));
     }
@@ -165,7 +165,7 @@ export class TabsNav {
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
-    scrollOnTabClick(this.host, { newTabIndex, direction, tabSelector: 'a' });
+    scrollOnTabClick(this.host, { newTabIndex, direction, tabSelector: 'a,button' });
   };
 
   private updateStatusBarStyle = (): void => {
@@ -174,6 +174,6 @@ export class TabsNav {
   };
 
   private handlePrevNextClick = (direction: Direction): void => {
-    scrollOnPrevNextClick(this.host, { direction, tabSelector: 'a' });
+    scrollOnPrevNextClick(this.host, { direction, tabSelector: 'a,button' });
   };
 }

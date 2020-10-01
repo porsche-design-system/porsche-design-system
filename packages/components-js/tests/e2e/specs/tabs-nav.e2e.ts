@@ -20,14 +20,14 @@ describe('tabs-nav', () => {
   afterEach(async () => await page.close());
 
   const getAllAnchorElements = () => page.$$('a');
-  const getScrollArea = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__scroll-area');
-  const getStatusBar = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__status-bar');
-  const getGradientNext = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__gradient--next');
+  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
+  const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
+  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
   const getPrevButton = async () =>
-    (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--prev')).$('.p-tabs-nav__action--prev > p-button-pure');
+    (await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev')).$('.p-tabs-bar__action--prev > p-button-pure');
   const getNextButton = async () =>
-    (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--next ')).$(
-      '.p-tabs-nav__action--next > p-button-pure'
+    (await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next ')).$(
+      '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
 
@@ -35,7 +35,7 @@ describe('tabs-nav', () => {
     await setContentWithDesignSystem(
       page,
       `
-       <p-tabs-nav active-tab-index="1">
+       <p-tabs-bar active-tab-index="1">
         <a href="#content1">
           Content1
         </a>
@@ -45,7 +45,7 @@ describe('tabs-nav', () => {
         <a href="#content3">
           Content3
         </a>
-      </p-tabs-nav>
+      </p-tabs-bar>
     `
     );
     const allAnchors = await getAllAnchorElements();
@@ -60,7 +60,7 @@ describe('tabs-nav', () => {
     await setContentWithDesignSystem(
       page,
       `
-       <p-tabs-nav active-tab-index="0">
+       <p-tabs-bar active-tab-index="0">
         <a href="#content1">
           Content1
         </a>
@@ -70,7 +70,7 @@ describe('tabs-nav', () => {
         <a selected href="#content3">
           Content3
         </a>
-      </p-tabs-nav>
+      </p-tabs-bar>
     `
     );
     const allAnchors = await getAllAnchorElements();
@@ -86,7 +86,7 @@ describe('tabs-nav', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-nav size="medium">
+       <p-tabs-bar size="medium">
           <a href="#content1">
             Content1
           </a>
@@ -111,7 +111,7 @@ describe('tabs-nav', () => {
           <a href="#content8">
             Content8
           </a>
-        </p-tabs-nav>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -134,7 +134,7 @@ describe('tabs-nav', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-nav size="medium">
+       <p-tabs-bar size="medium">
           <a href="#content1">
             Content1
           </a>
@@ -159,7 +159,7 @@ describe('tabs-nav', () => {
           <a href="#content8">
             Content8
           </a>
-        </p-tabs-nav>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -195,7 +195,7 @@ describe('tabs-nav', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-nav active-tab-index="3" size="medium">
+       <p-tabs-bar active-tab-index="3" size="medium">
           <a href="#content1">
             Content1
           </a>
@@ -220,7 +220,7 @@ describe('tabs-nav', () => {
           <a href="#content8">
             Content8
           </a>
-        </p-tabs-nav>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -241,7 +241,7 @@ describe('tabs-nav', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-nav size="medium">
+       <p-tabs-bar size="medium">
           <a href="#content1">
             Content1
           </a>
@@ -266,7 +266,7 @@ describe('tabs-nav', () => {
           <a href="#content8">
             Content8
           </a>
-        </p-tabs-nav>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -301,7 +301,7 @@ describe('tabs-nav', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-nav active-tab-index="2" size="medium">
+       <p-tabs-bar active-tab-index="2" size="medium">
           <a>
             Content1
           </a>
@@ -311,7 +311,7 @@ describe('tabs-nav', () => {
           <a href="#content3">
             Content3
           </a>
-        </p-tabs-nav>
+        </p-tabs-bar>
       </div>
     `
     );

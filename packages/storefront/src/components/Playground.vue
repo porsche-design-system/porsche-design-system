@@ -1,29 +1,9 @@
 <template>
   <div class="playground">
-    <div class="tabs" role="tablist" v-if="themeable">
-      <p-text class="tab" size="inherit" weight="thin" tag="div">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="theme === 'light' ? 'true' : 'false'"
-          :class="{ 'is-active': theme === 'light' }"
-          @click="switchTheme('light')"
-        >
-          Light theme
-        </button>
-      </p-text>
-      <p-text class="tab" size="inherit" weight="thin" tag="div">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="theme === 'dark' ? 'true' : 'false'"
-          :class="{ 'is-active': theme === 'dark' }"
-          @click="switchTheme('dark')"
-        >
-          Dark theme
-        </button>
-      </p-text>
-    </div>
+    <p-tabs-bar v-if="themeable">
+      <button type="button" @click="switchTheme('light')">Light theme</button>
+      <button type="button" @click="switchTheme('dark')">Dark theme</button>
+    </p-tabs-bar>
     <div
       class="example"
       :class="{
@@ -100,46 +80,8 @@
   @import '~@porsche-design-system/utilities/scss';
   @import '../styles/internal.variables';
 
-  .tabs {
-    display: flex;
-
-    .tab {
-      @include p-generate-type-scale($p-font-size-20);
-
-      &:not(:last-child) {
-        margin-right: $p-spacing-24;
-      }
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        font: inherit;
-        color: $p-color-theme-light-neutral-contrast-medium;
-        background-color: transparent;
-        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-        padding-bottom: $p-spacing-4;
-        border-bottom: 3px solid transparent;
-
-        &:hover {
-          color: $p-color-theme-light-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-light-state-focus;
-          outline-offset: 4px;
-        }
-
-        &.is-active {
-          cursor: default;
-          color: $p-color-theme-light-default;
-          border-bottom-color: $p-color-theme-light-state-active;
-        }
-      }
-    }
-  }
-
   .example {
+    margin-top: $p-spacing-8;
     padding: $p-spacing-32;
     overflow-x: auto;
     border: 1px solid transparent;
@@ -153,9 +95,6 @@
     &.dark {
       border-color: $p-color-theme-dark-background-surface;
       background-color: $p-color-theme-dark-background-surface;
-
-      .tabs .tab button.is-active {
-      }
     }
 
     // Child Layout "height"

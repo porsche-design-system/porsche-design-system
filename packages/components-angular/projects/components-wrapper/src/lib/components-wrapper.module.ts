@@ -31,7 +31,7 @@ import {
   PDivider,
   PTabs,
   PTabsItem,
-  PTabsNav
+  PTabsBar
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -62,7 +62,7 @@ const DECLARATIONS = [
   PDivider,
   PTabs,
   PTabsItem,
-  PTabsNav
+  PTabsBar
 ];
 
 @NgModule({

@@ -136,11 +136,11 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default tabs-nav with custom prefix">
-          <p-tabs-nav>
+          <p-tabs-bar>
             <a>Tab1</a>
             <a>Tab2</a>
             <a>Tab3</a>
-          </p-tabs-nav>
+          </p-tabs-bar>
         </div>
 
         <div class="playground light" title="should render default spinner">
@@ -269,11 +269,11 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default tabs-nav with custom prefix">
-          <my-prefix-p-tabs-nav p-tabs-nav>
+          <my-prefix-p-tabs-bar p-tabs-bar>
             <a>Tab1</a>
             <a>Tab2</a>
             <a>Tab3</a>
-          </my-prefix-p-tabs-nav>
+          </my-prefix-p-tabs-bar>
         </div>
 
         <div class="playground light" title="should render default spinner with custom prefix">

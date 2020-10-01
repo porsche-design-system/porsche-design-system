@@ -18,7 +18,7 @@ import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
 import { TabsComponent } from './tabs.component';
-import { TabsNavComponent } from './tabs-nav.component';
+import { TabsBarComponent } from './tabs-nav.component';
 import { TextComponent } from './text.component';
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
@@ -46,7 +46,7 @@ export const pages = [
   SelectWrapperComponent,
   SpinnerComponent,
   TabsComponent,
-  TabsNavComponent,
+  TabsBarComponent,
   TextComponent,
   TextFieldWrapperComponent,
   TextListComponent,

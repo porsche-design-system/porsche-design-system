@@ -1,11 +1,11 @@
-import { PTabsNav as TabsNav } from '@porsche-design-system/components-react';
+import { PTabsBar as TabsBar } from '@porsche-design-system/components-react';
 import React from 'react';
 
-export const TabsNavNavPage = (): JSX.Element => {
+export const TabsBarNavPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should render tabsNav on light background">
-        <TabsNav>
+        <TabsBar>
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -13,11 +13,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav on dark background">
-        <TabsNav theme="dark">
+        <TabsBar theme="dark">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -25,11 +25,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render tabsNav with last tab selected on light background">
-        <TabsNav activeTabIndex={6}>
+        <TabsBar activeTabIndex={6}>
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -37,11 +37,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav with last tab selected on dark background">
-        <TabsNav activeTabIndex={6} theme="dark">
+        <TabsBar activeTabIndex={6} theme="dark">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -49,11 +49,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render tabsNav size medium on light background">
-        <TabsNav size="medium">
+        <TabsBar size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -61,11 +61,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav size medium on dark background">
-        <TabsNav theme="dark" size="medium">
+        <TabsBar theme="dark" size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -73,14 +73,14 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div
         className="playground light"
         title="should render tabsNav size medium with last tab selected on light background"
       >
-        <TabsNav activeTabIndex={6} size="medium">
+        <TabsBar activeTabIndex={6} size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -88,14 +88,14 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div
         className="playground dark"
         title="should render tabsNav size medium with last tab selected on dark background"
       >
-        <TabsNav activeTabIndex={6} theme="dark" size="medium">
+        <TabsBar activeTabIndex={6} theme="dark" size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -103,11 +103,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render tabsNav semibold on light background">
-        <TabsNav weight="semibold">
+        <TabsBar weight="semibold">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -115,11 +115,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav semibold on dark background">
-        <TabsNav theme="dark" weight="semibold">
+        <TabsBar theme="dark" weight="semibold">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -127,11 +127,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render tabsNav semibold and medium on light background">
-        <TabsNav weight="semibold" size="medium">
+        <TabsBar weight="semibold" size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -139,11 +139,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav semibold and medium on dark background">
-        <TabsNav theme="dark" weight="semibold" size="medium">
+        <TabsBar theme="dark" weight="semibold" size="medium">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -151,11 +151,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render tabsNav gradientColorScheme surface on light background">
-        <TabsNav gradient-color-scheme="surface">
+        <TabsBar gradient-color-scheme="surface">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -163,11 +163,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render tabsNav gradientColorScheme surface on dark background">
-        <TabsNav theme="dark" gradient-color-scheme="surface">
+        <TabsBar theme="dark" gradient-color-scheme="surface">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -175,11 +175,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 5</a>
           <a>Tab 6</a>
           <a>Tab 7</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground light" title="should render selected tab in viewport on light background">
-        <TabsNav activeTabIndex={3}>
+        <TabsBar activeTabIndex={3}>
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -190,11 +190,11 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 8</a>
           <a>Tab 9</a>
           <a>Tab 10</a>
-        </TabsNav>
+        </TabsBar>
       </div>
 
       <div className="playground dark" title="should render selected tab in viewport in viewport on dark background">
-        <TabsNav activeTabIndex={3} theme="dark">
+        <TabsBar activeTabIndex={3} theme="dark">
           <a>Tab 1</a>
           <a>Tab 2</a>
           <a>Tab 3</a>
@@ -205,7 +205,7 @@ export const TabsNavNavPage = (): JSX.Element => {
           <a>Tab 8</a>
           <a>Tab 9</a>
           <a>Tab 10</a>
-        </TabsNav>
+        </TabsBar>
       </div>
     </>
   );

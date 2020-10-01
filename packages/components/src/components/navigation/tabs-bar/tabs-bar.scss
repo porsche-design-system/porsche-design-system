@@ -5,7 +5,8 @@
   display: block;
 }
 
-::slotted(a) {
+::slotted(a),
+::slotted(button) {
   font-family: $p-font-family !important;
   font-weight: inherit !important;
   font-size: inherit !important;
@@ -27,38 +28,48 @@
   color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-:host([theme="dark"]) ::slotted(a) {
+:host([theme="dark"]) ::slotted(a),
+:host([theme="dark"]) ::slotted(button) {
   color: $p-color-theme-dark-default !important;
 }
 
-::slotted(a:hover) {
+::slotted(a:hover),
+::slotted(button:hover) {
   color: $p-color-state-hover !important;
 }
 
-:host([theme="dark"]) ::slotted(a:hover) {
+:host([theme="dark"]) ::slotted(a:hover),
+:host([theme="dark"]) ::slotted(button:hover) {
   color: $p-color-theme-dark-state-hover !important;
 }
 
 ::slotted(a:active),
-::slotted(a.selected) {
+::slotted(a.selected),
+::slotted(button:active),
+::slotted(button.selected) {
   color: $p-color-state-active !important;
 }
 
 :host([theme="dark"]) ::slotted(a:active),
-:host([theme="dark"]) ::slotted(a.selected) {
+:host([theme="dark"]) ::slotted(a.selected),
+:host([theme="dark"]) ::slotted(button:active),
+:host([theme="dark"]) ::slotted(button.selected) {
   color: $p-color-theme-dark-state-active !important;
 }
 
-::slotted(a:focus) {
+::slotted(a:focus),
+::slotted(button:focus) {
   outline-offset: 1px !important;
   outline: $p-color-state-focus solid 2px !important;
 }
 
-:host([theme="dark"]) ::slotted(a:focus) {
+:host([theme="dark"]) ::slotted(a:focus),
+:host([theme="dark"]) ::slotted(button:focus) {
   outline-color: $p-color-theme-dark-state-focus !important;
 }
 
-::slotted(a:not(:last-child)) {
+::slotted(a:not(:last-child)),
+::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 
