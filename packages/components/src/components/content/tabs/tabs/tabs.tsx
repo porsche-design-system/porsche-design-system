@@ -1,6 +1,6 @@
 import { Component, h, Element, Prop, State, Host } from '@stencil/core';
-import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { TextWeight, Theme } from '../../../types';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import { TextWeight, Theme } from '../../../../types';
 import {
   ActionState,
   Direction,
@@ -12,7 +12,7 @@ import {
   scrollOnTabClick,
   setInitialScroll,
   setAccessibilityAttributes
-} from '../../../utils/tabs-helper';
+} from '../../../../utils/tabs-helper';
 
 @Component({
   tag: 'p-tabs',

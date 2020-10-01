@@ -184,7 +184,7 @@ export const config: StorefrontConfig = {
     }
   },
   Performance: {
-    'Cdn': [
+    Cdn: [
       // @ts-ignore
       () => import(`@/pages/performance/cdn.md`)
     ],
@@ -493,15 +493,17 @@ export const config: StorefrontConfig = {
     Tabs: {
       Design: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs/tabs.design.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.design.md`)
       ],
       Code: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs/tabs.code.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.code.md`)
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs/tabs.props.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs/tabs.props.md`),
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/tabs/tabs-item/tabs-item.props.md`)
       ]
     },
     'Tabs Nav': {
@@ -559,6 +561,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
       ]
-    },
+    }
   }
 };
