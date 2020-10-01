@@ -9,22 +9,22 @@ in your application!
 
 ## Basic example
 
-Basic implementation is a tab bar with tabs to switch between the content. Just put your `<a>` tags inside the `<p-tabs-nav>` 
+Basic implementation is a tab bar with tabs to switch between the content. Just put your `<a>` tags inside the `<p-tabs-bar>` 
 component and it will handle all styling behaviors. 
 
 <Playground>
   <template>
-     <p-tabs-nav>
+     <p-tabs-bar>
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
 ## Switch size
 
-You can choose between two button sizes, `small` or `medium`. It defaults to `small` and can be set by selecting the property on the `p-tabs-nav` component.
+You can choose between two button sizes, `small` or `medium`. It defaults to `small` and can be set by selecting the property on the `p-tabs-bar` component.
 
 <Playground>
   <template #configurator>
@@ -35,11 +35,11 @@ You can choose between two button sizes, `small` or `medium`. It defaults to `sm
     </select>
   </template>
   <template>
-     <p-tabs-nav :size="size">
+     <p-tabs-bar :size="size">
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
@@ -49,7 +49,7 @@ If the amount of `<a>` tags exceed the viewport, the tabs become horizontal scro
 
 <Playground>
   <template>
-     <p-tabs-nav>
+     <p-tabs-bar>
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
@@ -59,7 +59,7 @@ If the amount of `<a>` tags exceed the viewport, the tabs become horizontal scro
        <a>Tab Seven</a>
        <a>Tab Eight</a>
        <a>Tab Nine</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
@@ -76,11 +76,11 @@ The `<tabs-nav>` component comes with two text-weights `regular` or `semibold` w
     </select>
   </template>
   <template>
-     <p-tabs-nav :weight="weight">
+     <p-tabs-bar :weight="weight">
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
@@ -91,11 +91,11 @@ The Theme changes the Background and text color of the tabs.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-     <p-tabs-nav :theme="theme">
+     <p-tabs-bar :theme="theme">
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
@@ -116,7 +116,7 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
     </select>
   </template>
   <template v-slot="{theme}">
-     <p-tabs-nav :theme="theme" :gradient-color-scheme="gradientColorScheme">
+     <p-tabs-bar :theme="theme" :gradient-color-scheme="gradientColorScheme">
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
@@ -126,22 +126,22 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
        <a>Tab Seven</a>
        <a>Tab Eight</a>
        <a>Tab Nine</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 
 ## Set active Tab
 
-You may need to change the initial active tab. To do so, use the `active-tab-index` property on the `<p-tabs-nav>` component.
+You may need to change the initial active tab. To do so, use the `active-tab-index` property on the `<p-tabs-bar>` component.
 Keep in mind that the `active-tab-index` is counted like an array, so it starts with 0.
 
 <Playground>
   <template>
-     <p-tabs-nav active-tab-index="1">
+     <p-tabs-bar active-tab-index="1">
        <a>Tab One</a>
        <a>Tab Two</a>
        <a>Tab Three</a>
-     </p-tabs-nav>
+     </p-tabs-bar>
   </template>
 </Playground>
 

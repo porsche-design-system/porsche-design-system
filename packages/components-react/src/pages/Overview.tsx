@@ -19,7 +19,7 @@ import {
   PFlexItem as FlexItem,
   PTabs as Tabs,
   PTabsItem as TabsItem,
-  PTabsNav as TabsNav,
+  PTabsBar as TabsBar,
   PTextList as TextList,
   PTextListItem as TextListItem,
   PSpinner as Spinner,
@@ -51,7 +51,7 @@ const {
   PFlexItem: PrefixedFlexItem,
   PTabs: PrefixedTabs,
   PTabsItem: PrefixedTabsItem,
-  PTabsNav: PrefixedTabsNav,
+  PTabsBar: PrefixedTabsBar,
   PTextList: PrefixedTextList,
   PTextListItem: PrefixedTextListItem,
   PSpinner: PrefixedSpinner,
@@ -203,11 +203,11 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default tabs-nav">
-            <TabsNav>
+            <TabsBar>
               <a>Tab1</a>
               <a>Tab2</a>
               <a>Tab3</a>
-            </TabsNav>
+            </TabsBar>
           </div>
 
           <div className="playground light" title="should render default spinner">
@@ -343,11 +343,11 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default tabs-nav with custom prefix">
-            <PrefixedTabsNav>
+            <PrefixedTabsBar>
               <a>Tab1</a>
               <a>Tab2</a>
               <a>Tab3</a>
-            </PrefixedTabsNav>
+            </PrefixedTabsBar>
           </div>
 
           <div className="playground light" title="should render default spinner with custom prefix">

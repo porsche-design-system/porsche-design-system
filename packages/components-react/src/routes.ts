@@ -110,7 +110,7 @@ export const routes: RouteType[] = [
   {
     name: 'Tabs Nav',
     path: '/tabs-nav',
-    component: fromPages.TabsNavNavPage
+    component: fromPages.TabsBarNavPage
   },
   {
     name: 'Text',

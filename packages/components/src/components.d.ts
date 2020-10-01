@@ -528,14 +528,7 @@ export namespace Components {
          */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
-    interface PTabsItem {
-        /**
-          * Defines the label used in tabs.
-         */
-        "label": string;
-        "selected"?: boolean;
-    }
-    interface PTabsNav {
+    interface PTabsBar {
         /**
           * Defines which tab to be visualized as selected.
          */
@@ -556,6 +549,13 @@ export namespace Components {
           * The text weight.
          */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label": string;
+        "selected"?: boolean;
     }
     interface PText {
         /**
@@ -783,17 +783,17 @@ declare global {
         prototype: HTMLPTabsElement;
         new (): HTMLPTabsElement;
     };
+    interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
+    }
+    var HTMLPTabsBarElement: {
+        prototype: HTMLPTabsBarElement;
+        new (): HTMLPTabsBarElement;
+    };
     interface HTMLPTabsItemElement extends Components.PTabsItem, HTMLStencilElement {
     }
     var HTMLPTabsItemElement: {
         prototype: HTMLPTabsItemElement;
         new (): HTMLPTabsItemElement;
-    };
-    interface HTMLPTabsNavElement extends Components.PTabsNav, HTMLStencilElement {
-    }
-    var HTMLPTabsNavElement: {
-        prototype: HTMLPTabsNavElement;
-        new (): HTMLPTabsNavElement;
     };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
@@ -847,8 +847,8 @@ declare global {
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-tabs": HTMLPTabsElement;
+        "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
-        "p-tabs-nav": HTMLPTabsNavElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -1380,14 +1380,7 @@ declare namespace LocalJSX {
          */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
     }
-    interface PTabsItem {
-        /**
-          * Defines the label used in tabs.
-         */
-        "label"?: string;
-        "selected"?: boolean;
-    }
-    interface PTabsNav {
+    interface PTabsBar {
         /**
           * Defines which tab to be visualized as selected.
          */
@@ -1408,6 +1401,13 @@ declare namespace LocalJSX {
           * The text weight.
          */
         "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label"?: string;
+        "selected"?: boolean;
     }
     interface PText {
         /**
@@ -1529,8 +1529,8 @@ declare namespace LocalJSX {
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
         "p-tabs": PTabs;
+        "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
-        "p-tabs-nav": PTabsNav;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1563,8 +1563,8 @@ declare module "@stencil/core" {
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
+            "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
-            "p-tabs-nav": LocalJSX.PTabsNav & JSXBase.HTMLAttributes<HTMLPTabsNavElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;

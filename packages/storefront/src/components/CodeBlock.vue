@@ -1,40 +1,10 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
-    <div class="tabs" role="tablist" :class="{ light: theme === 'light', dark: theme === 'dark' }">
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isVanillaJS ? 'true' : 'false'"
-          :class="{ 'is-active': isVanillaJS }"
-          @click="updateFramework('vanilla-js')"
-        >
-          Vanilla JS
-        </button>
-      </p-text>
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isAngular ? 'true' : 'false'"
-          :class="{ 'is-active': isAngular }"
-          @click="updateFramework('angular')"
-        >
-          Angular
-        </button>
-      </p-text>
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isReact ? 'true' : 'false'"
-          :class="{ 'is-active': isReact }"
-          @click="updateFramework('react')"
-        >
-          React
-        </button>
-      </p-text>
-    </div>
+    <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
+      <button type="button" @click="updateFramework('vanilla-js')">Vanilla JS</button>
+      <button type="button" @click="updateFramework('angular')">Angular</button>
+      <button type="button" @click="updateFramework('react')">React</button>
+    </p-tabs-bar>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
 </template>
@@ -53,6 +23,11 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
+
+    public get activeTabIndex(): number {
+      const index = ['vanilla-js', 'angular', 'react'].indexOf(this.framework);
+      return index >= 0 ? index : 0;
+    }
 
     public get framework(): Framework {
       return this.$store.getters.selectedFramework;
@@ -212,10 +187,6 @@
 
   .code-block {
     &.light {
-      .tabs {
-        color: $p-color-theme-light-default;
-      }
-
       code,
       pre {
         color: $p-color-theme-light-default;
@@ -223,8 +194,6 @@
       }
 
       pre {
-        border-color: $p-color-theme-light-neutral-contrast-medium;
-
         code ::v-deep {
           .token.comment,
           .token.prolog,
@@ -285,10 +254,6 @@
     }
 
     &.dark {
-      .tabs {
-        color: $p-color-theme-dark-default;
-      }
-
       code,
       pre {
         color: $p-color-theme-dark-default;
@@ -296,8 +261,6 @@
       }
 
       pre {
-        border-color: $p-color-theme-dark-neutral-contrast-medium;
-
         code ::v-deep {
           .token.comment,
           .token.prolog,
@@ -352,56 +315,6 @@
     }
   }
 
-  .tabs {
-    display: flex;
-
-    .tab {
-      &:not(:last-child) {
-        margin-right: $p-spacing-16;
-      }
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        font: inherit;
-        color: inherit;
-        background-color: transparent;
-        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-        &:hover {
-          color: $p-color-theme-light-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-light-state-focus;
-          outline-offset: 4px;
-        }
-
-        &.is-active {
-          cursor: default;
-          color: $p-color-theme-light-state-active;
-        }
-      }
-    }
-
-    &.dark {
-      .tab button {
-        &:hover {
-          color: $p-color-theme-dark-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-dark-state-focus;
-        }
-
-        &.is-active {
-          color: $p-color-theme-dark-state-active;
-        }
-      }
-    }
-  }
-
   code,
   pre {
     background: transparent;
@@ -421,8 +334,6 @@
     max-height: 20rem;
     overflow: auto;
     margin-top: $p-spacing-16;
-    padding-top: $p-spacing-16;
-    border-top: 1px solid transparent;
 
     code ::v-deep {
       .namespace {
