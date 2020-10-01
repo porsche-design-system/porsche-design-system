@@ -5,9 +5,10 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem, TABS_SCROLL_PERCENTAGE,
+  setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
+import { CSS_ANIMATION_DURATION, TABS_SCROLL_PERCENTAGE } from './tabs.e2e';
 
 describe('tabs-nav', () => {
   let page: Page;
@@ -128,7 +129,7 @@ describe('tabs-nav', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -177,19 +178,19 @@ describe('tabs-nav', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
     await prevButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -284,7 +285,7 @@ describe('tabs-nav', () => {
 
     await allAnchors[4].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab3offset = await getProperty(allAnchors[4], 'offsetLeft');
     const scrollDistanceRight = +tab3offset - +gradientWidth;
@@ -292,7 +293,7 @@ describe('tabs-nav', () => {
 
     await allAnchors[3].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab2offset = await getProperty(allAnchors[3], 'offsetLeft');
     const tabWidth = await getProperty(allAnchors[3], 'offsetWidth');
@@ -327,7 +328,7 @@ describe('tabs-nav', () => {
 
     await allAnchors[0].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect((await getElementPositions(allAnchors[0])).left).toEqual((await getElementPositions(statusBar)).left);
   });

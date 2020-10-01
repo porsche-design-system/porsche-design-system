@@ -1,7 +1,5 @@
 import { Page } from 'puppeteer';
 
-export const TABS_SCROLL_PERCENTAGE = 0.2;
-
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
   await page.evaluate(
     async (): Promise<void> => {
