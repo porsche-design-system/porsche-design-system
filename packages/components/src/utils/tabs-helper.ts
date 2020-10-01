@@ -11,17 +11,16 @@ export const getStatusBarStyle = (activeTab: HTMLElement): string => {
   return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
 };
 
-export const setSectionAttributes = (tab: HTMLPTabsItemElement, index: number): void => {
+export const setAccessibilityAttributes = (tab: HTMLPTabsItemElement, index: number): void => {
   const attrs = {
     role: 'tabpanel',
     hidden: `${!tab.selected}`,
     id: prefix(`tab-panel-${index}`),
     'aria-labelledby': prefix(`tab-item-${index}`)
   };
+  // eslint-disable-next-line
   for (const key in attrs) {
-    if (attrs.hasOwnProperty(key)){
       tab.setAttribute(key, attrs[key]);
-    }
   }
 };
 

@@ -5,7 +5,7 @@ import {
   getProperty,
   initAddEventListener,
   selectNode,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, TABS_SCROLL_PERCENTAGE,
   waitForStencilLifecycle
 } from '../helpers';
 
@@ -17,7 +17,6 @@ describe('tabs-nav', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTabNav = () => selectNode(page, 'p-tabs-nav');
   const getAllAnchorElements = () => page.$$('a');
   const getScrollArea = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__status-bar');
@@ -28,50 +27,26 @@ describe('tabs-nav', () => {
       return { top, left, bottom, right };
     }, element);
   };
-  const getPrev = async () =>
+  const getPrevButton = async () =>
     (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--prev')).$('.p-tabs-nav__action--prev > p-button-pure');
-  const getNext = async () =>
+  const getNextButton = async () =>
     (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--next ')).$(
       '.p-tabs-nav__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-
-  it('should render', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-       <p-tabs-nav>
-        <a label="Button1" href="#content1">
-          Content1
-        </a>
-        <a label="Button2" href="#content2">
-          Content2
-        </a>
-        <a label="Button3" href="#content3">
-          Content3
-        </a>
-      </p-tabs-nav>
-    `
-    );
-    const tabsNav = await getTabNav();
-    const anchorElements = await getAllAnchorElements();
-
-    expect(tabsNav).toBeDefined();
-    expect(anchorElements.length).toBe(3);
-  });
 
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
       page,
       `
        <p-tabs-nav active-tab-index="1">
-        <a label="Button1" href="#content1">
+        <a href="#content1">
           Content1
         </a>
-        <a label="Button2" href="#content2">
+        <a href="#content2">
           Content2
         </a>
-        <a label="Button3" href="#content3">
+        <a href="#content3">
           Content3
         </a>
       </p-tabs-nav>
@@ -90,13 +65,13 @@ describe('tabs-nav', () => {
       page,
       `
        <p-tabs-nav active-tab-index="0">
-        <a label="Button1" href="#content1">
+        <a href="#content1">
           Content1
         </a>
-        <a selected label="Button2" href="#content2">
+        <a selected href="#content2">
           Content2
         </a>
-        <a selected label="Button3" href="#content3">
+        <a selected href="#content3">
           Content3
         </a>
       </p-tabs-nav>
@@ -116,38 +91,38 @@ describe('tabs-nav', () => {
       `
       <div style="width: 400px">
        <p-tabs-nav size="medium">
-          <a label="Button1" href="#content1">
+          <a href="#content1">
             Content1
           </a>
-          <a label="Button2" href="#content2">
+          <a href="#content2">
             Content2
           </a>
-          <a label="Button3" href="#content3">
+          <a href="#content3">
             Content3
           </a>
-           <a label="Button4" href="#content4">
+           <a href="#content4">
             Content4
           </a>
-          <a label="Button5" href="#content5">
+          <a href="#content5">
             Content5
           </a>
-          <a label="Button6" href="#content6">
+          <a href="#content6">
             Content6
           </a>
-           <a label="Button7" href="#content7">
+           <a href="#content7">
             Content7
           </a>
-          <a label="Button8" href="#content8">
+          <a href="#content8">
             Content8
           </a>
         </p-tabs-nav>
       </div>
     `
     );
-    const nextButton = await getNext();
+    const nextButton = await getNextButton();
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
+    const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -164,39 +139,39 @@ describe('tabs-nav', () => {
       `
       <div style="width: 400px">
        <p-tabs-nav size="medium">
-          <a label="Button1" href="#content1">
+          <a href="#content1">
             Content1
           </a>
-          <a label="Button2" href="#content2">
+          <a href="#content2">
             Content2
           </a>
-          <a label="Button3" href="#content3">
+          <a href="#content3">
             Content3
           </a>
-           <a label="Button4" href="#content4">
+           <a href="#content4">
             Content4
           </a>
-          <a label="Button5" href="#content5">
+          <a href="#content5">
             Content5
           </a>
-          <a label="Button6" href="#content6">
+          <a href="#content6">
             Content6
           </a>
-           <a label="Button7" href="#content7">
+           <a href="#content7">
             Content7
           </a>
-          <a label="Button8" href="#content8">
+          <a href="#content8">
             Content8
           </a>
         </p-tabs-nav>
       </div>
     `
     );
-    const nextButton = await getNext();
-    const prevButton = await getPrev();
+    const nextButton = await getNextButton();
+    const prevButton = await getPrevButton();
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const scrollDistance = Math.round(+scrollAreaWidth * 0.2);
+    const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -225,28 +200,28 @@ describe('tabs-nav', () => {
       `
       <div style="width: 400px">
        <p-tabs-nav active-tab-index="3" size="medium">
-          <a label="Button1" href="#content1">
+          <a href="#content1">
             Content1
           </a>
-          <a label="Button2" href="#content2">
+          <a href="#content2">
             Content2
           </a>
-          <a label="Button3" href="#content3">
+          <a href="#content3">
             Content3
           </a>
-           <a label="Button4" href="#content4">
+           <a href="#content4">
             Content4
           </a>
-          <a label="Button5" href="#content5">
+          <a href="#content5">
             Content5
           </a>
-          <a label="Button6" href="#content6">
+          <a href="#content6">
             Content6
           </a>
-           <a label="Button7" href="#content7">
+           <a href="#content7">
             Content7
           </a>
-          <a label="Button8" href="#content8">
+          <a href="#content8">
             Content8
           </a>
         </p-tabs-nav>
@@ -271,28 +246,28 @@ describe('tabs-nav', () => {
       `
       <div style="width: 400px">
        <p-tabs-nav size="medium">
-          <a label="Button1" href="#content1">
+          <a href="#content1">
             Content1
           </a>
-          <a label="Button2" href="#content2">
+          <a href="#content2">
             Content2
           </a>
-          <a label="Button3" href="#content3">
+          <a href="#content3">
             Content3
           </a>
-           <a label="Button4">
+           <a>
             Content4
           </a>
-          <a label="Button5">
+          <a>
             Content5
           </a>
-          <a label="Button6" href="#content6">
+          <a href="#content6">
             Content6
           </a>
-           <a label="Button7" href="#content7">
+           <a href="#content7">
             Content7
           </a>
-          <a label="Button8" href="#content8">
+          <a href="#content8">
             Content8
           </a>
         </p-tabs-nav>
@@ -331,13 +306,13 @@ describe('tabs-nav', () => {
       `
       <div style="width: 400px">
        <p-tabs-nav active-tab-index="2" size="medium">
-          <a label="Button1">
+          <a>
             Content1
           </a>
-          <a label="Button2" href="#content2">
+          <a href="#content2">
             Content2
           </a>
-          <a label="Button3" href="#content3">
+          <a href="#content3">
             Content3
           </a>
         </p-tabs-nav>

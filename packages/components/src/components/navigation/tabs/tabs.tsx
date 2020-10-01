@@ -11,7 +11,7 @@ import {
   scrollOnPrevNextClick,
   scrollOnTabClick,
   setInitialScroll,
-  setSectionAttributes
+  setAccessibilityAttributes
 } from '../../../utils/tabs-helper';
 
 @Component({
@@ -210,7 +210,7 @@ export class Tabs {
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     this.resetTabs();
     this.setActiveTab(newTabIndex);
-    this.tabsItems.forEach(setSectionAttributes);
+    this.tabsItems.forEach(setAccessibilityAttributes);
   };
 
   private handleTabClick = (newTabIndex: number): void => {
