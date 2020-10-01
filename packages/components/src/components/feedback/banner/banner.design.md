@@ -79,13 +79,11 @@ are displayed at the bottom of the screen.
 !!! TBD !!!
 
 Do not display multiple Banners at the same time. When Banners are consecutively 
-or simultaneously triggered, their display and behavior should follow a priority queue. !!! TBD !!!
-
-!!! Image !!!
+or simultaneously triggered, their display and behavior should follow a priority queue.
 
 ### Position
 
-Lorem Ipsum !!!
+The Banner component is positioned absolute above the page content by default.
 
 
 ![Banner position](./assets/feedback-banner-position.png)
