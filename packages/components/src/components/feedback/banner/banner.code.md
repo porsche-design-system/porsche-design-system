@@ -59,19 +59,17 @@ The **Banner** behaves the same as the **ContentWrapper** component and can be a
 </Playground>
 
 ## Custom styling
-The **Banner** component has the following default values which can be overwritten by your needs:
+The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
 ``` 
-// default values
-:host {
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-}
+// default CSS variables
+--p-banner-position-type: fixed;
+--p-banner-position-top: p-px-to-rem(56px);
+--p-banner-position-bottom: p-px-to-rem(56px);
 
-// overwrite with css !important
-.custom-banner-class {
-  z-index: 999 !important;
+// overwrite with CSS variables
+p-banner {
+  --p-banner-position-top: 200px;
 }
 
 ``` 
