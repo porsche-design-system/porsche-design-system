@@ -10,7 +10,7 @@ import {
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
-fdescribe('tabs', () => {
+describe('tabs', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -93,7 +93,7 @@ fdescribe('tabs', () => {
     expect(await getAttribute(secondTabItem, 'selected')).toBe('');
   });
 
-  fit('should render updated tabs when tab label is changed', async () => {
+  it('should render updated tabs when tab label is changed', async () => {
     await setContentWithDesignSystem(
       page,
       `
