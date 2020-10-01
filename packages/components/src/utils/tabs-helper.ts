@@ -1,7 +1,5 @@
 // TODO: Unit tests?
 
-import { prefix } from './prefix';
-
 export type Direction = 'next' | 'prev';
 export type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
 
@@ -9,19 +7,6 @@ export const getStatusBarStyle = (activeTab: HTMLElement): string => {
   const statusBarWidth = activeTab?.offsetWidth || 0;
   const statusBarPositionLeft = activeTab?.offsetLeft || 0;
   return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
-};
-
-export const setAccessibilityAttributes = (tab: HTMLPTabsItemElement, index: number): void => {
-  const attrs = {
-    role: 'tabpanel',
-    hidden: `${!tab.selected}`,
-    id: prefix(`tab-panel-${index}`),
-    'aria-labelledby': prefix(`tab-item-${index}`)
-  };
-  // eslint-disable-next-line
-  for (const key in attrs) {
-      tab.setAttribute(key, attrs[key]);
-  }
 };
 
 // Due to horizontal scroll we have to consider the focus padding inside the scroll-area

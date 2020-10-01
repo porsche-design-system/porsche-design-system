@@ -10,8 +10,7 @@ import {
   registerIntersectionObserver,
   scrollOnPrevNextClick,
   scrollOnTabClick,
-  setInitialScroll,
-  setAccessibilityAttributes
+  setInitialScroll
 } from '../../../../utils/tabs-helper';
 
 @Component({
@@ -210,7 +209,7 @@ export class Tabs {
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     this.resetTabs();
     this.setActiveTab(newTabIndex);
-    this.tabsItems.forEach(setAccessibilityAttributes);
+    this.tabsItems.forEach(this.setAccessibilityAttributes);
   };
 
   private handleTabClick = (newTabIndex: number): void => {
@@ -269,5 +268,18 @@ export class Tabs {
     const tabsLength = this.tabs.length;
     const newTabIndex = this.activeTabIndex + (direction === 'next' ? 1 : -1);
     return (newTabIndex + tabsLength) % tabsLength;
+  };
+
+  private setAccessibilityAttributes = (tab: HTMLPTabsItemElement, index: number): void => {
+    const attrs = {
+      role: 'tabpanel',
+      hidden: `${!tab.selected}`,
+      id: prefix(`tab-panel-${index}`),
+      'aria-labelledby': prefix(`tab-item-${index}`)
+    };
+    // eslint-disable-next-line
+    for (const key in attrs) {
+      tab.setAttribute(key, attrs[key]);
+    }
   };
 }
