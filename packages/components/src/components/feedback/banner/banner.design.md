@@ -62,10 +62,6 @@ The banner is always as width as the content and therefore stretches over all gr
 
 ## Usage
 
-### Priority queue
-
-!!! TBD !!!
-
 ### Placement
 
 On desktop the Banners are displayed at the top of the screen. By default, a banner is placed 
@@ -74,12 +70,6 @@ are displayed at the bottom of the screen.
 
 ## Don'ts
 
-### Multiple Banners
-
-!!! TBD !!!
-
-Do not display multiple Banners at the same time. When Banners are consecutively 
-or simultaneously triggered, their display and behavior should follow a priority queue.
 
 ### Position
 
