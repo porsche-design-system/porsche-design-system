@@ -2,6 +2,7 @@ import { ElementHandle, Page } from 'puppeteer';
 import {
   getAttribute,
   getBrowser,
+  getElementPositions,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -22,12 +23,6 @@ describe('tabs-nav', () => {
   const getScrollArea = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__gradient--next');
-  const getElementPositions = async (element: ElementHandle) => {
-    return await page.evaluate((element) => {
-      const { top, left, bottom, right } = element.getBoundingClientRect();
-      return { top, left, bottom, right };
-    }, element);
-  };
   const getPrevButton = async () =>
     (await selectNode(page, 'p-tabs-nav >>> .p-tabs-nav__action--prev')).$('.p-tabs-nav__action--prev > p-button-pure');
   const getNextButton = async () =>
@@ -322,14 +317,16 @@ describe('tabs-nav', () => {
     );
     const allAnchors = await getAllAnchorElements();
     const statusBar = await getStatusBar();
-    const tab3Position = (await getElementPositions(allAnchors[2])).left;
+    const tab3Position = (await getElementPositions(page, allAnchors[2])).left;
 
-    expect(Math.round(tab3Position)).toEqual((await getElementPositions(statusBar)).left);
+    expect(Math.round(tab3Position)).toEqual((await getElementPositions(page, statusBar)).left);
 
     await allAnchors[0].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
-    expect((await getElementPositions(allAnchors[0])).left).toEqual((await getElementPositions(statusBar)).left);
+    expect((await getElementPositions(page, allAnchors[0])).left).toEqual(
+      (await getElementPositions(page, statusBar)).left
+    );
   });
 });
