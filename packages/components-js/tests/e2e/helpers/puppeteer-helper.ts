@@ -74,7 +74,7 @@ export const getElementStyle = async (
     opts
   );
 
-export const getElementPosition = async (element: ElementHandle, selector: string): Promise<number> =>
+export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>
   element.evaluate(async (el: Element, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);
     let pos = 0;
@@ -83,3 +83,9 @@ export const getElementPosition = async (element: ElementHandle, selector: strin
     }
     return pos;
   }, selector);
+
+export const getElementPositions = (page: Page, element: ElementHandle): Promise<{ top: number, left: number, bottom: number, right: number }> =>
+  page.evaluate((element) => {
+    const { top, left, bottom, right } = element.getBoundingClientRect();
+    return { top, left, bottom, right };
+  }, element);

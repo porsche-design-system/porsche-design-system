@@ -1,6 +1,6 @@
 import {
   getAttribute,
-  getBrowser,
+  getBrowser, getElementPositions,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -20,18 +20,11 @@ describe('tabs', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTabs = () => selectNode(page, 'p-tabs');
   const getAllTabItems = () => page.$$('p-tabs-item');
   const getScrollArea = () => selectNode(page, 'p-tabs >>> .p-tabs__scroll-area');
   const getAllTabs = async () => (await getScrollArea()).$$('.p-tabs__tab');
   const getStatusBar = () => selectNode(page, 'p-tabs >>> .p-tabs__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs >>> .p-tabs__gradient--next');
-  const getElementPositions = async (element: ElementHandle) => {
-    return await page.evaluate((element) => {
-      const { top, left, bottom, right } = element.getBoundingClientRect();
-      return { top, left, bottom, right };
-    }, element);
-  };
   const getPrevButton = async () =>
     (await selectNode(page, 'p-tabs >>> .p-tabs__action--prev')).$('.p-tabs__action--prev > p-button-pure');
   const getNextButton = async () =>
@@ -55,10 +48,8 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const tabs = await getTabs();
     const allTabs = await getAllTabs();
 
-    expect(tabs).toBeDefined();
     expect(allTabs.length).toBe(3);
   });
 
@@ -115,14 +106,14 @@ describe('tabs', () => {
     const allTabsItems = await getAllTabItems();
     const allTabs = await getAllTabs();
     const getLabelOfFirstButton = () => getProperty(allTabs[0], 'innerHTML');
-    const getLableOfFirstTabsItem = () => getProperty(allTabsItems[0], 'label');
+    const getLabelOfFirstTabItem = () => getProperty(allTabsItems[0], 'label');
 
-    expect(await getLabelOfFirstButton()).toBe(await getLableOfFirstTabsItem());
+    expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
 
     await allTabsItems[0].evaluate((el) => el.setAttribute('label', 'newButtonName'));
     await waitForStencilLifecycle(page);
 
-    expect(await getLabelOfFirstButton()).toBe(await getLableOfFirstTabsItem());
+    expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
   });
 
   it('should render correct tab when selected attribute is set', async () => {
@@ -230,6 +221,7 @@ describe('tabs', () => {
     expect(await getLinkFocus()).toBeUndefined();
 
     await page.keyboard.press('Tab');
+    expect(await getLinkFocus()).toBeUndefined();
     await page.keyboard.press('Tab');
 
     expect(await getLinkFocus()).toBe(true);
@@ -334,11 +326,11 @@ describe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
-              <p-tabs-item label="Button7">
-          Content7
+          <p-tabs-item label="Button7">
+            Content7
           </p-tabs-item>
           <p-tabs-item label="Button8">
-          Content8
+            Content8
           </p-tabs-item>
         </p-tabs>
       </div>
@@ -383,11 +375,11 @@ describe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
-              <p-tabs-item label="Button7">
-          Content7
+          <p-tabs-item label="Button7">
+            Content7
           </p-tabs-item>
           <p-tabs-item label="Button8">
-          Content8
+            Content8
           </p-tabs-item>
         </p-tabs>
       </div>
@@ -445,11 +437,11 @@ describe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
-              <p-tabs-item label="Button7">
-          Content7
+          <p-tabs-item label="Button7">
+            Content7
           </p-tabs-item>
           <p-tabs-item label="Button8">
-          Content8
+            Content8
           </p-tabs-item>
         </p-tabs>
       </div>
@@ -492,11 +484,11 @@ describe('tabs', () => {
           <p-tabs-item label="Button6">
             Content6
           </p-tabs-item>
-              <p-tabs-item label="Button7">
-          Content7
+          <p-tabs-item label="Button7">
+            Content7
           </p-tabs-item>
           <p-tabs-item label="Button8">
-          Content8
+            Content8
           </p-tabs-item>
         </p-tabs>
       </div>
@@ -548,14 +540,14 @@ describe('tabs', () => {
     );
     const allTabs = await getAllTabs();
     const statusBar = await getStatusBar();
-    const tab3Position = (await getElementPositions(allTabs[2])).left;
+    const tab3Position = (await getElementPositions(page, allTabs[2])).left;
 
-    expect(Math.round(tab3Position)).toEqual((await getElementPositions(statusBar)).left);
+    expect(Math.round(tab3Position)).toEqual((await getElementPositions(page, statusBar)).left);
 
     await allTabs[0].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
-    expect((await getElementPositions(allTabs[0])).left).toEqual((await getElementPositions(statusBar)).left);
+    expect((await getElementPositions(page, allTabs[0])).left).toEqual((await getElementPositions(page, statusBar)).left);
   });
 });
