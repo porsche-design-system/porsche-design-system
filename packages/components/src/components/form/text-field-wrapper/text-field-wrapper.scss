@@ -36,14 +36,15 @@
   width: 100% !important;
   height: 100% !important;
   display: block !important;
-  padding: p-px-to-rem(12px) !important;
+  padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
   outline: transparent none !important;
   outline-offset: 1px !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  border-width: 0 !important;
-  border-top-color: transparent !important;
+  border-width: 1px !important;
+  border-color: transparent !important;
+  border-radius: 0 !important;
   background-color: transparent !important;
   opacity: 1 !important;
   font-family: $p-font-family !important;
@@ -68,12 +69,16 @@
 
 // Read only
 ::slotted(input:not(:disabled):read-only) {
+  border-width: 0 !important;
+  padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.01) !important;
   color: $p-color-theme-light-neutral-contrast-medium !important;
 }
 
 // Disabled
 ::slotted(input:disabled) {
+  border-width: 0 !important;
+  padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-theme-light-state-disabled !important;
   -webkit-text-fill-color: $p-color-theme-light-state-disabled !important; // fix placeholder color bug in Safari
@@ -91,6 +96,17 @@
   -moz-appearance: none !important;
   appearance: none !important;
   margin: 0 !important;
+}
+
+// Reset webkit autofill styles
+::slotted(input:-internal-autofill-selected),
+::slotted(input:-internal-autofill-previewed) {
+  -webkit-background-clip: padding-box !important;
+}
+
+::slotted(input:-webkit-autofill),
+::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
 }
 
 .#{$p-global-class-prefix}text-field-wrapper {
