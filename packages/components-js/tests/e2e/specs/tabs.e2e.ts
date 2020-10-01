@@ -5,10 +5,12 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  TABS_SCROLL_PERCENTAGE,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
+
+export const TABS_SCROLL_PERCENTAGE = 0.2;
+export const CSS_ANIMATION_DURATION = 1000;
 
 describe('tabs', () => {
   let page: Page;
@@ -352,7 +354,7 @@ describe('tabs', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -402,19 +404,19 @@ describe('tabs', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
     await prevButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -511,7 +513,7 @@ describe('tabs', () => {
 
     await allTabs[4].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab3offset = await getProperty(allTabs[4], 'offsetLeft');
     const scrollDistanceRight = +tab3offset - +gradientWidth;
@@ -519,7 +521,7 @@ describe('tabs', () => {
 
     await allTabs[3].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab2offset = await getProperty(allTabs[3], 'offsetLeft');
     const tabWidth = await getProperty(allTabs[3], 'offsetWidth');
@@ -552,7 +554,7 @@ describe('tabs', () => {
 
     await allTabs[0].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(1000);
+    await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect((await getElementPositions(allTabs[0])).left).toEqual((await getElementPositions(statusBar)).left);
   });
