@@ -1,5 +1,6 @@
 import { JSX, Component, Prop, h, Element} from '@stencil/core';
 import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
+import { Theme } from '../../../types';
 
 @Component({
   tag: 'p-banner',
@@ -19,7 +20,7 @@ export class Banner {
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Adapts the banner color depending on the theme. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   private closeButton: HTMLButtonElement;
 
@@ -56,10 +57,10 @@ export class Banner {
     const bannerLabelId = prefix('banner-label');
     const bannerDescriptionId = prefix('banner-description');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-text', 'p-icon', 'p-button-pure']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-content-wrapper', 'p-headline', 'p-text', 'p-icon', 'p-button-pure']);
 
     return (
-      <p-content-wrapper
+      <PrefixedTagNames.pContentWrapper
         width={this.width}
         role="alertdialog"
         aria-labelledby={bannerLabelId}
@@ -94,12 +95,13 @@ export class Banner {
             )}
           </div>
         </div>
-      </p-content-wrapper>
+      </PrefixedTagNames.pContentWrapper>
     );
   }
 
   private handleKeyboardEvents(e: KeyboardEvent): void {
-    if(e.key === 'Esc' || e.key === 'Escape') {
+    const { key } = e;
+    if(key === 'Esc' || key === 'Escape') {
       this.removeBanner();
     }
   }

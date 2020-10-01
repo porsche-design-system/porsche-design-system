@@ -21,7 +21,7 @@ export namespace Components {
         /**
           * Adapts the banner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
@@ -826,7 +826,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the banner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
