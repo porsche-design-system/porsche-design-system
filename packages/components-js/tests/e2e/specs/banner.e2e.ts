@@ -46,24 +46,21 @@ describe('banner', () => {
 
   it('should remove banner from DOM by click on close button', async () => {
     await setContentWithDesignSystem(page, `
-      <div id="wrapper">
-        <p-banner>
-          <span slot="title">Some notification title</span>
-          <span slot="description">Some notification description.</span>
-        </p-banner>
-      </div>
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
     `);
 
     const innerButton = await getBannerButton();
 
     // we have to wait for the CSS fade in animation of the banner
-    setTimeout(async () => {
-      await innerButton.click();
-      await waitForStencilLifecycle(page);
-      expect(await getBannerHost()).toHaveClass('p-banner--close');
-      expect(await getBannerHost()).toBeNull();
-    }, 2000);
-
+    await page.waitFor(2000);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    // we have to wait for the animation to end before the dom is cleared
+    await page.waitFor(1000);
+    expect(await getBannerHost()).toBeNull();
   });
 
 });

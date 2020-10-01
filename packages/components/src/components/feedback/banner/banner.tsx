@@ -85,7 +85,7 @@ export class Banner {
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
-                  onClick={this.removeBanner()}
+                  onClick={this.removeBanner}
                   ref={(el) => (this.closeButton = el)}
                 >
                   Close notification
@@ -104,13 +104,12 @@ export class Banner {
     }
   }
 
-  private removeBanner(): void {
+  private removeBanner = (): void => {
     this.host.classList.add(prefix('banner--close'));
     setTimeout(() => {
       this.host.remove();
-    }, 1000);
-
-  }
+    },1000);
+  };
 
   private get isTitleDefined(): boolean {
     return !!this.host.querySelector('[slot="title"]');
