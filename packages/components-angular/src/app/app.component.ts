@@ -42,7 +42,7 @@ export class AppComponent {
     {path: 'select-wrapper', name: 'Select'},
     {path: 'spinner', name: 'Spinner'},
     {path: 'tabs', name: 'Tabs'},
-    {path: 'tabs-nav', name: 'Tabs Nav'},
+    {path: 'tabs-bar', name: 'Tabs Bar'},
     {path: 'text', name: 'Text'},
     {path: 'text-field-wrapper', name: 'Text Field'},
     {path: 'text-list', name: 'Text List'},

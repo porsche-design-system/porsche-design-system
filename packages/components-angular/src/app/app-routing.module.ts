@@ -88,7 +88,7 @@ const appRoutes: Routes = [
     component: pages.TabsComponent
   },
   {
-    path: 'tabs-nav',
+    path: 'tabs-bar',
     component: pages.TabsBarComponent
   },
   {
