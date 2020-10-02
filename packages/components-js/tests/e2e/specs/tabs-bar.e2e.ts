@@ -11,7 +11,7 @@ import {
 } from '../helpers';
 import { CSS_ANIMATION_DURATION, TABS_SCROLL_PERCENTAGE } from './tabs.e2e';
 
-describe('tabs-nav', () => {
+describe('tabs-bar', () => {
   let page: Page;
   beforeEach(async () => {
     page = await getBrowser().newPage();
