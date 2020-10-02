@@ -37,13 +37,22 @@ import { Component } from '@angular/core';
       </p-textarea-wrapper>
     </div>
 
+    <div class="playground light" title="should render in required state">
+      <p-textarea-wrapper [label]="'Some label'">
+        <textarea name="some-name" required></textarea>
+      </p-textarea-wrapper>
+      <p-textarea-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <textarea name="some-name" required></textarea>
+      </p-textarea-wrapper>
+    </div>
+
     <div class="playground light" title="should render in disabled state">
       <p-textarea-wrapper [label]="'Some label'" [description]="'Some description'">
         <textarea name="some-name" disabled></textarea>
       </p-textarea-wrapper>
     </div>
 
-    <div class="playground light" title="should render with placeholder with disabled state">
+    <div class="playground light" title="should render with placeholder in disabled state">
       <p-textarea-wrapper [label]="'Some label'">
         <textarea name="some-name" disabled placeholder="Some placeholder"></textarea>
       </p-textarea-wrapper>
