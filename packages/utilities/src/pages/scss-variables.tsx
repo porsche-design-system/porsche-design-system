@@ -39,7 +39,7 @@ const darkThemeColors = {
   'theme-dark-brand': '#d5001c',
   'theme-dark-default': '#fff',
   'theme-dark-background-default': '#0e1418',
-  'theme-dark-background-surface': '#1a2023',
+  'theme-dark-background-surface': '#262b2e',
   'theme-dark-background-shading': 'rgba(14, 20, 24, 0.9)',
   'theme-dark-neutral-contrast-high': '#e3e4e5',
   'theme-dark-neutral-contrast-medium': '#b0b1b2',
@@ -48,8 +48,8 @@ const darkThemeColors = {
   'theme-dark-notification-warning': '#ff9b00',
   'theme-dark-notification-error': '#fc1717',
   'theme-dark-notification-neutral': '#2193ff',
-  'theme-dark-state-hover': '#d5001c',
-  'theme-dark-state-active': '#d5001c',
+  'theme-dark-state-hover': '#ff0223',
+  'theme-dark-state-active': '#ff0223',
   'theme-dark-state-focus': '#00d5b9',
   'theme-dark-state-disabled': '#7c7f81'
 };
