@@ -45,6 +45,24 @@ import { Component } from '@angular/core';
       </p-checkbox-wrapper>
     </div>
 
+    <div class="playground light" title="should render in required state">
+      <p-checkbox-wrapper [label]="'Some label'">
+        <input type="checkbox" name="some-name" required />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <input type="checkbox" name="some-name" required />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'">
+        <input type="checkbox" name="some-name" required disabled />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'">
+        <input type="checkbox" name="some-name" required checked />
+      </p-checkbox-wrapper>
+      <p-checkbox-wrapper [label]="'Some label'">
+        <input type="checkbox" name="some-name" required checked disabled />
+      </p-checkbox-wrapper>
+    </div>
+
     <div class="playground light" title="should render in disabled state">
       <p-checkbox-wrapper [label]="'Some label'">
         <input type="checkbox" name="some-name" disabled />

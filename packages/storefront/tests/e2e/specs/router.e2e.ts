@@ -1,4 +1,4 @@
-import { getBrowser, options } from '../helpers/setup';
+import { getBrowser, options } from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('router', () => {
