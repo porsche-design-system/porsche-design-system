@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element} from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
 import { Theme } from '../../../types';
 
@@ -24,20 +24,25 @@ export class Banner {
 
   private closeButton: HTMLButtonElement;
 
+  public connectedCallback(): void {
+    if (!this.persistent) {
+      document.addEventListener('keydown', this.handleKeyboardEvents);
+    }
+  }
+
   public componentWillLoad(): void {
     this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
     if (!this.persistent) {
-      document.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
       this.closeButton.focus();
     }
   }
 
   public disconnectedCallback(): void {
     if (!this.persistent) {
-      document.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      document.removeEventListener('keydown', this.handleKeyboardEvents);
     }
   }
 
@@ -57,7 +62,13 @@ export class Banner {
     const bannerLabelId = prefix('banner-label');
     const bannerDescriptionId = prefix('banner-description');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-content-wrapper', 'p-headline', 'p-text', 'p-icon', 'p-button-pure']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, [
+      'p-content-wrapper',
+      'p-headline',
+      'p-text',
+      'p-icon',
+      'p-button-pure'
+    ]);
 
     return (
       <PrefixedTagNames.pContentWrapper
@@ -68,17 +79,17 @@ export class Banner {
       >
         <div class={bannerClasses}>
           {this.state !== 'neutral' && (
-            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses}/>
+            <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses} />
           )}
           <div class={contentClasses}>
             {this.isTitleDefined && (
               <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId} class={titleClasses}>
-                <slot name="title"/>
+                <slot name="title" />
               </PrefixedTagNames.pHeadline>
             )}
             {this.isDescriptionDefined && (
               <PrefixedTagNames.pText id={bannerDescriptionId} class={descriptionClasses}>
-                <slot name="description"/>
+                <slot name="description" />
               </PrefixedTagNames.pText>
             )}
             {!this.persistent && (
@@ -99,18 +110,18 @@ export class Banner {
     );
   }
 
-  private handleKeyboardEvents(e: KeyboardEvent): void {
+  private handleKeyboardEvents = (e: KeyboardEvent): void => {
     const { key } = e;
-    if(key === 'Esc' || key === 'Escape') {
+    if (key === 'Esc' || key === 'Escape') {
       this.removeBanner();
     }
-  }
+  };
 
   private removeBanner = (): void => {
     this.host.classList.add(prefix('banner--close'));
     setTimeout(() => {
       this.host.remove();
-    },1000);
+    }, 1000);
   };
 
   private get isTitleDefined(): boolean {
