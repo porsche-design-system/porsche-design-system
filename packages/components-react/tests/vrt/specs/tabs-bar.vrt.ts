@@ -5,9 +5,9 @@ describe('TabsBar', () => {
     const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
-        'tabs-nav',
+        'tabs-bar',
         async () => {
-          await vrt.goTo('/tabs-nav');
+          await vrt.goTo('/tabs-bar');
         },
         testOptions
       )

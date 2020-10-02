@@ -1,9 +1,9 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" @click="updateFramework('vanilla-js')">Vanilla JS</button>
-      <button type="button" @click="updateFramework('angular')">Angular</button>
-      <button type="button" @click="updateFramework('react')">React</button>
+      <button class="test-button" type="button" @click="updateFramework('vanilla-js')">Vanilla JS</button>
+      <button class="test-button" type="button" @click="updateFramework('angular')">Angular</button>
+      <button class="test-button" type="button" @click="updateFramework('react')">React</button>
     </p-tabs-bar>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>

@@ -138,7 +138,6 @@ export class TabsBar {
     const gradientWidths = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map(
       (item) => item.offsetWidth
     );
-    console.log(this.tabsScrollArea);
     this.tabsScrollArea.scrollLeft = this.tabs[this.activeTabIndex].offsetLeft - gradientWidths[1];
   };
 

@@ -16,7 +16,7 @@ type PartialState = Pick<State, 'selectedFramework'>;
 describe('CodeBlock.vue', () => {
   Vue.use(Vuex);
 
-  const stubs = ['p-text'];
+  const stubs = ['p-text', 'p-tabs-bar'];
   const store: Store<PartialState> = new Vuex.Store({
     state: {
       selectedFramework: 'vanilla-js'
@@ -32,7 +32,7 @@ describe('CodeBlock.vue', () => {
   });
 
   const getTabButton = (wrapper: Wrapper<Vue>, type: 'vanillajs' | 'angular' | 'react'): Wrapper<Vue> =>
-    wrapper.find(`.tabs .tab:nth-child(${['vanillajs', 'angular', 'react'].indexOf(type) + 1}) button`);
+    wrapper.find(`.test-button:nth-child(${['vanillajs', 'angular', 'react'].indexOf(type) + 1})`);
 
   beforeEach(() => {
     store.commit('setSelectedFramework', 'vanilla-js');
@@ -50,8 +50,8 @@ describe('CodeBlock.vue', () => {
     });
 
     const btn = getTabButton(wrapper, 'vanillajs');
-    expect(btn.text()).toBe('Vanilla JS');
-    expect(btn.classes()).toContain('is-active');
+    expect(btn.text()).toBe('Vanilla JS')
+
     expect(wrapper.find('code').text()).toBe(
       `<p-some-tag some-attribute="some value">
   <span>some text</span>
@@ -78,7 +78,6 @@ describe('CodeBlock.vue', () => {
 
     await tick();
 
-    expect(btn.classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
       `<p-some-tag [someAttribute]="'some value'">
   <span>some text</span>
@@ -105,7 +104,6 @@ describe('CodeBlock.vue', () => {
 
     await tick();
 
-    expect(btn.classes()).toContain('is-active');
     expect(wrapper.find('code').text()).toBe(
       `<PSomeTag someAttribute="some value">
   <span>some text</span>

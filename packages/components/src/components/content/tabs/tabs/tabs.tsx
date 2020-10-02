@@ -64,13 +64,15 @@ export class Tabs {
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
           >
-            {this.tabsItems.map((tab, index) => {
-              return (
-                <button type="button" aria-controls={prefix(`tab-panel-${index}`)} onClick={() => this.handleTabClick(index)}>
-                  {tab.label}
-                </button>
-              );
-            })}
+            {this.tabsItems.map((tab, index) => (
+              <button
+                type="button"
+                aria-controls={prefix(`tab-panel-${index}`)}
+                onClick={() => this.handleTabClick(index)}
+              >
+                {tab.label}
+              </button>
+            ))}
           </PrefixedTagNames.pTabsBar>
         </div>
         <slot />
