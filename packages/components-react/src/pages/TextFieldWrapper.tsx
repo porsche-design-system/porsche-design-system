@@ -38,13 +38,22 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </TextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render with disabled state">
+      <div className="playground light" title="should render in required state">
+        <TextFieldWrapper label="Some label">
+          <input type="text" name="some-name" required />
+        </TextFieldWrapper>
+        <TextFieldWrapper label="This is a very insanely super long label across multiple lines">
+          <input type="text" name="some-name" required />
+        </TextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render in disabled state">
         <TextFieldWrapper label="Some label" description="Some description">
           <input type="text" name="some-name" disabled />
         </TextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render with placeholder with disabled state">
+      <div className="playground light" title="should render with placeholder in disabled state">
         <TextFieldWrapper label="Some label">
           <input type="text" name="some-name" placeholder="Some placeholder" disabled />
         </TextFieldWrapper>
