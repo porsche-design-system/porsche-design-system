@@ -37,13 +37,22 @@ import { Component } from '@angular/core';
       </p-text-field-wrapper>
     </div>
 
-    <div class="playground light" title="should render with disabled state">
+    <div class="playground light" title="should render in required state">
+      <p-text-field-wrapper [label]="'Some label'">
+        <input type="text" name="some-name" required />
+      </p-text-field-wrapper>
+      <p-text-field-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <input type="text" name="some-name" required />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground light" title="should render in disabled state">
       <p-text-field-wrapper [label]="'Some label'" [description]="'Some description'">
         <input type="text" name="some-name" disabled />
       </p-text-field-wrapper>
     </div>
 
-    <div class="playground light" title="should render with placeholder with disabled state">
+    <div class="playground light" title="should render with placeholder in disabled state">
       <p-text-field-wrapper [label]="'Some label'">
         <input type="text" name="some-name" placeholder="Some placeholder" disabled />
       </p-text-field-wrapper>
