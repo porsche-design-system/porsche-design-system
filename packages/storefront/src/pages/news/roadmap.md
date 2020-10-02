@@ -7,11 +7,15 @@ More details about the actual backlog and work in progress can be found in our p
 ## Milestones in Progress
 
 ### Version 2.0 Stable
+* 2.0 stable release
+* 2.0 RC release
 * Adjust CDN security settings
 * Sample Project Integration Checks
 * Improve CDN settings and China delivery ✅
 * Move components to CDN ✅
+* Extend optional runtime scoping mechanism of Web Components ✅
 * Change Design System loader configuration ✅
+* Improved Porsche Next Font ✅
 
 ### Browser Compatibility
 * Browser Notification Overlay (v2) ⚙️ 
@@ -19,120 +23,108 @@ More details about the actual backlog and work in progress can be found in our p
 * Change Browser Compatibility & Documentation ✅
 * Provide Browser Notification Banner (v1) ✅
 
-### Generic Components & Utilities Optimization
+### Generic Components
 * Tabs ⚙️ 
 * Combobox (Extended Select) ⚙️ 
 * Banner ⚙️ 
 * Modal Dialog
-* Improved Porsche Next Font ✅
 
 ### Patterns
 * Offer Form Validation Pattern ✅
 * Update Button Pattern ✅
 
-### Storefront Optimization
-* General Storefront Optimization
-  
 ---
 
 ## Milestones Completed and Released
 
 ### Assets Package: Marque, Icons and Font refinement 
-* Favicon and Touch Icons
-* Marque Refinement
-* Improved Porsche Next Font
-* Provide CSS Font-Face definitions
-* Refine Basic Icon Set
-
-### CDN and Infrastructure
-* Deliver Web Components by CDN
-* Extend optional runtime scoping mechanism of Web Components
+* Favicon and Touch Icons ✅
+* Marque Refinement ✅
+* Provide CSS Font-Face definitions ✅
+* Refine Basic Icon Set ✅
 
 ### Loading Behavior/FOUC/SSR
-* Spike: Challenge Web Components regarding loading behaviour, Flash of Unstyled Content and Server-Side Rendering
-* Integration example of web components to avoid FOUC
+* Spike: Challenge Web Components regarding loading behaviour, Flash of Unstyled Content and Server-Side Rendering ✅
+* Integration example of web components to avoid FOUC/FOUT ✅
 
 ### Capabilities and Testing
-* Enable React testing with Jest and JSDOM
-* Setup sample integration projects for Angular/React/Gatsby/NextJS
-* Enable SSR support
+* Enable React testing with Jest and JSDOM ✅
+* Setup sample integration projects for Angular/React/Gatsby/NextJS ✅
+* Enable SSR support for NextJS and Gatsby ✅
 
 ### Patterns
-* Offer pre-build form patterns
-* Offer pre-build button and link patterns
+* Offer pre-build form patterns ✅
+* Offer pre-build button and link patterns ✅
 
 ### Basic Components
-* Refine Pagination component
-* Release Text List component
-* Release Form Fieldset component
-* Release Button Social component
-* Release Divider component
-* Update notification colors for light and dark theme to meet accessibility contrasts
+* Release Text List component ✅
+* Release Form Fieldset component ✅
+* Release Button Social component ✅
+* Release Divider component ✅
 
 ### Icon Enhancement
-* Refine existing icons
-* Add new icons for Porsche Product App
-* Optimize icon workflow and automatisation
+* Refine existing icons ✅
+* Add new icons for Porsche Product App ✅
 
 ### Form Elements
-* Release Form components: Text Field, Textarea, Select, Checkbox, Radio Button
+* Release Form components: Text Field, Textarea, Select, Checkbox, Radio Button ✅
 
 ### Release 1.0 Stable
-* Stable Sketch library without plugin dependencies (replacement of Anima plugin with native Smart Layout functions)
-* Refactoring of component APIs (events, objects, inherits)
-* Refinement of design basics and utils (text, spacings and colors)
-* Refinement of font handling including introduction of SemiBold font weight for headlines
-* Refinement of focus states
-* Ensuring stabilization and performance of packages and pipeline
-* Icon refinement for 1.0 stable
-* Enhance test covering of existing components
-* Enhance storefront tests
-* Establish automated cross browser testing (including IE11)
+* Stable Sketch library without plugin dependencies (replacement of Anima plugin with native Smart Layout functions) ✅
+* Refactoring of component APIs (events, objects, inherits) ✅
+* Refinement of design basics and utils (text, spacings and colors) ✅
+* Refinement of font handling including introduction of SemiBold font weight for headlines ✅
+* Refinement of focus states ✅
+* Ensuring stabilization and performance of packages and pipeline ✅
+* Icon refinement for 1.0 stable ✅
+* Enhance test covering of existing components ✅
+* Enhance storefront tests ✅
+* Establish automated cross browser testing (including IE11) ✅
 
 ### 1.0 Alpha release
-* Auto generation of Angular and React components
-* Finalize marque component
-* Refactor packages for Alpha 1.0 release including documentation
-* Alpha 1.0 release
+* Auto generation of Angular and React components ✅
+* Finalize marque component ✅
+* Refactor packages for Alpha 1.0 release including documentation ✅
+* Alpha 1.0 release ✅
 
 ### Launch Porsche Icon Collection
-* Release icon collection 1.0 alpha
+* Release icon collection 1.0 alpha ✅
 
 ### Setup Porsche Design System CDN
-- Setup Porsche Design System CDN
-- Host and Manage Assets Icons, Porsche crest and fonts
+- Setup Porsche Design System CDN ✅
+- Host and Manage Assets Icons, Porsche crest and fonts ✅
 
 ### Finalize the style foundations
-- Color styles
-- Layout (Flex, Grid) and Spacings
-- Typography Styles
-- Consolidate current icon collection
-- Form patterns and elements research
-- Typography research and testing
+- Color styles ✅
+- Layout (Flex, Grid) and Spacings ✅
+- Typography Styles ✅
+- Consolidate current icon collection ✅
+- Form patterns and elements research ✅
+- Typography research and testing ✅
 
 ### Web Component Preparation
-- Spike StencilJS and interview consumers
-- Foundation preparation
-- Rebuild and launch Storefront React as Vue application
+- Spike StencilJS and interview consumers ✅
+- Foundation preparation ✅
+- Rebuild and launch Storefront React as Vue application ✅
 
 ### Development of components for 1.0 alpha release
-- Typography (Text and Headline)
-- Button Regular
-- Button Icon
-- Spinner
-- Various form element components for testing purpose
+- Typography (Text and Headline) ✅
+- Button Regular ✅
+- Button Icon ✅
+- Spinner ✅
+- Various form element components for testing purpose ✅
 
 ### Setup infrastructure and toolchain for 1.0 release
-- Setup Open Design Tools and Processes (Abstract)
-- Provide versioned Design Libraries Basic and Web
-- Design and develop first release of the Design System Website 1.0 (https://designsystem.porsche.com)
-- Setup code distribution infrastructure (NPM Registry)
-- Setup development and contribution infrastructure (GitHub, CI/CD)
-- Define User- and Access-Management
+- Setup Open Design Tools and Processes (Abstract) ✅
+- Provide versioned Design Libraries Basic and Web ✅
+- Design and develop first release of the Design System Storefront ✅
+- Setup code distribution infrastructure (NPM Registry) ✅
+- Setup development and contribution infrastructure (GitHub, CI/CD) ✅
+- Define User- and Access-Management ✅
 
 ### Collaboration and Communication 
-- Define Issuemanagement internal/external (GitHub)
-- Define and document Contribution Workflow
-- Publish usage and contribution guidelines
-- Publish FAQs based on community feedback
-- Setup communication channels (Email, Slack) and ressources
+- Define Issue Management internal/external (GitHub) ✅
+- Define and document Contribution Workflow ✅
+- Publish usage and contribution guidelines ✅
+- Publish FAQs based on community feedback ✅
+- Setup communication channels (Email, Slack) and ressources ✅
