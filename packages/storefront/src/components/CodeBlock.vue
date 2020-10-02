@@ -25,8 +25,7 @@
     @Prop({ default: 'light' }) public theme!: Theme;
 
     public get activeTabIndex(): number {
-      const index = ['vanilla-js', 'angular', 'react'].indexOf(this.framework);
-      return index >= 0 ? index : 0;
+      return ['vanilla-js', 'angular', 'react'].indexOf(this.framework);
     }
 
     public get framework(): Framework {

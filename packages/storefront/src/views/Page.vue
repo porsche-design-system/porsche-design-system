@@ -32,8 +32,7 @@ export default class Page extends Vue {
   }
 
   public get activeTabIndex(): number {
-    const index = this.tabs.indexOf(this.tab);
-    return index >= 0 ? index : 0;
+    return this.tabs.indexOf(this.tab);
   }
 
   public get tabs(): string[] {
