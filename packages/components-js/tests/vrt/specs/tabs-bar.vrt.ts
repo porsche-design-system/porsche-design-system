@@ -1,13 +1,13 @@
 import { getVisualRegressionTester, testOptions } from '../helpers';
 
-describe('Tabs Nav', () => {
+describe('Tabs Bar', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
-        'tabs-nav',
+        'tabs-bar',
         async () => {
-          await vrt.goTo('/#tabs-nav');
+          await vrt.goTo('/#tabs-bar');
         },
         testOptions
       )
