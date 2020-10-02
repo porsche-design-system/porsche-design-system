@@ -9,7 +9,7 @@ boost your application, so make sure to keep reading.
 ## Unstyled Porsche Design System Components
 
 If you use `Porsche Design System` components, we take care that your application only renders a component if it is fully styled.
-But there is a blink until our core is loaded and we can take action. This short timespan has to be covered.
+However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
 There are two ways to get rid of FOUC. We provide partials in our `@porsche-design-system/partials` package for you to import into the `<head>` of your `index.html`.
 The example shows how to implement a partial in a webpack project. 
@@ -26,6 +26,27 @@ update the list when you upgrade the version of the `Porsche Design Sytem` with 
 <head>
   <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
 </head>
+``` 
+
+### Example usage with placeholder 
+
+If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script. 
+
+``` 
+// index.html
+
+<head>
+  <!--PLACEHOLDER_CORE_STYLES-->
+</head>
+``` 
+
+```
+// package.json
+
+"scripts": {
+    "prestart": "yarn replace",
+    "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getPorscheDesignSystemCoreStyles())') && regex='<!--PLACEHOLDER_CORE_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+} 
 ``` 
 
 ### Example usage static
@@ -61,30 +82,51 @@ to grant you a valid fallback.
 
 ```
 // index.html
-// Using template syntax
-<head>
-  <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
-</head>
 
-// Static solution
-// If you use the static solution watch your console output. We notify if changes happen.
 <head>
+  // Using template syntax
+  <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+
+  // Static solution
+  // Make sure to watch your console output. We notify you about any changes.
   {{fontFaceCSS}}
 </head>
 ```
 
+
+#### Example with placeholder 
+
+``` 
+// index.html
+
+<head>
+  <!--PLACEHOLDER_FONT_FACE_CSS-->
+</head>
+``` 
+
+```
+// package.json
+
+"scripts": {
+    "prestart": "yarn replace",
+    "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getFontFaceCSS())') && regex='<!--PLACEHOLDER_FONT_FACE_CSS-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+} 
+``` 
+
 ### Preload specific Fonts
 
 Fonts should be loaded as soon as possible but only those which are needed. The Porsche Design System is not able to determine which components
-you use on the site and which fonts we have to provide initially but we export all resources you need to preload fonts and solve 'Flash of Unstyled Text' in your application
+you use on the site and which fonts we have to provide initially, but we export all resources you need to preload fonts and solve 'Flash of Unstyled Text' in your application
 
-We provide all URL´s you need in the `@porsche-design-system/assets` package.
+We provide all URLs that you need in the `@porsche-design-system/assets` package.
 Use the const `FONTS_CDN_BASE_URL` which is the basic path to the CDN and the object `FONTS_MANIFEST` which contains the filenames of all `fonts` 
-and according `weights` in either `woff` or `woff2` file format. Combine the path and filename to preload them as `href` in a `<Link>` at the head of your `index.html`.
+and according `weights` in either `woff` or `woff2` file format. Combine the path and filename to preload them via `href` with a `<link>` tag at the head of your `index.html`.
 
 #### Example preload
 
 ```
+// index.html
+
 <head>
  <link
    rel="preload"
@@ -104,6 +146,11 @@ import Component from 'vue-class-component';
   @Component
   export default class FlashOfUnstyledContent extends Vue {
     public fontFaceCSS = getFontFaceCSS();
-    public coreStyles = getPorscheDesignSystemCoreStyles().replace('>', '>\n    ').replace(/,/g, ',\n    ').replace('}', '}\n  ');
+    public coreStyles = getPorscheDesignSystemCoreStyles()
+        .replace('>', '>\n    ') // add new line and some white space after '>'
+        .replace(/,/g, ',\n    ') // add new line and some white space after ','
+        .replace('}', '}\n  ') // add new line and some white space after '}'
+        .replace(/({|}|:)/g, ' $1 ') // add space before and after '{', '}', ':'
+        .replace(' :', ':'); // remove space before ':'
   }
 </script>
