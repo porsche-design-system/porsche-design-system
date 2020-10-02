@@ -5,6 +5,7 @@ More details about the actual backlog and work in progress can be found in our p
 [Open Design System Board on GitHub (permission required)](https://github.com/porscheui/porsche-design-system/projects)
 
 ## Milestones in Progress
+Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
 
 ### Version 2.0 Stable
 * 2.0 stable release
@@ -36,6 +37,7 @@ More details about the actual backlog and work in progress can be found in our p
 ---
 
 ## Milestones Completed and Released
+Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
 
 ### Assets Package: Marque, Icons and Font refinement 
 * Favicon and Touch Icons ✅
