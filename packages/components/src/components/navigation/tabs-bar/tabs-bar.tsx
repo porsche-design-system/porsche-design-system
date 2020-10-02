@@ -93,7 +93,7 @@ export class TabsBar {
 
     return (
       <div class={tabsNavClasses}>
-        <div class={scrollAreaClasses}>
+        <div class={scrollAreaClasses} role="tablist">
           <slot />
           <span class={statusBarClasses} />
         </div>
@@ -140,6 +140,7 @@ export class TabsBar {
     const navList = getHTMLElements(this.host, 'a,button');
     for (const [index, link] of Object.entries(navList)) {
       link.addEventListener('click', () => this.handleTabClick(+index));
+      this.setAccessibilityAttributes(link, +index);
     }
   };
 
@@ -161,8 +162,12 @@ export class TabsBar {
     const maxIndex = this.tabs.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
     const activeTabClassName = 'selected';
-    this.tabs.forEach((tab) => tab.classList.remove(activeTabClassName));
+    this.tabs.forEach((tab) => {
+      tab.setAttribute('tabIndex', '-1');
+      tab.classList.remove(activeTabClassName);
+    });
     this.tabs[this.activeTabIndex].classList.add(activeTabClassName);
+    this.tabs[this.activeTabIndex].setAttribute('tabIndex', '0');
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
@@ -218,5 +223,18 @@ export class TabsBar {
     const tabsLength = this.tabs.length;
     const newTabIndex = this.activeTabIndex + (direction === 'next' ? 1 : -1);
     return (newTabIndex + tabsLength) % tabsLength;
+  };
+
+  private setAccessibilityAttributes = (tab: HTMLElement, index: number): void => {
+    const isSelected = this.activeTabIndex === index;
+    const attrs = {
+      role: 'tab',
+      tabindex: isSelected ? 0 : -1,
+      'aria-controls': prefix(`tab-panel-${index}`)
+    };
+    // eslint-disable-next-line
+    for (const key in attrs) {
+      tab.setAttribute(key, attrs[key]);
+    }
   };
 }
