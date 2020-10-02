@@ -4,10 +4,10 @@ import React from 'react';
 export const BannerPage = (): JSX.Element => {
   const style = `
     .playground p-banner {
-      position: static !important;
+      --p-banner-position-type: static;
     }
     .content-wrapper {
-      padding: 200px 0;
+      padding: 300px 0;
     }
   `;
   return (
@@ -16,7 +16,7 @@ export const BannerPage = (): JSX.Element => {
 
       <div title="should show banner neutral position fixed">
         <Banner>
-          <span slot="title">Some notification title</span>
+          <span slot="title">Some notification position fixed (1)</span>
           <span slot="description">Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.</span>
         </Banner>
       </div>
