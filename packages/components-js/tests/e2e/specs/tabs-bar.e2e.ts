@@ -19,7 +19,9 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
-  const getAllAnchorElements = () => page.$$('a');
+  const getAllTabs = () => page.$$('a,button');
+  const getAllAnchors = () => page.$$('a');
+  const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
@@ -31,24 +33,51 @@ describe('tabs-bar', () => {
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
 
+  it('should render correct with anchor and button ', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+       <p-tabs-bar active-tab-index="1">
+        <button>
+          Content 1
+        </button>
+        <button>
+          Content 2
+        </button>
+        <a href="#">
+          Content 3
+        </a>
+        <a  href="#">
+          Content 4
+        </a>
+      </p-tabs-bar>
+    `
+    );
+    const allAnchors = await getAllAnchors();
+    const allButtons = await getAllButtons();
+
+    expect(allAnchors.length).toBe(2);
+    expect(allButtons.length).toBe(2);
+  });
+
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
       page,
       `
        <p-tabs-bar active-tab-index="1">
-        <a href="#content1">
+        <button>
           Content1
-        </a>
-        <a href="#content2">
+        </button>
+        <button>
           Content2
-        </a>
-        <a href="#content3">
+        </button>
+        <button>
           Content3
-        </a>
+        </button>
       </p-tabs-bar>
     `
     );
-    const allAnchors = await getAllAnchorElements();
+    const allAnchors = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allAnchors[0], 'class')).toBeNull();
@@ -61,19 +90,19 @@ describe('tabs-bar', () => {
       page,
       `
        <p-tabs-bar active-tab-index="0">
-        <a href="#content1">
+        <button>
           Content1
-        </a>
-        <a selected href="#content2">
+        </button>
+        <button selected>
           Content2
-        </a>
-        <a selected href="#content3">
+        </button>
+        <button selected>
           Content3
-        </a>
+        </button>
       </p-tabs-bar>
     `
     );
-    const allAnchors = await getAllAnchorElements();
+    const allAnchors = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allAnchors[0], 'class')).toContain('selected');
@@ -87,30 +116,30 @@ describe('tabs-bar', () => {
       `
       <div style="width: 400px">
        <p-tabs-bar size="medium">
-          <a href="#content1">
+          <button>
             Content1
-          </a>
-          <a href="#content2">
+          </button>
+          <button>
             Content2
-          </a>
-          <a href="#content3">
+          </button>
+          <button>
             Content3
-          </a>
-           <a href="#content4">
+          </button>
+           <button>
             Content4
-          </a>
-          <a href="#content5">
+          </button>
+          <button>
             Content5
-          </a>
-          <a href="#content6">
+          </button>
+          <button>
             Content6
-          </a>
-           <a href="#content7">
+          </button>
+           <button>
             Content7
-          </a>
-          <a href="#content8">
+          </button>
+          <button>
             Content8
-          </a>
+          </button>
         </p-tabs-bar>
       </div>
     `
@@ -135,30 +164,30 @@ describe('tabs-bar', () => {
       `
       <div style="width: 400px">
        <p-tabs-bar size="medium">
-          <a href="#content1">
+          <button>
             Content1
-          </a>
-          <a href="#content2">
+          </button>
+          <button>
             Content2
-          </a>
-          <a href="#content3">
+          </button>
+          <button>
             Content3
-          </a>
-           <a href="#content4">
+          </button>
+           <button>
             Content4
-          </a>
-          <a href="#content5">
+          </button>
+          <button>
             Content5
-          </a>
-          <a href="#content6">
+          </button>
+          <button>
             Content6
-          </a>
-           <a href="#content7">
+          </button>
+           <button>
             Content7
-          </a>
-          <a href="#content8">
+          </button>
+          <button>
             Content8
-          </a>
+          </button>
         </p-tabs-bar>
       </div>
     `
@@ -196,35 +225,35 @@ describe('tabs-bar', () => {
       `
       <div style="width: 400px">
        <p-tabs-bar active-tab-index="3" size="medium">
-          <a href="#content1">
+          <button>
             Content1
-          </a>
-          <a href="#content2">
+          </button>
+          <button>
             Content2
-          </a>
-          <a href="#content3">
+          </button>
+          <button>
             Content3
-          </a>
-           <a href="#content4">
+          </button>
+           <button>
             Content4
-          </a>
-          <a href="#content5">
+          </button>
+          <button>
             Content5
-          </a>
-          <a href="#content6">
+          </button>
+          <button>
             Content6
-          </a>
-           <a href="#content7">
+          </button>
+           <button>
             Content7
-          </a>
-          <a href="#content8">
+          </button>
+          <button>
             Content8
-          </a>
+          </button>
         </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllAnchorElements();
+    const allAnchors = await getAllButtons();
     const selectedTabOffset = await getProperty(allAnchors[3], 'offsetLeft');
     const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
@@ -242,35 +271,35 @@ describe('tabs-bar', () => {
       `
       <div style="width: 400px">
        <p-tabs-bar size="medium">
-          <a href="#content1">
+          <button>
             Content1
-          </a>
-          <a href="#content2">
+          </button>
+          <button>
             Content2
-          </a>
-          <a href="#content3">
+          </button>
+          <button>
             Content3
-          </a>
-           <a>
+          </button>
+           <button>
             Content4
-          </a>
-          <a>
+          </button>
+          <button>
             Content5
-          </a>
-          <a href="#content6">
+          </button>
+          <button>
             Content6
-          </a>
-           <a href="#content7">
+          </button>
+           <button>
             Content7
-          </a>
-          <a href="#content8">
+          </button>
+          <button>
             Content8
-          </a>
+          </button>
         </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllAnchorElements();
+    const allAnchors = await getAllButtons();
     const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
@@ -302,20 +331,20 @@ describe('tabs-bar', () => {
       `
       <div style="width: 400px">
        <p-tabs-bar active-tab-index="2" size="medium">
-          <a>
+          <button>
             Content1
-          </a>
-          <a href="#content2">
+          </button>
+          <button>
             Content2
-          </a>
-          <a href="#content3">
+          </button>
+          <button>
             Content3
-          </a>
+          </button>
         </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllAnchorElements();
+    const allAnchors = await getAllButtons();
     const statusBar = await getStatusBar();
     const tab3Position = (await getElementPositions(page, allAnchors[2])).left;
 
@@ -328,5 +357,141 @@ describe('tabs-bar', () => {
     expect((await getElementPositions(page, allAnchors[0])).left).toEqual(
       (await getElementPositions(page, statusBar)).left
     );
+  });
+
+  it('should render focus on selected tab on keyboard "tab" click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar>
+        <button>
+          Button 1
+        </button>
+        <button>
+          Button 2
+        </button>
+        <button>
+          Button 3
+        </button>
+      </p-tabs-bar>
+      `
+    );
+    const getButtonFocus = async () => {
+      const snapshot = await page.accessibility.snapshot();
+      const button = snapshot.children[0];
+      return button.focused;
+    };
+    expect(await getButtonFocus()).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await getButtonFocus()).toBe(true);
+  });
+
+  it('should render focus on content on keyboard "tab" click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar>
+        <button>
+          Button 1
+        </button>
+        <button>
+          Button 2
+        </button>
+        <button>
+          Button 3
+        </button>
+      </p-tabs-bar>
+      <p-text>Hallo <a href="#">Link</a></p-text>
+    `
+    );
+    const getLinkFocus = async () => {
+      const snapshot = await page.accessibility.snapshot();
+      const link = snapshot.children[snapshot.children.length - 1];
+      return link.focused;
+    };
+    expect(await getLinkFocus()).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+    expect(await getLinkFocus()).toBeUndefined();
+    await page.keyboard.press('Tab');
+
+    expect(await getLinkFocus()).toBe(true);
+  });
+
+  it('should render correct active tab on arrow-key press', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar>
+        <button>
+          Button 1
+        </button>
+        <button>
+          Button 2
+        </button>
+        <button>
+          Button 3
+        </button>
+      </p-tabs-bar>
+    `
+    );
+    const allTabs = await getAllTabs();
+
+    expect(await getAttribute(allTabs[0], 'class')).toContain('selected');
+    expect(await getAttribute(allTabs[1], 'class')).toBeNull();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(allTabs[1], 'class')).toContain('selected');
+    expect(await getAttribute(allTabs[0], 'class')).toBe('');
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(allTabs[0], 'class')).toContain('selected');
+    expect(await getAttribute(allTabs[1], 'class')).toBe('');
+  });
+
+  it('should render correct active tab on first/last or home/end press', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar active-tab-index="1">
+        <button label="Button1">
+          Content1
+        </button>
+        <button label="Button2">
+          Content2
+        </button>
+        <button label="Button3">
+          Content3
+        </button>
+      </p-tabs-bar>
+    `
+    );
+    const allTabs = await getAllTabs();
+    const firstButton = allTabs[0];
+    const lastButton = allTabs[allTabs.length - 1];
+
+    expect(await getAttribute(firstButton, 'class')).toBeNull();
+    expect(await getAttribute(allTabs[1], 'class')).toContain('selected');
+    expect(await getAttribute(lastButton, 'class')).toBeNull();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('End');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(lastButton, 'class')).toContain('selected');
+    expect(await getAttribute(firstButton, 'class')).toBeNull();
+
+    await page.keyboard.press('Home');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(firstButton, 'class')).toContain('selected');
+    expect(await getAttribute(lastButton, 'class')).toBe('');
   });
 });
