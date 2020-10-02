@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, State, Host } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
 import { TextWeight, Theme } from '../../../../types';
-import { getHTMLElements } from '../../../../utils/tabs-helper';
+import { getHTMLElements } from '../../../../utils/selector-helper';
 
 @Component({
   tag: 'p-tabs',
@@ -66,7 +66,7 @@ export class Tabs {
           >
             {this.tabsItems.map((tab, index) => {
               return (
-                <button type="button" onClick={() => this.handleTabClick(index)}>
+                <button type="button" aria-controls={prefix(`tab-panel-${index}`)} onClick={() => this.handleTabClick(index)}>
                   {tab.label}
                 </button>
               );
