@@ -68,16 +68,35 @@ This adds a `<script>` tag pointing to the browser notification banner JS snippe
   <body>
     <div id="app"></div>
 
-    <!-- Recommended integration: -->
+    <!-- inline version of the univeresal init script -->
+    <%= require('@porsche-design-system/browser-notification-banner').include() %>
+
+    <!-- Recommended integration: inline version of the banner or overlay init script -->
+    <%= require('@porsche-design-system/browser-notification-banner').includeBanner() %>
+    <%= require('@porsche-design-system/browser-notification-banner').includeOverlay() %>
+
+    <!-- Other integration: include remote init script -->
     <%= require('@porsche-design-system/browser-notification-banner').init() %>
 
     <!-- Advanced integration: This way only the JS url is returned which gives more flexibility by defining the <script> tag.
     In addition it gives the possibility to use and load it by your application JS code rather than in the index.html (be aware that 
     in this scenario your application code needs to be excectuable in IE11 and Edge<=18). -->
-    <script defer src="<%= require('@porsche-design-system/browser-notification-banner').init({withoutTags: true}) %>"></script>
-
+    <script defer src="<%= require('@porsche-design-system/browser-notification-banner').init({ withoutTags: true }) %>"></script>
   </body>
 </html>
+```
+
+##### Angular / Vanilla JS
+```
+// index.html
+<body>
+  <!--PLACEHOLDER-->
+</body>
+
+// package.json
+"scripts": {
+  "partial": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification-banner\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+}
 ```
 
 #### Translations
