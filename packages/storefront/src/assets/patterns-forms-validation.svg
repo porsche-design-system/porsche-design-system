@@ -8,6 +8,10 @@
     </defs>
     <g id="patterns-forms-validation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect fill="#FFFFFF" x="0" y="0" width="800" height="184"></rect>
+        <circle id="Oval-Copy-5" fill="#00D5B9" cx="447" cy="91" r="14"></circle>
+        <text id="2" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+            <tspan x="442.294118" y="97">2</tspan>
+        </text>
         <g id="Group-2-Copy" transform="translate(40.000000, 39.000000)">
             <g id="Group">
                 <g id="Stacked-Group">
@@ -29,24 +33,22 @@
                 </g>
             </g>
         </g>
-        <circle id="Oval-Copy-5" fill="#00D5B9" cx="454.375" cy="91" r="16"></circle>
-        <circle id="Oval-Copy-5" fill="#00D5B9" cx="210.375" cy="131" r="16"></circle>
-        <circle id="Oval-Copy-5" fill="#00D5B9" cx="125.375" cy="47" r="16"></circle>
-        <text id="2" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="449.669118" y="97">2</tspan>
-        </text>
-        <text id="3" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="205.669118" y="137">3</tspan>
-        </text>
-        <text id="1" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-            <tspan x="120.669118" y="53">1</tspan>
-        </text>
-        <line x1="452.75" y1="91.375" x2="417" y2="91.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
-        <line x1="208.75" y1="131.375" x2="173" y2="131.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
-        <line x1="123.75" y1="47.375" x2="88" y2="47.625" id="Line-Copy-8" stroke="#00D5B9" stroke-width="2" stroke-linecap="square"></line>
+        <g id="Group-2" transform="translate(86.000000, 33.000000)">
+            <circle id="Oval-Copy-5" fill="#00D5B9" cx="113" cy="99" r="14"></circle>
+            <circle id="Oval-Copy-5" fill="#00D5B9" cx="30" cy="14" r="14"></circle>
+            <text id="3" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+                <tspan x="108.294118" y="105">3</tspan>
+            </text>
+            <text id="1" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+                <tspan x="25.2941176" y="20">1</tspan>
+            </text>
+            <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="22 13 22 15 0 15 0 13"></polygon>
+            <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="105 98 105 100 83 100 83 98"></polygon>
+        </g>
         <mask id="mask-2" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
         <rect stroke-opacity="0.5" stroke="#C8CACB" x="0.5" y="0.5" width="799" height="183"></rect>
+        <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="439 90 439 92 417 92 417 90"></polygon>
     </g>
 </svg>

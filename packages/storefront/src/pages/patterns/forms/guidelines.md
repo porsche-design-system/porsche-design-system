@@ -235,7 +235,7 @@ Good forms provide **valuable support** – both **for success**, when the user
 
 ![Form layouts with error and success notification](../../../assets/patterns-forms-validation.svg)
 
-_Example input field with error | 1.Asterisk, 2.Error message, 3.Border highlight_
+_Example input field with error | 1.Asterisk, 2.Border highlight, 3.Error message_
 
 
 ### Client-side validation
