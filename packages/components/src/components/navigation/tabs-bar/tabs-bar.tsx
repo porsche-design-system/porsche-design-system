@@ -6,17 +6,11 @@ import {
   prefix
 } from '../../../utils';
 import { TextSize, TextWeight, Theme } from '../../../types';
-import {
-  ActionState,
-  Direction,
-  getHTMLElement,
-  getHTMLElements,
-  getStatusBarStyle,
-  registerIntersectionObserver,
-  scrollOnPrevNextClick,
-  scrollOnTabClick,
-  setInitialScroll
-} from '../../../utils/tabs-helper';
+import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+
+type Direction = 'next' | 'prev';
+type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
+const FOCUS_PADDING_WIDTH = 4;
 
 @Component({
   tag: 'p-tabs-bar',
@@ -64,11 +58,12 @@ export class TabsBar {
   }
 
   public componentDidRender(): void {
+    this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.updateStatusBarStyle();
   }
 
   public componentDidLoad(): void {
-    setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a,button' });
+    this.setInitialScroll();
     this.initKeyboardEventListener();
     this.initIntersectionObserver();
   }
@@ -133,10 +128,86 @@ export class TabsBar {
           hide-label="true"
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-          onClick={() => this.handlePrevNextClick(direction) }
+          onClick={() => this.handlePrevNextClick(direction)}
         />
       </div>
     );
+  };
+
+  private setInitialScroll = (): void => {
+    const gradientWidths = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map(
+      (item) => item.offsetWidth
+    );
+    console.log(this.tabsScrollArea);
+    this.tabsScrollArea.scrollLeft = this.tabs[this.activeTabIndex].offsetLeft - gradientWidths[1];
+  };
+
+  private scrollOnTabClick = (direction: Direction, newTabIndex: number): void => {
+    const gradientWidths = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map(
+      (item) => item.offsetWidth
+    );
+    const activeTab = this.tabs[newTabIndex];
+
+    let scrollPosition: number;
+
+    // go to next tab
+    if (direction === 'next' && newTabIndex < this.host.children.length - 1) {
+      scrollPosition = activeTab.offsetLeft - gradientWidths[1];
+      // go to prev tab
+    } else if (direction === 'prev' && newTabIndex > 0) {
+      scrollPosition =
+        activeTab.offsetLeft + activeTab.offsetWidth + gradientWidths[0] - this.tabsScrollArea.offsetWidth;
+      // go first tab
+    } else if (newTabIndex === 0) {
+      scrollPosition = 0;
+      // go to last tab
+    } else {
+      scrollPosition = activeTab.offsetLeft - FOCUS_PADDING_WIDTH;
+    }
+    this.scrollToHorizontal(this.tabsScrollArea, scrollPosition);
+  };
+
+  private scrollOnPrevNextClick = (direction: Direction): void => {
+    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabs[this.tabs.length - 1];
+    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.tabsScrollArea;
+    const scrollToStep = Math.round(scrollAreaWidth * 0.2);
+    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH;
+
+    let scrollPosition: number;
+
+    if (direction === 'next') {
+      // Go to end of scroll-are when close to edge
+      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
+        scrollPosition = scrollToMax - FOCUS_PADDING_WIDTH;
+      } else {
+        scrollPosition = currentScrollPosition + scrollToStep;
+      }
+    } else {
+      // Go to start of scroll-are when close to edge
+      if (currentScrollPosition - scrollToStep * 2 < 0) {
+        scrollPosition = 0;
+      } else {
+        scrollPosition = currentScrollPosition - scrollToStep;
+      }
+    }
+    this.scrollToHorizontal(this.tabsScrollArea, scrollPosition);
+  };
+
+  private scrollToHorizontal = (scrollArea: HTMLElement, scrollPosition: number): void => {
+    if (navigator.userAgent.includes('Edge/18')) {
+      scrollArea.scrollLeft = scrollPosition;
+    } else {
+      scrollArea.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  private getStatusBarStyle = (activeTab: HTMLElement): string => {
+    const statusBarWidth = activeTab?.offsetWidth || 0;
+    const statusBarPositionLeft = activeTab?.offsetLeft || 0;
+    return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
   };
 
   private initView = (): void => {
@@ -148,17 +219,42 @@ export class TabsBar {
   };
 
   private initKeyboardEventListener = (): void => {
-    this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
   };
 
   private initIntersectionObserver = (): void => {
-    this.intersectionObserver = registerIntersectionObserver((actionState) => {
+    this.intersectionObserver = this.registerIntersectionObserver((actionState) => {
       this.actionState = {
         ...this.actionState,
         ...actionState
       };
     }, this.tabs);
+  };
+
+  private registerIntersectionObserver = (
+    cb: (actionState: Partial<ActionState>) => void,
+    tabs: HTMLElement[]
+  ): IntersectionObserver => {
+    const [firstTab] = tabs;
+    const [lastTab] = tabs.slice(-1);
+
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === firstTab) {
+            cb({ isPrevHidden: entry.isIntersecting });
+          } else if (entry.target === lastTab) {
+            cb({ isNextHidden: entry.isIntersecting });
+          }
+        }
+      },
+      { threshold: 1 }
+    );
+
+    intersectionObserver.observe(firstTab);
+    intersectionObserver.observe(lastTab);
+
+    return intersectionObserver;
   };
 
   private setActiveTab = (index: number): void => {
@@ -180,17 +276,17 @@ export class TabsBar {
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
-    this.tabClick.emit({newTabIndex});
-    scrollOnTabClick(this.host, { newTabIndex, direction, tabSelector: 'a,button' });
+    this.tabClick.emit({ newTabIndex });
+    this.scrollOnTabClick(direction, newTabIndex);
   };
 
   private updateStatusBarStyle = (): void => {
     const statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    statusBar.setAttribute('style', getStatusBarStyle(this.tabs[this.activeTabIndex]));
+    statusBar.setAttribute('style', this.getStatusBarStyle(this.tabs[this.activeTabIndex]));
   };
 
   private handlePrevNextClick = (direction: Direction): void => {
-    scrollOnPrevNextClick(this.host, { direction, tabSelector: 'a,button' });
+    this.scrollOnPrevNextClick(direction);
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
@@ -233,8 +329,7 @@ export class TabsBar {
     const isSelected = this.activeTabIndex === index;
     const attrs = {
       role: 'tab',
-      tabindex: isSelected ? 0 : -1,
-      'aria-controls': prefix(`tab-panel-${index}`)
+      tabindex: isSelected ? 0 : -1
     };
     // eslint-disable-next-line
     for (const key in attrs) {
