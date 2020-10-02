@@ -1390,6 +1390,10 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
+          * Emitted when a tab is clicked.
+         */
+        "onTabClick"?: (event: CustomEvent<any>) => void;
+        /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;

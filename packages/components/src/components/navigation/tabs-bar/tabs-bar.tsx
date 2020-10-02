@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, State, Event, EventEmitter } from '@stencil/core';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -40,6 +40,9 @@ export class TabsBar {
 
   /** Defines which tab to be visualized as selected. */
   @Prop() public activeTabIndex?: number = 0;
+
+  /** Emitted when a tab is clicked. */
+  @Event() public tabClick!: EventEmitter;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -130,7 +133,7 @@ export class TabsBar {
           hide-label="true"
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-          onClick={() => this.handlePrevNextClick(direction)}
+          onClick={() => this.handlePrevNextClick(direction) }
         />
       </div>
     );
@@ -177,6 +180,7 @@ export class TabsBar {
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
+    this.tabClick.emit({newTabIndex});
     scrollOnTabClick(this.host, { newTabIndex, direction, tabSelector: 'a,button' });
   };
 
