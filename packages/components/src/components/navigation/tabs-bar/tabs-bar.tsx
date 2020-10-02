@@ -47,7 +47,8 @@ export class TabsBar {
   };
 
   private intersectionObserver: IntersectionObserver;
-  private allAnchorTags: HTMLElement[] = getHTMLElements(this.host, 'a,button');
+  private tabs: HTMLElement[] = getHTMLElements(this.host, 'a,button');
+  private tabsScrollArea: HTMLElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -65,6 +66,7 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     setInitialScroll(this.host, { activeTabIndex: this.activeTabIndex, tabSelector: 'a,button' });
+    this.initKeyboardEventListener();
     this.initIntersectionObserver();
   }
 
@@ -74,27 +76,27 @@ export class TabsBar {
 
   public render(): JSX.Element {
     const tabsNavClasses = {
-      [prefix('tabs-nav')]: true,
-      [prefix(`tabs-nav--weight-${this.weight}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('tabs-nav--size', this.size)
+      [prefix('tabs-bar')]: true,
+      [prefix(`tabs-bar--weight-${this.weight}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size)
     };
 
     const scrollAreaClasses = {
-      [prefix('tabs-nav__scroll-area')]: true
+      [prefix('tabs-bar__scroll-area')]: true
     };
 
     const statusBarClasses = {
-      [prefix('tabs-nav__status-bar')]: true,
-      [prefix(`tabs-nav__status-bar--theme-${this.theme}`)]: true,
-      [prefix(`tabs-nav__status-bar--weight-${this.weight}`)]: true
+      [prefix('tabs-bar__status-bar')]: true,
+      [prefix(`tabs-bar__status-bar--theme-${this.theme}`)]: true,
+      [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true
     };
 
     return (
       <div class={tabsNavClasses}>
-        <nav class={scrollAreaClasses}>
+        <div class={scrollAreaClasses}>
           <slot />
           <span class={statusBarClasses} />
-        </nav>
+        </div>
         {this.renderPrevNextButton('prev')}
         {this.renderPrevNextButton('next')}
       </div>
@@ -103,17 +105,17 @@ export class TabsBar {
 
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
     const actionClasses = {
-      [prefix('tabs-nav__action')]: true,
-      [prefix(`tabs-nav__action--theme-${this.theme}`)]: true,
-      [prefix(`tabs-nav__action--${direction}`)]: true,
-      [prefix('tabs-nav__action--hidden')]: this.actionState[direction === 'prev' ? 'isPrevHidden' : 'isNextHidden']
+      [prefix('tabs-bar__action')]: true,
+      [prefix(`tabs-bar__action--theme-${this.theme}`)]: true,
+      [prefix(`tabs-bar__action--${direction}`)]: true,
+      [prefix('tabs-bar__action--hidden')]: this.actionState[direction === 'prev' ? 'isPrevHidden' : 'isNextHidden']
     };
 
     const gradientClasses = {
-      [prefix('tabs-nav__gradient')]: true,
-      [prefix(`tabs-nav__gradient--theme-${this.theme}`)]: true,
-      [prefix(`tabs-nav__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
-      [prefix(`tabs-nav__gradient--${direction}`)]: true
+      [prefix('tabs-bar__gradient')]: true,
+      [prefix(`tabs-bar__gradient--theme-${this.theme}`)]: true,
+      [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
+      [prefix(`tabs-bar__gradient--${direction}`)]: true
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
@@ -141,21 +143,26 @@ export class TabsBar {
     }
   };
 
+  private initKeyboardEventListener = (): void => {
+    this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
+    this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
+  };
+
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = registerIntersectionObserver((actionState) => {
       this.actionState = {
         ...this.actionState,
         ...actionState
       };
-    }, this.allAnchorTags);
+    }, this.tabs);
   };
 
   private setActiveTab = (index: number): void => {
-    const maxIndex = this.allAnchorTags.length - 1;
+    const maxIndex = this.tabs.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
     const activeTabClassName = 'selected';
-    this.allAnchorTags.forEach((tab) => tab.classList.remove(activeTabClassName));
-    this.allAnchorTags[this.activeTabIndex].classList.add(activeTabClassName);
+    this.tabs.forEach((tab) => tab.classList.remove(activeTabClassName));
+    this.tabs[this.activeTabIndex].classList.add(activeTabClassName);
   };
 
   private handleTabChange = (activeTabIndex?: number): void => {
@@ -169,11 +176,47 @@ export class TabsBar {
   };
 
   private updateStatusBarStyle = (): void => {
-    const statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-nav__status-bar')}`);
-    statusBar.setAttribute('style', getStatusBarStyle(this.allAnchorTags[this.activeTabIndex]));
+    const statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
+    statusBar.setAttribute('style', getStatusBarStyle(this.tabs[this.activeTabIndex]));
   };
 
   private handlePrevNextClick = (direction: Direction): void => {
     scrollOnPrevNextClick(this.host, { direction, tabSelector: 'a,button' });
+  };
+
+  private handleKeydown = (e: KeyboardEvent): void => {
+    let newTabIndex: number;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'Left':
+        newTabIndex = this.getPrevNextTabIndex('prev');
+        break;
+
+      case 'ArrowRight':
+      case 'Right':
+        newTabIndex = this.getPrevNextTabIndex('next');
+        break;
+
+      case 'Home':
+        newTabIndex = 0;
+        break;
+
+      case 'End':
+        newTabIndex = this.tabs.length - 1;
+        break;
+
+      default:
+        return;
+    }
+    e.preventDefault();
+
+    this.handleTabClick(newTabIndex);
+    this.tabs[this.activeTabIndex].focus();
+  };
+
+  private getPrevNextTabIndex = (direction: Direction): number => {
+    const tabsLength = this.tabs.length;
+    const newTabIndex = this.activeTabIndex + (direction === 'next' ? 1 : -1);
+    return (newTabIndex + tabsLength) % tabsLength;
   };
 }

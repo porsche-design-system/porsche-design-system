@@ -73,7 +73,7 @@
   margin-right: 1em !important;
 }
 
-.#{$p-global-class-prefix}tabs-nav {
+.#{$p-global-class-prefix}tabs-bar {
   $bem-block: &;
   @include p-generate-type-scale($p-font-size-small);
   font-weight: $p-font-weight-regular;
