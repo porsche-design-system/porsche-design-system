@@ -259,7 +259,7 @@ export class TabsBar {
   private setActiveTab = (index: number): void => {
     const maxIndex = this.tabs.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    const activeTabClassName = 'selected';
+    const activeTabClassName = 'data-selected';
     this.tabs.forEach((tab) => {
       tab.setAttribute('tabIndex', '-1');
       tab.classList.remove(activeTabClassName);

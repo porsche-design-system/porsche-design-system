@@ -44,16 +44,16 @@
 }
 
 ::slotted(a:active),
-::slotted(a.selected),
+::slotted(a.data-selected),
 ::slotted(button:active),
-::slotted(button.selected) {
+::slotted(button.data-selected) {
   color: $p-color-state-active !important;
 }
 
 :host([theme="dark"]) ::slotted(a:active),
-:host([theme="dark"]) ::slotted(a.selected),
+:host([theme="dark"]) ::slotted(a.data-selected),
 :host([theme="dark"]) ::slotted(button:active),
-:host([theme="dark"]) ::slotted(button.selected) {
+:host([theme="dark"]) ::slotted(button.data-selected) {
   color: $p-color-theme-dark-state-active !important;
 }
 
