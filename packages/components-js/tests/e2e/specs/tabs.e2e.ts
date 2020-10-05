@@ -65,11 +65,12 @@ describe('tabs', () => {
     );
 
     const [firstTabItem, secondTabItem] = await getAllTabItems();
+    const allButtons = await getAllTabs();
 
     expect(await getAttribute(firstTabItem, 'selected')).toBe('');
     expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
 
-    await secondTabItem.click();
+    await allButtons[1].click();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(firstTabItem, 'selected')).toBeNull();

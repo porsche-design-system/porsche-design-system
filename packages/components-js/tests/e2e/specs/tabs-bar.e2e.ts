@@ -32,7 +32,7 @@ describe('tabs-bar', () => {
       '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-  
+
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
       page,
