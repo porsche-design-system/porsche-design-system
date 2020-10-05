@@ -5,12 +5,11 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { TextSize, TextWeight, Theme } from '../../../types';
+import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
-export type OnTabChangeData = { activeTabIndex: number };
 const FOCUS_PADDING_WIDTH = 4;
 const ACTIVE_TAB_ATTRIBUTE = prefix('data-selected');
 
@@ -38,7 +37,7 @@ export class TabsBar {
   @Prop() public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changing. */
-  @Event() public tabChange!: EventEmitter<OnTabChangeData>;
+  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,

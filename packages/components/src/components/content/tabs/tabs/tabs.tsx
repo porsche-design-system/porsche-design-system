@@ -1,8 +1,7 @@
 import { Component, h, Element, Prop, State, Host, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
-import { TextWeight, Theme } from '../../../../types';
+import { TabChangeEvent, TextWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
-import { OnTabChangeData } from '../../../navigation/tabs-bar/tabs-bar';
 
 @Component({
   tag: 'p-tabs',
@@ -25,7 +24,7 @@ export class Tabs {
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
   /** Emitted when active tab is changing. */
-  @Event() public tabChange!: EventEmitter<OnTabChangeData>;
+  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
 
   @State() public tabsItems: HTMLPTabsItemElement[] = [];
   @State() public tabs: HTMLElement[] = [];
@@ -68,10 +67,7 @@ export class Tabs {
             onTabChange={(e) => this.handleTabClick(e.activeTabIndex)}
           >
             {this.tabsItems.map((tab, index) => (
-              <button
-                type="button"
-                aria-controls={prefix(`tab-panel-${index}`)}
-              >
+              <button type="button" aria-controls={prefix(`tab-panel-${index}`)}>
                 {tab.label}
               </button>
             ))}
@@ -115,7 +111,7 @@ export class Tabs {
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     this.resetTabs();
     this.setActiveTab(newTabIndex);
-    this.tabChange.emit({activeTabIndex: newTabIndex});
+    this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private handleTabClick = (newTabIndex: number): void => {
