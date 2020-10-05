@@ -38,13 +38,22 @@ export const TextareaWrapperPage = (): JSX.Element => {
         </TextareaWrapper>
       </div>
 
+      <div className="playground light" title="should render in required state">
+        <TextareaWrapper label="Some label">
+          <textarea name="some-name" required></textarea>
+        </TextareaWrapper>
+        <TextareaWrapper label="This is a very insanely super long label across multiple lines">
+          <textarea name="some-name" required></textarea>
+        </TextareaWrapper>
+      </div>
+
       <div className="playground light" title="should render in disabled state">
         <TextareaWrapper label="Some label" description="Some description">
           <textarea name="some-name" disabled></textarea>
         </TextareaWrapper>
       </div>
 
-      <div className="playground light" title="should render with placeholder with disabled state">
+      <div className="playground light" title="should render with placeholder in disabled state">
         <TextareaWrapper label="Some label">
           <textarea name="some-name" disabled placeholder="Some placeholder"></textarea>
         </TextareaWrapper>

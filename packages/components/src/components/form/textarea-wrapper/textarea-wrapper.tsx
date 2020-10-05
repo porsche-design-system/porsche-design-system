@@ -82,11 +82,8 @@ export class TextareaWrapper {
         <label class={labelClasses}>
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
-              {this.label || (
-                <span>
-                  <slot name="label" />
-                </span>
-              )}
+              {this.label || <slot name="label" />}
+              {this.isRequired && <span class={prefix('textarea-wrapper__required')}></span>}
             </PrefixedTagNames.pText>
           )}
           {this.isDescriptionVisible && (
@@ -97,11 +94,7 @@ export class TextareaWrapper {
               size="x-small"
               onClick={this.labelClick}
             >
-              {this.description || (
-                <span>
-                  <slot name="description" />
-                </span>
-              )}
+              {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeTextareaClasses}>
@@ -110,11 +103,7 @@ export class TextareaWrapper {
         </label>
         {this.isMessageVisible && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
-            {this.message || (
-              <span>
-                <slot name="message" />
-              </span>
-            )}
+            {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
@@ -137,6 +126,10 @@ export class TextareaWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
+  private get isRequired(): boolean {
+    return this.textarea.getAttribute('required') !== null;
+  }
+
   private setTextarea(): void {
     this.textarea = this.host.querySelector('textarea');
   }
@@ -147,12 +140,12 @@ export class TextareaWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label && this.message) {
-      this.textarea.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    } else if (this.label && this.description) {
-      this.textarea.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    } else if (this.label) {
-      this.textarea.setAttribute('aria-label', this.label);
+    if (this.label) {
+      const messageOrDescription = this.message || this.description;
+      this.textarea.setAttribute(
+        'aria-label',
+        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
+      );
     }
 
     if (this.state === 'error') {
