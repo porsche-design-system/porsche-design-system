@@ -64,7 +64,7 @@ export class Tabs {
             theme={this.theme}
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
-            onTabChange={(e) => this.handleTabClick(e.activeTabIndex)}
+            onTabChange={(e) => this.handleTabChange(e.detail.activeTabIndex)}
           >
             {this.tabsItems.map((tab, index) => (
               <button type="button" aria-controls={prefix(`tab-panel-${index}`)}>
@@ -109,15 +109,9 @@ export class Tabs {
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-    this.resetTabs();
-    this.setActiveTab(newTabIndex);
-    this.tabChange.emit({ activeTabIndex: newTabIndex });
-  };
-
-  private handleTabClick = (newTabIndex: number): void => {
-    if (this.activeTabIndex !== newTabIndex) {
-      this.handleTabChange(newTabIndex);
-    }
+      this.resetTabs();
+      this.setActiveTab(newTabIndex);
+      this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private updateTabItems = (): void => {
