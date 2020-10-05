@@ -52,8 +52,7 @@
   color: $p-color-theme-light-default !important;
   resize: vertical;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-top-color 1ms linear !important; // used for transitionend event listener;
+    color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
@@ -105,7 +104,7 @@
       @include p-textarea-wrapper-label-text-hidden;
     }
 
-    @include p-media-query("xs") {
+    @include p-media-query('xs') {
       &--visible-xs {
         @include p-textarea-wrapper-label-text-visible;
       }
@@ -115,7 +114,7 @@
       }
     }
 
-    @include p-media-query("s") {
+    @include p-media-query('s') {
       &--visible-s {
         @include p-textarea-wrapper-label-text-visible;
       }
@@ -125,7 +124,7 @@
       }
     }
 
-    @include p-media-query("m") {
+    @include p-media-query('m') {
       &--visible-m {
         @include p-textarea-wrapper-label-text-visible;
       }
@@ -135,7 +134,7 @@
       }
     }
 
-    @include p-media-query("l") {
+    @include p-media-query('l') {
       &--visible-l {
         @include p-textarea-wrapper-label-text-visible;
       }
@@ -145,7 +144,7 @@
       }
     }
 
-    @include p-media-query("xl") {
+    @include p-media-query('xl') {
       &--visible-xl {
         @include p-textarea-wrapper-label-text-visible;
       }
@@ -153,6 +152,13 @@
       &--hidden-xl {
         @include p-textarea-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  &__required {
+    &::after {
+      content: '*';
+      color: $p-color-notification-error;
     }
   }
 
@@ -176,7 +182,7 @@
     box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
     box-sizing: border-box;
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-    background-color $p-animation-hover-duration $p-animation-hover-bezier;
+      background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
     #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
