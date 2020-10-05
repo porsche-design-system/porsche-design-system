@@ -64,7 +64,7 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     this.setInitialScroll();
-    this.initKeyboardEventListener();
+    this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
   }
 
@@ -215,10 +215,6 @@ export class TabsBar {
       link.addEventListener('click', () => this.handleTabClick(+index));
       this.setAccessibilityAttributes(link, +index);
     }
-  };
-
-  private initKeyboardEventListener = (): void => {
-    this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
   };
 
   private initIntersectionObserver = (): void => {
