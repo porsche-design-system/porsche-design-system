@@ -161,7 +161,6 @@
     bottom: 0;
     height: .09375em;
     display: block;
-    transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
     background-color: $p-color-state-active;
 
     &--theme-dark {
@@ -170,6 +169,10 @@
 
     &--weight-semibold {
       height: .125em;
+    }
+
+    &--enable-transition {
+      transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
     }
   }
 
