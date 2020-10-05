@@ -53,9 +53,9 @@ describe('tabs-bar', () => {
     const allButtons = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
-    expect(await getAttribute(allButtons[0], 'class')).toBeNull();
-    expect(await getAttribute(allButtons[1], 'class')).toContain('selected');
-    expect(await getAttribute(allButtons[2], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
   it('should render only one selected tab if multiple selected are set', async () => {
@@ -78,9 +78,9 @@ describe('tabs-bar', () => {
     const allButtons = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
-    expect(await getAttribute(allButtons[0], 'class')).toContain('selected');
-    expect(await getAttribute(allButtons[1], 'class')).toBeNull();
-    expect(await getAttribute(allButtons[2], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
   it('should render scroll 20% on Button next', async () => {
@@ -412,21 +412,21 @@ describe('tabs-bar', () => {
     );
     const allTabs = await getAllTabs();
 
-    expect(await getAttribute(allTabs[0], 'class')).toContain('selected');
-    expect(await getAttribute(allTabs[1], 'class')).toBeNull();
+    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('false');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowRight');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(allTabs[1], 'class')).toContain('selected');
-    expect(await getAttribute(allTabs[0], 'class')).toBe('');
+    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('false');
 
     await page.keyboard.press('ArrowLeft');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(allTabs[0], 'class')).toContain('selected');
-    expect(await getAttribute(allTabs[1], 'class')).toBe('');
+    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('false');
   });
 
   it('should render correct active tab on first/last or home/end press', async () => {
@@ -450,22 +450,22 @@ describe('tabs-bar', () => {
     const firstButton = allTabs[0];
     const lastButton = allTabs[allTabs.length - 1];
 
-    expect(await getAttribute(firstButton, 'class')).toBeNull();
-    expect(await getAttribute(allTabs[1], 'class')).toContain('selected');
-    expect(await getAttribute(lastButton, 'class')).toBeNull();
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('End');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(lastButton, 'class')).toContain('selected');
-    expect(await getAttribute(firstButton, 'class')).toBeNull();
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
 
     await page.keyboard.press('Home');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(firstButton, 'class')).toContain('selected');
-    expect(await getAttribute(lastButton, 'class')).toBe('');
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
   });
 
   it('should trigger event on button click', async () => {
