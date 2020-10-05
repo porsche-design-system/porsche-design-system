@@ -67,7 +67,7 @@ export class TabsBar {
     this.tabsScrollArea.addEventListener('click', (e) => {
       const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
       if (tabIndex >= 0) {
-        this.handleTabChange(tabIndex);
+        this.handleTabClick(tabIndex);
       }
     });
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
@@ -309,8 +309,7 @@ export class TabsBar {
     }
     e.preventDefault();
 
-    this.handleTabClick(newTabIndex);
-    this.tabs[this.activeTabIndex].focus();
+    this.tabs[newTabIndex].focus();
   };
 
   private getPrevNextTabIndex = (direction: Direction): number => {
