@@ -11,7 +11,6 @@ import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper'
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
 const FOCUS_PADDING_WIDTH = 4;
-const ACTIVE_TAB_ATTRIBUTE = prefix('data-selected');
 
 @Component({
   tag: 'p-tabs-bar',
@@ -54,7 +53,7 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.initView();
+    this.setAccessibilityAttributes();
     this.setActiveTab(this.activeTabIndex);
   }
 
@@ -216,13 +215,6 @@ export class TabsBar {
     return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
   };
 
-  private initView = (): void => {
-    const navList = getHTMLElements(this.host, 'a,button');
-    for (const [index, link] of Object.entries(navList)) {
-      this.setAccessibilityAttributes(link, +index);
-    }
-  };
-
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = this.registerIntersectionObserver((actionState) => {
       this.actionState = {
@@ -263,10 +255,10 @@ export class TabsBar {
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
     this.tabs.forEach((tab) => {
       tab.setAttribute('tabIndex', '-1');
-      tab.classList.remove(ACTIVE_TAB_ATTRIBUTE);
+      tab.setAttribute('aria-selected', 'false');
     });
-    this.tabs[this.activeTabIndex].classList.add(ACTIVE_TAB_ATTRIBUTE);
     this.tabs[this.activeTabIndex].setAttribute('tabIndex', '0');
+    this.tabs[this.activeTabIndex].setAttribute('aria-selected', 'true');
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
@@ -327,16 +319,19 @@ export class TabsBar {
     return (newTabIndex + tabsLength) % tabsLength;
   };
 
-  private setAccessibilityAttributes = (tab: HTMLElement, index: number): void => {
-    const isSelected = this.activeTabIndex === index;
-    const attrs = {
-      role: 'tab',
-      tabindex: isSelected ? 0 : -1,
-      'aria-selected': isSelected
-    };
-    // eslint-disable-next-line
-    for (const key in attrs) {
-      tab.setAttribute(key, attrs[key]);
+  private setAccessibilityAttributes = (): void => {
+    const navList = getHTMLElements(this.host, 'a,button');
+    for (const [index, tab] of Object.entries(navList)) {
+      const isSelected = this.activeTabIndex === +index;
+      const attrs = {
+        role: 'tab',
+        tabindex: isSelected ? 0 : -1,
+        'aria-selected': isSelected
+      };
+      // eslint-disable-next-line
+      for (const key in attrs) {
+        tab.setAttribute(key, attrs[key]);
+      }
     }
   };
 }
