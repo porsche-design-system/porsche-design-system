@@ -13,3 +13,10 @@
 | `size`                | `size`                  | The text size.                                                | `"medium" \| "small"`     | `'small'`   |
 | `theme`               | `theme`                 | Adapts color when used on dark background.                    | `"dark" \| "light"`       | `'light'`   |
 | `weight`              | `weight`                | The text weight.                                              | `"regular" \| "semibold"` | `'regular'` |
+
+
+## Events
+
+| Event       | Description                          | Type                                       |
+| ----------- | ------------------------------------ | ------------------------------------------ |
+| `tabChange` | Emitted when active tab is changing. | `CustomEvent<{ activeTabIndex: number; }>` |

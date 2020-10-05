@@ -1,4 +1,4 @@
-# Tabs Nav
+# Tabs Bar
 
 
 
@@ -18,6 +18,6 @@
 
 ## Events
 
-| Event      | Description                    | Type               |
-| ---------- | ------------------------------ | ------------------ |
-| `tabClick` | Emitted when a tab is clicked. | `CustomEvent<any>` |
+| Event       | Description                          | Type                                       |
+| ----------- | ------------------------------------ | ------------------------------------------ |
+| `tabChange` | Emitted when active tab is changing. | `CustomEvent<{ activeTabIndex: number; }>` |

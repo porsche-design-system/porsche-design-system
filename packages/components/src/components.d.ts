@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TabChangeEvent, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
@@ -1368,6 +1368,10 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
+          * Emitted when active tab is changing.
+         */
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        /**
           * The text size.
          */
         "size"?: 'small' | 'medium';
@@ -1390,9 +1394,9 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
-          * Emitted when a tab is clicked.
+          * Emitted when active tab is changing.
          */
-        "onTabClick"?: (event: CustomEvent<any>) => void;
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */

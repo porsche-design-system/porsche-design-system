@@ -1,6 +1,6 @@
-import { Component, h, Element, Prop, State, Host } from '@stencil/core';
+import { Component, h, Element, Prop, State, Host, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
-import { TextWeight, Theme } from '../../../../types';
+import { TabChangeEvent, TextWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
 
 @Component({
@@ -22,6 +22,9 @@ export class Tabs {
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
+
+  /** Emitted when active tab is changing. */
+  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
 
   @State() public tabsItems: HTMLPTabsItemElement[] = [];
   @State() public tabs: HTMLElement[] = [];
@@ -61,13 +64,10 @@ export class Tabs {
             theme={this.theme}
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
+            onTabChange={(e) => this.handleTabChange(e.detail.activeTabIndex)}
           >
             {this.tabsItems.map((tab, index) => (
-              <button
-                type="button"
-                aria-controls={prefix(`tab-panel-${index}`)}
-                onClick={() => this.handleTabClick(index)}
-              >
+              <button type="button" aria-controls={prefix(`tab-panel-${index}`)}>
                 {tab.label}
               </button>
             ))}
@@ -109,14 +109,9 @@ export class Tabs {
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-    this.resetTabs();
-    this.setActiveTab(newTabIndex);
-  };
-
-  private handleTabClick = (newTabIndex: number): void => {
-    if (this.activeTabIndex !== newTabIndex) {
-      this.handleTabChange(newTabIndex);
-    }
+      this.resetTabs();
+      this.setActiveTab(newTabIndex);
+      this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private updateTabItems = (): void => {

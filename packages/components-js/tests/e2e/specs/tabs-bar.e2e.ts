@@ -1,5 +1,6 @@
 import { ElementHandle, Page } from 'puppeteer';
 import {
+  addEventListener,
   getAttribute,
   getBrowser,
   getElementPositions,
@@ -20,7 +21,6 @@ describe('tabs-bar', () => {
   afterEach(async () => await page.close());
 
   const getAllTabs = () => page.$$('a,button');
-  const getAllAnchors = () => page.$$('a');
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
@@ -32,7 +32,7 @@ describe('tabs-bar', () => {
       '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-  
+
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
       page,
@@ -434,13 +434,13 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar active-tab-index="1">
-        <button label="Button1">
+        <button>
           Content1
         </button>
-        <button label="Button2">
+        <button>
           Content2
         </button>
-        <button label="Button3">
+        <button>
           Content3
         </button>
       </p-tabs-bar>
@@ -466,5 +466,43 @@ describe('tabs-bar', () => {
 
     expect(await getAttribute(firstButton, 'class')).toContain('selected');
     expect(await getAttribute(lastButton, 'class')).toBe('');
+  });
+
+  it('should trigger event on button click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar active-tab-index="1">
+        <button>
+          Content1
+        </button>
+        <button>
+          Content2
+        </button>
+        <button>
+          Content3
+        </button>
+      </p-tabs-bar>
+    `
+    );
+    const host = await selectNode(page,'p-tabs-bar');
+    const [firstButton, secondButton, thirdButton] = await getAllButtons();
+    let eventCounter = 0;
+    await addEventListener(host, 'click', () => eventCounter++);
+
+    await firstButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(1);
+
+    await secondButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(2);
+
+    await thirdButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(3);
   });
 });

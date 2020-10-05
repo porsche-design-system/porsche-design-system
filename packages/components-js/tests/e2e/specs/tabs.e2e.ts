@@ -1,4 +1,5 @@
 import {
+  addEventListener,
   getAttribute,
   getBrowser,
   getProperty,
@@ -65,11 +66,12 @@ describe('tabs', () => {
     );
 
     const [firstTabItem, secondTabItem] = await getAllTabItems();
+    const allTabs = await getAllTabs();
 
     expect(await getAttribute(firstTabItem, 'selected')).toBe('');
     expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
 
-    await secondTabItem.click();
+    await allTabs[1].click();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
@@ -152,5 +154,43 @@ describe('tabs', () => {
     expect(await getAttribute(firstButton, 'class')).toBeNull();
     expect(await getAttribute(secondButton, 'class')).toContain('selected');
     expect(await getAttribute(thirdButton, 'class')).toBeNull();
+  });
+
+  it('should trigger event on tab click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs>
+        <p-tabs-item label="Button1">
+          Content1
+        </p-tabs-item>
+        <p-tabs-item label="Button2" selected>
+          Content2
+        </p-tabs-item>
+        <p-tabs-item label="Button3" selected>
+          Content3
+        </p-tabs-item>
+      </p-tabs>
+    `
+    );
+    const host = await selectNode(page,'p-tabs');
+    const [firstButton, secondButton, thirdButton] = await getAllTabs();
+    let eventCounter = 0;
+    await addEventListener(host, 'click', () => eventCounter++);
+
+    await firstButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(1);
+
+    await secondButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(2);
+
+    await thirdButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(3);
   });
 });

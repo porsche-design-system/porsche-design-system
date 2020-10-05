@@ -5,12 +5,13 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { TextSize, TextWeight, Theme } from '../../../types';
+import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
 const FOCUS_PADDING_WIDTH = 4;
+const ACTIVE_TAB_ATTRIBUTE = prefix('data-selected');
 
 @Component({
   tag: 'p-tabs-bar',
@@ -35,8 +36,8 @@ export class TabsBar {
   /** Defines which tab to be visualized as selected. */
   @Prop() public activeTabIndex?: number = 0;
 
-  /** Emitted when a tab is clicked. */
-  @Event() public tabClick!: EventEmitter;
+  /** Emitted when active tab is changing. */
+  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -64,6 +65,12 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     this.setInitialScroll();
+    this.tabsScrollArea.addEventListener('click', (e) => {
+      const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
+      if (tabIndex >= 0) {
+        this.handleTabChange(tabIndex);
+      }
+    });
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
   }
@@ -212,7 +219,6 @@ export class TabsBar {
   private initView = (): void => {
     const navList = getHTMLElements(this.host, 'a,button');
     for (const [index, link] of Object.entries(navList)) {
-      link.addEventListener('click', () => this.handleTabClick(+index));
       this.setAccessibilityAttributes(link, +index);
     }
   };
@@ -255,23 +261,24 @@ export class TabsBar {
   private setActiveTab = (index: number): void => {
     const maxIndex = this.tabs.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    const activeTabClassName = 'data-selected';
     this.tabs.forEach((tab) => {
       tab.setAttribute('tabIndex', '-1');
-      tab.classList.remove(activeTabClassName);
+      tab.classList.remove(ACTIVE_TAB_ATTRIBUTE);
     });
-    this.tabs[this.activeTabIndex].classList.add(activeTabClassName);
+    this.tabs[this.activeTabIndex].classList.add(ACTIVE_TAB_ATTRIBUTE);
     this.tabs[this.activeTabIndex].setAttribute('tabIndex', '0');
   };
 
-  private handleTabChange = (activeTabIndex?: number): void => {
-    this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
+  private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
+    if (this.activeTabIndex !== newTabIndex) {
+      this.setActiveTab(newTabIndex);
+      this.tabChange.emit({ activeTabIndex: newTabIndex });
+    }
   };
 
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
-    this.tabClick.emit({ newTabIndex });
     this.scrollOnTabClick(direction, newTabIndex);
   };
 
@@ -324,7 +331,8 @@ export class TabsBar {
     const isSelected = this.activeTabIndex === index;
     const attrs = {
       role: 'tab',
-      tabindex: isSelected ? 0 : -1
+      tabindex: isSelected ? 0 : -1,
+      'aria-selected': isSelected
     };
     // eslint-disable-next-line
     for (const key in attrs) {

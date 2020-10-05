@@ -48,7 +48,7 @@ describe('storefront', () => {
           if (!Array.isArray(tabs)) {
             for (const [index, tab] of Object.entries(Object.keys(tabs))) {
               const [tabElement] = await browserPage.$x(
-                `//nav[@class='tabs']//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(
+                `//p-tabs-bar//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(
                   page
                 )}#${paramCase(tab)}']`
               );
