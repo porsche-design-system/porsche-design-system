@@ -48,6 +48,7 @@ export class TabsBar {
   private intersectionObserver: IntersectionObserver;
   private tabs: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private tabsScrollArea: HTMLElement;
+  private focusedTabIndex: number;
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -62,6 +63,7 @@ export class TabsBar {
   public componentDidRender(): void {
     this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.updateStatusBarStyle();
+    this.focusedTabIndex = this.activeTabIndex;
   }
 
   public componentDidLoad(): void {
@@ -318,7 +320,8 @@ export class TabsBar {
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabs.length;
-    const newTabIndex = this.activeTabIndex + (direction === 'next' ? 1 : -1);
+    const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
+    this.focusedTabIndex = newTabIndex;
     return (newTabIndex + tabsLength) % tabsLength;
   };
 
