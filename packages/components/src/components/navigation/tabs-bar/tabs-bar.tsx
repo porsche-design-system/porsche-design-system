@@ -43,6 +43,8 @@ export class TabsBar {
     isNextHidden: false
   };
 
+  @State() public enableTransition = false;
+
   private intersectionObserver: IntersectionObserver;
   private tabs: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private tabsScrollArea: HTMLElement;
@@ -72,6 +74,7 @@ export class TabsBar {
     });
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
+    this.enableTransition = true;
   }
 
   public disconnectedCallback(): void {
@@ -91,6 +94,7 @@ export class TabsBar {
 
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
+      [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
       [prefix(`tabs-bar__status-bar--theme-${this.theme}`)]: true,
       [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true
     };
