@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="184px" viewBox="0 0 800 184" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>patterns-forms-validation</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="800" height="184"></rect>
+    </defs>
+    <g id="patterns-forms-validation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="800" height="184"></rect>
+        <circle id="Oval-Copy-5" fill="#00D5B9" cx="447" cy="91" r="14"></circle>
+        <text id="2" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+            <tspan x="442.294118" y="97">2</tspan>
+        </text>
+        <g id="Group-2-Copy" transform="translate(40.000000, 39.000000)">
+            <g id="Group">
+                <g id="Stacked-Group">
+                    <g id="light-theme/form-element/text-field/error">
+                        <text id="𝒜-Error-message" font-family="PorscheNext-Regular, Porsche Next" font-size="16" font-weight="normal" line-spacing="24" fill="#E00000">
+                            <tspan x="0" y="98">Brief error message.</tspan>
+                        </text>
+                        <rect id="🔲--Border" stroke="#E00000" stroke-width="2" x="1" y="29" width="373" height="46"></rect>
+                        <g id="light-theme/form-element/item/input/default" transform="translate(12.000000, 40.000000)" font-family="PorscheNext-Regular, Porsche Next" font-size="16" font-weight="normal" line-spacing="24">
+                            <text id="𝒜-Input-text"></text>
+                        </g>
+                        <g id="𝒜-Label" transform="translate(179.000000, 0.000000)" font-family="PorscheNext-Regular, Porsche Next" font-size="16" font-weight="normal" line-spacing="24">
+                            <text>
+                                <tspan x="-179" y="18" fill="#000000">Label </tspan>
+                                <tspan x="-142.072" y="18" fill="#E00000">*</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Group-2" transform="translate(86.000000, 33.000000)">
+            <circle id="Oval-Copy-5" fill="#00D5B9" cx="113" cy="99" r="14"></circle>
+            <circle id="Oval-Copy-5" fill="#00D5B9" cx="30" cy="14" r="14"></circle>
+            <text id="3" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+                <tspan x="108.294118" y="105">3</tspan>
+            </text>
+            <text id="1" font-family="PorscheNext-SemiBold, Porsche Next" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
+                <tspan x="25.2941176" y="20">1</tspan>
+            </text>
+            <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="22 13 22 15 0 15 0 13"></polygon>
+            <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="105 98 105 100 83 100 83 98"></polygon>
+        </g>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect stroke-opacity="0.5" stroke="#C8CACB" x="0.5" y="0.5" width="799" height="183"></rect>
+        <polygon id="Line-Copy-8" fill="#00D5B9" fill-rule="nonzero" points="439 90 439 92 417 92 417 90"></polygon>
+    </g>
+</svg>
