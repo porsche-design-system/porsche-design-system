@@ -179,6 +179,13 @@
     }
   }
 
+  &__required {
+    &::after {
+      content: '*';
+      color: $p-color-notification-error;
+    }
+  }
+
   &__description {
     #{$bem-block}--theme-light & {
       color: $p-color-neutral-contrast-medium;

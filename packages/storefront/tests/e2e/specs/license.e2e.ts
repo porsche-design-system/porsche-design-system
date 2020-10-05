@@ -1,4 +1,4 @@
-import { getBrowser, options } from '../helpers/setup';
+import { getBrowser, options } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
 describe('Storefront', () => {

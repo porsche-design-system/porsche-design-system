@@ -6,9 +6,7 @@ export const injectGlobalStyle = (): void => {
     return;
   }
   const styleUrl =
-    ROLLUP_REPLACE_IS_STAGING === 'production'
-      ? FONT_FACE_CDN_URL
-      : 'http://localhost:3001/styles/font-face.min.css';
+    ROLLUP_REPLACE_IS_STAGING === 'production' ? FONT_FACE_CDN_URL : 'http://localhost:3001/styles/font-face.min.css';
 
   if (!document.querySelector(`link[href="${styleUrl}"]`)) {
     const link = document.createElement('link');
@@ -19,6 +17,6 @@ export const injectGlobalStyle = (): void => {
     document.getElementsByTagName('head')[0].appendChild(link);
     console.warn(`The Porsche Design System had to inject our font-face.css file into your head. Please preload it with '${getFontFaceCSS()}' in the head of your 'index.html'.
 If you are already preloading font-face.css please update your snippet to '${getFontFaceCSS()}'.
-You find further documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/#/helpers/flash-of-unstyled-content`);
+You find further documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/#/performance/loading-behaviour`);
   }
 };
