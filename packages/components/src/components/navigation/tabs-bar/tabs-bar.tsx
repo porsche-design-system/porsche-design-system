@@ -10,6 +10,7 @@ import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper'
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
+type OnTabChangeData = { activeTabIndex: number };
 const FOCUS_PADDING_WIDTH = 4;
 
 @Component({
@@ -35,8 +36,8 @@ export class TabsBar {
   /** Defines which tab to be visualized as selected. */
   @Prop() public activeTabIndex?: number = 0;
 
-  /** Emitted when a tab is clicked. */
-  @Event() public tabClick!: EventEmitter;
+  /** Emitted when active tab is changing. */
+  @Event() public onTabChange!: EventEmitter<OnTabChangeData>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -264,14 +265,14 @@ export class TabsBar {
     this.tabs[this.activeTabIndex].setAttribute('tabIndex', '0');
   };
 
-  private handleTabChange = (activeTabIndex?: number): void => {
-    this.setActiveTab(activeTabIndex ?? this.activeTabIndex);
+  private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
+    this.setActiveTab(newTabIndex);
+    this.onTabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private handleTabClick = (newTabIndex: number): void => {
     const direction: Direction = newTabIndex > this.activeTabIndex ? 'next' : 'prev';
     this.handleTabChange(newTabIndex);
-    this.tabClick.emit({ newTabIndex });
     this.scrollOnTabClick(direction, newTabIndex);
   };
 
