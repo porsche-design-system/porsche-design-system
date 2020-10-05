@@ -12,6 +12,7 @@ type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
 type OnTabChangeData = { activeTabIndex: number };
 const FOCUS_PADDING_WIDTH = 4;
+const ACTIVE_TAB_ATTRIBUTE = prefix('data-selected');
 
 @Component({
   tag: 'p-tabs-bar',
@@ -256,12 +257,11 @@ export class TabsBar {
   private setActiveTab = (index: number): void => {
     const maxIndex = this.tabs.length - 1;
     this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
-    const activeTabClassName = 'data-selected';
     this.tabs.forEach((tab) => {
       tab.setAttribute('tabIndex', '-1');
-      tab.classList.remove(activeTabClassName);
+      tab.classList.remove(ACTIVE_TAB_ATTRIBUTE);
     });
-    this.tabs[this.activeTabIndex].classList.add(activeTabClassName);
+    this.tabs[this.activeTabIndex].classList.add(ACTIVE_TAB_ATTRIBUTE);
     this.tabs[this.activeTabIndex].setAttribute('tabIndex', '0');
   };
 
@@ -325,7 +325,8 @@ export class TabsBar {
     const isSelected = this.activeTabIndex === index;
     const attrs = {
       role: 'tab',
-      tabindex: isSelected ? 0 : -1
+      tabindex: isSelected ? 0 : -1,
+      'aria-selected': isSelected
     };
     // eslint-disable-next-line
     for (const key in attrs) {

@@ -66,12 +66,12 @@ export class Tabs {
             theme={this.theme}
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
+            onTabChange={(e) => this.handleTabClick(e.activeTabIndex)}
           >
             {this.tabsItems.map((tab, index) => (
               <button
                 type="button"
                 aria-controls={prefix(`tab-panel-${index}`)}
-                onClick={() => this.handleTabClick(index)}
               >
                 {tab.label}
               </button>
