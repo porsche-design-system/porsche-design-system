@@ -68,7 +68,7 @@ This adds a `<script>` tag pointing to the browser notification banner JS snippe
   <body>
     <div id="app"></div>
 
-    <!-- inline version of the univeresal init script -->
+    <!-- inline version of the universal init script -->
     <%= require('@porsche-design-system/browser-notification').include() %>
 
     <!-- Recommended integration: inline version of the banner or overlay init script -->
