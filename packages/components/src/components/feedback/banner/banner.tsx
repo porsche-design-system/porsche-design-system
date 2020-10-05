@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
 import { Theme } from '../../../types';
 
@@ -21,6 +21,9 @@ export class Banner {
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Emitted when the close button is clicked. */
+  @Event() public pdsDismiss?: EventEmitter;
 
   private closeButton: HTMLButtonElement;
 
@@ -97,7 +100,7 @@ export class Banner {
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
-                  onClick={this.removeBanner}
+                  onClick={(e: MouseEvent) => this.removeBanner(e)}
                   ref={(el) => (this.closeButton = el)}
                 >
                   Close notification
@@ -113,16 +116,17 @@ export class Banner {
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
     const { key } = e;
     if (key === 'Esc' || key === 'Escape') {
-      this.removeBanner();
+      this.removeBanner(e);
     }
   };
 
-  private removeBanner = (): void => {
+  private removeBanner(e): void {
+    this.pdsDismiss.emit(e);
     this.host.classList.add(prefix('banner--close'));
     setTimeout(() => {
       this.host.remove();
     }, 1000);
-  };
+  }
 
   private get isTitleDefined(): boolean {
     return !!this.host.querySelector('[slot="title"]');

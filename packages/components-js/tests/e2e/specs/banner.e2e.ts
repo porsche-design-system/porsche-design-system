@@ -1,4 +1,5 @@
 import {
+  addEventListener,
   getBrowser,
   initAddEventListener,
   selectNode,
@@ -61,6 +62,43 @@ describe('banner', () => {
     // we have to wait for the animation to end before the dom is cleared
     await page.waitFor(1000);
     expect(await getBannerHost()).toBeNull();
+  });
+
+  it('should remove banner from DOM by trigger ESC key', async () => {
+    await setContentWithDesignSystem(page, `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `);
+
+    // we have to wait for the CSS fade in animation of the banner
+    await page.waitFor(2000);
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+    // we have to wait for the animation to end before the dom is cleared
+    await page.waitFor(1000);
+    expect(await getBannerHost()).toBeNull();
+  });
+
+  it('should emit custom event by click on close button', async () => {
+    await setContentWithDesignSystem(page, `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `);
+
+    const host = await getBannerHost();
+    const innerButton = await getBannerButton();
+    let calls = 0;
+
+    // we have to wait for the CSS fade in animation of the banner
+    await page.waitFor(2000);
+    await addEventListener(host, 'pdsDismiss', () => calls++);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    expect(calls).toBe(1);
   });
 
 });
