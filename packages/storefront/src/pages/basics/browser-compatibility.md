@@ -35,24 +35,24 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 **In order to guide the users and avoid dead-ends, we created an easy-to-use Browser Notification snippet, that should be implemented in all applications using the Porsche Design System.**
 
-### Browser Notification Banner
+### Browser Notification
 
-To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** in form of an npm package `@porsche-design-system/browser-notification-banner`.
+To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** and **Overlay** in form of a npm package `@porsche-design-system/browser-notification`.
 
 #### Install
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification-banner` npm package. 
+It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. 
 If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
 
 ```
 // install with npm:
-npm install @porsche-design-system/browser-notification-banner
+npm install @porsche-design-system/browser-notification
 
 // install with yarn:
-yarn add @porsche-design-system/browser-notification-banner
+yarn add @porsche-design-system/browser-notification
 ```
 
 #### Basic usage
-The easiest way to include the **Browser Notification Banner** into your project is by importing and calling the provided `init()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
+The easiest way to include the **Browser Notification** into your project is by importing and calling the provided `init()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
 This adds a `<script>` tag pointing to the browser notification banner JS snippet hosted on a CDN. When only the url to the JS snippet is needed then the function can be called with following parameter `init({ withoutTags: true })`.
 
 #### Integration examples
@@ -68,23 +68,42 @@ This adds a `<script>` tag pointing to the browser notification banner JS snippe
   <body>
     <div id="app"></div>
 
-    <!-- Recommended integration: -->
-    <%= require('@porsche-design-system/browser-notification-banner').init() %>
+    <!-- inline version of the universal init script -->
+    <%= require('@porsche-design-system/browser-notification').include() %>
+
+    <!-- Recommended integration: inline version of the banner or overlay init script -->
+    <%= require('@porsche-design-system/browser-notification').includeBanner() %>
+    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
+
+    <!-- Other integration: include remote init script -->
+    <%= require('@porsche-design-system/browser-notification').init() %>
 
     <!-- Advanced integration: This way only the JS url is returned which gives more flexibility by defining the <script> tag.
     In addition it gives the possibility to use and load it by your application JS code rather than in the index.html (be aware that 
     in this scenario your application code needs to be excectuable in IE11 and Edge<=18). -->
-    <script defer src="<%= require('@porsche-design-system/browser-notification-banner').init({withoutTags: true}) %>"></script>
-
+    <script defer src="<%= require('@porsche-design-system/browser-notification').init({ withoutTags: true }) %>"></script>
   </body>
 </html>
+```
+
+##### Angular / Vanilla JS
+```
+// index.html
+<body>
+  <!--PLACEHOLDER-->
+</body>
+
+// package.json
+"scripts": {
+  "partial": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+}
 ```
 
 #### Translations
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
 
-The **Browser Notification Banner** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. 
+The **Browser Notification Banner/Overlay** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. 
 Support is given for the following formats, e.g.:
 - `lang="en"`
 - `lang="en_US"`
@@ -94,7 +113,7 @@ If none of these languages can be found, it will fall back to `en`.
 
 #### How it works
 The `<script>` tag points to a **< 1kb** sized file hosted on a CDN which has a browser detection for **IE11 and Edge<=18**. 
-If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
+If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner/Overlay. 
 Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session storage is defined to prevent popping up the banner again on route changes as long as staying on the same domain/subdomain and browser tab.
 
 #### Troubleshooting
