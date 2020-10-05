@@ -177,7 +177,7 @@ export class TabsBar {
     if (direction === 'next') {
       // Go to end of scroll-are when close to edge
       if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-        scrollPosition = scrollToMax - FOCUS_PADDING_WIDTH;
+        scrollPosition = scrollToMax;
       } else {
         scrollPosition = currentScrollPosition + scrollToStep;
       }
