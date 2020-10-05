@@ -1,9 +1,7 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button class="test-button" type="button" @click="updateFramework('vanilla-js')">Vanilla JS</button>
-      <button class="test-button" type="button" @click="updateFramework('angular')">Angular</button>
-      <button class="test-button" type="button" @click="updateFramework('react')">React</button>
+      <button v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">{{frameWork}}</button>
     </p-tabs-bar>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
@@ -24,20 +22,18 @@
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
 
+    frameWorks: {[key in Framework]: string} = {
+      'vanilla-js': 'Vanilla JS',
+      angular: 'Angular',
+      react: 'React'
+    };
+
     public get activeTabIndex(): number {
-      return ['vanilla-js', 'angular', 'react'].indexOf(this.framework);
+      return Object.keys(this.frameWorks).indexOf(this.framework);
     }
 
     public get framework(): Framework {
       return this.$store.getters.selectedFramework;
-    }
-
-    get isVanillaJS(): boolean {
-      return this.framework === 'vanilla-js';
-    }
-
-    get isAngular(): boolean {
-      return this.framework === 'angular';
     }
 
     get isReact(): boolean {
