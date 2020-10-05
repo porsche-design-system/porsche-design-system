@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  PBanner as Banner,
   PButton as Button,
   PButtonPure as ButtonPure,
   PHeadline as Headline,
@@ -29,6 +30,7 @@ import {
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
 const {
+  PBanner: PrefixedBanner,
   PButton: PrefixedButton,
   PButtonPure: PrefixedButtonPure,
   PHeadline: PrefixedHeadline,
@@ -84,6 +86,11 @@ export const OverviewPage = (): JSX.Element => {
     my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
+
+    p-banner,
+    my-prefix-p-banner {
+      --p-banner-position-type: static;
+    }
   `;
 
   return (
@@ -94,6 +101,13 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{flex: 1}}>
           <div className="playground light" title="should render default headline">
             <Headline>Default Components</Headline>
+          </div>
+
+          <div className="playground light" title="should render default banner">
+            <Banner>
+              <span slot="title">Some banner title</span>
+              <span slot="description">Some banner description.</span>
+            </Banner>
           </div>
 
           <div className="playground light" title="should render default divider">
@@ -218,6 +232,13 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{flex: 1}}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
+          </div>
+
+          <div className="playground light" title="should render default banner with custom prefix">
+            <PrefixedBanner>
+              <span slot="title">Some banner title</span>
+              <span slot="description">Some banner description.</span>
+            </PrefixedBanner>
           </div>
 
           <div className="playground light" title="should render default divider with custom prefix">

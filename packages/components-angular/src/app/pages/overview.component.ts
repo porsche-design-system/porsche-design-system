@@ -29,12 +29,24 @@ import { Component } from '@angular/core';
     my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
+
+    p-banner,
+    my-prefix-p-banner {
+      --p-banner-position-type: static;
+    }
   `],
   template: `
     <div style="display: flex;">
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner">
+          <p-banner>
+            <span slot="title">Some banner title</span>
+            <span slot="description">Some banner description.</span>
+          </p-banner>
         </div>
 
         <div class="playground light" title="should render default divider">
@@ -149,6 +161,13 @@ import { Component } from '@angular/core';
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <my-prefix-p-banner p-banner>
+            <span slot="title">Some banner title</span>
+            <span slot="description">Some banner description.</span>
+          </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
