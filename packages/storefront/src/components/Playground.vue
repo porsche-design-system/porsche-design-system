@@ -1,6 +1,6 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="themeable">
+    <p-tabs-bar weight="semibold" v-if="themeable">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -81,7 +81,6 @@
   @import '../styles/internal.variables';
 
   .example {
-    margin-top: $p-spacing-8;
     padding: $p-spacing-32;
     overflow-x: auto;
     border: 1px solid transparent;

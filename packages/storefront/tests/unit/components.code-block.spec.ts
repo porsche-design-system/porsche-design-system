@@ -31,8 +31,9 @@ describe('CodeBlock.vue', () => {
     }
   });
 
-  const getTabButton = (wrapper: Wrapper<Vue>, type: 'vanillajs' | 'angular' | 'react'): Wrapper<Vue> =>
-    wrapper.find(`.test-button:nth-child(${['vanillajs', 'angular', 'react'].indexOf(type) + 1})`);
+  const getTabButton = (wrapper: Wrapper<Vue>, type: Framework): Wrapper<Vue> => {
+    return wrapper.findAll('button').at(['vanilla-js', 'angular', 'react'].indexOf(type));
+  };
 
   beforeEach(() => {
     store.commit('setSelectedFramework', 'vanilla-js');
@@ -49,8 +50,8 @@ describe('CodeBlock.vue', () => {
       }
     });
 
-    const btn = getTabButton(wrapper, 'vanillajs');
-    expect(btn.text()).toBe('Vanilla JS')
+    const btn = getTabButton(wrapper, 'vanilla-js');
+    expect(btn.text()).toBe('Vanilla JS');
 
     expect(wrapper.find('code').text()).toBe(
       `<p-some-tag some-attribute="some value">

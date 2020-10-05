@@ -1,7 +1,7 @@
 # Tabs
 
 The Porsche Design System Tabs enables the user to **to execute an action or changes the content**. 
-In case you want the user to navigate to another page, you should select the [Tabs Nav](#/components/tabs-nav) component instead.
+In case you want the user to navigate to another page, you should select the [Tabs Bar](#/components/tabs-bar) component instead.
 
 ---
 
@@ -139,4 +139,4 @@ Not be used for primary navigation.
 ---
 
 ## Related Component
-* [Tabs Nav](#/components/tabs-nav)
+* [Tabs Bar](#/components/tabs-bar)
