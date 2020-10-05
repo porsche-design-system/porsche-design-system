@@ -28,6 +28,27 @@ update the list when you upgrade the version of the `Porsche Design Sytem` with 
 </head>
 ``` 
 
+### Example usage with placeholder 
+
+If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script. 
+
+``` 
+// index.html
+
+<head>
+  <!--PLACEHOLDER_CORE_STYLES-->
+</head>
+``` 
+
+```
+// package.json
+
+"scripts": {
+    "prestart": "yarn replace",
+    "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getPorscheDesignSystemCoreStyles())') && regex='<!--PLACEHOLDER_CORE_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+} 
+``` 
+
 ### Example usage static
 
 **Note:** If you implement this static solution you have to keep track of the list and add every new component you use.
@@ -71,6 +92,26 @@ to grant you a valid fallback.
   {{fontFaceCSS}}
 </head>
 ```
+
+
+#### Example with placeholder 
+
+``` 
+// index.html
+
+<head>
+  <!--PLACEHOLDER_FONT_FACE_CSS-->
+</head>
+``` 
+
+```
+// package.json
+
+"scripts": {
+    "prestart": "yarn replace",
+    "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getFontFaceCSS())') && regex='<!--PLACEHOLDER_FONT_FACE_CSS-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+} 
+``` 
 
 ### Preload specific Fonts
 

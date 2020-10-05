@@ -31,6 +31,24 @@
   </p-radio-button-wrapper>
 </div>
 
+<div class="playground light" title="should render in required state">
+  <p-radio-button-wrapper label="Some label">
+    <input type="radio" name="some-name-3a" required />
+  </p-radio-button-wrapper>
+  <p-radio-button-wrapper label="This is a very insanely super long label across multiple lines">
+    <input type="radio" name="some-name-3a" required />
+  </p-radio-button-wrapper>
+  <p-radio-button-wrapper label="Some label">
+    <input type="radio" name="some-name-3a" required disabled />
+  </p-radio-button-wrapper>
+  <p-radio-button-wrapper label="Some label">
+    <input type="radio" name="some-name-3a" required checked />
+  </p-radio-button-wrapper>
+  <p-radio-button-wrapper label="Some label">
+    <input type="radio" name="some-name-3b" required checked disabled />
+  </p-radio-button-wrapper>
+</div>
+
 <div class="playground light" title="should render in disabled state">
   <p-radio-button-wrapper label="Some label">
     <input type="radio" name="some-name-4" disabled />
