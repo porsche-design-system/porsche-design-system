@@ -5,7 +5,7 @@ your window location updates on tab click, use it for hash routing and displayin
 and therefore change the appearance of you content or as skip navigation to move on a longer page.
 
 The Tabs Bar component does not handle the display of your content. If you use the component you have to manually care for the
-content to be rendered beneath. To help with this task the Tabs ar component triggers a event called `onTabChange` with the index
+content to be rendered beneath. To help with this task the Tabs ar component triggers a event called `tabChange` with the index
 of the clicked tab as data.
 
 If you intend to only change content on tab-click without location changes, we prepared a component which also

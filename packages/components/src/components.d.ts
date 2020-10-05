@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
+import { OnTabChangeData } from "./components/navigation/tabs-bar/tabs-bar";
+import { OnTabChangeData as OnTabChangeData1 } from "./components/navigation/tabs-bar/tabs-bar";
 export namespace Components {
     interface PButton {
         /**
@@ -1368,6 +1370,10 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
+          * Emitted when active tab is changing.
+         */
+        "onTabChange"?: (event: CustomEvent<OnTabChangeData>) => void;
+        /**
           * The text size.
          */
         "size"?: 'small' | 'medium';
@@ -1390,9 +1396,9 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
-          * Emitted when a tab is clicked.
+          * Emitted when active tab is changing.
          */
-        "onTabClick"?: (event: CustomEvent<any>) => void;
+        "onTabChange"?: (event: CustomEvent<OnTabChangeData>) => void;
         /**
           * The text size.
          */

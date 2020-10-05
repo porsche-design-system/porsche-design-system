@@ -10,7 +10,7 @@ import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper'
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
-type OnTabChangeData = { activeTabIndex: number };
+export type OnTabChangeData = { activeTabIndex: number };
 const FOCUS_PADDING_WIDTH = 4;
 const ACTIVE_TAB_ATTRIBUTE = prefix('data-selected');
 
@@ -38,7 +38,7 @@ export class TabsBar {
   @Prop() public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changing. */
-  @Event() public onTabChange!: EventEmitter<OnTabChangeData>;
+  @Event() public tabChange!: EventEmitter<OnTabChangeData>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -66,6 +66,10 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     this.setInitialScroll();
+    this.tabsScrollArea.addEventListener('click', (e) => {
+      const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
+      tabIndex >= 0 && this.handleTabChange(tabIndex);
+    });
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
   }
@@ -214,7 +218,6 @@ export class TabsBar {
   private initView = (): void => {
     const navList = getHTMLElements(this.host, 'a,button');
     for (const [index, link] of Object.entries(navList)) {
-      link.addEventListener('click', () => this.handleTabClick(+index));
       this.setAccessibilityAttributes(link, +index);
     }
   };
@@ -267,7 +270,7 @@ export class TabsBar {
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     this.setActiveTab(newTabIndex);
-    this.onTabChange.emit({ activeTabIndex: newTabIndex });
+    this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private handleTabClick = (newTabIndex: number): void => {
