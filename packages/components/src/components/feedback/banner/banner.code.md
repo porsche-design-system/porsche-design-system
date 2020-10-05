@@ -99,7 +99,13 @@ p-banner {
       </p-banner>
       `;
       document.getElementById('app').append(el);
-    }
-      
-  }
+    };
+  };
+  
+  const banner = document.querySelectorAll('p-banner');
+  banner.forEach(function(element) {
+    element.addEventListener("pdsDismiss", e => {
+      console.log("dismissed", e);
+    })
+  });
 </script>
