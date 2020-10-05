@@ -1,7 +1,9 @@
-import { Component, h, Element, Prop, State, Host } from '@stencil/core';
+import { Component, h, Element, Prop, State, Host, Event, EventEmitter } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
 import { TextWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
+
+type OnTabChangeData = {activeTabIndex: number};
 
 @Component({
   tag: 'p-tabs',
@@ -22,6 +24,9 @@ export class Tabs {
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
+
+  /** Emitted when active tab is changing. */
+  @Event() public onTabChange!: EventEmitter<OnTabChangeData>;
 
   @State() public tabsItems: HTMLPTabsItemElement[] = [];
   @State() public tabs: HTMLElement[] = [];
@@ -111,6 +116,7 @@ export class Tabs {
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     this.resetTabs();
     this.setActiveTab(newTabIndex);
+    this.onTabChange.emit({activeTabIndex: newTabIndex});
   };
 
   private handleTabClick = (newTabIndex: number): void => {
