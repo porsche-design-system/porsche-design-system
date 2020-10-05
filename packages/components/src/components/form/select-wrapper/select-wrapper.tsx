@@ -173,6 +173,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
+                {this.isRequired && <span class={prefix('select-wrapper__required')}></span>}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -246,6 +247,10 @@ export class SelectWrapper {
     return ['success', 'error'].includes(this.state) && this.isMessageDefined;
   }
 
+  private get isRequired(): boolean {
+    return this.select.getAttribute('required') !== null;
+  }
+
   /*
    * <START NATIVE SELECT>
    */
@@ -262,12 +267,9 @@ export class SelectWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label && this.message) {
-      this.select.setAttribute('aria-label', `${this.label}. ${this.message}`);
-    } else if (this.label && this.description) {
-      this.select.setAttribute('aria-label', `${this.label}. ${this.description}`);
-    } else if (this.label) {
-      this.select.setAttribute('aria-label', this.label);
+    if (this.label) {
+      const messageOrDescription = this.message || this.description;
+      this.select.setAttribute('aria-label', `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`);
     }
 
     if (this.state === 'error') {

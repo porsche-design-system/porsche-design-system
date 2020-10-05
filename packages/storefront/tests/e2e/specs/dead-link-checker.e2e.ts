@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { getBrowser, options } from '../helpers/setup';
+import { getBrowser, options } from '../helpers';
 
 describe('check for dead links in storefront', () => {
   let page: Page;
@@ -11,7 +11,7 @@ describe('check for dead links in storefront', () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 2147483647;
   });
 
-  afterEach(() => jasmine.DEFAULT_TIMEOUT_INTERVAL = originalJasminTimeout);
+  afterEach(() => (jasmine.DEFAULT_TIMEOUT_INTERVAL = originalJasminTimeout));
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
