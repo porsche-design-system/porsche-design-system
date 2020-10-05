@@ -67,7 +67,9 @@ export class TabsBar {
     this.setInitialScroll();
     this.tabsScrollArea.addEventListener('click', (e) => {
       const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
-      tabIndex >= 0 && this.handleTabChange(tabIndex);
+      if (tabIndex >= 0) {
+        this.handleTabChange(tabIndex);
+      }
     });
     this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
