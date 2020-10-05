@@ -1,4 +1,4 @@
-import { getBrowser, options } from '../helpers/setup';
+import { getBrowser, options } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
@@ -82,9 +82,4 @@ describe('storefront', () => {
       })(category, page);
     }
   }
-
-  it('log', async () => {
-    console.log('Visited Pages', logPages);
-    console.log('Visited Tabs', logTabs);
-  });
 });

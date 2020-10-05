@@ -109,8 +109,8 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render in disabled state with custom filter">
-        <SelectWrapper label="Some label" filter={true}>
-          <select name="some-name" disabled={true}>
+        <SelectWrapper label="Some label" filter>
+          <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -118,8 +118,8 @@ export const SelectWrapperPage = (): JSX.Element => {
         </SelectWrapper>
       </div>
       <div className="playground dark" title="should render in disabled state with custom filter on dark theme">
-        <SelectWrapper label="Some label" filter={true} theme="dark">
-          <select name="some-name" disabled={true}>
+        <SelectWrapper label="Some label" filter theme="dark">
+          <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
@@ -127,7 +127,24 @@ export const SelectWrapperPage = (): JSX.Element => {
         </SelectWrapper>
       </div>
 
-      <div className="playground light" title="should render with disabled state">
+      <div className="playground light" title="should render in required state">
+        <SelectWrapper label="Some label">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </SelectWrapper>
+        <SelectWrapper label="This is a very insanely super long label across multiple lines">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </SelectWrapper>
+      </div>
+
+      <div className="playground light" title="should render in disabled state">
         <SelectWrapper label="Some label" description="Some description">
           <select name="some-name" disabled>
             <option value="a">Option A</option>
@@ -136,7 +153,7 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </SelectWrapper>
       </div>
-      <div className="playground dark" title="should render with disabled state on dark theme">
+      <div className="playground dark" title="should render in disabled state on dark theme">
         <SelectWrapper label="Some label" description="Some description" theme="dark">
           <select name="some-name" disabled>
             <option value="a">Option A</option>

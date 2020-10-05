@@ -109,7 +109,7 @@ import { Component } from '@angular/core';
 
     <div class="playground light" title="should render in disabled state with custom filter">
       <p-select-wrapper [label]="'Some label'" [filter]="true">
-        <select name="some-name" disabled="disabled">
+        <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
@@ -118,7 +118,7 @@ import { Component } from '@angular/core';
     </div>
     <div class="playground dark" title="should render in disabled state with custom filter on dark theme">
       <p-select-wrapper [label]="'Some label'" [filter]="true" [theme]="'dark'">
-        <select name="some-name" disabled="disabled">
+        <select name="some-name" disabled>
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
@@ -126,7 +126,24 @@ import { Component } from '@angular/core';
       </p-select-wrapper>
     </div>
 
-    <div class="playground light" title="should render with disabled state">
+    <div class="playground light" title="should render in required state">
+      <p-select-wrapper [label]="'Some label'">
+        <select name="some-name" required>
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+      <p-select-wrapper [label]="'This is a very insanely super long label across multiple lines'">
+        <select name="some-name" required>
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    </div>
+
+    <div class="playground light" title="should render in disabled state">
       <p-select-wrapper [label]="'Some label'" [description]="'Some description'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
@@ -135,7 +152,7 @@ import { Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-    <div class="playground dark" title="should render with disabled state on dark theme">
+    <div class="playground dark" title="should render in disabled state on dark theme">
       <p-select-wrapper [label]="'Some label'" [description]="'Some description'" [theme]="'dark'">
         <select name="some-name" disabled>
           <option value="a">Option A</option>
