@@ -127,9 +127,9 @@ describe('tabs', () => {
     );
     const [firstButton, secondButton, thirdButton] = await getAllTabs();
 
-    expect(await getAttribute(firstButton, 'class')).toBeNull();
-    expect(await getAttribute(secondButton, 'class')).toContain('selected');
-    expect(await getAttribute(thirdButton, 'class')).toBeNull();
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
   it('should render correct selected tab when multiple tabs have selected attribute', async () => {
@@ -151,9 +151,9 @@ describe('tabs', () => {
     );
     const [firstButton, secondButton, thirdButton] = await getAllTabs();
 
-    expect(await getAttribute(firstButton, 'class')).toBeNull();
-    expect(await getAttribute(secondButton, 'class')).toContain('selected');
-    expect(await getAttribute(thirdButton, 'class')).toBeNull();
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
   it('should trigger event on tab click', async () => {
