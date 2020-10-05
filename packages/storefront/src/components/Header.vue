@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <router-link class="link" :to="`/`">
-      <p-marque/>
+      <p-marque />
     </router-link>
     <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center">
       Design System
