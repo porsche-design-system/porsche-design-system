@@ -268,8 +268,10 @@ export class TabsBar {
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-    this.setActiveTab(newTabIndex);
-    this.tabChange.emit({ activeTabIndex: newTabIndex });
+    if (this.activeTabIndex !== newTabIndex) {
+      this.setActiveTab(newTabIndex);
+      this.tabChange.emit({ activeTabIndex: newTabIndex });
+    }
   };
 
   private handleTabClick = (newTabIndex: number): void => {
