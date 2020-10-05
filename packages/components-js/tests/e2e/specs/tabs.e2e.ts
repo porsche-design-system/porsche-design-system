@@ -28,7 +28,7 @@ describe('tabs', () => {
     await setContentWithDesignSystem(
       page,
       `
-       <p-tabs>
+      <p-tabs>
         <p-tabs-item label="Button1">
           Content1
         </p-tabs-item>
@@ -65,12 +65,11 @@ describe('tabs', () => {
     );
 
     const [firstTabItem, secondTabItem] = await getAllTabItems();
-    const allTabs = await getAllTabs();
 
     expect(await getAttribute(firstTabItem, 'selected')).toBe('');
     expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
 
-    await allTabs[1].click();
+    await secondTabItem.click();
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(firstTabItem, 'selected')).toBeNull();

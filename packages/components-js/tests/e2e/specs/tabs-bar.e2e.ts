@@ -32,39 +32,12 @@ describe('tabs-bar', () => {
       '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-
-  it('should render correct with anchor and button ', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-       <p-tabs-bar active-tab-index="1">
-        <button>
-          Content 1
-        </button>
-        <button>
-          Content 2
-        </button>
-        <a href="#">
-          Content 3
-        </a>
-        <a  href="#">
-          Content 4
-        </a>
-      </p-tabs-bar>
-    `
-    );
-    const allAnchors = await getAllAnchors();
-    const allButtons = await getAllButtons();
-
-    expect(allAnchors.length).toBe(2);
-    expect(allButtons.length).toBe(2);
-  });
-
+  
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
       page,
       `
-       <p-tabs-bar active-tab-index="1">
+      <p-tabs-bar active-tab-index="1">
         <button>
           Content1
         </button>
@@ -77,19 +50,19 @@ describe('tabs-bar', () => {
       </p-tabs-bar>
     `
     );
-    const allAnchors = await getAllButtons();
+    const allButtons = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
-    expect(await getAttribute(allAnchors[0], 'class')).toBeNull();
-    expect(await getAttribute(allAnchors[1], 'class')).toContain('selected');
-    expect(await getAttribute(allAnchors[2], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[0], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[1], 'class')).toContain('selected');
+    expect(await getAttribute(allButtons[2], 'class')).toBeNull();
   });
 
   it('should render only one selected tab if multiple selected are set', async () => {
     await setContentWithDesignSystem(
       page,
       `
-       <p-tabs-bar active-tab-index="0">
+      <p-tabs-bar active-tab-index="0">
         <button>
           Content1
         </button>
@@ -102,12 +75,12 @@ describe('tabs-bar', () => {
       </p-tabs-bar>
     `
     );
-    const allAnchors = await getAllButtons();
+    const allButtons = await getAllButtons();
     await page.waitFor(40); // class gets set through js, this takes a little time
 
-    expect(await getAttribute(allAnchors[0], 'class')).toContain('selected');
-    expect(await getAttribute(allAnchors[1], 'class')).toBeNull();
-    expect(await getAttribute(allAnchors[2], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[0], 'class')).toContain('selected');
+    expect(await getAttribute(allButtons[1], 'class')).toBeNull();
+    expect(await getAttribute(allButtons[2], 'class')).toBeNull();
   });
 
   it('should render scroll 20% on Button next', async () => {
@@ -249,12 +222,12 @@ describe('tabs-bar', () => {
           <button>
             Content8
           </button>
-        </p-tabs-bar>
+       </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllButtons();
-    const selectedTabOffset = await getProperty(allAnchors[3], 'offsetLeft');
+    const allButtons = await getAllButtons();
+    const selectedTabOffset = await getProperty(allButtons[3], 'offsetLeft');
     const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
@@ -295,11 +268,11 @@ describe('tabs-bar', () => {
           <button>
             Content8
           </button>
-        </p-tabs-bar>
+       </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllButtons();
+    const allButtons = await getAllButtons();
     const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
@@ -307,20 +280,20 @@ describe('tabs-bar', () => {
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-    await allAnchors[4].click();
+    await allButtons[4].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
-    const tab3offset = await getProperty(allAnchors[4], 'offsetLeft');
+    const tab3offset = await getProperty(allButtons[4], 'offsetLeft');
     const scrollDistanceRight = +tab3offset - +gradientWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
-    await allAnchors[3].click();
+    await allButtons[3].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
-    const tab2offset = await getProperty(allAnchors[3], 'offsetLeft');
-    const tabWidth = await getProperty(allAnchors[3], 'offsetWidth');
+    const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
+    const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
     const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
@@ -340,21 +313,21 @@ describe('tabs-bar', () => {
           <button>
             Content3
           </button>
-        </p-tabs-bar>
+       </p-tabs-bar>
       </div>
     `
     );
-    const allAnchors = await getAllButtons();
+    const allButtons = await getAllButtons();
     const statusBar = await getStatusBar();
-    const tab3Position = (await getElementPositions(page, allAnchors[2])).left;
+    const tab3Position = (await getElementPositions(page, allButtons[2])).left;
 
     expect(Math.round(tab3Position)).toEqual((await getElementPositions(page, statusBar)).left);
 
-    await allAnchors[0].click();
+    await allButtons[0].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
-    expect((await getElementPositions(page, allAnchors[0])).left).toEqual(
+    expect((await getElementPositions(page, allButtons[0])).left).toEqual(
       (await getElementPositions(page, statusBar)).left
     );
   });

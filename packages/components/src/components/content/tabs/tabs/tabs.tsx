@@ -28,7 +28,6 @@ export class Tabs {
   @State() public activeTabIndex: number;
 
   private hostObserver: MutationObserver;
-  private intersectionObserver: IntersectionObserver;
 
   public connectedCallback(): void {
     this.updateTabItems();
@@ -44,7 +43,6 @@ export class Tabs {
 
   public disconnectedCallback(): void {
     this.hostObserver.disconnect();
-    this.intersectionObserver.disconnect();
   }
 
   public render(): JSX.Element {
