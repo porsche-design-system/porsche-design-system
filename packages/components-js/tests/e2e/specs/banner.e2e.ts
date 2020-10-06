@@ -8,6 +8,9 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
+const CSS_FADE_IN_DURATION = 2000;
+const CSS_FADE_OUT_DURATION = 1000;
+
 describe('banner', () => {
   let page: Page;
 
@@ -21,12 +24,15 @@ describe('banner', () => {
   const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
 
   it('should render', async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <p-banner>
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
-    `);
+    `
+    );
     const el = await getBannerButton();
     const getActiveEl = await page.$eval('p-banner', (el) => el.shadowRoot.activeElement.tagName);
 
@@ -35,70 +41,78 @@ describe('banner', () => {
   });
 
   it('should render without button', async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <p-banner persistent="true">
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
-    `);
+    `
+    );
     const el = await getBannerButton();
     expect(el).toBeNull();
   });
 
   it('should remove banner from DOM by click on close button', async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <p-banner>
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
-    `);
+    `
+    );
 
     const innerButton = await getBannerButton();
 
-    // we have to wait for the CSS fade in animation of the banner
-    await page.waitFor(2000);
+    await page.waitFor(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(1000);
+    await page.waitFor(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
   it('should remove banner from DOM by trigger ESC key', async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <p-banner>
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
-    `);
+    `
+    );
 
-    // we have to wait for the CSS fade in animation of the banner
-    await page.waitFor(2000);
+    await page.waitFor(CSS_FADE_IN_DURATION);
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(1000);
+    await page.waitFor(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
   it('should emit custom event by click on close button', async () => {
-    await setContentWithDesignSystem(page, `
+    await setContentWithDesignSystem(
+      page,
+      `
       <p-banner>
         <span slot="title">Some notification title</span>
         <span slot="description">Some notification description.</span>
       </p-banner>
-    `);
+    `
+    );
 
     const host = await getBannerHost();
     const innerButton = await getBannerButton();
     let calls = 0;
+    await addEventListener(host, 'dismiss', () => calls++);
 
-    // we have to wait for the CSS fade in animation of the banner
-    await page.waitFor(2000);
-    await addEventListener(host, 'pdsDismiss', () => calls++);
+    await page.waitFor(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
   });
-
 });

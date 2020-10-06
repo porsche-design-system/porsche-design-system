@@ -818,7 +818,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onPdsDismiss"?: (event: CustomEvent<any>) => void;
+        "onDismiss"?: (event: CustomEvent<void>) => void;
         /**
           * Defines if the banner can be closed/removed by the user.
          */

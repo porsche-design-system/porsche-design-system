@@ -17,6 +17,6 @@
 
 ## Events
 
-| Event        | Description                               | Type               |
-| ------------ | ----------------------------------------- | ------------------ |
-| `pdsDismiss` | Emitted when the close button is clicked. | `CustomEvent<any>` |
+| Event     | Description                               | Type                |
+| --------- | ----------------------------------------- | ------------------- |
+| `dismiss` | Emitted when the close button is clicked. | `CustomEvent<void>` |
