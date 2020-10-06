@@ -43,11 +43,11 @@ export class TabsBar {
     isNextHidden: false
   };
 
-  @State() public enableTransition = false;
-
+  private enableTransition = false;
   private intersectionObserver: IntersectionObserver;
   private tabs: HTMLElement[] = getHTMLElements(this.host, 'a,button');
-  private tabsScrollArea: HTMLElement;
+  private scrollArea: HTMLElement;
+  private statusBar: HTMLElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -60,19 +60,20 @@ export class TabsBar {
   }
 
   public componentDidRender(): void {
-    this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.updateStatusBarStyle();
   }
 
   public componentDidLoad(): void {
+    this.statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
+    this.scrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.setInitialScroll();
-    this.tabsScrollArea.addEventListener('click', (e) => {
+    this.scrollArea.addEventListener('click', (e) => {
       const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
       if (tabIndex >= 0 && tabIndex !== this.activeTabIndex) {
         this.handleTabClick(tabIndex);
       }
     });
-    this.tabsScrollArea.addEventListener('keydown', this.handleKeydown);
+    this.scrollArea.addEventListener('keydown', this.handleKeydown);
     this.initIntersectionObserver();
     this.enableTransition = true;
   }
@@ -149,7 +150,7 @@ export class TabsBar {
 
   private setInitialScroll = (): void => {
     const gradientWidths = this.getGradientWidths();
-    this.tabsScrollArea.scrollLeft = this.tabs[this.activeTabIndex].offsetLeft - gradientWidths[1];
+    this.scrollArea.scrollLeft = this.tabs[this.activeTabIndex].offsetLeft - gradientWidths[1];
   };
 
   private scrollOnTabClick = (direction: Direction, newTabIndex: number): void => {
@@ -163,8 +164,7 @@ export class TabsBar {
       scrollPosition = activeTab.offsetLeft - gradientWidths[1];
       // go to prev tab
     } else if (direction === 'prev' && newTabIndex > 0) {
-      scrollPosition =
-        activeTab.offsetLeft + activeTab.offsetWidth + gradientWidths[0] - this.tabsScrollArea.offsetWidth;
+      scrollPosition = activeTab.offsetLeft + activeTab.offsetWidth + gradientWidths[0] - this.scrollArea.offsetWidth;
       // go first tab
     } else if (newTabIndex === 0) {
       scrollPosition = 0;
@@ -177,7 +177,7 @@ export class TabsBar {
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabs[this.tabs.length - 1];
-    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.tabsScrollArea;
+    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.scrollArea;
     const scrollToStep = Math.round(scrollAreaWidth * 0.2);
     const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH;
 
@@ -203,9 +203,9 @@ export class TabsBar {
 
   private scrollToHorizontal = (scrollPosition: number): void => {
     if (navigator.userAgent.includes('Edge/18')) {
-      this.tabsScrollArea.scrollLeft = scrollPosition;
+      this.scrollArea.scrollLeft = scrollPosition;
     } else {
-      this.tabsScrollArea.scrollTo({
+      this.scrollArea.scrollTo({
         left: scrollPosition,
         behavior: 'smooth'
       });
@@ -267,8 +267,8 @@ export class TabsBar {
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
     if (this.activeTabIndex !== newTabIndex) {
       this.tabChange.emit({ activeTabIndex: newTabIndex });
+      this.setActiveTab(newTabIndex);
     }
-    this.setActiveTab(newTabIndex);
   };
 
   private handleTabClick = (newTabIndex: number): void => {
@@ -278,8 +278,7 @@ export class TabsBar {
   };
 
   private updateStatusBarStyle = (): void => {
-    const statusBar = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    statusBar.setAttribute('style', this.getStatusBarStyle(this.tabs[this.activeTabIndex]));
+    this.statusBar?.setAttribute('style', this.getStatusBarStyle(this.tabs[this.activeTabIndex]));
   };
 
   private handlePrevNextClick = (direction: Direction): void => {
