@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "1d6661976db3d3cf96fd",
+    "revision": "9cbf21706ead32b8be66",
     "url": "css/app.7d4f6ba5.css"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/chunk-1cd82051.6c6b0271.css"
   },
   {
-    "revision": "cf769c8449029ba9aea7",
+    "revision": "c8f93c29054bf9ec508a",
     "url": "css/chunk-28fee4c2.bf2fe3eb.css"
   },
   {
@@ -340,12 +340,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "5d6914814164426b7abda60daef7d1f7",
+    "revision": "1631eed14527421cece8264e4b22a5e2",
     "url": "index.html"
   },
   {
-    "revision": "1d6661976db3d3cf96fd",
-    "url": "js/app.7b98ffda.js"
+    "revision": "9cbf21706ead32b8be66",
+    "url": "js/app.f56b2ab9.js"
   },
   {
     "revision": "625e6a256edbf4b6a8ee",
@@ -400,8 +400,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-280b08a9.5bbdbd89.js"
   },
   {
-    "revision": "cf769c8449029ba9aea7",
-    "url": "js/chunk-28fee4c2.8d06adbe.js"
+    "revision": "c8f93c29054bf9ec508a",
+    "url": "js/chunk-28fee4c2.ad2eae24.js"
   },
   {
     "revision": "6fafcb7508dc68407d94",
@@ -732,8 +732,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d2263a4.fccc41f5.js"
   },
   {
-    "revision": "78169240c4d1a180af4a",
-    "url": "js/chunk-2d228cd6.06492ed1.js"
+    "revision": "f3c8264496a3b2765ffd",
+    "url": "js/chunk-2d228cd6.13913549.js"
   },
   {
     "revision": "45c2dc27e64fe4d7e5b9",
@@ -920,7 +920,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "36b5b0250a70991d222436a3c21550d5",
+    "revision": "e873b1186eb4119a061bd7a8b89b9ca5",
     "url": "pds-loader.js"
   }
 ]);
