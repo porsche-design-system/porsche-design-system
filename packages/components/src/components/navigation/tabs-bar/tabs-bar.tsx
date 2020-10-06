@@ -144,9 +144,8 @@ export class TabsBar {
     );
   };
 
-  private getGradientWidths = (): number[] => {
-    return getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map((item) => item.offsetWidth);
-  };
+  private getGradientWidths = (): number[] =>
+    getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map((item) => item.offsetWidth);
 
   private setInitialScroll = (): void => {
     const gradientWidths = this.getGradientWidths();
