@@ -146,17 +146,17 @@ export class TabsBar {
     );
   };
 
+  private getGradientWidths = (): number[] => {
+    return getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map((item) => item.offsetWidth);
+  };
+
   private setInitialScroll = (): void => {
-    const gradientWidths = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map(
-      (item) => item.offsetWidth
-    );
+    const gradientWidths = this.getGradientWidths();
     this.tabsScrollArea.scrollLeft = this.tabs[this.activeTabIndex].offsetLeft - gradientWidths[1];
   };
 
   private scrollOnTabClick = (direction: Direction, newTabIndex: number): void => {
-    const gradientWidths = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`).map(
-      (item) => item.offsetWidth
-    );
+    const gradientWidths = this.getGradientWidths();
     const activeTab = this.tabs[newTabIndex];
 
     let scrollPosition: number;
