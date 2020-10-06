@@ -42,8 +42,8 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 ## Accessibility
 
 The `<p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"` and  `tab-index` on the tabs inside the component.
-To be truly accessible every tab needs a `aria-controls` attribute with a uniq id. The top container of your content needs the `role="tabpanel"` and the attribute `aria-labelledby`
-which gets the same uniq id as the according tab (`aria-controls`).
+To be truly accessible every tab needs a `aria-controls` attribute with a unique id. The top container of your content needs the `role="tabpanel"` and the attribute `aria-labelledby`
+which gets the same unique id as the according tab (`aria-controls`).
 
 If you care about accessibility and think this is too much work, have a look at the [Tabs](#/components/tabs#code) where we handle everything for you.
 
