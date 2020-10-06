@@ -24,7 +24,7 @@ export class Tabs {
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
   /** Emitted when active tab is changing. */
-  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
+  @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public tabsItems: HTMLPTabsItemElement[] = [];
   @State() public tabs: HTMLElement[] = [];

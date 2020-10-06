@@ -7,6 +7,7 @@ import {
 } from '../../../utils';
 import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+import { getAttribute } from '../../../../../components-js/tests/e2e/helpers';
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
@@ -36,7 +37,7 @@ export class TabsBar {
   @Prop() public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changing. */
-  @Event() public tabChange!: EventEmitter<TabChangeEvent>;
+  @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -56,8 +57,8 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.setAccessibilityAttributes();
     this.setActiveTab(this.activeTabIndex);
+    this.setAccessibilityAttributes();
   }
 
   public componentDidRender(): void {
@@ -175,7 +176,7 @@ export class TabsBar {
     } else {
       scrollPosition = activeTab.offsetLeft - FOCUS_PADDING_WIDTH;
     }
-    this.scrollToHorizontal(this.tabsScrollArea, scrollPosition);
+    this.scrollToHorizontal(scrollPosition);
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
@@ -201,14 +202,14 @@ export class TabsBar {
         scrollPosition = currentScrollPosition - scrollToStep;
       }
     }
-    this.scrollToHorizontal(this.tabsScrollArea, scrollPosition);
+    this.scrollToHorizontal(scrollPosition);
   };
 
-  private scrollToHorizontal = (scrollArea: HTMLElement, scrollPosition: number): void => {
+  private scrollToHorizontal = (scrollPosition: number): void => {
     if (navigator.userAgent.includes('Edge/18')) {
-      scrollArea.scrollLeft = scrollPosition;
+      this.tabsScrollArea.scrollLeft = scrollPosition;
     } else {
-      scrollArea.scrollTo({
+      this.tabsScrollArea.scrollTo({
         left: scrollPosition,
         behavior: 'smooth'
       });
