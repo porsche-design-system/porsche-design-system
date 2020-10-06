@@ -18,6 +18,6 @@
 
 ## Events
 
-| Event       | Description                          | Type                                       |
-| ----------- | ------------------------------------ | ------------------------------------------ |
-| `tabChange` | Emitted when active tab is changing. | `CustomEvent<{ activeTabIndex: number; }>` |
+| Event       | Description                         | Type                                       |
+| ----------- | ----------------------------------- | ------------------------------------------ |
+| `tabChange` | Emitted when active tab is changed. | `CustomEvent<{ activeTabIndex: number; }>` |

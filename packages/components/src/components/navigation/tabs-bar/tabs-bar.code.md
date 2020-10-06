@@ -5,7 +5,7 @@ your window location updates on tab click, use it for hash routing and displayin
 and therefore change the appearance of you content or as skip navigation to move on a longer page.
 
 The Tabs Bar component does not handle the display of your content. If you use the component you have to manually care for the
-content to be rendered beneath. To help with this task the Tabs ar component triggers an event called `tabChange` with the index
+content to be rendered beneath. To help with this task the Tabs Bar component triggers an event called `tabChange` with the index
 of the clicked tab as data.
 
 If you intend to only change content on tab-click without location changes, we prepared a component which also
@@ -13,6 +13,8 @@ handles the correct display of content according to the clicked tab. Have a look
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
+
+---
 
 ## Basic example
 
@@ -41,11 +43,11 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 
 ## Accessibility
 
-The `<p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"` and  `tab-index` on the tabs inside the component.
+The `<p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tab-index` and `aria-selected` on the tabs inside the component.
 To be truly accessible every tab needs a `aria-controls` attribute with a unique id. The top container of your content needs the `role="tabpanel"` and the attribute `aria-labelledby`
 which gets the same unique id as the according tab (`aria-controls`).
 
-If you care about accessibility and think this is too much work, have a look at the [Tabs](#/components/tabs#code) where we handle everything for you.
+If you care about accessibility without handling it yourself, have a look at the [Tabs](#/components/tabs#code) where we handle everything for you.
 
 <Playground>
   <template>
@@ -125,7 +127,7 @@ The `<tabs-bar>` component comes with two text-weights `regular` or `semibold` w
 ## Theme variants
 
 Choose between `light` and `dark` theme by using the `theme` property. Default theme is `light`.
-The Theme the text color of the tabs.
+The Theme changes the text color of the tabs.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
@@ -171,7 +173,7 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
 ## Set active Tab
 
 You may need to change the initial active tab. To do so, use the `active-tab-index` property on the `<p-tabs-bar>` component.
-The component adds the class `data-selected` on the active tab.
+The the attribute `aria-selected` becomes `true` on the active tab.
 
 **Note:** Keep in mind that the `active-tab-index` is counted like an array, so it starts with 0. 
 
