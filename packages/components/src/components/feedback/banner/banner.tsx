@@ -23,7 +23,7 @@ export class Banner {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
-  @Event() public pdsDismiss?: EventEmitter;
+  @Event() public dismiss?: EventEmitter<void>;
 
   private closeButton: HTMLButtonElement;
 
@@ -100,7 +100,7 @@ export class Banner {
                 <PrefixedTagNames.pButtonPure
                   icon="close"
                   hideLabel={true}
-                  onClick={(e: MouseEvent) => this.removeBanner(e)}
+                  onClick={this.removeBanner}
                   ref={(el) => (this.closeButton = el)}
                 >
                   Close notification
@@ -116,17 +116,17 @@ export class Banner {
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
     const { key } = e;
     if (key === 'Esc' || key === 'Escape') {
-      this.removeBanner(e);
+      this.removeBanner();
     }
   };
 
-  private removeBanner(e): void {
-    this.pdsDismiss.emit(e);
+  private removeBanner = (): void => {
+    this.dismiss.emit();
     this.host.classList.add(prefix('banner--close'));
     setTimeout(() => {
       this.host.remove();
     }, 1000);
-  }
+  };
 
   private get isTitleDefined(): boolean {
     return !!this.host.querySelector('[slot="title"]');
