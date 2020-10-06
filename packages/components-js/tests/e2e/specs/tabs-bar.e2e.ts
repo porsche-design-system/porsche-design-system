@@ -6,6 +6,7 @@ import {
   getElementPositions,
   getProperty,
   initAddEventListener,
+  reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
@@ -31,7 +32,7 @@ describe('tabs-bar', () => {
       '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-  const getElementFocus = async (elementIndex) => {
+  const getElementFocus = async (elementIndex: number): Promise<boolean> => {
     const snapshot = await page.accessibility.snapshot();
     const element = snapshot.children[elementIndex];
     return element.focused;
@@ -42,15 +43,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar active-tab-index="1">
-        <button>
-          Content1
-        </button>
-        <button>
-          Content2
-        </button>
-        <button>
-          Content3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
     `
     );
@@ -67,15 +62,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar active-tab-index="0">
-        <button>
-          Content1
-        </button>
-        <button selected>
-          Content2
-        </button>
-        <button selected>
-          Content3
-        </button>
+        <button>Content1</button>
+        <button selected>Content2</button>
+        <button selected>Content3</button>
       </p-tabs-bar>
     `
     );
@@ -92,31 +81,15 @@ describe('tabs-bar', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-bar size="medium">
-          <button>
-            Content1
-          </button>
-          <button>
-            Content2
-          </button>
-          <button>
-            Content3
-          </button>
-           <button>
-            Content4
-          </button>
-          <button>
-            Content5
-          </button>
-          <button>
-            Content6
-          </button>
-           <button>
-            Content7
-          </button>
-          <button>
-            Content8
-          </button>
+        <p-tabs-bar size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+          <button>Content7</button>
+          <button>Content8</button>
         </p-tabs-bar>
       </div>
     `
@@ -140,31 +113,15 @@ describe('tabs-bar', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-bar size="medium">
-          <button>
-            Content1
-          </button>
-          <button>
-            Content2
-          </button>
-          <button>
-            Content3
-          </button>
-           <button>
-            Content4
-          </button>
-          <button>
-            Content5
-          </button>
-          <button>
-            Content6
-          </button>
-           <button>
-            Content7
-          </button>
-          <button>
-            Content8
-          </button>
+        <p-tabs-bar size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+           <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+           <button>Content7</button>
+          <button>Content8</button>
         </p-tabs-bar>
       </div>
     `
@@ -201,32 +158,16 @@ describe('tabs-bar', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-bar active-tab-index="3" size="medium">
-          <button>
-            Content1
-          </button>
-          <button>
-            Content2
-          </button>
-          <button>
-            Content3
-          </button>
-           <button>
-            Content4
-          </button>
-          <button>
-            Content5
-          </button>
-          <button>
-            Content6
-          </button>
-           <button>
-            Content7
-          </button>
-          <button>
-            Content8
-          </button>
-       </p-tabs-bar>
+        <p-tabs-bar active-tab-index="3" size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+          <button>Content7</button>
+          <button>Content8</button>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -247,32 +188,16 @@ describe('tabs-bar', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-bar size="medium">
-          <button>
-            Content1
-          </button>
-          <button>
-            Content2
-          </button>
-          <button>
-            Content3
-          </button>
-           <button>
-            Content4
-          </button>
-          <button>
-            Content5
-          </button>
-          <button>
-            Content6
-          </button>
-           <button>
-            Content7
-          </button>
-          <button>
-            Content8
-          </button>
-       </p-tabs-bar>
+        <p-tabs-bar size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+          <button>Content7</button>
+          <button>Content8</button>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -307,17 +232,11 @@ describe('tabs-bar', () => {
       page,
       `
       <div style="width: 400px">
-       <p-tabs-bar active-tab-index="2" size="medium">
-          <button>
-            Content1
-          </button>
-          <button>
-            Content2
-          </button>
-          <button>
-            Content3
-          </button>
-       </p-tabs-bar>
+        <p-tabs-bar active-tab-index="2" size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+        </p-tabs-bar>
       </div>
     `
     );
@@ -341,15 +260,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar>
-        <button>
-          Button 1
-        </button>
-        <button>
-          Button 2
-        </button>
-        <button>
-          Button 3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
       `
     );
@@ -370,15 +283,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar>
-        <button>
-          Button 1
-        </button>
-        <button>
-          Button 2
-        </button>
-        <button>
-          Button 3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
       <p-text>Hallo <a href="#">Link</a></p-text>
     `
@@ -397,15 +304,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar>
-        <button>
-          Button 1
-        </button>
-        <button>
-          Button 2
-        </button>
-        <button>
-          Button 3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
     `
     );
@@ -434,15 +335,9 @@ describe('tabs-bar', () => {
       page,
       `
       <p-tabs-bar active-tab-index="1">
-        <button>
-          Content1
-        </button>
-        <button>
-          Content2
-        </button>
-        <button>
-          Content3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
     `
     );
@@ -461,20 +356,39 @@ describe('tabs-bar', () => {
     expect(await getElementFocus(2)).toBeFalsy();
   });
 
+  it('should render correct active tab on focus change and enter click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar active-tab-index="0">
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
+      </p-tabs-bar>
+    `
+    );
+    const [firstButton, secondButton] = await getAllButtons();
+
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+  });
+
   it('should trigger event on button click', async () => {
     await setContentWithDesignSystem(
       page,
       `
       <p-tabs-bar active-tab-index="1">
-        <button>
-          Content1
-        </button>
-        <button>
-          Content2
-        </button>
-        <button>
-          Content3
-        </button>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
       </p-tabs-bar>
     `
     );
@@ -482,6 +396,9 @@ describe('tabs-bar', () => {
     const [firstButton, secondButton, thirdButton] = await getAllButtons();
     let eventCounter = 0;
     await addEventListener(host, 'click', () => eventCounter++);
+
+    // Remove and re-attach component to check if events are duplicated / fire at all
+    await reattachElement(page, 'p-tabs-bar');
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
