@@ -165,6 +165,10 @@
           .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
             return `</${upperFirst(camelCase($tag))}>`;
           })
+          // transform style attributes
+          .replace(/style="(.*?)"/g, 'style={{ $1 }}')
+          .replace(/;/g, ',') // transform semi colons to comma
+          .replace(/, }}/g, ' }}') // remove last comma
       );
     }
 
