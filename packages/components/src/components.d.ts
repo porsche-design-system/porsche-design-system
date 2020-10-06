@@ -1368,7 +1368,7 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
-          * Emitted when active tab is changing.
+          * Emitted when active tab is changed.
          */
         "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
         /**
@@ -1394,7 +1394,7 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: 'default' | 'surface';
         /**
-          * Emitted when active tab is changing.
+          * Emitted when active tab is changed.
          */
         "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
         /**
