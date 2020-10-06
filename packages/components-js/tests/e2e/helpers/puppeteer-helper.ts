@@ -1,4 +1,5 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import exp = require('constants');
 
 export const setContentWithDesignSystem = async (
   page: Page,
@@ -84,8 +85,19 @@ export const getElementIndex = async (element: ElementHandle, selector: string):
     return pos;
   }, selector);
 
-export const getElementPositions = (page: Page, element: ElementHandle): Promise<{ top: number, left: number, bottom: number, right: number }> =>
+export const getElementPositions = (
+  page: Page,
+  element: ElementHandle
+): Promise<{ top: number; left: number; bottom: number; right: number }> =>
   page.evaluate((element) => {
     const { top, left, bottom, right } = element.getBoundingClientRect();
     return { top, left, bottom, right };
   }, element);
+
+export const reattachElement = async (page: Page, selector: string): Promise<void> => {
+  await page.evaluate((selector: string) => {
+    const [element] = Array.from(document.getElementsByTagName(selector));
+    element.remove();
+    document.body.appendChild(element);
+  }, selector);
+};

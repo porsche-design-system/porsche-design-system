@@ -4,6 +4,7 @@ import {
   getBrowser,
   getProperty,
   initAddEventListener,
+  reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
@@ -156,6 +157,40 @@ describe('tabs', () => {
     expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
+  it('should render correct content of tab-item on keyboard arrow click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs>
+        <p-tabs-item label="Button1">
+          Content1
+        </p-tabs-item>
+        <p-tabs-item label="Button2">
+          Content2
+        </p-tabs-item>
+        <p-tabs-item label="Button3">
+          Content3
+        </p-tabs-item>
+      </p-tabs>
+    `
+    );
+
+    const [firstTabItem, secondTabItem] = await getAllTabItems();
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
+    expect(await getAttribute(secondTabItem, 'selected')).toBe('');
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(firstTabItem, 'selected')).toBe('');
+    expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
+  });
+
   it('should trigger event on tab click', async () => {
     await setContentWithDesignSystem(
       page,
@@ -173,10 +208,13 @@ describe('tabs', () => {
       </p-tabs>
     `
     );
-    const host = await selectNode(page,'p-tabs');
+    const host = await selectNode(page, 'p-tabs');
     const [firstButton, secondButton, thirdButton] = await getAllTabs();
     let eventCounter = 0;
     await addEventListener(host, 'click', () => eventCounter++);
+
+    // Remove and re-attach component to check if events are duplicated / fire at all
+    await reattachElement(page, 'p-tabs');
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
