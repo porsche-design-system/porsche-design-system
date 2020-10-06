@@ -316,7 +316,7 @@ export class TabsBar {
     e.preventDefault();
 
     if (this.hasPTabsParent()) {
-      this.handleTabChange(newTabIndex);
+      this.handleTabClick(newTabIndex);
       this.tabs[this.activeTabIndex].focus();
     } else {
       this.tabs[newTabIndex].focus();
