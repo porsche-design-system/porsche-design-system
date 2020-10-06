@@ -20,7 +20,6 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
-  const getAllTabs = () => page.$$('a,button');
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
@@ -32,6 +31,11 @@ describe('tabs-bar', () => {
       '.p-tabs-bar__action--next > p-button-pure'
     );
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
+  const getElementFocus = async (elementIndex) => {
+    const snapshot = await page.accessibility.snapshot();
+    const element = snapshot.children[elementIndex];
+    return element.focused;
+  };
 
   it('should render correct active tab if attribute is set ', async () => {
     await setContentWithDesignSystem(
@@ -379,21 +383,16 @@ describe('tabs-bar', () => {
       <p-text>Hallo <a href="#">Link</a></p-text>
     `
     );
-    const getLinkFocus = async () => {
-      const snapshot = await page.accessibility.snapshot();
-      const link = snapshot.children[snapshot.children.length - 1];
-      return link.focused;
-    };
-    expect(await getLinkFocus()).toBeUndefined();
+    expect(await getElementFocus(4)).toBeFalsy();
 
     await page.keyboard.press('Tab');
-    expect(await getLinkFocus()).toBeUndefined();
+    expect(await getElementFocus(4)).toBeFalsy();
     await page.keyboard.press('Tab');
 
-    expect(await getLinkFocus()).toBe(true);
+    expect(await getElementFocus(4)).toBe(true);
   });
 
-  it('should render correct active tab on arrow-key press', async () => {
+  it('should render correct focusedTab on arrow-key press', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -410,23 +409,24 @@ describe('tabs-bar', () => {
       </p-tabs-bar>
     `
     );
-    const allTabs = await getAllTabs();
-
-    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('true');
-    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('false');
+    expect(await getElementFocus(0)).toBeFalsy();
 
     await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementFocus(0)).toBeTrue();
+
     await page.keyboard.press('ArrowRight');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('true');
-    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('false');
+    expect(await getElementFocus(0)).toBeFalsy();
+    expect(await getElementFocus(1)).toBeTrue();
 
     await page.keyboard.press('ArrowLeft');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(allTabs[0], 'aria-selected')).toBe('true');
-    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('false');
+    expect(await getElementFocus(0)).toBeTrue();
+    expect(await getElementFocus(1)).toBeFalsy();
   });
 
   it('should render correct active tab on first/last or home/end press', async () => {
@@ -446,26 +446,19 @@ describe('tabs-bar', () => {
       </p-tabs-bar>
     `
     );
-    const allTabs = await getAllTabs();
-    const firstButton = allTabs[0];
-    const lastButton = allTabs[allTabs.length - 1];
-
-    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
-    expect(await getAttribute(allTabs[1], 'aria-selected')).toBe('true');
-    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
+    expect(await getElementFocus(2)).toBeFalsy();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('End');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(lastButton, 'aria-selected')).toBe('true');
-    expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+    expect(await getElementFocus(2)).toBeTrue();
 
     await page.keyboard.press('Home');
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
-    expect(await getAttribute(lastButton, 'aria-selected')).toBe('false');
+    expect(await getElementFocus(0)).toBeTrue();
+    expect(await getElementFocus(2)).toBeFalsy();
   });
 
   it('should trigger event on button click', async () => {
@@ -485,7 +478,7 @@ describe('tabs-bar', () => {
       </p-tabs-bar>
     `
     );
-    const host = await selectNode(page,'p-tabs-bar');
+    const host = await selectNode(page, 'p-tabs-bar');
     const [firstButton, secondButton, thirdButton] = await getAllButtons();
     let eventCounter = 0;
     await addEventListener(host, 'click', () => eventCounter++);
