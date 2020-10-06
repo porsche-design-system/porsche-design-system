@@ -35,7 +35,7 @@ export class Tabs {
   public connectedCallback(): void {
     this.updateTabItems();
     const initialIndex = this.tabsItems.findIndex((tab) => tab.selected);
-    this.setActiveTab(initialIndex >= 0 ? initialIndex : 0);
+    this.setActiveTab(initialIndex < 0 ? 0 : initialIndex);
     this.tabsItems.forEach(this.setAccessibilityAttributes);
     this.initObserveHost();
   }

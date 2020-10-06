@@ -255,7 +255,7 @@ export class TabsBar {
 
   private setActiveTab = (index: number): void => {
     const maxIndex = this.tabs.length - 1;
-    this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
+    this.activeTabIndex = (maxIndex < index ? maxIndex : index) < 0 ? 0 : index;
     this.tabs.forEach((tab) => {
       tab.setAttribute('tabIndex', '-1');
       tab.setAttribute('aria-selected', 'false');
@@ -315,7 +315,7 @@ export class TabsBar {
     }
     e.preventDefault();
 
-    if (!this.isStandalone()) {
+    if (this.hasPTabsParent()) {
       this.handleTabChange(newTabIndex);
       this.tabs[this.activeTabIndex].focus();
     } else {
@@ -323,11 +323,11 @@ export class TabsBar {
     }
   };
 
-  private isStandalone = (): boolean => !this.host.parentElement.classList.contains('p-tabs');
+  private hasPTabsParent = (): boolean => this.host.parentElement.classList.contains('p-tabs');
 
   private getFocusedTabIndex = (): number => {
     const indexOfActiveElement = this.tabs.indexOf(document?.activeElement as HTMLElement);
-    return this.isStandalone() ? (indexOfActiveElement >= 0 ? indexOfActiveElement : 0) : this.activeTabIndex;
+    return !this.hasPTabsParent() ? (indexOfActiveElement < 0 ? 0 : indexOfActiveElement) : this.activeTabIndex;
   };
 
   private getPrevNextTabIndex = (direction: Direction): number => {
