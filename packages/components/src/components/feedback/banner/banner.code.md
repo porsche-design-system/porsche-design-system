@@ -90,7 +90,7 @@ p-banner {
     public state: string = 'neutral';
     public width: string = 'basic';
     
-    openBanner = function() {
+    openBanner = () => {
       const el = document.createElement('div');
       el.innerHTML = `
       <p-banner>
@@ -100,12 +100,10 @@ p-banner {
       `;
       document.getElementById('app').append(el);
     };
-  };
   
-  const banner = document.querySelectorAll('p-banner');
-  banner.forEach(function(element) {
-    element.addEventListener("pdsDismiss", e => {
-      console.log("dismissed", e);
-    })
-  });
+    mounted(): void {
+      const banners = document.querySelectorAll('p-banner');
+      banners.forEach((el) => el.addEventListener("dismiss", () => console.log("dismissed")));
+    }
+  }
 </script>
