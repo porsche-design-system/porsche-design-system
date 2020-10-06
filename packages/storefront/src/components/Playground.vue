@@ -68,10 +68,7 @@
 
     private getMarkup(): string {
       const el = this.$el.querySelector('.code');
-      if (el) {
-        return el.innerHTML;
-      }
-      return '';
+      return el ? el.innerHTML : '';
     }
   }
 </script>
