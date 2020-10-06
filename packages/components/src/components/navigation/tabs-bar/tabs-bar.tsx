@@ -48,7 +48,6 @@ export class TabsBar {
   private intersectionObserver: IntersectionObserver;
   private tabs: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private tabsScrollArea: HTMLElement;
-  private focusedTabIndex: number;
 
   @Watch('activeTabIndex')
   public activeTabHandler(activeTab: number): void {
@@ -63,7 +62,6 @@ export class TabsBar {
   public componentDidRender(): void {
     this.tabsScrollArea = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.updateStatusBarStyle();
-    this.focusedTabIndex = this.activeTabIndex;
   }
 
   public componentDidLoad(): void {
@@ -268,10 +266,10 @@ export class TabsBar {
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-    this.setActiveTab(newTabIndex);
     if (this.activeTabIndex !== newTabIndex) {
       this.tabChange.emit({ activeTabIndex: newTabIndex });
     }
+    this.setActiveTab(newTabIndex);
   };
 
   private handleTabClick = (newTabIndex: number): void => {
@@ -310,18 +308,34 @@ export class TabsBar {
         newTabIndex = this.tabs.length - 1;
         break;
 
+      case 'Enter':
+        this.handleTabClick(this.getFocusedTabIndex());
+        return;
+
       default:
         return;
     }
     e.preventDefault();
 
-    this.tabs[newTabIndex].focus();
+    if (!this.isStandalone()) {
+      this.handleTabChange(newTabIndex);
+      this.tabs[this.activeTabIndex].focus();
+    } else {
+      this.tabs[newTabIndex].focus();
+    }
+  };
+
+  private isStandalone = (): boolean => !this.host.parentElement.classList.contains('p-tabs');
+
+  private getFocusedTabIndex = (): number => {
+    const indexOfActiveElement = this.tabs.indexOf(document?.activeElement as HTMLElement);
+    return this.isStandalone() ? (indexOfActiveElement >= 0 ? indexOfActiveElement : 0) : this.activeTabIndex;
   };
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabs.length;
-    const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
-    this.focusedTabIndex = newTabIndex;
+    const newTabIndex = this.getFocusedTabIndex() + (direction === 'next' ? 1 : -1);
+
     return (newTabIndex + tabsLength) % tabsLength;
   };
 
