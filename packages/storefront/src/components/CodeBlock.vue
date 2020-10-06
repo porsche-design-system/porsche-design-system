@@ -166,9 +166,13 @@
             return `</${upperFirst(camelCase($tag))}>`;
           })
           // transform style attributes
-          .replace(/style="(.*?)"/g, 'style={{ $1 }}')
-          .replace(/;/g, ',') // transform semi colons to comma
-          .replace(/, }}/g, ' }}') // remove last comma
+          .replace(
+            /style="(.*?)"/g,
+            (m, $style: string) =>
+              `style={{ ${$style
+                .replace(/;/g, ',') // transform semi colons to comma
+                .replace(/,$/g, '')} }}` // remove last comma
+          )
       );
     }
 
