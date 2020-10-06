@@ -1,7 +1,9 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">{{frameWork}}</button>
+      <button v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
+        {{ frameWork }}
+      </button>
     </p-tabs-bar>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
@@ -11,7 +13,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import * as Prism from 'prismjs';
+  import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import { html } from 'js-beautify';
   import { camelCase, upperFirst } from 'lodash';
@@ -22,7 +24,7 @@
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
 
-    frameWorks: {[key in Framework]: string} = {
+    frameWorks: { [key in Framework]: string } = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React'
@@ -67,11 +69,11 @@
           // remove empty comments
           .replace(/<!---->/g, '')
           // remove all attributes added by Vue JS
-          .replace(/data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
+          .replace(/ data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
           // remove all class values added by Stencil JS
-          .replace(/class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
+          .replace(/ class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
             if (/\S/.test($1) || /\S/.test($2)) {
-              return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+              return ' class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
             }
             return '';
           })
@@ -85,8 +87,12 @@
           .replace(/<([\w-]+)(.*)>\n<\/\1>/g, '<$1$2></$1>')
           // remove multiple new lines
           .replace(/\n{3,}/g, '\n\n')
-          // clean checked, disabled and readonly attributes
-          .replace(/(checked|disabled|readonly)="\1"/g, '$1')
+          // clean checked, disabled, readonly and selected attributes
+          .replace(/(checked|disabled|readonly|selected)="\1?"/g, '$1')
+          // clean various attributes that are set by component code
+          .replace(/ (hidden|role|id|tabindex|aria-selected)=".*?"/g, '')
+          // clean aria-labelledby attributes that are set by tabs component
+          .replace(/ (aria-labelledby)="p-tab-item-\d"/g, '')
       );
     }
 
@@ -167,11 +173,7 @@
     }
 
     private highlight(markup: string): string {
-      if (this.isReact) {
-        return Prism.highlight(markup, Prism.languages.jsx, 'language-jsx');
-      }
-
-      return Prism.highlight(markup, Prism.languages.markup, 'markup');
+      return highlight(markup, languages[this.isReact ? 'jsx' : 'markup'], this.isReact ? 'language-jsx' : 'markup');
     }
   }
 </script>
