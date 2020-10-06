@@ -70,7 +70,7 @@ export class TabsBar {
     this.setInitialScroll();
     this.tabsScrollArea.addEventListener('click', (e) => {
       const tabIndex = this.tabs.indexOf(e.target as HTMLElement);
-      if (tabIndex >= 0) {
+      if (tabIndex >= 0 && tabIndex !== this.activeTabIndex) {
         this.handleTabClick(tabIndex);
       }
     });
@@ -268,8 +268,8 @@ export class TabsBar {
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
+    this.setActiveTab(newTabIndex);
     if (this.activeTabIndex !== newTabIndex) {
-      this.setActiveTab(newTabIndex);
       this.tabChange.emit({ activeTabIndex: newTabIndex });
     }
   };
