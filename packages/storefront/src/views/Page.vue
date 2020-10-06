@@ -3,6 +3,7 @@
     <p-tabs-bar v-if="hasTabs" :active-tab-index="activeTabIndex" size="medium" weight="semibold">
       <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
     </p-tabs-bar>
+    <p-divider></p-divider>
     <Markdown>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
     </Markdown>
@@ -106,7 +107,7 @@ export default class Page extends Vue {
 <style scoped lang="scss">
 @import '~@porsche-design-system/utilities/scss';
 
-p-tabs-bar {
+p-divider {
   margin-bottom: $p-spacing-64;
 }
 </style>

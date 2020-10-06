@@ -1,7 +1,7 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
+      <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
         {{ frameWork }}
       </button>
     </p-tabs-bar>

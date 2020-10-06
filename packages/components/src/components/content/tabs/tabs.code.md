@@ -7,12 +7,14 @@ according to the active tab and all accessibility attributes on your tab and tab
 This variant does not support `a` tags and should not be used for navigation. 
 If you need to update your window location have a look at our [Tabs Bar](#/components/tabs-bar#code) component.
 
+---
+
 ## Basic example
 
 Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the `p-tabs` component, a tab
 will be created. The assigned `label` property defines also the name of the Button.
 
-Every `p-tabs-item` holds a `slot` to display content which can be individually designed. 
+Every `p-tabs-item` holds a `slot` to display content which can be individually assigned. 
 
 <Playground>
   <template>
@@ -135,7 +137,7 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
 ## Set active Tab
 
 You may need to change the initial active tab. To do so, use the `selected` property on the `p-tabs-item` you want to select on first render. 
-If you put the property on multiple `p-tabs-item` it will select the first.
+If you put the property on multiple `p-tabs-item` it will select the first .
 
 <Playground>
   <template>
