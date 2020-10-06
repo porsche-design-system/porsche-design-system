@@ -35,7 +35,7 @@ export class TabsBar {
   /** Defines which tab to be visualized as selected. */
   @Prop() public activeTabIndex?: number = 0;
 
-  /** Emitted when active tab is changing. */
+  /** Emitted when active tab is changed. */
   @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public actionState: ActionState = {
