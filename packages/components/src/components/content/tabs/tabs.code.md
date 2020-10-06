@@ -16,17 +16,17 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 <Playground>
   <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+    <p-tabs>
+      <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
 ## Switch size
 
-You can choose between two tab sizes, `small` or `medium`. It defaults to `small` and an be set by selecting the property on the `p-tabs` component.
+You can choose between two tab sizes, `small` or `medium`. It defaults to `small` and can be set by selecting the property on the `p-tabs` component.
 
 <Playground>
   <template #configurator>
@@ -37,11 +37,11 @@ You can choose between two tab sizes, `small` or `medium`. It defaults to `small
     </select>
   </template>
   <template>
-     <p-tabs :size="size">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+    <p-tabs :size="size">
+      <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
@@ -51,17 +51,17 @@ If the amount of `p-tabs-item` exceed the viewport, the buttons become horizonta
 
 <Playground>
   <template>
-     <p-tabs>
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-       <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
-       <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
-       <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
-       <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
-       <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
-       <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
-     </p-tabs>
+    <p-tabs>
+      <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+      <p-tabs-item label="Item Four">Tab Content Four</p-tabs-item>
+      <p-tabs-item label="Item Five">Tab Content Five</p-tabs-item>
+      <p-tabs-item label="Long Label Six">Tab Content Long Label Six</p-tabs-item>
+      <p-tabs-item label="Item Seven">Tab Content Seven</p-tabs-item>
+      <p-tabs-item label="Item Eight">Tab Content Eight</p-tabs-item>
+      <p-tabs-item label="Item Nine">Tab Content Nine</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
@@ -78,11 +78,11 @@ The tabs component comes with two text-weights `regular` or `semibold` where it 
     </select>
   </template>
   <template>
-     <p-tabs :weight="weight">
-       <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
-     </p-tabs>
+    <p-tabs :weight="weight">
+      <p-tabs-item label="Item One">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
@@ -93,24 +93,24 @@ The Theme changes the Background of the tabs.
 
 <Playground :themeable="true">
   <template v-slot="{theme}">
-     <p-tabs :theme="theme">
-       <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
-     </p-tabs>
+    <p-tabs :theme="theme">
+      <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
 ## Gradient Color Scheme variants
 
-If the amount of tabs exceed the viewport, the component renders arrow-buttons to help with horizontal scrolling.
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
 The background and gradient has to align to your chosen background.
 
 There are two different background types `default` and `surface`, you can choose between them by using the `gradient-color-scheme` property. It defaults to the value `default`.
 The `gradient-color-scheme` has impact on `light` and `dark` theme.
 
 <Playground :themeable="true">
-<template #configurator>
+  <template #configurator>
     <select v-model="gradientColorScheme">
       <option disabled>Select gradient-color-scheme</option>
       <option selected value="default">Default</option>
@@ -118,17 +118,17 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
     </select>
   </template>
   <template v-slot="{theme}">
-     <p-tabs :theme="theme" :gradient-color-scheme="gradientColorScheme">
-       <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
-       <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
-       <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
-       <p-tabs-item label="Item Four" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Four</p-tabs-item>
-       <p-tabs-item label="Item Five" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Five</p-tabs-item>
-       <p-tabs-item label="Long Label Six" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Long Label Six</p-tabs-item>
-       <p-tabs-item label="Item Seven" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Seven</p-tabs-item>
-       <p-tabs-item label="Item Eight" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Eight</p-tabs-item>
-       <p-tabs-item label="Item Nine" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Nine</p-tabs-item>
-     </p-tabs>
+    <p-tabs :theme="theme" :gradient-color-scheme="gradientColorScheme">
+      <p-tabs-item label="Item One" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content One</p-tabs-item>
+      <p-tabs-item label="Item Two" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Two</p-tabs-item>
+      <p-tabs-item label="Item Three" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Three</p-tabs-item>
+      <p-tabs-item label="Item Four" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Four</p-tabs-item>
+      <p-tabs-item label="Item Five" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Five</p-tabs-item>
+      <p-tabs-item label="Long Label Six" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Long Label Six</p-tabs-item>
+      <p-tabs-item label="Item Seven" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Seven</p-tabs-item>
+      <p-tabs-item label="Item Eight" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Eight</p-tabs-item>
+      <p-tabs-item label="Item Nine" v-bind:style="[theme === 'dark' ? {color: 'white'} : {color: 'black'}]">Tab Content Nine</p-tabs-item>
+    </p-tabs>
   </template>
 </Playground>
 
@@ -149,13 +149,13 @@ If you put the property on multiple `p-tabs-item` it will select the first.
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
   export default class PlaygroundTabs extends Vue {
-   public theme: string = 'light';
-   public weight: string = 'regular';
-   public size: string = 'small';
-   public gradientColorScheme: string = 'default';
+    public theme: string = 'light';
+    public weight: string = 'regular';
+    public size: string = 'small';
+    public gradientColorScheme: string = 'default';
   }
 </script>
