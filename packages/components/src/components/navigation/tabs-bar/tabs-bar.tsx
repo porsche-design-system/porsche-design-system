@@ -7,7 +7,6 @@ import {
 } from '../../../utils';
 import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
-import { getAttribute } from '../../../../../components-js/tests/e2e/helpers';
 
 type Direction = 'next' | 'prev';
 type ActionState = { readonly isPrevHidden: boolean; readonly isNextHidden: boolean };
