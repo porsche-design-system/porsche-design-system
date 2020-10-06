@@ -1,5 +1,4 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
-import exp = require('constants');
 
 export const setContentWithDesignSystem = async (
   page: Page,
