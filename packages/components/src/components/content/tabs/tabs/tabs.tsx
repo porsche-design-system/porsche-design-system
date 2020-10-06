@@ -23,25 +23,21 @@ export class Tabs {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
-  /** Emitted when active tab is changing. */
+  /** Emitted when active tab is changed. */
   @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public tabsItems: HTMLPTabsItemElement[] = [];
-  @State() public tabs: HTMLElement[] = [];
+
   @State() public activeTabIndex: number;
 
   private hostObserver: MutationObserver;
 
   public connectedCallback(): void {
     this.updateTabItems();
-    this.activeTabIndex = this.tabsItems.findIndex((tab) => tab.selected);
-    this.setActiveTab(this.activeTabIndex);
+    const initialIndex = this.tabsItems.findIndex((tab) => tab.selected);
+    this.setActiveTab(initialIndex >= 0 ? initialIndex : 0);
     this.tabsItems.forEach(this.setAccessibilityAttributes);
     this.initObserveHost();
-  }
-
-  public componentDidLoad(): void {
-    this.initView();
   }
 
   public disconnectedCallback(): void {
@@ -78,11 +74,6 @@ export class Tabs {
     );
   }
 
-  private initView = (): void => {
-    const tabSelector = `.${prefix('tabs__tab')}`;
-    this.tabs = getHTMLElements(this.host.shadowRoot, tabSelector);
-  };
-
   private initObserveHost = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
       if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
@@ -96,22 +87,17 @@ export class Tabs {
     });
   };
 
-  private resetTabs = (): void => {
-    for (const tab of this.tabsItems) {
-      tab.removeAttribute('selected');
-    }
-  };
-
   private setActiveTab = (index: number): void => {
-    const maxIndex = this.tabsItems.length - 1;
-    this.activeTabIndex = maxIndex < index ? maxIndex : index < 0 ? 0 : index;
+    this.activeTabIndex = index;
     this.tabsItems[this.activeTabIndex].selected = true;
   };
 
   private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-      this.resetTabs();
-      this.setActiveTab(newTabIndex);
-      this.tabChange.emit({ activeTabIndex: newTabIndex });
+    for (const tab of this.tabsItems) {
+      tab.removeAttribute('selected');
+    }
+    this.setActiveTab(newTabIndex);
+    this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private updateTabItems = (): void => {
