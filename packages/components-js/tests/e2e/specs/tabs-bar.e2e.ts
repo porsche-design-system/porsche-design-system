@@ -229,6 +229,34 @@ describe('tabs-bar', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
+  it('should render correct selected tab on scrollArea click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar active-tab-index="3" size="medium">
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
+        <button>Content4</button>
+      </p-tabs-bar>
+    `
+    );
+    const allButtons = await getAllButtons();
+    const scrollArea = await getScrollArea();
+
+    await page.waitFor(40); // class gets set through js, this takes a little time
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
+
+    await scrollArea.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(40);
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
+  });
+
   it('should render same offsetLeft on Statusbar and active tab', async () => {
     await setContentWithDesignSystem(
       page,
