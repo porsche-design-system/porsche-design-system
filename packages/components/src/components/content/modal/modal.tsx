@@ -27,7 +27,7 @@ export class Modal {
   @Watch('open')
   openChangeHandler(val: boolean) {
     !this.disableEscapeKey && this.setKeyboardListener(val);
-    this.setScrolLock(val);
+    this.setScrollLock(val);
 
     if (val) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -61,7 +61,7 @@ export class Modal {
     this.setKeyboardListener(false);
   }
 
-  private setScrolLock = (lock: boolean): void => {
+  private setScrollLock = (lock: boolean): void => {
     document.body.style.overflow = lock ? 'hidden' : '';
   };
 
