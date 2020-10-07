@@ -3,6 +3,7 @@
 
 :host {
   display: block;
+  position: relative;
 }
 
 ::slotted(a),
@@ -78,7 +79,8 @@
   @include p-generate-type-scale($p-font-size-small);
   font-weight: $p-font-weight-regular;
   position: relative;
-  margin: 0 -4px; /* preserve space for focused tab outline */
+  margin: 0;
+  transform: translateX(-4px);/* preserve space for focused tab outline */
 
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
