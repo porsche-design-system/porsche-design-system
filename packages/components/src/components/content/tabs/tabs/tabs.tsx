@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Host, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
 import { TabChangeEvent, TextWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
@@ -17,7 +17,7 @@ export class Tabs {
   /** The text weight. */
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
-  /** Adapts color when used on dark background. */
+  /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
@@ -26,22 +26,28 @@ export class Tabs {
   /** Emitted when active tab is changed. */
   @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public tabsItems: HTMLPTabsItemElement[] = [];
-
-  @State() public activeTabIndex: number;
+  @State() public activeTabIndex = 0;
+  @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
   private hostObserver: MutationObserver;
 
+  @Watch('activeTabIndex')
+  public activeTabHandler(): void {
+    this.setTabsItemProperties();
+    this.setAccessibilityAttributes();
+    this.tabChange.emit({activeTabIndex: this.activeTabIndex});
+  }
+
   public connectedCallback(): void {
-    this.updateTabItems();
-    const initialIndex = this.tabsItems.findIndex((tab) => tab.selected);
-    this.setActiveTab(initialIndex < 0 ? 0 : initialIndex);
-    this.tabsItems.forEach(this.setAccessibilityAttributes);
-    this.initObserveHost();
+    this.defineTabsItemElements();
+    this.setInitialActiveTabIndex();
+    this.setTabsItemProperties();
+    this.setAccessibilityAttributes();
+    this.initMutationObserver();
   }
 
   public disconnectedCallback(): void {
-    this.hostObserver.disconnect();
+    this.disconnectMutationObserver();
   }
 
   public render(): JSX.Element {
@@ -60,10 +66,10 @@ export class Tabs {
             theme={this.theme}
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
-            onTabChange={(e) => this.handleTabChange(e.detail.activeTabIndex)}
+            onTabChange={(e) => this.handleTabClick(e.detail.activeTabIndex)}
           >
-            {this.tabsItems.map((tab, index) => (
-              <button type="button" aria-controls={prefix(`tab-panel-${index}`)}>
+            {this.tabsItemElements.map((tab, index) => (
+              <button type="button" aria-controls={`tab-panel-${index}`}>
                 {tab.label}
               </button>
             ))}
@@ -74,10 +80,40 @@ export class Tabs {
     );
   }
 
-  private initObserveHost = (): void => {
+  private defineTabsItemElements = (): void => {
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
+    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
+  };
+
+  private setInitialActiveTabIndex = (): void => {
+    const index = this.tabsItemElements.findIndex((tab) => tab.selected);
+    this.activeTabIndex = index >= 0 ? index : 0;
+  };
+
+  private setTabsItemProperties = (): void => {
+    for (const [index, tab] of Object.entries(this.tabsItemElements)) {
+      tab.selected = this.activeTabIndex === +index;
+    }
+  };
+
+  private setAccessibilityAttributes = (): void => {
+    for (const [index, tab] of Object.entries(this.tabsItemElements)) {
+      const attrs = {
+        role: 'tabpanel',
+        hidden: `${!tab.selected}`,
+        id: prefix(`tab-panel-${index}`),
+        'aria-labelledby': `tab-item-${index}`
+      };
+      for (const [key, value] of Object.entries(attrs)) {
+        tab.setAttribute(key, value);
+      }
+    }
+  };
+
+  private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
       if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
-        this.updateTabItems();
+        this.defineTabsItemElements();
       }
     });
     this.hostObserver.observe(this.host, {
@@ -87,34 +123,11 @@ export class Tabs {
     });
   };
 
-  private setActiveTab = (index: number): void => {
-    this.activeTabIndex = index;
-    this.tabsItems[this.activeTabIndex].selected = true;
+  private disconnectMutationObserver = (): void => {
+    this.hostObserver.disconnect();
   };
 
-  private handleTabChange = (newTabIndex: number = this.activeTabIndex): void => {
-    for (const tab of this.tabsItems) {
-      tab.removeAttribute('selected');
-    }
-    this.setActiveTab(newTabIndex);
-    this.tabChange.emit({ activeTabIndex: newTabIndex });
-  };
-
-  private updateTabItems = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
-    this.tabsItems = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
-  };
-
-  private setAccessibilityAttributes = (tab: HTMLPTabsItemElement, index: number): void => {
-    const attrs = {
-      role: 'tabpanel',
-      hidden: `${!tab.selected}`,
-      id: prefix(`tab-panel-${index}`),
-      'aria-labelledby': prefix(`tab-item-${index}`)
-    };
-    // eslint-disable-next-line
-    for (const key in attrs) {
-      tab.setAttribute(key, attrs[key]);
-    }
+  private handleTabClick = (newTabIndex: number = this.activeTabIndex): void => {
+    this.activeTabIndex = newTabIndex;
   };
 }

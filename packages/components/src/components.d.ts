@@ -520,7 +520,7 @@ export namespace Components {
          */
         "size"?: 'small' | 'medium';
         /**
-          * Adapts color when used on dark background.
+          * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
@@ -530,7 +530,7 @@ export namespace Components {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected.
+          * Defines which tab to be visualized as selected (zero-based numbering).
          */
         "activeTabIndex"?: number;
         /**
@@ -542,7 +542,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
         /**
-          * Adapts color when used on dark background.
+          * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
@@ -1376,7 +1376,7 @@ declare namespace LocalJSX {
          */
         "size"?: 'small' | 'medium';
         /**
-          * Adapts color when used on dark background.
+          * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
@@ -1386,7 +1386,7 @@ declare namespace LocalJSX {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected.
+          * Defines which tab to be visualized as selected (zero-based numbering).
          */
         "activeTabIndex"?: number;
         /**
@@ -1402,7 +1402,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
         /**
-          * Adapts color when used on dark background.
+          * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
         /**
