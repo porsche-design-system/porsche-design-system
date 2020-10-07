@@ -1,0 +1,48 @@
+@import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+:host {
+  display: block;
+}
+
+.#{$p-global-class-prefix}modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($p-color-theme-dark-background-default, 0.9);
+
+  &__container {
+    background-color: $p-color-theme-light-background;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    position: relative;
+    padding: p-px-to-rem(32px) p-px-to-rem(40px) p-px-to-rem(24px);
+    background-color: red;
+  }
+
+  &__body {
+    padding: 0 p-px-to-rem(40px);
+    background-color: orange;
+  }
+
+  &__footer {
+    padding: p-px-to-rem(24px) p-px-to-rem(40px) p-px-to-rem(32px);
+    background-color: blue;
+  }
+
+  &__close {
+    position: absolute;
+    right: p-px-to-rem(32px);
+    top: p-px-to-rem(32px);
+  }
+}
