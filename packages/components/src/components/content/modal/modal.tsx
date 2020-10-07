@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { prefix } from '../../../utils';
+import { getPrefixedTagNames, prefix } from '../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -22,10 +22,35 @@ export class Modal {
   /** Emitted when the component requests to be closed. **/
   @Event() public close?: EventEmitter<void>;
 
+  private focusedElBeforeOpen: HTMLElement;
+
   @Watch('open')
   openChangeHandler(val: boolean) {
     !this.disableEscapeKey && this.setKeyboardListener(val);
     this.setScrolLock(val);
+
+    if (val) {
+      this.focusedElBeforeOpen = document.activeElement as HTMLElement;
+
+      const PrefixedTagNames = getPrefixedTagNames(this.host, [
+        'p-button',
+        'p-button-pure',
+        'p-link',
+        'p-link-pure',
+        'p-link-social'
+      ]);
+
+      const notDisabled = ':not([disabled])';
+      const selector =
+        Object.values(PrefixedTagNames).join(',') +
+        `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
+
+      const focusableEl: HTMLElement =
+        this.host.querySelector(selector) ?? this.host.shadowRoot.querySelector(selector);
+      focusableEl?.focus();
+    } else {
+      this.focusedElBeforeOpen.focus();
+    }
   }
 
   public connectedCallback(): void {
