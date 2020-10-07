@@ -59,7 +59,7 @@
 
 // Focus
 ::slotted(input:focus) {
-  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline: $p-color-neutral-contrast-low solid 2px !important;
 }
 
 ::slotted(input:read-only:focus) {
