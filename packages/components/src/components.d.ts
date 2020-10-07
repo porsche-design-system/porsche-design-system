@@ -412,9 +412,17 @@ export namespace Components {
     }
     interface PModal {
         /**
+          * If true, the modal will not be closable via backdrop click. *
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * If true, the modal will not have a close button. *
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If true, the modal will not be closable via Escape key. *
+         */
+        "disableEscapeKey"?: boolean;
         /**
           * If true, the modal is open. *
          */
@@ -1213,9 +1221,17 @@ declare namespace LocalJSX {
     }
     interface PModal {
         /**
+          * If true, the modal will not be closable via backdrop click. *
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * If true, the modal will not have a close button. *
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If true, the modal will not be closable via Escape key. *
+         */
+        "disableEscapeKey"?: boolean;
         /**
           * Emitted when the component requests to be closed. *
          */
