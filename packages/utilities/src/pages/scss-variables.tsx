@@ -50,7 +50,7 @@ const darkThemeColors = {
   'theme-dark-notification-neutral': '#2193ff',
   'theme-dark-state-hover': '#ff0223',
   'theme-dark-state-active': '#ff0223',
-  'theme-dark-state-focus': '#000',
+  'theme-dark-state-focus': '#fff',
   'theme-dark-state-disabled': '#7c7f81'
 };
 
