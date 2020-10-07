@@ -50,5 +50,13 @@
         <p-button variant="tertiary">Skip</p-button>
       </div>
     </p-modal>
+
+    <script>
+      const modal = document.getElementsByTagName('p-modal')[0];
+      modal.addEventListener('close', () => {
+        console.log('closed');
+        modal.removeAttribute('open');
+      });
+    </script>
   </body>
 </html>

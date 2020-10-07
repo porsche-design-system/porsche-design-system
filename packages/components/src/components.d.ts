@@ -1217,6 +1217,10 @@ declare namespace LocalJSX {
          */
         "disableCloseButton"?: boolean;
         /**
+          * Emitted when the component requests to be closed. *
+         */
+        "onClose"?: (event: CustomEvent<void>) => void;
+        /**
           * If true, the modal is open. *
          */
         "open"?: boolean;
