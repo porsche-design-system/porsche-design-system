@@ -10,6 +10,7 @@ import {
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
@@ -227,5 +228,56 @@ describe('tabs', () => {
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(3);
+  });
+
+  it('should render correct scroll-position on keyboard arrow click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs size="medium">
+          <p-tabs-item label="Button1">Content1</p-tabs-item>
+          <p-tabs-item label="Button2">Content2</p-tabs-item>
+          <p-tabs-item label="Button3">Content3</p-tabs-item>
+          <p-tabs-item label="Button4">Content4</p-tabs-item>
+          <p-tabs-item label="Button5">Content5</p-tabs-item>
+          <p-tabs-item label="Button6">Content6</p-tabs-item>
+          <p-tabs-item label="Button7">Content7</p-tabs-item>
+          <p-tabs-item label="Button8">Content8</p-tabs-item>
+        </p-tabs>
+      </div>
+    `
+    );
+    const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
+    const allButtons = await getAllTabs();
+    const gradientWidth = await getProperty(gradientNext, 'offsetWidth');
+    const scrollArea =  await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+    const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
+    const getScrollAreaScrollLeft = () => getProperty(scrollArea, 'scrollLeft');
+
+    expect(await getScrollAreaScrollLeft()).toEqual(0);
+
+    await page.keyboard.press('Tab');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.keyboard.press('ArrowRight');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.keyboard.press('ArrowRight');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.keyboard.press('ArrowRight');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.keyboard.press('ArrowRight');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
+    const scrollDistanceRight = +tab5offset - +gradientWidth;
+    expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
+
+    await page.keyboard.press('ArrowLeft');
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
+    const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
+    const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
+    expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceLeft);
   });
 });

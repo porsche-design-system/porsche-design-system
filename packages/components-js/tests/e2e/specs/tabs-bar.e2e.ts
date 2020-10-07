@@ -12,8 +12,8 @@ import {
   waitForStencilLifecycle
 } from '../helpers';
 
+export const CSS_ANIMATION_DURATION = 1000;
 const TABS_SCROLL_PERCENTAGE = 0.2;
-const CSS_ANIMATION_DURATION = 1000;
 
 describe('tabs-bar', () => {
   let page: Page;
