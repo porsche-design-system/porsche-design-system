@@ -73,12 +73,24 @@ export class Modal {
     const footerClasses = prefix('modal__footer');
     const btnCloseClasses = prefix('modal__close');
 
+    const ariaLabelledBy = this.subject && 'modal-title';
+    const ariaDescribedBy = 'modal-body';
+
     return (
-      <Host role="presentation" onClick={!this.disableBackdropClick && this.handleHostClick}>
+      <Host
+        role="dialog"
+        onClick={!this.disableBackdropClick && this.handleHostClick}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+      >
         <div class={rootClasses} role="presentation" aria-modal="true">
           {hasHeader && (
             <div class={headerClasses}>
-              {this.subject && <p-headline variant="headline-2">{this.subject}</p-headline>}
+              {this.subject && (
+                <p-headline id={ariaLabelledBy} variant="headline-2">
+                  {this.subject}
+                </p-headline>
+              )}
               {!this.disableCloseButton && (
                 <div class={btnCloseClasses}>
                   <p-button-pure hideLabel icon="close" aria-label="Close" onClick={this.closeModal}>
@@ -89,7 +101,7 @@ export class Modal {
             </div>
           )}
 
-          <div class={bodyClasses}>
+          <div class={bodyClasses} id={ariaDescribedBy}>
             <slot />
           </div>
 
