@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Element, h, JSX, Prop } from '@stencil/core';
 import { prefix } from '../../../utils';
 
 @Component({
@@ -15,6 +15,8 @@ export class Modal {
   @Prop() public disableCloseButton?: boolean = false;
   /** The title of the modal **/
   @Prop() public subject?: string;
+  /** Emitted when the component requests to be closed. **/
+  @Event() public close?: EventEmitter<void>;
 
   public render(): JSX.Element {
     const hasHeader = this.subject || !this.disableCloseButton;
@@ -41,7 +43,7 @@ export class Modal {
                 {this.subject && <p-headline variant="headline-2">{this.subject}</p-headline>}
                 {!this.disableCloseButton && (
                   <div class={btnCloseClasses}>
-                    <p-button-pure icon="close" hideLabel title="Close" aria-label="Close">
+                    <p-button-pure hideLabel icon="close" aria-label="Close" onClick={() => this.close.emit()}>
                       Close
                     </p-button-pure>
                   </div>
