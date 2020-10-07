@@ -13,6 +13,10 @@ export class Modal {
   @Prop() public open?: boolean = false;
   /** If true, the modal will not have a close button. **/
   @Prop() public disableCloseButton?: boolean = false;
+  /** If true, the modal will not be closable via backdrop click. **/
+  @Prop() public disableBackdropClick?: boolean = false;
+  /** If true, the modal will not be closable via Escape key. **/
+  @Prop() public disableEscapeKey?: boolean = false;
   /** The title of the modal **/
   @Prop() public subject?: string;
   /** Emitted when the component requests to be closed. **/
@@ -20,21 +24,21 @@ export class Modal {
 
   @Watch('open')
   openChangeHandler(val: boolean) {
-    val ? this.initEventListener() : this.removeEventListener();
+    !this.disableEscapeKey && (val ? this.initKeyboardListener() : this.removeKeyboardListener());
   }
 
   public connectedCallback(): void {
-    this.open && this.initEventListener();
+    this.open && !this.disableEscapeKey && this.initKeyboardListener();
   }
 
   public disconnectedCallback(): void {
-    this.removeEventListener();
+    this.removeKeyboardListener();
   }
 
-  private initEventListener = (): void => {
+  private initKeyboardListener = (): void => {
     document.addEventListener('keydown', this.handleKeyboardEvents);
   };
-  private removeEventListener = (): void => {
+  private removeKeyboardListener = (): void => {
     document.removeEventListener('keydown', this.handleKeyboardEvents);
   };
 
@@ -46,6 +50,12 @@ export class Modal {
 
   private closeModal = (): void => {
     this.close.emit();
+  };
+
+  private handleHostClick = (e: MouseEvent): void => {
+    // TODO: fallback for Edge18 https://stackoverflow.com/questions/58344817/alternative-to-composedpath-for-edge
+    const [firstEl] = e.composedPath() as HTMLElement[];
+    firstEl === this.host && this.closeModal();
   };
 
   public render(): JSX.Element {
@@ -62,7 +72,7 @@ export class Modal {
     const btnCloseClasses = prefix('modal__close');
 
     return (
-      <Host role="presentation">
+      <Host role="presentation" onClick={!this.disableBackdropClick && this.handleHostClick}>
         <div class={rootClasses} role="presentation" aria-modal="true">
           {hasHeader && (
             <div class={headerClasses}>
