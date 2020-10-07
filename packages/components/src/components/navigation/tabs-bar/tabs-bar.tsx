@@ -217,7 +217,9 @@ export class TabsBar {
   private addEventListeners = (): void => {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
-      this.handleTabClick(newTabIndex);
+      if (newTabIndex > 0) {
+        this.handleTabClick(newTabIndex);
+      }
     });
     this.scrollAreaElement.addEventListener('keydown', this.handleKeydown);
   };
