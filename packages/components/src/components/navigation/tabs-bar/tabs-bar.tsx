@@ -217,7 +217,6 @@ export class TabsBar {
   private addEventListeners = (): void => {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
-      if (newTabIndex > 0) {
       if (newTabIndex >= 0) {
         this.handleTabClick(newTabIndex);
       }
