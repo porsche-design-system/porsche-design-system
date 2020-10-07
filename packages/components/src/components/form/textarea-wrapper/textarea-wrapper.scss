@@ -57,7 +57,7 @@
 
 // Focus
 ::slotted(textarea:focus) {
-  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline: $p-color-neutral-contrast-low solid 2px !important;
 }
 
 ::slotted(textarea:read-only:focus) {

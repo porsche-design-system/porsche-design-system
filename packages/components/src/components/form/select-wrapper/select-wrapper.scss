@@ -71,7 +71,7 @@
 
 // Focus
 ::slotted(select:focus) {
-  outline: $p-color-state-focus solid 2px !important;
+  outline: $p-color-neutral-contrast-low solid 2px !important;
 }
 
 // Disabled
