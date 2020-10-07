@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import { prefix } from '../../../utils';
 
 @Component({
@@ -50,11 +50,8 @@ export class Modal {
 
   public render(): JSX.Element {
     const hasHeader = this.subject || !this.disableCloseButton;
-    const baseClasses = {
+    const rootClasses = {
       [prefix('modal')]: true
-    };
-    const containerClasses = {
-      [prefix('modal__container')]: true
     };
     const headerClasses = {
       [prefix('modal__header')]: true,
@@ -65,34 +62,32 @@ export class Modal {
     const btnCloseClasses = prefix('modal__close');
 
     return (
-      this.open && (
-        <div class={baseClasses} role="presentation">
-          <div class={containerClasses} role="presentation" aria-modal="true" tabindex="-1">
-            {hasHeader && (
-              <div class={headerClasses}>
-                {this.subject && <p-headline variant="headline-2">{this.subject}</p-headline>}
-                {!this.disableCloseButton && (
-                  <div class={btnCloseClasses}>
-                    <p-button-pure hideLabel icon="close" aria-label="Close" onClick={this.closeModal}>
-                      Close
-                    </p-button-pure>
-                  </div>
-                )}
-              </div>
-            )}
-
-            <div class={bodyClasses}>
-              <slot />
+      <Host role="presentation">
+        <div class={rootClasses} role="presentation" aria-modal="true">
+          {hasHeader && (
+            <div class={headerClasses}>
+              {this.subject && <p-headline variant="headline-2">{this.subject}</p-headline>}
+              {!this.disableCloseButton && (
+                <div class={btnCloseClasses}>
+                  <p-button-pure hideLabel icon="close" aria-label="Close" onClick={this.closeModal}>
+                    Close
+                  </p-button-pure>
+                </div>
+              )}
             </div>
+          )}
 
-            {this.isFooterDefined && (
-              <div class={footerClasses}>
-                <slot name="footer" />
-              </div>
-            )}
+          <div class={bodyClasses}>
+            <slot />
           </div>
+
+          {this.isFooterDefined && (
+            <div class={footerClasses}>
+              <slot name="footer" />
+            </div>
+          )}
         </div>
-      )
+      </Host>
     );
   }
 
