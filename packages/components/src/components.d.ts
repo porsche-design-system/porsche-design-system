@@ -411,8 +411,18 @@ export namespace Components {
         "trademark"?: boolean;
     }
     interface PModal {
+        /**
+          * If true, the modal will not have a close button. *
+         */
         "disableCloseButton"?: boolean;
+        /**
+          * If true, the modal is open. *
+         */
         "open"?: boolean;
+        /**
+          * The title of the modal *
+         */
+        "subject"?: string;
     }
     interface PPagination {
         /**
@@ -1202,8 +1212,18 @@ declare namespace LocalJSX {
         "trademark"?: boolean;
     }
     interface PModal {
+        /**
+          * If true, the modal will not have a close button. *
+         */
         "disableCloseButton"?: boolean;
+        /**
+          * If true, the modal is open. *
+         */
         "open"?: boolean;
+        /**
+          * The title of the modal *
+         */
+        "subject"?: string;
     }
     interface PPagination {
         /**
