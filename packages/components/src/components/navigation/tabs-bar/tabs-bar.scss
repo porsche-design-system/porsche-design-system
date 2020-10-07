@@ -208,24 +208,24 @@
 
     &--prev {
       &#{$bem-block}__gradient--color-scheme-default {
+        background: -webkit-linear-gradient(rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
         background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
-        background: -webkit-linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
       }
 
       &#{$bem-block}__gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
         background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
-        background: -webkit-linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
       }
 
       &#{$bem-block}__gradient--theme-dark {
         &#{$bem-block}__gradient--color-scheme-default {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
           background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
-          background: -webkit-linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
         }
 
         &#{$bem-block}__gradient--color-scheme-surface {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
           background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
-          background: -webkit-linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
         }
       }
     }
