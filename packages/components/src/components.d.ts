@@ -410,6 +410,10 @@ export namespace Components {
          */
         "trademark"?: boolean;
     }
+    interface PModal {
+        "disableCloseButton"?: boolean;
+        "open"?: boolean;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -706,6 +710,12 @@ declare global {
         prototype: HTMLPMarqueElement;
         new (): HTMLPMarqueElement;
     };
+    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
+    }
+    var HTMLPModalElement: {
+        prototype: HTMLPModalElement;
+        new (): HTMLPModalElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -777,6 +787,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
+        "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
@@ -1190,6 +1201,10 @@ declare namespace LocalJSX {
          */
         "trademark"?: boolean;
     }
+    interface PModal {
+        "disableCloseButton"?: boolean;
+        "open"?: boolean;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1409,6 +1424,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-marque": PMarque;
+        "p-modal": PModal;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
@@ -1440,6 +1456,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
+            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
