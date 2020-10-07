@@ -11,7 +11,9 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { CSS_ANIMATION_DURATION, TABS_SCROLL_PERCENTAGE } from './tabs.e2e';
+
+const TABS_SCROLL_PERCENTAGE = 0.2;
+const CSS_ANIMATION_DURATION = 1000;
 
 describe('tabs-bar', () => {
   let page: Page;

@@ -9,10 +9,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-
-export const TABS_SCROLL_PERCENTAGE = 0.2;
-export const CSS_ANIMATION_DURATION = 1000;
+import { Page } from 'puppeteer';
 
 describe('tabs', () => {
   let page: Page;
