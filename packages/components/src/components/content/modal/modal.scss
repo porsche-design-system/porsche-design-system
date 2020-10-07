@@ -48,18 +48,33 @@
 
   &__header {
     position: relative;
-    padding: p-px-to-rem(32px) p-px-to-rem(60px) p-px-to-rem(24px) p-px-to-rem(40px);
+    padding: p-px-to-rem(32px) p-px-to-rem(40px) p-px-to-rem(24px);
     background-color: red;
 
     @include p-media-query('xs') {
-      padding-left: p-px-to-rem(48px);
-      padding-right: p-px-to-rem(48px);
+      padding: p-px-to-rem(32px) p-px-to-rem(48px) p-px-to-rem(24px);
     }
     @include p-media-query('s') {
-      padding: p-px-to-rem(40px) p-px-to-rem(76px) p-px-to-rem(24px) p-px-to-rem(56px);
+      padding: p-px-to-rem(40px) p-px-to-rem(56px) p-px-to-rem(24px);
     }
     @include p-media-query('l') {
-      padding: p-px-to-rem(56px) p-px-to-rem(92px) p-px-to-rem(24px) p-px-to-rem(72px);
+      padding: p-px-to-rem(56px) p-px-to-rem(72px) p-px-to-rem(24px);
+    }
+
+    &--closable {
+      padding-right: p-px-to-rem(60px);
+
+      @include p-media-query('xs') {
+        padding-left: p-px-to-rem(68px);
+      }
+
+      @include p-media-query('s') {
+        padding-right: p-px-to-rem(76px);
+      }
+
+      @include p-media-query('l') {
+        padding-right: p-px-to-rem(92px);
+      }
     }
   }
 
@@ -67,6 +82,13 @@
     padding: 0 p-px-to-rem(40px);
     overflow-y: scroll;
     background-color: orange;
+
+    &:first-child {
+      padding-top: p-px-to-rem(24px);
+    }
+    &:last-child {
+      padding-bottom: p-px-to-rem(24px);
+    }
   }
 
   &__footer {
