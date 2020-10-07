@@ -30,7 +30,7 @@ export class TabsBar {
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({reflect: true}) public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
@@ -47,6 +47,7 @@ export class TabsBar {
   };
 
   private enableTransition = false;
+  private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
   private tabElements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private scrollAreaElement: HTMLElement;
@@ -62,12 +63,13 @@ export class TabsBar {
     }
     this.setAccessibilityAttributes();
     this.scrollActiveTabIntoView(direction);
-    this.tabChange.emit({activeTabIndex: this.activeTabIndex});
+    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
   }
 
   public connectedCallback(): void {
     this.sanitizeActiveTabIndex();
     this.setAccessibilityAttributes();
+    this.initMutationObserver();
   }
 
   public componentDidRender(): void {
@@ -83,6 +85,7 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
+    this.disconnectMutationObserver();
     this.disconnectIntersectionObserver();
   }
 
@@ -107,8 +110,8 @@ export class TabsBar {
     return (
       <div class={tabsNavClasses}>
         <div class={scrollAreaClasses} role="tablist">
-          <slot/>
-          <span class={statusBarClasses}/>
+          <slot />
+          <span class={statusBarClasses} />
         </div>
         {this.renderPrevNextButton('prev')}
         {this.renderPrevNextButton('next')}
@@ -135,7 +138,7 @@ export class TabsBar {
 
     return (
       <div class={actionClasses}>
-        <span class={gradientClasses}/>
+        <span class={gradientClasses} />
         <PrefixedTagNames.pButtonPure
           aria-hidden="true"
           tabbable={false}
@@ -182,6 +185,19 @@ export class TabsBar {
     }
   };
 
+  private initMutationObserver = (): void => {
+    this.hostObserver = new MutationObserver((mutations): void => {
+      if (mutations.filter(({ type }) => type === 'characterData')) {
+        this.setStatusBarStyle();
+      }
+    });
+    this.hostObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  };
+
   private setStatusBarStyle = (): void => {
     this.statusBarElement?.setAttribute('style', this.getStatusBarStyle(this.tabElements[this.activeTabIndex]));
   };
@@ -226,13 +242,13 @@ export class TabsBar {
       (entries) => {
         for (const entry of entries) {
           if (entry.target === firstTab) {
-            cb({isPrevHidden: entry.isIntersecting});
+            cb({ isPrevHidden: entry.isIntersecting });
           } else if (entry.target === lastTab) {
-            cb({isNextHidden: entry.isIntersecting});
+            cb({ isNextHidden: entry.isIntersecting });
           }
         }
       },
-      {threshold: 1}
+      { threshold: 1 }
     );
 
     intersectionObserver.observe(firstTab);
@@ -247,6 +263,10 @@ export class TabsBar {
 
   private disconnectIntersectionObserver = (): void => {
     this.intersectionObserver.disconnect();
+  };
+
+  private disconnectMutationObserver = (): void => {
+    this.hostObserver.disconnect();
   };
 
   private handleTabClick = (newTabIndex: number): void => {
@@ -307,7 +327,11 @@ export class TabsBar {
       scrollPosition = activeTabElement.offsetLeft - gradientWidths[1];
     } else if (direction === 'prev' && this.activeTabIndex > 0) {
       // go to prev tab
-      scrollPosition = activeTabElement.offsetLeft + activeTabElement.offsetWidth + gradientWidths[0] - this.scrollAreaElement.offsetWidth;
+      scrollPosition =
+        activeTabElement.offsetLeft +
+        activeTabElement.offsetWidth +
+        gradientWidths[0] -
+        this.scrollAreaElement.offsetWidth;
     } else if (this.activeTabIndex === 0) {
       // go to first tab
       scrollPosition = 0;
@@ -319,8 +343,10 @@ export class TabsBar {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const {offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth} = this.tabElements[this.tabElements.length - 1];
-    const {offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition} = this.scrollAreaElement;
+    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[
+      this.tabElements.length - 1
+    ];
+    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.scrollAreaElement;
     const scrollToStep = Math.round(scrollAreaWidth * 0.2);
     const scrollToMin = 0;
     const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH;
