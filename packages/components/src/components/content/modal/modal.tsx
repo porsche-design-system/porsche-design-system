@@ -31,23 +31,7 @@ export class Modal {
 
     if (val) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-
-      const PrefixedTagNames = getPrefixedTagNames(this.host, [
-        'p-button',
-        'p-button-pure',
-        'p-link',
-        'p-link-pure',
-        'p-link-social'
-      ]);
-
-      const notDisabled = ':not([disabled])';
-      const selector =
-        Object.values(PrefixedTagNames).join(',') +
-        `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
-
-      const focusableEl: HTMLElement =
-        this.host.querySelector(selector) ?? this.host.shadowRoot.querySelector(selector);
-      focusableEl?.focus();
+      this.focusableElements[0]?.focus();
     } else {
       this.focusedElBeforeOpen.focus();
     }
@@ -59,6 +43,25 @@ export class Modal {
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
+  }
+
+  public componentDidLoad(): void {
+    const PrefixedTagNames = getPrefixedTagNames(this.host, [
+      'p-button',
+      'p-button-pure',
+      'p-link',
+      'p-link-pure',
+      'p-link-social'
+    ]);
+
+    const notDisabled = ':not([disabled])';
+    const selector =
+      Object.values(PrefixedTagNames).join(',') +
+      `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
+
+    this.focusableElements = Array.from(this.host.querySelectorAll(selector)).concat(
+      Array.from(this.host.shadowRoot.querySelectorAll(selector))
+    ) as HTMLElement[];
   }
 
   private setScrollLock = (lock: boolean): void => {
