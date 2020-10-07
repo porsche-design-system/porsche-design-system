@@ -11,7 +11,9 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <p-modal subject="Title that is a bit longer and might crash into the close button" open>
+    Some content here
+
+    <p-modal subject="Title that is a bit longer and might crash into the close button">
       <p-text
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -51,8 +53,11 @@
       </div>
     </p-modal>
 
+    Some other content there
+
     <script>
       const modal = document.getElementsByTagName('p-modal')[0];
+      setTimeout(() => modal.setAttribute('open', ''), 500);
       modal.addEventListener('close', () => {
         console.log('closed');
         modal.removeAttribute('open');
