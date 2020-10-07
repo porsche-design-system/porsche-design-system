@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch } from '@stencil/core';
 import { prefix } from '../../../utils';
 
 @Component({
@@ -17,6 +17,36 @@ export class Modal {
   @Prop() public subject?: string;
   /** Emitted when the component requests to be closed. **/
   @Event() public close?: EventEmitter<void>;
+
+  @Watch('open')
+  openChangeHandler(val: boolean) {
+    val ? this.initEventListener() : this.removeEventListener();
+  }
+
+  public connectedCallback(): void {
+    this.open && this.initEventListener();
+  }
+
+  public disconnectedCallback(): void {
+    this.removeEventListener();
+  }
+
+  private initEventListener = (): void => {
+    document.addEventListener('keydown', this.handleKeyboardEvents);
+  };
+  private removeEventListener = (): void => {
+    document.removeEventListener('keydown', this.handleKeyboardEvents);
+  };
+
+  private handleKeyboardEvents = ({ key }: KeyboardEvent): void => {
+    if (key === 'Esc' || key === 'Escape') {
+      this.closeModal();
+    }
+  };
+
+  private closeModal = (): void => {
+    this.close.emit();
+  };
 
   public render(): JSX.Element {
     const hasHeader = this.subject || !this.disableCloseButton;
@@ -43,7 +73,7 @@ export class Modal {
                 {this.subject && <p-headline variant="headline-2">{this.subject}</p-headline>}
                 {!this.disableCloseButton && (
                   <div class={btnCloseClasses}>
-                    <p-button-pure hideLabel icon="close" aria-label="Close" onClick={() => this.close.emit()}>
+                    <p-button-pure hideLabel icon="close" aria-label="Close" onClick={this.closeModal}>
                       Close
                     </p-button-pure>
                   </div>
