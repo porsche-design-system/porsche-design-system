@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
   BreakpointCustomizable,
   getPrefixedTagNames,
@@ -49,6 +49,7 @@ export class TabsBar {
   private enableTransition = false;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
+  private scrollInterval;
   private tabElements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
@@ -380,7 +381,21 @@ export class TabsBar {
         behavior: 'smooth'
       });
     } else {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
+      // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default
+      let i = 0;
+      const steps = 20;
+      const initialScrollLeft = this.scrollAreaElement.scrollLeft;
+      const scrollDistance = scrollPosition - initialScrollLeft;
+      const scrollStep = scrollDistance / steps;
+
+      clearInterval(this.scrollInterval);
+      this.scrollInterval = setInterval(() => {
+        this.scrollAreaElement.scrollLeft = Math.round(initialScrollLeft + i * scrollStep);
+        if (++i >= steps) {
+          this.scrollAreaElement.scrollLeft = scrollPosition;
+          clearInterval(this.scrollInterval);
+        }
+      }, 10);
     }
   };
 
