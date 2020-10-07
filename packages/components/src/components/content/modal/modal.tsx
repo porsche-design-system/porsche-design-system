@@ -24,22 +24,24 @@ export class Modal {
 
   @Watch('open')
   openChangeHandler(val: boolean) {
-    !this.disableEscapeKey && (val ? this.initKeyboardListener() : this.removeKeyboardListener());
+    !this.disableEscapeKey && this.setKeyboardListener(val);
+    this.setScrolLock(val);
   }
 
   public connectedCallback(): void {
-    this.open && !this.disableEscapeKey && this.initKeyboardListener();
+    this.open && !this.disableEscapeKey && this.setKeyboardListener(true);
   }
 
   public disconnectedCallback(): void {
-    this.removeKeyboardListener();
+    this.setKeyboardListener(false);
   }
 
-  private initKeyboardListener = (): void => {
-    document.addEventListener('keydown', this.handleKeyboardEvents);
+  private setScrolLock = (lock: boolean): void => {
+    document.body.style.overflow = lock ? 'hidden' : '';
   };
-  private removeKeyboardListener = (): void => {
-    document.removeEventListener('keydown', this.handleKeyboardEvents);
+
+  private setKeyboardListener = (active: boolean): void => {
+    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
   };
 
   private handleKeyboardEvents = ({ key }: KeyboardEvent): void => {
