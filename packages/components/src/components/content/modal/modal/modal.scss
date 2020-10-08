@@ -98,7 +98,6 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   &__body {
-    padding: 0 p-px-to-rem(40px);
     overflow-y: scroll;
     background-color: orange;
 
@@ -110,13 +109,10 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
 
-  &__footer {
-    padding: p-px-to-rem(24px) p-px-to-rem(40px) p-px-to-rem(32px);
-    background-color: blue;
-  }
-
   &__body,
   &__footer {
+    padding: 0 p-px-to-rem(40px);
+
     @include p-media-query('xs') {
       padding-left: p-px-to-rem(48px);
       padding-right: p-px-to-rem(48px);
@@ -128,6 +124,18 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     @include p-media-query('l') {
       padding-left: p-px-to-rem(72px);
       padding-right: p-px-to-rem(72px);
+    }
+  }
+
+  &__footer {
+    padding-top: p-px-to-rem(24px);
+    padding-bottom: p-px-to-rem(32px);
+    background-color: blue;
+
+    &--scrollable {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
     }
   }
 
