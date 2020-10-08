@@ -10,20 +10,28 @@ Banner are used to provide action-based feedback messages (e.g. after performing
 
 Use error Banners to inform users something critical has happened and requires immediate attention.
 
-![Banner notification error](./assets/feedback-banner-error.png)
+<p-banner state="error" width="fluid" style="margin-top: 40px; display: block;">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>
 
 ### Warning
 
 Use warning Banners when you want the user to take a specific action or to warn them that something is about to go wrong.
 
-![Banner notification warning](./assets/feedback-banner-warning.png)
-
+<p-banner state="warning" width="fluid" style="margin-top: 40px; display: block;">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>
 
 ### Neutral
 
 Use neutral Banners to make a general announcement.
 
-![Banner notification neutral](./assets/feedback-banner-neutral.png)
+<p-banner state="neutral" width="fluid" style="margin-top: 40px; display: block;">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>
 
 
 
@@ -35,7 +43,10 @@ Use neutral Banners to make a general announcement.
 
 By default, a Banner will dismiss when the user clicks the “x” close button.
 
-![Banner notification neutral](./assets/feedback-banner-neutral.png)
+<p-banner state="neutral" width="fluid" style="margin-top: 40px; display: block;">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>
 
 
 ### Persistent
@@ -43,7 +54,10 @@ By default, a Banner will dismiss when the user clicks the “x” close button.
 Persistent Alerts are similar to the Feedback Banner but represent the highest level of importance.
 These Banners are reserved for issues like compliance and system errors. As such, they are persistent until the issue is resolved.
 
-![Banner notification neutral persistent](./assets/feedback-banner-neutral-persistent.png)
+<p-banner persistent="true" width="fluid" style="margin-top: 40px; display: block;">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>
 ---
 
 ## Styling
@@ -71,7 +85,14 @@ are displayed at the bottom of the screen.
 
 ### Position
 
-The Banner component is positioned absolute above the page content by default.
+The Banner component is positioned fixed above the page content by default.
 
 
 ![Banner position](./assets/feedback-banner-position.png)
+
+
+<style lang="scss">
+  p-banner {
+    --p-banner-position-type: static;
+  }
+</style>
