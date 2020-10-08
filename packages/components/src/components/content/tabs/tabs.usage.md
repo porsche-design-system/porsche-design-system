@@ -1,8 +1,15 @@
-# Tabs Bar
+# Tabs
 
-The Porsche Design System Tabs Nav enables the user to **navigate to another page**. 
-In case you want the user to execute an action or changes the content, you should select the [Tabs](#/components/tabs) component instead.
+---
 
+* **Studies**
+* **Guidelines**
+* **Inspiration**
+
+---
+
+The Porsche Design System Tabs enables the user to **to execute an action or changes the content**. 
+In case you want the user to navigate to another page, you should select the [Tabs Bar](#/components/tabs-bar) component instead.
 
 ---
 
@@ -12,8 +19,8 @@ In case you want the user to execute an action or changes the content, you shoul
 
 <p-tabs size="small">
   <p-tabs-item label="Item One" selected=""><p-text>Tab Content One</p-text></p-tabs-item>
-  <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
-  <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
+  <p-tabs-item label="Item Two"><p-text>Tab Content Two</p-text></p-tabs-item>
+  <p-tabs-item label="Item Three"><p-text>Tab Content Three</p-text></p-tabs-item>
 </p-tabs>
 
 
@@ -37,6 +44,7 @@ In case you want the user to execute an action or changes the content, you shoul
   <p-tabs-item label="Item Two">Tab Content Two</p-tabs-item>
   <p-tabs-item label="Item Three">Tab Content Three</p-tabs-item>
 </p-tabs>
+
 
 ### Scrollable
 
@@ -93,7 +101,7 @@ The current tab position is always marked by a red underline. By default, the cu
 When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable and navigable with arrows.
 
 - Scrolling horizontally
-- Use the tab key to navigate back and forth 
+- Use the arrows to navigate back and forth
 - Click on the Tab Item witch then will center the clicked element
 
 ![Possible overflow](./assets/tab-overflow.png)
@@ -123,11 +131,20 @@ Highlight
 The standard variant (regular) will be used on a monochrome background, whereas the highlight variant (semibold) should be 
 used on a polychrome background (e.g. on images) for better comprehensibility and accessibility.
 
+### Informative
+
+Tabs organize content into categories to help users easily find different types of information.
+
 ### Content
 
 Tab labels provide clear and concise explanations of the content within. Each tab's content is independently categorized and mutually exclusive of the content of other Tabs.
 
+### Navigation
+
+Not be used for primary navigation.
+
+
 ---
 
 ## Related Component
-* [Tabs](#/components/tabs)
+* [Tabs Bar](#/components/tabs-bar)

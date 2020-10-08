@@ -9,7 +9,7 @@ content to be rendered beneath. To help with this task the component triggers an
 of the active tab.
 
 If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
-handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs#code) component.
+handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs) component.
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
@@ -22,8 +22,8 @@ Basic implementation is a tab bar with tabs to switch between the content. Just 
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors. 
 
 <Playground :themeable="true">
-  <template>
-    <p-tabs-bar>
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
@@ -32,8 +32,8 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 </Playground>
 
 <Playground :themeable="true">
-  <template>
-    <p-tabs-bar>
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme">
       <a href="#">Tab One</a>
       <a href="#">Tab Two</a>
       <a href="#">Tab Three</a>
@@ -49,22 +49,22 @@ To be truly accessible you need to provide some more information because every t
 which gets the same unique id as the according tab (`aria-controls`).
 
 <Playground :themeable="true">
-  <template>
-    <p-tabs-bar ref="some-tabs-bar">
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme" ref="some-tabs-bar">
       <button type="button" aria-controls="tab-panel-1">Tab One</button>
       <button type="button" aria-controls="tab-panel-2">Tab Two</button>
       <button type="button" aria-controls="tab-panel-3">Tab Three</button>
     </p-tabs-bar>
+    <div role="tabpanel" aria-labelledby="tab-panel-1" v-show="activeTabIndex === 0">
+      <p-text :theme="theme">Your content of Tab 1</p-text> 
+    </div>
+    <div role="tabpanel" aria-labelledby="tab-panel-2" v-show="activeTabIndex === 1">
+      <p-text :theme="theme">Your content of Tab 2</p-text>
+    </div>
+    <div role="tabpanel" aria-labelledby="tab-panel-3" v-show="activeTabIndex === 2">
+      <p-text :theme="theme">Your content of Tab 3</p-text>
+    </div>
   </template>
-  <div role="tabpanel" aria-labelledby="tab-panel-1" v-if="activeTabIndex === 0">
-    <p-text>Your content of Tab 1</p-text> 
-  </div>
-  <div role="tabpanel" aria-labelledby="tab-panel-2" v-if="activeTabIndex === 1">
-    <p-text>Your content of Tab 2</p-text>
-  </div>
-  <div role="tabpanel" aria-labelledby="tab-panel-3" v-if="activeTabIndex === 2">
-    <p-text>Your content of Tab 3</p-text>
-  </div>
 </Playground>
 
 ## Size
@@ -77,8 +77,8 @@ which gets the same unique id as the according tab (`aria-controls`).
       <option value="medium">Medium</option>
     </select>
   </template>
-  <template>
-    <p-tabs-bar :size="size">
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme" :size="size">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
@@ -96,8 +96,8 @@ which gets the same unique id as the according tab (`aria-controls`).
       <option value="semibold">SemiBold</option>
     </select>
   </template>
-  <template>
-    <p-tabs-bar :weight="weight">
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme" :weight="weight">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
