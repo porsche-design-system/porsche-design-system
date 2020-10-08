@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Removed
 - Default `position:relative;` style of `LinkPure` and `ButtonPure` 
 
+#### Fixed
+- `Spinner` zooming bug on Safari
+
 ### [2.0.0-alpha.3] - 2020-09-11
 
 #### Added
