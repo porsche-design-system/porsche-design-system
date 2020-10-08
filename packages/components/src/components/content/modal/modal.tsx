@@ -10,7 +10,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. **/
-  @Prop() public open?: boolean = false;
+  @Prop({ reflect: true }) public open: boolean = false;
   /** If true, the modal will not have a close button. **/
   @Prop() public disableCloseButton?: boolean = false;
   /** If true, the modal will not be closable via backdrop click. **/
@@ -36,7 +36,7 @@ export class Modal {
     if (val) {
       this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-      this.focusableElements[this.disableCloseButton ? 1 : 0]?.focus();
+      this.focusableElements[this.disableCloseButton ? 0 : 1]?.focus();
     } else {
       this.focusedElBeforeOpen?.focus();
     }
@@ -151,23 +151,25 @@ export class Modal {
     } else if (key === 'Tab') {
       // cycle focus within modal elements
       if (this.focusableElements.length <= 1) {
+        this.focusableElements[0]?.focus();
         e.preventDefault();
-      }
-      const [firstEl] = this.focusableElements;
-      const [lastEl] = this.focusableElements.slice(-1);
-
-      const { activeElement: activeElLight } = document;
-      const { activeElement: activeElShadow } = this.host.shadowRoot;
-
-      if (shiftKey) {
-        if (activeElLight === firstEl || activeElShadow === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        }
       } else {
-        if (activeElLight === lastEl || activeElShadow === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
+        const [firstEl] = this.focusableElements;
+        const [lastEl] = this.focusableElements.slice(-1);
+
+        const { activeElement: activeElLight } = document;
+        const { activeElement: activeElShadow } = this.host.shadowRoot;
+
+        if (shiftKey) {
+          if (activeElLight === firstEl || activeElShadow === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (activeElLight === lastEl || activeElShadow === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
         }
       }
     }
