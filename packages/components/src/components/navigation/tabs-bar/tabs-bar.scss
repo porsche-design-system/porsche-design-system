@@ -160,6 +160,8 @@
   /* Extra wrapper needed to compensate different offset parent calculation depending of browser.
   Needed for position of status bar. */
   &__scroll-wrapper {
+    display: inline-block;
+    vertical-align: top;
     position: relative;
     padding-bottom: .5em;
   }
