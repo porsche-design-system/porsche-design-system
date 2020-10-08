@@ -12,6 +12,7 @@ export * from './Link';
 export * from './LinkPure';
 export * from './LinkSocial';
 export * from './Marque';
+export * from './Modal';
 export * from './Overview';
 export * from './Pagination';
 export * from './RadioButtonWrapper';
