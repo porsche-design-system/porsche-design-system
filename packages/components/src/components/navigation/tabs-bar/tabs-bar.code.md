@@ -1,15 +1,15 @@
 # Tabs Bar
 
-The Tabs Bar component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
-your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of a component
-and therefore change the appearance of you content or as skip navigation to move on a longer page.
+The component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
+your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element
+and therefore change the appearance of your content or as skip navigation to move on a longer page.
 
-The Tabs Bar component does not handle the display of your content. If you use the component you have to manually care for the
-content to be rendered beneath. To help with this task the Tabs Bar component triggers an event called `tabChange` with the index
-of the clicked tab as data.
+The component does not handle the display of your content. If you use the component you have to manually care for the
+content to be rendered beneath. To help with this task the component triggers an event called `tabChange` with the index
+of the active tab.
 
-If you intend to only change content on tab-click without location changes, we prepared a component which also
-handles the correct display of content according to the clicked tab. Have a look at the [Tabs](#/components/tabs#code) component.
+If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
+handles the correct display of content according to the active tab. Have a look at the [Tabs](#/components/tabs#code) component.
 
 **Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
 in your application! Therefore, we avoid messing with the window location.
@@ -18,20 +18,20 @@ in your application! Therefore, we avoid messing with the window location.
 
 ## Basic example
 
-Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` if you need to change e.g. the state on tab-click  or `<a>`
+Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors. 
 
-<Playground>
+<Playground :themeable="true">
   <template>
     <p-tabs-bar>
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
     </p-tabs-bar>
   </template>
 </Playground>
 
-<Playground>
+<Playground :themeable="true">
   <template>
     <p-tabs-bar>
       <a href="#">Tab One</a>
@@ -44,29 +44,32 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 ## Accessibility
 
 The `<p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tab-index` and `aria-selected` on the tabs inside the component.
-To be truly accessible every tab needs a `aria-controls` attribute with a unique id. The top container of your content needs the `role="tabpanel"` and the attribute `aria-labelledby`
+
+To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute with a unique id. The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby`
 which gets the same unique id as the according tab (`aria-controls`).
 
-If you care about accessibility without handling it yourself, have a look at the [Tabs](#/components/tabs#code) where we handle everything for you.
-
-<Playground>
+<Playground :themeable="true">
   <template>
-    <p-tabs-bar>
-      <button aria-controls="tab-panel-1">Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
+    <p-tabs-bar ref="some-tabs-bar">
+      <button type="button" aria-controls="tab-panel-1">Tab One</button>
+      <button type="button" aria-controls="tab-panel-2">Tab Two</button>
+      <button type="button" aria-controls="tab-panel-3">Tab Three</button>
     </p-tabs-bar>
   </template>
-  <div role="tabpanel" aria-labelledby="tab-panel-1">
+  <div role="tabpanel" aria-labelledby="tab-panel-1" v-if="activeTabIndex === 0">
     <p-text>Your content of Tab 1</p-text> 
+  </div>
+  <div role="tabpanel" aria-labelledby="tab-panel-2" v-if="activeTabIndex === 1">
+    <p-text>Your content of Tab 2</p-text>
+  </div>
+  <div role="tabpanel" aria-labelledby="tab-panel-3" v-if="activeTabIndex === 2">
+    <p-text>Your content of Tab 3</p-text>
   </div>
 </Playground>
 
-## Switch size
+## Size
 
-You can choose between two tab sizes, `small` or `medium`. It defaults to `small` and can be set by selecting the property on the `p-tabs-bar` component.
-
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select v-model="size">
       <option disabled>Select size</option>
@@ -76,38 +79,16 @@ You can choose between two tab sizes, `small` or `medium`. It defaults to `small
   </template>
   <template>
     <p-tabs-bar :size="size">
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
     </p-tabs-bar>
   </template>
 </Playground>
 
-## Scrollable Tab buttons
+## Weight
 
-If the amount of tags exceeds the viewport, the tabs become horizontal scrollable.
-
-<Playground>
-  <template>
-    <p-tabs-bar>
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
-      <button>Tab Four</button>
-      <button>Tab Five</button>
-      <button>Tab Long Label Six</button>
-      <button>Tab Seven</button>
-      <button>Tab Eight</button>
-      <button>Tab Nine</button>
-    </p-tabs-bar>
-  </template>
-</Playground>
-
-## Weight variants
-
-The `<tabs-bar>` component comes with two text-weights `regular` or `semibold` where it defaults to `regular`.
-
-<Playground>
+<Playground :themeable="true">
   <template #configurator>
     <select v-model="weight">
       <option disabled>Select weight</option>
@@ -117,37 +98,19 @@ The `<tabs-bar>` component comes with two text-weights `regular` or `semibold` w
   </template>
   <template>
     <p-tabs-bar :weight="weight">
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
     </p-tabs-bar>
   </template>
 </Playground>
 
-## Theme variants
-
-Choose between `light` and `dark` theme by using the `theme` property. Default theme is `light`.
-The Theme changes the text color of the tabs.
-
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme">
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
-    </p-tabs-bar>
-  </template>
-</Playground>
-
-## Gradient Color Scheme variants
+## Gradient Color Scheme
 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
 The background and gradient has to align to your chosen background.
 
-There are two different background types `default` and `surface`, you can choose between them by using the `gradient-color-scheme` property. It defaults to the value `default`.
-The `gradient-color-scheme` has impact on `light` and `dark` theme.
-
-<Playground :themeable="true">
+<Playground :themeable="true" :color-scheme="gradientColorScheme">
   <template #configurator>
     <select v-model="gradientColorScheme">
       <option disabled>Select gradient-color-scheme</option>
@@ -157,32 +120,40 @@ The `gradient-color-scheme` has impact on `light` and `dark` theme.
   </template>
   <template v-slot="{theme}">
     <p-tabs-bar :theme="theme" :gradient-color-scheme="gradientColorScheme">
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
-      <button>Tab Four</button>
-      <button>Tab Five</button>
-      <button>Tab Long Label Six</button>
-      <button>Tab Seven</button>
-      <button>Tab Eight</button>
-      <button>Tab Nine</button>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+      <button type="button">Tab Four</button>
+      <button type="button">Tab Five</button>
+      <button type="button">Tab Six</button>
+      <button type="button">Tab Seven</button>
+      <button type="button">Tab Eight</button>
+      <button type="button">Tab Nine</button>
+      <button type="button">Tab Ten</button>
+      <button type="button">Tab Eleven</button>
+      <button type="button">Tab Twelve</button>
+      <button type="button">Tab Thirteen</button>
+      <button type="button">Tab Fourteen</button>
+      <button type="button">Tab Fifteen</button>
+      <button type="button">Tab Sixteen</button>
+      <button type="button">Tab Seventeen</button>
+      <button type="button">Tab Eighteen</button>
+      <button type="button">Tab Nineteen</button>
+      <button type="button">Tab Twenty</button>
     </p-tabs-bar>
   </template>
 </Playground>
 
-## Set active Tab
+## Active Tab
 
-You may need to change the initial active tab. To do so, use the `active-tab-index` property on the `<p-tabs-bar>` component.
-The the attribute `aria-selected` becomes `true` on the active tab.
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. 
 
-**Note:** Keep in mind that the `active-tab-index` is counted like an array, so it starts with 0. 
-
-<Playground>
-  <template>
-    <p-tabs-bar active-tab-index="1">
-      <button>Tab One</button>
-      <button>Tab Two</button>
-      <button>Tab Three</button>
+<Playground :themeable="true">
+  <template v-slot="{theme}">
+    <p-tabs-bar :theme="theme" active-tab-index="1">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
     </p-tabs-bar>
   </template>
 </Playground>
@@ -194,8 +165,15 @@ The the attribute `aria-selected` becomes `true` on the active tab.
   @Component
   export default class PlaygroundTabs extends Vue {
     public theme: string = 'light';
-    public weight: string = 'regular';
-    public size: string = 'small';
-    public gradientColorScheme: string = 'default';
+    public weight: string = 'semibold';
+    public size: string = 'medium';
+    public gradientColorScheme: string = 'surface';
+    public activeTabIndex: number = 0;
+    
+    public mounted(): void {
+      this.$refs["some-tabs-bar"].addEventListener('tabChange', (e) => {
+        this.activeTabIndex = e.detail.activeTabIndex;
+      });
+    }
   }
 </script>
