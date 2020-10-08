@@ -78,6 +78,11 @@ export const routes: RouteType[] = [
     component: fromPages.MarquePage
   },
   {
+    name: 'Modal',
+    path: '/modal',
+    component: fromPages.ModalPage
+  },
+  {
     name: 'Overview',
     path: '/overview',
     component: fromPages.OverviewPage
