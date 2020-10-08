@@ -119,10 +119,10 @@ describe('tabs-bar', () => {
           <button>Content1</button>
           <button>Content2</button>
           <button>Content3</button>
-           <button>Content4</button>
+          <button>Content4</button>
           <button>Content5</button>
           <button>Content6</button>
-           <button>Content7</button>
+          <button>Content7</button>
           <button>Content8</button>
         </p-tabs-bar>
       </div>
@@ -153,6 +153,61 @@ describe('tabs-bar', () => {
     await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+
+    await prevButton.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
+  });
+
+  it('should scroll to max scroll position on next click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs-bar size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+        </p-tabs-bar>
+      </div>
+    `
+    );
+    const [firstButton] = await getAllButtons();
+    const nextButton = await getNextButton();
+    const scrollArea = await getScrollArea();
+
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
+
+    await nextButton.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    await nextButton.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    await nextButton.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    const scrollPosition = await getScrollLeft(scrollArea);
+
+    await firstButton.click();
+    await waitForStencilLifecycle(page);
+    await page.waitFor(CSS_ANIMATION_DURATION);
+
+    const scrollMax = await page.evaluate((): number => {
+      const scrollArea = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.p-tabs-bar__scroll-area');
+      scrollArea.scrollTo({ left: scrollArea.scrollWidth });
+      return scrollArea.scrollLeft;
+    });
+
+    expect(scrollPosition).toEqual(scrollMax);
   });
 
   it('should render correct scroll-position on selected tab', async () => {
@@ -274,14 +329,14 @@ describe('tabs-bar', () => {
     const statusBar = await getStatusBar();
     const tab3Position = (await getElementPositions(page, allButtons[2])).left;
 
-    expect(Math.round(tab3Position)).toEqual((await getElementPositions(page, statusBar)).left);
+    expect(Math.round(tab3Position)).toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
 
     await allButtons[0].click();
     await waitForStencilLifecycle(page);
     await page.waitFor(CSS_ANIMATION_DURATION);
 
     expect((await getElementPositions(page, allButtons[0])).left).toEqual(
-      (await getElementPositions(page, statusBar)).left
+      Math.floor((await getElementPositions(page, statusBar)).left)
     );
   });
 
