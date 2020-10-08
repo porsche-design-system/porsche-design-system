@@ -20,7 +20,7 @@ export class Modal {
   /** The title of the modal **/
   @Prop() public subject?: string;
   /** Emitted when the component requests to be closed. **/
-  @Event() public close?: EventEmitter<void>;
+  @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
