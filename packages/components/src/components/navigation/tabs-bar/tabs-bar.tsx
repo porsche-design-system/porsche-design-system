@@ -30,7 +30,7 @@ export class TabsBar {
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({reflect: true}) public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
@@ -64,7 +64,7 @@ export class TabsBar {
     }
     this.setAccessibilityAttributes();
     this.scrollActiveTabIntoView(direction);
-    this.tabChange.emit({activeTabIndex: this.activeTabIndex});
+    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
   }
 
   public connectedCallback(): void {
@@ -116,8 +116,8 @@ export class TabsBar {
       <div class={tabsNavClasses}>
         <div class={scrollAreaClasses} role="tablist">
           <div class={scrollWrapperClasses}>
-            <slot/>
-            <span class={statusBarClasses}/>
+            <slot />
+            <span class={statusBarClasses} />
           </div>
         </div>
         {this.renderPrevNextButton('prev')}
@@ -145,7 +145,7 @@ export class TabsBar {
 
     return (
       <div class={actionClasses}>
-        <span class={gradientClasses}/>
+        <span class={gradientClasses} />
         <PrefixedTagNames.pButtonPure
           aria-hidden="true"
           tabbable={false}
@@ -194,7 +194,7 @@ export class TabsBar {
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({type}) => type === 'characterData')) {
+      if (mutations.filter(({ type }) => type === 'characterData')) {
         this.setStatusBarStyle();
       }
     });
@@ -251,13 +251,13 @@ export class TabsBar {
       (entries) => {
         for (const entry of entries) {
           if (entry.target === firstTab) {
-            cb({isPrevHidden: entry.isIntersecting});
+            cb({ isPrevHidden: entry.isIntersecting });
           } else if (entry.target === lastTab) {
-            cb({isNextHidden: entry.isIntersecting});
+            cb({ isNextHidden: entry.isIntersecting });
           }
         }
       },
-      {threshold: 1}
+      { threshold: 1 }
     );
 
     intersectionObserver.observe(firstTab);
@@ -352,17 +352,18 @@ export class TabsBar {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const {offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth} = this.tabElements[this.tabElements.length - 1];
-    const {offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition} = this.scrollAreaElement;
-    const scrollToStep = Math.round(scrollAreaWidth * 0.2);
+    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[this.tabElements.length - 1];
+    const {offsetWidth: scrollAreaWidth,  scrollLeft: currentScrollPosition } = this.scrollAreaElement;
+    const scrollWrapper = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-wrapper')}`);
+    const scrollToStep = Math.round(scrollWrapper.offsetWidth * 0.2);
     const scrollToMin = 0;
-    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH;
+    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + (FOCUS_PADDING_WIDTH * 2);
 
     let scrollPosition: number;
 
     if (direction === 'next') {
       // Go to end of scroll-are when close to edge
-      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
+      if ((currentScrollPosition + scrollToStep * 2) > scrollToMax) {
         scrollPosition = scrollToMax;
       } else {
         scrollPosition = currentScrollPosition + scrollToStep;
