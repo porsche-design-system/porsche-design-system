@@ -21,7 +21,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
 :host([open='']),
 :host([open='true']) {
-  transition: opacity 0.2s $easing, visibility 0s linear !important;
+  transition: opacity 0.6s $easing, visibility 0s linear !important;
   opacity: 1 !important;
   visibility: inherit !important;
 }
