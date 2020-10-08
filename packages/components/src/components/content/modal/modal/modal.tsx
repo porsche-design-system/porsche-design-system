@@ -86,13 +86,14 @@ export class Modal {
     );
 
     return (
-      <Host
-        role="dialog"
-        onClick={!this.disableBackdropClick && this.handleHostClick}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
-      >
-        <aside class={rootClasses} role="presentation" aria-modal="true">
+      <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
+        <aside
+          class={rootClasses}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+        >
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
