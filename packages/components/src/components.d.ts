@@ -412,23 +412,23 @@ export namespace Components {
     }
     interface PModal {
         /**
-          * If true, the modal will not be closable via backdrop click. *
+          * If true, the modal will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button. *
+          * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
         /**
-          * If true, the modal will not be closable via Escape key. *
+          * If true, the modal will not be closable via Escape key.
          */
         "disableEscapeKey"?: boolean;
         /**
-          * If true, the modal is open. *
+          * If true, the modal is open.
          */
         "open": boolean;
         /**
-          * The title of the modal *
+          * The title of the modal
          */
         "subject"?: string;
     }
@@ -1221,27 +1221,27 @@ declare namespace LocalJSX {
     }
     interface PModal {
         /**
-          * If true, the modal will not be closable via backdrop click. *
+          * If true, the modal will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If true, the modal will not have a close button. *
+          * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
         /**
-          * If true, the modal will not be closable via Escape key. *
+          * If true, the modal will not be closable via Escape key.
          */
         "disableEscapeKey"?: boolean;
         /**
-          * Emitted when the component requests to be closed. *
+          * Emitted when the component requests to be closed.
          */
         "onClose"?: (event: CustomEvent<void>) => void;
         /**
-          * If true, the modal is open. *
+          * If true, the modal is open.
          */
         "open"?: boolean;
         /**
-          * The title of the modal *
+          * The title of the modal
          */
         "subject"?: string;
     }

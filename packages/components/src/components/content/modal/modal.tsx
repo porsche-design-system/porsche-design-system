@@ -9,17 +9,17 @@ import { getPrefixedTagNames, prefix } from '../../../utils';
 export class Modal {
   @Element() public host!: HTMLElement;
 
-  /** If true, the modal is open. **/
+  /** If true, the modal is open. */
   @Prop({ reflect: true }) public open = false;
-  /** If true, the modal will not have a close button. **/
+  /** If true, the modal will not have a close button. */
   @Prop() public disableCloseButton?: boolean = false;
-  /** If true, the modal will not be closable via backdrop click. **/
+  /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
-  /** If true, the modal will not be closable via Escape key. **/
+  /** If true, the modal will not be closable via Escape key. */
   @Prop() public disableEscapeKey?: boolean = false;
-  /** The title of the modal **/
+  /** The title of the modal */
   @Prop() public subject?: string;
-  /** Emitted when the component requests to be closed. **/
+  /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
