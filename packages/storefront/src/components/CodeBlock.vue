@@ -117,6 +117,8 @@
           .replace(/\n{3,}/g, '\n\n')
           // clean checked, disabled and readonly attributes
           .replace(/(checked|disabled|readonly)="\1"/g, '$1')
+          // clean empty string attributes
+          .replace(/=""/g, '')
       );
     }
 
