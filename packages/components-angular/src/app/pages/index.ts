@@ -13,6 +13,7 @@ import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { MarqueComponent } from './marque.component';
+import { ModalComponent } from './modal.component';
 import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
@@ -38,6 +39,7 @@ export const pages = [
   LinkPureComponent,
   LinkSocialComponent,
   MarqueComponent,
+  ModalComponent,
   OverviewComponent,
   PaginationComponent,
   RadioButtonWrapperComponent,
@@ -64,6 +66,7 @@ export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';
 export * from './marque.component';
+export * from './modal.component';
 export * from './overview.component';
 export * from './pagination.component';
 export * from './radio-button-wrapper.component';
