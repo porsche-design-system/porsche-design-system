@@ -13,7 +13,7 @@ export const getPrefixedTagNames = (element: HTMLElement, tagNames: TagName[]): 
       ...tagNameMap,
       [camelCase(tagName)]: prefix + tagName
     }),
-    {}
+    {} as PrefixedTagNames
   );
 };
 
