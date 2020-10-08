@@ -14,6 +14,5 @@ export const getPrefixedTagNames = (host: HTMLElement, rawTagNames: TagName[]): 
   return tagNames;
 };
 
-export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
-  return getPrefixedTagNames(host, (TAG_NAMES as unknown) as TagName[]) as PrefixedTagNames;
-};
+export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames =>
+  getPrefixedTagNames(host, (TAG_NAMES as unknown) as TagName[]) as PrefixedTagNames;
