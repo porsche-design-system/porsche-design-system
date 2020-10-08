@@ -132,6 +132,8 @@ export class Modal {
     const ariaLabelledBy = this.subject && 'modal-title';
     const ariaDescribedBy = 'modal-body';
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
+
     return (
       <Host
         role="dialog"
@@ -143,13 +145,13 @@ export class Modal {
           {hasHeader && (
             <div class={headerClasses}>
               {this.subject && (
-                <p-headline id={ariaLabelledBy} variant="headline-2">
+                <PrefixedTagNames.pHeadline id={ariaLabelledBy} variant="headline-2">
                   {this.subject}
-                </p-headline>
+                </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseClasses}>
-                  <p-button-pure
+                  <PrefixedTagNames.pButtonPure
                     ref={(el) => (this.closeBtn = el)}
                     hideLabel
                     icon="close"
@@ -157,7 +159,7 @@ export class Modal {
                     onClick={this.closeModal}
                   >
                     Close
-                  </p-button-pure>
+                  </PrefixedTagNames.pButtonPure>
                 </div>
               )}
             </div>
