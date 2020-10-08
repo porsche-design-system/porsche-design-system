@@ -184,7 +184,7 @@ export const config: StorefrontConfig = {
     }
   },
   Performance: {
-    'Cdn': [
+    Cdn: [
       // @ts-ignore
       () => import(`@/pages/performance/cdn.md`)
     ],
@@ -530,6 +530,20 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
+      ]
+    },
+    Modal: {
+      Design: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.design.md`)
+      ],
+      Code: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.code.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.props.md`)
       ]
     }
   }
