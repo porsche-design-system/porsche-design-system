@@ -20,6 +20,6 @@ export const getPrefixedTagNames = (element: HTMLElement, tagNames: TagName[]): 
 export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = host.tagName.toLowerCase().match(prefixRegex) ?? [];
   const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
-  Object.values({ ...TAG_NAMES }).forEach((tag) => (tagNames[tag as TagName] = prefix + tag));
+  Object.values({ ...TAG_NAMES }).forEach((tag) => (tagNames[camelCase(tag as string)] = prefix + tag));
   return tagNames;
 };
