@@ -10,7 +10,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. **/
-  @Prop({ reflect: true }) public open: boolean = false;
+  @Prop({ reflect: true }) public open = false;
   /** If true, the modal will not have a close button. **/
   @Prop() public disableCloseButton?: boolean = false;
   /** If true, the modal will not be closable via backdrop click. **/
