@@ -17,6 +17,7 @@ export const ModalPage = (): JSX.Element => {
         disableCloseButton={isDisabledCloseButton}
         onClose={() => setIsOpen(false)}
       >
+        <Button children="close" onClick={() => setIsOpen(false)} />
         {Array.from(Array(5)).map((_, i) => (
           <Text
             key={i}
