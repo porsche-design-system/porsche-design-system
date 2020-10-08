@@ -5,21 +5,15 @@ type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
 const prefixRegex = /^(.*-)p-(.*)$/;
 
-export const getPrefixedTagNames = (element: HTMLElement, tagNames: TagName[]): Partial<PrefixedTagNames> => {
-  const lowerCaseTagName = element.tagName.toLowerCase();
-  const [, prefix = ''] = new RegExp(prefixRegex).exec(lowerCaseTagName) || [];
-  return tagNames.reduce(
-    (tagNameMap, tagName) => ({
-      ...tagNameMap,
-      [camelCase(tagName)]: prefix + tagName
-    }),
-    {} as PrefixedTagNames
-  );
+export const getPrefixedTagNames = (host: HTMLElement, rawTagNames: TagName[]): Partial<PrefixedTagNames> => {
+  const [, prefix = ''] = new RegExp(prefixRegex).exec(host.tagName.toLowerCase()) ?? [];
+  const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
+  for (const tag of rawTagNames) {
+    tagNames[camelCase(tag)] = `${prefix}${tag}`;
+  }
+  return tagNames;
 };
 
 export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
-  const [, prefix = ''] = new RegExp(prefixRegex).exec(host.tagName.toLowerCase()) ?? [];
-  const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
-  Object.values({ ...TAG_NAMES }).forEach((tag) => (tagNames[camelCase(tag as string)] = `${prefix}${tag}`));
-  return tagNames;
+  return getPrefixedTagNames(host, (TAG_NAMES as unknown) as TagName[]) as PrefixedTagNames;
 };
