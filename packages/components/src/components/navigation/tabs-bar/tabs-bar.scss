@@ -2,8 +2,8 @@
 @import '../../../styles/internal.variables';
 
 :host {
+  position: relative !important;
   display: block;
-  position: relative;
 }
 
 ::slotted(a),
@@ -79,8 +79,7 @@
   @include p-generate-type-scale($p-font-size-small);
   font-weight: $p-font-weight-regular;
   position: relative;
-  margin: 0;
-  transform: translateX(-4px);/* preserve space for focused tab outline */
+  margin: 0 -4px;
 
   &--weight-semibold {
     font-weight: $p-font-weight-semibold;
@@ -146,7 +145,7 @@
 
   &__scroll-area {
     position: relative;
-    padding: 4px 4px .5em;
+    padding: 4px 4px 0;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -156,6 +155,13 @@
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  /* Extra wrapper needed to compensate different offset parent calculation depending of browser.
+  Needed for position of status bar. */
+  &__scroll-wrapper {
+    position: relative;
+    padding-bottom: .5em;
   }
 
   &__status-bar {
