@@ -26,7 +26,7 @@ export class Tabs {
   /** Emitted when active tab is changed. */
   @Event() public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public activeTabIndex = 0;
+  @State() public activeTabIndex;
   @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
   private hostObserver: MutationObserver;
@@ -92,6 +92,7 @@ export class Tabs {
 
   private setTabsItemProperties = (): void => {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
+      tab.removeAttribute('selected');
       tab.selected = this.activeTabIndex === +index;
     }
   };
@@ -119,7 +120,7 @@ export class Tabs {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      attributeFilter: ['label']
+      attributeFilter: ['label', 'selected']
     });
   };
 
