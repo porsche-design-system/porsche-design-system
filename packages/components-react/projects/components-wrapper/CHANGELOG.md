@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### Fixed
+- `Spinner` zooming bug on Safari
+
 ### [1.5.5] - 2020-09-11
 
 ### [1.5.5-rc.0] - 2020-09-07
