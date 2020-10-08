@@ -9,6 +9,7 @@
       :class="{
         light: (themeable && theme === 'light') || themeable === false,
         dark: themeable && theme === 'dark',
+        surface: colorScheme === 'surface',
         'height-fixed': childElementLayout.height === 'fixed',
         'spacing-inline': childElementLayout.spacing === 'inline',
         'spacing-block': childElementLayout.spacing === 'block',
@@ -45,6 +46,7 @@
   })
   export default class Playground extends Vue {
     @Prop({ default: false }) public themeable!: boolean;
+    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
 
     public theme: Theme = 'light';
@@ -84,13 +86,23 @@
 
     // Theme
     &.light {
-      border-color: $p-color-theme-light-neutral-contrast-low;
-      background-color: $p-color-theme-light-background;
+      border-color: $p-color-neutral-contrast-low;
+      background-color: $p-color-background-default;
+
+      &.surface {
+        border-color: $p-color-background-surface;
+        background-color: $p-color-background-surface;
+      }
     }
 
     &.dark {
-      border-color: $p-color-theme-dark-background-surface;
-      background-color: $p-color-theme-dark-background-surface;
+      border-color: $p-color-theme-dark-background-default;
+      background-color: $p-color-theme-dark-background-default;
+
+      &.surface {
+        border-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-theme-dark-background-surface;
+      }
     }
 
     // Child Layout "height"
