@@ -42,7 +42,8 @@ export class Modal {
         this.focusableElements[this.disableCloseButton || this.focusableElements.length === 1 ? 0 : 1]?.focus()
       );
     } else {
-      this.focusedElBeforeOpen?.focus();
+      // timeout is needed to focus previously focused button reliably
+      setTimeout(() => this.focusedElBeforeOpen?.focus());
     }
   }
 
