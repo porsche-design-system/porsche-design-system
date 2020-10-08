@@ -84,7 +84,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
       padding-right: p-px-to-rem(60px);
 
       @include p-media-query('xs') {
-        padding-left: p-px-to-rem(68px);
+        padding-right: p-px-to-rem(68px);
       }
 
       @include p-media-query('s') {
