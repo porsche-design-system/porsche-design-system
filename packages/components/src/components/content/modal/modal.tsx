@@ -23,6 +23,8 @@ export class Modal {
   @Event() public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
+  private focusableElements: HTMLElement[] = [];
+  private closeBtn: HTMLElement;
 
   @Watch('open')
   openChangeHandler(val: boolean) {
@@ -30,10 +32,11 @@ export class Modal {
     this.setScrollLock(val);
 
     if (val) {
+      this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-      this.focusableElements[0]?.focus();
+      this.focusableElements[this.disableCloseButton ? 1 : 0]?.focus();
     } else {
-      this.focusedElBeforeOpen.focus();
+      this.focusedElBeforeOpen?.focus();
     }
   }
 
@@ -41,11 +44,15 @@ export class Modal {
     this.open && !this.disableEscapeKey && this.setKeyboardListener(true);
   }
 
+  public componentDidLoad(): void {
+    this.setFocusableElements();
+  }
+
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
   }
 
-  public componentDidLoad(): void {
+  private setFocusableElements = (): void => {
     const PrefixedTagNames = getPrefixedTagNames(this.host, [
       'p-button',
       'p-button-pure',
@@ -59,10 +66,8 @@ export class Modal {
       Object.values(PrefixedTagNames).join(',') +
       `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
 
-    this.focusableElements = Array.from(this.host.querySelectorAll(selector)).concat(
-      Array.from(this.host.shadowRoot.querySelectorAll(selector))
-    ) as HTMLElement[];
-  }
+    this.focusableElements = [this.closeBtn].concat(Array.from(this.host.querySelectorAll(selector)) as HTMLElement[]);
+  };
 
   private setScrollLock = (lock: boolean): void => {
     document.body.style.overflow = lock ? 'hidden' : '';
@@ -72,9 +77,32 @@ export class Modal {
     document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
   };
 
-  private handleKeyboardEvents = ({ key }: KeyboardEvent): void => {
+  private handleKeyboardEvents = (e: KeyboardEvent): void => {
+    const { key, shiftKey } = e;
     if (key === 'Esc' || key === 'Escape') {
       this.closeModal();
+    } else if (key === 'Tab') {
+      // cycle focus within modal elements
+      if (this.focusableElements.length <= 1) {
+        e.preventDefault();
+      }
+      const [firstEl] = this.focusableElements;
+      const [lastEl] = this.focusableElements.slice(-1);
+
+      const { activeElement: activeElLight } = document;
+      const { activeElement: activeElShadow } = this.host.shadowRoot;
+
+      if (shiftKey) {
+        if (activeElLight === firstEl || activeElShadow === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (activeElLight === lastEl || activeElShadow === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
     }
   };
 
@@ -121,7 +149,13 @@ export class Modal {
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseClasses}>
-                  <p-button-pure hideLabel icon="close" aria-label="Close" onClick={this.closeModal}>
+                  <p-button-pure
+                    ref={(el) => (this.closeBtn = el)}
+                    hideLabel
+                    icon="close"
+                    aria-label="Close"
+                    onClick={this.closeModal}
+                  >
                     Close
                   </p-button-pure>
                 </div>
