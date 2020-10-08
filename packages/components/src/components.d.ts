@@ -432,6 +432,8 @@ export namespace Components {
          */
         "open": boolean;
     }
+    interface PModalFooter {
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -734,6 +736,12 @@ declare global {
         prototype: HTMLPModalElement;
         new (): HTMLPModalElement;
     };
+    interface HTMLPModalFooterElement extends Components.PModalFooter, HTMLStencilElement {
+    }
+    var HTMLPModalFooterElement: {
+        prototype: HTMLPModalFooterElement;
+        new (): HTMLPModalFooterElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -806,6 +814,7 @@ declare global {
         "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
+        "p-modal-footer": HTMLPModalFooterElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
@@ -1245,6 +1254,8 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
     }
+    interface PModalFooter {
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1465,6 +1476,7 @@ declare namespace LocalJSX {
         "p-link-social": PLinkSocial;
         "p-marque": PMarque;
         "p-modal": PModal;
+        "p-modal-footer": PModalFooter;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
@@ -1497,6 +1509,7 @@ declare module "@stencil/core" {
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
+            "p-modal-footer": LocalJSX.PModalFooter & JSXBase.HTMLAttributes<HTMLPModalFooterElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;

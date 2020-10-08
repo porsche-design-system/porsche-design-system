@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getPrefixedTagNames, prefix } from '../../../utils';
+import { getPrefixedTagNames, prefix } from '../../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -190,6 +190,7 @@ export class Modal {
   };
 
   private get isFooterDefined(): boolean {
-    return !!this.host.querySelector('[slot="footer"]');
+    const { pModalFooter } = getPrefixedTagNames(this.host, ['p-modal-footer']);
+    return !!this.host.querySelector(pModalFooter);
   }
 }
