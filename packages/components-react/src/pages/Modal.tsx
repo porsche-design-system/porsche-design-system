@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 export const ModalPage = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabledCloseButton, seIsDisabledCloseButton] = useState(false);
-  const [showSubject, setShowSubject] = useState(true);
+  const [showHeading, setShowHeading] = useState(true);
 
   return (
     <>
       <Button children="Toggle Close" onClick={() => seIsDisabledCloseButton((prev) => !prev)} />
-      <Button children="Toggle Subject" onClick={() => setShowSubject((prev) => !prev)} />
+      <Button children="Toggle Heading" onClick={() => setShowHeading((prev) => !prev)} />
       <Button children="Open" onClick={() => setIsOpen(true)} />
       <Modal
         open={isOpen}
-        subject={showSubject ? 'Some title here' : ''}
+        heading={showHeading ? 'Some heading here' : ''}
         disableCloseButton={isDisabledCloseButton}
         onClose={() => setIsOpen(false)}
       >

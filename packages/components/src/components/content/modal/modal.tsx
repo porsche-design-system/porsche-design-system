@@ -18,7 +18,7 @@ export class Modal {
   /** If true, the modal will not be closable via Escape key. */
   @Prop() public disableEscapeKey?: boolean = false;
   /** The title of the modal */
-  @Prop() public subject?: string;
+  @Prop() public heading?: string;
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
@@ -61,10 +61,8 @@ export class Modal {
   }
 
   public render(): JSX.Element {
-    const hasHeader = this.subject || !this.disableCloseButton;
-    const rootClasses = {
-      [prefix('modal')]: true
-    };
+    const hasHeader = this.heading || !this.disableCloseButton;
+    const rootClasses = prefix('modal');
     const headerClasses = {
       [prefix('modal__header')]: true,
       [prefix('modal__header--closable')]: !this.disableCloseButton
@@ -73,7 +71,7 @@ export class Modal {
     const footerClasses = prefix('modal__footer');
     const btnCloseClasses = prefix('modal__close');
 
-    const ariaLabelledBy = this.subject && 'modal-title';
+    const ariaLabelledBy = this.heading && 'modal-title';
     const ariaDescribedBy = 'modal-body';
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
@@ -85,12 +83,12 @@ export class Modal {
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
       >
-        <div class={rootClasses} role="presentation" aria-modal="true">
+        <aside class={rootClasses} role="presentation" aria-modal="true">
           {hasHeader && (
-            <div class={headerClasses}>
-              {this.subject && (
+            <header class={headerClasses}>
+              {this.heading && (
                 <PrefixedTagNames.pHeadline id={ariaLabelledBy} variant="headline-2">
-                  {this.subject}
+                  {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
@@ -106,7 +104,7 @@ export class Modal {
                   </PrefixedTagNames.pButtonPure>
                 </div>
               )}
-            </div>
+            </header>
           )}
 
           <div class={bodyClasses} id={ariaDescribedBy}>
@@ -114,11 +112,11 @@ export class Modal {
           </div>
 
           {this.isFooterDefined && (
-            <div class={footerClasses}>
+            <footer class={footerClasses}>
               <slot name="footer" />
-            </div>
+            </footer>
           )}
-        </div>
+        </aside>
       </Host>
     );
   }

@@ -424,13 +424,13 @@ export namespace Components {
          */
         "disableEscapeKey"?: boolean;
         /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
           * If true, the modal is open.
          */
         "open": boolean;
-        /**
-          * The title of the modal
-         */
-        "subject"?: string;
     }
     interface PPagination {
         /**
@@ -1233,6 +1233,10 @@ declare namespace LocalJSX {
          */
         "disableEscapeKey"?: boolean;
         /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
           * Emitted when the component requests to be closed.
          */
         "onClose"?: (event: CustomEvent<void>) => void;
@@ -1240,10 +1244,6 @@ declare namespace LocalJSX {
           * If true, the modal is open.
          */
         "open"?: boolean;
-        /**
-          * The title of the modal
-         */
-        "subject"?: string;
     }
     interface PPagination {
         /**
