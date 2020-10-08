@@ -160,7 +160,9 @@
 
   &__status-bar {
     position: absolute;
+    left: 0;
     bottom: 0;
+    width: 1px;
     height: .09375em;
     display: block;
     background-color: $p-color-state-active;
@@ -174,7 +176,7 @@
     }
 
     &--enable-transition {
-      transition: width $p-tabs-transition-duration, left $p-tabs-transition-duration;
+      transition: transform $p-tabs-transition-duration;
     }
   }
 

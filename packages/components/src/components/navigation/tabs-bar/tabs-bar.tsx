@@ -205,8 +205,8 @@ export class TabsBar {
 
   private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
     const statusBarWidth = activeTabElement?.offsetWidth || 0;
-    const statusBarPositionLeft = activeTabElement?.offsetLeft || 0;
-    return `width: ${statusBarWidth}px; left: ${statusBarPositionLeft}px`;
+    const statusBarPositionLeft = activeTabElement?.offsetLeft + statusBarWidth / 2 || 0;
+    return `transform: matrix3d(${statusBarWidth}, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${statusBarPositionLeft}, 0, 0, 1)`;
   };
 
   private defineHTMLElements = (): void => {
