@@ -4,7 +4,7 @@
 
 <Playground>
   <p-button @click="openModal(0)">Open Modal</p-button>
-  <p-modal subject="Some Subject" :open="isOpen(0)" v-on:close="closeModal(0)">
+  <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
     <p-text>Some Content</p-text>
     <p-button @click="closeModal(0)">Close</p-button>
   </p-modal>
@@ -14,14 +14,14 @@
 
 <Playground>
   <p-button @click="openModal(1)">Open Modal</p-button>
-  <p-modal subject="Some Subject" :open="isOpen(1)" v-on:close="closeModal(1)">
+  <p-modal heading="Some Heading" :open="isOpen(1)" v-on:close="closeModal(1)">
     <p-text>Some Content</p-text>
     <div style="height: 80vh;"></div>
     <p-text>Some More Content</p-text>
   </p-modal>
 </Playground>
 
-## Without Subject
+## Without Heading
 
 <Playground>
   <p-button @click="openModal(2)">Open Modal</p-button>
@@ -34,12 +34,12 @@
 
 <Playground>
   <p-button @click="openModal(3)">Open Modal</p-button>
-  <p-modal subject="Some Subject" disable-close-button :open="isOpen(3)" v-on:close="closeModal(3)">
+  <p-modal heading="Some Heading" disable-close-button :open="isOpen(3)" v-on:close="closeModal(3)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
 
-## Without Subject and Close Button
+## Without Heading and Close Button
 
 <Playground>
   <p-button @click="openModal(4)">Open Modal</p-button>
