@@ -352,9 +352,7 @@ export class TabsBar {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const {offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth} = this.tabElements[
-    this.tabElements.length - 1
-      ];
+    const {offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth} = this.tabElements[this.tabElements.length - 1];
     const {offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition} = this.scrollAreaElement;
     const scrollToStep = Math.round(scrollAreaWidth * 0.2);
     const scrollToMin = 0;
