@@ -426,7 +426,7 @@ export namespace Components {
         /**
           * If true, the modal is open. *
          */
-        "open"?: boolean;
+        "open": boolean;
         /**
           * The title of the modal *
          */
