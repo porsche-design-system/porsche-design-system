@@ -36,7 +36,11 @@ export class Modal {
     if (val) {
       this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-      this.focusableElements[this.disableCloseButton ? 0 : 1]?.focus();
+
+      // timeout is needed to focus close button which only appears after render
+      setTimeout(() =>
+        this.focusableElements[this.disableCloseButton || this.focusableElements.length === 1 ? 0 : 1]?.focus()
+      );
     } else {
       this.focusedElBeforeOpen?.focus();
     }
