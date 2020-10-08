@@ -433,6 +433,10 @@ export namespace Components {
         "open": boolean;
     }
     interface PModalFooter {
+        /**
+          * If true, the footer will be scrollable with the content.
+         */
+        "scrollable"?: boolean;
     }
     interface PPagination {
         /**
@@ -1255,6 +1259,10 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface PModalFooter {
+        /**
+          * If true, the footer will be scrollable with the content.
+         */
+        "scrollable"?: boolean;
     }
     interface PPagination {
         /**

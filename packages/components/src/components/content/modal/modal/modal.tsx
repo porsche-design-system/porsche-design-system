@@ -68,13 +68,22 @@ export class Modal {
       [prefix('modal__header--closable')]: !this.disableCloseButton
     };
     const bodyClasses = prefix('modal__body');
-    const footerClasses = prefix('modal__footer');
+    const footerClasses = {
+      [prefix('modal__footer')]: true,
+      [prefix('modal__footer--scrollable')]: this.isFooterScrollable
+    };
     const btnCloseClasses = prefix('modal__close');
 
     const ariaLabelledBy = this.heading && 'modal-title';
     const ariaDescribedBy = 'modal-body';
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
+
+    const footer = this.isFooterDefined && (
+      <footer class={footerClasses}>
+        <slot name="footer" />
+      </footer>
+    );
 
     return (
       <Host
@@ -109,13 +118,10 @@ export class Modal {
 
           <div class={bodyClasses} id={ariaDescribedBy}>
             <slot />
+            {this.isFooterScrollable && footer}
           </div>
 
-          {this.isFooterDefined && (
-            <footer class={footerClasses}>
-              <slot name="footer" />
-            </footer>
-          )}
+          {!this.isFooterScrollable && footer}
         </aside>
       </Host>
     );
@@ -189,8 +195,15 @@ export class Modal {
     }
   };
 
-  private get isFooterDefined(): boolean {
+  private getFooter(): Element {
     const { pModalFooter } = getPrefixedTagNames(this.host, ['p-modal-footer']);
-    return !!this.host.querySelector(pModalFooter);
+    return this.host.querySelector(pModalFooter);
+  }
+  private get isFooterDefined(): boolean {
+    return !!this.getFooter();
+  }
+
+  private get isFooterScrollable(): boolean {
+    return (this.getFooter() as HTMLPModalFooterElement)?.scrollable;
   }
 }
