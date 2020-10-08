@@ -353,9 +353,8 @@ export class TabsBar {
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[this.tabElements.length - 1];
-    const {offsetWidth: scrollAreaWidth,  scrollLeft: currentScrollPosition } = this.scrollAreaElement;
-    const scrollWrapper = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-wrapper')}`);
-    const scrollToStep = Math.round(scrollWrapper.offsetWidth * 0.2);
+    const { offsetWidth: scrollAreaWidth,  scrollLeft: currentScrollPosition } = this.scrollAreaElement;
+    const scrollToStep = Math.round(scrollAreaWidth * 0.2);
     const scrollToMin = 0;
     const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + (FOCUS_PADDING_WIDTH * 2);
 
