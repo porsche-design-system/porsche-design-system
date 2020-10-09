@@ -27,6 +27,8 @@ describe('tabs-bar', () => {
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
+  const getActionPrevContainer = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev');
+  const getActionNextContainer = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
   const getPrevButton = async () =>
     (await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev')).$('.p-tabs-bar__action--prev > p-button-pure');
   const getNextButton = async () =>
@@ -499,5 +501,96 @@ describe('tabs-bar', () => {
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(3);
+  });
+
+  fit('should render arrow only on horizontal scroll', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-tabs-bar active-tab-index="1">
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
+        <button>Content4</button>
+        <button>Content5</button>
+      </p-tabs-bar>
+      <div style="height: 120vh"></div>
+    `
+    );
+
+    const actionPrev = await getActionPrevContainer();
+    const actionNext = await getActionNextContainer();
+
+    await page.evaluate(() => window.scroll(0, 20));
+    await waitForStencilLifecycle(page);
+
+    expect(Object.values(await getProperty(actionPrev, 'classList'))).toContain('p-tabs-bar__action--hidden');
+    expect(Object.values(await getProperty(actionNext, 'classList'))).toContain('p-tabs-bar__action--hidden');
+  });
+
+  fit('should only render next button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs-bar size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+        </p-tabs-bar>
+      </div>
+    `
+    );
+    const actionPrev = await getActionPrevContainer();
+    const actionNext = await getActionNextContainer();
+
+    expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+    expect(Object.values(await getProperty(actionPrev, 'classList'))).toContain('p-tabs-bar__action--hidden');
+  });
+
+  it('should only render prev button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs-bar active-tab-index="3" size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+        </p-tabs-bar>
+      </div>
+    `
+    );
+    const actionPrev = await getActionPrevContainer();
+    const actionNext = await getActionNextContainer();
+
+    expect(Object.values(await getProperty(actionNext, 'classList'))).toContain('p-tabs-bar__action--hidden');
+    expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+  });
+
+  it('should only render prev and next button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <div style="width: 400px">
+        <p-tabs-bar active-tab-index="1" size="medium">
+          <button>Content1</button>
+          <button>Content2</button>
+          <button>Content3</button>
+          <button>Content4</button>
+          <button>Content5</button>
+          <button>Content6</button>
+          <button>Content7</button>
+        </p-tabs-bar>
+      </div>
+    `
+    );
+    const actionNext = await getActionNextContainer();
+    const actionPrev = await getActionPrevContainer();
+
+    expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+    expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
   });
 });
