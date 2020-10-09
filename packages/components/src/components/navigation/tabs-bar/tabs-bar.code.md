@@ -48,24 +48,25 @@ The `<p-tabs-bar` component is detached from the content which belongs to the ac
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute with a unique id. The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby`
 which gets the same unique id as the according tab (`aria-controls`).
 
-<Playground :themeable="true">
-  <template>
-    <p-tabs-bar ref="some-tabs-bar">
-      <button type="button" aria-controls="tab-panel-1">Tab One</button>
-      <button type="button" aria-controls="tab-panel-2">Tab Two</button>
-      <button type="button" aria-controls="tab-panel-3">Tab Three</button>
-    </p-tabs-bar>
-  </template>
-  <div role="tabpanel" aria-labelledby="tab-panel-1" v-if="activeTabIndex === 0">
-    <p-text>Your content of Tab 1</p-text> 
-  </div>
-  <div role="tabpanel" aria-labelledby="tab-panel-2" v-if="activeTabIndex === 1">
-    <p-text>Your content of Tab 2</p-text>
-  </div>
-  <div role="tabpanel" aria-labelledby="tab-panel-3" v-if="activeTabIndex === 2">
-    <p-text>Your content of Tab 3</p-text>
-  </div>
-</Playground>
+```html
+<p-tabs-bar>
+  <button type="button" aria-controls="tab-panel-1">Tab One</button>
+  <button type="button" aria-controls="tab-panel-2">Tab Two</button>
+  <button type="button" aria-controls="tab-panel-3">Tab Three</button>
+</p-tabs-bar>
+
+<div role="tabpanel" aria-labelledby="tab-panel-1">
+  <p-text>Your content of Tab 1</p-text> 
+</div>
+<div role="tabpanel" aria-labelledby="tab-panel-2">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div role="tabpanel" aria-labelledby="tab-panel-3">
+  <p-text>Your content of Tab 3</p-text>
+</div>
+```
+
+---
 
 ## Size
 
