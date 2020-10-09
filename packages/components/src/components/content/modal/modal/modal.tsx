@@ -162,7 +162,7 @@ export class Modal {
 
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
-    if (key === 'Esc' || key === 'Escape') {
+    if (!this.disableEscapeKey && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
     } else if (key === 'Enter' && this.closeBtn === this.host.shadowRoot.activeElement) {
       this.isClosedViaEnter = true;
