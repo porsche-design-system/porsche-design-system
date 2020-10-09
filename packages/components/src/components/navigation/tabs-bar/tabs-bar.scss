@@ -216,7 +216,6 @@
     bottom: -.5em;
     width: 2em;
     pointer-events: none;
-    transform: translate3d(0,0,0);
 
     &--prev {
       &#{$bem-block}__gradient--color-scheme-default {
