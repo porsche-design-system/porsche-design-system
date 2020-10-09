@@ -503,7 +503,7 @@ describe('tabs-bar', () => {
     expect(eventCounter).toBe(3);
   });
 
-  fit('should render arrow only on horizontal scroll', async () => {
+  it('should render arrow only on horizontal scroll', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -528,7 +528,7 @@ describe('tabs-bar', () => {
     expect(Object.values(await getProperty(actionNext, 'classList'))).toContain('p-tabs-bar__action--hidden');
   });
 
-  fit('should only render next button', async () => {
+  it('should only render next button', async () => {
     await setContentWithDesignSystem(
       page,
       `
