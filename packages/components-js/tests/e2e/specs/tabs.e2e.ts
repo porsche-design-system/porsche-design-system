@@ -10,7 +10,7 @@ import {
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
+import { CSS_ANIMATION_DURATION, FOCUS_PADDING } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
@@ -269,7 +269,7 @@ describe('tabs', () => {
     await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
-    const scrollDistanceRight = +tab5offset - +gradientWidth;
+    const scrollDistanceRight = +tab5offset - +gradientWidth  + FOCUS_PADDING;
     expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
 
     await page.keyboard.press('ArrowLeft');
