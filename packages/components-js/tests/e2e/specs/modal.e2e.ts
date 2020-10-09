@@ -190,21 +190,20 @@ describe('modal', () => {
     await setContentWithDesignSystem(
       page,
       `
-        <button id="btn-open"></button>
-        <p-modal id="modal" heading="Some Heading">
-          Some Content
-          <p-modal-footer>Some Footer</p-modal-footer>
-        </p-modal>
-        <script>
-          const modal = document.getElementById('modal');
-          document.getElementById('btn-open').addEventListener('click', () => {
-            modal.setAttribute('open', '');
-          });
-          modal.addEventListener('close', () => {
-            modal.removeAttribute('open');
-          });
-        </script>
-        `
+      <button id="btn-open"></button>
+      <p-modal id="modal" heading="Some Heading">
+        Some Content
+        <p-modal-footer>Some Footer</p-modal-footer>
+      </p-modal>
+      <script>
+        const modal = document.getElementById('modal');
+        document.getElementById('btn-open').addEventListener('click', () => {
+          modal.setAttribute('open', '');
+        });
+        modal.addEventListener('close', () => {
+          modal.removeAttribute('open');
+        });
+      </script>`
     );
 
     expect(await getModalVisibility()).toBe('hidden');
@@ -219,5 +218,20 @@ describe('modal', () => {
     await page.waitForTimeout(600); // transition delay for visibility
     expect(await getModalVisibility()).toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
+  });
+
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicModal({ isOpen: false });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('visible');
+    await openModal();
+    expect(await getBodyOverflow()).toBe('hidden');
+
+    await (await getModalHost()).evaluate((el) => el.removeAttribute('open'));
+
+    await waitForStencilLifecycle(page);
+    expect(await getBodyOverflow()).toBe('visible');
   });
 });
