@@ -491,13 +491,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Tabs: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/tabs/tabs.design.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/tabs/tabs.code.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -507,13 +507,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Tabs Bar': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.design.md`)
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.code.md`)
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.usage.md`)
       ],
       Props: [
         // @ts-ignore
