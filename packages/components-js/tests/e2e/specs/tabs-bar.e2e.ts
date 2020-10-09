@@ -13,6 +13,7 @@ import {
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
+export const FOCUS_PADDING = 8;
 const TABS_SCROLL_PERCENTAGE = 0.2;
 
 describe('tabs-bar', () => {
@@ -163,7 +164,7 @@ describe('tabs-bar', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(0);
   });
 
-  it('should scroll to max scroll position on next click', async () => {
+  it('should scroll to max scroll-position on next click', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -235,7 +236,7 @@ describe('tabs-bar', () => {
     const gradient = await getGradientNext();
     const gradientWidth = await getProperty(gradient, 'offsetWidth');
     const scrollArea = await getScrollArea();
-    const scrollDistance = +selectedTabOffset - +gradientWidth;
+    const scrollDistance = +selectedTabOffset - +gradientWidth + FOCUS_PADDING;
 
     await waitForStencilLifecycle(page);
 
@@ -273,7 +274,7 @@ describe('tabs-bar', () => {
     await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab3offset = await getProperty(allButtons[4], 'offsetLeft');
-    const scrollDistanceRight = +tab3offset - +gradientWidth;
+    const scrollDistanceRight = +tab3offset - +gradientWidth + FOCUS_PADDING;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
     await allButtons[3].click();
