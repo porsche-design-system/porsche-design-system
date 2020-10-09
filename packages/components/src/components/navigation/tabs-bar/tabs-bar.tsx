@@ -259,7 +259,8 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.98 }
+        threshold: 0.98
+      }
     );
 
     intersectionObserver.observe(firstTab);
@@ -335,7 +336,7 @@ export class TabsBar {
 
     if (direction === 'next' && this.activeTabIndex < this.tabElements.length - 1) {
       // go to next tab
-      scrollPosition = activeTabElement.offsetLeft - gradientWidths[1];
+      scrollPosition = activeTabElement.offsetLeft - gradientWidths[1] + FOCUS_PADDING_WIDTH * 2;
     } else if (direction === 'prev' && this.activeTabIndex > 0) {
       // go to prev tab
       scrollPosition =
@@ -354,17 +355,19 @@ export class TabsBar {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[this.tabElements.length - 1];
-    const { offsetWidth: scrollAreaWidth,  scrollLeft: currentScrollPosition } = this.scrollAreaElement;
+    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[
+      this.tabElements.length - 1
+    ];
+    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.scrollAreaElement;
     const scrollToStep = Math.round(scrollAreaWidth * 0.2);
     const scrollToMin = 0;
-    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + (FOCUS_PADDING_WIDTH * 2);
+    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
 
     let scrollPosition: number;
 
     if (direction === 'next') {
       // Go to end of scroll-are when close to edge
-      if ((currentScrollPosition + scrollToStep * 2) > scrollToMax) {
+      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
         scrollPosition = scrollToMax;
       } else {
         scrollPosition = currentScrollPosition + scrollToStep;
