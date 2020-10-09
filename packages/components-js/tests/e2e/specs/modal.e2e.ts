@@ -98,7 +98,15 @@ describe('modal', () => {
       expect(calls).toBe(0);
     });
 
-    it('should not bubble close event', async () => {});
+    it('should not bubble close event', async () => {
+      let bodyCalls = 0;
+      await addEventListener(await selectNode(page, 'body'), 'close', () => bodyCalls++);
+      await page.mouse.click(5, 5);
+      await waitForStencilLifecycle(page);
+
+      expect(calls).toBe(1);
+      expect(bodyCalls).toBe(0);
+    });
   });
 
   describe('can be controlled via keyboard', () => {
