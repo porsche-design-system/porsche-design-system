@@ -28,13 +28,11 @@ export class Modal {
   private isClosedViaEnter = false;
 
   @Watch('open')
-  public openChangeHandler(val: boolean): void {
-    if (!this.disableEscapeKey) {
-      this.setKeyboardListener(val);
-    }
-    this.setScrollLock(val);
+  public openChangeHandler(isOpen: boolean): void {
+    this.setKeyboardListener(isOpen);
+    this.setScrollLock(isOpen);
 
-    if (val) {
+    if (isOpen) {
       this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
       this.isClosedViaEnter = false;
