@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  getActiveElementTagNameInShadowRoot,
   getBrowser,
   initAddEventListener,
   selectNode,
@@ -18,19 +19,19 @@ describe('modal', () => {
 
   const getModalHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
-  const getModalHeader = () => selectNode(page, 'p-modal >>> .p-modal__header');
-  const getModalFooter = () => selectNode(page, 'p-modal >>> .p-modal__footer');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
 
-  const initBasicModal = () =>
+  const initBasicModal = ({ isOpen }: { isOpen: boolean } = { isOpen: true }) =>
     setContentWithDesignSystem(
       page,
       `
-      <p-modal heading="Some Heading" open>
+      <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
         Some Content
         <p-modal-footer>Some Footer</p-modal-footer>
       </p-modal>`
     );
+
+  const openModal = async () => (await getModalHost()).evaluate((el) => el.setAttribute('open', ''));
 
   it('should render', async () => {
     await initBasicModal();
@@ -110,9 +111,20 @@ describe('modal', () => {
   });
 
   describe('can be controlled via keyboard', () => {
+    beforeEach(async () => {
+      await initBasicModal({ isOpen: false });
+      await openModal();
+    });
+
     it('should focus first focusable element', async () => {});
-    it('should focus close button when there is no focusable content element', async () => {});
+
+    it('should focus close button when there is no focusable content element', async () => {
+      const activeElementTagName = await getActiveElementTagNameInShadowRoot(await getModalHost());
+      expect(activeElementTagName).toBe('P-BUTTON-PURE');
+    });
+
     it('should focus nothing when there is no focusable element', async () => {});
+
     it('should cycle tab events within modal', async () => {});
   });
 });
