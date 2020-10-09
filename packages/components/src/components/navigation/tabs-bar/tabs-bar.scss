@@ -192,6 +192,7 @@
     position: absolute;
     top: 4px;
     display: flex;
+    transform: translate3d(0,0,0);
 
     &--prev {
       left: 0;
@@ -215,6 +216,7 @@
     bottom: -.5em;
     width: 2em;
     pointer-events: none;
+    transform: translate3d(0,0,0);
 
     &--prev {
       &#{$bem-block}__gradient--color-scheme-default {
