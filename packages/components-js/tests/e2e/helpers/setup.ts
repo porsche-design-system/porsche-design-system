@@ -8,6 +8,13 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 jasmine.getEnv().clearReporters();
 jasmine.getEnv().addReporter(new SpecReporter());
 
+// taken from: https://github.com/puppeteer/puppeteer/issues/6214
+declare module 'puppeteer' {
+  export interface Page {
+    waitForTimeout(duration: number): Promise<void>;
+  }
+}
+
 beforeAll(async () => {
   browser = await launch({
     headless: true,
