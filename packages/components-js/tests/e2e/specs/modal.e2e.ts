@@ -2,6 +2,7 @@ import {
   addEventListener,
   getActiveElementTagNameInShadowRoot,
   getBrowser,
+  getElementStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -33,9 +34,17 @@ describe('modal', () => {
 
   const openModal = async () => (await getModalHost()).evaluate((el) => el.setAttribute('open', ''));
 
-  it('should render', async () => {
+  it('should render and be visible', async () => {
     await initBasicModal();
     expect(await getModal()).not.toBeNull();
+    const visibility = await getElementStyle(await getModal(), 'visibility');
+    expect(visibility).toBe('visible');
+  });
+
+  it('should not be visible when not open', async () => {
+    await initBasicModal({ isOpen: false });
+    const visibility = await getElementStyle(await getModal(), 'visibility');
+    expect(visibility).toBe('hidden');
   });
 
   describe('can be closed', () => {
