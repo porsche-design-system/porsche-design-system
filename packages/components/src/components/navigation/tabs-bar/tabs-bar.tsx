@@ -257,7 +257,9 @@ export class TabsBar {
           }
         }
       },
-      { threshold: 1 }
+      {
+        root: this.host,
+        threshold: 0.98 }
     );
 
     intersectionObserver.observe(firstTab);
