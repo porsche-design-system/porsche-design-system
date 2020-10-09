@@ -23,7 +23,7 @@ export class Banner {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the close button is clicked. */
-  @Event() public dismiss?: EventEmitter<void>;
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private closeButton: HTMLButtonElement;
 
