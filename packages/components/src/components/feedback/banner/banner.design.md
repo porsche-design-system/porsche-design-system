@@ -88,6 +88,10 @@ are displayed at the bottom of the screen.
 The Banner component is positioned fixed above the page content by default.
 
 
+![Banner position](./assets/feedback-banner-position-do.png)
+
+
+
 ![Banner position](./assets/feedback-banner-position.png)
 
 
