@@ -211,10 +211,9 @@ export class TabsBar {
   };
 
   private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
-    const statusBarWidth = activeTabElement ? pxToRem(activeTabElement.offsetWidth + 'px') : 0;
-    const statusBarPositionLeft =
-      activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(activeTabElement?.offsetLeft + 'px') : 0;
-    return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth} `;
+    const statusBarWidth = activeTabElement ? pxToRem(`${activeTabElement.offsetWidth}px`) : 0;
+    const statusBarPositionLeft = activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(`${activeTabElement?.offsetLeft}px`) : 0;
+    return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
   };
 
   private defineHTMLElements = (): void => {

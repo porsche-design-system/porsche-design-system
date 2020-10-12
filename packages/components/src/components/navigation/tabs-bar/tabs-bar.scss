@@ -184,7 +184,8 @@
     }
 
     &--enable-transition {
-      transition: transform $p-tabs-transition-duration;
+      will-change: width;
+      transition: transform $p-tabs-transition-duration, width $p-tabs-transition-duration;
     }
   }
 
