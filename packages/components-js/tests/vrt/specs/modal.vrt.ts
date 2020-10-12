@@ -1,36 +1,21 @@
 import { getVisualRegressionTester, testOptions } from '../helpers';
+import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 
 describe('Modal', () => {
-  it('should have no visual regression', async () => {
-    const vrt = getVisualRegressionTester();
-    expect(
-      await vrt.test(
-        'modal-basic',
-        async () => {
-          await vrt.goTo('/#modal-basic');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+  let vrt: VisualRegressionTester;
 
-    expect(
-      await vrt.test(
-        'modal-footer',
-        async () => {
-          await vrt.goTo('/#modal-footer');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+  beforeAll(() => {
+    vrt = getVisualRegressionTester();
+  });
 
-    expect(
-      await vrt.test(
-        'modal-scrollable',
-        async () => {
-          await vrt.goTo('/#modal-scrollable');
-        },
-        testOptions
-      )
-    ).toBeFalsy();
+  it('should have no visual regression for basic modal', async () => {
+    expect(await vrt.test('modal-basic', () => vrt.goTo('/#modal-basic'), testOptions)).toBeFalsy();
+  });
+  it('should have no visual regression for footer modal', async () => {
+    expect(await vrt.test('modal-footer', () => vrt.goTo('/#modal-footer'), testOptions)).toBeFalsy();
+  });
+
+  it('should have no visual regression for scrollable modal', async () => {
+    expect(await vrt.test('modal-scrollable', () => vrt.goTo('/#modal-scrollable'), testOptions)).toBeFalsy();
   });
 });
