@@ -13,6 +13,7 @@ export const ModalScrollablePage = (): JSX.Element => {
   const style = `
     .playground {
       height: 500px;
+      padding: 0;
     }
   `;
 
