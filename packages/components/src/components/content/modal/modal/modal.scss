@@ -61,76 +61,44 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     max-width: 50%;
   }
 
-  &--open {
-    transform: scale3d(1, 1, 1);
-  }
-
   &__header {
-    position: relative;
-    padding: p-px-to-rem(32px) p-px-to-rem(40px) p-px-to-rem(24px);
-    background-color: red;
+    display: flex;
+    padding: p-px-to-rem(16px);
 
-    @include p-media-query('xs') {
-      padding: p-px-to-rem(32px) p-px-to-rem(48px) p-px-to-rem(24px);
-    }
     @include p-media-query('s') {
-      padding: p-px-to-rem(40px) p-px-to-rem(56px) p-px-to-rem(24px);
-    }
-    @include p-media-query('l') {
-      padding: p-px-to-rem(56px) p-px-to-rem(72px) p-px-to-rem(24px);
-    }
-
-    &--closable {
-      padding-right: p-px-to-rem(60px);
-
-      @include p-media-query('xs') {
-        padding-right: p-px-to-rem(68px);
-      }
-
-      @include p-media-query('s') {
-        padding-right: p-px-to-rem(76px);
-      }
-
-      @include p-media-query('l') {
-        padding-right: p-px-to-rem(92px);
-      }
+      padding: p-px-to-rem(32px);
     }
   }
 
   &__body {
+    padding: 0 p-px-to-rem(16px);
     overflow-y: scroll;
-    background-color: orange;
 
     &:first-child {
-      padding-top: p-px-to-rem(24px);
+      padding-top: p-px-to-rem(16px);
     }
     &:last-child {
       padding-bottom: p-px-to-rem(24px);
     }
-  }
 
-  &__body,
-  &__footer {
-    padding: 0 p-px-to-rem(40px);
-
-    @include p-media-query('xs') {
-      padding-left: p-px-to-rem(48px);
-      padding-right: p-px-to-rem(48px);
-    }
     @include p-media-query('s') {
-      padding-left: p-px-to-rem(56px);
-      padding-right: p-px-to-rem(56px);
-    }
-    @include p-media-query('l') {
-      padding-left: p-px-to-rem(72px);
-      padding-right: p-px-to-rem(72px);
+      padding: 0 p-px-to-rem(32px);
+
+      &:first-child {
+        padding-top: p-px-to-rem(32px);
+      }
+      &:last-child {
+        padding-bottom: p-px-to-rem(32px);
+      }
     }
   }
 
   &__footer {
-    padding-top: p-px-to-rem(24px);
-    padding-bottom: p-px-to-rem(32px);
-    background-color: blue;
+    padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(24px);
+
+    @include p-media-query('s') {
+      padding: p-px-to-rem(32px);
+    }
 
     &--scrollable {
       padding-left: 0;
@@ -140,8 +108,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   &__close {
-    position: absolute;
-    right: p-px-to-rem(32px);
-    top: p-px-to-rem(32px);
+    margin-left: auto;
+    padding-left: p-px-to-rem(8px);
   }
 }
