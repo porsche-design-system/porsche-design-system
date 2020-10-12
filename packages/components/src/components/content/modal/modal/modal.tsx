@@ -80,8 +80,6 @@ export class Modal {
     const btnCloseClasses = prefix('modal__close');
 
     const ariaLabelledBy = this.heading && 'modal-title';
-    const ariaDescribedBy = 'modal-body';
-
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
 
     const footer = this.isFooterDefined && (
@@ -92,13 +90,7 @@ export class Modal {
 
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
-        <aside
-          class={rootClasses}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={ariaLabelledBy}
-          aria-describedby={ariaDescribedBy}
-        >
+        <aside class={rootClasses} role="dialog" aria-modal="true" aria-labelledby={ariaLabelledBy}>
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
@@ -122,7 +114,7 @@ export class Modal {
             </header>
           )}
 
-          <div class={bodyClasses} id={ariaDescribedBy}>
+          <div class={bodyClasses}>
             <slot />
             {this.isFooterScrollable && footer}
           </div>
