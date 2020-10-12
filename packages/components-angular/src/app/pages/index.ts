@@ -16,6 +16,7 @@ import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
 import { ModalFooterComponent } from './modal-footer.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
+import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { SpinnerComponent } from './spinner.component';
@@ -44,6 +45,7 @@ export const pages = [
   ModalBasicComponent,
   ModalFooterComponent,
   ModalScrollableComponent,
+  ModalPrefixedComponent,
   OverviewComponent,
   PaginationComponent,
   RadioButtonWrapperComponent,
@@ -73,6 +75,7 @@ export * from './marque.component';
 export * from './modal-basic.component';
 export * from './modal-footer.component';
 export * from './modal-scrollable.component';
+export * from './modal-prefixed.component';
 export * from './overview.component';
 export * from './pagination.component';
 export * from './radio-button-wrapper.component';
