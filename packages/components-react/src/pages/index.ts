@@ -15,6 +15,7 @@ export * from './Marque';
 export * from './ModalBasic';
 export * from './ModalFooter';
 export * from './ModalScrollable';
+export * from './ModalPrefixed';
 export * from './Overview';
 export * from './Pagination';
 export * from './RadioButtonWrapper';
