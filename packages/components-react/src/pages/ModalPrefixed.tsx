@@ -13,6 +13,7 @@ export const ModalPrefixedPage = (): JSX.Element => {
   const style = `
     .playground {
       height: 500px;
+      padding: 0;
     }
   `;
 
