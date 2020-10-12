@@ -170,11 +170,5 @@ The background and gradient has to align to your chosen background.
     public size: string = 'medium';
     public gradientColorScheme: string = 'surface';
     public activeTabIndex: number = 0;
-    
-    public mounted(): void {
-      this.$refs["some-tabs-bar"].addEventListener('tabChange', (e) => {
-        this.activeTabIndex = e.detail.activeTabIndex;
-      });
-    }
   }
 </script>
