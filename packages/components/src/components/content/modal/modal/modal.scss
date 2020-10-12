@@ -42,14 +42,15 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   transform: scale3d(0.9, 0.9, 1);
 
   @include p-media-query('s') {
-    $margin: calc();
     max-height: 65vh;
+
     // width = 100% - 2 grid margin - 2 columns
     max-width: calc(100vw - 2 * 7vw - 2 * #{p-px-to-rem(24px)} - 2 * 8.333333%);
   }
 
   @include p-media-query('l') {
     max-height: 80vh;
+
     // width = 100% - 2 grid margins - 4 columns
     max-width: calc(100vw - 2 * 7vw - 4 * #{p-px-to-rem(36px)} - 4 * 8.333333%);
   }
