@@ -98,6 +98,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Scrollable'
   },
   {
+    path: 'modal-prefixed',
+    component: fromPages.ModalPrefixedComponent,
+    name: 'Modal Prefixed'
+  },
+  {
     path: 'overview',
     component: fromPages.OverviewComponent,
     name: 'Overview'

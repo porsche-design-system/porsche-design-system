@@ -18,4 +18,8 @@ describe('Modal', () => {
   it('should have no visual regression for scrollable modal', async () => {
     expect(await vrt.test('modal-scrollable', () => vrt.goTo('/modal-scrollable'), testOptions)).toBeFalsy();
   });
+
+  it('should have no visual regression for prefixed modal', async () => {
+    expect(await vrt.test('modal-prefixed', () => vrt.goTo('/modal-prefixed'), testOptions)).toBeFalsy();
+  });
 });
