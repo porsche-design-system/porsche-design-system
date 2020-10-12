@@ -68,10 +68,7 @@ export class Modal {
   public render(): JSX.Element {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = prefix('modal');
-    const headerClasses = {
-      [prefix('modal__header')]: true,
-      [prefix('modal__header--closable')]: !this.disableCloseButton
-    };
+    const headerClasses = prefix('modal__header');
     const bodyClasses = prefix('modal__body');
     const footerClasses = {
       [prefix('modal__footer')]: true,
