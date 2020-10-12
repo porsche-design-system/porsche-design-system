@@ -77,7 +77,7 @@ p-banner {
 
 <style lang="scss">
   .code p-banner {
-    --p-banner-position-type: fixed;
+    --p-banner-position-type: static;
   }
 </style>
 

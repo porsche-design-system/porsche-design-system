@@ -10,7 +10,7 @@ Banner are used to provide action-based feedback messages (e.g. after performing
 
 Use error Banners to inform users something critical has happened and requires immediate attention.
 
-<p-banner state="error" width="fluid" style="margin-top: 40px; display: block;">
+<p-banner state="error" width="fluid" class="p-banner-custom" style="margin-top: 40px; display: block;">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>
@@ -19,7 +19,7 @@ Use error Banners to inform users something critical has happened and requires i
 
 Use warning Banners when you want the user to take a specific action or to warn them that something is about to go wrong.
 
-<p-banner state="warning" width="fluid" style="margin-top: 40px; display: block;">
+<p-banner state="warning" width="fluid" class="p-banner-custom" style="margin-top: 40px; display: block;">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>
@@ -28,7 +28,7 @@ Use warning Banners when you want the user to take a specific action or to warn 
 
 Use neutral Banners to make a general announcement.
 
-<p-banner state="neutral" width="fluid" style="margin-top: 40px; display: block;">
+<p-banner state="neutral" width="fluid" class="p-banner-custom" style="margin-top: 40px; display: block;">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>
@@ -43,7 +43,7 @@ Use neutral Banners to make a general announcement.
 
 By default, a Banner will dismiss when the user clicks the “x” close button.
 
-<p-banner state="neutral" width="fluid" style="margin-top: 40px; display: block;">
+<p-banner state="neutral" width="fluid" class="p-banner-custom" style="margin-top: 40px; display: block;">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>
@@ -54,7 +54,7 @@ By default, a Banner will dismiss when the user clicks the “x” close button.
 Persistent Alerts are similar to the Feedback Banner but represent the highest level of importance.
 These Banners are reserved for issues like compliance and system errors. As such, they are persistent until the issue is resolved.
 
-<p-banner persistent="true" width="fluid" style="margin-top: 40px; display: block;">
+<p-banner persistent="true" width="fluid" class="p-banner-custom" style="margin-top: 40px; display: block;">
   <span slot="title">Some banner title</span>
   <span slot="description">Some banner description.</span>
 </p-banner>
@@ -96,7 +96,7 @@ The Banner component is positioned fixed above the page content by default.
 
 
 <style lang="scss">
-  p-banner {
+  .p-banner-custom {
     --p-banner-position-type: static;
   }
 </style>
