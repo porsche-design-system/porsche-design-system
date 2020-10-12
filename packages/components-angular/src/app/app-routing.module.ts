@@ -83,9 +83,19 @@ export const routes: ExtendedRoute[] = [
     name: 'Marque'
   },
   {
-    path: 'modal',
-    component: fromPages.ModalComponent,
-    name: 'Modal'
+    path: 'modal-basic',
+    component: fromPages.ModalBasicComponent,
+    name: 'Modal Basic'
+  },
+  {
+    path: 'modal-footer',
+    component: fromPages.ModalFooterComponent,
+    name: 'Modal Footer'
+  },
+  {
+    path: 'modal-scrollable',
+    component: fromPages.ModalScrollableComponent,
+    name: 'Modal Scrollable'
   },
   {
     path: 'overview',
