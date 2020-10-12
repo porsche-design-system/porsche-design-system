@@ -7,6 +7,7 @@ import {
 } from '../../../utils';
 import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
 type ActionState = {
@@ -210,9 +211,10 @@ export class TabsBar {
   };
 
   private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
-    const statusBarWidth = activeTabElement?.offsetWidth || 0;
-    const statusBarPositionLeft = activeTabElement?.offsetLeft + statusBarWidth / 2 || 0;
-    return `transform: matrix3d(${statusBarWidth}, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${statusBarPositionLeft}, 0, 0, 1)`;
+    const statusBarWidth = activeTabElement ? pxToRem(activeTabElement.offsetWidth + 'px') : 0;
+    const statusBarPositionLeft =
+      activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(activeTabElement?.offsetLeft + 'px') : 0;
+    return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth} `;
   };
 
   private defineHTMLElements = (): void => {
