@@ -9,6 +9,11 @@ body {
   padding: 0;
 }
 
+body > select {
+  position: relative;
+  z-index: 999999;
+}
+
 .playground {
   padding: 1rem;
 }

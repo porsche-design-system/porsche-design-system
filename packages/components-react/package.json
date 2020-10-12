@@ -12,6 +12,7 @@
     "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
     "build:components:cjs": "tsc --build './projects/components-wrapper/tsconfig.cjs.json'",
     "build:mocks": "tsc --build './projects/components-wrapper/tsconfig.mocks.json'",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "yarn test:mocks && yarn test:vrt && yarn test:cbt",
     "test:mocks": "yarn test:mocks:js && yarn test:mocks:ts",
     "test:mocks:js": "jest -c tests/mocks/config/jest.config-js.js",
