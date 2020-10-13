@@ -6,7 +6,7 @@ import {
   prefix
 } from '../../../utils';
 import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
-import { getHTMLElements } from '../../../utils/selector-helper';
+import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
@@ -83,7 +83,6 @@ export class TabsBar {
     this.scrollActiveTabIntoView();
     this.addEventListeners();
     this.initIntersectionObserver();
-    this.enableTransitions();
   }
 
   public disconnectedCallback(): void {
@@ -116,9 +115,9 @@ export class TabsBar {
     return (
       <div class={tabsNavClasses}>
         <div class={scrollAreaClasses} role="tablist">
-          <div class={scrollWrapperClasses} ref={(el) => (this.scrollAreaElement = el)}>
+          <div class={scrollWrapperClasses}>
             <slot />
-            <span class={statusBarClasses} ref={(el) => (this.statusBarElement = el)} />
+            <span class={statusBarClasses} />
           </div>
         </div>
         {this.renderPrevNextButton('prev')}
@@ -212,11 +211,17 @@ export class TabsBar {
 
   private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
     const statusBarWidth = activeTabElement ? pxToRem(`${activeTabElement.offsetWidth}px`) : 0;
-    const statusBarPositionLeft = activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(`${activeTabElement?.offsetLeft}px`) : 0;
+    if (activeTabElement.offsetWidth > 0) {
+      this.enableTransitions();
+    }
+    const statusBarPositionLeft =
+      activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(`${activeTabElement?.offsetLeft}px`) : 0;
     return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
   };
 
   private defineHTMLElements = (): void => {
+    this.statusBarElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
+    this.scrollAreaElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.gradientElements = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`);
   };
 
