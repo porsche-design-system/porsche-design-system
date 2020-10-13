@@ -533,13 +533,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Modal: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.design.md`)
+        () => import(`@/../../components/src/components/content/modal/modal.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.code.md`)
+        () => import(`@/../../components/src/components/content/modal/modal.usage.md`)
       ],
       Props: [
         // @ts-ignore
