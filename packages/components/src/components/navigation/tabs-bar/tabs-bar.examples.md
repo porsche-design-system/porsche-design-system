@@ -43,25 +43,25 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 
 ## Accessibility
 
-The `<p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tab-index` and `aria-selected` on the tabs inside the component.
+The `<p-tabs-bar>` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
-To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute with a unique id. The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby`
-which gets the same unique id as the according tab (`aria-controls`).
+To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
+The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
 ```html
 <p-tabs-bar>
-  <button type="button" aria-controls="tab-panel-1">Tab One</button>
-  <button type="button" aria-controls="tab-panel-2">Tab Two</button>
-  <button type="button" aria-controls="tab-panel-3">Tab Three</button>
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
+  <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
 </p-tabs-bar>
 
-<div role="tabpanel" aria-labelledby="tab-panel-1">
+<div id="tab-panel-1" role="tabpanel" aria-labelledby="tab-item-1">
   <p-text>Your content of Tab 1</p-text> 
 </div>
-<div role="tabpanel" aria-labelledby="tab-panel-2">
+<div id="tab-panel-2" role="tabpanel" aria-labelledby="tab-item-2">
   <p-text>Your content of Tab 2</p-text>
 </div>
-<div role="tabpanel" aria-labelledby="tab-panel-3">
+<div id="tab-panel-3" role="tabpanel" aria-labelledby="tab-item-3">
   <p-text>Your content of Tab 3</p-text>
 </div>
 ```
