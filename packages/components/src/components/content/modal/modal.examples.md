@@ -35,7 +35,7 @@ A Modal Dialog is a temporary overlay that takes focus from the page and require
 
 <Playground>
   <p-button @click="openModal(2)">Open Modal</p-button>
-  <p-modal :open="isOpen(2)" v-on:close="closeModal(4)">
+  <p-modal :open="isOpen(2)" v-on:close="closeModal(2)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
@@ -44,7 +44,7 @@ A Modal Dialog is a temporary overlay that takes focus from the page and require
 
 <Playground>
   <p-button @click="openModal(3)">Open Modal</p-button>
-  <p-modal heading="Some Heading" disable-close-button :open="isOpen(3)" v-on:close="closeModal(5)">
+  <p-modal heading="Some Heading" disable-close-button :open="isOpen(3)" v-on:close="closeModal(3)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
