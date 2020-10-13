@@ -1,15 +1,15 @@
-# Modal
+# Modal Dialog
 
 A Modal Dialog is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
 
 ## Basic
 
 `p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
-This grants you flexible control over the modal's behavior especially whether it should stay open after user interaction like submission of a form.
+This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
-The most important property of `p-modal` is its `open` attribute.  When it is present the modal will be visible.
+The most important property of `p-modal` is its `open` attribute.  When it is present the Modal Dialog will be visible.
   
-In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
+In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
 
 ```
 modal.addEventListener('close', () => {
@@ -32,7 +32,7 @@ Nesting `p-modal-footer` within a `p-modal` give you the opportunity to display 
 
 ## Basic Scrollable
 
-If the modal's content doesn't fit into the current boundaries the content becomes scrollable while heading, close button and `p-modal-footer` stay at an absolute position.
+If the Modal's content doesn't fit into the current boundaries the content becomes scrollable while heading, close button and `p-modal-footer` stay at an absolute position.
 
 <Playground>
   <p-button @click="openModal(1)">Open Modal</p-button>
@@ -64,8 +64,8 @@ Passing a `heading` to the modal is optional.
 ## Without Close Button
 
 It is possible to not render the close button by setting the `disable-close-button` attribute.  
-At the same time this also deactivates closing the modal by pressing `Escape`.  
-If you want to disable closing the modal by clicking the backdrop, you can set the `disable-backdrop-click` attribute.
+At the same time this also deactivates closing the Modal by pressing `Escape`.  
+If you want to disable closing the Modal by clicking the backdrop, you can set the `disable-backdrop-click` attribute.
 
 <Playground>
   <p-button @click="openModal(3)">Open Modal</p-button>
