@@ -420,10 +420,6 @@ export namespace Components {
          */
         "disableCloseButton"?: boolean;
         /**
-          * If true, the modal will not be closable via Escape key.
-         */
-        "disableEscapeKey"?: boolean;
-        /**
           * The title of the modal
          */
         "heading"?: string;
@@ -1241,10 +1237,6 @@ declare namespace LocalJSX {
           * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
-        /**
-          * If true, the modal will not be closable via Escape key.
-         */
-        "disableEscapeKey"?: boolean;
         /**
           * The title of the modal
          */
