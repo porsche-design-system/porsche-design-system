@@ -1,45 +1,22 @@
 # Modal
 
-A Modal Dialog is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
+---
+
+## When to use
+
+  • XY
 
 ---
 
-## Types
+## Variants
 
-### 1. Basic
-By default, modals have a title and can be closed by clicking on the “x” in the upper right hand corner of the container.
+| Variant | Usage |
+|----|----|
+| Basic | By default, modals have a title and can be closed by clicking on the “x” in the upper right hand corner of the container. |
+| Without close icon | Blindtext |
+| Without title | Blindtext |
+| Without title and close icon | Blindtext |
 
-  <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
-    <p-text>Some Content</p-text>
-    <p-button @click="closeModal(0)">Close</p-button>
-  </p-modal>
-
-  !!! Update Code !!!
-
-
-### 2. Without close icon
-
-  <p-modal heading="Some Heading" disable-close-button :open="isOpen(5)" v-on:close="closeModal(5)">
-    <p-text>Some Content</p-text>
-  </p-modal>
-
-    !!! Update Code !!!
-
-### 3. Without title
-
-  <p-modal :open="isOpen(4)" v-on:close="closeModal(4)">
-    <p-text>Some Content</p-text>
-  </p-modal>
-
-    !!! Update Code !!!
-
-### 4. Without title and close icon
-
-  <p-modal disable-close-button :open="isOpen(6)" v-on:close="closeModal(6)">
-    <p-text>Some Content</p-text>
-  </p-modal>
-
-    !!! Update Code !!!
 
 ---
 
@@ -68,7 +45,7 @@ A typical Modal Dialog in Porsche web applications is made up of five basic elem
 
 ---
 
-## Usage
+## Behavior
 
 ### Overlay
 For the background overlay is used the background shading to provide the feeling of a third dimensional layer. 
@@ -90,7 +67,7 @@ Within a Model Dialog are multiple ways to dismiss a modal but a user needs to i
 
 ---
 
-## Don'ts
+## Do’s & Don’ts
 
 ### Don't use more than two buttons
 There should be no more than 2 actions and no fewer than 1. Actions should always be located within an action bar at the bottom of the modal. 
@@ -107,29 +84,3 @@ Modals shouldn’t launch other modals. Stacking modals makes it hard to dismiss
 Avoid multiple steps that require navigation within the modal dialog.
 
 ![Multiple steps](./assets/modal-multiple-steps.png)
-
-<script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  
-  @Component
-  export default class PlaygroundModal extends Vue {
-    private modalState: {[key: number]: boolean} = {};
-    
-    private mounted() {
-      this.modalState = { ...Array.from(Array(document.querySelectorAll('.playground').length)) };
-    }
-    
-    public isOpen(index: number): boolean {
-      return this.modalState[index];
-    }
-    
-    public openModal(index: number): void {
-      this.modalState[index] = true;
-    }
-    
-    public closeModal(index: number): void {
-      this.modalState[index] = false;
-    }
-  }
-</script>

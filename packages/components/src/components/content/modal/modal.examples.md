@@ -1,5 +1,7 @@
 # Modal
 
+A Modal Dialog is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
+
 ## Basic
 
 <Playground>
