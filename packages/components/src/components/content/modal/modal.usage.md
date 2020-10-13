@@ -1,10 +1,9 @@
 # Modal
 
----
-
 ## When to use
 
-  • XY
+  • When you want to show additional information to the user without losing context of the parent page.  
+  • Use a modal dialog where you need to ask for confirmation from the user before doing a lengthy or dangerous action.
 
 ---
 
@@ -13,37 +12,10 @@
 | Variant | Usage |
 |----|----|
 | Basic | By default, modals have a title and can be closed by clicking on the “x” in the upper right hand corner of the container. |
-| Without close icon | Blindtext |
-| Without title | Blindtext |
-| Without title and close icon | Blindtext |
+| Without close icon | The modal dialog without close “x” will dont close the dialog without any interaction. |
+| Without title | If the context is short and clear, the title can be skipped to avoid duplication. |
+| Without title and close icon | For descriptive content and the need to close the modal with a interaction. |
 
-
----
-
-## Modal Dialog DNA
-
-A typical Modal Dialog in Porsche web applications is made up of five basic elements:
-
-1. **Background Shading**  
-  The background shading covers the underlying content while providing focus to the information being served in the Modal Dialog. 
-
-2. **Title**  
-  Reinforces context from the initial trigger on page while providing an overview of the modal.
-
-3. **Container**  
-  As implied, this is where the contents of the modal dialogue such as text, inputs and buttons are held.
-
-4. **Content**  
-  A concise description or simple action a user must address. If multiple steps are required, use a whole page instead.
-
-5. **Footer**  
-  Contains the primary action of the modal. All modals should have a CTA. These actions should speak to and reinforce completing the action they are being asked to complete.
-
-
-![Modal Dialog anatomy](./assets/overlay-modal-dialog-anatomy.png)
-
-
----
 
 ## Behavior
 
@@ -61,7 +33,7 @@ long list of items, consider a different solution, such as a form or a table.
 ### Attention
 Modals are disruptive. Only use modals when you need the user’s full attention for the period of time the modal is displayed.
 
-### Close !!! TBD !!!
+### Close
 Modals are not dismissed when clicking on the background overlay. This prevents losing information or data. 
 Within a Model Dialog are multiple ways to dismiss a modal but a user needs to intentionally make that choice.
 
@@ -70,10 +42,10 @@ Within a Model Dialog are multiple ways to dismiss a modal but a user needs to i
 ## Do’s & Don’ts
 
 ### Don't use more than two buttons
-There should be no more than 2 actions and no fewer than 1. Actions should always be located within an action bar at the bottom of the modal. 
+There should be no more than 3 actions and no fewer than 1. Actions should always be located within an action bar at the bottom of the modal. 
 Button order and positioning should follow our guidelines for [Buttons](#/patterns/buttons).
 
-![Usage Buttons](./assets/modal-dialog-more-than-two-buttons.png)
+![Usage Buttons](./assets/modal-dialog-more-than-three-buttons.png)
 
 ### Stacking modals
 Modals shouldn’t launch other modals. Stacking modals makes it hard to dismiss them and confuses the user on their levels of importance.
