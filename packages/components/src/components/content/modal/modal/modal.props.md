@@ -11,7 +11,6 @@
 | ---------------------- | ------------------------ | ----------------------------------------------------------- | --------- | ----------- |
 | `disableBackdropClick` | `disable-backdrop-click` | If true, the modal will not be closable via backdrop click. | `boolean` | `false`     |
 | `disableCloseButton`   | `disable-close-button`   | If true, the modal will not have a close button.            | `boolean` | `false`     |
-| `disableEscapeKey`     | `disable-escape-key`     | If true, the modal will not be closable via Escape key.     | `boolean` | `false`     |
 | `heading`              | `heading`                | The title of the modal                                      | `string`  | `undefined` |
 | `open`                 | `open`                   | If true, the modal is open.                                 | `boolean` | `false`     |
 

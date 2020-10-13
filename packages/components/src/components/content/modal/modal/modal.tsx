@@ -15,8 +15,6 @@ export class Modal {
   @Prop() public disableCloseButton?: boolean = false;
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
-  /** If true, the modal will not be closable via Escape key. */
-  @Prop() public disableEscapeKey?: boolean = false;
   /** The title of the modal */
   @Prop() public heading?: string;
   /** Emitted when the component requests to be closed. */
@@ -52,7 +50,7 @@ export class Modal {
   }
 
   public connectedCallback(): void {
-    if (this.open && !this.disableEscapeKey) {
+    if (this.open) {
       this.setKeyboardListener(true);
     }
   }
@@ -149,7 +147,7 @@ export class Modal {
 
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
-    if (!this.disableEscapeKey && (key === 'Esc' || key === 'Escape')) {
+    if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
     } else if (key === 'Enter' && this.closeBtn === this.host.shadowRoot.activeElement) {
       this.isClosedViaEnter = true;
