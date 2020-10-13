@@ -1,14 +1,8 @@
-import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
 describe('Story', () => {
-  let vrt: VisualRegressionTester;
-
-  beforeAll(() => {
-    vrt = getVisualRegressionTester();
-  });
-
   it('should have no visual regression', async () => {
+    const vrt = getVisualRegressionTester();
     expect(
       await vrt.test(
         'story',
@@ -16,7 +10,7 @@ describe('Story', () => {
           await vrt.goTo('/#/components/pagination#code');
           await vrt.click('.playground:nth-of-type(1) > p-tabs-bar > button:nth-of-type(2)');
         },
-        { elementSelector: '#app > .content > .main > .router-view' }
+        { elementSelector: '#app > .main > .router-view' }
       )
     ).toBeFalsy();
   });
