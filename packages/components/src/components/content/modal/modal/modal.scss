@@ -93,12 +93,6 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     @include p-media-query('s') {
       padding: p-px-to-rem(32px);
     }
-
-    &--scrollable {
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-    }
   }
 
   &__close {

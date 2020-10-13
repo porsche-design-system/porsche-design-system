@@ -68,10 +68,7 @@ export class Modal {
     const rootClasses = prefix('modal');
     const headerClasses = prefix('modal__header');
     const bodyClasses = prefix('modal__body');
-    const footerClasses = {
-      [prefix('modal__footer')]: true,
-      [prefix('modal__footer--scrollable')]: this.isFooterScrollable
-    };
+    const footerClasses = prefix('modal__footer');
     const btnCloseClasses = prefix('modal__close');
 
     const ariaLabelledBy = this.heading && 'modal-title';
