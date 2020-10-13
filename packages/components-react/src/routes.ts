@@ -108,6 +108,16 @@ export const routes: RouteType[] = [
     component: fromPages.SpinnerPage
   },
   {
+    name: 'Tabs',
+    path: '/tabs',
+    component: fromPages.TabsPage
+  },
+  {
+    name: 'Tabs Bar',
+    path: '/tabs-bar',
+    component: fromPages.TabsBarNavPage
+  },
+  {
     name: 'Text',
     path: '/text',
     component: fromPages.TextPage
