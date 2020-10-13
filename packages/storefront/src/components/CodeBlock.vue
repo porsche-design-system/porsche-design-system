@@ -1,40 +1,10 @@
 <template>
   <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
-    <div class="tabs" role="tablist" :class="{ light: theme === 'light', dark: theme === 'dark' }">
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isVanillaJS ? 'true' : 'false'"
-          :class="{ 'is-active': isVanillaJS }"
-          @click="updateFramework('vanilla-js')"
-        >
-          Vanilla JS
-        </button>
-      </p-text>
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isAngular ? 'true' : 'false'"
-          :class="{ 'is-active': isAngular }"
-          @click="updateFramework('angular')"
-        >
-          Angular
-        </button>
-      </p-text>
-      <p-text class="tab" tag="div" color="inherit">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="isReact ? 'true' : 'false'"
-          :class="{ 'is-active': isReact }"
-          @click="updateFramework('react')"
-        >
-          React
-        </button>
-      </p-text>
-    </div>
+    <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
+      <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
+        {{ frameWork }}
+      </button>
+    </p-tabs-bar>
     <pre><code v-html="formattedMarkup"></code></pre>
   </div>
 </template>
@@ -43,7 +13,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import * as Prism from 'prismjs';
+  import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import { html } from 'js-beautify';
   import { camelCase, upperFirst } from 'lodash';
@@ -54,16 +24,18 @@
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
 
+    frameWorks: { [key in Framework]: string } = {
+      'vanilla-js': 'Vanilla JS',
+      angular: 'Angular',
+      react: 'React'
+    };
+
+    public get activeTabIndex(): number {
+      return Object.keys(this.frameWorks).indexOf(this.framework);
+    }
+
     public get framework(): Framework {
       return this.$store.getters.selectedFramework;
-    }
-
-    get isVanillaJS(): boolean {
-      return this.framework === 'vanilla-js';
-    }
-
-    get isAngular(): boolean {
-      return this.framework === 'angular';
     }
 
     get isReact(): boolean {
@@ -97,11 +69,11 @@
           // remove empty comments
           .replace(/<!---->/g, '')
           // remove all attributes added by Vue JS
-          .replace(/data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
+          .replace(/ data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
           // remove all class values added by Stencil JS
-          .replace(/class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
+          .replace(/ class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
             if (/\S/.test($1) || /\S/.test($2)) {
-              return 'class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
+              return ' class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
             }
             return '';
           })
@@ -115,8 +87,12 @@
           .replace(/<([\w-]+)(.*)>\n<\/\1>/g, '<$1$2></$1>')
           // remove multiple new lines
           .replace(/\n{3,}/g, '\n\n')
-          // clean checked, disabled and readonly attributes
-          .replace(/(checked|disabled|readonly)="\1"/g, '$1')
+          // clean checked, disabled, readonly and selected attributes
+          .replace(/(checked|disabled|readonly|selected)="\1?"/g, '$1')
+          // clean various attributes that are set by component code
+          .replace(/ (hidden|role|id|tabindex|aria-selected)=".*?"/g, '')
+          // clean aria-labelledby attributes that are set by tabs component
+          .replace(/ (aria-labelledby)="p-tab-item-\d"/g, '')
       );
     }
 
@@ -189,6 +165,14 @@
           .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
             return `</${upperFirst(camelCase($tag))}>`;
           })
+          // transform style attributes
+          .replace(
+            /style="(.*?)"/g,
+            (m, $style: string) =>
+              `style={{ ${$style
+                .replace(/;/g, ',') // transform semi colons to comma
+                .replace(/,$/g, '')} }}` // remove last comma
+          )
       );
     }
 
@@ -197,11 +181,7 @@
     }
 
     private highlight(markup: string): string {
-      if (this.isReact) {
-        return Prism.highlight(markup, Prism.languages.jsx, 'language-jsx');
-      }
-
-      return Prism.highlight(markup, Prism.languages.markup, 'markup');
+      return highlight(markup, languages[this.isReact ? 'jsx' : 'markup'], this.isReact ? 'language-jsx' : 'markup');
     }
   }
 </script>
@@ -212,10 +192,6 @@
 
   .code-block {
     &.light {
-      .tabs {
-        color: $p-color-theme-light-default;
-      }
-
       code,
       pre {
         color: $p-color-theme-light-default;
@@ -223,8 +199,6 @@
       }
 
       pre {
-        border-color: $p-color-theme-light-neutral-contrast-medium;
-
         code ::v-deep {
           .token.comment,
           .token.prolog,
@@ -285,10 +259,6 @@
     }
 
     &.dark {
-      .tabs {
-        color: $p-color-theme-dark-default;
-      }
-
       code,
       pre {
         color: $p-color-theme-dark-default;
@@ -296,8 +266,6 @@
       }
 
       pre {
-        border-color: $p-color-theme-dark-neutral-contrast-medium;
-
         code ::v-deep {
           .token.comment,
           .token.prolog,
@@ -352,56 +320,6 @@
     }
   }
 
-  .tabs {
-    display: flex;
-
-    .tab {
-      &:not(:last-child) {
-        margin-right: $p-spacing-16;
-      }
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        font: inherit;
-        color: inherit;
-        background-color: transparent;
-        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-        &:hover {
-          color: $p-color-theme-light-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-light-state-focus;
-          outline-offset: 4px;
-        }
-
-        &.is-active {
-          cursor: default;
-          color: $p-color-theme-light-state-active;
-        }
-      }
-    }
-
-    &.dark {
-      .tab button {
-        &:hover {
-          color: $p-color-theme-dark-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-dark-state-focus;
-        }
-
-        &.is-active {
-          color: $p-color-theme-dark-state-active;
-        }
-      }
-    }
-  }
-
   code,
   pre {
     background: transparent;
@@ -421,8 +339,6 @@
     max-height: 20rem;
     overflow: auto;
     margin-top: $p-spacing-16;
-    padding-top: $p-spacing-16;
-    border-top: 1px solid transparent;
 
     code ::v-deep {
       .namespace {
