@@ -1,4 +1,3 @@
-import { OverviewComponent } from './overview.component';
 import { ButtonComponent } from './button.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
@@ -13,11 +12,14 @@ import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { MarqueComponent } from './marque.component';
+import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
-import { SpinnerComponent } from './spinner.component';
-import { TextComponent } from './text.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
+import { SpinnerComponent } from './spinner.component';
+import { TabsComponent } from './tabs.component';
+import { TabsBarComponent } from './tabs-bar.component';
+import { TextComponent } from './text.component';
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
@@ -43,6 +45,8 @@ export const pages = [
   RadioButtonWrapperComponent,
   SelectWrapperComponent,
   SpinnerComponent,
+  TabsComponent,
+  TabsBarComponent,
   TextComponent,
   TextFieldWrapperComponent,
   TextListComponent,
@@ -69,6 +73,8 @@ export * from './pagination.component';
 export * from './radio-button-wrapper.component';
 export * from './select-wrapper.component';
 export * from './spinner.component';
+export * from './tabs.component';
+export * from './tabs-bar.component';
 export * from './text.component';
 export * from './text-field-wrapper.component';
 export * from './text-list.component';

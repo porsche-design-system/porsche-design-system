@@ -1,0 +1,10 @@
+@import '../../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../../styles/internal.variables';
+
+:host {
+  display: block;
+}
+
+.#{$p-global-class-prefix}tabs {
+  margin-bottom: .5em;
+}

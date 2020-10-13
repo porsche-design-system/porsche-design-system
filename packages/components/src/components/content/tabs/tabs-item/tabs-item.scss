@@ -1,0 +1,7 @@
+:host {
+  display: none;
+}
+
+:host([selected]){
+  display: block;
+}
