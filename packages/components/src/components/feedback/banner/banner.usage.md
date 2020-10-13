@@ -34,12 +34,12 @@ Try to keep the feedback message short and descriptive.
 
 ### Width
 
-The banner is always as width as the content and therefore stretches over all grid columns. 
+The Banner is always as width as the content and therefore stretches over all grid columns (based on the [Content Wrapper](#/components/content-wrapper)). 
 
 
 ### Placement
 
-On desktop the Banners are displayed at the top of the screen. By default, a banner is placed 
+On desktop the Banners are displayed at the top of the screen. By default, a Banner is placed 
 in the top center of the application, within the grid of the viewport. On mobile, all Banners 
 are displayed at the bottom of the screen. 
 
