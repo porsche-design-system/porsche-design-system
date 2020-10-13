@@ -184,7 +184,7 @@ export const config: StorefrontConfig = {
     }
   },
   Performance: {
-    'Cdn': [
+    Cdn: [
       // @ts-ignore
       () => import(`@/pages/performance/cdn.md`)
     ],
@@ -488,6 +488,36 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/link/link.props.md`)
+      ]
+    },
+    Tabs: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/tabs/tabs.examples.md`)
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/tabs/tabs.usage.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/tabs/tabs/tabs.props.md`),
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/tabs/tabs-item/tabs-item.props.md`)
+      ]
+    },
+    'Tabs Bar': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.examples.md`)
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.usage.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md`)
       ]
     },
     'Link Pure': {

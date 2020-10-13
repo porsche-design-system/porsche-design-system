@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TabChangeEvent, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
@@ -510,6 +510,53 @@ export namespace Components {
          */
         "theme"?: 'light' | 'dark';
     }
+    interface PTabs {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: 'default' | 'surface';
+        /**
+          * The text size.
+         */
+        "size"?: 'small' | 'medium';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsBar {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: 'default' | 'surface';
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label": string;
+        "selected"?: boolean;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -730,6 +777,24 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
+    }
+    var HTMLPTabsElement: {
+        prototype: HTMLPTabsElement;
+        new (): HTMLPTabsElement;
+    };
+    interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
+    }
+    var HTMLPTabsBarElement: {
+        prototype: HTMLPTabsBarElement;
+        new (): HTMLPTabsBarElement;
+    };
+    interface HTMLPTabsItemElement extends Components.PTabsItem, HTMLStencilElement {
+    }
+    var HTMLPTabsItemElement: {
+        prototype: HTMLPTabsItemElement;
+        new (): HTMLPTabsItemElement;
+    };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
     var HTMLPTextElement: {
@@ -781,6 +846,9 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-tabs": HTMLPTabsElement;
+        "p-tabs-bar": HTMLPTabsBarElement;
+        "p-tabs-item": HTMLPTabsItemElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -1294,6 +1362,61 @@ declare namespace LocalJSX {
          */
         "theme"?: 'light' | 'dark';
     }
+    interface PTabs {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: 'default' | 'surface';
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        /**
+          * The text size.
+         */
+        "size"?: 'small' | 'medium';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsBar {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: 'default' | 'surface';
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label"?: string;
+        "selected"?: boolean;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -1413,6 +1536,9 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-tabs": PTabs;
+        "p-tabs-bar": PTabsBar;
+        "p-tabs-item": PTabsItem;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1444,6 +1570,9 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
+            "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
+            "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
