@@ -12,8 +12,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 |----|----|
 | Standard | Standard (regular) will be used on a monochrome background. |
 | Highlight | Highlight (semibold) will be used on a polychrome background (e.g. on images) for better comprehensibility and accessibility. |
-| Small | Small are used to provide an additional level or for smaller Vieports. | 
-| Medium | Medium tabs are usually used in page header or for larger vieports . | 	
+| Small | Small are used to provide an additional level or for smaller viewports. | 
+| Medium | Medium tabs are usually used in page header or for larger viewports. |  	
 
 ## Behavior
 
