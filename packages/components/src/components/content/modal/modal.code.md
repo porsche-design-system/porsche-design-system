@@ -6,7 +6,10 @@
   <p-button @click="openModal(0)">Open Modal</p-button>
   <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
     <p-text>Some Content</p-text>
-    <p-button @click="closeModal(0)">Close</p-button>
+    <p-modal-footer>
+      <p-button @click="closeModal(0)">Save</p-button>
+      <p-button variant="tertiary" @click="closeModal(0)">Close</p-button>
+    </p-modal-footer>
   </p-modal>
 </Playground>
 
@@ -18,45 +21,19 @@
     <p-text>Some Content</p-text>
     <div style="height: 80vh;"></div>
     <p-text>Some More Content</p-text>
-  </p-modal>
-</Playground>
-
-
-## Basic with Footer
-
-<Playground>
-  <p-button @click="openModal(2)">Open Modal</p-button>
-  <p-modal heading="Some Heading" :open="isOpen(2)" v-on:close="closeModal(2)">
-    <p-text>Some Content</p-text>
-    <div style="height: 80vh;"></div>
-    <p-text>Some More Content</p-text>
     <p-modal-footer>
-      <p-button @click="closeModal(2)">Save</p-button>
-      <p-button variant="tertiary" @click="closeModal(2)">Close</p-button>
+      <p-button @click="closeModal(1)">Save</p-button>
+      <p-button variant="tertiary" @click="closeModal(1)">Close</p-button>
     </p-modal-footer>
   </p-modal>
 </Playground>
 
-## Basic with Scrollable Footer
-
-<Playground>
-  <p-button @click="openModal(3)">Open Modal</p-button>
-  <p-modal heading="Some Heading" :open="isOpen(3)" v-on:close="closeModal(3)">
-    <p-text>Some Content</p-text>
-    <div style="height: 80vh;"></div>
-    <p-text>Some More Content</p-text>
-    <p-modal-footer scrollable>
-      <p-button @click="closeModal(3)">Save</p-button>
-      <p-button variant="tertiary" @click="closeModal(3)">Close</p-button>
-    </p-modal-footer>
-  </p-modal>
-</Playground>
 
 ## Without Heading
 
 <Playground>
-  <p-button @click="openModal(4)">Open Modal</p-button>
-  <p-modal :open="isOpen(4)" v-on:close="closeModal(4)">
+  <p-button @click="openModal(2)">Open Modal</p-button>
+  <p-modal :open="isOpen(2)" v-on:close="closeModal(4)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
@@ -64,8 +41,8 @@
 ## Without Close Button
 
 <Playground>
-  <p-button @click="openModal(5)">Open Modal</p-button>
-  <p-modal heading="Some Heading" disable-close-button :open="isOpen(5)" v-on:close="closeModal(5)">
+  <p-button @click="openModal(3)">Open Modal</p-button>
+  <p-modal heading="Some Heading" disable-close-button :open="isOpen(3)" v-on:close="closeModal(5)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
@@ -73,8 +50,8 @@
 ## Without Heading and Close Button
 
 <Playground>
-  <p-button @click="openModal(6)">Open Modal</p-button>
-  <p-modal disable-close-button :open="isOpen(6)" v-on:close="closeModal(6)">
+  <p-button @click="openModal(4)">Open Modal</p-button>
+  <p-modal disable-close-button :open="isOpen(4)" v-on:close="closeModal(4)">
     <p-text>Some Content</p-text>
   </p-modal>
 </Playground>
