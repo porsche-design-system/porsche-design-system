@@ -257,13 +257,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Banner: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/banner/banner.design.md`)
+        () => import(`@/../../components/src/components/feedback/banner/banner.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/banner/banner.code.md`)
+        () => import(`@/../../components/src/components/feedback/banner/banner.usage.md`)
       ],
       Props: [
         // @ts-ignore
