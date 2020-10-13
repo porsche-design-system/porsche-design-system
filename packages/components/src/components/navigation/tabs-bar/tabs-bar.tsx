@@ -6,7 +6,7 @@ import {
   prefix
 } from '../../../utils';
 import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
-import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+import { getHTMLElements } from '../../../utils/selector-helper';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
@@ -116,9 +116,9 @@ export class TabsBar {
     return (
       <div class={tabsNavClasses}>
         <div class={scrollAreaClasses} role="tablist">
-          <div class={scrollWrapperClasses}>
+          <div class={scrollWrapperClasses} ref={(el) => (this.scrollAreaElement = el)}>
             <slot />
-            <span class={statusBarClasses} />
+            <span class={statusBarClasses} ref={(el) => (this.statusBarElement = el)} />
           </div>
         </div>
         {this.renderPrevNextButton('prev')}
@@ -217,8 +217,6 @@ export class TabsBar {
   };
 
   private defineHTMLElements = (): void => {
-    this.statusBarElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    this.scrollAreaElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
     this.gradientElements = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`);
   };
 
