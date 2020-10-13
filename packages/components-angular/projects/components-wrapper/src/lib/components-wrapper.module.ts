@@ -30,7 +30,10 @@ import {
   PTextFieldWrapper,
   PTextareaWrapper,
   PFieldsetWrapper,
-  PDivider
+  PDivider,
+  PTabs,
+  PTabsItem,
+  PTabsBar
 } from './components-wrapper.component';
 
 const DECLARATIONS = [
@@ -60,7 +63,10 @@ const DECLARATIONS = [
   PTextFieldWrapper,
   PTextareaWrapper,
   PFieldsetWrapper,
-  PDivider
+  PDivider,
+  PTabs,
+  PTabsItem,
+  PTabsBar
 ];
 
 @NgModule({
