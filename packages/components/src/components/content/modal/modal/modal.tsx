@@ -77,12 +77,6 @@ export class Modal {
     const ariaLabelledBy = this.heading && 'modal-title';
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
 
-    const footer = this.isFooterDefined && (
-      <footer class={footerClasses}>
-        <slot name="footer" />
-      </footer>
-    );
-
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
         <aside class={rootClasses} role="dialog" aria-modal="true" aria-labelledby={ariaLabelledBy}>
@@ -111,10 +105,13 @@ export class Modal {
 
           <div class={bodyClasses}>
             <slot />
-            {this.isFooterScrollable && footer}
           </div>
 
-          {!this.isFooterScrollable && footer}
+          {this.isFooterDefined && (
+            <footer class={footerClasses}>
+              <slot name="footer" />
+            </footer>
+          )}
         </aside>
       </Host>
     );
@@ -196,9 +193,5 @@ export class Modal {
   }
   private get isFooterDefined(): boolean {
     return !!this.getFooter();
-  }
-
-  private get isFooterScrollable(): boolean {
-    return (this.getFooter() as HTMLPModalFooterElement)?.scrollable;
   }
 }
