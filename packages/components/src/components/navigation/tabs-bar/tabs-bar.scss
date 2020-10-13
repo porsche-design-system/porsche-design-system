@@ -1,0 +1,269 @@
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+:host {
+  position: relative !important;
+  display: block;
+}
+
+::slotted(a),
+::slotted(button) {
+  font-family: $p-font-family !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  appearance: none !important;
+  outline: none transparent !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  border: 0 !important;
+  background: transparent !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  color: $p-color-default !important;
+  cursor: pointer !important;
+  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier !important;
+}
+
+:host([theme="dark"]) ::slotted(a),
+:host([theme="dark"]) ::slotted(button) {
+  color: $p-color-theme-dark-default !important;
+}
+
+::slotted(a:hover),
+::slotted(button:hover) {
+  color: $p-color-state-hover !important;
+}
+
+:host([theme="dark"]) ::slotted(a:hover),
+:host([theme="dark"]) ::slotted(button:hover) {
+  color: $p-color-theme-dark-state-hover !important;
+}
+
+::slotted(a:active),
+::slotted(a[aria-selected="true"]),
+::slotted(button:active),
+::slotted(button[aria-selected="true"]) {
+  color: $p-color-state-active !important;
+}
+
+:host([theme="dark"]) ::slotted(a:active),
+:host([theme="dark"]) ::slotted(a[aria-selected="true"]),
+:host([theme="dark"]) ::slotted(button:active),
+:host([theme="dark"]) ::slotted(button[aria-selected="true"]) {
+  color: $p-color-theme-dark-state-active !important;
+}
+
+::slotted(a:focus),
+::slotted(button:focus) {
+  outline-offset: 1px !important;
+  outline: $p-color-state-focus solid 2px !important;
+}
+
+:host([theme="dark"]) ::slotted(a:focus),
+:host([theme="dark"]) ::slotted(button:focus) {
+  outline-color: $p-color-theme-dark-state-focus !important;
+}
+
+::slotted(a:not(:last-child)),
+::slotted(button:not(:last-child)) {
+  margin-right: 1em !important;
+}
+
+.#{$p-global-class-prefix}tabs-bar {
+  $bem-block: &;
+  @include p-generate-type-scale($p-font-size-small);
+  font-weight: $p-font-weight-regular;
+  position: relative;
+  margin: 0 -4px;
+
+  &--weight-semibold {
+    font-weight: $p-font-weight-semibold;
+  }
+
+  &--size-small {
+    @include p-generate-type-scale($p-font-size-small);
+  }
+
+  &--size-medium {
+    @include p-generate-type-scale($p-font-size-medium);
+  }
+
+  @include p-media-query("xs") {
+    &--size-small-xs {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-xs {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("s") {
+    &--size-small-s {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-s {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("m") {
+    &--size-small-m {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-m {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("l") {
+    &--size-small-l {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-l {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  @include p-media-query("xl") {
+    &--size-small-xl {
+      @include p-generate-type-scale($p-font-size-small);
+    }
+
+    &--size-medium-xl {
+      @include p-generate-type-scale($p-font-size-medium);
+    }
+  }
+
+  &__scroll-area {
+    position: relative;
+    padding: 4px 4px 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Extra wrapper needed to compensate different offset parent calculation depending of browser.
+  Needed for position of status bar. */
+  &__scroll-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding-bottom: .5em;
+  }
+
+  &__status-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    height: .09375em;
+    display: block;
+    background-color: $p-color-state-active;
+
+    &--theme-dark {
+      background-color: $p-color-theme-dark-state-active;
+    }
+
+    &--weight-semibold {
+      height: .125em;
+    }
+
+    &--enable-transition {
+      will-change: width;
+      transition: transform $p-tabs-transition-duration, width $p-tabs-transition-duration;
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 4px;
+    display: flex;
+    transform: translate3d(0,0,0);
+
+    &--prev {
+      left: 0;
+      justify-content: flex-start;
+    }
+
+    &--next {
+      right: 0;
+      justify-content: flex-end;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__gradient {
+    content: '';
+    position: absolute;
+    top: -4px;
+    bottom: -.5em;
+    width: 2em;
+    pointer-events: none;
+
+    &--prev {
+      &#{$bem-block}__gradient--color-scheme-default {
+        background: -webkit-linear-gradient(rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
+        background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
+      }
+
+      &#{$bem-block}__gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
+        background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
+      }
+
+      &#{$bem-block}__gradient--theme-dark {
+        &#{$bem-block}__gradient--color-scheme-default {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
+        }
+
+        &#{$bem-block}__gradient--color-scheme-surface {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
+        }
+      }
+    }
+
+    &--next {
+      &#{$bem-block}__gradient--color-scheme-default {
+        background: -webkit-linear-gradient(rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
+        background: linear-gradient(90deg, rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
+      }
+
+      &#{$bem-block}__gradient--color-scheme-surface {
+        background: -webkit-linear-gradient(rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
+        background: linear-gradient(90deg, rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
+      }
+
+      &#{$bem-block}__gradient--theme-dark {
+        &#{$bem-block}__gradient--color-scheme-default {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
+        }
+
+        &#{$bem-block}__gradient--color-scheme-surface {
+          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
+          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
+        }
+      }
+    }
+  }
+}

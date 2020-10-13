@@ -128,6 +128,16 @@ export const routes: ExtendedRoute[] = [
     name: 'Spinner'
   },
   {
+    path: 'tabs',
+    component: fromPages.TabsComponent,
+    name: 'Tabs'
+  },
+  {
+    path: 'tabs-bar',
+    component: fromPages.TabsBarComponent,
+    name: 'Tabs Bar'
+  },
+  {
     path: 'text',
     component: fromPages.TextComponent,
     name: 'Text'

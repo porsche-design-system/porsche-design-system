@@ -3,7 +3,7 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementPosition,
+  getElementIndex,
   getElementStyle,
   getProperty,
   initAddEventListener,
@@ -156,8 +156,8 @@ describe('select-wrapper fake-select', () => {
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptionDisabled).not.toBeNull();
-      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(0);
-      expect(await getElementPosition(fakeOptionList, '[aria-disabled=true]')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(0);
+      expect(await getElementIndex(fakeOptionList, '[aria-disabled=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
     });
 
@@ -198,7 +198,7 @@ describe('select-wrapper fake-select', () => {
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptgroup).not.toBeNull();
-      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
       expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
     });
@@ -356,7 +356,7 @@ describe('select-wrapper fake-select', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
-      expect(await getElementPosition(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
+      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
     describe('keyboard and click events', () => {
@@ -368,9 +368,9 @@ describe('select-wrapper fake-select', () => {
           return document.querySelector('select').selectedIndex;
         });
       const getHighlightedFakeOption = async () =>
-        await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
+        await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
       const getSelectedFakeOption = async () =>
-        await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
+        await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
 
       it('should highlight first position on arrow down', async () => {
         await setContentWithDesignSystem(
@@ -407,7 +407,7 @@ describe('select-wrapper fake-select', () => {
         expect(await getOpacity()).toBe('0');
         expect(await getHighlightedFakeOption()).toBe(1);
         expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getElementPosition(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
+        expect(await getElementIndex(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
         expect(await getSelectedIndex()).toBe(1);
 
         expect(calls).toBe(1);
