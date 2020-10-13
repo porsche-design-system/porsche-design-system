@@ -2,7 +2,7 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getCssClasses, getElementPosition,
+  getCssClasses, getElementIndex,
   getElementStyle,
   getProperty,
   initAddEventListener,
@@ -389,9 +389,9 @@ describe('select-wrapper combobox', () => {
         return document.querySelector('select').selectedIndex;
       });
     const getHighlightedFakeOption = async () =>
-      await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
+      await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
     const getSelectedFakeOption = async () =>
-      await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
+      await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
 
     it('should focus filter input on tab', async () => {
       await setContentWithDesignSystem(
@@ -453,7 +453,7 @@ describe('select-wrapper combobox', () => {
       expect(await getOpacity()).toBe('0');
       expect(await getHighlightedFakeOption()).toBe(1);
       expect(await getSelectedFakeOption()).toBe(1);
-      expect(await getElementPosition(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
+      expect(await getElementIndex(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
       expect(await getSelectedIndex()).toBe(1);
 
       expect(calls).toBe(1);
