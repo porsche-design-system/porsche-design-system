@@ -96,9 +96,9 @@ describe('modal', () => {
       expect(calls).toBe(1);
     });
 
-    it('should not be closable via esc key when disableEscapeKey is set', async () => {
+    it('should not be closable via esc key when disableCloseButton is set', async () => {
       const host = await getModalHost();
-      await host.evaluate((el) => el.setAttribute('disable-escape-key', ''));
+      await host.evaluate((el) => el.setAttribute('disable-close-button', ''));
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
