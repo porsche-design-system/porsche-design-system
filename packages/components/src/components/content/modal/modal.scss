@@ -1,5 +1,5 @@
-@import '../../../../../../utilities/projects/utilities/scss';
-@import '../../../../styles/internal.variables';
+@import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
 
 $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -84,14 +84,6 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
       &:last-child {
         padding-bottom: p-px-to-rem(32px);
       }
-    }
-  }
-
-  &__footer {
-    padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(24px);
-
-    @include p-media-query('s') {
-      padding: p-px-to-rem(32px);
     }
   }
 

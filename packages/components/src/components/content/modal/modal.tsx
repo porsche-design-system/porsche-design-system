@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getPrefixedTagNames, prefix } from '../../../../utils';
+import { getPrefixedTagNames, prefix } from '../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -68,7 +68,6 @@ export class Modal {
     const rootClasses = prefix('modal');
     const headerClasses = prefix('modal__header');
     const bodyClasses = prefix('modal__body');
-    const footerClasses = prefix('modal__footer');
     const btnCloseClasses = prefix('modal__close');
 
     const ariaLabelledBy = this.heading && 'modal-title';
@@ -103,12 +102,6 @@ export class Modal {
           <div class={bodyClasses}>
             <slot />
           </div>
-
-          {this.isFooterDefined && (
-            <footer class={footerClasses}>
-              <slot name="footer" />
-            </footer>
-          )}
         </aside>
       </Host>
     );
@@ -183,12 +176,4 @@ export class Modal {
       this.closeModal();
     }
   };
-
-  private getFooter(): Element {
-    const { pModalFooter } = getPrefixedTagNames(this.host, ['p-modal-footer']);
-    return this.host.querySelector(pModalFooter);
-  }
-  private get isFooterDefined(): boolean {
-    return !!this.getFooter();
-  }
 }

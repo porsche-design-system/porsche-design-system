@@ -30,7 +30,6 @@ describe('modal', () => {
       `
       <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
         Some Content
-        <p-modal-footer>Some Footer</p-modal-footer>
       </p-modal>`
     );
 
@@ -43,11 +42,10 @@ describe('modal', () => {
         <p-button id="btn-content-1">Content Button 1</p-button>
         <p-button id="btn-content-2">Content Button 2</p-button>
 
-        <p-modal-footer>
-          Some Footer
+        <div>
           <p-button id="btn-footer-1">Footer Button 1</p-button>
           <p-button id="btn-footer-2">Footer Button 2</p-button>
-        </p-modal-footer>
+        </div>
       </p-modal>`
     );
 
@@ -193,7 +191,6 @@ describe('modal', () => {
       <button id="btn-open"></button>
       <p-modal id="modal" heading="Some Heading">
         Some Content
-        <p-modal-footer>Some Footer</p-modal-footer>
       </p-modal>
       <script>
         const modal = document.getElementById('modal');

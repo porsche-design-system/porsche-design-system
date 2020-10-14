@@ -17,22 +17,20 @@ modal.addEventListener('close', () => {
 });
 ```
 
-Nesting `p-modal-footer` within a `p-modal` give you the opportunity to display other components, e.g. action buttons, at the bottom of the modal. This area is positioned absolutely and is not scrollable.
-
 <Playground>
   <p-button @click="openModal(0)">Open Modal</p-button>
   <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
     <p-text>Some Content</p-text>
-    <p-modal-footer>
+    <div>
       <p-button @click="closeModal(0)">Save</p-button>
       <p-button variant="tertiary" @click="closeModal(0)">Close</p-button>
-    </p-modal-footer>
+    </div>
   </p-modal>
 </Playground>
 
 ## Basic Scrollable
 
-If the Modal's content doesn't fit into the current boundaries the content becomes scrollable while heading, close button and `p-modal-footer` stay at an absolute position.
+If the Modal's content doesn't fit into the current boundaries the content becomes scrollable while heading and close button stay at an absolute position.
 
 <Playground>
   <p-button @click="openModal(1)">Open Modal</p-button>
@@ -42,10 +40,10 @@ If the Modal's content doesn't fit into the current boundaries the content becom
     <p-text>More Content</p-text>
     <div style="height: 40vh;"></div>
     <p-text>Even More Content</p-text>
-    <p-modal-footer>
+    <div>
       <p-button @click="closeModal(1)">Save</p-button>
       <p-button variant="tertiary" @click="closeModal(1)">Close</p-button>
-    </p-modal-footer>
+    </div>
   </p-modal>
 </Playground>
 
