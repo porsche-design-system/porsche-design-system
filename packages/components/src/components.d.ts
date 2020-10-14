@@ -1395,7 +1395,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: CustomEvent<any>) => void;
+        "onPageChange"?: (event: CustomEvent<{ page: number; previousPage: number }>) => void;
         /**
           * Adapts the color when used on dark background.
          */
