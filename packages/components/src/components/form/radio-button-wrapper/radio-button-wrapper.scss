@@ -56,7 +56,7 @@
 
 // Focus
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 2px $p-color-theme-light-state-focus !important;
+  box-shadow: 0 0 0 1px $p-color-theme-light-state-focus !important;
 }
 
 // Checked

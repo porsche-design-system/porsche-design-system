@@ -71,7 +71,7 @@
 
 // Focus
 ::slotted(select:focus) {
-  outline: $p-color-neutral-contrast-low solid 2px !important;
+  outline: currentColor solid 1px !important;
 }
 
 // Disabled
@@ -666,7 +666,7 @@
       opacity: 1;
       + span {
         outline-offset: 1px;
-        outline: solid 2px;
+        outline: solid 1px;
 
         #{$bem-block}--theme-light & {
           outline-color: $p-color-state-focus;
