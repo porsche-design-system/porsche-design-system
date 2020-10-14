@@ -11,7 +11,7 @@
       <p-divider class="divider-spacing-small"></p-divider>
       <Footer />
     </aside>
-    <main class="main">
+    <main class="main" :class="{ 'main--animate': isAnimated }">
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
       <p-spinner v-if="isLoading" class="spinner" size="medium" aria-label="Loading page"></p-spinner>
     </main>
@@ -27,6 +27,9 @@
   import Sidebar from '@/components/Sidebar.vue';
   import Footer from '@/components/Footer.vue';
   import Menu from '@/components/Menu.vue';
+  import { Watch } from 'vue-property-decorator';
+
+  const TRANSITION_DURATION = 300;
 
   @Component({
     components: {
@@ -38,12 +41,28 @@
     }
   })
   export default class App extends Vue {
-    public get isLoading(): boolean {
-      return this.$store.getters.isLoading;
+    private isAnimated = false;
+    private isMenuActive = false;
+
+    // transition of main is applied via separate flag in order to not mess up our modal
+    @Watch('$store.state.isMenuActive')
+    private onIsMenuActiveChange(isMenuActive: boolean): void {
+      if (isMenuActive) {
+        this.isAnimated = isMenuActive;
+        Vue.nextTick(() => {
+          this.isMenuActive = isMenuActive;
+        });
+      } else {
+        this.isMenuActive = isMenuActive;
+
+        setTimeout(() => {
+          this.isAnimated = isMenuActive;
+        }, TRANSITION_DURATION);
+      }
     }
 
-    public get isMenuActive(): boolean {
-      return this.$store.getters.isMenuActive;
+    public get isLoading(): boolean {
+      return this.$store.getters.isLoading;
     }
 
     public get isStandalone(): boolean {
@@ -352,8 +371,10 @@
     -webkit-overflow-scrolling: touch;
 
     @include p-media-query('xxs', 's') {
-      transform: translate3d(0, 0, 0);
-      transition: transform 0.3s;
+      &--animate {
+        transform: translate3d(0, 0, 0);
+        transition: transform 0.3s;
+      }
     }
 
     @include p-media-query('s') {
