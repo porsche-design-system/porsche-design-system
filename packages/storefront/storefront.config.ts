@@ -587,9 +587,7 @@ export const config: StorefrontConfig = {
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal/modal.props.md`),
-        // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal-footer/modal-footer.props.md`)
+        () => import(`@/../../components/src/components/content/modal/modal.props.md`)
       ]
     }
   }
