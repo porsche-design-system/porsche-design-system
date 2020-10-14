@@ -1,8 +1,4 @@
-import {
-  PModal as Modal,
-  PButton as Button,
-  PModalFooter as ModalFooter
-} from '@porsche-design-system/components-react';
+import { PModal as Modal, PButton as Button } from '@porsche-design-system/components-react';
 import React, { useEffect } from 'react';
 
 export const ModalScrollablePage = (): JSX.Element => {
@@ -35,10 +31,10 @@ export const ModalScrollablePage = (): JSX.Element => {
           consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet.
-          <ModalFooter>
+          <div>
             <Button>Confirm</Button>
             <Button variant="tertiary">Cancel</Button>
-          </ModalFooter>
+          </div>
         </Modal>
       </div>
     </>

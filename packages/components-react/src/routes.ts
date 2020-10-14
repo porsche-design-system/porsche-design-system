@@ -88,11 +88,6 @@ export const routes: RouteType[] = [
     component: fromPages.ModalBasicPage
   },
   {
-    name: 'Modal Footer',
-    path: '/modal-footer',
-    component: fromPages.ModalFooterPage
-  },
-  {
     name: 'Modal Scrollable',
     path: '/modal-scrollable',
     component: fromPages.ModalScrollablePage

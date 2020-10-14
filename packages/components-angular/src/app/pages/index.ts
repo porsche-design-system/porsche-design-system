@@ -14,7 +14,6 @@ import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
-import { ModalFooterComponent } from './modal-footer.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { OverviewComponent } from './overview.component';
@@ -47,7 +46,6 @@ export const pages = [
   LinkSocialComponent,
   MarqueComponent,
   ModalBasicComponent,
-  ModalFooterComponent,
   ModalScrollableComponent,
   ModalPrefixedComponent,
   OverviewComponent,
@@ -80,7 +78,6 @@ export * from './link-pure.component';
 export * from './link-social.component';
 export * from './marque.component';
 export * from './modal-basic.component';
-export * from './modal-footer.component';
 export * from './modal-scrollable.component';
 export * from './modal-prefixed.component';
 export * from './overview.component';
