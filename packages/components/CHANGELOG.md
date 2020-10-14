@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
 - Display `*` after label when `input`, `textarea` or `select` have `required` attribute within form wrapper components
+- `Tabs` component
+- `Tabs Bar` component
+- `Banner` component
+
+#### Removed
+- Default `position:relative;` style of `LinkPure` and `ButtonPure` 
+
+#### Fixed
+- `Spinner` zooming bug on Safari
 
 #### Changed
 - Focus styling

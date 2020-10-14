@@ -1,34 +1,15 @@
 <template>
   <div class="playground">
-    <div class="tabs" role="tablist" v-if="themeable">
-      <p-text class="tab" size="inherit" weight="thin" tag="div">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="theme === 'light' ? 'true' : 'false'"
-          :class="{ 'is-active': theme === 'light' }"
-          @click="switchTheme('light')"
-        >
-          Light theme
-        </button>
-      </p-text>
-      <p-text class="tab" size="inherit" weight="thin" tag="div">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="theme === 'dark' ? 'true' : 'false'"
-          :class="{ 'is-active': theme === 'dark' }"
-          @click="switchTheme('dark')"
-        >
-          Dark theme
-        </button>
-      </p-text>
-    </div>
+    <p-tabs-bar v-if="themeable">
+      <button type="button" @click="switchTheme('light')">Light theme</button>
+      <button type="button" @click="switchTheme('dark')">Dark theme</button>
+    </p-tabs-bar>
     <div
       class="example"
       :class="{
         light: (themeable && theme === 'light') || themeable === false,
         dark: themeable && theme === 'dark',
+        surface: colorScheme === 'surface',
         'height-fixed': childElementLayout.height === 'fixed',
         'spacing-inline': childElementLayout.spacing === 'inline',
         'spacing-block': childElementLayout.spacing === 'block',
@@ -65,6 +46,7 @@
   })
   export default class Playground extends Vue {
     @Prop({ default: false }) public themeable!: boolean;
+    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
 
     public theme: Theme = 'light';
@@ -88,10 +70,7 @@
 
     private getMarkup(): string {
       const el = this.$el.querySelector('.code');
-      if (el) {
-        return el.innerHTML;
-      }
-      return '';
+      return el ? el.innerHTML : '';
     }
   }
 </script>
@@ -100,45 +79,6 @@
   @import '~@porsche-design-system/utilities/scss';
   @import '../styles/internal.variables';
 
-  .tabs {
-    display: flex;
-
-    .tab {
-      @include p-generate-type-scale($p-font-size-20);
-
-      &:not(:last-child) {
-        margin-right: $p-spacing-24;
-      }
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        font: inherit;
-        color: $p-color-theme-light-neutral-contrast-medium;
-        background-color: transparent;
-        transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-        padding-bottom: $p-spacing-4;
-        border-bottom: 3px solid transparent;
-
-        &:hover {
-          color: $p-color-theme-light-state-hover;
-        }
-
-        &:focus {
-          outline: 1px solid $p-color-theme-light-state-focus;
-          outline-offset: 4px;
-        }
-
-        &.is-active {
-          cursor: default;
-          color: $p-color-theme-light-default;
-          border-bottom-color: $p-color-theme-light-state-active;
-        }
-      }
-    }
-  }
-
   .example {
     padding: $p-spacing-32;
     overflow-x: auto;
@@ -146,15 +86,22 @@
 
     // Theme
     &.light {
-      border-color: $p-color-theme-light-neutral-contrast-low;
-      background-color: $p-color-theme-light-background;
+      border-color: $p-color-neutral-contrast-low;
+      background-color: $p-color-background-default;
+
+      &.surface {
+        border-color: $p-color-background-surface;
+        background-color: $p-color-background-surface;
+      }
     }
 
     &.dark {
-      border-color: $p-color-theme-dark-background-surface;
-      background-color: $p-color-theme-dark-background-surface;
+      border-color: $p-color-theme-dark-background-default;
+      background-color: $p-color-theme-dark-background-default;
 
-      .tabs .tab button.is-active {
+      &.surface {
+        border-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-theme-dark-background-surface;
       }
     }
 

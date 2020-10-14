@@ -159,7 +159,7 @@ __Getting started__ section to be able to authenticate during NPM dependency upd
 
 This tool automatically creates a catalog of ui components. For its magic to work, new components have to follow a few rules:
 
-1. **File location:** A component is developed as a self containing element under `packages/components-js/src/components`.
+1. **File location:** A component is developed as a self containing element under `packages/components/src/components`.
 1. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file which describes its general purpose, design/development specifications and examples.
 1. **Props:** The component has to describe its props using typescript types and documentation.
 

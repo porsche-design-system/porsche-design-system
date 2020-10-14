@@ -13,6 +13,9 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
+// Event Types
+export type TabChangeEvent = { activeTabIndex: number };
+
 /**
  * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
  */

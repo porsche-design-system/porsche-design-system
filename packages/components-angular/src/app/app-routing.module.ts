@@ -8,6 +8,10 @@ const appRoutes: Routes = [
     children: []
   },
   {
+    path: 'banner',
+    component: pages.BannerComponent
+  },
+  {
     path: 'button',
     component: pages.ButtonComponent
   },
@@ -82,6 +86,14 @@ const appRoutes: Routes = [
   {
     path: 'spinner',
     component: pages.SpinnerComponent
+  },
+  {
+    path: 'tabs',
+    component: pages.TabsComponent
+  },
+  {
+    path: 'tabs-bar',
+    component: pages.TabsBarComponent
   },
   {
     path: 'text',
