@@ -93,11 +93,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Basic'
   },
   {
-    path: 'modal-footer',
-    component: fromPages.ModalFooterComponent,
-    name: 'Modal Footer'
-  },
-  {
     path: 'modal-scrollable',
     component: fromPages.ModalScrollableComponent,
     name: 'Modal Scrollable'

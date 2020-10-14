@@ -14,10 +14,10 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should show prefixed modal on light background">
       <my-prefix-p-modal [heading]="'Some Heading'" [open]="'true'">
         Some Content
-        <my-prefix-p-modal-footer>
+        <div>
           <my-prefix-p-button>Confirm</my-prefix-p-button>
           <my-prefix-p-button variant="tertiary">Cancel</my-prefix-p-button>
-        </my-prefix-p-modal-footer>
+        </div>
       </my-prefix-p-modal>
     </div>
   `
