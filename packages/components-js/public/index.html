@@ -11,6 +11,7 @@
     <script type="text/javascript" src="index.js"></script>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <style>
+      p-banner,
       p-button,
       p-button-pure,
       p-checkbox-wrapper,
@@ -31,6 +32,8 @@
       p-radio-button-wrapper,
       p-select-wrapper,
       p-spinner,
+      p-tabs,
+      p-tabs-bar,
       p-text,
       p-text-field-wrapper,
       p-text-list,
@@ -41,6 +44,7 @@
   <body>
     <select onchange="document.location.hash = `#${this.value}`">
       <option disabled selected>Select a page</option>
+      <option value="banner">Banner</option>
       <option value="button">Button</option>
       <option value="button-pure">Button Pure</option>
       <option value="checkbox-wrapper">Checkbox</option>
@@ -60,6 +64,8 @@
       <option value="radio-button-wrapper">Radio Button</option>
       <option value="select-wrapper">Select</option>
       <option value="spinner">Spinner</option>
+      <option value="tabs">Tabs</option>
+      <option value="tabs-bar">Tabs Bar</option>
       <option value="text">Text</option>
       <option value="text-field-wrapper">Text Field</option>
       <option value="text-list">Text List</option>

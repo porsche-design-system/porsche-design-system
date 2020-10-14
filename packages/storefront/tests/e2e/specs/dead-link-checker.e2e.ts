@@ -28,8 +28,11 @@ describe('check for dead links in storefront', () => {
   const getHeadline = async () =>
     (await page.waitForSelector('.vmark > h1')) && page.$eval('.vmark > h1', (x) => x.innerHTML);
 
-  const getPatternHeadline = async () =>
-    (await page.waitForSelector('p-headline[tag="h1"]')) && page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
+  const getPatternHeadline = async () => {
+    await page.waitForSelector('p-headline[tag="h1"]');
+    await page.waitFor(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
+    return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
+  };
 
   // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
   const whitelistedUrls: string[] = [
