@@ -17,7 +17,7 @@ import { routes } from './app-routing.module';
   `
 })
 export class AppComponent {
-  public routes = routes;
+  public routes = routes.filter((x) => !!x.name);
 
   private router: Router;
 
