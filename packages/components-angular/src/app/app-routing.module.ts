@@ -13,6 +13,11 @@ export const routes: ExtendedRoute[] = [
     pathMatch: 'full'
   },
   {
+    path: 'banner',
+    component: fromPages.BannerComponent,
+    name: 'Banner'
+  },
+  {
     path: 'button',
     component: fromPages.ButtonComponent,
     name: 'Button'
