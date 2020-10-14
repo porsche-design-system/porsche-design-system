@@ -8,6 +8,10 @@ const appRoutes: Routes = [
     children: []
   },
   {
+    path: 'banner',
+    component: pages.BannerComponent
+  },
+  {
     path: 'button',
     component: pages.ButtonComponent
   },

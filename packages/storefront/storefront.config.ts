@@ -256,6 +256,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/basic/typography/text/text.props.md`)
       ]
     },
+    Banner: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/banner/banner.examples.md`)
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/banner/banner.usage.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/feedback/banner/banner.props.md`)
+      ]
+    },
     Button: {
       Design: [
         // @ts-ignore
