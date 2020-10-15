@@ -159,7 +159,6 @@ export class Modal {
   };
 
   private handleHostClick = (e: MouseEvent): void => {
-    // TODO: fallback for Edge18 https://stackoverflow.com/questions/58344817/alternative-to-composedpath-for-edge
     const [firstEl] = e.composedPath() as HTMLElement[];
     if (firstEl === this.host) {
       this.closeModal();
