@@ -11,12 +11,14 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  flex-wrap: wrap !important;
   width: 100vw !important;
   height: 100vh !important;
   background-color: rgba($p-color-theme-dark-background-default, 0.9) !important;
   transition: opacity 0.2s $easing, visibility 0s linear 0.6s !important ;
   opacity: 0 !important;
   visibility: hidden !important;
+  overflow-y: auto;
 }
 
 :host([open='']),
@@ -32,58 +34,44 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .#{$p-global-class-prefix}modal {
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 100%;
-  max-height: calc(100% - 2 * 7vw);
   max-width: 100vw - 2 * 7vw;
   background-color: $p-color-theme-light-background;
   transition: transform 0.6s $easing;
   transform: scale3d(0.9, 0.9, 1);
+  margin: 7vw;
+  padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(24px);
 
   @include p-media-query('s') {
-    max-height: 65vh;
-
     // width = 100% - 2 grid margin - 2 columns
-    max-width: calc(100vw - 2 * 7vw - 2 * #{p-px-to-rem(24px)} - 2 * 8.333333%);
+    $contentWidth: 100 - 2 * 7;
+    $colWidth: $contentWidth / 12;
+    max-width: calc(#{$contentWidth}vw - 2 * #{p-px-to-rem(24px)} - 2% * #{$colWidth});
+    padding: p-px-to-rem(32px);
   }
 
-  @include p-media-query('l') {
-    max-height: 80vh;
-
+  @include p-media-query('m') {
     // width = 100% - 2 grid margins - 4 columns
-    max-width: calc(100vw - 2 * 7vw - 4 * #{p-px-to-rem(36px)} - 4 * 8.333333%);
+    $contentWidth: 100 - 2 * 7;
+    $colWidth: $contentWidth / 12;
+    max-width: calc(#{$contentWidth}vw - 4 * #{p-px-to-rem(36px)} - 4% * #{$colWidth});
+    margin: 5vw 0;
+  }
+
+  @include p-media-query('xl') {
+    // width = 100% - 2 grid margins - 4 columns
+    $contentWidth: 100 - 2 * 10;
+    $colWidth: $contentWidth / 12;
+    max-width: calc(#{$contentWidth}vw - 4 * #{p-px-to-rem(36px)} - 4% * #{$colWidth});
   }
 
   &__header {
     display: flex;
-    padding: p-px-to-rem(16px);
+    padding: 0 0 p-px-to-rem(16px);
 
     @include p-media-query('s') {
-      padding: p-px-to-rem(32px);
-    }
-  }
-
-  &__body {
-    padding: 0 p-px-to-rem(16px);
-    overflow-y: scroll;
-
-    &:first-child {
-      padding-top: p-px-to-rem(16px);
-    }
-    &:last-child {
-      padding-bottom: p-px-to-rem(24px);
-    }
-
-    @include p-media-query('s') {
-      padding: 0 p-px-to-rem(32px);
-
-      &:first-child {
-        padding-top: p-px-to-rem(32px);
-      }
-      &:last-child {
-        padding-bottom: p-px-to-rem(32px);
-      }
+      padding: 0 0 p-px-to-rem(32px);
     }
   }
 
