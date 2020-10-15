@@ -37,14 +37,14 @@ export default class Menu extends Vue {
 
   &:hover {
     .stripe {
-      background: darken($p-color-theme-light-state-hover, 10%);
+      background: darken($p-color-state-hover, 10%);
 
       &::before {
-        background: darken($p-color-theme-light-state-hover, 10%);
+        background: darken($p-color-state-hover, 10%);
       }
 
       &::after {
-        background: darken($p-color-theme-light-state-hover, 10%);
+        background: darken($p-color-state-hover, 10%);
       }
     }
   }
@@ -76,7 +76,7 @@ export default class Menu extends Vue {
   width: p-px-to-rem(24px);
   height: 2px;
   display: block;
-  background: $p-color-theme-light-brand;
+  background: $p-color-brand;
   transition-property: transform;
   transition-timing-function: cubic-bezier(.55, .055, .675, .19);
   transition-duration: 75ms;
@@ -91,7 +91,7 @@ export default class Menu extends Vue {
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;
-    background: $p-color-theme-light-brand;
+    background: $p-color-brand;
     transition: top 75ms ease .12s, opacity 75ms ease;
   }
 
@@ -105,7 +105,7 @@ export default class Menu extends Vue {
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;
-    background: $p-color-theme-light-brand;
+    background: $p-color-brand;
     transition: bottom 75ms ease .12s, transform 75ms cubic-bezier(.55, .055, .675, .19);
   }
 }
