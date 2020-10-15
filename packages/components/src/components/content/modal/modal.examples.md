@@ -30,7 +30,7 @@ modal.addEventListener('close', () => {
 
 ## Basic Scrollable
 
-If the Modal's content doesn't fit into the current boundaries the content becomes scrollable while heading and close button stay at an absolute position.
+If the Modal's content does not fit into the current boundaries the content becomes scrollable.
 
 <Playground>
   <p-button @click="openModal(1)">Open Modal</p-button>
