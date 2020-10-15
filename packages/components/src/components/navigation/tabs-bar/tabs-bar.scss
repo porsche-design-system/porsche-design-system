@@ -61,7 +61,7 @@
 ::slotted(a:focus),
 ::slotted(button:focus) {
   outline-offset: 1px !important;
-  outline: $p-color-state-focus solid 2px !important;
+  outline: $p-color-state-focus solid 1px !important;
 }
 
 :host([theme="dark"]) ::slotted(a:focus),
