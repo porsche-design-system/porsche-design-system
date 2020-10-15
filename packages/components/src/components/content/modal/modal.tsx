@@ -67,7 +67,6 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = prefix('modal');
     const headerClasses = prefix('modal__header');
-    const bodyClasses = prefix('modal__body');
     const btnCloseClasses = prefix('modal__close');
 
     const ariaLabelledBy = this.heading && 'modal-title';
@@ -99,9 +98,7 @@ export class Modal {
             </header>
           )}
 
-          <div class={bodyClasses}>
-            <slot />
-          </div>
+          <slot />
         </aside>
       </Host>
     );
