@@ -110,8 +110,8 @@ export default class Home extends Vue {
   position: relative;
   padding-top: 34%;
   overflow: hidden;
-  background: $p-color-theme-light-neutral-contrast-low;
-  border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+  background: $p-color-neutral-contrast-low;
+  border-bottom: 1px solid $p-color-neutral-contrast-low;
 }
 
 .video {
@@ -140,16 +140,16 @@ export default class Home extends Vue {
 
   p a {
     text-decoration: none;
-    color: $p-color-theme-light-brand;
+    color: $p-color-brand;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover {
-      color: darken($p-color-theme-light-state-hover, 10%);
+      color: darken($p-color-state-hover, 10%);
     }
   }
 
   h2 + p a {
-    border-bottom: 1px solid $p-color-theme-light-brand;
+    border-bottom: 1px solid $p-color-brand;
   }
 }
 
@@ -167,7 +167,7 @@ export default class Home extends Vue {
     right: -$p-spacing-32;
   }
   padding: $p-spacing-32;
-  background: $p-color-theme-light-surface;
+  background: $p-color-background-surface;
 
   @include p-media-query('s') {
     margin: {
@@ -178,11 +178,11 @@ export default class Home extends Vue {
   }
 
   a {
-    color: $p-color-theme-light-brand;
+    color: $p-color-brand;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover {
-      color: darken($p-color-theme-light-state-hover, 10%);
+      color: darken($p-color-state-hover, 10%);
     }
   }
 }

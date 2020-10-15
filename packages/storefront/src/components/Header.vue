@@ -47,7 +47,7 @@ export default class Header extends Vue {
   display: inline-block;
 
   &:focus {
-    outline: 1px solid $p-color-theme-light-state-focus;
+    outline: 1px solid $p-color-state-focus;
     outline-offset: 4px;
   }
 }
