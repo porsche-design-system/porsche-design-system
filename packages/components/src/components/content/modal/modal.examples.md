@@ -21,10 +21,10 @@ modal.addEventListener('close', () => {
   <p-button @click="openModal(0)">Open Modal</p-button>
   <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
     <p-text>Some Content</p-text>
-    <div>
+    <p-flex class="footer">
       <p-button @click="closeModal(0)">Save</p-button>
       <p-button variant="tertiary" @click="closeModal(0)">Close</p-button>
-    </div>
+    </p-flex>
   </p-modal>
 </Playground>
 
@@ -40,10 +40,10 @@ If the Modal's content does not fit into the current boundaries the content beco
     <p-text>More Content</p-text>
     <div style="height: 40vh;"></div>
     <p-text>Even More Content</p-text>
-    <div>
+    <p-flex class="footer">
       <p-button @click="closeModal(1)">Save</p-button>
       <p-button variant="tertiary" @click="closeModal(1)">Close</p-button>
-    </div>
+    </p-flex>
   </p-modal>
 </Playground>
 
@@ -99,3 +99,43 @@ Of course, any combination of the available options is possible.
     }
   }
 </script>
+
+<style scoped lang="scss">
+  @import '~@porsche-design-system/utilities/scss';
+
+  @mixin p-row() {
+    flex-direction: row;
+    > * {
+      width: auto;
+      &:not(:last-child) {
+        margin-right: $p-spacing-16;
+      }
+      &:not(:first-child) {
+        margin-top: 0;
+      }
+    }
+  } 
+  
+  @mixin p-col() {
+    flex-direction: column;
+    > * {
+      width: 100%;
+      &:not(:first-child) {
+        margin-top: $p-spacing-16;
+      }
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  .footer {
+    @include p-col;
+    padding: p-px-to-rem(16px) 0 0;
+    
+    @include p-media-query('s') {
+      @include p-row;
+      padding: p-px-to-rem(32px) 0 0;
+    }
+  }
+</style>
