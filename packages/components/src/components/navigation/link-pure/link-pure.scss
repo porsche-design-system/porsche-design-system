@@ -112,7 +112,7 @@
 }
 ::slotted(a:focus)::before {
   outline-offset: 1px !important;
-  outline: $p-color-theme-light-state-focus solid 1px !important;
+  outline: $p-color-state-focus solid 1px !important;
 }
 
 ::slotted(p) {
