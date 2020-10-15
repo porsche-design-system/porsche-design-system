@@ -56,7 +56,7 @@
 
 // Focus
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-theme-light-state-focus !important;
+  box-shadow: 0 0 0 1px $p-color-state-focus !important;
 }
 
 // Checked
@@ -87,11 +87,11 @@
     order: 1;
     display: inline-block;
     cursor: pointer;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
       cursor: default;
     }
 
@@ -168,14 +168,14 @@
     display: block;
     flex-shrink: 0;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
-    background-color: $p-color-theme-light-background;
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+    background-color: $p-color-background-default;
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
       background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover:not(&--disabled):not(&--success):not(&--error),
     #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+      box-shadow: inset 0 0 0 1px $p-color-default;
     }
 
     &::before {
@@ -192,65 +192,65 @@
     }
 
     &--checked {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-high;
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
 
       &::before {
-        background-color: $p-color-theme-light-neutral-contrast-high;
+        background-color: $p-color-neutral-contrast-high;
       }
     }
 
     &--checked#{&}--disabled {
       &::before {
-        background-color: $p-color-theme-light-state-disabled;
+        background-color: $p-color-state-disabled;
       }
     }
 
     &--checked#{&}--error {
       &::before {
-        background-color: $p-color-theme-light-notification-error;
+        background-color: $p-color-notification-error;
       }
     }
 
     &--checked#{&}--success {
       &::before {
-        background-color: $p-color-theme-light-notification-success;
+        background-color: $p-color-notification-success;
       }
     }
 
     &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
+      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
       }
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
       }
     }
   }
 
   &__message {
     margin-top: $p-spacing-4;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--success {
-      color: $p-color-theme-light-notification-success;
+      color: $p-color-notification-success;
     }
 
     &--error {
-      color: $p-color-theme-light-notification-error;
+      color: $p-color-notification-error;
     }
   }
 }

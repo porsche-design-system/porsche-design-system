@@ -73,7 +73,7 @@
 }
 ::slotted(a:focus)::before {
   outline-offset: 1px !important;
-  outline: $p-color-theme-light-state-focus solid 1px !important;
+  outline: $p-color-state-focus solid 1px !important;
 }
 
 .#{$p-global-class-prefix}link-social {
@@ -104,27 +104,27 @@
   }
 
   &--theme-light {
-    background-color: $p-color-theme-light-neutral-contrast-high;
+    background-color: $p-color-neutral-contrast-high;
     color: $p-color-theme-dark-default;
 
     &:hover,
     &:active {
       color: $p-color-theme-dark-default;
-      background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+      background-color: darken($p-color-neutral-contrast-high, 12%);
     }
 
     &:focus {
-      outline-color: $p-color-theme-light-state-focus;
+      outline-color: $p-color-state-focus;
     }
   }
 
   &--theme-dark {
     background-color: $p-color-theme-dark-default;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
 
     &:hover,
     &:active {
-      color: $p-color-theme-light-default;
+      color: $p-color-default;
       background-color: darken($p-color-theme-dark-default, 12%);
     }
 

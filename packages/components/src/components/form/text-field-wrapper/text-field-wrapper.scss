@@ -52,7 +52,7 @@
   font-size: $p-font-size-small !important;
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
-  color: $p-color-theme-light-default !important;
+  color: $p-color-default !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
@@ -71,7 +71,7 @@
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.01) !important;
-  color: $p-color-theme-light-neutral-contrast-medium !important;
+  color: $p-color-neutral-contrast-medium !important;
 }
 
 // Disabled
@@ -79,8 +79,8 @@
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.02) !important;
-  color: $p-color-theme-light-state-disabled !important;
-  -webkit-text-fill-color: $p-color-theme-light-state-disabled !important; // fix placeholder color bug in Safari
+  color: $p-color-state-disabled !important;
+  -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
 }
 
@@ -124,11 +124,11 @@
   &__description-text {
     display: block;
     width: fit-content;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     &--visible {
@@ -198,10 +198,10 @@
   }
 
   &__description-text {
-    color: $p-color-theme-light-neutral-contrast-medium;
+    color: $p-color-neutral-contrast-medium;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     #{$bem-block}__label-text ~ & {
@@ -215,19 +215,19 @@
     width: 100%;
     height: p-px-to-rem(48px);
     display: block;
-    background-color: $p-color-theme-light-background;
-    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+    background-color: $p-color-background-default;
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
       background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
     #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+      box-shadow: inset 0 0 0 1px $p-color-default;
     }
 
     &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
-      background-color: $p-color-theme-light-background;
+      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      background-color: $p-color-background-default;
     }
 
     &--readonly {
@@ -236,35 +236,35 @@
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
       }
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
       }
     }
   }
 
   &__message {
     margin-top: $p-spacing-4;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--success {
-      color: $p-color-theme-light-notification-success;
+      color: $p-color-notification-success;
     }
 
     &--error {
-      color: $p-color-theme-light-notification-error;
+      color: $p-color-notification-error;
     }
   }
 
@@ -283,7 +283,7 @@
     text-decoration: none;
     background: transparent;
     cursor: pointer;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &::-moz-focus-inner {
@@ -291,19 +291,19 @@
     }
 
     &:hover {
-      color: $p-color-theme-light-state-hover;
+      color: $p-color-state-hover;
     }
 
     &:active {
-      color: $p-color-theme-light-state-active;
+      color: $p-color-state-active;
     }
 
     &:focus {
-      color: $p-color-theme-light-state-focus;
+      color: $p-color-state-focus;
     }
 
     &:disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
       cursor: not-allowed !important;
     }
   }
