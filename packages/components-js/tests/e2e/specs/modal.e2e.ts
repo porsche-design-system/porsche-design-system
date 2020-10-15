@@ -143,19 +143,20 @@ describe('modal', () => {
     it('should focus first focusable element', async () => {
       await initAdvancedModal();
       await openModal();
-      expect(await getActiveElementId(page)).toBe('btn-content-1');
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should focus close button when there is no focusable content element', async () => {
       await initBasicModal({ isOpen: false });
       await openModal();
-      const activeElementTagName = await getActiveElementTagNameInShadowRoot(await getModalHost());
-      expect(activeElementTagName).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
       await openModal();
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-2');
@@ -164,10 +165,25 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      const activeElementTagName = await getActiveElementTagNameInShadowRoot(await getModalHost());
-      expect(activeElementTagName).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+    });
+
+    it('should reverse cycle tab events within modal', async () => {
+      await initAdvancedModal();
+      await openModal();
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-footer-2');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.up('ShiftLeft');
     });
 
     it('should focus nothing when there is no focusable element', async () => {

@@ -23,7 +23,6 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
-  private isClosedViaEnter = false;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -33,29 +32,24 @@ export class Modal {
     if (isOpen) {
       this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-      this.isClosedViaEnter = false;
 
       // timeout is needed to focus close button which only appears after render and trick blurOnFocus
-      setTimeout(() =>
-        this.focusableElements[this.disableCloseButton || this.focusableElements.length === 1 ? 0 : 1]?.focus()
-      );
+      setTimeout(() => this.focusableElements[0]?.focus());
     } else {
-      if (this.isClosedViaEnter) {
-        // timeout is needed to focus previously focused button reliably because of blurOnFocus
-        setTimeout(() => this.focusedElBeforeOpen?.focus());
-      } else {
-        this.focusedElBeforeOpen?.focus();
-      }
+      // timeout is needed to focus previously focused button reliably because of blurOnFocus
+      setTimeout(() => this.focusedElBeforeOpen?.focus());
     }
   }
 
   public connectedCallback(): void {
     if (this.open) {
+      // in case modal is rendered with open prop
       this.setKeyboardListener(true);
     }
   }
 
   public componentDidLoad(): void {
+    // in case modal is rendered with open prop
     this.setFocusableElements();
   }
 
@@ -133,8 +127,6 @@ export class Modal {
     const { key, shiftKey } = e;
     if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
-    } else if (key === 'Enter' && this.closeBtn === this.host.shadowRoot.activeElement) {
-      this.isClosedViaEnter = true;
     } else if (key === 'Tab') {
       // cycle focus within modal elements
       if (this.focusableElements.length <= 1) {
