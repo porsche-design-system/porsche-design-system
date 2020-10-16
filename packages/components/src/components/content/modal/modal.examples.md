@@ -34,7 +34,7 @@ If the Modal's content does not fit into the current boundaries the content beco
 
 <Playground>
   <p-button @click="openModal(1)">Open Modal</p-button>
-  <p-modal heading="Some Heading" :open="isOpen(1)" v-on:close="closeModal(1)">
+  <p-modal id="modal-scrollable" heading="Some Heading" :open="isOpen(1)" v-on:close="closeModal(1)">
     <p-text>Some Content</p-text>
     <div style="height: 40vh;"></div>
     <p-text>More Content</p-text>
@@ -84,6 +84,15 @@ Of course, any combination of the available options is possible.
     
     private mounted() {
       this.modalState = { ...Array.from(Array(document.querySelectorAll('.playground').length)) };
+
+      // workaround for iOS 13.x masking modal within example
+      document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
+
+      // workaround for iOS 13.x not respecting flex-wrap: wrap; correctly
+      // timeout is needed for component to render 
+      setTimeout(() => {
+        document.getElementById('modal-scrollable').shadowRoot.querySelector('.p-modal').style.alignSelf = 'start'
+      }, 1000);
     }
     
     public isOpen(index: number): boolean {
