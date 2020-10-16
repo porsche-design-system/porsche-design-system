@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getPrefixedTagNames, prefix } from '../../../utils';
+import { getPrefixedTagNames, isIos, prefix } from '../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -117,10 +117,35 @@ export class Modal {
 
   private setScrollLock = (lock: boolean): void => {
     document.body.style.overflow = lock ? 'hidden' : '';
+
+    // prevent scrolling of background on iOS
+    if (isIos()) {
+      const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
+      document[addOrRemoveEventListener]('touchmove', this.handleDocumentTouchMove, false);
+      this.host[addOrRemoveEventListener]('touchmove', this.handleHostTouchMove);
+    }
   };
 
   private setKeyboardListener = (active: boolean): void => {
     document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
+  };
+
+  private handleDocumentTouchMove = (e: TouchEvent): void => {
+    e.preventDefault();
+  };
+
+  private handleHostTouchMove = function(e: TouchEvent): void {
+    // Source: https://stackoverflow.com/a/43860705
+    const { scrollTop, scrollHeight, offsetHeight } = this;
+    const currentScroll = scrollTop + offsetHeight;
+
+    if (scrollTop === 0 && currentScroll === scrollHeight) {
+      e.preventDefault();
+    } else if (scrollTop === 0) {
+      this.scrollTop = 1;
+    } else if (currentScroll === scrollHeight) {
+      this.scrollTop = scrollTop - 1;
+    }
   };
 
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
