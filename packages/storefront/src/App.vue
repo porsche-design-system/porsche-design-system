@@ -320,8 +320,6 @@
 
   .content {
     position: relative;
-    height: 100vh;
-    width: 100vw;
     overflow: hidden;
 
     &--menu-active {
@@ -344,7 +342,7 @@
   }
 
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -364,11 +362,7 @@
   }
 
   .main {
-    height: 100vh;
     background: $p-color-theme-light-background;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
 
     @include p-media-query('xxs', 's') {
       &--animate {
