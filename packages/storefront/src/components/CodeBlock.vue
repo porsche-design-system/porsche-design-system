@@ -196,7 +196,7 @@
     &.light {
       code,
       pre {
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
         text-shadow: 0 1px rgba(255, 255, 255, 0.3);
       }
 

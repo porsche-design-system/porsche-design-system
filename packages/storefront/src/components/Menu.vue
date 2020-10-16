@@ -37,11 +37,11 @@
 
     &:hover {
       .stripe {
-        background: darken($p-color-theme-light-state-hover, 10%);
+        background: darken($p-color-state-hover, 10%);
 
         &::before,
         &::after {
-          background: darken($p-color-theme-light-state-hover, 10%);
+          background: darken($p-color-state-hover, 10%);
         }
       }
     }
@@ -73,7 +73,7 @@
     width: p-px-to-rem(24px);
     height: 2px;
     display: block;
-    background: $p-color-theme-light-brand;
+    background: $p-color-brand;
     transition: transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
     &::before,
@@ -83,7 +83,7 @@
       height: 2px;
       display: block;
       transition: transform 0.15s ease;
-      background: $p-color-theme-light-brand;
+      background: $p-color-brand;
     }
 
     &::before {
@@ -95,7 +95,7 @@
     &::after {
       bottom: p-px-to-rem(-11px);
       width: p-px-to-rem(24px);
-      background: $p-color-theme-light-brand;
+      background: $p-color-brand;
       transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
   }

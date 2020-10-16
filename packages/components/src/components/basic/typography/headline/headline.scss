@@ -64,7 +64,7 @@
   &--color {
     &-default {
       &#{$bem-block}--theme-light {
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
       }
 
       &#{$bem-block}--theme-dark {
