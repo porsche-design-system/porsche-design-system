@@ -61,28 +61,28 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = prefix('modal');
     const headerClasses = prefix('modal__header');
-    const btnCloseClasses = prefix('modal__close');
+    const btnCloseWrapperClasses = prefix('modal__close');
+    const btnCloseClasses = prefix('modal__close-button');
 
-    const ariaLabelledBy = this.heading && 'modal-title';
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
 
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
-        <aside class={rootClasses} role="dialog" aria-modal="true" aria-labelledby={ariaLabelledBy}>
+        <aside class={rootClasses} role="dialog" aria-modal="true" aria-label={this.heading} aria-hidden={!this.open ? 'true' : 'false'}>
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <PrefixedTagNames.pHeadline id={ariaLabelledBy} variant="headline-2">
+                <PrefixedTagNames.pHeadline variant="headline-2">
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
-                <div class={btnCloseClasses}>
+                <div class={btnCloseWrapperClasses}>
                   <PrefixedTagNames.pButtonPure
+                    class={btnCloseClasses}
                     ref={(el) => (this.closeBtn = el)}
                     hideLabel
                     icon="close"
-                    aria-label="Close"
                     onClick={this.closeModal}
                   >
                     Close

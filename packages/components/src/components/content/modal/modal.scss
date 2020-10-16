@@ -79,4 +79,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     margin-left: auto;
     padding-left: p-px-to-rem(8px);
   }
+
+  &__close-button {
+    margin: p-px-to-rem(-8px) p-px-to-rem(-8px) 0 0;
+    padding: p-px-to-rem(8px);
+  }
 }
