@@ -93,11 +93,11 @@
     outline: none transparent;
 
     &:focus {
-      outline-width: 2px;
+      outline-width: 1px;
       outline-style: solid;
 
       #{$bem-block}--theme-light & {
-        outline-color: $p-color-theme-light-state-focus;
+        outline-color: $p-color-state-focus;
       }
 
       #{$bem-block}--theme-dark & {
@@ -109,7 +109,7 @@
       outline: none;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-state-active;
+        color: $p-color-state-active;
       }
 
       #{$bem-block}--theme-dark & {
@@ -124,7 +124,7 @@
     cursor: pointer;
 
     #{$bem-block}--theme-light & {
-      color: $p-color-theme-light-default;
+      color: $p-color-default;
     }
 
     #{$bem-block}--theme-dark & {
@@ -133,7 +133,7 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-state-hover;
+        color: $p-color-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
@@ -146,7 +146,7 @@
 
       &:hover {
         #{$bem-block}--theme-light & {
-          color: $p-color-theme-light-default;
+          color: $p-color-default;
         }
 
         #{$bem-block}--theme-dark & {
@@ -164,7 +164,7 @@
         height: p-px-to-rem(4px);
 
         #{$bem-block}--theme-light & {
-          background-color: $p-color-theme-light-brand;
+          background-color: $p-color-brand;
         }
 
         #{$bem-block}--theme-dark & {
@@ -178,7 +178,7 @@
 
       &:hover {
         #{$bem-block}--theme-light & {
-          color: $p-color-theme-light-default;
+          color: $p-color-default;
         }
 
         #{$bem-block}--theme-dark & {
@@ -198,7 +198,7 @@
     cursor: pointer;
 
     #{$bem-block}--theme-light & {
-      color: $p-color-theme-light-default;
+      color: $p-color-default;
     }
 
     #{$bem-block}--theme-dark & {
@@ -207,7 +207,7 @@
 
     &:hover {
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-state-hover;
+        color: $p-color-state-hover;
       }
 
       #{$bem-block}--theme-dark & {
@@ -219,7 +219,7 @@
       cursor: default;
 
       #{$bem-block}--theme-light & {
-        color: $p-color-theme-light-state-disabled;
+        color: $p-color-state-disabled;
       }
 
       #{$bem-block}--theme-dark & {
@@ -228,7 +228,7 @@
 
       &:hover {
         #{$bem-block}--theme-light & {
-          color: $p-color-theme-light-state-disabled;
+          color: $p-color-state-disabled;
         }
 
         #{$bem-block}--theme-dark & {

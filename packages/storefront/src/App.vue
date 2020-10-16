@@ -348,8 +348,8 @@
     bottom: 0;
     width: p-px-to-rem(280px);
     padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
-    border-right: 1px solid $p-color-theme-light-neutral-contrast-low;
-    background: $p-color-theme-light-background;
+    border-right: 1px solid $p-light-neutral-contrast-low;
+    background: $p-light-background;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -362,7 +362,7 @@
   }
 
   .main {
-    background: $p-color-theme-light-background;
+    background: $p-light-background;
 
     @include p-media-query('xxs', 's') {
       &--animate {
@@ -379,7 +379,7 @@
   .router-view {
     position: relative;
     padding: $p-spacing-32;
-    background: $p-color-theme-light-background;
+    background: $p-light-background;
 
     @include p-media-query('xxs', 's') {
       opacity: 1;

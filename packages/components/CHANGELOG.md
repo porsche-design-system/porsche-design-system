@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - `Spinner` zooming bug on Safari
 
+#### Changed
+- Focus styling
+
 ### [2.0.0-alpha.3] - 2020-09-11
 
 #### Added

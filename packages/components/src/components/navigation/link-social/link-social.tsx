@@ -113,7 +113,7 @@ export class LinkSocial {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `a:focus ${tagName} {
-      outline: 2px solid #00d5b9;
+      outline: 1px solid currentColor;
       outline-offset: 1px;
     }
 
@@ -131,7 +131,7 @@ export class LinkSocial {
 
     ${tagName} a:focus::before {
       outline-offset: 1px !important;
-      outline: #00d5b9 solid 2px !important;
+      outline: currentColor solid 1px !important;
     }
     `;
     insertSlottedStyles(this.host, style);
