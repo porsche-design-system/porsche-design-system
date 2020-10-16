@@ -68,13 +68,17 @@ export class Modal {
 
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
-        <aside class={rootClasses} role="dialog" aria-modal="true" aria-label={this.heading} aria-hidden={!this.open ? 'true' : 'false'}>
+        <aside
+          class={rootClasses}
+          role="dialog"
+          aria-modal="true"
+          aria-label={this.heading}
+          aria-hidden={!this.open ? 'true' : 'false'}
+        >
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <PrefixedTagNames.pHeadline variant="headline-2">
-                  {this.heading}
-                </PrefixedTagNames.pHeadline>
+                <PrefixedTagNames.pHeadline variant="headline-2">{this.heading}</PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseWrapperClasses}>
@@ -122,6 +126,7 @@ export class Modal {
     if (isIos()) {
       const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
       document[addOrRemoveEventListener]('touchmove', this.handleDocumentTouchMove, false);
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.host[addOrRemoveEventListener]('touchmove', this.handleHostTouchMove);
     }
   };
@@ -136,7 +141,7 @@ export class Modal {
 
   private handleHostTouchMove = function(e: TouchEvent): void {
     // Source: https://stackoverflow.com/a/43860705
-    const { scrollTop, scrollHeight, offsetHeight } = this;
+    const { scrollTop, scrollHeight, offsetHeight } = this as HTMLElement;
     const currentScroll = scrollTop + offsetHeight;
 
     if (scrollTop === 0 && currentScroll === scrollHeight) {
