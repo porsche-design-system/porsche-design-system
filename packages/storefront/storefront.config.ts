@@ -124,6 +124,10 @@ export const config: StorefrontConfig = {
       Resources: [
         // @ts-ignore
         () => import(`@/pages/patterns/forms/resources.md`)
+      ],
+      Legal: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/forms/legal.md`)
       ]
     }
   },
