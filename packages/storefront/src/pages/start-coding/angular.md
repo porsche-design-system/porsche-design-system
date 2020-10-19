@@ -7,7 +7,7 @@ You can find the repository of the angular example project here: [Sample integra
 * Get the Angular cli by executing `npm install -g @angular/cli`
 
 ### Get the project up and running
-* Clone the repository by executing <br>
+* Clone the repository by executing  
 `git clone https://github.com/porscheui/sample-integration-angular.git`
 
 ### yarn

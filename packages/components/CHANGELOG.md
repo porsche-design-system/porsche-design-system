@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Migration path
+With our new major release `v2.0.0` there comes some significant changes which you should take care of. 
+To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some guidelines which should help to keep track of the (breaking) changes: 
+
+##### Breaking changes
+- Drop support of **IE11** and **IE Edge < 18**. If you still need to support these browsers, you have to stick on `v1.5.x`. We provide a Browser Notification Component to point out to the users that these Browsers are no longer supported. Also see (Browser Compatibility)[#/help/browser-compatibility] guidelines. 
+- Color and outline of general focus styling has changed to **black** (on light theme) and **white** (on dark theme) with an outline of 1px width/offset.
+- Our PDS components are now loaded via an CDN which means that you need an internet connection, and a web server as well to render the components in a Browser.
+
+##### General improvements you should follow
+- Now we provide **prefexing** support for most of our components. That means that you can build and deliver your code in a microfrontend architecture without the risk of interfering with others. Please refer to our (framework specific guidelines)[#/start-coding/introduction].
+- To optimize FOUT (Flash Of Unstyled Text) and FOUC (Flash Of Unstyled Content) follow our (Loading Guidelines)[#/performance/loading-behaviour]
+- We have also added support for (China CDN)[#/performance/cdn] to optimize loading behavior of our assets and components
+
 ### [2.0.0-alpha.4] - 2020-10-14
 
 #### Added
@@ -17,9 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tabs` component
 - `Tabs Bar` component
 - `Banner` component
-
-#### Removed
-- Default `position:relative;` style of `LinkPure` and `ButtonPure` 
 
 #### Fixed
 - `Spinner` zooming bug on Safari
@@ -45,6 +56,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
+### [1.5.6] - 2020-10-15
+
+### [1.5.6-rc.0] - 2020-10-13
+
+### Fixed
+- `Spinner` zooming bug on Safari
+
+### [1.5.5] - 2020-09-11
 
 ### [1.5.5-rc.0] - 2020-09-07
 

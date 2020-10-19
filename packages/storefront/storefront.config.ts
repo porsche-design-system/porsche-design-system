@@ -34,6 +34,10 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/start-coding/react.md`)
     ],
+    'Vanilla Js': [
+      // @ts-ignore
+      () => import(`@/pages/start-coding/vanilla-js.md`)
+    ],
     'Next Js': [
       // @ts-ignore
       () => import(`@/pages/start-coding/next-js.md`)
