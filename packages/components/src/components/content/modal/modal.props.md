@@ -1,4 +1,4 @@
-# Modal Dialog
+# Modal
 
 
 
