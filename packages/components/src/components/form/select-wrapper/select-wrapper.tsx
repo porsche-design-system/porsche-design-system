@@ -66,6 +66,9 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
+  private mouseEventListener = this.handleMouseEvents.bind(this);
+  private keyboardEventListener = this.handleKeyboardEvents.bind(this);
+  private clickOutsideEventListener = this.handleClickOutside.bind(this);
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -75,7 +78,7 @@ export class SelectWrapper {
     }
   }
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.initSelect();
     this.setAriaAttributes();
     this.setState();
@@ -86,11 +89,11 @@ export class SelectWrapper {
       this.observeSelect();
       this.setOptionList();
       if (!this.filter) {
-        this.select.addEventListener('mousedown', this.handleMouseEvents.bind(this));
+        this.select.addEventListener('mousedown', this.mouseEventListener);
       }
-      this.select.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      this.select.addEventListener('keydown', this.keyboardEventListener);
       if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.handleClickOutside.bind(this), true);
+        document.addEventListener('mousedown', this.clickOutsideEventListener, true);
       }
     }
   }
@@ -111,10 +114,10 @@ export class SelectWrapper {
   public disconnectedCallback(): void {
     if (!this.isTouchWithoutFilter) {
       this.selectObserver.disconnect();
-      this.select.removeEventListener('mousedown', this.handleMouseEvents.bind(this));
-      this.select.removeEventListener('keydown', this.handleKeyboardEvents.bind(this));
+      this.select.removeEventListener('mousedown', this.mouseEventListener);
+      this.select.removeEventListener('keydown', this.keyboardEventListener);
       if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.handleClickOutside.bind(this), true);
+        document.removeEventListener('mousedown', this.clickOutsideEventListener, true);
       }
     }
   }
