@@ -107,7 +107,7 @@ export default class Markdown extends Vue {
         }
         border: 0;
         height: 1px;
-        background-color: $p-color-theme-light-neutral-contrast-low;
+        background-color: $p-color-neutral-contrast-low;
       }
 
       // Emphasis
@@ -130,7 +130,7 @@ export default class Markdown extends Vue {
       // Blockquote
       blockquote {
         padding-left: $p-spacing-24;
-        border-left: p-px-to-rem(5px) solid $p-color-theme-light-neutral-contrast-low;
+        border-left: p-px-to-rem(5px) solid $p-color-neutral-contrast-low;
       }
 
       // Lists
@@ -163,9 +163,9 @@ export default class Markdown extends Vue {
 
       :not(pre) > code {
         padding: 0.125rem $p-spacing-8;
-        background-color: mix($p-color-theme-light-brand, $p-color-theme-light-background, 10%);
+        background-color: mix($p-color-brand, $p-color-background-default, 10%);
         border-radius: 3px;
-        color: $p-color-theme-light-brand;
+        color: $p-color-brand;
       }
 
       pre {
@@ -174,8 +174,8 @@ export default class Markdown extends Vue {
         padding: $p-spacing-8 $p-spacing-24;
         word-break: break-all;
         word-wrap: break-word;
-        background-color: $p-color-theme-light-surface;
-        color: $p-color-theme-light-neutral-contrast-high;
+        background-color: $p-color-background-surface;
+        color: $p-color-neutral-contrast-high;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -197,7 +197,7 @@ export default class Markdown extends Vue {
         th {
           text-align: left;
           padding-bottom: $p-spacing-8;
-          border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+          border-bottom: 1px solid $p-color-neutral-contrast-low;
         }
 
         td {
@@ -206,7 +206,7 @@ export default class Markdown extends Vue {
             top: $p-spacing-8;
             bottom: $p-spacing-8;
           }
-          border-bottom: 1px solid $p-color-theme-light-neutral-contrast-low;
+          border-bottom: 1px solid $p-color-neutral-contrast-low;
           vertical-align: top;
           width: 10%;
         }
@@ -221,18 +221,18 @@ export default class Markdown extends Vue {
       a:not(.p-button):not(.p-link) {
         outline: none;
         text-decoration: underline;
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
         transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
         &:hover {
           text-decoration: none;
-          color: $p-color-theme-light-state-hover;
+          color: $p-color-state-hover;
 
         }
 
         &:focus {
           text-decoration: underline;
-          color: $p-color-theme-light-state-focus;
+          color: $p-color-state-focus;
         }
       }
 
