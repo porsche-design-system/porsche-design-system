@@ -23,7 +23,7 @@ The component Pure (without label) is only used if the context clearly describes
 
 ### Placeholder
 
-Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. However, using placeholder text is not recommended since users can misinterpret it as already filled in content. Please find more information in the [Form pattern guideline](#/patterns/forms).
+Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. Use the placeholder text only in exceptions. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Description text
 
