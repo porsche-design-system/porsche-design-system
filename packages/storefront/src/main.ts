@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
+import Playground2 from '@/components/Playground2.vue';
 import ColorBadge from '@/components/ColorBadge.vue';
 
 /**
@@ -19,6 +20,7 @@ Vue.config.ignoredElements = [/p-\w*/];
 Vue.use({
   install(vue: VueConstructor) {
     vue.component('Playground', Playground);
+    vue.component('Playground2', Playground2);
     vue.component('ColorBadge', ColorBadge);
   },
 });
