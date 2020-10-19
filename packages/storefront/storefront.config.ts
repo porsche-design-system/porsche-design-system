@@ -576,7 +576,7 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
       ]
     },
-    'Modal Dialog': {
+    Modal: {
       Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/content/modal/modal.examples.md`)

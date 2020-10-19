@@ -1,13 +1,13 @@
-# Modal Dialog
+# Modal
 
-A Modal Dialog is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
+A Modal is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
 
 ## Basic
 
 `p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
-The most important property of `p-modal` is its `open` attribute.  When it is present the Modal Dialog will be visible.
+The most important property of `p-modal` is its `open` attribute.  When it is present the Modal will be visible.
   
 In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
 
@@ -27,6 +27,9 @@ modal.addEventListener('close', () => {
     </p-flex>
   </p-modal>
 </Playground>
+
+Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/patterns/buttons).
+
 
 ## Basic Scrollable
 
