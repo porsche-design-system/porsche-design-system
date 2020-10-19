@@ -1,6 +1,8 @@
 # Modal
 
-A Modal is a temporary overlay that takes focus from the page and requires people to interact with it. It’s primarily used for confirming actions, such as asking people to make a choice. It should be used thoughtfully and sparingly.
+A Modal is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as modal dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
+
+Modals are flexible in the context and can include other components of the Porsche Design System.
 
 ## Basic
 
