@@ -32,7 +32,7 @@
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/http-server": "^0.10.0",
     "@types/jasmine": "^3.5.14",
-    "@types/node": "^14.11.8",
+    "@types/node": "^14.11.10",
     "@types/puppeteer": "^3.0.2",
     "@types/webpack": "^4.41.22",
     "concurrently": "^5.3.0",
