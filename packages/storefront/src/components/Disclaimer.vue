@@ -20,6 +20,6 @@ export default class Disclaimer extends Vue {
 
 .disclaimer {
   padding: $p-spacing-8 $p-spacing-32;
-  background: $p-color-theme-light-neutral-contrast-high;
+  background: $p-color-neutral-contrast-high;
 }
 </style>

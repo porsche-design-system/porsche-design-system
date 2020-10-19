@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 - Background surface and hover/active state colors for dark theme
+- Global focus colors
 
 ### [2.0.0] - 2020-08-19
 
