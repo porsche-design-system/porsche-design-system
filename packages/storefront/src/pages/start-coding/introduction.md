@@ -62,7 +62,9 @@ npm install @porsche-design-system/components-react
 yarn add @porsche-design-system/components-react
 ```
 
-#### SCSS utils (optional):
+#### SCSS/JS utilities (optional):
+SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
+
 ``` 
 // install with npm:
 npm install @porsche-design-system/utilities --save-dev
@@ -70,59 +72,6 @@ npm install @porsche-design-system/utilities --save-dev
 // install with yarn:
 yarn add @porsche-design-system/utilities --dev
 ``` 
-
-## Usage
-
-### Vanilla JS
-
-If you're using web components in a static website, the following page setup is recommended (assuming a web server is running):
-
-``` 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      porscheDesignSystem.load();
-    </script>
-    <p-headline variant="headline-1">Some text</p-headline>
-  </body>
-</html>
-``` 
-
-You can load the Porsche Design System with a custom unique prefix to prevent conflicts. You've just to pass
-the prefix as a parameter to the `load` method.
-Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
-do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
-
-``` 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      porscheDesignSystem.load({ prefix: 'sample-prefix' });
-    </script>
-    <sample-prefix-p-headline variant="headline-1">Some text</sample-prefix-p-headline>
-  </body>
-</html>
-```
-
---- 
-
-### SCSS utils
-
-SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
 
 --- 
 

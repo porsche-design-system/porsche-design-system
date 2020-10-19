@@ -3,7 +3,7 @@
     <p-tabs-bar v-if="hasTabs" :active-tab-index="activeTabIndex" size="medium">
       <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
     </p-tabs-bar>
-    <p-divider></p-divider>
+    <p-divider v-if="hasTabs"></p-divider>
     <Markdown>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
     </Markdown>

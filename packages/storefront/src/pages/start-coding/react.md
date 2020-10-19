@@ -1,10 +1,10 @@
 # React
 ## Sample integration
 
-You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
+You can find the repository of the React example project here: [Sample integration React](https://github.com/porscheui/sample-integration-react)
 
 ## Get the project up and running
-* Clone the repository by executing <br>
+* Clone the repository by executing  
 `git clone https://github.com/porscheui/sample-integration-react.git`
 
 ### yarn
