@@ -7,6 +7,7 @@ const { favicon, touchIcon, pinnedTab, mstile } = META_ICONS_MANIFEST;
 
 module.exports = {
   publicPath: './',
+  runtimeCompiler: true,
   chainWebpack: (config) => {
     config.module
       .rule('vue')
