@@ -69,7 +69,6 @@
     "sass-loader": "^10.0.2",
     "ts-node": "^9.0.0",
     "typescript": "~4.0.3",
-    "v-runtime-template": "^1.10.0",
     "vue-template-compiler": "^2.6.12"
   },
   "scope": "@porsche-design-system"

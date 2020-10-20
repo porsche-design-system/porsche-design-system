@@ -1,28 +1,26 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="config.themeable">
+    <p-tabs-bar v-if="mergedConfig.themeable">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
     <div
       class="example"
       :class="{
-        light: (config.themeable && theme === 'light') || config.themeable === false,
-        dark: config.themeable && theme === 'dark',
-        surface: config.colorScheme === 'surface',
-        'height-fixed': config.height === 'fixed',
-        'spacing-inline': config.spacing === 'inline',
-        'spacing-block': config.spacing === 'block',
-        'spacing-block-small': config.spacing === 'block-small'
+        'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
+        'example--dark': mergedConfig.themeable && theme === 'dark',
+        'example--surface': mergedConfig.colorScheme === 'surface',
+        'example--height-fixed': mergedConfig.height === 'fixed',
+        'example--spacing-inline': mergedConfig.spacing === 'inline',
+        'example--spacing-block': mergedConfig.spacing === 'block',
+        'example--spacing-block-small': mergedConfig.spacing === 'block-small'
       }"
     >
-      <div class="configurator" v-if="isSlotSet('configurator')">
+      <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code" v-html="markup">
-        <!--        <slot :theme="theme" />-->
-      </div>
-      <CodeBlock :markup="markup" :theme="theme" />
+      <div class="code" v-html="cleanedMarkup"></div>
+      <CodeBlock :markup="cleanedMarkup" :theme="theme" />
     </div>
   </div>
 </template>
@@ -54,10 +52,18 @@
     }
   })
   export default class Playground2 extends Vue {
-    @Prop({ default: () => initialConfig }) public config!: PlaygroundConfig;
+    @Prop({ default: () => ({}) }) public config: Partial<PlaygroundConfig>;
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
+
+    public get mergedConfig(): PlaygroundConfig {
+      return { ...initialConfig, ...this.config };
+    }
+
+    public get cleanedMarkup(): string {
+      return this.markup.replace(/\n/g, '');
+    }
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
@@ -79,70 +85,63 @@
     border: 1px solid transparent;
 
     // Theme
-    &.light {
+    &--light {
       border-color: $p-color-neutral-contrast-low;
       background-color: $p-color-background-default;
 
-      &.surface {
+      &.example--surface {
         border-color: $p-color-background-surface;
         background-color: $p-color-background-surface;
       }
     }
 
-    &.dark {
+    &--dark {
       border-color: $p-color-theme-dark-background-default;
       background-color: $p-color-theme-dark-background-default;
 
-      &.surface {
+      &.example--surface {
         border-color: $p-color-theme-dark-background-surface;
         background-color: $p-color-theme-dark-background-surface;
       }
     }
 
     // Child Layout "height"
-    &.height-fixed .code {
-      > * {
+    &--height-fixed .code {
+      ::v-deep * {
         height: p-px-to-rem(180px);
       }
     }
 
     // Child layout "spacing"
-    &.spacing-inline .code {
+    &--spacing-block .code,
+    &--spacing-inline .code {
       &::before {
         content: '';
         display: block;
         margin-top: -$p-spacing-16;
       }
 
-      > * {
+      ::v-deep * {
         margin-top: $p-spacing-16;
+      }
+    }
 
+    &--spacing-inline .code {
+      ::v-deep * {
         &:not(:last-child) {
           margin-right: $p-spacing-16;
         }
       }
     }
 
-    &.spacing-block .code {
-      &::before {
-        content: '';
-        display: block;
-        margin-top: -$p-spacing-16;
-      }
-
-      > * {
-        margin-top: $p-spacing-16;
-      }
-    }
-
-    &.spacing-block-small .code {
+    &--spacing-block-small .code {
       &::before {
         content: '';
         display: block;
         margin-top: -$p-spacing-8;
       }
 
-      > * {
+      ::v-deep * {
         margin-top: $p-spacing-8;
       }
     }
