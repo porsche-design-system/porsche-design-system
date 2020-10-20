@@ -11,11 +11,10 @@ Basically you can use the following approach to serve the grouped button pattern
 ### Responsive row/column behaviour left aligned
 
 <Playground>
-  <p-flex class="button-group-col button-group-row--s ">
-      <p-button variant="primary">Some label</p-button>
-      <p-button variant="secondary">Some label</p-button>
-      <p-button variant="tertiary">Some label</p-button>
-
+  <p-flex class="button-group-col button-group-row--s">
+    <p-button variant="primary">Some label</p-button>
+    <p-button variant="secondary">Some label</p-button>
+    <p-button variant="tertiary">Some label</p-button>
   </p-flex>
 </Playground>
 
