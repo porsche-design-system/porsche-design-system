@@ -61,6 +61,7 @@
       js: 'porscheDesignSystem.load()'
     });
 
+    /* eslint-disable no-useless-escape */
     stackblitz = {
       html:
         cleanMarkup(this.markup) +
@@ -68,6 +69,7 @@
 <script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
 <script>porscheDesignSystem.load();<\/script>`
     };
+    /* eslint-enable no-useless-escape */
 
     codesandbox = getParameters({
       files: {
