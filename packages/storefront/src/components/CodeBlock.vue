@@ -11,6 +11,16 @@
       <input type="hidden" name="data" :value="codepen" />
       <p-button type="submit">Edit in CodePen</p-button>
     </form>
+
+    <form action="https://stackblitz.com/run?file=index.html" method="POST" target="_blank">
+      <input type="hidden" name="project[files][index.js]" value="" />
+      <input type="hidden" name="project[files][index.html]" :value="stackblitz.html" />
+      <input type="hidden" name="project[description]" value="Porsche Design System" />
+      <input type="hidden" name="project[dependencies]" value="{}" />
+      <input type="hidden" name="project[template]" value="javascript" />
+      <input type="hidden" name="project[options][openFile]" value="index.html" />
+      <p-button type="submit">Edit in StackBlitz</p-button>
+    </form>
   </div>
 </template>
 
@@ -44,6 +54,14 @@
       js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
       js: 'porscheDesignSystem.load()'
     });
+
+    stackblitz = {
+      html:
+        cleanMarkup(this.markup) +
+        `\n
+<script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
+<script>porscheDesignSystem.load();<\/script>`
+    };
 
     public get activeTabIndex(): number {
       return Object.keys(this.frameWorks).indexOf(this.framework);
