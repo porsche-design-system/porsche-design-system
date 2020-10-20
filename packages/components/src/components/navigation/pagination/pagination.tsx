@@ -61,7 +61,7 @@ export class Pagination {
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
   /** Emitted when the page changes. */
-  @Event() public pageChange!: EventEmitter;
+  @Event() public pageChange!: EventEmitter<{ page: number; previousPage: number }>;
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
