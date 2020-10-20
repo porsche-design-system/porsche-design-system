@@ -6,26 +6,6 @@
       </button>
     </p-tabs-bar>
     <pre><code v-html="highlightedMarkup"></code></pre>
-
-    <form action="https://codepen.io/pen/define" method="POST" target="_blank">
-      <input type="hidden" name="data" :value="codepen" />
-      <p-button type="submit">Edit in CodePen</p-button>
-    </form>
-
-    <form action="https://stackblitz.com/run?file=index.html" method="POST" target="_blank">
-      <input type="hidden" name="project[files][index.js]" value="" />
-      <input type="hidden" name="project[files][index.html]" :value="stackblitz.html" />
-      <input type="hidden" name="project[description]" value="Porsche Design System" />
-      <input type="hidden" name="project[dependencies]" value="{}" />
-      <input type="hidden" name="project[template]" value="javascript" />
-      <input type="hidden" name="project[options][openFile]" value="index.html" />
-      <p-button type="submit">Edit in StackBlitz</p-button>
-    </form>
-
-    <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
-      <input type="hidden" name="parameters" :value="codesandbox" />
-      <p-button type="submit">Edit in CodeSandbox</p-button>
-    </form>
   </div>
 </template>
 
@@ -36,7 +16,6 @@
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import 'prismjs/components/prism-markup';
-  import { getParameters } from 'codesandbox/lib/api/define';
   import { Framework, Theme } from '@/models';
   import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
 
@@ -50,35 +29,6 @@
       angular: 'Angular',
       react: 'React'
     };
-
-    codepen = JSON.stringify({
-      // css_external: 'https://...css',
-      layout: 'left',
-      editors: '100',
-      title: 'Porsche Design System',
-      html: cleanMarkup(this.markup),
-      js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
-      js: 'porscheDesignSystem.load()'
-    });
-
-    /* eslint-disable no-useless-escape */
-    stackblitz = {
-      html:
-        cleanMarkup(this.markup) +
-        `\n
-<script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
-<script>porscheDesignSystem.load();<\/script>`
-    };
-    /* eslint-enable no-useless-escape */
-
-    codesandbox = getParameters({
-      files: {
-        'index.html': {
-          content: this.stackblitz.html,
-          isBinary: false
-        }
-      }
-    });
 
     public get activeTabIndex(): number {
       return Object.keys(this.frameWorks).indexOf(this.framework);

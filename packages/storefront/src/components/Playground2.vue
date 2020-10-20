@@ -19,8 +19,9 @@
       <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code" v-html="cleanMarkup(markup)"></div>
+      <div class="code" v-html="cleanDemoMarkup(markup)"></div>
       <CodeBlock :markup="markup" :theme="theme" />
+      <CodeEditor :markup="cleanEditorMarkup(markup)"></CodeEditor>
     </div>
   </div>
 </template>
@@ -30,7 +31,9 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
+  import CodeEditor from '@/components/CodeEditor.vue';
   import { Theme } from '@/models';
+  import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -48,7 +51,8 @@
 
   @Component({
     components: {
-      CodeBlock
+      CodeBlock,
+      CodeEditor
     }
   })
   export default class Playground2 extends Vue {
@@ -56,12 +60,13 @@
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
+    public cleanEditorMarkup = cleanMarkup;
 
     public get mergedConfig(): PlaygroundConfig {
       return { ...initialConfig, ...this.config };
     }
 
-    public cleanMarkup(input: string): string {
+    public cleanDemoMarkup(input: string): string {
       return input.replace(/\n/g, '');
     }
 
