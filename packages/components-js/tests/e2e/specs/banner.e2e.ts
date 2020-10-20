@@ -1,7 +1,7 @@
 import {
   addEventListener,
   getBrowser,
-  initAddEventListener,
+  initAddEventListener, reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
@@ -109,6 +109,30 @@ describe('banner', () => {
     const innerButton = await getBannerButton();
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
+
+    await page.waitFor(CSS_FADE_IN_DURATION);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    expect(calls).toBe(1);
+  });
+
+  it('should remove and re-attach event', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+    const host = await getBannerHost();
+    const innerButton = await getBannerButton();
+    let calls = 0;
+    await addEventListener(host, 'dismiss', () => calls++);
+
+    // Remove and re-attach component to check if events are duplicated / fire at all
+    await reattachElement(page, 'p-banner');
 
     await page.waitFor(CSS_FADE_IN_DURATION);
     await innerButton.click();
