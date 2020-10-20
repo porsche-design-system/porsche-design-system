@@ -25,10 +25,10 @@ describe('storefront', () => {
           await browserPage.waitForSelector('html.hydrated');
 
           const [buttonElement] = await browserPage.$x(
-            `//div[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
+            `//aside[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
           );
           const [linkElement] = await browserPage.$x(
-            `//div[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(
+            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(
               category
             )}\/${paramCase(page)}']`
           );
