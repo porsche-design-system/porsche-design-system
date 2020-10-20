@@ -1,6 +1,8 @@
 # Text Field
 
-Use Text Fields in forms to help users enter text. Text Fields should always be accompanied by labels, helping the user to understand the type of input that is required.
+## When to use
+
+  • Use the Text Fields in forms to help users enter text. 
 
 ---
 
@@ -53,20 +55,6 @@ Sometimes it’s helpful for the user to get further information on the input. T
 
 ---
 
-## States
-
-All Text Fields types are available in the following states:
-
-* default
-* disabled
-* hover
-* read only
-* focus
-* error
-* success
-
----
-
 ## Styling
 
 ### Label
@@ -76,7 +64,7 @@ The label text (always in copytext) gives the user an information about the opti
 Enables users to enter a single line of text.
 
 ### Width
-Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that: “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations) The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). Please find more information in the [Form pattern guideline](#/patterns/forms).
+Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which text field the validation belongs to.
@@ -85,21 +73,9 @@ Please find more information in the [Form pattern guideline](#/patterns/forms).
 ### Spacing
 According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
----
-
-## Usage
-
 ### Mandatory and optional fields
 
-Generally, it’s recommended to avoid optional fields in forms due to the fact that we should not give the user the feeling of having to give information that is not absolutely necessary. That being said, we would then have to label almost every (mandatory) form field with the well-known asterisk accompanied by a global explanation (“All fields marked with * ...“). In order to give the Porsche forms a more positive connotation and for the reason that users are more likely to provide voluntary information, we  recommend to mark only optional fields by adding “(optional)” next to the input label.
-
-By doing so…
- * … users feel less overwhelmed as there are way less "(optional)" labels than there would be asterisks.
- * … users do not have to read a global explanation ("All fields marked with * ...").
- * … the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
- * … forms not only seem to be more positive, but also look more cleaned up in general.
-
-<p-text-field-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-text-field-wrapper>
+Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Disabled state
 
@@ -110,7 +86,7 @@ All types of Text Field are available as disabled state. However, disabled state
     <img src="./assets/text-field-examples.png" alt="Examples for text field usage"/>
 </div>
 
-## Don'ts
+## Do's & Don'ts
 
 ### Long text inputs
 Don't use the Text Field component if you need to allow users to enter longer text. In this case, you should use the Textarea component.
