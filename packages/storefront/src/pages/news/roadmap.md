@@ -19,16 +19,16 @@ Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
 * Improved Porsche Next Font ✅
 
 ### Browser Compatibility
-* Browser Notification Overlay (v2) ⚙️ 
+* Browser Notification Overlay (v2) ✅ 
 * New languages for Browser Notification
 * Change Browser Compatibility & Documentation ✅
 * Provide Browser Notification Banner (v1) ✅
 
 ### Generic Components
-* Tabs ⚙️ 
-* Combobox (Extended Select) ⚙️ 
-* Banner ⚙️ 
-* Modal Dialog
+* Tabs ✅ 
+* Combobox (Extended Select) ✅ 
+* Banner ✅ 
+* Modal ✅
 
 ### Patterns
 * Offer Form Validation Pattern ✅
