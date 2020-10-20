@@ -33,7 +33,7 @@ If you're using web components in a static website, the following page setup is 
 ## Advanced usage
 ### Prefixing
 You can load the Porsche Design System with a custom unique prefix to prevent conflicts. Just pass the prefix as a parameter to the `load` method.
-Keep in mind that prefixed versions only work with components that use shadow root. This means, that if you  do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
+Keep in mind that prefixed versions only work with components that use shadow root. This means, that if you do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
 
 ``` 
 <!DOCTYPE html>
@@ -43,11 +43,11 @@ Keep in mind that prefixed versions only work with components that use shadow ro
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Porsche Design System</title>
     <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
+  </head>
+  <body>
     <script type="text/javascript">
       porscheDesignSystem.load({ prefix: 'sample-prefix' });
     </script>
-  </head>
-  <body>
     <sample-prefix-p-headline variant="headline-1">Some text</sample-prefix-p-headline>
   </body>
 </html>
