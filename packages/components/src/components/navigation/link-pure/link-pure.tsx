@@ -156,7 +156,7 @@ export class LinkPure {
 
     ${tagName} a:focus::before {
       outline-offset: 1px !important;
-      outline: #00d5b9 solid 2px !important;
+      outline: currentColor solid 1px !important;
     }
     `;
 

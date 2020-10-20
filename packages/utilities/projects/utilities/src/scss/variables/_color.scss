@@ -43,7 +43,7 @@ $p-color-state-hover: #d5001c;
 $p-color-theme-light-state-hover: $p-color-state-hover;
 $p-color-state-active: #d5001c;
 $p-color-theme-light-state-active: $p-color-state-active;
-$p-color-state-focus: #00d5b9;
+$p-color-state-focus: #000;
 $p-color-theme-light-state-focus: $p-color-state-focus;
 $p-color-state-disabled: #96989a;
 $p-color-theme-light-state-disabled: $p-color-state-disabled;
@@ -65,13 +65,17 @@ $p-color-theme-dark-neutral-contrast-medium: #b0b1b2;
 $p-color-theme-dark-neutral-contrast-low: #4a4e51;
 
 $p-color-theme-dark-notification-success: #01ba1d;
+$p-color-theme-dark-notification-success-soft: #bfeec6;
 $p-color-theme-dark-notification-warning: #ff9b00;
+$p-color-theme-dark-notification-warning-soft: #ffe6bf;
 $p-color-theme-dark-notification-error: #fc1717;
+$p-color-theme-dark-notification-error-soft: #fec5c5;
 $p-color-theme-dark-notification-neutral: #2193ff;
+$p-color-theme-dark-notification-neutral-soft: #c7e4ff;
 
 $p-color-theme-dark-state-hover: #ff0223;
 $p-color-theme-dark-state-active: #ff0223;
-$p-color-theme-dark-state-focus: #00d5b9;
+$p-color-theme-dark-state-focus: #fff;
 $p-color-theme-dark-state-disabled: #7c7f81;
 
 /**

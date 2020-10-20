@@ -325,8 +325,8 @@ main {
       bottom: 0;
       width: p-px-to-rem(280px);
       padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
-      border-right: 1px solid $p-color-theme-light-neutral-contrast-low;
-      background: $p-color-theme-light-background;
+      border-right: 1px solid $p-color-neutral-contrast-low;
+      background: $p-color-background-default;
       overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
@@ -352,7 +352,7 @@ main {
       right: 0;
       bottom: 0;
       left: 0;
-      background: $p-color-theme-light-background;
+      background: $p-color-background-default;
       overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
@@ -376,7 +376,7 @@ main {
         position: relative;
         padding: $p-spacing-32;
         z-index: 20;
-        background: $p-color-theme-light-background;
+        background: $p-color-background-default;
         opacity: 1;
         transition: opacity .3s;
 

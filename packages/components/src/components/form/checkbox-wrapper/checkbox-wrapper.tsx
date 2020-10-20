@@ -176,7 +176,7 @@ export class CheckboxWrapper {
     }
 
     ${tagName} a:focus {
-      outline: 2px solid #00d5b9;
+      outline: 1px solid currentColor;
       outline-offset: 1px;
     }`;
 
