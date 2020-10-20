@@ -1,4 +1,5 @@
 import { camelCase, pascalCase } from 'change-case';
+import { Theme } from '@/models';
 
 export const cleanMarkup = (markup: string): string =>
   markup
@@ -6,6 +7,13 @@ export const cleanMarkup = (markup: string): string =>
     .replace(/<br[\s/]*>/g, '\n')
     // remove multiple new lines
     .replace(/\n{3,}/g, '\n\n');
+
+export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
+  theme === 'dark'
+    ? markup
+        // add dark theme attribute
+        .replace(/(<p-[\w-]+)/g, '$1 theme="dark"')
+    : markup;
 
 export const convertToAngular = (markup: string): string =>
   markup

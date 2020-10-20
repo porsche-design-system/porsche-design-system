@@ -32,33 +32,39 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
 
-    codepen = JSON.stringify({
-      // css_external: 'https://...css',
-      layout: 'left',
-      editors: '100',
-      title: 'Porsche Design System',
-      html: this.markup,
-      js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
-      js: 'porscheDesignSystem.load()'
-    });
+    public get codepen() {
+      return JSON.stringify({
+        // css_external: 'https://...css',
+        layout: 'left',
+        editors: '100',
+        title: 'Porsche Design System',
+        html: this.markup,
+        js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
+        js: 'porscheDesignSystem.load()'
+      });
+    }
 
     /* eslint-disable no-useless-escape */
-    stackblitz = {
-      html:
-        this.markup +
-        `\n
-<script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
-<script>porscheDesignSystem.load();<\/script>`
-    };
+    public get stackblitz() {
+      return {
+        html:
+          this.markup +
+          `\n
+  <script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
+  <script>porscheDesignSystem.load();<\/script>`
+      };
+    }
     /* eslint-enable no-useless-escape */
 
-    codesandbox = getParameters({
-      files: {
-        'index.html': {
-          content: this.stackblitz.html,
-          isBinary: false
+    public get codesandbox() {
+      return getParameters({
+        files: {
+          'index.html': {
+            content: this.stackblitz.html,
+            isBinary: false
+          }
         }
-      }
-    });
+      });
+    }
   }
 </script>

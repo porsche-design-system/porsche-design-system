@@ -14,7 +14,7 @@ Choose between predefined styling variants.
 
 ### Secondary
 
-<Playground2 :markup="secondary"></Playground2>
+<Playground2 :markup="secondary" :config="{ themeable: true, spacing: 'inline' }"></Playground2>
 
 <script lang="ts">
   import Vue from 'vue';
