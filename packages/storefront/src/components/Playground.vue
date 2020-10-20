@@ -7,8 +7,8 @@
     <div
       class="example"
       :class="{
-        light: (themeable && theme === 'light') || themeable === false,
-        dark: themeable && theme === 'dark',
+        'example--light': (themeable && theme === 'light') || themeable === false,
+        'example--dark': themeable && theme === 'dark',
         surface: colorScheme === 'surface',
         'height-fixed': childElementLayout.height === 'fixed',
         'spacing-inline': childElementLayout.spacing === 'inline',
@@ -85,7 +85,7 @@
     border: 1px solid transparent;
 
     // Theme
-    &.light {
+    &--light {
       border-color: $p-color-neutral-contrast-low;
       background-color: $p-color-background-default;
 
@@ -95,7 +95,7 @@
       }
     }
 
-    &.dark {
+    &--dark {
       border-color: $p-color-theme-dark-background-default;
       background-color: $p-color-theme-dark-background-default;
 

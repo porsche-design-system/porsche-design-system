@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Modal` component
+
+#### Fixed
+- Typing for `pageChange` event of `Pagination` component
+
 ### [2.0.0-alpha.4] - 2020-10-14
 
 #### Added
