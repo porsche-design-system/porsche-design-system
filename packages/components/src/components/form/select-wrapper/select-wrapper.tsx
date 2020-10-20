@@ -66,9 +66,6 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
-  private mouseEventListener = this.handleMouseEvents.bind(this);
-  private keyboardEventListener = this.handleKeyboardEvents.bind(this);
-  private clickOutsideEventListener = this.handleClickOutside.bind(this);
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -89,21 +86,21 @@ export class SelectWrapper {
       this.observeSelect();
       this.setOptionList();
       if (!this.filter) {
-        this.select.addEventListener('mousedown', this.mouseEventListener);
+        this.select.addEventListener('mousedown', this.handleMouseEvents);
       }
-      this.select.addEventListener('keydown', this.keyboardEventListener);
+      this.select.addEventListener('keydown', this.handleKeyboardEvents);
       if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.clickOutsideEventListener, true);
+        document.addEventListener('mousedown', this.handleClickOutside, true);
       }
     }
   }
 
   public componentDidLoad(): void {
     if (!this.isTouchWithoutFilter && this.filter) {
-      this.fakeFilter.addEventListener('click', this.handleFilterInputClick.bind(this));
-      this.filterInput.addEventListener('mousedown', this.handleFilterInputClick.bind(this));
-      this.filterInput.addEventListener('keydown', this.handleKeyboardEvents.bind(this));
-      this.filterInput.addEventListener('input', this.handleFilterSearch.bind(this));
+      this.fakeFilter.addEventListener('click', this.handleFilterInputClick);
+      this.filterInput.addEventListener('mousedown', this.handleFilterInputClick);
+      this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
+      this.filterInput.addEventListener('input', this.handleFilterSearch);
     }
   }
 
@@ -114,10 +111,10 @@ export class SelectWrapper {
   public disconnectedCallback(): void {
     if (!this.isTouchWithoutFilter) {
       this.selectObserver.disconnect();
-      this.select.removeEventListener('mousedown', this.mouseEventListener);
-      this.select.removeEventListener('keydown', this.keyboardEventListener);
+      this.select.removeEventListener('mousedown', this.handleMouseEvents);
+      this.select.removeEventListener('keydown', this.handleKeyboardEvents);
       if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.clickOutsideEventListener, true);
+        document.removeEventListener('mousedown', this.handleClickOutside, true);
       }
     }
   }
@@ -317,23 +314,21 @@ export class SelectWrapper {
     });
   }
 
-  private handleClickOutside(e): void {
-    if (this.host.contains(e.target)) {
-      return;
-    } else {
+  private handleClickOutside = (e: MouseEvent): void => {
+    if (!this.host.contains(e.target as HTMLElement)) {
       this.fakeOptionListHidden = true;
       if (this.filter) {
         this.filterInput.value = '';
       }
     }
-  }
+  };
 
-  private handleMouseEvents(e: MouseEvent): void {
+  private handleMouseEvents = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
     this.select.focus();
     this.handleVisibilityOfFakeOptionList('toggle');
-  }
+  };
 
   private handleFocus(e: MouseEvent): void {
     if (!this.filter) {
@@ -377,7 +372,7 @@ export class SelectWrapper {
     }
   }
 
-  private handleKeyboardEvents(e: KeyboardEvent): void {
+  private handleKeyboardEvents = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
@@ -467,7 +462,7 @@ export class SelectWrapper {
       default:
         this.handleNativeSearchOptions();
     }
-  }
+  };
 
   private setOptionList = (): void => {
     this.options = this.select.querySelectorAll('option');
@@ -621,7 +616,7 @@ export class SelectWrapper {
   /*
    * <START CUSTOM FILTER>
    */
-  private handleFilterInputClick(): void {
+  private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
       this.filterInput.value = '';
@@ -629,9 +624,9 @@ export class SelectWrapper {
       this.handleVisibilityOfFakeOptionList('toggle');
       this.handleScroll();
     }
-  }
+  };
 
-  private handleFilterSearch(ev: InputEvent): void {
+  private handleFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
@@ -641,7 +636,7 @@ export class SelectWrapper {
     const hiddenItems = this.optionMaps.filter((item) => item.hidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
-  }
+  };
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
