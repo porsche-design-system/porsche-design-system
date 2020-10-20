@@ -16,8 +16,8 @@
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import 'prismjs/components/prism-markup';
-  import { camelCase, pascalCase } from 'change-case';
   import { Framework, Theme } from '@/models';
+  import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
@@ -51,96 +51,15 @@
     }
 
     private convert(markup: string): string {
-      markup = this.cleanup(markup);
+      markup = cleanMarkup(markup);
       switch (this.framework) {
         case 'angular':
-          return this.convertToAngular(markup);
+          return convertToAngular(markup);
         case 'react':
-          return this.convertToReact(markup);
+          return convertToReact(markup);
         default:
           return markup;
       }
-    }
-
-    private cleanup(markup: string): string {
-      return (
-        markup
-          // replace <br> tags with new line
-          .replace(/<br[\s/]*>/g, '\n')
-          // remove multiple new lines
-          .replace(/\n{3,}/g, '\n\n')
-      );
-    }
-
-    private convertToAngular(markup: string): string {
-      return (
-        markup
-          // transform to event binding syntax
-          .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` (${$key})="${$value}"`;
-          })
-          // transform all keys of object values to camel case and surround them in brackets
-          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="{${$value}}"`;
-          })
-          // transform all other keys to camel case, surround them in brackets and surround all values with ''
-          .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="'${$value}'"`;
-          })
-          // transform all keys to camel case which have digits as a value
-          .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="${$value}"`;
-          })
-        // // remove single quotes from boolean values
-        // .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
-        //   return ` [${camelCase($key)}]="${$value}"`;
-        // })
-        // // remove brackets from "class" attributes
-        // .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
-        //   return ` class="${$value}"`;
-        // })
-        // // remove brackets from "slot" attributes
-        // .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
-        //   return ` slot="${$value}"`;
-        // })
-      );
-    }
-
-    private convertToReact(markup: string): string {
-      return (
-        markup
-          // remove quotes from object values but add double brackets and camelCase
-          .replace(/\s(\S+)="({.*?})"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}={${$value}}`;
-          })
-          // transform all standard attributes to camel case
-          .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}="${$value}"`;
-          })
-          // transform class attribute to JSX compatible one
-          .replace(/\sclass="(.*?)"/g, ' className="$1"')
-          // transform to camelCase event binding syntax
-          .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` on${pascalCase($key)}={() => ${$value}}`;
-          })
-          // transform boolean and number
-          .replace(/\s(\S+)="(true|false|\d)"/g, ' $1={$2}')
-          // // transform all keys to camel case which have digits as a value
-          // .replace(/\s(\S+)={"(\d.*?)"}/g, ' $1={$2}')
-          // transform custom element tags to pascal case
-          .replace(/<(\/?)(p-[\w-]+)(.*?)>/g, (m, $slash, $tag, $attributes) => {
-            return `<${$slash}${pascalCase($tag)}${$attributes}>`;
-          })
-          // transform style attributes
-          .replace(
-            /style="(.*?)"/g,
-            (m, $style: string) =>
-              // TODO: camelCase for keys, remove px from px values, quotes around non px values
-              `style={{ ${$style
-                .replace(/;/g, ',') // transform semi colons to comma
-                .replace(/,$/g, '')} }}` // remove last comma
-          )
-      );
     }
 
     private highlight(markup: string): string {

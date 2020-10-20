@@ -119,119 +119,15 @@ describe('CodeBlock.vue', () => {
     });
 
     const block = wrapper.find('.code-block');
-    expect(block.classes()).not.toContain('dark');
-    expect(block.classes()).toContain('light');
+    expect(block.classes()).not.toContain('code-block--dark');
+    expect(block.classes()).toContain('code-block--light');
 
     wrapper.setProps({ theme: 'dark' });
 
     await tick();
 
-    expect(block.classes()).not.toContain('light');
-    expect(block.classes()).toContain('dark');
-  });
-
-  it('should remove empty comments', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<p-some-tag some-attribute="some value" class="some-class">
-  <!----><span>some text</span><!-- some comment -->
-</p-some-tag>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value" class="some-class">
-  <span>some text</span><!-- some comment -->
-</p-some-tag>`
-    );
-  });
-
-  it('should beautify code block', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<p-some-tag     some-attribute="some value"    class="some-class"   >
-                          <span       >some text</span>
-                </p-some-tag>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value" class="some-class">
-  <span>some text</span>
-</p-some-tag>`
-    );
-  });
-
-  it('should remove Vue JS specific attributes from code block', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<p-some-tag data-v-c6a10ac0="" data-v-8dbc1b2a='' data-v-7ba5bd90 some-attribute="some value" class="some-class">
-  <span>some text</span>
-</p-some-tag>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value" class="some-class">
-  <span>some text</span>
-</p-some-tag>`
-    );
-  });
-
-  it('should remove default web components attributes from code block', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<p-some-tag theme="light" some-attribute="some value" class="some-class"></p-some-tag>
-<p-some-tag theme="light"></p-some-tag>
-<p-some-tag theme="dark"></p-some-tag>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value" class="some-class"></p-some-tag>
-<p-some-tag></p-some-tag>
-<p-some-tag theme="dark"></p-some-tag>`
-    );
-  });
-
-  it('should remove Stencil JS css classes from code block', async () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<p-some-tag some-attribute="some value" class="hydrated">
-  <span>some text</span>
-</p-some-tag>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value">
-  <span>some text</span>
-</p-some-tag>`
-    );
-
-    wrapper.setProps({
-      markup: `<p-some-tag some-attribute="some value" class="some-class hydrated another-class">
-  <span>some text</span>
-</p-some-tag>`
-    });
-
-    await tick();
-
-    expect(wrapper.find('code').text()).toBe(
-      `<p-some-tag some-attribute="some value" class="some-class another-class">
-  <span>some text</span>
-</p-some-tag>`
-    );
+    expect(block.classes()).not.toContain('code-block--light');
+    expect(block.classes()).toContain('code-block--dark');
   });
 
   it('should convert code block to Angular syntax', async () => {
@@ -274,49 +170,10 @@ describe('CodeBlock.vue', () => {
     await tick();
 
     expect(wrapper.find('code').text()).toBe(
-      `<PSomeTag someAttribute="some value" attribute="some value" className="some-class" anotherAttribute={{ bar: 'foo' }} onClick={()=> {alert('click'); return false;}} digitAttribute={6} booleanAttribute={true}>
+      `<PSomeTag someAttribute="some value" attribute="some value" className="some-class" anotherAttribute={{ bar: 'foo' }} onClick={() => { alert('click'); return false; }} digitAttribute={6} booleanAttribute={true}>
   <span>some text</span>
 </PSomeTag>`
     );
-  });
-
-  it('should add closing slash on input tags', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<input type="checkbox">`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(`<input type="checkbox" />`);
-  });
-
-  it('should add new line between tags for readability', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<div><span></span></div>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(`<div>
-  <span></span>
-</div>`);
-  });
-
-  it('should remove new line when tag closes immediately', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<div>
-</div>`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(`<div></div>`);
   });
 
   it('should remove br tags', () => {
@@ -347,17 +204,5 @@ describe('CodeBlock.vue', () => {
 <div></div>
 
 <div></div>`);
-  });
-
-  xit('should clean checked, disabled and readonly attributes', () => {
-    const wrapper = shallowMount(CodeBlock, {
-      stubs,
-      store,
-      propsData: {
-        markup: `<input type="checkbox" checked="checked" disabled="disabled" readonly="readonly">`
-      }
-    });
-
-    expect(wrapper.find('code').text()).toBe(`<input type="checkbox" checked disabled readonly />`);
   });
 });

@@ -52,7 +52,7 @@
     }
   })
   export default class Playground2 extends Vue {
-    @Prop({ default: () => ({}) }) public config: Partial<PlaygroundConfig>;
+    @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
