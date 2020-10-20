@@ -19,9 +19,9 @@
       <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code" v-html="cleanDemoMarkup(markup)"></div>
-      <CodeBlock :markup="markup" :theme="theme" />
-      <CodeEditor :markup="cleanEditorMarkup(markup)"></CodeEditor>
+      <div class="code" v-html="cleanDemoMarkup(patchedMarkup)"></div>
+      <CodeBlock :markup="patchedMarkup" :theme="theme" />
+      <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)"></CodeEditor>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
   import { Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
+  import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -64,6 +64,10 @@
 
     public get mergedConfig(): PlaygroundConfig {
       return { ...initialConfig, ...this.config };
+    }
+
+    public get patchedMarkup(): string {
+      return patchThemeIntoMarkup(this.markup, this.theme);
     }
 
     public cleanDemoMarkup(input: string): string {

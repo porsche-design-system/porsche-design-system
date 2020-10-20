@@ -1,4 +1,4 @@
-import { cleanMarkup, convertToAngular, convertToReact } from '../../src/utils';
+import { cleanMarkup, convertToAngular, convertToReact, patchThemeIntoMarkup } from '../../src/utils';
 
 describe('cleanMarkup', () => {
   it('should replace multiple br tags with new line', () => {
@@ -10,7 +10,6 @@ describe('cleanMarkup', () => {
 
   it('should replace multiple new lines', () => {
     const markup = `<div></div><br><br><div></div><br><br><br><div></div>`;
-
     expect(cleanMarkup(markup)).toBe(`<div></div>
 
 <div></div>
@@ -19,8 +18,22 @@ describe('cleanMarkup', () => {
   });
 });
 
+describe('patchThemeIntoMarkup', () => {
+  it('should not add light theme', () => {
+    const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
+    expect(patchThemeIntoMarkup(markup, 'light')).toBe(markup);
+  });
+
+  it('should add dark theme', () => {
+    const markup = `<p-some-tag some-attribute="some value"></p-some-tag>`;
+    expect(patchThemeIntoMarkup(markup, 'dark')).toBe(
+      `<p-some-tag theme="dark" some-attribute="some value"></p-some-tag>`
+    );
+  });
+});
+
 describe('convertToAngular', () => {
-  it('should convert markup to Angular syntax', async () => {
+  it('should convert markup to Angular syntax', () => {
     const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -36,7 +49,7 @@ describe('convertToAngular', () => {
 });
 
 describe('convertToReact', () => {
-  it('should convert markup to React syntax', async () => {
+  it('should convert markup to React syntax', () => {
     const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
 </p-some-tag>`;
@@ -50,7 +63,6 @@ describe('convertToReact', () => {
 
   it('should add closing slash on input tags', () => {
     const markup = `<input type="checkbox">`;
-
     expect(convertToReact(markup)).toBe(`<input type="checkbox" />`);
   });
 });
