@@ -23,6 +23,7 @@
     "@porsche-design-system/browser-notification": "1.0.0-rc.1",
     "@porsche-design-system/components-js": "2.0.0-alpha.4",
     "change-case": "^4.1.1",
+    "codesandbox": "^2.2.1",
     "core-js": "^3.6.5",
     "lodash": "^4.17.20",
     "prismjs": "^1.21.0",
