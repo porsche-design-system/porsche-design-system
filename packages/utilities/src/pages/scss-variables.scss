@@ -100,14 +100,26 @@
   &--color-theme-dark-notification-success {
     background: $p-color-theme-dark-notification-success;
   }
+  &--color-theme-dark-notification-success-soft {
+    background: $p-color-theme-dark-notification-success-soft;
+  }
   &--color-theme-dark-notification-warning {
     background: $p-color-theme-dark-notification-warning;
+  }
+  &--color-theme-dark-notification-warning-soft {
+    background: $p-color-theme-dark-notification-warning-soft;
   }
   &--color-theme-dark-notification-error {
     background: $p-color-theme-dark-notification-error;
   }
+  &--color-theme-dark-notification-error-soft {
+    background: $p-color-theme-dark-notification-error-soft;
+  }
   &--color-theme-dark-notification-neutral {
     background: $p-color-theme-dark-notification-neutral;
+  }
+  &--color-theme-dark-notification-neutral-soft {
+    background: $p-color-theme-dark-notification-neutral-soft;
   }
   &--color-theme-dark-state-hover {
     background: $p-color-theme-dark-state-hover;

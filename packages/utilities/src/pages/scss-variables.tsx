@@ -21,7 +21,7 @@ const defaultColors = {
   'theme-light-notification-neutral-soft': '#e5eff8',
   'theme-light-state-hover': '#d5001c',
   'theme-light-state-active': '#d5001c',
-  'theme-light-state-focus': '#00d5b9',
+  'theme-light-state-focus': '#000',
   'theme-light-state-disabled': '#96989a',
   'external-facebook': '#1877f2',
   'external-google': '#4285f4',
@@ -45,12 +45,16 @@ const darkThemeColors = {
   'theme-dark-neutral-contrast-medium': '#b0b1b2',
   'theme-dark-neutral-contrast-low': '#4a4e51',
   'theme-dark-notification-success': '#01ba1d',
+  'theme-dark-notification-success-soft': '#bfeec6',
   'theme-dark-notification-warning': '#ff9b00',
+  'theme-dark-notification-warning-soft': '#ffe6bf',
   'theme-dark-notification-error': '#fc1717',
+  'theme-dark-notification-error-soft': '#fec5c5',
   'theme-dark-notification-neutral': '#2193ff',
+  'theme-dark-notification-neutral-soft': '#c7e4ff',
   'theme-dark-state-hover': '#ff0223',
   'theme-dark-state-active': '#ff0223',
-  'theme-dark-state-focus': '#00d5b9',
+  'theme-dark-state-focus': '#fff',
   'theme-dark-state-disabled': '#7c7f81'
 };
 

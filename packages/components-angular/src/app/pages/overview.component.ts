@@ -29,12 +29,24 @@ import { Component } from '@angular/core';
     my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
+
+    p-banner,
+    my-prefix-p-banner {
+      --p-banner-position-type: static;
+    }
   `],
   template: `
     <div style="display: flex;">
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner">
+          <p-banner>
+            <span slot="title">Some banner title</span>
+            <span slot="description">Some banner description.</span>
+          </p-banner>
         </div>
 
         <div class="playground light" title="should render default divider">
@@ -127,6 +139,22 @@ import { Component } from '@angular/core';
           <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
         </div>
 
+        <div class="playground light" title="should render default tabs with custom prefix">
+          <p-tabs>
+            <p-tabs-item label="Tab1">Content 1</p-tabs-item>
+            <p-tabs-item label="Tab2">Content 2</p-tabs-item>
+            <p-tabs-item label="Tab3">Content 3</p-tabs-item>
+          </p-tabs>
+        </div>
+
+        <div class="playground light" title="should render default tabs-nav with custom prefix">
+          <p-tabs-bar>
+            <a>Tab1</a>
+            <a>Tab2</a>
+            <a>Tab3</a>
+          </p-tabs-bar>
+        </div>
+
         <div class="playground light" title="should render default spinner">
           <p-spinner></p-spinner>
         </div>
@@ -149,6 +177,13 @@ import { Component } from '@angular/core';
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <my-prefix-p-banner p-banner>
+            <span slot="title">Some banner title</span>
+            <span slot="description">Some banner description.</span>
+          </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default divider with custom prefix">
@@ -242,6 +277,22 @@ import { Component } from '@angular/core';
         <div class="playground light" title="should render default pagination with custom prefix">
           <my-prefix-p-pagination p-pagination total-items-count="500" items-per-page="25"
                                   active-page="1"></my-prefix-p-pagination>
+        </div>
+
+        <div class="playground light" title="should render default tabs with custom prefix">
+          <my-prefix-p-tabs p-tabs>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
+            <my-prefix-p-tabs-item p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+          </my-prefix-p-tabs>
+        </div>
+
+        <div class="playground light" title="should render default tabs-nav with custom prefix">
+          <my-prefix-p-tabs-bar p-tabs-bar>
+            <a>Tab1</a>
+            <a>Tab2</a>
+            <a>Tab3</a>
+          </my-prefix-p-tabs-bar>
         </div>
 
         <div class="playground light" title="should render default spinner with custom prefix">

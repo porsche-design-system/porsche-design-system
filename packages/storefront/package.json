@@ -20,7 +20,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification-banner": "1.0.0-rc.0",
+    "@porsche-design-system/browser-notification": "1.0.0-rc.1",
+    "@porsche-design-system/components-js": "2.0.0-alpha.4",
     "change-case": "^4.1.1",
     "core-js": "^3.6.5",
     "js-beautify": "^1.13.0",
@@ -35,7 +36,6 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.0.0",
-    "@porsche-design-system/components-js": "2.0.0-alpha.3",
     "@porsche-design-system/partials": "2.2.0",
     "@porsche-design-system/utilities": "2.0.0",
     "@porsche-design-system/vmark": "~1.2.0",
