@@ -21,6 +21,11 @@
       <input type="hidden" name="project[options][openFile]" value="index.html" />
       <p-button type="submit">Edit in StackBlitz</p-button>
     </form>
+
+    <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+      <input type="hidden" name="parameters" :value="codesandbox" />
+      <p-button type="submit">Edit in CodeSandbox</p-button>
+    </form>
   </div>
 </template>
 
@@ -31,6 +36,7 @@
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import 'prismjs/components/prism-markup';
+  import { getParameters } from 'codesandbox/lib/api/define';
   import { Framework, Theme } from '@/models';
   import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
 
@@ -62,6 +68,15 @@
 <script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
 <script>porscheDesignSystem.load();<\/script>`
     };
+
+    codesandbox = getParameters({
+      files: {
+        'index.html': {
+          content: this.stackblitz.html,
+          isBinary: false
+        }
+      }
+    });
 
     public get activeTabIndex(): number {
       return Object.keys(this.frameWorks).indexOf(this.framework);
