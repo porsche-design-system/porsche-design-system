@@ -1,11 +1,11 @@
 <template>
   <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
+      <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="setFramework(index)">
         {{ frameWork }}
       </button>
     </p-tabs-bar>
-    <pre><code v-html="formattedMarkup"></code></pre>
+    <pre><code v-html="highlightedMarkup"></code></pre>
   </div>
 </template>
 
@@ -38,16 +38,12 @@
       return this.$store.getters.selectedFramework;
     }
 
-    get isReact(): boolean {
-      return this.framework === 'react';
-    }
-
-    get formattedMarkup(): string {
-      return this.highlight(this.convert(this.markup));
-    }
-
-    public updateFramework(framework: Framework): void {
+    public setFramework(framework: Framework): void {
       this.$store.commit('setSelectedFramework', framework);
+    }
+
+    get highlightedMarkup(): string {
+      return this.highlight(this.convert(this.markup));
     }
 
     private convert(markup: string): string {
@@ -63,7 +59,8 @@
     }
 
     private highlight(markup: string): string {
-      return highlight(markup, languages[this.isReact ? 'jsx' : 'markup'], this.isReact ? 'language-jsx' : 'markup');
+      const isReact = this.framework === 'react';
+      return highlight(markup, languages[isReact ? 'jsx' : 'markup'], isReact ? 'language-jsx' : 'markup');
     }
   }
 </script>
