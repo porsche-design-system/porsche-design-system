@@ -2,7 +2,7 @@
 
 ## When to use
 
-  • When you want to show additional information to the user without losing context of the parent page.  
+  • Use a Modal when you want to show additional information to the user without losing context of the parent page.  
   • Use a Modal Dialog where you need to ask for confirmation from the user before doing a lengthy or dangerous action.
 
 ---
@@ -12,7 +12,7 @@
 | Variant | Usage |
 |----|----|
 | Basic | By default, Modals have a title and can be closed by clicking on the “x” in the upper right hand corner of the container. |
-| Without close icon | The Modal Dialogwithout close “x” will dont close the dialog without any interaction. |
+| Without close icon | The Modal without close “x” will dont close the modal without any interaction. |
 | Without title | If the context is short and clear, the title can be skipped to avoid duplication. |
 | Without title and close icon | For descriptive content and the need to close the Modal with a interaction. |
 
@@ -20,7 +20,7 @@
 ## Behavior
 
 ### Overlay
-For the background overlay is used the background shading to provide the feeling of a third dimensional layer. 
+We use a shaded background overlay to provide to provide the feeling of a third dimensional layer. 
 This also eliminates distraction and helps the user focus on the Modal content.
 
 ### Animation
@@ -34,15 +34,14 @@ long list of items, consider a different solution, such as a form or a table.
 Modals are disruptive. Only use Modals when you need the user’s full attention for the period of time the Modal is displayed.
 
 ### Close
-Modals are not dismissed when clicking on the background overlay. This prevents losing information or data. 
-Within a Model Dialog are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
+Within a Model are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
 
 ---
 
 ## Do’s & Don’ts
 
 ### Don't use more than two buttons
-There should be no more than 3 actions and no fewer than 1. Actions should always be located within an action bar at the bottom of the Modal. 
+There should be no more than 3 actions. Actions should always be located within an action bar at the bottom of the Modal. 
 Button order and positioning should follow our guidelines for [Buttons](#/patterns/buttons).
 
 ![Usage Buttons](./assets/modal-dialog-more-than-three-buttons.png)
@@ -53,6 +52,6 @@ Modals shouldn’t launch other modals. Stacking Modals makes it hard to dismiss
 ![Stacking modals](./assets/modal-stacking-modals.png)
 
 ### Multiple steps
-Avoid multiple steps that require navigation within the Modal Dialog.
+Avoid multiple steps that require navigation within the Modal.
 
 ![Multiple steps](./assets/modal-multiple-steps.png)
