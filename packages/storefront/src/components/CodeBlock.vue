@@ -6,6 +6,11 @@
       </button>
     </p-tabs-bar>
     <pre><code v-html="highlightedMarkup"></code></pre>
+
+    <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+      <input type="hidden" name="data" :value="codepen" />
+      <p-button type="submit">Edit in CodePen</p-button>
+    </form>
   </div>
 </template>
 
@@ -29,6 +34,16 @@
       angular: 'Angular',
       react: 'React'
     };
+
+    codepen = JSON.stringify({
+      // css_external: 'https://...css',
+      layout: 'left',
+      editors: '100',
+      title: 'Porsche Design System',
+      html: cleanMarkup(this.markup),
+      js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
+      js: 'porscheDesignSystem.load()'
+    });
 
     public get activeTabIndex(): number {
       return Object.keys(this.frameWorks).indexOf(this.framework);
