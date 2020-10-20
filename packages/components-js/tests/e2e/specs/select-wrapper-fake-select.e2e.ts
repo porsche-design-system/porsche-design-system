@@ -6,7 +6,7 @@ import {
   getElementIndex,
   getElementStyle,
   getProperty,
-  initAddEventListener,
+  initAddEventListener, reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
@@ -938,6 +938,47 @@ describe('select-wrapper fake-select', () => {
         expect(await getOpacity()).toBe('0');
         expect(await selectHasFocus()).toBe(false);
       });
+
+      it('should remove and re-attach events', async () => {
+        await setContentWithDesignSystem(
+          page,
+          `
+      <p-select-wrapper label="Some label">
+        <select name="some-name" id="realSelect">
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
+        </select>
+      </p-select-wrapper>
+    `
+        );
+        const select = await getSelectRealInput();
+
+        let mouseDownEventCounter = 0;
+        let keyDownEventCounter = 0;
+        await addEventListener(select, 'mousedown', () => mouseDownEventCounter++);
+        await addEventListener(select, 'keydown', () => keyDownEventCounter++);
+
+        // Remove and re-attach component to check if events are duplicated / fire at all
+        await reattachElement(page, 'p-select-wrapper');
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+
+        expect(mouseDownEventCounter).toBe(1);
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+
+        expect(mouseDownEventCounter).toBe(2);
+
+        await page.keyboard.press('ArrowDown');
+        await waitForStencilLifecycle(page);
+        await page.keyboard.press('ArrowDown');
+
+        expect(keyDownEventCounter).toBe(2);
+      });
+
     });
   });
 });
