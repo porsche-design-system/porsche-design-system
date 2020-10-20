@@ -1,73 +1,15 @@
 <template>
   <div class="markdown">
-    <v-runtime-template :template="template" />
-    <div id="slot" hidden>
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import Playground2, { PlaygroundConfig, initialConfig } from '@/components/Playground2.vue';
-  import VRuntimeTemplate from 'v-runtime-template';
 
-  type PlaygroundObject = { id: string; config: PlaygroundConfig; markup: string };
-
-  @Component({
-    components: { Playground2, VRuntimeTemplate }
-  })
-  export default class Markdown extends Vue {
-    public template = '';
-    private config: PlaygroundConfig = { ...initialConfig };
-
-    public updated(): void {
-      this.initDemo();
-    }
-
-    private initDemo(): void {
-      const clonedSlot = this.$el.querySelector('#slot')!.cloneNode(true) as HTMLElement;
-
-      (Array.from(clonedSlot.querySelectorAll('pre code')) as HTMLElement[])
-        .map((el, index) => {
-          const id = `pre-${index}`;
-          el.parentElement?.setAttribute('id', id); // get pre element
-
-          const config: PlaygroundConfig = { ...initialConfig };
-
-          const [rawConfig] = el.innerText.match(/^{.*}/) ?? [];
-          if (rawConfig) {
-            const cleanedConfig = rawConfig.replace(/^{(.*)}$/, '$1');
-            cleanedConfig.split(',').forEach((item) => {
-              const [key, value] = item.split(':');
-              // @ts-ignore
-              config[key.trim()] = value.trim().replace(/^('|")?(.*?)('|")?$/, '$2');
-            });
-          }
-
-          const markup = el.innerText
-            .replace(/^{.*}\s?/, '') // strip config in first line
-            .replace(/&/g, '&amp;') // escape html characters
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#039;');
-
-          const obj: PlaygroundObject = { id, config, markup };
-          return obj;
-        })
-        .forEach((item) => {
-          this.config = item.config;
-          clonedSlot.innerHTML = clonedSlot.innerHTML.replace(
-            new RegExp(String.raw`<pre id="${item.id}">(.|\s)*?<\/pre>`),
-            `<Playground2 markup="${item.markup}" :config="this.config"></Playground2>`
-          );
-        });
-
-      this.template = clonedSlot.innerHTML;
-    }
-  }
+  @Component({})
+  export default class Markdown extends Vue {}
 </script>
 
 <style scoped lang="scss">

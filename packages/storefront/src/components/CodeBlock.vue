@@ -64,35 +64,8 @@
     private cleanup(markup: string): string {
       return (
         markup
-          // remove default web component attributes
-          .replace(/theme="light"/g, '')
-          // remove empty comments
-          .replace(/<!---->/g, '')
-          // remove all attributes added by Vue JS
-          .replace(/ data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
-          // remove all class values added by Stencil JS
-          .replace(/ class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
-            if (/\S/.test($1) || /\S/.test($2)) {
-              return ' class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
-            }
-            return '';
-          })
-          // add closing slash to inputs for valid jsx
-          .replace(/(<input(?:.[^/]*?))>/g, '$1/>')
           // replace <br> tags with new line
           .replace(/<br[\s/]*>/g, '\n')
-          // add line breaks between tags that are not followed by comment
-          .replace(/(><)([^!])/g, '>\n<$2')
-          // remove line breaks between tags that close immediately
-          .replace(/<([\w-]+)(.*)>\n<\/\1>/g, '<$1$2></$1>')
-          // remove multiple new lines
-          .replace(/\n{3,}/g, '\n\n')
-          // clean checked, disabled, readonly and selected attributes
-          .replace(/(checked|disabled|readonly|selected)="\1?"/g, '$1')
-          // clean various attributes that are set by component code
-          .replace(/ (hidden|role|id|tabindex|aria-selected)=".*?"/g, '')
-          // clean aria-labelledby attributes that are set by tabs component
-          .replace(/ (aria-labelledby)="p-tab-item-\d"/g, '')
       );
     }
 
