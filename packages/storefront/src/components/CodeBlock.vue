@@ -1,5 +1,5 @@
 <template>
-  <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
+  <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
       <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
         {{ frameWork }}
@@ -15,8 +15,8 @@
   import { Prop } from 'vue-property-decorator';
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
-  import { html } from 'js-beautify';
-  import { camelCase, upperFirst } from 'lodash';
+  import 'prismjs/components/prism-markup';
+  import { camelCase, pascalCase } from 'change-case';
   import { Framework, Theme } from '@/models';
 
   @Component
@@ -43,15 +43,16 @@
     }
 
     get formattedMarkup(): string {
-      return this.highlight(this.beautify(this.convert(this.cleanup(this.markup), this.framework)));
+      return this.highlight(this.convert(this.markup));
     }
 
     public updateFramework(framework: Framework): void {
       this.$store.commit('setSelectedFramework', framework);
     }
 
-    private convert(markup: string, framework: Framework): string {
-      switch (framework) {
+    private convert(markup: string): string {
+      markup = this.cleanup(markup);
+      switch (this.framework) {
         case 'angular':
           return this.convertToAngular(markup);
         case 'react':
@@ -66,6 +67,8 @@
         markup
           // replace <br> tags with new line
           .replace(/<br[\s/]*>/g, '\n')
+          // remove multiple new lines
+          .replace(/\n{3,}/g, '\n\n')
       );
     }
 
@@ -73,8 +76,8 @@
       return (
         markup
           // transform to event binding syntax
-          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` (${$key.substring(2)})="${$value}"`;
+          .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
+            return ` (${$key})="${$value}"`;
           })
           // transform all keys of object values to camel case and surround them in brackets
           .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
@@ -88,18 +91,18 @@
           .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
             return ` [${camelCase($key)}]="${$value}"`;
           })
-          // remove single quotes from boolean values
-          .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="${$value}"`;
-          })
-          // remove brackets from "class" attributes
-          .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
-            return ` class="${$value}"`;
-          })
-          // remove brackets from "slot" attributes
-          .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
-            return ` slot="${$value}"`;
-          })
+        // // remove single quotes from boolean values
+        // .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
+        //   return ` [${camelCase($key)}]="${$value}"`;
+        // })
+        // // remove brackets from "class" attributes
+        // .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
+        //   return ` class="${$value}"`;
+        // })
+        // // remove brackets from "slot" attributes
+        // .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
+        //   return ` slot="${$value}"`;
+        // })
       );
     }
 
@@ -107,50 +110,37 @@
       return (
         markup
           // remove quotes from object values but add double brackets and camelCase
-          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}={{${$value}}}`;
+          .replace(/\s(\S+)="({.*?})"/g, (m, $key, $value) => {
+            return ` ${camelCase($key)}={${$value}}`;
           })
           // transform all standard attributes to camel case
           .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
             return ` ${camelCase($key)}="${$value}"`;
           })
           // transform class attribute to JSX compatible one
-          .replace(/\sclass="(.*?)"/g, (m, $value) => {
-            return ` className="${$value}"`;
-          })
+          .replace(/\sclass="(.*?)"/g, ' className="$1"')
           // transform to camelCase event binding syntax
-          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
+          .replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => {
+            return ` on${pascalCase($key)}={() => ${$value}}`;
           })
           // transform boolean and number
-          .replace(/\s(\S+)="(true|false|\d)"/g, (m, $key, $value) => {
-            return ` ${$key}={${$value}}`;
-          })
-          // transform all keys to camel case which have digits as a value
-          .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
-            return ` ${$key}={${$value}}`;
-          })
-          // transform custom element opening tags to pascal case
-          .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
-            return `<${upperFirst(camelCase($tag))}${$attributes}>`;
-          })
-          // transform custom element closing tags to pascal case
-          .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
-            return `</${upperFirst(camelCase($tag))}>`;
+          .replace(/\s(\S+)="(true|false|\d)"/g, ' $1={$2}')
+          // // transform all keys to camel case which have digits as a value
+          // .replace(/\s(\S+)={"(\d.*?)"}/g, ' $1={$2}')
+          // transform custom element tags to pascal case
+          .replace(/<(\/?)(p-[\w-]+)(.*?)>/g, (m, $slash, $tag, $attributes) => {
+            return `<${$slash}${pascalCase($tag)}${$attributes}>`;
           })
           // transform style attributes
           .replace(
             /style="(.*?)"/g,
             (m, $style: string) =>
+              // TODO: camelCase for keys, remove px from px values, quotes around non px values
               `style={{ ${$style
                 .replace(/;/g, ',') // transform semi colons to comma
                 .replace(/,$/g, '')} }}` // remove last comma
           )
       );
-    }
-
-    private beautify(markup: string): string {
-      return html(markup, { indent_size: 2 });
     }
 
     private highlight(markup: string): string {
@@ -164,7 +154,7 @@
   @import '../styles/internal.variables';
 
   .code-block {
-    &.light {
+    &--light {
       code,
       pre {
         color: $p-color-default;
@@ -231,7 +221,7 @@
       }
     }
 
-    &.dark {
+    &--dark {
       code,
       pre {
         color: $p-color-theme-dark-default;

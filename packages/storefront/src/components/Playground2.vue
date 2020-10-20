@@ -19,8 +19,8 @@
       <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code" v-html="cleanedMarkup"></div>
-      <CodeBlock :markup="cleanedMarkup" :theme="theme" />
+      <div class="code" v-html="cleanMarkup(markup)"></div>
+      <CodeBlock :markup="markup" :theme="theme" />
     </div>
   </div>
 </template>
@@ -61,8 +61,8 @@
       return { ...initialConfig, ...this.config };
     }
 
-    public get cleanedMarkup(): string {
-      return this.markup.replace(/\n/g, '');
+    public cleanMarkup(input: string): string {
+      return input.replace(/\n/g, '');
     }
 
     public switchTheme(theme: Theme): void {
