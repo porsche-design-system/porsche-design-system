@@ -1,6 +1,7 @@
 # Textarea
 
-The **Textarea Wrapper** component is a styling wrapper for the native HTML `<textarea>` form element.
+The **Textarea Wrapper** component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
+such as a phone number or name. In this case, you should use the Text Field component. 
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The **Textarea Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
 

@@ -2,7 +2,8 @@
 
 ## When to use
   • Use a Radio Button to enable a user to select one value from a predefined list.  
-  • Use a Radio Button as soon as two options are mutually exclusive.
+  • Use a Radio Button as soon as two options are mutually exclusive.  
+  • Use a Radio Button when the user should see all available options.
 
 ---
 
@@ -36,7 +37,7 @@ Always align Radio Buttons with more than 2 items vertically left-aligned, as a 
 ![Example for alignment](./assets/radio-button-dont-alignment.png)
 
 ### Single choice
-Never use a Radio Button alone.
+Never use a Radio Button alone. In this case you should you the Checkbox instead.
 
 ![Example for single choice](./assets/radio-button-dont-single-choice.png)
 

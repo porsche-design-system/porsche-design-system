@@ -1,9 +1,10 @@
 # Select
 
 ## When to use
-  • Use a Select to trigger an action based on the selected option.
-  • Use a Select to choose one option from a list of items.
-  • Use a Select to navigate the user to a new position.   
+  • Use a Select to trigger an action based on the selected option.  
+  • Use a Select to choose and search one option from a list of items.  
+  • Use a Select to navigate the user to a new position.  
+  • Use a Select to recommending a default option for most users.
 
 ---
 
@@ -55,9 +56,6 @@ Avoid Select boxes for data that is highly familiar such as the day, month or ye
 Very long Select boxes that require scrolling make it impossible for users to see all their choices in one glance. However this cannot always be avoided. Therefore make sure that when open there is only a maximum of 7 elements in the field of view without having to scroll.
 
 ![Example for alignment](./assets/select-dont-items.png)
-
-### Text only
-Never use images or symbols within a selection list.
 
 ---
 

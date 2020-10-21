@@ -1,79 +1,36 @@
 # Textarea
 
-Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line. 
-Don't use a Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, 
-such as a phone number or name. In this case, you should use the Text Field component. 
-Textareas should always be accompanied by labels, helping the user to understand the type of input that is required.
+## When to use
+
+  • Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line.
 
 ---
 
-## Variants
+## Types
 
-### Pure (without label)
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Textarea as follows
 
-The component Pure (without label) is only used if the context clearly describes what the component Pure is to be used for and no further explanation is required.
+| Type | Usage |
+|----|----|
+| Default | The basic type contain a Label and this is the most way to create a Textarea inside of a form. |
+| Without label | The variant without label (Pure) is only to be used if the context clearly describes the purpose of the Text Field and no further explanation is required.    |
 
-<p-textarea-wrapper label="Some label" hide-label="true"><textarea name="some-name"></textarea></p-textarea-wrapper>
 
-### Description text
-
-Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
-<p-textarea-wrapper label="Some label" description="Some description"><textarea name="some-name"></textarea></p-textarea-wrapper>
-
----
-
-## States
-
-All Textareas types are available in the following states:
-
-* default
-* disabled
-* hover
-* read only
-* focus
-* error
-* success
-
----
-
-## Styling
+## Behavior
 
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
-
-### Input area
-Enables users to enter a multiline text.
 
 ### Height
 We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
 In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
-### Help text
-Help text should be displayed openly and directly, also in order not to expect the user to make additional clicks. 
-Please find more information in the [Form pattern guideline](#/patterns/forms).
-
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Textarea the validation belongs to.
 Please find more information in the [Form pattern guideline](#/patterns/forms).
 
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together.
-Please find more information in the [Form pattern guideline](#/patterns/forms).
-
----
-
-## Usage
-
 ### Mandatory and optional fields
-
 Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
-
-### Disabled state
-
-All types of Textareas are available as disabled state. However, disabled states (e.g. read only) should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. 
-Keep in mind: “The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…).” (Donald A. Norman, 2002)
 
 
  <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
@@ -81,10 +38,15 @@ Keep in mind: “The best way [to] prevent user error is to make sure that the u
     <img src="./assets/textarea-examples.png" alt="Examples for textarea usage"/>
 </div>
 
-## Don'ts
+## Do's & Don'ts
 
 ### Number of Textareas
 To ensure that we don't overwhelm users, there should be no more than two Textareas on a page.
+
+### Short text inputs
+Don't use a Text Area when text entry is expected to be short since it could confuse users. Use an input instead.
+
+![Short Text in Text Field](./assets/textarea-dont-short-text-inputs.png)
 
 ---
 
