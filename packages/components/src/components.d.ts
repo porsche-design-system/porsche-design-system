@@ -5,9 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TabChangeEvent, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
     interface PBanner {
         /**
