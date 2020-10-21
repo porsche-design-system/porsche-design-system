@@ -1,32 +1,13 @@
 <template>
-  <div>
-    <p-flex>
-      <form action="https://codepen.io/pen/define" method="POST" target="_blank">
-        <input type="hidden" name="data" :value="codepen" />
-        <p-button type="submit">CodePen</p-button>
-      </form>
+  <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+    <input type="hidden" name="data" :value="codepen" />
+    <p-button type="submit" :icon-source="codepenIcon">Edit in CodePen</p-button>
+  </form>
 
-      <form action="https://stackblitz.com/run?file=index.html" method="POST" target="_blank">
-        <input type="hidden" name="project[files][index.js]" value="" />
-        <input type="hidden" name="project[files][index.html]" :value="stackblitz.html" />
-        <input type="hidden" name="project[description]" value="Porsche Design System" />
-        <input type="hidden" name="project[dependencies]" value="{}" />
-        <input type="hidden" name="project[template]" value="javascript" />
-        <input type="hidden" name="project[options][openFile]" value="index.html" />
-        <p-button type="submit">StackBlitz</p-button>
-      </form>
-
-      <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
-        <input type="hidden" name="parameters" :value="codesandbox" />
-        <p-button type="submit">CodeSandbox</p-button>
-      </form>
-    </p-flex>
-
-    <div class="codepen" :data-prefill="dataPrefill" data-height="400" data-theme-id="light" data-editable="true">
-      <pre data-lang="html" v-html="escapedMarkup"></pre>
-      <pre data-lang="js">porscheDesignSystem.load()</pre>
-    </div>
-  </div>
+  <!--    <div class="codepen" :data-prefill="dataPrefill" data-height="400" data-theme-id="light" data-editable="true">-->
+  <!--      <pre data-lang="html" v-html="escapedMarkup"></pre>-->
+  <!--      <pre data-lang="js">porscheDesignSystem.load()</pre>-->
+  <!--    </div>-->
 </template>
 
 <script lang="ts">
@@ -40,20 +21,23 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
 
-    public mounted(): void {
-      // @ts-ignore
-      window.__CPEmbed(this.$el.querySelector('.codepen'));
-    }
+    codepenIcon = require('../assets/icon-codepen.svg');
 
-    public get dataPrefill(): string {
-      return JSON.stringify({
-        scripts: 'https://designsystem.porsche.com/v2/pds-loader.js'
-      });
-    }
-
-    public get escapedMarkup(): string {
-      return escapeHtml(this.markup);
-    }
+    // public mounted(): void {
+    //   // @ts-ignore
+    //   window.__CPEmbed(this.$el.querySelector('.codepen'));
+    //   <script async src="https://static.codepen.io/assets/embed/ei.js"><\/script>
+    // }
+    //
+    // public get dataPrefill(): string {
+    //   return JSON.stringify({
+    //     scripts: 'https://designsystem.porsche.com/v2/pds-loader.js'
+    //   });
+    // }
+    //
+    // public get escapedMarkup(): string {
+    //   return escapeHtml(this.markup);
+    // }
 
     public get codepen() {
       return JSON.stringify({
@@ -64,29 +48,6 @@
         html: this.markup,
         js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
         js: 'porscheDesignSystem.load()'
-      });
-    }
-
-    /* eslint-disable no-useless-escape */
-    public get stackblitz() {
-      return {
-        html:
-          this.markup +
-          `\n
-  <script src="https://designsystem.porsche.com/v2/pds-loader.js"><\/script>
-  <script>porscheDesignSystem.load();<\/script>`
-      };
-    }
-    /* eslint-enable no-useless-escape */
-
-    public get codesandbox() {
-      return getParameters({
-        files: {
-          'index.html': {
-            content: this.stackblitz.html,
-            isBinary: false
-          }
-        }
       });
     }
   }
