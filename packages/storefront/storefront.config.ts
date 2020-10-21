@@ -579,6 +579,20 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
       ]
+    },
+    Modal: {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.examples.md`)
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.usage.md`)
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/content/modal/modal.props.md`)
+      ]
     }
   }
 };
