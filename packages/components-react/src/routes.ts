@@ -83,6 +83,21 @@ export const routes: RouteType[] = [
     component: fromPages.MarquePage
   },
   {
+    name: 'Modal Basic',
+    path: '/modal-basic',
+    component: fromPages.ModalBasicPage
+  },
+  {
+    name: 'Modal Scrollable',
+    path: '/modal-scrollable',
+    component: fromPages.ModalScrollablePage
+  },
+  {
+    name: 'Modal Prefixed',
+    path: '/modal-prefixed',
+    component: fromPages.ModalPrefixedPage
+  },
+  {
     name: 'Overview',
     path: '/overview',
     component: fromPages.OverviewPage
