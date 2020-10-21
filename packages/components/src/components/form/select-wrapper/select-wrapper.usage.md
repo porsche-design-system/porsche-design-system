@@ -14,7 +14,6 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Type | Usage |
 |----|----|
 | Without label (Pure) | The component without label is only used if the context clearly describes what the component is to be used for and no further explanation is required. |
-| Placeholder | Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. Use the placeholder text only in exceptions. Please find more information in the [Form pattern guideline](#/patterns/forms). |
 | Description text | Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. |
 | With custom filter | For a large amount of select options (e.g. country/state select), we offer the custom filter to select easily and fast the desired of the available options. |
 
@@ -25,7 +24,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Width
-The Select have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Please find more information in the [Form pattern guideline](#/patterns/forms).
+The Select have no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Knowledge
 Do the users know their input without having to look at a list of the different options? If the answer is 'no' it might be better to use a component showing the options directly (such as Radio Buttons).
