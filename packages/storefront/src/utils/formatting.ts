@@ -65,14 +65,18 @@ export const convertToReact = (markup: string): string =>
     // add closing slash to inputs for valid jsx
     .replace(/(<input(?:.[^/]*?))>/g, '$1 />')
     // transform style attributes
-    .replace(
-      /style="(.*?)"/g,
-      (m, $style: string) =>
-        // TODO: camelCase for keys, remove px from px values, quotes around non px values
-        `style={{ ${$style
-          .replace(/;/g, ',') // transform semi colons to comma
-          .replace(/,$/g, '')} }}` // remove last comma
-    );
+    .replace(/style="(.*?)"/g, (m, $style: string) => {
+      $style = $style
+        .replace(/;/g, ',') // transform semi colons to comma
+        .replace(/,$/g, ''); // remove last comma
+
+      const pairs = $style.split(',').map((p) => {
+        const [prop, val] = p.split(':');
+        return `${camelCase(prop)}: '${val.trim()}'`;
+      });
+
+      return `style={{ ${pairs.join(', ')} }}`;
+    });
 
 export const escapeHtml = (input: string): string =>
   input
