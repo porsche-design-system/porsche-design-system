@@ -1,7 +1,8 @@
 # Checkbox
 
 ## When to use
-  • Use a Checkbox for a list of options when you want to enable the user to select no, one or more options. 
+  • Use a Checkbox for a list of options when you want to enable the user to select no, one or more options.  
+  • When an explicit action is required to apply settings. 
 
 ---
 
@@ -11,7 +12,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Type | Usage |
 |----|----|
-| Default | The default view of a set of Checkboxes is having no option selected. |
+| Default | The basic view of a set of Checkboxes is having no option selected. |
 | Indeterminate | The indeterminate state is only a visual state and cannot be achieved by direct user interaction. |
 
 ## Behavior
@@ -51,9 +52,7 @@ Never mix Radio Buttons and Checkboxes.
 
 Preferably set Checkboxes vertically left-aligned, as this supports scannability way better than a horizontal alignment.
 
-![Don't set checkboxes vertically](./assets/checkbox-dont-alignment.png)
-
-![Example for alignment](./assets/checkbox-dont-position.png)
+![Don't set checkboxes horizontaly](./assets/checkbox-dont-alignment.png)
 
 ---
 
