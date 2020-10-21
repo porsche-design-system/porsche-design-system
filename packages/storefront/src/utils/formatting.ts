@@ -73,3 +73,11 @@ export const convertToReact = (markup: string): string =>
           .replace(/;/g, ',') // transform semi colons to comma
           .replace(/,$/g, '')} }}` // remove last comma
     );
+
+export const escapeHtml = (input: string): string =>
+  input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&gt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');

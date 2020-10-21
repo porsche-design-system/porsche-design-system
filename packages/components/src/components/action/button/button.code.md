@@ -37,7 +37,7 @@ Choose between predefined styling variants.
   import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundButton extends Vue {
+  export default class Playground extends Vue {
     primary = 
 `<p-button variant="primary">Some label</p-button>
 <p-button variant="primary" disabled>Some label</p-button>
