@@ -1,28 +1,27 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="themeable">
+    <p-tabs-bar v-if="mergedConfig.themeable">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
     <div
       class="example"
       :class="{
-        'example--light': (themeable && theme === 'light') || themeable === false,
-        'example--dark': themeable && theme === 'dark',
-        surface: colorScheme === 'surface',
-        'height-fixed': childElementLayout.height === 'fixed',
-        'spacing-inline': childElementLayout.spacing === 'inline',
-        'spacing-block': childElementLayout.spacing === 'block',
-        'spacing-block-small': childElementLayout.spacing === 'block-small'
+        'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
+        'example--dark': mergedConfig.themeable && theme === 'dark',
+        'example--surface': mergedConfig.colorScheme === 'surface',
+        'example--height-fixed': mergedConfig.height === 'fixed',
+        'example--spacing-inline': mergedConfig.spacing === 'inline',
+        'example--spacing-block': mergedConfig.spacing === 'block',
+        'example--spacing-block-small': mergedConfig.spacing === 'block-small'
       }"
     >
-      <div class="configurator" v-if="isSlotSet('configurator')">
+      <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code">
-        <slot :theme="theme" />
-      </div>
-      <CodeBlock :markup="markup" :theme="theme" />
+      <div class="code" v-html="cleanDemoMarkup(patchedMarkup)"></div>
+      <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
+      <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)"></CodeEditor>
     </div>
   </div>
 </template>
@@ -32,45 +31,55 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
+  import CodeEditor from '@/components/CodeEditor.vue';
   import { Theme } from '@/models';
+  import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
-  interface ChildElementLayout {
+  export type PlaygroundConfig = {
+    themeable: boolean;
+    colorScheme: 'default' | 'surface';
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
-  }
+  };
+
+  export const initialConfig: PlaygroundConfig = {
+    themeable: false,
+    colorScheme: 'default',
+    height: 'auto',
+    spacing: 'none'
+  };
 
   @Component({
     components: {
-      CodeBlock
+      CodeBlock,
+      CodeEditor
     }
   })
   export default class Playground extends Vue {
-    @Prop({ default: false }) public themeable!: boolean;
-    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
-    @Prop({ default: () => ({ height: 'auto', spacing: 'none' }) }) public childElementLayout!: ChildElementLayout;
+    @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
+    @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
-    public markup = '';
+    public cleanEditorMarkup = cleanMarkup;
+
+    public get mergedConfig(): PlaygroundConfig {
+      return { ...initialConfig, ...this.config };
+    }
+
+    public get patchedMarkup(): string {
+      return patchThemeIntoMarkup(this.markup, this.theme);
+    }
+
+    public cleanDemoMarkup(input: string): string {
+      return input.replace(/\n/g, '');
+    }
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
     }
 
-    public mounted(): void {
-      this.markup = this.getMarkup();
-    }
-
-    public updated(): void {
-      this.markup = this.getMarkup();
-    }
-
     public isSlotSet(name: string): boolean {
-      return this.$scopedSlots[name] !== undefined;
-    }
-
-    private getMarkup(): string {
-      const el = this.$el.querySelector('.code');
-      return el ? el.innerHTML : '';
+      return !!this.$scopedSlots[name];
     }
   }
 </script>
@@ -89,7 +98,7 @@
       border-color: $p-color-neutral-contrast-low;
       background-color: $p-color-background-default;
 
-      &.surface {
+      &.example--surface {
         border-color: $p-color-background-surface;
         background-color: $p-color-background-surface;
       }
@@ -99,56 +108,49 @@
       border-color: $p-color-theme-dark-background-default;
       background-color: $p-color-theme-dark-background-default;
 
-      &.surface {
+      &.example--surface {
         border-color: $p-color-theme-dark-background-surface;
         background-color: $p-color-theme-dark-background-surface;
       }
     }
 
     // Child Layout "height"
-    &.height-fixed .code {
-      > * {
+    &--height-fixed .code {
+      ::v-deep * {
         height: p-px-to-rem(180px);
       }
     }
 
     // Child layout "spacing"
-    &.spacing-inline .code {
+    &--spacing-block .code,
+    &--spacing-inline .code {
       &::before {
         content: '';
         display: block;
         margin-top: -$p-spacing-16;
       }
 
-      > * {
+      ::v-deep * {
         margin-top: $p-spacing-16;
+      }
+    }
 
+    &--spacing-inline .code {
+      ::v-deep * {
         &:not(:last-child) {
           margin-right: $p-spacing-16;
         }
       }
     }
 
-    &.spacing-block .code {
-      &::before {
-        content: '';
-        display: block;
-        margin-top: -$p-spacing-16;
-      }
-
-      > * {
-        margin-top: $p-spacing-16;
-      }
-    }
-
-    &.spacing-block-small .code {
+    &--spacing-block-small .code {
       &::before {
         content: '';
         display: block;
         margin-top: -$p-spacing-8;
       }
 
-      > * {
+      ::v-deep * {
         margin-top: $p-spacing-8;
       }
     }
@@ -158,7 +160,7 @@
     }
 
     .code ~ .code-block {
-      margin-top: $p-spacing-40;
+      margin-top: $p-spacing-32;
     }
   }
 </style>
