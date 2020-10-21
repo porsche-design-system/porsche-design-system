@@ -21,10 +21,6 @@ The component Pure (without label) is only used if the context clearly describes
     <option value="c">Option C</option>
   </select></p-select-wrapper>
 
-### Placeholder
-
-Placeholder text disappears when a user types in the input. If a user doesn’t enter a value and moves to another part of a form, the placeholder text reappears in the former text box. Use the placeholder text only in exceptions. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
 ### Description text
 
 Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information in the [Form pattern guideline](#/patterns/forms).
@@ -317,7 +313,7 @@ The Select component is available in the following states:
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
 ### Width
-The Select has no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Baymard Institute usability study showed that:  “If a field was too long or too short, the test subjects started to wonder if they had misunderstood the label (…).” [Baymard Institute](https://baymard.com/blog/form-field-usability-matching-user-expectations). The initial width of the sketch symbol is set to 272 px (corresponds to the grid width on viewport XS). Please find more information in the [Form pattern guideline](#/patterns/forms).
+The Select has no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 
 ### Validation and error

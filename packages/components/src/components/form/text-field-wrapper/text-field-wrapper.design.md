@@ -76,7 +76,7 @@ The label text (always in copytext) gives the user an information about the opti
 Enables users to enter a single line of text.
 
 ### Width
-Text fields have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. Please find more information in the [Form pattern guideline](#/patterns/forms).
+Text fields have no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which text field the validation belongs to.
