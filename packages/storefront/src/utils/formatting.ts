@@ -77,7 +77,7 @@ export const convertToReact = (markup: string): string =>
 export const escapeHtml = (input: string): string =>
   input
     .replace(/&/g, '&amp;')
-    .replace(/</g, '&gt;')
+    .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
