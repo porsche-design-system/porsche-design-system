@@ -20,7 +20,7 @@
         <slot name="configurator" :theme="theme" />
       </div>
       <div class="code" v-html="cleanDemoMarkup(patchedMarkup)"></div>
-      <CodeBlock :markup="patchedMarkup" :theme="theme" />
+      <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
       <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)"></CodeEditor>
     </div>
   </div>
@@ -79,7 +79,7 @@
     }
 
     public isSlotSet(name: string): boolean {
-      return this.$scopedSlots[name] !== undefined;
+      return !!this.$scopedSlots[name];
     }
   }
 </script>

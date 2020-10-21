@@ -16,6 +16,22 @@ Choose between predefined styling variants.
 
 <Playground2 :markup="secondary" :config="{ themeable: true, spacing: 'inline' }"></Playground2>
 
+### Size
+
+<Playground2 :markup="sizeMarkup" :config="{ themeable: true }">
+  <template #configurator>
+    <select @change="size = $event.target.value">
+      <option disabled>Select a size</option>
+      <option>x-small</option>
+      <option>small</option>
+      <option selected>medium</option>
+      <option>large</option>
+      <option>x-large</option>
+      <option>inherit</option>
+    </select>
+  </template>
+</Playground2>
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
@@ -35,5 +51,11 @@ Choose between predefined styling variants.
 `<p-button variant="secondary">Some label</p-button>
 <p-button variant="secondary" disabled>Some label</p-button>
 <p-button variant="secondary" loading>Some label</p-button>`;
+
+    size = 'medium';
+    get sizeMarkup() {
+      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+      return `<p-button-pure size="${this.size}"${style}>Some label</p-button-pure>`;
+    }
   }
 </script>
