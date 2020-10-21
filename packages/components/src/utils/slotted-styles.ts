@@ -32,7 +32,7 @@ export const insertSlottedStyles = (element: HTMLElement, css: string): void => 
   if (elementMap.get(rootNode) === undefined) {
     elementMap.set(rootNode, true);
     const style = document.createElement('style');
-    style.appendChild(document.createTextNode(minifySlottedStyles(css)));
+    style.appendChild(document.createTextNode(css));
 
     const prependTo = getNodeToPrependTo(rootNode);
     const charsetTag = prependTo.querySelector('meta[charset]');
@@ -46,9 +46,3 @@ export const insertSlottedStyles = (element: HTMLElement, css: string): void => 
     }
   }
 };
-
-const minifySlottedStyles = (css: string): string =>
-  css
-    .replace(/\s{2,}|(\/\*.*\*\/)/g, '') // remove 2 and more white spaces + comments
-    .replace(/(:|;)\s/g, '$1') // remove space after colon and semi colon
-    .replace(/[\s;]({|})\s?/g, '$1'); // remove semi colon and space before and after opening and closing curly bracket

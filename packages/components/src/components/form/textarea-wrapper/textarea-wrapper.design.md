@@ -45,8 +45,7 @@ The label text (always in copytext) gives the user an information about the opti
 ### Input area
 Enables users to enter a multiline text.
 
-### Width and height
-Textareas have no specific width. Depending on the layout you can set the width either depending on the length of the text or by adjusting it to the grid. 
+### Height
 We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
 In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
@@ -68,17 +67,7 @@ Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Mandatory and optional fields
 
-Generally, it’s recommended to avoid optional fields in forms due to the fact that we should not give the user the feeling of having to give information that is not absolutely necessary. 
-That being said, we would then have to label almost every (mandatory) form field with the well-known asterisk accompanied by a global explanation (“All fields marked with * ...“).
- n order to give the Porsche forms a more positive connotation and for the reason that users are more likely to provide voluntary information, we  recommend to mark only optional fields by adding “(optional)” next to the input label.
-
-By doing so…
-* … user feel less overwhelmed, as there are way less “(optional)” labels than there would be asterisks.
-* … users do not have to read a global explanation (“All fields marked with * ...“).
-* … the asterisk is obsolete or freely available for other purposes, e.g. footnotes.
-* … forms not only seem to be more positive, but also look more cleaned up in general.
-
-<p-text-field-wrapper label="Some label (optional)"><input type="text" name="some-name"></p-text-field-wrapper>
+Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 
 ### Disabled state

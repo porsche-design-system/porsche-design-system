@@ -14,13 +14,13 @@ ratios between elements on the respective screen size.
 
 ### Overview 
 
-| Viewport | Range | Columns | Gutter | 
-| -------- | -------- | -------- | -------- | 
-| **XS** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 
-| **S** | 760-999 px | 12 columns |  24 px |
-| **M** | 1000-1299 px | 12 columns | 36 px| 
-| **L** | 1300-1759 px  |  12 columns | 36 px |  
-| **XL** | 1760 px or larger |  12 columns | 36 px | 
+| Viewport | Range | Columns | Gutter | Margin (100% = full screen width) | 
+| -------- | -------- | -------- | -------- | -------- | 
+| **XS** | 320-759 px | 12 columns (Design only: 6 columns) |  16 px | 7% | 
+| **S** | 760-999 px | 12 columns |  24 px | 7% | 
+| **M** | 1000-1299 px | 12 columns | 36 px| 7% | 
+| **L** | 1300-1759 px  |  12 columns | 36 px | 7% |  
+| **XL** | 1760 px or larger |  12 columns | 36 px | 10% | 
 
 ![Porsche Design System grid architecture](./assets/grid-viewports.png)
 

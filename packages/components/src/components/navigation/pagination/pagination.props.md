@@ -22,6 +22,6 @@
 
 ## Events
 
-| Event        | Description                    | Type               |
-| ------------ | ------------------------------ | ------------------ |
-| `pageChange` | Emitted when the page changes. | `CustomEvent<any>` |
+| Event        | Description                    | Type                                                   |
+| ------------ | ------------------------------ | ------------------------------------------------------ |
+| `pageChange` | Emitted when the page changes. | `CustomEvent<{ page: number; previousPage: number; }>` |

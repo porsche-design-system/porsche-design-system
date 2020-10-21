@@ -428,6 +428,24 @@ export namespace Components {
          */
         "trademark"?: boolean;
     }
+    interface PModal {
+        /**
+          * If true, the modal will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If true, the modal will not have a close button.
+         */
+        "disableCloseButton"?: boolean;
+        /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
+          * If true, the modal is open.
+         */
+        "open": boolean;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -777,6 +795,12 @@ declare global {
         prototype: HTMLPMarqueElement;
         new (): HTMLPMarqueElement;
     };
+    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
+    }
+    var HTMLPModalElement: {
+        prototype: HTMLPModalElement;
+        new (): HTMLPModalElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -867,6 +891,7 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
+        "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
@@ -1305,6 +1330,28 @@ declare namespace LocalJSX {
          */
         "trademark"?: boolean;
     }
+    interface PModal {
+        /**
+          * If true, the modal will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If true, the modal will not have a close button.
+         */
+        "disableCloseButton"?: boolean;
+        /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
+          * Emitted when the component requests to be closed.
+         */
+        "onClose"?: (event: CustomEvent<void>) => void;
+        /**
+          * If true, the modal is open.
+         */
+        "open"?: boolean;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1337,7 +1384,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: CustomEvent<any>) => void;
+        "onPageChange"?: (event: CustomEvent<{ page: number; previousPage: number }>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1580,6 +1627,7 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-marque": PMarque;
+        "p-modal": PModal;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
@@ -1615,6 +1663,7 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
+            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;

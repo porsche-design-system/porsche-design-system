@@ -1,13 +1,18 @@
 import { camelCase } from 'change-case';
+import { TagName, TagNameCamelCase, TAG_NAMES } from '../tags';
 
-export const getPrefixedTagNames = (element: HTMLElement, tagNames: string[]): { [tagName: string]: string } => {
-  const lowerCaseTagName = element.tagName.toLowerCase();
-  const [, prefix = ''] = new RegExp(/^(.*-)p-(.*)$/).exec(lowerCaseTagName) || [];
-  return tagNames.reduce(
-    (tagNameMap, tagName) => ({
-      ...tagNameMap,
-      [camelCase(tagName)]: prefix + tagName
-    }),
-    {}
-  );
+type PrefixedTagNames = { [key in TagNameCamelCase]: string };
+
+const prefixRegex = /^(.*-)p-(.*)$/;
+
+export const getPrefixedTagNames = (host: HTMLElement, rawTagNames: TagName[]): Partial<PrefixedTagNames> => {
+  const [, prefix = ''] = new RegExp(prefixRegex).exec(host.tagName.toLowerCase()) ?? [];
+  const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
+  for (const tag of rawTagNames) {
+    tagNames[camelCase(tag)] = `${prefix}${tag}`;
+  }
+  return tagNames;
 };
+
+export const getAllPrefixedTagNames = (host: HTMLElement): PrefixedTagNames =>
+  getPrefixedTagNames(host, (TAG_NAMES as unknown) as TagName[]) as PrefixedTagNames;
