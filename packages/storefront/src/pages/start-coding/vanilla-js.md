@@ -1,18 +1,22 @@
 # Vanilla Js
-## Sample integration
 
-You can find the repository of the Vanilla-JS example project here: [Sample integration Vanilla-JS](https://github.com/porscheui/sample-integration-vanillajs)
+## Quick start
+To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System, follow these steps:
 
-## Get the project up and running
-* Clone the repository by executing  
-`git clone https://github.com/porscheui/sample-integration-vanillajs.git`
-* Follow the installation guidelines in the README.md file
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
+* Install the Porsche Design System
 
-## Reproduce on your own
+```shell script
+// install with npm:
+npm install @porsche-design-system/components-js
 
-If you're using web components in a static website, the following page setup is recommended (assuming a web server is running):
+// install with yarn:
+yarn add @porsche-design-system/components-js
+```
 
-``` 
+After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended (assuming a web server is running).
+
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +39,7 @@ If you're using web components in a static website, the following page setup is 
 You can load the Porsche Design System with a custom unique prefix to prevent conflicts. Just pass the prefix as a parameter to the `load` method.
 Keep in mind that prefixed versions only work with components that use shadow root. This means, that if you do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
 
-``` 
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,3 +56,12 @@ Keep in mind that prefixed versions only work with components that use shadow ro
   </body>
 </html>
 ```
+
+## Sample integration
+We provide a public Github repository with a basic sample project setup to show how it is managed in real code.
+You can find the repository of the Vanilla-JS example project here: [Sample integration Vanilla-JS](https://github.com/porscheui/sample-integration-vanillajs)
+
+### Get the project up and running
+* Clone the repository by executing  
+`git clone https://github.com/porscheui/sample-integration-vanillajs.git`
+* Follow the installation guidelines in the README.md file
