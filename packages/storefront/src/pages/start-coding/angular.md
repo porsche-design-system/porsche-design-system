@@ -1,37 +1,13 @@
 # Angular
-## Sample integration
 
-You can find the repository of the angular example project here: [Sample integration angular](https://github.com/porscheui/sample-integration-angular)
-
-## Requirement
-* Get the Angular cli by executing `npm install -g @angular/cli`
-
-### Get the project up and running
-* Clone the repository by executing  
-`git clone https://github.com/porscheui/sample-integration-angular.git`
-
-### yarn
-* Install dependencies via `yarn install`
-* Run tests via `yarn test`
-* Run the application via `yarn start`
-* Build the application via `yarn build`
-
-### npm
-* Install dependencies via `npm install`
-* Run tests via `npm test`
-* Run the application via `npm start`
-* Build the application via `npm run build`
-
----
-
-## Reproduce on your own
-To build your own application with the components of the Porsche Design System, follow these steps:
+## Quick start
+To build your own application with the **Angular** components of the Porsche Design System, follow these steps:
 
 * Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Run `ng new my-app` to create a new Angular workspace and initial project
 * Install the Porsche Design System
 
-``` 
+```shell script
 // install with npm:
 npm install @porsche-design-system/components-angular
 
@@ -41,10 +17,11 @@ yarn add @porsche-design-system/components-angular
 
 After adding the `@porsche-design-system/components-angular` package to your project,
 you've to import the `PorscheDesignSystemModule` in every module you want to use the components.
+
 The following setup is a standard Angular CLI project: 
 
 ### App module
-``` 
+```tsx
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
@@ -65,8 +42,8 @@ export class AppModule { }
 
 ``` 
 
-#### App component
-``` 
+### App component
+```tsx
 import {Component} from '@angular/core';
 
 @Component({
@@ -96,7 +73,7 @@ Caution, if you opt-out of the automatic registering you've to take care that th
 other places, else the Angular components won't work as expected.
 
 You can provide the token as follows:
-```
+```tsx
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PorscheDesignSystemModule, PREVENT_WEB_COMPONENTS_REGISTRATION } from '@porsche-design-system/components-angular';
@@ -131,7 +108,7 @@ Keep in mind. that prefixed versions only work with components that use shadow r
 do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
 
 You can provide the token as follows:
-```
+```tsx
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
@@ -161,7 +138,7 @@ export class AppModule { }
 
 You can now use the components as follows:
 
-``` 
+```tsx
 import {Component} from '@angular/core';
 
 @Component({
@@ -180,7 +157,7 @@ Be aware, that you still have to set the component name without the prefix as an
 attribute, else you might get unexpected results in some edge cases.
 
 You can even add more prefixes with the `PrefixService`:
-```
+```tsx
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX, PrefixService } from '@porsche-design-system/components-angular';
@@ -211,3 +188,15 @@ export class AppModule {
   }
 }
 ```
+
+## Sample project
+We provide a public Github repository with a basic sample project setup to show how it is managed in real code.
+You can find the repository of the Angular example project here: [Sample integration Angular](https://github.com/porscheui/sample-integration-angular)
+
+## Requirement
+* Get the Angular cli by executing `npm install -g @angular/cli`
+
+### Get the project up and running
+* Clone the repository by executing  
+`git clone https://github.com/porscheui/sample-integration-angular.git`
+* Follow the installation guidelines in the README.md file
