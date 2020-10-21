@@ -71,7 +71,7 @@ describe('escapeHtml', () => {
   it('should replace special characters', () => {
     const markup = `<a href="https://porsche.com?param1=x&param2=y" target='_blank'>Link</a>`;
     expect(escapeHtml(markup)).toBe(
-      '&gt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&#039;_blank&#039;&gt;Link&gt;/a&gt;'
+      '&lt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&#039;_blank&#039;&gt;Link&lt;/a&gt;'
     );
   });
 });
