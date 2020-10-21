@@ -65,6 +65,21 @@ describe('convertToReact', () => {
     const markup = `<input type="checkbox">`;
     expect(convertToReact(markup)).toBe(`<input type="checkbox" />`);
   });
+
+  describe('inline styles', () => {
+    it('should quote values', () => {
+      const markup = `<div style="display: block"></div>`;
+      expect(convertToReact(markup)).toBe(`<div style={{ display: 'block' }}></div>`);
+    });
+    it('should transform properties to camelCase', () => {
+      const markup = `<div style="text-align: center"></div>`;
+      expect(convertToReact(markup)).toBe(`<div style={{ textAlign: 'center' }}></div>`);
+    });
+    it('should handle multiple styles', () => {
+      const markup = `<div style="text-align: center; font-size: 16px"></div>`;
+      expect(convertToReact(markup)).toBe(`<div style={{ textAlign: 'center', fontSize: '16px' }}></div>`);
+    });
+  });
 });
 
 describe('escapeHtml', () => {
