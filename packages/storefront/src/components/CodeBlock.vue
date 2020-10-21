@@ -217,7 +217,7 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $p-spacing-16;
+    margin: $p-spacing-16 0;
 
     code ::v-deep {
       .namespace {
