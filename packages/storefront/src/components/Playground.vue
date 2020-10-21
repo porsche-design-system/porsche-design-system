@@ -116,7 +116,7 @@
 
     // Child Layout "height"
     &--height-fixed .code {
-      ::v-deep * {
+      ::v-deep > * {
         height: p-px-to-rem(180px);
       }
     }
@@ -130,13 +130,13 @@
         margin-top: -$p-spacing-16;
       }
 
-      ::v-deep * {
+      ::v-deep > * {
         margin-top: $p-spacing-16;
       }
     }
 
     &--spacing-inline .code {
-      ::v-deep * {
+      ::v-deep > * {
         &:not(:last-child) {
           margin-right: $p-spacing-16;
         }
@@ -150,7 +150,7 @@
         margin-top: -$p-spacing-8;
       }
 
-      ::v-deep * {
+      ::v-deep > * {
         margin-top: $p-spacing-8;
       }
     }
