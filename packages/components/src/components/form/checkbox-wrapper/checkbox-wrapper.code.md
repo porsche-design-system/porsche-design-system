@@ -6,21 +6,13 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Basic example
 
-<Playground :childElementLayout="{spacing: 'block'}">
+<Playground :markup="basic" :config="config">
   <template #configurator>
     <select v-model="label">
       <option selected value="show">With label</option>
       <option value="hide">Without label</option>
       <option value="responsive">Responsive</option>
     </select>
-  </template>
-  <template>
-    <p-checkbox-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="checkbox" name="some-name" checked/>
-    </p-checkbox-wrapper>
   </template>
 </Playground>
 
@@ -38,27 +30,13 @@ There is no HTML attribute to set it. Also it's worth to know, that the `indeter
 only affects how the checkbox is shown. The current value is hidden from the user, but the
 checkbox still keeps it's `checked` state. You can find more details in [the specification](https://www.w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
 
-<Playground :childElementLayout="{spacing: 'inline'}">
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
-  </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label" indeterminate="true">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked/>
-  </p-checkbox-wrapper>
-</Playground>
+<Playground :markup="indeterminate" :config="config"></Playground>
 
 ---
 
 ## Disabled
 
-<Playground :childElementLayout="{spacing: 'inline'}">    
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" disabled/>
-  </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" checked disabled/>
-  </p-checkbox-wrapper>
-</Playground>
+<Playground :markup="disabled" :config="config"></Playground>
 
 ---
 
@@ -66,7 +44,7 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
 
 The **Checkbox Wrapper** component supports the visualisation of inline validation. The `message` and `checkbox` is colored and visible/hidden depending on the defined `state`.
 
-<Playground>
+<Playground :markup="validation" :config="config">
   <template #configurator>
     <select v-model="state">
       <option disabled>Select a validation state</option>
@@ -74,11 +52,6 @@ The **Checkbox Wrapper** component supports the visualisation of inline validati
       <option value="success">Success</option>
       <option value="none">None</option>
     </select>
-  </template>
-  <template>
-    <p-checkbox-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="checkbox" name="some-name" />
-    </p-checkbox-wrapper>
   </template>
 </Playground>
 
@@ -90,24 +63,58 @@ Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `labe
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 Please make sure to set the corresponding **aria** attributes.
 
-<Playground>
-  <template>
-    <p-checkbox-wrapper state="error">
-      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="checkbox" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id" />
-      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-    </p-checkbox-wrapper>
-  </template>
-</Playground>
+<Playground :markup="slots" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundCheckboxWrapper extends Vue {
-    public state: string = 'error';
-    public label: string = 'show';
+  export default class Code extends Vue {
+    config = { spacing: 'inline' };
+    
+    state = 'error';
+    label = 'show';
+    
+    get basic() {
+      const hideLabel = this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false';
+      return `<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
+  <input type="checkbox" name="some-name"/>
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
+  <input type="checkbox" name="some-name" checked/>
+</p-checkbox-wrapper>`;
+    }
+    
+    indeterminate =
+`<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label" indeterminate="true">
+  <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked/>
+</p-checkbox-wrapper>`;
+    
+    disabled =
+`<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" disabled/>
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" checked disabled/>
+</p-checkbox-wrapper>`;
+    
+    get validation() {
+      const message = this.state !== 'none' ? `Some ${this.state} validation message.` : ''; 
+      return `<p-checkbox-wrapper label="Some label" state="${this.state}" message="${message}">
+  <input type="checkbox" name="some-name" />
+</p-checkbox-wrapper>`;
+    }
+    
+    slots =
+`<p-checkbox-wrapper state="error">
+  <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <input type="checkbox" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id" />
+  <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+</p-checkbox-wrapper>`;
     
     mounted() {
       this.$nextTick(function () {
