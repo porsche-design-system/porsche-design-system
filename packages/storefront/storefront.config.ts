@@ -313,13 +313,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Fieldset: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore

@@ -21,13 +21,13 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
-### Height
-We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
-In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Textarea the validation belongs to.
 Please find more information in the [Form pattern guideline](#/patterns/forms).
+
+### Height
+We recommend a minimum height of 192 px (equals 7 text lines). Unless predefined characters are specified. 
+In this case we recommend to adapt the Textarea to the content. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Mandatory and optional fields
 Mark required fields. Our tests (optional vs. required with an asterisk) showed that mark required fields with an red asterisk is an easy way to improve the usability of forms. Please find more information in the [Form pattern guideline](#/patterns/forms).
@@ -40,13 +40,13 @@ Mark required fields. Our tests (optional vs. required with an asterisk) showed 
 
 ## Do's & Don'ts
 
-### Number of Textareas
-To ensure that we don't overwhelm users, there should be no more than two Textareas on a page.
-
 ### Short text inputs
 Don't use a Text Area when text entry is expected to be short since it could confuse users. Use an input instead.
 
 ![Short Text in Text Field](./assets/textarea-dont-short-text-inputs.png)
+
+### Number of Textareas
+To ensure that we don't overwhelm users, there should be no more than two Textareas on a page.
 
 ---
 
