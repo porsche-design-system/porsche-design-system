@@ -19,7 +19,7 @@
       <div v-if="isSlotSet('configurator')" class="configurator">
         <slot name="configurator" :theme="theme" />
       </div>
-      <div class="code" v-html="cleanDemoMarkup(patchedMarkup)"></div>
+      <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
       <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
       <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)"></CodeEditor>
     </div>
@@ -115,15 +115,15 @@
     }
 
     // Child Layout "height"
-    &--height-fixed .code {
+    &--height-fixed .demo {
       ::v-deep > * {
         height: p-px-to-rem(180px);
       }
     }
 
     // Child layout "spacing"
-    &--spacing-block .code,
-    &--spacing-inline .code {
+    &--spacing-block .demo,
+    &--spacing-inline .demo {
       &::before {
         content: '';
         display: block;
@@ -135,7 +135,7 @@
       }
     }
 
-    &--spacing-inline .code {
+    &--spacing-inline .demo {
       ::v-deep > * {
         &:not(:last-child) {
           margin-right: $p-spacing-16;
@@ -143,7 +143,7 @@
       }
     }
 
-    &--spacing-block-small .code {
+    &--spacing-block-small .demo {
       &::before {
         content: '';
         display: block;
@@ -155,11 +155,11 @@
       }
     }
 
-    .configurator ~ .code {
+    .configurator ~ .demo {
       margin-top: $p-spacing-32;
     }
 
-    .code ~ .code-block {
+    .demo ~ .code-block {
       margin-top: $p-spacing-32;
     }
   }
