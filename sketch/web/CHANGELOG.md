@@ -37,20 +37,11 @@ We'll always do our best to answer your questions and connect you with the right
 #### Added
 Type | Web Library |
 |---|---|
-Components | Select Combobox (minor) |
-Components | Select for dark theme (minor) |
-Components | Banner Notification (minor) | 
-Components | Modal (minor) |
-Components | Notification soft colors for dark theme (minor) |
-Components | Tabs and Tabs Bar (minor) | 
-
-#### Changed
-Type | Web Library |
-|---|---|
-Components | Porsche Next Font with new metrics (major) |
-Components | Surface color for dark theme regarding Accessibility criteria (minor) |
-Components | Hover/Active color for dark theme regarding Accessibility criteria (minor) |
-Components | Focus state for light and dark theme (minor) | 
+Components | Select Combobox |
+Components | Select for dark theme |
+Components | Banner Notification | 
+Components | Modal |
+Components | Tabs and Tabs Bar | 
 
 ### [2.0.0] - 2020-08-21
 
