@@ -16,19 +16,35 @@ We provide partials in our `@porsche-design-system/partials` package for you to 
 
 ### Example usage of  partials with template 
 
-The example shows how to implement a partial in a webpack project. 
+The example shows how to implement a partial in a webpack project. The core styles partial has following parameters (optional)  
+`getPorscheDesignSystemCoreStyles({ withoutTags: true, prefix: 'custom-prefix' })`
 
 ```html
 // index.html
 
 <head>
+  // without parameters
   <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
+</head>
+
+<head>
+  // with custom prefix to match your prefixed components
+  <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles({ prefix: 'custom-prefix' }) %>
+</head>
+
+<head>
+  // without style tags
+  <style>
+    <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles({ withoutTags: true }) %>
+  </style>
 </head>
 ``` 
 
 ### Example usage of partials with placeholder 
 
 If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script. 
+You can also pass following parameters (optional)  
+`getPorscheDesignSystemCoreStyles({ withoutTags: true, prefix: 'custom-prefix' })`
 
 ```html
 // index.html
@@ -50,7 +66,7 @@ If you don't use webpack or your bundler does not work with the syntax of the pr
 ### Example usage with static CSS snippet
 If you are not able to use **partials** use the **static** solution. Just copy the whole `<style>` tag from the static example and put it into the `<head>`
 of the `index.html` of your application. While using the static solution, make sure to list every component you use and 
-**update the list** when you upgrade the version of the `Porsche Design Sytem` with new components introduced.  
+**update the list** when you upgrade the version of the `Porsche Design Sytem` with new components introduced. Be aware if using custom prefixed components to adapt the style names with your custom prefix. 
 
 ```html
 // index.html

@@ -64,4 +64,10 @@ describe('getPorscheDesignSystemCoreStyles', () => {
     expect(result).not.toContain(' ');
     expect(result).not.toContain('\n');
   });
+
+  it('should add custom prefixes to style names', () => {
+    const result = getPorscheDesignSystemCoreStyles({ prefix: 'custom-prefix' });
+    expect(result).not.toContain(',p-button');
+    expect(result).toContain('custom-prefix-p-textarea-wrapper');
+  });
 });
