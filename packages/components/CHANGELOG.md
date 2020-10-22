@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Migration path
+#### Migration path from v1 to v2
 With our new major release `v2.0.0` there comes some significant changes which you should take care of. 
 To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some guidelines which should help to keep track of the (breaking) changes: 
 
