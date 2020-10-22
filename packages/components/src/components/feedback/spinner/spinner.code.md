@@ -7,7 +7,7 @@ Basic animated spinner to visualize loading states, e.g. page loading, form vali
 There are predefined sizes for the component available which should cover most use cases. 
 If a specific size is needed, the size can be set to `inherit` to specify the text size from outside.
 
-<Playground :themeable="true">
+<Playground :markup="sizeMarkup" :config="config">
   <template #configurator>
     <select @change="size = $event.target.value">
       <option disabled>Select a size</option>
@@ -17,20 +17,13 @@ If a specific size is needed, the size can be set to `inherit` to specify the te
       <option>inherit</option>
     </select>
   </template>
-  <template v-slot={theme}>
-    <p-spinner :size="size" :style="isInherit" :theme="theme" aria-label="Loading" />
-  </template>
 </Playground>
 
 ### Responsive
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground :themeable="true">
-  <template v-slot={theme}>
-    <p-spinner size="{ base: 'small', l: 'medium' }" :theme="theme" aria-label="Loading" />
-  </template>
-</Playground>
+<Playground :markup="responsive" :config="config"></Playground>
 
 ---
 
@@ -46,14 +39,21 @@ For automated visual regression tests the spinner animation can be disabled by s
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundButtonPure extends Vue {
-    public size: string = 'small';
+  export default class Code extends Vue {
+    config = { themeable: true };
     
-    public get isInherit() {
-      return this.size === 'inherit' ? 'width: 96px; height: 96px;' : undefined;
+    size = 'small';
+    
+    get sizeMarkup() {
+      const style = this.size === 'inherit' ? ' style="width: 96px; height: 96px;"' : '';
+      return `<p-spinner size="${this.size}"${style} aria-label="Loading" />`;
     }
+    
+    responsive =
+`<p-spinner size="{ base: 'small', l: 'medium' }" aria-label="Loading" />`;
+
   }
 </script>
