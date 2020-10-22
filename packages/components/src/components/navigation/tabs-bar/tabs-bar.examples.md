@@ -21,25 +21,8 @@ in your application! Therefore, we avoid messing with the window location.
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors. 
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-    </p-tabs-bar>
-  </template>
-</Playground>
-
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme">
-      <a href="#">Tab One</a>
-      <a href="#">Tab Two</a>
-      <a href="#">Tab Three</a>
-    </p-tabs-bar>
-  </template>
-</Playground>
+<Playground :markup="basicButton" :config="config"></Playground>
+<Playground :markup="basicAnchor" :config="config"></Playground>
 
 ## Accessibility
 
@@ -70,7 +53,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 
 ## Size
 
-<Playground :themeable="true">
+<Playground :markup="sizeMarkup" :config="config">
   <template #configurator>
     <select v-model="size">
       <option disabled>Select size</option>
@@ -78,31 +61,17 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
       <option value="medium">Medium</option>
     </select>
   </template>
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme" :size="size">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-    </p-tabs-bar>
-  </template>
 </Playground>
 
 ## Weight
 
-<Playground :themeable="true">
+<Playground :markup="weightMarkup" :config="config">
   <template #configurator>
     <select v-model="weight">
       <option disabled>Select weight</option>
       <option selected value="regular">Regular</option>
       <option value="semibold">SemiBold</option>
     </select>
-  </template>
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme" :weight="weight">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-    </p-tabs-bar>
   </template>
 </Playground>
 
@@ -111,7 +80,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
 The background and gradient has to align to your chosen background.
 
-<Playground :themeable="true" :color-scheme="gradientColorScheme">
+<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <template #configurator>
     <select v-model="gradientColorScheme">
       <option disabled>Select gradient-color-scheme</option>
@@ -119,56 +88,85 @@ The background and gradient has to align to your chosen background.
       <option value="surface">Surface</option>
     </select>
   </template>
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme" :gradient-color-scheme="gradientColorScheme">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-      <button type="button">Tab Four</button>
-      <button type="button">Tab Five</button>
-      <button type="button">Tab Six</button>
-      <button type="button">Tab Seven</button>
-      <button type="button">Tab Eight</button>
-      <button type="button">Tab Nine</button>
-      <button type="button">Tab Ten</button>
-      <button type="button">Tab Eleven</button>
-      <button type="button">Tab Twelve</button>
-      <button type="button">Tab Thirteen</button>
-      <button type="button">Tab Fourteen</button>
-      <button type="button">Tab Fifteen</button>
-      <button type="button">Tab Sixteen</button>
-      <button type="button">Tab Seventeen</button>
-      <button type="button">Tab Eighteen</button>
-      <button type="button">Tab Nineteen</button>
-      <button type="button">Tab Twenty</button>
-    </p-tabs-bar>
-  </template>
 </Playground>
 
 ## Active Tab
 
 **Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. 
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-tabs-bar :theme="theme" active-tab-index="1">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-    </p-tabs-bar>
-  </template>
-</Playground>
+<Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   
+  const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
+  const buildAnchor = (name: string) => `  <a href="#">Tab ${name}</a>`;
+  
   @Component
-  export default class PlaygroundTabs extends Vue {
-    public theme: string = 'light';
-    public weight: string = 'semibold';
-    public size: string = 'medium';
-    public gradientColorScheme: string = 'surface';
-    public activeTabIndex: number = 0;
+  export default class Code extends Vue {
+    config = { themeable: true };
+
+    weight = 'semibold';
+    size = 'medium';
+    gradientColorScheme = 'surface';
+    activeTabIndex = 1;
+
+    basicButton =
+`<p-tabs-bar>
+${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+</p-tabs-bar>`;
+
+    basicAnchor =
+`<p-tabs-bar>
+${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
+</p-tabs-bar>`;
+
+    get sizeMarkup() {
+      return `<p-tabs-bar size=${this.size}>
+${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+</p-tabs-bar>`;
+    }
+
+    get weightMarkup() {
+      return `<p-tabs-bar weight=${this.weight}>
+${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+</p-tabs-bar>`;
+    }
+    
+    get gradientMarkup() {
+      return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
+${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
+  .map(buildButton).join('\n')}
+</p-tabs-bar>`;
+    }
+    
+    get activeTab() {
+      return `<p-tabs-bar active-tab-index="${this.activeTabIndex}">
+${['One', 'Two', 'Three'].map(buildButton).join('\n').replace(/(label="Tab One")/, '$1 selected')}
+</p-tabs-bar>`;
+    }
+    
+    mounted(){
+      this.registerEvents();
+      
+      // theme switch needs to register event listeners again
+      const playground = this.$el.querySelector('.playground-tabs-bar p-tabs-bar');
+      playground.addEventListener('tabChange', (e) => {
+        console.log(e);
+        this.registerEvents();
+      });
+    }
+    
+    updated(){
+      this.registerEvents();
+    }
+    
+    registerEvents() {
+      const playground = this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar');
+      playground.addEventListener('tabChange', (e) => {
+        this.activeTabIndex = e.detail.activeTabIndex;
+      });
+    }
   }
 </script>

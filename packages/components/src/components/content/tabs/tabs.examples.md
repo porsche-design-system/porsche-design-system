@@ -108,6 +108,6 @@ ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
     activeTab =
 `<p-tabs>
 ${['One', 'Two', 'Three'].map(buildTabsItem).join('\n').replace(/(label="Tab One")/, '$1 selected')}
-</p-tabs>`
+</p-tabs>`;
   }
 </script>
