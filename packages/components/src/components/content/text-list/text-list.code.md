@@ -4,72 +4,42 @@ Text lists are used to display listed data in form of an unordered or ordered li
 
 ## Unordered list
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-text-list :theme="theme">
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-      <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
-        <p-text-list :theme="theme">
-          <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-            <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
-              <p-text-list :theme="theme">
-                <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-                <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-    </p-text-list>
-  </template>
-</Playground>
+<Playground :markup="list()" :config="config"></Playground>
 
 ## Ordered list - numbered
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-text-list list-type="ordered" :theme="theme">
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog
-        <p-text-list list-type="ordered" :theme="theme">
-          <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog
-            <p-text-list list-type="ordered" :theme="theme">
-              <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-              <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-            </p-text-list>
-          </p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-    </p-text-list>
-  </template>
-</Playground>
+<Playground :markup="list('ordered')" :config="config"></Playground>
 
 ## Ordered list - alphabetically
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-text-list list-type="ordered" order-type="alphabetically" :theme="theme">
+<Playground :markup="list('ordered', 'alphabetically')" :config="config"></Playground>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  
+  @Component
+  export default class Code extends Vue {
+    config = { themeable: true };
+    
+    list(listType?: string, orderType?: string) {
+      const attr = (listType ? ` list-type="${listType}"` : '') + (orderType ? ` order-type="${orderType}"` : '');
+      return `<p-text-list${attr}>
+  <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+  <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+    <p-text-list${attr}>
       <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog
-        <p-text-list list-type="ordered" order-type="alphabetically" :theme="theme">
-          <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-          <p-text-list-item>The quick brown fox jumps over the lazy dog
-            <p-text-list list-type="ordered" order-type="alphabetically" :theme="theme">
-              <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-              <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-            </p-text-list>
-          </p-text-list-item>
-        </p-text-list>
-      </p-text-list-item>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
+        <p-text-list-item>The quick <a href="#">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
+          <p-text-list${attr}>
+            <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+            <p-text-list-item>The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox</p-text-list-item>
+          </p-text-list>
+        </p-text-list-item>
     </p-text-list>
-  </template>
-</Playground>
-
-
-
+  </p-text-list-item>
+  <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+</p-text-list>`;
+    }
+  }
+</script>
