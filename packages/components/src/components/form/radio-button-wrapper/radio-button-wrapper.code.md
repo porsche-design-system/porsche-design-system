@@ -6,7 +6,7 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Basic examples
 
-<Playground :childElementLayout="{spacing: 'block'}">
+<Playground :markup="basic" :config="config">
   <template #configurator>
     <select v-model="label">
       <option selected value="show">With label</option>
@@ -14,28 +14,13 @@ A `label` is a caption which informs the user what information a particular form
       <option value="responsive">Responsive</option>
     </select>
   </template>
-  <template>
-    <p-radio-button-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <input type="radio" name="some-name-1" />
-    </p-radio-button-wrapper>
-  </template>
 </Playground>
 
 ---
 
 ## Disabled
 
-<Playground :childElementLayout="{spacing: 'block'}">    
-  <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" disabled/>
-  </p-radio-button-wrapper>
-  <p-radio-button-wrapper label="Some label">
-    <input type="radio" name="some-name-4" checked disabled/>
-  </p-radio-button-wrapper>
-</Playground>
+<Playground :markup="disabled" :config="config"></Playground>
 
 ---
 
@@ -43,7 +28,7 @@ A `label` is a caption which informs the user what information a particular form
 
 The **Radio Button Wrapper** component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
 
-<Playground :childElementLayout="{spacing: 'block'}">
+<Playground :markup="validation" :config="config">
   <template #configurator>
     <select v-model="state">
       <option disabled>Select a validation state</option>
@@ -51,14 +36,6 @@ The **Radio Button Wrapper** component supports the visualisation of inline vali
       <option value="success">Success</option>
       <option value="none">None</option>
     </select>
-  </template>
-  <template>
-    <p-radio-button-wrapper label="Some label" :state="state">
-      <input type="radio" name="some-name-5" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <input type="radio" name="some-name-5" />
-    </p-radio-button-wrapper>
   </template>
 </Playground>
 
@@ -70,27 +47,56 @@ Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `labe
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 Please make sure to set the corresponding **aria** attributes. 
 
-<Playground :childElementLayout="{spacing: 'block'}">
-  <template>
-    <p-radio-button-wrapper state="error">
-      <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
-    </p-radio-button-wrapper>
-    <p-radio-button-wrapper state="error">
-      <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
-      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-    </p-radio-button-wrapper>
-  </template>
-</Playground>
+<Playground :markup="slots" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundRadioButtonWrapper extends Vue {
-    public state: string = 'error';
-    public label: string = 'show';
+  export default class Code extends Vue {
+    config = { spacing: 'block' };
+  
+    state = 'error';
+    label = 'show';
+    
+    get basic() {
+      const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+      return `<p-radio-button-wrapper label="Some label" ${attr}>
+  <input type="radio" name="some-name-1" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" ${attr}>
+  <input type="radio" name="some-name-1" />
+</p-radio-button-wrapper>`;
+    }
+    
+    disabled =
+`<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" disabled/>
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" checked disabled/>
+</p-radio-button-wrapper>`;
+
+    get validation() {
+      const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`
+      return `<p-radio-button-wrapper label="Some label" state="${this.state}">
+  <input type="radio" name="some-name-5" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" state="${this.state}"${attr}>
+  <input type="radio" name="some-name-5" />
+</p-radio-button-wrapper>`;
+    }
+    
+    slots =
+`<p-radio-button-wrapper state="error">
+  <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper state="error">
+  <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
+  <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+</p-radio-button-wrapper>`
   }
 </script>
