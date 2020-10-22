@@ -24,18 +24,15 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
 
-### Width
-The Select have no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
+### Validation and error
+Validation text for a Select is placed right below the field box. This places the error next to the offending select,
+so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Knowledge
 Do the users know their input without having to look at a list of the different options? If the answer is 'no' it might be better to use a component showing the options directly (such as Radio Buttons).
 
 ### Number of options
 Generally, a limit of 5-10 options is recommended. [Baymard Institute](https://baymard.com/blog/drop-down-usability) However, it depends on the individual context. If several options are offered it makes sense to offer an autocomplete.
-
-### Validation and error
-Validation text for a Select is placed right below the field box. This places the error next to the offending select,
-so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 ### Sorting
 It's recommended to use common sort order for menu items (frequency of use, alpha or numeric).

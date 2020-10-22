@@ -2,7 +2,7 @@
 
 ## When to use
   • Use a Checkbox for a list of options when you want to enable the user to select no, one or more options.  
-  • When an explicit action is required to apply settings. 
+  • Use a Checkbox when an explicit action is required to apply settings. 
 
 ---
 
@@ -12,7 +12,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Type | Usage |
 |----|----|
-| Default | The basic view of a set of Checkboxes is having no option selected. |
+| Default | The basic view of a Checkboxe is having no option selected. |
 | Indeterminate | The indeterminate state is only a visual state and cannot be achieved by direct user interaction. |
 
 ## Behavior

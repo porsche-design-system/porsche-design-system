@@ -26,12 +26,6 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 ### Label
 The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one  word or two).
 
-### Input area
-Enables users to enter a single line of text.
-
-### Width
-Text fields have no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
 ### Validation and error
 Validation text for a field is placed right below the field box in order to make it clear for the user which Text Field the validation belongs to.
 Please find more information in the [Form pattern guideline](#/patterns/forms).

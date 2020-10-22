@@ -1,15 +1,14 @@
 # Fieldset
 
-The Fieldset component implements a container for visually-grouped form elements, e.g. form fields. 
-Each fieldset should be initiated by a title that gives the user a short information on what data is required in this section.
-
+## When to use
+  • When you need a container for visually-grouped form elements, e.g. form fields.
 
 ---
 
-## Styling
+## Behavior
 
 ### Sections including form elements
-We recommend for each fieldset the headline 4 of the respective viewport.
+We recommend for each fieldset the headline 4 (for the visible part *legend*) of the respective viewport.
 Please find more information in the [Form pattern guideline](#/patterns/forms).
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
