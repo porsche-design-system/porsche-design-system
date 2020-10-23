@@ -14,8 +14,6 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { getParameters } from 'codesandbox/lib/api/define';
-  import { escapeHtml } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -39,7 +37,7 @@
     //   return escapeHtml(this.markup);
     // }
 
-    public get codepen() {
+    public get codepen(): string {
       return JSON.stringify({
         // css_external: 'https://...css',
         layout: 'left',
