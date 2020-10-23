@@ -44,7 +44,7 @@ export class AppModule { }
 
 ### App component
 ```tsx
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -139,7 +139,7 @@ export class AppModule { }
 You can now use the components as follows:
 
 ```tsx
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
