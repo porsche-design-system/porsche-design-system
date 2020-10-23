@@ -52,7 +52,7 @@
         title: 'Porsche Design System',
         html: this.markup,
         ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
-        js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
+        js_external: 'https://designsystem.porsche.com/latest/pds-loader.js',
         js: 'porscheDesignSystem.load()'
       });
     }
