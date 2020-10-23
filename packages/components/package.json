@@ -12,7 +12,7 @@
     "postbuild:stencil": "yarn build:bundleTypes && ts-node --project './tsconfig.node.json' './scripts/generateTypeBundle.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
     "build:tags": "ts-node --project './tsconfig.node.json' './scripts/tags.ts'",
-    "build:bundleTypes": "rm -rf ./dist/types/bundle.d.ts && dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global",
+    "build:bundleTypes": "dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global",
     "build-prod": "PDS_IS_STAGING=0 yarn build",
     "lint": "yarn lint:scss && yarn lint:ts",
     "lint:scss": "stylelint './src/**/*.scss'",
