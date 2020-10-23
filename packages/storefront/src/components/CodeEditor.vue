@@ -17,6 +17,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
+  import { color } from '@porsche-design-system/utilities';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -43,12 +44,14 @@
     // }
 
     public get codepen(): string {
+      // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
         // css_external: 'https://...css',
         layout: 'left',
         editors: '100',
         title: 'Porsche Design System',
         html: this.markup,
+        ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
         js_external: 'https://designsystem.porsche.com/v2/pds-loader.js',
         js: 'porscheDesignSystem.load()'
       });
