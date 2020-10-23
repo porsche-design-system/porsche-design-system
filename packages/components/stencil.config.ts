@@ -4,8 +4,10 @@ import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import autoprefixer = require('autoprefixer');
-import path = require('path');
-import rollupReplacePlugin from 'rollup-plugin-replace';
+import * as path from 'path';
+import modify from 'rollup-plugin-modify';
+import replace from 'rollup-plugin-replace';
+import CleanCSS from 'clean-css';
 
 /**
  * TODO: Remove this workaround
@@ -19,6 +21,8 @@ import rollupReplacePlugin from 'rollup-plugin-replace';
  */
 const fakeNpmPath = path.join(__dirname, 'scripts', 'fakenpm');
 process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
+
+const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
 
 export const config: Config = {
   namespace: 'porsche-design-system',
@@ -55,8 +59,20 @@ export const config: Config = {
   ],
   rollupPlugins: {
     after: [
-      rollupReplacePlugin({
+      replace({
         ROLLUP_REPLACE_IS_STAGING: process.env.PDS_IS_STAGING === '1' ? '"staging"' : '"production"'
+      }),
+      modify({
+        // minify slotted styles
+        find: /const style = `((.|\s)*?)`/g,
+        replace: (match, $1) => {
+          const placeholder = '${tagName}';
+          const tmpPlaceholder = 'TAG_NAME';
+          return `const style = \`${minifyCSS($1.replace(placeholder, tmpPlaceholder)).replace(
+            tmpPlaceholder,
+            placeholder
+          )}\``;
+        }
       })
     ]
   },

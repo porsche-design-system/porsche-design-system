@@ -16,7 +16,7 @@
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
   import { html } from 'js-beautify';
-  import { camelCase, upperFirst } from 'lodash';
+  import { camelCase, pascalCase } from 'change-case';
   import { Framework, Theme } from '@/models';
 
   @Component
@@ -93,6 +93,8 @@
           .replace(/ (hidden|role|id|tabindex|aria-selected)=".*?"/g, '')
           // clean aria-labelledby attributes that are set by tabs component
           .replace(/ (aria-labelledby)="p-tab-item-\d"/g, '')
+          // clean empty string attributes
+          .replace(/=""/g, '')
       );
     }
 
@@ -147,7 +149,7 @@
           })
           // transform to camelCase event binding syntax
           .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` on${upperFirst($key.substring(2))}={() => {${$value}}}`;
+            return ` on${pascalCase($key.substring(2))}={() => {${$value}}}`;
           })
           // transform boolean and number
           .replace(/\s(\S+)="(true|false|\d)"/g, (m, $key, $value) => {
@@ -159,11 +161,11 @@
           })
           // transform custom element opening tags to pascal case
           .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
-            return `<${upperFirst(camelCase($tag))}${$attributes}>`;
+            return `<${pascalCase($tag)}${$attributes}>`;
           })
           // transform custom element closing tags to pascal case
           .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
-            return `</${upperFirst(camelCase($tag))}>`;
+            return `</${pascalCase($tag)}>`;
           })
           // transform style attributes
           .replace(

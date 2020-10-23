@@ -47,6 +47,10 @@ export const getCssClasses = async (element: ElementHandle): Promise<string> => 
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
+export const getActiveElementTagNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+  return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
+};
+
 export const getActiveElementId = async (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.id);
 };
