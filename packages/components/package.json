@@ -6,10 +6,10 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'yarn build:types && PDS_IS_STAGING=1 stencil build --watch --serve'",
-    "build": "yarn build:types && yarn build:stencil && yarn build:readme && yarn build:tags && yarn build:bundleTypes",
+    "build": "yarn build:types && yarn build:stencil && yarn build:readme && yarn build:tags",
     "build:types": "ts-node --project './tsconfig.node.json' './scripts/types.ts'",
     "build:stencil": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs",
-    "postbuild:stencil": "ts-node --project './tsconfig.node.json' './scripts/generateTypeBundle.ts'",
+    "postbuild:stencil": "yarn build:bundleTypes && ts-node --project './tsconfig.node.json' './scripts/generateTypeBundle.ts'",
     "build:readme": "ts-node --project './tsconfig.node.json' './scripts/readme.ts'",
     "build:tags": "ts-node --project './tsconfig.node.json' './scripts/tags.ts'",
     "build:bundleTypes": "rm -rf ./dist/types/bundle.d.ts && dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global",
