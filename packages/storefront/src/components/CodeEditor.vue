@@ -1,7 +1,9 @@
 <template>
   <form action="https://codepen.io/pen/define" method="POST" target="_blank">
     <input type="hidden" name="data" :value="codepen" />
-    <p-button type="submit" :icon-source="codepenIcon">Edit in CodePen</p-button>
+    <p-button :theme="theme" type="submit" :icon-source="codepenIcon" :disabled="framework !== 'vanilla-js'"
+      >Edit in CodePen</p-button
+    >
   </form>
 
   <!--    <div class="codepen" :data-prefill="dataPrefill" data-height="400" data-theme-id="light" data-editable="true">-->
@@ -14,10 +16,13 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
+  import { Framework, Theme } from '@/models';
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
+    @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
 
     codepenIcon = require('../assets/icon-codepen.svg');
 

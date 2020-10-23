@@ -21,7 +21,7 @@
       </div>
       <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
       <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
-      <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)"></CodeEditor>
+      <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { Theme } from '@/models';
+  import { Framework, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
 
   export type PlaygroundConfig = {
@@ -76,6 +76,10 @@
 
     public switchTheme(theme: Theme): void {
       this.theme = theme;
+    }
+
+    public get framework(): Framework {
+      return this.$store.getters.selectedFramework;
     }
 
     public isSlotSet(name: string): boolean {
