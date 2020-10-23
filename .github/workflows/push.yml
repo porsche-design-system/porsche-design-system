@@ -281,11 +281,11 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --storefront
-#      - name: 'VRT Test'
-#        uses: ./.github/actions/docker-run
-#        with:
-#          entrypoint: run-test-vrt
-#          args: --storefront
+      - name: 'VRT Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --storefront
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
