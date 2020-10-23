@@ -14,20 +14,21 @@ const getFilePathDest = (framework: Framework): string => {
 };
 
 // We have to deliver the type file to the wrapper packages, because we do not provide the components package
-const copyTypesToWrapper = (framework: Framework) => {
+const copyTypesToWrapper = (framework: Framework): void => {
   const filePathSource = path.resolve(rootDirectory, `dist/types/${BUNDLE_TYPE_FILE_NAME}`);
   const filePathDest = getFilePathDest(framework);
 
   fs.copyFileSync(filePathSource, filePathDest);
 
-  console.log(`File "${filePathSource}" copied to "${filePathDest}" \n\n`);
+  console.log(`File "${filePathSource}" copied to "${filePathDest}"`);
 };
 
 // To ensure the from stencil generated wrapper use the right imports, we have to rename them.
-const updateGeneratedWrapper = (framework: Framework) => {
+const updateGeneratedWrapper = (framework: Framework): void => {
+  console.log(`Update generated wrapper in "components-${framework}":`);
   copyTypesToWrapper(framework);
 
-  let targetFileName;
+  let targetFileName: string;
   if (framework === 'angular') {
     targetFileName = 'components-wrapper.component.ts';
   } else if (framework === 'react') {
@@ -35,23 +36,21 @@ const updateGeneratedWrapper = (framework: Framework) => {
   }
 
   const filePath = path.normalize(`../components-${framework}/projects/components-wrapper/src/lib/${targetFileName}`);
-  const data = fs.readFileSync(filePath, 'utf8').toString();
-  const result = data.replace(
-    /@porsche-design-system\/components/g,
-    `./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}`
-  );
+  const fileContent = fs.readFileSync(filePath, 'utf8').toString();
+  const replaceValue = `./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}`;
+  const result = fileContent.replace(/@porsche-design-system\/components/g, replaceValue);
   fs.writeFileSync(filePath, result);
 
-  console.log(`Updated import of "${targetFileName}" from @porsche-design-system/components to "./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}" \n\n`);
+  console.log(`Updated import of "${targetFileName}" from "@porsche-design-system/components" to "${replaceValue}"`);
 
-// React uses the alias JSX for LocalJSX, so we have to provide it
+  // React uses the alias JSX for LocalJSX, so we have to provide it
   if (framework === 'react') {
     const filePathDest = getFilePathDest(framework);
-    const data = fs.readFileSync(filePathDest, 'utf8').toString();
-    const result = data.replace('export {};', 'export { LocalJSX as JSX };');
+    const fileContent = fs.readFileSync(filePathDest, 'utf8').toString();
+    const result = fileContent.replace('export {};', 'export { LocalJSX as JSX };');
 
     fs.writeFileSync(filePathDest, result);
-    console.log(`Updated export alias for react`)
+    console.log(`Updated export alias for "components-react"`);
   }
 };
 
