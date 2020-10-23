@@ -39,7 +39,7 @@ Change your index page to use at least one Porsche Design System Component, for 
 ```tsx
 // index.tsx
 import Head from 'next/head'
-import {PHeadline} from "@porsche-design-system/components-react";
+import { PHeadline } from "@porsche-design-system/components-react";
 
 export default function Home() {
   return (
@@ -80,7 +80,7 @@ To consume the mocks you can set them up via your **setupTest.js** file in your 
 ```js
 // setupTest.js
 jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks');
+  return require('@porsche-design-system/components-react/mocks');
 });
 ```
 You have to access the mocks in the Mock-Factory of the `jest.mock()` function.
@@ -90,22 +90,22 @@ If you only need a single component mock you can also consume the mock directly 
 ```tsx
 // SingleComponent.tsx
 export function SingleComponent() {
-    return (
-        <PHeadline>Some headline</PHeadline>
-    )
+  return (
+    <PHeadline>Some headline</PHeadline>
+  )
 }
 ```
 
 ```tsx
 // SingleComponent.test.tsx
 jest.mock('@porsche-design-system/components-react', () => {
-    return require('@porsche-design-system/components-react/mocks/p-headline-mock');
+  return require('@porsche-design-system/components-react/mocks/p-headline-mock');
 });
 
 test('renders a headline from Porsche Design System', async () => {
-    const {getByText} = render(<SingleComponent/>);
-    const headLineElement = getByText('Some headline');
-    expect(headLineElement).toBeInTheDocument();
+  const {getByText} = render(<SingleComponent/>);
+  const headLineElement = getByText('Some headline');
+  expect(headLineElement).toBeInTheDocument();
 });
 ```
 
