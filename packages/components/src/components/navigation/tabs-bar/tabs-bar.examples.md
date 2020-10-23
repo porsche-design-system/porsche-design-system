@@ -31,23 +31,7 @@ The `<p-tabs-bar>` component is detached from the content which belongs to the a
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-```html
-<p-tabs-bar>
-  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
-  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
-  <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
-</p-tabs-bar>
-
-<div id="tab-panel-1" role="tabpanel" aria-labelledby="tab-item-1">
-  <p-text>Your content of Tab 1</p-text> 
-</div>
-<div id="tab-panel-2" role="tabpanel" aria-labelledby="tab-item-2">
-  <p-text>Your content of Tab 2</p-text>
-</div>
-<div id="tab-panel-3" role="tabpanel" aria-labelledby="tab-item-3">
-  <p-text>Your content of Tab 3</p-text>
-</div>
-```
+<Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
 
 ---
 
@@ -102,6 +86,9 @@ The background and gradient has to align to your chosen background.
   
   const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
   const buildAnchor = (name: string) => `  <a href="#">Tab ${name}</a>`;
+  const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
+  <p-text>Your content of Tab ${id}</p-text> 
+</div>`;
   
   @Component
   export default class Code extends Vue {
@@ -110,7 +97,6 @@ The background and gradient has to align to your chosen background.
     weight = 'semibold';
     size = 'medium';
     gradientColorScheme = 'surface';
-    activeTabIndex = 1;
 
     basicButton =
 `<p-tabs-bar>
@@ -122,14 +108,23 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
 </p-tabs-bar>`;
 
+    accessibility =
+`<p-tabs-bar active-tab-index="0">
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
+  <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
+</p-tabs-bar>
+ 
+${[1, 2, 3].map(buildTabPanel).join('\n')}`;
+
     get sizeMarkup() {
-      return `<p-tabs-bar size=${this.size}>
+      return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     }
 
     get weightMarkup() {
-      return `<p-tabs-bar weight=${this.weight}>
+      return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     }
@@ -141,21 +136,22 @@ ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
 </p-tabs-bar>`;
     }
     
-    get activeTab() {
-      return `<p-tabs-bar active-tab-index="${this.activeTabIndex}">
-${['One', 'Two', 'Three'].map(buildButton).join('\n').replace(/(label="Tab One")/, '$1 selected')}
+    activeTab =
+`<p-tabs-bar active-tab-index="0">
+${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
-    }
     
     mounted(){
+      // initially update accessibility playground
+      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));
+      
       this.registerEvents();
       
       // theme switch needs to register event listeners again
-      const playground = this.$el.querySelector('.playground-tabs-bar p-tabs-bar');
-      playground.addEventListener('tabChange', (e) => {
-        console.log(e);
+      const themeTabs = this.$el.querySelectorAll('.playground-tabs-bar p-tabs-bar');
+      themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
         this.registerEvents();
-      });
+      }));
     }
     
     updated(){
@@ -163,10 +159,52 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n').replace(/(label="Tab One")
     }
     
     registerEvents() {
-      const playground = this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar');
-      playground.addEventListener('tabChange', (e) => {
-        this.activeTabIndex = e.detail.activeTabIndex;
-      });
+      const tabsBars = this.$el.querySelectorAll('.playground-tabs-bar .example p-tabs-bar');
+      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
+        const { activeTabIndex } = e.detail;
+        this.updateActiveTabIndex(tabsBar, activeTabIndex);
+      }));
+    }
+    
+    hiddenNodes = null;
+    updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
+      // manipulate code only section only in order to not rerender component and loose animations
+      const example = tabs.parentElement.parentElement;
+      const demo = example.querySelector('.demo');
+      const code = example.querySelector('code');
+      const attrs = code.querySelectorAll('.token:first-child .attr-value');
+      
+      // manipulate activeTabIndex
+      if (attrs.length) {
+        attrs[attrs.length - 1].innerText = `="${newIndex}"`;
+      }
+      
+      // manipulate hidden attribute in code of accessibility playground
+      if (code.innerHTML.includes('Your content of Tab')) {
+        if (!this.hiddenNodes) {
+          this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+        }
+        
+        // hide/show and adjust offset of hidden attribute
+        for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
+          const item = this.hiddenNodes.snapshotItem(i);
+          item.style.marginLeft = '';
+          item.innerText = 'hidden';
+          
+          if (i === newIndex) {
+            item.style.marginLeft = '-9px';
+            item.innerText = '';
+          }
+        }
+        
+        const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
+        panels.forEach((panel, i) => {
+          panel.setAttribute('hidden', '');
+          if (i === newIndex) {
+            panel.removeAttribute('hidden');
+          }
+        });
+      }
     }
   }
 </script>
