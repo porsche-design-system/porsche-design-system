@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
-    "declaration": true,
+    "declaration": false,
     "experimentalDecorators": true,
     "lib": ["dom", "es2017"],
     "moduleResolution": "node",
