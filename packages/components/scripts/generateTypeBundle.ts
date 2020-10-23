@@ -28,7 +28,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   console.log(`Update generated wrapper in "components-${framework}":`);
   copyTypesToWrapper(framework);
 
-  let targetFileName: string;
+  let targetFileName = '';
   if (framework === 'angular') {
     targetFileName = 'components-wrapper.component.ts';
   } else if (framework === 'react') {
