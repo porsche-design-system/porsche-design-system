@@ -241,10 +241,6 @@ export const config: StorefrontConfig = {
       ]
     },
     Typography: {
-      Design: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/typography.design.md`)
-      ],
       Headline: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`)
@@ -252,6 +248,10 @@ export const config: StorefrontConfig = {
       Text: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/text/text.code.md`)
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/typography/typography.usage.md`)
       ],
       Props: [
         // @ts-ignore
