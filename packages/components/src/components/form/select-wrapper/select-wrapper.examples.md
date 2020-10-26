@@ -1,41 +1,44 @@
 # Select
 
-A Select is used to trigger an action based on the selected option, to choose one option from a list of items or to navigate the user to a new position.
-Take the following aspects into consideration when deciding whether to use a Select or not:
+The **Select** component is a styling wrapper for the native HTML `<select>` form element.
+To improve accessibility on devices with touch support, it defaults to the native user interface behaviour.
 
-* **The user's state of knowledge:** Do the users know their input without having to look at a list of the different options? If the answer is 'no' it might be better to use a component showing the options directly (such as Radio Buttons).  
-* **Number of options:** Generally, a limit of 5-10 options is recommended. [Baymard Institute](https://baymard.com/blog/drop-down-usability) However, it depends on the individual context. If several options are offered it makes sense to offer an autocomplete.
+A `label` is a caption which informs the user what information a particular form field is asking for. The **Select Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+
+## Basic example
+
+<Playground :themeable="true">
+  <template #configurator>
+    <select v-model="label">
+      <option disabled>Select a label mode</option>
+      <option selected value="show">With label</option>
+      <option value="hide">Without label</option>
+      <option value="responsive">Responsive</option>
+    </select>
+  </template>
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" :theme="theme" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+        <option value="d">Option D</option>
+        <option value="e">Option E</option>
+        <option value="f">Option F</option>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
 
 ---
 
-## Variants
+## With filter
+This option enhances the native select filter by providing an additional search field where the user can type his own search string. 
+The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
 
-
-### Pure (without label)
-
-The component Pure (without label) is only used if the context clearly describes what the component Pure is to be used for and no further explanation is required.
-
-<p-select-wrapper label="Some label" hide-label="true"><select name="some-name">
-    <option value="a">Option A</option>
-    <option value="b">Option B</option>
-    <option value="c">Option C</option>
-  </select></p-select-wrapper>
-
-### Description text
-
-Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
-<p-select-wrapper label="Some label" description="Some description"><select name="some-name">
-    <option value="a">Option A</option>
-    <option value="b">Option B</option>
-    <option value="c">Option C</option>
-  </select></p-select-wrapper>
-
-### With custom filter
-
-For a large amount of select options (e.g. country/state select), we offer the custom filter to select easily and fast the desired of the available options. 
-
-  <p-select-wrapper filter="true" label="Some label">
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-select-wrapper filter="true" label="Some label" :theme="theme">
       <select name="some-name">
         <option value="">Select a country</option>
         <option value="AF">Afghanistan</option>
@@ -288,77 +291,154 @@ For a large amount of select options (e.g. country/state select), we offer the c
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabwe</option>
       </select>
-</p-select-wrapper>
+    </p-select-wrapper>
+  </template>
+</Playground>
 
 ---
 
-## States
+## With optgroups
 
-The Select component is available in the following states:
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" :theme="theme">
+      <select name="some-name">
+        <optgroup label="Some optgroup label 1">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+          <option value="d">Option D</option>
+          <option value="e">Option E</option>
+          <option value="f">Option F</option>
+        </optgroup>
+        <optgroup label="Some optgroup label 2">
+          <option value="g">Option G</option>
+          <option value="h">Option H</option>
+          <option value="i">Option I</option>
+        </optgroup>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
 
-* default
-* active
-* disabled
-* hover
-* focus
-* error
-* success
+--- 
 
+## Dropdown direction
 
----
-
-## Styling
-
-### Label
-The label text (always in copytext) gives the user an information about the option that can be selected. Try to keep the label short and descriptive (one word or two).
-
-### Width
-The Select has no specific width. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
-
-### Validation and error
-Validation text for a Select is placed right below the field box. This places the error next to the offending select,
-so there is no confusion for the user as to what field failed validation. Effective error messaging can help the user to understand the problem and how to fix it. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
-### Spacing
-According to the "law of proximity" in Gestalt psychology ([Laws of UX](https://lawsofux.com/law-of-proximity)) objects that are near or proximate to each other tend to be grouped together. Please find more information in the [Form pattern guideline](#/patterns/forms).
-
----
-
-## Usage
-
-### Sorting
-It's recommended to use common sort order for menu items (frequency of use, alpha or numeric).
-
-### Disabled state
-All Selects are available in disabled state. However, disabled states should be avoided whenever possible, as they always tend to disrupt the user and break the user flow. Keep in mind: "The best way [to] prevent user error is to make sure that the use cannot make errors in the first place (…)." (Donald A. Norman, 2002)
-
-## Interaction
-The whole Select area is clickable. They can be removed by clicking outside the Select element or on the parent element.
-
-<div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
-   <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-   <img src="./assets/select-examples.png" alt="Examples for select usage"/>
-</div>
-
-## Don'ts
-
-### Content
-Avoid Select boxes for data that is highly familiar such as the day, month or year. Having to find these options in a long menu is tedious, breaks the previous guideline and can create even more work for users.
-
-![Example for alignment](./assets/select-dont-content.png)
-
-### Number of options in view
-Very long Select boxes that require scrolling make it impossible for users to see all their choices in one glance. However this cannot always be avoided. Therefore make sure that when open there is only a maximum of 7 elements in the field of view without having to scroll.
-
-![Example for alignment](./assets/select-dont-items.png)
-
-### Text only
-Never use images or symbols within a selection list.
+<Playground :themeable="true">
+  <template #configurator>
+    <select v-model="dropdownDirection">
+      <option disabled>Select a dropdown mode</option>
+      <option selected value="down">Direction down</option>
+      <option value="up">Direction up</option>
+      <option value="auto">Direction auto</option>
+    </select>
+  </template>
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" :theme="theme" :dropdown-direction="dropdownDirection">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+        <option value="d">Option D</option>
+        <option value="e">Option E</option>
+        <option value="f">Option F</option>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
 
 ---
 
-## Related Components
+## With description text
 
-* [Checkbox](#/components/checkbox)
-* [Radio Button](#/components/radio-button)
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" description="Some description" :theme="theme">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
+
+---
+
+## Disabled
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" :theme="theme">
+      <select name="some-name" disabled>
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
+
+---
+
+## Validation states
+
+The **Select Wrapper** component supports the visualisation of inline validation.
+
+<Playground :themeable="true">
+  <template #configurator>
+    <select v-model="state">
+      <option disabled>Select a validation state</option>
+      <option value="error">Error</option>
+      <option value="success">Success</option>
+      <option value="none">None</option>
+    </select>
+  </template>
+  <template v-slot={theme}>
+    <p-select-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''" :theme="theme">
+      <select name="some-name" :aria-invalid="state === 'error'">
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>
+  </template>
+</Playground>
+
+---
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes.
+
+<Playground :themeable="true">
+  <template v-slot={theme}>
+    <p-select-wrapper state="error" :theme="theme">
+      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+      <select name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id">
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+      </select>
+      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+    </p-select-wrapper>
+  </template>
+</Playground>
+
+<script lang="ts">
+  import Vue from 'vue';
+import Component from 'vue-class-component';
+  
+  @Component
+  export default class PlaygroundSelectWrapper extends Vue {
+    public label: string = 'show';
+    public state: string = 'error';
+    public dropdownDirection: string = 'down';
+  }
+</script>

@@ -4,6 +4,8 @@
   • Use Tabs to change the appearance of your content.  
   • Use Tabs to skip the navigation and move on a longer page.
 
+---
+
 ## Types
 
 To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs as follows
