@@ -50,13 +50,6 @@ p-banner {
 }
 ``` 
 
-
-<style lang="scss">
-  .code p-banner {
-    --p-banner-position-type: static;
-  }
-</style>
-
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
@@ -105,3 +98,9 @@ p-banner {
     }
   }
 </script>
+
+<style scoped lang="scss">
+  ::v-deep .demo p-banner {
+    --p-banner-position-type: static;
+  }
+</style>
