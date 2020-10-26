@@ -17,7 +17,7 @@
       }"
     >
       <div v-if="isSlotSet" class="configurator">
-        <slot />
+        <slot :theme="theme" />
       </div>
       <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
       <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
