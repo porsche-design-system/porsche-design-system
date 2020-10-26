@@ -45,7 +45,7 @@
     "jasmine": "^3.6.1",
     "jasmine-spec-reporter": "^6.0.0",
     "jest": "^26.6.1",
-    "puppeteer": "~5.3.1",
+    "puppeteer": "~5.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
