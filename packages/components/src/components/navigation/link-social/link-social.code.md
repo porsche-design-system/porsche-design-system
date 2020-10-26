@@ -7,21 +7,19 @@ The `<p-link-social>` component is a set of pre-defined social icons for various
 Choose between a set of pre-defined social icons.
 
 <Playground :markup="variants" :config="config">
-  <template #configurator>
-    <select v-model="icon" @change="setLabel">
-      <option disabled>Select a social platform</option>
-      <option value="logo-facebook">Facebook</option>
-      <option value="logo-google">Google</option>
-      <option value="logo-instagram">Instagram</option>
-      <option value="logo-linkedin">LinkedIn</option>
-      <option value="logo-pinterest">Pinterest</option>
-      <option value="logo-twitter">Twitter</option>
-      <option value="logo-wechat">WeChat</option>
-      <option value="logo-whatsapp">WhatsApp</option>
-      <option value="logo-xing">XING</option>
-      <option value="logo-youtube">YouTube</option>
-    </select>
-  </template>
+  <select v-model="icon" @change="setLabel">
+    <option disabled>Select a social platform</option>
+    <option value="logo-facebook">Facebook</option>
+    <option value="logo-google">Google</option>
+    <option value="logo-instagram">Instagram</option>
+    <option value="logo-linkedin">LinkedIn</option>
+    <option value="logo-pinterest">Pinterest</option>
+    <option value="logo-twitter">Twitter</option>
+    <option value="logo-wechat">WeChat</option>
+    <option value="logo-whatsapp">WhatsApp</option>
+    <option value="logo-xing">XING</option>
+    <option value="logo-youtube">YouTube</option>
+  </select>
 </Playground>
 
 ### Responsive

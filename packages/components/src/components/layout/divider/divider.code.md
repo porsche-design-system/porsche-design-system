@@ -24,14 +24,12 @@ You can change the Divider orientation by using different major breakpoints `xs`
 Predefined colors associated with its theme are available.
 
 <Playground :markup="colors" :config="config">
- <template #configurator>
-    <select v-model="color">
-      <option disabled>Select a color</option>
-      <option selected>neutral-contrast-low</option>
-      <option>neutral-contrast-medium</option>
-      <option>neutral-contrast-high</option>
-    </select>
-  </template>
+  <select v-model="color">
+    <option disabled>Select a color</option>
+    <option selected>neutral-contrast-low</option>
+    <option>neutral-contrast-medium</option>
+    <option>neutral-contrast-high</option>
+  </select>
 </Playground>
 
 <script lang="ts">

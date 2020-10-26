@@ -8,14 +8,12 @@ A `label` is a caption which informs the user what information a particular form
 ## Basic example
 
 <Playground :markup="basic" :config="config">
-  <template #configurator>
-    <select v-model="label">
-      <option disabled>Select a label mode</option>
-      <option selected value="show">With label</option>
-      <option value="hide">Without label</option>
-      <option value="responsive">Responsive</option>
-    </select>
-  </template>
+  <select v-model="label">
+    <option disabled>Select a label mode</option>
+    <option selected value="show">With label</option>
+    <option value="hide">Without label</option>
+    <option value="responsive">Responsive</option>
+  </select>
 </Playground>
 
 ---
@@ -37,14 +35,12 @@ The filter reduces the amount of option items by searching for the typed charact
 ## Dropdown direction
 
 <Playground :markup="direction" :config="config">
-  <template #configurator>
-    <select v-model="dropdownDirection">
-      <option disabled>Select a dropdown mode</option>
-      <option selected value="down">Direction down</option>
-      <option value="up">Direction up</option>
-      <option value="auto">Direction auto</option>
-    </select>
-  </template>
+  <select v-model="dropdownDirection">
+    <option disabled>Select a dropdown mode</option>
+    <option selected value="down">Direction down</option>
+    <option value="up">Direction up</option>
+    <option value="auto">Direction auto</option>
+  </select>
 </Playground>
 
 ---
@@ -68,14 +64,12 @@ A description text can be added to explain the meaning of a specific form field.
 The **Select Wrapper** component supports the visualisation of inline validation.
 
 <Playground :markup="validationStates" :config="config">
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a validation state</option>
-      <option value="error">Error</option>
-      <option value="success">Success</option>
-      <option value="none">None</option>
-    </select>
-  </template>
+  <select v-model="state">
+    <option disabled>Select a validation state</option>
+    <option value="error">Error</option>
+    <option value="success">Success</option>
+    <option value="none">None</option>
+  </select>
 </Playground>
 
 ---

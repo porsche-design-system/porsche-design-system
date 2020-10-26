@@ -22,13 +22,11 @@ If a custom tag hierarchy is needed, individual headline tags can be set from `h
 A predefined default color associated with its theme is available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <template #configurator>
-    <select @change="color = $event.target.value">
-      <option disabled>Select a color</option>
-      <option value="default" selected>Default</option>
-      <option value="inherit">Inherit</option>
-    </select>
-  </template>
+  <select @change="color = $event.target.value">
+    <option disabled>Select a color</option>
+    <option value="default" selected>Default</option>
+    <option value="inherit">Inherit</option>
+  </select>
 </Playground>
 
 ---
@@ -36,14 +34,12 @@ A predefined default color associated with its theme is available but also inher
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <template #configurator>
-    <select @change="align = $event.target.value">
-      <option disabled>Select an alignment</option>
-      <option value="left">Left</option>
-      <option value="center" selected>Center</option>
-      <option value="right">Right</option>
-    </select>
-  </template>
+  <select @change="align = $event.target.value">
+    <option disabled>Select an alignment</option>
+    <option value="left">Left</option>
+    <option value="center" selected>Center</option>
+    <option value="right">Right</option>
+  </select>
 </Playground>
 
 ---

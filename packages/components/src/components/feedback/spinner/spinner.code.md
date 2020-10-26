@@ -8,15 +8,13 @@ There are predefined sizes for the component available which should cover most u
 If a specific size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <template #configurator>
-    <select @change="size = $event.target.value">
-      <option disabled>Select a size</option>
-      <option selected>small</option>
-      <option>medium</option>
-      <option>large</option>
-      <option>inherit</option>
-    </select>
-  </template>
+  <select @change="size = $event.target.value">
+    <option disabled>Select a size</option>
+    <option selected>small</option>
+    <option>medium</option>
+    <option>large</option>
+    <option>inherit</option>
+  </select>
 </Playground>
 
 ### Responsive

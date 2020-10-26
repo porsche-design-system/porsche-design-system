@@ -9,14 +9,12 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Basic example
 
 <Playground :markup="basic" :config="config">
-  <template #configurator>
-    <select v-model="label">
-      <option disabled>Select a label mode</option>
-      <option selected value="show">With label</option>
-      <option value="hide">Without label</option>
-      <option value="responsive">Responsive</option>
-    </select>
-  </template>
+  <select v-model="label">
+    <option disabled>Select a label mode</option>
+    <option selected value="show">With label</option>
+    <option value="hide">Without label</option>
+    <option value="responsive">Responsive</option>
+  </select>
 </Playground>
 
 ---
@@ -49,21 +47,19 @@ For better accessibility it's recommended to **not** reset these browser default
 ### Basic
 
 <Playground :markup="typesBasic" :config="config">
-  <template #configurator>
-    <select v-model="type">
-      <option disabled>Select a type</option>
-      <option value="text">Text</option>
-      <option value="number">Number</option>
-      <option value="email">Email</option>
-      <option value="tel">Tel</option>
-      <option value="search">Search</option>
-      <option value="url">Url</option>
-      <option value="date">Date</option>
-      <option value="time">Time</option>
-      <option value="month">Month</option>
-      <option value="week">Week</option>
-    </select>
-  </template>
+  <select v-model="type">
+    <option disabled>Select a type</option>
+    <option value="text">Text</option>
+    <option value="number">Number</option>
+    <option value="email">Email</option>
+    <option value="tel">Tel</option>
+    <option value="search">Search</option>
+    <option value="url">Url</option>
+    <option value="date">Date</option>
+    <option value="time">Time</option>
+    <option value="month">Month</option>
+    <option value="week">Week</option>
+  </select>
 </Playground>
 
 ### Password
@@ -81,14 +77,12 @@ For better accessibility it's recommended to **not** reset these browser default
 The **Text Field Wrapper** component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validationStates" :config="config">
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a validation state</option>
-      <option value="error">Error</option>
-      <option value="success">Success</option>
-      <option value="none">None</option>
-    </select>
-  </template>
+  <select v-model="state">
+    <option disabled>Select a validation state</option>
+    <option value="error">Error</option>
+    <option value="success">Success</option>
+    <option value="none">None</option>
+  </select>
 </Playground>
 
 ---

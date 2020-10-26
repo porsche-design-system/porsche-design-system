@@ -12,14 +12,12 @@ Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or w
 * **Fluid**: full width
 
 <Playground :markup="basic">
-  <template #configurator>
-    <select v-model="width">
-      <option disabled>Select a width mode</option>
-      <option value="basic">Basic</option>
-      <option value="extended">Extended</option>
-      <option value="fluid">Fluid</option>
-    </select>
-  </template>
+  <select v-model="width">
+    <option disabled>Select a width mode</option>
+    <option value="basic">Basic</option>
+    <option value="extended">Extended</option>
+    <option value="fluid">Fluid</option>
+  </select>
 </Playground>
 
 <script lang="ts">
