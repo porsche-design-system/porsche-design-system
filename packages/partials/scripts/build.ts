@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { color, font, FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
+import { color, font } from '@porsche-design-system/utilities';
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { minifyHTML, minifyCSS } from './utils';
-import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES, CDN_KEY } from '../../../cdn.config';
+import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES } from '../../../cdn.config';
 
 const updateContent = (oldContent: string, newContent: string): string => {
   const separator = '/* Auto Generated Below */';
@@ -34,19 +34,9 @@ export const getFontFaceCSS = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): str
 }
 
 export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>): string => {
-  const styleNamesRaw = '${TAG_NAMES.join(',')}';
-  const styleNames = styleNamesRaw.split(',');
-  let styleInnerHtml;
-  if(opts?.prefix) {
-    let items = [];
-    styleNames.forEach((item) => {
-      items.push(opts?.prefix+'-'+item);
-    });
-    styleInnerHtml = items.join(',') + '{visibility:hidden}';
-  } else {
-    styleInnerHtml = styleNamesRaw + '{visibility:hidden}';
-  }
- return opts?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
+  const tagNames = [${TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
+  const styleInnerHtml = tagNames.map((x) => opts?.prefix ? \`\${opts.prefix}-\${x}\` : x).join(',') + '{visibility:hidden}';
+  return opts?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
 };`;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
