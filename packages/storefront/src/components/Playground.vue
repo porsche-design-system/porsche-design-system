@@ -16,8 +16,8 @@
         'example--spacing-block-small': mergedConfig.spacing === 'block-small'
       }"
     >
-      <div v-if="isSlotSet('configurator')" class="configurator">
-        <slot name="configurator" :theme="theme" />
+      <div v-if="isSlotSet" class="configurator">
+        <slot />
       </div>
       <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
       <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
@@ -82,8 +82,8 @@
       return this.$store.getters.selectedFramework;
     }
 
-    public isSlotSet(name: string): boolean {
-      return !!this.$scopedSlots[name];
+    public get isSlotSet(): boolean {
+      return !!this.$scopedSlots.default;
     }
   }
 </script>

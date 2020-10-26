@@ -16,15 +16,13 @@ To reference an icon just use the `name` property with a predefined icon id.
 There are default sizes for the icon component which should cover most use cases. If a specific size is needed, the size can be set to `inherit` in order to specify the size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <template #configurator>
-    <select v-model="size">
-      <option disabled>Select a size</option>
-      <option>small</option>
-      <option>medium</option>
-      <option>large</option>
-      <option>inherit</option>
-    </select>
-  </template>
+  <select v-model="size">
+    <option disabled>Select a size</option>
+    <option>small</option>
+    <option>medium</option>
+    <option>large</option>
+    <option>inherit</option>
+  </select>
 </Playground>
     
 ---
@@ -33,21 +31,19 @@ There are default sizes for the icon component which should cover most use cases
 Predefined colors associated with its theme are available. Furthermore, inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <template #configurator>
-    <select v-model="color">
-      <option disabled>Select a color</option>
-      <option value="brand">Brand</option>
-      <option value="default">Default</option>
-      <option value="neutral-contrast-high">Neutral Contrast High</option>
-      <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
-      <option value="neutral-contrast-low">Neutral Contrast Low</option>
-      <option value="notification-success">Notification Success</option>
-      <option value="notification-warning">Notification Warning</option>
-      <option value="notification-error">Notification Error</option>
-      <option value="notification-neutral">Notification Neutral</option>
-      <option value="inherit">Inherit</option>
-    </select>
-  </template>
+  <select v-model="color">
+    <option disabled>Select a color</option>
+    <option value="brand">Brand</option>
+    <option value="default">Default</option>
+    <option value="neutral-contrast-high">Neutral Contrast High</option>
+    <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
+    <option value="neutral-contrast-low">Neutral Contrast Low</option>
+    <option value="notification-success">Notification Success</option>
+    <option value="notification-warning">Notification Warning</option>
+    <option value="notification-error">Notification Error</option>
+    <option value="notification-neutral">Notification Neutral</option>
+    <option value="inherit">Inherit</option>
+  </select>
 </Playground>
 
 ---

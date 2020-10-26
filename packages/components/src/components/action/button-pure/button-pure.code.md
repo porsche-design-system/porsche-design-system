@@ -31,17 +31,15 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
 
 <Playground :markup="markupSize" :config="config">
-  <template #configurator>
-    <select @change="size = $event.target.value">
-      <option disabled>Select a size</option>
-      <option>x-small</option>
-      <option>small</option>
-      <option selected>medium</option>
-      <option>large</option>
-      <option>x-large</option>
-      <option>inherit</option>
-    </select>
-  </template>
+  <select @change="size = $event.target.value">
+    <option disabled>Select a size</option>
+    <option>x-small</option>
+    <option>small</option>
+    <option selected>medium</option>
+    <option>large</option>
+    <option>x-large</option>
+    <option>inherit</option>
+  </select>
 </Playground>
 
 ### Responsive
@@ -57,14 +55,12 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="markupWeight" :config="config">
-  <template #configurator>
-    <select @change="weight = $event.target.value">
-      <option disabled>Select a weight</option>
-      <option selected>thin</option>
-      <option>regular</option>
-      <option>bold</option>
-    </select>
-  </template>
+  <select @change="weight = $event.target.value">
+    <option disabled>Select a weight</option>
+    <option selected>thin</option>
+    <option>regular</option>
+    <option>bold</option>
+  </select>
 </Playground>
 
 ---
@@ -107,15 +103,13 @@ If you need additional information on your button, we provide a `<p slot="sublin
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"` in this pattern so far.
 
 <Playground :markup="subline" :config="config">
-  <template #configurator>
-    <select @change="size = $event.target.value">
-      <option disabled>Select a size</option>
-      <option selected>small</option>
-      <option>medium</option>
-      <option>large</option>
-      <option>x-large</option>
-    </select>
-  </template>
+  <select @change="size = $event.target.value">
+    <option disabled>Select a size</option>
+    <option selected>small</option>
+    <option>medium</option>
+    <option>large</option>
+    <option>x-large</option>
+  </select>
 </Playground>
 
 <script lang="ts">

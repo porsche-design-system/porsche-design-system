@@ -9,14 +9,12 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 ## Basic example
 
 <Playground :markup="basic" :config="config">
-  <template #configurator>
-    <select v-model="label">
-      <option disabled>Select a label mode</option>
-      <option selected value="show">With label</option>
-      <option value="hide">Without label</option>
-      <option value="responsive">Responsive</option>
-    </select>
-  </template>
+  <select v-model="label">
+    <option disabled>Select a label mode</option>
+    <option selected value="show">With label</option>
+    <option value="hide">Without label</option>
+    <option value="responsive">Responsive</option>
+  </select>
 </Playground>
 
 --- 
@@ -46,14 +44,12 @@ A description text can be added to explain the meaning of a specific form field.
 The **Textarea Wrapper** component supports the visualisation of inline validation. 
 
 <Playground :markup="validationStates" :config="config">
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a validation state</option>
-      <option value="error">Error</option>
-      <option value="success">Success</option>
-      <option value="none">None</option>
-    </select>
-  </template>
+  <select v-model="state">
+    <option disabled>Select a validation state</option>
+    <option value="error">Error</option>
+    <option value="success">Success</option>
+    <option value="none">None</option>
+  </select>
 </Playground>
 
 ---

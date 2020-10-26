@@ -22,17 +22,15 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 **Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <template #configurator>
-    <select @change="size = $event.target.value">
-      <option disabled>Select a size</option>
-      <option>x-small</option>
-      <option>small</option>
-      <option selected>medium</option>
-      <option>large</option>
-      <option>x-large</option>
-      <option>inherit</option>
-    </select>
-  </template>
+  <select @change="size = $event.target.value">
+    <option disabled>Select a size</option>
+    <option>x-small</option>
+    <option>small</option>
+    <option selected>medium</option>
+    <option>large</option>
+    <option>x-large</option>
+    <option>inherit</option>
+  </select>
 </Playground>
 
 ### Responsive
@@ -55,21 +53,19 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <template #configurator>
-    <select @change="color = $event.target.value">
-      <option disabled>Select a color</option>
-      <option value="brand">Brand</option>
-      <option value="default" selected>Default</option>
-      <option value="neutral-contrast-high">Neutral Contrast High</option>
-      <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
-      <option value="neutral-contrast-low">Neutral Contrast Low</option>
-      <option value="notification-success">Notification Success</option>
-      <option value="notification-warning">Notification Warning</option>
-      <option value="notification-error">Notification Error</option>
-      <option value="notification-neutral">Notification Neutral</option>
-      <option value="inherit">Inherit</option>
-    </select>
-  </template>
+  <select @change="color = $event.target.value">
+    <option disabled>Select a color</option>
+    <option value="brand">Brand</option>
+    <option value="default" selected>Default</option>
+    <option value="neutral-contrast-high">Neutral Contrast High</option>
+    <option value="neutral-contrast-medium">Neutral Contrast Medium</option>
+    <option value="neutral-contrast-low">Neutral Contrast Low</option>
+    <option value="notification-success">Notification Success</option>
+    <option value="notification-warning">Notification Warning</option>
+    <option value="notification-error">Notification Error</option>
+    <option value="notification-neutral">Notification Neutral</option>
+    <option value="inherit">Inherit</option>
+  </select>
 </Playground>
 
 --- 
@@ -79,14 +75,12 @@ Predefined colors associated with its theme are available but also inherit mode 
 There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="weightMarkup" :config="config">
-  <template #configurator>
-    <select @change="weight = $event.target.value">
-      <option disabled>Select a weight</option>
-      <option value="thin" selected>Thin</option>
-      <option value="regular">Regular</option>
-      <option value="bold">Bold</option>
-    </select>
-  </template>
+  <select @change="weight = $event.target.value">
+    <option disabled>Select a weight</option>
+    <option value="thin" selected>Thin</option>
+    <option value="regular">Regular</option>
+    <option value="bold">Bold</option>
+  </select>
 </Playground>
 
 ---
@@ -94,14 +88,12 @@ There are predefined default text weights for copy text. Be aware of using the `
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <template #configurator>
-    <select @change="align = $event.target.value">
-      <option disabled>Select an alignment</option>
-      <option value="left">Left</option>
-      <option value="center" selected>Center</option>
-      <option value="right">Right</option>
-    </select>
-  </template>
+  <select @change="align = $event.target.value">
+    <option disabled>Select an alignment</option>
+    <option value="left">Left</option>
+    <option value="center" selected>Center</option>
+    <option value="right">Right</option>
+  </select>
 </Playground>
 
 ---

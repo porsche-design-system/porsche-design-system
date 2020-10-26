@@ -6,14 +6,12 @@ Whenever you want to provide brief, temporary notifications stick to the **Toast
 The **Banner** component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
 
 <Playground :markup="basic" :config="config">
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a state</option>
-      <option value="neutral">Neutral</option>
-      <option value="warning">Warning</option>
-      <option value="error">Error</option>
-    </select>
-  </template>
+  <select v-model="state">
+    <option disabled>Select a state</option>
+    <option value="neutral">Neutral</option>
+    <option value="warning">Warning</option>
+    <option value="error">Error</option>
+  </select>
 </Playground>
 
 ## Persistent
@@ -25,14 +23,12 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 The **Banner** behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
 
 <Playground :markup="markupWidth" :config="config">
-  <template #configurator>
-    <select v-model="width">
-      <option disabled>Select a width</option>
-      <option value="basic">Basic</option>
-      <option value="extended">Extended</option>
-      <option value="fluid">Fluid</option>
-    </select>
-  </template>
+  <select v-model="width">
+    <option disabled>Select a width</option>
+    <option value="basic">Basic</option>
+    <option value="extended">Extended</option>
+    <option value="fluid">Fluid</option>
+  </select>
 </Playground>
 
 ## Example with user interaction
