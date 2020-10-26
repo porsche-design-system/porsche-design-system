@@ -16,6 +16,9 @@ export type FormState = 'none' | 'error' | 'success';
 // Event Types
 export type TabChangeEvent = { activeTabIndex: number };
 
+// Pagination Types
+export type NumberOfPageLinks = 5 | 7;
+
 /**
  * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
  */
