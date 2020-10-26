@@ -15,8 +15,7 @@ import {
 } from './pagination-helper';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-
-export type NumberOfPageLinks = 5 | 7;
+import { NumberOfPageLinks } from '../../../types';
 
 @Component({
   tag: 'p-pagination',
