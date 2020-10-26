@@ -1,7 +1,12 @@
 <template>
   <form action="https://codepen.io/pen/define" method="POST" target="_blank">
     <input type="hidden" name="data" :value="codepen" />
-    <p-button :theme="theme" type="submit" :icon-source="codepenIcon" :disabled="framework !== 'vanilla-js'"
+    <p-button
+      :theme="theme"
+      type="submit"
+      :icon-source="codepenIcon"
+      :disabled="framework !== 'vanilla-js'"
+      :title="framework !== 'vanilla-js' && 'CodePen is only available for Vanilla JS'"
       >Edit in CodePen</p-button
     >
   </form>
