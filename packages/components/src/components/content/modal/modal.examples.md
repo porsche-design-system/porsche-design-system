@@ -9,6 +9,10 @@ Modals are flexible in the context and can include other components of the Porsc
 `p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
+Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place. 
+Otherwise, the modal might get clipped or overlapped by other elements.
+
 The most important property of `p-modal` is its `open` attribute.  When it is present the Modal will be visible.
   
 In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
