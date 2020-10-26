@@ -7,6 +7,7 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
     "build": "yarn clean:build && yarn build:components && yarn build:mocks && yarn build:meta",
+    "postbuild": "cp ./projects/components-wrapper/src/lib/bundle.d.ts ./dist/components-wrapper/lib/bundle.d.ts",
     "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
     "build:components": "yarn build:components:module && yarn build:components:cjs",
     "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
