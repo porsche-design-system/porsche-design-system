@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "fc03101477ed1908e9e9",
+    "revision": "f2aa0744af6d51daeaef",
     "url": "css/app.40cb300b.css"
   },
   {
@@ -348,12 +348,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "3bd8b99bb57fc10cf2b009118532376f",
+    "revision": "ba53018dc31e8d091b7c15fb39aea3c6",
     "url": "index.html"
   },
   {
-    "revision": "fc03101477ed1908e9e9",
-    "url": "js/app.933e2400.js"
+    "revision": "f2aa0744af6d51daeaef",
+    "url": "js/app.f63d4a74.js"
   },
   {
     "revision": "88c046e820d7e6af9023",
@@ -704,8 +704,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d21f0ac.9b6b854f.js"
   },
   {
-    "revision": "33be5d66d46ec3f89ba7",
-    "url": "js/chunk-2d21f0b8.4e0181c3.js"
+    "revision": "1e76c2872d84e8898124",
+    "url": "js/chunk-2d21f0b8.58dd90e2.js"
   },
   {
     "revision": "e0e36e6df7fa9ca0032f",
@@ -968,7 +968,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "f1c33fba0ed4715af26c51b8b26fddce",
+    "revision": "adae34fb7a4185df9e8759cbc1892ad8",
     "url": "pds-loader.js"
   }
 ]);
