@@ -6,27 +6,32 @@ You can see some usage examples on our [form patterns section](#/patterns/forms#
 
 ## Basic example with label
 
-<Playground>
-  <template>
-    <p-fieldset-wrapper label="Some legend label">
-      <p-text-field-wrapper label="Some label">
-        <input type="text" name="some-name"/>
-      </p-text-field-wrapper>
-    </p-fieldset-wrapper>
-  </template>
-</Playground>
+<Playground :markup="withLabel"></Playground>
 
 --- 
 
 ## Without label
 
-<Playground>
-  <template>
-    <p-fieldset-wrapper>
-      <p-text-field-wrapper label="Some label">
-        <input type="text" name="some-name"/>
-      </p-text-field-wrapper>
-    </p-fieldset-wrapper>
-  </template>
-</Playground>
+<Playground :markup="withoutLabel"></Playground>
 
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  
+  @Component
+  export default class Code extends Vue {
+    withLabel =
+`<p-fieldset-wrapper label="Some legend label">
+  <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+</p-fieldset-wrapper>`;
+
+    withoutLabel =
+`<p-fieldset-wrapper>
+  <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name"/>
+  </p-text-field-wrapper>
+</p-fieldset-wrapper>`;
+  }
+</script>

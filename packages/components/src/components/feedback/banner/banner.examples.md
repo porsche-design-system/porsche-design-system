@@ -5,59 +5,35 @@ Whenever you want to provide brief, temporary notifications stick to the **Toast
 ## Basic implementation
 The **Banner** component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
 
-<Playground :themeable="true">
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a state</option>
-      <option value="neutral">Neutral</option>
-      <option value="warning">Warning</option>
-      <option value="error">Error</option>
-    </select>
-  </template>
-  <template v-slot={theme}>
-    <p-banner :state="state" :theme="theme">
-      <span slot="title">Some banner title</span>
-      <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
-    </p-banner>
-  </template>
+<Playground :markup="basic" :config="config">
+  <select v-model="state">
+    <option disabled>Select a state</option>
+    <option value="neutral">Neutral</option>
+    <option value="warning">Warning</option>
+    <option value="error">Error</option>
+  </select>
 </Playground>
 
 ## Persistent
 If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 
-<Playground :themeable="true">
-  <template v-slot={theme}>
-    <p-banner persistent="true" :theme="theme">
-      <span slot="title">Some banner title</span>
-      <span slot="description">Some banner description.</span>
-    </p-banner>
-  </template>
-</Playground>
+<Playground :markup="persistent" :config="config"></Playground>
 
 ## Width
 The **Banner** behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
 
-<Playground :themeable="true">
-  <template #configurator>
-    <select v-model="width">
-      <option disabled>Select a width</option>
-      <option value="basic">Basic</option>
-      <option value="extended">Extended</option>
-      <option value="fluid">Fluid</option>
-    </select>
-  </template>
-  <template v-slot={theme}>
-    <p-banner :width="width" :theme="theme">
-      <span slot="title">Some banner title</span>
-      <span slot="description">Some banner description.</span>
-    </p-banner>
-  </template>
+<Playground :markup="markupWidth" :config="config">
+  <select v-model="width">
+    <option disabled>Select a width</option>
+    <option value="basic">Basic</option>
+    <option value="extended">Extended</option>
+    <option value="fluid">Fluid</option>
+  </select>
 </Playground>
 
 ## Example with user interaction
-<Playground>
-  <p-button v-on:click="openBanner">Open Banner</p-button>
-</Playground>
+
+<p-button v-on:click="openBanner">Open Banner</p-button>
 
 ## Custom styling
 The **Banner** component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
@@ -72,24 +48,38 @@ The **Banner** component has some values which can be overwritten by CSS Custom 
 p-banner {
   --p-banner-position-top: 200px;
 }
-
 ``` 
-
-
-<style lang="scss">
-  .code p-banner {
-    --p-banner-position-type: static;
-  }
-</style>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundBanner extends Vue {
-    public state: string = 'neutral';
-    public width: string = 'basic';
+  export default class Code extends Vue {
+    config = { themeable: true };
+    
+    state = 'neutral';
+    width = 'basic';
+    
+    get basic() {
+      return `<p-banner state="${this.state}">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description. You can also add inline <a href="#">links</a> to route to another page.</span>
+</p-banner>`
+    }
+    
+    persistent =
+`<p-banner persistent="true">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>`;
+
+    get markupWidth() {
+      return `<p-banner width="${this.width}">
+  <span slot="title">Some banner title</span>
+  <span slot="description">Some banner description.</span>
+</p-banner>`;
+    }
     
     openBanner = () => {
       const el = document.createElement('div');
@@ -108,3 +98,9 @@ p-banner {
     }
   }
 </script>
+
+<style scoped lang="scss">
+  ::v-deep .demo p-banner {
+    --p-banner-position-type: static;
+  }
+</style>
