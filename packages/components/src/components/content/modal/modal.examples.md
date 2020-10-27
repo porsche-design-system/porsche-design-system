@@ -9,6 +9,10 @@ Modals are flexible in the context and can include other components of the Porsc
 `p-modal` is a component which does not work by itself and needs to be controlled from the outside.  
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
+Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place. 
+Otherwise, the modal might get clipped or overlapped by other elements.
+
 The most important property of `p-modal` is its `open` attribute.  When it is present the Modal will be visible.
   
 In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
@@ -19,50 +23,21 @@ modal.addEventListener('close', () => {
 });
 ```
 
-<Playground>
-  <p-button @click="openModal(0)">Open Modal</p-button>
-  <p-modal heading="Some Heading" :open="isOpen(0)" v-on:close="closeModal(0)">
-    <p-text>Some Content</p-text>
-    <p-flex class="footer">
-      <p-button @click="closeModal(0)">Save</p-button>
-      <p-button variant="tertiary" @click="closeModal(0)">Close</p-button>
-    </p-flex>
-  </p-modal>
-</Playground>
+<Playground :markup="basic"></Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/patterns/buttons).
-
 
 ## Basic Scrollable
 
 If the Modal's content does not fit into the current boundaries the content becomes scrollable.
 
-<Playground>
-  <p-button @click="openModal(1)">Open Modal</p-button>
-  <p-modal id="modal-scrollable" heading="Some Heading" :open="isOpen(1)" v-on:close="closeModal(1)">
-    <p-text>Some Content</p-text>
-    <div style="height: 40vh;"></div>
-    <p-text>More Content</p-text>
-    <div style="height: 40vh;"></div>
-    <p-text>Even More Content</p-text>
-    <p-flex class="footer">
-      <p-button @click="closeModal(1)">Save</p-button>
-      <p-button variant="tertiary" @click="closeModal(1)">Close</p-button>
-    </p-flex>
-  </p-modal>
-</Playground>
-
+<Playground :markup="scrollable"></Playground>
 
 ## Without Heading
 
 Passing a `heading` to the modal is optional. 
 
-<Playground>
-  <p-button @click="openModal(2)">Open Modal</p-button>
-  <p-modal :open="isOpen(2)" v-on:close="closeModal(2)">
-    <p-text>Some Content</p-text>
-  </p-modal>
-</Playground>
+<Playground :markup="withoutHeading"></Playground>
 
 ## Without Close Button
 
@@ -70,12 +45,7 @@ It is possible to not render the close button by setting the `disable-close-butt
 At the same time this also deactivates closing the Modal by pressing `Escape`.  
 If you want to disable closing the Modal by clicking the backdrop, you can set the `disable-backdrop-click` attribute.
 
-<Playground>
-  <p-button @click="openModal(3)">Open Modal</p-button>
-  <p-modal heading="Some Heading" disable-close-button :open="isOpen(3)" v-on:close="closeModal(3)">
-    <p-text>Some Content</p-text>
-  </p-modal>
-</Playground>
+<Playground :markup="withoutCloseButton"></Playground>
 
 Of course, any combination of the available options is possible.
 
@@ -84,12 +54,21 @@ Of course, any combination of the available options is possible.
   import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundModal extends Vue {
-    private modalState: {[key: number]: boolean} = {};
+  export default class Code extends Vue {
+    modals = [];
     
-    private mounted() {
-      this.modalState = { ...Array.from(Array(document.querySelectorAll('.playground').length)) };
-
+    mounted() {
+      this.modals = Array.from(document.querySelectorAll('p-modal'));
+      
+      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+      
+      this.modals.forEach((modal, index) => {
+        modal.addEventListener('close', () => this.closeModal(index));
+        const buttons = Array.from(modal.querySelectorAll('p-button'));
+        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
+      });
+      
       // workaround for iOS 13.x masking modal within example
       document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
 
@@ -100,16 +79,54 @@ Of course, any combination of the available options is possible.
       }, 1000);
     }
     
-    public isOpen(index: number): boolean {
-      return this.modalState[index];
+    updated() {
+      console.log('updated');
+      // event handling is registered again on every update since markup is changing and references are lost
+      this.registerEvents();
     }
     
-    public openModal(index: number): void {
-      this.modalState[index] = true;
+    basic =
+`<p-button>Open Modal</p-button>
+<p-modal heading="Some Heading" open="false">
+  <p-text>Some Content</p-text>
+  <p-flex class="footer">
+    <p-button>Save</p-button>
+    <p-button variant="tertiary">Close</p-button>
+  </p-flex>
+</p-modal>`;
+    
+    scrollable =
+`<p-button>Open Modal</p-button>
+<p-modal id="modal-scrollable" heading="Some Heading" open="false">
+  <p-text>Some Content</p-text>
+  <div style="height: 40vh;"></div>
+  <p-text>More Content</p-text>
+  <div style="height: 40vh;"></div>
+  <p-text>Even More Content</p-text>
+  <p-flex class="footer">
+    <p-button>Save</p-button>
+    <p-button variant="tertiary">Close</p-button>
+  </p-flex>
+</p-modal>`;
+    
+    withoutHeading =
+`<p-button>Open Modal</p-button>
+<p-modal open="false">
+  <p-text>Some Content</p-text>
+</p-modal>`;
+    
+    withoutCloseButton =
+`<p-button>Open Modal</p-button>
+<p-modal heading="Some Heading" disable-close-button open="false">
+  <p-text>Some Content</p-text>
+</p-modal>`;
+    
+    openModal(index: number): void {
+      this.modals[index].setAttribute('open', 'true');
     }
     
-    public closeModal(index: number): void {
-      this.modalState[index] = false;
+    closeModal(index: number): void {
+      this.modals[index].setAttribute('open', 'false');
     }
   }
 </script>
@@ -143,7 +160,7 @@ Of course, any combination of the available options is possible.
     }
   }
   
-  .footer {
+  ::v-deep .footer {
     @include p-col;
     padding: p-px-to-rem(16px) 0 0;
     

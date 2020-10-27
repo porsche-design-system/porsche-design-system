@@ -11,36 +11,35 @@ Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or w
 * **Extended**: max width 1920px
 * **Fluid**: full width
 
-<Playground>
-  <template #configurator>
-    <select v-model="width">
-      <option disabled>Select a width mode</option>
-      <option value="basic">Basic</option>
-      <option value="extended">Extended</option>
-      <option value="fluid">Fluid</option>
-    </select>
-  </template>
-  <template>
-    <p-content-wrapper :width="width">
-      <div class="example-content">Some content</div>
-    </p-content-wrapper>
-  </template>
+<Playground :markup="basic">
+  <select v-model="width">
+    <option disabled>Select a width mode</option>
+    <option value="basic">Basic</option>
+    <option value="extended">Extended</option>
+    <option value="fluid">Fluid</option>
+  </select>
 </Playground>
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundContentWrapper extends Vue {
-    public width: string = 'basic';
+  export default class Code extends Vue {
+    width = 'basic';
+    
+    get basic(){
+      return `<p-content-wrapper width="${this.width}">
+  <div class="example-content">Some content</div>
+</p-content-wrapper>`;
+    }
   }
 </script>
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  .example-content {
+  ::v-deep .example-content {
     @include p-text-small;
     color: $p-color-theme-dark-default;
     text-align: center;
