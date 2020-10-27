@@ -5,44 +5,17 @@ The Porsche Design System flex layout system is based on standard CSS Flexbox br
 ### Flex
 Initialize standard Flexbox container to define Flex context.
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexInline()"></Playground>
 
 ### Inline
 Flex inline displays Flex containers in a row.
 
-<Playground>
-  <p-flex inline="true" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-  <p-flex inline="true" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexInline('true')"></Playground>
 
 ### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex inline="{ base: false, l: true }" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-  <p-flex inline="{ base: false, l: true }" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexInline('{ base: false, l: true }')"></Playground>
 
 ---
 
@@ -52,55 +25,25 @@ Define or change direction of the Flex items to rows or columns and set order.
 
 #### Row
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="direction('row')"></Playground>
 
 #### Row-reverse
 
-<Playground>
-  <p-flex direction="row-reverse" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="direction('row-reverse')"></Playground>
 
 #### Column
 
-<Playground>
-  <p-flex direction="column" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="direction('column')"></Playground>
 
 #### Column-reverse
 
-<Playground>
-  <p-flex direction="column-reverse" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="direction('column-reverse')"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex direction="{ base: 'column', l: 'row' }" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="direction('{ base: \'column\', l: \'row\' }')"></Playground>
 
 ---
 
@@ -110,37 +53,21 @@ The flex wrap property is used to force Flex items to stay in line independently
 
 #### Nowrap
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="wrap()"></Playground>
 
 #### Wrap
 
-<Playground>
-  <p-flex wrap="wrap" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="wrap('wrap')"></Playground>
 
 #### Wrap-reverse
 
-<Playground>
-  <p-flex wrap="wrap-reverse" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="wrap('wrap-reverse')"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex wrap="{ base: 'wrap', l: 'nowrap' }" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="wrap('{ base: \'wrap\', l: \'nowrap\' }')"></Playground>
 
 ---
 
@@ -150,75 +77,33 @@ This property defines the alignment of Flex items on the main axis in conjunctio
 
 #### Flex-start
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent()"></Playground>
 
 #### Flex-end
 
-<Playground>
-  <p-flex justify-content="flex-end" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('flex-end')"></Playground>
 
 #### Center
 
-<Playground>
-  <p-flex justify-content="center" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('center')"></Playground>
 
 #### Space-between
 
-<Playground>
-  <p-flex justify-content="space-between" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('space-between')"></Playground>
 
 #### Space-around
 
-<Playground>
-  <p-flex justify-content="space-around" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('space-around')"></Playground>
 
 #### Space-evenly
 
-<Playground>
-  <p-flex justify-content="space-evenly" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('space-evenly')"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex justify-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="justifyContent('{ base: \'flex-start\', l: \'flex-end\' }')"></Playground>
 
 ---
 
@@ -228,65 +113,29 @@ This property defines the alignment of Flex items on the cross axis in conjuncti
 
 #### Stretch
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems()" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-start
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="flex-start" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems('flex-start')" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-end
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="flex-end" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems('flex-end')" :config="{height: 'fixed'}"></Playground>
 
 #### Center
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="center" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems('center')" :config="{height: 'fixed'}"></Playground>
 
 #### Baseline
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="baseline" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems('baseline')" :config="{height: 'fixed'}"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignItems('{ base: \'flex-start\', l: \'flex-end\' }')" :config="{height: 'fixed'}"></Playground>
 
 ---
 
@@ -297,69 +146,37 @@ This property has only effect when there is more than one line of Flex items.
 
 #### Stretch
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent()" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-start
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="flex-start" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('flex-start')" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-end
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="flex-end" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('flex-end')" :config="{height: 'fixed'}"></Playground>
 
 #### Center
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="center" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('center')" :config="{height: 'fixed'}"></Playground>
 
 #### Space-between
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="space-between" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('space-between')" :config="{height: 'fixed'}"></Playground>
 
 #### Space-around
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="space-around" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('space-around')" :config="{height: 'fixed'}"></Playground>
 
 #### Space-evenly
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="space-evenly" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('space-evenly')" :config="{height: 'fixed'}"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" class="example-flex">
-    <p-flex-item v-for="n, index in 9" :key="index">{{ n }}</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignContent('{ base: \'flex-start\', l: \'flex-end\' }')" :config="{height: 'fixed'}"></Playground>
 
 ---
 
@@ -372,47 +189,13 @@ But it is also possible to define specific predefined widths.
 
 #### Specific
 
-<Playground :childElementLayout="{spacing: 'block-small'}">
-  <p-flex class="example-flex">
-    <p-flex-item width="one-quarter">one-quarter</p-flex-item>
-    <p-flex-item width="one-quarter">one-quarter</p-flex-item>
-    <p-flex-item width="one-quarter">one-quarter</p-flex-item>
-    <p-flex-item width="one-quarter">one-quarter</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item width="one-third">one-third</p-flex-item>
-    <p-flex-item width="one-third">one-third</p-flex-item>
-    <p-flex-item width="one-third">one-third</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item width="half">half</p-flex-item>
-    <p-flex-item width="half">half</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item width="two-thirds">two-thirds</p-flex-item>
-    <p-flex-item width="one-third">one-third</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item width="three-quarters">three-quarters</p-flex-item>
-    <p-flex-item width="one-quarter">one-quarter</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item width="full">full</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="widthSpecific" :config="{spacing: 'block-small'}"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex wrap="wrap" class="example-flex">
-    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">1</p-flex-item>
-    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">2</p-flex-item>
-    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">3</p-flex-item>
-    <p-flex-item width="{ base: 'half', l: 'one-quarter' }">4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="widthWrap"></Playground>
 
 ---
 
@@ -422,32 +205,12 @@ Items can have different offsets that work similar like column widths.
 
 #### Widths
 
-<Playground :childElementLayout="{spacing: 'block-small'}">
-  <p-flex class="example-flex">
-    <p-flex-item offset="one-quarter" width="three-quarters">Offset: quarter</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item offset="one-third" width="two-thirds">Offset: third</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item offset="half" width="half">Offset: half</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item offset="two-thirds" width="one-third">Offset: 2 thirds</p-flex-item>
-  </p-flex>
-  <p-flex class="example-flex">
-    <p-flex-item offset="three-quarters" width="one-quarter">Offset: 3 quarters</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="offsetWidths" :config="{spacing: 'block-small'}"></Playground>
 
 #### Responsive
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item offset="{ base: 'none', l: 'one-third' }">Responsive offset</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="offsetReponsive" :config="{spacing: 'block-small'}"></Playground>
 
 ---
 
@@ -457,82 +220,33 @@ You can override the align-items properties of the Flex container for individual
 
 #### Auto
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item>3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf()" :config="{height: 'fixed'}"></Playground>
 
 #### Stretch
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex align-items="flex-start" class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="stretch">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('stretch', 'flex-start')" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-start
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="flex-start">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('flex-start')" :config="{height: 'fixed'}"></Playground>
 
 #### Flex-end
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="flex-end">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('flex-end')" :config="{height: 'fixed'}"></Playground>
 
 #### Center
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="center">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('center')" :config="{height: 'fixed'}"></Playground>
 
 #### Baseline
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item align-self="baseline">1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="baseline">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('baseline')" :config="{height: 'fixed'}"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground :childElementLayout="{height: 'fixed'}">
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-    <p-flex-item align-self="{ base: 'flex-start', l: 'flex-end' }">3</p-flex-item>
-    <p-flex-item>4</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="alignSelf('{ base: \'flex-start\', l: \'flex-end\' }')" :config="{height: 'fixed'}"></Playground>
 
 ---
 
@@ -544,32 +258,17 @@ It handles how to grow an item based on the space that is left to fulfill the pa
 
 #### Grow - 0
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item>2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="grow()"></Playground>
 
 #### Grow - 1
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item grow="1">2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="grow('1')"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item>1</p-flex-item>
-    <p-flex-item grow="{ base: 0, l: 1 }">2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="grow('{ base: 0, l: 1 }')"></Playground>
 
 ---
 
@@ -581,32 +280,17 @@ It handles how to shrink an item based on the space that exceeds the parents wid
 
 #### Shrink - 1
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item style="width: 80%">1</p-flex-item>
-    <p-flex-item style="width: 80%">2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="shrink()"></Playground>
 
 #### Shrink - 0
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item shrink="0" style="width: 80%">1</p-flex-item>
-    <p-flex-item style="width: 80%">2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="shrink('0')"></Playground>
 
 #### Responsiveness
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item shrink="{ base: 0, l: 1 }" style="width: 80%">1</p-flex-item>
-    <p-flex-item style="width: 80%">2</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="shrink('{ base: 0, l: 1 }')"></Playground>
 
 ---
 
@@ -616,54 +300,179 @@ Setting shorthand properties for Flex grow, shrink and base:
 
 #### Initial (grow:0, shrink:1 and base:auto)
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item flex="initial">1 - short content</p-flex-item>
-    <p-flex-item flex="initial">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
-    <p-flex-item flex="initial">3 - short content</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexShorthand('initial')"></Playground>
 
 #### Auto (grow:1, shrink:1 and base:auto)
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item flex="auto">1 - short content</p-flex-item>
-    <p-flex-item flex="auto">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
-    <p-flex-item flex="auto">3 - short content</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexShorthand('auto')"></Playground>
 
 #### Equal (grow:1, shrink:1 and base:0)
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item flex="equal">1 - short content</p-flex-item>
-    <p-flex-item flex="equal">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
-    <p-flex-item flex="equal">3 - short content</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexShorthand('equal')"></Playground>
 
 #### None (grow:0, shrink:0 and base:auto)
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item flex="none">1 - short content</p-flex-item>
-    <p-flex-item flex="none">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
-    <p-flex-item flex="none">3 - short content</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexShorthand('none')"></Playground>
 
 #### Responsiveness
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground>
-  <p-flex class="example-flex">
-    <p-flex-item flex="{base: 'initial', l: 'equal'}">1 - short content</p-flex-item>
-    <p-flex-item flex="{base: 'initial', l: 'equal'}">2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
-    <p-flex-item flex="{base: 'initial', l: 'equal'}">3 - short content</p-flex-item>
-  </p-flex>
-</Playground>
+<Playground :markup="flexShorthand('{base: \'initial\', l: \'equal\'}')"></Playground>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  
+  @Component
+  export default class Code extends Vue {
+    flexInline(value: string) {
+      const attr = value ? ` inline="${value}"` : '';
+      return `<p-flex${attr} class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+</p-flex>
+<p-flex${attr} class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+</p-flex>`;
+    }
+
+    direction(value: string) {
+      const attr = value ? ` direction="${value}"` : '';
+      return `<p-flex${attr} class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+  <p-flex-item>3</p-flex-item>
+</p-flex>`;
+    }
+
+    wrap(value: string) {
+      const attr = value ? ` wrap="${value}"` : '';
+      return `<p-flex${attr} class="example-flex">
+  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+</p-flex>`;
+    }
+    
+    justifyContent(value: string) {
+      const attr = value ? ` justify-content="${value}"` : '';
+      return `<p-flex${attr} class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+  <p-flex-item>3</p-flex-item>
+</p-flex>`;
+    }
+
+    alignItems(value: string) {
+      const attr = value ? ` align-items="${value}"` : '';
+      return `<p-flex${attr} class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+  <p-flex-item>3</p-flex-item>
+</p-flex>`;
+    }
+
+    alignContent(value: string) {
+      const attr = value ? ` align-content="${value}"` : '';
+      return `<p-flex wrap="wrap"${attr} class="example-flex">
+  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+</p-flex>`;
+    }
+    
+    alignSelf(value: string, valueParent?: string) {
+      const attr = value ? ` align-self="${value}"` : '';
+      const parentAttr = valueParent ? ` align-items="${valueParent}"` : '';
+      return `<p-flex${parentAttr} class="example-flex">
+  <p-flex-item${value === 'baseline' ? attr : ''}>1</p-flex-item>
+  <p-flex-item>2</p-flex-item>
+  <p-flex-item${attr}>3</p-flex-item>
+  <p-flex-item>4</p-flex-item>
+</p-flex>`;
+    }
+    
+    grow(value: string) {
+      const attr = value ? ` grow="${value}"` : '';
+      return `<p-flex class="example-flex">
+  <p-flex-item>1</p-flex-item>
+  <p-flex-item${attr}>2</p-flex-item>
+</p-flex>`;
+    }
+    
+    shrink(value: string) {
+      const attr = value ? ` shrink="${value}"` : '';
+      return `<p-flex class="example-flex">
+  <p-flex-item${attr} style="width: 80%">1</p-flex-item>
+  <p-flex-item style="width: 80%">2</p-flex-item>
+</p-flex>`;
+    }
+    
+    flexShorthand(value: string) {
+      const attr = value ? ` flex="${value}"` : '';
+      return `<p-flex class="example-flex">
+  <p-flex-item${attr}>1 - short content</p-flex-item>
+  <p-flex-item${attr}>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p-flex-item>
+  <p-flex-item${attr}>3 - short content</p-flex-item>
+</p-flex>`;
+    }
+    
+    widthSpecific =
+`<p-flex class="example-flex">
+  <p-flex-item width="one-quarter">one-quarter</p-flex-item>
+  <p-flex-item width="one-quarter">one-quarter</p-flex-item>
+  <p-flex-item width="one-quarter">one-quarter</p-flex-item>
+  <p-flex-item width="one-quarter">one-quarter</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item width="one-third">one-third</p-flex-item>
+  <p-flex-item width="one-third">one-third</p-flex-item>
+  <p-flex-item width="one-third">one-third</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item width="half">half</p-flex-item>
+  <p-flex-item width="half">half</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item width="two-thirds">two-thirds</p-flex-item>
+  <p-flex-item width="one-third">one-third</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item width="three-quarters">three-quarters</p-flex-item>
+  <p-flex-item width="one-quarter">one-quarter</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item width="full">full</p-flex-item>
+</p-flex>`;
+
+    widthWrap =
+`<p-flex wrap="wrap" class="example-flex">
+  <p-flex-item width="{ base: 'half', l: 'one-quarter' }">1</p-flex-item>
+  <p-flex-item width="{ base: 'half', l: 'one-quarter' }">2</p-flex-item>
+  <p-flex-item width="{ base: 'half', l: 'one-quarter' }">3</p-flex-item>
+  <p-flex-item width="{ base: 'half', l: 'one-quarter' }">4</p-flex-item>
+</p-flex>`;
+
+    offsetWidths =
+`<p-flex class="example-flex">
+  <p-flex-item offset="one-quarter" width="three-quarters">Offset: quarter</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item offset="one-third" width="two-thirds">Offset: third</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item offset="half" width="half">Offset: half</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item offset="two-thirds" width="one-third">Offset: 2 thirds</p-flex-item>
+</p-flex>
+<p-flex class="example-flex">
+  <p-flex-item offset="three-quarters" width="one-quarter">Offset: 3 quarters</p-flex-item>
+</p-flex>`;
+
+    offsetReponsive =
+`<p-flex class="example-flex">
+  <p-flex-item offset="{ base: 'none', l: 'one-third' }">Responsive offset</p-flex-item>
+</p-flex>`;
+  }
+</script>
 
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
@@ -674,7 +483,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
   $color-blue-4: royalblue;
   $color-highlight: deeppink;
 
-  .example-flex {
+  ::v-deep .example-flex {
     & > * {
       @include p-text-small;
       padding: 0 6vw;

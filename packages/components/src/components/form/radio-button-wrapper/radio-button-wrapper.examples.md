@@ -1,0 +1,98 @@
+# Radio Button
+
+The **Radio Button** component is a styling wrapper for the native HTML input type `radio` form element. The singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be selected and for the unselected state to be restored.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The **Radio Button Wrapper** component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+
+## Basic examples
+
+<Playground :markup="basic" :config="config">
+  <select v-model="label">
+    <option selected value="show">With label</option>
+    <option value="hide">Without label</option>
+    <option value="responsive">Responsive</option>
+  </select>
+</Playground>
+
+---
+
+## Disabled
+
+<Playground :markup="disabled" :config="config"></Playground>
+
+---
+
+## Validation states
+
+The **Radio Button Wrapper** component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
+
+<Playground :markup="validation" :config="config">
+  <select v-model="state">
+    <option disabled>Select a validation state</option>
+    <option value="error">Error</option>
+    <option value="success">Success</option>
+    <option value="none">None</option>
+  </select>
+</Playground>
+
+---
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
+For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Please make sure to set the corresponding **aria** attributes. 
+
+<Playground :markup="slots" :config="config"></Playground>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  
+  @Component
+  export default class Code extends Vue {
+    config = { spacing: 'block' };
+  
+    state = 'error';
+    label = 'show';
+    
+    get basic() {
+      const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+      return `<p-radio-button-wrapper label="Some label" ${attr}>
+  <input type="radio" name="some-name-1" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" ${attr}>
+  <input type="radio" name="some-name-1" />
+</p-radio-button-wrapper>`;
+    }
+    
+    disabled =
+`<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" disabled/>
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" checked disabled/>
+</p-radio-button-wrapper>`;
+
+    get validation() {
+      const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`
+      return `<p-radio-button-wrapper label="Some label" state="${this.state}">
+  <input type="radio" name="some-name-5" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label" state="${this.state}"${attr}>
+  <input type="radio" name="some-name-5" />
+</p-radio-button-wrapper>`;
+    }
+    
+    slots =
+`<p-radio-button-wrapper state="error">
+  <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper state="error">
+  <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
+  <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+</p-radio-button-wrapper>`
+  }
+</script>
