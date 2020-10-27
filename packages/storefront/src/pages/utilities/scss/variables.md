@@ -156,7 +156,7 @@ $p-font-size-{v};
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
   export default class Variables extends Vue {
