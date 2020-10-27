@@ -9,23 +9,13 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Basic example
 
-<Playground :childElementLayout="{spacing: 'block'}">
-  <template #configurator>
-    <select v-model="label">
-      <option disabled>Select a label mode</option>
-      <option selected value="show">With label</option>
-      <option value="hide">Without label</option>
-      <option value="responsive">Responsive</option>
-    </select>
-  </template>
-  <template>
-    <p-textarea-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <textarea name="some-name"></textarea>
-    </p-textarea-wrapper>
-    <p-textarea-wrapper label="Some label" :hide-label="label === 'hide' ? 'true' : label === 'responsive' ? '{ base: true, l: false }' : 'false'">
-      <textarea name="some-name" placeholder="Some placeholder text"></textarea>
-    </p-textarea-wrapper>
-  </template>
+<Playground :markup="basic" :config="config">
+  <select v-model="label">
+    <option disabled>Select a label mode</option>
+    <option selected value="show">With label</option>
+    <option value="hide">Without label</option>
+    <option value="responsive">Responsive</option>
+  </select>
 </Playground>
 
 --- 
@@ -34,31 +24,19 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
 
-<Playground>    
-  <p-textarea-wrapper label="Some label" description="Some description">
-    <textarea name="some-name"></textarea>
-  </p-textarea-wrapper>
-</Playground>
+<Playground :markup="withDescriptionText" :config="config"></Playground>
 
 ---
 
 ## Disabled
 
-<Playground>    
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" disabled>Some value</textarea>
-  </p-textarea-wrapper>
-</Playground>
+<Playground :markup="disabled" :config="config"></Playground>
 
 ---
 
 ## Read only
 
-<Playground>    
-  <p-textarea-wrapper label="Some label">
-    <textarea name="some-name" readonly>Some value</textarea>
-  </p-textarea-wrapper>
-</Playground>
+<Playground :markup="readonly" :config="config"></Playground>
 
 ---
 
@@ -66,20 +44,13 @@ A description text can be added to explain the meaning of a specific form field.
 
 The **Textarea Wrapper** component supports the visualisation of inline validation. 
 
-<Playground>
-  <template #configurator>
-    <select v-model="state">
-      <option disabled>Select a validation state</option>
-      <option value="error">Error</option>
-      <option value="success">Success</option>
-      <option value="none">None</option>
-    </select>
-  </template>
-  <template>
-    <p-textarea-wrapper label="Some label" :state="state" :message="state !== 'none' ? `Some ${state} validation message.` : ''">
-      <textarea :aria-invalid="state === 'error'" name="some-name">Some value</textarea>
-    </p-textarea-wrapper>
-  </template>
+<Playground :markup="validationStates" :config="config">
+  <select v-model="state">
+    <option disabled>Select a validation state</option>
+    <option value="error">Error</option>
+    <option value="success">Success</option>
+    <option value="none">None</option>
+  </select>
 </Playground>
 
 ---
@@ -90,24 +61,56 @@ Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `labe
 For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
 Please make sure to set the corresponding **aria** attributes.
 
-<Playground>
-  <template>
-    <p-textarea-wrapper state="error">
-      <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-      <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"></textarea>
-      <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-    </p-textarea-wrapper>
-  </template>
-</Playground>
+<Playground :markup="slots" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   
   @Component
-  export default class PlaygroundTextareaWrapper extends Vue {
-    public label: string = 'show';
-    public state: string = 'error';
+  export default class Code extends Vue {
+    config = { spacing: 'block' };
+
+    label = 'show';
+    state = 'error';
+
+    get basic() {
+      const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
+      return `<p-textarea-wrapper label="Some label" ${attr}>
+  <textarea name="some-name"></textarea>
+</p-textarea-wrapper>
+<p-textarea-wrapper label="Some label" ${attr}>
+  <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+</p-textarea-wrapper>`;
+    }
+
+    withDescriptionText =
+`<p-textarea-wrapper label="Some label" description="Some description">
+  <textarea name="some-name"></textarea>
+</p-textarea-wrapper>`;
+
+    disabled =
+`<p-textarea-wrapper label="Some label">
+  <textarea name="some-name" disabled>Some value</textarea>
+</p-textarea-wrapper>`;
+
+    readonly =
+`<p-textarea-wrapper label="Some label">
+  <textarea name="some-name" readonly>Some value</textarea>
+</p-textarea-wrapper>`;
+
+    get validationStates() {
+      const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
+      return `<p-textarea-wrapper label="Some label" state="${this.state}" ${attr}>
+  <textarea aria-invalid="${this.state === 'error'}" name="some-name">Some value</textarea>
+</p-textarea-wrapper>`;
+    }
+    
+    slots = `<p-textarea-wrapper state="error">
+  <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id"></textarea>
+  <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+</p-textarea-wrapper>`;
   }
 </script>

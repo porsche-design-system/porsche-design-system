@@ -1,11 +1,11 @@
 <template>
-  <div class="code-block" :class="{ light: theme === 'light', dark: theme === 'dark' }">
+  <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(frameWork, index) in frameWorks" :key="index" @click="updateFramework(index)">
+      <button type="button" v-for="(frameWork, index) in frameworks" :key="index" @click="setFramework(index)">
         {{ frameWork }}
       </button>
     </p-tabs-bar>
-    <pre><code v-html="formattedMarkup"></code></pre>
+    <pre><code v-html="highlightedMarkup"></code></pre>
   </div>
 </template>
 
@@ -15,175 +15,52 @@
   import { Prop } from 'vue-property-decorator';
   import { highlight, languages } from 'prismjs';
   import 'prismjs/components/prism-jsx';
-  import { html } from 'js-beautify';
-  import { camelCase, pascalCase } from 'change-case';
+  import 'prismjs/components/prism-markup';
   import { Framework, Theme } from '@/models';
+  import { cleanMarkup, convertToAngular, convertToReact } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
 
-    frameWorks: { [key in Framework]: string } = {
+    frameworks: { [key in Framework]: string } = {
       'vanilla-js': 'Vanilla JS',
       angular: 'Angular',
       react: 'React'
     };
 
     public get activeTabIndex(): number {
-      return Object.keys(this.frameWorks).indexOf(this.framework);
+      return Object.keys(this.frameworks).indexOf(this.framework);
     }
 
     public get framework(): Framework {
       return this.$store.getters.selectedFramework;
     }
 
-    get isReact(): boolean {
-      return this.framework === 'react';
-    }
-
-    get formattedMarkup(): string {
-      return this.highlight(this.beautify(this.convert(this.cleanup(this.markup), this.framework)));
-    }
-
-    public updateFramework(framework: Framework): void {
+    public setFramework(framework: Framework): void {
       this.$store.commit('setSelectedFramework', framework);
     }
 
-    private convert(markup: string, framework: Framework): string {
-      switch (framework) {
+    get highlightedMarkup(): string {
+      return this.highlight(this.convert(this.markup));
+    }
+
+    private convert(markup: string): string {
+      markup = cleanMarkup(markup);
+      switch (this.framework) {
         case 'angular':
-          return this.convertToAngular(markup);
+          return convertToAngular(markup);
         case 'react':
-          return this.convertToReact(markup);
+          return convertToReact(markup);
         default:
           return markup;
       }
     }
 
-    private cleanup(markup: string): string {
-      return (
-        markup
-          // remove default web component attributes
-          .replace(/theme="light"/g, '')
-          // remove empty comments
-          .replace(/<!---->/g, '')
-          // remove all attributes added by Vue JS
-          .replace(/ data-v-[a-zA-Z0-9]+(=["']{2})?/g, '')
-          // remove all class values added by Stencil JS
-          .replace(/ class="(.*?)hydrated(.*?)"/g, (m, $1, $2) => {
-            if (/\S/.test($1) || /\S/.test($2)) {
-              return ' class="' + ($1.trim() + ' ' + $2.trim()).trim() + '"';
-            }
-            return '';
-          })
-          // add closing slash to inputs for valid jsx
-          .replace(/(<input(?:.[^/]*?))>/g, '$1/>')
-          // replace <br> tags with new line
-          .replace(/<br[\s/]*>/g, '\n')
-          // add line breaks between tags that are not followed by comment
-          .replace(/(><)([^!])/g, '>\n<$2')
-          // remove line breaks between tags that close immediately
-          .replace(/<([\w-]+)(.*)>\n<\/\1>/g, '<$1$2></$1>')
-          // remove multiple new lines
-          .replace(/\n{3,}/g, '\n\n')
-          // clean checked, disabled, readonly and selected attributes
-          .replace(/(checked|disabled|readonly|selected)="\1?"/g, '$1')
-          // clean various attributes that are set by component code
-          .replace(/ (hidden|role|id|tabindex|aria-selected)=".*?"/g, '')
-          // clean aria-labelledby attributes that are set by tabs component
-          .replace(/ (aria-labelledby)="p-tab-item-\d"/g, '')
-          // clean empty string attributes
-          .replace(/=""/g, '')
-      );
-    }
-
-    private convertToAngular(markup: string): string {
-      return (
-        markup
-          // transform to event binding syntax
-          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` (${$key.substring(2)})="${$value}"`;
-          })
-          // transform all keys of object values to camel case and surround them in brackets
-          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="{${$value}}"`;
-          })
-          // transform all other keys to camel case, surround them in brackets and surround all values with ''
-          .replace(/\s(\S*[a-z-]+)="(\D\w.*?)"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="'${$value}'"`;
-          })
-          // transform all keys to camel case which have digits as a value
-          .replace(/\s(\S*[a-z-]+)="(\d.*?)"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="${$value}"`;
-          })
-          // remove single quotes from boolean values
-          .replace(/\s\[(\S+)]="'(true|false)'"/g, (m, $key, $value) => {
-            return ` [${camelCase($key)}]="${$value}"`;
-          })
-          // remove brackets from "class" attributes
-          .replace(/\s\[class]="'(.*?)'"/g, (m, $value) => {
-            return ` class="${$value}"`;
-          })
-          // remove brackets from "slot" attributes
-          .replace(/\s\[slot]="'(.*?)'"/g, (m, $value) => {
-            return ` slot="${$value}"`;
-          })
-      );
-    }
-
-    private convertToReact(markup: string): string {
-      return (
-        markup
-          // remove quotes from object values but add double brackets and camelCase
-          .replace(/\s(\S+)="{(.*?)}"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}={{${$value}}}`;
-          })
-          // transform all standard attributes to camel case
-          .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => {
-            return ` ${camelCase($key)}="${$value}"`;
-          })
-          // transform class attribute to JSX compatible one
-          .replace(/\sclass="(.*?)"/g, (m, $value) => {
-            return ` className="${$value}"`;
-          })
-          // transform to camelCase event binding syntax
-          .replace(/\s(on.+?)="(.*?)"/g, (m, $key, $value) => {
-            return ` on${pascalCase($key.substring(2))}={() => {${$value}}}`;
-          })
-          // transform boolean and number
-          .replace(/\s(\S+)="(true|false|\d)"/g, (m, $key, $value) => {
-            return ` ${$key}={${$value}}`;
-          })
-          // transform all keys to camel case which have digits as a value
-          .replace(/\s(\S+)={"(\d.*?)"}/g, (m, $key, $value) => {
-            return ` ${$key}={${$value}}`;
-          })
-          // transform custom element opening tags to pascal case
-          .replace(/<(p-[\w-]+)(.*?)>/g, (m, $tag, $attributes) => {
-            return `<${pascalCase($tag)}${$attributes}>`;
-          })
-          // transform custom element closing tags to pascal case
-          .replace(/<\/(p-[\w-]+)>/g, (m, $tag) => {
-            return `</${pascalCase($tag)}>`;
-          })
-          // transform style attributes
-          .replace(
-            /style="(.*?)"/g,
-            (m, $style: string) =>
-              `style={{ ${$style
-                .replace(/;/g, ',') // transform semi colons to comma
-                .replace(/,$/g, '')} }}` // remove last comma
-          )
-      );
-    }
-
-    private beautify(markup: string): string {
-      return html(markup, { indent_size: 2 });
-    }
-
     private highlight(markup: string): string {
-      return highlight(markup, languages[this.isReact ? 'jsx' : 'markup'], this.isReact ? 'language-jsx' : 'markup');
+      const isReact = this.framework === 'react';
+      return highlight(markup, languages[isReact ? 'jsx' : 'markup'], isReact ? 'language-jsx' : 'markup');
     }
   }
 </script>
@@ -193,7 +70,7 @@
   @import '../styles/internal.variables';
 
   .code-block {
-    &.light {
+    &--light {
       code,
       pre {
         color: $p-color-default;
@@ -260,7 +137,7 @@
       }
     }
 
-    &.dark {
+    &--dark {
       code,
       pre {
         color: $p-color-theme-dark-default;
@@ -340,7 +217,7 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $p-spacing-16;
+    margin: $p-spacing-16 0;
 
     code ::v-deep {
       .namespace {
