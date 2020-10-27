@@ -241,13 +241,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Typography: {
-      Headline: [
-        // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`)
-      ],
       Text: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/text/text.code.md`)
+      ],
+      Headline: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`)
       ],
       Usage: [
         // @ts-ignore

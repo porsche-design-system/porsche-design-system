@@ -1,7 +1,4 @@
 # Typography
-Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.
-
----
 
 ## Principles
 
@@ -48,7 +45,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Type | Usage |
 |----|----|
-| Copytext | The copytext (text small)) are typically to be used for long-form writing. The copy **text x-small** is only recommended for additional, low-informative text such as disclaimers or captions. |
+| Copytext | The copytext (text small) are typically to be used for long-form writing. The copy text x-small is only recommended for additional, low-informative text such as disclaimers or captions. |
 | Headline | The Porsche headline should only be used for first-level headlines whose function is to lead a page, section or content area. For Porsche headlines styles, only semibold weight is used to provide a good readability and making it as easy as possible to focus on the content sections of a page. |
 | Additional text | For short text parts that are not explicitly a page or section headline, but need a bit more focus or should be displayed larger due to aesthetic purpose, you can stick to the additional sizes provided in the Porsche Design System. |
 
