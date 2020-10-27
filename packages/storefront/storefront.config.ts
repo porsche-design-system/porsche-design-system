@@ -311,13 +311,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Checkbox: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -325,13 +325,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Fieldset: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -339,13 +339,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Radio Button': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -353,13 +353,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Select: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -367,13 +367,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Textarea: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -381,13 +381,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Text Field': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.design.md`)
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.code.md`)
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore

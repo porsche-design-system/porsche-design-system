@@ -25,14 +25,17 @@ To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some 
 - To optimize FOUT (Flash of Unstyled Text) and FOUC (Flash of Unstyled Content) follow our **[loading guidelines](#/performance/loading-behaviour)**.
 - We have also added support for **[China CDN](#/performance/cdn)** to optimize loading behavior of our assets and components.
 
+### [2.0.0-alpha.5] - 2020-10-26
+
 #### Added
 - `Modal` component
 
-#### Changed
-- Focus styling
-
 #### Fixed
 - Typing for `pageChange` event of `Pagination` component
+- Typings for Angular build
+
+#### Changed
+- Focus styling
 
 ### [2.0.0-alpha.4] - 2020-10-14
 
@@ -43,6 +46,9 @@ To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some 
 - `Tabs` component
 - `Tabs Bar` component
 - `Banner` component
+
+#### Removed
+- Default `position:relative;` style of `LinkPure` and `ButtonPure` 
 
 #### Fixed
 - `Spinner` zooming bug on Safari
