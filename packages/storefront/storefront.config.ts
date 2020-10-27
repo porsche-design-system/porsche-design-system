@@ -73,148 +73,6 @@ export const config: StorefrontConfig = {
       () => import(`@/pages/news/roadmap.md`)
     ]
   },
-  Help: {
-    Support: [
-      // @ts-ignore
-      () => import(`@/pages/help/support.md`)
-    ],
-    Faq: [
-      // @ts-ignore
-      () => import(`@/pages/help/faq.md`)
-    ],
-    Troubleshooting: [
-      // @ts-ignore
-      () => import(`@/pages/help/troubleshooting.md`)
-    ],
-    'Browser Compatibility': [
-      // @ts-ignore
-      () => import(`@/pages/basics/browser-compatibility.md`)
-    ]
-  },
-  Accessibility: {
-    Introduction: [
-      // @ts-ignore
-      () => import(`@/pages/accessibility/introduction.md`)
-    ],
-    Compliance: [
-      // @ts-ignore
-      () => import(`@/pages/accessibility/compliance.md`)
-    ],
-    Guidelines: [
-      // @ts-ignore
-      () => import(`@/pages/accessibility/guidelines.md`)
-    ]
-  },
-  Patterns: {
-    Buttons: {
-      Guidelines: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/buttons/guidelines.md`)
-      ],
-      Resources: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/buttons/resources.md`)
-      ]
-    },
-    Forms: {
-      Guidelines: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/forms/guidelines.md`)
-      ],
-      Resources: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/forms/resources.md`)
-      ],
-      Legal: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/forms/legal.md`)
-      ]
-    }
-  },
-  Assets: {
-    Introduction: [
-      // @ts-ignore
-      () => import(`@/pages/assets/introduction.md`)
-    ],
-    Icons: [
-      // @ts-ignore
-      () => import(`@/pages/assets/icons.md`)
-    ],
-    'Meta Icons': [
-      // @ts-ignore
-      () => import(`@/pages/assets/meta-icons.md`)
-    ],
-    Marque: [
-      // @ts-ignore
-      () => import(`@/pages/assets/marque.md`)
-    ],
-    Fonts: [
-      // @ts-ignore
-      () => import(`@/pages/assets/fonts.md`)
-    ]
-  },
-  Utilities: {
-    Introduction: [
-      // @ts-ignore
-      () => import(`@/pages/utilities/introduction.md`)
-    ],
-    Scss: {
-      Variables: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/scss/variables.md`)
-      ],
-      Functions: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/scss/functions.md`)
-      ],
-      Helper: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/scss/helper.md`)
-      ]
-    },
-    Js: {
-      Variables: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/js/variables.md`)
-      ],
-      Functions: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/js/functions.md`)
-      ],
-      Helper: [
-        // @ts-ignore
-        () => import(`@/pages/utilities/js/helper.md`)
-      ]
-    }
-  },
-  Performance: {
-    Cdn: [
-      // @ts-ignore
-      () => import(`@/pages/performance/cdn.md`)
-    ],
-    'Loading Behaviour': [
-      // @ts-ignore
-      () => import(`@/pages/performance/loading-behaviour.md`)
-    ]
-  },
-  Helpers: {
-    'Blur On Focus': [
-      // @ts-ignore
-      () => import(`@/pages/general/blur-on-focus.md`)
-    ],
-    'Components Ready': [
-      // @ts-ignore
-      () => import(`@/pages/general/components-ready.md`)
-    ],
-    'Slotted Content': [
-      // @ts-ignore
-      () => import(`@/pages/general/slotted-content.md`)
-    ],
-    Testing: [
-      // @ts-ignore
-      () => import(`@/pages/general/testing.md`)
-    ]
-  },
   Components: {
     Color: {
       Design: [
@@ -594,5 +452,147 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/content/modal/modal.props.md`)
       ]
     }
+  },
+  Help: {
+    Support: [
+      // @ts-ignore
+      () => import(`@/pages/help/support.md`)
+    ],
+    Faq: [
+      // @ts-ignore
+      () => import(`@/pages/help/faq.md`)
+    ],
+    Troubleshooting: [
+      // @ts-ignore
+      () => import(`@/pages/help/troubleshooting.md`)
+    ],
+    'Browser Compatibility': [
+      // @ts-ignore
+      () => import(`@/pages/basics/browser-compatibility.md`)
+    ]
+  },
+  Accessibility: {
+    Introduction: [
+      // @ts-ignore
+      () => import(`@/pages/accessibility/introduction.md`)
+    ],
+    Compliance: [
+      // @ts-ignore
+      () => import(`@/pages/accessibility/compliance.md`)
+    ],
+    Guidelines: [
+      // @ts-ignore
+      () => import(`@/pages/accessibility/guidelines.md`)
+    ]
+  },
+  Patterns: {
+    Buttons: {
+      Guidelines: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/guidelines.md`)
+      ],
+      Resources: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/buttons/resources.md`)
+      ]
+    },
+    Forms: {
+      Guidelines: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/forms/guidelines.md`)
+      ],
+      Resources: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/forms/resources.md`)
+      ],
+      Legal: [
+        // @ts-ignore
+        () => import(`@/pages/patterns/forms/legal.md`)
+      ]
+    }
+  },
+  Assets: {
+    Introduction: [
+      // @ts-ignore
+      () => import(`@/pages/assets/introduction.md`)
+    ],
+    Icons: [
+      // @ts-ignore
+      () => import(`@/pages/assets/icons.md`)
+    ],
+    'Meta Icons': [
+      // @ts-ignore
+      () => import(`@/pages/assets/meta-icons.md`)
+    ],
+    Marque: [
+      // @ts-ignore
+      () => import(`@/pages/assets/marque.md`)
+    ],
+    Fonts: [
+      // @ts-ignore
+      () => import(`@/pages/assets/fonts.md`)
+    ]
+  },
+  Utilities: {
+    Introduction: [
+      // @ts-ignore
+      () => import(`@/pages/utilities/introduction.md`)
+    ],
+    Scss: {
+      Variables: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/scss/variables.md`)
+      ],
+      Functions: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/scss/functions.md`)
+      ],
+      Helper: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/scss/helper.md`)
+      ]
+    },
+    Js: {
+      Variables: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/js/variables.md`)
+      ],
+      Functions: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/js/functions.md`)
+      ],
+      Helper: [
+        // @ts-ignore
+        () => import(`@/pages/utilities/js/helper.md`)
+      ]
+    }
+  },
+  Performance: {
+    Cdn: [
+      // @ts-ignore
+      () => import(`@/pages/performance/cdn.md`)
+    ],
+    'Loading Behaviour': [
+      // @ts-ignore
+      () => import(`@/pages/performance/loading-behaviour.md`)
+    ]
+  },
+  Helpers: {
+    'Blur On Focus': [
+      // @ts-ignore
+      () => import(`@/pages/general/blur-on-focus.md`)
+    ],
+    'Components Ready': [
+      // @ts-ignore
+      () => import(`@/pages/general/components-ready.md`)
+    ],
+    'Slotted Content': [
+      // @ts-ignore
+      () => import(`@/pages/general/slotted-content.md`)
+    ],
+    Testing: [
+      // @ts-ignore
+      () => import(`@/pages/general/testing.md`)
+    ]
   }
 };
