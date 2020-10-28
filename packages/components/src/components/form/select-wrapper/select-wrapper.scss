@@ -53,8 +53,7 @@
   color: inherit;
   text-indent: 0 !important;
   cursor: pointer !important;
-  transition: outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-    color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+  transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
     border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
@@ -389,8 +388,7 @@
     cursor: pointer;
     text-align: left;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
     #{$bem-block}--theme-light & {
       color: $p-color-default;
@@ -630,7 +628,6 @@
       height: p-px-to-rem(48px);
       outline: transparent none;
       transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-        outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
         opacity var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;

@@ -25,8 +25,7 @@
   vertical-align: top !important;
   color: $p-color-default !important;
   cursor: pointer !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier !important;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
 :host([theme="dark"]) ::slotted(a),
