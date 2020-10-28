@@ -300,7 +300,7 @@ describe('button-pure', () => {
       `
       <form>
         <input type="text" name="test" value="ok">
-        <p-button-pure>Submit</p-button-pure>
+        <p-button-pure type="button">Submit</p-button-pure>
       </form>
 
       <script>
