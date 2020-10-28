@@ -302,7 +302,7 @@ describe('button', () => {
       `
       <form>
         <input type="text" name="test" value="ok">
-        <p-button>Submit</p-button>
+        <p-button type="button">Submit</p-button>
       </form>
 
       <script>
