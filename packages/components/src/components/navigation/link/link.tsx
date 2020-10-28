@@ -56,7 +56,6 @@ export class Link {
       right: -1px !important;
       bottom: -1px !important;
       display: block !important;
-      transition: outline-color 0.24s ease !important;
     }
 
     ${tagName} a:focus::before {

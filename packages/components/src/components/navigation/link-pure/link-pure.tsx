@@ -151,7 +151,6 @@ export class LinkPure {
       bottom: 0 !important;
       display: block !important;
       outline: transparent none !important;
-      transition: outline-color 0.24s ease !important;
     }
 
     ${tagName} a:focus::before {

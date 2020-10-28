@@ -142,8 +142,8 @@ export class Banner {
       outline: none transparent;
       color: inherit;
       text-decoration: underline;
-      -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease;
+      -webkit-transition: color .24s ease;
+      transition: color .24s ease;
     }
 
     ${tagName} a:hover {

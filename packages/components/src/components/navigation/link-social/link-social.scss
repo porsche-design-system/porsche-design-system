@@ -66,7 +66,6 @@
   bottom: 0 !important;
   display: block !important;
   outline: transparent none !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 ::slotted(a:focus) {
   outline: none !important;
@@ -90,7 +89,6 @@
   outline: none transparent;
   text-decoration: none;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-  outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &::-moz-focus-inner {

@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Minification of dynamic slotted content styles
+
+#### Changed
+- Removed transition for focus styling
+
 ### [2.0.0-alpha.5] - 2020-10-26
 
 #### Added

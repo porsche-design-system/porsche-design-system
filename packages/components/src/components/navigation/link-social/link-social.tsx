@@ -126,7 +126,6 @@ export class LinkSocial {
       right: 0 !important;
       bottom: 0 !important;
       display: block !important;
-      transition: outline-color 0.24s ease !important;
     }
 
     ${tagName} a:focus::before {

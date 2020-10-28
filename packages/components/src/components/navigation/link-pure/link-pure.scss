@@ -105,7 +105,6 @@
   bottom: 0 !important;
   display: block !important;
   outline: transparent none !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 ::slotted(a:focus) {
   outline: none !important;
@@ -145,7 +144,6 @@
     bottom: 0;
     display: block;
     outline: transparent none;
-    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier;
   }
 
   &:not(a)::before {
