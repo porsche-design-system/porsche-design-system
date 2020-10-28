@@ -4,6 +4,8 @@ import {
   getBrowser,
   getCssClasses,
   getElementStyle,
+  getElementStyleOnFocus,
+  getElementStyleOnHover,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -341,7 +343,7 @@ describe('text-field-wrapper', () => {
       await fakeInput.hover();
       await waitForStencilLifecycle(page);
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change box-shadow color of fake input when label text is hovered', async () => {
@@ -360,7 +362,7 @@ describe('text-field-wrapper', () => {
       await labelText.hover();
       await waitForStencilLifecycle(page);
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
     });
 
     it('should change color of slotted <a> when it is hovered', async () => {
@@ -382,23 +384,13 @@ describe('text-field-wrapper', () => {
       const messageLink = await getTextFieldMessageLink();
       const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
 
-      await labelLink.hover();
-      await waitForStencilLifecycle(page);
-      const labelLinkColorOnHover = await getElementStyle(labelLink, 'color', { waitForTransition: true });
+      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
 
-      expect(labelLinkColorOnHover).not.toBe(labelLinkColorInitial);
+      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
+      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
 
-      await descriptionLink.hover();
-      await waitForStencilLifecycle(page);
-      const descriptionLinkColorOnHover = await getElementStyle(descriptionLink, 'color', { waitForTransition: true });
-
-      expect(descriptionLinkColorOnHover).not.toBe(descriptionLinkColorInitial);
-
-      await messageLink.hover();
-      await waitForStencilLifecycle(page);
-      const messageLinkColorOnHover = await getElementStyle(messageLink, 'color', { waitForTransition: true });
-
-      expect(messageLinkColorOnHover).not.toBe(messageLinkColorInitial);
+      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
+      expect(await getElementStyle(descriptionLink, 'color', {waitForTransition: true})).toBe(descriptionLinkColorInitial, 'description link should loose hover style');
     });
   });
 
@@ -422,23 +414,13 @@ describe('text-field-wrapper', () => {
       const messageLink = await getTextFieldMessageLink();
       const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
 
-      await labelLink.focus();
-      await waitForStencilLifecycle(page);
-      const labelLinkOutlineOnFocus = await getElementStyle(labelLink, 'outline', { waitForTransition: true });
+      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
 
-      expect(labelLinkOutlineOnFocus).not.toBe(labelLinkOutlineInitial);
+      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
+      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
 
-      await descriptionLink.focus();
-      await waitForStencilLifecycle(page);
-      const descriptionLinkOutlineOnFocus = await getElementStyle(descriptionLink, 'color', { waitForTransition: true });
-
-      expect(descriptionLinkOutlineOnFocus).not.toBe(descriptionLinkOutlineInitial);
-
-      await messageLink.focus();
-      await waitForStencilLifecycle(page);
-      const messageLinkOutlineOnFocus = await getElementStyle(messageLink, 'color', { waitForTransition: true });
-
-      expect(messageLinkOutlineOnFocus).not.toBe(messageLinkOutlineInitial);
+      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
+      expect(await getElementStyle(descriptionLink, 'outline')).toBe(descriptionLinkOutlineInitial, 'description link should loose focus style');
     });
   });
 });
