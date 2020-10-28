@@ -7,7 +7,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 describe('button-pure', () => {
   let page: Page;
@@ -292,5 +292,55 @@ describe('button-pure', () => {
     await waitForStencilLifecycle(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
+  });
+
+  it('should submit form via enter key when type is submit', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <form>
+        <input type="text" name="test" value="ok">
+        <p-button-pure>Submit</p-button-pure>
+      </form>
+
+      <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+      })
+      </script>
+    `
+    );
+
+    let submitCalls = 0;
+    await addEventListener(await selectNode(page, 'form'), 'submit', () => submitCalls++);
+
+    const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+    };
+
+    const input = await selectNode(page, 'input');
+    await focusElAndPressEnter(input);
+    expect(submitCalls).toBe(1);
+
+    const button = await getButtonPureHost();
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'button'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'reset'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'submit'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(2);
+
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(3);
   });
 });

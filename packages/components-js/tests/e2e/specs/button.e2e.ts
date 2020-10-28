@@ -326,7 +326,7 @@ describe('button', () => {
     await focusElAndPressEnter(input);
     expect(submitCalls).toBe(1);
 
-    const button = await selectNode(page, 'p-button');
+    const button = await getButtonHost();
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
