@@ -223,13 +223,12 @@
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
           &:hover {
-            text-decoration: none;
             color: $p-color-state-hover;
           }
 
           &:focus {
-            text-decoration: underline;
-            color: $p-color-state-focus;
+            outline-offset: 1px;
+            outline: $p-color-state-focus solid 1px;
           }
         }
 

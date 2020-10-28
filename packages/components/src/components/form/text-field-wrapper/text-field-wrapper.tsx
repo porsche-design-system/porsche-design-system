@@ -241,21 +241,14 @@ export class TextFieldWrapper {
       outline-offset: 1px;
     }
 
-    ${tagName} input::-webkit-outer-spin-button {
-      appearance: none !important;
-      -webkit-appearance: none !important;
-    }
-
+    ${tagName} input::-webkit-outer-spin-button,
     ${tagName} input::-webkit-inner-spin-button {
       appearance: none !important;
       -webkit-appearance: none !important;
     }
 
     ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
-    ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
-      margin-right: 2rem;
-    }
-
+    ${tagName} input[type=password]::-webkit-credentials-auto-fill-button,
     ${tagName} input[type=search]::-webkit-search-cancel-button {
       margin-right: 2rem;
     }
