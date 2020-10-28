@@ -27,6 +27,12 @@ describe('text-field-wrapper', () => {
   const getTextFieldRealInput = () => selectNode(page, 'p-text-field-wrapper input');
   const getTextFieldMessage = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
+  const getTextFieldLabelLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="label"] a');
+  const getTextFieldDescriptionLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="description"] a');
+  const getTextFieldMessageLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="message"] a');
   const getTextFieldLabel = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
   const getTextFieldButton = () =>
@@ -355,6 +361,84 @@ describe('text-field-wrapper', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+    });
+
+    it('should change color of slotted <a> when it is hovered', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="description">Some description with a <a href="#">link</a>.</span>
+          <input type="text" name="some-name">
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-text-field-wrapper>`
+      );
+
+      const labelLink = await getTextFieldLabelLink();
+      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
+      const descriptionLink = await getTextFieldDescriptionLink();
+      const descriptionLinkColorInitial = await getElementStyle(descriptionLink, 'color');
+      const messageLink = await getTextFieldMessageLink();
+      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
+
+      await labelLink.hover();
+      await waitForStencilLifecycle(page);
+      const labelLinkColorOnHover = await getElementStyle(labelLink, 'color', { waitForTransition: true });
+
+      expect(labelLinkColorOnHover).not.toBe(labelLinkColorInitial);
+
+      await descriptionLink.hover();
+      await waitForStencilLifecycle(page);
+      const descriptionLinkColorOnHover = await getElementStyle(descriptionLink, 'color', { waitForTransition: true });
+
+      expect(descriptionLinkColorOnHover).not.toBe(descriptionLinkColorInitial);
+
+      await messageLink.hover();
+      await waitForStencilLifecycle(page);
+      const messageLinkColorOnHover = await getElementStyle(messageLink, 'color', { waitForTransition: true });
+
+      expect(messageLinkColorOnHover).not.toBe(messageLinkColorInitial);
+    });
+  });
+
+  describe('focus state', () => {
+    fit('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="description">Some description with a <a href="#">link</a>.</span>
+          <input type="text" name="some-name">
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-text-field-wrapper>`
+      );
+
+      const labelLink = await getTextFieldLabelLink();
+      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
+      const descriptionLink = await getTextFieldDescriptionLink();
+      const descriptionLinkOutlineInitial = await getElementStyle(descriptionLink, 'outline');
+      const messageLink = await getTextFieldMessageLink();
+      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
+
+      await labelLink.focus();
+      await waitForStencilLifecycle(page);
+      const labelLinkOutlineOnFocus = await getElementStyle(labelLink, 'outline', { waitForTransition: true });
+
+      expect(labelLinkOutlineOnFocus).not.toBe(labelLinkOutlineInitial);
+
+      await descriptionLink.focus();
+      await waitForStencilLifecycle(page);
+      const descriptionLinkOutlineOnFocus = await getElementStyle(descriptionLink, 'color', { waitForTransition: true });
+
+      expect(descriptionLinkOutlineOnFocus).not.toBe(descriptionLinkOutlineInitial);
+
+      await messageLink.focus();
+      await waitForStencilLifecycle(page);
+      const messageLinkOutlineOnFocus = await getElementStyle(messageLink, 'color', { waitForTransition: true });
+
+      expect(messageLinkOutlineOnFocus).not.toBe(messageLinkOutlineInitial);
     });
   });
 });
