@@ -4,7 +4,7 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
+  getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -24,6 +24,8 @@ describe('radio-button-wrapper', () => {
   const getRadioButtonRealInput = () => selectNode(page, 'p-radio-button-wrapper input');
   const getRadioButtonLabel = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
   const getRadioButtonMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
+  const getRadioButtonLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
+  const getRadioButtonMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -284,6 +286,52 @@ describe('radio-button-wrapper', () => {
       expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(
         initialBoxShadow
       );
+    });
+
+    it('should change color of slotted <a> when it is hovered', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-radio-button-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="radio"/>
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-radio-button-wrapper>`
+      );
+
+      const labelLink = await getRadioButtonLabelLink();
+      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
+      const messageLink = await getRadioButtonMessageLink();
+      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
+
+      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
+
+      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
+      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
+    });
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-radio-button-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="radio"/>
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-radio-button-wrapper>`
+      );
+
+      const labelLink = await getRadioButtonLabelLink();
+      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
+      const messageLink = await getRadioButtonMessageLink();
+      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
+
+      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
+
+      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
+      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
     });
   });
 });
