@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+
+- default `type` of `Button` and `ButtonPure` to `submit`
+
 ### [2.0.0-alpha.5] - 2020-10-26
 
 #### Added
