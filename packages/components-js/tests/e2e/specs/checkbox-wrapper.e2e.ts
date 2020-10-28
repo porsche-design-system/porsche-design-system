@@ -3,7 +3,7 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
+  getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -23,6 +23,8 @@ describe('checkbox-wrapper', () => {
   const getCheckboxLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
   const getCheckboxMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
   const getCheckboxIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
+  const getCheckboxLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
+  const getCheckboxMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
   const getIconName = async () => getProperty(await getCheckboxIcon(), 'name');
 
@@ -364,6 +366,52 @@ describe('checkbox-wrapper', () => {
 
       await labelText.hover();
       expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+    });
+
+    it('should change color of slotted <a> when it is hovered', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-checkbox-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="checkbox"/>
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-checkbox-wrapper>`
+      );
+
+      const labelLink = await getCheckboxLabelLink();
+      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
+      const messageLink = await getCheckboxMessageLink();
+      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
+
+      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
+
+      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
+      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
+    });
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-checkbox-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="checkbox"/>
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-checkbox-wrapper>`
+      );
+
+      const labelLink = await getCheckboxLabelLink();
+      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
+      const messageLink = await getCheckboxMessageLink();
+      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
+
+      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
+
+      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
+      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
     });
   });
 });

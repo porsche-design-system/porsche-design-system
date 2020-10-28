@@ -2,7 +2,7 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getElementStyle,
+  getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -25,6 +25,9 @@ describe('textarea-wrapper', () => {
   const getTextareaRealInput = () => selectNode(page, 'p-textarea-wrapper textarea');
   const getTextareaMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
   const getTextareaLabel = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+  const getTextareaLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
+  const getTextareaDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
+  const getTextareaMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -195,6 +198,64 @@ describe('textarea-wrapper', () => {
       await labelText.hover();
 
       expect(await getElementStyle(fakeTextarea, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+    });
+
+    it('should change color of slotted <a> when it is hovered', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-textarea-wrapper state="error">
+        <span slot="label">Some label with a <a href="#">link</a>.</span>
+        <span slot="description">Some description with a <a href="#">link</a>.</span>
+        <textarea></textarea>
+        <span slot="message">Some message with a <a href="#">link</a>.</span>
+      </p-textarea-wrapper>`
+      );
+
+      const labelLink = await getTextareaLabelLink();
+      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
+      const descriptionLink = await getTextareaDescriptionLink();
+      const descriptionLinkColorInitial = await getElementStyle(descriptionLink, 'color');
+      const messageLink = await getTextareaMessageLink();
+      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
+
+      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
+
+      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
+      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
+
+      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
+      expect(await getElementStyle(descriptionLink, 'color', {waitForTransition: true})).toBe(descriptionLinkColorInitial, 'description link should loose hover style');
+    });
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-textarea-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="description">Some description with a <a href="#">link</a>.</span>
+          <textarea></textarea>
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-textarea-wrapper>`
+      );
+
+      const labelLink = await getTextareaLabelLink();
+      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
+      const descriptionLink = await getTextareaDescriptionLink();
+      const descriptionLinkOutlineInitial = await getElementStyle(descriptionLink, 'outline');
+      const messageLink = await getTextareaMessageLink();
+      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
+
+      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
+
+      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
+      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
+
+      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
+      expect(await getElementStyle(descriptionLink, 'outline')).toBe(descriptionLinkOutlineInitial, 'description link should loose focus style');
     });
   });
 });
