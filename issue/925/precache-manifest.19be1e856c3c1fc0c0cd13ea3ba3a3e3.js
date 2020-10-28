@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "fccdc3c0f21af319c0f2",
+    "revision": "548302ede8d3e348474e",
     "url": "css/app.40cb300b.css"
   },
   {
@@ -380,12 +380,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "0a256b4ea1357aa24c3a492d30798be0",
+    "revision": "b9c4c59c61a7550402463471b6938c0c",
     "url": "index.html"
   },
   {
-    "revision": "fccdc3c0f21af319c0f2",
-    "url": "js/app.b2c70ecf.js"
+    "revision": "548302ede8d3e348474e",
+    "url": "js/app.9244b29f.js"
   },
   {
     "revision": "51681998e48a65ce5892",
@@ -648,8 +648,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d0e139f.ce509c4c.js"
   },
   {
-    "revision": "95d00d49ea47f7eee3f5",
-    "url": "js/chunk-2d0e22a5.4926fc5d.js"
+    "revision": "903600cdcd8d2f868b4f",
+    "url": "js/chunk-2d0e22a5.2931dc75.js"
   },
   {
     "revision": "873f67beca94a7293ceb",
@@ -748,8 +748,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d21f0ac.8fe1c730.js"
   },
   {
-    "revision": "13f9ed8781603d9c5329",
-    "url": "js/chunk-2d21f0b8.e18677af.js"
+    "revision": "deef002613280feceb1e",
+    "url": "js/chunk-2d21f0b8.02e0c756.js"
   },
   {
     "revision": "eda4c447eef35cabf10c",
@@ -788,8 +788,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d229db6.451cd18b.js"
   },
   {
-    "revision": "87d38faf94246a693d56",
-    "url": "js/chunk-2d22d97d.94c45caf.js"
+    "revision": "a455c2884108b9c1d0d5",
+    "url": "js/chunk-2d22d97d.c5138008.js"
   },
   {
     "revision": "1c380c1a45dd23777bbd",
@@ -1000,7 +1000,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "d388c1cfd10f462fda60a3e6e2b686a6",
+    "revision": "d93d319626e443934cdc9bca0a45cf83",
     "url": "pds-loader.js"
   }
 ]);
