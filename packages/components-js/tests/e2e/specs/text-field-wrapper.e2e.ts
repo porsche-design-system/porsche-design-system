@@ -403,7 +403,7 @@ describe('text-field-wrapper', () => {
   });
 
   describe('focus state', () => {
-    fit('should show outline of slotted <a> when it is focused', async () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
