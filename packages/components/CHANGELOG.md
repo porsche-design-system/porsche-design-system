@@ -19,6 +19,7 @@ To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some 
 - Due to the new Web Components Manager we use under the hood, the implementation of the Porsche Design System scripts changed if used in a **Vanilla-JS** environment. Please check our updated **[sample integration guidelines](#/start-coding/vanilla-js)**.
 - We added an automatic generated `*` asteriks symbol to form field labels which have the `required` attribute. This might lead to a doubled `*` symbol if you set one by yourself.
 - Due to the support of setting (router-)links (`<a href="#">`) inside of our `Link`, `LinkPure` and `LinkSocial` components, we have removed the support of styling the anchor tag (`<a>`) if it surrounds the component. So we recommend changing the position of the `<a>` tag from wrapping the component to a direct slot (child) of the component.
+- Changed default `type` of `Button` and `ButtonPure` from `button` to `submit`
 
 ##### General improvements you should follow
 - Now we provide **prefexing** support for most of our components. That means that you can build and deliver your code in a microfrontend architecture without the risk of interfering with others. Please refer to our **[framework specific guidelines](#/start-coding/introduction)**.

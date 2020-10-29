@@ -23,7 +23,7 @@ export class ButtonPure {
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'button';
+  @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop({ reflect: true }) public disabled?: boolean = false;
