@@ -37,12 +37,13 @@ export type PaginationModelOptions = {
 };
 
 export type PaginationModelItem = {
-  key: number;
+  key: number; // TODO: unused?
   value: number;
   isActive: boolean;
   type: PaginationItemType;
 };
 
+// TODO: create enum
 export const itemTypes: ItemTypes = {
   PAGE: 'PAGE',
   ELLIPSIS: 'ELLIPSIS',
@@ -50,6 +51,7 @@ export const itemTypes: ItemTypes = {
   NEXT_PAGE_LINK: 'NEXT_PAGE_LINK'
 };
 
+// TODO: unused?
 const itemKeys: ItemKeys = {
   FIRST_ELLIPSIS: -1,
   SECOND_ELLIPSIS: -2,
@@ -57,6 +59,7 @@ const itemKeys: ItemKeys = {
   NEXT_PAGE_LINK: -5
 };
 
+// TODO: merge factories
 const createFirstEllipsis = (pageNumber: number): PaginationModelItem => ({
   type: itemTypes.ELLIPSIS,
   key: itemKeys.FIRST_ELLIPSIS,
@@ -96,7 +99,7 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
 const createPageFunctionFactory = (options: PaginationModelOptions): ((pageNumber: number) => PaginationModelItem) => {
   const { activePage } = options;
 
-  return (pageNumber: number): PaginationModelItem => ({
+  return (pageNumber): PaginationModelItem => ({
     type: itemTypes.PAGE,
     key: pageNumber,
     value: pageNumber,
