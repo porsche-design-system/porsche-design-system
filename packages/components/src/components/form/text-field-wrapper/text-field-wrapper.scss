@@ -39,7 +39,7 @@
   padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
   outline: transparent none !important;
-  outline-offset: 1px !important;
+  outline-offset: 0 !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 1px !important;
@@ -58,7 +58,25 @@
 
 // Focus
 ::slotted(input:focus) {
-  outline: $p-color-state-focus solid 1px !important;
+  outline: lighten($p-color-neutral-contrast-medium, 40%) solid 3px !important;
+}
+
+:host([state="success"]) ::slotted(input:focus) {
+  outline-color: lighten($p-color-notification-success, 40%) !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  outline-color: lighten($p-color-notification-error, 40%) !important;
+}
+
+:host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
+:host([state="error"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
+  outline-offset: -4px !important;
+}
+
+::slotted(input[type="search"]),
+::slotted(input[type="password"]) {
+  padding-right: 3rem !important;
 }
 
 ::slotted(input:read-only:focus) {
@@ -282,12 +300,13 @@
     }
 
     &:focus {
-      color: $p-color-state-focus;
+      outline: 1px solid currentColor;
+      outline-offset: -3px;
     }
 
     &:disabled {
       color: $p-color-state-disabled;
-      cursor: not-allowed !important;
+      cursor: not-allowed;
     }
   }
 }

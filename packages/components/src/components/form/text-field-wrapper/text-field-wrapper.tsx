@@ -25,7 +25,7 @@ export class TextFieldWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop() public state?: FormState = 'none';
+  @Prop({reflect: true}) public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -193,9 +193,6 @@ export class TextFieldWrapper {
 
   private updatePasswordToggleable(): void {
     this.isPasswordToggleable = this.input.type === 'password';
-    if (this.isPasswordToggleable) {
-      this.input.style.cssText = 'padding-right: 3rem !important';
-    }
   }
 
   private togglePassword = (): void => {
@@ -206,9 +203,6 @@ export class TextFieldWrapper {
 
   private initInputTypeSearch(): void {
     this.isInputTypeSearch = this.input.type === 'search';
-    if (this.isInputTypeSearch) {
-      this.input.style.cssText = 'padding-right: 3rem !important';
-    }
   }
 
   private onSubmitHandler = (event: MouseEvent): void => {
@@ -243,14 +237,13 @@ export class TextFieldWrapper {
 
     ${tagName} input::-webkit-outer-spin-button,
     ${tagName} input::-webkit-inner-spin-button {
-      appearance: none !important;
       -webkit-appearance: none !important;
+      appearance: none !important;
     }
 
-    ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
-    ${tagName} input[type=password]::-webkit-credentials-auto-fill-button,
-    ${tagName} input[type=search]::-webkit-search-cancel-button {
-      margin-right: 2rem;
+    ${tagName} input[type="text"]::-webkit-contacts-auto-fill-button,
+    ${tagName} input[type="text"]::-webkit-credentials-auto-fill-button {
+      margin-right: 2.4375rem;
     }
     `;
 
