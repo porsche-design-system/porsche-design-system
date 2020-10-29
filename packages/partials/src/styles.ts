@@ -7,7 +7,7 @@ type Options = {
 
 export const getFontFaceCSS = (opts?: Options): string => {
   const url = `${opts?.cdn === 'cn' ? 'https://cdn.ui.porsche.cn' : 'https://cdn.ui.porsche.com'}/porsche-design-system/styles/${opts?.cdn === 'cn' ? 'font-face.min.cn.c1b46971322e96095de49987cdc90226.css' : 'font-face.min.de7353ac41430a74da152a5bf0e7bb5b.css'}`;
-  return opts?.withoutTags ? url : '<link rel=stylesheet href=$URL$>'.replace('$URL$', url);
+  return opts?.withoutTags ? url : `<link rel=stylesheet href=${url}>`;
 }
 
 export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags'>): string => {
