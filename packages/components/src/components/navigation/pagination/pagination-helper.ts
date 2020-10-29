@@ -107,9 +107,8 @@ const createPageFunctionFactory = (options: PaginationModelOptions): ((pageNumbe
   });
 };
 
-export const createRange = (start: number, end: number): number[] => {
-  return Array.from(Array(end - start + 1)).map((_, i) => i + start);
-};
+export const createRange = (start: number, end: number): number[] =>
+  Array.from(Array(end - start + 1)).map((_, i) => i + start);
 
 export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
   // exception tests
