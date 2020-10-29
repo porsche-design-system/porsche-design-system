@@ -23,13 +23,6 @@ const copyTypesToWrapper = (framework: Framework): void => {
   console.log(`File "${filePathSource}" copied to "${filePathDest}"`);
 };
 
-const cleanAngularBundle = () => {
-  const filePath = path.normalize(`../components-angular/projects/components-wrapper/src/lib/bundle.d.ts`);
-  const fileContent = fs.readFileSync(filePath, 'utf8').toString();
-  const result = fileContent.replace(/\/\/\/ <reference types="react" \/>/g, '');
-  fs.writeFileSync(filePath, result);
-};
-
 // To ensure the from stencil generated wrapper use the right imports, we have to rename them.
 const updateGeneratedWrapper = (framework: Framework): void => {
   console.log(`Update generated wrapper in "components-${framework}":`);
@@ -37,7 +30,6 @@ const updateGeneratedWrapper = (framework: Framework): void => {
 
   let targetFileName = '';
   if (framework === 'angular') {
-    cleanAngularBundle();
     targetFileName = 'components-wrapper.component.ts';
   } else if (framework === 'react') {
     targetFileName = 'components-provider.ts';
@@ -55,9 +47,10 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   if (framework === 'react') {
     const filePathDest = getFilePathDest(framework);
     const fileContent = fs.readFileSync(filePathDest, 'utf8').toString();
-    const result = fileContent.replace('export {};', 'export { LocalJSX as JSX };');
+    const replaceContent = fileContent.replace('export {};', 'export { LocalJSX as JSX };');
+    const appendContent = '/// <reference types="react" /> \n\n' + replaceContent;
 
-    fs.writeFileSync(filePathDest, result);
+    fs.writeFileSync(filePathDest, appendContent);
     console.log(`Updated export alias for "components-react"`);
   }
 };
