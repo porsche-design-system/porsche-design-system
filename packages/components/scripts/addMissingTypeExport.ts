@@ -1,7 +1,8 @@
-// dts-bundler doesnt bundle the import of HTMLStencilElement. We have to export it beforehand to ensure it gets included in the bundle.d.ts file
 import * as path from 'path';
 import * as fs from 'fs';
 
+// dts-bundler doesnt bundle the import of HTMLStencilElement.
+// We have to export it beforehand to ensure it gets included in the bundle.d.ts file
 const addMissingHTMLStencilElementExport = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const addedContent = "export { HTMLStencilElement } from './stencil-public-runtime';";
@@ -10,7 +11,7 @@ const addMissingHTMLStencilElementExport = (): void => {
 
   if (!fileContent.includes(addedContent)) {
     fs.writeFileSync(filePath, fileContent + addedContent);
-    console.log('Added export ' + addedContent);
+    console.log(`Added export "${addedContent}"`);
   }
 };
 
