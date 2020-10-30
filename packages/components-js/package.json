@@ -26,7 +26,7 @@
     "clean:build": "rm -rf ./dist && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "2.0.0-alpha.5",
+    "@porsche-design-system/components": "2.0.0-alpha.6",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.4",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
