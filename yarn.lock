@@ -2590,10 +2590,10 @@
   version "0.0.2"
   resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz#9978f3c5c2f1c49cfef2bab641fdc0164666b80a"
 
-"@stencil/core@~2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.1.1.tgz#1b0576efd9e9172293274bd31393530b378b2a66"
-  integrity sha512-jcO/sv9wDSe/RSgySHDUUhYNtxPGWpWJy6ucLx/Z6nBau6239mtcXXdxS/KJwSCvHjjEubhz3Rj389eh+IEcZw==
+"@stencil/core@~2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.2.0.tgz#f92b480a387bce688a368b2fb23207f1acd45bc2"
+  integrity sha512-2V+DEUs9wvkcgnIIs0huye/M1v7x6qEzeOjp056RQlB08U1I4ex3vnBoE0/CrR35wK3ZZv2JYPOfBUuqR+6AAg==
 
 "@stencil/postcss@^1.0.1":
   version "1.0.1"
