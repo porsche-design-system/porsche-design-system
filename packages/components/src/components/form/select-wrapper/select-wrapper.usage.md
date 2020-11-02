@@ -54,6 +54,9 @@ Very long Select boxes that require scrolling make it impossible for users to se
 
 ![Example for alignment](./assets/select-dont-items.png)
 
+### Don’t default to ‘please select’
+Users don’t need to be told to ‘please select’ if there’s a field that’s empty. Only use defaults when applicable to most users.
+
 ---
 
 ## Related Components
