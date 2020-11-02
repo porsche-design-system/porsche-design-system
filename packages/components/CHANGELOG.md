@@ -25,6 +25,13 @@ To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some 
 - Now we provide **prefexing** support for most of our components. That means that you can build and deliver your code in a microfrontend architecture without the risk of interfering with others. Please refer to our **[framework specific guidelines](#/start-coding/introduction)**.
 - To optimize FOUT (Flash of Unstyled Text) and FOUC (Flash of Unstyled Content) follow our **[loading guidelines](#/performance/loading-behaviour)**.
 - We have also added support for **[China CDN](#/performance/cdn)** to optimize loading behavior of our assets and components.
+### [2.0.0-alpha.6] - 2020-10-28
+
+#### Changed
+- default `type` of `Button` and `ButtonPure` to `submit`
+
+#### Fixed
+- Typing file for Angular
 
 ### [2.0.0-alpha.5] - 2020-10-26
 
