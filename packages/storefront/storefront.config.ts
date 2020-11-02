@@ -133,13 +133,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Button: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button/button.design.md`)
+        () => import(`@/../../components/src/components/action/button/button.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button/button.code.md`)
+        () => import(`@/../../components/src/components/action/button/button.usage.md`)
       ],
       Props: [
         // @ts-ignore
