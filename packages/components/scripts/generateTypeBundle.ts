@@ -47,9 +47,10 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   if (framework === 'react') {
     const filePathDest = getFilePathDest(framework);
     const fileContent = fs.readFileSync(filePathDest, 'utf8').toString();
-    const result = fileContent.replace('export {};', 'export { LocalJSX as JSX };');
+    const replaceContent = fileContent.replace('export {};', 'export { LocalJSX as JSX };');
+    const appendContent = '/// <reference types="react" /> \n\n' + replaceContent;
 
-    fs.writeFileSync(filePathDest, result);
+    fs.writeFileSync(filePathDest, appendContent);
     console.log(`Updated export alias for "components-react"`);
   }
 };
