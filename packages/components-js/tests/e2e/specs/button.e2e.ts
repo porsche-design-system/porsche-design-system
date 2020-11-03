@@ -22,7 +22,7 @@ describe('button', () => {
 
   const getButtonHost = () => selectNode(page, 'p-button');
   const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
-  const getButtonOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
+  const getIconOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
@@ -370,7 +370,7 @@ describe('button', () => {
   it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
     await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
     const host = await getButtonHost();
-    const spinner = await getButtonOrSpinner();
+    const spinner = await getIconOrSpinner();
 
     expect(await getProperty(spinner, 'theme')).toBe('dark');
 
