@@ -147,13 +147,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Button Pure': {
-      Design: [
+      Examles: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button-pure/button-pure.design.md`)
+        () => import(`@/../../components/src/components/action/button-pure/button-pure.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button-pure/button-pure.code.md`)
+        () => import(`@/../../components/src/components/action/button-pure/button-pure.usage.md`)
       ],
       Props: [
         // @ts-ignore
