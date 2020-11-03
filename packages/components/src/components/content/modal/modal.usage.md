@@ -26,15 +26,17 @@ This also eliminates distraction and helps the user focus on the Modal content.
 ### Animation
 The background overlay animates once a Modal is launched to grab a user’s attention and retain their focus.
 
-### Scrolling
-Scrolling is available but we recommend to put Modal content in a single view. If your Modal has a lot of detail or a 
-long list of items, consider a different solution, such as a form or a table.
+### Close
+Within a Model are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
+
+## Usage
 
 ### Attention
 Modals are disruptive. Only use Modals when you need the user’s full attention for the period of time the Modal is displayed.
 
-### Close
-Within a Model are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
+### Scrolling
+Scrolling is available but we recommend to put Modal content in a single view. If your Modal has a lot of detail or a 
+long list of items, consider a different solution, such as a form or a table.
 
 ---
 

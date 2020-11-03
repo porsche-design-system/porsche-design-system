@@ -3,7 +3,7 @@
 ## When to use
   • Use a Button Pure as a more subtle call to action (in addition to Button Primary, Secondary or Tertiary)   
   • Use a Button Pure to enable to execute an action (like "submit", "delete", "add" or "edit")   
-  • Use a Button to change the state of an application, which almost always happens on the same page. 
+  • Use a Button Pure to change the state of an application, which almost always happens on the same page. 
 
 --- 
 
@@ -35,7 +35,6 @@ The default icon is an arrow right that should serve in most cases. It should be
 The text label is always set in copytext size. It is recommended to always keep the label short and give the user a hint on the indicated action, for example by including active verbs such as "add", "edit" or "delete". 
 
 ### Button Pure groups
-
 Multiple Buttons Pure can be combined to one Button Pure group that must be stacked left-aligned in order to guarantee scannability and legibility. It is recommended to not group more than 6 Buttons Pure in a row.
 
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
