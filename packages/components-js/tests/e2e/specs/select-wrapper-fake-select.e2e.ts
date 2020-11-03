@@ -359,7 +359,7 @@ describe('select-wrapper fake-select', () => {
       expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
-    fdescribe('keyboard and click events', () => {
+    describe('keyboard and click events', () => {
       const getActiveDescendant = async () => await getAttribute(await getSelectOptionList(), 'aria-activedescendant');
       const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
       const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
