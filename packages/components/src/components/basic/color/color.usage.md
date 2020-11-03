@@ -243,7 +243,7 @@ Both plugins help you to check the color contrast of two selected layers in Sket
 
 ---
 
-## Don'ts
-![Example for accessibility](./assets/color-accessibility-dont-01.png)
+## Do's & Don'ts
+Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard.
 
-![Example for accessibility](./assets/color-accessibility-dont-02.png)
+![Example for accessibility](./assets/color-accessibility-dont-01.png)

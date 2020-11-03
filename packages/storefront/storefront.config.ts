@@ -75,23 +75,23 @@ export const config: StorefrontConfig = {
   },
   Components: {
     Color: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.design.md`)
+        () => import(`@/../../components/src/components/basic/color/color.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.code.md`)
+        () => import(`@/../../components/src/components/basic/color/color.usage.md`)
       ]
     },
     Marque: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.design.md`)
+        () => import(`@/../../components/src/components/basic/marque/marque.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.code.md`)
+        () => import(`@/../../components/src/components/basic/marque/marque.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -245,13 +245,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Text List': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.design.md`)
+        () => import(`@/../../components/src/components/content/text-list/text-list.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.code.md`)
+        () => import(`@/../../components/src/components/content/text-list/text-list.usage.md`)
       ],
       Props: [
         // @ts-ignore
