@@ -359,7 +359,7 @@ describe('select-wrapper fake-select', () => {
       expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
-    describe('keyboard and click events', () => {
+    fdescribe('keyboard and click events', () => {
       const getActiveDescendant = async () => await getAttribute(await getSelectOptionList(), 'aria-activedescendant');
       const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
       const selectHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('select'));
@@ -426,7 +426,7 @@ describe('select-wrapper fake-select', () => {
           </p-select-wrapper>`
         );
 
-        const host = await selectNode(page, 'p-select-wrapper');;
+        const host = await selectNode(page, 'p-select-wrapper');
         const fakeInput = await getSelectOptionList();
 
         expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('false');
@@ -435,6 +435,33 @@ describe('select-wrapper fake-select', () => {
         await waitForStencilLifecycle(page);
 
         expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('true');
+      });
+
+      it('should show aria-selected attribute on selected fake option on click', async () => {
+        await setContentWithDesignSystem(
+          page,`
+          <p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+        );
+
+        const select = await getSelectRealInput();
+        const fakeOptionInPosZero = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+        const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+
+        expect(await getAttribute(fakeOptionInPosZero, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionInPosOne, 'aria-selected')).toBeNull();
+
+        await select.click();
+        await fakeOptionInPosOne.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(fakeOptionInPosZero, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionInPosOne, 'aria-selected')).toBe('true');
       });
 
       it('should skip disabled option on arrow down', async () => {
