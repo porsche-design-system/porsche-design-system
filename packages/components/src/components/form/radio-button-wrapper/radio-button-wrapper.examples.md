@@ -68,10 +68,10 @@ Please make sure to set the corresponding **aria** attributes.
     
     disabled =
 `<p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" disabled/>
+  <input type="radio" name="some-name-4" disabled />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" checked disabled/>
+  <input type="radio" name="some-name-4" checked disabled />
 </p-radio-button-wrapper>`;
 
     get validation() {
