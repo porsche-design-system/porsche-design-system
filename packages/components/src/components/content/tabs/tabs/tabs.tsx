@@ -56,7 +56,7 @@ export class Tabs {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-bar']);
-//TODO: check map function for right active tab
+// TODO: check map function for right active tab
     return (
       <Host>
         <div class={tabsClasses}>
