@@ -8,7 +8,7 @@
 
 ## Types
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Select as follows
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Button as follows
 
 | Type | Usage |
 |----|----|
