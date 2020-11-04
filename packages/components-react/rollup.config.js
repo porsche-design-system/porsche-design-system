@@ -7,7 +7,7 @@ export default {
   input: 'projects/components-wrapper/src/bundle/index.js',
   output: {
     esModule: false,
-    dir: 'dist/components-wrapper/bundle',
+    dir: 'dist/components-wrapper/jsdom-polyfill',
     format: 'umd',
     name: pkg.name,
     extend: true,
