@@ -450,18 +450,18 @@ describe('select-wrapper fake-select', () => {
         );
 
         const select = await getSelectRealInput();
-        const fakeOptionInPosZero = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-        const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+        const fakeOptionA = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+        const fakeOptionB = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
-        expect(await getAttribute(fakeOptionInPosZero, 'aria-selected')).toBe('true');
-        expect(await getAttribute(fakeOptionInPosOne, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
 
         await select.click();
-        await fakeOptionInPosOne.click();
+        await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getAttribute(fakeOptionInPosZero, 'aria-selected')).toBeNull();
-        expect(await getAttribute(fakeOptionInPosOne, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBe('true');
       });
 
       it('should skip disabled option on arrow down', async () => {
