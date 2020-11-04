@@ -19,7 +19,7 @@ export default {
     }),
     replace({
       // inject call of 'defineCustomElements()'
-      'exports.PBanner': 'defineCustomElements();\n\n    exports.PBanner',
+      'exports.PBanner': 'defineCustomElements();\n\n  exports.PBanner',
     }),
   ],
 };
