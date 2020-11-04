@@ -7,7 +7,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { CSS_ANIMATION_DURATION, FOCUS_PADDING } from './tabs-bar.e2e';
@@ -251,29 +251,29 @@ describe('tabs', () => {
     const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
     const allButtons = await getAllTabs();
     const gradientWidth = await getProperty(gradientNext, 'offsetWidth');
-    const scrollArea =  await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+    const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
     const getScrollAreaScrollLeft = () => getProperty(scrollArea, 'scrollLeft');
 
     expect(await getScrollAreaScrollLeft()).toEqual(0);
 
     await page.keyboard.press('Tab');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
     await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
     await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
     await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
     await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
-    const scrollDistanceRight = +tab5offset - +gradientWidth  + FOCUS_PADDING;
+    const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
     expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
 
     await page.keyboard.press('ArrowLeft');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
     const tabWidth = await getProperty(allButtons[3], 'offsetWidth');

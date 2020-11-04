@@ -1,10 +1,11 @@
 import {
   addEventListener,
   getBrowser,
-  initAddEventListener, reattachElement,
+  initAddEventListener,
+  reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -67,11 +68,11 @@ describe('banner', () => {
 
     const innerButton = await getBannerButton();
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(CSS_FADE_OUT_DURATION);
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
@@ -86,11 +87,11 @@ describe('banner', () => {
     `
     );
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(CSS_FADE_OUT_DURATION);
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
@@ -110,7 +111,7 @@ describe('banner', () => {
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
@@ -134,7 +135,7 @@ describe('banner', () => {
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-banner');
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);

@@ -9,7 +9,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -55,7 +55,7 @@ describe('tabs-bar', () => {
     `
     );
     const allButtons = await getAllButtons();
-    await page.waitFor(40); // class gets set through js, this takes a little time
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
     expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
@@ -74,7 +74,7 @@ describe('tabs-bar', () => {
     `
     );
     const allButtons = await getAllButtons();
-    await page.waitFor(40); // class gets set through js, this takes a little time
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
     expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
@@ -108,7 +108,7 @@ describe('tabs-bar', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
   });
@@ -141,25 +141,25 @@ describe('tabs-bar', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
     await prevButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await prevButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
   });
@@ -188,21 +188,21 @@ describe('tabs-bar', () => {
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     await nextButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const scrollPosition = await getScrollLeft(scrollArea);
 
     await firstButton.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const scrollMax = await page.evaluate((): number => {
       const scrollArea = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.p-tabs-bar__scroll-area');
@@ -271,7 +271,7 @@ describe('tabs-bar', () => {
 
     await allButtons[4].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const tab3offset = await getProperty(allButtons[4], 'offsetLeft');
     const scrollDistanceRight = +tab3offset - +gradientWidth + FOCUS_PADDING;
@@ -279,7 +279,7 @@ describe('tabs-bar', () => {
 
     await allButtons[3].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
     const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
@@ -302,14 +302,14 @@ describe('tabs-bar', () => {
     const allButtons = await getAllButtons();
     const scrollArea = await getScrollArea();
 
-    await page.waitFor(40); // class gets set through js, this takes a little time
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
     expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
 
     await scrollArea.click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(40);
+    await page.waitForTimeout(40);
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
     expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
@@ -336,7 +336,7 @@ describe('tabs-bar', () => {
 
     await allButtons[0].click();
     await waitForStencilLifecycle(page);
-    await page.waitFor(CSS_ANIMATION_DURATION);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
     expect((await getElementPositions(page, allButtons[0])).left).toEqual(
       Math.floor((await getElementPositions(page, statusBar)).left)

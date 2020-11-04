@@ -1582,6 +1582,5 @@ declare namespace LocalJSX {
 		"p-textarea-wrapper": PTextareaWrapper;
 	}
 }
-export declare const componentsReady: () => Promise<void>;
 
 export {};

@@ -30,7 +30,7 @@ describe('check for dead links in storefront', () => {
 
   const getPatternHeadline = async () => {
     await page.waitForSelector('p-headline[tag="h1"]');
-    await page.waitFor(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
+    await page.waitForTimeout(40); // TODO: Deadlink-Checker is still flaky! Page Eval is to fast here.
     return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
   };
 
@@ -45,7 +45,7 @@ describe('check for dead links in storefront', () => {
     'https://adabook.com/',
     'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
     'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-basic.sketch.xml',
-    'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml'
+    'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml',
   ];
 
   const linkCheckLoop = async () => {
