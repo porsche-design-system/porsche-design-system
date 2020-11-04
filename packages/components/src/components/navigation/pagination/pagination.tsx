@@ -4,7 +4,7 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
 } from '../../../utils';
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-helper';
 import { listenResize } from '../../../utils/window-resize-listener';
@@ -14,7 +14,7 @@ import { NumberOfPageLinks } from '../../../types';
 @Component({
   tag: 'p-pagination',
   styleUrl: 'pagination.scss',
-  shadow: true
+  shadow: true,
 })
 export class Pagination {
   @Element() public element!: HTMLElement;
@@ -28,14 +28,14 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({
     reflect: true,
-    mutable: true
+    mutable: true,
   })
   public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
   @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks> = {
     base: 5,
-    xs: 7
+    xs: 7,
   };
 
   /** Aria label what the pagination is used for. */
@@ -85,7 +85,7 @@ export class Pagination {
     const paginationClasses = {
       [prefix('pagination')]: true,
       [prefix(`pagination--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks)
+      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks),
     };
     const paginationItemsClasses = prefix('pagination__items');
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
@@ -95,7 +95,7 @@ export class Pagination {
     const paginationModel = createPaginationModel({
       activePage,
       pageTotal,
-      pageRange
+      pageRange,
     });
     const pageItems: JSX.Element[] = [];
     let prevItem: JSX.Element;
@@ -110,7 +110,7 @@ export class Pagination {
       if (type === itemTypes.PREVIOUS_PAGE_LINK) {
         const paginationPrevClasses = {
           [prefix('pagination__prev')]: true,
-          [prefix('pagination__prev--disabled')]: !isActive
+          [prefix('pagination__prev--disabled')]: !isActive,
         };
 
         prevItem = (
@@ -131,7 +131,7 @@ export class Pagination {
       } else if (type === itemTypes.ELLIPSIS) {
         const paginationGoToClasses = {
           [prefix('pagination__goto')]: true,
-          [prefix('pagination__goto--ellipsis')]: true
+          [prefix('pagination__goto--ellipsis')]: true,
         };
         pageItems.push(
           <li {...pageModel} class={paginationItemClasses}>
@@ -141,7 +141,7 @@ export class Pagination {
       } else if (type === itemTypes.PAGE) {
         const paginationGoToClasses = {
           [prefix('pagination__goto')]: true,
-          [prefix('pagination__goto--current')]: isActive
+          [prefix('pagination__goto--current')]: isActive,
         };
         pageItems.push(
           <li {...pageModel} class={paginationItemClasses}>
@@ -149,7 +149,7 @@ export class Pagination {
               class={paginationGoToClasses}
               role="button"
               tabIndex={isActive ? null : 0}
-              aria-disabled={isActive && 'true'}
+              aria-disabled={isActive ? 'true' : null}
               onClick={() => this.onClick(value)}
               onKeyDown={(e) => this.onKeyDown(e, value)}
               aria-label={`${this.allyLabelPage} ${value}`}
@@ -162,7 +162,7 @@ export class Pagination {
       } else if (type === itemTypes.NEXT_PAGE_LINK) {
         const paginationNextClasses = {
           [prefix('pagination__next')]: true,
-          [prefix('pagination__next--disabled')]: !isActive
+          [prefix('pagination__next--disabled')]: !isActive,
         };
 
         nextItem = (
