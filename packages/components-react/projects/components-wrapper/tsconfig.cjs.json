@@ -8,5 +8,5 @@
     "declaration": true
   },
   "include": ["src"],
-  "exclude": ["src/lib"]
+  "exclude": ["src/lib", "src/bundle"]
 }
