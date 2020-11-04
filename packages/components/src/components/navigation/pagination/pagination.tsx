@@ -121,7 +121,7 @@ export class Pagination {
               tabIndex={isActive ? 0 : null}
               onClick={() => this.onClick(value)}
               onKeyDown={(e) => this.onKeyDown(e, value)}
-              aria-disabled={!isActive && 'true'}
+              aria-disabled={!isActive ? 'true' : null}
               aria-label={this.allyLabelPrev}
             >
               <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
@@ -153,7 +153,7 @@ export class Pagination {
               onClick={() => this.onClick(value)}
               onKeyDown={(e) => this.onKeyDown(e, value)}
               aria-label={`${this.allyLabelPage} ${value}`}
-              aria-current={isActive && 'page'}
+              aria-current={isActive ? 'page' : null}
             >
               {value}
             </span>
@@ -173,7 +173,7 @@ export class Pagination {
               tabIndex={isActive ? 0 : null}
               onClick={() => this.onClick(value)}
               onKeyDown={(e) => this.onKeyDown(e, value)}
-              aria-disabled={!isActive && 'true'}
+              aria-disabled={!isActive ? 'true' : null}
               aria-label={this.allyLabelNext}
             >
               <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
