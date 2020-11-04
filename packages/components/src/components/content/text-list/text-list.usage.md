@@ -1,7 +1,7 @@
 # Text List
 
 ## When to use
-  • Use a Text List for short pieces of information (should not exceed two hierarchy levels).
+  • Use a Text List to display short pieces of information in form of an unordered or ordered list.
 
 ---
 
@@ -14,8 +14,6 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Unordered List  | Content with equal value is displayed in unordered lists. |
 | Ordered List  | Sequenced content should be displayed in an ordered list.|
 
----
-
 ## Usage
 
 ### Order
@@ -27,7 +25,14 @@ It is recommended to stick to a homogeneous writing structure and style within o
 ### Capitalization
 Use sentence-style capitalization for each list item. Capitalize only the first letter of the item.
 
+
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
     <img src="./assets/text-list-examples.png" alt="Examples for ordered and unorderd list"/>
 </div>
+
+## Do's & Don'ts
+
+### Hierarchy
+
+Text Lists should not exceed two hierarchy levels.

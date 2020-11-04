@@ -1,8 +1,6 @@
 # Icon
 
-Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized.
-
-## Icon overview
+## Overview
 A complete overview of all available Porsche icons, head over to [Porsche Icons](https://icons.porsche.com).
 
 ---
@@ -13,25 +11,19 @@ The clean style of the Porsche icon set matches the Porsche brand aesthetically 
 
 ---
 
-## Base area & grid
+## Usage
+
+### Base area & grid
 
 All icons are placed on a transparent 24x24 pixel base area, including a dedicated safe zone. 
 
 The icons themselves are built upon a base grid structure and guidelines for sizing the different icon shapes. These scale guidelines ensure that each icon has the same visual weight so they all feel the same size, regardless of their overall shape. 
 
----
+### Interactive
 
-## States
+For interactive icons you should use the [Button Pure](#/components/button-pure) that comes with a dedicated click/touch area and with different states.
 
-The icon component is by default only supposed to be displayed in monochrome colors (Dark Theme: White, Light Theme: Black).
-
-For interactive icons you should use the [Button Pure](#/components/button-pure) that comes with a dedicated click/touch area and with different states (disabled etc.).
-
----
-
-## Best practices
-
-### Color usage
+### Color
 
 The icons come with standard colors you should stick to. However, when you decide to override the default icon colors for special reasons, it is recommended to use the color(s) uniformly throughout your application to provide consistency.
 
