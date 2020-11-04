@@ -25,8 +25,7 @@ describe('pagination', () => {
     const prevButton = await getPrevButton();
 
     expect(await getAttribute(prevButton, 'aria-disabled')).toBe('true');
-
-    console.log(await getAttribute(prevButton, 'aria-disabled'));
+    
     await host.evaluate((el) => el.setAttribute('active-page', '5'));
     await waitForStencilLifecycle(page);
 
