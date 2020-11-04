@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import polyfill from 'rollup-plugin-polyfill';
 import pkg from '@porsche-design-system/js/package.json';
 
 export default {
@@ -12,8 +13,9 @@ export default {
     extend: true,
   },
   plugins: [
+    polyfill(['@porsche-design-system/construct-style-sheets-polyfill']),
     resolve({
-      resolveOnly: [/^@stencil\/.*$/],
+      resolveOnly: [/^@stencil\/.*$/, /^@porsche-design-system\/.*$/],
     }),
     replace({
       // inject call of 'defineCustomElements()'
