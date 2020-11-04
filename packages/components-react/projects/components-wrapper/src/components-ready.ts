@@ -1,5 +1,5 @@
 let loadingQueueCount = 0;
-let resolvePromiseTimeout = null;
+let resolvePromiseTimeout: number;
 let onLoadedPromise: Promise<void>;
 let resolveOnLoadedPromise: () => void;
 
@@ -12,12 +12,12 @@ const checkForPromiseResolve = (): void => {
     resolvePromiseTimeout = window.setTimeout(() => {
       resolveOnLoadedPromise();
       createOnLoadedPromise();
-    }, 30);
+    }, 50);
   }
 };
 
 const createOnLoadedPromise = (): void => {
-  onLoadedPromise = new Promise(resolve => {
+  onLoadedPromise = new Promise((resolve) => {
     resolveOnLoadedPromise = resolve;
   });
 };
