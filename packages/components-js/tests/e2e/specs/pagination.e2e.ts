@@ -25,7 +25,7 @@ describe('pagination', () => {
     const prevButton = await getPrevButton();
 
     expect(await getAttribute(prevButton, 'aria-disabled')).toBe('true');
-    
+
     await host.evaluate((el) => el.setAttribute('active-page', '5'));
     await waitForStencilLifecycle(page);
 
@@ -58,18 +58,19 @@ describe('pagination', () => {
 
       const host = await getPagination();
       const paginationItems = await getPaginationItems();
+      const firstPageItem = paginationItems[0];
 
-      expect(await getAttribute(paginationItems[0], 'aria-current')).toBe('page');
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
 
       await host.evaluate((el) => el.setAttribute('active-page', '2'));
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(paginationItems[0], 'aria-current')).toBeNull();
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBeNull();
 
       await host.evaluate((el) => el.setAttribute('active-page', '1'));
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(paginationItems[0], 'aria-current')).toBe('page');
+      expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');
     });
 
     it('should have aria-disabled if selected', async () => {
@@ -80,18 +81,19 @@ describe('pagination', () => {
 
       const host = await getPagination();
       const paginationItems = await getPaginationItems();
+      const firstPageItem = paginationItems[0];
 
-      expect(await getAttribute(paginationItems[0], 'aria-disabled')).toBe('true');
+      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
 
       await host.evaluate((el) => el.setAttribute('active-page', '2'));
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(paginationItems[0], 'aria-disabled')).toBeNull();
+      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBeNull();
 
       await host.evaluate((el) => el.setAttribute('active-page', '1'));
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(paginationItems[0], 'aria-disabled')).toBe('true');
+      expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
     });
   });
 });
