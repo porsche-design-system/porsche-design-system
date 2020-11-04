@@ -1,6 +1,7 @@
 import {
   addEventListener,
   getActiveElementId,
+  getAttribute,
   getBrowser,
   initAddEventListener,
   selectNode,
@@ -342,5 +343,23 @@ describe('button-pure', () => {
 
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(3);
+  });
+
+  it('should add aria-busy when loading and remove if finished', async () => {
+    await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
+    const host = await getButtonPureHost();
+    const button = await getButtonPureRealButton();
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+    await host.evaluate((el) => el.setAttribute('loading', 'true'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+    await host.evaluate((el) => el.setAttribute('loading', 'false'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
   });
 });
