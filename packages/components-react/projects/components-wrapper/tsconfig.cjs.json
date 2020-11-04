@@ -8,5 +8,5 @@
     "declaration": true
   },
   "include": ["src"],
-  "exclude": ["src/mocks", "src/lib"]
+  "exclude": ["src/lib"]
 }
