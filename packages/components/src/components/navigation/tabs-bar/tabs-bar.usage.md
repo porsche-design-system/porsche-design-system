@@ -8,7 +8,7 @@
 
 ## Types
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs as follows
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs Bar as follows
 
 | Type | Usage |
 |----|----|

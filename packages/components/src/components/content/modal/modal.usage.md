@@ -7,7 +7,9 @@
 
 ---
 
-## Variants
+## Types
+
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Modal as follows
 
 | Variant | Usage |
 |----|----|

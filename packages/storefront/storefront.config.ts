@@ -259,13 +259,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Spinner: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.design.md`)
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.code.md`)
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -273,13 +273,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Icon: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.design.md`)
+        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.code.md`)
+        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -287,13 +287,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Content Wrapper': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.design.md`)
+        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.code.md`)
+        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -301,13 +301,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Divider: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/divider/divider.design.md`)
+        () => import(`@/../../components/src/components/layout/divider/divider.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/divider/divider.code.md`)
+        () => import(`@/../../components/src/components/layout/divider/divider.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -315,9 +315,9 @@ export const config: StorefrontConfig = {
       ]
     },
     Flex: {
-      Code: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/flex/flex.code.md`)
+        () => import(`@/../../components/src/components/layout/flex/flex.examples.md`)
       ],
       Props: [
         // @ts-ignore
@@ -327,13 +327,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Grid: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/grid/grid.design.md`)
+        () => import(`@/../../components/src/components/layout/grid/grid.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/grid/grid.code.md`)
+        () => import(`@/../../components/src/components/layout/grid/grid.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -343,23 +343,23 @@ export const config: StorefrontConfig = {
       ]
     },
     Spacing: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.design.md`)
+        () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.code.md`)
+        () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`)
       ]
     },
     Link: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link/link.design.md`)
+        () => import(`@/../../components/src/components/navigation/link/link.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link/link.code.md`)
+        () => import(`@/../../components/src/components/navigation/link/link.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -397,13 +397,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Link Pure': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.design.md`)
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.code.md`)
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -411,13 +411,13 @@ export const config: StorefrontConfig = {
       ]
     },
     'Link Social': {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.design.md`)
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.code.md`)
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.usage.md`)
       ],
       Props: [
         // @ts-ignore
@@ -425,13 +425,13 @@ export const config: StorefrontConfig = {
       ]
     },
     Pagination: {
-      Design: [
+      Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.design.md`)
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`)
       ],
-      Code: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.code.md`)
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.usage.md`)
       ],
       Props: [
         // @ts-ignore
