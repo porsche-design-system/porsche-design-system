@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { componentsReady, PButton } from '@porsche-design-system/components-react';
+import { componentsReady, PButton, PHeadline } from '@porsche-design-system/components-react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -22,7 +22,7 @@ const StyleReplace = (): JSX.Element => {
   );
 };
 
-jest.setTimeout(30000);
+const SingleComponent = (): JSX.Element => <PHeadline>Some headline</PHeadline>;
 
 describe('jsdom-polyfill', () => {
   it('should render web component with shadowRoot', async () => {
@@ -39,5 +39,11 @@ describe('jsdom-polyfill', () => {
     const btn = getByTestId('btn');
     const icon = btn.shadowRoot.querySelector('p-icon');
     expect(icon).not.toBeNull();
+  });
+
+  it('renders a headline from Porsche Design System', () => {
+    const { getByText } = render(<SingleComponent />);
+    const headLineElement = getByText('Some headline');
+    expect(headLineElement).toBeInTheDocument();
   });
 });
