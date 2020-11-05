@@ -35,7 +35,6 @@ yarn add typescript @types/node @types/react @types/react-dom @types/jest
 npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
 * Install the Porsche Design System
-
 ``` 
 // install with yarn:
 yarn add @porsche-design-system/components-react
@@ -49,7 +48,7 @@ You are ready to start building your own application.
 The following project is a standard React (Create React App) setup:
 
 ### Index file
-``` 
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -70,11 +69,11 @@ serviceWorker.unregister();
 
 Change your App file to use at least one Porsche Design System Component, for example:
 
-``` 
+```tsx
 import React from 'react';
 import { PHeadline } from '@porsche-design-system/components-react';
 
-export const App = () => (
+export const App = (): JSX.Element => (
   <div className="App">
     <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
   </div>
@@ -93,11 +92,9 @@ Also, it doesn't support `CSSStyleSheet.replace()`.
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
 
-### Global Mocks
+To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 
-To consume the mocks you can set them up via your **setupTest.{js|ts}** file in your root folder and copy the following snippet into the setup file.
-
-```typescript
+```tsx
 // setupTest.{js|ts}
 
 import '@porsche-design-system/components-react/jsdom-polyfill';
@@ -123,7 +120,7 @@ test('renders a headline from Porsche Design System', async () => {
    
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
 
-### Advanced usage
+## Advanced usage
 
 ### Prefixing
 
@@ -158,7 +155,7 @@ In the example the `PHeadline` component will render as `<sample-prefix-p-headli
 We recommend to call `getPrefixedComponents` only once in your app and import it from
 there, that you can change the prefix in a single place.
 
-```typescript
+```tsx
 // PorscheDesignSystem.ts
 
 import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
