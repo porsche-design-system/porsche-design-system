@@ -1,7 +1,9 @@
 import {
   addEventListener,
   getActiveElementId,
+  getAttribute,
   getBrowser,
+  getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
@@ -20,6 +22,7 @@ describe('button', () => {
 
   const getButtonHost = () => selectNode(page, 'p-button');
   const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
+  const getIconOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
@@ -344,5 +347,41 @@ describe('button', () => {
 
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(3);
+  });
+
+  it('should add aria-busy when loading and remove if finished', async () => {
+    await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
+    const host = await getButtonHost();
+    const button = await getButtonRealButton();
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+    await host.evaluate((el) => el.setAttribute('loading', 'true'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+    await host.evaluate((el) => el.setAttribute('loading', 'false'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+  });
+
+  it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
+    await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
+    const host = await getButtonHost();
+    const spinner = await getIconOrSpinner();
+
+    expect(await getProperty(spinner, 'theme')).toBe('dark');
+
+    await host.evaluate((el) => el.setAttribute('theme', 'light'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(spinner, 'theme')).toBe('dark');
+
+    await host.evaluate((el) => el.setAttribute('variant', 'tertiary'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(spinner, 'theme')).toBe('light');
   });
 });
