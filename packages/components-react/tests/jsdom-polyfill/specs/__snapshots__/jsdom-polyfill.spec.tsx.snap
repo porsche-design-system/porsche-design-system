@@ -2,11 +2,16 @@
 
 exports[`jsdom-polyfill should render web component with shadowRoot 1`] = `
 <div>
-  <p-button
-    data-testid="btn"
+  <p-link
+    data-testid="host"
+    href="#some-url"
   >
-    BUTTON
-  </p-button>
-  false
+    LINK
+  </p-link>
+  <p
+    data-testid="text"
+  >
+    some text
+  </p>
 </div>
 `;
