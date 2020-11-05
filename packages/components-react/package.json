@@ -15,7 +15,7 @@
     "build:jsdom-polyfill": "rollup -c rollup.config.js",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "yarn test:jsdom-polyfill && yarn test:vrt && yarn test:cbt",
-    "test:jsdom-polyfill": "jest -c tests/jsdom-polyfill/config/jest.config.js",
+    "test:jsdom-polyfill": "jest -c tests/jsdom-polyfill/config/jest.config.js --forceExit --detectOpenHandles",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
