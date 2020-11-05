@@ -1,49 +1,41 @@
 import React, { useCallback, useState } from 'react';
-import { componentsReady, PButton, PHeadline } from '@porsche-design-system/components-react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { componentsReady, PLink } from '@porsche-design-system/components-react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-const StyleReplace = (): JSX.Element => {
-  const [state, setState] = useState<boolean>(false);
+const SomeComponent = (): JSX.Element => {
+  const [text, setText] = useState('some text');
 
   const handleOnClick = useCallback(() => {
-    setTimeout(() => {
-      setState(true);
-    }, 100);
+    setText('another text after click on link');
   }, []);
 
   return (
     <>
-      <PButton data-testid="btn" onClick={handleOnClick}>
-        BUTTON
-      </PButton>
-      {String(state)}
+      <PLink href="#some-url" data-testid="host" onClick={handleOnClick}>
+        LINK
+      </PLink>
+      <p data-testid="text">{text}</p>
     </>
   );
 };
-
-const SingleComponent = (): JSX.Element => <PHeadline>Some headline</PHeadline>;
-
 describe('jsdom-polyfill', () => {
   it('should render web component with shadowRoot', async () => {
-    const { container, getByTestId } = render(<StyleReplace />);
+    const { container, getByTestId } = render(<SomeComponent />);
 
     await componentsReady();
+
+    const host = getByTestId('host');
+    const link = host.shadowRoot.querySelector('a');
+    const text = getByTestId('text');
+
     expect(container).toMatchSnapshot();
+    expect(link).not.toBeNull();
+    expect(link.getAttribute('href')).toBe('#some-url');
+    expect(text.innerHTML).toBe('some text');
 
-    userEvent.click(screen.getByText('BUTTON'));
-    await waitFor(() => {
-      screen.getByText('true');
-    });
+    userEvent.click(screen.getByText('LINK'));
 
-    const btn = getByTestId('btn');
-    const icon = btn.shadowRoot.querySelector('p-icon');
-    expect(icon).not.toBeNull();
-  });
-
-  it('renders a headline from Porsche Design System', () => {
-    const { getByText } = render(<SingleComponent />);
-    const headLineElement = getByText('Some headline');
-    expect(headLineElement).toBeInTheDocument();
+    expect(text.innerHTML).toBe('another text after click on link');
   });
 });
