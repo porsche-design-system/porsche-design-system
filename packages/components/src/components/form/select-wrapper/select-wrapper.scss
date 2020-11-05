@@ -386,6 +386,7 @@
     position: relative;
     display: block;
     padding: $p-spacing-8 p-px-to-rem(12px);
+    min-height: p-px-to-rem(24px);
     cursor: pointer;
     text-align: left;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
@@ -448,7 +449,8 @@
       }
     }
 
-    &--hidden {
+    &--hidden,
+    &--initiallyHidden{
       display: none;
     }
   }
