@@ -40,7 +40,7 @@ export class TabsBar {
   @Prop() public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changed. */
-  @Event() public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() public actionState: ActionState = {
     isPrevHidden: false,
@@ -69,25 +69,33 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.sanitizeActiveTabIndex();
-    this.setAccessibilityAttributes();
-    this.initMutationObserver();
+    if (this.checkTabsElementsLength() > 0) {
+      this.sanitizeActiveTabIndex();
+      this.setAccessibilityAttributes();
+      this.initMutationObserver();
+    }
   }
 
   public componentDidRender(): void {
-    this.setStatusBarStyle();
+    if (this.checkTabsElementsLength() > 0) {
+      this.setStatusBarStyle();
+    }
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
-    this.scrollActiveTabIntoView();
-    this.addEventListeners();
-    this.initIntersectionObserver();
+    if (this.checkTabsElementsLength() > 0) {
+      this.defineHTMLElements();
+      this.scrollActiveTabIntoView();
+      this.addEventListeners();
+      this.initIntersectionObserver();
+    }
   }
 
   public disconnectedCallback(): void {
-    this.disconnectMutationObserver();
-    this.disconnectIntersectionObserver();
+    if (this.checkTabsElementsLength() > 0) {
+      this.disconnectMutationObserver();
+      this.disconnectIntersectionObserver();
+    }
   }
 
   public render(): JSX.Element {
@@ -120,8 +128,8 @@ export class TabsBar {
             <span class={statusBarClasses} />
           </div>
         </div>
-        {this.renderPrevNextButton('prev')}
-        {this.renderPrevNextButton('next')}
+        {this.checkTabsElementsLength() > 0 && this.renderPrevNextButton('prev')}
+        {this.checkTabsElementsLength() > 0 && this.renderPrevNextButton('next')}
       </div>
     );
   }
@@ -159,6 +167,9 @@ export class TabsBar {
     );
   };
 
+  private checkTabsElementsLength = (): number => {
+    return this.tabElements.length;
+  };
   private isActiveTabIndexInvalid = (newTabIndex: number): boolean => {
     const minIndex = 0;
     const maxIndex = this.tabElements.length - 1;
