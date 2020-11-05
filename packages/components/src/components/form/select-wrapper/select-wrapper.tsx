@@ -517,6 +517,7 @@ export class SelectWrapper {
         <span>---</span>
       </div>
     ) : (
+      // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
       Array.from(this.options).map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
@@ -528,7 +529,6 @@ export class SelectWrapper {
           <div
             id={`option-${index}`}
             role="option"
-            color="inherit"
             class={{
               [prefix('select-wrapper__fake-option')]: true,
               [prefix('select-wrapper__fake-option--selected')]: selected,

@@ -461,6 +461,56 @@ describe('select-wrapper fake-select', () => {
         expect(await getActiveDescendant()).toEqual(`option-${await getSelectedFakeOption()}`);
       });
 
+      it('should have the correct aria-expanded value if open/closed', async () => {
+        await setContentWithDesignSystem(
+          page,`
+          <p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+        );
+
+        const host = await selectNode(page, 'p-select-wrapper');
+        const fakeInput = await getSelectOptionList();
+
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('false');
+
+        await host.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('true');
+      });
+
+      it('should show aria-selected attribute on selected fake option on click', async () => {
+        await setContentWithDesignSystem(
+          page,`
+          <p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+        );
+
+        const select = await getSelectRealInput();
+        const fakeOptionA = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+        const fakeOptionB = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
+
+        await select.click();
+        await fakeOptionB.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBe('true');
+      });
+
       it('should skip disabled option on arrow down', async () => {
         await setContentWithDesignSystem(
           page,
