@@ -11,8 +11,6 @@ export class TabsItem {
   /** Defines the label used in tabs. */
   @Prop() public label: string;
 
-  @Prop({ reflect: true }) public selected?: boolean;
-
   public render(): JSX.Element {
     return (
       <section>
