@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [1.5.7-rc.0] - 2020-11-04
 
 ### Fixed
-- JSX bug where Attributes are not updated
+- An issue where component aria attributes might not be updated correctly
 
 ### [1.5.6] - 2020-10-15
 
