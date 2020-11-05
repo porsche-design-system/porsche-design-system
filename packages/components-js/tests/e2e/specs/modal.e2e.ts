@@ -3,6 +3,7 @@ import {
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
+  getAttribute,
   getBrowser,
   getElementStyle,
   initAddEventListener,
@@ -23,6 +24,7 @@ describe('modal', () => {
   const getModalHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
+  const getModalAside = () => selectNode(page, 'p-modal >>> aside');
 
   const initBasicModal = ({ isOpen }: { isOpen: boolean } = { isOpen: true }) =>
     setContentWithDesignSystem(
@@ -246,5 +248,17 @@ describe('modal', () => {
 
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
+  });
+
+  it('should have correct aria-hidden value', async () => {
+    await initBasicModal({isOpen: false});
+    const aside = await getModalAside();
+
+    expect(await getAttribute(aside, 'aria-hidden')).toBe('true');
+
+    await openModal();
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(aside, 'aria-hidden')).toBe('false');
   });
 });
