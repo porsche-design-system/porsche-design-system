@@ -203,6 +203,7 @@ export class SelectWrapper {
                 disabled={this.disabled}
                 aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
                 aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+                placeholder={this.options[this.select.selectedIndex].text}
                 ref={(el) => (this.filterInput = el)}
               />,
               <span ref={(el) => (this.fakeFilter = el)} />
@@ -399,7 +400,11 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          this.handleVisibilityOfFakeOptionList('show');
+          if (this.fakeOptionListHidden) {
+            e.preventDefault();
+            this.resetFilterInput();
+            this.handleVisibilityOfFakeOptionList('show');
+          }
           this.handleScroll();
         } else {
           e.preventDefault();
@@ -485,7 +490,6 @@ export class SelectWrapper {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResults = true;
-      this.filterInput.setAttribute('placeholder', this.options[this.select.selectedIndex].text);
       if (document.activeElement !== this.filterInput) {
         this.filterInput.focus();
       }
@@ -619,11 +623,20 @@ export class SelectWrapper {
   private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
-      this.filterInput.value = '';
-      this.searchString = '';
+      this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
       this.handleScroll();
     }
+  };
+
+  private resetFilterInput = (): void => {
+    this.filterInput.value = '';
+    this.searchString = '';
+    this.filterHasResults = true;
+    this.optionMaps = this.optionMaps.map((item) => ({
+      ...item,
+      hidden: false
+    }));
   };
 
   private handleFilterSearch = (ev: InputEvent): void => {
