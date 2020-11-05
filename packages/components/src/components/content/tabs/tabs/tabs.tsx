@@ -1,6 +1,6 @@
-import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, State, Host, Listen } from '@stencil/core';
 import { getPrefixedTagNames, prefix } from '../../../../utils';
-import { TabChangeEvent, TextWeight, Theme } from '../../../../types';
+import { TextWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
 
 @Component({
@@ -23,25 +23,20 @@ export class Tabs {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
 
-  /** Emitted when active tab is changed. */
-  @Event() public tabChange: EventEmitter<TabChangeEvent>;
+  /** Defines which tab to be visualized as selected (zero-based numbering). */
+  @Prop() public activeTabIndex?: number = 0;
 
-  @State() public activeTabIndex;
   @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
   private hostObserver: MutationObserver;
 
-  @Watch('activeTabIndex')
+  @Listen('tabChange')
   public activeTabHandler(): void {
-    this.setTabsItemProperties();
     this.setAccessibilityAttributes();
-    this.tabChange.emit({activeTabIndex: this.activeTabIndex});
   }
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
-    this.setInitialActiveTabIndex();
-    this.setTabsItemProperties();
     this.setAccessibilityAttributes();
     this.initMutationObserver();
   }
@@ -56,7 +51,7 @@ export class Tabs {
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-bar']);
-// TODO: check map function for right active tab
+    // TODO: check map function for right active tab
     return (
       <Host>
         <div class={tabsClasses}>
@@ -75,7 +70,9 @@ export class Tabs {
             ))}
           </PrefixedTagNames.pTabsBar>
         </div>
-        <slot />
+        {this.tabsItemElements.map(
+          (tabsItem, index) => index === this.activeTabIndex && <div innerHTML={tabsItem.innerHTML} />
+        )}
       </Host>
     );
   }
@@ -85,23 +82,10 @@ export class Tabs {
     this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
   };
 
-  private setInitialActiveTabIndex = (): void => {
-    const index = this.tabsItemElements.findIndex((tab) => tab.selected);
-    this.activeTabIndex = index >= 0 ? index : 0;
-  };
-
-  private setTabsItemProperties = (): void => {
-    for (const [index, tab] of Object.entries(this.tabsItemElements)) {
-      tab.removeAttribute('selected');
-      tab.selected = this.activeTabIndex === +index;
-    }
-  };
-
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
         role: 'tabpanel',
-        hidden: `${!tab.selected}`,
         id: prefix(`tab-panel-${index}`),
         'aria-labelledby': `tab-item-${index}`
       };
