@@ -26,9 +26,9 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   const shadowRootSelectors =
     selectorParts.length > 1
       ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
+        .slice(1)
+        .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
+        .join('')
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
@@ -83,9 +83,29 @@ export const getElementStyleOnHover = async (element: ElementHandle, property: k
   return await getElementStyle(element, property, {waitForTransition: true});
 }
 
-export const getElementStyleOnFocus = async (element: ElementHandle, property: keyof CSSStyleDeclaration): Promise<string> => {
+export const getElementStyleOnFocus = async (a: any, b: any) => {
+  return '';
+}
+
+export const getOutlineStyleOnFocus = async (element: ElementHandle): Promise<{color: string, width: string, offset: string}> => {
   await element.focus();
-  return await getElementStyle(element, property);
+  return {
+    color: await getElementStyle(element, 'outlineColor'),
+    width: await getElementStyle(element, 'outlineWidth'),
+    offset: await getElementStyle(element, 'outlineOffset')
+  };
+}
+
+export const getStyleOnFocus = async (element: ElementHandle, css: 'outline' | 'boxShadow' = 'outline'): Promise<string> => {
+  await element.focus();
+  if (css === 'outline') {
+    return `${await getElementStyle(element, css)} ${await getElementStyle(element, 'outlineOffset')}`;
+  }
+  return await getElementStyle(element, css);
+}
+
+export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
+  await element.evaluate((el, {key, value}) => el.setAttribute(key, value), {key, value});
 }
 
 export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>

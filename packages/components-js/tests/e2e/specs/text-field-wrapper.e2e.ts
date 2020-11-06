@@ -4,15 +4,15 @@ import {
   getBrowser,
   getCssClasses,
   getElementStyle,
-  getElementStyleOnFocus,
   getElementStyleOnHover,
   getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, setAttribute, getStyleOnFocus
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('text-field-wrapper', () => {
   let page: Page;
@@ -394,7 +394,61 @@ describe('text-field-wrapper', () => {
     });
   });
 
-  describe('focus state', () => {
+  fdescribe('focus state', () => {
+    it('should show outline of slotted <input> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper>
+          <input type="text">
+        </p-text-field-wrapper>`
+      );
+
+      const host = await getTextFieldHost();
+      const input = await getTextFieldRealInput();
+
+      const inputFocusStyle = await getStyleOnFocus(input);
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      const inputSuccessFocusStyle = await getStyleOnFocus(input);
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      const inputErrorFocusStyle = await getStyleOnFocus(input);
+      await setAttribute(input, 'readOnly', 'true');
+      await waitForStencilLifecycle(page);
+      const inputReadOnlyFocusStyle = await getStyleOnFocus(input);
+
+      expect(inputFocusStyle).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(inputSuccessFocusStyle).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(inputErrorFocusStyle).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(inputReadOnlyFocusStyle).toBe(expectedStyleOnFocus({color: 'transparent'}));
+    });
+
+    it('should show outline of password toggle button when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper>
+          <input type="password">
+        </p-text-field-wrapper>`
+      );
+
+      const host = await getTextFieldHost();
+      const toggle = await getTextFieldButton();
+
+      const toggleFocusStyle = await getStyleOnFocus(toggle);
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      const toggleSuccessFocusStyle = await getStyleOnFocus(toggle);
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      const toggleErrorFocusStyle = await getStyleOnFocus(toggle);
+
+      expect(toggleFocusStyle).toBe(expectedStyleOnFocus({offset: '-3px'}));
+      expect(toggleSuccessFocusStyle).toBe(expectedStyleOnFocus({offset: '-4px'}));
+      expect(toggleErrorFocusStyle).toBe(expectedStyleOnFocus({offset: '-4px'}));
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -402,25 +456,18 @@ describe('text-field-wrapper', () => {
         <p-text-field-wrapper state="error">
           <span slot="label">Some label with a <a href="#">link</a>.</span>
           <span slot="description">Some description with a <a href="#">link</a>.</span>
-          <input type="text" name="some-name">
+          <input type="text">
           <span slot="message">Some message with a <a href="#">link</a>.</span>
         </p-text-field-wrapper>`
       );
 
       const labelLink = await getTextFieldLabelLink();
-      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
       const descriptionLink = await getTextFieldDescriptionLink();
-      const descriptionLinkOutlineInitial = await getElementStyle(descriptionLink, 'outline');
       const messageLink = await getTextFieldMessageLink();
-      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
 
-      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
-
-      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
-      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
-
-      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
-      expect(await getElementStyle(descriptionLink, 'outline')).toBe(descriptionLinkOutlineInitial, 'description link should loose focus style');
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
     });
   });
 });

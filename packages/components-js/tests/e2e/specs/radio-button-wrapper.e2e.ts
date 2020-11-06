@@ -1,16 +1,17 @@
 import {
   getActiveElementId,
   getActiveElementTagName,
-  getAttribute,
+  getAttribute, getStyleOnFocus,
   getBrowser,
   getCssClasses,
-  getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
+  getElementStyle, getElementStyleOnHover,
   getProperty,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('radio-button-wrapper', () => {
   let page: Page;
@@ -311,27 +312,48 @@ describe('radio-button-wrapper', () => {
     });
   });
 
-  describe('focus state', () => {
+  fdescribe('focus state', () => {
+    it('should show outline of slotted <input> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-radio-button-wrapper>
+          <input type="radio" />
+        </p-radio-button-wrapper>`
+      );
+
+      const host = await getRadioButtonHost();
+      const input = await getRadioButtonRealInput();
+
+      const inputFocusStyle = await getStyleOnFocus(input, 'boxShadow');
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      const inputSuccessFocusStyle = await getStyleOnFocus(input, 'boxShadow');
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      const inputErrorFocusStyle = await getStyleOnFocus(input, 'boxShadow');
+
+      expect(inputFocusStyle).toBe(expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'}));
+      expect(inputSuccessFocusStyle).toBe(expectedStyleOnFocus({color: 'success', css: 'boxShadow'}));
+      expect(inputErrorFocusStyle).toBe(expectedStyleOnFocus({color: 'error', css: 'boxShadow'}));
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
         <p-radio-button-wrapper state="error">
           <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <input type="radio"/>
+          <input type="radio" />
           <span slot="message">Some message with a <a href="#">link</a>.</span>
         </p-radio-button-wrapper>`
       );
 
       const labelLink = await getRadioButtonLabelLink();
-      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
       const messageLink = await getRadioButtonMessageLink();
-      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
 
-      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
-
-      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
-      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
     });
   });
 });
