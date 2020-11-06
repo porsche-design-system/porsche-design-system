@@ -56,7 +56,15 @@
 
 // Focus
 ::slotted(input:focus) {
-  outline-color: $p-color-state-focus !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
+}
+
+:host([state="success"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-error !important;
 }
 
 // Checked

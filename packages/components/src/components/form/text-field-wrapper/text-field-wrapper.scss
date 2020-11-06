@@ -38,8 +38,8 @@
   display: block !important;
   padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
-  outline-offset: 0 !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 1px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 1px !important;
@@ -58,15 +58,20 @@
 
 // Focus
 ::slotted(input:focus) {
-  outline: lighten($p-color-neutral-contrast-medium, 40%) solid 3px !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
 :host([state="success"]) ::slotted(input:focus) {
-  outline-color: lighten($p-color-notification-success, 40%) !important;
+  outline-color: $p-color-notification-success !important;
 }
 
 :host([state="error"]) ::slotted(input:focus) {
-  outline-color: lighten($p-color-notification-error, 40%) !important;
+  outline-color: $p-color-notification-error !important;
+}
+
+::slotted(input:read-only:focus),
+:host([state]) ::slotted(input:read-only:focus) {
+  outline-color: transparent !important;
 }
 
 :host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
@@ -77,10 +82,6 @@
 ::slotted(input[type="search"]),
 ::slotted(input[type="password"]) {
   padding-right: 3rem !important;
-}
-
-::slotted(input:read-only:focus) {
-  outline: none !important;
 }
 
 // Read only
@@ -300,7 +301,7 @@
     }
 
     &:focus {
-      outline: 1px solid currentColor;
+      outline: $p-color-state-focus solid 1px;
       outline-offset: -3px;
     }
 

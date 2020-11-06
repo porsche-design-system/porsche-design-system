@@ -164,20 +164,20 @@ export class CheckboxWrapper {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: color .24s ease;
-      transition: color .24s ease;
+      outline: none transparent !important;
+      color: inherit !important;
+      text-decoration: underline !important;
+      -webkit-transition: color .24s ease !important;
+      transition: color .24s ease !important;
     }
 
     ${tagName} a:hover {
-      color: #d5001c;
+      color: #d5001c !important;
     }
 
     ${tagName} a:focus {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
+      outline: currentColor solid 1px !important;
+      outline-offset: 1px !important;
     }`;
 
     insertSlottedStyles(this.host, style);

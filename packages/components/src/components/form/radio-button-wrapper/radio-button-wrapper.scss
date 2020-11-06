@@ -46,17 +46,20 @@
   outline: none !important;
   cursor: pointer !important;
   box-shadow: 0 0 0 0 transparent !important;
-  transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important;
-}
-
-// hide native radio on IE11
-::slotted(input::-ms-check) {
-  display: none !important;
+  transition: border-top-color 1ms linear !important;
 }
 
 // Focus
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-state-focus !important;
+  box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
+}
+
+:host([state="success"]) ::slotted(input:focus) {
+  box-shadow: 0 0 0 1px $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  box-shadow: 0 0 0 1px $p-color-notification-error !important;
 }
 
 // Checked

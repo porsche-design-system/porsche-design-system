@@ -112,11 +112,7 @@ export class LinkSocial {
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
-    const style = `a:focus ${tagName} {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
-    }
-
+    const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
       content: "" !important;
@@ -126,13 +122,14 @@ export class LinkSocial {
       right: 0 !important;
       bottom: 0 !important;
       display: block !important;
+      outline: transparent none !important;
     }
 
     ${tagName} a:focus::before {
       outline-offset: 1px !important;
       outline: currentColor solid 1px !important;
-    }
-    `;
+    }`;
+
     insertSlottedStyles(this.host, style);
   }
 }

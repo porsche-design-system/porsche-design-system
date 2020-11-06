@@ -219,20 +219,20 @@ export class TextFieldWrapper {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: color .24s ease;
-      transition: color .24s ease;
+      outline: none transparent !important;
+      color: inherit !important;
+      text-decoration: underline !important;
+      -webkit-transition: color .24s ease !important;
+      transition: color .24s ease !important;
     }
 
     ${tagName} a:hover {
-      color: #d5001c;
+      color: #d5001c !important;
     }
 
     ${tagName} a:focus {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
+      outline: currentColor solid 1px !important;
+      outline-offset: 1px !important;
     }
 
     ${tagName} input::-webkit-outer-spin-button,
@@ -243,9 +243,8 @@ export class TextFieldWrapper {
 
     ${tagName} input[type="text"]::-webkit-contacts-auto-fill-button,
     ${tagName} input[type="text"]::-webkit-credentials-auto-fill-button {
-      margin-right: 2.4375rem;
-    }
-    `;
+      margin-right: 2.4375rem !important;
+    }`;
 
     insertSlottedStyles(this.host, style);
   }
