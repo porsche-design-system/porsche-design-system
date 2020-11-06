@@ -49,7 +49,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
+  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -310,8 +310,7 @@ export class SelectWrapper {
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
-      attributes: true,
-      attributeFilter: ['disabled']
+      attributeFilter: ['disabled', 'selected']
     });
   }
 
@@ -365,6 +364,7 @@ export class SelectWrapper {
       if (type === 'show' || type === 'toggle') {
         this.fakeOptionListHidden = false;
         this.handleDropdownDirection();
+        this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
@@ -405,11 +405,9 @@ export class SelectWrapper {
             this.resetFilterInput();
             this.handleVisibilityOfFakeOptionList('show');
           }
-          this.handleScroll();
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          this.handleScroll();
           if (this.fakeOptionListHidden) {
             this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
           }
@@ -625,7 +623,6 @@ export class SelectWrapper {
       this.filterInput.focus();
       this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
-      this.handleScroll();
     }
   };
 
