@@ -504,6 +504,35 @@ describe('tabs-bar', () => {
     expect(eventCounter).toBe(3);
   });
 
+  it('should not dispatch event initially', async () => {
+    const COUNTER_KEY = 'pdsEventCounter';
+    await setContentWithDesignSystem(page, ''); // empty page
+
+    // render p-tabs with attached event listener at once
+    await page.evaluate((COUNTER_KEY: string) => {
+      const el = document.createElement('p-tabs-bar');
+
+      Array.from(Array(2)).forEach((x, i) => {
+        const child = document.createElement('button');
+        child.innerText = `Tab ${i + 1}`;
+        el.appendChild(child);
+      });
+
+      // count events in browser
+      window[COUNTER_KEY] = 0;
+      el.addEventListener('tabChange', () => window[COUNTER_KEY]++);
+
+      document.body.appendChild(el);
+    }, COUNTER_KEY);
+
+    await waitForStencilLifecycle(page);
+
+    // retrieve counted events from browser
+    const eventCounter: number = await page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+
+    expect(eventCounter).toBe(0);
+  });
+
   it('should render arrow only on horizontal scroll', async () => {
     await setContentWithDesignSystem(
       page,
