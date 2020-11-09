@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, State, Host, Listen } from '@stencil/core';
+import { Component, h, Element, Prop, State, Host, Event, EventEmitter } from '@stencil/core';
 import { BreakpointCustomizable, getPrefixedTagNames, prefix } from '../../../../utils';
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../../types';
 import { getHTMLElements } from '../../../../utils/selector-helper';
@@ -26,14 +26,12 @@ export class Tabs {
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop() public activeTabIndex?: number = 0;
 
+  /** Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
+
   @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
   private hostObserver: MutationObserver;
-
-  @Listen('tabChange')
-  public activeTabHandler(): void {
-    this.setAccessibilityAttributes();
-  }
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
@@ -46,9 +44,7 @@ export class Tabs {
   }
 
   public render(): JSX.Element {
-    const tabsClasses = {
-      [prefix('tabs')]: true
-    };
+    const tabsClasses = prefix('tabs');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-bar']);
     // TODO: check map function for right active tab
@@ -61,7 +57,7 @@ export class Tabs {
             theme={this.theme}
             gradientColorScheme={this.gradientColorScheme}
             activeTabIndex={this.activeTabIndex}
-            onTabChange={(e) => this.handleTabClick(e.detail.activeTabIndex)}
+            onTabChange={this.handleTabChange}
           >
             {this.tabsItemElements.map((tab, index) => (
               <button type="button" aria-controls={`tab-panel-${index}`}>
@@ -112,7 +108,14 @@ export class Tabs {
     this.hostObserver.disconnect();
   };
 
-  private handleTabClick = (newTabIndex: number = this.activeTabIndex): void => {
-    this.activeTabIndex = newTabIndex;
+  private handleTabChange = (e: CustomEvent<TabChangeEvent>): void => {
+    const {
+      detail: { activeTabIndex }
+    } = e;
+    e.stopPropagation(); // prevent double event emission because of identical name
+
+    this.activeTabIndex = activeTabIndex;
+    this.setAccessibilityAttributes();
+    this.tabChange.emit({ activeTabIndex });
   };
 }
