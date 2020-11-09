@@ -24,6 +24,23 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
+  const initTabsBar = (opts: {
+    amount?: number;
+    activeTabIndex?: number;
+    isWrapped?: boolean;
+    otherMarkup?: string;
+  }) => {
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup } = opts;
+
+    const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
+  ${Array.from(Array(amount))
+    .map((_, i) => `<button>Tab ${i + 1}</button>`)
+    .join('')}
+</p-tabs-bar>${otherMarkup}`;
+
+    return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 400px">${content}</div>` : content);
+  };
+
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
@@ -44,24 +61,16 @@ describe('tabs-bar', () => {
   };
 
   it('should render correct active tab if attribute is set ', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs-bar active-tab-index="1">
-        <button>Content1</button>
-        <button>Content2</button>
-        <button>Content3</button>
-      </p-tabs-bar>
-    `
-    );
+    await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const allButtons = await getAllButtons();
-    await page.waitFor(40); // class gets set through js, this takes a little time
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
     expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
     expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
+  // TODO: remove?
   xit('should render only one selected tab if multiple selected are set', async () => {
     await setContentWithDesignSystem(
       page,
@@ -74,31 +83,16 @@ describe('tabs-bar', () => {
     `
     );
     const allButtons = await getAllButtons();
-    await page.waitFor(40); // class gets set through js, this takes a little time
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
     expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
     expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
     expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
-  describe('scrollarea', () => {
+  describe('scrollArea', () => {
     it('should render scroll 20% on Button next', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar>
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-            <button>Content7</button>
-            <button>Content8</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ isWrapped: true });
       const nextButton = await getNextButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
@@ -108,28 +102,13 @@ describe('tabs-bar', () => {
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
     });
 
     it('should render scroll 20% on Button prev', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar>
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-            <button>Content7</button>
-            <button>Content8</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ isWrapped: true });
       const nextButton = await getNextButton();
       const prevButton = await getPrevButton();
       const scrollArea = await getScrollArea();
@@ -140,44 +119,31 @@ describe('tabs-bar', () => {
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
       await prevButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
       await prevButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
     });
 
     it('should scroll to max scroll-position on next click', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar>
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ amount: 6, isWrapped: true });
       const [firstButton] = await getAllButtons();
       const nextButton = await getNextButton();
       const scrollArea = await getScrollArea();
@@ -186,21 +152,21 @@ describe('tabs-bar', () => {
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       await nextButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       const scrollPosition = await getScrollLeft(scrollArea);
 
       await firstButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       const scrollMax = await page.evaluate((): number => {
         const scrollArea = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.p-tabs-bar__scroll-area');
@@ -212,22 +178,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct scroll-position on selected tab', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar active-tab-index="3">
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-            <button>Content7</button>
-            <button>Content8</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ activeTabIndex: 3, isWrapped: true });
       const allButtons = await getAllButtons();
       const selectedTabOffset = await getProperty(allButtons[3], 'offsetLeft');
       const gradient = await getGradientNext();
@@ -241,22 +192,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct scroll-position on tab click', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar>
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-            <button>Content7</button>
-            <button>Content8</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ isWrapped: true });
       const allButtons = await getAllButtons();
       const gradient = await getGradientNext();
       const gradientWidth = await getProperty(gradient, 'offsetWidth');
@@ -267,7 +203,7 @@ describe('tabs-bar', () => {
 
       await allButtons[4].click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       const tab3offset = await getProperty(allButtons[4], 'offsetLeft');
       const scrollDistanceRight = +tab3offset - +gradientWidth + FOCUS_PADDING;
@@ -275,7 +211,7 @@ describe('tabs-bar', () => {
 
       await allButtons[3].click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
       const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
@@ -284,44 +220,25 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct selected tab on scrollArea click', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar active-tab-index="3">
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-          <button>Content4</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 4, activeTabIndex: 3 });
       const allButtons = await getAllButtons();
       const scrollArea = await getScrollArea();
 
-      await page.waitFor(40); // class gets set through js, this takes a little time
+      await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
       expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
       expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
 
       await scrollArea.click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(40);
+      await page.waitForTimeout(40);
 
       expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
       expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
     });
 
     it('should render same offsetLeft on Statusbar and active tab', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar active-tab-index="2">
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ amount: 3, activeTabIndex: 2, isWrapped: true });
       const allButtons = await getAllButtons();
       const statusBar = await getStatusBar();
       const tab3Position = (await getElementPositions(page, allButtons[2])).left;
@@ -330,7 +247,7 @@ describe('tabs-bar', () => {
 
       await allButtons[0].click();
       await waitForStencilLifecycle(page);
-      await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect((await getElementPositions(page, allButtons[0])).left).toEqual(
         Math.floor((await getElementPositions(page, statusBar)).left)
@@ -340,15 +257,7 @@ describe('tabs-bar', () => {
 
   describe('keyboard', () => {
     it('should render focus on selected tab on keyboard "tab" press', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar>
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3 });
       const getButtonFocus = async () => {
         const snapshot = await page.accessibility.snapshot();
         const button = snapshot.children[0];
@@ -362,16 +271,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render focus on content on keyboard "tab" press', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar>
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>
-        <p-text>Hallo <a href="#">Link</a></p-text>`
-      );
+      await initTabsBar({ amount: 3, otherMarkup: '<p-text>Hallo <a href="#">Link</a></p-text>' });
       expect(await getElementFocus(4)).toBeFalsy();
 
       await page.keyboard.press('Tab');
@@ -382,15 +282,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct focusedTab on arrow-key press', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar>
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3 });
       expect(await getElementFocus(0)).toBeFalsy();
 
       await page.keyboard.press('Tab');
@@ -412,15 +304,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct active tab on first/last or home/end press', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar active-tab-index="1">
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3, activeTabIndex: 1 });
       expect(await getElementFocus(2)).toBeFalsy();
 
       await page.keyboard.press('Tab');
@@ -437,15 +321,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct active tab on focus change and enter press', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar active-tab-index="0">
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
       const [firstButton, secondButton] = await getAllButtons();
 
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
@@ -463,15 +339,7 @@ describe('tabs-bar', () => {
 
   describe('events', () => {
     it('should trigger event on button click', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar active-tab-index="1">
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-        </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3, activeTabIndex: 1 });
       const host = await selectNode(page, 'p-tabs-bar');
       const [firstButton, secondButton, thirdButton] = await getAllButtons();
       let eventCounter = 0;
@@ -528,18 +396,7 @@ describe('tabs-bar', () => {
 
   describe('next/prev buttons', () => {
     it('should render arrow only on horizontal scroll', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-tabs-bar active-tab-index="1">
-          <button>Content1</button>
-          <button>Content2</button>
-          <button>Content3</button>
-          <button>Content4</button>
-          <button>Content5</button>
-        </p-tabs-bar>
-        <div style="height: 120vh"></div>`
-      );
+      await initTabsBar({ amount: 5, activeTabIndex: 1, otherMarkup: '<div style="height: 120vh"></div>' });
 
       const actionPrev = await getActionPrevContainer();
       const actionNext = await getActionNextContainer();
@@ -552,18 +409,7 @@ describe('tabs-bar', () => {
     });
 
     it('should only render next button', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar>
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ amount: 4, isWrapped: true });
       const actionPrev = await getActionPrevContainer();
       const actionNext = await getActionNextContainer();
 
@@ -572,18 +418,7 @@ describe('tabs-bar', () => {
     });
 
     it('should only render prev button', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar active-tab-index="3">
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ amount: 4, activeTabIndex: 3, isWrapped: true });
       const actionPrev = await getActionPrevContainer();
       const actionNext = await getActionNextContainer();
 
@@ -592,21 +427,7 @@ describe('tabs-bar', () => {
     });
 
     it('should only render prev and next button', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <div style="width: 400px">
-          <p-tabs-bar active-tab-index="1">
-            <button>Content1</button>
-            <button>Content2</button>
-            <button>Content3</button>
-            <button>Content4</button>
-            <button>Content5</button>
-            <button>Content6</button>
-            <button>Content7</button>
-          </p-tabs-bar>
-        </div>`
-      );
+      await initTabsBar({ amount: 7, activeTabIndex: 1, isWrapped: true });
       const actionNext = await getActionNextContainer();
       const actionPrev = await getActionPrevContainer();
 
