@@ -20,49 +20,31 @@ describe('tabs', () => {
   });
   afterEach(async () => await page.close());
 
+  const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
+    const { amount = 3, activeTabIndex } = opts ?? {};
+
+    const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
+  ${Array.from(Array(amount))
+    .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">Content ${i + 1}</p-tabs-item>`)
+    .join('')}
+</p-tabs>`;
+
+    return setContentWithDesignSystem(page, content);
+  };
+
   const getAllTabItems = () => page.$$('p-tabs-item');
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
 
   it('should render', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
+    await initTabs();
     const allTabs = await getAllTabs();
 
     expect(allTabs.length).toBe(3);
   });
 
   it('should render correct content of tab-item on click', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
+    await initTabs();
 
     const [firstTabItem, secondTabItem] = await getAllTabItems();
     const allTabs = await getAllTabs();
@@ -78,22 +60,7 @@ describe('tabs', () => {
   });
 
   it('should render updated tabs when tab label is changed', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3" target="_blank">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
+    await initTabs();
     const allTabsItems = await getAllTabItems();
     const allTabs = await getAllTabs();
     const getLabelOfFirstButton = () => getProperty(allTabs[0], 'innerHTML');
@@ -107,7 +74,8 @@ describe('tabs', () => {
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
   });
 
-  it('should render correct tab when selected attribute is set', async () => {
+  // TODO: remove?
+  xit('should render correct tab when selected attribute is set', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -131,7 +99,8 @@ describe('tabs', () => {
     expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
-  it('should render correct selected tab when multiple tabs have selected attribute', async () => {
+  // TODO: remove?
+  xit('should render correct selected tab when multiple tabs have selected attribute', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -155,115 +124,30 @@ describe('tabs', () => {
     expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
   });
 
-  it('should render correct content of tab-item on keyboard arrow click', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2">
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3">
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
+  describe('keyboard', () => {
+    it('should render correct content of tab-item on keyboard arrow click', async () => {
+      await initTabs();
+      const [firstTabItem, secondTabItem] = await getAllTabItems();
 
-    const [firstTabItem, secondTabItem] = await getAllTabItems();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await waitForStencilLifecycle(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowRight');
-    await waitForStencilLifecycle(page);
+      expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
+      expect(await getAttribute(secondTabItem, 'selected')).toBe('');
 
-    expect(await getAttribute(firstTabItem, 'selected')).toBeNull();
-    expect(await getAttribute(secondTabItem, 'selected')).toBe('');
+      await page.keyboard.press('ArrowLeft');
+      await waitForStencilLifecycle(page);
 
-    await page.keyboard.press('ArrowLeft');
-    await waitForStencilLifecycle(page);
+      expect(await getAttribute(firstTabItem, 'selected')).toBe('');
+      expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
+    });
 
-    expect(await getAttribute(firstTabItem, 'selected')).toBe('');
-    expect(await getAttribute(secondTabItem, 'selected')).toBeNull();
-  });
-
-  it('should trigger event on tab click', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs>
-        <p-tabs-item label="Button1">
-          Content1
-        </p-tabs-item>
-        <p-tabs-item label="Button2" selected>
-          Content2
-        </p-tabs-item>
-        <p-tabs-item label="Button3" selected>
-          Content3
-        </p-tabs-item>
-      </p-tabs>
-    `
-    );
-    const host = await selectNode(page, 'p-tabs');
-    const [firstButton, secondButton, thirdButton] = await getAllTabs();
-    let eventCounter = 0;
-    await addEventListener(host, 'tabChange', () => eventCounter++);
-
-    // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-tabs');
-
-    await firstButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(1);
-
-    await secondButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(2);
-
-    await thirdButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(eventCounter).toBe(3);
-  });
-
-  it('should not dispatch event initially', async () => {
-    const COUNTER_KEY = 'pdsEventCounter';
-    await setContentWithDesignSystem(page, ''); // empty page
-
-    // render p-tabs with attached event listener at once
-    await page.evaluate((COUNTER_KEY: string) => {
-      const el = document.createElement('p-tabs');
-
-      Array.from(Array(2)).forEach((x, i) => {
-        const child = document.createElement('p-tabs-item');
-        child.setAttribute('label', `Tab ${i + 1}`);
-        child.innerText = `Content ${i + 1}`;
-        el.appendChild(child);
-      });
-
-      // count events in browser
-      window[COUNTER_KEY] = 0;
-      el.addEventListener('tabChange', () => window[COUNTER_KEY]++);
-
-      document.body.appendChild(el);
-    }, COUNTER_KEY);
-
-    await waitForStencilLifecycle(page);
-
-    // retrieve counted events from browser
-    const eventCounter: number = await page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
-
-    expect(eventCounter).toBe(0);
-  });
-
-  it('should render correct scroll-position on keyboard arrow click', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
+    // TODO: move to tabs-bar or delete?
+    xit('should render correct scroll-position on keyboard arrow click', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
       <div style="width: 400px">
         <p-tabs size="medium">
           <p-tabs-item label="Button1">Content1</p-tabs-item>
@@ -277,38 +161,97 @@ describe('tabs', () => {
         </p-tabs>
       </div>
     `
-    );
-    const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
-    const allButtons = await getAllTabs();
-    const gradientWidth = await getProperty(gradientNext, 'offsetWidth');
-    const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
-    const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-    const getScrollAreaScrollLeft = () => getProperty(scrollArea, 'scrollLeft');
+      );
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
+      const allButtons = await getAllTabs();
+      const gradientWidth = await getProperty(gradientNext, 'offsetWidth');
+      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+      const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
+      const getScrollAreaScrollLeft = () => getProperty(scrollArea, 'scrollLeft');
 
-    expect(await getScrollAreaScrollLeft()).toEqual(0);
+      expect(await getScrollAreaScrollLeft()).toEqual(0);
 
-    await page.keyboard.press('Tab');
-    await page.waitFor(CSS_ANIMATION_DURATION);
-    await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
-    await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
-    await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
-    await page.keyboard.press('ArrowRight');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('Tab');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
-    const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
-    expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
+      const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
+      const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
+      expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
 
-    await page.keyboard.press('ArrowLeft');
-    await page.waitFor(CSS_ANIMATION_DURATION);
+      await page.keyboard.press('ArrowLeft');
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
-    const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
-    const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
-    expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceLeft);
+      const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
+      const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
+      const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
+      expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceLeft);
+    });
+  });
+
+  describe('events', () => {
+    it('should trigger event on tab click', async () => {
+      await initTabs();
+      const host = await selectNode(page, 'p-tabs');
+      const [firstButton, secondButton, thirdButton] = await getAllTabs();
+      let eventCounter = 0;
+      await addEventListener(host, 'tabChange', () => eventCounter++);
+
+      // Remove and re-attach component to check if events are duplicated / fire at all
+      await reattachElement(page, 'p-tabs');
+
+      await firstButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(eventCounter).toBe(1);
+
+      await secondButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(eventCounter).toBe(2);
+
+      await thirdButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(eventCounter).toBe(3);
+    });
+
+    it('should not dispatch event initially', async () => {
+      const COUNTER_KEY = 'pdsEventCounter';
+      await setContentWithDesignSystem(page, ''); // empty page
+
+      // render p-tabs with attached event listener at once
+      await page.evaluate((COUNTER_KEY: string) => {
+        const el = document.createElement('p-tabs');
+
+        Array.from(Array(2)).forEach((x, i) => {
+          const child = document.createElement('p-tabs-item');
+          child.setAttribute('label', `Tab ${i + 1}`);
+          child.innerText = `Content ${i + 1}`;
+          el.appendChild(child);
+        });
+
+        // count events in browser
+        window[COUNTER_KEY] = 0;
+        el.addEventListener('tabChange', () => window[COUNTER_KEY]++);
+
+        document.body.appendChild(el);
+      }, COUNTER_KEY);
+
+      await waitForStencilLifecycle(page);
+
+      // retrieve counted events from browser
+      const eventCounter: number = await page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+
+      expect(eventCounter).toBe(0);
+    });
   });
 
   it('should not crash without children', async () => {
