@@ -66,6 +66,7 @@ export class TabsBar {
   ): boolean {
     if (nameOfStateOrProp === 'activeTabIndex') {
       this.direction = newValue > oldValue ? 'next' : 'prev';
+      this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
     }
     return true;
   }
@@ -73,7 +74,6 @@ export class TabsBar {
   public componentWillUpdate(): void {
     this.setAccessibilityAttributes();
     this.scrollActiveTabIntoView(this.direction);
-    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
   }
 
   public connectedCallback(): void {
@@ -93,8 +93,8 @@ export class TabsBar {
   public componentDidLoad(): void {
     if (this.hasTabsElements) {
       this.defineHTMLElements();
-      this.setStatusBarStyle();
       this.scrollActiveTabIntoView();
+      // this.setStatusBarStyle();
       this.addEventListeners();
       this.initIntersectionObserver();
     }
