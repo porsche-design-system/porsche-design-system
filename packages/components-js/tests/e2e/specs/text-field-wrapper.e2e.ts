@@ -394,7 +394,7 @@ describe('text-field-wrapper', () => {
     });
   });
 
-  fdescribe('focus state', () => {
+  describe('focus state', () => {
     it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -407,21 +407,19 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const input = await getTextFieldRealInput();
 
-      const inputFocusStyle = await getStyleOnFocus(input);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      const inputSuccessFocusStyle = await getStyleOnFocus(input);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      const inputErrorFocusStyle = await getStyleOnFocus(input);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+
       await setAttribute(input, 'readOnly', 'true');
       await waitForStencilLifecycle(page);
-      const inputReadOnlyFocusStyle = await getStyleOnFocus(input);
-
-      expect(inputFocusStyle).toBe(expectedStyleOnFocus({color: 'neutral'}));
-      expect(inputSuccessFocusStyle).toBe(expectedStyleOnFocus({color: 'success'}));
-      expect(inputErrorFocusStyle).toBe(expectedStyleOnFocus({color: 'error'}));
-      expect(inputReadOnlyFocusStyle).toBe(expectedStyleOnFocus({color: 'transparent'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent'}));
     });
 
     it('should show outline of password toggle button when it is focused', async () => {
@@ -436,17 +434,15 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const toggle = await getTextFieldButton();
 
-      const toggleFocusStyle = await getStyleOnFocus(toggle);
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-3px'}));
+
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      const toggleSuccessFocusStyle = await getStyleOnFocus(toggle);
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
+
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      const toggleErrorFocusStyle = await getStyleOnFocus(toggle);
-
-      expect(toggleFocusStyle).toBe(expectedStyleOnFocus({offset: '-3px'}));
-      expect(toggleSuccessFocusStyle).toBe(expectedStyleOnFocus({offset: '-4px'}));
-      expect(toggleErrorFocusStyle).toBe(expectedStyleOnFocus({offset: '-4px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -461,6 +457,7 @@ describe('text-field-wrapper', () => {
         </p-text-field-wrapper>`
       );
 
+      const host = await getTextFieldHost();
       const labelLink = await getTextFieldLabelLink();
       const descriptionLink = await getTextFieldDescriptionLink();
       const messageLink = await getTextFieldMessageLink();
@@ -468,6 +465,13 @@ describe('text-field-wrapper', () => {
       expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
       expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

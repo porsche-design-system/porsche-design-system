@@ -392,7 +392,7 @@ describe('checkbox-wrapper', () => {
     });
   });
 
-  fdescribe('focus state', () => {
+  describe('focus state', () => {
     it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -405,17 +405,15 @@ describe('checkbox-wrapper', () => {
       const host = await getCheckboxHost();
       const input = await getCheckboxRealInput();
 
-      const inputFocusStyle = await getStyleOnFocus(input);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      const inputSuccessFocusStyle = await getStyleOnFocus(input);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      const inputErrorFocusStyle = await getStyleOnFocus(input);
-
-      expect(inputFocusStyle).toBe(expectedStyleOnFocus({color: 'neutral'}));
-      expect(inputSuccessFocusStyle).toBe(expectedStyleOnFocus({color: 'success'}));
-      expect(inputErrorFocusStyle).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -429,11 +427,19 @@ describe('checkbox-wrapper', () => {
         </p-checkbox-wrapper>`
       );
 
+      const host = await getCheckboxHost();
       const labelLink = await getCheckboxLabelLink();
       const messageLink = await getCheckboxMessageLink();
 
       expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });
