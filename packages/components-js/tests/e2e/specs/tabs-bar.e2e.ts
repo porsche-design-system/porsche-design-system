@@ -24,13 +24,13 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
-  const initTabsBar = (opts: {
+  const initTabsBar = (opts?: {
     amount?: number;
     activeTabIndex?: number;
     isWrapped?: boolean;
     otherMarkup?: string;
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup } = opts;
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup } = opts ?? {};
 
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
