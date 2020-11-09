@@ -259,17 +259,18 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
+    const { shadowRoot } = this.host;
     const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
-    const firstTrigger = getHTMLElement(this.host.shadowRoot, `${selector}:first-of-type`);
-    const lastTrigger = getHTMLElement(this.host.shadowRoot, `${selector}:last-of-type`);
+    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
+    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.target === firstTrigger) {
-            this.isPrevHidden = entry.isIntersecting;
-          } else if (entry.target === lastTrigger) {
-            this.isNextHidden = entry.isIntersecting;
+        for (const { target, isIntersecting } of entries) {
+          if (target === firstTrigger) {
+            this.isPrevHidden = isIntersecting;
+          } else if (target === lastTrigger) {
+            this.isNextHidden = isIntersecting;
           }
         }
       },
@@ -313,7 +314,7 @@ export class TabsBar {
         break;
 
       case 'Enter':
-        this.handleTabClick(this.getFocusedTabIndex());
+        this.handleTabClick(this.focusedTabIndex);
         return;
 
       default:
@@ -332,26 +333,22 @@ export class TabsBar {
 
   private scrollActiveTabIntoView = (direction: Direction = 'next'): void => {
     const gradientWidths = this.gradientElements.map((item) => item.offsetWidth);
-    const activeTabElement = this.tabElements[this.activeTabIndex];
+    const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex];
 
     let scrollPosition: number;
 
     if (direction === 'next' && this.activeTabIndex < this.tabElements.length - 1) {
       // go to next tab
-      scrollPosition = activeTabElement.offsetLeft - gradientWidths[1] + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = offsetLeft - gradientWidths[1] + FOCUS_PADDING_WIDTH * 2;
     } else if (direction === 'prev' && this.activeTabIndex > 0) {
       // go to prev tab
-      scrollPosition =
-        activeTabElement.offsetLeft +
-        activeTabElement.offsetWidth +
-        gradientWidths[0] -
-        this.scrollAreaElement.offsetWidth;
+      scrollPosition = offsetLeft + offsetWidth + gradientWidths[0] - this.scrollAreaElement.offsetWidth;
     } else if (this.activeTabIndex === 0) {
       // go to first tab
       scrollPosition = 0;
     } else {
       // go to last tab
-      scrollPosition = activeTabElement.offsetLeft - FOCUS_PADDING_WIDTH;
+      scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
     }
     this.scrollTo(scrollPosition);
   };
@@ -414,14 +411,14 @@ export class TabsBar {
     return this.host.parentElement.classList.contains('p-tabs');
   }
 
-  private getFocusedTabIndex = (): number => {
+  private get focusedTabIndex(): number {
     const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
     return !this.hasPTabsParent ? (indexOfActiveElement < 0 ? 0 : indexOfActiveElement) : this.activeTabIndex;
-  };
+  }
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabElements.length;
-    const newTabIndex = this.getFocusedTabIndex() + (direction === 'next' ? 1 : -1);
+    const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
 
     return (newTabIndex + tabsLength) % tabsLength;
   };
