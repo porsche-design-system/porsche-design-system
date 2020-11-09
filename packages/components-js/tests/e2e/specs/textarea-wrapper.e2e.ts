@@ -2,14 +2,15 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
-  getProperty,
+  getElementStyle, getElementStyleOnHover,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('textarea-wrapper', () => {
   let page: Page;
@@ -230,6 +231,33 @@ describe('textarea-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should show outline of slotted <textarea> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-textarea-wrapper>
+          <textarea></textarea>
+        </p-textarea-wrapper>`
+      );
+
+      const host = await getTextareaHost();
+      const textarea = await getTextareaRealInput();
+
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '3px'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'success', offset: '3px'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'error', offset: '3px'}));
+
+      await setAttribute(textarea, 'readOnly', 'true');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'transparent', offset: '3px'}));
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -238,24 +266,25 @@ describe('textarea-wrapper', () => {
           <span slot="label">Some label with a <a href="#">link</a>.</span>
           <span slot="description">Some description with a <a href="#">link</a>.</span>
           <textarea></textarea>
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
+          <span slot="message">Some error message with a <a href="#">link</a>.</span>
         </p-textarea-wrapper>`
       );
 
+      const host = await getTextareaHost();
       const labelLink = await getTextareaLabelLink();
-      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
       const descriptionLink = await getTextareaDescriptionLink();
-      const descriptionLinkOutlineInitial = await getElementStyle(descriptionLink, 'outline');
       const messageLink = await getTextareaMessageLink();
-      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
 
-      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
 
-      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
-      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
 
-      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
-      expect(await getElementStyle(descriptionLink, 'outline')).toBe(descriptionLinkOutlineInitial, 'description link should loose focus style');
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

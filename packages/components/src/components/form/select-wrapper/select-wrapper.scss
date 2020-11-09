@@ -38,7 +38,7 @@
   display: block !important;
   padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
+  outline: transparent solid 1px !important;
   outline-offset: 1px !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -57,20 +57,35 @@
     border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
-// avoid styling of select in IE
-::slotted(select::-ms-expand) {
-  display: none !important;
-}
-
-// avoid styling of select in IE
-::slotted(select:focus::-ms-value) {
-  background-color: transparent !important;
-  color: $p-color-default !important;
-}
-
 // Focus
-::slotted(select:focus) {
-  outline: $p-color-state-focus solid 1px !important;
+::slotted(select:focus),
+.#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-neutral-contrast-medium !important;
+}
+
+:host([theme="dark"]) ::slotted(select:focus),
+:host([theme="dark"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-neutral-contrast-medium !important;
+}
+
+:host([state="success"]) ::slotted(select:focus),
+:host([state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([theme="dark"][state="success"]) ::slotted(select:focus),
+:host([theme="dark"][state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(select:focus),
+:host([state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-notification-error !important;
+}
+
+:host([theme="dark"][state="error"]) ::slotted(select:focus),
+:host([theme="dark"][state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-notification-error !important;
 }
 
 // Disabled
@@ -627,8 +642,7 @@
       right: 0;
       height: p-px-to-rem(48px);
       outline: transparent none;
-      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-        opacity var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
 
@@ -662,16 +676,8 @@
     &:focus {
       opacity: 1;
       + span {
+        outline: transparent solid 1px;
         outline-offset: 1px;
-        outline: solid 1px;
-
-        #{$bem-block}--theme-light & {
-          outline-color: $p-color-state-focus;
-        }
-
-        #{$bem-block}--theme-dark & {
-          outline-color: $p-color-theme-dark-state-focus;
-        }
       }
     }
 

@@ -4,13 +4,14 @@ import {
   getBrowser,
   getCssClasses, getElementIndex,
   getElementStyle,
-  getProperty,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('select-wrapper combobox', () => {
   let page: Page;
@@ -21,6 +22,7 @@ describe('select-wrapper combobox', () => {
   });
   afterEach(async () => await page.close());
 
+  const getSelectHost = () => selectNode(page, 'p-select-wrapper');
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const selectFilter = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input');
   const selectFilterOverlay = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input + span');
@@ -986,5 +988,51 @@ describe('select-wrapper combobox', () => {
       expect(afterBlurCalls).toBe(1);
     });
 
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <select> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper filter="true">
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const host = await getSelectHost();
+      const filterInput = await selectFilter();
+      const filterInputOverlay = await selectFilterOverlay();
+
+      await filterInput.focus();
+
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+
+      await setAttribute(host, 'theme', 'light');
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+
+      await setAttribute(host, 'theme', 'light');
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
+    });
   });
 });

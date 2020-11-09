@@ -1,14 +1,15 @@
 import {
   getAttribute,
   getBrowser,
-  getCssClasses, getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
-  getProperty,
+  getCssClasses, getElementStyle, getElementStyleOnHover,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('select-wrapper', () => {
   let page: Page;
@@ -253,6 +254,47 @@ describe('select-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should show outline of slotted <select> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-select-wrapper>
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const host = await getSelectHost();
+      const input = await getSelectRealInput();
+
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+
+      await setAttribute(host, 'theme', 'light');
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+
+      await setAttribute(host, 'theme', 'light');
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -265,24 +307,25 @@ describe('select-wrapper', () => {
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
+          <span slot="message">Some error message with a <a href="#">link</a>.</span>
         </p-select-wrapper>`
       );
 
+      const host = await getSelectHost();
       const labelLink = await getSelectLabelLink();
-      const labelLinkOutlineInitial = await getElementStyle(labelLink, 'outline');
       const descriptionLink = await getSelectDescriptionLink();
-      const descriptionLinkOutlineInitial = await getElementStyle(descriptionLink, 'outline');
       const messageLink = await getSelectMessageLink();
-      const messageLinkOutlineInitial = await getElementStyle(messageLink, 'outline');
 
-      expect(await getElementStyleOnFocus(labelLink, 'outline')).not.toBe(labelLinkOutlineInitial, 'label link should get focus style');
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
 
-      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
-      expect(await getElementStyle(labelLink, 'outline')).toBe(labelLinkOutlineInitial, 'label link should loose focus style');
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
 
-      expect(await getElementStyleOnFocus(messageLink, 'outline')).not.toBe(messageLinkOutlineInitial, 'message link should get focus style');
-      expect(await getElementStyle(descriptionLink, 'outline')).toBe(descriptionLinkOutlineInitial, 'description link should loose focus style');
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

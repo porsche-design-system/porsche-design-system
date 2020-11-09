@@ -312,7 +312,7 @@ describe('radio-button-wrapper', () => {
     });
   });
 
-  fdescribe('focus state', () => {
+  describe('focus state', () => {
     it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
@@ -325,17 +325,15 @@ describe('radio-button-wrapper', () => {
       const host = await getRadioButtonHost();
       const input = await getRadioButtonRealInput();
 
-      const inputFocusStyle = await getStyleOnFocus(input, 'boxShadow');
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'}));
+
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      const inputSuccessFocusStyle = await getStyleOnFocus(input, 'boxShadow');
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'success', css: 'boxShadow'}));
+
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      const inputErrorFocusStyle = await getStyleOnFocus(input, 'boxShadow');
-
-      expect(inputFocusStyle).toBe(expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'}));
-      expect(inputSuccessFocusStyle).toBe(expectedStyleOnFocus({color: 'success', css: 'boxShadow'}));
-      expect(inputErrorFocusStyle).toBe(expectedStyleOnFocus({color: 'error', css: 'boxShadow'}));
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'error', css: 'boxShadow'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -349,11 +347,19 @@ describe('radio-button-wrapper', () => {
         </p-radio-button-wrapper>`
       );
 
+      const host = await getRadioButtonHost();
       const labelLink = await getRadioButtonLabelLink();
       const messageLink = await getRadioButtonMessageLink();
 
       expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });
