@@ -97,7 +97,7 @@ export class Tabs {
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes')) {
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
         this.defineTabsItemElements();
       }
     });
