@@ -211,27 +211,12 @@ export class TabsBar {
     }
   };
 
-  private initMutationObserver = (): void => {
-    this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'characterData').length) {
-        this.setStatusBarStyle();
-      }
-    });
-    this.hostObserver.observe(this.host, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-  };
-
   private setStatusBarStyle = (): void => {
     // statusBarElement is undefined on first render
     if (this.statusBarElement) {
       const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
+      this.enableTransition = offsetWidth > 0;
       const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
-      if (offsetWidth > 0) {
-        this.enableTransitions();
-      }
       const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
 
       this.statusBarElement.setAttribute(
@@ -258,6 +243,20 @@ export class TabsBar {
     this.scrollAreaElement.addEventListener('keydown', this.handleKeydown);
   };
 
+  private initMutationObserver = (): void => {
+    this.hostObserver = new MutationObserver((mutations): void => {
+      if (mutations.filter(({ type }) => type === 'characterData').length) {
+        console.log('mutationObserver');
+        this.setStatusBarStyle();
+      }
+    });
+    this.hostObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+  };
+
   private initIntersectionObserver = (): void => {
     const { shadowRoot } = this.host;
     const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
@@ -282,10 +281,6 @@ export class TabsBar {
 
     this.intersectionObserver.observe(firstTrigger);
     this.intersectionObserver.observe(lastTrigger);
-  };
-
-  private enableTransitions = (): void => {
-    this.enableTransition = true;
   };
 
   private handleTabClick = (newTabIndex: number): void => {
@@ -332,17 +327,17 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (direction: Direction = 'next'): void => {
-    const gradientWidths = this.gradientElements.map((item) => item.offsetWidth);
+    const [prevGradient, nextGradient] = this.gradientElements.map((item) => item.offsetWidth);
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex];
 
     let scrollPosition: number;
 
     if (direction === 'next' && this.activeTabIndex < this.tabElements.length - 1) {
       // go to next tab
-      scrollPosition = offsetLeft - gradientWidths[1] + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = offsetLeft - prevGradient + FOCUS_PADDING_WIDTH * 2;
     } else if (direction === 'prev' && this.activeTabIndex > 0) {
       // go to prev tab
-      scrollPosition = offsetLeft + offsetWidth + gradientWidths[0] - this.scrollAreaElement.offsetWidth;
+      scrollPosition = offsetLeft + offsetWidth + nextGradient - this.scrollAreaElement.offsetWidth;
     } else if (this.activeTabIndex === 0) {
       // go to first tab
       scrollPosition = 0;
