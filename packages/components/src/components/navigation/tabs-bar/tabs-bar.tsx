@@ -53,10 +53,8 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabHandler(newTabIndex: number): void {
-    if (this.isActiveTabIndexInvalid(newTabIndex)) {
-      this.sanitizeActiveTabIndex(newTabIndex);
-      return;
-    }
+    console.log('watcher activeTabIndex');
+    this.sanitizeActiveTabIndex(newTabIndex);
   }
 
   public componentShouldUpdate(
@@ -177,12 +175,6 @@ export class TabsBar {
   private get hasTabsElements(): boolean {
     return this.tabElements.length > 0;
   }
-
-  private isActiveTabIndexInvalid = (newTabIndex: number): boolean => {
-    const minIndex = 0;
-    const maxIndex = this.tabElements.length - 1;
-    return newTabIndex > maxIndex || newTabIndex < minIndex;
-  };
 
   private sanitizeActiveTabIndex = (index: number = this.activeTabIndex): void => {
     const minIndex = 0;
