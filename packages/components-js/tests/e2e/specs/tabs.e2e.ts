@@ -74,6 +74,10 @@ describe('tabs', () => {
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
   });
 
+  it('should respect changes of activeTabIndex', () => {
+    expect(true).toBe(false);
+  });
+
   // TODO: remove?
   xit('should render correct tab when selected attribute is set', async () => {
     await setContentWithDesignSystem(
