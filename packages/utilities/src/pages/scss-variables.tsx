@@ -21,7 +21,7 @@ const defaultColors = {
   'theme-light-notification-neutral-soft': '#e5eff8',
   'theme-light-state-hover': '#d5001c',
   'theme-light-state-active': '#d5001c',
-  'theme-light-state-focus': '#000',
+  'theme-light-state-focus': 'currentColor',
   'theme-light-state-disabled': '#96989a',
   'external-facebook': '#1877f2',
   'external-google': '#4285f4',
@@ -54,7 +54,7 @@ const darkThemeColors = {
   'theme-dark-notification-neutral-soft': '#c7e4ff',
   'theme-dark-state-hover': '#ff0223',
   'theme-dark-state-active': '#ff0223',
-  'theme-dark-state-focus': '#fff',
+  'theme-dark-state-focus': 'currentColor',
   'theme-dark-state-disabled': '#7c7f81'
 };
 
