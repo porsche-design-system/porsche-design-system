@@ -102,8 +102,8 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     if (this.hasTabsElements) {
-      this.disconnectMutationObserver();
-      this.disconnectIntersectionObserver();
+      this.hostObserver.disconnect();
+      this.intersectionObserver.disconnect();
     }
   }
 
@@ -114,13 +114,9 @@ export class TabsBar {
       ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size)
     };
 
-    const scrollAreaClasses = {
-      [prefix('tabs-bar__scroll-area')]: true
-    };
-
-    const scrollWrapperClasses = {
-      [prefix('tabs-bar__scroll-wrapper')]: true
-    };
+    const scrollAreaClasses = prefix('tabs-bar__scroll-area');
+    const scrollWrapperClasses = prefix('tabs-bar__scroll-wrapper');
+    const scrollWrapperTriggerClasses = prefix('tabs-bar__scroll-wrapper__trigger');
 
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
@@ -135,6 +131,8 @@ export class TabsBar {
           <div class={scrollWrapperClasses}>
             <slot />
             <span class={statusBarClasses} />
+            <div class={scrollWrapperTriggerClasses} />
+            <div class={scrollWrapperTriggerClasses} />
           </div>
         </div>
         {this.hasTabsElements && this.renderPrevNextButton('prev')}
@@ -261,15 +259,16 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const [firstTab] = this.tabElements;
-    const [lastTab] = this.tabElements.slice(-1);
+    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
+    const firstTrigger = getHTMLElement(this.host.shadowRoot, `${selector}:first-of-type`);
+    const lastTrigger = getHTMLElement(this.host.shadowRoot, `${selector}:last-of-type`);
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.target === firstTab) {
+          if (entry.target === firstTrigger) {
             this.isPrevHidden = entry.isIntersecting;
-          } else if (entry.target === lastTab) {
+          } else if (entry.target === lastTrigger) {
             this.isNextHidden = entry.isIntersecting;
           }
         }
@@ -280,20 +279,12 @@ export class TabsBar {
       }
     );
 
-    this.intersectionObserver.observe(firstTab);
-    this.intersectionObserver.observe(lastTab);
+    this.intersectionObserver.observe(firstTrigger);
+    this.intersectionObserver.observe(lastTrigger);
   };
 
   private enableTransitions = (): void => {
     this.enableTransition = true;
-  };
-
-  private disconnectIntersectionObserver = (): void => {
-    this.intersectionObserver.disconnect();
-  };
-
-  private disconnectMutationObserver = (): void => {
-    this.hostObserver.disconnect();
   };
 
   private handleTabClick = (newTabIndex: number): void => {

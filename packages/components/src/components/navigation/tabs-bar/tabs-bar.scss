@@ -26,11 +26,11 @@
   color: $p-color-default !important;
   cursor: pointer !important;
   transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier !important;
+    color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-:host([theme="dark"]) ::slotted(a),
-:host([theme="dark"]) ::slotted(button) {
+:host([theme='dark']) ::slotted(a),
+:host([theme='dark']) ::slotted(button) {
   color: $p-color-theme-dark-default !important;
 }
 
@@ -39,22 +39,22 @@
   color: $p-color-state-hover !important;
 }
 
-:host([theme="dark"]) ::slotted(a:hover),
-:host([theme="dark"]) ::slotted(button:hover) {
+:host([theme='dark']) ::slotted(a:hover),
+:host([theme='dark']) ::slotted(button:hover) {
   color: $p-color-theme-dark-state-hover !important;
 }
 
 ::slotted(a:active),
-::slotted(a[aria-selected="true"]),
+::slotted(a[aria-selected='true']),
 ::slotted(button:active),
-::slotted(button[aria-selected="true"]) {
+::slotted(button[aria-selected='true']) {
   color: $p-color-state-active !important;
 }
 
-:host([theme="dark"]) ::slotted(a:active),
-:host([theme="dark"]) ::slotted(a[aria-selected="true"]),
-:host([theme="dark"]) ::slotted(button:active),
-:host([theme="dark"]) ::slotted(button[aria-selected="true"]) {
+:host([theme='dark']) ::slotted(a:active),
+:host([theme='dark']) ::slotted(a[aria-selected='true']),
+:host([theme='dark']) ::slotted(button:active),
+:host([theme='dark']) ::slotted(button[aria-selected='true']) {
   color: $p-color-theme-dark-state-active !important;
 }
 
@@ -64,8 +64,8 @@
   outline: $p-color-state-focus solid 1px !important;
 }
 
-:host([theme="dark"]) ::slotted(a:focus),
-:host([theme="dark"]) ::slotted(button:focus) {
+:host([theme='dark']) ::slotted(a:focus),
+:host([theme='dark']) ::slotted(button:focus) {
   outline-color: $p-color-theme-dark-state-focus !important;
 }
 
@@ -93,7 +93,7 @@
     @include p-generate-type-scale($p-font-size-medium);
   }
 
-  @include p-media-query("xs") {
+  @include p-media-query('xs') {
     &--size-small-xs {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -103,7 +103,7 @@
     }
   }
 
-  @include p-media-query("s") {
+  @include p-media-query('s') {
     &--size-small-s {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -113,7 +113,7 @@
     }
   }
 
-  @include p-media-query("m") {
+  @include p-media-query('m') {
     &--size-small-m {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -123,7 +123,7 @@
     }
   }
 
-  @include p-media-query("l") {
+  @include p-media-query('l') {
     &--size-small-l {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -133,7 +133,7 @@
     }
   }
 
-  @include p-media-query("xl") {
+  @include p-media-query('xl') {
     &--size-small-xl {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -163,7 +163,24 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-    padding-bottom: .5em;
+    padding-bottom: 0.5em;
+
+    &__trigger {
+      display: block;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      visibility: hidden;
+
+      &:first-of-type {
+        left: 0;
+      }
+
+      &:last-of-type {
+        right: 0;
+      }
+    }
   }
 
   &__status-bar {
@@ -171,7 +188,7 @@
     left: 0;
     bottom: 0;
     width: 1px;
-    height: .09375em;
+    height: 0.09375em;
     display: block;
     background-color: $p-color-state-active;
 
@@ -180,7 +197,7 @@
     }
 
     &--weight-semibold {
-      height: .125em;
+      height: 0.125em;
     }
 
     &--enable-transition {
@@ -193,7 +210,7 @@
     position: absolute;
     top: 4px;
     display: flex;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 
     &--prev {
       left: 0;
@@ -214,54 +231,110 @@
     content: '';
     position: absolute;
     top: -4px;
-    bottom: -.5em;
+    bottom: -0.5em;
     width: 2em;
     pointer-events: none;
 
     &--prev {
       &#{$bem-block}__gradient--color-scheme-default {
-        background: -webkit-linear-gradient(rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
-        background: linear-gradient(90deg, rgba($p-color-background-default, 1) 50%, rgba($p-color-background-default, 0) 100%);
+        background: -webkit-linear-gradient(
+          rgba($p-color-background-default, 1) 50%,
+          rgba($p-color-background-default, 0) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-background-default, 1) 50%,
+          rgba($p-color-background-default, 0) 100%
+        );
       }
 
       &#{$bem-block}__gradient--color-scheme-surface {
-        background: -webkit-linear-gradient(rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
-        background: linear-gradient(90deg, rgba($p-color-background-surface, 1) 50%, rgba($p-color-background-surface, 0) 100%);
+        background: -webkit-linear-gradient(
+          rgba($p-color-background-surface, 1) 50%,
+          rgba($p-color-background-surface, 0) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-background-surface, 1) 50%,
+          rgba($p-color-background-surface, 0) 100%
+        );
       }
 
       &#{$bem-block}__gradient--theme-dark {
         &#{$bem-block}__gradient--color-scheme-default {
-          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 1) 50%, rgba($p-color-theme-dark-background-default, 0) 100%);
+          background: -webkit-linear-gradient(
+            rgba($p-color-theme-dark-background-default, 1) 50%,
+            rgba($p-color-theme-dark-background-default, 0) 100%
+          );
+          background: linear-gradient(
+            90deg,
+            rgba($p-color-theme-dark-background-default, 1) 50%,
+            rgba($p-color-theme-dark-background-default, 0) 100%
+          );
         }
 
         &#{$bem-block}__gradient--color-scheme-surface {
-          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 1) 50%, rgba($p-color-theme-dark-background-surface, 0) 100%);
+          background: -webkit-linear-gradient(
+            rgba($p-color-theme-dark-background-surface, 1) 50%,
+            rgba($p-color-theme-dark-background-surface, 0) 100%
+          );
+          background: linear-gradient(
+            90deg,
+            rgba($p-color-theme-dark-background-surface, 1) 50%,
+            rgba($p-color-theme-dark-background-surface, 0) 100%
+          );
         }
       }
     }
 
     &--next {
       &#{$bem-block}__gradient--color-scheme-default {
-        background: -webkit-linear-gradient(rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
-        background: linear-gradient(90deg, rgba($p-color-background-default, 0) 0%, rgba($p-color-background-default, 1) 50%);
+        background: -webkit-linear-gradient(
+          rgba($p-color-background-default, 0) 0%,
+          rgba($p-color-background-default, 1) 50%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-background-default, 0) 0%,
+          rgba($p-color-background-default, 1) 50%
+        );
       }
 
       &#{$bem-block}__gradient--color-scheme-surface {
-        background: -webkit-linear-gradient(rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
-        background: linear-gradient(90deg, rgba($p-color-background-surface, 0) 0%, rgba($p-color-background-surface, 1) 50%);
+        background: -webkit-linear-gradient(
+          rgba($p-color-background-surface, 0) 0%,
+          rgba($p-color-background-surface, 1) 50%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba($p-color-background-surface, 0) 0%,
+          rgba($p-color-background-surface, 1) 50%
+        );
       }
 
       &#{$bem-block}__gradient--theme-dark {
         &#{$bem-block}__gradient--color-scheme-default {
-          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-default, 0) 0%, rgba($p-color-theme-dark-background-default, 1) 50%);
+          background: -webkit-linear-gradient(
+            rgba($p-color-theme-dark-background-default, 0) 0%,
+            rgba($p-color-theme-dark-background-default, 1) 50%
+          );
+          background: linear-gradient(
+            90deg,
+            rgba($p-color-theme-dark-background-default, 0) 0%,
+            rgba($p-color-theme-dark-background-default, 1) 50%
+          );
         }
 
         &#{$bem-block}__gradient--color-scheme-surface {
-          background: -webkit-linear-gradient(rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
-          background: linear-gradient(90deg, rgba($p-color-theme-dark-background-surface, 0) 0%, rgba($p-color-theme-dark-background-surface, 1) 50%);
+          background: -webkit-linear-gradient(
+            rgba($p-color-theme-dark-background-surface, 0) 0%,
+            rgba($p-color-theme-dark-background-surface, 1) 50%
+          );
+          background: linear-gradient(
+            90deg,
+            rgba($p-color-theme-dark-background-surface, 0) 0%,
+            rgba($p-color-theme-dark-background-surface, 1) 50%
+          );
         }
       }
     }
