@@ -5,7 +5,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
 import { pxToRem } from '@porsche-design-system/utilities';
 
@@ -25,16 +25,16 @@ export class TabsBar {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>> = 'small';
+  @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
+  @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
+  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop() public activeTabIndex?: number = 0;
