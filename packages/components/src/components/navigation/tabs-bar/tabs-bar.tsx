@@ -230,23 +230,24 @@ export class TabsBar {
   };
 
   private setStatusBarStyle = (): void => {
-    this.statusBarElement?.setAttribute('style', this.getStatusBarStyle(this.tabElements[this.activeTabIndex]));
-  };
-
-  private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
-    const statusBarWidth = activeTabElement ? pxToRem(`${activeTabElement.offsetWidth}px`) : 0;
-    if (activeTabElement.offsetWidth > 0) {
+    const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
+    const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
+    if (offsetWidth > 0) {
       this.enableTransitions();
     }
-    const statusBarPositionLeft =
-      activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(`${activeTabElement?.offsetLeft}px`) : 0;
-    return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
+    const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
+
+    this.statusBarElement?.setAttribute(
+      'style',
+      `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`
+    );
   };
 
   private defineHTMLElements = (): void => {
-    this.statusBarElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    this.scrollAreaElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
-    this.gradientElements = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`);
+    const { shadowRoot } = this.host;
+    this.statusBarElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
+    this.scrollAreaElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
+    this.gradientElements = getHTMLElements(shadowRoot, `.${prefix('tabs-bar__gradient')}`);
   };
 
   private addEventListeners = (): void => {
