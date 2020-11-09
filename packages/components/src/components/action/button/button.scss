@@ -52,6 +52,24 @@
   vertical-align: top;
 }
 
+.#{$p-global-class-prefix}button:focus,
+:host([variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-neutral-contrast-high;
+}
+
+:host([theme="dark"]) .#{$p-global-class-prefix}button:focus,
+:host([theme="dark"][variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-theme-dark-default;
+}
+
+:host([variant="primary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-brand;
+}
+
+:host([theme="dark"][variant="primary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-theme-dark-brand;
+}
+
 .#{$p-global-class-prefix}button {
   $bem-block: &;
   display: flex;
@@ -63,7 +81,8 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none transparent;
+  outline: transparent solid 1px;
+  outline-offset: 1px;
   text-decoration: none;
   text-align: left;
   border-style: solid;
@@ -77,27 +96,9 @@
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &:focus {
-    outline-width: 1px;
-    outline-style: solid;
-    outline-offset: 1px;
-  }
-
   &:disabled,
   &[disabled] {
     cursor: not-allowed;
-  }
-
-  &--theme-light {
-    &:focus {
-      outline-color: $p-color-state-focus;
-    }
-  }
-
-  &--theme-dark {
-    &:focus {
-      outline-color: $p-color-theme-dark-state-focus;
-    }
   }
 
   &--primary {
