@@ -9,7 +9,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ConsoleMessage, Page } from 'puppeteer';
 import { CSS_ANIMATION_DURATION, FOCUS_PADDING } from './tabs-bar.e2e';
 
 describe('tabs', () => {
@@ -251,7 +251,7 @@ describe('tabs', () => {
     const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
     const allButtons = await getAllTabs();
     const gradientWidth = await getProperty(gradientNext, 'offsetWidth');
-    const scrollArea =  await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+    const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
     const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
     const getScrollAreaScrollLeft = () => getProperty(scrollArea, 'scrollLeft');
 
@@ -269,7 +269,7 @@ describe('tabs', () => {
     await page.waitFor(CSS_ANIMATION_DURATION);
 
     const tab5offset = await getProperty(allButtons[4], 'offsetLeft');
-    const scrollDistanceRight = +tab5offset - +gradientWidth  + FOCUS_PADDING;
+    const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
     expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceRight);
 
     await page.keyboard.press('ArrowLeft');
@@ -279,5 +279,19 @@ describe('tabs', () => {
     const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
     const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollAreaScrollLeft()).toEqual(scrollDistanceLeft);
+  });
+
+  it('should not crash without children', async () => {
+    let lastConsoleMsg: ConsoleMessage = undefined;
+    page.on('console', (msg) => {
+      lastConsoleMsg = msg;
+      if (msg.type() === 'error') {
+        console.log(msg.args()[0]['_remoteObject'].description);
+      }
+    });
+
+    await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
+
+    expect(lastConsoleMsg.type()).not.toBe('error');
   });
 });
