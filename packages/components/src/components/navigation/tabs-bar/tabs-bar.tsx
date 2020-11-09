@@ -93,7 +93,7 @@ export class TabsBar {
   public componentDidLoad(): void {
     if (this.hasTabsElements) {
       this.defineHTMLElements();
-      this.scrollActiveTabIntoView();
+      this.scrollActiveTabIntoView('next', { skipAnimation: true });
       // this.setStatusBarStyle();
       this.addEventListeners();
       this.initIntersectionObserver();
@@ -326,26 +326,38 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (direction: Direction = 'next'): void => {
-    const [prevGradient, nextGradient] = this.gradientElements.map((item) => item.offsetWidth);
+  private scrollActiveTabIntoView = (direction: Direction, opts?: { skipAnimation: boolean }): void => {
+    console.log('scrollActiveTabIntoView', this.activeTabIndex, direction);
+    const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex];
 
     let scrollPosition: number;
-
-    if (direction === 'next' && this.activeTabIndex < this.tabElements.length - 1) {
-      // go to next tab
-      scrollPosition = offsetLeft - prevGradient + FOCUS_PADDING_WIDTH * 2;
-    } else if (direction === 'prev' && this.activeTabIndex > 0) {
-      // go to prev tab
-      scrollPosition = offsetLeft + offsetWidth + nextGradient - this.scrollAreaElement.offsetWidth;
-    } else if (this.activeTabIndex === 0) {
-      // go to first tab
-      scrollPosition = 0;
+    if (direction === 'next') {
+      if (this.activeTabIndex === this.tabElements.length - 1) {
+        // go to last tab
+        scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
+      } else if (this.activeTabIndex === 0) {
+        // special case on first render where direction is 'next'  and activeTabIndex is 0
+        return;
+      } else {
+        // go to next tab
+        scrollPosition = offsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
+      }
     } else {
-      // go to last tab
-      scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
+      if (this.activeTabIndex === 0) {
+        // go to first tab
+        scrollPosition = 0;
+      } else {
+        // go to prev tab
+        scrollPosition = offsetLeft + offsetWidth + nextGradientWidth - this.scrollAreaElement.offsetWidth;
+      }
     }
-    this.scrollTo(scrollPosition);
+
+    if (opts?.skipAnimation) {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    } else {
+      this.scrollTo(scrollPosition);
+    }
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
