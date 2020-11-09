@@ -1,12 +1,13 @@
 import {
   addEventListener,
-  getBrowser, getElementStyle, getElementStyleOnFocus,
+  getBrowser, getStyleOnFocus,
   initAddEventListener, reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 const CSS_FADE_IN_DURATION = 2000;
 const CSS_FADE_OUT_DURATION = 1000;
@@ -22,8 +23,8 @@ describe('banner', () => {
 
   const getBannerHost = () => selectNode(page, 'p-banner');
   const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
-  const getBannerTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
-  const getBannerDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
+  const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
+  const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -155,15 +156,11 @@ describe('banner', () => {
 
       await page.waitFor(CSS_FADE_IN_DURATION);
 
-      const titleLink = await getBannerTitleLink();
-      const titleLinkOutlineInitial = await getElementStyle(titleLink, 'outline');
-      const descriptionLink = await getBannerDescriptionLink();
-      const descriptionLinkOutlineInitial = await getElementStyle(titleLink, 'outline');
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
 
-      expect(await getElementStyleOnFocus(titleLink, 'outline')).not.toBe(titleLinkOutlineInitial, 'title link should get focus style');
-
-      expect(await getElementStyleOnFocus(descriptionLink, 'outline')).not.toBe(descriptionLinkOutlineInitial, 'description link should get focus style');
-      expect(await getElementStyle(titleLink, 'outline')).toBe(titleLinkOutlineInitial, 'title link should loose focus style');
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus());
     });
   });
 });

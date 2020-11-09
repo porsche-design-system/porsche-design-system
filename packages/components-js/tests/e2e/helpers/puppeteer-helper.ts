@@ -78,19 +78,6 @@ export const getElementStyle = async (
     opts
   );
 
-export const getElementStyleOnFocus = async (a: any, b: any) => {
-  return '';
-}
-
-export const getOutlineStyleOnFocus = async (element: ElementHandle): Promise<{color: string, width: string, offset: string}> => {
-  await element.focus();
-  return {
-    color: await getElementStyle(element, 'outlineColor'),
-    width: await getElementStyle(element, 'outlineWidth'),
-    offset: await getElementStyle(element, 'outlineOffset')
-  };
-}
-
 export const getStyleOnFocus = async (element: ElementHandle, css: 'outline' | 'boxShadow' = 'outline'): Promise<string> => {
   await element.focus();
   if (css === 'outline') {
