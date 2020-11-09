@@ -621,4 +621,18 @@ describe('tabs-bar', () => {
 
     expect(lastConsoleMsg.type()).not.toBe('error');
   });
+
+  it('should not crash without children', async () => {
+    let lastConsoleMsg: ConsoleMessage = undefined;
+    page.on('console', (msg) => {
+      lastConsoleMsg = msg;
+      if (msg.type() === 'error') {
+        console.log(msg.args()[0]['_remoteObject'].description);
+      }
+    });
+
+    await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
+
+    expect(lastConsoleMsg.type()).not.toBe('error');
+  });
 });
