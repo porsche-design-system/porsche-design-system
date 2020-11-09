@@ -104,7 +104,7 @@ export class Tabs {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      attributeFilter: ['label', 'selected']
+      attributeFilter: ['label']
     });
   };
 
