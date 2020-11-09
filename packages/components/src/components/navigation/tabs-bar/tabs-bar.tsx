@@ -44,7 +44,7 @@ export class TabsBar {
   private enableTransition = false;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval;
+  private scrollInterval: NodeJS.Timeout;
   private tabElements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
@@ -135,8 +135,8 @@ export class TabsBar {
             <div class={scrollWrapperTriggerClasses} />
           </div>
         </div>
-        {this.hasTabsElements && this.renderPrevNextButton('prev')}
-        {this.hasTabsElements && this.renderPrevNextButton('next')}
+        {this.renderPrevNextButton('prev')}
+        {this.renderPrevNextButton('next')}
       </div>
     );
   }
