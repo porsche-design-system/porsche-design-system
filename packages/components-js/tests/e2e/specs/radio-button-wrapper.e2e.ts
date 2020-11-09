@@ -4,7 +4,7 @@ import {
   getAttribute, getStyleOnFocus,
   getBrowser,
   getCssClasses,
-  getElementStyle, getElementStyleOnHover,
+  getElementStyle,
   getProperty,
   selectNode, setAttribute,
   setContentWithDesignSystem,
@@ -246,70 +246,6 @@ describe('radio-button-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
-  });
-
-  describe('hover state', () => {
-    it('should change box-shadow color when fake radio button is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
-      );
-
-      const fakeRadioButton = await getRadioButtonFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
-
-      await fakeRadioButton.hover();
-
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(
-        initialBoxShadow
-      );
-    });
-
-    it('should change box-shadow color of fake radio button when label text is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
-      );
-
-      const fakeRadioButton = await getRadioButtonFakeInput();
-      const labelText = await getRadioButtonLabel();
-
-      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
-
-      await labelText.hover();
-
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(
-        initialBoxShadow
-      );
-    });
-
-    it('should change color of slotted <a> when it is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-radio-button-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <input type="radio"/>
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
-        </p-radio-button-wrapper>`
-      );
-
-      const labelLink = await getRadioButtonLabelLink();
-      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
-      const messageLink = await getRadioButtonMessageLink();
-      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
-
-      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
-
-      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
-      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
-    });
   });
 
   describe('focus state', () => {
