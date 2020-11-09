@@ -483,7 +483,7 @@ describe('tabs-bar', () => {
     const host = await selectNode(page, 'p-tabs-bar');
     const [firstButton, secondButton, thirdButton] = await getAllButtons();
     let eventCounter = 0;
-    await addEventListener(host, 'click', () => eventCounter++);
+    await addEventListener(host, 'tabChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-tabs-bar');
