@@ -97,6 +97,7 @@ export class TabsBar {
   public componentDidLoad(): void {
     if (this.hasTabsElements) {
       this.defineHTMLElements();
+      this.setStatusBarStyle();
       this.scrollActiveTabIntoView();
       this.addEventListeners();
       this.initIntersectionObserver();
@@ -230,17 +231,20 @@ export class TabsBar {
   };
 
   private setStatusBarStyle = (): void => {
-    const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
-    const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
-    if (offsetWidth > 0) {
-      this.enableTransitions();
-    }
-    const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
+    // statusBarElement is undefined on first render
+    if (this.statusBarElement) {
+      const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
+      const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
+      if (offsetWidth > 0) {
+        this.enableTransitions();
+      }
+      const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
 
-    this.statusBarElement?.setAttribute(
-      'style',
-      `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`
-    );
+      this.statusBarElement.setAttribute(
+        'style',
+        `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`
+      );
+    }
   };
 
   private defineHTMLElements = (): void => {
