@@ -1,6 +1,6 @@
 type Options = {
   theme?: 'light' | 'dark',
-  color?: 'default' | 'neutral' | 'success' | 'error' | 'transparent';
+  color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'transparent';
   css?: 'outline' | 'boxShadow';
   offset?: string;
   width?: string;
@@ -20,15 +20,19 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     'light': {
       'default': 'rgb(0, 0, 0)',
       'neutral': 'rgb(98, 102, 105)',
+      'contrastHigh': 'rgb(50, 54, 57)',
       'success': 'rgb(1, 138, 22)',
       'error': 'rgb(224, 0, 0)',
+      'brand': 'rgb(213, 0, 28)',
       'transparent': 'rgba(0, 0, 0, 0)'
     },
     'dark': {
       'default': 'rgb(255, 255, 255)',
       'neutral': 'rgb(176, 177, 178)',
+      'contrastHigh': 'rgb(227, 228, 229)',
       'success': 'rgb(1, 186, 29)',
       'error': 'rgb(252, 23, 23)',
+      'brand': 'rgb(213, 0, 28)',
       'transparent': 'rgba(0, 0, 0, 0)'
     }
   }

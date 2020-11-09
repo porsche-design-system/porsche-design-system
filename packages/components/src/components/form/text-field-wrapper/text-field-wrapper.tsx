@@ -25,7 +25,7 @@ export class TextFieldWrapper {
   @Prop() public description?: string = '';
 
   /** The validation state. */
-  @Prop({reflect: true}) public state?: FormState = 'none';
+  @Prop() public state?: FormState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';

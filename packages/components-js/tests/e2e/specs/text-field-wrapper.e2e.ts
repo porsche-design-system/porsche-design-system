@@ -3,7 +3,6 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
   getProperty,
   initAddEventListener,
   selectNode,
