@@ -53,7 +53,6 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabHandler(newTabIndex: number): void {
-    console.log('watcher activeTabIndex');
     this.sanitizeActiveTabIndex(newTabIndex);
   }
 
