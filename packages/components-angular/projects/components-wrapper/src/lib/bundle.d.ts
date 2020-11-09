@@ -11,6 +11,9 @@ export type FormState = "none" | "error" | "success";
 export type TabChangeEvent = {
 	activeTabIndex: number;
 };
+export type TabSize = "small" | "medium";
+export type TabWeight = Extract<TextWeight, "regular" | "semibold">;
+export type TabGradientColorTheme = "default" | "surface";
 export type NumberOfPageLinks = 5 | 7;
 declare global {
 	const ROLLUP_REPLACE_IS_STAGING: string;
@@ -538,13 +541,17 @@ export namespace Components {
 	}
 	interface PTabs {
 		/**
+		  * Defines which tab to be visualized as selected (zero-based numbering).
+		 */
+		"activeTabIndex"?: number;
+		/**
 		  * Adapts the background gradient color of prev and next button.
 		 */
-		"gradientColorScheme"?: "default" | "surface";
+		"gradientColorScheme"?: TabGradientColorTheme;
 		/**
 		  * The text size.
 		 */
-		"size"?: "small" | "medium";
+		"size"?: BreakpointCustomizable<TabSize>;
 		/**
 		  * Adapts the color when used on dark background.
 		 */
@@ -552,7 +559,7 @@ export namespace Components {
 		/**
 		  * The text weight.
 		 */
-		"weight"?: Extract<TextWeight, "regular" | "semibold">;
+		"weight"?: TabWeight;
 	}
 	interface PTabsBar {
 		/**
@@ -562,11 +569,11 @@ export namespace Components {
 		/**
 		  * Adapts the background gradient color of prev and next button.
 		 */
-		"gradientColorScheme"?: "default" | "surface";
+		"gradientColorScheme"?: TabGradientColorTheme;
 		/**
 		  * The text size.
 		 */
-		"size"?: BreakpointCustomizable<Extract<TextSize, "small" | "medium">>;
+		"size"?: BreakpointCustomizable<TabSize>;
 		/**
 		  * Adapts the color when used on dark background.
 		 */
@@ -574,14 +581,13 @@ export namespace Components {
 		/**
 		  * The text weight.
 		 */
-		"weight"?: Extract<TextWeight, "regular" | "semibold">;
+		"weight"?: TabWeight;
 	}
 	interface PTabsItem {
 		/**
 		  * Defines the label used in tabs.
 		 */
 		"label": string;
-		"selected"?: boolean;
 	}
 	interface PText {
 		/**
@@ -1406,9 +1412,13 @@ declare namespace LocalJSX {
 	}
 	interface PTabs {
 		/**
+		  * Defines which tab to be visualized as selected (zero-based numbering).
+		 */
+		"activeTabIndex"?: number;
+		/**
 		  * Adapts the background gradient color of prev and next button.
 		 */
-		"gradientColorScheme"?: "default" | "surface";
+		"gradientColorScheme"?: TabGradientColorTheme;
 		/**
 		  * Emitted when active tab is changed.
 		 */
@@ -1416,7 +1426,7 @@ declare namespace LocalJSX {
 		/**
 		  * The text size.
 		 */
-		"size"?: "small" | "medium";
+		"size"?: BreakpointCustomizable<TabSize>;
 		/**
 		  * Adapts the color when used on dark background.
 		 */
@@ -1424,7 +1434,7 @@ declare namespace LocalJSX {
 		/**
 		  * The text weight.
 		 */
-		"weight"?: Extract<TextWeight, "regular" | "semibold">;
+		"weight"?: TabWeight;
 	}
 	interface PTabsBar {
 		/**
@@ -1434,7 +1444,7 @@ declare namespace LocalJSX {
 		/**
 		  * Adapts the background gradient color of prev and next button.
 		 */
-		"gradientColorScheme"?: "default" | "surface";
+		"gradientColorScheme"?: TabGradientColorTheme;
 		/**
 		  * Emitted when active tab is changed.
 		 */
@@ -1442,7 +1452,7 @@ declare namespace LocalJSX {
 		/**
 		  * The text size.
 		 */
-		"size"?: BreakpointCustomizable<Extract<TextSize, "small" | "medium">>;
+		"size"?: BreakpointCustomizable<TabSize>;
 		/**
 		  * Adapts the color when used on dark background.
 		 */
@@ -1450,14 +1460,13 @@ declare namespace LocalJSX {
 		/**
 		  * The text weight.
 		 */
-		"weight"?: Extract<TextWeight, "regular" | "semibold">;
+		"weight"?: TabWeight;
 	}
 	interface PTabsItem {
 		/**
 		  * Defines the label used in tabs.
 		 */
 		"label"?: string;
-		"selected"?: boolean;
 	}
 	interface PText {
 		/**
