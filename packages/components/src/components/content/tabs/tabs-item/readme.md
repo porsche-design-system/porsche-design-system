@@ -7,7 +7,6 @@
 
 ## Properties
 
-| Property | Attribute | Description                             | Type     | Default     |
-| -------- | --------- | --------------------------------------- | -------- | ----------- |
-| `index`  | `index`   | Defines the index of the according tab. | `number` | `undefined` |
-| `label`  | `label`   | Defines the label used in tabs.         | `string` | `undefined` |
+| Property | Attribute | Description                     | Type     | Default     |
+| -------- | --------- | ------------------------------- | -------- | ----------- |
+| `label`  | `label`   | Defines the label used in tabs. | `string` | `undefined` |
