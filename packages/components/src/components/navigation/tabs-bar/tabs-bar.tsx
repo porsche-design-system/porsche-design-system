@@ -238,7 +238,6 @@ export class TabsBar {
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
       if (mutations.filter(({ type }) => type === 'characterData').length) {
-        console.log('mutationObserver');
         this.setStatusBarStyle();
       }
     });
