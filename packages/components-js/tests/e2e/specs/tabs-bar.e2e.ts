@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   getAttribute,
@@ -593,5 +593,32 @@ describe('tabs-bar', () => {
 
     expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
     expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+  });
+
+  it('should not cause TypeError within scrollActiveTabIntoView', async () => {
+    let lastConsoleMsg: ConsoleMessage = undefined;
+    page.on('console', (msg) => {
+      lastConsoleMsg = msg;
+      if (msg.type() === 'error') {
+        console.log(msg.args()[0]['_remoteObject'].description);
+      }
+    });
+
+    await setContentWithDesignSystem(page, ''); // empty page
+    await page.evaluate(() => {
+      const el = document.createElement('p-tabs-bar');
+      el.setAttribute('active-tab-index', '-1');
+
+      Array.from(Array(2)).forEach((x, i) => {
+        const child = document.createElement('button');
+        child.innerText = `Content ${i + 1}`;
+        el.appendChild(child);
+      });
+      document.body.appendChild(el);
+    });
+
+    await waitForStencilLifecycle(page);
+
+    expect(lastConsoleMsg.type()).not.toBe('error');
   });
 });
