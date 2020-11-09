@@ -10,10 +10,6 @@ import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper'
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
-type ActionState = {
-  isPrevHidden: boolean;
-  isNextHidden: boolean;
-};
 const FOCUS_PADDING_WIDTH = 4;
 
 @Component({
@@ -265,30 +261,18 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    this.intersectionObserver = this.registerIntersectionObserver((actionState: ActionState) => {
-      this.isPrevHidden = actionState.isPrevHidden ?? this.isPrevHidden;
-      this.isNextHidden = actionState.isNextHidden ?? this.isNextHidden;
-    }, this.tabElements);
-  };
+    const [firstTab] = this.tabElements;
+    const [lastTab] = this.tabElements.slice(-1);
 
-  private registerIntersectionObserver = (
-    cb: (actionState: Partial<ActionState>) => void,
-    tabs: HTMLElement[]
-  ): IntersectionObserver => {
-    const [firstTab] = tabs;
-    const [lastTab] = tabs.slice(-1);
-
-    const intersectionObserver = new IntersectionObserver(
+    this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        const config: Partial<ActionState> = {};
         for (const entry of entries) {
           if (entry.target === firstTab) {
-            config.isPrevHidden = entry.isIntersecting;
+            this.isPrevHidden = entry.isIntersecting;
           } else if (entry.target === lastTab) {
-            config.isNextHidden = entry.isIntersecting;
+            this.isNextHidden = entry.isIntersecting;
           }
         }
-        cb(config);
       },
       {
         root: this.host,
@@ -296,10 +280,8 @@ export class TabsBar {
       }
     );
 
-    intersectionObserver.observe(firstTab);
-    intersectionObserver.observe(lastTab);
-
-    return intersectionObserver;
+    this.intersectionObserver.observe(firstTab);
+    this.intersectionObserver.observe(lastTab);
   };
 
   private enableTransitions = (): void => {
