@@ -170,7 +170,7 @@ export class TabsBar {
           hide-label="true"
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-          onClick={() => this.handlePrevNextClick(direction)}
+          onClick={() => this.scrollOnPrevNextClick(direction)}
         />
       </div>
     );
@@ -298,10 +298,6 @@ export class TabsBar {
 
   private handleTabClick = (newTabIndex: number): void => {
     this.sanitizeActiveTabIndex(newTabIndex);
-  };
-
-  private handlePrevNextClick = (direction: Direction): void => {
-    this.scrollOnPrevNextClick(direction);
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
