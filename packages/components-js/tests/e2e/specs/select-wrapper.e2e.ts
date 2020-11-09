@@ -1,7 +1,7 @@
 import {
   getAttribute,
   getBrowser,
-  getCssClasses, getElementStyle, getElementStyleOnHover,
+  getCssClasses, getElementStyle,
   getProperty, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
@@ -217,40 +217,6 @@ describe('select-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
-  });
-
-  describe('hover state', () => {
-    it('should change color of slotted <a> when it is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <span slot="description">Some description with a <a href="#">link</a>.</span>
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
-        </p-select-wrapper>`
-      );
-
-      const labelLink = await getSelectLabelLink();
-      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
-      const descriptionLink = await getSelectDescriptionLink();
-      const descriptionLinkColorInitial = await getElementStyle(descriptionLink, 'color');
-      const messageLink = await getSelectMessageLink();
-      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
-
-      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
-
-      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
-      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
-
-      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
-      expect(await getElementStyle(descriptionLink, 'color', {waitForTransition: true})).toBe(descriptionLinkColorInitial, 'description link should loose hover style');
-    });
   });
 
   describe('focus state', () => {

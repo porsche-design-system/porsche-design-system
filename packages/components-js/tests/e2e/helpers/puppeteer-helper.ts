@@ -78,11 +78,6 @@ export const getElementStyle = async (
     opts
   );
 
-export const getElementStyleOnHover = async (element: ElementHandle, property: keyof CSSStyleDeclaration): Promise<string> => {
-  await element.hover();
-  return await getElementStyle(element, property, {waitForTransition: true});
-}
-
 export const getElementStyleOnFocus = async (a: any, b: any) => {
   return '';
 }

@@ -1,6 +1,6 @@
 import {
   addEventListener,
-  getBrowser, getElementStyle, getElementStyleOnFocus, getElementStyleOnHover,
+  getBrowser, getElementStyle, getElementStyleOnFocus,
   initAddEventListener, reattachElement,
   selectNode,
   setContentWithDesignSystem,
@@ -140,31 +140,6 @@ describe('banner', () => {
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
-  });
-
-  describe('hover state', () => {
-    it('should change color of slotted <a> when it is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-banner>
-          <span slot="title">Some banner title with a <a href="#">link</a>.</span>
-          <span slot="description">Some banner description with a <a href="#">link</a>.</span>
-        </p-banner>`
-      );
-
-      await page.waitFor(CSS_FADE_IN_DURATION);
-
-      const titleLink = await getBannerTitleLink();
-      const titleLinkColorInitial = await getElementStyle(titleLink, 'color');
-      const descriptionLink = await getBannerDescriptionLink();
-      const descriptionLinkColorInitial = await getElementStyle(titleLink, 'color');
-
-      expect(await getElementStyleOnHover(titleLink, 'color')).not.toBe(titleLinkColorInitial, 'title link should get hover style');
-
-      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
-      expect(await getElementStyle(titleLink, 'color', {waitForTransition: true})).toBe(titleLinkColorInitial, 'title link should loose hover style');
-    });
   });
 
   describe('focus state', () => {

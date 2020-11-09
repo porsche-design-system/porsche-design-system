@@ -4,7 +4,6 @@ import {
   getBrowser,
   getCssClasses,
   getElementStyle,
-  getElementStyleOnHover,
   getProperty,
   initAddEventListener,
   selectNode,
@@ -324,74 +323,6 @@ describe('text-field-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(formFocusCalls).toBe(1);
-  });
-
-  describe('hover state', () => {
-    it('should change box-shadow color when fake input is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name">
-        </p-text-field-wrapper>
-      `
-      );
-
-      const fakeInput = await getTextFieldFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
-
-      await fakeInput.hover();
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
-    });
-
-    it('should change box-shadow color of fake input when label text is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name">
-        </p-text-field-wrapper>`
-      );
-
-      const fakeInput = await getTextFieldFakeInput();
-      const labelText = await getTextFieldLabel();
-      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
-
-      await labelText.hover();
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(fakeInput, 'boxShadow', {waitForTransition: true})).not.toBe(initialBoxShadow);
-    });
-
-    it('should change color of slotted <a> when it is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <span slot="description">Some description with a <a href="#">link</a>.</span>
-          <input type="text" name="some-name">
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
-        </p-text-field-wrapper>`
-      );
-
-      const labelLink = await getTextFieldLabelLink();
-      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
-      const descriptionLink = await getTextFieldDescriptionLink();
-      const descriptionLinkColorInitial = await getElementStyle(descriptionLink, 'color');
-      const messageLink = await getTextFieldMessageLink();
-      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
-
-      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
-
-      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
-      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
-
-      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
-      expect(await getElementStyle(descriptionLink, 'color', {waitForTransition: true})).toBe(descriptionLinkColorInitial, 'description link should loose hover style');
-    });
   });
 
   describe('focus state', () => {

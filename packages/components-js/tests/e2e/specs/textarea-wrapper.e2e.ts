@@ -2,7 +2,7 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getElementStyle, getElementStyleOnHover,
+  getElementStyle,
   getProperty, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
@@ -161,73 +161,6 @@ describe('textarea-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(textareaFocusSpyCalls).toBe(1);
-  });
-
-  describe('hover state', () => {
-    it('should change box-shadow color when fake textarea is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-textarea-wrapper label="Some label">
-          <textarea name="some-name"></textarea>
-        </p-textarea-wrapper>
-      `
-      );
-
-      const fakeTextarea = await getTextareaFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeTextarea, 'boxShadow');
-
-      await fakeTextarea.hover();
-
-      expect(await getElementStyle(fakeTextarea, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
-    });
-
-    it('should change box-shadow color of fake textarea when label text is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-textarea-wrapper label="Some label">
-          <textarea name="some-name"></textarea>
-        </p-textarea-wrapper>
-      `
-      );
-
-      const fakeTextarea = await getTextareaFakeInput();
-      const labelText = await getTextareaLabel();
-      const initialBoxShadow = await getElementStyle(fakeTextarea, 'boxShadow');
-
-      await labelText.hover();
-
-      expect(await getElementStyle(fakeTextarea, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
-    });
-
-    it('should change color of slotted <a> when it is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-textarea-wrapper state="error">
-        <span slot="label">Some label with a <a href="#">link</a>.</span>
-        <span slot="description">Some description with a <a href="#">link</a>.</span>
-        <textarea></textarea>
-        <span slot="message">Some message with a <a href="#">link</a>.</span>
-      </p-textarea-wrapper>`
-      );
-
-      const labelLink = await getTextareaLabelLink();
-      const labelLinkColorInitial = await getElementStyle(labelLink, 'color');
-      const descriptionLink = await getTextareaDescriptionLink();
-      const descriptionLinkColorInitial = await getElementStyle(descriptionLink, 'color');
-      const messageLink = await getTextareaMessageLink();
-      const messageLinkColorInitial = await getElementStyle(messageLink, 'color');
-
-      expect(await getElementStyleOnHover(labelLink, 'color')).not.toBe(labelLinkColorInitial, 'label link should get hover style');
-
-      expect(await getElementStyleOnHover(descriptionLink, 'color')).not.toBe(descriptionLinkColorInitial, 'description link should get hover style');
-      expect(await getElementStyle(labelLink, 'color', {waitForTransition: true})).toBe(labelLinkColorInitial, 'label link should loose hover style');
-
-      expect(await getElementStyleOnHover(messageLink, 'color')).not.toBe(messageLinkColorInitial, 'message link should get hover style');
-      expect(await getElementStyle(descriptionLink, 'color', {waitForTransition: true})).toBe(descriptionLinkColorInitial, 'description link should loose hover style');
-    });
   });
 
   describe('focus state', () => {
