@@ -42,8 +42,8 @@ export class TabsBar {
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public isPrevHidden: boolean = true;
-  @State() public isNextHidden: boolean = true;
+  @State() public isPrevHidden = true;
+  @State() public isNextHidden = true;
 
   private enableTransition = false;
   private hostObserver: MutationObserver;
@@ -63,7 +63,11 @@ export class TabsBar {
     }
   }
 
-  public componentShouldUpdate(newValue, oldValue, nameOfStateOrProp): boolean {
+  public componentShouldUpdate(
+    newValue: string | number,
+    oldValue: string | number,
+    nameOfStateOrProp: string
+  ): boolean {
     if (nameOfStateOrProp === 'activeTabIndex') {
       this.direction = newValue > oldValue ? 'next' : 'prev';
     }
