@@ -425,7 +425,7 @@
       }
     }
 
-    &--highlighted {
+    &--highlighted:not(&--selected) {
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
         background-color: #ebebeb;
