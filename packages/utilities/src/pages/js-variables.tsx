@@ -27,11 +27,18 @@ export const JsVariables = (): JSX.Element => {
   const colorArray = objectToFlatArray(other);
   const colorDarkArray = objectToFlatArray(darkTheme);
 
-  const renderSquares = (colors: string[]) => (
+  const renderSquares = (colors: string[], theme: 'light' | 'dark' = 'light') => (
     <div>
-      {colors.map((x, idx) => (
-        <Square key={idx} background={x} children={x} />
-      ))}
+      {colors.map((x, idx) => {
+        if (x === 'currentColor') {
+          return <Square key={idx} children={x} style={{
+            color: theme === 'light' ? 'black' : 'white',
+            outline: `${x} solid 1px`,
+            outlineOffset: '-5px'
+          }} />
+        }
+        return <Square key={idx} background={x} children={x} />
+      })}
     </div>
   );
 
@@ -52,7 +59,7 @@ export const JsVariables = (): JSX.Element => {
 
       <div className="playground">
         <h2>Dark Theme Colors</h2>
-        {renderSquares(colorDarkArray)}
+        {renderSquares(colorDarkArray, 'dark')}
       </div>
 
       <div className="playground">
