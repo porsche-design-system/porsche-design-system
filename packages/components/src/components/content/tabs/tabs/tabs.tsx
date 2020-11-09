@@ -47,7 +47,6 @@ export class Tabs {
     const tabsClasses = prefix('tabs');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-bar']);
-    // TODO: check map function for right active tab
     return (
       <Host>
         <div class={tabsClasses}>
@@ -60,15 +59,13 @@ export class Tabs {
             onTabChange={this.handleTabChange}
           >
             {this.tabsItemElements.map((tab, index) => (
-              <button type="button" aria-controls={`tab-panel-${index}`}>
+              <button type="button" id={`tab-item-${index}`} aria-controls={`tab-panel-${index}`}>
                 {tab.label}
               </button>
             ))}
           </PrefixedTagNames.pTabsBar>
         </div>
-        {this.tabsItemElements.map(
-          (tabsItem, index) => index === this.activeTabIndex && <div innerHTML={tabsItem.innerHTML} />
-        )}
+        <slot />
       </Host>
     );
   }
@@ -82,11 +79,17 @@ export class Tabs {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
         role: 'tabpanel',
-        id: prefix(`tab-panel-${index}`),
+        id: `tab-panel-${index}`,
         'aria-labelledby': `tab-item-${index}`
       };
+
       for (const [key, value] of Object.entries(attrs)) {
         tab.setAttribute(key, value);
+        if (+index === this.activeTabIndex) {
+          tab.removeAttribute('hidden');
+        } else {
+          tab.setAttribute('hidden', '');
+        }
       }
     }
   };
