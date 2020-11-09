@@ -49,7 +49,7 @@ export class TabsBar {
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
   private gradientElements: HTMLElement[];
-  private direction: Direction;
+  private direction: Direction = 'next';
 
   @Watch('activeTabIndex')
   public activeTabHandler(newTabIndex: number): void {
@@ -73,7 +73,7 @@ export class TabsBar {
 
   public componentWillUpdate(): void {
     this.setAccessibilityAttributes();
-    this.scrollActiveTabIntoView(this.direction);
+    this.scrollActiveTabIntoView();
   }
 
   public connectedCallback(): void {
@@ -93,7 +93,7 @@ export class TabsBar {
   public componentDidLoad(): void {
     if (this.hasTabsElements) {
       this.defineHTMLElements();
-      this.scrollActiveTabIntoView('next', { skipAnimation: true });
+      this.scrollActiveTabIntoView({ skipAnimation: true });
       // this.setStatusBarStyle();
       this.addEventListeners();
       this.initIntersectionObserver();
@@ -326,13 +326,12 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (direction: Direction, opts?: { skipAnimation: boolean }): void => {
-    console.log('scrollActiveTabIntoView', this.activeTabIndex, direction);
+  private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
     const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex];
 
     let scrollPosition: number;
-    if (direction === 'next') {
+    if (this.direction === 'next') {
       if (this.activeTabIndex === this.tabElements.length - 1) {
         // go to last tab
         scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
