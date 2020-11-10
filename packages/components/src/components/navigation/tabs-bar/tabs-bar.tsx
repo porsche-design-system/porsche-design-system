@@ -63,6 +63,7 @@ export class TabsBar {
   ): boolean {
     if (nameOfStateOrProp === 'activeTabIndex') {
       this.direction = newValue > oldValue ? 'next' : 'prev';
+      this.scrollActiveTabIntoView();
       this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
     }
     return true;
@@ -70,7 +71,6 @@ export class TabsBar {
 
   public componentWillUpdate(): void {
     this.setAccessibilityAttributes();
-    this.scrollActiveTabIntoView();
   }
 
   public connectedCallback(): void {
@@ -91,7 +91,6 @@ export class TabsBar {
     if (this.hasTabsElements) {
       this.defineHTMLElements();
       this.scrollActiveTabIntoView({ skipAnimation: true });
-      // this.setStatusBarStyle();
       this.addEventListeners();
       this.initIntersectionObserver();
     }
@@ -118,7 +117,7 @@ export class TabsBar {
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
       [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
-      [prefix(`tabs-bar__status-bar--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__status-bar--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true
     };
 
@@ -141,14 +140,14 @@ export class TabsBar {
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
     const actionClasses = {
       [prefix('tabs-bar__action')]: true,
-      [prefix(`tabs-bar__action--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__action--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__action--${direction}`)]: true,
       [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
-      [prefix(`tabs-bar__gradient--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__gradient--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
       [prefix(`tabs-bar__gradient--${direction}`)]: true
     };
