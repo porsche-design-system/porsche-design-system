@@ -2,13 +2,14 @@ import {
   addEventListener,
   getActiveElementId,
   getAttribute,
-  getBrowser,
+  getBrowser, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('button-pure', () => {
   let page: Page;
@@ -361,5 +362,24 @@ describe('button-pure', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
+  });
+
+  describe('focus state', () => {
+    it('should show outline of shadowed <button> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-button-pure>Some label</p-button-pure>`
+      );
+
+      const host = await getButtonPureHost();
+      const button = await getButtonPureRealButton();
+
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+    });
   });
 });

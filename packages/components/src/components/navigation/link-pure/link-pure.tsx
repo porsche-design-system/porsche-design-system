@@ -126,6 +126,7 @@ export class LinkPure {
       </Host>
     );
   }
+
   private setSubline(): void {
     this.subline = this.host.querySelector('[slot="subline"]');
   }

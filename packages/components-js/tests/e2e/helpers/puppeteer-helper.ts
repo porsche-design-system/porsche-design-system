@@ -59,7 +59,11 @@ export const getActiveElementTagName = async (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 };
 
-type GetElementStyleOptions = { waitForTransition: boolean };
+type Pseudo = '::before' | '::after';
+type GetElementStyleOptions = {
+  waitForTransition?: boolean;
+  pseudo?: Pseudo;
+};
 
 export const getElementStyle = async (
   element: ElementHandle,
@@ -68,7 +72,7 @@ export const getElementStyle = async (
 ): Promise<string> =>
   element.evaluate(
     async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> => {
-      const style = getComputedStyle(el);
+      const style = getComputedStyle(el, opts.pseudo ? opts.pseudo : null);
       if (opts?.waitForTransition) {
         await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
       }
@@ -78,12 +82,20 @@ export const getElementStyle = async (
     opts
   );
 
-export const getStyleOnFocus = async (element: ElementHandle, css: 'outline' | 'boxShadow' = 'outline'): Promise<string> => {
-  await element.focus();
-  if (css === 'outline') {
-    return `${await getElementStyle(element, css)} ${await getElementStyle(element, 'outlineOffset')}`;
+type GetStyleOnFocusOptions = {
+  pseudo?: Pseudo
+}
+
+export const getStyleOnFocus = async (element: ElementHandle, property: 'outline' | 'boxShadow' = 'outline', opts?: GetStyleOnFocusOptions): Promise<string> => {
+  const options: GetStyleOnFocusOptions = {
+    pseudo: null,
+    ...opts
   }
-  return await getElementStyle(element, css);
+  await element.focus();
+  if (property === 'outline') {
+    return `${await getElementStyle(element, property, {pseudo: options.pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo: options.pseudo})}`;
+  }
+  return await getElementStyle(element, property, {pseudo: options.pseudo});
 }
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {

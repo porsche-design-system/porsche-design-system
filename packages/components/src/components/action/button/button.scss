@@ -54,20 +54,20 @@
 
 .#{$p-global-class-prefix}button:focus,
 :host([variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
-  outline-color: $p-color-neutral-contrast-high;
+  outline-color: $p-color-neutral-contrast-high !important;
 }
 
 :host([theme="dark"]) .#{$p-global-class-prefix}button:focus,
 :host([theme="dark"][variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
-  outline-color: $p-color-theme-dark-default;
+  outline-color: $p-color-theme-dark-default !important;
 }
 
 :host([variant="primary"]) .#{$p-global-class-prefix}button:focus {
-  outline-color: $p-color-brand;
+  outline-color: $p-color-brand !important;
 }
 
 :host([theme="dark"][variant="primary"]) .#{$p-global-class-prefix}button:focus {
-  outline-color: $p-color-theme-dark-brand;
+  outline-color: $p-color-theme-dark-brand !important;
 }
 
 .#{$p-global-class-prefix}button {
