@@ -34,11 +34,11 @@ describe('tabs-bar', () => {
 
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map((_, i) => `<button>Tab ${i + 1}</button>`)
+    .map((_, i) => `<button>Tab Button ${i + 1}</button>`)
     .join('')}
-</p-tabs-bar>${otherMarkup}`;
+</p-tabs-bar>${otherMarkup ?? ''}`;
 
-    return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 400px">${content}</div>` : content);
+    return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
   };
 
   const getAllButtons = () => page.$$('button');
@@ -50,8 +50,11 @@ describe('tabs-bar', () => {
     const actionNext = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
     return { actionPrev, actionNext };
   };
-  const getPrevButton = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
-  const getNextButton = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
+  const getNextPrevButton = async () => {
+    const prevButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
+    return { prevButton, nextButton };
+  };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
   const getClassList = async (element: ElementHandle): Promise<string[]> =>
     Object.values(await getProperty(element, 'classList'));
@@ -92,98 +95,64 @@ describe('tabs-bar', () => {
   });
 
   describe('scrollArea', () => {
-    it('should render scroll 20% on Button next', async () => {
+    const clickButton = async (el: ElementHandle) => {
+      await el.click();
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    };
+
+    it('should scroll by 20% on button prev/next click', async () => {
       await initTabsBar({ isWrapped: true });
-      const nextButton = await getNextButton();
+      const { prevButton, nextButton } = await getNextPrevButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
       const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
-      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-    });
-
-    it('should render scroll 20% on Button prev', async () => {
-      await initTabsBar({ isWrapped: true });
-      const nextButton = await getNextButton();
-      const prevButton = await getPrevButton();
-      const scrollArea = await getScrollArea();
-      const scrollAreaWidth = await getProperty(scrollArea, 'offsetWidth');
-      const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
-
-      expect(await getScrollLeft(scrollArea)).toEqual(0);
-
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(nextButton);
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(nextButton);
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
-      await prevButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(prevButton);
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
-      await prevButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(prevButton);
       expect(await getScrollLeft(scrollArea)).toEqual(0);
     });
 
-    it('should scroll to max scroll-position on next click', async () => {
+    it('should scroll to max scroll-position on multiple next clicks', async () => {
       await initTabsBar({ amount: 6, isWrapped: true });
       const [firstButton] = await getAllButtons();
-      const nextButton = await getNextButton();
+      const { nextButton } = await getNextPrevButton();
       const scrollArea = await getScrollArea();
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
-      await nextButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await clickButton(nextButton);
+      await clickButton(nextButton);
+      await clickButton(nextButton);
+      await clickButton(nextButton);
+      await clickButton(nextButton);
 
       const scrollPosition = await getScrollLeft(scrollArea);
 
-      await firstButton.click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
-      const scrollMax = await page.evaluate((): number => {
-        const scrollArea = document.querySelector('p-tabs-bar').shadowRoot.querySelector('.p-tabs-bar__scroll-area');
-        scrollArea.scrollTo({ left: scrollArea.scrollWidth });
-        return scrollArea.scrollLeft;
+      await clickButton(firstButton);
+      const scrollMax = await scrollArea.evaluate((el): number => {
+        el.scrollTo({ left: el.scrollWidth });
+        return el.scrollLeft;
       });
 
       expect(scrollPosition).toEqual(scrollMax);
     });
 
-    it('should render correct scroll-position on selected tab', async () => {
+    it('should scroll to correct position initially', async () => {
       await initTabsBar({ activeTabIndex: 3, isWrapped: true });
       const allButtons = await getAllButtons();
       const selectedTabOffset = await getProperty(allButtons[3], 'offsetLeft');
-      const gradient = await getGradientNext();
-      const gradientWidth = await getProperty(gradient, 'offsetWidth');
+      const gradientWidth = await getProperty(await getGradientNext(), 'offsetWidth');
       const scrollArea = await getScrollArea();
       const scrollDistance = +selectedTabOffset - +gradientWidth + FOCUS_PADDING;
 
@@ -192,7 +161,7 @@ describe('tabs-bar', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
     });
 
-    it('should render correct scroll-position on tab click', async () => {
+    it('should scroll to correct position on tab click', async () => {
       await initTabsBar({ isWrapped: true });
       const allButtons = await getAllButtons();
       const gradient = await getGradientNext();
@@ -202,25 +171,19 @@ describe('tabs-bar', () => {
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      await allButtons[4].click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(allButtons[4]);
       const tab3offset = await getProperty(allButtons[4], 'offsetLeft');
       const scrollDistanceRight = +tab3offset - +gradientWidth + FOCUS_PADDING;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
-      await allButtons[3].click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
+      await clickButton(allButtons[3]);
       const tab2offset = await getProperty(allButtons[3], 'offsetLeft');
       const tabWidth = await getProperty(allButtons[3], 'offsetWidth');
       const scrollDistanceLeft = +tab2offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
 
-    it('should render correct selected tab on scrollArea click', async () => {
+    it('should have correct selected tab on scrollArea click', async () => {
       await initTabsBar({ amount: 4, activeTabIndex: 3 });
       const allButtons = await getAllButtons();
       const scrollArea = await getScrollArea();
@@ -238,19 +201,17 @@ describe('tabs-bar', () => {
       expect(await getAttribute(allButtons[3], 'aria-selected')).toBe('true');
     });
 
-    it('should render same offsetLeft on Statusbar and active tab', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 2, isWrapped: true });
-      const allButtons = await getAllButtons();
+    it('should have same offsetLeft on statusbar and active tab', async () => {
+      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true });
+      const [firstButton, , thirdButton] = await getAllButtons();
       const statusBar = await getStatusBar();
-      const tab3Position = (await getElementPositions(page, allButtons[2])).left;
+      const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
 
-      expect(Math.round(tab3Position)).toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
+      expect(Math.round(thirdButtonPosition)).toEqual(Math.floor((await getElementPositions(page, statusBar)).left));
 
-      await allButtons[0].click();
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      await clickButton(firstButton);
 
-      expect((await getElementPositions(page, allButtons[0])).left).toEqual(
+      expect((await getElementPositions(page, firstButton)).left).toEqual(
         Math.floor((await getElementPositions(page, statusBar)).left)
       );
     });
