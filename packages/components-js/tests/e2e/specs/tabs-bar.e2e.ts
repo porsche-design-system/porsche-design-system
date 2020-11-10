@@ -45,22 +45,23 @@ describe('tabs-bar', () => {
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
-  const getActionPrevContainer = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev');
-  const getActionNextContainer = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
-  const getPrevButton = async () =>
-    (await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev')).$('.p-tabs-bar__action--prev > p-button-pure');
-  const getNextButton = async () =>
-    (await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next ')).$(
-      '.p-tabs-bar__action--next > p-button-pure'
-    );
+  const getActionContainers = async () => {
+    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev');
+    const actionNext = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
+    return { actionPrev, actionNext };
+  };
+  const getPrevButton = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
+  const getNextButton = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
+  const getClassList = async (element: ElementHandle): Promise<string[]> =>
+    Object.values(await getProperty(element, 'classList'));
   const getElementFocus = async (elementIndex: number): Promise<boolean> => {
     const snapshot = await page.accessibility.snapshot();
     const element = snapshot.children[elementIndex];
     return element.focused;
   };
 
-  it('should render correct active tab if attribute is set ', async () => {
+  it('should render correct active tab if activeTabIndex is set ', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
     const allButtons = await getAllButtons();
     await page.waitForTimeout(40); // class gets set through js, this takes a little time
@@ -395,44 +396,41 @@ describe('tabs-bar', () => {
   });
 
   describe('next/prev buttons', () => {
+    const hiddenClass = 'p-tabs-bar__action--hidden';
+
     it('should render arrow only on horizontal scroll', async () => {
       await initTabsBar({ amount: 5, activeTabIndex: 1, otherMarkup: '<div style="height: 120vh"></div>' });
-
-      const actionPrev = await getActionPrevContainer();
-      const actionNext = await getActionNextContainer();
+      const { actionPrev, actionNext } = await getActionContainers();
 
       await page.evaluate(() => window.scroll(0, 20));
       await waitForStencilLifecycle(page);
 
-      expect(Object.values(await getProperty(actionPrev, 'classList'))).toContain('p-tabs-bar__action--hidden');
-      expect(Object.values(await getProperty(actionNext, 'classList'))).toContain('p-tabs-bar__action--hidden');
+      expect(await getClassList(actionPrev)).toContain(hiddenClass);
+      expect(await getClassList(actionNext)).toContain(hiddenClass);
     });
 
     it('should only render next button', async () => {
       await initTabsBar({ amount: 4, isWrapped: true });
-      const actionPrev = await getActionPrevContainer();
-      const actionNext = await getActionNextContainer();
+      const { actionPrev, actionNext } = await getActionContainers();
 
-      expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
-      expect(Object.values(await getProperty(actionPrev, 'classList'))).toContain('p-tabs-bar__action--hidden');
+      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+      expect(await getClassList(actionPrev)).toContain(hiddenClass);
     });
 
     it('should only render prev button', async () => {
       await initTabsBar({ amount: 4, activeTabIndex: 3, isWrapped: true });
-      const actionPrev = await getActionPrevContainer();
-      const actionNext = await getActionNextContainer();
+      const { actionPrev, actionNext } = await getActionContainers();
 
-      expect(Object.values(await getProperty(actionNext, 'classList'))).toContain('p-tabs-bar__action--hidden');
-      expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+      expect(await getClassList(actionNext)).toContain(hiddenClass);
+      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
     });
 
     it('should only render prev and next button', async () => {
       await initTabsBar({ amount: 7, activeTabIndex: 1, isWrapped: true });
-      const actionNext = await getActionNextContainer();
-      const actionPrev = await getActionPrevContainer();
+      const { actionPrev, actionNext } = await getActionContainers();
 
-      expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
-      expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
     });
   });
 
