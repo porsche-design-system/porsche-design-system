@@ -4,13 +4,14 @@ import {
   getAttribute,
   getBrowser,
   getElementPositions,
-  getProperty,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
   reattachElement,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
+import { expectedStyleOnFocus } from '../constants';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
@@ -24,7 +25,9 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
+  const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
+  const getAllLinks = () => page.$$('a');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
@@ -593,5 +596,59 @@ describe('tabs-bar', () => {
 
     expect(Object.values(await getProperty(actionNext, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
     expect(Object.values(await getProperty(actionPrev, 'classList'))).not.toContain('p-tabs-bar__action--hidden');
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <button> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-tabs-bar>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</a>
+      </p-tabs-bar>`
+      );
+
+      const host = await getHost();
+      const buttons = await getAllButtons();
+
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({color: 'default'}));
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({color: 'default'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+    });
+
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-tabs-bar>
+        <a href="#">Content1</a>
+        <a href="#">Content2</a>
+        <a href="#">Content3</a>
+      </p-tabs-bar>`
+      );
+
+      const host = await getHost();
+      const links = await getAllLinks();
+
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({color: 'default'}));
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({color: 'default'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(500); // we need to wait for inherited color transition
+
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+    });
   });
 });

@@ -16,7 +16,8 @@
   padding: 0 !important;
   box-sizing: border-box !important;
   appearance: none !important;
-  outline: none transparent !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 1px !important;
   text-decoration: none !important;
   text-align: left !important;
   border: 0 !important;
@@ -59,8 +60,7 @@
 
 ::slotted(a:focus),
 ::slotted(button:focus) {
-  outline-offset: 1px !important;
-  outline: $p-color-state-focus solid 1px !important;
+  outline-color: $p-color-state-focus !important;
 }
 
 :host([theme="dark"]) ::slotted(a:focus),
