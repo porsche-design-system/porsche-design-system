@@ -29,7 +29,7 @@ In order to maintain a homogeneous look and feel not only within your product bu
 
 ## Alignment
 
-To ensure general consistency across all user flows, we recommend aligning the buttons to the left. The CTA should also always be placed on the left. 
+To ensure general consistency across all user flows, we recommend aligning the buttons to the left. The CTA should also always be placed on the left. ([Porsche usability testing](https://dovetailapp.com/projects/a6290073-31f1-413f-b8a0-139dd70c86cd/readme)). 
 
 ### Left alignment (F-shaped reading pattern)
 
@@ -61,7 +61,7 @@ On smaller viewports up to 479 px screen width Buttons are always to be placed s
 
 ## Button groups
 
-Sometimes it makes sense to offer two or more actions at once. This can be realized by providing a Button group. When doing so, make sure to follow these principles:
+Sometimes it makes sense to offer two or more actions at once. This can be realized by providing a Button group. When doing so, make sure to follow these principles ([Porsche usability testing](https://dovetailapp.com/projects/a6290073-31f1-413f-b8a0-139dd70c86cd/readme)):
 
 ### Spacing in Button groups
 
