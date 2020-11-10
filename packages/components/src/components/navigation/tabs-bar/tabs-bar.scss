@@ -161,9 +161,9 @@
   Needed for position of status bar. */
   &__scroll-wrapper {
     display: inline-block;
-    vertical-align: top;
     position: relative;
-    padding-bottom: 0.5em;
+    padding: 0 0 0.5em;
+    min-width: 100%;
 
     &__trigger {
       display: block;
