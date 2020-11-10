@@ -26,9 +26,10 @@ export default class Footer extends Vue {
 @import '../styles/internal.variables';
 
 a {
-  outline: none;
   text-decoration: underline;
   color: $p-color-default;
+  outline: transparent solid 1px;
+  outline-offset: 1px;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
   &:hover {
@@ -36,8 +37,7 @@ a {
   }
 
   &:focus {
-    outline-offset: 1px;
-    outline: $p-color-state-focus solid 1px;
+    outline-color: $p-color-state-focus;
   }
 }
 </style>
