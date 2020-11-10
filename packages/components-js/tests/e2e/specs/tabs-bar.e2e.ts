@@ -24,7 +24,7 @@ describe('tabs-bar', () => {
   });
   afterEach(async () => await page.close());
 
-  const initTabsBar = (opts?: {
+  const initTabsBar = async (opts?: {
     amount?: number;
     activeTabIndex?: number;
     isWrapped?: boolean;
@@ -38,7 +38,7 @@ describe('tabs-bar', () => {
     .join('')}
 </p-tabs-bar>${otherMarkup ?? ''}`;
 
-    return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
   };
 
   const getAllButtons = () => page.$$('button');
