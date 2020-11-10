@@ -9,7 +9,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
-import { ConsoleMessage, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import { CSS_ANIMATION_DURATION, FOCUS_PADDING } from './tabs-bar.e2e';
 
 describe('tabs', () => {
@@ -20,7 +20,7 @@ describe('tabs', () => {
   });
   afterEach(async () => await page.close());
 
-  const initTabs = (opts?: { amount?: number; activeTabIndex?: number }) => {
+  const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
     const { amount = 3, activeTabIndex } = opts ?? {};
 
     const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
@@ -29,12 +29,14 @@ describe('tabs', () => {
     .join('')}
 </p-tabs>`;
 
-    return setContentWithDesignSystem(page, content);
+    await setContentWithDesignSystem(page, content);
   };
 
+  const getTabs = () => selectNode(page, 'p-tabs');
   const getAllTabsItems = () => page.$$('p-tabs-item');
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
+  const getHidden = (element: ElementHandle) => getAttribute(element, 'hidden');
 
   it('should render', async () => {
     await initTabs();
@@ -43,43 +45,63 @@ describe('tabs', () => {
     expect(allTabs.length).toBe(3);
   });
 
-  it('should render correct content of tabs-item on click', async () => {
+  it('should render correct tabs-item on click', async () => {
     await initTabs();
 
-    const [firstTabItem, secondTabItem] = await getAllTabsItems();
-    const allTabs = await getAllTabs();
+    const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+    const [, secondTab] = await getAllTabs();
 
-    expect(await getAttribute(firstTabItem, 'hidden')).toBeNull();
-    expect(await getAttribute(secondTabItem, 'hidden')).toBe('');
+    expect(await getHidden(firstTabsItem)).toBeNull();
+    expect(await getHidden(secondTabsItem)).toBe('');
 
-    await allTabs[1].click();
+    await secondTab.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getAttribute(firstTabItem, 'hidden')).toBe('');
-    expect(await getAttribute(secondTabItem, 'hidden')).toBeNull();
+    expect(await getHidden(firstTabsItem)).toBe('');
+    expect(await getHidden(secondTabsItem)).toBeNull();
   });
 
   it('should render updated tabs when tab label is changed', async () => {
     await initTabs();
-    const allTabsItems = await getAllTabsItems();
-    const allTabs = await getAllTabs();
-    const getLabelOfFirstButton = () => getProperty(allTabs[0], 'innerHTML');
-    const getLabelOfFirstTabItem = () => getProperty(allTabsItems[0], 'label');
+    const [firstTabsItem] = await getAllTabsItems();
+    const [firstTab] = await getAllTabs();
+    const getLabelOfFirstButton = () => getProperty(firstTab, 'innerHTML');
+    const getLabelOfFirstTabItem = () => getProperty(firstTabsItem, 'label');
 
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
 
-    await allTabsItems[0].evaluate((el) => el.setAttribute('label', 'newButtonName'));
+    await firstTabsItem.evaluate((el) => el.setAttribute('label', 'newButtonName'));
     await waitForStencilLifecycle(page);
 
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
   });
 
-  it('should respect changes of activeTabIndex', () => {
-    expect(true).toBe(false);
+  it('should respect changes to activeTabIndex', async () => {
+    await initTabs();
+    const host = await getTabs();
+    const [firstTabsItem, secondTabsItem, thirdTabsItem] = await getAllTabsItems();
+    const setActiveTabIndex = async (index: number) => {
+      await host.evaluate((el, index: number) => el.setAttribute('active-tab-index', String(index)), index);
+      await waitForStencilLifecycle(page);
+    };
+
+    expect(await getHidden(firstTabsItem)).toBeNull();
+    expect(await getHidden(secondTabsItem)).toBe('');
+    expect(await getHidden(thirdTabsItem)).toBe('');
+
+    await setActiveTabIndex(2);
+    expect(await getHidden(firstTabsItem)).toBe('');
+    expect(await getHidden(secondTabsItem)).toBe('');
+    expect(await getHidden(thirdTabsItem)).toBeNull();
+
+    await setActiveTabIndex(1);
+    expect(await getHidden(firstTabsItem)).toBe('');
+    expect(await getHidden(secondTabsItem)).toBeNull();
+    expect(await getHidden(thirdTabsItem)).toBe('');
   });
 
   // TODO: remove?
-  xit('should render correct tab when selected attribute is set', async () => {
+  xit('should display correct tab when selected attribute is set', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -104,7 +126,7 @@ describe('tabs', () => {
   });
 
   // TODO: remove?
-  xit('should render correct selected tab when multiple tabs have selected attribute', async () => {
+  xit('should display correct tab when multiple tabs have selected attribute', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -129,26 +151,26 @@ describe('tabs', () => {
   });
 
   describe('keyboard', () => {
-    it('should render correct content of tabs-item on keyboard arrow press', async () => {
+    it('should display correct tabs-item on keyboard arrow press', async () => {
       await initTabs();
-      const [firstTabItem, secondTabItem] = await getAllTabsItems();
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(firstTabItem, 'hidden')).toBe('');
-      expect(await getAttribute(secondTabItem, 'hidden')).toBeNull();
+      expect(await getHidden(firstTabsItem)).toBe('');
+      expect(await getHidden(secondTabsItem)).toBeNull();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await getAttribute(firstTabItem, 'hidden')).toBeNull();
-      expect(await getAttribute(secondTabItem, 'hidden')).toBe('');
+      expect(await getHidden(firstTabsItem)).toBeNull();
+      expect(await getHidden(secondTabsItem)).toBe('');
     });
 
     // TODO: move to tabs-bar or delete?
-    xit('should render correct scroll-position on keyboard arrow press', async () => {
+    xit('should have correct scroll-position on keyboard arrow press', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -201,9 +223,9 @@ describe('tabs', () => {
   });
 
   describe('events', () => {
-    it('should trigger event on tab click', async () => {
+    it('should trigger tabChange event on tab click', async () => {
       await initTabs({ activeTabIndex: 1 }); // start with other index than first
-      const host = await selectNode(page, 'p-tabs');
+      const host = await getTabs();
       const [firstButton, secondButton, thirdButton] = await getAllTabs();
       let eventCounter = 0;
       await addEventListener(host, 'tabChange', () => eventCounter++);
@@ -227,7 +249,7 @@ describe('tabs', () => {
       expect(eventCounter).toBe(3);
     });
 
-    it('should not dispatch event initially', async () => {
+    it('should not dispatch tabChange event initially', async () => {
       const COUNTER_KEY = 'pdsEventCounter';
       await setContentWithDesignSystem(page, ''); // empty page
 
