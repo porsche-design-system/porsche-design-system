@@ -95,7 +95,9 @@
   text-decoration: none !important;
   color: inherit !important;
   line-height: inherit !important;
+  outline: transparent none !important;
 }
+
 ::slotted(a)::before {
   content: "" !important;
   position: absolute !important;
@@ -104,14 +106,18 @@
   right: 0 !important;
   bottom: 0 !important;
   display: block !important;
-  outline: transparent none !important;
-}
-::slotted(a:focus) {
-  outline: none !important;
-}
-::slotted(a:focus)::before {
+  outline: transparent solid 1px !important;
   outline-offset: 1px !important;
-  outline: $p-color-state-focus solid 1px !important;
+}
+
+::slotted(a:focus)::before,
+.#{$p-global-class-prefix}link-pure:focus::before {
+  outline-color: $p-color-state-focus !important;
+}
+
+:host([theme="dark"]) ::slotted(a:focus)::before,
+:host([theme="dark"]) .#{$p-global-class-prefix}link-pure:focus::before {
+  outline-color: $p-color-theme-dark-state-focus !important;
 }
 
 ::slotted(p) {
@@ -143,7 +149,8 @@
     right: 0;
     bottom: 0;
     display: block;
-    outline: transparent none;
+    outline: transparent solid 1px;
+    outline-offset: 1px;
   }
 
   &:not(a)::before {
@@ -154,20 +161,10 @@
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &:focus::before {
-    outline-width: 1px;
-    outline-style: solid;
-    outline-offset: 1px;
-  }
-
   &--theme-light {
     color: $p-color-default;
     + * {
       color: $p-color-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-state-focus;
     }
 
     &:active {
@@ -196,10 +193,6 @@
     color: $p-color-theme-dark-default;
     + * {
       color: $p-color-theme-dark-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-theme-dark-state-focus;
     }
 
     &:active {
