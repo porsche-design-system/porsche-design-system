@@ -215,7 +215,7 @@ describe('tabs-bar', () => {
     });
 
     describe('when not wrapped', () => {
-      it('should render statusBarStyle initially', async () => {
+      it('should set correct statusBarStyle initially', async () => {
         await initTabsBar({ amount: 3 });
         const [firstButton] = await getAllButtons();
         const statusBar = await getStatusBar();
@@ -223,7 +223,7 @@ describe('tabs-bar', () => {
         expect(await getOffsetWidth(statusBar)).toBe(await getOffsetWidth(firstButton));
       });
 
-      it('should render statusBarStyle initially with last index', async () => {
+      it('should set correct statusBarStyle initially with last index', async () => {
         await initTabsBar({ amount: 3, activeTabIndex: 2 });
         const [lastButton] = (await getAllButtons()).slice(-1);
         const statusBar = await getStatusBar();
@@ -233,7 +233,7 @@ describe('tabs-bar', () => {
     });
 
     describe('when wrapped', () => {
-      it('should render statusBarStyle initially', async () => {
+      it('should set correct statusBarStyle initially', async () => {
         await initTabsBar({ isWrapped: true });
         const [firstButton] = await getAllButtons();
         const statusBar = await getStatusBar();
@@ -241,7 +241,7 @@ describe('tabs-bar', () => {
         expect(await getOffsetWidth(statusBar)).toBe(await getOffsetWidth(firstButton));
       });
 
-      it('should render statusBarStyle initially with last index', async () => {
+      it('should set correct statusBarStyle initially with last index', async () => {
         await initTabsBar({ isWrapped: true, activeTabIndex: 7 });
         const [lastButton] = (await getAllButtons()).slice(-1);
         const statusBar = await getStatusBar();
