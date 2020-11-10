@@ -223,12 +223,11 @@
     }
 
     &--hidden {
-      display: none;
+      visibility: hidden; // to make offsetWidth work
     }
   }
 
   &__gradient {
-    content: '';
     position: absolute;
     top: -4px;
     bottom: -0.5em;
