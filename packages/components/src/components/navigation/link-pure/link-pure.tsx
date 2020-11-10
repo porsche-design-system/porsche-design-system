@@ -143,12 +143,12 @@ export class LinkPure {
       right: 0 !important;
       bottom: 0 !important;
       display: block !important;
-      outline: transparent none !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
 
     ${tagName} a:focus::before {
-      outline-offset: 1px !important;
-      outline: currentColor solid 1px !important;
+      outline-color: currentColor !important;
     }`;
 
     insertSlottedStyles(this.host, style);
