@@ -74,34 +74,26 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    if (this.hasTabsElements) {
-      this.sanitizeActiveTabIndex();
-      this.setAccessibilityAttributes();
-      this.initMutationObserver();
-    }
+    this.sanitizeActiveTabIndex();
+    this.setAccessibilityAttributes();
+    this.initMutationObserver();
   }
 
   public componentDidRender(): void {
-    if (this.hasTabsElements) {
-      this.setStatusBarStyle();
-    }
+    this.setStatusBarStyle();
   }
 
   public componentDidLoad(): void {
-    if (this.hasTabsElements) {
-      this.defineHTMLElements();
-      this.scrollActiveTabIntoView({ skipAnimation: true });
-      this.setStatusBarStyle(); // needed when intersection observer does not trigger because all tabs are visible
-      this.addEventListeners();
-      this.initIntersectionObserver();
-    }
+    this.defineHTMLElements();
+    this.scrollActiveTabIntoView({ skipAnimation: true });
+    this.setStatusBarStyle(); // needed when intersection observer does not trigger because all tabs are visible
+    this.addEventListeners();
+    this.initIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
-    if (this.hasTabsElements) {
-      this.hostObserver.disconnect();
-      this.intersectionObserver.disconnect();
-    }
+    this.hostObserver.disconnect();
+    this.intersectionObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -171,18 +163,14 @@ export class TabsBar {
     );
   };
 
-  private get hasTabsElements(): boolean {
-    return this.tabElements.length > 0;
-  }
-
   private sanitizeActiveTabIndex = (index: number = this.activeTabIndex): void => {
     const minIndex = 0;
-    const maxIndex = this.tabElements.length - 1;
+    const maxIndex = this.tabElements.length - 1; // can be -1 without children
 
-    if (index > maxIndex) {
-      this.activeTabIndex = maxIndex;
-    } else if (index < minIndex) {
+    if (maxIndex < 0 || index < minIndex) {
       this.activeTabIndex = 0;
+    } else if (index > maxIndex) {
+      this.activeTabIndex = maxIndex;
     } else {
       this.activeTabIndex = index;
     }
@@ -318,7 +306,7 @@ export class TabsBar {
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
     const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
-    const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex];
+    const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
 
     let scrollPosition: number;
     if (this.direction === 'next') {
