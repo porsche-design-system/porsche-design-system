@@ -1,13 +1,14 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser,
+  getBrowser, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
+  selectNode, setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { expectedStyleOnFocus } from '../constants';
 
 describe('link social', () => {
   let page: Page;
@@ -20,6 +21,7 @@ describe('link social', () => {
 
   const getLinkSocialHost = () => selectNode(page, 'p-link-social');
   const getLinkSocialRealLink = () => selectNode(page, 'p-link-social >>> a');
+  const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
@@ -166,5 +168,41 @@ describe('link social', () => {
       linkElement.blur();
     });
     expect(await linkHasFocus()).toBe(false);
+  });
+
+  describe('focus state', () => {
+    it('should show outline of shadowed <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-social icon="logo-facebook" href="#">Some label</p-link-social>`
+      );
+
+      const host = await getLinkSocialHost();
+      const link = await getLinkSocialRealLink();
+
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'default'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+    });
+
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-link-social icon="logo-facebook">
+          <a href="#">Some label</a>
+        </p-link-social>`
+      );
+
+      const host = await getLinkSocialHost();
+      const link = await getSlottedLink();
+
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+    });
   });
 });
