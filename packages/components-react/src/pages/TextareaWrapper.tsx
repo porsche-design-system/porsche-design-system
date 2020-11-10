@@ -131,12 +131,6 @@ export const TextareaWrapperPage = (): JSX.Element => {
         </TextareaWrapper>
       </div>
 
-      <div className="playground light" title="should render in focus state">
-        <TextareaWrapper label="Some label">
-          <textarea id="test-focus-state" name="some-name" style={{ caretColor: 'transparent' }} />
-        </TextareaWrapper>
-      </div>
-
       <div
         className="playground light"
         title="should render with multiline label, description and message and cut off too long option text"

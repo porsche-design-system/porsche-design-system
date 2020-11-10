@@ -138,14 +138,6 @@ export const LinkPage = (): JSX.Element => {
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </Link>
       </div>
-
-      <div className="playground light" title="should render with explicit anchor tag">
-        <Link>
-          <a href="https://www.porsche.com" id="test-focus-state">
-            Some label
-          </a>
-        </Link>
-      </div>
     </>
   );
 };

@@ -111,15 +111,6 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render in focus state">
-      <p-radio-button-wrapper [label]="'Some label'">
-        <input id="test-focus-state" type="radio" name="some-name-10" />
-      </p-radio-button-wrapper>
-      <p-radio-button-wrapper [label]="'Some label'">
-        <input type="radio" name="some-name-10" />
-      </p-radio-button-wrapper>
-    </div>
-
     <div class="playground light" title="should render with multiline label">
       <p-radio-button-wrapper
         [state]="'error'"
