@@ -72,8 +72,13 @@ export const getElementStyle = async (
 ): Promise<string> =>
   element.evaluate(
     async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> => {
-      const style = getComputedStyle(el, opts.pseudo ? opts.pseudo : null);
-      if (opts?.waitForTransition) {
+      const options: GetElementStyleOptions = {
+        waitForTransition: false,
+        pseudo: null,
+        ...opts
+      }
+      const style = getComputedStyle(el, options.pseudo);
+      if (options.waitForTransition) {
         await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
       }
       return style[property].toString();
