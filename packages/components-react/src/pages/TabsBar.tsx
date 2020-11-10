@@ -5,7 +5,7 @@ export const TabsBarPage = (): JSX.Element => {
   const renderTabs = (amount: number) =>
     Array.from(Array(amount)).map((_, i) => (
       <a key={i} href="#">
-        Tab ${i + 1}
+        Tab {i + 1}
       </a>
     ));
 

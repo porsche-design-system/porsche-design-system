@@ -5,11 +5,7 @@ export const TabsPage = (): JSX.Element => {
   const renderTabs = (amount: number, wrapAtIndex?: number) =>
     Array.from(Array(amount)).map((_, i) => (
       <TabsItem key={i} label={`Tab ${i + 1}`}>
-        {wrapAtIndex && wrapAtIndex === i ? (
-          <div style={{ color: 'white' }}>Tab Content {i + 1}</div>
-        ) : (
-          `Tab Content ${i + 1}`
-        )}
+        {wrapAtIndex === i ? <div style={{ color: 'white' }}>Tab Content {i + 1}</div> : `Tab Content ${i + 1}`}
       </TabsItem>
     ));
 
