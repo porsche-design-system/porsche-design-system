@@ -154,6 +154,8 @@ export class RadioButtonWrapper {
       text-decoration: underline !important;
       -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
 
     ${tagName} a:hover {
@@ -161,8 +163,7 @@ export class RadioButtonWrapper {
     }
 
     ${tagName} a:focus {
-      outline: currentColor solid 1px !important;
-      outline-offset: 1px !important;
+      outline-color: currentColor !important;
     }`;
 
     insertSlottedStyles(this.host, style);
