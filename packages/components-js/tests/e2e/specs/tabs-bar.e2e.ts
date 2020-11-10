@@ -50,7 +50,7 @@ describe('tabs-bar', () => {
     const actionNext = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
     return { actionPrev, actionNext };
   };
-  const getNextPrevButton = async () => {
+  const getPrevNextButton = async () => {
     const prevButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
     const nextButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
     return { prevButton, nextButton };
@@ -105,7 +105,7 @@ describe('tabs-bar', () => {
 
     it('should scroll by 20% on button prev/next click', async () => {
       await initTabsBar({ isWrapped: true });
-      const { prevButton, nextButton } = await getNextPrevButton();
+      const { prevButton, nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
       const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
@@ -128,7 +128,7 @@ describe('tabs-bar', () => {
     it('should scroll to max scroll-position on multiple next clicks', async () => {
       await initTabsBar({ amount: 6, isWrapped: true });
       const [firstButton] = await getAllButtons();
-      const { nextButton } = await getNextPrevButton();
+      const { nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -426,6 +426,14 @@ describe('tabs-bar', () => {
 
       expect(await getClassList(actionNext)).not.toContain(hiddenClass);
       expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+    });
+
+    it('should not show prev/next button without children', async () => {
+      await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
+      const { actionPrev, actionNext } = await getActionContainers();
+
+      expect(await getClassList(actionNext)).toContain(hiddenClass);
+      expect(await getClassList(actionPrev)).toContain(hiddenClass);
     });
   });
 
