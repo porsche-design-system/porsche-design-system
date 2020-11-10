@@ -40,7 +40,7 @@ export class Tabs {
   }
 
   public disconnectedCallback(): void {
-    this.disconnectMutationObserver();
+    this.hostObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -105,10 +105,6 @@ export class Tabs {
       subtree: true,
       attributeFilter: ['label']
     });
-  };
-
-  private disconnectMutationObserver = (): void => {
-    this.hostObserver.disconnect();
   };
 
   private handleTabChange = (e: CustomEvent<TabChangeEvent>): void => {
