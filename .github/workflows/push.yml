@@ -165,11 +165,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'Mock Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-mocks
-          args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
