@@ -31,7 +31,7 @@ export class TabsBar {
   @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
+  @Prop({reflect: true}) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
