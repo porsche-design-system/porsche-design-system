@@ -85,11 +85,12 @@ export class Tabs {
 
       for (const [key, value] of Object.entries(attrs)) {
         tab.setAttribute(key, value);
-        if (+index === this.activeTabIndex) {
-          tab.removeAttribute('hidden');
-        } else {
-          tab.setAttribute('hidden', '');
-        }
+      }
+
+      if (+index === this.activeTabIndex) {
+        tab.removeAttribute('hidden');
+      } else {
+        tab.setAttribute('hidden', '');
       }
     }
   };
