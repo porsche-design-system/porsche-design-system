@@ -64,22 +64,20 @@ export class TabsBar {
     if (nameOfStateOrProp === 'activeTabIndex') {
       this.direction = newValue > oldValue ? 'next' : 'prev';
       this.scrollActiveTabIntoView();
+      this.setAccessibilityAttributes();
       this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
     }
     return true;
   }
 
-  public componentWillUpdate(): void {
-    this.setAccessibilityAttributes();
-  }
-
   public connectedCallback(): void {
-    this.sanitizeActiveTabIndex();
+    this.sanitizeActiveTabIndex(); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
     this.initMutationObserver();
   }
 
   public componentDidRender(): void {
+    // needs to happen after render in order to have status bar defined and proper calculation
     this.setStatusBarStyle();
   }
 
