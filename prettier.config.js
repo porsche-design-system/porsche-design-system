@@ -8,7 +8,7 @@ module.exports = {
   vueIndentScriptAndStyle: true,
   overrides: [
     {
-      files: ['**/*.css', '**/*.scss', '**/*.html'],
+      files: ['**/*.css', '**/*.scss'],
       options: {
         singleQuote: false
       }
