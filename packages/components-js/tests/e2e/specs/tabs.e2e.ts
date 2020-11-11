@@ -171,16 +171,22 @@ describe('tabs', () => {
       await waitForStencilLifecycle(page);
 
       // retrieve counted events from browser
-      const eventCounter: number = await page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+      const getCountedEvents = (): Promise<number> =>
+        page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
 
-      expect(eventCounter).toBe(0);
+      expect(await getCountedEvents()).toBe(0);
+
+      const [, secondButton] = await getAllTabs();
+      await secondButton.click();
+
+      expect(await getCountedEvents()).toBe(1);
     });
   });
 
   it('should not crash without children', async () => {
-    let lastConsoleMsg: ConsoleMessage = undefined;
+    const consoleMessages: ConsoleMessage[] = [];
     page.on('console', (msg) => {
-      lastConsoleMsg = msg;
+      consoleMessages.push(msg);
       if (msg.type() === 'error') {
         console.log(msg.args()[0]['_remoteObject'].description);
       }
@@ -188,6 +194,6 @@ describe('tabs', () => {
 
     await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
 
-    expect(lastConsoleMsg.type()).not.toBe('error');
+    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
   });
 });
