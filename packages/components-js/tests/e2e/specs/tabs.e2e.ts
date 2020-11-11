@@ -154,7 +154,7 @@ describe('tabs', () => {
       await page.evaluate((COUNTER_KEY: string) => {
         const el = document.createElement('p-tabs');
 
-        Array.from(Array(2)).forEach((x, i) => {
+        Array.from(Array(2)).forEach((_, i) => {
           const child = document.createElement('p-tabs-item');
           child.setAttribute('label', `Tab ${i + 1}`);
           child.innerText = `Content ${i + 1}`;
@@ -192,8 +192,12 @@ describe('tabs', () => {
       }
     });
 
-    await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
+    const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
-    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
+    await setContentWithDesignSystem(page, `<p-tabs></p-tabs>`);
+    expect(getErrorsAmount()).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getErrorsAmount()).toBe(1);
   });
 });

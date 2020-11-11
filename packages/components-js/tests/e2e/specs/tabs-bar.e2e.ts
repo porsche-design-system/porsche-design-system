@@ -396,7 +396,7 @@ describe('tabs-bar', () => {
       await page.evaluate((COUNTER_KEY: string) => {
         const el = document.createElement('p-tabs-bar');
 
-        Array.from(Array(2)).forEach((x, i) => {
+        Array.from(Array(2)).forEach((_, i) => {
           const child = document.createElement('button');
           child.innerText = `Tab ${i + 1}`;
           el.appendChild(child);
@@ -471,44 +471,52 @@ describe('tabs-bar', () => {
     });
   });
 
-  it('should not cause TypeError within scrollActiveTabIntoView', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        console.log(msg.args()[0]['_remoteObject'].description);
-      }
-    });
+  describe('errors', () => {
+    const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
 
-    await setContentWithDesignSystem(page, ''); // empty page
-    await page.evaluate(() => {
-      const el = document.createElement('p-tabs-bar');
-      el.setAttribute('active-tab-index', '-1');
-
-      Array.from(Array(2)).forEach((x, i) => {
-        const child = document.createElement('button');
-        child.innerText = `Content ${i + 1}`;
-        el.appendChild(child);
+    it('should not cause TypeError within scrollActiveTabIntoView', async () => {
+      const consoleMessages: ConsoleMessage[] = [];
+      page.on('console', (msg) => {
+        consoleMessages.push(msg);
+        if (msg.type() === 'error') {
+          console.log(msg.args()[0]['_remoteObject'].description);
+        }
       });
-      document.body.appendChild(el);
+
+      await setContentWithDesignSystem(page, ''); // empty page
+      await page.evaluate(() => {
+        const el = document.createElement('p-tabs-bar');
+        el.setAttribute('active-tab-index', '-1');
+
+        Array.from(Array(2)).forEach((_, i) => {
+          const child = document.createElement('button');
+          child.innerText = `Content ${i + 1}`;
+          el.appendChild(child);
+        });
+        document.body.appendChild(el);
+      });
+
+      await waitForStencilLifecycle(page);
+      expect(getErrorsAmount(consoleMessages)).toBe(0);
+
+      await page.evaluate(() => console.error('test error'));
+      expect(getErrorsAmount(consoleMessages)).toBe(1);
     });
 
-    await waitForStencilLifecycle(page);
+    it('should not crash without children', async () => {
+      const consoleMessages: ConsoleMessage[] = [];
+      page.on('console', (msg) => {
+        consoleMessages.push(msg);
+        if (msg.type() === 'error') {
+          console.log(msg.args()[0]['_remoteObject'].description);
+        }
+      });
 
-    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
-  });
+      await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
+      expect(getErrorsAmount(consoleMessages)).toBe(0);
 
-  it('should not crash without children', async () => {
-    const consoleMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      consoleMessages.push(msg);
-      if (msg.type() === 'error') {
-        console.log(msg.args()[0]['_remoteObject'].description);
-      }
+      await page.evaluate(() => console.error('test error'));
+      expect(getErrorsAmount(consoleMessages)).toBe(1);
     });
-
-    await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
-
-    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
   });
 });
