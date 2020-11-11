@@ -420,6 +420,7 @@ describe('tabs-bar', () => {
 
       const [, secondButton] = await getAllButtons();
       await secondButton.click();
+      await waitForStencilLifecycle(page);
 
       expect(await getCountedEvents()).toBe(1);
     });
