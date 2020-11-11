@@ -412,16 +412,22 @@ describe('tabs-bar', () => {
       await waitForStencilLifecycle(page);
 
       // retrieve counted events from browser
-      const eventCounter: number = await page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+      const getCountedEvents = (): Promise<number> =>
+        page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
 
-      expect(eventCounter).toBe(0);
+      expect(await getCountedEvents()).toBe(0);
+
+      const [, secondButton] = await getAllButtons();
+      await secondButton.click();
+
+      expect(await getCountedEvents()).toBe(1);
     });
   });
 
   describe('next/prev buttons', () => {
     const hiddenClass = 'p-tabs-bar__action--hidden';
 
-    it('should render arrow only on horizontal scroll', async () => {
+    it('should not show prev/next buttons only on vertical scroll', async () => {
       await initTabsBar({ amount: 5, activeTabIndex: 1, otherMarkup: '<div style="height: 120vh"></div>' });
       const { actionPrev, actionNext } = await getActionContainers();
 
@@ -432,7 +438,7 @@ describe('tabs-bar', () => {
       expect(await getClassList(actionNext)).toContain(hiddenClass);
     });
 
-    it('should only render next button', async () => {
+    it('should only show next button', async () => {
       await initTabsBar({ amount: 4, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
@@ -440,7 +446,7 @@ describe('tabs-bar', () => {
       expect(await getClassList(actionPrev)).toContain(hiddenClass);
     });
 
-    it('should only render prev button', async () => {
+    it('should only show prev button', async () => {
       await initTabsBar({ amount: 4, activeTabIndex: 3, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
@@ -448,7 +454,7 @@ describe('tabs-bar', () => {
       expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
     });
 
-    it('should only render prev and next button', async () => {
+    it('should show prev and next button', async () => {
       await initTabsBar({ amount: 7, activeTabIndex: 1, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
@@ -456,7 +462,7 @@ describe('tabs-bar', () => {
       expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
     });
 
-    it('should not show prev/next button without children', async () => {
+    it('should not show prev/next buttons without children', async () => {
       await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
       const { actionPrev, actionNext } = await getActionContainers();
 
@@ -466,9 +472,9 @@ describe('tabs-bar', () => {
   });
 
   it('should not cause TypeError within scrollActiveTabIntoView', async () => {
-    let lastConsoleMsg: ConsoleMessage = undefined;
+    const consoleMessages: ConsoleMessage[] = [];
     page.on('console', (msg) => {
-      lastConsoleMsg = msg;
+      consoleMessages.push(msg);
       if (msg.type() === 'error') {
         console.log(msg.args()[0]['_remoteObject'].description);
       }
@@ -489,13 +495,13 @@ describe('tabs-bar', () => {
 
     await waitForStencilLifecycle(page);
 
-    expect(lastConsoleMsg.type()).not.toBe('error');
+    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
   });
 
   it('should not crash without children', async () => {
-    let lastConsoleMsg: ConsoleMessage = undefined;
+    const consoleMessages: ConsoleMessage[] = [];
     page.on('console', (msg) => {
-      lastConsoleMsg = msg;
+      consoleMessages.push(msg);
       if (msg.type() === 'error') {
         console.log(msg.args()[0]['_remoteObject'].description);
       }
@@ -503,6 +509,6 @@ describe('tabs-bar', () => {
 
     await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
 
-    expect(lastConsoleMsg.type()).not.toBe('error');
+    expect(consoleMessages.filter((x) => x.type() === 'error').length).toBe(0);
   });
 });
