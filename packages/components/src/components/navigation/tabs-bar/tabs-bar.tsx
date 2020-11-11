@@ -84,7 +84,9 @@ export class TabsBar {
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.scrollActiveTabIntoView({ skipAnimation: true });
-    this.setStatusBarStyle(); // needed when intersection observer does not trigger because all tabs are visible
+    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // and first call in componentDidRender() is skipped because elements are not defined, yet
+    this.setStatusBarStyle();
     this.addEventListeners();
     this.initIntersectionObserver();
   }
