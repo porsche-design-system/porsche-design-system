@@ -45,6 +45,7 @@ export default class Header extends Vue {
 
 .link {
   display: inline-block;
+  color: $p-color-default;
   outline: transparent solid 1px;
   outline-offset: 1px;
 
