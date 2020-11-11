@@ -337,19 +337,19 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const input = await getTextFieldRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
 
       await setAttribute(input, 'readOnly', 'true');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent', offset: '2px'}));
     });
 
     it('should show outline of password toggle button when it is focused', async () => {
@@ -364,15 +364,15 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const toggle = await getTextFieldButton();
 
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-3px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {

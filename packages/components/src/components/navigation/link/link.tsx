@@ -57,11 +57,20 @@ export class Link {
       bottom: -1px !important;
       display: block !important;
       outline: transparent solid 1px !important;
-      outline-offset: 1px !important;
+      outline-offset: 2px !important;
     }
 
     ${tagName} a:focus::before {
-      outline-color: currentColor !important;
+      outline-color: #323639 !important;
+    }
+
+    ${tagName}[theme="dark"] a:focus::before {
+      outline-color: #fff !important;
+    }
+
+    ${tagName}[variant="primary"] a:focus::before,
+     ${tagName}[theme="dark"][variant="primary"] a:focus::before {
+      outline-color: #d5001c !important;
     }`;
 
     insertSlottedStyles(this.element, style);
