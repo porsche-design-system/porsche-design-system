@@ -1012,25 +1012,25 @@ describe('select-wrapper combobox', () => {
 
       expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral'}));
 
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
-
-      await setAttribute(host, 'theme', 'light');
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success'}));
 
-      await setAttribute(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
-
-      await setAttribute(host, 'theme', 'light');
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error'}));
 
       await setAttribute(host, 'theme', 'dark');
+
+      await setAttribute(host, 'state', 'none');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+
+      await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
     });

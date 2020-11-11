@@ -4,11 +4,10 @@ import {
   getAttribute, getStyleOnFocus,
   getBrowser,
   getCssClasses,
-  getElementStyle,
   getProperty,
   selectNode, setAttribute,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, waitForInheritedCSSTransition
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { expectedStyleOnFocus } from '../constants';
@@ -292,8 +291,7 @@ describe('radio-button-wrapper', () => {
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });

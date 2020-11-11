@@ -421,6 +421,20 @@ import { Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
+
+    <div
+      class="playground light"
+      title="should render in focus state and be open"
+      style="padding-bottom: calc(1rem + 126px)"
+    >
+      <p-select-wrapper [label]="'Some label'">
+        <select id="open-options" name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    </div>
   `
 })
 export class SelectWrapperComponent {}

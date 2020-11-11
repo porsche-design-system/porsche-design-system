@@ -2,7 +2,7 @@ import {
   getBrowser,
   getStyleOnFocus,
   selectNode, setAttribute,
-  setContentWithDesignSystem, waitForStencilLifecycle
+  setContentWithDesignSystem, waitForInheritedCSSTransition, waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { expectedStyleOnFocus } from '../constants';
@@ -33,8 +33,7 @@ describe('text', () => {
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });

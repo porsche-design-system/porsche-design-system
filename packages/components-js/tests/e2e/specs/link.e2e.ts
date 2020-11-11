@@ -181,7 +181,7 @@ describe('link', () => {
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
@@ -201,7 +201,7 @@ describe('link', () => {
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -220,7 +220,7 @@ describe('link', () => {
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
@@ -240,7 +240,7 @@ describe('link', () => {
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });

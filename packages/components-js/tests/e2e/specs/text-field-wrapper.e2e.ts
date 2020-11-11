@@ -7,7 +7,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle, setAttribute, getStyleOnFocus
+  waitForStencilLifecycle, setAttribute, getStyleOnFocus, waitForInheritedCSSTransition
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { expectedStyleOnFocus } from '../constants';
@@ -398,8 +398,7 @@ describe('text-field-wrapper', () => {
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });

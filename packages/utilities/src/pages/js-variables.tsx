@@ -30,14 +30,16 @@ export const JsVariables = (): JSX.Element => {
   const renderSquares = (colors: string[], theme: 'light' | 'dark' = 'light') => (
     <div>
       {colors.map((x, idx) => {
-        if (x === 'currentColor') {
-          return <Square key={idx} children={x} style={{
+        const style = x === 'currentColor'
+          ? {
             color: theme === 'light' ? 'black' : 'white',
             outline: `${x} solid 1px`,
             outlineOffset: '-5px'
-          }} />
-        }
-        return <Square key={idx} background={x} children={x} />
+          }
+          : null;
+        const background = x === 'currentColor' ? null : x;
+
+        return <Square key={idx} background={background} children={x} style={style} />
       })}
     </div>
   );

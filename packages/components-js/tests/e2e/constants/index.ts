@@ -6,7 +6,23 @@ type Options = {
   width?: string;
 };
 
-const colors = {
+type FocusColors = {
+  default: string;
+  neutral: string;
+  contrastHigh: string;
+  success: string;
+  error: string;
+  brand: string;
+  active: string;
+  transparent: string;
+}
+
+type Colors = {
+  light: FocusColors,
+  dark: FocusColors
+}
+
+const colors: Colors = {
   'light': {
     'default': 'rgb(0, 0, 0)',
     'neutral': 'rgb(98, 102, 105)',
@@ -38,8 +54,9 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     width: '1px',
     ...opts
   };
+  const {css, theme, color, width, offset} = options;
 
-  return options.css === 'boxShadow'
-    ? `${colors[options.theme][options.color]} 0px 0px 0px ${options.width}`
-    : `${colors[options.theme][options.color]} solid ${options.width} ${options.offset}`;
+  return css === 'boxShadow'
+    ? `${colors[theme][color]} 0px 0px 0px ${width}`
+    : `${colors[theme][color]} solid ${width} ${offset}`;
 }
