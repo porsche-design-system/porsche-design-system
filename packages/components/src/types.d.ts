@@ -14,7 +14,7 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 export type FormState = 'none' | 'error' | 'success';
 
 // Tabs Types
-export type TabChangeEvent = { activeTabIndex: number }; // TODO: rename to `tabIndex`?
+export type TabChangeEvent = { activeTabIndex: number };
 export type TabSize = 'small' | 'medium';
 export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 export type TabGradientColorTheme = 'default' | 'surface';
