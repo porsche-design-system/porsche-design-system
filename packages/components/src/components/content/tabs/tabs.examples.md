@@ -53,8 +53,7 @@ The background and gradient has to align to your chosen background.
 
 ## Active Tab
 
-You may need to change the initial active tab. To do so, use the `selected` property on the `p-tabs-item` you want to select on first render. 
-If you put the property on multiple `p-tabs-item` it will select the first .
+You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`.
 
 <Playground :markup="activeTab" :config="config"></Playground>
 
@@ -63,7 +62,7 @@ If you put the property on multiple `p-tabs-item` it will select the first .
   import Component from 'vue-class-component';
   
   const buildTabsItem = (name: string, index: number) => 
-`  <p-tabs-item label="Tab ${name}"${index === 1 ? ' selected' : ''}>
+`  <p-tabs-item label="Tab ${name}">
     <p-text>Tab Content ${name}</p-text>
   </p-tabs-item>`;
   
@@ -100,8 +99,8 @@ ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
     }
     
     activeTab =
-`<p-tabs>
-${['One', 'Two', 'Three'].map(buildTabsItem).join('\n').replace(/(label="Tab One")/, '$1 selected')}
+`<p-tabs active-tab-index="1">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
 </p-tabs>`;
   }
 </script>

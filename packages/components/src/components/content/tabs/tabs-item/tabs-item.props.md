@@ -7,7 +7,6 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                     | Type      | Default     |
-| ---------- | ---------- | ------------------------------- | --------- | ----------- |
-| `label`    | `label`    | Defines the label used in tabs. | `string`  | `undefined` |
-| `selected` | `selected` |                                 | `boolean` | `undefined` |
+| Property | Attribute | Description                     | Type     | Default     |
+| -------- | --------- | ------------------------------- | -------- | ----------- |
+| `label`  | `label`   | Defines the label used in tabs. | `string` | `undefined` |

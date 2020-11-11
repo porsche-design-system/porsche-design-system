@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 export namespace Components {
     interface PBanner {
@@ -547,13 +547,17 @@ export namespace Components {
     }
     interface PTabs {
         /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * The text size.
          */
-        "size"?: 'small' | 'medium';
+        "size"?: BreakpointCustomizable<TabSize>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -561,7 +565,7 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+        "weight"?: TabWeight;
     }
     interface PTabsBar {
         /**
@@ -571,11 +575,11 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
+        "size"?: BreakpointCustomizable<TabSize>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -583,14 +587,13 @@ export namespace Components {
         /**
           * The text weight.
          */
-        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+        "weight"?: TabWeight;
     }
     interface PTabsItem {
         /**
           * Defines the label used in tabs.
          */
         "label": string;
-        "selected"?: boolean;
     }
     interface PText {
         /**
@@ -1457,9 +1460,13 @@ declare namespace LocalJSX {
     }
     interface PTabs {
         /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */
@@ -1467,7 +1474,7 @@ declare namespace LocalJSX {
         /**
           * The text size.
          */
-        "size"?: 'small' | 'medium';
+        "size"?: BreakpointCustomizable<TabSize>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1475,7 +1482,7 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+        "weight"?: TabWeight;
     }
     interface PTabsBar {
         /**
@@ -1485,7 +1492,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: 'default' | 'surface';
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */
@@ -1493,7 +1500,7 @@ declare namespace LocalJSX {
         /**
           * The text size.
          */
-        "size"?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>>;
+        "size"?: BreakpointCustomizable<TabSize>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1501,14 +1508,13 @@ declare namespace LocalJSX {
         /**
           * The text weight.
          */
-        "weight"?: Extract<TextWeight, 'regular' | 'semibold'>;
+        "weight"?: TabWeight;
     }
     interface PTabsItem {
         /**
           * Defines the label used in tabs.
          */
         "label"?: string;
-        "selected"?: boolean;
     }
     interface PText {
         /**
