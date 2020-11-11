@@ -178,6 +178,7 @@ describe('tabs', () => {
 
       const [, secondButton] = await getAllTabs();
       await secondButton.click();
+      await waitForStencilLifecycle(page);
 
       expect(await getCountedEvents()).toBe(1);
     });
