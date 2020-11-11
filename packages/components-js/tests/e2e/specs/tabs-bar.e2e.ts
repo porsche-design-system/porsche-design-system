@@ -166,7 +166,7 @@ describe('tabs-bar', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
 
-    it('should have correct selected tab on scrollArea click', async () => {
+    it('should keep old selected tab on scrollArea click', async () => {
       await initTabsBar({ amount: 4, activeTabIndex: 3 });
       const allButtons = await getAllButtons();
       const scrollArea = await getScrollArea();
