@@ -1,5 +1,5 @@
-@import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/internal.variables';
+@import "../../../../../../packages/utilities/projects/utilities/scss";
+@import "../../../styles/internal.variables";
 
 :host {
   position: relative !important;
@@ -29,8 +29,8 @@
     color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-:host([theme='dark']) ::slotted(a),
-:host([theme='dark']) ::slotted(button) {
+:host([theme="dark"]) ::slotted(a),
+:host([theme="dark"]) ::slotted(button) {
   color: $p-color-theme-dark-default !important;
 }
 
@@ -39,22 +39,22 @@
   color: $p-color-state-hover !important;
 }
 
-:host([theme='dark']) ::slotted(a:hover),
-:host([theme='dark']) ::slotted(button:hover) {
+:host([theme="dark"]) ::slotted(a:hover),
+:host([theme="dark"]) ::slotted(button:hover) {
   color: $p-color-theme-dark-state-hover !important;
 }
 
 ::slotted(a:active),
-::slotted(a[aria-selected='true']),
+::slotted(a[aria-selected="true"]),
 ::slotted(button:active),
-::slotted(button[aria-selected='true']) {
+::slotted(button[aria-selected="true"]) {
   color: $p-color-state-active !important;
 }
 
-:host([theme='dark']) ::slotted(a:active),
-:host([theme='dark']) ::slotted(a[aria-selected='true']),
-:host([theme='dark']) ::slotted(button:active),
-:host([theme='dark']) ::slotted(button[aria-selected='true']) {
+:host([theme="dark"]) ::slotted(a:active),
+:host([theme="dark"]) ::slotted(a[aria-selected="true"]),
+:host([theme="dark"]) ::slotted(button:active),
+:host([theme="dark"]) ::slotted(button[aria-selected="true"]) {
   color: $p-color-theme-dark-state-active !important;
 }
 
@@ -64,8 +64,8 @@
   outline: $p-color-state-focus solid 1px !important;
 }
 
-:host([theme='dark']) ::slotted(a:focus),
-:host([theme='dark']) ::slotted(button:focus) {
+:host([theme="dark"]) ::slotted(a:focus),
+:host([theme="dark"]) ::slotted(button:focus) {
   outline-color: $p-color-theme-dark-state-focus !important;
 }
 
@@ -93,7 +93,7 @@
     @include p-generate-type-scale($p-font-size-medium);
   }
 
-  @include p-media-query('xs') {
+  @include p-media-query("xs") {
     &--size-small-xs {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -103,7 +103,7 @@
     }
   }
 
-  @include p-media-query('s') {
+  @include p-media-query("s") {
     &--size-small-s {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -113,7 +113,7 @@
     }
   }
 
-  @include p-media-query('m') {
+  @include p-media-query("m") {
     &--size-small-m {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -123,7 +123,7 @@
     }
   }
 
-  @include p-media-query('l') {
+  @include p-media-query("l") {
     &--size-small-l {
       @include p-generate-type-scale($p-font-size-small);
     }
@@ -133,7 +133,7 @@
     }
   }
 
-  @include p-media-query('xl') {
+  @include p-media-query("xl") {
     &--size-small-xl {
       @include p-generate-type-scale($p-font-size-small);
     }
