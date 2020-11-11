@@ -8,19 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Fixed
-- Minification of dynamic slotted content styles
-
 #### Changed
+- Made API of `Tabs` consistent with `Tabs Bar`
 - Removed transition for focus styling
+
+#### Fixed
+- Some bugs in `TabsBar`
+- Minification of dynamic slotted content styles
 
 ### [2.0.0-alpha.6] - 2020-10-28
 
 #### Changed
-- default `type` of `Button` and `ButtonPure` to `submit`
+- default `type` of `Button` and `Button Pure` to `submit`
 
 #### Fixed
-- Typing file for Angular
+- Typings
 
 ### [2.0.0-alpha.5] - 2020-10-26
 
@@ -29,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Typing for `pageChange` event of `Pagination` component
-- Typings for Angular build
+- Typings
 
 #### Changed
 - Focus styling
@@ -45,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Banner` component
 
 #### Removed
-- Default `position:relative;` style of `LinkPure` and `ButtonPure` 
+- Default `position: relative;` style of `Link Pure` and `Button Pure` 
 
 #### Fixed
 - `Spinner` zooming bug on Safari
@@ -56,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support to load assets from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
 
 #### Removed
-- Support for `<a>` wrapped `Link` and `LinkPure`
+- Support for `<a>` wrapped `Link` and `Link Pure`
 
 ### [2.0.0-alpha.2] - 2020-08-20
 

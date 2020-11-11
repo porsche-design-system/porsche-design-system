@@ -6,7 +6,8 @@ import {
   getElementIndex,
   getElementStyle,
   getProperty,
-  initAddEventListener, reattachElement,
+  initAddEventListener,
+  reattachElement,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle
@@ -416,7 +417,8 @@ describe('select-wrapper fake-select', () => {
 
       it('should have the correct aria-expanded value if open/closed', async () => {
         await setContentWithDesignSystem(
-          page,`
+          page,
+          `
           <p-select-wrapper label="Some label">
             <select name="some-name">
               <option value="a">Option A</option>
@@ -439,7 +441,8 @@ describe('select-wrapper fake-select', () => {
 
       it('should show aria-selected attribute on selected fake option on click', async () => {
         await setContentWithDesignSystem(
-          page,`
+          page,
+          `
           <p-select-wrapper label="Some label">
             <select name="some-name">
               <option value="a">Option A</option>
@@ -509,6 +512,7 @@ describe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(0);
       });
 
+      // TODO: remove duplicate?
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
@@ -900,7 +904,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
         await page.keyboard.press('c');
-        await page.waitFor(120);
+        await page.waitForTimeout(120);
 
         expect(await getHighlightedFakeOption()).toBe(2);
         expect(await getSelectedFakeOption()).toBe(2);
@@ -949,7 +953,10 @@ describe('select-wrapper fake-select', () => {
     `
         );
         const select = await getSelectRealInput();
-        const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+        const fakeOptionInPosOne = await selectNode(
+          page,
+          'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)'
+        );
 
         await select.click();
         await fakeOptionInPosOne.click();
@@ -1028,7 +1035,6 @@ describe('select-wrapper fake-select', () => {
 
         expect(keyDownEventCounter).toBe(2);
       });
-
     });
   });
 });

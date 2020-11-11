@@ -4,11 +4,10 @@ import {
   getBrowser, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('link-pure', () => {
   let page: Page;

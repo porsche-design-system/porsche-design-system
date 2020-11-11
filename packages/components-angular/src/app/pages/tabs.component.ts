@@ -28,26 +28,26 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render tabs with last tab selected on light background">
-      <p-tabs>
+      <p-tabs [activeTabIndex]="6">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
         <p-tabs-item [label]="'Tab 4'">Tab Content 4</p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 7'">Tab Content 7</p-tabs-item>
+        <p-tabs-item [label]="'Tab 7'">Tab Content 7</p-tabs-item>
       </p-tabs>
     </div>
 
     <div class="playground dark" title="should render tabs with last tab selected on dark background">
-      <p-tabs [theme]="'dark'">
+      <p-tabs [activeTabIndex]="6" [theme]="'dark'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
         <p-tabs-item [label]="'Tab 4'">Tab Content 4</p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 7'"><div style="color: white">Tab Content 7</div></p-tabs-item>
+        <p-tabs-item [label]="'Tab 7'"><div style="color: white">Tab Content 7</div></p-tabs-item>
       </p-tabs>
     </div>
 
@@ -76,26 +76,26 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render tabs size medium with last tab selected on light background">
-      <p-tabs [size]="'medium'">
+      <p-tabs [activeTabIndex]="6" [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
         <p-tabs-item [label]="'Tab 4'">Tab Content 4</p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 7'">Tab Content 7</p-tabs-item>
+        <p-tabs-item [label]="'Tab 7'">Tab Content 7</p-tabs-item>
       </p-tabs>
     </div>
 
     <div class="playground dark" title="should render tabs size medium with last tab selected on dark background">
-      <p-tabs [theme]="'dark'" [size]="'medium'">
+      <p-tabs [activeTabIndex]="6" [theme]="'dark'" [size]="'medium'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
         <p-tabs-item [label]="'Tab 4'">Tab Content 4</p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 7'"><div style="color: white">Tab Content 7</div></p-tabs-item>
+        <p-tabs-item [label]="'Tab 7'"><div style="color: white">Tab Content 7</div></p-tabs-item>
       </p-tabs>
     </div>
 
@@ -172,11 +172,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render selected tab in viewport on light background">
-      <p-tabs>
+      <p-tabs [activeTabIndex]="3">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 4'">Tab Content 4</p-tabs-item>
+        <p-tabs-item [label]="'Tab 4'">Tab Content 4</p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
         <p-tabs-item [label]="'Tab 7'">Tab Content 7</p-tabs-item>
@@ -187,11 +187,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should render selected tab in viewport in viewport on dark background">
-      <p-tabs [theme]="'dark'">
+      <p-tabs [activeTabIndex]="3" [theme]="'dark'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
         <p-tabs-item [label]="'Tab 3'">Tab Content 3</p-tabs-item>
-        <p-tabs-item [selected]="true" [label]="'Tab 4'"><div style="color: white">Tab Content 4</div></p-tabs-item>
+        <p-tabs-item [label]="'Tab 4'"><div style="color: white">Tab Content 4</div></p-tabs-item>
         <p-tabs-item [label]="'Tab 5'">Tab Content 5</p-tabs-item>
         <p-tabs-item [label]="'Tab 6'">Tab Content 6</p-tabs-item>
         <p-tabs-item [label]="'Tab 7'">Tab Content 7</p-tabs-item>

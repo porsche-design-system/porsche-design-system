@@ -6,11 +6,10 @@ import {
   getCssClasses,
   getProperty,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, expectedStyleOnFocus,
   waitForStencilLifecycle, waitForInheritedCSSTransition
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('radio-button-wrapper', () => {
   let page: Page;

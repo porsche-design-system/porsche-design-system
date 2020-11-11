@@ -7,10 +7,9 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle, setAttribute, getStyleOnFocus, waitForInheritedCSSTransition
+  waitForStencilLifecycle, setAttribute, getStyleOnFocus, waitForInheritedCSSTransition, expectedStyleOnFocus
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('text-field-wrapper', () => {
   let page: Page;

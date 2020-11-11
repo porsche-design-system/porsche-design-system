@@ -3,11 +3,10 @@ import {
   getBrowser, getStyleOnFocus,
   initAddEventListener, reattachElement,
   selectNode,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 const CSS_FADE_IN_DURATION = 2000;
 const CSS_FADE_OUT_DURATION = 1000;
