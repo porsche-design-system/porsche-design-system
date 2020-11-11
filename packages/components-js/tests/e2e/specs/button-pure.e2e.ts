@@ -5,11 +5,10 @@ import {
   getBrowser, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('button-pure', () => {
   let page: Page;

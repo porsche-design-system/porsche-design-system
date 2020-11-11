@@ -5,15 +5,11 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { TabChangeEvent, TextSize, TextWeight, Theme } from '../../../types';
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
-type ActionState = {
-  readonly isPrevHidden: boolean;
-  readonly isNextHidden: boolean;
-};
 const FOCUS_PADDING_WIDTH = 4;
 
 @Component({
@@ -25,69 +21,79 @@ export class TabsBar {
   @Element() public host!: HTMLElement;
 
   /** The text size. */
-  @Prop() public size?: BreakpointCustomizable<Extract<TextSize, 'small' | 'medium'>> = 'small';
+  @Prop() public size?: BreakpointCustomizable<TabSize> = 'small';
 
   /** The text weight. */
-  @Prop() public weight?: Extract<TextWeight, 'regular' | 'semibold'> = 'regular';
+  @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
   @Prop({reflect: true}) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: 'default' | 'surface' = 'default';
+  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop() public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changed. */
-  @Event() public tabChange: EventEmitter<TabChangeEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public actionState: ActionState = {
-    isPrevHidden: false,
-    isNextHidden: false
-  };
+  @State() public isPrevHidden = true;
+  @State() public isNextHidden = true;
 
   private enableTransition = false;
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private scrollInterval;
+  private scrollInterval: NodeJS.Timeout;
   private tabElements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
   private gradientElements: HTMLElement[];
+  private direction: Direction = 'next';
 
   @Watch('activeTabIndex')
-  public activeTabHandler(newTabIndex: number, oldTabIndex: number): void {
-    const direction: Direction = newTabIndex > oldTabIndex ? 'next' : 'prev';
-    if (this.isActiveTabIndexInvalid(newTabIndex)) {
-      this.sanitizeActiveTabIndex(newTabIndex);
-      return;
+  public activeTabHandler(newTabIndex: number): void {
+    this.sanitizeActiveTabIndex(newTabIndex);
+  }
+
+  public componentShouldUpdate(
+    newValue: string | number,
+    oldValue: string | number,
+    nameOfStateOrProp: string
+  ): boolean {
+    if (nameOfStateOrProp === 'activeTabIndex') {
+      this.direction = newValue > oldValue ? 'next' : 'prev';
+      this.scrollActiveTabIntoView();
+      this.setAccessibilityAttributes();
+      this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
     }
-    this.setAccessibilityAttributes();
-    this.scrollActiveTabIntoView(direction);
-    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
+    return true;
   }
 
   public connectedCallback(): void {
-    this.sanitizeActiveTabIndex();
+    this.sanitizeActiveTabIndex(); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
     this.initMutationObserver();
   }
 
   public componentDidRender(): void {
+    // needs to happen after render in order to have status bar defined and proper calculation
     this.setStatusBarStyle();
   }
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
-    this.scrollActiveTabIntoView();
+    this.scrollActiveTabIntoView({ skipAnimation: true });
+    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // and first call in componentDidRender() is skipped because elements are not defined, yet
+    this.setStatusBarStyle();
     this.addEventListeners();
     this.initIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
-    this.disconnectMutationObserver();
-    this.disconnectIntersectionObserver();
+    this.hostObserver.disconnect();
+    this.intersectionObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -97,18 +103,14 @@ export class TabsBar {
       ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size)
     };
 
-    const scrollAreaClasses = {
-      [prefix('tabs-bar__scroll-area')]: true
-    };
-
-    const scrollWrapperClasses = {
-      [prefix('tabs-bar__scroll-wrapper')]: true
-    };
+    const scrollAreaClasses = prefix('tabs-bar__scroll-area');
+    const scrollWrapperClasses = prefix('tabs-bar__scroll-wrapper');
+    const scrollWrapperTriggerClasses = prefix('tabs-bar__scroll-wrapper__trigger');
 
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
       [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
-      [prefix(`tabs-bar__status-bar--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__status-bar--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true
     };
 
@@ -118,6 +120,8 @@ export class TabsBar {
           <div class={scrollWrapperClasses}>
             <slot />
             <span class={statusBarClasses} />
+            <div class={scrollWrapperTriggerClasses} />
+            <div class={scrollWrapperTriggerClasses} />
           </div>
         </div>
         {this.renderPrevNextButton('prev')}
@@ -129,14 +133,14 @@ export class TabsBar {
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
     const actionClasses = {
       [prefix('tabs-bar__action')]: true,
-      [prefix(`tabs-bar__action--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__action--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__action--${direction}`)]: true,
-      [prefix('tabs-bar__action--hidden')]: this.actionState[direction === 'prev' ? 'isPrevHidden' : 'isNextHidden']
+      [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
-      [prefix(`tabs-bar__gradient--theme-${this.theme}`)]: true,
+      [prefix('tabs-bar__gradient--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
       [prefix(`tabs-bar__gradient--${direction}`)]: true
     };
@@ -153,26 +157,20 @@ export class TabsBar {
           hide-label="true"
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-          onClick={() => this.handlePrevNextClick(direction)}
+          onClick={() => this.scrollOnPrevNextClick(direction)}
         />
       </div>
     );
   };
 
-  private isActiveTabIndexInvalid = (newTabIndex: number): boolean => {
-    const minIndex = 0;
-    const maxIndex = this.tabElements.length - 1;
-    return newTabIndex > maxIndex || newTabIndex < minIndex;
-  };
-
   private sanitizeActiveTabIndex = (index: number = this.activeTabIndex): void => {
     const minIndex = 0;
-    const maxIndex = this.tabElements.length - 1;
+    const maxIndex = this.tabElements.length - 1; // can be -1 without children
 
-    if (index > maxIndex) {
-      this.activeTabIndex = maxIndex;
-    } else if (index < minIndex) {
+    if (maxIndex < 0 || index < minIndex) {
       this.activeTabIndex = 0;
+    } else if (index > maxIndex) {
+      this.activeTabIndex = maxIndex;
     } else {
       this.activeTabIndex = index;
     }
@@ -192,37 +190,26 @@ export class TabsBar {
     }
   };
 
-  private initMutationObserver = (): void => {
-    this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'characterData')) {
-        this.setStatusBarStyle();
-      }
-    });
-    this.hostObserver.observe(this.host, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-  };
-
   private setStatusBarStyle = (): void => {
-    this.statusBarElement?.setAttribute('style', this.getStatusBarStyle(this.tabElements[this.activeTabIndex]));
-  };
+    // statusBarElement is undefined on first render
+    if (this.statusBarElement) {
+      const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
+      this.enableTransition = offsetWidth > 0;
+      const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
+      const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
 
-  private getStatusBarStyle = (activeTabElement: HTMLElement): string => {
-    const statusBarWidth = activeTabElement ? pxToRem(`${activeTabElement.offsetWidth}px`) : 0;
-    if (activeTabElement.offsetWidth > 0) {
-      this.enableTransitions();
+      this.statusBarElement.setAttribute(
+        'style',
+        `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`
+      );
     }
-    const statusBarPositionLeft =
-      activeTabElement && activeTabElement.offsetLeft > 0 ? pxToRem(`${activeTabElement?.offsetLeft}px`) : 0;
-    return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
   };
 
   private defineHTMLElements = (): void => {
-    this.statusBarElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    this.scrollAreaElement = getHTMLElement(this.host.shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
-    this.gradientElements = getHTMLElements(this.host.shadowRoot, `.${prefix('tabs-bar__gradient')}`);
+    const { shadowRoot } = this.host;
+    this.statusBarElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
+    this.scrollAreaElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
+    this.gradientElements = getHTMLElements(shadowRoot, `.${prefix('tabs-bar__gradient')}`);
   };
 
   private addEventListeners = (): void => {
@@ -235,29 +222,32 @@ export class TabsBar {
     this.scrollAreaElement.addEventListener('keydown', this.handleKeydown);
   };
 
-  private initIntersectionObserver = (): void => {
-    this.intersectionObserver = this.registerIntersectionObserver((actionState) => {
-      this.actionState = {
-        ...this.actionState,
-        ...actionState
-      };
-    }, this.tabElements);
+  private initMutationObserver = (): void => {
+    this.hostObserver = new MutationObserver((mutations): void => {
+      if (mutations.filter(({ type }) => type === 'characterData').length) {
+        this.setStatusBarStyle();
+      }
+    });
+    this.hostObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
   };
 
-  private registerIntersectionObserver = (
-    cb: (actionState: Partial<ActionState>) => void,
-    tabs: HTMLElement[]
-  ): IntersectionObserver => {
-    const [firstTab] = tabs;
-    const [lastTab] = tabs.slice(-1);
+  private initIntersectionObserver = (): void => {
+    const { shadowRoot } = this.host;
+    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
+    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
+    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
 
-    const intersectionObserver = new IntersectionObserver(
+    this.intersectionObserver = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.target === firstTab) {
-            cb({ isPrevHidden: entry.isIntersecting });
-          } else if (entry.target === lastTab) {
-            cb({ isNextHidden: entry.isIntersecting });
+        for (const { target, isIntersecting } of entries) {
+          if (target === firstTrigger) {
+            this.isPrevHidden = isIntersecting;
+          } else if (target === lastTrigger) {
+            this.isNextHidden = isIntersecting;
           }
         }
       },
@@ -267,30 +257,12 @@ export class TabsBar {
       }
     );
 
-    intersectionObserver.observe(firstTab);
-    intersectionObserver.observe(lastTab);
-
-    return intersectionObserver;
-  };
-
-  private enableTransitions = (): void => {
-    this.enableTransition = true;
-  };
-
-  private disconnectIntersectionObserver = (): void => {
-    this.intersectionObserver.disconnect();
-  };
-
-  private disconnectMutationObserver = (): void => {
-    this.hostObserver.disconnect();
+    this.intersectionObserver.observe(firstTrigger);
+    this.intersectionObserver.observe(lastTrigger);
   };
 
   private handleTabClick = (newTabIndex: number): void => {
     this.sanitizeActiveTabIndex(newTabIndex);
-  };
-
-  private handlePrevNextClick = (direction: Direction): void => {
-    this.scrollOnPrevNextClick(direction);
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
@@ -315,14 +287,14 @@ export class TabsBar {
         break;
 
       case 'Enter':
-        this.handleTabClick(this.getFocusedTabIndex());
+        this.handleTabClick(this.focusedTabIndex);
         return;
 
       default:
         return;
     }
 
-    if (this.hasPTabsParent()) {
+    if (this.hasPTabsParent) {
       this.handleTabClick(upcomingFocusedTabIndex);
       this.tabElements[this.activeTabIndex].focus();
     } else {
@@ -332,30 +304,37 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (direction: Direction = 'next'): void => {
-    const gradientWidths = this.gradientElements.map((item) => item.offsetWidth);
-    const activeTabElement = this.tabElements[this.activeTabIndex];
+  private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
+    const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
+    const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
 
     let scrollPosition: number;
-
-    if (direction === 'next' && this.activeTabIndex < this.tabElements.length - 1) {
-      // go to next tab
-      scrollPosition = activeTabElement.offsetLeft - gradientWidths[1] + FOCUS_PADDING_WIDTH * 2;
-    } else if (direction === 'prev' && this.activeTabIndex > 0) {
-      // go to prev tab
-      scrollPosition =
-        activeTabElement.offsetLeft +
-        activeTabElement.offsetWidth +
-        gradientWidths[0] -
-        this.scrollAreaElement.offsetWidth;
-    } else if (this.activeTabIndex === 0) {
-      // go to first tab
-      scrollPosition = 0;
+    if (this.direction === 'next') {
+      if (this.activeTabIndex === this.tabElements.length - 1) {
+        // go to last tab
+        scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
+      } else if (this.activeTabIndex === 0) {
+        // special case on first render where direction is 'next'  and activeTabIndex is 0
+        return;
+      } else {
+        // go to next tab
+        scrollPosition = offsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
+      }
     } else {
-      // go to last tab
-      scrollPosition = activeTabElement.offsetLeft - FOCUS_PADDING_WIDTH;
+      if (this.activeTabIndex === 0) {
+        // go to first tab
+        scrollPosition = 0;
+      } else {
+        // go to prev tab
+        scrollPosition = offsetLeft + offsetWidth + nextGradientWidth - this.scrollAreaElement.offsetWidth;
+      }
     }
-    this.scrollTo(scrollPosition);
+
+    if (opts?.skipAnimation) {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    } else {
+      this.scrollTo(scrollPosition);
+    }
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
@@ -370,14 +349,14 @@ export class TabsBar {
     let scrollPosition: number;
 
     if (direction === 'next') {
-      // Go to end of scroll-are when close to edge
+      // Go to end of scroll-area when close to edge
       if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
         scrollPosition = scrollToMax;
       } else {
         scrollPosition = currentScrollPosition + scrollToStep;
       }
     } else {
-      // Go to start of scroll-are when close to edge
+      // Go to start of scroll-area when close to edge
       if (currentScrollPosition - scrollToStep * 2 < scrollToMin) {
         scrollPosition = scrollToMin;
       } else {
@@ -412,16 +391,18 @@ export class TabsBar {
     }
   };
 
-  private hasPTabsParent = (): boolean => this.host.parentElement.classList.contains('p-tabs');
+  private get hasPTabsParent(): boolean {
+    return this.host.parentElement.classList.contains('p-tabs');
+  }
 
-  private getFocusedTabIndex = (): number => {
+  private get focusedTabIndex(): number {
     const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
-    return !this.hasPTabsParent() ? (indexOfActiveElement < 0 ? 0 : indexOfActiveElement) : this.activeTabIndex;
-  };
+    return !this.hasPTabsParent ? (indexOfActiveElement < 0 ? 0 : indexOfActiveElement) : this.activeTabIndex;
+  }
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabElements.length;
-    const newTabIndex = this.getFocusedTabIndex() + (direction === 'next' ? 1 : -1);
+    const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
 
     return (newTabIndex + tabsLength) % tabsLength;
   };

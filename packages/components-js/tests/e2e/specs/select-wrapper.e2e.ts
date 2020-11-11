@@ -5,11 +5,10 @@ import {
   getProperty, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('select-wrapper', () => {
   let page: Page;

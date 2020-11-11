@@ -5,11 +5,10 @@ import {
   getCssClasses,
   getProperty, getStyleOnFocus,
   selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('checkbox-wrapper', () => {
   let page: Page;

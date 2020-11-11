@@ -6,11 +6,10 @@ import {
   getProperty, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
-import { expectedStyleOnFocus } from '../constants';
 
 describe('button', () => {
   let page: Page;
