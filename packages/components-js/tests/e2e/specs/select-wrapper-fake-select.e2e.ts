@@ -512,6 +512,7 @@ describe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(0);
       });
 
+      // TODO: remove duplicate?
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
