@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Made API of `Tabs` consistent with `TabsBar`
+
+#### Fixed
+- Typing file for Angular
+- Some bugs in `TabsBar`
+
 ### [2.0.0-alpha.6] - 2020-10-28
 
 #### Changed
