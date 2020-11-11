@@ -108,6 +108,10 @@ export const setAttribute = async (element: ElementHandle, key: string, value: s
   await element.evaluate((el, {key, value}) => el.setAttribute(key, value), {key, value});
 }
 
+export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
+  await page.waitForTimeout(500);
+}
+
 export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>
   element.evaluate(async (el: Element, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);

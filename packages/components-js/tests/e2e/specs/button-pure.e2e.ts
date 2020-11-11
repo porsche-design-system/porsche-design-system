@@ -5,7 +5,7 @@ import {
   getBrowser, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, waitForInheritedCSSTransition,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -374,12 +374,12 @@ describe('button-pure', () => {
       const host = await getButtonPureHost();
       const button = await getButtonPureRealButton();
 
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default'}));
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      await waitForInheritedCSSTransition(page);
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });

@@ -4,7 +4,7 @@ import {
   getBrowser, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, waitForInheritedCSSTransition,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -181,12 +181,12 @@ describe('link-pure', () => {
       const host = await getLinkPureHost();
       const link = await getLinkPureRealLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      await waitForInheritedCSSTransition(page);
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -200,12 +200,12 @@ describe('link-pure', () => {
       const host = await getLinkPureHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      await waitForInheritedCSSTransition(page);
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });

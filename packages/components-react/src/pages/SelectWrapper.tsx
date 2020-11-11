@@ -430,6 +430,20 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </SelectWrapper>
       </div>
+
+      <div
+        className="playground light"
+        title="should render in focus state and be open"
+        style={{ paddingBottom: 'calc(1rem + 126px)' }}
+      >
+        <SelectWrapper label="Some label">
+          <select id="open-options" name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </SelectWrapper>
+      </div>
     </>
   );
 };

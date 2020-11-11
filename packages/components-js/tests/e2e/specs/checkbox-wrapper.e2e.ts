@@ -3,10 +3,9 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
   getProperty, getStyleOnFocus,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, waitForInheritedCSSTransition,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -379,8 +378,7 @@ describe('checkbox-wrapper', () => {
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });

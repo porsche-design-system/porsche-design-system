@@ -51,10 +51,10 @@ export class Link {
     ${tagName} a::before {
       content: "" !important;
       position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
+      top: -1px !important;
+      left: -1px !important;
+      right: -1px !important;
+      bottom: -1px !important;
       display: block !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

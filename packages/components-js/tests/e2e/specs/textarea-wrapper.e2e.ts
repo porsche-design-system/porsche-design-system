@@ -2,11 +2,10 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getElementStyle,
   getProperty, getStyleOnFocus,
   initAddEventListener,
   selectNode, setAttribute,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, waitForInheritedCSSTransition,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -214,8 +213,7 @@ describe('textarea-wrapper', () => {
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-
-      await page.waitForTimeout(500); // we need to wait for inherited color transition
+      await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });

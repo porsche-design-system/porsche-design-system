@@ -401,7 +401,7 @@ describe('button', () => {
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
@@ -421,7 +421,7 @@ describe('button', () => {
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'default', theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });
