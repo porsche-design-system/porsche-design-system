@@ -52,13 +52,11 @@
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}button:focus,
-:host([variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
+.#{$p-global-class-prefix}button:focus {
   outline-color: $p-color-neutral-contrast-high !important;
 }
 
-:host([theme="dark"]) .#{$p-global-class-prefix}button:focus,
-:host([theme="dark"][variant="tertiary"]) .#{$p-global-class-prefix}button:focus {
+:host([theme="dark"]) .#{$p-global-class-prefix}button:focus {
   outline-color: $p-color-theme-dark-default !important;
 }
 
@@ -82,7 +80,7 @@
   box-sizing: border-box;
   appearance: none;
   outline: transparent solid 1px;
-  outline-offset: 1px;
+  outline-offset: 2px;
   text-decoration: none;
   text-align: left;
   border-style: solid;

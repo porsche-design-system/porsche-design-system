@@ -59,24 +59,10 @@
   outline: transparent none !important;
 }
 
-::slotted(a)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  display: block !important;
-  outline: transparent solid 1px !important;
-  outline-offset: 1px !important;
-}
-
-::slotted(a:focus)::before,
 .#{$p-global-class-prefix}link-social:focus {
   outline-color: $p-color-default !important;
 }
 
-:host([theme="dark"]) ::slotted(a:focus)::before,
 :host([theme="dark"]) .#{$p-global-class-prefix}link-social:focus {
   outline-color: $p-color-theme-dark-default !important;
 }
@@ -93,7 +79,7 @@
   box-sizing: border-box;
   appearance: none;
   outline: transparent solid 1px;
-  outline-offset: 1px;
+  outline-offset: 2px;
   text-decoration: none;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;

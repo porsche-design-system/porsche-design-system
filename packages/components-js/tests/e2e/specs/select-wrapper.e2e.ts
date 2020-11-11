@@ -236,29 +236,29 @@ describe('select-wrapper', () => {
       const host = await getSelectHost();
       const input = await getSelectRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
 
       await setAttribute(host, 'theme', 'dark');
 
       await setAttribute(host, 'state', 'none');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark', offset: '2px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark', offset: '2px'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark', offset: '2px'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {

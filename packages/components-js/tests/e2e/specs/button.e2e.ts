@@ -396,32 +396,32 @@ describe('button', () => {
       const host = await getButtonHost();
       const button = await getButtonRealButton();
 
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
 
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark', offset: '2px'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', offset: '2px'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
     });
   });
 });

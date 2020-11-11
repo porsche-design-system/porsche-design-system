@@ -39,7 +39,7 @@
   padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
   margin: 0 !important;
   outline: transparent solid 1px !important;
-  outline-offset: 1px !important;
+  outline-offset: 2px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 0 !important;
@@ -677,7 +677,7 @@
       opacity: 1;
       + span {
         outline: transparent solid 1px;
-        outline-offset: 1px;
+        outline-offset: 2px;
       }
     }
 
