@@ -76,26 +76,6 @@ describe('tabs-bar', () => {
     expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
-  // TODO: remove?
-  xit('should render only one selected tab if multiple selected are set', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-tabs-bar active-tab-index="0">
-        <button>Content1</button>
-        <button selected>Content2</button>
-        <button selected>Content3</button>
-      </p-tabs-bar>
-    `
-    );
-    const allButtons = await getAllButtons();
-    await page.waitForTimeout(40); // class gets set through js, this takes a little time
-
-    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('true');
-    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
-    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
-  });
-
   describe('scrollArea', () => {
     const clickElement = async (el: ElementHandle) => {
       await el.click();
@@ -330,6 +310,54 @@ describe('tabs-bar', () => {
 
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
+    });
+
+    it('should have correct scroll-position on keyboard arrow press when wrapped by p-tabs', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <div style="width: 300px">
+          <p-tabs>
+            <p-tabs-item label="Tab Button 1">Content 1</p-tabs-item>
+            <p-tabs-item label="Tab Button 2">Content 2</p-tabs-item>
+            <p-tabs-item label="Tab Button 3">Content 3</p-tabs-item>
+            <p-tabs-item label="Tab Button 4">Content 4</p-tabs-item>
+            <p-tabs-item label="Tab Button 5">Content 5</p-tabs-item>
+            <p-tabs-item label="Tab Button 6">Content 6</p-tabs-item>
+            <p-tabs-item label="Tab Button 7">Content 7</p-tabs-item>
+            <p-tabs-item label="Tab Button 8">Content 8</p-tabs-item>
+          </p-tabs>
+        </div>`
+      );
+      const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
+      const gradientWidth = await getOffsetWidth(gradientNext);
+      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+      expect(await getScrollLeft(scrollArea)).toEqual(0);
+
+      const pressKey = async (key: string) => {
+        await page.keyboard.press(key);
+        await page.waitForTimeout(CSS_ANIMATION_DURATION);
+      };
+
+      await pressKey('Tab');
+      await pressKey('ArrowRight');
+      await pressKey('ArrowRight');
+      await pressKey('ArrowRight');
+      await pressKey('ArrowRight');
+
+      const tab5offset = await getOffsetLeft(allButtons[4]);
+      const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
+      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+
+      await pressKey('ArrowLeft');
+
+      const tab4offset = await getOffsetLeft(allButtons[3]);
+      const tab4width = await getOffsetWidth(allButtons[3]);
+      const scrollDistanceLeft = +tab4offset + +tab4width + +gradientWidth - +scrollAreaWidth;
+      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
   });
 
