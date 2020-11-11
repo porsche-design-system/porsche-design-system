@@ -605,7 +605,7 @@ describe('tabs-bar', () => {
         `<p-tabs-bar>
         <button>Content1</button>
         <button>Content2</button>
-        <button>Content3</a>
+        <button>Content3</button>
       </p-tabs-bar>`
       );
 

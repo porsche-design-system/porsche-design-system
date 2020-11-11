@@ -69,8 +69,8 @@ export const getElementStyle = async (
   element: ElementHandle,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
-): Promise<string> =>
-  element.evaluate(
+): Promise<string> => {
+  return await element.evaluate(
     async (el: Element, property: keyof CSSStyleDeclaration, opts?: GetElementStyleOptions): Promise<string> => {
       const options: GetElementStyleOptions = {
         waitForTransition: false,
@@ -86,6 +86,7 @@ export const getElementStyle = async (
     property,
     opts
   );
+}
 
 type GetStyleOnFocusOptions = {
   pseudo?: Pseudo
@@ -96,11 +97,11 @@ export const getStyleOnFocus = async (element: ElementHandle, property: 'outline
     pseudo: null,
     ...opts
   }
+  const {pseudo} = options;
   await element.focus();
-  if (property === 'outline') {
-    return `${await getElementStyle(element, property, {pseudo: options.pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo: options.pseudo})}`;
-  }
-  return await getElementStyle(element, property, {pseudo: options.pseudo});
+  return property === 'outline'
+    ? `${await getElementStyle(element, property, {pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo})}`
+    : await getElementStyle(element, property, {pseudo})
 }
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
