@@ -60,7 +60,8 @@ describe('tabs-bar', () => {
   const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
   const getClassList = async (element: ElementHandle): Promise<string[]> =>
     Object.values(await getProperty(element, 'classList'));
-  const getElementFocused = async (elementIndex: number): Promise<boolean> => {
+
+  const isElementAtIndexFocused = async (elementIndex: number): Promise<boolean> => {
     const snapshot = await page.accessibility.snapshot();
     const element = snapshot.children[elementIndex];
     return element.focused;
@@ -248,52 +249,52 @@ describe('tabs-bar', () => {
 
     it('should render focus on content on keyboard "tab" press', async () => {
       await initTabsBar({ amount: 3, otherMarkup: '<p-text>Hallo <a href="#">Link</a></p-text>' });
-      expect(await getElementFocused(4)).toBeFalsy();
+      expect(await isElementAtIndexFocused(4)).toBeFalsy();
 
       await page.keyboard.press('Tab');
-      expect(await getElementFocused(4)).toBeFalsy();
+      expect(await isElementAtIndexFocused(4)).toBeFalsy();
       await page.keyboard.press('Tab');
 
-      expect(await getElementFocused(4)).toBe(true);
+      expect(await isElementAtIndexFocused(4)).toBe(true);
     });
 
     it('should render correct focusedTab on arrow-key press', async () => {
       await initTabsBar({ amount: 3 });
-      expect(await getElementFocused(0)).toBeFalsy();
+      expect(await isElementAtIndexFocused(0)).toBeFalsy();
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await getElementFocused(0)).toBeTrue();
+      expect(await isElementAtIndexFocused(0)).toBeTrue();
 
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
-      expect(await getElementFocused(0)).toBeFalsy();
-      expect(await getElementFocused(1)).toBeTrue();
+      expect(await isElementAtIndexFocused(0)).toBeFalsy();
+      expect(await isElementAtIndexFocused(1)).toBeTrue();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await getElementFocused(0)).toBeTrue();
-      expect(await getElementFocused(1)).toBeFalsy();
+      expect(await isElementAtIndexFocused(0)).toBeTrue();
+      expect(await isElementAtIndexFocused(1)).toBeFalsy();
     });
 
     it('should render correct active tab on first/last or home/end press', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
-      expect(await getElementFocused(2)).toBeFalsy();
+      expect(await isElementAtIndexFocused(2)).toBeFalsy();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('End');
       await waitForStencilLifecycle(page);
 
-      expect(await getElementFocused(2)).toBeTrue();
+      expect(await isElementAtIndexFocused(2)).toBeTrue();
 
       await page.keyboard.press('Home');
       await waitForStencilLifecycle(page);
 
-      expect(await getElementFocused(0)).toBeTrue();
-      expect(await getElementFocused(2)).toBeFalsy();
+      expect(await isElementAtIndexFocused(0)).toBeTrue();
+      expect(await isElementAtIndexFocused(2)).toBeFalsy();
     });
 
     it('should render correct active tab on focus change and enter press', async () => {
