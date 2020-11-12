@@ -5,5 +5,13 @@ module.exports = {
   printWidth: 120,
   arrowParens: 'always',
   singleQuote: true,
-  vueIndentScriptAndStyle: true
+  vueIndentScriptAndStyle: true,
+  overrides: [
+    {
+      files: ['**/*.css', '**/*.scss'],
+      options: {
+        singleQuote: false
+      }
+    }
+  ]
 };
