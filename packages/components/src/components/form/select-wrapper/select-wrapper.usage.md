@@ -18,6 +18,13 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Description text | Sometimes it’s helpful for the user to get further information on the input. This can be done by providing a description text displayed openly and directly outside the form field. |
 | With custom filter | For a large amount of select options (e.g. country/state select), we offer the custom filter to select easily and fast the desired of the available options. |
 
+| Variant |  |
+|----|----|
+| Without preselection (mandatory field) | Use this, if you don't know or if you need to make sure the user makes a conscious choice. |
+| With preselection (mandatory field) | Use this, if you have a reason to believe one of the options is most likely (this can be based on most popular / probable option, or on data you know about the user) or you know the default or current option. |
+| Without preselection (optional field) | Use this, to make it possible to go back to empty default (e.g. in case of an incorrect selection). |
+
+
 
 ## Behavior
 
@@ -37,6 +44,7 @@ Generally, a limit of 5-10 options is recommended. [Baymard Institute](https://b
 ### Sorting
 It's recommended to use common sort order for menu items (frequency of use, alpha or numeric).
 
+
 <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
    <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
    <img src="./assets/select-examples.png" alt="Examples for select usage" />
@@ -53,6 +61,9 @@ Avoid Select boxes for data that is highly familiar such as the day, month or ye
 Very long Select boxes that require scrolling make it impossible for users to see all their choices in one glance. However this cannot always be avoided. Therefore make sure that when open there is only a maximum of 7 elements in the field of view without having to scroll.
 
 ![Example for alignment](./assets/select-dont-items.png)
+
+### Don’t default to ‘please select’
+Users don’t need to be told to ‘please select’ if there’s a field that’s empty. Only use defaults when applicable to most users (see variants).
 
 ---
 

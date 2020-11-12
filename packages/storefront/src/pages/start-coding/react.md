@@ -1,41 +1,23 @@
 # React
-## Sample integration
 
-You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
+## Quick start
+To build your own application with the **React** components of Porsche Design System, follow these steps:
 
-## Get the project up and running
-* Clone the repository by executing <br>
-`git clone https://github.com/porscheui/sample-integration-react.git`
-
-### yarn
-* Install dependencies via `yarn install`
-* Run tests via `yarn test`
-* Run the application via `yarn start`
-* Build the application via `yarn build`
-
-### npm
-* Install dependencies via `npm install`
-* Run tests via `npm test`
-* Run the application via `npm start`
-* Build the application via `npm run build`
-
----
-
-## Reproduce on your own
-To build your own application which is provided with the Porsche Design System follow these simple steps:
-
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to create a directory inside the current 
 folder with the initial project structure called `my-app` 
 * To add TypeScript to your **Create React App**, you have to install it:
-```
+```shell script
 // install with yarn:
 yarn add typescript @types/node @types/react @types/react-dom @types/jest
 
 // install with npm:
 npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
+
 * Install the Porsche Design System
-``` 
+
+```shell script
 // install with yarn:
 yarn add @porsche-design-system/components-react
 
@@ -82,8 +64,6 @@ export const App = (): JSX.Element => (
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
----
-
 ## Test the application
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
@@ -110,7 +90,6 @@ export const SingleComponent = (): JSX.Element => (
 
 ```tsx
 // SingleComponent.test.tsx
-
 test('renders a headline from Porsche Design System', async () => {
   const { getByText } = render(<SingleComponent />);
   const headLineElement = getByText('Some headline');
@@ -157,14 +136,12 @@ there, that you can change the prefix in a single place.
 
 ```tsx
 // PorscheDesignSystem.ts
-
-import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
+import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 export const PorscheDesignComponents = getPrefixedComponents({ prefix: 'sample-prefix' });
 ```
 
 ```tsx
 // SingleComponent.tsx
-
 import { PorscheDesignComponents } from './PorscheDesignSystem';
 const { PHeadline } = PorscheDesignComponents;
 
@@ -172,3 +149,12 @@ export const SingleComponent = (): JSX.Element => (
   <PHeadline>Some headline</PHeadline>
 )
 ```
+
+## Sample integration
+We provide a public Github repository with a basic sample project setup to show how it is managed in real code.
+You can find the repository of the React example project here: [Sample integration React](https://github.com/porscheui/sample-integration-react)
+
+### Get the project up and running
+* Clone the repository by executing  
+`git clone https://github.com/porscheui/sample-integration-react.git`
+* Follow the installation guidelines in the README.md file
