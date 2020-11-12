@@ -1,5 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { componentsReady, PButton, PTabsBar, PPagination } from '@porsche-design-system/components-react';
+import {
+  componentsReady,
+  PButton,
+  PTabsBar,
+  PPagination,
+  PTabs,
+  PTabsItem,
+} from '@porsche-design-system/components-react';
 import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -44,6 +51,38 @@ const TabsBarComponent = (): JSX.Element => {
         </button>
       </PTabsBar>
       <div data-testid="debug">{`active Tab ${activeTab + 1}`}</div>
+    </>
+  );
+};
+
+const TabsComponent = (): JSX.Element => {
+  const [text, setText] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  console.log('TabsComponent');
+
+  return (
+    <>
+      <PTabs
+        activeTabIndex={activeTab}
+        onTabChange={(e) => {
+          console.log('click', e.detail.activeTabIndex);
+          setText(e.detail.activeTabIndex);
+        }}
+      >
+        <PTabsItem label="Button1">Content 1</PTabsItem>
+        <PTabsItem label="Button2">Content 2</PTabsItem>
+        <PTabsItem label="Button3">Content 3</PTabsItem>
+      </PTabs>
+      <button data-testid="button1" onClick={() => setActiveTab(0)}>
+        Button1
+      </button>
+      <button data-testid="button2" onClick={() => setActiveTab(1)}>
+        Button2
+      </button>
+      <button data-testid="button3" onClick={() => setActiveTab(2)}>
+        Button3
+      </button>
+      <div data-testid="debug">{`active Tab ${text + 1}`}</div>
     </>
   );
 };
@@ -96,7 +135,7 @@ describe('jsdom-polyfill', () => {
     expect(icon).not.toBeNull();
   });
 
-  fit('should have working events in PTabsBar', async () => {
+  it('should have working events in PTabsBar', async () => {
     const { getByText, getByTestId } = render(<TabsBarComponent />);
     await componentsReady();
 
@@ -130,7 +169,40 @@ describe('jsdom-polyfill', () => {
     expect(debug.innerHTML).toBe('active Tab 1');
   });
 
-  it('should render web component with shadowRoot', async () => {
+  it('should have working events in TabsComponent', async () => {
+    const { getByText, getByTestId } = render(<TabsComponent />);
+    await componentsReady();
+
+    const debug = getByTestId('debug');
+
+    const button1 = getByTestId('button1');
+    const button2 = getByTestId('button2');
+    const button3 = getByTestId('button3');
+
+    expect(debug.innerHTML).toBe('active Tab 1');
+
+    console.log('############# click 2');
+    // userEvent.click(screen.getByText('Button2'));
+    userEvent.click(button2);
+    // await new Promise((resolve) => setTimeout(resolve, 500));
+    // await waitFor(() => {
+    //   screen.getByText('active Tab 2');
+    // });
+    expect(debug.innerHTML).toBe('active Tab 2');
+
+    console.log('############# click 3');
+    userEvent.click(button3);
+    // await new Promise((resolve) => setTimeout(resolve, 500));
+    // button3.click();
+    expect(debug.innerHTML).toBe('active Tab 3');
+
+    // userEvent.click(screen.getByText('Button1'));
+    userEvent.click(button1);
+    // await new Promise((resolve) => setTimeout(resolve, 500));
+    expect(debug.innerHTML).toBe('active Tab 1');
+  });
+
+  it('should have working events in PPagination', async () => {
     const { getByTestId } = render(<AnotherComponent />);
     await componentsReady();
 
