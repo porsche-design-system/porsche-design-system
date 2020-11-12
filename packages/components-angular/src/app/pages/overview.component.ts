@@ -2,39 +2,41 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-overview',
-  styles: [`
-    p-flex-item > p,
-    my-prefix-p-flex-item > p,
-    p-grid-item > p,
-    my-prefix-p-grid-item > p,
-    p-content-wrapper > p,
-    my-prefix-p-content-wrapper > p {
-      margin: 0;
-      padding: 4px 2vw;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
+  styles: [
+    `
+      p-flex-item > p,
+      my-prefix-p-flex-item > p,
+      p-grid-item > p,
+      my-prefix-p-grid-item > p,
+      p-content-wrapper > p,
+      my-prefix-p-content-wrapper > p {
+        margin: 0;
+        padding: 4px 2vw;
+        text-align: center;
+        color: white;
+        background-color: lightskyblue;
+      }
 
-    p-flex-item:nth-child(1n) > p,
-    my-prefix-p-flex-item:nth-child(1n) > p,
-    p-grid-item:nth-child(1n) > p,
-    my-prefix-p-grid-item:nth-child(1n) > p {
-      background-color: skyblue;
-    }
+      p-flex-item:nth-child(1n) > p,
+      my-prefix-p-flex-item:nth-child(1n) > p,
+      p-grid-item:nth-child(1n) > p,
+      my-prefix-p-grid-item:nth-child(1n) > p {
+        background-color: skyblue;
+      }
 
-    p-flex-item:nth-child(2n) > p,
-    my-prefix-p-flex-item:nth-child(2n) > p,
-    p-grid-item:nth-child(2n) > p,
-    my-prefix-p-grid-item:nth-child(2n) > p {
-      background-color: deepskyblue;
-    }
+      p-flex-item:nth-child(2n) > p,
+      my-prefix-p-flex-item:nth-child(2n) > p,
+      p-grid-item:nth-child(2n) > p,
+      my-prefix-p-grid-item:nth-child(2n) > p {
+        background-color: deepskyblue;
+      }
 
-    p-banner,
-    my-prefix-p-banner {
-      --p-banner-position-type: static;
-    }
-  `],
+      p-banner,
+      my-prefix-p-banner {
+        --p-banner-position-type: static;
+      }
+    `
+  ],
   template: `
     <div style="display: flex;">
       <div style="flex: 1;">
@@ -63,13 +65,13 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default checkbox-wrapper">
           <p-checkbox-wrapper label="Some label">
-            <input type="checkbox">
+            <input type="checkbox" />
           </p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper">
           <p-radio-button-wrapper label="Some label">
-            <input type="radio">
+            <input type="radio" />
           </p-radio-button-wrapper>
         </div>
 
@@ -85,7 +87,7 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default text-field-wrapper">
           <p-text-field-wrapper label="Some label">
-            <input type="text">
+            <input type="text" />
           </p-text-field-wrapper>
         </div>
 
@@ -147,7 +149,7 @@ import { Component } from '@angular/core';
           </p-tabs>
         </div>
 
-        <div class="playground light" title="should render default tabs-nav with custom prefix">
+        <div class="playground light" title="should render default tabs-bar with custom prefix">
           <p-tabs-bar>
             <a>Tab1</a>
             <a>Tab2</a>
@@ -200,13 +202,13 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
           <my-prefix-p-checkbox-wrapper p-checkbox-wrapper label="Some label">
-            <input type="checkbox">
+            <input type="checkbox" />
           </my-prefix-p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
           <my-prefix-p-radio-button-wrapper p-radio-button-wrapper label="Some label">
-            <input type="radio">
+            <input type="radio" />
           </my-prefix-p-radio-button-wrapper>
         </div>
 
@@ -222,7 +224,7 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default text-field-wrapper with custom prefix">
           <my-prefix-p-text-field-wrapper p-text-field-wrapper label="Some label">
-            <input type="text">
+            <input type="text" />
           </my-prefix-p-text-field-wrapper>
         </div>
 
@@ -248,7 +250,8 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default text-list with custom prefix">
           <my-prefix-p-text-list p-text-list>
-            <my-prefix-p-text-list-item p-text-list-item>The quick brown fox jumps over the lazy dog
+            <my-prefix-p-text-list-item p-text-list-item
+              >The quick brown fox jumps over the lazy dog
             </my-prefix-p-text-list-item>
           </my-prefix-p-text-list>
         </div>
@@ -266,7 +269,8 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label
+          <my-prefix-p-link-social p-link-social href="https://www.porsche.com" icon="logo-facebook"
+            >Some label
           </my-prefix-p-link-social>
         </div>
 
@@ -275,8 +279,12 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
-          <my-prefix-p-pagination p-pagination total-items-count="500" items-per-page="25"
-                                  active-page="1"></my-prefix-p-pagination>
+          <my-prefix-p-pagination
+            p-pagination
+            total-items-count="500"
+            items-per-page="25"
+            active-page="1"
+          ></my-prefix-p-pagination>
         </div>
 
         <div class="playground light" title="should render default tabs with custom prefix">
@@ -287,7 +295,7 @@ import { Component } from '@angular/core';
           </my-prefix-p-tabs>
         </div>
 
-        <div class="playground light" title="should render default tabs-nav with custom prefix">
+        <div class="playground light" title="should render default tabs-bar with custom prefix">
           <my-prefix-p-tabs-bar p-tabs-bar>
             <a>Tab1</a>
             <a>Tab2</a>
@@ -316,5 +324,4 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class OverviewComponent {
-}
+export class OverviewComponent {}
