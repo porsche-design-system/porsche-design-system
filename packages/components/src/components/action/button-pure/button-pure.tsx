@@ -108,7 +108,7 @@ export class ButtonPure {
           disabled={this.isDisabled()}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el as HTMLElement)}
-          aria-busy={this.loading && 'true'}
+          aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
             <PrefixedTagNames.pSpinner
