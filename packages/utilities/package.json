@@ -22,11 +22,11 @@
   },
   "devDependencies": {
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
-    "@types/jasmine": "^3.6.0",
+    "@types/jasmine": "^3.6.1",
     "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.3",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.0",
+    "@types/node": "^14.14.7",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "concurrently": "^5.2.0",
     "jasmine": "^3.6.1",
@@ -37,7 +37,7 @@
     "react-scripts": "^3.4.3",
     "ts-jest": "^26.4.2",
     "ts-node": "^9.0.0",
-    "typescript": "~4.0.3",
+    "typescript": "~4.0.5",
     "wait-on": "^5.1.0"
   },
   "eslintConfig": {
