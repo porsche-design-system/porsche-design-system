@@ -8,24 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Migration path from v1 to v2
-With our new major release `v2.0.0` there comes some significant changes which you should take care of. 
-To help you easily migrate from `v1.5.x` to our latest `v2.0.0` we provide some guidelines which should help to keep track of the (breaking) changes: 
-
-##### Breaking changes
-- Drop support of **IE11** and **Edge < 18**. If you still need to support these browsers, you have to stick on `v1.5.x`. We provide a Browser Notification Component to point out to the users that these Browsers are no longer supported. Please refer to our **[Browser compatibility guidelines](#/help/browser-compatibility)**. 
-- Color and outline of general focus styling has changed to **black** (on light theme) and **white** (on dark theme) with an outline of **1px width/offset**. If you have build own components with the usage of our **[utilities package](#/utilities/introduction)**, update it to the latest version.
-- Our PDS components are now loaded via an CDN which means that you need an internet connection to render the components in a Browser. 
-- Due to the new Web Components Manager we use under the hood, the implementation of the Porsche Design System scripts changed if used in a **Vanilla-JS** environment. Please check our updated **[sample integration guidelines](#/start-coding/vanilla-js)**.
-- We added an automatic generated `*` asteriks symbol to form field labels which have the `required` attribute. This might lead to a doubled `*` symbol if you set one by yourself.
-- Due to the support of setting (router-)links (`<a href="#">`) inside of our `Link`, `LinkPure` and `LinkSocial` components, we have removed the support of styling the anchor tag (`<a>`) if it surrounds the component. So we recommend changing the position of the `<a>` tag from wrapping the component to a direct slot (child) of the component.
-- Changed default `type` of `Button` and `ButtonPure` from `button` to `submit`
-
-##### General improvements you should follow
-- Now we provide **prefexing** support for most of our components. That means that you can build and deliver your code in a microfrontend architecture without the risk of interfering with others. Please refer to our **[framework specific guidelines](#/start-coding/introduction)**.
-- To optimize FOUT (Flash of Unstyled Text) and FOUC (Flash of Unstyled Content) follow our **[loading guidelines](#/performance/loading-behaviour)**.
-- We have also added support for **[China CDN](#/performance/cdn)** to optimize loading behavior of our assets and components.
-
 #### Changed
 - Made API of `Tabs` consistent with `Tabs Bar`
 
