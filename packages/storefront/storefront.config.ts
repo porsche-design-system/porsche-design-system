@@ -147,7 +147,7 @@ export const config: StorefrontConfig = {
       ]
     },
     'Button Pure': {
-      Examles: [
+      Examples: [
         // @ts-ignore
         () => import(`@/../../components/src/components/action/button-pure/button-pure.examples.md`)
       ],
