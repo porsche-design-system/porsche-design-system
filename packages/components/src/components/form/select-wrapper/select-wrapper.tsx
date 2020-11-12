@@ -15,6 +15,7 @@ type OptionMap = {
   readonly value: string;
   readonly disabled: boolean;
   readonly hidden: boolean;
+  readonly initiallyHidden: boolean;
   readonly selected: boolean;
   readonly highlighted: boolean;
 };
@@ -310,7 +311,7 @@ export class SelectWrapper {
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ['disabled']
+      attributeFilter: ['disabled', 'hidden']
     });
   }
 
@@ -467,10 +468,11 @@ export class SelectWrapper {
   private setOptionList = (): void => {
     this.options = this.select.querySelectorAll('option');
     this.optionMaps = Array.from(this.options).map((item, index) => {
+      const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
       const selected = item.selected && !item.disabled;
       const highlighted = selected;
-      const option: OptionMap = { key: index, value: item.text, disabled, hidden: false, selected, highlighted };
+      const option: OptionMap = { key: index, value: item.text, disabled, hidden: false, initiallyHidden, selected, highlighted };
       return option;
     });
   };
@@ -517,7 +519,7 @@ export class SelectWrapper {
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
       Array.from(this.options).map((item, index) => {
-        const { disabled, hidden, selected, highlighted } = this.optionMaps[index];
+        const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
           item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
@@ -532,12 +534,12 @@ export class SelectWrapper {
               [prefix('select-wrapper__fake-option--selected')]: selected,
               [prefix('select-wrapper__fake-option--highlighted')]: highlighted,
               [prefix('select-wrapper__fake-option--disabled')]: disabled,
-              [prefix('select-wrapper__fake-option--hidden')]: hidden
+              [prefix('select-wrapper__fake-option--hidden')]: hidden || initiallyHidden
             }}
             onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.handleFocus(e))}
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
-            aria-hidden={hidden ? 'true' : null}
+            aria-hidden={hidden || initiallyHidden ? 'true' : null}
           >
             <span>{item.text}</span>
             {selected && (
@@ -555,7 +557,7 @@ export class SelectWrapper {
   }
 
   private cycleFakeOptionList(direction: string): void {
-    const validItems = this.optionMaps.filter((item) => !item.hidden && !item.disabled);
+    const validItems = this.optionMaps.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
     const validMax = validItems.length - 1;
     if (validMax < 0) {
       return;
@@ -630,10 +632,10 @@ export class SelectWrapper {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
-      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
+      hidden: !item.initiallyHidden && !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
     }));
 
-    const hiddenItems = this.optionMaps.filter((item) => item.hidden);
+    const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   };
