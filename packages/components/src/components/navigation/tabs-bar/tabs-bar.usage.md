@@ -1,8 +1,7 @@
 # Tabs Bar
 
 ## When to use
-  • Use Tabs to change the appearance of your content.  
-  • Use Tabs to skip the navigation and move on a longer page.
+  • Use Tabs Bar as a Skip-Navigation to jump to sections on a longer page.  
 
 ---
 
