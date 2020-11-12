@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "d23c0a0b1ff8c1ae2656",
+    "revision": "b17314dbc4c584d5367f",
     "url": "css/app.6d97612c.css"
   },
   {
@@ -108,12 +108,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/checkbox-indeterminate.51050940.png"
   },
   {
-    "revision": "a39b62041c75e3a9c9bf7364cf52aaf5",
-    "url": "img/color-theme-dark.a39b6204.png"
+    "revision": "27b37af20d0d69d3567b985d4073b990",
+    "url": "img/color-theme-dark.27b37af2.png"
   },
   {
-    "revision": "daebdf27f51b1fc34d2389c8945c18b5",
-    "url": "img/color-theme-light.daebdf27.png"
+    "revision": "48d4752e749fb555df9935196948d476",
+    "url": "img/color-theme-light.48d4752e.png"
   },
   {
     "revision": "f8a5c1b981114e22061b8c7ac3891563",
@@ -380,12 +380,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "c1406b0fb2bc1f5bb509c026c64c9850",
+    "revision": "624c1876be6ea3a371c45ec01ce77574",
     "url": "index.html"
   },
   {
-    "revision": "d23c0a0b1ff8c1ae2656",
-    "url": "js/app.b014538d.js"
+    "revision": "b17314dbc4c584d5367f",
+    "url": "js/app.7fc3147f.js"
   },
   {
     "revision": "51681998e48a65ce5892",
@@ -816,8 +816,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-32c5b3c8.53952847.js"
   },
   {
-    "revision": "06ae47a2967d8e737c95",
-    "url": "js/chunk-3887d23e.8b7d2b99.js"
+    "revision": "71c2866aa1c4770cc23e",
+    "url": "js/chunk-3887d23e.d80820c4.js"
   },
   {
     "revision": "215bc1b53d92e3e8b03d",
