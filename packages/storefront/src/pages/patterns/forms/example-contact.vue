@@ -27,7 +27,7 @@
                     v-on:change="onFieldBlur"
                     required
                   >
-                    <option value>Choose an option</option>
+                    <option value hidden></option>
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
@@ -80,7 +80,7 @@
                     v-on:change="onFieldBlur"
                     required
                   >
-                    <option value>Choose an option</option>
+                    <option value hidden></option>
                     <option value="Mr.">Mr.</option>
                     <option value="Mrs.">Mrs.</option>
                   </select>
@@ -92,7 +92,7 @@
               >
                 <p-select-wrapper label="Title">
                   <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
-                    <option value>Choose an option</option>
+                    <option value></option>
                     <option value="option 1">Dr.</option>
                     <option value="option 2">Prof.</option>
                     <option value="option 3">Prof. Dr.</option>
@@ -193,7 +193,7 @@
                 v-model="bag.data.gear"
                 v-on:change="onFieldBlur"
               >
-                <option value>Choose an option</option>
+                <option value></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
                 <option value="3">Option 3</option>
@@ -244,7 +244,7 @@
                 v-on:change="onFieldBlur"
                 required
               >
-                <option value>Choose an option</option>
+                <option value hidden></option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
                 <option value="3">Option 3</option>
