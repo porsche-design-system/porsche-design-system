@@ -7,7 +7,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 
@@ -189,7 +189,10 @@ describe('tabs', () => {
     page.on('console', (msg) => {
       consoleMessages.push(msg);
       if (msg.type() === 'error') {
-        console.log(msg.args()[0]['_remoteObject'].description);
+        const { description } = msg.args()[0]['_remoteObject'];
+        if (description) {
+          console.log(description);
+        }
       }
     });
 
