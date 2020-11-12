@@ -359,7 +359,6 @@ Please make sure to set the corresponding **aria** attributes.
       };
       return `<p-select-wrapper filter="true" label="Some label">
   <select name="some-name">
-    <option value="">Select a country</option>
     ${Object.entries(options).map(([value, label]) => `<option value="${value}"${value === 'AQ' ? ' disabled' : ''}>${label}</option>`).join('\n    ')}
   </select>
 </p-select-wrapper>`;
