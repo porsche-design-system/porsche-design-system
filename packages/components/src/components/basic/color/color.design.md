@@ -44,6 +44,11 @@ The color proportion scales for each theme might be a little helper in doing so.
 ### Color usage
 All colors must always be used in 100% opacity.
 
+### Focus
+The Focus color is only to be used to highlight components on focus enabling keyboard navigation. Depending on the component, e.g. as border or surface color.
+It consists of currentColor. This means that the color of the component is adjusted to the color of the component and therefore always has the same color as the component itself. 
+The Focus consists of an outline which is set in a 1 px line with a distance of 2 px for flat components. With pure text the focus is set at a distance of 1 px.
+
 ---
 
 ## Porsche Light Theme 
@@ -110,7 +115,6 @@ When using notification colors …
 |---------------------------------------------------------|-----------------|-----------|---------------|----------------|
 | <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #000000 	| 0/0/0 	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
@@ -177,7 +181,6 @@ Depending on the component it can be implemented in different ways, for example 
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
 | <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #FF0223	| 255/2/35      | Hover state    |
 | <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #FF0223 	| 255/2/35     | Active state   |
-| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #FFFFFF 	| 255/255/255   	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
