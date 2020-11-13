@@ -34,6 +34,10 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/start-coding/react.md`)
     ],
+    'Vanilla Js': [
+      // @ts-ignore
+      () => import(`@/pages/start-coding/vanilla-js.md`)
+    ],
     'Next Js': [
       // @ts-ignore
       () => import(`@/pages/start-coding/next-js.md`)
@@ -62,6 +66,10 @@ export const config: StorefrontConfig = {
       Assets: [
         // @ts-ignore
         () => import(`@/../../assets/CHANGELOG.md`)
+      ],
+      Partials: [
+        // @ts-ignore
+        () => import(`@/../../partials/CHANGELOG.md`)
       ]
     },
     Versioning: [
