@@ -272,7 +272,7 @@ describe('select-wrapper combobox', () => {
     expect(errorOptionValue).toBe('---');
   });
 
-  it('should clear input value on focus', async () => {
+  it('should clear input value on click outside', async () => {
     await setContentWithDesignSystem(
       page,
       `
