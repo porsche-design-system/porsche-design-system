@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+Type | Basic Library |
+|---|---|
+Colors | Notification soft colors for dark theme |
+
+#### Changed
+Type | Basic Library |
+|---|---|
+Basic | Porsche Next Font with new metrics |
+Colors | Surface color for dark theme regarding Accessibility criteria |
+Colors | Hover/Active color for dark theme regarding Accessibility criteria |
+Accessibility | Focus state for light and dark theme | 
+
 ### [2.0.0] - 2020-08-21
 
 #### Fixed
