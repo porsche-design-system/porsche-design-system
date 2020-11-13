@@ -1008,7 +1008,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "media/porsche-design-system.d29d9376.mp4"
   },
   {
-    "revision": "fef4fe89dcdc96928fda0d142a3c1675",
+    "revision": "5a1bbd67fd63424deeb57d3a74349363",
     "url": "pds-loader.js"
   }
 ]);
