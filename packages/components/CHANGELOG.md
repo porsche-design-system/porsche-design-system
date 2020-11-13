@@ -69,6 +69,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
 
+### [1.5.6] - 2020-10-15
+
+### [1.5.6-rc.0] - 2020-10-13
+
+### Fixed
+- `Spinner` zooming bug on Safari
+
+### [1.5.5] - 2020-09-11
+
 ### [1.5.5-rc.0] - 2020-09-07
 
 ### Changed
