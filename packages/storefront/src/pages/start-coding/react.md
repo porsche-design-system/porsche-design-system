@@ -1,42 +1,22 @@
 # React
-## Sample integration
 
-You can find the repository of the react example project here: [Sample integration react](https://github.com/porscheui/sample-integration-react.git)
+## Quick start
+To build your own application with the **React** components of Porsche Design System, follow these steps:
 
-## Get the project up and running
-* Clone the repository by executing <br>
-`git clone https://github.com/porscheui/sample-integration-react.git`
-
-### yarn
-* Install dependencies via `yarn install`
-* Run tests via `yarn test`
-* Run the application via `yarn start`
-* Build the application via `yarn build`
-
-### npm
-* Install dependencies via `npm install`
-* Run tests via `npm test`
-* Run the application via `npm start`
-* Build the application via `npm run build`
-
----
-
-## Reproduce on your own
-To build your own application which is provided with the Porsche Design System follow these simple steps:
-
+* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
 * Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to create a directory inside the current 
 folder with the initial project structure called `my-app` 
 * To add TypeScript to your **Create React App**, you have to install it:
-```
+```shell script
 // install with yarn:
 yarn add typescript @types/node @types/react @types/react-dom @types/jest
 
 // install with npm:
 npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
-* Install the Porsche Design System
 
-``` 
+* Install the Porsche Design System
+```shell script
 // install with yarn:
 yarn add @porsche-design-system/components-react
 
@@ -49,7 +29,7 @@ You are ready to start building your own application.
 The following project is a standard React (Create React App) setup:
 
 ### Index file
-``` 
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -70,7 +50,7 @@ serviceWorker.unregister();
 
 Change your App file to use at least one Porsche Design System Component, for example:
 
-``` 
+```tsx
 import React from 'react';
 import { PHeadline } from '@porsche-design-system/components-react';
 
@@ -82,8 +62,6 @@ export const App = () => (
 ```
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
-
----
 
 ## Test the application
 
@@ -101,23 +79,20 @@ You have to access the mocks in the Mock-Factory of the `jest.mock()` function.
 
 To consume the mocks you can set them up via your **setupTest.{js|ts}** file in your root folder and copy the following snippet into the setup file.
 
-```
+```ts
 // setupTest.{js|ts}
-
 jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks'));
 ```
 
-```
+```tsx
 // SingleComponent.tsx
-
 export const SingleComponent = () => (
   <PHeadline>Some headline</PHeadline>
 )
 ```
 
-```
+```tsx
 // SingleComponent.test.tsx
-
 test('renders a headline from Porsche Design System', async () => {
   const { getByText } = render(<SingleComponent />);
   const headLineElement = getByText('Some headline');
@@ -128,17 +103,15 @@ test('renders a headline from Porsche Design System', async () => {
 ### Local Mocks
 If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
 
-```
+```tsx
 // SingleComponent.tsx
-
 export const SingleComponent = () => (
   <PHeadline>Some headline</PHeadline>
 )
 ```
 
-```
+```tsx
 // SingleComponent.test.tsx
-
 jest.mock('@porsche-design-system/components-react', () => require('@porsche-design-system/components-react/mocks/p-headline-mock'));
 
 test('renders a headline from Porsche Design System', async () => {
@@ -155,7 +128,7 @@ You find detailed information on how to use mock functions in **Jest** [here](ht
    
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
 
-### Advanced usage
+## Advanced usage
 ### Prefixing
 A way of preventing conflicts is by using a unique custom prefix for the components.  
 You can create components with your prefix with the provided `getPrefixedComponents`
@@ -171,7 +144,7 @@ automatically. That would also happen, if we would provide `getPrefixedComponent
 components also within the same barrel export. This way we can ensure, that
 only the prefixed web components are getting defined.
 
-```
+```tsx
 import React from 'react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
@@ -188,16 +161,14 @@ In the example the `PHeadline` component will render as `<sample-prefix-p-headli
 We recommend to call `getPrefixedComponents` only once in your app and import it from
 there, that you can change the prefix in a single place.
 
-```
+```ts
 // PorscheDesignSystem.ts
-
-import { getPrefixedComponents } from '@porsche-design-system/components-react/dist/prefixed-components';
+import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 export const PorscheDesignComponents = getPrefixedComponents({ prefix: 'sample-prefix' });
 ```
 
-```
+```tsx
 // SingleComponent.tsx
-
 import { PorscheDesignComponents } from './PorscheDesignSystem';
 const { PHeadline } = PorscheDesignComponents;
 
@@ -205,3 +176,12 @@ export const SingleComponent = () => (
   <PHeadline>Some headline</PHeadline>
 )
 ```
+
+## Sample integration
+We provide a public Github repository with a basic sample project setup to show how it is managed in real code.
+You can find the repository of the React example project here: [Sample integration React](https://github.com/porscheui/sample-integration-react)
+
+### Get the project up and running
+* Clone the repository by executing  
+`git clone https://github.com/porscheui/sample-integration-react.git`
+* Follow the installation guidelines in the README.md file
