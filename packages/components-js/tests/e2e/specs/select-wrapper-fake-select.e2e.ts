@@ -1076,7 +1076,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
         await page.keyboard.press('c');
-        await page.waitFor(120);
+        await page.waitForTimeout(120);
 
         expect(await getHighlightedFakeOption()).toBe(2);
         expect(await getSelectedFakeOption()).toBe(2);

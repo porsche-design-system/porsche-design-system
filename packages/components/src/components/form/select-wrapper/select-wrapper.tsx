@@ -311,7 +311,7 @@ export class SelectWrapper {
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
-      attributeFilter: ['disabled', 'selected']
+      attributeFilter: ['disabled', 'selected', 'hidden']
     });
   }
 
