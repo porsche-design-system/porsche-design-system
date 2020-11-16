@@ -118,7 +118,7 @@ describe('select-wrapper fake-select', () => {
       'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
     );
 
-    expect(fakeOptionListDirectionDown).toBeDefined();
+    expect(fakeOptionListDirectionDown).not.toBeNull();
   });
 
   it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
@@ -154,7 +154,7 @@ describe('select-wrapper fake-select', () => {
       'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
     );
 
-    expect(fakeOptionListDirectionUp).toBeDefined();
+    expect(fakeOptionListDirectionUp).not.toBeNull();
   });
 
   it('should auto position dropdown to bottom if bottom space is more than dropdown height', async () => {
@@ -189,7 +189,7 @@ describe('select-wrapper fake-select', () => {
       'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
     );
 
-    expect(fakeOptionListDirectionDown).toBeDefined();
+    expect(fakeOptionListDirectionDown).not.toBeNull();
   });
 
   describe('fake drop down', () => {
@@ -218,8 +218,8 @@ describe('select-wrapper fake-select', () => {
       const activeDescendant = await getAttribute(fakeOptionList, 'aria-activedescendant');
       const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
-      expect(fakeOptionList).toBeDefined();
-      expect(fakeOptionDisabled).toBeDefined();
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptionDisabled).not.toBeNull();
       expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(0);
       expect(await getElementIndex(fakeOptionList, '[aria-disabled=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
@@ -260,8 +260,8 @@ describe('select-wrapper fake-select', () => {
         return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
       });
 
-      expect(fakeOptionList).toBeDefined();
-      expect(fakeOptgroup).toBeDefined();
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptgroup).not.toBeNull();
       expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
       expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
@@ -294,8 +294,8 @@ describe('select-wrapper fake-select', () => {
         return el.querySelectorAll('.p-select-wrapper__fake-optgroup-label').length;
       });
 
-      expect(fakeOptionList).toBeDefined();
-      expect(fakeOptgroup).toBeDefined();
+      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptgroup).not.toBeNull();
       expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
     });
 
@@ -382,7 +382,7 @@ describe('select-wrapper fake-select', () => {
         await fakeOptionList.evaluate((el: HTMLElement) => {
           return el.childElementCount;
         });
-      expect(fakeOptionList).toBeDefined();
+      expect(fakeOptionList).not.toBeNull();
       expect(await getNumberOfFakeOptions()).toEqual(await getNumberOfOptions());
 
       await select.evaluate((el: HTMLSelectElement) => {
