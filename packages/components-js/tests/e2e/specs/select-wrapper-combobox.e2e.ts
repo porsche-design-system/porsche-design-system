@@ -293,7 +293,7 @@ describe('select-wrapper combobox', () => {
     await filterInput.type('x');
     await waitForStencilLifecycle(page);
 
-    const value = async () => await getProperty(filterInput, 'value');
+    const value = () => getProperty(filterInput, 'value');
 
     expect(await value()).toBe('x');
 
