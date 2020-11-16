@@ -27,6 +27,8 @@ describe('select-wrapper fake-select', () => {
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+  const fakeOptionInPosOne = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+  const fakeOptionInPosTwo = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
   describe('hover state', () => {
     it('should change box-shadow color when fake select is hovered', async () => {
@@ -421,7 +423,7 @@ describe('select-wrapper fake-select', () => {
       expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
-    it('should change selected state to fake option item if selected is added as attribute to native select option programmatically', async () => {
+    it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -435,19 +437,20 @@ describe('select-wrapper fake-select', () => {
     `
       );
       const select = await getSelectRealInput();
-      const fakeOptionList = async () => await getSelectOptionList();
-      const fakeOptionA = async () => await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-      const fakeOptionB = async () => await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
 
-      expect(await getCssClasses(await fakeOptionA())).toContain('p-select-wrapper__fake-option--selected');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].setAttribute('selected', 'selected')));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(await fakeOptionA())).not.toContain('p-select-wrapper__fake-option--selected');
-      expect(await getCssClasses(await fakeOptionB())).toContain('p-select-wrapper__fake-option--selected');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(1);
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
 
     });
 
@@ -468,20 +471,21 @@ describe('select-wrapper fake-select', () => {
     `
       );
       const select = await getSelectRealInput();
-      const fakeOptionList = async () => await getSelectOptionList();
-      const fakeOptionA = async () => await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-      const fakeOptionB = async () => await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
 
-      expect(await getCssClasses(await fakeOptionA())).toContain('p-select-wrapper__fake-option--selected');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[0].selected = false));
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(await fakeOptionA())).toContain('p-select-wrapper__fake-option--selected');
-      expect(await getCssClasses(await fakeOptionB())).not.toContain('p-select-wrapper__fake-option--selected');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--selected')).toBe(0);
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
     });
 
@@ -499,14 +503,14 @@ describe('select-wrapper fake-select', () => {
     `
       );
       const select = await getSelectRealInput();
-      const fakeOptionList = async () => await getSelectOptionList();
-      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOption = await fakeOptionInPosTwo();
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--hidden')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '.p-select-wrapper__fake-option--hidden')).toBe(1);
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = false));
       await waitForStencilLifecycle(page);
@@ -527,7 +531,7 @@ describe('select-wrapper fake-select', () => {
       </p-select-wrapper>
     `
       );
-      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+      const fakeOption = await fakeOptionInPosOne();
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
     });
@@ -625,8 +629,8 @@ describe('select-wrapper fake-select', () => {
         );
 
         const select = await getSelectRealInput();
-        const fakeOptionA = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-        const fakeOptionB = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+        const fakeOptionA = await fakeOptionInPosOne();
+        const fakeOptionB = await fakeOptionInPosTwo();
 
         expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
         expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
@@ -1125,13 +1129,10 @@ describe('select-wrapper fake-select', () => {
     `
         );
         const select = await getSelectRealInput();
-        const fakeOptionInPosOne = await selectNode(
-          page,
-          'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)'
-        );
+        const fakeOptionB = await fakeOptionInPosTwo();
 
         await select.click();
-        await fakeOptionInPosOne.click();
+        await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
         expect(await getOpacity()).toBe('0');
