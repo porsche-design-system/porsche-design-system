@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { color, font, FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
+import { color, font } from '@porsche-design-system/utilities';
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { minifyHTML, minifyCSS } from './utils';
-import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES, CDN_KEY } from '../../../cdn.config';
+import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES } from '../../../cdn.config';
 
 const updateContent = (oldContent: string, newContent: string): string => {
   const separator = '/* Auto Generated Below */';
@@ -23,17 +23,19 @@ const generateStylesPartials = async (): Promise<void> => {
 type Options = {
   cdn?: 'auto' | 'cn';
   withoutTags?: boolean;
+  prefix?: string;
 };
 
-export const getFontFaceCSS = (opts?: Options): string => {
+export const getFontFaceCSS = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): string => {
   const url = \`\${opts?.cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}'}/${CDN_BASE_PATH_STYLES}/\${opts?.cdn === 'cn' ? '${hashedFontFaceCssFiles.find(
     (x) => x.includes('.cn.')
   )}' : '${hashedFontFaceCssFiles.find((x) => !x.includes('.cn.'))}'}\`;
   return opts?.withoutTags ? url : \`${minifyHTML('<link rel="stylesheet" href="$URL">').replace('$URL', '${url}')}\`;
 }
 
-export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags'>): string => {
-  const styleInnerHtml = '${minifyCSS(`${TAG_NAMES.join(',')} { visibility: hidden }`)}';
+export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>): string => {
+  const tagNames = [${TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
+  const styleInnerHtml = tagNames.map((x) => opts?.prefix ? \`\${opts.prefix}-\${x}\` : x).join(',') + '{visibility:hidden}';
   return opts?.withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}</style>\`;
 };`;
 

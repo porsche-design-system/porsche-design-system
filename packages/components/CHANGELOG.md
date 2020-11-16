@@ -8,13 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Made API of `Tabs` consistent with `Tabs Bar`
+
+#### Fixed
+- Some bugs in `TabsBar`
+
 ### [2.0.0-alpha.6] - 2020-10-28
 
 #### Changed
-- default `type` of `Button` and `ButtonPure` to `submit`
+- default `type` of `Button` and `Button Pure` to `submit`
 
 #### Fixed
-- Typing file for Angular
+- Typings
 
 ### [2.0.0-alpha.5] - 2020-10-26
 
@@ -23,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Typing for `pageChange` event of `Pagination` component
-- Typings for Angular build
+- Typings
 
 #### Changed
 - Focus styling
@@ -39,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Banner` component
 
 #### Removed
-- Default `position:relative;` style of `LinkPure` and `ButtonPure` 
+- Default `position: relative;` style of `Link Pure` and `Button Pure` 
 
 #### Fixed
 - `Spinner` zooming bug on Safari
@@ -50,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support to load assets from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
 
 #### Removed
-- Support for `<a>` wrapped `Link` and `LinkPure`
+- Support for `<a>` wrapped `Link` and `Link Pure`
 
 ### [2.0.0-alpha.2] - 2020-08-20
 
@@ -62,6 +68,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
+### [1.5.6] - 2020-10-15
+
+### [1.5.6-rc.0] - 2020-10-13
+
+### Fixed
+- `Spinner` zooming bug on Safari
+
+### [1.5.5] - 2020-09-11
 
 ### [1.5.5-rc.0] - 2020-09-07
 
