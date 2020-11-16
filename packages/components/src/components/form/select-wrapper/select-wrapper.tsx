@@ -52,14 +52,13 @@ export class SelectWrapper {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
 
-  /** Forces either rendering of native browser select dropdown or custom drop down */
-  @Prop() public native?: boolean = undefined;
+  /** Forces either rendering of native browser select dropdown or custom styled dropdown */
+  @Prop() public dropdown?: 'native' | 'custom' = undefined;
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly OptionMap[] = [];
   @State() private filterHasResults = true;
-  @State() private renderCustomDropDown: boolean;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -70,6 +69,7 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
+  private renderCustomDropDown: boolean;
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -107,6 +107,10 @@ export class SelectWrapper {
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
       this.filterInput.addEventListener('input', this.handleFilterSearch);
     }
+  }
+
+  public componentWillUpdate(): void {
+    this.shouldRenderCustomDropDown();
   }
 
   public componentDidUpdate(): void {
@@ -321,14 +325,14 @@ export class SelectWrapper {
   private shouldRenderCustomDropDown(): void {
     if(this.filter) {
       this.renderCustomDropDown = true;
-    } else if(!isTouchDevice() && !this.native) {
+    } else if(!isTouchDevice() && !this.dropdown) {
       this.renderCustomDropDown = true;
-    } else if(isTouchDevice() && this.native === false) {
+    } else if(isTouchDevice() && this.dropdown === 'custom') {
       this.renderCustomDropDown = true;
     } else if(isTouchDevice()) {
       this.renderCustomDropDown = false;
     } else {
-      this.renderCustomDropDown = !this.native;
+      this.renderCustomDropDown = this.dropdown !== 'native';
     }
   }
 
