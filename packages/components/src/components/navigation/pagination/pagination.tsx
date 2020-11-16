@@ -203,7 +203,8 @@ export class Pagination {
     /**
      * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
      */
-    if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
+    const { key } = event;
+    if (key === ' ' || key === 'Enter' || key === 'Spacebar') {
       /**
        * Prevent the default action to stop scrolling when space is pressed
        */

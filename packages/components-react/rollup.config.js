@@ -13,7 +13,11 @@ export default {
     extend: true,
   },
   plugins: [
-    polyfill(['@porsche-design-system/construct-style-sheets-polyfill']),
+    polyfill([
+      '@porsche-design-system/construct-style-sheets-polyfill',
+      'intersection-observer',
+      'scroll-behavior-polyfill',
+    ]),
     resolve({
       resolveOnly: [/^@stencil\/.*$/, /^@porsche-design-system\/.*$/],
     }),

@@ -360,6 +360,53 @@ describe('select-wrapper fake-select', () => {
       expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
+    it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = async () => await getSelectOptionList();
+      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
+      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--hidden')).toBe(1);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = false));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOption)).not.toContain('p-select-wrapper__fake-option--hidden');
+    });
+
+    it('should not render initial hidden option fields', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value hidden></option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+
+      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
+    });
+
     describe('keyboard and click events', () => {
       const getActiveDescendant = async () => await getAttribute(await getSelectOptionList(), 'aria-activedescendant');
       const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
@@ -512,6 +559,7 @@ describe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(0);
       });
 
+      // TODO: remove duplicate?
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
