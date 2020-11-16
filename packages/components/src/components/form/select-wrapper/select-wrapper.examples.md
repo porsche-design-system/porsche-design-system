@@ -82,6 +82,23 @@ Please make sure to set the corresponding **aria** attributes.
 
 <Playground :markup="slots" :config="config"></Playground>
 
+---
+
+## Changing the selected option programmatically
+In JS there is no possibility to listen to the `onchange` event or the `mutationObserver` if the selected option is changed programmatically, e.g.:
+```tsx
+//Won't update the custom styled dropdown
+selectElement.options[3].selected = true;
+```
+
+To force re-rendering of the custom dropdown, the selected option needs to be changed by adding/removing the `selected` attribute, e.g.
+
+```tsx
+//Won't update the custom styled dropdown
+selectElement.options[3].setAttribute('selected', 'selected');
+selectElement.options[0].removeAttribute('selected');
+```
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
