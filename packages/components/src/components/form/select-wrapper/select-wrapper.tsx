@@ -52,11 +52,14 @@ export class SelectWrapper {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
 
+  /** Forces either rendering of native browser select dropdown or custom drop down */
+  @Prop() public native?: boolean = undefined;
+
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly OptionMap[] = [];
   @State() private filterHasResults = true;
-  @State() private isTouchWithoutFilter: boolean = isTouchDevice() && !this.filter;
+  @State() private renderCustomDropDown: boolean;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -78,12 +81,13 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.initSelect();
+    this.shouldRenderCustomDropDown();
     this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
 
-    if (!this.isTouchWithoutFilter) {
+    if (this.renderCustomDropDown) {
       this.observeSelect();
       this.setOptionList();
       if (!this.filter) {
@@ -97,7 +101,7 @@ export class SelectWrapper {
   }
 
   public componentDidLoad(): void {
-    if (!this.isTouchWithoutFilter && this.filter) {
+    if (this.filter) {
       this.fakeFilter.addEventListener('click', this.handleFilterInputClick);
       this.filterInput.addEventListener('mousedown', this.handleFilterInputClick);
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
@@ -110,7 +114,7 @@ export class SelectWrapper {
   }
 
   public disconnectedCallback(): void {
-    if (!this.isTouchWithoutFilter) {
+    if (this.renderCustomDropDown) {
       this.selectObserver.disconnect();
       this.select.removeEventListener('mousedown', this.handleMouseEvents);
       this.select.removeEventListener('keydown', this.handleKeyboardEvents);
@@ -193,22 +197,21 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {this.filter &&
-            !this.isTouchWithoutFilter && [
-              <input
-                type="text"
-                class={filterInputClasses}
-                role="combobox"
-                aria-autocomplete="both"
-                aria-controls="p-listbox"
-                disabled={this.disabled}
-                aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
-                aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
-                ref={(el) => (this.filterInput = el)}
-              />,
-              <span ref={(el) => (this.fakeFilter = el)} />
-            ]}
-          {!this.isTouchWithoutFilter && (
+          {this.filter && [
+            <input
+              type="text"
+              class={filterInputClasses}
+              role="combobox"
+              aria-autocomplete="both"
+              aria-controls="p-listbox"
+              disabled={this.disabled}
+              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+              ref={(el) => (this.filterInput = el)}
+            />,
+            <span ref={(el) => (this.fakeFilter = el)} />]
+          }
+          {this.renderCustomDropDown && (
             <div
               class={fakeOptionListClasses}
               role="listbox"
@@ -313,6 +316,20 @@ export class SelectWrapper {
       attributes: true,
       attributeFilter: ['disabled', 'hidden']
     });
+  }
+
+  private shouldRenderCustomDropDown(): void {
+    if(this.filter) {
+      this.renderCustomDropDown = true;
+    } else if(!isTouchDevice() && !this.native) {
+      this.renderCustomDropDown = true;
+    } else if(isTouchDevice() && this.native === false) {
+      this.renderCustomDropDown = true;
+    } else if(isTouchDevice()) {
+      this.renderCustomDropDown = false;
+    } else {
+      this.renderCustomDropDown = !this.native;
+    }
   }
 
   private handleClickOutside = (e: MouseEvent): void => {
@@ -541,7 +558,9 @@ export class SelectWrapper {
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
           >
-            <span>{item.text}</span>
+            {item.text && (
+              <span>{item.text}</span>
+            )}
             {selected && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}

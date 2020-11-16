@@ -45,14 +45,13 @@ describe('select-wrapper combobox', () => {
   it('should render', async () => {
     await setContentWithDesignSystem(
       page,
-      `
-    <p-select-wrapper label="Some label" filter="true">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b" disabled>Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
+      `<p-select-wrapper label="Some label" filter="true">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b" disabled>Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`
     );
 
     const fakeOptionList = await getSelectOptionList();
@@ -65,19 +64,32 @@ describe('select-wrapper combobox', () => {
     expect(activeDescendant).toEqual(selectedDescendantId);
   });
 
-  it('should render if touch support is detected', async () => {
+  it('should render custom dropdown if touch support is detected', async () => {
     await page.emulate(devices['iPhone X']);
     await setContentWithDesignSystem(
       page,
-      `
-        <p-select-wrapper label="Some label" filter="true">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>
-      `
+      `<p-select-wrapper label="Some label" filter="true">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`
+    );
+    const fakeOptionList = await getSelectOptionList();
+    expect(fakeOptionList).not.toBeNull();
+  });
+
+  it('should render custom dropdown even if native prop is set to true', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select-wrapper label="Some label" filter="true" native="true">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`
     );
     const fakeOptionList = await getSelectOptionList();
     expect(fakeOptionList).not.toBeNull();
@@ -129,14 +141,13 @@ describe('select-wrapper combobox', () => {
   it('should change box-shadow color of filter input when label text is hovered', async () => {
     await setContentWithDesignSystem(
       page,
-      `
-        <p-select-wrapper label="Some label" filter="true">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
+      `<p-select-wrapper label="Some label" filter="true">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`
     );
 
     const filterInputOverlay = await selectFilterOverlay();
@@ -151,16 +162,14 @@ describe('select-wrapper combobox', () => {
   it('should make fake option list visible if filter input is clicked and hidden if clicked outside', async () => {
     await setContentWithDesignSystem(
       page,
-      `
-      <p-text>Some text</p-text>
+      `<p-text>Some text</p-text>
       <p-select-wrapper label="Some label" filter="true">
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>
         </select>
-      </p-select-wrapper>
-    `
+      </p-select-wrapper>`
     );
     const filterInput = await selectFilter();
     const text = await selectNode(page, 'p-text');
@@ -327,14 +336,13 @@ describe('select-wrapper combobox', () => {
   it('should set dropdown direction to up', async () => {
     await setContentWithDesignSystem(
       page,
-      `
-    <p-select-wrapper label="Some label" filter="true" dropdown-direction="up">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b" disabled>Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
+      `<p-select-wrapper label="Some label" filter="true" dropdown-direction="up">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b" disabled>Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>`
     );
 
     const fakeOptionListDirectionUp = await selectNode(
@@ -352,21 +360,19 @@ describe('select-wrapper combobox', () => {
     });
     await setContentWithDesignSystem(
       page,
-      `
-    <div style="height: 400px;"></div>
-    <p-select-wrapper label="Some label" filter="true" dropdown-direction="auto">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b" disabled>Option B</option>
-        <option value="c">Option C</option>
-        <option value="d">Option D</option>
-        <option value="e">Option E</option>
-        <option value="f">Option F</option>
-        <option value="g">Option G</option>
-        <option value="h">Option H</option>
-      </select>
-    </p-select-wrapper>
-    `
+      `<div style="height: 400px;"></div>
+      <p-select-wrapper label="Some label" filter="true" dropdown-direction="auto">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b" disabled>Option B</option>
+          <option value="c">Option C</option>
+          <option value="d">Option D</option>
+          <option value="e">Option E</option>
+          <option value="f">Option F</option>
+          <option value="g">Option G</option>
+          <option value="h">Option H</option>
+        </select>
+      </p-select-wrapper>`
     );
 
     const filterInput = await selectFilter();
@@ -397,15 +403,13 @@ describe('select-wrapper combobox', () => {
     it('should focus filter input on tab', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       const filterInput = await selectFilter();
@@ -421,15 +425,13 @@ describe('select-wrapper combobox', () => {
     it('should highlight first position on arrow down', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
 
@@ -463,15 +465,13 @@ describe('select-wrapper combobox', () => {
     it('should skip disabled option on arrow down', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name">
+            <option value="a">A Option</option>
+            <option value="b" disabled>B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       await page.keyboard.press('Tab');
@@ -484,15 +484,13 @@ describe('select-wrapper combobox', () => {
     it('should skip disabled option on arrow up', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b" disabled>B Option</option>
+            <option value="c" selected>C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await waitForStencilLifecycle(page);
 
@@ -532,17 +530,15 @@ describe('select-wrapper combobox', () => {
     it('should highlight correct position on multiple key actions', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c">C Option</option>
-          <option value="d">D Option</option>
-          <option value="e">E Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b" disabled>B Option</option>
+            <option value="c">C Option</option>
+            <option value="d">D Option</option>
+            <option value="e">E Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -564,15 +560,13 @@ describe('select-wrapper combobox', () => {
     it('should open fake select with spacebar', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
 
@@ -621,15 +615,13 @@ describe('select-wrapper combobox', () => {
     it('should not select highlighted option with spacebar an fake option list should stay open', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-      `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       const select = await getSelectRealInput();
@@ -649,15 +641,13 @@ describe('select-wrapper combobox', () => {
     it('should change selected option on ArrowLeft while list is hidden', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       let calls = 0;
@@ -677,15 +667,13 @@ describe('select-wrapper combobox', () => {
     it('should change selected option on ArrowRight while list is hidden', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       let calls = 0;
@@ -705,15 +693,13 @@ describe('select-wrapper combobox', () => {
     it('should change selected option on ArrowLeft while list is open and should close the list', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       let calls = 0;
@@ -736,15 +722,13 @@ describe('select-wrapper combobox', () => {
     it('should change selected option on ArrowRight while list is open and should close the list', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       let calls = 0;
@@ -767,15 +751,13 @@ describe('select-wrapper combobox', () => {
     it('should not select option on Escape', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -795,15 +777,13 @@ describe('select-wrapper combobox', () => {
     it('should not select option on PageDown while list is hidden', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -818,15 +798,13 @@ describe('select-wrapper combobox', () => {
     it('should not select option on PageUp while list is hidden', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -841,15 +819,13 @@ describe('select-wrapper combobox', () => {
     it('should highlight and select last option on PageDown while list is visible', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -873,15 +849,13 @@ describe('select-wrapper combobox', () => {
     it('should highlight and select first option on PageUp while list is visible', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c" selected>C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
@@ -905,15 +879,13 @@ describe('select-wrapper combobox', () => {
     it('should open/close fake select on mouseclick', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const filterInput = await selectFilter();
 
@@ -933,15 +905,13 @@ describe('select-wrapper combobox', () => {
     it('should select second option on mouseclick', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
       const filterInput = await selectFilter();
       const fakeOptionInPosOne = await getFakeOptionInPosOne();
@@ -959,15 +929,13 @@ describe('select-wrapper combobox', () => {
     it('should close fakeSelect on Tab', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label" filter="true">
+          <select name="some-name" id="realSelect">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       const filterInput = await selectFilter();

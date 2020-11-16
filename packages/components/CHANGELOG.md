@@ -8,8 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `native` property to force rendering of native Browser or custom styled select dropdown
+
 #### Changed
 - Made API of `Tabs` consistent with `Tabs Bar`
+- Some styling improvements of `Select Wrapper`
 
 #### Fixed
 - Some bugs in `TabsBar`
