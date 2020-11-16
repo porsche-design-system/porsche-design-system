@@ -302,9 +302,11 @@
     border: 1px solid;
     left: 0;
     right: 0;
-    max-height: 200px;
+    max-height: 320px;
     overflow-y: auto;
     scroll-behavior: smooth;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+    0 15px 20px 0 rgba(0, 0, 0, 0.2);
     transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
 
     #{$bem-block}--theme-light & {
@@ -312,9 +314,21 @@
       background-color: $p-color-background-default;
     }
 
+    #{$bem-block}--theme-light:hover & {
+      border-right-color: $p-color-neutral-contrast-high;
+      border-bottom-color: $p-color-neutral-contrast-high;
+      border-left-color: $p-color-neutral-contrast-high;
+    }
+
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
       background-color: $p-color-default;
+    }
+
+    #{$bem-block}--theme-dark:hover & {
+      border-right-color: $p-color-theme-dark-neutral-contrast-high;
+      border-bottom-color: $p-color-theme-dark-neutral-contrast-high;
+      border-left-color: $p-color-theme-dark-neutral-contrast-high;
     }
 
     &--direction {
@@ -384,8 +398,8 @@
 
   &__fake-option {
     position: relative;
-    display: block;
-    padding: $p-spacing-8 p-px-to-rem(12px);
+    display: flex;
+    padding: $p-spacing-4 p-px-to-rem(12px);
     min-height: $p-spacing-24;
     cursor: pointer;
     text-align: left;
@@ -404,6 +418,7 @@
     &:not([aria-disabled]):hover {
       #{$bem-block}--theme-light & {
         color: $p-color-state-hover;
+        background-color: #ebebeb;
       }
 
       #{$bem-block}--theme-dark & {
@@ -422,6 +437,10 @@
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
+      }
+
+      span + #{$bem-block}__fake-option-icon {
+        margin-left: p-px-to-rem(12px);
       }
     }
 
@@ -453,11 +472,6 @@
     &--initiallyHidden{
       display: none;
     }
-  }
-
-  &__fake-option-icon {
-    position: absolute;
-    right: p-px-to-rem(12px);
   }
 
   &__fake-optgroup-label {

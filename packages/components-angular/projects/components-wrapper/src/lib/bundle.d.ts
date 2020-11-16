@@ -521,6 +521,10 @@ export namespace Components {
 		 */
 		"message"?: string;
 		/**
+		  * Forces either rendering of native browser select dropdown or custom drop down
+		 */
+		"native"?: boolean;
+		/**
 		  * The validation state.
 		 */
 		"state"?: FormState;
@@ -1391,6 +1395,10 @@ declare namespace LocalJSX {
 		  * The message styled depending on validation state.
 		 */
 		"message"?: string;
+		/**
+		  * Forces either rendering of native browser select dropdown or custom drop down
+		 */
+		"native"?: boolean;
 		/**
 		  * The validation state.
 		 */

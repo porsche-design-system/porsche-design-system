@@ -23,6 +23,7 @@ describe('select-wrapper fake-select', () => {
   });
   afterEach(async () => await page.close());
 
+  const getSelectComponent = () => selectNode(page, 'p-select-wrapper');
   const getSelectFakeInput = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
@@ -33,12 +34,12 @@ describe('select-wrapper fake-select', () => {
       await setContentWithDesignSystem(
         page,
         `<p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       const fakeSelect = await getSelectFakeInput();
@@ -52,8 +53,7 @@ describe('select-wrapper fake-select', () => {
     it('should change box-shadow color of fake select when label text is hovered', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-        <p-select-wrapper label="Some label">
+        `<p-select-wrapper label="Some label">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -72,75 +72,17 @@ describe('select-wrapper fake-select', () => {
     });
   });
 
-  it('should set dropdown direction to up', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-    <p-select-wrapper label="Some label" dropdown-direction="up">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b" disabled>Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
-    );
-
-    const fakeOptionListDirectionUp = await selectNode(
-      page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
-    );
-
-    expect(fakeOptionListDirectionUp).not.toBeNull();
-  });
-
-  it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
-    await page.setViewport({
-      width: 800,
-      height: 600
-    });
-    await setContentWithDesignSystem(
-      page,
-      `
-    <div style="height: 400px;"></div>
-    <p-select-wrapper label="Some label" dropdown-direction="auto">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b" disabled>Option B</option>
-        <option value="c">Option C</option>
-        <option value="d">Option D</option>
-        <option value="e">Option E</option>
-        <option value="f">Option F</option>
-        <option value="g">Option G</option>
-        <option value="h">Option H</option>
-      </select>
-    </p-select-wrapper>
-    `
-    );
-
-    const select = await getSelectRealInput();
-    await select.click();
-    await waitForStencilLifecycle(page);
-
-    const fakeOptionListDirectionUp = await selectNode(
-      page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
-    );
-
-    expect(fakeOptionListDirectionUp).not.toBeNull();
-  });
-
-  describe('fake drop down', () => {
+  fdescribe('custom drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b" disabled>Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b" disabled>Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
 
       const fakeOptionList = await getSelectOptionList();
@@ -165,19 +107,18 @@ describe('select-wrapper fake-select', () => {
     it('should render with optgroups', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <optgroup label="Some optgroup label 1">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-          </optgroup>
-          <optgroup label="Some optgroup label 1">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-          </optgroup>
-        </select>
-      </p-select-wrapper>`
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+            <optgroup label="Some optgroup label 1">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </optgroup>
+          </select>
+        </p-select-wrapper>`
       );
 
       const select = await getSelectRealInput();
@@ -207,17 +148,16 @@ describe('select-wrapper fake-select', () => {
     it('should render with mix of options and optgroup', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <optgroup label="Some optgroup label 2">
-            <option value="c">Option C</option>
-            <option value="d">Option D</option>
-          </optgroup>
-        </select>
-      </p-select-wrapper>`
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <optgroup label="Some optgroup label 2">
+              <option value="c">Option C</option>
+              <option value="d">Option D</option>
+            </optgroup>
+          </select>
+        </p-select-wrapper>`
       );
 
       const select = await getSelectRealInput();
@@ -240,33 +180,82 @@ describe('select-wrapper fake-select', () => {
       await page.emulate(devices['iPhone X']);
       await setContentWithDesignSystem(
         page,
-        `
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+      const fakeOptionList = await getSelectOptionList();
+      expect(fakeOptionList).toBeNull();
+    });
+
+    it('should render if touch support is detected and native is set to false', async () => {
+      await page.emulate(devices['iPhone X']);
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label" native="false">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+      const fakeOptionList = await getSelectOptionList();
+      expect(fakeOptionList).not.toBeNull();
+    });
+
+    it('should not render if native prop is set to true', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label" native="true">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+      const fakeOptionList = await getSelectOptionList();
+      expect(fakeOptionList).toBeNull();
+    });
+
+    it('should not render if native prop is set to true programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+      const fakeOptionList = async () => await getSelectOptionList();
+      const host = await getSelectComponent();
+
+      expect(await fakeOptionList()).not.toBeNull();
+
+      await host.evaluate((el) => el.setAttribute('native', 'true'));
+      await waitForStencilLifecycle(page);
+
+      expect(await fakeOptionList()).toBeNull();
+    });
+
+    it('should be visible if select is clicked and hidden if clicked outside', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-text>Some text</p-text>
         <p-select-wrapper label="Some label">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-        </p-select-wrapper>
-      `
-      );
-      const fakeOptionList = await getSelectOptionList();
-      expect(fakeOptionList).toBeNull();
-    });
-
-    it('should be visible if select is clicked and hidden if clicked outside', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-text>Some text</p-text>
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       const text = await selectNode(page, 'p-text');
@@ -299,15 +288,13 @@ describe('select-wrapper fake-select', () => {
     it('should add fake option item if added to native select programmatically', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       const fakeOptionList = await getSelectOptionList();
@@ -339,15 +326,13 @@ describe('select-wrapper fake-select', () => {
     it('should add/remove disabled state to fake option item if added/removed to native select programmatically', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       const fakeOptionList = async () => await getSelectOptionList();
@@ -363,15 +348,13 @@ describe('select-wrapper fake-select', () => {
     it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
       const select = await getSelectRealInput();
       const fakeOptionList = async () => await getSelectOptionList();
@@ -392,19 +375,71 @@ describe('select-wrapper fake-select', () => {
     it('should not render initial hidden option fields', async () => {
       await setContentWithDesignSystem(
         page,
-        `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value hidden></option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value hidden></option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
       );
       const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
+    });
+
+    it('should set dropdown direction to up', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label" dropdown-direction="up">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b" disabled>Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const fakeOptionListDirectionUp = await selectNode(
+        page,
+        'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+      );
+
+      expect(fakeOptionListDirectionUp).not.toBeNull();
+    });
+
+    it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
+      await page.setViewport({
+        width: 800,
+        height: 600
+      });
+      await setContentWithDesignSystem(
+        page,
+        `<div style="height: 400px;"></div>
+        <p-select-wrapper label="Some label" dropdown-direction="auto">
+          <select name="some-name">
+            <option value="a">Option A</option>
+            <option value="b" disabled>Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+            <option value="g">Option G</option>
+            <option value="h">Option H</option>
+          </select>
+        </p-select-wrapper>`
+      );
+
+      const select = await getSelectRealInput();
+      await select.click();
+      await waitForStencilLifecycle(page);
+
+      const fakeOptionListDirectionUp = await selectNode(
+        page,
+        'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-up'
+      );
+
+      expect(fakeOptionListDirectionUp).not.toBeNull();
     });
 
     describe('keyboard and click events', () => {
@@ -423,15 +458,13 @@ describe('select-wrapper fake-select', () => {
       it('should highlight first position on arrow down', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+          <select name="some-name">
+            <option value="a">A Option</option>
+            <option value="b">B Option</option>
+            <option value="c">C Option</option>
+          </select>
+        </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
 
@@ -465,8 +498,7 @@ describe('select-wrapper fake-select', () => {
       it('should have the correct aria-expanded value if open/closed', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-          <p-select-wrapper label="Some label">
+          `<p-select-wrapper label="Some label">
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -489,8 +521,7 @@ describe('select-wrapper fake-select', () => {
       it('should show aria-selected attribute on selected fake option on click', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-          <p-select-wrapper label="Some label">
+          `<p-select-wrapper label="Some label">
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -517,15 +548,13 @@ describe('select-wrapper fake-select', () => {
       it('should skip disabled option on arrow down', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">A Option</option>
+              <option value="b" disabled>B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
 
         await page.keyboard.press('Tab');
@@ -538,15 +567,13 @@ describe('select-wrapper fake-select', () => {
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b" disabled>B Option</option>
+              <option value="c" selected>C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await waitForStencilLifecycle(page);
 
@@ -563,15 +590,13 @@ describe('select-wrapper fake-select', () => {
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b" disabled>B Option</option>
+              <option value="c" selected>C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
 
         await page.keyboard.press('Tab');
@@ -586,17 +611,15 @@ describe('select-wrapper fake-select', () => {
       it('should highlight correct position on multiple key actions', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c">C Option</option>
-          <option value="d">D Option</option>
-          <option value="e">E Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b" disabled>B Option</option>
+              <option value="c">C Option</option>
+              <option value="d">D Option</option>
+              <option value="e">E Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -618,15 +641,13 @@ describe('select-wrapper fake-select', () => {
       it('should open fake select with spacebar', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
 
@@ -646,15 +667,13 @@ describe('select-wrapper fake-select', () => {
       it('should select correct option with spacebar', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
 
@@ -682,15 +701,13 @@ describe('select-wrapper fake-select', () => {
       it('should change selected option on ArrowLeft while list is hidden', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
         let calls = 0;
@@ -710,15 +727,13 @@ describe('select-wrapper fake-select', () => {
       it('should change selected option on ArrowRight while list is hidden', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
         let calls = 0;
@@ -738,15 +753,13 @@ describe('select-wrapper fake-select', () => {
       it('should change selected option on ArrowLeft while list is open and should close the list', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
         let calls = 0;
@@ -769,15 +782,13 @@ describe('select-wrapper fake-select', () => {
       it('should change selected option on ArrowRight while list is open and should close the list', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
         let calls = 0;
@@ -800,15 +811,13 @@ describe('select-wrapper fake-select', () => {
       it('should not select option on Escape', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -828,15 +837,13 @@ describe('select-wrapper fake-select', () => {
       it('should not select option on PageDown while list is hidden', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -851,15 +858,13 @@ describe('select-wrapper fake-select', () => {
       it('should not select option on PageUp while list is hidden', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -874,15 +879,13 @@ describe('select-wrapper fake-select', () => {
       it('should highlight and select last option on PageDown while list is visible', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -906,15 +909,13 @@ describe('select-wrapper fake-select', () => {
       it('should highlight and select first option on PageUp while list is visible', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c" selected>C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -938,15 +939,13 @@ describe('select-wrapper fake-select', () => {
       it('should select option through keyboard search', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
@@ -961,15 +960,13 @@ describe('select-wrapper fake-select', () => {
       it('should open/close fake select on mouseclick', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
 
@@ -989,15 +986,13 @@ describe('select-wrapper fake-select', () => {
       it('should select second option on mouseclick', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
         const fakeOptionInPosOne = await selectNode(
@@ -1018,15 +1013,13 @@ describe('select-wrapper fake-select', () => {
       it('should close fakeSelect on Tab', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
 
         await page.keyboard.press('Tab');
@@ -1046,15 +1039,13 @@ describe('select-wrapper fake-select', () => {
       it('should remove and re-attach events', async () => {
         await setContentWithDesignSystem(
           page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
+          `<p-select-wrapper label="Some label">
+            <select name="some-name" id="realSelect">
+              <option value="a">A Option</option>
+              <option value="b">B Option</option>
+              <option value="c">C Option</option>
+            </select>
+          </p-select-wrapper>`
         );
         const select = await getSelectRealInput();
 
