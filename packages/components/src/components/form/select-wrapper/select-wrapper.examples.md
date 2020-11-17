@@ -82,6 +82,23 @@ Please make sure to set the corresponding **aria** attributes.
 
 <Playground :markup="slots" :config="config"></Playground>
 
+---
+
+## Changing the selected option programmatically
+In JS there is no possibility to listen to the `onchange` event or the `mutationObserver` if the selected option is changed programmatically, e.g.:
+```tsx
+//Won't update the custom styled dropdown
+selectElement.options[3].selected = true;
+```
+
+To force re-rendering of the custom dropdown, the selected option needs to be changed by adding/removing the `selected` attribute, e.g.
+
+```tsx
+//Won't update the custom styled dropdown
+selectElement.options[3].setAttribute('selected', 'selected');
+selectElement.options[0].removeAttribute('selected');
+```
+
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
@@ -94,7 +111,7 @@ Please make sure to set the corresponding **aria** attributes.
     
     label = 'show';
     state = 'error';
-    dropdownDirection = 'down';
+    dropdownDirection = 'auto';
     
     get basic() {
       const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -375,13 +392,14 @@ Please make sure to set the corresponding **aria** attributes.
     </optgroup>
   </select>
 </p-select-wrapper>`;
-    
-    direction =
-`<p-select-wrapper label="Some label" dropdown-direction="${this.dropdownDirection}">
+
+get direction() {
+  return `<p-select-wrapper label="Some label" dropdown-direction="${this.dropdownDirection}">
   <select name="some-name">
     ${buildOptions(['a','b','c','d','e','f']).join('\n    ')}
   </select>
 </p-select-wrapper>`;
+}
     
     withDescriptionText =
 `<p-select-wrapper label="Some label" description="Some description">

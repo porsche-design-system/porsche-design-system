@@ -27,14 +27,12 @@ describe('select-wrapper combobox', () => {
   const selectFilterOverlay = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input + span');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
-  const getSelectedValue = async () =>
-    await page.evaluate(() => {
-      const index = document.querySelector('select').selectedIndex;
-      const options = document.querySelectorAll('option');
-      return options[index].textContent;
-    });
-  const getChangedBoxShadow = async () =>
-    await getElementStyle(await selectFilterOverlay(), 'boxShadow', { waitForTransition: true });
+  const getSelectedText = async () => await page.evaluate(() => {
+    const index = document.querySelector('select').selectedIndex;
+    const options = document.querySelectorAll('option');
+    return options[index].textContent;
+  });
+  const getChangedBoxShadow = async () => await getElementStyle(await selectFilterOverlay(), 'boxShadow', { waitForTransition: true })
   const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
   const hidden = async () =>
     await page.evaluate(() => {
@@ -59,6 +57,12 @@ describe('select-wrapper combobox', () => {
     const activeDescendant = await getAttribute(await selectFilter(), 'aria-activedescendant');
     const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
+    const filterInput = await selectFilter();
+    const filterPlaceholder = await filterInput.evaluate((el) => {
+      return el.getAttribute('placeholder');
+    });
+
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
     expect(fakeOptionList).not.toBeNull();
     expect(await selectFilter()).not.toBeNull();
     expect(activeDescendant).toEqual(selectedDescendantId);
@@ -277,6 +281,36 @@ describe('select-wrapper combobox', () => {
     expect(errorOptionValue).toBe('---');
   });
 
+  it('should clear input value on click outside', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text>Some text</p-text>
+      <p-select-wrapper label="Some label" filter="true">
+        <select name="some-name" id="realSelect">
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
+        </select>
+      </p-select-wrapper>
+    `
+    );
+
+    const filterInput = await selectFilter();
+    const text = await selectNode(page, 'p-text');
+
+    await filterInput.type('x');
+    await waitForStencilLifecycle(page);
+
+    const value = () => getProperty(filterInput, 'value');
+
+    expect(await value()).toBe('x');
+
+    await text.click();
+
+    expect(await value()).toBe('');
+  });
+
   it('should add valid selection as placeholder on enter', async () => {
     await setContentWithDesignSystem(
       page,
@@ -299,8 +333,8 @@ describe('select-wrapper combobox', () => {
       return el.getAttribute('placeholder');
     });
 
-    expect(await getSelectedValue()).toBe('B');
-    expect(await getSelectedValue()).toEqual(filterPlaceholder);
+    expect(await getSelectedText()).toBe('B');
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
   });
 
   it('should add valid selection as placeholder on click', async () => {
@@ -329,8 +363,8 @@ describe('select-wrapper combobox', () => {
       return el.getAttribute('placeholder');
     });
 
-    expect(await getSelectedValue()).toBe('B');
-    expect(await getSelectedValue()).toEqual(filterPlaceholder);
+    expect(await getSelectedText()).toBe('B');
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
   });
 
   it('should set dropdown direction to up', async () => {
@@ -503,30 +537,6 @@ describe('select-wrapper combobox', () => {
       expect(await getHighlightedFakeOption()).toBe(0);
     });
 
-    // TODO: remove duplicate?
-    it('should skip disabled option on arrow up', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-
-      await page.keyboard.press('ArrowUp');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedFakeOption()).toBe(0);
-    });
-
     it('should highlight correct position on multiple key actions', async () => {
       await setContentWithDesignSystem(
         page,
@@ -567,35 +577,6 @@ describe('select-wrapper combobox', () => {
             <option value="c">C Option</option>
           </select>
         </p-select-wrapper>`
-      );
-      const select = await getSelectRealInput();
-
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect(await getOpacity()).toBe('0');
-
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      expect(await getOpacity()).toBe('1');
-      expect(calls).toBe(0);
-    });
-
-    // TODO: remove duplicate?
-    it('should open fake select with spacebar', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
       );
       const select = await getSelectRealInput();
 
