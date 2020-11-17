@@ -52,8 +52,8 @@ export class SelectWrapper {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
-  /** Forces either rendering of native browser select dropdown or custom styled dropdown */
-  @Prop() public dropdown?: 'native' | 'custom' = undefined;
+  /** Forces rendering of native browser select dropdown */
+  @Prop() public native?: boolean = false;
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -304,23 +304,20 @@ export class SelectWrapper {
   private defineTypeOfDropDown(): void {
     if(this.filter) {
       this.renderCustomDropDown = true;
-    } else if(!isTouchDevice() && !this.dropdown) {
-      this.renderCustomDropDown = true;
-    } else if(isTouchDevice() && this.dropdown === 'custom') {
-      this.renderCustomDropDown = true;
-    } else if(isTouchDevice()) {
+    } else if(!isTouchDevice() && this.native) {
       this.renderCustomDropDown = false;
     } else {
-      this.renderCustomDropDown = this.dropdown !== 'native';
+      this.renderCustomDropDown = !isTouchDevice();
     }
 
     if (this.renderCustomDropDown) {
       this.observeSelect();
       this.setOptionList();
+      this.select.addEventListener('keydown', this.handleKeyboardEvents);
+
       if (!this.filter) {
         this.select.addEventListener('mousedown', this.handleMouseEvents);
       }
-      this.select.addEventListener('keydown', this.handleKeyboardEvents);
       if (typeof document !== 'undefined') {
         document.addEventListener('mousedown', this.handleClickOutside, true);
       }
@@ -348,7 +345,7 @@ export class SelectWrapper {
   private handleMouseEvents = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-    this.select.focus();
+    this.handleFocus(e);
     this.handleVisibilityOfFakeOptionList('toggle');
   };
 
@@ -369,7 +366,7 @@ export class SelectWrapper {
       const numberOfChildNodes = children.length;
 
       // Max number of children visible is set to 5
-      const listNodeHeight = numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
+      const listNodeHeight = numberOfChildNodes >= 10 ? listNodeChildrenHeight * 10 : listNodeChildrenHeight * numberOfChildNodes;
       const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
       if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
         this.dropdownDirectionInternal = 'up';

@@ -194,11 +194,11 @@ describe('select-wrapper fake-select', () => {
       expect(fakeOptionList).toBeNull();
     });
 
-    it('should render if touch support is detected and dropdown is set to native', async () => {
+    it('should not render if touch support is detected and native is set to false', async () => {
       await page.emulate(devices['iPhone X']);
       await setContentWithDesignSystem(
         page,
-        `<p-select-wrapper label="Some label" dropdown="custom">
+        `<p-select-wrapper label="Some label" native="false">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -207,13 +207,13 @@ describe('select-wrapper fake-select', () => {
         </p-select-wrapper>`
       );
       const fakeOptionList = await getSelectOptionList();
-      expect(fakeOptionList).not.toBeNull();
+      expect(fakeOptionList).toBeNull();
     });
 
-    it('should not render if dropdown prop is set to native', async () => {
+    it('should not render if native prop is set to true', async () => {
       await setContentWithDesignSystem(
         page,
-        `<p-select-wrapper label="Some label" dropdown="native">
+        `<p-select-wrapper label="Some label" native="true">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
