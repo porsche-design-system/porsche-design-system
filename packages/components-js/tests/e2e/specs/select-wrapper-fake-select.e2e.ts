@@ -74,7 +74,7 @@ describe('select-wrapper fake-select', () => {
     });
   });
 
-  fdescribe('custom drop down', () => {
+  describe('custom drop down', () => {
     it('should render', async () => {
       await setContentWithDesignSystem(
         page,
@@ -223,28 +223,6 @@ describe('select-wrapper fake-select', () => {
       );
       const fakeOptionList = await getSelectOptionList();
       expect(fakeOptionList).toBeNull();
-    });
-
-    it('should not render if dropdown prop is set to native programmatically', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-select-wrapper label="Some label">
-          <select name="some-name">
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
-      const fakeOptionList = async () => await getSelectOptionList();
-      const host = await getSelectComponent();
-
-      expect(await fakeOptionList()).not.toBeNull();
-
-      await host.evaluate((el) => el.setAttribute('dropdown', 'native'));
-      await waitForStencilLifecycle(page);
-
-      expect(await fakeOptionList()).toBeNull();
     });
 
     it('should be visible if select is clicked and hidden if clicked outside', async () => {

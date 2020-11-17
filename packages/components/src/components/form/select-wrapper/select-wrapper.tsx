@@ -81,23 +81,11 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.initSelect();
-    this.shouldRenderCustomDropDown();
+    this.defineTypeOfDropDown();
     this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
-
-    if (this.renderCustomDropDown) {
-      this.observeSelect();
-      this.setOptionList();
-      if (!this.filter) {
-        this.select.addEventListener('mousedown', this.handleMouseEvents);
-      }
-      this.select.addEventListener('keydown', this.handleKeyboardEvents);
-      if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.handleClickOutside, true);
-      }
-    }
   }
 
   public componentDidLoad(): void {
@@ -109,22 +97,13 @@ export class SelectWrapper {
     }
   }
 
-  public componentWillUpdate(): void {
-    this.shouldRenderCustomDropDown();
-  }
-
   public componentDidUpdate(): void {
     this.setAriaAttributes();
   }
 
   public disconnectedCallback(): void {
     if (this.renderCustomDropDown) {
-      this.selectObserver.disconnect();
-      this.select.removeEventListener('mousedown', this.handleMouseEvents);
-      this.select.removeEventListener('keydown', this.handleKeyboardEvents);
-      if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.handleClickOutside, true);
-      }
+      this.disconnectCustomDropDown();
     }
   }
 
@@ -322,7 +301,7 @@ export class SelectWrapper {
     });
   }
 
-  private shouldRenderCustomDropDown(): void {
+  private defineTypeOfDropDown(): void {
     if(this.filter) {
       this.renderCustomDropDown = true;
     } else if(!isTouchDevice() && !this.dropdown) {
@@ -333,6 +312,27 @@ export class SelectWrapper {
       this.renderCustomDropDown = false;
     } else {
       this.renderCustomDropDown = this.dropdown !== 'native';
+    }
+
+    if (this.renderCustomDropDown) {
+      this.observeSelect();
+      this.setOptionList();
+      if (!this.filter) {
+        this.select.addEventListener('mousedown', this.handleMouseEvents);
+      }
+      this.select.addEventListener('keydown', this.handleKeyboardEvents);
+      if (typeof document !== 'undefined') {
+        document.addEventListener('mousedown', this.handleClickOutside, true);
+      }
+    }
+  }
+
+  private disconnectCustomDropDown(): void {
+    this.selectObserver.disconnect();
+    this.select.removeEventListener('mousedown', this.handleMouseEvents);
+    this.select.removeEventListener('keydown', this.handleKeyboardEvents);
+    if (typeof document !== 'undefined') {
+      document.removeEventListener('mousedown', this.handleClickOutside, true);
     }
   }
 
