@@ -501,10 +501,6 @@ export namespace Components {
 		 */
 		"description"?: string;
 		/**
-		  * Forces either rendering of native browser select dropdown or custom styled dropdown
-		 */
-		"dropdown"?: "native" | "custom";
-		/**
 		  * Changes the direction to which the dropdown list appears.
 		 */
 		"dropdownDirection"?: "down" | "up" | "auto";
@@ -524,6 +520,10 @@ export namespace Components {
 		  * The message styled depending on validation state.
 		 */
 		"message"?: string;
+		/**
+		  * Forces rendering of native browser select dropdown
+		 */
+		"native"?: boolean;
 		/**
 		  * The validation state.
 		 */
@@ -1376,10 +1376,6 @@ declare namespace LocalJSX {
 		 */
 		"description"?: string;
 		/**
-		  * Forces either rendering of native browser select dropdown or custom styled dropdown
-		 */
-		"dropdown"?: "native" | "custom";
-		/**
 		  * Changes the direction to which the dropdown list appears.
 		 */
 		"dropdownDirection"?: "down" | "up" | "auto";
@@ -1399,6 +1395,10 @@ declare namespace LocalJSX {
 		  * The message styled depending on validation state.
 		 */
 		"message"?: string;
+		/**
+		  * Forces rendering of native browser select dropdown
+		 */
+		"native"?: boolean;
 		/**
 		  * The validation state.
 		 */

@@ -224,20 +224,17 @@
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
     }
 
+    #{$bem-block}--theme-light:hover &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+    }
+
     #{$bem-block}--theme-dark & {
       background-color: $p-color-default;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
     }
 
-    &:hover:not(&--disabled):not(&--success):not(&--error),
-    #{$bem-block}__label:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 1px $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        box-shadow: inset 0 0 0 1px $p-color-theme-dark-default;
-      }
+    #{$bem-block}--theme-dark:hover &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
     }
 
     &--disabled {
@@ -298,15 +295,15 @@
   &__fake-option-list {
     @include p-text-small;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     border: 1px solid;
     left: 0;
     right: 0;
     max-height: 320px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
-    0 15px 20px 0 rgba(0, 0, 0, 0.2);
+    transition: border-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
     transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
 
     #{$bem-block}--theme-light & {
@@ -315,9 +312,7 @@
     }
 
     #{$bem-block}--theme-light:hover & {
-      border-right-color: $p-color-neutral-contrast-high;
-      border-bottom-color: $p-color-neutral-contrast-high;
-      border-left-color: $p-color-neutral-contrast-high;
+      border-color: $p-color-neutral-contrast-high;
     }
 
     #{$bem-block}--theme-dark & {
@@ -326,30 +321,38 @@
     }
 
     #{$bem-block}--theme-dark:hover & {
-      border-right-color: $p-color-theme-dark-neutral-contrast-high;
-      border-bottom-color: $p-color-theme-dark-neutral-contrast-high;
-      border-left-color: $p-color-theme-dark-neutral-contrast-high;
+      border-color: $p-color-theme-dark-neutral-contrast-high;
     }
 
     &--direction {
       &-down {
         top: calc(100% - 1px);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+        0 15px 20px 0 rgba(0, 0, 0, 0.2);
 
-        #{$bem-block}--theme-light & {
+        #{$bem-block}--theme-light &,
+        #{$bem-block}--theme-light:hover & {
           border-top-color: $p-color-neutral-contrast-low;
         }
-        #{$bem-block}--theme-dark & {
+
+        #{$bem-block}--theme-dark &,
+        #{$bem-block}--theme-dark:hover & {
           border-top-color: $p-color-theme-dark-neutral-contrast-low;
         }
       }
 
       &-up {
         bottom: p-px-to-rem(47px);
+        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05),
+        0 -15px 20px 0 rgba(0, 0, 0, 0.2);
 
-        #{$bem-block}--theme-light & {
+        #{$bem-block}--theme-light &,
+        #{$bem-block}--theme-light:hover & {
           border-bottom-color: $p-color-neutral-contrast-low;
         }
-        #{$bem-block}--theme-dark & {
+
+        #{$bem-block}--theme-dark &,
+        #{$bem-block}--theme-dark:hover & {
           border-bottom-color: $p-color-theme-dark-neutral-contrast-low;
         }
       }
@@ -358,29 +361,6 @@
     // Firefox scrollbar styling
     scrollbar-width: thin;
     scrollbar-color: auto;
-
-    // Webkit scrollbar styling defaults to visible
-    &::-webkit-scrollbar {
-      -webkit-appearance: none;
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-
-      #{$bem-block}--theme-light & {
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      #{$bem-block}--theme-dark & {
-        background-color: rgba(255, 255, 255, 0.4);
-      }
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      height: $p-spacing-4;
-    }
 
     &:focus {
       outline: none;
