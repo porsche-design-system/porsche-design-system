@@ -68,7 +68,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
 However, it doesn't support JavaScript modules as described in this [issue](https://github.com/jsdom/jsdom/issues/2475).  
-Also, it doesn't support `CSSStyleSheet.replace()`.
+Also, it doesn't support `CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
 
@@ -83,20 +83,61 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 ```tsx
 // SingleComponent.tsx
 
-export const SingleComponent = (): JSX.Element => (
-  <PHeadline>Some headline</PHeadline>
-)
+import React, { useState } from 'react';
+import { PTabsBar } from '@porsche-design-system/components-react';
+
+export const SingleComponent = (): JSX.Element => {
+  const [activeTab, setActiveTab] = useState(0);
+  
+  return (
+    <>
+      <PTabsBar
+        activeTabIndex={activeTab}
+        onTabChange={(e) => {
+          setActiveTab(e.detail.activeTabIndex);
+        }}
+        data-testid="host"
+      >
+        <button data-testid="button1">Some label</button>
+        <button data-testid="button2">Some label</button>
+        <button data-testid="button3">Some label</button>
+      </PTabsBar>
+      <div data-testid="debug">{`Active Tab: ${activeTab + 1}`}</div>
+    </>
+  );
+}
 ```
 
 ```tsx
 // SingleComponent.test.tsx
-test('renders a headline from Porsche Design System', async () => {
-  const { getByText } = render(<SingleComponent />);
-  const headLineElement = getByText('Some headline');
-  expect(headLineElement).toBeInTheDocument();
+
+import { componentsReady } from '@porsche-design-system/components-react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+test('renders Tabs Bar from Porsche Design System and uses its events', async () => {
+  const { getByTestId } = render(<SingleComponent />);
+
+  await componentsReady(); // we need to make sure Design System components have initialized
+
+  const debug = getByTestId('debug');
+  const button1 = getByTestId('button1');
+  const button2 = getByTestId('button2');
+  const button3 = getByTestId('button3');
+
+  expect(debug.innerHTML).toBe('Active Tab: 1');
+
+  userEvent.click(button2);
+  expect(debug.innerHTML).toBe('Active Tab: 2');
+
+  userEvent.click(button3);
+  expect(debug.innerHTML).toBe('Active Tab: 3');
+
+  userEvent.click(button1);
+  expect(debug.innerHTML).toBe('Active Tab: 1');
 });
 ```
-   
+
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
 
 ## Advanced usage
