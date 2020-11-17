@@ -27,6 +27,8 @@ describe('select-wrapper fake-select', () => {
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+  const fakeOptionInPosOne = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+  const fakeOptionInPosTwo = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
   describe('hover state', () => {
     it('should change box-shadow color when fake select is hovered', async () => {
@@ -93,6 +95,32 @@ describe('select-wrapper fake-select', () => {
     expect(fakeOptionListDirectionUp).not.toBeNull();
   });
 
+  it('should set dropdown direction to down', async () => {
+    await page.setViewport({
+      width: 800,
+      height: 600
+    });
+    await setContentWithDesignSystem(
+      page,
+      `
+    <div style="height: 500px;"></div>
+    <p-select-wrapper label="Some label" dropdown-direction="down">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>`
+    );
+
+    const fakeOptionListDirectionDown = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
+    );
+
+    expect(fakeOptionListDirectionDown).not.toBeNull();
+  });
+
   it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
     await page.setViewport({
       width: 800,
@@ -102,7 +130,7 @@ describe('select-wrapper fake-select', () => {
       page,
       `
     <div style="height: 400px;"></div>
-    <p-select-wrapper label="Some label" dropdown-direction="auto">
+    <p-select-wrapper label="Some label">
       <select name="some-name">
         <option value="a">Option A</option>
         <option value="b" disabled>Option B</option>
@@ -127,6 +155,41 @@ describe('select-wrapper fake-select', () => {
     );
 
     expect(fakeOptionListDirectionUp).not.toBeNull();
+  });
+
+  it('should auto position dropdown to bottom if bottom space is more than dropdown height', async () => {
+    await page.setViewport({
+      width: 800,
+      height: 800
+    });
+    await setContentWithDesignSystem(
+      page,
+      `
+    <p-select-wrapper label="Some label">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+        <option value="d">Option D</option>
+        <option value="e">Option E</option>
+        <option value="f">Option F</option>
+        <option value="g">Option G</option>
+        <option value="h">Option H</option>
+      </select>
+    </p-select-wrapper>
+    `
+    );
+
+    const select = await getSelectRealInput();
+    await select.click();
+    await waitForStencilLifecycle(page);
+
+    const fakeOptionListDirectionDown = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
+    );
+
+    expect(fakeOptionListDirectionDown).not.toBeNull();
   });
 
   describe('fake drop down', () => {
@@ -360,6 +423,72 @@ describe('select-wrapper fake-select', () => {
       expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
     });
 
+    it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].setAttribute('selected', 'selected')));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+
+    });
+
+    it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
+      /**
+       * This test is for Browser specific behaviour which does not reflect the "selected" property as attribute and will therefore not be observed by the MutationObserver
+       */
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[0].selected = false));
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+    });
+
     it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
       await setContentWithDesignSystem(
         page,
@@ -374,14 +503,14 @@ describe('select-wrapper fake-select', () => {
     `
       );
       const select = await getSelectRealInput();
-      const fakeOptionList = async () => await getSelectOptionList();
-      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOption = await fakeOptionInPosTwo();
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
-      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--hidden')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '.p-select-wrapper__fake-option--hidden')).toBe(1);
 
       await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = false));
       await waitForStencilLifecycle(page);
@@ -402,7 +531,7 @@ describe('select-wrapper fake-select', () => {
       </p-select-wrapper>
     `
       );
-      const fakeOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+      const fakeOption = await fakeOptionInPosOne();
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
     });
@@ -500,8 +629,8 @@ describe('select-wrapper fake-select', () => {
         );
 
         const select = await getSelectRealInput();
-        const fakeOptionA = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-        const fakeOptionB = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+        const fakeOptionA = await fakeOptionInPosOne();
+        const fakeOptionB = await fakeOptionInPosTwo();
 
         expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
         expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
@@ -1000,13 +1129,10 @@ describe('select-wrapper fake-select', () => {
     `
         );
         const select = await getSelectRealInput();
-        const fakeOptionInPosOne = await selectNode(
-          page,
-          'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)'
-        );
+        const fakeOptionB = await fakeOptionInPosTwo();
 
         await select.click();
-        await fakeOptionInPosOne.click();
+        await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
         expect(await getOpacity()).toBe('0');
