@@ -7,7 +7,7 @@ import { render } from '@testing-library/react';
 const Sample = (): JSX.Element => {
   return (
     <>
-      <PLinkPure href="#" data-testid="host">Facebook</PLinkPure>
+      <PLinkPure href="#" data-testid="host">Some label</PLinkPure>
     </>
   );
 };
