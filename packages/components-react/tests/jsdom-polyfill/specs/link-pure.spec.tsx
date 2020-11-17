@@ -1,18 +1,18 @@
 import React from 'react';
 import {
-  componentsReady, PLinkSocial
+  componentsReady, PLinkPure
 } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return (
     <>
-      <PLinkSocial href="#" icon="logo-facebook" data-testid="host">Facebook</PLinkSocial>
+      <PLinkPure href="#" data-testid="host">Facebook</PLinkPure>
     </>
   );
 };
 
-describe('PLinkSocial', () => {
+describe('PLinkPure', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
 
