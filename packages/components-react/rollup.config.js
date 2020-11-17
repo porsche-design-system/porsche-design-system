@@ -17,6 +17,7 @@ export default {
       '@porsche-design-system/construct-style-sheets-polyfill',
       'intersection-observer',
       'scroll-behavior-polyfill',
+      'isomorphic-fetch'
     ]),
     resolve({
       resolveOnly: [/^@stencil\/.*$/, /^@porsche-design-system\/.*$/],
