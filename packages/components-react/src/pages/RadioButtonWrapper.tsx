@@ -124,15 +124,6 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         </RadioButtonWrapper>
       </div>
 
-      <div className="playground light" title="should render in focus state">
-        <RadioButtonWrapper label="Some label">
-          <input id="test-focus-state" type="radio" name="some-name-10" />
-        </RadioButtonWrapper>
-        <RadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-10" />
-        </RadioButtonWrapper>
-      </div>
-
       <div className="playground light" title="should render with multiline label">
         <RadioButtonWrapper
           state="error"

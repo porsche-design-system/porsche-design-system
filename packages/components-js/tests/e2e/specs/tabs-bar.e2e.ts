@@ -4,12 +4,12 @@ import {
   getAttribute,
   getBrowser,
   getElementPositions,
-  getProperty,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
   reattachElement,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
+  selectNode, setAttribute,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
+  waitForStencilLifecycle,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -41,7 +41,9 @@ describe('tabs-bar', () => {
     await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
   };
 
+  const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
+  const getAllLinks = () => page.$$('a');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
   const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
@@ -389,7 +391,7 @@ describe('tabs-bar', () => {
       expect(eventCounter).toBe(3);
     });
 
-    it('should not dispatch event initially', async () => {
+    it('should not dispatch event initially with valid activeTabIndex', async () => {
       const COUNTER_KEY = 'pdsEventCounter';
       await setContentWithDesignSystem(page, ''); // empty page
 
@@ -481,7 +483,10 @@ describe('tabs-bar', () => {
       page.on('console', (msg) => {
         consoleMessages.push(msg);
         if (msg.type() === 'error') {
-          console.log(msg.args()[0]['_remoteObject'].description);
+          const { description } = msg.args()[0]['_remoteObject'];
+          if (description) {
+            console.log(description);
+          }
         }
       });
 
@@ -510,7 +515,10 @@ describe('tabs-bar', () => {
       page.on('console', (msg) => {
         consoleMessages.push(msg);
         if (msg.type() === 'error') {
-          console.log(msg.args()[0]['_remoteObject'].description);
+          const { description } = msg.args()[0]['_remoteObject'];
+          if (description) {
+            console.log(description);
+          }
         }
       });
 
@@ -519,6 +527,60 @@ describe('tabs-bar', () => {
 
       await page.evaluate(() => console.error('test error'));
       expect(getErrorsAmount(consoleMessages)).toBe(1);
+    });
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <button> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-tabs-bar>
+        <button>Content1</button>
+        <button>Content2</button>
+        <button>Content3</button>
+      </p-tabs-bar>`
+      );
+
+      const host = await getHost();
+      const buttons = await getAllButtons();
+
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus());
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({theme: 'dark'}));
+    });
+
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-tabs-bar>
+        <a href="#">Content1</a>
+        <a href="#">Content2</a>
+        <a href="#">Content3</a>
+      </p-tabs-bar>`
+      );
+
+      const host = await getHost();
+      const links = await getAllLinks();
+
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus());
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });

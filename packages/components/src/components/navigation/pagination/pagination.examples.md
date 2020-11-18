@@ -29,15 +29,15 @@ By changing values for total amount of items, items to display per page and numb
   <template v-slot:default="{ theme }">
     <label style="display:inline-block; margin-right: 16px;">
       <p-text :theme="theme" tag="span" size="x-small">Total items count</p-text>
-      <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value"/>
+      <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value" />
     </label>
     <label style="display:inline-block; margin-right: 16px;">
       <p-text :theme="theme" tag="span" size="x-small">Items per page</p-text>
-      <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value"/>
+      <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value" />
     </label>
     <label style="display:inline-block">
       <p-text :theme="theme" tag="span" size="x-small">Active page</p-text>
-      <input type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value"/>
+      <input type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value" />
     </label>
   </template>
 </Playground>

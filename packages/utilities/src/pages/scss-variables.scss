@@ -66,7 +66,9 @@
     background: $p-color-state-active;
   }
   &--color-theme-light-state-focus {
-    background: $p-color-state-focus;
+    color: black;
+    outline: $p-color-state-focus solid 1px;
+    outline-offset: -5px;
   }
   &--color-theme-light-state-disabled {
     background: $p-color-state-disabled;
@@ -128,7 +130,9 @@
     background: $p-color-theme-dark-state-active;
   }
   &--color-theme-dark-state-focus {
-    background: $p-color-theme-dark-state-focus;
+    color: white;
+    outline: $p-color-theme-dark-state-focus solid 1px;
+    outline-offset: -5px;
   }
   &--color-theme-dark-state-disabled {
     background: $p-color-theme-dark-state-disabled;

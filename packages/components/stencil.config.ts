@@ -28,6 +28,7 @@ export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
   outputTargets: [
+    { type: 'dist-custom-elements-bundle', dir: '../components-react/projects/components-wrapper/src/bundle' },
     { type: 'dist', esmLoaderPath: '../loader' },
     {
       type: 'www',
@@ -35,50 +36,50 @@ export const config: Config = {
       copy: [
         {
           src: './favicon.ico',
-          dest: 'favicon.ico'
-        }
-      ]
+          dest: 'favicon.ico',
+        },
+      ],
     },
     reactOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
       proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
       includePolyfills: true,
-      includeDefineCustomElements: true
+      includeDefineCustomElements: true,
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
-      directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/components-wrapper.component.ts'
-    })
+      directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/components-wrapper.component.ts',
+    }),
   ],
   bundles: [{ components: [] }],
   plugins: [
     sass(),
     postcss({
-      plugins: [autoprefixer()]
-    })
+      plugins: [autoprefixer()],
+    }),
   ],
   rollupPlugins: {
     after: [
       replace({
-        ROLLUP_REPLACE_IS_STAGING: process.env.PDS_IS_STAGING === '1' ? '"staging"' : '"production"'
+        ROLLUP_REPLACE_IS_STAGING: process.env.PDS_IS_STAGING === '1' ? '"staging"' : '"production"',
       }),
       modify({
         // minify slotted styles
         find: /const style = `((.|\s)*?)`/g,
         replace: (match, $1) => {
-          const placeholder = '${tagName}';
-          const tmpPlaceholder = 'TAG_NAME';
-          return `const style = \`${minifyCSS($1.replace(placeholder, tmpPlaceholder)).replace(
+          const placeholder = /\${tagName}/g;
+          const tmpPlaceholder = /TAG_NAME/g;
+          return `const style = \`${minifyCSS($1.replace(placeholder, 'TAG_NAME')).replace(
             tmpPlaceholder,
-            placeholder
+            '${tagName}'
           )}\``;
-        }
-      })
-    ]
+        },
+      }),
+    ],
   },
   globalScript: 'src/setup.ts',
   extras: {
     lifecycleDOMEvents: true,
-    tagNameTransform: true
-  }
+    tagNameTransform: true,
+  },
 };

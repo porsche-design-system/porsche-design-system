@@ -50,7 +50,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
+  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -204,6 +204,7 @@ export class SelectWrapper {
                 disabled={this.disabled}
                 aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
                 aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+                placeholder={this.options[this.select.selectedIndex].text}
                 ref={(el) => (this.filterInput = el)}
               />,
               <span ref={(el) => (this.fakeFilter = el)} />
@@ -310,8 +311,7 @@ export class SelectWrapper {
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
-      attributes: true,
-      attributeFilter: ['disabled', 'hidden']
+      attributeFilter: ['disabled', 'selected', 'hidden']
     });
   }
 
@@ -342,17 +342,15 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const { offsetTop: listNodeOffset, children } = this.fakeOptionListNode;
-      const { top: listNodePageOffset } = this.fakeOptionListNode.getBoundingClientRect();
+      const { children } = this.fakeOptionListNode;
+      const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
 
-      // Max number of children visible is set to 5 (which equals fixed max-height of 200px defined in CSS)
-      const listNodeHeight =
-        numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
-      const spaceTop = listNodePageOffset - listNodeOffset - listNodeHeight - window.scrollY;
-      const spaceBottom = window.scrollY + window.innerHeight - (listNodePageOffset + listNodeHeight);
-      if (spaceBottom < 0 && (spaceTop >= 0 || spaceTop > spaceBottom)) {
+      // Max number of children visible is set to 5
+      const listNodeHeight = numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
+      const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
+      if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
         this.dropdownDirectionInternal = 'up';
       } else {
         this.dropdownDirectionInternal = 'down';
@@ -365,6 +363,7 @@ export class SelectWrapper {
       if (type === 'show' || type === 'toggle') {
         this.fakeOptionListHidden = false;
         this.handleDropdownDirection();
+        this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
@@ -400,12 +399,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          this.handleVisibilityOfFakeOptionList('show');
-          this.handleScroll();
+          if (this.fakeOptionListHidden) {
+            e.preventDefault();
+            this.resetFilterInput();
+            this.handleVisibilityOfFakeOptionList('show');
+          }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          this.handleScroll();
           if (this.fakeOptionListHidden) {
             this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
           }
@@ -487,7 +488,6 @@ export class SelectWrapper {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResults = true;
-      this.filterInput.setAttribute('placeholder', this.options[this.select.selectedIndex].text);
       if (document.activeElement !== this.filterInput) {
         this.filterInput.focus();
       }
@@ -621,11 +621,19 @@ export class SelectWrapper {
   private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
-      this.filterInput.value = '';
-      this.searchString = '';
+      this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
-      this.handleScroll();
     }
+  };
+
+  private resetFilterInput = (): void => {
+    this.filterInput.value = '';
+    this.searchString = '';
+    this.filterHasResults = true;
+    this.optionMaps = this.optionMaps.map((item) => ({
+      ...item,
+      hidden: false
+    }));
   };
 
   private handleFilterSearch = (ev: InputEvent): void => {
@@ -643,18 +651,21 @@ export class SelectWrapper {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease;
+      outline: none transparent !important;
+      color: inherit !important;
+      text-decoration: underline !important;
+      -webkit-transition: color .24s ease !important;
+      transition: color .24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
+
     ${tagName} a:hover {
-      color: #d5001c;
+      color: #d5001c !important;
     }
+
     ${tagName} a:focus {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
+      outline-color: currentColor !important;
     }`;
 
     insertSlottedStyles(this.host, style);
