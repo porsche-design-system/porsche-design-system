@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- `native` property to force rendering of native Browser or custom styled select dropdown
+- Jsdom Polyfill
+- `native` property to force rendering of native Browser select dropdown
+
+#### Removed
+- Jsdom Mocks
 
 #### Changed
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`

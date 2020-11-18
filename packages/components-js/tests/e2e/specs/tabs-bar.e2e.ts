@@ -9,7 +9,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -389,7 +389,7 @@ describe('tabs-bar', () => {
       expect(eventCounter).toBe(3);
     });
 
-    it('should not dispatch event initially', async () => {
+    it('should not dispatch event initially with valid activeTabIndex', async () => {
       const COUNTER_KEY = 'pdsEventCounter';
       await setContentWithDesignSystem(page, ''); // empty page
 
@@ -481,7 +481,10 @@ describe('tabs-bar', () => {
       page.on('console', (msg) => {
         consoleMessages.push(msg);
         if (msg.type() === 'error') {
-          console.log(msg.args()[0]['_remoteObject'].description);
+          const { description } = msg.args()[0]['_remoteObject'];
+          if (description) {
+            console.log(description);
+          }
         }
       });
 
@@ -510,7 +513,10 @@ describe('tabs-bar', () => {
       page.on('console', (msg) => {
         consoleMessages.push(msg);
         if (msg.type() === 'error') {
-          console.log(msg.args()[0]['_remoteObject'].description);
+          const { description } = msg.args()[0]['_remoteObject'];
+          if (description) {
+            console.log(description);
+          }
         }
       });
 
