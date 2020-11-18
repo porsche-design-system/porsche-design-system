@@ -10,7 +10,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -124,7 +124,7 @@ describe('select-wrapper fake-select', () => {
   it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
     await page.setViewport({
       width: 800,
-      height: 600
+      height: 600,
     });
     await setContentWithDesignSystem(
       page,

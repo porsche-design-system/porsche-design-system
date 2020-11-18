@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Jsdom Polyfill
+
+#### Removed
+- Jsdom Mocks
+
 #### Changed
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`

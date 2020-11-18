@@ -23,14 +23,14 @@ You can see some usage examples on our [form patterns section](#/patterns/forms#
     withLabel =
 `<p-fieldset-wrapper label="Some legend label">
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name"/>
+    <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
 
     withoutLabel =
 `<p-fieldset-wrapper>
   <p-text-field-wrapper label="Some label">
-    <input type="text" name="some-name"/>
+    <input type="text" name="some-name" />
   </p-text-field-wrapper>
 </p-fieldset-wrapper>`;
   }
