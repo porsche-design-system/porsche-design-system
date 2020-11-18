@@ -388,7 +388,7 @@
         @include p-button-label-without-label;
       }
 
-      #{$bem-block}__icon´ {
+      #{$bem-block}__icon {
         @include p-button-icon-without-label;
       }
     }

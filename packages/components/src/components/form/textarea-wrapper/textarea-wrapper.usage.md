@@ -35,7 +35,7 @@ Mark required fields. Our tests (optional vs. required with an asterisk) showed 
 
  <div style="background:#F2F2F2; width:100%; margin-top: 64px; padding-top: 32px; padding-left: 42px; padding-bottom: 42px;">
     <p-headline variant="headline-3" tag="h3" style="margin-bottom: 24px;">Examples</p-headline>
-    <img src="./assets/textarea-examples.png" alt="Examples for textarea usage"/>
+    <img src="./assets/textarea-examples.png" alt="Examples for textarea usage" />
 </div>
 
 ## Do's & Don'ts

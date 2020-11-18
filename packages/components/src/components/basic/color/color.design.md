@@ -45,9 +45,11 @@ The color proportion scales for each theme might be a little helper in doing so.
 All colors must always be used in 100% opacity.
 
 ### Focus
-The Focus color is only to be used to highlight components on focus enabling keyboard navigation. Depending on the component, e.g. as border or surface color.
-It consists of currentColor. This means that the color of the component is adjusted to the color of the component and therefore always has the same color as the component itself. 
-The Focus consists of an outline which is set in a 1 px line with a distance of 2 px for flat components. With pure text the focus is set at a distance of 1 px.
+The `:focus` state helps you to navigate through all interactive elements via tab key. 
+By default, the focused element has a 1px solid outline with a 1px offset, respectively 2px offset for components that come with a background-color or border. 
+The color for the outline is defined by the currentColor value, which refers to the element's color. 
+For example, a primary button will have a 1px solid brand color red outline with 2px offset as `:focus`. 
+Additionally, the input controls which also reflect their validation state color.
 
 ---
 
@@ -175,7 +177,6 @@ When using notification colors …
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
-Depending on the component it can be implemented in different ways, for example as border or surface color.
 
 |                                                        |                 | HEX     	| RGB         	| Usage              |
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
