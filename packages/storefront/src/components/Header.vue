@@ -45,10 +45,12 @@ export default class Header extends Vue {
 
 .link {
   display: inline-block;
+  color: $p-color-default;
+  outline: transparent solid 1px;
+  outline-offset: 1px;
 
   &:focus {
-    outline: 1px solid $p-color-state-focus;
-    outline-offset: 4px;
+    outline-color: $p-color-state-focus;
   }
 }
 </style>

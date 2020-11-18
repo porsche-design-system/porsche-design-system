@@ -3,12 +3,11 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
   getProperty,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, setAttribute, getStyleOnFocus, waitForInheritedCSSTransition, expectedStyleOnFocus
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -27,6 +26,12 @@ describe('text-field-wrapper', () => {
   const getTextFieldRealInput = () => selectNode(page, 'p-text-field-wrapper input');
   const getTextFieldMessage = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
+  const getTextFieldLabelLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="label"] a');
+  const getTextFieldDescriptionLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="description"] a');
+  const getTextFieldMessageLink = () =>
+    selectNode(page, 'p-text-field-wrapper [slot="message"] a');
   const getTextFieldLabel = () =>
     selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
   const getTextFieldButton = () =>
@@ -318,43 +323,83 @@ describe('text-field-wrapper', () => {
     expect(formFocusCalls).toBe(1);
   });
 
-  describe('hover state', () => {
-    it('should change box-shadow color when fake input is hovered', async () => {
+  describe('focus state', () => {
+    it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name">
-        </p-text-field-wrapper>
-      `
-      );
-
-      const fakeInput = await getTextFieldFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
-
-      await fakeInput.hover();
-      await waitForStencilLifecycle(page);
-
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
-    });
-
-    it('should change box-shadow color of fake input when label text is hovered', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text-field-wrapper label="Some label">
-          <input type="text" name="some-name">
+        <p-text-field-wrapper>
+          <input type="text">
         </p-text-field-wrapper>`
       );
 
-      const fakeInput = await getTextFieldFakeInput();
-      const labelText = await getTextFieldLabel();
-      const initialBoxShadow = await getElementStyle(fakeInput, 'boxShadow');
+      const host = await getTextFieldHost();
+      const input = await getTextFieldRealInput();
 
-      await labelText.hover();
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
+
+      await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
 
-      expect(await getElementStyle(fakeInput, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
+
+      await setAttribute(input, 'readOnly', 'true');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent', offset: '2px'}));
+    });
+
+    it('should show outline of password toggle button when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper>
+          <input type="password">
+        </p-text-field-wrapper>`
+      );
+
+      const host = await getTextFieldHost();
+      const toggle = await getTextFieldButton();
+
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
+    });
+
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <span slot="description">Some description with a <a href="#">link</a>.</span>
+          <input type="text">
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-text-field-wrapper>`
+      );
+
+      const host = await getTextFieldHost();
+      const labelLink = await getTextFieldLabelLink();
+      const descriptionLink = await getTextFieldDescriptionLink();
+      const messageLink = await getTextFieldMessageLink();
+
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

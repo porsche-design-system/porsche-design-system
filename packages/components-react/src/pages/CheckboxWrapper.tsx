@@ -130,12 +130,6 @@ export const CheckboxWrapperPage = (): JSX.Element => {
         </CheckboxWrapper>
       </div>
 
-      <div className="playground light" title="should render in focus state">
-        <CheckboxWrapper label="Some label">
-          <input id="test-focus-state" type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-      </div>
-
       <div className="playground light" title="should render with multiline label">
         <CheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: 240 }}>
           <input type="checkbox" name="some-name" />
