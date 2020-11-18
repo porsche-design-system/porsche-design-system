@@ -1,14 +1,13 @@
 import {
   getActiveElementId,
   getActiveElementTagName,
-  getAttribute,
+  getAttribute, getStyleOnFocus,
   getBrowser,
   getCssClasses,
-  getElementStyle,
   getProperty,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
+  selectNode, setAttribute,
+  setContentWithDesignSystem, expectedStyleOnFocus,
+  waitForStencilLifecycle, waitForInheritedCSSTransition
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -24,6 +23,8 @@ describe('radio-button-wrapper', () => {
   const getRadioButtonRealInput = () => selectNode(page, 'p-radio-button-wrapper input');
   const getRadioButtonLabel = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
   const getRadioButtonMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
+  const getRadioButtonLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
+  const getRadioButtonMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -245,45 +246,53 @@ describe('radio-button-wrapper', () => {
     expect(await getCssClasses(fakeRadio1)).not.toContain('p-radio-button-wrapper__fake-radio-button--disabled');
   });
 
-  describe('hover state', () => {
-    it('should change box-shadow color when fake radio button is hovered', async () => {
+  describe('focus state', () => {
+    it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
+        <p-radio-button-wrapper>
+          <input type="radio" />
+        </p-radio-button-wrapper>`
       );
 
-      const fakeRadioButton = await getRadioButtonFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
+      const host = await getRadioButtonHost();
+      const input = await getRadioButtonRealInput();
 
-      await fakeRadioButton.hover();
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'}));
 
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(
-        initialBoxShadow
-      );
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'success', css: 'boxShadow'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'error', css: 'boxShadow'}));
     });
 
-    it('should change box-shadow color of fake radio button when label text is hovered', async () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
+        <p-radio-button-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="radio" />
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-radio-button-wrapper>`
       );
 
-      const fakeRadioButton = await getRadioButtonFakeInput();
-      const labelText = await getRadioButtonLabel();
+      const host = await getRadioButtonHost();
+      const labelLink = await getRadioButtonLabelLink();
+      const messageLink = await getRadioButtonMessageLink();
 
-      const initialBoxShadow = await getElementStyle(fakeRadioButton, 'boxShadow');
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
 
-      await labelText.hover();
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
 
-      expect(await getElementStyle(fakeRadioButton, 'boxShadow', { waitForTransition: true })).not.toBe(
-        initialBoxShadow
-      );
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

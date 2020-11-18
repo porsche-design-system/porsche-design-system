@@ -3,10 +3,9 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementStyle,
-  getProperty,
-  selectNode,
-  setContentWithDesignSystem,
+  getProperty, getStyleOnFocus,
+  selectNode, setAttribute,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -23,6 +22,8 @@ describe('checkbox-wrapper', () => {
   const getCheckboxLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
   const getCheckboxMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
   const getCheckboxIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
+  const getCheckboxLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
+  const getCheckboxMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
   const getIconName = async () => getProperty(await getCheckboxIcon(), 'name');
 
@@ -332,38 +333,53 @@ describe('checkbox-wrapper', () => {
     });
   });
 
-  describe('hover state', () => {
-    it('should change box-shadow color when fake checkbox is hovered', async () => {
+  describe('focus state', () => {
+    it('should show outline of slotted <input> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+        <p-checkbox-wrapper>
+          <input type="checkbox" />
+        </p-checkbox-wrapper>`
       );
 
-      const fakeCheckbox = await getCheckboxFakeInput();
-      const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
-      await fakeCheckbox.hover();
+      const host = await getCheckboxHost();
+      const input = await getCheckboxRealInput();
 
-      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
     });
 
-    it('should change box-shadow color of fake checkbox when label text is hovered', async () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
         `
-      <p-checkbox-wrapper label="Some label">
-        <input type="checkbox" name="some-name"/>
-      </p-checkbox-wrapper>`
+        <p-checkbox-wrapper state="error">
+          <span slot="label">Some label with a <a href="#">link</a>.</span>
+          <input type="checkbox" />
+          <span slot="message">Some message with a <a href="#">link</a>.</span>
+        </p-checkbox-wrapper>`
       );
 
-      const fakeCheckbox = await getCheckboxFakeInput();
-      const labelText = await getCheckboxLabel();
-      const initialBoxShadow = await getElementStyle(fakeCheckbox, 'boxShadow');
+      const host = await getCheckboxHost();
+      const labelLink = await getCheckboxLabelLink();
+      const messageLink = await getCheckboxMessageLink();
 
-      await labelText.hover();
-      expect(await getElementStyle(fakeCheckbox, 'boxShadow', { waitForTransition: true })).not.toBe(initialBoxShadow);
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
     });
   });
 });

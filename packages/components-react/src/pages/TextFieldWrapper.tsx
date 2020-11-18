@@ -221,12 +221,6 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           <input type="text" name="some-name" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </TextFieldWrapper>
       </div>
-
-      <div className="playground light" title="should render in focus state">
-        <TextFieldWrapper label="Some label">
-          <input id="test-focus-state" style={{ caretColor: 'transparent' }} type="text" name="some-name" />
-        </TextFieldWrapper>
-      </div>
     </>
   );
 };

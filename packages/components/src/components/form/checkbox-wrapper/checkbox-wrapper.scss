@@ -44,9 +44,9 @@
   background-color: transparent !important;
   opacity: 1 !important;
   outline: transparent solid 1px !important;
-  outline-offset: 1px !important;
+  outline-offset: 2px !important;
   cursor: pointer !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important;
+  transition: border-top-color 1ms linear !important;
 }
 
 // hide native checkbox on IE11
@@ -56,7 +56,15 @@
 
 // Focus
 ::slotted(input:focus) {
-  outline-color: $p-color-state-focus !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
+}
+
+:host([state="success"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-error !important;
 }
 
 // Checked

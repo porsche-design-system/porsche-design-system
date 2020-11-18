@@ -1,9 +1,9 @@
 import {
   addEventListener,
-  getBrowser,
+  getBrowser, getStyleOnFocus,
   initAddEventListener, reattachElement,
   selectNode,
-  setContentWithDesignSystem,
+  setContentWithDesignSystem, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
@@ -22,6 +22,8 @@ describe('banner', () => {
 
   const getBannerHost = () => selectNode(page, 'p-banner');
   const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
+  const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
+  const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -67,11 +69,11 @@ describe('banner', () => {
 
     const innerButton = await getBannerButton();
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(CSS_FADE_OUT_DURATION);
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
@@ -86,11 +88,11 @@ describe('banner', () => {
     `
     );
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
-    await page.waitFor(CSS_FADE_OUT_DURATION);
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
     expect(await getBannerHost()).toBeNull();
   });
 
@@ -110,7 +112,7 @@ describe('banner', () => {
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
@@ -134,9 +136,30 @@ describe('banner', () => {
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-banner');
 
-    await page.waitFor(CSS_FADE_IN_DURATION);
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-banner>
+          <span slot="title">Some banner title with a <a href="#">link</a>.</span>
+          <span slot="description">Some banner description with a <a href="#">link</a>.</span>
+        </p-banner>`
+      );
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
+
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus());
+    });
   });
 });

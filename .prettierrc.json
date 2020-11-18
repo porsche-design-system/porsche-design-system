@@ -1,0 +1,18 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "proseWrap": "never",
+  "printWidth": 120,
+  "arrowParens": "always",
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "vueIndentScriptAndStyle": true,
+  "overrides": [
+    {
+      "files": [",**/*.css", ",**/*.scss"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

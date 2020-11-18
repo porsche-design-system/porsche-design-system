@@ -3,7 +3,7 @@ import {
   BreakpointCustomizable,
   getPrefixedTagNames,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
 } from '../../../utils';
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
 import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
@@ -15,7 +15,7 @@ const FOCUS_PADDING_WIDTH = 4;
 @Component({
   tag: 'p-tabs-bar',
   styleUrl: 'tabs-bar.scss',
-  shadow: true
+  shadow: true,
 })
 export class TabsBar {
   @Element() public host!: HTMLElement;
@@ -27,13 +27,13 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop({reflect: true}) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
-  @Prop() public activeTabIndex?: number = 0;
+  @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
@@ -45,33 +45,23 @@ export class TabsBar {
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
   private scrollInterval: NodeJS.Timeout;
-  private tabElements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
+  private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
   private gradientElements: HTMLElement[];
   private direction: Direction = 'next';
 
   @Watch('activeTabIndex')
-  public activeTabHandler(newTabIndex: number): void {
-    this.sanitizeActiveTabIndex(newTabIndex);
-  }
-
-  public componentShouldUpdate(
-    newValue: string | number,
-    oldValue: string | number,
-    nameOfStateOrProp: string
-  ): boolean {
-    if (nameOfStateOrProp === 'activeTabIndex') {
-      this.direction = newValue > oldValue ? 'next' : 'prev';
-      this.scrollActiveTabIntoView();
-      this.setAccessibilityAttributes();
-      this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
-    }
-    return true;
+  public activeTabHandler(newValue: number, oldValue: number): void {
+    this.sanitizeActiveTabIndex(newValue);
+    this.direction = this.activeTabIndex > oldValue ? 'next' : 'prev';
+    this.setAccessibilityAttributes();
+    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
   }
 
   public connectedCallback(): void {
-    this.sanitizeActiveTabIndex(); // since watcher doesn't trigger on first render
+    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.sanitizeActiveTabIndex(this.activeTabIndex); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
     this.initMutationObserver();
   }
@@ -79,6 +69,10 @@ export class TabsBar {
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setStatusBarStyle();
+  }
+
+  public componentDidUpdate(): void {
+    this.scrollActiveTabIntoView();
   }
 
   public componentDidLoad(): void {
@@ -100,7 +94,7 @@ export class TabsBar {
     const tabsNavClasses = {
       [prefix('tabs-bar')]: true,
       [prefix(`tabs-bar--weight-${this.weight}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size),
     };
 
     const scrollAreaClasses = prefix('tabs-bar__scroll-area');
@@ -111,7 +105,7 @@ export class TabsBar {
       [prefix('tabs-bar__status-bar')]: true,
       [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
       [prefix('tabs-bar__status-bar--theme-dark')]: this.theme === 'dark',
-      [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true
+      [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true,
     };
 
     return (
@@ -135,14 +129,14 @@ export class TabsBar {
       [prefix('tabs-bar__action')]: true,
       [prefix('tabs-bar__action--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__action--${direction}`)]: true,
-      [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden
+      [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
       [prefix('tabs-bar__gradient--theme-dark')]: this.theme === 'dark',
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
-      [prefix(`tabs-bar__gradient--${direction}`)]: true
+      [prefix(`tabs-bar__gradient--${direction}`)]: true,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
@@ -163,7 +157,7 @@ export class TabsBar {
     );
   };
 
-  private sanitizeActiveTabIndex = (index: number = this.activeTabIndex): void => {
+  private sanitizeActiveTabIndex = (index: number): void => {
     const minIndex = 0;
     const maxIndex = this.tabElements.length - 1; // can be -1 without children
 
@@ -182,7 +176,7 @@ export class TabsBar {
       const attrs = {
         role: 'tab',
         tabindex: isActiveTab ? '0' : '-1',
-        'aria-selected': isActiveTab ? 'true' : 'false'
+        'aria-selected': isActiveTab ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
         tab.setAttribute(key, value);
@@ -231,7 +225,7 @@ export class TabsBar {
     this.hostObserver.observe(this.host, {
       childList: true,
       subtree: true,
-      characterData: true
+      characterData: true,
     });
   };
 
@@ -253,7 +247,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.95
+        threshold: 0.95,
       }
     );
 
@@ -262,7 +256,7 @@ export class TabsBar {
   };
 
   private handleTabClick = (newTabIndex: number): void => {
-    this.sanitizeActiveTabIndex(newTabIndex);
+    this.activeTabIndex = newTabIndex;
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
@@ -370,7 +364,7 @@ export class TabsBar {
     if ('scrollBehavior' in document?.documentElement?.style) {
       this.scrollAreaElement.scrollTo({
         left: scrollPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     } else {
       // TODO: this fallback can be removed as soon as all browser support scrollTo option behavior smooth by default

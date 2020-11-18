@@ -30,7 +30,7 @@ export const getFontFaceCSS = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): str
   const url = \`\${opts?.cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}'}/${CDN_BASE_PATH_STYLES}/\${opts?.cdn === 'cn' ? '${hashedFontFaceCssFiles.find(
     (x) => x.includes('.cn.')
   )}' : '${hashedFontFaceCssFiles.find((x) => !x.includes('.cn.'))}'}\`;
-  return opts?.withoutTags ? url : '${minifyHTML('<link rel="stylesheet" href="$URL$">')}'.replace('$URL$', url);
+  return opts?.withoutTags ? url : \`${minifyHTML('<link rel="stylesheet" href="$URL">').replace('$URL', '${url}')}\`;
 }
 
 export const getPorscheDesignSystemCoreStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>): string => {

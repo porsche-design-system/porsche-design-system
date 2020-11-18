@@ -101,10 +101,6 @@ import { Component } from '@angular/core';
       </p-link-pure>
     </div>
 
-    <div class="playground light" title="should render with explicit anchor tag">
-      <p-link-pure><a href="https://www.porsche.com" id="test-focus-state">Some label</a></p-link-pure>
-    </div>
-
     <div class="playground light" title="should render with subline">
       <p-link-pure [href]="'https://www.porsche.com'" [size]="'small'">Some label<p slot="subline">Some subline</p>
       </p-link-pure>

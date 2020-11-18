@@ -437,7 +437,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         style={{ paddingBottom: 'calc(1rem + 126px)' }}
       >
         <SelectWrapper label="Some label">
-          <select id="test-focus-state" name="some-name">
+          <select id="open-options" name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
