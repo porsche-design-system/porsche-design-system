@@ -91,10 +91,20 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 ## Test the application
 
-**Jest** uses **jsdom**. It is not yet possible to render functionality of web components via **jsdom**. 
+**Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
+However, it doesn't support JavaScript modules as described in this [issue](https://github.com/jsdom/jsdom/issues/2475).  
+Also, it doesn't support `CSSStyleSheet.replace()`.
 
-To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
-They are distributed in the `@porsche-design-system/components-react` npm package.
+As a workaround you can try to install and apply following polyfill in your **setupTest.{js|ts}** file.
+
+```tsx
+// setupTest.{js|ts}
+
+import '@porsche-design-system/construct-style-sheets-polyfill';
+```
+
+If it doesn't work or if you are using a Jest/Jsdom version which doesn't support ShadowDOM at all then you can
+use the provided React testing mocks which are distributed in the `@porsche-design-system/components-react` npm package.
 
 The mocks must only be used if the functionality of the web component is required within the test.
 As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
