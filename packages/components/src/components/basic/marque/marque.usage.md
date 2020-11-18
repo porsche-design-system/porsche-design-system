@@ -1,34 +1,13 @@
 # Marque
 
-The marque gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
-
----
-
-## Variants
-
-### With registered trademark (®)
-
-<p-marque></p-marque>
-
-In web applications for the United States and/or Canada as well as with international purpose *including* United States and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
-
-
-### Without registered trademark
-
-<p-marque trademark="false"></p-marque>
-
-This variant is to be used whenever the United States and/or Canada are not part of the web application's target markets.
-
----
-
 ## Sizes
+
+Slight adjustments ensure that the Porsche marque is optimally perceived as equally as possible in the various image sizes.
 
 | Size | Usage |
 |------|--------|
 | **Small** | Viewports with 1299 px width or lower |
 | **Medium** | Viewports with 1300 pixel width or larger |
-
-Slight adjustments ensure that the Porsche marque is optimally perceived as equally as possible in the various image sizes.
 
 ---
 
@@ -45,7 +24,7 @@ The two elements that make up the overall logo for the Porsche marque are the **
 
 --- 
 
-## Don'ts
+## Do's & Don'ts
 
 - The marque **may not be altered** in relation to its two elements or their size. The marque may never be used without the Porsche lettering, as the sender identification cannot be guaranteed.
 - The Porsche marque **may not be used against coloured or busy backgrounds** (e.g. shading). As the Porsche crest has a high level of graphical complexity, excessive visual turmoil may be created.

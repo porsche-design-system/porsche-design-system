@@ -9,22 +9,8 @@ The Porsche spacing system is based on multiples of eight. The unit of 8px refer
 
 ## Spacing system and layout spacings
 
-For layouting we recommend to use the <strong><span style="color:#00D5B9">layout spacings</span></strong> that are available for developers as variables from x-small to xx-large.
+For layouting we recommend to use the layout spacings that are available for developers as variables from x-small to xx-large.
 Additional increments of the spacing system can be used for specific requirements as long as it is based on the 8px spacing system.
-
-|       	                                |                	| PX     	| REM 	| LAYOUT SPACING |
-|----------------------------------------	|---------------	|-------	|------	|------	|
-| ![spacing 4](./assets/spacing-4.png)    | **spacing-4**  	| 4 px  	| 0.25 	| x-small |
-| ![spacing 8](./assets/spacing-8.png)    | **spacing-8**  	| 8 px  	| 0.5 	| small |
-| ![spacing 16](./assets/spacing-16.png)  | **spacing-16** 	| 16 px 	| 1  	| medium |
-| ![spacing 24](./assets/spacing-24.png)  |**spacing-24** 	| 24 px 	| 1.5 	| - |
-| ![spacing 32](./assets/spacing-32.png)  |**spacing-32** 	| 32 px 	| 2  	| large |
-| ![spacing 40](./assets/spacing-40.png)  |**spacing-40** 	| 40 px 	| 2.5  	| - |
-| ![spacing 48](./assets/spacing-48.png)  |**spacing-48** 	| 48 px 	| 3  	| x-large |
-| ![spacing 56](./assets/spacing-56.png)  |**spacing-56** 	| 56 px 	| 3.5 	| - |
-| ![spacing 64](./assets/spacing-64.png)  |**spacing-64** 	| 64 px 	| 4 	| - |
-| ![spacing 72](./assets/spacing-72.png)  |**spacing-72** 	| 72 px 	| 4.5 	| - |
-| ![spacing 80](./assets/spacing-80.png)  |**spacing-80** 	| 80 px 	| 5 	| xx-large |
 
 
 ![The Porsche spacing formula](./assets/spacings-example-02.png)

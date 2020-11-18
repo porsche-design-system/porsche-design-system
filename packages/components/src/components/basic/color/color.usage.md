@@ -80,6 +80,7 @@ Additionally, the input controls which also reflect their validation state color
 | <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Background Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used for notification background)	  |
 | <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
 
+
 ### Text / icon color
 
 |                                                                              	|                      	    | HEX     	| RGB           	| Usage                                     |
@@ -143,7 +144,18 @@ When using notification colors …
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge theme="dark" color="background-default"/> 	                                    | **Background Default**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge theme="dark" color="background-surface"/>                                      | **Background Surface**        	| #262B2E 	| 38/43/46        | Additional backgrounds, for example for tiles or contrasting content areas |
-| <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+| <ColorBadge theme="dark" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+
+
+#### Background notification colors
+
+|                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
+|-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
+| <ColorBadge theme="dark" color="notification-error-soft"/> 	                          | **Background Error Soft**        	| #FEC5C5 	| 254/197/197   | Error Soft (only to be used for notification background) 	  | 
+| <ColorBadge theme="dark" color="notification-success-soft"/> 	                        | **Background Success Soft**        	| #BFEEC6 	| 191/238/198  	  | Success Soft (only to be used for notification background)  	  |
+| <ColorBadge theme="dark" color="notification-warning-soft"/> 	                        | **Background Warning Soft**       	| #FFE6BF 	| 255/230/191 	| Warning Soft (only to be used for notification background)	  |
+| <ColorBadge theme="dark" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #C7E4FF 	| 199/228/255 	| Neutral Soft (only to be used for notification background)	  | 
+
 
 ### Text / icon color
 
@@ -247,7 +259,7 @@ Both plugins help you to check the color contrast of two selected layers in Sket
 
 ---
 
-## Don'ts
-![Example for accessibility](./assets/color-accessibility-dont-01.png)
+## Do's & Don'ts
+Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard.
 
-![Example for accessibility](./assets/color-accessibility-dont-02.png)
+![Example for accessibility](./assets/color-accessibility-dont-01.png)
