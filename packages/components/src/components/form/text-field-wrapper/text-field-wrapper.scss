@@ -38,8 +38,8 @@
   display: block !important;
   padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
-  outline-offset: 1px !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 2px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 1px !important;
@@ -53,17 +53,35 @@
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-default !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
 ::slotted(input:focus) {
-  outline: $p-color-state-focus solid 1px !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-::slotted(input:read-only:focus) {
-  outline: none !important;
+:host([state="success"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-error !important;
+}
+
+::slotted(input:read-only:focus),
+:host([state]) ::slotted(input:read-only:focus) {
+  outline-color: transparent !important;
+}
+
+:host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
+:host([state="error"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
+  outline-offset: -5px !important;
+}
+
+::slotted(input[type="search"]),
+::slotted(input[type="password"]) {
+  padding-right: 3rem !important;
 }
 
 // Read only
@@ -84,25 +102,9 @@
   cursor: not-allowed !important;
 }
 
-// Hide arrows for number fields
-::slotted(input[type='number']) {
-  -webkit-appearance: none !important;
-  -moz-appearance: textfield !important;
-}
-::slotted(input[type='number']::-webkit-outer-spin-button),
-::slotted(input[type='number']::-webkit-inner-spin-button) {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  margin: 0 !important;
-}
-
 // Reset webkit autofill styles
 ::slotted(input:-internal-autofill-selected),
-::slotted(input:-internal-autofill-previewed) {
-  -webkit-background-clip: padding-box !important;
-}
-
+::slotted(input:-internal-autofill-previewed),
 ::slotted(input:-webkit-autofill),
 ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -299,12 +301,13 @@
     }
 
     &:focus {
-      color: $p-color-state-focus;
+      outline: $p-color-state-focus solid 1px;
+      outline-offset: -4px;
     }
 
     &:disabled {
       color: $p-color-state-disabled;
-      cursor: not-allowed !important;
+      cursor: not-allowed;
     }
   }
 }

@@ -49,7 +49,7 @@ describe('p-icon', () => {
           req.respond({
             status: 200,
             contentType: 'image/svg+xml',
-            body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`
+            body: `<svg height="100%" viewBox="0 0 48 48" width="100%" xmlns="http://www.w3.org/2000/svg">${iconName}</svg>`,
           });
         }, delay);
         svgRequestCounter++;
@@ -87,7 +87,7 @@ describe('p-icon', () => {
     await iconComponent.evaluate((el) => el.setAttribute('name', 'question'));
 
     // waitFor is needed for request duration, otherwise first Request wont be finished before test ends
-    await page.waitFor(delay);
+    await page.waitForTimeout(delay);
 
     expect(await getIconContent()).toContain('question');
     expect(responseCounter).toEqual(2);

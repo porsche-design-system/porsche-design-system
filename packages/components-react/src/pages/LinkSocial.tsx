@@ -73,14 +73,6 @@ export const LinkSocialPage = (): JSX.Element => {
           <a href="https://www.facebook.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
         </LinkSocial>
       </div>
-
-      <div className="playground light" title="should render with explicit anchor tag">
-        <LinkSocial icon="logo-facebook">
-          <a href="https://www.facebook.com" id="test-focus-state">
-            Some label
-          </a>
-        </LinkSocial>
-      </div>
     </>
   );
 };

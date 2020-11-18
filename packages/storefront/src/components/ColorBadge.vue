@@ -130,6 +130,7 @@ export default class ColorBadge extends Vue {
     }
 
     &.state-focus {
+      color: $p-color-default;
       background: $p-color-state-focus;
     }
 
@@ -213,6 +214,7 @@ export default class ColorBadge extends Vue {
     }
 
     &.state-focus {
+      color: $p-color-theme-dark-default;
       background: $p-color-theme-dark-state-focus;
     }
 
