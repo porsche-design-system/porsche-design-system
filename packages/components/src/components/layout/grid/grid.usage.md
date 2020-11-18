@@ -1,7 +1,6 @@
 # Grid
-The grid provides a visual stucturing system for a homogeneous and balanced content placement across all Porsche web experiences and screen sizes. It consists of a defined number of columns for defining layout areas.
 
-## Grid architecture
+## Architecture
 
 - **The 12 grid columns** offer a high layout flexibility by
 being dividable by 2, 3, 4 or 6. For layouting on mobile screens (widths < 759px), it is recommended to use a 6-column-grid to avoid too much small-scaling or even „cluttering“.

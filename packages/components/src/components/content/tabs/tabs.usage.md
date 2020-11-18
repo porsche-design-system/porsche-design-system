@@ -22,6 +22,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable and navigable with arrows. 
 To navigate back and forth use the arrows.
 
+## Usage
+
 ### Scalable
 
 As Tabs can horizontally scroll, technically a UI could have as many tabs as needed. You should use no more than six tabs. 

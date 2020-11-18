@@ -1,14 +1,11 @@
 # Content Wrapper
-When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width with spacings to the left and right of the viewport ("basic" version), stretched to the largest viewport without any spacing ("extended") or even to the largest total screen width ("fluid").
-
-Technically, all this can be done by using the Content Wrapper component which offers multiple possibilities to define the **horizontal behaviour of your content**. 
 
 **The Content Wrapper enables you to …**
 - … define outer spacings between content area and left/right screen side.
 - … center the content area within the screen.
 - … set a maximum width for the content area.
 
-## Content width variants
+## Types
 
 Depending on your layout requirements you can choose between the following options for the content area, whereas each of them can be applied module-based to give you a maximum of flexibility for your page layouts:
 
