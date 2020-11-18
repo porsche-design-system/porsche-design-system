@@ -15,6 +15,7 @@ type OptionMap = {
   readonly value: string;
   readonly disabled: boolean;
   readonly hidden: boolean;
+  readonly initiallyHidden: boolean;
   readonly selected: boolean;
   readonly highlighted: boolean;
 };
@@ -49,7 +50,7 @@ export class SelectWrapper {
   @Prop() public theme?: Theme = 'light';
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'down';
+  @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
   @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
@@ -203,6 +204,7 @@ export class SelectWrapper {
                 disabled={this.disabled}
                 aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
                 aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+                placeholder={this.options[this.select.selectedIndex].text}
                 ref={(el) => (this.filterInput = el)}
               />,
               <span ref={(el) => (this.fakeFilter = el)} />
@@ -309,8 +311,7 @@ export class SelectWrapper {
     this.selectObserver.observe(this.select, {
       childList: true,
       subtree: true,
-      attributes: true,
-      attributeFilter: ['disabled']
+      attributeFilter: ['disabled', 'selected', 'hidden']
     });
   }
 
@@ -341,17 +342,15 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const { offsetTop: listNodeOffset, children } = this.fakeOptionListNode;
-      const { top: listNodePageOffset } = this.fakeOptionListNode.getBoundingClientRect();
+      const { children } = this.fakeOptionListNode;
+      const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
 
-      // Max number of children visible is set to 5 (which equals fixed max-height of 200px defined in CSS)
-      const listNodeHeight =
-        numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
-      const spaceTop = listNodePageOffset - listNodeOffset - listNodeHeight - window.scrollY;
-      const spaceBottom = window.scrollY + window.innerHeight - (listNodePageOffset + listNodeHeight);
-      if (spaceBottom < 0 && (spaceTop >= 0 || spaceTop > spaceBottom)) {
+      // Max number of children visible is set to 5
+      const listNodeHeight = numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
+      const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
+      if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
         this.dropdownDirectionInternal = 'up';
       } else {
         this.dropdownDirectionInternal = 'down';
@@ -364,6 +363,7 @@ export class SelectWrapper {
       if (type === 'show' || type === 'toggle') {
         this.fakeOptionListHidden = false;
         this.handleDropdownDirection();
+        this.handleScroll();
       }
     } else {
       if (type === 'hide' || type === 'toggle') {
@@ -399,12 +399,14 @@ export class SelectWrapper {
       case ' ':
       case 'Spacebar':
         if (this.filter) {
-          this.handleVisibilityOfFakeOptionList('show');
-          this.handleScroll();
+          if (this.fakeOptionListHidden) {
+            e.preventDefault();
+            this.resetFilterInput();
+            this.handleVisibilityOfFakeOptionList('show');
+          }
         } else {
           e.preventDefault();
           this.handleVisibilityOfFakeOptionList('toggle');
-          this.handleScroll();
           if (this.fakeOptionListHidden) {
             this.setOptionSelected(this.getHighlightedIndex(this.optionMaps));
           }
@@ -467,10 +469,11 @@ export class SelectWrapper {
   private setOptionList = (): void => {
     this.options = this.select.querySelectorAll('option');
     this.optionMaps = Array.from(this.options).map((item, index) => {
+      const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
       const selected = item.selected && !item.disabled;
       const highlighted = selected;
-      const option: OptionMap = { key: index, value: item.text, disabled, hidden: false, selected, highlighted };
+      const option: OptionMap = { key: index, value: item.text, disabled, hidden: false, initiallyHidden, selected, highlighted };
       return option;
     });
   };
@@ -485,7 +488,6 @@ export class SelectWrapper {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResults = true;
-      this.filterInput.setAttribute('placeholder', this.options[this.select.selectedIndex].text);
       if (document.activeElement !== this.filterInput) {
         this.filterInput.focus();
       }
@@ -517,7 +519,7 @@ export class SelectWrapper {
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
       Array.from(this.options).map((item, index) => {
-        const { disabled, hidden, selected, highlighted } = this.optionMaps[index];
+        const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
           item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
@@ -532,12 +534,12 @@ export class SelectWrapper {
               [prefix('select-wrapper__fake-option--selected')]: selected,
               [prefix('select-wrapper__fake-option--highlighted')]: highlighted,
               [prefix('select-wrapper__fake-option--disabled')]: disabled,
-              [prefix('select-wrapper__fake-option--hidden')]: hidden
+              [prefix('select-wrapper__fake-option--hidden')]: hidden || initiallyHidden
             }}
             onClick={(e) => (!disabled && !selected ? this.setOptionSelected(index) : this.handleFocus(e))}
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
-            aria-hidden={hidden ? 'true' : null}
+            aria-hidden={hidden || initiallyHidden ? 'true' : null}
           >
             <span>{item.text}</span>
             {selected && (
@@ -555,7 +557,7 @@ export class SelectWrapper {
   }
 
   private cycleFakeOptionList(direction: string): void {
-    const validItems = this.optionMaps.filter((item) => !item.hidden && !item.disabled);
+    const validItems = this.optionMaps.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
     const validMax = validItems.length - 1;
     if (validMax < 0) {
       return;
@@ -619,21 +621,29 @@ export class SelectWrapper {
   private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
-      this.filterInput.value = '';
-      this.searchString = '';
+      this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
-      this.handleScroll();
     }
+  };
+
+  private resetFilterInput = (): void => {
+    this.filterInput.value = '';
+    this.searchString = '';
+    this.filterHasResults = true;
+    this.optionMaps = this.optionMaps.map((item) => ({
+      ...item,
+      hidden: false
+    }));
   };
 
   private handleFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
-      hidden: !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
+      hidden: !item.initiallyHidden && !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim())
     }));
 
-    const hiddenItems = this.optionMaps.filter((item) => item.hidden);
+    const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
     this.handleVisibilityOfFakeOptionList('show');
   };

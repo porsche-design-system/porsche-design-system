@@ -8,11 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Jsdom Polyfill
+
+#### Removed
+- Jsdom Mocks
+
 #### Changed
+- Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`
 - Removed transition for focus styling
 
 #### Fixed
+- The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically
+- Invalid search results get cleared if `SelectWrapper` becomes focus state
 - Some bugs in `TabsBar`
 - Minification of dynamic slotted content styles
 
@@ -70,6 +79,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
+### [1.5.6] - 2020-10-15
+
+### [1.5.6-rc.0] - 2020-10-13
+
+### Fixed
+- `Spinner` zooming bug on Safari
+
+### [1.5.5] - 2020-09-11
 
 ### [1.5.5-rc.0] - 2020-09-07
 
