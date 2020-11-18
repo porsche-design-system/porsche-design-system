@@ -68,8 +68,8 @@ export class Headline {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      color: inherit;
-      text-decoration: none;
+      color: inherit !important;
+      text-decoration: none !important;
     }`;
 
     insertSlottedStyles(this.host, style);

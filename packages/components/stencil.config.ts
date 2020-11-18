@@ -67,11 +67,11 @@ export const config: Config = {
         // minify slotted styles
         find: /const style = `((.|\s)*?)`/g,
         replace: (match, $1) => {
-          const placeholder = '${tagName}';
-          const tmpPlaceholder = 'TAG_NAME';
-          return `const style = \`${minifyCSS($1.replace(placeholder, tmpPlaceholder)).replace(
+          const placeholder = /\${tagName}/g;
+          const tmpPlaceholder = /TAG_NAME/g;
+          return `const style = \`${minifyCSS($1.replace(placeholder, 'TAG_NAME')).replace(
             tmpPlaceholder,
-            placeholder
+            '${tagName}'
           )}\``;
         },
       }),

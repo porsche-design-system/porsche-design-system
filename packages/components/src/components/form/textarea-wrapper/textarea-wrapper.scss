@@ -36,8 +36,8 @@
   display: block !important;
   padding: p-px-to-rem(10px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
-  outline-offset: 3px !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 4px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 0 !important;
@@ -51,17 +51,25 @@
   text-indent: 0 !important;
   color: $p-color-default !important;
   resize: vertical;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
 ::slotted(textarea:focus) {
-  outline: $p-color-state-focus solid 1px !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-::slotted(textarea:read-only:focus) {
-  outline: none !important;
+:host([state="success"]) ::slotted(textarea:focus) {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(textarea:focus) {
+  outline-color: $p-color-notification-error !important;
+}
+
+::slotted(textarea:read-only:focus),
+:host([state]) ::slotted(textarea:read-only:focus) {
+  outline-color: transparent !important;
 }
 
 // Read only

@@ -651,18 +651,21 @@ export class SelectWrapper {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease;
+      outline: none transparent !important;
+      color: inherit !important;
+      text-decoration: underline !important;
+      -webkit-transition: color .24s ease !important;
+      transition: color .24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
+
     ${tagName} a:hover {
-      color: #d5001c;
+      color: #d5001c !important;
     }
+
     ${tagName} a:focus {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
+      outline-color: currentColor !important;
     }`;
 
     insertSlottedStyles(this.host, style);
