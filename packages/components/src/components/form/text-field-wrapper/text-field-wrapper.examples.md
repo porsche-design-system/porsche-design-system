@@ -110,7 +110,7 @@ Please make sure to set the corresponding **aria** attributes.
     get basic() {
       const attr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
       return `<p-text-field-wrapper label="Some label" ${attr}>
-  <input type="text" name="some-name"/>
+  <input type="text" name="some-name" />
 </p-text-field-wrapper>
 <p-text-field-wrapper label="Some label" ${attr}>
   <input type="text" placeholder="Some placeholder text" name="some-name" />

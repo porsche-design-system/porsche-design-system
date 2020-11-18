@@ -208,12 +208,6 @@ import { Component } from '@angular/core';
         <input type="text" name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
       </p-text-field-wrapper>
     </div>
-
-    <div class="playground light" title="should render in focus state">
-      <p-text-field-wrapper [label]="'Some label'">
-        <input id="test-focus-state" style="caret-color: transparent;" type="text" name="some-name" />
-      </p-text-field-wrapper>
-    </div>
   `
 })
 export class TextFieldWrapperComponent {}

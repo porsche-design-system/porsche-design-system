@@ -29,7 +29,7 @@ export const color = {
   state: {
     hover: '#d5001c',
     active: '#d5001c',
-    focus: '#000',
+    focus: 'currentColor',
     disabled: '#96989a'
   },
   /**
@@ -61,7 +61,7 @@ export const color = {
     state: {
       hover: '#ff0223',
       active: '#ff0223',
-      focus: '#fff',
+      focus: 'currentColor',
       disabled: '#7c7f81'
     }
   },

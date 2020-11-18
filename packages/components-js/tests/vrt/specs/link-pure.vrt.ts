@@ -8,7 +8,6 @@ describe('Link Pure', () => {
         'link-pure',
         async () => {
           await vrt.goTo('/#link-pure');
-          await vrt.focus('#test-focus-state');
         },
         testOptions
       )
