@@ -10,7 +10,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 

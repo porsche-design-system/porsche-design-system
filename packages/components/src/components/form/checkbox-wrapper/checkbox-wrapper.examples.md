@@ -75,27 +75,27 @@ Please make sure to set the corresponding **aria** attributes.
     get basic() {
       const hideLabel = this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false';
       return `<p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
-  <input type="checkbox" name="some-name"/>
+  <input type="checkbox" name="some-name" />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label" hide-label="${hideLabel}">
-  <input type="checkbox" name="some-name" checked/>
+  <input type="checkbox" name="some-name" checked />
 </p-checkbox-wrapper>`;
     }
     
     indeterminate =
 `<p-checkbox-wrapper label="Some label">
-  <input type="checkbox" name="some-name" class="example-set-to-indeterminate"/>
+  <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label" indeterminate="true">
-  <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked/>
+  <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked />
 </p-checkbox-wrapper>`;
     
     disabled =
 `<p-checkbox-wrapper label="Some label">
-  <input type="checkbox" name="some-name" disabled/>
+  <input type="checkbox" name="some-name" disabled />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
-  <input type="checkbox" name="some-name" checked disabled/>
+  <input type="checkbox" name="some-name" checked disabled />
 </p-checkbox-wrapper>`;
     
     get validation() {
