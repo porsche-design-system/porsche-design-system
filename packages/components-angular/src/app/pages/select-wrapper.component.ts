@@ -428,7 +428,7 @@ import { Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 126px)"
     >
       <p-select-wrapper [label]="'Some label'">
-        <select id="test-focus-state" name="some-name">
+        <select id="open-options" name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
           <option value="c">Option C</option>

@@ -27,7 +27,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop({reflect: true}) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';

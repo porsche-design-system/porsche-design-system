@@ -193,9 +193,6 @@ export class TextFieldWrapper {
 
   private updatePasswordToggleable(): void {
     this.isPasswordToggleable = this.input.type === 'password';
-    if (this.isPasswordToggleable) {
-      this.input.style.cssText = 'padding-right: 3rem !important';
-    }
   }
 
   private togglePassword = (): void => {
@@ -206,9 +203,6 @@ export class TextFieldWrapper {
 
   private initInputTypeSearch(): void {
     this.isInputTypeSearch = this.input.type === 'search';
-    if (this.isInputTypeSearch) {
-      this.input.style.cssText = 'padding-right: 3rem !important';
-    }
   }
 
   private onSubmitHandler = (event: MouseEvent): void => {
@@ -225,41 +219,33 @@ export class TextFieldWrapper {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `${tagName} a {
-      outline: none transparent;
-      color: inherit;
-      text-decoration: underline;
-      -webkit-transition: outline-color .24s ease, color .24s ease;
-      transition: outline-color .24s ease, color .24s ease;
+      outline: none transparent !important;
+      color: inherit !important;
+      text-decoration: underline !important;
+      -webkit-transition: color .24s ease !important;
+      transition: color .24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
 
     ${tagName} a:hover {
-      color: #d5001c;
+      color: #d5001c !important;
     }
 
     ${tagName} a:focus {
-      outline: 1px solid currentColor;
-      outline-offset: 1px;
+      outline-color: currentColor !important;
     }
 
-    ${tagName} input::-webkit-outer-spin-button {
-      appearance: none !important;
-      -webkit-appearance: none !important;
-    }
-
+    ${tagName} input::-webkit-outer-spin-button,
     ${tagName} input::-webkit-inner-spin-button {
-      appearance: none !important;
       -webkit-appearance: none !important;
+      appearance: none !important;
     }
 
-    ${tagName} input[type=password]::-webkit-contacts-auto-fill-button,
-    ${tagName} input[type=password]::-webkit-credentials-auto-fill-button {
-      margin-right: 2rem;
-    }
-
-    ${tagName} input[type=search]::-webkit-search-cancel-button {
-      margin-right: 2rem;
-    }
-    `;
+    ${tagName} input[type="text"]::-webkit-contacts-auto-fill-button,
+    ${tagName} input[type="text"]::-webkit-credentials-auto-fill-button {
+      margin-right: 2.4375rem !important;
+    }`;
 
     insertSlottedStyles(this.host, style);
   }

@@ -18,12 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`
+- Removed transition for focus styling
 - Some styling improvements of `Select Wrapper`
 
 #### Fixed
 - The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically
 - Invalid search results get cleared if `SelectWrapper` becomes focus state
 - Some bugs in `TabsBar`
+- Minification of dynamic slotted content styles
 
 ### [2.0.0-alpha.6] - 2020-10-28
 

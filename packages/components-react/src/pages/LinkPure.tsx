@@ -176,14 +176,6 @@ export const LinkPurePage = (): JSX.Element => {
         </LinkPure>
       </div>
 
-      <div className="playground light" title="should render with explicit anchor tag">
-        <LinkPure>
-          <a href="https://www.porsche.com" id="test-focus-state">
-            Some label
-          </a>
-        </LinkPure>
-      </div>
-
       <div className="playground light" title="should render with subline">
         <LinkPure href="https://www.porsche.com" size="small">
           Some label<p slot="subline">Some subline</p>

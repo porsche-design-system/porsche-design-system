@@ -50,11 +50,6 @@ import { Component } from '@angular/core';
       <p-link-social style="width: 240px;" [icon]="'logo-facebook'"><a href="https://www.facebook.com">Lorem ipsum dolor sit
         amet, consetetur sadipscing</a></p-link-social>
     </div>
-
-    <div class="playground light" title="should render with explicit anchor tag">
-      <p-link-social [icon]="'logo-facebook'"><a href="https://www.facebook.com" id="test-focus-state">Some label</a>
-      </p-link-social>
-    </div>
   `
 })
 export class LinkSocialComponent {
