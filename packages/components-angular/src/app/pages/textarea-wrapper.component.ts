@@ -118,12 +118,6 @@ import { Component } from '@angular/core';
       </p-textarea-wrapper>
     </div>
 
-    <div class="playground light" title="should render in focus state">
-      <p-textarea-wrapper [label]="'Some label'">
-        <textarea id="test-focus-state" name="some-name" style="caret-color: transparent;"></textarea>
-      </p-textarea-wrapper>
-    </div>
-
     <div
       class="playground light"
       title="should render with multiline label, description and message and cut off too long option text"

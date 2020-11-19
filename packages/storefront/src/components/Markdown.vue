@@ -217,19 +217,18 @@
 
         // Links
         a:not(.p-button):not(.p-link) {
-          outline: none;
           text-decoration: underline;
           color: $p-color-default;
+          outline: transparent solid 1px;
+          outline-offset: 1px;
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
           &:hover {
-            text-decoration: none;
             color: $p-color-state-hover;
           }
 
           &:focus {
-            text-decoration: underline;
-            color: $p-color-state-focus;
+            outline-color: $p-color-state-focus;
           }
         }
 

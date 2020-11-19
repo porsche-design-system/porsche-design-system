@@ -52,6 +52,22 @@
   vertical-align: top;
 }
 
+.#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-neutral-contrast-high !important;
+}
+
+:host([theme="dark"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-theme-dark-default !important;
+}
+
+:host([variant="primary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-brand !important;
+}
+
+:host([theme="dark"][variant="primary"]) .#{$p-global-class-prefix}button:focus {
+  outline-color: $p-color-theme-dark-brand !important;
+}
+
 .#{$p-global-class-prefix}button {
   $bem-block: &;
   display: flex;
@@ -63,42 +79,24 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none transparent;
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   text-decoration: none;
   text-align: left;
   border-style: solid;
   border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-    border-color $p-animation-hover-duration $p-animation-hover-bezier,
-    outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier;
+  border-color $p-animation-hover-duration $p-animation-hover-bezier,
+  color $p-animation-hover-duration $p-animation-hover-bezier;
   cursor: pointer;
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
-  &:focus {
-    outline-width: 1px;
-    outline-style: solid;
-    outline-offset: 1px;
-  }
-
   &:disabled,
   &[disabled] {
     cursor: not-allowed;
-  }
-
-  &--theme-light {
-    &:focus {
-      outline-color: $p-color-state-focus;
-    }
-  }
-
-  &--theme-dark {
-    &:focus {
-      outline-color: $p-color-theme-dark-state-focus;
-    }
   }
 
   &--primary {
@@ -266,7 +264,7 @@
     }
   }
 
-  @include p-media-query('xs') {
+  @include p-media-query("xs") {
     &--with-label-xs {
       @include p-button-with-label;
 
@@ -292,7 +290,7 @@
     }
   }
 
-  @include p-media-query('s') {
+  @include p-media-query("s") {
     &--with-label-s {
       @include p-button-with-label;
 
@@ -318,7 +316,7 @@
     }
   }
 
-  @include p-media-query('m') {
+  @include p-media-query("m") {
     &--with-label-m {
       @include p-button-with-label;
 
@@ -344,7 +342,7 @@
     }
   }
 
-  @include p-media-query('l') {
+  @include p-media-query("l") {
     &--with-label-l {
       @include p-button-with-label;
 
@@ -370,7 +368,7 @@
     }
   }
 
-  @include p-media-query('xl') {
+  @include p-media-query("xl") {
     &--with-label-xl {
       @include p-button-with-label;
 

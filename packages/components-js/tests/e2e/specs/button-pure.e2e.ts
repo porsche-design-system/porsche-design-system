@@ -2,10 +2,10 @@ import {
   addEventListener,
   getActiveElementId,
   getAttribute,
-  getBrowser,
+  getBrowser, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
-  setContentWithDesignSystem,
+  selectNode, setAttribute,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
   waitForStencilLifecycle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -361,5 +361,24 @@ describe('button-pure', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
+  });
+
+  describe('focus state', () => {
+    it('should show outline of shadowed <button> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-button-pure>Some label</p-button-pure>`
+      );
+
+      const host = await getButtonPureHost();
+      const button = await getButtonPureRealButton();
+
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
+    });
   });
 });

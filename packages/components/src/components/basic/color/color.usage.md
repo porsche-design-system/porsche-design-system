@@ -44,6 +44,13 @@ The color proportion scales for each theme might be a little helper in doing so.
 ### Color usage
 All colors must always be used in 100% opacity.
 
+### Focus
+The `:focus` state helps you to navigate through all interactive elements via tab key. 
+By default, the focused element has a 1px solid outline with a 1px offset, respectively 2px offset for components that come with a background-color or border. 
+The color for the outline is defined by the currentColor value, which refers to the element's color. 
+For example, a primary button will have a 1px solid brand color red outline with 2px offset as `:focus`. 
+Additionally, the input controls which also reflect their validation state color.
+
 ---
 
 ## Porsche Light Theme 
@@ -72,6 +79,7 @@ All colors must always be used in 100% opacity.
 | <ColorBadge theme="light" color="notification-success-soft"/> 	                        | **Background Success Soft**        	| #E5F3E7 	| 229/243/231  	  | Success Soft (only to be used for notification background)  	  |
 | <ColorBadge theme="light" color="notification-warning-soft"/> 	                        | **Background Warning Soft**       	| #FFF5E5 	| 255/245/229  	| Warning Soft (only to be used for notification background)	  |
 | <ColorBadge theme="light" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #E5EFF8 	| 229/239/248  	| Neutral Soft (only to be used for notification background)	  | 
+
 
 ### Text / icon color
 
@@ -110,7 +118,6 @@ When using notification colors …
 |---------------------------------------------------------|-----------------|-----------|---------------|----------------|
 | <ColorBadge theme="light" color="state-hover"/> 	      | **Hover**       | #D5001C 	| 213/0/28      | Hover state    |
 | <ColorBadge theme="light" color="state-active"/> 	      | **Active**      | #D5001C 	| 213/0/28      | Active state   |
-| <ColorBadge theme="light" color="state-focus"/>         | **Focus**       | #000000 	| 0/0/0 	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="light" color="state-disabled"/>      | **Disabled**    | #96989A 	| 150/152/154   | Disabled state |
 
 
@@ -137,7 +144,18 @@ When using notification colors …
 |-----------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
 | <ColorBadge theme="dark" color="background-default"/> 	                                    | **Background Default**        	| #0E1418 	| 14/20/24      	| Page background  |
 | <ColorBadge theme="dark" color="background-surface"/>                                      | **Background Surface**        	| #262B2E 	| 38/43/46        | Additional backgrounds, for example for tiles or contrasting content areas |
-| <ColorBadge theme="light" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+| <ColorBadge theme="dark" color="background-shading"/>  | **Background Shading** | #0E1418 (opacity 0.9) | 14/20/24 (opacity 0.9) | Full-page overlays to make e.g. modal layers stand out from the background  | 
+
+
+#### Background notification colors
+
+|                                                                         	|                      	    | HEX     	| RGB           	| Usage            |
+|-------------------------------------------------------------------------	|---------------------------|----------	|----------------	|----------------- |
+| <ColorBadge theme="dark" color="notification-error-soft"/> 	                          | **Background Error Soft**        	| #FEC5C5 	| 254/197/197   | Error Soft (only to be used for notification background) 	  | 
+| <ColorBadge theme="dark" color="notification-success-soft"/> 	                        | **Background Success Soft**        	| #BFEEC6 	| 191/238/198  	  | Success Soft (only to be used for notification background)  	  |
+| <ColorBadge theme="dark" color="notification-warning-soft"/> 	                        | **Background Warning Soft**       	| #FFE6BF 	| 255/230/191 	| Warning Soft (only to be used for notification background)	  |
+| <ColorBadge theme="dark" color="notification-neutral-soft"/> 	                        | **Background Neutral Soft**       	| #C7E4FF 	| 199/228/255 	| Neutral Soft (only to be used for notification background)	  | 
+
 
 ### Text / icon color
 
@@ -171,13 +189,11 @@ When using notification colors …
 
 ### States
 The focus color is only to be used to highlight components on focus enabling users navigating through the website via keyboard.
-Depending on the component it can be implemented in different ways, for example as border or surface color.
 
 |                                                        |                 | HEX     	| RGB         	| Usage              |
 |--------------------------------------------------------|-----------------|------------|---------------|----------------|
 | <ColorBadge theme="dark" color="state-hover"/> 	     | **Hover**       | #FF0223	| 255/2/35      | Hover state    |
 | <ColorBadge theme="dark" color="state-active"/> 	     | **Active**      | #FF0223 	| 255/2/35     | Active state   |
-| <ColorBadge theme="dark" color="state-focus"/>         | **Focus**       | #FFFFFF 	| 255/255/255   	| Only to be used to highlight components on focus enabling keyboard navigation. Implementation depending on the component, e.g. as border or surface color.   |
 | <ColorBadge theme="dark" color="state-disabled"/>      | **Disabled**    | #7C7F81 	| 124/127/129   | Disabled state |
 
 ### Color proportions
@@ -243,7 +259,7 @@ Both plugins help you to check the color contrast of two selected layers in Sket
 
 ---
 
-## Don'ts
-![Example for accessibility](./assets/color-accessibility-dont-01.png)
+## Do's & Don'ts
+Always ensure a sufficient contrast ratio. The combination of text and background color should pass the WCAG AA standard.
 
-![Example for accessibility](./assets/color-accessibility-dont-02.png)
+![Example for accessibility](./assets/color-accessibility-dont-01.png)

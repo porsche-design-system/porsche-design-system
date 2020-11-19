@@ -1,11 +1,10 @@
 import {
   addEventListener,
-  getBrowser,
-  initAddEventListener,
-  reattachElement,
+  getBrowser, getStyleOnFocus,
+  initAddEventListener, reattachElement,
   selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle,
+  setContentWithDesignSystem, expectedStyleOnFocus,
+  waitForStencilLifecycle
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -23,6 +22,8 @@ describe('banner', () => {
 
   const getBannerHost = () => selectNode(page, 'p-banner');
   const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
+  const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
+  const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -139,5 +140,26 @@ describe('banner', () => {
     await innerButton.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
+  });
+
+  describe('focus state', () => {
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-banner>
+          <span slot="title">Some banner title with a <a href="#">link</a>.</span>
+          <span slot="description">Some banner description with a <a href="#">link</a>.</span>
+        </p-banner>`
+      );
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
+
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus());
+    });
   });
 });

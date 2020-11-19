@@ -93,6 +93,14 @@
   position: relative !important;
 }
 
+.#{$p-global-class-prefix}button-pure:focus::before {
+  outline-color: $p-color-state-focus !important;
+}
+
+:host([theme="dark"]) .#{$p-global-class-prefix}button-pure:focus::before {
+  outline-color: $p-color-theme-dark-state-focus !important;
+}
+
 ::slotted(p) {
   margin: 0;
 }
@@ -123,18 +131,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    outline: transparent none;
-    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+    outline: transparent solid 1px !important;
+    outline-offset: 1px !important;
   }
 
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
-  }
-
-  &:focus::before {
-    outline-width: 1px;
-    outline-style: solid;
-    outline-offset: 1px;
   }
 
   &:disabled,
@@ -146,10 +148,6 @@
     color: $p-color-default;
     + * {
       color: $p-color-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-state-focus;
     }
 
     &:enabled,
@@ -182,10 +180,6 @@
     color: $p-color-theme-dark-default;
     + * {
       color: $p-color-theme-dark-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-theme-dark-state-focus;
     }
 
     &:enabled,

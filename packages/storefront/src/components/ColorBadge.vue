@@ -130,6 +130,7 @@ export default class ColorBadge extends Vue {
     }
 
     &.state-focus {
+      color: $p-color-default;
       background: $p-color-state-focus;
     }
 
@@ -176,16 +177,32 @@ export default class ColorBadge extends Vue {
       background: $p-color-theme-dark-notification-success;
     }
 
+    &.notification-success-soft {
+      background: $p-color-theme-dark-notification-success-soft;
+    }
+
     &.notification-warning {
       background: $p-color-theme-dark-notification-warning;
+    }
+
+    &.notification-warning-soft {
+      background: $p-color-theme-dark-notification-warning-soft;
     }
 
     &.notification-error {
       background: $p-color-theme-dark-notification-error;
     }
 
+    &.notification-error-soft {
+      background: $p-color-theme-dark-notification-error-soft;
+    }
+
     &.notification-neutral {
       background: $p-color-theme-dark-notification-neutral;
+    }
+
+    &.notification-neutral-soft {
+      background: $p-color-theme-dark-notification-neutral-soft;
     }
 
     &.state-hover {
@@ -197,6 +214,7 @@ export default class ColorBadge extends Vue {
     }
 
     &.state-focus {
+      color: $p-color-theme-dark-default;
       background: $p-color-theme-dark-state-focus;
     }
 
