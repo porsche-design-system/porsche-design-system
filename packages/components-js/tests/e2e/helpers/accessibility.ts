@@ -3,7 +3,6 @@ type Options = {
   color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'transparent';
   css?: 'outline' | 'boxShadow';
   offset?: string;
-  width?: string;
 };
 
 type FocusColors = {
@@ -51,12 +50,11 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     color: 'default',
     css: 'outline',
     offset: '1px',
-    width: '1px',
     ...opts
   };
-  const {css, theme, color, width, offset} = options;
+  const {css, theme, color, offset} = options;
 
   return css === 'boxShadow'
-    ? `${colors[theme][color]} 0px 0px 0px ${width}`
-    : `${colors[theme][color]} solid ${width} ${offset}`;
+    ? `${colors[theme][color]} 0px 0px 0px 1px`
+    : `${colors[theme][color]} solid 1px ${offset}`;
 }
