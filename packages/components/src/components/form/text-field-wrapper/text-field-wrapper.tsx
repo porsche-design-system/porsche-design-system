@@ -236,6 +236,10 @@ export class TextFieldWrapper {
       outline-color: currentColor !important;
     }
 
+    ${tagName} a:focus:not(:focus-visible) {
+      outline-color: transparent !important;
+    }
+
     ${tagName} input::-webkit-outer-spin-button,
     ${tagName} input::-webkit-inner-spin-button {
       -webkit-appearance: none !important;

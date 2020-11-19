@@ -149,6 +149,10 @@ export class LinkPure {
 
     ${tagName} a:focus::before {
       outline-color: currentColor !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.host, style);
