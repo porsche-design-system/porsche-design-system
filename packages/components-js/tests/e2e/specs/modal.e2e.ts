@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -124,6 +124,7 @@ describe('modal', () => {
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       await (await getModalHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
+      await waitForStencilLifecycle(page);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
 
@@ -251,7 +252,7 @@ describe('modal', () => {
   });
 
   it('should have correct aria-hidden value', async () => {
-    await initBasicModal({isOpen: false});
+    await initBasicModal({ isOpen: false });
     const aside = await getModalAside();
 
     expect(await getAttribute(aside, 'aria-hidden')).toBe('true');
