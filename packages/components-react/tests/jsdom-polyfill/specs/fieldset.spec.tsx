@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   componentsReady, PFieldsetWrapper
 } from '@porsche-design-system/components-react';

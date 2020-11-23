@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   componentsReady, PTextareaWrapper
 } from '@porsche-design-system/components-react';

@@ -1,5 +1,4 @@
 import { PMarque as Marque } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const MarquePage = (): JSX.Element => {
   return (
