@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   componentsReady, PModal
 } from '@porsche-design-system/components-react';

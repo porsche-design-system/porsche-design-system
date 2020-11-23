@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   componentsReady, PBanner
 } from '@porsche-design-system/components-react';

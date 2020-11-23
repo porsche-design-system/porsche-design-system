@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   componentsReady, PHeadline
 } from '@porsche-design-system/components-react';
