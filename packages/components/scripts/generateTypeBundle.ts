@@ -30,7 +30,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
 
   let targetFileName = '';
   if (framework === 'angular') {
-    targetFileName = 'components-wrapper.component.ts';
+    targetFileName = 'proxies.ts';
   } else if (framework === 'react') {
     targetFileName = 'components-provider.ts';
   }
@@ -41,7 +41,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   const result = fileContent.replace(/@porsche-design-system\/components/g, replaceValue);
   fs.writeFileSync(filePath, result);
 
-  console.log(`Updated import of "${targetFileName}" from "@porsche-design-system/components" to "${replaceValue}"`);
+  console.log(`Updated import of "${targetFileName}" from '@porsche-design-system/components' to '${replaceValue}'`);
 
   // React uses the alias JSX for LocalJSX, so we have to provide it
   if (framework === 'react') {
@@ -51,7 +51,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
     const appendContent = '/// <reference types="react" /> \n\n' + replaceContent;
 
     fs.writeFileSync(filePathDest, appendContent);
-    console.log(`Updated export alias for "components-react"`);
+    console.log(`Updated export alias of "components-react"`);
   }
 };
 

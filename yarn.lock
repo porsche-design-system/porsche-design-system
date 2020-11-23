@@ -2588,7 +2588,7 @@
 
 "@stencil/angular-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz":
   version "0.0.4"
-  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz#65d7c28bdf4cd7ce738588c369a4997a9e7c36de"
+  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz#ce276d8066eccc165295bb09305f1698d4a66a75"
 
 "@stencil/core@~2.3.0":
   version "2.3.0"
