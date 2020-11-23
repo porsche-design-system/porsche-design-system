@@ -1,4 +1,3 @@
-import React from 'react';
 import { HashRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
 import { JsVariables, ScssVariables } from './pages';
 import './styles.css';
