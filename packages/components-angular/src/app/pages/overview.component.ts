@@ -301,14 +301,14 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default flex with custom prefix">
-          <my-prefix-p-flex p-flex>
+          <my-prefix-p-flex>
             <my-prefix-p-flex-item><p>1</p></my-prefix-p-flex-item>
             <my-prefix-p-flex-item><p>2</p></my-prefix-p-flex-item>
           </my-prefix-p-flex>
         </div>
 
         <div class="playground light" title="should render default grid with custom prefix">
-          <my-prefix-p-grid p-grid>
+          <my-prefix-p-grid>
             <my-prefix-p-grid-item size="6"><p>1</p></my-prefix-p-grid-item>
             <my-prefix-p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
