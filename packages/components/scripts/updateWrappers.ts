@@ -41,7 +41,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   const filePath = path.normalize(`../components-${framework}/projects/components-wrapper/src/lib/${targetFileName}`);
   const fileContent = fs.readFileSync(filePath, 'utf8').toString();
 
-  // replace imports from '@porsche-design-system\/components' with './bundle';
+  // replace imports from '@porsche-design-system/components' with './bundle';
   const replaceValue = `'./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}'`;
   const result = fileContent.replace(/'@porsche-design-system\/components'/g, replaceValue);
 

@@ -5,13 +5,13 @@ import * as fs from 'fs';
 // We have to export it beforehand to ensure it gets included in the bundle.d.ts file
 const addMissingHTMLStencilElementExport = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
-  const missingExport = "export { HTMLStencilElement } from './stencil-public-runtime';";
+  const missingExport = `export { HTMLStencilElement } from './stencil-public-runtime';`;
   const fileName = 'dist/types/components.d.ts';
   const filePath = path.resolve(rootDirectory, fileName);
   const fileContent = fs.readFileSync(filePath).toString();
 
   if (!fileContent.includes(missingExport)) {
-    fs.writeFileSync(filePath, fileContent + missingExport);
+    fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
     console.log(`Added to "${fileName}": ${missingExport}`);
   }
 };
