@@ -1,5 +1,4 @@
 import { PButton as Button } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const ButtonPage = (): JSX.Element => {
   const style = `

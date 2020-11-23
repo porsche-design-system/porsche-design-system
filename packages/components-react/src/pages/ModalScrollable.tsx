@@ -1,5 +1,5 @@
 import { PModal as Modal, PButton as Button } from '@porsche-design-system/components-react';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const ModalScrollablePage = (): JSX.Element => {
   useEffect(() => {

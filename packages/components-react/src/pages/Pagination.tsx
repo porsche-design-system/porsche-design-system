@@ -1,5 +1,4 @@
 import { PPagination as Pagination } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const PaginationPage = (): JSX.Element => {
   return (
