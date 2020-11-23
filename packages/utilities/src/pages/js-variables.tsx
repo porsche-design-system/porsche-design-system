@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 

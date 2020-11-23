@@ -1,5 +1,4 @@
 import { PRadioButtonWrapper as RadioButtonWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
   return (
