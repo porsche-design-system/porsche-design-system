@@ -1,5 +1,4 @@
 import { PCheckboxWrapper as CheckboxWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const CheckboxWrapperPage = (): JSX.Element => {
   return (

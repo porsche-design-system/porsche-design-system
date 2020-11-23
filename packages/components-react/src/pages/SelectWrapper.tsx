@@ -1,5 +1,4 @@
 import { PSelectWrapper as SelectWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const SelectWrapperPage = (): JSX.Element => {
   return (

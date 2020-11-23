@@ -1,5 +1,4 @@
 import { PContentWrapper as ContentWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const ContentWrapperPage = (): JSX.Element => {
   const style = `

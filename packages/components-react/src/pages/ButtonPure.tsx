@@ -1,5 +1,4 @@
 import { PButtonPure as ButtonPure } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const ButtonPurePage = (): JSX.Element => {
   const style = `

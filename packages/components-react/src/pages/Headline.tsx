@@ -1,5 +1,4 @@
 import { PHeadline as Headline } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const HeadlinePage = (): JSX.Element => {
   return (

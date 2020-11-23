@@ -1,5 +1,4 @@
 import { PLink as Link } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPage = (): JSX.Element => {
   const style = `
