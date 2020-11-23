@@ -153,5 +153,10 @@ export const ScssVariables = (): JSX.Element => (
         ))}
       </div>
     </div>
+
+    <div className="playground">
+      <h2>Focus</h2>
+      <button id="focusable-element">Some label</button>
+    </div>
   </>
 );

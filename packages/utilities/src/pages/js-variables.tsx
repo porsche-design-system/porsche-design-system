@@ -106,6 +106,11 @@ export const JsVariables = (): JSX.Element => {
         <h2>Layout</h2>
         {renderSpacingOrLayout(layout)}
       </div>
+
+      <div className="playground">
+        <h2>Focus</h2>
+        <button id="focusable-element">Some label</button>
+      </div>
     </>
   );
 };
