@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   PBanner as Banner,
   PButton as Button,

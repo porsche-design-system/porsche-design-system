@@ -1,5 +1,4 @@
 import { PFlex as Flex, PFlexItem as FlexItem } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const FlexPage = (): JSX.Element => {
   const style = `

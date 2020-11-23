@@ -1,5 +1,4 @@
 import { PLinkSocial as LinkSocial } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkSocialPage = (): JSX.Element => {
   const style = `
