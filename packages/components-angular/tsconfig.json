@@ -10,21 +10,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@porsche-design-system/components-angular": [
-        "dist/components-wrapper"
-      ],
-      "@porsche-design-system/components-angular/*": [
-        "dist/components-wrapper/*"
-      ]
-    }
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
