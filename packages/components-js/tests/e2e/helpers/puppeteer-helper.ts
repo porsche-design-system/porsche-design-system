@@ -92,16 +92,29 @@ type GetStyleOnFocusOptions = {
   pseudo?: Pseudo
 }
 
-export const getStyleOnFocus = async (element: ElementHandle, property: 'outline' | 'boxShadow' = 'outline', opts?: GetStyleOnFocusOptions): Promise<string> => {
+export const getOutlineStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
   const options: GetStyleOnFocusOptions = {
     pseudo: null,
     ...opts
   }
   const {pseudo} = options;
+  return `${await getElementStyle(element, 'outline', {pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo})}`;
+}
+
+export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
+  const options: GetStyleOnFocusOptions = {
+    pseudo: null,
+    ...opts
+  }
+  const {pseudo} = options;
+  return await getElementStyle(element, 'boxShadow', {pseudo});
+}
+
+export const getStyleOnFocus = async (element: ElementHandle, property: 'outline' | 'boxShadow' = 'outline', opts?: GetStyleOnFocusOptions): Promise<string> => {
   await element.focus();
   return property === 'outline'
-    ? `${await getElementStyle(element, property, {pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo})}`
-    : await getElementStyle(element, property, {pseudo})
+    ? await getOutlineStyle(element, opts)
+    : await getBoxShadowStyle(element, opts);
 }
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {

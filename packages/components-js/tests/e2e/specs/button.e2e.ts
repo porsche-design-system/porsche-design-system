@@ -7,7 +7,7 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -386,6 +386,30 @@ describe('button', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-button>Some label</p-button>`
+      );
+
+      const button = await getButtonRealButton();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'});
+
+      expect(await getOutlineStyle(button)).toBe(hidden);
+
+      await button.click();
+
+      expect(await getOutlineStyle(button)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(button)).toBe(visible);
+    });
+
     it('should show outline of shadowed <button> when it is focused', async () => {
       await setContentWithDesignSystem(
         page,
