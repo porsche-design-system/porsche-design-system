@@ -4,7 +4,7 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
   await page.evaluate(
     async (): Promise<void> => {
       let updatingQueueCount = 0;
-      let resolvePromiseOnDidUpdateAll: () => void;
+      let resolvePromiseOnDidUpdateAll: (value?) => void;
       let resolvePromiseTimeout = null;
 
       const checkForPromiseResolve = (): void => {
