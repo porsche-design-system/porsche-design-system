@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { load, LoadOptions } from '@porsche-design-system/components-js';
+import { load } from '@porsche-design-system/components-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PrefixService {
-  load(opts: LoadOptions) {
-    load(opts);
-  }
+  load = load;
 }

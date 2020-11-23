@@ -1,7 +1,6 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
 import { load } from '@porsche-design-system/components-js';
-import { PREVENT_WEB_COMPONENTS_REGISTRATION } from './prevent-web-components-registration.token';
-import { WEB_COMPONENTS_PREFIX } from './web-components-prefix.token';
+import { PREVENT_WEB_COMPONENTS_REGISTRATION, WEB_COMPONENTS_PREFIX } from './injection.tokens';
 
 import {
   PContentWrapper,
@@ -33,8 +32,8 @@ import {
   PDivider,
   PTabs,
   PTabsItem,
-  PTabsBar
-} from './components-wrapper.component';
+  PTabsBar,
+} from './proxies';
 
 const DECLARATIONS = [
   PContentWrapper,
@@ -66,14 +65,14 @@ const DECLARATIONS = [
   PDivider,
   PTabs,
   PTabsItem,
-  PTabsBar
+  PTabsBar,
 ];
 
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [],
-  providers: []
+  providers: [],
 })
 export class PorscheDesignSystemModule {
   constructor(

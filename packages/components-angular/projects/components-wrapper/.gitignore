@@ -1,5 +1,3 @@
-# compiled output
-/dist
-
 # auto generated
-/src/lib/components-wrapper.component.ts
+/src/lib/angular-component-lib
+/src/lib/proxies.ts
