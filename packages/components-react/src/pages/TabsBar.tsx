@@ -1,5 +1,4 @@
 import { PTabsBar as TabsBar } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TabsBarPage = (): JSX.Element => {
   const renderTabs = (amount: number) =>

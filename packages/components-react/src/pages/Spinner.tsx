@@ -1,5 +1,4 @@
 import { PSpinner as Spinner } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const SpinnerPage = (): JSX.Element => {
   return (
