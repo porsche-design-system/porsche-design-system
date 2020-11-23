@@ -1,5 +1,4 @@
 import { PLinkPure as LinkPure } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPurePage = (): JSX.Element => {
   const style = `
