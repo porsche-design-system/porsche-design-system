@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   componentsReady, PLink
 } from '@porsche-design-system/components-react';

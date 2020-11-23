@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   componentsReady, PTextFieldWrapper
 } from '@porsche-design-system/components-react';
