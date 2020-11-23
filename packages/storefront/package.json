@@ -60,11 +60,11 @@
     "eslint-plugin-vue": "^7.1.0",
     "jasmine": "^3.6.3",
     "jasmine-spec-reporter": "^6.0.0",
-    "puppeteer": "~5.4.1",
+    "puppeteer": "~5.5.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "ts-node": "^9.0.0",
-    "typescript": "~4.0.5",
+    "typescript": "~4.1.2",
     "vue-template-compiler": "^2.6.12"
   },
   "scope": "@porsche-design-system"

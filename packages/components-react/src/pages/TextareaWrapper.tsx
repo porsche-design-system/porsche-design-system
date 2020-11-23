@@ -1,5 +1,4 @@
 import { PTextareaWrapper as TextareaWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TextareaWrapperPage = (): JSX.Element => {
   return (
