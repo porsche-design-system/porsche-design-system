@@ -1,5 +1,4 @@
 import { PTextFieldWrapper as TextFieldWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TextFieldWrapperPage = (): JSX.Element => {
   return (

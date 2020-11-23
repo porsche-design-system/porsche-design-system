@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   componentsReady, PSpinner
 } from '@porsche-design-system/components-react';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   componentsReady, PContentWrapper
 } from '@porsche-design-system/components-react';

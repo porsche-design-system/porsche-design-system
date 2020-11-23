@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   componentsReady, PDivider
 } from '@porsche-design-system/components-react';

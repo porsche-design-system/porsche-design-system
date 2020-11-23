@@ -1,5 +1,4 @@
 import { PDivider as Divider } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const DividerPage = (): JSX.Element => {
   const style = `

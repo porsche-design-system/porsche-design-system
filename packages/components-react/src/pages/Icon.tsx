@@ -1,5 +1,4 @@
 import { PIcon as Icon } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const IconPage = (): JSX.Element => {
   const style = `
