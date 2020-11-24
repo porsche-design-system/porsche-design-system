@@ -1,6 +1,9 @@
 export interface HTMLStencilElement extends HTMLElement {
 	componentOnReady(): Promise<this>;
 }
+export interface EventEmitter<T = any> {
+	emit: (data?: T) => CustomEvent<T>;
+}
 export type TextSize = "x-small" | "small" | "medium" | "large" | "x-large" | "inherit";
 export type TextWeight = "thin" | "regular" | "semibold" | "bold";
 export type HeadlineVariant = "large-title" | "headline-1" | "headline-2" | "headline-3" | "headline-4" | "headline-5";
@@ -1589,4 +1592,4 @@ declare namespace LocalJSX {
 	}
 }
 
-export {};
+export { LocalJSX as JSX };
