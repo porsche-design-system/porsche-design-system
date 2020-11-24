@@ -58,7 +58,7 @@ export class Pagination {
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
-  private unlistenResize: () => void;
+  private unlistenResize: () => void = () => {};
   private navigationElement: HTMLElement;
 
   @Watch('activePage')
