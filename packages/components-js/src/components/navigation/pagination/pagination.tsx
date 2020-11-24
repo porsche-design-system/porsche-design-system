@@ -64,14 +64,13 @@ export class Pagination {
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
-  private unlistenResize: () => void;
   private navigationElement: HTMLElement;
 
   @Watch('activePage')
   public onActivePageChange(page: number, previousPage: number): void {
     this.pageChange.emit({ page, previousPage });
   }
-
+  
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     this.unlistenResize = listenResize(() => {
@@ -80,11 +79,11 @@ export class Pagination {
 
     this.updateMaxNumberOfPageLinks();
   }
-
+  
   public disconnectedCallback(): void {
     this.unlistenResize();
   }
-
+  
   public render(): JSX.Element {
     const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
@@ -217,6 +216,9 @@ export class Pagination {
       </nav>
     );
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private unlistenResize: () => void = () => {};
 
   private onKeyDown(event: KeyboardEvent, page: number): void {
     /**
