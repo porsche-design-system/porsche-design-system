@@ -53,7 +53,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   if (framework === 'react') {
     const bundleFilePath = getBundleFilePathForFramework(framework);
     const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8').toString();
-    const newContent = `/// <reference types="react" />\n\n'${bundleFileContent}`;
+    const newContent = `/// <reference types="react" />\n\n${bundleFileContent}`;
 
     fs.writeFileSync(bundleFilePath, newContent);
     console.log(`Added react types to "components-react"`);
