@@ -153,9 +153,6 @@ import { Component } from '@angular/core';
 export class AppComponent {}
 ```
 
-Be aware, that you still have to set the component name without the prefix as an
-attribute, else you might get unexpected results in some edge cases.
-
 You can even add more prefixes with the `PrefixService`:
 ```tsx
 import { BrowserModule } from '@angular/platform-browser';
