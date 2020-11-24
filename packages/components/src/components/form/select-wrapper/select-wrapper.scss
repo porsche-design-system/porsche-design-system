@@ -407,12 +407,12 @@
   }
 
   &__fake-option {
-    position: relative;
     display: flex;
     padding: $p-spacing-4 p-px-to-rem(12px);
     min-height: $p-spacing-24;
     cursor: pointer;
     text-align: left;
+    word-break: break-word;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
@@ -427,11 +427,12 @@
     &:not([aria-disabled]):hover {
       #{$bem-block}--theme-light & {
         color: $p-color-state-hover;
-        background-color: #ebebeb;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-hover;
+        background-color: $p-color-theme-dark-background-surface;
       }
     }
 
@@ -442,26 +443,28 @@
 
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
+        background-color: $p-color-theme-dark-background-surface;
       }
 
       span + #{$bem-block}__fake-option-icon {
-        margin-left: p-px-to-rem(12px);
+        margin-left: $p-spacing-4;
       }
     }
 
     &--highlighted:not(&--selected) {
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
-        background-color: #ebebeb;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
-        background-color: #20262a;
+        background-color: $p-color-theme-dark-background-surface;
       }
     }
 
