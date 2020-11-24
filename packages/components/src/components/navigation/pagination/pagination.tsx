@@ -199,7 +199,7 @@ export class Pagination {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  private unlistenResize: () => void = () => {};
+  private unlistenResize: () => void;
 
   private onKeyDown(event: KeyboardEvent, page: number): void {
     /**
