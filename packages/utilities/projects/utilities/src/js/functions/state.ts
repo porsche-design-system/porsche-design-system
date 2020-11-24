@@ -1,37 +1,30 @@
 import { color } from '../variables';
 
-type Pseudo = '::before' | '::after';
+type PseudoElement = '::before' | '::after';
 
-export const pFocus = (focusColor: string = color.state.focus, offset: number = 1, pseudo?: Pseudo): string => {
-  const mozStyle = '::-moz-focus-inner { border: 0; }';
+type Options = { focusColor?: string; offset?: number; pseudo?: PseudoElement };
 
-  const focusStyle = `
-    outline: transparent solid 1px;
-    outline-offset: ${offset}px;`;
+const defaultOptions: Options = { focusColor: color.state.focus, offset: 1 };
 
-  const pseudoElement = `
-    content: "";
+export const focus = (opts?: Options): string => {
+  const options: Options = { ...defaultOptions, ...opts };
+  const { focusColor, offset, pseudo = '' } = options;
+
+  return `
+::-moz-focus-inner { border: 0; }
+${pseudo ? `&${pseudo}{` : ''}
+outline: transparent solid 1px;
+outline-offset: ${offset}px;
+${
+  pseudo
+    ? `content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    `;
-
-  if (pseudo) {
-    return `
-      ${mozStyle}
-      ${focusStyle}
-      ${pseudoElement}
-      &:focus#{${pseudo}} { outline-color: ${focusColor};}
-      &:focus:not(:focus-visible)#{${pseudo}} { outline-color: transparent;}
-    `;
-  } else {
-    return `
-      ${mozStyle}
-      ${focusStyle}
-      &:focus { outline-color: ${focusColor};}
-      &:focus:not(:focus-visible) { outline-color: transparent;}
-    `;
-  }
+    bottom: 0;}` // Closing bracket from adding &${pseudo}
+    : ''
+}
+&:focus${pseudo} { outline-color: ${focusColor}; }
+&:focus:not(:focus-visible)${pseudo} { outline-color: transparent; }`;
 };
