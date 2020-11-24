@@ -64,14 +64,19 @@ export class Pagination {
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
-  private unlistenResize: () => void;
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private unlistenResize: () => void = () => {};
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   private navigationElement: HTMLElement;
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   @Watch('activePage')
   public onActivePageChange(page: number, previousPage: number): void {
     this.pageChange.emit({ page, previousPage });
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
     this.unlistenResize = listenResize(() => {
@@ -81,10 +86,12 @@ export class Pagination {
     this.updateMaxNumberOfPageLinks();
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   public disconnectedCallback(): void {
     this.unlistenResize();
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   public render(): JSX.Element {
     const pageRange = this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0;
 
