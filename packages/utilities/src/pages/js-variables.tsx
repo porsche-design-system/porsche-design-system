@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
+import { color, font, headline, layout, pFocus, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
@@ -21,6 +21,7 @@ const Square = styled.div(({ background }: { background?: CSSProperties['backgro
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
 const styledTitles = Object.entries(title).map(([name, styles]) => ({ name, Component: styled.div(styles) }));
 const Text = styled.div(text.small);
+const FocusButton = styled.button`${pFocus()}`;
 
 export const JsVariables = (): JSX.Element => {
   const { darkTheme, ...other } = color;
@@ -109,7 +110,7 @@ export const JsVariables = (): JSX.Element => {
 
       <div className="playground">
         <h2>Focus</h2>
-        <button id="focusable-element">Some label</button>
+        <FocusButton>Some label</FocusButton>
       </div>
     </>
   );
