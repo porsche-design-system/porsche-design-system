@@ -10,7 +10,7 @@ import * as fromPages from './pages';
   imports: [BrowserModule, PorscheDesignSystemModule, AppRoutingModule],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(private prefixService: PrefixService) {

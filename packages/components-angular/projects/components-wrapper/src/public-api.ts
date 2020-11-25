@@ -3,6 +3,6 @@
  */
 
 export * from './lib/proxies';
-export * from './lib/components-wrapper.module';
-export * from './lib/prefix.service';
-export * from './lib/injection.tokens';
+export * from './components-wrapper.module';
+export * from './prefix.service';
+export * from './injection.tokens';
