@@ -49,36 +49,39 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   const replaceValue = `'./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}'`;
   let result = wrapperFileContent.replace(/'@porsche-design-system\/components'/g, replaceValue);
 
-  // add missing reference for react types
   if (framework === 'react') {
     const bundleFilePath = getBundleFilePathForFramework(framework);
     const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8').toString();
+
+    // add missing reference for react types in bundle.d.ts
     const newContent = `/// <reference types="react" />\n\n${bundleFileContent}`;
 
     fs.writeFileSync(bundleFilePath, newContent);
     console.log(`Added react types to "components-react"`);
-  }
-  // remove imports of component class interfaces, inline EventEmitter generics and add missing imports
-  else if (framework === 'angular') {
-    const componentsPkgBase = path.resolve(require.resolve('@porsche-design-system/components'), '..');
-    const matches = result.match(/(.*?@porsche-design-system\/components.*)/g) ?? [];
-    const missingBundleImports = ['EventEmitter'];
+  } else if (framework === 'angular') {
+    // rewire and replace imports from non public @porsche-design-system/components in generated wrapper
 
-    matches.forEach((match) => {
+    const componentsPkgBase = path.resolve(require.resolve('@porsche-design-system/components'), '..');
+    const importMatches = result.match(/(.*?@porsche-design-system\/components.*)/g) ?? []; // detect imports from components
+    const missingBundleImports = ['EventEmitter']; // array for missing imports that will be added in the end
+
+    importMatches.forEach((match) => {
       const importPath = match.substr(
         match.indexOf('/dist/') + 6,
         match.indexOf(';') - 1 - match.indexOf('/dist/') - 6
       );
-      const importFilePath = path.resolve(componentsPkgBase, `${importPath}.d.ts`);
-      const importFileContent = fs.readFileSync(importFilePath, 'utf8').toString();
-      const importedEvents = importFileContent.match(/(.*?EventEmitter<(.|\s)*?>)/g) ?? [];
+      const importFilePath = path.resolve(componentsPkgBase, `${importPath}.d.ts`); // build absolute path to imported file from components
+      const importFileContent = fs.readFileSync(importFilePath, 'utf8').toString(); // read imported file
+      const importedEvents = importFileContent.match(/(.*?EventEmitter<(.|\s)*?>)/g) ?? []; // extract generics of EventEmitter<GENERIC>
 
+      // extract imported interface from something like: import { Button as IButton } from '...'
       const importedInterface = match.substr(match.indexOf('as') + 3, match.indexOf('}') - 1 - match.indexOf('as') - 3);
       console.log(`Replacing import of: ${importedInterface}`);
+      result = result.replace(match, ''); // get rid of old import
 
       importedEvents.forEach((event) => {
+        // extract event name and value of EventEmitter generic
         const [, eventName, eventValue] = event.trim().match(/^(\w+).*EventEmitter((?:.|\s)*)/) ?? [];
-        result = result.replace(match, ''); // get rid of old import
         result = result.replace(`${importedInterface}['${eventName}']`, `EventEmitter${eventValue}`); // inline event value
 
         // extract non primitive types which we need to import
@@ -87,13 +90,14 @@ const updateGeneratedWrapper = (framework: Framework): void => {
         while (typeMatch !== null) {
           const [, nonPrimitiveType] = typeMatch;
           console.log(`Found non primitive type: ${nonPrimitiveType}`);
-          missingBundleImports.push(nonPrimitiveType);
+          missingBundleImports.push(nonPrimitiveType); // save non primitive type to array
 
-          typeMatch = regex.exec(eventValue);
+          typeMatch = regex.exec(eventValue); // loop again in case of multiple matches
         }
       });
     });
 
+    // get rid of duplicates
     const uniqueMissingImports = missingBundleImports.filter((x, i, a) => a.indexOf(x) === i);
 
     if (uniqueMissingImports.length) {
