@@ -1,5 +1,5 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { selectNode, waitForStencilLifecycle } from '../../../../components-js/tests/e2e/helpers';
+import { selectNode, waitForStencilLifecycle } from '../helpers';
 import { browser } from '../config';
 
 const BASE_URL = 'http://localhost:4200';
