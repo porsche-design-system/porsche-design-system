@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import {
-  componentsReady, PTabs,
-  PTabsItem,
-} from '@porsche-design-system/components-react';
+import { PTabs, PTabsItem } from '@porsche-design-system/components-react';
+import { componentsReady } from '@porsche-design-system/components-js';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -27,7 +25,9 @@ const Sample = (): JSX.Element => {
       </PTabs>
       <button type="button" data-testid="button1" onClick={() => setActiveTab(2)} />
       <button type="button" data-testid="button2" onClick={() => setActiveTab(1)} />
-      <div data-testid="debug">{`Current Tab: ${currentTab};`} {`Event Counter: ${eventCounter};`}</div>
+      <div data-testid="debug">
+        {`Current Tab: ${currentTab};`} {`Event Counter: ${eventCounter};`}
+      </div>
     </>
   );
 };
@@ -35,7 +35,6 @@ const Sample = (): JSX.Element => {
 describe('PTabs', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
@@ -43,7 +42,6 @@ describe('PTabs', () => {
 
   it('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');
