@@ -5,7 +5,7 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -21,6 +21,18 @@ describe('link', () => {
   const getLinkHost = () => selectNode(page, 'p-link');
   const getLinkRealLink = () => selectNode(page, 'p-link >>> a');
   const getSlottedLink = () => selectNode(page, 'p-link a');
+
+  const initLink = ({ useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-link onclick="return false;" ${!useSlottedAnchor && 'href="#"'}>
+        ${useSlottedAnchor && '<a onclick="return false;" href="">'}
+        Some label
+        ${useSlottedAnchor && '</a>'}
+      </p-link>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link href="#">Some label</p-link>`);
@@ -166,11 +178,50 @@ describe('link', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
+      await initLink();
+
+      const link = await getLinkRealLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'});
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await link.click();
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initLink({useSlottedAnchor: true});
+
+      const link = await getSlottedLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'});
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await link.click();
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(visible);
+    });
+
     it('should show outline of shadowed <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link href="#">Some label</p-link>`
-      );
+      await initLink();
 
       const host = await getLinkHost();
       const link = await getLinkRealLink();
@@ -204,12 +255,7 @@ describe('link', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link>
-          <a href="#">Some label</a>
-        </p-link>`
-      );
+      await initLink({useSlottedAnchor: true});
 
       const host = await getLinkHost();
       const link = await getSlottedLink();

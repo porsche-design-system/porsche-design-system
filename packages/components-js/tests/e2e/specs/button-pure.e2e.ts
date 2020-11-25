@@ -6,7 +6,7 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -21,6 +21,16 @@ describe('button-pure', () => {
 
   const getButtonPureHost = () => selectNode(page, 'p-button-pure');
   const getButtonPureRealButton = () => selectNode(page, 'p-button-pure >>> button');
+
+  const initButtonPure = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-button-pure>
+        Some label
+      </p-button-pure>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
@@ -364,11 +374,30 @@ describe('button-pure', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only', async () => {
+      await initButtonPure();
+
+      const button = await getButtonPureRealButton();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'brand'}); // because of button click, :focus-visible & :hover
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
+
+      await button.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(visible);
+    });
+
     it('should show outline of shadowed <button> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-button-pure>Some label</p-button-pure>`
-      );
+      await initButtonPure();
 
       const host = await getButtonPureHost();
       const button = await getButtonPureRealButton();
