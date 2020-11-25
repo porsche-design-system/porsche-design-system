@@ -1,13 +1,14 @@
 import React from 'react';
-import {
-  componentsReady, PLinkSocial
-} from '@porsche-design-system/components-react';
+import { PLinkSocial } from '@porsche-design-system/components-react';
+import { componentsReady } from '@porsche-design-system/components-js';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return (
     <>
-      <PLinkSocial href="#" icon="logo-facebook" data-testid="host">Facebook</PLinkSocial>
+      <PLinkSocial href="#" icon="logo-facebook" data-testid="host">
+        Facebook
+      </PLinkSocial>
     </>
   );
 };
