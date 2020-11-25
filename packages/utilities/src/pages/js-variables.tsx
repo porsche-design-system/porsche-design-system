@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { color, font, headline, layout, pFocus, spacing, text, title } from '@porsche-design-system/utilities';
+import { color, font, headline, layout, focus, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
@@ -110,7 +110,7 @@ export const JsVariables = (): JSX.Element => {
 
       <div className="playground">
         <h2>Focus</h2>
-        <FocusButton>Some label</FocusButton>
+        <FocusButton id="focusable-element">Some label</FocusButton>
       </div>
     </>
   );
