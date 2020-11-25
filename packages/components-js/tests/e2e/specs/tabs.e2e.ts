@@ -179,7 +179,7 @@ describe('tabs', () => {
       const [, secondButton] = await getAllTabs();
       await secondButton.click();
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(50); // to be on the safe side
+      await page.waitForTimeout(200); // to be on the safe side
 
       expect(await getCountedEvents()).toBe(1);
     });
