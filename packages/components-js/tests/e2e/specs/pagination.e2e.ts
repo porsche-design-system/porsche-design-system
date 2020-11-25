@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { ConsoleMessage, Page } from 'puppeteer';
 import { getAttribute, getBrowser, selectNode, setContentWithDesignSystem, waitForStencilLifecycle } from '../helpers';
 
 describe('pagination', () => {
@@ -95,5 +95,35 @@ describe('pagination', () => {
 
       expect(await getAttribute(firstPageItem, 'aria-disabled')).toBe('true');
     });
+  });
+
+  it('should have no errors if disconnected before fully loaded', async () => {
+    const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
+
+    const consoleMessages: ConsoleMessage[] = [];
+    page.on('console', (msg) => {
+      consoleMessages.push(msg);
+      if (msg.type() === 'error') {
+        const { description } = msg.args()[0]['_remoteObject'];
+        if (description) {
+          console.log(description);
+        }
+      }
+    });
+
+    await setContentWithDesignSystem(page, ``);
+    await page.evaluate(() => {
+      const el = document.createElement('p-pagination');
+      document.body.append(el);
+
+      setTimeout(() => el.remove(), 10);
+    });
+
+    await page.waitForTimeout(10);
+
+    expect(getErrorsAmount(consoleMessages)).toBe(0);
+
+    await page.evaluate(() => console.error('test error'));
+    expect(getErrorsAmount(consoleMessages)).toBe(1);
   });
 });
