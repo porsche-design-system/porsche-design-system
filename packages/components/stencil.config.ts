@@ -48,7 +48,7 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
-      directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/components-wrapper.component.ts',
+      directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/proxies.ts',
     }),
   ],
   bundles: [{ components: [] }],
