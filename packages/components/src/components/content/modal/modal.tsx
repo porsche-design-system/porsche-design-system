@@ -45,6 +45,7 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
+      this.setScrollLock(true);
     }
   }
 
