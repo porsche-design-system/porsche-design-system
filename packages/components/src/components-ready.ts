@@ -1,49 +1,65 @@
 /* eslint-disable no-console */
 
-let loadingQueueCount = 0;
-let resolvePromiseTimeout: number;
-let onLoadedPromise: Promise<void>;
-let resolveOnLoadedPromise: () => void;
+let hasRegisteredEventListeners = false;
+let taskCount = 0;
+let timeout: number;
+let onLoadedPromise = createPromise();
+let resolvePromise: () => void;
+
+function createPromise(): Promise<void> {
+  console.log('createPromise');
+  return new Promise((resolve) => {
+    resolvePromise = resolve;
+  });
+}
 
 const checkForPromiseResolve = (): void => {
-  console.log('checkForPromiseResolve', loadingQueueCount);
-  if (loadingQueueCount === 0) {
+  if (taskCount === 0) {
     // we debounce 50ms, because the loader is doing the
     // same for the "hydrated" class
-    resolvePromiseTimeout = window.setTimeout(() => {
-      resolveOnLoadedPromise();
-      createOnLoadedPromise();
+    timeout = window.setTimeout(() => {
+      resolvePromise();
+      onLoadedPromise = createPromise();
+      console.log('resolvedPromise');
     }, 50);
   }
 };
 
-const createOnLoadedPromise = (): void => {
-  console.log('createOnLoadedPromise');
-  onLoadedPromise = new Promise((resolve) => {
-    resolveOnLoadedPromise = resolve;
-  });
+const increaseCount = (): void => {
+  taskCount++;
+  if (timeout) {
+    window.clearTimeout(timeout);
+  }
 };
 
-createOnLoadedPromise();
-
-// stencil starts to lazy load a component
-window.addEventListener('stencil_componentWillLoad', () => {
-  loadingQueueCount++;
-  console.log('stencil_componentWillLoad', loadingQueueCount);
-  if (resolvePromiseTimeout) {
-    window.clearTimeout(resolvePromiseTimeout);
-  }
-});
-
-// stencil finished to lazy load a component
-window.addEventListener('stencil_componentDidLoad', () => {
-  loadingQueueCount--;
-  console.log('stencil_componentDidLoad', loadingQueueCount);
+const decreaseCount = (): void => {
+  taskCount--;
   checkForPromiseResolve();
-});
+};
+
+const registerStencilEventListeners = (): void => {
+  if (!hasRegisteredEventListeners) {
+    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
+      const handler = event.includes('Will') ? increaseCount : decreaseCount;
+      window.addEventListener(
+        `stencil_${event}`,
+        // for production
+        // handler
+        // for debugging
+        (e) => {
+          handler();
+          console.log(e.target['tagName'].toLowerCase(), e.type, taskCount);
+        }
+      );
+    });
+
+    hasRegisteredEventListeners = true;
+  }
+};
 
 export const componentsReady = (): Promise<void> => {
-  console.log('componentsReady', loadingQueueCount);
+  console.log('componentsReady', taskCount);
+  registerStencilEventListeners();
   checkForPromiseResolve();
   return onLoadedPromise;
 };
