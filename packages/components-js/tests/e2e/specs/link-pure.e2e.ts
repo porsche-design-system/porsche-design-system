@@ -5,7 +5,7 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -21,6 +21,18 @@ describe('link-pure', () => {
   const getLinkPureHost = () => selectNode(page, 'p-link-pure');
   const getLinkPureRealLink = () => selectNode(page, 'p-link-pure >>> a');
   const getSlottedLink = () => selectNode(page, 'p-link-pure a');
+
+  const initLinkPure = ({ useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-link-pure onclick="return false;" ${!useSlottedAnchor && 'href="#"'}>
+        ${useSlottedAnchor && '<a onclick="return false;" href="">'}
+        Some label
+        ${useSlottedAnchor && '</a>'}
+      </p-link-pure>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-pure href="#">Some label</p-link-pure>`);
@@ -171,11 +183,52 @@ describe('link-pure', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
+      await initLinkPure();
+
+      const link = await getLinkPureRealLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'brand'}); // because of button click, :focus-visible & :hover
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await link.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initLinkPure({useSlottedAnchor: true});
+
+      const link = await getSlottedLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'brand'}); // because of button click, :focus-visible & :hover
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await link.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(visible);
+    });
+
     it('should show outline of shadowed <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-pure href="#">Some label</p-link-pure>`
-      );
+      await initLinkPure();
 
       const host = await getLinkPureHost();
       const link = await getLinkPureRealLink();
@@ -189,12 +242,7 @@ describe('link-pure', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-pure>
-          <a href="#">Some label</a>
-        </p-link-pure>`
-      );
+      await initLinkPure({useSlottedAnchor: true});
 
       const host = await getLinkPureHost();
       const link = await getSlottedLink();

@@ -24,6 +24,16 @@ describe('button', () => {
   const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
   const getIconOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
 
+  const initButton = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-button>
+        Some label
+      </p-button>`
+    );
+  };
+
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
     const el = await getButtonRealButton();
@@ -387,10 +397,7 @@ describe('button', () => {
 
   describe('focus state', () => {
     it('should be shown by keyboard navigation only', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-button>Some label</p-button>`
-      );
+      await initButton();
 
       const button = await getButtonRealButton();
       const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
@@ -411,10 +418,7 @@ describe('button', () => {
     });
 
     it('should show outline of shadowed <button> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-button>Some label</p-button>`
-      );
+      await initButton();
 
       const host = await getButtonHost();
       const button = await getButtonRealButton();
