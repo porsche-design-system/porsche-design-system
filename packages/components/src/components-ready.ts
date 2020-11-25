@@ -3,15 +3,16 @@
 let hasRegisteredEventListeners = false;
 let taskCount = 0;
 let timeout: number;
-let onLoadedPromise = createPromise();
 let resolvePromise: () => void;
 
-function createPromise(): Promise<void> {
+const createPromise = (): Promise<void> => {
   console.log('createPromise');
   return new Promise((resolve) => {
     resolvePromise = resolve;
   });
-}
+};
+
+let onLoadedPromise = createPromise();
 
 const checkForPromiseResolve = (): void => {
   if (taskCount === 0) {
@@ -48,7 +49,7 @@ const registerStencilEventListeners = (): void => {
         // for debugging
         (e) => {
           handler();
-          console.log(e.target['tagName'].toLowerCase(), e.type, taskCount);
+          console.log((e.target as any).tagName.toLowerCase(), e.type, taskCount);
         }
       );
     });
