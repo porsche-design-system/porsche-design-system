@@ -1,5 +1,2 @@
-# compiled output
-/dist
-
 # auto generated
-/src/lib/components-wrapper.component.ts
+/src/lib
