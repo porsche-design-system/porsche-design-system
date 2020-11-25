@@ -33,7 +33,7 @@ import {
   PTabs,
   PTabsItem,
   PTabsBar,
-} from './proxies';
+} from './lib/proxies';
 
 const DECLARATIONS = [
   PContentWrapper,
