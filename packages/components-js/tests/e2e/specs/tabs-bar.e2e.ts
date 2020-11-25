@@ -9,7 +9,7 @@ import {
   reattachElement,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle,
+  waitForStencilLifecycle, getOutlineStyle,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -29,12 +29,13 @@ describe('tabs-bar', () => {
     activeTabIndex?: number;
     isWrapped?: boolean;
     otherMarkup?: string;
+    anchor?: boolean;
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup } = opts ?? {};
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup, anchor } = opts ?? {};
 
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map((_, i) => `<button>Tab Button ${i + 1}</button>`)
+    .map((_, i) => `<${anchor ? 'a onclick="return false" href="#"' : 'button'}>Tab Button ${i + 1}</${anchor ? 'a' : 'button'}>`)
     .join('')}
 </p-tabs-bar>${otherMarkup ?? ''}`;
 
@@ -531,15 +532,52 @@ describe('tabs-bar', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only with buttons', async () => {
+      await initTabsBar({amount: 3});
+
+      const [, secondButton] = await getAllButtons();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(secondButton)).toBe(hidden);
+
+      await secondButton.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(secondButton)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(secondButton)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only with anchors', async () => {
+      await initTabsBar({amount: 3, anchor: true});
+
+      const [, secondLink] = await getAllLinks();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(secondLink)).toBe(hidden);
+
+      await secondLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(secondLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(secondLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <button> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-tabs-bar>
-        <button>Content1</button>
-        <button>Content2</button>
-        <button>Content3</button>
-      </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3 });
 
       const host = await getHost();
       const buttons = await getAllButtons();
@@ -558,14 +596,7 @@ describe('tabs-bar', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-tabs-bar>
-        <a href="#">Content1</a>
-        <a href="#">Content2</a>
-        <a href="#">Content3</a>
-      </p-tabs-bar>`
-      );
+      await initTabsBar({ amount: 3, anchor: true});
 
       const host = await getHost();
       const links = await getAllLinks();

@@ -2,7 +2,7 @@ import {
   getBrowser,
   getStyleOnFocus,
   selectNode, setAttribute, expectedStyleOnFocus,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, waitForStencilLifecycle
+  setContentWithDesignSystem, waitForInheritedCSSTransition, waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -12,18 +12,44 @@ describe('text', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
+  const initText = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-text>
+          <p>Some message with a <a onclick="return false;" href="#">link</a>.</p>
+        </p-text>`
+    );
+  };
+
   const getHost = () => selectNode(page, 'p-text');
   const getLink = () => selectNode(page, 'p-text a');
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initText();
+
+      const link = await getLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await link.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link)).toBe(visible);
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-text>
-          <p>Some message with a <a href="#">link</a>.</p>
-        </p-text>`
-      );
+      await initText();
 
       const host = await getHost();
       const link = await getLink();

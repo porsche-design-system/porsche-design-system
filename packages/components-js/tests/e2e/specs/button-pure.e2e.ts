@@ -379,7 +379,7 @@ describe('button-pure', () => {
 
       const button = await getButtonPureRealButton();
       const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'brand'}); // because of button click, :focus-visible & :hover
+      const visible = expectedStyleOnFocus({color: 'hover'});
 
       expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
 

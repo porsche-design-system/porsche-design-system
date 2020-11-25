@@ -1,6 +1,6 @@
 type Options = {
   theme?: 'light' | 'dark',
-  color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'transparent';
+  color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'hover' | 'transparent';
   css?: 'outline' | 'boxShadow';
   offset?: string;
 };
@@ -13,6 +13,7 @@ type FocusColors = {
   error: string;
   brand: string;
   active: string;
+  hover: string;
   transparent: string;
 }
 
@@ -30,6 +31,7 @@ const colors: Colors = {
     'error': 'rgb(224, 0, 0)',
     'brand': 'rgb(213, 0, 28)',
     'active': 'rgb(213, 0, 28)',
+    'hover': 'rgb(213, 0, 28)',
     'transparent': 'rgba(0, 0, 0, 0)'
   },
   'dark': {
@@ -40,9 +42,10 @@ const colors: Colors = {
     'error': 'rgb(252, 23, 23)',
     'brand': 'rgb(213, 0, 28)',
     'active': 'rgb(255, 2, 35)',
+    'hover': 'rgb(255, 2, 35)',
     'transparent': 'rgba(0, 0, 0, 0)'
   }
-}
+};
 
 export const expectedStyleOnFocus = (opts?: Options): string => {
   const options: Options = {
@@ -57,4 +60,4 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
   return css === 'boxShadow'
     ? `${colors[theme][color]} 0px 0px 0px 1px`
     : `${colors[theme][color]} solid 1px ${offset}`;
-}
+};
