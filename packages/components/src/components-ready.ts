@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 let loadingQueueCount = 0;
 let resolvePromiseTimeout: number;
 let onLoadedPromise: Promise<void>;
