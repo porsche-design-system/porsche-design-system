@@ -111,7 +111,7 @@ export const SingleComponent = (): JSX.Element => {
 ```tsx
 // SingleComponent.test.tsx
 
-import { componentsReady } from '@porsche-design-system/components-react';
+import { componentsReady } from '@porsche-design-system/components-js';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
