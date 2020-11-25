@@ -14,6 +14,7 @@ describe('js-variables', () => {
         'overview',
         async () => {
           await vrt.goTo('/#/js-variables');
+          await vrt.focus('#focusable-element');
         },
         { regressionSuffix: 'js' }
       )
