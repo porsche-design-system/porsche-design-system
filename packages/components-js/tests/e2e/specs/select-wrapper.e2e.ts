@@ -6,9 +6,10 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('select-wrapper', () => {
   let page: Page;
@@ -28,37 +29,31 @@ describe('select-wrapper', () => {
   const getSelectDescriptionLink = () => selectNode(page, 'p-select-wrapper [slot="description"] a');
   const getSelectMessageLink = () => selectNode(page, 'p-select-wrapper [slot="message"] a');
 
-  it('should render', async () => {
-    await setContentWithDesignSystem(
+  const initSelect = ({ useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedDescription?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+    return setContentWithDesignSystem(
       page,
       `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
+        <p-select-wrapper state="${state}" ${!useSlottedLabel && 'label="Some label"'} ${!useSlottedDescription && 'label="Some description"'} ${!useSlottedMessage && 'label="Some message"'}>
+          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedDescription && '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'}
+          <select>
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+          </select>
+          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+        </p-select-wrapper>`
     );
+  };
 
+  it('should render', async () => {
+    await initSelect();
     const el = await getSelectFakeInput();
     expect(el).toBeDefined();
   });
 
   it('should add aria-label to support screen readers properly', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
-    `
-    );
+    await initSelect();
     const select = await getSelectRealInput();
     expect(await getProperty(select, 'ariaLabel')).toBe('Some label');
   });
@@ -84,7 +79,7 @@ describe('select-wrapper', () => {
     await setContentWithDesignSystem(
       page,
       `
-      <p-select-wrapper label="Some label" description="Some description" message="Some error message" state="error">
+      <p-select-wrapper label="Some label" description="Some description" message="Some message" state="error">
         <select name="some-name">
           <option value="a">Option A</option>
           <option value="b">Option B</option>
@@ -94,7 +89,7 @@ describe('select-wrapper', () => {
     `
     );
     const select = await getSelectRealInput();
-    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some error message');
+    expect(await getProperty(select, 'ariaLabel')).toBe('Some label. Some message');
   });
 
   it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -120,17 +115,7 @@ describe('select-wrapper', () => {
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-select-wrapper label="Some label">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>`
-    );
+    await initSelect();
 
     const selectComponent = await getSelectHost();
     const select = await getSelectRealInput();
@@ -162,16 +147,7 @@ describe('select-wrapper', () => {
   });
 
   it('should focus select when label text is clicked', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-select-wrapper label="Some label">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
-    );
+    await initSelect();
 
     const labelText = await getSelectLabel();
     expect(labelText).toBeDefined();
@@ -191,16 +167,7 @@ describe('select-wrapper', () => {
   });
 
   it('should disable fake select when select is set disabled programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-select-wrapper label="Some label">
-      <select name="some-name">
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
-    );
+    await initSelect();
 
     const fakeSelect = await getSelectFakeInput();
     const select = await getSelectRealInput();
@@ -219,18 +186,78 @@ describe('select-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for slotted <select>', async () => {
+      await initSelect();
+
+      const textarea = await getSelectRealInput();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
+      const visible = expectedStyleOnFocus({color: 'neutral', offset: '2px'});
+
+      expect(await getOutlineStyle(textarea)).toBe(hidden);
+
+      await textarea.click();
+
+      expect(await getOutlineStyle(textarea)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(textarea)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initSelect({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+
+      const labelLink = await getSelectLabelLink();
+      const descriptionLink = await getSelectDescriptionLink();
+      const messageLink = await getSelectMessageLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await labelLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+
+      expect(await getOutlineStyle(labelLink)).toBe(visible);
+
+      await descriptionLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
+
+      await messageLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <select> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper>
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initSelect();
 
       const host = await getSelectHost();
       const input = await getSelectRealInput();
@@ -261,20 +288,7 @@ describe('select-wrapper', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <span slot="description">Some description with a <a href="#">link</a>.</span>
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-          <span slot="message">Some error message with a <a href="#">link</a>.</span>
-        </p-select-wrapper>`
-      );
+      await initSelect({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
 
       const host = await getSelectHost();
       const labelLink = await getSelectLabelLink();

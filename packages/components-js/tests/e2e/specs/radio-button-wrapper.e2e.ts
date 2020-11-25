@@ -7,9 +7,10 @@ import {
   getProperty,
   selectNode, setAttribute,
   setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle, waitForInheritedCSSTransition
+  waitForStencilLifecycle, waitForInheritedCSSTransition, getOutlineStyle, getBoxShadowStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('radio-button-wrapper', () => {
   let page: Page;
@@ -25,6 +26,18 @@ describe('radio-button-wrapper', () => {
   const getRadioButtonMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
   const getRadioButtonLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getRadioButtonMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
+
+  const initRadioButton = ({ useSlottedLabel, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-radio-button-wrapper state="${state}">
+          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
+          <input type="radio" />
+          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+        </p-radio-button-wrapper>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -247,14 +260,65 @@ describe('radio-button-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
+      await initRadioButton();
+
+      const input = await getRadioButtonRealInput();
+      const hidden = expectedStyleOnFocus({color: 'transparent', css: 'boxShadow'});
+      const visible = expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'});
+
+      expect(await getBoxShadowStyle(input)).toBe(hidden);
+
+      await input.click();
+
+      expect(await getBoxShadowStyle(input)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getBoxShadowStyle(input)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initRadioButton({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+
+      const labelLink = await getRadioButtonLabelLink();
+      const messageLink = await getRadioButtonMessageLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await labelLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(labelLink)).toBe(visible);
+
+      await messageLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <input> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-radio-button-wrapper>
-          <input type="radio" />
-        </p-radio-button-wrapper>`
-      );
+      await initRadioButton();
 
       const host = await getRadioButtonHost();
       const input = await getRadioButtonRealInput();
@@ -271,15 +335,7 @@ describe('radio-button-wrapper', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-radio-button-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <input type="radio" />
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
-        </p-radio-button-wrapper>`
-      );
+      await initRadioButton({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
 
       const host = await getRadioButtonHost();
       const labelLink = await getRadioButtonLabelLink();

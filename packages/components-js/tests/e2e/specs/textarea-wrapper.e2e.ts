@@ -6,9 +6,10 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('textarea-wrapper', () => {
   let page: Page;
@@ -27,6 +28,19 @@ describe('textarea-wrapper', () => {
   const getTextareaLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
   const getTextareaDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getTextareaMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
+
+  const initTextarea = ({ useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedDescription?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-textarea-wrapper state="${state}">
+          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedDescription && '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'}
+          <textarea></textarea>
+          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+        </p-textarea-wrapper>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -162,14 +176,78 @@ describe('textarea-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
+      await initTextarea();
+
+      const textarea = await getTextareaRealInput();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '4px'});
+      const visible = expectedStyleOnFocus({color: 'neutral', offset: '4px'});
+
+      expect(await getOutlineStyle(textarea)).toBe(hidden);
+
+      await textarea.click();
+
+      expect(await getOutlineStyle(textarea)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(textarea)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initTextarea({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+
+      const labelLink = await getTextareaLabelLink();
+      const descriptionLink = await getTextareaDescriptionLink();
+      const messageLink = await getTextareaMessageLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await labelLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+
+      expect(await getOutlineStyle(labelLink)).toBe(visible);
+
+      await descriptionLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
+
+      await messageLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <textarea> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-textarea-wrapper>
-          <textarea></textarea>
-        </p-textarea-wrapper>`
-      );
+      await initTextarea();
 
       const host = await getTextareaHost();
       const textarea = await getTextareaRealInput();
@@ -190,16 +268,7 @@ describe('textarea-wrapper', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-textarea-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <span slot="description">Some description with a <a href="#">link</a>.</span>
-          <textarea></textarea>
-          <span slot="message">Some error message with a <a href="#">link</a>.</span>
-        </p-textarea-wrapper>`
-      );
+      await initTextarea({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'})
 
       const host = await getTextareaHost();
       const labelLink = await getTextareaLabelLink();

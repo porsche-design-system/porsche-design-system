@@ -6,9 +6,10 @@ import {
   getProperty, getStyleOnFocus,
   selectNode, setAttribute,
   setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('checkbox-wrapper', () => {
   let page: Page;
@@ -24,6 +25,18 @@ describe('checkbox-wrapper', () => {
   const getCheckboxIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
   const getCheckboxLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
   const getCheckboxMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
+
+  const initCheckbox = ({ useSlottedLabel, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-checkbox-wrapper state="${state}">
+          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
+          <input type="checkbox" />
+          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+        </p-checkbox-wrapper>`
+    );
+  };
 
   const getIconName = async () => getProperty(await getCheckboxIcon(), 'name');
 
@@ -334,14 +347,65 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
+      await initCheckbox();
+
+      const input = await getCheckboxRealInput();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
+      const visible = expectedStyleOnFocus({color: 'neutral', offset: '2px'});
+
+      expect(await getOutlineStyle(input)).toBe(hidden);
+
+      await input.click();
+
+      expect(await getOutlineStyle(input)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(input)).toBe(visible);
+    });
+
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initCheckbox({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+
+      const labelLink = await getCheckboxLabelLink();
+      const messageLink = await getCheckboxMessageLink();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'hover'});
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await labelLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(labelLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(labelLink)).toBe(visible);
+
+      await messageLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(messageLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(messageLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <input> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-checkbox-wrapper>
-          <input type="checkbox" />
-        </p-checkbox-wrapper>`
-      );
+      await initCheckbox();
 
       const host = await getCheckboxHost();
       const input = await getCheckboxRealInput();
@@ -358,15 +422,7 @@ describe('checkbox-wrapper', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-checkbox-wrapper state="error">
-          <span slot="label">Some label with a <a href="#">link</a>.</span>
-          <input type="checkbox" />
-          <span slot="message">Some message with a <a href="#">link</a>.</span>
-        </p-checkbox-wrapper>`
-      );
+      await initCheckbox({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
 
       const host = await getCheckboxHost();
       const labelLink = await getCheckboxLabelLink();
