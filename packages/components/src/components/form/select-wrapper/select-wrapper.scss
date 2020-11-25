@@ -343,7 +343,7 @@
         top: calc(100% - 1px);
         border-top: none;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
-        0 15px 20px 0 rgba(0, 0, 0, 0.2);
+        0 12px 25px 0 rgba(0, 0, 0, 0.1);
 
         &::before {
           content: "";
@@ -367,7 +367,7 @@
         bottom: p-px-to-rem(47px);
         border-bottom: none;
         box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05),
-        0 -15px 20px 0 rgba(0, 0, 0, 0.2);
+        0 -12px 25px 0 rgba(0, 0, 0, 0.075);
 
         &::after {
           content: "";
