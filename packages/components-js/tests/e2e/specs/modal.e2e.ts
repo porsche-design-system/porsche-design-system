@@ -251,6 +251,14 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
+  it('should prevent page from scrolling when initially open', async  () => {
+    await initBasicModal({ isOpen: true });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('hidden');
+  });
+
   it('should have correct aria-hidden value', async () => {
     await initBasicModal({ isOpen: false });
     const aside = await getModalAside();
