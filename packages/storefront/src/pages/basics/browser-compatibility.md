@@ -56,18 +56,19 @@ The easiest way to include the **Browser Notification** into your project is by 
 This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
 
 ##### Variants
-We provide two kinds of notifications variants to show the user the corresponding information in regard to its used browser.  
+We provide two notifications variants to show the user the corresponding information in regard to its used browser.  
 
-####### Banner notification
-The **banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application.
+###### Banner notification
+The **Banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application.
 The banner is placed above the page and can be closed by the user.
 
-####### Overlay notification
-The **overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components.
+###### Overlay notification
+The **Overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components.
 The overlay is placed above the page, covers it completely and can't be closed or removed by the user. 
 
 #### Integration examples
-We provide two kinds of integration possibilities which can either be used as universal detection or variant specific.
+We provide two possibilities for integration, which can either be used as universal automatic detection or specific detection which points directly to a fixed variant.
+The easiest and recommended way is to implement the universal variant which includes pre-defined browser- and feature detection and decides automatically which variant of the notification will be rendered.
 
 | Browser/Feature Detection	      | Universal `include()` | Banner only `includeBanner()` | Overlay only `includeOverlay()` |
 |---------------------------------|-----------------------|-------------------------------|---------------------------------|
