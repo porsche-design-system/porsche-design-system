@@ -7,7 +7,9 @@ Available breakpoints:
 `xxs | xs | s | m | l | xl | xxl`
 
 #### Example predefined breakpoint
-```
+```scss
+@import '~@porsche-design-system/utilities/scss';
+
 div {
   color: inherit;
   
@@ -26,7 +28,9 @@ div {
 ---
 
 #### Example custom breakpoint
-```
+```scss
+@import '~@porsche-design-system/utilities/scss';
+
 div {
   color: inherit;
   
@@ -59,14 +63,16 @@ Possible text mixin for usage with SCSS (where {v} is the value):
 ```
 
 #### Example
-```
+```scss
+@import '~@porsche-design-system/utilities/scss';
+
 h1 {
   @include p-text-small;
 }
 ```
 
 #### Result
-```
+```css
 p {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
@@ -86,14 +92,16 @@ Possible headline mixin for usage with SCSS (where {v} is the value):
 ```
 
 #### Example
-```
+```scss
+@import '~@porsche-design-system/utilities/scss';
+
 h1 {
   @include p-headline-1;
 }
 ```
 
 #### Result
-```
+```css
 h1 {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 600;
@@ -130,79 +138,67 @@ h1 {
 }
 ```
 
+---
+
 ## State
 
 ### Focus
 
-The utilities package provides the `p-focus` mixin with optional parameters.
-Given parameters are `$color`, `$offset` and `$pseudo`.
+The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. 
+The provided SCSS mixin ensures focus is shown by keyboard navigation only.
+
+Given parameters are: 
+* `$color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  
+* `$offset`: Can be overwritten when default offset is not sufficient, e.g. a custom button comes with a background-color or border and more white space for the focus outline is needed.  
+* `$pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.
 
 #### Example
 
-```
-button {
+```scss
+@import '~@porsche-design-system/utilities/scss';
+
+a {
   @include p-focus;
 }
-```
 
-#### Result
+.some-wrapper {
+  // to control the focusable area of the nested button a proper position needs to be defined
+  position: relative;
+  padding: 1rem;
 
-```
-button { 
-    &::-moz-focus-inner{ 
-      border: 0; 
-    }
-
-    outline:transparent solid 1px;
-    outline-offset: 1px;
-
-    &:focus{ 
-      outline-color: currentColor; 
-    }
-
-    &:focus:not(:focus-visible){ 
-      outline-color: transparent;
-    }
-```
-
-#### Example with pseudo
-
-**Note**: If you need the focus styles on a pseudo (`::before` or `::after`) element, 
-the host element needs a position for it to work properly.
-
-```
-button {
-  @include p-focus($pseudo: '::before');
+  button {
+    // use '::before' or '::after' if the focusable area needs to be enlarged relative to a wrapping element
+    @include p-focus($p-color-state-focus, 1px, '::before');
+  }
 }
 ```
 
 #### Result
 
+```css
+a { 
+  outline: transparent solid 1px;
+  outline-offset: 1px;
+}
+a::-moz-focus-inner { border: 0; }
+a:focus { outline-color: currentColor; }
+a:focus:not(:focus-visible) { outline-color: transparent; }
+
+.some-wrapper {
+  position: relative;
+  padding: 1rem;
+}
+.some-wrapper button::-moz-focus-inner { border:0; }
+.some-wrapper button::before { 
+  content: "";
+  outline: transparent solid 1px;
+  outline-offset: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.some-wrapper button:focus::before { outline-color: currentColor; }
+.some-wrapper button:focus:not(:focus-visible)::before { outline-color: transparent; }
 ```
-button { 
-    &::-moz-focus-inner{ 
-      border: 0; 
-    }
-    
-    &::before {
-      outline:transparent solid 1px;
-      outline-offset: 1px;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
-    &:focus::before{ 
-      outline-color: currentColor; 
-    }
-
-    &:focus:not(:focus-visible)::before{ 
-      outline-color: transparent;
-    }
-```
-
-
-
