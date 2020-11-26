@@ -1,7 +1,7 @@
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
 import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('js-variables', () => {
+describe('scss-focus-pseudo', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
@@ -11,11 +11,12 @@ describe('js-variables', () => {
   it('should have no visual regression', async () => {
     expect(
       await vrt.test(
-        'overview',
+        'focus-pseudo',
         async () => {
-          await vrt.goTo('/#/js-variables');
+          await vrt.goTo('/#/scss-focus');
+          await vrt.focus('#focusable-element-pseudo');
         },
-        { regressionSuffix: 'js' }
+        { regressionSuffix: 'scss' }
       )
     ).toBeFalsy();
   });
