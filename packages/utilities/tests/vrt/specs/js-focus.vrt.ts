@@ -8,28 +8,28 @@ describe('js-focus', () => {
     vrt = getVisualRegressionFocusTester();
   });
 
-  const vrtTest = (id: string, focusSelector: string) => vrt.test(
+  const vrtTest = (id: string) => vrt.test(
     `focus-${id}`,
     async () => {
       await vrt.goTo('/#/js-focus');
-      await vrt.focus(`#focusable-element-${focusSelector}`);
+      await vrt.focus(`#focusable-element-${id}`);
     },
     { regressionSuffix: 'js' }
   );
 
   it('should have no visual regression', async () => {
-    expect( await vrtTest('regular','regular')).toBeFalsy();
+    expect( await vrtTest('regular')).toBeFalsy();
   });
 
   it('should have no visual regression custom element', async () => {
-    expect( await vrtTest('custom','custom')).toBeFalsy();
+    expect( await vrtTest('custom')).toBeFalsy();
   });
 
   it('should have no visual regression custom pseudo element', async () => {
-    expect( await vrtTest('custom-pseudo','custom-pseudo')).toBeFalsy();
+    expect( await vrtTest('custom-pseudo')).toBeFalsy();
   });
 
   it('should have no visual regression pseudo element', async () => {
-    expect( await vrtTest('pseudo','pseudo')).toBeFalsy();
+    expect( await vrtTest('pseudo')).toBeFalsy();
   });
 });
