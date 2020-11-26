@@ -29,13 +29,13 @@ describe('tabs-bar', () => {
     activeTabIndex?: number;
     isWrapped?: boolean;
     otherMarkup?: string;
-    anchor?: boolean;
+    tag?: 'a' | 'button';
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup, anchor } = opts ?? {};
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup, tag } = opts ?? {};
 
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map((_, i) => `<${anchor ? 'a onclick="return false" href="#"' : 'button'}>Tab Button ${i + 1}</${anchor ? 'a' : 'button'}>`)
+    .map((_, i) => `<${tag === 'a' ? 'a onclick="return false" href="#"' : 'button'}>Tab Button ${i + 1}</${tag === 'a' ? 'a' : 'button'}>`)
     .join('')}
 </p-tabs-bar>${otherMarkup ?? ''}`;
 
@@ -555,7 +555,7 @@ describe('tabs-bar', () => {
     });
 
     it('should be shown by keyboard navigation only with anchors', async () => {
-      await initTabsBar({amount: 3, anchor: true});
+      await initTabsBar({amount: 3, tag: 'a'});
 
       const [, secondLink] = await getAllLinks();
       const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
@@ -596,7 +596,7 @@ describe('tabs-bar', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initTabsBar({ amount: 3, anchor: true});
+      await initTabsBar({ amount: 3, tag: 'a'});
 
       const host = await getHost();
       const links = await getAllLinks();
