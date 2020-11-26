@@ -347,8 +347,8 @@ describe('text-field-wrapper', () => {
       await initTextField();
 
       const input = await getTextFieldRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
-      const visible = expectedStyleOnFocus({color: 'neutral', offset: '2px'});
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'neutral'});
 
       expect(await getOutlineStyle(input)).toBe(hidden);
 
@@ -370,8 +370,8 @@ describe('text-field-wrapper', () => {
       const labelLink = await getTextFieldLabelLink();
       const descriptionLink = await getTextFieldDescriptionLink();
       const messageLink = await getTextFieldMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -419,19 +419,19 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const input = await getTextFieldRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
 
       await setAttribute(input, 'readOnly', 'true');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent'}));
     });
 
     it('should show outline of password toggle button when it is focused', async () => {
@@ -459,15 +459,15 @@ describe('text-field-wrapper', () => {
       const descriptionLink = await getTextFieldDescriptionLink();
       const messageLink = await getTextFieldMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
     });
   });
 });

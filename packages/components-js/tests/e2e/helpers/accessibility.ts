@@ -52,7 +52,7 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     theme: 'light',
     color: 'default',
     css: 'outline',
-    offset: '1px',
+    offset: '2px',
     ...opts
   };
   const {css, theme, color, offset} = options;
