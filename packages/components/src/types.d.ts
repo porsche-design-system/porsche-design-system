@@ -3,6 +3,20 @@ export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'i
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
+export type TextColor =
+  | 'brand'
+  | 'default'
+  | 'neutral-contrast-high'
+  | 'neutral-contrast-medium'
+  | 'neutral-contrast-low'
+  | 'notification-success'
+  | 'notification-warning'
+  | 'notification-error'
+  | 'notification-neutral'
+  | 'inherit';
+
+export type TextAlign = 'left' | 'center' | 'right';
+
 export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
 
 export type Theme = 'light' | 'dark';

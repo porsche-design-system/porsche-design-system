@@ -1,7 +1,7 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
 import { prefix } from '../../../utils';
-import { Theme, IconName } from '../../../types';
+import { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -28,7 +28,7 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop() public color?: TextColor = 'default';
 
   /**
    * The size of the icon.
