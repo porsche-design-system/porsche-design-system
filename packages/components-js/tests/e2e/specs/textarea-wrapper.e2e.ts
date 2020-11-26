@@ -203,8 +203,8 @@ describe('textarea-wrapper', () => {
       const labelLink = await getTextareaLabelLink();
       const descriptionLink = await getTextareaDescriptionLink();
       const messageLink = await getTextareaMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -275,15 +275,15 @@ describe('textarea-wrapper', () => {
       const descriptionLink = await getTextareaDescriptionLink();
       const messageLink = await getTextareaMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
     });
   });
 });
