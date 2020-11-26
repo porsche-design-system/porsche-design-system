@@ -70,6 +70,12 @@
       porscheDesignSystem.load({ prefix: 'my-prefix' });
       window.addEventListener('hashchange', updateRoute);
       updateRoute();
+
+      document.querySelector('p-button').addEventListener('click', () => {
+        const el = document.createElement('p-text');
+        el.innerHTML = 'Hello';
+        document.getElementById('app').appendChild(el);
+      });
     </script>
   </body>
 </html>
