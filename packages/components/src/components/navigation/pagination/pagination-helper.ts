@@ -37,38 +37,41 @@ export type PaginationModelOptions = {
 };
 
 export type PaginationModelItem = {
-  key: number;
+  key: number; // TODO: unused?
   value: number;
   isActive: boolean;
   type: PaginationItemType;
 };
 
+// TODO: create enum
 export const itemTypes: ItemTypes = {
   PAGE: 'PAGE',
   ELLIPSIS: 'ELLIPSIS',
   PREVIOUS_PAGE_LINK: 'PREVIOUS_PAGE_LINK',
-  NEXT_PAGE_LINK: 'NEXT_PAGE_LINK'
+  NEXT_PAGE_LINK: 'NEXT_PAGE_LINK',
 };
 
+// TODO: unused?
 const itemKeys: ItemKeys = {
   FIRST_ELLIPSIS: -1,
   SECOND_ELLIPSIS: -2,
   PREVIOUS_PAGE_LINK: -4,
-  NEXT_PAGE_LINK: -5
+  NEXT_PAGE_LINK: -5,
 };
 
+// TODO: merge factories
 const createFirstEllipsis = (pageNumber: number): PaginationModelItem => ({
   type: itemTypes.ELLIPSIS,
   key: itemKeys.FIRST_ELLIPSIS,
   value: pageNumber,
-  isActive: false
+  isActive: false,
 });
 
 const createSecondEllipsis = (pageNumber: number): PaginationModelItem => ({
   type: itemTypes.ELLIPSIS,
   key: itemKeys.SECOND_ELLIPSIS,
   value: pageNumber,
-  isActive: false
+  isActive: false,
 });
 
 const createPreviousPageLink = (options: PaginationModelOptions): PaginationModelItem => {
@@ -78,7 +81,7 @@ const createPreviousPageLink = (options: PaginationModelOptions): PaginationMode
     type: itemTypes.PREVIOUS_PAGE_LINK,
     key: itemKeys.PREVIOUS_PAGE_LINK,
     value: Math.max(1, activePage - 1),
-    isActive: activePage > 1
+    isActive: activePage > 1,
   };
 };
 
@@ -89,28 +92,23 @@ const createNextPageLink = (options: PaginationModelOptions): PaginationModelIte
     type: itemTypes.NEXT_PAGE_LINK,
     key: itemKeys.NEXT_PAGE_LINK,
     value: Math.min(pageTotal, activePage + 1),
-    isActive: activePage < pageTotal
+    isActive: activePage < pageTotal,
   };
 };
 
 const createPageFunctionFactory = (options: PaginationModelOptions): ((pageNumber: number) => PaginationModelItem) => {
   const { activePage } = options;
 
-  return (pageNumber: number): PaginationModelItem => ({
+  return (pageNumber): PaginationModelItem => ({
     type: itemTypes.PAGE,
     key: pageNumber,
     value: pageNumber,
-    isActive: pageNumber === activePage
+    isActive: pageNumber === activePage,
   });
 };
 
-const createRange = (start: number, end: number): number[] => {
-  const range: number[] = [];
-  for (let i = start; i <= end; i++) {
-    range.push(i);
-  }
-  return range;
-};
+export const createRange = (start: number, end: number): number[] =>
+  Array.from(Array(end - start + 1)).map((_, i) => i + start);
 
 export const createPaginationModel = (options: PaginationModelOptions): PaginationModelItem[] => {
   // exception tests

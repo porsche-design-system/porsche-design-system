@@ -1,0 +1,165 @@
+@import '../../../../../../packages/utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+$easeInQuad: cubic-bezier(0.45, 0, 0.55, 1);
+$easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
+
+:host {
+  --#{$p-global-class-prefix}banner-position-type: fixed;
+  --#{$p-global-class-prefix}banner-position-top: #{p-px-to-rem(56px)};
+  --#{$p-global-class-prefix}banner-position-bottom: #{p-px-to-rem(56px)};
+  --#{$p-global-class-prefix}banner-z-index: 99;
+  position: var(--#{$p-global-class-prefix}banner-position-type);
+  z-index: var(--#{$p-global-class-prefix}banner-z-index);
+  width: 100%;
+  opacity: 0;
+}
+
+@keyframes animateMobileIn {
+  from {
+    bottom: -100%;
+    opacity: 0;
+  }
+  to {
+    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
+    opacity: 1;
+  }
+}
+
+@keyframes animateMobileOut {
+  from {
+    bottom: var(--#{$p-global-class-prefix}banner-position-bottom);
+    opacity: 1;
+  }
+  to {
+    bottom: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes animateDesktopIn {
+  from {
+    top: -100%;
+    opacity: 0;
+  }
+  to {
+    top: var(--#{$p-global-class-prefix}banner-position-top);
+    opacity: 1;
+  }
+}
+
+@keyframes animateDesktopOut {
+  from {
+    top: var(--#{$p-global-class-prefix}banner-position-top);
+    opacity: 1;
+  }
+  to {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+@include p-media-query('xxs', 's') {
+  :host {
+    bottom: -100%;
+    will-change: opacity, bottom;
+  }
+  :host(.hydrated) {
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn $easeInQuad forwards;
+  }
+
+  :host(.#{$p-global-class-prefix}banner--close) {
+    animation: var(--p-animation-duration__banner, 600ms) 0s animateMobileOut $easeOutQuad forwards;
+  }
+}
+
+@include p-media-query('s') {
+  :host {
+    top: -100%;
+    will-change: opacity, top;
+  }
+
+  :host(.hydrated) {
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn $easeInQuad forwards;
+  }
+
+  :host(.#{$p-global-class-prefix}banner--close) {
+    animation: var(--p-animation-duration__banner, 600ms) 0s animateDesktopOut $easeOutQuad forwards;
+  }
+}
+
+.#{$p-global-class-prefix}banner {
+  $bem-block: &;
+  display: flex;
+  position: relative;
+  padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
+  box-shadow: 0 p-px-to-rem(2px) p-px-to-rem(4px) 0 rgba(0, 0, 0, 0.05),
+  0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: p-px-to-rem(4px);
+  }
+
+  &--neutral {
+    &#{$bem-block}--theme-light {
+      background-color: $p-color-notification-neutral-soft;
+      &::before {
+        background-color: $p-color-notification-neutral;
+      }
+    }
+
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-notification-neutral-soft;
+      &::before {
+        background-color: $p-color-notification-neutral;
+      }
+    }
+  }
+
+  &--warning {
+    background-color: $p-color-notification-warning-soft;
+
+    &::before {
+      background-color: $p-color-notification-warning;
+    }
+  }
+
+  &--error {
+    background-color: $p-color-notification-error-soft;
+
+    &::before {
+      background-color: $p-color-notification-error;
+    }
+  }
+
+  &__content {
+    max-width: p-px-to-rem(800px);
+    padding-right: p-px-to-rem(48px);
+  }
+
+  &__icon {
+    display: none;
+  }
+
+  &__title + &__description {
+    margin-top: p-px-to-rem(8px);
+  }
+
+  @include p-media-query('s') {
+    &__icon {
+      display: block;
+      padding-right: p-px-to-rem(12px);
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: p-px-to-rem(16px);
+    top: p-px-to-rem(16px);
+  }
+}

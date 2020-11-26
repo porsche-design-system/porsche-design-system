@@ -1,0 +1,212 @@
+import {
+  addEventListener,
+  getBrowser,
+  getStyleOnFocus,
+  initAddEventListener,
+  reattachElement,
+  selectNode,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  waitForInheritedCSSTransition,
+} from '../helpers';
+import { Page } from 'puppeteer';
+
+const CSS_FADE_IN_DURATION = 2000;
+const CSS_FADE_OUT_DURATION = 1000;
+
+describe('banner', () => {
+  let page: Page;
+
+  beforeEach(async () => {
+    page = await getBrowser().newPage();
+    await initAddEventListener(page);
+  });
+  afterEach(async () => await page.close());
+
+  const initBanner = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>`
+    );
+  };
+
+  const getBannerHost = () => selectNode(page, 'p-banner');
+  const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
+  const getTitleLink = () => selectNode(page, 'p-banner [slot="title"] a');
+  const getDescriptionLink = () => selectNode(page, 'p-banner [slot="description"] a');
+
+  it('should render', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+    const el = await getBannerButton();
+    const getActiveEl = await page.$eval('p-banner', (el) => el.shadowRoot.activeElement.tagName);
+
+    expect(el).toBeDefined();
+    expect(getActiveEl.toLowerCase()).toBe('p-button-pure');
+  });
+
+  it('should render without button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner persistent="true">
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+    const el = await getBannerButton();
+    expect(el).toBeNull();
+  });
+
+  it('should remove banner from DOM by click on close button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+
+    const innerButton = await getBannerButton();
+
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    // we have to wait for the animation to end before the dom is cleared
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    expect(await getBannerHost()).toBeNull();
+  });
+
+  it('should remove banner from DOM by trigger ESC key', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+    // we have to wait for the animation to end before the dom is cleared
+    await page.waitForTimeout(CSS_FADE_OUT_DURATION);
+    expect(await getBannerHost()).toBeNull();
+  });
+
+  it('should emit custom event by click on close button', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+
+    const host = await getBannerHost();
+    const innerButton = await getBannerButton();
+    let calls = 0;
+    await addEventListener(host, 'dismiss', () => calls++);
+
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    expect(calls).toBe(1);
+  });
+
+  it('should remove and re-attach event', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title</span>
+        <span slot="description">Some notification description.</span>
+      </p-banner>
+    `
+    );
+    const host = await getBannerHost();
+    const innerButton = await getBannerButton();
+    let calls = 0;
+    await addEventListener(host, 'dismiss', () => calls++);
+
+    // Remove and re-attach component to check if events are duplicated / fire at all
+    await reattachElement(page, 'p-banner');
+
+    await page.waitForTimeout(CSS_FADE_IN_DURATION);
+    await innerButton.click();
+    await waitForStencilLifecycle(page);
+    expect(calls).toBe(1);
+  });
+
+  describe('focus state', () => {
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initBanner();
+
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+
+      expect(await getOutlineStyle(titleLink)).toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await titleLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(titleLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(titleLink)).toBe(visible);
+
+      await descriptionLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
+    });
+
+    it('should show outline of slotted <a> when it is focused', async () => {
+      await initBanner();
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
+
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+    });
+  });
+});

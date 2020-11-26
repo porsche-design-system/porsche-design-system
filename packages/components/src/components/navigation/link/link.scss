@@ -46,7 +46,6 @@
 :host {
   display: inline-flex;
   vertical-align: top;
-  position: relative !important;
   cursor: pointer;
 }
 
@@ -56,27 +55,11 @@
   text-decoration: none !important;
   color: inherit !important;
   line-height: inherit !important;
-}
-::slotted(a)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -1px !important;
-  left: -1px !important;
-  right: -1px !important;
-  bottom: -1px !important;
-  display: block !important;
   outline: transparent none !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
-}
-::slotted(a:focus) {
-  outline: none !important;
-}
-::slotted(a:focus)::before {
-  outline-offset: 1px !important;
-  outline: $p-color-theme-light-state-focus solid 2px !important;
 }
 
 .#{$p-global-class-prefix}link {
+  @include p-focus($p-color-neutral-contrast-high);
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -87,42 +70,30 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none transparent;
   text-decoration: none;
   border-style: solid;
   border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-color $p-animation-hover-duration $p-animation-hover-bezier,
-  outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
-  &::-moz-focus-inner {
-    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  :host([theme="dark"]) & {
+    @include p-focus($p-color-theme-dark-default);
   }
 
-  &:focus {
-    outline-width: 2px;
-    outline-style: solid;
-    outline-offset: 1px;
+  :host([variant="primary"]) & {
+    @include p-focus($p-color-brand);
   }
 
-  &--theme-light {
-    &:focus {
-      outline-color: $p-color-theme-light-state-focus;
-    }
-  }
-
-  &--theme-dark {
-    &:focus {
-      outline-color: $p-color-theme-dark-state-focus;
-    }
+  :host([theme="dark"][variant="primary"]) & {
+    @include p-focus($p-color-theme-dark-brand);
   }
 
   &--primary {
     &#{$bem-block}--theme-light {
       color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-brand;
-      border-color: $p-color-theme-light-brand;
+      background-color: $p-color-brand;
+      border-color: $p-color-brand;
     }
 
     &#{$bem-block}--theme-dark {
@@ -135,8 +106,8 @@
     &:active {
       &#{$bem-block}--theme-light {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-state-hover, 12%);
-        border-color: darken($p-color-theme-light-state-hover, 12%);
+        background-color: darken($p-color-state-hover, 12%);
+        border-color: darken($p-color-state-hover, 12%);
       }
 
       &#{$bem-block}--theme-dark {
@@ -150,12 +121,12 @@
   &--secondary {
     &#{$bem-block}--theme-light {
       color: $p-color-theme-dark-default;
-      background-color: $p-color-theme-light-neutral-contrast-high;
-      border-color: $p-color-theme-light-neutral-contrast-high;
+      background-color: $p-color-neutral-contrast-high;
+      border-color: $p-color-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
-      color: $p-color-theme-light-default;
+      color: $p-color-default;
       background-color: $p-color-theme-dark-default;
       border-color: $p-color-theme-dark-default;
     }
@@ -164,12 +135,12 @@
     &:active {
       &#{$bem-block}--theme-light {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-        border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+        background-color: darken($p-color-neutral-contrast-high, 12%);
+        border-color: darken($p-color-neutral-contrast-high, 12%);
       }
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
         background-color: darken($p-color-theme-dark-default, 12%);
         border-color: darken($p-color-theme-dark-default, 12%);
       }
@@ -178,9 +149,9 @@
 
   &--tertiary {
     &#{$bem-block}--theme-light {
-      color: $p-color-theme-light-default;
+      color: $p-color-default;
       background-color: transparent;
-      border-color: $p-color-theme-light-neutral-contrast-high;
+      border-color: $p-color-neutral-contrast-high;
     }
 
     &#{$bem-block}--theme-dark {
@@ -193,12 +164,12 @@
     &:active {
       &#{$bem-block}--theme-light {
         color: $p-color-theme-dark-default;
-        background-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
-        border-color: darken($p-color-theme-light-neutral-contrast-high, 12%);
+        background-color: darken($p-color-neutral-contrast-high, 12%);
+        border-color: darken($p-color-neutral-contrast-high, 12%);
       }
 
       &#{$bem-block}--theme-dark {
-        color: $p-color-theme-light-default;
+        color: $p-color-default;
         background-color: $p-color-theme-dark-default;
         border-color: $p-color-theme-dark-default;
       }

@@ -4,24 +4,17 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
 } from '../../../utils';
-import {
-  createPaginationModel,
-  getCurrentActivePage,
-  getTotalPages,
-  itemTypes,
-  PaginationModelItem
-} from './pagination-helper';
+import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-helper';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-
-export type NumberOfPageLinks = 5 | 7;
+import { NumberOfPageLinks } from '../../../types';
 
 @Component({
   tag: 'p-pagination',
   styleUrl: 'pagination.scss',
-  shadow: true
+  shadow: true,
 })
 export class Pagination {
   @Element() public element!: HTMLElement;
@@ -35,14 +28,14 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({
     reflect: true,
-    mutable: true
+    mutable: true,
   })
   public activePage?: number = 1;
 
   /** The maximum number of page links rendered */
   @Prop() public maxNumberOfPageLinks?: NumberOfPageLinks | BreakpointCustomizable<NumberOfPageLinks> = {
     base: 5,
-    xs: 7
+    xs: 7,
   };
 
   /** Aria label what the pagination is used for. */
@@ -61,11 +54,10 @@ export class Pagination {
   @Prop() public theme?: 'light' | 'dark' = 'light';
 
   /** Emitted when the page changes. */
-  @Event() public pageChange!: EventEmitter;
+  @Event() public pageChange!: EventEmitter<{ page: number; previousPage: number }>;
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
-  private unlistenResize: () => void;
   private navigationElement: HTMLElement;
 
   @Watch('activePage')
@@ -92,119 +84,104 @@ export class Pagination {
     const paginationClasses = {
       [prefix('pagination')]: true,
       [prefix(`pagination--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks)
+      ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks),
     };
     const paginationItemsClasses = prefix('pagination__items');
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const activePage = getCurrentActivePage(this.activePage, pageTotal);
 
     // generate pagination items
-    const createPaginationItems = (): {
-      prevItem: JSX.Element;
-      pageItems: JSX.Element[];
-      nextItem: JSX.Element;
-    } => {
-      const paginationModel = createPaginationModel({
-        activePage,
-        pageTotal,
-        pageRange
-      });
-      const pageItems: JSX.Element[] = [];
-      let prevItem: JSX.Element[];
-      let nextItem: JSX.Element[];
+    const paginationModel = createPaginationModel({
+      activePage,
+      pageTotal,
+      pageRange,
+    });
+    const pageItems: JSX.Element[] = [];
+    let prevItem: JSX.Element;
+    let nextItem: JSX.Element;
 
-      const paginationItemClasses = prefix('pagination__item');
+    const paginationItemClasses = prefix('pagination__item');
 
-      const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
 
-      paginationModel.forEach((pageModel: PaginationModelItem) => {
-        if (pageModel.type === itemTypes.PREVIOUS_PAGE_LINK) {
-          const paginationPrevClasses = {
-            [prefix('pagination__prev')]: true,
-            [prefix('pagination__prev--disabled')]: !pageModel.isActive
-          };
+    paginationModel.forEach((pageModel) => {
+      const { type, isActive, value } = pageModel;
+      if (type === itemTypes.PREVIOUS_PAGE_LINK) {
+        const paginationPrevClasses = {
+          [prefix('pagination__prev')]: true,
+          [prefix('pagination__prev--disabled')]: !isActive,
+        };
 
-          return (prevItem = (
-            <li {...pageModel} class={paginationItemClasses}>
-              <span
-                class={paginationPrevClasses}
-                role={'button'}
-                tabIndex={pageModel.isActive ? 0 : null}
-                onClick={() => this.onClick(pageModel.value)}
-                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
-                aria-disabled={!pageModel.isActive && 'true'}
-                aria-label={this.allyLabelPrev}
-              >
-                <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
-              </span>
-            </li>
-          ));
-        }
-        if (pageModel.type === itemTypes.ELLIPSIS) {
-          const paginationGoToClasses = {
-            [prefix('pagination__goto')]: true,
-            [prefix('pagination__goto--ellipsis')]: true
-          };
-          pageItems.push(
-            <li {...pageModel} class={paginationItemClasses}>
-              <span class={paginationGoToClasses} />
-            </li>
-          );
-        }
-        if (pageModel.type === itemTypes.PAGE) {
-          const paginationGoToClasses = {
-            [prefix('pagination__goto')]: true,
-            [prefix('pagination__goto--current')]: pageModel.isActive
-          };
-          pageItems.push(
-            <li {...pageModel} class={paginationItemClasses}>
-              <span
-                class={paginationGoToClasses}
-                role={'button'}
-                tabIndex={pageModel.isActive ? null : 0}
-                aria-disabled={pageModel.isActive && 'true'}
-                onClick={() => this.onClick(pageModel.value)}
-                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
-                aria-label={`${this.allyLabelPage} ${pageModel.value}`}
-                aria-current={pageModel.isActive && 'page'}
-              >
-                {pageModel.value}
-              </span>
-            </li>
-          );
-        }
-        if (pageModel.type === itemTypes.NEXT_PAGE_LINK) {
-          const paginationNextClasses = {
-            [prefix('pagination__next')]: true,
-            [prefix('pagination__next--disabled')]: !pageModel.isActive
-          };
+        prevItem = (
+          <li {...pageModel} class={paginationItemClasses}>
+            <span
+              class={paginationPrevClasses}
+              role="button"
+              tabIndex={isActive ? 0 : null}
+              onClick={() => this.onClick(value)}
+              onKeyDown={(e) => this.onKeyDown(e, value)}
+              aria-disabled={!isActive ? 'true' : null}
+              aria-label={this.allyLabelPrev}
+            >
+              <PrefixedTagNames.pIcon name="arrow-head-left" color="inherit" />
+            </span>
+          </li>
+        );
+      } else if (type === itemTypes.ELLIPSIS) {
+        const paginationGoToClasses = {
+          [prefix('pagination__goto')]: true,
+          [prefix('pagination__goto--ellipsis')]: true,
+        };
+        pageItems.push(
+          <li {...pageModel} class={paginationItemClasses}>
+            <span class={paginationGoToClasses} />
+          </li>
+        );
+      } else if (type === itemTypes.PAGE) {
+        const paginationGoToClasses = {
+          [prefix('pagination__goto')]: true,
+          [prefix('pagination__goto--current')]: isActive,
+        };
+        pageItems.push(
+          <li {...pageModel} class={paginationItemClasses}>
+            <span
+              class={paginationGoToClasses}
+              role="button"
+              tabIndex={isActive ? null : 0}
+              aria-disabled={isActive ? 'true' : null}
+              onClick={() => this.onClick(value)}
+              onKeyDown={(e) => this.onKeyDown(e, value)}
+              aria-label={`${this.allyLabelPage} ${value}`}
+              aria-current={isActive ? 'page' : null}
+            >
+              {value}
+            </span>
+          </li>
+        );
+      } else if (type === itemTypes.NEXT_PAGE_LINK) {
+        const paginationNextClasses = {
+          [prefix('pagination__next')]: true,
+          [prefix('pagination__next--disabled')]: !isActive,
+        };
 
-          return (nextItem = (
-            <li {...pageModel} class={paginationItemClasses}>
-              <span
-                class={paginationNextClasses}
-                role={'button'}
-                tabIndex={pageModel.isActive ? 0 : null}
-                onClick={() => this.onClick(pageModel.value)}
-                onKeyDown={(e: KeyboardEvent) => this.onKeyDown(e, pageModel.value)}
-                aria-disabled={!pageModel.isActive && 'true'}
-                aria-label={this.allyLabelNext}
-              >
-                <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
-              </span>
-            </li>
-          ));
-        }
-      });
+        nextItem = (
+          <li {...pageModel} class={paginationItemClasses}>
+            <span
+              class={paginationNextClasses}
+              role="button"
+              tabIndex={isActive ? 0 : null}
+              onClick={() => this.onClick(value)}
+              onKeyDown={(e) => this.onKeyDown(e, value)}
+              aria-disabled={!isActive ? 'true' : null}
+              aria-label={this.allyLabelNext}
+            >
+              <PrefixedTagNames.pIcon name="arrow-head-right" color="inherit" />
+            </span>
+          </li>
+        );
+      }
+    });
 
-      return {
-        prevItem,
-        pageItems,
-        nextItem
-      };
-    };
-
-    const paginationItems = createPaginationItems();
     return (
       <nav
         class={paginationClasses}
@@ -213,19 +190,23 @@ export class Pagination {
         ref={(el) => (this.navigationElement = el)}
       >
         <ul class={paginationItemsClasses}>
-          {paginationItems.prevItem}
-          {paginationItems.pageItems}
-          {paginationItems.nextItem}
+          {prevItem}
+          {pageItems}
+          {nextItem}
         </ul>
       </nav>
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  private unlistenResize: () => void = () => {};
+
   private onKeyDown(event: KeyboardEvent, page: number): void {
     /**
      * from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role
      */
-    if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
+    const { key } = event;
+    if (key === ' ' || key === 'Enter' || key === 'Spacebar') {
       /**
        * Prevent the default action to stop scrolling when space is pressed
        */

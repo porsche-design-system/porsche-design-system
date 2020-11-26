@@ -4,6 +4,7 @@ import { SpecReporter } from 'jasmine-spec-reporter';
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
+let visualRegressionFocusTester: VisualRegressionTester;
 
 const testOptions: VisualRegressionTestOptions = {
   viewports: [320, 480, 760, 1000, 1300, 1760, 1920],
@@ -38,4 +39,12 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
   }
 
   return visualRegressionTester;
+};
+
+export const getVisualRegressionFocusTester = (): VisualRegressionTester => {
+  if (!visualRegressionFocusTester) {
+    visualRegressionFocusTester = new VisualRegressionTester(browser, {...testOptions, viewports:[1000]});
+  }
+
+  return visualRegressionFocusTester;
 };

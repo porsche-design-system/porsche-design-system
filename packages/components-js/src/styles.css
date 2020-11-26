@@ -1,12 +1,19 @@
 :root {
   --p-animation-duration__spinner: 0s;
   --p-animation-hover-duration: 0s;
+  --p-animation-duration__banner: 0s;
+  --p-animation-delay__banner: 0s;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+}
+
+body > select {
+  position: relative;
+  z-index: 999999;
 }
 
 .playground {

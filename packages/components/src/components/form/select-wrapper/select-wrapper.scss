@@ -38,8 +38,8 @@
   display: block !important;
   padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
-  outline-offset: 1px !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 2px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 0 !important;
@@ -53,25 +53,39 @@
   color: inherit;
   text-indent: 0 !important;
   cursor: pointer !important;
-  transition: outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-    color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
+  transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
     border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
-// avoid styling of select in IE
-::slotted(select::-ms-expand) {
-  display: none !important;
-}
-
-// avoid styling of select in IE
-::slotted(select:focus::-ms-value) {
-  background-color: transparent !important;
-  color: $p-color-default !important;
-}
-
 // Focus
-::slotted(select:focus) {
-  outline: $p-color-state-focus solid 2px !important;
+::slotted(select:focus),
+.#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-neutral-contrast-medium !important;
+}
+
+:host([theme="dark"]) ::slotted(select:focus),
+:host([theme="dark"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-neutral-contrast-medium !important;
+}
+
+:host([state="success"]) ::slotted(select:focus),
+:host([state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([theme="dark"][state="success"]) ::slotted(select:focus),
+:host([theme="dark"][state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(select:focus),
+:host([state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-notification-error !important;
+}
+
+:host([theme="dark"][state="error"]) ::slotted(select:focus),
+:host([theme="dark"][state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+  outline-color: $p-color-theme-dark-notification-error !important;
 }
 
 // Disabled
@@ -386,11 +400,11 @@
     position: relative;
     display: block;
     padding: $p-spacing-8 p-px-to-rem(12px);
+    min-height: $p-spacing-24;
     cursor: pointer;
     text-align: left;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-      outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
     #{$bem-block}--theme-light & {
       color: $p-color-default;
@@ -424,7 +438,7 @@
       }
     }
 
-    &--highlighted {
+    &--highlighted:not(&--selected) {
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
         background-color: #ebebeb;
@@ -448,7 +462,8 @@
       }
     }
 
-    &--hidden {
+    &--hidden,
+    &--initiallyHidden{
       display: none;
     }
   }
@@ -628,10 +643,9 @@
       left: 0;
       right: 0;
       height: p-px-to-rem(48px);
-      outline: transparent none;
-      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-        outline-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
-        opacity var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+      outline: transparent solid 1px;
+      outline-offset: 2px;
+      transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
 
@@ -664,18 +678,6 @@
 
     &:focus {
       opacity: 1;
-      + span {
-        outline-offset: 1px;
-        outline: solid 2px;
-
-        #{$bem-block}--theme-light & {
-          outline-color: $p-color-state-focus;
-        }
-
-        #{$bem-block}--theme-dark & {
-          outline-color: $p-color-theme-dark-state-focus;
-        }
-      }
     }
 
     &:disabled {

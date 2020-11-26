@@ -1,116 +1,171 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import * as pages from './pages';
+import { RouterModule, Route } from '@angular/router';
+import * as fromPages from './pages';
 
-const appRoutes: Routes = [
+export type ExtendedRoute = Route & {
+  name?: string;
+};
+
+export const routes: ExtendedRoute[] = [
   {
     path: '',
-    children: []
+    children: [],
+    pathMatch: 'full'
+  },
+  {
+    path: 'banner',
+    component: fromPages.BannerComponent,
+    name: 'Banner'
   },
   {
     path: 'button',
-    component: pages.ButtonComponent
+    component: fromPages.ButtonComponent,
+    name: 'Button'
   },
   {
     path: 'button-pure',
-    component: pages.ButtonPureComponent
+    component: fromPages.ButtonPureComponent,
+    name: 'Button Pure'
   },
   {
     path: 'checkbox-wrapper',
-    component: pages.CheckboxWrapperComponent
+    component: fromPages.CheckboxWrapperComponent,
+    name: 'Checkbox'
   },
   {
     path: 'content-wrapper',
-    component: pages.ContentWrapperComponent
+    component: fromPages.ContentWrapperComponent,
+    name: 'Content Wrapper'
   },
   {
     path: 'divider',
-    component: pages.DividerComponent
+    component: fromPages.DividerComponent,
+    name: 'Divider'
   },
   {
     path: 'fieldset-wrapper',
-    component: pages.FieldsetWrapperComponent
+    component: fromPages.FieldsetWrapperComponent,
+    name: 'Fieldset'
   },
   {
     path: 'flex',
-    component: pages.FlexComponent
+    component: fromPages.FlexComponent,
+    name: 'Flex'
   },
   {
     path: 'grid',
-    component: pages.GridComponent
+    component: fromPages.GridComponent,
+    name: 'Grid'
   },
   {
     path: 'headline',
-    component: pages.HeadlineComponent
+    component: fromPages.HeadlineComponent,
+    name: 'Headline'
   },
   {
     path: 'icon',
-    component: pages.IconComponent
+    component: fromPages.IconComponent,
+    name: 'Icon'
   },
   {
     path: 'link',
-    component: pages.LinkComponent
+    component: fromPages.LinkComponent,
+    name: 'Link'
   },
   {
     path: 'link-pure',
-    component: pages.LinkPureComponent
+    component: fromPages.LinkPureComponent,
+    name: 'Link Pure'
   },
   {
     path: 'link-social',
-    component: pages.LinkSocialComponent
+    component: fromPages.LinkSocialComponent,
+    name: 'Link Social'
   },
   {
     path: 'marque',
-    component: pages.MarqueComponent
+    component: fromPages.MarqueComponent,
+    name: 'Marque'
+  },
+  {
+    path: 'modal-basic',
+    component: fromPages.ModalBasicComponent,
+    name: 'Modal Basic'
+  },
+  {
+    path: 'modal-scrollable',
+    component: fromPages.ModalScrollableComponent,
+    name: 'Modal Scrollable'
+  },
+  {
+    path: 'modal-prefixed',
+    component: fromPages.ModalPrefixedComponent,
+    name: 'Modal Prefixed'
   },
   {
     path: 'overview',
-    component: pages.OverviewComponent
+    component: fromPages.OverviewComponent,
+    name: 'Overview'
   },
   {
     path: 'pagination',
-    component: pages.PaginationComponent
+    component: fromPages.PaginationComponent,
+    name: 'Pagination'
   },
   {
     path: 'radio-button-wrapper',
-    component: pages.RadioButtonWrapperComponent
+    component: fromPages.RadioButtonWrapperComponent,
+    name: 'Radio Button'
   },
   {
     path: 'select-wrapper',
-    component: pages.SelectWrapperComponent
+    component: fromPages.SelectWrapperComponent,
+    name: 'Select'
   },
   {
     path: 'spinner',
-    component: pages.SpinnerComponent
+    component: fromPages.SpinnerComponent,
+    name: 'Spinner'
+  },
+  {
+    path: 'tabs',
+    component: fromPages.TabsComponent,
+    name: 'Tabs'
+  },
+  {
+    path: 'tabs-bar',
+    component: fromPages.TabsBarComponent,
+    name: 'Tabs Bar'
   },
   {
     path: 'text',
-    component: pages.TextComponent
+    component: fromPages.TextComponent,
+    name: 'Text'
   },
   {
     path: 'text-field-wrapper',
-    component: pages.TextFieldWrapperComponent
+    component: fromPages.TextFieldWrapperComponent,
+    name: 'Text Field'
   },
   {
     path: 'text-list',
-    component: pages.TextListComponent
+    component: fromPages.TextListComponent,
+    name: 'Text List'
   },
   {
     path: 'textarea-wrapper',
-    component: pages.TextareaWrapperComponent
-  },
-  {
-    path: 'textarea-wrapper',
-    component: pages.TextareaWrapperComponent
+    component: fromPages.TextareaWrapperComponent,
+    name: 'Textarea'
   },
   {
     path: 'typography',
-    component: pages.TypographyComponent
+    component: fromPages.TypographyComponent,
+    name: 'Typography'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

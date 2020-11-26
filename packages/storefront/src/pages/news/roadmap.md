@@ -5,7 +5,7 @@ More details about the actual backlog and work in progress can be found in our p
 [Open Design System Board on GitHub (permission required)](https://github.com/porscheui/porsche-design-system/projects)
 
 ## Milestones in Progress
-Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
+Legend: ✅ Completed
 
 ### Version 2.0 Stable
 * 2.0 stable release
@@ -19,16 +19,16 @@ Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
 * Improved Porsche Next Font ✅
 
 ### Browser Compatibility
-* Browser Notification Overlay (v2) ⚙️ 
+* Browser Notification Overlay (v2) ✅ 
 * New languages for Browser Notification
 * Change Browser Compatibility & Documentation ✅
 * Provide Browser Notification Banner (v1) ✅
 
 ### Generic Components
-* Tabs ⚙️ 
-* Combobox (Extended Select) ⚙️ 
-* Banner ⚙️ 
-* Modal Dialog
+* Tabs ✅ 
+* Combobox (Extended Select) ✅ 
+* Banner ✅ 
+* Modal ✅
 
 ### Patterns
 * Offer Form Validation Pattern ✅
@@ -37,7 +37,7 @@ Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
 ---
 
 ## Milestones Completed and Released
-Legend: 'no-icon' Planned / ⚙️ Work in Progress / ✅ Completed
+Legend: ✅ Completed
 
 ### Assets Package: Marque, Icons and Font refinement 
 * Favicon and Touch Icons ✅

@@ -1,5 +1,5 @@
-import React from 'react';
 import {
+  PBanner as Banner,
   PButton as Button,
   PButtonPure as ButtonPure,
   PHeadline as Headline,
@@ -17,6 +17,9 @@ import {
   PGridItem as GridItem,
   PFlex as Flex,
   PFlexItem as FlexItem,
+  PTabs as Tabs,
+  PTabsItem as TabsItem,
+  PTabsBar as TabsBar,
   PTextList as TextList,
   PTextListItem as TextListItem,
   PSpinner as Spinner,
@@ -29,6 +32,7 @@ import {
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
 const {
+  PBanner: PrefixedBanner,
   PButton: PrefixedButton,
   PButtonPure: PrefixedButtonPure,
   PHeadline: PrefixedHeadline,
@@ -46,6 +50,9 @@ const {
   PGridItem: PrefixedGridItem,
   PFlex: PrefixedFlex,
   PFlexItem: PrefixedFlexItem,
+  PTabs: PrefixedTabs,
+  PTabsItem: PrefixedTabsItem,
+  PTabsBar: PrefixedTabsBar,
   PTextList: PrefixedTextList,
   PTextListItem: PrefixedTextListItem,
   PSpinner: PrefixedSpinner,
@@ -84,16 +91,28 @@ export const OverviewPage = (): JSX.Element => {
     my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
+
+    p-banner,
+    my-prefix-p-banner {
+      --p-banner-position-type: static;
+    }
   `;
 
   return (
     <div>
       <style children={style} />
 
-      <div style={{display: 'flex'}}>
-        <div style={{flex: 1}}>
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <Headline>Default Components</Headline>
+          </div>
+
+          <div className="playground light" title="should render default banner">
+            <Banner>
+              <span slot="title">Some banner title</span>
+              <span slot="description">Some banner description.</span>
+            </Banner>
           </div>
 
           <div className="playground light" title="should render default divider">
@@ -188,6 +207,22 @@ export const OverviewPage = (): JSX.Element => {
             <Pagination total-items-count="500" items-per-page="25" active-page="1" />
           </div>
 
+          <div className="playground light" title="should render default tabs">
+            <Tabs>
+              <TabsItem label="Tab1">Content 1</TabsItem>
+              <TabsItem label="Tab2">Content 2</TabsItem>
+              <TabsItem label="Tab3">Content 3</TabsItem>
+            </Tabs>
+          </div>
+
+          <div className="playground light" title="should render default tabs-bar">
+            <TabsBar>
+              <a>Tab1</a>
+              <a>Tab2</a>
+              <a>Tab3</a>
+            </TabsBar>
+          </div>
+
           <div className="playground light" title="should render default spinner">
             <Spinner />
           </div>
@@ -215,9 +250,16 @@ export const OverviewPage = (): JSX.Element => {
           </div>
         </div>
 
-        <div style={{flex: 1}}>
+        <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
+          </div>
+
+          <div className="playground light" title="should render default banner with custom prefix">
+            <PrefixedBanner>
+              <span slot="title">Some banner title</span>
+              <span slot="description">Some banner description.</span>
+            </PrefixedBanner>
           </div>
 
           <div className="playground light" title="should render default divider with custom prefix">
@@ -310,6 +352,22 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default pagination with custom prefix">
             <PrefixedPagination total-items-count="500" items-per-page="25" active-page="1" />
+          </div>
+
+          <div className="playground light" title="should render default tabs with custom prefix">
+            <PrefixedTabs>
+              <PrefixedTabsItem label="Tab1">Content 1</PrefixedTabsItem>
+              <PrefixedTabsItem label="Tab2">Content 2</PrefixedTabsItem>
+              <PrefixedTabsItem label="Tab3">Content 3</PrefixedTabsItem>
+            </PrefixedTabs>
+          </div>
+
+          <div className="playground light" title="should render default tabs-bar with custom prefix">
+            <PrefixedTabsBar>
+              <a>Tab1</a>
+              <a>Tab2</a>
+              <a>Tab3</a>
+            </PrefixedTabsBar>
           </div>
 
           <div className="playground light" title="should render default spinner with custom prefix">

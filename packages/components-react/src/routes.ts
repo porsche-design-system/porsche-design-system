@@ -8,6 +8,11 @@ export type RouteType = RouteProps & {
 
 export const routes: RouteType[] = [
   {
+    name: 'Banner',
+    path: '/banner',
+    component: fromPages.BannerPage
+  },
+  {
     name: 'Button',
     path: '/button',
     component: fromPages.ButtonPage
@@ -78,6 +83,21 @@ export const routes: RouteType[] = [
     component: fromPages.MarquePage
   },
   {
+    name: 'Modal Basic',
+    path: '/modal-basic',
+    component: fromPages.ModalBasicPage
+  },
+  {
+    name: 'Modal Scrollable',
+    path: '/modal-scrollable',
+    component: fromPages.ModalScrollablePage
+  },
+  {
+    name: 'Modal Prefixed',
+    path: '/modal-prefixed',
+    component: fromPages.ModalPrefixedPage
+  },
+  {
     name: 'Overview',
     path: '/overview',
     component: fromPages.OverviewPage
@@ -101,6 +121,16 @@ export const routes: RouteType[] = [
     name: 'Spinner',
     path: '/spinner',
     component: fromPages.SpinnerPage
+  },
+  {
+    name: 'Tabs',
+    path: '/tabs',
+    component: fromPages.TabsPage
+  },
+  {
+    name: 'Tabs Bar',
+    path: '/tabs-bar',
+    component: fromPages.TabsBarPage
   },
   {
     name: 'Text',
