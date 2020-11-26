@@ -6,6 +6,10 @@
     @error 'The parameter $pseudo needs to be "::before" or "::after" when set.';
   }
 
+  @if $offset != '1px' and $offset != '2px' {
+    @error 'The parameter $offset needs to be "1px" or "2px" when set.';
+  }
+
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
