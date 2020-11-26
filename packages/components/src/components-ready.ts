@@ -14,10 +14,10 @@ const createPromise = (): Promise<void> => {
 
 let onLoadedPromise = createPromise();
 
-const checkForPromiseResolve = (): void => {
+const checkPromiseResolve = (): void => {
   if (taskCount === 0) {
-    console.log('checkForPromiseResolve');
-    // we debounce 50ms, because the loader is doing the
+    console.log('checkPromiseResolve');
+    // we debounce 30ms, because the loader is doing the
     // same for the "hydrated" class: https://github.com/ionic-team/stencil/blob/master/src/runtime/bootstrap-lazy.ts#L169
     timeout = window.setTimeout(() => {
       resolvePromise();
@@ -36,7 +36,46 @@ const increaseCount = (): void => {
 
 const decreaseCount = (): void => {
   taskCount--;
-  checkForPromiseResolve();
+  checkPromiseResolve();
+};
+
+const waitFrame = () =>
+  new Promise((resolve) => {
+    requestAnimationFrame(resolve);
+  });
+
+const allReady = () => {
+  console.log('allReady');
+  const promises: Promise<any>[] = [];
+  const waitForDidLoad = (promises: Promise<any>[], elm: Element) => {
+    if (elm != null && elm.nodeType === 1) {
+      for (let i = 0; i < elm.children.length; i++) {
+        console.log('allReady loop', i);
+        const childElm = elm.children[i];
+        if (childElm.tagName.includes('P-') && typeof (childElm as any).componentOnReady === 'function') {
+          promises.push((childElm as any).componentOnReady());
+          console.log('added promise');
+        }
+        waitForDidLoad(promises, childElm);
+      }
+    }
+  };
+
+  // waitForDidLoad(promises, window.document.documentElement);
+  waitForDidLoad(promises, document.getElementById('app'));
+
+  return Promise.all(promises).catch((e) => console.error(e));
+};
+
+const stencilReady = () => {
+  console.log('stencilReady');
+  return allReady()
+    .then(waitFrame)
+    .then(allReady)
+    .then(() => {
+      console.log('setting stencilAppLoaded = true');
+      (window as any).stencilAppLoaded = true;
+    });
 };
 
 const registerStencilEventListeners = (): void => {
@@ -59,13 +98,25 @@ const registerStencilEventListeners = (): void => {
       console.log(e.type, taskCount);
     });
 
+    console.log('document.readyState', document.readyState);
+    if (document.readyState === 'complete') {
+      stencilReady();
+    } else {
+      document.addEventListener('readystatechange', function(e) {
+        console.log('––> readystatechange', document.readyState);
+        if ((e.target as Document).readyState == 'complete') {
+          stencilReady();
+        }
+      });
+    }
+
     hasRegisteredEventListeners = true;
   }
 };
 
 export const componentsReady = (): Promise<void> => {
-  console.log('componentsReady', taskCount);
+  console.log('componentsReady');
   registerStencilEventListeners();
-  checkForPromiseResolve();
+  checkPromiseResolve();
   return onLoadedPromise;
 };
