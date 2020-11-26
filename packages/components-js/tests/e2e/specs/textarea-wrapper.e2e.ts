@@ -34,10 +34,10 @@ describe('textarea-wrapper', () => {
       page,
       `
         <p-textarea-wrapper state="${state}">
-          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
-          ${useSlottedDescription && '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${useSlottedDescription ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
           <textarea></textarea>
-          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
         </p-textarea-wrapper>`
     );
   };

@@ -26,10 +26,10 @@ describe('link-pure', () => {
     return setContentWithDesignSystem(
       page,
       `
-      <p-link-pure onclick="return false;" ${!useSlottedAnchor && 'href="#"'}>
-        ${useSlottedAnchor && '<a onclick="return false;" href="">'}
+      <p-link-pure onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''}>
+        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
-        ${useSlottedAnchor && '</a>'}
+        ${useSlottedAnchor ? '</a>' : ''}
       </p-link-pure>`
     );
   };

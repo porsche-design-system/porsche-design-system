@@ -33,15 +33,15 @@ describe('select-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper state="${state}" ${!useSlottedLabel && 'label="Some label"'} ${!useSlottedDescription && 'label="Some description"'} ${!useSlottedMessage && 'label="Some message"'}>
-          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
-          ${useSlottedDescription && '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'}
+        <p-select-wrapper state="${state}" ${!useSlottedLabel ? 'label="Some label"' : ''} ${!useSlottedDescription ? 'label="Some description"' : ''} ${!useSlottedMessage ? 'label="Some message"' : ''}>
+          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${useSlottedDescription ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
           <select>
             <option>Option A</option>
             <option>Option B</option>
             <option>Option C</option>
           </select>
-          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
         </p-select-wrapper>`
     );
   };

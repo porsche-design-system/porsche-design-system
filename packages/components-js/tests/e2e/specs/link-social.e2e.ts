@@ -22,10 +22,10 @@ describe('link social', () => {
     return setContentWithDesignSystem(
       page,
       `
-      <p-link-social onclick="return false;" ${!useSlottedAnchor && 'href="#"'} icon="logo-facebook">
-        ${useSlottedAnchor && '<a onclick="return false;" href="">'}
+      <p-link-social onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''} icon="logo-facebook">
+        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
-        ${useSlottedAnchor && '</a>'}
+        ${useSlottedAnchor ? '</a>' : ''}
       </p-link-social>`
     );
   };
