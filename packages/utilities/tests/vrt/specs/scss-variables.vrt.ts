@@ -14,7 +14,6 @@ describe('scss-variables', () => {
         'overview',
         async () => {
           await vrt.goTo('/#/scss-variables');
-          await vrt.focus('#focusable-element');
         },
         { regressionSuffix: 'scss' }
       )
