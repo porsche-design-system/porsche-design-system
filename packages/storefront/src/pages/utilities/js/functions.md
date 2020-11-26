@@ -159,3 +159,68 @@ PHeadline style = {
   }
 }
 ```
+
+## State
+
+### Focus
+
+The utilities package provides the function `focus()` which returns the necessary focus styling for your component.
+
+The function has a non mandatory properties object `opts` which includes `focusColor: string` which defaults to `curentColor`, `offset: number` which defaults to `1` 
+and `pseudo: '::before' | '::after'` which is optional.
+
+#### Example
+
+```
+const FocusButton = styled.button`${focus()}`;
+
+return (
+    <FocusButton>Some Label</FocusButton>
+)
+```
+
+#### Result
+
+```
+StyledComponents writes the following styling properties into the head:
+
+FokusButton { 
+    outline:transparent solid 1px;
+    outline-offset: 1px;
+}
+FokusButton::-moz-focus-inner{ border: 0; }
+FokusButton:focus{ outline-color: currentColor; }
+FokusButton:focus:not(:focus-visible){ outline-color: transparent; }
+```
+
+#### Example pseudo usage
+
+**Note**: If you need the focus styles on a pseudo (`::before` or `::after`) element, 
+the host element needs a position for it to work properly.
+
+```
+const FocusButton = styled.button`${focus({pseudo: '::before'})}`;
+
+return (
+    <FocusButton style={{position: 'relative'}}>Some Label</FocusButton>
+)
+```
+
+#### Result
+
+```
+The stylings are set on `::before` and we get additional stylings:
+
+FokusButton::-moz-focus-inner{ border:0; }
+FokusButton::before { 
+    outline: transparent solid 1px;
+    outline-offset: 1px; content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+FokusButton:focus::before{ outline-color: currentColor; }
+FokusButton:focus:not(:focus-visible)::before{ outline-color: transparent; }
+```
