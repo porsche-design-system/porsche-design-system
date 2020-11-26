@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { IconName, LinkTarget, Theme } from '../../../types';
+import { ButtonVariant, IconName, LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -18,7 +18,7 @@ export class Link {
   @Element() public element!: HTMLElement;
 
   /** The style variant of the link. */
-  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @Prop() public variant?: ButtonVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';

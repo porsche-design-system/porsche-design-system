@@ -22,6 +22,7 @@ export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'hea
 export type Theme = 'light' | 'dark';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 

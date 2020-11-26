@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, ButtonVariant, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 export namespace Components {
     interface PBanner {
@@ -62,7 +62,7 @@ export namespace Components {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
@@ -315,7 +315,7 @@ export namespace Components {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PLinkPure {
         /**
@@ -967,7 +967,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
@@ -1220,7 +1220,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PLinkPure {
         /**

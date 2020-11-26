@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix
 } from '../../../utils';
-import { ButtonType, IconName, Theme } from '../../../types';
+import { ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button',
@@ -30,7 +30,7 @@ export class Button {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @Prop() public variant?: ButtonVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
