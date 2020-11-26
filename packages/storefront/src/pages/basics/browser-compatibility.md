@@ -52,10 +52,29 @@ yarn add @porsche-design-system/browser-notification
 ```
 
 #### Basic usage
-The easiest way to include the **Browser Notification** into your project is by importing and calling the provided `init()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
-This adds a `<script>` tag pointing to the browser notification banner JS snippet hosted on a CDN. When only the url to the JS snippet is needed then the function can be called with following parameter `init({ withoutTags: true })`.
+The easiest way to include the **Browser Notification** into your project is by importing and calling the provided `include()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
+This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
+
+##### Variants
+We provide two kinds of notifications variants to show the user the corresponding information in regard to its used browser.  
+
+####### Banner notification
+The **banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application.
+The banner is placed above the page and can be closed by the user.
+
+####### Overlay notification
+The **overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components.
+The overlay is placed above the page, covers it completely and can't be closed or removed by the user. 
 
 #### Integration examples
+We provide two kinds of integration possibilities which can either be used as universal detection or variant specific.
+
+| Browser/Feature Detection	      | Universal `include()` | Banner only `includeBanner()` | Overlay only `includeOverlay()` |
+|---------------------------------|-----------------------|-------------------------------|---------------------------------|
+| **MS Edge < 18**                |  `Overlay`            | X                             | `Overlay`                       |
+| **MS Edge === 18**              |  `Banner`             | `Banner`                      | `Overlay`                       |
+| **IE <= 11**                    |  `Overlay`            | `Banner`                      | `Overlay`                       |
+| **Custom elements != true**     |  `Overlay`            | X                             | `Overlay`                       |
 
 ##### React / Vue JS
 ```
@@ -68,20 +87,12 @@ This adds a `<script>` tag pointing to the browser notification banner JS snippe
   <body>
     <div id="app"></div>
 
-    <!-- inline version of the universal init script -->
+    <!-- inline version of the universal init script with autodetection -->
     <%= require('@porsche-design-system/browser-notification').include() %>
 
-    <!-- Recommended integration: inline version of the banner or overlay init script -->
+    <!-- inline version of the banner or overlay init script -->
     <%= require('@porsche-design-system/browser-notification').includeBanner() %>
     <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
-
-    <!-- Other integration: include remote init script -->
-    <%= require('@porsche-design-system/browser-notification').init() %>
-
-    <!-- Advanced integration: This way only the JS url is returned which gives more flexibility by defining the <script> tag.
-    In addition it gives the possibility to use and load it by your application JS code rather than in the index.html (be aware that 
-    in this scenario your application code needs to be excectuable in IE11 and Edge<=18). -->
-    <script defer src="<%= require('@porsche-design-system/browser-notification').init({ withoutTags: true }) %>"></script>
   </body>
 </html>
 ```
@@ -95,15 +106,15 @@ This adds a `<script>` tag pointing to the browser notification banner JS snippe
 
 // package.json
 "scripts": {
-  "partial": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+  "partial": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").include().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
 }
 ```
 
 #### Translations
 Automatic translations for the following languages are provided:  
-`'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl'` 
+`'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'` 
 
-The **Browser Notification Banner/Overlay** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. 
+The **Browser Notification** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. 
 Support is given for the following formats, e.g.:
 - `lang="en"`
 - `lang="en_US"`
@@ -111,17 +122,12 @@ Support is given for the following formats, e.g.:
 
 If none of these languages can be found, it will fall back to `en`.
 
-#### How it works
-The `<script>` tag points to a **< 1kb** sized file hosted on a CDN which has a browser detection for **IE11 and Edge<=18**. 
-If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner/Overlay. 
-Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session storage is defined to prevent popping up the banner again on route changes as long as staying on the same domain/subdomain and browser tab.
-
 #### Troubleshooting
 There always might be a case where something goes wrong. Here are some possible answers:
 
 1. **Q:** Why does the translation not get recognized automatically?  
-**A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's required that the `lang` attribute in the `html` tag is defined with the correct value before the **Browser Notification Banner** script gets initialized.  
+**A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's required that the `lang` attribute in the `html` tag is defined with the correct value before the **Browser Notification** script gets initialized.  
 **A:** The translation key is not part of the provided keys (see "Translations")  
 **A:** The translation key has not the correct format (see "Translations")  
-2. **Q:** Why are there no implementation guidelines for my JS framework (e.g. Vanilla JS ;-))?  
+2. **Q:** Why are there no implementation guidelines for my JS framework (e.g. Vanilla JS)?  
 **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
