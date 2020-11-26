@@ -7,5 +7,5 @@ export default (): void => {
   trackLoader();
   injectGlobalStyle();
   initBlurOnFocus();
-  window['componentsReady'] = componentsReady;
+  (window as any).componentsReady = componentsReady;
 };
