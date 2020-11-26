@@ -1,11 +1,11 @@
+import { getVisualRegressionFocusTester } from '../helpers/setup';
 import { VisualRegressionTester } from '@porsche-design-system/visual-regression-tester';
-import { getVisualRegressionTester } from '../helpers/setup';
 
-describe('scss-focus-regular', () => {
+describe('scss-focus', () => {
   let vrt: VisualRegressionTester;
 
   beforeAll(() => {
-    vrt = getVisualRegressionTester();
+    vrt = getVisualRegressionFocusTester();
   });
 
   it('should have no visual regression', async () => {
@@ -15,6 +15,45 @@ describe('scss-focus-regular', () => {
         async () => {
           await vrt.goTo('/#/scss-focus');
           await vrt.focus('#focusable-element-regular');
+        },
+        { regressionSuffix: 'scss' }
+      )
+    ).toBeFalsy();
+  });
+
+  it('should have no visual regression custom element', async () => {
+    expect(
+      await vrt.test(
+        'focus-custom',
+        async () => {
+          await vrt.goTo('/#/scss-focus');
+          await vrt.focus('#focusable-element-custom');
+        },
+        { regressionSuffix: 'scss' }
+      )
+    ).toBeFalsy();
+  });
+
+  it('should have no visual regression pseudo element', async () => {
+    expect(
+      await vrt.test(
+        'focus-pseudo',
+        async () => {
+          await vrt.goTo('/#/scss-focus');
+          await vrt.focus('#focusable-element-pseudo');
+        },
+        { regressionSuffix: 'scss' }
+      )
+    ).toBeFalsy();
+  });
+
+  it('should have no visual regression custom pseudo element', async () => {
+    expect(
+      await vrt.test(
+        'focus-custom-pseudo',
+        async () => {
+          await vrt.goTo('/#/scss-focus');
+          await vrt.focus('#focusable-element-custom-pseudo');
         },
         { regressionSuffix: 'scss' }
       )
