@@ -59,7 +59,7 @@
 }
 
 .#{$p-global-class-prefix}link {
-  @include p-focus($p-color-neutral-contrast-high, 2px);
+  @include p-focus($p-color-neutral-contrast-high);
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -78,15 +78,15 @@
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
   :host([theme="dark"]) & {
-    @include p-focus($p-color-theme-dark-default, 2px);
+    @include p-focus($p-color-theme-dark-default);
   }
 
   :host([variant="primary"]) & {
-    @include p-focus($p-color-brand, 2px);
+    @include p-focus($p-color-brand);
   }
 
   :host([theme="dark"][variant="primary"]) & {
-    @include p-focus($p-color-theme-dark-brand, 2px);
+    @include p-focus($p-color-theme-dark-brand);
   }
 
   &--primary {

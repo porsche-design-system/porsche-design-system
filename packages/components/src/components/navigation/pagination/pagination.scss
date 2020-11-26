@@ -81,7 +81,7 @@
   &__goto,
   &__prev,
   &__next {
-    @include p-focus;
+    @include p-focus($p-color-state-focus, 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,7 +92,7 @@
     box-sizing: border-box;
 
     :host([theme="dark"]) & {
-      @include p-focus($p-color-theme-dark-state-focus);
+      @include p-focus($p-color-theme-dark-state-focus, 1px);
     }
 
     &:active {
