@@ -42,9 +42,9 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
 };
 
 export const getVisualRegressionFocusTester = (): VisualRegressionTester => {
-  if (!visualRegressionTester) {
-    visualRegressionTester = new VisualRegressionTester(browser, {...testOptions, viewports:[1000]});
+  if (!visualRegressionFocusTester) {
+    visualRegressionFocusTester = new VisualRegressionTester(browser, {...testOptions, viewports:[1000]});
   }
 
-  return visualRegressionTester;
+  return visualRegressionFocusTester;
 };
