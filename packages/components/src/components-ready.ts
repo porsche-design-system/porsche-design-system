@@ -39,6 +39,15 @@ const decreaseCount = (): void => {
   checkPromiseResolve();
 };
 
+export const componentsReady = (): Promise<void> => {
+  console.log('componentsReady');
+  registerStencilEventListeners();
+  checkPromiseResolve();
+  return onLoadedPromise;
+};
+
+// ------------------
+
 const waitFrame = (): Promise<number> =>
   new Promise((resolve) => {
     requestAnimationFrame(resolve);
@@ -67,15 +76,30 @@ const allReady = (): Promise<any[] | void> => {
   return Promise.all(promises).catch((e) => console.error(e));
 };
 
-const stencilReady = (): Promise<void> => {
-  console.log('stencilReady?');
-  return allReady()
+let hasStencilLoaded: Promise<void>;
+const stencilLoaded = (): Promise<void> => {
+  console.log('stencilLoaded?');
+  hasStencilLoaded = allReady()
     .then(waitFrame)
     .then(allReady)
     .then(() => {
-      console.log('stencilReady /// setting stencilAppLoaded = true');
+      console.log('stencilLoaded /// setting stencilAppLoaded = true');
       (window as any).stencilAppLoaded = true;
     });
+
+  window.addEventListener('appload', (e) => {
+    console.log(e.type, taskCount);
+    stencilReady();
+  });
+
+  return hasStencilLoaded;
+};
+
+const stencilReady = (): Promise<void> => {
+  console.log('stencilReady?');
+  return hasStencilLoaded.then(allReady).then(() => {
+    console.log('––> stencilReady');
+  });
 };
 
 const registerStencilEventListeners = (): void => {
@@ -94,29 +118,18 @@ const registerStencilEventListeners = (): void => {
       );
     });
 
-    window.addEventListener('appload', (e) => {
-      console.log(e.type, taskCount);
-    });
-
     console.log('document.readyState', document.readyState);
     if (document.readyState === 'complete') {
-      stencilReady();
+      stencilLoaded();
     } else {
       document.addEventListener('readystatechange', (e) => {
         console.log('––> readystatechange', document.readyState);
         if ((e.target as Document).readyState === 'complete') {
-          stencilReady();
+          stencilLoaded();
         }
       });
     }
 
     hasRegisteredEventListeners = true;
   }
-};
-
-export const componentsReady = (): Promise<void> => {
-  console.log('componentsReady');
-  registerStencilEventListeners();
-  checkPromiseResolve();
-  return onLoadedPromise;
 };
