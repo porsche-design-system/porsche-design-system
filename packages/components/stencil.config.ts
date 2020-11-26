@@ -3,7 +3,7 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
-import autoprefixer = require('autoprefixer');
+import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import modify from 'rollup-plugin-modify';
 import replace from 'rollup-plugin-replace';
@@ -43,8 +43,6 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
       proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
-      includePolyfills: true,
-      includeDefineCustomElements: true,
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
@@ -66,7 +64,7 @@ export const config: Config = {
       modify({
         // minify slotted styles
         find: /const style = `((.|\s)*?)`/g,
-        replace: (match, $1) => {
+        replace: (_, $1) => {
           const placeholder = /\${tagName}/g;
           const tmpPlaceholder = /TAG_NAME/g;
           return `const style = \`${minifyCSS($1.replace(placeholder, 'TAG_NAME')).replace(
@@ -79,7 +77,7 @@ export const config: Config = {
   },
   globalScript: 'src/setup.ts',
   extras: {
-    // lifecycleDOMEvents: true,
+    lifecycleDOMEvents: true,
     tagNameTransform: true,
   },
 };
