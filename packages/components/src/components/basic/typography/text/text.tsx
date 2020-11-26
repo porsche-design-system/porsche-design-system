@@ -7,7 +7,7 @@ import {
   transitionListener,
   insertSlottedStyles
 } from '../../../../utils';
-import { TextSize, TextWeight, Theme } from '../../../../types';
+import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -36,10 +36,10 @@ export class Text {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** Text alignment of the component. */
-  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+  @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop() public color?: TextColor = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
