@@ -39,15 +39,15 @@ const decreaseCount = (): void => {
   checkPromiseResolve();
 };
 
-const waitFrame = () =>
+const waitFrame = (): Promise<number> =>
   new Promise((resolve) => {
     requestAnimationFrame(resolve);
   });
 
-const allReady = () => {
-  console.log('allReady');
+const allReady = (): Promise<any[] | void> => {
+  console.log('allReady?');
   const promises: Promise<any>[] = [];
-  const waitForDidLoad = (promises: Promise<any>[], elm: Element) => {
+  const waitForDidLoad = (elm: Element): void => {
     if (elm != null && elm.nodeType === 1) {
       for (let i = 0; i < elm.children.length; i++) {
         console.log('allReady loop', i);
@@ -56,24 +56,24 @@ const allReady = () => {
           promises.push((childElm as any).componentOnReady());
           console.log('added promise');
         }
-        waitForDidLoad(promises, childElm);
+        waitForDidLoad(childElm);
       }
     }
   };
 
   // waitForDidLoad(promises, window.document.documentElement);
-  waitForDidLoad(promises, document.getElementById('app'));
+  waitForDidLoad(document.getElementById('app'));
 
   return Promise.all(promises).catch((e) => console.error(e));
 };
 
-const stencilReady = () => {
-  console.log('stencilReady');
+const stencilReady = (): Promise<void> => {
+  console.log('stencilReady?');
   return allReady()
     .then(waitFrame)
     .then(allReady)
     .then(() => {
-      console.log('setting stencilAppLoaded = true');
+      console.log('stencilReady /// setting stencilAppLoaded = true');
       (window as any).stencilAppLoaded = true;
     });
 };
@@ -102,9 +102,9 @@ const registerStencilEventListeners = (): void => {
     if (document.readyState === 'complete') {
       stencilReady();
     } else {
-      document.addEventListener('readystatechange', function(e) {
+      document.addEventListener('readystatechange', (e) => {
         console.log('––> readystatechange', document.readyState);
-        if ((e.target as Document).readyState == 'complete') {
+        if ((e.target as Document).readyState === 'complete') {
           stencilReady();
         }
       });
