@@ -1,14 +1,14 @@
-import { color } from '../variables';
+import { color as colors } from '../variables';
 
 type PseudoElement = '::before' | '::after';
 
-type Options = { focusColor?: string; offset?: number; pseudo?: PseudoElement };
+type Options = { color?: string; offset?: number; pseudo?: PseudoElement };
 
-const defaultOptions: Options = { focusColor: color.state.focus, offset: 1 };
+const defaultOptions: Options = { color: colors.state.focus, offset: 1 };
 
 export const focus = (opts?: Options): string => {
   const options: Options = { ...defaultOptions, ...opts };
-  const { focusColor, offset, pseudo = '' } = options;
+  const { color, offset, pseudo = '' } = options;
 
   return `
 ::-moz-focus-inner { border: 0; }
@@ -25,6 +25,6 @@ ${
     bottom: 0;}` // Closing bracket from adding &${pseudo}
     : ''
 }
-&:focus${pseudo} { outline-color: ${focusColor}; }
+&:focus${pseudo} { outline-color: ${color}; }
 &:focus:not(:focus-visible)${pseudo} { outline-color: transparent; }`;
 };

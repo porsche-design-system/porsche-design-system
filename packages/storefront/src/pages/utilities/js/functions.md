@@ -6,7 +6,7 @@ We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l |
 
 #### Example
 
-```
+```tsx
 import { breakpoint } from '@porsche-design-system/utilities';
 
 if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
@@ -27,7 +27,7 @@ The `mediaQuery()` function returns a `@media (min-width: minBreakpoints) || @me
 
 #### Example predefined breakpoint
 
-```
+```tsx
 import { mediaQuery, breakpoint } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
@@ -51,7 +51,7 @@ render (
 
 #### Example custom breakpoint
 
-```
+```tsx
 import { mediaQuery } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
@@ -87,8 +87,9 @@ Given values are:
 
 #### Example
 
-```
+```tsx
 import { text } from '@porsche-design-system/utilities';
+import styled from 'styled-components';
 
 const PTextSmall = styled.p`
   ${text.small}
@@ -97,8 +98,8 @@ const PTextSmall = styled.p`
 
 #### Result
 
-```
-PHeadline style = {
+```css
+p {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -113,8 +114,9 @@ Given variables are:
 
 #### Example
 
-```
+```tsx
 import { headline } from '@porsche-design-system/utilities';
+import styled from 'styled-components';__
 
 const PHeadline = styled.h1`
   ${headline['1']}
@@ -123,8 +125,8 @@ const PHeadline = styled.h1`
 
 #### Result
 
-```
-PHeadline style = {
+```css
+h1 {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
@@ -132,95 +134,99 @@ PHeadline style = {
 }
 
 @media (min-width: 760px) and (max-width: 999px) {
-  PHeadline {
+  h1 {
     font-size: 2.25rem;
     line-height: 1.2222222222;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1299px) {
-  PHeadline {
+  h1 {
     font-size: 2.75rem;
     line-height: 1.1818181818;
   }
 }
 
 @media (min-width: 1300px) and (max-width: 1759px) {
-  PHeadline {
+  h1 {
     font-size: 3.25rem;
     line-height: 1.2307692308;
   }
 }
 
 @media (min-width: 1760px) {
-  PHeadline {
+  h1 {
     font-size: 3.75rem;
     line-height: 1.2;
   }
 }
 ```
 
+---
+
 ## State
 
 ### Focus
 
-The utilities package provides the function `focus()` which returns the necessary focus styling for your component.
+The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. 
+The provided SCSS mixin ensures focus is shown by keyboard navigation only.
 
-The function has a non mandatory properties object `opts` which includes `focusColor: string` which defaults to `curentColor`, `offset: number` which defaults to `1` 
-and `pseudo: '::before' | '::after'` which is optional.
+Given options object keys: 
+* `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  
+* `offset`: Can be overwritten when default offset is not sufficient, e.g. a custom button comes with a background-color or border and more white space for the focus outline is needed.  
+* `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.
 
 #### Example
 
-```
-const FocusButton = styled.button`${focus()}`;
+```tsx
+import { color, focus } from '@porsche-design-system/utilities';
+import styled from 'styled-components';
+
+const Anchor = styled.a`${focus()}`;
+const Button = styled.div`
+  // to control the focusable area of the nested button a proper position needs to be defined
+  position: relative; 
+  padding: 1rem;
+  
+  // use '::before' or '::after' if the focusable area needs to be enlarged relative to a wrapping element
+  button {
+    ${focus({color: color.state.focus, offset: 1, pseudo: '::before'})}
+  }`;
 
 return (
-    <FocusButton>Some Label</FocusButton>
-)
+  <>
+    <Anchor>Some Label</Anchor>
+    <Button>Some Label</Button>
+  </>
+);
 ```
 
 #### Result
 
-```
-StyledComponents writes the following styling properties into the head:
-
-FokusButton { 
-    outline:transparent solid 1px;
-    outline-offset: 1px;
+```css
+a { 
+  outline: transparent solid 1px;
+  outline-offset: 1px;
 }
-FokusButton::-moz-focus-inner{ border: 0; }
-FokusButton:focus{ outline-color: currentColor; }
-FokusButton:focus:not(:focus-visible){ outline-color: transparent; }
-```
+a::-moz-focus-inner { border: 0; }
+a:focus { outline-color: currentColor; }
+a:focus:not(:focus-visible) { outline-color: transparent; }
 
-#### Example pseudo usage
-
-**Note**: If you need the focus styles on a pseudo (`::before` or `::after`) element, 
-the host element needs a position for it to work properly.
-
-```
-const FocusButton = styled.button`${focus({pseudo: '::before'})}`;
-
-return (
-    <FocusButton style={{position: 'relative'}}>Some Label</FocusButton>
-)
-```
-
-#### Result
-
-```
-The stylings are set on `::before` and we get additional stylings:
-
-FokusButton::-moz-focus-inner{ border:0; }
-FokusButton::before { 
-    outline: transparent solid 1px;
-    outline-offset: 1px; content:"";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+div {
+  position: relative;
+  padding: 1rem;
 }
-FokusButton:focus::before{ outline-color: currentColor; }
-FokusButton:focus:not(:focus-visible)::before{ outline-color: transparent; }
+div button::-moz-focus-inner { border:0; }
+div button::before { 
+  content: "";
+  outline: transparent solid 1px;
+  outline-offset: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+div button:focus::before { outline-color: currentColor; }
+div button:focus:not(:focus-visible)::before { outline-color: transparent; }
 ```
