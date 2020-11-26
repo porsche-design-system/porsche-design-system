@@ -1,21 +1,24 @@
 @import '~@porsche-design-system/utilities/scss';
 
-#focusable-element-regular {
+.focusable-element-regular {
   @include p-focus;
 }
 
-#focusable-element-custom {
-  @include p-focus(deeppink, 2px);
+.focusable-element-custom {
+  @include p-focus(deeppink, 6px);
 }
 
-#focusable-element-pseudo {
+.focusable-element-pseudo {
   position: relative;
-  outline: transparent;
-  @include p-focus($p-color-state-focus, 1px, '::before');
+  padding: 1rem;
+
+  button {
+    @include p-focus($p-color-state-focus, 2px, '::before');
+  }
 }
 
-#focusable-element-custom-pseudo {
+.focusable-element-custom-pseudo {
   position: relative;
-  outline: transparent;
-  @include p-focus(deeppink, 2px, '::after');
+
+  @include p-focus(deeppink, 6px, '::after');
 }

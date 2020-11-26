@@ -149,7 +149,7 @@ The provided SCSS mixin ensures focus is shown by keyboard navigation only.
 
 Given parameters are: 
 * `$color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  
-* `$offset`: Can be overwritten when default offset is not sufficient (possible values: `1px | 2px`), e.g. a custom button comes with a background-color or border and more white space for the focus outline is needed.  
+* `$offset`: Can be overwritten when default offset is not sufficient, e.g. a custom button comes with a background-color or border and more white space for the focus outline is needed.  
 * `$pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.
 
 #### Example
@@ -178,7 +178,7 @@ a {
 ```css
 a { 
   outline: transparent solid 1px;
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 a::-moz-focus-inner { border: 0; }
 a:focus { outline-color: currentColor; }
