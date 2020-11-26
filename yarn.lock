@@ -2667,9 +2667,9 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@stencil/angular-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz":
-  version "0.0.2"
-  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-angular-output-target-0.0.2.tgz#9978f3c5c2f1c49cfef2bab641fdc0164666b80a"
+"@stencil/angular-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz":
+  version "0.0.4"
+  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz#ce276d8066eccc165295bb09305f1698d4a66a75"
 
 "@stencil/core@~2.3.0":
   version "2.3.0"
@@ -2683,9 +2683,9 @@
   dependencies:
     postcss "~7.0.17"
 
-"@stencil/react-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-react-output-target-0.0.6.tgz":
+"@stencil/react-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-react-output-target-0.0.6.tgz":
   version "0.0.6"
-  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/transformTagNameSupport/stencil-react-output-target-0.0.6.tgz#036c58ac2be8ed8db149e7af8664edeb5f62b4f6"
+  resolved "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-react-output-target-0.0.6.tgz#dd1040694c6defd7512c3d307f97df5df1835dc7"
 
 "@stencil/sass@^1.4.0":
   version "1.4.0"

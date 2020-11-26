@@ -145,16 +145,13 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
-      <sample-prefix-p-headline p-headline variant="headline-1">Headline</sample-prefix-p-headline>
+      <sample-prefix-p-headline variant="headline-1">Headline</sample-prefix-p-headline>
     </div>
   `,
   styles: []
 })
 export class AppComponent {}
 ```
-
-Be aware, that you still have to set the component name without the prefix as an
-attribute, else you might get unexpected results in some edge cases.
 
 You can even add more prefixes with the `PrefixService`:
 ```tsx
