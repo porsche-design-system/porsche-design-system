@@ -50,7 +50,7 @@ export const componentsReady = (): Promise<void> => {
 
 // ------------------
 
-const waitFrame = async () => requestAnimationFrame;
+const waitFrame = (): any => requestAnimationFrame;
 
 const promises: Promise<any>[] = [];
 const waitForDidLoad = (elm: Element): void => {
@@ -136,7 +136,7 @@ const initialize = (): void => {
     checkDocumentReadyStateAndStencil();
 
     const eventName = 'readystatechange';
-    const eventHandler = () => {
+    const eventHandler = (): void => {
       if (checkDocumentReadyStateAndStencil()) {
         document.removeEventListener(eventName, eventHandler);
       }
