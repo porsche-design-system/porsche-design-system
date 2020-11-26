@@ -12,8 +12,9 @@ export const focus = (opts?: Options): string => {
 
   return `
 ::-moz-focus-inner { border: 0; }
-${pseudo && '& { outline: transparent none; }'}
-${pseudo ? `&${pseudo}{` : ''}
+${pseudo ? `
+& { outline: transparent none; }
+&${pseudo}{` : ''}
 outline: transparent solid 1px;
 outline-offset: ${offset};
 ${
