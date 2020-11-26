@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "c72440a6c93a78b4fd31",
+    "revision": "06af701a9aa719a66a7b",
     "url": "css/app.867b5138.css"
   },
   {
@@ -372,12 +372,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/typography-uppercase.da1cae6f.png"
   },
   {
-    "revision": "a465c4ffcf564b61a84d47542162c63f",
+    "revision": "216365b773e581c9a10468e0599ba251",
     "url": "index.html"
   },
   {
-    "revision": "c72440a6c93a78b4fd31",
-    "url": "js/app.118d04c6.js"
+    "revision": "06af701a9aa719a66a7b",
+    "url": "js/app.4fb716e8.js"
   },
   {
     "revision": "bf4c287d953fec4da6e0",
@@ -648,8 +648,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/chunk-2d0e5e97.b88d04ed.js"
   },
   {
-    "revision": "9999e77c2977f8bf1d47",
-    "url": "js/chunk-2d0e887e.f3c1ec0d.js"
+    "revision": "2c66559ac84fbfb2e0cd",
+    "url": "js/chunk-2d0e887e.f16ffe0e.js"
   },
   {
     "revision": "b43fb8c099e0eb625afa",
