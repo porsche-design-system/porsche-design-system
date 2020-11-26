@@ -26,10 +26,10 @@ describe('link', () => {
     return setContentWithDesignSystem(
       page,
       `
-      <p-link onclick="return false;" ${!useSlottedAnchor && 'href="#"'}>
-        ${useSlottedAnchor && '<a onclick="return false;" href="">'}
+      <p-link onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''}>
+        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
         Some label
-        ${useSlottedAnchor && '</a>'}
+        ${useSlottedAnchor ? '</a>' : ''}
       </p-link>`
     );
   };

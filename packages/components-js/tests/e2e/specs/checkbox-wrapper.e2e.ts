@@ -31,9 +31,9 @@ describe('checkbox-wrapper', () => {
       page,
       `
         <p-checkbox-wrapper state="${state}">
-          ${useSlottedLabel && '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
           <input type="checkbox" />
-          ${useSlottedMessage && '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'}
+          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
         </p-checkbox-wrapper>`
     );
   };
