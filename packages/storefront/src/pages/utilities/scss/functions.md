@@ -129,3 +129,80 @@ h1 {
   }
 }
 ```
+
+## State
+
+### Focus
+
+The utilities package provides the `p-focus` mixin with optional parameters.
+Given parameters are `$color`, `$offset` and `$pseudo`.
+
+#### Example
+
+```
+button {
+  @include p-focus;
+}
+```
+
+#### Result
+
+```
+button { 
+    &::-moz-focus-inner{ 
+      border: 0; 
+    }
+
+    outline:transparent solid 1px;
+    outline-offset: 1px;
+
+    &:focus{ 
+      outline-color: currentColor; 
+    }
+
+    &:focus:not(:focus-visible){ 
+      outline-color: transparent;
+    }
+```
+
+#### Example with pseudo
+
+**Note**: If you need the focus styles on a pseudo (`::before` or `::after`) element, 
+the host element needs a position for it to work properly.
+
+```
+button {
+  @include p-focus($pseudo: '::before');
+}
+```
+
+#### Result
+
+```
+button { 
+    &::-moz-focus-inner{ 
+      border: 0; 
+    }
+    
+    &::before {
+      outline:transparent solid 1px;
+      outline-offset: 1px;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    &:focus::before{ 
+      outline-color: currentColor; 
+    }
+
+    &:focus:not(:focus-visible)::before{ 
+      outline-color: transparent;
+    }
+```
+
+
+
