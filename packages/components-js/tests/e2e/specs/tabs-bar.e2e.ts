@@ -536,8 +536,8 @@ describe('tabs-bar', () => {
       await initTabsBar({amount: 3});
 
       const [, secondButton] = await getAllButtons();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(secondButton)).toBe(hidden);
 
@@ -558,8 +558,8 @@ describe('tabs-bar', () => {
       await initTabsBar({amount: 3, anchor: true});
 
       const [, secondLink] = await getAllLinks();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(secondLink)).toBe(hidden);
 
@@ -582,17 +582,17 @@ describe('tabs-bar', () => {
       const host = await getHost();
       const buttons = await getAllButtons();
 
-      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active'}));
-      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active', offset: '1px'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({offset: '1px'}));
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
-      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({theme: 'dark'}));
-      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -601,17 +601,17 @@ describe('tabs-bar', () => {
       const host = await getHost();
       const links = await getAllLinks();
 
-      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active'}));
-      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active', offset: '1px'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({offset: '1px'}));
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark'}));
-      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({theme: 'dark'}));
-      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({color: 'active', theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
     });
   });
 });

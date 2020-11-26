@@ -182,8 +182,8 @@ describe('link', () => {
       await initLink();
 
       const link = await getLinkRealLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
-      const visible = expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'});
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh'});
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
@@ -203,8 +203,8 @@ describe('link', () => {
       await initLink({useSlottedAnchor: true});
 
       const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
-      const visible = expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'});
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh'});
 
       expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
 
@@ -226,32 +226,32 @@ describe('link', () => {
       const host = await getLinkHost();
       const link = await getLinkRealLink();
 
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
 
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'brand', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'brand'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -260,32 +260,32 @@ describe('link', () => {
       const host = await getLinkHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
 
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'brand', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'brand'}));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'contrastHigh', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });
