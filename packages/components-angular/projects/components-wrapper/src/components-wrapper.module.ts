@@ -1,13 +1,15 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
 import { load } from '@porsche-design-system/components-js';
-import { PREVENT_WEB_COMPONENTS_REGISTRATION } from './prevent-web-components-registration.token';
-import { WEB_COMPONENTS_PREFIX } from './web-components-prefix.token';
+import { PREVENT_WEB_COMPONENTS_REGISTRATION, WEB_COMPONENTS_PREFIX } from './injection.tokens';
 
 import {
-  PContentWrapper,
+  PBanner,
   PButton,
   PButtonPure,
   PCheckboxWrapper,
+  PContentWrapper,
+  PDivider,
+  PFieldsetWrapper,
   PFlex,
   PFlexItem,
   PGrid,
@@ -23,24 +25,24 @@ import {
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
   PText,
+  PTextareaWrapper,
+  PTextFieldWrapper,
   PTextList,
   PTextListItem,
-  PTextFieldWrapper,
-  PTextareaWrapper,
-  PFieldsetWrapper,
-  PBanner,
-  PDivider,
-  PTabs,
-  PTabsItem,
-  PTabsBar
-} from './components-wrapper.component';
+} from './lib/proxies';
 
 const DECLARATIONS = [
-  PContentWrapper,
+  PBanner,
   PButton,
   PButtonPure,
   PCheckboxWrapper,
+  PContentWrapper,
+  PDivider,
+  PFieldsetWrapper,
   PFlex,
   PFlexItem,
   PGrid,
@@ -56,24 +58,21 @@ const DECLARATIONS = [
   PRadioButtonWrapper,
   PSelectWrapper,
   PSpinner,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
   PText,
+  PTextareaWrapper,
+  PTextFieldWrapper,
   PTextList,
   PTextListItem,
-  PTextFieldWrapper,
-  PTextareaWrapper,
-  PFieldsetWrapper,
-  PBanner,
-  PDivider,
-  PTabs,
-  PTabsItem,
-  PTabsBar
 ];
 
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [],
-  providers: []
+  providers: [],
 })
 export class PorscheDesignSystemModule {
   constructor(
