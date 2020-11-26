@@ -17,7 +17,7 @@ describe('slottedStyles', () => {
       insertSlottedStyles(element, 'div { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
       expect(styleElements.length).toBe(1);
-      expect(styleElements[0].innerText).toBe('div{color:#ff00ff}');
+      expect(styleElements[0].innerText).toBe('div { color: #ff00ff; }');
 
       // cleanup
       styleElements[0].remove();
@@ -37,8 +37,8 @@ describe('slottedStyles', () => {
       insertSlottedStyles(spanElement, 'span { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
       expect(styleElements.length).toBe(2);
-      expect(styleElements[0].innerText).toBe('span{color:#ff00ff}');
-      expect(styleElements[1].innerText).toBe('p{position:relative;color:#ff00ff}');
+      expect(styleElements[0].innerText).toBe('span { color: #ff00ff; }');
+      expect(styleElements[1].innerText).toBe('p { position: relative; color: #ff00ff; }');
 
       // cleanup
       styleElements[0].remove();
@@ -73,7 +73,7 @@ describe('slottedStyles', () => {
       const styleElements = container.shadowRoot.querySelectorAll('style');
       expect(styleElements.length).toBe(2);
       expect(document.querySelectorAll('style').length).toBe(0);
-      expect(styleElements[0].innerText).toBe('div{position:relative;color:#ff00ff}');
+      expect(styleElements[0].innerText).toBe('div { position: relative; color: #ff00ff; }');
     });
 
     it('should prepend styles only once per tag name', () => {
@@ -91,8 +91,8 @@ describe('slottedStyles', () => {
       const styleElements = container.shadowRoot.querySelectorAll('style');
       expect(styleElements.length).toBe(3);
       expect(document.querySelectorAll('style').length).toBe(0);
-      expect(styleElements[0].innerText).toBe('span{position:relative;color:#ff00ff}');
-      expect(styleElements[1].innerText).toBe('div{color:#ff00ff}');
+      expect(styleElements[0].innerText).toBe('span { position: relative; color: #ff00ff; }');
+      expect(styleElements[1].innerText).toBe('div { color: #ff00ff; }');
     });
 
     it('should prepend for the same tag name for each shadow root', () => {
@@ -112,8 +112,8 @@ describe('slottedStyles', () => {
       const styleElements2 = container2.shadowRoot.querySelectorAll('style');
       expect(styleElements.length).toBe(2);
       expect(styleElements2.length).toBe(1);
-      expect(styleElements[0].innerText).toBe('div{color:#ff00ff}');
-      expect(styleElements2[0].innerText).toBe('.div2{position:relative;color:#ff00ff}');
+      expect(styleElements[0].innerText).toBe('div { color: #ff00ff; }');
+      expect(styleElements2[0].innerText).toBe('.div2 { position: relative; color: #ff00ff; }');
 
       // cleanup
       container2.remove();

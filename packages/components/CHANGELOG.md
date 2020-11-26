@@ -8,10 +8,63 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.7] - 2020-11-26
+
+#### Added
+- Jsdom Polyfill
+
+#### Removed
+- Jsdom Mocks
+- Global "blur on focus" script
+
+#### Changed
+- Default dropdown direction of `SelectWrapper` from `down` to `auto`
+- Made API of `Tabs` consistent with `Tabs Bar`
+- Removed transition for focus styling
+- Use `:focus-visible` as default and `:focus` as fallback for focusable elements
+
+#### Fixed
+- The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically
+- Invalid search results get cleared if `SelectWrapper` becomes focus state
+- Some bugs in `TabsBar`
+- Minification of dynamic slotted content styles
+- An issue where `Pagination` throws console errors if disconnected from dom.
+
+### [2.0.0-alpha.6] - 2020-10-28
+
+#### Changed
+- default `type` of `Button` and `Button Pure` to `submit`
+
+#### Fixed
+- Typings
+
+### [2.0.0-alpha.5] - 2020-10-26
+
+#### Added
+- `Modal` component
+
+#### Fixed
+- Typing for `pageChange` event of `Pagination` component
+- Typings
+
+#### Changed
+- Focus styling
+
+### [2.0.0-alpha.4] - 2020-10-14
+
 #### Added
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
 - Display `*` after label when `input`, `textarea` or `select` have `required` attribute within form wrapper components
+- `Tabs` component
+- `Tabs Bar` component
+- `Banner` component
+
+#### Removed
+- Default `position: relative;` style of `Link Pure` and `Button Pure` 
+
+#### Fixed
+- `Spinner` zooming bug on Safari
 
 ### [2.0.0-alpha.3] - 2020-09-11
 
@@ -19,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support to load assets from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
 
 #### Removed
-- Support for `<a>` wrapped `Link` and `LinkPure`
+- Support for `<a>` wrapped `Link` and `Link Pure`
 
 ### [2.0.0-alpha.2] - 2020-08-20
 
@@ -31,6 +84,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
+
+### [1.5.6] - 2020-10-15
+
+### [1.5.6-rc.0] - 2020-10-13
+
+### Fixed
+- `Spinner` zooming bug on Safari
+
+### [1.5.5] - 2020-09-11
 
 ### [1.5.5-rc.0] - 2020-09-07
 

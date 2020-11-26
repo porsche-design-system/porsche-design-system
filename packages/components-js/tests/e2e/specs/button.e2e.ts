@@ -1,13 +1,15 @@
 import {
   addEventListener,
   getActiveElementId,
+  getAttribute,
   getBrowser,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
+  selectNode, setAttribute,
+  setContentWithDesignSystem, expectedStyleOnFocus,
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 describe('button', () => {
   let page: Page;
@@ -20,6 +22,17 @@ describe('button', () => {
 
   const getButtonHost = () => selectNode(page, 'p-button');
   const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
+  const getIconOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
+
+  const initButton = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-button>
+        Some label
+      </p-button>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
@@ -294,5 +307,148 @@ describe('button', () => {
     await waitForStencilLifecycle(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
+  });
+
+  it('should submit form via enter key when type is submit', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <form>
+        <input type="text" name="test" value="ok">
+        <p-button type="button">Submit</p-button>
+      </form>
+
+      <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+      })
+      </script>
+    `
+    );
+
+    let submitCalls = 0;
+    await addEventListener(await selectNode(page, 'form'), 'submit', () => submitCalls++);
+
+    const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+    };
+
+    const input = await selectNode(page, 'input');
+    await focusElAndPressEnter(input);
+    expect(submitCalls).toBe(1);
+
+    const button = await getButtonHost();
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'button'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'reset'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'submit'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(2);
+
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(3);
+  });
+
+  it('should add aria-busy when loading and remove if finished', async () => {
+    await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
+    const host = await getButtonHost();
+    const button = await getButtonRealButton();
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+    await host.evaluate((el) => el.setAttribute('loading', 'true'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+    await host.evaluate((el) => el.setAttribute('loading', 'false'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+  });
+
+  it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
+    await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
+    const host = await getButtonHost();
+    const spinner = await getIconOrSpinner();
+
+    expect(await getProperty(spinner, 'theme')).toBe('dark');
+
+    await host.evaluate((el) => el.setAttribute('theme', 'light'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(spinner, 'theme')).toBe('dark');
+
+    await host.evaluate((el) => el.setAttribute('variant', 'tertiary'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(spinner, 'theme')).toBe('light');
+  });
+
+  describe('focus state', () => {
+    it('should be shown by keyboard navigation only', async () => {
+      await initButton();
+
+      const button = await getButtonRealButton();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'contrastHigh'});
+
+      expect(await getOutlineStyle(button)).toBe(hidden);
+
+      await button.click();
+
+      expect(await getOutlineStyle(button)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(button)).toBe(visible);
+    });
+
+    it('should show outline of shadowed <button> when it is focused', async () => {
+      await initButton();
+
+      const host = await getButtonHost();
+      const button = await getButtonRealButton();
+
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+
+      await setAttribute(host, 'variant', 'secondary');
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+
+      await setAttribute(host, 'variant', 'primary');
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
+
+      await setAttribute(host, 'variant', 'primary');
+      await setAttribute(host, 'theme', 'light');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand'}));
+
+      await setAttribute(host, 'variant', 'tertiary');
+      await setAttribute(host, 'theme', 'light');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+
+      await setAttribute(host, 'variant', 'tertiary');
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+    });
   });
 });

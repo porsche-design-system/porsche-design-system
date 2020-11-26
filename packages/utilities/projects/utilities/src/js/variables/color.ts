@@ -29,7 +29,7 @@ export const color = {
   state: {
     hover: '#d5001c',
     active: '#d5001c',
-    focus: '#00d5b9',
+    focus: 'currentColor',
     disabled: '#96989a'
   },
   /**
@@ -50,14 +50,18 @@ export const color = {
     },
     notification: {
       success: '#01ba1d',
+      successSoft: '#bfeec6',
       warning: '#ff9b00',
+      warningSoft: '#ffe6bf',
       error: '#fc1717',
-      neutral: '#2193ff'
+      errorSoft: '#fec5c5',
+      neutral: '#2193ff',
+      neutralSoft: '#c7e4ff'
     },
     state: {
       hover: '#ff0223',
       active: '#ff0223',
-      focus: '#00d5b9',
+      focus: 'currentColor',
       disabled: '#7c7f81'
     }
   },

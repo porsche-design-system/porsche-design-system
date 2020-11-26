@@ -5,10 +5,27 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { NumberOfPageLinks } from "./components/navigation/pagination/pagination";
 export namespace Components {
+    interface PBanner {
+        /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the banner.
+         */
+        "state"?: 'error' | 'warning' | 'neutral';
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
+    }
     interface PButton {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -409,6 +426,24 @@ export namespace Components {
           * Show/hide trademark sign.
          */
         "trademark"?: boolean;
+    }
+    interface PModal {
+        /**
+          * If true, the modal will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If true, the modal will not have a close button.
+         */
+        "disableCloseButton"?: boolean;
+        /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
+          * If true, the modal is open.
+         */
+        "open": boolean;
     }
     interface PPagination {
         /**
@@ -510,6 +545,56 @@ export namespace Components {
          */
         "theme"?: 'light' | 'dark';
     }
+    interface PTabs {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<TabSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: TabWeight;
+    }
+    interface PTabsBar {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<TabSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: TabWeight;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label": string;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -610,6 +695,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
+    }
+    var HTMLPBannerElement: {
+        prototype: HTMLPBannerElement;
+        new (): HTMLPBannerElement;
+    };
     interface HTMLPButtonElement extends Components.PButton, HTMLStencilElement {
     }
     var HTMLPButtonElement: {
@@ -706,6 +797,12 @@ declare global {
         prototype: HTMLPMarqueElement;
         new (): HTMLPMarqueElement;
     };
+    interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
+    }
+    var HTMLPModalElement: {
+        prototype: HTMLPModalElement;
+        new (): HTMLPModalElement;
+    };
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
     }
     var HTMLPPaginationElement: {
@@ -729,6 +826,24 @@ declare global {
     var HTMLPSpinnerElement: {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
+    };
+    interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
+    }
+    var HTMLPTabsElement: {
+        prototype: HTMLPTabsElement;
+        new (): HTMLPTabsElement;
+    };
+    interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
+    }
+    var HTMLPTabsBarElement: {
+        prototype: HTMLPTabsBarElement;
+        new (): HTMLPTabsBarElement;
+    };
+    interface HTMLPTabsItemElement extends Components.PTabsItem, HTMLStencilElement {
+    }
+    var HTMLPTabsItemElement: {
+        prototype: HTMLPTabsItemElement;
+        new (): HTMLPTabsItemElement;
     };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
@@ -761,6 +876,7 @@ declare global {
         new (): HTMLPTextareaWrapperElement;
     };
     interface HTMLElementTagNameMap {
+        "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
@@ -777,10 +893,14 @@ declare global {
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
         "p-marque": HTMLPMarqueElement;
+        "p-modal": HTMLPModalElement;
         "p-pagination": HTMLPPaginationElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-tabs": HTMLPTabsElement;
+        "p-tabs-bar": HTMLPTabsBarElement;
+        "p-tabs-item": HTMLPTabsItemElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -789,6 +909,28 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PBanner {
+        /**
+          * Emitted when the close button is clicked.
+         */
+        "onDismiss"?: (event: CustomEvent<void>) => void;
+        /**
+          * Defines if the banner can be closed/removed by the user.
+         */
+        "persistent"?: boolean;
+        /**
+          * State of the banner.
+         */
+        "state"?: 'error' | 'warning' | 'neutral';
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Defines the width of the banner corresponding to the `content-wrapper` dimensions
+         */
+        "width"?: 'basic' | 'extended' | 'fluid';
+    }
     interface PButton {
         /**
           * Disables the button. No events will be triggered while disabled state is active.
@@ -1190,6 +1332,28 @@ declare namespace LocalJSX {
          */
         "trademark"?: boolean;
     }
+    interface PModal {
+        /**
+          * If true, the modal will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If true, the modal will not have a close button.
+         */
+        "disableCloseButton"?: boolean;
+        /**
+          * The title of the modal
+         */
+        "heading"?: string;
+        /**
+          * Emitted when the component requests to be closed.
+         */
+        "onClose"?: (event: CustomEvent<void>) => void;
+        /**
+          * If true, the modal is open.
+         */
+        "open"?: boolean;
+    }
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1222,7 +1386,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: CustomEvent<any>) => void;
+        "onPageChange"?: (event: CustomEvent<{ page: number; previousPage: number }>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1293,6 +1457,64 @@ declare namespace LocalJSX {
           * Adapts the spinner color depending on the theme.
          */
         "theme"?: 'light' | 'dark';
+    }
+    interface PTabs {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<TabSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: TabWeight;
+    }
+    interface PTabsBar {
+        /**
+          * Defines which tab to be visualized as selected (zero-based numbering).
+         */
+        "activeTabIndex"?: number;
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        /**
+          * The text size.
+         */
+        "size"?: BreakpointCustomizable<TabSize>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * The text weight.
+         */
+        "weight"?: TabWeight;
+    }
+    interface PTabsItem {
+        /**
+          * Defines the label used in tabs.
+         */
+        "label"?: string;
     }
     interface PText {
         /**
@@ -1393,6 +1615,7 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface IntrinsicElements {
+        "p-banner": PBanner;
         "p-button": PButton;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
@@ -1409,10 +1632,14 @@ declare namespace LocalJSX {
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
         "p-marque": PMarque;
+        "p-modal": PModal;
         "p-pagination": PPagination;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-tabs": PTabs;
+        "p-tabs-bar": PTabsBar;
+        "p-tabs-item": PTabsItem;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -1424,6 +1651,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
@@ -1440,10 +1668,14 @@ declare module "@stencil/core" {
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
+            "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
+            "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
+            "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;

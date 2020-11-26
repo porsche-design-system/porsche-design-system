@@ -95,24 +95,7 @@
   text-decoration: none !important;
   color: inherit !important;
   line-height: inherit !important;
-}
-::slotted(a)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  display: block !important;
   outline: transparent none !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier !important;
-}
-::slotted(a:focus) {
-  outline: none !important;
-}
-::slotted(a:focus)::before {
-  outline-offset: 1px !important;
-  outline: $p-color-theme-light-state-focus solid 2px !important;
 }
 
 ::slotted(p) {
@@ -120,6 +103,7 @@
 }
 
 .#{$p-global-class-prefix}link-pure {
+  @include p-focus($p-color-state-focus, 1px, '::before');
   $bem-block: &;
   display: flex;
   align-items: flex-start;
@@ -135,41 +119,18 @@
   background: transparent;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
-  // gives possibility to enlarge click area on host element
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    outline: transparent none;
-    transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+  :host([theme="dark"]) & {
+    @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
   &:not(a)::before {
     pointer-events: none;
   }
 
-  &::-moz-focus-inner {
-    border: 0; // fix for Firefox, avoid dotted outline in button on focus
-  }
-
-  &:focus::before {
-    outline-width: 2px;
-    outline-style: solid;
-    outline-offset: 1px;
-  }
-
   &--theme-light {
     color: $p-color-default;
     + * {
       color: $p-color-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-state-focus;
     }
 
     &:active {
@@ -198,10 +159,6 @@
     color: $p-color-theme-dark-default;
     + * {
       color: $p-color-theme-dark-default;
-    }
-
-    &:focus::before {
-      outline-color: $p-color-theme-dark-state-focus;
     }
 
     &:active {

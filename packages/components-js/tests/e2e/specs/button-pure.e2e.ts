@@ -1,13 +1,14 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser,
+  getAttribute,
+  getBrowser, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
+  selectNode, setAttribute,
+  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 describe('button-pure', () => {
   let page: Page;
@@ -20,6 +21,16 @@ describe('button-pure', () => {
 
   const getButtonPureHost = () => selectNode(page, 'p-button-pure');
   const getButtonPureRealButton = () => selectNode(page, 'p-button-pure >>> button');
+
+  const initButtonPure = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-button-pure>
+        Some label
+      </p-button-pure>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
@@ -292,5 +303,111 @@ describe('button-pure', () => {
     await waitForStencilLifecycle(page);
     expect(buttonFocusCalls).toBe(0);
     expect(afterFocusCalls).toBe(1);
+  });
+
+  it('should submit form via enter key when type is submit', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <form>
+        <input type="text" name="test" value="ok">
+        <p-button-pure type="button">Submit</p-button-pure>
+      </form>
+
+      <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+      })
+      </script>
+    `
+    );
+
+    let submitCalls = 0;
+    await addEventListener(await selectNode(page, 'form'), 'submit', () => submitCalls++);
+
+    const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+    };
+
+    const input = await selectNode(page, 'input');
+    await focusElAndPressEnter(input);
+    expect(submitCalls).toBe(1);
+
+    const button = await getButtonPureHost();
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'button'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'reset'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(1); // type isn't submit, yet
+
+    await button.evaluate((el) => el.setAttribute('type', 'submit'));
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(2);
+
+    await focusElAndPressEnter(button);
+    expect(submitCalls).toBe(3);
+  });
+
+  it('should add aria-busy when loading and remove if finished', async () => {
+    await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
+    const host = await getButtonPureHost();
+    const button = await getButtonPureRealButton();
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+
+    await host.evaluate((el) => el.setAttribute('loading', 'true'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBe('true');
+
+    await host.evaluate((el) => el.setAttribute('loading', 'false'));
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(button, 'aria-busy')).toBeNull();
+  });
+
+  describe('focus state', () => {
+    it('should be shown by keyboard navigation only', async () => {
+      await initButtonPure();
+
+      const button = await getButtonPureRealButton();
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
+
+      await button.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(visible);
+    });
+
+    it('should show outline of shadowed <button> when it is focused', async () => {
+      await initButtonPure();
+
+      const host = await getButtonPureHost();
+      const button = await getButtonPureRealButton();
+
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '1px'}));
+
+      await setAttribute(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      await waitForInheritedCSSTransition(page);
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
+    });
   });
 });

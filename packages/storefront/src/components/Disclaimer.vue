@@ -7,19 +7,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
 
-@Component
-export default class Disclaimer extends Vue {
-}
+  @Component
+  export default class Disclaimer extends Vue {}
 </script>
 
 <style scoped lang="scss">
-@import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/utilities/scss';
 
-.disclaimer {
-  padding: $p-spacing-8 $p-spacing-32;
-  background: $p-color-theme-light-neutral-contrast-high;
-}
+  .disclaimer {
+    padding: $p-spacing-8 $p-spacing-32;
+    background: $p-color-neutral-contrast-high;
+  }
 </style>

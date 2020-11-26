@@ -1,5 +1,4 @@
 import { PTextList as TextList, PTextListItem as TextListItem } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TextListPage = (): JSX.Element => {
   return (

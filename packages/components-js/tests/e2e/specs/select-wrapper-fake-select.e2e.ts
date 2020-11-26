@@ -3,13 +3,14 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getElementPosition,
+  getElementIndex,
   getElementStyle,
   getProperty,
   initAddEventListener,
+  reattachElement,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -26,6 +27,8 @@ describe('select-wrapper fake-select', () => {
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
+  const fakeOptionInPosOne = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
+  const fakeOptionInPosTwo = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
   describe('hover state', () => {
     it('should change box-shadow color when fake select is hovered', async () => {
@@ -92,7 +95,7 @@ describe('select-wrapper fake-select', () => {
     expect(fakeOptionListDirectionUp).not.toBeNull();
   });
 
-  it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
+  it('should set dropdown direction to down', async () => {
     await page.setViewport({
       width: 800,
       height: 600
@@ -100,8 +103,34 @@ describe('select-wrapper fake-select', () => {
     await setContentWithDesignSystem(
       page,
       `
+    <div style="height: 500px;"></div>
+    <p-select-wrapper label="Some label" dropdown-direction="down">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>`
+    );
+
+    const fakeOptionListDirectionDown = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
+    );
+
+    expect(fakeOptionListDirectionDown).not.toBeNull();
+  });
+
+  it('should auto position dropdown to top if bottom space is less than dropdown height', async () => {
+    await page.setViewport({
+      width: 800,
+      height: 600,
+    });
+    await setContentWithDesignSystem(
+      page,
+      `
     <div style="height: 400px;"></div>
-    <p-select-wrapper label="Some label" dropdown-direction="auto">
+    <p-select-wrapper label="Some label">
       <select name="some-name">
         <option value="a">Option A</option>
         <option value="b" disabled>Option B</option>
@@ -126,6 +155,41 @@ describe('select-wrapper fake-select', () => {
     );
 
     expect(fakeOptionListDirectionUp).not.toBeNull();
+  });
+
+  it('should auto position dropdown to bottom if bottom space is more than dropdown height', async () => {
+    await page.setViewport({
+      width: 800,
+      height: 800
+    });
+    await setContentWithDesignSystem(
+      page,
+      `
+    <p-select-wrapper label="Some label">
+      <select name="some-name">
+        <option value="a">Option A</option>
+        <option value="b" disabled>Option B</option>
+        <option value="c">Option C</option>
+        <option value="d">Option D</option>
+        <option value="e">Option E</option>
+        <option value="f">Option F</option>
+        <option value="g">Option G</option>
+        <option value="h">Option H</option>
+      </select>
+    </p-select-wrapper>
+    `
+    );
+
+    const select = await getSelectRealInput();
+    await select.click();
+    await waitForStencilLifecycle(page);
+
+    const fakeOptionListDirectionDown = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option-list--direction-down'
+    );
+
+    expect(fakeOptionListDirectionDown).not.toBeNull();
   });
 
   describe('fake drop down', () => {
@@ -156,8 +220,8 @@ describe('select-wrapper fake-select', () => {
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptionDisabled).not.toBeNull();
-      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(0);
-      expect(await getElementPosition(fakeOptionList, '[aria-disabled=true]')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(0);
+      expect(await getElementIndex(fakeOptionList, '[aria-disabled=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
     });
 
@@ -198,7 +262,7 @@ describe('select-wrapper fake-select', () => {
 
       expect(fakeOptionList).not.toBeNull();
       expect(fakeOptgroup).not.toBeNull();
-      expect(await getElementPosition(fakeOptionList, '[aria-selected=true]')).toBe(1);
+      expect(await getElementIndex(fakeOptionList, '[aria-selected=true]')).toBe(1);
       expect(activeDescendant).toEqual(selectedDescendantId);
       expect(numberOfOptgroups).toEqual(numberOfFakeOptgroups);
     });
@@ -356,7 +420,120 @@ describe('select-wrapper fake-select', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--disabled');
-      expect(await getElementPosition(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
+      expect(await getElementIndex(await fakeOptionList(), '.p-select-wrapper__fake-option--disabled')).toBe(1);
+    });
+
+    it('should synchronize fake option and native select if selected attribute is set programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].setAttribute('selected', 'selected')));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
+
+    });
+
+    it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
+      /**
+       * This test is for Browser specific behaviour which does not reflect the "selected" property as attribute and will therefore not be observed by the MutationObserver
+       */
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOptionA = await fakeOptionInPosOne();
+      const fakeOptionB = await fakeOptionInPosTwo();
+      const selectedClass = 'p-select-wrapper__fake-option--selected';
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[0].selected = false));
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].selected = true));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
+      expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
+      expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
+
+    });
+
+    it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const select = await getSelectRealInput();
+      const fakeOptionList = await getSelectOptionList();
+      const fakeOption = await fakeOptionInPosTwo();
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
+      expect(await getElementIndex(fakeOptionList, '.p-select-wrapper__fake-option--hidden')).toBe(1);
+
+      await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = false));
+      await waitForStencilLifecycle(page);
+
+      expect(await getCssClasses(fakeOption)).not.toContain('p-select-wrapper__fake-option--hidden');
+    });
+
+    it('should not render initial hidden option fields', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value hidden></option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+        </select>
+      </p-select-wrapper>
+    `
+      );
+      const fakeOption = await fakeOptionInPosOne();
+
+      expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
     });
 
     describe('keyboard and click events', () => {
@@ -368,9 +545,9 @@ describe('select-wrapper fake-select', () => {
           return document.querySelector('select').selectedIndex;
         });
       const getHighlightedFakeOption = async () =>
-        await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
+        await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--highlighted');
       const getSelectedFakeOption = async () =>
-        await getElementPosition(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
+        await getElementIndex(await getSelectOptionList(), '.p-select-wrapper__fake-option--selected');
 
       it('should highlight first position on arrow down', async () => {
         await setContentWithDesignSystem(
@@ -407,11 +584,63 @@ describe('select-wrapper fake-select', () => {
         expect(await getOpacity()).toBe('0');
         expect(await getHighlightedFakeOption()).toBe(1);
         expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getElementPosition(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
+        expect(await getElementIndex(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
         expect(await getSelectedIndex()).toBe(1);
 
         expect(calls).toBe(1);
         expect(await getActiveDescendant()).toEqual(`option-${await getSelectedFakeOption()}`);
+      });
+
+      it('should have the correct aria-expanded value if open/closed', async () => {
+        await setContentWithDesignSystem(
+          page,
+          `
+          <p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+        );
+
+        const host = await selectNode(page, 'p-select-wrapper');
+        const fakeInput = await getSelectOptionList();
+
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('false');
+
+        await host.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('true');
+      });
+
+      it('should show aria-selected attribute on selected fake option on click', async () => {
+        await setContentWithDesignSystem(
+          page,
+          `
+          <p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+        );
+
+        const select = await getSelectRealInput();
+        const fakeOptionA = await fakeOptionInPosOne();
+        const fakeOptionB = await fakeOptionInPosTwo();
+
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
+
+        await select.click();
+        await fakeOptionB.click();
+        await waitForStencilLifecycle(page);
+
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBe('true');
       });
 
       it('should skip disabled option on arrow down', async () => {
@@ -459,6 +688,7 @@ describe('select-wrapper fake-select', () => {
         expect(await getHighlightedFakeOption()).toBe(0);
       });
 
+      // TODO: remove duplicate?
       it('should skip disabled option on arrow up', async () => {
         await setContentWithDesignSystem(
           page,
@@ -850,7 +1080,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
         await page.keyboard.press('c');
-        await page.waitFor(120);
+        await page.waitForTimeout(120);
 
         expect(await getHighlightedFakeOption()).toBe(2);
         expect(await getSelectedFakeOption()).toBe(2);
@@ -899,10 +1129,10 @@ describe('select-wrapper fake-select', () => {
     `
         );
         const select = await getSelectRealInput();
-        const fakeOptionInPosOne = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+        const fakeOptionB = await fakeOptionInPosTwo();
 
         await select.click();
-        await fakeOptionInPosOne.click();
+        await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
         expect(await getOpacity()).toBe('0');
@@ -937,6 +1167,46 @@ describe('select-wrapper fake-select', () => {
 
         expect(await getOpacity()).toBe('0');
         expect(await selectHasFocus()).toBe(false);
+      });
+
+      it('should remove and re-attach events', async () => {
+        await setContentWithDesignSystem(
+          page,
+          `
+      <p-select-wrapper label="Some label">
+        <select name="some-name" id="realSelect">
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
+        </select>
+      </p-select-wrapper>
+    `
+        );
+        const select = await getSelectRealInput();
+
+        let mouseDownEventCounter = 0;
+        let keyDownEventCounter = 0;
+        await addEventListener(select, 'mousedown', () => mouseDownEventCounter++);
+        await addEventListener(select, 'keydown', () => keyDownEventCounter++);
+
+        // Remove and re-attach component to check if events are duplicated / fire at all
+        await reattachElement(page, 'p-select-wrapper');
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+
+        expect(mouseDownEventCounter).toBe(1);
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+
+        expect(mouseDownEventCounter).toBe(2);
+
+        await page.keyboard.press('ArrowDown');
+        await waitForStencilLifecycle(page);
+        await page.keyboard.press('ArrowDown');
+
+        expect(keyDownEventCounter).toBe(2);
       });
     });
   });

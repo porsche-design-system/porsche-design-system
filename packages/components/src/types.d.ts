@@ -13,6 +13,15 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
 export type FormState = 'none' | 'error' | 'success';
 
+// Tabs Types
+export type TabChangeEvent = { activeTabIndex: number };
+export type TabSize = 'small' | 'medium';
+export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
+export type TabGradientColorTheme = 'default' | 'surface';
+
+// Pagination Types
+export type NumberOfPageLinks = 5 | 7;
+
 /**
  * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
  */

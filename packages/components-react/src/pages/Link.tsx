@@ -1,5 +1,4 @@
 import { PLink as Link } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPage = (): JSX.Element => {
   const style = `
@@ -136,14 +135,6 @@ export const LinkPage = (): JSX.Element => {
         </Link>
         <Link style={{ width: 240 }}>
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
-        </Link>
-      </div>
-
-      <div className="playground light" title="should render with explicit anchor tag">
-        <Link>
-          <a href="https://www.porsche.com" id="test-focus-state">
-            Some label
-          </a>
         </Link>
       </div>
     </>

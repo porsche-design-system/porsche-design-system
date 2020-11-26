@@ -38,8 +38,8 @@
   display: block !important;
   padding: p-px-to-rem(11px) !important;
   margin: 0 !important;
-  outline: transparent none !important;
-  outline-offset: 1px !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 2px !important;
   appearance: none !important;
   box-sizing: border-box !important;
   border-width: 1px !important;
@@ -52,18 +52,36 @@
   font-size: $p-font-size-small !important;
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
-  color: $p-color-theme-light-default !important;
-  transition: outline-color $p-animation-hover-duration $p-animation-hover-bezier,
-    color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  color: $p-color-default !important;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
 }
 
 // Focus
 ::slotted(input:focus) {
-  outline: $p-color-theme-light-state-focus solid 2px !important;
+  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-::slotted(input:read-only:focus) {
-  outline: none !important;
+:host([state="success"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-success !important;
+}
+
+:host([state="error"]) ::slotted(input:focus) {
+  outline-color: $p-color-notification-error !important;
+}
+
+::slotted(input:read-only:focus),
+:host([state]) ::slotted(input:read-only:focus) {
+  outline-color: transparent !important;
+}
+
+:host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
+:host([state="error"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
+  outline-offset: -5px !important;
+}
+
+::slotted(input[type="search"]),
+::slotted(input[type="password"]) {
+  padding-right: 3rem !important;
 }
 
 // Read only
@@ -71,7 +89,7 @@
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.01) !important;
-  color: $p-color-theme-light-neutral-contrast-medium !important;
+  color: $p-color-neutral-contrast-medium !important;
 }
 
 // Disabled
@@ -79,30 +97,14 @@
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
   border-top-color: rgba(255, 255, 255, 0.02) !important;
-  color: $p-color-theme-light-state-disabled !important;
-  -webkit-text-fill-color: $p-color-theme-light-state-disabled !important; // fix placeholder color bug in Safari
+  color: $p-color-state-disabled !important;
+  -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
-}
-
-// Hide arrows for number fields
-::slotted(input[type='number']) {
-  -webkit-appearance: none !important;
-  -moz-appearance: textfield !important;
-}
-::slotted(input[type='number']::-webkit-outer-spin-button),
-::slotted(input[type='number']::-webkit-inner-spin-button) {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  margin: 0 !important;
 }
 
 // Reset webkit autofill styles
 ::slotted(input:-internal-autofill-selected),
-::slotted(input:-internal-autofill-previewed) {
-  -webkit-background-clip: padding-box !important;
-}
-
+::slotted(input:-internal-autofill-previewed),
 ::slotted(input:-webkit-autofill),
 ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
@@ -124,11 +126,11 @@
   &__description-text {
     display: block;
     width: fit-content;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     &--visible {
@@ -198,10 +200,10 @@
   }
 
   &__description-text {
-    color: $p-color-theme-light-neutral-contrast-medium;
+    color: $p-color-neutral-contrast-medium;
 
     &--disabled {
-      color: $p-color-theme-light-state-disabled;
+      color: $p-color-state-disabled;
     }
 
     #{$bem-block}__label-text ~ & {
@@ -215,19 +217,19 @@
     width: 100%;
     height: p-px-to-rem(48px);
     display: block;
-    background-color: $p-color-theme-light-background;
-    box-shadow: inset 0 0 0 1px $p-color-theme-light-neutral-contrast-medium;
+    background-color: $p-color-background-default;
+    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
     transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
       background-color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
     #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-default;
+      box-shadow: inset 0 0 0 1px $p-color-default;
     }
 
     &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-theme-light-state-disabled;
-      background-color: $p-color-theme-light-background;
+      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      background-color: $p-color-background-default;
     }
 
     &--readonly {
@@ -236,39 +238,40 @@
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-success;
+      box-shadow: inset 0 0 0 2px $p-color-notification-success;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-success, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
       }
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-theme-light-notification-error;
+      box-shadow: inset 0 0 0 2px $p-color-notification-error;
 
       &:hover,
       #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-theme-light-notification-error, 12%);
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
       }
     }
   }
 
   &__message {
     margin-top: $p-spacing-4;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
     &--success {
-      color: $p-color-theme-light-notification-success;
+      color: $p-color-notification-success;
     }
 
     &--error {
-      color: $p-color-theme-light-notification-error;
+      color: $p-color-notification-error;
     }
   }
 
   &__button {
+    @include p-focus($p-color-state-focus, -4px);
     position: absolute;
     bottom: 0;
     right: 0;
@@ -283,28 +286,20 @@
     text-decoration: none;
     background: transparent;
     cursor: pointer;
-    color: $p-color-theme-light-default;
+    color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &::-moz-focus-inner {
-      border: 0; // fix for Firefox, avoid dotted outline in button on focus
-    }
-
     &:hover {
-      color: $p-color-theme-light-state-hover;
+      color: $p-color-state-hover;
     }
 
     &:active {
-      color: $p-color-theme-light-state-active;
-    }
-
-    &:focus {
-      color: $p-color-theme-light-state-focus;
+      color: $p-color-state-active;
     }
 
     &:disabled {
-      color: $p-color-theme-light-state-disabled;
-      cursor: not-allowed !important;
+      color: $p-color-state-disabled;
+      cursor: not-allowed;
     }
   }
 }

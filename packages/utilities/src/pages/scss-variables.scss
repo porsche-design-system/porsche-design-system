@@ -66,7 +66,9 @@
     background: $p-color-state-active;
   }
   &--color-theme-light-state-focus {
-    background: $p-color-state-focus;
+    color: black;
+    outline: $p-color-state-focus solid 1px;
+    outline-offset: -5px;
   }
   &--color-theme-light-state-disabled {
     background: $p-color-state-disabled;
@@ -100,14 +102,26 @@
   &--color-theme-dark-notification-success {
     background: $p-color-theme-dark-notification-success;
   }
+  &--color-theme-dark-notification-success-soft {
+    background: $p-color-theme-dark-notification-success-soft;
+  }
   &--color-theme-dark-notification-warning {
     background: $p-color-theme-dark-notification-warning;
+  }
+  &--color-theme-dark-notification-warning-soft {
+    background: $p-color-theme-dark-notification-warning-soft;
   }
   &--color-theme-dark-notification-error {
     background: $p-color-theme-dark-notification-error;
   }
+  &--color-theme-dark-notification-error-soft {
+    background: $p-color-theme-dark-notification-error-soft;
+  }
   &--color-theme-dark-notification-neutral {
     background: $p-color-theme-dark-notification-neutral;
+  }
+  &--color-theme-dark-notification-neutral-soft {
+    background: $p-color-theme-dark-notification-neutral-soft;
   }
   &--color-theme-dark-state-hover {
     background: $p-color-theme-dark-state-hover;
@@ -116,7 +130,9 @@
     background: $p-color-theme-dark-state-active;
   }
   &--color-theme-dark-state-focus {
-    background: $p-color-theme-dark-state-focus;
+    color: white;
+    outline: $p-color-theme-dark-state-focus solid 1px;
+    outline-offset: -5px;
   }
   &--color-theme-dark-state-disabled {
     background: $p-color-theme-dark-state-disabled;

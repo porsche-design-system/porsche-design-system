@@ -56,14 +56,29 @@ export class Link {
       right: -1px !important;
       bottom: -1px !important;
       display: block !important;
-      transition: outline-color 0.24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 2px !important;
     }
 
     ${tagName} a:focus::before {
-      outline-offset: 1px !important;
-      outline: #00d5b9 solid 2px !important;
+      outline-color: #323639 !important;
     }
-    `;
+
+    ${tagName}[theme="dark"] a:focus::before {
+      outline-color: #fff !important;
+    }
+
+    ${tagName}[variant="primary"] a:focus::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
+      outline-color: #d5001c !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
+    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
+    }`;
 
     insertSlottedStyles(this.element, style);
     improveFocusHandlingForCustomElement(this.element);

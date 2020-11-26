@@ -1,5 +1,4 @@
 import { PRadioButtonWrapper as RadioButtonWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
   return (
@@ -121,15 +120,6 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
           <span slot="message">
             Some error message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-        </RadioButtonWrapper>
-      </div>
-
-      <div className="playground light" title="should render in focus state">
-        <RadioButtonWrapper label="Some label">
-          <input id="test-focus-state" type="radio" name="some-name-10" />
-        </RadioButtonWrapper>
-        <RadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-10" />
         </RadioButtonWrapper>
       </div>
 

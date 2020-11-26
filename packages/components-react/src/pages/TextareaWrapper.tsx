@@ -1,5 +1,4 @@
 import { PTextareaWrapper as TextareaWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TextareaWrapperPage = (): JSX.Element => {
   return (
@@ -128,12 +127,6 @@ export const TextareaWrapperPage = (): JSX.Element => {
           <span slot="message">
             Some success message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-        </TextareaWrapper>
-      </div>
-
-      <div className="playground light" title="should render in focus state">
-        <TextareaWrapper label="Some label">
-          <textarea id="test-focus-state" name="some-name" style={{ caretColor: 'transparent' }} />
         </TextareaWrapper>
       </div>
 

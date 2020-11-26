@@ -25,10 +25,10 @@ describe('storefront', () => {
           await browserPage.waitForSelector('html.hydrated');
 
           const [buttonElement] = await browserPage.$x(
-            `//div[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
+            `//aside[@class='sidebar']//nav//p-button-pure[contains(., '${category}')]`
           );
           const [linkElement] = await browserPage.$x(
-            `//div[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(
+            `//aside[@class='sidebar']//nav//p-link-pure[contains(., '${page}')][@href='#\/${paramCase(
               category
             )}\/${paramCase(page)}']`
           );
@@ -48,7 +48,7 @@ describe('storefront', () => {
           if (!Array.isArray(tabs)) {
             for (const [index, tab] of Object.entries(Object.keys(tabs))) {
               const [tabElement] = await browserPage.$x(
-                `//nav[@class='tabs']//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(
+                `//p-tabs-bar//a[contains(., '${tab}')][@href='#\/${paramCase(category)}\/${paramCase(
                   page
                 )}#${paramCase(tab)}']`
               );

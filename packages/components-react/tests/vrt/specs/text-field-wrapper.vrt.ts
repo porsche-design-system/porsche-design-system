@@ -8,7 +8,6 @@ describe('Text Field Wrapper', () => {
         'text-field-wrapper',
         async () => {
           await vrt.goTo('/text-field-wrapper');
-          await vrt.focus('#test-focus-state');
         },
         testOptions
       )

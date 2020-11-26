@@ -1,21 +1,19 @@
 # Introduction
 ## Start Coding
 
-Porsche Design System provides developers with versioned packages of Web components, Angular components and React components to build clean and high-quality frontends that innately come with the latest design definitions.
+Porsche Design System provides developers with versioned packages of **Web components**, **Angular components** and **React components** to build clean and high-quality frontends that innately come with the latest design definitions.
 
-To enable a smooth start with the Porsche Design System we have created sample projects in all common frameworks. These projects show how to install and the usage of the Porsche Design System. Furthermore, the example projects contain examples and solutions for testing.
-
---- 
+To enable a smooth start with the Porsche Design System we have created **sample projects** in all common frameworks. These projects show how to install and the usage of the Porsche Design System. Furthermore, the example projects contain examples and solutions for testing.
 
 ## Requirements
 * [Node.js & NPM](https://nodejs.org)
 
 ### Get required NPM-Packages
 
-All releases of the Porsche Design System are available as versioned NPM packages called
-* `@porsche-design-system/components-js`
-* `@porsche-design-system/components-angular`
-* `@porsche-design-system/components-react`
+All releases of the Porsche Design System are available as versioned NPM packages. Please read more about them on the corresponding docs.
+* [Web components](#/start-coding/vanilla-js): `@porsche-design-system/components-js`
+* [Angular components](#/start-coding/angular): `@porsche-design-system/components-angular`
+* [React components](#/start-coding/react): `@porsche-design-system/components-react`
 
 Those packages can be consumed by one of the following private NPM registries:
 * Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
@@ -35,98 +33,16 @@ always-auth = true
 @porsche-design-system:registry = https://porscheui.jfrog.io/porscheui/api/npm/npm/
 ``` 
 
-#### Vanilla JS:
-``` 
-// install with npm:
-npm install @porsche-design-system/components-js
+### Get optional NPM-Packages
 
-// install with yarn:
-yarn add @porsche-design-system/components-js
-```
+We provide some additional packages which could help you in your daily business and hopefully make your coding life easier. These packages are optional and not directly needed to use our Porsche Design System components.
 
-#### Angular:
-``` 
-// install with npm:
-npm install @porsche-design-system/components-angular
+All releases of the Porsche Design System additional packages are available as versioned NPM packages. Please read more about them on the corresponding docs.
+* [Utilities](#/utilities/introduction): `@porsche-design-system/utilities`
+* [Assets](#/assets/introduction): `@porsche-design-system/assets`
+* [Partials](#/performance/loading-behaviour): `@porsche-design-system/partials`
 
-// install with yarn:
-yarn add @porsche-design-system/components-angular
-```
-
-#### React:
-``` 
-// install with npm:
-npm install @porsche-design-system/components-react
-
-// install with yarn:
-yarn add @porsche-design-system/components-react
-```
-
-#### SCSS utils (optional):
-``` 
-// install with npm:
-npm install @porsche-design-system/utilities --save-dev
-
-// install with yarn:
-yarn add @porsche-design-system/utilities --dev
-``` 
-
-## Usage
-
-### Vanilla JS
-
-If you're using web components in a static website, the following page setup is recommended (assuming a web server is running):
-
-``` 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      porscheDesignSystem.load();
-    </script>
-    <p-headline variant="headline-1">Some text</p-headline>
-  </body>
-</html>
-``` 
-
-You can load the Porsche Design System with a custom unique prefix to prevent conflicts. You've just to pass
-the prefix as a parameter to the `load` method.
-Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
-do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
-
-``` 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      porscheDesignSystem.load({ prefix: 'sample-prefix' });
-    </script>
-    <sample-prefix-p-headline variant="headline-1">Some text</sample-prefix-p-headline>
-  </body>
-</html>
-```
-
---- 
-
-### SCSS utils
-
-SCSS utils can be used for easier Scss/Sass development. See [SCSS utils section](#/utilities/scss) for further information.
-
---- 
-
-### Web components used with a not-supported framework
+## Web components used with a not-supported framework
 
 At the time of writing, we only provide wrappers for Angular and React. But this doesn't mean that our web components can't be used with other frameworks like Vue or Ember. 
 Just follow these guidelines to make our web components work in other frameworks:
