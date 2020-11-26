@@ -1,17 +1,18 @@
-@import "../variables/color";
+@import '../variables/color';
 
-@mixin p-focus($color: $p-color-state-focus, $offset: 1px, $pseudo: '') {
-
+@mixin p-focus($color: $p-color-state-focus, $offset: 2px, $pseudo: '') {
   @if $pseudo != '::before' and $pseudo != '::after' and $pseudo != '' {
     @error 'The parameter $pseudo needs to be "::before" or "::after" when set.';
   }
 
-  @if $offset != '1px' and $offset != '2px' {
-    @error 'The parameter $offset needs to be "1px" or "2px" when set.';
-  }
-
   &::-moz-focus-inner {
     border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  @if $pseudo != '' {
+    & {
+      outline: transparent none;
+    }
   }
 
   &#{$pseudo} {
@@ -19,7 +20,7 @@
     outline-offset: $offset;
 
     @if $pseudo == '::before' or $pseudo == '::after' {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;

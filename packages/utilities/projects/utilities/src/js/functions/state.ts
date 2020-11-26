@@ -1,11 +1,10 @@
 import { color as colors } from '../variables';
 
 type PseudoElement = '::before' | '::after';
-type Offset = '1px' | '2px';
 
-type Options = { color?: string; offset?: Offset; pseudo?: PseudoElement };
+type Options = { color?: string; offset?: string; pseudo?: PseudoElement };
 
-const defaultOptions: Options = { color: colors.state.focus, offset: '1px' };
+const defaultOptions: Options = { color: colors.state.focus, offset: '2px' };
 
 export const focus = (opts?: Options): string => {
   const options: Options = { ...defaultOptions, ...opts };
@@ -13,6 +12,7 @@ export const focus = (opts?: Options): string => {
 
   return `
 ::-moz-focus-inner { border: 0; }
+${pseudo && '& { outline: transparent none; }'}
 ${pseudo ? `&${pseudo}{` : ''}
 outline: transparent solid 1px;
 outline-offset: ${offset};
