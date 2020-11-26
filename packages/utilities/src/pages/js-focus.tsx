@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, focus } from '@porsche-design-system/utilities';
+import { focus } from '@porsche-design-system/utilities';
 
 const FocusButtonRegular = styled.button`
   ${focus()}

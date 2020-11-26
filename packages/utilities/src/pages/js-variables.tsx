@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { color, font, headline, layout, focus, spacing, text, title } from '@porsche-design-system/utilities';
+import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
 const objectToFlatArray = (object: Object): string[] =>
