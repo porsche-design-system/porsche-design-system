@@ -16,13 +16,14 @@ let onLoadedPromise = createPromise();
 
 const checkForPromiseResolve = (): void => {
   if (taskCount === 0) {
+    console.log('checkForPromiseResolve');
     // we debounce 50ms, because the loader is doing the
-    // same for the "hydrated" class
+    // same for the "hydrated" class: https://github.com/ionic-team/stencil/blob/master/src/runtime/bootstrap-lazy.ts#L169
     timeout = window.setTimeout(() => {
       resolvePromise();
+      console.log('––> resolvedPromise');
       onLoadedPromise = createPromise();
-      console.log('resolvedPromise');
-    }, 50);
+    }, 30);
   }
 };
 
@@ -49,9 +50,13 @@ const registerStencilEventListeners = (): void => {
         // for debugging
         (e) => {
           handler();
-          console.log((e.target as any).tagName.toLowerCase(), e.type, taskCount);
+          console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
         }
       );
+    });
+
+    window.addEventListener('appload', (e) => {
+      console.log(e.type, taskCount);
     });
 
     hasRegisteredEventListeners = true;
