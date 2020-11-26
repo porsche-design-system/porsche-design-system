@@ -79,7 +79,7 @@ export const config: Config = {
   },
   globalScript: 'src/setup.ts',
   extras: {
-    lifecycleDOMEvents: true,
+    // lifecycleDOMEvents: true,
     tagNameTransform: true,
   },
 };
