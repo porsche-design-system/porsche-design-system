@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   selectNode, setAttribute,
   setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -40,6 +40,20 @@ describe('select-wrapper combobox', () => {
       const root = document.querySelector('p-select-wrapper');
       return Array.from(root.shadowRoot.querySelectorAll('.p-select-wrapper__fake-option--hidden')).length;
     });
+
+  const initCombobox = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-select-wrapper filter="true">
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -972,18 +986,30 @@ describe('select-wrapper combobox', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for shadow <input> filter', async () => {
+      await initCombobox();
+
+      const filterInput = await selectFilter();
+      const filterInputOverlay = await selectFilterOverlay();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'neutral'});
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(hidden);
+
+      await filterInput.click();
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
+    });
+
     it('should show outline of slotted <select> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-select-wrapper filter="true">
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </p-select-wrapper>`
-      );
+      await initCombobox();
 
       const host = await getSelectHost();
       const filterInput = await selectFilter();
