@@ -186,8 +186,8 @@ describe('link social', () => {
       await initLinkSocial();
 
       const link = await getLinkSocialRealLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
-      const visible = expectedStyleOnFocus({color: 'default', offset: '2px'}); // because of button click, :focus-visible & :hover
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'default'}); // because of button click, :focus-visible & :hover
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
@@ -210,11 +210,11 @@ describe('link social', () => {
       const host = await getLinkSocialHost();
       const link = await getLinkSocialRealLink();
 
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -223,11 +223,11 @@ describe('link social', () => {
       const host = await getLinkSocialHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
     });
   });
 });

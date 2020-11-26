@@ -164,8 +164,8 @@ describe('banner', () => {
 
       const titleLink = await getTitleLink();
       const descriptionLink = await getDescriptionLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent' });
-      const visible = expectedStyleOnFocus({ color: 'hover' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
 
@@ -205,8 +205,8 @@ describe('banner', () => {
       const titleLink = await getTitleLink();
       const descriptionLink = await getDescriptionLink();
 
-      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
     });
   });
 });

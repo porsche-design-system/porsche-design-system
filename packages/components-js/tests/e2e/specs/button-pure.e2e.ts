@@ -378,8 +378,8 @@ describe('button-pure', () => {
       await initButtonPure();
 
       const button = await getButtonPureRealButton();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(button, {pseudo: '::before'})).toBe(hidden);
 
@@ -402,12 +402,12 @@ describe('button-pure', () => {
       const host = await getButtonPureHost();
       const button = await getButtonPureRealButton();
 
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '1px'}));
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
     });
   });
 });

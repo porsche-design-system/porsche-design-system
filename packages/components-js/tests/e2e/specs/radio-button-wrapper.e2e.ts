@@ -264,8 +264,8 @@ describe('radio-button-wrapper', () => {
       await initRadioButton();
 
       const input = await getRadioButtonRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent', css: 'boxShadow'});
-      const visible = expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', css: 'boxShadow', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'neutral', css: 'boxShadow', offset: '1px'});
 
       expect(await getBoxShadowStyle(input)).toBe(hidden);
 
@@ -286,8 +286,8 @@ describe('radio-button-wrapper', () => {
 
       const labelLink = await getRadioButtonLabelLink();
       const messageLink = await getRadioButtonMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
@@ -341,14 +341,14 @@ describe('radio-button-wrapper', () => {
       const labelLink = await getRadioButtonLabelLink();
       const messageLink = await getRadioButtonMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
     });
   });
 });

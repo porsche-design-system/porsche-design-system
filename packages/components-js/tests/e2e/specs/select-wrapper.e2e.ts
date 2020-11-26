@@ -190,8 +190,8 @@ describe('select-wrapper', () => {
       await initSelect();
 
       const textarea = await getSelectRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '2px'});
-      const visible = expectedStyleOnFocus({color: 'neutral', offset: '2px'});
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'neutral'});
 
       expect(await getOutlineStyle(textarea)).toBe(hidden);
 
@@ -213,8 +213,8 @@ describe('select-wrapper', () => {
       const labelLink = await getSelectLabelLink();
       const descriptionLink = await getSelectDescriptionLink();
       const messageLink = await getSelectMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'hover'});
+      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
+      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -262,29 +262,29 @@ describe('select-wrapper', () => {
       const host = await getSelectHost();
       const input = await getSelectRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
 
       await setAttribute(host, 'theme', 'dark');
 
       await setAttribute(host, 'state', 'none');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
@@ -295,15 +295,15 @@ describe('select-wrapper', () => {
       const descriptionLink = await getSelectDescriptionLink();
       const messageLink = await getSelectMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
     });
   });
 });
