@@ -2380,10 +2380,10 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-1.0.0-rc.1.tgz#6925af37183ecf91335f49d008bb6ade35e1343b"
   integrity sha1-aSWvNxg+z5EzX0nQCLtq3jXhNDs=
 
-"@porsche-design-system/construct-style-sheets-polyfill@^2.4.3":
-  version "2.4.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/construct-style-sheets-polyfill/-/@porsche-design-system/construct-style-sheets-polyfill-2.4.3.tgz#9e4a6b3a7acda083306ccea57577b2e8b985afaa"
-  integrity sha1-nkprOnrNoIMwbM6ldXey6LmFr6o=
+"@porsche-design-system/components-js@2.0.0-alpha.7":
+  version "2.0.0-alpha.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-2.0.0-alpha.7.tgz#670007fd9bbb34696da75baa029fcef09868fbbb"
+  integrity sha1-ZwAH/Zu7NGltp1uqAp/O8Jho+7s=
 
 "@porsche-design-system/visual-regression-tester@^3.0.0":
   version "3.0.0"
@@ -5896,6 +5896,11 @@ constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
+
+construct-style-sheets-polyfill@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/construct-style-sheets-polyfill/-/construct-style-sheets-polyfill-2.4.3.tgz#4eb1d1de0412d25df9f2d23d7e9080a0c3ba275b"
+  integrity sha512-ECo96zFPsdghrMJmJ0vomcHsqLOIYpudobcNCIPeMubyFzBcLCfljuY0oFA3DD7btiFqB0sZ+0szbsiE8I24VA==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -13636,10 +13641,20 @@ postcss@7.x.x, postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, post
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.0, postcss@^8.1.7, postcss@~7.0.17:
+postcss@^8.1.0:
   version "8.1.9"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.1.9.tgz#20ff4b598a6f5015c5f7fe524b8ed5313d7ecade"
   integrity sha512-oWuBpEl1meaMKkQXn0ic78TUrgsMvrAZLE/6ZY0H3LTteq2O3L8PGWwMbPLctpksTJIHjQeossMUMNQW7qRIHQ==
+  dependencies:
+    colorette "^1.2.1"
+    nanoid "^3.1.18"
+    source-map "^0.6.1"
+    vfile-location "^3.2.0"
+
+postcss@^8.1.7, postcss@~7.0.17:
+  version "8.1.10"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.1.10.tgz#129834f94c720554d2cfdaeb27d5542ac4a026ea"
+  integrity sha512-iBXEV5VTTYaRRdxiFYzTtuv2lGMQBExqkZKSzkJe+Fl6rvQrA/49UVGKqB+LG54hpW/TtDBMGds8j33GFNW7pg==
   dependencies:
     colorette "^1.2.1"
     nanoid "^3.1.18"
