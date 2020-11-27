@@ -14,7 +14,7 @@ export default {
   },
   plugins: [
     polyfill([
-      '@porsche-design-system/construct-style-sheets-polyfill',
+      'construct-style-sheets-polyfill',
       'intersection-observer',
       'scroll-behavior-polyfill',
       'isomorphic-fetch'
