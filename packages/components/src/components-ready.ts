@@ -81,40 +81,21 @@ const allReady = async (): Promise<void> => {
   promises.length = 0; // clear array of promises for next cycle
 };
 
-// let hasStencilLoaded = false;
 const stencilLoaded = async (): Promise<void> => {
   console.log('stencilLoaded?');
-  // await allReady(); // TODO: why not skip this completely?
+  await allReady(); // needed at least for jsdom-polyfill
   await waitFrame();
   await allReady();
-  console.log('stencilLoaded /// setting stencilAppLoaded = true');
-  (window as any).stencilAppLoaded = true; // TODO: rename and move into our key
+  // console.log('stencilLoaded /// setting stencilAppLoaded = true');
+  // (window as any).stencilAppLoaded = true; // TODO: rename and move into our key
 
   registerStencilEventListeners();
 
-  // hasStencilLoaded = true;
   console.log('––> stencilLoaded');
   checkPromiseResolve();
 };
 
-// const stencilReady = async (): Promise<void> => {
-//   console.log('stencilReady?');
-//   if (hasStencilLoaded) {
-//     await allReady();
-//     console.log('––> stencilReady');
-//     checkPromiseResolve();
-//   }
-// };
-
 const registerStencilEventListeners = (): void => {
-  // register listeners for stencil's appload event
-  // window.addEventListener('appload', (e: CustomEvent) => {
-  //   if (isEventInStencilNamespace(e)) {
-  //     console.log(e, e.type, e.detail.namespace);
-  //     stencilReady(); // TODO: try to narrow down to event.target
-  //   }
-  // });
-
   // register listeners for stencil's lifecycleDOMEvents
   ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
@@ -129,16 +110,16 @@ const registerStencilEventListeners = (): void => {
 
 const initialize = (): void => {
   if (!isInitialized) {
-    checkDocumentReadyStateAndStencil();
-
-    // TODO: wrap in if block
-    const eventName = 'readystatechange';
-    const eventHandler = (): void => {
-      if (checkDocumentReadyStateAndStencil()) {
-        document.removeEventListener(eventName, eventHandler);
-      }
-    };
-    document.addEventListener(eventName, eventHandler);
+    if (!checkDocumentReadyStateAndStencil()) {
+      // if document isn't ready yet, we register readystatechange event listener
+      const eventName = 'readystatechange';
+      const eventHandler = (): void => {
+        if (checkDocumentReadyStateAndStencil()) {
+          document.removeEventListener(eventName, eventHandler);
+        }
+      };
+      document.addEventListener(eventName, eventHandler);
+    }
 
     isInitialized = true;
   }
@@ -151,7 +132,5 @@ const checkDocumentReadyStateAndStencil = (): boolean => {
   if (document.readyState === 'complete') {
     stencilLoaded();
     return true;
-  } else {
-    return false;
   }
 };
