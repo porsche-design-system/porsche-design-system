@@ -335,10 +335,7 @@ export class SelectWrapper {
 
   private handleClickOutside = (e: MouseEvent): void => {
     if (!this.host.contains(e.target as HTMLElement)) {
-      this.fakeOptionListHidden = true;
-      if (this.filter) {
-        this.filterInput.value = '';
-      }
+      this.handleVisibilityOfFakeOptionList('hide');
     }
   };
 
@@ -360,12 +357,12 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const { children } = this.fakeOptionListNode;
+      const children = this.fakeOptionListNode.querySelectorAll(`.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`);
       const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
 
-      // Max number of children visible is set to 5
+      // Max number of children visible is set to 10
       const listNodeHeight = numberOfChildNodes >= 10 ? listNodeChildrenHeight * 10 : listNodeChildrenHeight * numberOfChildNodes;
       const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
       if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
@@ -386,6 +383,9 @@ export class SelectWrapper {
     } else {
       if (type === 'hide' || type === 'toggle') {
         this.fakeOptionListHidden = true;
+        if(this.filter) {
+          this.resetFilterInput();
+        }
       }
     }
   }
@@ -419,7 +419,6 @@ export class SelectWrapper {
         if (this.filter) {
           if (this.fakeOptionListHidden) {
             e.preventDefault();
-            this.resetFilterInput();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
@@ -531,8 +530,8 @@ export class SelectWrapper {
   private createFakeOptionList(): JSX.Element[][] {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
     return !this.filterHasResults ? (
-      <div class={prefix('select-wrapper__fake-option')}>
-        <span>---</span>
+      <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
+        <span aria-hidden="true">---</span><span class={prefix('select-wrapper__fake-option-sr')}>No results found</span>
       </div>
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
@@ -641,7 +640,6 @@ export class SelectWrapper {
   private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
-      this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
     }
   };
