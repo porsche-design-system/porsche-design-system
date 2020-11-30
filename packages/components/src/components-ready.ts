@@ -76,48 +76,50 @@ const allReady = async (): Promise<void> => {
 
   await Promise.all(promises).catch(console.error);
   console.log('––> allReady', promises.length);
+
+  // TODO: solve race conditions with multiple ready checks / resets in parallel
   promises.length = 0; // clear array of promises for next cycle
 };
 
-let hasStencilLoaded = false;
+// let hasStencilLoaded = false;
 const stencilLoaded = async (): Promise<void> => {
   console.log('stencilLoaded?');
-  await allReady();
+  // await allReady(); // TODO: why not skip this completely?
   await waitFrame();
   await allReady();
   console.log('stencilLoaded /// setting stencilAppLoaded = true');
-  (window as any).stencilAppLoaded = true;
+  (window as any).stencilAppLoaded = true; // TODO: rename and move into our key
 
   registerStencilEventListeners();
 
-  hasStencilLoaded = true;
+  // hasStencilLoaded = true;
   console.log('––> stencilLoaded');
   checkPromiseResolve();
 };
 
-const stencilReady = async (): Promise<void> => {
-  console.log('stencilReady?');
-  if (hasStencilLoaded) {
-    await allReady();
-    console.log('––> stencilReady');
-    checkPromiseResolve();
-  }
-};
+// const stencilReady = async (): Promise<void> => {
+//   console.log('stencilReady?');
+//   if (hasStencilLoaded) {
+//     await allReady();
+//     console.log('––> stencilReady');
+//     checkPromiseResolve();
+//   }
+// };
 
 const registerStencilEventListeners = (): void => {
   // register listeners for stencil's appload event
-  window.addEventListener('appload', (e: CustomEvent) => {
-    if (isEventInStencilNamespace(e)) {
-      console.log(e.type, e.detail.namespace);
-      stencilReady();
-    }
-  });
+  // window.addEventListener('appload', (e: CustomEvent) => {
+  //   if (isEventInStencilNamespace(e)) {
+  //     console.log(e, e.type, e.detail.namespace);
+  //     stencilReady(); // TODO: try to narrow down to event.target
+  //   }
+  // });
 
   // register listeners for stencil's lifecycleDOMEvents
-  [/*'componentWillLoad', 'componentDidLoad',*/ 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
-    const handler = event.includes('Will') ? increaseCount : decreaseCount;
+  ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
       if (isEventInStencilNamespace(e)) {
+        const handler = event.includes('Will') ? increaseCount : decreaseCount;
         console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
         handler();
       }
@@ -129,6 +131,7 @@ const initialize = (): void => {
   if (!isInitialized) {
     checkDocumentReadyStateAndStencil();
 
+    // TODO: wrap in if block
     const eventName = 'readystatechange';
     const eventHandler = (): void => {
       if (checkDocumentReadyStateAndStencil()) {
