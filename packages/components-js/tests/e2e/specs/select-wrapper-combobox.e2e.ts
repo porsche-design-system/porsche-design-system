@@ -224,7 +224,7 @@ describe('select-wrapper combobox', () => {
     expect(afterFocusCalls).toBe(1);
   });
 
-  it('should open flyout, filter "B" if "b" is entered and select it', async () => {
+  it('should open flyout, filter results to "B" if "b" is entered and select it', async () => {
     await setContentWithDesignSystem(
       page,
       `<p-select-wrapper label="Some label" filter="true">
@@ -252,6 +252,7 @@ describe('select-wrapper combobox', () => {
     expect(await hidden()).toBe(2);
     expect(visibleElementClasses).not.toContain('p-select-wrapper__fake-option--hidden');
 
+    await page.keyboard.press('ArrowDown');
     await filterInput.press('Enter');
     const value = await getProperty(select, 'value');
 
@@ -327,6 +328,7 @@ describe('select-wrapper combobox', () => {
     const filterInput = await selectFilter();
 
     await filterInput.type('B');
+    await page.keyboard.press('ArrowDown');
     await filterInput.press('Enter');
     await waitForStencilLifecycle(page);
 

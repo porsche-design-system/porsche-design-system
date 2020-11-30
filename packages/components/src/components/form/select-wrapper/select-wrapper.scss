@@ -416,6 +416,14 @@
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
+    &[role="status"] {
+      cursor: not-allowed;
+    }
+
+    &-sr {
+      @include p-text-field-wrapper-label-text-hidden;
+    }
+
     #{$bem-block}--theme-light & {
       color: $p-color-default;
     }
@@ -424,7 +432,7 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not([aria-disabled]):hover {
+    &:not([aria-disabled]):not([role="status"]):hover {
       #{$bem-block}--theme-light & {
         color: $p-color-state-hover;
         background-color: $p-color-background-surface;
@@ -481,7 +489,7 @@
     }
 
     &--hidden,
-    &--initiallyHidden{
+    &--initiallyHidden {
       display: none;
     }
   }
