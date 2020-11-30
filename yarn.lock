@@ -2407,10 +2407,10 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.5.tgz#666ef04e0919af9cad94ce6d9d114c00b62ae7d9"
-  integrity sha1-Zm7wTgkZr5ytlM5tnRFMALYq59k=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.6.tgz#88acbb8abf08b4820de839d716b707d2aa143bd5"
+  integrity sha1-iKy7ir8ItIIN6DnXFrcH0qoUO9U=
   dependencies:
     "@porsche-design-system/web-components-manager" "1.0.0-alpha.3"
     glob "^7.1.6"
