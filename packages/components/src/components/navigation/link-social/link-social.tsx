@@ -132,6 +132,11 @@ export class LinkSocial {
 
     ${tagName}[theme="dark"] a:focus::before {
       outline-color: #fff !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.host, style);
