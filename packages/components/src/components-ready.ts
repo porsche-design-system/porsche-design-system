@@ -83,7 +83,7 @@ const allReady = async (): Promise<void> => {
 
 const stencilLoaded = async (): Promise<void> => {
   console.log('stencilLoaded?');
-  await allReady(); // needed at least for jsdom-polyfill
+  // await allReady(); // needed at least for jsdom-polyfill?
   await waitFrame();
   await allReady();
   // console.log('stencilLoaded /// setting stencilAppLoaded = true');
