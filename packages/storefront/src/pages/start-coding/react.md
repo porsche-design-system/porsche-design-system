@@ -138,6 +138,12 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 });
 ```
 
+### Things to know while using web-components with jest
+
+You are not able to use `getByRole` to query Porsche-Design-System components in jest.
+Jest is taking default `roles` in consideration. For example  a `<button>` gets the role `button` without explicitly setting the attribute.
+While using our web-components, the `<button>` is wrapped, so jest is not able to set the role.
+
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
 
 ## Advanced usage
