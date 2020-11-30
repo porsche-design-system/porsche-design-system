@@ -54,40 +54,27 @@ const waitForDidLoad = (elm: Element): void => {
       }
       waitForDidLoad(childElm);
     });
-
-    // for (let i = 0; i < elm.children.length; i++) {
-    //   console.log('allReady loop', i);
-    //   const childElm = elm.children[i];
-    //   if (childElm.tagName.includes('P-') && typeof (childElm as any).componentOnReady === 'function') {
-    //     promises.push((childElm as any).componentOnReady());
-    //     console.log('added promise');
-    //   }
-    //   waitForDidLoad(childElm);
-    // }
   }
 };
 
 const allReady = async (): Promise<void> => {
   console.log('allReady?', promises.length);
 
-  // waitForDidLoad(promises, window.document.documentElement);
   // TODO: add ability to pass any element to reduce recursive search radius
   waitForDidLoad(document.getElementById('app'));
 
   await Promise.all(promises).catch(console.error);
   console.log('––> allReady', promises.length);
 
-  // TODO: solve race conditions with multiple ready checks / resets in parallel
-  promises.length = 0; // clear array of promises for next cycle
+  promises.length = 0; // clear array of promises
 };
 
 const stencilLoaded = async (): Promise<void> => {
   console.log('stencilLoaded?');
-  // await allReady(); // needed at least for jsdom-polyfill?
+  await allReady(); // needed at least for jsdom-polyfill?
   await waitFrame();
   await allReady();
-  // console.log('stencilLoaded /// setting stencilAppLoaded = true');
-  // (window as any).stencilAppLoaded = true; // TODO: rename and move into our key
+  // (window as any).porscheDesignSystem.hasLoaded = true;
 
   registerStencilEventListeners();
 
@@ -110,11 +97,11 @@ const registerStencilEventListeners = (): void => {
 
 const initialize = (): void => {
   if (!isInitialized) {
-    if (!checkDocumentReadyStateAndStencil()) {
+    if (!checkDocumentReadyStateAndStencilLoaded()) {
       // if document isn't ready yet, we register readystatechange event listener
       const eventName = 'readystatechange';
       const eventHandler = (): void => {
-        if (checkDocumentReadyStateAndStencil()) {
+        if (checkDocumentReadyStateAndStencilLoaded()) {
           document.removeEventListener(eventName, eventHandler);
         }
       };
@@ -127,7 +114,7 @@ const initialize = (): void => {
 
 const isEventInStencilNamespace = (e: CustomEvent): boolean => e.detail.namespace === 'porsche-design-system';
 
-const checkDocumentReadyStateAndStencil = (): boolean => {
+const checkDocumentReadyStateAndStencilLoaded = (): boolean => {
   console.log('document.readyState', document.readyState);
   if (document.readyState === 'complete') {
     stencilLoaded();
