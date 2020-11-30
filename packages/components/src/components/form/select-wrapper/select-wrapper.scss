@@ -664,7 +664,8 @@
       left: 0;
       right: 0;
       height: p-px-to-rem(48px);
-      outline: transparent none;
+      outline: transparent solid 1px;
+      outline-offset: 2px;
       transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
@@ -698,10 +699,6 @@
 
     &:focus {
       opacity: 1;
-      + span {
-        outline: transparent solid 1px;
-        outline-offset: 2px;
-      }
     }
 
     &:disabled {
