@@ -69,8 +69,15 @@ export class Link {
     }
 
     ${tagName}[variant="primary"] a:focus::before,
-     ${tagName}[theme="dark"][variant="primary"] a:focus::before {
+    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
       outline-color: #d5001c !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
+    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.element, style);
