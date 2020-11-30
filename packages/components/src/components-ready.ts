@@ -34,23 +34,22 @@ const decreaseCount = (): void => {
 export const componentsReady = (): Promise<void> => {
   console.log('componentsReady');
   initialize();
-  const prom = new Promise<void>((resolve) => {
+  return new Promise<void>((resolve) => {
     promiseResolve = resolve;
   });
-  return prom;
 };
 
 // ------------------
 
 const waitFrame = (): any => requestAnimationFrame;
 
-const promises: Promise<any>[] = [];
+const readyPromises: Promise<any>[] = [];
 const waitForDidLoad = (elm: Element): void => {
   // Node.ELEMENT_NODE: An Element node like <p> or <div>
   if (elm?.nodeType === 1) {
     (Array.from(elm.children) as HostElement[]).forEach((childElm) => {
       if (childElm.tagName.includes('P-') && typeof childElm.componentOnReady === 'function') {
-        promises.push(childElm.componentOnReady());
+        readyPromises.push(childElm.componentOnReady());
       }
       waitForDidLoad(childElm);
     });
@@ -58,15 +57,15 @@ const waitForDidLoad = (elm: Element): void => {
 };
 
 const allReady = async (): Promise<void> => {
-  console.log('allReady?', promises.length);
+  console.log('allReady?');
 
   // TODO: add ability to pass any element to reduce recursive search radius
   waitForDidLoad(document.getElementById('app'));
 
-  await Promise.all(promises).catch(console.error);
-  console.log('––> allReady', promises.length);
+  await Promise.all(readyPromises).catch(console.error);
+  console.log('––> allReady', readyPromises.length);
 
-  promises.length = 0; // clear array of promises
+  readyPromises.length = 0; // clear array of promises
 };
 
 const stencilLoaded = async (): Promise<void> => {
@@ -87,9 +86,12 @@ const registerStencilEventListeners = (): void => {
   ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
       if (isEventInStencilNamespace(e)) {
-        const handler = event.includes('Will') ? increaseCount : decreaseCount;
-        console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
-        handler();
+        // console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
+        if (event.includes('Will')) {
+          increaseCount();
+        } else {
+          decreaseCount();
+        }
       }
     });
   });
