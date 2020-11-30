@@ -5,26 +5,16 @@ import { HostElement } from '@stencil/core/internal';
 let isInitialized = false;
 let taskCount = 0;
 let timeout: number;
-let resolvePromise: () => void;
-
-const createPromise = (): Promise<void> => {
-  console.log('createPromise');
-  return new Promise((resolve) => {
-    resolvePromise = resolve;
-  });
-};
-
-let onLoadedPromise = createPromise();
+let promiseResolve: () => void;
 
 const checkPromiseResolve = (): void => {
+  console.log('checkPromiseResolve');
   if (taskCount === 0) {
-    console.log('checkPromiseResolve');
     // we debounce 30ms, because the loader is doing the
     // same for the "hydrated" class: https://github.com/ionic-team/stencil/blob/master/src/runtime/bootstrap-lazy.ts#L169
     timeout = window.setTimeout(() => {
-      resolvePromise();
+      promiseResolve();
       console.log('––> resolvedPromise');
-      onLoadedPromise = createPromise();
     }, 30);
   }
 };
@@ -44,8 +34,10 @@ const decreaseCount = (): void => {
 export const componentsReady = (): Promise<void> => {
   console.log('componentsReady');
   initialize();
-  checkPromiseResolve();
-  return onLoadedPromise;
+  const prom = new Promise<void>((resolve) => {
+    promiseResolve = resolve;
+  });
+  return prom;
 };
 
 // ------------------
@@ -100,6 +92,7 @@ const stencilLoaded = async (): Promise<void> => {
 
   hasStencilLoaded = true;
   console.log('––> stencilLoaded');
+  checkPromiseResolve();
 };
 
 const stencilReady = async (): Promise<void> => {
@@ -107,6 +100,7 @@ const stencilReady = async (): Promise<void> => {
   if (hasStencilLoaded) {
     await allReady();
     console.log('––> stencilReady');
+    checkPromiseResolve();
   }
 };
 
@@ -120,12 +114,12 @@ const registerStencilEventListeners = (): void => {
   });
 
   // register listeners for stencil's lifecycleDOMEvents
-  ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
+  [/*'componentWillLoad', 'componentDidLoad',*/ 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     const handler = event.includes('Will') ? increaseCount : decreaseCount;
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
       if (isEventInStencilNamespace(e)) {
-        handler();
         console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
+        handler();
       }
     });
   });
@@ -154,5 +148,7 @@ const checkDocumentReadyStateAndStencil = (): boolean => {
   if (document.readyState === 'complete') {
     stencilLoaded();
     return true;
+  } else {
+    return false;
   }
 };
