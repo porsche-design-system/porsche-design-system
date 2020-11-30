@@ -271,6 +271,7 @@
   }
 
   &__button {
+    @include p-focus($p-color-state-focus, -4px);
     position: absolute;
     bottom: 0;
     right: 0;
@@ -288,21 +289,12 @@
     color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &::-moz-focus-inner {
-      border: 0; // fix for Firefox, avoid dotted outline in button on focus
-    }
-
     &:hover {
       color: $p-color-state-hover;
     }
 
     &:active {
       color: $p-color-state-active;
-    }
-
-    &:focus {
-      outline: $p-color-state-focus solid 1px;
-      outline-offset: -4px;
     }
 
     &:disabled {
