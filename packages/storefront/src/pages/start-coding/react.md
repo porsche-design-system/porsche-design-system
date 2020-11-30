@@ -95,12 +95,12 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 However, it doesn't support JavaScript modules as described in this [issue](https://github.com/jsdom/jsdom/issues/2475).  
 Also, it doesn't support `CSSStyleSheet.replace()`.
 
-As a workaround you can try to install and apply following polyfill in your **setupTest.{js|ts}** file.
+As a workaround you can try to install the `construct-style-sheets-polyfill` npm package and apply it in your **setupTest.{js|ts}** file.
 
 ```tsx
 // setupTest.{js|ts}
 
-import '@porsche-design-system/construct-style-sheets-polyfill';
+import 'construct-style-sheets-polyfill';
 ```
 
 If it doesn't work or if you are using a Jest/Jsdom version which doesn't support ShadowDOM at all then you can
