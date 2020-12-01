@@ -238,7 +238,7 @@ describe('select-wrapper combobox', () => {
     expect(afterFocusCalls).toBe(1);
   });
 
-  it('should open flyout, filter results to "B" if "b" is entered and select it', async () => {
+  it('should open flyout, filter results to "B" if "b" is entered and select it on ArrowDown', async () => {
     await setContentWithDesignSystem(
       page,
       `<p-select-wrapper label="Some label" filter="true">
@@ -297,7 +297,7 @@ describe('select-wrapper combobox', () => {
     expect(errorOptionValue).toBe('---');
   });
 
-  it('should clear input value on click outside', async () => {
+  it('should clear input value and reset fake option list on click outside', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -314,6 +314,12 @@ describe('select-wrapper combobox', () => {
 
     const filterInput = await selectFilter();
     const text = await selectNode(page, 'p-text');
+    const fakeOptions = await getSelectOptionList();
+    const numberOfFakeOptions = () => fakeOptions.evaluate((el: HTMLElement) => {
+      return el.querySelectorAll('.p-select-wrapper__fake-option').length;
+    });
+
+    expect(await numberOfFakeOptions()).toBe(3);
 
     await filterInput.type('x');
     await waitForStencilLifecycle(page);
@@ -321,10 +327,13 @@ describe('select-wrapper combobox', () => {
     const value = () => getProperty(filterInput, 'value');
 
     expect(await value()).toBe('x');
+    expect(await numberOfFakeOptions()).toBe(1);
 
     await text.click();
+    await waitForStencilLifecycle(page);
 
     expect(await value()).toBe('');
+    expect(await numberOfFakeOptions()).toBe(3);
   });
 
   it('should add valid selection as placeholder on enter', async () => {
