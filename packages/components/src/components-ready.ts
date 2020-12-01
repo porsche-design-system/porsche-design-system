@@ -56,21 +56,18 @@ const waitForDidLoad = (elm: Element): void => {
   }
 };
 
-const allReady = async (): Promise<void> => {
+const allReady = async (el: Element = document.body): Promise<void> => {
   console.log('allReady?');
-
-  // TODO: add ability to pass any element to reduce recursive search radius
-  waitForDidLoad(document.getElementById('app'));
-
+  waitForDidLoad(el);
   await Promise.all(readyPromises).catch(console.error);
-  console.log('––> allReady', readyPromises.length);
 
+  console.log('––> allReady', readyPromises.length);
   readyPromises.length = 0; // clear array of promises
 };
 
 const stencilLoaded = async (): Promise<void> => {
   console.log('stencilLoaded?');
-  await allReady(); // needed at least for jsdom-polyfill?
+  // await allReady(); // needed at least for jsdom-polyfill?
   await waitFrame();
   await allReady();
   // (window as any).porscheDesignSystem.hasLoaded = true;
@@ -86,7 +83,7 @@ const registerStencilEventListeners = (): void => {
   ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
       if (isEventInStencilNamespace(e)) {
-        // console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
+        console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
         if (event.includes('Will')) {
           increaseCount();
         } else {
@@ -98,6 +95,8 @@ const registerStencilEventListeners = (): void => {
 };
 
 const initialize = (): void => {
+  // it appears that at least in our jsdom polyfill tests jest doesn't fully clean up between tests
+  // therefore `isInitialized` is true on the 2nd test, so we have to call `checkPromiseResolve()` in this case
   if (!isInitialized) {
     if (!checkDocumentReadyStateAndStencilLoaded()) {
       // if document isn't ready yet, we register readystatechange event listener
@@ -111,6 +110,8 @@ const initialize = (): void => {
     }
 
     isInitialized = true;
+  } else {
+    checkPromiseResolve();
   }
 };
 
