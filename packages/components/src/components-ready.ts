@@ -56,9 +56,8 @@ const waitForDidLoad = (elm: Element): void => {
   }
 };
 
-const allReady = async (el: Element = document.body): Promise<void> => {
-  console.log('allReady?');
-  waitForDidLoad(el);
+const allReady = async (): Promise<void> => {
+  waitForDidLoad(document.body);
   await Promise.all(readyPromises).catch(console.error);
 
   console.log('––> allReady', readyPromises.length);
@@ -66,7 +65,6 @@ const allReady = async (el: Element = document.body): Promise<void> => {
 };
 
 const stencilLoaded = async (): Promise<void> => {
-  console.log('stencilLoaded?');
   // await allReady(); // needed at least for jsdom-polyfill?
   await waitFrame();
   await allReady();
@@ -74,7 +72,6 @@ const stencilLoaded = async (): Promise<void> => {
 
   registerStencilEventListeners();
 
-  console.log('––> stencilLoaded');
   checkPromiseResolve();
 };
 
@@ -83,7 +80,6 @@ const registerStencilEventListeners = (): void => {
   ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
     window.addEventListener(`stencil_${event}`, (e: CustomEvent) => {
       if (isEventInStencilNamespace(e)) {
-        console.log((e.composedPath()[0] as any).tagName.toLowerCase(), e.type, taskCount);
         if (event.includes('Will')) {
           increaseCount();
         } else {
@@ -118,7 +114,6 @@ const initialize = (): void => {
 const isEventInStencilNamespace = (e: CustomEvent): boolean => e.detail.namespace === 'porsche-design-system';
 
 const checkDocumentReadyStateAndStencilLoaded = (): boolean => {
-  console.log('document.readyState', document.readyState);
   if (document.readyState === 'complete') {
     stencilLoaded();
     return true;
