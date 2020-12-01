@@ -251,7 +251,7 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
-  it('should prevent page from scrolling when initially open', async  () => {
+  it('should prevent page from scrolling when initially open', async () => {
     await initBasicModal({ isOpen: true });
     const body = await selectNode(page, 'body');
     const getBodyOverflow = () => getElementStyle(body, 'overflow');
