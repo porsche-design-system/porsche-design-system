@@ -1,5 +1,5 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { load } from '@porsche-design-system/components-js';
+import { componentsReady, load } from '@porsche-design-system/components-js';
 import { PREVENT_WEB_COMPONENTS_REGISTRATION, WEB_COMPONENTS_PREFIX } from './injection.tokens';
 
 import {
@@ -87,5 +87,7 @@ export class PorscheDesignSystemModule {
     if (!preventWebComponentsRegistration) {
       load({ prefix: webComponentsPrefix });
     }
+
+    (window as any).componentsReady = componentsReady;
   }
 }
