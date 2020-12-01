@@ -1,4 +1,5 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { waitForStencilLifecycle } from './stencil';
 
 export const setContentWithDesignSystem = async (
   page: Page,
@@ -18,7 +19,7 @@ export const setContentWithDesignSystem = async (
     `,
     options
   );
-  await page.waitForSelector('html.hydrated');
+  await waitForStencilLifecycle(page);
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
