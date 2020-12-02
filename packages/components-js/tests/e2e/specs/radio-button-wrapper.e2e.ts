@@ -34,32 +34,28 @@ describe('radio-button-wrapper', () => {
   const getRadioButtonLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getRadioButtonMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
 
+  type InitOptions = { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState };
   const initRadioButton = (
-    {
-      useSlottedLabel,
-      useSlottedMessage,
-      state,
-    }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState } = {
+    { useSlottedLabel, useSlottedMessage, state }: InitOptions = {
       useSlottedLabel: false,
       useSlottedMessage: false,
       state: 'none',
     }
   ): Promise<void> => {
+    const slottedLabel = useSlottedLabel
+      ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+      : '';
+    const slottedMessage = useSlottedMessage
+      ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+      : '';
+
     return setContentWithDesignSystem(
       page,
       `
         <p-radio-button-wrapper state="${state}">
-          ${
-            useSlottedLabel
-              ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
-              : ''
-          }
+          ${slottedLabel}
           <input type="radio" />
-          ${
-            useSlottedMessage
-              ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
-              : ''
-          }
+          ${slottedMessage}
         </p-radio-button-wrapper>`
     );
   };
@@ -122,7 +118,6 @@ describe('radio-button-wrapper', () => {
   });
 
   it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
-    // enableBrowserLogging(page);
     await setContentWithDesignSystem(
       page,
       `
