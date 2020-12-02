@@ -93,4 +93,23 @@ describe('cdn', () => {
       console.log('status 400', responseErrors);
     }
   });
+
+  it('should not emit lifecycleDOMEvents', async () => {
+    const COUNTER_KEY = 'lifecycleCounter';
+    await page.evaluate((COUNTER_KEY: string) => {
+      window[COUNTER_KEY] = 0;
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((event) => {
+        window.addEventListener(`stencil_${event}`, () => {
+          window[COUNTER_KEY]++;
+        });
+      });
+    }, COUNTER_KEY);
+
+    const getCountedEvents = (): Promise<number> =>
+      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+
+    await setContentWithDesignSystem(page, content);
+
+    expect(await getCountedEvents()).toBe(0);
+  });
 });
