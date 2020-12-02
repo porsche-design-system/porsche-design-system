@@ -4,7 +4,6 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "testit": "vue-cli-service build --silent",
     "prestart": "yarn prepare-loader",
     "prebuild": "yarn prepare-loader",
     "prepare-loader": "ts-node --project './tsconfig.node.json' './scripts/preparePDSLoader.ts'",
