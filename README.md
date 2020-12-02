@@ -209,14 +209,6 @@ The stable release needs to be exactly the same as the RC release to make sure e
 1. Create pull request and start review
 1. Merge into __master- or v-branch__ branch (then CI/CD will trigger a release automatically)
 
-### Icon platform (TODO: needs to be part of mono repo and automated)
-1. Switch to __"./packages/icons/database" directory__
-1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
-1. Switch to Icon platform Git repository (`https://github.com/porscheui/porsche-icon-frontend`)
-1. Update `@porsche-design-system/components-js` to latest version
-1. Build icon platform
-1. Deploy icon platform
-
 ### Update sample projects
 1. Go to according examples Projects:
     * https://github.com/porscheui/sample-integration-angular
@@ -263,6 +255,17 @@ The stable release needs to be exactly the same as the RC release to make sure e
 1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
+
+## Porsche Design System - New Icons
+
+1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category __"./packages/icons/src/CHOOSE_RIGHT_CATEGORY"__
+1. run `./docker.sh run-install`
+1. run `./docker.sh run-build --icons`
+1. Switch to __"./packages/icons/database" directory__
+1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
+1. Release Assets
+
+--- 
 
 ## Porsche Design System - Assets
 
