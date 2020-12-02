@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import type { HostElement } from '@stencil/core/internal';
+import { HostElement } from '@stencil/core/internal';
 
 let promiseResolve: () => void;
 
@@ -38,10 +38,9 @@ const waitForDidLoad = (el: HTMLElement): void => {
   }
 };
 
-const regex = new RegExp(/^(.*-)?P-(.*)$/)
-const isDesignSystemElement = (el: HostElement): boolean => {
-  return regex.exec(el.tagName) && typeof el.componentOnReady === 'function'
-}
+const regex = new RegExp(/^(.*-)?P-(.*)$/);
+const isDesignSystemElement = (el: HostElement): boolean =>
+  regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
 
 const allReady = async (el: HTMLElement): Promise<void> => {
   waitForDidLoad(el);
