@@ -138,9 +138,9 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 });
 ```
 
-### Additional information
+### Additional information when using react-testing-library
 
-If you try to submit a from via button click you will encounter issues with react-testing-library and jsdom.
+If you try to submit a from via button click you will encounter issues with `react-testing-library` and `jsdom`.
 It is simply not provided (see [Github Issue 755](https://github.com/testing-library/react-testing-library/issues/755)
 and [Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
 
@@ -156,7 +156,7 @@ Simulate.submit('button');
 
 You are not able to use `getByRole` to query Porsche-Design-System components when using testing-library.
 Testing-library is taking default `roles` in consideration. For example  a `<button>` gets the role `button` without explicitly setting the attribute.
-While using our web-components, the `<button>` is wrapped, so it is not able to set the role.
+To achieve this it uses the (Accessibility Tree)[https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree], see (documentation) [https://testing-library.com/docs/guide-which-query/].
 
 We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
 
