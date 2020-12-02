@@ -30,13 +30,18 @@ const waitForDidLoad = (el: HTMLElement): void => {
   // Node.ELEMENT_NODE: An Element node like <p> or <div>
   if (el?.nodeType === 1) {
     (Array.from(el.children) as HostElement[]).forEach((childEl) => {
-      if (new RegExp(/^(.*-)?P-(.*)$/).exec(childEl.tagName) && typeof childEl.componentOnReady === 'function') {
+      if (isDesignSystemElement(childEl)) {
         readyPromises.push(childEl.componentOnReady());
       }
       waitForDidLoad(childEl);
     });
   }
 };
+
+const regex = new RegExp(/^(.*-)?P-(.*)$/)
+const isDesignSystemElement = (el: HostElement): boolean => {
+  return regex.exec(el.tagName) && typeof el.componentOnReady === 'function'
+}
 
 const allReady = async (el: HTMLElement): Promise<void> => {
   waitForDidLoad(el);
