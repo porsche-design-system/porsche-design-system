@@ -5,14 +5,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-checkbox-wrapper',
   styleUrl: 'checkbox-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class CheckboxWrapper {
   @Element() public host!: HTMLElement;
@@ -53,20 +53,20 @@ export class CheckboxWrapper {
       [prefix('checkbox-wrapper__fake-checkbox')]: true,
       [prefix('checkbox-wrapper__fake-checkbox--checked')]: this.checked || this.indeterminate,
       [prefix('checkbox-wrapper__fake-checkbox--disabled')]: this.disabled,
-      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none',
     };
     const iconClasses = {
       [prefix('checkbox-wrapper__icon')]: true,
-      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate
+      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate,
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
       [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('checkbox-wrapper__message')]: true,
-      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);

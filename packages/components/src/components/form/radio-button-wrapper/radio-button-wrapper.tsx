@@ -5,14 +5,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-radio-button-wrapper',
   styleUrl: 'radio-button-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class RadioButtonWrapper {
   @Element() public host!: HTMLElement;
@@ -52,16 +52,16 @@ export class RadioButtonWrapper {
       [prefix('radio-button-wrapper__fake-radio-button')]: true,
       [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
       [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
-      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('radio-button-wrapper__message')]: true,
-      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);

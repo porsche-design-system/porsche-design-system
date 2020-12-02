@@ -5,7 +5,7 @@ import { prefix } from '../../../utils';
 @Component({
   tag: 'p-marque',
   styleUrl: 'marque.scss',
-  shadow: true
+  shadow: true,
 })
 export class Marque {
   /**

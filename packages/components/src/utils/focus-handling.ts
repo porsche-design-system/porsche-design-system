@@ -19,7 +19,7 @@ const getFocusableElements = (element: HTMLElement | ShadowRoot | Document = doc
     `input${notTabIndex}${notDisabled}`,
     `select${notTabIndex}${notDisabled}`,
     `textarea${notTabIndex}${notDisabled}`,
-    '[tabindex="0"]'
+    '[tabindex="0"]',
   ].join(',');
 
   /**

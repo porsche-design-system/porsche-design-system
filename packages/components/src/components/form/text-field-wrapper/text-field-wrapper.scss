@@ -61,11 +61,11 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([state="success"]) ::slotted(input:focus) {
+:host([state='success']) ::slotted(input:focus) {
   outline-color: $p-color-notification-success !important;
 }
 
-:host([state="error"]) ::slotted(input:focus) {
+:host([state='error']) ::slotted(input:focus) {
   outline-color: $p-color-notification-error !important;
 }
 
@@ -74,13 +74,13 @@
   outline-color: transparent !important;
 }
 
-:host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
-:host([state="error"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
+:host([state='success']) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
+:host([state='error']) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
   outline-offset: -5px !important;
 }
 
-::slotted(input[type="search"]),
-::slotted(input[type="password"]) {
+::slotted(input[type='search']),
+::slotted(input[type='password']) {
   padding-right: 3rem !important;
 }
 

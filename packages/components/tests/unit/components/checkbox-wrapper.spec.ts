@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/checkbox-wrapper';
 
 describe('Component <p-checkbox-wrapper>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [CheckboxWrapper],
