@@ -50,6 +50,8 @@
     // }
 
     public get codepen(): string {
+      const {pathname} = window.location;
+      const path = pathname === '/' ? '/latest/': pathname;
       // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
         // css_external: 'https://...css',
@@ -58,7 +60,7 @@
         title: 'Porsche Design System',
         html: this.markup,
         ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
-        js_external: `https://designsystem.porsche.com/${window.location.pathname === '/latest/' ? 'latest' : 'v2' }/${PDS_LOADER_FILENAME}`,
+        js_external: `https://designsystem.porsche.com${path}${PDS_LOADER_FILENAME}`,
         js: 'porscheDesignSystem.load()'
       });
     }
