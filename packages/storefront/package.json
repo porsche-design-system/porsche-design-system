@@ -33,7 +33,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "3.0.0",
+    "@porsche-design-system/assets": "3.1.0",
     "@porsche-design-system/partials": "2.2.0",
     "@porsche-design-system/utilities": "3.0.0",
     "@porsche-design-system/vmark": "~1.2.0",
