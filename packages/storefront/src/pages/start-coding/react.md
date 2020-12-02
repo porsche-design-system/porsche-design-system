@@ -140,7 +140,7 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 
 ### Additional information when using react-testing-library
 
-If you try to submit a from via button click you will encounter issues with `react-testing-library` and `jsdom`.
+If you try to submit a form via button click you will encounter issues with `react-testing-library` and `jsdom`.
 It is simply not provided (see [Github Issue 755](https://github.com/testing-library/react-testing-library/issues/755)
 and [Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
 
