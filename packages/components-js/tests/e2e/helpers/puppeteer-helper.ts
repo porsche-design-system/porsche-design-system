@@ -1,4 +1,5 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
 
 export const setContentWithDesignSystem = async (
   page: Page,
@@ -54,11 +55,7 @@ export const setContentWithDesignSystem = async (
     options
   );
 
-  await page.evaluate(
-    async (): Promise<void> => {
-      await (window as any).porscheDesignSystem.componentsReady();
-    }
-  );
+  await waitForComponentsReady(page);
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {

@@ -98,7 +98,7 @@ describe('select-wrapper fake-select', () => {
   it('should set dropdown direction to down', async () => {
     await page.setViewport({
       width: 800,
-      height: 600
+      height: 600,
     });
     await setContentWithDesignSystem(
       page,
@@ -160,7 +160,7 @@ describe('select-wrapper fake-select', () => {
   it('should auto position dropdown to bottom if bottom space is more than dropdown height', async () => {
     await page.setViewport({
       width: 800,
-      height: 800
+      height: 800,
     });
     await setContentWithDesignSystem(
       page,
@@ -445,13 +445,12 @@ describe('select-wrapper fake-select', () => {
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
-      await select.evaluate((el: HTMLSelectElement) => (el.options[1].setAttribute('selected', 'selected')));
+      await select.evaluate((el: HTMLSelectElement) => el.options[1].setAttribute('selected', 'selected'));
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
       expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
-
     });
 
     it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
@@ -486,7 +485,6 @@ describe('select-wrapper fake-select', () => {
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
-
     });
 
     it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
