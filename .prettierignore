@@ -2,3 +2,7 @@
 
 *.md
 *.mdx
+
+**/node_modules
+**/dist
+**/www
