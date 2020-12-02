@@ -59,15 +59,8 @@
   outline: transparent none !important;
 }
 
-.#{$p-global-class-prefix}link-social:focus {
-  outline-color: $p-color-default !important;
-}
-
-:host([theme="dark"]) .#{$p-global-class-prefix}link-social:focus {
-  outline-color: $p-color-theme-dark-default !important;
-}
-
 .#{$p-global-class-prefix}link-social {
+  @include p-focus($p-color-default);
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -78,14 +71,12 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: transparent solid 1px;
-  outline-offset: 2px;
   text-decoration: none;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
 
-  &::-moz-focus-inner {
-    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  :host([theme="dark"]) & {
+    @include p-focus($p-color-theme-dark-default);
   }
 
   &--theme-light {

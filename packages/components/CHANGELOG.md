@@ -8,16 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.7] - 2020-11-26
+
 #### Added
 - Jsdom Polyfill
 
 #### Removed
 - Jsdom Mocks
+- Global "blur on focus" script
 
 #### Changed
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`
 - Removed transition for focus styling
+- Use `:focus-visible` as default and `:focus` as fallback for focusable elements
 
 #### Fixed
 - The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically

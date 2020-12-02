@@ -68,6 +68,13 @@
   outline-color: $p-color-theme-dark-state-focus !important;
 }
 
+::slotted(a:focus:not(:focus-visible)),
+::slotted(button:focus:not(:focus-visible)),
+:host([theme="dark"]) ::slotted(a:focus:not(:focus-visible)),
+:host([theme="dark"]) ::slotted(button:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+
 ::slotted(a:not(:last-child)),
 ::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
