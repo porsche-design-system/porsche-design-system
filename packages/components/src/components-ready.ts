@@ -1,8 +1,8 @@
 import { HostElement } from '@stencil/core/internal';
 
-let promiseResolve: () => void;
+let promiseResolve: (amount: number) => void;
 
-export const componentsReady = (el: HTMLElement = document.body): Promise<void> => {
+export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
   if (!checkDocumentReadyStateAndStencilLoaded(el)) {
     // if document isn't ready yet, we register readystatechange event listener
     const eventName = 'readystatechange';
@@ -14,9 +14,7 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<void> 
     document.addEventListener(eventName, eventHandler);
   }
 
-  return new Promise<void>((resolve) => {
-    promiseResolve = resolve;
-  });
+  return new Promise((resolve) => (promiseResolve = resolve));
 };
 
 const waitFrame = (): any => requestAnimationFrame;
@@ -42,7 +40,6 @@ const allReady = async (el: HTMLElement): Promise<void> => {
   waitForDidLoad(el);
   await Promise.all(readyPromises).catch(console.error);
 
-  readyPromises.length = 0; // clear array of promises for next round
 };
 
 const stencilLoaded = async (el: HTMLElement): Promise<void> => {
@@ -50,7 +47,8 @@ const stencilLoaded = async (el: HTMLElement): Promise<void> => {
   await allReady(el);
   // (window as any).porscheDesignSystem.hasLoaded = true;
 
-  promiseResolve();
+  promiseResolve(readyPromises.length);
+  readyPromises.length = 0; // clear array of promises for next round
 };
 
 const checkDocumentReadyStateAndStencilLoaded = (el: HTMLElement): boolean => {
