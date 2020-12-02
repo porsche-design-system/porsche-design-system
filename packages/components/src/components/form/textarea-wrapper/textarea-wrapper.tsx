@@ -186,6 +186,10 @@ export class TextareaWrapper {
 
     ${tagName} a:focus {
       outline-color: currentColor !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible) {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.host, style);
