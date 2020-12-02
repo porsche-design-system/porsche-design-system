@@ -586,10 +586,6 @@ export const config: StorefrontConfig = {
     ]
   },
   Helpers: {
-    'Blur On Focus': [
-      // @ts-ignore
-      () => import(`@/pages/general/blur-on-focus.md`)
-    ],
     'Components Ready': [
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
