@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { FieldsetWrapper } from '../../../src/components/form/fieldset-wrapper/fieldset-wrapper';
 
 describe('Component <p-fieldset-wrapper>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [FieldsetWrapper],

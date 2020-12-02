@@ -73,9 +73,9 @@
   appearance: none;
   text-decoration: none;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier;
+    color $p-animation-hover-duration $p-animation-hover-bezier;
 
-  :host([theme="dark"]) & {
+  :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-default);
   }
 
@@ -205,7 +205,7 @@
     }
   }
 
-  @include p-media-query("xs") {
+  @include p-media-query('xs') {
     &--with-label-xs {
       @include p-link-social-with-label;
 
@@ -231,7 +231,7 @@
     }
   }
 
-  @include p-media-query("s") {
+  @include p-media-query('s') {
     &--with-label-s {
       @include p-link-social-with-label;
 
@@ -257,7 +257,7 @@
     }
   }
 
-  @include p-media-query("m") {
+  @include p-media-query('m') {
     &--with-label-m {
       @include p-link-social-with-label;
 
@@ -283,7 +283,7 @@
     }
   }
 
-  @include p-media-query("l") {
+  @include p-media-query('l') {
     &--with-label-l {
       @include p-link-social-with-label;
 
@@ -309,7 +309,7 @@
     }
   }
 
-  @include p-media-query("xl") {
+  @include p-media-query('xl') {
     &--with-label-xl {
       @include p-link-social-with-label;
 

@@ -6,7 +6,7 @@ import { Theme, IconName } from '../../../types';
 @Component({
   tag: 'p-icon',
   styleUrl: 'icon.scss',
-  shadow: true
+  shadow: true,
 })
 export class Icon {
   @Element() public el!: HTMLElement;
@@ -28,7 +28,17 @@ export class Icon {
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop() public color?:
+    | 'brand'
+    | 'default'
+    | 'neutral-contrast-high'
+    | 'neutral-contrast-medium'
+    | 'neutral-contrast-low'
+    | 'notification-success'
+    | 'notification-warning'
+    | 'notification-error'
+    | 'notification-neutral'
+    | 'inherit' = 'default';
 
   /**
    * The size of the icon.
@@ -86,7 +96,7 @@ export class Icon {
       [prefix('icon')]: true,
       [prefix(`icon--size-${this.size}`)]: true,
       [prefix(`icon--color-${this.color}`)]: true,
-      [prefix(`icon--theme-${this.theme}`)]: this.color !== 'inherit'
+      [prefix(`icon--theme-${this.theme}`)]: this.color !== 'inherit',
     };
 
     return (

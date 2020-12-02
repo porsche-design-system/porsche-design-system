@@ -6,14 +6,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { ButtonType, FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
   styleUrl: 'text-field-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextFieldWrapper {
   @Element() public host!: HTMLElement;
@@ -62,26 +62,26 @@ export class TextFieldWrapper {
     const labelTextClasses = {
       [prefix('text-field-wrapper__label-text')]: true,
       [prefix('text-field-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('text-field-wrapper__description-text')]: true,
       [prefix('text-field-wrapper__description-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
         'hidden',
-        'visible'
-      ])
+        'visible',
+      ]),
     };
     const fakeInputClasses = {
       [prefix('text-field-wrapper__fake-input')]: true,
       [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
       [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
-      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly
+      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly,
     };
     const buttonClasses = prefix('text-field-wrapper__button');
     const messageClasses = {
       [prefix('text-field-wrapper__message')]: true,
-      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);

@@ -5,14 +5,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-textarea-wrapper',
   styleUrl: 'textarea-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextareaWrapper {
   @Element() public host!: HTMLElement;
@@ -54,25 +54,25 @@ export class TextareaWrapper {
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
       [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('textarea-wrapper__description-text')]: true,
       [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
         'hidden',
-        'visible'
-      ])
+        'visible',
+      ]),
     };
     const fakeTextareaClasses = {
       [prefix('textarea-wrapper__fake-textarea')]: true,
       [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
       [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly
+      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly,
     };
     const messageClasses = {
       [prefix('textarea-wrapper__message')]: true,
-      [prefix(`textarea-wrapper__message--${this.state}`)]: true
+      [prefix(`textarea-wrapper__message--${this.state}`)]: true,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);

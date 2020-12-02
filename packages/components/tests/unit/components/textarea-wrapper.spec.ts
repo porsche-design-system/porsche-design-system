@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { TextareaWrapper } from '../../../src/components/form/textarea-wrapper/textarea-wrapper';
 
 describe('Component <p-textarea-wrapper>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [TextareaWrapper],

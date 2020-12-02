@@ -4,7 +4,7 @@ import { getPrefixedTagNames, isIos, prefix } from '../../../utils';
 @Component({
   tag: 'p-modal',
   styleUrl: 'modal.scss',
-  shadow: true
+  shadow: true,
 })
 export class Modal {
   @Element() public host!: HTMLElement;
@@ -106,7 +106,7 @@ export class Modal {
       'p-button-pure',
       'p-link',
       'p-link-pure',
-      'p-link-social'
+      'p-link-social',
     ]);
 
     const notDisabled = ':not([disabled])';
@@ -137,7 +137,7 @@ export class Modal {
     e.preventDefault();
   };
 
-  private handleHostTouchMove = function(e: TouchEvent): void {
+  private handleHostTouchMove = function (e: TouchEvent): void {
     // Source: https://stackoverflow.com/a/43860705
     const { scrollTop, scrollHeight, offsetHeight } = this as HTMLElement;
     const currentScroll = scrollTop + offsetHeight;
