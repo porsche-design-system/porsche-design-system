@@ -27,9 +27,8 @@ const copyAndHashLoader = (): string => {
   const fileContent = fs.readFileSync(filePath).toString();
   const hash = toHash(fileContent);
   const loaderName = `pds-loader.${hash}.js`;
-
-  const newName = `public/${loaderName}`;
-  const newFilePath = path.resolve(rootDirectory, newName);
+  
+  const newFilePath = path.resolve(rootDirectory, 'public', loaderName);
 
   fs.copyFileSync(filePath, newFilePath);
   return loaderName;
