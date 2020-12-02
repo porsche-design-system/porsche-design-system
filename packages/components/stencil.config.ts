@@ -24,7 +24,7 @@ process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
 const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
 
-const isStagingBuild = process.env.PDS_IS_STAGING === '1';
+const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
 export const config: Config = {
   namespace: 'porsche-design-system',
@@ -61,7 +61,7 @@ export const config: Config = {
   rollupPlugins: {
     after: [
       replace({
-        ROLLUP_REPLACE_IS_STAGING: isStagingBuild ? '"staging"' : '"production"',
+        ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
       }),
       modify({
         // minify slotted styles
@@ -79,7 +79,8 @@ export const config: Config = {
   },
   globalScript: 'src/setup.ts',
   extras: {
-    ...(isStagingBuild && { lifecycleDOMEvents: true }),
+    // emit lifecycle events like componentWillLoad, didLoad, willUpdate, didUpdate only in dev build for e2e tests
+    ...(isDevBuild && { lifecycleDOMEvents: true }),
     tagNameTransform: true,
   },
 };
