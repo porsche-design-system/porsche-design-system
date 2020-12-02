@@ -140,7 +140,7 @@ describe('select-wrapper', () => {
 
     expect(getLabelText).toBeNull();
 
-    await page.evaluate((el) => el.setAttribute('label', 'Some label'), selectComponent);
+    await selectComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
     expect(getLabelText).toBeDefined();
   });
 
