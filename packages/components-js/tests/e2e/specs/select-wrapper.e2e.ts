@@ -135,13 +135,12 @@ describe('select-wrapper', () => {
       </p-select-wrapper>`
     );
 
+    expect(await getSelectLabel()).toBeNull();
+
     const selectComponent = await getSelectHost();
-    const getLabelText = await getSelectLabel();
-
-    expect(getLabelText).toBeNull();
-
     await selectComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
-    expect(getLabelText).toBeDefined();
+
+    expect(await getSelectLabel()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -150,7 +149,7 @@ describe('select-wrapper', () => {
     const selectComponent = await getSelectHost();
     const select = await getSelectRealInput();
 
-    expect(await getSelectMessage()).toBeNull('inititally');
+    expect(await getSelectMessage()).toBeNull('initially');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'error');
@@ -158,9 +157,9 @@ describe('select-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectMessage()).toBeDefined();
-    expect(await getAttribute(await getSelectMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getSelectMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getSelectMessage(), 'role')).toEqual('alert', 'when state = error');
+    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -168,9 +167,9 @@ describe('select-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectMessage()).toBeDefined();
+    expect(await getSelectMessage()).toBeDefined('when state = success');
     expect(await getAttribute(await getSelectMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
     await selectComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -179,7 +178,7 @@ describe('select-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getSelectMessage()).toBeNull('when state = none');
-    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label');
+    expect(await getProperty(select, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
   it('should focus select when label text is clicked', async () => {

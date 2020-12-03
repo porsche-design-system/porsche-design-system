@@ -169,9 +169,9 @@ describe('text-field-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextFieldMessage()).toBeDefined();
-    expect(await getAttribute(await getTextFieldMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getTextFieldMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getTextFieldMessage(), 'role')).toEqual('alert', 'when state = error');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
     await textFieldComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -179,9 +179,9 @@ describe('text-field-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextFieldMessage()).toBeDefined();
-    expect(await getAttribute(await getTextFieldMessage(), 'role')).toBeNull('when state = sucess');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getTextFieldMessage()).toBeDefined('when state = success');
+    expect(await getAttribute(await getTextFieldMessage(), 'role')).toBeNull('when state = success');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
     await textFieldComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -190,7 +190,7 @@ describe('text-field-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getTextFieldMessage()).toBeNull('when state = none');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
   it(`should focus input when label text is clicked`, async () => {
