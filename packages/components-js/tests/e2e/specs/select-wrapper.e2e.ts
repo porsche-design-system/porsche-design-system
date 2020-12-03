@@ -207,18 +207,19 @@ describe('select-wrapper', () => {
 
     const fakeSelect = await getSelectFakeInput();
     const select = await getSelectRealInput();
+    const disabledClass = 'p-select-wrapper__fake-select--disabled';
 
-    expect(await getCssClasses(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'initially');
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = true));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getCssClasses(fakeSelect)).toContain(disabledClass, 'when disabled = true');
 
     await select.evaluate((el: HTMLSelectElement) => (el.disabled = false));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeSelect)).not.toContain('p-select-wrapper__fake-select--disabled');
+    expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
   });
 
   describe('focus state', () => {
