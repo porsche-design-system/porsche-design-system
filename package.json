@@ -38,6 +38,7 @@
     "Melanie Kolar <melanie.kolar@udg.de>",
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
+  "prettier": "@porsche-design-system/prettier-config",
   "scripts": {
     "preinstall": "mkdir -p './packages/components-angular/dist/components-wrapper' && cp './packages/components-angular/projects/components-wrapper/package.json' './packages/components-angular/dist/components-wrapper/package.json' && mkdir -p './packages/cdn-local/dist' && touch './packages/cdn-local/dist/start-cdn-local.js'",
     "start": "yarn build && concurrently --kill-others-on-fail -n 'components-js,storefront' 'yarn start:components-js' 'yarn start:storefront'",
@@ -96,5 +97,9 @@
     "clean:storefront": "yarn --cwd ./packages/storefront clean",
     "clean:utilities": "yarn --cwd ./packages/utilities clean",
     "clean:utils": "yarn --cwd ./packages/utils clean"
+  },
+  "devDependencies": {
+    "@porsche-design-system/prettier-config": "^1.0.0",
+    "prettier": "^2.2.1"
   }
 }
