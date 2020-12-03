@@ -1,11 +1,16 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
-export const setContentWithDesignSystem = async (
-  page: Page,
-  content: string,
-  options: NavigationOptions = { waitUntil: 'networkidle0' }
-): Promise<void> => {
+type Options = NavigationOptions & { enableLogging?: boolean };
+const defaultOptions: Options = { waitUntil: 'networkidle0' };
+
+export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
+  const options: Options = { ...defaultOptions, ...opts };
+
+  if (options.enableLogging) {
+    enableBrowserLogging(page);
+  }
+
   await page.setContent(
     `
       <head>
@@ -38,6 +43,7 @@ export const setContentWithDesignSystem = async (
           createComponentsUpdatedPromise();
 
           window.addEventListener('stencil_componentWillUpdate', () => {
+            console.log('stencil_componentWillUpdate', e.composedPath()[0].tagName, new Date().toISOString());
             updatingCount++;
             if (timeout) {
               window.clearTimeout(timeout);
@@ -45,6 +51,7 @@ export const setContentWithDesignSystem = async (
           });
 
           window.addEventListener('stencil_componentDidUpdate', () => {
+            console.log('stencil_componentDidUpdate ', e.composedPath()[0].tagName, new Date().toISOString());
             updatingCount--;
             window.checkComponentsUpdatedPromise();
           });
