@@ -28,21 +28,34 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show pagination with 7 items (including ellipsis)">
-      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
-                    [maxNumberOfPageLinks]="7"></p-pagination>
+      <p-pagination
+        [totalItemsCount]="500"
+        [itemsPerPage]="25"
+        [activePage]="1"
+        [maxNumberOfPageLinks]="7"
+      ></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with 5 items (including ellipsis)">
-      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
-                    [maxNumberOfPageLinks]="5"></p-pagination>
+      <p-pagination
+        [totalItemsCount]="500"
+        [itemsPerPage]="25"
+        [activePage]="1"
+        [maxNumberOfPageLinks]="5"
+      ></p-pagination>
     </div>
 
-    <div class="playground light"
-         title="should show pagination with 5 or 7 items depending on window size (including ellipsis)">
-      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"
-                    [maxNumberOfPageLinks]="{ base: 5, s: 7, l: 5 }"></p-pagination>
+    <div
+      class="playground light"
+      title="should show pagination with 5 or 7 items depending on window size (including ellipsis)"
+    >
+      <p-pagination
+        [totalItemsCount]="500"
+        [itemsPerPage]="25"
+        [activePage]="1"
+        [maxNumberOfPageLinks]="{ base: 5, s: 7, l: 5 }"
+      ></p-pagination>
     </div>
-  `
+  `,
 })
-export class PaginationComponent {
-}
+export class PaginationComponent {}

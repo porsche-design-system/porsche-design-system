@@ -9,7 +9,7 @@ export const LinkSocialPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render with label">
         <LinkSocial href="https://www.facebook.com" icon="logo-facebook">

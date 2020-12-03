@@ -435,6 +435,6 @@ import { Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-  `
+  `,
 })
 export class SelectWrapperComponent {}

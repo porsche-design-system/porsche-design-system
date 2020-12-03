@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         height: 500px;
         padding: 0;
       }
-    `
+    `,
   ],
   template: `
     <div class="playground light" title="should show prefixed modal on light background">
@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
         </div>
       </my-prefix-p-modal>
     </div>
-  `
+  `,
 })
 export class ModalPrefixedComponent {
   constructor() {

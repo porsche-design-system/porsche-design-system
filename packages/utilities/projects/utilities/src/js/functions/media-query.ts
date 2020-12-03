@@ -7,7 +7,7 @@ export const breakpoint: { [key in BreakPoint]: number } = {
   m: 1000,
   l: 1300,
   xl: 1760,
-  xxl: 1920
+  xxl: 1920,
 };
 
 type BreakPointOrNumber = BreakPoint | number;

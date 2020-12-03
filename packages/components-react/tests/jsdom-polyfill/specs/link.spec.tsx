@@ -1,13 +1,13 @@
 import React from 'react';
-import {
-  componentsReady, PLink
-} from '@porsche-design-system/components-react';
+import { componentsReady, PLink } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
   return (
     <>
-      <PLink href="#" data-testid="host">Some label</PLink>
+      <PLink href="#" data-testid="host">
+        Some label
+      </PLink>
     </>
   );
 };

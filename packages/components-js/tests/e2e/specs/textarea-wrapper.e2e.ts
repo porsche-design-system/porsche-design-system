@@ -2,11 +2,16 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getProperty, getStyleOnFocus,
+  getProperty,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForInheritedCSSTransition,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -29,15 +34,39 @@ describe('textarea-wrapper', () => {
   const getTextareaDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getTextareaMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
 
-  const initTextarea = ({ useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedDescription?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+  const initTextarea = (
+    {
+      useSlottedLabel,
+      useSlottedDescription,
+      useSlottedMessage,
+      state,
+    }: {
+      useSlottedLabel?: boolean;
+      useSlottedDescription?: boolean;
+      useSlottedMessage?: boolean;
+      state?: FormState;
+    } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }
+  ): Promise<void> => {
     return setContentWithDesignSystem(
       page,
       `
         <p-textarea-wrapper state="${state}">
-          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
-          ${useSlottedDescription ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedLabel
+              ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
+          ${
+            useSlottedDescription
+              ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
           <textarea></textarea>
-          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedMessage
+              ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
         </p-textarea-wrapper>`
     );
   };
@@ -180,8 +209,8 @@ describe('textarea-wrapper', () => {
       await initTextarea();
 
       const textarea = await getTextareaRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '4px'});
-      const visible = expectedStyleOnFocus({color: 'neutral', offset: '4px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '4px' });
+      const visible = expectedStyleOnFocus({ color: 'neutral', offset: '4px' });
 
       expect(await getOutlineStyle(textarea)).toBe(hidden);
 
@@ -198,13 +227,18 @@ describe('textarea-wrapper', () => {
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initTextarea({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedDescription: true,
+        useSlottedMessage: true,
+        state: 'error',
+      });
 
       const labelLink = await getTextareaLabelLink();
       const descriptionLink = await getTextareaDescriptionLink();
       const messageLink = await getTextareaMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -252,38 +286,43 @@ describe('textarea-wrapper', () => {
       const host = await getTextareaHost();
       const textarea = await getTextareaRealInput();
 
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '4px'}));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '4px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'success', offset: '4px'}));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'success', offset: '4px' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'error', offset: '4px'}));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '4px' }));
 
       await setAttribute(textarea, 'readOnly', 'true');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({color: 'transparent', offset: '4px'}));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '4px' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initTextarea({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'})
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedDescription: true,
+        useSlottedMessage: true,
+        state: 'error',
+      });
 
       const host = await getTextareaHost();
       const labelLink = await getTextareaLabelLink();
       const descriptionLink = await getTextareaDescriptionLink();
       const messageLink = await getTextareaMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 });

@@ -59,7 +59,7 @@ export const pages = [
   TextFieldWrapperComponent,
   TextListComponent,
   TextareaWrapperComponent,
-  TypographyComponent
+  TypographyComponent,
 ];
 
 export * from './banner.component';

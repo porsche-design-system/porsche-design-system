@@ -21,25 +21,25 @@ module.exports = {
   scripts: [
     {
       module: true,
-      pattern: `${cdnDistPath}/porsche-design-system.v*.js`
-    }
+      pattern: `${cdnDistPath}/porsche-design-system.v*.js`,
+    },
   ],
   copyFiles: [
     {
       pattern: '../components/CHANGELOG.md',
-      targetDirectory: npmDistPath
+      targetDirectory: npmDistPath,
     },
     {
       pattern: './projects/components-wrapper/package.json',
-      targetDirectory: npmDistPath
+      targetDirectory: npmDistPath,
     },
     {
       pattern: './projects/components-wrapper/LICENSE',
-      targetDirectory: npmDistPath
+      targetDirectory: npmDistPath,
     },
     {
       pattern: './projects/components-wrapper/README.md',
-      targetDirectory: npmDistPath
-    }
-  ]
+      targetDirectory: npmDistPath,
+    },
+  ],
 };

@@ -7,7 +7,7 @@ const PORT = 3001;
 
 const server = createServer({
   root: path.resolve(__dirname, '../cdn'),
-  cors: true
+  cors: true,
 });
 
 (server as any).server.on('error', (error: { code: string }) => {

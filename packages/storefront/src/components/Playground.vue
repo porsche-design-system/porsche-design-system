@@ -13,7 +13,7 @@
         'example--height-fixed': mergedConfig.height === 'fixed',
         'example--spacing-inline': mergedConfig.spacing === 'inline',
         'example--spacing-block': mergedConfig.spacing === 'block',
-        'example--spacing-block-small': mergedConfig.spacing === 'block-small'
+        'example--spacing-block-small': mergedConfig.spacing === 'block-small',
       }"
     >
       <div v-if="isSlotSet" class="configurator">
@@ -46,14 +46,14 @@
     themeable: false,
     colorScheme: 'default',
     height: 'auto',
-    spacing: 'none'
+    spacing: 'none',
   };
 
   @Component({
     components: {
       CodeBlock,
-      CodeEditor
-    }
+      CodeEditor,
+    },
   })
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;

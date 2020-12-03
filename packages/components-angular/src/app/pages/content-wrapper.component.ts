@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-content-wrapper',
-  styles: [`
-    p-content-wrapper > p {
-      margin: 0;
-      padding: 4px 2vw;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
-  `],
+  styles: [
+    `
+      p-content-wrapper > p {
+        margin: 0;
+        padding: 4px 2vw;
+        text-align: center;
+        color: white;
+        background-color: lightskyblue;
+      }
+    `,
+  ],
   template: `
     <div class="playground" title="should render with width 'basic'">
       <p-content-wrapper>
@@ -41,7 +43,6 @@ import { Component } from '@angular/core';
         <p style="margin-left: -2000px; margin-right: -2000px;">Some content</p>
       </p-content-wrapper>
     </div>
-  `
+  `,
 })
-export class ContentWrapperComponent {
-}
+export class ContentWrapperComponent {}

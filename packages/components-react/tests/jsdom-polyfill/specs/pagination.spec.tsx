@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import {
-  componentsReady, PPagination
-} from '@porsche-design-system/components-react';
+import { componentsReady, PPagination } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -12,13 +10,21 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PPagination totalItemsCount={500} itemsPerPage={25} activePage={activePage} onPageChange={(e) => {
-        setCurrentPage(e.detail.page);
-        setEventCounter(eventCounter + 1);
-      }} data-testid="host" />
+      <PPagination
+        totalItemsCount={500}
+        itemsPerPage={25}
+        activePage={activePage}
+        onPageChange={(e) => {
+          setCurrentPage(e.detail.page);
+          setEventCounter(eventCounter + 1);
+        }}
+        data-testid="host"
+      />
       <button type="button" data-testid="button1" onClick={() => setActivePage(4)} />
       <button type="button" data-testid="button2" onClick={() => setActivePage(7)} />
-      <div data-testid="debug">{`Current Page: ${currentPage};`} {`Event Counter: ${eventCounter};`}</div>
+      <div data-testid="debug">
+        {`Current Page: ${currentPage};`} {`Event Counter: ${eventCounter};`}
+      </div>
     </>
   );
 };

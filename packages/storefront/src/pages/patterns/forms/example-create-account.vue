@@ -188,7 +188,7 @@
     validateForm,
     ValidationBag,
     getInitialErrors,
-    getFirstErrorKey
+    getFirstErrorKey,
   } from '../../../utils';
 
   const initialData = {
@@ -199,7 +199,7 @@
     email: '',
     password: '',
     terms: false,
-    privacy: false
+    privacy: false,
   };
 
   type FormModel = typeof initialData;
@@ -223,13 +223,9 @@
         password: string()
           .required('Please enter a password')
           .min(6, 'Your password must contain at least 6 characters'),
-        terms: boolean()
-          .required()
-          .oneOf([true], 'Please agree to our terms and conditions'),
-        privacy: boolean()
-          .required()
-          .oneOf([true], 'Please agree to our data privacy policy')
-      })
+        terms: boolean().required().oneOf([true], 'Please agree to our terms and conditions'),
+        privacy: boolean().required().oneOf([true], 'Please agree to our data privacy policy'),
+      }),
     };
 
     onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {

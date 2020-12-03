@@ -26,11 +26,7 @@
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www",
-    "prettier": "yarn prettier:src && yarn prettier:tests && yarn prettier:scripts",
-    "prettier:src": "prettier --write 'src/**/*.{html,js,scss,css,ts,tsx}'",
-    "prettier:tests": "prettier --write 'tests/**/*.{ts,tsx}'",
-    "prettier:scripts": "prettier --write 'scripts/**/*.{js,ts,tsx}'"
+    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.1.0",
@@ -60,7 +56,6 @@
     "isomorphic-fetch": "^3.0.0",
     "jasmine": "^3.6.3",
     "jest": "^26.6.3",
-    "prettier": "^2.2.1",
     "puppeteer": "~5.5.0",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-replace": "^2.2.0",

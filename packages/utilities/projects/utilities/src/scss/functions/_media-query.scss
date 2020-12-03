@@ -5,7 +5,7 @@ $p-breakpoint: (
   'm': 1000px,
   'l': 1300px,
   'xl': 1760px,
-  'xxl': 1920px
+  'xxl': 1920px,
 );
 
 @mixin p-media-query($min-breakpoint: null, $max-breakpoint: null) {

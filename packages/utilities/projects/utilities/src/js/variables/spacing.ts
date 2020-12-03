@@ -9,7 +9,7 @@ export const spacing = {
   '56': '3.5rem',
   '64': '4rem',
   '72': '4.5rem',
-  '80': '5rem'
+  '80': '5rem',
 };
 
 export const layout = {
@@ -18,5 +18,5 @@ export const layout = {
   medium: spacing['16'],
   large: spacing['32'],
   xLarge: spacing['48'],
-  xxLarge: spacing['80']
+  xxLarge: spacing['80'],
 };

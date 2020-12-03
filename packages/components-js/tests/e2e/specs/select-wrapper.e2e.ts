@@ -2,11 +2,16 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getProperty, getStyleOnFocus,
+  getProperty,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForInheritedCSSTransition,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -29,19 +34,45 @@ describe('select-wrapper', () => {
   const getSelectDescriptionLink = () => selectNode(page, 'p-select-wrapper [slot="description"] a');
   const getSelectMessageLink = () => selectNode(page, 'p-select-wrapper [slot="message"] a');
 
-  const initSelect = ({ useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedDescription?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+  const initSelect = (
+    {
+      useSlottedLabel,
+      useSlottedDescription,
+      useSlottedMessage,
+      state,
+    }: {
+      useSlottedLabel?: boolean;
+      useSlottedDescription?: boolean;
+      useSlottedMessage?: boolean;
+      state?: FormState;
+    } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none' }
+  ): Promise<void> => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper state="${state}" ${!useSlottedLabel ? 'label="Some label"' : ''} ${!useSlottedDescription ? 'label="Some description"' : ''} ${!useSlottedMessage ? 'label="Some message"' : ''}>
-          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
-          ${useSlottedDescription ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+        <p-select-wrapper state="${state}" ${!useSlottedLabel ? 'label="Some label"' : ''} ${
+        !useSlottedDescription ? 'label="Some description"' : ''
+      } ${!useSlottedMessage ? 'label="Some message"' : ''}>
+          ${
+            useSlottedLabel
+              ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
+          ${
+            useSlottedDescription
+              ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
           <select>
             <option>Option A</option>
             <option>Option B</option>
             <option>Option C</option>
           </select>
-          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedMessage
+              ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
         </p-select-wrapper>`
     );
   };
@@ -190,8 +221,8 @@ describe('select-wrapper', () => {
       await initSelect();
 
       const textarea = await getSelectRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'neutral'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'neutral' });
 
       expect(await getOutlineStyle(textarea)).toBe(hidden);
 
@@ -208,13 +239,13 @@ describe('select-wrapper', () => {
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initSelect({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+      await initSelect({ useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error' });
 
       const labelLink = await getSelectLabelLink();
       const descriptionLink = await getSelectDescriptionLink();
       const messageLink = await getSelectMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -262,48 +293,48 @@ describe('select-wrapper', () => {
       const host = await getSelectHost();
       const input = await getSelectRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }));
 
       await setAttribute(host, 'theme', 'dark');
 
       await setAttribute(host, 'state', 'none');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral', theme: 'dark' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success', theme: 'dark' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error', theme: 'dark' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initSelect({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+      await initSelect({ useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error' });
 
       const host = await getSelectHost();
       const labelLink = await getSelectLabelLink();
       const descriptionLink = await getSelectDescriptionLink();
       const messageLink = await getSelectMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 });
