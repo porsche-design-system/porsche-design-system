@@ -134,5 +134,8 @@
     "**/react-scripts/@babel/core": "^7.12.3",
     "**/react-scripts/jest": "^26.6.3",
     "**/react-scripts/webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
   }
 }

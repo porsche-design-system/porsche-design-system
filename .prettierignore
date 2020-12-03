@@ -6,3 +6,7 @@
 **/node_modules
 **/dist
 **/www
+**/loader
+**/bin
+**/cdn
+
