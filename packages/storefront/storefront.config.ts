@@ -586,10 +586,6 @@ export const config: StorefrontConfig = {
     ]
   },
   Helpers: {
-    'Blur On Focus': [
-      // @ts-ignore
-      () => import(`@/pages/general/blur-on-focus.md`)
-    ],
     'Components Ready': [
       // @ts-ignore
       () => import(`@/pages/general/components-ready.md`)
@@ -604,3 +600,6 @@ export const config: StorefrontConfig = {
     ]
   }
 };
+
+/* Auto Generated Below */
+export const PDS_LOADER_FILENAME = 'pds-loader.97cae945bbd689a2b49f31fd3ef44417.js';
