@@ -259,6 +259,23 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('hidden');
   });
 
+  it('should remove overflow hidden from body if unmounted', async  () => {
+    await initBasicModal({ isOpen: true });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('hidden');
+
+    await page.evaluate(() => {
+      const [el] = Array.from(document.getElementsByTagName('p-modal'));
+
+      setTimeout(() => el.remove());
+    });
+
+    expect(await getBodyOverflow()).toBe('none');
+
+  });
+
   it('should have correct aria-hidden value', async () => {
     await initBasicModal({ isOpen: false });
     const aside = await getModalAside();
