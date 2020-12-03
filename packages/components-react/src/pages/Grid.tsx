@@ -1,5 +1,4 @@
 import { PGrid as Grid, PGridItem as GridItem } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const GridPage = (): JSX.Element => {
   const style = `

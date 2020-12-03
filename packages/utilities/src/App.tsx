@@ -1,6 +1,5 @@
-import React from 'react';
 import { HashRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
-import { JsVariables, ScssVariables } from './pages';
+import { JsFocus, JsVariables, ScssFocus, ScssVariables } from './pages';
 import './styles.css';
 
 const routes: RouteProps[] = [
@@ -9,8 +8,16 @@ const routes: RouteProps[] = [
     component: JsVariables
   },
   {
+    path: '/js-focus',
+    component: JsFocus
+  },
+  {
     path: '/scss-variables',
     component: ScssVariables
+  },
+  {
+    path: '/scss-focus',
+    component: ScssFocus
   }
 ];
 

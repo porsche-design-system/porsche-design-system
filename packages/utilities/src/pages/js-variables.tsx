@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { color, font, headline, layout, spacing, text, title } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
@@ -27,11 +27,20 @@ export const JsVariables = (): JSX.Element => {
   const colorArray = objectToFlatArray(other);
   const colorDarkArray = objectToFlatArray(darkTheme);
 
-  const renderSquares = (colors: string[]) => (
+  const renderSquares = (colors: string[], theme: 'light' | 'dark' = 'light') => (
     <div>
-      {colors.map((x, idx) => (
-        <Square key={idx} background={x} children={x} />
-      ))}
+      {colors.map((x, idx) => {
+        const style = x === 'currentColor'
+          ? {
+            color: theme === 'light' ? 'black' : 'white',
+            outline: `${x} solid 1px`,
+            outlineOffset: '-5px'
+          }
+          : null;
+        const background = x === 'currentColor' ? null : x;
+
+        return <Square key={idx} background={background} children={x} style={style} />
+      })}
     </div>
   );
 
@@ -52,7 +61,7 @@ export const JsVariables = (): JSX.Element => {
 
       <div className="playground">
         <h2>Dark Theme Colors</h2>
-        {renderSquares(colorDarkArray)}
+        {renderSquares(colorDarkArray, 'dark')}
       </div>
 
       <div className="playground">

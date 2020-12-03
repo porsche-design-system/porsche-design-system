@@ -16,70 +16,26 @@ will be created. The assigned `label` property defines also the name of the butt
 
 Every `p-tabs-item` holds a `slot` to display content which can be individually assigned. 
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-    <p-tabs :theme="theme">
-      <p-tabs-item label="Tab One">
-        <p-text :theme="theme">Tab Content One</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Two" selected>
-        <p-text :theme="theme">Tab Content Two</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Three">
-        <p-text :theme="theme">Tab Content Three</p-text>
-      </p-tabs-item>
-    </p-tabs>
-  </template>
-</Playground>
+<Playground :markup="basic" :config="config"></Playground>
 
 ## Size
 
-<Playground :themeable="true">
-  <template #configurator>
-    <select v-model="size">
-      <option disabled>Select size</option>
-      <option selected value="small">Small</option>
-      <option value="medium">Medium</option>
-    </select>
-  </template>
-  <template v-slot="{theme}">
-    <p-tabs :theme="theme" :size="size">
-      <p-tabs-item label="Tab One">
-        <p-text :theme="theme">Tab Content One</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Two" selected>
-        <p-text :theme="theme">Tab Content Two</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Three">
-        <p-text :theme="theme">Tab Content Three</p-text>
-      </p-tabs-item>
-    </p-tabs>
-  </template>
+<Playground :markup="sizeMarkup" :config="config">
+  <select v-model="size">
+    <option disabled>Select size</option>
+    <option selected value="small">Small</option>
+    <option value="medium">Medium</option>
+  </select>
 </Playground>
 
 ## Weight
 
-<Playground :themeable="true">
-  <template #configurator>
-    <select v-model="weight">
-      <option disabled>Select weight</option>
-      <option selected value="regular">Regular</option>
-      <option value="semibold">SemiBold</option>
-    </select>
-  </template>
-  <template v-slot="{theme}">
-    <p-tabs :theme="theme" :weight="weight">
-      <p-tabs-item label="Tab One">
-        <p-text :theme="theme">Tab Content One</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Two" selected>
-        <p-text :theme="theme">Tab Content Two</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Three">
-        <p-text :theme="theme">Tab Content Three</p-text>
-      </p-tabs-item>
-   </p-tabs>
-  </template>
+<Playground :markup="weightMarkup" :config="config">
+  <select v-model="weight">
+    <option disabled>Select weight</option>
+    <option selected value="regular">Regular</option>
+    <option value="semibold">SemiBold</option>
+  </select>
 </Playground>
 
 ## Gradient Color Scheme
@@ -87,111 +43,64 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
 The background and gradient has to align to your chosen background.
 
-<Playground :themeable="true" :color-scheme="gradientColorScheme">
-  <template #configurator>
-    <select v-model="gradientColorScheme">
-      <option disabled>Select gradient-color-scheme</option>
-      <option selected value="default">Default</option>
-      <option value="surface">Surface</option>
-    </select>
-  </template>
-  <template v-slot="{theme}">
-    <p-tabs :theme="theme" :gradient-color-scheme="gradientColorScheme">
-      <p-tabs-item label="Tab One">
-        <p-text :theme="theme">Tab Content One</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Two">
-        <p-text :theme="theme">Tab Content Two</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Three">
-        <p-text :theme="theme">Tab Content Three</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Four">
-        <p-text :theme="theme">Tab Content Four</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Five">
-        <p-text :theme="theme">Tab Content Five</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Six">
-        <p-text :theme="theme">Tab Content Six</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Seven">
-        <p-text :theme="theme">Tab Content Seven</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Eight">
-        <p-text :theme="theme">Tab Content Eight</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Nine">
-        <p-text :theme="theme">Tab Content Nine</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Ten">
-        <p-text :theme="theme">Tab Content Ten</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Eleven">
-        <p-text :theme="theme">Tab Content Eleven</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Twelve">
-        <p-text :theme="theme">Tab Content Twelve</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Thirteen">
-        <p-text :theme="theme">Tab Content Thirteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Fourteen">
-        <p-text :theme="theme">Tab Content Fourteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Fifteen">
-        <p-text :theme="theme">Tab Content Fifteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Sixteen">
-        <p-text :theme="theme">Tab Content Sixteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Seventeen">
-        <p-text :theme="theme">Tab Content Seventeen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Eighteen">
-        <p-text :theme="theme">Tab Content Eighteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Nineteen">
-        <p-text :theme="theme">Tab Content Nineteen</p-text>
-      </p-tabs-item>
-      <p-tabs-item label="Tab Twenty">
-        <p-text :theme="theme">Tab Content Twenty</p-text>
-      </p-tabs-item>
-    </p-tabs>
-  </template>
+<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
+  <select v-model="gradientColorScheme">
+    <option disabled>Select gradient-color-scheme</option>
+    <option selected value="default">Default</option>
+    <option value="surface">Surface</option>
+  </select>
 </Playground>
 
 ## Active Tab
 
-You may need to change the initial active tab. To do so, use the `selected` property on the `p-tabs-item` you want to select on first render. 
-If you put the property on multiple `p-tabs-item` it will select the first .
+You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`.
 
-<Playground :themeable="true">
-  <template v-slot="{theme}">
-     <p-tabs :theme="theme">
-       <p-tabs-item label="Tab One">
-        <p-text :theme="theme">Tab Content One</p-text>
-       </p-tabs-item>
-       <p-tabs-item label="Tab Two" selected>
-        <p-text :theme="theme">Tab Content Two</p-text>
-       </p-tabs-item>
-       <p-tabs-item label="Tab Three">
-        <p-text :theme="theme">Tab Content Three</p-text>
-       </p-tabs-item>
-     </p-tabs>
-  </template>
-</Playground>
+<Playground :markup="activeTab" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
   
+  const buildTabsItem = (name: string, index: number) => 
+`  <p-tabs-item label="Tab ${name}">
+    <p-text>Tab Content ${name}</p-text>
+  </p-tabs-item>`;
+  
   @Component
-  export default class PlaygroundTabs extends Vue {
-    public theme: string = 'light';
-    public weight: string = 'semibold';
-    public size: string = 'medium';
-    public gradientColorScheme: string = 'surface';
-    public activeTabIndex: number = 0;
+  export default class Code extends Vue {
+    config = { themeable: true };
+
+    weight = 'semibold';
+    size = 'medium';
+    gradientColorScheme = 'surface';
+
+    basic =
+`<p-tabs>
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
+
+    get sizeMarkup() {
+      return `<p-tabs size="${this.size}">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
+    }
+
+    get weightMarkup() {
+      return `<p-tabs weight="${this.weight}">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
+    }
+
+    get gradientMarkup() {
+      return `<p-tabs gradient-color-scheme="${this.gradientColorScheme}">
+${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
+  .map(buildTabsItem).join('\n')}
+</p-tabs>`;
+    }
+    
+    activeTab =
+`<p-tabs active-tab-index="1">
+${['One', 'Two', 'Three'].map(buildTabsItem).join('\n')}
+</p-tabs>`;
   }
 </script>

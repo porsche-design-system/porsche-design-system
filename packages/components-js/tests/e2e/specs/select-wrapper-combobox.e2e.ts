@@ -2,13 +2,14 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
-  getCssClasses, getElementIndex,
+  getCssClasses,
+  getElementIndex,
   getElementStyle,
-  getProperty,
+  getProperty, getStyleOnFocus,
   initAddEventListener,
-  selectNode,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle
+  selectNode, setAttribute,
+  setContentWithDesignSystem, expectedStyleOnFocus,
+  waitForStencilLifecycle, getOutlineStyle
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -21,22 +22,38 @@ describe('select-wrapper combobox', () => {
   });
   afterEach(async () => await page.close());
 
+  const getSelectHost = () => selectNode(page, 'p-select-wrapper');
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const selectFilter = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input');
   const selectFilterOverlay = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__filter-input + span');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
   const getSelectOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
-  const getSelectedValue = async () => await page.evaluate(() => {
+  const getSelectedText = async () => await page.evaluate(() => {
     const index = document.querySelector('select').selectedIndex;
     const options = document.querySelectorAll('option');
     return options[index].textContent;
   });
   const getChangedBoxShadow = async () => await getElementStyle(await selectFilterOverlay(), 'boxShadow', { waitForTransition: true })
   const getOpacity = async () => await getElementStyle(await getSelectOptionList(), 'opacity');
-  const hidden = async() => await page.evaluate(() => {
-    const root = document.querySelector('p-select-wrapper');
-    return Array.from(root.shadowRoot.querySelectorAll('.p-select-wrapper__fake-option--hidden')).length;
-  });
+  const hidden = async () =>
+    await page.evaluate(() => {
+      const root = document.querySelector('p-select-wrapper');
+      return Array.from(root.shadowRoot.querySelectorAll('.p-select-wrapper__fake-option--hidden')).length;
+    });
+
+  const initCombobox = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+        <p-select-wrapper filter="true">
+          <select>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -52,13 +69,16 @@ describe('select-wrapper combobox', () => {
     );
 
     const fakeOptionList = await getSelectOptionList();
-    const fakeOptionSelected = await selectNode(
-      page,
-      'p-select-wrapper >>> .p-select-wrapper__fake-option--selected'
-    );
+    const fakeOptionSelected = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option--selected');
     const activeDescendant = await getAttribute(await selectFilter(), 'aria-activedescendant');
     const selectedDescendantId = (await getProperty(fakeOptionSelected, 'id')) as string;
 
+    const filterInput = await selectFilter();
+    const filterPlaceholder = await filterInput.evaluate((el) => {
+      return el.getAttribute('placeholder');
+    });
+
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
     expect(fakeOptionList).not.toBeNull();
     expect(await selectFilter()).not.toBeNull();
     expect(activeDescendant).toEqual(selectedDescendantId);
@@ -227,7 +247,10 @@ describe('select-wrapper combobox', () => {
     await filterInput.type('b');
     await waitForStencilLifecycle(page);
 
-    const visibleElement = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:not(.p-select-wrapper__fake-option--hidden)');
+    const visibleElement = await selectNode(
+      page,
+      'p-select-wrapper >>> .p-select-wrapper__fake-option:not(.p-select-wrapper__fake-option--hidden)'
+    );
     const visibleElementClasses = await getCssClasses(visibleElement);
 
     expect(await getOpacity()).toBe('1');
@@ -257,13 +280,41 @@ describe('select-wrapper combobox', () => {
     await filterInput.type('d');
     await waitForStencilLifecycle(page);
 
-
-
     const errorOption = await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option > span');
-    const errorOptionValue = await errorOption.evaluate( (el) => el.textContent);
+    const errorOptionValue = await errorOption.evaluate((el) => el.textContent);
 
     expect(await hidden()).toBe(0);
     expect(errorOptionValue).toBe('---');
+  });
+
+  it('should clear input value on click outside', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text>Some text</p-text>
+      <p-select-wrapper label="Some label" filter="true">
+        <select name="some-name" id="realSelect">
+          <option value="a">A Option</option>
+          <option value="b">B Option</option>
+          <option value="c">C Option</option>
+        </select>
+      </p-select-wrapper>
+    `
+    );
+
+    const filterInput = await selectFilter();
+    const text = await selectNode(page, 'p-text');
+
+    await filterInput.type('x');
+    await waitForStencilLifecycle(page);
+
+    const value = () => getProperty(filterInput, 'value');
+
+    expect(await value()).toBe('x');
+
+    await text.click();
+
+    expect(await value()).toBe('');
   });
 
   it('should add valid selection as placeholder on enter', async () => {
@@ -288,9 +339,8 @@ describe('select-wrapper combobox', () => {
       return el.getAttribute('placeholder');
     });
 
-    expect(await getSelectedValue()).toBe('B');
-    expect(await getSelectedValue()).toEqual(filterPlaceholder);
-
+    expect(await getSelectedText()).toBe('B');
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
   });
 
   it('should add valid selection as placeholder on click', async () => {
@@ -319,9 +369,8 @@ describe('select-wrapper combobox', () => {
       return el.getAttribute('placeholder');
     });
 
-    expect(await getSelectedValue()).toBe('B');
-    expect(await getSelectedValue()).toEqual(filterPlaceholder);
-
+    expect(await getSelectedText()).toBe('B');
+    expect(await getSelectedText()).toEqual(filterPlaceholder);
   });
 
   it('should set dropdown direction to up', async () => {
@@ -382,7 +431,8 @@ describe('select-wrapper combobox', () => {
   });
 
   describe('keyboard and click events', () => {
-    const getFakeOptionInPosOne = async () => await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
+    const getFakeOptionInPosOne = async () =>
+      await selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
     const getActiveDescendant = async () => await getAttribute(await selectFilter(), 'aria-activedescendant');
     const getSelectedIndex = () =>
       page.evaluate(() => {
@@ -415,7 +465,6 @@ describe('select-wrapper combobox', () => {
       await waitForStencilLifecycle(page);
 
       expect(afterFocusCalls).toBe(1);
-
     });
 
     it('should highlight first position on arrow down', async () => {
@@ -505,29 +554,6 @@ describe('select-wrapper combobox', () => {
       expect(await getHighlightedFakeOption()).toBe(0);
     });
 
-    it('should skip disabled option on arrow up', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-
-      await page.keyboard.press('ArrowUp');
-      await waitForStencilLifecycle(page);
-
-      expect(await getHighlightedFakeOption()).toBe(0);
-    });
-
     it('should highlight correct position on multiple key actions', async () => {
       await setContentWithDesignSystem(
         page,
@@ -558,34 +584,6 @@ describe('select-wrapper combobox', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedFakeOption()).toBe(2);
-    });
-
-    it('should open fake select with spacebar', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-      <p-select-wrapper label="Some label" filter="true">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b">B Option</option>
-          <option value="c">C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
-      );
-      const select = await getSelectRealInput();
-
-      let calls = 0;
-      await addEventListener(select, 'change', () => calls++);
-
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect(await getOpacity()).toBe('0');
-
-      await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      expect(await getOpacity()).toBe('1');
-      expect(calls).toBe(0);
     });
 
     it('should open fake select with spacebar', async () => {
@@ -985,6 +983,63 @@ describe('select-wrapper combobox', () => {
       expect(await getOpacity()).toBe('0');
       expect(afterBlurCalls).toBe(1);
     });
+  });
 
+  describe('focus state', () => {
+    it('should be shown by keyboard navigation and on click for shadow <input> filter', async () => {
+      await initCombobox();
+
+      const filterInput = await selectFilter();
+      const filterInputOverlay = await selectFilterOverlay();
+      const hidden = expectedStyleOnFocus({color: 'transparent'});
+      const visible = expectedStyleOnFocus({color: 'neutral'});
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(hidden);
+
+      await filterInput.click();
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(filterInputOverlay)).toBe(visible);
+    });
+
+    it('should show outline of slotted <select> when it is focused', async () => {
+      await initCombobox();
+
+      const host = await getSelectHost();
+      const filterInput = await selectFilter();
+      const filterInputOverlay = await selectFilterOverlay();
+
+      await filterInput.focus();
+
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error'}));
+
+      await setAttribute(host, 'theme', 'dark');
+
+      await setAttribute(host, 'state', 'none');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'neutral', theme: 'dark'}));
+
+      await setAttribute(host, 'state', 'success');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'success', theme: 'dark'}));
+
+      await setAttribute(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
+      expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({color: 'error', theme: 'dark'}));
+    });
   });
 });

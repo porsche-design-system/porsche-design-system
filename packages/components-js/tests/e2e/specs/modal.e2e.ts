@@ -3,12 +3,13 @@ import {
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
+  getAttribute,
   getBrowser,
   getElementStyle,
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -23,6 +24,7 @@ describe('modal', () => {
   const getModalHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
+  const getModalAside = () => selectNode(page, 'p-modal >>> aside');
 
   const initBasicModal = ({ isOpen }: { isOpen: boolean } = { isOpen: true }) =>
     setContentWithDesignSystem(
@@ -122,6 +124,7 @@ describe('modal', () => {
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       await (await getModalHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
+      await waitForStencilLifecycle(page);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
 
@@ -246,5 +249,25 @@ describe('modal', () => {
 
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
+  });
+
+  it('should prevent page from scrolling when initially open', async  () => {
+    await initBasicModal({ isOpen: true });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('hidden');
+  });
+
+  it('should have correct aria-hidden value', async () => {
+    await initBasicModal({ isOpen: false });
+    const aside = await getModalAside();
+
+    expect(await getAttribute(aside, 'aria-hidden')).toBe('true');
+
+    await openModal();
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(aside, 'aria-hidden')).toBe('false');
   });
 });

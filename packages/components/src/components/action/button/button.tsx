@@ -21,7 +21,7 @@ export class Button {
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'button';
+  @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop({ reflect: true }) public disabled?: boolean = false;
@@ -77,13 +77,13 @@ export class Button {
         type={this.type}
         disabled={this.isDisabled()}
         tabindex={this.tabbable ? 0 : -1}
-        aria-busy={this.loading && 'true'}
+        aria-busy={this.loading ? 'true' : null}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner
             class={iconClasses}
             size="inherit"
-            theme={(this.variant === 'tertiary' && this.theme) || 'dark'}
+            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
           />
         ) : (
           <PrefixedTagNames.pIcon

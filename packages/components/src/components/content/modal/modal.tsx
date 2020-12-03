@@ -32,12 +32,9 @@ export class Modal {
     if (isOpen) {
       this.setFocusableElements();
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-
-      // timeout is needed to focus close button which only appears after render and trick blurOnFocus
-      setTimeout(() => this.focusableElements[0]?.focus());
+      this.focusableElements[0]?.focus();
     } else {
-      // timeout is needed to focus previously focused button reliably because of blurOnFocus
-      setTimeout(() => this.focusedElBeforeOpen?.focus());
+      this.focusedElBeforeOpen?.focus();
     }
   }
 
@@ -45,6 +42,7 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
+      this.setScrollLock(true);
     }
   }
 

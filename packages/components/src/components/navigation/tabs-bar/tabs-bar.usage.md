@@ -1,14 +1,13 @@
 # Tabs Bar
 
 ## When to use
-  • Use Tabs to change the appearance of your content.  
-  • Use Tabs to skip the navigation and move on a longer page.
+  • Use Tabs Bar as a Skip-Navigation to jump to sections on a longer page.  
 
 ---
 
 ## Types
 
-To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs as follows
+To ensure a seamless UX in all Porsche web applications it is recommended to use the Tabs Bar as follows
 
 | Type | Usage |
 |----|----|
@@ -23,6 +22,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 When a set of Tabs cannot fit on screen the tab bar becomes horizontal swibeable and navigable with arrows. 
 To navigate back and forth use the arrows.
+
+## Usage
 
 ### Scalable
 

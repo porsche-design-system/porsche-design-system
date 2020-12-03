@@ -126,6 +126,7 @@ export class LinkPure {
       </Host>
     );
   }
+
   private setSubline(): void {
     this.subline = this.host.querySelector('[slot="subline"]');
   }
@@ -133,14 +134,6 @@ export class LinkPure {
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();
     const style = `
-    /* only for IE11/Edge */
-    ${tagName} a {
-      text-decoration: none !important;
-    }
-    ${tagName} a:focus {
-      outline: none !important;
-    }
-
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
       content: "" !important;
@@ -150,15 +143,17 @@ export class LinkPure {
       right: 0 !important;
       bottom: 0 !important;
       display: block !important;
-      outline: transparent none !important;
-      transition: outline-color 0.24s ease !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 1px !important;
     }
 
     ${tagName} a:focus::before {
-      outline-offset: 1px !important;
-      outline: currentColor solid 1px !important;
+      outline-color: currentColor !important;
     }
-    `;
+
+    ${tagName} a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
+    }`;
 
     insertSlottedStyles(this.host, style);
   }

@@ -6,7 +6,7 @@ We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l |
 
 #### Example
 
-```
+```tsx
 import { breakpoint } from '@porsche-design-system/utilities';
 
 if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
@@ -27,7 +27,7 @@ The `mediaQuery()` function returns a `@media (min-width: minBreakpoints) || @me
 
 #### Example predefined breakpoint
 
-```
+```tsx
 import { mediaQuery, breakpoint } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
@@ -51,7 +51,7 @@ render (
 
 #### Example custom breakpoint
 
-```
+```tsx
 import { mediaQuery } from '@porsche-design-system/utilities';
 
 const StyledDiv = css`{
@@ -87,8 +87,9 @@ Given values are:
 
 #### Example
 
-```
+```tsx
 import { text } from '@porsche-design-system/utilities';
+import styled from 'styled-components';
 
 const PTextSmall = styled.p`
   ${text.small}
@@ -97,8 +98,8 @@ const PTextSmall = styled.p`
 
 #### Result
 
-```
-PHeadline style = {
+```css
+p {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -113,8 +114,9 @@ Given variables are:
 
 #### Example
 
-```
+```tsx
 import { headline } from '@porsche-design-system/utilities';
+import styled from 'styled-components';__
 
 const PHeadline = styled.h1`
   ${headline['1']}
@@ -123,8 +125,8 @@ const PHeadline = styled.h1`
 
 #### Result
 
-```
-PHeadline style = {
+```css
+h1 {
   font-family: "Porsche Next", "Arial Narrow", Arial, sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
@@ -132,30 +134,99 @@ PHeadline style = {
 }
 
 @media (min-width: 760px) and (max-width: 999px) {
-  PHeadline {
+  h1 {
     font-size: 2.25rem;
     line-height: 1.2222222222;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1299px) {
-  PHeadline {
+  h1 {
     font-size: 2.75rem;
     line-height: 1.1818181818;
   }
 }
 
 @media (min-width: 1300px) and (max-width: 1759px) {
-  PHeadline {
+  h1 {
     font-size: 3.25rem;
     line-height: 1.2307692308;
   }
 }
 
 @media (min-width: 1760px) {
-  PHeadline {
+  h1 {
     font-size: 3.75rem;
     line-height: 1.2;
   }
 }
+```
+
+---
+
+## State
+
+### Focus
+
+The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. 
+The provided SCSS mixin ensures focus is shown by keyboard navigation only.
+
+Given options object keys: 
+* `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  
+* `offset`: Can be overwritten when default offset is not sufficient.
+* `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.
+
+#### Example
+
+```tsx
+import { color, focus } from '@porsche-design-system/utilities';
+import styled from 'styled-components';
+
+const Anchor = styled.a`${focus()}`;
+const Button = styled.div`
+  // to control the focusable area of the nested button a proper position needs to be defined
+  position: relative; 
+  padding: 1rem;
+  
+  // use '::before' or '::after' if the focusable area needs to be enlarged relative to a wrapping element
+  button {
+    ${focus({color: color.state.focus, offset: '1px', pseudo: '::before'})}
+  }`;
+
+return (
+  <>
+    <Anchor>Some Label</Anchor>
+    <Button>Some Label</Button>
+  </>
+);
+```
+
+#### Result
+
+```css
+a { 
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+}
+a::-moz-focus-inner { border: 0; }
+a:focus { outline-color: currentColor; }
+a:focus:not(:focus-visible) { outline-color: transparent; }
+
+div {
+  position: relative;
+  padding: 1rem;
+}
+div button::-moz-focus-inner { border:0; }
+div button::before { 
+  content: "";
+  outline: transparent solid 1px;
+  outline-offset: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+div button:focus::before { outline-color: currentColor; }
+div button:focus:not(:focus-visible)::before { outline-color: transparent; }
 ```

@@ -53,6 +53,7 @@
 }
 
 .#{$p-global-class-prefix}button {
+  @include p-focus($p-color-neutral-contrast-high);
   $bem-block: &;
   display: flex;
   width: 100%;
@@ -63,42 +64,30 @@
   padding: 0;
   box-sizing: border-box;
   appearance: none;
-  outline: none transparent;
   text-decoration: none;
   text-align: left;
   border-style: solid;
   border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
   border-color $p-animation-hover-duration $p-animation-hover-bezier,
-  outline-color $p-animation-hover-duration $p-animation-hover-bezier,
   color $p-animation-hover-duration $p-animation-hover-bezier;
   cursor: pointer;
-
-  &::-moz-focus-inner {
-    border: 0; // fix for Firefox, avoid dotted outline in button on focus
-  }
-
-  &:focus {
-    outline-width: 1px;
-    outline-style: solid;
-    outline-offset: 1px;
-  }
 
   &:disabled,
   &[disabled] {
     cursor: not-allowed;
   }
 
-  &--theme-light {
-    &:focus {
-      outline-color: $p-color-state-focus;
-    }
+  :host([theme="dark"]) & {
+    @include p-focus($p-color-theme-dark-default);
   }
 
-  &--theme-dark {
-    &:focus {
-      outline-color: $p-color-theme-dark-state-focus;
-    }
+  :host([variant="primary"]) & {
+    @include p-focus($p-color-brand);
+  }
+
+  :host([theme="dark"][variant="primary"]) & {
+    @include p-focus($p-color-theme-dark-brand);
   }
 
   &--primary {
@@ -390,7 +379,7 @@
         @include p-button-label-without-label;
       }
 
-      #{$bem-block}__icon´ {
+      #{$bem-block}__icon {
         @include p-button-icon-without-label;
       }
     }

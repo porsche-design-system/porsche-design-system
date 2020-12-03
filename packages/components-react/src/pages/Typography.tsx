@@ -1,5 +1,4 @@
 import { PText as Text, PHeadline as Headline } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TypographyPage = (): JSX.Element => {
   const style = `

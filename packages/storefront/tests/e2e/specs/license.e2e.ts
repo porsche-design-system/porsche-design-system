@@ -21,7 +21,7 @@ describe('Storefront', () => {
     expect(await isLinkActive(linkElement)).toBe(false);
 
     await linkElement.click();
-    await page.waitFor(40);
+    await page.waitForTimeout(40);
 
     expect(await isLinkActive(linkElement)).toBe(true);
 
