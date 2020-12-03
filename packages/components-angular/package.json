@@ -42,7 +42,7 @@
     "@angular/cli": "^11.0.2",
     "@angular/compiler-cli": "^11.0.2",
     "@angular/language-service": "^11.0.2",
-    "@porsche-design-system/assets": "3.0.0",
+    "@porsche-design-system/assets": "3.1.0",
     "@porsche-design-system/utilities": "3.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
