@@ -134,9 +134,9 @@ describe('checkbox-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getCheckboxMessage()).toBeDefined();
-    expect(await getAttribute(await getCheckboxMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getCheckboxMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getCheckboxMessage(), 'role')).toEqual('alert', 'when state = error');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
     await checkboxHost.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -144,9 +144,9 @@ describe('checkbox-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getCheckboxMessage()).toBeDefined();
+    expect(await getCheckboxMessage()).toBeDefined('when state = success');
     expect(await getAttribute(await getCheckboxMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
     await checkboxHost.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -155,7 +155,7 @@ describe('checkbox-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCheckboxMessage()).toBeNull('when state = none');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
   it('should toggle checkbox when input is clicked', async () => {

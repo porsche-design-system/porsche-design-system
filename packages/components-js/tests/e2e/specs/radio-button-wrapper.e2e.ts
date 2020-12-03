@@ -14,7 +14,6 @@ import {
   waitForInheritedCSSTransition,
   getOutlineStyle,
   getBoxShadowStyle,
-  enableBrowserLogging,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -137,9 +136,9 @@ describe('radio-button-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getRadioButtonMessage()).toBeDefined();
+    expect(await getRadioButtonMessage()).toBeDefined('when state = error');
     expect(await getAttribute(await getRadioButtonMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
     await radioComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -147,9 +146,9 @@ describe('radio-button-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getRadioButtonMessage()).toBeDefined();
+    expect(await getRadioButtonMessage()).toBeDefined('when state = success');
     expect(await getAttribute(await getRadioButtonMessage(), 'role')).toBeNull('when state = success');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
     await radioComponent.evaluate((el) => {
       el.setAttribute('state', 'none');
@@ -158,7 +157,7 @@ describe('radio-button-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getRadioButtonMessage()).toBeNull('when state = none');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
   it('should check radio-button when input is clicked', async () => {

@@ -161,9 +161,9 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeDefined();
-    expect(await getAttribute(await getTextareaMessage(), 'role')).toBe('alert');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message');
+    expect(await getTextareaMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getTextareaMessage(), 'role')).toBe('alert', 'when state = error');
+    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message', 'when state = error');
 
     await textareaComponent.evaluate((el) => {
       el.setAttribute('state', 'success');
@@ -171,18 +171,18 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeDefined();
-    expect(await getAttribute(await getTextareaMessage(), 'role')).toBeNull('when state = sucess');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some success message');
+    expect(await getTextareaMessage()).toBeDefined('when state = success');
+    expect(await getAttribute(await getTextareaMessage(), 'role')).toBeNull('when state = success');
+    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some success message', 'when state = success');
 
     await textareaComponent.evaluate((el) => {
-      el.setAttribute('state', ''); // TODO: why is this 'none' in other tests?
+      el.setAttribute('state', 'none');
       el.setAttribute('message', '');
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeNull('when state = ""');
-    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
+    expect(await getTextareaMessage()).toBeNull('when state = none');
+    expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label', 'when state = none');
   });
 
   it(`should focus textarea when label text is clicked`, async () => {
