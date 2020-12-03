@@ -251,7 +251,7 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
-  it('should prevent page from scrolling when initially open', async  () => {
+  it('should prevent page from scrolling when initially open', async () => {
     await initBasicModal({ isOpen: true });
     const body = await selectNode(page, 'body');
     const getBodyOverflow = () => getElementStyle(body, 'overflow');
@@ -259,7 +259,7 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('hidden');
   });
 
-  it('should remove overflow hidden from body if unmounted', async  () => {
+  it('should remove overflow hidden from body if unmounted', async () => {
     await initBasicModal({ isOpen: true });
     const body = await selectNode(page, 'body');
     const getBodyOverflow = () => getElementStyle(body, 'overflow');
@@ -271,9 +271,9 @@ describe('modal', () => {
 
       setTimeout(() => el.remove());
     });
+    await waitForStencilLifecycle(page);
 
-    expect(await getBodyOverflow()).toBe('none');
-
+    expect(await getBodyOverflow()).toBe('visible');
   });
 
   it('should have correct aria-hidden value', async () => {
