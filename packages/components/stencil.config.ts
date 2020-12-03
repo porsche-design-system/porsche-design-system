@@ -30,7 +30,6 @@ export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
   outputTargets: [
-    { type: 'dist-custom-elements-bundle', dir: '../components-react/projects/components-wrapper/src/bundle' },
     { type: 'dist', esmLoaderPath: '../loader' },
     {
       type: 'www',
