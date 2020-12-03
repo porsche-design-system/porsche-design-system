@@ -295,7 +295,7 @@ impact on the origin character of the company typeface. This includes:
 
 <script lang="ts">
   import Vue from 'vue';
-import Component from 'vue-class-component';
+  import Component from 'vue-class-component';
   import { calculateLineHeight } from '@porsche-design-system/utilities';
   
   @Component

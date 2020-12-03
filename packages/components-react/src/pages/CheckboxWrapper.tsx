@@ -1,5 +1,4 @@
 import { PCheckboxWrapper as CheckboxWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const CheckboxWrapperPage = (): JSX.Element => {
   return (
@@ -127,12 +126,6 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <span slot="message">
             Some error message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-        </CheckboxWrapper>
-      </div>
-
-      <div className="playground light" title="should render in focus state">
-        <CheckboxWrapper label="Some label">
-          <input id="test-focus-state" type="checkbox" name="some-name" />
         </CheckboxWrapper>
       </div>
 

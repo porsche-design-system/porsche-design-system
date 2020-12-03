@@ -81,28 +81,18 @@
   &__goto,
   &__prev,
   &__next {
+    @include p-focus($p-color-state-focus, 1px);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-    outline-color $p-animation-hover-duration $p-animation-hover-bezier;
+    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
     position: relative;
     width: p-px-to-rem(40px);
     height: p-px-to-rem(40px);
     box-sizing: border-box;
-    outline: none transparent;
 
-    &:focus {
-      outline-width: 1px;
-      outline-style: solid;
-
-      #{$bem-block}--theme-light & {
-        outline-color: $p-color-state-focus;
-      }
-
-      #{$bem-block}--theme-dark & {
-        outline-color: $p-color-theme-dark-state-focus;
-      }
+    :host([theme="dark"]) & {
+      @include p-focus($p-color-theme-dark-state-focus, 1px);
     }
 
     &:active {

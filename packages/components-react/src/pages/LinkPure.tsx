@@ -1,5 +1,4 @@
 import { PLinkPure as LinkPure } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPurePage = (): JSX.Element => {
   const style = `
@@ -173,14 +172,6 @@ export const LinkPurePage = (): JSX.Element => {
         </LinkPure>
         <LinkPure hideLabel={true} style={{ padding: '1rem' }}>
           <a href="https://www.porsche.com">Some label</a>
-        </LinkPure>
-      </div>
-
-      <div className="playground light" title="should render with explicit anchor tag">
-        <LinkPure>
-          <a href="https://www.porsche.com" id="test-focus-state">
-            Some label
-          </a>
         </LinkPure>
       </div>
 

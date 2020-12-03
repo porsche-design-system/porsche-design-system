@@ -23,7 +23,7 @@ export class ButtonPure {
   @Prop() public tabbable?: boolean = true;
 
   /** Specifies the type of the button. */
-  @Prop() public type?: ButtonType = 'button';
+  @Prop() public type?: ButtonType = 'submit';
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop({ reflect: true }) public disabled?: boolean = false;
@@ -108,7 +108,7 @@ export class ButtonPure {
           disabled={this.isDisabled()}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el as HTMLElement)}
-          aria-busy={this.loading && 'true'}
+          aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
             <PrefixedTagNames.pSpinner

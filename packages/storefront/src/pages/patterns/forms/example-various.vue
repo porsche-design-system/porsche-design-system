@@ -113,7 +113,7 @@
                       />
                     </p-text-field-wrapper>
                   </p-flex-item>
-                  <p-flex-item width="one-quarter" class="form-grid-item">
+                  <p-flex-item width="one-third" class="form-grid-item">
                     <p-text-field-wrapper v-bind:state="getState('year')" label="Year">
                       <input
                         type="number"

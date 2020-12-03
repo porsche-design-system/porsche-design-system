@@ -1,5 +1,5 @@
 import { PModal as Modal } from '@porsche-design-system/components-react';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const ModalBasicPage = (): JSX.Element => {
   useEffect(() => {

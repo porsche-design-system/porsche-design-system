@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { routes } from './routes';
 

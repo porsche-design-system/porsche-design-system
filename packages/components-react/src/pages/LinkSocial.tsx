@@ -1,5 +1,4 @@
 import { PLinkSocial as LinkSocial } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkSocialPage = (): JSX.Element => {
   const style = `
@@ -71,14 +70,6 @@ export const LinkSocialPage = (): JSX.Element => {
         </LinkSocial>
         <LinkSocial style={{ width: 240 }} icon="logo-facebook">
           <a href="https://www.facebook.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
-        </LinkSocial>
-      </div>
-
-      <div className="playground light" title="should render with explicit anchor tag">
-        <LinkSocial icon="logo-facebook">
-          <a href="https://www.facebook.com" id="test-focus-state">
-            Some label
-          </a>
         </LinkSocial>
       </div>
     </>

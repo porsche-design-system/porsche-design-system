@@ -109,6 +109,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-angular
+      - name: 'E2E Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-e2e
+          args: --components-angular
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -165,10 +170,10 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'Mock Test'
+      - name: 'JSDOM Polyfill Test'
         uses: ./.github/actions/docker-run
         with:
-          entrypoint: run-test-mocks
+          entrypoint: run-test-jsdom-polyfill
           args: --components-react
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run

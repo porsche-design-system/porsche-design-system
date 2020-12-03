@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   PBanner as Banner,
   PButton as Button,
@@ -103,8 +102,8 @@ export const OverviewPage = (): JSX.Element => {
     <div>
       <style children={style} />
 
-      <div style={{display: 'flex'}}>
-        <div style={{flex: 1}}>
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <Headline>Default Components</Headline>
           </div>
@@ -216,7 +215,7 @@ export const OverviewPage = (): JSX.Element => {
             </Tabs>
           </div>
 
-          <div className="playground light" title="should render default tabs-nav">
+          <div className="playground light" title="should render default tabs-bar">
             <TabsBar>
               <a>Tab1</a>
               <a>Tab2</a>
@@ -251,7 +250,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
         </div>
 
-        <div style={{flex: 1}}>
+        <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
           </div>
@@ -363,7 +362,7 @@ export const OverviewPage = (): JSX.Element => {
             </PrefixedTabs>
           </div>
 
-          <div className="playground light" title="should render default tabs-nav with custom prefix">
+          <div className="playground light" title="should render default tabs-bar with custom prefix">
             <PrefixedTabsBar>
               <a>Tab1</a>
               <a>Tab2</a>

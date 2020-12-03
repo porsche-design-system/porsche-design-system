@@ -1,5 +1,4 @@
 import { PBanner as Banner } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const BannerPage = (): JSX.Element => {
   const style = `
