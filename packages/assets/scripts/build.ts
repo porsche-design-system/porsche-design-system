@@ -2,12 +2,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const cdnPathPackageMap = {
-  components: '@porsche-design-system/components-js',
-  fonts: '@porsche-design-system/fonts',
-  icons: '@porsche-design-system/icons',
-  marque: '@porsche-design-system/marque',
+  'components': '@porsche-design-system/components-js',
+  'fonts': '@porsche-design-system/fonts',
+  'icons': '@porsche-design-system/icons',
+  'marque': '@porsche-design-system/marque',
   'meta-icons': '@porsche-design-system/meta-icons',
-  styles: '@porsche-design-system/utilities'
+  'styles': '@porsche-design-system/utilities',
 };
 
 const TARGET_DIRECTORY = '../cdn';

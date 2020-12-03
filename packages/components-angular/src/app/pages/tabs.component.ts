@@ -200,6 +200,6 @@ import { Component } from '@angular/core';
         <p-tabs-item [label]="'Tab 10'">Tab Content 10</p-tabs-item>
       </p-tabs>
     </div>
-  `
+  `,
 })
 export class TabsComponent {}

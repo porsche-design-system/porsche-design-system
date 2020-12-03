@@ -142,6 +142,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         >
       </p-textarea-wrapper>
     </div>
-  `
+  `,
 })
 export class TextareaWrapperComponent {}

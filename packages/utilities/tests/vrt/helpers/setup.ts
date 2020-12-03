@@ -13,7 +13,7 @@ const testOptions: VisualRegressionTestOptions = {
   tolerance: 0,
   baseUrl: 'http://localhost:3000',
   timeout: 90000,
-  mode: 'square-auto'
+  mode: 'square-auto',
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
@@ -23,7 +23,7 @@ jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
   browser = await launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
   });
 });
 
@@ -43,7 +43,7 @@ export const getVisualRegressionTester = (): VisualRegressionTester => {
 
 export const getVisualRegressionFocusTester = (): VisualRegressionTester => {
   if (!visualRegressionFocusTester) {
-    visualRegressionFocusTester = new VisualRegressionTester(browser, {...testOptions, viewports:[1000]});
+    visualRegressionFocusTester = new VisualRegressionTester(browser, { ...testOptions, viewports: [1000] });
   }
 
   return visualRegressionFocusTester;

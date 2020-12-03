@@ -2,7 +2,7 @@ import {
   getVisualRegressionMarque2xTester,
   getVisualRegressionMarque3xTester,
   getVisualRegressionTester,
-  testOptions
+  testOptions,
 } from '../helpers';
 
 describe('Marque', () => {

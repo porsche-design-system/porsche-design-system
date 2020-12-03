@@ -1,604 +1,604 @@
 import { StorefrontConfig } from './src/models';
 
 export const config: StorefrontConfig = {
-  About: {
+  'About': {
     Introduction: [
       // @ts-ignore
-      () => import(`@/pages/about/introduction.md`)
-    ]
+      () => import(`@/pages/about/introduction.md`),
+    ],
   },
   'Start Designing': {
-    Introduction: [
+    'Introduction': [
       // @ts-ignore
-      () => import(`@/pages/start-designing/introduction.md`)
+      () => import(`@/pages/start-designing/introduction.md`),
     ],
     'Design Workflow': [
       // @ts-ignore
-      () => import(`@/pages/start-designing/design-workflow.md`)
+      () => import(`@/pages/start-designing/design-workflow.md`),
     ],
     'Sketch Plugins': [
       // @ts-ignore
-      () => import(`@/pages/start-designing/sketch-plugins.md`)
-    ]
+      () => import(`@/pages/start-designing/sketch-plugins.md`),
+    ],
   },
   'Start Coding': {
-    Introduction: [
+    'Introduction': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/introduction.md`)
+      () => import(`@/pages/start-coding/introduction.md`),
     ],
-    Angular: [
+    'Angular': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/angular.md`)
+      () => import(`@/pages/start-coding/angular.md`),
     ],
-    React: [
+    'React': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/react.md`)
+      () => import(`@/pages/start-coding/react.md`),
     ],
     'Vanilla Js': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/vanilla-js.md`)
+      () => import(`@/pages/start-coding/vanilla-js.md`),
     ],
     'Next Js': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/next-js.md`)
+      () => import(`@/pages/start-coding/next-js.md`),
     ],
-    Gatsby: [
+    'Gatsby': [
       // @ts-ignore
-      () => import(`@/pages/start-coding/gatsby.md`)
-    ]
+      () => import(`@/pages/start-coding/gatsby.md`),
+    ],
   },
-  News: {
+  'News': {
     Changelog: {
       'Sketch Libraries': [
         // @ts-ignore
         () => import(`@/../../../sketch/web/CHANGELOG.md`),
         // @ts-ignore
-        () => import(`@/../../../sketch/basic/CHANGELOG.md`)
+        () => import(`@/../../../sketch/basic/CHANGELOG.md`),
       ],
-      Components: [
+      'Components': [
         // @ts-ignore
-        () => import(`@/../../components/CHANGELOG.md`)
+        () => import(`@/../../components/CHANGELOG.md`),
       ],
-      Utilities: [
+      'Utilities': [
         // @ts-ignore
-        () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`)
+        () => import(`@/../../utilities/projects/utilities/CHANGELOG.md`),
       ],
-      Assets: [
+      'Assets': [
         // @ts-ignore
-        () => import(`@/../../assets/CHANGELOG.md`)
+        () => import(`@/../../assets/CHANGELOG.md`),
       ],
-      Partials: [
+      'Partials': [
         // @ts-ignore
-        () => import(`@/../../partials/CHANGELOG.md`)
-      ]
+        () => import(`@/../../partials/CHANGELOG.md`),
+      ],
     },
     Versioning: [
       // @ts-ignore
-      () => import(`@/pages/news/versioning.md`)
+      () => import(`@/pages/news/versioning.md`),
     ],
     Roadmap: [
       // @ts-ignore
-      () => import(`@/pages/news/roadmap.md`)
-    ]
+      () => import(`@/pages/news/roadmap.md`),
+    ],
   },
-  Components: {
-    Color: {
+  'Components': {
+    'Color': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.examples.md`)
+        () => import(`@/../../components/src/components/basic/color/color.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/color/color.usage.md`)
-      ]
+        () => import(`@/../../components/src/components/basic/color/color.usage.md`),
+      ],
     },
-    Marque: {
+    'Marque': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.examples.md`)
+        () => import(`@/../../components/src/components/basic/marque/marque.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.usage.md`)
+        () => import(`@/../../components/src/components/basic/marque/marque.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/marque/marque.props.md`)
-      ]
+        () => import(`@/../../components/src/components/basic/marque/marque.props.md`),
+      ],
     },
-    Typography: {
+    'Typography': {
       Design: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/typography.design.md`)
+        () => import(`@/../../components/src/components/basic/typography/typography.design.md`),
       ],
       Headline: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`)
+        () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`),
       ],
       Text: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`)
+        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
       ],
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/headline/headline.props.md`),
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.props.md`)
-      ]
+        () => import(`@/../../components/src/components/basic/typography/text/text.props.md`),
+      ],
     },
-    Banner: {
+    'Banner': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/banner/banner.examples.md`)
+        () => import(`@/../../components/src/components/feedback/banner/banner.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/banner/banner.usage.md`)
+        () => import(`@/../../components/src/components/feedback/banner/banner.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/banner/banner.props.md`)
-      ]
+        () => import(`@/../../components/src/components/feedback/banner/banner.props.md`),
+      ],
     },
-    Button: {
+    'Button': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button/button.examples.md`)
+        () => import(`@/../../components/src/components/action/button/button.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button/button.usage.md`)
+        () => import(`@/../../components/src/components/action/button/button.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button/button.props.md`)
-      ]
+        () => import(`@/../../components/src/components/action/button/button.props.md`),
+      ],
     },
     'Button Pure': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button-pure/button-pure.examples.md`)
+        () => import(`@/../../components/src/components/action/button-pure/button-pure.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button-pure/button-pure.usage.md`)
+        () => import(`@/../../components/src/components/action/button-pure/button-pure.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/action/button-pure/button-pure.props.md`)
-      ]
+        () => import(`@/../../components/src/components/action/button-pure/button-pure.props.md`),
+      ],
     },
-    Checkbox: {
+    'Checkbox': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/checkbox-wrapper/checkbox-wrapper.props.md`),
+      ],
     },
-    Fieldset: {
+    'Fieldset': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/fieldset-wrapper/fieldset-wrapper.props.md`),
+      ],
     },
     'Radio Button': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/radio-button-wrapper/radio-button-wrapper.props.md`),
+      ],
     },
-    Select: {
+    'Select': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`),
+      ],
     },
-    Textarea: {
+    'Textarea': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/textarea-wrapper/textarea-wrapper.props.md`),
+      ],
     },
     'Text Field': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/form/text-field-wrapper/text-field-wrapper.props.md`),
+      ],
     },
     'Text List': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.examples.md`)
+        () => import(`@/../../components/src/components/content/text-list/text-list.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list.usage.md`)
+        () => import(`@/../../components/src/components/content/text-list/text-list.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/text-list/text-list/text-list.props.md`)
-      ]
+        () => import(`@/../../components/src/components/content/text-list/text-list/text-list.props.md`),
+      ],
     },
-    Spinner: {
+    'Spinner': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`)
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.usage.md`)
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`)
-      ]
+        () => import(`@/../../components/src/components/feedback/spinner/spinner.props.md`),
+      ],
     },
-    Icon: {
+    'Icon': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`)
+        () => import(`@/../../components/src/components/icon/icon/icon.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`)
+        () => import(`@/../../components/src/components/icon/icon/icon.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/icon/icon/icon.props.md`)
-      ]
+        () => import(`@/../../components/src/components/icon/icon/icon.props.md`),
+      ],
     },
     'Content Wrapper': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.examples.md`)
+        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.usage.md`)
+        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.props.md`)
-      ]
+        () => import(`@/../../components/src/components/layout/content-wrapper/content-wrapper.props.md`),
+      ],
     },
-    Divider: {
+    'Divider': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/divider/divider.examples.md`)
+        () => import(`@/../../components/src/components/layout/divider/divider.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/divider/divider.usage.md`)
+        () => import(`@/../../components/src/components/layout/divider/divider.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/divider/divider.props.md`)
-      ]
+        () => import(`@/../../components/src/components/layout/divider/divider.props.md`),
+      ],
     },
-    Flex: {
+    'Flex': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/flex/flex.examples.md`)
+        () => import(`@/../../components/src/components/layout/flex/flex.examples.md`),
       ],
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/flex/flex/flex.props.md`),
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/flex/flex-item/flex-item.props.md`)
-      ]
+        () => import(`@/../../components/src/components/layout/flex/flex-item/flex-item.props.md`),
+      ],
     },
-    Grid: {
+    'Grid': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/grid/grid.examples.md`)
+        () => import(`@/../../components/src/components/layout/grid/grid.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/grid/grid.usage.md`)
+        () => import(`@/../../components/src/components/layout/grid/grid.usage.md`),
       ],
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/layout/grid/grid/grid.props.md`),
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/grid/grid-item/grid-item.props.md`)
-      ]
+        () => import(`@/../../components/src/components/layout/grid/grid-item/grid-item.props.md`),
+      ],
     },
-    Spacing: {
+    'Spacing': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`)
+        () => import(`@/../../components/src/components/layout/spacing/spacing.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`)
-      ]
+        () => import(`@/../../components/src/components/layout/spacing/spacing.usage.md`),
+      ],
     },
-    Link: {
+    'Link': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link/link.examples.md`)
+        () => import(`@/../../components/src/components/navigation/link/link.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link/link.usage.md`)
+        () => import(`@/../../components/src/components/navigation/link/link.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link/link.props.md`)
-      ]
+        () => import(`@/../../components/src/components/navigation/link/link.props.md`),
+      ],
     },
-    Tabs: {
+    'Tabs': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/tabs/tabs.examples.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/tabs/tabs.usage.md`)
+        () => import(`@/../../components/src/components/content/tabs/tabs.usage.md`),
       ],
       Props: [
         // @ts-ignore
         () => import(`@/../../components/src/components/content/tabs/tabs/tabs.props.md`),
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/tabs/tabs-item/tabs-item.props.md`)
-      ]
+        () => import(`@/../../components/src/components/content/tabs/tabs-item/tabs-item.props.md`),
+      ],
     },
     'Tabs Bar': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.examples.md`)
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.usage.md`)
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md`)
-      ]
+        () => import(`@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md`),
+      ],
     },
     'Link Pure': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.examples.md`)
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.usage.md`)
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.props.md`)
-      ]
+        () => import(`@/../../components/src/components/navigation/link-pure/link-pure.props.md`),
+      ],
     },
     'Link Social': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.examples.md`)
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.usage.md`)
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/link-social/link-social.props.md`)
-      ]
+        () => import(`@/../../components/src/components/navigation/link-social/link-social.props.md`),
+      ],
     },
-    Pagination: {
+    'Pagination': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`)
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.usage.md`)
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`)
-      ]
+        () => import(`@/../../components/src/components/navigation/pagination/pagination.props.md`),
+      ],
     },
-    Modal: {
+    'Modal': {
       Examples: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.examples.md`)
+        () => import(`@/../../components/src/components/content/modal/modal.examples.md`),
       ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.usage.md`)
+        () => import(`@/../../components/src/components/content/modal/modal.usage.md`),
       ],
       Props: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/content/modal/modal.props.md`)
-      ]
-    }
+        () => import(`@/../../components/src/components/content/modal/modal.props.md`),
+      ],
+    },
   },
-  Help: {
-    Support: [
+  'Help': {
+    'Support': [
       // @ts-ignore
-      () => import(`@/pages/help/support.md`)
+      () => import(`@/pages/help/support.md`),
     ],
-    Faq: [
+    'Faq': [
       // @ts-ignore
-      () => import(`@/pages/help/faq.md`)
+      () => import(`@/pages/help/faq.md`),
     ],
-    Troubleshooting: [
+    'Troubleshooting': [
       // @ts-ignore
-      () => import(`@/pages/help/troubleshooting.md`)
+      () => import(`@/pages/help/troubleshooting.md`),
     ],
     'Browser Compatibility': [
       // @ts-ignore
-      () => import(`@/pages/basics/browser-compatibility.md`)
-    ]
+      () => import(`@/pages/basics/browser-compatibility.md`),
+    ],
   },
-  Accessibility: {
+  'Accessibility': {
     Introduction: [
       // @ts-ignore
-      () => import(`@/pages/accessibility/introduction.md`)
+      () => import(`@/pages/accessibility/introduction.md`),
     ],
     Compliance: [
       // @ts-ignore
-      () => import(`@/pages/accessibility/compliance.md`)
+      () => import(`@/pages/accessibility/compliance.md`),
     ],
     Guidelines: [
       // @ts-ignore
-      () => import(`@/pages/accessibility/guidelines.md`)
-    ]
+      () => import(`@/pages/accessibility/guidelines.md`),
+    ],
   },
-  Patterns: {
+  'Patterns': {
     Buttons: {
       Guidelines: [
         // @ts-ignore
-        () => import(`@/pages/patterns/buttons/guidelines.md`)
+        () => import(`@/pages/patterns/buttons/guidelines.md`),
       ],
       Resources: [
         // @ts-ignore
-        () => import(`@/pages/patterns/buttons/resources.md`)
-      ]
+        () => import(`@/pages/patterns/buttons/resources.md`),
+      ],
     },
     Forms: {
       Guidelines: [
         // @ts-ignore
-        () => import(`@/pages/patterns/forms/guidelines.md`)
+        () => import(`@/pages/patterns/forms/guidelines.md`),
       ],
       Resources: [
         // @ts-ignore
-        () => import(`@/pages/patterns/forms/resources.md`)
+        () => import(`@/pages/patterns/forms/resources.md`),
       ],
       Legal: [
         // @ts-ignore
-        () => import(`@/pages/patterns/forms/legal.md`)
-      ]
-    }
+        () => import(`@/pages/patterns/forms/legal.md`),
+      ],
+    },
   },
-  Assets: {
-    Introduction: [
+  'Assets': {
+    'Introduction': [
       // @ts-ignore
-      () => import(`@/pages/assets/introduction.md`)
+      () => import(`@/pages/assets/introduction.md`),
     ],
-    Icons: [
+    'Icons': [
       // @ts-ignore
-      () => import(`@/pages/assets/icons.md`)
+      () => import(`@/pages/assets/icons.md`),
     ],
     'Meta Icons': [
       // @ts-ignore
-      () => import(`@/pages/assets/meta-icons.md`)
+      () => import(`@/pages/assets/meta-icons.md`),
     ],
-    Marque: [
+    'Marque': [
       // @ts-ignore
-      () => import(`@/pages/assets/marque.md`)
+      () => import(`@/pages/assets/marque.md`),
     ],
-    Fonts: [
+    'Fonts': [
       // @ts-ignore
-      () => import(`@/pages/assets/fonts.md`)
-    ]
+      () => import(`@/pages/assets/fonts.md`),
+    ],
   },
-  Utilities: {
+  'Utilities': {
     Introduction: [
       // @ts-ignore
-      () => import(`@/pages/utilities/introduction.md`)
+      () => import(`@/pages/utilities/introduction.md`),
     ],
     Scss: {
       Variables: [
         // @ts-ignore
-        () => import(`@/pages/utilities/scss/variables.md`)
+        () => import(`@/pages/utilities/scss/variables.md`),
       ],
       Functions: [
         // @ts-ignore
-        () => import(`@/pages/utilities/scss/functions.md`)
+        () => import(`@/pages/utilities/scss/functions.md`),
       ],
       Helper: [
         // @ts-ignore
-        () => import(`@/pages/utilities/scss/helper.md`)
-      ]
+        () => import(`@/pages/utilities/scss/helper.md`),
+      ],
     },
     Js: {
       Variables: [
         // @ts-ignore
-        () => import(`@/pages/utilities/js/variables.md`)
+        () => import(`@/pages/utilities/js/variables.md`),
       ],
       Functions: [
         // @ts-ignore
-        () => import(`@/pages/utilities/js/functions.md`)
+        () => import(`@/pages/utilities/js/functions.md`),
       ],
       Helper: [
         // @ts-ignore
-        () => import(`@/pages/utilities/js/helper.md`)
-      ]
-    }
+        () => import(`@/pages/utilities/js/helper.md`),
+      ],
+    },
   },
-  Performance: {
-    Cdn: [
+  'Performance': {
+    'Cdn': [
       // @ts-ignore
-      () => import(`@/pages/performance/cdn.md`)
+      () => import(`@/pages/performance/cdn.md`),
     ],
     'Loading Behaviour': [
       // @ts-ignore
-      () => import(`@/pages/performance/loading-behaviour.md`)
-    ]
+      () => import(`@/pages/performance/loading-behaviour.md`),
+    ],
   },
-  Helpers: {
+  'Helpers': {
     'Components Ready': [
       // @ts-ignore
-      () => import(`@/pages/general/components-ready.md`)
+      () => import(`@/pages/general/components-ready.md`),
     ],
     'Slotted Content': [
       // @ts-ignore
-      () => import(`@/pages/general/slotted-content.md`)
+      () => import(`@/pages/general/slotted-content.md`),
     ],
-    Testing: [
+    'Testing': [
       // @ts-ignore
-      () => import(`@/pages/general/testing.md`)
-    ]
-  }
+      () => import(`@/pages/general/testing.md`),
+    ],
+  },
 };
 
 /* Auto Generated Below */

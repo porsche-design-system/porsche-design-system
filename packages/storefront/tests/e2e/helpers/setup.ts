@@ -13,9 +13,9 @@ beforeAll(async () => {
     headless: true,
     defaultViewport: {
       width: 1920,
-      height: 800
+      height: 800,
     },
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
   });
 });
 
@@ -26,7 +26,7 @@ afterAll(async () => {
 });
 
 export const options = {
-  baseURL: 'http://localhost:8080'
+  baseURL: 'http://localhost:8080',
 };
 
 export const getBrowser = (): Browser => browser;

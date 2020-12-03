@@ -12,7 +12,7 @@ import {
   getStyleOnFocus,
   waitForInheritedCSSTransition,
   expectedStyleOnFocus,
-  getOutlineStyle
+  getOutlineStyle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -27,34 +27,53 @@ describe('text-field-wrapper', () => {
   afterEach(async () => await page.close());
 
   const getTextFieldHost = () => selectNode(page, 'p-text-field-wrapper');
-  const getTextFieldFakeInput = () =>
-    selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
+  const getTextFieldFakeInput = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
   const getTextFieldRealInput = () => selectNode(page, 'p-text-field-wrapper input');
-  const getTextFieldMessage = () =>
-    selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
-  const getTextFieldLabelLink = () =>
-    selectNode(page, 'p-text-field-wrapper [slot="label"] a');
-  const getTextFieldDescriptionLink = () =>
-    selectNode(page, 'p-text-field-wrapper [slot="description"] a');
-  const getTextFieldMessageLink = () =>
-    selectNode(page, 'p-text-field-wrapper [slot="message"] a');
-  const getTextFieldLabel = () =>
-    selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
-  const getTextFieldButton = () =>
-    selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
+  const getTextFieldMessage = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
+  const getTextFieldLabelLink = () => selectNode(page, 'p-text-field-wrapper [slot="label"] a');
+  const getTextFieldDescriptionLink = () => selectNode(page, 'p-text-field-wrapper [slot="description"] a');
+  const getTextFieldMessageLink = () => selectNode(page, 'p-text-field-wrapper [slot="message"] a');
+  const getTextFieldLabel = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__label-text');
+  const getTextFieldButton = () => selectNode(page, 'p-text-field-wrapper >>> button.p-text-field-wrapper__button');
   const getTextFieldIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
 
   const getIconName = async (): Promise<unknown> => getProperty(await getTextFieldIcon(), 'name');
 
-  const initTextField = ({ useSlottedLabel, useSlottedDescription, useSlottedMessage, state, type }: { useSlottedLabel?: boolean; useSlottedDescription?: boolean; useSlottedMessage?: boolean; state?: FormState; type?: 'text' | 'password'; } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none', type: 'text' }): Promise<void> => {
+  const initTextField = (
+    {
+      useSlottedLabel,
+      useSlottedDescription,
+      useSlottedMessage,
+      state,
+      type,
+    }: {
+      useSlottedLabel?: boolean;
+      useSlottedDescription?: boolean;
+      useSlottedMessage?: boolean;
+      state?: FormState;
+      type?: 'text' | 'password';
+    } = { useSlottedLabel: false, useSlottedDescription: false, useSlottedMessage: false, state: 'none', type: 'text' }
+  ): Promise<void> => {
     return setContentWithDesignSystem(
       page,
       `
         <p-text-field-wrapper state="${state}">
-          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
-          ${useSlottedDescription ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedLabel
+              ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
+          ${
+            useSlottedDescription
+              ? '<span slot="description">Some description with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
           <input type="${type}" />
-          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedMessage
+              ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
         </p-text-field-wrapper>`
     );
   };
@@ -347,8 +366,8 @@ describe('text-field-wrapper', () => {
       await initTextField();
 
       const input = await getTextFieldRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'neutral'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'neutral' });
 
       expect(await getOutlineStyle(input)).toBe(hidden);
 
@@ -365,13 +384,18 @@ describe('text-field-wrapper', () => {
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initTextField({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+      await initTextField({
+        useSlottedLabel: true,
+        useSlottedDescription: true,
+        useSlottedMessage: true,
+        state: 'error',
+      });
 
       const labelLink = await getTextFieldLabelLink();
       const descriptionLink = await getTextFieldDescriptionLink();
       const messageLink = await getTextFieldMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
@@ -419,55 +443,60 @@ describe('text-field-wrapper', () => {
       const host = await getTextFieldHost();
       const input = await getTextFieldRealInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }));
 
       await setAttribute(input, 'readOnly', 'true');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'transparent'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'transparent' }));
     });
 
     it('should show outline of password toggle button when it is focused', async () => {
-      await initTextField({type: 'password'});
+      await initTextField({ type: 'password' });
 
       const host = await getTextFieldHost();
       const toggle = await getTextFieldButton();
 
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-4px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-4px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-5px' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({offset: '-5px'}));
+      expect(await getStyleOnFocus(toggle)).toBe(expectedStyleOnFocus({ offset: '-5px' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initTextField({useSlottedLabel: true, useSlottedDescription: true, useSlottedMessage: true, state: 'error'});
+      await initTextField({
+        useSlottedLabel: true,
+        useSlottedDescription: true,
+        useSlottedMessage: true,
+        state: 'error',
+      });
 
       const host = await getTextFieldHost();
       const labelLink = await getTextFieldLabelLink();
       const descriptionLink = await getTextFieldDescriptionLink();
       const messageLink = await getTextFieldMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({color: 'neutral', offset: '1px'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 });

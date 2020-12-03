@@ -1,13 +1,19 @@
 import {
   getActiveElementId,
   getActiveElementTagName,
-  getAttribute, getStyleOnFocus,
+  getAttribute,
+  getStyleOnFocus,
   getBrowser,
   getCssClasses,
   getProperty,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle, waitForInheritedCSSTransition, getOutlineStyle, getBoxShadowStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  waitForInheritedCSSTransition,
+  getOutlineStyle,
+  getBoxShadowStyle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -27,14 +33,32 @@ describe('radio-button-wrapper', () => {
   const getRadioButtonLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getRadioButtonMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
 
-  const initRadioButton = ({ useSlottedLabel, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+  const initRadioButton = (
+    {
+      useSlottedLabel,
+      useSlottedMessage,
+      state,
+    }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState } = {
+      useSlottedLabel: false,
+      useSlottedMessage: false,
+      state: 'none',
+    }
+  ): Promise<void> => {
     return setContentWithDesignSystem(
       page,
       `
         <p-radio-button-wrapper state="${state}">
-          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedLabel
+              ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
           <input type="radio" />
-          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${
+            useSlottedMessage
+              ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+              : ''
+          }
         </p-radio-button-wrapper>`
     );
   };
@@ -264,8 +288,8 @@ describe('radio-button-wrapper', () => {
       await initRadioButton();
 
       const input = await getRadioButtonRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent', css: 'boxShadow', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'neutral', css: 'boxShadow', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', css: 'boxShadow', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow', offset: '1px' });
 
       expect(await getBoxShadowStyle(input)).toBe(hidden);
 
@@ -282,12 +306,12 @@ describe('radio-button-wrapper', () => {
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initRadioButton({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+      await initRadioButton({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
 
       const labelLink = await getRadioButtonLabelLink();
       const messageLink = await getRadioButtonMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
@@ -323,32 +347,38 @@ describe('radio-button-wrapper', () => {
       const host = await getRadioButtonHost();
       const input = await getRadioButtonRealInput();
 
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'neutral', css: 'boxShadow'}));
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
+        expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow' })
+      );
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'success', css: 'boxShadow'}));
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
+        expectedStyleOnFocus({ color: 'success', css: 'boxShadow' })
+      );
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(expectedStyleOnFocus({color: 'error', css: 'boxShadow'}));
+      expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
+        expectedStyleOnFocus({ color: 'error', css: 'boxShadow' })
+      );
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initRadioButton({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+      await initRadioButton({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
 
       const host = await getRadioButtonHost();
       const labelLink = await getRadioButtonLabelLink();
       const messageLink = await getRadioButtonMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
     });
   });
 });

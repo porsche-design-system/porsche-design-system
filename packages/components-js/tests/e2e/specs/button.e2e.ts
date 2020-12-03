@@ -3,11 +3,15 @@ import {
   getActiveElementId,
   getAttribute,
   getBrowser,
-  getProperty, getStyleOnFocus,
+  getProperty,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -400,8 +404,8 @@ describe('button', () => {
       await initButton();
 
       const button = await getButtonRealButton();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'contrastHigh'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
 
       expect(await getOutlineStyle(button)).toBe(hidden);
 
@@ -423,32 +427,32 @@ describe('button', () => {
       const host = await getButtonHost();
       const button = await getButtonRealButton();
 
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'contrastHigh' }));
 
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'brand', theme: 'dark' }));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'brand' }));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'contrastHigh' }));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
     });
   });
 });

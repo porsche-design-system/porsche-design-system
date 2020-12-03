@@ -15,7 +15,7 @@ const vrtTestOptions: VisualRegressionTestOptions = {
   resultsDir: 'tests/vrt/results',
   tolerance: 0,
   baseUrl: 'http://localhost:3000',
-  timeout: 90000
+  timeout: 90000,
 };
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
@@ -25,7 +25,7 @@ jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
   browser = await launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--single-process'],
   });
 });
 
@@ -47,7 +47,7 @@ export const getVisualRegressionOverviewTester = (): VisualRegressionTester => {
   if (!visualRegressionOverviewTester) {
     visualRegressionOverviewTester = new VisualRegressionTester(browser, {
       ...vrtTestOptions,
-      viewports: [1920]
+      viewports: [1920],
     });
   }
 
@@ -58,7 +58,7 @@ export const getVisualRegressionContentWrapperTester = (): VisualRegressionTeste
   if (!visualRegressionGridTester) {
     visualRegressionGridTester = new VisualRegressionTester(browser, {
       ...vrtTestOptions,
-      viewports: vrtTestOptions.viewports.concat([1920, 2560])
+      viewports: vrtTestOptions.viewports.concat([1920, 2560]),
     });
   }
 
@@ -70,7 +70,7 @@ export const getVisualRegressionMarque2xTester = (): VisualRegressionTester => {
     visualRegressionMarque2xTester = new VisualRegressionTester(browser, {
       ...vrtTestOptions,
       viewports: [1299, 1300],
-      deviceScaleFactor: 2
+      deviceScaleFactor: 2,
     });
   }
 
@@ -82,7 +82,7 @@ export const getVisualRegressionMarque3xTester = (): VisualRegressionTester => {
     visualRegressionMarque3xTester = new VisualRegressionTester(browser, {
       ...vrtTestOptions,
       viewports: [1299, 1300],
-      deviceScaleFactor: 3
+      deviceScaleFactor: 3,
     });
   }
 

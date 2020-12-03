@@ -4,8 +4,8 @@ import pkg from './package.json';
 
 const commonPlugins = [
   resolve({
-    resolveOnly: [/^@porsche-design-system\/.*$/]
-  })
+    resolveOnly: [/^@porsche-design-system\/.*$/],
+  }),
 ];
 
 export default [
@@ -16,13 +16,13 @@ export default [
       dir: 'dist/js',
       format: 'umd',
       name: pkg.name,
-      exports: 'named'
+      exports: 'named',
     },
-    plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src/js' })]
+    plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src/js' })],
   },
   {
     input: 'src/js/index.ts',
     output: { dir: 'dist/js/esm', format: 'esm' },
-    plugins: [...commonPlugins, typescript()]
-  }
+    plugins: [...commonPlugins, typescript()],
+  },
 ];
