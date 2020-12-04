@@ -53,6 +53,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
+    this.setScrollLock(false);
   }
 
   public render(): JSX.Element {
