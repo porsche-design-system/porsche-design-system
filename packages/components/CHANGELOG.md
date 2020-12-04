@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.8] - 2020-12-03
+
+### Fixed
+- A bug where `Modal` did not remove `overflow=hidden` on document body.
+
 ### [2.0.0-alpha.7] - 2020-11-26
 
 #### Added
