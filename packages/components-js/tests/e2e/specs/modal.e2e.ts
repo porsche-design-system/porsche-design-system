@@ -267,9 +267,7 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('hidden');
 
     await page.evaluate(() => {
-      const el = document.querySelector('p-modal');
-
-      () => el.remove();
+      document.querySelector('p-modal').remove();
     });
     await waitForStencilLifecycle(page);
 
