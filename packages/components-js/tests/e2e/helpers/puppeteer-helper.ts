@@ -38,7 +38,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
               timeout = window.setTimeout(() => {
                 resolveComponentsUpdatedPromise();
                 createComponentsUpdatedPromise();
-              }, 40);
+              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
             }
           };
 
