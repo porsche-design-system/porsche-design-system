@@ -44,8 +44,8 @@ export class TextFieldWrapper {
     this.setInput();
     this.setAriaAttributes();
     this.setState();
-    this.addSlottedStyles();
     this.initMutationObserver();
+    this.addSlottedStyles();
   }
 
   public componentDidUpdate(): void {
