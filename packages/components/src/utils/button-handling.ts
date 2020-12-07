@@ -2,21 +2,23 @@ import { ButtonType } from '../types';
 
 export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
-  type: ButtonType,
-  disabled: boolean
+  getType: () => ButtonType,
+  getDisabled: () => boolean
 ): void => {
-  element.addEventListener('click', (event) => fixEventTarget(event, element), true);
-  element.addEventListener('click', (event) => handleButtonEvent(event, element, type, disabled));
+  element.addEventListener('click', event => fixEventTarget(event, element), true);
+  element.addEventListener('click', event => handleButtonEvent(event, element, getType, getDisabled));
 };
 
 export const handleButtonEvent = (
   event: MouseEvent,
   element: HTMLElement,
-  type: ButtonType,
-  disabled: boolean
+  getType: () => ButtonType,
+  getDisabled: () => boolean
 ): void => {
   // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
   const form = element.closest('form');
+  const type = getType();
+  const disabled = getDisabled();
   if (form && !disabled) {
     /**
      * we've to wait if someone calls preventDefault on the event

@@ -53,7 +53,11 @@ export class Button {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.element);
-    improveButtonHandlingForCustomElement(this.element, this.type, this.isDisabled);
+    improveButtonHandlingForCustomElement(
+      this.element,
+      () => this.type,
+      () => this.isDisabled
+    );
   }
 
   public render(): JSX.Element {
