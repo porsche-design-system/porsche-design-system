@@ -14,7 +14,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
     ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
       window.addEventListener(\`stencil_\${x}\`, (e) => {
         const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-        console.log(eventName, e.composedPath()[0].tagName, new Date().toISOString());
+        console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
       })
     );`;
   }
