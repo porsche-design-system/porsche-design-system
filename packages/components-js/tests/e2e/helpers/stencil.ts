@@ -5,6 +5,7 @@ export const waitForComponentsReady = async (page: Page): Promise<void> => {
 };
 
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
+  await page.waitForTimeout(40); // TODO: remove this once component lifecycles are working as intended
   await page.evaluate(
     (): Promise<any> => {
       (window as any).checkComponentsUpdatedPromise();
