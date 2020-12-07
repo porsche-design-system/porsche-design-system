@@ -196,7 +196,12 @@ export class TextFieldWrapper {
 
   private onSubmitHandler = (event: MouseEvent): void => {
     if (this.isInputTypeSearch) {
-      handleButtonEvent(event, this.host, 'submit', this.disabled);
+      handleButtonEvent(
+        event,
+        this.host,
+        () => 'submit',
+        () => this.disabled
+      );
     }
   };
 

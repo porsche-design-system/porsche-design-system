@@ -66,7 +66,11 @@ export class ButtonPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    improveButtonHandlingForCustomElement(this.host, this.type, this.isDisabled);
+    improveButtonHandlingForCustomElement(
+      this.host,
+      () => this.type,
+      () => this.isDisabled
+    );
 
     transitionListener(this.buttonTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.buttonTag);
