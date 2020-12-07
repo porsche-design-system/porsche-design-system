@@ -15,7 +15,7 @@ export class Headline {
   @Element() public host!: HTMLElement;
 
   /** Predefined style of the headline. */
-  @Prop() public variant?: HeadlineVariant = '1';
+  @Prop() public variant?: HeadlineVariant = 'headline-1';
 
   /** Custom size of the headline. */
   @Prop() public size?: BreakpointCustomizable<TextSize>;
@@ -61,11 +61,11 @@ export class Headline {
   private get getTagType(): string {
     const variantToTagMap: { [key in HeadlineVariant]: string } = {
       'large-title': 'h1',
-      '1': 'h1',
-      '2': 'h2',
-      '3': 'h3',
-      '4': 'h4',
-      '5': 'h5',
+      'headline-1': 'h1',
+      'headline-2': 'h2',
+      'headline-3': 'h3',
+      'headline-4': 'h4',
+      'headline-5': 'h5',
     };
 
     if(this.hasSlottedHeadlineTag) {
