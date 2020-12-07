@@ -240,6 +240,10 @@ export namespace Components {
          */
         "ellipsis"?: boolean;
         /**
+          * Custom size of the headline.
+         */
+        "size"?: BreakpointCustomizable<TextSize>;
+        /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
         "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -248,7 +252,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Style of the headline.
+          * Predefined style of the headline.
          */
         "variant"?: HeadlineVariant;
     }
@@ -1145,6 +1149,10 @@ declare namespace LocalJSX {
          */
         "ellipsis"?: boolean;
         /**
+          * Custom size of the headline.
+         */
+        "size"?: BreakpointCustomizable<TextSize>;
+        /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
         "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -1153,7 +1161,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Style of the headline.
+          * Predefined style of the headline.
          */
         "variant"?: HeadlineVariant;
     }

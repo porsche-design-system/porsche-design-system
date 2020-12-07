@@ -82,6 +82,7 @@ There are predefined default text weights for copy text. Be aware of using the `
     <option disabled>Select a weight</option>
     <option value="thin" selected>Thin</option>
     <option value="regular">Regular</option>
+    <option value="semibold">Semibold</option>
     <option value="bold">Bold</option>
   </select>
 </Playground>
