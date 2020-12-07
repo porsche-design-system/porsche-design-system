@@ -1,19 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { routes } from './routes';
-import { componentsReady } from '@porsche-design-system/components-js';
 
 export const App = (): JSX.Element => {
   const history = useHistory();
   const [selected, setSelected] = useState(history.location.pathname);
-
-  useEffect(() => {
-    console.log(new Date().toISOString(), 'useEffect');
-    (async function ready() {
-      await componentsReady();
-    })();
-    console.log(new Date().toISOString(), 'ready');
-  }, []);
 
   return (
     <>
