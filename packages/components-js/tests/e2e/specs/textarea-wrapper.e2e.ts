@@ -25,14 +25,13 @@ describe('textarea-wrapper', () => {
   });
   afterEach(async () => await page.close());
 
-  const getTextareaHost = () => selectNode(page, 'p-textarea-wrapper');
-  const getTextareaFakeInput = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__fake-textarea');
-  const getTextareaRealInput = () => selectNode(page, 'p-textarea-wrapper textarea');
-  const getTextareaMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
-  const getTextareaLabel = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
-  const getTextareaLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
-  const getTextareaDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
-  const getTextareaMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
+  const getHost = () => selectNode(page, 'p-textarea-wrapper');
+  const getInput = () => selectNode(page, 'p-textarea-wrapper textarea');
+  const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
+  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+  const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
+  const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
+  const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -79,7 +78,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const el = await getTextareaLabel();
+    const el = await getLabel();
     expect(el).toBeDefined();
   });
 
@@ -92,7 +91,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getTextareaRealInput();
+    const textarea = await getInput();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
   });
 
@@ -105,7 +104,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getTextareaRealInput();
+    const textarea = await getInput();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some description');
   });
 
@@ -118,7 +117,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getTextareaRealInput();
+    const textarea = await getInput();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
@@ -131,14 +130,14 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>`
     );
 
-    const textareaComponent = await getTextareaHost();
+    const textareaComponent = await getHost();
 
-    expect(await getTextareaLabel()).toBeNull();
+    expect(await getLabel()).toBeNull();
 
     await textareaComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaLabel()).toBeDefined();
+    expect(await getLabel()).toBeDefined();
   });
 
   it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
@@ -150,10 +149,10 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>`
     );
 
-    const textareaComponent = await getTextareaHost();
-    const textarea = await getTextareaRealInput();
+    const textareaComponent = await getHost();
+    const textarea = await getInput();
 
-    expect(await getTextareaMessage()).toBeNull('initially');
+    expect(await getMessage()).toBeNull('initially');
 
     await textareaComponent.evaluate((el) => {
       el.setAttribute('state', 'error');
@@ -161,8 +160,8 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeDefined('when state = error');
-    expect(await getAttribute(await getTextareaMessage(), 'role')).toBe('alert', 'when state = error');
+    expect(await getMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getMessage(), 'role')).toBe('alert', 'when state = error');
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message', 'when state = error');
 
     await textareaComponent.evaluate((el) => {
@@ -171,8 +170,8 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeDefined('when state = success');
-    expect(await getAttribute(await getTextareaMessage(), 'role')).toBeNull('when state = success');
+    expect(await getMessage()).toBeDefined('when state = success');
+    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some success message', 'when state = success');
 
     await textareaComponent.evaluate((el) => {
@@ -181,7 +180,7 @@ describe('textarea-wrapper', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getTextareaMessage()).toBeNull('when state = none');
+    expect(await getMessage()).toBeNull('when state = none');
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label', 'when state = none');
   });
 
@@ -195,8 +194,8 @@ describe('textarea-wrapper', () => {
     `
     );
 
-    const labelText = await getTextareaLabel();
-    const textarea = await getTextareaRealInput();
+    const labelText = await getLabel();
+    const textarea = await getInput();
 
     let textareaFocusSpyCalls = 0;
     await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
@@ -213,7 +212,7 @@ describe('textarea-wrapper', () => {
     it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
       await initTextarea();
 
-      const textarea = await getTextareaRealInput();
+      const textarea = await getInput();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '4px' });
       const visible = expectedStyleOnFocus({ color: 'neutral', offset: '4px' });
 
@@ -239,9 +238,9 @@ describe('textarea-wrapper', () => {
         state: 'error',
       });
 
-      const labelLink = await getTextareaLabelLink();
-      const descriptionLink = await getTextareaDescriptionLink();
-      const messageLink = await getTextareaMessageLink();
+      const labelLink = await getLabelLink();
+      const descriptionLink = await getDescriptionLink();
+      const messageLink = await getMessageLink();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
       const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
@@ -288,8 +287,8 @@ describe('textarea-wrapper', () => {
     it('should show outline of slotted <textarea> when it is focused', async () => {
       await initTextarea();
 
-      const host = await getTextareaHost();
-      const textarea = await getTextareaRealInput();
+      const host = await getHost();
+      const textarea = await getInput();
 
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '4px' }));
 
@@ -314,10 +313,10 @@ describe('textarea-wrapper', () => {
         state: 'error',
       });
 
-      const host = await getTextareaHost();
-      const labelLink = await getTextareaLabelLink();
-      const descriptionLink = await getTextareaDescriptionLink();
-      const messageLink = await getTextareaMessageLink();
+      const host = await getHost();
+      const labelLink = await getLabelLink();
+      const descriptionLink = await getDescriptionLink();
+      const messageLink = await getMessageLink();
 
       expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
       expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '1px' }));
