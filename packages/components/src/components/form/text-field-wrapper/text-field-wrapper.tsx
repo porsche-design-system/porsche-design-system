@@ -37,11 +37,12 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
-  private searchButtonType: ButtonType = 'submit';
+  private isPasswordToggleable: boolean;
   private inputObserver: MutationObserver;
 
   public connectedCallback(): void {
     this.setInput();
+    this.isPasswordToggleable = this.input.type === 'password';
     this.setAriaAttributes();
     this.setState();
     this.initMutationObserver();
@@ -111,21 +112,20 @@ export class TextFieldWrapper {
               <slot />
             </span>
           </label>
-          {this.isInputTypePassword ? (
+          {this.isPasswordToggleable && (
             <button type="button" class={buttonClasses} onClick={this.togglePassword} disabled={this.disabled}>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
-          ) : (
-            this.isInputTypeSearch && (
-              <button
-                onClick={this.onSubmitHandler}
-                type="submit"
-                class={buttonClasses}
-                disabled={this.disabled || this.readonly}
-              >
-                <PrefixedTagNames.pIcon name="search" color="inherit" />
-              </button>
-            )
+          )}
+          {this.isInputTypeSearch && (
+            <button
+              onClick={this.onSubmitHandler}
+              type="submit"
+              class={buttonClasses}
+              disabled={this.disabled || this.readonly}
+            >
+              <PrefixedTagNames.pIcon name="search" color="inherit" />
+            </button>
           )}
         </div>
         {this.isMessageVisible && (
@@ -183,10 +183,6 @@ export class TextFieldWrapper {
   private labelClick = (): void => {
     this.input.focus();
   };
-
-  private get isInputTypePassword(): boolean {
-    return this.input.type === 'password';
-  }
 
   private get isInputTypeSearch(): boolean {
     return this.input.type === 'search';
