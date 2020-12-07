@@ -1,6 +1,10 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { prefix, insertSlottedStyles } from '../../../../utils';
-import { HeadlineVariant, Theme } from '../../../../types';
+import {
+  prefix,
+  insertSlottedStyles,
+  BreakpointCustomizable,
+} from '../../../../utils';
+import { HeadlineVariant, TextSize, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -10,11 +14,14 @@ import { HeadlineVariant, Theme } from '../../../../types';
 export class Headline {
   @Element() public host!: HTMLElement;
 
-  /** Style of the headline. */
-  @Prop() public variant?: HeadlineVariant = 'headline-1';
+  /** Predefined style of the headline. */
+  @Prop() public variant?: HeadlineVariant = '1';
+
+  /** Custom size of the headline. */
+  @Prop() public size?: BreakpointCustomizable<TextSize>;
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
-  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
+  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
   /** Text alignment of the component. */
   @Prop() public align?: 'left' | 'center' | 'right' = 'left';
@@ -33,31 +40,41 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const variantToTagMap: { [key in HeadlineVariant]: string } = {
-      'large-title': 'h1',
-      'headline-1': 'h1',
-      'headline-2': 'h2',
-      'headline-3': 'h3',
-      'headline-4': 'h4',
-      'headline-5': 'h5'
-    };
-
-    const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
+    const TagType = this.getTagType;
 
     const headlineClasses = {
       [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: true,
+      [prefix(`headline--variant-${this.variant}`)]: !this.size,
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit'
+      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
     };
 
     return (
       <TagType class={headlineClasses}>
-        <slot />
+        { this.size ? <p-text size={this.size} weight="semibold" tag="div"><slot /></p-text> : <slot/> }
       </TagType>
     );
+  }
+
+  private get getTagType(): string {
+    const variantToTagMap: { [key in HeadlineVariant]: string } = {
+      'large-title': 'h1',
+      '1': 'h1',
+      '2': 'h2',
+      '3': 'h3',
+      '4': 'h4',
+      '5': 'h5',
+    };
+
+    if(this.hasSlottedHeadlineTag) {
+      return 'div';
+    } else if(this.size) {
+      return this.tag ? this.tag : 'h2';
+    } else {
+      return this.tag ? this.tag : variantToTagMap[this.variant];
+    }
   }
 
   private get hasSlottedHeadlineTag(): boolean {
