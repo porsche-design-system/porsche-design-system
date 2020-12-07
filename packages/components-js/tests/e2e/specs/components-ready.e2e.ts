@@ -1,12 +1,11 @@
 import { Page } from 'puppeteer';
-import { getBrowser, initAddEventListener, setContentWithDesignSystem } from '../helpers';
+import { getBrowser, setContentWithDesignSystem } from '../helpers';
 
 describe('componentsReady', () => {
   let page: Page;
 
   beforeEach(async () => {
     page = await getBrowser().newPage();
-    await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
 
@@ -43,10 +42,20 @@ describe('componentsReady', () => {
     expect(await getReadyAmount()).toBe(0);
   });
 
-  it('should work when called mulitple times', async () => {
+  it('should work when called multiple times', async () => {
     await setContentWithDesignSystem(page, `<p-button>Button</p-button>`);
     expect(await getReadyAmount()).toBe(1);
     expect(await getReadyAmount()).toBe(1);
     expect(await getReadyAmount()).toBe(1);
+  });
+
+  it('should work when a component is added later', async () => {
+    await setContentWithDesignSystem(page, `<p-button>Button1</p-button><p-button>Button2</p-button>`);
+    expect(await getReadyAmount()).toBe(2);
+    await page.evaluate(() => {
+      const el = document.createElement('p-text');
+      document.body.appendChild(el);
+    });
+    expect(await getReadyAmount()).toBe(3);
   });
 });

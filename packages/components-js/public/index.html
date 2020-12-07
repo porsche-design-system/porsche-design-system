@@ -47,7 +47,7 @@
       <option value="textarea-wrapper">Textarea</option>
       <option value="typography">Typography</option>
     </select>
-    <div id="app"><p-button>hi</p-button></div>
+    <div id="app"></div>
     <script>
       const updateRoute = async () => {
         if (['#', ''].includes(document.location.hash)) {
@@ -65,20 +65,11 @@
         }
       };
 
-      porscheDesignSystem.componentsReady().then(() => console.log('ready'));
       porscheDesignSystem.load();
       porscheDesignSystem.load({ prefix: 'my-prefix' });
       window.addEventListener('hashchange', updateRoute);
       updateRoute();
 
-      document.querySelector('p-button').addEventListener('click', () => {
-        const el1 = document.createElement('p-text');
-        const el2 = document.createElement('p-text');
-        el1.innerHTML = 'Hello';
-        el2.innerHTML = 'World';
-        document.getElementById('app').appendChild(el1);
-        // document.getElementById('app').appendChild(el2);
-      });
     </script>
   </body>
 </html>
