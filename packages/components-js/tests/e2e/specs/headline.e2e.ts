@@ -1,10 +1,7 @@
-import {
-  getBrowser,
-  setContentWithDesignSystem,
-} from '../helpers';
+import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
-import { HeadlineVariant, TextSize } from "@porsche-design-system/components/src/types";
-import { BreakpointCustomizable } from "@porsche-design-system/components/src/utils";
+import { HeadlineVariant, TextSize } from '@porsche-design-system/components/src/types';
+import { BreakpointCustomizable } from '@porsche-design-system/components/src/utils';
 
 fdescribe('headline', () => {
   let page: Page;
@@ -12,7 +9,12 @@ fdescribe('headline', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initHeadline = (opts?:{ variant?: HeadlineVariant, size?: BreakpointCustomizable<TextSize>, slot?: string, tag?: string}): Promise<void> => {
+  const initHeadline = (opts?: {
+    variant?: HeadlineVariant;
+    size?: BreakpointCustomizable<TextSize>;
+    slot?: string;
+    tag?: string;
+  }): Promise<void> => {
     const { variant, size, slot, tag } = opts;
     return setContentWithDesignSystem(
       page,
@@ -23,7 +25,8 @@ fdescribe('headline', () => {
     );
   };
 
-  const getHeadlineTagName = async () => await page.$eval('p-headline', el => el.shadowRoot.querySelector('.p-headline').tagName);
+  const getHeadlineTagName = async () =>
+    await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.p-headline').tagName);
 
   describe('tag', () => {
     it('should render according to variant', async () => {
