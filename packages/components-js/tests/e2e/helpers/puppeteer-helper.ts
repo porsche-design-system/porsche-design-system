@@ -7,8 +7,16 @@ const defaultOptions: Options = { waitUntil: 'networkidle0' };
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = { ...defaultOptions, ...opts };
 
+  let lifeCycleLogger = '';
   if (options.enableLogging) {
     enableBrowserLogging(page);
+    lifeCycleLogger = `
+    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      window.addEventListener(\`stencil_\${x}\`, (e) => {
+        const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+        console.log(eventName, e.composedPath()[0].tagName, new Date().toISOString());
+      })
+    );`;
   }
 
   await page.setContent(
@@ -43,7 +51,6 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
           createComponentsUpdatedPromise();
 
           window.addEventListener('stencil_componentWillUpdate', () => {
-            console.log('stencil_componentWillUpdate', e.composedPath()[0].tagName, new Date().toISOString());
             updatingCount++;
             if (timeout) {
               window.clearTimeout(timeout);
@@ -51,10 +58,11 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
           });
 
           window.addEventListener('stencil_componentDidUpdate', () => {
-            console.log('stencil_componentDidUpdate ', e.composedPath()[0].tagName, new Date().toISOString());
             updatingCount--;
             window.checkComponentsUpdatedPromise();
           });
+
+          ${lifeCycleLogger}
         </script>
         ${content}
       </body>
