@@ -1,5 +1,5 @@
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { componentsReady, load } from '@porsche-design-system/components-js';
+import { load } from '@porsche-design-system/components-js';
 import { PREVENT_WEB_COMPONENTS_REGISTRATION, WEB_COMPONENTS_PREFIX } from './injection.tokens';
 
 import {
