@@ -64,6 +64,11 @@ export const App = (): JSX.Element => (
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
+## Advanced usage
+
+### When are Porsche Design System Components initialized?
+See [componentsReady()](#/helpers/components-ready) for further information.
+
 ## Test the application
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
@@ -111,7 +116,7 @@ export const SingleComponent = (): JSX.Element => {
 ```tsx
 // SingleComponent.test.tsx
 
-import { componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
