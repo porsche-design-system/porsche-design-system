@@ -23,6 +23,7 @@ export type Theme = 'light' | 'dark';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type LinkVariant = ButtonVariant; // alias
 
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
