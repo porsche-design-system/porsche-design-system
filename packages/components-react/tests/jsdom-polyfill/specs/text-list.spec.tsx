@@ -1,6 +1,5 @@
 import React from 'react';
-import { PTextList, PTextListItem } from '@porsche-design-system/components-react';
-import { componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {

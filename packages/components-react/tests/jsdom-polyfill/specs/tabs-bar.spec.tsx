@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { PTabsBar } from '@porsche-design-system/components-react';
-import { componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady, PTabsBar } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

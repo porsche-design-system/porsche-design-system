@@ -1,6 +1,5 @@
 import React from 'react';
-import { PSpinner } from '@porsche-design-system/components-react';
-import { componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady, PSpinner } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {

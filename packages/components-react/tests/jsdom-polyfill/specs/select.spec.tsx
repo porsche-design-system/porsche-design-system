@@ -1,6 +1,5 @@
 import React from 'react';
-import { PSelectWrapper } from '@porsche-design-system/components-react';
-import { componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady, PSelectWrapper } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
