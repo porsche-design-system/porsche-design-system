@@ -35,7 +35,7 @@ export class CheckboxWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
     this.setAriaAttributes();
     this.setState();
@@ -136,10 +136,8 @@ export class CheckboxWrapper {
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box.
-     * also we don't want to click to the input, if a link is
-     * clicked.
+     * for real shadow dom, else the native behaviour works out of the box.
+     * also we don't want to click to the input, if a link is clicked.
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.focus();

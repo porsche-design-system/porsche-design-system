@@ -41,8 +41,8 @@ export class TextareaWrapper {
     this.setTextarea();
     this.setAriaAttributes();
     this.setState();
-    this.addSlottedStyles();
     this.initMutationObserver();
+    this.addSlottedStyles();
   }
 
   public componentDidUpdate(): void {
