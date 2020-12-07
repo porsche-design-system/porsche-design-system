@@ -2,12 +2,38 @@
 
 ## Headline
 
-**Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
+**Headline component** to specify headline styling and hierarchy in documents.
 
 ## Variant
+Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
 There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
 
 <Playground :markup="variant" :config="config"></Playground>
+
+---
+
+## Size
+If one of the predefined **variants** doesn't match your layout you could also pass a custom `size` property to have more control of your headline sizes in conjunction with responsive layouts.
+
+**Hint:** You always have to keep an eye on the semantic of your HTML tags. Per default an `h2`-tag is rendered. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property. 
+
+<Playground :markup="sizeMarkup" :config="config">
+  <select @change="size = $event.target.value">
+    <option disabled>Select a size</option>
+    <option>x-small</option>
+    <option>small</option>
+    <option selected>medium</option>
+    <option>large</option>
+    <option>x-large</option>
+    <option>inherit</option>
+  </select>
+</Playground>
+
+### Responsive
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<Playground :markup="responsive" :config="config"></Playground>
 
 ---
 
@@ -58,7 +84,8 @@ This will force any text to never wrap into a new line and in case it's too long
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
-
+    
+    size = 'medium';
     color = 'default';
     align = 'center';
     
@@ -69,6 +96,14 @@ This will force any text to never wrap into a new line and in case it's too long
 <p-headline variant="headline-3">${sentence}</p-headline>
 <p-headline variant="headline-4">${sentence}</p-headline>
 <p-headline variant="headline-5">${sentence}</p-headline>`;
+
+get sizeMarkup() {
+      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
+      return `<p-headline size="${this.size}"${style}>${sentence}</p-headline>`;
+    }
+
+    responsive =
+`<p-headline size="{ base: 'small', l: 'medium' }">${sentence}</p-headline>`;
 
     customTagHierarchy =
 `<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>

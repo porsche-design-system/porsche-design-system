@@ -1,32 +1,35 @@
 import {
-  getBrowser,
-  setContentWithDesignSystem,
+  getBrowser, selectNode,
+  setContentWithDesignSystem, waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, TextSize } from "@porsche-design-system/components/src/types";
 import { BreakpointCustomizable } from "@porsche-design-system/components/src/utils";
 
-fdescribe('headline', () => {
+describe('headline', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initHeadline = (opts?:{ variant?: HeadlineVariant, size?: BreakpointCustomizable<TextSize>, slot?: string, tag?: string}): Promise<void> => {
+  const initHeadline = async (opts?: { variant?: HeadlineVariant, size?: BreakpointCustomizable<TextSize>, slot?: string, tag?: string }) => {
     const { variant, size, slot, tag } = opts;
-    return setContentWithDesignSystem(
-      page,
-      `
-        <p-headline variant={variant} size={size} tag={tag}>
-          {slot ? slot : 'Some Headline'}
-        </p-headline>`
-    );
+    const content = `
+      <p-headline variant=${variant} size=${size} tag=${tag}>
+        ${slot ? slot : 'Some Headline'}
+      </p-headline>`
+    await setContentWithDesignSystem(page, content);
   };
 
-  const getHeadlineTagName = async () => await page.$eval('p-headline', el => el.shadowRoot.querySelector('.p-headline').tagName);
+  const getHeadlineTagName = async () => {
+    const host = await selectNode(page, 'p-headline');
+    return await host.evaluate((el) => {
+      return el.shadowRoot.querySelector('.p-headline').tagName;
+    });
+  };
 
   describe('tag', () => {
-    it('should render according to variant', async () => {
+    fit('should render according to variant', async () => {
       await initHeadline({ variant: 'large-title' });
       expect(await getHeadlineTagName()).toBe('H2');
     });
