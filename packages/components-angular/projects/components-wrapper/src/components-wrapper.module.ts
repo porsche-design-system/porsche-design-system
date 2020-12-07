@@ -87,7 +87,5 @@ export class PorscheDesignSystemModule {
     if (!preventWebComponentsRegistration) {
       load({ prefix: webComponentsPrefix });
     }
-
-    (window as any).componentsReady = componentsReady;
   }
 }
