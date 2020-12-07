@@ -7,14 +7,14 @@ import {
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button-pure',
   styleUrl: 'button-pure.scss',
-  shadow: true
+  shadow: true,
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
@@ -56,7 +56,7 @@ export class ButtonPure {
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled) {
       e.stopPropagation();
     }
   }
@@ -66,11 +66,7 @@ export class ButtonPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => this.type,
-      () => this.isDisabled()
-    );
+    improveButtonHandlingForCustomElement(this.host, this.type, this.isDisabled);
 
     transitionListener(this.buttonTag, 'font-size', () => {
       const size = calcLineHeightForElement(this.buttonTag);
@@ -83,19 +79,19 @@ export class ButtonPure {
     const buttonPureClasses = {
       [prefix('button-pure')]: true,
       [prefix(`button-pure--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
     };
 
     const iconClasses = prefix('button-pure__icon');
 
     const labelClasses = {
       [prefix('button-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const sublineClasses = {
       [prefix('button-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text', 'p-spinner']);
@@ -105,7 +101,7 @@ export class ButtonPure {
         <button
           class={buttonPureClasses}
           type={this.type}
-          disabled={this.isDisabled()}
+          disabled={this.isDisabled}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el as HTMLElement)}
           aria-busy={this.loading ? 'true' : null}
@@ -145,7 +141,7 @@ export class ButtonPure {
     this.hasSubline = !!this.host.querySelector('[slot="subline"]');
   }
 
-  private isDisabled(): boolean {
+  private get isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }

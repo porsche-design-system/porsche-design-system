@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { ButtonType, FormState } from '../../../types';
+import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -200,12 +200,7 @@ export class TextFieldWrapper {
 
   private onSubmitHandler = (event: MouseEvent): void => {
     if (this.isInputTypeSearch) {
-      handleButtonEvent(
-        event,
-        this.host,
-        () => this.searchButtonType,
-        () => this.disabled
-      );
+      handleButtonEvent(event, this.host, 'submit', this.disabled);
     }
   };
 
