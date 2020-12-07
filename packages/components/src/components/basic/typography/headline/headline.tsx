@@ -1,15 +1,11 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import {
-  prefix,
-  insertSlottedStyles,
-  BreakpointCustomizable,
-} from '../../../../utils';
+import { prefix, insertSlottedStyles, BreakpointCustomizable } from '../../../../utils';
 import { HeadlineVariant, TextSize, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
   styleUrl: 'headline.scss',
-  shadow: true
+  shadow: true,
 })
 export class Headline {
   @Element() public host!: HTMLElement;
@@ -53,7 +49,13 @@ export class Headline {
 
     return (
       <TagType class={headlineClasses}>
-        { this.size ? <p-text size={this.size} weight="semibold" tag="div"><slot /></p-text> : <slot/> }
+        {this.size ? (
+          <p-text size={this.size} weight="semibold" tag="div">
+            <slot />
+          </p-text>
+        ) : (
+          <slot />
+        )}
       </TagType>
     );
   }
@@ -68,9 +70,9 @@ export class Headline {
       'headline-5': 'h5',
     };
 
-    if(this.hasSlottedHeadlineTag) {
+    if (this.hasSlottedHeadlineTag) {
       return 'div';
-    } else if(this.size) {
+    } else if (this.size) {
       return this.tag ? this.tag : 'h2';
     } else {
       return this.tag ? this.tag : variantToTagMap[this.variant];
