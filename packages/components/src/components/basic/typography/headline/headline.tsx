@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { prefix, insertSlottedStyles, BreakpointCustomizable } from '../../../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { BreakpointCustomizable, insertSlottedStyles, prefix } from '../../../../utils';
 import { HeadlineVariant, TextSize, Theme } from '../../../../types';
 
 @Component({
@@ -50,7 +50,7 @@ export class Headline {
     return (
       <TagType class={headlineClasses}>
         {this.size ? (
-          <p-text size={this.size} weight="semibold" tag="div">
+          <p-text size={this.size} weight="semibold" color="inherit" tag="span">
             <slot />
           </p-text>
         ) : (
@@ -73,7 +73,7 @@ export class Headline {
     if (this.hasSlottedHeadlineTag) {
       return 'div';
     } else if (this.size) {
-      return this.tag ? this.tag : 'h2';
+      return this.tag ? this.tag : 'h1';
     } else {
       return this.tag ? this.tag : variantToTagMap[this.variant];
     }
@@ -81,11 +81,7 @@ export class Headline {
 
   private get hasSlottedHeadlineTag(): boolean {
     const el = this.host.querySelector(':first-child');
-    const isHeadline = el?.matches('h1, h2, h3, h4, h5, h6');
-    if (!isHeadline) {
-      this.tag = 'h2';
-    }
-    return isHeadline;
+    return el?.matches('h1, h2, h3, h4, h5, h6');
   }
 
   private addSlottedStyles(): void {
