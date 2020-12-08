@@ -12,7 +12,7 @@ import { FormState } from '../../../types';
 @Component({
   tag: 'p-radio-button-wrapper',
   styleUrl: 'radio-button-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class RadioButtonWrapper {
   @Element() public host!: HTMLElement;
@@ -34,7 +34,7 @@ export class RadioButtonWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
     this.setAriaAttributes();
     this.setState();
@@ -52,16 +52,16 @@ export class RadioButtonWrapper {
       [prefix('radio-button-wrapper__fake-radio-button')]: true,
       [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
       [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
-      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('radio-button-wrapper__message')]: true,
-      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
@@ -92,12 +92,8 @@ export class RadioButtonWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -128,8 +124,7 @@ export class RadioButtonWrapper {
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box
+     * for real shadow dom, else the native behaviour works out of the box
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.focus();
