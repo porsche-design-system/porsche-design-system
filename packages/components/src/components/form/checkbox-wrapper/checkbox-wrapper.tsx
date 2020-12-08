@@ -5,14 +5,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-checkbox-wrapper',
   styleUrl: 'checkbox-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class CheckboxWrapper {
   @Element() public host!: HTMLElement;
@@ -35,7 +35,7 @@ export class CheckboxWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
     this.setAriaAttributes();
     this.setState();
@@ -53,20 +53,20 @@ export class CheckboxWrapper {
       [prefix('checkbox-wrapper__fake-checkbox')]: true,
       [prefix('checkbox-wrapper__fake-checkbox--checked')]: this.checked || this.indeterminate,
       [prefix('checkbox-wrapper__fake-checkbox--disabled')]: this.disabled,
-      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none',
     };
     const iconClasses = {
       [prefix('checkbox-wrapper__icon')]: true,
-      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate
+      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate,
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
       [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('checkbox-wrapper__message')]: true,
-      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
@@ -104,12 +104,8 @@ export class CheckboxWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -140,10 +136,8 @@ export class CheckboxWrapper {
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box.
-     * also we don't want to click to the input, if a link is
-     * clicked.
+     * for real shadow dom, else the native behaviour works out of the box.
+     * also we don't want to click to the input, if a link is clicked.
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.focus();

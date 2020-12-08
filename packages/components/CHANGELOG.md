@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### Fixed
+- Improved reliability of `componentsReady()`
+
 ### [2.0.0-alpha.8] - 2020-12-03
 
 ### Fixed

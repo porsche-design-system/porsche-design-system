@@ -98,7 +98,7 @@ describe('select-wrapper fake-select', () => {
   it('should set dropdown direction to down', async () => {
     await page.setViewport({
       width: 800,
-      height: 600
+      height: 600,
     });
     await setContentWithDesignSystem(
       page,
@@ -160,7 +160,7 @@ describe('select-wrapper fake-select', () => {
   it('should auto position dropdown to bottom if bottom space is more than dropdown height', async () => {
     await page.setViewport({
       width: 800,
-      height: 800
+      height: 800,
     });
     await setContentWithDesignSystem(
       page,
@@ -445,13 +445,12 @@ describe('select-wrapper fake-select', () => {
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
 
-      await select.evaluate((el: HTMLSelectElement) => (el.options[1].setAttribute('selected', 'selected')));
+      await select.evaluate((el: HTMLSelectElement) => el.options[1].setAttribute('selected', 'selected'));
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeOptionA)).not.toContain(selectedClass);
       expect(await getCssClasses(fakeOptionB)).toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(1);
-
     });
 
     it('should not add selected state to fake option item if added to native select programmatically as JS prop', async () => {
@@ -486,7 +485,6 @@ describe('select-wrapper fake-select', () => {
       expect(await getCssClasses(fakeOptionA)).toContain(selectedClass);
       expect(await getCssClasses(fakeOptionB)).not.toContain(selectedClass);
       expect(await getElementIndex(fakeOptionList, `.${selectedClass}`)).toBe(0);
-
     });
 
     it('should hide/show fake option item if hidden attribute is added/removed to native select programmatically', async () => {
@@ -567,28 +565,34 @@ describe('select-wrapper fake-select', () => {
         let calls = 0;
         await addEventListener(select, 'change', () => calls++);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('1');
-        expect(await getHighlightedFakeOption()).toBe(1);
-        expect(await getSelectedIndex()).toBe(0);
+        expect(await getOpacity()).toBe('1', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected fake option');
 
         await page.keyboard.press('Enter');
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('0');
-        expect(await getHighlightedFakeOption()).toBe(1);
-        expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getElementIndex(await getSelectOptionList(), '[aria-selected=true]')).toBe(1);
-        expect(await getSelectedIndex()).toBe(1);
+        expect(await getOpacity()).toBe('0', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(1, 'for selected fake option');
+        expect(await getElementIndex(await getSelectOptionList(), '[aria-selected=true]')).toBe(
+          1,
+          'for aria selected index'
+        );
+        expect(await getSelectedIndex()).toBe(1, 'for selected index');
 
-        expect(calls).toBe(1);
-        expect(await getActiveDescendant()).toEqual(`option-${await getSelectedFakeOption()}`);
+        expect(calls).toBe(1, 'for calls');
+        expect(await getActiveDescendant()).toEqual(
+          `option-${await getSelectedFakeOption()}`,
+          ' for active descendant'
+        );
       });
 
       it('should have the correct aria-expanded value if open/closed', async () => {
@@ -607,12 +611,12 @@ describe('select-wrapper fake-select', () => {
         const host = await selectNode(page, 'p-select-wrapper');
         const fakeInput = await getSelectOptionList();
 
-        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('false');
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('false', 'for aria-expanded attribute');
 
         await host.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('true');
+        expect(await getAttribute(fakeInput, 'aria-expanded')).toBe('true', 'for aria-expanded attribute');
       });
 
       it('should show aria-selected attribute on selected fake option on click', async () => {
@@ -632,15 +636,23 @@ describe('select-wrapper fake-select', () => {
         const fakeOptionA = await fakeOptionInPosOne();
         const fakeOptionB = await fakeOptionInPosTwo();
 
-        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe('true');
-        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull();
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBe(
+          'true',
+          'for aria-selected attribute of Option A'
+        );
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBeNull('for aria-selected attribute of Option B');
 
         await select.click();
         await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBeNull();
-        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBe('true');
+        expect(await getAttribute(fakeOptionA, 'aria-selected')).toBeNull(
+          'for aria-selected attribute of Option A after click'
+        );
+        expect(await getAttribute(fakeOptionB, 'aria-selected')).toBe(
+          'true',
+          'for aria-selected attribute of Option B after click'
+        );
       });
 
       it('should skip disabled option on arrow down', async () => {
@@ -661,7 +673,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
       });
 
       it('should skip disabled option on arrow up', async () => {
@@ -685,31 +697,7 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-      });
-
-      // TODO: remove duplicate?
-      it('should skip disabled option on arrow up', async () => {
-        await setContentWithDesignSystem(
-          page,
-          `
-      <p-select-wrapper label="Some label">
-        <select name="some-name" id="realSelect">
-          <option value="a">A Option</option>
-          <option value="b" disabled>B Option</option>
-          <option value="c" selected>C Option</option>
-        </select>
-      </p-select-wrapper>
-    `
-        );
-
-        await page.keyboard.press('Tab');
-        await waitForStencilLifecycle(page);
-
-        await page.keyboard.press('ArrowUp');
-        await waitForStencilLifecycle(page);
-
-        expect(await getHighlightedFakeOption()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
       });
 
       it('should highlight correct position on multiple key actions', async () => {
@@ -735,13 +723,13 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('1');
-        expect(await getHighlightedFakeOption()).toBe(3);
+        expect(await getOpacity()).toBe('1', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(3, 'for highlighted fake option');
 
         await page.keyboard.press('ArrowUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
       });
 
       it('should open fake select with spacebar', async () => {
@@ -764,12 +752,12 @@ describe('select-wrapper fake-select', () => {
 
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
-        expect(await getOpacity()).toBe('0');
+        expect(await getOpacity()).toBe('0', 'for opacity');
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
-        expect(await getOpacity()).toBe('1');
-        expect(calls).toBe(0);
+        expect(await getOpacity()).toBe('1', 'for opacity');
+        expect(calls).toBe(0, 'for calls');
       });
 
       it('should select correct option with spacebar', async () => {
@@ -792,20 +780,20 @@ describe('select-wrapper fake-select', () => {
 
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
-        expect(await getOpacity()).toBe('0');
+        expect(await getOpacity()).toBe('0', 'for opacity');
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
-        expect(await getOpacity()).toBe('1');
+        expect(await getOpacity()).toBe('1', 'for opacity');
 
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
-        expect(await getHighlightedFakeOption()).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
-        expect(calls).toBe(1);
-        expect(await getSelectedIndex()).toBe(1);
+        expect(await getSelectedIndex()).toBe(1, 'for selected index');
+        expect(calls).toBe(1, 'for calls');
       });
 
       it('should change selected option on ArrowLeft while list is hidden', async () => {
@@ -830,10 +818,10 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowLeft');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
-        expect(await getSelectedFakeOption()).toBe(2);
-        expect(await getSelectedIndex()).toBe(2);
-        expect(calls).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(2, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(2, 'for selected index');
+        expect(calls).toBe(1, 'for calls');
       });
 
       it('should change selected option on ArrowRight while list is hidden', async () => {
@@ -858,10 +846,10 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowRight');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(1);
-        expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getSelectedIndex()).toBe(1);
-        expect(calls).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(1, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(1, 'for selected index');
+        expect(calls).toBe(1, 'for calls');
       });
 
       it('should change selected option on ArrowLeft while list is open and should close the list', async () => {
@@ -888,11 +876,11 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowLeft');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
-        expect(await getSelectedFakeOption()).toBe(2);
-        expect(await getSelectedIndex()).toBe(2);
-        expect(await getOpacity()).toBe('0');
-        expect(calls).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(2, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(2, 'for selected index');
+        expect(await getOpacity()).toBe('0', 'for opacity');
+        expect(calls).toBe(1, 'for calls');
       });
 
       it('should change selected option on ArrowRight while list is open and should close the list', async () => {
@@ -919,11 +907,11 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('ArrowRight');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(1);
-        expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getSelectedIndex()).toBe(1);
-        expect(await getOpacity()).toBe('0');
-        expect(calls).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(1, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(1, 'for selected index');
+        expect(await getOpacity()).toBe('0', 'for opacity');
+        expect(calls).toBe(1, 'for calls');
       });
 
       it('should not select option on Escape', async () => {
@@ -943,15 +931,15 @@ describe('select-wrapper fake-select', () => {
         await waitForStencilLifecycle(page);
         await page.keyboard.press('ArrowDown');
         await waitForStencilLifecycle(page);
-        expect(await getHighlightedFakeOption()).toBe(1);
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake eoption');
 
         await page.keyboard.press('Escape');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(0);
-        expect(await getSelectedIndex()).toBe(0);
-        expect(await getOpacity()).toBe('0');
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected index');
+        expect(await getOpacity()).toBe('0', 'for opacity');
       });
 
       it('should not select option on PageDown while list is hidden', async () => {
@@ -972,9 +960,9 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('PageDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(0);
-        expect(await getSelectedIndex()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected index');
       });
 
       it('should not select option on PageUp while list is hidden', async () => {
@@ -995,9 +983,9 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('PageUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(0);
-        expect(await getSelectedIndex()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected index');
       });
 
       it('should highlight and select last option on PageDown while list is visible', async () => {
@@ -1020,16 +1008,16 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('PageDown');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
-        expect(await getSelectedFakeOption()).toBe(0);
-        expect(await getSelectedIndex()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected index');
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
-        expect(await getSelectedFakeOption()).toBe(2);
-        expect(await getSelectedIndex()).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(2, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(2, 'for selected index');
       });
 
       it('should highlight and select first option on PageUp while list is visible', async () => {
@@ -1052,16 +1040,16 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('PageUp');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(2);
-        expect(await getSelectedIndex()).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(2, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(2, 'for selected index');
 
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
 
-        expect(await getHighlightedFakeOption()).toBe(0);
-        expect(await getSelectedFakeOption()).toBe(0);
-        expect(await getSelectedIndex()).toBe(0);
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(0, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(0, 'for selected index');
       });
 
       it('should select option through keyboard search', async () => {
@@ -1082,9 +1070,9 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('c');
         await page.waitForTimeout(120);
 
-        expect(await getHighlightedFakeOption()).toBe(2);
-        expect(await getSelectedFakeOption()).toBe(2);
-        expect(await getSelectedIndex()).toBe(2);
+        expect(await getHighlightedFakeOption()).toBe(2, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(2, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(2, 'for selected index');
       });
 
       it('should open/close fake select on mouseclick', async () => {
@@ -1105,14 +1093,14 @@ describe('select-wrapper fake-select', () => {
         await select.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('1');
-        expect(await getHighlightedFakeOption()).toBe(0);
+        expect(await getOpacity()).toBe('1', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
 
         await select.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('0');
-        expect(await getHighlightedFakeOption()).toBe(0);
+        expect(await getOpacity()).toBe('0', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(0, 'for highlighted fake option');
       });
 
       it('should select second option on mouseclick', async () => {
@@ -1135,10 +1123,10 @@ describe('select-wrapper fake-select', () => {
         await fakeOptionB.click();
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('0');
-        expect(await getHighlightedFakeOption()).toBe(1);
-        expect(await getSelectedFakeOption()).toBe(1);
-        expect(await getSelectedIndex()).toBe(1);
+        expect(await getOpacity()).toBe('0', 'for opacity');
+        expect(await getHighlightedFakeOption()).toBe(1, 'for highlighted fake option');
+        expect(await getSelectedFakeOption()).toBe(1, 'for selected fake option');
+        expect(await getSelectedIndex()).toBe(1, 'for selected index');
       });
 
       it('should close fakeSelect on Tab', async () => {
@@ -1160,12 +1148,12 @@ describe('select-wrapper fake-select', () => {
         await page.keyboard.press('Space');
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('1');
+        expect(await getOpacity()).toBe('1', 'for opacity');
 
         await page.keyboard.press('Tab');
         await waitForStencilLifecycle(page);
 
-        expect(await getOpacity()).toBe('0');
+        expect(await getOpacity()).toBe('0', 'for opacity');
         expect(await selectHasFocus()).toBe(false);
       });
 
