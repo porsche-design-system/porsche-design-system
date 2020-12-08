@@ -45,7 +45,7 @@ describe('headline', () => {
 
     it('should render as default if size is set', async () => {
       await initHeadline({ size: 'x-large' });
-      expect(await getHeadlineTagName()).toBe('H2');
+      expect(await getHeadlineTagName()).toBe('H1');
     });
 
     it('should render according to tag if size is set', async () => {
@@ -55,12 +55,12 @@ describe('headline', () => {
 
     it('should render as div due to slotted content', async () => {
       await initHeadline({ slot: '<h3>Some Headline</h3>' });
-      expect(await getHeadlineTagName()).toBe('DIV');
+      expect(await getHeadlineTagName()).toBe('SPAN');
     });
 
     it('should render as default headline if slotted content is not a headline', async () => {
       await initHeadline({ slot: '<div>Some Headline</div>' });
-      expect(await getHeadlineTagName()).toBe('H2');
+      expect(await getHeadlineTagName()).toBe('H1');
     });
   });
 });
