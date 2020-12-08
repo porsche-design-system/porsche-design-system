@@ -23,6 +23,3 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
-
-# auto generated files
-src/components.d.ts
