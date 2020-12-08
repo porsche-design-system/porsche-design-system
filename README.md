@@ -42,6 +42,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
+1. If you have to exclude code fom being prettified, see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
 
 ### Docker installation steps
 
