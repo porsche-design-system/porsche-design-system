@@ -16,7 +16,7 @@ export const GridPage = (): JSX.Element => {
   `;
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground" title="should render by defined size">
         <Grid>

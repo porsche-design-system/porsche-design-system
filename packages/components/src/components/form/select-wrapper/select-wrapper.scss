@@ -63,28 +63,28 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([theme="dark"]) ::slotted(select:focus),
-:host([theme="dark"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark']) ::slotted(select:focus),
+:host([theme='dark']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-neutral-contrast-medium !important;
 }
 
-:host([state="success"]) ::slotted(select:focus),
-:host([state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([state='success']) ::slotted(select:focus),
+:host([state='success']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-notification-success !important;
 }
 
-:host([theme="dark"][state="success"]) ::slotted(select:focus),
-:host([theme="dark"][state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark'][state='success']) ::slotted(select:focus),
+:host([theme='dark'][state='success']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-notification-success !important;
 }
 
-:host([state="error"]) ::slotted(select:focus),
-:host([state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([state='error']) ::slotted(select:focus),
+:host([state='error']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-notification-error !important;
 }
 
-:host([theme="dark"][state="error"]) ::slotted(select:focus),
-:host([theme="dark"][state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark'][state='error']) ::slotted(select:focus),
+:host([theme='dark'][state='error']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-notification-error !important;
 }
 
@@ -463,7 +463,7 @@
     }
 
     &--hidden,
-    &--initiallyHidden{
+    &--initiallyHidden {
       display: none;
     }
   }

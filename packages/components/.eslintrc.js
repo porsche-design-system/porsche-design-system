@@ -2,19 +2,19 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   globals: {
     page: true,
     browser: true,
     context: true,
-    jestPuppeteer: true
+    jestPuppeteer: true,
   },
   extends: ['plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'prefer-arrow', 'react'],
   rules: {
@@ -33,14 +33,14 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': [
       'warn',
       {
-        allowExpressions: true
-      }
+        allowExpressions: true,
+      },
     ],
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {
-        accessibility: 'explicit'
-      }
+        accessibility: 'explicit',
+      },
     ],
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/member-delimiter-style': [
@@ -48,13 +48,13 @@ module.exports = {
       {
         multiline: {
           delimiter: 'semi',
-          requireLast: true
+          requireLast: true,
         },
         singleline: {
           delimiter: 'semi',
-          requireLast: false
-        }
-      }
+          requireLast: false,
+        },
+      },
     ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/no-empty-function': 'error',
@@ -70,8 +70,8 @@ module.exports = {
         vars: 'all',
         args: 'after-used',
         ignoreRestSiblings: false,
-        varsIgnorePattern: 'h'
-      }
+        varsIgnorePattern: 'h',
+      },
     ],
     '@typescript-eslint/no-var-requires': 'error',
     '@typescript-eslint/prefer-for-of': 'off',
@@ -84,14 +84,14 @@ module.exports = {
     '@typescript-eslint/unified-signatures': 'error',
     'arrow-body-style': 'off',
     'arrow-parens': ['off', 'as-needed'],
-    camelcase: 'error',
+    'camelcase': 'error',
     'comma-dangle': 'off',
-    complexity: 'off',
+    'complexity': 'off',
     'constructor-super': 'error',
-    curly: 'error',
+    'curly': 'error',
     'dot-notation': 'error',
     'eol-last': 'off',
-    eqeqeq: ['error', 'smart'],
+    'eqeqeq': ['error', 'smart'],
     'guard-for-in': 'error',
     'id-blacklist': ['error', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined'],
     'id-match': 'error',
@@ -131,9 +131,9 @@ module.exports = {
           'profile',
           'profileEnd',
           'timeStamp',
-          'context'
-        ]
-      }
+          'context',
+        ],
+      },
     ],
     'no-debugger': 'error',
     'no-duplicate-imports': 'error',
@@ -148,8 +148,8 @@ module.exports = {
     'no-shadow': [
       'error',
       {
-        hoist: 'all'
-      }
+        hoist: 'all',
+      },
     ],
     'no-throw-literal': 'error',
     'no-trailing-spaces': 'off',
@@ -166,11 +166,11 @@ module.exports = {
     'prefer-const': 'error',
     'react/jsx-uses-vars': 'error',
     'quote-props': 'off',
-    radix: 'error',
+    'radix': 'error',
     'space-before-function-paren': 'off',
     'space-in-parens': ['off', 'never'],
     'spaced-comment': 'error',
     'use-isnan': 'error',
-    'valid-typeof': 'off'
-  }
+    'valid-typeof': 'off',
+  },
 };

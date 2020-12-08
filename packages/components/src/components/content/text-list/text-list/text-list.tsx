@@ -5,7 +5,7 @@ import { Theme } from '../../../../types';
 @Component({
   tag: 'p-text-list',
   styleUrl: 'text-list.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextList {
   @Element() public host!: HTMLElement;
@@ -26,7 +26,7 @@ export class TextList {
       [prefix('text-list')]: true,
       [prefix(`text-list--${this.listType}`)]: true,
       [prefix(`text-list--theme-${this.theme}`)]: true,
-      [prefix('text-list--nested')]: this.isNestedList
+      [prefix('text-list--nested')]: this.isNestedList,
     };
 
     return (

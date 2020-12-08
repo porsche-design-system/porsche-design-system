@@ -5,7 +5,7 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 

@@ -3,7 +3,7 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 
 @Component({
   tag: 'p-grid-item',
-  styleUrl: 'grid-item.scss'
+  styleUrl: 'grid-item.scss',
 })
 export class GridItem {
   /** The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
@@ -16,7 +16,7 @@ export class GridItem {
     const gridItemClasses = {
       [prefix('grid-item')]: true,
       ...mapBreakpointPropToPrefixedClasses('grid-item--size', this.size),
-      ...(this.offset !== 0 && mapBreakpointPropToPrefixedClasses('grid-item--offset', this.offset))
+      ...(this.offset !== 0 && mapBreakpointPropToPrefixedClasses('grid-item--offset', this.offset)),
     };
 
     return <Host class={gridItemClasses} />;

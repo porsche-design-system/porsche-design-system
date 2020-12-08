@@ -84,13 +84,13 @@
     validateForm,
     ValidationBag,
     getInitialErrors,
-    getFirstErrorKey
+    getFirstErrorKey,
   } from '../../../utils';
 
   const initialData = {
     email: '',
     password: '',
-    isChecked: false
+    isChecked: false,
   };
 
   type FormModel = typeof initialData;
@@ -105,12 +105,10 @@
       data: { ...initialData },
       errors: getInitialErrors(initialData),
       schema: object<FormModel>({
-        email: string()
-          .email('Please check your entry')
-          .required('Please enter your email address or Porsche ID'),
+        email: string().email('Please check your entry').required('Please enter your email address or Porsche ID'),
         password: string().required('Please enter your password'),
-        isChecked: boolean()
-      })
+        isChecked: boolean(),
+      }),
     };
 
     onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {

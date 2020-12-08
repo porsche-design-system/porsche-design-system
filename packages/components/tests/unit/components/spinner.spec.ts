@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Spinner } from '../../../src/components/feedback/spinner/spinner';
 
 describe('Component <p-spinner>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Spinner],

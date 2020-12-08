@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-grid',
-  styles: [`
-    p-grid-item > p {
-      margin: 0;
-      padding: 4px 0;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
+  styles: [
+    `
+      p-grid-item > p {
+        margin: 0;
+        padding: 4px 0;
+        text-align: center;
+        color: white;
+        background-color: lightskyblue;
+      }
 
-    p-grid ~ p-grid p {
-      margin-top: 4px;
-    }
-  `],
+      p-grid ~ p-grid p {
+        margin-top: 4px;
+      }
+    `,
+  ],
   template: `
     <div class="playground" title="should render by defined size">
       <p-grid>
@@ -283,7 +285,6 @@ import { Component } from '@angular/core';
         </p-grid-item>
       </p-grid>
     </div>
-  `
+  `,
 })
-export class GridComponent {
-}
+export class GridComponent {}

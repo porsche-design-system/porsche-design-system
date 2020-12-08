@@ -7,7 +7,7 @@ enum Breakpoint {
   s = 's',
   m = 'm',
   l = 'l',
-  xl = 'xl'
+  xl = 'xl',
 }
 
 type BreakpointValue = string | number | boolean;
@@ -64,8 +64,8 @@ const createClass = (
 ): JSXClasses => ({
   ...(value !== null &&
     value !== undefined && {
-      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true
-    })
+      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true,
+    }),
 });
 
 /**
@@ -86,7 +86,7 @@ export const mapBreakpointPropToPrefixedClasses = (
     ? Object.entries(parsedProp).reduce(
         (classes, [breakpoint, value]) => ({
           ...classes,
-          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
+          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes),
         }),
         {}
       )

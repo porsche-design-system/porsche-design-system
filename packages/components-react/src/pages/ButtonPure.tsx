@@ -9,7 +9,7 @@ export const ButtonPurePage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render button with label">
         <ButtonPure>Some label</ButtonPure>
