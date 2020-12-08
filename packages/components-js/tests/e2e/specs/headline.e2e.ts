@@ -55,7 +55,7 @@ describe('headline', () => {
 
     it('should render as div due to slotted content', async () => {
       await initHeadline({ slot: '<h3>Some Headline</h3>' });
-      expect(await getHeadlineTagName()).toBe('SPAN');
+      expect(await getHeadlineTagName()).toBe('DIV');
     });
 
     it('should render as default headline if slotted content is not a headline', async () => {
