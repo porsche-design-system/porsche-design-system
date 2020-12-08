@@ -1,10 +1,24 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
 
-export const setContentWithDesignSystem = async (
-  page: Page,
-  content: string,
-  options: NavigationOptions = { waitUntil: 'networkidle0' }
-): Promise<void> => {
+type Options = NavigationOptions & { enableLogging?: boolean };
+const defaultOptions: Options = { waitUntil: 'networkidle0' };
+
+export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
+  const options: Options = { ...defaultOptions, ...opts };
+
+  let lifeCycleLogger = '';
+  if (options.enableLogging) {
+    enableBrowserLogging(page);
+    lifeCycleLogger = `
+    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      window.addEventListener(\`stencil_\${x}\`, (e) => {
+        const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+        console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+      })
+    );`;
+  }
+
   await page.setContent(
     `
       <head>
@@ -13,12 +27,50 @@ export const setContentWithDesignSystem = async (
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
+        <script>
+          let updatingCount = 0;
+          let timeout;
+          window.componentsUpdatedPromise = undefined;
+          let resolveComponentsUpdatedPromise;
+
+          window.checkComponentsUpdatedPromise = () => {
+            if (updatingCount === 0) {
+              timeout = window.setTimeout(() => {
+                resolveComponentsUpdatedPromise();
+                createComponentsUpdatedPromise();
+              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+            }
+          };
+
+          const createComponentsUpdatedPromise = () => {
+            window.componentsUpdatedPromise = new Promise((resolve) => {
+              resolveComponentsUpdatedPromise = resolve;
+            });
+          };
+
+          createComponentsUpdatedPromise();
+
+          window.addEventListener('stencil_componentWillUpdate', () => {
+            updatingCount++;
+            if (timeout) {
+              window.clearTimeout(timeout);
+            }
+          });
+
+          window.addEventListener('stencil_componentDidUpdate', () => {
+            updatingCount--;
+            window.checkComponentsUpdatedPromise();
+          });
+
+          ${lifeCycleLogger}
+        </script>
         ${content}
       </body>
     `,
     options
   );
-  await page.waitForSelector('html.hydrated');
+
+  await waitForComponentsReady(page);
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -154,4 +206,10 @@ export const reattachElement = async (page: Page, selector: string): Promise<voi
     element.remove();
     document.body.appendChild(element);
   }, selector);
+};
+
+export const enableBrowserLogging = (page: Page) => {
+  page.on('console', (msg) => {
+    console.log(msg.type() + ':', msg.text());
+  });
 };

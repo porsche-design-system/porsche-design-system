@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { ButtonType, IconName, Theme } from '../../../types';
+import { ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button',
@@ -30,7 +30,7 @@ export class Button {
   @Prop() public loading?: boolean = false;
 
   /** The style variant of the button. */
-  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @Prop() public variant?: ButtonVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
@@ -46,7 +46,7 @@ export class Button {
 
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled) {
       e.stopPropagation();
     }
   }
@@ -56,7 +56,7 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.element,
       () => this.type,
-      () => this.isDisabled()
+      () => this.isDisabled
     );
   }
 
@@ -75,7 +75,7 @@ export class Button {
       <button
         class={buttonClasses}
         type={this.type}
-        disabled={this.isDisabled()}
+        disabled={this.isDisabled}
         tabindex={this.tabbable ? 0 : -1}
         aria-busy={this.loading ? 'true' : null}
       >
@@ -102,7 +102,7 @@ export class Button {
     );
   }
 
-  private isDisabled(): boolean {
+  private get isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }

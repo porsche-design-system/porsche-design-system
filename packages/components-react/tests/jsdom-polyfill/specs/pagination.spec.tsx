@@ -32,7 +32,6 @@ const Sample = (): JSX.Element => {
 describe('PPagination', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
@@ -40,7 +39,6 @@ describe('PPagination', () => {
 
   it('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');

@@ -31,7 +31,6 @@ const Sample = (): JSX.Element => {
 describe('PTabsBar', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
@@ -39,7 +38,6 @@ describe('PTabsBar', () => {
 
   it('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');

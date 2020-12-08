@@ -56,7 +56,7 @@ export class ButtonPure {
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public handleOnClick(e: MouseEvent): void {
-    if (this.isDisabled()) {
+    if (this.isDisabled) {
       e.stopPropagation();
     }
   }
@@ -69,7 +69,7 @@ export class ButtonPure {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabled()
+      () => this.isDisabled
     );
 
     transitionListener(this.buttonTag, 'font-size', () => {
@@ -105,7 +105,7 @@ export class ButtonPure {
         <button
           class={buttonPureClasses}
           type={this.type}
-          disabled={this.isDisabled()}
+          disabled={this.isDisabled}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el as HTMLElement)}
           aria-busy={this.loading ? 'true' : null}
@@ -145,7 +145,7 @@ export class ButtonPure {
     this.hasSubline = !!this.host.querySelector('[slot="subline"]');
   }
 
-  private isDisabled(): boolean {
+  private get isDisabled(): boolean {
     return this.disabled || this.loading;
   }
 }

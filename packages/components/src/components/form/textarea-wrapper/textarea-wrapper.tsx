@@ -5,7 +5,6 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
 } from '../../../utils';
 import { FormState } from '../../../types';
 
@@ -36,17 +35,22 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
+  private textareaObserver: MutationObserver;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setTextarea();
     this.setAriaAttributes();
     this.setState();
-    this.bindStateListener();
+    this.initMutationObserver();
     this.addSlottedStyles();
   }
 
   public componentDidUpdate(): void {
     this.setAriaAttributes();
+  }
+
+  public disconnectedCallback(): void {
+    this.textareaObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -118,12 +122,8 @@ export class TextareaWrapper {
     return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -164,9 +164,14 @@ export class TextareaWrapper {
     this.textarea.focus();
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.textarea, 'border-top-color', this.setState);
-  }
+  private initMutationObserver = (): void => {
+    this.textareaObserver = new MutationObserver((): void => {
+      this.setState();
+    });
+    this.textareaObserver.observe(this.textarea, {
+      attributeFilter: ['disabled', 'readonly'],
+    });
+  };
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();

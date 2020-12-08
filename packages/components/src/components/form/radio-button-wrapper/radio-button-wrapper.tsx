@@ -34,7 +34,7 @@ export class RadioButtonWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
     this.setAriaAttributes();
     this.setState();
@@ -92,12 +92,8 @@ export class RadioButtonWrapper {
     return !!this.label || !!this.host.querySelector('[slot="label"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -128,8 +124,7 @@ export class RadioButtonWrapper {
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box
+     * for real shadow dom, else the native behaviour works out of the box
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.focus();

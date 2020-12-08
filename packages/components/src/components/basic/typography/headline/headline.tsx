@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { prefix, insertSlottedStyles } from '../../../../utils';
-import { HeadlineVariant, Theme } from '../../../../types';
+import { HeadlineVariant, TextAlign, TextColor, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
@@ -17,10 +17,10 @@ export class Headline {
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
 
   /** Text alignment of the component. */
-  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+  @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: 'default' | 'inherit' = 'default';
+  @Prop() public color?: Extract<TextColor, 'default' | 'inherit'> = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;

@@ -5,7 +5,7 @@ setRegisterComponentsCallback(
   'porscheDesignSystem',
   (prefix) =>
     defineCustomElements(window, {
-      transformTagName: (tagName) => (prefix ? prefix + '-' + tagName : tagName),
+      transformTagName: (tagName) => (prefix ? `${prefix}-${tagName}` : tagName),
     }),
   PORSCHE_DESIGN_SYSTEM_VERSION
 );
