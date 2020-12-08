@@ -10,16 +10,16 @@ const config: webpack.Configuration = {
     chunkFilename: `porsche-design-system.[id].[contenthash].js`,
     libraryTarget: 'var',
     library: `PorscheDesignSystem_${snakeCaseVersion}`,
-    publicPath: `${deployUrl}/`
+    publicPath: `${deployUrl}/`,
   },
   optimization: {
-    usedExports: true
+    usedExports: true,
   },
   plugins: [
     new webpack.DefinePlugin({
-      PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version)
-    })
-  ]
+      PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version),
+    }),
+  ],
 };
 
 export default config;
