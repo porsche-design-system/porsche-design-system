@@ -53,7 +53,7 @@
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-default !important;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 }
 
 // Focus
@@ -88,7 +88,6 @@
 ::slotted(input:not(:disabled):read-only) {
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
-  border-top-color: rgba(255, 255, 255, 0.01) !important;
   color: $p-color-neutral-contrast-medium !important;
 }
 
@@ -96,7 +95,6 @@
 ::slotted(input:disabled) {
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
-  border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-state-disabled !important;
   -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
