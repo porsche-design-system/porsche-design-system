@@ -81,7 +81,11 @@ export class Headline {
 
   private get hasSlottedHeadlineTag(): boolean {
     const el = this.host.querySelector(':first-child');
-    return el?.matches('h1, h2, h3, h4, h5, h6');
+    const isHeadline = el?.matches('h1, h2, h3, h4, h5, h6');
+    if (!isHeadline) {
+      this.tag = 'h2';
+    }
+    return isHeadline;
   }
 
   private addSlottedStyles(): void {
