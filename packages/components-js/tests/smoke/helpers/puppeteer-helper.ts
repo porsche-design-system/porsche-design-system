@@ -18,8 +18,8 @@ export const setContentWithDesignSystem = async (
       </head>
       <body>
         <script type="text/javascript">
-            PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
-            porscheDesignSystem.load();
+          PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
+          porscheDesignSystem.load();
         </script>
         ${content}
       </body>

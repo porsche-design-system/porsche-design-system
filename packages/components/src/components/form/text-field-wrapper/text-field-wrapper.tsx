@@ -6,9 +6,8 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
 } from '../../../utils';
-import { ButtonType, FormState } from '../../../types';
+import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -38,22 +37,24 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
-  private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
-  private isInputTypeSearch: boolean;
+  private inputObserver: MutationObserver;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
+    this.isPasswordToggleable = this.input.type === 'password';
     this.setAriaAttributes();
     this.setState();
-    this.updatePasswordToggleable();
-    this.initInputTypeSearch();
-    this.bindStateListener();
+    this.initMutationObserver();
     this.addSlottedStyles();
   }
 
   public componentDidUpdate(): void {
     this.setAriaAttributes();
+  }
+
+  public disconnectedCallback(): void {
+    this.inputObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -144,12 +145,8 @@ export class TextFieldWrapper {
     return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -187,12 +184,8 @@ export class TextFieldWrapper {
     this.input.focus();
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', this.setState);
-  }
-
-  private updatePasswordToggleable(): void {
-    this.isPasswordToggleable = this.input.type === 'password';
+  private get isInputTypeSearch(): boolean {
+    return this.input.type === 'search';
   }
 
   private togglePassword = (): void => {
@@ -201,19 +194,24 @@ export class TextFieldWrapper {
     this.labelClick();
   };
 
-  private initInputTypeSearch(): void {
-    this.isInputTypeSearch = this.input.type === 'search';
-  }
-
   private onSubmitHandler = (event: MouseEvent): void => {
     if (this.isInputTypeSearch) {
       handleButtonEvent(
         event,
         this.host,
-        () => this.searchButtonType,
+        () => 'submit',
         () => this.disabled
       );
     }
+  };
+
+  private initMutationObserver = (): void => {
+    this.inputObserver = new MutationObserver((): void => {
+      this.setState();
+    });
+    this.inputObserver.observe(this.input, {
+      attributeFilter: ['disabled', 'readonly'],
+    });
   };
 
   private addSlottedStyles(): void {

@@ -51,7 +51,7 @@
   text-indent: 0 !important;
   color: $p-color-default !important;
   resize: vertical;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 }
 
 // Focus
@@ -74,13 +74,11 @@
 
 // Read only
 ::slotted(textarea:not(:disabled):read-only) {
-  border-top-color: rgba(255, 255, 255, 0.01) !important;
   color: $p-color-neutral-contrast-medium !important;
 }
 
 // Disabled
 ::slotted(textarea:disabled) {
-  border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-state-disabled !important;
   -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;

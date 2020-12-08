@@ -27,15 +27,14 @@ const Sample = (): JSX.Element => {
 describe('PModal', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
   });
 
+  // disabled since clicking something in shadowRoot doesn't seem to work
   xit('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');

@@ -1,7 +1,7 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
 import { prefix } from '../../../utils';
-import { Theme, IconName } from '../../../types';
+import { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
   tag: 'p-icon',
@@ -11,44 +11,22 @@ import { Theme, IconName } from '../../../types';
 export class Icon {
   @Element() public el!: HTMLElement;
 
-  /**
-   * Specifies which icon to use.
-   */
+  /** Specifies which icon to use. */
   @Prop() public name?: IconName = DEFAULT_ICON_NAME;
 
-  /**
-   * Specifies a whole icon path which can be used for custom icons.
-   */
+  /** Specifies a whole icon path which can be used for custom icons. */
   @Prop() public source?: string;
 
-  /**
-   * @internal
-   * Specifies which icon variant to use.
-   */
+  /** @internal Specifies which icon variant to use. */
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?:
-    | 'brand'
-    | 'default'
-    | 'neutral-contrast-high'
-    | 'neutral-contrast-medium'
-    | 'neutral-contrast-low'
-    | 'notification-success'
-    | 'notification-warning'
-    | 'notification-error'
-    | 'notification-neutral'
-    | 'inherit' = 'default';
+  @Prop() public color?: TextColor = 'default';
 
-  /**
-   * The size of the icon.
-   */
+  /** The size of the icon. */
   @Prop() public size?: 'small' | 'medium' | 'large' | 'inherit' = 'small';
 
-  /**
-   * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
-   * Default, `false`.
-   */
+  /** If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`. */
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */

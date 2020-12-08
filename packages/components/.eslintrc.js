@@ -82,7 +82,7 @@ module.exports = {
     '@typescript-eslint/triple-slash-reference': 'error',
     '@typescript-eslint/type-annotation-spacing': 'off',
     '@typescript-eslint/unified-signatures': 'error',
-    'arrow-body-style': 'error',
+    'arrow-body-style': 'off',
     'arrow-parens': ['off', 'as-needed'],
     'camelcase': 'error',
     'comma-dangle': 'off',

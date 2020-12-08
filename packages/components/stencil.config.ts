@@ -3,7 +3,7 @@ import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
-import autoprefixer = require('autoprefixer');
+import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import modify from 'rollup-plugin-modify';
 import replace from 'rollup-plugin-replace';
@@ -24,11 +24,12 @@ process.env.PATH = `${fakeNpmPath}:${process.env.PATH}`;
 
 const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
 
+const isDevBuild = process.env.PDS_IS_STAGING === '1';
+
 export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
   outputTargets: [
-    { type: 'dist-custom-elements-bundle', dir: '../components-react/projects/components-wrapper/src/bundle' },
     { type: 'dist', esmLoaderPath: '../loader' },
     {
       type: 'www',
@@ -43,8 +44,6 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
       proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
-      includePolyfills: true,
-      includeDefineCustomElements: true,
     }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
@@ -61,12 +60,12 @@ export const config: Config = {
   rollupPlugins: {
     after: [
       replace({
-        ROLLUP_REPLACE_IS_STAGING: process.env.PDS_IS_STAGING === '1' ? '"staging"' : '"production"',
+        ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
       }),
       modify({
         // minify slotted styles
         find: /const style = `((.|\s)*?)`/g,
-        replace: (match, $1) => {
+        replace: (_, $1) => {
           const placeholder = /\${tagName}/g;
           const tmpPlaceholder = /TAG_NAME/g;
           return `const style = \`${minifyCSS($1.replace(placeholder, 'TAG_NAME')).replace(
@@ -79,7 +78,8 @@ export const config: Config = {
   },
   globalScript: 'src/setup.ts',
   extras: {
-    lifecycleDOMEvents: true,
+    // emit lifecycle events like componentWillLoad, didLoad, willUpdate, didUpdate only in dev build for e2e tests
+    ...(isDevBuild && { lifecycleDOMEvents: true }),
     tagNameTransform: true,
   },
 };

@@ -6,7 +6,6 @@ import {
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener,
 } from '../../../utils';
 import { FormState, Theme } from '../../../types';
 
@@ -52,7 +51,6 @@ export class SelectWrapper {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
-  @State() private disabled: boolean;
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly OptionMap[] = [];
   @State() private filterHasResults = true;
@@ -79,8 +77,6 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.initSelect();
     this.setAriaAttributes();
-    this.setState();
-    this.bindStateListener();
     this.addSlottedStyles();
 
     if (!this.isTouchWithoutFilter) {
@@ -241,12 +237,8 @@ export class SelectWrapper {
     return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -285,9 +277,9 @@ export class SelectWrapper {
     }
   }
 
-  private setState = (): void => {
-    this.disabled = this.select.disabled;
-  };
+  private get disabled(): boolean {
+    return this.select.disabled;
+  }
 
   private labelClick = (): void => {
     if (!this.filter) {
@@ -297,16 +289,14 @@ export class SelectWrapper {
     }
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.select, 'border-top-color', this.setState);
-  }
-
   /*
    * <START CUSTOM SELECT DROPDOWN>
    */
   private observeSelect(): void {
     this.selectObserver = new MutationObserver((mutations) => {
-      mutations.filter(({ type }) => type === 'childList' || type === 'attributes').forEach(this.setOptionList);
+      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
+        this.setOptionList();
+      }
     });
     this.selectObserver.observe(this.select, {
       childList: true,
