@@ -1,11 +1,16 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser, getStyleOnFocus,
+  getBrowser,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle, waitForInheritedCSSTransition
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  waitForInheritedCSSTransition,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -18,7 +23,9 @@ describe('link social', () => {
   });
   afterEach(async () => await page.close());
 
-  const initLinkSocial = ({ useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }): Promise<void> => {
+  const initLinkSocial = (
+    { useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }
+  ): Promise<void> => {
     return setContentWithDesignSystem(
       page,
       `
@@ -186,8 +193,8 @@ describe('link social', () => {
       await initLinkSocial();
 
       const link = await getLinkSocialRealLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'default'}); // because of button click, :focus-visible & :hover
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'default' }); // because of button click, :focus-visible & :hover
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
@@ -214,20 +221,22 @@ describe('link social', () => {
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initLinkSocial({useSlottedAnchor: true});
+      await initLinkSocial({ useSlottedAnchor: true });
 
       const host = await getLinkSocialHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ theme: 'dark' })
+      );
     });
   });
 });

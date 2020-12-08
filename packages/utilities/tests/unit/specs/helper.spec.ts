@@ -3,7 +3,7 @@ import {
   pxToRem,
   remToPx,
   generateTypeScale,
-  generateFontDefinition
+  generateFontDefinition,
 } from '../../../projects/utilities/src/js';
 
 describe('pxToRem()', () => {
@@ -63,16 +63,16 @@ describe('generateFontDefinition()', () => {
     const fontDefinition1 = generateFontDefinition('16px', 'regular');
     const fontDefinition2 = generateFontDefinition('32px', 'bold');
     expect(fontDefinition1).toEqual({
-      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
-      "fontSize": "1rem",
-      "fontWeight": 400,
-      "lineHeight": 1.5
+      fontFamily: '"Porsche Next", "Arial Narrow", Arial, sans-serif',
+      fontSize: '1rem',
+      fontWeight: 400,
+      lineHeight: 1.5,
     });
     expect(fontDefinition2).toEqual({
-      "fontFamily": "\"Porsche Next\", \"Arial Narrow\", Arial, sans-serif",
-      "fontSize": "2rem",
-      "fontWeight": 700,
-      "lineHeight": 1.375
+      fontFamily: '"Porsche Next", "Arial Narrow", Arial, sans-serif',
+      fontSize: '2rem',
+      fontWeight: 700,
+      lineHeight: 1.375,
     });
   });
 });

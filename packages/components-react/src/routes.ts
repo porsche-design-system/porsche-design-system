@@ -10,151 +10,151 @@ export const routes: RouteType[] = [
   {
     name: 'Banner',
     path: '/banner',
-    component: fromPages.BannerPage
+    component: fromPages.BannerPage,
   },
   {
     name: 'Button',
     path: '/button',
-    component: fromPages.ButtonPage
+    component: fromPages.ButtonPage,
   },
   {
     name: 'Button Pure',
     path: '/button-pure',
-    component: fromPages.ButtonPurePage
+    component: fromPages.ButtonPurePage,
   },
   {
     name: 'Checkbox',
     path: '/checkbox-wrapper',
-    component: fromPages.CheckboxWrapperPage
+    component: fromPages.CheckboxWrapperPage,
   },
   {
     name: 'Content Wrapper',
     path: '/content-wrapper',
-    component: fromPages.ContentWrapperPage
+    component: fromPages.ContentWrapperPage,
   },
   {
     name: 'Divider',
     path: '/divider',
-    component: fromPages.DividerPage
+    component: fromPages.DividerPage,
   },
   {
     name: 'Fieldset',
     path: '/fieldset-wrapper',
-    component: fromPages.FieldsetWrapperPage
+    component: fromPages.FieldsetWrapperPage,
   },
   {
     name: 'Flex',
     path: '/flex',
-    component: fromPages.FlexPage
+    component: fromPages.FlexPage,
   },
   {
     name: 'Grid',
     path: '/grid',
-    component: fromPages.GridPage
+    component: fromPages.GridPage,
   },
   {
     name: 'Headline',
     path: '/headline',
-    component: fromPages.HeadlinePage
+    component: fromPages.HeadlinePage,
   },
   {
     name: 'Icon',
     path: '/icon',
-    component: fromPages.IconPage
+    component: fromPages.IconPage,
   },
   {
     name: 'Link',
     path: '/link',
-    component: fromPages.LinkPage
+    component: fromPages.LinkPage,
   },
   {
     name: 'Link Pure',
     path: '/link-pure',
-    component: fromPages.LinkPurePage
+    component: fromPages.LinkPurePage,
   },
   {
     name: 'Link Social',
     path: '/link-social',
-    component: fromPages.LinkSocialPage
+    component: fromPages.LinkSocialPage,
   },
   {
     name: 'Marque',
     path: '/marque',
-    component: fromPages.MarquePage
+    component: fromPages.MarquePage,
   },
   {
     name: 'Modal Basic',
     path: '/modal-basic',
-    component: fromPages.ModalBasicPage
+    component: fromPages.ModalBasicPage,
   },
   {
     name: 'Modal Scrollable',
     path: '/modal-scrollable',
-    component: fromPages.ModalScrollablePage
+    component: fromPages.ModalScrollablePage,
   },
   {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
-    component: fromPages.ModalPrefixedPage
+    component: fromPages.ModalPrefixedPage,
   },
   {
     name: 'Overview',
     path: '/overview',
-    component: fromPages.OverviewPage
+    component: fromPages.OverviewPage,
   },
   {
     name: 'Pagination',
     path: '/pagination',
-    component: fromPages.PaginationPage
+    component: fromPages.PaginationPage,
   },
   {
     name: 'Radio Button',
     path: '/radio-button-wrapper',
-    component: fromPages.RadioButtonWrapperPage
+    component: fromPages.RadioButtonWrapperPage,
   },
   {
     name: 'Select',
     path: '/select-wrapper',
-    component: fromPages.SelectWrapperPage
+    component: fromPages.SelectWrapperPage,
   },
   {
     name: 'Spinner',
     path: '/spinner',
-    component: fromPages.SpinnerPage
+    component: fromPages.SpinnerPage,
   },
   {
     name: 'Tabs',
     path: '/tabs',
-    component: fromPages.TabsPage
+    component: fromPages.TabsPage,
   },
   {
     name: 'Tabs Bar',
     path: '/tabs-bar',
-    component: fromPages.TabsBarPage
+    component: fromPages.TabsBarPage,
   },
   {
     name: 'Text',
     path: '/text',
-    component: fromPages.TextPage
+    component: fromPages.TextPage,
   },
   {
     name: 'Text Field',
     path: '/text-field-wrapper',
-    component: fromPages.TextFieldWrapperPage
+    component: fromPages.TextFieldWrapperPage,
   },
   {
     name: 'Text List',
     path: '/text-list',
-    component: fromPages.TextListPage
+    component: fromPages.TextListPage,
   },
   {
     name: 'Textarea',
     path: '/textarea-wrapper',
-    component: fromPages.TextareaWrapperPage
+    component: fromPages.TextareaWrapperPage,
   },
   {
     name: 'Typography',
     path: '/typography',
-    component: fromPages.TypographyPage
-  }
+    component: fromPages.TypographyPage,
+  },
 ];

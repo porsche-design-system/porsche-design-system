@@ -15,9 +15,7 @@ export const ScssFocus = (): JSX.Element => (
     </div>
     <div className="playground">
       <div className="focusable-element-pseudo">
-        <button id="focusable-element-pseudo">
-          Some label
-        </button>
+        <button id="focusable-element-pseudo">Some label</button>
       </div>
     </div>
     <div className="playground">

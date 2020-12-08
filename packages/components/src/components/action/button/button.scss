@@ -69,8 +69,8 @@
   border-style: solid;
   border-width: 1px;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
-  border-color $p-animation-hover-duration $p-animation-hover-bezier,
-  color $p-animation-hover-duration $p-animation-hover-bezier;
+    border-color $p-animation-hover-duration $p-animation-hover-bezier,
+    color $p-animation-hover-duration $p-animation-hover-bezier;
   cursor: pointer;
 
   &:disabled,
@@ -78,15 +78,15 @@
     cursor: not-allowed;
   }
 
-  :host([theme="dark"]) & {
+  :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-default);
   }
 
-  :host([variant="primary"]) & {
+  :host([variant='primary']) & {
     @include p-focus($p-color-brand);
   }
 
-  :host([theme="dark"][variant="primary"]) & {
+  :host([theme='dark'][variant='primary']) & {
     @include p-focus($p-color-theme-dark-brand);
   }
 
@@ -255,7 +255,7 @@
     }
   }
 
-  @include p-media-query("xs") {
+  @include p-media-query('xs') {
     &--with-label-xs {
       @include p-button-with-label;
 
@@ -281,7 +281,7 @@
     }
   }
 
-  @include p-media-query("s") {
+  @include p-media-query('s') {
     &--with-label-s {
       @include p-button-with-label;
 
@@ -307,7 +307,7 @@
     }
   }
 
-  @include p-media-query("m") {
+  @include p-media-query('m') {
     &--with-label-m {
       @include p-button-with-label;
 
@@ -333,7 +333,7 @@
     }
   }
 
-  @include p-media-query("l") {
+  @include p-media-query('l') {
     &--with-label-l {
       @include p-button-with-label;
 
@@ -359,7 +359,7 @@
     }
   }
 
-  @include p-media-query("xl") {
+  @include p-media-query('xl') {
     &--with-label-xl {
       @include p-button-with-label;
 

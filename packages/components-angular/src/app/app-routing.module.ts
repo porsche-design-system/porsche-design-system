@@ -10,162 +10,162 @@ export const routes: ExtendedRoute[] = [
   {
     path: '',
     children: [],
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'banner',
     component: fromPages.BannerComponent,
-    name: 'Banner'
+    name: 'Banner',
   },
   {
     path: 'button',
     component: fromPages.ButtonComponent,
-    name: 'Button'
+    name: 'Button',
   },
   {
     path: 'button-pure',
     component: fromPages.ButtonPureComponent,
-    name: 'Button Pure'
+    name: 'Button Pure',
   },
   {
     path: 'checkbox-wrapper',
     component: fromPages.CheckboxWrapperComponent,
-    name: 'Checkbox'
+    name: 'Checkbox',
   },
   {
     path: 'content-wrapper',
     component: fromPages.ContentWrapperComponent,
-    name: 'Content Wrapper'
+    name: 'Content Wrapper',
   },
   {
     path: 'divider',
     component: fromPages.DividerComponent,
-    name: 'Divider'
+    name: 'Divider',
   },
   {
     path: 'fieldset-wrapper',
     component: fromPages.FieldsetWrapperComponent,
-    name: 'Fieldset'
+    name: 'Fieldset',
   },
   {
     path: 'flex',
     component: fromPages.FlexComponent,
-    name: 'Flex'
+    name: 'Flex',
   },
   {
     path: 'grid',
     component: fromPages.GridComponent,
-    name: 'Grid'
+    name: 'Grid',
   },
   {
     path: 'headline',
     component: fromPages.HeadlineComponent,
-    name: 'Headline'
+    name: 'Headline',
   },
   {
     path: 'icon',
     component: fromPages.IconComponent,
-    name: 'Icon'
+    name: 'Icon',
   },
   {
     path: 'link',
     component: fromPages.LinkComponent,
-    name: 'Link'
+    name: 'Link',
   },
   {
     path: 'link-pure',
     component: fromPages.LinkPureComponent,
-    name: 'Link Pure'
+    name: 'Link Pure',
   },
   {
     path: 'link-social',
     component: fromPages.LinkSocialComponent,
-    name: 'Link Social'
+    name: 'Link Social',
   },
   {
     path: 'marque',
     component: fromPages.MarqueComponent,
-    name: 'Marque'
+    name: 'Marque',
   },
   {
     path: 'modal-basic',
     component: fromPages.ModalBasicComponent,
-    name: 'Modal Basic'
+    name: 'Modal Basic',
   },
   {
     path: 'modal-scrollable',
     component: fromPages.ModalScrollableComponent,
-    name: 'Modal Scrollable'
+    name: 'Modal Scrollable',
   },
   {
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
-    name: 'Modal Prefixed'
+    name: 'Modal Prefixed',
   },
   {
     path: 'overview',
     component: fromPages.OverviewComponent,
-    name: 'Overview'
+    name: 'Overview',
   },
   {
     path: 'pagination',
     component: fromPages.PaginationComponent,
-    name: 'Pagination'
+    name: 'Pagination',
   },
   {
     path: 'radio-button-wrapper',
     component: fromPages.RadioButtonWrapperComponent,
-    name: 'Radio Button'
+    name: 'Radio Button',
   },
   {
     path: 'select-wrapper',
     component: fromPages.SelectWrapperComponent,
-    name: 'Select'
+    name: 'Select',
   },
   {
     path: 'spinner',
     component: fromPages.SpinnerComponent,
-    name: 'Spinner'
+    name: 'Spinner',
   },
   {
     path: 'tabs',
     component: fromPages.TabsComponent,
-    name: 'Tabs'
+    name: 'Tabs',
   },
   {
     path: 'tabs-bar',
     component: fromPages.TabsBarComponent,
-    name: 'Tabs Bar'
+    name: 'Tabs Bar',
   },
   {
     path: 'text',
     component: fromPages.TextComponent,
-    name: 'Text'
+    name: 'Text',
   },
   {
     path: 'text-field-wrapper',
     component: fromPages.TextFieldWrapperComponent,
-    name: 'Text Field'
+    name: 'Text Field',
   },
   {
     path: 'text-list',
     component: fromPages.TextListComponent,
-    name: 'Text List'
+    name: 'Text List',
   },
   {
     path: 'textarea-wrapper',
     component: fromPages.TextareaWrapperComponent,
-    name: 'Textarea'
+    name: 'Textarea',
   },
   {
     path: 'typography',
     component: fromPages.TypographyComponent,
-    name: 'Typography'
-  }
+    name: 'Typography',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

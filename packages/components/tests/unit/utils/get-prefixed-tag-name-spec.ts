@@ -6,13 +6,13 @@ describe('getPrefixedTagNames', () => {
     const resultWithoutPrefix = getPrefixedTagNames(document.createElement('p-button'), ['p-icon', 'p-text']);
     expect(resultWithoutPrefix).toEqual({
       pIcon: 'p-icon',
-      pText: 'p-text'
+      pText: 'p-text',
     });
 
     const resultWithPrefix = getPrefixedTagNames(document.createElement('my-prefix-p-button'), ['p-icon', 'p-text']);
     expect(resultWithPrefix).toEqual({
       pIcon: 'my-prefix-p-icon',
-      pText: 'my-prefix-p-text'
+      pText: 'my-prefix-p-text',
     });
   });
 });

@@ -5,7 +5,7 @@ import { HeadlineVariant, TextAlign, TextColor, Theme } from '../../../../types'
 @Component({
   tag: 'p-headline',
   styleUrl: 'headline.scss',
-  shadow: true
+  shadow: true,
 })
 export class Headline {
   @Element() public host!: HTMLElement;
@@ -39,7 +39,7 @@ export class Headline {
       'headline-2': 'h2',
       'headline-3': 'h3',
       'headline-4': 'h4',
-      'headline-5': 'h5'
+      'headline-5': 'h5',
     };
 
     const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
@@ -50,7 +50,7 @@ export class Headline {
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit'
+      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
     };
 
     return (
