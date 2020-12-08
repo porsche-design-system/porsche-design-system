@@ -8,6 +8,21 @@
 Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
 There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
 
+### Default Tags
+Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
+
+**Hint:** You always have to keep an eye on the semantic of your HTML tags. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property.
+
+```
+'large-title': 'h1'
+'headline-1': 'h1'
+'headline-2': 'h2'
+'headline-3': 'h3'
+'headline-4': 'h4'
+'headline-5': 'h5'
+```
+
+
 <Playground :markup="variant" :config="config"></Playground>
 
 ---
@@ -15,7 +30,7 @@ There are multiple predefined styling variants available. Default semantic tag h
 ## Size
 If one of the predefined **variants** doesn't match your layout you could also pass a custom `size` property to have more control of your headline sizes in conjunction with responsive layouts.
 
-**Hint:** You always have to keep an eye on the semantic of your HTML tags. Per default an `h2`-tag is rendered. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property. 
+**Hint:** You always have to keep an eye on the semantic of your HTML tags. Per default an `h1`-tag is rendered. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property. 
 
 <Playground :markup="sizeMarkup" :config="config">
   <select @change="size = $event.target.value">
