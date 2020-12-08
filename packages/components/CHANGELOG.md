@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Extend flexibility of `Headline` by adding `size` property
+
 ### Fixed
 - Improved reliability of `componentsReady()`
 
