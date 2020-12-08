@@ -3,7 +3,7 @@ import { Page } from 'puppeteer';
 import { HeadlineVariant, TextSize } from '@porsche-design-system/components/src/types';
 import { BreakpointCustomizable } from '@porsche-design-system/components/src/utils';
 
-fdescribe('headline', () => {
+describe('headline', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -16,10 +16,14 @@ fdescribe('headline', () => {
     tag?: string;
   }): Promise<void> => {
     const { variant, size, slot, tag } = opts;
+
+    const content =
+      (variant ? `variant="${variant}"` : '') + (size ? ` size="${size}"` : '') + (tag ? `tag="${tag}"` : '');
+
     return setContentWithDesignSystem(
       page,
       `
-        <p-headline variant=${variant} size=${size} tag=${tag}>
+        <p-headline ${content}>
           ${slot ? slot : 'Some Headline'}
         </p-headline>`
     );
@@ -30,7 +34,7 @@ fdescribe('headline', () => {
 
   describe('tag', () => {
     it('should render according to variant', async () => {
-      await initHeadline({ variant: 'large-title' });
+      await initHeadline({ variant: 'headline-2' });
       expect(await getHeadlineTagName()).toBe('H2');
     });
 
