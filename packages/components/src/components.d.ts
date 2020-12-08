@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, FormState, HeadlineVariant, IconName, LinkTarget, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, ButtonVariant, FormState, HeadlineVariant, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 export namespace Components {
     interface PBanner {
@@ -62,7 +62,7 @@ export namespace Components {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
@@ -230,11 +230,11 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'default' | 'inherit';
+        "color"?: Extract<TextColor, 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -260,7 +260,7 @@ export namespace Components {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit';
+        "color"?: TextColor;
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -319,7 +319,7 @@ export namespace Components {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
@@ -603,11 +603,11 @@ export namespace Components {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit';
+        "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -971,7 +971,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the button.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
@@ -1139,11 +1139,11 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'default' | 'inherit';
+        "color"?: Extract<TextColor, 'default' | 'inherit'>;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */
@@ -1169,7 +1169,7 @@ declare namespace LocalJSX {
         /**
           * Basic color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit';
+        "color"?: TextColor;
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
          */
@@ -1228,7 +1228,7 @@ declare namespace LocalJSX {
         /**
           * The style variant of the link.
          */
-        "variant"?: 'primary' | 'secondary' | 'tertiary';
+        "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
@@ -1528,11 +1528,11 @@ declare namespace LocalJSX {
         /**
           * Text alignment of the component.
          */
-        "align"?: 'left' | 'center' | 'right';
+        "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
          */
-        "color"?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit';
+        "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
          */

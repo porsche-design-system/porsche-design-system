@@ -1,40 +1,15 @@
 import { Page } from 'puppeteer';
 
+export const waitForComponentsReady = async (page: Page): Promise<void> => {
+  await page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+};
+
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
+  await page.waitForTimeout(40); // TODO: remove this once component lifecycles are working as intended
   await page.evaluate(
-    async (): Promise<void> => {
-      let updatingQueueCount = 0;
-      let resolvePromiseOnDidUpdateAll: (value?: unknown) => void;
-      let resolvePromiseTimeout = null;
-
-      const checkForPromiseResolve = (): void => {
-        if (updatingQueueCount === 0) {
-          resolvePromiseTimeout = window.setTimeout(() => {
-            window.removeEventListener('stencil_componentWillUpdate', stencilComponentWillUpdate);
-            window.removeEventListener('stencil_componentDidUpdate', stencilComponentDidUpdate);
-            resolvePromiseOnDidUpdateAll();
-          }, 40);
-        }
-      };
-
-      const stencilComponentWillUpdate = () => {
-        updatingQueueCount++;
-        if (resolvePromiseTimeout) {
-          window.clearTimeout(resolvePromiseTimeout);
-        }
-      };
-
-      const stencilComponentDidUpdate = () => {
-        updatingQueueCount--;
-        checkForPromiseResolve();
-      };
-
-      window.addEventListener('stencil_componentWillUpdate', stencilComponentWillUpdate);
-      window.addEventListener('stencil_componentDidUpdate', stencilComponentDidUpdate);
-
-      checkForPromiseResolve();
-
-      await new Promise((resolve) => (resolvePromiseOnDidUpdateAll = resolve));
+    (): Promise<any> => {
+      (window as any).checkComponentsUpdatedPromise(); // see setContentWithDesignSystem(), need to check if Promise can be resolved initially
+      return (window as any).componentsUpdatedPromise; // is resolved by checkComponentsUpdatedPromise() with some delay
     }
   );
 };
