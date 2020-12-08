@@ -37,7 +37,7 @@
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/porsche-design-system/node_modules/prettier`
 1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
 1. Click checkbox `on save` and apply
-1. We provide the `.prettierrc.json` and `.prettierignore` in our root directory to set everything up, so you should be good to go.
+1. You should be good to go.
 
 ### Docker installation steps
 1. Register your Docker account on [Hub-Docker](https://hub.docker.com)
