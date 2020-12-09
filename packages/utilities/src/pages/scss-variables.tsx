@@ -31,7 +31,7 @@ const defaultColors = {
   'external-wechat': '#1aad19',
   'external-whatsapp': '#25d366',
   'external-xing': '#006567',
-  'external-youtube': '#ff0000'
+  'external-youtube': '#ff0000',
 };
 
 const darkThemeColors = {
@@ -54,7 +54,7 @@ const darkThemeColors = {
   'theme-dark-state-hover': '#ff0223',
   'theme-dark-state-active': '#ff0223',
   'theme-dark-state-focus': 'currentColor',
-  'theme-dark-state-disabled': '#7c7f81'
+  'theme-dark-state-disabled': '#7c7f81',
 };
 
 const fontWeights = ['thin', 'regular', 'semibold', 'bold'];
@@ -81,7 +81,7 @@ const fontSizes = [
   'small',
   'medium',
   'large',
-  'xLarge'
+  'xLarge',
 ];
 
 const headlines = [1, 2, 3, 4, 5];

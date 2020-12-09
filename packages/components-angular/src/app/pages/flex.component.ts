@@ -2,43 +2,45 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-flex',
-  styles: [`
-    p-flex-item > p {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 4px 2vw;
-      box-sizing: border-box;
-      text-align: center;
-      color: white;
-      background-color: lightskyblue;
-    }
+  styles: [
+    `
+      p-flex-item > p {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 4px 2vw;
+        box-sizing: border-box;
+        text-align: center;
+        color: white;
+        background-color: lightskyblue;
+      }
 
-    p-flex-item:nth-child(1n) > p {
-      background-color: skyblue;
-    }
+      p-flex-item:nth-child(1n) > p {
+        background-color: skyblue;
+      }
 
-    p-flex-item:nth-child(2n) > p {
-      background-color: deepskyblue;
-    }
+      p-flex-item:nth-child(2n) > p {
+        background-color: deepskyblue;
+      }
 
-    p-flex-item:nth-child(3n) > p {
-      background-color: dodgerblue;
-    }
+      p-flex-item:nth-child(3n) > p {
+        background-color: dodgerblue;
+      }
 
-    p-flex-item:nth-child(4n) > p {
-      background-color: royalblue;
-    }
+      p-flex-item:nth-child(4n) > p {
+        background-color: royalblue;
+      }
 
-    p-flex-item[align-self] > p,
-    p-flex-item[class*="p-flex__item--align-self-"] > p {
-      background-color: deeppink;
-    }
+      p-flex-item[align-self] > p,
+      p-flex-item[class*='p-flex__item--align-self-'] > p {
+        background-color: deeppink;
+      }
 
-    p-flex[wrap] p {
-      min-width: 10rem;
-    }
-  `],
+      p-flex[wrap] p {
+        min-width: 10rem;
+      }
+    `,
+  ],
   template: `
     <div class="playground" title="should show basic usage">
       <p-flex>
@@ -1031,19 +1033,13 @@ import { Component } from '@angular/core';
     <div class="playground" title="should render by predefined flex shorthand mode 'initial'">
       <p-flex>
         <p-flex-item [flex]="'initial'">
-          <p>
-            1 - short content
-          </p>
+          <p>1 - short content</p>
         </p-flex-item>
         <p-flex-item [flex]="'initial'">
-          <p>
-            2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-          </p>
+          <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
         </p-flex-item>
         <p-flex-item [flex]="'initial'">
-          <p>
-            3 - short content
-          </p>
+          <p>3 - short content</p>
         </p-flex-item>
       </p-flex>
     </div>
@@ -1051,19 +1047,13 @@ import { Component } from '@angular/core';
     <div class="playground" title="should render by predefined flex shorthand mode 'auto'">
       <p-flex>
         <p-flex-item [flex]="'auto'">
-          <p>
-            1 - short content
-          </p>
+          <p>1 - short content</p>
         </p-flex-item>
         <p-flex-item [flex]="'auto'">
-          <p>
-            2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-          </p>
+          <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
         </p-flex-item>
         <p-flex-item [flex]="'auto'">
-          <p>
-            3 - short content
-          </p>
+          <p>3 - short content</p>
         </p-flex-item>
       </p-flex>
     </div>
@@ -1071,19 +1061,13 @@ import { Component } from '@angular/core';
     <div class="playground" title="should render by predefined flex shorthand mode 'equal'">
       <p-flex>
         <p-flex-item [flex]="'equal'">
-          <p>
-            1 - short content
-          </p>
+          <p>1 - short content</p>
         </p-flex-item>
         <p-flex-item [flex]="'equal'">
-          <p>
-            2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-          </p>
+          <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
         </p-flex-item>
         <p-flex-item [flex]="'equal'">
-          <p>
-            3 - short content
-          </p>
+          <p>3 - short content</p>
         </p-flex-item>
       </p-flex>
     </div>
@@ -1091,43 +1075,30 @@ import { Component } from '@angular/core';
     <div class="playground" title="should render by predefined flex shorthand mode 'none'">
       <p-flex>
         <p-flex-item [flex]="'none'">
-          <p>
-            1 - short content
-          </p>
+          <p>1 - short content</p>
         </p-flex-item>
         <p-flex-item [flex]="'none'">
-          <p>
-            2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-          </p>
+          <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
         </p-flex-item>
         <p-flex-item [flex]="'none'">
-          <p>
-            3 - short content
-          </p>
+          <p>3 - short content</p>
         </p-flex-item>
       </p-flex>
     </div>
 
     <div class="playground" title="should adapt predefined flex shorthand mode depending on viewport">
       <p-flex>
-        <p-flex-item [flex]="{base: 'initial', l: 'equal'}">
-          <p>
-            1 - short content
-          </p>
+        <p-flex-item [flex]="{ base: 'initial', l: 'equal' }">
+          <p>1 - short content</p>
         </p-flex-item>
-        <p-flex-item [flex]="{base: 'initial', l: 'equal'}">
-          <p>
-            2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space
-          </p>
+        <p-flex-item [flex]="{ base: 'initial', l: 'equal' }">
+          <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
         </p-flex-item>
-        <p-flex-item [flex]="{base: 'initial', l: 'equal'}">
-          <p>
-            3 - short content
-          </p>
+        <p-flex-item [flex]="{ base: 'initial', l: 'equal' }">
+          <p>3 - short content</p>
         </p-flex-item>
       </p-flex>
     </div>
-  `
+  `,
 })
-export class FlexComponent {
-}
+export class FlexComponent {}

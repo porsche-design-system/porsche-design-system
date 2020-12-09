@@ -9,7 +9,7 @@ export const LinkPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render primary with label">
         <Link variant="primary" href="https://www.porsche.com">

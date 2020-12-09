@@ -205,8 +205,8 @@ describe('banner', () => {
       const titleLink = await getTitleLink();
       const descriptionLink = await getDescriptionLink();
 
-      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
     });
   });
 });

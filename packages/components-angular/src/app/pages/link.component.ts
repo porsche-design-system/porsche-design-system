@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-link',
-  styles: [`
-    p-link:not(:last-child) {
-      margin-right: 8px;
-    }
-  `],
+  styles: [
+    `
+      p-link:not(:last-child) {
+        margin-right: 8px;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render primary with label">
       <p-link [variant]="'primary'" [href]="'https://www.porsche.com'">Some label</p-link>
@@ -22,10 +24,13 @@ import { Component } from '@angular/core';
       <p-link [variant]="'primary'" [hideLabel]="true"><a href="https://www.porsche.com">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render primary without label on dark theme">
-      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
-      <p-link [variant]="'primary'" [hideLabel]="true" [theme]="'dark'"><a href="https://www.porsche.com">Some label</a></p-link>
+      <p-link [variant]="'primary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'"
+        >Some label</p-link
+      >
+      <p-link [variant]="'primary'" [hideLabel]="true" [theme]="'dark'"
+        ><a href="https://www.porsche.com">Some label</a></p-link
+      >
     </div>
-
 
     <div class="playground light" title="should render secondary with label">
       <p-link [href]="'https://www.porsche.com'">Some label</p-link>
@@ -45,7 +50,6 @@ import { Component } from '@angular/core';
       <p-link [hideLabel]="true" [theme]="'dark'"><a href="https://www.porsche.com">Some label</a></p-link>
     </div>
 
-
     <div class="playground light" title="should render tertiary with label">
       <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'">Some label</p-link>
       <p-link [variant]="'tertiary'"><a href="https://www.porsche.com">Some label</a></p-link>
@@ -60,18 +64,21 @@ import { Component } from '@angular/core';
       <p-link [variant]="'tertiary'" [hideLabel]="true"><a href="https://www.porsche.com">Some label</a></p-link>
     </div>
     <div class="playground dark" title="should render tertiary without label on dark theme">
-      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link>
-      <p-link [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'"><a href="https://www.porsche.com">Some label</a>
+      <p-link [variant]="'tertiary'" [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'"
+        >Some label</p-link
+      >
+      <p-link [variant]="'tertiary'" [hideLabel]="true" [theme]="'dark'"
+        ><a href="https://www.porsche.com">Some label</a>
       </p-link>
     </div>
-
 
     <div class="playground light" title="should render secondary with responsive label">
-      <p-link [hideLabel]="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-              [href]="'https://www.porsche.com'">Some label
+      <p-link
+        [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        [href]="'https://www.porsche.com'"
+        >Some label
       </p-link>
     </div>
-
 
     <div class="playground light" title="should render secondary with specific icon">
       <p-link [icon]="'phone'" [href]="'https://www.porsche.com'">Some label</p-link>
@@ -79,12 +86,13 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-link style="width: 240px;" [href]="'https://www.porsche.com'">Lorem ipsum dolor sit amet, consetetur sadipscing
+      <p-link style="width: 240px;" [href]="'https://www.porsche.com'"
+        >Lorem ipsum dolor sit amet, consetetur sadipscing
       </p-link>
-      <p-link style="width: 240px;"><a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur
-        sadipscing</a></p-link>
+      <p-link style="width: 240px;"
+        ><a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a></p-link
+      >
     </div>
-  `
+  `,
 })
-export class LinkComponent {
-}
+export class LinkComponent {}

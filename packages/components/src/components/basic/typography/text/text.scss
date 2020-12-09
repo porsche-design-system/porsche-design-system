@@ -52,7 +52,7 @@
     line-height: inherit;
   }
 
-  @include p-media-query("xs") {
+  @include p-media-query('xs') {
     &--size-x-small-xs {
       @include p-generate-type-scale($p-font-size-x-small);
     }
@@ -74,7 +74,7 @@
     }
   }
 
-  @include p-media-query("s") {
+  @include p-media-query('s') {
     &--size-x-small-s {
       @include p-generate-type-scale($p-font-size-x-small);
     }
@@ -96,7 +96,7 @@
     }
   }
 
-  @include p-media-query("m") {
+  @include p-media-query('m') {
     &--size-x-small-m {
       @include p-generate-type-scale($p-font-size-x-small);
     }
@@ -118,7 +118,7 @@
     }
   }
 
-  @include p-media-query("l") {
+  @include p-media-query('l') {
     &--size-x-small-l {
       @include p-generate-type-scale($p-font-size-x-small);
     }
@@ -140,7 +140,7 @@
     }
   }
 
-  @include p-media-query("xl") {
+  @include p-media-query('xl') {
     &--size-x-small-xl {
       @include p-generate-type-scale($p-font-size-x-small);
     }

@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-icon',
-  styles: [`
-    .playground.overview p-icon {
-      color: deeppink;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='100%25' height='100%25' focusable='false'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%2300d5b9%7D%3C/style%3E%3C/defs%3E%3Cpath id='_safezone' d='M23 1v22H1V1h22m.1-.1H.9v22.2h22.2V.9z' class='cls-1' data-name='❌ safezone'/%3E%3Cpath id='basic_shape_square' d='M18 6v12H6V6h12m.1-.1H5.9v12.2h12.2V5.9z' class='cls-1' data-name='basic shape – square'/%3E%3Cpath id='basic_shape_complex' d='M21 3v18H3V3h18m.1-.1H2.9v18.2h18.2V2.9z' class='cls-1' data-name='basic shape – complex'/%3E%3Cpath id='basic_shape_wide' d='M20 7v10H4V7h16m.1-.1H3.9v10.2h16.2V6.9z' class='cls-1' data-name='basic shape – wide'/%3E%3Cpath id='basic_shape_high' d='M17 4v16H7V4h10m.1-.1H6.9v16.2h10.2V3.9z' class='cls-1' data-name='basic shape – high'/%3E%3Cpath id='basic_shape_wide_narrow' d='M22 8v8H2V8h20m.1-.1H1.9v8.2h20.2V7.9z' class='cls-1' data-name='basic shape – wide &amp; narrow'/%3E%3Cpath id='basic_shape_high_narrow' d='M17 2v20H7V2h10m.1-.1H6.9v20.2h10.2V1.9z' class='cls-1' data-name='basic shape – high &amp; narrow'/%3E%3C/svg%3E");
-      background-size: cover;
-      width: 48px;
-      height: 48px;
-    }
-  `],
+  styles: [
+    `
+      .playground.overview p-icon {
+        color: deeppink;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='100%25' height='100%25' focusable='false'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%2300d5b9%7D%3C/style%3E%3C/defs%3E%3Cpath id='_safezone' d='M23 1v22H1V1h22m.1-.1H.9v22.2h22.2V.9z' class='cls-1' data-name='❌ safezone'/%3E%3Cpath id='basic_shape_square' d='M18 6v12H6V6h12m.1-.1H5.9v12.2h12.2V5.9z' class='cls-1' data-name='basic shape – square'/%3E%3Cpath id='basic_shape_complex' d='M21 3v18H3V3h18m.1-.1H2.9v18.2h18.2V2.9z' class='cls-1' data-name='basic shape – complex'/%3E%3Cpath id='basic_shape_wide' d='M20 7v10H4V7h16m.1-.1H3.9v10.2h16.2V6.9z' class='cls-1' data-name='basic shape – wide'/%3E%3Cpath id='basic_shape_high' d='M17 4v16H7V4h10m.1-.1H6.9v16.2h10.2V3.9z' class='cls-1' data-name='basic shape – high'/%3E%3Cpath id='basic_shape_wide_narrow' d='M22 8v8H2V8h20m.1-.1H1.9v8.2h20.2V7.9z' class='cls-1' data-name='basic shape – wide &amp; narrow'/%3E%3Cpath id='basic_shape_high_narrow' d='M17 2v20H7V2h10m.1-.1H6.9v20.2h10.2V1.9z' class='cls-1' data-name='basic shape – high &amp; narrow'/%3E%3C/svg%3E");
+        background-size: cover;
+        width: 48px;
+        height: 48px;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render with default settings">
       <p-icon aria-label="Icon"></p-icon>
@@ -53,18 +55,55 @@ import { Component } from '@angular/core';
       <p-icon [source]="'assets/icon-custom-kaixin.svg'" aria-label="Icon for social media platform Kaixin"></p-icon>
     </div>
 
-    <div class="playground light overview"
-         title="should render all available icons and apply coloring programmatically">
+    <div
+      class="playground light overview"
+      title="should render all available icons and apply coloring programmatically"
+    >
       <p-icon [name]="'360'" [size]="'inherit'" [color]="'inherit'" aria-label="360 icon"></p-icon>
-      <p-icon [name]="'arrow-double-down'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow double down icon"></p-icon>
-      <p-icon [name]="'arrow-double-left'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow double left icon"></p-icon>
-      <p-icon [name]="'arrow-double-right'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow double right icon"></p-icon>
-      <p-icon [name]="'arrow-double-up'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow double up icon"></p-icon>
+      <p-icon
+        [name]="'arrow-double-down'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow double down icon"
+      ></p-icon>
+      <p-icon
+        [name]="'arrow-double-left'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow double left icon"
+      ></p-icon>
+      <p-icon
+        [name]="'arrow-double-right'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow double right icon"
+      ></p-icon>
+      <p-icon
+        [name]="'arrow-double-up'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow double up icon"
+      ></p-icon>
       <p-icon [name]="'arrow-down'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow down icon"></p-icon>
       <p-icon [name]="'arrow-first'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow first icon"></p-icon>
-      <p-icon [name]="'arrow-head-down'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow head down icon"></p-icon>
-      <p-icon [name]="'arrow-head-left'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow head left icon"></p-icon>
-      <p-icon [name]="'arrow-head-right'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow head right icon"></p-icon>
+      <p-icon
+        [name]="'arrow-head-down'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow head down icon"
+      ></p-icon>
+      <p-icon
+        [name]="'arrow-head-left'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow head left icon"
+      ></p-icon>
+      <p-icon
+        [name]="'arrow-head-right'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Arrow head right icon"
+      ></p-icon>
       <p-icon [name]="'arrow-head-up'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow head up icon"></p-icon>
       <p-icon [name]="'arrow-last'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow last icon"></p-icon>
       <p-icon [name]="'arrow-left'" [size]="'inherit'" [color]="'inherit'" aria-label="Arrow left icon"></p-icon>
@@ -94,8 +133,12 @@ import { Component } from '@angular/core';
       <p-icon [name]="'increase'" [size]="'inherit'" [color]="'inherit'" aria-label="Increase icon"></p-icon>
       <p-icon [name]="'list'" [size]="'inherit'" [color]="'inherit'" aria-label="List icon"></p-icon>
       <p-icon [name]="'logout'" [size]="'inherit'" [color]="'inherit'" aria-label="Logout icon"></p-icon>
-      <p-icon [name]="'menu-dots-horizontal'" [size]="'inherit'" [color]="'inherit'"
-              aria-label="Menu dots horizontal icon"></p-icon>
+      <p-icon
+        [name]="'menu-dots-horizontal'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Menu dots horizontal icon"
+      ></p-icon>
       <p-icon [name]="'menu-lines'" [size]="'inherit'" [color]="'inherit'" aria-label="Menu lines icon"></p-icon>
       <p-icon [name]="'minus'" [size]="'inherit'" [color]="'inherit'" aria-label="Minus icon"></p-icon>
       <p-icon [name]="'plus'" [size]="'inherit'" [color]="'inherit'" aria-label="Plus icon"></p-icon>
@@ -113,13 +156,28 @@ import { Component } from '@angular/core';
       <p-icon [name]="'zoom-in'" [size]="'inherit'" [color]="'inherit'" aria-label="Zoom in icon"></p-icon>
       <p-icon [name]="'zoom-out'" [size]="'inherit'" [color]="'inherit'" aria-label="Zoom out icon"></p-icon>
       <p-icon [name]="'battery-empty'" [size]="'inherit'" [color]="'inherit'" aria-label="Battery empty icon"></p-icon>
-      <p-icon [name]="'charging-station'" [size]="'inherit'" [color]="'inherit'" aria-label="Charging station icon"></p-icon>
+      <p-icon
+        [name]="'charging-station'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Charging station icon"
+      ></p-icon>
       <p-icon [name]="'flash'" [size]="'inherit'" [color]="'inherit'" aria-label="Flash icon"></p-icon>
       <p-icon [name]="'plug'" [size]="'inherit'" [color]="'inherit'" aria-label="Plug icon"></p-icon>
-      <p-icon [name]="'augmented-reality'" [size]="'inherit'" [color]="'inherit'" aria-label="Augmented reality icon"></p-icon>
+      <p-icon
+        [name]="'augmented-reality'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Augmented reality icon"
+      ></p-icon>
       <p-icon [name]="'broadcast'" [size]="'inherit'" [color]="'inherit'" aria-label="Broadcast icon"></p-icon>
       <p-icon [name]="'camera'" [size]="'inherit'" [color]="'inherit'" aria-label="Camera icon"></p-icon>
-      <p-icon [name]="'closed-caption'" [size]="'inherit'" [color]="'inherit'" aria-label="Closed caption icon"></p-icon>
+      <p-icon
+        [name]="'closed-caption'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Closed caption icon"
+      ></p-icon>
       <p-icon [name]="'document'" [size]="'inherit'" [color]="'inherit'" aria-label="Document icon"></p-icon>
       <p-icon [name]="'image'" [size]="'inherit'" [color]="'inherit'" aria-label="Image icon"></p-icon>
       <p-icon [name]="'mobile'" [size]="'inherit'" [color]="'inherit'" aria-label="Mobile icon"></p-icon>
@@ -164,17 +222,37 @@ import { Component } from '@angular/core';
       <p-icon [name]="'purchase'" [size]="'inherit'" [color]="'inherit'" aria-label="Purcahse icon"></p-icon>
       <p-icon [name]="'shopping-cart'" [size]="'inherit'" [color]="'inherit'" aria-label="Shopping cart icon"></p-icon>
       <p-icon [name]="'logo-baidu'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Baidu icon"></p-icon>
-      <p-icon [name]="'logo-delicious'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Delicious icon"></p-icon>
+      <p-icon
+        [name]="'logo-delicious'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Logo Delicious icon"
+      ></p-icon>
       <p-icon [name]="'logo-digg'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Digg icon"></p-icon>
       <p-icon [name]="'logo-facebook'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Facebook icon"></p-icon>
-      <p-icon [name]="'logo-foursquare'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Foursquare icon"></p-icon>
+      <p-icon
+        [name]="'logo-foursquare'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Logo Foursquare icon"
+      ></p-icon>
       <p-icon [name]="'logo-gmail'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Gmail icon"></p-icon>
       <p-icon [name]="'logo-google'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Google icon"></p-icon>
       <p-icon [name]="'logo-hatena'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo hatena icon"></p-icon>
-      <p-icon [name]="'logo-instagram'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Instagram icon"></p-icon>
+      <p-icon
+        [name]="'logo-instagram'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Logo Instagram icon"
+      ></p-icon>
       <p-icon [name]="'logo-kaixin'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Kaixin icon"></p-icon>
       <p-icon [name]="'logo-linkedin'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Linkedin icon"></p-icon>
-      <p-icon [name]="'logo-pinterest'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Pinterest icon"></p-icon>
+      <p-icon
+        [name]="'logo-pinterest'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Logo Pinterest icon"
+      ></p-icon>
       <p-icon [name]="'logo-qq-share'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo QQ Share icon"></p-icon>
       <p-icon [name]="'logo-qq'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo QQ icon"></p-icon>
       <p-icon [name]="'logo-skyrock'" [size]="'inherit'" [color]="'inherit'" aria-label="Logo Skyrock icon"></p-icon>
@@ -198,22 +276,51 @@ import { Component } from '@angular/core';
       <p-icon [name]="'user'" [size]="'inherit'" [color]="'inherit'" aria-label="user icon"></p-icon>
       <p-icon [name]="'car'" [size]="'inherit'" [color]="'inherit'" aria-label="car icon"></p-icon>
       <p-icon [name]="'co2-emission'" [size]="'inherit'" [color]="'inherit'" aria-label="CO2 emission icon"></p-icon>
-      <p-icon [name]="'cubic-capacity'" [size]="'inherit'" [color]="'inherit'" aria-label="Cubic Capacity icon"></p-icon>
+      <p-icon
+        [name]="'cubic-capacity'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Cubic Capacity icon"
+      ></p-icon>
       <p-icon [name]="'fuel-station'" [size]="'inherit'" [color]="'inherit'" aria-label="Fuel station icon"></p-icon>
       <p-icon [name]="'oil-can'" [size]="'inherit'" [color]="'inherit'" aria-label="Oil can icon"></p-icon>
-      <p-icon [name]="'steering-wheel'" [size]="'inherit'" [color]="'inherit'" aria-label="Steering wheel icon"></p-icon>
+      <p-icon
+        [name]="'steering-wheel'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="Steering wheel icon"
+      ></p-icon>
       <p-icon [name]="'tachometer'" [size]="'inherit'" [color]="'inherit'" aria-label="Tachometer icon"></p-icon>
       <p-icon [name]="'truck'" [size]="'inherit'" [color]="'inherit'" aria-label="Truck icon"></p-icon>
-      <p-icon [name]="'active-cabin-ventilation'" [size]="'inherit'" [color]="'inherit'"
-              aria-label="active-cabin-ventilation icon"></p-icon>
+      <p-icon
+        [name]="'active-cabin-ventilation'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="active-cabin-ventilation icon"
+      ></p-icon>
       <p-icon [name]="'battery-full'" [size]="'inherit'" [color]="'inherit'" aria-label="battery-full icon"></p-icon>
       <p-icon [name]="'bell'" [size]="'inherit'" [color]="'inherit'" aria-label="bell icon"></p-icon>
       <p-icon [name]="'bookmark'" [size]="'inherit'" [color]="'inherit'" aria-label="bookmark icon"></p-icon>
       <p-icon [name]="'car-battery'" [size]="'inherit'" [color]="'inherit'" aria-label="car-battery icon"></p-icon>
-      <p-icon [name]="'charging-active'" [size]="'inherit'" [color]="'inherit'" aria-label="charging-active icon"></p-icon>
-      <p-icon [name]="'charging-state'" [size]="'inherit'" [color]="'inherit'" aria-label="charging-state icon"></p-icon>
+      <p-icon
+        [name]="'charging-active'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="charging-active icon"
+      ></p-icon>
+      <p-icon
+        [name]="'charging-state'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="charging-state icon"
+      ></p-icon>
       <p-icon [name]="'climate'" [size]="'inherit'" [color]="'inherit'" aria-label="climate icon"></p-icon>
-      <p-icon [name]="'climate-control'" [size]="'inherit'" [color]="'inherit'" aria-label="climate-control icon"></p-icon>
+      <p-icon
+        [name]="'climate-control'"
+        [size]="'inherit'"
+        [color]="'inherit'"
+        aria-label="climate-control icon"
+      ></p-icon>
       <p-icon [name]="'garage'" [size]="'inherit'" [color]="'inherit'" aria-label="garage icon"></p-icon>
       <p-icon [name]="'horn'" [size]="'inherit'" [color]="'inherit'" aria-label="horn icon"></p-icon>
       <p-icon [name]="'key'" [size]="'inherit'" [color]="'inherit'" aria-label="key icon"></p-icon>
@@ -227,7 +334,6 @@ import { Component } from '@angular/core';
       <p-icon [name]="'user-manual'" [size]="'inherit'" [color]="'inherit'" aria-label="user-manual icon"></p-icon>
       <p-icon [name]="'wrenches'" [size]="'inherit'" [color]="'inherit'" aria-label="wrenches icon"></p-icon>
     </div>
-  `
+  `,
 })
-export class IconComponent {
-}
+export class IconComponent {}
