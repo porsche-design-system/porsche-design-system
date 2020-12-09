@@ -1,6 +1,20 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { BreakpointCustomizable, insertSlottedStyles, prefix } from '../../../../utils';
-import { HeadlineVariant, TextSize, TextAlign, TextColor, Theme } from '../../../../types';
+import { TextSize, TextAlign, TextColor, Theme } from '../../../../types';
+
+// We cannot include HeadlineVariant into generic. Those are ready to use variants with defined breakpoints.
+export type VariantType = HeadlineVariant | BreakpointCustomizable<TextSize>;
+
+const HEADLINE_VARIANTS = [
+  'large-title',
+  'headline-1',
+  'headline-2',
+  'headline-3',
+  'headline-4',
+  'headline-5',
+] as const;
+
+export type HeadlineVariant = typeof HEADLINE_VARIANTS[number];
 
 @Component({
   tag: 'p-headline',
@@ -11,10 +25,7 @@ export class Headline {
   @Element() public host!: HTMLElement;
 
   /** Predefined style of the headline. */
-  @Prop() public variant?: HeadlineVariant = 'headline-1';
-
-  /** Custom size of the headline. */
-  @Prop() public size?: BreakpointCustomizable<TextSize>;
+  @Prop() public variant?: VariantType = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -31,7 +42,7 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
@@ -40,7 +51,7 @@ export class Headline {
 
     const headlineClasses = {
       [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: !this.size,
+      [prefix(`headline--variant-${this.variant}`)]: this.isHeadlineVariant,
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
@@ -49,8 +60,8 @@ export class Headline {
 
     return (
       <TagName class={headlineClasses}>
-        {this.size ? (
-          <p-text size={this.size} weight="semibold" color="inherit" tag="span">
+        {!this.isHeadlineVariant ? (
+          <p-text size={this.variant} weight="semibold" color="inherit" tag="span">
             <slot />
           </p-text>
         ) : (
@@ -58,6 +69,10 @@ export class Headline {
         )}
       </TagName>
     );
+  }
+
+  private get isHeadlineVariant(): boolean {
+    return HEADLINE_VARIANTS.includes(this.variant as HeadlineVariant);
   }
 
   private get tagName(): string {
@@ -74,10 +89,10 @@ export class Headline {
       return 'div';
     } else if (this.tag) {
       return this.tag;
-    } else if (this.size) {
+    } else if (!this.isHeadlineVariant) {
       return 'h1';
     } else {
-      return variantToTagMap[this.variant];
+      return variantToTagMap[this.variant as HeadlineVariant];
     }
   }
 
