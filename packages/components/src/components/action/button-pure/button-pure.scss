@@ -6,7 +6,7 @@
   width: 100%;
   height: auto;
   margin-left: p-px-to-rem(4px);
-  padding: 0 .125em 0 0;
+  padding: 0 0.125em 0 0;
   white-space: normal;
   overflow: visible;
   clip: auto;
@@ -27,7 +27,6 @@
 }
 
 @mixin p-button-pure-size($prefix, $size) {
-
   @if $size == 'inherit' {
     font-size: inherit;
     line-height: inherit;
@@ -51,36 +50,31 @@
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-small {
+      } @else if $size == $p-font-size-small {
         @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-medium {
+      } @else if $size == $p-font-size-medium {
         @include p-generate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
-          margin-left:#{p-calculate-line-height($size)}em;
+          margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-large {
+      } @else if $size == $p-font-size-large {
         @include p-generate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-x-large {
+      } @else if $size == $p-font-size-x-large {
         @include p-generate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else {
+      } @else {
         @error "Unknown size #{$size}.";
       }
     }
@@ -113,10 +107,9 @@
   background: transparent;
   cursor: pointer;
   color: inherit;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier,
-  font-size 1ms linear; // used for transitionend event listener
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
-  :host([theme="dark"]) & {
+  :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
@@ -213,7 +206,7 @@
     @include p-button-pure-size($bem-block, 'inherit');
   }
 
-  @include p-media-query("xs") {
+  @include p-media-query('xs') {
     &--size-x-small-xs {
       @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -234,7 +227,7 @@
     }
   }
 
-  @include p-media-query("s") {
+  @include p-media-query('s') {
     &--size-x-small-s {
       @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -255,7 +248,7 @@
     }
   }
 
-  @include p-media-query("m") {
+  @include p-media-query('m') {
     &--size-x-small-m {
       @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -276,7 +269,7 @@
     }
   }
 
-  @include p-media-query("l") {
+  @include p-media-query('l') {
     &--size-x-small-l {
       @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -297,7 +290,7 @@
     }
   }
 
-  @include p-media-query("xl") {
+  @include p-media-query('xl') {
     &--size-x-small-xl {
       @include p-button-pure-size($bem-block, $p-font-size-x-small);
     }
@@ -335,7 +328,8 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
     margin-top: 4px;
 
-    &::before { // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
+    &::before {
+      // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
       content: '';
     }
   }
@@ -350,7 +344,7 @@
       @include p-button-pure-label-hidden;
     }
 
-    @include p-media-query("xs") {
+    @include p-media-query('xs') {
       &--visible-xs {
         @include p-button-pure-label-visible;
       }
@@ -360,7 +354,7 @@
       }
     }
 
-    @include p-media-query("s") {
+    @include p-media-query('s') {
       &--visible-s {
         @include p-button-pure-label-visible;
       }
@@ -370,7 +364,7 @@
       }
     }
 
-    @include p-media-query("m") {
+    @include p-media-query('m') {
       &--visible-m {
         @include p-button-pure-label-visible;
       }
@@ -380,7 +374,7 @@
       }
     }
 
-    @include p-media-query("l") {
+    @include p-media-query('l') {
       &--visible-l {
         @include p-button-pure-label-visible;
       }
@@ -390,7 +384,7 @@
       }
     }
 
-    @include p-media-query("xl") {
+    @include p-media-query('xl') {
       &--visible-xl {
         @include p-button-pure-label-visible;
       }

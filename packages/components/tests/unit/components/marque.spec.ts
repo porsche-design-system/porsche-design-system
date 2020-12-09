@@ -6,7 +6,7 @@ describe('Component <p-marque>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Marque],
-      html: `<p-marque></p-marque>`
+      html: `<p-marque></p-marque>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
     expect(page.root.querySelector('.p-marque')).toBeFalsy();

@@ -5,7 +5,7 @@ import { Theme } from '../../../types';
 @Component({
   tag: 'p-banner',
   styleUrl: 'banner.scss',
-  shadow: true
+  shadow: true,
 })
 export class Banner {
   @Element() public host!: HTMLElement;
@@ -53,7 +53,7 @@ export class Banner {
     const bannerClasses = {
       [prefix('banner')]: true,
       [prefix(`banner--${this.state}`)]: true,
-      [prefix(`banner--theme-${this.theme}`)]: true
+      [prefix(`banner--theme-${this.theme}`)]: true,
     };
 
     const contentClasses = prefix('banner__content');
@@ -70,7 +70,7 @@ export class Banner {
       'p-headline',
       'p-text',
       'p-icon',
-      'p-button-pure'
+      'p-button-pure',
     ]);
 
     return (

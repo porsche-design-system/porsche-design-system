@@ -5,5 +5,5 @@ export const breakpoints: any = {
   m: '(min-width: 1000px)',
   l: '(min-width: 1300px)',
   xl: '(min-width: 1760px)',
-  xxl: '(min-width: 1920px)'
+  xxl: '(min-width: 1920px)',
 };

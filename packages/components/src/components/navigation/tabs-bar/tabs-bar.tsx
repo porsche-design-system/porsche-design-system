@@ -27,7 +27,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({reflect: true}) public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -174,8 +174,8 @@ export class TabsBar {
     for (const [index, tab] of Object.entries(this.tabElements)) {
       const isActiveTab = this.activeTabIndex === +index;
       const attrs = {
-        role: 'tab',
-        tabindex: isActiveTab ? '0' : '-1',
+        'role': 'tab',
+        'tabindex': isActiveTab ? '0' : '-1',
         'aria-selected': isActiveTab ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
