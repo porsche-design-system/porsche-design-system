@@ -12,10 +12,12 @@
     "build:components": "yarn build:components:module && yarn build:components:cjs",
     "build:components:module": "tsc --build './projects/components-wrapper/tsconfig.esm.json'",
     "build:components:cjs": "tsc --build './projects/components-wrapper/tsconfig.cjs.json'",
-    "build:jsdom-polyfill": "rollup -c rollup.config.js && cp -r projects/jsdom-polyfill/src/lib dist/components-wrapper/jsdom-polyfill/lib",
+    "build:jsdom-polyfill": "yarn build:jsdom-polyfill:bundle && yarn build:jsdom-polyfill:clean",
+    "build:jsdom-polyfill:bundle": "rollup -c rollup.config.js && cp -r projects/jsdom-polyfill/src/lib/. dist/components-wrapper/jsdom-polyfill/lib",
+    "build:jsdom-polyfill:clean": "ts-node --project './tsconfig.node.json' 'scripts/clean-inject-global-styles.ts'",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "yarn test:jsdom-polyfill && yarn test:vrt && yarn test:cbt",
-    "test:jsdom-polyfill": "jest -c tests/jsdom-polyfill/config/jest.config.js --silent --forceExit --detectOpenHandles",
+    "test:jsdom-polyfill": "jest -c tests/jsdom-polyfill/config/jest.config.js",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
     "test:cbt": "concurrently -k -s 'first' -n 'server,cbt' 'BROWSER=none yarn start' 'wait-on -t 240000 http-get://localhost:3000 && ts-node --project tests/cbt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/cbt/config/jasmine.config.json'",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -23,7 +25,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.0.0-alpha.8",
+    "@porsche-design-system/components-react": "2.0.0-alpha.9",
     "@porsche-design-system/utilities": "3.0.0",
     "construct-style-sheets-polyfill": "^2.4.3",
     "intersection-observer": "^0.11.0",
