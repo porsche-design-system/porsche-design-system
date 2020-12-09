@@ -15,7 +15,7 @@ const initialState: State = {
   isLoading: false,
   lastTimeout: undefined,
   isMenuActive: false,
-  selectedFramework: 'vanilla-js'
+  selectedFramework: 'vanilla-js',
 };
 
 export default new Vuex.Store({
@@ -35,7 +35,7 @@ export default new Vuex.Store({
     },
     setSelectedFramework(state: State, payload: Framework): void {
       state.selectedFramework = payload;
-    }
+    },
   },
   actions: {
     toggleLoadingAsync({ commit, state }, payload): void {
@@ -46,7 +46,7 @@ export default new Vuex.Store({
       }, delay);
       clearTimeout(state.lastTimeout);
       commit('setLastTimeout', timeout);
-    }
+    },
   },
   getters: {
     isLoading(state: State): boolean {
@@ -57,6 +57,6 @@ export default new Vuex.Store({
     },
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
-    }
-  }
+    },
+  },
 });

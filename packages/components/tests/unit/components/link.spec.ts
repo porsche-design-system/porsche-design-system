@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Link } from '../../../src/components/navigation/link/link';
 
 describe('Component <p-link>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Link],
@@ -45,4 +44,3 @@ describe('Component <p-link>', () => {
     expect(page.root.shadowRoot.querySelector('span.p-link')).toBeTruthy();
   });
 });
-

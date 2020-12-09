@@ -28,9 +28,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show headline with different color variants on dark background">
-      <p-headline [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog
+      <p-headline [theme]="'dark'" [color]="'default'" style="color: deeppink;"
+        >The quick brown fox jumps over the lazy dog
       </p-headline>
-      <p-headline [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog
+      <p-headline [theme]="'dark'" [color]="'inherit'" style="color: deeppink;"
+        >The quick brown fox jumps over the lazy dog
       </p-headline>
     </div>
 
@@ -43,9 +45,8 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should cut off too long text">
       <p-headline [ellipsis]="true">
         Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-        invidunt
-        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum.
+        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+        et ea rebum.
       </p-headline>
     </div>
 
@@ -54,7 +55,6 @@ import { Component } from '@angular/core';
         <span>Lorem ipsum dolor sit amet <a href="#">linked text</a> et.</span>
       </p-headline>
     </div>
-  `
+  `,
 })
-export class HeadlineComponent {
-}
+export class HeadlineComponent {}

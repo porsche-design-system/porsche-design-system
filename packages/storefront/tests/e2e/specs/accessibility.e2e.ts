@@ -15,7 +15,7 @@ describe('Accessibility', () => {
 
   describe('focus', () => {
     it(`should style marque link on focus`, async () => {
-      await page.goto(`${options.baseURL}`, {waitUntil: 'networkidle0'});
+      await page.goto(`${options.baseURL}`, { waitUntil: 'networkidle0' });
 
       const linkElement = await page.$(`header.header a`);
 
@@ -23,7 +23,7 @@ describe('Accessibility', () => {
     });
 
     it(`should style markdown links on focus`, async () => {
-      await page.goto(`${options.baseURL}/#/markdown`, {waitUntil: 'networkidle0'});
+      await page.goto(`${options.baseURL}/#/markdown`, { waitUntil: 'networkidle0' });
 
       const linkElement = await page.$(`.vmark a`);
 

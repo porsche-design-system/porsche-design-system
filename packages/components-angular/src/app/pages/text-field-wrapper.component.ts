@@ -208,6 +208,6 @@ import { Component } from '@angular/core';
         <input type="text" name="some-name" value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
       </p-text-field-wrapper>
     </div>
-  `
+  `,
 })
 export class TextFieldWrapperComponent {}

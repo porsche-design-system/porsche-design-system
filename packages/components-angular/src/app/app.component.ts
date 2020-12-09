@@ -14,7 +14,7 @@ import { routes } from './app-routing.module';
     <div id="app">
       <router-outlet></router-outlet>
     </div>
-  `
+  `,
 })
 export class AppComponent {
   public routes = routes.filter((x) => !!x.name);

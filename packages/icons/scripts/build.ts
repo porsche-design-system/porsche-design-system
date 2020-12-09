@@ -11,11 +11,7 @@ type Manifest = {
   [name: string]: string;
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });

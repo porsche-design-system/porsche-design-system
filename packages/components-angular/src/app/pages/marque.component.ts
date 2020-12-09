@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
     <div class="playground" title="should show marque without trademark sign">
       <p-marque [trademark]="false"></p-marque>
     </div>
-  `
+  `,
 })
-export class MarqueComponent {
-}
+export class MarqueComponent {}
