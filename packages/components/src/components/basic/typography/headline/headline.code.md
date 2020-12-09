@@ -6,7 +6,11 @@
 
 ## Variant
 Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
-There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
+There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>`, `headline-3` is compiled to `<h3>`).
+
+If you choose a non headline variant like <span v-html="textSizes"></span>, it defaults to `h1`.
+
+If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 ### Default Tags
 Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
@@ -24,25 +28,6 @@ Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `la
 
 
 <Playground :markup="variant" :config="config"></Playground>
-
----
-
-## Size
-If one of the predefined **variants** doesn't match your layout you could also pass a custom `size` property to have more control of your headline sizes in conjunction with responsive layouts.
-
-**Hint:** You always have to keep an eye on the semantic of your HTML tags. Per default an `h1`-tag is rendered. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property. 
-
-<Playground :markup="sizeMarkup" :config="config">
-  <select @change="size = $event.target.value">
-    <option disabled>Select a size</option>
-    <option>x-small</option>
-    <option>small</option>
-    <option selected>medium</option>
-    <option>large</option>
-    <option>x-large</option>
-    <option>inherit</option>
-  </select>
-</Playground>
 
 ### Responsive
 
@@ -93,32 +78,24 @@ This will force any text to never wrap into a new line and in case it's too long
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import {HEADLINE_VARIANTS} from './headlineUtils';
+  import {TEXT_SIZES} from  '../text/textUtils';
   
   const sentence = 'The quick brown fox jumps over the lazy dog';
   
   @Component
   export default class Code extends Vue {
     config = { themeable: true };
-    
-    size = 'medium';
+
     color = 'default';
     align = 'center';
     
-    variant =
-`<p-headline variant="large-title">${sentence}</p-headline>
-<p-headline variant="headline-1">${sentence}</p-headline>
-<p-headline variant="headline-2">${sentence}</p-headline>
-<p-headline variant="headline-3">${sentence}</p-headline>
-<p-headline variant="headline-4">${sentence}</p-headline>
-<p-headline variant="headline-5">${sentence}</p-headline>`;
+    textSizes = TEXT_SIZES.map((item) => `<code>${item}</code>`).join(', ');
 
-get sizeMarkup() {
-      const style = this.size === 'inherit' ? ' style="font-size: 48px;"' : '';
-      return `<p-headline size="${this.size}"${style}>${sentence}</p-headline>`;
-    }
+    variant = HEADLINE_VARIANTS.concat(TEXT_SIZES.reverse()).map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
     responsive =
-`<p-headline size="{ base: 'small', l: 'medium' }">${sentence}</p-headline>`;
+`<p-headline variant="{ base: 'small', l: 'medium' }">${sentence}</p-headline>`;
 
     customTagHierarchy =
 `<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
