@@ -313,7 +313,7 @@
     border: 1px solid;
     left: 0;
     right: 0;
-    max-height: 320px;
+    max-height: p-px-to-rem(320px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -342,11 +342,10 @@
       &-down {
         top: calc(100% - 1px);
         border-top: none;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
-        0 12px 25px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 12px 25px 0 rgba(0, 0, 0, 0.1);
 
         &::before {
-          content: "";
+          content: '';
           display: block;
           position: sticky;
           top: 0;
@@ -366,11 +365,10 @@
       &-up {
         bottom: p-px-to-rem(47px);
         border-bottom: none;
-        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05),
-        0 -12px 25px 0 rgba(0, 0, 0, 0.075);
+        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05), 0 -12px 25px 0 rgba(0, 0, 0, 0.075);
 
         &::after {
-          content: "";
+          content: '';
           display: block;
           position: sticky;
           bottom: 0;
@@ -408,7 +406,7 @@
 
   &__fake-option {
     display: flex;
-    padding: $p-spacing-4 p-px-to-rem(12px);
+    padding: $p-spacing-4 p-px-to-rem(11px);
     min-height: $p-spacing-24;
     cursor: pointer;
     text-align: left;
@@ -416,7 +414,7 @@
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
 
-    &[role="status"] {
+    &[role='status'] {
       cursor: not-allowed;
     }
 
@@ -432,7 +430,7 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not([aria-disabled]):not([role="status"]):hover {
+    &:not([aria-disabled]):not([role='status']):hover {
       #{$bem-block}--theme-light & {
         color: $p-color-state-hover;
         background-color: $p-color-background-surface;
@@ -575,7 +573,7 @@
     display: block;
     width: calc(100% - #{p-px-to-rem(44px)});
     height: p-px-to-rem(44px);
-    padding: p-px-to-rem(10px) p-px-to-rem(47px) p-px-to-rem(10px) p-px-to-rem(11px);
+    padding: p-px-to-rem(10px);
     outline: transparent none;
     appearance: none;
     box-sizing: border-box;
@@ -674,8 +672,16 @@
         box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
       }
 
+      #{$bem-block}--theme-light:hover & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      }
+
       #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
+      }
+
+      #{$bem-block}--theme-dark:hover & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
       }
     }
 
