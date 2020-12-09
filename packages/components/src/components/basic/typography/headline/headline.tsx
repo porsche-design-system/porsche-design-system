@@ -1,11 +1,11 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { prefix, insertSlottedStyles } from '../../../../utils';
-import { HeadlineVariant, Theme } from '../../../../types';
+import { HeadlineVariant, TextAlign, TextColor, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-headline',
   styleUrl: 'headline.scss',
-  shadow: true
+  shadow: true,
 })
 export class Headline {
   @Element() public host!: HTMLElement;
@@ -17,10 +17,10 @@ export class Headline {
   @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = undefined;
 
   /** Text alignment of the component. */
-  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+  @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: 'default' | 'inherit' = 'default';
+  @Prop() public color?: Extract<TextColor, 'default' | 'inherit'> = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
@@ -39,7 +39,7 @@ export class Headline {
       'headline-2': 'h2',
       'headline-3': 'h3',
       'headline-4': 'h4',
-      'headline-5': 'h5'
+      'headline-5': 'h5',
     };
 
     const TagType = this.hasSlottedHeadlineTag ? 'div' : this.tag || variantToTagMap[this.variant];
@@ -50,7 +50,7 @@ export class Headline {
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit'
+      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
     };
 
     return (

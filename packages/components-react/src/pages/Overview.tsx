@@ -27,7 +27,7 @@ import {
   PPagination as Pagination,
   PLink as Link,
   PLinkPure as LinkPure,
-  PLinkSocial as LinkSocial
+  PLinkSocial as LinkSocial,
 } from '@porsche-design-system/components-react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
@@ -60,7 +60,7 @@ const {
   PPagination: PrefixedPagination,
   PLink: PrefixedLink,
   PLinkPure: PrefixedLinkPure,
-  PLinkSocial: PrefixedLinkSocial
+  PLinkSocial: PrefixedLinkSocial,
 } = getPrefixedComponents({ prefix: 'my-prefix' });
 
 export const OverviewPage = (): JSX.Element => {

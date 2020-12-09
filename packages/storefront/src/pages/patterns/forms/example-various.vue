@@ -158,12 +158,12 @@
     check: {
       check1: false,
       check2: false,
-      check3: false
+      check3: false,
     },
     radio: '',
     day: ('' as unknown) as number,
     month: ('' as unknown) as number,
-    year: 1998
+    year: 1998,
   };
 
   type FormModel = typeof initialData;
@@ -180,7 +180,7 @@
         check: object<FormModel['check']>({
           check1: boolean(),
           check2: boolean(),
-          check3: boolean()
+          check3: boolean(),
         })
           .required()
           .test('customTest', 'Please select at least one option', (obj) =>
@@ -197,8 +197,8 @@
           .min(1, 'Please enter valid month 01-12')
           .max(12, 'Please enter valid month 01-12')
           .typeError('Please enter a month'),
-        year: number()
-      })
+        year: number(),
+      }),
     };
 
     created(): void {

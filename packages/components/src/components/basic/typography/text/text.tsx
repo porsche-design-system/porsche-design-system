@@ -5,29 +5,21 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles
+  insertSlottedStyles,
 } from '../../../../utils';
-import { TextSize, TextWeight, Theme } from '../../../../types';
+import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text',
   styleUrl: 'text.scss',
-  shadow: true
+  shadow: true,
 })
 export class Text {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
-  @Prop() public tag?:
-  | 'p'
-  | 'span'
-  | 'div'
-  | 'address'
-  | 'blockquote'
-  | 'figcaption'
-  | 'cite'
-  | 'time'
-  | 'legend' = 'p';
+  @Prop() public tag?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend' =
+    'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -36,10 +28,10 @@ export class Text {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** Text alignment of the component. */
-  @Prop() public align?: 'left' | 'center' | 'right' = 'left';
+  @Prop() public align?: TextAlign = 'left';
 
   /** Basic text color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop() public color?: TextColor = 'default';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
@@ -67,7 +59,7 @@ export class Text {
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
       [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
-      ...mapBreakpointPropToPrefixedClasses('text--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
     };
 
     return (

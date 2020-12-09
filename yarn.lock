@@ -2380,6 +2380,11 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-1.0.0-rc.1.tgz#6925af37183ecf91335f49d008bb6ade35e1343b"
   integrity sha1-aSWvNxg+z5EzX0nQCLtq3jXhNDs=
 
+"@porsche-design-system/prettier-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
+  integrity sha1-OrEoxC2YywSf/AsUE2L2lj4Kk9c=
+
 "@porsche-design-system/visual-regression-tester@^3.0.0":
   version "3.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-3.0.0.tgz#d6fcc4ac8add2063c192f93a8f6cde3affe972fe"
@@ -2402,26 +2407,26 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.4.tgz#ea95f7796b78f211e380c092c05efab4751d6028"
-  integrity sha1-6pX3eWt48hHjgMCSwF76tHUdYCg=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.7.tgz#c59ae2b39ac55d68d19955c07eddaf9cc21d4789"
+  integrity sha1-xZris5rFXWjRmVXAft2vnMIdR4k=
   dependencies:
-    "@porsche-design-system/web-components-manager" "1.0.0-alpha.3"
+    "@porsche-design-system/web-components-manager" "1.0.0-alpha.4"
     glob "^7.1.6"
     webpack "^5.3.2"
 
-"@porsche-design-system/web-components-manager-polyfills@1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-1.0.0-alpha.1.tgz#fee7b72f8013f305f0de78011259389f1e37f204"
-  integrity sha1-/ue3L4AT8wXw3ngBElk4nx438gQ=
+"@porsche-design-system/web-components-manager-polyfills@1.0.0-alpha.2":
+  version "1.0.0-alpha.2"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-1.0.0-alpha.2.tgz#6a6aecb64d63c398ef17049c45a0449075d597ad"
+  integrity sha1-amrstk1jw5jvFwScRaBEkHXVl60=
 
-"@porsche-design-system/web-components-manager@1.0.0-alpha.3":
-  version "1.0.0-alpha.3"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.3.tgz#81d2534cb61ef227d2954e5214db3eb18c432a88"
-  integrity sha1-gdJTTLYe8ifSlU5SFNs+sYxDKog=
+"@porsche-design-system/web-components-manager@1.0.0-alpha.4":
+  version "1.0.0-alpha.4"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.4.tgz#521217b298b9abf572099145a85e6d0512742cdd"
+  integrity sha1-UhIXspi5q/VyCZFFqF5tBRJ0LN0=
   dependencies:
-    "@porsche-design-system/web-components-manager-polyfills" "1.0.0-alpha.1"
+    "@porsche-design-system/web-components-manager-polyfills" "1.0.0-alpha.2"
 
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
@@ -2476,7 +2481,7 @@
     is-module "^1.0.0"
     resolve "^1.14.2"
 
-"@rollup/plugin-replace@^2.3.1", "@rollup/plugin-replace@^2.3.4":
+"@rollup/plugin-replace@^2.3.1":
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-2.3.4.tgz#7dd84c17755d62b509577f2db37eb524d7ca88ca"
   integrity sha512-waBhMzyAtjCL1GwZes2jaE9MjuQ/DQF2BatH3fRivUF3z0JBFrU0U6iBNC/4WR+2rLKhaAhPWDNPYp4mI6RqdQ==
@@ -13676,6 +13681,11 @@ prettier@^1.18.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
+prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
 pretty-bytes@^5.1.0, pretty-bytes@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.4.1.tgz#cd89f79bbcef21e3d21eb0da68ffe93f803e884b"
@@ -14765,10 +14775,10 @@ rollup-pluginutils@^2.6.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@2.32.1, rollup@^2.32.1, rollup@^2.33.1, rollup@^2.8.0:
-  version "2.33.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.33.3.tgz#ae72ce31f992b09a580072951bfea76e9df17342"
-  integrity sha512-RpayhPTe4Gu/uFGCmk7Gp5Z9Qic2VsqZ040G+KZZvsZYdcuWaJg678JeDJJvJeEQXminu24a2au+y92CUWVd+w==
+rollup@2.32.1, rollup@^2.32.1, rollup@^2.8.0:
+  version "2.34.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.34.0.tgz#ecc7f1d4ce2cb88bb51bec2f56b984f3c35b8271"
+  integrity sha512-dW5iLvttZzdVehjEuNJ1bWvuMEJjOWGmnuFS82WeKHTGXDkRHQeq/ExdifkSyJv9dLcR86ysKRmrIDyR6O0X8g==
   optionalDependencies:
     fsevents "~2.1.2"
 
@@ -14780,6 +14790,13 @@ rollup@^1.31.1:
     "@types/estree" "*"
     "@types/node" "*"
     acorn "^7.1.0"
+
+rollup@^2.33.1:
+  version "2.33.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.33.3.tgz#ae72ce31f992b09a580072951bfea76e9df17342"
+  integrity sha512-RpayhPTe4Gu/uFGCmk7Gp5Z9Qic2VsqZ040G+KZZvsZYdcuWaJg678JeDJJvJeEQXminu24a2au+y92CUWVd+w==
+  optionalDependencies:
+    fsevents "~2.1.2"
 
 rsvp@^4.8.4:
   version "4.8.5"

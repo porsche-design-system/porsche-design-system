@@ -62,6 +62,11 @@ Run the application by executing `yarn start` or `npm start` and see if the Pors
 You are now ready to build your own Angular application using the Porsche Design System.
 
 ## Advanced usage
+
+### When are Porsche Design System Components initialized?
+See [componentsReady()](#/helpers/components-ready) for further information.
+
+### Prefixing
 By default, the `PorscheDesignSystemModule` takes care of registering the Web Components via the Porsche Design
 System Loader automatically.  
 But in some cases for example, if you want to include the Porsche Design System in Web Components that

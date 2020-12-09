@@ -9,13 +9,12 @@ export RUN_UID="$(id -u)"
 export RUN_GID="$(id -g)"
 export COMPOSE_PROJECT_NAME="porsche-design-system-v1"
 
-SERVICE=design-system
 if [[ "run-deploy-storefront" == "${1}" || "run-release-sketch" == "${1}" ]]; then
   SERVICE=design-system-deploy
-fi
-
-if [[ "run-deploy-assets" == "${1}" ]]; then
+elif [[ "run-deploy-assets" == "${1}" ]]; then
   SERVICE=design-system-deploy-assets
+else
+  SERVICE=design-system
 fi
 
 docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim

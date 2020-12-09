@@ -200,6 +200,6 @@ import { Component } from '@angular/core';
         <a href="#">Tab 10</a>
       </p-tabs-bar>
     </div>
-  `
+  `,
 })
 export class TabsBarComponent {}

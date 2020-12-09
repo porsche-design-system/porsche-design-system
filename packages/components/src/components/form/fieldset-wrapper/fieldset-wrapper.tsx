@@ -4,7 +4,7 @@ import { prefix } from '../../../utils';
 @Component({
   tag: 'p-fieldset-wrapper',
   styleUrl: 'fieldset-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class FieldsetWrapper {
   /** The label text. */

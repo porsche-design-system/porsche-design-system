@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import {
-  componentsReady, PModal
-} from '@porsche-design-system/components-react';
+import { componentsReady, PModal } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -11,11 +9,17 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PModal open={true} data-testid="host" onClose={() => {
-        setEventCounter(eventCounter + 1);
-        setStatus('hidden');
-      }} />
-      <div data-testid="debug">{`Status: ${status};`} {`Event Counter: ${eventCounter};`}</div>
+      <PModal
+        open={true}
+        data-testid="host"
+        onClose={() => {
+          setEventCounter(eventCounter + 1);
+          setStatus('hidden');
+        }}
+      />
+      <div data-testid="debug">
+        {`Status: ${status};`} {`Event Counter: ${eventCounter};`}
+      </div>
     </>
   );
 };
@@ -23,15 +27,14 @@ const Sample = (): JSX.Element => {
 describe('PModal', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
   });
 
+  // disabled since clicking something in shadowRoot doesn't seem to work
   xit('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');

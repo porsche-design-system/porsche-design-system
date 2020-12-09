@@ -26,8 +26,8 @@
 
     frameworks: { [key in Framework]: string } = {
       'vanilla-js': 'Vanilla JS',
-      angular: 'Angular',
-      react: 'React'
+      'angular': 'Angular',
+      'react': 'React',
     };
 
     public get activeTabIndex(): number {

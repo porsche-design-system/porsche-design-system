@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-button',
-  styles: [`
-    p-button:not(:last-child) {
-      margin-right: 8px;
-    }
-  `],
+  styles: [
+    `
+      p-button:not(:last-child) {
+        margin-right: 8px;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render button primary with label">
       <p-button [variant]="'primary'">Some label</p-button>
@@ -75,7 +77,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render button secondary with responsive label">
-      <p-button [hideLabel]="{base: true, xs: false, s: true, m: false, l: true, xl: false}">Some label</p-button>
+      <p-button [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button secondary with specific icon">
@@ -86,7 +88,6 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should render button with multiline label">
       <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
-  `
+  `,
 })
-export class ButtonComponent {
-}
+export class ButtonComponent {}
