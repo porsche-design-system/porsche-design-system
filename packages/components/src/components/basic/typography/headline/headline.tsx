@@ -36,7 +36,7 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const TagType = this.getTagType;
+    const TagName = this.tagName;
 
     const headlineClasses = {
       [prefix('headline')]: true,
@@ -48,7 +48,7 @@ export class Headline {
     };
 
     return (
-      <TagType class={headlineClasses}>
+      <TagName class={headlineClasses}>
         {this.size ? (
           <p-text size={this.size} weight="semibold" color="inherit" tag="span">
             <slot />
@@ -56,11 +56,11 @@ export class Headline {
         ) : (
           <slot />
         )}
-      </TagType>
+      </TagName>
     );
   }
 
-  private get getTagType(): string {
+  private get tagName(): string {
     const variantToTagMap: { [key in HeadlineVariant]: string } = {
       'large-title': 'h1',
       'headline-1': 'h1',
@@ -72,10 +72,12 @@ export class Headline {
 
     if (this.hasSlottedHeadlineTag) {
       return 'div';
+    } else if (this.tag) {
+      return this.tag;
     } else if (this.size) {
-      return this.tag ? this.tag : 'h1';
+      return 'h1';
     } else {
-      return this.tag ? this.tag : variantToTagMap[this.variant];
+      return variantToTagMap[this.variant];
     }
   }
 
