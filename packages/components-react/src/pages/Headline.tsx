@@ -80,11 +80,11 @@ export const HeadlinePage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show headline with custom size">
-        <Headline size="large"> Lorem ipsum dolor sit amet et.</Headline>
+        <Headline variant="large"> Lorem ipsum dolor sit amet et.</Headline>
       </div>
 
       <div className="playground" title="should show headline with custom size and different color">
-        <Headline size="large" color="inherit" style={{ color: 'deeppink' }}>
+        <Headline variant="large" color="inherit" style={{ color: 'deeppink' }}>
           Lorem ipsum dolor sit amet et.
         </Headline>
       </div>

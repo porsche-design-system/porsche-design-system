@@ -44,6 +44,10 @@ import { Component } from '@angular/core';
           <p-headline>Default Components</p-headline>
         </div>
 
+        <div class="playground light" title="should render headline for variant large">
+          <p-headline variant="large">Default Components</p-headline>
+        </div>
+
         <div class="playground light" title="should render default banner">
           <p-banner>
             <span slot="title">Some banner title</span>
@@ -179,6 +183,10 @@ import { Component } from '@angular/core';
       <div style="flex: 1;">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline>Prefixed Components</my-prefix-p-headline>
+        </div>
+
+        <div class="playground light" title="should render headline for variant large and custom prefix">
+          <my-prefix-p-headline variant="large">Prefixed Components</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default banner with custom prefix">

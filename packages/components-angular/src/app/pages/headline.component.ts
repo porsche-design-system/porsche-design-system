@@ -57,11 +57,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should show headline with custom size">
-      <p-headline size="large"> Lorem ipsum dolor sit amet et.</p-headline>
+      <p-headline variant="large"> Lorem ipsum dolor sit amet et.</p-headline>
     </div>
 
     <div class="playground" title="should show headline with custom size and different color">
-      <p-headline size="large" color="inherit" style="color: deeppink"> Lorem ipsum dolor sit amet et.</p-headline>
+      <p-headline variant="large" color="inherit" style="color: deeppink"> Lorem ipsum dolor sit amet et.</p-headline>
     </div>
   `,
 })
