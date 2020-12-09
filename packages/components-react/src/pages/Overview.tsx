@@ -108,6 +108,10 @@ export const OverviewPage = (): JSX.Element => {
             <Headline>Default Components</Headline>
           </div>
 
+          <div className="playground light" title="should render headline for variant large">
+            <Headline variant="large">Default Components</Headline>
+          </div>
+
           <div className="playground light" title="should render default banner">
             <Banner>
               <span slot="title">Some banner title</span>
@@ -253,6 +257,10 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
+          </div>
+
+          <div className="playground light" title="should render headline for variant large and custom prefix">
+            <PrefixedHeadline variant="large">Prefixed Components</PrefixedHeadline>
           </div>
 
           <div className="playground light" title="should render default banner with custom prefix">
