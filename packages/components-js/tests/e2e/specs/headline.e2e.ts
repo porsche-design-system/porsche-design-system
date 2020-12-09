@@ -1,9 +1,9 @@
-import { getBrowser, selectNode, setContentWithDesignSystem } from '../helpers';
+import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, TextSize } from '@porsche-design-system/components/src/types';
 import { BreakpointCustomizable } from '@porsche-design-system/components/src/utils';
 
-fdescribe('headline', () => {
+describe('headline', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -17,15 +17,15 @@ fdescribe('headline', () => {
   }): Promise<void> => {
     const { variant, size, slot, tag } = opts;
 
-    const content = (variant && `variant="${variant}"`) + (size && ` size="${size}"`) + (tag && `tag="${tag}"`);
+    const content =
+      (variant ? `variant="${variant}" ` : '') + (size ? ` size="${size}" ` : '') + (tag ? `tag="${tag}" ` : '');
 
     return setContentWithDesignSystem(
       page,
       `
         <p-headline ${content}>
           ${slot ? slot : 'Some Headline'}
-        </p-headline>`,
-      { enableLogging: true }
+        </p-headline>`
     );
   };
 
@@ -38,7 +38,7 @@ fdescribe('headline', () => {
       expect(await getHeadlineTagName()).toBe('H2');
     });
 
-    fit('should render according to tag h6 when variant is set', async () => {
+    it('should render according to tag h6 when variant is set', async () => {
       await initHeadline({ variant: 'large-title', tag: 'h6' });
       expect(await getHeadlineTagName()).toBe('H6');
     });
