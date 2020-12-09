@@ -1,20 +1,10 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { BreakpointCustomizable, insertSlottedStyles, prefix } from '../../../../utils';
-import { TextSize, TextAlign, TextColor, Theme } from '../../../../types';
+import { BreakpointCustomizable, getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
+import { TextAlign, TextColor, Theme, TextSize } from '../../../../types';
+import { HEADLINE_VARIANTS, HeadlineVariant } from './headlineUtils';
 
 // We cannot include HeadlineVariant into generic. Those are ready to use variants with defined breakpoints.
 export type VariantType = HeadlineVariant | BreakpointCustomizable<TextSize>;
-
-const HEADLINE_VARIANTS = [
-  'large-title',
-  'headline-1',
-  'headline-2',
-  'headline-3',
-  'headline-4',
-  'headline-5',
-] as const;
-
-export type HeadlineVariant = typeof HEADLINE_VARIANTS[number];
 
 @Component({
   tag: 'p-headline',
@@ -58,12 +48,14 @@ export class Headline {
       [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
     };
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+
     return (
       <TagName class={headlineClasses}>
         {!this.isHeadlineVariant ? (
-          <p-text size={this.variant} weight="semibold" color="inherit" tag="span">
+          <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
             <slot />
-          </p-text>
+          </PrefixedTagNames.pText>
         ) : (
           <slot />
         )}

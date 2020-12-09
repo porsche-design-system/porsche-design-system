@@ -7,7 +7,7 @@ import {
   transitionListener,
   insertSlottedStyles,
 } from '../../../../utils';
-import { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
+import { TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
 
 @Component({
   tag: 'p-text',

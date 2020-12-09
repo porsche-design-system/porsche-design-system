@@ -5,8 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, ButtonVariant, FormState, HeadlineVariant, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
+import { VariantType } from "./components/basic/typography/headline/headline";
 export namespace Components {
     interface PBanner {
         /**
@@ -242,10 +243,6 @@ export namespace Components {
          */
         "ellipsis"?: boolean;
         /**
-          * Custom size of the headline.
-         */
-        "size"?: BreakpointCustomizable<TextSize>;
-        /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
         "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -256,7 +253,7 @@ export namespace Components {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadlineVariant;
+        "variant"?: VariantType;
     }
     interface PIcon {
         /**
@@ -1145,10 +1142,6 @@ declare namespace LocalJSX {
          */
         "ellipsis"?: boolean;
         /**
-          * Custom size of the headline.
-         */
-        "size"?: BreakpointCustomizable<TextSize>;
-        /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
         "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -1159,7 +1152,7 @@ declare namespace LocalJSX {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: HeadlineVariant;
+        "variant"?: VariantType;
     }
     interface PIcon {
         /**
