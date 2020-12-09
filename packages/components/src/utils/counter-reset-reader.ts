@@ -15,18 +15,18 @@ export const readCounterResetValue = (element: Element): CounterResetValue => {
       !accumulator.buffer
         ? {
             ...accumulator,
-            buffer: value
+            buffer: value,
           }
         : {
             buffer: null,
             result: {
               ...accumulator.result,
-              [accumulator.buffer]: parseInt(value, 10)
-            }
+              [accumulator.buffer]: parseInt(value, 10),
+            },
           },
     {
       buffer: null,
-      result: {}
+      result: {},
     }
   );
 

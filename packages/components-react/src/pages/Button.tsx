@@ -8,7 +8,7 @@ export const ButtonPage = (): JSX.Element => {
   `;
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render button primary with label">
         <Button variant="primary">Some label</Button>

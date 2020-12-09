@@ -4,7 +4,6 @@ import { isUrl } from '../../../src/components/icon/icon/icon-helper';
 import { isValid } from '../../../src/components/icon/icon/icon-validation';
 
 describe('Component <p-icon>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Icon],
@@ -33,8 +32,8 @@ describe('isValid', () => {
     const el = {
       nodeType: 1,
       nodeName: 'svg',
-      attributes: [{value: 'onload'}],
-      childNodes: []
+      attributes: [{ value: 'onload' }],
+      childNodes: [],
     } as any;
     expect(isValid(el)).toBe(false);
   });
@@ -43,42 +42,44 @@ describe('isValid', () => {
     const el = {
       nodeType: 1,
       nodeName: 'svg',
-      attributes: [{value: 'OnClIcK'}],
-      childNodes: []
+      attributes: [{ value: 'OnClIcK' }],
+      childNodes: [],
     } as any;
     expect(isValid(el)).toBe(false);
   });
 
   it('should be invalid child SCRIPT elm', () => {
     const el = {
-      nodeType: 1, nodeName: 'svg', attributes: [], childNodes: [
-        {nodeType: 1, nodeName: 'SCRIPT', attributes: [], childNodes: []}
-      ]
+      nodeType: 1,
+      nodeName: 'svg',
+      attributes: [],
+      childNodes: [{ nodeType: 1, nodeName: 'SCRIPT', attributes: [], childNodes: [] }],
     } as any;
     expect(isValid(el)).toBe(false);
   });
 
   it('should be invalid script elm', () => {
-    const el = {nodeType: 1, nodeName: 'script', attributes: [], childNodes: []} as any;
+    const el = { nodeType: 1, nodeName: 'script', attributes: [], childNodes: [] } as any;
     expect(isValid(el)).toBe(false);
   });
 
   it('should be is valid circle elm', () => {
-    const el = {nodeType: 1, nodeName: 'circle', attributes: [], childNodes: []} as any;
+    const el = { nodeType: 1, nodeName: 'circle', attributes: [], childNodes: [] } as any;
     expect(isValid(el)).toBe(true);
   });
 
   it('should be is valid SVG elm', () => {
     const el = {
-      nodeType: 1, nodeName: 'SVG', attributes: [], childNodes: [
-        {nodeType: 1, nodeName: 'line', attributes: [], childNodes: []}
-      ]
+      nodeType: 1,
+      nodeName: 'SVG',
+      attributes: [],
+      childNodes: [{ nodeType: 1, nodeName: 'line', attributes: [], childNodes: [] }],
     } as any;
     expect(isValid(el)).toBe(true);
   });
 
   it('should be is valid text node', () => {
-    const el = {nodeType: 3, nodeName: '#text'} as any;
+    const el = { nodeType: 3, nodeName: '#text' } as any;
     expect(isValid(el)).toBe(true);
   });
 });

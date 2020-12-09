@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { LinkSocial } from '../../../src/components/navigation/link-social/link-social';
 
 describe('Component <p-link-social>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [LinkSocial],

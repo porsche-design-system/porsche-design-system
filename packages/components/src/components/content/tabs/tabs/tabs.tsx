@@ -84,8 +84,8 @@ export class Tabs {
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
-        role: 'tabpanel',
-        id: `tab-panel-${index}`,
+        'role': 'tabpanel',
+        'id': `tab-panel-${index}`,
         'aria-labelledby': `tab-item-${index}`,
       };
 

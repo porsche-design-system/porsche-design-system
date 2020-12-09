@@ -4,7 +4,7 @@ import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../ut
 @Component({
   tag: 'p-text-list-item',
   styleUrl: 'text-list-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextListItem {
   @Element() public host!: HTMLElement;
@@ -18,7 +18,7 @@ export class TextListItem {
       [prefix('text-list-item')]: true,
       [prefix(`text-list-item--${this.typeOfList}`)]: true,
       [prefix(`text-list-item--ordered-${this.typeOfOrderedList}`)]: this.typeOfList === 'ordered',
-      [prefix('text-list-item--nested')]: this.isNestedList
+      [prefix('text-list-item--nested')]: this.isNestedList,
     };
 
     return (

@@ -3,9 +3,7 @@
     <router-link class="link" :to="`/`">
       <p-marque />
     </router-link>
-    <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center">
-      Design System
-    </p-headline>
+    <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center"> Design System </p-headline>
 
     <p-text size="x-small" align="center">
       <strong>Web v{{ this.version }}</strong>
@@ -21,36 +19,36 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { version } from '@porsche-design-system/components-js/package.json';
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { version } from '@porsche-design-system/components-js/package.json';
 
-@Component
-export default class Header extends Vue {
-  public version: string = version;
+  @Component
+  export default class Header extends Vue {
+    public version: string = version;
 
-  public versionOptions: string[] = ['v1', 'v2', 'latest'];
-  public onVersionChange = (event: Event): void => {
-    window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
-  };
-}
+    public versionOptions: string[] = ['v1', 'v2', 'latest'];
+    public onVersionChange = (event: Event): void => {
+      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
+    };
+  }
 </script>
 
 <style scoped lang="scss">
-@import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/utilities/scss';
 
-.header {
-  text-align: center;
-}
-
-.link {
-  display: inline-block;
-  color: $p-color-default;
-  outline: transparent solid 1px;
-  outline-offset: 1px;
-
-  &:focus {
-    outline-color: $p-color-state-focus;
+  .header {
+    text-align: center;
   }
-}
+
+  .link {
+    display: inline-block;
+    color: $p-color-default;
+    outline: transparent solid 1px;
+    outline-offset: 1px;
+
+    &:focus {
+      outline-color: $p-color-state-focus;
+    }
+  }
 </style>

@@ -4,7 +4,7 @@ import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } fr
 @Component({
   tag: 'p-spinner',
   styleUrl: 'spinner.scss',
-  shadow: true
+  shadow: true,
 })
 export class Spinner {
   /** Size of the spinner. */
@@ -17,7 +17,7 @@ export class Spinner {
     const spinnerClasses = {
       [prefix('spinner')]: true,
       [prefix(`spinner--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size),
     };
     const imageClasses = prefix('spinner__image');
     const bgClasses = prefix('spinner__bg');
@@ -26,8 +26,8 @@ export class Spinner {
     return (
       <span class={spinnerClasses} aria-busy="true" aria-live="polite">
         <svg class={imageClasses} viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false">
-          <circle class={bgClasses} r="9"/>
-          <circle class={fgClasses} r="9"/>
+          <circle class={bgClasses} r="9" />
+          <circle class={fgClasses} r="9" />
         </svg>
       </span>
     );

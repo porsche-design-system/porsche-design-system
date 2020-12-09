@@ -8,7 +8,7 @@ export const LinkPurePage = (): JSX.Element => {
   `;
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render with label">
         <LinkPure href="https://www.porsche.com">Some label</LinkPure>

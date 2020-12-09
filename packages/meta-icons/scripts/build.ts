@@ -11,11 +11,7 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
@@ -38,7 +34,7 @@ const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Pro
     const nameKey = camelCase(name);
     manifest[typeKey] = {
       ...manifest[typeKey],
-      [nameKey]: filename
+      [nameKey]: filename,
     };
 
     fs.writeFileSync(targetPath, metaIcons, { encoding: 'binary' });
