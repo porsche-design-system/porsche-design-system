@@ -1,5 +1,6 @@
 // common type definitions
-export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
+export { TextSize } from './components/basic/typography/text/textUtils';
+export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
