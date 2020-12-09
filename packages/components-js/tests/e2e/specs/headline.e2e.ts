@@ -1,9 +1,9 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import { getBrowser, selectNode, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, TextSize } from '@porsche-design-system/components/src/types';
 import { BreakpointCustomizable } from '@porsche-design-system/components/src/utils';
 
-describe('headline', () => {
+fdescribe('headline', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -17,15 +17,15 @@ describe('headline', () => {
   }): Promise<void> => {
     const { variant, size, slot, tag } = opts;
 
-    const content =
-      (variant ? `variant="${variant}"` : '') + (size ? ` size="${size}"` : '') + (tag ? `tag="${tag}"` : '');
+    const content = (variant && `variant="${variant}"`) + (size && ` size="${size}"`) + (tag && `tag="${tag}"`);
 
     return setContentWithDesignSystem(
       page,
       `
         <p-headline ${content}>
           ${slot ? slot : 'Some Headline'}
-        </p-headline>`
+        </p-headline>`,
+      { enableLogging: true }
     );
   };
 
@@ -33,27 +33,27 @@ describe('headline', () => {
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.p-headline').tagName);
 
   describe('tag', () => {
-    it('should render according to variant', async () => {
+    it('should render according to variant headline-2', async () => {
       await initHeadline({ variant: 'headline-2' });
       expect(await getHeadlineTagName()).toBe('H2');
     });
 
-    it('should render according to tag', async () => {
+    fit('should render according to tag h6 when variant is set', async () => {
       await initHeadline({ variant: 'large-title', tag: 'h6' });
       expect(await getHeadlineTagName()).toBe('H6');
     });
 
-    it('should render as default if size is set', async () => {
+    it('should render as default if size is set without tag', async () => {
       await initHeadline({ size: 'x-large' });
       expect(await getHeadlineTagName()).toBe('H1');
     });
 
-    it('should render according to tag if size is set', async () => {
+    it('should render according to tag h6 if size is set', async () => {
       await initHeadline({ size: 'x-large', tag: 'h6' });
       expect(await getHeadlineTagName()).toBe('H6');
     });
 
-    it('should render as div due to slotted content', async () => {
+    it('should render as div due to slotted headline content', async () => {
       await initHeadline({ slot: '<h3>Some Headline</h3>' });
       expect(await getHeadlineTagName()).toBe('DIV');
     });
