@@ -321,9 +321,10 @@ describe('select-wrapper combobox', () => {
     const filterInput = await selectFilter();
     const text = await selectNode(page, 'p-text');
     const fakeOptions = await getSelectOptionList();
-    const numberOfFakeOptions = () => fakeOptions.evaluate((el: HTMLElement) => {
-      return el.querySelectorAll('.p-select-wrapper__fake-option').length;
-    });
+    const numberOfFakeOptions = () =>
+      fakeOptions.evaluate((el: HTMLElement) => {
+        return el.querySelectorAll('.p-select-wrapper__fake-option').length;
+      });
 
     expect(await numberOfFakeOptions()).toBe(3);
 

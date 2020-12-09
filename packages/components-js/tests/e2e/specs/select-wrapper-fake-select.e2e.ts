@@ -23,7 +23,6 @@ describe('select-wrapper fake-select', () => {
   });
   afterEach(async () => await page.close());
 
-  const getSelectComponent = () => selectNode(page, 'p-select-wrapper');
   const getSelectFakeInput = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
   const getSelectRealInput = () => selectNode(page, 'p-select-wrapper select');
   const getSelectLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
