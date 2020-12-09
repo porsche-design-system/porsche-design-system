@@ -17,8 +17,6 @@ export type TextColor =
 
 export type TextAlign = 'left' | 'center' | 'right';
 
-export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
-
 export type Theme = 'light' | 'dark';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
