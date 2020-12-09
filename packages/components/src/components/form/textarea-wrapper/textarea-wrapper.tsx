@@ -5,14 +5,13 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
 } from '../../../utils';
 import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-textarea-wrapper',
   styleUrl: 'textarea-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextareaWrapper {
   @Element() public host!: HTMLElement;
@@ -36,12 +35,13 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
+  private textareaObserver: MutationObserver;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setTextarea();
     this.setAriaAttributes();
     this.setState();
-    this.bindStateListener();
+    this.initMutationObserver();
     this.addSlottedStyles();
   }
 
@@ -49,30 +49,34 @@ export class TextareaWrapper {
     this.setAriaAttributes();
   }
 
+  public disconnectedCallback(): void {
+    this.textareaObserver.disconnect();
+  }
+
   public render(): JSX.Element {
     const labelClasses = prefix('textarea-wrapper__label');
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
       [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('textarea-wrapper__description-text')]: true,
       [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
         'hidden',
-        'visible'
-      ])
+        'visible',
+      ]),
     };
     const fakeTextareaClasses = {
       [prefix('textarea-wrapper__fake-textarea')]: true,
       [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
       [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly
+      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly,
     };
     const messageClasses = {
       [prefix('textarea-wrapper__message')]: true,
-      [prefix(`textarea-wrapper__message--${this.state}`)]: true
+      [prefix(`textarea-wrapper__message--${this.state}`)]: true,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
@@ -118,12 +122,8 @@ export class TextareaWrapper {
     return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -164,9 +164,14 @@ export class TextareaWrapper {
     this.textarea.focus();
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.textarea, 'border-top-color', this.setState);
-  }
+  private initMutationObserver = (): void => {
+    this.textareaObserver = new MutationObserver((): void => {
+      this.setState();
+    });
+    this.textareaObserver.observe(this.textarea, {
+      attributeFilter: ['disabled', 'readonly'],
+    });
+  };
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();

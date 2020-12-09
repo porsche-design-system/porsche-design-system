@@ -12,22 +12,17 @@ const removeLoaderFile = (): void => {
   try {
     const filePath = path.resolve(publicDir, fileName);
     fs.unlinkSync(filePath);
-  } catch (e) {
-  }
+  } catch (e) {}
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const copyAndHashLoader = (): string => {
   const filePath = require.resolve('@porsche-design-system/components-js');
   const fileContent = fs.readFileSync(filePath).toString();
   const hash = toHash(fileContent);
   const loaderName = `pds-loader.${hash}.js`;
-  
+
   const newFilePath = path.resolve(rootDirectory, 'public', loaderName);
 
   fs.copyFileSync(filePath, newFilePath);

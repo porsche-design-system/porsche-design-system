@@ -2,7 +2,7 @@ import { getPrefixedComponents } from '@porsche-design-system/components-react/p
 import { useEffect } from 'react';
 
 const { PButton: PrefixedButton, PModal: PrefixedModal } = getPrefixedComponents({
-  prefix: 'my-prefix'
+  prefix: 'my-prefix',
 });
 
 export const ModalPrefixedPage = (): JSX.Element => {
