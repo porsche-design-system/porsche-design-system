@@ -190,7 +190,7 @@ export class SelectWrapper {
               ref={(el) => (this.filterInput = el)}
             />,
             <span ref={(el) => (this.fakeFilter = el)} />,
-            ]}
+          ]}
           {this.renderCustomDropDown && (
             <div
               class={fakeOptionListClasses}
@@ -292,9 +292,9 @@ export class SelectWrapper {
   }
 
   private defineTypeOfDropDown(): void {
-    if(this.filter) {
+    if (this.filter) {
       this.renderCustomDropDown = true;
-    } else if(!isTouchDevice() && this.native) {
+    } else if (this.native) {
       this.renderCustomDropDown = false;
     } else {
       this.renderCustomDropDown = !isTouchDevice();
@@ -347,7 +347,9 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const children = this.fakeOptionListNode.querySelectorAll(`.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`);
+      const children = this.fakeOptionListNode.querySelectorAll(
+        `.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`
+      );
       const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
@@ -374,7 +376,7 @@ export class SelectWrapper {
     } else {
       if (type === 'hide' || type === 'toggle') {
         this.fakeOptionListHidden = true;
-        if(this.filter) {
+        if (this.filter) {
           this.resetFilterInput();
         }
       }
@@ -530,7 +532,8 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
     return !this.filterHasResults ? (
       <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
-        <span aria-hidden="true">---</span><span class={prefix('select-wrapper__fake-option-sr')}>No results found</span>
+        <span aria-hidden="true">---</span>
+        <span class={prefix('select-wrapper__fake-option-sr')}>No results found</span>
       </div>
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
@@ -557,9 +560,7 @@ export class SelectWrapper {
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
           >
-            {item.text && (
-              <span>{item.text}</span>
-            )}
+            {item.text && <span>{item.text}</span>}
             {selected && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}
