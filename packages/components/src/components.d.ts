@@ -7,8 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { VariantType } from "./components/basic/typography/headline/headline";
-import { HeadlineTags } from "./components/basic/typography/headline/headlineUtils";
+import { HeadlineTag, VariantType } from "./components/basic/typography/headline/headlineUtils";
 export namespace Components {
     interface PBanner {
         /**
@@ -246,7 +245,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: HeadlineTags;
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1145,7 +1144,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: HeadlineTags;
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */

@@ -30,7 +30,16 @@ export const DividerPage = (): JSX.Element => {
 
       <div className="playground light" title="should show responsive vertical divider">
         <div className="divider-vertical-responsive-container-example">
-          <Divider orientation="{base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical'}" />
+          <Divider
+            orientation={{
+              base: 'horizontal',
+              xs: 'vertical',
+              s: 'horizontal',
+              m: 'vertical',
+              l: 'horizontal',
+              xl: 'vertical',
+            }}
+          />
         </div>
       </div>
 

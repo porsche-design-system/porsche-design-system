@@ -61,7 +61,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should display inline-flex">
-        <Flex inline="true">
+        <Flex inline={true}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -69,7 +69,7 @@ export const FlexPage = (): JSX.Element => {
             <p>2</p>
           </FlexItem>
         </Flex>
-        <Flex inline="true">
+        <Flex inline={true}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -80,7 +80,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt display mode depending on viewport">
-        <Flex inline="{ base: false, l: true }">
+        <Flex inline={{ base: false, l: true }}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -88,7 +88,7 @@ export const FlexPage = (): JSX.Element => {
             <p>2</p>
           </FlexItem>
         </Flex>
-        <Flex inline="{ base: false, l: true }">
+        <Flex inline={{ base: false, l: true }}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -155,7 +155,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt direction of flex items depending on viewport">
-        <Flex direction="{ base: 'column', l: 'row' }">
+        <Flex direction={{ base: 'column', l: 'row' }}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -265,7 +265,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt wrap mode depending on viewport">
-        <Flex wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
+        <Flex wrap={{ base: 'nowrap', l: 'wrap-reverse' }}>
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -793,16 +793,16 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should adapt width depending on viewport">
         <Flex wrap="wrap">
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          <FlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>1</p>
           </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          <FlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>2</p>
           </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          <FlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>3</p>
           </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          <FlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>4</p>
           </FlexItem>
         </Flex>
@@ -838,7 +838,7 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should adapt offset depending on viewport">
         <Flex>
-          <FlexItem offset="{ base: 'none', l: 'one-third' }">
+          <FlexItem offset={{ base: 'none', l: 'one-third' }}>
             <p>Responsive offset</p>
           </FlexItem>
         </Flex>
@@ -846,13 +846,13 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render with align-self mode 'auto'">
         <Flex style={{ height: 180 }} align-items="flex-end">
-          <FlexItem align-self="stretch">
+          <FlexItem alignSelf="stretch">
             <p>1</p>
           </FlexItem>
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="auto">
+          <FlexItem alignSelf="auto">
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -869,7 +869,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="stretch">
+          <FlexItem alignSelf="stretch">
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -886,7 +886,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="flex-start">
+          <FlexItem alignSelf="flex-start">
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -903,7 +903,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="flex-end">
+          <FlexItem alignSelf="flex-end">
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -920,7 +920,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="center">
+          <FlexItem alignSelf="center">
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -931,13 +931,13 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render with align-self mode 'baseline'">
         <Flex style={{ height: 180 }}>
-          <FlexItem align-self="baseline">
+          <FlexItem alignSelf="baseline">
             <p>1</p>
           </FlexItem>
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="baseline" style={{ marginTop: '1rem' }}>
+          <FlexItem alignSelf="baseline" style={{ marginTop: '1rem' }}>
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -946,7 +946,7 @@ export const FlexPage = (): JSX.Element => {
         </Flex>
       </div>
 
-      <div className="playground" title="should adapt align-self mode depending on viewport">
+      <div className="playground" title="should adapt alignSelf mode depending on viewport">
         <Flex style={{ height: 180 }}>
           <FlexItem>
             <p>1</p>
@@ -954,7 +954,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem align-self="{ base: 'flex-start', l: 'flex-end' }">
+          <FlexItem alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
             <p>3</p>
           </FlexItem>
           <FlexItem>
@@ -968,7 +968,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>1</p>
           </FlexItem>
-          <FlexItem grow="0">
+          <FlexItem grow={0}>
             <p>2</p>
           </FlexItem>
         </Flex>
@@ -979,7 +979,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>1</p>
           </FlexItem>
-          <FlexItem grow="1">
+          <FlexItem grow={1}>
             <p>2</p>
           </FlexItem>
         </Flex>
@@ -990,7 +990,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>1</p>
           </FlexItem>
-          <FlexItem grow="{ base: 1, l: 0 }">
+          <FlexItem grow={{ base: 1, l: 0 }}>
             <p>2</p>
           </FlexItem>
         </Flex>
@@ -998,7 +998,7 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render by shrink mode '1'">
         <Flex>
-          <FlexItem shrink="1" style={{ width: '80%' }}>
+          <FlexItem shrink={1} style={{ width: '80%' }}>
             <p>1</p>
           </FlexItem>
           <FlexItem style={{ width: '80%' }}>
@@ -1009,7 +1009,7 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should render by shrink mode '0'">
         <Flex>
-          <FlexItem shrink="0" style={{ width: '80%' }}>
+          <FlexItem shrink={0} style={{ width: '80%' }}>
             <p>1</p>
           </FlexItem>
           <FlexItem style={{ width: '80%' }}>
@@ -1020,7 +1020,7 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should adapt shrink mode depending on viewport">
         <Flex>
-          <FlexItem shrink="{ base: 0, l: 1 }" style={{ width: '80%' }}>
+          <FlexItem shrink={{ base: 0, l: 1 }} style={{ width: '80%' }}>
             <p>1</p>
           </FlexItem>
           <FlexItem style={{ width: '80%' }}>
@@ -1087,13 +1087,13 @@ export const FlexPage = (): JSX.Element => {
 
       <div className="playground" title="should adapt predefined flex shorthand mode depending on viewport">
         <Flex>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+          <FlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>1 - short content</p>
           </FlexItem>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+          <FlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
           </FlexItem>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+          <FlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>3 - short content</p>
           </FlexItem>
         </Flex>

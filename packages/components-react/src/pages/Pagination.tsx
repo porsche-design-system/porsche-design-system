@@ -43,7 +43,7 @@ export const PaginationPage = (): JSX.Element => {
           totalItemsCount={500}
           itemsPerPage={25}
           activePage={1}
-          maxNumberOfPageLinks="{ base: 5, s: 7, l: 5 }"
+          maxNumberOfPageLinks={{ base: 5, s: 7, l: 5 }}
         />
       </div>
     </>

@@ -11,7 +11,6 @@ enum Breakpoint {
 }
 
 type BreakpointValue = string | number | boolean;
-type JSON5String = string;
 type ClassSuffixes = [string, string];
 
 type JSXClasses = {
@@ -27,7 +26,7 @@ type BreakpointValues<T> = {
   [Breakpoint.xl]?: T;
 };
 
-export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
+export type BreakpointCustomizable<T> = T | BreakpointValues<T>;
 
 /* eslint-disable @typescript-eslint/indent */
 const parseJSON = (
