@@ -62,6 +62,13 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
             window.checkComponentsUpdatedPromise();
           });
 
+          for (let lifecycle of ['stencil_componentWillLoad', 'stencil_componentDidLoad', 'stencil_componentWillUpdate', 'stencil_componentDidUpdate']) {
+            window[lifecycle] = [];
+            window.addEventListener(lifecycle, (e) => {
+              window[lifecycle].push(e.composedPath()[0].tagName.toLowerCase());
+            });
+          }
+
           ${lifeCycleLogger}
         </script>
         ${content}
