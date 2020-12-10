@@ -946,7 +946,7 @@ export const FlexPage = (): JSX.Element => {
         </Flex>
       </div>
 
-      <div className="playground" title="should adapt alignSelf mode depending on viewport">
+      <div className="playground" title="should adapt align-self mode depending on viewport">
         <Flex style={{ height: 180 }}>
           <FlexItem>
             <p>1</p>
