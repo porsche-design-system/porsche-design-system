@@ -13,3 +13,14 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
     }
   );
 };
+
+type Lifecycle =
+  | 'stencil_componentWillLoad'
+  | 'stencil_componentDidLoad'
+  | 'stencil_componentWillUpdate'
+  | 'stencil_componentDidUpdate';
+export const getLifecycleStatus = async (page: Page, type: Lifecycle): Promise<string[]> => {
+  return await page.evaluate((type: Lifecycle) => {
+    return window[type];
+  }, type);
+};

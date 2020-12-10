@@ -15,6 +15,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -626,6 +627,19 @@ describe('tabs-bar', () => {
       );
       expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
       expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips', async () => {
+      await initTabsBar({ amount: 3, tag: 'a' });
+
+      expect(await getLifecycleStatus(page, 'stencil_componentWillLoad')).toEqual([
+        'p-tabs-bar',
+        'p-button-pure',
+        'p-icon',
+        'p-text',
+      ]);
     });
   });
 });
