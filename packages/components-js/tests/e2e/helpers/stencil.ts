@@ -1,4 +1,5 @@
 import { Page } from 'puppeteer';
+import { TagName } from '@porsche-design-system/components/src/tags';
 
 export const waitForComponentsReady = async (page: Page): Promise<void> => {
   await page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
@@ -14,13 +15,19 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
   );
 };
 
-type Lifecycle =
-  | 'stencil_componentWillLoad'
-  | 'stencil_componentDidLoad'
-  | 'stencil_componentWillUpdate'
-  | 'stencil_componentDidUpdate';
-export const getLifecycleStatus = async (page: Page, type: Lifecycle): Promise<string[]> => {
-  return await page.evaluate((type: Lifecycle) => {
-    return window[type];
-  }, type);
+type Lifecycle = 'componentWillLoad' | 'componentDidLoad' | 'componentWillUpdate' | 'componentDidUpdate';
+export const getLifecycleStatus = async (
+  page: Page,
+  type: Lifecycle,
+  element: TagName = undefined
+): Promise<number> => {
+  return await page.evaluate(
+    (opts: { type: Lifecycle; element: TagName }) => {
+      if (opts.element === undefined) {
+        return window[`stencil_${opts.type}`].length;
+      }
+      return window[`stencil_${opts.type}`].filter((v) => v == opts.element).length;
+    },
+    { type, element }
+  );
 };
