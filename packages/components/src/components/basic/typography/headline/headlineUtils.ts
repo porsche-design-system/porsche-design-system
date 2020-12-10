@@ -1,4 +1,5 @@
-import { VariantType } from './headline';
+import { BreakpointCustomizable } from '../../../../utils';
+import { TextSize } from '../text/textUtils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
@@ -9,7 +10,11 @@ export const HEADLINE_VARIANTS = [
   'headline-5',
 ] as const;
 
-export type HeadlineVariant = typeof HEADLINE_VARIANTS[number];
+type HeadlineVariant = typeof HEADLINE_VARIANTS[number];
+
+type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
+
+export type VariantType = HeadlineVariant | HeadlineVariantCustom;
 
 export type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
