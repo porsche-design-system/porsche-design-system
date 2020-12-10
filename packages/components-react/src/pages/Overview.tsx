@@ -108,7 +108,7 @@ export const OverviewPage = (): JSX.Element => {
             <Headline>Default Components</Headline>
           </div>
 
-          <div className="playground light" title="should render headline for breakpoints variant large">
+          <div className="playground light" title="should render headline for variant large">
             <Headline variant={{ base: 'large', l: 'x-large' }}>Default Components</Headline>
           </div>
 
@@ -259,10 +259,7 @@ export const OverviewPage = (): JSX.Element => {
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
           </div>
 
-          <div
-            className="playground light"
-            title="should render headline for breakpoints variant large and custom prefix"
-          >
+          <div className="playground light" title="should render headline for variant large with custom prefix">
             <PrefixedHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PrefixedHeadline>
           </div>
 
