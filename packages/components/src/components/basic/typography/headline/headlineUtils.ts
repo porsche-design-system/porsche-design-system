@@ -10,16 +10,16 @@ export const HEADLINE_VARIANTS = [
   'headline-5',
 ] as const;
 
-type HeadlineVariant = typeof HEADLINE_VARIANTS[number];
+type VariantType = typeof HEADLINE_VARIANTS[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type VariantType = HeadlineVariant | HeadlineVariantCustom;
+export type HeadlineVariant = VariantType | HeadlineVariantCustom;
 
 export type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export const isHeadlineVariant = (variant: VariantType): boolean => {
-  return HEADLINE_VARIANTS.includes(variant as HeadlineVariant);
+export const isVariantType = (variant: HeadlineVariant): boolean => {
+  return HEADLINE_VARIANTS.includes(variant as VariantType);
 };
 
 export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
@@ -27,7 +27,7 @@ export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
 
-const variantToTagMap: { [key in HeadlineVariant]: string } = {
+const variantToTagMap: { [key in VariantType]: string } = {
   'large-title': 'h1',
   'headline-1': 'h1',
   'headline-2': 'h2',
@@ -36,14 +36,14 @@ const variantToTagMap: { [key in HeadlineVariant]: string } = {
   'headline-5': 'h5',
 };
 
-export const getTagName = (host: HTMLElement, variant?: VariantType, tag?: HeadlineTag): string => {
+export const getTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
   if (hasSlottedHeadlineTag(host)) {
     return 'div';
   } else if (tag) {
     return tag;
-  } else if (!isHeadlineVariant(variant)) {
+  } else if (!isVariantType(variant)) {
     return 'h1';
   } else {
-    return variantToTagMap[variant as HeadlineVariant];
+    return variantToTagMap[variant as VariantType];
   }
 };
