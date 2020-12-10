@@ -14,6 +14,7 @@
         'example--spacing-inline': mergedConfig.spacing === 'inline',
         'example--spacing-block': mergedConfig.spacing === 'block',
         'example--spacing-block-small': mergedConfig.spacing === 'block-small',
+        'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
       }"
     >
       <div v-if="isSlotSet" class="configurator">
@@ -40,6 +41,7 @@
     colorScheme: 'default' | 'surface';
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
+    overflowX: 'auto' | 'visible';
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -47,6 +49,7 @@
     colorScheme: 'default',
     height: 'auto',
     spacing: 'none',
+    overflowX: 'auto',
   };
 
   @Component({
@@ -116,6 +119,10 @@
         border-color: $p-color-theme-dark-background-surface;
         background-color: $p-color-theme-dark-background-surface;
       }
+    }
+
+    &--overflow-x-visible {
+      overflow-x: visible;
     }
 
     // Child Layout "height"
