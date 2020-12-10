@@ -183,7 +183,7 @@ export const GridPage = (): JSX.Element => {
         </Grid>
       </div>
 
-      <div className="playground" title="should adapt offset {epending}on viewport">
+      <div className="playground" title="should adapt offset depending on viewport">
         <Grid>
           <GridItem offset={{ base: 6, m: 2 }} size={{ base: 6, m: 10 }}>
             <p>A</p>
