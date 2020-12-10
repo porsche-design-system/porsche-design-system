@@ -1,6 +1,6 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
-import { BreakpointCustomizable, TextSize, VariantType } from '@porsche-design-system/components/dist/types/bundle';
+import { VariantType } from '@porsche-design-system/components/dist/types/bundle';
 import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headlineUtils';
 
 describe('headline', () => {
@@ -9,12 +9,7 @@ describe('headline', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initHeadline = (opts?: {
-    variant?: VariantType;
-    size?: BreakpointCustomizable<TextSize>;
-    slot?: string;
-    tag?: HeadlineTag;
-  }): Promise<void> => {
+  const initHeadline = (opts?: { variant?: VariantType; slot?: string; tag?: HeadlineTag }): Promise<void> => {
     const { variant, slot, tag } = opts;
 
     const content = (variant ? `variant="${variant}" ` : '') + (tag ? `tag="${tag}"` : '');
@@ -58,12 +53,12 @@ describe('headline', () => {
     });
 
     it('should render as default if variant is a size object without tag', async () => {
-      await initHeadline({ variant: 'x-large' });
+      await initHeadline({ variant: { base: 'large' } });
       expect(await getHeadlineTagName()).toBe('H1');
     });
 
     it('should render according to tag h6 if size is set', async () => {
-      await initHeadline({ variant: 'x-large', tag: 'h6' });
+      await initHeadline({ variant: { base: 'large' }, tag: 'h6' });
       expect(await getHeadlineTagName()).toBe('H6');
     });
 
