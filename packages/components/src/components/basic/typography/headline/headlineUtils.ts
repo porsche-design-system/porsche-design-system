@@ -14,7 +14,7 @@ type VariantType = typeof HEADLINE_VARIANTS[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type HeadlineVariant = VariantType | HeadlineVariantCustom;
+export type HeadlineVariant = VariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
 
 export type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
