@@ -78,6 +78,16 @@ export const HeadlinePage = (): JSX.Element => {
           </span>
         </Headline>
       </div>
+
+      <div className="playground" title="should show headline for variant customizable">
+        <Headline variant={{ base: 'large', l: 'x-large' }}> Lorem ipsum dolor sit amet et.</Headline>
+      </div>
+
+      <div className="playground" title="should show headline for variant inherit">
+        <Headline variant="inherit" style={{ fontSize: '3.75rem', lineHeight: 1.2 }}>
+          Lorem ipsum dolor sit amet et.
+        </Headline>
+      </div>
     </>
   );
 };

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `native` property to `Select Wrapper` to force rendering of native Browser select dropdown
+- Extended flexibility of `Headline`
 
 #### Changed
 - Some styling improvements of `Select Wrapper`

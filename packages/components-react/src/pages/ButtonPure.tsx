@@ -48,10 +48,8 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button with responsive label">
-        <ButtonPure hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
-          Some label
-        </ButtonPure>
-        <ButtonPure hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
+        <ButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</ButtonPure>
+        <ButtonPure hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           Some label
           <p slot="subline">Some subline</p>
         </ButtonPure>
@@ -75,7 +73,7 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with responsive size">
         <ButtonPure
-          size="{'base': 'x-small', 'xs': 'small', 's': 'medium', 'm': 'large', 'l': 'x-large', 'xl': 'inherit'}"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: 48 }}
         >
           Some label

@@ -107,17 +107,17 @@ export const config: StorefrontConfig = {
       ],
     },
     'Typography': {
-      Design: [
+      Text: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/typography.design.md`),
+        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
       ],
       Headline: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`),
       ],
-      Text: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
+        () => import(`@/../../components/src/components/basic/typography/typography.usage.md`),
       ],
       Props: [
         // @ts-ignore
@@ -602,4 +602,4 @@ export const config: StorefrontConfig = {
 };
 
 /* Auto Generated Below */
-export const PDS_LOADER_FILENAME = 'pds-loader.ed335ed4773cf2aca9550209741f1db9.js';
+export const PDS_LOADER_FILENAME = 'pds-loader.30c6b813b53e02bb11ed589bad2da24c.js';

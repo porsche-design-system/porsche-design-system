@@ -2,12 +2,45 @@
 
 ## Headline
 
-**Headline component** for predefined headlines with automated responsive sizing to fit into all major breakpoints.
+**Headline component** to specify headline styling and hierarchy in documents.
 
 ## Variant
-There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
+Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
+There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>`, `headline-3` is compiled to `<h3>`).
+
+### Default Tags
+Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
+
+**Hint:** You always have to keep an eye on the semantic of your HTML tags. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property.
+
+```
+'large-title': 'h1'
+'headline-1': 'h1'
+'headline-2': 'h2'
+'headline-3': 'h3'
+'headline-4': 'h4'
+'headline-5': 'h5'
+```
+
 
 <Playground :markup="variant" :config="config"></Playground>
+
+## Custom Variant
+
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
+
+**Hint:** When using `inherit` you have to take the [typeScale](#/components/typography#usage) values in account. If you want to generate them dynamically, we provide
+helper functions in our [utilities-package](#/utilities/js#helper)
+
+**Note:** If you choose a custom responsive size, you have to take care of your semantic tag hierarchy. It defaults to `h1` for every combination.
+
+<Playground :markup="customVariantMarkup" :config="config">
+ <select v-model="customVariant">
+    <option disabled>Select an custom variant</option>
+    <option value="{ base: 'small', l: 'medium' }" selected>Custom Breakpoints</option>
+    <option value="inherit">Inherit</option>
+  </select>
+</Playground>
 
 ---
 
@@ -52,6 +85,7 @@ This will force any text to never wrap into a new line and in case it's too long
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import {HEADLINE_VARIANTS} from './headlineUtils';
   
   const sentence = 'The quick brown fox jumps over the lazy dog';
   
@@ -59,16 +93,16 @@ This will force any text to never wrap into a new line and in case it's too long
   export default class Code extends Vue {
     config = { themeable: true };
 
+    customVariant = "{ base: 'small', l: 'medium' }";
     color = 'default';
     align = 'center';
-    
-    variant =
-`<p-headline variant="large-title">${sentence}</p-headline>
-<p-headline variant="headline-1">${sentence}</p-headline>
-<p-headline variant="headline-2">${sentence}</p-headline>
-<p-headline variant="headline-3">${sentence}</p-headline>
-<p-headline variant="headline-4">${sentence}</p-headline>
-<p-headline variant="headline-5">${sentence}</p-headline>`;
+
+    variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+
+    get customVariantMarkup() {
+      const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem; line-height: 1.2;"' : '';
+      return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
+    }
 
     customTagHierarchy =
 `<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
