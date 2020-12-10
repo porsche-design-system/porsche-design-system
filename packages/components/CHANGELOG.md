@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Extend flexibility of `Headline`
+- Extended flexibility of `Headline`
 
 ### [2.0.0-alpha.9] - 2020-12-09
 
