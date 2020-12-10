@@ -44,8 +44,8 @@ import { Component } from '@angular/core';
           <p-headline>Default Components</p-headline>
         </div>
 
-        <div class="playground light" title="should render headline for variant large">
-          <p-headline variant="large">Default Components</p-headline>
+        <div class="playground light" title="should render headline for custom variant large">
+          <p-headline [variant]="{ base: 'large', l: 'x-large' }">Default Components</p-headline>
         </div>
 
         <div class="playground light" title="should render default banner">
@@ -185,8 +185,8 @@ import { Component } from '@angular/core';
           <my-prefix-p-headline>Prefixed Components</my-prefix-p-headline>
         </div>
 
-        <div class="playground light" title="should render headline for variant large and custom prefix">
-          <my-prefix-p-headline variant="large">Prefixed Components</my-prefix-p-headline>
+        <div class="playground light" title="should render headline for custom variant large and custom prefix">
+          <my-prefix-p-headline [variant]="{ base: 'large', l: 'x-large' }">Prefixed Components</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render default banner with custom prefix">
