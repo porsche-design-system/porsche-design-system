@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { BreakpointCustomizable, getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
 import { TextAlign, TextColor, Theme, TextSize } from '../../../../types';
-import { HeadlineVariant, HeadlineTags, getTagName, isHeadlineVariant } from './headlineUtils';
+import { HeadlineVariant, HeadlineTag, getTagName, isHeadlineVariant } from './headlineUtils';
 
 // We cannot include HeadlineVariant into generic. Those are ready to use variants with defined breakpoints.
 export type VariantType = HeadlineVariant | BreakpointCustomizable<TextSize>;
