@@ -8,8 +8,6 @@
 Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
 There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>`, `headline-3` is compiled to `<h3>`).
 
-If you choose a non headline variant like <span v-html="textSizes"></span>, it defaults to `h1`.
-
 If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 ### Default Tags
@@ -32,6 +30,8 @@ Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `la
 ### Responsive
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+**Note:** If you choose a custom responsive size, you have to take care of your semantic tag hierarchy. It defaults to `h1` for every combination.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
@@ -89,10 +89,8 @@ This will force any text to never wrap into a new line and in case it's too long
 
     color = 'default';
     align = 'center';
-    
-    textSizes = TEXT_SIZES.map((item) => `<code>${item}</code>`).join(', ');
 
-    variant = HEADLINE_VARIANTS.concat(TEXT_SIZES.reverse()).map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
+    variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
     responsive =
 `<p-headline variant="{ base: 'small', l: 'medium' }">${sentence}</p-headline>`;
