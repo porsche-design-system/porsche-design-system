@@ -51,10 +51,12 @@ export class SelectWrapper {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: 'down' | 'up' | 'auto' = 'auto';
 
+  /** Forces rendering of native browser select dropdown */
+  @Prop() public native?: boolean = false;
+
   @State() private fakeOptionListHidden = true;
   @State() private optionMaps: readonly OptionMap[] = [];
   @State() private filterHasResults = true;
-  @State() private isTouchWithoutFilter: boolean = isTouchDevice() && !this.filter;
 
   private select: HTMLSelectElement;
   private options: NodeListOf<HTMLOptionElement>;
@@ -65,6 +67,7 @@ export class SelectWrapper {
   private fakeFilter: HTMLSpanElement;
   private searchString: string;
   private dropdownDirectionInternal: 'down' | 'up' = 'down';
+  private renderCustomDropDown: boolean;
 
   // this stops click events when filter input is clicked
   @Listen('click', { capture: false })
@@ -76,24 +79,13 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.initSelect();
+    this.defineTypeOfDropDown();
     this.setAriaAttributes();
     this.addSlottedStyles();
-
-    if (!this.isTouchWithoutFilter) {
-      this.observeSelect();
-      this.setOptionList();
-      if (!this.filter) {
-        this.select.addEventListener('mousedown', this.handleMouseEvents);
-      }
-      this.select.addEventListener('keydown', this.handleKeyboardEvents);
-      if (typeof document !== 'undefined') {
-        document.addEventListener('mousedown', this.handleClickOutside, true);
-      }
-    }
   }
 
   public componentDidLoad(): void {
-    if (!this.isTouchWithoutFilter && this.filter) {
+    if (this.filter) {
       this.fakeFilter.addEventListener('click', this.handleFilterInputClick);
       this.filterInput.addEventListener('mousedown', this.handleFilterInputClick);
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
@@ -106,13 +98,8 @@ export class SelectWrapper {
   }
 
   public disconnectedCallback(): void {
-    if (!this.isTouchWithoutFilter) {
-      this.selectObserver.disconnect();
-      this.select.removeEventListener('mousedown', this.handleMouseEvents);
-      this.select.removeEventListener('keydown', this.handleKeyboardEvents);
-      if (typeof document !== 'undefined') {
-        document.removeEventListener('mousedown', this.handleClickOutside, true);
-      }
+    if (this.renderCustomDropDown) {
+      this.disconnectCustomDropDown();
     }
   }
 
@@ -189,23 +176,22 @@ export class SelectWrapper {
               <slot />
             </span>
           </label>
-          {this.filter &&
-            !this.isTouchWithoutFilter && [
-              <input
-                type="text"
-                class={filterInputClasses}
-                role="combobox"
-                aria-autocomplete="both"
-                aria-controls="p-listbox"
-                disabled={this.disabled}
-                aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
-                aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
-                placeholder={this.options[this.select.selectedIndex].text}
-                ref={(el) => (this.filterInput = el)}
-              />,
-              <span ref={(el) => (this.fakeFilter = el)} />,
-            ]}
-          {!this.isTouchWithoutFilter && (
+          {this.filter && [
+            <input
+              type="text"
+              class={filterInputClasses}
+              role="combobox"
+              aria-autocomplete="both"
+              aria-controls="p-listbox"
+              disabled={this.disabled}
+              aria-expanded={this.fakeOptionListHidden ? 'false' : 'true'}
+              aria-activedescendant={`option-${this.getHighlightedIndex(this.optionMaps)}`}
+              placeholder={this.options[this.select.selectedIndex].text}
+              ref={(el) => (this.filterInput = el)}
+            />,
+            <span ref={(el) => (this.fakeFilter = el)} />,
+          ]}
+          {this.renderCustomDropDown && (
             <div
               class={fakeOptionListClasses}
               role="listbox"
@@ -305,19 +291,48 @@ export class SelectWrapper {
     });
   }
 
+  private defineTypeOfDropDown(): void {
+    if (this.filter) {
+      this.renderCustomDropDown = true;
+    } else if (this.native) {
+      this.renderCustomDropDown = false;
+    } else {
+      this.renderCustomDropDown = !isTouchDevice();
+    }
+
+    if (this.renderCustomDropDown) {
+      this.observeSelect();
+      this.setOptionList();
+      this.select.addEventListener('keydown', this.handleKeyboardEvents);
+
+      if (!this.filter) {
+        this.select.addEventListener('mousedown', this.handleMouseEvents);
+      }
+      if (typeof document !== 'undefined') {
+        document.addEventListener('mousedown', this.handleClickOutside, true);
+      }
+    }
+  }
+
+  private disconnectCustomDropDown(): void {
+    this.selectObserver.disconnect();
+    this.select.removeEventListener('mousedown', this.handleMouseEvents);
+    this.select.removeEventListener('keydown', this.handleKeyboardEvents);
+    if (typeof document !== 'undefined') {
+      document.removeEventListener('mousedown', this.handleClickOutside, true);
+    }
+  }
+
   private handleClickOutside = (e: MouseEvent): void => {
     if (!this.host.contains(e.target as HTMLElement)) {
-      this.fakeOptionListHidden = true;
-      if (this.filter) {
-        this.filterInput.value = '';
-      }
+      this.handleVisibilityOfFakeOptionList('hide');
     }
   };
 
   private handleMouseEvents = (e: MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-    this.select.focus();
+    this.handleFocus(e);
     this.handleVisibilityOfFakeOptionList('toggle');
   };
 
@@ -332,14 +347,16 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const { children } = this.fakeOptionListNode;
+      const children = this.fakeOptionListNode.querySelectorAll(
+        `.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`
+      );
       const { top: spaceTop } = this.select.getBoundingClientRect();
       const listNodeChildrenHeight = children[0].clientHeight;
       const numberOfChildNodes = children.length;
 
-      // Max number of children visible is set to 5
+      // Max number of children visible is set to 10
       const listNodeHeight =
-        numberOfChildNodes >= 5 ? listNodeChildrenHeight * 5 : listNodeChildrenHeight * numberOfChildNodes;
+        numberOfChildNodes >= 10 ? listNodeChildrenHeight * 10 : listNodeChildrenHeight * numberOfChildNodes;
       const spaceBottom = window.innerHeight - spaceTop - this.select.clientHeight;
       if (spaceBottom <= listNodeHeight && spaceTop >= listNodeHeight) {
         this.dropdownDirectionInternal = 'up';
@@ -359,6 +376,9 @@ export class SelectWrapper {
     } else {
       if (type === 'hide' || type === 'toggle') {
         this.fakeOptionListHidden = true;
+        if (this.filter) {
+          this.resetFilterInput();
+        }
       }
     }
   }
@@ -392,7 +412,6 @@ export class SelectWrapper {
         if (this.filter) {
           if (this.fakeOptionListHidden) {
             e.preventDefault();
-            this.resetFilterInput();
             this.handleVisibilityOfFakeOptionList('show');
           }
         } else {
@@ -512,8 +531,9 @@ export class SelectWrapper {
   private createFakeOptionList(): JSX.Element[][] {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
     return !this.filterHasResults ? (
-      <div class={prefix('select-wrapper__fake-option')}>
-        <span>---</span>
+      <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
+        <span aria-hidden="true">---</span>
+        <span class={prefix('select-wrapper__fake-option-sr')}>No results found</span>
       </div>
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
@@ -540,7 +560,7 @@ export class SelectWrapper {
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
           >
-            <span>{item.text}</span>
+            {item.text && <span>{item.text}</span>}
             {selected && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}
@@ -620,7 +640,6 @@ export class SelectWrapper {
   private handleFilterInputClick = (): void => {
     if (!this.disabled) {
       this.filterInput.focus();
-      this.resetFilterInput();
       this.handleVisibilityOfFakeOptionList('toggle');
     }
   };
