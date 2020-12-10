@@ -2,7 +2,7 @@ import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import { BreakpointCustomizable, TextSize, VariantType } from '@porsche-design-system/components/dist/types/bundle';
 
-fdescribe('headline', () => {
+describe('headline', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
