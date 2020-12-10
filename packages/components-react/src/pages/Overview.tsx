@@ -108,8 +108,8 @@ export const OverviewPage = (): JSX.Element => {
             <Headline>Default Components</Headline>
           </div>
 
-          <div className="playground light" title="should render headline for variant large">
-            <Headline variant="large">Default Components</Headline>
+          <div className="playground light" title="should render headline for breakpoints variant large">
+            <Headline variant={{ base: 'large', l: 'x-large' }}>Default Components</Headline>
           </div>
 
           <div className="playground light" title="should render default banner">
@@ -244,10 +244,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default grid">
             <Grid>
-              <GridItem size="6">
+              <GridItem size={6}>
                 <p>1</p>
               </GridItem>
-              <GridItem size="6">
+              <GridItem size={6}>
                 <p>2</p>
               </GridItem>
             </Grid>
@@ -259,8 +259,11 @@ export const OverviewPage = (): JSX.Element => {
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
           </div>
 
-          <div className="playground light" title="should render headline for variant large and custom prefix">
-            <PrefixedHeadline variant="large">Prefixed Components</PrefixedHeadline>
+          <div
+            className="playground light"
+            title="should render headline for breakpoints variant large and custom prefix"
+          >
+            <PrefixedHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PrefixedHeadline>
           </div>
 
           <div className="playground light" title="should render default banner with custom prefix">
@@ -395,10 +398,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default grid with custom prefix">
             <PrefixedGrid>
-              <PrefixedGridItem size="6">
+              <PrefixedGridItem size={6}>
                 <p>1</p>
               </PrefixedGridItem>
-              <PrefixedGridItem size="6">
+              <PrefixedGridItem size={6}>
                 <p>2</p>
               </PrefixedGridItem>
             </PrefixedGrid>
