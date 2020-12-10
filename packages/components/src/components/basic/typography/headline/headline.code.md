@@ -8,8 +8,6 @@
 Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
 There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>`, `headline-3` is compiled to `<h3>`).
 
-If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
-
 ### Default Tags
 Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
 
@@ -27,13 +25,22 @@ Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `la
 
 <Playground :markup="variant" :config="config"></Playground>
 
-### Responsive
+## Custom Variant
 
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
+
+**Hint:** When using `inherit` you have to take the [typeScale](#/components/typography#usage) values in account. If you want to generate them dynamically, we provide
+helper functions in our [utilities-package](#/utilities/js#helper)
 
 **Note:** If you choose a custom responsive size, you have to take care of your semantic tag hierarchy. It defaults to `h1` for every combination.
 
-<Playground :markup="responsive" :config="config"></Playground>
+<Playground :markup="customVariantMarkup" :config="config">
+ <select v-model="customVariant">
+    <option disabled>Select an custom variant</option>
+    <option value="{ base: 'small', l: 'medium' }" selected>Custom Breakpoints</option>
+    <option value="inherit">Inherit</option>
+  </select>
+</Playground>
 
 ---
 
@@ -86,13 +93,16 @@ This will force any text to never wrap into a new line and in case it's too long
   export default class Code extends Vue {
     config = { themeable: true };
 
+    customVariant = "{ base: 'small', l: 'medium' }";
     color = 'default';
     align = 'center';
 
     variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
-    responsive =
-`<p-headline variant="{ base: 'small', l: 'medium' }">${sentence}</p-headline>`;
+    get customVariantMarkup() {
+      const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem; line-height: 1.2;"' : '';
+      return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
+    }
 
     customTagHierarchy =
 `<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
