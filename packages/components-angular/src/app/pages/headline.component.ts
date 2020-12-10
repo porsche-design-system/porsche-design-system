@@ -56,12 +56,12 @@ import { Component } from '@angular/core';
       </p-headline>
     </div>
 
-    <div class="playground" title="should show headline for variant large">
+    <div class="playground" title="should show headline for variant customizable">
       <p-headline [variant]="{ base: 'large', l: 'x-large' }"> Lorem ipsum dolor sit amet et.</p-headline>
     </div>
 
-    <div class="playground" title="should show headline for variant large with different color">
-      <p-headline [variant]="{ base: 'large', l: 'x-large' }" color="inherit" style="color: deeppink">
+    <div class="playground" title="should show headline for variant inherit">
+      <p-headline [variant]="'inherit'" style="font-size: 3.75rem; line-height: 1.2;">
         Lorem ipsum dolor sit amet et.</p-headline
       >
     </div>
