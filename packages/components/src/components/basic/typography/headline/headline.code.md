@@ -79,7 +79,6 @@ This will force any text to never wrap into a new line and in case it's too long
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import {HEADLINE_VARIANTS} from './headlineUtils';
-  import {TEXT_SIZES} from  '../text/textUtils';
   
   const sentence = 'The quick brown fox jumps over the lazy dog';
   
