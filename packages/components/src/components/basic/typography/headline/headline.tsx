@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
 import { TextAlign, TextColor, Theme } from '../../../../types';
-import { getTagName, isHeadlineVariant, HeadlineTag, VariantType } from './headlineUtils';
+import { getTagName, isVariantType, HeadlineTag, HeadlineVariant } from './headlineUtils';
 
 @Component({
   tag: 'p-headline',
@@ -12,7 +12,7 @@ export class Headline {
   @Element() public host!: HTMLElement;
 
   /** Predefined style of the headline. */
-  @Prop() public variant?: VariantType = 'headline-1';
+  @Prop() public variant?: HeadlineVariant = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
   @Prop() public tag?: HeadlineTag;
@@ -35,10 +35,11 @@ export class Headline {
 
   public render(): JSX.Element {
     const TagName = getTagName(this.host, this.variant, this.tag);
+    const isHeadlineVariantType = isVariantType(this.variant);
 
     const headlineClasses = {
       [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariant(this.variant),
+      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariantType,
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
@@ -49,7 +50,7 @@ export class Headline {
 
     return (
       <TagName class={headlineClasses}>
-        {!isHeadlineVariant(this.variant) ? (
+        {!isHeadlineVariantType ? (
           <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
             <slot />
           </PrefixedTagNames.pText>

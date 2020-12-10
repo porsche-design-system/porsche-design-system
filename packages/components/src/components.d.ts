@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { HeadlineTag, VariantType } from "./components/basic/typography/headline/headlineUtils";
+import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headlineUtils";
 export namespace Components {
     interface PBanner {
         /**
@@ -253,7 +253,7 @@ export namespace Components {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: VariantType;
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
@@ -1152,7 +1152,7 @@ declare namespace LocalJSX {
         /**
           * Predefined style of the headline.
          */
-        "variant"?: VariantType;
+        "variant"?: HeadlineVariant;
     }
     interface PIcon {
         /**
