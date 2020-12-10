@@ -5,25 +5,25 @@ export const TextareaWrapperPage = (): JSX.Element => {
     <>
       <div className="playground light" title="should render with label">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name"></textarea>
+          <textarea name="some-name" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with label and placeholder">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+          <textarea name="some-name" placeholder="Some placeholder text" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with label, description and placeholder">
         <TextareaWrapper label="Some label" description="Some description">
-          <textarea name="some-name" placeholder="Some placeholder text"></textarea>
+          <textarea name="some-name" placeholder="Some placeholder text" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render without label and without description">
         <TextareaWrapper label="Some label" description="Some description" hideLabel={true}>
-          <textarea name="some-name"></textarea>
+          <textarea name="some-name" />
         </TextareaWrapper>
       </div>
 
@@ -31,30 +31,30 @@ export const TextareaWrapperPage = (): JSX.Element => {
         <TextareaWrapper
           label="Some label"
           description="Some description"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          <textarea name="some-name"></textarea>
+          <textarea name="some-name" />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render in required state">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" required></textarea>
+          <textarea name="some-name" required />
         </TextareaWrapper>
         <TextareaWrapper label="This is a very insanely super long label across multiple lines">
-          <textarea name="some-name" required></textarea>
+          <textarea name="some-name" required />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">
         <TextareaWrapper label="Some label" description="Some description">
-          <textarea name="some-name" disabled></textarea>
+          <textarea name="some-name" disabled />
         </TextareaWrapper>
       </div>
 
       <div className="playground light" title="should render with placeholder in disabled state">
         <TextareaWrapper label="Some label">
-          <textarea name="some-name" disabled placeholder="Some placeholder"></textarea>
+          <textarea name="some-name" disabled placeholder="Some placeholder" />
         </TextareaWrapper>
       </div>
 

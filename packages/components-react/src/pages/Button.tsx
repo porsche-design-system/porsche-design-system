@@ -135,9 +135,7 @@ export const ButtonPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render button secondary with responsive label">
-        <Button hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
-          Some label
-        </Button>
+        <Button hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</Button>
       </div>
 
       <div className="playground light" title="should render button secondary with specific icon">
