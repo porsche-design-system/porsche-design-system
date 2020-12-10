@@ -37,6 +37,10 @@
   height: 100% !important;
   display: block !important;
   padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
+  @-moz-document url-prefix() {
+    // fix for 3px text-indention in FF
+    padding-left: p-px-to-rem(8px) !important;
+  }
   margin: 0 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
