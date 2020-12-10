@@ -265,7 +265,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt wrap mode depending on viewport">
-        <Flex wrap={{ base: 'nowrap', l: 'wrap-reverse' }}>
+        <Flex wrap="{ 'base': 'nowrap', 'l': 'wrap-reverse' }">
           <FlexItem>
             <p>1</p>
           </FlexItem>
@@ -954,7 +954,7 @@ export const FlexPage = (): JSX.Element => {
           <FlexItem>
             <p>2</p>
           </FlexItem>
-          <FlexItem alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
+          <FlexItem alignSelf="{ 'base': 'flex-start', 'l': 'flex-end' }">
             <p>3</p>
           </FlexItem>
           <FlexItem>
