@@ -1,7 +1,6 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
-import { VariantType } from '@porsche-design-system/components/dist/types/bundle';
-import { HeadlineTag } from '@porsche-design-system/components/src/components/basic/typography/headline/headlineUtils';
+import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('headline', () => {
   let page: Page;
@@ -9,7 +8,7 @@ describe('headline', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initHeadline = (opts?: { variant?: VariantType; slot?: string; tag?: HeadlineTag }): Promise<void> => {
+  const initHeadline = (opts?: { variant?: HeadlineVariant; slot?: string; tag?: HeadlineTag }): Promise<void> => {
     const { variant, slot, tag } = opts;
 
     const content = (variant ? `variant="${variant}" ` : '') + (tag ? `tag="${tag}"` : '');
