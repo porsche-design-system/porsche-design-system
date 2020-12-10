@@ -50,7 +50,9 @@ describe('tabs-bar', () => {
     .join('')}
 </p-tabs-bar>${otherMarkup ?? ''}`;
 
-    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content, {
+      enableLogging: true,
+    });
   };
 
   const getHost = () => selectNode(page, 'p-tabs-bar');
@@ -630,16 +632,11 @@ describe('tabs-bar', () => {
     });
   });
 
-  describe('lifecycle', () => {
+  fdescribe('lifecycle', () => {
     it('should work without unnecessary round trips', async () => {
       await initTabsBar({ amount: 3, tag: 'a' });
 
-      expect(await getLifecycleStatus(page, 'stencil_componentWillLoad')).toEqual([
-        'p-tabs-bar',
-        'p-button-pure',
-        'p-icon',
-        'p-text',
-      ]);
+      expect(await getLifecycleStatus(page, 'componentWillLoad')).toBe(5, 'componentWillLoad:all');
     });
   });
 });
