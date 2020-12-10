@@ -1,6 +1,7 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import { BreakpointCustomizable, TextSize, VariantType } from '@porsche-design-system/components/dist/types/bundle';
+import { HeadlineTags } from '@porsche-design-system/components/src/components/basic/typography/headline/headlineUtils';
 
 describe('headline', () => {
   let page: Page;
@@ -12,7 +13,7 @@ describe('headline', () => {
     variant?: VariantType;
     size?: BreakpointCustomizable<TextSize>;
     slot?: string;
-    tag?: string;
+    tag?: HeadlineTags;
   }): Promise<void> => {
     const { variant, slot, tag } = opts;
 

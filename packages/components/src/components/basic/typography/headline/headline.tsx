@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { BreakpointCustomizable, getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
 import { TextAlign, TextColor, Theme, TextSize } from '../../../../types';
-import { HEADLINE_VARIANTS, HeadlineVariant } from './headlineUtils';
+import { HeadlineVariant, HeadlineTags, getTagName, isHeadlineVariant } from './headlineUtils';
 
 // We cannot include HeadlineVariant into generic. Those are ready to use variants with defined breakpoints.
 export type VariantType = HeadlineVariant | BreakpointCustomizable<TextSize>;
@@ -18,7 +18,7 @@ export class Headline {
   @Prop() public variant?: VariantType = 'headline-1';
 
   /** Sets a custom HTML tag depending of the usage of the headline component. */
-  @Prop() public tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  @Prop() public tag?: HeadlineTags;
 
   /** Text alignment of the component. */
   @Prop() public align?: TextAlign = 'left';
@@ -37,11 +37,11 @@ export class Headline {
   }
 
   public render(): JSX.Element {
-    const TagName = this.tagName;
+    const TagName = getTagName(this.host, this.variant, this.tag);
 
     const headlineClasses = {
       [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: this.isHeadlineVariant,
+      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariant(this.variant),
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
@@ -52,7 +52,7 @@ export class Headline {
 
     return (
       <TagName class={headlineClasses}>
-        {!this.isHeadlineVariant ? (
+        {!isHeadlineVariant(this.variant) ? (
           <PrefixedTagNames.pText size={this.variant} weight="semibold" color="inherit" tag="span">
             <slot />
           </PrefixedTagNames.pText>
@@ -61,36 +61,6 @@ export class Headline {
         )}
       </TagName>
     );
-  }
-
-  private get isHeadlineVariant(): boolean {
-    return HEADLINE_VARIANTS.includes(this.variant as HeadlineVariant);
-  }
-
-  private get tagName(): string {
-    const variantToTagMap: { [key in HeadlineVariant]: string } = {
-      'large-title': 'h1',
-      'headline-1': 'h1',
-      'headline-2': 'h2',
-      'headline-3': 'h3',
-      'headline-4': 'h4',
-      'headline-5': 'h5',
-    };
-
-    if (this.hasSlottedHeadlineTag) {
-      return 'div';
-    } else if (this.tag) {
-      return this.tag;
-    } else if (!this.isHeadlineVariant) {
-      return 'h1';
-    } else {
-      return variantToTagMap[this.variant as HeadlineVariant];
-    }
-  }
-
-  private get hasSlottedHeadlineTag(): boolean {
-    const el = this.host.querySelector(':first-child');
-    return el?.matches('h1, h2, h3, h4, h5, h6');
   }
 
   private addSlottedStyles(): void {
