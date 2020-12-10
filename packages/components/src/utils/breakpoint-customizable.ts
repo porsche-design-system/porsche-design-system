@@ -26,7 +26,8 @@ type BreakpointValues<T> = {
   [Breakpoint.xl]?: T;
 };
 
-export type BreakpointCustomizable<T> = T | BreakpointValues<T>;
+// string is needed in order to pass and parse objects via prop decorater. TODO: This should be removed in Angular/React Types to ensure typing support
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
 /* eslint-disable @typescript-eslint/indent */
 const parseJSON = (
