@@ -31,7 +31,7 @@
     <% } %>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
-    <script src="./<%= require('../scripts/getLoaderFileName.js').getLoaderFileName() %>"></script>
+    <script src="./<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
   </head>
   <body>
     <noscript>
