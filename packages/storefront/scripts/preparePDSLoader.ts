@@ -29,25 +29,18 @@ const copyAndHashLoader = (): string => {
   return loaderName;
 };
 
-const updateContent = (oldContent: string, newContent: string): string => {
+const addExportToFile = (loaderName: string): void => {
+  const configPath = path.resolve(rootDirectory, 'hashedLoaderFilename.ts');
   const separator = '/* Auto Generated Below */';
-  const separatorPosition = oldContent.indexOf(separator);
-  return `${oldContent.substr(0, separatorPosition >= 0 ? separatorPosition : undefined)}${separator}
-${newContent}`;
-};
-
-const addExportToConfig = (loaderName: string): void => {
-  const configPath = path.resolve(rootDirectory, 'storefront.config.ts');
   const loaderFilenameExport = `export const PDS_LOADER_FILENAME = '${loaderName}';`;
-  const oldContent = fs.readFileSync(configPath).toString();
-  const newContent = updateContent(oldContent, loaderFilenameExport);
-  fs.writeFileSync(configPath, newContent);
+  const content = separator + '\n' + loaderFilenameExport;
+  fs.writeFileSync(configPath, content);
 };
 
 const preparePDSLoader = () => {
   removeLoaderFile();
   const loaderName = copyAndHashLoader();
-  addExportToConfig(loaderName);
+  addExportToFile(loaderName);
 };
 
 preparePDSLoader();
