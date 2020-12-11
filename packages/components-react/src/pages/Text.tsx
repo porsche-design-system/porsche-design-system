@@ -15,7 +15,7 @@ export const TextPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should show text in different sizes on different viewports">
-        <Text size="{ base: 'small', m: 'inherit', l: 'medium' }" style={{ fontSize: 80 }}>
+        <Text size={{ base: 'small', m: 'inherit', l: 'medium' }} style={{ fontSize: 80 }}>
           The quick brown fox jumps over the lazy dog
         </Text>
       </div>

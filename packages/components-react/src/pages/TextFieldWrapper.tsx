@@ -31,7 +31,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <TextFieldWrapper
           label="Some label"
           description="Some description"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <input type="text" name="some-name" />
         </TextFieldWrapper>

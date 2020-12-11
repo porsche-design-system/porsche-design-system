@@ -107,17 +107,17 @@ export const config: StorefrontConfig = {
       ],
     },
     'Typography': {
-      Design: [
+      Text: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/typography.design.md`),
+        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
       ],
       Headline: [
         // @ts-ignore
         () => import(`@/../../components/src/components/basic/typography/headline/headline.code.md`),
       ],
-      Text: [
+      Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/basic/typography/text/text.code.md`),
+        () => import(`@/../../components/src/components/basic/typography/typography.usage.md`),
       ],
       Props: [
         // @ts-ignore

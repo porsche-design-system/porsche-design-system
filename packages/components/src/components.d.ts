@@ -5,8 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, ButtonVariant, FormState, HeadlineVariant, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
+import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headlineUtils";
 export namespace Components {
     interface PBanner {
         /**
@@ -244,13 +245,13 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
         /**
-          * Style of the headline.
+          * Predefined style of the headline.
          */
         "variant"?: HeadlineVariant;
     }
@@ -528,6 +529,10 @@ export namespace Components {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Forces rendering of native browser select dropdown
+         */
+        "native"?: boolean;
         /**
           * The validation state.
          */
@@ -1143,13 +1148,13 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
-        "tag"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
         "theme"?: Theme;
         /**
-          * Style of the headline.
+          * Predefined style of the headline.
          */
         "variant"?: HeadlineVariant;
     }
@@ -1435,6 +1440,10 @@ declare namespace LocalJSX {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Forces rendering of native browser select dropdown
+         */
+        "native"?: boolean;
         /**
           * The validation state.
          */

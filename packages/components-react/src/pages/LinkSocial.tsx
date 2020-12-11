@@ -47,7 +47,7 @@ export const LinkSocialPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with responsive label">
         <LinkSocial
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           href="https://www.facebook.com"
           icon="logo-facebook"
         >

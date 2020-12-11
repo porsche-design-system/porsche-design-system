@@ -113,7 +113,7 @@ export const LinkPage = (): JSX.Element => {
 
       <div className="playground light" title="should render secondary with responsive label">
         <Link
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           href="https://www.porsche.com"
         >
           Some label
