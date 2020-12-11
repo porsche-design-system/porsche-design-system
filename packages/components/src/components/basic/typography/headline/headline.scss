@@ -45,6 +45,11 @@
     &-headline-5 {
       @include p-headline-5;
     }
+
+    &-inherit {
+      font-size: inherit;
+      line-height: inherit;
+    }
   }
 
   &--align {

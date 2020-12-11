@@ -19,7 +19,7 @@ export const SpinnerPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show spinner in different sizes on different viewports">
-        <Spinner size="{ base: 'small', m: 'medium', l: 'large' }" />
+        <Spinner size={{ base: 'small', m: 'medium', l: 'large' }} />
       </div>
     </>
   );

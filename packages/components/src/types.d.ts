@@ -1,5 +1,6 @@
 // common type definitions
-export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
+export { TextSize } from './components/basic/typography/text/textUtils';
+export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
@@ -16,8 +17,6 @@ export type TextColor =
   | 'inherit';
 
 export type TextAlign = 'left' | 'center' | 'right';
-
-export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
 
 export type Theme = 'light' | 'dark';
 

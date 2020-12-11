@@ -107,7 +107,7 @@ selectElement.options[0].removeAttribute('selected');
   
   @Component
   export default class Code extends Vue {
-    config = { themeable: true };
+    config = { themeable: true, overflowX: 'visible' };
     
     label = 'show';
     state = 'error';
