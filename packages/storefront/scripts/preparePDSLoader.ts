@@ -30,7 +30,7 @@ const copyAndHashLoader = (): string => {
 };
 
 const addExportToFile = (loaderName: string): void => {
-  const configPath = path.resolve(rootDirectory, 'hashedLoaderFilename.ts');
+  const configPath = path.resolve(rootDirectory, 'hashedLoaderFilename.js');
   const separator = '/* Auto Generated Below */';
   const loaderFilenameExport = `export const PDS_LOADER_FILENAME = '${loaderName}';`;
   const content = separator + '\n' + loaderFilenameExport;
