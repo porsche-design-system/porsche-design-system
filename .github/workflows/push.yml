@@ -640,7 +640,7 @@ jobs:
           args: packages/assets/dist
   release-partials:
     name: 'Release Partials'
-    needs: [smoke-test, storefront-deployment]
+    needs: [smoke-test, storefront-deployment, partials]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
