@@ -6,7 +6,7 @@ const polyfills = [
   'construct-style-sheets-polyfill',
   'intersection-observer',
   'scroll-behavior-polyfill',
-  'isomorphic-fetch',
+  'whatwg-fetch',
 ];
 
 export default {
