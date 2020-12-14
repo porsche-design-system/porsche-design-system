@@ -2,11 +2,11 @@
  * TODO: Cache is shared between tests and never cleared. Evaluate solution.
  * */
 
-import { validateContent } from './icon-validation';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { IconName } from '../../../types';
-import { isUrl } from './icon-helper';
 import { camelCase } from 'change-case';
+
+const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
 export const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
 const requestCache = new Map<string, Promise<string>>();
@@ -15,7 +15,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
   let req = requestCache.get(url);
   if (req === undefined) {
     req = fetch(url).then(
-      (rsp) => (rsp.ok ? rsp.text().then(validateContent) : ''),
+      (rsp) => (rsp.ok ? rsp.text() : ''),
       () => '' // reject callback
     );
     requestCache.set(url, req);

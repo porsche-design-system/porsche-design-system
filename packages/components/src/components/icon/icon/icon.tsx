@@ -1,5 +1,5 @@
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
+import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './iconUtlis';
 import { prefix } from '../../../utils';
 import { Theme, IconName, TextColor } from '../../../types';
 
