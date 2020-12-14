@@ -13,6 +13,7 @@ import {
   waitForInheritedCSSTransition,
   expectedStyleOnFocus,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -73,7 +74,8 @@ describe('text-field-wrapper', () => {
           ${slottedDescription}
           <input type="${type}" />
           ${slottedMessage}
-        </p-text-field-wrapper>`
+        </p-text-field-wrapper>`,
+      { enableLogging: true }
     );
   };
 
@@ -496,6 +498,67 @@ describe('text-field-wrapper', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initTextField({ useSlottedLabel: true });
+      await waitForStencilLifecycle(page);
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentWillLoad:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentDidLoad:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text-field-wrapper')).toBe(
+        0,
+        'componentWillUpdate:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text-field-wrapper')).toBe(
+        0,
+        'componentDidUpdate:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidUpdate:all');
+    });
+
+    it('should work without unnecessary round trips after prop change', async () => {
+      await initTextField();
+      await waitForStencilLifecycle(page);
+
+      const host = await getHost();
+
+      await setAttribute(host, 'label', 'Some Label');
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentWillLoad:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(0, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentDidLoad:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentWillUpdate:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text-field-wrapper')).toBe(
+        1,
+        'componentDidUpdate:p-text-field-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidUpdate:all');
     });
   });
 });

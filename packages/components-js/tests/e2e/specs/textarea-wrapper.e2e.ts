@@ -12,6 +12,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -327,6 +328,36 @@ describe('textarea-wrapper', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initTextarea({ useSlottedLabel: true });
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-textarea-wrapper')).toBe(
+        1,
+        'componentWillLoad:p-textarea-wrapper'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-textarea-wrapper')).toBe(
+        1,
+        'componentDidLoad:p-textarea-wrapper'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p.text');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
+        0,
+        'componentWillUpdate:p-headline'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
+        0,
+        'componentDidUpdate:p-headline'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
     });
   });
 });
