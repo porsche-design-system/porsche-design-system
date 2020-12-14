@@ -5,34 +5,34 @@
 **Headline component** to specify headline styling and hierarchy in documents.
 
 ## Variant
-Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints.
-There are multiple predefined styling variants available. Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>`, `headline-3` is compiled to `<h3>`).
-
-### Default Tags
-Default semantic tag hierarchy equals to headline type (e.g. `headline-1` or `large-title` is compiled to `<h1>` and `headline-3` is compiled to `<h3>`).
-
-**Hint:** You always have to keep an eye on the semantic of your HTML tags. Regarding of your semantic page structure you need to set a corresponding headline tag via the `tag` property.
-
-```
-'large-title': 'h1'
-'headline-1': 'h1'
-'headline-2': 'h2'
-'headline-3': 'h3'
-'headline-4': 'h4'
-'headline-5': 'h5'
-```
-
+Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. 
+There are multiple predefined styling variants available. 
 
 <Playground :markup="variant" :config="config"></Playground>
+
+### Default Tags
+Default rendered semantic tag hierarchy equals to headline variant.
+
+**Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for **SEO** and **Accessibility**.
+Regarding of your **page structure** you need to set a **corresponding headline tag** via the `tag` property. This means, that a headline can look like an `h1` but doesn't need to be an `h1` in the document (see also section "**Custom tag hierarchy**").
+
+| Headline Variant | Rendered HTML Tag |
+| ---------------- | ----------------- |
+| `large-title`    | `<h1>`            |
+| `headline-1`     | `<h1>`            |
+| `headline-2`     | `<h2>`            |
+| `headline-3`     | `<h3>`            |
+| `headline-4`     | `<h4>`            |
+| `headline-5`     | `<h5>`            |
 
 ## Custom Variant
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
 
-**Hint:** When using `inherit` you have to take the [typeScale](#/components/typography#usage) values in account. If you want to generate them dynamically, we provide
-helper functions in our [utilities-package](#/utilities/js#helper)
+**Hint:** When using `inherit` you have to take the **[typeScale](#/components/typography#usage)** values in account. If you want to generate them dynamically, we provide
+helper functions in our **[utilities-package](#/utilities/js#helper)**.
 
-**Note:** If you choose a custom responsive size, you have to take care of your semantic tag hierarchy. It defaults to `h1` for every combination.
+**Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults to `h1` for every combination.
 
 <Playground :markup="customVariantMarkup" :config="config">
  <select v-model="customVariant">
@@ -45,7 +45,7 @@ helper functions in our [utilities-package](#/utilities/js#helper)
 ---
 
 ## Custom tag hierarchy
-If a custom tag hierarchy is needed, individual headline tags can be set from `h1` to `h6` either by referencing the corresponding `tag` property or setting the HTML headline tags directly as slots. 
+If a custom tag hierarchy is needed, **individual headline tags** can be set from `h1` to `h6` either by referencing the corresponding `tag` property or setting the HTML headline tags directly as slots. 
 
 <Playground :markup="customTagHierarchy" :config="config"></Playground>
 
@@ -100,7 +100,7 @@ This will force any text to never wrap into a new line and in case it's too long
     variant = HEADLINE_VARIANTS.map((item) => `<p-headline variant="${item}">${sentence}</p-headline>`).join('\n');
 
     get customVariantMarkup() {
-      const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem; line-height: 1.2;"' : '';
+      const style = this.customVariant === 'inherit' ? ' style="font-size: 3.75rem;"' : '';
       return `<p-headline variant="${this.customVariant}"${style}>${sentence}</p-headline>`;
     }
 
