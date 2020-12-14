@@ -600,6 +600,3 @@ export const config: StorefrontConfig = {
     ],
   },
 };
-
-/* Auto Generated Below */
-export const PDS_LOADER_FILENAME = 'pds-loader.953da6b6605c62c8d35eea91b3b48f67.js';

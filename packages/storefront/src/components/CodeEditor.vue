@@ -23,7 +23,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { color } from '@porsche-design-system/utilities';
-  import { PDS_LOADER_FILENAME } from '../../storefront.config';
+  import { PDS_LOADER_FILENAME } from '../../hashedLoaderFilename';
 
   @Component
   export default class CodeEditor extends Vue {
