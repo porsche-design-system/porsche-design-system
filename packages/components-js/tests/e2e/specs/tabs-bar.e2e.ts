@@ -632,7 +632,7 @@ describe('tabs-bar', () => {
     });
   });
 
-  fdescribe('lifecycle', () => {
+  describe('lifecycle', () => {
     it('should work without unnecessary round trips', async () => {
       await initTabsBar({ amount: 3, tag: 'a' });
 

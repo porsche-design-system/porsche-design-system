@@ -8,6 +8,7 @@ import {
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -66,6 +67,35 @@ describe('text', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initText();
+      await waitForStencilLifecycle(page);
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidUpdate:all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initText();
+      await waitForStencilLifecycle(page);
+
+      const host = await getHost();
+
+      await setAttribute(host, 'weight', 'semibold');
+      await waitForStencilLifecycle(page);
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(1, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(1, 'componentDidUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
     });
   });
 });

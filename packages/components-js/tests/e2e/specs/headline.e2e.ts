@@ -1,4 +1,4 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import { getBrowser, getLifecycleStatus, selectNode, setAttribute, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
 
@@ -21,6 +21,8 @@ describe('headline', () => {
         </p-headline>`
     );
   };
+
+  const getHost = () => selectNode(page, 'p-headline');
 
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.p-headline').tagName);
@@ -69,6 +71,93 @@ describe('headline', () => {
     it('should render as default headline if slotted content is not a headline', async () => {
       await initHeadline({ slot: '<div>Some Headline</div>' });
       expect(await getHeadlineTagName()).toBe('H1');
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initHeadline({ variant: 'headline-1' });
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
+        0,
+        'componentWillUpdate:p-headline'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
+        0,
+        'componentDidUpdate:p-headline'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidLoad:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
+    });
+
+    it('should work without unnecessary round trips with custom breakpoints', async () => {
+      await initHeadline({ variant: { base: 'small', l: 'large' } });
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
+        0,
+        'componentWillUpdate:p-headline'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
+        0,
+        'componentDidUpdate:p-headline'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initHeadline({ variant: 'headline-1' });
+      const host = await getHost();
+
+      await setAttribute(host, 'variant', 'headline-4');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
+        1,
+        'componentWillUpdate:p-headline'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
+        1,
+        'componentDidUpdate:p-headline'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidLoad:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+    });
+
+    it('should work without unnecessary round trips after state change with costum breakpoints', async () => {
+      await initHeadline({ variant: { base: 'small', l: 'large' } });
+      const host = await getHost();
+
+      await setAttribute(host, 'variant', 'headline-4');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
+        1,
+        'componentWillUpdate:p-headline'
+      );
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
+        1,
+        'componentDidUpdate:p-headline'
+      );
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
     });
   });
 });
