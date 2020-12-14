@@ -430,7 +430,7 @@ jobs:
           path: ./packages/utilities/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components, components-angular, components-react, storefront, utilities]
+    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -462,7 +462,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components, components-angular, components-react, storefront, utilities]
+    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -640,7 +640,7 @@ jobs:
           args: packages/assets/dist
   release-partials:
     name: 'Release Partials'
-    needs: [smoke-test, storefront-deployment, partials]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
