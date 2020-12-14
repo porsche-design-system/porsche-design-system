@@ -33,13 +33,13 @@ export class Icon {
   @Prop() public theme?: Theme = 'light';
 
   @State() private svgContent?: string;
-  @State() private isVisible = false;
 
+  private isVisible: boolean = false;
   private io?: IntersectionObserver;
 
   @Watch('source')
   @Watch('name')
-  public loadIcon(): void {
+  public loadIcon() {
     if (Build.isBrowser && this.isVisible) {
       this.svgContent = undefined; // reset svg content while new icon is loaded
       const url = buildIconUrl(this.source ?? this.name);
@@ -52,7 +52,7 @@ export class Icon {
     }
   }
 
-  public connectedCallback(): void {
+  public componentWillLoad(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
     // only load the svg if it's visible
@@ -60,6 +60,10 @@ export class Icon {
       this.isVisible = true;
       this.loadIcon();
     });
+  }
+
+  public componentShouldUpdate(_newValue, _oldValue, propOrStateName: string): boolean {
+    return propOrStateName !== 'name';
   }
 
   public disconnectedCallback(): void {
