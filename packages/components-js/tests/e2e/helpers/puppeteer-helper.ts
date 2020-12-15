@@ -12,10 +12,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   let lifeCycleLogger = '';
   if (options.enableLogging) {
     enableBrowserLogging(page);
-    lifeCycleLogger = `
-const eventNameLogger = eventName + (eventName.includes('Did') ? ' ' : '');
-console.log(eventNameLogger, tagName, new Date().toISOString());
-`;
+    lifeCycleLogger = `console.log(eventName + (eventName.includes('Did') ? ' ' : ''), tagName, new Date().toISOString());`;
   }
 
   await page.setContent(
@@ -61,6 +58,7 @@ console.log(eventNameLogger, tagName, new Date().toISOString());
             window.checkComponentsUpdatedPromise();
           });
 
+          // initial status
           window['${LIFECYCLE_STATUS_KEY}'] = {
             componentWillLoad: { all: 0 },
             componentDidLoad: { all: 0 },
@@ -84,8 +82,8 @@ console.log(eventNameLogger, tagName, new Date().toISOString());
               window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName]++;
               window['${LIFECYCLE_STATUS_KEY}'][eventName].all++;
 
-            // Debug helper
-            //  console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
+              // Debug helper
+              // console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
 
               ${lifeCycleLogger}
             });
