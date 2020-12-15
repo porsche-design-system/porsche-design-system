@@ -6,7 +6,7 @@ import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/asset
 import { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 
-const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
+export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
 export const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
 const requestCache = new Map<string, Promise<string>>();
