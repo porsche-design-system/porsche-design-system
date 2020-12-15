@@ -460,47 +460,33 @@ describe('button', () => {
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initButton();
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-button')).toBe(1, 'componentWillLoad:p-button');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-button')).toBe(1, 'componentDidLoad:p-button');
+      expect(status.componentDidLoad['p-button']).toBe(1, 'componentDidLoad: p-button');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-icon')).toBe(1, 'componentWillLoad:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-icon')).toBe(1, 'componentDidLoad:p-icon');
+      expect(status.componentDidUpdate['p-button']).toBe(0, 'componentDidUpdate: p-button');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
+      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
-
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-button')).toBe(0, 'componentWillUpdate:p-button');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-button')).toBe(0, 'componentDidUpdate:p-button');
-
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-icon')).toBe(1, 'componentWillUpdate:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-icon')).toBe(1, 'componentDidUpdate:p-icon');
-
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
-
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(3, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
       await initButton();
-
       const host = await getButtonHost();
 
       await setAttribute(host, 'variant', 'tertiary');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-button')).toBe(1, 'componentWillLoad:p-button');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-button')).toBe(1, 'componentDidLoad:p-button');
+      expect(status.componentDidUpdate['p-button']).toBe(1, 'componentDidUpdate: p-button');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
+      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-button')).toBe(1, 'componentWillUpdate:p-button');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-button')).toBe(1, 'componentDidUpdate:p-button');
-
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
-
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(3, 'componentDidUpdate:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(2, 'componentDidUpdate:all');
+      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
     });
   });
 });

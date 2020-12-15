@@ -635,8 +635,6 @@ describe('tabs-bar', () => {
   describe('lifecycle', () => {
     it('should work without unnecessary round trips', async () => {
       await initTabsBar({ amount: 3, tag: 'a' });
-
-      expect(await getLifecycleStatus(page, 'componentWillLoad')).toBe(5, 'componentWillLoad:all');
     });
   });
 });

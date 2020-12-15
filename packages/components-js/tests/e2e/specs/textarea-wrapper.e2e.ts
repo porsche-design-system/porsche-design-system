@@ -333,31 +333,22 @@ describe('textarea-wrapper', () => {
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initTextarea({ useSlottedLabel: true });
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedMessage: true,
+        useSlottedDescription: true,
+        state: 'error',
+      });
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-textarea-wrapper')).toBe(
-        1,
-        'componentWillLoad:p-textarea-wrapper'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-textarea-wrapper')).toBe(
-        1,
-        'componentDidLoad:p-textarea-wrapper'
-      );
+      expect(status.componentDidLoad['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(3, 'componentDidLoad: p-text');
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p.text');
+      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(0, 'componentDidUpdate: p-textarea-wrapper');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidLoad: p-text');
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
-        0,
-        'componentWillUpdate:p-headline'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
-        0,
-        'componentDidUpdate:p-headline'
-      );
-
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
   });
 });
