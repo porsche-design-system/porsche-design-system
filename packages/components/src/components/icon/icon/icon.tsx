@@ -47,6 +47,8 @@ export class Icon {
   }
 
   public componentShouldUpdate(_newValue, _oldValue, propOrStateName: string): boolean {
+    // we don't care about a changes of the 'name' prop since this doesn't affect a rerender
+    // and the new svg is loaded in the background
     return propOrStateName !== 'name';
   }
 
@@ -71,22 +73,20 @@ export class Icon {
 
   private initIntersectionObserver(): void {
     if (this.lazy && isBrowser()) {
+      // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
-        // Load icon only if it is in viewport
         this.intersectionObserver = new IntersectionObserver(
-          (data) => {
-            if (data[0].isIntersecting) {
-              console.log(this.intersectionObserver, 'intersection Obs');
-              this.intersectionObserver.disconnect();
-              console.log(this.intersectionObserver, 'intersection Obs');
+          (entries, observer) => {
+            if (entries[0].isIntersecting) {
+              observer.unobserve(this.host);
               this.loadIcon();
             }
           },
           { rootMargin: '50px' }
         );
-
-        this.intersectionObserver.observe(this.host);
       }
+
+      this.intersectionObserver.observe(this.host);
     } else {
       this.loadIcon();
     }
