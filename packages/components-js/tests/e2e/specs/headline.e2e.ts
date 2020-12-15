@@ -1,4 +1,11 @@
-import { getBrowser, getLifecycleStatus, selectNode, setAttribute, setContentWithDesignSystem } from '../helpers';
+import {
+  getBrowser,
+  getLifecycleStatus,
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForStencilLifecycle,
+} from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
 
@@ -77,46 +84,27 @@ describe('headline', () => {
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initHeadline({ variant: 'headline-1' });
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
+      expect(status.componentDidUpdate['p-headline']).toBe(0, 'componentDidUpdate: p-headline');
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
-        0,
-        'componentWillUpdate:p-headline'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
-        0,
-        'componentDidUpdate:p-headline'
-      );
-
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips with custom breakpoints', async () => {
       await initHeadline({ variant: { base: 'small', l: 'large' } });
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-headline')).toBe(1, 'componentWillLoad:p-headline');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-headline')).toBe(1, 'componentDidLoad:p-headline');
+      expect(status.componentDidUpdate['p-headline']).toBe(0, 'componentDidUpdate: p-headline');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
-        0,
-        'componentWillUpdate:p-headline'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
-        0,
-        'componentDidUpdate:p-headline'
-      );
-
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
-
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(0, 'componentDidUpdate:all');
+      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -124,40 +112,28 @@ describe('headline', () => {
       const host = await getHost();
 
       await setAttribute(host, 'variant', 'headline-4');
+      await waitForStencilLifecycle(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
-        1,
-        'componentWillUpdate:p-headline'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
-        1,
-        'componentDidUpdate:p-headline'
-      );
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
 
-    it('should work without unnecessary round trips after state change with costum breakpoints', async () => {
+    it('should work without unnecessary round trips after state change with custom breakpoints', async () => {
       await initHeadline({ variant: { base: 'small', l: 'large' } });
       const host = await getHost();
 
       await setAttribute(host, 'variant', 'headline-4');
+      await waitForStencilLifecycle(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-headline')).toBe(
-        1,
-        'componentWillUpdate:p-headline'
-      );
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-headline')).toBe(
-        1,
-        'componentDidUpdate:p-headline'
-      );
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
+      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
 
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

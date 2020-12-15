@@ -154,13 +154,13 @@ describe('p-icon', () => {
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initIcon();
+      const status = await getLifecycleStatus(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-icon')).toBe(1, 'componentWillLoad:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-icon')).toBe(1, 'componentDidLoad:p-icon');
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-icon')).toBe(1, 'componentWillUpdate:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-icon')).toBe(1, 'componentDidUpdate:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(1, 'componentDidLoad:all');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -170,11 +170,13 @@ describe('p-icon', () => {
       await setAttribute(host, 'name', 'car');
       await waitForStencilLifecycle(page);
 
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-icon')).toBe(1, 'componentWillLoad:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-icon')).toBe(1, 'componentDidLoad:p-icon');
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-icon')).toBe(3, 'componentWillUpdate:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-icon')).toBe(3, 'componentDidUpdate:p-icon');
-      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(3, 'componentDidUpdate:all');
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(3, 'componentDidUpdate: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(3, 'componentDidUpdate: all');
     });
   });
 });
