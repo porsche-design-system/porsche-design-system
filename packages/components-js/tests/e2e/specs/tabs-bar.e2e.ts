@@ -37,7 +37,7 @@ describe('tabs-bar', () => {
     otherMarkup?: string;
     tag?: 'a' | 'button';
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup = '', tag } = opts ?? {};
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
