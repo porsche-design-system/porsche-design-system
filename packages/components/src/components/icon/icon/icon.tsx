@@ -38,7 +38,7 @@ export class Icon {
 
   @Watch('source')
   @Watch('name')
-  watcherCallback() {
+  public watcherCallback(): void {
     this.initIntersectionObserver();
   }
 
@@ -46,7 +46,7 @@ export class Icon {
     this.initIntersectionObserver();
   }
 
-  public componentShouldUpdate(_newValue, _oldValue, propOrStateName: string): boolean {
+  public componentShouldUpdate(_newValue: unknown, _oldValue: unknown, propOrStateName: string): boolean {
     // we don't care about a changes of the 'name' prop since this doesn't affect a rerender
     // and the new svg is loaded in the background
     return propOrStateName !== 'name';
@@ -61,7 +61,7 @@ export class Icon {
       [prefix('icon')]: true,
       [prefix(`icon--size-${this.size}`)]: true,
       [prefix(`icon--color-${this.color}`)]: true,
-      [prefix(`icon--theme-dark`)]: this.theme === 'dark' && this.color !== 'inherit',
+      [prefix('icon--theme-dark')]: this.theme === 'dark' && this.color !== 'inherit',
     };
 
     return (
@@ -92,7 +92,7 @@ export class Icon {
     }
   }
 
-  private loadIcon = () => {
+  private loadIcon = (): void => {
     this.svgContent = undefined; // reset svg content while new icon is loaded
     const url = buildIconUrl(this.source ?? this.name);
     getSvgContent(url).then((iconContent) => {
