@@ -4,6 +4,8 @@ import { waitForComponentsReady } from './stencil';
 type Options = NavigationOptions & { enableLogging?: boolean };
 const defaultOptions: Options = { waitUntil: 'networkidle0' };
 
+export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
+
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = { ...defaultOptions, ...opts };
 
@@ -11,12 +13,9 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   if (options.enableLogging) {
     enableBrowserLogging(page);
     lifeCycleLogger = `
-    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-      window.addEventListener(\`stencil_\${x}\`, (e) => {
-        const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-        console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-      })
-    );`;
+const eventNameLogger = eventName + (eventName.includes('Did') ? ' ' : '');
+console.log(eventNameLogger, tagName, new Date().toISOString());
+`;
   }
 
   await page.setContent(
@@ -62,14 +61,36 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
             window.checkComponentsUpdatedPromise();
           });
 
-          for (let lifecycle of ['stencil_componentWillLoad', 'stencil_componentDidLoad', 'stencil_componentWillUpdate', 'stencil_componentDidUpdate']) {
-            window[lifecycle] = [];
-            window.addEventListener(lifecycle, (e) => {
-              window[lifecycle].push(e.composedPath()[0].tagName.toLowerCase());
-            });
-          }
+          window['${LIFECYCLE_STATUS_KEY}'] = {
+            componentWillLoad: { all: 0 },
+            componentDidLoad: { all: 0 },
+            componentWillUpdate: { all: 0 },
+            componentDidUpdate: { all: 0 }
+          };
 
-          ${lifeCycleLogger}
+          const hooks = ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'];
+          for (let hook of hooks) {
+            window.addEventListener(\`stencil_\${hook}\`, (e) => {
+              const eventName = e.type.replace('stencil_', '');
+              const tagName = e.composedPath()[0].tagName.toLowerCase();
+
+              if (window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName] === undefined) {
+                // to ensure the lifecycle hook is not undefined in our e2e test, we have to initialize it
+                for (let hook of hooks) {
+                  window['${LIFECYCLE_STATUS_KEY}'][hook][tagName] = 0;
+                }
+              }
+
+              window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName]++;
+              window['${LIFECYCLE_STATUS_KEY}'][eventName].all++;
+
+            // Debug helper
+            //  console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
+
+              ${lifeCycleLogger}
+            });
+          };
+
         </script>
         ${content}
       </body>

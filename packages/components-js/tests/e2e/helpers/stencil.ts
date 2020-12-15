@@ -1,5 +1,6 @@
 import { Page } from 'puppeteer';
 import { TagName } from '@porsche-design-system/components/src/tags';
+import { LIFECYCLE_STATUS_KEY } from './puppeteer-helper';
 
 export const waitForComponentsReady = async (page: Page): Promise<void> => {
   await page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
@@ -15,19 +16,14 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
   );
 };
 
-type Lifecycle = 'componentWillLoad' | 'componentDidLoad' | 'componentWillUpdate' | 'componentDidUpdate';
-export const getLifecycleStatus = async (
-  page: Page,
-  type: Lifecycle,
-  element: TagName = undefined
-): Promise<number> => {
-  return await page.evaluate(
-    (opts: { type: Lifecycle; element: TagName }) => {
-      if (opts.element === undefined) {
-        return window[`stencil_${opts.type}`].length;
-      }
-      return window[`stencil_${opts.type}`].filter((v) => v == opts.element).length;
-    },
-    { type, element }
-  );
+type LifecycleStatus = {
+  [key in LifecycleHook]: { [key in TagName | 'all']?: number };
+};
+
+type LifecycleHook = 'componentWillLoad' | 'componentDidLoad' | 'componentWillUpdate' | 'componentDidUpdate';
+
+export const getLifecycleStatus = async (page: Page): Promise<LifecycleStatus> => {
+  return await page.evaluate((LIFECYCLE_STATUS_KEY: string) => {
+    return window[LIFECYCLE_STATUS_KEY];
+  }, LIFECYCLE_STATUS_KEY);
 };
