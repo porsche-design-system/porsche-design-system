@@ -517,9 +517,9 @@ describe('text-field-wrapper', () => {
 
       expect(status.componentDidUpdate['p-text-field-wrapper']).toBe(0, 'componentDidUpdate: p-text-field-wrapper');
       expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidUpdate: p-icon');
 
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
       expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
     });
 
@@ -533,10 +533,13 @@ describe('text-field-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+
       expect(status.componentDidUpdate['p-text-field-wrapper']).toBe(1, 'componentDidUpdate: p-text-field-wrapper');
       expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
 
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
     });
   });
 });

@@ -139,7 +139,6 @@ describe('p-icon', () => {
       await initIcon('highway');
 
       const iconComponent = await getHost();
-      const shadowIcon = await getIcon();
       expect(await getContent()).toContain('highway');
 
       await iconComponent.evaluate((el) => el.removeAttribute('name'));
@@ -160,10 +159,10 @@ describe('p-icon', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidUpdate: p-icon');
 
       expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips after state change', async () => {
@@ -176,10 +175,10 @@ describe('p-icon', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
-      expect(status.componentDidUpdate['p-icon']).toBe(3, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
 
       expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(3, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

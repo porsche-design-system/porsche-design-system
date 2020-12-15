@@ -468,10 +468,10 @@ describe('button', () => {
 
       expect(status.componentDidUpdate['p-button']).toBe(0, 'componentDidUpdate: p-button');
       expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidUpdate: p-icon');
 
       expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -484,9 +484,9 @@ describe('button', () => {
 
       expect(status.componentDidUpdate['p-button']).toBe(1, 'componentDidUpdate: p-button');
       expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
-      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidUpdate: p-icon');
 
-      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });
