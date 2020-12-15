@@ -36,7 +36,7 @@ describe('p-icon', () => {
   const initIcon = async (opts?: { name?: string }): Promise<void> => {
     const { name = '' } = opts ?? {};
 
-    await setContentWithDesignSystem(page, `<p-icon name="${name}"></p-icon>`, { enableLogging: true });
+    await setContentWithDesignSystem(page, `<p-icon name="${name}"></p-icon>`);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
@@ -151,7 +151,7 @@ describe('p-icon', () => {
     expect(responseCounter).toEqual(2);
   });
 
-  fdescribe('lifecycle', () => {
+  describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initIcon();
 
@@ -168,6 +168,7 @@ describe('p-icon', () => {
       const host = await getHost();
 
       await setAttribute(host, 'name', 'car');
+      await waitForStencilLifecycle(page);
 
       expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-icon')).toBe(1, 'componentWillLoad:p-icon');
       expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-icon')).toBe(1, 'componentDidLoad:p-icon');
