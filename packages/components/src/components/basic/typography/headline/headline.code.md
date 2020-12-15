@@ -26,11 +26,9 @@ Regarding of your **page structure** you need to set a **corresponding headline 
 | `headline-5`     | `<h5>`            |
 
 ## Custom Variant
+If you need more control over sizing and responsiveness, you can use predefined text sizes on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
 
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
-
-**Hint:** When using `inherit` you have to take the **[typeScale](#/components/typography#usage)** values in account. If you want to generate them dynamically, we provide
-helper functions in our **[utilities-package](#/utilities/js#helper)**.
+**Hint:** When using `inherit` you have to take the **[typeScale](#/components/typography#usage)** values in account.
 
 **Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults to `h1` for every combination.
 
