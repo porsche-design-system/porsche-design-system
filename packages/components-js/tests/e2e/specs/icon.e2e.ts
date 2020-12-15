@@ -17,19 +17,19 @@ describe('p-icon', () => {
   beforeEach(async () => {
     page = await getBrowser().newPage();
 
-    // await page.setRequestInterception(true);
-    //
-    // responseCounter = 0;
-    // page.removeAllListeners('response');
-    // page.on('response', (resp) => {
-    //   const url = resp.url();
-    //
-    //   if (url.endsWith('.svg')) {
-    //     const iconName = url.match(/icons\/(.*)\.min/)[1];
-    //     console.log(`RESP ${responseCounter}: icon = ${iconName}, time = ${timeLogger()}`);
-    //     responseCounter++;
-    //   }
-    // });
+    await page.setRequestInterception(true);
+
+    responseCounter = 0;
+    page.removeAllListeners('response');
+    page.on('response', (resp) => {
+      const url = resp.url();
+
+      if (url.endsWith('.svg')) {
+        // const iconName = url.match(/icons\/(.*)\.min/)[1];
+        // console.log(`RESP ${responseCounter}: icon = ${iconName}, time = ${timeLogger()}`);
+        responseCounter++;
+      }
+    });
   });
   afterEach(async () => await page.close());
 
@@ -58,7 +58,7 @@ describe('p-icon', () => {
         const iconName = url.match(/icons\/(.*)\.min/)[1];
         const delay = timeouts[svgRequestCounter] ?? 0;
 
-        console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
+        // console.log(`REQ ${svgRequestCounter}: delay = ${delay}, icon = ${iconName}, time = ${timeLogger()}`);
         setTimeout(() => {
           req.respond({
             status: 200,
