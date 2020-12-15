@@ -1,4 +1,4 @@
-import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './iconUtlis';
 import { isBrowser, prefix } from '../../../utils';
 import { Theme, IconName, TextColor } from '../../../types';
@@ -9,7 +9,7 @@ import { Theme, IconName, TextColor } from '../../../types';
   shadow: true,
 })
 export class Icon {
-  @Element() public el!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** Specifies which icon to use. */
   @Prop() public name?: IconName = DEFAULT_ICON_NAME;
@@ -34,32 +34,16 @@ export class Icon {
 
   @State() private svgContent?: string;
 
-  private isVisible: boolean = false;
-  private io?: IntersectionObserver;
+  private intersectionObserver?: IntersectionObserver;
 
   @Watch('source')
   @Watch('name')
-  public loadIcon() {
-    if (Build.isBrowser && this.isVisible) {
-      this.svgContent = undefined; // reset svg content while new icon is loaded
-      const url = buildIconUrl(this.source ?? this.name);
-      getSvgContent(url).then((iconContent) => {
-        // check if response matches current icon source
-        if (url === buildIconUrl(this.source ?? this.name)) {
-          this.svgContent = iconContent;
-        }
-      });
-    }
+  watcherCallback() {
+    this.initIntersectionObserver();
   }
 
   public componentWillLoad(): void {
-    // purposely do not return the promise here because loading
-    // the svg file should not hold up loading the app
-    // only load the svg if it's visible
-    this.waitUntilVisible(this.el, '50px', () => {
-      this.isVisible = true;
-      this.loadIcon();
-    });
+    this.initIntersectionObserver();
   }
 
   public componentShouldUpdate(_newValue, _oldValue, propOrStateName: string): boolean {
@@ -67,10 +51,7 @@ export class Icon {
   }
 
   public disconnectedCallback(): void {
-    if (this.io) {
-      this.io.disconnect();
-      this.io = undefined;
-    }
+    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
@@ -88,24 +69,37 @@ export class Icon {
     );
   }
 
-  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
-    if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
-      const io = (this.io = new (window as any).IntersectionObserver(
-        (data: IntersectionObserverEntry[]) => {
-          if (data[0].isIntersecting) {
-            io.disconnect();
-            this.io = undefined;
-            cb();
-          }
-        },
-        { rootMargin }
-      ));
+  private initIntersectionObserver(): void {
+    if (this.lazy && isBrowser()) {
+      if (!this.intersectionObserver) {
+        // Load icon only if it is in viewport
+        this.intersectionObserver = new IntersectionObserver(
+          (data) => {
+            if (data[0].isIntersecting) {
+              console.log(this.intersectionObserver, 'intersection Obs');
+              this.intersectionObserver.disconnect();
+              console.log(this.intersectionObserver, 'intersection Obs');
+              this.loadIcon();
+            }
+          },
+          { rootMargin: '50px' }
+        );
 
-      io.observe(el);
+        this.intersectionObserver.observe(this.host);
+      }
     } else {
-      // browser doesn't support IntersectionObserver
-      // so just fallback to always show it
-      cb();
+      this.loadIcon();
     }
   }
+
+  private loadIcon = () => {
+    this.svgContent = undefined; // reset svg content while new icon is loaded
+    const url = buildIconUrl(this.source ?? this.name);
+    getSvgContent(url).then((iconContent) => {
+      // check if response matches current icon source
+      if (url === buildIconUrl(this.source ?? this.name)) {
+        this.svgContent = iconContent;
+      }
+    });
+  };
 }
