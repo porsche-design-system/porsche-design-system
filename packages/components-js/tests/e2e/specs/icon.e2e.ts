@@ -8,6 +8,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
+import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('p-icon', () => {
   let page: Page;
@@ -33,10 +34,9 @@ describe('p-icon', () => {
   });
   afterEach(async () => await page.close());
 
-  const initIcon = async (opts?: { name?: string }): Promise<void> => {
-    const { name = '' } = opts ?? {};
-
-    await setContentWithDesignSystem(page, `<p-icon name="${name}"></p-icon>`);
+  const initIcon = async (name?: IconName): Promise<void> => {
+    const attributes = name ? ` name="${name}"` : '';
+    await setContentWithDesignSystem(page, `<p-icon${attributes}></p-icon>`);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
@@ -76,7 +76,7 @@ describe('p-icon', () => {
   it('should have only one response for default icon', async () => {
     await setSvgRequestInterceptor(page, []);
     // render with default icon "arrow-head-right"
-    await setContentWithDesignSystem(page, `<p-icon></p-icon>`);
+    await initIcon();
 
     expect(await getContent()).toContain('arrow-head-right');
     expect(responseCounter).toEqual(1);
@@ -116,7 +116,7 @@ describe('p-icon', () => {
    */
   it('should unset previous icon if name prop is changed', async () => {
     await setSvgRequestInterceptor(page, [0, 1000]);
-    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
+    await initIcon('highway');
 
     const iconComponent = await getHost();
     expect(await getContent()).toContain('highway');
@@ -134,7 +134,7 @@ describe('p-icon', () => {
 
   it('should unset previous icon if name prop is removed', async () => {
     await setSvgRequestInterceptor(page, [2000]);
-    await setContentWithDesignSystem(page, `<p-icon name="highway"></p-icon>`);
+    await initIcon('highway');
 
     const iconComponent = await getHost();
     const shadowIcon = await getIcon();
@@ -164,7 +164,7 @@ describe('p-icon', () => {
     });
 
     it('should work without unnecessary round trips after state change', async () => {
-      await initIcon({ name: 'highway' });
+      await initIcon('highway');
       const host = await getHost();
 
       await setAttribute(host, 'name', 'car');
