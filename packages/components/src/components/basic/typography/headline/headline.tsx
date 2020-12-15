@@ -39,7 +39,7 @@ export class Headline {
 
     const headlineClasses = {
       [prefix('headline')]: true,
-      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariantType,
+      [prefix(`headline--variant-${this.variant}`)]: isHeadlineVariantType || this.variant === 'inherit',
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
