@@ -61,7 +61,7 @@ export class Icon {
       [prefix('icon')]: true,
       [prefix(`icon--size-${this.size}`)]: true,
       [prefix(`icon--color-${this.color}`)]: true,
-      [prefix(`icon--theme-${this.theme}`)]: this.color !== 'inherit',
+      [prefix(`icon--theme-dark`)]: this.theme === 'dark' && this.color !== 'inherit',
     };
 
     return (
