@@ -1,7 +1,8 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './iconUtlis';
 import { isBrowser, prefix } from '../../../utils';
 import { Theme, IconName, TextColor } from '../../../types';
+import { getShadowRootHTMLElement } from '../../../utils/selector-helper';
 
 @Component({
   tag: 'p-icon',
@@ -37,12 +38,6 @@ export class Icon {
   private intersectionObserver?: IntersectionObserver;
   private iconEl: HTMLElement;
 
-  @Watch('source')
-  @Watch('name')
-  public watcherCallback(): void {
-    this.initIntersectionObserver();
-  }
-
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
   }
@@ -52,7 +47,7 @@ export class Icon {
   }
 
   public componentDidLoad(): void {
-    this.iconEl = this.host.querySelector('i');
+    this.iconEl = getShadowRootHTMLElement(this.host, 'i');
   }
 
   public disconnectedCallback(): void {
