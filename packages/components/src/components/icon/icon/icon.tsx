@@ -35,6 +35,7 @@ export class Icon {
   @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
+  private iconEl: HTMLElement;
 
   @Watch('source')
   @Watch('name')
@@ -42,14 +43,16 @@ export class Icon {
     this.initIntersectionObserver();
   }
 
-  public componentWillLoad(): void {
-    this.initIntersectionObserver();
+  public componentWillLoad(): Promise<void> {
+    return this.initIntersectionObserver();
   }
 
-  public componentShouldUpdate(_newValue: unknown, _oldValue: unknown, propOrStateName: string): boolean {
-    // we don't care about a changes of the 'name' prop since this doesn't affect a rerender
-    // and the new svg is loaded in the background
-    return propOrStateName !== 'name';
+  public componentWillUpdate(): Promise<void> {
+    return this.initIntersectionObserver();
+  }
+
+  public componentDidLoad(): void {
+    this.iconEl = this.host.querySelector('i');
   }
 
   public disconnectedCallback(): void {
@@ -71,7 +74,7 @@ export class Icon {
     );
   }
 
-  private initIntersectionObserver(): void {
+  private async initIntersectionObserver(): Promise<void> {
     if (this.lazy && isBrowser()) {
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
@@ -88,14 +91,17 @@ export class Icon {
 
       this.intersectionObserver.observe(this.host);
     } else {
-      this.loadIcon();
+      return this.loadIcon();
     }
   }
 
-  private loadIcon = (): void => {
-    this.svgContent = undefined; // reset svg content while new icon is loaded
+  private loadIcon = (): Promise<void> => {
+    // Reset old icon
+    if (this.iconEl) {
+      this.iconEl.innerHTML = '';
+    }
     const url = buildIconUrl(this.source ?? this.name);
-    getSvgContent(url).then((iconContent) => {
+    return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
       if (url === buildIconUrl(this.source ?? this.name)) {
         this.svgContent = iconContent;
