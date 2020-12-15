@@ -74,8 +74,7 @@ describe('text-field-wrapper', () => {
           ${slottedDescription}
           <input type="${type}" />
           ${slottedMessage}
-        </p-text-field-wrapper>`,
-      { enableLogging: true }
+        </p-text-field-wrapper>`
     );
   };
 
@@ -503,30 +502,47 @@ describe('text-field-wrapper', () => {
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initTextField({ useSlottedLabel: true });
+      await initTextField({
+        useSlottedLabel: true,
+        useSlottedDescription: true,
+        useSlottedMessage: true,
+        state: 'error',
+        type: 'password',
+      });
       await waitForStencilLifecycle(page);
 
       expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text-field-wrapper')).toBe(
         1,
         'componentWillLoad:p-text-field-wrapper'
       );
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
       expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text-field-wrapper')).toBe(
         1,
         'componentDidLoad:p-text-field-wrapper'
       );
-      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(3, 'componentWillLoad:p-text');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(3, 'componentDidLoad:p-text');
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-icon')).toBe(1, 'componentWillLoad:p-icon');
+      expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-icon')).toBe(1, 'componentDidLoad:p-icon');
+
       expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text-field-wrapper')).toBe(
         0,
         'componentWillUpdate:p-text-field-wrapper'
       );
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
       expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text-field-wrapper')).toBe(
         0,
         'componentDidUpdate:p-text-field-wrapper'
       );
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
       expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidUpdate:all');
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-icon')).toBe(1, 'componentWillUpdate:p-icon');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-icon')).toBe(1, 'componentDidUpdate:p-icon');
+
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(5, 'componentDidLoad:all');
     });
 
     it('should work without unnecessary round trips after prop change', async () => {
@@ -536,29 +552,34 @@ describe('text-field-wrapper', () => {
       const host = await getHost();
 
       await setAttribute(host, 'label', 'Some Label');
+      await waitForStencilLifecycle(page);
 
       expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text-field-wrapper')).toBe(
         1,
         'componentWillLoad:p-text-field-wrapper'
       );
-      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(0, 'componentWillLoad:p-text');
       expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text-field-wrapper')).toBe(
         1,
         'componentDidLoad:p-text-field-wrapper'
       );
+
+      expect(await getLifecycleStatus(page, 'componentWillLoad', 'p-text')).toBe(1, 'componentWillLoad:p-text');
       expect(await getLifecycleStatus(page, 'componentDidLoad', 'p-text')).toBe(1, 'componentDidLoad:p-text');
+
       expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text-field-wrapper')).toBe(
         1,
         'componentWillUpdate:p-text-field-wrapper'
       );
-      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
       expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text-field-wrapper')).toBe(
         1,
         'componentDidUpdate:p-text-field-wrapper'
       );
+
+      expect(await getLifecycleStatus(page, 'componentWillUpdate', 'p-text')).toBe(0, 'componentWillUpdate:p-text');
       expect(await getLifecycleStatus(page, 'componentDidUpdate', 'p-text')).toBe(0, 'componentDidUpdate:p-text');
 
-      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidUpdate:all');
+      expect(await getLifecycleStatus(page, 'componentDidUpdate')).toBe(1, 'componentDidUpdate:all');
+      expect(await getLifecycleStatus(page, 'componentDidLoad')).toBe(2, 'componentDidLoad:all');
     });
   });
 });
