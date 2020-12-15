@@ -37,22 +37,16 @@ describe('tabs-bar', () => {
     otherMarkup?: string;
     tag?: 'a' | 'button';
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup, tag } = opts ?? {};
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup = '', tag } = opts ?? {};
 
+    const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map(
-      (_, i) =>
-        `<${tag === 'a' ? 'a onclick="return false" href="#"' : 'button'}>Tab Button ${i + 1}</${
-          tag === 'a' ? 'a' : 'button'
-        }>`
-    )
+    .map((_, i) => `<${tag}${attributes}>Tab Button ${i + 1}</${tag}>`)
     .join('')}
-</p-tabs-bar>${otherMarkup ?? ''}`;
+</p-tabs-bar>${otherMarkup}`;
 
-    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content, {
-      enableLogging: true,
-    });
+    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
   };
 
   const getHost = () => selectNode(page, 'p-tabs-bar');
