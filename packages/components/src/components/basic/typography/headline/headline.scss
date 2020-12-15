@@ -14,6 +14,8 @@
   margin: 0 !important;
   font-weight: $p-font-weight-semibold !important;
   font-size: inherit !important;
+  font-family: inherit !important;
+  line-height: inherit;
 }
 
 .#{$p-global-class-prefix}headline {
@@ -44,11 +46,6 @@
 
     &-headline-5 {
       @include p-headline-5;
-    }
-
-    &-inherit {
-      font-size: inherit;
-      line-height: inherit;
     }
   }
 
