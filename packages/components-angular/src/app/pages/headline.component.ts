@@ -60,10 +60,52 @@ import { Component } from '@angular/core';
       <p-headline [variant]="{ base: 'large', l: 'x-large' }"> Lorem ipsum dolor sit amet et.</p-headline>
     </div>
 
-    <div class="playground" title="should show headline for variant inherit">
-      <p-headline [variant]="'inherit'" style="font-size: 3.75rem; line-height: 1.2;">
-        Lorem ipsum dolor sit amet et.</p-headline
-      >
+    <div class="playground" title="should consider only font-size definition on host element for variant inherit">
+      <div style="height: 72px; border-left: 10px solid deeppink">
+        <p-headline
+          [variant]="'inherit'"
+          style="
+        font-size: 60px;
+        line-height: 10;
+        font-family: serif;
+        font-weight: 100;
+        color: deeppink;
+        text-align: right;
+        border-left: 10px solid deepskyblue;
+      "
+          >ABC</p-headline
+        >
+      </div>
+      <br />
+      <div style="height: 72px; border-left: 10px solid deeppink">
+        <p-headline
+          [variant]="'inherit'"
+          style="
+        font-size: 60px;
+        line-height: 10;
+        font-family: serif;
+        font-weight: 100;
+        color: deeppink;
+        text-align: right;
+        border-left: 10px solid deepskyblue;
+      "
+        >
+          <h3
+            style="
+          margin: 100px;
+          padding: 100px;
+          font-size: 200px;
+          line-height: 5;
+          font-family: serif;
+          font-weight: 100;
+          color: deeppink;
+          text-align: right;
+        "
+          >
+            ABC
+          </h3>
+        </p-headline>
+      </div>
     </div>
   `,
 })

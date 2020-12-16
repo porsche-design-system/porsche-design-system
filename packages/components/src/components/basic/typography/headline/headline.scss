@@ -11,9 +11,14 @@
 ::slotted(h4),
 ::slotted(h5),
 ::slotted(h6) {
-  margin: 0 !important;
-  font-weight: $p-font-weight-semibold !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
   font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
 }
 
 .#{$p-global-class-prefix}headline {
@@ -47,8 +52,8 @@
     }
 
     &-inherit {
+      // line-height: inherit; <== won't have any effect because of expected p-text type scale calculation
       font-size: inherit;
-      line-height: inherit;
     }
   }
 
