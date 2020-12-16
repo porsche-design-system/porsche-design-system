@@ -36,7 +36,6 @@ export class Icon {
   @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
-  private iconEl: HTMLElement;
 
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
@@ -44,10 +43,6 @@ export class Icon {
 
   public componentWillUpdate(): Promise<void> {
     return this.initIntersectionObserver();
-  }
-
-  public componentDidLoad(): void {
-    this.iconEl = getShadowRootHTMLElement(this.host, 'i');
   }
 
   public disconnectedCallback(): void {
@@ -91,10 +86,14 @@ export class Icon {
   }
 
   private loadIcon = (): Promise<void> => {
-    // Reset old icon
-    if (this.iconEl) {
-      this.iconEl.innerHTML = '';
+    if (this.svgContent) {
+      // reset old icon if there is any
+      const el = getShadowRootHTMLElement(this.host, 'i');
+      if (el) {
+        el.innerHTML = '';
+      }
     }
+
     const url = buildIconUrl(this.source ?? this.name);
     return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
