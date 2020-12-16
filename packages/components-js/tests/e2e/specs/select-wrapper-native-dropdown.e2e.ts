@@ -16,7 +16,7 @@ import {
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-describe('select-wrapper', () => {
+describe('select-wrapper-native-dropdown', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -207,7 +207,7 @@ describe('select-wrapper', () => {
   });
 
   fdescribe('focus state', () => {
-    fit('should be shown by keyboard navigation and on click for slotted <select>', async () => {
+    fit('should be shown on click for slotted <select>', async () => {
       await initSelect();
 
       const select = await getSelect();
@@ -219,10 +219,17 @@ describe('select-wrapper', () => {
       await select.click();
 
       expect(await getOutlineStyle(select)).toBe(visible, 'after click');
+    });
 
-      await page.keyboard.down('ShiftLeft');
-      await page.keyboard.press('Tab');
-      await page.keyboard.up('ShiftLeft');
+    fit('should be shown by keyboard navigation for slotted <select>', async () => {
+      await initSelect();
+
+      const select = await getSelect();
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'neutral' });
+
+      expect(await getOutlineStyle(select)).toBe(hidden);
+
       await page.keyboard.press('Tab');
 
       expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
