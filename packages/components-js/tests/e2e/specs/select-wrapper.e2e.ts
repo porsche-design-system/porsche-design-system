@@ -12,6 +12,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -38,19 +39,22 @@ describe('select-wrapper', () => {
     useSlottedLabel?: boolean;
     useSlottedDescription?: boolean;
     useSlottedMessage?: boolean;
+    isNative?: boolean;
     state?: FormState;
   };
-  const initSelect = (
-    { useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: InitOptions = {
-      useSlottedLabel: false,
-      useSlottedDescription: false,
-      useSlottedMessage: false,
-      state: 'none',
-    }
-  ): Promise<void> => {
+  const initSelect = (opts?: InitOptions): Promise<void> => {
+    const {
+      useSlottedLabel = false,
+      useSlottedDescription = false,
+      useSlottedMessage = false,
+      isNative = false,
+      state = 'none',
+    } = opts ?? {};
+
     const label = !useSlottedLabel ? 'label="Some label"' : '';
     const description = !useSlottedDescription ? 'description="Some description"' : '';
     const message = !useSlottedMessage ? 'message="Some message"' : '';
+    const native = isNative ? 'native="true"' : '';
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
@@ -64,7 +68,7 @@ describe('select-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-select-wrapper state="${state}" ${label} ${description} ${message}>
+        <p-select-wrapper state="${state}" ${label} ${description} ${message} ${native}>
           ${slottedLabel}
           ${slottedDescription}
           <select>
@@ -341,6 +345,32 @@ describe('select-wrapper', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initSelect();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-select-wrapper']).toBe(1, 'componentDidLoad: p-select-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // label and message
+      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon'); // arrow down and checkmark
+
+      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on init with native dropdown', async () => {
+      await initSelect({ isNative: true });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-select-wrapper']).toBe(1, 'componentDidLoad: p-select-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text'); // label and message
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon'); // arrow down
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
   });
 });

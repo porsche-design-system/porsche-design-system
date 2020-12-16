@@ -14,6 +14,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -1026,6 +1027,19 @@ describe('select-wrapper combobox', () => {
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(filterInputOverlay)).toBe(expectedStyleOnFocus({ color: 'error', theme: 'dark' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initCombobox();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-select-wrapper']).toBe(1, 'componentDidLoad: p-select-wrapper');
+      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon'); // arrow down and checkmark
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
   });
 });
