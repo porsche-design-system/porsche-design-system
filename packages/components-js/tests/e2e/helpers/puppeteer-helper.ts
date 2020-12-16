@@ -200,6 +200,10 @@ export const getStyleOnFocus = async (
 };
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
+  const containsCapitalChar = /[A-Z]/.test(key);
+  if (containsCapitalChar) {
+    console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
+  }
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
