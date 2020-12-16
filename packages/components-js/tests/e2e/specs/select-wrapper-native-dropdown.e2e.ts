@@ -217,7 +217,6 @@ describe('select-wrapper', () => {
       expect(await getOutlineStyle(select)).toBe(hidden);
 
       await select.click();
-      await waitForStencilLifecycle(page);
 
       expect(await getOutlineStyle(select)).toBe(visible, 'after click');
 
@@ -225,7 +224,6 @@ describe('select-wrapper', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
-      await page.waitForTimeout(120);
 
       expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
     });
