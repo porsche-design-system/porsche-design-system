@@ -217,7 +217,7 @@ describe('select-wrapper', () => {
       expect(await getOutlineStyle(select)).toBe(hidden);
 
       await select.click();
-      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(120);
 
       expect(await getOutlineStyle(select)).toBe(visible);
 

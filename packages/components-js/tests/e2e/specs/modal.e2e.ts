@@ -293,7 +293,6 @@ describe('modal', () => {
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initBasicModal();
-
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-modal']).toBe(1, 'componentDidLoad: p-modal');

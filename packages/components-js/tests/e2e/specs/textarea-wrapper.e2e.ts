@@ -341,11 +341,27 @@ describe('textarea-wrapper', () => {
       expect(status.componentDidLoad['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
       expect(status.componentDidLoad['p-text']).toBe(3, 'componentDidLoad: p-text');
 
-      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(0, 'componentDidUpdate: p-textarea-wrapper');
-      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidLoad: p-text');
-
       expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on init', async () => {
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedMessage: true,
+        useSlottedDescription: true,
+        state: 'error',
+      });
+      const host = await getHost();
+      await setAttribute(host, 'state', 'none');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });
