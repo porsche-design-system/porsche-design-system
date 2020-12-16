@@ -1,4 +1,11 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import {
+  getBrowser,
+  getLifecycleStatus,
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForStencilLifecycle,
+} from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('marque', () => {
@@ -20,34 +27,36 @@ describe('marque', () => {
   });
   afterEach(async () => await page.close());
 
+  const getHost = () => selectNode(page, '.p-marque');
+  const setContentWithoutTrademark = () => setContentWithDesignSystem(page, `<p-marque trademark="false"></p-marque>`);
+  const setContentWithTrademark = () => setContentWithDesignSystem(page, `<p-marque></p-marque>`);
+
   const resolution1x = '@1x';
   const resolution2x = '@2x';
   const resolution3x = '@3x';
 
   describe('with trademark', () => {
-    const setContent = () => setContentWithDesignSystem(page, `<p-marque></p-marque>`);
-
     describe('on default screen', () => {
       const fileName = 'marque-trademark.small';
 
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -59,21 +68,21 @@ describe('marque', () => {
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
-        await setContent();
+        await setContentWithTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -81,29 +90,27 @@ describe('marque', () => {
   });
 
   describe('without trademark', () => {
-    const setContent = () => setContentWithDesignSystem(page, `<p-marque trademark="false"></p-marque>`);
-
     describe('on default screen', () => {
       const fileName = 'marque.small';
 
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -115,24 +122,36 @@ describe('marque', () => {
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
-        await setContent();
+        await setContentWithoutTrademark();
         expect(requestedImagePath).toContain(fileName);
         expect(requestedImagePath).toContain(resolution3x);
       });
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await setContentWithTrademark();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-marque']).toBe(1, 'componentDidLoad: p-marque');
+
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
   });
 });

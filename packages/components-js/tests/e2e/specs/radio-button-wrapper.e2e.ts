@@ -14,6 +14,7 @@ import {
   waitForInheritedCSSTransition,
   getOutlineStyle,
   getBoxShadowStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -26,7 +27,7 @@ describe('radio-button-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-radio-button-wrapper');
   const getFakeInput = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__fake-radio-button');
-  const getRealInput = () => selectNode(page, 'p-radio-button-wrapper input');
+  const getInput = () => selectNode(page, 'p-radio-button-wrapper input');
   const getLabel = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__label-text');
   const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .p-radio-button-wrapper__message');
   const getLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
@@ -81,7 +82,7 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>
     `
     );
-    const input = await getRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
   });
 
@@ -94,7 +95,7 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>
     `
     );
-    const input = await getRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
@@ -292,7 +293,7 @@ describe('radio-button-wrapper', () => {
     it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
       await initRadioButton();
 
-      const input = await getRealInput();
+      const input = await getInput();
       const hidden = expectedStyleOnFocus({ color: 'transparent', css: 'boxShadow', offset: '1px' });
       const visible = expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow', offset: '1px' });
 
@@ -350,7 +351,7 @@ describe('radio-button-wrapper', () => {
       await initRadioButton();
 
       const host = await getHost();
-      const input = await getRealInput();
+      const input = await getInput();
 
       expect(await getStyleOnFocus(input, 'boxShadow')).toBe(
         expectedStyleOnFocus({ color: 'neutral', css: 'boxShadow' })
@@ -384,6 +385,34 @@ describe('radio-button-wrapper', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initRadioButton({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-radio-button-wrapper']).toBe(1, 'componentDidLoad: p-radio-button-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initRadioButton({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
+      const input = await getInput();
+
+      await input.click();
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-radio-button-wrapper']).toBe(1, 'componentDidUpdate: p-radio-button-wrapper');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

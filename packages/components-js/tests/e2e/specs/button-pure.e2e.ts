@@ -457,7 +457,7 @@ describe('button-pure', () => {
       await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-button']).toBe(1, 'componentDidUpdate: p-button-pure');
+      expect(status.componentDidUpdate['p-button-pure']).toBe(1, 'componentDidUpdate: p-button-pure');
 
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });

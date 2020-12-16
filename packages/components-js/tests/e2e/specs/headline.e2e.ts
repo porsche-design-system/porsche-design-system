@@ -100,9 +100,6 @@ describe('headline', () => {
       expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
       expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
 
-      expect(status.componentDidUpdate['p-headline']).toBe(0, 'componentDidUpdate: p-headline');
-      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
-
       expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
@@ -131,7 +128,6 @@ describe('headline', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
-      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidUpdate: p-text');
 
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
