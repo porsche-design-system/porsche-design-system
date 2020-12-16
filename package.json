@@ -123,12 +123,6 @@
     "clean:utilities:node_modules": "yarn --cwd ./packages/utilities clean:node_modules",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
-  "resolutions": {
-    "**/@stencil/postcss/postcss": "^8.1.7",
-    "**/@vue/cli-plugin-unit-jest/jest": "^26.6.3",
-    "**/@vue/cli-plugin-unit-jest/@types/jest": "^26.0.15",
-    "**/react-scripts/jest": "^26.6.3"
-  },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
     "prettier": "^2.2.1"
