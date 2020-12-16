@@ -2,11 +2,16 @@ import {
   addEventListener,
   getActiveElementId,
   getAttribute,
-  getBrowser, getStyleOnFocus,
+  getBrowser,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForInheritedCSSTransition,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -21,6 +26,16 @@ describe('button-pure', () => {
 
   const getButtonPureHost = () => selectNode(page, 'p-button-pure');
   const getButtonPureRealButton = () => selectNode(page, 'p-button-pure >>> button');
+
+  const initButtonPure = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-button-pure>
+        Some label
+      </p-button-pure>`
+    );
+  };
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
@@ -364,21 +379,44 @@ describe('button-pure', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only', async () => {
+      await initButtonPure();
+
+      const button = await getButtonPureRealButton();
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
+
+      expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(hidden);
+
+      await button.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(button, { pseudo: '::before' })).toBe(visible);
+    });
+
     it('should show outline of shadowed <button> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-button-pure>Some label</p-button-pure>`
-      );
+      await initButtonPure();
 
       const host = await getButtonPureHost();
       const button = await getButtonPureRealButton();
 
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(button, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ offset: '1px' })
+      );
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(button, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
+      );
     });
   });
 });

@@ -1,5 +1,4 @@
 import { PLink as Link } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPage = (): JSX.Element => {
   const style = `
@@ -10,7 +9,7 @@ export const LinkPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render primary with label">
         <Link variant="primary" href="https://www.porsche.com">
@@ -114,7 +113,7 @@ export const LinkPage = (): JSX.Element => {
 
       <div className="playground light" title="should render secondary with responsive label">
         <Link
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           href="https://www.porsche.com"
         >
           Some label

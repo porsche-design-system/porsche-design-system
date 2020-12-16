@@ -8,7 +8,7 @@ import {
   CDN_BASE_URL_DYNAMIC,
   CDN_BASE_PATH_STYLES,
   CDN_BASE_PATH_FONTS,
-  CDN_KEY_TYPE_DEFINITION
+  CDN_KEY_TYPE_DEFINITION,
 } from '../../../../../cdn.config';
 
 const createGlobalCSS = async (cdn: string): Promise<void> => {
@@ -17,20 +17,20 @@ const createGlobalCSS = async (cdn: string): Promise<void> => {
   buildStyle({
     baseUrl: 'http://localhost:3001/fonts',
     fontsManifest: FONTS_MANIFEST,
-    addContentBasedHash: false
+    addContentBasedHash: false,
   });
 
   const fontFaceCdnFileName = buildStyle({
     baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
     fontsManifest: FONTS_MANIFEST,
-    addContentBasedHash: true
+    addContentBasedHash: true,
   });
 
   const fontFaceCdnFileNameCn = buildStyle({
     baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
     fontsManifest: FONTS_MANIFEST,
     addContentBasedHash: true,
-    suffix: 'cn'
+    suffix: 'cn',
   });
 
   // extract the condition from cdn config to use its result in a constant

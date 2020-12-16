@@ -1,13 +1,28 @@
 // common type definitions
-export type TextSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'inherit';
+export { TextSize } from './components/basic/typography/text/textUtils';
+export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
-export type HeadlineVariant = 'large-title' | 'headline-1' | 'headline-2' | 'headline-3' | 'headline-4' | 'headline-5';
+export type TextColor =
+  | 'brand'
+  | 'default'
+  | 'neutral-contrast-high'
+  | 'neutral-contrast-medium'
+  | 'neutral-contrast-low'
+  | 'notification-success'
+  | 'notification-warning'
+  | 'notification-error'
+  | 'notification-neutral'
+  | 'inherit';
+
+export type TextAlign = 'left' | 'center' | 'right';
 
 export type Theme = 'light' | 'dark';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+export type LinkVariant = ButtonVariant; // alias
 
 export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 
@@ -140,6 +155,7 @@ export type IconName = '360'
 | 'logout'
 | 'map'
 | 'menu-dots-horizontal'
+| 'menu-dots-vertical'
 | 'menu-lines'
 | 'minus'
 | 'mobile'

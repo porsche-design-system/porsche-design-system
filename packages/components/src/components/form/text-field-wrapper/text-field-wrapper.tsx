@@ -6,14 +6,13 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
 } from '../../../utils';
-import { ButtonType, FormState } from '../../../types';
+import { FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
   styleUrl: 'text-field-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextFieldWrapper {
   @Element() public host!: HTMLElement;
@@ -38,22 +37,24 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
-  private searchButtonType: ButtonType = 'submit';
   private isPasswordToggleable: boolean;
-  private isInputTypeSearch: boolean;
+  private inputObserver: MutationObserver;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
+    this.isPasswordToggleable = this.input.type === 'password';
     this.setAriaAttributes();
     this.setState();
-    this.updatePasswordToggleable();
-    this.initInputTypeSearch();
-    this.bindStateListener();
+    this.initMutationObserver();
     this.addSlottedStyles();
   }
 
   public componentDidUpdate(): void {
     this.setAriaAttributes();
+  }
+
+  public disconnectedCallback(): void {
+    this.inputObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -62,26 +63,26 @@ export class TextFieldWrapper {
     const labelTextClasses = {
       [prefix('text-field-wrapper__label-text')]: true,
       [prefix('text-field-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('text-field-wrapper__description-text')]: true,
       [prefix('text-field-wrapper__description-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
         'hidden',
-        'visible'
-      ])
+        'visible',
+      ]),
     };
     const fakeInputClasses = {
       [prefix('text-field-wrapper__fake-input')]: true,
       [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
       [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
-      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly
+      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly,
     };
     const buttonClasses = prefix('text-field-wrapper__button');
     const messageClasses = {
       [prefix('text-field-wrapper__message')]: true,
-      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
@@ -144,12 +145,8 @@ export class TextFieldWrapper {
     return !!this.description || !!this.host.querySelector('[slot="description"]');
   }
 
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
-  }
-
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
   }
 
   private get isRequired(): boolean {
@@ -187,12 +184,8 @@ export class TextFieldWrapper {
     this.input.focus();
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', this.setState);
-  }
-
-  private updatePasswordToggleable(): void {
-    this.isPasswordToggleable = this.input.type === 'password';
+  private get isInputTypeSearch(): boolean {
+    return this.input.type === 'search';
   }
 
   private togglePassword = (): void => {
@@ -201,19 +194,24 @@ export class TextFieldWrapper {
     this.labelClick();
   };
 
-  private initInputTypeSearch(): void {
-    this.isInputTypeSearch = this.input.type === 'search';
-  }
-
   private onSubmitHandler = (event: MouseEvent): void => {
     if (this.isInputTypeSearch) {
       handleButtonEvent(
         event,
         this.host,
-        () => this.searchButtonType,
+        () => 'submit',
         () => this.disabled
       );
     }
+  };
+
+  private initMutationObserver = (): void => {
+    this.inputObserver = new MutationObserver((): void => {
+      this.setState();
+    });
+    this.inputObserver.observe(this.input, {
+      attributeFilter: ['disabled', 'readonly'],
+    });
   };
 
   private addSlottedStyles(): void {
@@ -234,6 +232,10 @@ export class TextFieldWrapper {
 
     ${tagName} a:focus {
       outline-color: currentColor !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible) {
+      outline-color: transparent !important;
     }
 
     ${tagName} input::-webkit-outer-spin-button,

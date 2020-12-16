@@ -7,14 +7,14 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
 import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-pure',
   styleUrl: 'link-pure.scss',
-  shadow: true
+  shadow: true,
 })
 export class LinkPure {
   @Element() public host!: HTMLElement;
@@ -77,18 +77,18 @@ export class LinkPure {
       [prefix('link-pure')]: true,
       [prefix(`link-pure--theme-${this.theme}`)]: true,
       [prefix('link-pure--active')]: this.active,
-      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
     };
 
     const iconClasses = prefix('link-pure__icon');
 
     const labelClasses = {
       [prefix('link-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible']),
     };
     const sublineClasses = {
       [prefix('link-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
@@ -101,7 +101,7 @@ export class LinkPure {
             href: this.href,
             target: this.target,
             download: this.download,
-            rel: this.rel
+            rel: this.rel,
           })}
           ref={(el) => (this.linkTag = el as HTMLElement)}
         >
@@ -149,6 +149,10 @@ export class LinkPure {
 
     ${tagName} a:focus::before {
       outline-color: currentColor !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.host, style);

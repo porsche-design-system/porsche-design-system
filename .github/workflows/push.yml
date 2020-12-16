@@ -26,7 +26,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -87,7 +87,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -109,6 +109,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-angular
+      - name: 'E2E Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-e2e
+          args: --components-angular
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -120,11 +125,6 @@ jobs:
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
-      - name: 'Store Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-angular-build
-          path: ./packages/components-angular/dist/components-wrapper
   components-react:
     name: 'Components React'
     runs-on: ubuntu-latest
@@ -143,7 +143,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -181,11 +181,6 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-      - name: 'Store Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-react-build
-          path: ./packages/components-react/dist/components-wrapper
   partials:
     name: 'Partials'
     runs-on: ubuntu-latest
@@ -204,7 +199,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -244,7 +239,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -310,7 +305,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -327,6 +322,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
+      - name: 'Build Components Angular Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-react
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
@@ -347,6 +352,16 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Store Components Angular Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-angular-prod-build
+          path: ./packages/components-angular/dist/components-wrapper
+      - name: 'Store Components React Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-prod-build
+          path: ./packages/components-react/dist/components-wrapper
       - name: 'Store Partials Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -380,7 +395,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Install'
         uses: ./.github/actions/docker-run
         env:
@@ -415,7 +430,7 @@ jobs:
           path: ./packages/utilities/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds]
+    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -427,7 +442,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Assets Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -447,7 +462,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [components, components-angular, components-react, storefront, production-builds, utilities, assets-deployment]
+    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -459,7 +474,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -473,7 +488,7 @@ jobs:
           entrypoint: run-deploy-storefront
   smoke-test:
     name: 'Smoke Test'
-    needs: [storefront-deployment]
+    needs: [assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -490,7 +505,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -509,7 +524,7 @@ jobs:
           args: --components-js
   release-components-js:
     name: 'Release Components JS'
-    needs: [smoke-test]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -522,7 +537,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -551,11 +566,11 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: components-angular-build
+          name: components-angular-prod-build
           path: ./packages/components-angular/dist/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
@@ -580,11 +595,11 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: components-react-build
+          name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run
@@ -596,7 +611,7 @@ jobs:
           args: packages/components-react/dist/components-wrapper
   release-assets:
     name: 'Release Assets'
-    needs: [smoke-test]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -609,7 +624,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -625,7 +640,7 @@ jobs:
           args: packages/assets/dist
   release-partials:
     name: 'Release Partials'
-    needs: [smoke-test]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -638,7 +653,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Partials Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -654,7 +669,7 @@ jobs:
           args: packages/partials
   release-utilities:
     name: 'Release Utilities'
-    needs: [smoke-test]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -667,7 +682,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -683,7 +698,7 @@ jobs:
           args: packages/utilities/projects/utilities
   release-sketch-library-basic:
     name: 'Release Sketch Library Basic'
-    needs: [smoke-test]
+    needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -696,7 +711,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Publish Sketch Library'
         uses: ./.github/actions/docker-run
         env:
@@ -720,7 +735,7 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:12.18.3-stretch-slim
+        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       - name: 'Publish Sketch Library'
         uses: ./.github/actions/docker-run
         env:

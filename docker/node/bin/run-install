@@ -7,5 +7,12 @@ SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
 echo "task: [$(date)] installing dependencies"
-yarn install
+
+if [ "$CI" != true ]; then
+  yarn install
+else
+  # If you need reproducible dependencies, which is usually the case with the continuous integration systems, you should pass --frozen-lockfile flag.
+  yarn install --frozen-lockfile
+fi
+
 echo "task: [$(date)] finished installing dependencies"

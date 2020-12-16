@@ -7,6 +7,7 @@ import {
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
+  waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
@@ -168,7 +169,7 @@ describe('tabs', () => {
         document.body.appendChild(el);
       }, COUNTER_KEY);
 
-      await waitForStencilLifecycle(page);
+      await waitForComponentsReady(page);
 
       // retrieve counted events from browser
       const getCountedEvents = (): Promise<number> =>
@@ -179,6 +180,7 @@ describe('tabs', () => {
       const [, secondButton] = await getAllTabs();
       await secondButton.click();
       await waitForStencilLifecycle(page);
+      await page.waitForTimeout(200); // to be on the safe side
 
       expect(await getCountedEvents()).toBe(1);
     });

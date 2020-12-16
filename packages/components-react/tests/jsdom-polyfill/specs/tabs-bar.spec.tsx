@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  componentsReady,
-  PTabsBar,
-} from '@porsche-design-system/components-react';
+import { componentsReady, PTabsBar } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -24,7 +21,9 @@ const Sample = (): JSX.Element => {
         <button data-testid="button2">Some label</button>
         <button data-testid="button3">Some label</button>
       </PTabsBar>
-      <div data-testid="debug">{`Active Tab: ${activeTab + 1}`}; {`Event Counter: ${eventCounter};`}</div>
+      <div data-testid="debug">
+        {`Active Tab: ${activeTab + 1}`}; {`Event Counter: ${eventCounter};`}
+      </div>
     </>
   );
 };
@@ -32,7 +31,6 @@ const Sample = (): JSX.Element => {
 describe('PTabsBar', () => {
   it('should have initialized shadow dom', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
@@ -40,7 +38,6 @@ describe('PTabsBar', () => {
 
   it('should have working events', async () => {
     const { getByTestId } = render(<Sample />);
-
     await componentsReady();
 
     const debug = getByTestId('debug');

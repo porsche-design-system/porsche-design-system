@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   PBanner as Banner,
   PButton as Button,
@@ -28,7 +27,7 @@ import {
   PPagination as Pagination,
   PLink as Link,
   PLinkPure as LinkPure,
-  PLinkSocial as LinkSocial
+  PLinkSocial as LinkSocial,
 } from '@porsche-design-system/components-react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
@@ -61,7 +60,7 @@ const {
   PPagination: PrefixedPagination,
   PLink: PrefixedLink,
   PLinkPure: PrefixedLinkPure,
-  PLinkSocial: PrefixedLinkSocial
+  PLinkSocial: PrefixedLinkSocial,
 } = getPrefixedComponents({ prefix: 'my-prefix' });
 
 export const OverviewPage = (): JSX.Element => {
@@ -107,6 +106,10 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <Headline>Default Components</Headline>
+          </div>
+
+          <div className="playground light" title="should render headline for variant large">
+            <Headline variant={{ base: 'large', l: 'x-large' }}>Default Components</Headline>
           </div>
 
           <div className="playground light" title="should render default banner">
@@ -241,10 +244,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default grid">
             <Grid>
-              <GridItem size="6">
+              <GridItem size={6}>
                 <p>1</p>
               </GridItem>
-              <GridItem size="6">
+              <GridItem size={6}>
                 <p>2</p>
               </GridItem>
             </Grid>
@@ -254,6 +257,10 @@ export const OverviewPage = (): JSX.Element => {
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline with custom prefix">
             <PrefixedHeadline>Prefixed Components</PrefixedHeadline>
+          </div>
+
+          <div className="playground light" title="should render headline for variant large with custom prefix">
+            <PrefixedHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PrefixedHeadline>
           </div>
 
           <div className="playground light" title="should render default banner with custom prefix">
@@ -388,10 +395,10 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default grid with custom prefix">
             <PrefixedGrid>
-              <PrefixedGridItem size="6">
+              <PrefixedGridItem size={6}>
                 <p>1</p>
               </PrefixedGridItem>
-              <PrefixedGridItem size="6">
+              <PrefixedGridItem size={6}>
                 <p>2</p>
               </PrefixedGridItem>
             </PrefixedGrid>

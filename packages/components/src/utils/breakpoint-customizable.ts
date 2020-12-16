@@ -7,11 +7,10 @@ enum Breakpoint {
   s = 's',
   m = 'm',
   l = 'l',
-  xl = 'xl'
+  xl = 'xl',
 }
 
 type BreakpointValue = string | number | boolean;
-type JSON5String = string;
 type ClassSuffixes = [string, string];
 
 type JSXClasses = {
@@ -27,7 +26,8 @@ type BreakpointValues<T> = {
   [Breakpoint.xl]?: T;
 };
 
-export type BreakpointCustomizable<T> = T | BreakpointValues<T> | JSON5String;
+// string is needed in order to pass and parse objects via prop decorater. TODO: This should be removed in Angular/React Types to ensure typing support
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
 /* eslint-disable @typescript-eslint/indent */
 const parseJSON = (
@@ -64,8 +64,8 @@ const createClass = (
 ): JSXClasses => ({
   ...(value !== null &&
     value !== undefined && {
-      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true
-    })
+      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true,
+    }),
 });
 
 /**
@@ -86,7 +86,7 @@ export const mapBreakpointPropToPrefixedClasses = (
     ? Object.entries(parsedProp).reduce(
         (classes, [breakpoint, value]) => ({
           ...classes,
-          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes)
+          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes),
         }),
         {}
       )

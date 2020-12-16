@@ -5,7 +5,7 @@
   width: 100%;
   height: auto;
   margin-left: p-px-to-rem(4px);
-  padding: 0 .125em 0 0;
+  padding: 0 0.125em 0 0;
   white-space: normal;
   overflow: visible;
   text-indent: 0;
@@ -46,36 +46,31 @@
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-small {
+      } @else if $size == $p-font-size-small {
         @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-medium {
+      } @else if $size == $p-font-size-medium {
         @include p-generate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-large {
+      } @else if $size == $p-font-size-large {
         @include p-generate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-x-large {
+      } @else if $size == $p-font-size-x-large {
         @include p-generate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else {
+      } @else {
         @error "Unknown size #{$size}.";
       }
     }
@@ -98,19 +93,12 @@
   outline: transparent none !important;
 }
 
-.#{$p-global-class-prefix}link-pure:focus::before {
-  outline-color: $p-color-state-focus !important;
-}
-
-:host([theme="dark"]) .#{$p-global-class-prefix}link-pure:focus::before {
-  outline-color: $p-color-theme-dark-state-focus !important;
-}
-
 ::slotted(p) {
   margin: 0;
 }
 
 .#{$p-global-class-prefix}link-pure {
+  @include p-focus($p-color-state-focus, 1px, '::before');
   $bem-block: &;
   display: flex;
   align-items: flex-start;
@@ -126,25 +114,12 @@
   background: transparent;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
-  // gives possibility to enlarge click area on host element
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    outline: transparent solid 1px;
-    outline-offset: 1px;
+  :host([theme='dark']) & {
+    @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
   &:not(a)::before {
     pointer-events: none;
-  }
-
-  &::-moz-focus-inner {
-    border: 0; // fix for Firefox, avoid dotted outline in button on focus
   }
 
   &--theme-light {
@@ -349,7 +324,8 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
     margin-top: 4px;
 
-    &::before { // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
+    &::before {
+      // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
       content: '';
     }
   }

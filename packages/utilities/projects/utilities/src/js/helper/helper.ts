@@ -32,7 +32,7 @@ export const generateFontDefinition = (
     {},
     {
       fontFamily: family,
-      fontWeight: weight[fontWeight]
+      fontWeight: weight[fontWeight],
     },
     generateTypeScale(fontSize)
   );
@@ -49,7 +49,7 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
 
   return {
     fontSize: convertedFontSize,
-    lineHeight: calculateLineHeight(fontSize)
+    lineHeight: calculateLineHeight(fontSize),
   };
 };
 

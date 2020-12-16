@@ -1,4 +1,7 @@
 # Typography
+Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.
+
+---
 
 ## Text
 
@@ -79,6 +82,7 @@ There are predefined default text weights for copy text. Be aware of using the `
     <option disabled>Select a weight</option>
     <option value="thin" selected>Thin</option>
     <option value="regular">Regular</option>
+    <option value="semibold">Semibold</option>
     <option value="bold">Bold</option>
   </select>
 </Playground>

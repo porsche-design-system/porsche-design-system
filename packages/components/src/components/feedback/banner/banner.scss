@@ -65,7 +65,8 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
     will-change: opacity, bottom;
   }
   :host(.hydrated) {
-    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn $easeInQuad forwards;
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateMobileIn
+      $easeInQuad forwards;
   }
 
   :host(.#{$p-global-class-prefix}banner--close) {
@@ -80,7 +81,8 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 
   :host(.hydrated) {
-    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn $easeInQuad forwards;
+    animation: var(--p-animation-duration__banner, 600ms) var(--p-animation-delay__banner, 1s) animateDesktopIn
+      $easeInQuad forwards;
   }
 
   :host(.#{$p-global-class-prefix}banner--close) {
@@ -94,7 +96,7 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   position: relative;
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
   box-shadow: 0 p-px-to-rem(2px) p-px-to-rem(4px) 0 rgba(0, 0, 0, 0.05),
-  0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
+    0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
 
   &::before {
     content: '';

@@ -2,8 +2,8 @@
  * Public API Surface of components-wrapper
  */
 
-export * from './lib/components-wrapper.component';
-export * from './lib/components-wrapper.module';
-export * from './lib/prefix.service';
-export * from './lib/prevent-web-components-registration.token';
-export * from './lib/web-components-prefix.token';
+export * from './lib/proxies';
+export * from './components-wrapper.module';
+export * from './prefix.service';
+export * from './injection.tokens';
+export { componentsReady } from '@porsche-design-system/components-js';

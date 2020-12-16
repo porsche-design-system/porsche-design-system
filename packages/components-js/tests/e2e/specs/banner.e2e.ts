@@ -1,10 +1,15 @@
 import {
   addEventListener,
-  getBrowser, getStyleOnFocus,
-  initAddEventListener, reattachElement,
+  getBrowser,
+  getStyleOnFocus,
+  initAddEventListener,
+  reattachElement,
   selectNode,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  waitForInheritedCSSTransition,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -19,6 +24,17 @@ describe('banner', () => {
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
+
+  const initBanner = (): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-banner>
+        <span slot="title">Some notification title with an <a href="#" onclick="return false">anchor</a>.</span>
+        <span slot="description">Some notification description with an <a href="#" onclick="return false">anchor</a>.</span>
+      </p-banner>`
+    );
+  };
 
   const getBannerHost = () => selectNode(page, 'p-banner');
   const getBannerButton = () => selectNode(page, 'p-banner >>> p-button-pure');
@@ -143,23 +159,54 @@ describe('banner', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only for slotted <a>', async () => {
+      await initBanner();
+
+      const titleLink = await getTitleLink();
+      const descriptionLink = await getDescriptionLink();
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
+
+      await page.waitForTimeout(CSS_FADE_IN_DURATION);
+
+      expect(await getOutlineStyle(titleLink)).toBe(hidden);
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await titleLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(titleLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(titleLink)).toBe(visible);
+
+      await descriptionLink.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(descriptionLink)).toBe(visible);
+    });
+
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-banner>
-          <span slot="title">Some banner title with a <a href="#">link</a>.</span>
-          <span slot="description">Some banner description with a <a href="#">link</a>.</span>
-        </p-banner>`
-      );
+      await initBanner();
 
       await page.waitForTimeout(CSS_FADE_IN_DURATION);
 
       const titleLink = await getTitleLink();
       const descriptionLink = await getDescriptionLink();
 
-      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus());
-      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus());
+      expect(await getStyleOnFocus(titleLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(descriptionLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
     });
   });
 });

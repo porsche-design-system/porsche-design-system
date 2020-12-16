@@ -1,10 +1,24 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
 
-export const setContentWithDesignSystem = async (
-  page: Page,
-  content: string,
-  options: NavigationOptions = { waitUntil: 'networkidle0' }
-): Promise<void> => {
+type Options = NavigationOptions & { enableLogging?: boolean };
+const defaultOptions: Options = { waitUntil: 'networkidle0' };
+
+export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
+  const options: Options = { ...defaultOptions, ...opts };
+
+  let lifeCycleLogger = '';
+  if (options.enableLogging) {
+    enableBrowserLogging(page);
+    lifeCycleLogger = `
+    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      window.addEventListener(\`stencil_\${x}\`, (e) => {
+        const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+        console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+      })
+    );`;
+  }
+
   await page.setContent(
     `
       <head>
@@ -13,12 +27,50 @@ export const setContentWithDesignSystem = async (
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
+        <script>
+          let updatingCount = 0;
+          let timeout;
+          window.componentsUpdatedPromise = undefined;
+          let resolveComponentsUpdatedPromise;
+
+          window.checkComponentsUpdatedPromise = () => {
+            if (updatingCount === 0) {
+              timeout = window.setTimeout(() => {
+                resolveComponentsUpdatedPromise();
+                createComponentsUpdatedPromise();
+              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+            }
+          };
+
+          const createComponentsUpdatedPromise = () => {
+            window.componentsUpdatedPromise = new Promise((resolve) => {
+              resolveComponentsUpdatedPromise = resolve;
+            });
+          };
+
+          createComponentsUpdatedPromise();
+
+          window.addEventListener('stencil_componentWillUpdate', () => {
+            updatingCount++;
+            if (timeout) {
+              window.clearTimeout(timeout);
+            }
+          });
+
+          window.addEventListener('stencil_componentDidUpdate', () => {
+            updatingCount--;
+            window.checkComponentsUpdatedPromise();
+          });
+
+          ${lifeCycleLogger}
+        </script>
         ${content}
       </body>
     `,
     options
   );
-  await page.waitForSelector('html.hydrated');
+
+  await waitForComponentsReady(page);
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -26,9 +78,9 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   const shadowRootSelectors =
     selectorParts.length > 1
       ? selectorParts
-        .slice(1)
-        .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-        .join('')
+          .slice(1)
+          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
+          .join('')
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
@@ -75,8 +127,8 @@ export const getElementStyle = async (
       const options: GetElementStyleOptions = {
         waitForTransition: false,
         pseudo: null,
-        ...opts
-      }
+        ...opts,
+      };
       const style = getComputedStyle(el, options.pseudo);
       if (options.waitForTransition) {
         await new Promise((resolve) => setTimeout(resolve, parseFloat(style.transitionDuration) * 1000));
@@ -86,31 +138,48 @@ export const getElementStyle = async (
     property,
     opts
   );
-}
+};
 
 type GetStyleOnFocusOptions = {
-  pseudo?: Pseudo
-}
+  pseudo?: Pseudo;
+};
 
-export const getStyleOnFocus = async (element: ElementHandle, property: 'outline' | 'boxShadow' = 'outline', opts?: GetStyleOnFocusOptions): Promise<string> => {
+export const getOutlineStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
   const options: GetStyleOnFocusOptions = {
     pseudo: null,
-    ...opts
-  }
-  const {pseudo} = options;
+    ...opts,
+  };
+  const { pseudo } = options;
+  return `${await getElementStyle(element, 'outline', { pseudo })} ${await getElementStyle(element, 'outlineOffset', {
+    pseudo,
+  })}`;
+};
+
+export const getBoxShadowStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
+  const options: GetStyleOnFocusOptions = {
+    pseudo: null,
+    ...opts,
+  };
+  const { pseudo } = options;
+  return await getElementStyle(element, 'boxShadow', { pseudo });
+};
+
+export const getStyleOnFocus = async (
+  element: ElementHandle,
+  property: 'outline' | 'boxShadow' = 'outline',
+  opts?: GetStyleOnFocusOptions
+): Promise<string> => {
   await element.focus();
-  return property === 'outline'
-    ? `${await getElementStyle(element, property, {pseudo})} ${await getElementStyle(element, 'outlineOffset', {pseudo})}`
-    : await getElementStyle(element, property, {pseudo})
-}
+  return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
+};
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
-  await element.evaluate((el, {key, value}) => el.setAttribute(key, value), {key, value});
-}
+  await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
+};
 
 export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
   await page.waitForTimeout(500);
-}
+};
 
 export const getElementIndex = async (element: ElementHandle, selector: string): Promise<number> =>
   element.evaluate(async (el: Element, selector: string): Promise<number> => {
@@ -137,4 +206,10 @@ export const reattachElement = async (page: Page, selector: string): Promise<voi
     element.remove();
     document.body.appendChild(element);
   }, selector);
+};
+
+export const enableBrowserLogging = (page: Page) => {
+  page.on('console', (msg) => {
+    console.log(msg.type() + ':', msg.text());
+  });
 };

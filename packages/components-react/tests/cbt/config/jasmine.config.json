@@ -1,8 +1,6 @@
 {
   "spec_dir": ".",
-  "spec_files": [
-    "tests/cbt/specs/**/*.cbt.ts"
-  ],
+  "spec_files": ["tests/cbt/specs/**/*.cbt.ts"],
   "helpers": ["tests/cbt/helpers/**/*.ts"],
   "stopSpecOnExpectationFailure": false,
   "random": false
