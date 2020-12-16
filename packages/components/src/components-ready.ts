@@ -1,8 +1,7 @@
 import { HostElement } from '@stencil/core/internal';
 
 const readyPromises: Promise<HostElement>[] = [];
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-let promiseResolve: (amount: number) => void;
+let promiseResolve: (_: number) => void;
 
 export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
   if (!isDocumentReady()) {
