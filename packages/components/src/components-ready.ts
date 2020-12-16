@@ -1,7 +1,7 @@
 import { HostElement } from '@stencil/core/internal';
 
 const readyPromises: Promise<HostElement>[] = [];
-let promiseResolve: (_: number) => void;
+let promiseResolve: (_amount: number) => void;
 
 export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
   if (!isDocumentReady()) {

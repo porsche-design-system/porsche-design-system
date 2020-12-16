@@ -39,7 +39,6 @@
     "@stencil/react-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-react-output-target-0.0.6.tgz",
     "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^9.7.2",
-    "@types/classnames": "^2.2.11",
     "@types/expect-puppeteer": "^4.4.5",
     "@types/jest": "^26.0.19",
     "@types/puppeteer": "^5.4.2",
