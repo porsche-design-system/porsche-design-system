@@ -206,8 +206,8 @@ describe('select-wrapper-native-dropdown', () => {
     expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
   });
 
-  fdescribe('focus state', () => {
-    fit('should be shown on click for slotted <select>', async () => {
+  describe('focus state', () => {
+    it('should be shown on click for slotted <select>', async () => {
       await initSelect();
 
       const select = await getSelect();
@@ -221,7 +221,7 @@ describe('select-wrapper-native-dropdown', () => {
       expect(await getOutlineStyle(select)).toBe(visible, 'after click');
     });
 
-    fit('should be shown by keyboard navigation for slotted <select>', async () => {
+    it('should be shown by keyboard navigation for slotted <select>', async () => {
       await initSelect();
 
       const select = await getSelect();
