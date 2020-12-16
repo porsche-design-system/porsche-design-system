@@ -217,16 +217,17 @@ describe('select-wrapper', () => {
       expect(await getOutlineStyle(select)).toBe(hidden);
 
       await select.click();
-      await page.waitForTimeout(120);
+      await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(select)).toBe(visible);
+      expect(await getOutlineStyle(select)).toBe(visible, 'after click');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
 
-      expect(await getOutlineStyle(select)).toBe(visible);
+      expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
