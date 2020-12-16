@@ -52,8 +52,8 @@
     }
 
     &-inherit {
-      font-size: inherit;
       // line-height: inherit; <== won't have any effect because of expected p-text type scale calculation
+      font-size: inherit;
     }
   }
 
