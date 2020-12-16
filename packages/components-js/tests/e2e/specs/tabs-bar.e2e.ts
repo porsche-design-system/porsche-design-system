@@ -627,8 +627,34 @@ describe('tabs-bar', () => {
   });
 
   describe('lifecycle', () => {
-    it('should work without unnecessary round trips', async () => {
+    it('should work without unnecessary round trips on init', async () => {
       await initTabsBar({ amount: 3, tag: 'a' });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar');
+      expect(status.componentDidLoad['p-button-pure']).toBe(2, 'componentDidLoad: p-button-pure');
+      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(7, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initTabsBar({ amount: 3, tag: 'button' });
+      const host = await getHost();
+
+      await setAttribute(host, 'size', 'medium');
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar');
+      expect(status.componentDidUpdate['p-button-pure']).toBe(0, 'componentDidLoad: p-button-pure');
+      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidLoad: p-icon');
+      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(7, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });
