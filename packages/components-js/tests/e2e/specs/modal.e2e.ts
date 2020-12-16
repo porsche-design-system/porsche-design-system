@@ -6,8 +6,10 @@ import {
   getAttribute,
   getBrowser,
   getElementStyle,
+  getLifecycleStatus,
   initAddEventListener,
   selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -16,12 +18,10 @@ import { Page } from 'puppeteer';
 describe('modal', () => {
   let page: Page;
 
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const getModalHost = () => selectNode(page, 'p-modal');
+  const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
@@ -52,7 +52,7 @@ describe('modal', () => {
     );
 
   const openModal = async () => {
-    await (await getModalHost()).evaluate((el) => el.setAttribute('open', ''));
+    await (await getHost()).evaluate((el) => el.setAttribute('open', ''));
     await waitForStencilLifecycle(page);
   };
 
@@ -76,7 +76,7 @@ describe('modal', () => {
       calls = 0;
       await initBasicModal();
       await initAddEventListener(page);
-      await addEventListener(await getModalHost(), 'close', () => calls++);
+      await addEventListener(await getHost(), 'close', () => calls++);
     });
 
     it('should be closable via x button', async () => {
@@ -97,7 +97,7 @@ describe('modal', () => {
     });
 
     it('should not be closable via esc key when disableCloseButton is set', async () => {
-      const host = await getModalHost();
+      const host = await getHost();
       await host.evaluate((el) => el.setAttribute('disable-close-button', ''));
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
@@ -123,7 +123,7 @@ describe('modal', () => {
     });
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
-      await (await getModalHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
+      await (await getHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
       await waitForStencilLifecycle(page);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
@@ -146,19 +146,19 @@ describe('modal', () => {
     it('should focus first focusable element', async () => {
       await initAdvancedModal();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should focus close button when there is no focusable content element', async () => {
       await initBasicModal({ isOpen: false });
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
@@ -168,13 +168,13 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
     });
 
     it('should reverse cycle tab events within modal', async () => {
       await initAdvancedModal();
       await openModal();
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
@@ -185,7 +185,7 @@ describe('modal', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(await getModalHost())).toBe('P-BUTTON-PURE'); // close button
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.up('ShiftLeft');
     });
 
@@ -245,7 +245,7 @@ describe('modal', () => {
     await openModal();
     expect(await getBodyOverflow()).toBe('hidden');
 
-    await (await getModalHost()).evaluate((el) => el.removeAttribute('open'));
+    await (await getHost()).evaluate((el) => el.removeAttribute('open'));
 
     await waitForStencilLifecycle(page);
     expect(await getBodyOverflow()).toBe('visible');
@@ -284,5 +284,35 @@ describe('modal', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(aside, 'aria-hidden')).toBe('false');
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initBasicModal();
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-modal']).toBe(1, 'componentDidLoad: p-modal');
+      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
+      expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure'); // has p-icon and p-text
+
+      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initBasicModal();
+      const host = await getHost();
+
+      await setAttribute(host, 'open', 'false');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+    });
   });
 });
