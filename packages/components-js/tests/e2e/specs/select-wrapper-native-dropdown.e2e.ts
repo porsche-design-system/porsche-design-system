@@ -206,8 +206,8 @@ describe('select-wrapper', () => {
     expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
   });
 
-  describe('focus state', () => {
-    it('should be shown by keyboard navigation and on click for slotted <select>', async () => {
+  fdescribe('focus state', () => {
+    fit('should be shown by keyboard navigation and on click for slotted <select>', async () => {
       await initSelect();
 
       const select = await getSelect();
@@ -225,7 +225,7 @@ describe('select-wrapper', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(120);
 
       expect(await getOutlineStyle(select)).toBe(visible, 'after keyboard navigation');
     });
