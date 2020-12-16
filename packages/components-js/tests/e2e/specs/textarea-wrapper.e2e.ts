@@ -40,14 +40,11 @@ describe('textarea-wrapper', () => {
     useSlottedMessage?: boolean;
     state?: FormState;
   };
-  const initTextarea = (
-    { useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: InitOptions = {
-      useSlottedLabel: false,
-      useSlottedDescription: false,
-      useSlottedMessage: false,
-      state: 'none',
-    }
-  ): Promise<void> => {
+
+  const initTextarea = (opts?: InitOptions): Promise<void> => {
+    const { useSlottedLabel = false, useSlottedDescription = false, useSlottedMessage = false, state = 'none' } =
+      opts ?? {};
+
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';

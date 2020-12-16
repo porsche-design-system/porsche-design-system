@@ -47,15 +47,16 @@ describe('text-field-wrapper', () => {
     state?: FormState;
     type?: 'text' | 'password';
   };
-  const initTextField = (
-    { useSlottedLabel, useSlottedDescription, useSlottedMessage, state, type }: InitOptions = {
-      useSlottedLabel: false,
-      useSlottedDescription: false,
-      useSlottedMessage: false,
-      state: 'none',
-      type: 'text',
-    }
-  ): Promise<void> => {
+
+  const initTextField = (opts?: InitOptions): Promise<void> => {
+    const {
+      useSlottedLabel = false,
+      useSlottedDescription = false,
+      useSlottedMessage = false,
+      state = 'none',
+      type = 'text',
+    } = opts ?? {};
+
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';

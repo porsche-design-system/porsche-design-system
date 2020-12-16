@@ -32,14 +32,15 @@ describe('radio-button-wrapper', () => {
   const getLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
 
-  type InitOptions = { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState };
-  const initRadioButton = (
-    { useSlottedLabel, useSlottedMessage, state }: InitOptions = {
-      useSlottedLabel: false,
-      useSlottedMessage: false,
-      state: 'none',
-    }
-  ): Promise<void> => {
+  type InitOptions = {
+    useSlottedLabel?: boolean;
+    useSlottedMessage?: boolean;
+    state?: FormState;
+  };
+
+  const initRadioButton = (opts?: InitOptions): Promise<void> => {
+    const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts ?? {};
+
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
