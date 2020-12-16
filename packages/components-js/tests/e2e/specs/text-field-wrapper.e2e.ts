@@ -29,7 +29,7 @@ describe('text-field-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-text-field-wrapper');
   const getFakeInput = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__fake-input');
-  const getRealInput = () => selectNode(page, 'p-text-field-wrapper input');
+  const getInput = () => selectNode(page, 'p-text-field-wrapper input');
   const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .p-text-field-wrapper__message');
   const getLabelLink = () => selectNode(page, 'p-text-field-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-text-field-wrapper [slot="description"] a');
@@ -101,7 +101,7 @@ describe('text-field-wrapper', () => {
     `
     );
 
-    const input = await getRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
   });
 
@@ -114,7 +114,7 @@ describe('text-field-wrapper', () => {
       </p-text-field-wrapper>
     `
     );
-    const input = await getRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some description');
   });
 
@@ -127,7 +127,7 @@ describe('text-field-wrapper', () => {
       </p-text-field-wrapper>
     `
     );
-    const input = await getRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
@@ -160,7 +160,7 @@ describe('text-field-wrapper', () => {
     );
 
     const textFieldComponent = await getHost();
-    const input = await getRealInput();
+    const input = await getInput();
 
     expect(await getMessage()).toBeNull('initially');
 
@@ -205,7 +205,7 @@ describe('text-field-wrapper', () => {
     );
 
     const labelText = await getLabel();
-    const input = await getRealInput();
+    const input = await getInput();
 
     let inputFocusSpyCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusSpyCalls++);
@@ -226,22 +226,22 @@ describe('text-field-wrapper', () => {
       </p-text-field-wrapper>`
     );
 
-    const input = await getRealInput();
+    const input = await getInput();
 
     expect(await getCssClasses(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getProperty(await getRealInput(), 'disabled')).toBe(false);
+    expect(await getProperty(await getInput(), 'disabled')).toBe(false);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(await getFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getProperty(await getRealInput(), 'disabled')).toBe(true);
+    expect(await getProperty(await getInput(), 'disabled')).toBe(true);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
-    expect(await getProperty(await getRealInput(), 'disabled')).toBe(false);
+    expect(await getProperty(await getInput(), 'disabled')).toBe(false);
   });
 
   it('should toggle icon when password visibility button is clicked', async () => {
@@ -280,7 +280,7 @@ describe('text-field-wrapper', () => {
     );
 
     const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
-    const input = await getRealInput();
+    const input = await getInput();
     const fakeInput = await getFakeInput();
     const button = await getButton();
     const isButtonDisabled = () => getProperty(button, 'disabled');
@@ -317,7 +317,7 @@ describe('text-field-wrapper', () => {
     );
 
     const button = await getButton();
-    const input = await getRealInput();
+    const input = await getInput();
 
     let inputFocusCalls = 0;
     await addEventListener(input, 'focus', () => inputFocusCalls++);
@@ -365,7 +365,7 @@ describe('text-field-wrapper', () => {
     it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
       await initTextField();
 
-      const input = await getRealInput();
+      const input = await getInput();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
       const visible = expectedStyleOnFocus({ color: 'neutral' });
 
@@ -441,7 +441,7 @@ describe('text-field-wrapper', () => {
       await initTextField();
 
       const host = await getHost();
-      const input = await getRealInput();
+      const input = await getInput();
 
       expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
 
@@ -453,7 +453,7 @@ describe('text-field-wrapper', () => {
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }));
 
-      await setAttribute(input, 'readOnly', 'true');
+      await setAttribute(input, 'readonly', 'true');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'transparent' }));
     });

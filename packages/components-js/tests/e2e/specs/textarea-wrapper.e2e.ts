@@ -301,7 +301,7 @@ describe('textarea-wrapper', () => {
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '4px' }));
 
-      await setAttribute(textarea, 'readOnly', 'true');
+      await setAttribute(textarea, 'readonly', 'true');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '4px' }));
     });
