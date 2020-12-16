@@ -16,7 +16,7 @@ import {
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-describe('select-wrapper-native-dropdown', () => {
+describe('select-wrapper native-dropdown', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
