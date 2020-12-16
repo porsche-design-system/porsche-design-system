@@ -481,6 +481,15 @@ describe('tabs-bar', () => {
       expect(await getClassList(actionNext)).toContain(hiddenClass);
       expect(await getClassList(actionPrev)).toContain(hiddenClass);
     });
+
+    it('should have label of prev/next buttons in dom', async () => {
+      await initTabsBar();
+
+      const { nextButton, prevButton } = await getPrevNextButton();
+
+      expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
+      expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+    });
   });
 
   describe('errors', () => {
