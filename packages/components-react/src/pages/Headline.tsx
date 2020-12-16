@@ -83,10 +83,53 @@ export const HeadlinePage = (): JSX.Element => {
         <Headline variant={{ base: 'large', l: 'x-large' }}> Lorem ipsum dolor sit amet et.</Headline>
       </div>
 
-      <div className="playground" title="should show headline for variant inherit">
-        <Headline variant="inherit" style={{ fontSize: '3.75rem', lineHeight: 1.2 }}>
-          Lorem ipsum dolor sit amet et.
-        </Headline>
+      <div className="playground" title="should consider only font-size definition on host element for variant inherit">
+        <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
+          <Headline
+            variant="inherit"
+            style={{
+              fontSize: '60px',
+              lineHeight: '10',
+              fontFamily: 'serif',
+              fontWeight: 100,
+              color: 'deeppink',
+              textAlign: 'right',
+              borderLeft: '10px solid deepskyblue',
+            }}
+          >
+            ABC
+          </Headline>
+        </div>
+        <br />
+        <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
+          <Headline
+            variant="inherit"
+            style={{
+              fontSize: '60px',
+              lineHeight: '10',
+              fontFamily: 'serif',
+              fontWeight: 100,
+              color: 'deeppink',
+              textAlign: 'right',
+              borderLeft: '10px solid deepskyblue',
+            }}
+          >
+            <h3
+              style={{
+                margin: '100px',
+                padding: '100px',
+                fontSize: '200px',
+                lineHeight: '5',
+                fontFamily: 'serif',
+                fontWeight: 100,
+                color: 'deeppink',
+                textAlign: 'right',
+              }}
+            >
+              ABC
+            </h3>
+          </Headline>
+        </div>
       </div>
     </>
   );
