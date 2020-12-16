@@ -16,10 +16,7 @@ import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 
 describe('tabs', () => {
   let page: Page;
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-    await initAddEventListener(page);
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
@@ -123,6 +120,8 @@ describe('tabs', () => {
   });
 
   describe('events', () => {
+    beforeEach(async () => await initAddEventListener(page));
+
     it('should trigger tabChange event on tab click', async () => {
       await initTabs({ activeTabIndex: 1 }); // start with other index than first
       const host = await getHost();
