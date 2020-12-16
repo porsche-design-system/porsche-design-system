@@ -50,7 +50,7 @@ $p-font-porsche-next-w-cy-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWCy
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const compileFontFaceScss = (opts: Options): string => {
-  const sass = require('node-sass');
+  const sass = require('sass');
 
   const { addContentBasedHash, suffix } = opts;
   const scssPath = path.resolve(__dirname, '../src/styles/font-face.scss');
