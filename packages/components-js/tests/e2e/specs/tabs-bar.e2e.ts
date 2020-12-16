@@ -653,14 +653,12 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3, tag: 'button' });
       const host = await getHost();
 
-      await setAttribute(host, 'size', 'medium');
+      await setAttribute(host, 'active-tab-index', '2');
+      await waitForStencilLifecycle(page);
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar');
-      expect(status.componentDidUpdate['p-button-pure']).toBe(0, 'componentDidLoad: p-button-pure');
-      expect(status.componentDidUpdate['p-icon']).toBe(0, 'componentDidLoad: p-icon');
-      expect(status.componentDidUpdate['p-text']).toBe(0, 'componentDidLoad: p-text');
+      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidUpdate: p-tabs-bar');
 
       expect(status.componentDidLoad.all).toBe(7, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
