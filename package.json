@@ -123,6 +123,9 @@
     "clean:utilities:node_modules": "yarn --cwd ./packages/utilities clean:node_modules",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
+  "resolutions": {
+    "**/@stencil/postcss/postcss": "^8.1.7"
+  },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
     "prettier": "^2.2.1"
