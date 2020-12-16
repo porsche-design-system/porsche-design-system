@@ -152,7 +152,9 @@ export class TabsBar {
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
           onClick={() => this.scrollOnPrevNextClick(direction)}
-        />
+        >
+          {direction}
+        </PrefixedTagNames.pButtonPure>
       </div>
     );
   };
