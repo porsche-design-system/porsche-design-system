@@ -2,6 +2,8 @@
 export { TextSize } from './components/basic/typography/text/textUtils';
 export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
 
+export type BannerState = 'error' | 'warning' | 'neutral';
+
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
 export type TextColor =

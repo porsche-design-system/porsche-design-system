@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headlineUtils";
 export namespace Components {
@@ -17,7 +17,7 @@ export namespace Components {
         /**
           * State of the banner.
          */
-        "state"?: 'error' | 'warning' | 'neutral';
+        "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
          */
@@ -920,7 +920,7 @@ declare namespace LocalJSX {
         /**
           * State of the banner.
          */
-        "state"?: 'error' | 'warning' | 'neutral';
+        "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
          */
