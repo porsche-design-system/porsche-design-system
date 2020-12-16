@@ -4,9 +4,9 @@
   "private": true,
   "description": "Porsche Design System",
   "scripts": {
-    "prestart": "yarn copy-loader",
-    "prebuild": "yarn copy-loader",
-    "copy-loader": "cp ../components-js/dist/components-wrapper/index.js public/pds-loader.js",
+    "prestart": "yarn prepare-loader",
+    "prebuild": "yarn prepare-loader",
+    "prepare-loader": "ts-node --project './tsconfig.node.json' './scripts/preparePDSLoader.ts'",
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "build": "vue-cli-service build --silent",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
@@ -20,8 +20,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification": "1.0.0-rc.1",
-    "@porsche-design-system/components-js": "2.0.0-alpha.6",
+    "@porsche-design-system/browser-notification": "1.0.0",
+    "@porsche-design-system/components-js": "2.0.0-alpha.10",
     "change-case": "^4.1.1",
     "core-js": "^3.7.0",
     "prismjs": "^1.21.0",
@@ -33,9 +33,9 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "3.0.0",
+    "@porsche-design-system/assets": "3.1.0",
     "@porsche-design-system/partials": "2.2.0",
-    "@porsche-design-system/utilities": "2.0.0",
+    "@porsche-design-system/utilities": "3.0.0",
     "@porsche-design-system/vmark": "~1.2.0",
     "@porsche-design-system/vmark-loader": "^1.0.0",
     "@types/jasmine": "^3.6.1",
@@ -64,7 +64,7 @@
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "ts-node": "^9.0.0",
-    "typescript": "~4.0.5",
+    "typescript": "~4.1.2",
     "vue-template-compiler": "^2.6.12"
   },
   "scope": "@porsche-design-system"

@@ -9,34 +9,34 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home.vue')
+      component: () => import('@/views/Home.vue'),
     },
     {
       path: '/404',
       name: '404',
-      component: () => import('@/views/NotFound.vue')
+      component: () => import('@/views/NotFound.vue'),
     },
     {
       path: '/:page',
       name: 'custom',
-      component: () => import('@/views/Custom.vue')
+      component: () => import('@/views/Custom.vue'),
     },
     {
       path: '/:category/:page',
       name: 'page',
-      component: () => import('@/views/Page.vue')
+      component: () => import('@/views/Page.vue'),
     },
     {
       path: '/patterns/:category/:pattern',
       name: 'pattern',
       component: () => import('@/views/Pattern.vue'),
-      meta: {standalone: true}
+      meta: { standalone: true },
     },
     {
       path: '*',
-      redirect: {name: '404'}
-    }
-  ]
+      redirect: { name: '404' },
+    },
+  ],
 });
 
 router.beforeEach(async (to, from, next) => {

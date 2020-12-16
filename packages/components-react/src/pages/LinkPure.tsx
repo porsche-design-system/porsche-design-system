@@ -1,5 +1,4 @@
 import { PLinkPure as LinkPure } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkPurePage = (): JSX.Element => {
   const style = `
@@ -9,7 +8,7 @@ export const LinkPurePage = (): JSX.Element => {
   `;
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render with label">
         <LinkPure href="https://www.porsche.com">Some label</LinkPure>
@@ -46,13 +45,13 @@ export const LinkPurePage = (): JSX.Element => {
       <div className="playground light" title="should render with responsive label">
         <LinkPure
           href="https://www.porsche.com"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           Some label
         </LinkPure>
         <LinkPure
           href="https://www.porsche.com"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           Some label
           <p slot="subline">Some subline</p>
@@ -106,7 +105,7 @@ export const LinkPurePage = (): JSX.Element => {
       <div className="playground light" title="should render with responsive size">
         <LinkPure
           href="https://www.porsche.com"
-          size="{'base': 'x-small', 'xs': 'small', 's': 'medium', 'm': 'large', 'l': 'x-large', 'xl': 'inherit'}"
+          size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
           style={{ fontSize: 48 }}
         >
           Some label

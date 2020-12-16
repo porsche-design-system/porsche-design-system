@@ -3,7 +3,8 @@ node_modules
 /dist
 
 # ignored since it is copied dynamically
-/public/pds-loader.js
+/public/pds-loader.*.js
+/hashedLoaderFilename.js
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/

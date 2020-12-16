@@ -20,7 +20,7 @@
       counter-reset: size 7;
     }
 
-    @include p-media-query("xs") {
+    @include p-media-query('xs') {
       &-5-xs {
         counter-reset: size 5;
       }
@@ -29,7 +29,7 @@
       }
     }
 
-    @include p-media-query("s") {
+    @include p-media-query('s') {
       &-5-s {
         counter-reset: size 5;
       }
@@ -38,7 +38,7 @@
       }
     }
 
-    @include p-media-query("m") {
+    @include p-media-query('m') {
       &-5-m {
         counter-reset: size 5;
       }
@@ -47,7 +47,7 @@
       }
     }
 
-    @include p-media-query("l") {
+    @include p-media-query('l') {
       &-5-l {
         counter-reset: size 5;
       }
@@ -56,7 +56,7 @@
       }
     }
 
-    @include p-media-query("xl") {
+    @include p-media-query('xl') {
       &-5-xl {
         counter-reset: size 5;
       }
@@ -81,6 +81,7 @@
   &__goto,
   &__prev,
   &__next {
+    @include p-focus($p-color-state-focus, 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,19 +90,9 @@
     width: p-px-to-rem(40px);
     height: p-px-to-rem(40px);
     box-sizing: border-box;
-    outline: none transparent;
 
-    &:focus {
-      outline-width: 1px;
-      outline-style: solid;
-
-      #{$bem-block}--theme-light & {
-        outline-color: $p-color-state-focus;
-      }
-
-      #{$bem-block}--theme-dark & {
-        outline-color: $p-color-theme-dark-state-focus;
-      }
+    :host([theme='dark']) & {
+      @include p-focus($p-color-theme-dark-state-focus, 1px);
     }
 
     &:active {

@@ -14,8 +14,8 @@
       gtag('config', 'UA-38934327-7', {
         page_path: location.pathname + location.hash,
         linker: {
-          domains: ['icons.porsche.com']
-        }
+          domains: ['icons.porsche.com'],
+        },
       });
     </script>
     <% } %>
@@ -31,7 +31,7 @@
     <% } %>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
-    <script src="./pds-loader.js"></script>
+    <script src="./<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
   </head>
   <body>
     <noscript>

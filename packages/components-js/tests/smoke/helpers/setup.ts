@@ -13,15 +13,15 @@ beforeAll(async () => {
     headless: true,
     defaultViewport: {
       width: 1920,
-      height: 800
+      height: 800,
     },
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--single-process',
-      '--disable-web-security'
-    ]
+      '--disable-web-security',
+    ],
   });
 });
 

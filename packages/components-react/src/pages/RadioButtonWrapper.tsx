@@ -1,5 +1,4 @@
 import { PRadioButtonWrapper as RadioButtonWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
   return (
@@ -17,7 +16,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         <RadioButtonWrapper label="Some label" hideLabel={true}>
           <input type="radio" name="some-name-2" />
         </RadioButtonWrapper>
-        <RadioButtonWrapper label="Some label" hideLabel="true">
+        <RadioButtonWrapper label="Some label" hideLabel={true}>
           <input type="radio" name="some-name-2" defaultChecked />
         </RadioButtonWrapper>
       </div>
@@ -25,13 +24,13 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
       <div className="playground light" title="should render with responsive label">
         <RadioButtonWrapper
           label="Some label"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <input type="radio" name="some-name-3" />
         </RadioButtonWrapper>
         <RadioButtonWrapper
           label="Some label"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <input type="radio" name="some-name-3" defaultChecked />
         </RadioButtonWrapper>

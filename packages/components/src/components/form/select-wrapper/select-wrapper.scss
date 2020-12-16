@@ -37,6 +37,10 @@
   height: 100% !important;
   display: block !important;
   padding: p-px-to-rem(12px) p-px-to-rem(48px) p-px-to-rem(12px) p-px-to-rem(12px) !important;
+  @-moz-document url-prefix() {
+    // fix for 3px text-indention in FF
+    padding-left: p-px-to-rem(8px) !important;
+  }
   margin: 0 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
@@ -63,28 +67,28 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([theme="dark"]) ::slotted(select:focus),
-:host([theme="dark"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark']) ::slotted(select:focus),
+:host([theme='dark']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-neutral-contrast-medium !important;
 }
 
-:host([state="success"]) ::slotted(select:focus),
-:host([state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([state='success']) ::slotted(select:focus),
+:host([state='success']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-notification-success !important;
 }
 
-:host([theme="dark"][state="success"]) ::slotted(select:focus),
-:host([theme="dark"][state="success"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark'][state='success']) ::slotted(select:focus),
+:host([theme='dark'][state='success']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-notification-success !important;
 }
 
-:host([state="error"]) ::slotted(select:focus),
-:host([state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([state='error']) ::slotted(select:focus),
+:host([state='error']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-notification-error !important;
 }
 
-:host([theme="dark"][state="error"]) ::slotted(select:focus),
-:host([theme="dark"][state="error"]) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
+:host([theme='dark'][state='error']) ::slotted(select:focus),
+:host([theme='dark'][state='error']) .#{$p-global-class-prefix}select-wrapper__filter-input:focus + span {
   outline-color: $p-color-theme-dark-notification-error !important;
 }
 
@@ -238,20 +242,17 @@
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
     }
 
+    #{$bem-block}--theme-light:hover &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+    }
+
     #{$bem-block}--theme-dark & {
       background-color: $p-color-default;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
     }
 
-    &:hover:not(&--disabled):not(&--success):not(&--error),
-    #{$bem-block}__label:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      #{$bem-block}--theme-light & {
-        box-shadow: inset 0 0 0 1px $p-color-default;
-      }
-
-      #{$bem-block}--theme-dark & {
-        box-shadow: inset 0 0 0 1px $p-color-theme-dark-default;
-      }
+    #{$bem-block}--theme-dark:hover &:not(&--disabled):not(&--success):not(&--error) {
+      box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
     }
 
     &--disabled {
@@ -312,13 +313,15 @@
   &__fake-option-list {
     @include p-text-small;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     border: 1px solid;
     left: 0;
     right: 0;
-    max-height: 200px;
+    max-height: p-px-to-rem(320px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    transition: border-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
     transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
 
     #{$bem-block}--theme-light & {
@@ -326,31 +329,63 @@
       background-color: $p-color-background-default;
     }
 
+    #{$bem-block}--theme-light:hover & {
+      border-color: $p-color-neutral-contrast-high;
+    }
+
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
       background-color: $p-color-default;
     }
 
+    #{$bem-block}--theme-dark:hover & {
+      border-color: $p-color-theme-dark-neutral-contrast-high;
+    }
+
     &--direction {
       &-down {
         top: calc(100% - 1px);
+        border-top: none;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 12px 25px 0 rgba(0, 0, 0, 0.1);
 
-        #{$bem-block}--theme-light & {
-          border-top-color: $p-color-neutral-contrast-low;
+        &::before {
+          content: '';
+          display: block;
+          position: sticky;
+          top: 0;
+          width: 100%;
+          height: 1px;
         }
-        #{$bem-block}--theme-dark & {
-          border-top-color: $p-color-theme-dark-neutral-contrast-low;
+
+        #{$bem-block}--theme-light &::before {
+          background-color: $p-color-neutral-contrast-low;
+        }
+
+        #{$bem-block}--theme-dark &::before {
+          background-color: $p-color-theme-dark-neutral-contrast-low;
         }
       }
 
       &-up {
         bottom: p-px-to-rem(47px);
+        border-bottom: none;
+        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.05), 0 -12px 25px 0 rgba(0, 0, 0, 0.075);
 
-        #{$bem-block}--theme-light & {
-          border-bottom-color: $p-color-neutral-contrast-low;
+        &::after {
+          content: '';
+          display: block;
+          position: sticky;
+          bottom: 0;
+          width: 100%;
+          height: 1px;
         }
-        #{$bem-block}--theme-dark & {
-          border-bottom-color: $p-color-theme-dark-neutral-contrast-low;
+
+        #{$bem-block}--theme-light &::after {
+          background-color: $p-color-neutral-contrast-low;
+        }
+
+        #{$bem-block}--theme-dark &::after {
+          background-color: $p-color-theme-dark-neutral-contrast-low;
         }
       }
     }
@@ -358,29 +393,6 @@
     // Firefox scrollbar styling
     scrollbar-width: thin;
     scrollbar-color: auto;
-
-    // Webkit scrollbar styling defaults to visible
-    &::-webkit-scrollbar {
-      -webkit-appearance: none;
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-
-      #{$bem-block}--theme-light & {
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      #{$bem-block}--theme-dark & {
-        background-color: rgba(255, 255, 255, 0.4);
-      }
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      height: $p-spacing-4;
-    }
 
     &:focus {
       outline: none;
@@ -397,14 +409,22 @@
   }
 
   &__fake-option {
-    position: relative;
-    display: block;
-    padding: $p-spacing-8 p-px-to-rem(12px);
+    display: flex;
+    padding: $p-spacing-4 p-px-to-rem(11px);
     min-height: $p-spacing-24;
     cursor: pointer;
     text-align: left;
+    word-break: break-word;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
+
+    &[role='status'] {
+      cursor: not-allowed;
+    }
+
+    &-sr {
+      @include p-text-field-wrapper-label-text-hidden;
+    }
 
     #{$bem-block}--theme-light & {
       color: $p-color-default;
@@ -414,13 +434,15 @@
       color: $p-color-theme-dark-default;
     }
 
-    &:not([aria-disabled]):hover {
+    &:not([aria-disabled]):not([role='status']):hover {
       #{$bem-block}--theme-light & {
         color: $p-color-state-hover;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-hover;
+        background-color: $p-color-theme-dark-background-surface;
       }
     }
 
@@ -431,22 +453,28 @@
 
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
+        background-color: $p-color-theme-dark-background-surface;
+      }
+
+      span + #{$bem-block}__fake-option-icon {
+        margin-left: $p-spacing-4;
       }
     }
 
     &--highlighted:not(&--selected) {
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
-        background-color: #ebebeb;
+        background-color: $p-color-background-surface;
       }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
-        background-color: #20262a;
+        background-color: $p-color-theme-dark-background-surface;
       }
     }
 
@@ -463,14 +491,9 @@
     }
 
     &--hidden,
-    &--initiallyHidden{
+    &--initiallyHidden {
       display: none;
     }
-  }
-
-  &__fake-option-icon {
-    position: absolute;
-    right: p-px-to-rem(12px);
   }
 
   &__fake-optgroup-label {
@@ -554,7 +577,7 @@
     display: block;
     width: calc(100% - #{p-px-to-rem(44px)});
     height: p-px-to-rem(44px);
-    padding: p-px-to-rem(10px) p-px-to-rem(47px) p-px-to-rem(10px) p-px-to-rem(11px);
+    padding: p-px-to-rem(10px);
     outline: transparent none;
     appearance: none;
     box-sizing: border-box;
@@ -643,7 +666,8 @@
       left: 0;
       right: 0;
       height: p-px-to-rem(48px);
-      outline: transparent none;
+      outline: transparent solid 1px;
+      outline-offset: 2px;
       transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
@@ -652,8 +676,16 @@
         box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
       }
 
+      #{$bem-block}--theme-light:hover & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      }
+
       #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
+      }
+
+      #{$bem-block}--theme-dark:hover & {
+        box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
       }
     }
 
@@ -677,10 +709,6 @@
 
     &:focus {
       opacity: 1;
-      + span {
-        outline: transparent solid 1px;
-        outline-offset: 2px;
-      }
     }
 
     &:disabled {

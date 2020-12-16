@@ -12,14 +12,14 @@ const readAndWriteFile = (targetFile: string): void => {
       .replace('typeof', 'typeof ')}+"` // recover space after typeof
   );
   fs.writeFileSync(targetFile, newContent);
-  console.log(`Updated ${targetFile}`);
+  console.log(`Updated: ${targetFile}`);
 };
 
 const replaceCdnBaseUrlDynamicPlaceholder = async () => {
   readAndWriteFile(path.normalize('./dist/components-wrapper/index.js')); // core loader
   readAndWriteFile(path.normalize((await globby('./dist/components/porsche-design-system.v*'))[0])); // core on cdn
 
-  console.log(`Replaced "%%%CDN_BASE_URL_DYNAMIC%%%" with "${CDN_BASE_URL_DYNAMIC}"`);
+  console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "${CDN_BASE_URL_DYNAMIC}"`);
 };
 
 (async (): Promise<void> => {

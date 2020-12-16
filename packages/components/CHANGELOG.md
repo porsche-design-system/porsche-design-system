@@ -8,22 +8,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-alpha.10] - 2020-12-14
+
+#### Added
+- `native` property to `Select Wrapper` to force rendering of native Browser select dropdown
+- Extended flexibility of `Headline`
+
+#### Changed
+- Some styling improvements of `Select Wrapper`
+
+#### Fixed
+- Jsdom Polyfill `fetch` error
+
+### [2.0.0-alpha.9] - 2020-12-09
+
+### Fixed
+- Improved reliability of `componentsReady()`
+
+#### Changed
+- Jsdom Polyfill `console.warn` behaviour
+
+### [2.0.0-alpha.8] - 2020-12-03
+
+### Fixed
+- A bug where `Modal` did not remove `overflow=hidden` on document body.
+
+### [2.0.0-alpha.7] - 2020-11-26
+
 #### Added
 - Jsdom Polyfill
 
 #### Removed
 - Jsdom Mocks
+- Global "blur on focus" script
 
 #### Changed
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`
 - Removed transition for focus styling
+- Use `:focus-visible` as default and `:focus` as fallback for focusable elements
 
 #### Fixed
 - The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically
 - Invalid search results get cleared if `SelectWrapper` becomes focus state
 - Some bugs in `TabsBar`
 - Minification of dynamic slotted content styles
+- An issue where `Pagination` throws console errors if disconnected from dom.
 
 ### [2.0.0-alpha.6] - 2020-10-28
 

@@ -9,12 +9,12 @@ export const color = {
   background: {
     default: '#fff',
     surface: '#f2f2f2',
-    shading: 'rgba(14, 20, 24, 0.9)'
+    shading: 'rgba(14, 20, 24, 0.9)',
   },
   neutralContrast: {
     high: '#323639',
     medium: '#626669',
-    low: '#c9cacb'
+    low: '#c9cacb',
   },
   notification: {
     success: '#018a16',
@@ -24,13 +24,13 @@ export const color = {
     error: '#e00000',
     errorSoft: '#fae6e6',
     neutral: '#0061bd',
-    neutralSoft: '#e5eff8'
+    neutralSoft: '#e5eff8',
   },
   state: {
     hover: '#d5001c',
     active: '#d5001c',
     focus: 'currentColor',
-    disabled: '#96989a'
+    disabled: '#96989a',
   },
   /**
    * Theme dark as optional
@@ -41,12 +41,12 @@ export const color = {
     background: {
       default: '#0e1418',
       surface: '#262b2e',
-      shading: 'rgba(14, 20, 24, 0.9)'
+      shading: 'rgba(14, 20, 24, 0.9)',
     },
     neutralContrast: {
       high: '#e3e4e5',
       medium: '#b0b1b2',
-      low: '#4a4e51'
+      low: '#4a4e51',
     },
     notification: {
       success: '#01ba1d',
@@ -56,14 +56,14 @@ export const color = {
       error: '#fc1717',
       errorSoft: '#fec5c5',
       neutral: '#2193ff',
-      neutralSoft: '#c7e4ff'
+      neutralSoft: '#c7e4ff',
     },
     state: {
       hover: '#ff0223',
       active: '#ff0223',
       focus: 'currentColor',
-      disabled: '#7c7f81'
-    }
+      disabled: '#7c7f81',
+    },
   },
   /**
    * External brand colors
@@ -78,6 +78,6 @@ export const color = {
     wechat: '#1aad19',
     whatsapp: '#25d366',
     xing: '#006567',
-    youtube: '#ff0000'
-  }
+    youtube: '#ff0000',
+  },
 };

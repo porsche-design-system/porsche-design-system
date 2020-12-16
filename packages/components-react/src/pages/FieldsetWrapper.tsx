@@ -1,8 +1,7 @@
 import {
   PFieldsetWrapper as FieldsetWrapper,
-  PTextFieldWrapper as TextFieldWrapper
+  PTextFieldWrapper as TextFieldWrapper,
 } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const FieldsetWrapperPage = (): JSX.Element => {
   return (

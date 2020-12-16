@@ -1,5 +1,4 @@
 import { PTabs as Tabs, PTabsItem as TabsItem } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const TabsPage = (): JSX.Element => {
   const renderTabs = (amount: number, wrapAtIndex?: number) =>

@@ -9,7 +9,7 @@ import {
   initAddEventListener,
   selectNode,
   setContentWithDesignSystem,
-  waitForStencilLifecycle
+  waitForStencilLifecycle,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -124,6 +124,7 @@ describe('modal', () => {
 
     it('should not be closable via backdrop when disableBackdropClick is set', async () => {
       await (await getModalHost()).evaluate((el) => el.setAttribute('disable-backdrop-click', ''));
+      await waitForStencilLifecycle(page);
       await page.mouse.click(5, 5);
       await waitForStencilLifecycle(page);
 
@@ -250,8 +251,31 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('visible');
   });
 
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicModal({ isOpen: true });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('hidden');
+  });
+
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicModal({ isOpen: true });
+    const body = await selectNode(page, 'body');
+    const getBodyOverflow = () => getElementStyle(body, 'overflow');
+
+    expect(await getBodyOverflow()).toBe('hidden');
+
+    await page.evaluate(() => {
+      document.querySelector('p-modal').remove();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getBodyOverflow()).toBe('visible');
+  });
+
   it('should have correct aria-hidden value', async () => {
-    await initBasicModal({isOpen: false});
+    await initBasicModal({ isOpen: false });
     const aside = await getModalAside();
 
     expect(await getAttribute(aside, 'aria-hidden')).toBe('true');

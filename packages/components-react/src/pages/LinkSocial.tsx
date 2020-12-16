@@ -1,5 +1,4 @@
 import { PLinkSocial as LinkSocial } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const LinkSocialPage = (): JSX.Element => {
   const style = `
@@ -10,7 +9,7 @@ export const LinkSocialPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render with label">
         <LinkSocial href="https://www.facebook.com" icon="logo-facebook">
@@ -48,7 +47,7 @@ export const LinkSocialPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with responsive label">
         <LinkSocial
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           href="https://www.facebook.com"
           icon="logo-facebook"
         >

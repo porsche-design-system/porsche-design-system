@@ -5,20 +5,20 @@ import {
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
 } from '../../../utils';
-import { IconName, LinkTarget, Theme } from '../../../types';
+import { IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
   styleUrl: 'link.scss',
-  shadow: true
+  shadow: true,
 })
 export class Link {
   @Element() public element!: HTMLElement;
 
   /** The style variant of the link. */
-  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @Prop() public variant?: LinkVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
@@ -69,8 +69,15 @@ export class Link {
     }
 
     ${tagName}[variant="primary"] a:focus::before,
-     ${tagName}[theme="dark"][variant="primary"] a:focus::before {
+    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
       outline-color: #d5001c !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
+    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
     }`;
 
     insertSlottedStyles(this.element, style);
@@ -84,7 +91,7 @@ export class Link {
       [prefix('link')]: true,
       [prefix(`link--${this.variant}`)]: true,
       [prefix(`link--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'])
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
     };
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
@@ -98,7 +105,7 @@ export class Link {
           href: this.href,
           target: `${this.target}`,
           download: this.download,
-          rel: this.rel
+          rel: this.rel,
         })}
       >
         <PrefixedTagNames.pIcon

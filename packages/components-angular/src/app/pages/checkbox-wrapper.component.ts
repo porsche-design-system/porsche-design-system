@@ -129,7 +129,7 @@ import { Component } from '@angular/core';
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
     </div>
-  `
+  `,
 })
 export class CheckboxWrapperComponent {
   ngOnInit() {

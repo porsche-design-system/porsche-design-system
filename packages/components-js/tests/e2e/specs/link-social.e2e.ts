@@ -1,11 +1,16 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser, getStyleOnFocus,
+  getBrowser,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  waitForInheritedCSSTransition,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -17,6 +22,20 @@ describe('link social', () => {
     await initAddEventListener(page);
   });
   afterEach(async () => await page.close());
+
+  const initLinkSocial = (
+    { useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }
+  ): Promise<void> => {
+    return setContentWithDesignSystem(
+      page,
+      `
+      <p-link-social onclick="return false;" ${!useSlottedAnchor ? 'href="#"' : ''} icon="logo-facebook">
+        ${useSlottedAnchor ? '<a onclick="return false;" href="">' : ''}
+        Some label
+        ${useSlottedAnchor ? '</a>' : ''}
+      </p-link-social>`
+    );
+  };
 
   const getLinkSocialHost = () => selectNode(page, 'p-link-social');
   const getLinkSocialRealLink = () => selectNode(page, 'p-link-social >>> a');
@@ -170,38 +189,54 @@ describe('link social', () => {
   });
 
   describe('focus state', () => {
+    it('should be shown by keyboard navigation only for shadowed <a>', async () => {
+      await initLinkSocial();
+
+      const link = await getLinkSocialRealLink();
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'default' }); // because of button click, :focus-visible & :hover
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await link.click();
+      await waitForInheritedCSSTransition(page);
+
+      expect(await getOutlineStyle(link)).toBe(hidden);
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      await page.keyboard.up('ShiftLeft');
+      await page.keyboard.press('Tab');
+
+      expect(await getOutlineStyle(link)).toBe(visible);
+    });
+
     it('should show outline of shadowed <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-social icon="logo-facebook" href="#">Some label</p-link-social>`
-      );
+      await initLinkSocial();
 
       const host = await getLinkSocialHost();
       const link = await getLinkSocialRealLink();
 
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-link-social icon="logo-facebook">
-          <a href="#">Some label</a>
-        </p-link-social>`
-      );
+      await initLinkSocial({ useSlottedAnchor: true });
 
       const host = await getLinkSocialHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(expectedStyleOnFocus());
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '2px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ theme: 'dark' })
+      );
     });
   });
 });

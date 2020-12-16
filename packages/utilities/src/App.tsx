@@ -1,17 +1,24 @@
-import React from 'react';
 import { HashRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
-import { JsVariables, ScssVariables } from './pages';
+import { JsFocus, JsVariables, ScssFocus, ScssVariables } from './pages';
 import './styles.css';
 
 const routes: RouteProps[] = [
   {
     path: '/js-variables',
-    component: JsVariables
+    component: JsVariables,
+  },
+  {
+    path: '/js-focus',
+    component: JsFocus,
   },
   {
     path: '/scss-variables',
-    component: ScssVariables
-  }
+    component: ScssVariables,
+  },
+  {
+    path: '/scss-focus',
+    component: ScssFocus,
+  },
 ];
 
 export const App = (): JSX.Element => (

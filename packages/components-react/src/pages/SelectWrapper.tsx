@@ -1,5 +1,4 @@
 import { PSelectWrapper as SelectWrapper } from '@porsche-design-system/components-react';
-import React from 'react';
 
 export const SelectWrapperPage = (): JSX.Element => {
   return (
@@ -65,7 +64,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         <SelectWrapper
           label="Some label"
           description="Some description"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <select name="some-name">
             <option value="a">Option A</option>
@@ -78,7 +77,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         <SelectWrapper
           label="Some label"
           description="Some description"
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           theme="dark"
         >
           <select name="some-name">
