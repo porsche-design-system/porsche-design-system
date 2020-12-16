@@ -26,17 +26,20 @@ describe('modal', () => {
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
 
-  const initBasicModal = ({ isOpen }: { isOpen: boolean } = { isOpen: true }) =>
-    setContentWithDesignSystem(
+  const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
+    const { isOpen = true } = opts ?? {};
+
+    return setContentWithDesignSystem(
       page,
       `
       <p-modal heading="Some Heading" ${isOpen ? 'open' : ''}>
         Some Content
       </p-modal>`
     );
+  };
 
-  const initAdvancedModal = () =>
-    setContentWithDesignSystem(
+  const initAdvancedModal = (): Promise<void> => {
+    return setContentWithDesignSystem(
       page,
       `
       <p-modal heading="Some Heading">
@@ -50,6 +53,7 @@ describe('modal', () => {
         </div>
       </p-modal>`
     );
+  };
 
   const openModal = async () => {
     await (await getHost()).evaluate((el) => el.setAttribute('open', ''));
