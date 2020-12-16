@@ -24,10 +24,7 @@ const TABS_SCROLL_PERCENTAGE = 0.2;
 
 describe('tabs-bar', () => {
   let page: Page;
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-    await initAddEventListener(page);
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const initTabsBar = async (opts?: {
@@ -373,6 +370,8 @@ describe('tabs-bar', () => {
   });
 
   describe('events', () => {
+    beforeEach(async () => await initAddEventListener(page));
+
     it('should trigger event on button click', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
       const host = await selectNode(page, 'p-tabs-bar');
