@@ -53,8 +53,8 @@
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@rollup/plugin-typescript": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-typescript": "^8.1.0",
     "rollup": "^2.33.3",
     "tslib": "^2.0.1",
     "typescript": "~4.1.3"
