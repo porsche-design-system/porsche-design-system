@@ -22,7 +22,6 @@ describe('p-icon', () => {
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
-  const getIcon = async () => selectNode(page, 'p-icon >>> .p-icon');
   const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
 
   describe('loading behavior', () => {
