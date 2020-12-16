@@ -6,7 +6,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-helper';
+import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './paginationUtils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
 import { NumberOfPageLinks, Theme } from '../../../types';
