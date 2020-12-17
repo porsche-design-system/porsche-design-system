@@ -11,6 +11,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   waitForInheritedCSSTransition,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -23,9 +24,9 @@ describe('link social', () => {
   });
   afterEach(async () => await page.close());
 
-  const initLinkSocial = (
-    { useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }
-  ): Promise<void> => {
+  const initLinkSocial = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
+    const { useSlottedAnchor = false } = opts ?? {};
+
     return setContentWithDesignSystem(
       page,
       `
@@ -37,13 +38,13 @@ describe('link social', () => {
     );
   };
 
-  const getLinkSocialHost = () => selectNode(page, 'p-link-social');
-  const getLinkSocialRealLink = () => selectNode(page, 'p-link-social >>> a');
+  const getHost = () => selectNode(page, 'p-link-social');
+  const getLink = () => selectNode(page, 'p-link-social >>> a');
   const getSlottedLink = () => selectNode(page, 'p-link-social a');
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`);
-    const el = await getLinkSocialRealLink();
+    const el = await getLink();
     expect(el).toBeDefined();
   });
 
@@ -54,8 +55,8 @@ describe('link social', () => {
     );
 
     const wrapper = await selectNode(page, 'div');
-    const host = await getLinkSocialHost();
-    const link = await getLinkSocialRealLink();
+    const host = await getHost();
+    const link = await getLink();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -81,7 +82,7 @@ describe('link social', () => {
           </div>
     `
     );
-    const link = await getLinkSocialHost();
+    const link = await getHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
@@ -175,7 +176,7 @@ describe('link social', () => {
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-social'));
 
-    const link = await getLinkSocialHost();
+    const link = await getHost();
     const before = await selectNode(page, '#before');
     await before.focus();
     expect(await linkHasFocus()).toBe(false);
@@ -192,7 +193,7 @@ describe('link social', () => {
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {
       await initLinkSocial();
 
-      const link = await getLinkSocialRealLink();
+      const link = await getLink();
       const hidden = expectedStyleOnFocus({ color: 'transparent' });
       const visible = expectedStyleOnFocus({ color: 'default' }); // because of button click, :focus-visible & :hover
 
@@ -214,8 +215,8 @@ describe('link social', () => {
     it('should show outline of shadowed <a> when it is focused', async () => {
       await initLinkSocial();
 
-      const host = await getLinkSocialHost();
-      const link = await getLinkSocialRealLink();
+      const host = await getHost();
+      const link = await getLink();
 
       expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus());
 
@@ -227,7 +228,7 @@ describe('link social', () => {
     it('should show outline of slotted <a> when it is focused', async () => {
       await initLinkSocial({ useSlottedAnchor: true });
 
-      const host = await getLinkSocialHost();
+      const host = await getHost();
       const link = await getSlottedLink();
 
       expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(expectedStyleOnFocus());
@@ -237,6 +238,34 @@ describe('link social', () => {
       expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
         expectedStyleOnFocus({ theme: 'dark' })
       );
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initLinkSocial();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-link-social']).toBe(1, 'componentDidLoad: p-link-social');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initLinkSocial();
+      const host = await getHost();
+
+      await setAttribute(host, 'icon', 'logo-xing');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-link-social']).toBe(1, 'componentDidUpdate: p-link-social');
+      expect(status.componentDidUpdate['p-icon']).toBe(1, 'componentDidUpdate: p-icon');
+
+      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
     });
   });
 });

@@ -1,4 +1,5 @@
-import { PBanner as Banner } from '@porsche-design-system/components-react';
+import { componentsReady, PBanner as Banner } from '@porsche-design-system/components-react';
+import { useEffect, useState } from 'react';
 
 export const BannerPage = (): JSX.Element => {
   const style = `
@@ -9,6 +10,14 @@ export const BannerPage = (): JSX.Element => {
       padding: 300px 0;
     }
   `;
+  const [allReady, setAllReady] = useState(false);
+
+  useEffect(() => {
+    componentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   return (
     <>
       <style children={style} />
@@ -95,14 +104,16 @@ export const BannerPage = (): JSX.Element => {
           </Banner>
         </div>
 
-        <div className="playground light" title="should show banner in fluid width">
-          <Banner width="fluid">
-            <span slot="title">Some notification title</span>
-            <span slot="description">
-              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
-            </span>
-          </Banner>
-        </div>
+        {allReady && (
+          <div className="playground light" title="should show banner in fluid width">
+            <Banner width="fluid">
+              <span slot="title">Some notification title</span>
+              <span slot="description">
+                Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              </span>
+            </Banner>
+          </div>
+        )}
       </div>
     </>
   );

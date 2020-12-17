@@ -1,5 +1,6 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
 import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { Theme } from '../../../types';
 
 @Component({
   tag: 'p-spinner',
@@ -11,7 +12,7 @@ export class Spinner {
   @Prop() public size?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'> = 'small';
 
   /** Adapts the spinner color depending on the theme. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
     const spinnerClasses = {

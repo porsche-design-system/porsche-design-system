@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BannerState, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headlineUtils";
+import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 export namespace Components {
     interface PBanner {
         /**
@@ -17,7 +17,7 @@ export namespace Components {
         /**
           * State of the banner.
          */
-        "state"?: 'error' | 'warning' | 'neutral';
+        "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
          */
@@ -480,7 +480,7 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -550,7 +550,7 @@ export namespace Components {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
     }
     interface PTabs {
         /**
@@ -920,7 +920,7 @@ declare namespace LocalJSX {
         /**
           * State of the banner.
          */
-        "state"?: 'error' | 'warning' | 'neutral';
+        "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
          */
@@ -1391,7 +1391,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -1461,7 +1461,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the spinner color depending on the theme.
          */
-        "theme"?: 'light' | 'dark';
+        "theme"?: Theme;
     }
     interface PTabs {
         /**

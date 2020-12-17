@@ -1,4 +1,11 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import {
+  getBrowser,
+  getLifecycleStatus,
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForStencilLifecycle,
+} from '../helpers';
 import { Page } from 'puppeteer';
 import { HeadlineVariant, HeadlineTag } from '@porsche-design-system/components/dist/types/bundle';
 
@@ -21,6 +28,8 @@ describe('headline', () => {
         </p-headline>`
     );
   };
+
+  const getHost = () => selectNode(page, 'p-headline');
 
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.p-headline').tagName);
@@ -69,6 +78,58 @@ describe('headline', () => {
     it('should render as default headline if slotted content is not a headline', async () => {
       await initHeadline({ slot: '<div>Some Headline</div>' });
       expect(await getHeadlineTagName()).toBe('H1');
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initHeadline({ variant: 'headline-1' });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
+      expect(status.componentDidUpdate['p-headline']).toBe(0, 'componentDidUpdate: p-headline');
+
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips with custom breakpoints', async () => {
+      await initHeadline({ variant: { base: 'small', l: 'large' } });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initHeadline({ variant: 'headline-1' });
+      const host = await getHost();
+
+      await setAttribute(host, 'variant', 'headline-4');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change with custom breakpoints', async () => {
+      await initHeadline({ variant: { base: 'small', l: 'large' } });
+      const host = await getHost();
+
+      await setAttribute(host, 'variant', 'headline-4');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-headline']).toBe(1, 'componentDidUpdate: p-headline');
+
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

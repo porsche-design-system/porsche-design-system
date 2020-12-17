@@ -6,10 +6,10 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-helper';
+import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import { NumberOfPageLinks } from '../../../types';
+import { NumberOfPageLinks, Theme } from '../../../types';
 
 @Component({
   tag: 'p-pagination',
@@ -51,7 +51,7 @@ export class Pagination {
   @Prop() public allyLabelNext?: string = 'Next page';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the page changes. */
   @Event() public pageChange!: EventEmitter<{ page: number; previousPage: number }>;
