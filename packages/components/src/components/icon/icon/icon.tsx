@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
-import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './iconUtlis';
+import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-utlis';
 import { isBrowser, prefix } from '../../../utils';
 import { Theme, IconName, TextColor } from '../../../types';
 import { getShadowRootHTMLElement } from '../../../utils/selector-helper';
