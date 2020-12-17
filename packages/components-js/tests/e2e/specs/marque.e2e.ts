@@ -27,7 +27,6 @@ describe('marque', () => {
   });
   afterEach(async () => await page.close());
 
-  const getHost = () => selectNode(page, '.p-marque');
   const setContentWithoutTrademark = () => setContentWithDesignSystem(page, `<p-marque trademark="false"></p-marque>`);
   const setContentWithTrademark = () => setContentWithDesignSystem(page, `<p-marque></p-marque>`);
 

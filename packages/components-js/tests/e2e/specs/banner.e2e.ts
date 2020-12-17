@@ -73,10 +73,10 @@ describe('banner', () => {
   it('should remove banner from DOM by click on close button', async () => {
     await initBanner();
 
-    const innerButton = await getButton();
+    const button = await getButton();
 
     await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await innerButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
     // we have to wait for the animation to end before the dom is cleared
     await page.waitForTimeout(CSS_FADE_OUT_DURATION);
@@ -98,12 +98,12 @@ describe('banner', () => {
     await initBanner();
 
     const host = await getHost();
-    const innerButton = await getButton();
+    const button = await getButton();
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
     await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await innerButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
   });
@@ -112,7 +112,7 @@ describe('banner', () => {
     await initBanner();
 
     const host = await getHost();
-    const innerButton = await getButton();
+    const button = await getButton();
     let calls = 0;
     await addEventListener(host, 'dismiss', () => calls++);
 
@@ -120,7 +120,7 @@ describe('banner', () => {
     await reattachElement(page, 'p-banner');
 
     await page.waitForTimeout(CSS_FADE_IN_DURATION);
-    await innerButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(1);
   });

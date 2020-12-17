@@ -151,15 +151,15 @@ describe('button', () => {
     `
     );
 
-    const innerButton = await getButton();
-    const outerButton = await getHost();
+    const host = await getHost();
+    const button = await getButton();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
     await addEventListener(form, 'submit', () => calls++);
 
-    await innerButton.click();
-    await outerButton.click();
+    await button.click();
+    await host.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(0);
   });
