@@ -1,6 +1,6 @@
 // common type definitions
 export { TextSize } from './components/basic/typography/text/textUtils';
-export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
+export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
 
 export type BannerState = 'error' | 'warning' | 'neutral';
 

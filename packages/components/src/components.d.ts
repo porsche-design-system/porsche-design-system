@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { BreakpointCustomizable } from "./utils";
-import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headlineUtils";
+import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 export namespace Components {
     interface PBanner {
         /**
