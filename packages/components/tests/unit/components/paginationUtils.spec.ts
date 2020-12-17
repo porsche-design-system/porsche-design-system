@@ -5,7 +5,7 @@ import {
   createRange,
   PaginationModelItem,
   itemTypes,
-} from '../../../src/components/navigation/pagination/paginationUtils';
+} from '../../../src/components/navigation/pagination/pagination-utils';
 
 const paginationModelItemToSymbolPart = (item: PaginationModelItem) => {
   switch (item.type) {
