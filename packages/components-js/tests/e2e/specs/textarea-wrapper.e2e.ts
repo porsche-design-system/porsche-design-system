@@ -12,6 +12,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -39,14 +40,11 @@ describe('textarea-wrapper', () => {
     useSlottedMessage?: boolean;
     state?: FormState;
   };
-  const initTextarea = (
-    { useSlottedLabel, useSlottedDescription, useSlottedMessage, state }: InitOptions = {
-      useSlottedLabel: false,
-      useSlottedDescription: false,
-      useSlottedMessage: false,
-      state: 'none',
-    }
-  ): Promise<void> => {
+
+  const initTextarea = (opts?: InitOptions): Promise<void> => {
+    const { useSlottedLabel = false, useSlottedDescription = false, useSlottedMessage = false, state = 'none' } =
+      opts ?? {};
+
     const slottedLabel = useSlottedLabel
       ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
       : '';
@@ -300,7 +298,7 @@ describe('textarea-wrapper', () => {
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '4px' }));
 
-      await setAttribute(textarea, 'readOnly', 'true');
+      await setAttribute(textarea, 'readonly', 'true');
       await waitForStencilLifecycle(page);
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '4px' }));
     });
@@ -327,6 +325,43 @@ describe('textarea-wrapper', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedMessage: true,
+        useSlottedDescription: true,
+        state: 'error',
+      });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(3, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on init', async () => {
+      await initTextarea({
+        useSlottedLabel: true,
+        useSlottedMessage: true,
+        useSlottedDescription: true,
+        state: 'error',
+      });
+      const host = await getHost();
+      await setAttribute(host, 'state', 'none');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(1, 'componentDidUpdate: p-textarea-wrapper');
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

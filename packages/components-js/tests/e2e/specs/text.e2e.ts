@@ -8,6 +8,7 @@ import {
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -66,6 +67,31 @@ describe('text', () => {
       await waitForInheritedCSSTransition(page);
 
       expect(await getStyleOnFocus(link)).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initText();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).toBe(1, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initText();
+      const host = await getHost();
+
+      await setAttribute(host, 'weight', 'semibold');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-text']).toBe(1, 'componentDidUpdate: p-text');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

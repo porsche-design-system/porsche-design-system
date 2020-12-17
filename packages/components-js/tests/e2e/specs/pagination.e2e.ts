@@ -1,5 +1,12 @@
 import { ConsoleMessage, Page } from 'puppeteer';
-import { getAttribute, getBrowser, selectNode, setContentWithDesignSystem, waitForStencilLifecycle } from '../helpers';
+import {
+  getAttribute,
+  getBrowser,
+  getLifecycleStatus,
+  selectNode,
+  setContentWithDesignSystem,
+  waitForStencilLifecycle,
+} from '../helpers';
 
 describe('pagination', () => {
   let page: Page;
@@ -9,19 +16,25 @@ describe('pagination', () => {
   });
   afterEach(async () => await page.close());
 
-  const getPagination = () => selectNode(page, 'p-pagination');
+  const getHost = () => selectNode(page, 'p-pagination');
   const getPrevButton = () => selectNode(page, 'p-pagination >>> .p-pagination__prev');
   const getNextButton = () => selectNode(page, 'p-pagination >>> .p-pagination__next');
   const getNav = () => selectNode(page, 'p-pagination >>> nav');
   const getPaginationItems = async () => (await getNav()).$$('.p-pagination__goto');
 
-  it('should have correct aria disabled attribute on button prev', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`
-    );
+  const initPagination = (opts?: { activePage?: number }) => {
+    const { activePage = 1 } = opts ?? {};
 
-    const host = await getPagination();
+    return setContentWithDesignSystem(
+      page,
+      `<p-pagination total-items-count="500" items-per-page="25" active-page="${activePage}"></p-pagination>`
+    );
+  };
+
+  it('should have correct aria disabled attribute on button prev', async () => {
+    await initPagination();
+
+    const host = await getHost();
     const prevButton = await getPrevButton();
 
     expect(await getAttribute(prevButton, 'aria-disabled')).toBe('true');
@@ -33,12 +46,9 @@ describe('pagination', () => {
   });
 
   it('should have correct aria disabled attribute on button next', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-pagination total-items-count="500" items-per-page="25" active-page="20"></p-pagination>`
-    );
+    await initPagination({ activePage: 20 });
 
-    const host = await getPagination();
+    const host = await getHost();
     const nextButton = await getNextButton();
 
     expect(await getAttribute(nextButton, 'aria-disabled')).toBe('true');
@@ -51,12 +61,9 @@ describe('pagination', () => {
 
   describe('page-item', () => {
     it('should have aria-current = page if selected', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`
-      );
+      await initPagination();
 
-      const host = await getPagination();
+      const host = await getHost();
       const paginationItems = await getPaginationItems();
       const firstPageItem = paginationItems[0];
 
@@ -74,12 +81,9 @@ describe('pagination', () => {
     });
 
     it('should have aria-disabled if selected', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`
-      );
+      await initPagination();
 
-      const host = await getPagination();
+      const host = await getHost();
       const paginationItems = await getPaginationItems();
       const firstPageItem = paginationItems[0];
 
@@ -125,5 +129,21 @@ describe('pagination', () => {
 
     await page.evaluate(() => console.error('test error'));
     expect(getErrorsAmount(consoleMessages)).toBe(1);
+  });
+
+  //TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
+  xdescribe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initPagination();
+      const status = await getLifecycleStatus(page);
+
+      console.log(status);
+
+      expect(status.componentDidLoad['p-pagination']).toBe(1, 'componentDidLoad: p-pagination');
+      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
   });
 });

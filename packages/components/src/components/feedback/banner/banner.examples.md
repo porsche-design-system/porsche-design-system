@@ -82,12 +82,10 @@ p-banner {
     }
     
     openBanner = () => {
-      const el = document.createElement('div');
+      const el = document.createElement('p-banner');
       el.innerHTML = `
-      <p-banner>
         <span slot="title">Some banner title</span>
         <span slot="description">Some banner description.</span>
-      </p-banner>
       `;
       document.getElementById('app').append(el);
     };

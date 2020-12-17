@@ -15,6 +15,7 @@ import {
   expectedStyleOnFocus,
   waitForStencilLifecycle,
   getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
@@ -23,10 +24,7 @@ const TABS_SCROLL_PERCENTAGE = 0.2;
 
 describe('tabs-bar', () => {
   let page: Page;
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-    await initAddEventListener(page);
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const initTabsBar = async (opts?: {
@@ -36,18 +34,14 @@ describe('tabs-bar', () => {
     otherMarkup?: string;
     tag?: 'a' | 'button';
   }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup, tag } = opts ?? {};
+    const { amount = 8, activeTabIndex, isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
+    const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
     const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
-    .map(
-      (_, i) =>
-        `<${tag === 'a' ? 'a onclick="return false" href="#"' : 'button'}>Tab Button ${i + 1}</${
-          tag === 'a' ? 'a' : 'button'
-        }>`
-    )
+    .map((_, i) => `<${tag}${attributes}>Tab Button ${i + 1}</${tag}>`)
     .join('')}
-</p-tabs-bar>${otherMarkup ?? ''}`;
+</p-tabs-bar>${otherMarkup}`;
 
     await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
   };
@@ -376,6 +370,8 @@ describe('tabs-bar', () => {
   });
 
   describe('events', () => {
+    beforeEach(async () => await initAddEventListener(page));
+
     it('should trigger event on button click', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
       const host = await selectNode(page, 'p-tabs-bar');
@@ -483,6 +479,15 @@ describe('tabs-bar', () => {
 
       expect(await getClassList(actionNext)).toContain(hiddenClass);
       expect(await getClassList(actionPrev)).toContain(hiddenClass);
+    });
+
+    it('should have label of prev/next buttons in dom', async () => {
+      await initTabsBar();
+
+      const { nextButton, prevButton } = await getPrevNextButton();
+
+      expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
+      expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
     });
   });
 
@@ -626,6 +631,36 @@ describe('tabs-bar', () => {
       );
       expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
       expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initTabsBar({ amount: 3, tag: 'a' });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar');
+      expect(status.componentDidLoad['p-button-pure']).toBe(2, 'componentDidLoad: p-button-pure');
+      expect(status.componentDidLoad['p-icon']).toBe(2, 'componentDidLoad: p-icon');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+
+      expect(status.componentDidLoad.all).toBe(7, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initTabsBar({ amount: 3, tag: 'button' });
+      const host = await getHost();
+
+      await setAttribute(host, 'active-tab-index', '2');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidUpdate: p-tabs-bar');
+
+      expect(status.componentDidLoad.all).toBe(7, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

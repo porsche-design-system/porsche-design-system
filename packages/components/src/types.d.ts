@@ -1,6 +1,8 @@
 // common type definitions
-export { TextSize } from './components/basic/typography/text/textUtils';
-export { HeadlineVariant } from './components/basic/typography/headline/headlineUtils';
+export { TextSize } from './components/basic/typography/text/text-utils';
+export { HeadlineVariant } from './components/basic/typography/headline/headline-utils';
+
+export type BannerState = 'error' | 'warning' | 'neutral';
 
 export type TextWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 

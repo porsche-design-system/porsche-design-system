@@ -1,5 +1,5 @@
 import { BreakpointCustomizable } from '../../../../utils';
-import { TextSize } from '../text/textUtils';
+import { TextSize } from '../text/text-utils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
