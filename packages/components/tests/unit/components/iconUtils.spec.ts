@@ -1,4 +1,4 @@
-import { buildIconUrl, getSvgContent } from '../../../src/components/icon/icon/icon-request';
+import { buildIconUrl, getSvgContent, isUrl } from '../../../src/components/icon/icon/icon-utlis';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
@@ -66,6 +66,18 @@ describe('buildIconUrl()', () => {
   it('should return default icon-url, if icon name is not in manifest', () => {
     const cdnIconUrl = buildIconUrl('arrow');
     expect(cdnIconUrl).toEqual(DEFAULT_ICON_URL);
+  });
+});
+
+describe('isUrl', () => {
+  it('should return true if url is valid', () => {
+    expect(isUrl('https://cdn.ui.porsche.com/some-path/some-icon.svg')).toBe(true);
+    expect(isUrl('./assets/some_icon.svg')).toBe(true);
+    expect(isUrl('/some_icon.svg')).toBe(true);
+  });
+
+  it('should return false if url is invalid', () => {
+    expect(isUrl('some_icon.svg')).toBe(false);
   });
 });
 
