@@ -312,7 +312,7 @@ describe('modal', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-icon');
+      expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-modal');
 
       expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');

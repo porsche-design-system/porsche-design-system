@@ -358,7 +358,7 @@ describe('textarea-wrapper', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(1, 'componentDidLoad: p-textarea-wrapper');
+      expect(status.componentDidUpdate['p-textarea-wrapper']).toBe(1, 'componentDidUpdate: p-textarea-wrapper');
 
       expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');

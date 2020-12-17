@@ -22,7 +22,7 @@ describe('pagination', () => {
   const getNav = () => selectNode(page, 'p-pagination >>> nav');
   const getPaginationItems = async () => (await getNav()).$$('.p-pagination__goto');
 
-  const initPagination = (opts?: { activePage: number }) => {
+  const initPagination = (opts?: { activePage?: number }) => {
     const { activePage = 1 } = opts ?? {};
 
     return setContentWithDesignSystem(
@@ -131,7 +131,7 @@ describe('pagination', () => {
     expect(getErrorsAmount(consoleMessages)).toBe(1);
   });
 
-  // Component has to be refactored. Test fails atm. because it updates on initial render.
+  //TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
   xdescribe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
       await initPagination();

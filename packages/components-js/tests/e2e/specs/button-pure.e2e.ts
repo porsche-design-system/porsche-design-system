@@ -148,14 +148,14 @@ describe('button-pure', () => {
       </div>
     `
     );
-    const innerButton = await getButton();
+    const button = await getButton();
     const outerButton = await getHost();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
     await addEventListener(form, 'submit', () => calls++);
 
-    await innerButton.click();
+    await button.click();
     await outerButton.click();
     expect(calls).toBe(0);
   });
