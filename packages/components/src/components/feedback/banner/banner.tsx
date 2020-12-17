@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
-import { Theme } from '../../../types';
+import { BannerState, Theme } from '../../../types';
 
 @Component({
   tag: 'p-banner',
@@ -11,7 +11,7 @@ export class Banner {
   @Element() public host!: HTMLElement;
 
   /** State of the banner. */
-  @Prop() public state?: 'error' | 'warning' | 'neutral' = 'neutral';
+  @Prop() public state?: BannerState = 'neutral';
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;

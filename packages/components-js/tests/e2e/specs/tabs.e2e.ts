@@ -2,10 +2,12 @@ import {
   addEventListener,
   getAttribute,
   getBrowser,
+  getLifecycleStatus,
   getProperty,
   initAddEventListener,
   reattachElement,
   selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   waitForComponentsReady,
   waitForStencilLifecycle,
@@ -14,10 +16,7 @@ import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 
 describe('tabs', () => {
   let page: Page;
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-    await initAddEventListener(page);
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
@@ -32,7 +31,7 @@ describe('tabs', () => {
     await setContentWithDesignSystem(page, content);
   };
 
-  const getTabs = () => selectNode(page, 'p-tabs');
+  const getHost = () => selectNode(page, 'p-tabs');
   const getAllTabsItems = () => page.$$('p-tabs-item');
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
@@ -78,7 +77,7 @@ describe('tabs', () => {
 
   it('should respect changes to activeTabIndex', async () => {
     await initTabs();
-    const host = await getTabs();
+    const host = await getHost();
     const [firstTabsItem, secondTabsItem, thirdTabsItem] = await getAllTabsItems();
     const setActiveTabIndex = async (index: number) => {
       await host.evaluate((el, index: number) => el.setAttribute('active-tab-index', String(index)), index);
@@ -121,9 +120,11 @@ describe('tabs', () => {
   });
 
   describe('events', () => {
+    beforeEach(async () => await initAddEventListener(page));
+
     it('should trigger tabChange event on tab click', async () => {
       await initTabs({ activeTabIndex: 1 }); // start with other index than first
-      const host = await getTabs();
+      const host = await getHost();
       const [firstButton, secondButton, thirdButton] = await getAllTabs();
       let eventCounter = 0;
       await addEventListener(host, 'tabChange', () => eventCounter++);
@@ -205,5 +206,35 @@ describe('tabs', () => {
 
     await page.evaluate(() => console.error('test error'));
     expect(getErrorsAmount()).toBe(1);
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initTabs({ amount: 3 });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-tabs']).toBe(1, 'componentDidLoad: p-tabs');
+      expect(status.componentDidLoad['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar'); // Includes 7 didLoad calls
+      expect(status.componentDidLoad['p-tabs-item']).toBe(3, 'componentDidLoad: p-tabs-item');
+
+      expect(status.componentDidLoad.all).toBe(11, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initTabs({ amount: 3 });
+      const host = await getHost();
+
+      await setAttribute(host, 'active-tab-index', '2');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-tabs']).toBe(1, 'componentDidUpdate: p-tabs');
+      expect(status.componentDidUpdate['p-tabs-bar']).toBe(1, 'componentDidUpdate: p-tabs-bar');
+
+      expect(status.componentDidLoad.all).toBe(11, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(2, 'componentDidUpdate: all');
+    });
   });
 });

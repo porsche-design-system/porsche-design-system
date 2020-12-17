@@ -4,19 +4,15 @@ import { waitForComponentsReady } from './stencil';
 type Options = NavigationOptions & { enableLogging?: boolean };
 const defaultOptions: Options = { waitUntil: 'networkidle0' };
 
+export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
+
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
   const options: Options = { ...defaultOptions, ...opts };
 
   let lifeCycleLogger = '';
   if (options.enableLogging) {
     enableBrowserLogging(page);
-    lifeCycleLogger = `
-    ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-      window.addEventListener(\`stencil_\${x}\`, (e) => {
-        const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-        console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-      })
-    );`;
+    lifeCycleLogger = `console.log(eventName + (eventName.includes('Did') ? ' ' : ''), tagName, new Date().toISOString());`;
   }
 
   await page.setContent(
@@ -62,7 +58,37 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
             window.checkComponentsUpdatedPromise();
           });
 
-          ${lifeCycleLogger}
+          // initial status
+          window['${LIFECYCLE_STATUS_KEY}'] = {
+            componentWillLoad: { all: 0 },
+            componentDidLoad: { all: 0 },
+            componentWillUpdate: { all: 0 },
+            componentDidUpdate: { all: 0 }
+          };
+
+          const hooks = ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'];
+          for (let hook of hooks) {
+            window.addEventListener(\`stencil_\${hook}\`, (e) => {
+              const eventName = e.type.replace('stencil_', '');
+              const tagName = e.composedPath()[0].tagName.toLowerCase();
+
+              if (window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName] === undefined) {
+                // to ensure the lifecycle hook is not undefined in our e2e test, we have to initialize it
+                for (let hook of hooks) {
+                  window['${LIFECYCLE_STATUS_KEY}'][hook][tagName] = 0;
+                }
+              }
+
+              window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName]++;
+              window['${LIFECYCLE_STATUS_KEY}'][eventName].all++;
+
+              // Debug helper
+              // console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
+
+              ${lifeCycleLogger}
+            });
+          };
+
         </script>
         ${content}
       </body>
@@ -174,6 +200,10 @@ export const getStyleOnFocus = async (
 };
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
+  const containsCapitalChar = /[A-Z]/.test(key);
+  if (containsCapitalChar) {
+    console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
+  }
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 

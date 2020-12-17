@@ -98,7 +98,7 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 12px', () => {
     const lineHeight = calculateLineHeight('12px');
-    expect(lineHeight).toBe(1.66667);
+    expect(lineHeight).toBe(1.6666666667);
   });
 
   it('should return correct lineHeight for 16px', () => {
@@ -108,7 +108,7 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 18px', () => {
     const lineHeight = calculateLineHeight('18px');
-    expect(lineHeight).toBe(1.55556);
+    expect(lineHeight).toBe(1.5555555556);
   });
 
   it('should return correct lineHeight for 20px', () => {
@@ -118,7 +118,7 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 22px', () => {
     const lineHeight = calculateLineHeight('22px');
-    expect(lineHeight).toBe(1.45455);
+    expect(lineHeight).toBe(1.4545454545);
   });
 
   it('should return correct lineHeight for 24px', () => {
@@ -128,12 +128,12 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 28px', () => {
     const lineHeight = calculateLineHeight('28px');
-    expect(lineHeight).toBe(1.42857);
+    expect(lineHeight).toBe(1.4285714286);
   });
 
   it('should return correct lineHeight for 30px', () => {
     const lineHeight = calculateLineHeight('30px');
-    expect(lineHeight).toBe(1.33333);
+    expect(lineHeight).toBe(1.3333333333);
   });
 
   it('should return correct lineHeight for 32px', () => {
@@ -143,17 +143,17 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 36px', () => {
     const lineHeight = calculateLineHeight('36px');
-    expect(lineHeight).toBe(1.33333);
+    expect(lineHeight).toBe(1.3333333333);
   });
 
   it('should return correct lineHeight for 42px', () => {
     const lineHeight = calculateLineHeight('42px');
-    expect(lineHeight).toBe(1.2381);
+    expect(lineHeight).toBe(1.2380952381);
   });
 
   it('should return correct lineHeight for 44px', () => {
     const lineHeight = calculateLineHeight('44px');
-    expect(lineHeight).toBe(1.18182);
+    expect(lineHeight).toBe(1.1818181818);
   });
 
   it('should return correct lineHeight for 48px', () => {
@@ -163,7 +163,7 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 52px', () => {
     const lineHeight = calculateLineHeight('52px');
-    expect(lineHeight).toBe(1.23077);
+    expect(lineHeight).toBe(1.2307692308);
   });
 
   it('should return correct lineHeight for 60px', () => {
@@ -173,17 +173,17 @@ describe('calculateLineHeight()', () => {
 
   it('should return correct lineHeight for 62px', () => {
     const lineHeight = calculateLineHeight('62px');
-    expect(lineHeight).toBe(1.22581);
+    expect(lineHeight).toBe(1.2258064516);
   });
 
   it('should return correct lineHeight for 72px', () => {
     const lineHeight = calculateLineHeight('72px');
-    expect(lineHeight).toBe(1.22222);
+    expect(lineHeight).toBe(1.2222222222);
   });
 
   it('should return correct lineHeight for 84px', () => {
     const lineHeight = calculateLineHeight('84px');
-    expect(lineHeight).toBe(1.19048);
+    expect(lineHeight).toBe(1.1904761905);
   });
 });
 

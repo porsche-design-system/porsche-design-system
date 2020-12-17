@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-banner',
@@ -95,7 +96,7 @@ import { Component } from '@angular/core';
         </p-banner>
       </div>
 
-      <div class="playground light" title="should show banner in fluid width">
+      <div *ngIf="allReady" class="playground light" title="should show banner in fluid width">
         <p-banner [width]="'fluid'">
           <span slot="title">Some notification title</span>
           <span slot="description"
@@ -106,4 +107,12 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class BannerComponent {}
+export class BannerComponent implements OnInit {
+  public allReady: boolean = false;
+
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
+    });
+  }
+}
