@@ -11,7 +11,11 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string =>
+  crypto
+    .createHash('md5')
+    .update(str, 'utf8')
+    .digest('hex');
 
 const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
@@ -42,12 +46,9 @@ const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Pro
     console.log(`Meta Icon "${name}" copied.`);
   }
 
-  const separator = '/* Auto Generated Below */\n';
-
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${separator}
-${CDN_KEY_TYPE_DEFINITION}
+    `${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
 export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
