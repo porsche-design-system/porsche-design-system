@@ -65,7 +65,8 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     `${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
-export const ICONS_MANIFEST = ${JSON.stringify(manifest)};`
+export const ICONS_MANIFEST = ${JSON.stringify(manifest)};
+export const ICON_NAMES = ${JSON.stringify(Object.keys(manifest))};`
   );
 
   console.log('Created icons manifest.');
