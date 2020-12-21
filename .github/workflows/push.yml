@@ -101,31 +101,6 @@ jobs:
           path: ./packages/artifacts
       - name: 'Move Artifacts'
         uses: ./.github/actions/move-artifacts
-#      - name: 'Restore Assets Build Artifact'
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: assets-build-dev
-#          path: ./packages/assets/dist
-#      - name: 'Restore Assets Bin Artifact'
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: assets-bin-dev
-#          path: ./packages/assets/bin
-#      - name: 'Restore Components JS Build Artifact'
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: components-js-build
-#          path: ./packages/components-js/dist/components-wrapper
-#      - name: 'Restore Partials Artifact'
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: partials-build-dev
-#          path: ./packages/partials/dist
-#      - name: 'Restore Utilities Artifact'
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: utilities-build-dev
-#          path: ./packages/utilities/projects/utilities
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -157,26 +132,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Assets CDN Artifact'
+      - name: 'Restore Dev Artifacts'
         uses: actions/download-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Restore Assets Bin Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: assets-bin-dev
-          path: ./packages/assets/bin
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Restore Partials Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: partials-build-dev
-          path: ./packages/partials/dist
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -204,21 +166,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Assets CDN Artifact'
+      - name: 'Restore Dev Artifacts'
         uses: actions/download-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Restore Components Angular Wrapper Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-angular-wrapper
-          path: ./packages/components-angular/projects/components-wrapper/src/lib
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -256,21 +210,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Assets CDN Artifact'
+      - name: 'Restore Dev Artifacts'
         uses: actions/download-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Restore Components React Wrapper Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-react-wrapper
-          path: ./packages/components-react/projects/components-wrapper/src/lib
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -339,36 +285,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Assets CDN Artifact'
+      - name: 'Restore Dev Artifacts'
         uses: actions/download-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Restore Assets Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: assets-build-dev
-          path: ./packages/assets/dist
-      - name: 'Restore Assets Bin Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: assets-bin-dev
-          path: ./packages/assets/bin
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Restore Partials Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: partials-build-dev
-          path: ./packages/partials/dist
-      - name: 'Restore Utilities Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: utilities-build-dev
-          path: ./packages/utilities/projects/utilities
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
