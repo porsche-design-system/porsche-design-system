@@ -136,8 +136,6 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components
-      - name: 'Chmod CDN'
-        run: chmod +x ./packages/assets/bin/serve-cdn.js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -179,8 +177,6 @@ jobs:
         with:
           name: partials-build-dev
           path: ./packages/partials/dist
-      - name: 'Chmod CDN'
-        run: chmod +x ./packages/assets/bin/serve-cdn.js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -233,8 +229,6 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-angular
-      - name: 'Chmod CDN'
-        run: chmod +x ./packages/assets/bin/serve-cdn.js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -287,8 +281,6 @@ jobs:
         with:
           entrypoint: run-test-jsdom-polyfill
           args: --components-react
-      - name: 'Chmod CDN'
-        run: chmod +x ./packages/assets/bin/serve-cdn.js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -392,8 +384,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --storefront
-      - name: 'Chmod CDN'
-        run: chmod +x ./packages/assets/bin/serve-cdn.js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
