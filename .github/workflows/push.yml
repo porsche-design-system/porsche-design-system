@@ -83,6 +83,11 @@ jobs:
         with:
           name: partials-build-dev
           path: ./packages/partials/dist
+      - name: 'Store Utilities Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: utilities-build-dev
+          path: ./packages/utilities/projects/utilities
   components-e2e:
     name: 'Components E2E'
     needs: [core-and-components]
@@ -113,6 +118,11 @@ jobs:
         with:
           name: components-js-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Restore Utilities Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: utilities-build-dev
+          path: ./packages/utilities/projects/utilities
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -158,6 +168,11 @@ jobs:
         with:
           name: components-js-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Restore Partials Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: partials-build-dev
+          path: ./packages/partials/dist
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -336,6 +351,11 @@ jobs:
         with:
           name: components-js-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Restore Utilities Artifact'
+          uses: actions/download-artifact@v2
+          with:
+            name: utilities-build-dev
+            path: ./packages/utilities/projects/utilities
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
