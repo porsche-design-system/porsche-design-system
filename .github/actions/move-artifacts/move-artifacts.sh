@@ -6,8 +6,8 @@ pushd "./packages/artifacts"
 
   for source in ${all_dirs[@]}; do
     dest=../${source}
-    echo "Moving '${source}/*' to '${dest}'"
-    mv ${source}/* ${dest}
+    echo "Copying artifact at '${source}/*' to '${dest}'"
+    cp -r ${source}/* ${dest}
   done
 popd
 

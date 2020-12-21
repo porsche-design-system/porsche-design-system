@@ -575,7 +575,7 @@ jobs:
           entrypoint: run-deploy-storefront
   smoke-test:
     name: 'Smoke Test'
-    needs: [install, assets-deployment]
+    needs: [assets-deployment]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
