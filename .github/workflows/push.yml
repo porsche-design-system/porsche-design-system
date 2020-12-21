@@ -65,46 +65,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Store Assets CDN Artifact'
+      - name: 'Store Dev Artifacts'
         uses: actions/upload-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Store Assets Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets-build-dev
-          path: ./packages/assets/dist
-      - name: 'Store Assets Bin Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets-bin-dev
-          path: ./packages/assets/bin
-      - name: 'Store Components JS Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Store Angular Wrapper Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-angular-wrapper
-          path: ./packages/components-angular/projects/components-wrapper/src/lib
-      - name: 'Store React Wrapper Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: components-react-wrapper
-          path: ./packages/components-react/projects/components-wrapper/src/lib
-      - name: 'Store Partials Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: partials-build-dev
-          path: ./packages/partials/dist
-      - name: 'Store Utilities Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: utilities-build-dev
-          path: ./packages/utilities/projects/utilities
+          name: dev-builds
+          path: |
+            ./packages/assets/{cdn|dist|bin}
+            ./packages/components-js/dist/components-wrapper
+            ./packages/components-angular/projects/components-wrapper/src/lib
+            ./packages/components-react/projects/components-wrapper/src/lib
+            ./packages/partials/dist
+            ./packages/utilities/projects/utilities
   components-e2e:
     name: 'Components E2E'
     needs: [core-and-components]
@@ -121,36 +92,38 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Assets CDN Artifact'
+      - name: 'Restore Dev Artifacts'
         uses: actions/download-artifact@v2
         with:
-          name: assets-cdn-dev
-          path: ./packages/assets/cdn
-      - name: 'Restore Assets Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: assets-build-dev
-          path: ./packages/assets/dist
-      - name: 'Restore Assets Bin Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: assets-bin-dev
-          path: ./packages/assets/bin
-      - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: components-js-build
-          path: ./packages/components-js/dist/components-wrapper
-      - name: 'Restore Partials Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: partials-build-dev
-          path: ./packages/partials/dist
-      - name: 'Restore Utilities Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: utilities-build-dev
-          path: ./packages/utilities/projects/utilities
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Debug'
+        run: ls ./packages/artifacts
+#      - name: 'Restore Assets Build Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: assets-build-dev
+#          path: ./packages/assets/dist
+#      - name: 'Restore Assets Bin Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: assets-bin-dev
+#          path: ./packages/assets/bin
+#      - name: 'Restore Components JS Build Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: components-js-build
+#          path: ./packages/components-js/dist/components-wrapper
+#      - name: 'Restore Partials Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: partials-build-dev
+#          path: ./packages/partials/dist
+#      - name: 'Restore Utilities Artifact'
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: utilities-build-dev
+#          path: ./packages/utilities/projects/utilities
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
