@@ -23,6 +23,8 @@ jobs:
       - name: 'Docker Login'
 #        if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-login
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
