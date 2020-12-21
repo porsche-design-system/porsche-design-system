@@ -73,6 +73,7 @@ jobs:
             ./packages/assets/cdn
             ./packages/assets/dist
             ./packages/assets/bin
+            ./packages/components/dist/types
             ./packages/components-js/dist/components-wrapper
             ./packages/components-js/www
             ./packages/components-angular/projects/components-wrapper/src/lib
