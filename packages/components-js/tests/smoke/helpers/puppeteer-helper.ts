@@ -1,5 +1,6 @@
 import { Page } from 'puppeteer';
 import * as fs from 'fs';
+import { getBrowser } from './setup';
 
 export const setContentWithDesignSystem = async (
   page: Page,
@@ -27,4 +28,35 @@ export const setContentWithDesignSystem = async (
     { waitUntil: 'networkidle0' }
   );
   await page.waitForSelector('html.hydrated');
+};
+
+export const requests: { url: string }[] = [];
+export const responses: { url: string; status: number }[] = [];
+
+export const setRequestInterceptor = async (page: Page) => {
+  await page.setRequestInterception(true);
+
+  requests.length = 0;
+  responses.length = 0;
+
+  page.removeAllListeners('request');
+  page.removeAllListeners('response');
+
+  page.on('request', (req) => {
+    const url = req.url();
+
+    if (url.includes('cdn.ui.porsche')) {
+      requests.push({ url });
+    }
+    req.continue();
+  });
+
+  page.on('response', (resp) => {
+    const url = resp.url();
+    const status = resp.status();
+
+    if (url.includes('cdn.ui.porsche')) {
+      responses.push({ url, status });
+    }
+  });
 };
