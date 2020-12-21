@@ -5,11 +5,9 @@ pushd "./packages/artifacts"
   echo $all_dirs
 
   for source in ${all_dirs[@]}; do
-    source=${source}/*
     dest=../packages/${source}
-    ls ${source}
-    echo "Moving '${source}' to '${dest}'"
-    mv ${source} ${dest}
+    echo "Moving '${source}/*' to '${dest}'"
+    mv ${source}/* ${dest}
   done
 popd
 
