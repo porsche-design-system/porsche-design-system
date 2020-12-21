@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Marque } from '../../../src/components/basic/marque/marque';
-import { CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
+import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 
 describe('Component <p-marque>', () => {
   it('should render correctly in default mode with shadow dom', async () => {
@@ -22,7 +22,7 @@ describe('Component <p-marque>', () => {
     let cdnResponseCounter = 0;
     await Promise.all(
       fileNames.map(async (fileName) => {
-        const marque = await fetch(`${CDN_BASE_URL}/${fileName}`);
+        const marque = await fetch(`${MARQUES_CDN_BASE_URL}/${fileName}`);
         expect(marque).toBeDefined();
         expect(marque.headers.get('content-type')).toBe('image/png');
         cdnResponseCounter++;
