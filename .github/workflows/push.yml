@@ -532,7 +532,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-e2e, components-vrt, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
