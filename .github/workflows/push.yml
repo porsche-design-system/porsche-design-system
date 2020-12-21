@@ -21,15 +21,8 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Docker Login'
-        uses: azure/docker-login@v1
-        if: steps.cache.outputs.cache-hit != 'true'
-        with:
-          login-server: docker.pkg.github.com
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Docker Pull'
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
+#        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-login
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
