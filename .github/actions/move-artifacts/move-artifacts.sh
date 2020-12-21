@@ -1,14 +1,15 @@
 #!/bin/bash
 
 pushd "./packages/artifacts"
-  all_dirs=(*)
-  echo $all_dirs
+  all_artifacts=(*)
 
-  for source in ${all_dirs[@]}; do
-    dest=../${source}
-    echo "Copying artifact at '${source}/*' to '${dest}'"
-    cp -r ${source}/* ${dest}
+  for artifact in ${all_artifacts[@]}; do
+    source=${artifact}/*
+    dest=../${artifact}
+    echo "Copying artifact from '${source}' to '${dest}'"
+    cp -r ${source} ${dest}
   done
 popd
 
+# need to make file executable again after it was extracted from artifact
 chmod +x ./packages/assets/bin/serve-cdn.js
