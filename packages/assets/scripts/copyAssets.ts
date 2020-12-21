@@ -16,7 +16,7 @@ const cdnPathPackageMap = {
 
 const TARGET_DIRECTORY = '../cdn';
 
-const copyPackageDistFiles = (): void => {
+const copyAssets = (): void => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
     const packageName = cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap];
     try {
@@ -29,7 +29,7 @@ const copyPackageDistFiles = (): void => {
       fs.mkdirSync(targetDirectory, { recursive: true });
 
       console.log(
-        `Copying contents from '${packageName}' to '${TARGET_DIRECTORY}/${path.basename(targetDirectory)}'..`
+        `Copying contents from '${packageName}' to '${TARGET_DIRECTORY}/${path.basename(targetDirectory)}' ...`
       );
 
       for (const file of files) {
@@ -42,4 +42,4 @@ const copyPackageDistFiles = (): void => {
   }
 };
 
-copyPackageDistFiles();
+copyAssets();
