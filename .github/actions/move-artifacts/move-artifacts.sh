@@ -1,8 +1,7 @@
 #!/bin/bash
 
 pushd "./packages/artifacts"
-  ls
-  all_dirs=(./*)
+  all_dirs=(*)
   echo $all_dirs
 
   for source in ${all_dirs[@]}; do
