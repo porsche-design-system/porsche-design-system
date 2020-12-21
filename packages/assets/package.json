@@ -37,6 +37,7 @@
     "build:contents": "ts-node --project 'tsconfig.node.json' './scripts/build.ts'",
     "build:manifest": "rollup -c rollup.config.js",
     "build:prepare-package": "ts-node --project 'tsconfig.node.json' './scripts/prepare-package.ts'",
+    "build-components-only": "c=${COMPONENTS_ONLY:-0} yarn build",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./bin"
