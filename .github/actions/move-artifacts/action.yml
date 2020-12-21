@@ -1,0 +1,7 @@
+name: Move Artifacts
+description: Move articats out of single artifact
+runs:
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/move-artifacts.sh
+      shell: bash
