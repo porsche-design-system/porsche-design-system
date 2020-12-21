@@ -28,12 +28,12 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Docker Login'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-check.outputs.cache-hit != 'true' && steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-check.outputs.cache-hit != 'true' && steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
