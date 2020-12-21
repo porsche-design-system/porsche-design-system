@@ -70,7 +70,9 @@ jobs:
         with:
           name: dev-builds
           path: |
-            ./packages/assets/{cdn|dist|bin}
+            ./packages/assets/cdn
+            ./packages/assets/dist
+            ./packages/assets/bin
             ./packages/components-js/dist/components-wrapper
             ./packages/components-angular/projects/components-wrapper/src/lib
             ./packages/components-react/projects/components-wrapper/src/lib
@@ -97,8 +99,8 @@ jobs:
         with:
           name: dev-builds
           path: ./packages/artifacts
-      - name: 'Debug'
-        run: ls ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
 #      - name: 'Restore Assets Build Artifact'
 #        uses: actions/download-artifact@v2
 #        with:
