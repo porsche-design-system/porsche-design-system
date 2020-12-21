@@ -73,6 +73,11 @@ jobs:
         with:
           name: assets-build-dev
           path: ./packages/assets/dist
+      - name: 'Store Assets Bin Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-bin-dev
+          path: ./packages/assets/bin
       - name: 'Store Components JS Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -113,6 +118,16 @@ jobs:
         with:
           name: assets-cdn-dev
           path: ./packages/assets/cdn
+      - name: 'Restore Assets Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-build-dev
+          path: ./packages/assets/dist
+      - name: 'Restore Assets Bin Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-bin-dev
+          path: ./packages/assets/bin
       - name: 'Restore Components JS Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -163,6 +178,11 @@ jobs:
         with:
           name: assets-cdn-dev
           path: ./packages/assets/cdn
+      - name: 'Restore Assets Bin Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-bin-dev
+          path: ./packages/assets/bin
       - name: 'Restore Components JS Build Artifact'
         uses: actions/download-artifact@v2
         with:
@@ -346,6 +366,16 @@ jobs:
         with:
           name: assets-cdn-dev
           path: ./packages/assets/cdn
+      - name: 'Restore Assets Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-build-dev
+          path: ./packages/assets/dist
+      - name: 'Restore Assets Bin Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-bin-dev
+          path: ./packages/assets/bin
       - name: 'Restore Components JS Build Artifact'
         uses: actions/download-artifact@v2
         with:
