@@ -74,6 +74,7 @@ jobs:
             ./packages/assets/dist
             ./packages/assets/bin
             ./packages/components-js/dist/components-wrapper
+            ./packages/components-js/www
             ./packages/components-angular/projects/components-wrapper/src/lib
             ./packages/components-react/projects/components-wrapper/src/lib
             ./packages/components-react/projects/jsdom-polyfill/src/lib
