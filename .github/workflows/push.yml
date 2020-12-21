@@ -500,7 +500,7 @@ jobs:
           path: ./packages/utilities/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-e2e, components-vrt, components-angular, components-react, storefront, utilities, partials]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
