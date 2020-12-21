@@ -381,6 +381,11 @@ jobs:
         with:
           name: components-js-build
           path: ./packages/components-js/dist/components-wrapper
+      - name: 'Restore Partials Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: partials-build-dev
+          path: ./packages/partials/dist
       - name: 'Restore Utilities Artifact'
         uses: actions/download-artifact@v2
         with:
