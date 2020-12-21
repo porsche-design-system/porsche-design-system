@@ -38,7 +38,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Click on the Plugins tab and search for `prettier`
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
-1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/porsche-design-system/node_modules/prettier`
+1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
 1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
