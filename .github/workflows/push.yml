@@ -19,7 +19,7 @@ jobs:
         id: cache-check
         with:
           path: './yarn.lock'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}-lock
       - name: 'Cache node_modules'
         uses: actions/cache@v2
         if: steps.cache-check.outputs.cache-hit != 'true'
