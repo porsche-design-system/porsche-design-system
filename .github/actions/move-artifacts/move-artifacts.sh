@@ -5,7 +5,7 @@ pushd "./packages/artifacts"
   echo $all_dirs
 
   for source in ${all_dirs[@]}; do
-    dest=../packages/${source}
+    dest=../${source}
     echo "Moving '${source}/*' to '${dest}'"
     mv ${source}/* ${dest}
   done
