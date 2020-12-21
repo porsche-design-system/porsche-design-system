@@ -352,10 +352,10 @@ jobs:
           name: components-js-build
           path: ./packages/components-js/dist/components-wrapper
       - name: 'Restore Utilities Artifact'
-          uses: actions/download-artifact@v2
-          with:
-            name: utilities-build-dev
-            path: ./packages/utilities/projects/utilities
+        uses: actions/download-artifact@v2
+        with:
+          name: utilities-build-dev
+          path: ./packages/utilities/projects/utilities
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
