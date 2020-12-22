@@ -43,7 +43,7 @@ const collectAllComponentOnReadyPromises = (el: HTMLElement): void => {
   }
 };
 
-const regex = new RegExp(/^(.*-)?P-(.*)$/);
+const regex = /^(.*-)?P-(.*)$/;
 const isDesignSystemElement = (el: HostElement): boolean => {
   return regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
 };
