@@ -55,6 +55,7 @@ jobs:
             ./packages/components-angular/projects/components-wrapper/src/lib
             ./packages/components-react/projects/components-wrapper/src/lib
             ./packages/components-react/projects/jsdom-polyfill/src/lib
+            ./packages/fonts/dist
             ./packages/partials/dist
             ./packages/utilities/projects/utilities
   components-js-e2e:
@@ -233,16 +234,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Fonts'
-        uses: ./.github/actions/docker-run
+      - name: 'Restore Dev Artifacts'
+        uses: actions/download-artifact@v2
         with:
-          entrypoint: run-build
-          args: --fonts
-      - name: 'Build Utilities'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utilities
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -399,16 +397,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Fonts'
-        uses: ./.github/actions/docker-run
+      - name: 'Restore Dev Artifacts'
+        uses: actions/download-artifact@v2
         with:
-          entrypoint: run-build
-          args: --fonts
-      - name: 'Build Utilities'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --utilities
+          name: dev-builds
+          path: ./packages/artifacts
+      - name: 'Move Artifacts'
+        uses: ./.github/actions/move-artifacts
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
