@@ -8,8 +8,8 @@ on:
       - release/*
 name: 'Porsche Design System'
 jobs:
-  core-and-components:
-    name: 'Core and Components'
+  components-js-unit:
+    name: 'Components JS Unit'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -41,46 +41,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Store Dev Artifacts'
-        uses: actions/upload-artifact@v2
-        with:
-          name: dev-builds
-          path: |
-            ./packages/assets/cdn
-            ./packages/assets/dist
-            ./packages/assets/bin
-            ./packages/components/dist/types
-            ./packages/components-js/dist/components-wrapper
-            ./packages/components-js/www
-            ./packages/components-angular/projects/components-wrapper/src/lib
-            ./packages/components-react/projects/components-wrapper/src/lib
-            ./packages/components-react/projects/jsdom-polyfill/src/lib
-            ./packages/fonts/dist
-            ./packages/partials/dist
-            ./packages/utilities/projects/utilities
-  components-js-unit:
-    name: 'Components JS Unit'
-    needs: [core-and-components]
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
-        with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -93,13 +53,13 @@ jobs:
           args: --components
   components-js-e2e:
     name: 'Components JS E2E'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -107,13 +67,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -121,13 +91,13 @@ jobs:
           args: --components-js
   components-js-vrt:
     name: 'Components JS VRT'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -135,13 +105,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -155,13 +135,13 @@ jobs:
           path: ./packages/components-js/tests/vrt/results
   components-angular:
     name: 'Components Angular'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -169,13 +149,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -199,13 +189,13 @@ jobs:
           path: ./packages/components-angular/tests/vrt/results
   components-react:
     name: 'Components React'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -213,13 +203,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -243,13 +243,13 @@ jobs:
           path: ./packages/components-react/tests/vrt/results
   partials:
     name: 'Partials'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -257,13 +257,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -271,13 +281,13 @@ jobs:
           args: --partials
   storefront:
     name: 'Storefront'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -285,13 +295,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -325,13 +345,13 @@ jobs:
           path: ./packages/storefront/tests/vrt/results
   production-builds:
     name: 'Production Builds'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -406,13 +426,13 @@ jobs:
           path: ./packages/utilities/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
   utilities:
     name: 'Utilities'
-    needs: [core-and-components]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
@@ -420,13 +440,23 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Dev Artifacts'
-        uses: actions/download-artifact@v2
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
-          name: dev-builds
-          path: ./packages/artifacts
-      - name: 'Move Artifacts'
-        uses: ./.github/actions/move-artifacts
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -497,6 +527,7 @@ jobs:
         uses: actions/checkout@v2
       - name: 'Cache node_modules'
         uses: actions/cache@v2
+        id: cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
