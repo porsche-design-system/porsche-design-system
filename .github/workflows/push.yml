@@ -359,6 +359,13 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
