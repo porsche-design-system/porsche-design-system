@@ -1,6 +1,7 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
+  FONT_FACE_CDN_URL,
   FONTS_CDN_BASE_URL,
   FONTS_MANIFEST,
   ICONS_CDN_BASE_URL,
@@ -10,6 +11,7 @@ import {
   META_ICONS_CDN_BASE_URL,
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
+import { getFontFaceCSS } from '@porsche-design-system/partials';
 
 describe('cdn', () => {
   let page: Page;
@@ -153,14 +155,14 @@ describe('cdn', () => {
       });
     };
 
+    describe('fonts', () => {
+      const fonts = objectToFlatArray(FONTS_MANIFEST);
+      bulkRequestItems(fonts, FONTS_CDN_BASE_URL);
+    });
+
     describe('icons', () => {
       const icons = objectToFlatArray(ICONS_MANIFEST);
       bulkRequestItems(icons, ICONS_CDN_BASE_URL);
-    });
-
-    describe('meta-icons', () => {
-      const metaIcons = objectToFlatArray(META_ICONS_MANIFEST);
-      bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
     });
 
     describe('marque', () => {
@@ -168,9 +170,21 @@ describe('cdn', () => {
       bulkRequestItems(marques, MARQUES_CDN_BASE_URL);
     });
 
-    describe('fonts', () => {
-      const fonts = objectToFlatArray(FONTS_MANIFEST);
-      bulkRequestItems(fonts, FONTS_CDN_BASE_URL);
+    describe('meta-icons', () => {
+      const metaIcons = objectToFlatArray(META_ICONS_MANIFEST);
+      bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
+    });
+
+    describe('styles', () => {
+      const comStyle = getFontFaceCSS({ cdn: 'auto', withoutTags: true });
+      const cnStyle = getFontFaceCSS({ cdn: 'cn', withoutTags: true });
+
+      // extract file name from full path
+      const getFileName = (path: string) => path.substr(path.lastIndexOf('/') + 1);
+
+      const styles = [getFileName(comStyle), getFileName(cnStyle)];
+      const baseUrl = FONT_FACE_CDN_URL.substr(0, FONT_FACE_CDN_URL.lastIndexOf('/'));
+      bulkRequestItems(styles, baseUrl);
     });
   });
 });
