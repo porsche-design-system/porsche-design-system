@@ -1,7 +1,6 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
-  FONT_FACE_CDN_URL,
   FONTS_CDN_BASE_URL,
   FONTS_MANIFEST,
   ICONS_CDN_BASE_URL,
@@ -12,6 +11,9 @@ import {
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
 import { getFontFaceCSS } from '@porsche-design-system/partials';
+import * as fs from 'fs';
+import * as path from 'path';
+import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
 
 describe('cdn', () => {
   let page: Page;
@@ -155,6 +157,26 @@ describe('cdn', () => {
       });
     };
 
+    describe('components', () => {
+      // read web components manager to retrieve url to stencil core entrypoint
+      const indexJsFile = require.resolve('@porsche-design-system/components-js');
+      const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
+      const [, coreFileName] = /porsche-design-system\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
+
+      // read stencil core entrypoint to retrieve component chunk mapping
+      const coreJsFile = path.resolve(indexJsFile, '../../components', coreFileName);
+      const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
+      const [, rawChunkFileMapping] = /porsche-design-system.*?({.*?})/.exec(coreJsCode);
+      const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
+      const chunkFileNames = Object.entries(chunkFileMapping).map(
+        ([chunk, hash]) => `porsche-design-system.${chunk}.${hash}.js`
+      );
+
+      const fileNames = [coreFileName, ...chunkFileNames];
+      const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
+      bulkRequestItems(fileNames, baseUrl);
+    });
+
     describe('fonts', () => {
       const fonts = objectToFlatArray(FONTS_MANIFEST);
       bulkRequestItems(fonts, FONTS_CDN_BASE_URL);
@@ -183,7 +205,7 @@ describe('cdn', () => {
       const getFileName = (path: string) => path.substr(path.lastIndexOf('/') + 1);
 
       const styles = [getFileName(comStyle), getFileName(cnStyle)];
-      const baseUrl = FONT_FACE_CDN_URL.substr(0, FONT_FACE_CDN_URL.lastIndexOf('/'));
+      const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
       bulkRequestItems(styles, baseUrl);
     });
   });
