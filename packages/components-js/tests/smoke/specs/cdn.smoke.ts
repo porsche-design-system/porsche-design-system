@@ -3,6 +3,8 @@ import { Page } from 'puppeteer';
 import {
   ICONS_CDN_BASE_URL,
   ICONS_MANIFEST,
+  MARQUES_CDN_BASE_URL,
+  MARQUES_MANIFEST,
   META_ICONS_CDN_BASE_URL,
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
@@ -156,6 +158,18 @@ describe('cdn', () => {
 
       it(`should have all ${metaIcons.length} meta-icons`, () => {
         expect(responseCounter).toBe(metaIcons.length);
+      });
+    });
+
+    describe('marque', () => {
+      const marques = Object.values(MARQUES_MANIFEST)
+        .map((x) => Object.values(x).map(Object.values))
+        // @ts-ignore
+        .flat(2);
+      bulkRequestItems(marques, MARQUES_CDN_BASE_URL);
+
+      it(`should have all ${marques.length} marques`, () => {
+        expect(responseCounter).toBe(marques.length);
       });
     });
   });
