@@ -54,6 +54,10 @@ describe('cdn', () => {
     const isStatus400 = (item: Response): boolean => item.status === 400;
     const urlIncludes = (str: string) => (item: Response): boolean => item.url.includes(str);
     const urlStartsWith = (str: string) => (item: Response): boolean => item.url.startsWith(str);
+    const fetchUrl = (url: string): Promise<void> =>
+      page.evaluate(async (url: string) => {
+        await fetch(url);
+      }, url);
 
     describe('.com and .cn domains', () => {
       const assetPaths = {
@@ -110,11 +114,15 @@ describe('cdn', () => {
     });
 
     describe('icons', () => {
-      for (const [iconName, fileName] of Object.entries(ICONS_MANIFEST)) {
+      const icons = Object.entries(ICONS_MANIFEST);
+      let responseCounter = 0;
+
+      for (const [iconName, fileName] of icons) {
         ((iconName: string, fileName: string) => {
           it(`should exist: ${iconName}`, async () => {
-            await page.goto(`${ICONS_CDN_BASE_URL}/${fileName}`);
+            await fetchUrl(`${ICONS_CDN_BASE_URL}/${fileName}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
+            responseCounter += responses.length;
 
             const responseErrors = responses.filter(isStatus400);
             if (responseErrors.length) {
@@ -123,6 +131,10 @@ describe('cdn', () => {
           });
         })(iconName, fileName);
       }
+
+      it(`should have all ${icons.length} icons`, () => {
+        expect(responseCounter).toBe(icons.length);
+      });
     });
   });
 
