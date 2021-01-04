@@ -1,6 +1,8 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
+  FONTS_CDN_BASE_URL,
+  FONTS_MANIFEST,
   ICONS_CDN_BASE_URL,
   ICONS_MANIFEST,
   MARQUES_CDN_BASE_URL,
@@ -122,8 +124,14 @@ describe('cdn', () => {
   describe('assets', () => {
     let responseCounter = 0;
 
+    const unpackObject = (obj: Object) => (typeof obj === 'object' ? Object.values(obj).map(unpackObject) : obj);
+
+    const objectToFlatArray = (object: Object): string[] =>
+      unpackObject(object)
+        // @ts-ignore
+        .flat(2);
+
     const bulkRequestItems = (items: string[], baseUrl: string) => {
-      responseCounter = 0;
       for (const item of items) {
         ((item: string) => {
           it(`should exist: ${item}`, async () => {
@@ -138,39 +146,31 @@ describe('cdn', () => {
           });
         })(item);
       }
+
+      it(`should have all ${items.length} ${baseUrl.substr(baseUrl.lastIndexOf('/') + 1)}`, () => {
+        expect(responseCounter).toBe(items.length);
+        responseCounter = 0; // reset for upcoming test
+      });
     };
 
     describe('icons', () => {
-      const icons = Object.values(ICONS_MANIFEST);
+      const icons = objectToFlatArray(ICONS_MANIFEST);
       bulkRequestItems(icons, ICONS_CDN_BASE_URL);
-
-      it(`should have all ${icons.length} icons`, () => {
-        expect(responseCounter).toBe(icons.length);
-      });
     });
 
     describe('meta-icons', () => {
-      const metaIcons = Object.values(META_ICONS_MANIFEST)
-        .map(Object.values)
-        // @ts-ignore
-        .flat();
+      const metaIcons = objectToFlatArray(META_ICONS_MANIFEST);
       bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
-
-      it(`should have all ${metaIcons.length} meta-icons`, () => {
-        expect(responseCounter).toBe(metaIcons.length);
-      });
     });
 
     describe('marque', () => {
-      const marques = Object.values(MARQUES_MANIFEST)
-        .map((x) => Object.values(x).map(Object.values))
-        // @ts-ignore
-        .flat(2);
+      const marques = objectToFlatArray(MARQUES_MANIFEST);
       bulkRequestItems(marques, MARQUES_CDN_BASE_URL);
+    });
 
-      it(`should have all ${marques.length} marques`, () => {
-        expect(responseCounter).toBe(marques.length);
-      });
+    describe('fonts', () => {
+      const fonts = objectToFlatArray(FONTS_MANIFEST);
+      bulkRequestItems(fonts, FONTS_CDN_BASE_URL);
     });
   });
 });
