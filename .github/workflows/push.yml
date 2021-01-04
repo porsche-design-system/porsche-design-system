@@ -506,11 +506,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Docker Pull'
         run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
-      - name: 'Restore Assets Artifact'
+      - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
           name: assets-build
           path: ./packages/assets/dist
+      - name: 'Restore Assets CDN Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-cdn
+          path: ./packages/assets/cdn
       - name: 'Restore Partials Artifact'
         uses: actions/download-artifact@v2
         with:
