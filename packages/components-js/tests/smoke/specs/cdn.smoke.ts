@@ -198,6 +198,7 @@ describe('cdn', () => {
     });
 
     describe('styles', () => {
+      // retrieve css file names via partial since FONT_FACE_CDN_URL returns different value based on flag in window
       const comStyle = getFontFaceCSS({ cdn: 'auto', withoutTags: true });
       const cnStyle = getFontFaceCSS({ cdn: 'cn', withoutTags: true });
 
