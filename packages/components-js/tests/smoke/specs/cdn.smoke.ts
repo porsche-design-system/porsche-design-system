@@ -1,5 +1,6 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
+import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 describe('cdn', () => {
   let page: Page;
@@ -43,6 +44,7 @@ describe('cdn', () => {
         const status = resp.status();
 
         if (url.includes('cdn.ui.porsche')) {
+          // console.log(url);
           responses.push({ url, status });
         }
       });
@@ -105,6 +107,22 @@ describe('cdn', () => {
           console.log('status 400', responseErrors);
         }
       });
+    });
+
+    describe('icons', () => {
+      for (const [iconName, fileName] of Object.entries(ICONS_MANIFEST)) {
+        ((iconName: string, fileName: string) => {
+          it(`should exist: ${iconName}`, async () => {
+            await page.goto(`${ICONS_CDN_BASE_URL}/${fileName}`);
+            expect(responses.filter(isStatusNot200).length).toBe(0);
+
+            const responseErrors = responses.filter(isStatus400);
+            if (responseErrors.length) {
+              console.log('status 400', responseErrors);
+            }
+          });
+        })(iconName, fileName);
+      }
     });
   });
 
