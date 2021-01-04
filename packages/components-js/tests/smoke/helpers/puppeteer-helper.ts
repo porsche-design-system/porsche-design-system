@@ -1,6 +1,5 @@
 import { Page } from 'puppeteer';
 import * as fs from 'fs';
-import { getBrowser } from './setup';
 
 export const setContentWithDesignSystem = async (
   page: Page,
@@ -9,7 +8,7 @@ export const setContentWithDesignSystem = async (
 ): Promise<void> => {
   // inject the web components manager inline
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
-  const indexJsCode = fs.readFileSync(indexJsFile).toString();
+  const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
 
   await page.setContent(
     `
