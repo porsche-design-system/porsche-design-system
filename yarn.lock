@@ -2513,26 +2513,19 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.7":
-  version "1.0.0-alpha.7"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.7.tgz#c59ae2b39ac55d68d19955c07eddaf9cc21d4789"
-  integrity sha1-xZris5rFXWjRmVXAft2vnMIdR4k=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.8":
+  version "1.0.0-alpha.8"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.8.tgz#59e699cbed9ca7bf5bfb1c7d86db98a438558503"
+  integrity sha1-WeaZy+2cp79b+xx9htuYpDhVhQM=
   dependencies:
-    "@porsche-design-system/web-components-manager" "1.0.0-alpha.4"
+    "@porsche-design-system/web-components-manager" "1.0.0-alpha.5"
     glob "^7.1.6"
     webpack "^5.3.2"
 
-"@porsche-design-system/web-components-manager-polyfills@1.0.0-alpha.2":
-  version "1.0.0-alpha.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-polyfills/-/@porsche-design-system/web-components-manager-polyfills-1.0.0-alpha.2.tgz#6a6aecb64d63c398ef17049c45a0449075d597ad"
-  integrity sha1-amrstk1jw5jvFwScRaBEkHXVl60=
-
-"@porsche-design-system/web-components-manager@1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.4.tgz#521217b298b9abf572099145a85e6d0512742cdd"
-  integrity sha1-UhIXspi5q/VyCZFFqF5tBRJ0LN0=
-  dependencies:
-    "@porsche-design-system/web-components-manager-polyfills" "1.0.0-alpha.2"
+"@porsche-design-system/web-components-manager@1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.5.tgz#e82996e676b2fc73cb6886549ba41e5ba73c9486"
+  integrity sha1-6CmW5nay/HPLaIZUm6QeW6c8lIY=
 
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
