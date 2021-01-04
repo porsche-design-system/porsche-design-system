@@ -1,6 +1,11 @@
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
-import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
+import {
+  ICONS_CDN_BASE_URL,
+  ICONS_MANIFEST,
+  META_ICONS_CDN_BASE_URL,
+  META_ICONS_MANIFEST,
+} from '@porsche-design-system/assets';
 
 describe('cdn', () => {
   let page: Page;
@@ -113,14 +118,14 @@ describe('cdn', () => {
   });
 
   describe('assets', () => {
-    describe('icons', () => {
-      const icons = Object.entries(ICONS_MANIFEST);
-      let responseCounter = 0;
+    let responseCounter = 0;
 
-      for (const [iconName, fileName] of icons) {
-        ((iconName: string, fileName: string) => {
-          it(`should exist: ${iconName}`, async () => {
-            await fetchUrl(`${ICONS_CDN_BASE_URL}/${fileName}`);
+    const bulkRequestItems = (items: string[], baseUrl: string) => {
+      responseCounter = 0;
+      for (const item of items) {
+        ((item: string) => {
+          it(`should exist: ${item}`, async () => {
+            await fetchUrl(`${baseUrl}/${item}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
             responseCounter += responses.length;
 
@@ -129,11 +134,28 @@ describe('cdn', () => {
               console.log('status 400', responseErrors);
             }
           });
-        })(iconName, fileName);
+        })(item);
       }
+    };
+
+    describe('icons', () => {
+      const icons = Object.values(ICONS_MANIFEST);
+      bulkRequestItems(icons, ICONS_CDN_BASE_URL);
 
       it(`should have all ${icons.length} icons`, () => {
         expect(responseCounter).toBe(icons.length);
+      });
+    });
+
+    describe('meta-icons', () => {
+      const metaIcons = Object.values(META_ICONS_MANIFEST)
+        .map(Object.values)
+        // @ts-ignore
+        .flat();
+      bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
+
+      it(`should have all ${metaIcons.length} meta-icons`, () => {
+        expect(responseCounter).toBe(metaIcons.length);
       });
     });
   });
