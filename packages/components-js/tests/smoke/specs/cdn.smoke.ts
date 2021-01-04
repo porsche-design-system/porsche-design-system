@@ -21,10 +21,10 @@ describe('cdn', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  type Request = { url: string };
-  type Response = { url: string; status: number };
-  const requests: Request[] = [];
-  const responses: Response[] = [];
+  type RequestType = { url: string };
+  type ResponseType = { url: string; status: number };
+  const requests: RequestType[] = [];
+  const responses: ResponseType[] = [];
 
   beforeEach(async () => {
     await page.setRequestInterception(true);
@@ -49,7 +49,7 @@ describe('cdn', () => {
       const status = resp.status();
 
       if (url.includes('cdn.ui.porsche')) {
-        // console.log(url);
+        // console.log(status, url);
         responses.push({ url, status });
       }
     });
@@ -164,8 +164,10 @@ describe('cdn', () => {
       const [, coreFileName] = /porsche-design-system\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
 
       // read stencil core entrypoint to retrieve component chunk mapping
-      const coreJsFile = path.resolve(indexJsFile, '../../components', coreFileName);
+      const assetsJsFile = require.resolve('@porsche-design-system/assets');
+      const coreJsFile = path.resolve(assetsJsFile, '../../cdn/components', coreFileName);
       const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
+
       const [, rawChunkFileMapping] = /porsche-design-system.*?({.*?})/.exec(coreJsCode);
       const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
       const chunkFileNames = Object.entries(chunkFileMapping).map(
