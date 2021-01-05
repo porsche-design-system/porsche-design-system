@@ -2513,19 +2513,19 @@
   dependencies:
     saber-markdown "^0.0.3"
 
-"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.8":
-  version "1.0.0-alpha.8"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.8.tgz#59e699cbed9ca7bf5bfb1c7d86db98a438558503"
-  integrity sha1-WeaZy+2cp79b+xx9htuYpDhVhQM=
+"@porsche-design-system/web-components-manager-cli@1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager-cli/-/@porsche-design-system/web-components-manager-cli-1.0.0-alpha.9.tgz#70c9e4969d532c138a574ac6aeb14f3259cd9566"
+  integrity sha1-cMnklp1TLBOKV0rGrrFPMlnNlWY=
   dependencies:
-    "@porsche-design-system/web-components-manager" "1.0.0-alpha.5"
+    "@porsche-design-system/web-components-manager" "1.0.0-alpha.6"
     glob "^7.1.6"
-    webpack "^5.3.2"
+    webpack "^5.11.1"
 
-"@porsche-design-system/web-components-manager@1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.5.tgz#e82996e676b2fc73cb6886549ba41e5ba73c9486"
-  integrity sha1-6CmW5nay/HPLaIZUm6QeW6c8lIY=
+"@porsche-design-system/web-components-manager@1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/web-components-manager/-/@porsche-design-system/web-components-manager-1.0.0-alpha.6.tgz#91b6ad7cbbaf7589d4d08963cd70539896f6e8b6"
+  integrity sha1-kbatfLuvdYnU0IljzXBTmJb26LY=
 
 "@porsche-ui/cross-browser-tester@^1.0.2":
   version "1.0.2"
@@ -17906,10 +17906,10 @@ webpack@4.44.2, webpack@^4.0.0:
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
 
-webpack@^5.3.2:
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.10.3.tgz#933cbd5e79d62040d988049ff0f515a6dc333006"
-  integrity sha512-KFPEbpNKfNU4t2CDsUZJ7KpuUbzDqGUCZqLmz4667KSUWMc9BuR3a8jpa72Emv7JUbdGwISD9OZjoI9S5BnHig==
+webpack@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.11.1.tgz#39b2b9daeb5c6c620e03b7556ec674eaed4016b4"
+  integrity sha512-tNUIdAmYJv+nupRs/U/gqmADm6fgrf5xE+rSlSsf2PgsGO7j2WG7ccU6AWNlOJlHFl+HnmXlBmHIkiLf+XA9mQ==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.45"
