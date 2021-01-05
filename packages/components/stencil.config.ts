@@ -30,7 +30,7 @@ export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
   outputTargets: [
-    { type: 'dist', esmLoaderPath: '../loader' },
+    { type: 'dist' },
     {
       type: 'www',
       serviceWorker: null,
