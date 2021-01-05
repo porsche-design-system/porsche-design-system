@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { camelCase } from 'change-case';
 
-const src = fs.readFileSync(path.normalize('./src/components.d.ts')).toString();
+const src = fs.readFileSync(path.normalize('./src/components.d.ts'), 'utf8');
 const searchString = 'IntrinsicElements';
 const searchStringPos = src.indexOf(searchString) + searchString.length;
 const rawTags = src

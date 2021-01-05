@@ -8,7 +8,7 @@ const addMissingHTMLStencilElementExport = (): void => {
   const missingExport = `export { HTMLStencilElement, EventEmitter } from './stencil-public-runtime';`;
   const fileName = 'dist/types/components.d.ts';
   const filePath = path.resolve(rootDirectory, fileName);
-  const fileContent = fs.readFileSync(filePath).toString();
+  const fileContent = fs.readFileSync(filePath, 'utf8');
 
   if (!fileContent.includes(missingExport)) {
     fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
