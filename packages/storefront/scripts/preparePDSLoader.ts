@@ -15,11 +15,15 @@ const removeLoaderFile = (): void => {
   } catch (e) {}
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string =>
+  crypto
+    .createHash('md5')
+    .update(str, 'utf8')
+    .digest('hex');
 
 const copyAndHashLoader = (): string => {
   const filePath = require.resolve('@porsche-design-system/components-js');
-  const fileContent = fs.readFileSync(filePath).toString();
+  const fileContent = fs.readFileSync(filePath, 'utf8');
   const hash = toHash(fileContent);
   const loaderName = `pds-loader.${hash}.js`;
 

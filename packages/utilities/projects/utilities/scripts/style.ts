@@ -47,7 +47,11 @@ $p-font-porsche-next-w-cy-bold-woff2: '${baseUrl}/${fontsManifest.porscheNextWCy
   );
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string =>
+  crypto
+    .createHash('md5')
+    .update(str, 'utf8')
+    .digest('hex');
 
 const compileFontFaceScss = (opts: Options): string => {
   const sass = require('sass');
@@ -56,7 +60,7 @@ const compileFontFaceScss = (opts: Options): string => {
   const scssPath = path.resolve(__dirname, '../src/styles/font-face.scss');
 
   // read raw css to replace import of font-face-variables for other cdn
-  const rawScss = fs.readFileSync(scssPath).toString();
+  const rawScss = fs.readFileSync(scssPath, 'utf8');
   const result = sass.renderSync({
     data: suffix ? rawScss.replace(/(@import 'font-face.variables)(';)/, `$1.${suffix}$2`) : rawScss,
     includePaths: [path.resolve(__dirname, '../src/scss'), path.resolve(__dirname, '../src/styles')],
