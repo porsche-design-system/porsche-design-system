@@ -1,16 +1,20 @@
 import { Page } from 'puppeteer';
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import { TagName } from '@porsche-design-system/components/dist/types/tags';
 
 describe('componentsReady', () => {
   let page: Page;
-
-  beforeEach(async () => {
-    page = await getBrowser().newPage();
-  });
+  beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
   const getReadyAmount = (): Promise<number> =>
     page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+
+  const addComponent = (tagName: TagName) =>
+    page.evaluate((tagName: string) => {
+      const el = document.createElement(tagName);
+      document.body.appendChild(el);
+    }, tagName);
 
   it('should work for no component', async () => {
     await setContentWithDesignSystem(page, ``);
@@ -52,10 +56,31 @@ describe('componentsReady', () => {
   it('should work when a component is added later', async () => {
     await setContentWithDesignSystem(page, `<p-button>Button1</p-button><p-button>Button2</p-button>`);
     expect(await getReadyAmount()).toBe(2);
-    await page.evaluate(() => {
-      const el = document.createElement('p-text');
-      document.body.appendChild(el);
-    });
+
+    await addComponent('p-text');
     expect(await getReadyAmount()).toBe(3);
+  });
+
+  it('should work in parallel', async () => {
+    await setContentWithDesignSystem(page, ``);
+
+    let val1, val2;
+    await addComponent('p-text');
+
+    getReadyAmount().then((x) => (val1 = x));
+    getReadyAmount().then((x) => (val2 = x));
+
+    expect(await getReadyAmount()).toBe(1);
+    expect(val1).toBe(1);
+    expect(val1).toBe(val2);
+
+    await addComponent('p-button');
+
+    getReadyAmount().then((x) => (val1 = x));
+    getReadyAmount().then((x) => (val2 = x));
+
+    expect(await getReadyAmount()).toBe(2);
+    expect(val1).toBe(2);
+    expect(val1).toBe(val2);
   });
 });
