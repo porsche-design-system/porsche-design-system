@@ -7,8 +7,11 @@ describe('componentsReady', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const getReadyAmount = (): Promise<number> =>
-    page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+  const getReadyAmount = (selector?: string): Promise<number> =>
+    page.evaluate((selector: string) => {
+      const el = selector ? document.querySelector(selector) : undefined;
+      return (window as any).porscheDesignSystem.componentsReady(el);
+    }, selector);
 
   const addComponent = (tagName: TagName) =>
     page.evaluate((tagName: string) => {
@@ -44,6 +47,15 @@ describe('componentsReady', () => {
   it('should work for nested component', async () => {
     await setContentWithDesignSystem(page, `<div><p-button>Button</p-button></div>`);
     expect(await getReadyAmount()).toBe(1);
+  });
+
+  it('should work with HTMLElement parameter', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-button>Button</p-button><div id="sidebar"><p-button>Button</p-button></div>`
+    );
+    expect(await getReadyAmount('#sidebar')).toBe(1);
+    expect(await getReadyAmount()).toBe(2); // for document.body
   });
 
   it('should ignore other custom web components', async () => {
