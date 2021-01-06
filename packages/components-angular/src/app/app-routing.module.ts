@@ -68,6 +68,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Icon',
   },
   {
+    path: 'initializer',
+    component: fromPages.InitializerComponent,
+    name: 'Initializer',
+  },
+  {
     path: 'link',
     component: fromPages.LinkComponent,
     name: 'Link',
