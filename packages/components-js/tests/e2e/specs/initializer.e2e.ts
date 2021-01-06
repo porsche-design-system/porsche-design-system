@@ -15,7 +15,7 @@ describe('initializer', () => {
 
   it('should initialize component deterministically', async () => {
     await goto('initializer');
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1500);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
     const getOuterHTML = (elHandle: ElementHandle) => elHandle.evaluate((el) => el.outerHTML);
