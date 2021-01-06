@@ -76,6 +76,11 @@ describe('components', () => {
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);
 
-    expect(component1HTML).toEqual(component2HTML);
+    expect(component1HTML).toBe(component2HTML);
+
+    if (component1HTML !== component2HTML) {
+      console.log('component1HTML', component1HTML);
+      console.log('component2HTML', component2HTML);
+    }
   });
 });
