@@ -35,7 +35,7 @@ describe('components', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
-  it('should initialize component deterministically', async () => {
+  xit('should initialize component deterministically', async () => {
     await goto('initializer');
     await page.waitForTimeout(1000);
 
