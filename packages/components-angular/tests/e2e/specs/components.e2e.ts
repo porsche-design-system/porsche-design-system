@@ -65,4 +65,17 @@ describe('components', () => {
     await clickElement(firstBtn);
     expect(await getCounterValue()).toBe(3);
   });
+
+  it('should initialize component deterministically', async () => {
+    await goto('initializer');
+    await page.waitForTimeout(1000);
+
+    const [component1, component2] = await page.$$('p-text-field-wrapper');
+    const getOuterHTML = (elHandle: ElementHandle) => elHandle.evaluate((el) => el.outerHTML);
+
+    const component1HTML = await getOuterHTML(component1);
+    const component2HTML = await getOuterHTML(component2);
+
+    expect(component1HTML).toEqual(component2HTML);
+  });
 });
