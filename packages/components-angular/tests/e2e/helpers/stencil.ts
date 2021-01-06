@@ -1,9 +1,6 @@
 import { Page } from 'puppeteer';
 
-export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
-  await page.evaluate(
-    async (): Promise<void> => {
-      await (window as any).componentsReady(); // exposed via main.ts of angular vrt app
-    }
-  );
+export const waitForComponentsReady = async (page: Page): Promise<void> => {
+  // componentsReady is exposed via main.ts of angular vrt app
+  await page.evaluate((): Promise<void> => (window as any).componentsReady());
 };

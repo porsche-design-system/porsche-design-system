@@ -1,15 +1,18 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { selectNode, waitForStencilLifecycle } from '../helpers';
+import { selectNode, waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
 const BASE_URL = 'http://localhost:4200';
 
 describe('components', () => {
   let page: Page;
-  beforeEach(async () => {
-    page = await browser.newPage();
-  });
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
+
+  const goto = async (url: string) => {
+    await page.goto(`${BASE_URL}/${url}`);
+    await waitForComponentsReady(page);
+  };
 
   it('overview should work without errors', async () => {
     const consoleMessages: ConsoleMessage[] = [];
@@ -24,7 +27,7 @@ describe('components', () => {
     });
     const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
-    await page.goto(`${BASE_URL}/overview`);
+    await goto('overview');
 
     expect(getErrorsAmount()).toBe(0);
 
@@ -33,14 +36,14 @@ describe('components', () => {
   });
 
   it('should not dispatch events twice', async () => {
-    await page.goto(`${BASE_URL}/overview`);
+    await goto('overview');
 
     const tabsBar = await selectNode(page, 'p-tabs-bar');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('a');
 
     const clickElement = async (el: ElementHandle) => {
       await el.click();
-      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(50);
     };
 
     const counterKey = 'TAB_CHANGE_EVENT_COUNTER';
