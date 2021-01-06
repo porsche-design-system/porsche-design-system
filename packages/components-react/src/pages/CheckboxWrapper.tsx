@@ -1,124 +1,124 @@
-import { PCheckboxWrapper as CheckboxWrapper } from '@porsche-design-system/components-react';
+import { PCheckboxWrapper } from '@porsche-design-system/components-react';
 
 export const CheckboxWrapperPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should render with label">
-        <CheckboxWrapper label="Some label">
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render without label">
-        <CheckboxWrapper label="Some label" hideLabel={true}>
+        <PCheckboxWrapper label="Some label" hideLabel={true}>
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" hideLabel={true}>
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" hideLabel={true}>
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with responsive label">
-        <CheckboxWrapper
+        <PCheckboxWrapper
           label="Some label"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper
+        </PCheckboxWrapper>
+        <PCheckboxWrapper
           label="Some label"
           hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render in indeterminate mode">
-        <CheckboxWrapper label="Some label">
+        <PCheckboxWrapper label="Some label">
           <input
             type="checkbox"
             name="some-name"
             ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
           />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input
             type="checkbox"
             name="some-name"
             defaultChecked
             ref={(elem: HTMLInputElement) => elem && (elem.indeterminate = true)}
           />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render in required state">
-        <CheckboxWrapper label="Some label">
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="This is a very insanely super long label across multiple lines">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="This is a very insanely super long label across multiple lines">
           <input type="checkbox" name="some-name" required />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required disabled />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" required defaultChecked disabled />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render in disabled state">
-        <CheckboxWrapper label="Some label">
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" disabled />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label">
           <input type="checkbox" name="some-name" defaultChecked disabled />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and success message">
-        <CheckboxWrapper label="Some label" state="success" message="Some success message.">
+        <PCheckboxWrapper label="Some label" state="success" message="Some success message.">
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" state="success" message="Some success message.">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" state="success" message="Some success message.">
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with success state and no success message">
-        <CheckboxWrapper label="Some label" state="success">
+        <PCheckboxWrapper label="Some label" state="success">
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" state="success">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" state="success">
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and error message">
-        <CheckboxWrapper label="Some label" state="error" message="Some error validation message.">
+        <PCheckboxWrapper label="Some label" state="error" message="Some error validation message.">
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" state="error" message="Some error validation message.">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" state="error" message="Some error validation message.">
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with error state but without error message">
-        <CheckboxWrapper label="Some label" state="error">
+        <PCheckboxWrapper label="Some label" state="error">
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper label="Some label" state="error">
+        </PCheckboxWrapper>
+        <PCheckboxWrapper label="Some label" state="error">
           <input type="checkbox" name="some-name" defaultChecked />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with slotted content with error state and message">
-        <CheckboxWrapper state="error">
+        <PCheckboxWrapper state="error">
           <span slot="label">
             Some label with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
@@ -126,21 +126,21 @@ export const CheckboxWrapperPage = (): JSX.Element => {
           <span slot="message">
             Some error message with a <a href="https://designsystem.porsche.com">link</a>.
           </span>
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <CheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: 240 }}>
+        <PCheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: 240 }}>
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
-        <CheckboxWrapper
+        </PCheckboxWrapper>
+        <PCheckboxWrapper
           state="error"
           label="Lorem ipsum dolor sit amet, consetetur sadipscing"
           message="Lorem ipsum dolor sit amet, consetetur sadipscing"
           style={{ width: 240 }}
         >
           <input type="checkbox" name="some-name" />
-        </CheckboxWrapper>
+        </PCheckboxWrapper>
       </div>
     </>
   );

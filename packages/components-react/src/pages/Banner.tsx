@@ -1,4 +1,4 @@
-import { componentsReady, PBanner as Banner } from '@porsche-design-system/components-react';
+import { componentsReady, PBanner } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
 export const BannerPage = (): JSX.Element => {
@@ -23,95 +23,95 @@ export const BannerPage = (): JSX.Element => {
       <style children={style} />
 
       <div title="should show banner neutral position fixed">
-        <Banner>
+        <PBanner>
           <span slot="title">Some notification position fixed (1)</span>
           <span slot="description">
             Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
           </span>
-        </Banner>
+        </PBanner>
       </div>
 
       <div className="content-wrapper">
         <div className="playground light" title="should show banner neutral on light background">
-          <Banner>
+          <PBanner>
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground dark" title="should show banner neutral on dark background">
-          <Banner theme="dark">
+          <PBanner theme="dark">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground light" title="should show banner warning on light background">
-          <Banner state="warning">
+          <PBanner state="warning">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground dark" title="should show banner warning on dark background">
-          <Banner state="warning" theme="dark">
+          <PBanner state="warning" theme="dark">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground light" title="should show banner error on light background">
-          <Banner state="error">
+          <PBanner state="error">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground dark" title="should show banner error on dark background">
-          <Banner state="error" theme="dark">
+          <PBanner state="error" theme="dark">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground light" title="should show banner in persistent mode">
-          <Banner persistent={true}>
+          <PBanner persistent={true}>
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         <div className="playground light" title="should show banner in extended width">
-          <Banner width="extended">
+          <PBanner width="extended">
             <span slot="title">Some notification title</span>
             <span slot="description">
               Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
             </span>
-          </Banner>
+          </PBanner>
         </div>
 
         {allReady && (
           <div className="playground light" title="should show banner in fluid width">
-            <Banner width="fluid">
+            <PBanner width="fluid">
               <span slot="title">Some notification title</span>
               <span slot="description">
                 Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
               </span>
-            </Banner>
+            </PBanner>
           </div>
         )}
       </div>
