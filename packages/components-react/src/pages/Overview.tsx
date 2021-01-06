@@ -221,9 +221,9 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default tabs-bar">
             <TabsBar>
-              <a>Tab1</a>
-              <a>Tab2</a>
-              <a>Tab3</a>
+              <a href="#x">Tab1</a>
+              <a href="#x">Tab2</a>
+              <a href="#x">Tab3</a>
             </TabsBar>
           </div>
 
@@ -372,9 +372,9 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default tabs-bar with custom prefix">
             <PrefixedTabsBar>
-              <a>Tab1</a>
-              <a>Tab2</a>
-              <a>Tab3</a>
+              <a href="#x">Tab1</a>
+              <a href="#x">Tab2</a>
+              <a href="#x">Tab3</a>
             </PrefixedTabsBar>
           </div>
 
