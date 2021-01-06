@@ -33,7 +33,7 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
-  const readyPromises: Promise<HostElement>[] = [];
+  let readyPromises: Promise<HostElement>[] = [];
 
   // Node.ELEMENT_NODE: An Element node like <p> or <div>
   if (el?.nodeType === 1) {
@@ -41,7 +41,7 @@ const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElemen
       if (isDesignSystemElement(childEl)) {
         readyPromises.push(childEl.componentOnReady());
       }
-      collectAllComponentOnReadyPromises(childEl);
+      readyPromises = readyPromises.concat(collectAllComponentOnReadyPromises(childEl));
     });
   }
 
