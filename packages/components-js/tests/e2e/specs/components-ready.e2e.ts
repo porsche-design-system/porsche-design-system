@@ -41,6 +41,11 @@ describe('componentsReady', () => {
     expect(await getReadyAmount()).toBe(1);
   });
 
+  it('should work for nested component', async () => {
+    await setContentWithDesignSystem(page, `<div><p-button>Button</p-button></div>`);
+    expect(await getReadyAmount()).toBe(1);
+  });
+
   it('should ignore other custom web components', async () => {
     await setContentWithDesignSystem(page, '<x-button>hi</x-button>');
     expect(await getReadyAmount()).toBe(0);
