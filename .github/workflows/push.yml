@@ -454,11 +454,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components JS'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-js
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
