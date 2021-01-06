@@ -110,7 +110,7 @@ export const TextPage = (): JSX.Element => {
       <div className="playground" title="should show text with a link and bold text as children">
         <Text>
           <span>
-            Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp;{' '}
+            Lorem ipsum dolor sit amet <a href="#x">linked text</a> et, <b>bold text</b> &amp;{' '}
             <strong>strong text</strong>
           </span>
         </Text>

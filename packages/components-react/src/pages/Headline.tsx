@@ -74,7 +74,7 @@ export const HeadlinePage = (): JSX.Element => {
       <div className="playground" title="should show headline with a link">
         <Headline>
           <span>
-            Lorem ipsum dolor sit amet <a href="#">linked text</a> et.
+            Lorem ipsum dolor sit amet <a href="#x">linked text</a> et.
           </span>
         </Headline>
       </div>
