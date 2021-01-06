@@ -1,37 +1,40 @@
 import { HostElement } from '@stencil/core/internal';
 
-const readyPromises: Promise<HostElement>[] = [];
-let promiseResolve: (_amount: number) => void;
+type PromiseResolve = (amount: number) => void;
 
 export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
+  let promiseResolve: PromiseResolve = undefined;
+  const promise = new Promise((resolve: PromiseResolve) => (promiseResolve = resolve));
+
   if (!isDocumentReady()) {
     // if document isn't ready yet, we register readystatechange event listener
     const eventName = 'readystatechange';
     const eventHandler = (): void => {
       if (isDocumentReady()) {
         document.removeEventListener(eventName, eventHandler);
-        allComponentsLoaded(el);
+        allComponentsLoaded(el, promiseResolve);
       }
     };
     document.addEventListener(eventName, eventHandler);
   } else {
-    allComponentsLoaded(el);
+    allComponentsLoaded(el, promiseResolve);
   }
 
-  return new Promise((resolve) => (promiseResolve = resolve));
+  return promise;
 };
 
 const isDocumentReady = (): boolean => document.readyState === 'complete';
 
-const allComponentsLoaded = async (el: HTMLElement): Promise<void> => {
-  collectAllComponentOnReadyPromises(el);
-  await Promise.all(readyPromises).catch(console.error);
-
-  promiseResolve(readyPromises.length);
-  readyPromises.length = 0; // clear array of promises for next round
+const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => {
+  const readyPromises = collectAllComponentOnReadyPromises(el);
+  Promise.all(readyPromises)
+    .then((proms) => resolve(proms.length))
+    .catch(console.error);
 };
 
-const collectAllComponentOnReadyPromises = (el: HTMLElement): void => {
+const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
+  const readyPromises: Promise<HostElement>[] = [];
+
   // Node.ELEMENT_NODE: An Element node like <p> or <div>
   if (el?.nodeType === 1) {
     (Array.from(el.children) as HostElement[]).forEach((childEl) => {
@@ -41,9 +44,11 @@ const collectAllComponentOnReadyPromises = (el: HTMLElement): void => {
       collectAllComponentOnReadyPromises(childEl);
     });
   }
+
+  return readyPromises;
 };
 
-const regex = new RegExp(/^(.*-)?P-(.*)$/);
+const regex = /^(.*-)?P-(.*)$/;
 const isDesignSystemElement = (el: HostElement): boolean => {
   return regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
 };
