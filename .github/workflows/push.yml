@@ -264,11 +264,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components JS'
+      - name: 'Build Components JS' # needed for fresh TAG_NAMES
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
@@ -381,6 +386,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Partials' # build partials again for fresh TAG_NAMES from components-js build
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:
