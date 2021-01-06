@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './styles.css';
 import { App } from './App';
+import { componentsReady } from '@porsche-design-system/components-react';
 
 ReactDOM.render(
   <StrictMode>
@@ -14,3 +15,5 @@ ReactDOM.render(
   </StrictMode>,
   document.getElementById('root')
 );
+
+(window as any).componentsReady = componentsReady;

@@ -63,6 +63,11 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage,
   },
   {
+    name: 'Initializer',
+    path: '/initializer',
+    component: fromPages.InitializerPage,
+  },
+  {
     name: 'Link',
     path: '/link',
     component: fromPages.LinkPage,
