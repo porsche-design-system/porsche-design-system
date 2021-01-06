@@ -3,7 +3,7 @@ import { HostElement } from '@stencil/core/internal';
 type PromiseResolve = (amount: number) => void;
 
 export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
-  let promiseResolve: PromiseResolve = undefined;
+  let promiseResolve: PromiseResolve;
   const promise = new Promise((resolve: PromiseResolve) => (promiseResolve = resolve));
 
   if (!isDocumentReady()) {
