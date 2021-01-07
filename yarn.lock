@@ -2481,10 +2481,10 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@porsche-design-system/browser-notification@1.0.0":
-  version "1.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-1.0.0.tgz#7371244597a53d80de52f0a6f6a5fbb4770b5cdf"
-  integrity sha1-c3EkRZelPYDeUvCm9qX7tHcLXN8=
+"@porsche-design-system/browser-notification@2.0.0":
+  version "2.0.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-2.0.0.tgz#4767d7d2bc1fedb226bc9766059947b0d8951151"
+  integrity sha1-R2fX0rwf7bImvJdmBZlHsNiVEVE=
 
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
