@@ -1,14 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import globby from 'globby';
-import { CDN_BASE_URL_DYNAMIC, CDN_KEY } from '../../../cdn.config';
+import { CDN_BASE_URL_DYNAMIC } from '../../../cdn.config';
 
 const readAndWriteFile = (targetFile: string): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const newContent = oldContent.replace(
     '"%%%CDN_BASE_URL_DYNAMIC%%%',
-    `${CDN_BASE_URL_DYNAMIC.replace('CDN_KEY', `'${CDN_KEY}'`) // replace variable with actual value
-      .replace(/\s/g, '') // strip spaces
+    `${CDN_BASE_URL_DYNAMIC.replace(/\s/g, '') // strip spaces
       .replace('typeof', 'typeof ')}+"` // recover space after typeof
   );
   fs.writeFileSync(targetFile, newContent);
