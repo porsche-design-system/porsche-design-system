@@ -15,12 +15,11 @@ We support the **following Browsers in the latest stable and deprecated predeces
  
 <p-text size="x-small">Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor version, to bridge the temporal updating period of the users.</p-text>
 
-## End of support for IE 11 and reduced support for Edge 18
+## End of support for IE 11 and EdgeHTML
 
-Porsche decided to **end the support for Microsoft Internet Explorer 11**.  
-**Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
+Porsche decided to **end the support for Microsoft Internet Explorer 11 and EdgeHTML**.
 
-The **Porsche Design System v1.x** is the last major version to support Internet Explorer 11 and Microsoft Edge 18. 
+The **Porsche Design System v1.x** is the last major version to support Microsoft Internet Explorer 11 and EdgeHTML. 
 New features introduced starting with the Porsche Design System v2.x are only compatible and tested with the listed browsers and only bugs specific to them will be fixed.
 
 ### Why do we stop the support?
@@ -70,12 +69,12 @@ The overlay is placed above the page, covers it completely and can't be closed o
 We provide two possibilities for integration, which can either be used as universal automatic detection or specific detection which points directly to a fixed variant.
 The easiest and recommended way is to implement the universal variant which includes pre-defined browser- and feature detection and decides automatically which variant of the notification will be rendered.
 
-| Browser/Feature Detection	      | Universal `include()` | Banner only `includeBanner()` | Overlay only `includeOverlay()` |
-|---------------------------------|-----------------------|-------------------------------|---------------------------------|
-| **MS Edge < 18**                |  `Overlay`            | X                             | `Overlay`                       |
-| **MS Edge === 18**              |  `Banner`             | `Banner`                      | `Overlay`                       |
-| **IE <= 11**                    |  `Overlay`            | `Banner`                      | `Overlay`                       |
-| **Custom elements != true**     |  `Overlay`            | X                             | `Overlay`                       |
+| Browser/Feature Detection	      | Banner only `includeBanner()` | Overlay only `includeOverlay()` |
+|---------------------------------|-------------------------------|---------------------------------|
+| **MS Edge < 18**                | X                             | `Overlay`                       |
+| **MS Edge === 18**              | `Banner`                      | `Overlay`                       |
+| **IE <= 11**                    | `Banner`                      | `Overlay`                       |
+| **Custom elements != true**     | X                             | `Overlay`                       |
 
 ##### React / Vue JS
 ```
