@@ -542,6 +542,21 @@ jobs:
         uses: ./.github/actions/docker-login
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Restore Assets Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-build
+          path: ./packages/assets/dist
+      - name: 'Restore Assets CDN Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-cdn
+          path: ./packages/assets/cdn
+      - name: 'Restore Partials Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: partials-build
+          path: ./packages/partials/dist
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:

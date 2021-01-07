@@ -80,23 +80,3 @@ describe('isUrl', () => {
     expect(isUrl('some_icon.svg')).toBe(false);
   });
 });
-
-/**
- * this can not be done with staging anymore, since while unit tests are running the assets are
- * not yet uploaded
- */
-// describe('validate cdn with svg manifest', () => {
-//   it('should have every svg from manifest on cdn', async () => {
-//     const manifestKeys = Object.keys(ICONS_MANIFEST);
-//     let cdnResponseCounter = 0;
-//     await Promise.all(manifestKeys.map(async (key) => {
-//       const svgContent = await getSvgContent(buildIconUrl(key));
-//       if (!svgContent.startsWith('<svg')){
-//         console.error('Icon request failed for:', buildIconUrl(key));
-//       }
-//       expect(svgContent.startsWith('<svg')).toBeTruthy();
-//       cdnResponseCounter++;
-//     }));
-//     expect(cdnResponseCounter).toEqual(manifestKeys.length);
-//   });
-// });
