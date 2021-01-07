@@ -1,11 +1,4 @@
-import {
-  getBrowser,
-  getLifecycleStatus,
-  selectNode,
-  setAttribute,
-  setContentWithDesignSystem,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { getBrowser, getLifecycleStatus, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 
 describe('marque', () => {
