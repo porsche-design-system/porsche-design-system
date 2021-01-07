@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 - Precision of relative line height
-- Changed color of `neutral contrast low` from `#c9cacb` to `#e3e4e5`
+- Changed color of `neutral contrast low`
 
 ### [2.0.0-alpha.10] - 2020-12-14
 
