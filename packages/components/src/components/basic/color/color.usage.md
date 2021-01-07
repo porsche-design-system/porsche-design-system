@@ -95,7 +95,7 @@ The set consists of several grey shades that are based on a pre-defined mixing r
 |-------------------------------------------------------------------------	|------------------------------------|----------|------------------|-----------------|-----------------|
 | <ColorBadge theme="light" color="neutral-contrast-high"/> 	            | **Neutral Contrast High**          | #323639 	| 50/54/57         | div. elements   | ✓   |
 | <ColorBadge theme="light" color="neutral-contrast-medium"/> 	            | **Neutral Contrast Medium**        | #626669 	| 98/102/105         | div. elements   | ✓   |
-| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #C9CACB 	| 201/202/203      | only for decorative elements   | -   |
+| <ColorBadge theme="light" color="neutral-contrast-low"/> 	                | **Neutral Contrast Low**           | #E3E4E5 	| 227/228/229        | only for decorative elements   | -   |
 
 
 ### Notifications

@@ -14,7 +14,7 @@ export const color = {
   neutralContrast: {
     high: '#323639',
     medium: '#626669',
-    low: '#c9cacb',
+    low: '#e3e4e5',
   },
   notification: {
     success: '#018a16',
