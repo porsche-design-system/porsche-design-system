@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { buildStyle } from './style';
+import { buildStyle } from './buildStyle';
 import {
   CDN_BASE_URL,
   CDN_BASE_URL_CN,

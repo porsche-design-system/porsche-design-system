@@ -1,4 +1,4 @@
-export const breakpoints: any = {
+export const breakpoints = {
   xxs: '(min-width: 0px)',
   xs: '(min-width: 480px)',
   s: '(min-width: 760px)',
