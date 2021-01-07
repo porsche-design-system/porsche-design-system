@@ -14,7 +14,7 @@ describe('getFontFaceCSS', () => {
   it('should return only href', () => {
     const result = getFontFaceCSS({ withoutTags: true });
     expect(result).not.toContain('<link');
-    expect(result).not.toContain('stylsheet');
+    expect(result).not.toContain('stylesheet');
     expect(result).not.toContain('.cn.');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
@@ -22,7 +22,7 @@ describe('getFontFaceCSS', () => {
   it('should return only href with cdn: "auto"', () => {
     const result = getFontFaceCSS({ withoutTags: true, cdn: 'auto' });
     expect(result).not.toContain('<link');
-    expect(result).not.toContain('stylsheet');
+    expect(result).not.toContain('stylesheet');
     expect(result).not.toContain('.cn.');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
@@ -37,7 +37,7 @@ describe('getFontFaceCSS', () => {
     it('should return correct url for china cdn', () => {
       const result = getFontFaceCSS({ withoutTags: true, cdn: 'cn' });
       expect(result).not.toContain('<link');
-      expect(result).not.toContain('stylsheet');
+      expect(result).not.toContain('stylesheet');
       expect(result).toContain(cdnStyleUrlCnWithoutHash);
       expect(result).toContain('.cn.');
     });
