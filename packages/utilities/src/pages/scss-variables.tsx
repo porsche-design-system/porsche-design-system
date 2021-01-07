@@ -9,7 +9,7 @@ const defaultColors = {
   'theme-light-background-shading': 'rgba(14, 20, 24, 0.9)',
   'theme-light-neutral-contrast-high': '#323639',
   'theme-light-neutral-contrast-medium': '#626669',
-  'theme-light-neutral-contrast-low': '#c9cacb',
+  'theme-light-neutral-contrast-low': '#e3e4e5',
   'theme-light-notification-success': '#018a16',
   'theme-light-notification-success-soft': '#e5f3e7',
   'theme-light-notification-warning': '#ff9b00',
