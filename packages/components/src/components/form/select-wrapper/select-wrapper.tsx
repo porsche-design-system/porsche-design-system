@@ -79,6 +79,7 @@ export class SelectWrapper {
 
   public connectedCallback(): void {
     this.initSelect();
+    this.observeSelect();
     this.defineTypeOfDropDown();
     this.setAriaAttributes();
     this.addSlottedStyles();
@@ -98,6 +99,7 @@ export class SelectWrapper {
   }
 
   public disconnectedCallback(): void {
+    this.selectObserver.disconnect();
     if (this.renderCustomDropDown) {
       this.disconnectCustomDropDown();
     }
@@ -301,7 +303,6 @@ export class SelectWrapper {
     }
 
     if (this.renderCustomDropDown) {
-      this.observeSelect();
       this.setOptionList();
       this.select.addEventListener('keydown', this.handleKeyboardEvents);
 
@@ -315,7 +316,6 @@ export class SelectWrapper {
   }
 
   private disconnectCustomDropDown(): void {
-    this.selectObserver.disconnect();
     this.select.removeEventListener('mousedown', this.handleMouseEvents);
     this.select.removeEventListener('keydown', this.handleKeyboardEvents);
     if (typeof document !== 'undefined') {
