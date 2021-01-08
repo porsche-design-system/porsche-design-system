@@ -127,11 +127,6 @@ The **Browser Notification** is looking once as soon as the script initializes f
 
 If none of these languages can be found, it will fall back to `en`.
 
-#### How it works
-The `<script>` tag points to a **< 1kb** sized file hosted on a CDN which has a browser detection for **IE11 and Edge<=18**. 
-If the target browser is detected it requests another JS file which adds some HTML/CSS to the DOM and shows the Notification Banner. 
-Though the Notification Banner is a kind of warning, the user should continue browsing the application. Therefor a session storage is defined to prevent popping up the banner again on route changes as long as staying on the same domain/subdomain and browser tab.
-
 #### Troubleshooting
 
 There always might be a case where something goes wrong. Here are some possible answers:
