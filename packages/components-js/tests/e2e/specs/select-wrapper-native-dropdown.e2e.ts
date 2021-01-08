@@ -186,7 +186,7 @@ describe('select-wrapper native-dropdown', () => {
   });
 
   // Test fails if select is native -> Ticket #1092
-  xit('should disable fake select when select is disabled programmatically', async () => {
+  it('should disable fake select when select is disabled programmatically', async () => {
     await initSelect();
 
     const fakeSelect = await getFakeSelect();
