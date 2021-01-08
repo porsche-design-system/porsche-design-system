@@ -168,7 +168,7 @@ describe('cdn', () => {
       const coreJsFile = path.resolve(assetsJsFile, '../../cdn/components', coreFileName);
       const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
 
-      const [, rawChunkFileMapping] = /porsche-design-system.*?({.*?})/.exec(coreJsCode);
+      const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode);
       const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
       const chunkFileNames = Object.entries(chunkFileMapping).map(
         ([chunk, hash]) => `porsche-design-system.${chunk}.${hash}.js`

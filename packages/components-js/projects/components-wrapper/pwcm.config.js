@@ -3,32 +3,22 @@ const { cdnDistPath, npmDistPath, deployUrl, version } = require('./environment'
 console.log('Version:', version);
 console.log('Deploy URL:', deployUrl);
 
-// type PorscheWebComponentManagerConfig = CommonConfig & {
+// type PorscheWebComponentManagerConfig = {
+//   version: string;
+//   additionalEntryFiles?: AdditionalEntryFile[];
 //   deployUrl?: string;
 //   targetDirectory?: string;
-//   supportPrefixes?: boolean;
 //   globalStyles?: GlobalStyles;
 //   inlineStyles?: string;
-//   scripts?: DifferentialLoadingScripts[];
+//   script: string;
 //   copyFiles?: CopyFile[];
-//   additionalEntryFiles?: {
-//     filePath: string;
-//     typingFilePath?: string;
-//   }[];
 // }
 
 module.exports = {
-  name: 'porscheDesignSystem',
-  supportPrefixes: true,
   version: version,
   targetDirectory: npmDistPath,
   deployUrl: deployUrl,
-  scripts: [
-    {
-      module: true,
-      pattern: `${cdnDistPath}/porsche-design-system.v*.js`,
-    },
-  ],
+  script: `${cdnDistPath}/porsche-design-system.v*.js`,
   copyFiles: [
     {
       pattern: '../components/CHANGELOG.md',

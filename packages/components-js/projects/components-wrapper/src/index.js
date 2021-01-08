@@ -2,7 +2,6 @@ import { defineCustomElements } from '@porsche-design-system/components/dist/esm
 import { setRegisterComponentsCallback } from '@porsche-design-system/web-components-manager';
 
 setRegisterComponentsCallback(
-  'porscheDesignSystem',
   (prefix) =>
     defineCustomElements({
       transformTagName: (tagName) => (prefix ? `${prefix}-${tagName}` : tagName),
