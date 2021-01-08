@@ -169,8 +169,7 @@ describe('cdn', () => {
       const [, coreFileName] = /porsche-design-system\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
 
       // read stencil core entrypoint to retrieve component chunk mapping
-      const assetsJsFile = require.resolve('@porsche-design-system/assets');
-      const coreJsFile = path.resolve(assetsJsFile, '../../cdn/components', coreFileName);
+      const coreJsFile = path.resolve(indexJsFile, '../../components', coreFileName);
       const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
 
       const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode);
