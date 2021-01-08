@@ -1,8 +1,8 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { selectNode, waitForComponentsReady } from '../helpers';
+import { waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
-const BASE_URL = 'http://localhost:4200';
+const BASE_URL = 'http://localhost:3000';
 
 describe('components', () => {
   let page: Page;
@@ -33,37 +33,6 @@ describe('components', () => {
 
     await page.evaluate(() => console.error('test error'));
     expect(getErrorsAmount()).toBe(1);
-  });
-
-  it('should not dispatch events twice', async () => {
-    await goto('overview');
-
-    const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('a');
-
-    const clickElement = async (el: ElementHandle) => {
-      await el.click();
-      await page.waitForTimeout(50);
-    };
-
-    const counterKey = 'TAB_CHANGE_EVENT_COUNTER';
-    const getCounterValue = () => page.evaluate((counterKey: string) => window[counterKey], counterKey);
-
-    await page.evaluate((counterKey: string) => {
-      window[counterKey] = 0;
-      document.querySelector('p-tabs-bar').addEventListener('tabChange', () => {
-        window[counterKey]++;
-      });
-    }, counterKey);
-
-    await clickElement(secondBtn);
-    expect(await getCounterValue()).toBe(1);
-
-    await clickElement(thirdBtn);
-    expect(await getCounterValue()).toBe(2);
-
-    await clickElement(firstBtn);
-    expect(await getCounterValue()).toBe(3);
   });
 
   xit('should initialize component deterministically', async () => {

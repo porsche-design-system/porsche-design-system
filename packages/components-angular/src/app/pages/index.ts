@@ -9,6 +9,7 @@ import { FlexComponent } from './flex.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
+import { InitializerComponent } from './initializer.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
@@ -41,6 +42,7 @@ export const pages = [
   GridComponent,
   HeadlineComponent,
   IconComponent,
+  InitializerComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -73,6 +75,7 @@ export * from './flex.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
+export * from './initializer.component';
 export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';

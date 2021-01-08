@@ -74,7 +74,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
               if (window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName] === undefined) {
                 // to ensure the lifecycle hook is not undefined in our e2e test, we have to initialize it
-                for (let hook of hooks) {
+                for (const hook of hooks) {
                   window['${LIFECYCLE_STATUS_KEY}'][hook][tagName] = 0;
                 }
               }

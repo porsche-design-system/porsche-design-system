@@ -17,7 +17,7 @@ const copyTypesToWrapper = (framework: Framework): void => {
   const filePathSource = path.resolve(rootDirectory, filePath);
   const filePathDest = getBundleFilePathForFramework(framework);
 
-  const fileContent = fs.readFileSync(filePathSource, 'utf8').toString();
+  const fileContent = fs.readFileSync(filePathSource, 'utf8');
 
   // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
   let result = fileContent.replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '');
@@ -43,7 +43,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   }
 
   const wrapperFilePath = path.normalize(`../components-${framework}/${WRAPPER_PROJECT_PATH}/${wrapperFileName}`);
-  const wrapperFileContent = fs.readFileSync(wrapperFilePath, 'utf8').toString();
+  const wrapperFileContent = fs.readFileSync(wrapperFilePath, 'utf8');
 
   // replace imports from '@porsche-design-system/components' with './bundle';
   const replaceValue = `'./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}'`;
@@ -51,7 +51,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
 
   if (framework === 'react') {
     const bundleFilePath = getBundleFilePathForFramework(framework);
-    const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8').toString();
+    const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8');
 
     // add missing reference for react types in bundle.d.ts
     const newContent = `/// <reference types="react" />\n\n${bundleFileContent}`;
@@ -71,7 +71,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
         match.indexOf(';') - 1 - match.indexOf('/dist/') - 6
       );
       const importFilePath = path.resolve(componentsPkgBase, `${importPath}.d.ts`); // build absolute path to imported file from components
-      const importFileContent = fs.readFileSync(importFilePath, 'utf8').toString(); // read imported file
+      const importFileContent = fs.readFileSync(importFilePath, 'utf8'); // read imported file
       const importedEvents = importFileContent.match(/(.*?EventEmitter<(.|\s)*?>)/g) ?? []; // extract generics of EventEmitter<GENERIC>
 
       // extract imported interface from something like: import { Button as IButton } from '...'
