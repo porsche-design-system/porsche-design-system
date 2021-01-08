@@ -1,6 +1,6 @@
 # Browser Compatibility
 
-At Porsche we want the best performance, security and modern feature opportunities for our  applications and users. Therefore we follow the release cycles of the global browser providers and continuously measure our browser & platform usage share of all Porsche applications ([view data](https://datastudio.google.com/open/1kMBbEg9F79q_QOg2zFtz52I_S85Fy47b)).
+At Porsche we want the best performance, security and modern feature opportunities for our applications and users. Therefore we follow the release cycles of the global browser providers and continuously measure our browser & platform usage share of all Porsche applications ([view data](https://datastudio.google.com/open/1kMBbEg9F79q_QOg2zFtz52I_S85Fy47b)).
 
 To ensure visual and functional compatibility, we do automatic and manual testing for the defined set of browsers and versions. If a browser is not listed on this page we don’t test it, provide assistance or fix bugs for it.
 
@@ -15,7 +15,7 @@ We support the **following Browsers in the latest stable and deprecated predeces
  
 <p-text size="x-small">Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor version, to bridge the temporal updating period of the users.</p-text>
 
-## End of support for IE 11 and reduced support for Edge 18
+## End of support for IE 11 and EdgeHTML
 
 Porsche decided to **end the support for Microsoft Internet Explorer 11**.  
 **Microsoft Edge 18 (EdgeHTML)** is still working but supported with low priority assistance and no test coverage.
@@ -37,11 +37,11 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 ### Browser Notification
 
-To help inform the user the **end of support of IE11** and **Microsoft Edge <=18** we provide a **Browser Notification Banner** and **Overlay** in form of a npm package `@porsche-design-system/browser-notification`.
+To help inform the user about the **end of support of Microsoft Internet Explorer 11 and EdgeHTML** we provide a **Browser Notification Banner** and **Overlay** in form of a npm package `@porsche-design-system/browser-notification`.
 
 #### Install
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package.
-If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
+
+It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package. If you don't have an account yet, please first [read more about getting started as developer](#/start-coding/introduction).
 
 ```
 // install with npm:
@@ -51,33 +51,37 @@ npm install @porsche-design-system/browser-notification
 yarn add @porsche-design-system/browser-notification
 ```
 
-#### Basic usage
-The easiest way to include the **Browser Notification** into your project is by importing and calling the provided `include()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script).
-This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
+#### Usage
 
-##### Variants
 We provide two notifications variants to show the user the corresponding information in regard to its used browser.
 
-###### Banner notification
-The **Banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application.
-The banner is placed above the page and can be closed by the user.
+Include the **Browser Notification** into your project by importing and calling the provided `includeBanner()` or `includeOverlay()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script). This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
 
-###### Overlay notification
-The **Overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components.
-The overlay is placed above the page, covers it completely and can't be closed or removed by the user.
+##### Banner notification
 
-#### Integration examples
-We provide two possibilities for integration, which can either be used as universal automatic detection or specific detection which points directly to a fixed variant.
-The easiest and recommended way is to implement the universal variant which includes pre-defined browser- and feature detection and decides automatically which variant of the notification will be rendered.
+The **Banner** variant is meant to inform the user if he accesses the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
 
-| Browser/Feature Detection	      | Universal `include()` | Banner only `includeBanner()` | Overlay only `includeOverlay()` |
-|---------------------------------|-----------------------|-------------------------------|---------------------------------|
-| **MS Edge < 18**                |  `Overlay`            | X                             | `Overlay`                       |
-| **MS Edge === 18**              |  `Banner`             | `Banner`                      | `Overlay`                       |
-| **IE <= 11**                    |  `Overlay`            | `Banner`                      | `Overlay`                       |
-| **Custom elements != true**     |  `Overlay`            | X                             | `Overlay`                       |
+Integration through `includeBanner()` partial.
+
+| Browser Detection           | Initialized |
+| --------------------------- | ----------- |
+| **MS Edge(HTML) <= 18**     | ✓           |
+| **IE <= 11**                | ✓           |
+| **Microsoft Edge Chromium** | ✗           |
+
+##### Overlay notification
+
+The **Overlay** variant is meant to inform the user if he accesses the application if his browser doesn't support **custom elements** which are required to render the Porsche Design System components. The overlay is placed above the page, covers it completely and can't be closed or removed by the user.
+
+Integration through `includeOverlay()` partial.
+
+| Feature Detection           | Initialized |
+| --------------------------- | ----------- |
+| **Custom elements != true** | ✓           |
+| **Custom elements == true** | ✗           |
 
 ##### React / Vue JS
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -88,9 +92,6 @@ The easiest and recommended way is to implement the universal variant which incl
   <body>
     <div id="app"></div>
 
-    <!-- inline version of the universal init script with autodetection -->
-    <%= require('@porsche-design-system/browser-notification').include() %>
-
     <!-- inline version of the banner or overlay init script -->
     <%= require('@porsche-design-system/browser-notification').includeBanner() %>
     <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
@@ -99,6 +100,7 @@ The easiest and recommended way is to implement the universal variant which incl
 ```
 
 ##### Angular / Vanilla JS
+
 ```
 // index.html
 <body>
@@ -107,16 +109,18 @@ The easiest and recommended way is to implement the universal variant which incl
 
 // package.json
 "scripts": {
-  "partial": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").include().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+  "banner": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeBanner().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html",
+  "overlay": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeOverlay().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*browser-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html"
 }
 ```
 
 #### Translations
+
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
 
-The **Browser Notification** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag.
-Support is given for the following formats, e.g.:
+The **Browser Notification** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. Support is given for the following formats, e.g.:
+
 - `lang="en"`
 - `lang="en_US"`
 - `lang="en-US"`
@@ -124,11 +128,12 @@ Support is given for the following formats, e.g.:
 If none of these languages can be found, it will fall back to `en`.
 
 #### Troubleshooting
+
 There always might be a case where something goes wrong. Here are some possible answers:
 
 1. **Q:** Why does the translation not get recognized automatically?  
    **A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's required that the `lang` attribute in the `html` tag is defined with the correct value before the **Browser Notification** script gets initialized.  
    **A:** The translation key is not part of the provided keys (see "Translations")  
    **A:** The translation key has not the correct format (see "Translations")
-2. **Q:** Why are there no implementation guidelines for my JS framework (e.g. Vanilla JS)?  
-   **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as last as possible.**
+2. **Q:** Why are there no implementation guidelines for my JS framework?  
+   **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as late as possible.**
