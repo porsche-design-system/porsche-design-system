@@ -1,91 +1,91 @@
-import { PHeadline as Headline } from '@porsche-design-system/components-react';
+import { PHeadline } from '@porsche-design-system/components-react';
 
 export const HeadlinePage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should show headlines with different style variants">
-        <Headline variant="large-title">The quick brown fox jumps over the lazy dog</Headline>
-        <Headline variant="headline-1">The quick brown fox jumps over the lazy dog</Headline>
-        <Headline variant="headline-2">The quick brown fox jumps over the lazy dog</Headline>
-        <Headline variant="headline-3">The quick brown fox jumps over the lazy dog</Headline>
-        <Headline variant="headline-4">The quick brown fox jumps over the lazy dog</Headline>
-        <Headline variant="headline-5">The quick brown fox jumps over the lazy dog</Headline>
+        <PHeadline variant="large-title">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline variant="headline-1">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline variant="headline-2">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline variant="headline-3">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline variant="headline-4">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
       </div>
 
       <div
         className="playground light"
         title="should show headlines with different style variants if tags are set as slots"
       >
-        <Headline variant="large-title">
+        <PHeadline variant="large-title">
           <h1>The quick brown fox jumps over the lazy dog</h1>
-        </Headline>
-        <Headline variant="headline-1">
+        </PHeadline>
+        <PHeadline variant="headline-1">
           <h1>The quick brown fox jumps over the lazy dog</h1>
-        </Headline>
-        <Headline variant="headline-2">
+        </PHeadline>
+        <PHeadline variant="headline-2">
           <h2>The quick brown fox jumps over the lazy dog</h2>
-        </Headline>
-        <Headline variant="headline-3">
+        </PHeadline>
+        <PHeadline variant="headline-3">
           <h3>The quick brown fox jumps over the lazy dog</h3>
-        </Headline>
-        <Headline variant="headline-4">
+        </PHeadline>
+        <PHeadline variant="headline-4">
           <h4>The quick brown fox jumps over the lazy dog</h4>
-        </Headline>
-        <Headline variant="headline-5">
+        </PHeadline>
+        <PHeadline variant="headline-5">
           <h5>The quick brown fox jumps over the lazy dog</h5>
-        </Headline>
-        <Headline variant="headline-5">
+        </PHeadline>
+        <PHeadline variant="headline-5">
           <h6>The quick brown fox jumps over the lazy dog</h6>
-        </Headline>
+        </PHeadline>
       </div>
 
       <div className="playground light" title="should show headline with different color variants on light background">
-        <Headline color="default" style={{ color: 'deeppink' }}>
+        <PHeadline color="default" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Headline>
-        <Headline color="inherit" style={{ color: 'deeppink' }}>
+        </PHeadline>
+        <PHeadline color="inherit" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Headline>
+        </PHeadline>
       </div>
 
       <div className="playground dark" title="should show headline with different color variants on dark background">
-        <Headline theme="dark" color="default" style={{ color: 'deeppink' }}>
+        <PHeadline theme="dark" color="default" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Headline>
-        <Headline theme="dark" color="inherit" style={{ color: 'deeppink' }}>
+        </PHeadline>
+        <PHeadline theme="dark" color="inherit" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Headline>
+        </PHeadline>
       </div>
 
       <div className="playground light" title="should show headlines with different alignments">
-        <Headline align="left">Left</Headline>
-        <Headline align="center">Center</Headline>
-        <Headline align="right">Right</Headline>
+        <PHeadline align="left">Left</PHeadline>
+        <PHeadline align="center">Center</PHeadline>
+        <PHeadline align="right">Right</PHeadline>
       </div>
 
       <div className="playground light" title="should cut off too long text">
-        <Headline ellipsis={true}>
+        <PHeadline ellipsis={true}>
           Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
           invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
           dolores et ea rebum.
-        </Headline>
+        </PHeadline>
       </div>
 
       <div className="playground" title="should show headline with a link">
-        <Headline>
+        <PHeadline>
           <span>
-            Lorem ipsum dolor sit amet <a href="#">linked text</a> et.
+            Lorem ipsum dolor sit amet <a href="#x">linked text</a> et.
           </span>
-        </Headline>
+        </PHeadline>
       </div>
 
       <div className="playground" title="should show headline for variant customizable">
-        <Headline variant={{ base: 'large', l: 'x-large' }}> Lorem ipsum dolor sit amet et.</Headline>
+        <PHeadline variant={{ base: 'large', l: 'x-large' }}> Lorem ipsum dolor sit amet et.</PHeadline>
       </div>
 
       <div className="playground" title="should consider only font-size definition on host element for variant inherit">
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
-          <Headline
+          <PHeadline
             variant="inherit"
             style={{
               fontSize: '60px',
@@ -98,11 +98,11 @@ export const HeadlinePage = (): JSX.Element => {
             }}
           >
             ABC
-          </Headline>
+          </PHeadline>
         </div>
         <br />
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
-          <Headline
+          <PHeadline
             variant="inherit"
             style={{
               fontSize: '60px',
@@ -128,7 +128,7 @@ export const HeadlinePage = (): JSX.Element => {
             >
               ABC
             </h3>
-          </Headline>
+          </PHeadline>
         </div>
       </div>
     </>

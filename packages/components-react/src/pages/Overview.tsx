@@ -1,33 +1,33 @@
 import {
-  PBanner as Banner,
-  PButton as Button,
-  PButtonPure as ButtonPure,
-  PHeadline as Headline,
-  PText as Text,
-  PDivider as Divider,
-  PIcon as Icon,
-  PCheckboxWrapper as CheckboxWrapper,
-  PRadioButtonWrapper as RadioButtonWrapper,
-  PSelectWrapper as SelectWrapper,
-  PTextFieldWrapper as TextFieldWrapper,
-  PTextareaWrapper as TextareaWrapper,
-  PFieldsetWrapper as FieldsetWrapper,
-  PContentWrapper as ContentWrapper,
-  PGrid as Grid,
-  PGridItem as GridItem,
-  PFlex as Flex,
-  PFlexItem as FlexItem,
-  PTabs as Tabs,
-  PTabsItem as TabsItem,
-  PTabsBar as TabsBar,
-  PTextList as TextList,
-  PTextListItem as TextListItem,
-  PSpinner as Spinner,
-  PMarque as Marque,
-  PPagination as Pagination,
-  PLink as Link,
-  PLinkPure as LinkPure,
-  PLinkSocial as LinkSocial,
+  PBanner,
+  PButton,
+  PButtonPure,
+  PHeadline,
+  PText,
+  PDivider,
+  PIcon,
+  PCheckboxWrapper,
+  PRadioButtonWrapper,
+  PSelectWrapper,
+  PTextFieldWrapper,
+  PTextareaWrapper,
+  PFieldsetWrapper,
+  PContentWrapper,
+  PGrid,
+  PGridItem,
+  PFlex,
+  PFlexItem,
+  PTabs,
+  PTabsItem,
+  PTabsBar,
+  PTextList,
+  PTextListItem,
+  PSpinner,
+  PMarque,
+  PPagination,
+  PLink,
+  PLinkPure,
+  PLinkSocial,
 } from '@porsche-design-system/components-react';
 import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 
@@ -105,152 +105,152 @@ export const OverviewPage = (): JSX.Element => {
       <div style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
-            <Headline>Default Components</Headline>
+            <PHeadline>Default Components</PHeadline>
           </div>
 
           <div className="playground light" title="should render headline for variant large">
-            <Headline variant={{ base: 'large', l: 'x-large' }}>Default Components</Headline>
+            <PHeadline variant={{ base: 'large', l: 'x-large' }}>Default Components</PHeadline>
           </div>
 
           <div className="playground light" title="should render default banner">
-            <Banner>
+            <PBanner>
               <span slot="title">Some banner title</span>
               <span slot="description">Some banner description.</span>
-            </Banner>
+            </PBanner>
           </div>
 
           <div className="playground light" title="should render default divider">
-            <Divider />
+            <PDivider />
           </div>
 
           <div className="playground light" title="should render default button">
-            <Button>Some label</Button>
+            <PButton>Some label</PButton>
           </div>
 
           <div className="playground light" title="should render default button-pure">
-            <ButtonPure>Some label</ButtonPure>
+            <PButtonPure>Some label</PButtonPure>
           </div>
 
           <div className="playground light" title="should render default checkbox-wrapper">
-            <CheckboxWrapper label="Some label">
+            <PCheckboxWrapper label="Some label">
               <input type="checkbox" />
-            </CheckboxWrapper>
+            </PCheckboxWrapper>
           </div>
 
           <div className="playground light" title="should render default radio-button-wrapper">
-            <RadioButtonWrapper label="Some label">
+            <PRadioButtonWrapper label="Some label">
               <input type="radio" />
-            </RadioButtonWrapper>
+            </PRadioButtonWrapper>
           </div>
 
           <div className="playground light" title="should render default select-wrapper">
-            <SelectWrapper label="Some label">
+            <PSelectWrapper label="Some label">
               <select>
                 <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
-            </SelectWrapper>
+            </PSelectWrapper>
           </div>
 
           <div className="playground light" title="should render default text-field-wrapper">
-            <TextFieldWrapper label="Some label">
+            <PTextFieldWrapper label="Some label">
               <input type="text" />
-            </TextFieldWrapper>
+            </PTextFieldWrapper>
           </div>
 
           <div className="playground light" title="should render default textarea-wrapper">
-            <TextareaWrapper label="Some label">
-              <textarea></textarea>
-            </TextareaWrapper>
+            <PTextareaWrapper label="Some label">
+              <textarea />
+            </PTextareaWrapper>
           </div>
 
           <div className="playground light" title="should render default fieldset-wrapper">
-            <FieldsetWrapper label="Some label"></FieldsetWrapper>
+            <PFieldsetWrapper label="Some label"></PFieldsetWrapper>
           </div>
 
           <div className="playground light" title="should render default content-wrapper">
-            <ContentWrapper>
+            <PContentWrapper>
               <p>Some content</p>
-            </ContentWrapper>
+            </PContentWrapper>
           </div>
 
           <div className="playground light" title="should render default text">
-            <Text>The quick brown fox jumps over the lazy dog</Text>
+            <PText>The quick brown fox jumps over the lazy dog</PText>
           </div>
 
           <div className="playground light" title="should render default text-list">
-            <TextList>
-              <TextListItem>The quick brown fox jumps over the lazy dog</TextListItem>
-            </TextList>
+            <PTextList>
+              <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
+            </PTextList>
           </div>
 
           <div className="playground light" title="should render default icon">
-            <Icon />
+            <PIcon />
           </div>
 
           <div className="playground light" title="should render default link">
-            <Link href="https://www.porsche.com">Some label</Link>
+            <PLink href="https://www.porsche.com">Some label</PLink>
           </div>
 
           <div className="playground light" title="should render default link-pure">
-            <LinkPure href="https://www.porsche.com">Some label</LinkPure>
+            <PLinkPure href="https://www.porsche.com">Some label</PLinkPure>
           </div>
 
           <div className="playground light" title="should render default link-social">
-            <LinkSocial href="https://www.porsche.com" icon="logo-facebook">
+            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
               Some label
-            </LinkSocial>
+            </PLinkSocial>
           </div>
 
           <div className="playground light" title="should render default marque">
-            <Marque />
+            <PMarque />
           </div>
 
           <div className="playground light" title="should render default pagination">
-            <Pagination total-items-count="500" items-per-page="25" active-page="1" />
+            <PPagination total-items-count="500" items-per-page="25" active-page="1" />
           </div>
 
           <div className="playground light" title="should render default tabs">
-            <Tabs>
-              <TabsItem label="Tab1">Content 1</TabsItem>
-              <TabsItem label="Tab2">Content 2</TabsItem>
-              <TabsItem label="Tab3">Content 3</TabsItem>
-            </Tabs>
+            <PTabs>
+              <PTabsItem label="Tab1">Content 1</PTabsItem>
+              <PTabsItem label="Tab2">Content 2</PTabsItem>
+              <PTabsItem label="Tab3">Content 3</PTabsItem>
+            </PTabs>
           </div>
 
           <div className="playground light" title="should render default tabs-bar">
-            <TabsBar>
-              <a>Tab1</a>
-              <a>Tab2</a>
-              <a>Tab3</a>
-            </TabsBar>
+            <PTabsBar>
+              <a href="#x">Tab1</a>
+              <a href="#x">Tab2</a>
+              <a href="#x">Tab3</a>
+            </PTabsBar>
           </div>
 
           <div className="playground light" title="should render default spinner">
-            <Spinner />
+            <PSpinner />
           </div>
 
           <div className="playground light" title="should render default flex">
-            <Flex>
-              <FlexItem>
+            <PFlex>
+              <PFlexItem>
                 <p>1</p>
-              </FlexItem>
-              <FlexItem>
+              </PFlexItem>
+              <PFlexItem>
                 <p>2</p>
-              </FlexItem>
-            </Flex>
+              </PFlexItem>
+            </PFlex>
           </div>
 
           <div className="playground light" title="should render default grid">
-            <Grid>
-              <GridItem size={6}>
+            <PGrid>
+              <PGridItem size={6}>
                 <p>1</p>
-              </GridItem>
-              <GridItem size={6}>
+              </PGridItem>
+              <PGridItem size={6}>
                 <p>2</p>
-              </GridItem>
-            </Grid>
+              </PGridItem>
+            </PGrid>
           </div>
         </div>
 
@@ -312,7 +312,7 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default textarea-wrapper with custom prefix">
             <PrefixedTextareaWrapper label="Some label">
-              <textarea></textarea>
+              <textarea />
             </PrefixedTextareaWrapper>
           </div>
 
@@ -372,9 +372,9 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default tabs-bar with custom prefix">
             <PrefixedTabsBar>
-              <a>Tab1</a>
-              <a>Tab2</a>
-              <a>Tab3</a>
+              <a href="#x">Tab1</a>
+              <a href="#x">Tab2</a>
+              <a href="#x">Tab3</a>
             </PrefixedTabsBar>
           </div>
 

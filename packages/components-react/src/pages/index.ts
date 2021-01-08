@@ -9,6 +9,7 @@ export * from './Flex';
 export * from './Grid';
 export * from './Headline';
 export * from './Icon';
+export * from './Initializer';
 export * from './Link';
 export * from './LinkPure';
 export * from './LinkSocial';

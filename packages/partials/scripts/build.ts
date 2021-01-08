@@ -15,7 +15,7 @@ const updateContent = (oldContent: string, newContent: string): string => {
 const generateStylesPartials = async (): Promise<void> => {
   const targetFile = path.normalize('./src/styles.ts');
 
-  const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities')).toString();
+  const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
   const oldContent = fs.readFileSync(targetFile, 'utf8');

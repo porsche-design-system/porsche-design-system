@@ -6,6 +6,7 @@ set -o pipefail
 if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
+  [[ "--components-react" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]
 then
   yarn test:e2e:${1:2}
