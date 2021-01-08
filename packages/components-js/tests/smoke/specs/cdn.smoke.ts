@@ -161,6 +161,11 @@ describe('cdn', () => {
       // read web components manager to retrieve url to stencil core entrypoint
       const indexJsFile = require.resolve('@porsche-design-system/components-js');
       const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
+
+      if (indexJsCode.includes('localhost:3001')) {
+        throw new Error('You need to run `yarn build:components-js-prod` in order to have a prod build.');
+      }
+
       const [, coreFileName] = /porsche-design-system\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
 
       // read stencil core entrypoint to retrieve component chunk mapping
