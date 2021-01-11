@@ -2691,12 +2691,12 @@
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.3.0.tgz#9190df3a0064537730be1546545e13531d701da8"
   integrity sha512-VZ/Ox0E1kngcmHbJhHUufuLELi+xG3of3LuRI3X2AMWyE82JUVYlOEsQci/YBZWpfc9BS9I36R88prBew22oew==
 
-"@stencil/postcss@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@stencil/postcss/-/postcss-1.0.1.tgz#9e3aaef7d267c5669dc40ec3ed4b7b7fd56ed2ff"
-  integrity sha512-+QOLwdiMSeE6XbvjOM8bfMIX6E6L4DFLmnp0wZqCj4O/PVkNfEQA6IXZgd6F+OIfZ1wBy/dxR4Jvtwfo+QXa2g==
+"@stencil/postcss@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stencil/postcss/-/postcss-2.0.0.tgz#d36f486266dcae241a95979caee1bb7fc28ea5c3"
+  integrity sha512-eTZVQEXb3AGw8A7tstKoOklV6ATXCKASs8VoykyVSYRZCjU0kECM76YgUZkzolwzEq6JG6LVwStT8xpTBSEZ+Q==
   dependencies:
-    postcss "~7.0.17"
+    postcss "~8.2.1"
 
 "@stencil/react-output-target@https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-react-output-target-0.0.6.tgz":
   version "0.0.6"
@@ -14117,7 +14117,7 @@ postcss@^8.1.0:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-postcss@^8.1.7, postcss@~7.0.17:
+postcss@^8.1.7, postcss@~8.2.1:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.3.tgz#14ed1294850c99661761d9cb68863718eb75690d"
   integrity sha512-tdmNCCmxJEsLZNj810qlj8QbvnUNKFL9A5doV+uHrGGK/YNKWEslrytnHDWr9M/GgGjfUFwXCRbxd/b6IoRBXQ==
