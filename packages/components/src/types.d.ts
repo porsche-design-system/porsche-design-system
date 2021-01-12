@@ -38,6 +38,7 @@ export type TabGradientColorTheme = 'default' | 'surface';
 
 // Pagination Types
 export type NumberOfPageLinks = 5 | 7;
+export type PageChangeEvent = { page: number; previousPage: number };
 
 /**
  * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
