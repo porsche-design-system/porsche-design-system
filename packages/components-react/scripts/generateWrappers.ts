@@ -19,51 +19,59 @@ const generateSharedTypes = (bundleDtsContent: string): void => {
 };
 
 const generateImports = (componentInterface: string): string => {
-  const whitelistedImports = ['CustomEvent'];
-  const simpleTypes = ['string', 'number', 'boolean', 'object'];
+  const whitelistedImports = ['CustomEvent', 'Extract'];
   const missingImports: string[] = [];
 
   // extract non primitive types which we need to import
-  const regex = /: ([A-Z].*);/g;
+  const regex = /: ([A-Z].*?)(?:\)|;)/g;
   let typeMatch = regex.exec(componentInterface);
-  while (typeMatch !== null) {
-    const [, nonPrimitiveType] = typeMatch;
 
+  const handleCustomGenericTypes = (nonPrimitiveType: string) => {
     if (!whitelistedImports.includes(nonPrimitiveType)) {
       // extract potential generics
-      const [, genericType] = /<(\w*)>/.exec(nonPrimitiveType) ?? [];
-      if (genericType) {
-        if (!simpleTypes.includes(genericType)) {
-          missingImports.push(genericType);
-        }
+      const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
+      const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
 
-        // extract type that requires generic
-        const [, genericRootType] = /([A-Z]\w*)/.exec(nonPrimitiveType) ?? [];
-        missingImports.push(genericRootType);
+      if (genericType) {
+        if (!whitelistedImports.includes(genericRootType)) {
+          missingImports.push(genericRootType);
+        }
+        genericType
+          .split(/[,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
+          .map((x) => x.trim())
+          .filter((x) => x.match(/[A-Z]\w*/)) // Check for non-primitive types
+          .forEach(handleCustomGenericTypes);
       } else {
         missingImports.push(nonPrimitiveType);
       }
     }
+  };
 
+  while (typeMatch !== null) {
+    const [, nonPrimitiveType] = typeMatch;
+    handleCustomGenericTypes(nonPrimitiveType);
     typeMatch = regex.exec(componentInterface); // loop again in case of multiple matches
   }
 
   // get rid of duplicates
   const uniqueMissingImports = missingImports.filter((x, i, a) => a.indexOf(x) === i);
+  const typesImport = `${
+    uniqueMissingImports.length > 0
+      ? `
+import { ${uniqueMissingImports.join(', ')} } from '../types';`
+      : ''
+  }`;
 
-  const imports = `import { usePrefix } from '../../provider';
-import { ${uniqueMissingImports.join(', ')} } from '../types';`;
-
-  return imports;
+  return `import { usePrefix } from '../../provider';${typesImport}`;
 };
 
 const generateComponentWrapper = (component: string, componentInterface: string): void => {
   const importsDefinition = generateImports(componentInterface);
-  const propsDefinition = `type Props = ${componentInterface}`.replace(/    /g, '  ').replace('  }', '}');
+  const propsDefinition = `type Props = ${componentInterface}`.replace(/    |\t\t/g, '  ').replace(/(  |\t)}/, '};');
   const wrapperDefinition = `export const ${pascalCase(component)} = (props: Props): JSX.Element => {
   const Tag = usePrefix('${component}');
   return <Tag {...props} />;
-}`;
+};`;
 
   const content = `${importsDefinition}\n
 ${propsDefinition}\n
@@ -98,10 +106,10 @@ const generateWrappers = (): void => {
 
   // components
   Object.entries(intrinsicElements)
-    .filter((item, index) => index === 8) // temporary filter for easier development
+    /*    .filter((item, index) => index === 23) // temporary filter for easier development*/
     .forEach(([component, interfaceName]) => {
       const [, rawComponentInterface] =
-        new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;\\s\\s\\s})`).exec(rawLocalJSX) ?? [];
+        new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;\\s\\s})`).exec(rawLocalJSX) ?? [];
       generateComponentWrapper(component, rawComponentInterface);
     });
 
