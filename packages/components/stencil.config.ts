@@ -41,10 +41,6 @@ export const config: Config = {
         },
       ],
     },
-    reactOutputTarget({
-      componentCorePackage: '@porsche-design-system/components',
-      proxiesFile: '../components-react/projects/components-wrapper/src/lib/components.ts',
-    }),
     angularOutputTarget({
       componentCorePackage: '@porsche-design-system/components',
       directivesProxyFile: '../components-angular/projects/components-wrapper/src/lib/proxies.ts',
