@@ -35,30 +35,25 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   console.log(`Updating generated wrapper in "components-${framework}"`);
   copyTypesToWrapper(framework);
 
-  let wrapperFileName = '';
-  if (framework === 'angular') {
-    wrapperFileName = 'proxies.ts';
-  } else if (framework === 'react') {
-    wrapperFileName = 'components-provider.ts';
-  }
-
-  const wrapperFilePath = path.normalize(`../components-${framework}/${WRAPPER_PROJECT_PATH}/${wrapperFileName}`);
-  const wrapperFileContent = fs.readFileSync(wrapperFilePath, 'utf8');
-
-  // replace imports from '@porsche-design-system/components' with './bundle';
-  const replaceValue = `'./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}'`;
-  let result = wrapperFileContent.replace(/'@porsche-design-system\/components'/g, replaceValue);
-
   if (framework === 'react') {
     const bundleFilePath = getBundleFilePathForFramework(framework);
     const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8');
 
     // add missing reference for react types in bundle.d.ts
-    const newContent = `/// <reference types="react" />\n\n${bundleFileContent}`;
+    const newContent = `/// <reference types='react' />\n\n${bundleFileContent}`;
 
     fs.writeFileSync(bundleFilePath, newContent);
     console.log(`Added react types to "components-react"`);
   } else if (framework === 'angular') {
+    const wrapperFileName = 'proxies.ts';
+
+    const wrapperFilePath = path.normalize(`../components-${framework}/${WRAPPER_PROJECT_PATH}/${wrapperFileName}`);
+    const wrapperFileContent = fs.readFileSync(wrapperFilePath, 'utf8');
+
+    // replace imports from '@porsche-design-system/components' with './bundle';
+    const replaceValue = `'./${BUNDLE_TYPE_FILE_NAME.substr(0, BUNDLE_TYPE_FILE_NAME.indexOf('.'))}'`;
+    let result = wrapperFileContent.replace(/'@porsche-design-system\/components'/g, replaceValue);
+
     // rewire and replace imports from non public @porsche-design-system/components in generated wrapper
 
     const componentsPkgBase = path.resolve(require.resolve('@porsche-design-system/components'), '..');
@@ -106,11 +101,10 @@ const updateGeneratedWrapper = (framework: Framework): void => {
       const replaceString = searchString.replace(' }', `, ${uniqueMissingImports.join(', ')} }`);
       result = result.replace(searchString, replaceString);
     }
+
+    fs.writeFileSync(wrapperFilePath, result);
+    console.log(`Updated import of "${wrapperFileName}": '@porsche-design-system/components' –> ${replaceValue}`);
   }
-
-  fs.writeFileSync(wrapperFilePath, result);
-
-  console.log(`Updated import of "${wrapperFileName}": '@porsche-design-system/components' –> ${replaceValue}`);
 };
 
 updateGeneratedWrapper('angular');
