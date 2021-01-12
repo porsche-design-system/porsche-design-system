@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { camelCase } from 'change-case';
 
 const cleanupLoader = () => {
   const srcFilePath = './dist/esm/loader.js';
