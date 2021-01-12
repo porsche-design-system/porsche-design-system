@@ -62,16 +62,39 @@ import { ${uniqueMissingImports.join(', ')} } from '../types';`
       : ''
   }`;
 
-  return `import { usePrefix } from '../../provider';${typesImport}`;
+  return `import { PropsWithChildren } from 'react';
+import { usePrefix } from '../../provider';${typesImport}`;
+};
+
+const generateProps = (componentInterface: string): string => {
+  // TODO: ['div'] should be more specific
+  const content = `type Props = JSX.IntrinsicElements['div'] & ${componentInterface};`
+    .replace(/    |\t\t/g, '  ')
+    .replace(/(  |\t)};/g, '};');
+  return content;
+};
+
+const generateComponent = (component: string, componentInterface: string): string => {
+  const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
+  const parsedInterface = eval(`(${rawInterface})`);
+  console.log(parsedInterface);
+  const keysToMap = Object.keys(parsedInterface).filter((x) => x.match(/[A-Z]/g));
+  console.log(keysToMap);
+  const propsParameter = keysToMap.length ? `{ ${keysToMap.join(', ')}, ...rest }` : 'props';
+
+  // TODO: PropsWithChildren should be only used if component is allowed to have children
+  return `export const ${pascalCase(component)} = (${propsParameter}: PropsWithChildren<Props>): JSX.Element => {
+  console.log('Hello PButton');
+  const Tag = usePrefix('${component}');
+  // @ts-ignore
+  return <Tag {...props} />;
+};`;
 };
 
 const generateComponentWrapper = (component: string, componentInterface: string): void => {
   const importsDefinition = generateImports(componentInterface);
-  const propsDefinition = `type Props = ${componentInterface}`.replace(/    |\t\t/g, '  ').replace(/(  |\t)}/, '};');
-  const wrapperDefinition = `export const ${pascalCase(component)} = (props: Props): JSX.Element => {
-  const Tag = usePrefix('${component}');
-  return <Tag {...props} />;
-};`;
+  const propsDefinition = generateProps(componentInterface);
+  const wrapperDefinition = generateComponent(component, componentInterface);
 
   const content = `${importsDefinition}\n
 ${propsDefinition}\n
@@ -109,7 +132,8 @@ const generateWrappers = (): void => {
     /*    .filter((item, index) => index === 23) // temporary filter for easier development*/
     .forEach(([component, interfaceName]) => {
       const [, rawComponentInterface] =
-        new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;\\s\\s})`).exec(rawLocalJSX) ?? [];
+        // We need semicolon and double newline to ensure comments are ignored
+        new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;?\\s\\s})`).exec(rawLocalJSX) ?? [];
       generateComponentWrapper(component, rawComponentInterface);
     });
 
