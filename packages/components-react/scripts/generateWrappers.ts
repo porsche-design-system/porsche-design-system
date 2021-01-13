@@ -146,22 +146,27 @@ const convertToExtendedProps = (parsedInterface: ParsedInterface, sharedTypes: s
 const generateComponent = (component: string, componentInterface: string, sharedTypes: string): string => {
   const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
   const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
-
   const extendedProps = convertToExtendedProps(parsedInterface, sharedTypes);
 
-  const propsToMap = extendedProps.filter((prop) => prop.hasToBeMapped);
-  const hasPropsToMap = propsToMap.length > 0;
-  const wrapperProps = hasPropsToMap ? `{ ${propsToMap.map(({ key }) => key).join(', ')} , ...rest }` : 'props';
-  const propMapping = propsToMap
-    .map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`)
-    .join(',\n    ');
+  let componentProps = '';
+  let wrapperProps = 'props';
 
-  const componentProps = hasPropsToMap
-    ? `const props = {
+  const propsToDestructure = extendedProps.filter((prop) => prop.isEvent || prop.hasToBeMapped);
+  const propsToMap = extendedProps.filter((prop) => prop.hasToBeMapped);
+
+  if (propsToDestructure.length > 0) {
+    wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, ...rest }`;
+  }
+
+  if (propsToMap.length > 0) {
+    const propMapping = propsToMap
+      .map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`)
+      .join(',\n    ');
+    componentProps = `const props = {
     ...rest,
     ${propMapping}
-  };`
-    : '';
+  };`;
+  }
 
   // TODO: PropsWithChildren should be only used if component is allowed to have children
   return `export const ${pascalCase(component)} = (${wrapperProps}: PropsWithChildren<Props>): JSX.Element => {
