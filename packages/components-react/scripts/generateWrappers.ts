@@ -8,7 +8,7 @@ const TARGET_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components');
 const getComponentFileName = (component: string, withOutExtension?: boolean): string =>
   `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
 
-const generateSharedTypes = (bundleDtsContent: string): void => {
+const generateSharedTypes = (bundleDtsContent: string): string => {
   const content = bundleDtsContent.substr(0, bundleDtsContent.indexOf('export namespace Components'));
 
   const targetFileName = 'types.ts';
@@ -16,49 +16,61 @@ const generateSharedTypes = (bundleDtsContent: string): void => {
 
   fs.writeFileSync(targetFile, content);
   console.log(`Generated shared types: ${targetFileName}`);
+  return content;
 };
 
-const generateImports = (componentInterface: string): string => {
-  const whitelistedImports = ['CustomEvent', 'Extract'];
-  const missingImports: string[] = [];
+const splitLiteralTypeToNonPrimitiveTypes = (literalType: string): string[] => {
+  return literalType
+    .split(/[,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
+    .map((x) => x.trim())
+    .filter((x) => x.match(/[A-Z]\w*/)); // Check for non-primitive types
+};
 
-  // extract non primitive types which we need to import
-  const regex = /: ([A-Z].*?)(?:\)|;)/g;
-  let typeMatch = regex.exec(componentInterface);
+const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = false): string[] => {
+  const whitelistedTypes = ['CustomEvent', 'Extract'];
+  const nonPrimitiveTypes: string[] = [];
 
   const handleCustomGenericTypes = (nonPrimitiveType: string) => {
-    if (!whitelistedImports.includes(nonPrimitiveType)) {
+    if (!whitelistedTypes.includes(nonPrimitiveType)) {
       // extract potential generics
       const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) ?? [];
       const [, genericRootType] = /([A-Z]\w*)</.exec(nonPrimitiveType) ?? [];
 
       if (genericType) {
-        if (!whitelistedImports.includes(genericRootType)) {
-          missingImports.push(genericRootType);
+        if (!whitelistedTypes.includes(genericRootType)) {
+          nonPrimitiveTypes.push(genericRootType);
         }
-        genericType
-          .split(/[,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
-          .map((x) => x.trim())
-          .filter((x) => x.match(/[A-Z]\w*/)) // Check for non-primitive types
-          .forEach(handleCustomGenericTypes);
+        const genericTypes = splitLiteralTypeToNonPrimitiveTypes(genericType);
+        genericTypes.forEach(handleCustomGenericTypes);
       } else {
-        missingImports.push(nonPrimitiveType);
+        nonPrimitiveTypes.push(nonPrimitiveType);
       }
     }
   };
 
-  while (typeMatch !== null) {
-    const [, nonPrimitiveType] = typeMatch;
-    handleCustomGenericTypes(nonPrimitiveType);
-    typeMatch = regex.exec(componentInterface); // loop again in case of multiple matches
-  }
+  if (isNonPrimitiveType) {
+    handleCustomGenericTypes(input);
+  } else {
+    // extract non primitive types which we need to import
+    const regex = /: ([A-Z].*?)(?:\)|;)/g;
+    let typeMatch = regex.exec(input);
 
+    while (typeMatch !== null) {
+      const [, nonPrimitiveType] = typeMatch;
+      handleCustomGenericTypes(nonPrimitiveType);
+      typeMatch = regex.exec(input); // loop again in case of multiple matches
+    }
+  }
   // get rid of duplicates
-  const uniqueMissingImports = missingImports.filter((x, i, a) => a.indexOf(x) === i);
+  return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
+};
+
+const generateImports = (componentInterface: string): string => {
+  const nonPrimitiveTypes = extractNonPrimitiveTypes(componentInterface);
   const typesImport = `${
-    uniqueMissingImports.length > 0
+    nonPrimitiveTypes.length > 0
       ? `
-import { ${uniqueMissingImports.join(', ')} } from '../types';`
+import { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : ''
   }`;
 
@@ -74,15 +86,73 @@ const generateProps = (componentInterface: string): string => {
   return content;
 };
 
-const generateComponent = (component: string, componentInterface: string): string => {
-  const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
-  const parsedInterface = eval(`(${rawInterface})`);
-  const keysToMap = Object.keys(parsedInterface).filter((x) => x.match(/[A-Z]/g));
-  const hasKeysToMap = keysToMap.length > 0;
-  const wrapperProps = hasKeysToMap ? `{ ${keysToMap.join(', ')}, ...rest }` : 'props';
-  const propMapping = keysToMap.map((x) => `'${paramCase(x)}': ${x}`).join(',\n    ');
+type ParsedInterface = { [key: string]: string };
+type ExtendedProp = { rawValueType: string; hasToBeMapped: boolean; canBeObject: boolean; isEvent: boolean };
+type ExtendedInterface = { [key: string]: ExtendedProp };
 
-  const componentProps = hasKeysToMap
+// Recursively check prop value for type of object
+const valueCanBeObject = (propValue: string, sharedTypes: string): boolean => {
+  let result = false;
+
+  if (propValue.includes('{')) {
+    result = true;
+  } else {
+    if (propValue.match(/[A-Z]/g)) {
+      // Extract all types to check recursively e.g. "TextSize | BreakpointCustomizable<boolean> | CustomSize" etc.
+      const nonPrimitiveTypes = splitLiteralTypeToNonPrimitiveTypes(propValue)
+        .map((x) => extractNonPrimitiveTypes(x, true))
+        .flat();
+
+      for (const nonPrimitiveType of nonPrimitiveTypes) {
+        // Extract typeDefinition of every nonPrimitiveType found before
+        const [, typeDef] =
+          new RegExp(`(?:type|interface) ${nonPrimitiveType}(?:<.*>)? = ((?:.|\\s)*?);`).exec(sharedTypes) ?? [];
+
+        if (typeDef && valueCanBeObject(typeDef, sharedTypes)) {
+          result = true;
+        }
+      }
+    } else {
+      result = false;
+    }
+  }
+  return result;
+};
+
+const convertToExtendedProp = (propKey: string, propValue: string, sharedTypes: string): ExtendedProp => {
+  const isEvent = !!propKey.match(/^on[A-Z]/);
+  const extendedProp: ExtendedProp = {
+    rawValueType: propValue,
+    hasToBeMapped: !isEvent && !!propKey.match(/[A-Z]/g),
+    canBeObject: !isEvent && valueCanBeObject(propValue, sharedTypes),
+    isEvent: isEvent,
+  };
+  return extendedProp;
+};
+
+// Enrich parsedInterface with meta information for further processing
+const convertToExtendedInterface = (parsedInterface: ParsedInterface, sharedTypes: string): ExtendedInterface => {
+  const extendedInterface: ExtendedInterface = {};
+  Object.entries(parsedInterface).forEach(([propKey, propValue]) => {
+    extendedInterface[propKey] = convertToExtendedProp(propKey, propValue, sharedTypes);
+  });
+  return extendedInterface;
+};
+
+const generateComponent = (component: string, componentInterface: string, sharedTypes: string): string => {
+  const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
+  const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
+
+  const extendedInterface = convertToExtendedInterface(parsedInterface, sharedTypes);
+
+  const propsToMap = Object.entries(extendedInterface).filter(([, value]) => value.hasToBeMapped);
+  const hasPropsToMap = propsToMap.length > 0;
+  const wrapperProps = hasPropsToMap ? `{ ${propsToMap.map(([key]) => key).join(', ')} , ...rest }` : 'props';
+  const propMapping = propsToMap
+    .map(([key, value]) => `'${paramCase(key)}': ${value.canBeObject ? `JSON.stringify(${key})` : key}`)
+    .join(',\n    ');
+
+  const componentProps = hasPropsToMap
     ? `const props = {
     ...rest,
     ${propMapping}
@@ -98,10 +168,10 @@ const generateComponent = (component: string, componentInterface: string): strin
 };`;
 };
 
-const generateComponentWrapper = (component: string, componentInterface: string): void => {
+const generateComponentWrapper = (component: string, componentInterface: string, sharedTypes: string): void => {
   const importsDefinition = generateImports(componentInterface);
   const propsDefinition = generateProps(componentInterface);
-  const wrapperDefinition = generateComponent(component, componentInterface);
+  const wrapperDefinition = generateComponent(component, componentInterface, sharedTypes);
 
   const content = `${importsDefinition}\n
 ${propsDefinition}\n
@@ -120,7 +190,7 @@ const generateWrappers = (): void => {
   const bundleDtsFile = path.resolve(BASE_DIRECTORY, bundleDtsFileName);
   const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
-  generateSharedTypes(bundleDtsContent);
+  const sharedTypes = generateSharedTypes(bundleDtsContent);
 
   const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
   let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\s|.)*?})/.exec(rawLocalJSX) ?? [];
@@ -136,12 +206,12 @@ const generateWrappers = (): void => {
 
   // components
   Object.entries(intrinsicElements)
-    /*    .filter((item, index) => index === 23) // temporary filter for easier development*/
+    /*    .filter((item, index) => index === 29) // temporary filter for easier development*/
     .forEach(([component, interfaceName]) => {
       const [, rawComponentInterface] =
         // We need semicolon and double newline to ensure comments are ignored
         new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;?\\s\\s})`).exec(rawLocalJSX) ?? [];
-      generateComponentWrapper(component, rawComponentInterface);
+      generateComponentWrapper(component, rawComponentInterface, sharedTypes);
     });
 
   // barrel file
