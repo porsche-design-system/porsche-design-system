@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { pascalCase } from 'change-case';
+import { pascalCase, paramCase } from 'change-case';
 
 const BASE_DIRECTORY = path.normalize('./projects/components-wrapper/src/lib');
 const TARGET_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components');
@@ -77,15 +77,22 @@ const generateProps = (componentInterface: string): string => {
 const generateComponent = (component: string, componentInterface: string): string => {
   const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
   const parsedInterface = eval(`(${rawInterface})`);
-  console.log(parsedInterface);
   const keysToMap = Object.keys(parsedInterface).filter((x) => x.match(/[A-Z]/g));
-  console.log(keysToMap);
-  const propsParameter = keysToMap.length ? `{ ${keysToMap.join(', ')}, ...rest }` : 'props';
+  const hasKeysToMap = keysToMap.length > 0;
+  const wrapperProps = hasKeysToMap ? `{ ${keysToMap.join(', ')}, ...rest }` : 'props';
+  const propMapping = keysToMap.map((x) => `'${paramCase(x)}': ${x}`).join(',\n    ');
+
+  const componentProps = hasKeysToMap
+    ? `const props = {
+    ...rest,
+    ${propMapping}
+  };`
+    : '';
 
   // TODO: PropsWithChildren should be only used if component is allowed to have children
-  return `export const ${pascalCase(component)} = (${propsParameter}: PropsWithChildren<Props>): JSX.Element => {
-  console.log('Hello PButton');
+  return `export const ${pascalCase(component)} = (${wrapperProps}: PropsWithChildren<Props>): JSX.Element => {
   const Tag = usePrefix('${component}');
+  ${componentProps}
   // @ts-ignore
   return <Tag {...props} />;
 };`;
