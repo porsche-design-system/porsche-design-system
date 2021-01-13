@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { pascalCase, paramCase } from 'change-case';
+import { paramCase, pascalCase } from 'change-case';
 
 const BASE_DIRECTORY = path.normalize('./projects/components-wrapper/src/lib');
 const TARGET_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components');
@@ -87,8 +87,13 @@ const generateProps = (componentInterface: string): string => {
 };
 
 type ParsedInterface = { [key: string]: string };
-type ExtendedProp = { rawValueType: string; hasToBeMapped: boolean; canBeObject: boolean; isEvent: boolean };
-type ExtendedInterface = { [key: string]: ExtendedProp };
+type ExtendedProp = {
+  key: string;
+  rawValueType: string;
+  hasToBeMapped: boolean;
+  canBeObject: boolean;
+  isEvent: boolean;
+};
 
 // Recursively check prop value for type of object
 const valueCanBeObject = (propValue: string, sharedTypes: string): boolean => {
@@ -122,6 +127,7 @@ const valueCanBeObject = (propValue: string, sharedTypes: string): boolean => {
 const convertToExtendedProp = (propKey: string, propValue: string, sharedTypes: string): ExtendedProp => {
   const isEvent = !!propKey.match(/^on[A-Z]/);
   const extendedProp: ExtendedProp = {
+    key: propKey,
     rawValueType: propValue,
     hasToBeMapped: !isEvent && !!propKey.match(/[A-Z]/g),
     canBeObject: !isEvent && valueCanBeObject(propValue, sharedTypes),
@@ -131,25 +137,23 @@ const convertToExtendedProp = (propKey: string, propValue: string, sharedTypes: 
 };
 
 // Enrich parsedInterface with meta information for further processing
-const convertToExtendedInterface = (parsedInterface: ParsedInterface, sharedTypes: string): ExtendedInterface => {
-  const extendedInterface: ExtendedInterface = {};
-  Object.entries(parsedInterface).forEach(([propKey, propValue]) => {
-    extendedInterface[propKey] = convertToExtendedProp(propKey, propValue, sharedTypes);
-  });
-  return extendedInterface;
+const convertToExtendedProps = (parsedInterface: ParsedInterface, sharedTypes: string): ExtendedProp[] => {
+  return Object.entries(parsedInterface).map(([propKey, propValue]) =>
+    convertToExtendedProp(propKey, propValue, sharedTypes)
+  );
 };
 
 const generateComponent = (component: string, componentInterface: string, sharedTypes: string): string => {
   const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
   const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
 
-  const extendedInterface = convertToExtendedInterface(parsedInterface, sharedTypes);
+  const extendedProps = convertToExtendedProps(parsedInterface, sharedTypes);
 
-  const propsToMap = Object.entries(extendedInterface).filter(([, value]) => value.hasToBeMapped);
+  const propsToMap = extendedProps.filter((prop) => prop.hasToBeMapped);
   const hasPropsToMap = propsToMap.length > 0;
-  const wrapperProps = hasPropsToMap ? `{ ${propsToMap.map(([key]) => key).join(', ')} , ...rest }` : 'props';
+  const wrapperProps = hasPropsToMap ? `{ ${propsToMap.map(({ key }) => key).join(', ')} , ...rest }` : 'props';
   const propMapping = propsToMap
-    .map(([key, value]) => `'${paramCase(key)}': ${value.canBeObject ? `JSON.stringify(${key})` : key}`)
+    .map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`)
     .join(',\n    ');
 
   const componentProps = hasPropsToMap
