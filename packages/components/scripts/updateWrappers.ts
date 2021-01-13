@@ -22,7 +22,11 @@ const copyTypesToWrapper = (framework: Framework): void => {
   // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
   let result = fileContent.replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '');
 
+  // fix consumer typing by removing string which is only necessary for stencil
+  result = result.replace(/(export declare type BreakpointCustomizable<T> = T | BreakpointValues<T>) | string;/, '$1;');
+
   // bring back JSX export
+  // TODO: Necessary?
   result = result.replace('export {};', 'export { LocalJSX as JSX };');
 
   fs.writeFileSync(filePathDest, result);
