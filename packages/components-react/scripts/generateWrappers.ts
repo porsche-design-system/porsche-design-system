@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { paramCase, pascalCase } from 'change-case';
+import { paramCase, pascalCase, camelCase } from 'change-case';
 
 const BASE_DIRECTORY = path.normalize('./projects/components-wrapper/src/lib');
 const TARGET_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components');
@@ -65,17 +65,23 @@ const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = f
   return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
 };
 
-const generateImports = (componentInterface: string): string => {
+const generateImports = (componentInterface: string, extendedProps: ExtendedProp[]): string => {
+  let importsFromTypes = '';
   const nonPrimitiveTypes = extractNonPrimitiveTypes(componentInterface);
-  const typesImport = `${
-    nonPrimitiveTypes.length > 0
-      ? `
-import { ${nonPrimitiveTypes.join(', ')} } from '../types';`
-      : ''
-  }`;
 
-  return `import { PropsWithChildren } from 'react';
-import { usePrefix } from '../../provider';${typesImport}`;
+  if (nonPrimitiveTypes.length > 0) {
+    importsFromTypes = `import { ${nonPrimitiveTypes.join(', ')} } from '../types';`;
+  }
+
+  const hasEventProps = extendedProps.filter((prop) => prop.isEvent).length > 0;
+  const reactImports = ['PropsWithChildren', ...(hasEventProps ? ['useRef'] : [])];
+  const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
+  const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
+  const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
+
+  return `${importsFromReact}
+${importsFromProvider}
+${importsFromTypes}`;
 };
 
 const generateProps = (componentInterface: string): string => {
@@ -137,21 +143,22 @@ const convertToExtendedProp = (propKey: string, propValue: string, sharedTypes: 
 };
 
 // Enrich parsedInterface with meta information for further processing
-const convertToExtendedProps = (parsedInterface: ParsedInterface, sharedTypes: string): ExtendedProp[] => {
+const convertToExtendedProps = (componentInterface: string, sharedTypes: string): ExtendedProp[] => {
+  const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
+  const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
   return Object.entries(parsedInterface).map(([propKey, propValue]) =>
     convertToExtendedProp(propKey, propValue, sharedTypes)
   );
 };
 
-const generateComponent = (component: string, componentInterface: string, sharedTypes: string): string => {
-  const rawInterface = componentInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',");
-  const parsedInterface: ParsedInterface = eval(`(${rawInterface})`);
-  const extendedProps = convertToExtendedProps(parsedInterface, sharedTypes);
-
-  let componentProps = '';
+const generateComponent = (component: string, extendedProps: ExtendedProp[]): string => {
   let wrapperProps = 'props';
+  let componentHooks = '';
+  let componentProps = '';
+  let componentAttributes = '';
 
   const propsToDestructure = extendedProps.filter((prop) => prop.isEvent || prop.hasToBeMapped);
+  const propsToEventListener = extendedProps.filter((prop) => prop.isEvent);
   const propsToMap = extendedProps.filter((prop) => prop.hasToBeMapped);
 
   if (propsToDestructure.length > 0) {
@@ -162,25 +169,39 @@ const generateComponent = (component: string, componentInterface: string, shared
     const propMapping = propsToMap
       .map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`)
       .join(',\n    ');
+
     componentProps = `const props = {
     ...rest,
     ${propMapping}
   };`;
   }
 
+  if (propsToEventListener.length > 0) {
+    const eventHooks = propsToEventListener
+      .map(({ key }) => `useEventCallback(el.current, '${camelCase(key.substr(2))}', ${key} as any);`)
+      .join('\n');
+
+    componentHooks = `const el = useRef<HTMLElement>();
+  ${eventHooks}`;
+
+    componentAttributes = 'ref={el} ';
+  }
+
   // TODO: PropsWithChildren should be only used if component is allowed to have children
   return `export const ${pascalCase(component)} = (${wrapperProps}: PropsWithChildren<Props>): JSX.Element => {
+  ${componentHooks}
   const Tag = usePrefix('${component}');
   ${componentProps}
   // @ts-ignore
-  return <Tag {...props} />;
+  return <Tag ${componentAttributes}{...props} />;
 };`;
 };
 
 const generateComponentWrapper = (component: string, componentInterface: string, sharedTypes: string): void => {
-  const importsDefinition = generateImports(componentInterface);
+  const extendedProps = convertToExtendedProps(componentInterface, sharedTypes);
+  const importsDefinition = generateImports(componentInterface, extendedProps);
   const propsDefinition = generateProps(componentInterface);
-  const wrapperDefinition = generateComponent(component, componentInterface, sharedTypes);
+  const wrapperDefinition = generateComponent(component, extendedProps);
 
   const content = `${importsDefinition}\n
 ${propsDefinition}\n
