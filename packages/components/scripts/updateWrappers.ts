@@ -25,7 +25,10 @@ const copyTypesToWrapper = (framework: Framework): void => {
   let result = fileContent.replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '');
 
   // fix consumer typing by removing string which is only necessary for stencil
-  result = result.replace(/(export declare type BreakpointCustomizable<T> = T | BreakpointValues<T>) | string;/, '$1;');
+  result = result.replace(
+    /(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/,
+    '$1;'
+  );
 
   const filePathDest = getBundleFilePathForFramework(framework);
   fs.writeFileSync(filePathDest, result);
