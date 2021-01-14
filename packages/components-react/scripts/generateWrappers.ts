@@ -1,18 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { paramCase, pascalCase, camelCase } from 'change-case';
+import { TagName } from '@porsche-design-system/components/dist/types/tags';
 
-const BASE_DIRECTORY = path.normalize('./projects/components-wrapper/src/lib');
-const TARGET_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components');
+const BASE_DIRECTORY = path.normalize('./projects');
+const COMPONENTS_WRAPPER_DIRECTORY = path.resolve(BASE_DIRECTORY, 'components-wrapper/src/lib');
+const JSDOM_POLYFILL_DIRECTORY = path.resolve(BASE_DIRECTORY, 'jsdom-polyfill/src/lib');
+const TARGET_DIRECTORY = path.resolve(COMPONENTS_WRAPPER_DIRECTORY, 'components');
 
-const getComponentFileName = (component: string, withOutExtension?: boolean): string =>
+const getComponentFileName = (component: TagName, withOutExtension?: boolean): string =>
   `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
 
 const generateSharedTypes = (bundleDtsContent: string): string => {
   const content = bundleDtsContent.substr(0, bundleDtsContent.indexOf('export namespace Components'));
 
   const targetFileName = 'types.ts';
-  const targetFile = path.resolve(BASE_DIRECTORY, targetFileName);
+  const targetFile = path.resolve(COMPONENTS_WRAPPER_DIRECTORY, targetFileName);
 
   fs.writeFileSync(targetFile, content);
   console.log(`Generated shared types: ${targetFileName}`);
@@ -65,23 +68,24 @@ const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = f
   return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
 };
 
-const generateImports = (componentInterface: string, extendedProps: ExtendedProp[]): string => {
+const generateImports = (component: TagName, componentInterface: string, extendedProps: ExtendedProp[]): string => {
+  const hasEventProps = extendedProps.filter((prop) => prop.isEvent).length > 0;
+  const reactImports = [
+    ...(canHaveChildren(component) ? ['PropsWithChildren'] : []),
+    ...(hasEventProps ? ['useRef'] : []),
+  ];
+  const importsFromReact = reactImports.length > 0 ? `import { ${reactImports.join(', ')} } from 'react';` : '';
+  const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
+  const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
+
   let importsFromTypes = '';
   const nonPrimitiveTypes = extractNonPrimitiveTypes(componentInterface);
-
   if (nonPrimitiveTypes.length > 0) {
     importsFromTypes = `import { ${nonPrimitiveTypes.join(', ')} } from '../types';`;
   }
 
-  const hasEventProps = extendedProps.filter((prop) => prop.isEvent).length > 0;
-  const reactImports = ['PropsWithChildren', ...(hasEventProps ? ['useRef'] : [])];
-  const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
-  const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
-  const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
-
-  return `${importsFromReact}
-${importsFromProvider}
-${importsFromTypes}`;
+  const content = [importsFromReact, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
+  return content;
 };
 
 const generateProps = (componentInterface: string): string => {
@@ -151,7 +155,20 @@ const convertToExtendedProps = (componentInterface: string, sharedTypes: string)
   );
 };
 
-const generateComponent = (component: string, extendedProps: ExtendedProp[]): string => {
+const canHaveChildren = (component: TagName): boolean => {
+  const whitelistedComponents: TagName[] = ['p-flex', 'p-flex-item', 'p-grid', 'p-grid-item'];
+  if (whitelistedComponents.includes(component)) {
+    return true;
+  }
+
+  const fileName = `${component}.cjs.entry.js`;
+  const filePath = path.resolve(JSDOM_POLYFILL_DIRECTORY, fileName);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  return fileContent.includes('h("slot"');
+};
+
+const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): string => {
   let wrapperProps = 'props';
   let componentHooks = '';
   let componentProps = '';
@@ -189,8 +206,9 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
     componentAttributes = `ref={el} ${componentAttributes}`;
   }
 
-  // TODO: PropsWithChildren should be only used if component is allowed to have children
-  return `export const ${pascalCase(component)} = (${wrapperProps}: PropsWithChildren<Props>): JSX.Element => {
+  const wrapperPropsType = canHaveChildren(component) ? 'PropsWithChildren<Props>' : 'Props';
+
+  return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
   ${componentHooks}
   const Tag = usePrefix('${component}');
   ${componentProps}
@@ -199,9 +217,9 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
 };`;
 };
 
-const generateComponentWrapper = (component: string, componentInterface: string, sharedTypes: string): void => {
+const generateComponentWrapper = (component: TagName, componentInterface: string, sharedTypes: string): void => {
   const extendedProps = convertToExtendedProps(componentInterface, sharedTypes);
-  const importsDefinition = generateImports(componentInterface, extendedProps);
+  const importsDefinition = generateImports(component, componentInterface, extendedProps);
   const propsDefinition = generateProps(componentInterface);
   const wrapperDefinition = generateComponent(component, extendedProps);
 
@@ -219,7 +237,7 @@ ${wrapperDefinition}`;
 const generateWrappers = (): void => {
   // read bundle.d.ts as the base of everything
   const bundleDtsFileName = 'bundle.d.ts';
-  const bundleDtsFile = path.resolve(BASE_DIRECTORY, bundleDtsFileName);
+  const bundleDtsFile = path.resolve(COMPONENTS_WRAPPER_DIRECTORY, bundleDtsFileName);
   const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
   const sharedTypes = generateSharedTypes(bundleDtsContent);
@@ -243,14 +261,14 @@ const generateWrappers = (): void => {
       const [, rawComponentInterface] =
         // We need semicolon and double newline to ensure comments are ignored
         new RegExp(`interface ${interfaceName} ({(?:\\s|.)*?;?\\s\\s})`).exec(rawLocalJSX) ?? [];
-      generateComponentWrapper(component, rawComponentInterface, sharedTypes);
+      generateComponentWrapper(component as TagName, rawComponentInterface, sharedTypes);
     });
 
   // barrel file
   const targetFileName = 'index.ts';
   const targetFile = path.resolve(TARGET_DIRECTORY, targetFileName);
   const content = Object.keys(intrinsicElements)
-    .map((item) => `export * from './${getComponentFileName(item, true)}';`)
+    .map((component) => `export * from './${getComponentFileName(component as TagName, true)}';`)
     .join('\n');
 
   fs.writeFileSync(targetFile, content);
