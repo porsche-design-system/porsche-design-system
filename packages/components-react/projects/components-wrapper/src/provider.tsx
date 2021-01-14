@@ -36,4 +36,4 @@ export const useEventCallback = (
   }, [eventHandler]);
 };
 
-export const jsonStringify = JSON.stringify;
+export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
