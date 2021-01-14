@@ -35,3 +35,5 @@ export const useEventCallback = (
     }
   }, [eventHandler]);
 };
+
+export const jsonStringify = JSON.stringify;

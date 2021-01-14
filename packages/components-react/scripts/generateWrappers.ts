@@ -69,14 +69,20 @@ const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = f
 };
 
 const generateImports = (component: TagName, componentInterface: string, extendedProps: ExtendedProp[]): string => {
-  const hasEventProps = extendedProps.filter((prop) => prop.isEvent).length > 0;
+  const hasEventProps = extendedProps.filter(({ isEvent }) => isEvent).length > 0;
+  const canBeObject = extendedProps.filter(({ canBeObject }) => canBeObject).length > 0;
+
   const reactImports = [
     'HTMLAttributes',
     ...(canHaveChildren(component) ? ['PropsWithChildren'] : []),
     ...(hasEventProps ? ['useRef'] : []),
   ];
   const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
-  const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
+  const providerImports = [
+    'usePrefix',
+    ...(hasEventProps ? ['useEventCallback'] : []),
+    ...(canBeObject ? ['jsonStringify'] : []),
+  ];
   const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
 
   let importsFromTypes = '';
@@ -178,9 +184,9 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
   let componentProps = '';
   let componentAttributes = '{...props}';
 
-  const propsToDestructure = extendedProps.filter((prop) => prop.isEvent || prop.hasToBeMapped);
-  const propsToEventListener = extendedProps.filter((prop) => prop.isEvent);
-  const propsToMap = extendedProps.filter((prop) => prop.hasToBeMapped);
+  const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
+  const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
+  const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
 
   if (propsToDestructure.length > 0) {
     wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, ...rest }`;
@@ -190,7 +196,7 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
     propsToMap.length > 0
       ? ['...rest'].concat(
           propsToMap.map(
-            ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`
+            ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
           )
         )
       : [];
