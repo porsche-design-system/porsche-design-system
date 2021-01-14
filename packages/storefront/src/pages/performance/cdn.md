@@ -10,7 +10,7 @@ Let's have a look at following applications and assume that all of these applica
 * [My Porsche](https://login.porsche.com/login) created with Angular
 
 When e.g. a user visits **Porsche.com** then the Porsche Design System Button gets loaded for the first time and will be automatically stored in browser cache.
-Imagine the same user switches to the **Porsche Finder** or **My Porsche** application which uses the same button then it will be instantly be available because it's already in browser cache.
+Imagine the same user switches to the **Porsche Finder** or **My Porsche** application which uses the same button then it will instantly be available because it's already in browser cache.
 Which means for the second and any further application less network requests and loading time.
 
 This way performance and consistency can be dramatically increased across all digital Porsche products using the Porsche Design System.
@@ -48,10 +48,10 @@ This gives the possibility for the consuming application to bundle to separate b
 </html>
 ```
 
-Also, the function `getFontFaceCSS()` of the Porsche Design System Partials package was extended with the option `{ cdn: 'auto' | 'cn' }` to force loading the font-face style definitions from Chinese CDN only, e.g.:
+Also, the function `getFontFaceStylesheet()` of the `@porsche-design-system/components-{js|angular|react}` packages was extended with the option `{ cdn: 'auto' | 'cn' }` to force loading the font-face style definitions from Chinese CDN only, e.g.:
 
 ```html
 <head>
-  <%= require('@porsche-design-system/partials').getFontFaceCSS({ cdn: 'cn' }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
 </head>
 ```

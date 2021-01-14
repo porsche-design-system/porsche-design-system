@@ -12,30 +12,30 @@ If you use `Porsche Design System` components, we take care that your applicatio
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
 There are two ways to get rid of FOUC: via **partials** or as **static CSS snippet**. 
-We provide partials in our `@porsche-design-system/partials` package for you to import them into the `<head>` of your `index.html`.
+We provide partials in our `@porsche-design-system/components-{js|angular|react}` package for you to import them into the `<head>` of your `index.html`.
 
 ### Example usage of  partials with template 
 
 The example shows how to implement a partial in a webpack project. The core styles partial has following parameters (optional)  
-`getPorscheDesignSystemCoreStyles({ withoutTags: true, prefix: 'custom-prefix' })`
+`getInitialStyles({ withoutTags: true, prefix: 'custom-prefix' })`
 
 ```html
 // index.html
 
 <head>
   // without parameters
-  <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles() %>
 </head>
 
 <head>
   // with custom prefix to match your prefixed components
-  <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles({ prefix: 'custom-prefix' }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles({ prefix: 'custom-prefix' }) %>
 </head>
 
 <head>
   // without style tags
   <style>
-    <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles({ withoutTags: true }) %>
+    <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles({ withoutTags: true }) %>
   </style>
 </head>
 ``` 
@@ -44,7 +44,7 @@ The example shows how to implement a partial in a webpack project. The core styl
 
 If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script. 
 You can also pass following parameters (optional)  
-`getPorscheDesignSystemCoreStyles({ withoutTags: true, prefix: 'custom-prefix' })`
+`getInitialStyles({ withoutTags: true, prefix: 'custom-prefix' })`
 
 ```html
 // index.html
@@ -59,7 +59,7 @@ You can also pass following parameters (optional)
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getPorscheDesignSystemCoreStyles())') && regex='<!--PLACEHOLDER_CORE_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getInitialStyles())') && regex='<!--PLACEHOLDER_CORE_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
 } 
 ``` 
 
@@ -88,7 +88,7 @@ If you use the Porsche Design System components we inject the font-stylesheet wi
 Regarding which font-styles do you use on your page, these fonts get downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 
 To improve rendering we recommend that you load the stylesheet on your own. 
 
-We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also provide a ready to use partial in the `@porsche-design-system/partials` package called `getFontFaceCSS()`.
+We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also provide a ready to use partial in the `@porsche-design-system/components-{js|angular|react}` package called `getFontFaceStylesheet()`.
 
 #### Example with partials
 
@@ -97,7 +97,7 @@ We provide the URL to our stylesheet in our `@porsche-design-system/assets` pack
 
 <head>
   // Using template syntax
-  <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet() %>
 </head>
 ```
 
@@ -117,7 +117,7 @@ We provide the URL to our stylesheet in our `@porsche-design-system/assets` pack
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/partials\").getFontFaceCSS())') && regex='<!--PLACEHOLDER_FONT_FACE_CSS-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getFontFaceStylesheet())') && regex='<!--PLACEHOLDER_FONT_FACE_CSS-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
 } 
 ``` 
 
