@@ -29,18 +29,18 @@ export const LinkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render primary without label">
-        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true}>
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel>
           Some label
         </PLink>
-        <PLink variant="primary" hideLabel={true}>
+        <PLink variant="primary" hideLabel>
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>
       <div className="playground dark" title="should render primary without label on dark theme">
-        <PLink variant="primary" href="https://www.porsche.com" hideLabel={true} theme="dark">
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel theme="dark">
           Some label
         </PLink>
-        <PLink variant="primary" hideLabel={true} theme="dark">
+        <PLink variant="primary" hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>
@@ -61,18 +61,18 @@ export const LinkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render secondary without label">
-        <PLink href="https://www.porsche.com" hideLabel={true}>
+        <PLink href="https://www.porsche.com" hideLabel>
           Some label
         </PLink>
-        <PLink hideLabel={true}>
+        <PLink hideLabel>
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>
       <div className="playground dark" title="should render secondary without label on dark theme">
-        <PLink theme="dark" href="https://www.porsche.com" hideLabel={true}>
+        <PLink theme="dark" href="https://www.porsche.com" hideLabel>
           Some label
         </PLink>
-        <PLink hideLabel={true} theme="dark">
+        <PLink hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>
@@ -95,18 +95,18 @@ export const LinkPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render tertiary without label">
-        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true}>
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel>
           Some label
         </PLink>
-        <PLink variant="tertiary" hideLabel={true}>
+        <PLink variant="tertiary" hideLabel>
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>
       <div className="playground dark" title="should render tertiary without label on dark theme">
-        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel={true} theme="dark">
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel theme="dark">
           Some label
         </PLink>
-        <PLink variant="tertiary" hideLabel={true} theme="dark">
+        <PLink variant="tertiary" hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
         </PLink>
       </div>

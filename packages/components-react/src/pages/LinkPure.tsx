@@ -26,18 +26,18 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <PLinkPure href="https://www.porsche.com" hideLabel={true}>
+        <PLinkPure href="https://www.porsche.com" hideLabel>
           Some label
         </PLinkPure>
-        <PLinkPure hideLabel={true}>
+        <PLinkPure hideLabel>
           <a href="https://www.porsche.com">Some label</a>
         </PLinkPure>
       </div>
       <div className="playground dark" title="should render without label on dark background">
-        <PLinkPure href="https://www.porsche.com" hideLabel={true} theme="dark">
+        <PLinkPure href="https://www.porsche.com" hideLabel theme="dark">
           Some label
         </PLinkPure>
-        <PLinkPure hideLabel={true} theme="dark">
+        <PLinkPure hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
         </PLinkPure>
       </div>
@@ -134,10 +134,10 @@ export const LinkPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with active state">
-        <PLinkPure href="https://www.porsche.com" active={true}>
+        <PLinkPure href="https://www.porsche.com" active>
           Some label
         </PLinkPure>
-        <PLinkPure active={true}>
+        <PLinkPure active>
           <a href="https://www.porsche.com">Some label</a>
         </PLinkPure>
       </div>
@@ -164,13 +164,13 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure href="https://www.porsche.com" style={{ padding: '1rem' }}>
           Some label
         </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" hideLabel={true} style={{ padding: '1rem' }}>
+        <PLinkPure href="https://www.porsche.com" hideLabel style={{ padding: '1rem' }}>
           Some label
         </PLinkPure>
         <PLinkPure style={{ padding: '1rem' }}>
           <a href="https://www.porsche.com">Some label</a>
         </PLinkPure>
-        <PLinkPure hideLabel={true} style={{ padding: '1rem' }}>
+        <PLinkPure hideLabel style={{ padding: '1rem' }}>
           <a href="https://www.porsche.com">Some label</a>
         </PLinkPure>
       </div>
