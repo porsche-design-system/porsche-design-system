@@ -76,11 +76,11 @@ export const TabsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render tabs gradientColorScheme surface on light background">
-        <PTabs gradient-color-scheme="surface">{renderTabs(7)}</PTabs>
+        <PTabs gradientColorScheme="surface">{renderTabs(7)}</PTabs>
       </div>
 
       <div className="playground dark" title="should render tabs gradientColorScheme surface on dark background">
-        <PTabs theme="dark" gradient-color-scheme="surface">
+        <PTabs theme="dark" gradientColorScheme="surface">
           {renderTabs(7, 0)}
         </PTabs>
       </div>
