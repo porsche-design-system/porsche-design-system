@@ -75,7 +75,7 @@ const generateImports = (component: TagName, componentInterface: string, extende
     ...(hasEventProps ? ['useRef'] : []),
   ];
   const importsFromReact = reactImports.length > 0 ? `import { ${reactImports.join(', ')} } from 'react';` : '';
-  const providerImports = ['BaseType', 'usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
+  const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
   const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
 
   let importsFromTypes = '';
@@ -94,7 +94,7 @@ const generatePropsName = (component: TagName): string => {
 
 const generateProps = (component: TagName, componentInterface: string): string => {
   // TODO: ['div'] should be more specific
-  const content = `export type ${generatePropsName(component)} = BaseType & ${componentInterface};`
+  const content = `export type ${generatePropsName(component)} = JSX.IntrinsicElements['div'] & ${componentInterface};`
     .replace(/    |\t\t/g, '  ')
     .replace(/(  |\t)};/g, '};');
   return content;

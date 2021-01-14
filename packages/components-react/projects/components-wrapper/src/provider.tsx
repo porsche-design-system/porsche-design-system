@@ -1,7 +1,5 @@
-import type { CSSProperties, PropsWithChildren } from 'react';
-import { createContext, useContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';
-
+import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
 export { componentsReady } from '@porsche-design-system/components-js';
 
 type Props = { prefix?: string };
@@ -32,9 +30,4 @@ export const useEventCallback = (element: HTMLElement, eventName: string, eventH
       return () => element.removeEventListener(eventName, eventHandler);
     }
   }, [eventHandler]);
-};
-
-export type BaseType = {
-  className?: string;
-  style?: CSSProperties;
 };
