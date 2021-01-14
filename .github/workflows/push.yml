@@ -220,11 +220,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'JSDOM Polyfill Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-jsdom-polyfill
-          args: --components-react
+#      - name: 'JSDOM Polyfill Test'
+#        uses: ./.github/actions/docker-run
+#        with:
+#          entrypoint: run-test-jsdom-polyfill
+#          args: --components-react
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
