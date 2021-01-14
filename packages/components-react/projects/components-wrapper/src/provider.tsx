@@ -2,9 +2,9 @@ import { load } from '@porsche-design-system/components-js';
 import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect } from 'react';
 export { componentsReady } from '@porsche-design-system/components-js';
 
-type Props = { prefix?: string };
+const PorscheDesignSystemContext = createContext({ prefix: undefined });
 
-const PorscheDesignSystemContext = createContext({ prefix: '' });
+type Props = { prefix?: string };
 
 export const PorscheDesignSystemProvider = ({ prefix = '', ...props }: PropsWithChildren<Props>): JSX.Element => {
   useEffect(() => {
