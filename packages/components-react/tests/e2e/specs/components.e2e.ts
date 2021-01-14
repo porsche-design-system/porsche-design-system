@@ -35,6 +35,16 @@ describe('components', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
+  it('should stringify object props correctly', async () => {
+    await goto('overview');
+
+    const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
+
+    expect(innerHTML).toContain('<p-headline');
+    expect(innerHTML).toContain('<my-prefix-p-headline');
+    expect(innerHTML).not.toContain('[object Object]');
+  });
+
   it('should have working events', async () => {
     await goto('overview');
 
