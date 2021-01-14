@@ -24,13 +24,13 @@ const generateSharedTypes = (bundleDtsContent: string): string => {
 
 const splitLiteralTypeToNonPrimitiveTypes = (literalType: string): string[] => {
   return literalType
-    .split(/[,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
+    .split(/[<>,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
     .map((x) => x.trim())
     .filter((x) => x.match(/[A-Z]\w*/)); // Check for non-primitive types
 };
 
 const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = false): string[] => {
-  const whitelistedTypes = ['CustomEvent', 'Extract'];
+  const whitelistedTypes = ['CustomEvent', 'Extract', 'T'];
   const nonPrimitiveTypes: string[] = [];
 
   const handleCustomGenericTypes = (nonPrimitiveType: string) => {
@@ -146,11 +146,12 @@ const valueCanBeObject = (propValue: string, sharedTypes: string): boolean => {
 
 const convertToExtendedProp = (propKey: string, propValue: string, sharedTypes: string): ExtendedProp => {
   const isEvent = !!propKey.match(/^on[A-Z]/);
+  const canBeObject = !isEvent && valueCanBeObject(propValue, sharedTypes);
   const extendedProp: ExtendedProp = {
     key: propKey,
     rawValueType: propValue,
-    hasToBeMapped: !isEvent && !!propKey.match(/[A-Z]/g),
-    canBeObject: !isEvent && valueCanBeObject(propValue, sharedTypes),
+    hasToBeMapped: (!isEvent && !!propKey.match(/[A-Z]/g)) || canBeObject,
+    canBeObject: canBeObject,
     isEvent: isEvent,
   };
   return extendedProp;
@@ -268,7 +269,7 @@ const generateWrappers = (): void => {
 
   // components
   Object.entries(intrinsicElements)
-    /*    .filter((item, index) => index === 29) // temporary filter for easier development*/
+    /*    .filter((item, index) => index === 11) // temporary filter for easier development*/
     .forEach(([component, interfaceName]) => {
       const [, rawComponentInterface] =
         // We need semicolon and double newline to ensure comments are ignored
