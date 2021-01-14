@@ -25,7 +25,7 @@ export const usePrefix = (tagName: string): string => {
 
 export const useEventCallback = (element: HTMLElement, eventName: string, eventHandler: (e: Event) => void): void => {
   useEffect(() => {
-    if (eventHandler) {
+    if (element && eventHandler) {
       element.addEventListener(eventName, eventHandler);
       return () => element.removeEventListener(eventName, eventHandler);
     }
