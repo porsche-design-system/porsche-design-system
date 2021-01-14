@@ -1,5 +1,5 @@
 import { load } from '@porsche-design-system/components-js';
-import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
+import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect } from 'react';
 export { componentsReady } from '@porsche-design-system/components-js';
 
 type Props = { prefix?: string };
@@ -23,11 +23,15 @@ export const usePrefix = (tagName: string): string => {
   return prefix ? `${prefix}-${tagName}` : tagName;
 };
 
-export const useEventCallback = (element: HTMLElement, eventName: string, eventHandler: (e: Event) => void): void => {
+export const useEventCallback = (
+  element: MutableRefObject<HTMLElement>,
+  eventName: string,
+  eventHandler: (e: Event) => void
+): void => {
   useEffect(() => {
-    if (element && eventHandler) {
-      element.addEventListener(eventName, eventHandler);
-      return () => element.removeEventListener(eventName, eventHandler);
+    if (element.current && eventHandler) {
+      element.current.addEventListener(eventName, eventHandler);
+      return () => element.current.removeEventListener(eventName, eventHandler);
     }
   }, [eventHandler]);
 };
