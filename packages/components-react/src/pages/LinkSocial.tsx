@@ -59,7 +59,7 @@ export const LinkSocialPage = (): JSX.Element => {
         <PLinkSocial icon="logo-delicious" href="https://www.delicious.com">
           Some label
         </PLinkSocial>
-        <PLinkSocial icon-source="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com">
+        <PLinkSocial iconSource="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com">
           Some label
         </PLinkSocial>
       </div>

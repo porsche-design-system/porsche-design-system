@@ -91,7 +91,7 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with specific icon">
         <PButtonPure icon="delete">Some label</PButtonPure>
-        <PButtonPure icon-source="./assets/icon-custom-kaixin.svg">Some label</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Some label</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
