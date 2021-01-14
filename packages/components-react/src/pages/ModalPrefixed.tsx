@@ -1,9 +1,5 @@
-import { getPrefixedComponents } from '@porsche-design-system/components-react/prefixed-components';
 import { useEffect } from 'react';
-
-const { PButton: PrefixedButton, PModal: PrefixedModal } = getPrefixedComponents({
-  prefix: 'my-prefix',
-});
+import { PButton, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const ModalPrefixedPage = (): JSX.Element => {
   useEffect(() => {
@@ -21,13 +17,15 @@ export const ModalPrefixedPage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should show prefixed modal on light background">
-        <PrefixedModal heading="Some Heading" open>
-          Some Content
-          <div>
-            <PrefixedButton>Confirm</PrefixedButton>
-            <PrefixedButton variant="tertiary">Cancel</PrefixedButton>
-          </div>
-        </PrefixedModal>
+        <PorscheDesignSystemProvider prefix="my-prefix">
+          <PModal heading="Some Heading" open>
+            Some Content
+            <div>
+              <PButton>Confirm</PButton>
+              <PButton variant="tertiary">Cancel</PButton>
+            </div>
+          </PModal>
+        </PorscheDesignSystemProvider>
       </div>
     </>
   );
