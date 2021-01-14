@@ -155,7 +155,7 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
   let wrapperProps = 'props';
   let componentHooks = '';
   let componentProps = '';
-  let componentAttributes = '';
+  let componentAttributes = '{...props}';
 
   const propsToDestructure = extendedProps.filter((prop) => prop.isEvent || prop.hasToBeMapped);
   const propsToEventListener = extendedProps.filter((prop) => prop.isEvent);
@@ -173,7 +173,9 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
     componentProps = `const props = {
     ...rest,
     ${propMapping}
-  };`;
+  };\n`;
+  } else if (propsToDestructure.length > 0) {
+    componentAttributes = '{...rest}';
   }
 
   if (propsToEventListener.length > 0) {
@@ -182,9 +184,9 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
       .join('\n');
 
     componentHooks = `const el = useRef<HTMLElement>();
-  ${eventHooks}`;
+  ${eventHooks}\n`;
 
-    componentAttributes = 'ref={el} ';
+    componentAttributes = `ref={el} ${componentAttributes}`;
   }
 
   // TODO: PropsWithChildren should be only used if component is allowed to have children
@@ -193,7 +195,7 @@ const generateComponent = (component: string, extendedProps: ExtendedProp[]): st
   const Tag = usePrefix('${component}');
   ${componentProps}
   // @ts-ignore
-  return <Tag ${componentAttributes}{...props} />;
+  return <Tag ${componentAttributes} />;
 };`;
 };
 
