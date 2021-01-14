@@ -391,11 +391,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'Build Partials' # build partials again for fresh TAG_NAMES from components-js build
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Storefront'
         uses: ./.github/actions/docker-run
         with:

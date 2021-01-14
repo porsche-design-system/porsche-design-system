@@ -7,15 +7,10 @@ export default [
     output: {
       esModule: false,
       dir: 'dist',
-      format: 'esm',
+      format: 'umd',
       name: pkg.name,
       exports: 'named',
     },
     plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
   },
-  // {
-  //   input: 'src/index.ts',
-  //   output: { dir: 'dist/esm', format: 'esm' },
-  //   plugins: [typescript()],
-  // },
 ];
