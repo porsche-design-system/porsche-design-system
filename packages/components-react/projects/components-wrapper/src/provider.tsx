@@ -31,7 +31,7 @@ export const useEventCallback = (
   useEffect(() => {
     if (element.current && eventHandler) {
       element.current.addEventListener(eventName, eventHandler);
-      return () => element.current.removeEventListener(eventName, eventHandler);
+      return () => element.current?.removeEventListener(eventName, eventHandler);
     }
   }, [eventHandler]);
 };
