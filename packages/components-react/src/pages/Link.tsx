@@ -124,7 +124,7 @@ export const LinkPage = (): JSX.Element => {
         <PLink icon="phone" href="https://www.porsche.com">
           Some label
         </PLink>
-        <PLink icon-source="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">
+        <PLink iconSource="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">
           Some label
         </PLink>
       </div>

@@ -146,7 +146,7 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure href="https://www.porsche.com" icon="phone">
           Some label
         </PLinkPure>
-        <PLinkPure href="https://www.porsche.com" icon-source="./assets/icon-custom-kaixin.svg">
+        <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg">
           Some label
         </PLinkPure>
       </div>

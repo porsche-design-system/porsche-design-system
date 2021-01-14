@@ -140,7 +140,7 @@ export const ButtonPage = (): JSX.Element => {
 
       <div className="playground light" title="should render button secondary with specific icon">
         <PButton icon="delete">Some label</PButton>
-        <PButton icon-source="./assets/icon-custom-kaixin.svg">Some label</PButton>
+        <PButton iconSource="./assets/icon-custom-kaixin.svg">Some label</PButton>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
