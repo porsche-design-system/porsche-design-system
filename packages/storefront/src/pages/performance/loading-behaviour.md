@@ -72,7 +72,7 @@ of the `index.html` of your application. While using the static solution, make s
 // index.html
 
 <head>
-  {{coreStyles}}
+  {{initialStyles}}
 </head>
 ```
 ---
@@ -131,7 +131,7 @@ to grant you a valid fallback.
 
 <head>
   // Make sure to watch your console output. We notify you about any changes.
-  {{fontFaceCSS}}
+  {{fontFaceStylesheet}}
 </head>
 ```
 
@@ -163,12 +163,12 @@ and according `weights` in either `woff` or `woff2` file format. Combine the pat
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { getFontFaceCSS, getPorscheDesignSystemCoreStyles } from '@porsche-design-system/partials';
+  import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
   
   @Component
   export default class FlashOfUnstyledContent extends Vue {
-    public fontFaceCSS = getFontFaceCSS();
-    public coreStyles = getPorscheDesignSystemCoreStyles()
+    public fontFaceStylesheet = getFontFaceStylesheet();
+    public initialStyles = getInitialStyles()
         .replace('>', '>\n    ') // add new line and some white space after '>'
         .replace(/,/g, ',\n    ') // add new line and some white space after ','
         .replace('}', '}\n  ') // add new line and some white space after '}'

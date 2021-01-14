@@ -667,31 +667,6 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/assets/dist
-  release-partials:
-    name: 'Release Partials'
-    needs: [smoke-test, storefront-deployment]
-    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Restore Partials Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: partials-build
-          path: ./packages/partials/dist
-      - name: 'Publish NPM Package'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          entrypoint: run-release-npm
-          args: packages/partials
   release-utilities:
     name: 'Release Utilities'
     needs: [smoke-test, storefront-deployment]
