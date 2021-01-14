@@ -81,16 +81,20 @@ const generateImports = (component: TagName, componentInterface: string, extende
   let importsFromTypes = '';
   const nonPrimitiveTypes = extractNonPrimitiveTypes(componentInterface);
   if (nonPrimitiveTypes.length > 0) {
-    importsFromTypes = `import { ${nonPrimitiveTypes.join(', ')} } from '../types';`;
+    importsFromTypes = `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`;
   }
 
   const content = [importsFromReact, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
   return content;
 };
 
-const generateProps = (componentInterface: string): string => {
+const generatePropsName = (component: TagName): string => {
+  return `${pascalCase(component)}Props`;
+};
+
+const generateProps = (component: TagName, componentInterface: string): string => {
   // TODO: ['div'] should be more specific
-  const content = `type Props = JSX.IntrinsicElements['div'] & ${componentInterface};`
+  const content = `export type ${generatePropsName(component)} = JSX.IntrinsicElements['div'] & ${componentInterface};`
     .replace(/    |\t\t/g, '  ')
     .replace(/(  |\t)};/g, '};');
   return content;
@@ -206,7 +210,8 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
     componentAttributes = `ref={el} ${componentAttributes}`;
   }
 
-  const wrapperPropsType = canHaveChildren(component) ? 'PropsWithChildren<Props>' : 'Props';
+  const propsName = generatePropsName(component);
+  const wrapperPropsType = canHaveChildren(component) ? `PropsWithChildren<${propsName}>` : propsName;
 
   return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
   ${componentHooks}
@@ -220,7 +225,7 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
 const generateComponentWrapper = (component: TagName, componentInterface: string, sharedTypes: string): void => {
   const extendedProps = convertToExtendedProps(componentInterface, sharedTypes);
   const importsDefinition = generateImports(component, componentInterface, extendedProps);
-  const propsDefinition = generateProps(componentInterface);
+  const propsDefinition = generateProps(component, componentInterface);
   const wrapperDefinition = generateComponent(component, extendedProps);
 
   const content = `${importsDefinition}\n
