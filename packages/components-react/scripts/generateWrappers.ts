@@ -192,18 +192,10 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
     wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, ...rest }`;
   }
 
-  const propMapping: string[] =
-    propsToMap.length > 0
-      ? ['...rest'].concat(
-          propsToMap.map(
-            ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
-          )
-        )
-      : [];
-
-  if (propsToMap.length === 0 && propsToDestructure.length > 0) {
-    componentAttributes = '{...rest}';
-  }
+  const propMapping: string[] = [
+    ...(propsToDestructure.length > 0 ? ['...rest'] : []),
+    ...propsToMap.map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`),
+  ];
 
   if (propsToEventListener.length > 0) {
     const eventHooks = propsToEventListener
@@ -220,6 +212,10 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
     componentProps = `const props = {
     ${propMapping.join(',\n    ')}
   };\n`;
+  } else {
+    if (propsToDestructure.length > 0) {
+      componentAttributes = '{...rest}';
+    }
   }
 
   const propsName = generatePropsName(component);
