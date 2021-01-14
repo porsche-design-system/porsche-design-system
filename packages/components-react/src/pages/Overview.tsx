@@ -29,9 +29,20 @@ import {
   PLinkPure,
   PLinkSocial,
   PorscheDesignSystemProvider,
+  componentsReady,
 } from '@porsche-design-system/components-react';
+import { useEffect, useState } from 'react';
 
 export const OverviewPage = (): JSX.Element => {
+  // solve race-condition between non-prefixed and prefixed banner focus
+  const [allReady, setAllReady] = useState(false);
+
+  useEffect(() => {
+    componentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const prefix = 'my-prefix';
   const style = `
     p-flex-item > p,
@@ -177,7 +188,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default pagination">
-            <PPagination total-items-count="500" items-per-page="25" active-page="1" />
+            <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
           </div>
 
           <div className="playground light" title="should render default tabs">
@@ -234,10 +245,12 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default banner with custom prefix">
-              <PBanner>
-                <span slot="title">Some banner title</span>
-                <span slot="description">Some banner description.</span>
-              </PBanner>
+              {allReady && (
+                <PBanner>
+                  <span slot="title">Some banner title</span>
+                  <span slot="description">Some banner description.</span>
+                </PBanner>
+              )}
             </div>
 
             <div className="playground light" title="should render default divider with custom prefix">
@@ -329,7 +342,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default pagination with custom prefix">
-              <PPagination total-items-count="500" items-per-page="25" active-page="1" />
+              <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
             </div>
 
             <div className="playground light" title="should render default tabs with custom prefix">

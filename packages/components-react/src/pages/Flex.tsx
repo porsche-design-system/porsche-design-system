@@ -845,7 +845,7 @@ export const FlexPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should render with align-self mode 'auto'">
-        <PFlex style={{ height: 180 }} align-items="flex-end">
+        <PFlex style={{ height: 180 }} alignItems="flex-end">
           <PFlexItem alignSelf="stretch">
             <p>1</p>
           </PFlexItem>
