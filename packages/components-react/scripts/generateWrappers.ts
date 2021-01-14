@@ -71,10 +71,11 @@ const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = f
 const generateImports = (component: TagName, componentInterface: string, extendedProps: ExtendedProp[]): string => {
   const hasEventProps = extendedProps.filter((prop) => prop.isEvent).length > 0;
   const reactImports = [
+    'HTMLAttributes',
     ...(canHaveChildren(component) ? ['PropsWithChildren'] : []),
     ...(hasEventProps ? ['useRef'] : []),
   ];
-  const importsFromReact = reactImports.length > 0 ? `import { ${reactImports.join(', ')} } from 'react';` : '';
+  const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
   const providerImports = ['usePrefix', ...(hasEventProps ? ['useEventCallback'] : [])];
   const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
 
@@ -93,8 +94,7 @@ const generatePropsName = (component: TagName): string => {
 };
 
 const generateProps = (component: TagName, componentInterface: string): string => {
-  // TODO: ['div'] should be more specific
-  const content = `export type ${generatePropsName(component)} = JSX.IntrinsicElements['div'] & ${componentInterface};`
+  const content = `export type ${generatePropsName(component)} = HTMLAttributes<{}> & ${componentInterface};`
     .replace(/    |\t\t/g, '  ')
     .replace(/(  |\t)};/g, '};');
   return content;
@@ -186,28 +186,34 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
     wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, ...rest }`;
   }
 
-  if (propsToMap.length > 0) {
-    const propMapping = propsToMap
-      .map(({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`)
-      .join(',\n    ');
+  const propMapping: string[] =
+    propsToMap.length > 0
+      ? ['...rest'].concat(
+          propsToMap.map(
+            ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `JSON.stringify(${key})` : key}`
+          )
+        )
+      : [];
 
-    componentProps = `const props = {
-    ...rest,
-    ${propMapping}
-  };\n`;
-  } else if (propsToDestructure.length > 0) {
+  if (propsToMap.length === 0 && propsToDestructure.length > 0) {
     componentAttributes = '{...rest}';
   }
 
   if (propsToEventListener.length > 0) {
     const eventHooks = propsToEventListener
-      .map(({ key }) => `useEventCallback(el.current, '${camelCase(key.substr(2))}', ${key} as any);`)
+      .map(({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`)
       .join('\n');
 
-    componentHooks = `const el = useRef<HTMLElement>();
-  ${eventHooks}\n`;
+    propMapping.push('ref: elementRef');
 
-    componentAttributes = `ref={el} ${componentAttributes}`;
+    componentHooks = `const elementRef = useRef<HTMLElement>();
+  ${eventHooks}\n`;
+  }
+
+  if (propMapping.length > 0) {
+    componentProps = `const props = {
+    ${propMapping.join(',\n    ')}
+  };\n`;
   }
 
   const propsName = generatePropsName(component);
@@ -217,7 +223,6 @@ const generateComponent = (component: TagName, extendedProps: ExtendedProp[]): s
   ${componentHooks}
   const Tag = usePrefix('${component}');
   ${componentProps}
-  // @ts-ignore
   return <Tag ${componentAttributes} />;
 };`;
 };
