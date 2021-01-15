@@ -9,6 +9,7 @@ type Props = { prefix?: string };
 export const PorscheDesignSystemProvider = ({ prefix = '', ...props }: PropsWithChildren<Props>): JSX.Element => {
   useEffect(() => {
     load({ prefix });
+    // TODO: maybe add prefix to deps array in case it changes
   }, []);
 
   return <PorscheDesignSystemContext.Provider value={{ prefix }} {...props} />;
