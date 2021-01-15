@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
+import type { IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',

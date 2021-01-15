@@ -79,15 +79,13 @@
     @include p-focus($p-color-theme-dark-default);
   }
 
-  &--theme-light {
-    background-color: $p-color-neutral-contrast-high;
-    color: $p-color-theme-dark-default;
+  background-color: $p-color-neutral-contrast-high;
+  color: $p-color-theme-dark-default;
 
-    &:hover,
-    &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-neutral-contrast-high, 12%);
-    }
+  &:hover,
+  &:active {
+    color: $p-color-theme-dark-default;
+    background-color: darken($p-color-neutral-contrast-high, 12%);
   }
 
   &--theme-dark {

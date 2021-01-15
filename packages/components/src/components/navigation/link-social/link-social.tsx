@@ -4,10 +4,11 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
+  isThemeDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { LinkTarget, Theme } from '../../../types';
+import type { LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-social',
@@ -78,7 +79,7 @@ export class LinkSocial {
     const linkClasses = {
       [prefix('link-social')]: true,
       [prefix(`link-social--${this.icon}`)]: true,
-      [prefix(`link-social--theme-${this.theme}`)]: true,
+      [prefix(`link-social--theme-dark`)]: isThemeDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
     };
     const iconClasses = prefix('link-social__icon');

@@ -1,13 +1,18 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
   BreakpointCustomizable,
+  getAttribute,
+  getClosestHTMLElement,
+  getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
+  removeAttribute,
+  setAttribute,
 } from '../../../utils';
-import { FormState, Theme } from '../../../types';
+import type { FormState, Theme } from '../../../types';
 
 type OptionMap = {
   readonly key: number;
@@ -218,28 +223,30 @@ export class SelectWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!this.host.querySelector('[slot="description"]');
+    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private get isMessageVisible(): boolean {
-    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.select.getAttribute('required') !== null;
+    return getAttribute(this.select, 'required') !== null;
   }
 
   /*
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = this.host.querySelector('select');
+    this.select = getHTMLElement(this.host, 'select');
     if (this.filter) {
-      this.select.setAttribute('tabindex', '-1');
+      setAttribute(this.select, 'tabindex', '-1');
     }
   }
 
@@ -251,17 +258,21 @@ export class SelectWrapper {
   private setAriaAttributes(): void {
     if (this.label) {
       const messageOrDescription = this.message || this.description;
-      this.select.setAttribute('aria-label', `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`);
+      setAttribute(
+        this.select,
+        'aria-label',
+        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
+      );
     }
 
     if (this.state === 'error') {
-      this.select.setAttribute('aria-invalid', 'true');
+      setAttribute(this.select, 'aria-invalid', 'true');
     } else {
-      this.select.removeAttribute('aria-invalid');
+      removeAttribute(this.select, 'aria-invalid');
     }
 
     if (this.filter) {
-      this.select.setAttribute('aria-hidden', 'true');
+      setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
@@ -542,7 +553,7 @@ export class SelectWrapper {
         return [
           item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
-              {item.closest('optgroup').label}
+              {getClosestHTMLElement(item, 'optgroup').label}
             </span>
           ),
           <div

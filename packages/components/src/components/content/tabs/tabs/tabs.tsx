@@ -1,7 +1,6 @@
 import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
-import { BreakpointCustomizable, getPrefixedTagNames, prefix } from '../../../../utils';
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../../types';
-import { getHTMLElements } from '../../../../utils/selector-helper';
+import { BreakpointCustomizable, getHTMLElements, getPrefixedTagNames, prefix } from '../../../../utils';
+import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-tabs',

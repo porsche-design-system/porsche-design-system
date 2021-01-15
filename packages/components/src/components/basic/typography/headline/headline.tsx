@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
-import { TextAlign, TextColor, Theme } from '../../../../types';
+import type { TextAlign, TextColor, Theme } from '../../../../types';
 import { getTagName, isVariantType, HeadlineTag, HeadlineVariant } from './headline-utils';
 
 @Component({

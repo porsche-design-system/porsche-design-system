@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
-import { getPrefixedTagNames, prefix } from '../../../../utils';
-import { Theme } from '../../../../types';
+import { getClosestHTMLElement, getPrefixedTagNames, isThemeDark, prefix } from '../../../../utils';
+import type { Theme } from '../../../../types';
 
 @Component({
   tag: 'p-text-list',
@@ -25,7 +25,7 @@ export class TextList {
     const textListClasses = {
       [prefix('text-list')]: true,
       [prefix(`text-list--${this.listType}`)]: true,
-      [prefix(`text-list--theme-${this.theme}`)]: true,
+      [prefix(`text-list--theme-dark`)]: isThemeDark(this.theme),
       [prefix('text-list--nested')]: this.isNestedList,
     };
 
@@ -40,6 +40,6 @@ export class TextList {
 
   private get isNestedList(): boolean {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list-item']);
-    return !!this.host.closest(PrefixedTagNames.pTextListItem);
+    return !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
   }
 }
