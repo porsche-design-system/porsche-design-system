@@ -9,7 +9,7 @@ import {
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import { NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
+import type { NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
 
 @Component({
   tag: 'p-pagination',

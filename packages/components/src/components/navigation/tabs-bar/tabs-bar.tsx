@@ -1,12 +1,14 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
   BreakpointCustomizable,
+  getHTMLElement,
+  getHTMLElements,
   getPrefixedTagNames,
+  isThemeDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
-import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
@@ -104,7 +106,7 @@ export class TabsBar {
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
       [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
-      [prefix('tabs-bar__status-bar--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__status-bar--theme-dark')]: isThemeDark(this.theme),
       [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true,
     };
 
@@ -127,14 +129,14 @@ export class TabsBar {
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
     const actionClasses = {
       [prefix('tabs-bar__action')]: true,
-      [prefix('tabs-bar__action--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__action--theme-dark')]: isThemeDark(this.theme),
       [prefix(`tabs-bar__action--${direction}`)]: true,
       [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
-      [prefix('tabs-bar__gradient--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__gradient--theme-dark')]: isThemeDark(this.theme),
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
       [prefix(`tabs-bar__gradient--${direction}`)]: true,
     };

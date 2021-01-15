@@ -7,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
+import type { ButtonType, ButtonVariant, IconName, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button',

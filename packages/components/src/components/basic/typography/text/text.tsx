@@ -2,12 +2,13 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
   BreakpointCustomizable,
   calcLineHeightForElement,
+  getHTMLElement,
+  insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
-  insertSlottedStyles,
 } from '../../../../utils';
-import { TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import type { TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
 
 @Component({
   tag: 'p-text',
@@ -70,7 +71,7 @@ export class Text {
   }
 
   private get hasSlottedTextTag(): boolean {
-    const el = this.host.querySelector(':first-child');
+    const el = getHTMLElement(this.host, ':first-child');
     return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
   }
 

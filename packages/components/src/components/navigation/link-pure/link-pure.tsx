@@ -2,14 +2,16 @@ import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   BreakpointCustomizable,
   calcLineHeightForElement,
+  getHTMLElement,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
+  isThemeDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
 } from '../../../utils';
-import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-pure',
@@ -54,10 +56,8 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
-  private subline: HTMLElement;
 
   public componentWillLoad(): void {
-    this.setSubline();
     this.addSlottedStyles();
   }
 
@@ -75,7 +75,7 @@ export class LinkPure {
 
     const linkPureClasses = {
       [prefix('link-pure')]: true,
-      [prefix(`link-pure--theme-${this.theme}`)]: true,
+      [prefix(`link-pure--theme-dark`)]: isThemeDark(this.theme),
       [prefix('link-pure--active')]: this.active,
       ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
     };
@@ -118,7 +118,7 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {this.subline && (
+        {this.hasSubline && (
           <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
@@ -127,8 +127,8 @@ export class LinkPure {
     );
   }
 
-  private setSubline(): void {
-    this.subline = this.host.querySelector('[slot="subline"]');
+  private hasSubline(): boolean {
+    return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
   private addSlottedStyles(): void {
