@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Host, Element } from '@stencil/core';
-import { getClosestHTMLElement, getPrefixedTagNames, isThemeDark, prefix } from '../../../../utils';
+import { getClosestHTMLElement, getPrefixedTagNames, isDark, prefix } from '../../../../utils';
 import type { Theme } from '../../../../types';
 
 @Component({
@@ -25,7 +25,7 @@ export class TextList {
     const textListClasses = {
       [prefix('text-list')]: true,
       [prefix(`text-list--${this.listType}`)]: true,
-      [prefix(`text-list--theme-dark`)]: isThemeDark(this.theme),
+      [prefix('text-list--theme-dark')]: isDark(this.theme),
       [prefix('text-list--nested')]: this.isNestedList,
     };
 
