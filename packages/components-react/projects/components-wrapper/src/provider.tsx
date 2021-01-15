@@ -21,6 +21,7 @@ export const usePrefix = (tagName: string): string => {
   if (prefix === undefined) {
     throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
   }
+
   return prefix ? `${prefix}-${tagName}` : tagName;
 };
 
