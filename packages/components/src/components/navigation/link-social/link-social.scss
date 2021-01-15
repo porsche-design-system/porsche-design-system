@@ -72,15 +72,14 @@
   box-sizing: border-box;
   appearance: none;
   text-decoration: none;
+  background-color: $p-color-neutral-contrast-high;
+  color: $p-color-theme-dark-default;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
 
   :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-default);
   }
-
-  background-color: $p-color-neutral-contrast-high;
-  color: $p-color-theme-dark-default;
 
   &:hover,
   &:active {

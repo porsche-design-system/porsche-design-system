@@ -4,7 +4,7 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
-  isThemeDark,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
@@ -79,7 +79,7 @@ export class LinkSocial {
     const linkClasses = {
       [prefix('link-social')]: true,
       [prefix(`link-social--${this.icon}`)]: true,
-      [prefix(`link-social--theme-dark`)]: isThemeDark(this.theme),
+      [prefix('link-social--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('link-social-', this.hideLabel, ['without-label', 'with-label']),
     };
     const iconClasses = prefix('link-social__icon');

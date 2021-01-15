@@ -6,7 +6,7 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
-  isThemeDark,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
@@ -75,7 +75,7 @@ export class LinkPure {
 
     const linkPureClasses = {
       [prefix('link-pure')]: true,
-      [prefix(`link-pure--theme-dark`)]: isThemeDark(this.theme),
+      [prefix('link-pure--theme-dark')]: isDark(this.theme),
       [prefix('link-pure--active')]: this.active,
       ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
     };

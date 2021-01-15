@@ -77,7 +77,7 @@ export class Tabs {
 
   private defineTabsItemElements = (): void => {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
-    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
+    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem);
   };
 
   private setAccessibilityAttributes = (): void => {

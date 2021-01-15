@@ -123,6 +123,7 @@ export class Banner {
   private removeBanner = (): void => {
     this.dismiss.emit();
     this.host.classList.add(prefix('banner--close'));
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     setTimeout(this.host.remove, 1000);
   };
 

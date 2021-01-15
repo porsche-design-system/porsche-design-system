@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
-import { BreakpointCustomizable, isThemeDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { BreakpointCustomizable, isDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import type { Theme } from '../../../types';
 
 @Component({
@@ -17,7 +17,7 @@ export class Spinner {
   public render(): JSX.Element {
     const spinnerClasses = {
       [prefix('spinner')]: true,
-      [prefix(`spinner--theme-dark`)]: isThemeDark(this.theme),
+      [prefix('spinner--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('spinner--size', this.size),
     };
     const imageClasses = prefix('spinner__image');

@@ -112,6 +112,7 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
+  color: $p-color-default;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
   :host([theme='dark']) & {
@@ -121,8 +122,6 @@
   &:not(a)::before {
     pointer-events: none;
   }
-
-  color: $p-color-default;
   + * {
     color: $p-color-default;
   }
