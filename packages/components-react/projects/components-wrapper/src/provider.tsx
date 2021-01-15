@@ -1,6 +1,6 @@
+import type { MutableRefObject, PropsWithChildren } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';
-import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect } from 'react';
-export { componentsReady } from '@porsche-design-system/components-js';
 
 const PorscheDesignSystemContext = createContext({ prefix: undefined });
 
@@ -24,14 +24,15 @@ export const usePrefix = (tagName: string): string => {
 };
 
 export const useEventCallback = (
-  element: MutableRefObject<HTMLElement>,
+  ref: MutableRefObject<HTMLElement>,
   eventName: string,
-  eventHandler: (e: Event) => void
+  eventHandler: (e: Event) => void,
 ): void => {
   useEffect(() => {
-    if (element.current && eventHandler) {
-      element.current.addEventListener(eventName, eventHandler);
-      return () => element.current?.removeEventListener(eventName, eventHandler);
+    const { current } = ref;
+    if (current && eventHandler) {
+      current.addEventListener(eventName, eventHandler);
+      return () => current?.removeEventListener(eventName, eventHandler);
     }
   }, [eventHandler]);
 };
