@@ -50,7 +50,7 @@ You can also pass following parameters (optional)
 // index.html
 
 <head>
-  <!--PLACEHOLDER_CORE_STYLES-->
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->
 </head>
 ``` 
 
@@ -59,7 +59,7 @@ You can also pass following parameters (optional)
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getInitialStyles())') && regex='<!--PLACEHOLDER_CORE_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getInitialStyles())') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
 } 
 ``` 
 
@@ -108,7 +108,7 @@ We provide the URL to our stylesheet in our `@porsche-design-system/assets` pack
 // index.html
 
 <head>
-  <!--PLACEHOLDER_FONT_FACE_CSS-->
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->
 </head>
 ``` 
 
@@ -117,7 +117,7 @@ We provide the URL to our stylesheet in our `@porsche-design-system/assets` pack
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getFontFaceStylesheet())') && regex='<!--PLACEHOLDER_FONT_FACE_CSS-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getFontFaceStylesheet())') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
 } 
 ``` 
 

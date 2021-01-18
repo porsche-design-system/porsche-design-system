@@ -48,9 +48,7 @@ export const getInitialStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>)
   fs.writeFileSync(targetFile, newContent.trimStart());
 };
 
-(async (): Promise<void> => {
-  await generatePartials().catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-})();
+generatePartials().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
