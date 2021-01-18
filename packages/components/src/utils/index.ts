@@ -6,7 +6,6 @@ export * from './focus-handling';
 export * from './get-prefixed-tag-name';
 export * from './line-height';
 export * from './prefix';
-export * from './random-string';
 export * from './selectors';
 export * from './slotted-styles';
 export * from './ssr-handling';
