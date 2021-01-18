@@ -126,7 +126,7 @@ export class LinkPure {
     );
   }
 
-  private hasSubline(): boolean {
+  private get hasSubline(): boolean {
     return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
