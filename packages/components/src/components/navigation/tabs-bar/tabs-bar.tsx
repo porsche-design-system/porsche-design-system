@@ -127,16 +127,17 @@ export class TabsBar {
   }
 
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
+    const isDarkTheme = isDark(this.theme);
     const actionClasses = {
       [prefix('tabs-bar__action')]: true,
-      [prefix('tabs-bar__action--theme-dark')]: isDark(this.theme),
+      [prefix('tabs-bar__action--theme-dark')]: isDarkTheme,
       [prefix(`tabs-bar__action--${direction}`)]: true,
       [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
-      [prefix('tabs-bar__gradient--theme-dark')]: isDark(this.theme),
+      [prefix('tabs-bar__gradient--theme-dark')]: isDarkTheme,
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
       [prefix(`tabs-bar__gradient--${direction}`)]: true,
     };
