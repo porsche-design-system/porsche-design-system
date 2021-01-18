@@ -12,7 +12,7 @@ If you use `Porsche Design System` components, we take care that your applicatio
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
 There are two ways to get rid of FOUC: via **partials** or as **static CSS snippet**. 
-We provide partials in our `@porsche-design-system/components-{js|angular|react}` package for you to import them into the `<head>` of your `index.html`.
+We provide partials in our `@porsche-design-system/components-{js|angular|react}/partials` package for you to import them into the `<head>` of your `index.html`.
 
 ### Example usage of  partials with template 
 
@@ -88,7 +88,7 @@ If you use the Porsche Design System components we inject the font-stylesheet wi
 Regarding which font-styles do you use on your page, these fonts get downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 
 To improve rendering we recommend that you load the stylesheet on your own. 
 
-We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also provide a ready to use partial in the `@porsche-design-system/components-{js|angular|react}` package called `getFontFaceStylesheet()`.
+We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also provide a ready to use partial in the `@porsche-design-system/components-{js|angular|react}/partials` package called `getFontFaceStylesheet()`.
 
 #### Example with partials
 

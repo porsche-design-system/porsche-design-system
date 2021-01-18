@@ -48,7 +48,7 @@ This gives the possibility for the consuming application to bundle to separate b
 </html>
 ```
 
-Also, the function `getFontFaceStylesheet()` of the `@porsche-design-system/components-{js|angular|react}` packages was extended with the option `{ cdn: 'auto' | 'cn' }` to force loading the font-face style definitions from Chinese CDN only, e.g.:
+Also, the function `getFontFaceStylesheet()` of the `@porsche-design-system/components-{js|angular|react}/partials` packages was extended with the option `{ cdn: 'auto' | 'cn' }` to force loading the font-face style definitions from Chinese CDN only, e.g.:
 
 ```html
 <head>
