@@ -1,5 +1,5 @@
 import { PText, PHeadline } from '@porsche-design-system/components-react';
-import { TextAlign, TextSize } from '@porsche-design-system/components-react/lib/bundle';
+import type { TextAlign, TextSize } from '@porsche-design-system/components-react';
 
 export const TypographyPage = (): JSX.Element => {
   const style = `
