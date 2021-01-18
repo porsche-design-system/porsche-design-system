@@ -1,6 +1,5 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getAttribute,
   getClosestHTMLElement,
   getHTMLElement,
@@ -12,7 +11,7 @@ import {
   removeAttribute,
   setAttribute,
 } from '../../../utils';
-import type { FormState, Theme } from '../../../types';
+import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 
 type OptionMap = {
   readonly key: number;

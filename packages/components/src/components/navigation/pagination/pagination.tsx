@@ -1,6 +1,5 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
@@ -9,7 +8,7 @@ import {
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import type { NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
+import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
 
 @Component({
   tag: 'p-pagination',

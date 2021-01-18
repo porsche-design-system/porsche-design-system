@@ -1,6 +1,5 @@
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   calcLineHeightForElement,
   getHTMLElement,
   getPrefixedTagNames,
@@ -11,7 +10,7 @@ import {
   prefix,
   transitionListener,
 } from '../../../utils';
-import type { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-pure',

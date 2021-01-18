@@ -1,6 +1,5 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   calcLineHeightForElement,
   getHTMLElement,
   insertSlottedStyles,
@@ -8,7 +7,7 @@ import {
   prefix,
   transitionListener,
 } from '../../../../utils';
-import type { TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
 
 @Component({
   tag: 'p-text',

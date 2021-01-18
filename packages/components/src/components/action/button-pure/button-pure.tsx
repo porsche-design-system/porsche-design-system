@@ -1,6 +1,5 @@
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   calcLineHeightForElement,
   getHTMLElement,
   getPrefixedTagNames,
@@ -10,7 +9,7 @@ import {
   prefix,
   transitionListener,
 } from '../../../utils';
-import type { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button-pure',

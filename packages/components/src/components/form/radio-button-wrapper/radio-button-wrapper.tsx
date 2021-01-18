@@ -1,6 +1,5 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getAttribute,
   getClosestHTMLElement,
   getHTMLElement,
@@ -12,7 +11,7 @@ import {
   setAttribute,
   transitionListener,
 } from '../../../utils';
-import type { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-radio-button-wrapper',

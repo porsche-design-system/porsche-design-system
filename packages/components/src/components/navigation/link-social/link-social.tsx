@@ -1,6 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
@@ -8,7 +7,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import type { LinkTarget, Theme } from '../../../types';
+import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-social',
