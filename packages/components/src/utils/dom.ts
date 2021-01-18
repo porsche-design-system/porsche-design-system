@@ -1,5 +1,4 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import type { Theme } from '../types';
 
 type Host = HTMLElement | ShadowRoot;
 
@@ -45,10 +44,6 @@ export const setAttribute = (el: HTMLElement, attributeName: string, attributeVa
 
 export const removeAttribute = (el: HTMLElement, attributeName: string): void => {
   el.removeAttribute(attributeName);
-};
-
-export const isDark = (theme: Theme): boolean => {
-  return theme === 'dark';
 };
 
 // TODO: add addEventListener and removeEventListener
