@@ -7,5 +7,5 @@
     "sourceMap": true
   },
   "include": ["src"],
-  "exclude": ["src/lib", "src/bundle"]
+  "exclude": ["src/lib"]
 }
