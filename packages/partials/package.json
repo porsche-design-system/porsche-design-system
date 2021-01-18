@@ -45,6 +45,7 @@
     "@porsche-design-system/components": "2.0.0-alpha.11",
     "@porsche-design-system/utilities": "4.0.0",
     "@rollup/plugin-typescript": "^8.1.0",
+    "@types/html-minifier": "^4.0.0",
     "@types/jest": "^26.0.20",
     "html-minifier": "^4.0.0",
     "jest": "^26.6.3",
