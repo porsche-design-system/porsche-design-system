@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
@@ -8,7 +7,14 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
+import type {
+  BreakpointCustomizable,
+  TabChangeEvent,
+  TabGradientColorTheme,
+  TabSize,
+  TabWeight,
+  Theme,
+} from '../../../types';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';

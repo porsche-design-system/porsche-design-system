@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h } from '@stencil/core';
-import { BreakpointCustomizable, isDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import type { Theme } from '../../../types';
+import { isDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 
 @Component({
   tag: 'p-spinner',

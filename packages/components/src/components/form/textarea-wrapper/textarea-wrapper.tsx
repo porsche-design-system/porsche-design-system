@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
@@ -10,7 +9,7 @@ import {
   removeAttribute,
   setAttribute,
 } from '../../../utils';
-import type { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-textarea-wrapper',

@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import type { Theme } from '../../../types';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 
 @Component({
   tag: 'p-divider',
