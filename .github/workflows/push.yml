@@ -74,6 +74,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -112,6 +122,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -156,6 +176,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -210,6 +240,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -269,11 +309,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components JS' # needed for fresh TAG_NAMES
+      - name: 'Build Components' # needed for fresh TAG_NAMES
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components-js
+          args: --components
       - name: 'Build Partials'
         uses: ./.github/actions/docker-run
         with:
@@ -312,6 +352,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -376,6 +426,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Build Components Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-prod
+      - name: 'Build Partials Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -391,7 +451,7 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'Build Storefront'
+      - name: 'Build Storefront Prod'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
@@ -421,11 +481,6 @@ jobs:
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
-      - name: 'Store Partials Build Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: partials-build
-          path: ./packages/partials/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -547,11 +602,6 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
-      - name: 'Restore Partials Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: partials-build
-          path: ./packages/partials/dist
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v2
         with:
