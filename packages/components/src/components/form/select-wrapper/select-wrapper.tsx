@@ -292,7 +292,7 @@ export class SelectWrapper {
    */
   private observeSelect(): void {
     this.selectObserver = new MutationObserver((mutations) => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
+      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         this.setOptionList();
       }
     });
