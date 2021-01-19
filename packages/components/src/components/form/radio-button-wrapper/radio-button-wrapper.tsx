@@ -7,8 +7,7 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  removeAttribute,
-  setAttribute,
+  setAriaAttributes,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -116,15 +115,11 @@ export class RadioButtonWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      setAttribute(this.input, 'aria-label', `${this.label}${this.message ? `. ${this.message}` : ''}`);
-    }
-
-    if (this.state === 'error') {
-      setAttribute(this.input, 'aria-invalid', 'true');
-    } else {
-      removeAttribute(this.input, 'aria-invalid');
-    }
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message,
+      state: this.state,
+    });
   }
 
   private labelClick = (event: MouseEvent): void => {

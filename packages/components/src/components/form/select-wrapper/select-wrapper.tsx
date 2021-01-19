@@ -8,7 +8,7 @@ import {
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  removeAttribute,
+  setAriaAttributes,
   setAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
@@ -255,20 +255,11 @@ export class SelectWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      setAttribute(
-        this.select,
-        'aria-label',
-        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
-      );
-    }
-
-    if (this.state === 'error') {
-      setAttribute(this.select, 'aria-invalid', 'true');
-    } else {
-      removeAttribute(this.select, 'aria-invalid');
-    }
+    setAriaAttributes(this.select, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
 
     if (this.filter) {
       setAttribute(this.select, 'aria-hidden', 'true');
