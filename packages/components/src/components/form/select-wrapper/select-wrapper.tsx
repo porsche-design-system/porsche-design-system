@@ -3,6 +3,7 @@ import {
   getAttribute,
   getClosestHTMLElement,
   getHTMLElement,
+  getHTMLElements,
   getPrefixedTagNames,
   insertSlottedStyles,
   isTouchDevice,
@@ -63,7 +64,7 @@ export class SelectWrapper {
   @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
-  private options: NodeListOf<HTMLOptionElement>;
+  private options: HTMLOptionElement[];
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
@@ -348,7 +349,8 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const children = this.fakeOptionListNode.querySelectorAll(
+      const children = getHTMLElements(
+        this.fakeOptionListNode,
         `.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`
       );
       const { top: spaceTop } = this.select.getBoundingClientRect();
@@ -478,8 +480,8 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.options = this.select.querySelectorAll('option');
-    this.optionMaps = Array.from(this.options).map((item, index) => {
+    this.options = getHTMLElements(this.select, 'option');
+    this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
       const selected = item.selected && !item.disabled;
@@ -538,7 +540,7 @@ export class SelectWrapper {
       </div>
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
-      Array.from(this.options).map((item, index) => {
+      this.options.map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
           item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
@@ -603,7 +605,7 @@ export class SelectWrapper {
   private handleScroll(): void {
     const fakeOptionListNodeHeight = 200;
     if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[
+      this.fakeOptionHighlightedNode = getHTMLElements(this.fakeOptionListNode, 'div')[
         this.getHighlightedIndex(this.optionMaps)
       ];
 

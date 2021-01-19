@@ -1,5 +1,6 @@
 import type { TextSize } from '../text/text-utils';
 import type { BreakpointCustomizable } from '../../../../types';
+import { getHTMLElement } from '../../../../utils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
@@ -23,7 +24,7 @@ export const isVariantType = (variant: HeadlineVariant): boolean => {
 };
 
 export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
-  const el = host.querySelector(':first-child');
+  const el = getHTMLElement(host, ':first-child');
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
 
