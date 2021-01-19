@@ -1,3 +1,4 @@
+export * from './a11y';
 export * from './breakpoint-customizable';
 export * from './breakpoints';
 export * from './button-handling';

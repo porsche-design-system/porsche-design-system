@@ -6,8 +6,7 @@ import {
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  removeAttribute,
-  setAttribute,
+  setAriaAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -145,20 +144,11 @@ export class TextareaWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      setAttribute(
-        this.textarea,
-        'aria-label',
-        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
-      );
-    }
-
-    if (this.state === 'error') {
-      setAttribute(this.textarea, 'aria-invalid', 'true');
-    } else {
-      removeAttribute(this.textarea, 'aria-invalid');
-    }
+    setAriaAttributes(this.textarea, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   private setState = (): void => {
