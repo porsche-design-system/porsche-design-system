@@ -34,7 +34,6 @@ import {
 import { useEffect, useState } from 'react';
 
 export const OverviewPage = (): JSX.Element => {
-  // TODO: Should also be made in angular
   // solve race-condition between non-prefixed and prefixed banner focus
   const [allReady, setAllReady] = useState(false);
 
