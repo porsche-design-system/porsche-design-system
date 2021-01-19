@@ -9,9 +9,12 @@ const typescriptOpts = {
   tsconfig: `${BASE_DIR}/tsconfig.json`,
 };
 
+const external = ['@porsche-design-system/components-js', 'react', 'react/jsx-runtime'];
+
 export default [
   {
-    input: input,
+    input,
+    external,
     output: {
       esModule: false,
       dir: DIST_DIR,
@@ -29,7 +32,8 @@ export default [
     ],
   },
   {
-    input: input,
+    input,
+    external,
     output: { dir: `${DIST_DIR}/esm`, format: 'esm' },
     plugins: [typescript(typescriptOpts)],
   },
