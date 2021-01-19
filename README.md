@@ -55,14 +55,18 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Switch to **project root directory**
 1. For the different applications, select one of the following commands:
    - `./docker.sh run-build` (builds the entire application)
-   - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
    - `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
-   - `./docker.sh run-build --icons` (builds the optimized icon set)
-   - `./docker.sh run-build --fonts` (builds the font set)
-   - `./docker.sh run-build --marque` (builds the marque)
+   - `./docker.sh run-build --components` (builds the native stencil web components)
+   - `./docker.sh run-build --components-prod` (builds the native stencil production web components) 
    - `./docker.sh run-build --components-js` (builds the native web components)
+   - `./docker.sh run-build --components-js-prod` (builds the native production web components)
    - `./docker.sh run-build --components-angular` (builds angular components)
    - `./docker.sh run-build --components-react` (builds react components)
+   - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
+   - `./docker.sh run-build --fonts` (builds the font set)
+   - `./docker.sh run-build --icons` (builds the optimized icon set)
+   - `./docker.sh run-build --marque` (builds the marque)
+   - `./docker.sh run-build --partials` (builds the partials)
    - `./docker.sh run-build --storefront` (builds storefront)
    - `./docker.sh run-build --utilities` (builds utilities)
 
