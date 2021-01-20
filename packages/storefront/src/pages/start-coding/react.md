@@ -3,7 +3,7 @@
 ## Quick start
 To build your own application with the **React** components of Porsche Design System, follow these steps:
 
-* Follow the instructions at [Introduction](#/start-coding/introduction) to get the required npm package
+* Follow the instructions at (Introduction)[#/start-coding/introduction] to get the required npm package
 * Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to create a directory inside the current 
 folder with the initial project structure called `my-app` 
 * To add TypeScript to your **Create React App**, you have to install it:
@@ -67,9 +67,7 @@ export const App = (): JSX.Element => (
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
-## Advanced usage
-
-### When are Porsche Design System components initialized?
+## When are Porsche Design System components initialized?
 See [componentsReady()](#/helpers/components-ready) for further information.
 
 ## Test the application
@@ -182,7 +180,7 @@ If you have to test a form submit use `Simulate`.
 ```
 import { Simulate } from 'react-dom/test-utils';
 
-const button = getByText('PDSButton');
+const button = getByText('SomePorscheDesignSystemButton');
 
 Simulate.submit('button');
 ```
@@ -190,16 +188,21 @@ Simulate.submit('button');
 You are not able to use `getByRole` to query Porsche Design System components when using testing-library.
 Testing-library is taking default `roles` in consideration. For example  a `<button>` gets the role `button` without 
 explicitly setting the attribute.
-To achieve this it uses the (Accessibility Tree)[https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree], 
-see (documentation) [https://testing-library.com/docs/guide-which-query/].
+To achieve this it uses the [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree), 
+see [documentation](https://testing-library.com/docs/guide-which-query/).
 
-We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/blob/master/src/tests/App.test.tsx).
+We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
 
 ## Advanced usage
 
 ### Prefixing
 
-A way of preventing conflicts is by using a unique custom prefix for the components.
+In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in a final
+application. This could cause conflicts due to the way how custom webcomponents are registered in the browser.
+During the bootstrap phase of the Porsche Design System, custom elements are defined. If a second application wants to
+register Porsche Design System again it will cause issues especially when different versions are used.
+
+A way of preventing those conflicts is by using a unique custom prefix for the components.
 Simply pass your desired prefix to the `prefix` property of `PorscheDesignSystemProvider`.
 
 Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you
