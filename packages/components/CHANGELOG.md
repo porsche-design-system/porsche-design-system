@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Partial functions `getInitialStyles()` and `getFontFaceStylesheet()` to prevent **Flash of Unstyled Content** (FOUC) and minimize **Flash of Unstyled Text** (FOUT)
+
 #### Changed
 - React: `PorscheDesignSystemProvider` needs to wrap application
 - React: component props have to be camelCase
