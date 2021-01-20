@@ -12,10 +12,10 @@ export const ButtonPage = (): JSX.Element => {
 
       <div className="playground light" title="should render button primary with label">
         <PButton variant="primary">Some label</PButton>
-        <PButton variant="primary" disabled={true}>
+        <PButton variant="primary" disabled>
           Some label
         </PButton>
-        <PButton variant="primary" loading={true}>
+        <PButton variant="primary" loading>
           Some label
         </PButton>
       </div>
@@ -23,79 +23,79 @@ export const ButtonPage = (): JSX.Element => {
         <PButton variant="primary" theme="dark">
           Some label
         </PButton>
-        <PButton variant="primary" theme="dark" disabled={true}>
+        <PButton variant="primary" theme="dark" disabled>
           Some label
         </PButton>
-        <PButton variant="primary" theme="dark" loading={true}>
+        <PButton variant="primary" theme="dark" loading>
           Some label
         </PButton>
       </div>
 
       <div className="playground light" title="should render button primary without label">
-        <PButton variant="primary" hideLabel={true}>
+        <PButton variant="primary" hideLabel>
           Some label
         </PButton>
-        <PButton variant="primary" hideLabel={true} disabled={true}>
+        <PButton variant="primary" hideLabel disabled>
           Some label
         </PButton>
-        <PButton variant="primary" hideLabel={true} loading={true}>
+        <PButton variant="primary" hideLabel loading>
           Some label
         </PButton>
       </div>
       <div className="playground dark" title="should render button primary without label on dark theme">
-        <PButton variant="primary" hideLabel={true} theme="dark">
+        <PButton variant="primary" hideLabel theme="dark">
           Some label
         </PButton>
-        <PButton variant="primary" hideLabel={true} theme="dark" disabled={true}>
+        <PButton variant="primary" hideLabel theme="dark" disabled>
           Some label
         </PButton>
-        <PButton variant="primary" hideLabel={true} theme="dark" loading={true}>
+        <PButton variant="primary" hideLabel theme="dark" loading>
           Some label
         </PButton>
       </div>
 
       <div className="playground light" title="should render button secondary with label">
         <PButton>Some label</PButton>
-        <PButton disabled={true}>Some label</PButton>
-        <PButton loading={true}>Some label</PButton>
+        <PButton disabled>Some label</PButton>
+        <PButton loading>Some label</PButton>
       </div>
       <div className="playground dark" title="should render button secondary with label on dark theme">
         <PButton theme="dark">Some label</PButton>
-        <PButton theme="dark" disabled={true}>
+        <PButton theme="dark" disabled>
           Some label
         </PButton>
-        <PButton theme="dark" loading={true}>
+        <PButton theme="dark" loading>
           Some label
         </PButton>
       </div>
 
       <div className="playground light" title="should render button secondary without label">
-        <PButton hideLabel={true}>Some label</PButton>
-        <PButton hideLabel={true} disabled={true}>
+        <PButton hideLabel>Some label</PButton>
+        <PButton hideLabel disabled>
           Some label
         </PButton>
-        <PButton hideLabel={true} loading={true}>
+        <PButton hideLabel loading>
           Some label
         </PButton>
       </div>
       <div className="playground dark" title="should render button secondary without label on dark theme">
-        <PButton hideLabel={true} theme="dark">
+        <PButton hideLabel theme="dark">
           Some label
         </PButton>
-        <PButton hideLabel={true} theme="dark" disabled={true}>
+        <PButton hideLabel theme="dark" disabled>
           Some label
         </PButton>
-        <PButton hideLabel={true} theme="dark" loading={true}>
+        <PButton hideLabel theme="dark" loading>
           Some label
         </PButton>
       </div>
 
       <div className="playground light" title="should render button tertiary with label">
         <PButton variant="tertiary">Some label</PButton>
-        <PButton variant="tertiary" disabled={true}>
+        <PButton variant="tertiary" disabled>
           Some label
         </PButton>
-        <PButton variant="tertiary" loading={true}>
+        <PButton variant="tertiary" loading>
           Some label
         </PButton>
       </div>
@@ -103,33 +103,33 @@ export const ButtonPage = (): JSX.Element => {
         <PButton variant="tertiary" theme="dark">
           Some label
         </PButton>
-        <PButton variant="tertiary" theme="dark" disabled={true}>
+        <PButton variant="tertiary" theme="dark" disabled>
           Some label
         </PButton>
-        <PButton variant="tertiary" theme="dark" loading={true}>
+        <PButton variant="tertiary" theme="dark" loading>
           Some label
         </PButton>
       </div>
 
       <div className="playground light" title="should render button tertiary without label">
-        <PButton variant="tertiary" hideLabel={true}>
+        <PButton variant="tertiary" hideLabel>
           Some label
         </PButton>
-        <PButton variant="tertiary" hideLabel={true} disabled={true}>
+        <PButton variant="tertiary" hideLabel disabled>
           Some label
         </PButton>
-        <PButton variant="tertiary" hideLabel={true} loading={true}>
+        <PButton variant="tertiary" hideLabel loading>
           Some label
         </PButton>
       </div>
       <div className="playground dark" title="should render button tertiary without label on dark theme">
-        <PButton variant="tertiary" hideLabel={true} theme="dark">
+        <PButton variant="tertiary" hideLabel theme="dark">
           Some label
         </PButton>
-        <PButton variant="tertiary" hideLabel={true} theme="dark" disabled={true}>
+        <PButton variant="tertiary" hideLabel theme="dark" disabled>
           Some label
         </PButton>
-        <PButton variant="tertiary" hideLabel={true} theme="dark" loading={true}>
+        <PButton variant="tertiary" hideLabel theme="dark" loading>
           Some label
         </PButton>
       </div>
@@ -140,7 +140,7 @@ export const ButtonPage = (): JSX.Element => {
 
       <div className="playground light" title="should render button secondary with specific icon">
         <PButton icon="delete">Some label</PButton>
-        <PButton icon-source="./assets/icon-custom-kaixin.svg">Some label</PButton>
+        <PButton iconSource="./assets/icon-custom-kaixin.svg">Some label</PButton>
       </div>
 
       <div className="playground light" title="should render button with multiline label">

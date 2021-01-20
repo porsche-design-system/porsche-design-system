@@ -9,7 +9,7 @@ import {
 import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import { NumberOfPageLinks, Theme } from '../../../types';
+import { NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
 
 @Component({
   tag: 'p-pagination',
@@ -54,7 +54,7 @@ export class Pagination {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the page changes. */
-  @Event() public pageChange!: EventEmitter<{ page: number; previousPage: number }>;
+  @Event() public pageChange!: EventEmitter<PageChangeEvent>;
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 

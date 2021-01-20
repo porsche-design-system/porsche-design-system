@@ -1,5 +1,5 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { waitForComponentsReady } from '../helpers';
+import { waitForComponentsReady, selectNode } from '../helpers';
 import { browser } from '../config';
 
 const BASE_URL = 'http://localhost:3000';
@@ -35,7 +35,48 @@ describe('components', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
-  xit('should initialize component deterministically', async () => {
+  it('should stringify object props correctly', async () => {
+    await goto('overview');
+
+    const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
+
+    expect(innerHTML).toContain('<p-headline');
+    expect(innerHTML).toContain('<my-prefix-p-headline');
+    expect(innerHTML).not.toContain('[object Object]');
+  });
+
+  it('should have working events', async () => {
+    await goto('overview');
+
+    const tabsBar = await selectNode(page, 'p-tabs-bar');
+    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+
+    const clickElement = async (el: ElementHandle) => {
+      await el.click();
+      await page.waitForTimeout(50);
+    };
+
+    const counterKey = 'TAB_CHANGE_EVENT_COUNTER';
+    const getCounterValue = () => page.evaluate((counterKey: string) => window[counterKey], counterKey);
+
+    await page.evaluate((counterKey: string) => {
+      window[counterKey] = 0;
+      document.querySelector('p-tabs-bar').addEventListener('tabChange', () => {
+        window[counterKey]++;
+      });
+    }, counterKey);
+
+    await clickElement(secondBtn);
+    expect(await getCounterValue()).toBe(1);
+
+    await clickElement(thirdBtn);
+    expect(await getCounterValue()).toBe(2);
+
+    await clickElement(firstBtn);
+    expect(await getCounterValue()).toBe(3);
+  });
+
+  it('should initialize component deterministically', async () => {
     await goto('initializer');
     await page.waitForTimeout(1000);
 

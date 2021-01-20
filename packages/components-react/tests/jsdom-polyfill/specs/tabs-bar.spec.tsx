@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { componentsReady, PTabsBar } from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
+import { renderWithProvider } from '../helpers';
 import userEvent from '@testing-library/user-event';
 
 const Sample = (): JSX.Element => {
@@ -30,14 +30,14 @@ const Sample = (): JSX.Element => {
 
 describe('PTabsBar', () => {
   it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
   });
 
   it('should have working events', async () => {
-    const { getByTestId } = render(<Sample />);
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
 
     const debug = getByTestId('debug');

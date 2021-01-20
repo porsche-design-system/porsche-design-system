@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-overview',
@@ -155,9 +156,9 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
           <p-tabs-bar>
-            <a>Tab1</a>
-            <a>Tab2</a>
-            <a>Tab3</a>
+            <button>Tab1</button>
+            <button>Tab2</button>
+            <button>Tab3</button>
           </p-tabs-bar>
         </div>
 
@@ -190,7 +191,7 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="playground light" title="should render default banner with custom prefix">
-          <my-prefix-p-banner>
+          <my-prefix-p-banner *ngIf="allReady">
             <span slot="title">Some banner title</span>
             <span slot="description">Some banner description.</span>
           </my-prefix-p-banner>
@@ -298,9 +299,9 @@ import { Component } from '@angular/core';
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
           <my-prefix-p-tabs-bar>
-            <a>Tab1</a>
-            <a>Tab2</a>
-            <a>Tab3</a>
+            <button>Tab1</button>
+            <button>Tab2</button>
+            <button>Tab3</button>
           </my-prefix-p-tabs-bar>
         </div>
 
@@ -325,4 +326,13 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class OverviewComponent {}
+export class OverviewComponent {
+  // solve race-condition between non-prefixed and prefixed banner focus
+  public allReady: boolean = false;
+
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
+    });
+  }
+}
