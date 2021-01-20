@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+// TODO: remove this script once custom WrapperGenerator is used for angular
 type Framework = 'angular';
 
 const BUNDLE_TYPE_FILE_NAME = 'bundle.d.ts';
