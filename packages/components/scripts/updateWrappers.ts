@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-type Framework = 'angular' | 'react';
+type Framework = 'angular';
 
 const BUNDLE_TYPE_FILE_NAME = 'bundle.d.ts';
 const WRAPPER_PROJECT_PATH = 'projects/components-wrapper/src/lib';
@@ -41,16 +41,7 @@ const updateGeneratedWrapper = (framework: Framework): void => {
   console.log(`Updating generated wrapper in 'components-${framework}'`);
   copyTypesToWrapper(framework);
 
-  if (framework === 'react') {
-    const bundleFilePath = getBundleFilePathForFramework(framework);
-    const bundleFileContent = fs.readFileSync(bundleFilePath, 'utf8');
-
-    // add missing reference for react types in bundle.d.ts
-    const newContent = `/// <reference types='react' />\n\n${bundleFileContent}`;
-
-    fs.writeFileSync(bundleFilePath, newContent);
-    console.log(`Added react types to 'components-react'`);
-  } else if (framework === 'angular') {
+  if (framework === 'angular') {
     const wrapperFileName = 'proxies.ts';
 
     const wrapperFilePath = path.normalize(`../components-${framework}/${WRAPPER_PROJECT_PATH}/${wrapperFileName}`);
@@ -116,4 +107,3 @@ const updateGeneratedWrapper = (framework: Framework): void => {
 };
 
 updateGeneratedWrapper('angular');
-updateGeneratedWrapper('react');
