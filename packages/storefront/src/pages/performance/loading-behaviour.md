@@ -90,10 +90,14 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 <head>
   // without parameters
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet() %>
+</head>
 
+<head>
   // force using China CDN
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
+</head>
 
+<head>
   // without link tags
   <link rel=preconnect href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>">
 </head>
@@ -141,10 +145,14 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
   // Using template syntax (make sure to preload only fonts which are needed initially!)
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ subset: 'latin', weight: 'regular' }) %>
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ subset: 'latin', weight: 'semi-bold' }) %>
-  
+</head>
+
+<head>
   // force using China CDN
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ cdn: 'cn' }) %>
+</head>
 
+<head>
   // without link tags
   <link rel=preconnect href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ withoutTags: true }) %>" as=font type=font/woff2 crossorigin>
 </head>
