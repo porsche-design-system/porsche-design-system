@@ -100,6 +100,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. For the different applications, select one of the following commands:
    - `./docker.sh run-test-unit` (unit tests for the entire application)
    - `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
+   - `./docker.sh run-test-unit --components-react` (unit tests for the generated react wrappers)
    - `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
    - `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
 
