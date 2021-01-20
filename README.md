@@ -157,6 +157,15 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 
 ---
 
+## Docker
+
+#### What to do after adjusting docker scripts
+
+1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
+1. Switch to `docker/node` directory
+1. Run `bash build-and-push-base-image.sh`
+1. View new package on [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
+
 ## Dependency updates
 
 Every week, we update our NPM packages:
