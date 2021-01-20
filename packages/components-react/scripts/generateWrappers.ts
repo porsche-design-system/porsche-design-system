@@ -69,8 +69,8 @@ const extractNonPrimitiveTypes = (input: string, isNonPrimitiveType: boolean = f
 };
 
 const generateImports = (component: TagName, componentInterface: string, extendedProps: ExtendedProp[]): string => {
-  const hasEventProps = extendedProps.filter(({ isEvent }) => isEvent).length > 0;
-  const canBeObject = extendedProps.filter(({ canBeObject }) => canBeObject).length > 0;
+  const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
+  const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
   const reactImports = [
     'HTMLAttributes',

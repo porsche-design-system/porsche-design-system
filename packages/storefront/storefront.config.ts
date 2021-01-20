@@ -67,10 +67,6 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import(`@/../../assets/CHANGELOG.md`),
       ],
-      'Partials': [
-        // @ts-ignore
-        () => import(`@/../../partials/CHANGELOG.md`),
-      ],
     },
     Versioning: [
       // @ts-ignore
