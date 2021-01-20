@@ -64,7 +64,7 @@ export const HeadlinePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should cut off too long text">
-        <PHeadline ellipsis={true}>
+        <PHeadline ellipsis>
           Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
           invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
           dolores et ea rebum.

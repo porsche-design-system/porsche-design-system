@@ -5,12 +5,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './styles.css';
 import { App } from './App';
-import { componentsReady } from '@porsche-design-system/components-react';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 ReactDOM.render(
   <StrictMode>
     <Router>
-      <App />
+      <PorscheDesignSystemProvider>
+        <App />
+      </PorscheDesignSystemProvider>
     </Router>
   </StrictMode>,
   document.getElementById('root')

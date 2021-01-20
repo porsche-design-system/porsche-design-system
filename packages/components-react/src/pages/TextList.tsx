@@ -68,11 +68,11 @@ export const TextListPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show ordered text list alphabetically on light background">
-        <PTextList listType="ordered" order-type="alphabetically">
+        <PTextList listType="ordered" orderType="alphabetically">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
             The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
-            <PTextList listType="ordered" order-type="alphabetically">
+            <PTextList listType="ordered" orderType="alphabetically">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
                 The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox
@@ -84,11 +84,11 @@ export const TextListPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show ordered text list alphabetically on dark background">
-        <PTextList listType="ordered" order-type="alphabetically" theme="dark">
+        <PTextList listType="ordered" orderType="alphabetically" theme="dark">
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           <PTextListItem>
             The quick <a href="#x">brown fox</a> jumps <b>over</b> the <strong>lazy</strong> dog
-            <PTextList listType="ordered" order-type="alphabetically" theme="dark">
+            <PTextList listType="ordered" orderType="alphabetically" theme="dark">
               <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
               <PTextListItem>
                 The quick brown fox jumps over the lazy dog, the lazy dog jumps over the quick brown fox

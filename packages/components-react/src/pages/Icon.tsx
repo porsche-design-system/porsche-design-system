@@ -1,5 +1,6 @@
 import { PIcon } from '@porsche-design-system/components-react';
 import { ICON_NAMES } from '@porsche-design-system/assets';
+import { CSSProperties } from 'react';
 
 export const IconPage = (): JSX.Element => {
   const style = `
@@ -11,6 +12,7 @@ export const IconPage = (): JSX.Element => {
       height: 48px;
     }
   `;
+  const colorStyle: CSSProperties = { color: 'deeppink' };
 
   return (
     <>
@@ -28,29 +30,29 @@ export const IconPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with predefined colors on light theme">
-        <PIcon theme="light" color="brand" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="default" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="neutral-contrast-high" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="neutral-contrast-medium" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="neutral-contrast-low" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="notification-success" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="notification-warning" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="notification-error" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="notification-neutral" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="light" color="inherit" aria-label="Icon" style={{ color: 'deeppink' }} />
+        <PIcon theme="light" color="brand" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="default" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="neutral-contrast-high" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="neutral-contrast-medium" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="neutral-contrast-low" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="notification-success" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="notification-warning" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="notification-error" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="notification-neutral" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="light" color="inherit" aria-label="Icon" style={colorStyle} />
       </div>
 
       <div className="playground dark" title="should render with predefined colors on dark theme">
-        <PIcon theme="dark" color="brand" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="default" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="neutral-contrast-high" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="neutral-contrast-medium" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="neutral-contrast-low" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="notification-success" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="notification-warning" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="notification-error" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="notification-neutral" aria-label="Icon" style={{ color: 'deeppink' }} />
-        <PIcon theme="dark" color="inherit" aria-label="Icon" style={{ color: 'deeppink' }} />
+        <PIcon theme="dark" color="brand" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="default" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="neutral-contrast-high" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="neutral-contrast-medium" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="neutral-contrast-low" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="notification-success" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="notification-warning" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="notification-error" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="notification-neutral" aria-label="Icon" style={colorStyle} />
+        <PIcon theme="dark" color="inherit" aria-label="Icon" style={colorStyle} />
       </div>
 
       <div className="playground light" title="should render with custom icon">
