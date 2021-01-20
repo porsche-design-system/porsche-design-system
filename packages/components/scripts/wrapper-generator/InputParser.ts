@@ -30,7 +30,16 @@ export class InputParser {
     const bundleDtsFile = path.resolve(SOURCE_DIR, bundleDtsFileName);
     const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
-    this.sharedTypes = bundleDtsContent.substr(0, bundleDtsContent.indexOf('export namespace Components'));
+    let rawSharedTypes = bundleDtsContent.substr(0, bundleDtsContent.indexOf('export namespace Components'));
+    // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
+    rawSharedTypes = rawSharedTypes.replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '');
+
+    // fix consumer typing by removing string which is only necessary for stencil
+    rawSharedTypes = rawSharedTypes.replace(
+      /(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/,
+      '$1;'
+    );
+    this.sharedTypes = rawSharedTypes;
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
     this.rawLocalJSX = rawLocalJSX;
