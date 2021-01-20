@@ -6,10 +6,11 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
-    "build": "yarn clean:build && yarn build:generateWrappers && yarn build:components && yarn build:jsdom-polyfill && yarn build:meta",
+    "build": "yarn clean:build && yarn build:generateWrappers && yarn build:components && yarn build:partials && yarn build:jsdom-polyfill && yarn build:meta",
     "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
     "build:generateWrappers": "rm -rf ./projects/components-wrapper/src/lib/components && ts-node --project './tsconfig.node.json' 'scripts/generateWrappers.ts'",
     "build:components": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",
+    "build:partials": "cp -r ./../partials/dist/. ./dist/components-wrapper/partials",
     "build:jsdom-polyfill": "yarn build:jsdom-polyfill:bundle && yarn build:jsdom-polyfill:cleanInjectGlobalStyles",
     "build:jsdom-polyfill:bundle": "rollup -c ./projects/jsdom-polyfill/rollup.config.js && cp -r projects/jsdom-polyfill/src/lib/. dist/components-wrapper/jsdom-polyfill/lib",
     "build:jsdom-polyfill:cleanInjectGlobalStyles": "ts-node --project './tsconfig.node.json' 'scripts/cleanInjectGlobalStyles.ts'",
@@ -38,7 +39,6 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.1.0",
-    "@porsche-design-system/partials": "2.3.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@rollup/plugin-node-resolve": "^11.0.1",
