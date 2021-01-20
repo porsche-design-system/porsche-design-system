@@ -40,7 +40,6 @@ We provide some additional packages which could help you in your daily business 
 All releases of the Porsche Design System additional packages are available as versioned NPM packages. Please read more about them on the corresponding docs.
 * [Utilities](#/utilities/introduction): `@porsche-design-system/utilities`
 * [Assets](#/assets/introduction): `@porsche-design-system/assets`
-* [Partials](#/performance/loading-behaviour): `@porsche-design-system/partials`
 
 ## Web components used with a not-supported framework
 
