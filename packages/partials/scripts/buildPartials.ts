@@ -17,7 +17,7 @@ type Options = {
   withoutTags?: boolean;
   prefix?: string;
   weight?: 'thin' | 'regular' | 'semi-bold' | 'bold';
-  subset?: 'latin' | 'greek' | 'cyril'
+  subset?: 'latin' | 'greek' | 'cyril';
 };
 
 export const getFontFaceStylesheet = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): string => {
@@ -47,7 +47,7 @@ export const getInitialStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>)
 };
 
 type FontPreloadLinkOptions = Pick<Options, 'subset' | 'weight' | 'cdn' | 'withoutTags'>;
-export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string => {
+export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string | string[] => {
   const options: FontPreloadLinkOptions = {
     subset: 'latin',
     weight: 'regular',
@@ -57,6 +57,7 @@ export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string => {
   };
   const {subset, weight, cdn, withoutTags} = options;
   const cdnBaseUrl = cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
+  // TODO: auto generate
   const fonts = {
     latin: {
       thin: '${FONTS_MANIFEST.porscheNextWLaThin.woff2}',
@@ -79,6 +80,7 @@ export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string => {
   };
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`;
 
+  // TODO: make weight as optional array
   return withoutTags
     ? url
     : \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
