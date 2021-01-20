@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.1.0",
-    "@porsche-design-system/partials": "2.2.0",
     "@porsche-design-system/utilities": "4.0.0",
     "@stencil/angular-output-target": "https://github.com/porscheui/stencil-ds-output-targets/releases/download/angular-prefixing/stencil-angular-output-target-0.0.4.tgz",
     "@stencil/core": "~2.3.0",
