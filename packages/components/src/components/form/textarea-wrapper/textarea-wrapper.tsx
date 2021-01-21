@@ -1,12 +1,14 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
+  setAriaAttributes,
 } from '../../../utils';
-import { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -115,23 +117,25 @@ export class TextareaWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!this.host.querySelector('[slot="description"]');
+    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private get isMessageVisible(): boolean {
-    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.textarea.getAttribute('required') !== null;
+    return getAttribute(this.textarea, 'required') !== null;
   }
 
   private setTextarea(): void {
-    this.textarea = this.host.querySelector('textarea');
+    this.textarea = getHTMLElement(this.host, 'textarea');
   }
 
   /*
@@ -140,19 +144,11 @@ export class TextareaWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      this.textarea.setAttribute(
-        'aria-label',
-        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
-      );
-    }
-
-    if (this.state === 'error') {
-      this.textarea.setAttribute('aria-invalid', 'true');
-    } else {
-      this.textarea.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.textarea, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   private setState = (): void => {
