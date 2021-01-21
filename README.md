@@ -100,6 +100,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. For the different applications, select one of the following commands:
    - `./docker.sh run-test-unit` (unit tests for the entire application)
    - `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
+   - `./docker.sh run-test-unit --components-react` (unit tests for the generated react wrappers)
    - `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
    - `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
 
@@ -155,6 +156,15 @@ _Note: `./docker.sh run-install` should be executed after every pull._
    - **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ---
+
+## Docker
+
+#### What to do after adjusting docker scripts
+
+1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
+1. Switch to `docker/node` directory
+1. Run `bash build-and-push-base-image.sh`
+1. View new package on [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
 
 ## Dependency updates
 

@@ -42,7 +42,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <PSelectWrapper label="Some label" description="Some description" hideLabel={true}>
+        <PSelectWrapper label="Some label" description="Some description" hideLabel>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -51,7 +51,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render without label and without description on dark theme">
-        <PSelectWrapper label="Some label" description="Some description" hideLabel={true} theme="dark">
+        <PSelectWrapper label="Some label" description="Some description" hideLabel theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -89,7 +89,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with custom filter">
-        <PSelectWrapper label="Some label" filter={true}>
+        <PSelectWrapper label="Some label" filter>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -98,7 +98,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render with custom filter on dark theme">
-        <PSelectWrapper label="Some label" filter={true} theme="dark">
+        <PSelectWrapper label="Some label" filter theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -182,7 +182,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with error state and error message with custom filter">
-        <PSelectWrapper label="Some label" filter={true} state="error" message="Some error message.">
+        <PSelectWrapper label="Some label" filter state="error" message="Some error message.">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -194,7 +194,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         className="playground dark"
         title="should render with error state and error message with custom filter on dark theme"
       >
-        <PSelectWrapper label="Some label" filter={true} state="error" message="Some error message." theme="dark">
+        <PSelectWrapper label="Some label" filter state="error" message="Some error message." theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -242,7 +242,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with success state and success message with custom filter">
-        <PSelectWrapper label="Some label" filter={true} state="success" message="Some success message.">
+        <PSelectWrapper label="Some label" filter state="success" message="Some success message.">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -254,7 +254,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         className="playground dark"
         title="should render with success state and success message with custom filter on dark theme"
       >
-        <PSelectWrapper label="Some label" filter={true} state="success" message="Some success message." theme="dark">
+        <PSelectWrapper label="Some label" filter state="success" message="Some success message." theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>

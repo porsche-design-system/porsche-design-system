@@ -1,13 +1,12 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
+import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
@@ -44,43 +43,8 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentDidLoad(): void {
-    const tagName = this.element.tagName.toLowerCase();
-    const style = `
-    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
-    ${tagName} a::before {
-      content: "" !important;
-      position: absolute !important;
-      top: -1px !important;
-      left: -1px !important;
-      right: -1px !important;
-      bottom: -1px !important;
-      display: block !important;
-      outline: transparent solid 1px !important;
-      outline-offset: 2px !important;
-    }
-
-    ${tagName} a:focus::before {
-      outline-color: #323639 !important;
-    }
-
-    ${tagName}[theme="dark"] a:focus::before {
-      outline-color: #fff !important;
-    }
-
-    ${tagName}[variant="primary"] a:focus::before,
-    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
-      outline-color: #d5001c !important;
-    }
-
-    ${tagName} a:focus:not(:focus-visible)::before,
-    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
-    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
-    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
-      outline-color: transparent !important;
-    }`;
-
-    insertSlottedStyles(this.element, style);
+  public componentWillLoad(): void {
+    this.addSlottedStyles();
     improveFocusHandlingForCustomElement(this.element);
   }
 
@@ -121,5 +85,44 @@ export class Link {
         </PrefixedTagNames.pText>
       </TagType>
     );
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.element.tagName.toLowerCase();
+    const style = `
+    /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
+    ${tagName} a::before {
+      content: "" !important;
+      position: absolute !important;
+      top: -1px !important;
+      left: -1px !important;
+      right: -1px !important;
+      bottom: -1px !important;
+      display: block !important;
+      outline: transparent solid 1px !important;
+      outline-offset: 2px !important;
+    }
+
+    ${tagName} a:focus::before {
+      outline-color: #323639 !important;
+    }
+
+    ${tagName}[theme="dark"] a:focus::before {
+      outline-color: #fff !important;
+    }
+
+    ${tagName}[variant="primary"] a:focus::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus::before {
+      outline-color: #d5001c !important;
+    }
+
+    ${tagName} a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"] a:focus:not(:focus-visible)::before,
+    ${tagName}[variant="primary"] a:focus:not(:focus-visible)::before,
+    ${tagName}[theme="dark"][variant="primary"] a:focus:not(:focus-visible)::before {
+      outline-color: transparent !important;
+    }`;
+
+    insertSlottedStyles(this.element, style);
   }
 }

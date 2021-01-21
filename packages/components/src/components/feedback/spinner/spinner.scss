@@ -20,11 +20,9 @@ $p-spinner-size-large: p-px-to-rem(104px);
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner, 2s);
 
-  &--theme-light {
-    #{$bem-block}__fg,
-    #{$bem-block}__bg {
-      stroke: $p-color-neutral-contrast-high;
-    }
+  #{$bem-block}__fg,
+  #{$bem-block}__bg {
+    stroke: $p-color-neutral-contrast-high;
   }
 
   &--theme-dark {

@@ -1,5 +1,6 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import type { BreakpointCustomizable } from '../../../../types';
 
 @Component({
   tag: 'p-grid-item',

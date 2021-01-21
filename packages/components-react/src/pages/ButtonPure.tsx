@@ -13,36 +13,36 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with label">
         <PButtonPure>Some label</PButtonPure>
-        <PButtonPure disabled={true}>Some label</PButtonPure>
-        <PButtonPure loading={true}>Some label</PButtonPure>
+        <PButtonPure disabled>Some label</PButtonPure>
+        <PButtonPure loading>Some label</PButtonPure>
       </div>
       <div className="playground dark" title="should render button with label on dark theme">
         <PButtonPure theme="dark">Some label</PButtonPure>
-        <PButtonPure disabled={true} theme="dark">
+        <PButtonPure disabled theme="dark">
           Some label
         </PButtonPure>
-        <PButtonPure loading={true} theme="dark">
+        <PButtonPure loading theme="dark">
           Some label
         </PButtonPure>
       </div>
 
       <div className="playground light" title="should render button without label">
-        <PButtonPure hideLabel={true}>Some label</PButtonPure>
-        <PButtonPure hideLabel={true} disabled={true}>
+        <PButtonPure hideLabel>Some label</PButtonPure>
+        <PButtonPure hideLabel disabled>
           Some label
         </PButtonPure>
-        <PButtonPure hideLabel={true} loading={true}>
+        <PButtonPure hideLabel loading>
           Some label
         </PButtonPure>
       </div>
       <div className="playground dark" title="should render button without label on dark theme">
-        <PButtonPure hideLabel={true} theme="dark">
+        <PButtonPure hideLabel theme="dark">
           Some label
         </PButtonPure>
-        <PButtonPure hideLabel={true} disabled={true} theme="dark">
+        <PButtonPure hideLabel disabled theme="dark">
           Some label
         </PButtonPure>
-        <PButtonPure hideLabel={true} loading={true} theme="dark">
+        <PButtonPure hideLabel loading theme="dark">
           Some label
         </PButtonPure>
       </div>
@@ -91,7 +91,7 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with specific icon">
         <PButtonPure icon="delete">Some label</PButtonPure>
-        <PButtonPure icon-source="./assets/icon-custom-kaixin.svg">Some label</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Some label</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
@@ -100,7 +100,7 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button-pure with custom clickable area">
         <PButtonPure style={{ padding: '1rem' }}>Some label</PButtonPure>
-        <PButtonPure hideLabel={true} style={{ padding: '1rem' }}>
+        <PButtonPure hideLabel style={{ padding: '1rem' }}>
           Some label
         </PButtonPure>
       </div>
@@ -118,7 +118,7 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure size="x-large">
           Some label<p slot="subline">Some subline</p>
         </PButtonPure>
-        <PButtonPure size="medium" disabled={true}>
+        <PButtonPure size="medium" disabled>
           Some label<p slot="subline">Some subline</p>
         </PButtonPure>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { componentsReady, PModal } from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
+import { renderWithProvider } from '../helpers';
 import userEvent from '@testing-library/user-event';
 
 const Sample = (): JSX.Element => {
@@ -26,15 +26,14 @@ const Sample = (): JSX.Element => {
 
 describe('PModal', () => {
   it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
   });
 
-  // disabled since clicking something in shadowRoot doesn't seem to work
-  xit('should have working events', async () => {
-    const { getByTestId } = render(<Sample />);
+  it('should have working events', async () => {
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
 
     const debug = getByTestId('debug');

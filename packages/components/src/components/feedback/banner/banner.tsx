@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
-import { BannerState, Theme } from '../../../types';
+import { prefix, getPrefixedTagNames, insertSlottedStyles, getHTMLElement } from '../../../utils';
+import type { BannerState, Theme } from '../../../types';
 
 @Component({
   tag: 'p-banner',
@@ -123,17 +123,15 @@ export class Banner {
   private removeBanner = (): void => {
     this.dismiss.emit();
     this.host.classList.add(prefix('banner--close'));
-    setTimeout(() => {
-      this.host.remove();
-    }, 1000);
+    setTimeout(() => this.host.remove(), 1000);
   };
 
   private get isTitleDefined(): boolean {
-    return !!this.host.querySelector('[slot="title"]');
+    return !!getHTMLElement(this.host, '[slot="title"]');
   }
 
   private get isDescriptionDefined(): boolean {
-    return !!this.host.querySelector('[slot="description"]');
+    return !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private addSlottedStyles(): void {
