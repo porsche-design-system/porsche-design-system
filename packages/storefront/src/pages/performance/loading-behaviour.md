@@ -99,7 +99,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 <head>
   // without link tags
-  <link rel=preconnect href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>">
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>" as="style" crossorigin>
 </head>
 ```
 
@@ -153,7 +153,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 <head>
   // without link tags
-  <link rel=preconnect href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ withoutTags: true })[0] %>" as=font type=font/woff2 crossorigin>
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ withoutTags: true })[0] %>" as="font" type="font/woff2" crossorigin>
 </head>
 ```
 

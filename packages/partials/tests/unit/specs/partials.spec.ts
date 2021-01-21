@@ -9,6 +9,7 @@ describe('getFontFaceStylesheet', () => {
     expect(result).toContain('<link');
     expect(result).toContain('preload');
     expect(result).toContain('as=style');
+    expect(result).toContain('crossorigin');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
 
@@ -17,6 +18,7 @@ describe('getFontFaceStylesheet', () => {
     expect(result).not.toContain('<link');
     expect(result).not.toContain('preload');
     expect(result).not.toContain('as=style');
+    expect(result).not.toContain('crossorigin');
     expect(result).not.toContain('.cn.');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
@@ -26,6 +28,7 @@ describe('getFontFaceStylesheet', () => {
     expect(result).not.toContain('<link');
     expect(result).not.toContain('preload');
     expect(result).not.toContain('as=style');
+    expect(result).not.toContain('crossorigin');
     expect(result).not.toContain('.cn.');
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
@@ -42,6 +45,7 @@ describe('getFontFaceStylesheet', () => {
       expect(result).not.toContain('<link');
       expect(result).not.toContain('preload');
       expect(result).not.toContain('as=style');
+      expect(result).not.toContain('crossorigin');
       expect(result).toContain(cdnStyleUrlCnWithoutHash);
       expect(result).toContain('.cn.');
     });
