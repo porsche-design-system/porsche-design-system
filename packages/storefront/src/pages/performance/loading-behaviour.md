@@ -132,7 +132,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ##### Supported options:
 - **subset**: 'latin' | 'greek' | 'cyril'
-- **weight**: 'thin' | 'regular' | 'semi-bold' | 'bold'
+- **weight**: 'thin' | 'regular' | 'semi-bold' | 'bold' | []
 - **cdn:** 'auto' | 'cn'
 - **withoutTags**: boolean
 
@@ -142,9 +142,8 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 // index.html
 
 <head>
-  // Using template syntax (make sure to preload only fonts which are needed initially!)
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ subset: 'latin', weight: 'regular' }) %>
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ subset: 'latin', weight: 'semi-bold' }) %>
+  // Using template syntax (make sure to preload only fonts which are really needed initially!)
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ subset: 'latin', weight: [ 'regular', 'semi-bold' ] }) %>
 </head>
 
 <head>
@@ -164,7 +163,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 // index.html
 
 <head>
-  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN_REGULAR-->
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->
 </head>
 ``` 
 
@@ -173,6 +172,6 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log("<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN_REGULAR-->", require("@porsche-design-system/components-js/partials").getFontPreloadLink({ subset: "latin", weight: "regular" }))') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN_REGULAR-->( <link rel=preconnect href=https:\\/\\/.*\\.woff2 as=font type=font\\/woff2 crossorigin>)?' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
-} 
+  "replace": "partial=$(node -e 'console.log("<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->", require("@porsche-design-system/components-js/partials").getFontPreloadLink({ subset: "latin", weight: [ "regular", "semi-bold" ] }))') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->( <link rel=preconnect href=https:\\/\\/.*\\.woff2 as=font type=font\\/woff2 crossorigin>)?' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+}
 ``` 

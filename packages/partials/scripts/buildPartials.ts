@@ -11,13 +11,16 @@ const generatePartials = async (): Promise<void> => {
   const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
+  // TODO: reuse types from types.d.ts
   const newContent = `
+type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
+type FontSubset = 'latin' | 'greek' | 'cyril';
 type Options = {
   cdn?: 'auto' | 'cn';
   withoutTags?: boolean;
   prefix?: string;
-  weight?: 'thin' | 'regular' | 'semi-bold' | 'bold';
-  subset?: 'latin' | 'greek' | 'cyril';
+  weight?: FontWeight | FontWeight[];
+  subset?: FontSubset;
 };
 
 export const getFontFaceStylesheet = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): string => {
@@ -46,16 +49,29 @@ export const getInitialStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>)
     : \`<style>\${styleInnerHtml}</style>\`;
 };
 
-type FontPreloadLinkOptions = Pick<Options, 'subset' | 'weight' | 'cdn' | 'withoutTags'>;
-export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string | string[] => {
-  const options: FontPreloadLinkOptions = {
+type Options1 = {
+  cdn?: 'auto' | 'cn';
+  withoutTags?: boolean;
+  weight?: FontWeight;
+  subset?: FontSubset;
+};
+
+type Options2 = {
+  cdn?: 'auto' | 'cn';
+  withoutTags?: boolean;
+  weight?: FontWeight[];
+  subset?: FontSubset;
+};
+export function getFontPreloadLink(opts?: Options1): string;
+export function getFontPreloadLink(opts?: Options2): string[];
+export function getFontPreloadLink(opts?: Options1 | Options2): string | string[] {
+  const options: Options1 | Options2 = {
     subset: 'latin',
     weight: 'regular',
     cdn: 'auto',
-    withoutTags: false,
     ...opts
   };
-  const {subset, weight, cdn, withoutTags} = options;
+  const {subset, weight, cdn} = options;
   const cdnBaseUrl = cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
   // TODO: auto generate
   const fonts = {
@@ -78,15 +94,28 @@ export const getFontPreloadLink = (opts?: FontPreloadLinkOptions): string | stri
       bold: '${FONTS_MANIFEST.porscheNextWCyBold.woff2}'
     }
   };
-  const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`;
 
-  // TODO: make weight as optional array
-  return withoutTags
-    ? url
-    : \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
-      '$URL',
-      '${url}'
-    )}\`;
+  if (Array.isArray(weight)) {
+    const urls = [];
+    let links = '';
+    for (let w of weight) {
+      urls.push(\`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][w]}\`);
+    }
+    for (let url of urls) {
+      links += \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
+        '$URL',
+        '${url}'
+      )}\`
+    }
+    return opts?.withoutTags ? urls : links;
+  }
+
+  const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`;
+  const link = \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
+    '$URL',
+    '${url}'
+  )}\`;
+  return opts?.withoutTags ? url : link;
 };
 `;
 

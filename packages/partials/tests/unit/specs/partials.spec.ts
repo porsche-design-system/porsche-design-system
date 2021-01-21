@@ -113,6 +113,15 @@ describe('getFontPreloadLink', () => {
         expect(result).toContain(cdnFontUrlWithoutHash + expected);
       }
     );
+
+    it('should return multiple links', () => {
+      const result = (getFontPreloadLink({ weight: ['regular', 'semi-bold'] }) as unknown) as string;
+      expect(result.startsWith('<link rel=preconnect href=')).toBeTruthy();
+      expect(result.endsWith('as=font type=font/woff2 crossorigin>')).toBeTruthy();
+      expect(result).toContain('.woff2 as=font type=font/woff2 crossorigin><link rel=preconnect href=');
+      expect(result).toContain(cdnFontUrlWithoutHash + 'la-regular');
+      expect(result).toContain(cdnFontUrlWithoutHash + 'la-semi-bold');
+    });
   });
 
   describe('url without tag', () => {
@@ -152,5 +161,16 @@ describe('getFontPreloadLink', () => {
         expect(result).toContain(cdnFontUrlWithoutHash + expected);
       }
     );
+
+    it('should return multiple urls', () => {
+      const result = getFontPreloadLink({ withoutTags: true, weight: ['regular', 'semi-bold'] });
+      expect(result.length).toBe(2);
+      expect(result[0].startsWith('https://')).toBeTruthy();
+      expect(result[0].endsWith('.woff2')).toBeTruthy();
+      expect(result[0]).toContain(cdnFontUrlWithoutHash + 'la-regular');
+      expect(result[1].startsWith('https://')).toBeTruthy();
+      expect(result[1].endsWith('.woff2')).toBeTruthy();
+      expect(result[1]).toContain(cdnFontUrlWithoutHash + 'la-semi-bold');
+    });
   });
 });
