@@ -14,20 +14,25 @@ const generatePartials = async (): Promise<void> => {
   const newContent = `
 type Cdn = 'auto' | 'cn';
 
+const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
+
 type FontFaceStylesheetOptions = {
   cdn?: Cdn;
   withoutTags?: boolean;
 }
 export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
-  const url = \`\${opts?.cdn === 'cn'
-    ? '${CDN_BASE_URL_CN}'
-    : '${CDN_BASE_URL}'
-  }/${CDN_BASE_PATH_STYLES}/\${opts?.cdn === 'cn'
+  const options: FontFaceStylesheetOptions = {
+    cdn: 'auto',
+    withoutTags: false,
+    ...opts
+  };
+  const {cdn, withoutTags} = options;
+  const url = \`\${getCdnBaseUrl(cdn)}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'))}'
     : '${hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'))}'
   }\`;
 
-  return opts?.withoutTags
+  return withoutTags
     ? url
     : \`${minifyHTML('<link rel="preconnect" href="$URL">').replace('$URL', '${url}')}\`;
 }
@@ -37,13 +42,20 @@ type InitialStylesOptions = {
   prefix?: string;
 }
 export const getInitialStyles = (opts?: InitialStylesOptions): string => {
+  const options: InitialStylesOptions = {
+    withoutTags: false,
+    prefix: '',
+    ...opts
+  };
+  const {withoutTags, prefix} = options;
+
   const tagNames = [${TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
-  const styleInnerHtml = tagNames.map((x) => opts?.prefix
-    ? \`\${opts.prefix}-\${x}\`
+  const styleInnerHtml = tagNames.map((x) => prefix
+    ? \`\${prefix}-\${x}\`
     : x
   ).join(',') + '{visibility:hidden}';
 
-  return opts?.withoutTags
+  return withoutTags
     ? styleInnerHtml
     : \`<style>\${styleInnerHtml}</style>\`;
 };
@@ -73,8 +85,7 @@ export function getFontPreloadLink(opts?: FontPreloadLinkOptions): string | stri
     ...opts
   };
   const {subset, weight, cdn, withoutTags} = options;
-  const cdnBaseUrl = cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
-  // TODO: auto generate
+  const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts = {
     latin: {
       thin: '${FONTS_MANIFEST.porscheNextWLaThin.woff2}',
