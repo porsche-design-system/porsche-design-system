@@ -117,7 +117,7 @@ describe('getFontPreloadLink', () => {
     it('should return multiple links', () => {
       const result = getFontPreloadLink({ weight: ['regular', 'semi-bold'] });
       expect(result.startsWith('<link rel=prefetch href=')).toBeTruthy();
-      expect(result.endsWith('as=font type=font/woff2 crossorigin>')).toBeTruthy();
+      expect(result.endsWith('type=font/woff2 crossorigin>')).toBeTruthy();
       expect(result).toContain('.woff2 type=font/woff2 crossorigin><link rel=preload href=');
       expect(result).toContain(cdnFontUrlWithoutHash + 'la-regular');
       expect(result).toContain(cdnFontUrlWithoutHash + 'la-semi-bold');
