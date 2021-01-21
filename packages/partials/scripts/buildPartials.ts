@@ -34,7 +34,10 @@ export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string 
 
   return withoutTags
     ? url
-    : \`${minifyHTML('<link rel="preload" href="$URL" as="style" crossorigin>').replace('$URL', '${url}')}\`;
+    : \`${minifyHTML('<link rel="preload" href="$URL" as="style" type="text/css" crossorigin>').replace(
+      '$URL',
+      '${url}'
+    )}\`;
 }
 
 type InitialStylesOptions = {
