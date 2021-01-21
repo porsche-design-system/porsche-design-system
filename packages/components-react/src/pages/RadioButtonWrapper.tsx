@@ -13,10 +13,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <PRadioButtonWrapper label="Some label" hideLabel={true}>
+        <PRadioButtonWrapper label="Some label" hideLabel>
           <input type="radio" name="some-name-2" />
         </PRadioButtonWrapper>
-        <PRadioButtonWrapper label="Some label" hideLabel={true}>
+        <PRadioButtonWrapper label="Some label" hideLabel>
           <input type="radio" name="some-name-2" defaultChecked />
         </PRadioButtonWrapper>
       </div>

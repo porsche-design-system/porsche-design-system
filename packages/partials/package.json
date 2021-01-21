@@ -42,7 +42,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "2.0.0-alpha.11",
+    "@porsche-design-system/components": "2.0.0-alpha.12",
     "@porsche-design-system/utilities": "4.0.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "@types/html-minifier": "^4.0.0",
