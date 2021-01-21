@@ -1,7 +1,7 @@
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   calcLineHeightForElement,
+  getHTMLElement,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
@@ -9,7 +9,7 @@ import {
   prefix,
   transitionListener,
 } from '../../../utils';
-import { ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-button-pure',
@@ -51,7 +51,6 @@ export class ButtonPure {
 
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
-  private hasSubline: boolean;
 
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
@@ -59,9 +58,6 @@ export class ButtonPure {
     if (this.isDisabled) {
       e.stopPropagation();
     }
-  }
-  public componentWillLoad(): void {
-    this.checkHasSubline();
   }
 
   public componentDidLoad(): void {
@@ -141,8 +137,8 @@ export class ButtonPure {
     );
   }
 
-  private checkHasSubline(): void {
-    this.hasSubline = !!this.host.querySelector('[slot="subline"]');
+  private get hasSubline(): boolean {
+    return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
   private get isDisabled(): boolean {

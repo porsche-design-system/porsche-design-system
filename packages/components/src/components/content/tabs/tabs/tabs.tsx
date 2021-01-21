@@ -1,7 +1,13 @@
 import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
-import { BreakpointCustomizable, getPrefixedTagNames, prefix } from '../../../../utils';
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../../types';
-import { getHTMLElements } from '../../../../utils/selector-helper';
+import { getHTMLElements, getPrefixedTagNames, prefix } from '../../../../utils';
+import type {
+  BreakpointCustomizable,
+  TabChangeEvent,
+  TabGradientColorTheme,
+  TabSize,
+  TabWeight,
+  Theme,
+} from '../../../../types';
 
 @Component({
   tag: 'p-tabs',
@@ -78,7 +84,7 @@ export class Tabs {
 
   private defineTabsItemElements = (): void => {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
-    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
+    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem);
   };
 
   private setAccessibilityAttributes = (): void => {
@@ -103,7 +109,7 @@ export class Tabs {
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
+      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         this.defineTabsItemElements();
       }
     });

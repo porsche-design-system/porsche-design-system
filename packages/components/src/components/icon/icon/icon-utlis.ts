@@ -3,7 +3,7 @@
  * */
 
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { IconName } from '../../../types';
+import type { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);

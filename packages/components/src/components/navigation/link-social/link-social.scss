@@ -72,6 +72,8 @@
   box-sizing: border-box;
   appearance: none;
   text-decoration: none;
+  background-color: $p-color-neutral-contrast-high;
+  color: $p-color-theme-dark-default;
   transition: background-color $p-animation-hover-duration $p-animation-hover-bezier,
     color $p-animation-hover-duration $p-animation-hover-bezier;
 
@@ -79,15 +81,10 @@
     @include p-focus($p-color-theme-dark-default);
   }
 
-  &--theme-light {
-    background-color: $p-color-neutral-contrast-high;
+  &:hover,
+  &:active {
     color: $p-color-theme-dark-default;
-
-    &:hover,
-    &:active {
-      color: $p-color-theme-dark-default;
-      background-color: darken($p-color-neutral-contrast-high, 12%);
-    }
+    background-color: darken($p-color-neutral-contrast-high, 12%);
   }
 
   &--theme-dark {
