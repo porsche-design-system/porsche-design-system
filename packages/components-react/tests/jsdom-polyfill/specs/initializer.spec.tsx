@@ -1,44 +1,78 @@
-import React from 'react';
-import { componentsReady, PButton } from '@porsche-design-system/components-react';
+import React, { useState } from 'react';
+import { componentsReady, PButton, PButtonProps } from '@porsche-design-system/components-react';
 import { renderWithProvider } from '../helpers';
+import userEvent from '@testing-library/user-event';
 
-const Sample = (multipleClassNames?: boolean): JSX.Element => {
-  const className = multipleClassNames ? 'someClass anotherClass thirdClass' : 'someClass';
+const HYDRATED_CLASS = 'hydrated';
+const SOME_CLASS_1 = 'someClass1';
+const SOME_CLASS_2 = 'someClass2';
+
+const Sample = (): JSX.Element => {
+  const [counter, setCounter] = useState(0);
+
+  const props: PButtonProps = {
+    className: counter % 2 === 0 ? SOME_CLASS_1 + ' ' + SOME_CLASS_2 : SOME_CLASS_1,
+    onClick: () => {
+      setCounter((prevState) => prevState + 1);
+    },
+  };
+
   return (
-    <>
-      <PButton data-testid="host" className={className}>
-        Some label
-      </PButton>
-    </>
+    <PButton data-testid="host" {...props}>
+      Some label {counter}
+    </PButton>
   );
 };
 
 describe('PButton', () => {
-  it('should map className to class initially', () => {
-    const { getByTestId } = renderWithProvider(Sample());
-
-    expect(getByTestId('host').classList).toContain('someClass');
-  });
-  it('should add className to class after timeout', async () => {
-    const { getByTestId } = renderWithProvider(Sample());
-    const host = getByTestId('host');
-    const className = 'anotherClass';
-
+  it('should map className to class initially', async () => {
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
-    host.classList.add(className);
 
-    expect(host.classList).toContain('someClass');
-    expect(host.classList).toContain(className);
-  });
-  it('should remove className from class', () => {
-    const { getByTestId } = renderWithProvider(Sample(true));
     const host = getByTestId('host');
-    const className = 'thirdClass';
+    expect(host.classList).toContain(SOME_CLASS_1);
+  });
 
-    expect(host.classList).toContain(className);
+  it('should keep hydrated class on rerender with className change', async () => {
+    const { getByTestId } = renderWithProvider(<Sample />);
+    await componentsReady();
 
-    host.classList.remove(className);
+    const host = getByTestId('host');
+    expect(host.classList).toContain(HYDRATED_CLASS);
 
-    expect(host.classList).not.toContain(className);
+    userEvent.click(host);
+    expect(host.classList).toContain(HYDRATED_CLASS);
+  });
+
+  it('should keep added class on rerender with className change', async () => {
+    const { getByTestId } = renderWithProvider(<Sample />);
+    await componentsReady();
+
+    const host = getByTestId('host');
+    const addedClass = 'xyClass';
+
+    host.classList.add(addedClass);
+    userEvent.click(host);
+    expect(host.classList).toContain(addedClass);
+
+    host.classList.remove(addedClass);
+    userEvent.click(host);
+    expect(host.classList).not.toContain(addedClass);
+  });
+
+  it('should keep other classes if one is removed', async () => {
+    const { getByTestId } = renderWithProvider(<Sample />);
+    await componentsReady();
+
+    const host = getByTestId('host');
+
+    expect(host.classList).toContain(SOME_CLASS_1);
+    expect(host.classList).toContain(SOME_CLASS_2);
+
+    userEvent.click(host);
+
+    expect(host.classList).toContain(HYDRATED_CLASS);
+    expect(host.classList).toContain(SOME_CLASS_1);
+    expect(host.classList).not.toContain(SOME_CLASS_2);
   });
 });
