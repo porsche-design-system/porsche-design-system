@@ -1,0 +1,96 @@
+import { TagName } from '@porsche-design-system/components/dist/types/tags';
+import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
+import { InputParser } from './InputParser';
+import path from 'path';
+import fs from 'fs';
+
+const BASE_DIR = path.normalize('..');
+const WRAPPER_DIR = './projects/components-wrapper/src/lib';
+
+export abstract class AbstractWrapperGenerator {
+  protected abstract packageDir: string;
+  private libDir: string = '';
+  private componentsDir: string = '';
+
+  protected inputParser = InputParser.Instance;
+  private dataStructureBuilder = DataStructureBuilder.Instance;
+  private intrinsicElements = this.inputParser.getIntrinsicElements();
+
+  private generateDir(dirName: string): void {
+    if (!fs.existsSync(dirName)) {
+      fs.mkdirSync(dirName);
+    }
+  }
+
+  private generateDirs(): void {
+    this.libDir = path.resolve(BASE_DIR, this.packageDir, WRAPPER_DIR);
+    this.componentsDir = path.resolve(this.libDir, 'components');
+
+    this.generateDir(this.libDir);
+    this.generateDir(this.componentsDir);
+  }
+
+  protected generate(): void {
+    console.log(`Generating wrappers for ${this.packageDir}`);
+    this.generateDirs();
+    this.generateSharedTypes();
+    this.generateComponentWrappers();
+    this.generateBarrelFile();
+    console.log(`Generated wrappers for ${this.packageDir}`);
+  }
+
+  private generateSharedTypes(): void {
+    const content = this.inputParser.getSharedTypes();
+
+    const targetFileName = 'types.ts';
+    const targetFile = path.resolve(this.libDir, targetFileName);
+
+    fs.writeFileSync(targetFile, content);
+    console.log(`Generated shared types: ${targetFileName}`);
+  }
+
+  private generateBarrelFile(): void {
+    const targetFileName = 'index.ts';
+    const targetFile = path.resolve(this.componentsDir, targetFileName);
+    const content = Object.keys(this.intrinsicElements)
+      .map((component) => `export * from './${this.getComponentFileName(component as TagName, true)}';`)
+      .join('\n');
+
+    fs.writeFileSync(targetFile, content);
+    console.log(`Generated barrel:  ${targetFileName}`);
+  }
+
+  private generateComponentWrappers(): void {
+    Object.entries(this.intrinsicElements)
+      // .filter((item, index) => index === 11) // temporary filter for easier development
+      .forEach(([component, interfaceName]) => {
+        this.generateComponentWrapper(component as TagName);
+      });
+  }
+
+  private generateComponentWrapper(component: TagName): void {
+    const extendedProps = this.dataStructureBuilder.convertToExtendedProps(component);
+    const rawComponentInterface = this.inputParser.getRawComponentInterface(component);
+    const nonPrimitiveTypes = this.dataStructureBuilder.extractNonPrimitiveTypes(rawComponentInterface);
+
+    const importsDefinition = this.generateImports(component, extendedProps, nonPrimitiveTypes);
+    const propsDefinition = this.generateProps(component, rawComponentInterface);
+    const wrapperDefinition = this.generateComponent(component, extendedProps);
+
+    const content = `${importsDefinition}\n
+${propsDefinition}\n
+${wrapperDefinition}`;
+
+    const targetFileName = this.getComponentFileName(component);
+    const targetFile = path.resolve(this.componentsDir, targetFileName);
+
+    fs.writeFileSync(targetFile, content);
+    console.log(`Generated wrapper: ${targetFileName}`);
+  }
+
+  // prettier-ignore
+  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
+  public abstract generateProps(component: TagName, rawComponentInterface: string): string;
+  public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
+  public abstract getComponentFileName(component: TagName, withOutExtension?: boolean): string;
+}

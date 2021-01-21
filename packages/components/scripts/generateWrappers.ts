@@ -1,7 +1,8 @@
-import { ReactWrapperGenerator } from './wrapper-generator/ReactWrapperGenerator';
+import { WrapperGenerator } from './wrapper-generator';
 
 const generateWrappers = (): void => {
-  new ReactWrapperGenerator();
+  const generator = new WrapperGenerator();
+  generator.generate('react');
 };
 
 generateWrappers();
