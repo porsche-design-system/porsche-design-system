@@ -99,7 +99,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 <head>
   // without link tags
-  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>" as="style" crossorigin>
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>" as="style" type="text/css" crossorigin>
 </head>
 ```
 
