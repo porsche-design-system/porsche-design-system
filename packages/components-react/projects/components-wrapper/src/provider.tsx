@@ -1,5 +1,5 @@
 import type { MutableRefObject, PropsWithChildren } from 'react';
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useMemo } from 'react';
 import { load } from '@porsche-design-system/components-js';
 
 const PorscheDesignSystemContext = createContext({ prefix: undefined });
@@ -39,3 +39,33 @@ export const useEventCallback = (
 };
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
+
+let initialComponentClassName: string = '';
+
+export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) =>
+  useMemo(() => {
+    const { current } = ref;
+
+    if (current) {
+      // classes previously set by component
+      const initialComponentClassArray = initialComponentClassName.split(' ');
+
+      // all classes not set by component
+      const domClassArray = Array.from(ref.current.classList).filter((x) => !initialComponentClassArray.includes(x));
+
+      // all classes set by component
+      const componentClassArray = className.split(' ');
+      const classArray = domClassArray.concat(componentClassArray).filter((x, i, a) => a.indexOf(x) === i);
+
+      // the react component does not override DOMTokenList when className attribute changes.
+      ref.current.classList.remove(...initialComponentClassArray.concat(domClassArray));
+      ref.current.classList.add(...classArray);
+
+      initialComponentClassName = className;
+
+      return classArray.join(' ');
+    } else {
+      initialComponentClassName = className;
+      return className;
+    }
+  }, [className]);
