@@ -96,27 +96,12 @@ export function getFontPreloadLink(opts?: FontPreloadLinkOptions): string | stri
     }
   };
 
-  if (Array.isArray(weight)) {
-    const urls = [];
-    let links = '';
-    for (let w of weight) {
-      urls.push(\`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][w]}\`);
-    }
-    for (let url of urls) {
-      links += \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
-        '$URL',
-        '${url}'
-      )}\`
-    }
-    return withoutTags ? urls : links;
-  }
+  const urls = weight.map((item) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][item]}\`);
+  const links = urls.map((item) => \`${minifyHTML(
+    '<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />'
+  ).replace('$URL', '${item}')}\`).join('');
 
-  const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`;
-  const link = \`${minifyHTML('<link rel="preconnect" href="$URL" as="font" type="font/woff2" crossorigin />').replace(
-    '$URL',
-    '${url}'
-  )}\`;
-  return withoutTags ? url : link;
+  return withoutTags ? urls : links;
 };
 `;
 
