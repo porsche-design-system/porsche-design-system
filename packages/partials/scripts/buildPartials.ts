@@ -34,7 +34,7 @@ export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string 
 
   return withoutTags
     ? url
-    : \`${minifyHTML('<link rel="prefetch" href="$URL">').replace('$URL', '${url}')}\`;
+    : \`${minifyHTML('<link rel="preload" href="$URL" as="style">').replace('$URL', '${url}')}\`;
 }
 
 type InitialStylesOptions = {
@@ -109,7 +109,7 @@ export function getFontPreloadLink(opts?: FontPreloadLinkOptions): string | stri
 
   const urls = weight.map((item) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][item]}\`);
   const links = urls.map((item) => \`${minifyHTML(
-    '<link rel="prefetch" href="$URL" type="font/woff2" crossorigin />'
+    '<link rel="preload" href="$URL" as="font" type="font/woff2" crossorigin />'
   ).replace('$URL', '${item}')}\`).join('');
 
   return withoutTags ? urls : links;
