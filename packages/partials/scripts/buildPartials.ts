@@ -11,19 +11,14 @@ const generatePartials = async (): Promise<void> => {
   const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
-  // TODO: reuse types from types.d.ts
   const newContent = `
-type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
-type FontSubset = 'latin' | 'greek' | 'cyril';
-type Options = {
-  cdn?: 'auto' | 'cn';
-  withoutTags?: boolean;
-  prefix?: string;
-  weight?: FontWeight | FontWeight[];
-  subset?: FontSubset;
-};
+type Cdn = 'auto' | 'cn';
 
-export const getFontFaceStylesheet = (opts?: Pick<Options, 'cdn' | 'withoutTags'>): string => {
+type FontFaceStylesheetOptions = {
+  cdn?: Cdn;
+  withoutTags?: boolean;
+}
+export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
   const url = \`\${opts?.cdn === 'cn'
     ? '${CDN_BASE_URL_CN}'
     : '${CDN_BASE_URL}'
@@ -37,7 +32,11 @@ export const getFontFaceStylesheet = (opts?: Pick<Options, 'cdn' | 'withoutTags'
     : \`${minifyHTML('<link rel="preconnect" href="$URL">').replace('$URL', '${url}')}\`;
 }
 
-export const getInitialStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>): string => {
+type InitialStylesOptions = {
+  withoutTags?: boolean;
+  prefix?: string;
+}
+export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const tagNames = [${TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
   const styleInnerHtml = tagNames.map((x) => opts?.prefix
     ? \`\${opts.prefix}-\${x}\`
@@ -49,29 +48,31 @@ export const getInitialStyles = (opts?: Pick<Options, 'withoutTags' | 'prefix'>)
     : \`<style>\${styleInnerHtml}</style>\`;
 };
 
-type Options1 = {
-  cdn?: 'auto' | 'cn';
-  withoutTags?: boolean;
-  weight?: FontWeight;
-  subset?: FontSubset;
-};
-
-type Options2 = {
-  cdn?: 'auto' | 'cn';
-  withoutTags?: boolean;
+type FontSubset = 'latin' | 'greek' | 'cyril';
+type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
+type FontPreloadLinkOptions = {
+  cdn?: Cdn;
+  withoutTags?: true | false;
   weight?: FontWeight[];
   subset?: FontSubset;
+}
+type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
+  withoutTags?: false;
 };
-export function getFontPreloadLink(opts?: Options1): string;
-export function getFontPreloadLink(opts?: Options2): string[];
-export function getFontPreloadLink(opts?: Options1 | Options2): string | string[] {
-  const options: Options1 | Options2 = {
+type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
+  withoutTags?: true;
+};
+export function getFontPreloadLink(opts?: FontPreloadLinkOptionsWithTags): string;
+export function getFontPreloadLink(opts?: FontPreloadLinkOptionsWithoutTags): string[];
+export function getFontPreloadLink(opts?: FontPreloadLinkOptions): string | string[] {
+  const options: FontPreloadLinkOptions = {
     subset: 'latin',
-    weight: 'regular',
+    weight: ['regular'],
     cdn: 'auto',
+    withoutTags: false,
     ...opts
   };
-  const {subset, weight, cdn} = options;
+  const {subset, weight, cdn, withoutTags} = options;
   const cdnBaseUrl = cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
   // TODO: auto generate
   const fonts = {
@@ -107,7 +108,7 @@ export function getFontPreloadLink(opts?: Options1 | Options2): string | string[
         '${url}'
       )}\`
     }
-    return opts?.withoutTags ? urls : links;
+    return withoutTags ? urls : links;
   }
 
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`;
@@ -115,7 +116,7 @@ export function getFontPreloadLink(opts?: Options1 | Options2): string | string[
     '$URL',
     '${url}'
   )}\`;
-  return opts?.withoutTags ? url : link;
+  return withoutTags ? url : link;
 };
 `;
 
