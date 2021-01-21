@@ -27,7 +27,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
-    <%= require('@porsche-design-system/components-js/partials').getFontPreloadLink({ subset: 'latin', weight: [ 'regular', 'semi-bold' ] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getFontPreloadLink({ weight: ['regular', 'semi-bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
