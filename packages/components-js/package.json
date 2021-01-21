@@ -21,7 +21,7 @@
     "build:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
     "build:cleanEnvironment": "rm -f ../../cdn.config.js && rm -rf ./projects/components-wrapper/environment.js",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
-    "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->|<style>(p-[a-z-]*,?)*\\{visibility:hidden\\}<\\/style>' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
+    "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" public/index.html",
     "test": "yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 30000 http-get://localhost:8575 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 30000 http-get://localhost:8575 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
