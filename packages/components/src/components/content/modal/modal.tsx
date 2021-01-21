@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getPrefixedTagNames, isIos, prefix } from '../../../utils';
+import { getHTMLElements, getPrefixedTagNames, isIos, prefix } from '../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -115,7 +115,7 @@ export class Modal {
       Object.values(PrefixedTagNames).join(',') +
       `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
 
-    this.focusableElements = [this.closeBtn].concat(Array.from(this.host.querySelectorAll(selector)));
+    this.focusableElements = [this.closeBtn].concat(Array.from(getHTMLElements(this.host, selector)));
   };
 
   private setScrollLock = (lock: boolean): void => {

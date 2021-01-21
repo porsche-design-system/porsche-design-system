@@ -136,7 +136,6 @@ module.exports = {
       },
     ],
     'no-debugger': 'error',
-    'no-duplicate-imports': 'error',
     'no-empty': 'error',
     'no-eval': 'error',
     'no-extra-semi': 'off',
