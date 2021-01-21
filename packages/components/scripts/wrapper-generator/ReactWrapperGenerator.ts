@@ -21,12 +21,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const reactImports = [
       'HTMLAttributes',
+      'useRef',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
-      ...(hasEventProps ? ['useRef'] : []),
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
     const providerImports = [
       'usePrefix',
+      'getMergedClass',
       ...(hasEventProps ? ['useEventCallback'] : []),
       ...(canBeObject ? ['jsonStringify'] : []),
     ];
@@ -52,7 +53,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    let wrapperProps = 'props';
+    let wrapperProps = '{ className, ...rest }';
     let componentHooks = '';
     let componentProps = '';
     let componentAttributes = '{...props}';
@@ -62,36 +63,31 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
 
     if (propsToDestructure.length > 0) {
-      wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, ...rest }`;
+      wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, className, ...rest }`;
     }
 
     const propMapping: string[] = [
-      ...(propsToDestructure.length > 0 ? ['...rest'] : []),
+      '...rest',
+      "'class': getMergedClass(elementRef, className)",
+      "'ref': elementRef",
       ...propsToMap.map(
         ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
       ),
     ];
+
+    componentHooks = `const elementRef = useRef<HTMLElement>();`;
 
     if (propsToEventListener.length > 0) {
       const eventHooks = propsToEventListener
         .map(({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`)
         .join('\n');
 
-      propMapping.push('ref: elementRef');
-
-      componentHooks = `const elementRef = useRef<HTMLElement>();
-  ${eventHooks}\n`;
+      componentHooks = componentHooks + `\n  ${eventHooks}\n`;
     }
 
-    if (propMapping.length > 0) {
-      componentProps = `const props = {
+    componentProps = `const props = {
     ${propMapping.join(',\n    ')}
   };\n`;
-    } else {
-      if (propsToDestructure.length > 0) {
-        componentAttributes = '{...rest}';
-      }
-    }
 
     const propsName = this.generatePropsName(component);
     const wrapperPropsType = this.inputParser.canHaveChildren(component)
