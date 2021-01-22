@@ -33,8 +33,7 @@
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www && yarn clean:build:react",
-    "clean:build:react": "rm -rf ../components-react/projects/components-wrapper/src/lib"
+    "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./loader && rm -rf ./www"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.1.0",
