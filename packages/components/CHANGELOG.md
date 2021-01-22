@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Partial function `getFontPreloadLink()` to prevent **Flash of Unstyled Text** (FOUT)
+- Partial function `getFontLinks()` to prevent **Flash of Unstyled Text** (FOUT)
 
 ### [2.0.0-alpha.12] - 2021-01-20
 
