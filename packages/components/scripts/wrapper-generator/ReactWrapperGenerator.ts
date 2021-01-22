@@ -4,12 +4,7 @@ import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
-  protected packageDir: string = 'components-react';
-
-  constructor() {
-    super();
-    super.generate();
-  }
+  protected packageDir = 'components-react';
 
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
@@ -47,8 +42,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const content = `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`
-      .replace(/    |\t\t/g, '  ')
-      .replace(/(  |\t)};/g, '};');
+      .replace(/"(\w+)"/g, '$1') // clean double quotes around interface/type keys
+      .replace(/    |\t\t/g, '  ') // adjust indentation
+      .replace(/(  |\t)};/g, '};'); // adjust indentation at closing };
     return content;
   }
 
@@ -57,46 +53,42 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
 
-    const wrapperProps = [
-      ...(propsToDestructure.length > 0 ? propsToDestructure.map(({ key }) => ` ${key}`) : []),
-      ' className',
-      ' ...rest ',
-    ];
+    const wrapperPropsArr: string[] = [...propsToDestructure.map(({ key }) => key), 'className', '...rest'];
+    const wrapperProps = `{ ${wrapperPropsArr.join(', ')} }`;
 
     const propsName = this.generatePropsName(component);
     const wrapperPropsType = this.inputParser.canHaveChildren(component)
       ? `PropsWithChildren<${propsName}>`
       : propsName;
 
-    const componentHooks = [
+    const componentHooksArr: string[] = [
       'const elementRef = useRef<HTMLElement>();',
-      ...(propsToEventListener.length > 0
-        ? propsToEventListener.map(
-            ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
-          )
-        : []),
-      `\n  const Tag = usePrefix('${component}');`,
+      ...propsToEventListener.map(
+        ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
+      ),
+      `const Tag = usePrefix('${component}');`,
     ];
+    const componentHooks = componentHooksArr.join('\n  ');
 
-    const propMapping: string[] = [
+    const componentPropsArr: string[] = [
       '...rest',
-      "'class': useMergedClass(elementRef, className)",
-      "'ref': elementRef",
       ...propsToMap.map(
         ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
       ),
+      'class: useMergedClass(elementRef, className)',
+      'ref: elementRef',
     ];
 
     const componentProps = `const props = {
-    ${propMapping.join(',\n    ')}
-  };\n`;
+    ${componentPropsArr.join(',\n    ')}
+  };`;
 
-    const componentAttributes = '{...props}';
+    return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
+  ${componentHooks}
 
-    return `export const ${pascalCase(component)} = ({${wrapperProps}}: ${wrapperPropsType}): JSX.Element => {
-  ${componentHooks.join('\n')}
   ${componentProps}
-  return <Tag ${componentAttributes} />;
+
+  return <Tag {...props} />;
 };`;
   }
 }
