@@ -1,4 +1,4 @@
-import { getFontFaceStylesheet, getInitialStyles, getFontPreloadLink } from '../../../src';
+import { getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
 
 describe('getFontFaceStylesheet', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
@@ -73,7 +73,7 @@ describe('getInitialStyles', () => {
   });
 });
 
-describe('getFontPreloadLink', () => {
+describe('getFontLinks', () => {
   const cdnFontUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-`;
   const cdnFontUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-w-`;
   const linkStartsWith = '<link rel=preload href=';
@@ -83,14 +83,14 @@ describe('getFontPreloadLink', () => {
 
   describe('url with tag', () => {
     it('should return default link', () => {
-      const result = getFontPreloadLink();
+      const result = getFontLinks();
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result).toContain(cdnFontUrlWithoutHash + 'la-regular');
     });
 
     it('should return default China CDN link', () => {
-      const result = getFontPreloadLink({ cdn: 'cn' });
+      const result = getFontLinks({ cdn: 'cn' });
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result).toContain(cdnFontUrlCnWithoutHash + 'la-regular');
@@ -112,7 +112,7 @@ describe('getFontPreloadLink', () => {
     ])(
       'should return %s subset and %s weight link',
       (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
-        const result = getFontPreloadLink({ subset, weight: [weight] });
+        const result = getFontLinks({ subset, weight: [weight] });
         expect(result.startsWith(linkStartsWith)).toBeTruthy();
         expect(result.endsWith(linkEndsWith)).toBeTruthy();
         expect(result).toContain(cdnFontUrlWithoutHash + expected);
@@ -120,7 +120,7 @@ describe('getFontPreloadLink', () => {
     );
 
     it('should return multiple links', () => {
-      const result = getFontPreloadLink({ weight: ['regular', 'semi-bold'] });
+      const result = getFontLinks({ weight: ['regular', 'semi-bold'] });
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result).toContain('><link');
@@ -129,7 +129,7 @@ describe('getFontPreloadLink', () => {
     });
 
     it('should be minified', () => {
-      const result = getFontPreloadLink();
+      const result = getFontLinks();
       expect(result).not.toContain('"');
       expect(result).not.toContain("'");
     });
@@ -137,7 +137,7 @@ describe('getFontPreloadLink', () => {
 
   describe('url without tag', () => {
     it('should return default url', () => {
-      const result = getFontPreloadLink({ withoutTags: true });
+      const result = getFontLinks({ withoutTags: true });
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -145,7 +145,7 @@ describe('getFontPreloadLink', () => {
     });
 
     it('should return default China CDN url', () => {
-      const result = getFontPreloadLink({ withoutTags: true, cdn: 'cn' });
+      const result = getFontLinks({ withoutTags: true, cdn: 'cn' });
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -168,7 +168,7 @@ describe('getFontPreloadLink', () => {
     ])(
       'should return %s subset and %s weight url',
       (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
-        const result = getFontPreloadLink({ withoutTags: true, subset, weight: [weight] });
+        const result = getFontLinks({ withoutTags: true, subset, weight: [weight] });
         expect(result.length).toBe(1);
         expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
         expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -177,7 +177,7 @@ describe('getFontPreloadLink', () => {
     );
 
     it('should return multiple urls', () => {
-      const result = getFontPreloadLink({ withoutTags: true, weight: ['regular', 'semi-bold'] });
+      const result = getFontLinks({ withoutTags: true, weight: ['regular', 'semi-bold'] });
       expect(result.length).toBe(2);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
