@@ -20,6 +20,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
+
     const providerImports = [
       'usePrefix',
       'useMergedClass',
@@ -28,10 +29,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
 
-    let importsFromTypes = '';
-    if (nonPrimitiveTypes.length > 0) {
-      importsFromTypes = `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`;
-    }
+    const importsFromTypes = nonPrimitiveTypes.length
+      ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
+      : '';
 
     return [importsFromReact, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
   }

@@ -14,7 +14,7 @@ export abstract class AbstractWrapperGenerator {
 
   protected inputParser = InputParser.Instance;
   private dataStructureBuilder = DataStructureBuilder.Instance;
-  private intrinsicElements = this.inputParser.getIntrinsicElements();
+  protected intrinsicElements = this.inputParser.getIntrinsicElements();
 
   private generateDir(dirName: string): void {
     fs.rmdirSync(dirName, { recursive: true });
@@ -51,9 +51,13 @@ export abstract class AbstractWrapperGenerator {
   private generateBarrelFile(): void {
     const targetFileName = 'index.ts';
     const targetFile = path.resolve(this.componentsDir, targetFileName);
-    const content = Object.keys(this.intrinsicElements)
-      .map((component) => `export * from './${this.getComponentFileName(component as TagName, true)}';`)
+    const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
+
+    const componentExports = componentTagNames
+      .map((component) => `export * from './${this.getComponentFileName(component, true)}';`)
       .join('\n');
+
+    const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
 
     fs.writeFileSync(targetFile, content);
     console.log(`Generated barrel: ${targetFileName}`);
@@ -88,6 +92,11 @@ ${wrapperDefinition}`;
 
     fs.writeFileSync(targetFile, content);
     // console.log(`Generated wrapper: ${targetFileName}`);
+  }
+
+  // helper to possible inject additional contents into barrel file
+  public getAdditionalBarrelFileContent(): string {
+    return '';
   }
 
   // prettier-ignore
