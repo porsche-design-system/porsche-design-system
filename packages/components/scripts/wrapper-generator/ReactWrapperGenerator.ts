@@ -58,9 +58,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
 
     const wrapperProps = [
-      ...(propsToDestructure.length > 0 ? propsToDestructure.map(({ key }) => key) : []),
-      'className',
-      '...rest',
+      ...(propsToDestructure.length > 0 ? propsToDestructure.map(({ key }) => ` ${key}`) : []),
+      ' className',
+      ' ...rest ',
     ];
 
     const propsName = this.generatePropsName(component);
@@ -69,10 +69,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       : propsName;
 
     const componentHooks = [
-      'const elementRef = useRef<HTMLElement>();\n',
+      'const elementRef = useRef<HTMLElement>();',
       ...(propsToEventListener.length > 0
         ? propsToEventListener.map(
-            ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);\n`
+            ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
           )
         : []),
       `\n  const Tag = usePrefix('${component}');`,
@@ -93,8 +93,8 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentAttributes = '{...props}';
 
-    return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
-  ${componentHooks}
+    return `export const ${pascalCase(component)} = ({${wrapperProps}}: ${wrapperPropsType}): JSX.Element => {
+  ${componentHooks.join('\n')}
   ${componentProps}
   return <Tag ${componentAttributes} />;
 };`;
