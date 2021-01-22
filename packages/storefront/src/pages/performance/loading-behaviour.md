@@ -1,23 +1,25 @@
 # Loading Behaviour
 
 **Unstyled content** when opening an application or website creates a bad first impression.
-To prevent this, the Porsche Design System offers various solutions to ensure all necessary Porsche Design System fonts and components are fully loaded.
+To prevent this, the Porsche Design System offers various **partials** as part of the `@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts and components are fully loaded.
 
-On this page you find detailed instructions on how to prevent **Flash of Unstyled Content** (FOUC) and **Flash of Unstyled Text** (FOUT) where we provide options to
+On this page you find detailed instructions on how to prevent **Flash of Unstyled Content** (FOUC) and **Flash of Unstyled Text** (FOUT) to
 boost your application.
 
-## Unstyled Porsche Design System Components (FOUC)
+## Flash of Unstyled Content (FOUC)
 
-If you use `Porsche Design System` components, we take care that your application only renders a component if it is fully styled.
+If you use `Porsche Design System` components, we take care that your application only renders those if they are fully styled.
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
-There are two ways to get rid of FOUC: via **partials** or as **static CSS snippet**. 
-We provide partials in our `@porsche-design-system/components-{js|angular|react}/partials` package for you to import them into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getInitialStyles()` which needs to be imported into the `<head>` of your `index.html`.
 
-### Example usage of  partials with template 
+##### Supported options:
+- **prefix:** string = ''
+- **withoutTags**: boolean = false
 
-The example shows how to implement a partial in a webpack project. The core styles partial has following parameters (optional)  
-`getInitialStyles({ withoutTags: true, prefix: 'custom-prefix' })`
+#### Example usage with dynamic template 
+
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
@@ -40,11 +42,9 @@ The example shows how to implement a partial in a webpack project. The core styl
 </head>
 ``` 
 
-### Example usage of partials with placeholder 
+#### Alternative: Example usage with placeholder 
 
-If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script. 
-You can also pass following parameters (optional)  
-`getInitialStyles({ withoutTags: true, prefix: 'custom-prefix' })`
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
 
 ```html
 // index.html
@@ -55,54 +55,59 @@ You can also pass following parameters (optional)
 ``` 
 
 ```json
-// package.json
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getInitialStyles())') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->|<style>(p-[a-z-]*,?)*{visibility:hidden}<\\/style>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 } 
 ``` 
 
-### Example usage with static CSS snippet
-If you are not able to use **partials** use the **static** solution. Just copy the whole `<style>` tag from the static example and put it into the `<head>`
-of the `index.html` of your application. While using the static solution, make sure to list every component you use and 
-**update the list** when you upgrade the version of the `Porsche Design Sytem` with new components introduced. Be aware if using custom prefixed components to adapt the style names with your custom prefix. 
-
-```html
-// index.html
-
-<head>
-  {{initialStyles}}
-</head>
-```
 ---
 
-## Flash of Unstyled Text
+## Flash of Unstyled Text (FOUT)
 
 The Porsche Design System provides font face definitions and loads all needed fonts dynamically from our CDN. Until the fonts are fully loaded
 the components use the fallback font and you might see a little change until the loading is finished.
 
-### Inject Porsche Design System Font Stylesheet
+### Inject Porsche Design System Font Face Stylesheet
 
-If you use the Porsche Design System components we inject the font-stylesheet with all font-face definitions into the head of your application as soon as our core is loaded.
-Regarding which font-styles do you use on your page, these fonts get downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 
+If you use the Porsche Design System components we inject a stylesheet with all font-face definitions into the head of your application as soon as our core is loaded.
+Regarding which font-styles you use on your page, these fonts are downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 
 To improve rendering we recommend that you load the stylesheet on your own. 
 
-We provide the URL to our stylesheet in our `@porsche-design-system/assets` package with the name `FONT_FACE_CDN_URL`. We also provide a ready to use partial in the `@porsche-design-system/components-{js|angular|react}/partials` package called `getFontFaceStylesheet()`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontFaceStylesheet()` which needs to be imported into the `<head>` of your `index.html`.
 
-#### Example with partials
+##### Supported options:
+- **cdn:** 'auto' | 'cn' = 'auto'
+- **withoutTags**: boolean = false
+
+#### Example usage with dynamic template
+
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
 
 <head>
-  // Using template syntax
+  // without parameters
   <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet() %>
+</head>
+
+<head>
+  // force using China CDN
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
+</head>
+
+<head>
+  // without link tags
+  <link rel="stylesheet" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ withoutTags: true }) %>" type="text/css" crossorigin>
 </head>
 ```
 
+#### Alternative: Example usage with placeholder
 
-#### Example with placeholder 
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
 
 ```html
 // index.html
@@ -113,66 +118,68 @@ We provide the URL to our stylesheet in our `@porsche-design-system/assets` pack
 ``` 
 
 ```json
-// package.json
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "partial=$(node -e 'console.log(require(\"@porsche-design-system/components-{js|angular|react}/partials\").getFontFaceStylesheet())') && regex='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->|<link rel=\"?stylesheet\"? href=\"?https:\\/\\/cdn\\.ui\\.porsche\\.(com|cn)\\/porsche-design-system\\/styles\\/font-face\\.min\\..*\\.css\"?>' && sed -i '' -E -e \"s@$regex@$partial@\" src/index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_FACE_STYLESHEET-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontFaceStylesheet())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 } 
-``` 
-
-#### Example with static path
-
-If you use the static solution you have to update the `<Link>` if changes are made in our font face definitions. But don't worry, we don't remove old files
-to grant you a valid fallback.
-
-```html
-// index.html
-
-<head>
-  // Make sure to watch your console output. We notify you about any changes.
-  {{fontFaceStylesheet}}
-</head>
 ```
 
 ### Preload specific font files
 
-Fonts should be loaded as soon as possible but only those which are needed. The Porsche Design System is not able to determine which components
-you use on the site and which fonts we have to provide initially, but we export all resources you need to preload fonts and optimize **Flash of Unstyled Tex** in your application.
+Fonts should be loaded as soon as possible but only those which are needed. 
+The Porsche Design System is not able to determine which components you use on the site and which fonts to be provided **initially**.
+That's why the font face stylesheet of the Porsche Design System handles the correct font to be loaded by unicode-range definition but during runtime and after bootstrapping of your application, which might result in FOUT.
 
-We provide all URLs that you need in the `@porsche-design-system/assets` package.
-Use the const `FONTS_CDN_BASE_URL` which is the basic path to the CDN and the object `FONTS_MANIFEST` which contains the filenames of all `fonts` 
-and according `weights` in either `woff` or `woff2` file format. Combine the path and filename to preload them via `href` with a `<link>` tag at the head of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontLinks()` which needs to be imported into the `<head>` of your `index.html`.
 
-#### Example preload
+##### Supported options:
+- **subset**: 'latin' | 'greek' | 'cyril' = 'latin'
+- **weight**: ('thin' | 'regular' | 'semi-bold' | 'bold')[] = ['regular']
+- **cdn:** 'auto' | 'cn' = 'auto'
+- **withoutTags**: boolean = false
+
+#### Example usage with dynamic template
+
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
 
 <head>
- <link
-   rel="preload"
-   href="path/to/webfont/nameOfWebFontFile"
-   as="font"
-   type="font/woff2"
-   crossorigin
- />
+  // Using template syntax (make sure to preload only fonts which are really needed initially!)
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weight: ['regular', 'semi-bold'] }) %>
+</head>
+
+<head>
+  // force using China CDN
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ cdn: 'cn' }) %>
+</head>
+
+<head>
+  // without link tags
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ withoutTags: true })[0] %>" as="font" type="font/woff2" crossorigin>
 </head>
 ```
 
-<script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
-  
-  @Component
-  export default class FlashOfUnstyledContent extends Vue {
-    public fontFaceStylesheet = getFontFaceStylesheet();
-    public initialStyles = getInitialStyles()
-        .replace('>', '>\n    ') // add new line and some white space after '>'
-        .replace(/,/g, ',\n    ') // add new line and some white space after ','
-        .replace('}', '}\n  ') // add new line and some white space after '}'
-        .replace(/({|}|:)/g, ' $1 ') // add space before and after '{', '}', ':'
-        .replace(' :', ':'); // remove space before ':'
-  }
-</script>
+#### Alternative: Example usage with placeholder
+
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
+
+```html
+// index.html
+
+<head>
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->
+</head>
+``` 
+
+```json
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weight: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+}
+``` 
