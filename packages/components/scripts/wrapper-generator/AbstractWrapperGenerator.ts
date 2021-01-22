@@ -5,10 +5,10 @@ import path from 'path';
 import fs from 'fs';
 
 const BASE_DIR = path.normalize('..');
-const WRAPPER_DIR = './projects/components-wrapper/src/lib';
 
 export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
+  protected projectDir: string = 'components-wrapper';
   private libDir: string = '';
   private componentsDir: string = '';
 
@@ -22,20 +22,20 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private generateDirs(): void {
-    this.libDir = path.resolve(BASE_DIR, this.packageDir, WRAPPER_DIR);
+    this.libDir = path.resolve(BASE_DIR, this.packageDir, 'projects', this.projectDir, 'src/lib');
     this.componentsDir = path.resolve(this.libDir, 'components');
 
     this.generateDir(this.libDir);
     this.generateDir(this.componentsDir);
   }
 
-  protected generate(): void {
-    console.log(`Generating wrappers for ${this.packageDir}`);
+  public generate(): void {
+    console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
     this.generateDirs();
     this.generateSharedTypes();
     this.generateComponentWrappers();
     this.generateBarrelFile();
-    console.log(`Generated wrappers for ${this.packageDir}`);
+    console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
   }
 
   private generateSharedTypes(): void {
@@ -56,15 +56,18 @@ export abstract class AbstractWrapperGenerator {
       .join('\n');
 
     fs.writeFileSync(targetFile, content);
-    console.log(`Generated barrel:  ${targetFileName}`);
+    console.log(`Generated barrel: ${targetFileName}`);
   }
 
   private generateComponentWrappers(): void {
-    Object.entries(this.intrinsicElements)
-      // .filter((item, index) => index === 11) // temporary filter for easier development
-      .forEach(([component, interfaceName]) => {
-        this.generateComponentWrapper(component as TagName);
+    const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
+    componentTagNames
+      // .filter((_, index) => index === 11) // temporary filter for easier development
+      .forEach((component) => {
+        this.generateComponentWrapper(component);
       });
+
+    console.log(`Generated ${componentTagNames.length} components`);
   }
 
   private generateComponentWrapper(component: TagName): void {
@@ -84,7 +87,7 @@ ${wrapperDefinition}`;
     const targetFile = path.resolve(this.componentsDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
-    console.log(`Generated wrapper: ${targetFileName}`);
+    // console.log(`Generated wrapper: ${targetFileName}`);
   }
 
   // prettier-ignore
