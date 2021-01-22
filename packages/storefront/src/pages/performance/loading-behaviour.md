@@ -17,9 +17,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 - **prefix:** string = ''
 - **withoutTags**: boolean = false
 
-#### Example usage with template 
+#### Example usage with dynamic template 
 
-The example shows how to implement the partial in a webpack project.
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
@@ -42,9 +42,9 @@ The example shows how to implement the partial in a webpack project.
 </head>
 ``` 
 
-#### Example usage with placeholder 
+#### Alternative: Example usage with placeholder 
 
-If you don't use webpack or your bundler does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
 
 ```html
 // index.html
@@ -82,7 +82,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 - **cdn:** 'auto' | 'cn' = 'auto'
 - **withoutTags**: boolean = false
 
-#### Example usage with template
+#### Example usage with dynamic template
+
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
@@ -103,7 +105,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 </head>
 ```
 
-#### Example usage with placeholder
+#### Alternative: Example usage with placeholder
+
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
 
 ```html
 // index.html
@@ -136,7 +140,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 - **cdn:** 'auto' | 'cn' = 'auto'
 - **withoutTags**: boolean = false
 
-#### Example usage with template
+#### Example usage with dynamic template
+
+The example shows how to implement the partial in a webpack (or similar) project.
 
 ```html
 // index.html
@@ -157,7 +163,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 </head>
 ```
 
-#### Example usage with placeholder
+#### Alternative: Example usage with placeholder
+
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
 
 ```html
 // index.html
