@@ -3,8 +3,8 @@ import { getFontFaceStylesheet, getInitialStyles, getFontPreloadLink } from '../
 describe('getFontFaceStylesheet', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
   const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/styles/font-face.min`;
-  const linkStartsWith = '<link rel=preload href=';
-  const linkEndsWith = 'as=style type=text/css crossorigin>';
+  const linkStartsWith = '<link rel=stylesheet href=';
+  const linkEndsWith = 'type=text/css crossorigin>';
   const urlStartsWith = 'https://';
   const urlEndsWith = '.css';
 
