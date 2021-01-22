@@ -42,7 +42,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const content = `export type ${this.generatePropsName(component)} = HTMLAttributes<{}> & ${rawComponentInterface};`
-      .replace(/"(\w+)"/g, '$1') // clean double quotes around interface/type keys
+      .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
       .replace(/    |\t\t/g, '  ') // adjust indentation
       .replace(/(  |\t)};/g, '};'); // adjust indentation at closing };
     return content;
