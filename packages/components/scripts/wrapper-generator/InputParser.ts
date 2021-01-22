@@ -1,6 +1,6 @@
 import { TagName } from '@porsche-design-system/components/dist/types/tags';
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
 const BASE_DIRECTORY = path.normalize('./dist');
 const SOURCE_DIR = path.resolve(BASE_DIRECTORY, 'types');

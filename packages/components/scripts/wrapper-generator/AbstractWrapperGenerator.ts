@@ -1,8 +1,8 @@
 import { TagName } from '@porsche-design-system/components/dist/types/tags';
 import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
 import { InputParser } from './InputParser';
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
 const BASE_DIR = path.normalize('..');
 
@@ -18,7 +18,7 @@ export abstract class AbstractWrapperGenerator {
 
   private generateDir(dirName: string): void {
     fs.rmdirSync(dirName, { recursive: true });
-    fs.mkdirSync(dirName);
+    fs.mkdirSync(dirName, { recursive: true });
   }
 
   private generateDirs(): void {
