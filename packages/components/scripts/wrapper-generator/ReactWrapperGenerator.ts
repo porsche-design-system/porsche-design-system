@@ -64,7 +64,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const componentHooksArr: string[] = [
       'const elementRef = useRef<HTMLElement>();',
       ...propsToEventListener.map(
-        ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
+        ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
       ),
       `const Tag = usePrefix('${component}');`,
     ];
