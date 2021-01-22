@@ -27,7 +27,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
     const providerImports = [
       'usePrefix',
-      'getMergedClass',
+      'useMergedClass',
       ...(hasEventProps ? ['useEventCallback'] : []),
       ...(canBeObject ? ['jsonStringify'] : []),
     ];
@@ -53,50 +53,48 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    let wrapperProps = '{ className, ...rest }';
-    let componentHooks = '';
-    let componentProps = '';
-    let componentAttributes = '{...props}';
-
     const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
 
-    if (propsToDestructure.length > 0) {
-      wrapperProps = `{ ${propsToDestructure.map(({ key }) => key).join(', ')}, className, ...rest }`;
-    }
-
-    const propMapping: string[] = [
+    const wrapperProps = [
+      ...(propsToDestructure.length > 0 ? propsToDestructure.map(({ key }) => key) : []),
+      'className',
       '...rest',
-      "'class': getMergedClass(elementRef, className)",
-      "'ref': elementRef",
-      ...propsToMap.map(
-        ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
-      ),
     ];
-
-    componentHooks = `const elementRef = useRef<HTMLElement>();`;
-
-    if (propsToEventListener.length > 0) {
-      const eventHooks = propsToEventListener
-        .map(({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`)
-        .join('\n');
-
-      componentHooks = componentHooks + `\n  ${eventHooks}\n`;
-    }
-
-    componentProps = `const props = {
-    ${propMapping.join(',\n    ')}
-  };\n`;
 
     const propsName = this.generatePropsName(component);
     const wrapperPropsType = this.inputParser.canHaveChildren(component)
       ? `PropsWithChildren<${propsName}>`
       : propsName;
 
+    const componentHooks = [
+      'const elementRef = useRef<HTMLElement>();\n',
+      ...(propsToEventListener.length > 0
+        ? propsToEventListener.map(
+            ({ key }) => `  useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);\n`
+          )
+        : []),
+      `\n  const Tag = usePrefix('${component}');`,
+    ];
+
+    const propMapping: string[] = [
+      '...rest',
+      "'class': useMergedClass(elementRef, className)",
+      "'ref': elementRef",
+      ...propsToMap.map(
+        ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
+      ),
+    ];
+
+    const componentProps = `const props = {
+    ${propMapping.join(',\n    ')}
+  };\n`;
+
+    const componentAttributes = '{...props}';
+
     return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
   ${componentHooks}
-  const Tag = usePrefix('${component}');
   ${componentProps}
   return <Tag ${componentAttributes} />;
 };`;
