@@ -1,5 +1,5 @@
 import type { MutableRefObject, PropsWithChildren } from 'react';
-import { createContext, useContext, useEffect, useMemo } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef } from 'react';
 import { load } from '@porsche-design-system/components-js';
 
 const PorscheDesignSystemContext = createContext({ prefix: undefined });
@@ -27,7 +27,7 @@ export const usePrefix = (tagName: string): string => {
 export const useEventCallback = (
   ref: MutableRefObject<HTMLElement>,
   eventName: string,
-  eventHandler: (e: Event) => void,
+  eventHandler: (e: Event) => void
 ): void => {
   useEffect(() => {
     const { current } = ref;
@@ -40,32 +40,33 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-let initialComponentClassName: string = '';
-
-export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) =>
-  useMemo(() => {
+export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
+  const prevComponentClassName = useRef<string>();
+  return useMemo(() => {
     const { current } = ref;
 
     if (current) {
       // classes previously set by component
-      const initialComponentClassArray = initialComponentClassName.split(' ');
+      const prevComponentClassNameArray = prevComponentClassName.current.split(' ');
 
       // all classes not set by component
-      const domClassArray = Array.from(ref.current.classList).filter((x) => !initialComponentClassArray.includes(x));
+      const domClassArray = Array.from(ref.current.classList).filter((x) => !prevComponentClassNameArray.includes(x));
 
       // all classes set by component
       const componentClassArray = className.split(' ');
-      const classArray = domClassArray.concat(componentClassArray).filter((x, i, a) => a.indexOf(x) === i);
 
       // the react component does not override DOMTokenList when className attribute changes.
-      ref.current.classList.remove(...initialComponentClassArray.concat(domClassArray));
-      ref.current.classList.add(...classArray);
+      // @ts-ignore
+      ref.current.classList.remove(...prevComponentClassNameArray);
+      ref.current.classList.add(...componentClassArray);
 
-      initialComponentClassName = className;
+      prevComponentClassName.current = className;
 
+      const classArray = domClassArray.concat(componentClassArray);
       return classArray.join(' ');
     } else {
-      initialComponentClassName = className;
+      prevComponentClassName.current = className;
       return className;
     }
   }, [className]);
+};
