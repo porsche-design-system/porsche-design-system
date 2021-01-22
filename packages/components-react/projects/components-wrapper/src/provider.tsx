@@ -27,7 +27,7 @@ export const usePrefix = (tagName: string): string => {
 export const useEventCallback = (
   ref: MutableRefObject<HTMLElement>,
   eventName: string,
-  eventHandler: (e: Event) => void
+  eventHandler: (e: Event) => void,
 ): void => {
   useEffect(() => {
     const { current } = ref;
