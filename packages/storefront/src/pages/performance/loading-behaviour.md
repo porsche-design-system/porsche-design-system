@@ -132,7 +132,7 @@ Fonts should be loaded as soon as possible but only those which are needed.
 The Porsche Design System is not able to determine which components you use on the site and which fonts to be provided **initially**.
 That's why the font face stylesheet of the Porsche Design System handles the correct font to be loaded by unicode-range definition but during runtime and after bootstrapping of your application, which might result in FOUT.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontPreloadLink()` which needs to be imported into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontLinks()` which needs to be imported into the `<head>` of your `index.html`.
 
 ##### Supported options:
 - **subset**: 'latin' | 'greek' | 'cyril' = 'latin'
@@ -149,17 +149,17 @@ The example shows how to implement the partial in a webpack (or similar) project
 
 <head>
   // Using template syntax (make sure to preload only fonts which are really needed initially!)
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ weight: ['regular', 'semi-bold'] }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weight: ['regular', 'semi-bold'] }) %>
 </head>
 
 <head>
   // force using China CDN
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ cdn: 'cn' }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ cdn: 'cn' }) %>
 </head>
 
 <head>
   // without link tags
-  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontPreloadLink({ withoutTags: true })[0] %>" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ withoutTags: true })[0] %>" as="font" type="font/woff2" crossorigin>
 </head>
 ```
 
@@ -180,6 +180,6 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 
 "scripts": {
   "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontPreloadLink({ weight: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weight: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ``` 

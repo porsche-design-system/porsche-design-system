@@ -1,1 +1,1 @@
-export { getInitialStyles, getFontFaceStylesheet, getFontPreloadLink } from './lib/partials';
+export { getInitialStyles, getFontFaceStylesheet, getFontLinks } from './lib/partials';

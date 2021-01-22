@@ -5,7 +5,7 @@
     <title>Porsche Design System</title>
     <meta
       name="description"
-      content="Find all the fundamental styles and pattern-based components to build beautiful and intuitive designs for Porsche products."
+      content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products."
     />
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
@@ -31,7 +31,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
-    <%= require('@porsche-design-system/components-js/partials').getFontPreloadLink({ weight: ['regular', 'semi-bold', 'bold'] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weight: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
