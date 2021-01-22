@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System</title>
+    <meta
+      name="description"
+      content="Find all the fundamental styles and pattern-based components to build beautiful and intuitive designs for Porsche products."
+    />
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
     <script>
@@ -27,6 +31,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
+    <%= require('@porsche-design-system/components-js/partials').getFontPreloadLink({ weight: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
@@ -86,21 +91,6 @@
           stroke-dasharray: 30, 1000;
           stroke-dashoffset: -52;
         }
-      }
-
-      .loader::before {
-        content: '';
-        font-weight: 100;
-      }
-
-      .loader::after {
-        content: '';
-        font-weight: 600;
-      }
-
-      .loader::first-line {
-        content: '';
-        font-weight: 700;
       }
     </style>
     <script src="./<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>

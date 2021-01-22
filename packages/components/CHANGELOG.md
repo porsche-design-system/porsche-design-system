@@ -8,10 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Partial function `getFontPreloadLink()` to prevent **Flash of Unstyled Text** (FOUT)
+
 ### [2.0.0-alpha.12] - 2021-01-20
 
 #### Added
-- Partial functions `getInitialStyles()` and `getFontFaceStylesheet()` to prevent **Flash of Unstyled Content** (FOUC) and minimize **Flash of Unstyled Text** (FOUT)
+- Partial function `getInitialStyles()` to prevent **Flash of Unstyled Content** (FOUC)
+- Partial function `getFontFaceStylesheet()` to prevent **Flash of Unstyled Text** (FOUT)
 
 #### Changed
 - React: `PorscheDesignSystemProvider` needs to wrap application
