@@ -7,7 +7,11 @@ const HYDRATED_CLASS = 'hydrated';
 const SOME_CLASS_1 = 'someClass1';
 const SOME_CLASS_2 = 'someClass2';
 
-const Sample = (): JSX.Element => {
+type Props = {
+  testId?: string;
+};
+
+const Sample = ({ testId = 'host' }: Props): JSX.Element => {
   const [counter, setCounter] = useState(0);
 
   const props: PButtonProps = {
@@ -18,7 +22,7 @@ const Sample = (): JSX.Element => {
   };
 
   return (
-    <PButton data-testid="host" {...props}>
+    <PButton data-testid={testId} {...props}>
       Some label {counter}
     </PButton>
   );
@@ -74,5 +78,27 @@ describe('PButton', () => {
     expect(host.classList).toContain(HYDRATED_CLASS);
     expect(host.classList).toContain(SOME_CLASS_1);
     expect(host.classList).not.toContain(SOME_CLASS_2);
+  });
+
+  it('should not interfere with classNames of another PButton', async () => {
+    const { getByTestId } = renderWithProvider(
+      <>
+        <Sample testId="host1" />
+        <Sample testId="host2" />
+      </>
+    );
+    await componentsReady();
+    const host1 = getByTestId('host1');
+    const host2 = getByTestId('host2');
+
+    userEvent.click(host1);
+    expect(host1.classList).toContain(HYDRATED_CLASS);
+    expect(host1.classList).toContain(SOME_CLASS_1);
+    expect(host1.classList).not.toContain(SOME_CLASS_2);
+
+    userEvent.click(host2);
+    expect(host2.classList).toContain(HYDRATED_CLASS);
+    expect(host2.classList).toContain(SOME_CLASS_1);
+    expect(host2.classList).not.toContain(SOME_CLASS_2);
   });
 });
