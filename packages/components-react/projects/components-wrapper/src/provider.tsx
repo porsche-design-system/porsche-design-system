@@ -40,7 +40,7 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
+export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
   const prevComponentClassName = useRef<string>();
   return useMemo(() => {
     const { current } = ref;
@@ -50,14 +50,14 @@ export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: st
       const prevComponentClassNameArray = prevComponentClassName.current.split(' ');
 
       // all classes not set by component
-      const domClassArray = Array.from(ref.current.classList).filter((x) => !prevComponentClassNameArray.includes(x));
+      const domClassArray = Array.from(current.classList).filter((x) => !prevComponentClassNameArray.includes(x));
 
       // all classes set by component
       const componentClassArray = className.split(' ');
 
       // the react component does not override DOMTokenList when className attribute changes.
-      ref.current.classList.remove(...prevComponentClassNameArray);
-      ref.current.classList.add(...componentClassArray);
+      current.classList.remove(...prevComponentClassNameArray);
+      current.classList.add(...componentClassArray);
 
       prevComponentClassName.current = className;
 
