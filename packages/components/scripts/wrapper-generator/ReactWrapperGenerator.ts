@@ -1,7 +1,7 @@
-import { TagName } from '@porsche-design-system/components/dist/types/tags';
+import type { TagName } from '../../src/tags';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import { ExtendedProp } from './DataStructureBuilder';
+import type { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
