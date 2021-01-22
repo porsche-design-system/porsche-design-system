@@ -74,9 +74,9 @@ type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
 type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
   withoutTags?: true;
 };
-export function getFontPreloadLink(opts?: FontPreloadLinkOptionsWithTags): string;
-export function getFontPreloadLink(opts?: FontPreloadLinkOptionsWithoutTags): string[];
-export function getFontPreloadLink(opts?: FontPreloadLinkOptions): string | string[] {
+export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
+export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
+export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
   const options: FontPreloadLinkOptions = {
     subset: 'latin',
     weight: ['regular'],
