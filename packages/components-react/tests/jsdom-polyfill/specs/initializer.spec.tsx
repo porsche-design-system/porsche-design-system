@@ -100,5 +100,9 @@ describe('PButton', () => {
     expect(host2.classList).toContain(HYDRATED_CLASS);
     expect(host2.classList).toContain(SOME_CLASS_1);
     expect(host2.classList).not.toContain(SOME_CLASS_2);
+
+    expect(host1.classList).toContain(HYDRATED_CLASS);
+    expect(host1.classList).toContain(SOME_CLASS_1);
+    expect(host1.classList).not.toContain(SOME_CLASS_2);
   });
 });
