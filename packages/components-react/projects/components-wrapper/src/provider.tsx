@@ -56,7 +56,6 @@ export const getMergedClass = (ref: MutableRefObject<HTMLElement>, className: st
       const componentClassArray = className.split(' ');
 
       // the react component does not override DOMTokenList when className attribute changes.
-      // @ts-ignore
       ref.current.classList.remove(...prevComponentClassNameArray);
       ref.current.classList.add(...componentClassArray);
 
