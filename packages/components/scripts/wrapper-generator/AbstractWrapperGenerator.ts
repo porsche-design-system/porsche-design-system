@@ -17,9 +17,8 @@ export abstract class AbstractWrapperGenerator {
   private intrinsicElements = this.inputParser.getIntrinsicElements();
 
   private generateDir(dirName: string): void {
-    if (!fs.existsSync(dirName)) {
-      fs.mkdirSync(dirName);
-    }
+    fs.rmdirSync(dirName, { recursive: true });
+    fs.mkdirSync(dirName);
   }
 
   private generateDirs(): void {
