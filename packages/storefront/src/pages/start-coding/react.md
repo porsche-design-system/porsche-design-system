@@ -132,11 +132,11 @@ import userEvent from '@testing-library/user-event';
 
 test('renders Tabs Bar from Porsche Design System and uses its events', async () => {
   const { getByTestId } = render(
-    <PorscheDesignSystemProvider> {/* Important, without the component wont work. */}
+    <PorscheDesignSystemProvider> {/* required for the component to work */}
       <SingleComponent />
     </PorscheDesignSystemProvider>);
 
-  await componentsReady(); // we need to make sure Design System components have initialized
+  await componentsReady(); // we need to make sure Porsche Design System components are initialized
 
   const debug = getByTestId('debug');
   const button1 = getByTestId('button1');
@@ -158,7 +158,7 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 
 **Note:** to reduce redundant code you can replace the `render` function of the react-testing-library with a helper like:
 
-```typescript jsx
+```tsx
 // helper.tsx
 
 import { render } from '@testing-library/react';
@@ -177,7 +177,7 @@ and [Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
 
 If you have to test a form submit use `Simulate`.
 
-```
+```tsx
 import { Simulate } from 'react-dom/test-utils';
 
 const button = getByText('SomePorscheDesignSystemButton');
@@ -214,7 +214,6 @@ do use prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item
 
 import ReactDOM from 'react-dom';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import './index.css';
 import { App } from './App';
 
 ReactDOM.render(

@@ -1,10 +1,10 @@
-import { TagName } from '@porsche-design-system/components/dist/types/tags';
-import path from 'path';
-import fs from 'fs';
+import type { TagName } from '../../src/tags';
+import * as path from 'path';
+import * as fs from 'fs';
 
-const BASE_DIRECTORY = path.normalize('./dist');
-const SOURCE_DIR = path.resolve(BASE_DIRECTORY, 'types');
-const CJS_DIRECTORY = path.resolve(BASE_DIRECTORY, 'cjs');
+const BASE_DIR = path.normalize('./dist');
+const SOURCE_DIR = path.resolve(BASE_DIR, 'types');
+const CJS_DIR = path.resolve(BASE_DIR, 'cjs');
 
 export type ParsedInterface = { [key: string]: string };
 export type IntrinsicElements = { [key in TagName]?: string };
@@ -30,16 +30,16 @@ export class InputParser {
     const bundleDtsFile = path.resolve(SOURCE_DIR, bundleDtsFileName);
     const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
-    let rawSharedTypes = bundleDtsContent.substr(0, bundleDtsContent.indexOf('export namespace Components'));
-    // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
-    rawSharedTypes = rawSharedTypes.replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '');
-
-    // fix consumer typing by removing string which is only necessary for stencil
-    rawSharedTypes = rawSharedTypes.replace(
-      /(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/,
-      '$1;'
-    );
-    this.sharedTypes = rawSharedTypes;
+    this.sharedTypes = bundleDtsContent
+      .substr(0, bundleDtsContent.indexOf('export namespace Components'))
+      // remove unused HTMLStencilElement interface
+      .replace(/.*interface HTMLStencilElement(.|\n)*?}\n/, '')
+      // remove unused EventEmitter interface
+      .replace(/.*interface EventEmitter(.|\n)*?}\n/, '')
+      // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`
+      .replace(/declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n}\n/, '')
+      // fix consumer typing by removing string which is only necessary for stencil
+      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;');
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
     this.rawLocalJSX = rawLocalJSX;
@@ -81,7 +81,7 @@ export class InputParser {
     }
 
     const fileName = `${component}.cjs.entry.js`;
-    const filePath = path.resolve(CJS_DIRECTORY, fileName);
+    const filePath = path.resolve(CJS_DIR, fileName);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
     return fileContent.includes('h("slot"');
