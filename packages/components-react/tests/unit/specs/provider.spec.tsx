@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { PButton, PorscheDesignSystemProvider } from '../../../projects/components-wrapper/src';
+import { getMergedClassName } from '../../../projects/components-wrapper/src/provider';
 import { testSnapshot } from '../helpers';
 import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
@@ -79,5 +80,27 @@ describe('PorscheDesignSystemProvider', () => {
 
     expect(error).toBe('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
     spy.mockRestore();
+  });
+});
+
+describe('getMergedClassName', () => {
+  test.each([
+    [[], '', '', ''],
+    [[], '', 'old1', 'old1'],
+    [[], 'old1', '', ''],
+    [[], 'old1', 'old1', 'old1'],
+    [[], 'old1 old2', 'old1', 'old1'],
+    [[], 'old1 old2', 'old1 old2', 'old1 old2'],
+    [[], 'old1 old2', 'old1 new1', 'old1 new1'],
+    [[], 'old1 old2', 'old1 old2 new1', 'old1 old2 new1'],
+    [['dom1'], '', 'new1', 'new1 dom1'],
+    [['dom1'], 'old1', 'old1', 'old1 dom1'],
+    [['dom1'], 'old1', 'old1 new1', 'old1 new1 dom1'],
+    [['dom1'], 'old1 old2', 'old1', 'old1 dom1'],
+    [['dom1'], 'old1 old2', 'old1 new1', 'old1 new1 dom1'],
+  ])("should be called with %s, '%s', '%s' and return '%s'", (domClasses, oldClassName, newClassName, expected) => {
+    const result = getMergedClassName(domClasses, oldClassName, newClassName);
+
+    expect(result).toContain(expected);
   });
 });
