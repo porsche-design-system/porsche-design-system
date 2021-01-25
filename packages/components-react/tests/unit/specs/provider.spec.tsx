@@ -86,6 +86,9 @@ describe('PorscheDesignSystemProvider', () => {
 describe('getMergedClassName', () => {
   test.each`
     domClasses  | oldClassName   | newClassName        | expected
+    ${[]}       | ${undefined}   | ${''}               | ${''}
+    ${[]}       | ${''}          | ${undefined}        | ${''}
+    ${[]}       | ${undefined}   | ${undefined}        | ${''}
     ${[]}       | ${''}          | ${''}               | ${''}
     ${[]}       | ${''}          | ${'old1'}           | ${'old1'}
     ${[]}       | ${'old1'}      | ${''}               | ${''}
