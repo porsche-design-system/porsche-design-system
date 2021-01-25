@@ -9,12 +9,14 @@
       <strong>Web v{{ this.version }}</strong>
     </p-text>
 
-    <select v-on:change="onVersionChange" class="versionSelect" style="margin-top: 0.5rem">
-      <optgroup class="versionSelectOptGroup">
-        <option disabled selected>Switch Version</option>
-        <option v-for="option in versionOptions" :key="option" v-bind:value="option">{{ option }}</option>
-      </optgroup>
-    </select>
+    <label>
+      <select v-on:change="onVersionChange" class="versionSelect" style="margin-top: 0.5rem">
+        <optgroup class="versionSelectOptGroup" label="">
+          <option disabled selected>Switch Version</option>
+          <option v-for="option in versionOptions" :key="option" v-bind:value="option">{{ option }}</option>
+        </optgroup>
+      </select>
+    </label>
   </header>
 </template>
 
