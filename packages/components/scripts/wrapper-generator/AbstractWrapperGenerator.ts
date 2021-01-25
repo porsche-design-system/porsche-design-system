@@ -6,6 +6,12 @@ import * as fs from 'fs';
 
 const BASE_DIR = path.normalize('..');
 
+export type AdditionalFile = {
+  name: string;
+  content: string;
+  relativePath?: string;
+};
+
 export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
@@ -35,6 +41,7 @@ export abstract class AbstractWrapperGenerator {
     this.generateSharedTypes();
     this.generateComponentWrappers();
     this.generateBarrelFile();
+    this.generateAdditionalFiles();
     console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
   }
 
@@ -94,9 +101,26 @@ ${wrapperDefinition}`;
     // console.log(`Generated wrapper: ${targetFileName}`);
   }
 
+  private generateAdditionalFiles(): void {
+    const files = this.getAdditionalFiles();
+    if (files.length) {
+      files.forEach(({ name, content, relativePath = '' }) => {
+        const targetFile = path.resolve(this.componentsDir, relativePath, name);
+
+        fs.writeFileSync(targetFile, content);
+        console.log(`Generated file: ${name}`);
+      });
+    }
+  }
+
   // helper to possible inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {
     return '';
+  }
+
+  // helper that can be used to inject other files to be generated
+  public getAdditionalFiles(): AdditionalFile[] {
+    return [];
   }
 
   // prettier-ignore
