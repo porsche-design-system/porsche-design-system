@@ -11,14 +11,14 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
-    // const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
+    const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     // const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
     const angularImports = ['ChangeDetectionStrategy', 'ChangeDetectorRef', 'Component', 'ElementRef', 'NgZone'];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
-    const providerImports = ['ProxyCmp', 'proxyOutputs'];
-    const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
+    const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
+    const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
 
     // TODO: if this is identical to react, take care of it in abstract class
     const importsFromTypes = nonPrimitiveTypes.length
@@ -29,16 +29,37 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return '';
+    return `export interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    // const propsToDestructure = extendedProps.filter(({ isEvent, hasToBeMapped }) => isEvent || hasToBeMapped);
-    // const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
-    // const propsToMap = extendedProps.filter(({ hasToBeMapped }) => hasToBeMapped);
+    const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
+    const outputProps = extendedProps.filter(({ isEvent }) => isEvent);
 
-    return `@Component()
+    const inputs = inputProps.length ? `inputs: [${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
+    const outputs = outputProps.length ? `outputs: [${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
+    const componentOpts = [inputs, outputs].filter((x) => x).join(',\n  ');
+
+    const constructorCode = [
+      'c.detach();',
+      'this.el = r.nativeElement;',
+      ...outputProps.map(({ key }) => `proxyOutputs(this, this.el, ['${key}']);`),
+    ].join('\n    ');
+
+    return `@ProxyCmp({
+  ${inputs}
+})
+@Component({
+  selector: '${component}',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  ${componentOpts}
+})
 export class ${this.generateComponentName(component)} {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    ${constructorCode}
+  }
 }`;
   }
 
