@@ -8,7 +8,7 @@
     "ng": "ng",
     "prestart": "yarn replace",
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
-    "build": "yarn build:wrappers && yarn build:partials && yarn build:meta",
+    "build": "yarn build:wrappers && yarn build:meta && yarn build:partials",
     "build:meta": "cp ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
     "build:partials": "cp -r ./../partials/dist/. ./dist/components-wrapper/partials",
     "build:wrappers": "ng build components-wrapper --prod",
