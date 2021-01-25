@@ -1,5 +1,5 @@
 import type { TagName } from '../../src/tags';
-import { pascalCase } from 'change-case';
+import { camelCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
@@ -29,12 +29,14 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return `export interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
+    return ''; // `export interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
-    const outputProps = extendedProps.filter(({ isEvent }) => isEvent);
+    const outputProps = extendedProps
+      .filter(({ isEvent }) => isEvent)
+      .map((x) => ({ ...x, key: camelCase(x.key.substr(2)) }));
 
     const inputs = inputProps.length ? `inputs: [${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
     const outputs = outputProps.length ? `outputs: [${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
