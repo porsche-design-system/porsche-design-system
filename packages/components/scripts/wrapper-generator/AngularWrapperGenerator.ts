@@ -20,10 +20,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
 
-    // TODO: if this is identical to react, take care of it in abstract class
-    const importsFromTypes = nonPrimitiveTypes.length
-      ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
-      : '';
+    const typesImports = nonPrimitiveTypes.concat(hasEventProps ? ['EventEmitter'] : []);
+    const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
     return [importsFromAngular, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
   }
@@ -42,6 +40,11 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const outputs = outputProps.length ? `outputs: [${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
     const componentOpts = [inputs, outputs].filter((x) => x).join(',\n  ');
 
+    const classMembers = [
+      'protected el: HTMLElement;',
+      ...outputProps.map((x) => `${x.key}!: EventEmitter<${x.rawValueType.match(/<(.*?)>/)?.[1]}>;`),
+    ].join('\n  ');
+
     const constructorCode = [
       'c.detach();',
       'this.el = r.nativeElement;',
@@ -58,7 +61,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   ${componentOpts}
 })
 export class ${this.generateComponentName(component)} {
-  protected el: HTMLElement;
+  ${classMembers}
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     ${constructorCode}
   }
