@@ -40,7 +40,11 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-export const getMergedClassName = (domClasses: string[], oldClassName: string, newClassName: string): string => {
+export const getMergedClassName = (
+  domClasses: string[],
+  oldClassName: string = '',
+  newClassName: string = ''
+): string => {
   // classes previously set by component
   const prevComponentClassNameArray = oldClassName.split(' ');
 
@@ -50,22 +54,22 @@ export const getMergedClassName = (domClasses: string[], oldClassName: string, n
   // all classes set by component
   const componentClassArray = newClassName.split(' ');
 
-  /*  // the react component does not override DOMTokenList when className attribute changes.
-  current.classList.remove(...prevComponentClassNameArray);
-  current.classList.add(...componentClassArray);*/
-
-  return domClassArray.concat(componentClassArray).join(' ');
+  return componentClassArray.concat(domClassArray).join(' ');
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
   const prevComponentClassName = useRef<string>();
   return useMemo(() => {
     const { current } = ref;
-    const newClassName = current
-      ? getMergedClassName(Array.from(current.classList), prevComponentClassName.current, className)
-      : className;
+    let newClassName = className;
 
-    console.log(newClassName);
+    if (current) {
+      newClassName = getMergedClassName(Array.from(current.classList), prevComponentClassName.current, className);
+      // the jsx does not override className when the attribute changes
+      current.className = newClassName;
+    }
+
+    prevComponentClassName.current = className;
     return newClassName;
   }, [className]);
 };
