@@ -106,7 +106,7 @@ describe('getMergedClassName', () => {
     "should be called with ('$domClasses', '$oldClassName', '$newClassName') and return '$expected'",
     ({ domClasses, oldClassName, newClassName, expected }) => {
       const result = getMergedClassName(domClasses, oldClassName, newClassName);
-      expect(result).toContain(expected);
+      expect(result).toBe(expected);
     }
   );
 });
