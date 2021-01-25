@@ -1,4 +1,5 @@
 import { ElementHandle, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
@@ -14,10 +15,10 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
-export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
-  return (await element.getProperty(prop)).jsonValue();
-};
+const BASE_URL = 'http://localhost:3000';
 
-export const getCssClasses = async (element: ElementHandle): Promise<string> => {
-  return Object.values(await getProperty(element, 'classList')).join(' ');
+export const goto = async (page: Page, url: string) => {
+  await page.goto(`${BASE_URL}/${url}`);
+  await waitForComponentsReady(page);
+  await page.waitForSelector('html.hydrated');
 };

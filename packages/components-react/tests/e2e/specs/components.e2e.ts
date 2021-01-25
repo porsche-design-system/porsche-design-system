@@ -1,18 +1,11 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { waitForComponentsReady, selectNode } from '../helpers';
+import { goto, selectNode } from '../helpers';
 import { browser } from '../config';
-
-const BASE_URL = 'http://localhost:3000';
 
 describe('components', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
-
-  const goto = async (url: string) => {
-    await page.goto(`${BASE_URL}/${url}`);
-    await waitForComponentsReady(page);
-  };
 
   it('overview should work without errors', async () => {
     const consoleMessages: ConsoleMessage[] = [];
@@ -27,7 +20,7 @@ describe('components', () => {
     });
     const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
-    await goto('overview');
+    await goto(page, 'overview');
 
     expect(getErrorsAmount()).toBe(0);
 
@@ -36,7 +29,7 @@ describe('components', () => {
   });
 
   it('should stringify object props correctly', async () => {
-    await goto('overview');
+    await goto(page, 'overview');
 
     const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
 
@@ -46,7 +39,7 @@ describe('components', () => {
   });
 
   it('should have working events', async () => {
-    await goto('overview');
+    await goto(page, 'overview');
 
     const tabsBar = await selectNode(page, 'p-tabs-bar');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
@@ -77,7 +70,7 @@ describe('components', () => {
   });
 
   it('should initialize component deterministically', async () => {
-    await goto('core-initializer');
+    await goto(page, 'core-initializer');
     await page.waitForTimeout(1000);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
