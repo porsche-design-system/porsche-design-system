@@ -40,21 +40,24 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
+const splitToArray = (str: string) => str.split(' ');
+
 export const getMergedClassName = (
-  domClasses: string[],
+  domClassName: string,
   oldClassName: string = '',
   newClassName: string = ''
 ): string => {
   // classes previously set by component
-  const prevComponentClassNameArray = oldClassName.split(' ');
+  const prevComponentClassNames = splitToArray(oldClassName);
 
-  // all classes not set by component
-  const domClassArray = domClasses.filter((x) => !prevComponentClassNameArray.includes(x));
+  // all classes not set by component -> to keep hydrated class and other classes set on host element
+  // (usually dom-manipulated class additions would be lost on rerender)
+  const domClasses = splitToArray(domClassName).filter((x) => !prevComponentClassNames.includes(x));
 
   // all classes set by component
-  const componentClassArray = newClassName.split(' ');
+  const componentClasses = splitToArray(newClassName);
 
-  return componentClassArray.concat(domClassArray).join(' ');
+  return componentClasses.concat(domClasses).join(' ');
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
@@ -64,11 +67,10 @@ export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: st
     let newClassName = className;
 
     if (current) {
-      newClassName = getMergedClassName(Array.from(current.classList), prevComponentClassName.current, className);
+      newClassName = getMergedClassName(current.className, prevComponentClassName.current, className);
       // the jsx does not override className when the attribute changes
       current.className = newClassName;
     }
-
     prevComponentClassName.current = className;
     return newClassName;
   }, [className]);
