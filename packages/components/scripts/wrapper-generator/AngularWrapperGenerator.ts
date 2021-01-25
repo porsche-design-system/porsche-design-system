@@ -6,8 +6,12 @@ import type { ExtendedProp } from './DataStructureBuilder';
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
 
+  // ngc with { enableIvy: false } can't handle index.ts barrel files 🤷‍♂️
+  // https://github.com/ng-packagr/ng-packagr/issues/1013#issuecomment-424877378
+  protected barrelFileName = 'barrel.ts';
+
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
-    return `${component.replace('p-', '')}.wrapper.component${withOutExtension ? '' : '.ts'}`;
+    return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
@@ -27,7 +31,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
-    return ''; // `export interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
+    // TODO: strip JSX onEvent types
+    return `export declare interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
