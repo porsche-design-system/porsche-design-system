@@ -165,4 +165,9 @@ export const sharedRoutes: RouteType[] = [
     path: '/core-initializer',
     component: fromPages.CoreInitializerPage,
   },
+  {
+    name: 'Core Class Names',
+    path: '/core-class-names',
+    component: fromPages.CoreClassNamesPage,
+  },
 ];
