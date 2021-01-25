@@ -15,6 +15,7 @@ export type AdditionalFile = {
 export abstract class AbstractWrapperGenerator {
   protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
+  protected barrelFileName: string = 'index.ts';
   private libDir: string = '';
   private componentsDir: string = '';
 
@@ -56,8 +57,7 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private generateBarrelFile(): void {
-    const targetFileName = 'index.ts';
-    const targetFile = path.resolve(this.componentsDir, targetFileName);
+    const targetFile = path.resolve(this.componentsDir, this.barrelFileName);
     const componentTagNames: TagName[] = Object.keys(this.intrinsicElements) as TagName[];
 
     const componentExports = componentTagNames
@@ -67,7 +67,7 @@ export abstract class AbstractWrapperGenerator {
     const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
 
     fs.writeFileSync(targetFile, content);
-    console.log(`Generated barrel: ${targetFileName}`);
+    console.log(`Generated barrel: ${this.barrelFileName}`);
   }
 
   private generateComponentWrappers(): void {
