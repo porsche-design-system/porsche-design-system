@@ -63,11 +63,6 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage,
   },
   {
-    name: 'Initializer',
-    path: '/initializer',
-    component: fromPages.InitializerPage,
-  },
-  {
     name: 'Link',
     path: '/link',
     component: fromPages.LinkPage,
@@ -101,11 +96,6 @@ export const routes: RouteType[] = [
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
-  },
-  {
-    name: 'Overview',
-    path: '/overview',
-    component: fromPages.OverviewPage,
   },
   {
     name: 'Pagination',
@@ -161,5 +151,18 @@ export const routes: RouteType[] = [
     name: 'Typography',
     path: '/typography',
     component: fromPages.TypographyPage,
+  },
+];
+
+export const sharedRoutes: RouteType[] = [
+  {
+    name: 'Overview',
+    path: '/overview',
+    component: fromPages.OverviewPage,
+  },
+  {
+    name: 'Core Initializer',
+    path: '/core-initializer',
+    component: fromPages.CoreInitializerPage,
   },
 ];
