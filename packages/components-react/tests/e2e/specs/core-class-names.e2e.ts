@@ -23,11 +23,7 @@ describe('core-class-names', () => {
     await goto(page, 'core-class-names');
 
     const button = await getButton1();
-    const className = await getClassName(button);
-
-    expect(className).toContain(SOME_CLASS_1);
-    expect(className).toContain(SOME_CLASS_2);
-    expect(className).toContain(HYDRATED_CLASS);
+    expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${HYDRATED_CLASS}`);
   });
 
   it('should keep hydrated class on rerender with className change', async () => {
@@ -35,13 +31,11 @@ describe('core-class-names', () => {
 
     const button = await getButton1();
 
-    let className = await getClassName(button);
-    expect(className).toContain(HYDRATED_CLASS);
+    expect(await getClassName(button)).toContain(HYDRATED_CLASS);
 
     await button.click();
 
-    className = await getClassName(button);
-    expect(className).toContain(HYDRATED_CLASS);
+    expect(await getClassName(button)).toContain(HYDRATED_CLASS);
   });
 
   it('should keep added class on rerender with className change', async () => {
@@ -49,37 +43,27 @@ describe('core-class-names', () => {
 
     const button = await getButton1();
     const addedClass = 'xyClass';
-    await button.evaluate((el, addedClass) => {
+    await button.evaluate((el: Element, addedClass: string): void => {
       el.classList.add(addedClass);
     }, addedClass);
 
-    let className = await getClassName(button);
-    expect(className).toContain(addedClass);
+    expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${HYDRATED_CLASS} ${addedClass}`);
 
     await button.click();
-    className = await getClassName(button);
 
-    expect(className).toContain(SOME_CLASS_1);
-    expect(className).not.toContain(SOME_CLASS_2);
-    expect(className).toContain(HYDRATED_CLASS);
-    expect(className).toContain(addedClass);
+    expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS} ${addedClass}`);
   });
 
   it('should keep other classes if one is removed', async () => {
     await goto(page, 'core-class-names');
 
     const button = await getButton1();
-    let className = await getClassName(button);
 
-    expect(className).toContain(SOME_CLASS_1);
-    expect(className).toContain(SOME_CLASS_2);
+    expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${HYDRATED_CLASS}`);
 
     await button.click();
 
-    className = await getClassName(button);
-
-    expect(className).toContain(SOME_CLASS_1);
-    expect(className).not.toContain(SOME_CLASS_2);
+    expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS}`);
   });
 
   it('should not interfere with classNames of another PButton', async () => {
@@ -90,23 +74,12 @@ describe('core-class-names', () => {
 
     await button1.click();
 
-    let className1 = await getClassName(button1);
-
-    expect(className1).toContain(HYDRATED_CLASS, 'className1, before button2 click');
-    expect(className1).toContain(SOME_CLASS_1, 'className1, before button2 click');
-    expect(className1).not.toContain(SOME_CLASS_2, 'className1, before button2 click');
+    expect(await getClassName(button1)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS}`, 'button 1 after button 1 click ');
 
     await button2.click();
 
-    const className2 = await getClassName(button2);
-    className1 = await getClassName(button1);
+    expect(await getClassName(button1)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS}`, 'button 1 after button 2 click ');
 
-    expect(className2).toContain(HYDRATED_CLASS, 'className2, after button2 click');
-    expect(className2).toContain(SOME_CLASS_1, 'className2, after button2 click');
-    expect(className2).not.toContain(SOME_CLASS_2, 'className2, after button2 click');
-
-    expect(className1).toContain(HYDRATED_CLASS, 'className1, after button2 click');
-    expect(className1).toContain(SOME_CLASS_1, 'className1, after button2 click');
-    expect(className1).not.toContain(SOME_CLASS_2, 'className1, after button2 click');
+    expect(await getClassName(button2)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS}`, 'button 2 after button 2 click ');
   });
 });
