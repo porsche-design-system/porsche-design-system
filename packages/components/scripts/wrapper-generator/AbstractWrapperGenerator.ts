@@ -90,9 +90,7 @@ export abstract class AbstractWrapperGenerator {
     const propsDefinition = this.generateProps(component, rawComponentInterface);
     const wrapperDefinition = this.generateComponent(component, extendedProps);
 
-    const content = `${importsDefinition}\n
-${propsDefinition}\n
-${wrapperDefinition}`;
+    const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
 
     const targetFileName = this.getComponentFileName(component);
     const targetFile = path.resolve(this.componentsDir, targetFileName);

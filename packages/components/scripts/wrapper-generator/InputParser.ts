@@ -63,7 +63,10 @@ export class InputParser {
     // We need semicolon and double newline to ensure comments are ignored
     const regex = new RegExp(`interface ${this.intrinsicElements[component]} ({(?:\\s|.)*?;?\\s\\s})`);
     const [, rawComponentInterface] = regex.exec(this.rawLocalJSX) ?? [];
-    return rawComponentInterface;
+    return rawComponentInterface
+      .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
+      .replace(/    |\t\t/g, '  ') // adjust indentation
+      .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
   }
 
   public getComponentInterface(component: TagName): ParsedInterface {
