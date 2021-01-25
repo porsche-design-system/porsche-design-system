@@ -1,4 +1,4 @@
-import { TagName } from '@porsche-design-system/components/dist/types/tags';
+import type { TagName } from '../../src/tags';
 import { InputParser } from './InputParser';
 
 export type ExtendedProp = {
