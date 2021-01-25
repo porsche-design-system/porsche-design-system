@@ -57,7 +57,7 @@ export const getMergedClassName = (
   // all classes set by component
   const componentClasses = splitToArray(newClassName);
 
-  return componentClasses.concat(domClasses).join(' ');
+  return componentClasses.concat(domClasses).join(' ').trim();
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
