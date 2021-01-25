@@ -68,11 +68,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Icon',
   },
   {
-    path: 'initializer',
-    component: fromPages.InitializerComponent,
-    name: 'Initializer',
-  },
-  {
     path: 'link',
     component: fromPages.LinkComponent,
     name: 'Link',
@@ -106,11 +101,6 @@ export const routes: ExtendedRoute[] = [
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
     name: 'Modal Prefixed',
-  },
-  {
-    path: 'overview',
-    component: fromPages.OverviewComponent,
-    name: 'Overview',
   },
   {
     path: 'pagination',
@@ -168,9 +158,21 @@ export const routes: ExtendedRoute[] = [
     name: 'Typography',
   },
 ];
+export const sharedRoutes: ExtendedRoute[] = [
+  {
+    path: 'overview',
+    component: fromPages.OverviewComponent,
+    name: 'Overview',
+  },
+  {
+    path: 'core-initializer',
+    component: fromPages.CoreInitializerComponent,
+    name: 'Core Initializer',
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot([...routes, ...sharedRoutes], { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

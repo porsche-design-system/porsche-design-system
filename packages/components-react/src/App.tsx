@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import { routes } from './routes';
+import { routes, sharedRoutes } from './routes';
 
 export const App = (): JSX.Element => {
   const history = useHistory();
@@ -22,11 +22,15 @@ export const App = (): JSX.Element => {
         {routes.map((route) => (
           <option key={route.path} value={route.path} children={route.name} />
         ))}
+        <option disabled>---</option>
+        {sharedRoutes.map((route) => (
+          <option key={route.path} value={route.path} children={route.name} />
+        ))}
       </select>
 
       <div id="app">
         <Switch>
-          {routes.map((route) => (
+          {routes.concat(sharedRoutes).map((route) => (
             <Route key={route.path} {...route} />
           ))}
         </Switch>

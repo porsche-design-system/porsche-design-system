@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { routes } from './app-routing.module';
+import { routes, sharedRoutes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,10 @@ import { routes } from './app-routing.module';
     <select (change)="changeRoute($event.target.value)">
       <option disabled selected>Select a page</option>
       <ng-container *ngFor="let route of routes">
+        <option [value]="route.path">{{ route.name }}</option>
+      </ng-container>
+      <option disabled>---</option>
+      <ng-container *ngFor="let route of sharedRoutes">
         <option [value]="route.path">{{ route.name }}</option>
       </ng-container>
     </select>
@@ -18,6 +22,7 @@ import { routes } from './app-routing.module';
 })
 export class AppComponent {
   public routes = routes.filter((x) => !!x.name);
+  public sharedRoutes = sharedRoutes;
 
   private router: Router;
 
