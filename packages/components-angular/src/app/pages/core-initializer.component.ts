@@ -18,8 +18,6 @@ export class CoreInitializerComponent {
   public isEnabled = false;
 
   public ngOnInit() {
-    setTimeout(() => {
-      this.isEnabled = true;
-    }, 1000);
+    setTimeout(() => (this.isEnabled = true), 1000);
   }
 }
