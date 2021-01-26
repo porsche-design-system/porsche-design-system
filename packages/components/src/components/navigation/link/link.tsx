@@ -43,7 +43,7 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
     improveFocusHandlingForCustomElement(this.element);
   }
