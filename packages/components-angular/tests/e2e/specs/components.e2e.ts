@@ -66,7 +66,7 @@ describe('components', () => {
     expect(await getCounterValue()).toBe(3);
   });
 
-  xit('should initialize component deterministically', async () => {
+  it('should initialize component deterministically', async () => {
     await goto('core-initializer');
     await page.waitForTimeout(1000);
 
