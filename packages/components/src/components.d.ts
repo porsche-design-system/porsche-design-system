@@ -425,6 +425,22 @@ export namespace Components {
     }
     interface PMarque {
         /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
           * Show/hide trademark sign.
          */
         "trademark"?: boolean;
@@ -1327,6 +1343,22 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file.
+         */
+        "download"?: string;
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
         /**
           * Show/hide trademark sign.
          */
