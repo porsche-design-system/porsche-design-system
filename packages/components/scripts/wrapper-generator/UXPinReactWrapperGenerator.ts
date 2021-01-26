@@ -2,9 +2,14 @@ import type { TagName } from '../../src/tags';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
+import { pascalCase } from 'change-case';
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
+
+  public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
+    return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
+  }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     return super
@@ -23,7 +28,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .generateComponent(component, extendedProps)
       .replace(/export const \w+ =/, 'export default')
       .replace('className, ', '')
-      .replace(/\s+class.*/, '');
+      .replace(/\s+class.*/, '')
+      .replace(/(return <Tag {\.\.\.props} \/>;)/, '// @ts-ignore\n  $1');
   }
 
   public getAdditionalFiles(): AdditionalFile[] {
