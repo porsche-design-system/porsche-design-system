@@ -159,10 +159,10 @@ export const routes: ExtendedRoute[] = [
     name: 'Typography',
   },
   {
-    path: '',
+    path: '---',
     name: '---',
     isDisabled: true,
-    component: fromPages.OverviewComponent,
+    children: [],
   },
   {
     path: 'overview',
