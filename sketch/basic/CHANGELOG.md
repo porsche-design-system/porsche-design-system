@@ -19,15 +19,6 @@ Color | Notification soft colors for dark theme |
 
 Type | Basic Library |
 |---|---|
-Basic | Porsche Next Font with new metrics |
-Colors | Surface color for dark theme regarding Accessibility criteria |
-Colors | Hover/Active color for dark theme regarding Accessibility criteria |
-Accessibility | Focus state for light and dark theme | 
-
-#### Fixed
-
-Type | Basic Library |
-|---|---|
 Font |  Porsche Next Font with new metrics |
 Color |  Surface color for dark theme regarding accessibility criteria  |
 Color |  Hover/Active color for dark theme regarding accessibility criteria  |
