@@ -4,6 +4,7 @@ import * as fromPages from './pages';
 
 export type ExtendedRoute = Route & {
   name?: string;
+  isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
@@ -157,8 +158,12 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.TypographyComponent,
     name: 'Typography',
   },
-];
-export const sharedRoutes: ExtendedRoute[] = [
+  {
+    path: '',
+    name: '---',
+    isDisabled: true,
+    component: fromPages.OverviewComponent,
+  },
   {
     path: 'overview',
     component: fromPages.OverviewComponent,
@@ -172,7 +177,7 @@ export const sharedRoutes: ExtendedRoute[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot([...routes, ...sharedRoutes], { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
