@@ -40,7 +40,7 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-const splitToArray = (str: string) => str.split(' ');
+const splitToArray = (str: string) => str.split(' ').filter((str) => str);
 
 export const getMergedClassName = (
   domClassName: string,
@@ -52,12 +52,15 @@ export const getMergedClassName = (
 
   // all classes not set by component -> to keep hydrated class and other classes set on host element
   // (usually dom-manipulated class additions would be lost on rerender)
-  const domClasses = splitToArray(domClassName).filter((x) => !prevComponentClassNames.includes(x));
+  let domClasses = splitToArray(domClassName);
+  if (prevComponentClassNames.length > 0) {
+    domClasses = domClasses.filter((x) => !prevComponentClassNames.includes(x));
+  }
 
   // all classes set by component
   const componentClasses = splitToArray(newClassName);
 
-  return componentClasses.concat(domClasses).join(' ').trim();
+  return componentClasses.concat(domClasses).join(' ');
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
