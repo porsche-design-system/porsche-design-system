@@ -25,7 +25,7 @@ export const usePrefix = (tagName: string): string => {
 };
 
 export const useEventCallback = (
-  ref: MutableRefObject<HTMLElement>,
+  ref: MutableRefObject<HTMLElement | undefined>,
   eventName: string,
   eventHandler: (e: Event) => void,
 ): void => {
