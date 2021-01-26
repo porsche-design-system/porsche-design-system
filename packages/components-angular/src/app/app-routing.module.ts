@@ -4,6 +4,7 @@ import * as fromPages from './pages';
 
 export type ExtendedRoute = Route & {
   name?: string;
+  isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
@@ -68,11 +69,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Icon',
   },
   {
-    path: 'initializer',
-    component: fromPages.InitializerComponent,
-    name: 'Initializer',
-  },
-  {
     path: 'link',
     component: fromPages.LinkComponent,
     name: 'Link',
@@ -106,11 +102,6 @@ export const routes: ExtendedRoute[] = [
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
     name: 'Modal Prefixed',
-  },
-  {
-    path: 'overview',
-    component: fromPages.OverviewComponent,
-    name: 'Overview',
   },
   {
     path: 'pagination',
@@ -166,6 +157,22 @@ export const routes: ExtendedRoute[] = [
     path: 'typography',
     component: fromPages.TypographyComponent,
     name: 'Typography',
+  },
+  {
+    path: '---',
+    name: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    path: 'overview',
+    component: fromPages.OverviewComponent,
+    name: 'Overview',
+  },
+  {
+    path: 'core-initializer',
+    component: fromPages.CoreInitializerComponent,
+    name: 'Core Initializer',
   },
 ];
 

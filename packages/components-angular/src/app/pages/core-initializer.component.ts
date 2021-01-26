@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'page-initializer',
+  selector: 'page-core-initializer',
   template: `
     <div class="playground light">
       <p-text-field-wrapper [label]="'Some Label'" [description]="'Some Description'">
@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class InitializerComponent {
+export class CoreInitializerComponent {
   public isEnabled = false;
 
   public ngOnInit() {
