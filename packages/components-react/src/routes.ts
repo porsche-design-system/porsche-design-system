@@ -3,7 +3,8 @@ import * as fromPages from './pages';
 
 export type RouteType = RouteProps & {
   name: string;
-  path: string; // override string | string[]
+  path?: string; // override string | string[]
+  isDisabled?: boolean;
 };
 
 export const routes: RouteType[] = [
@@ -152,9 +153,10 @@ export const routes: RouteType[] = [
     path: '/typography',
     component: fromPages.TypographyPage,
   },
-];
-
-export const sharedRoutes: RouteType[] = [
+  {
+    name: '---',
+    isDisabled: true,
+  },
   {
     name: 'Overview',
     path: '/overview',
