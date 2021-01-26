@@ -1,6 +1,6 @@
 import { Page } from 'puppeteer';
+import type { TagName } from '@porsche-design-system/components/src/tags';
 import { getBrowser, setContentWithDesignSystem } from '../helpers';
-import { TagName } from '@porsche-design-system/components/dist/types/tags';
 
 describe('componentsReady', () => {
   let page: Page;
