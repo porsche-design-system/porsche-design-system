@@ -3,7 +3,7 @@ import { ElementHandle, Page } from 'puppeteer';
 
 const BASE_URL = 'http://localhost:8575';
 
-describe('initializer', () => {
+describe('core-initializer', () => {
   let page: Page;
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
@@ -14,7 +14,7 @@ describe('initializer', () => {
   };
 
   it('should initialize component deterministically', async () => {
-    await goto('initializer');
+    await goto('core-initializer');
     await page.waitForTimeout(1500);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
