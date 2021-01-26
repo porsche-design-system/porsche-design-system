@@ -5,11 +5,11 @@ export const proxyInputs = (Cmp: any, inputs: string[]) => {
   inputs.forEach((item) => {
     Object.defineProperty(Prototype, item, {
       get() {
-        console.log('proxyInputs get', item);
+        // console.log('proxyInputs get', item);
         return this.el[item];
       },
       set(val: any) {
-        console.log('proxyInputs set', item, val);
+        // console.log('proxyInputs set', item, val);
         this.z.runOutsideAngular(() => (this.el[item] = val));
       },
     });
@@ -31,17 +31,16 @@ export const proxyOutputs = (instance: any, el: any, events: string[]) => {
 };
 
 // tslint:disable-next-line: only-arrow-functions
-export function ProxyCmp(opts: { inputs?: any; methods?: any }) {
-  console.log('ProxyCmp');
-  const decorator = function (cls: any) {
-    console.log('decorator', cls, opts.inputs, opts.methods);
-    if (opts.inputs) {
-      proxyInputs(cls, opts.inputs);
+export function ProxyCmp({ inputs, methods }: { inputs?: any; methods?: any }) {
+  // console.log('ProxyCmp');
+  return function (cls: any) {
+    // console.log('ProxyCmp decorator', cls, inputs, methods);
+    if (inputs) {
+      proxyInputs(cls, inputs);
     }
-    if (opts.methods) {
-      proxyMethods(cls, opts.methods);
+    if (methods) {
+      proxyMethods(cls, methods);
     }
     return cls;
   };
-  return decorator;
 }
