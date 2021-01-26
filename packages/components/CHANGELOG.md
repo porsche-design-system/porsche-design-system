@@ -110,8 +110,8 @@ So we recommend changing the position of the `<a>` tag from wrapping the compone
 +    <p-link-social><a href="#">Some label</a></p-link-social>
 ```
 
-#### Automatic * asterisks symbol to form field labels
-We added an automatic generated * asterisks symbol to form field labels which have the required attribute. 
+#### Automatic * asterisk symbol to form field labels
+We added an automatic generated * asterisk symbol to form field labels which have the required attribute. 
 This might lead to a doubled * symbol if you set one by yourself.
 
 ```diff
