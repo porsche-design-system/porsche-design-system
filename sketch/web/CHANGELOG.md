@@ -33,7 +33,7 @@ This guide includes everything you need to migrate your offering.
 - Banner Notification
 - Modal
 - Notification soft colors for dark theme
-- Tabs and Tabs Bar **
+- Tabs and Tabs Bar
 
 ## Download Sketch Libraries
 
