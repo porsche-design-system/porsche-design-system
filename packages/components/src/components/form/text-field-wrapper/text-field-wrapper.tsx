@@ -45,10 +45,13 @@ export class TextFieldWrapper {
   public connectedCallback(): void {
     this.setInput();
     this.isPasswordToggleable = this.input.type === 'password';
-    this.setAriaAttributes();
     this.setState();
     this.initMutationObserver();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {

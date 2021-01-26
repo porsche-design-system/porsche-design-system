@@ -85,9 +85,11 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.initSelect();
     this.observeSelect();
-    this.defineTypeOfDropDown();
-    this.setAriaAttributes();
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.defineTypeOfDropDown();
   }
 
   public componentDidLoad(): void {
@@ -97,6 +99,7 @@ export class SelectWrapper {
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
       this.filterInput.addEventListener('input', this.handleFilterSearch);
     }
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
