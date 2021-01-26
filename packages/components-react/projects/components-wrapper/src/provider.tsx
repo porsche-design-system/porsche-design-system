@@ -40,32 +40,41 @@ export const useEventCallback = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
+const splitToArray = (str: string) => str.split(' ').filter((str) => str);
+
+export const getMergedClassName = (
+  domClassName: string,
+  oldClassName: string = '',
+  newClassName: string = ''
+): string => {
+  // classes previously set by component
+  const prevComponentClassNames = splitToArray(oldClassName);
+
+  // all classes not set by component -> to keep hydrated class and other classes set on host element
+  // (usually dom-manipulated class additions would be lost on rerender)
+  let domClasses = splitToArray(domClassName);
+  if (prevComponentClassNames.length > 0) {
+    domClasses = domClasses.filter((x) => !prevComponentClassNames.includes(x));
+  }
+
+  // all classes set by component
+  const componentClasses = splitToArray(newClassName);
+
+  return componentClasses.concat(domClasses).join(' ');
+};
+
 export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
   const prevComponentClassName = useRef<string>();
   return useMemo(() => {
     const { current } = ref;
+    let newClassName = className;
 
     if (current) {
-      // classes previously set by component
-      const prevComponentClassNameArray = prevComponentClassName.current.split(' ');
-
-      // all classes not set by component
-      const domClassArray = Array.from(current.classList).filter((x) => !prevComponentClassNameArray.includes(x));
-
-      // all classes set by component
-      const componentClassArray = className.split(' ');
-
-      // the react component does not override DOMTokenList when className attribute changes.
-      current.classList.remove(...prevComponentClassNameArray);
-      current.classList.add(...componentClassArray);
-
-      prevComponentClassName.current = className;
-
-      const classArray = domClassArray.concat(componentClassArray);
-      return classArray.join(' ');
-    } else {
-      prevComponentClassName.current = className;
-      return className;
+      newClassName = getMergedClassName(current.className, prevComponentClassName.current, className);
+      // the jsx does not override className when the attribute changes
+      current.className = newClassName;
     }
+    prevComponentClassName.current = className;
+    return newClassName;
   }, [className]);
 };
