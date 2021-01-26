@@ -3,13 +3,13 @@ import { BannerComponent } from './banner.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
+import { CoreInitializerComponent } from './core-initializer.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
-import { InitializerComponent } from './initializer.component';
 import { LinkComponent } from './link.component';
 import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
@@ -36,13 +36,13 @@ export const pages = [
   ButtonPureComponent,
   CheckboxWrapperComponent,
   ContentWrapperComponent,
+  CoreInitializerComponent,
   DividerComponent,
   FieldsetWrapperComponent,
   FlexComponent,
   GridComponent,
   HeadlineComponent,
   IconComponent,
-  InitializerComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -69,13 +69,13 @@ export * from './button.component';
 export * from './button-pure.component';
 export * from './checkbox-wrapper.component';
 export * from './content-wrapper.component';
+export * from './core-initializer.component';
 export * from './divider.component';
 export * from './fieldset-wrapper.component';
 export * from './flex.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
-export * from './initializer.component';
 export * from './link.component';
 export * from './link-pure.component';
 export * from './link-social.component';
