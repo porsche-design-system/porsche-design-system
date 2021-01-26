@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - Partial function `getFontLinks()` to prevent **Flash of Unstyled Text** (FOUT)
 
+#### Fixed
+- React: correct handling of `className` property
+
 ### [2.0.0-alpha.12] - 2021-01-20
 
 #### Added
