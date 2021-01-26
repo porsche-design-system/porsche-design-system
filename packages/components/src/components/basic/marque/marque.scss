@@ -1,13 +1,12 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
-@import '../../../styles/internal.variables';
 
 :host {
   display: inline-flex;
   vertical-align: top;
 }
 
-.#{$p-global-class-prefix}marque {
-  display: block;
+picture {
+  display: flex;
   width: 100px;
   height: 60px;
 
@@ -15,10 +14,16 @@
     width: 120px;
     height: 72px;
   }
+}
 
-  > img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+a {
+  @include p-focus($p-color-default, 0);
+  display: flex;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
