@@ -83,7 +83,7 @@ If you have custom components build with the usage of our `@porsche-design-syste
 For better alignment and readability we've changed the geometry of the Porsche Next font which results in a visual change of font size and spacing.
 
 #### Drop support for IE11 and EdgeHTML according to Porsche's official browser strategy 2021
-If you still need to support these browsers, you have to stick on `v1.5.x`.
+If you still need to support these browsers, you have to stick to `v1.5.x`.
 We offer a Browser Notification package `@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported.
 It supports a blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible banner (to be used with Porsche Design System `v1.x`). 
 Please refer to our [Browser compatibility guidelines](https://designsystem.porsche.com/latest/#/help/browser-compatibility).
