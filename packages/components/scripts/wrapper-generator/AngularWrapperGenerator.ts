@@ -31,6 +31,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
+    return '';
     // TODO: strip JSX onEvent types
     return `export declare interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
   }
@@ -47,6 +48,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const classMembers = [
       'protected el: HTMLElement;',
+      ...inputProps.map((x) => `${x.key}: ${x.rawValueType};`),
       ...outputProps.map((x) => `${x.key}!: EventEmitter<${x.rawValueType.match(/<(.*?)>/)?.[1]}>;`),
     ].join('\n  ');
 
@@ -67,6 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 })
 export class ${this.generateComponentName(component)} {
   ${classMembers}
+
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     ${constructorCode}
   }
