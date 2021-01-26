@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
           Select a page
         </option>
         {routes.map((route) => (
-          <option key={route.path} disabled={route.isDisabled} value={route.path} children={route.name} />
+          <option key={route.path ?? route.name} disabled={route.isDisabled} value={route.path} children={route.name} />
         ))}
       </select>
 
