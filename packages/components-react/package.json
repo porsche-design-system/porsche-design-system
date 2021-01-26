@@ -26,7 +26,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.0.0-alpha.12",
+    "@porsche-design-system/components-react": "2.0.0-alpha.13",
     "@porsche-design-system/utilities": "4.0.0",
     "construct-style-sheets-polyfill": "^2.4.3",
     "intersection-observer": "^0.12.0",
