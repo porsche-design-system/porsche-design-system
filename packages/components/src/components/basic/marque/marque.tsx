@@ -20,12 +20,6 @@ export class Marque {
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
 
-  /** Special download attribute to open native browser download dialog if target url points to a downloadable file. */
-  @Prop() public download?: string = undefined;
-
-  /** Specifies the relationship of the target object to the link object. */
-  @Prop() public rel?: string = undefined;
-
   public connectedCallback(): void {
     improveFocusHandlingForCustomElement(this.host);
   }
@@ -50,9 +44,7 @@ export class Marque {
         <TagType
           {...(TagType === 'a' && {
             href: this.href,
-            target: `${this.target}`,
-            download: this.download,
-            rel: this.rel,
+            target: this.target,
           })}
         >
           <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
