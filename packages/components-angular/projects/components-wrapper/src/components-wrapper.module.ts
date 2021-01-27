@@ -1,27 +1,32 @@
-import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { DECLARATIONS } from './lib/components/barrel';
-import { PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG, PorscheDesignSystemModuleConfig } from './injection.tokens';
 import { load } from '@porsche-design-system/components-js';
+
+export type PorscheDesignSystemModuleConfig = {
+  prefix?: string;
+};
+
+export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> {
+  prefix = '';
+}
 
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
-  imports: [],
-  providers: [],
 })
 export class PorscheDesignSystemModule {
-  constructor(@Optional() @Inject(PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG) config: PorscheDesignSystemModuleConfig) {
-    console.log('module constructor', config);
-    const { prefix } = config ?? {};
-    load({ prefix });
+  constructor(@Optional() configParam: DefaultConfig) {
+    const configs = (configParam ?? ([new DefaultConfig()] as unknown)) as PorscheDesignSystemModuleConfig[];
+    configs.forEach(({ prefix }) => load({ prefix }));
   }
 
-  static forRoot(config: PorscheDesignSystemModuleConfig): ModuleWithProviders<PorscheDesignSystemModule> {
+  static load(config: PorscheDesignSystemModuleConfig): ModuleWithProviders<PorscheDesignSystemModule> {
     return {
       ngModule: PorscheDesignSystemModule,
       providers: [
         {
-          provide: PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG,
+          provide: DefaultConfig,
+          multi: true, // to support multiple prefixes in same module
           useValue: config,
         },
       ],
