@@ -1,7 +1,7 @@
-import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { load } from '@porsche-design-system/components-js';
-import { PREVENT_WEB_COMPONENTS_REGISTRATION, WEB_COMPONENTS_PREFIX } from './injection.tokens';
+import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { DECLARATIONS } from './lib/components/barrel';
+import { PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG, PorscheDesignSystemModuleConfig } from './injection.tokens';
+import { load } from '@porsche-design-system/components-js';
 
 @NgModule({
   declarations: DECLARATIONS,
@@ -10,17 +10,21 @@ import { DECLARATIONS } from './lib/components/barrel';
   providers: [],
 })
 export class PorscheDesignSystemModule {
-  constructor(
-    @Inject(PREVENT_WEB_COMPONENTS_REGISTRATION) preventWebComponentsRegistration: boolean,
-    @Inject(WEB_COMPONENTS_PREFIX) webComponentsPrefix: string,
-    @Optional() @SkipSelf() porscheDesignSystemModule: PorscheDesignSystemModule
-  ) {
-    /**
-     * prevent registration of components js web components if it's prevented
-     * explicitly via PREVENT_WEB_COMPONENTS_REGISTRATION inject token
-     */
-    if (!preventWebComponentsRegistration) {
-      load({ prefix: webComponentsPrefix });
-    }
+  constructor(@Optional() @Inject(PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG) config: PorscheDesignSystemModuleConfig) {
+    console.log('module constructor', config);
+    const { prefix } = config ?? {};
+    load({ prefix });
+  }
+
+  static forRoot(config: PorscheDesignSystemModuleConfig): ModuleWithProviders<PorscheDesignSystemModule> {
+    return {
+      ngModule: PorscheDesignSystemModule,
+      providers: [
+        {
+          provide: PORSCHE_DESIGN_SYSTEM_MODULE_CONFIG,
+          useValue: config,
+        },
+      ],
+    };
   }
 }
