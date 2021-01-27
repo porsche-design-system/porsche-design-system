@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 import * as fromPages from './pages';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 export type ExtendedRoute = Route & {
   name?: string;
@@ -177,7 +178,7 @@ export const routes: ExtendedRoute[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }), PorscheDesignSystemModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
