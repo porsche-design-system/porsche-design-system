@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Fragment } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host, Fragment } from '@stencil/core';
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 import { improveFocusHandlingForCustomElement } from '../../../utils';
 import { LinkTarget } from '../../../types';
@@ -29,8 +29,6 @@ export class Marque {
   }
 
   public render(): JSX.Element {
-    const TagType = this.href === undefined ? 'span' : 'a';
-
     const cdnBaseUrl =
       ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUES_CDN_BASE_URL : 'http://localhost:3001/marque';
     const manifestPath: { [size: string]: { [resolution: string]: string } } =
@@ -41,25 +39,30 @@ export class Marque {
         .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
         .join(',');
 
-    return (
+    const picture = (
       <picture>
         {this.size === 'responsive' ? (
-          <Fragment>
-            <source srcSet={buildSrcSet('medium')} media={`(min-width: ${breakpoint.l}px)`} />
-            <source srcSet={buildSrcSet('small')} />
-          </Fragment>
+          [
+            <source srcSet={buildSrcSet('medium')} media={`(min-width: ${breakpoint.l}px)`} />,
+            <source srcSet={buildSrcSet('small')} />,
+          ]
         ) : (
           <source srcSet={buildSrcSet(this.size)} />
         )}
-        <TagType
-          {...(TagType === 'a' && {
-            href: this.href,
-            target: this.target,
-          })}
-        >
-          <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
-        </TagType>
+        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
       </picture>
+    );
+
+    return (
+      <Host>
+        {this.href === undefined ? (
+          <Fragment>{picture}</Fragment>
+        ) : (
+          <a href={this.href} target={this.target}>
+            {picture}
+          </a>
+        )}
+      </Host>
     );
   }
 }

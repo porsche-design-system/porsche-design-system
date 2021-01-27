@@ -15,9 +15,15 @@
   vertical-align: top;
 }
 
+a {
+  @include p-focus($p-color-default, 0);
+  display: block;
+  text-decoration: none;
+}
+
 picture {
   @include p-marque-small;
-  display: flex;
+  display: block;
 
   @include p-media-query('l') {
     @include p-marque-medium;
@@ -30,10 +36,6 @@ picture {
   :host([size='medium']) & {
     @include p-marque-medium;
   }
-}
-
-a {
-  @include p-focus($p-color-default, 0);
 }
 
 img {
