@@ -11,11 +11,7 @@ type Manifest = {
   [name: string]: string;
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
@@ -75,7 +71,7 @@ export const ICON_NAMES = ${JSON.stringify(Object.keys(manifest))};`
 (async (): Promise<void> => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
   const files = (await globby('./src/**/*.svg')).sort();
-  const config = yaml.safeLoad(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
+  const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), { encoding: 'utf8' })) as SVGO.Options;
 
   await createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
     console.error(e);
