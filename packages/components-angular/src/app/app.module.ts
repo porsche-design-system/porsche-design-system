@@ -10,7 +10,8 @@ import * as fromPages from './pages';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PorscheDesignSystemModule,
+    // PorscheDesignSystemModule,
+    PorscheDesignSystemModule.load({ prefix: '' }),
     PorscheDesignSystemModule.load({ prefix: 'my-prefix' }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
