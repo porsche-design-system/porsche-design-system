@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
+
 ### [2.0.0-alpha.13] - 2021-01-26
 
 #### Added
