@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix 
+
 ### [2.0.0-alpha.13] - 2021-01-26
 
 #### Added
