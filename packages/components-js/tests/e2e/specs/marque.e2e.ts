@@ -45,108 +45,206 @@ describe('marque', () => {
   const resolution3x = '@3x';
 
   describe('with trademark', () => {
+    const fileNameSmall = 'marque-trademark.small';
+    const fileNameMedium = 'marque-trademark.medium';
+
     describe('on default screen', () => {
-      const fileName = 'marque-trademark.small';
 
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
     });
 
     describe('on large screen', () => {
-      const fileName = 'marque-trademark.medium';
 
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
     });
   });
 
   describe('without trademark', () => {
+    const fileNameSmall = 'marque.small';
+    const fileNameMedium = 'marque.medium';
+
     describe('on default screen', () => {
-      const fileName = 'marque.small';
 
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
     });
 
     describe('on large screen', () => {
-      const fileName = 'marque.medium';
 
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution1x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
 
       it('should request correct image for 2x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 2 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution2x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
 
       it('should request correct image for 3x resolution', async () => {
         await page.setViewport({ ...page.viewport(), deviceScaleFactor: 3 });
         await setContentWithoutTrademark();
-        expect(requestedImagePath).toContain(fileName);
+        expect(requestedImagePath).toContain(fileNameMedium);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'small');
+        expect(requestedImagePath).toContain(fileNameSmall);
+        expect(requestedImagePath).toContain(resolution3x);
+
+        await setAttribute(await getHost(), 'size', 'medium');
+        expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
     });
