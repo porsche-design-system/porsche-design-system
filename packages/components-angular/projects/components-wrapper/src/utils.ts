@@ -1,9 +1,8 @@
 import { fromEvent } from 'rxjs';
 
-const proxyInputs = (Cmp: any, inputs: string[]) => {
-  const Prototype = Cmp.prototype;
-  inputs.forEach((item) => {
-    Object.defineProperty(Prototype, item, {
+const proxyInputs = (component: any, inputs: string[]): void => {
+  const callback = (item: string): void => {
+    Object.defineProperty(component.prototype, item, {
       get() {
         // console.log('proxyInputs get', this.el, item, this.el[item], new Date().toISOString());
         return this.el[item];
@@ -13,7 +12,9 @@ const proxyInputs = (Cmp: any, inputs: string[]) => {
         this.z.runOutsideAngular(() => (this.el[item] = val));
       },
     });
-  });
+  };
+
+  inputs.forEach(callback);
 };
 
 // NOTE: only relevant if components use the @Method() decorator
@@ -28,20 +29,20 @@ const proxyInputs = (Cmp: any, inputs: string[]) => {
 //   });
 // };
 
-export const proxyOutputs = (instance: any, el: any, events: string[]) => {
-  events.forEach((eventName) => (instance[eventName] = fromEvent(el, eventName)));
+export const proxyOutputs = (instance: any, el: HTMLElement, events: string[]): void => {
+  events.forEach((event) => (instance[event] = fromEvent(el, event)));
 };
 
 // tslint:disable-next-line: only-arrow-functions
-export function ProxyCmp({ inputs /*, methods*/ }: { inputs?: any; methods?: any }) {
-  return function (cls: any) {
+export function ProxyCmp({ inputs /*, methods*/ }: { inputs?: string[]; methods?: string[] }) {
+  return function (component: any) {
     // console.log('ProxyCmp decorator', inputs, new Date().toISOString());
     if (inputs) {
-      proxyInputs(cls, inputs);
+      proxyInputs(component, inputs);
     }
     // if (methods) {
-    //   proxyMethods(cls, methods);
+    //   proxyMethods(component, methods);
     // }
-    return cls;
+    return component;
   };
 }
