@@ -32,8 +32,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
     return '';
-    // TODO: strip JSX onEvent types
-    return `export declare interface ${this.generateComponentName(component)} ${rawComponentInterface}`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
