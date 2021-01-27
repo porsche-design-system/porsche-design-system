@@ -9,8 +9,8 @@ describe('Component <p-marque>', () => {
       html: `<p-marque></p-marque>`,
     });
     expect(page.root.shadowRoot).toBeTruthy();
-    expect(page.root.querySelector('.p-marque')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('.p-marque')).toBeTruthy();
+    expect(page.root.querySelector('picture')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('picture')).toBeTruthy();
   });
 
   it('should have every png from manifest on cdn', async () => {
