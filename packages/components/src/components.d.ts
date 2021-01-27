@@ -429,6 +429,10 @@ export namespace Components {
          */
         "href"?: string;
         /**
+          * Adapts sizing of marque.
+         */
+        "size"?: 'responsive' | 'small' | 'medium';
+        /**
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
@@ -1339,6 +1343,10 @@ declare namespace LocalJSX {
           * When providing an url then the component will be rendered as `<a>`.
          */
         "href"?: string;
+        /**
+          * Adapts sizing of marque.
+         */
+        "size"?: 'responsive' | 'small' | 'medium';
         /**
           * Target attribute where the link should be opened.
          */
