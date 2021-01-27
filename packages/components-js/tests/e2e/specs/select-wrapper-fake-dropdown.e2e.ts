@@ -395,6 +395,56 @@ describe('select-wrapper fake-dropdown', () => {
       expect(await getCssClasses(fakeOption)).toContain('p-select-wrapper__fake-option--hidden');
     });
 
+    it('should not throw error with long option list and the same item is selected and disabled', async () => {
+      const consoleErrors: string[] = [];
+
+      page.on('pageerror', function (error) {
+        consoleErrors.push(error.toString());
+      });
+
+      await setContentWithDesignSystem(
+        page,
+        `
+         <p-select-wrapper label="Some label">
+           <select name="some-name">
+             <option value="default" disabled selected>Bitte wählen Sie Ihr Land</option>
+             <option value="AF">Afghanistan</option>
+             <option value="AX">Åland Islands</option>
+             <option value="AL">Albania</option>
+             <option value="DZ">Algeria</option>
+             <option value="AS">American Samoa</option>
+             <option value="AD">Andorra</option>
+             <option value="AO">Angola</option>
+             <option value="AI">Anguilla</option>
+             <option value="AQ">Antarctica</option>
+             <option value="AG">Antigua and Barbuda</option>
+             <option value="AR">Argentina</option>
+             <option value="AM">Armenia</option>
+             <option value="AW">Aruba</option>
+             <option value="AU">Australia</option>
+             <option value="AT">Austria</option
+          </select>
+        </p-select-wrapper>
+        `
+      );
+
+      const select = await getSelect();
+
+      await select.click();
+
+      await waitForStencilLifecycle(page);
+
+      expect(consoleErrors.length).toBe(0, 'get errorsAmount after click');
+
+      await page.evaluate(() => {
+        const script = document.createElement('script');
+        script.innerText = "throw new Error('I am an error');";
+        document.body.appendChild(script);
+      });
+
+      expect(consoleErrors.length).toBe(1, 'get errorsAmount after custom error');
+    });
+
     describe('dropdown position', () => {
       it('should set direction to up', async () => {
         await setContentWithDesignSystem(
