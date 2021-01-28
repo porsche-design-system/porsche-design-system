@@ -119,7 +119,7 @@ export class AppModule {}
 ```
 
 Be aware, that you still have to set the component name without the prefix as an attribute, otherwise you might get
-unexpected results. The component might display as usual, but it is no longer an angular component which means
+unexpected results. The component might display as usual, but it is no longer an Angular component which means
 bindings of inputs and outputs won't work.
 
 You can now use the prefixed component as follows:
