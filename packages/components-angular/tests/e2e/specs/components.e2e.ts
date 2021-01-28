@@ -97,24 +97,5 @@ describe('components', () => {
       expect(await getElementAttr(prefixedComponent, 'ng-reflect-description')).toBe('Some Description');
       expect(await getElementAttr(prefixedComponent, 'ng-reflect-label')).toBe('Some Label');
     });
-
-    it('should initialize component just like without prefix', async () => {
-      await goto('core-initializer-prefixed');
-
-      const regularComponent = await selectNode(page, regularSelector);
-      const prefixedComponent = await selectNode(page, prefixedSelector);
-
-      const component1HTML = await getOuterHTML(regularComponent);
-      const component2HTML = (await getOuterHTML(prefixedComponent))
-        .replace(new RegExp(`(</?)${prefixedSelector}`, 'g'), `$1${regularSelector}`) // normalize selector
-        .replace(` ${regularSelector}=""`, ''); // remove attribute required for prefixed component to be an angular component
-
-      expect(component1HTML).toBe(component2HTML);
-
-      if (component1HTML !== component2HTML) {
-        console.log('component1HTML', component1HTML);
-        console.log('component2HTML', component2HTML);
-      }
-    });
   });
 });
