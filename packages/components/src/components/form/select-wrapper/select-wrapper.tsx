@@ -1,13 +1,18 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getClosestHTMLElement,
+  getHTMLElement,
+  getHTMLElements,
   getPrefixedTagNames,
   insertSlottedStyles,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
+  setAriaAttributes,
+  setAttribute,
 } from '../../../utils';
-import { FormState, Theme } from '../../../types';
+import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 
 type OptionMap = {
   readonly key: number;
@@ -59,7 +64,7 @@ export class SelectWrapper {
   @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
-  private options: NodeListOf<HTMLOptionElement>;
+  private options: HTMLOptionElement[];
   private fakeOptionListNode: HTMLDivElement;
   private fakeOptionHighlightedNode: HTMLDivElement;
   private selectObserver: MutationObserver;
@@ -218,28 +223,30 @@ export class SelectWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!this.host.querySelector('[slot="description"]');
+    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private get isMessageVisible(): boolean {
-    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.select.getAttribute('required') !== null;
+    return getAttribute(this.select, 'required') !== null;
   }
 
   /*
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = this.host.querySelector('select');
+    this.select = getHTMLElement(this.host, 'select');
     if (this.filter) {
-      this.select.setAttribute('tabindex', '-1');
+      setAttribute(this.select, 'tabindex', '-1');
     }
   }
 
@@ -249,19 +256,14 @@ export class SelectWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      this.select.setAttribute('aria-label', `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`);
-    }
-
-    if (this.state === 'error') {
-      this.select.setAttribute('aria-invalid', 'true');
-    } else {
-      this.select.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.select, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
 
     if (this.filter) {
-      this.select.setAttribute('aria-hidden', 'true');
+      setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
@@ -282,7 +284,7 @@ export class SelectWrapper {
    */
   private observeSelect(): void {
     this.selectObserver = new MutationObserver((mutations) => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
+      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         this.setOptionList();
       }
     });
@@ -347,7 +349,8 @@ export class SelectWrapper {
 
   private handleDropdownDirection(): void {
     if (this.dropdownDirection === 'auto') {
-      const children = this.fakeOptionListNode.querySelectorAll(
+      const children = getHTMLElements(
+        this.fakeOptionListNode,
         `.${prefix('select-wrapper__fake-option')}:not([aria-hidden="true"])`
       );
       const { top: spaceTop } = this.select.getBoundingClientRect();
@@ -477,8 +480,8 @@ export class SelectWrapper {
   };
 
   private setOptionList = (): void => {
-    this.options = this.select.querySelectorAll('option');
-    this.optionMaps = Array.from(this.options).map((item, index) => {
+    this.options = getHTMLElements(this.select, 'option');
+    this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
       const selected = item.selected && !item.disabled;
@@ -537,12 +540,12 @@ export class SelectWrapper {
       </div>
     ) : (
       // TODO: OptionMaps should contain information about optgroup. This way we would not request dom nodes while rendering.
-      Array.from(this.options).map((item, index) => {
+      this.options.map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
           item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
-              {item.closest('optgroup').label}
+              {getClosestHTMLElement(item, 'optgroup').label}
             </span>
           ),
           <div
@@ -602,18 +605,20 @@ export class SelectWrapper {
   private handleScroll(): void {
     const fakeOptionListNodeHeight = 200;
     if (this.fakeOptionListNode.scrollHeight > fakeOptionListNodeHeight) {
-      this.fakeOptionHighlightedNode = this.fakeOptionListNode.querySelectorAll('div')[
+      this.fakeOptionHighlightedNode = getHTMLElements(this.fakeOptionListNode, 'div')[
         this.getHighlightedIndex(this.optionMaps)
       ];
 
-      const { scrollTop } = this.fakeOptionListNode;
-      const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
-      const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
-      } else if (offsetTop < scrollTop) {
-        this.fakeOptionListNode.scrollTop = offsetTop;
+      if (this.fakeOptionHighlightedNode) {
+        const { scrollTop } = this.fakeOptionListNode;
+        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
+        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
+        const elementBottom = offsetTop + offsetHeight;
+        if (elementBottom > scrollBottom) {
+          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
+        } else if (offsetTop < scrollTop) {
+          this.fakeOptionListNode.scrollTop = offsetTop;
+        }
       }
     }
   }

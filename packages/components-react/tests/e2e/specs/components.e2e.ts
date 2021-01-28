@@ -1,18 +1,11 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { waitForComponentsReady } from '../helpers';
+import { goto, selectNode } from '../helpers';
 import { browser } from '../config';
-
-const BASE_URL = 'http://localhost:3000';
 
 describe('components', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
-
-  const goto = async (url: string) => {
-    await page.goto(`${BASE_URL}/${url}`);
-    await waitForComponentsReady(page);
-  };
 
   it('overview should work without errors', async () => {
     const consoleMessages: ConsoleMessage[] = [];
@@ -27,7 +20,7 @@ describe('components', () => {
     });
     const getErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
-    await goto('overview');
+    await goto(page, 'overview');
 
     expect(getErrorsAmount()).toBe(0);
 
@@ -35,8 +28,49 @@ describe('components', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
-  xit('should initialize component deterministically', async () => {
-    await goto('initializer');
+  it('should stringify object props correctly', async () => {
+    await goto(page, 'overview');
+
+    const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
+
+    expect(innerHTML).toContain('<p-headline');
+    expect(innerHTML).toContain('<my-prefix-p-headline');
+    expect(innerHTML).not.toContain('[object Object]');
+  });
+
+  it('should have working events', async () => {
+    await goto(page, 'overview');
+
+    const tabsBar = await selectNode(page, 'p-tabs-bar');
+    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+
+    const clickElement = async (el: ElementHandle) => {
+      await el.click();
+      await page.waitForTimeout(50);
+    };
+
+    const counterKey = 'TAB_CHANGE_EVENT_COUNTER';
+    const getCounterValue = () => page.evaluate((counterKey: string) => window[counterKey], counterKey);
+
+    await page.evaluate((counterKey: string) => {
+      window[counterKey] = 0;
+      document.querySelector('p-tabs-bar').addEventListener('tabChange', () => {
+        window[counterKey]++;
+      });
+    }, counterKey);
+
+    await clickElement(secondBtn);
+    expect(await getCounterValue()).toBe(1);
+
+    await clickElement(thirdBtn);
+    expect(await getCounterValue()).toBe(2);
+
+    await clickElement(firstBtn);
+    expect(await getCounterValue()).toBe(3);
+  });
+
+  it('should initialize component deterministically', async () => {
+    await goto(page, 'core-initializer');
     await page.waitForTimeout(1000);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');

@@ -1,8 +1,10 @@
 # Porsche Design System React
-React wrappers for Porsche Design System web components package.  
+
+React wrappers for Porsche Design System web components package.
 
 ## Install
-```
+
+```shell script
 // install with npm:
 npm install @porsche-design-system/components-react
 
@@ -11,50 +13,66 @@ yarn add @porsche-design-system/components-react
 ``` 
 
 ## Usage
-The React wrappers of web components can be used like every other React component (even with Typescript support). 
 
-After adding `@porsche-design-system/components-react` package to your project, import component(s).
-The following setup is a standard React Scripts (Create React App) setup with SCSS support:
+The React wrappers of web components can be used like every other React component.
 
-#### Index file
-``` 
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
-import React from 'react';
+After adding the `@porsche-design-system/components-react` package to your project, import component(s).  
+The following setup is a standard React (Create React App) setup:
+
+### index.tsx
+
+```tsx
 import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { App } from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
+ReactDOM.render(
+  <PorscheDesignSystemProvider>
+    <App />
+  </PorscheDesignSystemProvider>,
+  document.getElementById('root')
+);
 ``` 
 
-#### App file
-``` 
-import React from 'react';
+### App.tsx
+
+```tsx
 import { PHeadline } from '@porsche-design-system/components-react';
 
-const App: React.FC = () => {
+export const App = (): JSX.Element => {
   return (
     <div className="App">
       <PHeadline variant="headline-1">Headline</PHeadline>
     </div>
   )
 }
-
-export default App;
 ```
 
-#### App.test file
+## Testing
 
-To enable jest testing we provide mocks. You can access them in your jest.mock function. 
+### setupTest.{js|ts}
 
-``` 
-jest.mock('@porsche-design-system/components-react', () => {
-  // require the whole mock collection (including all design system components)
-  return require('@porsche-design-system/components-react/mocks');
+To make testing with jest work, we provide some polyfills.  
+This is required to make custom web components with jsdom.
 
-  // or require a single mock
-  return require('@porsche-design-system/components-react/mocks/p-headline-mock');
+```tsx
+import '@porsche-design-system/components-react/jsdom-polyfill';
+```
+
+### App.test.tsx
+
+```tsx
+import { PorscheDesignSystemProvider, componentsReady } from '@porsche-design-system/components-react';
+import { render } from '@testing-library/react';
+
+test('some test', async () => {
+  const { container } = render(
+    <PorscheDesignSystemProvider> {/* required for the component to work */}
+      <SomeComponentWithPorscheDesignSystemComponents />
+    </PorscheDesignSystemProvider>);
+
+  await componentsReady(); // we need to make sure Porsche Design System components are initialized
+
+  expect(container.firstChild.shadowRoot).not.toBeNull();
 });
 ```

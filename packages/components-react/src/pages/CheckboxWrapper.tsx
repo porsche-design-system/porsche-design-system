@@ -13,10 +13,10 @@ export const CheckboxWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <PCheckboxWrapper label="Some label" hideLabel={true}>
+        <PCheckboxWrapper label="Some label" hideLabel>
           <input type="checkbox" name="some-name" />
         </PCheckboxWrapper>
-        <PCheckboxWrapper label="Some label" hideLabel={true}>
+        <PCheckboxWrapper label="Some label" hideLabel>
           <input type="checkbox" name="some-name" defaultChecked />
         </PCheckboxWrapper>
       </div>

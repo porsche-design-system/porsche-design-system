@@ -3,13 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System</title>
+    <meta
+      name="description"
+      content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products."
+    />
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
+
       gtag('js', new Date());
       gtag('config', 'UA-38934327-7', {
         page_path: location.pathname + location.hash,
@@ -25,12 +31,68 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
-    <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
+    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weight: ['regular', 'semi-bold', 'bold'] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <% } %>
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
+    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
+    <style>
+      .loader {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 10000;
+        font-family: 'Porsche Next', 'Arial Narrow', Arial, sans-serif;
+      }
+
+      .spinner {
+        position: absolute;
+        width: 72px;
+        top: 50%;
+        left: 50%;
+        margin: -36px 0 0 -36px;
+        fill: none;
+        transform: translate3d(0, 0, 0);
+        stroke-width: 1px;
+        stroke: #323639;
+      }
+
+      .fg {
+        stroke-linecap: round;
+        transform-origin: center center;
+        stroke-dashoffset: 0;
+        stroke-dasharray: 40, 200;
+        animation: rotate 2s linear infinite, dash 2s ease-in-out infinite;
+      }
+
+      .bg {
+        opacity: 0.4;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 3, 1000;
+        }
+        50% {
+          stroke-dasharray: 42, 1000;
+        }
+        100% {
+          stroke-dasharray: 30, 1000;
+          stroke-dashoffset: -52;
+        }
+      }
+    </style>
     <script src="./<%= require('../hashedLoaderFilename.js').PDS_LOADER_FILENAME %>"></script>
   </head>
   <body>
@@ -41,7 +103,14 @@
       >
     </noscript>
     <div id="app">
-      <%= require('@porsche-design-system/partials/src/font-loader').getLoader({all: true}) %>
+      <div class="loader" id="pdsLoader">
+        <div class="spinner">
+          <svg viewBox="0 0 32 32">
+            <circle class="fg" cx="16" cy="16" r="9" />
+            <circle class="bg" cx="16" cy="16" r="9" />
+          </svg>
+        </div>
+      </div>
       <script>
         porscheDesignSystem.load();
       </script>
