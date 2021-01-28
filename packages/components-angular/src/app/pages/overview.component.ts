@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -326,7 +326,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     </div>
   `,
 })
-export class OverviewComponent {
+export class OverviewComponent implements OnInit {
   // solve race-condition between non-prefixed and prefixed banner focus
   public allReady: boolean = false;
 
