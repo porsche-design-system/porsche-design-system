@@ -33,8 +33,10 @@ export const proxyOutputs = (instance: any, el: HTMLElement, events: string[]): 
   events.forEach((event) => (instance[event] = fromEvent(el, event)));
 };
 
+type ProxyCmpOptions = { inputs?: string[]; methods?: string[] };
+
 // tslint:disable-next-line: only-arrow-functions
-export function ProxyCmp({ inputs /*, methods*/ }: { inputs?: string[]; methods?: string[] }) {
+export function ProxyCmp({ inputs /*, methods*/ }: ProxyCmpOptions) {
   return function (component: any) {
     // console.log('ProxyCmp decorator', inputs, new Date().toISOString());
     if (inputs) {
