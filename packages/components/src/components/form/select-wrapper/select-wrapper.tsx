@@ -85,9 +85,11 @@ export class SelectWrapper {
   public connectedCallback(): void {
     this.initSelect();
     this.observeSelect();
-    this.defineTypeOfDropDown();
-    this.setAriaAttributes();
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.defineTypeOfDropDown();
   }
 
   public componentDidLoad(): void {
@@ -97,6 +99,7 @@ export class SelectWrapper {
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
       this.filterInput.addEventListener('input', this.handleFilterSearch);
     }
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
@@ -609,14 +612,16 @@ export class SelectWrapper {
         this.getHighlightedIndex(this.optionMaps)
       ];
 
-      const { scrollTop } = this.fakeOptionListNode;
-      const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
-      const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
-      } else if (offsetTop < scrollTop) {
-        this.fakeOptionListNode.scrollTop = offsetTop;
+      if (this.fakeOptionHighlightedNode) {
+        const { scrollTop } = this.fakeOptionListNode;
+        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
+        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
+        const elementBottom = offsetTop + offsetHeight;
+        if (elementBottom > scrollBottom) {
+          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
+        } else if (offsetTop < scrollTop) {
+          this.fakeOptionListNode.scrollTop = offsetTop;
+        }
       }
     }
   }
