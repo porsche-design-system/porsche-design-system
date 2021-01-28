@@ -237,10 +237,10 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const { shadowRoot } = this.host;
-    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
-    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
-    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
+    const [firstTrigger, lastTrigger] = getHTMLElements(
+      this.host.shadowRoot,
+      `.${prefix('tabs-bar__scroll-wrapper__trigger')}`
+    );
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -254,7 +254,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.95,
+        threshold: 0.7,
       }
     );
 
