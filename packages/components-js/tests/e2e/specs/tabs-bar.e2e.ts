@@ -73,6 +73,7 @@ describe('tabs-bar', () => {
     const element = snapshot.children[elementIndex];
     return element.focused;
   };
+  const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
   it('should render correct active tab if activeTabIndex is set ', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
@@ -96,7 +97,7 @@ describe('tabs-bar', () => {
       const { prevButton, nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
+      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -199,6 +200,51 @@ describe('tabs-bar', () => {
 
       expect((await getElementPositions(page, firstButton)).left).toEqual(
         Math.floor((await getElementPositions(page, statusBar)).left)
+      );
+    });
+
+    it('should have correct scroll position after tab click and arrow left', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true });
+      const { prevButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const scrollArea = await getScrollArea();
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
+      const scrollDistanceLeft = 180;
+
+      await clickElement(allButtons[2]);
+
+      expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceLeft, 'scroll left active button after click');
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea)).toBe(
+        scrollDistanceLeft - scrollDistance,
+        'scroll left active button after first prev click'
+      );
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea)).toBe(0, 'scroll left active button after second prev click');
+    });
+
+    it('should have correct scroll position after tab click and arrow right', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7 });
+      const { nextButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const scrollArea = await getScrollArea();
+
+      const maxScrollDistance = 502;
+      const scrollDistanceRight = 423;
+
+      expect(await getScrollLeft(scrollArea)).toBe(maxScrollDistance, 'scroll left active button before click');
+
+      await clickElement(allButtons[6]);
+
+      expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceRight, 'scroll left active button after click');
+
+      await clickElement(nextButton);
+      expect(await getScrollLeft(scrollArea)).toBe(
+        maxScrollDistance,
+        'scroll left active button after first prev click'
       );
     });
 
