@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Link support for `Marque`
+- Sizing options `'responsive' | 'small' | 'medium'` for `Marque`
+
 #### Changed
 - Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix 
 

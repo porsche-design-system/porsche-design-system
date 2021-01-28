@@ -9,7 +9,7 @@ describe('Home', () => {
         async () => {
           await vrt.goTo('/');
         },
-        { maskSelectors: ['.sidebar .header p-text[size="x-small"]'] }
+        { maskSelectors: ['.sidebar header p-text[size="x-small"]'] }
       )
     ).toBeFalsy();
   });

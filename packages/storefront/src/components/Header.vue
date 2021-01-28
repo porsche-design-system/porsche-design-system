@@ -1,8 +1,9 @@
 <template>
-  <header class="header">
-    <router-link class="link" :to="`/`">
-      <p-marque />
+  <header>
+    <router-link to="/" v-slot="{ href, navigate }">
+      <p-marque :href="href" @click="navigate"></p-marque>
     </router-link>
+
     <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center"> Design System </p-headline>
 
     <p-text size="x-small" align="center">
@@ -37,20 +38,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
-
-  .header {
+  header {
     text-align: center;
-  }
-
-  .link {
-    display: inline-block;
-    color: $p-color-default;
-    outline: transparent solid 1px;
-    outline-offset: 1px;
-
-    &:focus {
-      outline-color: $p-color-state-focus;
-    }
   }
 </style>
