@@ -15,8 +15,8 @@ import { Component } from '@angular/core';
       <my-prefix-p-modal p-modal [heading]="'Some Heading'" [open]="'true'">
         Some Content
         <div>
-          <my-prefix-p-button>Confirm</my-prefix-p-button>
-          <my-prefix-p-button variant="tertiary">Cancel</my-prefix-p-button>
+          <my-prefix-p-button p-button>Confirm</my-prefix-p-button>
+          <my-prefix-p-button p-button variant="tertiary">Cancel</my-prefix-p-button>
         </div>
       </my-prefix-p-modal>
     </div>
