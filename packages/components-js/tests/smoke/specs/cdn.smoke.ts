@@ -1,4 +1,4 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
   FONTS_CDN_BASE_URL,
@@ -14,11 +14,12 @@ import { getFontFaceStylesheet } from '@porsche-design-system/components-js/part
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
+import { browser } from '../config';
 
 describe('cdn', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   type RequestType = { url: string };

@@ -1,7 +1,7 @@
 import { Browser, launch } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
 
-let browser: Browser;
+export let browser: Browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
@@ -30,5 +30,3 @@ afterAll(async () => {
     await browser.close();
   }
 });
-
-export const getBrowser = (): Browser => browser;
