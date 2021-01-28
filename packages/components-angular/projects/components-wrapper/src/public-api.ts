@@ -3,5 +3,5 @@
  */
 
 export * from './lib/components/barrel';
-export { PorscheDesignSystemModule } from './components-wrapper.module';
+export { PorscheDesignSystemModule, PorscheDesignSystemModuleConfig } from './components-wrapper.module';
 export { componentsReady } from '@porsche-design-system/components-js';
