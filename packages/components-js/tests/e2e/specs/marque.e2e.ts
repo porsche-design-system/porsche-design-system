@@ -65,10 +65,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
@@ -80,10 +82,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
@@ -95,10 +99,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -113,10 +119,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
@@ -128,10 +136,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
@@ -143,10 +153,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -166,10 +178,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
@@ -181,10 +195,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
@@ -196,10 +212,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -214,10 +232,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution1x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution1x);
       });
@@ -229,10 +249,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution2x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution2x);
       });
@@ -244,10 +266,12 @@ describe('marque', () => {
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'small');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameSmall);
         expect(requestedImagePath).toContain(resolution3x);
 
         await setAttribute(await getHost(), 'size', 'medium');
+        await waitForStencilLifecycle(page);
         expect(requestedImagePath).toContain(fileNameMedium);
         expect(requestedImagePath).toContain(resolution3x);
       });
@@ -263,6 +287,7 @@ describe('marque', () => {
       expect(await getLink()).toBe(null);
 
       await setAttribute(host, 'href', '#some-link');
+      await waitForStencilLifecycle(page);
       expect(await getLink()).not.toBe(null);
     });
 
@@ -277,6 +302,7 @@ describe('marque', () => {
 
       await setAttribute(host, 'href', '#some-link');
       await setAttribute(host, 'target', '_blank');
+      await waitForStencilLifecycle(page);
 
       expect(await getAttribute(link, 'href')).toBe('#some-link');
       expect(await getAttribute(link, 'target')).toBe('_blank');
