@@ -425,6 +425,18 @@ export namespace Components {
     }
     interface PMarque {
         /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of marque.
+         */
+        "size"?: 'responsive' | 'small' | 'medium';
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
+        /**
           * Show/hide trademark sign.
          */
         "trademark"?: boolean;
@@ -1327,6 +1339,18 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMarque {
+        /**
+          * When providing an url then the component will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts sizing of marque.
+         */
+        "size"?: 'responsive' | 'small' | 'medium';
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTarget;
         /**
           * Show/hide trademark sign.
          */

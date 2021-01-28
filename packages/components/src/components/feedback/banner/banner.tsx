@@ -31,9 +31,6 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.handleKeyboardEvents);
     }
-  }
-
-  public componentWillLoad(): void {
     this.addSlottedStyles();
   }
 

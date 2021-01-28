@@ -39,10 +39,13 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     this.setInput();
-    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
