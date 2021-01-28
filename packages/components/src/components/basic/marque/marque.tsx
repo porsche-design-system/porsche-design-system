@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element, Host, Fragment } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
 import { improveFocusHandlingForCustomElement } from '../../../utils';
 import { LinkTarget } from '../../../types';
@@ -56,7 +56,7 @@ export class Marque {
     return (
       <Host>
         {this.href === undefined ? (
-          <Fragment>{picture}</Fragment>
+          picture
         ) : (
           <a href={this.href} target={this.target}>
             {picture}
