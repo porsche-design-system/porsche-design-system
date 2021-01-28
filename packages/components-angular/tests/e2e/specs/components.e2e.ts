@@ -85,7 +85,7 @@ describe('components', () => {
     });
   });
 
-  fdescribe('with prefix', () => {
+  describe('with prefix', () => {
     const regularSelector = 'p-text-field-wrapper';
     const prefixedSelector = `my-prefix-${regularSelector}`;
 
