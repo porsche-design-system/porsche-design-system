@@ -73,11 +73,6 @@ export class TabsBar {
     this.initMutationObserver();
   }
 
-  public componentDidRender(): void {
-    // needs to happen after render in order to have status bar defined and proper calculation
-    this.setStatusBarStyle();
-  }
-
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.sanitizeActiveTabIndex(this.activeTabIndex); // since watcher doesn't trigger on first render
@@ -89,7 +84,14 @@ export class TabsBar {
     this.addEventListeners();
     this.initIntersectionObserver();
   }
+
+  public componentDidRender(): void {
+    // needs to happen after render in order to have status bar defined and proper calculation
+    this.setStatusBarStyle();
+  }
+
   public componentDidUpdate(): void {
+    this.setAccessibilityAttributes();
     this.scrollActiveTabIntoView();
   }
 
