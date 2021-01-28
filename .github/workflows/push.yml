@@ -612,6 +612,11 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-prod-build
+          path: ./packages/components-js/dist
       - name: 'Restore Shared Src Artifact'
         uses: actions/download-artifact@v2
         with:
