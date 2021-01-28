@@ -612,14 +612,16 @@ export class SelectWrapper {
         this.getHighlightedIndex(this.optionMaps)
       ];
 
-      const { scrollTop } = this.fakeOptionListNode;
-      const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
-      const scrollBottom = fakeOptionListNodeHeight + scrollTop;
-      const elementBottom = offsetTop + offsetHeight;
-      if (elementBottom > scrollBottom) {
-        this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
-      } else if (offsetTop < scrollTop) {
-        this.fakeOptionListNode.scrollTop = offsetTop;
+      if (this.fakeOptionHighlightedNode) {
+        const { scrollTop } = this.fakeOptionListNode;
+        const { offsetTop, offsetHeight } = this.fakeOptionHighlightedNode;
+        const scrollBottom = fakeOptionListNodeHeight + scrollTop;
+        const elementBottom = offsetTop + offsetHeight;
+        if (elementBottom > scrollBottom) {
+          this.fakeOptionListNode.scrollTop = elementBottom - fakeOptionListNodeHeight;
+        } else if (offsetTop < scrollTop) {
+          this.fakeOptionListNode.scrollTop = offsetTop;
+        }
       }
     }
   }
