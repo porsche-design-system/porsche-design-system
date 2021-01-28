@@ -68,10 +68,9 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.tabElements = getHTMLElements(this.host, 'a,button')
+    this.tabElements = getHTMLElements(this.host, 'a,button');
     this.initMutationObserver();
   }
-
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
