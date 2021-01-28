@@ -1,6 +1,8 @@
-import { JSX, Component, Prop, h } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
-import { prefix } from '../../../utils';
+import { improveFocusHandlingForCustomElement } from '../../../utils';
+import { LinkTarget } from '../../../types';
+import { breakpoint } from '@porsche-design-system/utilities';
 
 @Component({
   tag: 'p-marque',
@@ -8,10 +10,23 @@ import { prefix } from '../../../utils';
   shadow: true,
 })
 export class Marque {
-  /**
-   * Show/hide trademark sign.
-   */
+  @Element() public host!: HTMLElement;
+
+  /** Show/hide trademark sign. */
   @Prop() public trademark?: boolean = true;
+
+  /** Adapts sizing of marque. */
+  @Prop() public size?: 'responsive' | 'small' | 'medium' = 'responsive';
+
+  /** When providing an url then the component will be rendered as `<a>`. */
+  @Prop() public href?: string = undefined;
+
+  /** Target attribute where the link should be opened. */
+  @Prop() public target?: LinkTarget = '_self';
+
+  public connectedCallback(): void {
+    improveFocusHandlingForCustomElement(this.host);
+  }
 
   public render(): JSX.Element {
     const cdnBaseUrl =
@@ -24,14 +39,30 @@ export class Marque {
         .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
         .join(',');
 
-    const marqueClasses = prefix('marque');
-
-    return (
-      <picture class={marqueClasses}>
-        <source srcSet={buildSrcSet('medium')} media="(min-width: 1300px)" />
-        <source srcSet={buildSrcSet('small')} />
+    const picture = (
+      <picture>
+        {this.size === 'responsive' ? (
+          [
+            <source srcSet={buildSrcSet('medium')} media={`(min-width: ${breakpoint.l}px)`} />,
+            <source srcSet={buildSrcSet('small')} />,
+          ]
+        ) : (
+          <source srcSet={buildSrcSet(this.size)} />
+        )}
         <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
       </picture>
+    );
+
+    return (
+      <Host>
+        {this.href === undefined ? (
+          picture
+        ) : (
+          <a href={this.href} target={this.target}>
+            {picture}
+          </a>
+        )}
+      </Host>
     );
   }
 }
