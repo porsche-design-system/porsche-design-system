@@ -1,0 +1,34 @@
+{
+  "name": "@porsche-design-system/shared",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "contributors": [
+    "Marcel Bertram <marcel.bertram@porsche.de>",
+    "Stephan Schröter <stephan.schroeter@mhp.com>",
+    "Matthias Hägele <matthias.haegele@mhp.com>",
+    "Olivia Pala <olivia.pala@udg.de>",
+    "Bernd Hacker <bernd.hacker@mhp.com"
+  ],
+  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "homepage": "https://designsystem.porsche.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porscheui/porsche-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
+  },
+  "scripts": {
+    "build": "yarn build:chunkManifest",
+    "build:chunkManifest": "ts-node --project './tsconfig.node.json' './scripts/generateChunkManifest.ts'",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "~4.1.3"
+  }
+}
