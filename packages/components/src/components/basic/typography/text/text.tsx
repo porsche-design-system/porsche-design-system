@@ -41,7 +41,7 @@ export class Text {
 
   private textTag: HTMLElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 

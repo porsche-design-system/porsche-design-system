@@ -41,10 +41,13 @@ export class TextareaWrapper {
 
   public connectedCallback(): void {
     this.setTextarea();
-    this.setAriaAttributes();
     this.setState();
     this.initMutationObserver();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {

@@ -14,7 +14,7 @@ import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme }
   shadow: true,
 })
 export class Link {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The style variant of the link. */
   @Prop() public variant?: LinkVariant = 'secondary';
@@ -43,9 +43,9 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
   }
 
   public render(): JSX.Element {
@@ -60,7 +60,7 @@ export class Link {
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
       <TagType
@@ -88,7 +88,7 @@ export class Link {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.element.tagName.toLowerCase();
+    const tagName = this.host.tagName.toLowerCase();
     const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
@@ -123,6 +123,6 @@ export class Link {
       outline-color: transparent !important;
     }`;
 
-    insertSlottedStyles(this.element, style);
+    insertSlottedStyles(this.host, style);
   }
 }
