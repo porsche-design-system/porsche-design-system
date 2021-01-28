@@ -69,7 +69,6 @@ export class TabsBar {
 
   public connectedCallback(): void {
     this.tabElements = getHTMLElements(this.host, 'a,button');
-
     this.initMutationObserver();
   }
 
@@ -92,7 +91,6 @@ export class TabsBar {
 
   public componentDidUpdate(): void {
     this.setAccessibilityAttributes();
-    this.scrollActiveTabIntoView();
   }
 
   public disconnectedCallback(): void {
@@ -243,10 +241,10 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const { shadowRoot } = this.host;
-    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
-    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
-    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
+    const [firstTrigger, lastTrigger] = getHTMLElements(
+      this.host.shadowRoot,
+      `.${prefix('tabs-bar__scroll-wrapper__trigger')}`
+    );
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -260,7 +258,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.95,
+        threshold: 0.7,
       }
     );
 
@@ -270,6 +268,7 @@ export class TabsBar {
 
   private handleTabClick = (newTabIndex: number): void => {
     this.activeTabIndex = newTabIndex;
+    this.scrollActiveTabIntoView();
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
