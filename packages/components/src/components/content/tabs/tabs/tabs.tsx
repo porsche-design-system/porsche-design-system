@@ -1,5 +1,5 @@
 import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, prefix } from '../../../../utils';
+import { getHTMLElements, getPrefixedTagNames, prefix, removeAttribute, setAttribute } from '../../../../utils';
 import type {
   BreakpointCustomizable,
   TabChangeEvent,
@@ -47,8 +47,15 @@ export class Tabs {
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
-    this.setAccessibilityAttributes();
     this.initMutationObserver();
+  }
+
+  public componentDidLoad(): void {
+    this.setAccessibilityAttributes();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
@@ -96,13 +103,13 @@ export class Tabs {
       };
 
       for (const [key, value] of Object.entries(attrs)) {
-        tab.setAttribute(key, value);
+        setAttribute(tab, key, value);
       }
 
       if (+index === this.activeTabIndex) {
-        tab.removeAttribute('hidden');
+        removeAttribute(tab, 'hidden');
       } else {
-        tab.setAttribute('hidden', '');
+        setAttribute(tab, 'hidden', '');
       }
     }
   };

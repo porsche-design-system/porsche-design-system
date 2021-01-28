@@ -14,7 +14,7 @@ import type { BreakpointCustomizable, ButtonType, ButtonVariant, IconName, Theme
   shadow: true,
 })
 export class Button {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order. */
   @Prop() public tabbable?: boolean = true;
@@ -51,9 +51,9 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     improveButtonHandlingForCustomElement(
-      this.element,
+      this.host,
       () => this.type,
       () => this.isDisabled
     );
@@ -68,7 +68,7 @@ export class Button {
     };
     const iconClasses = prefix('button__icon');
     const labelClasses = prefix('button__label');
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-spinner', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-spinner', 'p-text']);
 
     return (
       <button
