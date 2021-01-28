@@ -174,6 +174,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.CoreInitializerComponent,
     name: 'Core Initializer',
   },
+  {
+    path: 'core-initializer-prefixed',
+    component: fromPages.CoreInitializerPrefixedComponent,
+    name: 'Core Initializer Prefixed',
+  },
 ];
 
 @NgModule({
