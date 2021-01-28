@@ -207,12 +207,17 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 8, isWrapped: true });
       const { prevButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
+      const thirdTab = allButtons[2];
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
       const scrollDistance = await getScrollDistance(+scrollAreaWidth);
-      const scrollDistanceLeft = 180;
 
-      await clickElement(allButtons[2]);
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      await clickElement(thirdTab);
+      const tab3offset = await getOffsetLeft(thirdTab);
+      const scrollDistanceLeft = +tab3offset - +gradientWidth + FOCUS_PADDING;
 
       expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceLeft, 'scroll left active button after click');
 
@@ -230,22 +235,25 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7 });
       const { nextButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
+      const seventhTab = allButtons[6];
+
       const scrollArea = await getScrollArea();
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
-      const maxScrollDistance = 502;
-      const scrollDistanceRight = 423;
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
 
-      expect(await getScrollLeft(scrollArea)).toBe(maxScrollDistance, 'scroll left active button before click');
+      const maxScrollDistance = await getScrollLeft(scrollArea);
 
-      await clickElement(allButtons[6]);
+      await clickElement(seventhTab);
+      const tab7offset = await getOffsetLeft(seventhTab);
+      const tabWidth = await getOffsetWidth(seventhTab);
+      const scrollDistanceRight = +tab7offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
 
       expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceRight, 'scroll left active button after click');
 
       await clickElement(nextButton);
-      expect(await getScrollLeft(scrollArea)).toBe(
-        maxScrollDistance,
-        'scroll left active button after first prev click'
-      );
+      expect(await getScrollLeft(scrollArea)).toBe(maxScrollDistance, 'scroll left active button after prev click');
     });
 
     describe('when not wrapped', () => {
@@ -504,7 +512,7 @@ describe('tabs-bar', () => {
     });
 
     it('should only show prev button', async () => {
-      await initTabsBar({ amount: 4, activeTabIndex: 3, isWrapped: true });
+      await initTabsBar({ amount: 20, activeTabIndex: 19, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
       expect(await getClassList(actionNext)).toContain(hiddenClass);
