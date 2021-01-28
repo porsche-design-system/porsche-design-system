@@ -2,7 +2,7 @@
 
 React wrappers for Porsche Design System web components package.
 
-## Install
+## Installation
 
 ```shell script
 // install with npm:

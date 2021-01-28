@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-core-initializer',
@@ -14,12 +14,10 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export class CoreInitializerComponent {
+export class CoreInitializerComponent implements OnInit {
   public isEnabled = false;
 
   public ngOnInit() {
-    setTimeout(() => {
-      this.isEnabled = true;
-    }, 1000);
+    setTimeout(() => (this.isEnabled = true), 1000);
   }
 }

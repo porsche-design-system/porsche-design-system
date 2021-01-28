@@ -2,9 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/components-wrapper",
-    "declarationMap": true,
     "target": "es2015",
     "declaration": true,
+    "declarationMap": true,
     "inlineSources": true,
     "types": [],
     "lib": ["dom", "es2018"]
@@ -12,8 +12,7 @@
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "fullTemplateTypeCheck": true
   }
 }

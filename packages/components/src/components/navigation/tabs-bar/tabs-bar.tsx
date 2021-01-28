@@ -68,10 +68,21 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.tabElements = getHTMLElements(this.host, 'a,button')
+    this.initMutationObserver();
+  }
+
+
+  public componentDidLoad(): void {
+    this.defineHTMLElements();
     this.sanitizeActiveTabIndex(this.activeTabIndex); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
-    this.initMutationObserver();
+    this.scrollActiveTabIntoView({ skipAnimation: true });
+    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // and first call in componentDidRender() is skipped because elements are not defined, yet
+    this.setStatusBarStyle();
+    this.addEventListeners();
+    this.initIntersectionObserver();
   }
 
   public componentDidRender(): void {
@@ -79,14 +90,8 @@ export class TabsBar {
     this.setStatusBarStyle();
   }
 
-  public componentDidLoad(): void {
-    this.defineHTMLElements();
-    this.scrollActiveTabIntoView({ skipAnimation: true });
-    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
-    // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setStatusBarStyle();
-    this.addEventListeners();
-    this.initIntersectionObserver();
+  public componentDidUpdate(): void {
+    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
