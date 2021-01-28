@@ -54,6 +54,10 @@ export class Tabs {
     this.setAccessibilityAttributes();
   }
 
+  public componentDidUpdate(): void {
+    this.setAccessibilityAttributes();
+  }
+
   public disconnectedCallback(): void {
     this.hostObserver.disconnect();
   }
