@@ -6,6 +6,7 @@ import {
   getBrowser,
   getLifecycleStatus,
   getOutlineStyle,
+  initAddEventListener,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -19,6 +20,7 @@ describe('marque', () => {
 
   beforeEach(async () => {
     page = await getBrowser().newPage();
+    await initAddEventListener(page);
     requestedImagePath = '';
 
     await page.setRequestInterception(true);
@@ -35,7 +37,13 @@ describe('marque', () => {
   const setContentWithoutTrademark = () => setContentWithDesignSystem(page, `<p-marque trademark="false"></p-marque>`);
   const setContentWithTrademark = () => setContentWithDesignSystem(page, `<p-marque></p-marque>`);
   const setContentWithLink = () =>
-    setContentWithDesignSystem(page, `<div><p-marque id="hostElement" href="about:blank#"></p-marque></div>`);
+    setContentWithDesignSystem(
+      page,
+      `
+        <div>
+          <p-marque id="hostElement" href="about:blank#"></p-marque>
+        </div>`
+    );
 
   const getHost = () => selectNode(page, 'p-marque');
   const getLink = () => selectNode(page, 'p-marque >>> a');
@@ -49,7 +57,6 @@ describe('marque', () => {
     const fileNameMedium = 'marque-trademark.medium';
 
     describe('on default screen', () => {
-
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
@@ -98,7 +105,6 @@ describe('marque', () => {
     });
 
     describe('on large screen', () => {
-
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
@@ -152,7 +158,6 @@ describe('marque', () => {
     const fileNameMedium = 'marque.medium';
 
     describe('on default screen', () => {
-
       beforeEach(async () => await page.setViewport({ width: 1299, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
@@ -201,7 +206,6 @@ describe('marque', () => {
     });
 
     describe('on large screen', () => {
-
       beforeEach(async () => await page.setViewport({ width: 1300, height: 300 }));
 
       it('should request correct image for 1x resolution', async () => {
@@ -418,8 +422,8 @@ describe('marque', () => {
       await setContentWithLink();
 
       const link = await getLink();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '0' });
-      const visible = expectedStyleOnFocus({ color: 'default', offset: '0' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '0px' });
+      const visible = expectedStyleOnFocus({ color: 'default', offset: '0px' });
 
       expect(await getOutlineStyle(link)).toBe(hidden);
 
