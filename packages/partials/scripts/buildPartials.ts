@@ -3,7 +3,14 @@ import * as path from 'path';
 import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { FONTS_MANIFEST } from '@porsche-design-system/assets';
 import { minifyHTML } from './utils';
-import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES, CDN_BASE_PATH_FONTS } from '../../../cdn.config';
+import {
+  CDN_BASE_URL,
+  CDN_BASE_URL_CN,
+  CDN_BASE_PATH_STYLES,
+  CDN_BASE_PATH_FONTS,
+  CDN_BASE_PATH_COMPONENTS,
+} from '../../../cdn.config';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../shared/src';
 
 const generateSharedStuff = (): string => {
   return `type Cdn = 'auto' | 'cn';
@@ -30,7 +37,7 @@ const generateFontFaceStylesheetPartial = (): string => {
     withoutTags: false,
     ...opts
   };
-  const {cdn, withoutTags} = options;
+  const { cdn, withoutTags } = options;
   const url = \`\${getCdnBaseUrl(cdn)}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
     : '${cssFileCom}'
@@ -46,8 +53,8 @@ const generateFontFaceStylesheetPartial = (): string => {
 
 const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
-  withoutTags?: boolean;
   prefix?: string;
+  withoutTags?: boolean;
 }`;
 
   const tagNames = TAG_NAMES.map((x) => `'${x}'`).join(', ');
@@ -55,11 +62,11 @@ const generateInitialStylesPartial = (): string => {
   const func = `
 export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
-    withoutTags: false,
     prefix: '',
+    withoutTags: false,
     ...opts
   };
-  const {withoutTags, prefix} = options;
+  const { prefix, withoutTags } = options;
 
   const tagNames = [${tagNames}];
   const styleInnerHtml = tagNames.map((x) => prefix
@@ -79,10 +86,10 @@ const generateFontLinksPartial = (): string => {
   const types = `type FontSubset = 'latin' | 'greek' | 'cyril';
 type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
 type FontPreloadLinkOptions = {
+  subset?: FontSubset;
+  weight?: FontWeight[];
   cdn?: Cdn;
   withoutTags?: true | false;
-  weight?: FontWeight[];
-  subset?: FontSubset;
 }
 type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
   withoutTags?: false;
@@ -107,7 +114,7 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
     withoutTags: false,
     ...opts
   };
-  const {subset, weight, cdn, withoutTags} = options;
+  const { subset, weight, cdn, withoutTags } = options;
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts = {
     latin: {
@@ -139,6 +146,46 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
   return [types, func].join('\n\n');
 };
 
+const generateComponentChunksPartial = (): string => {
+  const tagNamesTypeLiteral = TAG_NAMES.map((x) => `'${x}'`).join(' | ');
+  const types = `type TagName = ${tagNamesTypeLiteral} | 'core';
+
+type ComponentChunksOptions = {
+  components?: TagName[];
+  cdn?: Cdn;
+  withoutTags?: boolean;
+};
+type ComponentChunksOptionsWithTags = ComponentChunksOptions & {
+  withoutTags?: false;
+};
+type ComponentChunksOptionsWithoutTags = ComponentChunksOptions & {
+  withoutTags?: true;
+};`;
+
+  const link = minifyHTML('<link rel="prefetch" href="$URL" crossorigin>').replace('$URL', '${link}');
+
+  const func = `export function getComponentChunks(opts?: ComponentChunksOptionsWithTags): string;
+export function getComponentChunks(opts?: ComponentChunksOptionsWithoutTags): string[];
+export function getComponentChunks(opts?: ComponentChunksOptions): string | string[] {
+  const options: ComponentChunksOptions = {
+    components: [],
+    cdn: 'auto',
+    withoutTags: false,
+    ...opts
+  };
+  const { components, cdn, withoutTags } = options;
+
+  const cdnBaseUrl = getCdnBaseUrl(cdn);
+  const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
+  const urls = components.concat(['core']).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
+  const links = urls.map((link) => \`${link}\`).join('');
+
+  return withoutTags ? urls : links;
+};`;
+
+  return [types, func].join('\n\n');
+};
+
 const generatePartials = async (): Promise<void> => {
   const targetDirectory = path.normalize('./src/lib');
   const targetFile = path.resolve(targetDirectory, 'partials.ts');
@@ -148,6 +195,7 @@ const generatePartials = async (): Promise<void> => {
     generateFontFaceStylesheetPartial(),
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
+    generateComponentChunksPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
