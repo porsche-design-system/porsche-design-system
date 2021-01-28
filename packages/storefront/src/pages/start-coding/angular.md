@@ -118,7 +118,11 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 ```
 
-You can now use the components as follows:
+Be aware, that you still have to set the component name without the prefix as an attribute, otherwise you might get
+unexpected results. The component might display as usual, but it is no longer an angular component which means
+bindings of inputs and outputs won't work.
+
+You can now use the prefixed component as follows:
 
 ```ts
 // app.component.ts
@@ -129,7 +133,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
-      <sample-prefix-p-headline variant="headline-1">Headline</sample-prefix-p-headline>
+      <sample-prefix-p-headline p-headline variant="headline-1">Headline</sample-prefix-p-headline>
     </div>
   `,
   styles: []
