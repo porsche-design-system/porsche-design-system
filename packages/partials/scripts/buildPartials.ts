@@ -5,22 +5,26 @@ import { FONTS_MANIFEST } from '@porsche-design-system/assets';
 import { minifyHTML } from './utils';
 import { CDN_BASE_URL, CDN_BASE_URL_CN, CDN_BASE_PATH_STYLES, CDN_BASE_PATH_FONTS } from '../../../cdn.config';
 
-const generatePartials = async (): Promise<void> => {
-  const targetDirectory = path.normalize('./src/lib');
-  const targetFile = path.normalize(`${targetDirectory}/partials.ts`);
+const generateSharedStuff = (): string => {
+  return `type Cdn = 'auto' | 'cn';
+
+const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
+};
+
+const generateFontFaceStylesheetPartial = (): string => {
   const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
-  const newContent = `
-type Cdn = 'auto' | 'cn';
-
-const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
-
-type FontFaceStylesheetOptions = {
+  const types = `type FontFaceStylesheetOptions = {
   cdn?: Cdn;
   withoutTags?: boolean;
-}
-export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
+}`;
+
+  const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
+  const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
+  const link = minifyHTML('<link rel="stylesheet" href="$URL" type="text/css" crossorigin>').replace('$URL', '${url}');
+
+  const func = `export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
   const options: FontFaceStylesheetOptions = {
     cdn: 'auto',
     withoutTags: false,
@@ -28,19 +32,27 @@ export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string 
   };
   const {cdn, withoutTags} = options;
   const url = \`\${getCdnBaseUrl(cdn)}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
-    ? '${hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'))}'
-    : '${hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'))}'
+    ? '${cssFileCn}'
+    : '${cssFileCom}'
   }\`;
 
   return withoutTags
     ? url
-    : \`${minifyHTML('<link rel="stylesheet" href="$URL" type="text/css" crossorigin>').replace('$URL', '${url}')}\`;
-}
+    : \`${link}\`;
+}`;
 
-type InitialStylesOptions = {
+  return [types, func].join('\n\n');
+};
+
+const generateInitialStylesPartial = (): string => {
+  const types = `type InitialStylesOptions = {
   withoutTags?: boolean;
   prefix?: string;
-}
+}`;
+
+  const tagNames = TAG_NAMES.map((x) => `'${x}'`).join(', ');
+
+  const func = `
 export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
     withoutTags: false,
@@ -49,7 +61,7 @@ export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   };
   const {withoutTags, prefix} = options;
 
-  const tagNames = [${TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
+  const tagNames = [${tagNames}];
   const styleInnerHtml = tagNames.map((x) => prefix
     ? \`\${prefix}-\${x}\`
     : x
@@ -58,9 +70,13 @@ export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   return withoutTags
     ? styleInnerHtml
     : \`<style>\${styleInnerHtml}</style>\`;
+};`;
+
+  return [types, func].join('\n\n');
 };
 
-type FontSubset = 'latin' | 'greek' | 'cyril';
+const generateFontLinksPartial = (): string => {
+  const types = `type FontSubset = 'latin' | 'greek' | 'cyril';
 type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
 type FontPreloadLinkOptions = {
   cdn?: Cdn;
@@ -73,7 +89,14 @@ type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
 };
 type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
   withoutTags?: true;
-};
+};`;
+
+  const link = minifyHTML('<link rel="preload" href="$URL" as="font" type="font/woff2" crossorigin>').replace(
+    '$URL',
+    '${link}'
+  );
+
+  const func = `
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
 export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
@@ -107,17 +130,28 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
     }
   };
 
-  const urls = weight.map((item) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][item]}\`);
-  const links = urls.map((item) => \`${minifyHTML(
-    '<link rel="preload" href="$URL" as="font" type="font/woff2" crossorigin>'
-  ).replace('$URL', '${item}')}\`).join('');
+  const urls = weight.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
+  const links = urls.map((link) => \`${link}\`).join('');
 
   return withoutTags ? urls : links;
-};
-`;
+};`;
 
-  fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
-  fs.writeFileSync(targetFile, newContent.trimStart());
+  return [types, func].join('\n\n');
+};
+
+const generatePartials = async (): Promise<void> => {
+  const targetDirectory = path.normalize('./src/lib');
+  const targetFile = path.resolve(targetDirectory, 'partials.ts');
+
+  const content = [
+    generateSharedStuff(),
+    generateFontFaceStylesheetPartial(),
+    generateInitialStylesPartial(),
+    generateFontLinksPartial(),
+  ].join('\n\n');
+
+  fs.mkdirSync(targetDirectory, { recursive: true });
+  fs.writeFileSync(targetFile, content);
 };
 
 generatePartials().catch((e) => {
