@@ -79,10 +79,6 @@ export class TabsBar {
     this.setStatusBarStyle();
   }
 
-  public componentDidUpdate(): void {
-    this.scrollActiveTabIntoView();
-  }
-
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.scrollActiveTabIntoView({ skipAnimation: true });
@@ -268,6 +264,7 @@ export class TabsBar {
 
   private handleTabClick = (newTabIndex: number): void => {
     this.activeTabIndex = newTabIndex;
+    this.scrollActiveTabIntoView();
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
