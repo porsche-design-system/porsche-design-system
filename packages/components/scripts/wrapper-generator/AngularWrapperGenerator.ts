@@ -40,9 +40,25 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .filter(({ isEvent }) => isEvent)
       .map((x) => ({ ...x, key: camelCase(x.key.substr(2)) }));
 
-    const inputs = inputProps.length ? `inputs: [${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
-    const outputs = outputProps.length ? `outputs: [${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
-    const componentOpts = [inputs, outputs].filter((x) => x).join(',\n  ');
+    const inputs = inputProps.length
+      ? `const inputs: string[] = [${inputProps.map(({ key }) => `'${key}'`).join(', ')}];`
+      : '';
+    const outputs = outputProps.length
+      ? `const outputs: string[] = [${outputProps.map(({ key }) => `'${key}'`).join(', ')}];`
+      : '';
+
+    const inputsAndOutputs = [inputs, outputs].filter((x) => x).join('\n');
+    const decoratorOpts = (inputs ? ['inputs'] : []).filter((x) => x).join('\n');
+
+    const componentOpts = [
+      `selector: '${component},[${component}]'`,
+      'changeDetection: ChangeDetectionStrategy.OnPush',
+      `template: '<ng-content></ng-content>'`,
+      ...(inputs ? ['inputs'] : []),
+      ...(outputs ? ['outputs'] : []),
+    ]
+      .filter((x) => x)
+      .join(',\n  ');
 
     const classMembers = [
       'protected el: HTMLElement;',
@@ -53,16 +69,15 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const constructorCode = [
       'c.detach();',
       'this.el = r.nativeElement;',
-      ...outputProps.map(({ key }) => `proxyOutputs(this, this.el, ['${key}']);`),
+      ...(outputs ? ['proxyOutputs(this, this.el, outputs);'] : []),
     ].join('\n    ');
 
-    return `@ProxyCmp({
-  ${inputs}
+    return `${inputsAndOutputs}
+
+@ProxyCmp({
+  ${decoratorOpts}
 })
 @Component({
-  selector: '${component}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
   ${componentOpts}
 })
 export class ${this.generateComponentName(component)} {
