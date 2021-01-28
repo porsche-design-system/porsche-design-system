@@ -8,6 +8,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
+
+### [2.0.0-alpha.13] - 2021-01-26
+
+#### Added
+- Partial function `getFontLinks()` to prevent **Flash of Unstyled Text** (FOUT)
+
+#### Fixed
+- React: correct handling of `className` property
+
+### [2.0.0-alpha.12] - 2021-01-20
+
+#### Added
+- Partial function `getInitialStyles()` to prevent **Flash of Unstyled Content** (FOUC)
+- Partial function `getFontFaceStylesheet()` to prevent **Flash of Unstyled Text** (FOUT)
+
+#### Changed
+- React: `PorscheDesignSystemProvider` needs to wrap application
+- React: component props have to be camelCase
+- React: `PorscheDesignSystemProvider` is needed while testing components
+
+#### Fixed
+- React: typings
+- React: support of objects for property values
+
+#### Removed
+- React: `getPrefixedComponents`, prefixing is handled by `PorscheDesignSystemProvider`
+
 ### [2.0.0-alpha.11] - 2021-01-08
 
 #### Changed

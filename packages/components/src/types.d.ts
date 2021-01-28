@@ -38,10 +38,17 @@ export type TabGradientColorTheme = 'default' | 'surface';
 
 // Pagination Types
 export type NumberOfPageLinks = 5 | 7;
+export type PageChangeEvent = { page: number; previousPage: number };
 
-/**
- * ROLLUP_REPLACE_IS_STAGING will be provided via webpack
- */
+// BreakpointCustomizable Types
+export type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl';
+export type BreakpointValues<T> = Partial<{ [key in Breakpoint]: T }> & { base: T };
+
+// string is needed in order to pass and parse objects via prop decorator
+// TODO: This should be removed in Angular/React Types to ensure typing support
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
+
+// ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
 }

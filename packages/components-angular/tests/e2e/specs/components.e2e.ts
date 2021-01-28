@@ -35,11 +35,11 @@ describe('components', () => {
     expect(getErrorsAmount()).toBe(1);
   });
 
-  it('should not dispatch events twice', async () => {
+  it('should have working events', async () => {
     await goto('overview');
 
     const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('a');
+    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
     const clickElement = async (el: ElementHandle) => {
       await el.click();
@@ -67,7 +67,7 @@ describe('components', () => {
   });
 
   xit('should initialize component deterministically', async () => {
-    await goto('initializer');
+    await goto('core-initializer');
     await page.waitForTimeout(1000);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');

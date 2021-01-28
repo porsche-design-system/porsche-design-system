@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 
-export const InitializerPage = (): JSX.Element => {
+export const CoreInitializerPage = (): JSX.Element => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     setTimeout(() => setIsEnabled(true), 1000);

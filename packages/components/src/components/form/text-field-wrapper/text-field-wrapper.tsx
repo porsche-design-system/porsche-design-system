@@ -1,13 +1,15 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getHTMLElement,
   getPrefixedTagNames,
   handleButtonEvent,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
+  setAriaAttributes,
 } from '../../../utils';
-import { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -138,23 +140,25 @@ export class TextFieldWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!this.host.querySelector('[slot="description"]');
+    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private get isMessageVisible(): boolean {
-    return !!(this.message || this.host.querySelector('[slot="message"]')) && ['success', 'error'].includes(this.state);
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.input.getAttribute('required') !== null;
+    return getAttribute(this.input, 'required') !== null;
   }
 
   private setInput(): void {
-    this.input = this.host.querySelector('input');
+    this.input = getHTMLElement(this.host, 'input');
   }
 
   /*
@@ -163,16 +167,11 @@ export class TextFieldWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      this.input.setAttribute('aria-label', `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`);
-    }
-
-    if (this.state === 'error') {
-      this.input.setAttribute('aria-invalid', 'true');
-    } else {
-      this.input.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   private setState = (): void => {

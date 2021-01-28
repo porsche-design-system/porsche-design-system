@@ -1,14 +1,6 @@
 import { prefix } from './prefix';
-
-/* eslint-disable no-shadow */
-enum Breakpoint {
-  base = 'base',
-  xs = 'xs',
-  s = 's',
-  m = 'm',
-  l = 'l',
-  xl = 'xl',
-}
+import type { BreakpointCustomizable, BreakpointValues } from '../types';
+import { Breakpoint } from '../types';
 
 type BreakpointValue = string | number | boolean;
 type ClassSuffixes = [string, string];
@@ -16,18 +8,6 @@ type ClassSuffixes = [string, string];
 type JSXClasses = {
   [className: string]: boolean;
 };
-
-type BreakpointValues<T> = {
-  [Breakpoint.base]: T;
-  [Breakpoint.xs]?: T;
-  [Breakpoint.s]?: T;
-  [Breakpoint.m]?: T;
-  [Breakpoint.l]?: T;
-  [Breakpoint.xl]?: T;
-};
-
-// string is needed in order to pass and parse objects via prop decorater. TODO: This should be removed in Angular/React Types to ensure typing support
-export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
 /* eslint-disable @typescript-eslint/indent */
 const parseJSON = (
@@ -90,5 +70,5 @@ export const mapBreakpointPropToPrefixedClasses = (
         }),
         {}
       )
-    : createClass(classPrefix, parsedProp, Breakpoint.base, classSuffixes);
+    : createClass(classPrefix, parsedProp, 'base', classSuffixes);
 };

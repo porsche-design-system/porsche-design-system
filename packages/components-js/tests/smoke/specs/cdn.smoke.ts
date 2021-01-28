@@ -10,7 +10,7 @@ import {
   META_ICONS_CDN_BASE_URL,
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
-import { getFontFaceCSS } from '@porsche-design-system/partials';
+import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
@@ -205,8 +205,8 @@ describe('cdn', () => {
 
     describe('styles', () => {
       // retrieve css file names via partial since FONT_FACE_CDN_URL returns different value based on flag in window
-      const comStyle = getFontFaceCSS({ cdn: 'auto', withoutTags: true });
-      const cnStyle = getFontFaceCSS({ cdn: 'cn', withoutTags: true });
+      const comStyle = getFontFaceStylesheet({ cdn: 'auto', withoutTags: true });
+      const cnStyle = getFontFaceStylesheet({ cdn: 'cn', withoutTags: true });
 
       // extract file name from full path
       const getFileName = (path: string) => path.substr(path.lastIndexOf('/') + 1);

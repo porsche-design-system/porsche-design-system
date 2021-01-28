@@ -18,7 +18,7 @@
 
 1. Clone [`porsche-design-system` repository](https://github.com/porscheui/porsche-design-system)
 1. Switch to **project root directory**
-1. Checkout branch **v1** by executing `git checkout v1`
+1. Checkout branch **master** by executing `git checkout master`
 1. Execute command `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
 1. Enter username, password (Artifactory API Key, **not** Artifactory password!) and e-mail address when asked in terminal
 1. Execute `cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy the generated _npm registry token_ from the file to your clipboard
@@ -39,7 +39,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
+1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
 1. If you have to exclude code fom being prettified, see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
@@ -55,14 +55,18 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. Switch to **project root directory**
 1. For the different applications, select one of the following commands:
    - `./docker.sh run-build` (builds the entire application)
-   - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
    - `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
-   - `./docker.sh run-build --icons` (builds the optimized icon set)
-   - `./docker.sh run-build --fonts` (builds the font set)
-   - `./docker.sh run-build --marque` (builds the marque)
+   - `./docker.sh run-build --components` (builds the native stencil web components)
+   - `./docker.sh run-build --components-prod` (builds the native stencil production web components) 
    - `./docker.sh run-build --components-js` (builds the native web components)
+   - `./docker.sh run-build --components-js-prod` (builds the native production web components)
    - `./docker.sh run-build --components-angular` (builds angular components)
    - `./docker.sh run-build --components-react` (builds react components)
+   - `./docker.sh run-build --core-dependencies` (builds utilities, icons, fonts, marque and assets)
+   - `./docker.sh run-build --fonts` (builds the font set)
+   - `./docker.sh run-build --icons` (builds the optimized icon set)
+   - `./docker.sh run-build --marque` (builds the marque)
+   - `./docker.sh run-build --partials` (builds the partials)
    - `./docker.sh run-build --storefront` (builds storefront)
    - `./docker.sh run-build --utilities` (builds utilities)
 
@@ -96,6 +100,7 @@ _Note: `./docker.sh run-install` should be executed after every pull._
 1. For the different applications, select one of the following commands:
    - `./docker.sh run-test-unit` (unit tests for the entire application)
    - `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
+   - `./docker.sh run-test-unit --components-react` (unit tests for the generated react wrappers)
    - `./docker.sh run-test-unit --storefront` (unit tests for the storefront)
    - `./docker.sh run-test-unit --utilities` (unit tests for the utilities)
 
@@ -151,6 +156,15 @@ _Note: `./docker.sh run-install` should be executed after every pull._
    - **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ---
+
+## Docker
+
+#### What to do after adjusting docker scripts
+
+1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
+1. Switch to `docker/node` directory
+1. Run `bash build-and-push-base-image.sh`
+1. View new package on [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
 
 ## Dependency updates
 

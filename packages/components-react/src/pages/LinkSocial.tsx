@@ -29,18 +29,18 @@ export const LinkSocialPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <PLinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel={true}>
+        <PLinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel>
           Some label
         </PLinkSocial>
-        <PLinkSocial icon="logo-facebook" hideLabel={true}>
+        <PLinkSocial icon="logo-facebook" hideLabel>
           <a href="https://www.facebook.com">Some label</a>
         </PLinkSocial>
       </div>
       <div className="playground dark" title="should render without label on dark theme">
-        <PLinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel={true} theme="dark">
+        <PLinkSocial href="https://www.facebook.com" icon="logo-facebook" hideLabel theme="dark">
           Some label
         </PLinkSocial>
-        <PLinkSocial icon="logo-facebook" hideLabel={true} theme="dark">
+        <PLinkSocial icon="logo-facebook" hideLabel theme="dark">
           <a href="https://www.facebook.com">Some label</a>
         </PLinkSocial>
       </div>
@@ -59,7 +59,7 @@ export const LinkSocialPage = (): JSX.Element => {
         <PLinkSocial icon="logo-delicious" href="https://www.delicious.com">
           Some label
         </PLinkSocial>
-        <PLinkSocial icon-source="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com">
+        <PLinkSocial iconSource="./assets/icon-custom-kaixin.svg" href="https://www.kaixin.com">
           Some label
         </PLinkSocial>
       </div>

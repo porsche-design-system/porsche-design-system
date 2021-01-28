@@ -3,7 +3,8 @@ import * as fromPages from './pages';
 
 export type RouteType = RouteProps & {
   name: string;
-  path: string; // override string | string[]
+  path?: string; // override string | string[]
+  isDisabled?: boolean;
 };
 
 export const routes: RouteType[] = [
@@ -63,11 +64,6 @@ export const routes: RouteType[] = [
     component: fromPages.IconPage,
   },
   {
-    name: 'Initializer',
-    path: '/initializer',
-    component: fromPages.InitializerPage,
-  },
-  {
     name: 'Link',
     path: '/link',
     component: fromPages.LinkPage,
@@ -101,11 +97,6 @@ export const routes: RouteType[] = [
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
-  },
-  {
-    name: 'Overview',
-    path: '/overview',
-    component: fromPages.OverviewPage,
   },
   {
     name: 'Pagination',
@@ -161,5 +152,24 @@ export const routes: RouteType[] = [
     name: 'Typography',
     path: '/typography',
     component: fromPages.TypographyPage,
+  },
+  {
+    name: '---',
+    isDisabled: true,
+  },
+  {
+    name: 'Overview',
+    path: '/overview',
+    component: fromPages.OverviewPage,
+  },
+  {
+    name: 'Core Initializer',
+    path: '/core-initializer',
+    component: fromPages.CoreInitializerPage,
+  },
+  {
+    name: 'Core Class Names',
+    path: '/core-class-names',
+    component: fromPages.CoreClassNamesPage,
   },
 ];

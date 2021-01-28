@@ -12,7 +12,7 @@ const addMissingHTMLStencilElementExport = (): void => {
 
   if (!fileContent.includes(missingExport)) {
     fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
-    console.log(`Added to "${fileName}": ${missingExport}`);
+    console.log(`Added to '${fileName}': ${missingExport}`);
   }
 };
 
