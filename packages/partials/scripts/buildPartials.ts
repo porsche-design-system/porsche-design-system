@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { TAG_NAMES } from '@porsche-design-system/components/src/tags';
 import { FONTS_MANIFEST } from '@porsche-design-system/assets';
+import { COMPONENT_CHUNKS_MANIFEST, TAG_NAMES } from '@porsche-design-system/shared';
 import { minifyHTML } from './utils';
 import {
   CDN_BASE_URL,
@@ -10,7 +10,6 @@ import {
   CDN_BASE_PATH_FONTS,
   CDN_BASE_PATH_COMPONENTS,
 } from '../../../cdn.config';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../shared/src';
 
 const generateSharedStuff = (): string => {
   return `type Cdn = 'auto' | 'cn';
