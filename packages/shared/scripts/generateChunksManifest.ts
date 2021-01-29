@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import type { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '../src';
 import { paramCase } from 'change-case';
 
 type Manifest = {
