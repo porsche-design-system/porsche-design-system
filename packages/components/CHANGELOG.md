@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.0] - 2021-01-29
+
 In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.
 With our new major version `v2.0.0` there are some important changes that you should watch out for.
 To make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few guidelines.
