@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:generate && yarn build:package",
-    "build:generate": "yarn build:chunksManifest && yarn build:tagNames",
+    "build:generate": "yarn build:generate:chunksManifest && yarn build:generate:tagNames",
     "build:generate:chunksManifest": "ts-node --project './tsconfig.node.json' 'scripts/generateChunksManifest.ts'",
     "build:generate:tagNames": "ts-node --project './tsconfig.node.json' './scripts/generateTagNames.ts'",
     "build:package": "rollup -c rollup.config.js",
