@@ -14,7 +14,7 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
   <p-tabs-item label="1: Learn">
     <p-headline variant="headline-3">What is web accessibility?</p-headline>
     <p-text>
-      When websites and web tools are properly designed and coded, people with disabilities can use them. However, currently many sites and tools are developed with accessibility barriers that make them difficult or impossible for some people to use.
+      When websites and web tools are properly designed and coded, people with disabilities can use them. However, currently many sites and tools are developed with <strong>accessibility barriers</strong> that make them difficult or impossible for some people to use.
       Integrating accessibility into websites brings broader benefits to organizations, website visitors and society. For example, easier code maintenance and better user experiences, particularly on mobile devices. <a href="https://www.w3.org/WAI/">International web standards</a> define what is needed for accessibility.
     </p-text>
     <p-text>
@@ -40,7 +40,7 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
       This can help you and others to understand the benefits and value of accessibility.
     </p-text>
     <p-headline variant="headline-3">Start learning now!</p-headline>
-    <p-text>There are countless of learning resources in the wild and it can be hard to find the right one to get started even if you are searching for specific information regarding your role as Product Owner, Designer, Developer, Writer or Content Creator in a project.</p-text>
+    <p-text>There are countless of <strong>learning resources</strong> in the wild and it can be difficult to find the right one to get started even if you are searching for specific information regarding your role as Product Owner, Designer, Developer, Writer or Content Creator in a project.</p-text>
     <p-text>The following is an incomplete list of starting points grouped by disciplines.</p-text>
     <p-headline variant="headline-4">Fundamentals for all</p-headline>
     <p-text-list>
@@ -66,7 +66,7 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
         <a href="https://www.w3.org/WAI/business-case/">The Business Case for Digital Accessibility</a> – Examines the rationale for organizations to address accessibility.
       </p-text-list-item>
       <p-text-list-item>
-        <a href="https://www.w3.org/WAI/policies/">Web Accessibility Laws &amp; Policies</a> – Governmental policies related to web accessibility.
+        <a href="https://www.w3.org/WAI/policies/">Web Accessibility Laws &amp;amp; Policies</a> – Governmental policies related to web accessibility.
       </p-text-list-item>
       <p-text-list-item>
         <a href="https://www.essentialaccessibility.com/blog/web-accessibility-lawsuits/">Web Accessibility Lawsuits</a> – What’s the Current Landscape?
@@ -189,6 +189,12 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
         Always test your designs against possible <strong>contrast issues</strong> which might affect people with low vision.
       </p-text-list-item>
       <p-text-list-item>
+        Always provide <strong>visual support for certain states</strong> of trigger elements if available (e.g. links, buttons, forms, etc.). 
+      </p-text-list-item>
+      <p-text-list-item>
+        Design for user interfaces that support a <strong>wide range of possible browser input devices</strong> (e.g. mouse, finger, pen, etc.).
+      </p-text-list-item>
+      <p-text-list-item>
         Prevent <strong>flashing or moving content</strong> and time constraints of user interactions.
       </p-text-list-item>
       <p-text-list-item>
@@ -226,6 +232,9 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
       </p-text-list-item>
       <p-text-list-item>
         Add <strong>automatic accessibility testing</strong> to your build pipeline. 
+      </p-text-list-item>
+      <p-text-list-item>
+        Keep attention while using <strong>3rd party software</strong>. This must also be accessibility compliant.
       </p-text-list-item>
       <p-text-list-item>
         Use as many <strong>Porsche Design System components</strong> as possible. They are tested against accessibility compliance.
@@ -299,7 +308,7 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Make your application <strong>keyboard accessible</strong> (navigating with tab/enter/arrow key).</span>
+      <span slot="label">Make your application is <strong>keyboard accessible</strong> (navigating with tab/enter/arrow key).</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -311,7 +320,7 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label"><strong>Test your application</strong> with an accessibility checker tool (Browser Plugin) like LightHouse, AXE, WAVE and fix all errors.</span>
+      <span slot="label"><strong>Test your application</strong> with an accessibility checker tool (Browser Plugin) like LightHouse, AXE, WAVE and <strong>fix all errors and warnings</strong>.</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Structure</p-headline>
@@ -377,7 +386,50 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
     </p-checkbox-wrapper>
   </p-tabs-item>
   <p-tabs-item label="5: Sustain">
-    <p-text>Tab Content Three</p-text>
+    <p-headline variant="headline-3">Accessibility is never done</p-headline>
+    <p-text>Though your team has weighed in a lot of effort regarding accessibility and your application seems to be full accessible compliant, your work is not done yet. With every change, with every new feature, with every update comes the responsibility that accessibility remains a priority and issues are identified and solved.</p-text>
+    <p-headline variant="headline-4">Monitor</p-headline>
+    <p-text>Integrating an <strong>automated accessibility test</strong> into your build pipeline is a good starting point to keep track on possible issues when the application is updated. But automated testing covers only up to 20% of possible issues. Therefore it is a good choice to have audits and <strong>manual tests</strong> on a regular basis.</p-text>
+    <p-text>Monitoring your application is mandatory and should be part of your product workflow. Monitoring shouldn't be limited to finding issues but <strong>measuring your progress</strong> should be part as well.</p-text>
+    <p-text>Some of possible measurable criteria could be:</p-text>
+    <p-text-list>
+      <p-text-list-item>
+        Number of WCAG Success Criteria passed, and their level.
+      </p-text-list-item>
+      <p-text-list-item>
+        Number of complaints received related to accessibility.
+      </p-text-list-item>
+      <p-text-list-item>
+        Calls handled from people who were unable to process their application online.
+      </p-text-list-item>
+      <p-text-list-item>
+        Positive social media comments on accessibility of service.
+      </p-text-list-item>
+    </p-text-list>
+    <p-headline variant="headline-4">Prioritize</p-headline>
+    <p-text>If accessibility issues are detected, it is common to prioritize them regarding their estimated effort and they might be prioritized down so that other development goals could be achieved. This shouldn't happen but as we all know this can happen e.g. due to tight timelines.</p-text>
+    <p-text>To prevent this situation of always prioritizing down, make sure to split accessibility issues in smaller stories an plan at least a fixed number in every sprint. Always keep in mind, that the later accessibility is observed the more effort it will take to implement. </p-text>
+    <p-headline variant="headline-4">Track standards and laws</p-headline>
+    <p-text>Though it might give the impression that the official standards of <strong>WCAG 2.1</strong> doesn't have changed since a decade, the W3C is actually working on the following standard of <strong>WCAG 3.0</strong> which currently is in a first public working draft. So it's a good choice to keep up with the latest progressions and be prepared if they are released.</p-text>
+    <p-text>But not only the official standards may change, even more important is to keep an eye on <strong>worldwide laws and policies</strong> and how they are handled by regions and countries. Here are some of the latest changes in important markets:</p-text>
+    <p-text-list>
+      <p-text-list-item>
+        In Canada the Accessibility for Ontarians with Disabilities Act dictates that private or non-profit organizations with more than 50 employees have to <strong>accessibility compliant</strong> with WCAG 2.0 AA <strong>from January 2021</strong>.
+      </p-text-list-item>
+      <p-text-list-item>
+        In the U.S. they are working on a new <strong>Online Accessibility Act</strong> which will extend the current <strong>Americans with Disabilities Act</strong> to cover <strong>consumer-facing websites</strong> and mobile applications that are owned or operated by a private entity.
+      </p-text-list-item>
+      <p-text-list-item>
+        Europe adopted the <strong>Europeans with Disabilities Act</strong> in 2019 which also includes the accessibility conformance of <strong>e-commerce</strong> and mobile applications applications.
+      </p-text-list-item>
+    </p-text-list>
+    <p-headline variant="headline-4">Adapt to new technologies</p-headline>
+    <p-text>Not only Browsers do evolve, but also <strong>assistive technologies</strong>. Include devices like screen readers into your support list and enhance your tests also to mobile devices which come with huge improvements and tools for people with disabilities to better access your applications.</p-text>
+    <p-headline variant="headline-4">Hear your users</p-headline>
+    <p-text>User feedback is one og the most valuable things you can get. By adding an <strong>Accessibility Statement</strong> on your application, you give users a good overview of the current state of accessibility and give the possibility for direct feedback as well.</p-text>
+    <p-headline variant="headline-4">Share your knowledge</p-headline>
+    <p-text>As we all know, building accessible products is not easy. The more we have to pull together and exchange our knowledge and experiences. As a starting point, take part in our (upcoming) <strong>Accessibility-Guild</strong> on Slack.</p-text>
+    <p-text>But not only sharing experiences is helpful for others, but also showing your successes. <strong>Be proud of building better products for everyone!</strong></p-text>
   </p-tabs-item>
 </p-tabs>
 
