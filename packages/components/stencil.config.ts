@@ -1,8 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
-import { reactOutputTarget } from '@stencil/react-output-target';
-import { angularOutputTarget } from '@stencil/angular-output-target';
 import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import modify from 'rollup-plugin-modify';
