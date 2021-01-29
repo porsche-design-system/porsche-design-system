@@ -1,4 +1,4 @@
-import { PModal as Modal } from '@porsche-design-system/components-react';
+import { PModal } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const ModalBasicPage = (): JSX.Element => {
@@ -17,9 +17,9 @@ export const ModalBasicPage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should show basic modal on light background">
-        <Modal heading="Some Heading" open>
+        <PModal heading="Some Heading" open>
           Some Content
-        </Modal>
+        </PModal>
       </div>
     </>
   );

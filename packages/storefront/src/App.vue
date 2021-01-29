@@ -37,8 +37,8 @@
       Header,
       Sidebar,
       Footer,
-      Menu
-    }
+      Menu,
+    },
   })
   export default class App extends Vue {
     private isAnimated = false;

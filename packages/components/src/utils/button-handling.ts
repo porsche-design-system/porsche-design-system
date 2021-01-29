@@ -5,8 +5,8 @@ export const improveButtonHandlingForCustomElement = (
   getType: () => ButtonType,
   getDisabled: () => boolean
 ): void => {
-  element.addEventListener('click', event => fixEventTarget(event, element), true);
-  element.addEventListener('click', event => handleButtonEvent(event, element, getType, getDisabled));
+  element.addEventListener('click', (event) => fixEventTarget(event, element), true);
+  element.addEventListener('click', (event) => handleButtonEvent(event, element, getType, getDisabled));
 };
 
 export const handleButtonEvent = (

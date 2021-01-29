@@ -13,11 +13,7 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const checkIntegrity = async (manifest: Manifest): Promise<void> => {
   for (const [name, size] of Object.entries(manifest)) {
@@ -66,8 +62,8 @@ const createManifestAndCopyMarque = async (cdn: string, files: string[]): Promis
       ...manifest[nameKey],
       [sizeKey]: {
         ...manifest[nameKey]?.[sizeKey],
-        [resolutionKey]: filename
-      }
+        [resolutionKey]: filename,
+      },
     };
 
     fs.writeFileSync(targetPath, marque, { encoding: 'binary' });

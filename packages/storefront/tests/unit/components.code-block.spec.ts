@@ -19,16 +19,16 @@ describe('CodeBlock.vue', () => {
   const stubs = ['p-text', 'p-tabs-bar'];
   const store: Store<PartialState> = new Vuex.Store({
     state: {
-      selectedFramework: 'vanilla-js'
+      selectedFramework: 'vanilla-js',
     },
     getters: {
-      selectedFramework: (state: PartialState) => state.selectedFramework
+      selectedFramework: (state: PartialState) => state.selectedFramework,
     },
     mutations: {
       setSelectedFramework: (state: PartialState, payload: Framework): void => {
         state.selectedFramework = payload;
-      }
-    }
+      },
+    },
   });
 
   const getTabButton = (wrapper: Wrapper<Vue>, type: Framework): Wrapper<Vue> => {
@@ -46,8 +46,8 @@ describe('CodeBlock.vue', () => {
       propsData: {
         markup: `<p-some-tag some-attribute="some value">
   <span>some text</span>
-</p-some-tag>`
-      }
+</p-some-tag>`,
+      },
     });
 
     const btn = getTabButton(wrapper, 'vanilla-js');
@@ -67,8 +67,8 @@ describe('CodeBlock.vue', () => {
       propsData: {
         markup: `<p-some-tag some-attribute="some value">
   <span>some text</span>
-</p-some-tag>`
-      }
+</p-some-tag>`,
+      },
     });
 
     const btn = getTabButton(wrapper, 'angular');
@@ -93,8 +93,8 @@ describe('CodeBlock.vue', () => {
       propsData: {
         markup: `<p-some-tag some-attribute="some value">
   <span>some text</span>
-</p-some-tag>`
-      }
+</p-some-tag>`,
+      },
     });
 
     const btn = getTabButton(wrapper, 'react');
@@ -115,7 +115,7 @@ describe('CodeBlock.vue', () => {
   it('should theme code block', async () => {
     const wrapper = shallowMount(CodeBlock, {
       stubs,
-      store
+      store,
     });
 
     const block = wrapper.find('.code-block');
@@ -138,8 +138,8 @@ describe('CodeBlock.vue', () => {
         markup: `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`
-      }
+</p-some-tag>`,
+      },
     });
 
     getTabButton(wrapper, 'angular').trigger('click');
@@ -161,8 +161,8 @@ describe('CodeBlock.vue', () => {
       propsData: {
         markup: `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" digit-attribute="6" boolean-attribute="true">
   <span>some text</span>
-</p-some-tag>`
-      }
+</p-some-tag>`,
+      },
     });
 
     getTabButton(wrapper, 'react').trigger('click');
@@ -181,8 +181,8 @@ describe('CodeBlock.vue', () => {
       stubs,
       store,
       propsData: {
-        markup: `<div></div><br><div></div><br><div></div>`
-      }
+        markup: `<div></div><br><div></div><br><div></div>`,
+      },
     });
 
     expect(wrapper.find('code').text()).toBe(`<div></div>
@@ -195,8 +195,8 @@ describe('CodeBlock.vue', () => {
       stubs,
       store,
       propsData: {
-        markup: `<div></div><br><br><div></div><br><br><br><div></div>`
-      }
+        markup: `<div></div><br><br><div></div><br><br><br><div></div>`,
+      },
     });
 
     expect(wrapper.find('code').text()).toBe(`<div></div>

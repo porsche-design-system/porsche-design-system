@@ -1,10 +1,20 @@
 import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { waitForComponentsReady } from './stencil';
 
-export const setContentWithDesignSystem = async (
-  page: Page,
-  content: string,
-  options: NavigationOptions = { waitUntil: 'networkidle0' }
-): Promise<void> => {
+type Options = NavigationOptions & { enableLogging?: boolean };
+const defaultOptions: Options = { waitUntil: 'networkidle0' };
+
+export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
+
+export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options): Promise<void> => {
+  const options: Options = { ...defaultOptions, ...opts };
+
+  let lifeCycleLogger = '';
+  if (options.enableLogging) {
+    enableBrowserLogging(page);
+    lifeCycleLogger = `console.log(eventName + (eventName.includes('Did') ? ' ' : ''), tagName, new Date().toISOString());`;
+  }
+
   await page.setContent(
     `
       <head>
@@ -13,12 +23,80 @@ export const setContentWithDesignSystem = async (
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
+        <script>
+          let updatingCount = 0;
+          let timeout;
+          window.componentsUpdatedPromise = undefined;
+          let resolveComponentsUpdatedPromise;
+
+          window.checkComponentsUpdatedPromise = () => {
+            if (updatingCount === 0) {
+              timeout = window.setTimeout(() => {
+                resolveComponentsUpdatedPromise();
+                createComponentsUpdatedPromise();
+              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+            }
+          };
+
+          const createComponentsUpdatedPromise = () => {
+            window.componentsUpdatedPromise = new Promise((resolve) => {
+              resolveComponentsUpdatedPromise = resolve;
+            });
+          };
+
+          createComponentsUpdatedPromise();
+
+          window.addEventListener('stencil_componentWillUpdate', () => {
+            updatingCount++;
+            if (timeout) {
+              window.clearTimeout(timeout);
+            }
+          });
+
+          window.addEventListener('stencil_componentDidUpdate', () => {
+            updatingCount--;
+            window.checkComponentsUpdatedPromise();
+          });
+
+          // initial status
+          window['${LIFECYCLE_STATUS_KEY}'] = {
+            componentWillLoad: { all: 0 },
+            componentDidLoad: { all: 0 },
+            componentWillUpdate: { all: 0 },
+            componentDidUpdate: { all: 0 }
+          };
+
+          const hooks = ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'];
+          for (let hook of hooks) {
+            window.addEventListener(\`stencil_\${hook}\`, (e) => {
+              const eventName = e.type.replace('stencil_', '');
+              const tagName = e.composedPath()[0].tagName.toLowerCase();
+
+              if (window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName] === undefined) {
+                // to ensure the lifecycle hook is not undefined in our e2e test, we have to initialize it
+                for (const hook of hooks) {
+                  window['${LIFECYCLE_STATUS_KEY}'][hook][tagName] = 0;
+                }
+              }
+
+              window['${LIFECYCLE_STATUS_KEY}'][eventName][tagName]++;
+              window['${LIFECYCLE_STATUS_KEY}'][eventName].all++;
+
+              // Debug helper
+              // console.log(JSON.stringify(window['${LIFECYCLE_STATUS_KEY}']));
+
+              ${lifeCycleLogger}
+            });
+          };
+
+        </script>
         ${content}
       </body>
     `,
     options
   );
-  await page.waitForSelector('html.hydrated');
+
+  await waitForComponentsReady(page);
 };
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -122,6 +200,10 @@ export const getStyleOnFocus = async (
 };
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
+  const containsCapitalChar = /[A-Z]/.test(key);
+  if (containsCapitalChar) {
+    console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
+  }
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
@@ -154,4 +236,10 @@ export const reattachElement = async (page: Page, selector: string): Promise<voi
     element.remove();
     document.body.appendChild(element);
   }, selector);
+};
+
+export const enableBrowserLogging = (page: Page) => {
+  page.on('console', (msg) => {
+    console.log(msg.type() + ':', msg.text());
+  });
 };

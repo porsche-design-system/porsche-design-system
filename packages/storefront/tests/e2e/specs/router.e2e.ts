@@ -53,12 +53,12 @@ describe('router', () => {
 
     it('should redirect to first configured tab of page when no tab is passed', async () => {
       await page.goto(`${options.baseURL}/#/components/typography`);
-      expect(await getCurrentUrl()).toBe(`${options.baseURL}/#/components/typography#design`);
+      expect(await getCurrentUrl()).toBe(`${options.baseURL}/#/components/typography#text`);
     });
 
     it('should redirect to first configured tab of page when passed tab is invalid', async () => {
       await page.goto(`${options.baseURL}/#/components/typography#some-invalid-tab`);
-      expect(await getCurrentUrl()).toBe(`${options.baseURL}/#/components/typography#design`);
+      expect(await getCurrentUrl()).toBe(`${options.baseURL}/#/components/typography#text`);
     });
 
     it('should redirect to 404 when passed category is invalid', async () => {

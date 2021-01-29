@@ -1,9 +1,10 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import { BreakpointCustomizable, mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import type { BreakpointCustomizable } from '../../../../types';
 
 @Component({
   tag: 'p-flex',
-  styleUrl: 'flex.scss'
+  styleUrl: 'flex.scss',
 })
 export class Flex {
   /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
@@ -17,15 +18,16 @@ export class Flex {
 
   /** Defines how the flex items are aligned along the main axis. */
   @Prop() public justifyContent?: BreakpointCustomizable<
-  'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'flex-start';
 
   /** Defines how the flex items are aligned along the cross axis. */
-  @Prop() public alignItems?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'> = 'stretch';
+  @Prop() public alignItems?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'> =
+    'stretch';
 
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: BreakpointCustomizable<
-  'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   > = 'stretch';
 
   public render(): JSX.Element {
@@ -38,7 +40,7 @@ export class Flex {
         mapBreakpointPropToPrefixedClasses('flex--justify-content', this.justifyContent)),
       ...(this.alignItems !== 'stretch' && mapBreakpointPropToPrefixedClasses('flex--align-items', this.alignItems)),
       ...(this.alignContent !== 'stretch' &&
-        mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent))
+        mapBreakpointPropToPrefixedClasses('flex--align-content', this.alignContent)),
     };
 
     return <Host class={flexClasses} />;

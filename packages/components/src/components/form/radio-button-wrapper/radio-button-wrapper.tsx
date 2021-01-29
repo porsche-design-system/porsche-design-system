@@ -1,18 +1,21 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getClosestHTMLElement,
+  getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  setAriaAttributes,
+  transitionListener,
 } from '../../../utils';
-import { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-radio-button-wrapper',
   styleUrl: 'radio-button-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class RadioButtonWrapper {
   @Element() public host!: HTMLElement;
@@ -34,12 +37,15 @@ export class RadioButtonWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
-    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
@@ -52,16 +58,16 @@ export class RadioButtonWrapper {
       [prefix('radio-button-wrapper__fake-radio-button')]: true,
       [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
       [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
-      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('radio-button-wrapper__message')]: true,
-      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
@@ -89,23 +95,21 @@ export class RadioButtonWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
-  }
-
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.input.getAttribute('required') !== null;
+    return getAttribute(this.input, 'required') !== null;
   }
 
   private setInput(): void {
-    this.input = this.host.querySelector('input[type="radio"]');
+    this.input = getHTMLElement(this.host, 'input[type="radio"]');
   }
 
   /*
@@ -114,24 +118,19 @@ export class RadioButtonWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      this.input.setAttribute('aria-label', `${this.label}${this.message ? `. ${this.message}` : ''}`);
-    }
-
-    if (this.state === 'error') {
-      this.input.setAttribute('aria-invalid', 'true');
-    } else {
-      this.input.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message,
+      state: this.state,
+    });
   }
 
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box
+     * for real shadow dom, else the native behaviour works out of the box
      */
-    if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
+    if (this.host.shadowRoot?.host && getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.focus();
       this.input.click();
     }

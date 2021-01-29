@@ -22,17 +22,15 @@ interface IconDatabase {
 }
 
 const syncIconDatabase = (): void => {
-
-  const newDatabase: IconDatabase = {'icons': []};
+  const newDatabase: IconDatabase = { icons: [] };
   const iconsAdded: string[] = [];
   const iconsUpdated: string[] = [];
   const iconsDeleted: string[] = [];
 
   // add or update icons
   for (const [name, file] of Object.entries(ICONS_MANIFEST).sort()) {
-
     const id = paramCase(name);
-    const icon = database.icons.find(element => element && element.id === id);
+    const icon = database.icons.find((element) => element && element.id === id);
 
     if (icon !== undefined) {
       if (icon.filename !== file) iconsUpdated.push(id);
@@ -44,7 +42,7 @@ const syncIconDatabase = (): void => {
         vehicle: icon.vehicle,
         tags: icon.tags,
         filename: file,
-        public: icon.public
+        public: icon.public,
       });
     } else {
       iconsAdded.push(id);
@@ -56,27 +54,29 @@ const syncIconDatabase = (): void => {
         vehicle: false,
         tags: [],
         filename: file,
-        public: true
+        public: true,
       });
     }
   }
 
   // check for deleted icons
   for (const icon of database.icons) {
-    if (newDatabase.icons.find(element => element && element.id === icon.id) === undefined) {
+    if (newDatabase.icons.find((element) => element && element.id === icon.id) === undefined) {
       iconsDeleted.push(icon.id);
     }
   }
 
   fs.writeFileSync(path.normalize('./database/icons.json'), JSON.stringify(newDatabase));
 
-  console.log(`
+  console.log(
+    `
 Added icons: ${iconsAdded.length}x (${iconsAdded.join(', ')})
 
 Updated icons: ${iconsUpdated.length}x (${iconsUpdated.join(', ')})
 
 Deleted icons: ${iconsDeleted.length}x (${iconsDeleted.join(', ')})
-  `.trim());
+  `.trim()
+  );
 };
 
 syncIconDatabase();

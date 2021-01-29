@@ -3,11 +3,16 @@ import {
   getActiveElementId,
   getAttribute,
   getBrowser,
-  getProperty, getStyleOnFocus,
+  getProperty,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -20,15 +25,18 @@ describe('button', () => {
   });
   afterEach(async () => await page.close());
 
-  const getButtonHost = () => selectNode(page, 'p-button');
-  const getButtonRealButton = () => selectNode(page, 'p-button >>> button');
+  const getHost = () => selectNode(page, 'p-button');
+  const getButton = () => selectNode(page, 'p-button >>> button');
   const getIconOrSpinner = () => selectNode(page, 'p-button >>> .p-button__icon');
 
-  const initButton = (): Promise<void> => {
+  const initButton = (opts?: { isLoading?: boolean }): Promise<void> => {
+    const { isLoading = false } = opts ?? {};
+    const loading = isLoading ? `loading="${isLoading}"` : '';
+
     return setContentWithDesignSystem(
       page,
       `
-      <p-button>
+      <p-button ${loading}>
         Some label
       </p-button>`
     );
@@ -36,14 +44,14 @@ describe('button', () => {
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
-    const el = await getButtonRealButton();
+    const el = await getButton();
     expect(el).not.toBeNull();
   });
 
   it('should not be clickable when disabled', async () => {
     await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`);
-    const host = await getButtonHost();
-    const button = await getButtonRealButton();
+    const host = await getHost();
+    const button = await getButton();
 
     let calls = 0;
     await addEventListener(host, 'click', () => calls++);
@@ -69,8 +77,8 @@ describe('button', () => {
     await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
 
     const wrapper = await selectNode(page, 'div');
-    const host = await getButtonHost();
-    const button = await getButtonRealButton();
+    const host = await getHost();
+    const button = await getButton();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -90,8 +98,8 @@ describe('button', () => {
       page,
       `<form onsubmit="return false;"><p-button type="submit">Some label</p-button></form>`
     );
-    const button = await getButtonRealButton();
-    const host = await getButtonHost();
+    const button = await getButton();
+    const host = await getHost();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
@@ -120,7 +128,7 @@ describe('button', () => {
     `
     );
 
-    const button = await getButtonRealButton();
+    const button = await getButton();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
@@ -143,15 +151,15 @@ describe('button', () => {
     `
     );
 
-    const innerButton = await getButtonRealButton();
-    const outerButton = await getButtonHost();
+    const host = await getHost();
+    const button = await getButton();
     const form = await selectNode(page, 'form');
 
     let calls = 0;
     await addEventListener(form, 'submit', () => calls++);
 
-    await innerButton.click();
-    await outerButton.click();
+    await button.click();
+    await host.click();
     await waitForStencilLifecycle(page);
     expect(calls).toBe(0);
   });
@@ -168,7 +176,7 @@ describe('button', () => {
     `
     );
 
-    const button = await getButtonHost();
+    const button = await getHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
@@ -262,7 +270,7 @@ describe('button', () => {
 
     const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button'));
 
-    const button = await getButtonHost();
+    const button = await getHost();
     const before = await selectNode(page, '#before');
     await before.focus();
     expect(await buttonHasFocus()).toBe(false);
@@ -287,7 +295,7 @@ describe('button', () => {
     `
     );
 
-    const button = await getButtonHost();
+    const button = await getHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
@@ -339,7 +347,7 @@ describe('button', () => {
     await focusElAndPressEnter(input);
     expect(submitCalls).toBe(1);
 
-    const button = await getButtonHost();
+    const button = await getHost();
     await focusElAndPressEnter(button);
     expect(submitCalls).toBe(1); // type isn't submit, yet
 
@@ -361,8 +369,8 @@ describe('button', () => {
 
   it('should add aria-busy when loading and remove if finished', async () => {
     await setContentWithDesignSystem(page, `<p-button>Some label</p-button>`);
-    const host = await getButtonHost();
-    const button = await getButtonRealButton();
+    const host = await getHost();
+    const button = await getButton();
 
     expect(await getAttribute(button, 'aria-busy')).toBeNull();
 
@@ -379,7 +387,7 @@ describe('button', () => {
 
   it('should change theme of spinner if changed programmatically and variant tertiary', async () => {
     await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
-    const host = await getButtonHost();
+    const host = await getHost();
     const spinner = await getIconOrSpinner();
 
     expect(await getProperty(spinner, 'theme')).toBe('dark');
@@ -399,9 +407,9 @@ describe('button', () => {
     it('should be shown by keyboard navigation only', async () => {
       await initButton();
 
-      const button = await getButtonRealButton();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'contrastHigh'});
+      const button = await getButton();
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'contrastHigh' });
 
       expect(await getOutlineStyle(button)).toBe(hidden);
 
@@ -420,35 +428,74 @@ describe('button', () => {
     it('should show outline of shadowed <button> when it is focused', async () => {
       await initButton();
 
-      const host = await getButtonHost();
-      const button = await getButtonRealButton();
+      const host = await getHost();
+      const button = await getButton();
 
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'contrastHigh' }));
 
       await setAttribute(host, 'variant', 'secondary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand', theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'brand', theme: 'dark' }));
 
       await setAttribute(host, 'variant', 'primary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'brand'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'brand' }));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'light');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({color: 'contrastHigh'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ color: 'contrastHigh' }));
 
       await setAttribute(host, 'variant', 'tertiary');
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({theme: 'dark'}));
+      expect(await getStyleOnFocus(button)).toBe(expectedStyleOnFocus({ theme: 'dark' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initButton();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-button']).toBe(1, 'componentDidLoad: p-button');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips with spinner', async () => {
+      await initButton({ isLoading: true });
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-button']).toBe(1, 'componentDidLoad: p-button');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-spinner']).toBe(1, 'componentDidLoad: p-spinner');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initButton();
+      const host = await getHost();
+
+      await setAttribute(host, 'variant', 'tertiary');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-button']).toBe(1, 'componentDidUpdate: p-button');
+
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

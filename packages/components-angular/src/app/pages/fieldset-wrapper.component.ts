@@ -10,11 +10,10 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should render with label and text-field-wrapper with defined spacing">
       <p-fieldset-wrapper [label]="'Some label'">
         <p-text-field-wrapper [label]="'Some label'">
-          <input type="text" name="some-name"/>
+          <input type="text" name="some-name" />
         </p-text-field-wrapper>
       </p-fieldset-wrapper>
     </div>
-  `
+  `,
 })
-export class FieldsetWrapperComponent {
-}
+export class FieldsetWrapperComponent {}

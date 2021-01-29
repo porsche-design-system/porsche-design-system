@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Headline } from '../../../src/components/basic/typography/headline/headline';
 
 describe('Component <p-headline>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Headline],

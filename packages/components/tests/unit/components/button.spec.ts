@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Button } from '../../../src/components/action/button/button';
 
 describe('Component <p-button>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Button],
@@ -35,7 +34,7 @@ describe('Component <p-button>', () => {
   it('should have a disabled prop in button mode', async () => {
     const page = await newSpecPage({
       components: [Button],
-      html: `<div></div>`
+      html: `<div></div>`,
     });
 
     const component = page.doc.createElement('p-button');

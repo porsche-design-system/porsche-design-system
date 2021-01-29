@@ -1,16 +1,12 @@
-export const CDN_KEY = 'PORSCHE_DESIGN_SYSTEM_CDN';
-
-export const CDN_KEY_TYPE_DEFINITION = `const CDN_KEY = '${CDN_KEY}';
-
-declare global {
+export const CDN_KEY_TYPE_DEFINITION = `declare global {
   interface Window {
-    [CDN_KEY]: 'auto' | 'cn';
+    PORSCHE_DESIGN_SYSTEM_CDN: 'auto' | 'cn';
   }
 }`;
 
 export const CDN_BASE_URL = 'https://cdn.ui.porsche.com';
 export const CDN_BASE_URL_CN = 'https://cdn.ui.porsche.cn';
-export const CDN_BASE_URL_DYNAMIC = `(typeof window !== 'undefined' && window[CDN_KEY] === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}')`;
+export const CDN_BASE_URL_DYNAMIC = `(typeof window !== 'undefined' && window.PORSCHE_DESIGN_SYSTEM_CDN === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}')`;
 
 const basePath = 'porsche-design-system';
 export const CDN_BASE_PATH_COMPONENTS = `${basePath}/components`;

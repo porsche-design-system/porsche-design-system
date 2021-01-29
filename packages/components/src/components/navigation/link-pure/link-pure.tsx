@@ -1,20 +1,21 @@
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   calcLineHeightForElement,
+  getHTMLElement,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  transitionListener,
 } from '../../../utils';
-import { IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link-pure',
   styleUrl: 'link-pure.scss',
-  shadow: true
+  shadow: true,
 })
 export class LinkPure {
   @Element() public host!: HTMLElement;
@@ -54,10 +55,8 @@ export class LinkPure {
 
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
-  private subline: HTMLElement;
 
-  public componentWillLoad(): void {
-    this.setSubline();
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
@@ -75,20 +74,20 @@ export class LinkPure {
 
     const linkPureClasses = {
       [prefix('link-pure')]: true,
-      [prefix(`link-pure--theme-${this.theme}`)]: true,
+      [prefix('link-pure--theme-dark')]: isDark(this.theme),
       [prefix('link-pure--active')]: this.active,
-      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size)
+      ...mapBreakpointPropToPrefixedClasses('link-pure--size', this.size),
     };
 
     const iconClasses = prefix('link-pure__icon');
 
     const labelClasses = {
       [prefix('link-pure__label')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('link-pure__label-', this.hideLabel, ['hidden', 'visible']),
     };
     const sublineClasses = {
       [prefix('link-pure__subline')]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('link-pure__subline-', this.hideLabel, ['hidden', 'visible']),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
@@ -101,7 +100,7 @@ export class LinkPure {
             href: this.href,
             target: this.target,
             download: this.download,
-            rel: this.rel
+            rel: this.rel,
           })}
           ref={(el) => (this.linkTag = el as HTMLElement)}
         >
@@ -118,7 +117,7 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {this.subline && (
+        {this.hasSubline && (
           <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
@@ -127,8 +126,8 @@ export class LinkPure {
     );
   }
 
-  private setSubline(): void {
-    this.subline = this.host.querySelector('[slot="subline"]');
+  private get hasSubline(): boolean {
+    return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
   private addSlottedStyles(): void {

@@ -1,12 +1,20 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getHTMLElement,
+  getHTMLElements,
   getPrefixedTagNames,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../types';
-import { getHTMLElement, getHTMLElements } from '../../../utils/selector-helper';
+import type {
+  BreakpointCustomizable,
+  TabChangeEvent,
+  TabGradientColorTheme,
+  TabSize,
+  TabWeight,
+  Theme,
+} from '../../../types';
 import { pxToRem } from '@porsche-design-system/utilities';
 
 type Direction = 'prev' | 'next';
@@ -27,7 +35,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({reflect: true}) public theme?: Theme = 'light';
+  @Prop({ reflect: true }) public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -61,9 +69,19 @@ export class TabsBar {
 
   public connectedCallback(): void {
     this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.initMutationObserver();
+  }
+
+  public componentDidLoad(): void {
+    this.defineHTMLElements();
     this.sanitizeActiveTabIndex(this.activeTabIndex); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
-    this.initMutationObserver();
+    this.scrollActiveTabIntoView({ skipAnimation: true });
+    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // and first call in componentDidRender() is skipped because elements are not defined, yet
+    this.setStatusBarStyle();
+    this.addEventListeners();
+    this.initIntersectionObserver();
   }
 
   public componentDidRender(): void {
@@ -72,17 +90,7 @@ export class TabsBar {
   }
 
   public componentDidUpdate(): void {
-    this.scrollActiveTabIntoView();
-  }
-
-  public componentDidLoad(): void {
-    this.defineHTMLElements();
-    this.scrollActiveTabIntoView({ skipAnimation: true });
-    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
-    // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setStatusBarStyle();
-    this.addEventListeners();
-    this.initIntersectionObserver();
+    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
@@ -104,7 +112,7 @@ export class TabsBar {
     const statusBarClasses = {
       [prefix('tabs-bar__status-bar')]: true,
       [prefix('tabs-bar__status-bar--enable-transition')]: this.enableTransition,
-      [prefix('tabs-bar__status-bar--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__status-bar--theme-dark')]: isDark(this.theme),
       [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true,
     };
 
@@ -125,16 +133,17 @@ export class TabsBar {
   }
 
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
+    const isDarkTheme = isDark(this.theme);
     const actionClasses = {
       [prefix('tabs-bar__action')]: true,
-      [prefix('tabs-bar__action--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__action--theme-dark')]: isDarkTheme,
       [prefix(`tabs-bar__action--${direction}`)]: true,
       [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
     };
 
     const gradientClasses = {
       [prefix('tabs-bar__gradient')]: true,
-      [prefix('tabs-bar__gradient--theme-dark')]: this.theme === 'dark',
+      [prefix('tabs-bar__gradient--theme-dark')]: isDarkTheme,
       [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
       [prefix(`tabs-bar__gradient--${direction}`)]: true,
     };
@@ -152,7 +161,9 @@ export class TabsBar {
           size="inherit"
           icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
           onClick={() => this.scrollOnPrevNextClick(direction)}
-        />
+        >
+          {direction}
+        </PrefixedTagNames.pButtonPure>
       </div>
     );
   };
@@ -174,8 +185,8 @@ export class TabsBar {
     for (const [index, tab] of Object.entries(this.tabElements)) {
       const isActiveTab = this.activeTabIndex === +index;
       const attrs = {
-        role: 'tab',
-        tabindex: isActiveTab ? '0' : '-1',
+        'role': 'tab',
+        'tabindex': isActiveTab ? '0' : '-1',
         'aria-selected': isActiveTab ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
@@ -218,7 +229,7 @@ export class TabsBar {
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'characterData').length) {
+      if (mutations.some(({ type }) => type === 'characterData')) {
         this.setStatusBarStyle();
       }
     });
@@ -230,10 +241,10 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const { shadowRoot } = this.host;
-    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
-    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
-    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
+    const [firstTrigger, lastTrigger] = getHTMLElements(
+      this.host.shadowRoot,
+      `.${prefix('tabs-bar__scroll-wrapper__trigger')}`
+    );
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -247,7 +258,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.95,
+        threshold: 0.7,
       }
     );
 
@@ -257,6 +268,7 @@ export class TabsBar {
 
   private handleTabClick = (newTabIndex: number): void => {
     this.activeTabIndex = newTabIndex;
+    this.scrollActiveTabIntoView();
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {

@@ -15,7 +15,7 @@ const Square = styled.div(({ background }: { background?: CSSProperties['backgro
   textAlign: 'center',
   lineHeight: '50px',
   fontSize: 10,
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 }));
 
 const styledHeadlines = Object.values(headline).map((x) => styled.div(x));
@@ -30,16 +30,17 @@ export const JsVariables = (): JSX.Element => {
   const renderSquares = (colors: string[], theme: 'light' | 'dark' = 'light') => (
     <div>
       {colors.map((x, idx) => {
-        const style = x === 'currentColor'
-          ? {
-            color: theme === 'light' ? 'black' : 'white',
-            outline: `${x} solid 1px`,
-            outlineOffset: '-5px'
-          }
-          : null;
+        const style =
+          x === 'currentColor'
+            ? {
+                color: theme === 'light' ? 'black' : 'white',
+                outline: `${x} solid 1px`,
+                outlineOffset: '-5px',
+              }
+            : null;
         const background = x === 'currentColor' ? null : x;
 
-        return <Square key={idx} background={background} children={x} style={style} />
+        return <Square key={idx} background={background} children={x} style={style} />;
       })}
     </div>
   );

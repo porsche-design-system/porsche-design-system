@@ -5,7 +5,7 @@
   width: 100%;
   height: auto;
   margin-left: p-px-to-rem(4px);
-  padding: 0 .125em 0 0;
+  padding: 0 0.125em 0 0;
   white-space: normal;
   overflow: visible;
   text-indent: 0;
@@ -46,36 +46,31 @@
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-small {
+      } @else if $size == $p-font-size-small {
         @include p-generate-type-scale($size);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-medium {
+      } @else if $size == $p-font-size-medium {
         @include p-generate-type-scale($p-font-size-20);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-large {
+      } @else if $size == $p-font-size-large {
         @include p-generate-type-scale($p-font-size-30);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else if $size == $p-font-size-x-large {
+      } @else if $size == $p-font-size-x-large {
         @include p-generate-type-scale($p-font-size-large);
         &::before {
           font-size: $size;
           margin-left: #{p-calculate-line-height($size)}em;
         }
-      }
-      @else {
+      } @else {
         @error "Unknown size #{$size}.";
       }
     }
@@ -117,41 +112,38 @@
   text-decoration: none;
   text-align: left;
   background: transparent;
+  color: $p-color-default;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
-  :host([theme="dark"]) & {
+  :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
   &:not(a)::before {
     pointer-events: none;
   }
-
-  &--theme-light {
+  + * {
     color: $p-color-default;
+  }
+
+  &:active {
+    color: $p-color-state-active;
     + * {
-      color: $p-color-default;
-    }
-
-    &:active {
       color: $p-color-state-active;
-      + * {
-        color: $p-color-state-active;
-      }
     }
+  }
 
-    &:hover {
+  &:hover {
+    color: $p-color-state-hover;
+    + * {
       color: $p-color-state-hover;
-      + * {
-        color: $p-color-state-hover;
-      }
     }
+  }
 
-    &#{$bem-block}--active {
+  &#{$bem-block}--active {
+    color: $p-color-brand;
+    + * {
       color: $p-color-brand;
-      + * {
-        color: $p-color-brand;
-      }
     }
   }
 
@@ -329,7 +321,8 @@
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
     margin-top: 4px;
 
-    &::before { // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
+    &::before {
+      // We need a margin-left according to the labels font-size. The size of before gets calculated in the p-link-pure-size mixin
       content: '';
     }
   }

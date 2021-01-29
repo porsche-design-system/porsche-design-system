@@ -1,11 +1,17 @@
 import {
   addEventListener,
   getActiveElementId,
-  getBrowser, getStyleOnFocus,
+  getBrowser,
+  getStyleOnFocus,
   initAddEventListener,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForInheritedCSSTransition,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -18,11 +24,13 @@ describe('link-pure', () => {
   });
   afterEach(async () => await page.close());
 
-  const getLinkPureHost = () => selectNode(page, 'p-link-pure');
-  const getLinkPureRealLink = () => selectNode(page, 'p-link-pure >>> a');
+  const getHost = () => selectNode(page, 'p-link-pure');
+  const getLink = () => selectNode(page, 'p-link-pure >>> a');
   const getSlottedLink = () => selectNode(page, 'p-link-pure a');
 
-  const initLinkPure = ({ useSlottedAnchor }: { useSlottedAnchor: boolean } = { useSlottedAnchor: false }): Promise<void> => {
+  const initLinkPure = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
+    const { useSlottedAnchor = false } = opts ?? {};
+
     return setContentWithDesignSystem(
       page,
       `
@@ -36,7 +44,7 @@ describe('link-pure', () => {
 
   it('should render', async () => {
     await setContentWithDesignSystem(page, `<p-link-pure href="#">Some label</p-link-pure>`);
-    const el = await getLinkPureRealLink();
+    const el = await getLink();
     expect(el).toBeDefined();
   });
 
@@ -47,8 +55,8 @@ describe('link-pure', () => {
     );
 
     const wrapper = await selectNode(page, 'div');
-    const host = await getLinkPureHost();
-    const link = await getLinkPureRealLink();
+    const host = await getHost();
+    const link = await getLink();
 
     const events = [];
     await addEventListener(wrapper, 'click', (ev) => events.push(ev));
@@ -74,7 +82,7 @@ describe('link-pure', () => {
           </div>
     `
     );
-    const link = await getLinkPureHost();
+    const link = await getHost();
     const before = await selectNode(page, '#before');
     const after = await selectNode(page, '#after');
 
@@ -168,7 +176,7 @@ describe('link-pure', () => {
 
     const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-pure'));
 
-    const link = await getLinkPureHost();
+    const link = await getHost();
     const before = await selectNode(page, '#before');
     await before.focus();
 
@@ -186,73 +194,108 @@ describe('link-pure', () => {
     it('should be shown by keyboard navigation only for shadowed <a>', async () => {
       await initLinkPure();
 
-      const link = await getLinkPureRealLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const link = await getLink();
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await link.click();
       await waitForInheritedCSSTransition(page);
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(visible);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initLinkPure({useSlottedAnchor: true});
+      await initLinkPure({ useSlottedAnchor: true });
 
       const link = await getSlottedLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await link.click();
       await waitForInheritedCSSTransition(page);
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(hidden);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(hidden);
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
       await page.keyboard.up('ShiftLeft');
       await page.keyboard.press('Tab');
 
-      expect(await getOutlineStyle(link, {pseudo: '::before'})).toBe(visible);
+      expect(await getOutlineStyle(link, { pseudo: '::before' })).toBe(visible);
     });
 
     it('should show outline of shadowed <a> when it is focused', async () => {
       await initLinkPure();
 
-      const host = await getLinkPureHost();
-      const link = await getLinkPureRealLink();
+      const host = await getHost();
+      const link = await getLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ offset: '1px' })
+      );
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
+      );
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initLinkPure({useSlottedAnchor: true});
+      await initLinkPure({ useSlottedAnchor: true });
 
-      const host = await getLinkPureHost();
+      const host = await getHost();
       const link = await getSlottedLink();
 
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({offset: '1px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ offset: '1px' })
+      );
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
-      expect(await getStyleOnFocus(link, 'outline', {pseudo: '::before'})).toBe(expectedStyleOnFocus({theme: 'dark', offset: '1px'}));
+      expect(await getStyleOnFocus(link, 'outline', { pseudo: '::before' })).toBe(
+        expectedStyleOnFocus({ theme: 'dark', offset: '1px' })
+      );
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initLinkPure();
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-link-pure']).toBe(1, 'componentDidLoad: p-link-pure');
+      expect(status.componentDidLoad['p-text']).toBe(1, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(3, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initLinkPure();
+      const host = await getHost();
+
+      await setAttribute(host, 'size', 'medium');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-link-pure']).toBe(1, 'componentDidUpdate: p-link-pure');
+
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

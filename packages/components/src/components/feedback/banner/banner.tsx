@@ -1,17 +1,17 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles } from '../../../utils';
-import { Theme } from '../../../types';
+import { prefix, getPrefixedTagNames, insertSlottedStyles, getHTMLElement } from '../../../utils';
+import type { BannerState, Theme } from '../../../types';
 
 @Component({
   tag: 'p-banner',
   styleUrl: 'banner.scss',
-  shadow: true
+  shadow: true,
 })
 export class Banner {
   @Element() public host!: HTMLElement;
 
   /** State of the banner. */
-  @Prop() public state?: 'error' | 'warning' | 'neutral' = 'neutral';
+  @Prop() public state?: BannerState = 'neutral';
 
   /** Defines if the banner can be closed/removed by the user. */
   @Prop() public persistent?: boolean = false;
@@ -31,9 +31,6 @@ export class Banner {
     if (!this.persistent) {
       document.addEventListener('keydown', this.handleKeyboardEvents);
     }
-  }
-
-  public componentWillLoad(): void {
     this.addSlottedStyles();
   }
 
@@ -53,7 +50,7 @@ export class Banner {
     const bannerClasses = {
       [prefix('banner')]: true,
       [prefix(`banner--${this.state}`)]: true,
-      [prefix(`banner--theme-${this.theme}`)]: true
+      [prefix(`banner--theme-${this.theme}`)]: true,
     };
 
     const contentClasses = prefix('banner__content');
@@ -70,7 +67,7 @@ export class Banner {
       'p-headline',
       'p-text',
       'p-icon',
-      'p-button-pure'
+      'p-button-pure',
     ]);
 
     return (
@@ -123,17 +120,15 @@ export class Banner {
   private removeBanner = (): void => {
     this.dismiss.emit();
     this.host.classList.add(prefix('banner--close'));
-    setTimeout(() => {
-      this.host.remove();
-    }, 1000);
+    setTimeout(() => this.host.remove(), 1000);
   };
 
   private get isTitleDefined(): boolean {
-    return !!this.host.querySelector('[slot="title"]');
+    return !!getHTMLElement(this.host, '[slot="title"]');
   }
 
   private get isDescriptionDefined(): boolean {
-    return !!this.host.querySelector('[slot="description"]');
+    return !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private addSlottedStyles(): void {

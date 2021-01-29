@@ -1,7 +1,13 @@
 import { Component, h, Element, Prop, State, Host, Event, EventEmitter, Watch } from '@stencil/core';
-import { BreakpointCustomizable, getPrefixedTagNames, prefix } from '../../../../utils';
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, Theme } from '../../../../types';
-import { getHTMLElements } from '../../../../utils/selector-helper';
+import { getHTMLElements, getPrefixedTagNames, prefix, removeAttribute, setAttribute } from '../../../../utils';
+import type {
+  BreakpointCustomizable,
+  TabChangeEvent,
+  TabGradientColorTheme,
+  TabSize,
+  TabWeight,
+  Theme,
+} from '../../../../types';
 
 @Component({
   tag: 'p-tabs',
@@ -41,8 +47,15 @@ export class Tabs {
 
   public connectedCallback(): void {
     this.defineTabsItemElements();
-    this.setAccessibilityAttributes();
     this.initMutationObserver();
+  }
+
+  public componentDidLoad(): void {
+    this.setAccessibilityAttributes();
+  }
+
+  public componentDidUpdate(): void {
+    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
@@ -78,32 +91,32 @@ export class Tabs {
 
   private defineTabsItemElements = (): void => {
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
-    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem) as HTMLPTabsItemElement[];
+    this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem);
   };
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
-        role: 'tabpanel',
-        id: `tab-panel-${index}`,
+        'role': 'tabpanel',
+        'id': `tab-panel-${index}`,
         'aria-labelledby': `tab-item-${index}`,
       };
 
       for (const [key, value] of Object.entries(attrs)) {
-        tab.setAttribute(key, value);
+        setAttribute(tab, key, value);
       }
 
       if (+index === this.activeTabIndex) {
-        tab.removeAttribute('hidden');
+        removeAttribute(tab, 'hidden');
       } else {
-        tab.setAttribute('hidden', '');
+        setAttribute(tab, 'hidden', '');
       }
     }
   };
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.filter(({ type }) => type === 'childList' || type === 'attributes').length) {
+      if (mutations.some(({ type }) => type === 'childList' || type === 'attributes')) {
         this.defineTabsItemElements();
       }
     });
