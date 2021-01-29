@@ -176,7 +176,7 @@ export function getComponentChunks(opts?: ComponentChunksOptions): string | stri
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
-  const urls = components.concat(['core']).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
+  const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
   const links = urls.map((link) => \`${link}\`).join('');
 
   return withoutTags ? urls : links;
