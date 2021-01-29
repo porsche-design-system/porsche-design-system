@@ -3,10 +3,16 @@ import {
   getAttribute,
   getBrowser,
   getCssClasses,
-  getProperty, getStyleOnFocus,
-  selectNode, setAttribute,
-  setContentWithDesignSystem, waitForInheritedCSSTransition, expectedStyleOnFocus,
-  waitForStencilLifecycle, getOutlineStyle
+  getProperty,
+  getStyleOnFocus,
+  selectNode,
+  setAttribute,
+  setContentWithDesignSystem,
+  waitForInheritedCSSTransition,
+  expectedStyleOnFocus,
+  waitForStencilLifecycle,
+  getOutlineStyle,
+  getLifecycleStatus,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -17,28 +23,43 @@ describe('checkbox-wrapper', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const getCheckboxHost = () => selectNode(page, 'p-checkbox-wrapper');
-  const getCheckboxFakeInput = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
-  const getCheckboxRealInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-  const getCheckboxLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-  const getCheckboxMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
-  const getCheckboxIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
-  const getCheckboxLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
-  const getCheckboxMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
+  const getHost = () => selectNode(page, 'p-checkbox-wrapper');
+  const getFakeInput = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__fake-checkbox');
+  const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
+  const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
+  const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
+  const getIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
+  const getLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
+  const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
-  const initCheckbox = ({ useSlottedLabel, useSlottedMessage, state }: { useSlottedLabel?: boolean; useSlottedMessage?: boolean; state?: FormState; } = { useSlottedLabel: false, useSlottedMessage: false, state: 'none' }): Promise<void> => {
+  type InitOptions = {
+    useSlottedLabel?: boolean;
+    useSlottedMessage?: boolean;
+    state?: FormState;
+  };
+
+  const initCheckbox = (opts?: InitOptions): Promise<void> => {
+    const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts ?? {};
+
+    const slottedLabel = useSlottedLabel
+      ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
+      : '';
+    const slottedMessage = useSlottedMessage
+      ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
+      : '';
+
     return setContentWithDesignSystem(
       page,
       `
         <p-checkbox-wrapper state="${state}">
-          ${useSlottedLabel ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${slottedLabel}
           <input type="checkbox" />
-          ${useSlottedMessage ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>' : ''}
+          ${slottedMessage}
         </p-checkbox-wrapper>`
     );
   };
 
-  const getIconName = async () => getProperty(await getCheckboxIcon(), 'name');
+  const getIconName = async () => getProperty(await getIcon(), 'name');
 
   it('should render', async () => {
     await setContentWithDesignSystem(
@@ -49,7 +70,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>
     `
     );
-    const el = await getCheckboxFakeInput();
+    const el = await getFakeInput();
     expect(el).toBeDefined();
   });
 
@@ -62,7 +83,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>
     `
     );
-    const input = await getCheckboxRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label');
   });
 
@@ -75,7 +96,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>
     `
     );
-    const input = await getCheckboxRealInput();
+    const input = await getInput();
     expect(await getProperty(input, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
@@ -88,12 +109,12 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const checkboxComponent = await getCheckboxHost();
-    expect(await getCheckboxLabel()).toBeNull();
+    const host = await getHost();
+    expect(await getLabel()).toBeNull();
 
-    await checkboxComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
+    await host.evaluate((el) => el.setAttribute('label', 'Some label'));
     await waitForStencilLifecycle(page);
-    expect(await getCheckboxLabel()).not.toBeNull();
+    expect(await getLabel()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
@@ -105,32 +126,38 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const checkboxHost = await getCheckboxHost();
-    const input = await getCheckboxRealInput();
-    expect(await getCheckboxMessage()).toBeNull();
+    const host = await getHost();
+    const input = await getInput();
+    expect(await getMessage()).toBeNull('initially');
 
-    await checkboxHost.evaluate((el) => el.setAttribute('state', 'error'));
-    await checkboxHost.evaluate((el) => el.setAttribute('message', 'Some error message'));
+    await host.evaluate((el) => {
+      el.setAttribute('state', 'error');
+      el.setAttribute('message', 'Some error message');
+    });
     await waitForStencilLifecycle(page);
 
-    expect(await getCheckboxMessage()).toBeDefined();
-    expect(await getAttribute(await getCheckboxMessage(), 'role')).toEqual('alert');
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message');
+    expect(await getMessage()).toBeDefined('when state = error');
+    expect(await getAttribute(await getMessage(), 'role')).toEqual('alert', 'when state = error');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
-    await checkboxHost.evaluate((el) => el.setAttribute('state', 'success'));
-    await checkboxHost.evaluate((el) => el.setAttribute('message', 'Some success message'));
+    await host.evaluate((el) => {
+      el.setAttribute('state', 'success');
+      el.setAttribute('message', 'Some success message');
+    });
     await waitForStencilLifecycle(page);
 
-    expect(await getCheckboxMessage()).toBeDefined();
-    expect(await getAttribute(await getCheckboxMessage(), 'role')).toBeNull();
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message');
+    expect(await getMessage()).toBeDefined('when state = success');
+    expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
-    await checkboxHost.evaluate((el) => el.setAttribute('state', 'none'));
-    await checkboxHost.evaluate((el) => el.setAttribute('message', ''));
+    await host.evaluate((el) => {
+      el.setAttribute('state', 'none');
+      el.setAttribute('message', '');
+    });
     await waitForStencilLifecycle(page);
 
-    expect(await getCheckboxMessage()).toBeNull();
-    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label');
+    expect(await getMessage()).toBeNull('when state = none');
+    expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
   it('should toggle checkbox when input is clicked', async () => {
@@ -142,20 +169,20 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const fakeCheckbox = await getCheckboxFakeInput();
-    const input = await getCheckboxRealInput();
+    const fakeInput = await getFakeInput();
+    const input = await getInput();
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
-
-    await input.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+
+    await input.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
   it('should toggle checkbox when label text is clicked', async () => {
@@ -167,25 +194,25 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const fakeCheckbox = await getCheckboxFakeInput();
-    const labelText = await getCheckboxLabel();
-    const input = await getCheckboxRealInput();
+    const fakeInput = await getFakeInput();
+    const label = await getLabel();
+    const input = await getInput();
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(false);
     expect(await getActiveElementTagName(page)).not.toBe('INPUT');
 
-    await labelText.click();
+    await label.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(true);
     expect(await getActiveElementTagName(page)).toBe('INPUT');
 
-    await labelText.click();
+    await label.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
     expect(await getProperty(input, 'checked')).toBe(false);
     expect(await getActiveElementTagName(page)).toBe('INPUT');
   });
@@ -199,20 +226,20 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const fakeCheckbox = await getCheckboxFakeInput();
-    const input = await getCheckboxRealInput();
+    const fakeInput = await getFakeInput();
+    const input = await getInput();
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.evaluate((el: HTMLInputElement) => (el.checked = true));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).toContain('p-checkbox-wrapper__fake-checkbox--checked');
 
     await input.evaluate((el: HTMLInputElement) => (el.checked = false));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--checked');
   });
 
   it('should disable checkbox when checkbox is set disabled programmatically', async () => {
@@ -224,20 +251,20 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
     );
 
-    const fakeCheckbox = await getCheckboxFakeInput();
-    const input = await getCheckboxRealInput();
+    const fakeInput = await getFakeInput();
+    const input = await getInput();
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getCssClasses(fakeInput)).toContain('p-checkbox-wrapper__fake-checkbox--disabled');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForStencilLifecycle(page);
 
-    expect(await getCssClasses(fakeCheckbox)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+    expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
   });
 
   describe('indeterminate state', () => {
@@ -301,8 +328,7 @@ describe('checkbox-wrapper', () => {
       </p-checkbox-wrapper>`
       );
 
-      const input = await getCheckboxRealInput();
-      const innerIcon = await selectNode(page, 'p-checkbox-wrapper >>> p-icon >>> i');
+      const input = await getInput();
 
       await setIndeterminate(true);
       expect(await getIconName()).toBe('minus');
@@ -350,9 +376,9 @@ describe('checkbox-wrapper', () => {
     it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
       await initCheckbox();
 
-      const input = await getCheckboxRealInput();
-      const hidden = expectedStyleOnFocus({color: 'transparent'});
-      const visible = expectedStyleOnFocus({color: 'neutral'});
+      const input = await getInput();
+      const hidden = expectedStyleOnFocus({ color: 'transparent' });
+      const visible = expectedStyleOnFocus({ color: 'neutral' });
 
       expect(await getOutlineStyle(input)).toBe(hidden);
 
@@ -369,12 +395,12 @@ describe('checkbox-wrapper', () => {
     });
 
     it('should be shown by keyboard navigation only for slotted <a>', async () => {
-      await initCheckbox({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+      await initCheckbox({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
 
-      const labelLink = await getCheckboxLabelLink();
-      const messageLink = await getCheckboxMessageLink();
-      const hidden = expectedStyleOnFocus({color: 'transparent', offset: '1px'});
-      const visible = expectedStyleOnFocus({color: 'hover', offset: '1px'});
+      const labelLink = await getLabelLink();
+      const messageLink = await getMessageLink();
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
+      const visible = expectedStyleOnFocus({ color: 'hover', offset: '1px' });
 
       expect(await getOutlineStyle(labelLink)).toBe(hidden);
       expect(await getOutlineStyle(messageLink)).toBe(hidden);
@@ -407,35 +433,65 @@ describe('checkbox-wrapper', () => {
     it('should show outline of slotted <input> when it is focused', async () => {
       await initCheckbox();
 
-      const host = await getCheckboxHost();
-      const input = await getCheckboxRealInput();
+      const host = await getHost();
+      const input = await getInput();
 
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'neutral'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'success'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'success' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({color: 'error'}));
+      expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'error' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initCheckbox({useSlottedLabel: true, useSlottedMessage: true, state: 'error'});
+      await initCheckbox({ useSlottedLabel: true, useSlottedMessage: true, state: 'error' });
 
-      const host = await getCheckboxHost();
-      const labelLink = await getCheckboxLabelLink();
-      const messageLink = await getCheckboxMessageLink();
+      const host = await getHost();
+      const labelLink = await getLabelLink();
+      const messageLink = await getMessageLink();
 
-      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({offset: '1px'}));
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'error', offset: '1px'}));
+      expect(await getStyleOnFocus(labelLink)).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'error', offset: '1px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({color: 'success', offset: '1px'}));
+      expect(await getStyleOnFocus(messageLink)).toBe(expectedStyleOnFocus({ color: 'success', offset: '1px' }));
+    });
+  });
+
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initCheckbox({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidLoad['p-checkbox-wrapper']).toBe(1, 'componentDidLoad: p-checkbox-wrapper');
+      expect(status.componentDidLoad['p-text']).toBe(2, 'componentDidLoad: p-text');
+      expect(status.componentDidLoad['p-icon']).toBe(1, 'componentDidLoad: p-icon');
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
+    });
+
+    it('should work without unnecessary round trips after state change', async () => {
+      await initCheckbox({ useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
+      const input = await getInput();
+
+      await input.click();
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-checkbox-wrapper']).toBe(1, 'componentDidUpdate: p-checkbox-wrapper');
+
+      expect(status.componentDidLoad.all).toBe(4, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
     });
   });
 });

@@ -1,24 +1,23 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
-  prefix
+  prefix,
 } from '../../../utils';
-import { IconName, LinkTarget, Theme } from '../../../types';
+import type { BreakpointCustomizable, IconName, LinkTarget, LinkVariant, Theme } from '../../../types';
 
 @Component({
   tag: 'p-link',
   styleUrl: 'link.scss',
-  shadow: true
+  shadow: true,
 })
 export class Link {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The style variant of the link. */
-  @Prop() public variant?: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @Prop() public variant?: LinkVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
@@ -44,8 +43,52 @@ export class Link {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  public componentDidLoad(): void {
-    const tagName = this.element.tagName.toLowerCase();
+  public connectedCallback(): void {
+    this.addSlottedStyles();
+    improveFocusHandlingForCustomElement(this.host);
+  }
+
+  public render(): JSX.Element {
+    const TagType = this.href === undefined ? 'span' : 'a';
+
+    const linkClasses = {
+      [prefix('link')]: true,
+      [prefix(`link--${this.variant}`)]: true,
+      [prefix(`link--theme-${this.theme}`)]: true,
+      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
+    };
+    const iconClasses = prefix('link__icon');
+    const labelClasses = prefix('link__label');
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+
+    return (
+      <TagType
+        class={linkClasses}
+        {...(TagType === 'a' && {
+          href: this.href,
+          target: `${this.target}`,
+          download: this.download,
+          rel: this.rel,
+        })}
+      >
+        <PrefixedTagNames.pIcon
+          class={iconClasses}
+          size="inherit"
+          name={this.icon}
+          source={this.iconSource}
+          color="inherit"
+          aria-hidden="true"
+        />
+        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
+          <slot />
+        </PrefixedTagNames.pText>
+      </TagType>
+    );
+  }
+
+  private addSlottedStyles(): void {
+    const tagName = this.host.tagName.toLowerCase();
     const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {
@@ -80,46 +123,6 @@ export class Link {
       outline-color: transparent !important;
     }`;
 
-    insertSlottedStyles(this.element, style);
-    improveFocusHandlingForCustomElement(this.element);
-  }
-
-  public render(): JSX.Element {
-    const TagType = this.href === undefined ? 'span' : 'a';
-
-    const linkClasses = {
-      [prefix('link')]: true,
-      [prefix(`link--${this.variant}`)]: true,
-      [prefix(`link--theme-${this.theme}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label'])
-    };
-    const iconClasses = prefix('link__icon');
-    const labelClasses = prefix('link__label');
-
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon', 'p-text']);
-
-    return (
-      <TagType
-        class={linkClasses}
-        {...(TagType === 'a' && {
-          href: this.href,
-          target: `${this.target}`,
-          download: this.download,
-          rel: this.rel
-        })}
-      >
-        <PrefixedTagNames.pIcon
-          class={iconClasses}
-          size="inherit"
-          name={this.icon}
-          source={this.iconSource}
-          color="inherit"
-          aria-hidden="true"
-        />
-        <PrefixedTagNames.pText tag="span" color="inherit" class={labelClasses}>
-          <slot />
-        </PrefixedTagNames.pText>
-      </TagType>
-    );
+    insertSlottedStyles(this.host, style);
   }
 }

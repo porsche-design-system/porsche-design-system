@@ -12,11 +12,7 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string =>
-  crypto
-    .createHash('md5')
-    .update(str, 'utf8')
-    .digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const checkIntegrity = async (manifest: Manifest): Promise<void> => {
   for (const [name, format] of Object.entries(manifest)) {
@@ -59,7 +55,7 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     const formatKey = camelCase(ext.substring(1));
     manifest[nameKey] = {
       ...manifest[nameKey],
-      [formatKey]: filename
+      [formatKey]: filename,
     };
 
     fs.writeFileSync(targetPath, font, { encoding: 'binary' });

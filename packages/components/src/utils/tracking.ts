@@ -9,7 +9,7 @@ export const trackEvent = (component: string, event?: string): void => {
         v: version,
         t: new Date().getTime(), // to prevent caching
         c: component,
-        ...(event && { e: event })
+        ...(event && { e: event }),
       })}`
     ).catch(console.warn);
   }

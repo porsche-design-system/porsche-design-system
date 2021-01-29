@@ -1,0 +1,19 @@
+<div class="playground light">
+  <p-text-field-wrapper label="Some Label" description="Some Description">
+    <input type="text" />
+  </p-text-field-wrapper>
+</div>
+
+<script>
+  setTimeout(() => {
+    const el = document.createElement('p-text-field-wrapper');
+    el.setAttribute('label', 'Some Label');
+    el.setAttribute('description', 'Some Description');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    el.appendChild(input);
+
+    document.querySelector('.playground').appendChild(el);
+  }, 1000);
+</script>

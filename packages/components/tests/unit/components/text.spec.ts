@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Text } from '../../../src/components/basic/typography/text/text';
 
 describe('Component <p-text>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [Text],

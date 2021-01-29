@@ -1,15 +1,14 @@
 import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } from '@stencil/core';
 import {
-  BreakpointCustomizable,
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
-import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-helper';
+import { createPaginationModel, getCurrentActivePage, getTotalPages, itemTypes } from './pagination-utils';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { readCounterResetValue } from '../../../utils/counter-reset-reader';
-import { NumberOfPageLinks } from '../../../types';
+import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme } from '../../../types';
 
 @Component({
   tag: 'p-pagination',
@@ -17,7 +16,7 @@ import { NumberOfPageLinks } from '../../../types';
   shadow: true,
 })
 export class Pagination {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The total count of items. */
   @Prop() public totalItemsCount = 1;
@@ -51,10 +50,10 @@ export class Pagination {
   @Prop() public allyLabelNext?: string = 'Next page';
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: 'light' | 'dark' = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the page changes. */
-  @Event() public pageChange!: EventEmitter<{ page: number; previousPage: number }>;
+  @Event() public pageChange!: EventEmitter<PageChangeEvent>;
 
   @State() public breakpointMaxNumberOfPageLinks: number;
 
@@ -66,7 +65,7 @@ export class Pagination {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     this.unlistenResize = listenResize(() => {
       this.updateMaxNumberOfPageLinks();
     });
@@ -102,7 +101,7 @@ export class Pagination {
 
     const paginationItemClasses = prefix('pagination__item');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
 
     paginationModel.forEach((pageModel) => {
       const { type, isActive, value } = pageModel;

@@ -1,84 +1,51 @@
-import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-request';
-import { prefix } from '../../../utils';
-import { Theme, IconName } from '../../../types';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-utlis';
+import { getShadowRootHTMLElement, isBrowser, isDark, prefix } from '../../../utils';
+import type { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
   tag: 'p-icon',
   styleUrl: 'icon.scss',
-  shadow: true
+  shadow: true,
 })
 export class Icon {
-  @Element() public el!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
-  /**
-   * Specifies which icon to use.
-   */
+  /** Specifies which icon to use. */
   @Prop() public name?: IconName = DEFAULT_ICON_NAME;
 
-  /**
-   * Specifies a whole icon path which can be used for custom icons.
-   */
+  /** Specifies a whole icon path which can be used for custom icons. */
   @Prop() public source?: string;
 
-  /**
-   * @internal
-   * Specifies which icon variant to use.
-   */
+  /** @internal Specifies which icon variant to use. */
   @Prop() public variant?: 'outline' | 'filled' = 'outline';
 
   /** Basic color variations depending on theme property. */
-  @Prop() public color?: 'brand' | 'default' | 'neutral-contrast-high' | 'neutral-contrast-medium' | 'neutral-contrast-low' | 'notification-success' | 'notification-warning' | 'notification-error' | 'notification-neutral' | 'inherit' = 'default';
+  @Prop() public color?: TextColor = 'default';
 
-  /**
-   * The size of the icon.
-   */
+  /** The size of the icon. */
   @Prop() public size?: 'small' | 'medium' | 'large' | 'inherit' = 'small';
 
-  /**
-   * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
-   * Default, `false`.
-   */
+  /** If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`. */
   @Prop() public lazy?: boolean = false;
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
   @State() private svgContent?: string;
-  @State() private isVisible = false;
 
-  private io?: IntersectionObserver;
+  private intersectionObserver?: IntersectionObserver;
 
-  @Watch('source')
-  @Watch('name')
-  public loadIcon(): void {
-    if (Build.isBrowser && this.isVisible) {
-      this.svgContent = undefined; // reset svg content while new icon is loaded
-      const url = buildIconUrl(this.source ?? this.name);
-      getSvgContent(url).then((iconContent) => {
-        // check if response matches current icon source
-        if (url === buildIconUrl(this.source ?? this.name)) {
-          this.svgContent = iconContent;
-        }
-      });
-    }
+  public componentWillLoad(): Promise<void> {
+    return this.initIntersectionObserver();
   }
 
-  public connectedCallback(): void {
-    // purposely do not return the promise here because loading
-    // the svg file should not hold up loading the app
-    // only load the svg if it's visible
-    this.waitUntilVisible(this.el, '50px', () => {
-      this.isVisible = true;
-      this.loadIcon();
-    });
+  public componentWillUpdate(): Promise<void> {
+    return this.initIntersectionObserver();
   }
 
   public disconnectedCallback(): void {
-    if (this.io) {
-      this.io.disconnect();
-      this.io = undefined;
-    }
+    this.intersectionObserver?.disconnect();
   }
 
   public render(): JSX.Element {
@@ -86,7 +53,7 @@ export class Icon {
       [prefix('icon')]: true,
       [prefix(`icon--size-${this.size}`)]: true,
       [prefix(`icon--color-${this.color}`)]: true,
-      [prefix(`icon--theme-${this.theme}`)]: this.color !== 'inherit'
+      [prefix('icon--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
     };
 
     return (
@@ -96,24 +63,42 @@ export class Icon {
     );
   }
 
-  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
-    if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
-      const io = (this.io = new (window as any).IntersectionObserver(
-        (data: IntersectionObserverEntry[]) => {
-          if (data[0].isIntersecting) {
-            io.disconnect();
-            this.io = undefined;
-            cb();
-          }
-        },
-        { rootMargin }
-      ));
+  private async initIntersectionObserver(): Promise<void> {
+    if (this.lazy && isBrowser()) {
+      // load icon once it reaches the viewport
+      if (!this.intersectionObserver) {
+        this.intersectionObserver = new IntersectionObserver(
+          (entries, observer) => {
+            if (entries[0].isIntersecting) {
+              observer.unobserve(this.host);
+              this.loadIcon();
+            }
+          },
+          { rootMargin: '50px' }
+        );
+      }
 
-      io.observe(el);
+      this.intersectionObserver.observe(this.host);
     } else {
-      // browser doesn't support IntersectionObserver
-      // so just fallback to always show it
-      cb();
+      return this.loadIcon();
     }
   }
+
+  private loadIcon = (): Promise<void> => {
+    if (this.svgContent) {
+      // reset old icon if there is any
+      const el = getShadowRootHTMLElement(this.host, 'i');
+      if (el) {
+        el.innerHTML = '';
+      }
+    }
+
+    const url = buildIconUrl(this.source ?? this.name);
+    return getSvgContent(url).then((iconContent) => {
+      // check if response matches current icon source
+      if (url === buildIconUrl(this.source ?? this.name)) {
+        this.svgContent = iconContent;
+      }
+    });
+  };
 }

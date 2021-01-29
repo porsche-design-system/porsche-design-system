@@ -1,4 +1,4 @@
-import { PButton as Button } from '@porsche-design-system/components-react';
+import { PButton } from '@porsche-design-system/components-react';
 
 export const ButtonPage = (): JSX.Element => {
   const style = `
@@ -8,145 +8,143 @@ export const ButtonPage = (): JSX.Element => {
   `;
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render button primary with label">
-        <Button variant="primary">Some label</Button>
-        <Button variant="primary" disabled={true}>
+        <PButton variant="primary">Some label</PButton>
+        <PButton variant="primary" disabled>
           Some label
-        </Button>
-        <Button variant="primary" loading={true}>
+        </PButton>
+        <PButton variant="primary" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
       <div className="playground dark" title="should render button primary with label on dark theme">
-        <Button variant="primary" theme="dark">
+        <PButton variant="primary" theme="dark">
           Some label
-        </Button>
-        <Button variant="primary" theme="dark" disabled={true}>
+        </PButton>
+        <PButton variant="primary" theme="dark" disabled>
           Some label
-        </Button>
-        <Button variant="primary" theme="dark" loading={true}>
+        </PButton>
+        <PButton variant="primary" theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button primary without label">
-        <Button variant="primary" hideLabel={true}>
+        <PButton variant="primary" hideLabel>
           Some label
-        </Button>
-        <Button variant="primary" hideLabel={true} disabled={true}>
+        </PButton>
+        <PButton variant="primary" hideLabel disabled>
           Some label
-        </Button>
-        <Button variant="primary" hideLabel={true} loading={true}>
+        </PButton>
+        <PButton variant="primary" hideLabel loading>
           Some label
-        </Button>
+        </PButton>
       </div>
       <div className="playground dark" title="should render button primary without label on dark theme">
-        <Button variant="primary" hideLabel={true} theme="dark">
+        <PButton variant="primary" hideLabel theme="dark">
           Some label
-        </Button>
-        <Button variant="primary" hideLabel={true} theme="dark" disabled={true}>
+        </PButton>
+        <PButton variant="primary" hideLabel theme="dark" disabled>
           Some label
-        </Button>
-        <Button variant="primary" hideLabel={true} theme="dark" loading={true}>
+        </PButton>
+        <PButton variant="primary" hideLabel theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button secondary with label">
-        <Button>Some label</Button>
-        <Button disabled={true}>Some label</Button>
-        <Button loading={true}>Some label</Button>
+        <PButton>Some label</PButton>
+        <PButton disabled>Some label</PButton>
+        <PButton loading>Some label</PButton>
       </div>
       <div className="playground dark" title="should render button secondary with label on dark theme">
-        <Button theme="dark">Some label</Button>
-        <Button theme="dark" disabled={true}>
+        <PButton theme="dark">Some label</PButton>
+        <PButton theme="dark" disabled>
           Some label
-        </Button>
-        <Button theme="dark" loading={true}>
+        </PButton>
+        <PButton theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button secondary without label">
-        <Button hideLabel={true}>Some label</Button>
-        <Button hideLabel={true} disabled={true}>
+        <PButton hideLabel>Some label</PButton>
+        <PButton hideLabel disabled>
           Some label
-        </Button>
-        <Button hideLabel={true} loading={true}>
+        </PButton>
+        <PButton hideLabel loading>
           Some label
-        </Button>
+        </PButton>
       </div>
       <div className="playground dark" title="should render button secondary without label on dark theme">
-        <Button hideLabel={true} theme="dark">
+        <PButton hideLabel theme="dark">
           Some label
-        </Button>
-        <Button hideLabel={true} theme="dark" disabled={true}>
+        </PButton>
+        <PButton hideLabel theme="dark" disabled>
           Some label
-        </Button>
-        <Button hideLabel={true} theme="dark" loading={true}>
+        </PButton>
+        <PButton hideLabel theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button tertiary with label">
-        <Button variant="tertiary">Some label</Button>
-        <Button variant="tertiary" disabled={true}>
+        <PButton variant="tertiary">Some label</PButton>
+        <PButton variant="tertiary" disabled>
           Some label
-        </Button>
-        <Button variant="tertiary" loading={true}>
+        </PButton>
+        <PButton variant="tertiary" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
       <div className="playground dark" title="should render button tertiary with label on dark theme">
-        <Button variant="tertiary" theme="dark">
+        <PButton variant="tertiary" theme="dark">
           Some label
-        </Button>
-        <Button variant="tertiary" theme="dark" disabled={true}>
+        </PButton>
+        <PButton variant="tertiary" theme="dark" disabled>
           Some label
-        </Button>
-        <Button variant="tertiary" theme="dark" loading={true}>
+        </PButton>
+        <PButton variant="tertiary" theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button tertiary without label">
-        <Button variant="tertiary" hideLabel={true}>
+        <PButton variant="tertiary" hideLabel>
           Some label
-        </Button>
-        <Button variant="tertiary" hideLabel={true} disabled={true}>
+        </PButton>
+        <PButton variant="tertiary" hideLabel disabled>
           Some label
-        </Button>
-        <Button variant="tertiary" hideLabel={true} loading={true}>
+        </PButton>
+        <PButton variant="tertiary" hideLabel loading>
           Some label
-        </Button>
+        </PButton>
       </div>
       <div className="playground dark" title="should render button tertiary without label on dark theme">
-        <Button variant="tertiary" hideLabel={true} theme="dark">
+        <PButton variant="tertiary" hideLabel theme="dark">
           Some label
-        </Button>
-        <Button variant="tertiary" hideLabel={true} theme="dark" disabled={true}>
+        </PButton>
+        <PButton variant="tertiary" hideLabel theme="dark" disabled>
           Some label
-        </Button>
-        <Button variant="tertiary" hideLabel={true} theme="dark" loading={true}>
+        </PButton>
+        <PButton variant="tertiary" hideLabel theme="dark" loading>
           Some label
-        </Button>
+        </PButton>
       </div>
 
       <div className="playground light" title="should render button secondary with responsive label">
-        <Button hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">
-          Some label
-        </Button>
+        <PButton hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>Some label</PButton>
       </div>
 
       <div className="playground light" title="should render button secondary with specific icon">
-        <Button icon="delete">Some label</Button>
-        <Button icon-source="./assets/icon-custom-kaixin.svg">Some label</Button>
+        <PButton icon="delete">Some label</PButton>
+        <PButton iconSource="./assets/icon-custom-kaixin.svg">Some label</PButton>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <Button style={{ width: 240 }}>Lorem ipsum dolor sit amet, consetetur sadipscing</Button>
+        <PButton style={{ width: 240 }}>Lorem ipsum dolor sit amet, consetetur sadipscing</PButton>
       </div>
     </>
   );

@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-button-pure',
-  styles: [`
-    p-button-pure:not(:last-child) {
-      margin-right: 8px;
-    }
-  `],
+  styles: [
+    `
+      p-button-pure:not(:last-child) {
+        margin-right: 8px;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render button with label">
       <p-button-pure>Some label</p-button-pure>
@@ -19,7 +21,6 @@ import { Component } from '@angular/core';
       <p-button-pure [loading]="true" [theme]="'dark'">Some label</p-button-pure>
     </div>
 
-
     <div class="playground light" title="should render button without label">
       <p-button-pure [hideLabel]="true">Some label</p-button-pure>
       <p-button-pure [hideLabel]="true" [disabled]="true">Some label</p-button-pure>
@@ -31,33 +32,35 @@ import { Component } from '@angular/core';
       <p-button-pure [hideLabel]="true" [loading]="true" [theme]="'dark'">Some label</p-button-pure>
     </div>
 
-
     <div class="playground light" title="should render button with responsive label">
-      <p-button-pure [hideLabel]="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">Some label
+      <p-button-pure [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        >Some label
       </p-button-pure>
-      <p-button-pure [hideLabel]="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}">Some label
+      <p-button-pure [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+        >Some label
         <p slot="subline">Some subline</p>
       </p-button-pure>
     </div>
 
     <div class="playground light" title="should render button with different size">
       <p-button-pure [size]="'x-small'">Some label</p-button-pure>
-      <br>
+      <br />
       <p-button-pure [size]="'small'">Some label</p-button-pure>
-      <br>
+      <br />
       <p-button-pure [size]="'medium'">Some label</p-button-pure>
-      <br>
+      <br />
       <p-button-pure [size]="'large'">Some label</p-button-pure>
-      <br>
+      <br />
       <p-button-pure [size]="'x-large'">Some label</p-button-pure>
-      <br>
+      <br />
       <p-button-pure [size]="'inherit'" style="font-size: 48px;">Some label</p-button-pure>
     </div>
 
     <div class="playground light" title="should render button with responsive size">
       <p-button-pure
-        [size]="{'base': 'x-small', 'xs': 'small', 's': 'medium', 'm': 'large', 'l': 'x-large', 'xl': 'inherit'}"
-        style="font-size: 48px;">Some label
+        [size]="{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }"
+        style="font-size: 48px;"
+        >Some label
       </p-button-pure>
     </div>
 
@@ -83,13 +86,27 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with subline">
-      <p-button-pure [size]="'small'">Some label<p slot="subline">Some subline</p></p-button-pure>
-      <p-button-pure [size]="'medium'">Some label<p slot="subline">Some subline</p></p-button-pure>
-      <p-button-pure [size]="'large'">Some label<p slot="subline">Some subline</p></p-button-pure>
-      <p-button-pure [size]="'x-large'">Some label<p slot="subline">Some subline</p></p-button-pure>
-      <p-button-pure [size]="'medium'" [disabled]="true">Some label<p slot="subline">Some subline</p></p-button-pure>
+      <p-button-pure [size]="'small'"
+        >Some label
+        <p slot="subline">Some subline</p></p-button-pure
+      >
+      <p-button-pure [size]="'medium'"
+        >Some label
+        <p slot="subline">Some subline</p></p-button-pure
+      >
+      <p-button-pure [size]="'large'"
+        >Some label
+        <p slot="subline">Some subline</p></p-button-pure
+      >
+      <p-button-pure [size]="'x-large'"
+        >Some label
+        <p slot="subline">Some subline</p></p-button-pure
+      >
+      <p-button-pure [size]="'medium'" [disabled]="true"
+        >Some label
+        <p slot="subline">Some subline</p></p-button-pure
+      >
     </div>
-  `
+  `,
 })
-export class ButtonPureComponent {
-}
+export class ButtonPureComponent {}

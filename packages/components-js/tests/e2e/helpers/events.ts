@@ -29,7 +29,7 @@ export const addEventListener = async (elmHandle: JSHandle, eventName: string, c
   const id = events.size;
   events.set(id, {
     eventName,
-    callback
+    callback,
   });
 
   const executionContext = elmHandle.executionContext();
@@ -71,7 +71,7 @@ const browserContextEvents = () => {
         nodeType: target.nodeType,
         tagName: target.tagName,
         className: target.className,
-        id: target.id
+        id: target.id,
       };
     } else {
       return null;
@@ -94,6 +94,6 @@ const browserContextEvents = () => {
     target: (window as any).puppeteerSerializeEventTarget(orgEv.target),
     timeStamp: orgEv.timeStamp,
     type: orgEv.type,
-    isSerializedEvent: true
+    isSerializedEvent: true,
   });
 };

@@ -21,7 +21,6 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should show spinner in different sizes on different viewports">
       <p-spinner [size]="{ base: 'small', m: 'medium', l: 'large' }"></p-spinner>
     </div>
-  `
+  `,
 })
-export class SpinnerComponent {
-}
+export class SpinnerComponent {}

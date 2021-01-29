@@ -32,7 +32,7 @@ export const generateFontDefinition = (
     {},
     {
       fontFamily: family,
-      fontWeight: weight[fontWeight]
+      fontWeight: weight[fontWeight],
     },
     generateTypeScale(fontSize)
   );
@@ -49,7 +49,7 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
 
   return {
     fontSize: convertedFontSize,
-    lineHeight: calculateLineHeight(fontSize)
+    lineHeight: calculateLineHeight(fontSize),
   };
 };
 
@@ -70,7 +70,7 @@ export const calculateLineHeight = (fontSize: string): number => {
     remainingPx = remainingPx - 4;
   }
 
-  const roundingFactor = 100000;
+  const roundingFactor = 10000000000;
   const fittedLineHeightPx = exactLineHeightPx - remainingPx;
   const fittedLineHeightFactor = fittedLineHeightPx / fontSizeLength;
   return Math.round(fittedLineHeightFactor * roundingFactor) / roundingFactor;

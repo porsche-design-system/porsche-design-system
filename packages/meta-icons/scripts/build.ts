@@ -38,7 +38,7 @@ const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Pro
     const nameKey = camelCase(name);
     manifest[typeKey] = {
       ...manifest[typeKey],
-      [nameKey]: filename
+      [nameKey]: filename,
     };
 
     fs.writeFileSync(targetPath, metaIcons, { encoding: 'binary' });
@@ -46,12 +46,9 @@ const createManifestAndCopyMetaIcons = async (cdn: string, files: string[]): Pro
     console.log(`Meta Icon "${name}" copied.`);
   }
 
-  const separator = '/* Auto Generated Below */\n';
-
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${separator}
-${CDN_KEY_TYPE_DEFINITION}
+    `${CDN_KEY_TYPE_DEFINITION}
 
 export const CDN_BASE_URL = ${cdn};
 export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
