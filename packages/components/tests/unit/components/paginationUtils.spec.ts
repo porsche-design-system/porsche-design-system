@@ -27,7 +27,7 @@ const formatPaginationModelToASCII = (paginationModel: PaginationModelItem[]) =>
 };
 
 describe('createRange', () => {
-  fit('should return a range from min to max', () => {
+  it('should return a range from min to max', () => {
     expect(createRange(0, 1)).toEqual([0, 1]);
     expect(createRange(1, 1)).toEqual([1]);
     expect(createRange(-1, 0)).toEqual([-1, 0]);
