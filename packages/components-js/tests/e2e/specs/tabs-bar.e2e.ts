@@ -73,6 +73,7 @@ describe('tabs-bar', () => {
     const element = snapshot.children[elementIndex];
     return element.focused;
   };
+  const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
   it('should render correct active tab if activeTabIndex is set ', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
@@ -96,7 +97,7 @@ describe('tabs-bar', () => {
       const { prevButton, nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = Math.round(+scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
+      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -141,10 +142,10 @@ describe('tabs-bar', () => {
     it('should scroll to correct position initially', async () => {
       await initTabsBar({ activeTabIndex: 3, isWrapped: true });
       const allButtons = await getAllButtons();
-      const selectedTabOffset = await getOffsetLeft(allButtons[3]);
+      const selectedButtonOffset = await getOffsetLeft(allButtons[3]);
       const gradientWidth = await getOffsetWidth(await getGradientNext());
       const scrollArea = await getScrollArea();
-      const scrollDistance = +selectedTabOffset - +gradientWidth + FOCUS_PADDING;
+      const scrollDistance = +selectedButtonOffset - +gradientWidth + FOCUS_PADDING;
 
       await waitForStencilLifecycle(page);
 
@@ -153,7 +154,7 @@ describe('tabs-bar', () => {
 
     it('should scroll to correct position on tab click', async () => {
       await initTabsBar({ isWrapped: true });
-      const [, , , fourthButton, fifthButton] = await getAllButtons();
+      const [, , , button4, button5] = await getAllButtons();
       const gradient = await getGradientNext();
       const gradientWidth = await getOffsetWidth(gradient);
       const scrollArea = await getScrollArea();
@@ -161,15 +162,15 @@ describe('tabs-bar', () => {
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      await clickElement(fifthButton);
-      const tab5offset = await getOffsetLeft(fifthButton);
-      const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
+      await clickElement(button5);
+      const button5offset = await getOffsetLeft(button5);
+      const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
-      await clickElement(fourthButton);
-      const tab4offset = await getOffsetLeft(fourthButton);
-      const tabWidth = await getOffsetWidth(fourthButton);
-      const scrollDistanceLeft = +tab4offset + +tabWidth + +gradientWidth - +scrollAreaWidth;
+      await clickElement(button4);
+      const button4offset = await getOffsetLeft(button4);
+      const buttonWidth = await getOffsetWidth(button4);
+      const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
 
@@ -200,6 +201,59 @@ describe('tabs-bar', () => {
       expect((await getElementPositions(page, firstButton)).left).toEqual(
         Math.floor((await getElementPositions(page, statusBar)).left)
       );
+    });
+
+    it('should have correct scroll position after tab click and arrow left', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true });
+      const { prevButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const button3 = allButtons[2];
+      const scrollArea = await getScrollArea();
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
+
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      await clickElement(button3);
+      const button3offset = await getOffsetLeft(button3);
+      const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
+
+      expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceLeft, 'scroll left active button after click');
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea)).toBe(
+        scrollDistanceLeft - scrollDistance,
+        'scroll left active button after first prev click'
+      );
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea)).toBe(0, 'scroll left active button after second prev click');
+    });
+
+    it('should have correct scroll position after tab click and arrow right', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7 });
+      const { nextButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const button7 = allButtons[6];
+
+      const scrollArea = await getScrollArea();
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      const maxScrollDistance = await getScrollLeft(scrollArea);
+
+      await clickElement(button7);
+      const button7offset = await getOffsetLeft(button7);
+      const buttonWidth = await getOffsetWidth(button7);
+      const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+
+      expect(await getScrollLeft(scrollArea)).toBe(scrollDistanceRight, 'scroll left active button after click');
+
+      await clickElement(nextButton);
+      expect(await getScrollLeft(scrollArea)).toBe(maxScrollDistance, 'scroll left active button after prev click');
     });
 
     describe('when not wrapped', () => {
@@ -356,15 +410,15 @@ describe('tabs-bar', () => {
       await pressKey('ArrowRight');
       await pressKey('ArrowRight');
 
-      const tab5offset = await getOffsetLeft(allButtons[4]);
-      const scrollDistanceRight = +tab5offset - +gradientWidth + FOCUS_PADDING;
+      const button5offset = await getOffsetLeft(allButtons[4]);
+      const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
 
       await pressKey('ArrowLeft');
 
-      const tab4offset = await getOffsetLeft(allButtons[3]);
-      const tab4width = await getOffsetWidth(allButtons[3]);
-      const scrollDistanceLeft = +tab4offset + +tab4width + +gradientWidth - +scrollAreaWidth;
+      const button4offset = await getOffsetLeft(allButtons[3]);
+      const button4width = await getOffsetWidth(allButtons[3]);
+      const scrollDistanceLeft = +button4offset + +button4width + +gradientWidth - +scrollAreaWidth;
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
   });
@@ -458,7 +512,7 @@ describe('tabs-bar', () => {
     });
 
     it('should only show prev button', async () => {
-      await initTabsBar({ amount: 4, activeTabIndex: 3, isWrapped: true });
+      await initTabsBar({ amount: 20, activeTabIndex: 19, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
       expect(await getClassList(actionNext)).toContain(hiddenClass);
@@ -595,42 +649,42 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 3 });
 
       const host = await getHost();
-      const buttons = await getAllButtons();
+      const allButtons = await getAllButtons();
 
-      expect(await getStyleOnFocus(buttons[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
-      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(allButtons[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
+      expect(await getStyleOnFocus(allButtons[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(allButtons[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(buttons[0])).toBe(
+      expect(await getStyleOnFocus(allButtons[0])).toBe(
         expectedStyleOnFocus({ color: 'active', theme: 'dark', offset: '1px' })
       );
-      expect(await getStyleOnFocus(buttons[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
-      expect(await getStyleOnFocus(buttons[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+      expect(await getStyleOnFocus(allButtons[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+      expect(await getStyleOnFocus(allButtons[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
       await initTabsBar({ amount: 3, tag: 'a' });
 
       const host = await getHost();
-      const links = await getAllLinks();
+      const allLinks = await getAllLinks();
 
-      expect(await getStyleOnFocus(links[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
-      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
-      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(allLinks[0])).toBe(expectedStyleOnFocus({ color: 'active', offset: '1px' }));
+      expect(await getStyleOnFocus(allLinks[1])).toBe(expectedStyleOnFocus({ offset: '1px' }));
+      expect(await getStyleOnFocus(allLinks[2])).toBe(expectedStyleOnFocus({ offset: '1px' }));
 
       await setAttribute(host, 'theme', 'dark');
       await waitForStencilLifecycle(page);
       await waitForInheritedCSSTransition(page);
 
-      expect(await getStyleOnFocus(links[0])).toBe(
+      expect(await getStyleOnFocus(allLinks[0])).toBe(
         expectedStyleOnFocus({ color: 'active', theme: 'dark', offset: '1px' })
       );
-      expect(await getStyleOnFocus(links[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
-      expect(await getStyleOnFocus(links[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+      expect(await getStyleOnFocus(allLinks[1])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
+      expect(await getStyleOnFocus(allLinks[2])).toBe(expectedStyleOnFocus({ theme: 'dark', offset: '1px' }));
     });
   });
 
