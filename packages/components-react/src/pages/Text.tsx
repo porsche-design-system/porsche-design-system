@@ -1,143 +1,143 @@
-import { PText as Text } from '@porsche-design-system/components-react';
+import { PText } from '@porsche-design-system/components-react';
 
 export const TextPage = (): JSX.Element => {
   return (
     <>
       <div className="playground" title="should show text in different sizes">
-        <Text size="x-small">The quick brown fox jumps over the lazy dog</Text>
-        <Text>The quick brown fox jumps over the lazy dog</Text>
-        <Text size="medium">The quick brown fox jumps over the lazy dog</Text>
-        <Text size="large">The quick brown fox jumps over the lazy dog</Text>
-        <Text size="x-large">The quick brown fox jumps over the lazy dog</Text>
-        <Text size="inherit" style={{ fontSize: 48 }}>
+        <PText size="x-small">The quick brown fox jumps over the lazy dog</PText>
+        <PText>The quick brown fox jumps over the lazy dog</PText>
+        <PText size="medium">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="large">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="x-large">The quick brown fox jumps over the lazy dog</PText>
+        <PText size="inherit" style={{ fontSize: 48 }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
+        </PText>
       </div>
 
       <div className="playground" title="should show text in different sizes on different viewports">
-        <Text size="{ base: 'small', m: 'inherit', l: 'medium' }" style={{ fontSize: 80 }}>
+        <PText size={{ base: 'small', m: 'inherit', l: 'medium' }} style={{ fontSize: 80 }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
+        </PText>
       </div>
 
       <div className="playground" title="should show whole text in thin and bold">
-        <Text weight="thin">The quick brown fox jumps over the lazy dog</Text>
-        <Text weight="regular">The quick brown fox jumps over the lazy dog</Text>
-        <Text weight="semibold">The quick brown fox jumps over the lazy dog</Text>
-        <Text weight="bold">The quick brown fox jumps over the lazy dog</Text>
+        <PText weight="thin">The quick brown fox jumps over the lazy dog</PText>
+        <PText weight="regular">The quick brown fox jumps over the lazy dog</PText>
+        <PText weight="semibold">The quick brown fox jumps over the lazy dog</PText>
+        <PText weight="bold">The quick brown fox jumps over the lazy dog</PText>
       </div>
 
       <div className="playground light" title="should show text with different color variants on light background">
-        <Text color="default" style={{ color: 'deeppink' }}>
+        <PText color="default" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="brand" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="brand" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="neutral-contrast-high" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="neutral-contrast-high" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="neutral-contrast-medium" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="neutral-contrast-medium" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="neutral-contrast-low" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="neutral-contrast-low" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="notification-success" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="notification-success" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="notification-warning" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="notification-warning" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="notification-error" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="notification-error" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="notification-neutral" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="notification-neutral" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text color="inherit" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText color="inherit" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
+        </PText>
       </div>
 
       <div className="playground dark" title="should show text with different color variants on dark background">
-        <Text theme="dark" color="default" style={{ color: 'deeppink' }}>
+        <PText theme="dark" color="default" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="brand" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="brand" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="neutral-contrast-high" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="neutral-contrast-high" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="neutral-contrast-medium" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="neutral-contrast-medium" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="neutral-contrast-low" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="neutral-contrast-low" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="notification-success" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="notification-success" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="notification-warning" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="notification-warning" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="notification-error" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="notification-error" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="notification-neutral" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="notification-neutral" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
-        <Text theme="dark" color="inherit" style={{ color: 'deeppink' }}>
+        </PText>
+        <PText theme="dark" color="inherit" style={{ color: 'deeppink' }}>
           The quick brown fox jumps over the lazy dog
-        </Text>
+        </PText>
       </div>
 
       <div className="playground" title="should show text with different alignments">
-        <Text align="left">Left</Text>
-        <Text align="center">Center</Text>
-        <Text align="right">Right</Text>
+        <PText align="left">Left</PText>
+        <PText align="center">Center</PText>
+        <PText align="right">Right</PText>
       </div>
 
       <div className="playground" title="should cut off too long text">
-        <Text ellipsis={true}>
+        <PText ellipsis={true}>
           Text ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
           invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
           dolores et ea rebum.
-        </Text>
+        </PText>
       </div>
 
       <div className="playground" title="should show text with a link and bold text as children">
-        <Text>
+        <PText>
           <span>
-            Lorem ipsum dolor sit amet <a href="#">linked text</a> et, <b>bold text</b> &amp;{' '}
+            Lorem ipsum dolor sit amet <a href="#x">linked text</a> et, <b>bold text</b> &amp;{' '}
             <strong>strong text</strong>
           </span>
-        </Text>
+        </PText>
       </div>
 
       <div className="playground" title="should show text with different slotted tags in same layout as default">
-        <Text>
+        <PText>
           <p>The quick brown fox jumps over the lazy dog</p>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <address>The quick brown fox jumps over the lazy dog</address>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <blockquote>The quick brown fox jumps over the lazy dog</blockquote>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <figcaption>The quick brown fox jumps over the lazy dog</figcaption>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <cite>The quick brown fox jumps over the lazy dog</cite>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <time>The quick brown fox jumps over the lazy dog</time>
-        </Text>
-        <Text>
+        </PText>
+        <PText>
           <legend>The quick brown fox jumps over the lazy dog</legend>
-        </Text>
+        </PText>
       </div>
     </>
   );

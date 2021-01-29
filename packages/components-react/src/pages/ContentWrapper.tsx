@@ -1,4 +1,4 @@
-import { PContentWrapper as ContentWrapper } from '@porsche-design-system/components-react';
+import { PContentWrapper } from '@porsche-design-system/components-react';
 
 export const ContentWrapperPage = (): JSX.Element => {
   const style = `
@@ -15,33 +15,33 @@ export const ContentWrapperPage = (): JSX.Element => {
       <style children={style} />
 
       <div className="playground" title="should render with width 'basic'">
-        <ContentWrapper>
+        <PContentWrapper>
           <p>Some content</p>
-        </ContentWrapper>
+        </PContentWrapper>
       </div>
 
       <div className="playground" title="should render with width 'extended'">
-        <ContentWrapper width="extended">
+        <PContentWrapper width="extended">
           <p>Some content</p>
-        </ContentWrapper>
+        </PContentWrapper>
       </div>
 
       <div className="playground" title="should render with width 'fluid'">
-        <ContentWrapper width="fluid">
+        <PContentWrapper width="fluid">
           <p>Some content</p>
-        </ContentWrapper>
+        </PContentWrapper>
       </div>
 
       <div className="playground" title="should color full width although width 'basic' is enabled">
-        <ContentWrapper width="basic" style={{ background: 'deeppink' }}>
+        <PContentWrapper width="basic" style={{ background: 'deeppink' }}>
           <p>Some content</p>
-        </ContentWrapper>
+        </PContentWrapper>
       </div>
 
       <div className="playground" title="should not cut off to wide content">
-        <ContentWrapper width="basic">
+        <PContentWrapper width="basic">
           <p style={{ margin: '0 -2000px' }}>Some content</p>
-        </ContentWrapper>
+        </PContentWrapper>
       </div>
     </>
   );

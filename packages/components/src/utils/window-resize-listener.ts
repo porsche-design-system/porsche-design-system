@@ -3,7 +3,7 @@ import { throttle } from 'throttle-debounce';
 const listeners = new Map();
 
 const handleResize = throttle(500, () => {
-  listeners.forEach(callback => {
+  listeners.forEach((callback) => {
     callback();
   });
 });
@@ -20,7 +20,8 @@ export const removeListenerIfNotNeededAnymore = (): void => {
   }
 };
 
-export const listenResize = (callback: () => void): () => void => {
+// TODO: use ResizeObserver, https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+export const listenResize = (callback: () => void): (() => void) => {
   const token = {};
   listeners.set(token, callback);
   attachListenerIfNeeded();

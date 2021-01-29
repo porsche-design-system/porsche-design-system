@@ -28,9 +28,11 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground dark" title="should show headline with different color variants on dark background">
-      <p-headline [theme]="'dark'" [color]="'default'" style="color: deeppink;">The quick brown fox jumps over the lazy dog
+      <p-headline [theme]="'dark'" [color]="'default'" style="color: deeppink;"
+        >The quick brown fox jumps over the lazy dog
       </p-headline>
-      <p-headline [theme]="'dark'" [color]="'inherit'" style="color: deeppink;">The quick brown fox jumps over the lazy dog
+      <p-headline [theme]="'dark'" [color]="'inherit'" style="color: deeppink;"
+        >The quick brown fox jumps over the lazy dog
       </p-headline>
     </div>
 
@@ -43,9 +45,8 @@ import { Component } from '@angular/core';
     <div class="playground light" title="should cut off too long text">
       <p-headline [ellipsis]="true">
         Headline ellipsis - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-        invidunt
-        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum.
+        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+        et ea rebum.
       </p-headline>
     </div>
 
@@ -54,7 +55,58 @@ import { Component } from '@angular/core';
         <span>Lorem ipsum dolor sit amet <a href="#">linked text</a> et.</span>
       </p-headline>
     </div>
-  `
+
+    <div class="playground" title="should show headline for variant customizable">
+      <p-headline [variant]="{ base: 'large', l: 'x-large' }"> Lorem ipsum dolor sit amet et.</p-headline>
+    </div>
+
+    <div class="playground" title="should consider only font-size definition on host element for variant inherit">
+      <div style="height: 72px; border-left: 10px solid deeppink">
+        <p-headline
+          [variant]="'inherit'"
+          style="
+        font-size: 60px;
+        line-height: 10;
+        font-family: serif;
+        font-weight: 100;
+        color: deeppink;
+        text-align: right;
+        border-left: 10px solid deepskyblue;
+      "
+          >ABC</p-headline
+        >
+      </div>
+      <br />
+      <div style="height: 72px; border-left: 10px solid deeppink">
+        <p-headline
+          [variant]="'inherit'"
+          style="
+        font-size: 60px;
+        line-height: 10;
+        font-family: serif;
+        font-weight: 100;
+        color: deeppink;
+        text-align: right;
+        border-left: 10px solid deepskyblue;
+      "
+        >
+          <h3
+            style="
+          margin: 100px;
+          padding: 100px;
+          font-size: 200px;
+          line-height: 5;
+          font-family: serif;
+          font-weight: 100;
+          color: deeppink;
+          text-align: right;
+        "
+          >
+            ABC
+          </h3>
+        </p-headline>
+      </div>
+    </div>
+  `,
 })
-export class HeadlineComponent {
-}
+export class HeadlineComponent {}

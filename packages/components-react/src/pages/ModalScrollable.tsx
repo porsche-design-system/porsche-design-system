@@ -1,4 +1,4 @@
-import { PModal as Modal, PButton as Button } from '@porsche-design-system/components-react';
+import { PModal, PButton } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const ModalScrollablePage = (): JSX.Element => {
@@ -17,7 +17,7 @@ export const ModalScrollablePage = (): JSX.Element => {
     <>
       <style children={style} />
       <div className="playground light" title="should show scrollable modal on light background">
-        <Modal heading="Some Heading with a very long title across multiple lines" open>
+        <PModal heading="Some Heading with a very long title across multiple lines" open>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
           clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
@@ -32,10 +32,10 @@ export const ModalScrollablePage = (): JSX.Element => {
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet.
           <div>
-            <Button>Confirm</Button>
-            <Button variant="tertiary">Cancel</Button>
+            <PButton>Confirm</PButton>
+            <PButton variant="tertiary">Cancel</PButton>
           </div>
-        </Modal>
+        </PModal>
       </div>
     </>
   );

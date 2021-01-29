@@ -1,4 +1,4 @@
-import { PLink as Link } from '@porsche-design-system/components-react';
+import { PLink } from '@porsche-design-system/components-react';
 
 export const LinkPage = (): JSX.Element => {
   const style = `
@@ -9,133 +9,133 @@ export const LinkPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style}/>
+      <style children={style} />
 
       <div className="playground light" title="should render primary with label">
-        <Link variant="primary" href="https://www.porsche.com">
+        <PLink variant="primary" href="https://www.porsche.com">
           Some label
-        </Link>
-        <Link variant="primary">
+        </PLink>
+        <PLink variant="primary">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render primary with label on dark theme">
-        <Link variant="primary" href="https://www.porsche.com" theme="dark">
+        <PLink variant="primary" href="https://www.porsche.com" theme="dark">
           Some label
-        </Link>
-        <Link variant="primary" theme="dark">
+        </PLink>
+        <PLink variant="primary" theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render primary without label">
-        <Link variant="primary" href="https://www.porsche.com" hideLabel={true}>
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel>
           Some label
-        </Link>
-        <Link variant="primary" hideLabel={true}>
+        </PLink>
+        <PLink variant="primary" hideLabel>
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render primary without label on dark theme">
-        <Link variant="primary" href="https://www.porsche.com" hideLabel={true} theme="dark">
+        <PLink variant="primary" href="https://www.porsche.com" hideLabel theme="dark">
           Some label
-        </Link>
-        <Link variant="primary" hideLabel={true} theme="dark">
+        </PLink>
+        <PLink variant="primary" hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render secondary with label">
-        <Link href="https://www.porsche.com">Some label</Link>
-        <Link>
+        <PLink href="https://www.porsche.com">Some label</PLink>
+        <PLink>
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render secondary with label on dark theme">
-        <Link theme="dark" href="https://www.porsche.com">
+        <PLink theme="dark" href="https://www.porsche.com">
           Some label
-        </Link>
-        <Link theme="dark">
+        </PLink>
+        <PLink theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render secondary without label">
-        <Link href="https://www.porsche.com" hideLabel={true}>
+        <PLink href="https://www.porsche.com" hideLabel>
           Some label
-        </Link>
-        <Link hideLabel={true}>
+        </PLink>
+        <PLink hideLabel>
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render secondary without label on dark theme">
-        <Link theme="dark" href="https://www.porsche.com" hideLabel={true}>
+        <PLink theme="dark" href="https://www.porsche.com" hideLabel>
           Some label
-        </Link>
-        <Link hideLabel={true} theme="dark">
+        </PLink>
+        <PLink hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render tertiary with label">
-        <Link variant="tertiary" href="https://www.porsche.com">
+        <PLink variant="tertiary" href="https://www.porsche.com">
           Some label
-        </Link>
-        <Link variant="tertiary">
+        </PLink>
+        <PLink variant="tertiary">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render tertiary with label on dark theme">
-        <Link variant="tertiary" href="https://www.porsche.com" theme="dark">
+        <PLink variant="tertiary" href="https://www.porsche.com" theme="dark">
           Some label
-        </Link>
-        <Link variant="tertiary" theme="dark">
+        </PLink>
+        <PLink variant="tertiary" theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render tertiary without label">
-        <Link variant="tertiary" href="https://www.porsche.com" hideLabel={true}>
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel>
           Some label
-        </Link>
-        <Link variant="tertiary" hideLabel={true}>
+        </PLink>
+        <PLink variant="tertiary" hideLabel>
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
       <div className="playground dark" title="should render tertiary without label on dark theme">
-        <Link variant="tertiary" href="https://www.porsche.com" hideLabel={true} theme="dark">
+        <PLink variant="tertiary" href="https://www.porsche.com" hideLabel theme="dark">
           Some label
-        </Link>
-        <Link variant="tertiary" hideLabel={true} theme="dark">
+        </PLink>
+        <PLink variant="tertiary" hideLabel theme="dark">
           <a href="https://www.porsche.com">Some label</a>
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render secondary with responsive label">
-        <Link
-          hideLabel="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+        <PLink
+          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
           href="https://www.porsche.com"
         >
           Some label
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render secondary with specific icon">
-        <Link icon="phone" href="https://www.porsche.com">
+        <PLink icon="phone" href="https://www.porsche.com">
           Some label
-        </Link>
-        <Link icon-source="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">
+        </PLink>
+        <PLink iconSource="./assets/icon-custom-kaixin.svg" href="https://www.porsche.com">
           Some label
-        </Link>
+        </PLink>
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <Link style={{ width: 240 }} href="https://www.porsche.com">
+        <PLink style={{ width: 240 }} href="https://www.porsche.com">
           Lorem ipsum dolor sit amet, consetetur sadipscing
-        </Link>
-        <Link style={{ width: 240 }}>
+        </PLink>
+        <PLink style={{ width: 240 }}>
           <a href="https://www.porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
-        </Link>
+        </PLink>
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import { BannerComponent } from './banner.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
+import { CoreInitializerComponent } from './core-initializer.component';
+import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { DividerComponent } from './divider.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
@@ -35,6 +37,8 @@ export const pages = [
   ButtonPureComponent,
   CheckboxWrapperComponent,
   ContentWrapperComponent,
+  CoreInitializerComponent,
+  CoreInitializerPrefixedComponent,
   DividerComponent,
   FieldsetWrapperComponent,
   FlexComponent,
@@ -59,7 +63,7 @@ export const pages = [
   TextFieldWrapperComponent,
   TextListComponent,
   TextareaWrapperComponent,
-  TypographyComponent
+  TypographyComponent,
 ];
 
 export * from './banner.component';
@@ -67,6 +71,8 @@ export * from './button.component';
 export * from './button-pure.component';
 export * from './checkbox-wrapper.component';
 export * from './content-wrapper.component';
+export * from './core-initializer.component';
+export * from './core-initializer-prefixed.component';
 export * from './divider.component';
 export * from './fieldset-wrapper.component';
 export * from './flex.component';

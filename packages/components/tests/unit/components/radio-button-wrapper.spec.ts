@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { RadioButtonWrapper } from '../../../src/components/form/radio-button-wrapper/radio-button-wrapper';
 
 describe('Component <p-radio-button-wrapper>', () => {
-
   it('should render correctly in default mode with shadow dom', async () => {
     const page = await newSpecPage({
       components: [RadioButtonWrapper],

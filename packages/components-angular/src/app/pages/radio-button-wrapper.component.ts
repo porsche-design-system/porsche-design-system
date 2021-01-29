@@ -135,6 +135,6 @@ import { Component } from '@angular/core';
         <input type="radio" name="some-name-11" />
       </p-radio-button-wrapper>
     </div>
-  `
+  `,
 })
 export class RadioButtonWrapperComponent {}

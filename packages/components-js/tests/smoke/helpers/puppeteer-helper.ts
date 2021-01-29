@@ -8,7 +8,7 @@ export const setContentWithDesignSystem = async (
 ): Promise<void> => {
   // inject the web components manager inline
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
-  const indexJsCode = fs.readFileSync(indexJsFile).toString();
+  const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
 
   await page.setContent(
     `
@@ -18,8 +18,8 @@ export const setContentWithDesignSystem = async (
       </head>
       <body>
         <script type="text/javascript">
-            PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
-            porscheDesignSystem.load();
+          PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
+          porscheDesignSystem.load();
         </script>
         ${content}
       </body>

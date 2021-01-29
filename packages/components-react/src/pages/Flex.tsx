@@ -1,4 +1,4 @@
-import { PFlex as Flex, PFlexItem as FlexItem } from '@porsche-design-system/components-react';
+import { PFlex, PFlexItem } from '@porsche-design-system/components-react';
 
 export const FlexPage = (): JSX.Element => {
   const style = `
@@ -42,1061 +42,1061 @@ export const FlexPage = (): JSX.Element => {
       <style children={style} />
 
       <div className="playground" title="should show basic usage">
-        <Flex>
-          <FlexItem>
+        <PFlex>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem>
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should display inline-flex">
-        <Flex inline="true">
-          <FlexItem>
+        <PFlex inline>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
-        <Flex inline="true">
-          <FlexItem>
+          </PFlexItem>
+        </PFlex>
+        <PFlex inline>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt display mode depending on viewport">
-        <Flex inline="{ base: false, l: true }">
-          <FlexItem>
+        <PFlex inline={{ base: false, l: true }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
-        <Flex inline="{ base: false, l: true }">
-          <FlexItem>
+          </PFlexItem>
+        </PFlex>
+        <PFlex inline={{ base: false, l: true }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items with direction 'row'">
-        <Flex direction="row">
-          <FlexItem>
+        <PFlex direction="row">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items with direction 'row-reverse'">
-        <Flex direction="row-reverse">
-          <FlexItem>
+        <PFlex direction="row-reverse">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items with direction 'column'">
-        <Flex direction="column">
-          <FlexItem>
+        <PFlex direction="column">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items with direction 'column-reverse'">
-        <Flex direction="column-reverse">
-          <FlexItem>
+        <PFlex direction="column-reverse">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt direction of flex items depending on viewport">
-        <Flex direction="{ base: 'column', l: 'row' }">
-          <FlexItem>
+        <PFlex direction={{ base: 'column', l: 'row' }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items by wrap mode 'nowrap'">
-        <Flex wrap="nowrap">
-          <FlexItem>
+        <PFlex wrap="nowrap">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items by wrap mode 'wrap'">
-        <Flex wrap="wrap">
-          <FlexItem>
+        <PFlex wrap="wrap">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render flex items by wrap mode 'wrap-reverse'">
-        <Flex wrap="wrap-reverse">
-          <FlexItem>
+        <PFlex wrap="wrap-reverse">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt wrap mode depending on viewport">
-        <Flex wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
-          <FlexItem>
+        <PFlex wrap={{ base: 'nowrap', l: 'wrap-reverse' }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'flex-start'">
-        <Flex justify-content="flex-start">
-          <FlexItem>
+        <PFlex justifyContent="flex-start">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'flex-end'">
-        <Flex justify-content="flex-end">
-          <FlexItem>
+        <PFlex justifyContent="flex-end">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'center'">
-        <Flex justify-content="center">
-          <FlexItem>
+        <PFlex justifyContent="center">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'space-between'">
-        <Flex justify-content="space-between">
-          <FlexItem>
+        <PFlex justifyContent="space-between">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'space-around'">
-        <Flex justify-content="space-around">
-          <FlexItem>
+        <PFlex justifyContent="space-around">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with justify-content mode 'space-evenly'">
-        <Flex justify-content="space-evenly">
-          <FlexItem>
+        <PFlex justifyContent="space-evenly">
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt justify-content mode depending on viewport">
-        <Flex justify-content="{ base: 'flex-start', l: 'flex-end' }">
-          <FlexItem>
+        <PFlex justifyContent={{ base: 'flex-start', l: 'flex-end' }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-items mode 'stretch'">
-        <Flex align-items="stretch" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems="stretch" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-items mode 'flex-start'">
-        <Flex align-items="flex-start" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems="flex-start" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-items mode 'flex-end'">
-        <Flex align-items="flex-end" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems="flex-end" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-items mode 'center'">
-        <Flex align-items="center" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems="center" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-items mode 'baseline'">
-        <Flex align-items="baseline" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems="baseline" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt align-items mode depending on viewport">
-        <Flex align-items="{ base: 'flex-start', l: 'flex-end' }" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex alignItems={{ base: 'flex-start', l: 'flex-end' }} style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'stretch'">
-        <Flex wrap="wrap" align-content="stretch" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="stretch" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'flex-start'">
-        <Flex wrap="wrap" align-content="flex-start" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="flex-start" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'flex-end'">
-        <Flex wrap="wrap" align-content="flex-end" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="flex-end" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'center'">
-        <Flex wrap="wrap" align-content="center" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="center" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'space-between'">
-        <Flex wrap="wrap" align-content="space-between" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="space-between" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'space-around'">
-        <Flex wrap="wrap" align-content="space-around" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="space-around" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-content mode 'space-evenly'">
-        <Flex wrap="wrap" align-content="space-evenly" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent="space-evenly" style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt align-content mode depending on viewport">
-        <Flex wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex wrap="wrap" alignContent={{ base: 'flex-start', l: 'flex-end' }} style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>5</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>6</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>7</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>8</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>9</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by defined width">
-        <Flex>
-          <FlexItem width="one-quarter">
+        <PFlex>
+          <PFlexItem width="one-quarter">
             <p>one-quarter</p>
-          </FlexItem>
-          <FlexItem width="one-quarter">
+          </PFlexItem>
+          <PFlexItem width="one-quarter">
             <p>one-quarter</p>
-          </FlexItem>
-          <FlexItem width="one-quarter">
+          </PFlexItem>
+          <PFlexItem width="one-quarter">
             <p>one-quarter</p>
-          </FlexItem>
-          <FlexItem width="one-quarter">
+          </PFlexItem>
+          <PFlexItem width="one-quarter">
             <p>one-quarter</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem width="one-third">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem width="one-third">
             <p>one-third</p>
-          </FlexItem>
-          <FlexItem width="one-third">
+          </PFlexItem>
+          <PFlexItem width="one-third">
             <p>one-third</p>
-          </FlexItem>
-          <FlexItem width="one-third">
+          </PFlexItem>
+          <PFlexItem width="one-third">
             <p>one-third</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem width="half">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem width="half">
             <p>half</p>
-          </FlexItem>
-          <FlexItem width="half">
+          </PFlexItem>
+          <PFlexItem width="half">
             <p>half</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem width="two-thirds">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem width="two-thirds">
             <p>two-thirds</p>
-          </FlexItem>
-          <FlexItem width="one-third">
+          </PFlexItem>
+          <PFlexItem width="one-third">
             <p>one-third</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem width="three-quarters">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem width="three-quarters">
             <p>three-quarters</p>
-          </FlexItem>
-          <FlexItem width="one-quarter">
+          </PFlexItem>
+          <PFlexItem width="one-quarter">
             <p>one-quarter</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem width="full">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem width="full">
             <p>full</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt width depending on viewport">
-        <Flex wrap="wrap">
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+        <PFlex wrap="wrap">
+          <PFlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>1</p>
-          </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          </PFlexItem>
+          <PFlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>2</p>
-          </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          </PFlexItem>
+          <PFlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>3</p>
-          </FlexItem>
-          <FlexItem width="{ base: 'half', l: 'one-quarter' }">
+          </PFlexItem>
+          <PFlexItem width={{ base: 'half', l: 'one-quarter' }}>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by defined offset">
-        <Flex>
-          <FlexItem offset="one-quarter" width="three-quarters">
+        <PFlex>
+          <PFlexItem offset="one-quarter" width="three-quarters">
             <p>Offset: quarter</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem offset="one-third" width="two-thirds">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem offset="one-third" width="two-thirds">
             <p>Offset: third</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem offset="half" width="half">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem offset="half" width="half">
             <p>Offset: half</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem offset="two-thirds" width="one-third">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem offset="two-thirds" width="one-third">
             <p>Offset: 2 thirds</p>
-          </FlexItem>
-        </Flex>
-        <Flex>
-          <FlexItem offset="three-quarters" width="one-quarter">
+          </PFlexItem>
+        </PFlex>
+        <PFlex>
+          <PFlexItem offset="three-quarters" width="one-quarter">
             <p>Offset: 3 quarters</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt offset depending on viewport">
-        <Flex>
-          <FlexItem offset="{ base: 'none', l: 'one-third' }">
+        <PFlex>
+          <PFlexItem offset={{ base: 'none', l: 'one-third' }}>
             <p>Responsive offset</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'auto'">
-        <Flex style={{ height: 180 }} align-items="flex-end">
-          <FlexItem align-self="stretch">
+        <PFlex style={{ height: 180 }} alignItems="flex-end">
+          <PFlexItem alignSelf="stretch">
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="auto">
+          </PFlexItem>
+          <PFlexItem alignSelf="auto">
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'stretch'">
-        <Flex style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="stretch">
+          </PFlexItem>
+          <PFlexItem alignSelf="stretch">
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'flex-start'">
-        <Flex style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="flex-start">
+          </PFlexItem>
+          <PFlexItem alignSelf="flex-start">
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'flex-end'">
-        <Flex style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="flex-end">
+          </PFlexItem>
+          <PFlexItem alignSelf="flex-end">
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'center'">
-        <Flex style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="center">
+          </PFlexItem>
+          <PFlexItem alignSelf="center">
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render with align-self mode 'baseline'">
-        <Flex style={{ height: 180 }}>
-          <FlexItem align-self="baseline">
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem alignSelf="baseline">
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="baseline" style={{ marginTop: '1rem' }}>
+          </PFlexItem>
+          <PFlexItem alignSelf="baseline" style={{ marginTop: '1rem' }}>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt align-self mode depending on viewport">
-        <Flex style={{ height: 180 }}>
-          <FlexItem>
+        <PFlex style={{ height: 180 }}>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>2</p>
-          </FlexItem>
-          <FlexItem align-self="{ base: 'flex-start', l: 'flex-end' }">
+          </PFlexItem>
+          <PFlexItem alignSelf={{ base: 'flex-start', l: 'flex-end' }}>
             <p>3</p>
-          </FlexItem>
-          <FlexItem>
+          </PFlexItem>
+          <PFlexItem>
             <p>4</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by grow mode '0'">
-        <Flex>
-          <FlexItem>
+        <PFlex>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem grow="0">
+          </PFlexItem>
+          <PFlexItem grow={0}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by grow mode '1'">
-        <Flex>
-          <FlexItem>
+        <PFlex>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem grow="1">
+          </PFlexItem>
+          <PFlexItem grow={1}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt grow mode depending on viewport">
-        <Flex>
-          <FlexItem>
+        <PFlex>
+          <PFlexItem>
             <p>1</p>
-          </FlexItem>
-          <FlexItem grow="{ base: 1, l: 0 }">
+          </PFlexItem>
+          <PFlexItem grow={{ base: 1, l: 0 }}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by shrink mode '1'">
-        <Flex>
-          <FlexItem shrink="1" style={{ width: '80%' }}>
+        <PFlex>
+          <PFlexItem shrink={1} style={{ width: '80%' }}>
             <p>1</p>
-          </FlexItem>
-          <FlexItem style={{ width: '80%' }}>
+          </PFlexItem>
+          <PFlexItem style={{ width: '80%' }}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by shrink mode '0'">
-        <Flex>
-          <FlexItem shrink="0" style={{ width: '80%' }}>
+        <PFlex>
+          <PFlexItem shrink={0} style={{ width: '80%' }}>
             <p>1</p>
-          </FlexItem>
-          <FlexItem style={{ width: '80%' }}>
+          </PFlexItem>
+          <PFlexItem style={{ width: '80%' }}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt shrink mode depending on viewport">
-        <Flex>
-          <FlexItem shrink="{ base: 0, l: 1 }" style={{ width: '80%' }}>
+        <PFlex>
+          <PFlexItem shrink={{ base: 0, l: 1 }} style={{ width: '80%' }}>
             <p>1</p>
-          </FlexItem>
-          <FlexItem style={{ width: '80%' }}>
+          </PFlexItem>
+          <PFlexItem style={{ width: '80%' }}>
             <p>2</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by predefined flex shorthand mode 'initial'">
-        <Flex>
-          <FlexItem flex="initial">
+        <PFlex>
+          <PFlexItem flex="initial">
             <p>1 - short content</p>
-          </FlexItem>
-          <FlexItem flex="initial">
+          </PFlexItem>
+          <PFlexItem flex="initial">
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
-          </FlexItem>
-          <FlexItem flex="initial">
+          </PFlexItem>
+          <PFlexItem flex="initial">
             <p>3 - short content</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by predefined flex shorthand mode 'auto'">
-        <Flex>
-          <FlexItem flex="auto">
+        <PFlex>
+          <PFlexItem flex="auto">
             <p>1 - short content</p>
-          </FlexItem>
-          <FlexItem flex="auto">
+          </PFlexItem>
+          <PFlexItem flex="auto">
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
-          </FlexItem>
-          <FlexItem flex="auto">
+          </PFlexItem>
+          <PFlexItem flex="auto">
             <p>3 - short content</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by predefined flex shorthand mode 'equal'">
-        <Flex>
-          <FlexItem flex="equal">
+        <PFlex>
+          <PFlexItem flex="equal">
             <p>1 - short content</p>
-          </FlexItem>
-          <FlexItem flex="equal">
+          </PFlexItem>
+          <PFlexItem flex="equal">
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
-          </FlexItem>
-          <FlexItem flex="equal">
+          </PFlexItem>
+          <PFlexItem flex="equal">
             <p>3 - short content</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should render by predefined flex shorthand mode 'none'">
-        <Flex>
-          <FlexItem flex="none">
+        <PFlex>
+          <PFlexItem flex="none">
             <p>1 - short content</p>
-          </FlexItem>
-          <FlexItem flex="none">
+          </PFlexItem>
+          <PFlexItem flex="none">
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
-          </FlexItem>
-          <FlexItem flex="none">
+          </PFlexItem>
+          <PFlexItem flex="none">
             <p>3 - short content</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
 
       <div className="playground" title="should adapt predefined flex shorthand mode depending on viewport">
-        <Flex>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+        <PFlex>
+          <PFlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>1 - short content</p>
-          </FlexItem>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+          </PFlexItem>
+          <PFlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>2 - large amount of content lorem ipsum dolor sit amet consecutor sibling nira space</p>
-          </FlexItem>
-          <FlexItem flex="{base: 'initial', l: 'equal'}">
+          </PFlexItem>
+          <PFlexItem flex={{ base: 'initial', l: 'equal' }}>
             <p>3 - short content</p>
-          </FlexItem>
-        </Flex>
+          </PFlexItem>
+        </PFlex>
       </div>
     </>
   );

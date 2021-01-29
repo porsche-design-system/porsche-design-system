@@ -32,10 +32,14 @@
   }
 </style>
 
-<div style="display: flex;">
-  <div style="flex: 1;">
+<div style="display: flex">
+  <div style="flex: 1">
     <div class="playground light" title="should render default headline">
       <p-headline>Default Components</p-headline>
+    </div>
+
+    <div class="playground light" title="should render headline for variant large">
+      <p-headline variant="{'base': 'large', 'l': 'x-large'}">Default Components</p-headline>
     </div>
 
     <div class="playground light" title="should render default banner">
@@ -145,9 +149,9 @@
 
     <div class="playground light" title="should render default tabs-bar">
       <p-tabs-bar>
-        <a>Tab1</a>
-        <a>Tab2</a>
-        <a>Tab3</a>
+        <button>Tab1</button>
+        <button>Tab2</button>
+        <button>Tab3</button>
       </p-tabs-bar>
     </div>
 
@@ -170,9 +174,13 @@
     </div>
   </div>
 
-  <div style="flex: 1;">
+  <div style="flex: 1">
     <div class="playground light" title="should render default headline with custom prefix">
       <my-prefix-p-headline>Prefixed Components</my-prefix-p-headline>
+    </div>
+
+    <div class="playground light" title="should render headline for variant large with custom prefix">
+      <my-prefix-p-headline variant="{'base': 'large', 'l': 'x-large'}">Prefixed Components</my-prefix-p-headline>
     </div>
 
     <div class="playground light" title="should render default banner with custom prefix">
@@ -282,9 +290,9 @@
 
     <div class="playground light" title="should render default tabs-bar with custom prefix">
       <my-prefix-p-tabs-bar>
-        <a>Tab1</a>
-        <a>Tab2</a>
-        <a>Tab3</a>
+        <button>Tab1</button>
+        <button>Tab2</button>
+        <button>Tab3</button>
       </my-prefix-p-tabs-bar>
     </div>
 

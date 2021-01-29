@@ -1,12 +1,12 @@
 #!/bin/bash
 
+REGISTRY=docker.pkg.github.com/porscheui/porsche-design-system
 IMAGE=node
-TAG=12.18.3-stretch-slim
+TAG=14.15.1-stretch-slim
 
-docker pull docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:latest
+docker pull $REGISTRY/$IMAGE:latest
 
-docker build -t docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:$TAG .
-docker tag docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:$TAG docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:latest
+docker build -t $REGISTRY/$IMAGE:$TAG -t $REGISTRY/$IMAGE:latest .
 
-docker push docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:$TAG
-docker push docker.pkg.github.com/porscheui/porsche-design-system/$IMAGE:latest
+docker push $REGISTRY/$IMAGE:$TAG
+docker push $REGISTRY/$IMAGE:latest

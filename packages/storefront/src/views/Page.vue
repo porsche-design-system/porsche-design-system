@@ -22,8 +22,8 @@
 
   @Component({
     components: {
-      Markdown
-    }
+      Markdown,
+    },
   })
   export default class Page extends Vue {
     public components: ComponentType[] = [];
