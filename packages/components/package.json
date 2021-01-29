@@ -41,7 +41,6 @@
     "@stencil/core": "~2.4.0",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
-    "@types/autoprefixer": "^10.2.0",
     "@types/expect-puppeteer": "^4.4.5",
     "@types/jest": "^26.0.20",
     "@types/puppeteer": "^5.4.2",
