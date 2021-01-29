@@ -7,7 +7,7 @@ type Manifest = {
   [key in TagName | 'core']?: string;
 };
 
-const generateChunkManifest = (): void => {
+const generateChunksManifest = (): void => {
   // read web components manager to retrieve url to stencil core entrypoint
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
   const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
@@ -44,11 +44,13 @@ const generateChunkManifest = (): void => {
   const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};`;
 
   const targetDirectory = path.normalize('./src/lib');
-  const targetFile = path.normalize(`${targetDirectory}/shared.ts`);
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
+
+  const targetFileName = 'chunksManifest.ts';
+  const targetFile = path.resolve(targetDirectory, targetFileName);
   fs.writeFileSync(targetFile, content);
 
-  console.log(`Generated component chunks manifest for ${chunkFileNames.length} chunks`);
+  console.log(`Generated ${targetFileName} for ${chunkFileNames.length} chunks`);
 };
 
-generateChunkManifest();
+generateChunksManifest();
