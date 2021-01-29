@@ -4,7 +4,8 @@ import * as globby from 'globby';
 import { camelCase } from 'change-case';
 
 const generateTagNames = (): void => {
-  const sourceDirectory = path.resolve(require.resolve('@porsche-design-system/components'), '../../src/components');
+  // can't resolve @porsche-design-system/components without build it first, therefore we use relative path
+  const sourceDirectory = path.resolve(path.normalize('../components/src/components'));
 
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
   const tags = componentFiles.map((file) => {
