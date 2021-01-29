@@ -250,6 +250,7 @@ SSR support can be expected with the next minor release.
 
 #### Changed
 - Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix
+- Hide up/down spin button when using **Text Field** with `type="number"` in Firefox
 
 #### Fixed
 - Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
