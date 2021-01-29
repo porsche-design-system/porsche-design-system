@@ -56,7 +56,7 @@ export class LinkPure {
   private linkTag: HTMLElement;
   private iconTag: HTMLElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.addSlottedStyles();
   }
 

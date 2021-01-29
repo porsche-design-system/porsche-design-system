@@ -69,9 +69,19 @@ export class TabsBar {
 
   public connectedCallback(): void {
     this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.initMutationObserver();
+  }
+
+  public componentDidLoad(): void {
+    this.defineHTMLElements();
     this.sanitizeActiveTabIndex(this.activeTabIndex); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
-    this.initMutationObserver();
+    this.scrollActiveTabIntoView({ skipAnimation: true });
+    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // and first call in componentDidRender() is skipped because elements are not defined, yet
+    this.setStatusBarStyle();
+    this.addEventListeners();
+    this.initIntersectionObserver();
   }
 
   public componentDidRender(): void {
@@ -80,17 +90,7 @@ export class TabsBar {
   }
 
   public componentDidUpdate(): void {
-    this.scrollActiveTabIntoView();
-  }
-
-  public componentDidLoad(): void {
-    this.defineHTMLElements();
-    this.scrollActiveTabIntoView({ skipAnimation: true });
-    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
-    // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setStatusBarStyle();
-    this.addEventListeners();
-    this.initIntersectionObserver();
+    this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
@@ -241,10 +241,10 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const { shadowRoot } = this.host;
-    const selector = `.${prefix('tabs-bar__scroll-wrapper__trigger')}`;
-    const firstTrigger = getHTMLElement(shadowRoot, `${selector}:first-of-type`);
-    const lastTrigger = getHTMLElement(shadowRoot, `${selector}:last-of-type`);
+    const [firstTrigger, lastTrigger] = getHTMLElements(
+      this.host.shadowRoot,
+      `.${prefix('tabs-bar__scroll-wrapper__trigger')}`
+    );
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
@@ -258,7 +258,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.95,
+        threshold: 0.7,
       }
     );
 
@@ -268,6 +268,7 @@ export class TabsBar {
 
   private handleTabClick = (newTabIndex: number): void => {
     this.activeTabIndex = newTabIndex;
+    this.scrollActiveTabIntoView();
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
