@@ -1,4 +1,8 @@
-import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
+import {
+  getComponentChunks,
+  getFontFaceStylesheet,
+  getInitialStyles,
+} from '@porsche-design-system/components-js/partials';
 
 describe('partials', () => {
   describe('getFontFaceStylesheet()', () => {
@@ -10,6 +14,12 @@ describe('partials', () => {
   describe('getInitialStyles()', () => {
     it('should be a function', () => {
       expect(typeof getInitialStyles).toBe('function');
+    });
+  });
+
+  describe('getComponentChunks()', () => {
+    it('should be a function', () => {
+      expect(typeof getComponentChunks).toBe('function');
     });
   });
 });
