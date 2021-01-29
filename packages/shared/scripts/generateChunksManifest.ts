@@ -7,9 +7,8 @@ type Manifest = {
   [key in TagName | 'core']?: string;
 };
 
-const generateChunksManifest = (): void => {
+const createManifest = (indexJsFile: string): Manifest => {
   // read web components manager to retrieve url to stencil core entrypoint
-  const indexJsFile = require.resolve('@porsche-design-system/components-js');
   const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
 
   if (indexJsCode.includes('localhost:3001')) {
@@ -41,6 +40,19 @@ const generateChunksManifest = (): void => {
     manifest[paramCase(componentName)] = chunkName;
   });
 
+  return manifest;
+};
+
+const generateChunksManifest = (): void => {
+  let manifest: Manifest = {};
+
+  try {
+    const indexJsFile = require.resolve('@porsche-design-system/components-js');
+    manifest = createManifest(indexJsFile);
+  } catch (e) {
+    console.log("Error: @porsche-design-system/components-js can't be resolved, so manifest will be empty");
+  }
+
   const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};`;
 
   const targetDirectory = path.normalize('./src/lib');
@@ -50,7 +62,7 @@ const generateChunksManifest = (): void => {
   const targetFile = path.resolve(targetDirectory, targetFileName);
   fs.writeFileSync(targetFile, content);
 
-  console.log(`Generated ${targetFileName} for ${chunkFileNames.length} chunks`);
+  console.log(`Generated ${targetFileName} for ${Object.keys(manifest).length} chunks`);
 };
 
 generateChunksManifest();
