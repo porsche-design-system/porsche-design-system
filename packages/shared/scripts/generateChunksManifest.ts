@@ -44,13 +44,14 @@ const createManifest = (indexJsFile: string): Manifest => {
 };
 
 const generateChunksManifest = (): void => {
-  let manifest: Manifest = {};
+  let manifest: Manifest = {}; // fallback
 
+  const packageName = '@porsche-design-system/components-js';
   try {
-    const indexJsFile = require.resolve('@porsche-design-system/components-js');
+    const indexJsFile = require.resolve(packageName);
     manifest = createManifest(indexJsFile);
   } catch (e) {
-    console.log("Error: @porsche-design-system/components-js can't be resolved, so manifest will be empty");
+    console.log(`Error: ${packageName} can't be resolved, so manifest will be empty`);
   }
 
   const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};`;
