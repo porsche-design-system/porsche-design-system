@@ -21,14 +21,16 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn build:chunkManifest",
-    "build:chunkManifest": "ts-node --project './tsconfig.node.json' './scripts/generateChunkManifest.ts'",
+    "build": "yarn clean:build && yarn build:chunksManifest && yarn build:tagNames",
+    "build:chunksManifest": "ts-node --project './tsconfig.node.json' 'scripts/generateChunksManifest.ts'",
+    "build:tagNames": "ts-node --project './tsconfig.node.json' './scripts/generateTagNames.ts'",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
+    "globby": "^11.0.2",
     "ts-node": "^9.1.1",
     "typescript": "~4.1.3"
   }

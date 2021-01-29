@@ -1,0 +1,32 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import * as globby from 'globby';
+import { camelCase } from 'change-case';
+
+const generateTagNames = (): void => {
+  const sourceDirectory = path.resolve(require.resolve('@porsche-design-system/components'), '../../src/components');
+
+  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+  const tags = componentFiles.map((file) => {
+    const fileContent = fs.readFileSync(file, 'utf8');
+    const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);
+    return tag;
+  });
+
+  const content = `export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}] as const;
+export type TagName = typeof TAG_NAMES[number];
+
+// TODO: replace with generic in TS4.1: https://stackoverflow.com/questions/57807009/typescript-generic-to-turn-underscore-object-to-camel-case
+export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | ')};`;
+
+  const targetDirectory = path.normalize('./src/lib');
+  fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
+
+  const targetFileName = 'tagNames.ts';
+  const targetFile = path.resolve(targetDirectory, targetFileName);
+  fs.writeFileSync(targetFile, content);
+
+  console.log(`Generated ${targetFileName} for ${tags.length} tags`);
+};
+
+generateTagNames();
