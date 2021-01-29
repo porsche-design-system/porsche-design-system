@@ -222,8 +222,11 @@ SSR support can be expected with the next minor release.
 - Hide up/down spin button when using **Text Field** with `type="number"` in Firefox
 
 #### Fixed
+- Angular: typings 
+- React: correct handling of `ref` property
 - Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
-- Angular: typings
+- A bug in `Tabs Bar` where scrolling was broken when a tab was selected
+- A bug in `Tabs Bar` where the `nextButton` was always rendered
 
 ### [2.0.0-alpha.13] - 2021-01-26
 
