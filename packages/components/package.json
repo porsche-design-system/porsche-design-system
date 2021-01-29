@@ -6,7 +6,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'yarn build:generateIconTypes && PDS_IS_STAGING=1 stencil build --watch --serve'",
-    "build": "yarn build:generateIconTypes && yarn build:stencil && yarn build:cleanReadmes && yarn build:generateComponentTags",
+    "build": "yarn build:generateIconTypes && yarn build:stencil && yarn build:cleanReadmes",
     "prebuild": "yarn clean:build",
     "build:stencil": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs",
     "postbuild:stencil": "yarn build:type && yarn build:generateWrappers && yarn build:copyCjsBuildToComponentsReact && yarn build:clean",
@@ -16,7 +16,6 @@
     "build:type:addMissingTypeExport": "ts-node --project './tsconfig.node.json' './scripts/addMissingTypeExport.ts'",
     "build:type:bundle": "dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global --external-types --no-banner",
     "build:cleanReadmes": "ts-node --project './tsconfig.node.json' './scripts/cleanReadmes.ts'",
-    "build:generateComponentTags": "ts-node --project './tsconfig.node.json' './scripts/generateComponentTags.ts'",
     "build:copyCjsBuildToComponentsReact": "rm -rf ../components-react/projects/jsdom-polyfill/src/lib && cp -r dist/cjs ../components-react/projects/jsdom-polyfill/src/lib",
     "build:clean": "yarn build:clean:loader && yarn build:clean:deletePolyfills && yarn build:clean:deleteGeneratedLoader",
     "build:clean:loader": "ts-node  --project './tsconfig.node.json' './scripts/cleanupLoader.ts'",
@@ -36,6 +35,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/assets": "3.1.0",
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "4.0.0",
     "@stencil/core": "~2.3.0",
     "@stencil/postcss": "^2.0.0",

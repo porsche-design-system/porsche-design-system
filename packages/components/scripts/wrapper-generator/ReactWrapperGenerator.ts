@@ -1,4 +1,4 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
