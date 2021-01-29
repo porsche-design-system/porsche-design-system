@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-rc.0",
   "private": true,
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -37,7 +37,7 @@
     "@porsche-design-system/assets": "3.1.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "4.0.0",
-    "@stencil/core": "~2.3.0",
+    "@stencil/core": "~2.4.0",
     "@stencil/postcss": "^2.0.0",
     "@stencil/sass": "^1.4.1",
     "@types/autoprefixer": "^10.2.0",

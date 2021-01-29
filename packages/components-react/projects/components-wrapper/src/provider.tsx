@@ -1,4 +1,4 @@
-import type { MutableRefObject, PropsWithChildren } from 'react';
+import type { ForwardedRef, MutableRefObject, PropsWithChildren } from 'react';
 import { createContext, useContext, useEffect, useMemo, useRef } from 'react';
 import { load } from '@porsche-design-system/components-js';
 
@@ -77,4 +77,15 @@ export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: st
     prevComponentClassName.current = className;
     return newClassName;
   }, [className]);
+};
+
+export const syncRef = (ref: ForwardedRef<HTMLElement>, elementRef: MutableRefObject<HTMLElement>) => (
+  el: HTMLElement
+): void => {
+  elementRef.current = el;
+  if (typeof ref === 'function') {
+    ref(el);
+  } else if (ref !== null) {
+    ref.current = el;
+  }
 };
