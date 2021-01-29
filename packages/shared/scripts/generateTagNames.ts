@@ -8,11 +8,13 @@ const generateTagNames = (): void => {
   const sourceDirectory = path.resolve(path.normalize('../components/src/components'));
 
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
-  const tags = componentFiles.map((file) => {
-    const fileContent = fs.readFileSync(file, 'utf8');
-    const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);
-    return tag;
-  });
+  const tags = componentFiles
+    .map((file) => {
+      const fileContent = fs.readFileSync(file, 'utf8');
+      const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent);
+      return tag;
+    })
+    .sort();
 
   const content = `export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}] as const;
 export type TagName = typeof TAG_NAMES[number];
