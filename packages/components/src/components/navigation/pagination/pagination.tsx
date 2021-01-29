@@ -16,7 +16,7 @@ import type { BreakpointCustomizable, NumberOfPageLinks, PageChangeEvent, Theme 
   shadow: true,
 })
 export class Pagination {
-  @Element() public element!: HTMLElement;
+  @Element() public host!: HTMLElement;
 
   /** The total count of items. */
   @Prop() public totalItemsCount = 1;
@@ -65,7 +65,7 @@ export class Pagination {
   }
 
   public componentDidLoad(): void {
-    improveFocusHandlingForCustomElement(this.element);
+    improveFocusHandlingForCustomElement(this.host);
     this.unlistenResize = listenResize(() => {
       this.updateMaxNumberOfPageLinks();
     });
@@ -101,7 +101,7 @@ export class Pagination {
 
     const paginationItemClasses = prefix('pagination__item');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.element, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
 
     paginationModel.forEach((pageModel) => {
       const { type, isActive, value } = pageModel;
