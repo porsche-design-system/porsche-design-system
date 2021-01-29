@@ -37,4 +37,16 @@ export default [
     output: { dir: `${DIST_DIR}/esm`, format: 'esm' },
     plugins: [typescript(typescriptOpts)],
   },
+  {
+    input: `${BASE_DIR}/src/partials.ts`,
+    external,
+    output: {
+      esModule: false,
+      dir: DIST_DIR,
+      format: 'umd',
+      name: pkg.name,
+      exports: 'named',
+    },
+    plugins: [typescript(typescriptOpts)],
+  },
 ];
