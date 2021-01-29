@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "2.0.0-alpha.13",
-    "@porsche-design-system/utilities": "4.0.0",
     "construct-style-sheets-polyfill": "^2.4.3",
     "intersection-observer": "^0.12.0",
     "react": "^17.0.1",
