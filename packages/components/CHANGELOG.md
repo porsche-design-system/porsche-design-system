@@ -16,8 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix 
 
 #### Fixed
-- Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
 - Angular: typings 
+- React: correct handling of `ref` property
+- Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
+- A bug in `Tabs Bar` where scrolling was broken when a tab was selected
+- A bug in `Tabs Bar` where the `nextButton` was always rendered
 
 ### [2.0.0-alpha.13] - 2021-01-26
 
