@@ -486,11 +486,11 @@ jobs:
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
-      - name: 'Store Shared Src Artifact'
+      - name: 'Store Shared Build Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: shared-src
-          path: ./packages/shared/src/lib
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -617,11 +617,11 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
-      - name: 'Restore Shared Src Artifact'
+      - name: 'Restore Shared Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: shared-src
-          path: ./packages/shared/src/lib
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Smoke Test'
         uses: ./.github/actions/docker-run
         with:
