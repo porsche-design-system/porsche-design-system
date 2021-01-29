@@ -138,40 +138,9 @@ This might lead to a doubled * symbol if you set one by yourself.
 
 ## Angular
 
-#### Integration of Angular components with a custom prefix (advanced feature)
-In the past we've provided a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which was removed because we are not bundling polyfills into the Porsche Design System anymore. 
-In addition, a configurable `load` function is provided by `PorscheDesignSystemModule` itself.
-
-```diff
-  // app.module.ts
-  
-  import { BrowserModule } from '@angular/platform-browser';
-  import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-  import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
-  import { AppComponent } from './app.component';
-  
-  @NgModule({
-    declarations: [
-      AppComponent
-    ],
-    imports: [
-      BrowserModule,
--     PorscheDesignSystemModule
-+     PorscheDesignSystemModule.load({ prefix: 'sample-prefix' })
-    ],
-+   schemas: [
-+     CUSTOM_ELEMENTS_SCHEMA
-+   ],
--   providers: [
--     {
--       provide: PREVENT_WEB_COMPONENTS_REGISTRATION,
--       useValue: true
--     }
--   ],
-    bootstrap: [AppComponent]
-  })
-  export class AppModule {}
-```
+#### Integration of Angular components
+In the past it was possible to provide a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which prevented the registration of the Porsche Design System components and loading of polyfills.
+Due to the fact that we no longer provide / need poly filling, we have completely removed the token.
 For advanced usage please [read further](https://designsystem.porsche.com/latest/#/start-coding/angular).
 
 ---
