@@ -1,4 +1,5 @@
-import { getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentChunks, getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
 
 describe('getFontFaceStylesheet', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
@@ -74,8 +75,8 @@ describe('getInitialStyles', () => {
 });
 
 describe('getFontLinks', () => {
-  const cdnFontUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-`;
-  const cdnFontUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-w-`;
+  const cdnFontUrlWithoutHash = 'https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-';
+  const cdnFontUrlCnWithoutHash = 'https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-w-';
   const linkStartsWith = '<link rel=preload href=';
   const linkEndsWith = 'as=font type=font/woff2 crossorigin>';
   const urlStartsWith = 'https://';
@@ -185,6 +186,85 @@ describe('getFontLinks', () => {
       expect(result[1].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[1].endsWith(urlEndsWith)).toBeTruthy();
       expect(result[1]).toContain(cdnFontUrlWithoutHash + 'la-semi-bold');
+    });
+  });
+});
+
+describe('getComponentChunks', () => {
+  const chunkBaseName = 'porsche-design-system';
+  const cdnFontUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/components/${chunkBaseName}.`;
+  const cdnFontUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/components/${chunkBaseName}.`;
+
+  describe('url with tag', () => {
+    const linkStartsWith = '<link rel=prefetch href=';
+    const linkEndsWith = 'crossorigin>';
+
+    it('should return core link by default', () => {
+      const result = getComponentChunks();
+      expect(result.startsWith(linkStartsWith)).toBeTruthy();
+      expect(result.endsWith(linkEndsWith)).toBeTruthy();
+      expect(result).toContain(cdnFontUrlWithoutHash + 'v');
+    });
+
+    it('should return default core China CDN link', () => {
+      const result = getComponentChunks({ cdn: 'cn' });
+      expect(result.startsWith(linkStartsWith)).toBeTruthy();
+      expect(result.endsWith(linkEndsWith)).toBeTruthy();
+      expect(result).toContain(cdnFontUrlCnWithoutHash + 'v');
+    });
+
+    it('should return multiple links', () => {
+      const result = getComponentChunks({ components: ['p-button', 'p-button-pure', 'p-marque'] });
+      expect(result.match(/><link/g).length).toBe(3);
+      expect(result).toContain(cdnFontUrlWithoutHash + 'v');
+    });
+
+    TAG_NAMES.forEach((tagName) => {
+      it(`should return core and chunk link for ['${tagName}']`, () => {
+        const result = getComponentChunks({ components: [tagName] });
+        expect(result.match(/><link/g).length).toBe(1);
+        expect(result).toContain(cdnFontUrlWithoutHash + 'v');
+      });
+    });
+  });
+
+  describe('url without tag', () => {
+    const urlStartsWith = 'https://';
+    const urlEndsWith = '.js';
+
+    it('should return core url by default', () => {
+      const result = getComponentChunks({ withoutTags: true });
+      expect(result.length).toBe(1);
+      expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
+      expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
+      expect(result[0]).toContain(cdnFontUrlWithoutHash + 'v');
+    });
+
+    it('should return default core China CDN url', () => {
+      const result = getComponentChunks({ withoutTags: true, cdn: 'cn' });
+      expect(result.length).toBe(1);
+      expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
+      expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
+      expect(result[0]).toContain(cdnFontUrlCnWithoutHash + 'v');
+    });
+
+    it('should return multiple urls', () => {
+      const result = getComponentChunks({ withoutTags: true, components: ['p-button', 'p-button-pure', 'p-marque'] });
+      expect(result.length).toBe(4);
+      expect(result[0]).toContain(cdnFontUrlWithoutHash + 'v');
+      expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
+      expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
+      expect(result[1].startsWith(urlStartsWith)).toBeTruthy();
+      expect(result[1].endsWith(urlEndsWith)).toBeTruthy();
+    });
+
+    TAG_NAMES.forEach((tagName) => {
+      it(`should return core and chunk url for ['${tagName}']`, () => {
+        const result = getComponentChunks({ withoutTags: true, components: [tagName] });
+        expect(result.length).toBe(2);
+        expect(result[0]).toContain(cdnFontUrlWithoutHash + 'v');
+        expect(result[1].match(new RegExp(`${chunkBaseName}\\.\\d+\\.`)).length).toBe(1); // verify chunk number
+      });
     });
   });
 });
