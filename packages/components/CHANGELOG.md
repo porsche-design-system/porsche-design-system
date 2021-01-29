@@ -8,16 +8,222 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.
+With our new major version `v2.0.0` there are some important changes that you should watch out for.
+To make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few guidelines.
+
+---
+
+## General changes / improvements:
+
+#### All components, icons, fonts, styles and marque of the Porsche Design System are loaded versioned and chunked from a central CDN
+This way all web based digital Porsche products share and use the cached and versioned assets regardless of the JS framework used to improve loading performance across the Porsche group.
+Only a tiny (1.4kb sized) Porsche Design System loader script gets bundled into your application code.
+Everything else gets loaded versioned, cached and chunked from a central CDN ([read more](https://designsystem.porsche.com/latest/#/performance/cdn)).
+However, this also means that you will need an **Internet connection** to render the components in a browser (possibly relevant for development stage or intranet applications).
+
+#### Enabling Micro Frontend Architecture
+In case of a micro-frontend architecture, multiple instances and versions of the Porsche Design System can be combined in a final application by configurable prefixing technique of the Porsche Design System components during runtime.
+Please refer to our framework specific guidelines [Vanilla JS](https://designsystem.porsche.com/latest/#/start-coding/vanilla-js), [Angular](https://designsystem.porsche.com/latest/#/start-coding/angular) and [React](https://designsystem.porsche.com/latest/#/start-coding/react).
+
+#### Prevent Flash of Unstyled Content (FOUC) and Flash of Unstyled Text (FOUT)
+To prevent FOUC/FOUT, the Porsche Design System offers various partials as part of the `@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts and components are fully loaded.
+If you've used the `@porsche-design-system/partials` package previously, stop using it and replace the integration with the partials provided by `@porsche-design-system/components-{js|angular|react}` package.
+Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/latest/#/performance/loading-behaviour).
+
+```diff
+- <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
++ <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles() %>
+
+- <%= require('@porsche-design-system/partials').getFontFaceCSS() %>
++ <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet() %>
+
+- <link rel="preload" href="path/to/webfont/nameOfWebFontFile" as="font" type="font/woff2" crossorigin />
++ <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weight: ['regular', 'semi-bold'] }) %>
+```
+
+#### Added support for China CDN
+Our CDN is configured to forward requests to Chinese CDN automatically when necessary. 
+So you're good to go without any configuration or multiple region specific builds of your application.
+However, if you are aiming for the maximum possible performance in China, you can configure which CDN the Porsche Design System must use.
+Please follow our [CDN guidelines](https://designsystem.porsche.com/latest/#/performance/cdn) for more information.
+
+#### New/optimized components
+- **Tabs**
+- **Tabs Bar**
+- **Banner**
+- **Modal**
+- Headline
+- Select
+- Pagination
+- Button
+- Button Pure
+- Link
+- Link Pure
+- Spinner
+- Checkbox
+- Radio Button
+
+#### Improved TypeScript support for Angular and React
+To ensure the best possible typing support, we have refactored our Angular and React wrappers which integrate the native web components of the Porsche Design System.
+
+#### componentsReady() works reliable
+Because the Porsche Design System components get loaded async at the time they are needed, it might be relevant within your application or test automation to know when those have been initialized.
+Therefore, we provide in all three `@porsche-design-system/components-{js|angular|react}')` packages a reliable helper function `componentsReady()`.
+[Read more about it](https://designsystem.porsche.com/latest/#/helpers/components-ready).
+
+#### Removed "blur on focus"
+Now focus styling is only applied when you navigate through keyboard and ignored by mouse interaction for browsers supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implementation.
+
+#### Changed focus styling for a better compromise between accessibility and visual appearance
+Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px width/offset.
+If you have custom components build with the usage of our `@porsche-design-system/utilities` package then update it to the latest version (we also provide a focus [SCSS mixin](https://designsystem.porsche.com/latest/#/utilities/scss#functions) and [JS function](https://designsystem.porsche.com/latest/#/utilities/js#functions)).
+
+#### Improved geometry of Porsche Next font
+For better alignment and readability we've changed the geometry of the Porsche Next font which results in a visual change of font size and spacing.
+
+#### Dropped support for IE11 and EdgeHTML according to Porsche's official browser strategy 2021
+If you still need to support these browsers, you have to stick to `v1.5.x`.
+We offer a Browser Notification package `@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported.
+It supports a blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible banner (to be used with Porsche Design System `v1.x`). 
+Please refer to our [Browser compatibility guidelines](https://designsystem.porsche.com/latest/#/help/browser-compatibility).
+
+#### Changed default type of Button and Button Pure
+To be in sync with native `<button>` behavior we've changed the default `type` of **Button** and **Button Pure** component.
+Those components will render a button within their Shadow DOM as `<button type="submit">` (previously `<button type="button">`).
+
+- `submit`: The button submits the form data to the server. This is the default if the attribute is not specified for buttons associated with a `<form>`, or if the attribute is an empty or invalid value.
+- `button`: The button has no default behavior, and does nothing when pressed by default. It can have client-side scripts listen to the element's events, which are triggered when the events occur.
+
+#### Changed support for wrapped links around Link, Link Pure and Link Social component
+Due to the support for setting links (`<a href="#">`) in our **Link**, **Link Pure** and **Link Social** components as child, we've removed support for styling the anchor tag (`<a>`) when it surrounds the component.
+So we recommend changing the position of the `<a>` tag from wrapping the component to a direct slot (child) of it.
+
+```diff
+- <a href="#"><p-link>Some label</p-link></a>
++ <p-link><a href="#">Some label</a></p-link>
+
+- <a href="#"><p-link-pure>Some label</p-link-pure></a>
++ <p-link-pure><a href="#">Some label</a></p-link-pure>
+
+- <a href="#"><p-link-social>Some label</p-link-social></a>
++ <p-link-social><a href="#">Some label</a></p-link-social>
+```
+
+#### Automatic * asterisk symbol to form field labels
+We added an automatic generated * asterisk symbol to form field labels which have the required attribute. 
+This might lead to a doubled * symbol if you set one by yourself.
+
+```diff
+- <p-text-field-wrapper label="Some label *"><input type="text" name="some-name" required /></p-text-field-wrapper>
++ <p-text-field-wrapper label="Some label"><input type="text" name="some-name" required /></p-text-field-wrapper>
+
+- <p-checkbox-wrapper label="Some label *"><input type="checkbox" name="some-name" required /></p-checkbox-wrapper>
++ <p-checkbox-wrapper label="Some label"><input type="checkbox" name="some-name" required /></p-checkbox-wrapper>
+
+- <p-radio-button-wrapper label="Some label *"><input type="radio" name="some-name" required /></p-radio-button-wrapper>
++ <p-radio-button-wrapper label="Some label"><input type="radio" name="some-name" required /></p-radio-button-wrapper>
+
+- <p-radio-button-wrapper label="Some label *"><input type="radio" name="some-name" required /></p-radio-button-wrapper>
++ <p-radio-button-wrapper label="Some label"><input type="radio" name="some-name" required /></p-radio-button-wrapper>
+
+- <p-textarea-wrapper label="Some label *"><textarea name="some-name" required></textarea></p-textarea-wrapper>
++ <p-textarea-wrapper label="Some label"><textarea name="some-name" required></textarea></p-textarea-wrapper>
+
+- <p-select-wrapper label="Some label *"><select name="some-name" required><option>A</option></select></p-select-wrapper>
++ <p-select-wrapper label="Some label"><select name="some-name" required><option>A</option></select></p-select-wrapper>
+```
+
+---
+
+## Angular
+
+#### Integration of Angular components
+In the past it was possible to provide a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which prevented the registration of the Porsche Design System components and loading of polyfills.
+Due to the fact that we no longer provide / need poly filling, we have completely removed the token.
+For advanced usage please [read further](https://designsystem.porsche.com/latest/#/start-coding/angular).
+
+---
+
+## React
+
+#### Integration of React components
+In the past `@porsche-design-system/components-react` components have initialized the **Porsche Design System Loader** automatically as soon as a component was imported.
+With `v2.x` you have to import the `PorscheDesignSystemProvider` once in your `index.tsx` which then initializes the **Porsche Design System Loader**, e.g. like:
+```diff
+  // index.tsx
+    
+  import ReactDOM from 'react-dom';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+  import { App } from './App';
+    
+  ReactDOM.render(
+    <React.StrictMode>
++     <PorscheDesignSystemProvider>
+        <App />
++     </PorscheDesignSystemProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+```
+For advanced usage please [read further](https://designsystem.porsche.com/latest/#/start-coding/react).
+
+
+#### Jsdom Polyfill for React / Jest / jsdom test automation
+We removed test mocks for React / Jest / jsdom as ShadowDOM is supported since jsdom v12.2.0.
+Instead, we provide a Jsdom Polyfill (exclusivly for `@porsche-design-system/components-react` package) fixing missing implementation of jsdom which the Porsche Design System relies on.
+**Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with a PorscheDesignSystemProvider in order to avoid exceptions.
+For more information please [read further](https://designsystem.porsche.com/latest/#/start-coding/react).
+
+---
+
+## Vanilla JS
+
+#### Integration of Vanilla JS components
+With `v1.x` of the Porsche Design System you've had to copy all needed JS files of `@porsche-design-system/components-js` into your target directory and include the ES5 and ESM loader snippet.
+Now you only need to copy one `index.js` file and initialize the Porsche Design System like in the example below:
+
+```diff
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <title>Porsche Design System</title>
+-     <script nomodule src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-design-system/porsche-design-system.js"></script>
+-     <script type="module" src="PATH/TO/PACKAGE/@porsche-design-system/components-js/dist/porsche-design-system/porsche-design-system.esm.js"></script>
++     <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
+    </head>
+    <body>
++     <script type="text/javascript">
++       porscheDesignSystem.load();
++     </script>
+      <p-headline variant="headline-1">Some text</p-headline>
+    </body>
+  </html>
+```
+For advanced usage please [read further](https://designsystem.porsche.com/latest/#/start-coding/vanilla-js).
+
+---
+
+## Next.js and Gatsby
+
+With the current v2.0.0 release we do not support SSR and you need to stick to `v1.5.x`. 
+SSR support can be expected with the next minor release.
+
+---
+
 #### Added
 - Link support for `Marque`
 - Sizing options `'responsive' | 'small' | 'medium'` for `Marque`
 
 #### Changed
-- Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix 
+- Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix
+- Hide up/down spin button when using **Text Field** with `type="number"` in Firefox
 
 #### Fixed
 - Unhandled exception in `Select Wrapper` if `selected` and `disabled` attributes are set on the same option
-- Angular: typings 
+- Angular: typings
 
 ### [2.0.0-alpha.13] - 2021-01-26
 

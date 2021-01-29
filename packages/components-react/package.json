@@ -59,7 +59,7 @@
     "jest": "^26.6.3",
     "puppeteer": "~5.5.0",
     "react-scripts": "^4.0.0",
-    "rollup": "^2.38.0",
+    "rollup": "^2.38.1",
     "rollup-plugin-polyfill": "^3.0.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",

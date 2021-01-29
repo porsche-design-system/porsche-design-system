@@ -56,6 +56,10 @@
   transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 }
 
+::slotted(input[type='number']) {
+  -moz-appearance: textfield !important; // hides up/down spin button for Firefox
+}
+
 // Focus
 ::slotted(input:focus) {
   outline-color: $p-color-neutral-contrast-medium !important;
