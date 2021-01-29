@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'p-tabs-item',
   styleUrl: 'tabs-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class TabsItem {
   /** Defines the label used in tabs. */

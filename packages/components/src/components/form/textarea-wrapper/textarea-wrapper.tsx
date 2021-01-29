@@ -1,18 +1,19 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  setAriaAttributes,
 } from '../../../utils';
-import { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-textarea-wrapper',
   styleUrl: 'textarea-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class TextareaWrapper {
   @Element() public host!: HTMLElement;
@@ -36,17 +37,25 @@ export class TextareaWrapper {
   @State() private readonly: boolean;
 
   private textarea: HTMLTextAreaElement;
+  private textareaObserver: MutationObserver;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setTextarea();
-    this.setAriaAttributes();
     this.setState();
-    this.bindStateListener();
+    this.initMutationObserver();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
     this.setAriaAttributes();
+  }
+
+  public disconnectedCallback(): void {
+    this.textareaObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -54,25 +63,25 @@ export class TextareaWrapper {
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
       [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('textarea-wrapper__description-text')]: true,
       [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
         'hidden',
-        'visible'
-      ])
+        'visible',
+      ]),
     };
     const fakeTextareaClasses = {
       [prefix('textarea-wrapper__fake-textarea')]: true,
       [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
       [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly
+      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly,
     };
     const messageClasses = {
       [prefix('textarea-wrapper__message')]: true,
-      [prefix(`textarea-wrapper__message--${this.state}`)]: true
+      [prefix(`textarea-wrapper__message--${this.state}`)]: true,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
@@ -111,27 +120,25 @@ export class TextareaWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!this.host.querySelector('[slot="description"]');
-  }
-
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
+    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
   }
 
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.textarea.getAttribute('required') !== null;
+    return getAttribute(this.textarea, 'required') !== null;
   }
 
   private setTextarea(): void {
-    this.textarea = this.host.querySelector('textarea');
+    this.textarea = getHTMLElement(this.host, 'textarea');
   }
 
   /*
@@ -140,19 +147,11 @@ export class TextareaWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      const messageOrDescription = this.message || this.description;
-      this.textarea.setAttribute(
-        'aria-label',
-        `${this.label}${messageOrDescription ? `. ${messageOrDescription}` : ''}`
-      );
-    }
-
-    if (this.state === 'error') {
-      this.textarea.setAttribute('aria-invalid', 'true');
-    } else {
-      this.textarea.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.textarea, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   private setState = (): void => {
@@ -164,9 +163,14 @@ export class TextareaWrapper {
     this.textarea.focus();
   };
 
-  private bindStateListener(): void {
-    transitionListener(this.textarea, 'border-top-color', this.setState);
-  }
+  private initMutationObserver = (): void => {
+    this.textareaObserver = new MutationObserver((): void => {
+      this.setState();
+    });
+    this.textareaObserver.observe(this.textarea, {
+      attributeFilter: ['disabled', 'readonly'],
+    });
+  };
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();

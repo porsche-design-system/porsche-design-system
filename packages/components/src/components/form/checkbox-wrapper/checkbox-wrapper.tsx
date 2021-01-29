@@ -1,18 +1,20 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  BreakpointCustomizable,
+  getAttribute,
+  getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
-  transitionListener
+  setAriaAttributes,
+  transitionListener,
 } from '../../../utils';
-import { FormState } from '../../../types';
+import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
   tag: 'p-checkbox-wrapper',
   styleUrl: 'checkbox-wrapper.scss',
-  shadow: true
+  shadow: true,
 })
 export class CheckboxWrapper {
   @Element() public host!: HTMLElement;
@@ -35,12 +37,15 @@ export class CheckboxWrapper {
 
   private input: HTMLInputElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.setInput();
-    this.setAriaAttributes();
     this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentDidLoad(): void {
+    this.setAriaAttributes();
   }
 
   public componentDidUpdate(): void {
@@ -53,20 +58,20 @@ export class CheckboxWrapper {
       [prefix('checkbox-wrapper__fake-checkbox')]: true,
       [prefix('checkbox-wrapper__fake-checkbox--checked')]: this.checked || this.indeterminate,
       [prefix('checkbox-wrapper__fake-checkbox--disabled')]: this.disabled,
-      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none',
     };
     const iconClasses = {
       [prefix('checkbox-wrapper__icon')]: true,
-      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate
+      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate,
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
       [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
-      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible'])
+      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
       [prefix('checkbox-wrapper__message')]: true,
-      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none'
+      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
@@ -101,23 +106,21 @@ export class CheckboxWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!this.host.querySelector('[slot="label"]');
-  }
-
-  private get isMessageDefined(): boolean {
-    return !!this.message || !!this.host.querySelector('[slot="message"]');
+    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
   }
 
   private get isMessageVisible(): boolean {
-    return ['success', 'error'].includes(this.state) && this.isMessageDefined;
+    return (
+      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
+    );
   }
 
   private get isRequired(): boolean {
-    return this.input.getAttribute('required') !== null;
+    return getAttribute(this.input, 'required') !== null;
   }
 
   private setInput(): void {
-    this.input = this.host.querySelector('input[type="checkbox"]');
+    this.input = getHTMLElement(this.host, 'input[type="checkbox"]');
   }
 
   /*
@@ -126,24 +129,18 @@ export class CheckboxWrapper {
    * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
    */
   private setAriaAttributes(): void {
-    if (this.label) {
-      this.input.setAttribute('aria-label', `${this.label}${this.message ? `. ${this.message}` : ''}`);
-    }
-
-    if (this.state === 'error') {
-      this.input.setAttribute('aria-invalid', 'true');
-    } else {
-      this.input.removeAttribute('aria-invalid');
-    }
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message,
+      state: this.state,
+    });
   }
 
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out
-     * of the box.
-     * also we don't want to click to the input, if a link is
-     * clicked.
+     * for real shadow dom, else the native behaviour works out of the box.
+     * also we don't want to click to the input, if a link is clicked.
      */
     if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
       this.input.focus();

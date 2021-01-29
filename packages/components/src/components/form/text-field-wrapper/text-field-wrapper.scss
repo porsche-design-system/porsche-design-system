@@ -53,7 +53,11 @@
   line-height: p-calculate-line-height($p-font-size-small) !important;
   text-indent: 0 !important;
   color: $p-color-default !important;
-  transition: color $p-animation-hover-duration $p-animation-hover-bezier, border-top-color 1ms linear !important; // used for transitionend event listener;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
+}
+
+::slotted(input[type='number']) {
+  -moz-appearance: textfield !important; // hides up/down spin button for Firefox
 }
 
 // Focus
@@ -61,11 +65,11 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([state="success"]) ::slotted(input:focus) {
+:host([state='success']) ::slotted(input:focus) {
   outline-color: $p-color-notification-success !important;
 }
 
-:host([state="error"]) ::slotted(input:focus) {
+:host([state='error']) ::slotted(input:focus) {
   outline-color: $p-color-notification-error !important;
 }
 
@@ -74,13 +78,13 @@
   outline-color: transparent !important;
 }
 
-:host([state="success"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
-:host([state="error"]) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
+:host([state='success']) .#{$p-global-class-prefix}text-field-wrapper__button:focus,
+:host([state='error']) .#{$p-global-class-prefix}text-field-wrapper__button:focus {
   outline-offset: -5px !important;
 }
 
-::slotted(input[type="search"]),
-::slotted(input[type="password"]) {
+::slotted(input[type='search']),
+::slotted(input[type='password']) {
   padding-right: 3rem !important;
 }
 
@@ -88,7 +92,6 @@
 ::slotted(input:not(:disabled):read-only) {
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
-  border-top-color: rgba(255, 255, 255, 0.01) !important;
   color: $p-color-neutral-contrast-medium !important;
 }
 
@@ -96,7 +99,6 @@
 ::slotted(input:disabled) {
   border-width: 0 !important;
   padding: p-px-to-rem(12px) !important;
-  border-top-color: rgba(255, 255, 255, 0.02) !important;
   color: $p-color-state-disabled !important;
   -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;

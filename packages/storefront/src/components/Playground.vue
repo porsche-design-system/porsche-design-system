@@ -13,7 +13,8 @@
         'example--height-fixed': mergedConfig.height === 'fixed',
         'example--spacing-inline': mergedConfig.spacing === 'inline',
         'example--spacing-block': mergedConfig.spacing === 'block',
-        'example--spacing-block-small': mergedConfig.spacing === 'block-small'
+        'example--spacing-block-small': mergedConfig.spacing === 'block-small',
+        'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
       }"
     >
       <div v-if="isSlotSet" class="configurator">
@@ -40,20 +41,22 @@
     colorScheme: 'default' | 'surface';
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
+    overflowX: 'auto' | 'visible';
   };
 
   export const initialConfig: PlaygroundConfig = {
     themeable: false,
     colorScheme: 'default',
     height: 'auto',
-    spacing: 'none'
+    spacing: 'none',
+    overflowX: 'auto',
   };
 
   @Component({
     components: {
       CodeBlock,
-      CodeEditor
-    }
+      CodeEditor,
+    },
   })
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
@@ -116,6 +119,10 @@
         border-color: $p-color-theme-dark-background-surface;
         background-color: $p-color-theme-dark-background-surface;
       }
+    }
+
+    &--overflow-x-visible {
+      overflow-x: visible;
     }
 
     // Child Layout "height"

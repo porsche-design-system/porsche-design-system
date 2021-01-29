@@ -306,7 +306,7 @@
     validateForm,
     ValidationBag,
     getInitialErrors,
-    getFirstErrorKey
+    getFirstErrorKey,
   } from '../../../utils';
 
   const initialData = {
@@ -324,7 +324,7 @@
     date: ('' as unknown) as Date,
     mileage: ('' as unknown) as number,
     dealer: '',
-    privacy: false
+    privacy: false,
   };
 
   type FormModel = typeof initialData;
@@ -347,9 +347,7 @@
         title: string(),
         firstName: string().required('Please enter your name'),
         lastName: string().required('Please enter your last name'),
-        email: string()
-          .email('Email address seems invalid')
-          .required('Please enter your email address'),
+        email: string().email('Email address seems invalid').required('Please enter your email address'),
         phone: string(),
         vin: string().required('We can’t find the vehicle. Please check your entry'),
         gear: string().required('Please tell us the type of your vehicles transmission'),
@@ -362,8 +360,8 @@
         dealer: string().required('Please choose a Porsche Dealer of your choice'),
         privacy: boolean()
           .required('Please accept our privacy policy so that we can process your request')
-          .oneOf([true], 'Please accept our privacy policy so that we can process your request')
-      })
+          .oneOf([true], 'Please accept our privacy policy so that we can process your request'),
+      }),
     };
 
     onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {

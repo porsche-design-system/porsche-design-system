@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  componentsReady, PButton
-} from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
+import { componentsReady, PButton } from '@porsche-design-system/components-react';
+import { renderWithProvider } from '../helpers';
 
 const Sample = (): JSX.Element => {
   return (
@@ -14,8 +12,7 @@ const Sample = (): JSX.Element => {
 
 describe('PButton', () => {
   it('should have initialized shadow dom', async () => {
-    const { getByTestId } = render(<Sample />);
-
+    const { getByTestId } = renderWithProvider(<Sample />);
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();

@@ -5,20 +5,20 @@ import './styles.css';
 const routes: RouteProps[] = [
   {
     path: '/js-variables',
-    component: JsVariables
+    component: JsVariables,
   },
   {
     path: '/js-focus',
-    component: JsFocus
+    component: JsFocus,
   },
   {
     path: '/scss-variables',
-    component: ScssVariables
+    component: ScssVariables,
   },
   {
     path: '/scss-focus',
-    component: ScssFocus
-  }
+    component: ScssFocus,
+  },
 ];
 
 export const App = (): JSX.Element => (

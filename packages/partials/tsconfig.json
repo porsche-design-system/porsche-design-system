@@ -6,6 +6,5 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src"],
-  "exclude": ["./src/font-loader.ts"]
+  "include": ["./src"]
 }

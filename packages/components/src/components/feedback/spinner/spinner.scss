@@ -20,11 +20,9 @@ $p-spinner-size-large: p-px-to-rem(104px);
   animation: rotate 1s linear infinite; // IE11 fallback
   animation-duration: var(--p-animation-duration__spinner, 2s);
 
-  &--theme-light {
-    #{$bem-block}__fg,
-    #{$bem-block}__bg {
-      stroke: $p-color-neutral-contrast-high;
-    }
+  #{$bem-block}__fg,
+  #{$bem-block}__bg {
+    stroke: $p-color-neutral-contrast-high;
   }
 
   &--theme-dark {
@@ -55,7 +53,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
       height: inherit;
     }
 
-    @include p-media-query("xs") {
+    @include p-media-query('xs') {
       &-small-xs {
         width: $p-spinner-size-small;
         height: $p-spinner-size-small;
@@ -77,7 +75,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
       }
     }
 
-    @include p-media-query("s") {
+    @include p-media-query('s') {
       &-small-s {
         width: $p-spinner-size-small;
         height: $p-spinner-size-small;
@@ -99,7 +97,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
       }
     }
 
-    @include p-media-query("m") {
+    @include p-media-query('m') {
       &-small-m {
         width: $p-spinner-size-small;
         height: $p-spinner-size-small;
@@ -121,7 +119,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
       }
     }
 
-    @include p-media-query("l") {
+    @include p-media-query('l') {
       &-small-l {
         width: $p-spinner-size-small;
         height: $p-spinner-size-small;
@@ -143,7 +141,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
       }
     }
 
-    @include p-media-query("xl") {
+    @include p-media-query('xl') {
       &-small-xl {
         width: $p-spinner-size-small;
         height: $p-spinner-size-small;
@@ -180,7 +178,7 @@ $p-spinner-size-large: p-px-to-rem(104px);
   &__fg {
     transform-origin: 0 0;
     animation: rotate var(--p-animation-duration__spinner, 2s) linear infinite,
-    dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
+      dash var(--p-animation-duration__spinner, 2s) ease-in-out infinite;
     stroke-dasharray: 40, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
