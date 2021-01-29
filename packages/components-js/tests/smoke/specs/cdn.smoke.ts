@@ -1,4 +1,3 @@
-import { setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
 import {
   FONTS_CDN_BASE_URL,
@@ -11,9 +10,10 @@ import {
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
-import { browser } from '../config';
+import { COMPONENT_CHUNKS_MANIFEST } from '@porsche-design-system/shared';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../../../shared/src';
+import { setContentWithDesignSystem } from '../helpers';
+import { browser } from '../config';
 
 describe('cdn', () => {
   let page: Page;
