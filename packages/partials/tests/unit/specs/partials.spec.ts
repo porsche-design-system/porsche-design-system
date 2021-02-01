@@ -197,24 +197,27 @@ describe('getComponentChunks', () => {
 
   describe('url with tag', () => {
     const linkStartsWith = '<link rel=preload href=';
+    const linkEndsWithCore = 'as=script crossorigin>';
     const linkEndsWith = 'as=script>';
 
     it('should return core link by default', () => {
       const result = getComponentChunks();
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
-      expect(result.endsWith(linkEndsWith)).toBeTruthy();
+      expect(result.endsWith(linkEndsWithCore)).toBeTruthy();
       expect(result).toContain(cdnFontUrlWithoutHash + 'v');
     });
 
     it('should return default core China CDN link', () => {
       const result = getComponentChunks({ cdn: 'cn' });
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
-      expect(result.endsWith(linkEndsWith)).toBeTruthy();
+      expect(result.endsWith(linkEndsWithCore)).toBeTruthy();
       expect(result).toContain(cdnFontUrlCnWithoutHash + 'v');
     });
 
     it('should return multiple links', () => {
       const result = getComponentChunks({ components: ['p-button', 'p-button-pure', 'p-marque'] });
+      expect(result.includes(linkEndsWithCore)).toBeTruthy();
+      expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result.match(/><link/g).length).toBe(3);
       expect(result).toContain(cdnFontUrlWithoutHash + 'v');
     });
@@ -222,6 +225,8 @@ describe('getComponentChunks', () => {
     TAG_NAMES.forEach((tagName) => {
       it(`should return core and chunk link for ['${tagName}']`, () => {
         const result = getComponentChunks({ components: [tagName] });
+        expect(result.includes(linkEndsWithCore)).toBeTruthy();
+        expect(result.endsWith(linkEndsWith)).toBeTruthy();
         expect(result.match(/><link/g).length).toBe(1);
         expect(result).toContain(cdnFontUrlWithoutHash + 'v');
       });
