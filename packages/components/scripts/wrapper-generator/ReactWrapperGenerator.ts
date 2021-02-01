@@ -15,6 +15,8 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
     const reactImports = [
+      'ForwardedRef',
+      'forwardRef',
       'HTMLAttributes',
       'useRef',
       ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
@@ -22,6 +24,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
     const providerImports = [
+      'syncRef',
       'usePrefix',
       'useMergedClass',
       ...(hasEventProps ? ['useEventCallback'] : []),
@@ -64,7 +67,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ),
       `const Tag = usePrefix('${component}');`,
     ];
-    const componentHooks = componentHooksArr.join('\n  ');
+    const componentHooks = componentHooksArr.join('\n    ');
 
     const componentPropsArr: string[] = [
       '...rest',
@@ -72,19 +75,24 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
       ),
       'class: useMergedClass(elementRef, className)',
-      'ref: elementRef',
+      'ref: syncRef(ref, elementRef)',
     ];
 
     const componentProps = `const props = {
-    ${componentPropsArr.join(',\n    ')}
-  };`;
+      ${componentPropsArr.join(',\n      ')}
+    };`;
 
-    return `export const ${pascalCase(component)} = (${wrapperProps}: ${wrapperPropsType}): JSX.Element => {
-  ${componentHooks}
+    return `export const ${pascalCase(component)} = forwardRef(
+  (
+    ${wrapperProps}: ${wrapperPropsType},
+    ref: ForwardedRef<HTMLElement>
+  ): JSX.Element => {
+    ${componentHooks}
 
-  ${componentProps}
+    ${componentProps}
 
-  return <Tag {...props} />;
-};`;
+    return <Tag {...props} />;
+  }
+);`;
   }
 }

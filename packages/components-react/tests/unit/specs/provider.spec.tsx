@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { PButton, PorscheDesignSystemProvider } from '../../../projects/components-wrapper/src';
 import { getMergedClassName } from '../../../projects/components-wrapper/src/provider';
 import { testSnapshot } from '../helpers';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import * as pds from '@porsche-design-system/components-js';
 
@@ -109,4 +109,57 @@ describe('getMergedClassName', () => {
       expect(result).toBe(expected);
     }
   );
+});
+
+describe('syncRefs', () => {
+  const INITIAL_CLASS_NAME = 'initialClass';
+  const CLASS_NAME = 'someClass1 hydrated';
+
+  type Props = { isRefCallback?: boolean };
+  const Sample = ({ isRefCallback }: Props): JSX.Element => {
+    const buttonRef = useRef(undefined);
+
+    return (
+      <PorscheDesignSystemProvider>
+        <PButton
+          className={INITIAL_CLASS_NAME}
+          data-testid="button"
+          ref={
+            isRefCallback
+              ? (el) => {
+                  buttonRef.current = el;
+                }
+              : buttonRef
+          }
+          onClick={() => {
+            buttonRef.current.className = CLASS_NAME;
+          }}
+        >
+          Some Button
+        </PButton>
+      </PorscheDesignSystemProvider>
+    );
+  };
+
+  it('should sync refs if ref is set directly', () => {
+    const { getByTestId } = render(<Sample />);
+    const button = getByTestId('button');
+
+    expect(button.className).toBe(INITIAL_CLASS_NAME);
+
+    userEvent.click(button);
+
+    expect(button.className).toBe(CLASS_NAME);
+  });
+
+  it('should sync refs if ref is set as callback', () => {
+    const { getByTestId } = render(<Sample isRefCallback />);
+    const button = getByTestId('button');
+
+    expect(button.className).toBe(INITIAL_CLASS_NAME);
+
+    userEvent.click(button);
+
+    expect(button.className).toBe(CLASS_NAME);
+  });
 });
