@@ -197,7 +197,7 @@ describe('getComponentChunks', () => {
 
   describe('url with tag', () => {
     const linkStartsWith = '<link rel=preload href=';
-    const linkEndsWith = 'as=script crossorigin>';
+    const linkEndsWith = 'as=script>';
 
     it('should return core link by default', () => {
       const result = getComponentChunks();
