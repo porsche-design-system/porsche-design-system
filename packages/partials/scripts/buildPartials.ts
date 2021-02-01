@@ -161,7 +161,7 @@ type ComponentChunksOptionsWithoutTags = ComponentChunksOptions & {
   withoutTags?: true;
 };`;
 
-  const link = minifyHTML('<link rel="preload" href="$URL" as="script">').replace('$URL', '${link}');
+  const link = minifyHTML('<link rel="preload" href="$URL" as="script">').replace('$URL', '${url}');
 
   const func = `export function getComponentChunks(opts?: ComponentChunksOptionsWithTags): string;
 export function getComponentChunks(opts?: ComponentChunksOptionsWithoutTags): string[];
@@ -177,7 +177,10 @@ export function getComponentChunks(opts?: ComponentChunksOptions): string | stri
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
   const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
-  const links = urls.map((link) => \`${link}\`).join('');
+  const links = urls
+    .map((url) => \`${link}\`)
+    .map((link, idx) => idx === 0 ? link.replace('>', ' crossorigin>') : link) // core needs crossorigin attribute
+    .join('');
 
   return withoutTags ? urls : links;
 };`;
