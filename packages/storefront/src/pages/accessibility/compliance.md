@@ -7,7 +7,7 @@ Due to the fact that the internet provides global access to information, stores,
 In some countries (especially in the U.S.) website owners are **going to get sued** by lawyers which complain about the lack of (basic) accessibility support. 
 There are a lot of [country specific standards](https://www.w3.org/WAI/policies/) and legislation which cannot be covered by only one ruleset mostly known as the Web Content Accessibility Guidelines [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) from the World Wide Web Consortium [W3C](https://www.w3.org/). 
 
-But we can **reduce risk of legal entanglement** (receiving demand letter/getting sued), by following our **[accessibility guidelines and best practices](#/accessibility/guidelines)**.
+But we can **reduce risk of legal entanglement** (receiving demand letter/getting sued), by following our **[accessibility workflow](#/accessibility/workflow)**.
 
 --- 
 
@@ -47,9 +47,9 @@ In China, the old standard [Law on the Protection of Persons with Disabilities](
 To improve the support of accessibility in general, start by observing worldwide regulations (W3C), as individual countries tend to base their regulations on global agreements. 
 Therefore the [Web Content Accessibility Guidelines 2.0 AA](https://www.w3.org/TR/WCAG20/) are a good starting point which can be augmented by [Article 9 on Accessibility](https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/article-9-accessibility.html) from the Convention on the Rights of Persons with Disabilities (CRPD).
 
-But as you might see, all these guidelines have one pitfall: they are very hard to read and difficult to interpret. Therefore we have developed a basic set of rules and guidelines which is the **most effective way to maximize compliance** and should help designers and developers to implement and support Web Accessibility in their applications.
+But as you might see, all these guidelines have one pitfall: they are very hard to read and difficult to interpret. Therefore we have developed a stepwise accessibility workflow which is the **most effective way to maximize compliance** and should help designers and developers to implement and support Web Accessibility in their applications.
 
-<p-link href="#/accessibility/guidelines">Web Accessibility Guidelines</p-link>
+<p-link href="#/accessibility/workflow">Web Accessibility Workflow</p-link>
 
 **But always keep in mind:** Accessibility is not the fulfilment of a fixed ruleset or following a bunch of technical requirements. Instead, it's more about a mindset which should be a fixed part at the beginning of a project and face every possible aspect like strategy, conception, ux, ui, design, development, performance, etc. 
 
