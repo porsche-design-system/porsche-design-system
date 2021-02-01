@@ -1,13 +1,5 @@
 # Workflow
 
-## Introduction
-As Porsche, we always want the best experience for everyone, regardless if the user **drives already a 911** or **wants to get information about a 911** and is therefore visiting our digital platforms.
-To fulfill all kinds of experiences we have to build digital products which are usable and accessible. But how can we achieve a better experience for users with disabilities? Where do teams get started if they are not experienced in developing accessible products? 
-
-As part of the Porsche UX Operations, we like the approach of helping people to help themselves. That's why we want to give **guidance how to build** digital products with accessibility in mind from scratch or enhance the accessibility on current projects which are already rolled out.
-
---- 
-
 ## The 5 principles for developing accessible digital products
 
 <p-tabs size="medium">
@@ -176,7 +168,9 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
   <p-tabs-item label="3: Build">
     <p-headline variant="headline-3">Building Accessible Software</p-headline>
     <p-text>Building accessible software might be hard, especially if the user interface is complex comes with many interactions. Therefore it is substantial that every discipline is working together and sharing their findings with the whole team.</p-text>
-    <p-text>Do not expect that accessibility is an one time effort, it is more an iterative process of constantly learning, building, testing and hopefully improving accessibility in your product.</p-text>
+    <p-headline variant="headline-5" tag="h4">Level of Web Accessibility we need to support</p-headline>
+    <p-text>As a <strong>global acting company</strong> Porsche has to fulfill certain accessibility criteria which can be different from country to country. To grant a well balanced and global level of accessibility, we recommend making all web applications compliant with the <strong>Web Content Accessibility Guidelines 2.1</strong> <a href="https://www.w3.org/TR/WCAG21/">WCAG-2.1</a> at <strong>level AA</strong>.</p-text>
+    <p-text>Do not expect that accessibility is an one time effort, it is more an iterative process of constantly learning, building, testing and hopefully improving accessibility in your product. Building accessible software has to be seen as a whole concept which concerns many disciplines:</p-text>
     <p-headline variant="headline-4">Design</p-headline>
     <p-text-list>
       <p-text-list-item>
@@ -261,7 +255,10 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
         <strong>Structure contents</strong> in a clear, hierarchical and meaningful way.
       </p-text-list-item>
       <p-text-list-item>
-        Take care that textual content ist short, understandable and easy to read.
+        For every page define a unique and descriptive <strong>Page Title</strong>.
+      </p-text-list-item>
+      <p-text-list-item>
+        Take care that textual content ist short, <strong>understandable</strong> and easy to read.
       </p-text-list-item>
       <p-text-list-item>
         Provide <strong>textual alternatives</strong> to images, videos, charts and every content which transports meaning without text.
@@ -304,84 +301,101 @@ As part of the Porsche UX Operations, we like the approach of helping people to 
     </p-text>
     <p-headline variant="headline-4">Top 5</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Add <strong>descriptive alt text</strong> on images to accurately reflect the purpose of the image and/or provide an accurate description.</span>
+      <span slot="label">Does <strong>descriptive alt text</strong> on images accurately reflects the purpose of the image and/or provides an accurate description?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Make your application is <strong>keyboard accessible</strong> (navigating with tab/enter/arrow key).</span>
+      <span slot="label">Is your application fully <strong>keyboard accessible</strong> and is the focus order in a logical sequence (navigable with tab/enter/arrow key)?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Respect <strong>color contrast</strong> ratio of 4.5:1.</span>
+      <span slot="label">Is the <strong>color contrast</strong> ratio of 4.5:1  on fore- and backgrounds respected?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Support <strong>scalability of text</strong> and overall content.</span>
+      <span slot="label">Is <strong>scalability of text</strong> (at least up to 200%) and overall content supported?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label"><strong>Test your application</strong> with an accessibility checker tool (Browser Plugin) like LightHouse, AXE, WAVE and <strong>fix all errors and warnings</strong>.</span>
+      <span slot="label">Test your application with an accessibility checker tool (Browser Plugin) like LightHouse, AXE, WAVE. Are all <strong>errors and warnings</strong> fixed?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Structure</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Organize content using <strong>semantic structure</strong> so assistive technologies, search engines, and website visitors understand the page hierarchy.</span>
+      <span slot="label">Is the content <strong>semantically structured</strong> so assistive technologies, search engines, and website visitors understand the page hierarchy and type of contents?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Use <strong>headlines</strong> as structuring element (do not break headline hierarchy).</span>
+      <span slot="label">Are <strong>headlines</strong> used as structuring elements (while not breaking the headline hierarchy)?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Provide a <strong>"Skip Navigation"</strong> link at the top of pages to allow assistive technologies to skip directly to the page’s main content.</span>
+      <span slot="label">Is a <strong>"Skip Navigation"</strong> link at the top of pages provided which allows assistive technologies to skip directly to the page’s main content?</span>
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper>
+      <span slot="label">Are there no logical breaks in the <strong>focus order</strong>?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Text</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Write <strong>page titles</strong> that accurately reflect the topic on the page for better SEO results and improved visitor experience.</span>
+      <span slot="label">Are <strong>page titles</strong> provided which accurately reflect the topic on the page for better SEO results and improved visitor experience?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Add the correct <strong>language attribute</strong> to the document.</span>
+      <span slot="label">Is the correct <strong>language attribute</strong> added to the HTML document?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Always use <strong>short and descriptive text</strong>. Avoid instructions based solely on location or color on the page.</span>
+      <span slot="label">Are textual elements <strong>short, meaningful and descriptive</strong> and are instructions based solely on location or color on the page avoided?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Links and Buttons</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Ensure that <strong>link/button has text that makes sense</strong>, especially when read out of context. Avoid texts like "read more" or "click here". Be specific about where links will lead.</span>
+      <span slot="label">Are <strong>textual labels of links and buttons</strong> written in a meaningful way and describe the link target, especially when read out of context? Are texts like "read more" or "click here" avoided?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Keep link text to <strong>100 characters or less</strong>.</span>
+      <span slot="label">Is link text kept to <strong>100 characters or less</strong>?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Check all your <strong>links to be valid</strong> (not broken).</span>
+      <span slot="label">Are all the <strong>links valid</strong> (not broken)?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Images</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Prevent using <strong>images with text</strong> in them. Be sure image alt text communicates the same information as the text in the image.</span>
+      <span slot="label">Is the usage of <strong>images with text</strong> on it avoided? Does alt text of images communicate the same information as the text in the image?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">When using graphs or diagrams, <strong>include accompanying text</strong> to explain the meaning.</span>
+      <span slot="label">If graphs or diagrams are used, do they <strong>include accompanying text</strong> to explain the meaning?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Forms</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Every form element should have a corresponding <strong>descriptive label</strong>.</span>
+      <span slot="label">Does every form element has a corresponding <strong>descriptive label</strong>?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Logical parts of the form <strong>should be grouped</strong> by a fieldset/legend structure.</span>
+      <span slot="label">Are logical parts of the form <strong>grouped</strong> by a fieldset/legend structure?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Provide <strong>error messages</strong> which should describe the error and the solution.</span>
+      <span slot="label">Do <strong>error messages</strong> describe the error and the solution?</span>
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-headline variant="headline-4">Video/Motion/Timing</p-headline>
+    <p-checkbox-wrapper>
+      <span slot="label">Are <strong>closed captions</strong> for videos with sound provided?</span>
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper>
+      <span slot="label">Are <strong>time constraints</strong> for user interactions avoided?</span>
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper>
+      <span slot="label">Are possibilities to <strong>pause/stop/hide</strong> content that blinks/scrolls/moves provided?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
   </p-tabs-item>
