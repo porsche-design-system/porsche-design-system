@@ -161,7 +161,7 @@ type ComponentChunksOptionsWithoutTags = ComponentChunksOptions & {
   withoutTags?: true;
 };`;
 
-  const link = minifyHTML('<link rel="prefetch" href="$URL" crossorigin>').replace('$URL', '${link}');
+  const link = minifyHTML('<link rel="preload" href="$URL" as="script" crossorigin>').replace('$URL', '${link}');
 
   const func = `export function getComponentChunks(opts?: ComponentChunksOptionsWithTags): string;
 export function getComponentChunks(opts?: ComponentChunksOptionsWithoutTags): string[];
