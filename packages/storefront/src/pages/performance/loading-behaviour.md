@@ -183,3 +183,62 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
   "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weight: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
 }
 ``` 
+
+### Prefetch component chunks
+
+Porsche Design System components are loaded dynamically from a CDN as soon as they are used for the first time.  
+This results in a waterfall like loading behaviour where your application is bootstrapped first, then loads the Porsche Design System Core and when any component is rendered the corresponding component chunk is loaded afterwards.  
+This can be optimized by fetching used chunks in parallel while the application is being bootstrapped.
+
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getComponentChunks()` which needs to be imported into the `<head>` of your `index.html`.
+
+##### Supported options:
+- **components**: ('p-banner' | 'p-button' | 'p-button-pure' | 'p-checkbox-wrapper' | 'p-content-wrapper' | 'p-divider' | 'p-fieldset-wrapper' | 'p-flex' | 'p-flex-item' | 'p-grid' | 'p-grid-item' | 'p-headline' | 'p-icon' | 'p-link' | 'p-link-pure' | 'p-link-social' | 'p-marque' | 'p-modal' | 'p-pagination' | 'p-radio-button-wrapper' | 'p-select-wrapper' | 'p-spinner' | 'p-tabs' | 'p-tabs-bar' | 'p-tabs-item' | 'p-text' | 'p-text-field-wrapper' | 'p-text-list' | 'p-text-list-item' | 'p-textarea-wrapper')[] = []
+- **cdn:** 'auto' | 'cn' = 'auto'
+- **withoutTags**: boolean = false
+
+By default, our core is always prefetched when using this partial.  
+
+#### Example usage with dynamic template
+
+The example shows how to implement the partial in a webpack (or similar) project.
+
+```html
+// index.html
+
+<head>
+  // Using template syntax (make sure to preload only components chunks which are really needed initially!)
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ components: ['p-button', 'p-marque'] }) %>
+</head>
+
+<head>
+  // force using China CDN
+  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ cdn: 'cn' }) %>
+</head>
+
+<head>
+  // without link tags
+  <link rel="prefetch" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ withoutTags: true, components: ['p-button'] })[0] %>" crossorigin>
+</head>
+```
+
+#### Alternative: Example usage with placeholder
+
+If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
+
+```html
+// index.html
+
+<head>
+  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_CHUNKS-->
+</head>
+``` 
+
+```json
+// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
+
+"scripts": {
+  "prestart": "yarn replace",
+  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_CHUNKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunks({ components: [\"p-button\", \"p-marque\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+}
+``` 
