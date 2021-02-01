@@ -196,8 +196,8 @@ describe('getComponentChunks', () => {
   const cdnFontUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/components/${chunkBaseName}.`;
 
   describe('url with tag', () => {
-    const linkStartsWith = '<link rel=prefetch href=';
-    const linkEndsWith = 'crossorigin>';
+    const linkStartsWith = '<link rel=preload href=';
+    const linkEndsWith = 'as=script crossorigin>';
 
     it('should return core link by default', () => {
       const result = getComponentChunks();
