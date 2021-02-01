@@ -150,7 +150,7 @@ const generateComponentChunksPartial = (): string => {
   const types = `type TagName = ${tagNamesTypeLiteral} | 'core';
 
 type ComponentChunksOptions = {
-  components?: TagName[];
+  components?: Exclude<TagName, 'core'>[]; // core is included by default in array below
   cdn?: Cdn;
   withoutTags?: boolean;
 };
