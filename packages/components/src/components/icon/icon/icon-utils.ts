@@ -2,7 +2,7 @@
  * TODO: Cache is shared between tests and never cleared. Evaluate solution.
  * */
 
-import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 
