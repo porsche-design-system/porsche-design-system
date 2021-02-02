@@ -49,4 +49,6 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
 export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): boolean =>
   getAttribute(el, 'required') !== null;
 
+export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
+
 // TODO: add addEventListener and removeEventListener

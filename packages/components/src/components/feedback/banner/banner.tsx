@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles, getHTMLElement } from '../../../utils';
+import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 
 @Component({
@@ -82,12 +82,12 @@ export class Banner {
             <PrefixedTagNames.pIcon name={this.state === 'error' ? 'exclamation' : 'warning'} class={iconClasses} />
           )}
           <div class={contentClasses}>
-            {this.isTitleDefined && (
+            {hasNamedSlot(this.host, 'title') && (
               <PrefixedTagNames.pHeadline variant="headline-5" id={bannerLabelId} class={titleClasses}>
                 <slot name="title" />
               </PrefixedTagNames.pHeadline>
             )}
-            {this.isDescriptionDefined && (
+            {hasNamedSlot(this.host, 'description') && (
               <PrefixedTagNames.pText id={bannerDescriptionId} class={descriptionClasses}>
                 <slot name="description" />
               </PrefixedTagNames.pText>
@@ -122,14 +122,6 @@ export class Banner {
     this.host.classList.add(prefix('banner--close'));
     setTimeout(() => this.host.remove(), 1000);
   };
-
-  private get isTitleDefined(): boolean {
-    return !!getHTMLElement(this.host, '[slot="title"]');
-  }
-
-  private get isDescriptionDefined(): boolean {
-    return !!getHTMLElement(this.host, '[slot="description"]');
-  }
 
   private addSlottedStyles(): void {
     const tagName = this.host.tagName.toLowerCase();

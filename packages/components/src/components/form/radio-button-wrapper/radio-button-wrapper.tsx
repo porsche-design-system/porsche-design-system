@@ -3,6 +3,7 @@ import {
   getClosestHTMLElement,
   getHTMLElement,
   getPrefixedTagNames,
+  hasNamedSlot,
   insertSlottedStyles,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
@@ -95,13 +96,11 @@ export class RadioButtonWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   private setInput(): void {

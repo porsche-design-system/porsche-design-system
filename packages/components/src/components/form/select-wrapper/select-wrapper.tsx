@@ -4,6 +4,7 @@ import {
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
+  hasNamedSlot,
   insertSlottedStyles,
   isRequired,
   isTouchDevice,
@@ -226,17 +227,15 @@ export class SelectWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
+    return !!this.description || hasNamedSlot(this.host, 'description');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   /*
