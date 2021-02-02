@@ -258,7 +258,7 @@ export class TabsBar {
       },
       {
         root: this.host,
-        threshold: 0.7,
+        threshold: 0.6,
       }
     );
 
