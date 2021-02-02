@@ -572,7 +572,7 @@ describe('tabs-bar', () => {
           page,
           `
             <div style="width: 300px">
-              <p-tabs-bar size="${size}">
+              <p-tabs-bar size="${size}" active-tab-index="3">
                 <button type="button">Components</button>
                 <button type="button">Sketch Libraries</button>
                 <button type="button">Utilities</button>
