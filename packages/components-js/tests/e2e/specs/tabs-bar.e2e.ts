@@ -547,7 +547,7 @@ describe('tabs-bar', () => {
         expect(await getClassList(actionPrev)).toContain(hiddenClass);
       });
 
-      it(`should have label of prev/next buttons in dom size = ${size}`, async () => {
+      it(`should have label of prev/next buttons in dom for size = ${size}`, async () => {
         await initTabsBar({ size });
 
         const { nextButton, prevButton } = await getPrevNextButton();
@@ -568,6 +568,9 @@ describe('tabs-bar', () => {
       });
 
       it(`should not show next button in edge case scenario for size = ${size}`, async () => {
+        // The <button> elements are styled as inline-block elements and rendered with a bit of extra space.
+        // This causes the trigger of the gradient to be pushed outside of the scrollContainer. It only occurs with
+        // some combinations of letters in the last button element. 'Assets' has proven to be one of them.
         await setContentWithDesignSystem(
           page,
           `
