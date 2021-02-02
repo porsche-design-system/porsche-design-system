@@ -87,7 +87,7 @@ export class Icon {
   private loadIcon = (): Promise<void> => {
     if (this.svgContent) {
       // reset old icon if there is any
-      const el = getShadowRootHTMLElement(this.host, 'i');
+      const el = getShadowRootHTMLElement(this.host, 'span');
       if (el) {
         el.innerHTML = '';
       }
