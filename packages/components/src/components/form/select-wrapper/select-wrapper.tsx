@@ -1,11 +1,11 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
-  getAttribute,
   getClosestHTMLElement,
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
   insertSlottedStyles,
+  isRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -167,7 +167,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {this.isRequired && <span class={prefix('select-wrapper__required')}></span>}
+                {isRequired(this.select) && <span class={prefix('select-wrapper__required')} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -237,10 +237,6 @@ export class SelectWrapper {
     return (
       !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
     );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.select, 'required') !== null;
   }
 
   /*

@@ -1,10 +1,10 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
   handleButtonEvent,
   insertSlottedStyles,
+  isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
@@ -99,7 +99,7 @@ export class TextFieldWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {this.isRequired && <span class={prefix('text-field-wrapper__required')}></span>}
+                {isRequired(this.input) && <span class={prefix('text-field-wrapper__required')} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -154,10 +154,6 @@ export class TextFieldWrapper {
     return (
       !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
     );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.input, 'required') !== null;
   }
 
   private setInput(): void {

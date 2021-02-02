@@ -46,4 +46,7 @@ export const removeAttribute = (el: HTMLElement, attributeName: string): void =>
   el.removeAttribute(attributeName);
 };
 
+export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): boolean =>
+  getAttribute(el, 'required') !== null;
+
 // TODO: add addEventListener and removeEventListener

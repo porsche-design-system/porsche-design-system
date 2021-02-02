@@ -1,9 +1,9 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
+  isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
@@ -82,7 +82,7 @@ export class CheckboxWrapper {
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {this.isRequired && <span class={prefix('checkbox-wrapper__required')}></span>}
+              {isRequired(this.input) && <span class={prefix('checkbox-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeCheckboxClasses}>
@@ -113,10 +113,6 @@ export class CheckboxWrapper {
     return (
       !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
     );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.input, 'required') !== null;
   }
 
   private setInput(): void {
