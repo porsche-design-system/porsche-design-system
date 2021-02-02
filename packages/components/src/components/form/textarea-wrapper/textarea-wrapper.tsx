@@ -1,9 +1,9 @@
 import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
-  getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
   insertSlottedStyles,
+  isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
@@ -92,7 +92,7 @@ export class TextareaWrapper {
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {this.isRequired && <span class={prefix('textarea-wrapper__required')}></span>}
+              {isRequired(this.textarea) && <span class={prefix('textarea-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
           {this.isDescriptionVisible && (
@@ -131,10 +131,6 @@ export class TextareaWrapper {
     return (
       !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
     );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.textarea, 'required') !== null;
   }
 
   private setTextarea(): void {
