@@ -1,5 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
 @mixin p-textarea-wrapper-label-text-visible() {
   position: static;
@@ -162,10 +163,7 @@
   }
 
   &__required {
-    &::after {
-      content: '*';
-      color: $p-color-notification-error;
-    }
+    @include required;
   }
 
   &__description-text {
