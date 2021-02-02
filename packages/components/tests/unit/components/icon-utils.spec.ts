@@ -1,4 +1,4 @@
-import { buildIconUrl, getSvgContent, isUrl } from '../../../src/components/icon/icon/icon-utlis';
+import { buildIconUrl, getSvgContent, isUrl } from '../../../src/components/icon/icon/icon-utils';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
