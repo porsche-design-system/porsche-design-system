@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-utlis';
-import { getShadowRootHTMLElement, isBrowser, isDark, prefix } from '../../../utils';
+import { isBrowser, isDark, prefix } from '../../../utils';
 import type { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
@@ -36,6 +36,13 @@ export class Icon {
 
   private intersectionObserver?: IntersectionObserver;
 
+  @Watch('name')
+  public nameChangeHandler(newValue: IconName, oldValue: IconName) {
+    if (newValue !== oldValue && this.svgContent) {
+      this.svgContent = '';
+    }
+  }
+
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
   }
@@ -58,7 +65,7 @@ export class Icon {
 
     return (
       <Host>
-        <span class={iconClasses} innerHTML={this.svgContent} />
+        <i class={iconClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }
@@ -77,7 +84,6 @@ export class Icon {
           { rootMargin: '50px' }
         );
       }
-
       this.intersectionObserver.observe(this.host);
     } else {
       return this.loadIcon();
@@ -85,15 +91,8 @@ export class Icon {
   }
 
   private loadIcon = (): Promise<void> => {
-    if (this.svgContent) {
-      // reset old icon if there is any
-      const el = getShadowRootHTMLElement(this.host, 'span');
-      if (el) {
-        el.innerHTML = '';
-      }
-    }
-
     const url = buildIconUrl(this.source ?? this.name);
+
     return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
       if (url === buildIconUrl(this.source ?? this.name)) {
