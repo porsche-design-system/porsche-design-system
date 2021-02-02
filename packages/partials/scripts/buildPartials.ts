@@ -11,7 +11,7 @@ import {
   CDN_BASE_PATH_COMPONENTS,
 } from '../../../cdn.config';
 
-const generateSharedStuff = (): string => {
+const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
 
 const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
@@ -193,7 +193,7 @@ const generatePartials = async (): Promise<void> => {
   const targetFile = path.resolve(targetDirectory, 'partials.ts');
 
   const content = [
-    generateSharedStuff(),
+    generateSharedCode(),
     generateFontFaceStylesheetPartial(),
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
