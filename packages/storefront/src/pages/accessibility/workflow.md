@@ -3,7 +3,7 @@
 ## The 5 principles for developing accessible digital products
 
 <p-tabs size="medium">
-  <p-tabs-item label="1: Learn">
+  <p-tabs-item label="1. Learn">
     <p-headline variant="headline-3">What is web accessibility?</p-headline>
     <p-text>
       When websites and web tools are properly designed and coded, people with disabilities can use them. However, currently many sites and tools are developed with <strong>accessibility barriers</strong> that make them difficult or impossible for some people to use.
@@ -107,7 +107,7 @@
       </p-text-list-item>
     </p-text-list>
   </p-tabs-item>
-  <p-tabs-item label="2: Setup">
+  <p-tabs-item label="2. Setup">
     <p-headline variant="headline-3">Integrate accessibility into your agile workflow</p-headline>
     <p-text>If you know the basics and the importance behind accessibility, start with <strong>setting up your team and environments</strong> to effectively implement accessibility improvements into your product.</p-text>
     <p-headline variant="headline-4">Team setup</p-headline>
@@ -165,7 +165,7 @@
       </p-text-list-item>
     </p-text-list>
   </p-tabs-item>
-  <p-tabs-item label="3: Build">
+  <p-tabs-item label="3. Build">
     <p-headline variant="headline-3">Building Accessible Software</p-headline>
     <p-text>Building accessible software might be hard, especially if the user interface is complex comes with many interactions. Therefore it is substantial that every discipline is working together and sharing their findings with the whole team.</p-text>
     <p-headline variant="headline-5" tag="h4">Level of Web Accessibility we need to support</p-headline>
@@ -200,6 +200,7 @@
       <p-text-list-item>
         <a href="https://www.getstark.co/">Stark for Sketch</a> - Suite of tools to make software products more accessible and compliant.
       </p-text-list-item>
+      <p-text-list-item><a href="https://superhighfives.com/pika">Pika</a> - An open-source colour picker app for macOS.</p-text-list-item>
       <p-text-list-item>
         <a href="https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl/related">No Coffee Vision Simulator</a> - Chrome plugin to simulate slight to extreme vision problems.
       </p-text-list-item>
@@ -268,7 +269,7 @@
       </p-text-list-item>
     </p-text-list>
   </p-tabs-item>
-  <p-tabs-item label="4: Audit">
+  <p-tabs-item label="4. Audit">
     <p-headline variant="headline-3">Make an Audit</p-headline>
     <p-text>
       In most cases a software application is orchestrated out of many individual components and modules. Though each of them should be tested and verified during development, we have to make sure, that they also fit into the application play nicely together.
@@ -399,7 +400,7 @@
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
   </p-tabs-item>
-  <p-tabs-item label="5: Sustain">
+  <p-tabs-item label="5. Sustain">
     <p-headline variant="headline-3">Accessibility is never done</p-headline>
     <p-text>Though your team has weighed in a lot of effort regarding accessibility and your application seems to be full accessible compliant, your work is not done yet. With every change, with every new feature, with every update comes the responsibility that accessibility remains a priority and issues are identified and solved.</p-text>
     <p-headline variant="headline-4">Monitor</p-headline>
