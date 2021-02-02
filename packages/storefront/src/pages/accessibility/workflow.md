@@ -82,10 +82,13 @@
         <a href="https://www.accessibility-developer-guide.com/">The Accessibility Developer Guide</a> – Learn more about designing and implementing fully accessible websites.
       </p-text-list-item>
       <p-text-list-item>
-        <a href="https://wicg.github.io/aom/">The Accessibility Object Model (AOM)</a> – JavaScript API to modify the accessibility tree for an HTML page.
+        <a href="https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/the-accessibility-tree">The Accessibility Tree</a> – learn the differences between the DOM tree and AOM tree.
       </p-text-list-item>
       <p-text-list-item>
         <a href="https://www.w3.org/WAI/standards-guidelines/aria/">WAI-ARIA Overview</a> – Introduction to the Accessible Rich Internet Applications suite of web standards.
+      </p-text-list-item>
+      <p-text-list-item>
+        <strong>Advanced:</strong> <a href="https://wicg.github.io/aom/">The Accessibility Object Model (AOM)</a> – JavaScript API to modify the accessibility tree for an HTML page.
       </p-text-list-item>
     </p-text-list>
     <p-headline variant="headline-4">For UX Designers</p-headline>
@@ -125,7 +128,7 @@
     <p-headline variant="headline-4">Workflow setup</p-headline>
     <p-text-list>
       <p-text-list-item>
-        Encourage the team to <strong>account for accessibility</strong> when creating and estimating stories.
+        Encourage the team to <strong>account for accessibility</strong> in the earliest phases when creating and estimating stories.
       </p-text-list-item>
       <p-text-list-item>
         Add accessibility support of <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> as an <strong>acceptance criteria</strong>, a <strong>non-functional requirement</strong> or into your <strong>definition of done</strong> to be a basic condition for each story or new feature.
@@ -155,7 +158,7 @@
     <p-headline variant="headline-4">Technical setup</p-headline>
     <p-text-list>
       <p-text-list-item>
-        All of the members of the development team should be enabled to <strong>install and use the right accessibility tools</strong> like Browser plugins, screen reader, contrast checker, etc.
+        All of the members of the development team should be enabled to <strong>install and use the right accessibility tools</strong> like browser plugins, screen reader, contrast checker, etc.
       </p-text-list-item>
       <p-text-list-item>
         Work with your front end developers to choose an <strong>automated testing plan</strong>.
@@ -267,12 +270,15 @@
       <p-text-list-item>
         Prevent using <strong>acronyms</strong> and complex technical terms.
       </p-text-list-item>
+      <p-text-list-item>
+        Create an <strong>Accessibility Statement</strong> which should be a page of your application where the current state of accessibility is stated.
+      </p-text-list-item>
     </p-text-list>
   </p-tabs-item>
   <p-tabs-item label="4. Audit">
     <p-headline variant="headline-3">Make an Audit</p-headline>
     <p-text>
-      In most cases a software application is orchestrated out of many individual components and modules. Though each of them should be tested and verified during development, we have to make sure, that they also fit into the application play nicely together.
+      In most cases a software application is orchestrated out of many individual components, modules, micro services and even 3rd party software. Though each of them should be tested and verified during development, we have to make sure, that they all fit into the application and are <strong>accessibility compliant</strong> as a whole.
       This is where an Accessibility Audit comes into play.
     </p-text>
     <p-headline variant="headline-3">Pre requisites</p-headline>
@@ -397,6 +403,11 @@
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
       <span slot="label">Are possibilities to <strong>pause/stop/hide</strong> content that blinks/scrolls/moves provided?</span>
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-headline variant="headline-4">Content</p-headline>
+    <p-checkbox-wrapper>
+      <span slot="label">Is an <strong>Accessibility Statement</strong> as part of the application provided?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
   </p-tabs-item>
