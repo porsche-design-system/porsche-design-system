@@ -1,17 +1,14 @@
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
+// Forked from https://github.com/webpack/webpack/blob/master/lib/ids/NamedChunkIdsPlugin.js
 'use strict';
 
 const { compareChunksNatural } = require('webpack/lib/util/comparators');
 const {
-  getShortChunkName,
   getLongChunkName,
   assignNames,
   getUsedChunkIds,
   assignAscendingChunkIds,
+  requestToId,
+  getShortModuleName,
 } = require('webpack/lib/ids/IdHelpers');
 
 /** @typedef {import("../Chunk")} Chunk */
@@ -44,7 +41,7 @@ class CustomNamedChunkIdsPlugin {
             }
             return chunk.id === null;
           }),
-          (chunk) => getShortChunkName(chunk, chunkGraph, context, delimiter, compiler.root),
+          (chunk) => customGetShortChunkName(chunk, chunkGraph, context, delimiter, compiler.root),
           (chunk) => getLongChunkName(chunk, chunkGraph, context, delimiter, compiler.root),
           compareChunksNatural(chunkGraph),
           getUsedChunkIds(compilation),
@@ -53,6 +50,7 @@ class CustomNamedChunkIdsPlugin {
             chunk.ids = [name];
           }
         );
+
         if (unnamedChunks.length > 0) {
           assignAscendingChunkIds(unnamedChunks, compilation);
         }
@@ -60,5 +58,24 @@ class CustomNamedChunkIdsPlugin {
     });
   }
 }
+
+/**
+ * @param {Chunk} chunk the chunk
+ * @param {ChunkGraph} chunkGraph the chunk graph
+ * @param {string} context context directory
+ * @param {string} delimiter delimiter for names
+ * @param {Object=} associatedObjectForCache an object to which the cache will be attached
+ * @returns {string} short chunk name
+ */
+const customGetShortChunkName = (chunk, chunkGraph, context, delimiter, associatedObjectForCache) => {
+  const modules = chunkGraph.getChunkRootModules(chunk);
+  const shortModuleNames = modules
+    .map((m) => requestToId(getShortModuleName(m, context, associatedObjectForCache)))
+    .map((m) => /p-([a-z-]*)/.exec(m)[1]);
+
+  chunk.idNameHints.sort();
+  const chunkName = Array.from(chunk.idNameHints).concat(shortModuleNames).filter(Boolean).join(delimiter);
+  return chunkName;
+};
 
 module.exports = CustomNamedChunkIdsPlugin;
