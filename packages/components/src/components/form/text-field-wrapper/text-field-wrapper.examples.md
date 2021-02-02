@@ -27,6 +27,12 @@ A description text can be added to explain the meaning of a specific form field.
 
 ---
 
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
+
+---
+
 ## Disabled
 
 <Playground :markup="disabled" :config="config"></Playground>
@@ -120,6 +126,11 @@ Please make sure to set the corresponding **aria** attributes.
     withDescriptionText =
 `<p-text-field-wrapper label="Some label" description="Some description">
   <input type="text" name="some-name" />
+</p-text-field-wrapper>`;
+
+    required =
+`<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" value="Some value" required />
 </p-text-field-wrapper>`;
 
     disabled =
