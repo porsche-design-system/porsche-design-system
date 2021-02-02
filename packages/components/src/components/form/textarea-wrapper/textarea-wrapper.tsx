@@ -159,9 +159,7 @@ export class TextareaWrapper {
   };
 
   private initMutationObserver = (): void => {
-    this.textareaObserver = new MutationObserver((): void => {
-      this.setState();
-    });
+    this.textareaObserver = new MutationObserver(this.setState);
     this.textareaObserver.observe(this.textarea, {
       attributeFilter: ['disabled', 'readonly'],
     });

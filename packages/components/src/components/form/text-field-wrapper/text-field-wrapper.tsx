@@ -203,9 +203,7 @@ export class TextFieldWrapper {
   };
 
   private initMutationObserver = (): void => {
-    this.inputObserver = new MutationObserver((): void => {
-      this.setState();
-    });
+    this.inputObserver = new MutationObserver(this.setState);
     this.inputObserver.observe(this.input, {
       attributeFilter: ['disabled', 'readonly'],
     });
