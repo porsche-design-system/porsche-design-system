@@ -547,7 +547,7 @@ describe('tabs-bar', () => {
         expect(await getClassList(actionPrev)).toContain(hiddenClass);
       });
 
-      it(`should have label of prev/next buttons in dom size = ${size}`, async () => {
+      it(`should have label of prev/next buttons in dom for size = ${size}`, async () => {
         await initTabsBar({ size });
 
         const { nextButton, prevButton } = await getPrevNextButton();
