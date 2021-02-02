@@ -58,7 +58,7 @@ export class Icon {
 
     return (
       <Host>
-        <i class={iconClasses} innerHTML={this.svgContent} />
+        <span class={iconClasses} innerHTML={this.svgContent} />
       </Host>
     );
   }
