@@ -1,6 +1,7 @@
 import * as webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
+const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
 
 const config: webpack.Configuration = {
   mode: 'production',
@@ -19,7 +20,7 @@ const config: webpack.Configuration = {
   },
   optimization: {
     usedExports: true,
-    chunkIds: 'total-size',
+    chunkIds: false,
     minimize: true,
     minimizer: [
       new TerserPlugin({
@@ -36,6 +37,7 @@ const config: webpack.Configuration = {
     new webpack.DefinePlugin({
       PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version),
     }),
+    new CustomNamedChunkIdsPlugin(),
   ],
 };
 
