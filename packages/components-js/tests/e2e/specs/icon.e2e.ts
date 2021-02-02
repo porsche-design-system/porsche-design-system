@@ -30,7 +30,7 @@ describe('p-icon', () => {
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
-  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> span'), 'innerHTML');
+  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
 
   describe('loading behavior', () => {
     let responseCounter: number;
