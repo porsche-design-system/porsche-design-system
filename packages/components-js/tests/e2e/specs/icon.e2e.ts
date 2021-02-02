@@ -11,8 +11,6 @@ import { Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('p-icon', () => {
-  const SCROLL_HEIGHT = 1000;
-
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -25,14 +23,14 @@ describe('p-icon', () => {
     const lazyAttribute = isLazy ? `lazy="${isLazy}"` : '';
     const attributes = `${nameAttribute} ${lazyAttribute}`;
 
-    const scrollContainer = `<div stlye="height:${SCROLL_HEIGHT}px" />`;
+    const scrollContainer = `<div style="height:1000px"></div>`;
     const content = `${isScrollable ? scrollContainer : ''}<p-icon ${attributes} />`;
 
     await setContentWithDesignSystem(page, content);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
-  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> i'), 'innerHTML');
+  const getContent = async () => getProperty(await selectNode(page, 'p-icon >>> span'), 'innerHTML');
 
   describe('loading behavior', () => {
     let responseCounter: number;
@@ -169,18 +167,18 @@ describe('p-icon', () => {
         expect(await getContent()).toContain('highway');
       });
 
-      it('should load icon if moved into viewport', async () => {
+      it('should load icon lazily if scrolled into viewport', async () => {
         await setSvgRequestInterceptor(page, []);
-        await initIcon({ name: 'highway', isLazy: true, isScrollable: true });
+        await initIcon({ name: 'information', isLazy: true, isScrollable: true });
 
-        expect(await getContent()).not.toContain('highway');
+        expect(await getContent()).not.toContain('information');
 
         await page.evaluate(() => {
-          window.scrollTo(0, SCROLL_HEIGHT);
+          window.scrollTo(0, document.body.scrollHeight);
         });
         await waitForStencilLifecycle(page);
 
-        expect(await getContent()).toContain('highway');
+        expect(await getContent()).toContain('information');
       });
     });
   });
