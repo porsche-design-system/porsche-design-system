@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
-import { MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/assets';
+import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 import { improveFocusHandlingForCustomElement } from '../../../utils';
 import { LinkTarget } from '../../../types';
 import { breakpoint } from '@porsche-design-system/utilities';
