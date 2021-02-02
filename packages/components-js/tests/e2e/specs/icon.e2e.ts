@@ -11,14 +11,24 @@ import { Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
 describe('p-icon', () => {
+  const SCROLL_HEIGHT = 1000;
+
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initIcon = async (name?: IconName): Promise<void> => {
-    const attributes = name ? ` name="${name}"` : '';
-    await setContentWithDesignSystem(page, `<p-icon${attributes}></p-icon>`);
+  const initIcon = async (opts?: { name?: IconName; isLazy?: boolean; isScrollable?: boolean }): Promise<void> => {
+    const { name, isLazy, isScrollable } = opts ?? {};
+
+    const nameAttribute = name ? `name="${name}"` : '';
+    const lazyAttribute = isLazy ? `lazy="${isLazy}"` : '';
+    const attributes = `${nameAttribute} ${lazyAttribute}`;
+
+    const scrollContainer = `<div stlye="height:${SCROLL_HEIGHT}px" />`;
+    const content = `${isScrollable ? scrollContainer : ''}<p-icon ${attributes} />`;
+
+    await setContentWithDesignSystem(page, content);
   };
 
   const getHost = async () => selectNode(page, 'p-icon');
@@ -117,7 +127,7 @@ describe('p-icon', () => {
      */
     it('should unset previous icon if name prop is changed', async () => {
       await setSvgRequestInterceptor(page, [0, 1000]);
-      await initIcon('highway');
+      await initIcon({ name: 'highway' });
 
       const iconComponent = await getHost();
       expect(await getContent()).toContain('highway');
@@ -135,7 +145,7 @@ describe('p-icon', () => {
 
     it('should unset previous icon if name prop is removed', async () => {
       await setSvgRequestInterceptor(page, [2000]);
-      await initIcon('highway');
+      await initIcon({ name: 'highway' });
 
       const iconComponent = await getHost();
       expect(await getContent()).toContain('highway');
@@ -149,6 +159,29 @@ describe('p-icon', () => {
       expect(outerHTML).not.toContain('name=');
       expect(await getContent()).toContain('arrow-head-right');
       expect(responseCounter).toEqual(2);
+    });
+
+    describe('lazy loading', () => {
+      it('should load icon if lazy prop is set', async () => {
+        await setSvgRequestInterceptor(page, []);
+        await initIcon({ name: 'highway', isLazy: true });
+
+        expect(await getContent()).toContain('highway');
+      });
+
+      it('should load icon if moved into viewport', async () => {
+        await setSvgRequestInterceptor(page, []);
+        await initIcon({ name: 'highway', isLazy: true, isScrollable: true });
+
+        expect(await getContent()).not.toContain('highway');
+
+        await page.evaluate(() => {
+          window.scrollTo(0, SCROLL_HEIGHT);
+        });
+        await waitForStencilLifecycle(page);
+
+        expect(await getContent()).toContain('highway');
+      });
     });
   });
 
@@ -164,7 +197,7 @@ describe('p-icon', () => {
     });
 
     it('should work without unnecessary round trips after state change', async () => {
-      await initIcon('highway');
+      await initIcon({ name: 'highway' });
       const host = await getHost();
 
       await setAttribute(host, 'name', 'car');
