@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Partial function `getComponentChunks()` to prefetch Porsche Design Components
+- Partial function `getComponentChunks()` to preload Porsche Design Components
 
 ### [2.0.0-rc.0] - 2021-01-29
 
