@@ -1,6 +1,6 @@
 @mixin required {
   &::after {
-    content: '*';
+    content: '\00a0*';
     color: $p-color-notification-error;
   }
 }
