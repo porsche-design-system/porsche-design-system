@@ -197,7 +197,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 - **cdn:** 'auto' | 'cn' = 'auto'
 - **withoutTags**: boolean = false
 
-By default, our core is always prefetched when using this partial.  
+By default, our core is always preloaded when using this partial.  
 
 #### Example usage with dynamic template
 
@@ -218,7 +218,10 @@ The example shows how to implement the partial in a webpack (or similar) project
 
 <head>
   // without link tags
-  <link rel="prefetch" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ withoutTags: true, components: ['p-button'] })[0] %>" crossorigin>
+  // first element is core which needs to be loaded with crossorigin attribute
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ withoutTags: true, components: ['p-button'] })[0] %>" crossorigin>
+  // furhter elements are the ones passed into components array
+  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunks({ withoutTags: true, components: ['p-button'] })[1] %>">
 </head>
 ```
 
