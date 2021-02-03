@@ -28,14 +28,16 @@ describe('tabs-bar', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initTabsBar = async (opts?: {
+  type InitOptions = {
     amount?: number;
     activeTabIndex?: number;
     size?: TabSize;
     isWrapped?: boolean;
     otherMarkup?: string;
     tag?: 'a' | 'button';
-  }) => {
+  };
+
+  const initTabsBar = async (opts?: InitOptions) => {
     const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
