@@ -16,7 +16,9 @@ describe('p-icon', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initIcon = async (opts?: { name?: IconName; isLazy?: boolean; isScrollable?: boolean }): Promise<void> => {
+  type InitOptions = { name?: IconName; isLazy?: boolean; isScrollable?: boolean };
+
+  const initIcon = async (opts?: InitOptions): Promise<void> => {
     const { name, isLazy, isScrollable } = opts ?? {};
 
     const nameAttribute = name ? `name="${name}"` : '';
