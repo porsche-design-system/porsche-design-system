@@ -143,6 +143,23 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
 
+      <div className="playground dark" title="should render in required state on dark theme">
+        <PSelectWrapper label="Some label" theme="dark">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+        <PSelectWrapper label="This is a very insanely super long label across multiple lines" theme="dark">
+          <select name="some-name" required>
+            <option value="a">Option A</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </PSelectWrapper>
+      </div>
+
       <div className="playground light" title="should render in disabled state">
         <PSelectWrapper label="Some label" description="Some description">
           <select name="some-name" disabled>
