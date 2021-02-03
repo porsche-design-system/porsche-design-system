@@ -6,6 +6,7 @@ import {
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
+  isDark,
   isRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
@@ -124,6 +125,10 @@ export class SelectWrapper {
       [prefix('select-wrapper__label--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
     };
+    const requiredFlagClasses = {
+      [prefix('select-wrapper__required')]: true,
+      [prefix('select-wrapper__required--theme-dark')]: isDark(this.theme),
+    };
     const descriptionClasses = {
       [prefix('select-wrapper__description')]: true,
       [prefix('select-wrapper__description--disabled')]: this.disabled,
@@ -159,6 +164,7 @@ export class SelectWrapper {
       [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
@@ -168,7 +174,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {isRequired(this.select) && <span class={prefix('select-wrapper__required')} />}
+                {isRequired(this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
