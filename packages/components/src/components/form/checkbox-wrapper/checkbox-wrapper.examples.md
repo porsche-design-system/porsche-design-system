@@ -32,6 +32,12 @@ checkbox still keeps it's `checked` state. You can find more details in [the spe
 
 ---
 
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
+
+---
+
 ## Disabled
 
 <Playground :markup="disabled" :config="config"></Playground>
@@ -90,12 +96,20 @@ Please make sure to set the corresponding **aria** attributes.
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked />
 </p-checkbox-wrapper>`;
     
+    required =
+`<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" required />
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="Some label">
+  <input type="checkbox" name="some-name" required checked />
+</p-checkbox-wrapper>`;
+
     disabled =
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" disabled />
 </p-checkbox-wrapper>
 <p-checkbox-wrapper label="Some label">
-  <input type="checkbox" name="some-name" checked disabled />
+  <input type="checkbox" name="some-name" disabled checked />
 </p-checkbox-wrapper>`;
     
     get validation() {

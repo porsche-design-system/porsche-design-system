@@ -1,9 +1,10 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
+  hasNamedSlot,
   insertSlottedStyles,
+  isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
@@ -82,7 +83,7 @@ export class CheckboxWrapper {
           {this.isLabelVisible && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {this.isRequired && <span class={prefix('checkbox-wrapper__required')}></span>}
+              {isRequired(this.input) && <span class={prefix('checkbox-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
           <span class={fakeCheckboxClasses}>
@@ -106,17 +107,11 @@ export class CheckboxWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.input, 'required') !== null;
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   private setInput(): void {
