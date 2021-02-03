@@ -79,6 +79,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-prod
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
