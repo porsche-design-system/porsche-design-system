@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Fixed
-- A bug in `Tabs Bar` where the `nextButton` was mistakenly rendered. 
+- A bug in `Tabs Bar` where the nextButton was mistakenly rendered. 
 
 ### [2.0.0-rc.0] - 2021-01-29
 
