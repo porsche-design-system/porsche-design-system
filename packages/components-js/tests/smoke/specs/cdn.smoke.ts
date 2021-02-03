@@ -189,13 +189,13 @@ describe('cdn', () => {
           return fs.readFileSync(chunkJsFile, 'utf8');
         };
 
-        it('marque chunk should not include icon manifest', async () => {
+        it('marque chunk should not include icon manifest', () => {
           const marqueJsCode = getFileContent('marque');
           expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
           expect(marqueJsCode).not.toContain('arrowDoubleDown');
         });
 
-        it('icon chunk should not include marque manifest', async () => {
+        it('icon chunk should not include marque manifest', () => {
           const iconJsCode = getFileContent('icon');
           expect(iconJsCode).not.toContain('/porsche-design-system/marque');
           expect(iconJsCode).not.toContain('porscheMarque');
