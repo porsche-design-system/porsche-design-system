@@ -66,7 +66,7 @@ export class Icon {
 
   private initIntersectionObserver(): Promise<void> {
     if (this.lazy && isBrowser()) {
-      // create a promise that is resolved after the lazy icon is loaded, so that stencils' lifecycles can complete
+      // create a promise that is resolved after the lazy icon is loaded
       const lazyIconPromise = new Promise<void>((resolve) => {
         this.lazyIconResolve = resolve;
       });
@@ -75,10 +75,15 @@ export class Icon {
         this.intersectionObserver = new IntersectionObserver(
           (entries, observer) => {
             if (entries[0].isIntersecting) {
+              // is in viewport
               observer.unobserve(this.host);
               this.loadIcon().then(() => {
+                // icon is loaded, complete stencil lifecycle
                 this.lazyIconResolve();
               });
+            } else {
+              // is not in viewport, resolve promise immediately
+              this.lazyIconResolve();
             }
           },
           { rootMargin: '50px' }
