@@ -567,25 +567,30 @@ describe('tabs-bar', () => {
         expect(await getClassList(actionNext)).toContain(hiddenClass);
       });
 
-      it(`should not show next button in edge case scenario for size = ${size}`, async () => {
-        // The <button> elements are styled as inline-block elements and rendered with a bit of extra space.
-        // This causes the trigger of the gradient to be pushed outside of the scrollContainer. It only occurs with
-        // some combinations of letters in the last button element. 'Assets' has proven to be one of them.
-        await setContentWithDesignSystem(
-          page,
-          `
-            <div style="width: 300px">
-              <p-tabs-bar size="${size}" active-tab-index="3">
-                <button type="button">Components</button>
-                <button type="button">Sketch Libraries</button>
-                <button type="button">Utilities</button>
-                <button type="button">Assets</button>
-              </p-tabs-bar>
-            </div>`
-        );
-        const { actionNext } = await getActionContainers();
+      describe('gradient next rounding edge case', () => {
+        // There seems to be an rounding issue that causes the <button> elements to exceed the scroll container,
+        // therefore the trigger gets pushed outside and the gradient is always shown.
+        const DECIMAL_FACTOR = 0.1;
 
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
+        for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
+          it(`should not show next button in edge case scenario for size = ${size}`, async () => {
+            const style = `style="width:${i}px"`;
+
+            await setContentWithDesignSystem(
+              page,
+              `
+              <div style="width: 300px">
+                <p-tabs-bar size="${size}" active-tab-index="3" active-tab-index="1">
+                  <button style="width: 120px" type="button">Button1</button>
+                  <button ${style} type="button">Button2</button>
+                </p-tabs-bar>
+              </div>`
+            );
+            const { actionNext } = await getActionContainers();
+
+            expect(await getClassList(actionNext)).toContain(hiddenClass, `On size ${i}`);
+          });
+        }
       });
     });
   });
