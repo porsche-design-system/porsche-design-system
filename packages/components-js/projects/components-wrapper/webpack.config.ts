@@ -40,8 +40,11 @@ const config: webpack.Configuration = {
     }),
     new CustomNamedChunkIdsPlugin(),
     new BundleAnalyzerPlugin({
-      analyzerMode: 'disabled', // comment this line or change to 'server' | 'static' to get interactive html
+      analyzerMode: 'static', // comment this line or change to 'server' | 'static' to get interactive html
+      openAnalyzer: false,
       generateStatsFile: true,
+      reportFilename: '../../tests/unit/results/report.html',
+      statsFilename: '../../tests/unit/results/stats.json',
     }),
   ],
 };
