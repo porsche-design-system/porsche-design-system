@@ -261,7 +261,7 @@ export class TabsBar {
         // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
         // Inline-Block elements are rendered with a bit of extra space, therefore we have to ensure the gradient is not
         // shown too early.
-        threshold: 0.6,
+        threshold: 0.1,
       }
     );
 
