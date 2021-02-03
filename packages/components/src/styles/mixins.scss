@@ -1,0 +1,10 @@
+@mixin required($theme: 'light') {
+  &::after {
+    @if ($theme == 'light') {
+      content: '\00a0*';
+      color: $p-color-notification-error;
+    } @else if($theme == 'dark') {
+      color: $p-color-theme-dark-notification-error;
+    }
+  }
+}
