@@ -97,8 +97,6 @@ export class Icon {
   }
 
   private loadIcon = (): Promise<void> => {
-    const url = buildIconUrl(this.source ?? this.name);
-
     if (this.svgContent) {
       // reset old icon if there is any
       const el = getShadowRootHTMLElement(this.host, 'i');
@@ -107,6 +105,8 @@ export class Icon {
         el.innerHTML = '';
       }
     }
+
+    const url = buildIconUrl(this.source ?? this.name);
 
     return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
