@@ -35,6 +35,7 @@ export class Icon {
   @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
+  private lazyIconResolve: () => void;
 
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
@@ -63,22 +64,33 @@ export class Icon {
     );
   }
 
-  private async initIntersectionObserver(): Promise<void> {
+  private initIntersectionObserver(): Promise<void> {
     if (this.lazy && isBrowser()) {
+      // create a promise that is resolved after the lazy icon is loaded
+      const lazyIconPromise = new Promise<void>((resolve) => {
+        this.lazyIconResolve = resolve;
+      });
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
         this.intersectionObserver = new IntersectionObserver(
           (entries, observer) => {
             if (entries[0].isIntersecting) {
+              // is in viewport
               observer.unobserve(this.host);
-              this.loadIcon();
+              this.loadIcon().then(() => {
+                // icon is loaded, complete stencil lifecycle
+                this.lazyIconResolve();
+              });
+            } else {
+              // is not in viewport, resolve promise immediately
+              this.lazyIconResolve();
             }
           },
           { rootMargin: '50px' }
         );
       }
-
       this.intersectionObserver.observe(this.host);
+      return lazyIconPromise;
     } else {
       return this.loadIcon();
     }
@@ -89,11 +101,13 @@ export class Icon {
       // reset old icon if there is any
       const el = getShadowRootHTMLElement(this.host, 'i');
       if (el) {
+        // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
         el.innerHTML = '';
       }
     }
 
     const url = buildIconUrl(this.source ?? this.name);
+
     return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
       if (url === buildIconUrl(this.source ?? this.name)) {
