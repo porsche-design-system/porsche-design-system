@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { buildIconUrl, DEFAULT_ICON_NAME, getSvgContent } from './icon-utlis';
-import { isBrowser, isDark, prefix } from '../../../utils';
+import { getShadowRootHTMLElement, isBrowser, isDark, prefix } from '../../../utils';
 import type { Theme, IconName, TextColor } from '../../../types';
 
 @Component({
@@ -35,13 +35,7 @@ export class Icon {
   @State() private svgContent?: string;
 
   private intersectionObserver?: IntersectionObserver;
-
-  @Watch('name')
-  public nameChangeHandler(newValue: IconName, oldValue: IconName) {
-    if (newValue !== oldValue && this.svgContent) {
-      this.svgContent = '';
-    }
-  }
+  private lazyIconResolve: () => void;
 
   public componentWillLoad(): Promise<void> {
     return this.initIntersectionObserver();
@@ -70,21 +64,28 @@ export class Icon {
     );
   }
 
-  private async initIntersectionObserver(): Promise<void> {
+  private initIntersectionObserver(): Promise<void> {
     if (this.lazy && isBrowser()) {
+      // create a promise that is resolved after the lazy icon is loaded, so that stencils' lifecycles can complete
+      const lazyIconPromise = new Promise<void>((resolve) => {
+        this.lazyIconResolve = resolve;
+      });
       // load icon once it reaches the viewport
       if (!this.intersectionObserver) {
         this.intersectionObserver = new IntersectionObserver(
           (entries, observer) => {
             if (entries[0].isIntersecting) {
               observer.unobserve(this.host);
-              this.loadIcon();
+              this.loadIcon().then(() => {
+                this.lazyIconResolve();
+              });
             }
           },
           { rootMargin: '50px' }
         );
       }
       this.intersectionObserver.observe(this.host);
+      return lazyIconPromise;
     } else {
       return this.loadIcon();
     }
@@ -92,6 +93,15 @@ export class Icon {
 
   private loadIcon = (): Promise<void> => {
     const url = buildIconUrl(this.source ?? this.name);
+
+    if (this.svgContent) {
+      // reset old icon if there is any
+      const el = getShadowRootHTMLElement(this.host, 'i');
+      if (el) {
+        // manipulating the DOM directly, to prevent unnecessary stencil lifecycles
+        el.innerHTML = '';
+      }
+    }
 
     return getSvgContent(url).then((iconContent) => {
       // check if response matches current icon source
