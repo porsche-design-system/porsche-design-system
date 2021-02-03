@@ -183,10 +183,13 @@
         Make yourself firm with and design for every possible <strong>input device</strong> like keyboard, touch and screen reader.
       </p-text-list-item>
       <p-text-list-item>
+        <strong>Structure your designs</strong> in a logical way and split main page and content areas into smaller parts and name them accordingly (to the HTML specifications), like <strong>header, main, footer, nav, section, article, etc.</strong>.
+      </p-text-list-item>
+      <p-text-list-item>
         Always test your designs against possible <strong>contrast issues</strong> which might affect people with low vision.
       </p-text-list-item>
       <p-text-list-item>
-        Always provide <strong>visual support for certain states</strong> of trigger elements if available (e.g. links, buttons, forms, etc.). 
+        Always provide <strong>visual support for certain states (like focus, hover, active, etc.)</strong> of trigger elements if available (e.g. links, buttons, forms, etc.). 
       </p-text-list-item>
       <p-text-list-item>
         Design for user interfaces that support a <strong>wide range of possible browser input devices</strong> (e.g. mouse, finger, pen, etc.).
@@ -217,7 +220,8 @@
     <p-headline variant="headline-4">Develop</p-headline>
     <p-text-list>
       <p-text-list-item>
-        <strong>Start with valid HTML semantic</strong> and use the right HTML tags for the right purpose: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Element Reference Overview</a>
+        <strong>"If it looks like a button and acts like a button, make it a button."</strong><br>
+        Start with <strong>valid HTML semantic</strong> and use the right HTML tags for the right purpose: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Element Reference Overview</a>.
       </p-text-list-item>
       <p-text-list-item>
         Always take care of your <strong>document structure</strong> from top to bottom. Use the right headline tags without any logical breaks and add logical HTML region tags like header, main, footer.
@@ -253,6 +257,156 @@
         Screen reader - Test your application with VoiceOver (on Mac), NVDA (PC) or Chromevox (Chrome Plugin).
       </p-text-list-item>
     </p-text-list>
+    <p-headline variant="headline-5">Support common keymap concepts</p-headline>
+    <p-text>The following table includes many of the most common online interactions, the standard keystrokes for the interaction, and additional information on things to consider during building usable interfaces:</p-text>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Interaction </th>
+          <th scope="col">Keystrokes</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Navigate to interactive elements</td>
+          <td><ul>
+            <li><span class="key">Tab</span></li>
+            <li><span class="key">Shift</span> + <span class="key">Tab</span> - navigate backward</li>
+          </ul>			</td>
+          <td>
+            <ul>
+              <li>Keyboard focus indicators must be present.</li>
+              <li>Navigation order should be logical and intuitive.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Link</td>
+          <td><span class="key">Enter</span> - activate the link</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Button</td>
+          <td><span class="key">Enter</span> or <span class="key">Spacebar</span>  - activate the button</td>
+          <td>Ensure elements with ARIA <code>role="button"</code> can be activated with both key commands.</td>
+        </tr>
+        <tr>
+          <td>Checkbox</td>
+          <td><span class="key">Spacebar</span> - check/uncheck a checkbox</td>
+          <td>Checkboxes should be used when one or more option in a group can be selected.</td>
+        </tr>
+        <tr>
+          <td>Radio buttons</td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> or <span class="key">←</span>/<span class="key">→</span> - select an option. </li>
+              <li><span class="key">Tab</span> - move to the next element.</li>
+            </ul>
+          </td>
+          <td>Radio buttons should be used when only one option from a group can be selected.</td>
+        </tr>
+        <tr>
+          <td>Select (dropdown) menu</td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> - navigate between menu options</li>
+              <li><span class="key">Spacebar</span> - expand</li>
+            </ul>
+          </td>
+          <td>You can also filter or jump to options in the menu as you type letters.</td>
+        </tr>
+        <tr>
+          <td>Autocomplete</td>
+          <td>
+            <ul>
+              <li>Type to begin filtering</li>
+              <li><span class="key">↑</span>/<span class="key">↓</span> - navigate to an option</li>
+              <li><span class="key">Enter</span> - select an option</li>
+            </ul>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Dialog</td>
+          <td><span class="key">Esc</span> - close</td>
+          <td>
+            <ul>
+              <li>Modal dialogs should maintain keyboard focus.</li>
+              <li>Non-modal dialogs should close automatically when they lose focus.</li>
+              <li>When a dialog closes, focus should usually return to the element that opened the dialog.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Slider</td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> or <span class="key">←</span>/<span class="key">→</span> - increase or decrease slider value</li>
+              <li><span class="key">Home</span>/<span class="key">End</span> - beginning or end</li>
+            </ul>								
+          </td>
+          <td>
+            <ul>
+              <li>For double-headed sliders (to set a range), <span class="key">Tab</span>/<span class="key">Shift</span> + <span class="key">Tab</span> should toggle between each end.</li>
+              <li>In some sliders <span class="key">PageUp</span>/<span class="key">PageDown</span> can move by a larger increment (e.g., by 10%).</li>
+            </ul>								
+          </td>
+        </tr>
+        <tr>
+          <td>Menu bar</td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> - Previous/next menu option</li>
+              <li><span class="key">Enter</span> - expand the menu (optional) and select an option.</li>
+              <li><span class="key">←</span>/<span class="key">→</span> - expand/collapse submenu</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>A menu bar dynamically changes content within an application. Links that utilize <span class="key">Tab</span>/<span class="key">Enter</span> are NOT menu bars.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Tab panel</td>
+          <td>
+            <ul>
+              <li><span class="key">Tab</span> - once to navigate into the group of tabs and once to navigate out of the group of tabs</li>
+              <li><span class="key">↑</span>/<span class="key">↓</span> or <span class="key">←</span>/<span class="key">→</span> - choose and activate previous/next tab.</li>									
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>This is for 'application' tabs that dynamically change content within the tab panel. If a menu looks like a group of tabs, but is actually a group of links to different pages, <span class="key">Tab</span> and <span class="key">Enter</span> are more appropriate.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>'Tree' menu</td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> - Navigate Previous/next menu option</li>
+              <li><span class="key">←</span>/<span class="key">→</span> - expand/collapse submenu, move up/down one level.</li>
+            </ul>
+          </td>
+          <td></td>
+        </tr>
+        <tr>						
+          <td>Scroll </td>
+          <td>
+            <ul>
+              <li><span class="key">↑</span>/<span class="key">↓</span> - scroll vertically</li>
+              <li><span class="key">←</span>/<span class="key">→</span> - scroll horizontally</li>
+              <li><span class="key">Spacebar</span>/<span class="key">Shift</span> + <span class="key">Spacebar</span> - scroll by page</li>
+            </ul>
+          </td>
+          <td>
+            <p>The space bar will, by default, scroll the page is an interactive control that allows space bar input is not focused. Horizontal scrolling should be minimized.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <p-headline variant="headline-4">Write</p-headline>
     <p-text-list>
       <p-text-list-item>
@@ -494,5 +648,41 @@
 
   p-checkbox-wrapper + p-checkbox-wrapper {
     margin-top: $p-spacing-8;
+  }
+  
+  table {
+    margin-top: $p-spacing-32;
+    @include p-generate-font-definition($p-font-size-small, $p-font-weight-regular);
+    text-align: left;
+    border-collapse: collapse;
+    ul {
+      list-style-type: none;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $p-color-neutral-contrast-low;
+  }
+  
+  td, th {
+    padding: $p-spacing-8 $p-spacing-16 $p-spacing-8 0;
+  }
+
+  th {
+    color: $p-color-neutral-contrast-high;
+  }
+  .key {
+    background-color: $p-color-neutral-contrast-low;
+    border: 1px solid $p-color-neutral-contrast-medium;
+    border-radius: 5px;
+    color: $p-color-neutral-contrast-high;
+    padding: 0 $p-spacing-4;
+    margin: 1px;
+    font-weight: bold;
+    font-size: $p-font-size-12;
+    min-width: $p-spacing-16;
+    display: inline-block;
+    text-align: center;
+    vertical-align: text-bottom;
   }
 </style>
