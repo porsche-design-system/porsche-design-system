@@ -200,6 +200,10 @@
 
   &__required {
     @include required;
+
+    #{$bem-block}--theme-dark & {
+      @include required('dark');
+    }
   }
 
   &__description {
