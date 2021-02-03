@@ -62,9 +62,11 @@ describe('chunks', () => {
   afterAll(() => {
     const formatFirstCol = (content: string, fillString?: string): string => content.padEnd(25, fillString);
     const formatNumberCol = (content: string, fillString?: string): string => content.padStart(12, fillString);
-    const formatKB = (input: number): string => `${(input / 1024).toFixed(2)} KB`;
+    const getSign = (val: number): string => (val < 0 ? '-' : val > 0 ? '+' : '');
+    const formatKB = (input: number, displaySign?: boolean): string =>
+      `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
     const formatDiff = (oldSize: number, diffSize: number): string =>
-      `${oldSize < 0 ? '-' : '+'}${(diffSize / oldSize).toFixed(2)} %`;
+      `${getSign(diffSize)}${(diffSize / oldSize).toFixed(2)} %`;
 
     const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %'];
 
@@ -81,7 +83,7 @@ describe('chunks', () => {
           formatFirstCol(chunkName),
           formatNumberCol(`${formatKB(oldSize)}`),
           formatNumberCol(`${formatKB(newSize)}`),
-          formatNumberCol(`${formatKB(diffSize)}`),
+          formatNumberCol(`${formatKB(diffSize, true)}`),
           formatNumberCol(`${formatDiff(oldSize, diffSize)}`),
         ].join('')
       )
