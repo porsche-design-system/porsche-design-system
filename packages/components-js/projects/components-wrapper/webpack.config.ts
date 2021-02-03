@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
   },
   optimization: {
     usedExports: true,
-    chunkIds: false,
+    chunkIds: false, // when this is set false, we need to provide a custom plugin to generate our chunkIds
     minimize: true,
     minimizer: [
       new TerserPlugin({
