@@ -566,32 +566,32 @@ describe('tabs-bar', () => {
         expect(await getClassList(actionPrev)).toContain(hiddenClass);
         expect(await getClassList(actionNext)).toContain(hiddenClass);
       });
+    });
 
-      describe('gradient next rounding edge case', () => {
-        // There seems to be an rounding issue that causes the <button> elements to exceed the scroll container,
-        // therefore the trigger gets pushed outside and the gradient is always shown.
-        const DECIMAL_FACTOR = 0.1;
+    describe('gradient next rounding edge case', () => {
+      // There seems to be an rounding issue that causes the <button> elements to exceed the scroll container,
+      // therefore the trigger gets pushed outside and the gradient is always shown.
+      // To ensure the buttons exceed the width of the wrapping div we need to assign static width values.
+      const DECIMAL_FACTOR = 0.1;
+      for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
+        it('should not show next button in edge case scenario', async () => {
+          const style = `style="width:${i}px"`;
 
-        for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
-          it(`should not show next button in edge case scenario for size = ${size}`, async () => {
-            const style = `style="width:${i}px"`;
-
-            await setContentWithDesignSystem(
-              page,
-              `
+          await setContentWithDesignSystem(
+            page,
+            `
               <div style="width: 300px">
-                <p-tabs-bar size="${size}" active-tab-index="3" active-tab-index="1">
-                  <button style="width: 120px" type="button">Button1</button>
-                  <button ${style} type="button">Button2</button>
+                <p-tabs-bar size="medium" active-tab-index="1">
+                  <button style="width: 150px" type="button">A</button>
+                  <button ${style} type="button">B</button>
                 </p-tabs-bar>
               </div>`
-            );
-            const { actionNext } = await getActionContainers();
+          );
+          const { actionNext } = await getActionContainers();
 
-            expect(await getClassList(actionNext)).toContain(hiddenClass, `On size ${i}`);
-          });
-        }
-      });
+          expect(await getClassList(actionNext)).toContain(hiddenClass, `On size ${i}`);
+        });
+      }
     });
   });
 
