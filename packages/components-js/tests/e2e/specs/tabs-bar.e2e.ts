@@ -496,75 +496,69 @@ describe('tabs-bar', () => {
     const tabSizes: TabSize[] = ['small', 'medium'];
 
     tabSizes.forEach((size) => {
-      it(`should not show prev/next buttons only on vertical scroll for size = ${size}`, async () => {
-        await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
-        const { actionPrev, actionNext } = await getActionContainers();
+      describe(`size = ${size} `, () => {
+        it('should not show prev/next buttons only on vertical scroll', async () => {
+          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        await page.evaluate(() => window.scroll(0, 20));
-        await waitForStencilLifecycle(page);
+          await page.evaluate(() => window.scroll(0, 20));
+          await waitForStencilLifecycle(page);
 
-        expect(await getClassList(actionPrev)).toContain(hiddenClass);
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
-      });
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+        });
 
-      it(`should only show next button for size = ${size}`, async () => {
-        await initTabsBar({ amount: 4, size, isWrapped: true });
-        const { actionPrev, actionNext } = await getActionContainers();
+        it('should only show next button', async () => {
+          await initTabsBar({ amount: 4, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-        expect(await getClassList(actionPrev)).toContain(hiddenClass);
-      });
+          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+        });
 
-      it(`should only show prev button for size = ${size}`, async () => {
-        await initTabsBar({ amount: 20, activeTabIndex: 19, size, isWrapped: true });
-        const { actionPrev, actionNext } = await getActionContainers();
+        it('should only show prev button', async () => {
+          await initTabsBar({ amount: 20, activeTabIndex: 19, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
-        expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-      });
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+        });
 
-      it(`should only show prev button for size = ${size}`, async () => {
-        await initTabsBar({ amount: 20, activeTabIndex: 19, size, isWrapped: true });
-        const { actionPrev, actionNext } = await getActionContainers();
+        it('should show prev and next button', async () => {
+          await initTabsBar({ amount: 7, activeTabIndex: 1, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
-        expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-      });
+          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+        });
 
-      it(`should show prev and next button for size = ${size}`, async () => {
-        await initTabsBar({ amount: 7, activeTabIndex: 1, size, isWrapped: true });
-        const { actionPrev, actionNext } = await getActionContainers();
+        it('should not show prev/next buttons without children', async () => {
+          await setContentWithDesignSystem(page, `<p-tabs-bar size="${size}"></p-tabs-bar>`);
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-        expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-      });
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+        });
 
-      it(`should not show prev/next buttons without children for size = ${size}`, async () => {
-        await setContentWithDesignSystem(page, `<p-tabs-bar size="${size}"></p-tabs-bar>`);
-        const { actionPrev, actionNext } = await getActionContainers();
+        it('should have label of prev/next buttons in dom', async () => {
+          await initTabsBar({ size });
 
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
-        expect(await getClassList(actionPrev)).toContain(hiddenClass);
-      });
+          const { nextButton, prevButton } = await getPrevNextButton();
 
-      it(`should have label of prev/next buttons in dom for size = ${size}`, async () => {
-        await initTabsBar({ size });
+          expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
+          expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+        });
 
-        const { nextButton, prevButton } = await getPrevNextButton();
+        it('should not show prev/next buttons only on vertical scroll', async () => {
+          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-        expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
-        expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
-      });
+          await page.evaluate(() => window.scroll(0, 20));
+          await waitForStencilLifecycle(page);
 
-      it(`should not show prev/next buttons only on vertical scroll for size = ${size}`, async () => {
-        await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
-        const { actionPrev, actionNext } = await getActionContainers();
-
-        await page.evaluate(() => window.scroll(0, 20));
-        await waitForStencilLifecycle(page);
-
-        expect(await getClassList(actionPrev)).toContain(hiddenClass);
-        expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+        });
       });
     });
 
