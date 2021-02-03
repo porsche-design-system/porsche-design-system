@@ -2,6 +2,7 @@ import * as webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
 const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config: webpack.Configuration = {
   mode: 'production',
@@ -38,6 +39,10 @@ const config: webpack.Configuration = {
       PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version),
     }),
     new CustomNamedChunkIdsPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled', // comment this line or change to 'server' | 'static' to get interactive html
+      generateStatsFile: true,
+    }),
   ],
 };
 
