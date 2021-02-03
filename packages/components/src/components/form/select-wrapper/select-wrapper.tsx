@@ -1,11 +1,13 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
-  getAttribute,
   getClosestHTMLElement,
   getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
+  hasNamedSlot,
   insertSlottedStyles,
+  isDark,
+  isRequired,
   isTouchDevice,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -123,6 +125,10 @@ export class SelectWrapper {
       [prefix('select-wrapper__label--disabled')]: this.disabled,
       ...mapBreakpointPropToPrefixedClasses('select-wrapper__label-', this.hideLabel, ['hidden', 'visible']),
     };
+    const requiredFlagClasses = {
+      [prefix('select-wrapper__required')]: true,
+      [prefix('select-wrapper__required--theme-dark')]: isDark(this.theme),
+    };
     const descriptionClasses = {
       [prefix('select-wrapper__description')]: true,
       [prefix('select-wrapper__description--disabled')]: this.disabled,
@@ -158,6 +164,7 @@ export class SelectWrapper {
       [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
 
     return (
@@ -167,7 +174,7 @@ export class SelectWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {this.isRequired && <span class={prefix('select-wrapper__required')}></span>}
+                {isRequired(this.select) && <span class={requiredFlagClasses} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -226,21 +233,15 @@ export class SelectWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
+    return !!this.description || hasNamedSlot(this.host, 'description');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.select, 'required') !== null;
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   /*
