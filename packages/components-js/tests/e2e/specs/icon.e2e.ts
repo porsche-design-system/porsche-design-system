@@ -16,10 +16,13 @@ describe('p-icon', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  type InitOptions = { name?: IconName; isLazy?: boolean; isScrollable?: boolean };
+  type InitOptions = {
+    name?: IconName;
+    isLazy?: boolean;
+    isScrollable?: boolean;
+  };
 
   const initOptions: InitOptions[] = [{}, { isLazy: true }];
-  const namedInitOptions: InitOptions[] = [{ name: 'highway' }, { name: 'highway', isLazy: true }];
 
   const initIcon = async (opts?: InitOptions): Promise<void> => {
     const { name, isLazy, isScrollable } = opts ?? {};
@@ -87,7 +90,6 @@ describe('p-icon', () => {
       });
     };
 
-    describe('lazy loading', () => {
       it('should load icon if lazy attribute is set to true', async () => {
         await setSvgRequestInterceptor(page, []);
         await initIcon({ name: 'highway', isLazy: true });
@@ -118,7 +120,6 @@ describe('p-icon', () => {
 
         expect(await getContent()).toContain('information');
       });
-    });
 
     initOptions.forEach((opts) => {
       describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
@@ -157,11 +158,7 @@ describe('p-icon', () => {
           expect(await getContent()).toContain('question');
           expect(responseCounter).toEqual(2);
         });
-      });
-    });
 
-    namedInitOptions.forEach((opts) => {
-      describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
         /**
          *       request 1st icon
          *         |‾‾‾‾‾‾‾‾‾‾⌄
@@ -171,7 +168,7 @@ describe('p-icon', () => {
          */
         it('should unset previous icon if name prop is changed', async () => {
           await setSvgRequestInterceptor(page, [0, 1000]);
-          await initIcon(opts);
+          await initIcon({ ...opts, name: 'highway' });
 
           const iconComponent = await getHost();
           expect(await getContent()).toContain('highway');
@@ -189,7 +186,7 @@ describe('p-icon', () => {
 
         it('should unset previous icon if name prop is removed', async () => {
           await setSvgRequestInterceptor(page, [2000]);
-          await initIcon(opts);
+          await initIcon({ ...opts, name: 'highway' });
 
           const iconComponent = await getHost();
           expect(await getContent()).toContain('highway');
@@ -220,12 +217,9 @@ describe('p-icon', () => {
           expect(status.componentDidLoad.all).toBe(1, 'componentDidLoad: all');
           expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
         });
-      });
-    });
-    namedInitOptions.forEach((opts) => {
-      describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
+
         it('should work without unnecessary round trips after state change', async () => {
-          await initIcon(opts);
+          await initIcon({ ...opts, name: 'highway' });
           const host = await getHost();
 
           await setAttribute(host, 'name', 'car');
