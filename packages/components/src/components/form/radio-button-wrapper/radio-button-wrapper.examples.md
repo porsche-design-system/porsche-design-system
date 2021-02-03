@@ -16,6 +16,12 @@ A `label` is a caption which informs the user what information a particular form
 
 ---
 
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
+
+---
+
 ## Disabled
 
 <Playground :markup="disabled" :config="config"></Playground>
@@ -66,12 +72,20 @@ Please make sure to set the corresponding **aria** attributes.
 </p-radio-button-wrapper>`;
     }
     
+    required =
+`<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" required />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" required checked />
+</p-radio-button-wrapper>`;
+
     disabled =
 `<p-radio-button-wrapper label="Some label">
   <input type="radio" name="some-name-4" disabled />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" checked disabled />
+  <input type="radio" name="some-name-4" disabled checked />
 </p-radio-button-wrapper>`;
 
     get validation() {
