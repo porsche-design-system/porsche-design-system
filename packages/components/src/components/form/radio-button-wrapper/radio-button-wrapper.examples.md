@@ -85,7 +85,7 @@ Please make sure to set the corresponding **aria** attributes.
   <input type="radio" name="some-name-4" disabled />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
-  <input type="radio" name="some-name-4" checked disabled />
+  <input type="radio" name="some-name-4" disabled checked />
 </p-radio-button-wrapper>`;
 
     get validation() {
