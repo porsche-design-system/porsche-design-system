@@ -106,13 +106,13 @@ describe('chunks', () => {
       return fs.readFileSync(chunkJsFile, 'utf8');
     };
 
-    it('marque chunk should not include icon manifest', () => {
+    it('marque chunk should not contain icon manifest', () => {
       const marqueJsCode = getFileContent('marque');
       expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
       expect(marqueJsCode).not.toContain('arrowDoubleDown');
     });
 
-    it('icon chunk should not include marque manifest', () => {
+    it('icon chunk should not contain marque manifest', () => {
       const iconJsCode = getFileContent('icon');
       expect(iconJsCode).not.toContain('/porsche-design-system/marque');
       expect(iconJsCode).not.toContain('porscheMarque');
@@ -125,7 +125,7 @@ describe('chunks', () => {
 
     chunkFileNames.forEach((chunkFileName) => {
       // TODO: use CHUNK_MANIFEST once it's available
-      it(`should not contain localhost anywhere in ${chunkFileName}`, () => {
+      it(`should not contain localhost in ${chunkFileName}`, () => {
         const content = getFileContent(chunkFileName);
         expect(content).not.toContain('localhost');
       });
