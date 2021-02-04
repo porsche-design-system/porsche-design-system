@@ -25,4 +25,6 @@ That's why we develop and offer high-quality, standardized and accessible compon
 
 To avoid possible [**violations against country-specific law**](#/accessibility/compliance) (e.g. ADA in the U.S.) we highly recommend following our guidelines to gather more accessibility in your projects.
 
-<p-link href="#/accessibility/guidelines">Accessibility Guidelines</p-link>
+To integrate accessibility into your product workflow, follow these guidelines:
+
+<p-link href="#/accessibility/workflow">The Accessibility Workflow</p-link>

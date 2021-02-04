@@ -197,7 +197,7 @@ Upper case text should only be used for:
 ---
 
 ## Accessibility
-As we stick to the common [WCAG 2.1 Standard](#/accessibility/guidelines),
+As we stick to the common [WCAG 2.1 Standard](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-21/),
 you should always ensure a sufficient contrast ratio when designing with text. 
 The combination of text and background color should pass the WCAG AA standard 
 and have a contrast ratio of at least 4.5:1 for standard text size and 3:1 
