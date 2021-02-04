@@ -124,6 +124,14 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Some label">
           <input type="password" name="some-name" value="some password" readOnly />
         </PTextFieldWrapper>
+        <br />
+        <PTextFieldWrapper label="Some label" style={{ width: 240 }}>
+          <input
+            type="password"
+            name="some-name"
+            value="some really long password with many words and amazing special characters, letters big and small, numbers"
+          />
+        </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with type search in different states">
