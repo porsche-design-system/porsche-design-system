@@ -94,6 +94,12 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --components-js
+      - name: 'Unit Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-unit-regression
+          path: ./packages/components-js/tests/unit/results
   components-js-e2e:
     name: 'Components JS E2E'
     runs-on: ubuntu-latest
