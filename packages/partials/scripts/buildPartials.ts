@@ -147,7 +147,8 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
 
 const generateComponentChunksPartial = (): string => {
   const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
-  const types = `type ComponentChunkName = ${chunkNamesTypeLiteral};
+  // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
+  const types = `type ComponentChunkName = ${chunkNamesTypeLiteral || 'any'};
 
 type ComponentChunksOptions = {
   components?: ComponentChunkName[];
