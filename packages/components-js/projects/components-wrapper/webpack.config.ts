@@ -1,6 +1,8 @@
 import * as webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
+const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config: webpack.Configuration = {
   mode: 'production',
@@ -19,7 +21,7 @@ const config: webpack.Configuration = {
   },
   optimization: {
     usedExports: true,
-    chunkIds: 'total-size',
+    chunkIds: false, // when this is set false, we need to provide a custom plugin to generate our chunkIds
     minimize: true,
     minimizer: [
       new TerserPlugin({
@@ -35,6 +37,14 @@ const config: webpack.Configuration = {
   plugins: [
     new webpack.DefinePlugin({
       PORSCHE_DESIGN_SYSTEM_VERSION: JSON.stringify(version),
+    }),
+    new CustomNamedChunkIdsPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static', // comment this line or change to 'server' | 'static' to get interactive html
+      openAnalyzer: false,
+      generateStatsFile: true,
+      reportFilename: '../../tests/unit/results/report.html',
+      statsFilename: '../../tests/unit/results/stats.json',
     }),
   ],
 };
