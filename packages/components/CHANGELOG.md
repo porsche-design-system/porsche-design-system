@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Partial function `getComponentChunkLinks()` to preload Porsche Design Components
+- Partial function `getComponentChunkLinks()` to preload Porsche Design System Components
 
 #### Changed
 - Added a space before asterisk (`*`) when `input`, `textarea` or `select` have `required` attribute within form wrapper components
