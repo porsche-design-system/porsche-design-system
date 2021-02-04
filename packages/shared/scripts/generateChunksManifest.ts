@@ -33,11 +33,9 @@ const createManifest = (indexJsFile: string): Manifest => {
     core: coreFileName,
   };
 
-  chunkFileNames.forEach((chunkName) => {
-    const chunkFile = path.resolve(chunksDir, chunkName);
-    const chunkCode = fs.readFileSync(chunkFile, 'utf8');
-    const [, componentName] = /,{(p_[a-z_]*):function/.exec(chunkCode);
-    manifest[paramCase(componentName)] = chunkName;
+  chunkFileNames.forEach((chunkFileName) => {
+    const [, componentName] = /\.([a-z-]+)\./.exec(chunkFileName);
+    manifest[paramCase(componentName)] = chunkFileName;
   });
 
   return manifest;
