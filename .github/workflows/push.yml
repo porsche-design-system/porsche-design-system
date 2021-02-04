@@ -441,11 +441,6 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
-      - name: 'Build Storefront'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --storefront
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
