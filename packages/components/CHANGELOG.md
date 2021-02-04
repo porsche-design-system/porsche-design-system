@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 - A bug in `Tabs Bar` where the nextButton was mistakenly rendered.
 - A bug where `Icon` was not rendered when using `lazy` property.
+- A bug in `Text Field Wrapper` with input type password where characters would overlap the icon.
 
 ### [2.0.0-rc.0] - 2021-01-29
 
