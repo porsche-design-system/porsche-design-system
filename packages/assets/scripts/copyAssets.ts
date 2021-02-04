@@ -28,11 +28,11 @@ const copyAssets = (): void => {
       const targetDirectory = path.resolve(__dirname, TARGET_DIRECTORY, cdnPath);
       fs.mkdirSync(targetDirectory, { recursive: true });
 
-      console.log(`Copying contents from '${packageName}'`);
+      console.log(`Copying contents from '${packageName}' to '${TARGET_DIRECTORY}/${path.basename(targetDirectory)}'`);
 
       for (const file of files) {
         fs.copyFileSync(path.resolve(pathToFiles, file), path.resolve(targetDirectory, file));
-        console.log(`  - '${file}' copied`);
+        console.log(` - ${file}`);
       }
     } catch (e) {
       console.log(`Package '${packageName}' doesn't exist. Skipping...`);
