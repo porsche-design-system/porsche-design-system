@@ -1,10 +1,12 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as fs from 'fs';
+import globby from 'globby';
 
-const BASE_DIR = path.normalize('./dist');
-const SOURCE_DIR = path.resolve(BASE_DIR, 'types');
-const CJS_DIR = path.resolve(BASE_DIR, 'cjs');
+const ROOT_DIR = path.normalize('./');
+const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
+const DIST_TYPES_DIR = path.resolve(DIST_DIR, 'types');
+const SRC_DIR = path.resolve(ROOT_DIR, 'src/components');
 
 export type ParsedInterface = { [key: string]: string };
 export type IntrinsicElements = { [key in TagName]?: string };
@@ -27,7 +29,7 @@ export class InputParser {
   private parseInput(): void {
     // read bundle.d.ts as the base of everything
     const bundleDtsFileName = 'bundle.d.ts';
-    const bundleDtsFile = path.resolve(SOURCE_DIR, bundleDtsFileName);
+    const bundleDtsFile = path.resolve(DIST_TYPES_DIR, bundleDtsFileName);
     const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
     this.sharedTypes = bundleDtsContent
@@ -83,10 +85,10 @@ export class InputParser {
       return true;
     }
 
-    const fileName = `${component}.cjs.entry.js`;
-    const filePath = path.resolve(CJS_DIR, fileName);
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    return fileContent.includes('h("slot"');
+    return fileContent.includes('<slot');
   }
 }

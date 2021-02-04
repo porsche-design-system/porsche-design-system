@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.1] - 2021-02-04
+
+#### Added
+- Partial function `getComponentChunkLinks()` to preload Porsche Design System Components
+
+#### Changed
+- Added a space before asterisk (`*`) when `input`, `textarea` or `select` have `required` attribute within form wrapper components
+- Renamed partial `getFontLinks()` option from `weight` to `weights`
+
+#### Fixed
+- A bug in `Tabs Bar` where the nextButton was mistakenly rendered.
+- A bug where `Icon` was not rendered when using `lazy` property.
+- A bug in `Text Field Wrapper` with input type password where characters would overlap the icon.
+
 ### [2.0.0-rc.0] - 2021-01-29
 
 In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API, fundamental changes in loading behavior and others.
@@ -41,7 +55,7 @@ Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/lates
 + <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet() %>
 
 - <link rel="preload" href="path/to/webfont/nameOfWebFontFile" as="font" type="font/woff2" crossorigin />
-+ <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weight: ['regular', 'semi-bold'] }) %>
++ <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weights: ['regular', 'semi-bold'] }) %>
 ```
 
 #### Added support for China CDN
