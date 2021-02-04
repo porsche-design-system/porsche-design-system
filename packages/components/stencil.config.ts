@@ -1,11 +1,14 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
+// @ts-ignore
 import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import modify from 'rollup-plugin-modify';
 import replace from '@rollup/plugin-replace';
+// @ts-ignore
 import CleanCSS from 'clean-css';
+import type { TagName } from '@porsche-design-system/shared';
 
 /**
  * TODO: Remove this workaround
@@ -24,6 +27,15 @@ const minifyCSS = (str: string): string => new CleanCSS().minify(str).styles;
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
+// specify chunking of components that can't be used standalone
+// it's important to list the parent component first since it affects the chunk name
+const bundles: { components: TagName[] }[] = [
+  { components: ['p-grid', 'p-grid-item'] },
+  { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-tabs', 'p-tabs-item'] },
+  { components: ['p-text-list', 'p-text-list-item'] },
+];
+
 export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
@@ -40,7 +52,8 @@ export const config: Config = {
       ],
     },
   ],
-  bundles: [{ components: [] }],
+  bundles,
+  enableCache: true,
   plugins: [
     sass(),
     postcss({
