@@ -210,6 +210,60 @@ describe('Text Field Wrapper', () => {
     expect(await getIconName()).toBe('view');
   });
 
+  it('should have padding class for input type password', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text-field-wrapper label="Some label">
+        <input type="password" name="some-name">
+      </p-text-field-wrapper>
+    `
+    );
+
+    const paddingClassName = 'p-text-field-wrapper__fake-input--password';
+    const fakeInput = await getTextFieldFakeInput();
+    const toggleButton = await getTextFieldButton();
+
+    expect(await getCssClasses(fakeInput)).toContain(paddingClassName);
+
+    await toggleButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(fakeInput)).toContain(paddingClassName);
+  });
+
+  it(`should toggle password visibility and focus input correctly`, async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-text-field-wrapper label="Some label">
+        <input type="password" name="some-name">
+      </p-text-field-wrapper>
+    `
+    );
+
+    const button = await getTextFieldButton();
+    const input = await getTextFieldRealInput();
+
+    let inputFocusCalls = 0;
+    await addEventListener(input, 'focus', () => inputFocusCalls++);
+
+    expect(await getProperty(input, 'type')).toBe('password');
+    expect(inputFocusCalls).toBe(0);
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(input, 'type')).toBe('text');
+    expect(inputFocusCalls).toBe(1);
+
+    await button.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(input, 'type')).toBe('password');
+    expect(inputFocusCalls).toBe(2);
+  });
+
   it('should disable search button when input (type search) is set to disabled or readonly programmatically', async () => {
     await setContentWithDesignSystem(
       page,
@@ -247,38 +301,6 @@ describe('Text Field Wrapper', () => {
 
     expect(await getCssClasses(fakeInput)).not.toContain('p-text-field-wrapper__fake-input--readonly');
     expect(await getProperty(button, 'disabled')).toBe(false);
-  });
-
-  it(`should toggle password visibility and focus input correctly`, async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-text-field-wrapper label="Some label">
-        <input type="password" name="some-name">
-      </p-text-field-wrapper>
-    `
-    );
-
-    const button = await getTextFieldButton();
-    const input = await getTextFieldRealInput();
-
-    let inputFocusCalls = 0;
-    await addEventListener(input, 'focus', () => inputFocusCalls++);
-
-    expect(await getProperty(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(0);
-
-    await button.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(input, 'type')).toBe('text');
-    expect(inputFocusCalls).toBe(1);
-
-    await button.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(input, 'type')).toBe('password');
-    expect(inputFocusCalls).toBe(2);
   });
 
   it(`submits outer forms on click on search button, if the input is search`, async () => {

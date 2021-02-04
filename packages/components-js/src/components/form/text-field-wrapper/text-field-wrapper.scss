@@ -66,6 +66,10 @@
   outline: none !important;
 }
 
+::slotted(input[type='search']) {
+  padding-right: 3rem !important;
+}
+
 // Read only
 ::slotted(input:not(:disabled):read-only) {
   border-top-color: rgba(255, 255, 255, 0.01) !important;
@@ -211,6 +215,12 @@
     &--readonly {
       box-shadow: inset 0 0 0 1px #ebebeb;
       background-color: #ebebeb;
+    }
+
+    &--password {
+      ::slotted(input) {
+        padding-right: 3rem !important;
+      }
     }
 
     &--success {
