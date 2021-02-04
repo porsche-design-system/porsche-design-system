@@ -1,4 +1,4 @@
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { COMPONENT_CHUNK_NAMES, ComponentChunkName } from '@porsche-design-system/shared';
 import { getComponentChunks, getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
 
 describe('getFontFaceStylesheet', () => {
@@ -215,16 +215,16 @@ describe('getComponentChunks', () => {
     });
 
     it('should return multiple links', () => {
-      const result = getComponentChunks({ components: ['p-button', 'p-button-pure', 'p-marque'] });
+      const result = getComponentChunks({ components: ['button', 'button-pure', 'marque'] });
       expect(result.includes(linkEndsWithCore)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result.match(/><link/g).length).toBe(3);
       expect(result).toContain(cdnChunkUrlWithoutHash + 'v');
     });
 
-    TAG_NAMES.forEach((tagName) => {
-      it(`should return core and chunk link for ['${tagName}']`, () => {
-        const result = getComponentChunks({ components: [tagName] });
+    COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
+      it(`should return core and chunk link for ['${chunkName}']`, () => {
+        const result = getComponentChunks({ components: [chunkName] });
         expect(result.includes(linkEndsWithCore)).toBeTruthy();
         expect(result.endsWith(linkEndsWith)).toBeTruthy();
         expect(result.match(/><link/g).length).toBe(1);
@@ -254,7 +254,7 @@ describe('getComponentChunks', () => {
     });
 
     it('should return multiple urls', () => {
-      const result = getComponentChunks({ withoutTags: true, components: ['p-button', 'p-button-pure', 'p-marque'] });
+      const result = getComponentChunks({ withoutTags: true, components: ['button', 'button-pure', 'marque'] });
       expect(result.length).toBe(4);
       expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
@@ -263,12 +263,12 @@ describe('getComponentChunks', () => {
       expect(result[1].endsWith(urlEndsWith)).toBeTruthy();
     });
 
-    TAG_NAMES.forEach((tagName) => {
-      it(`should return core and chunk url for ['${tagName}']`, () => {
-        const result = getComponentChunks({ withoutTags: true, components: [tagName] });
+    COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
+      it(`should return core and chunk url for ['${chunkName}']`, () => {
+        const result = getComponentChunks({ withoutTags: true, components: [chunkName] });
         expect(result.length).toBe(2);
         expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
-        expect(result[1].match(new RegExp(`${chunkBaseName}\\.\\d+\\.`)).length).toBe(1); // verify chunk number
+        expect(result[1].match(new RegExp(`${chunkBaseName}\\.${chunkName}\\.`)).length).toBe(1); // verify chunk number
       });
     });
   });
