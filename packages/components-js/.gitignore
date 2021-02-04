@@ -5,6 +5,7 @@
 
 /tests/cbt/results
 /tests/vrt/results
+/tests/unit/results
 
 *~
 *.sw[mnpcod]
