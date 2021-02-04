@@ -484,9 +484,9 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import(`@/pages/accessibility/compliance.md`),
     ],
-    Guidelines: [
+    Workflow: [
       // @ts-ignore
-      () => import(`@/pages/accessibility/guidelines.md`),
+      () => import(`@/pages/accessibility/workflow.md`),
     ],
   },
   'Patterns': {
