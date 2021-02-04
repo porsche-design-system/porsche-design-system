@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [1.5.8] - 2021-02-04
+
 ### Fixed
 - A bug in `Text Field Wrapper` with input type password where characters would overlap the icon.
 
