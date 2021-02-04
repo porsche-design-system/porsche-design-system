@@ -112,14 +112,14 @@
   </p-tabs-item>
   <p-tabs-item label="2. Setup">
     <p-headline variant="headline-3">Integrate accessibility into your agile workflow</p-headline>
-    <p-text>If you know the basics and the importance behind accessibility, start with <strong>setting up your team and environments</strong> to effectively implement accessibility improvements into your product.</p-text>
+    <p-text>If you know the basics and the importance of accessibility, start with <strong>setting up your team and environments</strong> to effectively implement accessibility improvements into your product.</p-text>
     <p-headline variant="headline-4">Team setup</p-headline>
     <p-text-list>
       <p-text-list-item>
         In your team, designate a <strong>person responsible</strong> for accessibility.
       </p-text-list-item>
       <p-text-list-item>
-        Enable the team to <strong>improve their accessibility skills</strong> by giving time and space to learn.
+        Enable the team to <strong>improve their accessibility skills</strong> by giving them time and space to learn.
       </p-text-list-item>
       <p-text-list-item>
         <strong>Accessibility is a mindset</strong> and should be observed by every discipline like UX, Development, Writing.
@@ -131,7 +131,7 @@
         Encourage the team to <strong>account for accessibility</strong> in the earliest phases when creating and estimating stories.
       </p-text-list-item>
       <p-text-list-item>
-        Add accessibility support of <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> as an <strong>acceptance criteria</strong>, a <strong>non-functional requirement</strong> or into your <strong>definition of done</strong> to be a basic condition for each story or new feature.
+        Add accessibility support of <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> as an<strong>acceptance criterion</strong>, a <strong>non-functional requirement</strong> or into your <strong>definition of done</strong> to be a basic condition for each story or new feature.
       </p-text-list-item>
       <p-text-list-item>
         Add <strong>accessibility testing</strong> into each development sprint or QA check.
@@ -173,7 +173,7 @@
     <p-text>Building accessible software might be hard, especially if the user interface is complex comes with many interactions. Therefore it is substantial that every discipline is working together and sharing their findings with the whole team.</p-text>
     <p-headline variant="headline-5" tag="h4">Level of Web Accessibility we need to support</p-headline>
     <p-text>As a <strong>global acting company</strong> Porsche has to fulfill certain accessibility criteria which can be different from country to country. To grant a well balanced and global level of accessibility, we recommend making all web applications compliant with the <strong>Web Content Accessibility Guidelines 2.1</strong> <a href="https://www.w3.org/TR/WCAG21/">WCAG-2.1</a> at <strong>level AA</strong>.</p-text>
-    <p-text>Do not expect that accessibility is an one time effort, it is more an iterative process of constantly learning, building, testing and hopefully improving accessibility in your product. Building accessible software has to be seen as a whole concept which concerns many disciplines:</p-text>
+    <p-text>Do not expect that accessibility is a one time effort, it is more an iterative process of constantly learning, building, testing and hopefully improving accessibility in your product. Building accessible software has to be seen as a whole concept which concerns many disciplines:</p-text>
     <p-headline variant="headline-4">Design</p-headline>
     <p-text-list>
       <p-text-list-item>
@@ -183,10 +183,10 @@
         Make yourself firm with and design for every possible <strong>input device</strong> like keyboard, touch and screen reader.
       </p-text-list-item>
       <p-text-list-item>
-        <strong>Structure your designs</strong> in a logical way and split main page and content areas into smaller parts and name them accordingly (to the HTML specifications), like <strong>header, main, footer, nav, section, article, etc.</strong>.
+        <strong>Logically structure your designs</strong> and split the main page and content areas into smaller parts and name them accordingly (to the HTML specifications), like <strong>header, main, footer, nav, section, article, etc</strong>.
       </p-text-list-item>
       <p-text-list-item>
-        Always test your designs against possible <strong>contrast issues</strong> which might affect people with low vision.
+        Always test your designs against possible <strong>contrast issues</strong> that might affect people with low vision.
       </p-text-list-item>
       <p-text-list-item>
         Always provide <strong>visual support for certain states (like focus, hover, active, etc.)</strong> of trigger elements if available (e.g. links, buttons, forms, etc.). 
@@ -198,7 +198,7 @@
         Prevent <strong>flashing or moving content</strong> and time constraints of user interactions.
       </p-text-list-item>
       <p-text-list-item>
-        Follow <strong>inclusive design principles</strong> and make a rock solid and consistent user interface. 
+        Follow <strong>inclusive design principles</strong> and make a rock-solid and consistent user interface. 
       </p-text-list-item>
     </p-text-list>
     <p-headline variant="headline-5">Design Tools</p-headline>
@@ -220,7 +220,7 @@
     <p-headline variant="headline-4">Develop</p-headline>
     <p-text-list>
       <p-text-list-item>
-        <strong>"If it looks like a button and acts like a button, make it a button."</strong><br>
+        <strong>"If it looks like a button and acts as a button, make it a button."</strong><br>
         Start with <strong>valid HTML semantic</strong> and use the right HTML tags for the right purpose: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Element Reference Overview</a>.
       </p-text-list-item>
       <p-text-list-item>
@@ -245,7 +245,7 @@
     <p-headline variant="headline-5">Developer Tools</p-headline>
     <p-text-list>
       <p-text-list-item>
-        Web Developer Tools - Inspect and test your application with the Browser built in developer and accessibility tools (Firefox and Chrome).
+        Web Developer Tools - Inspect and test your application with the Browser built-in developer and accessibility tools (Firefox and Chrome).
       </p-text-list-item>
       <p-text-list-item>
         HTML Validator - Online tool to <a href="https://validator.w3.org/">validate</a> your HTML code.
@@ -334,7 +334,7 @@
             <ul>
               <li>Modal dialogs should maintain keyboard focus.</li>
               <li>Non-modal dialogs should close automatically when they lose focus.</li>
-              <li>When a dialog closes, focus should usually return to the element that opened the dialog.</li>
+              <li>When a dialog closes, the focus should usually return to the element that opened the dialog.</li>
             </ul>
           </td>
         </tr>
@@ -349,7 +349,7 @@
           <td>
             <ul>
               <li>For double-headed sliders (to set a range), <span class="key">Tab</span>/<span class="key">Shift</span> + <span class="key">Tab</span> should toggle between each end.</li>
-              <li>In some sliders <span class="key">PageUp</span>/<span class="key">PageDown</span> can move by a larger increment (e.g., by 10%).</li>
+              <li>In some sliders, <span class="key">PageUp</span>/<span class="key">PageDown</span> can move by a larger increment (e.g., by 10%).</li>
             </ul>								
           </td>
         </tr>
@@ -373,12 +373,12 @@
           <td>
             <ul>
               <li><span class="key">Tab</span> - once to navigate into the group of tabs and once to navigate out of the group of tabs</li>
-              <li><span class="key">↑</span>/<span class="key">↓</span> or <span class="key">←</span>/<span class="key">→</span> - choose and activate previous/next tab.</li>									
+              <li><span class="key">↑</span>/<span class="key">↓</span> or <span class="key">←</span>/<span class="key">→</span> - choose and activate the previous/next tab.</li>									
             </ul>
           </td>
           <td>
             <ul>
-              <li>This is for 'application' tabs that dynamically change content within the tab panel. If a menu looks like a group of tabs, but is actually a group of links to different pages, <span class="key">Tab</span> and <span class="key">Enter</span> are more appropriate.</li>
+              <li>This is for 'application' tabs that dynamically change content within the tab panel. If a menu looks like a group of tabs but is a group of links to different pages, <span class="key">Tab</span> and <span class="key">Enter</span> are more appropriate.</li>
             </ul>
           </td>
         </tr>
@@ -416,7 +416,7 @@
         For every page define a unique and descriptive <strong>Page Title</strong>.
       </p-text-list-item>
       <p-text-list-item>
-        Take care that textual content ist short, <strong>understandable</strong> and easy to read.
+        Take care that textual content is short, <strong>understandable</strong> and easy to read.
       </p-text-list-item>
       <p-text-list-item>
         Provide <strong>textual alternatives</strong> to images, videos, charts and every content which transports meaning without text.
@@ -432,10 +432,10 @@
   <p-tabs-item label="4. Audit">
     <p-headline variant="headline-3">Make an Audit</p-headline>
     <p-text>
-      In most cases a software application is orchestrated out of many individual components, modules, micro services and even 3rd party software. Though each of them should be tested and verified during development, we have to make sure, that they all fit into the application and are <strong>accessibility compliant</strong> as a whole.
+      In most cases, a software application is orchestrated out of many individual components, modules, microservices and even 3rd party software. Though each of them should be tested and verified during development, we have to make sure, that they all fit into the application and are <strong>accessibility compliant</strong> as a whole.
       This is where an Accessibility Audit comes into play.
     </p-text>
-    <p-headline variant="headline-3">Pre requisites</p-headline>
+    <p-headline variant="headline-3">Prerequisites</p-headline>
     <p-text>To perform an Accessibility Audit you should define what and how to test.</p-text>
     <p-text-list>
       <p-text-list-item>
@@ -456,13 +456,13 @@
     </p-text-list>
     <p-headline variant="headline-3">Accessibility Checklist</p-headline>
     <p-text>
-      The <strong>Accessibility Checklist</strong> gives you guidance what tests should be performed by an Accessibility Audit. It contains a set of basic rules which are mandatory for the most web applications. 
-      Be aware that this list is not a complete guidance to achieve full accessibility compliance regarding the official <strong>WCAG 2.1 AA</strong> specifications.
+      The <strong>Accessibility Checklist</strong> guides you on what tests should be performed by an Accessibility Audit. It contains a set of basic rules which are mandatory for most web applications. 
+      Be aware that this list is not complete guidance to achieve full accessibility compliance regarding the official <strong>WCAG 2.1 AA</strong> specifications.
       For <strong>full WCAG 2.1 AA compliance</strong>, head over to <a href="https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&levels=aaa">How to meet WCAG (Quick Reference)</a>. 
     </p-text>
     <p-headline variant="headline-4">Top 5</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Does <strong>descriptive alt text</strong> on images accurately reflects the purpose of the image and/or provides an accurate description?</span>
+      <span slot="label">Does <strong>descriptive alt text</strong> on images accurately reflect the purpose of the image and/or provides an accurate description?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -491,7 +491,7 @@
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
-      <span slot="label">Is a <strong>"Skip Navigation"</strong> link at the top of pages provided which allows assistive technologies to skip directly to the page’s main content?</span>
+      <span slot="label">Is a <strong>"Skip Navigation"</strong> link at the top of pages provided that allows assistive technologies to skip directly to the page’s main content?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -535,7 +535,7 @@
     </p-checkbox-wrapper>
     <p-headline variant="headline-4">Forms</p-headline>
     <p-checkbox-wrapper>
-      <span slot="label">Does every form element has a corresponding <strong>descriptive label</strong>?</span>
+      <span slot="label">Does every form element have a corresponding <strong>descriptive label</strong>?</span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -567,46 +567,46 @@
   </p-tabs-item>
   <p-tabs-item label="5. Sustain">
     <p-headline variant="headline-3">Accessibility is never done</p-headline>
-    <p-text>Though your team has weighed in a lot of effort regarding accessibility and your application seems to be full accessible compliant, your work is not done yet. With every change, with every new feature, with every update comes the responsibility that accessibility remains a priority and issues are identified and solved.</p-text>
+    <p-text>Though your team has weighed in a lot of effort regarding accessibility and your application seems to be fully accessible compliant, your work is not done yet. With every change, with every new feature, with every update comes the responsibility that accessibility remains a priority and issues are identified and solved.</p-text>
     <p-headline variant="headline-4">Monitor</p-headline>
-    <p-text>Integrating an <strong>automated accessibility test</strong> into your build pipeline is a good starting point to keep track on possible issues when the application is updated. But automated testing covers only up to 20% of possible issues. Therefore it is a good choice to have audits and <strong>manual tests</strong> on a regular basis.</p-text>
-    <p-text>Monitoring your application is mandatory and should be part of your product workflow. Monitoring shouldn't be limited to finding issues but <strong>measuring your progress</strong> should be part as well.</p-text>
+    <p-text>Integrating an <strong>automated accessibility test</strong> into your build pipeline is a good starting point to keep track of possible issues when the application is updated. But automated testing covers only up to 20% of possible issues. Therefore it is a good choice to have audits and <strong>manual tests</strong> regulary.</p-text>
+    <p-text>Monitoring your application is mandatory and should be part of your production workflow. Monitoring shouldn't be limited to finding issues but <strong>measuring your progress</strong> should be part as well.</p-text>
     <p-text>Some of possible measurable criteria could be:</p-text>
     <p-text-list>
       <p-text-list-item>
-        Number of WCAG Success Criteria passed, and their level.
+        The number of WCAG Success Criteria passed, and their level.
       </p-text-list-item>
       <p-text-list-item>
         Number of complaints received related to accessibility.
       </p-text-list-item>
       <p-text-list-item>
-        Calls handled from people who were unable to process their application online.
+        Calls were handley by people who were unable to process their application online.
       </p-text-list-item>
       <p-text-list-item>
-        Positive social media comments on accessibility of service.
+        Positive social media comments on the accessibility of service.
       </p-text-list-item>
     </p-text-list>
     <p-headline variant="headline-4">Prioritize</p-headline>
     <p-text>If accessibility issues are detected, it is common to prioritize them regarding their estimated effort and they might be prioritized down so that other development goals could be achieved. This shouldn't happen but as we all know this can happen e.g. due to tight timelines.</p-text>
-    <p-text>To prevent this situation of always prioritizing down, make sure to split accessibility issues in smaller stories an plan at least a fixed number in every sprint. Always keep in mind, that the later accessibility is observed the more effort it will take to implement. </p-text>
+    <p-text>To prevent this situation of always prioritizing down, make sure to split accessibility issues into smaller stories and plan at least a fixed number in every sprint. Always keep in mind, that the later accessibility is observed the more effort it will take to implement. </p-text>
     <p-headline variant="headline-4">Track standards and laws</p-headline>
-    <p-text>Though it might give the impression that the official standards of <strong>WCAG 2.1</strong> doesn't have changed since a decade, the W3C is actually working on the following standard of <strong>WCAG 3.0</strong> which currently is in a first public working draft. So it's a good choice to keep up with the latest progressions and be prepared if they are released.</p-text>
+    <p-text>Though it might give the impression that the official standards of <strong>WCAG 2.1</strong> don't have changed since a decade, the W3C is working on the following standard of <strong>WCAG 3.0</strong> which currently is in a first public working draft. So it's a good choice to keep up with the latest progressions and be prepared if they are released.</p-text>
     <p-text>But not only the official standards may change, even more important is to keep an eye on <strong>worldwide laws and policies</strong> and how they are handled by regions and countries. Here are some of the latest changes in important markets:</p-text>
     <p-text-list>
       <p-text-list-item>
-        In Canada the Accessibility for Ontarians with Disabilities Act dictates that private or non-profit organizations with more than 50 employees have to <strong>accessibility compliant</strong> with WCAG 2.0 AA <strong>from January 2021</strong>.
+        In Canada, the Accessibility for Ontarians with Disabilities Act dictates that private or non-profit organizations with more than 50 employees have to <strong>accessibility compliant</strong> with WCAG 2.0 AA <strong>from January 2021</strong>.
       </p-text-list-item>
       <p-text-list-item>
         In the U.S. they are working on a new <strong>Online Accessibility Act</strong> which will extend the current <strong>Americans with Disabilities Act</strong> to cover <strong>consumer-facing websites</strong> and mobile applications that are owned or operated by a private entity.
       </p-text-list-item>
       <p-text-list-item>
-        Europe adopted the <strong>Europeans with Disabilities Act</strong> in 2019 which also includes the accessibility conformance of <strong>e-commerce</strong> and mobile applications applications.
+        Europe adopted the <strong>Europeans with Disabilities Act</strong> in 2019 which also includes the accessibility conformance of <strong>e-commerce</strong> and mobile applications.
       </p-text-list-item>
     </p-text-list>
     <p-headline variant="headline-4">Adapt to new technologies</p-headline>
     <p-text>Not only Browsers do evolve, but also <strong>assistive technologies</strong>. Include devices like screen readers into your support list and enhance your tests also to mobile devices which come with huge improvements and tools for people with disabilities to better access your applications.</p-text>
     <p-headline variant="headline-4">Hear your users</p-headline>
-    <p-text>User feedback is one og the most valuable things you can get. By adding an <strong>Accessibility Statement</strong> on your application, you give users a good overview of the current state of accessibility and give the possibility for direct feedback as well.</p-text>
+    <p-text>User feedback is one of the most valuable things you can get. By adding an <strong>Accessibility Statement</strong> on your application, you give users a good overview of the current state of accessibility and give the possibility for direct feedback as well.</p-text>
     <p-headline variant="headline-4">Share your knowledge</p-headline>
     <p-text>As we all know, building accessible products is not easy. The more we have to pull together and exchange our knowledge and experiences. As a starting point, take part in our (upcoming) <strong>Accessibility-Guild</strong> on Slack.</p-text>
     <p-text>But not only sharing experiences is helpful for others, but also showing your successes. <strong>Be proud of building better products for everyone!</strong></p-text>
