@@ -10,7 +10,7 @@ import {
 import { Page } from 'puppeteer';
 import { IconName } from '@porsche-design-system/components/dist/types/bundle';
 
-describe('p-icon', () => {
+describe('icon', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));
@@ -90,36 +90,36 @@ describe('p-icon', () => {
       });
     };
 
-      it('should load icon if lazy attribute is set to true', async () => {
-        await setSvgRequestInterceptor(page, []);
-        await initIcon({ name: 'highway', isLazy: true });
+    it('should load icon if lazy attribute is set to true', async () => {
+      await setSvgRequestInterceptor(page, []);
+      await initIcon({ name: 'highway', isLazy: true });
 
-        expect(await getContent()).toContain('highway');
+      expect(await getContent()).toContain('highway');
+    });
+
+    it('should load icon if lazy attribute is set to false and icon is outside of viewport', async () => {
+      await setSvgRequestInterceptor(page, []);
+      await setContentWithDesignSystem(
+        page,
+        `<div style="height:1000px"></div><p-icon lazy="false" name="information"></p-icon>`
+      );
+
+      expect(await getContent()).toContain('information');
+    });
+
+    it('should load icon lazily if scrolled into viewport', async () => {
+      await setSvgRequestInterceptor(page, []);
+      await initIcon({ name: 'information', isLazy: true, isScrollable: true });
+
+      expect(await getContent()).not.toContain('information');
+
+      await page.evaluate(() => {
+        window.scrollTo(0, document.body.scrollHeight);
       });
+      await waitForStencilLifecycle(page);
 
-      it('should load icon if lazy attribute is set to false and icon is outside of viewport', async () => {
-        await setSvgRequestInterceptor(page, []);
-        await setContentWithDesignSystem(
-          page,
-          `<div style="height:1000px"></div><p-icon lazy="false" name="information"></p-icon>`
-        );
-
-        expect(await getContent()).toContain('information');
-      });
-
-      it('should load icon lazily if scrolled into viewport', async () => {
-        await setSvgRequestInterceptor(page, []);
-        await initIcon({ name: 'information', isLazy: true, isScrollable: true });
-
-        expect(await getContent()).not.toContain('information');
-
-        await page.evaluate(() => {
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-        await waitForStencilLifecycle(page);
-
-        expect(await getContent()).toContain('information');
-      });
+      expect(await getContent()).toContain('information');
+    });
 
     initOptions.forEach((opts) => {
       describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
