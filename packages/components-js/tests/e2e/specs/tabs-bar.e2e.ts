@@ -17,6 +17,7 @@ import {
   getOutlineStyle,
   getLifecycleStatus,
 } from '../helpers';
+import { TabSize } from '@porsche-design-system/components/dist/types/types';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
@@ -27,17 +28,20 @@ describe('tabs-bar', () => {
   beforeEach(async () => (page = await getBrowser().newPage()));
   afterEach(async () => await page.close());
 
-  const initTabsBar = async (opts?: {
+  type InitOptions = {
     amount?: number;
     activeTabIndex?: number;
+    size?: TabSize;
     isWrapped?: boolean;
     otherMarkup?: string;
     tag?: 'a' | 'button';
-  }) => {
-    const { amount = 8, activeTabIndex, isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
+  };
+
+  const initTabsBar = async (opts?: InitOptions) => {
+    const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-    const content = `<p-tabs-bar ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
+    const content = `<p-tabs-bar size="${size}" ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
   ${Array.from(Array(amount))
     .map((_, i) => `<${tag}${attributes}>Tab Button ${i + 1}</${tag}>`)
     .join('')}
@@ -491,57 +495,99 @@ describe('tabs-bar', () => {
 
   describe('next/prev buttons', () => {
     const hiddenClass = 'p-tabs-bar__action--hidden';
+    const tabSizes: TabSize[] = ['small', 'medium'];
 
-    it('should not show prev/next buttons only on vertical scroll', async () => {
-      await initTabsBar({ amount: 5, activeTabIndex: 1, otherMarkup: '<div style="height: 120vh"></div>' });
-      const { actionPrev, actionNext } = await getActionContainers();
+    tabSizes.forEach((size) => {
+      describe(`size = ${size} `, () => {
+        it('should not show prev/next buttons only on vertical scroll', async () => {
+          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
+          const { actionPrev, actionNext } = await getActionContainers();
 
-      await page.evaluate(() => window.scroll(0, 20));
-      await waitForStencilLifecycle(page);
+          await page.evaluate(() => window.scroll(0, 20));
+          await waitForStencilLifecycle(page);
 
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+        });
+
+        it('should only show next button', async () => {
+          await initTabsBar({ amount: 4, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
+
+          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+        });
+
+        it('should only show prev button', async () => {
+          await initTabsBar({ amount: 20, activeTabIndex: 19, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
+
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+        });
+
+        it('should show prev and next button', async () => {
+          await initTabsBar({ amount: 7, activeTabIndex: 1, size, isWrapped: true });
+          const { actionPrev, actionNext } = await getActionContainers();
+
+          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+        });
+
+        it('should not show prev/next buttons without children', async () => {
+          await setContentWithDesignSystem(page, `<p-tabs-bar size="${size}"></p-tabs-bar>`);
+          const { actionPrev, actionNext } = await getActionContainers();
+
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+        });
+
+        it('should have label of prev/next buttons in dom', async () => {
+          await initTabsBar({ size });
+
+          const { nextButton, prevButton } = await getPrevNextButton();
+
+          expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
+          expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+        });
+
+        it('should not show prev/next buttons only on vertical scroll', async () => {
+          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
+          const { actionPrev, actionNext } = await getActionContainers();
+
+          await page.evaluate(() => window.scroll(0, 20));
+          await waitForStencilLifecycle(page);
+
+          expect(await getClassList(actionPrev)).toContain(hiddenClass);
+          expect(await getClassList(actionNext)).toContain(hiddenClass);
+        });
+      });
     });
 
-    it('should only show next button', async () => {
-      await initTabsBar({ amount: 4, isWrapped: true });
-      const { actionPrev, actionNext } = await getActionContainers();
+    describe('gradient next rounding edge case', () => {
+      // There seems to be an rounding issue that causes the <button> elements to exceed the scroll container,
+      // therefore the trigger gets pushed outside and the gradient is always shown.
+      // To ensure the buttons exceed the width of the wrapping div we need to assign static width values.
+      const DECIMAL_FACTOR = 0.1;
+      for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
+        it('should not show next button in edge case scenario', async () => {
+          const style = `style="width:${i}px"`;
 
-      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
-    });
+          await setContentWithDesignSystem(
+            page,
+            `
+              <div style="width: 300px">
+                <p-tabs-bar size="medium" active-tab-index="1">
+                  <button style="width: 150px" type="button">A</button>
+                  <button ${style} type="button">B</button>
+                </p-tabs-bar>
+              </div>`
+          );
+          const { actionNext } = await getActionContainers();
 
-    it('should only show prev button', async () => {
-      await initTabsBar({ amount: 20, activeTabIndex: 19, isWrapped: true });
-      const { actionPrev, actionNext } = await getActionContainers();
-
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-    });
-
-    it('should show prev and next button', async () => {
-      await initTabsBar({ amount: 7, activeTabIndex: 1, isWrapped: true });
-      const { actionPrev, actionNext } = await getActionContainers();
-
-      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-    });
-
-    it('should not show prev/next buttons without children', async () => {
-      await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
-      const { actionPrev, actionNext } = await getActionContainers();
-
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
-    });
-
-    it('should have label of prev/next buttons in dom', async () => {
-      await initTabsBar();
-
-      const { nextButton, prevButton } = await getPrevNextButton();
-
-      expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
-      expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
+          expect(await getClassList(actionNext)).toContain(hiddenClass, `On size ${i}`);
+        });
+      }
     });
   });
 
