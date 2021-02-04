@@ -1,5 +1,5 @@
 import { COMPONENT_CHUNK_NAMES, ComponentChunkName } from '@porsche-design-system/shared';
-import { getComponentChunks, getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
+import { getComponentChunkLinks, getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
 
 describe('getFontFaceStylesheet', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
@@ -190,10 +190,22 @@ describe('getFontLinks', () => {
   });
 });
 
-describe('getComponentChunks', () => {
+describe('getComponentChunkLinks', () => {
   const chunkBaseName = 'porsche-design-system';
   const cdnChunkUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/components/${chunkBaseName}.`;
   const cdnChunkUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/components/${chunkBaseName}.`;
+
+  it('should throw error on invalid components parameter', () => {
+    let error;
+    try {
+      getComponentChunkLinks({ components: ['some-invalid-component'] as any[] });
+    } catch (e) {
+      error = e.message;
+    }
+
+    expect(error).toContain('The following supplied components are invalid:');
+    expect(error).toContain('some-invalid-component');
+  });
 
   describe('url with tag', () => {
     const linkStartsWith = '<link rel=preload href=';
@@ -201,21 +213,21 @@ describe('getComponentChunks', () => {
     const linkEndsWith = 'as=script>';
 
     it('should return core link by default', () => {
-      const result = getComponentChunks();
+      const result = getComponentChunkLinks();
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWithCore)).toBeTruthy();
       expect(result).toContain(cdnChunkUrlWithoutHash + 'v');
     });
 
     it('should return default core China CDN link', () => {
-      const result = getComponentChunks({ cdn: 'cn' });
+      const result = getComponentChunkLinks({ cdn: 'cn' });
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWithCore)).toBeTruthy();
       expect(result).toContain(cdnChunkUrlCnWithoutHash + 'v');
     });
 
     it('should return multiple links', () => {
-      const result = getComponentChunks({ components: ['button', 'button-pure', 'marque'] });
+      const result = getComponentChunkLinks({ components: ['button', 'button-pure', 'marque'] });
       expect(result.includes(linkEndsWithCore)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result.match(/><link/g).length).toBe(3);
@@ -224,7 +236,7 @@ describe('getComponentChunks', () => {
 
     COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
       it(`should return core and chunk link for ['${chunkName}']`, () => {
-        const result = getComponentChunks({ components: [chunkName] });
+        const result = getComponentChunkLinks({ components: [chunkName] });
         expect(result.includes(linkEndsWithCore)).toBeTruthy();
         expect(result.endsWith(linkEndsWith)).toBeTruthy();
         expect(result.match(/><link/g).length).toBe(1);
@@ -238,7 +250,7 @@ describe('getComponentChunks', () => {
     const urlEndsWith = '.js';
 
     it('should return core url by default', () => {
-      const result = getComponentChunks({ withoutTags: true });
+      const result = getComponentChunkLinks({ withoutTags: true });
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -246,7 +258,7 @@ describe('getComponentChunks', () => {
     });
 
     it('should return default core China CDN url', () => {
-      const result = getComponentChunks({ withoutTags: true, cdn: 'cn' });
+      const result = getComponentChunkLinks({ withoutTags: true, cdn: 'cn' });
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -254,7 +266,7 @@ describe('getComponentChunks', () => {
     });
 
     it('should return multiple urls', () => {
-      const result = getComponentChunks({ withoutTags: true, components: ['button', 'button-pure', 'marque'] });
+      const result = getComponentChunkLinks({ withoutTags: true, components: ['button', 'button-pure', 'marque'] });
       expect(result.length).toBe(4);
       expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
@@ -265,7 +277,7 @@ describe('getComponentChunks', () => {
 
     COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
       it(`should return core and chunk url for ['${chunkName}']`, () => {
-        const result = getComponentChunks({ withoutTags: true, components: [chunkName] });
+        const result = getComponentChunkLinks({ withoutTags: true, components: [chunkName] });
         expect(result.length).toBe(2);
         expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
         expect(result[1].match(new RegExp(`${chunkBaseName}\\.${chunkName}\\.`)).length).toBe(1); // verify chunk number

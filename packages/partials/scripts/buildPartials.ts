@@ -145,35 +145,46 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
   return [types, func].join('\n\n');
 };
 
-const generateComponentChunksPartial = (): string => {
+const generateComponentChunkLinksPartial = (): string => {
   const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
   // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
   const types = `type ComponentChunkName = ${chunkNamesTypeLiteral || 'any'};
 
-type ComponentChunksOptions = {
+type ComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
   withoutTags?: boolean;
 };
-type ComponentChunksOptionsWithTags = ComponentChunksOptions & {
+type ComponentChunkLinksOptionsWithTags = ComponentChunkLinksOptions & {
   withoutTags?: false;
 };
-type ComponentChunksOptionsWithoutTags = ComponentChunksOptions & {
+type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
   withoutTags?: true;
 };`;
 
   const link = minifyHTML('<link rel="preload" href="$URL" as="script">').replace('$URL', '${url}');
 
-  const func = `export function getComponentChunks(opts?: ComponentChunksOptionsWithTags): string;
-export function getComponentChunks(opts?: ComponentChunksOptionsWithoutTags): string[];
-export function getComponentChunks(opts?: ComponentChunksOptions): string | string[] {
-  const options: ComponentChunksOptions = {
+  const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
+export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];
+export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): string | string[] {
+  const options: ComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',
     withoutTags: false,
     ...opts
   };
   const { components, cdn, withoutTags } = options;
+
+  const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
+  const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
+
+  if (invalidComponentChunkNames.length) {
+    throw new Error(\`The following supplied components are invalid:
+  \${invalidComponentChunkNames.join(', ')  }
+
+Please use only valid ones:
+  \${supportedComponentChunkNames.join(', ')}\`);
+  }
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
@@ -198,7 +209,7 @@ const generatePartials = async (): Promise<void> => {
     generateFontFaceStylesheetPartial(),
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
-    generateComponentChunksPartial(),
+    generateComponentChunkLinksPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
