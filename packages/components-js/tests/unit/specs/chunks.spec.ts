@@ -1,7 +1,21 @@
+import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 
 describe('chunks', () => {
+  const indexJsFile = require.resolve('@porsche-design-system/components-js');
+  const distDir = path.resolve(indexJsFile, '../..');
+  const chunksDir = path.resolve(distDir, 'components');
+  const chunkFileNames = fs.readdirSync(chunksDir); // TODO: use CHUNK_MANIFEST once it's available
+  const chunkFiles = [indexJsFile].concat(
+    chunkFileNames.map((chunkFileName) => path.resolve(chunksDir, chunkFileName))
+  );
+
+  const getChunkContent = (chunkName: string): string => {
+    const [chunkFile] = chunkFiles.filter((x) => x.includes(chunkName));
+    return fs.readFileSync(chunkFile, 'utf8');
+  };
+
   describe('chunk size', () => {
     const baseDir = path.resolve(path.normalize('./'), 'tests/unit');
     const fixturesDir = path.resolve(baseDir, 'fixtures');
@@ -10,8 +24,10 @@ describe('chunks', () => {
 
     type StatsResult = {
       chunkName: string;
+      chunkShortName: string;
       oldSize: number;
       newSize: number;
+      newGzipSize: number;
       diffSize: number;
     };
     const statsResults: StatsResult[] = [];
@@ -39,16 +55,18 @@ describe('chunks', () => {
     statsResult.assets
       .sort((a, b) => (a.chunks[0] > b.chunks[0] ? 1 : -1))
       .forEach((assetResult) => {
-        const [chunkName] = assetResult.chunks;
-        const { size: newSize } = assetResult;
+        const [chunkShortName] = assetResult.chunks;
+        const { name: chunkName, size: newSize } = assetResult;
 
-        const assetFixture = statsFixture.assets.find((x) => x.chunks[0] === chunkName);
+        const assetFixture = statsFixture.assets.find((x) => x.chunks[0] === chunkShortName);
         const { size: oldSize } = assetFixture;
 
         const stat: StatsResult = {
           chunkName,
+          chunkShortName,
           oldSize,
           newSize,
+          newGzipSize: gzipSize.sync(getChunkContent(chunkName)),
           diffSize: newSize - oldSize,
         };
 
@@ -69,23 +87,24 @@ describe('chunks', () => {
       const formatDiff = (oldSize: number, diffSize: number): string =>
         `${getSign(diffSize)}${(diffSize / oldSize).toFixed(2)} %`;
 
-      const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %'];
+      const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %', 'gzipSize'];
 
       const tableHead = [
         header.map((x, idx) => (idx === 0 ? formatFirstCol(x) : formatNumberCol(x))),
-        Array.from(Array(5)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+        Array.from(Array(6)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
       ]
         .map((arr) => arr.join(''))
         .join('\n');
 
       const tableBody = statsResults
-        .map(({ chunkName, oldSize, newSize, diffSize }) =>
+        .map(({ chunkShortName, oldSize, newSize, diffSize, newGzipSize }) =>
           [
-            formatFirstCol(chunkName),
+            formatFirstCol(chunkShortName),
             formatNumberCol(`${formatKB(oldSize)}`),
             formatNumberCol(`${formatKB(newSize)}`),
             formatNumberCol(`${formatKB(diffSize, true)}`),
             formatNumberCol(`${formatDiff(oldSize, diffSize)}`),
+            formatNumberCol(`${formatKB(newGzipSize)}`),
           ].join('')
         )
         .join('\n');
@@ -96,37 +115,27 @@ describe('chunks', () => {
   });
 
   describe('chunk content', () => {
-    const indexJsFile = require.resolve('@porsche-design-system/components-js');
-    const chunksDir = path.resolve(indexJsFile, '../../components');
-    const chunkFileNames = fs.readdirSync(chunksDir);
-
-    const getFileContent = (chunkName: string): string => {
-      const [chunkFileName] = chunkFileNames.filter((x) => x.includes(chunkName));
-      const chunkJsFile = path.resolve(chunksDir, chunkFileName);
-      return fs.readFileSync(chunkJsFile, 'utf8');
-    };
-
     it('marque chunk should not contain icon manifest', () => {
-      const marqueJsCode = getFileContent('marque');
+      const marqueJsCode = getChunkContent('marque');
       expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
       expect(marqueJsCode).not.toContain('arrowDoubleDown');
     });
 
     it('icon chunk should not contain marque manifest', () => {
-      const iconJsCode = getFileContent('icon');
+      const iconJsCode = getChunkContent('icon');
       expect(iconJsCode).not.toContain('/porsche-design-system/marque');
       expect(iconJsCode).not.toContain('porscheMarque');
     });
 
     it('should not contain localhost in web components manager', () => {
-      const content = fs.readFileSync(indexJsFile, 'utf8');
+      const content = getChunkContent('index.js');
       expect(content).not.toContain('localhost');
     });
 
+    // TODO: use CHUNK_MANIFEST once it's available
     chunkFileNames.forEach((chunkFileName) => {
-      // TODO: use CHUNK_MANIFEST once it's available
       it(`should not contain localhost in ${chunkFileName}`, () => {
-        const content = getFileContent(chunkFileName);
+        const content = getChunkContent(chunkFileName);
         expect(content).not.toContain('localhost');
       });
     });
