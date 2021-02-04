@@ -1,5 +1,5 @@
 import {
-  getComponentChunks,
+  getComponentChunkLinks,
   getFontFaceStylesheet,
   getInitialStyles,
 } from '@porsche-design-system/components-react/partials';
@@ -17,9 +17,9 @@ describe('partials', () => {
     });
   });
 
-  describe('getComponentChunks()', () => {
+  describe('getComponentChunkLinks()', () => {
     it('should be a function', () => {
-      expect(typeof getComponentChunks).toBe('function');
+      expect(typeof getComponentChunkLinks).toBe('function');
     });
   });
 });
