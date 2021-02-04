@@ -10,7 +10,6 @@ type Manifest = {
 const createManifest = (indexJsFile: string): Manifest => {
   // read web components manager to retrieve url to stencil core entrypoint
   const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
-
   const [, coreFileName] = /\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
 
   // read stencil core entrypoint to retrieve component chunk mapping
@@ -38,9 +37,15 @@ const createManifest = (indexJsFile: string): Manifest => {
 };
 
 const generateChunksManifest = (): void => {
+  let manifest: Manifest = {}; // fallback
+
   const packageName = '@porsche-design-system/components-js';
-  const indexJsFile = require.resolve(packageName);
-  const manifest = createManifest(indexJsFile);
+  try {
+    const indexJsFile = require.resolve(packageName);
+    manifest = createManifest(indexJsFile);
+  } catch (e) {
+    console.log(`Error: ${packageName} can't be resolved, so manifest will be empty`);
+  }
 
   const chunkNames = Object.keys(manifest).filter((chunkName) => chunkName !== 'core');
   const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};

@@ -64,7 +64,7 @@
     "build:meta-icons": "yarn --cwd packages/meta-icons build",
     "build:components": "yarn --cwd ./packages/components build",
     "build:components-prod": "yarn --cwd ./packages/components build-prod",
-    "build:components-js": "yarn --cwd ./packages/components-js build && yarn build:assetsCopyComponentsOnly",
+    "build:components-js": "yarn --cwd ./packages/components-js build && yarn build:assetsCopyComponentsOnly && yarn build:shared",
     "build:components-js-prod": "yarn --cwd ./packages/components-js build-prod && yarn build:assetsCopyComponentsOnly && yarn build:shared",
     "build:components-angular": "yarn --cwd ./packages/components-angular build",
     "build:components-react": "yarn --cwd ./packages/components-react build",
