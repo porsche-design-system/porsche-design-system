@@ -82,10 +82,13 @@ describe('chunks', () => {
       const formatFirstCol = (content: string, fillString?: string): string => content.padEnd(25, fillString);
       const formatNumberCol = (content: string, fillString?: string): string => content.padStart(12, fillString);
       const getSign = (val: number): string => (val > 0 ? '+' : '');
-      const formatKB = (input: number, displaySign?: boolean): string =>
-        `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
-      const formatDiff = (oldSize: number, diffSize: number): string =>
-        `${getSign(diffSize)}${(diffSize / oldSize).toFixed(2)} %`;
+      const formatKB = (input: number, displaySign?: boolean): string => {
+        return `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
+      };
+      const formatPercent = (oldSize: number, diffSize: number): string => {
+        const value = (diffSize / oldSize).toFixed(2);
+        return `${getSign(parseFloat(value))}${value} %`;
+      };
 
       const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %', 'gzipSize'];
 
@@ -103,7 +106,7 @@ describe('chunks', () => {
             formatNumberCol(`${formatKB(oldSize)}`),
             formatNumberCol(`${formatKB(newSize)}`),
             formatNumberCol(`${formatKB(diffSize, true)}`),
-            formatNumberCol(`${formatDiff(oldSize, diffSize)}`),
+            formatNumberCol(`${formatPercent(oldSize, diffSize)}`),
             formatNumberCol(`${formatKB(newGzipSize)}`),
           ].join('')
         )
