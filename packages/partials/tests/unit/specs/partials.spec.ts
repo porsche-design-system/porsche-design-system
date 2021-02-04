@@ -82,6 +82,43 @@ describe('getFontLinks', () => {
   const urlStartsWith = 'https://';
   const urlEndsWith = '.woff2';
 
+  describe('validation', () => {
+    it('should throw error on invalid font weights option', () => {
+      let error;
+      try {
+        getFontLinks({ weights: ['some-invalid-weight'] as any[] });
+      } catch (e) {
+        error = e.message;
+      }
+
+      expect(error).toContain('The following supplied font weights are invalid:');
+      expect(error).toContain('some-invalid-weight');
+    });
+
+    it('should throw error on invalid font subset option', () => {
+      let error;
+      try {
+        getFontLinks({ subset: 'some-invalid-subset' as any });
+      } catch (e) {
+        error = e.message;
+      }
+
+      expect(error).toContain('The following supplied font subset is invalid:');
+      expect(error).toContain('some-invalid-subset');
+    });
+
+    it('should throw error on invalid weight options', () => {
+      let error;
+      try {
+        getFontLinks({ weight: ['latin'] } as any);
+      } catch (e) {
+        error = e.message;
+      }
+
+      expect(error).toBe('Option "weight" is not supported, please use "weights" instead');
+    });
+  });
+
   describe('url with tag', () => {
     it('should return default link', () => {
       const result = getFontLinks();
@@ -113,7 +150,7 @@ describe('getFontLinks', () => {
     ])(
       'should return %s subset and %s weight link',
       (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
-        const result = getFontLinks({ subset, weight: [weight] });
+        const result = getFontLinks({ subset, weights: [weight] });
         expect(result.startsWith(linkStartsWith)).toBeTruthy();
         expect(result.endsWith(linkEndsWith)).toBeTruthy();
         expect(result).toContain(cdnFontUrlWithoutHash + expected);
@@ -121,7 +158,7 @@ describe('getFontLinks', () => {
     );
 
     it('should return multiple links', () => {
-      const result = getFontLinks({ weight: ['regular', 'semi-bold'] });
+      const result = getFontLinks({ weights: ['regular', 'semi-bold'] });
       expect(result.startsWith(linkStartsWith)).toBeTruthy();
       expect(result.endsWith(linkEndsWith)).toBeTruthy();
       expect(result).toContain('><link');
@@ -169,7 +206,7 @@ describe('getFontLinks', () => {
     ])(
       'should return %s subset and %s weight url',
       (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
-        const result = getFontLinks({ withoutTags: true, subset, weight: [weight] });
+        const result = getFontLinks({ withoutTags: true, subset, weights: [weight] });
         expect(result.length).toBe(1);
         expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
         expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -178,7 +215,7 @@ describe('getFontLinks', () => {
     );
 
     it('should return multiple urls', () => {
-      const result = getFontLinks({ withoutTags: true, weight: ['regular', 'semi-bold'] });
+      const result = getFontLinks({ withoutTags: true, weights: ['regular', 'semi-bold'] });
       expect(result.length).toBe(2);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -203,7 +240,7 @@ describe('getComponentChunkLinks', () => {
       error = e.message;
     }
 
-    expect(error).toContain('The following supplied components are invalid:');
+    expect(error).toContain('The following supplied component chunk names are invalid:');
     expect(error).toContain('some-invalid-component');
   });
 

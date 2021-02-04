@@ -82,13 +82,16 @@ export const getInitialStyles = (opts?: InitialStylesOptions): string => {
 };
 
 const generateFontLinksPartial = (): string => {
-  const types = `type FontSubset = 'latin' | 'greek' | 'cyril';
-type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold';
+  const fontSubsets = ['latin', 'greek', 'cyril'];
+  const fontWeights = ['thin', 'regular', 'semi-bold', 'bold'];
+
+  const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
+type FontWeight = ${fontWeights.map((x) => `'${x}'`).join(' | ')};
 type FontPreloadLinkOptions = {
   subset?: FontSubset;
-  weight?: FontWeight[];
+  weights?: FontWeight[];
   cdn?: Cdn;
-  withoutTags?: true | false;
+  withoutTags?: boolean;
 }
 type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
   withoutTags?: false;
@@ -108,12 +111,17 @@ export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[]
 export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
   const options: FontPreloadLinkOptions = {
     subset: 'latin',
-    weight: ['regular'],
+    weights: ['regular'],
     cdn: 'auto',
     withoutTags: false,
     ...opts
   };
-  const { subset, weight, cdn, withoutTags } = options;
+  const { subset, weights, cdn, withoutTags } = options;
+
+  if (options['weight']) {
+    throw new Error('Option "weight" is not supported, please use "weights" instead');
+  }
+
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts = {
     latin: {
@@ -136,7 +144,29 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
     }
   };
 
-  const urls = weight.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
+  const supportedSubsets: FontSubset[] = ${JSON.stringify(fontSubsets)};
+  const supportedWeights: FontWeight[] = ${JSON.stringify(fontWeights)};
+
+  const isSubsetInvalid = !supportedSubsets.includes(subset);
+  const invalidWeights = weights.filter((x) => !supportedWeights.includes(x));
+
+  if (isSubsetInvalid) {
+    throw new Error(\`The following supplied font subset is invalid:
+  \${subset}
+
+Please use only valid font subset:
+  \${supportedSubsets.join(', ')}\`);
+  }
+
+  if (invalidWeights.length) {
+    throw new Error(\`The following supplied font weights are invalid:
+  \${invalidWeights.join(', ')}
+
+Please use only valid font weights:
+  \${supportedWeights.join(', ')}\`);
+  }
+
+  const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
   const links = urls.map((link) => \`${link}\`).join('');
 
   return withoutTags ? urls : links;
@@ -179,10 +209,10 @@ export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): strin
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
 
   if (invalidComponentChunkNames.length) {
-    throw new Error(\`The following supplied components are invalid:
-  \${invalidComponentChunkNames.join(', ')  }
+    throw new Error(\`The following supplied component chunk names are invalid:
+  \${invalidComponentChunkNames.join(', ')}
 
-Please use only valid ones:
+Please use only valid component chunk names:
   \${supportedComponentChunkNames.join(', ')}\`);
   }
 
