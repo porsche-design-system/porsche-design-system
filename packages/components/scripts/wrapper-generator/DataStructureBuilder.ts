@@ -1,4 +1,4 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import { InputParser } from './InputParser';
 
 export type ExtendedProp = {

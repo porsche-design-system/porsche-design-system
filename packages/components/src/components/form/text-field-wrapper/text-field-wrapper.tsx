@@ -1,10 +1,11 @@
 import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
 import {
-  getAttribute,
   getHTMLElement,
   getPrefixedTagNames,
   handleButtonEvent,
+  hasNamedSlot,
   insertSlottedStyles,
+  isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
@@ -83,6 +84,7 @@ export class TextFieldWrapper {
       [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
       [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
       [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly,
+      [prefix('text-field-wrapper__fake-input--password')]: this.isPasswordToggleable,
     };
     const buttonClasses = prefix('text-field-wrapper__button');
     const messageClasses = {
@@ -99,7 +101,7 @@ export class TextFieldWrapper {
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {this.isRequired && <span class={prefix('text-field-wrapper__required')}></span>}
+                {isRequired(this.input) && <span class={prefix('text-field-wrapper__required')} />}
               </PrefixedTagNames.pText>
             )}
             {this.isDescriptionVisible && (
@@ -143,21 +145,15 @@ export class TextFieldWrapper {
   }
 
   private get isLabelVisible(): boolean {
-    return !!this.label || !!getHTMLElement(this.host, '[slot="label"]');
+    return !!this.label || hasNamedSlot(this.host, 'label');
   }
 
   private get isDescriptionVisible(): boolean {
-    return !!this.description || !!getHTMLElement(this.host, '[slot="description"]');
+    return !!this.description || hasNamedSlot(this.host, 'description');
   }
 
   private get isMessageVisible(): boolean {
-    return (
-      !!(this.message || getHTMLElement(this.host, '[slot="message"]')) && ['success', 'error'].includes(this.state)
-    );
-  }
-
-  private get isRequired(): boolean {
-    return getAttribute(this.input, 'required') !== null;
+    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   private setInput(): void {
@@ -208,9 +204,7 @@ export class TextFieldWrapper {
   };
 
   private initMutationObserver = (): void => {
-    this.inputObserver = new MutationObserver((): void => {
-      this.setState();
-    });
+    this.inputObserver = new MutationObserver(this.setState);
     this.inputObserver.observe(this.input, {
       attributeFilter: ['disabled', 'readonly'],
     });
