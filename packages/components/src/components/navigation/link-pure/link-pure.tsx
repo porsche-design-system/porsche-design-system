@@ -1,8 +1,8 @@
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
-  getHTMLElement,
   getPrefixedTagNames,
+  hasNamedSlot,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
@@ -117,17 +117,13 @@ export class LinkPure {
             <slot />
           </PrefixedTagNames.pText>
         </TagType>
-        {this.hasSubline && (
+        {hasNamedSlot(this.host, 'subline') && (
           <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get hasSubline(): boolean {
-    return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
   private addSlottedStyles(): void {

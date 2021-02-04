@@ -1,5 +1,6 @@
 @import '../../../../../../packages/utilities/projects/utilities/scss';
 @import '../../../styles/internal.variables';
+@import '../../../styles/mixins';
 
 @mixin p-text-field-wrapper-label-text-visible() {
   position: static;
@@ -198,9 +199,10 @@
   }
 
   &__required {
-    &::after {
-      content: '*';
-      color: $p-color-notification-error;
+    @include required;
+
+    #{$bem-block}--theme-dark & {
+      @include required('dark');
     }
   }
 
