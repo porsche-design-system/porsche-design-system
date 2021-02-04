@@ -570,7 +570,7 @@ describe('tabs-bar', () => {
       // To ensure the buttons exceed the width of the wrapping div we need to assign static width values.
       const DECIMAL_FACTOR = 0.1;
       for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
-        it('should not show next button in edge case scenario', async () => {
+        it(`should not show actionNext for second button with a width of ${i}px`, async () => {
           const style = `style="width:${i}px"`;
 
           await setContentWithDesignSystem(
