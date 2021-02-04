@@ -1,8 +1,8 @@
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
-  getHTMLElement,
   getPrefixedTagNames,
+  hasNamedSlot,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
   mapBreakpointPropToPrefixedClasses,
@@ -128,17 +128,13 @@ export class ButtonPure {
             <slot />
           </PrefixedTagNames.pText>
         </button>
-        {this.hasSubline && (
+        {hasNamedSlot(this.host, 'subline') && (
           <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get hasSubline(): boolean {
-    return !!getHTMLElement(this.host, '[slot="subline"]');
   }
 
   private get isDisabled(): boolean {
