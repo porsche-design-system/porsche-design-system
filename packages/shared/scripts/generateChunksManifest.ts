@@ -52,7 +52,11 @@ const generateChunksManifest = (): void => {
     console.log(`Error: ${packageName} can't be resolved, so manifest will be empty`);
   }
 
-  const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};`;
+  const chunkNames = Object.keys(manifest).filter((chunkName) => chunkName !== 'core');
+  const content = `export const COMPONENT_CHUNKS_MANIFEST = ${JSON.stringify(manifest)};
+
+export const COMPONENT_CHUNK_NAMES = [${chunkNames.map((x) => `'${x}'`).join(', ')}] as const;
+export type ComponentChunkName = typeof COMPONENT_CHUNK_NAMES[number];`;
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
