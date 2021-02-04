@@ -53,7 +53,7 @@ describe('chunks', () => {
     const statsResults: StatsResult[] = [];
 
     statsResult.assets
-      .sort((a, b) => (a.chunks[0] > b.chunks[0] ? 1 : -1))
+      .sort((a, b) => a.chunks[0].localeCompare(b.chunks[0])) // sort by shortChunkName
       .forEach((assetResult) => {
         const [chunkShortName] = assetResult.chunks;
         const { name: chunkName, size: newSize } = assetResult;
