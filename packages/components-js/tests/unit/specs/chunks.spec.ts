@@ -106,8 +106,6 @@ describe('chunks', () => {
       return fs.readFileSync(chunkJsFile, 'utf8');
     };
 
-    xit('should not contain localhost anywhere', () => {});
-
     it('marque chunk should not include icon manifest', () => {
       const marqueJsCode = getFileContent('marque');
       expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
@@ -118,6 +116,19 @@ describe('chunks', () => {
       const iconJsCode = getFileContent('icon');
       expect(iconJsCode).not.toContain('/porsche-design-system/marque');
       expect(iconJsCode).not.toContain('porscheMarque');
+    });
+
+    it('should not contain localhost in web components manager', () => {
+      const content = fs.readFileSync(indexJsFile, 'utf8');
+      expect(content).not.toContain('localhost');
+    });
+
+    chunkFileNames.forEach((chunkFileName) => {
+      // TODO: use CHUNK_MANIFEST once it's available
+      it(`should not contain localhost anywhere in ${chunkFileName}`, () => {
+        const content = getFileContent(chunkFileName);
+        expect(content).not.toContain('localhost');
+      });
     });
   });
 });
