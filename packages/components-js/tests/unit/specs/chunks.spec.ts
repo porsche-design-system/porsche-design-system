@@ -1,12 +1,13 @@
 import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
+import { COMPONENT_CHUNKS_MANIFEST } from '@porsche-design-system/shared';
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
   const distDir = path.resolve(indexJsFile, '../..');
   const chunksDir = path.resolve(distDir, 'components');
-  const chunkFileNames = fs.readdirSync(chunksDir); // TODO: use CHUNK_MANIFEST once it's available
+  const chunkFileNames = Object.values(COMPONENT_CHUNKS_MANIFEST);
   const chunkFiles = [indexJsFile].concat(
     chunkFileNames.map((chunkFileName) => path.resolve(chunksDir, chunkFileName))
   );
@@ -154,7 +155,6 @@ describe('chunks', () => {
       expect(content).not.toContain('localhost');
     });
 
-    // TODO: use CHUNK_MANIFEST once it's available
     chunkFileNames.forEach((chunkFileName) => {
       it(`should not contain localhost in ${chunkFileName}`, () => {
         const content = getChunkContent(chunkFileName);

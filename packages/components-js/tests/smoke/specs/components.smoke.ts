@@ -1,10 +1,11 @@
-import { getBrowser, setContentWithDesignSystem } from '../helpers';
 import { Page } from 'puppeteer';
+import { setContentWithDesignSystem } from '../helpers';
+import { browser } from '../config';
 
 describe('components', () => {
   let page: Page;
 
-  beforeEach(async () => (page = await getBrowser().newPage()));
+  beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
 
   it('should not emit lifecycleDOMEvents', async () => {

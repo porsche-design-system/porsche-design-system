@@ -31,8 +31,9 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
-    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weight: ['regular', 'semi-bold', 'bold'] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
+    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['divider', 'button-pure', 'link', 'link-pure', 'marque', 'icon', 'spinner', 'text', 'headline', 'grid', 'flex' ] }) %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <% } %>

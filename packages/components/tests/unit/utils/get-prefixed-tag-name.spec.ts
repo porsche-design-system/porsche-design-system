@@ -1,5 +1,5 @@
 import { getPrefixedTagNames, getAllPrefixedTagNames } from '../../../src/utils';
-import { TAG_NAMES } from '../../../src/tags';
+import { TAG_NAMES } from '@porsche-design-system/shared';
 
 describe('getPrefixedTagNames', () => {
   it('should return an object with a mapping from provided tag names to the prefixed ones', () => {
