@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import type { TagName } from '@porsche-design-system/components/src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import { LIFECYCLE_STATUS_KEY } from './puppeteer-helper';
 
 export const waitForComponentsReady = async (page: Page): Promise<void> => {

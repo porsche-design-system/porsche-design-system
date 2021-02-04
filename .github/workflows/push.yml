@@ -133,16 +133,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -181,16 +181,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -235,16 +235,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -299,16 +299,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -368,11 +368,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Build Components' # needed for fresh TAG_NAMES
+      - name: 'Build Components Prod' # needed for real actual chunks
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
-          args: --components
+          args: --components-prod
+      - name: 'Build Components JS Prod' # needed for real actual chunks
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js-prod
       - name: 'Build Partials'
         uses: ./.github/actions/docker-run
         with:
@@ -416,16 +421,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js
+      - name: 'Build Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -435,11 +440,6 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
-          args: --storefront
-      - name: 'Build Storefront'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
           args: --storefront
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
@@ -490,16 +490,16 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Build Partials Prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS Prod'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
           args: --components-js-prod
+      - name: 'Build Partials Prod'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --partials
       - name: 'Build Components Angular Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -540,6 +540,11 @@ jobs:
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
+      - name: 'Store Shared Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Store Storefront Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -666,6 +671,11 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Shared Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Smoke Test'
         uses: ./.github/actions/docker-run
         with:
