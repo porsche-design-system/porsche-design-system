@@ -181,26 +181,6 @@ describe('cdn', () => {
       const fileNames = [coreFileName, ...chunkFileNames];
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
       bulkRequestItems(fileNames, baseUrl);
-
-      describe('chunks', () => {
-        const getFileContent = (chunkName: string): string => {
-          const [chunkFileName] = chunkFileNames.filter((x) => x.includes(chunkName));
-          const chunkJsFile = path.resolve(indexJsFile, '../../components', chunkFileName);
-          return fs.readFileSync(chunkJsFile, 'utf8');
-        };
-
-        it('marque chunk should not include icon manifest', () => {
-          const marqueJsCode = getFileContent('marque');
-          expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
-          expect(marqueJsCode).not.toContain('arrowDoubleDown');
-        });
-
-        it('icon chunk should not include marque manifest', () => {
-          const iconJsCode = getFileContent('icon');
-          expect(iconJsCode).not.toContain('/porsche-design-system/marque');
-          expect(iconJsCode).not.toContain('porscheMarque');
-        });
-      });
     });
 
     describe('fonts', () => {
