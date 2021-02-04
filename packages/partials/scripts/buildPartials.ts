@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { FONTS_MANIFEST } from '@porsche-design-system/assets';
-import { COMPONENT_CHUNKS_MANIFEST, TAG_NAMES } from '@porsche-design-system/shared';
+import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST, TAG_NAMES } from '@porsche-design-system/shared';
 import { minifyHTML } from './utils';
 import {
   CDN_BASE_URL,
@@ -146,11 +146,11 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
 };
 
 const generateComponentChunksPartial = (): string => {
-  const tagNamesTypeLiteral = TAG_NAMES.map((x) => `'${x}'`).join(' | ');
-  const types = `type TagName = ${tagNamesTypeLiteral} | 'core';
+  const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
+  const types = `type ComponentChunkName = ${chunkNamesTypeLiteral};
 
 type ComponentChunksOptions = {
-  components?: Exclude<TagName, 'core'>[]; // core is included by default in array below
+  components?: ComponentChunkName[];
   cdn?: Cdn;
   withoutTags?: boolean;
 };
