@@ -5,6 +5,7 @@
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",
   "types": "dist/js/types/index.d.ts",
+  "sideEffects": false,
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Matthias Hägele <matthias.haegele@mhp.com>",
@@ -53,6 +54,7 @@
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
   },
   "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-typescript": "^8.1.0",
     "rollup": "^2.38.1",

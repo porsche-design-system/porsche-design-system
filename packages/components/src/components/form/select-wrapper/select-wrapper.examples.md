@@ -53,6 +53,12 @@ A description text can be added to explain the meaning of a specific form field.
 
 ---
 
+## Required
+
+<Playground :markup="required" :config="config"></Playground>
+
+---
+
 ## Disabled
 
 <Playground :markup="disabled" :config="config"></Playground>
@@ -404,6 +410,13 @@ get direction() {
     withDescriptionText =
 `<p-select-wrapper label="Some label" description="Some description">
   <select name="some-name">
+    ${buildOptions(['a','b','c']).join('\n    ')}
+  </select>
+</p-select-wrapper>`;
+
+    required =
+`<p-select-wrapper label="Some label">
+  <select name="some-name" required>
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
 </p-select-wrapper>`;

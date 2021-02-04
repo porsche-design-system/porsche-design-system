@@ -7,10 +7,9 @@
   "scripts": {
     "prestart": "yarn replace",
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
-    "build": "yarn build:wrappers && yarn build:meta && yarn build:partials",
+    "build": "yarn build:wrappers && yarn build:meta",
     "build:meta": "cp ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
-    "build:partials": "cp -r ./../partials/dist/. ./dist/components-wrapper/partials",
-    "build:wrappers": "ng build components-wrapper --prod",
+    "build:wrappers": "ng build components-wrapper --prod && yarn rollup -c ./projects/components-wrapper/rollup.config.js",
     "test": "yarn test:e2e && yarn test:vrt && yarn test:cbt",
     "test:e2e": "concurrently -k -s 'first' -n 'server,e2e' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/e2e/config/tsconfig.json node_modules/.bin/jasmine --config=tests/e2e/config/jasmine.config.json'",
     "test:vrt": "concurrently -k -s 'first' -n 'server,vrt' 'yarn start' 'wait-on -t 240000 http-get://localhost:4200 && ts-node --project tests/vrt/config/tsconfig.json node_modules/.bin/jasmine --config=tests/vrt/config/jasmine.config.json'",
@@ -30,7 +29,7 @@
     "@angular/platform-browser": "^11.1.0",
     "@angular/platform-browser-dynamic": "^11.1.0",
     "@angular/router": "^11.1.0",
-    "@porsche-design-system/components-angular": "2.0.0-rc.0",
+    "@porsche-design-system/components-angular": "2.0.0-rc.1",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -41,7 +40,6 @@
     "@angular/compiler-cli": "^11.1.0",
     "@angular/language-service": "^11.1.0",
     "@porsche-design-system/assets": "3.1.0",
-    "@porsche-design-system/utilities": "4.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/jasmine": "~3.6.3",
@@ -51,8 +49,8 @@
     "jasmine-spec-reporter": "~6.0.0",
     "ng-packagr": "^11.1.2",
     "puppeteer": "~5.5.0",
+    "rollup": "^2.38.0",
     "ts-node": "^9.1.1",
-    "tslint": "~6.1.3",
     "typescript": "~4.0.5",
     "wait-on": "^5.2.0"
   }
