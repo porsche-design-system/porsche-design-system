@@ -220,7 +220,7 @@ The example shows how to implement the partial in a webpack (or similar) project
   // without link tags
   // first element is core which needs to be loaded with crossorigin attribute
   <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ withoutTags: true, components: ['button'] })[0] %>" crossorigin>
-  // furhter elements are the ones passed into components array
+  // further elements are the ones passed into components array
   <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getComponentChunkLinks({ withoutTags: true, components: ['button'] })[1] %>">
 </head>
 ```
