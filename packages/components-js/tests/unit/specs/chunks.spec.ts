@@ -22,16 +22,6 @@ describe('chunks', () => {
     const resultsDir = path.resolve(baseDir, 'results');
     const statsFileName = 'stats.json';
 
-    type StatsResult = {
-      chunkName: string;
-      chunkShortName: string;
-      oldSize: number;
-      newSize: number;
-      newGzipSize: number;
-      diffSize: number;
-    };
-    const statsResults: StatsResult[] = [];
-
     type Stats = {
       [key: string]: any;
       assets: {
@@ -51,6 +41,16 @@ describe('chunks', () => {
 
     const statsFixture = getStats('fixture');
     const statsResult = getStats('result');
+
+    type StatsResult = {
+      chunkName: string;
+      chunkShortName: string;
+      oldSize: number;
+      newSize: number;
+      newGzipSize: number;
+      diffSize: number;
+    };
+    const statsResults: StatsResult[] = [];
 
     statsResult.assets
       .sort((a, b) => (a.chunks[0] > b.chunks[0] ? 1 : -1))
@@ -90,6 +90,16 @@ describe('chunks', () => {
         return `${getSign(parseFloat(value))}${value} %`;
       };
 
+      const formatTable = ({ chunkShortName, oldSize, newSize, diffSize, newGzipSize }: StatsResult): string =>
+        [
+          formatFirstCol(chunkShortName),
+          formatNumberCol(`${formatKB(oldSize)}`),
+          formatNumberCol(`${formatKB(newSize)}`),
+          formatNumberCol(`${formatKB(diffSize, true)}`),
+          formatNumberCol(`${formatPercent(oldSize, diffSize)}`),
+          formatNumberCol(`${formatKB(newGzipSize)}`),
+        ].join('');
+
       const header = ['chunkName', 'oldSize', 'newSize', 'diffSize', 'diff %', 'gzipSize'];
 
       const tableHead = [
@@ -99,20 +109,29 @@ describe('chunks', () => {
         .map((arr) => arr.join(''))
         .join('\n');
 
-      const tableBody = statsResults
-        .map(({ chunkShortName, oldSize, newSize, diffSize, newGzipSize }) =>
-          [
-            formatFirstCol(chunkShortName),
-            formatNumberCol(`${formatKB(oldSize)}`),
-            formatNumberCol(`${formatKB(newSize)}`),
-            formatNumberCol(`${formatKB(diffSize, true)}`),
-            formatNumberCol(`${formatPercent(oldSize, diffSize)}`),
-            formatNumberCol(`${formatKB(newGzipSize)}`),
-          ].join('')
-        )
+      const tableBody = statsResults.map(formatTable).join('\n');
+
+      const totalStats: StatsResult = statsResults.reduce(
+        (pv, { oldSize, newSize, diffSize, newGzipSize }) => {
+          pv.oldSize += oldSize;
+          pv.newSize += newSize;
+          pv.diffSize += diffSize;
+          pv.newGzipSize += newGzipSize;
+          return pv;
+        },
+        { chunkShortName: 'total', oldSize: 0, newSize: 0, diffSize: 0, newGzipSize: 0 } as StatsResult
+      );
+
+      const tableFooter = [
+        Array.from(Array(6)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+        [totalStats].map(formatTable),
+      ]
+        .map((arr) => arr.join(''))
         .join('\n');
 
-      const output = ['', `Summary for ${statsResults.length} chunks`, '', tableHead, tableBody].join('\n');
+      const output = ['', `Summary for ${statsResults.length} chunks`, '', tableHead, tableBody, tableFooter].join(
+        '\n'
+      );
       console.log(output);
     });
   });
