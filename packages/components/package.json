@@ -34,7 +34,8 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "3.1.0",
+    "@porsche-design-system/icons": "0.0.0",
+    "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "4.0.0",
     "@rollup/plugin-replace": "^2.3.4",

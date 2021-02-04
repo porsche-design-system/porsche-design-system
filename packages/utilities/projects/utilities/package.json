@@ -5,6 +5,7 @@
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",
   "types": "dist/js/types/index.d.ts",
+  "sideEffects": false,
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Matthias Hägele <matthias.haegele@mhp.com>",
