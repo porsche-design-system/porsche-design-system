@@ -32,7 +32,7 @@
       This can help you and others to understand the benefits and value of accessibility.
     </p-text>
     <p-headline variant="headline-3">Start learning now!</p-headline>
-    <p-text>There are countless of <strong>learning resources</strong> in the wild and it can be difficult to find the right one to get started even if you are searching for specific information regarding your role as Product Owner, Designer, Developer, Writer or Content Creator in a project.</p-text>
+    <p-text>There are countless <strong>learning resources</strong> in the wild and it can be difficult to find the right one to get started even if you are searching for specific information regarding your role as Product Owner, Designer, Developer, Writer or Content Creator in a project.</p-text>
     <p-text>The following is an incomplete list of starting points grouped by disciplines.</p-text>
     <p-headline variant="headline-4">Fundamentals for all</p-headline>
     <p-text-list>
@@ -49,7 +49,7 @@
         <a href="https://www.w3.org/WAI/people-use-web/">How People with Disabilities Use the Web</a> – Explores the impact of accessible design with real-life examples.
       </p-text-list-item>
       <p-text-list-item>
-        Take part on the Porsche <strong>Accessibility Fundamentals Deep Dive</strong> sessions. 
+        Take part in the Porsche <strong>Accessibility Fundamentals Deep Dive</strong> sessions. 
       </p-text-list-item>
     </p-text-list>
     <p-headline variant="headline-4">For Product Owners</p-headline>
