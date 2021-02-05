@@ -15,7 +15,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('link social', () => {
+describe('link-social', () => {
   let page: Page;
 
   beforeEach(async () => {

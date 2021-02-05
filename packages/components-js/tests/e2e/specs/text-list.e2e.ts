@@ -11,7 +11,7 @@ import {
 } from '../helpers';
 import { Page } from 'puppeteer';
 
-describe('text', () => {
+describe('text-list', () => {
   let page: Page;
 
   beforeEach(async () => (page = await getBrowser().newPage()));

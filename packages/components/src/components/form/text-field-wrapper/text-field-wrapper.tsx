@@ -84,6 +84,7 @@ export class TextFieldWrapper {
       [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
       [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
       [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly,
+      [prefix('text-field-wrapper__fake-input--password')]: this.isPasswordToggleable,
     };
     const buttonClasses = prefix('text-field-wrapper__button');
     const messageClasses = {

@@ -1,4 +1,4 @@
-import type { TagName } from '../../src/tags';
+import type { TagName } from '@porsche-design-system/shared';
 import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
 import { InputParser } from './InputParser';
 import * as path from 'path';

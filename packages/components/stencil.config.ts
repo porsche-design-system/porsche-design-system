@@ -5,10 +5,10 @@ import { postcss } from '@stencil/postcss';
 import autoprefixer from 'autoprefixer';
 import * as path from 'path';
 import modify from 'rollup-plugin-modify';
-import replace from 'rollup-plugin-replace';
+import replace from '@rollup/plugin-replace';
 // @ts-ignore
 import CleanCSS from 'clean-css';
-import type { TagName } from '../shared/dist/types';
+import type { TagName } from '@porsche-design-system/shared';
 
 /**
  * TODO: Remove this workaround

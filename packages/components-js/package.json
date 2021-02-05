@@ -8,7 +8,7 @@
     "prestart": "yarn replace",
     "start": "if [ \"$CI\" != true ]; then PORSCHE_DESIGN_SYSTEM_DEV=1 yarn build; fi && yarn start:app",
     "start:app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'http-server ./www -p 8575 --cors -s'",
-    "build": "yarn clean:build && yarn build:environment && yarn build:lib && yarn build:partials && yarn build:replaceCdnBaseUrlDynamicPlaceholder && yarn build:app && yarn build:cleanEnvironment",
+    "build": "yarn clean:build && yarn build:environment && yarn build:lib && yarn build:replaceCdnBaseUrlDynamicPlaceholder && yarn build:app && yarn build:cleanEnvironment",
     "build:app": "yarn build:app:base && yarn build:app:components && yarn build:app:assets",
     "build:app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www ",
     "build:app:components": "cp ./dist/components-wrapper/index.js ./www",
@@ -17,7 +17,6 @@
     "build:lib": "yarn build:lib:webpack && yarn build:lib:pwcm",
     "build:lib:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.ts",
     "build:lib:pwcm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} pwcm build",
-    "build:partials": "cp -r ./../partials/dist/. ./dist/components-wrapper/partials",
     "build:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
     "build:cleanEnvironment": "rm -f ../../cdn.config.js && rm -rf ./projects/components-wrapper/environment.js",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
@@ -33,7 +32,10 @@
     "clean:build": "rm -rf ./dist && rm -rf ./www"
   },
   "devDependencies": {
-    "@porsche-design-system/components": "2.0.0-rc.0",
+    "@porsche-design-system/assets": "^3.1.0",
+    "@porsche-design-system/components": "2.0.0-rc.1",
+    "@porsche-design-system/partials": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
     "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.9",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
