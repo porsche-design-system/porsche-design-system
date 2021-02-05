@@ -1,5 +1,6 @@
 import { camelCase } from 'change-case';
-import { TagName, TagNameCamelCase, TAG_NAMES } from '../tags';
+import type { TagName, TagNameCamelCase } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
 
 type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
