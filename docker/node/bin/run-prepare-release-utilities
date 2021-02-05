@@ -13,8 +13,7 @@ pushd "packages/utilities/projects/utilities"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
-packages=( "assets" "components" "components-js" "components-angular" "components-react" "partials" "storefront" )
-
+packages=( "assets" "components" "partials" "storefront" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/utilities": )(".*")$\1"'${1}'"$' package.json
