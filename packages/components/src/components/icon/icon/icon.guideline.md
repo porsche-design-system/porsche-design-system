@@ -8,31 +8,30 @@ Feel free to contact us (also as a reviewer). If we also think that your icon is
 
 ## Processes overview
 
-1. Criteria check
+### Criteria check
 
-2. Passing user testing regarding 
+### assing user testing regarding
 
-    **Findability**
-    
+    **Findability**  
     Can people find the icon on the page?
 
-    **Recognition**
-    
+    **Recognition**  
     Do people understand what the icon represents?
 
-    **Information scent**
-    
+    **Information scent**  
     Can users correctly guess what will happen once they interact with the icon?
 
-    **Attractiveness**
-    
+    **Attractiveness**  
     Is the icon aesthetically pleasing?
 
-3. Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to meet the Porsche Design System Team as a reviewer.
+### Qality assurance
+Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to meet the Porsche Design System Team as a reviewer.
 
-4. Export your icon as svg and share it with the developers.
+### Eyport
+Export your icon as svg and share it with the developers.
 
-5. Is the integration into the official Basic Iconset necessary? Contact the Porsche Design System Team to discuss everything in detail.
+### Integration in the Porsche Beasic Set
+Is the integration into the official Basic Iconset necessary? Contact the Porsche Design System Team to discuss everything in detail.
 
 ---
 
@@ -67,7 +66,7 @@ Illustrator → Preferences → Guides & Grid. Via View → Pixel Preview you ca
 1. **Start drawing your icon on a separate construction layer.**  
 Name your layer: "icon default" (for outline style) or "icon filled" 
 (or set up 2 layers if you're about to design both default and filled style).
-Do not forget to rename your document to iconname-construction(dot)ai 
+Do not forget to rename your document to iconname-construction
 
 1. **Start your first drawings.**  
 - Always stick to the defined icon look & feel.
