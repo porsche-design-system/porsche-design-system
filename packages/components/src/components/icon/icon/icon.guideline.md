@@ -10,7 +10,7 @@ Feel free to contact us (also as a reviewer). If we also think that your icon is
 
 ### Criteria check
 
-### assing user testing regarding
+### Passing user testing regarding
 
     **Findability**  
     Can people find the icon on the page?
