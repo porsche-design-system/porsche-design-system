@@ -23,20 +23,17 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
-    const providerImports = [
-      'syncRef',
-      'usePrefix',
-      'useMergedClass',
-      ...(hasEventProps ? ['useEventCallback'] : []),
-      ...(canBeObject ? ['jsonStringify'] : []),
-    ];
-    const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../provider';`;
+    const hooksImports = ['usePrefix', 'useMergedClass', ...(hasEventProps ? ['useEventCallback'] : [])];
+    const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
+
+    const utilsImports = ['syncRef', ...(canBeObject ? ['jsonStringify'] : [])];
+    const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const importsFromTypes = nonPrimitiveTypes.length
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return [importsFromReact, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
+    return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
   }
 
   private generatePropsName(component: TagName): string {
