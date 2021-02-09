@@ -156,7 +156,7 @@ For text and text characters in icons always use the Porsche Next Font
 
 ### Line width and positioning for outline icons
 
-Use 1px for the outline shape of the icons when drawing on 24x24 and stick to the pixel grid so that icons are not blurred due to anti-aliasing of low-resolution displays. Icons with a centered vertical or horizontal 1px stroke must be placed 1px off to the left and/or top and please make sure corresponding icons have the same position. For example, the add and remove icon should have the same position because they will replace each other.
+Use 1px for the outline shape of the icons when drawing on 24x24 and stick to the pixel grid so that icons are not blurred due to anti-aliasing of low-resolution displays. Icons with a centered vertical or horizontal 1px stroke must be placed 1px off to the left and/or top. Also please make sure corresponding icons have the same position. For example, the add and remove icon should have the same position because they will replace each other.
 
 ---
 
