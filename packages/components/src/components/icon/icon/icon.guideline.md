@@ -160,7 +160,7 @@ Use 1px for the outline shape of the icons when drawing on 24x24 and stick to th
 
 ---
 
-## Do’s & Don’ts
+## Dos & Dont's
 
 ### Line width for filled icons
 
