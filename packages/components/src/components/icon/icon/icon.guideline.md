@@ -112,7 +112,7 @@ Use the pathfinder tool (shape mode "add to area") to combine objects.
 
 ### Set up separate export file
 
-1. **Duplicate the …-construction.ai file**   
+1. **Duplicate the `*-construction.ai` file**   
 … and rename it to: …-export.ai.
 
 2. **Delete all layers except "icon (default or filled)" and the "base size 24x24" layer**
