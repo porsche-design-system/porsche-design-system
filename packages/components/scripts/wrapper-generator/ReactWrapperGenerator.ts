@@ -72,7 +72,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key, canBeObject }) => `'${paramCase(key)}': ${canBeObject ? `jsonStringify(${key})` : key}`
       ),
       'class: useMergedClass(elementRef, className)',
-      'ref: syncRef(ref, elementRef)',
+      'ref: syncRef(elementRef, ref)',
     ];
 
     const componentProps = `const props = {

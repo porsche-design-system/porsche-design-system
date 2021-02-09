@@ -13,7 +13,7 @@ export const getMergedClassName = (
   // all classes not set by component -> to keep hydrated class and other classes set on host element
   // (usually dom-manipulated class additions would be lost on rerender)
   let domClasses = splitToArray(domClassName);
-  if (prevComponentClassNames.length > 0) {
+  if (prevComponentClassNames.length) {
     domClasses = domClasses.filter((x) => !prevComponentClassNames.includes(x));
   }
 
@@ -25,7 +25,7 @@ export const getMergedClassName = (
 
 export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-export const syncRef = (ref: ForwardedRef<HTMLElement>, elementRef: MutableRefObject<HTMLElement>) => (
+export const syncRef = (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) => (
   el: HTMLElement
 ): void => {
   elementRef.current = el;
