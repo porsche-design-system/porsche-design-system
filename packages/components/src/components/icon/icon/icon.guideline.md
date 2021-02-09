@@ -24,13 +24,13 @@ Feel free to contact us (also as a reviewer). If we also think that your icon is
     **Attractiveness**  
     Is the icon aesthetically pleasing?
 
-### Qality assurance
+### Quality assurance
 Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to meet the Porsche Design System Team as a reviewer.
 
-### Eyport
+### Export
 Export your icon as svg and share it with the developers.
 
-### Integration in the Porsche Beasic Set
+### Integration in the Porsche Basic Set
 Is the integration into the official Basic Iconset necessary? Contact the Porsche Design System Team to discuss everything in detail.
 
 ---
@@ -45,7 +45,7 @@ Use the following template, in which you will find an artboard (24 x 24 px) on w
 
 <p-link-pure href="https://designsystem.porsche.com/sketch/PAG_icon_template_24x24.ai" icon="download" download>Download Icon/Grid Template</p-link-pure>
 
-**All artboards should be named according the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
+**All artboards should be named according to the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
 
 Within this artboard there are different basic shapes (in violet) you should stick to when defining the shapes and dimensions of your icon, no matter whether it expands more in height or width, for example.
 This ensures a harmonious visual balance between all icons. Never place any icon part on the safe zone (red).
@@ -55,7 +55,7 @@ This ensures a harmonious visual balance between all icons. Never place any icon
 
 **Illustrator presets**
 
-Make sure to always design on pixel grid. Therefore, set the Illustrator grid to 1 px:
+Make sure to always design on the pixel grid. Therefore, set the Illustrator grid to 1 px:
 Illustrator → Preferences → Guides & Grid. Via View → Pixel Preview you can automatically enforce pixel snapping if needed. 
 
 ![Illustrator Presets](./assets/porsche-icons-illustrator-presets.png)
@@ -70,7 +70,7 @@ Do not forget to rename your document to iconname-construction
 
 1. **Start your first drawings.**  
 - Always stick to the defined icon look & feel.
-- Use open vector paths for strokes (path tool, line tool or vector forms) as far as possible in order to be able to edit it easily afterwards (e. g. stroke width).
+- Use open vector paths for strokes (path tool, line tool or vector forms) as far as possible to be able to edit it easily afterward (e. g. stroke width).
 - Try to stick to the pixel grid in favor of a sharp visual appearance.
 - Stick to the basic shapes (violet layers).
 
@@ -79,10 +79,10 @@ Do not forget to rename your document to iconname-construction
 **Double-check**
 
 Whilst designing your icon always make sure …
-- … that all strokes and shapes are placed into the px grid to ensure the sharpness.
+- … that all strokes and shapes are placed into the px grid to ensure sharpness.
 - … that it's seamlessly scalable to 48 x 48 px without any qualitative loss.
-- … that it goes well with text in copy size (font-size 16 px, line-height 24 px), as this is very common combination in web applications, see Link Pure.
-- … that it stands in a balanced optical relation to the remaining icons.
+- … that it goes well with text in copy size (font-size 16 px, line-height 24 px), as this is a common combination in web applications, see Link Pure.
+- … that it stands in balanced optical relation to the remaining icons.
 
 ## Context
 
@@ -90,7 +90,7 @@ Integrate the icons into the layout and check which icon will be the final one (
 
 ## Launch
 
-Once you have decided on a final icon you can export it in the export it in the right format for the developer.
+Once you have decided on a final icon you can export it in the right format for the developer.
 
 ### Export preparation
 
@@ -132,7 +132,7 @@ Make sure that both layers are turned visible so that the icons are exported in 
 
 The squircle is an optical element, coming from the typography of the Porsche Next font. It should promote the recognition of Porsche and its corporate identity. So, the icon set will not look arbitrary and harmonize with the Porsche design. 
 
-Well-known, natural round shapes, should not contain any of the squircle elements. If they do they will lose clarity and precision. The squircle-element has a negative effect on the recognizability of the learned icons.
+Well-known, natural round shapes, should not contain any of the squircle elements. If they do they will lose clarity and precision. The squircle-element hurts the recognizability of the learned icons.
 
 
 ### Examples
