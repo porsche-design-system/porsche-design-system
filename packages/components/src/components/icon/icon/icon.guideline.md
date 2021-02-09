@@ -67,7 +67,7 @@ Illustrator → Preferences → Guides & Grid. Via View → Pixel Preview you ca
 **Design your icon**
 
 1. **Start drawing your icon on a separate construction layer.**  
-Name your layer: "icon default" (for outline style) or "icon filled" 
+Name your layer: `icon default` (for outline style) or `icon filled` 
 (or set up 2 layers if you're about to design both default and filled style).
 Do not forget to rename your document to `iconname-construction`
 
