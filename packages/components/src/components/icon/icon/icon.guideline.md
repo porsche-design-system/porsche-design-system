@@ -25,7 +25,7 @@ Feel free to contact us (also as a reviewer). If we also think that your icon is
     Is the icon aesthetically pleasing?
 
 ### Quality assurance
-Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to meet the Porsche Design System Team as a reviewer.
+Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to request the Porsche Design System Team for review.
 
 ### Export
 Export your icon as svg and share it with the developers.
