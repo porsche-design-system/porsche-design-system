@@ -47,10 +47,13 @@ Use the following template, in which you will find an artboard (24 x 24 px) on w
 
 **All artboards should be named according to the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
 
-Within this artboard there are different basic shapes (in violet) you should stick to when defining the shapes and dimensions of your icon, no matter whether it expands more in height or width, for example.
-This ensures a harmonious visual balance between all icons. Never place any icon part on the safe zone (red).
+Within this artboard there are different basic shapes (in violet) you should stick to when defining the shapes and dimensions of your icon, no matter whether it expands more in height or width, for example. This ensures a harmonious visual balance between all icons. Never place any icon part on the safe zone (red). 
 
 ![Porsche Illustrator Board](./assets/porsche-icons-illustrator-board.png)
+
+For the correct weighting of the icons the different shapes are created. Check which of the shapes is necessary for you to keep the visual weight in balance. 
+
+![Porsche examples shapes](./assets/porsche-icons-shapes.png)
 
 
 **Illustrator presets**
