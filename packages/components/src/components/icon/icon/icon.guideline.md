@@ -73,7 +73,7 @@ Do not forget to rename your document to `iconname-construction`
 
 1. **Start your first drawings.**  
 - Always stick to the defined icon look & feel.
-- Use open vector paths for strokes (path tool, line tool or vector forms) as far as possible to be able to edit it easily afterward (e. g. stroke width).
+- Use open vector paths for strokes (path tool, line tool or vector forms) as far as possible to be able to edit it easily afterward (e.g. stroke width).
 - Try to stick to the pixel grid in favor of a sharp visual appearance.
 - Stick to the basic shapes (violet layers).
 
