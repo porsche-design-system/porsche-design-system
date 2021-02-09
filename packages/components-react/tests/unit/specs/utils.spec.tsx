@@ -1,8 +1,8 @@
+import { useRef } from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { PButton, PorscheDesignSystemProvider } from '../../../projects/components-wrapper/src';
 import { getMergedClassName } from '../../../projects/components-wrapper/src/utils';
-import { useRef } from 'react';
-import userEvent from '@testing-library/user-event';
 
 describe('getMergedClassName', () => {
   test.each`
