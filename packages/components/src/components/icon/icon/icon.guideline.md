@@ -132,7 +132,7 @@ Make sure that both layers are turned visible so that the icons are exported in 
 
 **Where and when to use the Squircle?** 
 
-The squircle is an optical element, coming from the typography of the Porsche Next font. It should promote the recognition of Porsche and its corporate identity. So, the icon set will not look arbitrary and harmonize with the Porsche design. 
+The squircle is an optical element, coming from the typography of the Porsche Next font. It should promote the recognition of Porsche and its corporate identity, so that the icon set will not look arbitrary and harmonize with the Porsche design. 
 
 Well-known, natural round shapes, should not contain any of the squircle elements. If they do they will lose clarity and precision. The squircle-element hurts the recognizability of the learned icons.
 
