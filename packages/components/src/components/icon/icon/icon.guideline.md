@@ -89,7 +89,7 @@ Whilst designing your icon always make sure …
 
 ## Context
 
-Integrate the icons into the layout and check which icon will be the final one (if not sure test them against each other). And finally test the icon to see if they help the user to find the right function.
+Integrate the icons into the layout and check which icon will be the final one (if not sure test them against each other). Finally test the icon to see if it helps the user to find the right function.
 
 ## Launch
 
