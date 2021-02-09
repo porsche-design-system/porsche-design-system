@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { PButton, PorscheDesignSystemProvider } from '../../../projects/components-wrapper/src';
+import { PButton } from '../../../projects/components-wrapper/src';
 import { getMergedClassName } from '../../../projects/components-wrapper/src/utils';
+import * as hooks from '../../../projects/components-wrapper/src/hooks';
 
 describe('getMergedClassName', () => {
   test.each`
@@ -33,6 +34,11 @@ describe('getMergedClassName', () => {
 });
 
 describe('syncRefs', () => {
+  beforeEach(() => {
+    // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
+    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
+  });
+
   const INITIAL_CLASS_NAME = 'initialClass';
   const CLASS_NAME = 'someClass1 hydrated';
 
@@ -40,26 +46,17 @@ describe('syncRefs', () => {
   const Sample = ({ isRefCallback }: Props): JSX.Element => {
     const buttonRef = useRef(undefined);
 
-    // TODO: mock PorscheDesignSystemProvider
     return (
-      <PorscheDesignSystemProvider>
-        <PButton
-          className={INITIAL_CLASS_NAME}
-          data-testid="button"
-          ref={
-            isRefCallback
-              ? (el) => {
-                  buttonRef.current = el;
-                }
-              : buttonRef
-          }
-          onClick={() => {
-            buttonRef.current.className = CLASS_NAME;
-          }}
-        >
-          Some Button
-        </PButton>
-      </PorscheDesignSystemProvider>
+      <PButton
+        className={INITIAL_CLASS_NAME}
+        data-testid="button"
+        ref={isRefCallback ? (el) => (buttonRef.current = el) : buttonRef}
+        onClick={() => {
+          buttonRef.current.className = CLASS_NAME;
+        }}
+      >
+        Some Button
+      </PButton>
     );
   };
 
