@@ -104,7 +104,6 @@ Rename it to "export default" (for outline style) or "export filled".
 Transform the vector forms in a full, coherent vector shape.
 Turn paths into strokes (Object → Path → Outline stroke).
 Use the pathfinder tool (shape mode "add to area") to combine objects.
-The final 
 
 ![Illustrator Export](./assets/porsche-icons-illustrator-export.png)
 
