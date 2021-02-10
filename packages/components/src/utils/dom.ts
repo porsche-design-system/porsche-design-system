@@ -51,4 +51,10 @@ export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSele
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
+export const throwIfHTMLElementIsUndefined = (element: HTMLElement, selector: string): void => {
+  if (!element) {
+    throw new Error(`Child HTMLElement ${selector} is missing.`);
+  }
+};
+
 // TODO: add addEventListener and removeEventListener
