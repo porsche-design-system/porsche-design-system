@@ -34,7 +34,7 @@ export function getClosestHTMLElement<K extends keyof HTMLElementTagNameMap>(hos
   return host.closest(selector);
 }
 
-export const getAttribute = (el: HTMLElement, attributeName: string): string | null => {
+export const getAttribute = (el: HTMLElement | Element, attributeName: string): string | null => {
   return el.getAttribute(attributeName);
 };
 

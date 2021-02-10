@@ -1,5 +1,11 @@
 import { JSX, Component, Host, h, Element } from '@stencil/core';
-import { getClosestHTMLElement, getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
+import {
+  getAttribute,
+  getClosestHTMLElement,
+  getPrefixedTagNames,
+  insertSlottedStyles,
+  prefix,
+} from '../../../../utils';
 
 @Component({
   tag: 'p-text-list-item',
@@ -14,11 +20,17 @@ export class TextListItem {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
+    const listType = getAttribute(list, 'list-type');
+    const orderType = getAttribute(list, 'order-type');
+    const isNestedList = !!getClosestHTMLElement(this.host, `${PrefixedTagNames.pTextList}[nested]`);
+
     const textListItemClasses = {
       [prefix('text-list-item')]: true,
-      [prefix(`text-list-item--${this.typeOfList}`)]: true,
-      [prefix(`text-list-item--ordered-${this.typeOfOrderedList}`)]: this.typeOfList === 'ordered',
-      [prefix('text-list-item--nested')]: this.isNestedList,
+      [prefix(`text-list-item--${listType}`)]: true,
+      [prefix(`text-list-item--ordered-${orderType}`)]: listType === 'ordered',
+      [prefix('text-list-item--nested')]: isNestedList,
     };
 
     return (
@@ -26,23 +38,6 @@ export class TextListItem {
         <slot />
       </Host>
     );
-  }
-
-  private get typeOfList(): string {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
-    const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
-    return list.getAttribute('list-type');
-  }
-
-  private get typeOfOrderedList(): string {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
-    const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
-    return list.getAttribute('order-type');
-  }
-
-  private get isNestedList(): boolean {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
-    return !!getClosestHTMLElement(this.host, `${PrefixedTagNames.pTextList}[nested]`);
   }
 
   private addSlottedStyles(): void {
