@@ -1,7 +1,7 @@
 # Icon
 
 Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? 
-Feel free to contact us (also as a reviewer). If we also think that your icon is relevant for the basic library it will be published both as library symbols for design.
+Feel free to contact us (also as a reviewer). If we also think that your icon is relevant for the basic library it will be published as library symbols for design.
 [Sketch basic library](https://designsystem.porsche.com/latest/#/start-designing/introduction) and SVGs for development. See [Porsche Icon overview](https://icons.porsche.com/#/)
 
 ---
@@ -126,7 +126,7 @@ Make sure that both layers are turned visible so that the icons are exported in 
 
 ## Look & Feel
 
-**All icons are built in an outline version, which is also the default state. The filled version is additional and not intended for every icon.** Currently we recommended "only" default icons are available for use. Individual project teams that require filled variants are welcome to contact us at any time. If a filled version is needed, has to be decided individually for each icon, according to content and purpose.
+**All icons are built in an outline version, which is also the default state.** Individual project teams that require filled variants are welcome to contact us at any time. If a filled version is needed, has to be decided individually for each icon, according to content and purpose.
 
 ### Squircle element and Porsche Next typeface
 
