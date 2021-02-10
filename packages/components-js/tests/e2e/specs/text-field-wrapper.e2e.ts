@@ -129,7 +129,7 @@ describe('text-field-wrapper', () => {
     );
 
     expect(errorMessages[0]).toContain(
-      'Child HTMLElement input[type=text], input[type=number], input[type=email], input[type=tel], input[type=search], input[type=url], input[type=date], input[type=time], input[type=month], input[type=week] is missing.'
+      'Child HTMLElement input[type=text], input[type=number], input[type=email], input[type=tel], input[type=search], input[type=url], input[type=date], input[type=time], input[type=month], input[type=week], input[type=password] is missing.'
     );
   });
 
