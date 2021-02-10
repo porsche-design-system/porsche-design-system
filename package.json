@@ -3,6 +3,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
+      "packages/web-component-manager/*",
       "packages/components-js/dist/components-wrapper",
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/dist/components-wrapper",
@@ -55,7 +56,7 @@
     "start:storefront": "yarn --cwd ./packages/storefront start",
     "start:utilities": "yarn --cwd ./packages/utilities start",
     "build": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components' && concurrently -n 'partials' 'yarn build:partials' && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,storefront' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:storefront'",
-    "build:core-dependencies": "concurrently -n 'shared,fonts' 'yarn build:shared' 'yarn build:fonts' && concurrently -n 'utilities' 'yarn build:utilities' && concurrently --kill-others-on-fail -n 'icons,marque,meta-icons' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' && concurrently -n 'assets' 'yarn build:assets'",
+    "build:core-dependencies": "concurrently -n 'web-component-manager,shared,fonts' 'yarn build:web-component-manager' 'yarn build:shared' 'yarn build:fonts' && concurrently -n 'utilities' 'yarn build:utilities' && concurrently --kill-others-on-fail -n 'icons,marque,meta-icons' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' && concurrently -n 'assets' 'yarn build:assets'",
     "build:assets": "yarn --cwd ./packages/assets build",
     "build:assetsCopyComponentsOnly": "yarn --cwd ./packages/assets buildCopyComponentsOnly",
     "build:icons": "yarn --cwd ./packages/icons build",
@@ -72,6 +73,9 @@
     "build:shared": "yarn --cwd ./packages/shared build",
     "build:storefront": "yarn --cwd ./packages/storefront build",
     "build:utilities": "yarn --cwd ./packages/utilities build",
+    "build:web-component-manager": "yarn build:web-component-manager:core && yarn build:web-component-manager:cli",
+    "build:web-component-manager:core": "yarn --cwd ./packages/web-component-manager/core build",
+    "build:web-component-manager:cli": "yarn --cwd ./packages/web-component-manager/cli build",
     "lint": "concurrently --kill-others-on-fail -n 'components,storefront' 'yarn lint:components' 'yarn lint:storefront'",
     "lint:components": "yarn --cwd ./packages/components lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
