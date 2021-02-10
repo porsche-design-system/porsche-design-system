@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "lib": ["dom"]
+  },
+  "include": ["bin/pwcm.ts"]
+}
