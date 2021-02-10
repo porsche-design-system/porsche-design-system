@@ -16,7 +16,7 @@ import {
   getBoxShadowStyle,
   getLifecycleStatus,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ConsoleMessage, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('radio-button-wrapper', () => {
@@ -161,6 +161,51 @@ describe('radio-button-wrapper', () => {
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
+  it('should disable radio-button when radio-button is set disabled programmatically', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`
+    );
+
+    const fakeDisabledClass = 'p-radio-button-wrapper__fake-radio-button--disabled';
+    const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
+    const fakeRadio1Input = await selectNode(page, '#radio-1 > input');
+
+    expect(await getCssClasses(fakeRadio1)).not.toContain(fakeDisabledClass);
+
+    await fakeRadio1Input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(fakeRadio1)).toContain(fakeDisabledClass);
+
+    await fakeRadio1Input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await waitForStencilLifecycle(page);
+
+    expect(await getCssClasses(fakeRadio1)).not.toContain(fakeDisabledClass);
+  });
+
+  it('should throw error if used without slotted input', async () => {
+    const errorMessages: ConsoleMessage[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        const { description } = msg.args()[0]['_remoteObject'];
+        if (description) {
+          errorMessages.push(description);
+        }
+      }
+    });
+
+    await setContentWithDesignSystem(
+      page,
+      '<p-radio-button-wrapper label="Some label" hide-label="false"></p-radio-button-wrapper>'
+    );
+
+    expect(errorMessages[0]).toContain('Child HTMLElement input[type="radio"] is missing.');
+  });
+
   describe('checked state', () => {
     const fakeCheckedClass = 'p-radio-button-wrapper__fake-radio-button--checked';
 
@@ -261,32 +306,6 @@ describe('radio-button-wrapper', () => {
       expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
       expect(await getCssClasses(fakeRadio2)).toContain(fakeCheckedClass);
     });
-  });
-
-  it('should disable radio-button when radio-button is set disabled programmatically', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
-    );
-
-    const fakeDisabledClass = 'p-radio-button-wrapper__fake-radio-button--disabled';
-    const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
-    const fakeRadio1Input = await selectNode(page, '#radio-1 > input');
-
-    expect(await getCssClasses(fakeRadio1)).not.toContain(fakeDisabledClass);
-
-    await fakeRadio1Input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeRadio1)).toContain(fakeDisabledClass);
-
-    await fakeRadio1Input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForStencilLifecycle(page);
-
-    expect(await getCssClasses(fakeRadio1)).not.toContain(fakeDisabledClass);
   });
 
   describe('focus state', () => {

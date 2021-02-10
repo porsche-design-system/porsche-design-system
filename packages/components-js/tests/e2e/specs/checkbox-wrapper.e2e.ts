@@ -14,7 +14,7 @@ import {
   getOutlineStyle,
   getLifecycleStatus,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ConsoleMessage, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('checkbox-wrapper', () => {
@@ -265,6 +265,25 @@ describe('checkbox-wrapper', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
+  });
+
+  it('should throw error if used without slotted input', async () => {
+    const errorMessages: ConsoleMessage[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        const { description } = msg.args()[0]['_remoteObject'];
+        if (description) {
+          errorMessages.push(description);
+        }
+      }
+    });
+
+    await setContentWithDesignSystem(
+      page,
+      '<p-checkbox-wrapper label="Some label" hide-label="false"></p-checkbox-wrapper>'
+    );
+
+    expect(errorMessages[0]).toContain('Child HTMLElement input[type="checkbox"] is missing.');
   });
 
   describe('indeterminate state', () => {
