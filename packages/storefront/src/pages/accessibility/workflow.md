@@ -410,19 +410,25 @@
     <p-headline variant="headline-4">Write</p-headline>
     <p-text-list>
       <p-text-list-item>
+        For every page define a unique and descriptive <strong>Page Title</strong>.
+      </p-text-list-item>
+      <p-text-list-item>
         <strong>Structure contents</strong> in a clear, hierarchical and meaningful way.
       </p-text-list-item>
       <p-text-list-item>
-        For every page define a unique and descriptive <strong>Page Title</strong>.
+        Think and act <strong>from top to bottom and from left to right</strong> as that’s the way screen readers read content. Important information needs to be in front of the control element, e.g., label, additional information, tooltip link.
       </p-text-list-item>
       <p-text-list-item>
         Take care that textual content is short, <strong>understandable</strong> and easy to read.
       </p-text-list-item>
       <p-text-list-item>
-        Provide <strong>textual alternatives</strong> to images, videos, charts and every content which transports meaning without text.
+        Prevent using <strong>acronyms</strong> and complex technical terms.
       </p-text-list-item>
       <p-text-list-item>
-        Prevent using <strong>acronyms</strong> and complex technical terms.
+         <strong>"Design for the ears"</strong>. Make sure that the context of your texts and interaction elements are clear, even if you won’t see the UI and images around. Name your buttons so that the action is clear to the user or he knows exactly where he is going by clicking.
+      </p-text-list-item>
+      <p-text-list-item>
+        Provide <strong>textual alternatives</strong> to images, videos, charts and every content which transports meaning without text. Especially when they have a functionality, e.g., icons in a mobile interface.
       </p-text-list-item>
       <p-text-list-item>
         Create an <strong>Accessibility Statement</strong> which should be a page of your application where the current state of accessibility is stated.
