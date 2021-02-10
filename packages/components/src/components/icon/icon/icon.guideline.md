@@ -1,8 +1,7 @@
 # Icon
 
 Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? 
-Feel free to contact us (also as a reviewer). If we also think that your icon is relevant for the basic library it will be published as library symbols for design.
-[Sketch basic library](https://designsystem.porsche.com/latest/#/start-designing/introduction) and SVGs for development. See [Porsche Icon overview](https://icons.porsche.com/#/)
+If your icon qualifies for the basic library it will be published as library symbols for design. Feel free to contact us (also as a reviewer). [Sketch basic library](https://designsystem.porsche.com/latest/#/start-designing/introduction) and SVGs for development. See [Porsche Icon overview](https://icons.porsche.com/#/)
 
 ---
 
@@ -25,7 +24,7 @@ Feel free to contact us (also as a reviewer). If we also think that your icon is
     Is the icon aesthetically pleasing?
 
 ### Quality assurance
-Go through all the points regarding quality assurance (Grid, Color, Pixel, Naming, metatags, export criteria) and feel free to request the Porsche Design System Team for review.
+Go through all the points regarding quality assurance (grid, color, pixel, naming, metatags, export criteria) and feel free to request the Porsche Design System Team for review.
 
 ### Export
 Export your icon as svg and share it with the developers.
@@ -51,7 +50,7 @@ Within this artboard there are different basic shapes (in violet) you should sti
 
 ![Porsche Illustrator Board](./assets/porsche-icons-illustrator-board.png)
 
-For the correct weighting of the icons the different shapes are created. Check which of the shapes is necessary for you to keep the visual weight in balance. 
+For the correct weighting of the icons the different shapes are created. Check which of the shapes are necessary for you to keep the visual weight in balance. 
 
 ![Porsche examples shapes](./assets/porsche-icons-shapes.png)
 
@@ -126,7 +125,7 @@ Make sure that both layers are turned visible so that the icons are exported in 
 
 ## Look & Feel
 
-**All icons are built in an outline version, which is also the default state.** Individual project teams that require filled variants are welcome to contact us at any time. If a filled version is needed, has to be decided individually for each icon, according to content and purpose.
+**All icons are built in an outline version, which is also the default state.** Individual project teams that require filled variants are welcome to contact us at any time. If a filled version is needed, it has to be decided individually for each icon, according to content and purpose.
 
 ### Squircle element and Porsche Next typeface
 
