@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element, State, forceUpdate } from '@stencil/core';
 import {
   getHTMLElement,
   getPrefixedTagNames,
@@ -9,6 +9,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
+  throwIfHTMLElementIsUndefined,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -35,8 +36,6 @@ export class TextFieldWrapper {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private disabled: boolean;
-  @State() private readonly: boolean;
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
@@ -46,7 +45,6 @@ export class TextFieldWrapper {
   public connectedCallback(): void {
     this.setInput();
     this.isPasswordToggleable = this.input.type === 'password';
-    this.setState();
     this.initMutationObserver();
     this.addSlottedStyles();
   }
@@ -64,16 +62,17 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
+    const { readOnly, disabled } = this.input;
     const containerClasses = prefix('text-field-wrapper__container');
     const labelClasses = prefix('text-field-wrapper__label');
     const labelTextClasses = {
       [prefix('text-field-wrapper__label-text')]: true,
-      [prefix('text-field-wrapper__label-text--disabled')]: this.disabled,
+      [prefix('text-field-wrapper__label-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('text-field-wrapper__description-text')]: true,
-      [prefix('text-field-wrapper__description-text--disabled')]: this.disabled,
+      [prefix('text-field-wrapper__description-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
         'hidden',
         'visible',
@@ -82,8 +81,8 @@ export class TextFieldWrapper {
     const fakeInputClasses = {
       [prefix('text-field-wrapper__fake-input')]: true,
       [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
-      [prefix('text-field-wrapper__fake-input--disabled')]: this.disabled,
-      [prefix('text-field-wrapper__fake-input--readonly')]: this.readonly,
+      [prefix('text-field-wrapper__fake-input--disabled')]: disabled,
+      [prefix('text-field-wrapper__fake-input--readonly')]: readOnly,
       [prefix('text-field-wrapper__fake-input--password')]: this.isPasswordToggleable,
     };
     const buttonClasses = prefix('text-field-wrapper__button');
@@ -120,17 +119,12 @@ export class TextFieldWrapper {
             </span>
           </label>
           {this.isPasswordToggleable && (
-            <button type="button" class={buttonClasses} onClick={this.togglePassword} disabled={this.disabled}>
+            <button type="button" class={buttonClasses} onClick={this.togglePassword} disabled={disabled}>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
           )}
           {this.isInputTypeSearch && (
-            <button
-              onClick={this.onSubmitHandler}
-              type="submit"
-              class={buttonClasses}
-              disabled={this.disabled || this.readonly}
-            >
+            <button onClick={this.onSubmitHandler} type="submit" class={buttonClasses} disabled={disabled || readOnly}>
               <PrefixedTagNames.pIcon name="search" color="inherit" />
             </button>
           )}
@@ -157,7 +151,11 @@ export class TextFieldWrapper {
   }
 
   private setInput(): void {
-    this.input = getHTMLElement(this.host, 'input');
+    const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week'];
+    const selector = types.map((type) => `input[type=${type}]`).join(', ');
+
+    this.input = getHTMLElement(this.host, selector);
+    throwIfHTMLElementIsUndefined(this.input, selector);
   }
 
   /*
@@ -172,11 +170,6 @@ export class TextFieldWrapper {
       state: this.state,
     });
   }
-
-  private setState = (): void => {
-    this.disabled = this.input.disabled;
-    this.readonly = this.input.readOnly;
-  };
 
   private labelClick = (): void => {
     this.input.focus();
@@ -198,13 +191,13 @@ export class TextFieldWrapper {
         event,
         this.host,
         () => 'submit',
-        () => this.disabled
+        () => this.input.disabled
       );
     }
   };
 
   private initMutationObserver = (): void => {
-    this.inputObserver = new MutationObserver(this.setState);
+    this.inputObserver = new MutationObserver(() => forceUpdate(this.host));
     this.inputObserver.observe(this.input, {
       attributeFilter: ['disabled', 'readonly'],
     });
