@@ -151,7 +151,7 @@ export class TextFieldWrapper {
   }
 
   private setInput(): void {
-    const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week'];
+    const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'];
     const selector = types.map((type) => `input[type=${type}]`).join(', ');
 
     this.input = getHTMLElement(this.host, selector);
