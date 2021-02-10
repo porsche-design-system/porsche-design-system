@@ -13,6 +13,7 @@ import {
   prefix,
   setAriaAttributes,
   setAttribute,
+  throwIfHTMLElementIsUndefined,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 
@@ -248,7 +249,11 @@ export class SelectWrapper {
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = getHTMLElement(this.host, 'select');
+    const selector = 'select';
+
+    this.select = getHTMLElement(this.host, selector);
+    throwIfHTMLElementIsUndefined(this.select, selector);
+
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
     }
