@@ -57,23 +57,13 @@ describe('hasNamedSlot', () => {
 describe('getHTMLElementAndThrowIfUndefined', () => {
   const selector = '.someSelector';
 
-  const initDom = (): HTMLElement => {
+  const initDom = (): void => {
     const el = document.createElement('div');
     const child = document.createElement('div');
     document.body.append(el);
     el.append(child);
-    child.classList.add('someSelector');
-
-    return el;
+    child.classList.add(selector);
   };
-
-  it('function should be called', () => {
-    const el = initDom();
-    const mockFunc = jest.fn(getHTMLElementAndThrowIfUndefined);
-    mockFunc(el, selector);
-
-    expect(mockFunc).toBeCalled();
-  });
 
   it('should throw error if selector is not found', () => {
     const el = document.createElement('div');
@@ -87,11 +77,11 @@ describe('getHTMLElementAndThrowIfUndefined', () => {
   });
 
   it('should not throw error if HMTLElement is defined', () => {
-    const el = initDom();
+    initDom();
 
     let error = undefined;
     try {
-      getHTMLElementAndThrowIfUndefined(el, selector);
+      getHTMLElementAndThrowIfUndefined(document.body, selector);
     } catch (e) {
       error = e.message;
     }

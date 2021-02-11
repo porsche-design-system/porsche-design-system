@@ -51,12 +51,6 @@ export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSele
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
-export const throwIfHTMLElementIsUndefined = (element: HTMLElement, selector: string): void => {
-  if (!element) {
-    throw new Error(`Child HTMLElement ${selector} is missing.`);
-  }
-};
-
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
 export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(host: Host, selector: string): E | null;
