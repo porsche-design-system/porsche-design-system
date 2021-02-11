@@ -1,7 +1,7 @@
 import { JSX, Host, h, Component, Prop, Element, forceUpdate } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
@@ -9,7 +9,6 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
-  throwIfHTMLElementIsUndefined,
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -102,10 +101,7 @@ export class RadioButtonWrapper {
   }
 
   private setInput(): void {
-    const selector = 'input[type="radio"]';
-
-    this.input = getHTMLElement(this.host, selector);
-    throwIfHTMLElementIsUndefined(this.input, selector);
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
   }
 
   /*

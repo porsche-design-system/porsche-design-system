@@ -1,6 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
@@ -8,7 +8,6 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
-  throwIfHTMLElementIsUndefined,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -131,10 +130,7 @@ export class TextareaWrapper {
   }
 
   private setTextarea(): void {
-    const selector = 'textarea';
-
-    this.textarea = getHTMLElement(this.host, selector);
-    throwIfHTMLElementIsUndefined(this.textarea, selector);
+    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
   }
 
   /*

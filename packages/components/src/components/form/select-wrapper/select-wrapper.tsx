@@ -1,7 +1,7 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
   hasNamedSlot,
@@ -13,7 +13,6 @@ import {
   prefix,
   setAriaAttributes,
   setAttribute,
-  throwIfHTMLElementIsUndefined,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
 
@@ -249,10 +248,7 @@ export class SelectWrapper {
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    const selector = 'select';
-
-    this.select = getHTMLElement(this.host, selector);
-    throwIfHTMLElementIsUndefined(this.select, selector);
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
 
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');

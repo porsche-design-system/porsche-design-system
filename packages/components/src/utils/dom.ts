@@ -57,4 +57,16 @@ export const throwIfHTMLElementIsUndefined = (element: HTMLElement, selector: st
   }
 };
 
+// prettier-ignore
+export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
+export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(host: Host, selector: string): E | null;
+// prettier-ignore
+export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null {
+  const el = getHTMLElement(host, selector);
+  if (!el) {
+    throw new Error(`Child HTMLElement ${selector} is missing.`);
+  }
+  return el;
+}
+
 // TODO: add addEventListener and removeEventListener
