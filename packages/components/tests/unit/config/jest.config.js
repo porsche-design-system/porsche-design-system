@@ -1,9 +1,16 @@
 module.exports = {
-  preset: '@stencil/core/testing',
-  setupFiles: ['./tests/unit/config/jest.setup.js'],
-  globals: {
-    ROLLUP_REPLACE_IS_STAGING: 'production',
-  },
+  preset: 'ts-jest',
   rootDir: '../../../',
-  testTimeout: 10000,
+  verbose: true,
+  setupFiles: ['<rootDir>/tests/unit/config/setup.ts'],
+  testMatch: ['**/tests/unit/**/*.spec.ts'],
+  modulePathIgnorePatterns: ['<rootDir>/dist'],
+  globals: {
+    'ROLLUP_REPLACE_IS_STAGING': 'production',
+    'ts-jest': {
+      isolatedModules: true, // this fixes typing issues with jasmine
+    },
+  },
+  clearMocks: true,
+  restoreMocks: true,
 };
