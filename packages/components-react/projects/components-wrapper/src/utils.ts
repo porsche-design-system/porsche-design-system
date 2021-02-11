@@ -1,8 +1,8 @@
 import type { ForwardedRef, MutableRefObject } from 'react';
 
-const splitToArray = (str: string) => str.split(' ').filter((str) => str);
+const splitToArray = /*#__PURE__*/ (str: string) => str.split(' ').filter((str) => str);
 
-export const getMergedClassName = (
+export const getMergedClassName = /*#__PURE__*/ (
   domClassName: string,
   oldClassName: string = '',
   newClassName: string = ''
@@ -23,9 +23,9 @@ export const getMergedClassName = (
   return componentClasses.concat(domClasses).join(' ');
 };
 
-export const jsonStringify = (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
+export const jsonStringify = /*#__PURE__*/ (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
-export const syncRef = (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) => (
+export const syncRef = /*#__PURE__*/ (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) => (
   el: HTMLElement
 ): void => {
   elementRef.current = el;

@@ -79,7 +79,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ${componentPropsArr.join(',\n      ')}
     };`;
 
-    return `export const ${pascalCase(component)} = forwardRef(
+    return `export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
   (
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>
