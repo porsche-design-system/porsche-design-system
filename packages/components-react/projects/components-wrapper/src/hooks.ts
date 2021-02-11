@@ -13,7 +13,7 @@ export function usePrefix(tagName: string): string {
   return prefix ? `${prefix}-${tagName}` : tagName;
 }
 
-export const useEventCallback = (
+export const useEventCallback = /*#__PURE__*/ (
   ref: MutableRefObject<HTMLElement>,
   eventName: string,
   eventHandler: (e: Event) => void
@@ -27,7 +27,7 @@ export const useEventCallback = (
   }, [eventHandler]);
 };
 
-export const useMergedClass = (ref: MutableRefObject<HTMLElement>, className: string) => {
+export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>, className: string) => {
   const prevComponentClassName = useRef<string>();
   return useMemo(() => {
     const { current } = ref;
