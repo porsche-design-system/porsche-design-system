@@ -3,15 +3,24 @@ import { useContext, useEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 
-export function usePrefix(tagName: string): string {
-  const { prefix } = useContext(PorscheDesignSystemContext);
+let skipCheck = false;
+export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
+  skipCheck = true;
+};
 
-  if (prefix === undefined) {
-    throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
+export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
+  if (process.env.NODE_ENV === 'test' && skipCheck) {
+    return tagName;
+  } else {
+    const { prefix } = useContext(PorscheDesignSystemContext);
+
+    if (prefix === undefined) {
+      throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
+    }
+
+    return prefix ? prefix + '-' + tagName : tagName;
   }
-
-  return prefix ? `${prefix}-${tagName}` : tagName;
-}
+};
 
 export const useEventCallback = /*#__PURE__*/ (
   ref: MutableRefObject<HTMLElement>,
