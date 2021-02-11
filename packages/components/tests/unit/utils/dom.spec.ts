@@ -1,4 +1,4 @@
-import { hasNamedSlot, isRequired, throwIfHTMLElementIsUndefined } from '../../../src/utils';
+import { getHTMLElementAndThrowIfUndefined, hasNamedSlot, isRequired } from '../../../src/utils';
 
 describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
@@ -54,15 +54,47 @@ describe('hasNamedSlot', () => {
   });
 });
 
-describe('throwIfHTMLElementIsUndefined', () => {
-  const selector = 'some selector';
+describe('getHTMLElementAndThrowIfUndefined', () => {
+  const selector = '.someSelector';
 
-  it('should throw error if HMTLElement is not defined', (done) => {
+  const initDom = (): HTMLElement => {
+    const el = document.createElement('div');
+    const child = document.createElement('div');
+    document.body.append(el);
+    el.append(child);
+    child.classList.add('someSelector');
+
+    return el;
+  };
+
+  it('function should be called', () => {
+    const el = initDom();
+    const mockFunc = jest.fn(getHTMLElementAndThrowIfUndefined);
+    mockFunc(el, selector);
+
+    expect(mockFunc).toBeCalled();
+  });
+
+  it('should throw error if selector is not found', () => {
+    const el = document.createElement('div');
+    let error;
     try {
-      throwIfHTMLElementIsUndefined(undefined, selector);
+      getHTMLElementAndThrowIfUndefined(el, selector);
     } catch (e) {
-      expect((e as Error).message).toBe(`Child HTMLElement ${selector} is missing.`);
-      done();
+      error = e.message;
     }
+    expect(error).toBe(`Child HTMLElement ${selector} is missing.`);
+  });
+
+  it('should not throw error if HMTLElement is defined', () => {
+    const el = initDom();
+
+    let error = undefined;
+    try {
+      getHTMLElementAndThrowIfUndefined(el, selector);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
   });
 });

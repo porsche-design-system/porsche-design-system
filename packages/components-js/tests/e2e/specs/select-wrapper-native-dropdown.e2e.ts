@@ -205,25 +205,6 @@ describe('select-wrapper native-dropdown', () => {
     expect(await getCssClasses(fakeSelect)).not.toContain(disabledClass, 'when disabled = false');
   });
 
-  it('should throw error if used without slotted select', async () => {
-    const errorMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          errorMessages.push(description);
-        }
-      }
-    });
-
-    await setContentWithDesignSystem(
-      page,
-      '<p-select-wrapper label="Some label" hide-label="false"></p-select-wrapper>'
-    );
-
-    expect(errorMessages[0]).toContain('Child HTMLElement select is missing.');
-  });
-
   describe('focus state', () => {
     it('should be shown on click for slotted <select>', async () => {
       await initSelect();

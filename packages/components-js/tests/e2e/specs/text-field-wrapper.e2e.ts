@@ -112,27 +112,6 @@ describe('text-field-wrapper', () => {
     expect(await getLabel()).not.toBeNull();
   });
 
-  it('should throw error if used without slotted input', async () => {
-    const errorMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          errorMessages.push(description);
-        }
-      }
-    });
-
-    await setContentWithDesignSystem(
-      page,
-      '<p-text-field-wrapper label="Some label" hide-label="false"></p-text-field-wrapper>'
-    );
-
-    expect(errorMessages[0]).toContain(
-      'Child HTMLElement input[type=text], input[type=number], input[type=email], input[type=tel], input[type=search], input[type=url], input[type=date], input[type=time], input[type=month], input[type=week], input[type=password] is missing.'
-    );
-  });
-
   describe('accessibility', () => {
     it('should add aria-label to support screen readers properly', async () => {
       await setContentWithDesignSystem(

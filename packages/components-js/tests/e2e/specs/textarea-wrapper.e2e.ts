@@ -206,25 +206,6 @@ describe('textarea-wrapper', () => {
     expect(textareaFocusSpyCalls).toBe(1);
   });
 
-  it('should throw error if used without slotted textarea', async () => {
-    const errorMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          errorMessages.push(description);
-        }
-      }
-    });
-
-    await setContentWithDesignSystem(
-      page,
-      '<p-textarea-wrapper label="Some label" hide-label="false"></p-textarea-wrapper>'
-    );
-
-    expect(errorMessages[0]).toContain('Child HTMLElement textarea is missing.');
-  });
-
   describe('focus state', () => {
     it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
       await initTextarea();
