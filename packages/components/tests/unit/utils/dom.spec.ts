@@ -55,33 +55,27 @@ describe('hasNamedSlot', () => {
 });
 
 describe('getHTMLElementAndThrowIfUndefined', () => {
-  const selector = '.someSelector';
-
-  const initDom = (): void => {
-    const el = document.createElement('div');
-    const child = document.createElement('div');
-    document.body.append(el);
-    el.append(child);
-    child.classList.add(selector);
-  };
+  const selector = 'someSelector';
 
   it('should throw error if selector is not found', () => {
     const el = document.createElement('div');
     let error;
     try {
-      getHTMLElementAndThrowIfUndefined(el, selector);
+      getHTMLElementAndThrowIfUndefined(el, `.${selector}`);
     } catch (e) {
       error = e.message;
     }
-    expect(error).toBe(`Child HTMLElement ${selector} is missing.`);
+    expect(error).toBe(`Child HTMLElement .${selector} is missing.`);
   });
 
   it('should not throw error if HMTLElement is defined', () => {
-    initDom();
+    const el = document.createElement('div');
+    el.classList.add(selector);
+    document.body.append(el);
 
     let error = undefined;
     try {
-      getHTMLElementAndThrowIfUndefined(document.body, selector);
+      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
     } catch (e) {
       error = e.message;
     }
