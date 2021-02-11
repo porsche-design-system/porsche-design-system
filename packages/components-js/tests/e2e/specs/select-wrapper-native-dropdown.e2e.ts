@@ -185,7 +185,6 @@ describe('select-wrapper native-dropdown', () => {
     expect(await hasSelectFocus()).toBe(true);
   });
 
-  // Test fails if select is native -> Ticket #1092
   it('should disable fake select when select is disabled programmatically', async () => {
     await initSelect();
 

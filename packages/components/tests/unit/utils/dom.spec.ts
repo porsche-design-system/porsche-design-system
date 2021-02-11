@@ -1,4 +1,4 @@
-import { hasNamedSlot, isRequired } from '../../../src/utils';
+import { getHTMLElementAndThrowIfUndefined, hasNamedSlot, isRequired } from '../../../src/utils';
 
 describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
@@ -51,5 +51,33 @@ describe('hasNamedSlot', () => {
     slottedChild.setAttribute('slot', 'title');
     el.appendChild(slottedChild);
     expect(hasNamedSlot(el, 'title')).toBe(true);
+  });
+});
+
+describe('getHTMLElementAndThrowIfUndefined', () => {
+  const selector = 'someSelector';
+
+  it('should throw error if selector is not found', () => {
+    let error;
+    try {
+      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(`Child HTMLElement .${selector} is missing.`);
+  });
+
+  it('should not throw error if HMTLElement is defined', () => {
+    const el = document.createElement('div');
+    el.classList.add(selector);
+    document.body.append(el);
+
+    let error = undefined;
+    try {
+      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
   });
 });
