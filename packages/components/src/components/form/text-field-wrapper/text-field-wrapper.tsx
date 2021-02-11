@@ -1,6 +1,6 @@
 import { JSX, Host, Component, Prop, h, Element, State, forceUpdate } from '@stencil/core';
 import {
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   handleButtonEvent,
   hasNamedSlot,
@@ -9,7 +9,6 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
-  throwIfHTMLElementIsUndefined,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -152,10 +151,9 @@ export class TextFieldWrapper {
 
   private setInput(): void {
     const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'];
-    const selector = types.map((type) => `input[type=${type}]`).join(', ');
+    const selector = types.map((type) => `input[type=${type}]`).join(',');
 
-    this.input = getHTMLElement(this.host, selector);
-    throwIfHTMLElementIsUndefined(this.input, selector);
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
 
   /*
