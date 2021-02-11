@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "rm -rf ./dist && yarn build:cli && yarn build:entry",
-    "build:cli": "tsc --build tsconfig.json",
+    "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/pwcm.js",
     "build:entry": "tsc --build tsconfig.library-entry.json"
   },
   "dependencies": {
