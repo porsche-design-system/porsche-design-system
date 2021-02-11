@@ -58,10 +58,9 @@ describe('getHTMLElementAndThrowIfUndefined', () => {
   const selector = 'someSelector';
 
   it('should throw error if selector is not found', () => {
-    const el = document.createElement('div');
     let error;
     try {
-      getHTMLElementAndThrowIfUndefined(el, `.${selector}`);
+      getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
     } catch (e) {
       error = e.message;
     }
