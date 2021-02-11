@@ -1,8 +1,8 @@
 import * as functions from '../../../src/utils/dom';
 import { TextFieldWrapper } from '../../../src/components/form/text-field-wrapper/text-field-wrapper';
 
-describe('should call function', () => {
-  it('getHTMLElementAndThrowIfUndefined', () => {
+describe('text-field-wrapper', () => {
+  it('should call function getHTMLElementAndThrowIfUndefined', () => {
     const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
     const textField = new TextFieldWrapper();
     try {

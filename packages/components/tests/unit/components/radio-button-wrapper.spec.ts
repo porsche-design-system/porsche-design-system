@@ -1,8 +1,8 @@
 import * as functions from '../../../src/utils/dom';
 import { RadioButtonWrapper } from '../../../src/components/form/radio-button-wrapper/radio-button-wrapper';
 
-describe('should call function', () => {
-  it('getHTMLElementAndThrowIfUndefined', () => {
+describe('radio-button-wrapper', () => {
+  it('should call function getHTMLElementAndThrowIfUndefined', () => {
     const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
     const radioButton = new RadioButtonWrapper();
     try {

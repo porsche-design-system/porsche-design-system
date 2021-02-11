@@ -1,8 +1,8 @@
 import * as functions from '../../../src/utils/dom';
 import { TextareaWrapper } from '../../../src/components/form/textarea-wrapper/textarea-wrapper';
 
-describe('should call function', () => {
-  it('getHTMLElementAndThrowIfUndefined', () => {
+describe('textarea-wrapper', () => {
+  it('should call function getHTMLElementAndThrowIfUndefined', () => {
     const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
     const textarea = new TextareaWrapper();
     try {
