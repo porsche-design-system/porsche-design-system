@@ -13,7 +13,7 @@ import {
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import { ConsoleMessage, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('select-wrapper native-dropdown', () => {

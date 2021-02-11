@@ -16,7 +16,7 @@ import {
   getLifecycleStatus,
   getElementStyle,
 } from '../helpers';
-import { ConsoleMessage, Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('text-field-wrapper', () => {
