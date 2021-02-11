@@ -267,25 +267,6 @@ describe('checkbox-wrapper', () => {
     expect(await getCssClasses(fakeInput)).not.toContain('p-checkbox-wrapper__fake-checkbox--disabled');
   });
 
-  it('should throw error if used without slotted input', async () => {
-    const errorMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          errorMessages.push(description);
-        }
-      }
-    });
-
-    await setContentWithDesignSystem(
-      page,
-      '<p-checkbox-wrapper label="Some label" hide-label="false"></p-checkbox-wrapper>'
-    );
-
-    expect(errorMessages[0]).toContain('Child HTMLElement input[type="checkbox"] is missing.');
-  });
-
   describe('indeterminate state', () => {
     const setIndeterminate = async (value: boolean) => {
       await page.evaluate((indeterminate: boolean) => {

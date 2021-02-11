@@ -187,25 +187,6 @@ describe('radio-button-wrapper', () => {
     expect(await getCssClasses(fakeRadio1)).not.toContain(fakeDisabledClass);
   });
 
-  it('should throw error if used without slotted input', async () => {
-    const errorMessages: ConsoleMessage[] = [];
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') {
-        const { description } = msg.args()[0]['_remoteObject'];
-        if (description) {
-          errorMessages.push(description);
-        }
-      }
-    });
-
-    await setContentWithDesignSystem(
-      page,
-      '<p-radio-button-wrapper label="Some label" hide-label="false"></p-radio-button-wrapper>'
-    );
-
-    expect(errorMessages[0]).toContain('Child HTMLElement input[type="radio"] is missing.');
-  });
-
   describe('checked state', () => {
     const fakeCheckedClass = 'p-radio-button-wrapper__fake-radio-button--checked';
 
