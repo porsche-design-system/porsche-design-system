@@ -304,6 +304,7 @@ describe('text-field-wrapper', () => {
       expect(inputFocusCalls).toBe(2);
     });
   });
+
   describe('input type search', () => {
     it('should disable search button when input (type search) is set to disabled or readonly programmatically', async () => {
       await setContentWithDesignSystem(

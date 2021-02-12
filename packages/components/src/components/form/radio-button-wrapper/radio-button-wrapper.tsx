@@ -1,7 +1,7 @@
-import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
+import { JSX, Host, h, Component, Prop, Element, forceUpdate } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
@@ -33,14 +33,10 @@ export class RadioButtonWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private checked: boolean;
-  @State() private disabled: boolean;
-
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
     this.setInput();
-    this.setState();
     this.bindStateListener();
     this.addSlottedStyles();
   }
@@ -54,16 +50,17 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
+    const { checked, disabled } = this.input;
     const labelClasses = prefix('radio-button-wrapper__label');
     const fakeRadioButtonClasses = {
       [prefix('radio-button-wrapper__fake-radio-button')]: true,
-      [prefix('radio-button-wrapper__fake-radio-button--checked')]: this.checked,
-      [prefix('radio-button-wrapper__fake-radio-button--disabled')]: this.disabled,
+      [prefix('radio-button-wrapper__fake-radio-button--checked')]: checked,
+      [prefix('radio-button-wrapper__fake-radio-button--disabled')]: disabled,
       [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
-      [prefix('radio-button-wrapper__label-text--disabled')]: this.disabled,
+      [prefix('radio-button-wrapper__label-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
@@ -104,7 +101,7 @@ export class RadioButtonWrapper {
   }
 
   private setInput(): void {
-    this.input = getHTMLElement(this.host, 'input[type="radio"]');
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
   }
 
   /*
@@ -131,13 +128,8 @@ export class RadioButtonWrapper {
     }
   };
 
-  private setState = (): void => {
-    this.checked = this.input.checked;
-    this.disabled = this.input.disabled;
-  };
-
   private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', this.setState);
+    transitionListener(this.input, 'border-top-color', () => forceUpdate(this.host));
   }
 
   private addSlottedStyles(): void {
