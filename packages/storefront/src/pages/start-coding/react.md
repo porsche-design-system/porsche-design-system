@@ -4,10 +4,10 @@
 
 To build your own application with the **React** components of Porsche Design System, follow these steps:
 
-* Follow the instructions at (Introduction)[#/start-coding/introduction] to get the required npm package
-* Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
+- Follow the instructions at (Introduction)[#/start-coding/introduction] to get the required npm package
+- Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
   create a directory inside the current folder with the initial project structure called `my-app`
-* To add TypeScript to your **Create React App**, you have to install it:
+- To add TypeScript to your **Create React App**, you have to install it:
 
 ```shell script
 // install with yarn:
@@ -17,7 +17,7 @@ yarn add typescript @types/node @types/react @types/react-dom @types/jest
 npm install typescript @types/node @types/react @types/react-dom @types/jest
 ```
 
-* Install the Porsche Design System
+- Install the Porsche Design System
 
 ```shell script
 // install with yarn:
@@ -32,8 +32,7 @@ You are ready to start building your own application.
 ### Integration
 
 The following project is a standard React (Create React App) setup extended by the
-necessary `PorscheDesignSystemProvider`
-which you can import from `@porsche-design-system/components-react` :
+necessary `PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
 
 ```tsx
 // index.tsx
@@ -51,7 +50,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-``` 
+```
 
 Change your App file to use at least one Porsche Design System component, for example:
 
@@ -123,7 +122,7 @@ export const SingleComponent = (): JSX.Element => {
       <div data-testid="debug">{`Active Tab: ${activeTab + 1}`}</div>
     </>
   );
-}
+};
 ```
 
 ### Test example component
@@ -139,7 +138,8 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
   const { getByTestId } = render(
     <PorscheDesignSystemProvider> {/* required for the component to work */}
       <SingleComponent />
-    </PorscheDesignSystemProvider>);
+    </PorscheDesignSystemProvider>
+  );
 
   await componentsReady(); // we need to make sure Porsche Design System components are initialized
 
@@ -168,7 +168,8 @@ Therefore, we offer the following advice.
 
 #### Custom helper
 
-To reduce repetitive code you can write a custom helper function that wraps component in `PorscheDesignSystemProvider` and calls the `render` function of `react-testing-library`:
+To reduce repetitive code you can write a custom helper function that wraps a component in `PorscheDesignSystemProvider`
+and calls the `render` function of `react-testing-library`:
 
 ```tsx
 // helper.tsx
@@ -183,10 +184,11 @@ export const renderWithProvider = (component: JSX.Element): RenderResult => {
 
 #### Disabling the validation of PorscheDesignSystemProvider
 
-Alternatively we provide a utility function called `skipCheckForPorscheDesignSystemProviderDuringTests()` that can be called within your tests.  
+Alternatively we provide a utility function `skipCheckForPorscheDesignSystemProviderDuringTests()` that can be used
+within your tests.  
 It only takes effect during testing since it relies on `process.env.NODE_ENV === 'test'`.
 
-You can apply it globally on every test by calling it once in your global test setup:
+You can apply it globally on every test by calling it once in your test setup:
 
 ```tsx
 // setupTest.{js|ts}
@@ -197,7 +199,7 @@ skipCheckForPorscheDesignSystemProviderDuringTests();
 
 If you don't want to have multiple test setups or prefer a more local approach you can use it within your test:
 
-````tsx
+```tsx
 // SomeComponent.test.tsx
 import { skipCheckForPorscheDesignSystemProviderDuringTests } from '@porsche-design-system/components-react';
 
@@ -206,16 +208,15 @@ describe('SomeComponent', () => {
     // either like this
     skipCheckForPorscheDesignSystemProviderDuringTests();
   });
-  
+
   it('should work', () => {
     // or like this
     skipCheckForPorscheDesignSystemProviderDuringTests();
-    
+
     // ...
   });
 });
-````
-
+```
 
 ### Additional information when using react-testing-library
 
@@ -272,7 +273,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-``` 
+```
 
 In the following example the `PHeadline` component will render as `<sample-prefix-p-headline>`.
 
@@ -294,6 +295,6 @@ here: [Sample integration React](https://github.com/porscheui/sample-integration
 
 ### Get the project up and running
 
-* Clone the repository by executing  
+- Clone the repository by executing  
   `git clone https://github.com/porscheui/sample-integration-react.git`
-* Follow the installation guidelines in the README.md file
+- Follow the installation guidelines in the README.md file
