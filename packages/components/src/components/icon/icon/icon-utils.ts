@@ -17,7 +17,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
   }
 
   let req = requestCache.get(url);
-  if (!req) {
+  if (req === undefined) {
     req = fetch(url).then(
       (rsp) => (rsp.ok ? rsp.text() : ''),
       () => '' // reject callback
