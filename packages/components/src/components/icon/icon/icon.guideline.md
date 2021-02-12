@@ -1,6 +1,6 @@
 # Icon
 
-Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? If your icon qualifies for the basic library it will be published as library symbols for design and SVGs for development. Feel free to contact us (also as a reviewer). and SVGs for development.
+Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? If your icon qualifies for the basic library it will be published as library symbols for design and SVGs for development. Feel free to contact us (also as a reviewer).
 
 ---
 
