@@ -29,8 +29,8 @@
     "@porsche-design-system/components-js": "2.0.0-rc.2"
   },
   "peerDependencies": {
-    "react": ">=16.9.0 <18.0.0",
-    "react-dom": ">=16.9.0 <18.0.0"
+    "react": ">=17.0.0 <18.0.0",
+    "react-dom": ">=17.0.0 <18.0.0"
   },
   "main": "index.js",
   "module": "esm/index.js",
