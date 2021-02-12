@@ -1,5 +1,5 @@
-import { buildIconUrl, getSvgContent, isUrl } from '../../../src/components/icon/icon/icon-utils';
 import { ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { buildIconUrl, getSvgContent, isUrl } from '../../../src/components/icon/icon/icon-utils';
 import { IconName } from '../../../src/types';
 import { camelCase } from 'change-case';
 
@@ -9,20 +9,9 @@ const DEFAULT_ICON_URL =
 describe('getSvgContent()', () => {
   const getIconUrl = (name: IconName) => `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST[camelCase(name)]}`;
   const emptyIconUrl = 'https://cdn.ui.porsche.com/some-path/some-icon.svg';
-  const undefinedUrl = undefined;
-
-  /**
-   * this can not be done with staging anymore, since while unit tests are running the assets are
-   * not yet uploaded
-   */
-  // it('should fetch valid svg icon from remote url', async () => {
-  //   const result = await getSvgContent(getIconUrl('highway'));
-  //   expect(result.startsWith('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">')).toBeTruthy();
-  // });
 
   it('should return previously fetched and cached icon', async () => {
     const iconUrl = getIconUrl('question');
-    // @ts-ignore
     const spy = jest.spyOn(global, 'fetch');
     const result1 = await getSvgContent(iconUrl);
     expect(result1).not.toBe(undefined);
@@ -31,23 +20,21 @@ describe('getSvgContent()', () => {
     const result2 = await getSvgContent(iconUrl);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(result1).toEqual(result2);
-    spy.mockRestore();
-  });
-
-  // make sure this test isn't the last of the describe block since the exception might break following tests
-  it('should throw error if url is undefined', async () => {
-    try {
-      const result = getSvgContent(undefinedUrl);
-      expect(true).toBe(false);
-      // @ts-ignore
-    } catch (e) {
-      expect(e.name).toEqual('Error');
-    }
   });
 
   it('should return empty string for empty icon url', async () => {
     const result = await getSvgContent(emptyIconUrl);
     expect(result).toBe('');
+  });
+
+  it('should throw error if url is undefined', async () => {
+    let error;
+    try {
+      await getSvgContent(undefined);
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toEqual('url is undefined');
   });
 });
 
