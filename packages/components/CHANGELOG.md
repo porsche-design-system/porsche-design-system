@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - React: utility function `skipCheckForPorscheDesignSystemProviderDuringTests`
 - React: tree shaking for component wrappers
 
+### [2.0.0-rc.2] - 2021-02-12
+
+#### Added
+- Validate usage of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
+
 ### [2.0.0-rc.1] - 2021-02-04
 
 #### Added
