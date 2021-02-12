@@ -1,4 +1,4 @@
-import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { ConsoleMessage, ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
   getAttribute,
@@ -403,7 +403,7 @@ describe('tabs-bar', () => {
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
 
-      const pressKey = async (key: string) => {
+      const pressKey = async (key: KeyInput) => {
         await page.keyboard.press(key);
         await page.waitForTimeout(CSS_ANIMATION_DURATION);
       };
