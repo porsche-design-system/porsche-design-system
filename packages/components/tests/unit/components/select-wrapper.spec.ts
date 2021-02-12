@@ -1,9 +1,9 @@
-import * as functions from '../../../src/utils/dom';
+import * as domUtils from '../../../src/utils/dom';
 import { SelectWrapper } from '../../../src/components/form/select-wrapper/select-wrapper';
 
 describe('select-wrapper', () => {
-  it('should call function getHTMLElementAndThrowIfUndefined', () => {
-    const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
+  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
+    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const select = new SelectWrapper();
     try {
       select.connectedCallback();
