@@ -37,7 +37,7 @@
     "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/visual-regression-tester": "^3.0.0",
-    "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.9",
+    "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.10",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/http-server": "^0.10.1",
     "@types/jasmine": "^3.6.3",

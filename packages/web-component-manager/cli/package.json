@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/web-components-manager-cli",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "private": true,
   "bin": {
     "pwcm": "./dist/bin/pwcm.js"
