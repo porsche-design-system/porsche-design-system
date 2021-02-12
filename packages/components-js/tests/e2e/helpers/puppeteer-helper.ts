@@ -1,7 +1,7 @@
-import { ElementHandle, NavigationOptions, Page } from 'puppeteer';
+import { ElementHandle, WaitForOptions, Page } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 
-type Options = NavigationOptions & { enableLogging?: boolean };
+type Options = WaitForOptions & { enableLogging?: boolean };
 const defaultOptions: Options = { waitUntil: 'networkidle0' };
 
 export const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
