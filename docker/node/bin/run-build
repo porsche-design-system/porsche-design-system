@@ -4,6 +4,7 @@ set -o errexit
 set -o pipefail
 
 if
+  [[ "--web-component-manager" == "${1}" ]] ||
   [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--assets" == "${1}" ]] ||
   [[ "--icons" == "${1}" ]] ||
