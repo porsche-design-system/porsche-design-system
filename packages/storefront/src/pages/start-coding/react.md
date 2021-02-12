@@ -161,19 +161,61 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 });
 ```
 
-**Note:** to reduce redundant code you can replace the `render` function of the react-testing-library with a helper
-like:
+### Hints about PorscheDesignSystemProvider
+
+It might be rather redundant to wrap every single test with `PorscheDesignSystemProvider`.  
+Therefore, we offer the following advice.
+
+#### Custom helper
+
+To reduce repetitive code you can write a custom helper function that wraps component in `PorscheDesignSystemProvider` and calls the `render` function of `react-testing-library`:
 
 ```tsx
 // helper.tsx
 
-import { render } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
-export const renderWithProvider = (component: JSX.Element) => {
+export const renderWithProvider = (component: JSX.Element): RenderResult => {
   return render(<PorscheDesignSystemProvider>{component}</PorscheDesignSystemProvider>);
 };
-``` 
+```
+
+#### Disabling the validation of PorscheDesignSystemProvider
+
+Alternatively we provide a utility function called `skipCheckForPorscheDesignSystemProviderDuringTests()` that can be called within your tests.  
+It only takes effect during testing since it relies on `process.env.NODE_ENV === 'test'`.
+
+You can apply it globally on every test by calling it once in your global test setup:
+
+```tsx
+// setupTest.{js|ts}
+import { skipCheckForPorscheDesignSystemProviderDuringTests } from '@porsche-design-system/components-react';
+
+skipCheckForPorscheDesignSystemProviderDuringTests();
+```
+
+If you don't want to have multiple test setups or prefer a more local approach you can use it within your test:
+
+````tsx
+// SomeComponent.test.tsx
+import { skipCheckForPorscheDesignSystemProviderDuringTests } from '@porsche-design-system/components-react';
+
+describe('SomeComponent', () => {
+  beforeEach(() => {
+    // either like this
+    skipCheckForPorscheDesignSystemProviderDuringTests();
+  });
+  
+  it('should work', () => {
+    // or like this
+    skipCheckForPorscheDesignSystemProviderDuringTests();
+    
+    // ...
+  });
+});
+````
+
 
 ### Additional information when using react-testing-library
 
