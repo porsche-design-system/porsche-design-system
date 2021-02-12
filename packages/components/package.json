@@ -55,11 +55,8 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.21.5",
     "globby": "^11.0.2",
-    "http-server": "^0.12.3",
     "isomorphic-fetch": "^3.0.0",
-    "jasmine": "^3.6.4",
     "jest": "^26.6.3",
-    "puppeteer": "~5.5.0",
     "rollup-plugin-modify": "^3.0.0",
     "stylelint": "^13.10.0",
     "stylelint-config-prettier": "^8.0.2",
@@ -68,8 +65,7 @@
     "throttle-debounce": "^3.0.1",
     "ts-jest": "^26.5.1",
     "ts-node": "^9.1.1",
-    "typescript": "~4.1.5",
-    "wait-on": "^5.2.0"
+    "typescript": "~4.1.5"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -78,8 +74,5 @@
   "jsnext:main": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "files": [
-    "dist/"
-  ]
+  "collection:main": "dist/collection/index.js"
 }
