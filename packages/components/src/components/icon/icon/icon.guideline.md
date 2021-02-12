@@ -1,15 +1,14 @@
 # Icon
 
-Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? 
-If your icon qualifies for the basic library it will be published as library symbols for design. Feel free to contact us (also as a reviewer). [Sketch basic library](https://designsystem.porsche.com/latest/#/start-designing/introduction) and SVGs for development. See [Porsche Icon overview](https://icons.porsche.com/#/)
+Stick to the following process when designing icons for Porsche. Is the icon a mandatory used one in multiple teams and purposes? If your icon qualifies for the basic library it will be published as library symbols for design and SVGs for development. Feel free to contact us (also as a reviewer). and SVGs for development.
 
 ---
 
 ## Processes overview
 
-### Criteria check
+1. Criteria check
 
-### Passing user testing regarding
+2. Passing user testing regarding
 
     **Findability**  
     Can people find the icon on the page?
@@ -23,13 +22,13 @@ If your icon qualifies for the basic library it will be published as library sym
     **Attractiveness**  
     Is the icon aesthetically pleasing?
 
-### Quality assurance
+3. Quality assurance
 Go through all the points regarding quality assurance (grid, color, pixel, naming, metatags, export criteria) and feel free to request the Porsche Design System Team for review.
 
-### Export
+4. Export
 Export your icon as svg and share it with the developers.
 
-### Integration in the Porsche Basic Set
+5. Integration in the Porsche Basic Set
 Is the integration into the official Basic Iconset necessary? Contact the Porsche Design System Team to discuss everything in detail.
 
 ---
