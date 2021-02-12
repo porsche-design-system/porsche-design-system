@@ -4,6 +4,11 @@ import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 
 let skipCheck = false;
+
+/**
+ * sets a flag that skips the need for `PorscheDesignSystemProvider` during testing
+ * when `process.env.NODE_ENV === 'test'`
+ */
 export const skipCheckForPorscheDesignSystemProviderDuringTests = (): void => {
   skipCheck = true;
 };
