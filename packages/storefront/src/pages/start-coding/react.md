@@ -57,7 +57,6 @@ Change your App file to use at least one Porsche Design System component, for ex
 ```tsx
 // App.tsx
 
-import React from 'react';
 import { PHeadline } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => (
