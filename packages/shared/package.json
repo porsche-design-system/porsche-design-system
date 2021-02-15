@@ -33,7 +33,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/components-js": "2.0.0-rc.1",
+    "@porsche-design-system/components-js": "2.0.0-rc.2",
     "@rollup/plugin-typescript": "^8.1.0",
     "change-case": "^4.1.2",
     "globby": "^11.0.2",
