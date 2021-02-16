@@ -339,13 +339,13 @@ describe('text-field-wrapper', () => {
 
       expect(await isButtonDisabled()).toBe(false);
 
-      await setProperty(input, 'readonly', true);
+      await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
       expect(await isButtonDisabled()).toBe(true);
 
-      await setProperty(input, 'readonly', false);
+      await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);

@@ -207,7 +207,11 @@ export const setAttribute = async (element: ElementHandle, key: string, value: s
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
-export const setProperty = async (element: ElementHandle, key: string, value: string | boolean): Promise<void> => {
+export const setProperty = async (
+  element: ElementHandle,
+  key: keyof HTMLInputElement,
+  value: string | boolean
+): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value });
 };
 
