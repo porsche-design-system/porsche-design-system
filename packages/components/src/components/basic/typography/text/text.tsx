@@ -45,7 +45,7 @@ export class Text {
   }
 
   public componentDidLoad(): void {
-    const el = getShadowRootHTMLElement(this.host, '*') as HTMLElement;
+    const el: HTMLElement = getShadowRootHTMLElement(this.host, '*');
     transitionListener(el, 'font-size', () => {
       el.style.lineHeight = `${calcLineHeightForElement(el)}`;
     });
