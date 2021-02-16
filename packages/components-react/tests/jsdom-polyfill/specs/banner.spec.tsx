@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { componentsReady, PBanner } from '@porsche-design-system/components-react';
-import { renderWithProvider } from '../helpers';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const Sample = (): JSX.Element => {
@@ -28,14 +28,14 @@ const Sample = (): JSX.Element => {
 
 describe('PBanner', () => {
   it('should have initialized shadow dom', async () => {
-    const { getByTestId } = renderWithProvider(<Sample />);
+    const { getByTestId } = render(<Sample />);
     await componentsReady();
 
     expect(getByTestId('host').shadowRoot).not.toBeNull();
   });
 
   it('should have working events', async () => {
-    const { getByTestId } = renderWithProvider(<Sample />);
+    const { getByTestId } = render(<Sample />);
     await componentsReady();
 
     const debug = getByTestId('debug');
