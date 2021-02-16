@@ -1,9 +1,9 @@
-import * as functions from '../../../src/utils/dom';
+import * as domUtils from '../../../src/utils/dom';
 import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/checkbox-wrapper';
 
 describe('checkbox-wrapper', () => {
-  it('should call function getHTMLElementAndThrowIfUndefined', () => {
-    const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
+  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
+    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const checkbox = new CheckboxWrapper();
     try {
       checkbox.connectedCallback();
