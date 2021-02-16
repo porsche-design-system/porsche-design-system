@@ -18,10 +18,4 @@ import { Component, OnInit } from '@angular/core';
     </div>
   `,
 })
-export class FormWrapperBindingComponent implements OnInit {
-  public isEnabled = false;
-
-  public ngOnInit() {
-    setTimeout(() => (this.isEnabled = true), 1000);
-  }
-}
+export class FormWrapperBindingComponent {}
