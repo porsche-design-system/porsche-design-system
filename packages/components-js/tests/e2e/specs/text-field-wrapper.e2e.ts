@@ -593,6 +593,7 @@ describe('text-field-wrapper', () => {
 
       await reattachElement(page, 'p-text-field-wrapper');
       await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+      await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).toContain(fakeInputDisabledClass);
     });
@@ -608,6 +609,7 @@ describe('text-field-wrapper', () => {
 
       await reattachElement(page, 'p-text-field-wrapper');
       await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
+      await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
     });
