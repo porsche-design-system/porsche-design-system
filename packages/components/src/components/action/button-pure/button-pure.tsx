@@ -5,6 +5,7 @@ import {
   hasNamedSlot,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
@@ -78,7 +79,7 @@ export class ButtonPure {
   public render(): JSX.Element {
     const buttonPureClasses = {
       [prefix('button-pure')]: true,
-      [prefix(`button-pure--theme-${this.theme}`)]: true,
+      [prefix('button-pure--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
     };
 
