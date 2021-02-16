@@ -15,6 +15,7 @@ import {
   getOutlineStyle,
   getLifecycleStatus,
   getElementStyle,
+  reattachElement,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -40,6 +41,8 @@ describe('text-field-wrapper', () => {
   const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
 
   const getIconName = async (): Promise<unknown> => getProperty(await getIcon(), 'name');
+
+  const fakeInputDisabledClass = 'p-text-field-wrapper__fake-input--disabled';
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -210,19 +213,19 @@ describe('text-field-wrapper', () => {
 
       const input = await getInput();
 
-      expect(await getCssClasses(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
+      expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
       expect(await getProperty(await getInput(), 'disabled')).toBe(false);
 
       await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(await getFakeInput())).toContain('p-text-field-wrapper__fake-input--disabled');
+      expect(await getCssClasses(await getFakeInput())).toContain(fakeInputDisabledClass);
       expect(await getProperty(await getInput(), 'disabled')).toBe(true);
 
       await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(await getFakeInput())).not.toContain('p-text-field-wrapper__fake-input--disabled');
+      expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
       expect(await getProperty(await getInput(), 'disabled')).toBe(false);
     });
 
@@ -579,6 +582,34 @@ describe('text-field-wrapper', () => {
 
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
       expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
+    });
+
+    it('should have disabled class if reattached to dom', async () => {
+      await initTextField();
+      const input = await getInput();
+      const fakeInput = await getFakeInput();
+
+      expect(await getCssClasses(fakeInput)).not.toContain(fakeInputDisabledClass);
+
+      await reattachElement(page, 'p-text-field-wrapper');
+      await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+
+      expect(await getCssClasses(fakeInput)).toContain(fakeInputDisabledClass);
+    });
+
+    it('should have readonly class if reattached to dom', async () => {
+      await initTextField();
+      const input = await getInput();
+      const fakeInput = await getFakeInput();
+
+      const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
+
+      expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);
+
+      await reattachElement(page, 'p-text-field-wrapper');
+      await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
+
+      expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
     });
   });
 });
