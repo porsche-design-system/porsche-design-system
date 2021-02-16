@@ -101,7 +101,7 @@ describe('components', () => {
 
   const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
 
-  fdescribe('Form Wrapper with slotted input', () => {
+  describe('Form Wrapper with slotted input', () => {
     it('should have no console error if input type is bound', async () => {
       const consoleMessages: ConsoleMessage[] = [];
       page.on('console', (msg) => {
