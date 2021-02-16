@@ -1,9 +1,9 @@
-import * as functions from '../../../src/utils/dom';
+import * as domUtils from '../../../src/utils/dom';
 import { RadioButtonWrapper } from '../../../src/components/form/radio-button-wrapper/radio-button-wrapper';
 
 describe('radio-button-wrapper', () => {
-  it('should call function getHTMLElementAndThrowIfUndefined', () => {
-    const spy = jest.spyOn(functions, 'getHTMLElementAndThrowIfUndefined');
+  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
+    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const radioButton = new RadioButtonWrapper();
     try {
       radioButton.connectedCallback();
