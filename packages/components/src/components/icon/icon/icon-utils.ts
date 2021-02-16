@@ -12,6 +12,10 @@ export const DEFAULT_ICON_NAME: IconName = 'arrow-head-right';
 const requestCache = new Map<string, Promise<string>>();
 
 export const getSvgContent = async (url: string): Promise<string> => {
+  if (!url) {
+    return Promise.reject('url is undefined');
+  }
+
   let req = requestCache.get(url);
   if (req === undefined) {
     req = fetch(url).then(
@@ -20,6 +24,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
     );
     requestCache.set(url, req);
   }
+
   return req;
 };
 
@@ -34,6 +39,7 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
     // check if IconName exists
     return `${cdnBaseUrl}/${ICONS_MANIFEST[camelCase(iconNameOrSource)]}`;
   }
+
   // Only occurs if consumer is not using typescript -> necessary?
   console.warn('Please provide either an name property or a source property!');
   return buildIconUrl(DEFAULT_ICON_NAME);

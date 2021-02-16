@@ -1,21 +1,21 @@
-const elementStyles = new Map();
+type HTMLElementOrDocument = HTMLElement | Document;
+type ElementMap = Map<HTMLElementOrDocument, boolean>;
 
-export const getElementMap = (element: HTMLElement): Map<any, any> => {
-  const tagName = element.tagName;
-  const map = elementStyles.get(tagName);
-  if (map !== undefined) {
-    return map;
+// TODO: why nested maps?
+const elementStyles = new Map<string, ElementMap>();
+
+export const getElementMap = (element: HTMLElement): ElementMap => {
+  const { tagName } = element;
+  let map = elementStyles.get(tagName);
+  if (map === undefined) {
+    map = new Map();
+    elementStyles.set(tagName, map);
   }
-  const newMap = new Map();
-  elementStyles.set(tagName, newMap);
-  return newMap;
+  return map;
 };
 
-export const getNodeToPrependTo = (rootNode: HTMLElement | Document): HTMLElement => {
-  if (rootNode === document) {
-    return rootNode.head;
-  }
-  return rootNode as HTMLElement;
+export const getNodeToPrependTo = (rootNode: HTMLElementOrDocument): HTMLElement => {
+  return rootNode === document ? rootNode.head : (rootNode as HTMLElement);
 };
 
 /**
@@ -27,7 +27,7 @@ export const getNodeToPrependTo = (rootNode: HTMLElement | Document): HTMLElemen
  * @returns void
  */
 export const insertSlottedStyles = (element: HTMLElement, css: string): void => {
-  const rootNode = element.getRootNode() as HTMLElement | Document;
+  const rootNode = element.getRootNode() as HTMLElementOrDocument;
   const elementMap = getElementMap(element);
   if (elementMap.get(rootNode) === undefined) {
     elementMap.set(rootNode, true);
