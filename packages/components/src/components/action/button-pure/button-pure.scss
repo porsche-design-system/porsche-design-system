@@ -118,35 +118,33 @@
     cursor: not-allowed;
   }
 
-  &--theme-light {
+  color: $p-color-default;
+  + * {
     color: $p-color-default;
-    + * {
-      color: $p-color-default;
-    }
+  }
 
-    &:enabled,
-    &:not([disabled]) {
-      &:hover {
-        color: $p-color-state-hover;
-        + * {
-          color: $p-color-state-hover;
-        }
-      }
-
-      &:active {
-        color: $p-color-state-active;
-        + * {
-          color: $p-color-state-active;
-        }
-      }
-    }
-
-    &:disabled,
-    &[disabled] {
-      color: $p-color-state-disabled;
+  &:enabled,
+  &:not([disabled]) {
+    &:hover {
+      color: $p-color-state-hover;
       + * {
-        color: $p-color-state-disabled;
+        color: $p-color-state-hover;
       }
+    }
+
+    &:active {
+      color: $p-color-state-active;
+      + * {
+        color: $p-color-state-active;
+      }
+    }
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: $p-color-state-disabled;
+    + * {
+      color: $p-color-state-disabled;
     }
   }
 
