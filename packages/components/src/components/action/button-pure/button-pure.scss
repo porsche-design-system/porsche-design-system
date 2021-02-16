@@ -106,19 +106,13 @@
   text-align: left;
   background: transparent;
   cursor: pointer;
-  color: inherit;
+  color: $p-color-default;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
   :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
-  &:disabled,
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
-  color: $p-color-default;
   + * {
     color: $p-color-default;
   }
@@ -142,6 +136,7 @@
 
   &:disabled,
   &[disabled] {
+    cursor: not-allowed;
     color: $p-color-state-disabled;
     + * {
       color: $p-color-state-disabled;
