@@ -16,6 +16,7 @@ import {
   getLifecycleStatus,
   getElementStyle,
   reattachElement,
+  setProperty,
 } from '../helpers';
 import { Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -43,6 +44,7 @@ describe('text-field-wrapper', () => {
   const getIconName = async (): Promise<unknown> => getProperty(await getIcon(), 'name');
 
   const fakeInputDisabledClass = 'p-text-field-wrapper__fake-input--disabled';
+  const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -592,7 +594,7 @@ describe('text-field-wrapper', () => {
       expect(await getCssClasses(fakeInput)).not.toContain(fakeInputDisabledClass);
 
       await reattachElement(page, 'p-text-field-wrapper');
-      await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+      await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).toContain(fakeInputDisabledClass);
@@ -603,12 +605,10 @@ describe('text-field-wrapper', () => {
       const input = await getInput();
       const fakeInput = await getFakeInput();
 
-      const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
-
       expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);
 
       await reattachElement(page, 'p-text-field-wrapper');
-      await input.evaluate((el: HTMLInputElement) => (el.readOnly = true));
+      await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
