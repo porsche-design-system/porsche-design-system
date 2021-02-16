@@ -98,4 +98,31 @@ describe('components', () => {
       expect(await getElementAttr(prefixedComponent, 'ng-reflect-label')).toBe('Some Label');
     });
   });
+
+  const getErrorsAmount = (messages: ConsoleMessage[]) => messages.filter((x) => x.type() === 'error').length;
+
+  fdescribe('Form Wrapper with slotted input', () => {
+    it('should have no console error if input type is bound', async () => {
+      const consoleMessages: ConsoleMessage[] = [];
+      page.on('console', (msg) => {
+        consoleMessages.push(msg);
+        if (msg.type() === 'error') {
+          const { description } = msg.args()[0]['_remoteObject'];
+          if (description) {
+            console.log(description);
+          }
+        }
+      });
+      await goto('form-wrapper-binding');
+
+      await page.select('select', 'overview');
+      await waitForComponentsReady(page);
+      await page.select('select', 'form-wrapper-binding');
+
+      expect(getErrorsAmount(consoleMessages)).toBe(0);
+
+      await page.evaluate(() => console.error('test error'));
+      expect(getErrorsAmount(consoleMessages)).toBe(1);
+    });
+  });
 });
