@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, insertSlottedStyles, prefix } from '../../../../utils';
+import { getPrefixedTagNames, insertSlottedStyles, isDark, prefix } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getTagName, isVariantType } from './headline-utils';
@@ -44,7 +44,7 @@ export class Headline {
       [prefix(`headline--align-${this.align}`)]: true,
       [prefix(`headline--color-${this.color}`)]: true,
       [prefix('headline--ellipsis')]: this.ellipsis,
-      [prefix(`headline--theme-${this.theme}`)]: this.color !== 'inherit',
+      [prefix('headline--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
