@@ -218,13 +218,13 @@ describe('text-field-wrapper', () => {
       expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
       expect(await getProperty(await getInput(), 'disabled')).toBe(false);
 
-      await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+      await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(await getFakeInput())).toContain(fakeInputDisabledClass);
       expect(await getProperty(await getInput(), 'disabled')).toBe(true);
 
-      await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+      await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
 
       expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
@@ -326,24 +326,28 @@ describe('text-field-wrapper', () => {
       const fakeInput = await getFakeInput();
       const button = await getButton();
       const isButtonDisabled = () => getProperty(button, 'disabled');
-      const setInputProperty = async (prop: 'disabled' | 'readOnly', value: boolean) => {
-        await input.evaluate((el: HTMLInputElement, prop, value) => (el[prop] = value), prop, value);
-        await waitForStencilLifecycle(page);
-      };
 
       expect(await isButtonDisabled()).toBe(false);
 
-      await setInputProperty('disabled', true);
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+
       expect(await isButtonDisabled()).toBe(true);
 
-      await setInputProperty('disabled', false);
+      await setProperty(input, 'disabled', false);
+      await waitForStencilLifecycle(page);
+
       expect(await isButtonDisabled()).toBe(false);
 
-      await setInputProperty('readOnly', true);
+      await setProperty(input, 'readonly', true);
+      await waitForStencilLifecycle(page);
+
       expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
       expect(await isButtonDisabled()).toBe(true);
 
-      await setInputProperty('readOnly', false);
+      await setProperty(input, 'readonly', false);
+      await waitForStencilLifecycle(page);
+
       expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);
       expect(await isButtonDisabled()).toBe(false);
     });
@@ -585,8 +589,10 @@ describe('text-field-wrapper', () => {
       expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
       expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
     });
+  });
 
-    it('should have disabled class if reattached to dom', async () => {
+  describe('MutationObserver', () => {
+    it('should trigger disabled class change if component is reattached to dom', async () => {
       await initTextField();
       const input = await getInput();
       const fakeInput = await getFakeInput();
@@ -600,7 +606,7 @@ describe('text-field-wrapper', () => {
       expect(await getCssClasses(fakeInput)).toContain(fakeInputDisabledClass);
     });
 
-    it('should have readonly class if reattached to dom', async () => {
+    it('should trigger readonly class change if component is reattached to dom', async () => {
       await initTextField();
       const input = await getInput();
       const fakeInput = await getFakeInput();
