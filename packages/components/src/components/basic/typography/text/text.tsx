@@ -2,6 +2,7 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
+  getShadowRootHTMLElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -39,14 +40,15 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
-  private textTag: HTMLElement;
-
   public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
-    this.bindFontSizeListener();
+    const el = getShadowRootHTMLElement(this.host, '*') as HTMLElement;
+    transitionListener(el, 'font-size', () => {
+      el.style.lineHeight = `${calcLineHeightForElement(el)}`;
+    });
   }
 
   public render(): JSX.Element {
@@ -63,7 +65,7 @@ export class Text {
     };
 
     return (
-      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
+      <TagType class={textClasses}>
         <slot />
       </TagType>
     );
@@ -72,12 +74,6 @@ export class Text {
   private get hasSlottedTextTag(): boolean {
     const el = getHTMLElement(this.host, ':first-child');
     return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
-  }
-
-  private bindFontSizeListener(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
   }
 
   private addSlottedStyles(): void {
