@@ -36,9 +36,12 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
+    this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
     this.setInput();
     this.bindStateListener();
-    this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
