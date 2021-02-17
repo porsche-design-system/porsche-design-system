@@ -42,10 +42,19 @@ export class TextFieldWrapper {
   private inputObserver: MutationObserver;
 
   public connectedCallback(): void {
+    this.addSlottedStyles();
+    // We have to initialize this.input in componentWillLoad to fix the Angular binding issues. To ensure the MutationObserver
+    // is also active when the component gets reattached, this workaround is used. As soon as https://github.com/porscheui/porsche-design-system/issues/1013
+    // is played, we can solve this by observing prop changes of child nodes.
+    if (this.input) {
+      this.initMutationObserver();
+    }
+  }
+
+  public componentWillLoad(): void {
     this.setInput();
     this.isPasswordToggleable = this.input.type === 'password';
     this.initMutationObserver();
-    this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
