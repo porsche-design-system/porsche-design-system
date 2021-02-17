@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const config: webpack.Configuration = {
   mode: 'production',
-  entry: './projects/components-loader/src/index.js',
+  entry: './projects/components-wrapper/src/index.js',
   stats: {
     chunks: true,
     modules: true,

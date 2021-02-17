@@ -1,7 +1,7 @@
 /dist
 /www
 
-/projects/components-loader/environment.js
+/projects/components-wrapper/environment.js
 
 /tests/cbt/results
 /tests/vrt/results
