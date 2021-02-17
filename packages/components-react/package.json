@@ -25,7 +25,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.0.0-rc.1",
+    "@porsche-design-system/components-react": "2.0.0-rc.3",
     "construct-style-sheets-polyfill": "^2.4.3",
     "intersection-observer": "^0.12.0",
     "react": "^17.0.1",
@@ -72,18 +72,14 @@
   },
   "browserslist": {
     "production": [
-      "last 2 version",
-      ">1%",
+      ">0.2%",
       "not dead",
-      "not ie < 11",
       "not op_mini all"
     ],
     "development": [
-      "last 2 version",
-      ">1%",
-      "not dead",
-      "not ie < 11",
-      "not op_mini all"
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }

@@ -2527,21 +2527,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-2.0.0.tgz#4767d7d2bc1fedb226bc9766059947b0d8951151"
   integrity sha1-R2fX0rwf7bImvJdmBZlHsNiVEVE=
 
-"@porsche-design-system/components-angular@2.0.0-rc.1":
-  version "2.0.0-rc.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-angular/-/@porsche-design-system/components-angular-2.0.0-rc.1.tgz#e1bc994d1fe399faddab7574370c0b332e6b20e8"
-  integrity sha1-4byZTR/jmfrdq3V0NwwLMy5rIOg=
-  dependencies:
-    "@porsche-design-system/components-js" "2.0.0-rc.1"
-    tslib "^2.0.1"
-
-"@porsche-design-system/components-react@2.0.0-rc.1":
-  version "2.0.0-rc.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-react/-/@porsche-design-system/components-react-2.0.0-rc.1.tgz#3c4ade414c8fbaa33e7ca7d9e938c81e1e91bd51"
-  integrity sha1-PEreQUyPuqM+fKfZ6TjIHh6RvVE=
-  dependencies:
-    "@porsche-design-system/components-js" "2.0.0-rc.1"
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
@@ -10017,14 +10002,6 @@ isomorphic-fetch@^2.2.1:
   dependencies:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
-
-isomorphic-fetch@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
-  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
-  dependencies:
-    node-fetch "^2.6.1"
-    whatwg-fetch "^3.4.1"
 
 isstream@~0.1.2:
   version "0.1.2"

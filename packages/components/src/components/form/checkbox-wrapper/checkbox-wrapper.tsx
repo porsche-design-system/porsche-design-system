@@ -1,6 +1,6 @@
-import { JSX, Host, Component, Prop, h, Element, State } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element, forceUpdate } from '@stencil/core';
 import {
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
@@ -32,17 +32,15 @@ export class CheckboxWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private checked: boolean;
-  @State() private disabled: boolean;
-  @State() private indeterminate: boolean;
-
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    this.setInput();
-    this.setState();
-    this.bindStateListener();
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.setInput();
+    this.bindStateListener();
   }
 
   public componentDidLoad(): void {
@@ -54,20 +52,21 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
+    const { checked, indeterminate, disabled } = this.input;
     const labelClasses = prefix('checkbox-wrapper__label');
     const fakeCheckboxClasses = {
       [prefix('checkbox-wrapper__fake-checkbox')]: true,
-      [prefix('checkbox-wrapper__fake-checkbox--checked')]: this.checked || this.indeterminate,
-      [prefix('checkbox-wrapper__fake-checkbox--disabled')]: this.disabled,
+      [prefix('checkbox-wrapper__fake-checkbox--checked')]: checked || indeterminate,
+      [prefix('checkbox-wrapper__fake-checkbox--disabled')]: disabled,
       [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none',
     };
     const iconClasses = {
       [prefix('checkbox-wrapper__icon')]: true,
-      [prefix('checkbox-wrapper__icon--checked')]: this.checked || this.indeterminate,
+      [prefix('checkbox-wrapper__icon--checked')]: checked || indeterminate,
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
-      [prefix('checkbox-wrapper__label-text--disabled')]: this.disabled,
+      [prefix('checkbox-wrapper__label-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
@@ -89,7 +88,7 @@ export class CheckboxWrapper {
           <span class={fakeCheckboxClasses}>
             <PrefixedTagNames.pIcon
               class={iconClasses}
-              name={this.indeterminate ? 'minus' : 'check'}
+              name={indeterminate ? 'minus' : 'check'}
               theme="dark"
               size="inherit"
               aria-hidden="true"
@@ -115,7 +114,7 @@ export class CheckboxWrapper {
   }
 
   private setInput(): void {
-    this.input = getHTMLElement(this.host, 'input[type="checkbox"]');
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
   }
 
   /*
@@ -143,14 +142,8 @@ export class CheckboxWrapper {
     }
   };
 
-  private setState = (): void => {
-    this.checked = this.input.checked;
-    this.disabled = this.input.disabled;
-    this.indeterminate = this.input.indeterminate;
-  };
-
   private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', this.setState);
+    transitionListener(this.input, 'border-top-color', () => forceUpdate(this.host));
   }
 
   private addSlottedStyles(): void {

@@ -1,7 +1,7 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
   hasNamedSlot,
@@ -248,7 +248,8 @@ export class SelectWrapper {
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = getHTMLElement(this.host, 'select');
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
     }
