@@ -16,7 +16,10 @@
     "build:esm5": "babel dist/esm2015 --source-maps true --out-dir dist/esm5",
     "build:esm2015": "tsc --build tsconfig.json",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
