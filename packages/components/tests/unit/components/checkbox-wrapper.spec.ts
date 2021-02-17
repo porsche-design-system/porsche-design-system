@@ -6,7 +6,7 @@ describe('checkbox-wrapper', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const checkbox = new CheckboxWrapper();
     try {
-      checkbox.connectedCallback();
+      checkbox.componentWillLoad();
     } catch (e) {}
 
     expect(spy).toBeCalledTimes(1);

@@ -179,6 +179,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.CoreInitializerPrefixedComponent,
     name: 'Core Initializer Prefixed',
   },
+  {
+    path: 'form-wrapper-binding',
+    component: fromPages.FormWrapperBindingComponent,
+    name: 'Form Wrapper Binding',
+  },
 ];
 
 @NgModule({
