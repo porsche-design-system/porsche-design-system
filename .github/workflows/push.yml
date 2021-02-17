@@ -704,7 +704,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
-          args: packages/components-js/dist/components-wrapper
+          args: packages/components-js/dist/components-loader
   release-components-angular:
     name: 'Release Components Angular'
     needs: [release-components-js]
