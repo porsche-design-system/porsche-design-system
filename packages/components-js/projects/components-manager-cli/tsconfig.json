@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
@@ -8,7 +9,6 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "module": "commonjs",
     "outDir": "./dist",
     "resolveJsonModule": true,
     "lib": ["dom"],

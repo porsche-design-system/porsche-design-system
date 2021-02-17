@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc --build tsconfig.json",
+    "build": "yarn clean:build && tsc --build tsconfig.json",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
