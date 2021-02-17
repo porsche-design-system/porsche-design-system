@@ -1,6 +1,6 @@
-import { Component, Element, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   hasNamedSlot,
   insertSlottedStyles,
@@ -34,15 +34,11 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  @State() private disabled: boolean;
-  @State() private readonly: boolean;
-
   private textarea: HTMLTextAreaElement;
   private textareaObserver: MutationObserver;
 
   public connectedCallback(): void {
     this.setTextarea();
-    this.setState();
     this.initMutationObserver();
     this.addSlottedStyles();
   }
@@ -60,15 +56,16 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
+    const { disabled, readOnly } = this.textarea;
     const labelClasses = prefix('textarea-wrapper__label');
     const labelTextClasses = {
       [prefix('textarea-wrapper__label-text')]: true,
-      [prefix('textarea-wrapper__label-text--disabled')]: this.disabled,
+      [prefix('textarea-wrapper__label-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const descriptionTextClasses = {
       [prefix('textarea-wrapper__description-text')]: true,
-      [prefix('textarea-wrapper__description-text--disabled')]: this.disabled,
+      [prefix('textarea-wrapper__description-text--disabled')]: disabled,
       ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
         'hidden',
         'visible',
@@ -77,8 +74,8 @@ export class TextareaWrapper {
     const fakeTextareaClasses = {
       [prefix('textarea-wrapper__fake-textarea')]: true,
       [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
-      [prefix('textarea-wrapper__fake-textarea--disabled')]: this.disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: this.readonly,
+      [prefix('textarea-wrapper__fake-textarea--disabled')]: disabled,
+      [prefix('textarea-wrapper__fake-textarea--readonly')]: readOnly,
     };
     const messageClasses = {
       [prefix('textarea-wrapper__message')]: true,
@@ -133,7 +130,7 @@ export class TextareaWrapper {
   }
 
   private setTextarea(): void {
-    this.textarea = getHTMLElement(this.host, 'textarea');
+    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
   }
 
   /*
@@ -149,17 +146,12 @@ export class TextareaWrapper {
     });
   }
 
-  private setState = (): void => {
-    this.disabled = this.textarea.disabled;
-    this.readonly = this.textarea.readOnly;
-  };
-
   private labelClick = (): void => {
     this.textarea.focus();
   };
 
   private initMutationObserver = (): void => {
-    this.textareaObserver = new MutationObserver(this.setState);
+    this.textareaObserver = new MutationObserver(() => forceUpdate(this.host));
     this.textareaObserver.observe(this.textarea, {
       attributeFilter: ['disabled', 'readonly'],
     });
