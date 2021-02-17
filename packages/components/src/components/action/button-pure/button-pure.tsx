@@ -130,7 +130,7 @@ export class ButtonPure {
           </PrefixedTagNames.pText>
         </button>
         {hasNamedSlot(this.host, 'subline') && (
-          <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
+          <PrefixedTagNames.pText class={sublineClasses} tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
