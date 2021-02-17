@@ -25,15 +25,15 @@ module.exports = {
       targetDirectory: npmDistPath,
     },
     {
-      pattern: './projects/components-wrapper/package.json',
+      pattern: './projects/components-loader/package.json',
       targetDirectory: npmDistPath,
     },
     {
-      pattern: './projects/components-wrapper/LICENSE',
+      pattern: './projects/components-loader/LICENSE',
       targetDirectory: npmDistPath,
     },
     {
-      pattern: './projects/components-wrapper/README.md',
+      pattern: './projects/components-loader/README.md',
       targetDirectory: npmDistPath,
     },
   ],
