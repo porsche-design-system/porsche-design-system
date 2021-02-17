@@ -4,6 +4,7 @@ import {
   getHTMLElement,
   getShadowRootHTMLElement,
   insertSlottedStyles,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
