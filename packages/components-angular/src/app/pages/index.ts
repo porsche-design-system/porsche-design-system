@@ -8,6 +8,7 @@ import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.co
 import { DividerComponent } from './divider.component';
 import { FieldsetWrapperComponent } from './fieldset-wrapper.component';
 import { FlexComponent } from './flex.component';
+import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
 import { IconComponent } from './icon.component';
@@ -42,6 +43,7 @@ export const pages = [
   DividerComponent,
   FieldsetWrapperComponent,
   FlexComponent,
+  FormWrapperBindingComponent,
   GridComponent,
   HeadlineComponent,
   IconComponent,
@@ -76,6 +78,7 @@ export * from './core-initializer-prefixed.component';
 export * from './divider.component';
 export * from './fieldset-wrapper.component';
 export * from './flex.component';
+export * from './form-wrapper-binding.component';
 export * from './grid.component';
 export * from './headline.component';
 export * from './icon.component';
