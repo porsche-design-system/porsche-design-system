@@ -6,5 +6,5 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["./projects/components-wrapper/environment.ts"]
+  "include": ["./projects/components-loader/environment.ts"]
 }
