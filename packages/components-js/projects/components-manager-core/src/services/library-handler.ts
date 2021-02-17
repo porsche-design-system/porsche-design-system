@@ -1,6 +1,5 @@
 import { addScript } from './add-script';
 import { getWebComponentManagerData } from './data-handler';
-// import { addInlineStyles, addStyles } from './add-style';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
@@ -19,32 +18,16 @@ export type LibraryHandlerData = {
  */
 export type LoadComponentLibraryOptions = {
   script: string;
-  // stylesUrl?: string;
-  // inlineStyles?: string;
   version: string;
   prefix: string;
 };
 /**
  * @param options - LoadComponentLibraryOptions
  */
-export function loadComponentLibrary({
-  script,
-  // stylesUrl,
-  // inlineStyles,
-  version,
-  prefix,
-}: LoadComponentLibraryOptions): void {
+export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
   const data = getLibraryHandlerData(version) ?? {};
   const { isLoaded, prefixes, registerCustomElements } = data;
   if (!isLoaded) {
-    // if (inlineStyles) {
-    //   addInlineStyles(inlineStyles);
-    // }
-
-    // if (stylesUrl) {
-    //   addStyles(stylesUrl);
-    // }
-
     addScript(script);
     data.isLoaded = true;
   }

@@ -4,11 +4,8 @@ import { loadComponentLibrary, LoadComponentLibraryOptions, setRegisterComponent
 
 describe('libraryHandler', function () {
   let scriptTags: Node[];
-  let styleTags: Node[];
 
   const script = 'http://localhost/some-lib-vendors.es2015.js';
-  const stylesUrl = 'http://localhost/some-lib.css';
-  const inlineStyles = 'body { color: #ff00ff; }';
 
   const defaultOptions: LoadComponentLibraryOptions = {
     script,
@@ -18,12 +15,6 @@ describe('libraryHandler', function () {
 
   beforeEach(() => {
     scriptTags = [];
-    styleTags = [];
-
-    spyOn(document.head, 'appendChild').and.callFake((addedStyle) => {
-      styleTags.push(addedStyle);
-      return addedStyle;
-    });
 
     spyOn(document.body, 'appendChild').and.callFake((addedScript) => {
       scriptTags.push(addedScript);
@@ -41,31 +32,6 @@ describe('libraryHandler', function () {
     loadComponentLibrary(defaultOptions);
     expect(document.body.appendChild).toHaveBeenCalledTimes(1);
     expect((scriptTags[0] as HTMLScriptElement).src).toBe(script);
-  });
-
-  it('should add the styles for the library loaded via loadComponentLibrary', async () => {
-    loadComponentLibrary({ ...defaultOptions, stylesUrl });
-    expect(document.head.appendChild).toHaveBeenCalledTimes(1);
-    expect((styleTags[0] as HTMLLinkElement).href).toBe(stylesUrl);
-  });
-
-  it('should add the inline styles for the library loaded via loadComponentLibrary', async () => {
-    loadComponentLibrary({ ...defaultOptions, inlineStyles });
-    expect(document.head.appendChild).toHaveBeenCalledTimes(1);
-    expect((styleTags[0] as HTMLStyleElement).innerHTML).toBe(inlineStyles);
-  });
-
-  it('should not load the script and styles twice if the library is requested multiple times', async () => {
-    loadComponentLibrary({ ...defaultOptions, stylesUrl, inlineStyles });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
-    expect(document.head.appendChild).toHaveBeenCalledTimes(2);
-    expect((scriptTags[0] as HTMLScriptElement).src).toBe(script);
-    expect((styleTags[0] as HTMLStyleElement).innerHTML).toBe(inlineStyles);
-    expect((styleTags[1] as HTMLLinkElement).href).toBe(stylesUrl);
-
-    loadComponentLibrary({ ...defaultOptions, stylesUrl, inlineStyles });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
-    expect(document.head.appendChild).toHaveBeenCalledTimes(2);
   });
 
   xit('should ignore version if prefix is not set', async () => {
