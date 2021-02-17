@@ -9,8 +9,8 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "declarationDir": "./dist/types/",
-    "outDir": "./dist/esm2015",
+    "declarationDir": "./dist/types",
+    "outDir": "./dist",
     "lib": ["dom", "es2016"],
     "esModuleInterop": true,
     "types": []
