@@ -6,7 +6,7 @@ describe('radio-button-wrapper', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const radioButton = new RadioButtonWrapper();
     try {
-      radioButton.connectedCallback();
+      radioButton.componentWillLoad();
     } catch (e) {}
 
     expect(spy).toBeCalledTimes(1);
