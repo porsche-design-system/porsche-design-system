@@ -2,9 +2,7 @@
   "name": "@porsche-design-system/components-manager-core",
   "version": "0.0.0",
   "private": true,
-  "main": "dist/esm5/index.js",
-  "esm5": "dist/esm5/index.js",
-  "esm2015": "dist/esm2015/index.js",
+  "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist/types",
@@ -12,9 +10,7 @@
     "dist/esm2015"
   ],
   "scripts": {
-    "build": "rm -rf dist && yarn build:esm2015 && yarn build:esm5",
-    "build:esm5": "babel dist/esm2015 --source-maps true --out-dir dist/esm5",
-    "build:esm2015": "tsc --build tsconfig.json",
+    "build": "rm -rf dist && tsc --build tsconfig.json",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
