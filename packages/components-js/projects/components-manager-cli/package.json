@@ -9,9 +9,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && yarn build:cli && yarn build:entry",
+    "build": "yarn clean:build && yarn build:cli && yarn build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/pwcm.js",
-    "build:entry": "tsc --build tsconfig.library-entry.json",
+    "build:lib": "tsc --build tsconfig.library-entry.json",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
