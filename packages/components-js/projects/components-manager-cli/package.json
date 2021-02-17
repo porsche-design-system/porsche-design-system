@@ -1,0 +1,28 @@
+{
+  "name": "@porsche-design-system/components-manager-cli",
+  "version": "0.0.0",
+  "private": true,
+  "bin": {
+    "pwcm": "./dist/bin/pwcm.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && yarn build:cli && yarn build:entry",
+    "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/pwcm.js",
+    "build:entry": "tsc --build tsconfig.library-entry.json",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/components-manager-core": "0.0.0",
+    "glob": "^7.1.6",
+    "webpack": "^5.11.1"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "typescript": "^4.1.3"
+  }
+}
