@@ -170,7 +170,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class={selectClasses}>
-          <label>
+          <label id="p-label">
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
@@ -216,7 +216,7 @@ export class SelectWrapper {
               aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
               tabIndex={-1}
               aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
-              aria-labelledby={this.label}
+              aria-labelledby="p-label"
               ref={(el) => (this.fakeOptionListNode = el)}
             >
               {this.createFakeOptionList()}
