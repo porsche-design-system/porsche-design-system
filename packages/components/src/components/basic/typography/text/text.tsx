@@ -2,7 +2,6 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
-  getShadowRootHTMLElement,
   insertSlottedStyles,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -40,14 +39,15 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  private textTag: HTMLElement;
+
   public connectedCallback(): void {
     this.addSlottedStyles();
   }
 
   public componentDidLoad(): void {
-    const el: HTMLElement = getShadowRootHTMLElement(this.host, '*');
-    transitionListener(el, 'font-size', () => {
-      el.style.lineHeight = `${calcLineHeightForElement(el)}`;
+    transitionListener(this.textTag, 'font-size', () => {
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
     });
   }
 
@@ -68,7 +68,7 @@ export class Text {
     };
 
     return (
-      <TagType class={textClasses}>
+      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
         <slot />
       </TagType>
     );
