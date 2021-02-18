@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { FONTS_MANIFEST } from '@porsche-design-system/assets';
-import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST } from '../../components-wrapper/lib/chunksManifest';
 import { minifyHTML } from './utils';
 import {
   CDN_BASE_URL,
@@ -9,7 +10,7 @@ import {
   CDN_BASE_PATH_STYLES,
   CDN_BASE_PATH_FONTS,
   CDN_BASE_PATH_COMPONENTS,
-} from '../../../cdn.config';
+} from '../../../../../cdn.config';
 
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';

@@ -79,11 +79,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:
@@ -137,11 +132,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run
         with:
@@ -185,11 +175,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -239,11 +224,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components Angular'
         uses: ./.github/actions/docker-run
         with:
@@ -303,11 +283,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
@@ -339,54 +314,6 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-  partials:
-    name: 'Partials'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Docker Login'
-        uses: ./.github/actions/docker-login
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-        with:
-          entrypoint: run-install
-      - name: 'Build Core Dependencies'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --core-dependencies
-      - name: 'Build Components Prod' # needed for real actual chunks
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-prod
-      - name: 'Build Components JS Prod' # needed for real actual chunks
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --components-js-prod
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
-          args: --partials
   storefront:
     name: 'Storefront'
     runs-on: ubuntu-latest
@@ -425,11 +352,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Build Partials'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Lint'
         uses: ./.github/actions/docker-run
         with:
@@ -494,11 +416,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
-      - name: 'Build Partials Prod'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-build
-          args: --partials
       - name: 'Build Components Angular Prod'
         uses: ./.github/actions/docker-run
         with:
@@ -539,6 +456,11 @@ jobs:
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/components-wrapper
+      - name: 'Store Chunks Manifest Build Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
       - name: 'Store Shared Build Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -600,7 +522,7 @@ jobs:
           path: ./packages/utilities/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -623,7 +545,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities, partials]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, storefront, utilities]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -670,6 +592,11 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Chunks Manifest Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: components-js-chunks-manifest-prod-build
+          path: ./packages/components-js/projects/components-wrapper/lib
       - name: 'Restore Shared Build Artifact'
         uses: actions/download-artifact@v2
         with:
