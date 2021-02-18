@@ -36,7 +36,7 @@
     "@porsche-design-system/components": "2.0.0-rc.3",
     "@porsche-design-system/partials": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/visual-regression-tester": "^3.0.0",
+    "@porsche-design-system/visual-regression-tester": "file:./../../porsche-design-system-visual-regression-tester-v3.0.2.tgz",
     "@porsche-design-system/web-components-manager-cli": "1.0.0-alpha.9",
     "@porsche-ui/cross-browser-tester": "^1.0.2",
     "@types/http-server": "^0.10.1",
