@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { paramCase } from 'change-case';
-import type { TagName } from '../src';
+import type { TagName } from '@porsche-design-system/shared';
 
 type Manifest = {
   [key in TagName | 'core']?: string;
@@ -53,7 +53,7 @@ const generateChunksManifest = (): void => {
 export const COMPONENT_CHUNK_NAMES = [${chunkNames.map((x) => `'${x}'`).join(', ')}] as const;
 export type ComponentChunkName = typeof COMPONENT_CHUNK_NAMES[number];`;
 
-  const targetDirectory = path.normalize('./src/lib');
+  const targetDirectory = path.normalize('./projects/components-wrapper/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 
   const targetFileName = 'chunksManifest.ts';

@@ -23,9 +23,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:build && yarn build:generate && yarn build:package",
-    "build:generate": "yarn build:generate:tagNames && yarn build:generate:chunksManifest",
-    "build:generate:chunksManifest": "ts-node --project './tsconfig.node.json' 'scripts/generateChunksManifest.ts'",
+    "build": "yarn clean:build && yarn build:generate:tagNames && yarn build:package",
     "build:generate:tagNames": "ts-node --project './tsconfig.node.json' './scripts/generateTagNames.ts'",
     "build:package": "rollup -c rollup.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -33,7 +31,6 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/components-js": "2.0.0-rc.3",
     "@rollup/plugin-typescript": "^8.1.0",
     "change-case": "^4.1.2",
     "globby": "^11.0.2",
