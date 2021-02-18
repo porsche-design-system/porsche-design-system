@@ -52,8 +52,8 @@ export class Text {
   }
 
   public render(): JSX.Element {
-    const el = getHTMLElement(this.host, ':first-child');
-    const hasSlottedTextTag = el?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const firstChild = getHTMLElement(this.host, ':first-child');
+    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
