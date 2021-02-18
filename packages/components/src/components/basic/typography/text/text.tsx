@@ -53,10 +53,7 @@ export class Text {
   }
 
   public render(): JSX.Element {
-    const hasSlottedTextTag = getHTMLElement(this.host, ':first-child').matches(
-      'p,span,div,address,blockquote,figcaption,cite,time,legend'
-    );
-    const TagType = hasSlottedTextTag ? 'div' : this.tag;
+    const TagType = this.hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
       [prefix('text')]: true,
@@ -64,7 +61,7 @@ export class Text {
       [prefix(`text--align-${this.align}`)]: true,
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
-      [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
+      [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
       ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
     };
 
@@ -73,6 +70,11 @@ export class Text {
         <slot />
       </TagType>
     );
+  }
+
+  private get hasSlottedTextTag(): boolean {
+    const el = getHTMLElement(this.host, ':first-child');
+    return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
   }
 
   private addSlottedStyles(): void {
