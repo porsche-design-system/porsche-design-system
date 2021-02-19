@@ -1,5 +1,5 @@
-import { COMPONENT_CHUNK_NAMES, ComponentChunkName } from '@porsche-design-system/shared';
 import { getComponentChunkLinks, getFontFaceStylesheet, getInitialStyles, getFontLinks } from '../../../src';
+import { COMPONENT_CHUNK_NAMES, ComponentChunkName } from '../../../../components-wrapper/lib/chunksManifest';
 
 describe('getFontFaceStylesheet', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
