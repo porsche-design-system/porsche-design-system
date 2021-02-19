@@ -251,7 +251,7 @@ If your bundler (webpack or similar) does not work with the syntax of the previo
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { COMPONENT_CHUNK_NAMES } from '@porsche-design-system/shared';
+  import { COMPONENT_CHUNK_NAMES } from '../../../../components-js/projects/components-wrapper/lib/chunksManifest';
   
   @Component
   export default class Code extends Vue {
