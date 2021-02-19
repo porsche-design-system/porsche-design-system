@@ -79,8 +79,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-prod
-      - name: 'Debug'
-        uses: ./.github/actions/debug
       - name: 'Build Components JS'
         uses: ./.github/actions/docker-run
         with:

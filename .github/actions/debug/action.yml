@@ -1,7 +1,0 @@
-name: Debug
-description: Login for private docker registry and pull custom image
-runs:
-  using: composite
-  steps:
-    - run: cd ./packages/components-js/projects/partials && yarn install && ls
-      shell: bash
