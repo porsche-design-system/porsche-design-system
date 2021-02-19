@@ -3,5 +3,5 @@ description: Login for private docker registry and pull custom image
 runs:
   using: composite
   steps:
-    - run: cd ./packages/components-js/projects/partials/node_modules && ls
+    - run: cd ./packages/components-js/projects/partials && ls
       shell: bash
