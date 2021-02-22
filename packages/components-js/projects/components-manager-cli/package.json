@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "pwcm": "./dist/bin/pwcm.js"
+    "cm": "./dist/bin/cm.js"
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:cli && yarn build:lib",
-    "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/pwcm.js",
+    "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
