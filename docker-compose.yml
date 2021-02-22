@@ -36,7 +36,9 @@ services:
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
       - meta-icons-node-modules:/opt/porsche-design-system-app/packages/meta-icons/node_modules
-      - partials-node-modules:/opt/porsche-design-system-app/packages/partials/node_modules
+      - partials-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/partials/node_modules
+      - components-manager-cli-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-cli/node_modules
+      - components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
@@ -76,6 +78,8 @@ services:
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
       - meta-icons-node-modules:/opt/porsche-design-system-volumes/meta-icons-node_modules
       - partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
+      - components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
+      - components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
       - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
@@ -94,6 +98,8 @@ volumes:
   marque-node-modules:
   meta-icons-node-modules:
   partials-node-modules:
+  components-manager-cli-node-modules:
+  components-manager-core-node-modules:
   shared-node-modules:
   storefront-node-modules:
   utilities-node-modules:
