@@ -125,7 +125,7 @@ Make sure that both layers are turned visible so that the icons are exported in 
 ## Testing
 
 To ensure that users understand the meaning and purpose of icons, find a way to test the different stages of the product-development cycle.
-There are several ways to do this. [UsabilityHub](https://usabilityhub.com/) would be one way. Read more on [Nielsen Norman Group.](https://www.nngroup.com/articles/icon-testing/)
+There are several ways to do this. [UsabilityHub](https://usabilityhub.com/examples/easiest-icon-to-understand) would be one way. Read more on [Nielsen Norman Group.](https://www.nngroup.com/articles/icon-testing/)
 
 ---
 
