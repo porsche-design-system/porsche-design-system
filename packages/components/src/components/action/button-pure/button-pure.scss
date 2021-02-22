@@ -106,47 +106,40 @@
   text-align: left;
   background: transparent;
   cursor: pointer;
-  color: inherit;
+  color: $p-color-default;
   transition: color $p-animation-hover-duration $p-animation-hover-bezier, font-size 1ms linear; // used for transitionend event listener
 
   :host([theme='dark']) & {
     @include p-focus($p-color-theme-dark-state-focus, 1px, '::before');
   }
 
+  + * {
+    color: $p-color-default;
+  }
+
+  &:enabled,
+  &:not([disabled]) {
+    &:hover {
+      color: $p-color-state-hover;
+      + * {
+        color: $p-color-state-hover;
+      }
+    }
+
+    &:active {
+      color: $p-color-state-active;
+      + * {
+        color: $p-color-state-active;
+      }
+    }
+  }
+
   &:disabled,
   &[disabled] {
     cursor: not-allowed;
-  }
-
-  &--theme-light {
-    color: $p-color-default;
+    color: $p-color-state-disabled;
     + * {
-      color: $p-color-default;
-    }
-
-    &:enabled,
-    &:not([disabled]) {
-      &:hover {
-        color: $p-color-state-hover;
-        + * {
-          color: $p-color-state-hover;
-        }
-      }
-
-      &:active {
-        color: $p-color-state-active;
-        + * {
-          color: $p-color-state-active;
-        }
-      }
-    }
-
-    &:disabled,
-    &[disabled] {
       color: $p-color-state-disabled;
-      + * {
-        color: $p-color-state-disabled;
-      }
     }
   }
 
