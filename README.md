@@ -329,32 +329,6 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 ---
 
-## Porsche Design System - Partials
-
-### Preparation
-
-1. Switch to **project root directory**
-1. Run `git pull origin {master- or v-branch}`
-1. Create a new branch e.g. **release/partials-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section **[Unreleased]**
-
-- `./packages/partials/CHANGELOG.md`
-
-1. Run `./docker.sh run-prepare-release-partials ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
-
-### Release
-
-1. Create a commit with following message structure `Release Porsche Design System - Partials v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/partials-v1.2.3`
-1. Create pull request and start review
-1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
-
-### Communicate
-
-1. For the moment it's treated as silent release, so no communication is required
-
----
-
 ## Porsche Design System - Sketch Library Basic
 
 ### Preparation
