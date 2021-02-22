@@ -96,6 +96,7 @@ describe('calculateLineHeight()', () => {
     }
   });
 
+  // TODO: write with it.each
   it('should return correct lineHeight for 12px', () => {
     const lineHeight = calculateLineHeight('12px');
     expect(lineHeight).toBe(1.6666666667);
