@@ -11,5 +11,3 @@ runs:
       shell: bash
     - run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
       shell: bash
-    - run: docker pull docker.pkg.github.com/porscheui/porsche-design-system/node:14.15.1-stretch-slim
-      shell: bash
