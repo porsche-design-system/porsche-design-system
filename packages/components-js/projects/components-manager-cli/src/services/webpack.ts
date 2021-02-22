@@ -7,8 +7,8 @@ export function runWebpack(config: webpack.Configuration) {
         reject(err);
       }
 
-      if (stats?.hasErrors()) {
-        reject(stats.toJson().errors.join(`\n`));
+      if (stats && stats.hasErrors()) {
+        reject(stats.toJson().errors?.join(`\n`));
       }
 
       resolve(null);
