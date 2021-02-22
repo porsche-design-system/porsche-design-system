@@ -19,7 +19,6 @@ packages=( "components-js" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/components": )(".*")$\1"'${1}'"$' package.json
-    sed -i -E -e 's$("@porsche-design-system/components-js": )(".*")$\1"'${1}'"$' package.json
   popd
 done
 
@@ -41,7 +40,7 @@ for pkg in ${packages[@]}; do
 done
 
 # update "components-js" in packages
-packages=( "shared" "storefront" )
+packages=( "components-js" "shared" "storefront" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/components-js": )(".*")$\1"'${1}'"$' package.json
