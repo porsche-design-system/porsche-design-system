@@ -5,9 +5,6 @@
   "bin": {
     "pwcm": "./dist/bin/pwcm.js"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "yarn clean:build && yarn build:cli && yarn build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/pwcm.js",
