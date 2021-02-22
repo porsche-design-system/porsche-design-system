@@ -1,7 +1,7 @@
 import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper';
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
