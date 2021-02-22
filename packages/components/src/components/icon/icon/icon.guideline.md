@@ -122,6 +122,13 @@ Make sure that both layers are turned visible so that the icons are exported in 
 
 ---
 
+## Testing
+
+To ensure that users understand the meaning and purpose of icons, find a way to test the different stages of the product-development cycle.
+There are several ways to do this. [UsabilityHub](https://usabilityhub.com/) would be one way. Read more on [Nielsen Norman Group.](https://www.nngroup.com/articles/icon-testing/)
+
+---
+
 ## Look & Feel
 
 **All icons are built in an outline version, which is also the default state.** Individual project teams that require filled variants are welcome to contact us at any time. If a filled version is needed, it has to be decided individually for each icon, according to content and purpose.
