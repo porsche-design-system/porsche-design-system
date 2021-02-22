@@ -5,6 +5,7 @@ import {
   hasNamedSlot,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
@@ -78,7 +79,7 @@ export class ButtonPure {
   public render(): JSX.Element {
     const buttonPureClasses = {
       [prefix('button-pure')]: true,
-      [prefix(`button-pure--theme-${this.theme}`)]: true,
+      [prefix('button-pure--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
     };
 
@@ -129,7 +130,7 @@ export class ButtonPure {
           </PrefixedTagNames.pText>
         </button>
         {hasNamedSlot(this.host, 'subline') && (
-          <PrefixedTagNames.pText class={sublineClasses} color="inherit" size="inherit" tag="div">
+          <PrefixedTagNames.pText class={sublineClasses} tag="div" color="inherit" size="inherit">
             <slot name="subline" />
           </PrefixedTagNames.pText>
         )}
