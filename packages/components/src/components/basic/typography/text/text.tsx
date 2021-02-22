@@ -46,11 +46,15 @@ export class Text {
   }
 
   public componentDidLoad(): void {
-    this.bindFontSizeListener();
+    transitionListener(this.textTag, 'font-size', () => {
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+    });
   }
 
   public render(): JSX.Element {
-    const TagType = this.hasSlottedTextTag ? 'div' : this.tag;
+    const firstChild = getHTMLElement(this.host, ':first-child');
+    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
       [prefix('text')]: true,
@@ -67,17 +71,6 @@ export class Text {
         <slot />
       </TagType>
     );
-  }
-
-  private get hasSlottedTextTag(): boolean {
-    const el = getHTMLElement(this.host, ':first-child');
-    return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
-  }
-
-  private bindFontSizeListener(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
   }
 
   private addSlottedStyles(): void {
