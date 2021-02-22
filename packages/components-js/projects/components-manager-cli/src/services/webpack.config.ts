@@ -36,7 +36,7 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
     },
     plugins: [
       new webpack.DefinePlugin({
-        PWCM_CONFIG: JSON.stringify(strippedConfig),
+        CM_CONFIG: JSON.stringify(strippedConfig),
       }),
     ],
   };

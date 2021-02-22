@@ -3,7 +3,7 @@ import * as path from 'path';
 import { CommonConfig } from '../../shared-definitions/entry-config';
 import { filePathByPattern } from './file-by-pattern';
 
-const configFileName = 'pwcm.config.js';
+const configFileName = 'cm.config.js';
 const packageJsonFileName = 'package.json';
 
 type PackageJson = {
@@ -49,7 +49,7 @@ export async function getConfig(): Promise<PorscheWebComponentManagerConfig> {
     console.error(`Config file could not be found.`);
     console.error(`Please ensure that you've created a valid configuration file`);
     console.error(`named "${configFileName}" in the directory you're executing the`);
-    console.error(`pwcm command in.\n`);
+    console.error(`cm command in.\n`);
     process.exit(1);
   }
 
@@ -62,7 +62,7 @@ export function getProjectPackageJson(): PackageJson {
     fs.statSync(packageJsonPath);
   } catch (error) {
     console.error(`"${packageJsonFileName}" could not be found.`);
-    console.error(`Please ensure that you're executing the pwcm command in the`);
+    console.error(`Please ensure that you're executing the cm command in the`);
     console.error(`directory your "${packageJsonFileName}" is in.`);
     process.exit(1);
   }
@@ -71,9 +71,9 @@ export function getProjectPackageJson(): PackageJson {
   return JSON.parse(packageJsonString);
 }
 
-export function getPwcmCliVersion(): string {
-  const pwcmCliPackageJsonPath = path.resolve(__dirname, `../../../${packageJsonFileName}`);
-  const packageJsonString = fs.readFileSync(pwcmCliPackageJsonPath, 'utf-8');
+export function getCmCliVersion(): string {
+  const cmCliPackageJsonPath = path.resolve(__dirname, `../../../${packageJsonFileName}`);
+  const packageJsonString = fs.readFileSync(cmCliPackageJsonPath, 'utf-8');
   const packageJson = JSON.parse(packageJsonString);
   return packageJson.version;
 }

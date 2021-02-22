@@ -18,7 +18,7 @@ export const build = async () => {
   const webComponentManagerConfig = await getConfig();
   const {
     deployUrl = '',
-    targetDirectory = './dist/pwcm',
+    targetDirectory = './dist/cm',
     script = '',
     globalStyles = null,
     inlineStyles = null,

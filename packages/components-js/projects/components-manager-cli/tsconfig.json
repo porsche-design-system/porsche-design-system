@@ -14,5 +14,5 @@
     "lib": ["dom"],
     "types": []
   },
-  "include": ["bin/pwcm.ts"]
+  "include": ["bin/cm.ts"]
 }
