@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "outDir": "./dist/library-entry",
+    "lib": ["dom", "es2016"]
+  },
+  "include": ["library-entry"]
+}
