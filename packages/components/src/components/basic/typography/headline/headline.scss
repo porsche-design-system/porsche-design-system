@@ -73,9 +73,7 @@
 
   &--color {
     &-default {
-      &#{$bem-block}--theme-light {
-        color: $p-color-default;
-      }
+      color: $p-color-default;
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-default;
