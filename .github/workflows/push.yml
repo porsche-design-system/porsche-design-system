@@ -84,11 +84,21 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
-      - name: 'Unit Test'
+      - name: 'Unit Test Components Manager Core'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-unit
-          args: --components-js
+          args: --components-js-components-manager-core
+      - name: 'Unit Test Components Wrapper'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js-components-wrapper
+      - name: 'Unit Test Partials'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js-partials
       - name: 'Unit Regression'
         uses: actions/upload-artifact@v2
         with:
