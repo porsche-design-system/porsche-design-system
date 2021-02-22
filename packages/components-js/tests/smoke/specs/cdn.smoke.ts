@@ -10,7 +10,7 @@ import {
   META_ICONS_MANIFEST,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
-import { COMPONENT_CHUNKS_MANIFEST } from '@porsche-design-system/shared';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
 import { setContentWithDesignSystem } from '../helpers';
 import { browser } from '../config';
