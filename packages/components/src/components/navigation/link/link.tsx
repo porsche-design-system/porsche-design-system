@@ -3,6 +3,7 @@ import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
@@ -54,7 +55,7 @@ export class Link {
     const linkClasses = {
       [prefix('link')]: true,
       [prefix(`link--${this.variant}`)]: true,
-      [prefix(`link--theme-${this.theme}`)]: true,
+      [prefix('link--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('link-', this.hideLabel, ['without-label', 'with-label']),
     };
     const iconClasses = prefix('link__icon');
