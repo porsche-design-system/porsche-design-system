@@ -567,6 +567,7 @@ export class SelectWrapper {
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
+            aria-label={!item.text ? 'Empty value' : null}
           >
             {item.text && <span>{item.text}</span>}
             {selected && (
