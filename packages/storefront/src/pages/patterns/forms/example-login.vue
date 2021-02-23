@@ -104,7 +104,7 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
+      schema: object({
         email: string().email('Please check your entry').required('Please enter your email address or Porsche ID'),
         password: string().required('Please enter your password'),
         isChecked: boolean(),
