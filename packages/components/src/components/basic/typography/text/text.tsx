@@ -3,6 +3,7 @@ import {
   calcLineHeightForElement,
   getHTMLElement,
   insertSlottedStyles,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
@@ -62,7 +63,7 @@ export class Text {
       [prefix(`text--align-${this.align}`)]: true,
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
-      [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
+      [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
       ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
     };
 
