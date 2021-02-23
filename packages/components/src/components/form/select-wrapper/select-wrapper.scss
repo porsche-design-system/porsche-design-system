@@ -104,7 +104,10 @@
   $bem-block: &;
   display: block;
   position: relative;
-  color: $p-color-default;
+
+  &--theme-light {
+    color: $p-color-default;
+  }
 
   &--theme-dark {
     color: $p-color-theme-dark-default;
@@ -176,14 +179,18 @@
   }
 
   &__label {
-    color: $p-color-default;
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+    }
 
     #{$bem-block}--theme-dark & {
       color: $p-color-theme-dark-default;
     }
 
     &--disabled {
-      color: $p-color-state-disabled;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-disabled;
@@ -200,14 +207,18 @@
   }
 
   &__description {
-    color: $p-color-neutral-contrast-medium;
+    #{$bem-block}--theme-light & {
+      color: $p-color-neutral-contrast-medium;
+    }
 
     #{$bem-block}--theme-dark & {
       color: $p-color-theme-dark-neutral-contrast-medium;
     }
 
     &--disabled {
-      color: $p-color-state-disabled;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-disabled;
@@ -227,10 +238,13 @@
     display: block;
     transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
-    background-color: $p-color-background-default;
-    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
 
-    &:hover &:not(&--disabled):not(&--success):not(&--error) {
+    #{$bem-block}--theme-light & {
+      background-color: $p-color-background-default;
+      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+    }
+
+    #{$bem-block}--theme-light:hover &:not(&--disabled):not(&--success):not(&--error) {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
     }
 
@@ -244,8 +258,10 @@
     }
 
     &--disabled {
-      background-color: $p-color-background-default;
-      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      #{$bem-block}--theme-light & {
+        background-color: $p-color-background-default;
+        box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+      }
 
       #{$bem-block}--theme-dark & {
         background-color: $p-color-default;
@@ -254,7 +270,9 @@
     }
 
     &--success {
-      box-shadow: inset 0 0 0 2px $p-color-notification-success;
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 2px $p-color-notification-success;
+      }
 
       #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
@@ -262,7 +280,9 @@
 
       &:hover,
       #{$bem-block}__label:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
@@ -271,7 +291,9 @@
     }
 
     &--error {
-      box-shadow: inset 0 0 0 2px $p-color-notification-error;
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 2px $p-color-notification-error;
+      }
 
       #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
@@ -279,7 +301,9 @@
 
       &:hover,
       #{$bem-block}__label:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
@@ -301,20 +325,23 @@
     scroll-behavior: smooth;
     transition: border-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
     transform: translate3d(0, 0, 0); // dix IOS bug if less than 5 items are displayed
-    border-color: $p-color-neutral-contrast-medium;
-    background-color: $p-color-background-default;
 
-    &:hover & {
+    #{$bem-block}--theme-light & {
+      border-color: $p-color-neutral-contrast-medium;
+      background-color: $p-color-background-default;
+    }
+
+    #{$bem-block}--theme-light:hover & {
       border-color: $p-color-neutral-contrast-high;
     }
 
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
       background-color: $p-color-default;
+    }
 
-      &:hover & {
-        border-color: $p-color-theme-dark-neutral-contrast-high;
-      }
+    #{$bem-block}--theme-dark:hover & {
+      border-color: $p-color-theme-dark-neutral-contrast-high;
     }
 
     &--direction {
@@ -330,6 +357,9 @@
           top: 0;
           width: 100%;
           height: 1px;
+        }
+
+        #{$bem-block}--theme-light &::before {
           background-color: $p-color-neutral-contrast-low;
         }
 
@@ -350,6 +380,9 @@
           bottom: 0;
           width: 100%;
           height: 1px;
+        }
+
+        #{$bem-block}--theme-light &::after {
           background-color: $p-color-neutral-contrast-low;
         }
 
@@ -386,7 +419,6 @@
     word-break: break-word;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier,
       background-color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
-    color: $p-color-default;
 
     &[role='status'] {
       cursor: not-allowed;
@@ -396,13 +428,19 @@
       @include p-text-field-wrapper-label-text-hidden;
     }
 
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+    }
+
     #{$bem-block}--theme-dark & {
       color: $p-color-theme-dark-default;
     }
 
     &:not([aria-disabled]):not([role='status']):hover {
-      color: $p-color-state-hover;
-      background-color: $p-color-background-surface;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-hover;
+        background-color: $p-color-background-surface;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-hover;
@@ -414,8 +452,11 @@
       cursor: default;
       pointer-events: none;
       padding-right: $p-spacing-32;
-      color: $p-color-state-active;
-      background-color: $p-color-background-surface;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-active;
+        background-color: $p-color-background-surface;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
@@ -428,8 +469,10 @@
     }
 
     &--highlighted:not(&--selected) {
-      color: $p-color-state-active;
-      background-color: $p-color-background-surface;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-active;
+        background-color: $p-color-background-surface;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
@@ -439,7 +482,10 @@
 
     &--disabled {
       cursor: not-allowed;
-      color: $p-color-state-disabled;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-disabled;
@@ -468,14 +514,19 @@
     top: p-px-to-rem(12px);
     right: p-px-to-rem(12px);
     transition: transform var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
-    color: $p-color-default;
+
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+    }
 
     #{$bem-block}--theme-dark & {
       color: $p-color-theme-dark-default;
     }
 
     &--disabled {
-      color: $p-color-state-disabled;
+      #{$bem-block}--theme-light & {
+        color: $p-color-state-disabled;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-disabled;
@@ -490,14 +541,19 @@
   &__message {
     margin-top: $p-spacing-4;
     transition: color var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
-    color: $p-color-default;
+
+    &#{$bem-block}--theme-light {
+      color: $p-color-default;
+    }
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
     }
 
     &--success {
-      color: $p-color-notification-success;
+      &#{$bem-block}--theme-light {
+        color: $p-color-notification-success;
+      }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-notification-success;
@@ -505,7 +561,9 @@
     }
 
     &--error {
-      color: $p-color-notification-error;
+      &#{$bem-block}--theme-light {
+        color: $p-color-notification-error;
+      }
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-notification-error;
@@ -533,8 +591,11 @@
     line-height: p-calculate-line-height($p-font-size-small);
     text-indent: 0;
     cursor: text;
-    color: $p-color-default;
-    background-color: $p-color-background-default;
+
+    #{$bem-block}--theme-light & {
+      color: $p-color-default;
+      background-color: $p-color-background-default;
+    }
 
     #{$bem-block}--theme-dark & {
       color: $p-color-theme-dark-default;
@@ -543,7 +604,10 @@
 
     &::placeholder {
       opacity: 1;
-      color: $p-color-default;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-default;
@@ -552,7 +616,10 @@
 
     &::-webkit-input-placeholder {
       opacity: 1;
-      color: $p-color-default;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-default;
@@ -561,7 +628,10 @@
 
     &::-moz-placeholder {
       opacity: 1;
-      color: $p-color-default;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-default;
@@ -570,7 +640,10 @@
 
     &:-ms-input-placeholder {
       opacity: 1;
-      color: $p-color-default;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-default;
@@ -579,7 +652,10 @@
 
     &:-moz-placeholder {
       opacity: 1;
-      color: $p-color-default;
+
+      #{$bem-block}--theme-light & {
+        color: $p-color-default;
+      }
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-default;
@@ -597,9 +673,12 @@
       transition: box-shadow var(--p-animation-hover-duration, $p-animation-hover-duration) $p-animation-hover-bezier;
       pointer-events: all;
       cursor: pointer;
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
 
-      &:hover & {
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
+      }
+
+      #{$bem-block}--theme-light:hover & {
         box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
       }
 
@@ -613,14 +692,16 @@
     }
 
     &:hover:not(&--disabled):not(&--success):not(&--error) + span {
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      #{$bem-block}--theme-light & {
+        box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
+      }
 
       #{$bem-block}--theme-dark & {
         box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-high;
       }
     }
 
-    label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
+    #{$bem-block}--theme-light label:hover + &:not(&--disabled):not(&--success):not(&--error) + span {
       box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
     }
 
@@ -636,7 +717,9 @@
       cursor: not-allowed;
       + span {
         cursor: not-allowed;
-        box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 1px $p-color-state-disabled;
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 1px $p-color-theme-dark-state-disabled;
@@ -646,7 +729,9 @@
 
     &--success {
       + span {
-        box-shadow: inset 0 0 0 2px $p-color-notification-success;
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-success;
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-success;
@@ -654,14 +739,16 @@
       }
 
       &:hover + span {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-success, 12%);
         }
       }
 
-      label:hover + & + span {
+      #{$bem-block}--theme-light label:hover + & + span {
         box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
       }
 
@@ -672,7 +759,9 @@
 
     &--error {
       + span {
-        box-shadow: inset 0 0 0 2px $p-color-notification-error;
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px $p-color-notification-error;
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px $p-color-theme-dark-notification-error;
@@ -680,14 +769,16 @@
       }
 
       &:hover + span {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        #{$bem-block}--theme-light & {
+          box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
+        }
 
         #{$bem-block}--theme-dark & {
           box-shadow: inset 0 0 0 2px darken($p-color-theme-dark-notification-error, 12%);
         }
       }
 
-      label:hover + & + span {
+      #{$bem-block}--theme-light label:hover + & + span {
         box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
       }
 

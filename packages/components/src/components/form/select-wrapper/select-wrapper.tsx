@@ -116,10 +116,9 @@ export class SelectWrapper {
   }
 
   public render(): JSX.Element {
-    const isDarkTheme = isDark(this.theme);
     const selectClasses = {
       [prefix('select-wrapper')]: true,
-      [prefix('select-wrapper--theme-dark')]: isDarkTheme,
+      [prefix(`select-wrapper--theme-${this.theme}`)]: true,
     };
     const labelClasses = {
       [prefix('select-wrapper__label')]: true,
@@ -128,7 +127,7 @@ export class SelectWrapper {
     };
     const requiredFlagClasses = {
       [prefix('select-wrapper__required')]: true,
-      [prefix('select-wrapper__required--theme-dark')]: isDarkTheme,
+      [prefix('select-wrapper__required--theme-dark')]: isDark(this.theme),
     };
     const descriptionClasses = {
       [prefix('select-wrapper__description')]: true,
@@ -156,12 +155,12 @@ export class SelectWrapper {
     };
     const messageClasses = {
       [prefix('select-wrapper__message')]: true,
-      [prefix('select-wrapper--theme-dark')]: isDarkTheme,
+      [prefix(`select-wrapper--theme-${this.theme}`)]: true,
       [prefix(`select-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
     const filterInputClasses = {
       [prefix('select-wrapper__filter-input')]: true,
-      [prefix('select-wrapper__filter-input--theme-dark')]: isDarkTheme,
+      [prefix(`select-wrapper__filter-input--theme-${this.theme}`)]: true,
       [prefix('select-wrapper__filter-input--disabled')]: this.disabled,
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
