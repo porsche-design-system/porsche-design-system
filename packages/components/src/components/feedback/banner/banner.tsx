@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot } from '../../../utils';
+import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 
 @Component({
@@ -50,7 +50,7 @@ export class Banner {
     const bannerClasses = {
       [prefix('banner')]: true,
       [prefix(`banner--${this.state}`)]: true,
-      [prefix(`banner--theme-${this.theme}`)]: true,
+      [prefix('banner--theme-dark')]: isDark(this.theme),
     };
 
     const contentClasses = prefix('banner__content');
