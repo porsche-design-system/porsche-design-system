@@ -669,7 +669,7 @@ export class SelectWrapper {
     this.searchString = (ev.target as HTMLInputElement).value;
     this.optionMaps = this.optionMaps.map((item) => ({
       ...item,
-      hidden: !item.initiallyHidden && !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
+      hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(this.searchString.toLowerCase().trim()),
     }));
 
     const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
