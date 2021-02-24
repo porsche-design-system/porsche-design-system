@@ -90,11 +90,9 @@
   }
 
   &--primary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-brand;
-      border-color: $p-color-brand;
-    }
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-brand;
+    border-color: $p-color-brand;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -104,11 +102,9 @@
 
     &:hover,
     &:active {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-state-hover, 12%);
-        border-color: darken($p-color-state-hover, 12%);
-      }
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-state-hover, 12%);
+      border-color: darken($p-color-state-hover, 12%);
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-default;
@@ -119,11 +115,9 @@
   }
 
   &--secondary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-neutral-contrast-high;
-      border-color: $p-color-neutral-contrast-high;
-    }
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-neutral-contrast-high;
+    border-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-default;
@@ -133,11 +127,9 @@
 
     &:hover,
     &:active {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-neutral-contrast-high, 12%);
-        border-color: darken($p-color-neutral-contrast-high, 12%);
-      }
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-neutral-contrast-high, 12%);
+      border-color: darken($p-color-neutral-contrast-high, 12%);
 
       &#{$bem-block}--theme-dark {
         color: $p-color-default;
@@ -148,11 +140,9 @@
   }
 
   &--tertiary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-default;
-      background-color: transparent;
-      border-color: $p-color-neutral-contrast-high;
-    }
+    color: $p-color-default;
+    background-color: transparent;
+    border-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -162,11 +152,9 @@
 
     &:hover,
     &:active {
-      &#{$bem-block}--theme-light {
-        color: $p-color-theme-dark-default;
-        background-color: darken($p-color-neutral-contrast-high, 12%);
-        border-color: darken($p-color-neutral-contrast-high, 12%);
-      }
+      color: $p-color-theme-dark-default;
+      background-color: darken($p-color-neutral-contrast-high, 12%);
+      border-color: darken($p-color-neutral-contrast-high, 12%);
 
       &#{$bem-block}--theme-dark {
         color: $p-color-default;

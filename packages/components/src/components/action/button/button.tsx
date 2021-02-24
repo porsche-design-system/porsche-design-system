@@ -3,6 +3,7 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   improveFocusHandlingForCustomElement,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
@@ -63,7 +64,7 @@ export class Button {
     const buttonClasses = {
       [prefix('button')]: true,
       [prefix(`button--${this.variant}`)]: true,
-      [prefix(`button--theme-${this.theme}`)]: true,
+      [prefix('button--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
     };
     const iconClasses = prefix('button__icon');
