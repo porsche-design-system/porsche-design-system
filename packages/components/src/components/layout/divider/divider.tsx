@@ -1,5 +1,5 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { isDark, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 
 @Component({
@@ -22,7 +22,7 @@ export class Divider {
     const dividerClasses = {
       [prefix('divider')]: true,
       [prefix(`divider--color-${this.color}`)]: true,
-      [prefix(`divider--theme-${this.theme}`)]: true,
+      [prefix('divider--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('divider--orientation', this.orientation),
     };
 
