@@ -2,6 +2,7 @@ import { Component, Event, Element, EventEmitter, h, JSX, Prop, State, Watch } f
 import {
   getPrefixedTagNames,
   improveFocusHandlingForCustomElement,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
 } from '../../../utils';
@@ -82,7 +83,7 @@ export class Pagination {
 
     const paginationClasses = {
       [prefix('pagination')]: true,
-      [prefix(`pagination--theme-${this.theme}`)]: true,
+      [prefix('pagination--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('pagination--size', this.maxNumberOfPageLinks),
     };
     const paginationItemsClasses = prefix('pagination__items');

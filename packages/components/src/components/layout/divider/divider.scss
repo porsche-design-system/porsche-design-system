@@ -13,9 +13,7 @@
   text-align: left;
 
   &--color-neutral-contrast-high {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-high;
-    }
+    background-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       background-color: $p-color-theme-dark-neutral-contrast-high;
@@ -23,9 +21,7 @@
   }
 
   &--color-neutral-contrast-medium {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-medium;
-    }
+    background-color: $p-color-neutral-contrast-medium;
 
     &#{$bem-block}--theme-dark {
       background-color: $p-color-theme-dark-neutral-contrast-medium;
@@ -33,9 +29,7 @@
   }
 
   &--color-neutral-contrast-low {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-neutral-contrast-low;
-    }
+    background-color: $p-color-neutral-contrast-low;
 
     &#{$bem-block}--theme-dark {
       background-color: $p-color-theme-dark-neutral-contrast-low;
