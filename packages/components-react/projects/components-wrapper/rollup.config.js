@@ -21,7 +21,7 @@ export default [
     external,
     output: {
       dir: DIST_DIR,
-      format: 'es',
+      format: 'cjs',
       exports: 'named',
     },
     plugins: [
@@ -34,6 +34,16 @@ export default [
     ],
   },
   {
+    input,
+    external,
+    output: {
+      dir: `${DIST_DIR}/esm`,
+      format: 'es',
+      exports: 'named',
+    },
+    plugins: [typescript(typescriptOpts)],
+  },
+  {
     input: `${BASE_DIR}/src/partials.ts`,
     external,
     output: {
@@ -41,5 +51,6 @@ export default [
       format: 'es',
       exports: 'named',
     },
+    plugins: [typescript(typescriptOpts)],
   },
 ];
