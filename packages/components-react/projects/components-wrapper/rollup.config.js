@@ -48,7 +48,7 @@ export default [
     external,
     output: {
       dir: DIST_DIR,
-      format: 'es',
+      format: 'cjs',
       exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
