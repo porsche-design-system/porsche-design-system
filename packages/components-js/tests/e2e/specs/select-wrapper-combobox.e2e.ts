@@ -278,6 +278,29 @@ describe('select-wrapper combobox', () => {
     expect(value).toBe('b');
   });
 
+  it('should show options which contain partial search', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-select-wrapper label="Some label" filter="true">
+            <select name="some-name">
+              <option value="a">Option First</option>
+              <option value="b">Option Second</option>
+              <option value="c">Option Third</option>
+            </select>
+          </p-select-wrapper>`
+    );
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHiddenOptionAmount()).toBe(0);
+
+    await page.keyboard.type('thi');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHiddenOptionAmount()).toBe(2);
+  });
+
   it('should show "---" if filter value has no match', async () => {
     await setContentWithDesignSystem(
       page,
