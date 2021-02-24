@@ -91,11 +91,9 @@
   }
 
   &--primary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-brand;
-      border-color: $p-color-brand;
-    }
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-brand;
+    border-color: $p-color-brand;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -107,11 +105,9 @@
     &:not([disabled]) {
       &:hover,
       &:active {
-        &#{$bem-block}--theme-light {
-          color: $p-color-theme-dark-default;
-          background-color: darken($p-color-state-hover, 12%);
-          border-color: darken($p-color-state-hover, 12%);
-        }
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-state-hover, 12%);
+        border-color: darken($p-color-state-hover, 12%);
 
         &#{$bem-block}--theme-dark {
           color: $p-color-theme-dark-default;
@@ -123,11 +119,9 @@
 
     &:disabled,
     &[disabled] {
-      &#{$bem-block}--theme-light {
-        color: rgba($p-color-theme-dark-default, 0.55);
-        background-color: $p-color-state-disabled;
-        border-color: $p-color-state-disabled;
-      }
+      color: rgba($p-color-theme-dark-default, 0.55);
+      background-color: $p-color-state-disabled;
+      border-color: $p-color-state-disabled;
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
@@ -138,11 +132,9 @@
   }
 
   &--secondary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-theme-dark-default;
-      background-color: $p-color-neutral-contrast-high;
-      border-color: $p-color-neutral-contrast-high;
-    }
+    color: $p-color-theme-dark-default;
+    background-color: $p-color-neutral-contrast-high;
+    border-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-default;
@@ -154,11 +146,9 @@
     &:not([disabled]) {
       &:hover,
       &:active {
-        &#{$bem-block}--theme-light {
-          color: $p-color-theme-dark-default;
-          background-color: darken($p-color-neutral-contrast-high, 12%);
-          border-color: darken($p-color-neutral-contrast-high, 12%);
-        }
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-neutral-contrast-high, 12%);
+        border-color: darken($p-color-neutral-contrast-high, 12%);
 
         &#{$bem-block}--theme-dark {
           color: $p-color-default;
@@ -170,11 +160,9 @@
 
     &:disabled,
     &[disabled] {
-      &#{$bem-block}--theme-light {
-        color: rgba($p-color-theme-dark-default, 0.55);
-        background-color: $p-color-state-disabled;
-        border-color: $p-color-state-disabled;
-      }
+      color: rgba($p-color-theme-dark-default, 0.55);
+      background-color: $p-color-state-disabled;
+      border-color: $p-color-state-disabled;
 
       &#{$bem-block}--theme-dark {
         color: rgba($p-color-theme-dark-default, 0.55);
@@ -185,11 +173,9 @@
   }
 
   &--tertiary {
-    &#{$bem-block}--theme-light {
-      color: $p-color-default;
-      background-color: transparent;
-      border-color: $p-color-neutral-contrast-high;
-    }
+    color: $p-color-default;
+    background-color: transparent;
+    border-color: $p-color-neutral-contrast-high;
 
     &#{$bem-block}--theme-dark {
       color: $p-color-theme-dark-default;
@@ -201,11 +187,9 @@
     &:not([disabled]) {
       &:hover,
       &:active {
-        &#{$bem-block}--theme-light {
-          color: $p-color-theme-dark-default;
-          background-color: darken($p-color-neutral-contrast-high, 12%);
-          border-color: darken($p-color-neutral-contrast-high, 12%);
-        }
+        color: $p-color-theme-dark-default;
+        background-color: darken($p-color-neutral-contrast-high, 12%);
+        border-color: darken($p-color-neutral-contrast-high, 12%);
 
         &#{$bem-block}--theme-dark {
           color: $p-color-default;
@@ -217,11 +201,9 @@
 
     &:disabled,
     &[disabled] {
-      &#{$bem-block}--theme-light {
-        color: $p-color-state-disabled;
-        background-color: transparent;
-        border-color: $p-color-state-disabled;
-      }
+      color: $p-color-state-disabled;
+      background-color: transparent;
+      border-color: $p-color-state-disabled;
 
       &#{$bem-block}--theme-dark {
         color: $p-color-theme-dark-state-disabled;
