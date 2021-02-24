@@ -9,8 +9,9 @@ lerna-debug.log*
 # Dependency directories
 node_modules
 
-# Optional npm cache directory
+# Cache
 .npm
+.eslintcache
 
 # Yarn Integrity file
 .yarn-integrity
