@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import pkg from '@porsche-design-system/js/package.json';
 
 const BASE_DIR = 'projects/components-wrapper';
 const input = `${BASE_DIR}/src/index.ts`;
@@ -9,17 +8,20 @@ const typescriptOpts = {
   tsconfig: `${BASE_DIR}/tsconfig.json`,
 };
 
-const external = ['@porsche-design-system/components-js', 'react', 'react/jsx-runtime'];
+const external = [
+  '@porsche-design-system/components-js',
+  '@porsche-design-system/components-js/partials',
+  'react',
+  'react/jsx-runtime',
+];
 
 export default [
   {
     input,
     external,
     output: {
-      esModule: false,
       dir: DIST_DIR,
-      format: 'umd',
-      name: pkg.name,
+      format: 'cjs',
       exports: 'named',
     },
     plugins: [
@@ -34,17 +36,19 @@ export default [
   {
     input,
     external,
-    output: { dir: `${DIST_DIR}/esm`, format: 'esm' },
+    output: {
+      dir: `${DIST_DIR}/esm`,
+      format: 'es',
+      exports: 'named',
+    },
     plugins: [typescript(typescriptOpts)],
   },
   {
     input: `${BASE_DIR}/src/partials.ts`,
     external,
     output: {
-      esModule: false,
       dir: DIST_DIR,
-      format: 'umd',
-      name: pkg.name,
+      format: 'cjs',
       exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
