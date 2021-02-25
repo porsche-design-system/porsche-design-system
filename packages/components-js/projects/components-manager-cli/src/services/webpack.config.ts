@@ -33,6 +33,7 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
       filename: 'index.js',
       library: 'porscheDesignSystem', // needs to be same as WCM_KEY
       libraryTarget: 'umd',
+      globalObject: "typeof self !== 'undefined' ? self : this",
     },
     plugins: [
       new webpack.DefinePlugin({
