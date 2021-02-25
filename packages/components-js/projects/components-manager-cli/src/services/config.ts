@@ -70,10 +70,3 @@ export function getProjectPackageJson(): PackageJson {
   const packageJsonString = fs.readFileSync(packageJsonPath, 'utf-8');
   return JSON.parse(packageJsonString);
 }
-
-export function getCmCliVersion(): string {
-  const cmCliPackageJsonPath = path.resolve(__dirname, `../../../${packageJsonFileName}`);
-  const packageJsonString = fs.readFileSync(cmCliPackageJsonPath, 'utf-8');
-  const packageJson = JSON.parse(packageJsonString);
-  return packageJson.version;
-}

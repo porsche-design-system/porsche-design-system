@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { PHeadline } from '@porsche-design-system/components-react';
+import { PorscheDesignSystemProvider, PHeadline } from '@porsche-design-system/components-react';
 
 export default function Home() {
   return (
@@ -11,7 +11,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <PHeadline>Porsche Design System Headline</PHeadline>
+        <PorscheDesignSystemProvider>
+          <PHeadline>Porsche Design System Headline</PHeadline>
+        </PorscheDesignSystemProvider>
       </main>
 
       <footer className={styles.footer}>
