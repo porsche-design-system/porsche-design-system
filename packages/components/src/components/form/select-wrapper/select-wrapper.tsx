@@ -15,16 +15,7 @@ import {
   setAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
-
-type OptionMap = {
-  readonly key: number;
-  readonly value: string;
-  readonly disabled: boolean;
-  readonly hidden: boolean;
-  readonly initiallyHidden: boolean;
-  readonly selected: boolean;
-  readonly highlighted: boolean;
-};
+import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -62,7 +53,7 @@ export class SelectWrapper {
   @Prop() public native?: boolean = false;
 
   @State() private fakeOptionListHidden = true;
-  @State() private optionMaps: readonly OptionMap[] = [];
+  @State() private optionMaps: OptionMap[] = [];
   @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
@@ -667,10 +658,7 @@ export class SelectWrapper {
 
   private handleFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = this.optionMaps.map((item) => ({
-      ...item,
-      hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(this.searchString.toLowerCase().trim()),
-    }));
+    this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
 
     const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;
