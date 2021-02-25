@@ -442,7 +442,7 @@ import { Component } from '@angular/core';
     <div
       class="playground light"
       title="should render in focus state and be open"
-      style="padding-bottom: calc(1rem + 310px)"
+      style="padding-bottom: calc(1rem + 340px)"
     >
       <p-select-wrapper [label]="'Some label'">
         <select id="open-options" name="some-name">
