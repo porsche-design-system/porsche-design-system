@@ -244,10 +244,6 @@ In order to make content accessible for a wide range of people and to improve th
 
 ## Helpful tools and resources
 
-### Sketch palette
-Feel free to download the [Porsche color palette for Sketch](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette) in order to use it as "Document Colors" or "Global Colors" in your color picker.
-The easiest way to import the palette to Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).
-
 ### Sketch plugins
 - [Stark](https://getstark.co)
 - [Color Contrast Analyser](https://github.com/getflourish/Sketch-Color-Contrast-Analyser)
