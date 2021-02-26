@@ -25,8 +25,6 @@ Legend: ✅ Completed
 * Skeleton Loader
 * Enable Design System for UX Pin
 
----
-
 ### Version 2.0 Stable
 * 2.0 stable release
 * Adjust CDN security settings
@@ -36,6 +34,11 @@ Legend: ✅ Completed
 * Extend optional runtime scoping mechanism of Web Components ✅
 * Change Design System loader configuration ✅
 * Improved Porsche Next Font ✅
+
+---
+
+## Milestones Completed and Released
+Legend: ✅ Completed
 
 ### Browser Compatibility
 * Browser Notification Overlay (v2) ✅ 
@@ -52,11 +55,6 @@ Legend: ✅ Completed
 ### Patterns
 * Offer Form Validation Pattern ✅
 * Update Button Pattern ✅
-
----
-
-## Milestones Completed and Released
-Legend: ✅ Completed
 
 ### Assets Package: Marque, Icons and Font refinement 
 * Favicon and Touch Icons ✅
