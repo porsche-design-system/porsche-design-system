@@ -176,7 +176,7 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object({
+      schema: object<FormModel>({
         check: object<FormModel['check']>({
           check1: boolean(),
           check2: boolean(),
