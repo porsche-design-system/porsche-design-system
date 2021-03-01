@@ -31,7 +31,7 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
     output: {
       path: path.resolve(getProjectRootPath(), targetDirectory),
       filename: 'index.js',
-      library: 'porscheDesignSystem', // needs to be same as WCM_KEY
+      library: 'porscheDesignSystem', // needs to be same as CM_KEY
       libraryTarget: 'umd',
       globalObject: "typeof self !== 'undefined' ? self : this",
     },

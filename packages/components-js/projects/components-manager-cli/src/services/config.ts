@@ -27,7 +27,7 @@ export function isGlobalStyleSrc(globalStyle: GlobalStyles): globalStyle is Glob
   return (globalStyle as GlobalStylesSrc).src !== undefined;
 }
 
-export type PorscheWebComponentManagerConfig = CommonConfig & {
+export type ComponentManagerConfig = CommonConfig & {
   deployUrl?: string;
   targetDirectory?: string;
   globalStyles?: GlobalStyles;
@@ -40,7 +40,7 @@ export function getProjectRootPath(): string {
   return path.resolve('.');
 }
 
-export async function getConfig(): Promise<PorscheWebComponentManagerConfig> {
+export async function getConfig(): Promise<ComponentManagerConfig> {
   const configFilePath = await filePathByPattern(`**/${configFileName}`);
 
   try {
