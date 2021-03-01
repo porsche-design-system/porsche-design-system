@@ -16,7 +16,7 @@
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0",
     "glob": "^7.1.6",
-    "webpack": "^5.24.1"
+    "webpack": "^5.24.2"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
