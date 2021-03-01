@@ -1,17 +1,17 @@
-import { WebComponentManagerData } from './web-components-manager';
+import { ComponentsManagerData } from './web-components-manager';
 
-export const WCM_KEY = 'porscheDesignSystem';
+export const CM_KEY = 'porscheDesignSystem';
 
 declare global {
   interface Document {
-    [WCM_KEY]: WebComponentManagerData;
+    [CM_KEY]: ComponentsManagerData;
   }
 }
 
-export function getWebComponentManagerData() {
-  if (!document[WCM_KEY]) {
-    document[WCM_KEY] = {};
+export function getComponentsManagerData() {
+  if (!document[CM_KEY]) {
+    document[CM_KEY] = {};
   }
 
-  return document[WCM_KEY];
+  return document[CM_KEY];
 }

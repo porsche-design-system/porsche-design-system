@@ -69,6 +69,11 @@ jobs:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
+      - name: 'Unit Test Components Manager Core'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-manager-core
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run
         with:
@@ -84,11 +89,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
-      - name: 'Unit Test Components Manager Core'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
-          args: --components-js:components-manager-core
       - name: 'Unit Test Components Wrapper'
         uses: ./.github/actions/docker-run
         with:

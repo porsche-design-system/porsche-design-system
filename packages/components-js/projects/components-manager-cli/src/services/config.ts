@@ -27,7 +27,7 @@ export function isGlobalStyleSrc(globalStyle: GlobalStyles): globalStyle is Glob
   return (globalStyle as GlobalStylesSrc).src !== undefined;
 }
 
-export type PorscheWebComponentManagerConfig = CommonConfig & {
+export type ComponentsManagerConfig = CommonConfig & {
   deployUrl?: string;
   targetDirectory?: string;
   globalStyles?: GlobalStyles;
@@ -40,7 +40,7 @@ export function getProjectRootPath(): string {
   return path.resolve('.');
 }
 
-export async function getConfig(): Promise<PorscheWebComponentManagerConfig> {
+export async function getConfig(): Promise<ComponentsManagerConfig> {
   const configFilePath = await filePathByPattern(`**/${configFileName}`);
 
   try {
@@ -69,11 +69,4 @@ export function getProjectPackageJson(): PackageJson {
 
   const packageJsonString = fs.readFileSync(packageJsonPath, 'utf-8');
   return JSON.parse(packageJsonString);
-}
-
-export function getCmCliVersion(): string {
-  const cmCliPackageJsonPath = path.resolve(__dirname, `../../../${packageJsonFileName}`);
-  const packageJsonString = fs.readFileSync(cmCliPackageJsonPath, 'utf-8');
-  const packageJson = JSON.parse(packageJsonString);
-  return packageJson.version;
 }
