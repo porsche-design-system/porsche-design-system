@@ -197,7 +197,7 @@
           .min(1, 'Please enter valid month 01-12')
           .max(12, 'Please enter valid month 01-12')
           .typeError('Please enter a month'),
-        year: number(),
+        year: number(), // TODO: enable after yup upgrade: .typeError('Please enter a year'),
       }),
     };
 
