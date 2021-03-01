@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - Filter of `Select Wrapper` supports substring search
 
+#### Fixed
+- Build error in SSR
+
 ### [2.0.0-rc.3] - 2021-02-17
 
 #### Added
