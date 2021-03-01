@@ -1,5 +1,5 @@
-import { getComponentManagerData, CM_KEY } from './data-handler';
-import { ComponentManagerData } from './web-components-manager';
+import { getComponentsManagerData, CM_KEY } from './data-handler';
+import { ComponentsManagerData } from './web-components-manager';
 
 describe('dataHandler', () => {
   afterEach(() => {
@@ -7,13 +7,13 @@ describe('dataHandler', () => {
   });
 
   it("should return the web components manager data if it's available in document", () => {
-    const data = {} as ComponentManagerData;
+    const data = {} as ComponentsManagerData;
     (document as any)[CM_KEY] = data;
-    expect(getComponentManagerData()).toBe(data);
+    expect(getComponentsManagerData()).toBe(data);
   });
 
   it('should return web components manager data with default values in document and return it, if not already available', () => {
-    const data = {} as ComponentManagerData;
-    expect(getComponentManagerData()).toEqual(data);
+    const data = {} as ComponentsManagerData;
+    expect(getComponentsManagerData()).toEqual(data);
   });
 });

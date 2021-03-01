@@ -1,5 +1,5 @@
 import { addScript } from './add-script';
-import { getComponentManagerData } from './data-handler';
+import { getComponentsManagerData } from './data-handler';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
@@ -57,7 +57,7 @@ export function setRegisterComponentsCallback(callback: RegisterCustomElementsCa
 }
 
 function getLibraryHandlerData(version: string): LibraryHandlerData {
-  const cmData = getComponentManagerData();
+  const cmData = getComponentsManagerData();
   const { [version]: libraryHandlerData = null } = cmData;
 
   if (libraryHandlerData === null) {

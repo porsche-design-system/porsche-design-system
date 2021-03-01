@@ -1,5 +1,5 @@
 import { LibraryHandlerData } from './library-handler';
 
-export type ComponentManagerData = {
+export type ComponentsManagerData = {
   [version: string]: LibraryHandlerData;
 };
