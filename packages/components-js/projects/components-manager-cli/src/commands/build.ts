@@ -15,7 +15,7 @@ export const buildCommand = 'build';
 const DEFINTIONS_FILE_NAME = 'index.d.ts';
 
 export const build = async () => {
-  const webComponentManagerConfig = await getConfig();
+  const componentManagerConfig = await getConfig();
   const {
     deployUrl = '',
     targetDirectory = './dist/cm',
@@ -25,7 +25,7 @@ export const build = async () => {
     version = null,
     copyFiles = [],
     additionalEntryFiles = [],
-  } = webComponentManagerConfig;
+  } = componentManagerConfig;
   const { version: fallbackVersion } = getProjectPackageJson();
 
   if (deployUrl === '') {

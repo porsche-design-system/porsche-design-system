@@ -1,5 +1,5 @@
 import { addScript } from './add-script';
-import { getWebComponentManagerData } from './data-handler';
+import { getComponentManagerData } from './data-handler';
 
 export type RegisterCustomElementsCallback = (prefix: string) => void;
 
@@ -57,8 +57,8 @@ export function setRegisterComponentsCallback(callback: RegisterCustomElementsCa
 }
 
 function getLibraryHandlerData(version: string): LibraryHandlerData {
-  const wcmData = getWebComponentManagerData();
-  const { [version]: libraryHandlerData = null } = wcmData;
+  const cmData = getComponentManagerData();
+  const { [version]: libraryHandlerData = null } = cmData;
 
   if (libraryHandlerData === null) {
     const newLibraryHandlerData: LibraryHandlerData = {
@@ -67,8 +67,8 @@ function getLibraryHandlerData(version: string): LibraryHandlerData {
       registerCustomElements: null,
     };
 
-    wcmData[version] = newLibraryHandlerData;
+    cmData[version] = newLibraryHandlerData;
   }
 
-  return wcmData[version];
+  return cmData[version];
 }
