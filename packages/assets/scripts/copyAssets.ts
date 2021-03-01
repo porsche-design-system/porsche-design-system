@@ -20,7 +20,7 @@ const copyAssets = (): void => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
     const packageName = cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap];
     try {
-      const pathToPackage = require.resolve(packageName);
+      const pathToPackage = require.resolve(packageName!);
       const relativePathToPackageFiles = `../${cdnPath}`;
       const pathToFiles = path.resolve(path.dirname(pathToPackage), relativePathToPackageFiles);
 
