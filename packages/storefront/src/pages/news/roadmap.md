@@ -7,20 +7,42 @@ More details about the actual backlog and work in progress can be found in our p
 ## Milestones in Progress
 Legend: ✅ Completed
 
+### Platforms
+* Migrate generic content from Design System- to UX platform
+* Migrate Icon- to Design System platform
+* Consolidate published npm packages
+* Enable search feature for Design System- and UX platform
+
+### Generic components
+* Switch
+* Badge
+* Accordion
+* Tooltip
+* Data Table
+
+### Common
+* Re-enable SSR support
+* Skeleton Loader
+* Enable Design System for UX Pin
+
 ### Version 2.0 Stable
 * 2.0 stable release
-* 2.0 RC release
 * Adjust CDN security settings
-* Sample Project Integration Checks
+* 2.0 RC release ✅
 * Improve CDN settings and China delivery ✅
 * Move components to CDN ✅
 * Extend optional runtime scoping mechanism of Web Components ✅
 * Change Design System loader configuration ✅
 * Improved Porsche Next Font ✅
 
+---
+
+## Milestones Completed and Released
+Legend: ✅ Completed
+
 ### Browser Compatibility
 * Browser Notification Overlay (v2) ✅ 
-* New languages for Browser Notification
+* New languages for Browser Notification ✅
 * Change Browser Compatibility & Documentation ✅
 * Provide Browser Notification Banner (v1) ✅
 
@@ -33,11 +55,6 @@ Legend: ✅ Completed
 ### Patterns
 * Offer Form Validation Pattern ✅
 * Update Button Pattern ✅
-
----
-
-## Milestones Completed and Released
-Legend: ✅ Completed
 
 ### Assets Package: Marque, Icons and Font refinement 
 * Favicon and Touch Icons ✅
