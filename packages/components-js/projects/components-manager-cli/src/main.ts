@@ -1,6 +1,5 @@
 import { build, buildCommand } from './commands/build';
 import { help, helpCommand } from './commands/help';
-import { getCmCliVersion } from './services/config';
 
 export type CommandMap = {
   [commandName: string]: (commandParameters: string[]) => Promise<void>;
@@ -12,10 +11,8 @@ const commandMap: CommandMap = {
 };
 
 export const runCommand = async (params: string[]) => {
-  const applicationVersion = await getCmCliVersion();
   const [command, ...commandParams] = params;
 
-  console.log(`\nPorsche Web Components Manager (v${applicationVersion})`);
   if (commandMap[command]) {
     return await commandMap[command](commandParams);
   }

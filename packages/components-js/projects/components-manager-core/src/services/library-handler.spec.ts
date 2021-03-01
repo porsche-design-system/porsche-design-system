@@ -1,5 +1,5 @@
 import * as browserHelper from './browser-helper';
-import { WCM_KEY } from './data-handler';
+import { CM_KEY } from './data-handler';
 import { loadComponentLibrary, LoadComponentLibraryOptions, setRegisterComponentsCallback } from './library-handler';
 
 describe('libraryHandler', function () {
@@ -25,7 +25,7 @@ describe('libraryHandler', function () {
   });
 
   afterEach(() => {
-    (document as any)[WCM_KEY] = undefined;
+    (document as any)[CM_KEY] = undefined;
   });
 
   it('should load the script for the library loaded via loadComponentLibrary', async () => {
