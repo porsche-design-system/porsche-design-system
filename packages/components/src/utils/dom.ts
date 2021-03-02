@@ -34,7 +34,7 @@ export function getClosestHTMLElement<K extends keyof HTMLElementTagNameMap>(hos
   return host.closest(selector);
 }
 
-export const getAttribute = (el: HTMLElement, attributeName: string): string | null => {
+export const getAttribute = (el: HTMLElement | Element, attributeName: string): string | null => {
   return el.getAttribute(attributeName);
 };
 
@@ -50,5 +50,17 @@ export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSele
   getAttribute(el, 'required') !== null;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
+
+// prettier-ignore
+export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
+export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(host: Host, selector: string): E | null;
+// prettier-ignore
+export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null {
+  const el = getHTMLElement(host, selector);
+  if (!el) {
+    throw new Error(`Child HTMLElement ${selector} is missing.`);
+  }
+  return el;
+}
 
 // TODO: add addEventListener and removeEventListener

@@ -1,7 +1,7 @@
 import { JSX, Host, Component, Prop, h, Element, State, Listen } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElement,
+  getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
   hasNamedSlot,
@@ -15,16 +15,7 @@ import {
   setAttribute,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../types';
-
-type OptionMap = {
-  readonly key: number;
-  readonly value: string;
-  readonly disabled: boolean;
-  readonly hidden: boolean;
-  readonly initiallyHidden: boolean;
-  readonly selected: boolean;
-  readonly highlighted: boolean;
-};
+import { applyFilterOnOptionMaps, OptionMap } from './select-wrapper-utils';
 
 @Component({
   tag: 'p-select-wrapper',
@@ -62,7 +53,7 @@ export class SelectWrapper {
   @Prop() public native?: boolean = false;
 
   @State() private fakeOptionListHidden = true;
-  @State() private optionMaps: readonly OptionMap[] = [];
+  @State() private optionMaps: OptionMap[] = [];
   @State() private filterHasResults = true;
 
   private select: HTMLSelectElement;
@@ -170,7 +161,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class={selectClasses}>
-          <label>
+          <label id="p-label">
             {this.isLabelVisible && (
               <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
@@ -216,7 +207,7 @@ export class SelectWrapper {
               aria-activedescendant={!this.filter && `option-${this.getHighlightedIndex(this.optionMaps)}`}
               tabIndex={-1}
               aria-expanded={!this.filter && (this.fakeOptionListHidden ? 'false' : 'true')}
-              aria-labelledby={this.label}
+              aria-labelledby="p-label"
               ref={(el) => (this.fakeOptionListNode = el)}
             >
               {this.createFakeOptionList()}
@@ -248,7 +239,8 @@ export class SelectWrapper {
    * <START NATIVE SELECT>
    */
   private initSelect(): void {
-    this.select = getHTMLElement(this.host, 'select');
+    this.select = getHTMLElementAndThrowIfUndefined(this.host, 'select');
+
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
     }
@@ -566,6 +558,7 @@ export class SelectWrapper {
             aria-selected={highlighted ? 'true' : null}
             aria-disabled={disabled ? 'true' : null}
             aria-hidden={hidden || initiallyHidden ? 'true' : null}
+            aria-label={!item.text ? 'Empty value' : null}
           >
             {item.text && <span>{item.text}</span>}
             {selected && (
@@ -665,10 +658,7 @@ export class SelectWrapper {
 
   private handleFilterSearch = (ev: InputEvent): void => {
     this.searchString = (ev.target as HTMLInputElement).value;
-    this.optionMaps = this.optionMaps.map((item) => ({
-      ...item,
-      hidden: !item.initiallyHidden && !item.value.toLowerCase().startsWith(this.searchString.toLowerCase().trim()),
-    }));
+    this.optionMaps = applyFilterOnOptionMaps(this.optionMaps, this.searchString);
 
     const hiddenItems = this.optionMaps.filter((item) => item.hidden || item.initiallyHidden);
     this.filterHasResults = hiddenItems.length !== this.optionMaps.length;

@@ -31,15 +31,4 @@ The web library provides components like buttons, form elements and many more th
 Please be aware of the used library version (Sketch: Preferences → Libraries) and coordinate with your developer counterpart to be aligned on the version you're using.
 
 ### Porsche Next font
-In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip).  
-
-## 5. Additional tools
-
-## Sketch color palette
-Enrich your Porsche design experience by using the Porsche color palette in your Sketch color picker. The easiest way to import the palette in Sketch is by using the plugin [Sketch Palettes](https://github.com/andrewfiorillo/sketch-palettes).  
-[Download Porsche color palette](https://designsystem.porsche.com/sketch/porsche-design-system-colors.sketchpalette)
-
-Please note that the Sketch color palette should only be used for additional and new components. For almost all of our components created so far, you can use the Sketch Layer Styles.
-
-## Other helpful Sketch plugins
-A list of more plugins that are recommended (but not obligatory) for a smooth Sketch workflow can be found [here](#/start-designing/sketch-plugins).
+In order to design Porsche web applications and to use the Porsche Design System libraries properly, you have to download and install the [Porsche Next font](https://cdn.ui.porsche.com/porsche-design-system/font/v2/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip). 

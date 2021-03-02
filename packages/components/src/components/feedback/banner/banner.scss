@@ -108,11 +108,9 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   }
 
   &--neutral {
-    &#{$bem-block}--theme-light {
-      background-color: $p-color-notification-neutral-soft;
-      &::before {
-        background-color: $p-color-notification-neutral;
-      }
+    background-color: $p-color-notification-neutral-soft;
+    &::before {
+      background-color: $p-color-notification-neutral;
     }
 
     &#{$bem-block}--theme-dark {
