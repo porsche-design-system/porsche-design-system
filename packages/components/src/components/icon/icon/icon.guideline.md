@@ -39,9 +39,7 @@ Create several designs for the possible icon and make sure that the user underst
 
 ## Design
 
-Use the following template, in which you will find an artboard (24 x 24 px) on which all icons are to be designed (max. 3 icon drafts).
-
-[Download Icon/Grid ](https://designsystem.porsche.com/sketch/PAG_icon_template_24px.ai)
+Use the following template, in which you will find an artboard (24 x 24 px) on which all icons are to be designed (max. 3 icon drafts). [Download Icon Template](https://designsystem.porsche.com/sketch/PAG-icon-template-24px.ai.zip)
 
 **All artboards should be named according to the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
 
