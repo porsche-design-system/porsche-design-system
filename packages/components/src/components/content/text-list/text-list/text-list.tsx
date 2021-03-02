@@ -21,25 +21,22 @@ export class TextList {
 
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
+    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list-item']);
+    const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
 
     const textListClasses = {
       [prefix('text-list')]: true,
       [prefix(`text-list--${this.listType}`)]: true,
       [prefix('text-list--theme-dark')]: isDark(this.theme),
-      [prefix('text-list--nested')]: this.isNestedList,
+      [prefix('text-list--nested')]: isNestedList,
     };
 
     return (
-      <Host nested={this.isNestedList}>
+      <Host nested={isNestedList}>
         <TagType role="list" class={textListClasses}>
           <slot />
         </TagType>
       </Host>
     );
-  }
-
-  private get isNestedList(): boolean {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list-item']);
-    return !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
   }
 }

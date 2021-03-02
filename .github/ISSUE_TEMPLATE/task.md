@@ -2,7 +2,7 @@
 name: Task
 about: Create a task
 title: ''
-labels: to be refined
+labels: to be refined, to be written 📝
 assignees: ''
 
 ---

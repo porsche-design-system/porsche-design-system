@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.4] - 2021-03-01
+
+#### Changed
+- Filter of `Select Wrapper` supports substring search
+
+#### Fixed
+- Build error in SSR
+
+### [2.0.0-rc.3] - 2021-02-17
+
+#### Added
+- React: utility function `skipCheckForPorscheDesignSystemProviderDuringTests`
+- React: tree shaking for component wrappers
+
+#### Fixed
+- Angular: error in `Checkbox Wrapper`, `Radio Button Wrapper` and `Text Field Wrapper` when `input[type]` is bound
+
+### [2.0.0-rc.2] - 2021-02-12
+
+#### Added
+- Validate usage of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
+
 ### [2.0.0-rc.1] - 2021-02-04
 
 #### Added

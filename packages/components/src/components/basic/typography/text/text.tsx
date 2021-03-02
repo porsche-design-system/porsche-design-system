@@ -3,6 +3,7 @@ import {
   calcLineHeightForElement,
   getHTMLElement,
   insertSlottedStyles,
+  isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   transitionListener,
@@ -46,11 +47,15 @@ export class Text {
   }
 
   public componentDidLoad(): void {
-    this.bindFontSizeListener();
+    transitionListener(this.textTag, 'font-size', () => {
+      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+    });
   }
 
   public render(): JSX.Element {
-    const TagType = this.hasSlottedTextTag ? 'div' : this.tag;
+    const firstChild = getHTMLElement(this.host, ':first-child');
+    const hasSlottedTextTag = firstChild?.matches('p,span,div,address,blockquote,figcaption,cite,time,legend');
+    const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     const textClasses = {
       [prefix('text')]: true,
@@ -58,7 +63,7 @@ export class Text {
       [prefix(`text--align-${this.align}`)]: true,
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
-      [prefix(`text--theme-${this.theme}`)]: this.color !== 'inherit',
+      [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
       ...mapBreakpointPropToPrefixedClasses('text--size', this.size),
     };
 
@@ -67,17 +72,6 @@ export class Text {
         <slot />
       </TagType>
     );
-  }
-
-  private get hasSlottedTextTag(): boolean {
-    const el = getHTMLElement(this.host, ':first-child');
-    return el?.matches('p, span, div, address, blockquote, figcaption, cite, time, legend');
-  }
-
-  private bindFontSizeListener(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
   }
 
   private addSlottedStyles(): void {

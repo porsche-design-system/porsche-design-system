@@ -2,7 +2,7 @@
 name: Bug Report
 about: Create a bug report
 title: ''
-labels: bug 🛑, to be refined
+labels: bug 🛑, to be refined, to be written 📝
 assignees: ''
 
 ---
