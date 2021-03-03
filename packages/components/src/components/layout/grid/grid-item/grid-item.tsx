@@ -1,10 +1,11 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../../utils';
+import { mapBreakpointPropToPrefixedClasses } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
 
 @Component({
   tag: 'p-grid-item',
   styleUrl: 'grid-item.scss',
+  shadow: true,
 })
 export class GridItem {
   /** The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this. */
@@ -15,11 +16,14 @@ export class GridItem {
 
   public render(): JSX.Element {
     const gridItemClasses = {
-      [prefix('grid-item')]: true,
-      ...mapBreakpointPropToPrefixedClasses('grid-item--size', this.size),
-      ...(this.offset !== 0 && mapBreakpointPropToPrefixedClasses('grid-item--offset', this.offset)),
+      ...mapBreakpointPropToPrefixedClasses('size', this.size),
+      ...(this.offset !== 0 && mapBreakpointPropToPrefixedClasses('offset', this.offset)),
     };
 
-    return <Host class={gridItemClasses} />;
+    return (
+      <Host class={gridItemClasses}>
+        <slot />
+      </Host>
+    );
   }
 }
