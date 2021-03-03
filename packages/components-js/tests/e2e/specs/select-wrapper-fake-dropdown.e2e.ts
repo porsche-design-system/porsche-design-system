@@ -13,7 +13,7 @@ import {
   setContentWithDesignSystem,
   waitForStencilLifecycle,
 } from '../helpers';
-import { devices, ElementHandle, Page } from 'puppeteer';
+import { devices, Page } from 'puppeteer';
 
 describe('select-wrapper fake-dropdown', () => {
   let page: Page;
