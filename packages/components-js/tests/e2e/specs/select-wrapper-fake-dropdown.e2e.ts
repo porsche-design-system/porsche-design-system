@@ -993,6 +993,7 @@ ${initCustomElement}
         expect(await getSelectedFakeOption(customElementName)).toBe(0, 'for selected fake option');
 
         await select.click();
+        await waitForStencilLifecycle(page);
         await page.mouse.click(posFakeOption.x + 2, posFakeOption.y + 2);
         await waitForStencilLifecycle(page);
 
