@@ -322,7 +322,7 @@ export class SelectWrapper {
   }
 
   private handleClickOutside = (e: MouseEvent): void => {
-    if (!this.host.contains(e.target as HTMLElement)) {
+    if (typeof e.composedPath === 'function' && !e.composedPath().includes(this.host)) {
       this.handleVisibilityOfFakeOptionList('hide');
     }
   };
