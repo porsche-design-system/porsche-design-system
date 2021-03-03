@@ -75,7 +75,9 @@ describe('chunks', () => {
 
         it(`chunk size should roughly stay the same for ${stat.chunkName}`, () => {
           // change should be less than 500 Bytes
-          expect(stat.diffSize).toBeLessThanOrEqual(500);
+          const allowedSizeChange = 500;
+          expect(stat.diffSize).toBeLessThanOrEqual(allowedSizeChange);
+          expect(stat.diffSize).toBeGreaterThanOrEqual(-allowedSizeChange);
         });
       });
 
