@@ -1,4 +1,4 @@
-import type * as CSS from 'csstype';
+import type { Properties } from 'csstype';
 
 export type FontSize =
   | '12'
@@ -27,7 +27,7 @@ export type FontSize =
 
 export type FontWeight = 'thin' | 'regular' | 'semibold' | 'bold';
 
-export type FontSizeLineHeight = Pick<CSS.Properties, 'fontSize' | 'lineHeight'>;
+export type FontSizeLineHeight = Pick<Properties, 'fontSize' | 'lineHeight'>;
 
 type FontType = {
   family: string;
