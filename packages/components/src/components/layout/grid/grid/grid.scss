@@ -5,7 +5,7 @@ $p-grid-gutter: p-px-to-rem(16px);
 $p-grid-gutter-s: p-px-to-rem(24px);
 $p-grid-gutter-m: p-px-to-rem(36px);
 
-.#{$p-global-class-prefix}grid {
+:host {
   display: flex !important;
   flex-wrap: wrap !important;
   flex: auto !important;
@@ -14,111 +14,109 @@ $p-grid-gutter-m: p-px-to-rem(36px);
     left: -$p-grid-gutter / 2 !important;
     right: -$p-grid-gutter / 2 !important;
   }
+}
 
-  @include p-media-query('s', 'm') {
+:host(.p-direction-column) {
+  flex-direction: column !important;
+}
+
+:host(.p-direction-column-reverse) {
+  flex-direction: column-reverse !important;
+}
+
+:host(.p-direction-row) {
+  flex-direction: row !important;
+}
+
+:host(.p-direction-row-reverse) {
+  flex-direction: row-reverse !important;
+}
+
+@include p-media-query('xs') {
+  :host(.p-direction-column-xs) {
+    flex-direction: column !important;
+  }
+  :host(.p-direction-column-reverse-xs) {
+    flex-direction: column-reverse !important;
+  }
+  :host(.p-direction-row-xs) {
+    flex-direction: row !important;
+  }
+  :host(.p-direction-row-reverse-xs) {
+    flex-direction: row-reverse !important;
+  }
+}
+
+@include p-media-query('s') {
+  :host {
     margin: {
       left: -$p-grid-gutter-s / 2 !important;
       right: -$p-grid-gutter-s / 2 !important;
     }
   }
 
-  @include p-media-query('m') {
+  :host(.p-direction-column-s) {
+    flex-direction: column !important;
+  }
+  :host(.p-direction-column-reverse-s) {
+    flex-direction: column-reverse !important;
+  }
+  :host(.p-direction-row-s) {
+    flex-direction: row !important;
+  }
+  :host(.p-direction-row-reverse-s) {
+    flex-direction: row-reverse !important;
+  }
+}
+
+@include p-media-query('m') {
+  :host {
     margin: {
       left: -$p-grid-gutter-m / 2 !important;
       right: -$p-grid-gutter-m / 2 !important;
     }
   }
 
-  &--direction {
-    &-column {
-      flex-direction: column !important;
-    }
+  :host(.p-direction-column-m) {
+    flex-direction: column !important;
+  }
+  :host(.p-direction-column-reverse-m) {
+    flex-direction: column-reverse !important;
+  }
+  :host(.p-direction-row-m) {
+    flex-direction: row !important;
+  }
+  :host(.p-direction-row-reverse-m) {
+    flex-direction: row-reverse !important;
+  }
+}
 
-    &-column-reverse {
-      flex-direction: column-reverse !important;
-    }
+@include p-media-query('l') {
+  :host(.p-direction-column-l) {
+    flex-direction: column !important;
+  }
+  :host(.p-direction-column-reverse-l) {
+    flex-direction: column-reverse !important;
+  }
+  :host(.p-direction-row-l) {
+    flex-direction: row !important;
+  }
+  :host(.p-direction-row-reverse-l) {
+    flex-direction: row-reverse !important;
+  }
+}
 
-    &-row {
-      flex-direction: row !important;
-    }
-
-    &-row-reverse {
-      flex-direction: row-reverse !important;
-    }
-
-    @include p-media-query('xs') {
-      &-column-xs {
-        flex-direction: column !important;
-      }
-      &-column-reverse-xs {
-        flex-direction: column-reverse !important;
-      }
-      &-row-xs {
-        flex-direction: row !important;
-      }
-      &-row-reverse-xs {
-        flex-direction: row-reverse !important;
-      }
-    }
-
-    @include p-media-query('s') {
-      &-column-s {
-        flex-direction: column !important;
-      }
-      &-column-reverse-s {
-        flex-direction: column-reverse !important;
-      }
-      &-row-s {
-        flex-direction: row !important;
-      }
-      &-row-reverse-s {
-        flex-direction: row-reverse !important;
-      }
-    }
-
-    @include p-media-query('m') {
-      &-column-m {
-        flex-direction: column !important;
-      }
-      &-column-reverse-m {
-        flex-direction: column-reverse !important;
-      }
-      &-row-m {
-        flex-direction: row !important;
-      }
-      &-row-reverse-m {
-        flex-direction: row-reverse !important;
-      }
-    }
-
-    @include p-media-query('l') {
-      &-column-l {
-        flex-direction: column !important;
-      }
-      &-column-reverse-l {
-        flex-direction: column-reverse !important;
-      }
-      &-row-l {
-        flex-direction: row !important;
-      }
-      &-row-reverse-l {
-        flex-direction: row-reverse !important;
-      }
-    }
-
-    @include p-media-query('xl') {
-      &-column-xl {
-        flex-direction: column !important;
-      }
-      &-column-reverse-xl {
-        flex-direction: column-reverse !important;
-      }
-      &-row-xl {
-        flex-direction: row !important;
-      }
-      &-row-reverse-xl {
-        flex-direction: row-reverse !important;
-      }
-    }
+@include p-media-query('xl') {
+  :host(.p-direction-column-xl) {
+    flex-direction: column !important;
+  }
+  :host(.p-direction-column-reverse-xl) {
+    flex-direction: column-reverse !important;
+  }
+  :host(.p-direction-row-xl) {
+    flex-direction: row !important;
+  }
+  :host(.p-direction-row-reverse-xl) {
+    flex-direction: row-reverse !important;
   }
 }

@@ -16,120 +16,89 @@ $p-grid-item-width: 0% 8.333333% 16.666667% 25% 33.333333% 41.666667% 50% 58.333
   margin-left: #{nth($p-grid-item-width, $i)} !important;
 }
 
-.#{$p-global-class-prefix}grid-item {
+:host {
+  display: block;
   box-sizing: border-box !important;
   padding: {
     left: $p-grid-gutter / 2 !important;
     right: $p-grid-gutter / 2 !important;
   }
+}
 
-  @include p-media-query('s', 'm') {
+@for $i from 1 through 12 {
+  :host(.p-size-#{$i}) {
+    @include p-grid-item-size($i + 1);
+  }
+  :host(.p-offset-#{$i}) {
+    @include p-grid-item-offset($i + 1);
+  }
+}
+
+@include p-media-query('xs') {
+  @for $i from 1 through 12 {
+    :host(.p-size-#{$i}-xs) {
+      @include p-grid-item-size($i + 1);
+    }
+    :host(.p-offset-#{$i}-xs) {
+      @include p-grid-item-offset($i + 1);
+    }
+  }
+}
+
+@include p-media-query('s') {
+  :host {
     padding: {
       left: $p-grid-gutter-s / 2 !important;
       right: $p-grid-gutter-s / 2 !important;
     }
   }
 
-  @include p-media-query('m') {
+  @for $i from 1 through 12 {
+    :host(.p-size-#{$i}-s) {
+      @include p-grid-item-size($i + 1);
+    }
+    :host(.p-offset-#{$i}-s) {
+      @include p-grid-item-offset($i + 1);
+    }
+  }
+}
+
+@include p-media-query('m') {
+  :host {
     padding: {
       left: $p-grid-gutter-m / 2 !important;
       right: $p-grid-gutter-m / 2 !important;
     }
   }
 
-  &--size {
-    @for $i from 1 through 12 {
-      &-#{$i} {
-        @include p-grid-item-size($i + 1);
-      }
+  @for $i from 1 through 12 {
+    :host(.p-size-#{$i}-m) {
+      @include p-grid-item-size($i + 1);
     }
-
-    @include p-media-query('xs') {
-      @for $i from 1 through 12 {
-        &-#{$i}-xs {
-          @include p-grid-item-size($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('s') {
-      @for $i from 1 through 12 {
-        &-#{$i}-s {
-          @include p-grid-item-size($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('m') {
-      @for $i from 1 through 12 {
-        &-#{$i}-m {
-          @include p-grid-item-size($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('l') {
-      @for $i from 1 through 12 {
-        &-#{$i}-l {
-          @include p-grid-item-size($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('xl') {
-      @for $i from 1 through 12 {
-        &-#{$i}-xl {
-          @include p-grid-item-size($i + 1);
-        }
-      }
+    :host(.p-offset-#{$i}-m) {
+      @include p-grid-item-offset($i + 1);
     }
   }
+}
 
-  &--offset {
-    @for $i from 0 through 11 {
-      &-#{$i} {
-        @include p-grid-item-offset($i + 1);
-      }
+@include p-media-query('l') {
+  @for $i from 1 through 12 {
+    :host(.p-size-#{$i}-l) {
+      @include p-grid-item-size($i + 1);
     }
-
-    @include p-media-query('xs') {
-      @for $i from 0 through 11 {
-        &-#{$i}-xs {
-          @include p-grid-item-offset($i + 1);
-        }
-      }
+    :host(.p-offset-#{$i}-l) {
+      @include p-grid-item-offset($i + 1);
     }
+  }
+}
 
-    @include p-media-query('s') {
-      @for $i from 0 through 11 {
-        &-#{$i}-s {
-          @include p-grid-item-offset($i + 1);
-        }
-      }
+@include p-media-query('xl') {
+  @for $i from 1 through 12 {
+    :host(.p-size-#{$i}-xl) {
+      @include p-grid-item-size($i + 1);
     }
-
-    @include p-media-query('m') {
-      @for $i from 0 through 11 {
-        &-#{$i}-m {
-          @include p-grid-item-offset($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('l') {
-      @for $i from 0 through 11 {
-        &-#{$i}-l {
-          @include p-grid-item-offset($i + 1);
-        }
-      }
-    }
-
-    @include p-media-query('xl') {
-      @for $i from 0 through 11 {
-        &-#{$i}-xl {
-          @include p-grid-item-offset($i + 1);
-        }
-      }
+    :host(.p-offset-#{$i}-xl) {
+      @include p-grid-item-offset($i + 1);
     }
   }
 }
