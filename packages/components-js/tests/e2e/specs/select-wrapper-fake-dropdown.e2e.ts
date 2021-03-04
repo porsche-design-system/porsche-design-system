@@ -26,21 +26,13 @@ describe('select-wrapper fake-dropdown', () => {
 
   const getHost = () => selectNode(page, 'p-select-wrapper');
   const getFakeSelect = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-select');
-  const getSelect = (customElement?: string) =>
-    selectNode(page, `${customElement ? customElement + ' >>> ' : ''}p-select-wrapper select`);
+  const getSelect = () => selectNode(page, 'p-select-wrapper select');
   const getLabel = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__label');
-  const getFakeOptionList = (customElement?: string) =>
-    selectNode(
-      page,
-      `${customElement ? customElement + ' >>> ' : ''}p-select-wrapper >>> .p-select-wrapper__fake-option-list`
-    );
+  const getFakeOptionList = () => selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option-list');
   const getFakeOptionInPosOne = () =>
     selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(1)');
-  const getFakeOptionInPosTwo = (customElement?: string) =>
-    selectNode(
-      page,
-      `${customElement ? customElement + ' >>> ' : ''}p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)`
-    );
+  const getFakeOptionInPosTwo = () =>
+    selectNode(page, 'p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)');
 
   const initSelect = (): Promise<void> => {
     return setContentWithDesignSystem(
@@ -545,8 +537,8 @@ describe('select-wrapper fake-dropdown', () => {
         });
       const getHighlightedFakeOption = async () =>
         await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--highlighted');
-      const getSelectedFakeOption = async (customElement?: string) =>
-        await getElementIndex(await getFakeOptionList(customElement), '.p-select-wrapper__fake-option--selected');
+      const getSelectedFakeOption = async () =>
+        await getElementIndex(await getFakeOptionList(), '.p-select-wrapper__fake-option--selected');
 
       it('should highlight first position on arrow down', async () => {
         await initSelect();
@@ -985,19 +977,27 @@ ${initCustomElement}
 `
         );
         const customElementName = 'my-custom-element';
-        const select = await getSelect(customElementName);
+        const select = await selectNode(page, `${customElementName} >>> p-select-wrapper select`);
 
-        const fakeOptionPosTwo = await getFakeOptionInPosTwo(customElementName);
+        const fakeOptionPosTwo = await selectNode(
+          page,
+          `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)`
+        );
         const boundingBoxFakeOptionPosTwo = await fakeOptionPosTwo.boundingBox();
 
-        expect(await getSelectedFakeOption(customElementName)).toBe(0, 'for selected fake option initial');
+        const getFakeOptionListInCustomElement = () =>
+          selectNode(page, `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option-list`);
+        const getSelectedFakeOptionInCustomElement = async () =>
+          await getElementIndex(await getFakeOptionListInCustomElement(), '.p-select-wrapper__fake-option--selected');
+
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(0, 'for selected fake option initial');
 
         await select.click();
         await waitForStencilLifecycle(page);
         await page.mouse.click(boundingBoxFakeOptionPosTwo.x + 2, boundingBoxFakeOptionPosTwo.y + 2);
         await waitForStencilLifecycle(page);
 
-        expect(await getSelectedFakeOption(customElementName)).toBe(1, 'for selected fake option after click');
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(1, 'for selected fake option after click');
       });
 
       it('should close fakeSelect on Tab', async () => {
