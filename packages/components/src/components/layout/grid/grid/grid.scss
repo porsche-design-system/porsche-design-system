@@ -16,33 +16,41 @@ $p-grid-gutter-m: p-px-to-rem(36px);
   }
 }
 
-:host(.p-direction-column) {
+:host([direction='column']) {
   flex-direction: column !important;
 }
 
-:host(.p-direction-column-reverse) {
+:host([direction='column-reverse']) {
   flex-direction: column-reverse !important;
 }
 
-:host(.p-direction-row) {
+:host([direction='row']) {
   flex-direction: row !important;
 }
 
-:host(.p-direction-row-reverse) {
+:host([direction='row-reverse']) {
   flex-direction: row-reverse !important;
 }
 
 @include p-media-query('xs') {
-  :host(.p-direction-column-xs) {
+  :host([direction='column']),
+  :host([direction*="xs:'column'"]),
+  :host([direction*="xs: 'column'"]) {
     flex-direction: column !important;
   }
-  :host(.p-direction-column-reverse-xs) {
+  :host([direction='column-reverse']),
+  :host([direction*="xs:'column-reverse'"]),
+  :host([direction*="xs: 'column-reverse'"]) {
     flex-direction: column-reverse !important;
   }
-  :host(.p-direction-row-xs) {
+  :host([direction='row']),
+  :host([direction*="xs:'row'"]),
+  :host([direction*="xs: 'row'"]) {
     flex-direction: row !important;
   }
-  :host(.p-direction-row-reverse-xs) {
+  :host([direction='row-reverse']),
+  :host([direction*="xs:'row-reverse'"]),
+  :host([direction*="xs: 'row-reverse'"]) {
     flex-direction: row-reverse !important;
   }
 }
@@ -55,16 +63,24 @@ $p-grid-gutter-m: p-px-to-rem(36px);
     }
   }
 
-  :host(.p-direction-column-s) {
+  :host([direction='column']),
+  :host([direction*="s:'column'"]),
+  :host([direction*="s: 'column'"]) {
     flex-direction: column !important;
   }
-  :host(.p-direction-column-reverse-s) {
+  :host([direction='column-reverse']),
+  :host([direction*="s:'column-reverse'"]),
+  :host([direction*="s: 'column-reverse'"]) {
     flex-direction: column-reverse !important;
   }
-  :host(.p-direction-row-s) {
+  :host([direction='row']),
+  :host([direction*="s:'row'"]),
+  :host([direction*="s: 'row'"]) {
     flex-direction: row !important;
   }
-  :host(.p-direction-row-reverse-s) {
+  :host([direction='row-reverse']),
+  :host([direction*="s:'row-reverse'"]),
+  :host([direction*="s: 'row-reverse'"]) {
     flex-direction: row-reverse !important;
   }
 }
@@ -77,46 +93,70 @@ $p-grid-gutter-m: p-px-to-rem(36px);
     }
   }
 
-  :host(.p-direction-column-m) {
+  :host([direction='column']),
+  :host([direction*="m:'column'"]),
+  :host([direction*="m: 'column'"]) {
     flex-direction: column !important;
   }
-  :host(.p-direction-column-reverse-m) {
+  :host([direction='column-reverse']),
+  :host([direction*="m:'column-reverse'"]),
+  :host([direction*="m: 'column-reverse'"]) {
     flex-direction: column-reverse !important;
   }
-  :host(.p-direction-row-m) {
+  :host([direction='row']),
+  :host([direction*="m:'row'"]),
+  :host([direction*="m: 'row'"]) {
     flex-direction: row !important;
   }
-  :host(.p-direction-row-reverse-m) {
+  :host([direction='row-reverse']),
+  :host([direction*="m:'row-reverse'"]),
+  :host([direction*="m: 'row-reverse'"]) {
     flex-direction: row-reverse !important;
   }
 }
 
 @include p-media-query('l') {
-  :host(.p-direction-column-l) {
+  :host([direction='column']),
+  :host([direction*="l:'column'"]),
+  :host([direction*="l: 'column'"]) {
     flex-direction: column !important;
   }
-  :host(.p-direction-column-reverse-l) {
+  :host([direction='column-reverse']),
+  :host([direction*="l:'column-reverse'"]),
+  :host([direction*="l: 'column-reverse'"]) {
     flex-direction: column-reverse !important;
   }
-  :host(.p-direction-row-l) {
+  :host([direction='row']),
+  :host([direction*="l:'row'"]),
+  :host([direction*="l: 'row'"]) {
     flex-direction: row !important;
   }
-  :host(.p-direction-row-reverse-l) {
+  :host([direction='row-reverse']),
+  :host([direction*="l:'row-reverse'"]),
+  :host([direction*="l: 'row-reverse'"]) {
     flex-direction: row-reverse !important;
   }
 }
 
 @include p-media-query('xl') {
-  :host(.p-direction-column-xl) {
+  :host([direction='column']),
+  :host([direction*="xl:'column'"]),
+  :host([direction*="xl: 'column'"]) {
     flex-direction: column !important;
   }
-  :host(.p-direction-column-reverse-xl) {
+  :host([direction='column-reverse']),
+  :host([direction*="xl:'column-reverse'"]),
+  :host([direction*="xl: 'column-reverse'"]) {
     flex-direction: column-reverse !important;
   }
-  :host(.p-direction-row-xl) {
+  :host([direction='row']),
+  :host([direction*="xl:'row'"]),
+  :host([direction*="xl: 'row'"]) {
     flex-direction: row !important;
   }
-  :host(.p-direction-row-reverse-xl) {
+  :host([direction='row-reverse']),
+  :host([direction*="xl:'row-reverse'"]),
+  :host([direction*="xl: 'row-reverse'"]) {
     flex-direction: row-reverse !important;
   }
 }
