@@ -1,6 +1,6 @@
 import { fromEvent } from 'rxjs';
 
-const toParamCase = (input: string): string => input.replace(/([A-Z])/, '-$1'.toLowerCase());
+const toParamCase = (input: string): string => input.replace(/([A-Z])/g, '-$1'.toLowerCase());
 
 const jsonStringify = (value: any) =>
   typeof value === 'object' ? JSON.stringify(value).replace(/"(\w*)":/g, '$1:') : value;
