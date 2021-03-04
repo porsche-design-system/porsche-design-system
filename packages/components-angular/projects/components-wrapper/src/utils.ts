@@ -1,16 +1,18 @@
 import { fromEvent } from 'rxjs';
 
+const toParamCase = (input: string): string => input.replace(/([A-Z])/, '-$1'.toLowerCase());
+
+const jsonStringify = (value: any) =>
+  typeof value === 'object' ? JSON.stringify(value).replace(/"(\w*)":/g, '$1:') : value;
+
 const proxyInputs = (component: any, inputs: string[]): void => {
   const callback = (item: string): void => {
     Object.defineProperty(component.prototype, item, {
       get() {
-        // console.log('proxyInputs get', this.el, item, this.el[item], new Date().toISOString());
-        return this.el[item];
+        return this.getAttribute(toParamCase(item));
       },
       set(val: any) {
-        this.z.runOutsideAngular(() =>
-          this.el.setAttribute(item, typeof val === 'object' ? JSON.stringify(val).replace(/"(\w*)":/g, '$1:') : val)
-        );
+        this.z.runOutsideAngular(() => this.el.setAttribute(toParamCase(item), jsonStringify(val)));
       },
     });
   };
@@ -39,7 +41,6 @@ type ProxyCmpOptions = { inputs?: string[]; methods?: string[] };
 // tslint:disable-next-line: only-arrow-functions
 export function ProxyCmp({ inputs /*, methods*/ }: ProxyCmpOptions) {
   return function (component: any) {
-    // console.log('ProxyCmp decorator', inputs, new Date().toISOString());
     if (inputs) {
       proxyInputs(component, inputs);
     }
