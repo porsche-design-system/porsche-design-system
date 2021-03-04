@@ -8,8 +8,9 @@ const proxyInputs = (component: any, inputs: string[]): void => {
         return this.el[item];
       },
       set(val: any) {
-        // console.log('proxyInputs set', this.el, item, val, new Date().toISOString());
-        this.z.runOutsideAngular(() => (this.el[item] = val));
+        this.z.runOutsideAngular(() =>
+          this.el.setAttribute(item, typeof val === 'object' ? JSON.stringify(val).replace(/"(\w*)":/g, '$1:') : val)
+        );
       },
     });
   };
