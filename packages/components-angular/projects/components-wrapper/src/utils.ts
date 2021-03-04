@@ -9,10 +9,13 @@ const proxyInputs = (component: any, inputs: string[]): void => {
   const callback = (item: string): void => {
     Object.defineProperty(component.prototype, item, {
       get() {
-        return this.getAttribute(toParamCase(item));
+        return this.el[item];
       },
       set(val: any) {
-        this.z.runOutsideAngular(() => this.el.setAttribute(toParamCase(item), jsonStringify(val)));
+        this.z.runOutsideAngular(() => {
+          this.el.setAttribute(toParamCase(item), jsonStringify(val));
+          this.el[item] = val;
+        });
       },
     });
   };
