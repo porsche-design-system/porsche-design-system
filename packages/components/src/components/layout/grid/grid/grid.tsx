@@ -1,5 +1,4 @@
 import { JSX, Component, Host, Prop, h } from '@stencil/core';
-import { mapBreakpointPropToPrefixedClasses } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
 
 @Component({
@@ -12,12 +11,8 @@ export class Grid {
   @Prop() public direction?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'> = 'row';
 
   public render(): JSX.Element {
-    const gridClasses = {
-      ...(this.direction !== 'row' && mapBreakpointPropToPrefixedClasses('direction', this.direction)),
-    };
-
     return (
-      <Host class={gridClasses}>
+      <Host>
         <slot />
       </Host>
     );

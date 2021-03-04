@@ -19,7 +19,7 @@ const parseJSON = (
       return JSON.parse(
         prop
           .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]*([\w\d]*)[\s"]?:/g, '"$1":') // wrap keys in double quotes if they don't have them
+          .replace(/[\s"]*([\w]*)[\s"]?:/g, '"$1":') // wrap keys in double quotes if they don't have them
       );
     } catch (e) {
       // prop is string, e.g. "block" or "inline"
