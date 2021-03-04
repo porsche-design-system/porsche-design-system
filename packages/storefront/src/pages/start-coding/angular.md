@@ -92,7 +92,7 @@ the [schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENT
 prefixed components.
 
 Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you do use
-prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
+prefixes, you can't use `p-flex` or `p-flex-item`.
 
 ```ts
 // app.module.ts
