@@ -29,13 +29,11 @@ picture {
     @include p-marque-medium;
   }
 
-  :host([size='small']) &,
-  :host([ng-reflect-size='small']) & {
+  :host([size='small']) & {
     @include p-marque-small;
   }
 
-  :host([size='medium']) &,
-  :host([ng-reflect-size='medium']) & {
+  :host([size='medium']) & {
     @include p-marque-medium;
   }
 }
