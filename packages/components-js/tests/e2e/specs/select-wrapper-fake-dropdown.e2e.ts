@@ -988,16 +988,16 @@ ${initCustomElement}
         const select = await getSelect(customElementName);
 
         const fakeOptionPosTwo = await getFakeOptionInPosTwo(customElementName);
-        const posFakeOption = await fakeOptionPosTwo.boundingBox();
+        const boundingBoxFakeOptionPosTwo = await fakeOptionPosTwo.boundingBox();
 
-        expect(await getSelectedFakeOption(customElementName)).toBe(0, 'for selected fake option');
+        expect(await getSelectedFakeOption(customElementName)).toBe(0, 'for selected fake option initial');
 
         await select.click();
         await waitForStencilLifecycle(page);
-        await page.mouse.click(posFakeOption.x + 2, posFakeOption.y + 2);
+        await page.mouse.click(boundingBoxFakeOptionPosTwo.x + 2, boundingBoxFakeOptionPosTwo.y + 2);
         await waitForStencilLifecycle(page);
 
-        expect(await getSelectedFakeOption(customElementName)).toBe(1, 'for selected fake option');
+        expect(await getSelectedFakeOption(customElementName)).toBe(1, 'for selected fake option after click');
       });
 
       it('should close fakeSelect on Tab', async () => {
