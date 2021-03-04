@@ -505,9 +505,7 @@ export class SelectWrapper {
       this.filterInput.value = '';
       this.searchString = '';
       this.filterHasResults = true;
-      if (document.activeElement !== this.filterInput) {
-        this.filterInput.focus();
-      }
+      this.filterInput.focus();
     } else {
       if (document.activeElement !== this.select) {
         this.select.focus();
