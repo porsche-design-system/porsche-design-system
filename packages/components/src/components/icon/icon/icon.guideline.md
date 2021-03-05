@@ -41,7 +41,7 @@ Create several designs for the possible icon and make sure that the user underst
 
 Use the following template, in which you will find an artboard (24 x 24 px) on which all icons are to be designed (max. 3 icon drafts). [Download Icon Template](https://designsystem.porsche.com/sketch/porsche-icon-template.ai)
 
-**All artboards should be named according to the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
+**All layers should be named according to the containing icons (e.g. "delete" or "edit") as this is crucial for the file name of the final SVG export.**
 
 Within this artboard there are different basic shapes (in violet) you should stick to when defining the shapes and dimensions of your icon, no matter whether it expands more in height or width, for example. This ensures a harmonious visual balance between all icons. Never place any icon part on the safe zone (red). 
 
@@ -111,12 +111,14 @@ Use the pathfinder tool (shape mode "add to area") to combine objects.
 1. **Duplicate the `*-construction.ai` file**   
 … and rename it to: `*-export.ai`.
 
-2. **Delete all layers except "icon (default or filled)" and the "base size 24x24" layer**
+2. **Delete all layers except "iconname (default or filled)" and the "base size 24x24" layer**
 
 3. **Your layer panel should look like this and consist only of two layers, when ready for export.**  
 Make sure that both layers are turned visible so that the icons are exported in the correct base size 24x24 px (and not cut to icon edge).
 
 ![Illustrator](./assets/porsche-icons-illustrator-ebenen.png)
+
+4. **Export your icon as svg.**
 
 ---
 
