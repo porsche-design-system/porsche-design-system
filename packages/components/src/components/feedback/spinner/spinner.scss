@@ -14,6 +14,8 @@ $p-spinner-size-large: p-px-to-rem(104px);
   $bem-block: &;
   margin: 0;
   padding: 0;
+  width: $p-spinner-size-small;
+  height: $p-spinner-size-small;
   box-sizing: border-box;
   display: block;
   stroke-width: 1px;
