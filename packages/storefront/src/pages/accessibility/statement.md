@@ -1,12 +1,38 @@
 # Accessibility Statement
 
 ## Definition
+**An accessibility statement has two basic functions:**  
+**Firstly**, it presents clear information about the target level of web accessibility for the website and the methods used to achieve those targets. It also enables the website owner to acknowledge any areas of the website where accessibility targets have not been met and to outline the proposed plan for resolving any such problem.  
+**Secondly**, an accessibility statement is a powerful declaration of commitment. People visiting the website, particularly those with disabilities, will appreciate the open acknowledgement that accessibility is a key driver for the website. 
 
-## Template
+**A word of caution however:**
+An accessibility statement that makes rash or false claims will only damage the reputation of the website, not enhance it and it does not prevent the site owner from getting sued if the website lacks support for accessibility.
+
+## Where to put an accessibility statement
+Accessibility statements should be easy to find. Linking them from several places, such as from the footer, help menu, as an invisible anchor in the header of each homepage, and other prominent areas helps users to find them. 
+Use consistent link names for your accessibility statements to help users recognize them. This includes link names across the content of your website and mobile applications, and across groups of related websites and mobile applications. 
+
+For example, use the same link name on all web pages to refer to an accessibility statement for that website, and use that same link name to refer to the accessibility statement of the mobile application version of the website.
+
+
+## Example template
+There are several possibilities how to write an accessibility statement which depends on the particular use case of your site. 
+The following example can be seen as a blueprint which might be adapted to your specific needs.
+
 This template is based on the guidelines on [How to develop an Accessibility Statament](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
 
-<Playground class="p-accessibility-statement">
-  <p-headline variant="headline-3">Accessibility Statement for [Website Name]</p-headline>
+<Playground :markup="statement" class="p-accessibility-statement"></Playground>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  
+  @Component
+  export default class Code extends Vue {
+    
+    get statement() {
+      return `
+<p-headline variant="headline-3">Accessibility Statement for [Website Name]</p-headline>
   <p-text>
     <strong>Porsche AG</strong> is committed to ensuring digital accessibility for people with disabilities.<br>
     We are continually improving the user experience for everyone, and applying the relevant accessibility standards.
@@ -104,9 +130,12 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
   </p-text>
   <p-headline variant="headline-4" tag="h2">Formal complaints</p-headline>
   <p-text>We aim to respond to accessibility feedback within 5 business days, and to propose a solution within 10 business days. You are entitled to escalate a complaint to the national authority, should you be dissatisfied with our response to you.</p-text>
-</Playground>
+`
+    }
+  }
+</script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@porsche-design-system/utilities/scss";
 
 .p-accessibility-statement {
