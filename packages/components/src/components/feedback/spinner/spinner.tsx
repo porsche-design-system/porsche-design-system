@@ -9,7 +9,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 })
 export class Spinner {
   /** Size of the spinner. */
-  @Prop() public size?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'> = 'small';
+  @Prop() public size?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
 
   /** Adapts the spinner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
