@@ -41,7 +41,8 @@ export type NumberOfPageLinks = 5 | 7;
 export type PageChangeEvent = { page: number; previousPage: number };
 
 // BreakpointCustomizable Types
-export type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl';
+export type Breakpoint = typeof BREAKPOINTS[number];
+export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
 export type BreakpointValues<T> = Partial<{ [key in Breakpoint]: T }> & { base: T };
 
 // string is needed in order to pass and parse objects via prop decorator
