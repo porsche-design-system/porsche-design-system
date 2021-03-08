@@ -1,21 +1,18 @@
-import { breakpoint, mediaQuery, pxToRem } from '@porsche-design-system/utilities';
+import { mediaQuery } from '@porsche-design-system/utilities';
 import type { Styles } from '../../../../utils';
-import { attachCss, getCss } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
+import { paddingBase, paddingM, paddingS } from '../grid/grid-utils';
 
-const GRID_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-type GridSizeType = typeof GRID_SIZES[number];
-export type GridSize = BreakpointCustomizable<GridSizeType>;
+const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+type GridItemSizeType = typeof GRID_ITEM_SIZES[number];
+export type GridItemSize = BreakpointCustomizable<GridItemSizeType>;
 
-const GRID_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-type GridOffsetType = typeof GRID_OFFSETS[number];
-export type GridOffset = BreakpointCustomizable<GridOffsetType>;
+const GRID_ITEM_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+type GridItemOffsetType = typeof GRID_ITEM_OFFSETS[number];
+export type GridItemOffset = BreakpointCustomizable<GridItemOffsetType>;
 
-const paddingBase = `${parseFloat(pxToRem('16px')) / 2}rem !important`;
-const paddingS = `${parseFloat(pxToRem('24px')) / 2}rem !important`;
-const paddingM = `${parseFloat(pxToRem('36px')) / 2}rem !important`;
-
-export const baseCss: string = getCss({
+const baseCss: string = getCss({
   ':host': {
     boxSizing: 'border-box !important',
     paddingLeft: paddingBase,
@@ -51,52 +48,28 @@ const gridItemWidths = [
   100,
 ];
 
-const getSizeStyles = (size: GridSizeType): Styles => ({
+const getSizeStyles = (size: GridItemSizeType): Styles => ({
   width: `${gridItemWidths[size]}% !important`,
 });
 
-const getOffsetStyles = (offset: GridOffsetType): Styles =>
+const getOffsetStyles = (offset: GridItemOffsetType): Styles =>
   offset === 0
     ? {}
     : {
         marginLeft: `${gridItemWidths[offset]}% !important`,
       };
 
-const getJssX = <T>(rawValue: T, getStyles: (x: T) => Styles): Styles => {
-  // TODO: stop using eval
-  // eslint-disable-next-line no-eval
-  const value: BreakpointCustomizable<T> = eval(`(${rawValue})`);
+const getJss = (size: GridItemSize, offset: GridItemOffset): Styles => {
+  const jss = buildResponsiveJss(size, getSizeStyles);
 
-  return typeof value === 'number'
-    ? {
-        ':host': getStyles(value),
-      }
-    : Object.keys(value)
-        .filter((key) => key !== 'base')
-        .reduce(
-          (res, bp) => ({
-            ...res,
-            [mediaQuery(breakpoint[bp])]: {
-              ':host': getStyles(value[bp]),
-            },
-          }),
-          {
-            ':host': getStyles((value as any).base),
-          }
-        );
-};
-
-const getJss = (size: GridSize, offset: GridOffset): Styles => {
-  const jss = getJssX(size, getSizeStyles);
-
-  for (const [key, styles] of Object.entries(getJssX(offset, getOffsetStyles))) {
+  for (const [key, styles] of Object.entries(buildResponsiveJss(offset, getOffsetStyles))) {
     jss[key] = Object.assign({}, jss[key], styles);
   }
 
   return jss;
 };
 
-export const addCss = (host: HTMLElement, size: GridSize, offset: GridOffset): void => {
+export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset): void => {
   const dynamicCss = getCss(getJss(size, offset));
   attachCss(host, baseCss + dynamicCss);
 };

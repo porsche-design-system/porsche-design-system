@@ -13,7 +13,7 @@ export type BreakpointValues<T> = Partial<
 // string is needed in order to pass and parse objects via prop decorator
 export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
-type BreakpointValue = string | number | boolean;
+type BreakpointValue = string | number | boolean; // TODO: replace with generic T
 type ClassSuffixes = [string, string];
 
 type JSXClasses = {
@@ -21,7 +21,7 @@ type JSXClasses = {
 };
 
 /* eslint-disable @typescript-eslint/indent */
-const parseJSON = (
+export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
