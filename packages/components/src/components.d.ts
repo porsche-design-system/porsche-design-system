@@ -6,7 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { GridOffset, GridSize } from "./components/layout/grid/grid-item/grid-item-utils";
+import { GridDirection } from "./components/layout/grid/grid/grid-utils";
+import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 export namespace Components {
     interface PBanner {
@@ -217,17 +218,17 @@ export namespace Components {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: GridDirection;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridOffset;
+        "offset"?: GridItemOffset;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridSize;
+        "size"?: GridItemSize;
     }
     interface PHeadline {
         /**
@@ -1132,17 +1133,17 @@ declare namespace LocalJSX {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: GridDirection;
     }
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "offset"?: GridOffset;
+        "offset"?: GridItemOffset;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
          */
-        "size"?: GridSize;
+        "size"?: GridItemSize;
     }
     interface PHeadline {
         /**
