@@ -4,7 +4,7 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import { parseJSON } from './breakpoint-customizable';
 
-export type { Styles } from 'jss';
+export type { Styles, JssStyle } from 'jss';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 declare global {
