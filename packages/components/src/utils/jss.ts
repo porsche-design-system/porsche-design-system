@@ -4,6 +4,7 @@ import preset from 'jss-preset-default';
 
 export type { Styles } from 'jss';
 
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 declare global {
   interface CSSStyleSheet {
     replaceSync(style: string): void;

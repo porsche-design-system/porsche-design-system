@@ -11,9 +11,9 @@ const GRID_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 type GridOffsetType = typeof GRID_OFFSETS[number];
 export type GridOffset = BreakpointCustomizable<GridOffsetType>;
 
-const paddingBase = `${parseInt(pxToRem('16px')) / 2}rem !important`;
-const paddingS = `${parseInt(pxToRem('24px')) / 2}rem !important`;
-const paddingM = `${parseInt(pxToRem('36px')) / 2}rem !important`;
+const paddingBase = `${parseInt(pxToRem('16px'), 10) / 2}rem !important`;
+const paddingS = `${parseInt(pxToRem('24px'), 10) / 2}rem !important`;
+const paddingM = `${parseInt(pxToRem('36px'), 10) / 2}rem !important`;
 
 export const baseCss: string = getCss({
   ':host': {
@@ -62,6 +62,7 @@ const getOffsetStyles = (offset: GridOffsetType): Styles => ({
 
 const getJssX = <T>(rawValue: T, getStyles: (x: T) => Styles): Styles => {
   // TODO: stop using eval
+  // eslint-disable-next-line no-eval
   const value: BreakpointCustomizable<T> = eval(`(${rawValue})`);
 
   return typeof value === 'number'
@@ -78,7 +79,7 @@ const getJssX = <T>(rawValue: T, getStyles: (x: T) => Styles): Styles => {
             },
           }),
           {
-            ':host': getStyles(value['base']),
+            ':host': getStyles((value as any).base),
           }
         );
 };
