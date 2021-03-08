@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-// TODO: check is this preset makes sense
+// TODO: check if this preset makes sense
 jss.setup(preset());
 
 export const getCss = (jssStyles: Styles): string =>
