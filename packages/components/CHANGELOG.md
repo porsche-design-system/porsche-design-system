@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - Usage of `Select Wrapper` within custom elements
+- A bug that caused `Spinner` to be displayed in a wrong size
 
 ### [2.0.0-rc.4] - 2021-03-01
 
