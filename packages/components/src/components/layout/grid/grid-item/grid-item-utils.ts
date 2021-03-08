@@ -11,13 +11,12 @@ const GRID_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 type GridOffsetType = typeof GRID_OFFSETS[number];
 export type GridOffset = BreakpointCustomizable<GridOffsetType>;
 
-const paddingBase = `${parseInt(pxToRem('16px'), 10) / 2}rem !important`;
-const paddingS = `${parseInt(pxToRem('24px'), 10) / 2}rem !important`;
-const paddingM = `${parseInt(pxToRem('36px'), 10) / 2}rem !important`;
+const paddingBase = `${parseFloat(pxToRem('16px')) / 2}rem !important`;
+const paddingS = `${parseFloat(pxToRem('24px')) / 2}rem !important`;
+const paddingM = `${parseFloat(pxToRem('36px')) / 2}rem !important`;
 
 export const baseCss: string = getCss({
   ':host': {
-    display: 'block',
     boxSizing: 'border-box !important',
     paddingLeft: paddingBase,
     paddingRight: paddingBase,
@@ -56,9 +55,12 @@ const getSizeStyles = (size: GridSizeType): Styles => ({
   width: `${gridItemWidths[size]}% !important`,
 });
 
-const getOffsetStyles = (offset: GridOffsetType): Styles => ({
-  marginLeft: `${gridItemWidths[offset]}% !important`,
-});
+const getOffsetStyles = (offset: GridOffsetType): Styles =>
+  offset === 0
+    ? {}
+    : {
+        marginLeft: `${gridItemWidths[offset]}% !important`,
+      };
 
 const getJssX = <T>(rawValue: T, getStyles: (x: T) => Styles): Styles => {
   // TODO: stop using eval
