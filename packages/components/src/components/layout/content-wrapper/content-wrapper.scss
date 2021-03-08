@@ -35,4 +35,8 @@
   &--extended {
     max-width: p-px-to-rem(1920px);
   }
+
+  &--white {
+    background: $p-color-background-default;
+  }
 }

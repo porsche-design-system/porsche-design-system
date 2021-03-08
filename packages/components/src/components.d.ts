@@ -126,6 +126,10 @@ export namespace Components {
     }
     interface PContentWrapper {
         /**
+          * Defines the background color.
+         */
+        "background"?: 'transparent' | 'white';
+        /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: 'basic' | 'extended' | 'fluid';
@@ -1040,6 +1044,10 @@ declare namespace LocalJSX {
         "state"?: FormState;
     }
     interface PContentWrapper {
+        /**
+          * Defines the background color.
+         */
+        "background"?: 'transparent' | 'white';
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
