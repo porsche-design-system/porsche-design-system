@@ -35,11 +35,6 @@ $p-spinner-size-large: p-px-to-rem(104px);
   }
 
   &--size {
-    &-small {
-      width: $p-spinner-size-small;
-      height: $p-spinner-size-small;
-    }
-
     &-medium {
       width: $p-spinner-size-medium;
       height: $p-spinner-size-medium;
