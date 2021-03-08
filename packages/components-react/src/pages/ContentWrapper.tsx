@@ -32,6 +32,12 @@ export const ContentWrapperPage = (): JSX.Element => {
         </PContentWrapper>
       </div>
 
+      <div className="playground" title="should render with 'white' background" style={{ background: 'deeppink' }}>
+        <PContentWrapper background="white">
+          <p>Some content</p>
+        </PContentWrapper>
+      </div>
+
       <div className="playground" title="should color full width although width 'basic' is enabled">
         <PContentWrapper width="basic" style={{ background: 'deeppink' }}>
           <p>Some content</p>
