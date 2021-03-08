@@ -1,6 +1,17 @@
 import { prefix } from './prefix';
-import type { BreakpointCustomizable, BreakpointValues } from '../types';
-import { Breakpoint } from '../types';
+
+export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
+export type Breakpoint = typeof BREAKPOINTS[number];
+export type BreakpointValues<T> = Partial<
+  {
+    [key in Breakpoint]: T;
+  }
+> & {
+  base: T;
+};
+
+// string is needed in order to pass and parse objects via prop decorator
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
 
 type BreakpointValue = string | number | boolean;
 type ClassSuffixes = [string, string];
