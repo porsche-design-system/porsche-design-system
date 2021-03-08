@@ -47,6 +47,7 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
     <p-text-list-item>Appoint an accessibility officer and/or ombudsperson.</p-text-list-item>
     <p-text-list-item>Provide continual accessibility training for our staff.</p-text-list-item>
     <p-text-list-item>Include people with disabilities in our design personas.</p-text-list-item>
+    <p-text-list-item>Include automatic and manual testing strategies.</p-text-list-item>
   </p-text-list>
   <p-headline variant="headline-4" tag="h2">Conformance status</p-headline>
   <p-text>
@@ -98,10 +99,10 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
     Despite our best efforts to ensure accessibility of [Website Name], there may be some limitations. Below is a description of known limitations, and potential solutions. Please contact us if you observe an issue not listed below.
   </p-text>
   <p-text>
-    Known limitations for [Website Name]:
+    Known limitations for [Website Name] (examples):
   </p-text>
   <p-text-list list-type="ordered">
-    <p-text-list-item><strong>Comments from users</strong>: uploaded images may not have text alternatives because we cannot ensure the quality of contributions. We monitor user comments and typically repair issues within 10 business days. Please use the 'report issue' button if you encounter an issue.</p-text-list-item>
+    <p-text-list-item><strong>Comments from users</strong>: uploaded images may not have text alternatives because we cannot ensure the quality of contributions. We monitor user comments and typically repair issues within 10 business days. Please contact us if you encounter an issue.</p-text-list-item>
     <p-text-list-item><strong>Archived documents</strong>: might not work with current assistive technologies because they use outdated technologies that do not support accessibility. We convert documents to new formats upon request within 3 business days. Please contact documents@example.org for support.</p-text-list-item>
   </p-text-list>
   <p-headline variant="headline-4" tag="h2">Assessment approach</p-headline>
@@ -114,12 +115,12 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
   <p-headline variant="headline-4" tag="h2">Evaluation report</p-headline>
   <p-text>
     An evaluation report for [Website Name] is available at:
-    <a href="https://www.w3.org/WAI/demos/bad/after/reports/report">https://www.w3.org/WAI/demos/bad/after/reports/report</a>.
+    <a href="#">[Website Name] evaluation report</a>.
   </p-text>
   <p-headline variant="headline-4" tag="h2">Evaluation statement</p-headline>
   <p-text>
     An evaluation statement for [Website Name] is available at:
-    <a href="https://www.w3.org/WAI/demos/bad/after/reports/statement">https://www.w3.org/WAI/demos/bad/after/reports/statement</a>.
+    <a href="#">[Website Name] evaluation statement</a>.
   </p-text>
   <p-headline variant="headline-4" tag="h2">Formal approval of this accessibility statement</p-headline>
   <p-text>This Accessibility Statement is approved by:</p-text>
