@@ -1,5 +1,5 @@
 import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
-import type { Rule, Styles } from 'jss';
+import type { Rule, JssStyle, Styles } from 'jss';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import { parseJSON } from './breakpoint-customizable';
@@ -35,14 +35,11 @@ export const attachCss = (host: HTMLElement, css: string): void => {
   host.shadowRoot.adoptedStyleSheets = [sheet];
 };
 
-export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => Styles): Styles => {
+export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle): Styles<':host'> => {
   const value = parseJSON(rawValue as any);
 
-  return typeof value === 'number'
-    ? {
-        ':host': getStyles(value as any),
-      }
-    : Object.keys(value)
+  return typeof value === 'object'
+    ? Object.keys(value)
         .filter((key) => key !== 'base')
         .reduce(
           (res, bp) => ({
@@ -54,5 +51,8 @@ export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => Styles):
           {
             ':host': getStyles((value as any).base),
           }
-        );
+        )
+    : {
+        ':host': getStyles(value as any),
+      };
 };
