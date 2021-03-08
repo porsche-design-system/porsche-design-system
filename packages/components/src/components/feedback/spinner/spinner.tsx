@@ -17,7 +17,7 @@ export class Spinner {
   @Prop() public theme?: Theme = 'light';
 
   @Watch('size')
-  watchSize(newValue: SpinnerSize) {
+  public watchSizeHandler(newValue: SpinnerSize): void {
     verifySpinnerSize(newValue);
   }
 
