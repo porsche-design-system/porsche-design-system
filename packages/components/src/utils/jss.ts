@@ -29,8 +29,6 @@ export const getCss = (jssStyles: Styles): string =>
       generateId: (rule: Rule) => rule.key,
     })
     .toString()
-    // TODO: keep space before !important
-    // TODO: remove last semi colon
     .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
 
 export const attachCss = (host: HTMLElement, css: string): void => {
