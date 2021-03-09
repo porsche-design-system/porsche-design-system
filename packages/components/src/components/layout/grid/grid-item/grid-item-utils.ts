@@ -1,6 +1,6 @@
 import { mediaQuery } from '@porsche-design-system/utilities';
-import type { JssStyle, Styles } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
+import type { JssStyle } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
 import { paddingBase, paddingM, paddingS } from '../grid/grid-utils';
 
@@ -59,17 +59,9 @@ const getOffsetStyles = (offset: GridItemOffsetType): JssStyle =>
         marginLeft: `${gridItemWidths[offset]}% !important`,
       };
 
-const mergeJss = (size: GridItemSize, offset: GridItemOffset): Styles => {
-  const jss = buildResponsiveJss(size, getSizeStyles);
-
-  for (const [key, styles] of Object.entries(buildResponsiveJss(offset, getOffsetStyles))) {
-    jss[key] = Object.assign({}, jss[key], styles);
-  }
-
-  return jss;
-};
-
 export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset): void => {
-  const dynamicCss = getCss(mergeJss(size, offset));
+  const dynamicCss = getCss(
+    mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles))
+  );
   attachCss(host, baseCss + dynamicCss);
 };
