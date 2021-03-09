@@ -23,7 +23,7 @@ export const SpinnerPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show spinner small when size is undefined">
-        <PSpinner size={undefined} />
+        <PSpinner size={'foo'} />
       </div>
     </>
   );
