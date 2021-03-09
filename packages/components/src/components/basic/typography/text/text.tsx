@@ -96,7 +96,12 @@ export class Text {
 
     ${tagName} a:focus:not(:focus-visible) {
       outline-color: transparent !important;
-    }`;
+    }
+
+    ${tagName} em, ${tagName} i {
+      font-style: normal;
+    }
+    `;
 
     insertSlottedStyles(this.host, style);
   }
