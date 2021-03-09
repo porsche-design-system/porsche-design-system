@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
+import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 export namespace Components {
     interface PBanner {
         /**
@@ -125,6 +126,14 @@ export namespace Components {
         "state"?: FormState;
     }
     interface PContentWrapper {
+        /**
+          * Defines the background color.
+         */
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
@@ -557,7 +566,7 @@ export namespace Components {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: SpinnerSize;
         /**
           * Adapts the spinner color depending on the theme.
          */
@@ -1041,6 +1050,14 @@ declare namespace LocalJSX {
     }
     interface PContentWrapper {
         /**
+          * Defines the background color.
+         */
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
         "width"?: 'basic' | 'extended' | 'fluid';
@@ -1480,7 +1497,7 @@ declare namespace LocalJSX {
         /**
           * Size of the spinner.
          */
-        "size"?: BreakpointCustomizable<'small' | 'medium' | 'large' | 'inherit'>;
+        "size"?: SpinnerSize;
         /**
           * Adapts the spinner color depending on the theme.
          */
