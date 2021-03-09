@@ -56,3 +56,22 @@ export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle
         ':host': getStyles(value as any),
       };
 };
+
+export const isObject = <T extends object>(obj: T): boolean => obj && typeof obj === 'object';
+
+export const mergeDeep = <T extends object>(...objects: T[]): T => {
+  return objects.reduce((prev, obj) => {
+    Object.keys(obj).forEach((key) => {
+      const pVal = prev[key];
+      const oVal = obj[key];
+
+      if (isObject(pVal) && isObject(oVal)) {
+        prev[key] = mergeDeep(pVal, oVal);
+      } else {
+        prev[key] = oVal;
+      }
+    });
+
+    return prev;
+  }, {} as T);
+};
