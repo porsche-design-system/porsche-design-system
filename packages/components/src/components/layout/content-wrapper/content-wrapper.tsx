@@ -1,6 +1,6 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
 import { isDark, prefix } from '../../../utils';
-import { Theme } from '../../../types';
+import type { Theme } from '../../../types';
 
 @Component({
   tag: 'p-content-wrapper',
