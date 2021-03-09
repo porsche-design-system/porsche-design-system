@@ -2,9 +2,9 @@ import { Breakpoint, BreakpointCustomizable, BREAKPOINTS } from '../../../types'
 import { parseJSON } from '../../../utils';
 
 const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
-type SpinnerSizes = typeof SPINNER_SIZES[number];
+type SpinnerSizeType = typeof SPINNER_SIZES[number];
 
-export type SpinnerSize = BreakpointCustomizable<SpinnerSizes>;
+export type SpinnerSize = BreakpointCustomizable<SpinnerSizeType>;
 
 export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
   const parsedSpinnerSize = parseJSON(spinnerSize);
@@ -12,16 +12,12 @@ export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
 
   if (typeof parsedSpinnerSize === 'object') {
     for (const [key, value] of Object.entries(parsedSpinnerSize)) {
-      if (!BREAKPOINTS.includes(key as Breakpoint)) {
+      if (!BREAKPOINTS.includes(key as Breakpoint) || !SPINNER_SIZES.includes(value as SpinnerSizeType)) {
         console.warn(errorMessage);
-      }
-      if (!SPINNER_SIZES.includes(value as SpinnerSizes)) {
-        console.warn(errorMessage);
+        break;
       }
     }
-  } else {
-    if (!SPINNER_SIZES.includes(spinnerSize as SpinnerSizes)) {
-      console.warn(errorMessage);
-    }
+  } else if (!SPINNER_SIZES.includes(parsedSpinnerSize as SpinnerSizeType)) {
+    console.warn(errorMessage);
   }
 };
