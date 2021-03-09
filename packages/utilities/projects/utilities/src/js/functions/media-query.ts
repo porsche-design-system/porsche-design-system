@@ -12,6 +12,7 @@ export const breakpoint: { [key in BreakPoint]: number } = {
 
 type BreakPointOrNumber = BreakPoint | number;
 
+// TODO: provide more performant version without all the checks to be used internally (especially in JSS)?
 export const mediaQuery = (minBreakpoint: BreakPointOrNumber, maxBreakpoint?: BreakPointOrNumber): string =>
   `@media (min-width: ${(typeof minBreakpoint !== 'number' && breakpoint[minBreakpoint]) || minBreakpoint}px)${
     maxBreakpoint
