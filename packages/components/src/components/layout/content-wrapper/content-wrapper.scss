@@ -6,9 +6,11 @@
 }
 
 .#{$p-global-class-prefix}content-wrapper {
+  $bem-block: &;
   margin: 0 auto;
   padding: 0;
   display: block;
+  background-color: transparent;
 
   &--basic {
     max-width: p-px-to-rem(1536px);
@@ -34,5 +36,13 @@
 
   &--extended {
     max-width: p-px-to-rem(1920px);
+  }
+
+  &--background-default {
+    background-color: $p-color-background-default;
+
+    &#{$bem-block}--theme-dark {
+      background-color: $p-color-theme-dark-background-default;
+    }
   }
 }
