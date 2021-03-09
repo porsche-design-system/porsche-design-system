@@ -1,7 +1,8 @@
 import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
 import type { Rule, JssStyle, Styles } from 'jss';
-import jss from 'jss';
-import preset from 'jss-preset-default';
+import { create } from 'jss';
+import jssPluginSyntaxCamelCase from 'jss-plugin-camel-case';
+import jssPluginSyntaxDefaultUnit from 'jss-plugin-default-unit';
 import { parseJSON } from './breakpoint-customizable';
 
 export type { Styles, JssStyle } from 'jss';
@@ -16,8 +17,10 @@ declare global {
   }
 }
 
-// TODO: check if this preset makes sense
-jss.setup(preset());
+// NOTE: handpicked selection of plugins from jss-preset-default
+const jss = create({
+  plugins: [jssPluginSyntaxCamelCase(), jssPluginSyntaxDefaultUnit()],
+});
 
 export const getCss = (jssStyles: Styles): string =>
   jss
