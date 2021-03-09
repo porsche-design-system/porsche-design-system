@@ -1,5 +1,5 @@
 import { attachCss, buildHostStyles, buildResponsiveJss, getCss, isObject, mergeDeep } from '../../../src/utils';
-import type { Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 
 describe('getCss', () => {
   const data: { input: Styles; result: string }[] = [
@@ -47,11 +47,28 @@ describe('attachCss', () => {
 
 describe('buildHostStyles', () => {
   it('should return :host styles object', () => {
-    expect(buildHostStyles({ marginLeft: 5 })).toMatchObject({ ':host': { marginLeft: 5 } });
+    expect(buildHostStyles({ marginLeft: 5 })).toStrictEqual({ ':host': { marginLeft: 5 } });
   });
 });
 
-xdescribe('buildResponsiveJss', () => {});
+describe('buildResponsiveJss', () => {
+  const getStyles = (val: number): JssStyle => ({ width: 100 * val });
+
+  it('should return flat jss for simple type', () => {
+    expect(buildResponsiveJss(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+  });
+
+  it('should return nested jss for responsive type', () => {
+    expect(buildResponsiveJss({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      ':host': { width: 600 },
+      '@media (min-width: 480px)': { ':host': { width: 300 } },
+      '@media (min-width: 760px)': { ':host': { width: 400 } },
+      '@media (min-width: 1000px)': { ':host': { width: 500 } },
+      '@media (min-width: 1300px)': { ':host': { width: 600 } },
+      '@media (min-width: 1760px)': { ':host': { width: 700 } },
+    });
+  });
+});
 
 describe('isObject', () => {
   it('should return true for object', () => {
@@ -98,6 +115,6 @@ describe('mergeDeep', () => {
       result,
     ])
   )(`should be called with '%s' and return '%s'`, (_, __, input: object[], result: object) => {
-    expect(mergeDeep(...input)).toMatchObject(result);
+    expect(mergeDeep(...input)).toStrictEqual(result);
   });
 });
