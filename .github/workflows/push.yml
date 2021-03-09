@@ -100,6 +100,7 @@ jobs:
           entrypoint: run-test-unit
           args: --components-js:partials
       - name: 'Unit Regression'
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: components-js-unit-regression

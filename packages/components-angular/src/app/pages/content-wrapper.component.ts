@@ -32,6 +32,22 @@ import { Component } from '@angular/core';
       </p-content-wrapper>
     </div>
 
+    <div class="playground" title="should render with 'default' background color" style="background: deeppink">
+      <p-content-wrapper [backgroundColor]="'default'">
+        <p>Some content</p>
+      </p-content-wrapper>
+    </div>
+
+    <div
+      class="playground"
+      title="should render with 'default' background color and dark theme"
+      style="background: deeppink"
+    >
+      <p-content-wrapper [backgroundColor]="'default'" [theme]="'dark'">
+        <p>Some content</p>
+      </p-content-wrapper>
+    </div>
+
     <div class="playground" title="should color full width although width 'basic' is enabled">
       <p-content-wrapper [width]="'basic'" style="background: deeppink;">
         <p>Some content</p>
