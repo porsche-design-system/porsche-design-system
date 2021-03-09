@@ -3,6 +3,7 @@ import type { Rule, JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginSyntaxCamelCase from 'jss-plugin-camel-case';
 import jssPluginSyntaxDefaultUnit from 'jss-plugin-default-unit';
+import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 
 export type { Styles, JssStyle } from 'jss';
@@ -40,21 +41,23 @@ export const attachCss = (host: HTMLElement, css: string): void => {
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
-export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle): Styles<':host'> => {
-  const value = parseJSON(rawValue as any);
+export const buildResponsiveJss = <T>(
+  rawValue: BreakpointCustomizable<T>,
+  getStyles: (x: T) => JssStyle
+): Styles<':host'> => {
+  const value: any = parseJSON(rawValue as any);
 
   return typeof value === 'object'
     ? Object.keys(value)
         .filter((key) => key !== 'base')
         .reduce(
-          (res, bp) => ({
-            ...res,
-            [mediaQuery(breakpoint[bp])]: buildHostStyles(getStyles(value[bp])),
+          (result, breakpointValue) => ({
+            ...result,
+            [mediaQuery(breakpoint[breakpointValue])]: buildHostStyles(getStyles(value[breakpointValue])),
           }),
-
-          buildHostStyles(getStyles((value as any).base))
+          buildHostStyles(getStyles(value.base))
         )
-    : buildHostStyles(getStyles(value as any));
+    : buildHostStyles(getStyles(value));
 };
 
 /* eslint-disable-next-line @typescript-eslint/ban-types */
