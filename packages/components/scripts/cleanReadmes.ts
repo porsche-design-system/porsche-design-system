@@ -13,6 +13,8 @@ import globby from 'globby';
     str.replace(/----------------------------------------------\s+\*Built with.*/g, '');
   const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
   const removeEscapedPipe = (str: string): string => str.replace(/\\\|/g, '|');
+  const cleanBreakpointCustomizablePartial = (str: string): string =>
+    str.replace(/(`Partial<{ base:.*)( \| string)( ?\|?.*?`)/g, '$1$3');
 
   const files = (await globby('./src/components/**/readme.md')).sort();
   for (const file of files) {
@@ -20,12 +22,19 @@ import globby from 'globby';
     const name = dir.split('/').pop();
     const readme = fs.readFileSync(path.normalize(file), 'utf8');
 
-    fs.writeFileSync(path.normalize(file), removeWhitespace(removeGenerator(removeGraph(removeEscapedPipe(readme)))));
+    fs.writeFileSync(
+      path.normalize(file),
+      removeWhitespace(removeGenerator(removeGraph(cleanBreakpointCustomizablePartial(removeEscapedPipe(readme)))))
+    );
     fs.writeFileSync(
       path.normalize(`${dir}/${name}.props.md`),
       removeWhitespace(
         removeGenerator(
-          removeGraph(removeEscapedPipe(updateTypographyPaths(updateFormPaths(updateDependencyPaths(readme)))))
+          removeGraph(
+            cleanBreakpointCustomizablePartial(
+              removeEscapedPipe(updateTypographyPaths(updateFormPaths(updateDependencyPaths(readme))))
+            )
+          )
         )
       )
     );
