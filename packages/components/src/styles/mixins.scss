@@ -8,38 +8,3 @@
     }
   }
 }
-
-@mixin breakpoint-customizable($prop, $cssKey, $cssValues) {
-  @include __host-attribute-styles($prop, $cssKey, $cssValues, 'base');
-  @each $breakpoint in ('xs', 's', 'm', 'l', 'xl') {
-    @include p-media-query($breakpoint) {
-      @include __host-attribute-styles($prop, $cssKey, $cssValues, $breakpoint);
-    }
-  }
-}
-
-@mixin __host-attribute-styles($prop, $cssKey, $cssValues, $breakpoint) {
-  @each $cssValue in $cssValues {
-    @include __host-attribute-selector($prop, $cssValue, $breakpoint) {
-      #{$cssKey}: #{$cssValue} !important;
-    }
-  }
-}
-
-@mixin __host-attribute-selector($prop, $value, $breakpoint) {
-  @if $breakpoint == 'base' {
-    :host([#{$prop}='#{$value}']),
-    :host([#{$prop}*="#{$breakpoint}:'#{$value}'"]),
-    :host([#{$prop}*="#{$breakpoint}: '#{$value}'"]) {
-      @content;
-    }
-  } @else {
-    :host([#{$prop}='#{$value}']),
-    :host([#{$prop}*=",#{$breakpoint}:'#{$value}'"]),
-    :host([#{$prop}*=",#{$breakpoint}: '#{$value}'"]),
-    :host([#{$prop}*=", #{$breakpoint}:'#{$value}'"]),
-    :host([#{$prop}*=", #{$breakpoint}: '#{$value}'"]) {
-      @content;
-    }
-  }
-}
