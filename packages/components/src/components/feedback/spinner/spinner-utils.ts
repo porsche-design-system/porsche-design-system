@@ -1,24 +1,27 @@
-import { BreakpointCustomizable, BREAKPOINTS } from '../../../types';
+import { Breakpoint, BreakpointCustomizable, BREAKPOINTS } from '../../../types';
 import { parseJSON } from '../../../utils';
 
 const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
-export type SpinnerSize = BreakpointCustomizable<typeof SPINNER_SIZES[number]>;
+type SpinnerSizes = typeof SPINNER_SIZES[number];
+
+export type SpinnerSize = BreakpointCustomizable<SpinnerSizes>;
 
 export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
   const parsedSpinnerSize = parseJSON(spinnerSize);
+  const errorMessage = `Property 'size="${spinnerSize}"' of p-spinner is invalid`;
 
   if (typeof parsedSpinnerSize === 'object') {
-    Object.entries(parsedSpinnerSize).map(([key, value]) => {
-      if (!BREAKPOINTS.includes(key as any)) {
-        console.warn(`'${key}' in <p-spinner size='${spinnerSize}'> is invalid`);
+    for (const [key, value] of Object.entries(parsedSpinnerSize)) {
+      if (!BREAKPOINTS.includes(key as Breakpoint)) {
+        console.warn(errorMessage);
       }
-      if (!SPINNER_SIZES.includes(value as any)) {
-        console.warn(`'${value}' in <p-spinner size='${spinnerSize}'> is invalid`);
+      if (!SPINNER_SIZES.includes(value as SpinnerSizes)) {
+        console.warn(errorMessage);
       }
-    });
+    }
   } else {
-    if (!SPINNER_SIZES.includes(spinnerSize as any)) {
-      console.warn(`'${spinnerSize}' in <p-spinner size='${spinnerSize}'> is invalid'`);
+    if (!SPINNER_SIZES.includes(spinnerSize as SpinnerSizes)) {
+      console.warn(errorMessage);
     }
   }
 };
