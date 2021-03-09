@@ -35,7 +35,7 @@ export const attachCss = (host: HTMLElement, css: string): void => {
   host.shadowRoot.adoptedStyleSheets = [sheet];
 };
 
-export const buildHostStyles = (jss: JssStyle): Styles<':host'> => ({ ':host': jss });
+export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
 export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle): Styles<':host'> => {
   const value = parseJSON(rawValue as any);
@@ -54,8 +54,10 @@ export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle
     : buildHostStyles(getStyles(value as any));
 };
 
-export const isObject = <T extends object>(obj: T): boolean => obj && typeof obj === 'object';
+/* eslint-disable-next-line @typescript-eslint/ban-types */
+export const isObject = <T extends object>(obj: T): boolean => typeof obj === 'object' && !Array.isArray(obj);
 
+/* eslint-disable-next-line @typescript-eslint/ban-types */
 export const mergeDeep = <T extends object>(...objects: T[]): T => {
   return objects.reduce((prev, obj) => {
     Object.keys(obj).forEach((key) => {
