@@ -30,7 +30,7 @@ export const getCss = (jssStyles: Styles): string =>
     .toString()
     // TODO: keep space before !important
     // TODO: remove last semi colon
-    .replace(/  |\.\\(?=:)|[\n\\]+| (?={)|;(?=\n})|(?!:) /g, '');
+    .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
 
 export const attachCss = (host: HTMLElement, css: string): void => {
   const sheet = new CSSStyleSheet();
