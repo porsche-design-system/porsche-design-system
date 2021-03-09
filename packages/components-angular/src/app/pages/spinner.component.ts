@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show spinner small when size is undefined">
-      <p-spinner [size]="'foo'"></p-spinner>
+      <p-spinner [size]="undefined"></p-spinner>
     </div>
   `,
 })
