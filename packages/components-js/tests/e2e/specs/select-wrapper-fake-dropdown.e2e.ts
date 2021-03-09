@@ -949,6 +949,57 @@ describe('select-wrapper fake-dropdown', () => {
         expect(await getSelectedIndex()).toBe(1, 'for selected index');
       });
 
+      it('should select second option on mouseclick when used in custom element', async () => {
+        const initCustomElement = `
+<script type="text/javascript">
+  window.customElements.define(
+    'my-custom-element',
+    class extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.innerHTML = \`
+<p-select-wrapper>
+  <select>
+    <option value='Option A'>Option A</option>
+    <option value='Option B'>Option B</option>
+    <option value='Option C'>Option C</option>
+  </select>
+</p-select-wrapper>
+\`; }});
+</script>`;
+
+        await setContentWithDesignSystem(
+          page,
+          `
+${initCustomElement}
+<my-custom-element></my-custom-element>
+`
+        );
+        const customElementName = 'my-custom-element';
+        const select = await selectNode(page, `${customElementName} >>> p-select-wrapper select`);
+
+        const fakeOptionPosTwo = await selectNode(
+          page,
+          `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option:nth-child(2)`
+        );
+        const boundingBoxFakeOptionPosTwo = await fakeOptionPosTwo.boundingBox();
+
+        const getFakeOptionListInCustomElement = () =>
+          selectNode(page, `${customElementName} >>> p-select-wrapper >>> .p-select-wrapper__fake-option-list`);
+        const getSelectedFakeOptionInCustomElement = async () =>
+          await getElementIndex(await getFakeOptionListInCustomElement(), '.p-select-wrapper__fake-option--selected');
+
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(0, 'for selected fake option initial');
+
+        await select.click();
+        await waitForStencilLifecycle(page);
+        await page.mouse.click(boundingBoxFakeOptionPosTwo.x + 2, boundingBoxFakeOptionPosTwo.y + 2);
+        await waitForStencilLifecycle(page);
+
+        expect(await getSelectedFakeOptionInCustomElement()).toBe(1, 'for selected fake option after click');
+      });
+
       it('should close fakeSelect on Tab', async () => {
         await initSelect();
 
