@@ -1,5 +1,6 @@
 import { Component, h, JSX, Prop } from '@stencil/core';
-import { prefix } from '../../../utils';
+import { isDark, prefix } from '../../../utils';
+import { Theme } from '../../../types';
 
 @Component({
   tag: 'p-content-wrapper',
@@ -11,14 +12,18 @@ export class ContentWrapper {
   @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
 
   /** Defines the background color. */
-  @Prop() public background?: 'transparent' | 'white' = 'transparent';
+  @Prop() public backgroundColor?: 'transparent' | 'default' = 'transparent';
+
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
 
   public render(): JSX.Element {
     const contentWrapperClasses = {
       [prefix('content-wrapper')]: true,
       [prefix('content-wrapper--basic')]: this.width === 'basic',
       [prefix('content-wrapper--extended')]: this.width === 'extended',
-      [prefix('content-wrapper--white')]: this.background === 'white',
+      [prefix('content-wrapper--background-default')]: this.backgroundColor === 'default',
+      [prefix('content-wrapper--theme-dark')]: isDark(this.theme),
     };
 
     return (

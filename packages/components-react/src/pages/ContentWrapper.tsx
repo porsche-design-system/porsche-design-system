@@ -32,8 +32,22 @@ export const ContentWrapperPage = (): JSX.Element => {
         </PContentWrapper>
       </div>
 
-      <div className="playground" title="should render with 'white' background" style={{ background: 'deeppink' }}>
-        <PContentWrapper background="white">
+      <div
+        className="playground"
+        title="should render with 'default' background color"
+        style={{ background: 'deeppink' }}
+      >
+        <PContentWrapper backgroundColor="default">
+          <p>Some content</p>
+        </PContentWrapper>
+      </div>
+
+      <div
+        className="playground"
+        title="should render with 'default' background color and dark theme"
+        style={{ background: 'deeppink' }}
+      >
+        <PContentWrapper backgroundColor="default" theme="dark">
           <p>Some content</p>
         </PContentWrapper>
       </div>
