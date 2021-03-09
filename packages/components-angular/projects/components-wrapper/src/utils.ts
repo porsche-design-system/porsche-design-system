@@ -1,10 +1,5 @@
 import { fromEvent } from 'rxjs';
 
-const toParamCase = (input: string): string => input.replace(/([A-Z])/g, '-$1'.toLowerCase());
-
-const jsonStringify = (value: any) =>
-  typeof value === 'object' ? JSON.stringify(value).replace(/"(\w*)":/g, '$1:') : value;
-
 const proxyInputs = (component: any, inputs: string[]): void => {
   const callback = (item: string): void => {
     Object.defineProperty(component.prototype, item, {
@@ -12,10 +7,7 @@ const proxyInputs = (component: any, inputs: string[]): void => {
         return this.el[item];
       },
       set(val: any) {
-        this.z.runOutsideAngular(() => {
-          this.el.setAttribute(toParamCase(item), jsonStringify(val));
-          this.el[item] = val;
-        });
+        this.z.runOutsideAngular(() => (this.el[item] = val));
       },
     });
   };
