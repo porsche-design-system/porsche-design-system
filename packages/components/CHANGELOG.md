@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-#### Changed
-- Added possibility to set background color of `Content Wrapper` to `white`
+#### Added
+- Configurable background color of `Content Wrapper`
 
 #### Fixed
 - Usage of `Select Wrapper` within custom elements

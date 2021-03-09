@@ -128,7 +128,11 @@ export namespace Components {
         /**
           * Defines the background color.
          */
-        "background"?: 'transparent' | 'white';
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
@@ -1047,7 +1051,11 @@ declare namespace LocalJSX {
         /**
           * Defines the background color.
          */
-        "background"?: 'transparent' | 'white';
+        "backgroundColor"?: 'transparent' | 'default';
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
          */
