@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - Configurable background color of `Content Wrapper`
+- `italic` font-style in `Text` is now overridden with `normal`
 
 #### Fixed
 - Usage of `Select Wrapper` within custom elements
