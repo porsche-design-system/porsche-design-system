@@ -23,8 +23,7 @@ export const getMergedClassName = /*#__PURE__*/ (
   return componentClasses.concat(domClasses).join(' ');
 };
 
-export const jsonStringify = /*#__PURE__*/ (value: any) =>
-  typeof value === 'object' ? JSON.stringify(value).replace(/"(\w*)":/g, '$1:') : value;
+export const jsonStringify = /*#__PURE__*/ (value: any) => (typeof value === 'object' ? JSON.stringify(value) : value);
 
 export const syncRef = /*#__PURE__*/ (elementRef: MutableRefObject<HTMLElement>, ref: ForwardedRef<HTMLElement>) => (
   el: HTMLElement
