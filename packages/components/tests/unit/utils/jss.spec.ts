@@ -1,10 +1,23 @@
-import { attachCss, buildResponsiveJss, getCss, isObject, mergeDeep } from '../../../src/utils';
+import { attachCss, buildHostStyles, buildResponsiveJss, getCss, isObject, mergeDeep } from '../../../src/utils';
 
 xdescribe('getCss', () => {});
+describe('attachCss', () => {
+  it('should create CSSStyleSheet and add apply it to shadowRoot', () => {
+    const div = document.createElement('div');
+    div.attachShadow({ mode: 'open' });
 
-xdescribe('attachCss', () => {});
+    expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
 
-xdescribe('buildHostStyles', () => {});
+    attachCss(div, ':host { display: "block" }');
+    expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
+  });
+});
+
+describe('buildHostStyles', () => {
+  it('should return :host styles object', () => {
+    expect(buildHostStyles({ marginLeft: 5 })).toMatchObject({ ':host': { marginLeft: 5 } });
+  });
+});
 
 xdescribe('buildResponsiveJss', () => {});
 
