@@ -35,6 +35,8 @@ export const attachCss = (host: HTMLElement, css: string): void => {
   host.shadowRoot.adoptedStyleSheets = [sheet];
 };
 
+export const buildHostStyles = (jss: JssStyle): Styles<':host'> => ({ ':host': jss });
+
 export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle): Styles<':host'> => {
   const value = parseJSON(rawValue as any);
 
@@ -44,17 +46,12 @@ export const buildResponsiveJss = <T>(rawValue: T, getStyles: (x: T) => JssStyle
         .reduce(
           (res, bp) => ({
             ...res,
-            [mediaQuery(breakpoint[bp])]: {
-              ':host': getStyles(value[bp]),
-            },
+            [mediaQuery(breakpoint[bp])]: buildHostStyles(getStyles(value[bp])),
           }),
-          {
-            ':host': getStyles((value as any).base),
-          }
+
+          buildHostStyles(getStyles((value as any).base))
         )
-    : {
-        ':host': getStyles(value as any),
-      };
+    : buildHostStyles(getStyles(value as any));
 };
 
 export const isObject = <T extends object>(obj: T): boolean => obj && typeof obj === 'object';
