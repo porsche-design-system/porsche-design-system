@@ -12,12 +12,15 @@ export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
 
   if (typeof parsedSpinnerSize === 'object') {
     for (const [key, value] of Object.entries(parsedSpinnerSize)) {
-      if (!BREAKPOINTS.includes(key as Breakpoint) || !SPINNER_SIZES.includes(value as SpinnerSizeType)) {
+      if (
+        (!BREAKPOINTS.includes(key as Breakpoint) && key !== undefined) ||
+        (!SPINNER_SIZES.includes(value as SpinnerSizeType) && value !== undefined)
+      ) {
         console.warn(errorMessage);
         break;
       }
     }
-  } else if (!SPINNER_SIZES.includes(parsedSpinnerSize as SpinnerSizeType)) {
+  } else if (spinnerSize !== undefined && !SPINNER_SIZES.includes(parsedSpinnerSize as SpinnerSizeType)) {
     console.warn(errorMessage);
   }
 };
