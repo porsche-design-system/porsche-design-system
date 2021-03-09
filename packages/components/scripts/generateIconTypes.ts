@@ -6,7 +6,7 @@ import { paramCase } from 'change-case';
 const iconNames = Object.keys(ICONS_MANIFEST)
   .sort()
   .map((icon) => `'${paramCase(icon)}'`);
-const file = path.normalize('./src/types.d.ts');
+const file = path.normalize('./src/types.ts');
 const types = fs.readFileSync(file, 'utf8').replace(/\s\/\* Auto Generated Below \*\/.*/s, '');
 
 fs.writeFileSync(

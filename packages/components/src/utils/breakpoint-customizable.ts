@@ -10,7 +10,7 @@ type JSXClasses = {
 };
 
 /* eslint-disable @typescript-eslint/indent */
-const parseJSON = (
+export const parseJSON = (
   prop: BreakpointCustomizable<BreakpointValue>
 ): BreakpointValues<BreakpointValue> | BreakpointValue => {
   if (typeof prop === 'string') {
