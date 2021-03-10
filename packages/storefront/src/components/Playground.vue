@@ -1,6 +1,6 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="mergedConfig.themeable">
+    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="0">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
