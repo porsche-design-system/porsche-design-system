@@ -78,12 +78,12 @@ export const getDynamicCss = (
 ): string => {
   return getCss(
     mergeDeep(
+      buildResponsiveJss(flex, getFlexStyles), // short hand first, so that long hand can override styles
       buildResponsiveJss(width, getWidthStyles),
       buildResponsiveJss(offset, getOffsetStyles),
       buildResponsiveJss(alignSelf, getAlignSelfStyles),
       buildResponsiveJss(grow, getGrowStyles),
-      buildResponsiveJss(shrink, getShrinkStyles),
-      buildResponsiveJss(flex, getFlexStyles)
+      buildResponsiveJss(shrink, getShrinkStyles)
     )
   );
 };
