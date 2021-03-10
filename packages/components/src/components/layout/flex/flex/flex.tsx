@@ -42,11 +42,11 @@ export class Flex {
     this.addCss();
   }
 
-  private addCss(): void {
-    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
-  }
-
   public render(): JSX.Element {
     return <slot />;
+  }
+
+  private addCss(): void {
+    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
   }
 }
