@@ -1,6 +1,6 @@
-import type { JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 
 type FlexInlineType = BreakpointCustomizable<boolean>;
 export type FlexInline = FlexInlineType;
@@ -40,24 +40,19 @@ export const FLEX_ALIGN_CONTENTS = [
 type FlexAlignContentType = typeof FLEX_ALIGN_CONTENTS[number];
 export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
 
-const getInlineStyles = (inline: FlexInlineType): JssStyle => ({
+const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
   display: `${inline ? 'inline-flex' : 'flex'} !important`,
 });
-const getWrapStyles = (wrap: FlexWrapType): JssStyle => ({
-  flexWrap: `${wrap} !important`,
-});
-const getDirectionStyles = (direction: FlexDirectionType): JssStyle => ({
-  flexDirection: `${direction} !important`,
-});
-const getJustifyContentStyles = (justifyContent: FlexJustifyContentType): JssStyle => ({
-  justifyContent: `${justifyContent} !important`,
-});
-const getAlignItemsStyles = (alignItems: FlexAlignItemsType): JssStyle => ({
-  alignItems: `${alignItems} !important`,
-});
-const getAlignContentStyles = (alignContent: FlexAlignContentType): JssStyle => ({
-  alignContent: `${alignContent} !important`,
-});
+const getWrapStyles: GetStylesFunction = (wrap: FlexWrapType, isBase): JssStyle =>
+  isBase && wrap === 'nowrap' ? {} : { flexWrap: `${wrap} !important` };
+const getDirectionStyles: GetStylesFunction = (direction: FlexDirectionType, isBase): JssStyle =>
+  isBase && direction === 'row' ? {} : { flexDirection: `${direction} !important` };
+const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType, isBase): JssStyle =>
+  isBase && justifyContent === 'flex-start' ? {} : { justifyContent: `${justifyContent} !important` };
+const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType, isBase): JssStyle =>
+  isBase && alignItems === 'stretch' ? {} : { alignItems: `${alignItems} !important` };
+const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType, isBase): JssStyle =>
+  isBase && alignContent === 'stretch' ? {} : { alignContent: `${alignContent} !important` };
 
 export const getDynamicCss = (
   inline: FlexInline,

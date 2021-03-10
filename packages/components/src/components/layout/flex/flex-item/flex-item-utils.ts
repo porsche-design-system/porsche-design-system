@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../../types';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
-import type { JssStyle } from '../../../../utils';
 
 export const FLEX_ITEM_WIDTHS = [
   'auto',
@@ -45,36 +45,18 @@ const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & 
   'auto': 'auto',
 };
 
-const getWidthStyles = (width: FlexItemWidthType): JssStyle =>
-  width === 'auto'
-    ? {}
-    : {
-        width: `${flexItemWidths[width]}% !important`,
-      };
-const getOffsetStyles = (offset: FlexItemOffsetType): JssStyle =>
-  offset === 'none'
-    ? {}
-    : {
-        marginLeft: `${flexItemWidths[offset]}% !important`,
-      };
-const getAlignSelfStyles = (alignSelf: FlexItemAlignSelfType): JssStyle =>
-  alignSelf === 'auto'
-    ? {}
-    : {
-        alignSelf: `${alignSelf} !important`,
-      };
-const getGrowStyles = (grow: FlexItemGrowType): JssStyle => ({
-  flexGrow: `${grow} !important`,
-});
-const getShrinkStyles = (shrink: FlexItemShrinkType): JssStyle => ({
-  flexShrink: `${shrink} !important`,
-});
-const getFlexStyles = (flex: FlexItemFlexType): JssStyle =>
-  flex === 'initial'
-    ? {}
-    : {
-        flex: `${flex === 'equal' ? '1 1 0' : flex} !important`,
-      };
+const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType, isBase): JssStyle =>
+  isBase && width === 'auto' ? {} : { width: `${flexItemWidths[width]}% !important` };
+const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType, isBase): JssStyle =>
+  isBase && offset === 'none' ? {} : { marginLeft: `${flexItemWidths[offset]}% !important` };
+const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType, isBase): JssStyle =>
+  isBase && alignSelf === 'auto' ? {} : { alignSelf: `${alignSelf} !important` };
+const getGrowStyles: GetStylesFunction = (grow: FlexItemGrowType, isBase): JssStyle =>
+  isBase && grow === 0 ? {} : { flexGrow: `${grow} !important` };
+const getShrinkStyles: GetStylesFunction = (shrink: FlexItemShrinkType, isBase): JssStyle =>
+  isBase && shrink === 1 ? {} : { flexShrink: `${shrink} !important` };
+const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType, isBase): JssStyle =>
+  isBase && flex === 'initial' ? {} : { flex: `${flex === 'equal' ? '1 1 0' : flex} !important` };
 
 const baseCss: string = getCss({
   ':host': {
