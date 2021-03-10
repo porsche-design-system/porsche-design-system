@@ -1,8 +1,6 @@
 import { render } from '@testing-library/react';
 import { PButton } from '../../../projects/components-wrapper/src';
-import { getMergedClassName } from '../../../projects/components-wrapper/src/utils';
 import { skipCheckForPorscheDesignSystemProviderDuringTests } from '../../../projects/components-wrapper/src/hooks';
-import * as hooks from '../../../projects/components-wrapper/src/hooks';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests', () => {
   it('should prevent usePrefix to throw exception', () => {
@@ -24,5 +22,7 @@ describe('skipCheckForPorscheDesignSystemProviderDuringTests', () => {
       error2 = e;
     }
     expect(error2).not.toBeDefined();
+
+    spy.mockRestore();
   });
 });

@@ -1,5 +1,5 @@
-import { Breakpoint, BreakpointCustomizable, BREAKPOINTS } from '../../../types';
-import { parseJSON } from '../../../utils';
+import type { Breakpoint, BreakpointCustomizable } from '../../../types';
+import { BREAKPOINTS, parseJSON } from '../../../utils';
 
 const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
 type SpinnerSizeType = typeof SPINNER_SIZES[number];
