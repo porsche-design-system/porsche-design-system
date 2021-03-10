@@ -39,18 +39,9 @@ export const FLEX_ALIGN_CONTENTS = [
 type FlexAlignContentType = typeof FLEX_ALIGN_CONTENTS[number];
 export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
 
-const baseCss: string = getCss({
-  ':host': {
-    display: 'flex',
-  },
-  // [mediaQuery('s')]: {
-  //   ':host': {},
-  // },
-  // [mediaQuery('m')]: {
-  //   ':host': {},
-  // },
+const getInlineStyles = (inline: FlexInline): JssStyle => ({
+  display: `${inline ? 'inline-flex' : 'flex'} !important`,
 });
-
 const getWrapStyles = (wrap: FlexWrap): JssStyle => ({
   flexWrap: `${wrap} !important`,
 });
@@ -68,7 +59,7 @@ const getAlignContentStyles = (alignContent: FlexAlignContent): JssStyle => ({
 });
 
 export const getDynamicCss = (
-  _inline: FlexInline,
+  inline: FlexInline,
   wrap: FlexWrap,
   direction: FlexDirection,
   justifyContent: FlexJustifyContent,
@@ -77,6 +68,7 @@ export const getDynamicCss = (
 ): string => {
   return getCss(
     mergeDeep(
+      buildResponsiveJss(inline, getInlineStyles),
       buildResponsiveJss(wrap, getWrapStyles),
       buildResponsiveJss(direction, getDirectionStyles),
       buildResponsiveJss(justifyContent, getJustifyContentStyles),
@@ -95,5 +87,5 @@ export const addCss = (
   alignItems: FlexAlignItems,
   alignContent: FlexAlignContent
 ): void => {
-  attachCss(host, baseCss + getDynamicCss(inline, wrap, direction, justifyContent, alignItems, alignContent));
+  attachCss(host, getDynamicCss(inline, wrap, direction, justifyContent, alignItems, alignContent));
 };
