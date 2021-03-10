@@ -1,4 +1,4 @@
-import { JSX, Component, Host, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { GridDirection } from './grid-utils';
 import { addCss } from './grid-utils';
 
