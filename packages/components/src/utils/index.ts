@@ -4,6 +4,7 @@ export * from './button-handling';
 export * from './device-detection';
 export * from './focus-handling';
 export * from './get-prefixed-tag-name';
+export * from './jss';
 export * from './line-height';
 export * from './prefix';
 export * from './dom';

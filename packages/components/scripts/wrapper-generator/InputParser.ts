@@ -80,7 +80,7 @@ export class InputParser {
   }
 
   public canHaveChildren(component: TagName): boolean {
-    const whitelistedComponents: TagName[] = ['p-flex', 'p-flex-item', 'p-grid', 'p-grid-item'];
+    const whitelistedComponents: TagName[] = ['p-flex', 'p-flex-item'];
     if (whitelistedComponents.includes(component)) {
       return true;
     }

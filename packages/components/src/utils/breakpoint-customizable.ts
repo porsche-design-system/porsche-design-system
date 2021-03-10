@@ -1,8 +1,19 @@
 import { prefix } from './prefix';
-import type { BreakpointCustomizable, BreakpointValues } from '../types';
-import { Breakpoint } from '../types';
 
-type BreakpointValue = string | number | boolean;
+export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
+export type Breakpoint = typeof BREAKPOINTS[number];
+export type BreakpointValues<T> = Partial<
+  {
+    [key in Breakpoint]: T;
+  }
+> & {
+  base: T;
+};
+
+// string is needed in order to pass and parse objects via prop decorator
+export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
+
+type BreakpointValue = string | number | boolean; // TODO: replace with generic T
 type ClassSuffixes = [string, string];
 
 type JSXClasses = {
@@ -19,7 +30,7 @@ export const parseJSON = (
       return JSON.parse(
         prop
           .replace(/'/g, '"') // convert single quotes to double quotes
-          .replace(/[\s"]*([\w\d]*)[\s"]?:/g, '"$1":') // wrap keys in double quotes if they don't have them
+          .replace(/[\s"]*([\w]*)[\s"]?:/g, '"$1":') // wrap keys in double quotes if they don't have them
       );
     } catch (e) {
       // prop is string, e.g. "block" or "inline"
