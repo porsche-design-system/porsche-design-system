@@ -112,19 +112,19 @@ ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
 ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
     get sizeMarkup() {
-      return `<p-tabs-bar active-tab-index="0" size="${this.size}">
+      return `<p-tabs-bar size="${this.size}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     }
 
     get weightMarkup() {
-      return `<p-tabs-bar active-tab-index="0" weight="${this.weight}">
+      return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     }
     
     get gradientMarkup() {
-      return `<p-tabs-bar  active-tab-index="0" gradient-color-scheme="${this.gradientColorScheme}">
+      return `<p-tabs-bar  gradient-color-scheme="${this.gradientColorScheme}">
 ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
   .map(buildButton).join('\n')}
 </p-tabs-bar>`;
