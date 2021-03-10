@@ -63,18 +63,12 @@ const getAlignSelfStyles = (alignSelf: FlexItemAlignSelfType): JssStyle =>
     : {
         alignSelf: `${alignSelf} !important`,
       };
-const getGrowStyles = (grow: FlexItemGrowType): JssStyle =>
-  grow === 0
-    ? {}
-    : {
-        flexGrow: `${grow} !important`,
-      };
-const getShrinkStyles = (shrink: FlexItemShrinkType): JssStyle =>
-  shrink === 1
-    ? {}
-    : {
-        flexShrink: `${shrink} !important`,
-      };
+const getGrowStyles = (grow: FlexItemGrowType): JssStyle => ({
+  flexGrow: `${grow} !important`,
+});
+const getShrinkStyles = (shrink: FlexItemShrinkType): JssStyle => ({
+  flexShrink: `${shrink} !important`,
+});
 const getFlexStyles = (flex: FlexItemFlexType): JssStyle =>
   flex === 'initial'
     ? {}
