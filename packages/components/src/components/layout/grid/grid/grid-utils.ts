@@ -3,7 +3,7 @@ import type { JssStyle } from '../../../../utils';
 import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
 
-const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'];
+export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
 export type GridDirection = BreakpointCustomizable<GridDirectionType>;
 
@@ -39,7 +39,10 @@ const getDirectionStyles = (direction: GridDirection): JssStyle => ({
   flexDirection: `${direction} !important`,
 });
 
+export const getDynamicCss = (direction: GridDirection): string => {
+  return getCss(buildResponsiveJss(direction, getDirectionStyles));
+};
+
 export const addCss = (host: HTMLElement, direction: GridDirection): void => {
-  const dynamicCss = getCss(buildResponsiveJss(direction, getDirectionStyles));
-  attachCss(host, baseCss + dynamicCss);
+  attachCss(host, baseCss + getDynamicCss(direction));
 };

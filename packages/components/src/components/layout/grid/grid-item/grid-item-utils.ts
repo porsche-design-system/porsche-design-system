@@ -4,11 +4,11 @@ import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../ut
 import type { BreakpointCustomizable } from '../../../../types';
 import { paddingBase, paddingM, paddingS } from '../grid/grid-utils';
 
-const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 type GridItemSizeType = typeof GRID_ITEM_SIZES[number];
 export type GridItemSize = BreakpointCustomizable<GridItemSizeType>;
 
-const GRID_ITEM_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+export const GRID_ITEM_OFFSETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
 type GridItemOffsetType = typeof GRID_ITEM_OFFSETS[number];
 export type GridItemOffset = BreakpointCustomizable<GridItemOffsetType>;
 
@@ -59,9 +59,10 @@ const getOffsetStyles = (offset: GridItemOffsetType): JssStyle =>
         marginLeft: `${gridItemWidths[offset]}% !important`,
       };
 
+export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset): string => {
+  return getCss(mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles)));
+};
+
 export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset): void => {
-  const dynamicCss = getCss(
-    mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles))
-  );
-  attachCss(host, baseCss + dynamicCss);
+  attachCss(host, baseCss + getDynamicCss(size, offset));
 };
