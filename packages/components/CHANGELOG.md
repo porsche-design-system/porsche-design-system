@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Tabs Bar` now supports `undefined` as `activeTabIndex`
+
 #### Changed
 - `italic` font-style in `Text` is now overridden with `normal`
 

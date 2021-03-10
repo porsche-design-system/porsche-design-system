@@ -70,7 +70,7 @@ The background and gradient has to align to your chosen background.
 
 ## Active Tab
 
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. 
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection.    
 
 <Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
