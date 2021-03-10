@@ -35,7 +35,7 @@ const baseCss: string = getCss({
   },
 });
 
-const getDirectionStyles = (direction: GridDirection): JssStyle => ({
+const getDirectionStyles = (direction: GridDirectionType): JssStyle => ({
   flexDirection: `${direction} !important`,
 });
 
