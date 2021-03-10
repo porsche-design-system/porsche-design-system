@@ -40,7 +40,7 @@ export const attachCss = (host: HTMLElement, css: string): void => {
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
-export type GetStylesFunction = (value: any, isBase?: boolean) => JssStyle;
+export type GetStylesFunction = (value: any) => JssStyle;
 export const buildResponsiveJss = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
@@ -57,9 +57,9 @@ export const buildResponsiveJss = <T>(
             ...result,
             [mediaQuery(breakpoint[breakpointValue])]: buildHostStyles(getStyles(value[breakpointValue])),
           }),
-          buildHostStyles(getStyles(value.base, true))
+          buildHostStyles(getStyles(value.base))
         )
-    : buildHostStyles(getStyles(value, true));
+    : buildHostStyles(getStyles(value));
 };
 
 /* eslint-disable-next-line @typescript-eslint/ban-types */
