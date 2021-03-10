@@ -14,7 +14,9 @@ import globby from 'globby';
   const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
   const removeEscapedPipe = (str: string): string => str.replace(/\\\|/g, '|');
   const cleanBreakpointCustomizablePartial = (str: string): string =>
-    str.replace(/(`Partial<{ base:.*)( \| string)( ?\|?.*?`)/g, '$1$3');
+    str.replace(/(Partial<{ base:.*)( \| string)( ?\|?.*?`)/g, '$1$3');
+  const extendBreakpointCustomizablePartial = (str: string): string =>
+    str.replace(/Partial<{ base: (".*?);/g, '$1 | $&');
 
   const files = (await globby('./src/components/**/readme.md')).sort();
   for (const file of files) {
@@ -24,7 +26,13 @@ import globby from 'globby';
 
     fs.writeFileSync(
       path.normalize(file),
-      removeWhitespace(removeGenerator(removeGraph(cleanBreakpointCustomizablePartial(removeEscapedPipe(readme)))))
+      removeWhitespace(
+        removeGenerator(
+          removeGraph(
+            cleanBreakpointCustomizablePartial(extendBreakpointCustomizablePartial(removeEscapedPipe(readme)))
+          )
+        )
+      )
     );
     fs.writeFileSync(
       path.normalize(`${dir}/${name}.props.md`),
@@ -32,7 +40,9 @@ import globby from 'globby';
         removeGenerator(
           removeGraph(
             cleanBreakpointCustomizablePartial(
-              removeEscapedPipe(updateTypographyPaths(updateFormPaths(updateDependencyPaths(readme))))
+              extendBreakpointCustomizablePartial(
+                removeEscapedPipe(updateTypographyPaths(updateFormPaths(updateDependencyPaths(readme))))
+              )
             )
           )
         )
