@@ -1,7 +1,6 @@
 import * as domUtils from '../../../src/utils/dom';
 import { SelectWrapper } from '../../../src/components/form/select-wrapper/select-wrapper';
 import { applyFilterOnOptionMaps, OptionMap } from '../../../src/components/form/select-wrapper/select-wrapper-utils';
-import { getMergedClassName } from '../../../../components-react/projects/components-wrapper/src/utils';
 
 describe('select-wrapper', () => {
   it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
