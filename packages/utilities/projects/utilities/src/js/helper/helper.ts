@@ -54,6 +54,7 @@ export const generateTypeScale = (fontSize: string): FontSizeLineHeight => {
   };
 };
 
+// TODO: caching?
 export const calculateLineHeight = (fontSize: string): number => {
   const [, fontSizeValue, fontSizeUnit] = fontSize?.match(FONT_SIZE_REGEX) ?? [];
   if (fontSizeUnit === undefined || fontSizeValue === undefined || fontSizeValue === '0') {
