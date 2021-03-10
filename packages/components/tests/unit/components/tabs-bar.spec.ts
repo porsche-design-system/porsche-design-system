@@ -1,9 +1,11 @@
 import {
-  sanitizeActiveTabIndex,
-  getXTranslationToInactive,
   addEnableTransitionClass,
+  getScrollActivePosition,
+  getScrollPositionAfterPrevNextClick,
+  getXTranslationToInactive,
   removeEnableTransitionClass,
-  toggleEnableTransitionClass,
+  sanitizeActiveTabIndex,
+  determineEnableTransitionClass,
 } from '../../../src/components/navigation/tabs-bar/tabs-bar-utils';
 
 describe('tabs-bar', () => {
@@ -65,6 +67,7 @@ describe('tabs-bar', () => {
           addEnableTransitionClass(div);
           expect(div.classList.contains(enableTransitionClass)).toBe(true);
         });
+
         it('should add only one "p-tabs-bar__status-bar--enable-transition" class', () => {
           const div = document.createElement('div');
           expect(div.className).toBe('');
@@ -86,21 +89,62 @@ describe('tabs-bar', () => {
         });
       });
 
-      describe('toggleEnableTransitionClass()', () => {
+      describe('determineEnableTransitionClass()', () => {
         it('should remove "p-tabs-bar__status-bar--enable-transition" class if activeTabIndex is defined and prevActiveTabIndex is undefined', () => {
           const div = document.createElement('div');
           addEnableTransitionClass(div);
           expect(div.classList.contains(enableTransitionClass)).toBe(true);
 
-          toggleEnableTransitionClass(0, undefined, div);
+          determineEnableTransitionClass(0, undefined, div);
           expect(div.classList.contains(enableTransitionClass)).toBe(false);
         });
+
         it('should add "p-tabs-bar__status-bar--enable-transition" class if activeTabIndex is undefined', () => {
           const div = document.createElement('div');
           expect(div.classList.contains(enableTransitionClass)).toBe(false);
 
-          toggleEnableTransitionClass(undefined, 0, div);
+          determineEnableTransitionClass(undefined, 0, div);
           expect(div.classList.contains(enableTransitionClass)).toBe(true);
+        });
+      });
+
+      describe('getScrollActivePosition()', () => {
+        it('should return scrollActivePosition if scrolling to last tab', () => {
+          expect(getScrollActivePosition('next', 10, 11, undefined, 20, undefined, undefined, undefined)).toBe(16);
+        });
+
+        it('should return scrollActivePosition if direction is "next", next tab is set as active', () => {
+          expect(getScrollActivePosition('next', 5, 11, undefined, 20, 20, undefined, undefined)).toBe(8);
+        });
+
+        it('should return scrollActivePosition if direction is "prev" and first tab is set as active', () => {
+          expect(
+            getScrollActivePosition('prev', 0, undefined, undefined, undefined, undefined, undefined, undefined)
+          ).toBe(0);
+        });
+
+        it('should return scrollActivePosition if scrolling to previous tab', () => {
+          expect(getScrollActivePosition('prev', 5, 10, 4, 20, undefined, 20, 5)).toBe(41);
+        });
+      });
+
+      describe('getScrollPositionAfterPrevNextClick()', () => {
+        it('should return scrollToMax if scroll step would exceed maximum', () => {
+          const scrollToMax = 12;
+          expect(getScrollPositionAfterPrevNextClick('next', 10, 2, scrollToMax, undefined)).toBe(scrollToMax);
+        });
+
+        it('should return scrollPositionAfterClick if direction is "next" and scroll does not exceed maximum', () => {
+          expect(getScrollPositionAfterPrevNextClick('next', 10, 2, 20, undefined)).toBe(12);
+        });
+
+        it('should return scrollToMin if scroll step would fall below minimum', () => {
+          const scrollToMin = 0;
+          expect(getScrollPositionAfterPrevNextClick('prev', 2, 2, undefined, scrollToMin)).toBe(scrollToMin);
+        });
+
+        it('should return scrollPositionAfterClick if direction is "prev" and scroll does not fall below minimum', () => {
+          expect(getScrollPositionAfterPrevNextClick('prev', 10, 2, undefined, 0)).toBe(8);
         });
       });
     });

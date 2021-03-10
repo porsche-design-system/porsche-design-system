@@ -1,12 +1,3 @@
-import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
-import {
-  getHTMLElement,
-  getHTMLElements,
-  getPrefixedTagNames,
-  isDark,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
-} from '../../../utils';
 import type {
   BreakpointCustomizable,
   TabChangeEvent,
@@ -15,16 +6,27 @@ import type {
   TabWeight,
   Theme,
 } from '../../../types';
-import { pxToRem } from '@porsche-design-system/utilities';
+import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import {
+  Direction,
+  FOCUS_PADDING_WIDTH,
+  addEnableTransitionClass,
+  getScrollActivePosition,
   getXTranslationToInactive,
   sanitizeActiveTabIndex,
-  addEnableTransitionClass,
-  toggleEnableTransitionClass,
+  determineEnableTransitionClass,
+  getScrollPositionAfterPrevNextClick,
 } from './tabs-bar-utils';
+import {
+  getHTMLElement,
+  getHTMLElements,
+  getPrefixedTagNames,
+  isDark,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+} from '../../../utils';
 
-type Direction = 'prev' | 'next';
-const FOCUS_PADDING_WIDTH = 4;
+import { pxToRem } from '@porsche-design-system/utilities';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -200,7 +202,7 @@ export class TabsBar {
       this.statusBarElement.setAttribute('style', `transform: translate3d(${xTranslateInRem},0,0); width: 0;`);
     } else {
       // handle initial active + active to active + inactive to active cases
-      toggleEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.statusBarElement);
+      determineEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.statusBarElement);
       const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
       const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
       const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
@@ -314,35 +316,29 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
+    if (this.direction === 'next' && this.activeTabIndex === 0) {
+      // special case on first render where direction is 'next'  and activeTabIndex is 0
+      return;
+    }
+
     const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
 
-    let scrollPosition: number;
-    if (this.direction === 'next') {
-      if (this.activeTabIndex === this.tabElements.length - 1) {
-        // go to last tab
-        scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
-      } else if (this.activeTabIndex === 0) {
-        // special case on first render where direction is 'next'  and activeTabIndex is 0
-        return;
-      } else {
-        // go to next tab
-        scrollPosition = offsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
-      }
-    } else {
-      if (this.activeTabIndex === 0) {
-        // go to first tab
-        scrollPosition = 0;
-      } else {
-        // go to prev tab
-        scrollPosition = offsetLeft + offsetWidth + nextGradientWidth - this.scrollAreaElement.offsetWidth;
-      }
-    }
+    const scrollActivePosition = getScrollActivePosition(
+      this.direction,
+      this.activeTabIndex,
+      this.tabElements.length,
+      this.scrollAreaElement.offsetWidth,
+      offsetLeft,
+      prevGradientWidth,
+      offsetWidth,
+      nextGradientWidth
+    );
 
     if (opts?.skipAnimation) {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
+      this.scrollAreaElement.scrollLeft = scrollActivePosition;
     } else {
-      this.scrollTo(scrollPosition);
+      this.scrollTo(scrollActivePosition);
     }
   };
 
@@ -352,26 +348,15 @@ export class TabsBar {
     ];
     const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.scrollAreaElement;
     const scrollToStep = Math.round(scrollAreaWidth * 0.2);
-    const scrollToMin = 0;
     const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
 
-    let scrollPosition: number;
-
-    if (direction === 'next') {
-      // Go to end of scroll-area when close to edge
-      if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-        scrollPosition = scrollToMax;
-      } else {
-        scrollPosition = currentScrollPosition + scrollToStep;
-      }
-    } else {
-      // Go to start of scroll-area when close to edge
-      if (currentScrollPosition - scrollToStep * 2 < scrollToMin) {
-        scrollPosition = scrollToMin;
-      } else {
-        scrollPosition = currentScrollPosition - scrollToStep;
-      }
-    }
+    const scrollPosition = getScrollPositionAfterPrevNextClick(
+      direction,
+      currentScrollPosition,
+      scrollToStep,
+      scrollToMax,
+      0
+    );
     this.scrollTo(scrollPosition);
   };
 
