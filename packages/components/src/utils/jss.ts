@@ -29,6 +29,7 @@ export const getCss = (jssStyles: Styles): string =>
       generateId: (rule: Rule) => rule.key,
     })
     .toString()
+    // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
     .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
 
 export const attachCss = (host: HTMLElement, css: string): void => {
@@ -47,6 +48,8 @@ export const buildResponsiveJss = <T>(
 
   return typeof value === 'object'
     ? Object.keys(value)
+        // base styles are applied on root object, responsive styles are nested within
+        // hence it is used as the initial object within reduce function
         .filter((key) => key !== 'base')
         .reduce(
           (result, breakpointValue) => ({
