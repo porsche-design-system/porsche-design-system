@@ -1,4 +1,4 @@
-import { JSX, Component, Host, Prop, h, Element } from '@stencil/core';
+import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import { addCss } from './grid-item-utils';
 
