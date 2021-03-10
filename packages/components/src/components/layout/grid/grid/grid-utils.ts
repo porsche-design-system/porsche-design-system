@@ -1,4 +1,4 @@
-import { mediaQuery, pxToRem } from '@porsche-design-system/utilities';
+import { mediaQuery } from '@porsche-design-system/utilities';
 import type { JssStyle } from '../../../../utils';
 import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
@@ -7,10 +7,10 @@ export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
 export type GridDirection = BreakpointCustomizable<GridDirectionType>;
 
-// TODO: stop useless and repetitive string to float parsing
-export const paddingBase = `${parseFloat(pxToRem('16px')) / 2}rem !important`;
-export const paddingS = `${parseFloat(pxToRem('24px')) / 2}rem !important`;
-export const paddingM = `${parseFloat(pxToRem('36px')) / 2}rem !important`;
+const pxToRem = (px: number): number => px / 16;
+export const paddingBase = `${pxToRem(16) / 2}rem !important`;
+export const paddingS = `${pxToRem(24) / 2}rem !important`;
+export const paddingM = `${pxToRem(36) / 2}rem !important`;
 
 const baseCss: string = getCss({
   ':host': {
