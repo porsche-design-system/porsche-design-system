@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDynamicCss() should return correct css for direction: "column" 1`] = `":host{flex-direction:column !important}"`;
+
+exports[`getDynamicCss() should return correct css for direction: "column-reverse" 1`] = `":host{flex-direction:column-reverse !important}"`;
+
+exports[`getDynamicCss() should return correct css for direction: "row" 1`] = `":host{flex-direction:row !important}"`;
+
+exports[`getDynamicCss() should return correct css for direction: "row-reverse" 1`] = `":host{flex-direction:row-reverse !important}"`;
+
+exports[`getDynamicCss() should return correct css for direction: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} 1`] = `":host{flex-direction:column !important}@media(min-width:480px){:host{flex-direction:row !important}}@media(min-width:760px){:host{flex-direction:column !important}}@media(min-width:1000px){:host{flex-direction:row !important}}@media(min-width:1300px){:host{flex-direction:column !important}}@media(min-width:1760px){:host{flex-direction:row !important}}"`;

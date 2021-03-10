@@ -43,12 +43,7 @@ export type NumberOfPageLinks = 5 | 7;
 export type PageChangeEvent = { page: number; previousPage: number };
 
 // BreakpointCustomizable Types
-export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
-export type Breakpoint = typeof BREAKPOINTS[number];
-export type BreakpointValues<T> = Partial<{ [key in Breakpoint]: T }> & { base: T };
-
-// string is needed in order to pass and parse objects via prop decorator
-export type BreakpointCustomizable<T> = T | BreakpointValues<T> | string;
+export type { Breakpoint, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {
