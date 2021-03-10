@@ -89,7 +89,7 @@ describe('chunks', () => {
         return `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
       };
       const formatPercent = (oldSize: number, diffSize: number): string => {
-        const value = (diffSize / oldSize).toFixed(2);
+        const value = ((diffSize / oldSize) * 100).toFixed(2);
         return `${getSign(parseFloat(value))}${value} %`;
       };
 
