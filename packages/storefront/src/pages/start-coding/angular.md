@@ -91,8 +91,6 @@ When using custom prefixed component tags, you've to add
 the [schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) to the modules that use the
 prefixed components.
 
-Keep in mind. that prefixed versions only work with components that use shadow root.
-
 ```ts
 // app.module.ts
 
