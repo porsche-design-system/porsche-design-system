@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.6] - 2021-03-10
+
 #### Changed
 - Make `Grid` and `Grid Item` use ShadowDom
 - Make `Flex` and `Flex Item` use ShadowDom
