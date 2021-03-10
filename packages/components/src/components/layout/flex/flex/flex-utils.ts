@@ -2,7 +2,8 @@ import type { JssStyle } from '../../../../utils';
 import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
 
-export type FlexInline = BreakpointCustomizable<boolean>;
+type FlexInlineType = BreakpointCustomizable<boolean>;
+export type FlexInline = FlexInlineType;
 
 export const FLEX_WRAPS = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 type FlexWrapType = typeof FLEX_WRAPS[number];
@@ -39,22 +40,22 @@ export const FLEX_ALIGN_CONTENTS = [
 type FlexAlignContentType = typeof FLEX_ALIGN_CONTENTS[number];
 export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
 
-const getInlineStyles = (inline: FlexInline): JssStyle => ({
+const getInlineStyles = (inline: FlexInlineType): JssStyle => ({
   display: `${inline ? 'inline-flex' : 'flex'} !important`,
 });
-const getWrapStyles = (wrap: FlexWrap): JssStyle => ({
+const getWrapStyles = (wrap: FlexWrapType): JssStyle => ({
   flexWrap: `${wrap} !important`,
 });
-const getDirectionStyles = (direction: FlexDirection): JssStyle => ({
+const getDirectionStyles = (direction: FlexDirectionType): JssStyle => ({
   flexDirection: `${direction} !important`,
 });
-const getJustifyContentStyles = (justifyContent: FlexJustifyContent): JssStyle => ({
+const getJustifyContentStyles = (justifyContent: FlexJustifyContentType): JssStyle => ({
   justifyContent: `${justifyContent} !important`,
 });
-const getAlignItemsStyles = (alignItems: FlexAlignItems): JssStyle => ({
+const getAlignItemsStyles = (alignItems: FlexAlignItemsType): JssStyle => ({
   alignItems: `${alignItems} !important`,
 });
-const getAlignContentStyles = (alignContent: FlexAlignContent): JssStyle => ({
+const getAlignContentStyles = (alignContent: FlexAlignContentType): JssStyle => ({
   alignContent: `${alignContent} !important`,
 });
 
