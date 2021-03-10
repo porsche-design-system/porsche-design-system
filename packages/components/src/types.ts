@@ -31,10 +31,12 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 export type FormState = 'none' | 'error' | 'success';
 
 // Tabs Types
-export type TabChangeEvent = { activeTabIndex: number };
-export type TabSize = 'small' | 'medium';
-export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
-export type TabGradientColorTheme = 'default' | 'surface';
+export {
+  TabSize,
+  TabChangeEvent,
+  TabWeight,
+  TabGradientColorTheme,
+} from './components/navigation/tabs-bar/tabs-bar-utils';
 
 // Pagination Types
 export type NumberOfPageLinks = 5 | 7;
