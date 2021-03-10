@@ -31,7 +31,7 @@ export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
 export type FormState = 'none' | 'error' | 'success';
 
 // Tabs Types
-export {
+export type {
   TabSize,
   TabChangeEvent,
   TabWeight,

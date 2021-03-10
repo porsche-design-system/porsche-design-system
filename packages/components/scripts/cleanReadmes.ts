@@ -14,9 +14,9 @@ import globby from 'globby';
   const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
   const removeEscapedPipe = (str: string): string => str.replace(/\\\|/g, '|');
   const cleanBreakpointCustomizablePartial = (str: string): string =>
-    str.replace(/(Partial<{ base:.*)( \| string)( ?\|?.*?`)/g, '$1$3');
+    str.replace(/(Partial<)({ base:.* })(> & {.*? \| string)( ?\|?.*?`)/g, '$2$4');
   const extendBreakpointCustomizablePartial = (str: string): string =>
-    str.replace(/Partial<{ base: (".*?);/g, '$1 | $&');
+    str.replace(/Partial<{ base: (.*?);/g, '$1 | $&');
 
   const files = (await globby('./src/components/**/readme.md')).sort();
   for (const file of files) {
