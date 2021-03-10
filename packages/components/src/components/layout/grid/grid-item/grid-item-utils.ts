@@ -1,7 +1,7 @@
 import { mediaQuery } from '@porsche-design-system/utilities';
-import type { JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
 import { paddingBase, paddingM, paddingS } from '../grid/grid-utils';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
@@ -48,16 +48,12 @@ const gridItemWidths = [
   100,
 ];
 
-const getSizeStyles = (size: GridItemSizeType): JssStyle => ({
+const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
   width: `${gridItemWidths[size]}% !important`,
 });
 
-const getOffsetStyles = (offset: GridItemOffsetType): JssStyle =>
-  offset === 0
-    ? {}
-    : {
-        marginLeft: `${gridItemWidths[offset]}% !important`,
-      };
+const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType, isBase): JssStyle =>
+  isBase && offset === 0 ? {} : { marginLeft: `${gridItemWidths[offset]}% !important` };
 
 export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset): string => {
   return getCss(mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles)));
