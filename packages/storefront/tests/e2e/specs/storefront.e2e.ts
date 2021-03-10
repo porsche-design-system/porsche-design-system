@@ -16,6 +16,8 @@ describe('storefront', () => {
   const getClassNames = async (element: ElementHandle | null): Promise<string> =>
     element ? ((await (await element.getProperty('className')).jsonValue()) as string) : '';
   const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const hasPageObjectObject = async (page: Page): Promise<boolean> =>
+    page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
   for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     for (const [page, tabs] of Object.entries(pages)) {
@@ -35,13 +37,17 @@ describe('storefront', () => {
 
           await buttonElement.click();
 
-          (expect(await isLinkActive(linkElement)) as any).withContext('link should be inactive initially').toBe(false);
+          expect(await isLinkActive(linkElement))
+            .withContext('link should be inactive initially')
+            .toBe(false);
 
           await linkElement.click();
           await browserPage.waitForSelector('.vmark');
 
-          (expect(await isLinkActive(linkElement)) as any).withContext('link should be active after click').toBe(true);
-          (expect(await getMainTitle(browserPage)) as any)
+          expect(await isLinkActive(linkElement))
+            .withContext('link should be active after click')
+            .toBe(true);
+          expect(await getMainTitle(browserPage))
             .withContext('should show correct main title for page view')
             .toBe(page);
 
@@ -54,11 +60,11 @@ describe('storefront', () => {
               );
 
               if (parseInt(index) === 0) {
-                (expect(await getClassNames(tabElement)) as any)
+                expect(await getClassNames(tabElement))
                   .withContext('should have first tab active initially')
                   .toContain('router-link-active');
               } else {
-                (expect(await getClassNames(tabElement)) as any)
+                expect(await getClassNames(tabElement))
                   .withContext('should have tab not active initially')
                   .not.toContain('router-link-active');
               }
@@ -66,12 +72,15 @@ describe('storefront', () => {
               await tabElement.click();
               await browserPage.waitForSelector('.vmark');
 
-              (expect(await getClassNames(tabElement)) as any)
+              expect(await getClassNames(tabElement))
                 .withContext('should have tab active after click')
                 .toContain('router-link-active');
-              (expect(await getMainTitle(browserPage)) as any)
+              expect(await getMainTitle(browserPage))
                 .withContext('should show correct main title for tab view')
                 .toBe(page);
+              expect(await hasPageObjectObject(browserPage))
+                .withContext('should not contain [object Object]')
+                .toBe(false);
 
               logTabs.push(`${category} > ${page} > ${tab}`);
             }
