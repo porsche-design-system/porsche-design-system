@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { GridDirection } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
@@ -165,31 +166,27 @@ export namespace Components {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
@@ -1088,31 +1085,27 @@ declare namespace LocalJSX {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
