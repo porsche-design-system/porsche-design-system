@@ -43,21 +43,36 @@ export type FlexAlignContent = BreakpointCustomizable<FlexAlignContentType>;
 const getInlineStyles = (inline: FlexInlineType): JssStyle => ({
   display: `${inline ? 'inline-flex' : 'flex'} !important`,
 });
-const getWrapStyles = (wrap: FlexWrapType): JssStyle => ({
-  flexWrap: `${wrap} !important`,
-});
-const getDirectionStyles = (direction: FlexDirectionType): JssStyle => ({
-  flexDirection: `${direction} !important`,
-});
-const getJustifyContentStyles = (justifyContent: FlexJustifyContentType): JssStyle => ({
-  justifyContent: `${justifyContent} !important`,
-});
-const getAlignItemsStyles = (alignItems: FlexAlignItemsType): JssStyle => ({
-  alignItems: `${alignItems} !important`,
-});
-const getAlignContentStyles = (alignContent: FlexAlignContentType): JssStyle => ({
-  alignContent: `${alignContent} !important`,
-});
+const getWrapStyles = (wrap: FlexWrapType): JssStyle =>
+  wrap === 'nowrap'
+    ? {}
+    : {
+        flexWrap: `${wrap} !important`,
+      };
+const getDirectionStyles = (direction: FlexDirectionType): JssStyle =>
+  direction === 'row'
+    ? {}
+    : {
+        flexDirection: `${direction} !important`,
+      };
+const getJustifyContentStyles = (justifyContent: FlexJustifyContentType): JssStyle =>
+  justifyContent === 'flex-start'
+    ? {}
+    : {
+        justifyContent: `${justifyContent} !important`,
+      };
+const getAlignItemsStyles = (alignItems: FlexAlignItemsType): JssStyle =>
+  alignItems === 'stretch'
+    ? {}
+    : {
+        alignItems: `${alignItems} !important`,
+      };
+const getAlignContentStyles = (alignContent: FlexAlignContentType): JssStyle =>
+  alignContent === 'stretch'
+    ? {}
+    : {
+        alignContent: `${alignContent} !important`,
+      };
 
 export const getDynamicCss = (
   inline: FlexInline,
