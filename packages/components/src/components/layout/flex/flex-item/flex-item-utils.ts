@@ -79,7 +79,7 @@ const getFlexStyles = (flex: FlexItemFlexType): JssStyle =>
   flex === 'initial'
     ? {}
     : {
-        flex: `${flex} !important`,
+        flex: `${flex === 'equal' ? '1 1 0' : flex} !important`,
       };
 
 const baseCss: string = getCss({
