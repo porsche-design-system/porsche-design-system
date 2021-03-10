@@ -16,7 +16,7 @@ import globby from 'globby';
   const cleanBreakpointCustomizablePartial = (str: string): string =>
     str.replace(/(Partial<)({ base:.* })(> & {.*? \| string)( ?\|?.*?`)/g, '$2$4');
   const extendBreakpointCustomizablePartial = (str: string): string =>
-    str.replace(/Partial<{ base: (.*?);/g, '$1 | $&');
+    str.replace(/Partial<{ base: (\D.*?);/g, '$1 | $&');
 
   const files = (await globby('./src/components/**/readme.md')).sort();
   for (const file of files) {
