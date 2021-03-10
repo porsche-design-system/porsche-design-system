@@ -8,8 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.5] - 2021-03-09
+
+#### Added
+- Configurable background color of `Content Wrapper`
+- `italic` font-style in `Text` is now overridden with `normal`
+
 #### Fixed
 - Usage of `Select Wrapper` within custom elements
+- A bug that caused `Spinner` to be displayed in a wrong size
 
 ### [2.0.0-rc.4] - 2021-03-01
 
