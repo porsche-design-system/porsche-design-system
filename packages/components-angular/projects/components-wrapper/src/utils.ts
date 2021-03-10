@@ -4,11 +4,9 @@ const proxyInputs = (component: any, inputs: string[]): void => {
   const callback = (item: string): void => {
     Object.defineProperty(component.prototype, item, {
       get() {
-        // console.log('proxyInputs get', this.el, item, this.el[item], new Date().toISOString());
         return this.el[item];
       },
       set(val: any) {
-        // console.log('proxyInputs set', this.el, item, val, new Date().toISOString());
         this.z.runOutsideAngular(() => (this.el[item] = val));
       },
     });
@@ -38,7 +36,6 @@ type ProxyCmpOptions = { inputs?: string[]; methods?: string[] };
 // tslint:disable-next-line: only-arrow-functions
 export function ProxyCmp({ inputs /*, methods*/ }: ProxyCmpOptions) {
   return function (component: any) {
-    // console.log('ProxyCmp decorator', inputs, new Date().toISOString());
     if (inputs) {
       proxyInputs(component, inputs);
     }
