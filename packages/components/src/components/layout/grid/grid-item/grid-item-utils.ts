@@ -52,8 +52,9 @@ const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => (
   width: `${gridItemWidths[size]}% !important`,
 });
 
-const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType, isBase): JssStyle =>
-  isBase && offset === 0 ? {} : { marginLeft: `${gridItemWidths[offset]}% !important` };
+const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle => ({
+  marginLeft: `${gridItemWidths[offset]}% !important`,
+});
 
 export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset): string => {
   return getCss(mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles)));

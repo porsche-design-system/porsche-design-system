@@ -35,8 +35,9 @@ const baseCss: string = getCss({
   },
 });
 
-const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType, isBase): JssStyle =>
-  isBase && direction === 'row' ? {} : { flexDirection: `${direction} !important` };
+const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType): JssStyle => ({
+  flexDirection: `${direction} !important`,
+});
 
 export const getDynamicCss = (direction: GridDirection): string => {
   return getCss(buildResponsiveJss(direction, getDirectionStyles));
