@@ -4,7 +4,7 @@ exports[`getDynamicCss() should return correct css for direction: "column" 1`] =
 
 exports[`getDynamicCss() should return correct css for direction: "column-reverse" 1`] = `":host{flex-direction:column-reverse !important}"`;
 
-exports[`getDynamicCss() should return correct css for direction: "row" 1`] = `":host{flex-direction:row !important}"`;
+exports[`getDynamicCss() should return correct css for direction: "row" 1`] = `""`;
 
 exports[`getDynamicCss() should return correct css for direction: "row-reverse" 1`] = `":host{flex-direction:row-reverse !important}"`;
 

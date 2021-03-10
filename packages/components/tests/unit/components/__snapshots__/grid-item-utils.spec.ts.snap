@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getDynamicCss() should return correct css for offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `":host{width:8.333333% !important;margin-left:50% !important}@media(min-width:760px){:host{margin-left:50% !important}}@media(min-width:1300px){:host{margin-left:50% !important}}"`;
+exports[`getDynamicCss() should return correct css for offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `":host{width:8.333333% !important;margin-left:50% !important}@media(min-width:480px){:host{margin-left:0% !important}}@media(min-width:760px){:host{margin-left:50% !important}}@media(min-width:1000px){:host{margin-left:0% !important}}@media(min-width:1300px){:host{margin-left:50% !important}}@media(min-width:1760px){:host{margin-left:0% !important}}"`;
 
 exports[`getDynamicCss() should return correct css for offset: 0 1`] = `":host{width:8.333333% !important}"`;
 
@@ -28,7 +28,7 @@ exports[`getDynamicCss() should return correct css for offset: 11 1`] = `":host{
 
 exports[`getDynamicCss() should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} 1`] = `":host{width:50% !important}@media(min-width:480px){:host{width:100% !important}}@media(min-width:760px){:host{width:50% !important}}@media(min-width:1000px){:host{width:100% !important}}@media(min-width:1300px){:host{width:50% !important}}@media(min-width:1760px){:host{width:100% !important}}"`;
 
-exports[`getDynamicCss() should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} and offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `":host{width:50% !important;margin-left:50% !important}@media(min-width:480px){:host{width:100% !important}}@media(min-width:760px){:host{width:50% !important;margin-left:50% !important}}@media(min-width:1000px){:host{width:100% !important}}@media(min-width:1300px){:host{width:50% !important;margin-left:50% !important}}@media(min-width:1760px){:host{width:100% !important}}"`;
+exports[`getDynamicCss() should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} and offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `":host{width:50% !important;margin-left:50% !important}@media(min-width:480px){:host{width:100% !important;margin-left:0% !important}}@media(min-width:760px){:host{width:50% !important;margin-left:50% !important}}@media(min-width:1000px){:host{width:100% !important;margin-left:0% !important}}@media(min-width:1300px){:host{width:50% !important;margin-left:50% !important}}@media(min-width:1760px){:host{width:100% !important;margin-left:0% !important}}"`;
 
 exports[`getDynamicCss() should return correct css for size: 1 1`] = `":host{width:8.333333% !important}"`;
 
