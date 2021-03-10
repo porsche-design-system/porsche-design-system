@@ -24,10 +24,6 @@ export class GridItem {
   }
 
   public render(): JSX.Element {
-    return (
-      <Host>
-        <slot />
-      </Host>
-    );
+    return <slot />;
   }
 }
