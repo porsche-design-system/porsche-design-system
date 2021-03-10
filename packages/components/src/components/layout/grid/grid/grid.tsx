@@ -21,10 +21,6 @@ export class Grid {
   }
 
   public render(): JSX.Element {
-    return (
-      <Host>
-        <slot />
-      </Host>
-    );
+    return <slot />;
   }
 }
