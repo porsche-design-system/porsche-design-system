@@ -11,8 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `Tabs Bar` now supports `undefined` as `activeTabIndex`
 
+### [2.0.0-rc.6] - 2021-03-11
+
 #### Changed
 - Make `Grid` and `Grid Item` use ShadowDom
+- Make `Flex` and `Flex Item` use ShadowDom
 
 ### [2.0.0-rc.5] - 2021-03-09
 

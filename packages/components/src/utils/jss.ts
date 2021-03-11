@@ -40,9 +40,10 @@ export const attachCss = (host: HTMLElement, css: string): void => {
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
+export type GetStylesFunction = (value: any) => JssStyle;
 export const buildResponsiveJss = <T>(
   rawValue: BreakpointCustomizable<T>,
-  getStyles: (x: T) => JssStyle
+  getStyles: GetStylesFunction
 ): Styles<':host'> => {
   const value: any = parseJSON(rawValue as any);
 

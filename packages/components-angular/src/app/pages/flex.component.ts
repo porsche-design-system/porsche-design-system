@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
       }
 
       p-flex-item[align-self] > p,
-      p-flex-item[class*='p-flex__item--align-self-'] > p {
+      p-flex-item[ng-reflect-align-self] > p {
         background-color: deeppink;
       }
 
