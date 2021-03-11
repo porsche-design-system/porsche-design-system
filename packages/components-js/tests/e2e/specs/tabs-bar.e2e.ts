@@ -112,7 +112,7 @@ describe('tabs-bar', () => {
     expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
     expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
 
-    await setAttribute(host, 'active-tab-index', '2');
+    await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
@@ -176,7 +176,7 @@ describe('tabs-bar', () => {
     });
 
     it('should scroll to correct position initially', async () => {
-      await initTabsBar({ activeTabIndex: 3, isWrapped: true, activeTabIndex: 0 });
+      await initTabsBar({ activeTabIndex: 3, isWrapped: true });
       const allButtons = await getAllButtons();
       const selectedButtonOffset = await getOffsetLeft(allButtons[3]);
       const gradientWidth = await getOffsetWidth(await getGradientNext());
@@ -339,7 +339,7 @@ describe('tabs-bar', () => {
       });
     });
 
-    fdescribe('when wrapped', () => {
+    describe('when wrapped', () => {
       it('should set correct statusBarStyle when no activeTabIndex is set initially', async () => {
         await initTabsBar({ isWrapped: true });
         const statusBar = await getStatusBar();

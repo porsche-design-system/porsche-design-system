@@ -3,6 +3,7 @@ import { prefix } from '../../../utils';
 
 export type Direction = 'prev' | 'next';
 export const FOCUS_PADDING_WIDTH = 4;
+const ENABLE_TRANSITION_CLASS = 'tabs-bar__status-bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
   if (index === undefined) {
@@ -21,18 +22,26 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
   return sanitizedIndex;
 };
 
-export const getXTranslationToInactive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
+export const addEnableTransitionClass = (statusBarElement: HTMLElement): void => {
+  statusBarElement.classList.add(prefix(ENABLE_TRANSITION_CLASS));
+};
+export const removeEnableTransitionClass = (statusBarElement: HTMLElement): void => {
+  statusBarElement.classList.remove(prefix(ENABLE_TRANSITION_CLASS));
+};
+
+export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
   const statusBarWidth = offsetWidth > 0 ? offsetWidth : 0;
   const statusBarCenter = statusBarWidth / 2;
   const statusBarPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
   const xTranslation = statusBarPositionLeft + statusBarCenter;
-  return xTranslation ? pxToRem(`${xTranslation}px`) : '0';
+  const xTranslateInRem = xTranslation ? pxToRem(`${xTranslation}px`) : '0';
+  return `transform: translate3d(${xTranslateInRem},0,0); width: 0;`;
 };
-export const addEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.add(prefix('tabs-bar__status-bar--enable-transition'));
-};
-export const removeEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.remove(prefix('tabs-bar__status-bar--enable-transition'));
+
+export const getTransformationToActive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
+  const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
+  const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
+  return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
 };
 
 export const determineEnableTransitionClass = (
@@ -54,19 +63,19 @@ export const getScrollActivePosition = (
   activeTabIndex: number,
   tabElementsCount: number,
   scrollAreaOffsetWidth: number,
-  offsetLeft: number,
+  activeTabOffsetLeft: number,
   prevGradientWidth: number,
-  offsetWidth: number,
+  activeTabOffsetWidth: number,
   nextGradientWidth: number
 ): number => {
   let scrollPosition;
   if (direction === 'next') {
     if (activeTabIndex === tabElementsCount - 1) {
       // go to last tab
-      scrollPosition = offsetLeft - FOCUS_PADDING_WIDTH;
+      scrollPosition = activeTabOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
       // go to next tab
-      scrollPosition = offsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = activeTabOffsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
     if (activeTabIndex === 0) {
@@ -74,7 +83,7 @@ export const getScrollActivePosition = (
       scrollPosition = 0;
     } else {
       // go to prev tab
-      scrollPosition = offsetLeft + offsetWidth + nextGradientWidth - scrollAreaOffsetWidth;
+      scrollPosition = activeTabOffsetLeft + activeTabOffsetWidth + nextGradientWidth - scrollAreaOffsetWidth;
     }
   }
   return scrollPosition;
@@ -84,9 +93,9 @@ export const getScrollPositionAfterPrevNextClick = (
   direction: string,
   currentScrollPosition: number,
   scrollToStep: number,
-  scrollToMax: number,
-  scrollToMin: number
+  scrollToMax: number
 ): number => {
+  const scrollToMin = 0;
   let scrollPosition: number;
   if (direction === 'next') {
     // Go to end of scroll-area when close to edge
