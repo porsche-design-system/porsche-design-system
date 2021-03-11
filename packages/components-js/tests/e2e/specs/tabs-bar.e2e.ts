@@ -18,7 +18,7 @@ import {
   getLifecycleStatus,
   removeAttribute,
 } from '../helpers';
-import type { TabSize } from '@porsche-design-system/components/dist/types/types';
+import { TabSize } from '@porsche-design-system/components/dist/types/types';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
