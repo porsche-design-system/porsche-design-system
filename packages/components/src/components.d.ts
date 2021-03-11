@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
+import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
@@ -165,63 +167,53 @@ export namespace Components {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<
-    'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
-  >;
+        "alignSelf"?: FlexItemAlignSelf;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: FlexItemFlex;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: BreakpointCustomizable<0 | 1>;
+        "grow"?: FlexItemGrow;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-    'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: FlexItemOffset;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: BreakpointCustomizable<1 | 0>;
+        "shrink"?: FlexItemShrink;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-    'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: FlexItemWidth;
     }
     interface PGrid {
         /**
@@ -1088,63 +1080,53 @@ declare namespace LocalJSX {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
          */
-        "alignContent"?: BreakpointCustomizable<
-    'stretch' | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "alignContent"?: FlexAlignContent;
         /**
           * Defines how the flex items are aligned along the cross axis.
          */
-        "alignItems"?: BreakpointCustomizable<'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline'>;
+        "alignItems"?: FlexAlignItems;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
          */
-        "direction"?: BreakpointCustomizable<'row' | 'row-reverse' | 'column' | 'column-reverse'>;
+        "direction"?: FlexDirection;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
          */
-        "inline"?: BreakpointCustomizable<boolean>;
+        "inline"?: FlexInline;
         /**
           * Defines how the flex items are aligned along the main axis.
          */
-        "justifyContent"?: BreakpointCustomizable<
-    'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
-  >;
+        "justifyContent"?: FlexJustifyContent;
         /**
           * If set, overflowing elements will wrap to a new line.
          */
-        "wrap"?: BreakpointCustomizable<'nowrap' | 'wrap' | 'wrap-reverse'>;
+        "wrap"?: FlexWrap;
     }
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
          */
-        "alignSelf"?: BreakpointCustomizable<
-    'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
-  >;
+        "alignSelf"?: FlexItemAlignSelf;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
          */
-        "flex"?: BreakpointCustomizable<'initial' | 'auto' | 'none' | 'equal'>;
+        "flex"?: FlexItemFlex;
         /**
           * The ability to allow/disallow the flex child to grow.
          */
-        "grow"?: BreakpointCustomizable<0 | 1>;
+        "grow"?: FlexItemGrow;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "offset"?: BreakpointCustomizable<
-    'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'
-  >;
+        "offset"?: FlexItemOffset;
         /**
           * The ability to allow/disallow the flex child to shrink.
          */
-        "shrink"?: BreakpointCustomizable<1 | 0>;
+        "shrink"?: FlexItemShrink;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
          */
-        "width"?: BreakpointCustomizable<
-    'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'
-  >;
+        "width"?: FlexItemWidth;
     }
     interface PGrid {
         /**

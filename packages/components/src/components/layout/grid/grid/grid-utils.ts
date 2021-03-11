@@ -1,7 +1,7 @@
 import { mediaQuery } from '@porsche-design-system/utilities';
-import type { JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../types';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss } from '../../../../utils';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
@@ -35,7 +35,7 @@ const baseCss: string = getCss({
   },
 });
 
-const getDirectionStyles = (direction: GridDirection): JssStyle => ({
+const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType): JssStyle => ({
   flexDirection: `${direction} !important`,
 });
 
