@@ -9,7 +9,7 @@ import {
   determineEnableTransitionClass,
 } from '../../../src/components/navigation/tabs-bar/tabs-bar-utils';
 
-fdescribe('tabs-bar', () => {
+describe('tabs-bar', () => {
   describe('tabs-bar-utils', () => {
     const enableTransitionClass = 'p-tabs-bar__status-bar--enable-transition';
 
