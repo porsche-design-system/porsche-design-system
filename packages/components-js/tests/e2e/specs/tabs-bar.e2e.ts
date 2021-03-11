@@ -239,7 +239,7 @@ describe('tabs-bar', () => {
       );
     });
 
-    it('should have offsetLeft on statusbar as the center of unset active tab', async () => {
+    it('should have offsetLeft on statusbar as the center of unset tab', async () => {
       await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true });
       const [firstButton, , thirdButton] = await getAllButtons();
       const statusBar = await getStatusBar();
@@ -249,9 +249,10 @@ describe('tabs-bar', () => {
       const host = await getHost();
       await removeAttribute(host, 'active-tab-index');
       await waitForStencilLifecycle(page);
+      await page.waitForTimeout(40); // class gets set through js, this takes a little time
 
-      expect(Math.round(thirdButtonPosition) + buttonCenter).toEqual(
-        Math.floor((await getElementPositions(page, statusBar)).left)
+      expect(Math.round(thirdButtonPosition + buttonCenter)).toEqual(
+        Math.round((await getElementPositions(page, statusBar)).left)
       );
 
       await clickElement(firstButton);
