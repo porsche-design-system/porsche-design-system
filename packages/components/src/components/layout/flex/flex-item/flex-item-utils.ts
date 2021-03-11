@@ -81,9 +81,9 @@ export const getDynamicCss = (
       buildResponsiveJss(width, getWidthStyles),
       buildResponsiveJss(offset, getOffsetStyles),
       buildResponsiveJss(alignSelf, getAlignSelfStyles),
-      buildResponsiveJss(grow, getGrowStyles),
-      buildResponsiveJss(shrink, getShrinkStyles),
-      buildResponsiveJss(flex, getFlexStyles)
+      flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
+        ? buildResponsiveJss(flex, getFlexStyles)
+        : mergeDeep(buildResponsiveJss(grow, getGrowStyles), buildResponsiveJss(shrink, getShrinkStyles))
     )
   );
 };
