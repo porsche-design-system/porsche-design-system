@@ -1,4 +1,4 @@
-# Modal
+# p-modal
 
 
 
@@ -20,3 +20,8 @@
 | Event   | Description                                       | Type                |
 | ------- | ------------------------------------------------- | ------------------- |
 | `close` | Emitted when the component requests to be closed. | `CustomEvent<void>` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
