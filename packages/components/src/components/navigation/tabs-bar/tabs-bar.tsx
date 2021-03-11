@@ -7,8 +7,8 @@ import type {
   Theme,
 } from '../../../types';
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import type { Direction } from './tabs-bar-utils';
 import {
+  Direction,
   FOCUS_PADDING_WIDTH,
   addEnableTransitionClass,
   getScrollActivePosition,
