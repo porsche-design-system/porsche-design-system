@@ -34,19 +34,11 @@ export class Flex {
   /** This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis. */
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
-  public componentWillLoad(): void {
-    this.addCss();
-  }
-
-  public componentWillUpdate(): void {
-    this.addCss();
+  public componentWillRender(): void {
+    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
   }
 
   public render(): JSX.Element {
     return <slot />;
-  }
-
-  private addCss(): void {
-    addCss(this.host, this.inline, this.wrap, this.direction, this.justifyContent, this.alignItems, this.alignContent);
   }
 }

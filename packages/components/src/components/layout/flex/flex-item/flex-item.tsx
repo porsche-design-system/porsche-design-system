@@ -34,19 +34,11 @@ export class FlexItem {
   /** The shorthand property for the combined definition of "shrink", "grow" and "basis" */
   @Prop() public flex?: FlexItemFlex = 'initial';
 
-  public componentWillLoad(): void {
-    this.addCss();
-  }
-
-  public componentWillUpdate(): void {
-    this.addCss();
+  public componentWillRender(): void {
+    addCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
   }
 
   public render(): JSX.Element {
     return <slot />;
-  }
-
-  private addCss(): void {
-    addCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
   }
 }
