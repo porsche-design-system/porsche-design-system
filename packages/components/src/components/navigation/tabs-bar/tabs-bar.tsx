@@ -12,10 +12,11 @@ import {
   FOCUS_PADDING_WIDTH,
   addEnableTransitionClass,
   getScrollActivePosition,
-  getXTranslationToInactive,
   sanitizeActiveTabIndex,
   determineEnableTransitionClass,
   getScrollPositionAfterPrevNextClick,
+  getTransformationToInactive,
+  getTransformationToActive,
 } from './tabs-bar-utils';
 import {
   getHTMLElement,
@@ -24,9 +25,8 @@ import {
   isDark,
   mapBreakpointPropToPrefixedClasses,
   prefix,
+  setAttribute,
 } from '../../../utils';
-
-import { pxToRem } from '@porsche-design-system/utilities';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -85,7 +85,11 @@ export class TabsBar {
     this.defineHTMLElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
     this.setAccessibilityAttributes();
-    this.scrollActiveTabIntoView({ skipAnimation: true });
+
+    if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
+      // skip scrolling on first render when no activeTabIndex is set
+      this.scrollActiveTabIntoView({ skipAnimation: true });
+    }
     // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setStatusBarStyle();
@@ -200,18 +204,13 @@ export class TabsBar {
     // handle initial inactive + active to inactive cases
     if (this.activeTabIndex === undefined) {
       addEnableTransitionClass(this.statusBarElement);
-      const xTranslateInRem = getXTranslationToInactive(this.tabElements[this.prevActiveTabIndex]);
-      this.statusBarElement.setAttribute('style', `transform: translate3d(${xTranslateInRem},0,0); width: 0;`);
+      const transformationToInactive = getTransformationToInactive(this.tabElements[this.prevActiveTabIndex]);
+      setAttribute(this.statusBarElement, 'style', transformationToInactive);
     } else {
       // handle initial active + active to active + inactive to active cases
       determineEnableTransitionClass(this.activeTabIndex, this.prevActiveTabIndex, this.statusBarElement);
-      const { offsetWidth, offsetLeft } = this.tabElements[this.activeTabIndex] ?? {};
-      const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
-      const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
-      this.statusBarElement.setAttribute(
-        'style',
-        `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`
-      );
+      const transformationToActive = getTransformationToActive(this.tabElements[this.activeTabIndex]);
+      setAttribute(this.statusBarElement, 'style', transformationToActive);
     }
   };
 
@@ -318,11 +317,6 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
-    if (this.direction === 'next' && this.activeTabIndex === undefined) {
-      // special case on first render where direction is 'next' and activeTabIndex is undefined
-      return;
-    }
-
     const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
 
@@ -356,8 +350,7 @@ export class TabsBar {
       direction,
       currentScrollPosition,
       scrollToStep,
-      scrollToMax,
-      0
+      scrollToMax
     );
     this.scrollTo(scrollPosition);
   };
