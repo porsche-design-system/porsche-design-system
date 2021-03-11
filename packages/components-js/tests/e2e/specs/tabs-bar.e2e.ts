@@ -249,7 +249,7 @@ describe('tabs-bar', () => {
       const host = await getHost();
       await removeAttribute(host, 'active-tab-index');
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(40); // class gets set through js, this takes a little time
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.round(thirdButtonPosition + buttonCenter)).toEqual(
         Math.round((await getElementPositions(page, statusBar)).left)
