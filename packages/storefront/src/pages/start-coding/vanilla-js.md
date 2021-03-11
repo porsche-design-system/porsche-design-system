@@ -41,7 +41,6 @@ See [componentsReady()](#/helpers/components-ready) for further information.
 
 ### Prefixing
 You can load the Porsche Design System with a custom unique prefix to prevent conflicts. Just pass the prefix as a parameter to the `load` method.
-Keep in mind that prefixed versions only work with components that use shadow root. This means, that if you do use prefixes, you can't use `p-flex` or `p-flex-item`.
 
 ```html
 <!DOCTYPE html>
