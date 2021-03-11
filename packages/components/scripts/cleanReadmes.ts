@@ -3,26 +3,46 @@ import * as path from 'path';
 import * as globby from 'globby';
 import { capitalCase } from 'change-case';
 
-const removeGraph = (str: string): string => str.replace(/### Graph\s+```.*```/gs, '');
 const removeGenerator = (str: string): string =>
-  str.replace(/----------------------------------------------\s+\*Built with.*/g, '');
-const removeWhitespace = (str: string): string => str.replace(/^\s+|\s+$/g, '');
+  str.replace(/\s+----------------------------------------------\s+\*Built with.*/g, '');
 
-const replaceHeadline = (readme: string): string => {
-  const [, tagName] = readme.match(/# (.*)/) ?? [];
+const transformDoubleToSingleQuotes = (str: string): string => str.replace(/"/g, "'");
+
+const replaceHeadline = (str: string): string => {
+  const [, tagName] = str.match(/# (.*)/) ?? [];
   const cleanedTagName = tagName.replace(/^p-|-wrapper/g, '');
   const componentHeadline = capitalCase(cleanedTagName);
-
+  console.log(cleanedTagName, '\n---------------------------------\n');
   const headline =
     cleanedTagName === 'headline' || cleanedTagName === 'text'
       ? `Typography\n\n## ${componentHeadline}`
       : componentHeadline;
 
-  return readme.replace(tagName, headline);
+  return str.replace(tagName, headline);
+};
+
+const fixBreakpointCustomizable = (str: string): string => {
+  return str.replace(/(?:\|\s`.*?`\s*?){2}\|.*?\|\s`(.*?)`/g, (match, group) => {
+    let [, breakpointCustomizable] = group.match(/string\s\\\|\s{.*?base:\s(.*?);\s}/) ?? [];
+
+    if (breakpointCustomizable) {
+      // Sort if Numbers
+      if (breakpointCustomizable.match(/\s\d+\s/)?.length) {
+        breakpointCustomizable = breakpointCustomizable
+          .split(' \\| ')
+          .map((x: string) => (isNaN(+x) ? x : +x))
+          .sort((a: any, b: any) => a - b)
+          .join(' \\| ');
+      }
+
+      match = match.replace(group, `${breakpointCustomizable} \\| BreakpointCustomizable<${breakpointCustomizable}>`);
+    }
+    return match;
+  });
 };
 
 const cleanReadme = (fileContent: string): string => {
-  return [replaceHeadline, removeGenerator, removeGraph, removeWhitespace].reduce(
+  return [replaceHeadline, removeGenerator, transformDoubleToSingleQuotes, fixBreakpointCustomizable].reduce(
     (previousResult, fn) => fn(previousResult),
     fileContent
   );
