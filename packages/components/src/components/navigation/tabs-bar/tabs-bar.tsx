@@ -178,11 +178,13 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     for (const [index, tab] of Object.entries(this.tabElements)) {
-      const isActiveTab = this.activeTabIndex === +index;
+      const tabIndex = this.activeTabIndex ?? 0;
+      const isFocusable = tabIndex === +index;
+      const isSelected = this.activeTabIndex === +index;
       const attrs = {
         'role': 'tab',
-        'tabindex': isActiveTab ? '0' : '-1',
-        'aria-selected': isActiveTab ? 'true' : 'false',
+        'tabindex': isFocusable ? '0' : '-1',
+        'aria-selected': isSelected ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
         tab.setAttribute(key, value);
@@ -316,8 +318,8 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
-    if (this.direction === 'next' && this.activeTabIndex === 0) {
-      // special case on first render where direction is 'next'  and activeTabIndex is 0
+    if (this.direction === 'next' && this.activeTabIndex === undefined) {
+      // special case on first render where direction is 'next' and activeTabIndex is undefined
       return;
     }
 
