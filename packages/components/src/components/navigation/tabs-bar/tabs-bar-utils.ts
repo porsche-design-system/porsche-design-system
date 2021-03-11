@@ -6,9 +6,10 @@ export const FOCUS_PADDING_WIDTH = 4;
 const ENABLE_TRANSITION_CLASS = 'tabs-bar__status-bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
-  if (index === undefined) {
+  if (index === undefined || index === null || isNaN(index)) {
     return undefined;
   }
+
   const maxIndex = tabElementsCount - 1; // can be -1 without children
   let sanitizedIndex: number;
 
