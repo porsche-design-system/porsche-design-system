@@ -32,8 +32,6 @@ Can be used along with [Grid](#/components/grid), [Flex](#/components/flex) or w
   </select>
 </Playground>
 
-#ececec
-
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
