@@ -1,5 +1,5 @@
 import { SpecReporter } from 'jasmine-spec-reporter';
-import CustomReporter = jasmine.CustomReporter;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter((new SpecReporter() as unknown) as CustomReporter);
+//@ts-ignore till https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
+jasmine.getEnv().addReporter(new SpecReporter());
