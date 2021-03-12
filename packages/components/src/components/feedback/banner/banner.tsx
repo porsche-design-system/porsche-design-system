@@ -1,5 +1,5 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
-import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark } from '../../../utils';
+import { prefix, getPrefixedTagNames, insertSlottedStyles, hasNamedSlot, isDark, getTagName } from '../../../utils';
 import type { BannerState, Theme } from '../../../types';
 
 @Component({
@@ -124,7 +124,7 @@ export class Banner {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

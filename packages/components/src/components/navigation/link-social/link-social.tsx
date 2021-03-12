@@ -1,6 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   getPrefixedTagNames,
+  getTagName,
   improveFocusHandlingForCustomElement,
   insertSlottedStyles,
   isDark,
@@ -111,7 +112,7 @@ export class LinkSocial {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `
     /* this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-( */
     ${tagName} a::before {

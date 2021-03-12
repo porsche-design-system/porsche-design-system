@@ -4,6 +4,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
+  getTagName,
   hasNamedSlot,
   insertSlottedStyles,
   isDark,
@@ -664,7 +665,7 @@ export class SelectWrapper {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

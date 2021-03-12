@@ -2,6 +2,7 @@ import { JSX, Host, Component, Prop, h, Element, forceUpdate } from '@stencil/co
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   hasNamedSlot,
   insertSlottedStyles,
   isRequired,
@@ -147,7 +148,7 @@ export class CheckboxWrapper {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
