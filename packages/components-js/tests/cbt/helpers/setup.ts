@@ -1,6 +1,7 @@
 import { SpecReporter } from 'jasmine-spec-reporter';
 import { CrossBrowserTester, CrossBrowserTestOptions } from '@porsche-ui/cross-browser-tester';
 import { config } from 'dotenv';
+import CustomReporter = jasmine.CustomReporter;
 
 config();
 let crossBrowserTester: CrossBrowserTester;
@@ -23,7 +24,7 @@ const options: CrossBrowserTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new SpecReporter());
+jasmine.getEnv().addReporter(new SpecReporter() as CustomReporter);
 
 export const getCrossBrowserTester = (): CrossBrowserTester => {
   if (!crossBrowserTester) {
