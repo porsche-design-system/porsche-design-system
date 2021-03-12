@@ -3,6 +3,7 @@ import {
   getAttribute,
   getClosestHTMLElement,
   getPrefixedTagNames,
+  getTagName,
   insertSlottedStyles,
   prefix,
 } from '../../../../utils';
@@ -41,7 +42,7 @@ export class TextListItem {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
