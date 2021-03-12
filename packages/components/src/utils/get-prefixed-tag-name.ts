@@ -1,7 +1,6 @@
-import { camelCase } from 'change-case';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { getTagName } from './dom';
+import { getTagName, paramCaseToCamelCase } from '.';
 
 type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
@@ -12,7 +11,7 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = prefixRegex.exec(getTagName(host)) ?? [];
   const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
   for (const tag of TAG_NAMES) {
-    tagNames[camelCase(tag)] = `${prefix}${tag}`;
+    tagNames[paramCaseToCamelCase(tag)] = `${prefix}${tag}`;
   }
   return tagNames;
 };
