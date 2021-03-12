@@ -115,7 +115,7 @@ export class Modal {
       Object.values(PrefixedTagNames).join(',') +
       `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
 
-    this.focusableElements = [this.closeBtn].concat(Array.from(getHTMLElements(this.host, selector)));
+    this.focusableElements = [this.closeBtn].concat(getHTMLElements(this.host, selector));
   };
 
   private setScrollLock = (lock: boolean): void => {
