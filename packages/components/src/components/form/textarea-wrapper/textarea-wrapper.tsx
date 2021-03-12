@@ -83,7 +83,7 @@ export class TextareaWrapper {
       [prefix(`textarea-wrapper__message--${this.state}`)]: true,
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>

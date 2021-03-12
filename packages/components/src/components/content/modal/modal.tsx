@@ -63,7 +63,7 @@ export class Modal {
     const btnCloseWrapperClasses = prefix('modal__close');
     const btnCloseClasses = prefix('modal__close-button');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
@@ -102,13 +102,7 @@ export class Modal {
   }
 
   private setFocusableElements = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, [
-      'p-button',
-      'p-button-pure',
-      'p-link',
-      'p-link-pure',
-      'p-link-social',
-    ]);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const notDisabled = ':not([disabled])';
     const selector =

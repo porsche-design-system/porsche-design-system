@@ -62,7 +62,7 @@ export class Link {
     const iconClasses = prefix('link__icon');
     const labelClasses = prefix('link__label');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <TagType

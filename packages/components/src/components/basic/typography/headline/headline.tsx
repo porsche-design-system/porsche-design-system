@@ -47,7 +47,7 @@ export class Headline {
       [prefix('headline--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <TagName class={headlineClasses}>

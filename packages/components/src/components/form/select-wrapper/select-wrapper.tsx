@@ -157,7 +157,7 @@ export class SelectWrapper {
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -527,7 +527,7 @@ export class SelectWrapper {
   };
 
   private createFakeOptionList(): JSX.Element[][] {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return !this.filterHasResults ? (
       <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
         <span aria-hidden="true">---</span>

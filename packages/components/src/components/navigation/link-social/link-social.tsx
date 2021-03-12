@@ -85,7 +85,7 @@ export class LinkSocial {
     const iconClasses = prefix('link-social__icon');
     const labelClasses = prefix('link-social__label');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <TagType

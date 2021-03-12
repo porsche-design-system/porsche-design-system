@@ -65,7 +65,7 @@ export class Tabs {
   public render(): JSX.Element {
     const tabsClasses = prefix('tabs');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-bar']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host>
         <div class={tabsClasses}>
@@ -90,7 +90,7 @@ export class Tabs {
   }
 
   private defineTabsItemElements = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-tabs-item']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     this.tabsItemElements = getHTMLElements(this.host, PrefixedTagNames.pTabsItem);
   };
 

@@ -100,7 +100,7 @@ export class TextFieldWrapper {
       [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
