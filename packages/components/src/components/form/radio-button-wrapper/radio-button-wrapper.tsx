@@ -72,7 +72,7 @@ export class RadioButtonWrapper {
       [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>

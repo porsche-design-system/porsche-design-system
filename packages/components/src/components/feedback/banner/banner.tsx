@@ -62,13 +62,7 @@ export class Banner {
     const bannerLabelId = prefix('banner-label');
     const bannerDescriptionId = prefix('banner-description');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, [
-      'p-content-wrapper',
-      'p-headline',
-      'p-text',
-      'p-icon',
-      'p-button-pure',
-    ]);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <PrefixedTagNames.pContentWrapper

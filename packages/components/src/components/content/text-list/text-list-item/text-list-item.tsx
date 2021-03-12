@@ -21,7 +21,7 @@ export class TextListItem {
   }
 
   public render(): JSX.Element {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const listType = getAttribute(list, 'list-type');
     const orderType = getAttribute(list, 'order-type');
