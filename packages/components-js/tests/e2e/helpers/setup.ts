@@ -1,12 +1,13 @@
 import { Browser, launch } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
+import CustomReporter = jasmine.CustomReporter;
 
 let browser: Browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new SpecReporter());
+jasmine.getEnv().addReporter(new SpecReporter() as CustomReporter);
 
 beforeAll(async () => {
   browser = await launch({
