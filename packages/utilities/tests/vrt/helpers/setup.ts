@@ -1,7 +1,6 @@
 import { VisualRegressionTester, VisualRegressionTestOptions } from '@porsche-design-system/visual-regression-tester';
 import { Browser, launch } from 'puppeteer';
 import { SpecReporter } from 'jasmine-spec-reporter';
-import CustomReporter = jasmine.CustomReporter;
 
 let browser: Browser;
 let visualRegressionTester: VisualRegressionTester;
@@ -20,7 +19,8 @@ const testOptions: VisualRegressionTestOptions = {
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
 
 jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter((new SpecReporter() as unknown) as CustomReporter);
+//@ts-ignore till https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
+jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
   browser = await launch({
