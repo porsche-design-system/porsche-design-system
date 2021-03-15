@@ -1,4 +1,4 @@
-import { ButtonType } from '../types';
+import type { ButtonType } from '../types';
 
 export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
