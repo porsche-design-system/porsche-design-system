@@ -56,7 +56,7 @@ const fixBreakpointCustomizable = (str: string): string => {
   const baseType = `\`type BreakpointCustomizable\<T\> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }\``;
 
   if (breakpointCustomizableTypes.length) {
-    content = content.replace(/## Properties/, `$&\n\n${breakpointCustomizableTypes.join('\n  ')}  \n${baseType}`);
+    content = content.replace(/## Properties/, `$&\n\n${breakpointCustomizableTypes.join('  \n')}  \n${baseType}`);
   }
 
   return content;

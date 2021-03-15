@@ -7,12 +7,12 @@
 
 ## Properties
 
-`type AlignSelf = 'center' | 'auto' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline'`
-  `type Flex = 'none' | 'auto' | 'initial' | 'equal'`
-  `type Grow = 0 | 1`
-  `type Offset = 'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'`
-  `type Shrink = 0 | 1`
-  `type Width = 'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'`  
+`type AlignSelf = 'center' | 'auto' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline'`  
+`type Flex = 'none' | 'auto' | 'initial' | 'equal'`  
+`type Grow = 0 | 1`  
+`type Offset = 'none' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters'`  
+`type Shrink = 0 | 1`  
+`type Width = 'auto' | 'one-quarter' | 'one-third' | 'half' | 'two-thirds' | 'three-quarters' | 'full'`  
 `type BreakpointCustomizable<T> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }`
 
 | Property    | Attribute    | Description                                                                                                                                                                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Default     |

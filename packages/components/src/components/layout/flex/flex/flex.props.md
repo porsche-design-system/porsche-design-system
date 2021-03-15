@@ -7,12 +7,12 @@
 
 ## Properties
 
-`type AlignContent = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'`
-  `type AlignItems = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline'`
-  `type Direction = 'row' | 'row-reverse' | 'column' | 'column-reverse'`
-  `type Inline = boolean`
-  `type JustifyContent = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'`
-  `type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse'`  
+`type AlignContent = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'`  
+`type AlignItems = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline'`  
+`type Direction = 'row' | 'row-reverse' | 'column' | 'column-reverse'`  
+`type Inline = boolean`  
+`type JustifyContent = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'`  
+`type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse'`  
 `type BreakpointCustomizable<T> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }`
 
 | Property         | Attribute         | Description                                                                                                                                                               | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Default        |
