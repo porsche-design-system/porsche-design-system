@@ -3,6 +3,7 @@ import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   hasNamedSlot,
   insertSlottedStyles,
   isRequired,
@@ -71,7 +72,7 @@ export class RadioButtonWrapper {
       [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -136,7 +137,7 @@ export class RadioButtonWrapper {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

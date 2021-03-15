@@ -21,7 +21,7 @@ export class TextList {
 
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list-item']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
 
     const textListClasses = {
