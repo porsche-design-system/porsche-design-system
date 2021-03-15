@@ -61,3 +61,9 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     ? `${colors[theme][color]} 0px 0px 0px 1px`
     : `${colors[theme][color]} solid 1px ${offset}`;
 };
+
+export const isElementAtIndexFocused = async (page, elementIndex: number): Promise<boolean> => {
+  const snapshot = await page.accessibility.snapshot();
+  const element = snapshot.children[elementIndex];
+  return element.focused;
+};
