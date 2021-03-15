@@ -10,7 +10,9 @@ const transformDoubleToSingleQuotes = (str: string): string => str.replace(/"/g,
 
 const replaceHeadline = (str: string): string => {
   const [, tagName] = str.match(/# (.*)/) ?? [];
-  const cleanedTagName = tagName.replace(/^p-|-wrapper/g, '');
+  const cleanedTagName = tagName.includes('content-wrapper')
+    ? tagName.replace(/^p-/, '')
+    : tagName.replace(/^p-|-wrapper/g, '');
   const componentHeadline = capitalCase(cleanedTagName);
   const headline =
     cleanedTagName === 'headline' || cleanedTagName === 'text'
