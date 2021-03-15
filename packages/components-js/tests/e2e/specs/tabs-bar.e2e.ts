@@ -37,12 +37,19 @@ describe('tabs-bar', () => {
     otherMarkup?: string;
     tag?: 'a' | 'button';
   };
-
+  const clickHandlerScript = `
+    <script>
+      const tabsBar = document.getElementById('tabs-bar');
+      tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+          const { activeTabIndex } = tabChangeEvent.detail;
+          tabsBar.setAttribute('active-tab-index', activeTabIndex);
+      });
+    </script>`;
   const initTabsBar = async (opts?: InitOptions) => {
     const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-    const content = `<p-tabs-bar size="${size}" ${
+    const content = `<p-tabs-bar id="tabs-bar" size="${size}" ${
       activeTabIndex !== undefined ? `active-tab-index="${activeTabIndex}"` : ''
     }>
   ${Array.from(Array(amount))
@@ -189,7 +196,7 @@ describe('tabs-bar', () => {
     });
 
     it('should scroll to correct position on tab click', async () => {
-      await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
+      await initTabsBar({ isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const [, , , button4, button5] = await getAllButtons();
       const gradient = await getGradientNext();
       const gradientWidth = await getOffsetWidth(gradient);
@@ -225,7 +232,7 @@ describe('tabs-bar', () => {
     });
 
     it('should have same offsetLeft on statusbar and active tab', async () => {
-      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true });
+      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true, otherMarkup: clickHandlerScript });
       const [firstButton, , thirdButton] = await getAllButtons();
       const statusBar = await getStatusBar();
       const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
@@ -239,11 +246,11 @@ describe('tabs-bar', () => {
       );
     });
 
-    it('should have offsetLeft on statusbar as the center of unset tab', async () => {
-      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true });
+    fit('should have offsetLeft on statusbar as the center of unset tab', async () => {
+      await initTabsBar({ amount: 6, activeTabIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
       const [firstButton, , thirdButton] = await getAllButtons();
       const statusBar = await getStatusBar();
-      const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
+      const firstButtonPosition = (await getElementPositions(page, firstButton)).left;
       const buttonWidth = await getOffsetWidth(thirdButton);
       const buttonCenter = +buttonWidth / 2;
       const host = await getHost();
@@ -251,19 +258,18 @@ describe('tabs-bar', () => {
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.round(thirdButtonPosition + buttonCenter)).toEqual(
-        Math.round((await getElementPositions(page, statusBar)).left)
-      );
+      expect(Math.floor(firstButtonPosition + buttonCenter)).toEqual((await getElementPositions(page, statusBar)).left);
 
-      await clickElement(firstButton);
+      await clickElement(thirdButton);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect((await getElementPositions(page, firstButton)).left).toEqual(
-        Math.floor((await getElementPositions(page, statusBar)).left)
+      expect(Math.floor((await getElementPositions(page, thirdButton)).left)).toEqual(
+        (await getElementPositions(page, statusBar)).left
       );
     });
 
     it('should have correct scroll position after tab click and arrow left', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0 });
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const { prevButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
       const button3 = allButtons[2];
@@ -291,7 +297,7 @@ describe('tabs-bar', () => {
     });
 
     it('should have correct scroll position after tab click and arrow right', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7 });
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7, otherMarkup: clickHandlerScript });
       const { nextButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
       const button7 = allButtons[6];
@@ -445,7 +451,7 @@ describe('tabs-bar', () => {
     });
 
     it('should render correct active tab on focus change and enter press', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const [firstButton, secondButton] = await getAllButtons();
 
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
@@ -730,7 +736,7 @@ describe('tabs-bar', () => {
 
   describe('focus state', () => {
     it('should be shown by keyboard navigation only with buttons', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
 
       const [, secondButton] = await getAllButtons();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
@@ -752,7 +758,7 @@ describe('tabs-bar', () => {
     });
 
     it('should be shown by keyboard navigation only with anchors', async () => {
-      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0, otherMarkup: clickHandlerScript });
 
       const [, secondLink] = await getAllLinks();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
