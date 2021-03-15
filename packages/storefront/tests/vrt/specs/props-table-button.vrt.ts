@@ -1,13 +1,13 @@
 import { getVisualRegressionTesterPropTable } from '../helpers/setup';
 
-describe('Prop Table Tabs-Bar', () => {
+describe('Props Table Button', () => {
   it('should have no visual regression', async () => {
     const vrt = getVisualRegressionTesterPropTable();
     expect(
       await vrt.test(
-        'prop-table-tabs-bar',
+        'props-table-button',
         async () => {
-          await vrt.goTo('/#/components/tabs-bar#props');
+          await vrt.goTo('/#/components/button#props');
         },
         { elementSelector: '#app > .main > .router-view' }
       )
