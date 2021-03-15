@@ -4,18 +4,18 @@ import { getTagName, paramCaseToCamelCase } from '.';
 
 type PrefixedTagNames = { [key in TagNameCamelCase]: string };
 
-export const CACHE = new Map<string, PrefixedTagNames>();
+export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = /^(.*)-p-(.*)$/.exec(getTagName(host)) || [];
 
-  if (!CACHE.has(prefix)) {
+  if (!PREFIXED_TAG_NAMES_CACHE.has(prefix)) {
     const tagNames: PrefixedTagNames = {} as PrefixedTagNames;
     for (const tag of TAG_NAMES) {
       tagNames[paramCaseToCamelCase(tag)] = prefix ? `${prefix}-${tag}` : tag;
     }
-    CACHE.set(prefix, tagNames);
+    PREFIXED_TAG_NAMES_CACHE.set(prefix, tagNames);
   }
 
-  return CACHE.get(prefix);
+  return PREFIXED_TAG_NAMES_CACHE.get(prefix);
 };

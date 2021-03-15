@@ -1,9 +1,9 @@
-import { getPrefixedTagNames, CACHE } from '../../../src/utils';
+import { getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from '../../../src/utils';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
 describe('getPrefixedTagNames', () => {
   beforeEach(() => {
-    CACHE.clear();
+    PREFIXED_TAG_NAMES_CACHE.clear();
   });
 
   it('should return an object with a mapping of all tag names to the prefixed ones', () => {
@@ -17,29 +17,29 @@ describe('getPrefixedTagNames', () => {
   });
 
   it('should cache result', () => {
-    expect(CACHE.size).toEqual(0);
+    expect(PREFIXED_TAG_NAMES_CACHE.size).toEqual(0);
     getPrefixedTagNames(document.createElement('p-button'));
-    expect(CACHE.has('')).toEqual(true);
-    expect(CACHE.size).toEqual(1);
+    expect(PREFIXED_TAG_NAMES_CACHE.has('')).toEqual(true);
+    expect(PREFIXED_TAG_NAMES_CACHE.size).toEqual(1);
   });
 
   it('should not cache result for identical prefix', () => {
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('p-button'));
-    expect(CACHE.has('')).toEqual(true);
-    expect(CACHE.size).toEqual(1);
+    expect(PREFIXED_TAG_NAMES_CACHE.has('')).toEqual(true);
+    expect(PREFIXED_TAG_NAMES_CACHE.size).toEqual(1);
   });
 
   it('should extend cache on 2nd call for different prefix', () => {
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('pux-p-button'));
-    expect(CACHE.has('')).toEqual(true);
-    expect(CACHE.has('pux')).toEqual(true);
-    expect(CACHE.size).toEqual(2);
+    expect(PREFIXED_TAG_NAMES_CACHE.has('')).toEqual(true);
+    expect(PREFIXED_TAG_NAMES_CACHE.has('pux')).toEqual(true);
+    expect(PREFIXED_TAG_NAMES_CACHE.size).toEqual(2);
   });
 
   it('should return cached result after first call', () => {
-    const spy = jest.spyOn(CACHE, 'set');
+    const spy = jest.spyOn(PREFIXED_TAG_NAMES_CACHE, 'set');
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('p-button'));
     expect(spy).toHaveBeenCalledTimes(1);
