@@ -18,8 +18,20 @@ in your application! Therefore, we avoid messing with the window location.
 
 ## Basic example
 
+`p-tabs-bar` is a component which does not work by itself and needs to be controlled from the outside.
+This grants you flexible control over the active tab.
+
+
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
-tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors. 
+tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
+
+In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by p-tabs-bar.
+```
+tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+  const { activeTabIndex } = tabChangeEvent.detail;
+  tabsBar.setAttribute('active-tab-index', activeTabIndex);
+});
+```
 
 <Playground :markup="basicButton" :config="config"></Playground>
 <Playground :markup="basicAnchor" :config="config"></Playground>
@@ -145,7 +157,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
       const themeTabs = this.$el.querySelectorAll('.playground-tabs-bar p-tabs-bar');
       themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
         this.registerEvents();
-      }));
+      }));    
     }
     
     updated(){
