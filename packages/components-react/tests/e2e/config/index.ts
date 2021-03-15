@@ -6,7 +6,8 @@ export let browser: Browser;
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
 jasmine.getEnv().clearReporters();
-//@ts-ignore till https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
+// TODO: remove @ts-ignore when https://github.com/bcaudan/jasmine-spec-reporter/issues/588 is fixed
+//@ts-ignore
 jasmine.getEnv().addReporter(new SpecReporter());
 
 beforeAll(async () => {
