@@ -63,4 +63,6 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   return el;
 }
 
+export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
+
 // TODO: add addEventListener and removeEventListener
