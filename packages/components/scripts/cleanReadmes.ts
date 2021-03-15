@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { capitalCase } from 'change-case';
+import { capitalCase, pascalCase } from 'change-case';
 
 const removeGenerator = (str: string): string =>
   str.replace(/\s+----------------------------------------------\s+\*Built with.*/g, '');
@@ -12,7 +12,6 @@ const replaceHeadline = (str: string): string => {
   const [, tagName] = str.match(/# (.*)/) ?? [];
   const cleanedTagName = tagName.replace(/^p-|-wrapper/g, '');
   const componentHeadline = capitalCase(cleanedTagName);
-  console.log(cleanedTagName, '\n---------------------------------\n');
   const headline =
     cleanedTagName === 'headline' || cleanedTagName === 'text'
       ? `Typography\n\n## ${componentHeadline}`
@@ -22,8 +21,10 @@ const replaceHeadline = (str: string): string => {
 };
 
 const fixBreakpointCustomizable = (str: string): string => {
-  return str.replace(/(?:\|\s`.*?`\s*?){2}\|.*?\|\s`(.*?)`/g, (match, group) => {
-    let [, breakpointCustomizable] = group.match(/string\s\\\|\s{.*?base:\s(.*?);\s}/) ?? [];
+  const breakpointCustomizableTypes: string[] = [];
+
+  let content = str.replace(/(?:\|\s`(.*?)`\s*?){2}\|.*?\|\s`(.*?)`/g, (match, attribute, attributeType) => {
+    let [, breakpointCustomizable] = attributeType.match(/string\s\\\|\s{.*?base:\s(.*?);\s}/) ?? [];
 
     if (breakpointCustomizable) {
       // Sort if Numbers
@@ -34,18 +35,40 @@ const fixBreakpointCustomizable = (str: string): string => {
           .sort((a: any, b: any) => a - b)
           .join(' \\| ');
       }
+      const transformedAttribute = pascalCase(attribute);
+      const cleanBreakpointCustomizable = breakpointCustomizable.replace(/\\\|/g, '|');
+      breakpointCustomizableTypes.push(`\`type ${transformedAttribute} = ${cleanBreakpointCustomizable}\`  `);
 
-      match = match.replace(group, `${breakpointCustomizable} \\| BreakpointCustomizable<${breakpointCustomizable}>`);
+      match = match.replace(
+        attributeType,
+        `${breakpointCustomizable} \\| BreakpointCustomizable<${transformedAttribute}>`
+      );
     }
     return match;
   });
+
+  const baseType = `\`type BreakpointCustomizable\<T\> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }\``;
+
+  if (breakpointCustomizableTypes.length) {
+    content = content.replace(
+      /## Properties/,
+      `## Properties\n\n${breakpointCustomizableTypes.join('\n')}  \n${baseType}`
+    );
+  }
+
+  return content;
 };
 
+const addNewLines = (str: string): string => str.replace(/\s\\\|\s/g, '` <br>$&`');
+
 const cleanReadme = (fileContent: string): string => {
-  return [replaceHeadline, removeGenerator, transformDoubleToSingleQuotes, fixBreakpointCustomizable].reduce(
-    (previousResult, fn) => fn(previousResult),
-    fileContent
-  );
+  return [
+    replaceHeadline,
+    removeGenerator,
+    transformDoubleToSingleQuotes,
+    fixBreakpointCustomizable,
+    addNewLines,
+  ].reduce((previousResult, fn) => fn(previousResult), fileContent);
 };
 
 const cleanReadmes = () => {
@@ -58,8 +81,8 @@ const cleanReadmes = () => {
 
     const content = cleanReadme(sourceFileContent);
 
-    fs.writeFileSync(path.normalize(`${sourceDirectory}/${componentName}.props.md`), content);
-    /*fs.renameSync(path.normalize(file), path.normalize(`${sourceDirectory}/${componentName}.props.md`));*/
+    fs.writeFileSync(path.normalize(file), content);
+    fs.renameSync(path.normalize(file), path.normalize(`${sourceDirectory}/${componentName}.props.md`));
   }
 };
 
