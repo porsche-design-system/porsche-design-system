@@ -38,7 +38,7 @@ const variantToTagMap: { [key in VariantType]: string } = {
   'headline-5': 'h5',
 };
 
-export const getTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
+export const getHeadlineTagName = (host: HTMLElement, variant?: HeadlineVariant, tag?: HeadlineTag): string => {
   if (hasSlottedHeadlineTag(host)) {
     return 'div';
   } else if (tag) {
