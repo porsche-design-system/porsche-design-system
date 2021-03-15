@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "2.0.0",
-    "@porsche-design-system/components-js": "2.0.0-rc.6",
+    "@porsche-design-system/components-js": "2.0.0-rc.7",
     "change-case": "^4.1.2",
     "core-js": "^3.9.1",
     "prismjs": "^1.21.0",
