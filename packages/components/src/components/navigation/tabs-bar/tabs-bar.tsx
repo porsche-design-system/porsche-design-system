@@ -63,7 +63,7 @@ export class TabsBar {
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private statusBarElement: HTMLElement;
-  private gradientElements: HTMLElement[];
+  private firstGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveTabIndex: number;
 
@@ -71,9 +71,9 @@ export class TabsBar {
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.prevActiveTabIndex = oldValue;
-    this.direction = this.activeTabIndex > oldValue ? 'next' : 'prev';
+    this.direction = this.activeTabIndex > this.prevActiveTabIndex ? 'next' : 'prev';
     this.setAccessibilityAttributes();
-    this.tabChange.emit({ activeTabIndex: this.activeTabIndex });
+    this.scrollActiveTabIntoView();
   }
 
   public connectedCallback(): void {
@@ -218,7 +218,7 @@ export class TabsBar {
     const { shadowRoot } = this.host;
     this.statusBarElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
     this.scrollAreaElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
-    this.gradientElements = getHTMLElements(shadowRoot, `.${prefix('tabs-bar__gradient')}`);
+    this.firstGradientElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__gradient:first-child')}`);
   };
 
   private addEventListeners = (): void => {
@@ -273,8 +273,7 @@ export class TabsBar {
   };
 
   private handleTabClick = (newTabIndex: number): void => {
-    this.activeTabIndex = newTabIndex;
-    this.scrollActiveTabIntoView();
+    this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
   private handleKeydown = (e: KeyboardEvent): void => {
@@ -317,7 +316,7 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
-    const [prevGradientWidth, nextGradientWidth] = this.gradientElements.map((item) => item.offsetWidth);
+    const gradientWidth = this.firstGradientElement.offsetWidth;
     const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
 
     const scrollActivePosition = getScrollActivePosition(
@@ -326,9 +325,8 @@ export class TabsBar {
       this.tabElements.length,
       this.scrollAreaElement.offsetWidth,
       offsetLeft,
-      prevGradientWidth,
-      offsetWidth,
-      nextGradientWidth
+      gradientWidth,
+      offsetWidth
     );
 
     if (opts?.skipAnimation) {
