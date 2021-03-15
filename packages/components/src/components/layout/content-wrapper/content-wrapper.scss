@@ -2,7 +2,7 @@
 @import '../../../styles/internal.variables';
 
 :host {
-  display: block;
+  display: flex;
 }
 
 .#{$p-global-class-prefix}content-wrapper {
@@ -11,6 +11,7 @@
   padding: 0;
   display: block;
   background-color: transparent;
+  width: 100%;
 
   &--basic {
     max-width: p-px-to-rem(1536px);
