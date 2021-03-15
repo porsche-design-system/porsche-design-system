@@ -63,7 +63,7 @@ export class Modal {
     const btnCloseWrapperClasses = prefix('modal__close');
     const btnCloseClasses = prefix('modal__close-button');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-headline', 'p-button-pure']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onClick={!this.disableBackdropClick && this.handleHostClick}>
@@ -102,20 +102,14 @@ export class Modal {
   }
 
   private setFocusableElements = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, [
-      'p-button',
-      'p-button-pure',
-      'p-link',
-      'p-link-pure',
-      'p-link-social',
-    ]);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const notDisabled = ':not([disabled])';
     const selector =
       Object.values(PrefixedTagNames).join(',') +
       `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
 
-    this.focusableElements = [this.closeBtn].concat(Array.from(getHTMLElements(this.host, selector)));
+    this.focusableElements = [this.closeBtn].concat(getHTMLElements(this.host, selector));
   };
 
   private setScrollLock = (lock: boolean): void => {
