@@ -37,8 +37,9 @@ export const supportsConstructableStylesheets = (): boolean => {
   try {
     new CSSStyleSheet();
     return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch (e) {}
-  return false;
+  } catch (e) {
+    return false;
+  }
 };
 
 export const attachCss = (host: HTMLElement, css: string): void => {
@@ -52,7 +53,6 @@ export const attachCss = (host: HTMLElement, css: string): void => {
       host.shadowRoot.adoptedStyleSheets = [newSheet];
     }
   } else {
-    console.log('else');
     // NOTE: fallback for Firefox and Safari
     const styleEl = getShadowRootHTMLElement(host, 'style');
     if (styleEl) {
