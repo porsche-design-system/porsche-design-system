@@ -27,7 +27,7 @@ const replaceHeadline = (str: string): string => {
 const fixBreakpointCustomizable = (str: string): string => {
   const breakpointCustomizableTypes: string[] = [];
 
-  // Matches all rows and columns of the props table and capture the attribute and type column
+  // Matches all rows and columns of the props table to capture the attribute name and type of the property
   let content = str.replace(/(?:\|\s`(.*?)`\s*?){2}\|.*?\|\s`(.*?)`/g, (match, attribute, attributeType) => {
     // Check if the type of the row contains breakpointCustomizable
     let [, breakpointCustomizable] = attributeType.match(/string\s\\\|\s{.*?base:\s(.*?);\s}/) ?? [];
