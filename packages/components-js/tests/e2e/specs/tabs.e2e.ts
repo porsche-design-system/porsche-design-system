@@ -5,6 +5,7 @@ import {
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
+  isElementAtIndexFocused,
   reattachElement,
   selectNode,
   setAttribute,
@@ -116,6 +117,27 @@ describe('tabs', () => {
 
       expect(await getHidden(firstTabsItem)).toBeNull();
       expect(await getHidden(secondTabsItem)).toBe('');
+    });
+    it('should render correct focusedTab on arrow-key press', async () => {
+      await initTabs();
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+
+      await page.keyboard.press('ArrowRight');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
+
+      await page.keyboard.press('ArrowLeft');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
   });
 

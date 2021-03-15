@@ -25,7 +25,7 @@ This grants you flexible control over the active tab.
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
 
-In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by p-tabs-bar.
+In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
 ```
 tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
   const { activeTabIndex } = tabChangeEvent.detail;
