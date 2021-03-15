@@ -57,7 +57,7 @@ In some cases it might be necessary to define or change direction of the columns
 
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
-<Playground :markup="direction('{ base: \'column\', m: \'row\' }', { base: 12, m: 4 })" :config="config"></Playground>
+<Playground :markup="direction('{ base: \'column\', m: \'row\' }', '{ base: 12, m: 4 }')" :config="config"></Playground>
 
 ---
 

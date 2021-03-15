@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   hasNamedSlot,
   insertSlottedStyles,
   isRequired,
@@ -82,7 +83,7 @@ export class TextareaWrapper {
       [prefix(`textarea-wrapper__message--${this.state}`)]: true,
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -158,7 +159,7 @@ export class TextareaWrapper {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

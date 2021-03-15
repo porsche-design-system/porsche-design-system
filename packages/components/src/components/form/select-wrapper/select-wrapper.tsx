@@ -4,6 +4,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getHTMLElements,
   getPrefixedTagNames,
+  getTagName,
   hasNamedSlot,
   insertSlottedStyles,
   isDark,
@@ -156,7 +157,7 @@ export class SelectWrapper {
       [prefix(`select-wrapper__filter-input--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -526,7 +527,7 @@ export class SelectWrapper {
   };
 
   private createFakeOptionList(): JSX.Element[][] {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return !this.filterHasResults ? (
       <div class={prefix('select-wrapper__fake-option')} aria-live="polite" role="status">
         <span aria-hidden="true">---</span>
@@ -664,7 +665,7 @@ export class SelectWrapper {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

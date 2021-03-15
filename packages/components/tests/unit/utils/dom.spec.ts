@@ -1,4 +1,4 @@
-import { getHTMLElementAndThrowIfUndefined, hasNamedSlot, isRequired } from '../../../src/utils';
+import { getHTMLElementAndThrowIfUndefined, getTagName, hasNamedSlot, isRequired } from '../../../src/utils';
 
 describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
@@ -79,5 +79,16 @@ describe('getHTMLElementAndThrowIfUndefined', () => {
       error = e.message;
     }
     expect(error).toBe(undefined);
+  });
+});
+
+describe('getTagName', () => {
+  it.each([
+    ['div', 'div'],
+    ['p-button', 'p-button'],
+    ['SPAN', 'span'],
+  ])('should be called with %s and return %s', (tag, result) => {
+    const el = document.createElement(tag);
+    expect(getTagName(el)).toBe(result);
   });
 });

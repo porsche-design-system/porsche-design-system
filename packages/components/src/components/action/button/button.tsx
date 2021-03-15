@@ -69,7 +69,7 @@ export class Button {
     };
     const iconClasses = prefix('button__icon');
     const labelClasses = prefix('button__label');
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-spinner', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <button
