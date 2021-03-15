@@ -382,7 +382,11 @@ export class TabsBar {
 
   private get focusedTabIndex(): number {
     const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
-    return !this.hasPTabsParent ? (indexOfActiveElement < 0 ? 0 : indexOfActiveElement) : this.activeTabIndex;
+    if (this.hasPTabsParent) {
+      return this.activeTabIndex ? this.activeTabIndex : 0;
+    } else {
+      return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
+    }
   }
 
   private getPrevNextTabIndex = (direction: Direction): number => {

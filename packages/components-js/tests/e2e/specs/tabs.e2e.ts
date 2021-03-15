@@ -7,6 +7,7 @@ import {
   initAddEventListener,
   isElementAtIndexFocused,
   reattachElement,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -14,6 +15,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
@@ -120,6 +122,12 @@ describe('tabs', () => {
     });
     it('should render correct focusedTab on arrow-key press', async () => {
       await initTabs();
+      await initTabs({ activeTabIndex: 2 });
+      const host = await getHost();
+      await removeAttribute(host, 'active-tab-index');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
       expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
 
       await page.keyboard.press('Tab');
