@@ -102,21 +102,19 @@ describe('tabs-bar', () => {
 
     describe('getScrollActivePosition()', () => {
       it('should return scrollActivePosition if scrolling to last tab', () => {
-        expect(getScrollActivePosition('next', 10, 11, undefined, 20, undefined, undefined, undefined)).toBe(16);
+        expect(getScrollActivePosition('next', 10, 11, undefined, 20, undefined, undefined)).toBe(16);
       });
 
       it('should return scrollActivePosition if direction is "next", next tab is set as active', () => {
-        expect(getScrollActivePosition('next', 5, 11, undefined, 20, 20, undefined, undefined)).toBe(8);
+        expect(getScrollActivePosition('next', 5, 11, undefined, 20, 20, undefined)).toBe(8);
       });
 
       it('should return scrollActivePosition if direction is "prev" and first tab is set as active', () => {
-        expect(
-          getScrollActivePosition('prev', 0, undefined, undefined, undefined, undefined, undefined, undefined)
-        ).toBe(0);
+        expect(getScrollActivePosition('prev', 0, undefined, undefined, undefined, undefined, undefined)).toBe(0);
       });
 
       it('should return scrollActivePosition if scrolling to previous tab', () => {
-        expect(getScrollActivePosition('prev', 5, 10, 4, 20, undefined, 20, 5)).toBe(41);
+        expect(getScrollActivePosition('prev', 5, 10, 4, 20, 5, 20)).toBe(41);
       });
     });
 

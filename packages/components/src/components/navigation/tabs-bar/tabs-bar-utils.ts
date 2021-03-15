@@ -65,9 +65,8 @@ export const getScrollActivePosition = (
   tabElementsCount: number,
   scrollAreaOffsetWidth: number,
   activeTabOffsetLeft: number,
-  prevGradientWidth: number,
-  activeTabOffsetWidth: number,
-  nextGradientWidth: number
+  gradientWidth: number,
+  activeTabOffsetWidth: number
 ): number => {
   let scrollPosition;
   if (direction === 'next') {
@@ -76,7 +75,7 @@ export const getScrollActivePosition = (
       scrollPosition = activeTabOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
       // go to next tab
-      scrollPosition = activeTabOffsetLeft - prevGradientWidth + FOCUS_PADDING_WIDTH * 2;
+      scrollPosition = activeTabOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
     if (activeTabIndex === 0) {
@@ -84,7 +83,7 @@ export const getScrollActivePosition = (
       scrollPosition = 0;
     } else {
       // go to prev tab
-      scrollPosition = activeTabOffsetLeft + activeTabOffsetWidth + nextGradientWidth - scrollAreaOffsetWidth;
+      scrollPosition = activeTabOffsetLeft + activeTabOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
     }
   }
   return scrollPosition;
