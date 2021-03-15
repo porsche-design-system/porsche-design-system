@@ -80,11 +80,6 @@ export class InputParser {
   }
 
   public canHaveChildren(component: TagName): boolean {
-    const whitelistedComponents: TagName[] = ['p-flex', 'p-flex-item'];
-    if (whitelistedComponents.includes(component)) {
-      return true;
-    }
-
     const fileName = `${component.replace('p-', '')}.tsx`;
     const [filePath] = globby.sync(`${SRC_DIR}/**/${fileName}`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
