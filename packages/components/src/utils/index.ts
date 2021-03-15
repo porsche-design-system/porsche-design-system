@@ -1,6 +1,7 @@
 export * from './a11y';
 export * from './breakpoint-customizable';
 export * from './button-handling';
+export * from './change-case';
 export * from './device-detection';
 export * from './focus-handling';
 export * from './get-prefixed-tag-name';
