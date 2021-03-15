@@ -254,9 +254,6 @@ register Porsche Design System again it will cause issues especially when differ
 A way of preventing those conflicts is by using a unique custom prefix for the components. Simply pass your desired
 prefix to the `prefix` property of `PorscheDesignSystemProvider`.
 
-Keep in mind. that prefixed versions only work with components that use shadow root. This means, that if you do use
-prefixes, you can't use `p-grid`, `p-grid-item`, `p-flex` or `p-flex-item`.
-
 ```tsx
 // index.tsx
 

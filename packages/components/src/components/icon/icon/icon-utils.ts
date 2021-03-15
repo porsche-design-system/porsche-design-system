@@ -4,7 +4,7 @@
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
 import type { IconName } from '../../../types';
-import { camelCase } from 'change-case';
+import { paramCaseToCamelCase } from '../../../utils';
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);
 
@@ -35,9 +35,9 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
     return buildIconUrl(DEFAULT_ICON_NAME);
   } else if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
-  } else if (ICONS_MANIFEST[camelCase(iconNameOrSource)]) {
+  } else if (ICONS_MANIFEST[paramCaseToCamelCase(iconNameOrSource)]) {
     // check if IconName exists
-    return `${cdnBaseUrl}/${ICONS_MANIFEST[camelCase(iconNameOrSource)]}`;
+    return `${cdnBaseUrl}/${ICONS_MANIFEST[paramCaseToCamelCase(iconNameOrSource)]}`;
   }
 
   // Only occurs if consumer is not using typescript -> necessary?
