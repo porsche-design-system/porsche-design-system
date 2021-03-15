@@ -12,11 +12,7 @@ export class Grid {
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this. */
   @Prop() public direction?: GridDirection = 'row';
 
-  public componentWillLoad(): void {
-    addCss(this.host, this.direction);
-  }
-
-  public componentWillUpdate(): void {
+  public componentWillRender(): void {
     addCss(this.host, this.direction);
   }
 
