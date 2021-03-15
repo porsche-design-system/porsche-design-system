@@ -9,15 +9,17 @@ const removeGenerator = (str: string): string =>
 const transformDoubleToSingleQuotes = (str: string): string => str.replace(/"/g, "'");
 
 const replaceHeadline = (str: string): string => {
-  const [, tagName] = str.match(/# (.*)/) ?? [];
+  const [, tagName] = str.match(/(# .*)/) ?? [];
   const cleanedTagName = tagName.includes('content-wrapper')
-    ? tagName.replace(/^p-/, '')
-    : tagName.replace(/^p-|-wrapper/g, '');
+    ? tagName.replace(/^#\sp-/, '')
+    : tagName.replace(/^#\sp-|-wrapper/g, '');
   const componentHeadline = capitalCase(cleanedTagName);
   const headline =
-    cleanedTagName === 'headline' || cleanedTagName === 'text'
+    cleanedTagName === 'headline'
       ? `Typography\n\n## ${componentHeadline}`
-      : componentHeadline;
+      : cleanedTagName === 'text'
+      ? `## ${componentHeadline}`
+      : `# ${componentHeadline}`;
 
   return str.replace(tagName, headline);
 };
@@ -25,7 +27,9 @@ const replaceHeadline = (str: string): string => {
 const fixBreakpointCustomizable = (str: string): string => {
   const breakpointCustomizableTypes: string[] = [];
 
+  // Matches all rows and columns of the props table and capture the attribute and type column
   let content = str.replace(/(?:\|\s`(.*?)`\s*?){2}\|.*?\|\s`(.*?)`/g, (match, attribute, attributeType) => {
+    // Check if the type of the row contains breakpointCustomizable
     let [, breakpointCustomizable] = attributeType.match(/string\s\\\|\s{.*?base:\s(.*?);\s}/) ?? [];
 
     if (breakpointCustomizable) {
@@ -39,7 +43,7 @@ const fixBreakpointCustomizable = (str: string): string => {
       }
       const transformedAttribute = pascalCase(attribute);
       const cleanBreakpointCustomizable = breakpointCustomizable.replace(/\\\|/g, '|');
-      breakpointCustomizableTypes.push(`\`type ${transformedAttribute} = ${cleanBreakpointCustomizable}\`  `);
+      breakpointCustomizableTypes.push(`\`type ${transformedAttribute} = ${cleanBreakpointCustomizable}\``);
 
       match = match.replace(
         attributeType,
@@ -52,16 +56,13 @@ const fixBreakpointCustomizable = (str: string): string => {
   const baseType = `\`type BreakpointCustomizable\<T\> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }\``;
 
   if (breakpointCustomizableTypes.length) {
-    content = content.replace(
-      /## Properties/,
-      `## Properties\n\n${breakpointCustomizableTypes.join('\n')}  \n${baseType}`
-    );
+    content = content.replace(/## Properties/, `$&\n\n${breakpointCustomizableTypes.join('\n  ')}  \n${baseType}`);
   }
 
   return content;
 };
 
-const addNewLines = (str: string): string => str.replace(/\s\\\|\s/g, '` <br>$&`');
+const addNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>$1` ');
 
 const cleanReadme = (fileContent: string): string => {
   return [
