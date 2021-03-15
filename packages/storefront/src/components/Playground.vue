@@ -1,6 +1,10 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="0">
+    <p-tabs-bar
+      v-if="mergedConfig.themeable"
+      :active-tab-index="activeThemeTabIndex"
+      v-on:tabChange="handleActiveTabIndex"
+    >
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -63,6 +67,12 @@
     @Prop({ default: '' }) public markup!: string;
 
     public theme: Theme = 'light';
+    public activeThemeTabIndex = 0;
+    public handleActiveTabIndex(event: CustomEvent<{ activeTabIndex: number }>): void {
+      const { activeTabIndex } = event.detail;
+      this.activeThemeTabIndex = activeTabIndex;
+    }
+
     public cleanEditorMarkup = cleanMarkup;
 
     public get mergedConfig(): PlaygroundConfig {

@@ -46,6 +46,11 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 <Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
 
 ---
+## Active Tab
+
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection.
+
+<Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
 ## Size
 
@@ -79,12 +84,6 @@ The background and gradient has to align to your chosen background.
     <option value="surface">Surface</option>
   </select>
 </Playground>
-
-## Active Tab
-
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection.    
-
-<Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
 <script lang="ts">
   import Vue from 'vue';
@@ -154,7 +153,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
       this.registerEvents();
       
       // theme switch needs to register event listeners again
-      const themeTabs = this.$el.querySelectorAll('.playground-tabs-bar p-tabs-bar');
+      const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
       themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
         this.registerEvents();
       }));    
@@ -165,9 +164,17 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     }
     
     registerEvents() {
-      const tabsBars = this.$el.querySelectorAll('.playground-tabs-bar .example p-tabs-bar');
+      const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
       tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
         const { activeTabIndex } = e.detail;
+        tabsBar.setAttribute('active-tab-index', activeTabIndex);     
+      }));
+
+      //bind tabsBar with activeTabIndex set as attribute
+      const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
+      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
+        const { activeTabIndex } = e.detail;
+        tabsBar.setAttribute('active-tab-index', activeTabIndex);
         this.updateActiveTabIndex(tabsBar, activeTabIndex);
       }));
     }
@@ -182,7 +189,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
       
       // manipulate activeTabIndex
       if (attrs.length) {
-        attrs[attrs.length - 1].innerText = `="${newIndex}"`;
+        attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
       }
       
       // manipulate hidden attribute in code of accessibility playground
@@ -190,7 +197,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
         if (!this.hiddenNodes) {
           this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         }
-        
+
         // hide/show and adjust offset of hidden attribute
         for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
           const item = this.hiddenNodes.snapshotItem(i);
