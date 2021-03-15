@@ -3,6 +3,7 @@ import {
   getAttribute,
   getClosestHTMLElement,
   getPrefixedTagNames,
+  getTagName,
   insertSlottedStyles,
   prefix,
 } from '../../../../utils';
@@ -20,7 +21,7 @@ export class TextListItem {
   }
 
   public render(): JSX.Element {
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-text-list']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const list = getClosestHTMLElement(this.host, PrefixedTagNames.pTextList);
     const listType = getAttribute(list, 'list-type');
     const orderType = getAttribute(list, 'order-type');
@@ -41,7 +42,7 @@ export class TextListItem {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;
