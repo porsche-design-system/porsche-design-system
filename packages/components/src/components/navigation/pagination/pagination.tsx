@@ -102,7 +102,7 @@ export class Pagination {
 
     const paginationItemClasses = prefix('pagination__item');
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     paginationModel.forEach((pageModel) => {
       const { type, isActive, value } = pageModel;

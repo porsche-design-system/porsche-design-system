@@ -95,7 +95,7 @@ export class ButtonPure {
       ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text', 'p-spinner']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
