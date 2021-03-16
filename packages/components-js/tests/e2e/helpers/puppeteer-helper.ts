@@ -212,7 +212,7 @@ export const removeAttribute = async (element: ElementHandle, key: string): Prom
   if (containsCapitalChar) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
-  await element.evaluate((el, { key }) => el.removeAttribute(key), { key });
+  await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
 export const setProperty = async (
