@@ -43,7 +43,7 @@ const fixBreakpointCustomizable = (str: string): string => {
       }
       const transformedAttribute = pascalCase(attribute);
       const cleanBreakpointCustomizable = breakpointCustomizable.replace(/\\\|/g, '|');
-      breakpointCustomizableTypes.push(`\`type ${transformedAttribute} = ${cleanBreakpointCustomizable}\``);
+      breakpointCustomizableTypes.push(`<code>type ${transformedAttribute} = ${cleanBreakpointCustomizable}</code>`);
 
       match = match.replace(
         attributeType,
@@ -53,16 +53,20 @@ const fixBreakpointCustomizable = (str: string): string => {
     return match;
   });
 
-  const baseType = `\`type BreakpointCustomizable\<T\> = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }\``;
+  const pTag = '<p style="max-width: 100%">';
+  const baseType = `<code>type BreakpointCustomizable&ltT&gt = { base: T; xs?: T; s?: T; m?: T; l?: T; xl?: T; }</code>`;
 
   if (breakpointCustomizableTypes.length) {
-    content = content.replace(/## Properties/, `$&\n\n${breakpointCustomizableTypes.join('  \n')}  \n${baseType}`);
+    content = content.replace(
+      /## Properties/,
+      `$&\n\n${pTag}\n${breakpointCustomizableTypes.join('<br>')}<br>${baseType}</p>`
+    );
   }
 
   return content;
 };
 
-const addNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>$1` ');
+const replacePipesWithNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>` ');
 
 const cleanReadme = (fileContent: string): string => {
   return [
@@ -70,7 +74,7 @@ const cleanReadme = (fileContent: string): string => {
     removeGenerator,
     transformDoubleToSingleQuotes,
     fixBreakpointCustomizable,
-    addNewLines,
+    replacePipesWithNewLines,
   ].reduce((previousResult, fn) => fn(previousResult), fileContent);
 };
 
