@@ -19,8 +19,8 @@ describe('tabs-bar', () => {
         [null, 0, undefined],
         ['asd', 0, undefined],
         [2, 0, undefined],
-        [5, 2, 1],
         [-5, 2, undefined],
+        [5, 2, 1],
         [3, 5, 3],
       ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
         // @ts-ignore ignore warning here so that we can pass a string as index
