@@ -63,6 +63,12 @@ export const ContentWrapperPage = (): JSX.Element => {
           <p style={{ margin: '0 -2000px' }}>Some content</p>
         </PContentWrapper>
       </div>
+
+      <div className="playground" title="should render background for set height" style={{ background: 'deeppink' }}>
+        <PContentWrapper backgroundColor="default" style={{ height: 100 }}>
+          <p>Some content</p>
+        </PContentWrapper>
+      </div>
     </>
   );
 };

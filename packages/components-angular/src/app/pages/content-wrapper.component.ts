@@ -59,6 +59,12 @@ import { Component } from '@angular/core';
         <p style="margin-left: -2000px; margin-right: -2000px;">Some content</p>
       </p-content-wrapper>
     </div>
+
+    <div class="playground" title="should render background for set height" style="background: deeppink">
+      <p-content-wrapper [backgroundColor]="'default'" style="height: 100px">
+        <p>Some content</p>
+      </p-content-wrapper>
+    </div>
   `,
 })
 export class ContentWrapperComponent {}
