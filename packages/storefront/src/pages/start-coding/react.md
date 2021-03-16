@@ -99,19 +99,22 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 ```tsx
 // SingleComponent.tsx
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { PTabsBar } from '@porsche-design-system/components-react';
+import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
 export const SingleComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
+  const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+    const { activeTabIndex } = e.detail;
+    setActiveTab(activeTabIndex);
+  }, []);
 
   return (
     <>
       <PTabsBar
         activeTabIndex={activeTab}
-        onTabChange={(e) => {
-          setActiveTab(e.detail.activeTabIndex);
-        }}
+        onTabChange={handleTabChange}
         data-testid="host"
       >
         <button data-testid="button1">Some label</button>

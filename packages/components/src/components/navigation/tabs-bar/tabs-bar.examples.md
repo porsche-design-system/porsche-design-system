@@ -26,44 +26,54 @@ Basic implementation is a tab bar with tabs to switch between the content. Just 
 tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
 
 In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
-```
-/*
- * Vanilla JS
- */ 
 
+### Vanilla JS
+
+```
 tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
   const { activeTabIndex } = tabChangeEvent.detail;
   tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
 });
+```
 
-/*
- * Angular
- */
- 
-// template
-<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>
-
-// class
-tabIndex:number;
-
-handleTabChange(e: CustomEvent<{ activeTabIndex: number }>) {
-  const { activeTabIndex } = e.detail.activeTabIndex;
-  this.tabIndex = activeTabIndex;
-}
-
-/*
- * React
- */ 
-
-const [tabIndex, setTabIndex] = useState<number>(undefined);
-const handleTabChange = (e: CustomEvent<{ activeTabIndex: number }>) => {
-  const { activeTabIndex } = e.detail.activeTabIndex;
-  setTabIndex(activeTabIndex);
-}
-
-return <PTabsBar activeTabIndex={tabIndex} tabChange={handleTabChange}>...</PTabsBar>
+### Angular
 
 ```
+import { Component } from '@angular/core';
+import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/bundle';
+
+@Component({
+  selector: 'tabs-bar-page',
+  template: `<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>`,
+})
+export class TabsBarPage {
+  tabIndex: number;
+
+  handleTabChange(e: CustomEvent<TabChangeEvent>) {
+    const { activeTabIndex } = e.detail;
+    this.tabIndex = activeTabIndex;
+  }
+}
+```
+
+### React
+
+``` 
+import { useCallback, useState } from "react";
+import { PTabsBar } from '@porsche-design-system/components-react';
+import type { TabChangeEvent } from '@porsche-design-system/components-react';
+
+const TabsBarPage = () => {
+    const [tabIndex, setTabIndex] = useState<number>();
+    const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+        const { activeTabIndex } = e.detail;
+        setTabIndex(activeTabIndex);
+    }, []);
+
+    return <PTabsBar activeTabIndex={tabIndex} onTabChange={handleTabChange}>...</PTabsBar>
+}
+```
+
 
 <Playground :markup="basicButton" :config="config"></Playground>
 <Playground :markup="basicAnchor" :config="config"></Playground>
@@ -204,7 +214,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
       //bind tabsBars with activeTabIndex set as attribute
       const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent)=> {
+      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
         this.handleTabChange(e);
         this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
       }));
