@@ -181,7 +181,6 @@
         // Tables
         table {
           margin-top: $p-spacing-24;
-          width: 80%;
           border-collapse: collapse;
 
           code ~ code::before {
