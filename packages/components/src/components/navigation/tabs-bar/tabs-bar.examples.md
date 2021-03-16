@@ -29,7 +29,7 @@ In order to get notified when the active tabs change, you need to register an ev
 ```
 tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
   const { activeTabIndex } = tabChangeEvent.detail;
-  tabsBar.setAttribute('active-tab-index', activeTabIndex);
+  tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
 });
 ```
 
@@ -168,21 +168,22 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     
     registerEvents() {
       const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
-      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
-        const { activeTabIndex } = e.detail;
-        tabsBar.setAttribute('active-tab-index', activeTabIndex);     
-      }));
+      tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.handleTabChange));
 
       //bind tabsBars with activeTabIndex set as attribute
       const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
-        const { activeTabIndex } = e.detail;
-        tabsBar.setAttribute('active-tab-index', activeTabIndex);
-        this.updateActiveTabIndex(tabsBar, activeTabIndex);
+      tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent)=> {
+        this.handleTabChange(e);
+        this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
       }));
     }
     
     hiddenNodes = null;
+    handleTabChange =  (e: CustomEvent) => {
+        const { activeTabIndex } = e.detail;
+        e.target.setAttribute('active-tab-index', activeTabIndex);     
+    }
+
     updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
       // manipulate code only section only in order to not rerender component and loose animations
       const example = tabs.parentElement.parentElement;
