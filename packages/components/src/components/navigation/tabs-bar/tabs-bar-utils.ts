@@ -3,7 +3,7 @@ import { prefix } from '../../../utils';
 
 export type Direction = 'prev' | 'next';
 export const FOCUS_PADDING_WIDTH = 4;
-const ENABLE_TRANSITION_CLASS = 'tabs-bar__status-bar--enable-transition';
+const ENABLE_TRANSITION_CLASS = prefix('tabs-bar__status-bar--enable-transition');
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
   // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
@@ -27,10 +27,10 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
 };
 
 export const addEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.add(prefix(ENABLE_TRANSITION_CLASS));
+  statusBarElement.classList.add(ENABLE_TRANSITION_CLASS);
 };
 export const removeEnableTransitionClass = (statusBarElement: HTMLElement): void => {
-  statusBarElement.classList.remove(prefix(ENABLE_TRANSITION_CLASS));
+  statusBarElement.classList.remove(ENABLE_TRANSITION_CLASS);
 };
 
 export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
