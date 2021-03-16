@@ -16,7 +16,7 @@ const replaceHeadline = (str: string): string => {
   const componentHeadline = capitalCase(cleanedTagName);
   const headline =
     cleanedTagName === 'headline'
-      ? `Typography\n\n## ${componentHeadline}`
+      ? `# Typography\n\n## ${componentHeadline}`
       : cleanedTagName === 'text'
       ? `## ${componentHeadline}`
       : `# ${componentHeadline}`;
