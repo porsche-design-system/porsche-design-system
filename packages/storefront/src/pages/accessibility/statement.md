@@ -62,7 +62,7 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
   </p-text>
   <p-text-list>
     <p-text-list-item>Phone: +12 34 567 89 00</p-text-list-item>
-    <p-text-list-item>E-mail: <a href="mailto:#">[e-mail address]</a></p-text-list-item>
+    <p-text-list-item>E-mail: <a href="#">[e-mail address]</a></p-text-list-item>
     <p-text-list-item>
       Postal address: <br>
       Dr. Ing. h.c. F. Porsche AG<br>
