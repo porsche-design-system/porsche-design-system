@@ -43,7 +43,7 @@ describe('tabs-bar', () => {
       const tabsBar = document.querySelector('p-tabs-bar')
       tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
           const { activeTabIndex } = tabChangeEvent.detail;
-          tabsBar.setAttribute('active-tab-index', activeTabIndex);
+          tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
       });
     </script>`;
   const initTabsBar = async (opts?: InitOptions) => {
