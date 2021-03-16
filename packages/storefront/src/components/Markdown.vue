@@ -184,6 +184,10 @@
           width: 80%;
           border-collapse: collapse;
 
+          code ~ code::before {
+            content: '| ';
+          }
+
           thead {
             @include p-text-small;
           }
