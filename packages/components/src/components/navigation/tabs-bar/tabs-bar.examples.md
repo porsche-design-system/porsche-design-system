@@ -27,10 +27,42 @@ tags, if you also have to manipulate the window location, inside the `<p-tabs-ba
 
 In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
 ```
+/*
+ * Vanilla JS
+ */ 
+
 tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
   const { activeTabIndex } = tabChangeEvent.detail;
   tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
 });
+
+/*
+ * Angular
+ */
+ 
+// template
+<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="handleTabChange($event)">...</p-tabs-bar>
+
+// class
+tabIndex:number;
+
+handleTabChange(e: CustomEvent<{ activeTabIndex: number }>) {
+  const { activeTabIndex } = e.detail.activeTabIndex;
+  this.tabIndex = activeTabIndex;
+}
+
+/*
+ * React
+ */ 
+
+const [tabIndex, setTabIndex] = useState<number>(undefined);
+const handleTabChange = (e: CustomEvent<{ activeTabIndex: number }>) => {
+  const { activeTabIndex } = e.detail.activeTabIndex;
+  setTabIndex(activeTabIndex);
+}
+
+return <PTabsBar activeTabIndex={tabIndex} tabChange={handleTabChange}>...</PTabsBar>
+
 ```
 
 <Playground :markup="basicButton" :config="config"></Playground>
