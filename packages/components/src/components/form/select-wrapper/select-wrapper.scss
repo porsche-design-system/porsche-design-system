@@ -249,7 +249,7 @@
     }
 
     #{$bem-block}--theme-dark & {
-      background-color: $p-color-background-shading;
+      background-color: $p-color-theme-dark-background-default;
       box-shadow: inset 0 0 0 1px $p-color-theme-dark-neutral-contrast-medium;
     }
 
@@ -337,7 +337,7 @@
 
     #{$bem-block}--theme-dark & {
       border-color: $p-color-theme-dark-neutral-contrast-medium;
-      background-color: $p-color-background-shading;
+      background-color: $p-color-theme-dark-background-default;
     }
 
     #{$bem-block}--theme-dark:hover & {
@@ -455,7 +455,7 @@
 
       #{$bem-block}--theme-light & {
         color: $p-color-state-active;
-        background-color: $p-color-background-surface;
+        background-color: $p-color-theme-dark-background-default;
       }
 
       #{$bem-block}--theme-dark & {
@@ -476,7 +476,7 @@
 
       #{$bem-block}--theme-dark & {
         color: $p-color-theme-dark-state-active;
-        background-color: $p-color-theme-dark-background-surface;
+        background-color: $p-color-theme-dark-background-default;
       }
     }
 
