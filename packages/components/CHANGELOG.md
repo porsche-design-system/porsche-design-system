@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `Tabs Bar` now supports `undefined` as `activeTabIndex`
 
+#### Changed
+- `Tabs Bar` has a new default `activeTabIndex`, which is `undefined`
+- `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the outside ([read more](https://designsystem.porsche.com/latest/#/components/tabs-bar#examples))
+
+
 ### [2.0.0-rc.6] - 2021-03-11
 
 #### Changed
