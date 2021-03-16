@@ -147,19 +147,22 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
     
     mounted(){
-      // initially update accessibility playground
-      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));
-      
-      this.registerEvents();
+      // initially update tabsBars with activeTabIndex attribute in playground
+     this.updateAndRegister();
       
       // theme switch needs to register event listeners again
       const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
       themeTabs.forEach(tabs => tabs.addEventListener('tabChange', (e) => {
-        this.registerEvents();
+        this.updateAndRegister(); 
       }));    
     }
     
     updated(){
+      this.registerEvents();
+    }
+
+    updateAndRegister() {
+      this.updateActiveTabIndex(this.$el.querySelector('.playground-tabs-bar .example p-tabs-bar'));      
       this.registerEvents();
     }
     
@@ -170,7 +173,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
         tabsBar.setAttribute('active-tab-index', activeTabIndex);     
       }));
 
-      //bind tabsBar with activeTabIndex set as attribute
+      //bind tabsBars with activeTabIndex set as attribute
       const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
       tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e) => {
         const { activeTabIndex } = e.detail;
