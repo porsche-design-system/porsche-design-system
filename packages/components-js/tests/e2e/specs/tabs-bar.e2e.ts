@@ -40,7 +40,7 @@ describe('tabs-bar', () => {
   };
   const clickHandlerScript = `
     <script>
-      const tabsBar = document.getElementById('tabs-bar');
+      const tabsBar = document.querySelector('p-tabs-bar')
       tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
           const { activeTabIndex } = tabChangeEvent.detail;
           tabsBar.setAttribute('active-tab-index', activeTabIndex);
@@ -50,7 +50,7 @@ describe('tabs-bar', () => {
     const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-    const content = `<p-tabs-bar id="tabs-bar" size="${size}" ${
+    const content = `<p-tabs-bar size="${size}" ${
       activeTabIndex !== undefined ? `active-tab-index="${activeTabIndex}"` : ''
     }>
   ${Array.from(Array(amount))

@@ -120,8 +120,8 @@ describe('tabs', () => {
       expect(await getHidden(firstTabsItem)).toBeNull();
       expect(await getHidden(secondTabsItem)).toBe('');
     });
+
     it('should render correct focusedTab on arrow-key press', async () => {
-      await initTabs();
       await initTabs({ activeTabIndex: 2 });
       const host = await getHost();
       await removeAttribute(host, 'active-tab-index');
