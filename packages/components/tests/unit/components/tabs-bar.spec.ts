@@ -23,8 +23,7 @@ describe('tabs-bar', () => {
         [5, 2, 1],
         [3, 5, 3],
       ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
-        // @ts-ignore ignore warning here so that we can pass a string as index
-        expect(sanitizeActiveTabIndex(index, tabElementsCount)).toBe(expected);
+        expect(sanitizeActiveTabIndex(index as number, tabElementsCount)).toBe(expected);
       });
     });
 
