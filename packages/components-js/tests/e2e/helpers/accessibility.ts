@@ -1,3 +1,5 @@
+import { Page } from 'puppeteer';
+
 type Options = {
   theme?: 'light' | 'dark';
   color?: 'default' | 'neutral' | 'contrastHigh' | 'success' | 'error' | 'brand' | 'active' | 'hover' | 'transparent';
@@ -62,7 +64,7 @@ export const expectedStyleOnFocus = (opts?: Options): string => {
     : `${colors[theme][color]} solid 1px ${offset}`;
 };
 
-export const isElementAtIndexFocused = async (page, elementIndex: number): Promise<boolean> => {
+export const isElementAtIndexFocused = async (page: Page, elementIndex: number): Promise<boolean> => {
   const snapshot = await page.accessibility.snapshot();
   const element = snapshot.children[elementIndex];
   return element.focused;
