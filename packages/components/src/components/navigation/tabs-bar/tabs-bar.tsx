@@ -9,7 +9,6 @@ import type {
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import type { Direction } from './tabs-bar-utils';
 import {
-  FOCUS_PADDING_WIDTH,
   addEnableTransitionClass,
   getScrollActivePosition,
   sanitizeActiveTabIndex,
@@ -314,17 +313,12 @@ export class TabsBar {
   };
 
   private scrollActiveTabIntoView = (opts?: { skipAnimation: boolean }): void => {
-    const gradientWidth = this.firstGradientElement.offsetWidth;
-    const { offsetLeft, offsetWidth } = this.tabElements[this.activeTabIndex] ?? {};
-
     const scrollActivePosition = getScrollActivePosition(
+      this.tabElements,
       this.direction,
       this.activeTabIndex,
-      this.tabElements.length,
       this.scrollAreaElement.offsetWidth,
-      offsetLeft,
-      gradientWidth,
-      offsetWidth
+      this.firstGradientElement.offsetWidth
     );
 
     if (opts?.skipAnimation) {
@@ -335,19 +329,7 @@ export class TabsBar {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = this.tabElements[
-      this.tabElements.length - 1
-    ];
-    const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = this.scrollAreaElement;
-    const scrollToStep = Math.round(scrollAreaWidth * 0.2);
-    const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
-
-    const scrollPosition = getScrollPositionAfterPrevNextClick(
-      direction,
-      currentScrollPosition,
-      scrollToStep,
-      scrollToMax
-    );
+    const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
     this.scrollTo(scrollPosition);
   };
 
@@ -383,7 +365,7 @@ export class TabsBar {
   private get focusedTabIndex(): number {
     const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
     if (this.hasPTabsParent) {
-      return this.activeTabIndex ? this.activeTabIndex : 0;
+      return this.activeTabIndex ?? 0;
     } else {
       return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
     }

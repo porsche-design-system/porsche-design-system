@@ -6,6 +6,7 @@ export const FOCUS_PADDING_WIDTH = 4;
 const ENABLE_TRANSITION_CLASS = 'tabs-bar__status-bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
+  // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
   if (index === undefined || index === null || isNaN(index)) {
     return undefined;
   }
@@ -14,9 +15,11 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
   let sanitizedIndex: number;
 
   if (maxIndex < 0) {
-    sanitizedIndex = 0;
+    sanitizedIndex = undefined;
   } else if (index > maxIndex) {
     sanitizedIndex = maxIndex;
+  } else if (index < 0) {
+    sanitizedIndex = undefined;
   } else {
     sanitizedIndex = index;
   }
@@ -60,14 +63,14 @@ export const determineEnableTransitionClass = (
 };
 
 export const getScrollActivePosition = (
+  tabElements: HTMLElement[],
   direction: Direction,
   activeTabIndex: number,
-  tabElementsCount: number,
   scrollAreaOffsetWidth: number,
-  activeTabOffsetLeft: number,
-  gradientWidth: number,
-  activeTabOffsetWidth: number
+  gradientWidth: number
 ): number => {
+  const { offsetLeft: activeTabOffsetLeft, offsetWidth: activeTabOffsetWidth } = tabElements[activeTabIndex] ?? {};
+  const tabElementsCount = tabElements.length;
   let scrollPosition;
   if (direction === 'next') {
     if (activeTabIndex === tabElementsCount - 1) {
@@ -90,12 +93,15 @@ export const getScrollActivePosition = (
 };
 
 export const getScrollPositionAfterPrevNextClick = (
-  direction: string,
-  currentScrollPosition: number,
-  scrollToStep: number,
-  scrollToMax: number
+  tabElements: HTMLElement[],
+  scrollAreaElement: HTMLElement,
+  direction: string
 ): number => {
-  const scrollToMin = 0;
+  const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = tabElements[tabElements.length - 1] ?? {};
+  const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollAreaElement ?? {};
+  const scrollToStep = Math.round(scrollAreaWidth * 0.2);
+  const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
+
   let scrollPosition: number;
   if (direction === 'next') {
     // Go to end of scroll-area when close to edge
@@ -105,6 +111,7 @@ export const getScrollPositionAfterPrevNextClick = (
       scrollPosition = currentScrollPosition + scrollToStep;
     }
   } else {
+    const scrollToMin = 0;
     // Go to start of scroll-area when close to edge
     if (currentScrollPosition - scrollToStep * 2 < scrollToMin) {
       scrollPosition = scrollToMin;

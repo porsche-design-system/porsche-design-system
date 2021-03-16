@@ -16,11 +16,14 @@ describe('tabs-bar', () => {
     describe('sanitizeActiveTabIndex()', () => {
       it.each([
         [undefined, 0, undefined],
-        [undefined, 5, undefined],
-        [2, 0, 0],
-        [5, 5, 4],
+        [null, 0, undefined],
+        ['asd', 0, undefined],
+        [2, 0, undefined],
+        [5, 2, 1],
+        [-5, 2, undefined],
         [3, 5, 3],
       ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
+        // @ts-ignore ignore warning here so that we can pass a string as index
         expect(sanitizeActiveTabIndex(index, tabElementsCount)).toBe(expected);
       });
     });
@@ -101,39 +104,94 @@ describe('tabs-bar', () => {
     });
 
     describe('getScrollActivePosition()', () => {
-      it('should return scrollActivePosition if scrolling to last tab', () => {
-        expect(getScrollActivePosition('next', 10, 11, undefined, 20, undefined, undefined)).toBe(16);
+      it('should return scrollActivePosition = 16 if scrolling to last tab', () => {
+        expect(
+          getScrollActivePosition(
+            [{ offsetLeft: 20, offsetWidth: 0 }] as HTMLElement[],
+            'next',
+            0,
+            undefined,
+            undefined
+          )
+        ).toBe(16);
       });
 
-      it('should return scrollActivePosition if direction is "next", next tab is set as active', () => {
-        expect(getScrollActivePosition('next', 5, 11, undefined, 20, 20, undefined)).toBe(8);
+      it('should return scrollActivePosition = 8 if direction is "next", next tab is set as active', () => {
+        expect(
+          getScrollActivePosition(
+            [
+              { offsetLeft: 20, offsetWidth: 0 },
+              { offsetLeft: 0, offsetWidth: 0 },
+            ] as HTMLElement[],
+            'next',
+            0,
+            undefined,
+            20
+          )
+        ).toBe(8);
       });
 
-      it('should return scrollActivePosition if direction is "prev" and first tab is set as active', () => {
-        expect(getScrollActivePosition('prev', 0, undefined, undefined, undefined, undefined, undefined)).toBe(0);
+      it('should return scrollActivePosition = 0 if direction is "prev" and first tab is set as active', () => {
+        expect(
+          getScrollActivePosition([{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[], 'prev', 0, undefined, undefined)
+        ).toBe(0);
       });
 
-      it('should return scrollActivePosition if scrolling to previous tab', () => {
-        expect(getScrollActivePosition('prev', 5, 10, 4, 20, 5, 20)).toBe(41);
+      it('should return scrollActivePosition = 41 if scrolling to previous tab', () => {
+        expect(
+          getScrollActivePosition(
+            [
+              { offsetLeft: 0, offsetWidth: 0 },
+              { offsetLeft: 20, offsetWidth: 5 },
+            ] as HTMLElement[],
+            'prev',
+            1,
+            4,
+            20
+          )
+        ).toBe(41);
       });
     });
 
     describe('getScrollPositionAfterPrevNextClick()', () => {
-      it('should return scrollToMax if scroll step would exceed maximum', () => {
-        const scrollToMax = 12;
-        expect(getScrollPositionAfterPrevNextClick('next', 10, 2, scrollToMax)).toBe(scrollToMax);
+      it('should return scrollToMax = 58 if scroll step would exceed maximum', () => {
+        expect(
+          getScrollPositionAfterPrevNextClick(
+            [{ offsetLeft: 50, offsetWidth: 50 }] as HTMLElement[],
+            { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
+            'next'
+          )
+        ).toBe(58);
       });
 
-      it('should return scrollPositionAfterClick if direction is "next" and scroll does not exceed maximum', () => {
-        expect(getScrollPositionAfterPrevNextClick('next', 10, 2, 20)).toBe(12);
+      it('should return scrollPositionAfterClick = 60 if direction is "next" and scroll does not exceed maximum', () => {
+        expect(
+          getScrollPositionAfterPrevNextClick(
+            [{ offsetLeft: 80, offsetWidth: 50 }] as HTMLElement[],
+            { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
+            'next'
+          )
+        ).toBe(60);
       });
 
-      it('should return 0 if scroll step would fall below minimum', () => {
-        expect(getScrollPositionAfterPrevNextClick('prev', 2, 2, undefined)).toBe(0);
+      it('should return scrollToMin = 0 if scroll step would fall below minimum', () => {
+        expect(
+          getScrollPositionAfterPrevNextClick(
+            [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
+            { offsetWidth: 50, scrollLeft: 10 } as HTMLElement,
+            'prev'
+          )
+        ).toBe(0);
       });
 
-      it('should return scrollPositionAfterClick if direction is "prev" and scroll does not fall below minimum', () => {
-        expect(getScrollPositionAfterPrevNextClick('prev', 10, 2, undefined)).toBe(8);
+      it('should return scrollPositionAfterClick = 18 if direction is "prev" and scroll does not fall below minimum', () => {
+        expect(
+          getScrollPositionAfterPrevNextClick(
+            [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
+            { offsetWidth: 10, scrollLeft: 20 } as HTMLElement,
+            'prev'
+          )
+        ).toBe(18);
       });
     });
   });
