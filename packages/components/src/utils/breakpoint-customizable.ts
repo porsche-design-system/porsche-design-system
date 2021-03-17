@@ -2,11 +2,9 @@ import { prefix } from './prefix';
 
 export const BREAKPOINTS = ['base', 'xs', 's', 'm', 'l', 'xl'] as const;
 export type Breakpoint = typeof BREAKPOINTS[number];
-export type BreakpointValues<T> = Partial<
-  {
-    [key in Breakpoint]: T;
-  }
-> & {
+export type BreakpointValues<T> = {
+  [key in Breakpoint]?: T;
+} & {
   base: T;
 };
 
