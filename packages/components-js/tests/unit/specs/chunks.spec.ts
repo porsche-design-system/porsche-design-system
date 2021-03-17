@@ -2,12 +2,13 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper';
+import { TAG_NAMES } from '@porsche-design-system/shared';
 
 describe('chunks', () => {
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
   const distDir = path.resolve(indexJsFile, '../..');
   const chunksDir = path.resolve(distDir, 'components');
-  const chunkFileNames = Object.values(COMPONENT_CHUNKS_MANIFEST);
+  const chunkFileNames: string[] = Object.values(COMPONENT_CHUNKS_MANIFEST);
   const chunkFiles = [indexJsFile].concat(
     chunkFileNames.map((chunkFileName) => path.resolve(chunksDir, chunkFileName))
   );
@@ -162,6 +163,15 @@ describe('chunks', () => {
         const content = getChunkContent(chunkFileName);
         expect(content).not.toContain('localhost');
       });
+
+      // TODO: enable this test once chunking is under control
+      // it(`should not contain all TAG_NAMES in ${chunkFileName}`, () => {
+      //   const content = getChunkContent(chunkFileName);
+      //   const tagNamesSingleQuotes = TAG_NAMES.map((x) => `'${x}'`).join(',');
+      //   const tagNamesDoubleQuotes = TAG_NAMES.map((x) => `"${x}"`).join(',');
+      //   expect(content).not.toContain(tagNamesSingleQuotes, 'with single quotes');
+      //   expect(content).not.toContain(tagNamesDoubleQuotes, 'with double quotes');
+      // });
     });
   });
 });
