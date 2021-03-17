@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Support for full height `Content Wrapper` with flex 
+- Support for full height `Content Wrapper` with flex
+
+#### Changed
+- Background Color of `Select Wrapper` to meet accessibility criteria
 
 ### [2.0.0-rc.7] - 2021-03-15
 
