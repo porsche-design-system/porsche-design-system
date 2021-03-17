@@ -454,6 +454,10 @@ export namespace Components {
          */
         "disableCloseButton"?: boolean;
         /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullScreen"?: BreakpointCustomizable<boolean>;
+        /**
           * The title of the modal
          */
         "heading"?: string;
@@ -1366,6 +1370,10 @@ declare namespace LocalJSX {
           * If true, the modal will not have a close button.
          */
         "disableCloseButton"?: boolean;
+        /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullScreen"?: BreakpointCustomizable<boolean>;
         /**
           * The title of the modal
          */
