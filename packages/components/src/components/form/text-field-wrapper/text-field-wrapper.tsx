@@ -2,6 +2,7 @@ import { JSX, Host, Component, Prop, h, Element, State, forceUpdate } from '@ste
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
+  getTagName,
   handleButtonEvent,
   hasNamedSlot,
   insertSlottedStyles,
@@ -99,7 +100,7 @@ export class TextFieldWrapper {
       [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none',
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-icon', 'p-text']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -211,7 +212,7 @@ export class TextFieldWrapper {
   };
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

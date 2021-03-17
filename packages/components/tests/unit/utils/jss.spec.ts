@@ -1,4 +1,13 @@
-import { attachCss, buildHostStyles, buildResponsiveJss, getCss, isObject, mergeDeep } from '../../../src/utils';
+import {
+  attachCss,
+  buildHostStyles,
+  buildResponsiveJss,
+  getCss,
+  isObject,
+  mergeDeep,
+  supportsConstructableStylesheets,
+} from '../../../src/utils';
+import * as jssUtils from '../../../src/utils/jss';
 import type { JssStyle, Styles } from 'jss';
 
 describe('getCss', () => {
@@ -33,15 +42,47 @@ describe('getCss', () => {
   });
 });
 
+describe('supportsConstructableStylesheets', () => {
+  it('should return true if CSSStyleSheet constructor exists', () => {
+    // due to polyfill
+    expect(supportsConstructableStylesheets()).toBe(true);
+  });
+
+  it('should return false if CSSStyleSheet constructor does not exist', () => {
+    const globalCSSStyleSheet = global.CSSStyleSheet;
+    delete global.CSSStyleSheet;
+    expect(supportsConstructableStylesheets()).toBe(false);
+    global.CSSStyleSheet = globalCSSStyleSheet;
+  });
+});
+
 describe('attachCss', () => {
-  it('should create CSSStyleSheet and add apply it to shadowRoot', () => {
-    const div = document.createElement('div');
-    div.attachShadow({ mode: 'open' });
+  describe('with CSSStyleSheet support', () => {
+    it('should create CSSStyleSheet and apply it to shadowRoot', () => {
+      const div = document.createElement('div');
+      div.attachShadow({ mode: 'open' });
 
-    expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(0);
 
-    attachCss(div, ':host { display: "block" }');
-    expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
+      attachCss(div, ':host { display: "block" }');
+      expect(div.shadowRoot.adoptedStyleSheets.length).toBe(1);
+    });
+  });
+
+  describe('without CSSStyleSheet support', () => {
+    it('should create style node and prepend it in shadowRoot', () => {
+      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
+
+      const div = document.createElement('div');
+      div.attachShadow({ mode: 'open' });
+      expect(div.shadowRoot.querySelector('style')).toBeNull();
+
+      const css = ':host { display: "block" }';
+      attachCss(div, css);
+      expect(div.shadowRoot.querySelector('style').innerHTML).toBe(css);
+
+      spy.mockRestore();
+    });
   });
 });
 

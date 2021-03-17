@@ -2,6 +2,7 @@ import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
+  getTagName,
   insertSlottedStyles,
   isDark,
   mapBreakpointPropToPrefixedClasses,
@@ -75,7 +76,7 @@ export class Text {
   }
 
   private addSlottedStyles(): void {
-    const tagName = this.host.tagName.toLowerCase();
+    const tagName = getTagName(this.host);
     const style = `${tagName} a {
       outline: none transparent !important;
       color: inherit !important;

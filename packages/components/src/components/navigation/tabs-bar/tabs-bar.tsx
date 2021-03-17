@@ -159,7 +159,7 @@ export class TabsBar {
       [prefix(`tabs-bar__gradient--${direction}`)]: true,
     };
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host, ['p-button-pure']);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div class={actionClasses}>
