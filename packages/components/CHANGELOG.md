@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - `Tabs Bar` has a new default `activeTabIndex`, which is `undefined`
 - `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the outside ([read more](https://designsystem.porsche.com/latest/#/components/tabs-bar#examples))
-- Background Color of `Select Wrapper` to meet accessibility criteria
+- Background Color of `Select Wrapper` in `dark` theme to meet accessibility criteria
 
 ### [2.0.0-rc.7] - 2021-03-15
 
