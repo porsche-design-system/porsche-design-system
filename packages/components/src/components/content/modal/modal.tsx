@@ -1,5 +1,12 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, isIos, prefix } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../types';
+import {
+  getHTMLElements,
+  getPrefixedTagNames,
+  isIos,
+  mapBreakpointPropToPrefixedClasses,
+  prefix,
+} from '../../../utils';
 
 @Component({
   tag: 'p-modal',
@@ -82,7 +89,9 @@ export class Modal {
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <PrefixedTagNames.pHeadline variant="headline-2">{this.heading}</PrefixedTagNames.pHeadline>
+                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                  {this.heading}
+                </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseWrapperClasses}>
