@@ -5,6 +5,7 @@ import jssPluginSyntaxCamelCase from 'jss-plugin-camel-case';
 import jssPluginSyntaxDefaultUnit from 'jss-plugin-default-unit';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
+import { getShadowRootHTMLElement } from './dom';
 
 export type { Styles, JssStyle } from 'jss';
 
@@ -32,10 +33,36 @@ export const getCss = (jssStyles: Styles): string =>
     // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
     .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
 
+export const supportsConstructableStylesheets = (): boolean => {
+  try {
+    new CSSStyleSheet();
+    return typeof new CSSStyleSheet().replaceSync === 'function';
+  } catch (e) {
+    return false;
+  }
+};
+
 export const attachCss = (host: HTMLElement, css: string): void => {
-  const sheet = new CSSStyleSheet();
-  sheet.replaceSync(css);
-  host.shadowRoot.adoptedStyleSheets = [sheet];
+  if (supportsConstructableStylesheets()) {
+    const [sheet] = host.shadowRoot.adoptedStyleSheets;
+    if (sheet) {
+      sheet.replaceSync(css);
+    } else {
+      const newSheet = new CSSStyleSheet();
+      newSheet.replaceSync(css);
+      host.shadowRoot.adoptedStyleSheets = [newSheet];
+    }
+  } else {
+    // NOTE: fallback for Firefox and Safari
+    const styleEl = getShadowRootHTMLElement(host, 'style');
+    if (styleEl) {
+      styleEl.innerHTML = css;
+    } else {
+      const newStyleEl = document.createElement('style');
+      newStyleEl.innerHTML = css;
+      host.shadowRoot.prepend(newStyleEl);
+    }
+  }
 };
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
