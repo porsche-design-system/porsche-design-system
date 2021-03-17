@@ -1,7 +1,7 @@
-import { PModal } from '@porsche-design-system/components-react';
+import { PModal, PButton } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
-export const ModalBasicPage = (): JSX.Element => {
+export const ModalFullscreenPage = (): JSX.Element => {
   useEffect(() => {
     document.body.style.height = '500px';
   }, []);
@@ -16,8 +16,8 @@ export const ModalBasicPage = (): JSX.Element => {
   return (
     <>
       <style children={style} />
-      <div className="playground light" title="should show basic modal on light background">
-        <PModal heading="Some Heading" open>
+      <div className="playground light" title="should show scrollable modal on light background">
+        <PModal heading="Some Heading with a very long title across multiple lines" open fullScreen={true}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
           clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
@@ -31,6 +31,10 @@ export const ModalBasicPage = (): JSX.Element => {
           consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet.
+          <div>
+            <PButton>Confirm</PButton>
+            <PButton variant="tertiary">Cancel</PButton>
+          </div>
         </PModal>
       </div>
     </>
