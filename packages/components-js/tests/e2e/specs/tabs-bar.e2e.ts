@@ -1,23 +1,25 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
+  expectedStyleOnFocus,
   getAttribute,
   getBrowser,
   getElementPositions,
+  getLifecycleStatus,
+  getOutlineStyle,
   getProperty,
   getStyleOnFocus,
   initAddEventListener,
+  isElementAtIndexFocused,
   reattachElement,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
   waitForInheritedCSSTransition,
-  expectedStyleOnFocus,
   waitForStencilLifecycle,
-  getOutlineStyle,
-  getLifecycleStatus,
 } from '../helpers';
-import { TabSize } from '@porsche-design-system/components/dist/types/types';
+import type { TabSize } from '@porsche-design-system/components/dist/types/types';
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
@@ -36,12 +38,21 @@ describe('tabs-bar', () => {
     otherMarkup?: string;
     tag?: 'a' | 'button';
   };
-
+  const clickHandlerScript = `
+    <script>
+      const tabsBar = document.querySelector('p-tabs-bar')
+      tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
+          const { activeTabIndex } = tabChangeEvent.detail;
+          tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
+      });
+    </script>`;
   const initTabsBar = async (opts?: InitOptions) => {
     const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
 
     const attributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-    const content = `<p-tabs-bar size="${size}" ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
+    const content = `<p-tabs-bar size="${size}" ${
+      activeTabIndex !== undefined ? `active-tab-index="${activeTabIndex}"` : ''
+    }>
   ${Array.from(Array(amount))
     .map((_, i) => `<${tag}${attributes}>Tab Button ${i + 1}</${tag}>`)
     .join('')}
@@ -72,12 +83,17 @@ describe('tabs-bar', () => {
   const getClassList = async (element: ElementHandle): Promise<string[]> =>
     Object.values(await getProperty(element, 'classList'));
 
-  const isElementAtIndexFocused = async (elementIndex: number): Promise<boolean> => {
-    const snapshot = await page.accessibility.snapshot();
-    const element = snapshot.children[elementIndex];
-    return element.focused;
-  };
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
+
+  it('should render no active tab if no activeTabIndex is set ', async () => {
+    await initTabsBar({ amount: 3 });
+    const allButtons = await getAllButtons();
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
+  });
 
   it('should render correct active tab if activeTabIndex is set ', async () => {
     await initTabsBar({ amount: 3, activeTabIndex: 1 });
@@ -89,6 +105,25 @@ describe('tabs-bar', () => {
     expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
   });
 
+  it('should render no active tab if activeTabIndex is removed ', async () => {
+    await initTabsBar({ amount: 3, activeTabIndex: 1 });
+    const allButtons = await getAllButtons();
+    const host = await getHost();
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('true');
+    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
+
+    await removeAttribute(host, 'active-tab-index');
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(40); // class gets set through js, this takes a little time
+
+    expect(await getAttribute(allButtons[0], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[1], 'aria-selected')).toBe('false');
+    expect(await getAttribute(allButtons[2], 'aria-selected')).toBe('false');
+  });
+
   describe('scrollArea', () => {
     const clickElement = async (el: ElementHandle) => {
       await el.click();
@@ -97,7 +132,7 @@ describe('tabs-bar', () => {
     };
 
     it('should scroll by 20% on button prev/next click', async () => {
-      await initTabsBar({ isWrapped: true });
+      await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
       const { prevButton, nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
@@ -119,7 +154,7 @@ describe('tabs-bar', () => {
     });
 
     it('should scroll to max scroll-position on multiple next clicks', async () => {
-      await initTabsBar({ amount: 6, isWrapped: true });
+      await initTabsBar({ amount: 6, isWrapped: true, activeTabIndex: 0 });
       const [firstButton] = await getAllButtons();
       const { nextButton } = await getPrevNextButton();
       const scrollArea = await getScrollArea();
@@ -157,7 +192,7 @@ describe('tabs-bar', () => {
     });
 
     it('should scroll to correct position on tab click', async () => {
-      await initTabsBar({ isWrapped: true });
+      await initTabsBar({ isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const [, , , button4, button5] = await getAllButtons();
       const gradient = await getGradientNext();
       const gradientWidth = await getOffsetWidth(gradient);
@@ -193,7 +228,7 @@ describe('tabs-bar', () => {
     });
 
     it('should have same offsetLeft on statusbar and active tab', async () => {
-      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true });
+      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true, otherMarkup: clickHandlerScript });
       const [firstButton, , thirdButton] = await getAllButtons();
       const statusBar = await getStatusBar();
       const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
@@ -203,12 +238,38 @@ describe('tabs-bar', () => {
       await clickElement(firstButton);
 
       expect((await getElementPositions(page, firstButton)).left).toEqual(
+        Math.floor((await getElementPositions(page, statusBar)).left),
+        'should have correct offsetLeft after click'
+      );
+    });
+
+    it('should have offsetLeft on statusbar as the center of unset tab', async () => {
+      await initTabsBar({ amount: 6, activeTabIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
+      const [firstButton, , thirdButton] = await getAllButtons();
+      const statusBar = await getStatusBar();
+      const firstButtonPosition = (await getElementPositions(page, firstButton)).left;
+      const buttonWidth = await getOffsetWidth(thirdButton);
+      const buttonCenter = +buttonWidth / 2;
+      const host = await getHost();
+      await removeAttribute(host, 'active-tab-index');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+      expect(Math.floor(firstButtonPosition + buttonCenter)).toEqual(
         Math.floor((await getElementPositions(page, statusBar)).left)
+      );
+
+      await clickElement(thirdButton);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+      expect(Math.floor((await getElementPositions(page, thirdButton)).left)).toEqual(
+        Math.floor((await getElementPositions(page, statusBar)).left),
+        'should have correct offset width after click on third button'
       );
     });
 
     it('should have correct scroll position after tab click and arrow left', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true });
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const { prevButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
       const button3 = allButtons[2];
@@ -236,7 +297,7 @@ describe('tabs-bar', () => {
     });
 
     it('should have correct scroll position after tab click and arrow right', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7 });
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7, otherMarkup: clickHandlerScript });
       const { nextButton } = await getPrevNextButton();
       const allButtons = await getAllButtons();
       const button7 = allButtons[6];
@@ -261,8 +322,15 @@ describe('tabs-bar', () => {
     });
 
     describe('when not wrapped', () => {
-      it('should set correct statusBarStyle initially', async () => {
+      it('should set correct statusBarStyle when no activeTabIndex is set initially', async () => {
         await initTabsBar({ amount: 3 });
+        const statusBar = await getStatusBar();
+
+        expect(await getOffsetWidth(statusBar)).toBe(0);
+      });
+
+      it('should set correct statusBarStyle for activeTabIndex 0', async () => {
+        await initTabsBar({ amount: 3, activeTabIndex: 0 });
         const [firstButton] = await getAllButtons();
         const statusBar = await getStatusBar();
 
@@ -279,8 +347,15 @@ describe('tabs-bar', () => {
     });
 
     describe('when wrapped', () => {
-      it('should set correct statusBarStyle initially', async () => {
+      it('should set correct statusBarStyle when no activeTabIndex is set initially', async () => {
         await initTabsBar({ isWrapped: true });
+        const statusBar = await getStatusBar();
+
+        expect(await getOffsetWidth(statusBar)).toBe(0);
+      });
+
+      it('should set correct statusBarStyle for activeTabIndex 0', async () => {
+        await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
         const [firstButton] = await getAllButtons();
         const statusBar = await getStatusBar();
 
@@ -298,8 +373,21 @@ describe('tabs-bar', () => {
   });
 
   describe('keyboard', () => {
-    it('should render focus on selected tab on keyboard "tab" press', async () => {
+    it('should render focus on first tab when no tab is selected on keyboard "tab" press', async () => {
       await initTabsBar({ amount: 3 });
+      const getButtonFocus = async () => {
+        const snapshot = await page.accessibility.snapshot();
+        const button = snapshot.children[0];
+        return button.focused;
+      };
+      expect(await getButtonFocus()).toBeUndefined();
+
+      await page.keyboard.press('Tab');
+
+      expect(await getButtonFocus()).toBe(true);
+    });
+    it('should render focus on selected tab on keyboard "tab" press', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
       const getButtonFocus = async () => {
         const snapshot = await page.accessibility.snapshot();
         const button = snapshot.children[0];
@@ -313,57 +401,57 @@ describe('tabs-bar', () => {
     });
 
     it('should render focus on content on keyboard "tab" press', async () => {
-      await initTabsBar({ amount: 3, otherMarkup: '<p-text>Hallo <a href="#">Link</a></p-text>' });
-      expect(await isElementAtIndexFocused(4)).toBeFalsy();
+      await initTabsBar({ amount: 3, otherMarkup: '<p-text>Hallo <a href="#">Link</a></p-text>', activeTabIndex: 0 });
+      expect(await isElementAtIndexFocused(page, 4)).toBeFalsy();
 
       await page.keyboard.press('Tab');
-      expect(await isElementAtIndexFocused(4)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 4)).toBeFalsy();
       await page.keyboard.press('Tab');
 
-      expect(await isElementAtIndexFocused(4)).toBe(true);
+      expect(await isElementAtIndexFocused(page, 4)).toBe(true);
     });
 
     it('should render correct focusedTab on arrow-key press', async () => {
-      await initTabsBar({ amount: 3 });
-      expect(await isElementAtIndexFocused(0)).toBeFalsy();
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
 
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(0)).toBeFalsy();
-      expect(await isElementAtIndexFocused(1)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(0)).toBeTrue();
-      expect(await isElementAtIndexFocused(1)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
 
     it('should render correct active tab on first/last or home/end press', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 1 });
-      expect(await isElementAtIndexFocused(2)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 2)).toBeFalsy();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('End');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(2)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 2)).toBeTrue();
 
       await page.keyboard.press('Home');
       await waitForStencilLifecycle(page);
 
-      expect(await isElementAtIndexFocused(0)).toBeTrue();
-      expect(await isElementAtIndexFocused(2)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 2)).toBeFalsy();
     });
 
     it('should render correct active tab on focus change and enter press', async () => {
-      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const [firstButton, secondButton] = await getAllButtons();
 
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
@@ -511,7 +599,7 @@ describe('tabs-bar', () => {
         });
 
         it('should only show next button', async () => {
-          await initTabsBar({ amount: 4, size, isWrapped: true });
+          await initTabsBar({ amount: 4, size, isWrapped: true, activeTabIndex: 0 });
           const { actionPrev, actionNext } = await getActionContainers();
 
           expect(await getClassList(actionNext)).not.toContain(hiddenClass);
@@ -535,7 +623,7 @@ describe('tabs-bar', () => {
         });
 
         it('should not show prev/next buttons without children', async () => {
-          await setContentWithDesignSystem(page, `<p-tabs-bar size="${size}"></p-tabs-bar>`);
+          await setContentWithDesignSystem(page, `<p-tabs-bar active-tab-index="0" size="${size}"></p-tabs-bar>`);
           const { actionPrev, actionNext } = await getActionContainers();
 
           expect(await getClassList(actionNext)).toContain(hiddenClass);
@@ -543,7 +631,7 @@ describe('tabs-bar', () => {
         });
 
         it('should have label of prev/next buttons in dom', async () => {
-          await initTabsBar({ size });
+          await initTabsBar({ size, activeTabIndex: 0 });
 
           const { nextButton, prevButton } = await getPrevNextButton();
 
@@ -638,7 +726,7 @@ describe('tabs-bar', () => {
         }
       });
 
-      await setContentWithDesignSystem(page, `<p-tabs-bar></p-tabs-bar>`);
+      await setContentWithDesignSystem(page, `<p-tabs-bar active-tab-index="0"></p-tabs-bar>`);
       expect(getErrorsAmount(consoleMessages)).toBe(0);
 
       await page.evaluate(() => console.error('test error'));
@@ -648,7 +736,7 @@ describe('tabs-bar', () => {
 
   describe('focus state', () => {
     it('should be shown by keyboard navigation only with buttons', async () => {
-      await initTabsBar({ amount: 3 });
+      await initTabsBar({ amount: 3, activeTabIndex: 0, otherMarkup: clickHandlerScript });
 
       const [, secondButton] = await getAllButtons();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
@@ -670,7 +758,7 @@ describe('tabs-bar', () => {
     });
 
     it('should be shown by keyboard navigation only with anchors', async () => {
-      await initTabsBar({ amount: 3, tag: 'a' });
+      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0, otherMarkup: clickHandlerScript });
 
       const [, secondLink] = await getAllLinks();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '1px' });
@@ -692,7 +780,7 @@ describe('tabs-bar', () => {
     });
 
     it('should show outline of slotted <button> when it is focused', async () => {
-      await initTabsBar({ amount: 3 });
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
 
       const host = await getHost();
       const allButtons = await getAllButtons();
@@ -713,7 +801,7 @@ describe('tabs-bar', () => {
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
-      await initTabsBar({ amount: 3, tag: 'a' });
+      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
 
       const host = await getHost();
       const allLinks = await getAllLinks();
@@ -736,7 +824,7 @@ describe('tabs-bar', () => {
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initTabsBar({ amount: 3, tag: 'a' });
+      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-tabs-bar']).toBe(1, 'componentDidLoad: p-tabs-bar');
@@ -749,7 +837,7 @@ describe('tabs-bar', () => {
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
-      await initTabsBar({ amount: 3, tag: 'button' });
+      await initTabsBar({ amount: 3, tag: 'button', activeTabIndex: 0 });
       const host = await getHost();
 
       await setAttribute(host, 'active-tab-index', '2');

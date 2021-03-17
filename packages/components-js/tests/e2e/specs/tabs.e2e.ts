@@ -5,7 +5,9 @@ import {
   getLifecycleStatus,
   getProperty,
   initAddEventListener,
+  isElementAtIndexFocused,
   reattachElement,
+  removeAttribute,
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
@@ -13,6 +15,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { CSS_ANIMATION_DURATION } from './tabs-bar.e2e';
 
 describe('tabs', () => {
   let page: Page;
@@ -116,6 +119,33 @@ describe('tabs', () => {
 
       expect(await getHidden(firstTabsItem)).toBeNull();
       expect(await getHidden(secondTabsItem)).toBe('');
+    });
+
+    it('should render correct focusedTab on arrow-key press', async () => {
+      await initTabs({ activeTabIndex: 2 });
+      const host = await getHost();
+      await removeAttribute(host, 'active-tab-index');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+
+      await page.keyboard.press('ArrowRight');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeFalsy();
+      expect(await isElementAtIndexFocused(page, 1)).toBeTrue();
+
+      await page.keyboard.press('ArrowLeft');
+      await waitForStencilLifecycle(page);
+
+      expect(await isElementAtIndexFocused(page, 0)).toBeTrue();
+      expect(await isElementAtIndexFocused(page, 1)).toBeFalsy();
     });
   });
 
