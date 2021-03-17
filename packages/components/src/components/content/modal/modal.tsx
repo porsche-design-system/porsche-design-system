@@ -17,6 +17,8 @@ export class Modal {
   @Prop() public disableBackdropClick?: boolean = false;
   /** The title of the modal */
   @Prop() public heading?: string;
+  /** If true the modal uses max viewport height and width. Should only be used for mobile. */
+  @Prop() public fullScreen?: BreakpointCustomizable<boolean> = false;
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
@@ -58,10 +60,13 @@ export class Modal {
 
   public render(): JSX.Element {
     const hasHeader = this.heading || !this.disableCloseButton;
-    const rootClasses = prefix('modal');
-    const headerClasses = prefix('modal__header');
-    const btnCloseWrapperClasses = prefix('modal__close');
-    const btnCloseClasses = prefix('modal__close-button');
+    const rootClasses = {
+      [prefix('modal')]: true,
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullScreen, ['full-screen-on', 'full-screen-off']),
+    };
+    const headerClasses = prefix('modal--header');
+    const btnCloseWrapperClasses = prefix('modal--close');
+    const btnCloseClasses = prefix('modal--close-button');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
