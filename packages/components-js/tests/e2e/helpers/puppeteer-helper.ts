@@ -199,17 +199,17 @@ export const getStyleOnFocus = async (
   return property === 'outline' ? await getOutlineStyle(element, opts) : await getBoxShadowStyle(element, opts);
 };
 
+const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
+
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
-  const containsCapitalChar = /[A-Z]/.test(key);
-  if (containsCapitalChar) {
+  if (containsCapitalChar(key)) {
     console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
 export const removeAttribute = async (element: ElementHandle, key: string): Promise<void> => {
-  const containsCapitalChar = /[A-Z]/.test(key);
-  if (containsCapitalChar) {
+  if (containsCapitalChar(key)) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, key) => el.removeAttribute(key), key);
