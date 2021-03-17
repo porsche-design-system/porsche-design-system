@@ -17,10 +17,47 @@ The most important property of `p-modal` is its `open` attribute.  When it is pr
   
 In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
 
-```
+### Vanilla JS
+
+```js
 modal.addEventListener('close', () => {
   modal.removeAttribute('open');
 });
+```
+
+### Angular
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'modal-page',
+  template: `<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>`,
+})
+export class ModalPage {
+  isModalOpen = false;
+
+  handleModalClose(e: CustomEvent<void>) {
+    this.isModalOpen = false;
+  }
+}
+```
+
+### React
+
+```tsx 
+import { useCallback, useState } from 'react';
+import { PModal } from '@porsche-design-system/components-react';
+
+const ModalPage = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
+}
+
 ```
 
 <Playground :markup="basic"></Playground>
