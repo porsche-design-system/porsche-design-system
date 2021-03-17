@@ -590,9 +590,9 @@ export namespace Components {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
          */
-        "activeTabIndex"?: number;
+        "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -1515,9 +1515,9 @@ declare namespace LocalJSX {
     }
     interface PTabsBar {
         /**
-          * Defines which tab to be visualized as selected (zero-based numbering).
+          * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
          */
-        "activeTabIndex"?: number;
+        "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
          */

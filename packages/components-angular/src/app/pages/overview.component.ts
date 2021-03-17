@@ -155,7 +155,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
-          <p-tabs-bar>
+          <p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
             <button>Tab3</button>
@@ -305,7 +305,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default tabs-bar with custom prefix">
-          <my-prefix-p-tabs-bar p-tabs-bar>
+          <my-prefix-p-tabs-bar p-tabs-bar [activeTabIndex]="0">
             <button>Tab1</button>
             <button>Tab2</button>
             <button>Tab3</button>
