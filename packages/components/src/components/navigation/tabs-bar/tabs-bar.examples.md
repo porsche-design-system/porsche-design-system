@@ -29,7 +29,7 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### Vanilla JS
 
-```
+```js
 tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
   const { activeTabIndex } = tabChangeEvent.detail;
   tabChangeEvent.target.setAttribute('active-tab-index', activeTabIndex);
@@ -38,9 +38,9 @@ tabsBar.addEventListener('tabChange', (tabChangeEvent) => {
 
 ### Angular
 
-```
+```ts
 import { Component } from '@angular/core';
-import { TabChangeEvent } from '@porsche-design-system/components-angular/lib/bundle';
+import { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'tabs-bar-page',
@@ -58,12 +58,12 @@ export class TabsBarPage {
 
 ### React
 
-``` 
-import { useCallback, useState } from "react";
+```tsx
+import { useCallback, useState } from 'react';
 import { PTabsBar } from '@porsche-design-system/components-react';
 import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
-const TabsBarPage = () => {
+const TabsBarPage = (): JSX.Element => {
     const [tabIndex, setTabIndex] = useState<number>();
     const handleTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
         const { activeTabIndex } = e.detail;

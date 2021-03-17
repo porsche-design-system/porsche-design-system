@@ -19,7 +19,7 @@ In order to get notified when the Modal gets closed by clicking the `x` button, 
 
 ### Vanilla JS
 
-```
+```js
 modal.addEventListener('close', () => {
   modal.removeAttribute('open');
 });
@@ -27,7 +27,7 @@ modal.addEventListener('close', () => {
 
 ### Angular
 
-```
+```ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -45,14 +45,14 @@ export class ModalPage {
 
 ### React
 
-``` 
-import { useCallback, useState } from "react";
+```tsx 
+import { useCallback, useState } from 'react';
 import { PModal } from '@porsche-design-system/components-react';
 
-const ModalPage = () => {
+const ModalPage = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleModalClose = useCallback(()=> {
-    setIsModalOpen(false)
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
   }, []);
 
   return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
