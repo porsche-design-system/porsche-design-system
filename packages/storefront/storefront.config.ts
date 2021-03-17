@@ -480,17 +480,21 @@ export const config: StorefrontConfig = {
     ],
   },
   'Accessibility': {
-    Introduction: [
+    'Introduction': [
       // @ts-ignore
       () => import(`@/pages/accessibility/introduction.md`),
     ],
-    Compliance: [
+    'Compliance': [
       // @ts-ignore
       () => import(`@/pages/accessibility/compliance.md`),
     ],
-    Workflow: [
+    'Workflow': [
       // @ts-ignore
       () => import(`@/pages/accessibility/workflow.md`),
+    ],
+    'Accessibility Statement': [
+      // @ts-ignore
+      () => import(`@/pages/accessibility/statement.md`),
     ],
   },
   'Patterns': {
