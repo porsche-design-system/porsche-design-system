@@ -27,13 +27,17 @@ describe('modal', () => {
       });
     });
 
+    describe('setScrollLock', () => {
+      it('should set overflow hidden', () => {});
+    });
+
     describe('handleHostTouchMove', () => {
       it.each([
         [{ scrollTop: 0, scrollHeight: 1, offsetHeight: 2 } as HTMLElement, 1],
         [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 } as HTMLElement, 0],
         [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 } as HTMLElement, 1],
       ])('should for array %s return %s', (hostElement, result) => {
-        handleHostTouchMove(undefined, hostElement);
+        handleHostTouchMove(hostElement, undefined);
         expect(hostElement.scrollTop).toEqual(result);
       });
 
@@ -41,7 +45,7 @@ describe('modal', () => {
         const event = { preventDefault: () => {} };
         jest.spyOn(event, 'preventDefault');
 
-        handleHostTouchMove(event as TouchEvent, { scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement);
+        handleHostTouchMove({ scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement, event as TouchEvent);
         expect(event.preventDefault).toBeCalledTimes(1);
       });
     });

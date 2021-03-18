@@ -31,7 +31,7 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.setKeyboardListener(isOpen);
-    setScrollLock(isOpen, this.host);
+    setScrollLock(this.host, isOpen);
 
     if (isOpen) {
       this.setFocusableElements();
@@ -46,7 +46,7 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
-      setScrollLock(true, this.host);
+      setScrollLock(this.host, true);
     }
   }
 
@@ -57,7 +57,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
-    setScrollLock(false, this.host);
+    setScrollLock(this.host, false);
   }
 
   public render(): JSX.Element {
