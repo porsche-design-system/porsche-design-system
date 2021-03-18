@@ -33,7 +33,8 @@ describe('modal', () => {
         [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 } as HTMLElement, 0],
         [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 } as HTMLElement, 1],
       ])('should for array %s return %s', (hostElement, result) => {
-        expect(handleHostTouchMove(undefined, hostElement)).toEqual(result);
+        handleHostTouchMove(undefined, hostElement);
+        expect(hostElement.scrollTop).toEqual(result);
       });
 
       it('should prevent default', () => {
