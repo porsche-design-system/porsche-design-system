@@ -29,7 +29,8 @@ const setScrollTop = (e: TouchEvent, host: HTMLElement): void => {
 
 export const handleHostTouchMove = (e: TouchEvent, host: HTMLElement): number => {
   // Source: https://stackoverflow.com/a/43860705
-  let { scrollTop, scrollHeight, offsetHeight } = host;
+  let { scrollTop } = host;
+  const { scrollHeight, offsetHeight } = host;
   const currentScroll = scrollTop + offsetHeight;
 
   if (scrollTop === 0 && currentScroll === scrollHeight) {
