@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
       <p-modal
         [heading]="'Some Heading with a very long title across multiple lines'"
         [open]="'true'"
-        [fullScreen]="'true'"
+        [fullScreen]="{ base: true, s: false }"
       >
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
