@@ -96,7 +96,7 @@ export const routes: ExtendedRoute[] = [
   {
     path: 'modal-fullscreen',
     component: fromPages.ModalFullscreenComponent,
-    name: 'Modal Prefixed',
+    name: 'Modal Fullscreen',
   },
   {
     path: 'modal-prefixed',
