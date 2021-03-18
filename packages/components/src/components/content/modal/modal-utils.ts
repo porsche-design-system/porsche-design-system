@@ -19,28 +19,22 @@ export const setScrollLock = (lock: boolean, host: HTMLElement): void => {
     const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
     document[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => e.preventDefault(), false);
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    host[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => setScrollTop(e, host));
+    host[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => handleHostTouchMove(e, host));
   }
 };
 
-const setScrollTop = (e: TouchEvent, host: HTMLElement): void => {
-  host.scrollTop = handleHostTouchMove(e, host);
-};
-
-export const handleHostTouchMove = (e: TouchEvent, host: HTMLElement): number => {
+export const handleHostTouchMove = (e: TouchEvent, host: HTMLElement): void => {
   // Source: https://stackoverflow.com/a/43860705
-  let { scrollTop } = host;
-  const { scrollHeight, offsetHeight } = host;
+  const { scrollTop, scrollHeight, offsetHeight } = host;
   const currentScroll = scrollTop + offsetHeight;
 
   if (scrollTop === 0 && currentScroll === scrollHeight) {
     e.preventDefault();
   } else if (scrollTop === 0) {
-    scrollTop = 1;
+    host.scrollTop = 1;
   } else if (currentScroll === scrollHeight) {
-    scrollTop = scrollTop - 1;
+    host.scrollTop = scrollTop - 1;
   }
-  return scrollTop;
 };
 
 export const getFirstAndLastElement = (elements: HTMLElement[]): HTMLElement[] => {
