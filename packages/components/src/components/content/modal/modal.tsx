@@ -1,12 +1,7 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import {
-  getHTMLElements,
-  getPrefixedTagNames,
-  isIos,
-  mapBreakpointPropToPrefixedClasses,
-  prefix,
-} from '../../../utils';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { getFirstAndLastElement, getFocusableElements, setScrollLock } from './modal-utils';
 
 @Component({
   tag: 'p-modal',
@@ -36,7 +31,7 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.setKeyboardListener(isOpen);
-    this.setScrollLock(isOpen);
+    setScrollLock(isOpen, this.host);
 
     if (isOpen) {
       this.setFocusableElements();
@@ -51,7 +46,7 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
-      this.setScrollLock(true);
+      setScrollLock(true, this.host);
     }
   }
 
@@ -62,7 +57,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
-    this.setScrollLock(false);
+    setScrollLock(false, this.host);
   }
 
   public render(): JSX.Element {
@@ -116,48 +111,11 @@ export class Modal {
   }
 
   private setFocusableElements = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    const notDisabled = ':not([disabled])';
-    const selector =
-      Object.values(PrefixedTagNames).join(',') +
-      `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
-
-    this.focusableElements = [this.closeBtn].concat(getHTMLElements(this.host, selector));
-  };
-
-  private setScrollLock = (lock: boolean): void => {
-    document.body.style.overflow = lock ? 'hidden' : '';
-
-    // prevent scrolling of background on iOS
-    if (isIos()) {
-      const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
-      document[addOrRemoveEventListener]('touchmove', this.handleDocumentTouchMove, false);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      this.host[addOrRemoveEventListener]('touchmove', this.handleHostTouchMove);
-    }
+    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
   };
 
   private setKeyboardListener = (active: boolean): void => {
     document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
-  };
-
-  private handleDocumentTouchMove = (e: TouchEvent): void => {
-    e.preventDefault();
-  };
-
-  private handleHostTouchMove = function (e: TouchEvent): void {
-    // Source: https://stackoverflow.com/a/43860705
-    const { scrollTop, scrollHeight, offsetHeight } = this as HTMLElement;
-    const currentScroll = scrollTop + offsetHeight;
-
-    if (scrollTop === 0 && currentScroll === scrollHeight) {
-      e.preventDefault();
-    } else if (scrollTop === 0) {
-      this.scrollTop = 1;
-    } else if (currentScroll === scrollHeight) {
-      this.scrollTop = scrollTop - 1;
-    }
   };
 
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
@@ -170,22 +128,17 @@ export class Modal {
         this.focusableElements[0]?.focus();
         e.preventDefault();
       } else {
-        const [firstEl] = this.focusableElements;
-        const [lastEl] = this.focusableElements.slice(-1);
+        const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
 
         const { activeElement: activeElLight } = document;
         const { activeElement: activeElShadow } = this.host.shadowRoot;
 
-        if (shiftKey) {
-          if (activeElLight === firstEl || activeElShadow === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          }
-        } else {
-          if (activeElLight === lastEl || activeElShadow === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
+        if (shiftKey && (activeElLight === firstEl || activeElShadow === firstEl)) {
+          e.preventDefault();
+          lastEl.focus();
+        } else if (!shiftKey && (activeElLight === lastEl || activeElShadow === lastEl)) {
+          e.preventDefault();
+          firstEl.focus();
         }
       }
     }
