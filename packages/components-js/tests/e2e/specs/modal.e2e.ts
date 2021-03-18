@@ -23,7 +23,7 @@ describe('modal', () => {
 
   const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
-  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
+  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal--close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
 
   const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {
@@ -299,7 +299,7 @@ describe('modal', () => {
       expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
       expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure'); // has p-icon and p-text
 
-      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
+      expect(status.componentDidLoad.all).toBe(6, 'componentDidLoad: all');
       expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
@@ -314,8 +314,8 @@ describe('modal', () => {
 
       expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-modal');
 
-      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).toBe(6, 'componentDidLoad: all');
+      expect(status.componentDidUpdate.all).toBe(3, 'componentDidUpdate: all');
     });
   });
 });
