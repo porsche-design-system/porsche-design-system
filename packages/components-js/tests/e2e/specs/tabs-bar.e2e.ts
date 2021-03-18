@@ -5,6 +5,7 @@ import {
   getAttribute,
   getBrowser,
   getElementPositions,
+  getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
   getProperty,
@@ -84,6 +85,24 @@ describe('tabs-bar', () => {
     Object.values(await getProperty(element, 'classList'));
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
+
+  it('should have a statusBar width of 0 when no activeTabIndex is set', async () => {
+    await initTabsBar({ amount: 3 });
+
+    // re-initialize tabs bar to be able to see the state right after initialization
+    await page.evaluate(() => {
+      const tabsBar = document.querySelector('p-tabs-bar');
+      tabsBar.remove();
+      const newTabsBar = document.createElement('p-tabs-bar');
+      const newTabsButton = document.createElement('button');
+      newTabsBar.appendChild(newTabsButton);
+      document.body.appendChild(newTabsBar);
+    });
+
+    const statusBarWidth = await getElementStyle(await getStatusBar(), 'width');
+
+    expect(statusBarWidth).toBe('0px');
+  });
 
   it('should render no active tab if no activeTabIndex is set ', async () => {
     await initTabsBar({ amount: 3 });
