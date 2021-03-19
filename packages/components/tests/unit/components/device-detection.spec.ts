@@ -1,12 +1,13 @@
 import { isIos, isTouchDevice } from '../../../src/utils';
 
-describe('Device Detection', () => {
+fdescribe('Device Detection', () => {
   let windowSpy;
   beforeEach(() => (windowSpy = jest.spyOn(window, 'window', 'get')));
+  afterEach(() => windowSpy.mockRestore());
 
   describe('isTouchDevice', () => {
     it('should detect touch device ', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           (({
             ontouchstart: true,
@@ -20,10 +21,9 @@ describe('Device Detection', () => {
     });
 
     it('should detect non touch device', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           (({
-            ontouchstart: false,
             navigator: {
               maxTouchPoints: 0,
             },
@@ -36,7 +36,7 @@ describe('Device Detection', () => {
 
   describe('isIos', () => {
     it('should detect mobile', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           ({
             navigator: {
@@ -49,7 +49,7 @@ describe('Device Detection', () => {
     });
 
     it('should detect macIntel', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           ({
             navigator: {
@@ -63,7 +63,7 @@ describe('Device Detection', () => {
     });
 
     it('should be false on windows desktop device', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           ({
             navigator: {
@@ -76,7 +76,7 @@ describe('Device Detection', () => {
     });
 
     it('should be false on windows touchdevice', () => {
-      windowSpy.mockImplementationOnce(
+      windowSpy.mockImplementation(
         () =>
           ({
             navigator: {
