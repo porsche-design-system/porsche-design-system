@@ -456,7 +456,7 @@ export namespace Components {
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
-        "fullScreen"?: BreakpointCustomizable<boolean>;
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * The title of the modal
          */
@@ -1373,7 +1373,7 @@ declare namespace LocalJSX {
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
          */
-        "fullScreen"?: BreakpointCustomizable<boolean>;
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * The title of the modal
          */
