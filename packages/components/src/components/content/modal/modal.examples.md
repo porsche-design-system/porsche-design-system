@@ -89,9 +89,9 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Fullscreen on mobile
 
-The Modal supports a `full-screen` property. It should only be used on mobile / small breakpoints.
+The Modal supports a `fullscreen` property. It should only be used on mobile / small breakpoints.
 
-<Playground :markup="fullScreen"></Playground>
+<Playground :markup="fullscreen"></Playground>
 
 Of course, any combination of the available options is possible.
 
@@ -179,9 +179,9 @@ Of course, any combination of the available options is possible.
   <p-text>Some Content</p-text>
 </p-modal>`;
 
-    fullScreen =
+    fullscreen =
 `<p-button>Open Modal</p-button>
-<p-modal heading="Some Heading" open="false" full-screen="{ base: true, s: false }">
+<p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
   <p-text>Some Content</p-text>
   <p-flex class="footer">
     <p-button>Save</p-button>

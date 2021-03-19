@@ -20,7 +20,7 @@ export class Modal {
   /** The title of the modal */
   @Prop() public heading?: string;
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
-  @Prop() public fullScreen?: BreakpointCustomizable<boolean> = false;
+  @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
@@ -64,11 +64,11 @@ export class Modal {
     const hasHeader = this.heading || !this.disableCloseButton;
     const rootClasses = {
       [prefix('modal')]: true,
-      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullScreen, ['full-screen-on', 'full-screen-off']),
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
     };
-    const headerClasses = prefix('modal--header');
-    const btnCloseWrapperClasses = prefix('modal--close');
-    const btnCloseClasses = prefix('modal--close-button');
+    const headerClasses = prefix('modal__header');
+    const btnCloseWrapperClasses = prefix('modal__close');
+    const btnCloseClasses = prefix('modal__close-button');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -133,12 +133,16 @@ export class Modal {
         const { activeElement: activeElLight } = document;
         const { activeElement: activeElShadow } = this.host.shadowRoot;
 
-        if (shiftKey && (activeElLight === firstEl || activeElShadow === firstEl)) {
-          e.preventDefault();
-          lastEl.focus();
-        } else if (!shiftKey && (activeElLight === lastEl || activeElShadow === lastEl)) {
-          e.preventDefault();
-          firstEl.focus();
+        if (shiftKey) {
+          if (activeElLight === firstEl || activeElShadow === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (activeElLight === lastEl || activeElShadow === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
         }
       }
     }

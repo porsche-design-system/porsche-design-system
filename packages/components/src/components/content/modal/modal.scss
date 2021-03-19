@@ -40,6 +40,9 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   transform: scale3d(0.9, 0.9, 1);
   box-sizing: border-box;
   padding: p-px-to-rem(32px);
+  min-width: 272px;
+  max-width: 1536px;
+  margin: 7vw;
 
   @include p-media-query('m') {
     padding: p-px-to-rem(40px);
@@ -48,83 +51,77 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     padding: p-px-to-rem(64px);
   }
 
-  &--full-screen-off {
-    min-width: 272px;
-    max-width: 1536px;
-    margin: 7vw;
-  }
-
-  &--full-screen-on {
+  &--fullscreen-on {
     min-width: 100%;
     min-height: 100%;
   }
 
   @include p-media-query('xs') {
-    &--full-screen-off-xs {
+    &--fullscreen-off-xs {
       min-width: 272px;
       max-width: 1536px;
       margin: 7vw;
     }
 
-    &--full-screen-on-xs {
+    &--fullscreen-on-xs {
       min-width: 100%;
       min-height: 100%;
     }
   }
 
   @include p-media-query('s') {
-    &--full-screen-off-s {
+    &--fullscreen-off-s {
       min-width: 272px;
       max-width: 1536px;
       margin: 7vw;
     }
 
-    &--full-screen-on-s {
+    &--fullscreen-on-s {
       min-width: 100%;
       min-height: 100%;
     }
   }
 
   @include p-media-query('m') {
-    &--full-screen-off-m {
+    &--fullscreen-off-m {
       min-width: 272px;
       max-width: 1536px;
       margin: 7vw;
     }
 
-    &--full-screen-on-m {
+    &--fullscreen-on-m {
       min-width: 100%;
       min-height: 100%;
     }
   }
 
   @include p-media-query('l') {
-    &--full-screen-off-l {
+    &--fullscreen-off-l {
       min-width: 272px;
       max-width: 1536px;
       margin: 7vw;
     }
 
-    &--full-screen-on-l {
+    &--fullscreen-on-l {
       min-width: 100%;
       min-height: 100%;
     }
   }
 
   @include p-media-query('xl') {
-    &--full-screen-off-xl {
+    &--fullscreen-off-xl {
       min-width: 272px;
       max-width: 1536px;
       margin: 7vw;
     }
 
-    &--full-screen-on-xl {
+    &--fullscreen-on-xl {
       min-width: 100%;
       min-height: 100%;
     }
   }
 
-  &--header {
+  &__header {
     display: flex;
     padding-bottom: p-px-to-rem(16px);
 
@@ -136,12 +133,12 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
 
-  &--close {
+  &__close {
     margin-left: auto;
     padding-left: p-px-to-rem(8px);
   }
 
-  &--close-button {
+  &__close-button {
     margin: p-px-to-rem(-8px) p-px-to-rem(-8px) 0 0;
     padding: p-px-to-rem(8px);
   }
