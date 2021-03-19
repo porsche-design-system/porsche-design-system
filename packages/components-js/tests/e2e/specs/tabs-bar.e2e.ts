@@ -87,7 +87,7 @@ describe('tabs-bar', () => {
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
-  fit('should have a statusBar width of 0 when no activeTabIndex is set', async () => {
+  it('should have a statusBar width of 0 when no activeTabIndex is set', async () => {
     await setContentWithDesignSystem(page, '');
 
     // initialize tabs bar to be able to see the state right after initialization
