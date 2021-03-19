@@ -23,7 +23,7 @@ describe('modal', () => {
 
   const getHost = () => selectNode(page, 'p-modal');
   const getModal = () => selectNode(page, 'p-modal >>> .p-modal');
-  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal--close p-button-pure');
+  const getModalCloseButton = () => selectNode(page, 'p-modal >>> .p-modal__close p-button-pure');
   const getModalAside = () => selectNode(page, 'p-modal >>> aside');
 
   const initBasicModal = (opts?: { isOpen: boolean }): Promise<void> => {

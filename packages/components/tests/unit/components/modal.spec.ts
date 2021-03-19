@@ -27,17 +27,13 @@ describe('modal', () => {
       });
     });
 
-    describe('setScrollLock', () => {
-      it('should set overflow hidden', () => {});
-    });
-
     describe('handleHostTouchMove', () => {
       it.each([
-        [{ scrollTop: 0, scrollHeight: 1, offsetHeight: 2 } as HTMLElement, 1],
-        [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 } as HTMLElement, 0],
-        [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 } as HTMLElement, 1],
+        [{ scrollTop: 0, scrollHeight: 1, offsetHeight: 2 }, 1],
+        [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 }, 0],
+        [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 }, 1],
       ])('should for array %s return %s', (hostElement, result) => {
-        handleHostTouchMove(hostElement, undefined);
+        handleHostTouchMove(hostElement as HTMLElement, undefined);
         expect(hostElement.scrollTop).toEqual(result);
       });
 
@@ -52,26 +48,21 @@ describe('modal', () => {
     describe('getFirstAndLastElement', () => {
       it.each([
         [
-          [{ id: 'first' } as HTMLElement, { id: 'middle' } as HTMLElement, { id: 'last' } as HTMLElement],
-          [{ id: 'first' } as HTMLElement, { id: 'last' } as HTMLElement],
+          [{ id: 'first' }, { id: 'middle' }, { id: 'last' }],
+          [{ id: 'first' }, { id: 'last' }],
         ],
         [
-          [{ id: 'first' } as HTMLElement, { id: 'last' } as HTMLElement],
-          [{ id: 'first' } as HTMLElement, { id: 'last' } as HTMLElement],
+          [{ id: 'first' }, { id: 'last' }],
+          [{ id: 'first' }, { id: 'last' }],
         ],
         [
-          [
-            { id: 'first' } as HTMLElement,
-            { id: 'middle' } as HTMLElement,
-            { id: 'middle' } as HTMLElement,
-            { id: 'last' } as HTMLElement,
-          ],
-          [{ id: 'first' } as HTMLElement, { id: 'last' } as HTMLElement],
+          [{ id: 'first' }, { id: 'middle' }, { id: 'middle' }, { id: 'last' }],
+          [{ id: 'first' }, { id: 'last' }],
         ],
-        [[{ id: 'first' } as HTMLElement], [{ id: 'first' } as HTMLElement, { id: 'first' } as HTMLElement]],
+        [[{ id: 'first' }], [{ id: 'first' }, { id: 'first' }]],
         [[], [undefined, undefined]],
       ])('should for array %j return %j', (initArray, resultArray) => {
-        expect(getFirstAndLastElement(initArray)).toEqual(resultArray);
+        expect(getFirstAndLastElement(initArray as HTMLElement[])).toEqual(resultArray as HTMLElement[]);
       });
     });
   });
