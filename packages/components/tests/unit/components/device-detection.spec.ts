@@ -1,6 +1,6 @@
 import { isIos, isTouchDevice } from '../../../src/utils';
 
-fdescribe('Device Detection', () => {
+describe('Device Detection', () => {
   let windowSpy;
   beforeEach(() => (windowSpy = jest.spyOn(window, 'window', 'get')));
   afterEach(() => windowSpy.mockRestore());
