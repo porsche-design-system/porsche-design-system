@@ -17,6 +17,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForComponentsReady,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -86,19 +87,17 @@ describe('tabs-bar', () => {
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
 
-  it('should have a statusBar width of 0 when no activeTabIndex is set', async () => {
-    await initTabsBar({ amount: 3 });
+  fit('should have a statusBar width of 0 when no activeTabIndex is set', async () => {
+    await setContentWithDesignSystem(page, '');
 
-    // re-initialize tabs bar to be able to see the state right after initialization
+    // initialize tabs bar to be able to see the state right after initialization
     await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
-      tabsBar.remove();
-      const newTabsBar = document.createElement('p-tabs-bar');
+      const tabsBar = document.createElement('p-tabs-bar');
       const newTabsButton = document.createElement('button');
-      newTabsBar.appendChild(newTabsButton);
-      document.body.appendChild(newTabsBar);
+      tabsBar.appendChild(newTabsButton);
+      document.body.appendChild(tabsBar);
     });
-
+    await waitForComponentsReady(page);
     const statusBarWidth = await getElementStyle(await getStatusBar(), 'width');
 
     expect(statusBarWidth).toBe('0px');
