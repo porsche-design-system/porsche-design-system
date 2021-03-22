@@ -147,6 +147,10 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
 
+  &__headline {
+    margin-right: p-px-to-rem(8px);
+  }
+
   &__close {
     margin-left: auto;
     padding-left: p-px-to-rem(8px);
