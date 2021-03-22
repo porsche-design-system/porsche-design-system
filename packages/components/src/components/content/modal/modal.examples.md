@@ -187,7 +187,7 @@ Of course, any combination of the available options is possible.
       <p-text>Some Content</p-text>
     </p-flex-item>
     <p-flex-item>
-      <p-flex direction="{ base: 'column', s: 'row' }" class="fullScreenFooter">
+      <p-flex direction="column" class="column">
         <p-button>Save</p-button>
         <p-button variant="tertiary">Close</p-button>
       </p-flex>
@@ -244,15 +244,5 @@ Of course, any combination of the available options is possible.
 
   ::v-deep .fullScreenContainer {
     flex: 1;
-  }
-
-  ::v-deep .fullScreenFooter {
-    @include p-col;
-    padding: p-px-to-rem(16px) 0 0;
-    
-    @include p-media-query('s') {
-      @include p-row;
-      padding: p-px-to-rem(32px) 0 0;
-    }
   }
 </style>
