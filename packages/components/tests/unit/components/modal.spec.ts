@@ -35,14 +35,11 @@ describe('modal', () => {
 
         beforeEach(() => {
           windowSpy = jest.spyOn(window, 'window', 'get');
-          windowSpy.mockImplementation(
-            () =>
-              ({
-                navigator: {
-                  platform: 'iPhone',
-                },
-              } as Window & typeof globalThis)
-          );
+          windowSpy.mockImplementation(() => ({
+            navigator: {
+              platform: 'iPhone',
+            },
+          }));
 
           document.addEventListener = jest.fn((event) => documentEvents.push(event));
           host.addEventListener = jest.fn((event) => hostEvents.push(event));
