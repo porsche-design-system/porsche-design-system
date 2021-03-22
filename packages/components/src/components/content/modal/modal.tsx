@@ -67,6 +67,7 @@ export class Modal {
       ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
     };
     const headerClasses = prefix('modal__header');
+    const headlineClasses = prefix('modal__headline');
     const btnCloseWrapperClasses = prefix('modal__close');
     const btnCloseClasses = prefix('modal__close-button');
 
@@ -84,9 +85,11 @@ export class Modal {
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                  {this.heading}
-                </PrefixedTagNames.pHeadline>
+                <div class={headlineClasses}>
+                  <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                    {this.heading}
+                  </PrefixedTagNames.pHeadline>
+                </div>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseWrapperClasses}>
