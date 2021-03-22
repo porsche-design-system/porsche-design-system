@@ -135,7 +135,7 @@ Of course, any combination of the available options is possible.
 `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   <p-text>Some Content</p-text>
-  <p-flex class="footer">
+  <p-flex direction="column" class="column">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
@@ -147,7 +147,7 @@ Of course, any combination of the available options is possible.
   <div style="max-width: 100%; max-height: 100%; width: 100vw; height: 500px">
     <p-text>Some Content in responsive max width</p-text>
   </div>
-  <p-flex class="footer">
+  <p-flex direction="row" class="row">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
@@ -161,7 +161,7 @@ Of course, any combination of the available options is possible.
   <p-text>More Content</p-text>
   <div style="height: 40vh;"></div>
   <p-text>Even More Content</p-text>
-  <p-flex class="footer">
+  <p-flex direction="column" class="column" >
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
@@ -182,10 +182,16 @@ Of course, any combination of the available options is possible.
     fullscreen =
 `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
-  <p-text>Some Content</p-text>
-  <p-flex class="footer">
-    <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
+  <p-flex direction="column" class="fullScreenContainer">
+    <p-flex-item grow="1">
+      <p-text>Some Content</p-text>
+    </p-flex-item>
+    <p-flex-item>
+      <p-flex direction="{ base: 'column', s: 'row' }" class="fullScreenFooter">
+        <p-button>Save</p-button>
+        <p-button variant="tertiary">Close</p-button>
+      </p-flex>
+    </p-flex-item>
   </p-flex>
 </p-modal>`;
     
@@ -203,7 +209,6 @@ Of course, any combination of the available options is possible.
   @import '~@porsche-design-system/utilities/scss';
 
   @mixin p-row() {
-    flex-direction: row;
     > * {
       width: auto;
       &:not(:last-child) {
@@ -216,7 +221,6 @@ Of course, any combination of the available options is possible.
   } 
   
   @mixin p-col() {
-    flex-direction: column;
     > * {
       width: 100%;
       &:not(:first-child) {
@@ -227,8 +231,22 @@ Of course, any combination of the available options is possible.
       }
     }
   }
-  
-  ::v-deep .footer {
+
+  ::v-deep .column {
+    @include p-col;
+    padding: p-px-to-rem(32px) 0 0;
+  }
+
+  ::v-deep .row {
+    @include p-row;
+    padding: p-px-to-rem(32px) 0 0;
+  }
+
+  ::v-deep .fullScreenContainer {
+    flex: 1;
+  }
+
+  ::v-deep .fullScreenFooter {
     @include p-col;
     padding: p-px-to-rem(16px) 0 0;
     
