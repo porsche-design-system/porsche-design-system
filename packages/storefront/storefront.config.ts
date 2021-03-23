@@ -220,6 +220,12 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/form/select-wrapper/select-wrapper.props.md`),
       ],
     },
+    'Switch': {
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/form/switch/switch.usage.md`),
+      ],
+    },
     'Textarea': {
       Examples: [
         // @ts-ignore
