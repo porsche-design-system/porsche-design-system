@@ -20,6 +20,9 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Basic example without preselection
 
+To ensure the user makes a conscious choice, use `<option></option>` as placeholder.
+If the select is required, use `<option hidden></option>` to enforce a selection.
+
 <Playground :markup="basicNoPreselection" :config="config">
   <select v-model="isRequired">
     <option disabled>Select a label mode</option>
