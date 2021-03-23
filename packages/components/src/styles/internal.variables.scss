@@ -1,5 +1,12 @@
+@import '../../../utilities/projects/utilities/scss';
+
 $p-global-class-prefix: 'p-' !default;
 
 $p-animation-hover-duration: 0.24s;
 $p-animation-hover-bezier: ease;
 $p-tabs-transition-duration: 0.4s;
+
+$p-max-width-basic: p-px-to-rem(1536px);
+$p-min-width: p-px-to-rem(272px);
+
+$p-vw-basic: 7vw;

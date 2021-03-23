@@ -14,10 +14,10 @@
   width: 100%;
 
   &--basic {
-    max-width: p-px-to-rem(1536px);
+    max-width: $p-max-width-basic;
     padding: {
-      left: 7vw;
-      right: 7vw;
+      left: $p-vw-basic;
+      right: $p-vw-basic;
     }
 
     @include p-media-query('xl', 'xxl') {

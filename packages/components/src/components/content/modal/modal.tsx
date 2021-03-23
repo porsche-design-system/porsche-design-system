@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
 import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, setScrollLock } from './modal-utils';
+import { getFirstAndLastElement, getFocusableElements, handleHostTouchMove, setScrollLock } from './modal-utils';
 
 @Component({
   tag: 'p-modal',
@@ -31,10 +31,10 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.setKeyboardListener(isOpen);
-    setScrollLock(this.host, isOpen);
+    setScrollLock(this.host, isOpen, this.setScrollTop);
 
     if (isOpen) {
-      this.setFocusableElements();
+      this.focusableElements = getFocusableElements(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
       this.focusableElements[0]?.focus();
     } else {
@@ -46,18 +46,18 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
-      setScrollLock(this.host, true);
+      setScrollLock(this.host, true, this.setScrollTop);
     }
   }
 
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
-    this.setFocusableElements();
+    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
   }
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
-    setScrollLock(this.host, false);
+    setScrollLock(this.host, false, this.setScrollTop);
   }
 
   public render(): JSX.Element {
@@ -67,7 +67,6 @@ export class Modal {
       ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
     };
     const headerClasses = prefix('modal__header');
-    const headlineClasses = prefix('modal__headline');
     const btnCloseWrapperClasses = prefix('modal__close');
     const btnCloseClasses = prefix('modal__close-button');
 
@@ -85,11 +84,9 @@ export class Modal {
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <div class={headlineClasses}>
-                  <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                    {this.heading}
-                  </PrefixedTagNames.pHeadline>
-                </div>
+                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                  {this.heading}
+                </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseWrapperClasses}>
@@ -113,8 +110,8 @@ export class Modal {
     );
   }
 
-  private setFocusableElements = (): void => {
-    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
+  private setScrollTop = (e: TouchEvent) => {
+    this.host.scrollTop = handleHostTouchMove(this.host, e);
   };
 
   private setKeyboardListener = (active: boolean): void => {
