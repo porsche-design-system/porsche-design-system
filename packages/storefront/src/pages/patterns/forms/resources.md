@@ -84,10 +84,10 @@ Below you can find the explanations of the used class names.
         <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
       </p-fieldset-wrapper>
       <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
-        <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
+        <p-flex-item class="form-grid-item">
           <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
         </p-flex-item>
-        <p-flex-item width="{base: 'full', s: 'auto'}" class="form-row-spacing form-row-spacing--zero-s form-grid-item">
+        <p-flex-item class="form-row-spacing form-row-spacing--zero-s form-grid-item">
           <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
         </p-flex-item>
       </p-flex>
