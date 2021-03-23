@@ -56,7 +56,7 @@ describe('buildIconUrl()', () => {
   });
 });
 
-describe('isUrl', () => {
+describe('isUrl()', () => {
   it('should return true if url is valid', () => {
     expect(isUrl('https://cdn.ui.porsche.com/some-path/some-icon.svg')).toBe(true);
     expect(isUrl('./assets/some_icon.svg')).toBe(true);

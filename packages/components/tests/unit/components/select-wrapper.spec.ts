@@ -13,7 +13,7 @@ describe('select-wrapper', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  describe('applyFilterOnOptionMaps', () => {
+  describe('applyFilterOnOptionMaps()', () => {
     const defaultOptionMapValues: Partial<OptionMap> = {
       disabled: false,
       hidden: false,
