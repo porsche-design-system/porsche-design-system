@@ -1,74 +1,43 @@
 import { isIos, isTouchDevice } from '../../../src/utils';
 
-describe('Device Detection', () => {
-  let windowSpy;
-  beforeEach(() => (windowSpy = jest.spyOn(window, 'window', 'get')));
-  afterEach(() => windowSpy.mockRestore());
+describe('isTouchDevice()', () => {
+  it('should return true for touch device', () => {
+    jest.spyOn(window, 'window', 'get').mockImplementation(
+      () =>
+        ({
+          ontouchstart: null,
+          navigator: {
+            maxTouchPoints: 1,
+          },
+        } as any)
+    );
 
-  describe('isTouchDevice', () => {
-    it('should detect touch device ', () => {
-      windowSpy.mockImplementation(() => ({
-        ontouchstart: true,
-        navigator: {
-          maxTouchPoints: 1,
-        },
-      }));
-
-      expect(isTouchDevice()).toBe(true);
-    });
-
-    it('should detect non touch device', () => {
-      windowSpy.mockImplementation(() => ({
-        navigator: {
-          maxTouchPoints: 0,
-        },
-      }));
-
-      expect(isTouchDevice()).toBe(false);
-    });
+    expect(isTouchDevice()).toBe(true);
   });
 
-  describe('isIos', () => {
-    it('should detect mobile', () => {
-      windowSpy.mockImplementation(() => ({
-        navigator: {
-          platform: 'iPhone',
-        },
-      }));
+  it('should return false for non touch device', () => {
+    console.log(window.navigator.maxTouchPoints);
+    jest.spyOn(window, 'navigator', 'get').mockImplementation(
+      () =>
+        ({
+          maxTouchPoints: 0,
+        } as any)
+    );
 
-      expect(isIos()).toBe(true);
-    });
+    expect(isTouchDevice()).toBe(false);
+  });
+});
 
-    it('should detect macIntel', () => {
-      windowSpy.mockImplementation(() => ({
-        navigator: {
-          platform: 'MacIntel',
-          maxTouchPoints: 2,
-        },
-      }));
-
-      expect(isIos()).toBe(true);
-    });
-
-    it('should be false on windows desktop device', () => {
-      windowSpy.mockImplementation(() => ({
-        navigator: {
-          platform: 'Win32',
-        },
-      }));
-
-      expect(isIos()).toBe(false);
-    });
-
-    it('should be false on windows touchdevice', () => {
-      windowSpy.mockImplementation(() => ({
-        navigator: {
-          platform: 'Win32',
-          maxTouchPoints: 2,
-        },
-      }));
-
-      expect(isIos()).toBe(false);
-    });
+describe('isIos()', () => {
+  it.each([
+    [{ platform: 'iPhone' }, true],
+    [{ platform: 'iPad' }, true],
+    [{ platform: 'iPod' }, true],
+    [{ platform: 'MacIntel', maxTouchPoints: 2 }, true],
+    [{ platform: 'Win32' }, false],
+    [{ platform: 'Win32', maxTouchPoints: 2 }, false],
+  ])('should for navigator %j return %s', (navigator: Navigator, result) => {
+    jest.spyOn(window, 'navigator', 'get').mockImplementation(() => navigator);
+    expect(isIos()).toBe(result);
   });
 });
