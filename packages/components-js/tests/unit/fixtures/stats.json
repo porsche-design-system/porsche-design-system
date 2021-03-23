@@ -1,26 +1,26 @@
 {
-  "hash": "d839e777517d1c27ab11",
+  "hash": "3e4af4c90a176bd58c3f",
   "version": "5.25.1",
-  "time": 2957,
-  "builtAt": 1616412499438,
+  "time": 3044,
+  "builtAt": 1616513636228,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.0-rc.8.a7b117b187a1f8c8d57b.js"
+      "porsche-design-system.v2.0.0-rc.8.716108f13c02cf0c7514.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.0-rc.8.a7b117b187a1f8c8d57b.js",
+      "name": "porsche-design-system.v2.0.0-rc.8.716108f13c02cf0c7514.js",
       "size": 51189,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "a7b117b187a1f8c8d57b",
+        "contenthash": "716108f13c02cf0c7514",
         "javascriptModule": false,
         "minimized": true,
         "size": 51189
@@ -165,17 +165,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.64c02ecfee8e8ff1400c.js",
-      "size": 13730,
+      "name": "porsche-design-system.tabs-bar.3c5e34926106d357ce31.js",
+      "size": 13728,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "64c02ecfee8e8ff1400c",
+        "contenthash": "3c5e34926106d357ce31",
         "javascriptModule": false,
         "minimized": true,
-        "size": 13730
+        "size": 13728
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -440,17 +440,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.modal.233afd4787ac6857ed6a.js",
-      "size": 6859,
+      "name": "porsche-design-system.modal.86a1894d5a17f47ee4d2.js",
+      "size": 6758,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "233afd4787ac6857ed6a",
+        "contenthash": "86a1894d5a17f47ee4d2",
         "javascriptModule": false,
         "minimized": true,
-        "size": 6859
+        "size": 6758
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -1452,7 +1452,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -3994,7 +3994,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -6117,7 +6117,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -8607,7 +8607,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -12289,7 +12289,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -15739,7 +15739,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -18123,7 +18123,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -21088,7 +21088,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -22455,10 +22455,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.0-rc.8.a7b117b187a1f8c8d57b.js"
+        "porsche-design-system.v2.0.0-rc.8.716108f13c02cf0c7514.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "9d4c517ba65763807109",
+      "hash": "3195d92fa11001b55b9e",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -26470,7 +26470,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "51:4-20",
+              "loc": "48:4-20",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26484,7 +26484,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "52:17-28",
+              "loc": "49:17-28",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26498,7 +26498,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "139:41-47",
+              "loc": "136:41-47",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26512,7 +26512,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "139:67-101",
+              "loc": "136:67-101",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26526,7 +26526,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "140:26-32",
+              "loc": "137:26-32",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26540,7 +26540,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "141:28-34",
+              "loc": "138:35-41",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26554,7 +26554,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "142:35-41",
+              "loc": "139:28-34",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26568,7 +26568,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "143:28-34",
+              "loc": "141:12-13",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26582,7 +26582,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:12-13",
+              "loc": "141:14-18",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26596,7 +26596,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:14-18",
+              "loc": "141:85-86",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26610,7 +26610,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:85-86",
+              "loc": "141:246-247",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26624,7 +26624,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:246-247",
+              "loc": "141:301-302",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26638,7 +26638,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:301-302",
+              "loc": "141:421-422",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26652,7 +26652,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:338-339",
+              "loc": "141:465-466",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26666,7 +26666,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:459-460",
+              "loc": "141:632-633",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -26680,35 +26680,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:503-504",
-              "moduleId": 292,
-              "resolvedModuleId": 292
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-              "module": "../components/dist/esm/p-modal.entry.js",
-              "moduleName": "../components/dist/esm/p-modal.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-              "resolvedModule": "../components/dist/esm/p-modal.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-d4d97e7d.js",
-              "loc": "145:670-671",
-              "moduleId": 292,
-              "resolvedModuleId": 292
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-              "module": "../components/dist/esm/p-modal.entry.js",
-              "moduleName": "../components/dist/esm/p-modal.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-              "resolvedModule": "../components/dist/esm/p-modal.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-d4d97e7d.js",
-              "loc": "147:22-32",
+              "loc": "143:22-32",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -32815,9 +32787,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 10553,
+      "size": 10401,
       "sizes": {
-        "javascript": 10553
+        "javascript": 10401
       },
       "names": [],
       "idHints": [],
@@ -32825,10 +32797,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.modal.233afd4787ac6857ed6a.js"
+        "porsche-design-system.modal.86a1894d5a17f47ee4d2.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "09b6e2fc4530586cfb20",
+      "hash": "0d3af9bf4dde0d91bf6f",
       "childrenByOrder": {},
       "id": "modal",
       "siblings": [],
@@ -33704,7 +33676,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -33992,9 +33964,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 8731,
+          "size": 8579,
           "sizes": {
-            "javascript": 8731
+            "javascript": 8579
           },
           "built": true,
           "codeGenerated": true,
@@ -34064,7 +34036,7 @@
             "p_modal"
           ],
           "optimizationBailout": [
-            "Statement (ExpressionStatement) with side effects in source code at 152:0-23",
+            "Statement (ExpressionStatement) with side effects in source code at 148:0-23",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-select-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/get-prefixed-tag-name-e29e0268.js: Module ../components/dist/esm/get-prefixed-tag-name-e29e0268.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-tabs_2.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-d4d97e7d.js: Module ../components/dist/esm/jss-d4d97e7d.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
@@ -35118,7 +35090,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -37229,7 +37201,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -39561,7 +39533,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -42342,7 +42314,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -42726,9 +42698,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 22999,
+      "size": 22997,
       "sizes": {
-        "javascript": 22999
+        "javascript": 22997
       },
       "names": [],
       "idHints": [],
@@ -42736,10 +42708,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.64c02ecfee8e8ff1400c.js"
+        "porsche-design-system.tabs-bar.3c5e34926106d357ce31.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "20650baed6eac9db4d16",
+      "hash": "aab533da4c56e90e3045",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -43483,7 +43455,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -43771,9 +43743,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 21666,
+          "size": 21664,
           "sizes": {
-            "javascript": 21666
+            "javascript": 21664
           },
           "built": true,
           "codeGenerated": true,
@@ -47220,7 +47192,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -48783,7 +48755,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -51112,7 +51084,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-              "loc": "144:29-48",
+              "loc": "140:29-48",
               "moduleId": 292,
               "resolvedModuleId": 292
             },
@@ -56564,7 +56536,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "51:4-20",
+          "loc": "48:4-20",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56578,7 +56550,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "52:17-28",
+          "loc": "49:17-28",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56592,7 +56564,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "139:41-47",
+          "loc": "136:41-47",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56606,7 +56578,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "139:67-101",
+          "loc": "136:67-101",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56620,7 +56592,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "140:26-32",
+          "loc": "137:26-32",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56634,7 +56606,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "141:28-34",
+          "loc": "138:35-41",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56648,7 +56620,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "142:35-41",
+          "loc": "139:28-34",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56662,7 +56634,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "143:28-34",
+          "loc": "141:12-13",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56676,7 +56648,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:12-13",
+          "loc": "141:14-18",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56690,7 +56662,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:14-18",
+          "loc": "141:85-86",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56704,7 +56676,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:85-86",
+          "loc": "141:246-247",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56718,7 +56690,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:246-247",
+          "loc": "141:301-302",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56732,7 +56704,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:301-302",
+          "loc": "141:421-422",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56746,7 +56718,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:338-339",
+          "loc": "141:465-466",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56760,7 +56732,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:459-460",
+          "loc": "141:632-633",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -56774,35 +56746,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:503-504",
-          "moduleId": 292,
-          "resolvedModuleId": 292
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-          "module": "../components/dist/esm/p-modal.entry.js",
-          "moduleName": "../components/dist/esm/p-modal.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-          "resolvedModule": "../components/dist/esm/p-modal.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-d4d97e7d.js",
-          "loc": "145:670-671",
-          "moduleId": 292,
-          "resolvedModuleId": 292
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-          "module": "../components/dist/esm/p-modal.entry.js",
-          "moduleName": "../components/dist/esm/p-modal.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-modal.entry.js",
-          "resolvedModule": "../components/dist/esm/p-modal.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-d4d97e7d.js",
-          "loc": "147:22-32",
+          "loc": "143:22-32",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -63543,9 +63487,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 8731,
+      "size": 8579,
       "sizes": {
-        "javascript": 8731
+        "javascript": 8579
       },
       "built": true,
       "codeGenerated": true,
@@ -63614,7 +63558,7 @@
         "p_modal"
       ],
       "optimizationBailout": [
-        "Statement (ExpressionStatement) with side effects in source code at 152:0-23",
+        "Statement (ExpressionStatement) with side effects in source code at 148:0-23",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/device-detection-be3e2cc5.js: Module ../components/dist/esm/device-detection-be3e2cc5.js is referenced from different chunks by these modules: ../components/dist/esm/p-select-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/get-prefixed-tag-name-e29e0268.js: Module ../components/dist/esm/get-prefixed-tag-name-e29e0268.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-tabs_2.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-d4d97e7d.js: Module ../components/dist/esm/jss-d4d97e7d.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
@@ -63959,9 +63903,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 21666,
+      "size": 21664,
       "sizes": {
-        "javascript": 21666
+        "javascript": 21664
       },
       "built": true,
       "codeGenerated": true,
@@ -64893,7 +64837,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./get-prefixed-tag-name-e29e0268.js",
-          "loc": "144:29-48",
+          "loc": "140:29-48",
           "moduleId": 292,
           "resolvedModuleId": 292
         },
@@ -68173,7 +68117,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0-rc.8.a7b117b187a1f8c8d57b.js",
+          "name": "porsche-design-system.v2.0.0-rc.8.716108f13c02cf0c7514.js",
           "size": 51189
         }
       ],
@@ -68195,7 +68139,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0-rc.8.a7b117b187a1f8c8d57b.js",
+          "name": "porsche-design-system.v2.0.0-rc.8.716108f13c02cf0c7514.js",
           "size": 51189
         }
       ],
