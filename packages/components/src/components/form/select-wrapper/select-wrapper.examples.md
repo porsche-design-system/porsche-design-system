@@ -28,7 +28,8 @@ If the select is required, use `<option hidden></option>` to enforce a selection
     <option disabled>Select a label mode</option>
     <option selected value="false">optional</option>
     <option value="true">required</option>
-  </select></Playground>
+  </select>
+</Playground>
 
 ---
 
@@ -143,12 +144,12 @@ selectElement.options[0].removeAttribute('selected');
 </p-select-wrapper>`;
     }
 
-get basicNoPreselection() { 
-
-const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
-const required = this.isRequired === 'true' ? 'required' : '';
-
-return `<p-select-wrapper label="Some label">
+    get basicNoPreselection() { 
+  
+      const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
+      const required = this.isRequired === 'true' ? 'required' : '';
+      
+      return `<p-select-wrapper label="Some label">
   <select name="some-name" ${required}>
     ${option}
     ${buildOptions(['a','b','c']).join('\n    ')}
