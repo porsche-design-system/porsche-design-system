@@ -2,9 +2,9 @@
 
 **## When to use**
 
-• Use a Switch if an instant response of applied settings is required without an explicit action.
-• Use a Switch for single cell options that can be turned on and off only.
-• Use a Switch to enable or disable a mode, feature, or function.
+• Use a Switch if an instant response of applied settings is required without an explicit action.  
+• Use a Switch for single cell options that can be turned on and off only.  
+• Use a Switch to enable or disable a mode, feature, or function.  
 • Use a Switch when User is toggling independent features or behaviors.
 
 ---
@@ -23,7 +23,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 **### Label**
 
-Remember that switches are meant to be two mutually exclusive states. The Switch is accompanied by a straightforward and concise label (always in copytext). That microcopy is very important, as users should be able to see and understand the function behind the Switch. It’s better to avoid anything longer than two words, as you want that first glance to be all that’s needed to use the Switch. The Switch can be used also without a label but beware, only use this approach if the purpose of the control clearly made elsewhere. For example, if there is a group label or section header that allows the user to infer the description of the option.
+Remember that Switches are meant to be two mutually exclusive states. The Switch is accompanied by a straightforward and concise label (always in copytext). That microcopy is very important, as users should be able to see and understand the function behind the Switch. It’s better to avoid anything longer than two words, as you want that first glance to be all that’s needed to use the Switch. The Switch can be used also without a label but beware, only use this approach if the purpose of the control clearly made elsewhere. For example, if there is a group label or section header that allows the user to infer the description of the option.
 
 
 **### Binary Options vs. Opposing Options**
