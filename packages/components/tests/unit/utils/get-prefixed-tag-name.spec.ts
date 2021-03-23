@@ -1,7 +1,7 @@
 import { getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from '../../../src/utils';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
-describe('getPrefixedTagNames', () => {
+describe('getPrefixedTagNames()', () => {
   beforeEach(() => {
     PREFIXED_TAG_NAMES_CACHE.clear();
   });
