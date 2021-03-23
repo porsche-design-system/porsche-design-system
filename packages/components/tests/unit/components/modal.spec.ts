@@ -23,8 +23,8 @@ describe('modal', () => {
 
       describe('eventListener', () => {
         let windowSpy;
-        let documentEvents = [];
-        let hostEvents = [];
+        let documentEvents: string[] = [];
+        let hostEvents: string[] = [];
         const host = document.createElement('div');
 
         const defaultAddEventListener = document.addEventListener;
@@ -41,8 +41,8 @@ describe('modal', () => {
             },
           }));
 
-          document.addEventListener = jest.fn((event) => documentEvents.push(event));
-          host.addEventListener = jest.fn((event) => hostEvents.push(event));
+          document.addEventListener = jest.fn((eventName) => documentEvents.push(eventName));
+          host.addEventListener = jest.fn((eventName) => hostEvents.push(eventName));
 
           document.removeEventListener = jest.fn(
             (event) => (documentEvents = documentEvents.filter((x) => x !== event))
@@ -106,16 +106,16 @@ describe('modal', () => {
         [{ scrollTop: 0, scrollHeight: 1, offsetHeight: 2 }, 1],
         [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 }, 0],
         [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 }, 1],
-      ])('should for array %s return %s', (hostElement, expected) => {
-        const result = handleHostTouchMove(hostElement as HTMLElement, undefined);
+      ])('should for array %s return %s', (hostElement: HTMLElement, expected) => {
+        const result = handleHostTouchMove(hostElement, undefined);
         expect(result).toEqual(expected);
       });
 
       it('should prevent default', () => {
-        const event = { preventDefault: () => {} };
+        const event: TouchEvent = { preventDefault: () => {} } as TouchEvent;
         jest.spyOn(event, 'preventDefault');
 
-        handleHostTouchMove({ scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement, event as TouchEvent);
+        handleHostTouchMove({ scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement, event);
         expect(event.preventDefault).toBeCalledTimes(1);
       });
     });
@@ -136,8 +136,8 @@ describe('modal', () => {
         ],
         [[{ id: 'first' }], [{ id: 'first' }, { id: 'first' }]],
         [[], [undefined, undefined]],
-      ])('should for array %j return %j', (initArray, resultArray) => {
-        expect(getFirstAndLastElement(initArray as HTMLElement[])).toEqual(resultArray as HTMLElement[]);
+      ])('should for array %j return %j', (initArray: HTMLElement[], resultArray: HTMLElement[]) => {
+        expect(getFirstAndLastElement(initArray)).toEqual(resultArray);
       });
     });
   });
