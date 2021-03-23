@@ -9,7 +9,7 @@
     />
     <% if (process.env.NODE_ENV === 'production') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38934327-7"></script>
-    <script nonce="gtm-script">
+    <script>
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -29,29 +29,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-    default-src 'self';
-    script-src-elem 'self' 'nonce-porsche-design-system-loader-script' 'nonce-gtm-script' https://cdn.ui.porsche.com https://www.google-analytics.com;
-    img-src 'self' https://cdn.ui.porsche.com https://www.google-analytics.com;
-    style-src-elem 'self' 'nonce-porsche-design-system-initial-styles' 'nonce-storefront-loader-style' https://cdn.ui.porsche.com;
-    font-src https://cdn.ui.porsche.com;
-    connect-src https://cdn.ui.porsche.com https://www.google-analytics.com;"
-    />
-    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
-    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
-    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['divider', 'button-pure', 'link', 'link-pure', 'marque', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <% } %>
     <!-- prettier-ignore -->
-    <style nonce="porsche-design-system-initial-styles"><%= require('@porsche-design-system/components-js/partials').getInitialStyles({ withoutTags: true }) %></style>
-    <style nonce="storefront-loader-style">
+    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
+    <style>
       .loader {
         position: fixed;
         top: 0;
@@ -124,11 +112,11 @@
           </svg>
         </div>
       </div>
-      <script nonce="porsche-design-system-loader-script">
+      <script>
         porscheDesignSystem.load();
       </script>
     </div>
-    <!--    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>-->
+    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
     <!-- built files will be auto injected -->
   </body>
 </html>
