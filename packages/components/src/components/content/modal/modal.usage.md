@@ -15,8 +15,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Type | Usage |
 |----|----|
 | Default Modal | Use a default modal for content that doesn’t require a complex task. |
-| Fullscreen | Fullscreen modals group a series of tasks. Because they take up the entire screen, fullscreen modals are the only modals over which other modals can appear.
-Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are for mobile devices only.
+| Fullscreen | Fullscreen modals group a series of tasks. Because they take up the entire screen, fullscreen modals are the only modals over which other modals can appear. Fullscreen modals should only use on mobile because on larger screens the user easy lose context and the helpful functionality like backdrop click. | 
 
 
 
