@@ -3,8 +3,8 @@
 ## When to use
 
   • Use a Modal when you want to show additional information to the user without losing context of the parent page.  
-  • Use a Modal when there are steps the user needs to do before the task can be completed. 
-  • Use a Modal where you need to ask for confirmation from the user before doing a lengthy or dangerous action.
+  • Use a Modal when there are steps the user needs to do before the task can be completed.  
+  • Use a Modal where you need to ask for confirmation from the user before doing a lengthy or dangerous action.  
 
 ---
 
@@ -15,7 +15,8 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Type | Usage |
 |----|----|
 | Default Modal | Use a default modal for content that doesn’t require a complex task. |
-| Fullscreen | Fullscreen modals group a series of tasks. Because they take up the entire screen, fullscreen modals are the only modals over which other modals can appear. Fullscreen modals are for mobile devices only.
+| Fullscreen | Fullscreen modals group a series of tasks. Because they take up the entire screen, fullscreen modals are the only modals over which other modals can appear.
+Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are for mobile devices only.
 
 
 
