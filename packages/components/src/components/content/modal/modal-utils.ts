@@ -11,7 +11,7 @@ export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement
   return [closeButton].concat(getHTMLElements(host, selector));
 };
 
-export const setScrollLock = (host: HTMLElement, lock: boolean): void => {
+export const setScrollLock = (host: HTMLElement, lock: boolean, setScrollTop: (e: TouchEvent) => void): void => {
   document.body.style.overflow = lock ? 'hidden' : '';
 
   // prevent scrolling of background on iOS
@@ -19,12 +19,8 @@ export const setScrollLock = (host: HTMLElement, lock: boolean): void => {
     const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
     document[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => e.preventDefault(), false);
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    host[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => setScrollTop(host, e));
+    host[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => setScrollTop(e));
   }
-};
-
-const setScrollTop = (host: HTMLElement, e: TouchEvent) => {
-  host.scrollTop = handleHostTouchMove(host, e);
 };
 
 export const handleHostTouchMove = (host: HTMLElement, e: TouchEvent): number => {
