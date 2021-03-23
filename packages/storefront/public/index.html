@@ -34,9 +34,9 @@
       http-equiv="Content-Security-Policy"
       content="
     default-src 'self';
-    script-src-elem 'self' 'porsche-design-system-loader-script' 'gtm-script' https://cdn.ui.porsche.com https://www.google-analytics.com;
+    script-src-elem 'self' 'nonce-porsche-design-system-loader-script' 'nonce-gtm-script' https://cdn.ui.porsche.com https://www.google-analytics.com;
     img-src 'self' https://cdn.ui.porsche.com https://www.google-analytics.com;
-    style-src-elem 'self' 'storefront-loader-style' https://cdn.ui.porsche.com;
+    style-src-elem 'self' 'nonce-porsche-design-system-initial-styles' 'nonce-storefront-loader-style' https://cdn.ui.porsche.com;
     font-src https://cdn.ui.porsche.com;
     connect-src https://cdn.ui.porsche.com https://www.google-analytics.com;"
     />
@@ -45,12 +45,12 @@
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['divider', 'button-pure', 'link', 'link-pure', 'marque', 'icon', 'spinner', 'text', 'headline', 'grid', 'flex' ] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['divider', 'button-pure', 'link', 'link-pure', 'marque', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
     <% } else { %>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <% } %>
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
+    <style nonce="porsche-design-system-initial-styles"><%= require('@porsche-design-system/components-js/partials').getInitialStyles({ withoutTags: true }) %></style>
     <style nonce="storefront-loader-style">
       .loader {
         position: fixed;
@@ -128,7 +128,7 @@
         porscheDesignSystem.load();
       </script>
     </div>
-    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
+    <!--    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>-->
     <!-- built files will be auto injected -->
   </body>
 </html>
