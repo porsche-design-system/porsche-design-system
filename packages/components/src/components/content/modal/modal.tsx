@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
 import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, handleHostTouchMove, setScrollLock } from './modal-utils';
+import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
 
 @Component({
   tag: 'p-modal',
@@ -111,7 +111,7 @@ export class Modal {
   }
 
   private setScrollTop = (e: TouchEvent) => {
-    this.host.scrollTop = handleHostTouchMove(this.host, e);
+    this.host.scrollTop = getScrollTopOnTouch(this.host, e);
   };
 
   private setKeyboardListener = (active: boolean): void => {

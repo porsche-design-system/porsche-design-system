@@ -23,7 +23,7 @@ export const setScrollLock = (host: HTMLElement, lock: boolean, listener: (e: To
   }
 };
 
-export const handleHostTouchMove = (host: HTMLElement, e: TouchEvent): number => {
+export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number => {
   // Source: https://stackoverflow.com/a/43860705
   const { scrollTop, scrollHeight, offsetHeight } = host;
   let result = scrollTop;
