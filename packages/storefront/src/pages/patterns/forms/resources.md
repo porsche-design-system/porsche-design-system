@@ -75,10 +75,10 @@ Below you can find the explanations of the used class names.
             </p-flex-item>
           </p-flex>
           <p-flex direction="{base: 'column', m: 'row'}" class="form-row-spacing form-grid-item-container">
-            <p-flex-item class="form-grid-item">
+            <p-flex-item class="form-grid-item" width="{base: 'full', m: 'half'}">
               <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
             </p-flex-item>
-            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item">
+            <p-flex-item class="form-row-spacing form-row-spacing--zero-m form-grid-item" width="{base: 'full', m: 'half'}">
               <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
             </p-flex-item>
           </p-flex>
