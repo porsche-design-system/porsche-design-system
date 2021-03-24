@@ -6,7 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexDirectionType, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
+import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
+import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
@@ -71,9 +72,13 @@ export namespace Components {
     }
     interface PButtonGroup {
         /**
-          * Defines the direction of the main and cross axis. The default "{    base: 'column',    s: 'row',  }" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
+          * Defines the direction of the main and cross axis. The default is "{base: 'column', s: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "s" and side by side on viewports larger than "s". You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<Extract<FlexDirectionType, 'row' | 'column'>>;
+        "direction"?: ButtonGroupDirection;
+        /**
+          * Defines how the flex items are aligned along the main axis.
+         */
+        "justifyContent"?: FlexJustifyContent;
     }
     interface PButtonPure {
         /**
@@ -997,9 +1002,13 @@ declare namespace LocalJSX {
     }
     interface PButtonGroup {
         /**
-          * Defines the direction of the main and cross axis. The default "{    base: 'column',    s: 'row',  }" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
+          * Defines the direction of the main and cross axis. The default is "{base: 'column', s: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "s" and side by side on viewports larger than "s". You always need to provide a base value when using breakpoints.
          */
-        "direction"?: BreakpointCustomizable<Extract<FlexDirectionType, 'row' | 'column'>>;
+        "direction"?: ButtonGroupDirection;
+        /**
+          * Defines how the flex items are aligned along the main axis.
+         */
+        "justifyContent"?: FlexJustifyContent;
     }
     interface PButtonPure {
         /**
