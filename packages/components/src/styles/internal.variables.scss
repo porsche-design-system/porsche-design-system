@@ -6,8 +6,10 @@ $p-animation-hover-duration: 0.24s;
 $p-animation-hover-bezier: ease;
 $p-tabs-transition-duration: 0.4s;
 
+$p-content-wrapper-margin: 7vw;
+$p-content-wrapper-margin-xl: 10vw;
+$p-content-wrapper-margin-xxl: p-px-to-rem(192px);
 $p-content-wrapper-max-width: p-px-to-rem(1536px);
 $p-content-wrapper-max-width-extended: p-px-to-rem(1920px);
-$p-min-width: p-px-to-rem(272px);
 
-$p-vw-basic: 7vw;
+$p-modal-min-width: p-px-to-rem(272px);
