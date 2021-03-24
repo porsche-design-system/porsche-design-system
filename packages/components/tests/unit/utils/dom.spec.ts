@@ -1,6 +1,6 @@
 import { getHTMLElementAndThrowIfUndefined, getTagName, hasNamedSlot, isRequired } from '../../../src/utils';
 
-describe('isRequired', () => {
+describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
     const el = document.createElement('input');
     el.required = true;
@@ -31,7 +31,7 @@ describe('isRequired', () => {
   });
 });
 
-describe('hasNamedSlot', () => {
+describe('hasNamedSlot()', () => {
   it('should return false if element has no slotted child', () => {
     const el = document.createElement('div');
     expect(hasNamedSlot(el, 'title')).toBe(false);
@@ -54,7 +54,7 @@ describe('hasNamedSlot', () => {
   });
 });
 
-describe('getHTMLElementAndThrowIfUndefined', () => {
+describe('getHTMLElementAndThrowIfUndefined()', () => {
   const selector = 'someSelector';
 
   it('should throw error if selector is not found', () => {
@@ -82,7 +82,7 @@ describe('getHTMLElementAndThrowIfUndefined', () => {
   });
 });
 
-describe('getTagName', () => {
+describe('getTagName()', () => {
   it.each([
     ['div', 'div'],
     ['p-button', 'p-button'],
