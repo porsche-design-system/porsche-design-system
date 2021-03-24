@@ -150,7 +150,7 @@ selectElement.options[0].removeAttribute('selected');
       const required = this.isRequired === 'true' ? ' required' : '';
       
       return `<p-select-wrapper label="Some label">
-  <select name="some-name" ${required}>
+  <select name="some-name"${required}>
     ${option}
     ${buildOptions(['a','b','c']).join('\n    ')}
   </select>
