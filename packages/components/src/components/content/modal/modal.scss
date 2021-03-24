@@ -41,10 +41,10 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   transform: scale3d(0.9, 0.9, 1);
   box-sizing: border-box;
   padding: p-px-to-rem(32px);
-  min-width: $p-min-width;
+  min-width: $p-modal-min-width;
   max-width: $p-content-wrapper-max-width;
   min-height: auto;
-  margin: $p-vw-basic;
+  margin: $p-content-wrapper-margin;
 
   &--fullscreen-on {
     min-width: 100%;
@@ -54,26 +54,25 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
   @include p-media-query('xs') {
     &--fullscreen-off-xs {
-      min-width: $p-min-width;
+      min-width: $p-modal-min-width;
       max-width: $p-content-wrapper-max-width;
       min-height: auto;
-      margin: $p-vw-basic;
+      margin: $p-content-wrapper-margin;
     }
 
     &--fullscreen-on-xs {
       min-width: 100%;
       min-height: 100%;
-      min-height: auto;
       margin: 0;
     }
   }
 
   @include p-media-query('s') {
     &--fullscreen-off-s {
-      min-width: $p-min-width;
+      min-width: $p-modal-min-width;
       max-width: $p-content-wrapper-max-width;
       min-height: auto;
-      margin: $p-vw-basic;
+      margin: $p-content-wrapper-margin;
     }
 
     &--fullscreen-on-s {
@@ -86,10 +85,10 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('m') {
     padding: p-px-to-rem(40px);
     &--fullscreen-off-m {
-      min-width: $p-min-width;
+      min-width: $p-modal-min-width;
       max-width: $p-content-wrapper-max-width;
       min-height: auto;
-      margin: $p-vw-basic;
+      margin: $p-content-wrapper-margin;
     }
 
     &--fullscreen-on-m {
@@ -101,10 +100,10 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
   @include p-media-query('l') {
     &--fullscreen-off-l {
-      min-width: $p-min-width;
+      min-width: $p-modal-min-width;
       max-width: $p-content-wrapper-max-width;
       min-height: auto;
-      margin: $p-vw-basic;
+      margin: $p-content-wrapper-margin;
     }
 
     &--fullscreen-on-l {
@@ -115,11 +114,12 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @include p-media-query('xl') {
+    margin: $p-content-wrapper-margin-xl;
+
     &--fullscreen-off-xl {
-      min-width: $p-min-width;
+      min-width: $p-modal-min-width;
       max-width: $p-content-wrapper-max-width;
       min-height: auto;
-      margin: $p-vw-basic;
     }
 
     &--fullscreen-on-xl {
@@ -131,6 +131,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
 
   @include p-media-query('xxl') {
     padding: p-px-to-rem(64px);
+    margin: $p-content-wrapper-margin-xxl;
   }
 
   &__header {

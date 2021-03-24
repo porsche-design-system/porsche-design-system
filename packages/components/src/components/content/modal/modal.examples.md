@@ -95,7 +95,7 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 The Modal supports a `fullscreen` property.
 Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. 
-Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are for mobile devices only.
+Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended for mobile devices only.
 
 <Playground :markup="fullscreen"></Playground>
 
