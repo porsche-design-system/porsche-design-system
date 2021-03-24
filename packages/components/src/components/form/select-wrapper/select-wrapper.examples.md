@@ -147,7 +147,7 @@ selectElement.options[0].removeAttribute('selected');
     get basicNoPreselection() { 
   
       const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
-      const required = this.isRequired === 'true' ? 'required' : '';
+      const required = this.isRequired === 'true' ? ' required' : '';
       
       return `<p-select-wrapper label="Some label">
   <select name="some-name" ${required}>
