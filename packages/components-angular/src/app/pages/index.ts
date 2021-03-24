@@ -17,8 +17,9 @@ import { LinkPureComponent } from './link-pure.component';
 import { LinkSocialComponent } from './link-social.component';
 import { MarqueComponent } from './marque.component';
 import { ModalBasicComponent } from './modal-basic.component';
-import { ModalScrollableComponent } from './modal-scrollable.component';
+import { ModalFullscreenComponent } from './modal-fullscreen.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
+import { ModalScrollableComponent } from './modal-scrollable.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
@@ -52,8 +53,9 @@ export const pages = [
   LinkSocialComponent,
   MarqueComponent,
   ModalBasicComponent,
-  ModalScrollableComponent,
+  ModalFullscreenComponent,
   ModalPrefixedComponent,
+  ModalScrollableComponent,
   OverviewComponent,
   PaginationComponent,
   RadioButtonWrapperComponent,
@@ -87,8 +89,9 @@ export * from './link-pure.component';
 export * from './link-social.component';
 export * from './marque.component';
 export * from './modal-basic.component';
-export * from './modal-scrollable.component';
+export * from './modal-fullscreen.component';
 export * from './modal-prefixed.component';
+export * from './modal-scrollable.component';
 export * from './overview.component';
 export * from './pagination.component';
 export * from './radio-button-wrapper.component';
