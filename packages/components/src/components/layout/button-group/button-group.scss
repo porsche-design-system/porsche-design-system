@@ -3,14 +3,14 @@
 
 @mixin column-mixin() {
   ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
-    margin-right: 0;
-    margin-bottom: $p-spacing-16;
+    margin-right: 0 !important;
+    margin-bottom: $p-spacing-16 !important;
   }
 }
 @mixin row-mixin() {
   ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
-    margin-right: $p-spacing-16;
-    margin-bottom: 0;
+    margin-right: $p-spacing-16 !important;
+    margin-bottom: 0 !important;
   }
 }
 .#{$p-global-class-prefix}button-group {
