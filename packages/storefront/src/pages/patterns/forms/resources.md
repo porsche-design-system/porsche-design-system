@@ -96,8 +96,6 @@ Below you can find the explanations of the used class names.
     </p-grid-item>
   </p-grid>
 </Playground>
-
-
 ### Explanation of used class names
 
 Here you can find the **SCSS** of the used class names. This is meant to be just **one** possible solution to build the form grid. 
