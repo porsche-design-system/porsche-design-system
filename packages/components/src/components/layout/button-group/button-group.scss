@@ -1,1 +1,76 @@
-# Button Group
+@import '../../../../../utilities/projects/utilities/scss';
+@import '../../../styles/internal.variables';
+
+@mixin column-mixin() {
+  ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
+    margin-right: 0;
+    margin-bottom: $p-spacing-16;
+  }
+}
+@mixin row-mixin() {
+  ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
+    margin-right: $p-spacing-16;
+    margin-bottom: 0;
+  }
+}
+.#{$p-global-class-prefix}button-group {
+  &--direction {
+    &-column {
+      @include column-mixin();
+    }
+
+    &-row {
+      @include row-mixin();
+    }
+
+    @include p-media-query('xs') {
+      &-column-xs {
+        @include column-mixin();
+      }
+
+      &-row-xs {
+        @include row-mixin();
+      }
+    }
+
+    @include p-media-query('s') {
+      &-column-s {
+        @include column-mixin();
+      }
+
+      &-row-s {
+        @include row-mixin();
+      }
+    }
+
+    @include p-media-query('m') {
+      &-column-m {
+        @include column-mixin();
+      }
+
+      &-row-m {
+        @include row-mixin();
+      }
+    }
+
+    @include p-media-query('l') {
+      &-column-l {
+        @include column-mixin();
+      }
+
+      &-row-l {
+        @include row-mixin();
+      }
+    }
+
+    @include p-media-query('xl') {
+      &-column-xl {
+        @include column-mixin();
+      }
+
+      &-row-xl {
+        @include row-mixin();
+      }
+    }
+  }
+}

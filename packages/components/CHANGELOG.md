@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Button Group` component
+
 ### [2.0.0-rc.8] - 2021-03-17
 
 #### Added
