@@ -91,7 +91,7 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 <Playground :markup="withoutCloseButton"></Playground>
 
-## Fullscreen on mobile
+## Fullscreen
 
 The Modal supports a `fullscreen` property.
 Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. 
@@ -150,7 +150,7 @@ Of course, any combination of the available options is possible.
     maxWidth =
 `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
-  <div style="max-width: 100%; max-height: 100%; width: 100vw; height: 500px">
+  <div style="max-width: 100%; width: 100vw; height: 500px">
     <p-text>Some Content in responsive max width</p-text>
   </div>
   <p-flex direction="row" class="footer-row">

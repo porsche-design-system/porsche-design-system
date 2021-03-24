@@ -80,7 +80,7 @@ describe('getFocusableElements()', () => {
   });
 });
 
-describe('handleHostTouchMove()', () => {
+describe('getScrollTopOnTouch()', () => {
   it.each([
     [{ scrollTop: 0, scrollHeight: 1, offsetHeight: 2 }, 1],
     [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 }, 0],
