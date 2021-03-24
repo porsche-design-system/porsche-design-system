@@ -42,7 +42,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
   padding: p-px-to-rem(32px);
   min-width: $p-min-width;
-  max-width: $p-max-width-basic;
+  max-width: $p-content-wrapper-max-width;
   min-height: auto;
   margin: $p-vw-basic;
 
@@ -55,7 +55,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('xs') {
     &--fullscreen-off-xs {
       min-width: $p-min-width;
-      max-width: $p-max-width-basic;
+      max-width: $p-content-wrapper-max-width;
       min-height: auto;
       margin: $p-vw-basic;
     }
@@ -71,7 +71,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('s') {
     &--fullscreen-off-s {
       min-width: $p-min-width;
-      max-width: $p-max-width-basic;
+      max-width: $p-content-wrapper-max-width;
       min-height: auto;
       margin: $p-vw-basic;
     }
@@ -87,7 +87,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
     padding: p-px-to-rem(40px);
     &--fullscreen-off-m {
       min-width: $p-min-width;
-      max-width: $p-max-width-basic;
+      max-width: $p-content-wrapper-max-width;
       min-height: auto;
       margin: $p-vw-basic;
     }
@@ -102,7 +102,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('l') {
     &--fullscreen-off-l {
       min-width: $p-min-width;
-      max-width: $p-max-width-basic;
+      max-width: $p-content-wrapper-max-width;
       min-height: auto;
       margin: $p-vw-basic;
     }
@@ -117,7 +117,7 @@ $easing: cubic-bezier(0.16, 1, 0.3, 1);
   @include p-media-query('xl') {
     &--fullscreen-off-xl {
       min-width: $p-min-width;
-      max-width: $p-max-width-basic;
+      max-width: $p-content-wrapper-max-width;
       min-height: auto;
       margin: $p-vw-basic;
     }

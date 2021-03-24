@@ -1,6 +1,6 @@
 import {
   getFirstAndLastElement,
-  handleHostTouchMove,
+  getScrollTopOnTouch,
   getFocusableElements,
   setScrollLock,
 } from '../../../src/components/content/modal/modal-utils';
@@ -86,7 +86,7 @@ describe('handleHostTouchMove()', () => {
     [{ scrollTop: 1, scrollHeight: 2, offsetHeight: 1 }, 0],
     [{ scrollTop: 1, scrollHeight: 3, offsetHeight: 1 }, 1],
   ])('should be called with %s and return %s', (hostElement: HTMLElement, expected) => {
-    const result = handleHostTouchMove(hostElement, undefined);
+    const result = getScrollTopOnTouch(hostElement, undefined);
     expect(result).toEqual(expected);
   });
 
@@ -94,7 +94,7 @@ describe('handleHostTouchMove()', () => {
     const event = { preventDefault: () => {} } as TouchEvent;
     jest.spyOn(event, 'preventDefault');
 
-    handleHostTouchMove({ scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement, event);
+    getScrollTopOnTouch({ scrollTop: 0, scrollHeight: 1, offsetHeight: 1 } as HTMLElement, event);
     expect(event.preventDefault).toBeCalledTimes(1);
   });
 });

@@ -14,7 +14,7 @@
   width: 100%;
 
   &--basic {
-    max-width: $p-max-width-basic;
+    max-width: $p-content-wrapper-max-width;
     padding: {
       left: $p-vw-basic;
       right: $p-vw-basic;
@@ -36,7 +36,7 @@
   }
 
   &--extended {
-    max-width: p-px-to-rem(1920px);
+    max-width: $p-content-wrapper-max-width-extended;
   }
 
   &--background-default {
