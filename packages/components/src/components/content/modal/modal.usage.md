@@ -29,7 +29,7 @@ This also eliminates distraction and helps the user focus on the Modal content.
 The background overlay animates once a Modal is launched to grab a user’s attention and retain their focus.
 
 ### Close
-Within a Model are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
+Within a Modal are multiple ways to dismiss a Modal but a user needs to intentionally make that choice.
 
 ## Usage
 
