@@ -82,7 +82,7 @@ Below you can find the explanations of the used class names.
               <p-text-field-wrapper label="Some label"><input type="text" name="some name"></p-text-field-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>        
+          <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
         </p-fieldset-wrapper>
         <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
           <p-flex-item class="form-grid-item">
