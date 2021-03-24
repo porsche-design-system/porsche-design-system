@@ -1,5 +1,7 @@
 import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import { getHTMLElements, getPrefixedTagNames, isIos, prefix } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../types';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
 
 @Component({
   tag: 'p-modal',
@@ -17,6 +19,8 @@ export class Modal {
   @Prop() public disableBackdropClick?: boolean = false;
   /** The title of the modal */
   @Prop() public heading?: string;
+  /** If true the modal uses max viewport height and width. Should only be used for mobile. */
+  @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
@@ -27,10 +31,10 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.setKeyboardListener(isOpen);
-    this.setScrollLock(isOpen);
+    setScrollLock(this.host, isOpen, this.setScrollTop);
 
     if (isOpen) {
-      this.setFocusableElements();
+      this.focusableElements = getFocusableElements(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
       this.focusableElements[0]?.focus();
     } else {
@@ -42,23 +46,26 @@ export class Modal {
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
-      this.setScrollLock(true);
+      setScrollLock(this.host, true, this.setScrollTop);
     }
   }
 
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
-    this.setFocusableElements();
+    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
   }
 
   public disconnectedCallback(): void {
     this.setKeyboardListener(false);
-    this.setScrollLock(false);
+    setScrollLock(this.host, false, this.setScrollTop);
   }
 
   public render(): JSX.Element {
     const hasHeader = this.heading || !this.disableCloseButton;
-    const rootClasses = prefix('modal');
+    const rootClasses = {
+      [prefix('modal')]: true,
+      ...mapBreakpointPropToPrefixedClasses('modal-', this.fullscreen, ['fullscreen-on', 'fullscreen-off']),
+    };
     const headerClasses = prefix('modal__header');
     const btnCloseWrapperClasses = prefix('modal__close');
     const btnCloseClasses = prefix('modal__close-button');
@@ -77,7 +84,9 @@ export class Modal {
           {hasHeader && (
             <header class={headerClasses}>
               {this.heading && (
-                <PrefixedTagNames.pHeadline variant="headline-2">{this.heading}</PrefixedTagNames.pHeadline>
+                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                  {this.heading}
+                </PrefixedTagNames.pHeadline>
               )}
               {!this.disableCloseButton && (
                 <div class={btnCloseWrapperClasses}>
@@ -101,49 +110,12 @@ export class Modal {
     );
   }
 
-  private setFocusableElements = (): void => {
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    const notDisabled = ':not([disabled])';
-    const selector =
-      Object.values(PrefixedTagNames).join(',') +
-      `,a[href],area[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex="0"]`;
-
-    this.focusableElements = [this.closeBtn].concat(getHTMLElements(this.host, selector));
-  };
-
-  private setScrollLock = (lock: boolean): void => {
-    document.body.style.overflow = lock ? 'hidden' : '';
-
-    // prevent scrolling of background on iOS
-    if (isIos()) {
-      const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
-      document[addOrRemoveEventListener]('touchmove', this.handleDocumentTouchMove, false);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      this.host[addOrRemoveEventListener]('touchmove', this.handleHostTouchMove);
-    }
+  private setScrollTop = (e: TouchEvent) => {
+    this.host.scrollTop = getScrollTopOnTouch(this.host, e);
   };
 
   private setKeyboardListener = (active: boolean): void => {
     document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.handleKeyboardEvents);
-  };
-
-  private handleDocumentTouchMove = (e: TouchEvent): void => {
-    e.preventDefault();
-  };
-
-  private handleHostTouchMove = function (e: TouchEvent): void {
-    // Source: https://stackoverflow.com/a/43860705
-    const { scrollTop, scrollHeight, offsetHeight } = this as HTMLElement;
-    const currentScroll = scrollTop + offsetHeight;
-
-    if (scrollTop === 0 && currentScroll === scrollHeight) {
-      e.preventDefault();
-    } else if (scrollTop === 0) {
-      this.scrollTop = 1;
-    } else if (currentScroll === scrollHeight) {
-      this.scrollTop = scrollTop - 1;
-    }
   };
 
   private handleKeyboardEvents = (e: KeyboardEvent): void => {
@@ -156,8 +128,7 @@ export class Modal {
         this.focusableElements[0]?.focus();
         e.preventDefault();
       } else {
-        const [firstEl] = this.focusableElements;
-        const [lastEl] = this.focusableElements.slice(-1);
+        const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
 
         const { activeElement: activeElLight } = document;
         const { activeElement: activeElShadow } = this.host.shadowRoot;

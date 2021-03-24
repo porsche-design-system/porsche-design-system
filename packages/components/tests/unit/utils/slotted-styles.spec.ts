@@ -4,7 +4,7 @@ import { insertSlottedStyles } from '../../../src/utils';
  * we need to use `node.innerHTML` or `node.textContent` instead of `node.innerText`
  * because of jsdom https://github.com/jsdom/jsdom/issues/1245
  */
-describe('slottedStyles', () => {
+describe('insertSlottedStyles()', () => {
   afterEach(() => {
     // cleanup
     document.getElementsByTagName('html')[0].innerHTML = '';
