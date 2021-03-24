@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- Fullscreen property for `Modal` on mobile
+
+#### Changed
+- Spacings, heading and `Modal` sizes
+
 #### Fixed
 - Prevent duplicate loading of `porsche-design-system.v2.x.HASH.js` chunk when using `getComponentChunkLinks()` partial
 
