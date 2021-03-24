@@ -61,13 +61,15 @@ const ModalPage = (): JSX.Element => {
 }
 
 ```
-Basic modal with content that fits minimum size:
 
-<Playground :markup="basic"></Playground>
+<Playground :markup="basic">
+  <select v-model="width">
+    <option disabled>Select a modal width</option>
+    <option selected value="minWidth">min width</option>
+    <option value="maxWidth">max width</option>
+  </select>
+</Playground>
 
-Basic modal with content that extends it to maximum size:
-
-<Playground :markup="maxWidth"></Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/patterns/buttons).
 
@@ -108,18 +110,10 @@ Of course, any combination of the available options is possible.
   @Component
   export default class Code extends Vue {
     modals = [];
+    width = 'minWidth';
     
     mounted() {
-      this.modals = Array.from(document.querySelectorAll('p-modal'));
-      
-      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
-      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
-      
-      this.modals.forEach((modal, index) => {
-        modal.addEventListener('close', () => this.closeModal(index));
-        const buttons = Array.from(modal.querySelectorAll('p-button'));
-        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
-      });
+      this.registerEvents();
       
       // workaround for iOS 13.x masking modal within example
       document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
@@ -132,32 +126,37 @@ Of course, any combination of the available options is possible.
     }
     
     updated() {
-      console.log('updated');
       // event handling is registered again on every update since markup is changing and references are lost
       this.registerEvents();
     }
     
-    basic =
-`<p-button>Open Modal</p-button>
-<p-modal heading="Some Heading" open="false">
-  <p-text>Some Content</p-text>
-  <p-flex direction="column" class="footer-column">
-    <p-button>Save</p-button>
-    <p-button variant="tertiary">Close</p-button>
-  </p-flex>
-</p-modal>`;
+    registerEvents() {
+      this.modals = Array.from(document.querySelectorAll('p-modal'));
+      
+      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+      
+      this.modals.forEach((modal, index) => {
+        modal.addEventListener('close', () => this.closeModal(index));
+        const buttons = Array.from(modal.querySelectorAll('p-button'));
+        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
+      });
+    }
+  
 
-    maxWidth =
-`<p-button>Open Modal</p-button>
+    get basic() {
+      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : ' <p-text>Some Content</p-text>';
+      const footerClass = this.width === 'minWidth' ? 'footer-column' : 'footer-row';
+      const direction = this.width === 'minWidth' ? 'column' : 'row';
+
+      return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
-  <div style="max-width: 100%; width: 100vw; height: 500px">
-    <p-text>Some Content in responsive max width</p-text>
-  </div>
-  <p-flex direction="row" class="footer-row">
+  ${content}
+  <p-flex direction="${direction}" class="${footerClass}">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
-</p-modal>`;
+</p-modal>`;}
     
     scrollable =
 `<p-button>Open Modal</p-button>
