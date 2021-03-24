@@ -94,14 +94,19 @@ export const routes: RouteType[] = [
     component: fromPages.ModalBasicPage,
   },
   {
-    name: 'Modal Scrollable',
-    path: '/modal-scrollable',
-    component: fromPages.ModalScrollablePage,
+    name: 'Modal Fullscreen',
+    path: '/modal-fullscreen',
+    component: fromPages.ModalFullscreenPage,
   },
   {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
+  },
+  {
+    name: 'Modal Scrollable',
+    path: '/modal-scrollable',
+    component: fromPages.ModalScrollablePage,
   },
   {
     name: 'Pagination',

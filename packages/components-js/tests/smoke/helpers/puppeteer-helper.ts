@@ -4,7 +4,8 @@ import * as fs from 'fs';
 export const setContentWithDesignSystem = async (
   page: Page,
   content: string,
-  cdn: 'auto' | 'cn' = 'auto'
+  cdn: 'auto' | 'cn' = 'auto',
+  headContent?: string
 ): Promise<void> => {
   // inject the web components manager inline
   const indexJsFile = require.resolve('@porsche-design-system/components-js');
@@ -12,9 +13,11 @@ export const setContentWithDesignSystem = async (
 
   await page.setContent(
     `
+    <html>
       <head>
         <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript">${indexJsCode}</script>
+        ${headContent}
       </head>
       <body>
         <script type="text/javascript">
@@ -23,6 +26,7 @@ export const setContentWithDesignSystem = async (
         </script>
         ${content}
       </body>
+    </html>
     `,
     { waitUntil: 'networkidle0' }
   );
