@@ -61,8 +61,12 @@ const ModalPage = (): JSX.Element => {
 }
 
 ```
+Basic modal with content that fits minimum size:
 
 <Playground :markup="basic"></Playground>
+
+Basic modal with content that extends it to maximum size:
+
 <Playground :markup="maxWidth"></Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/patterns/buttons).
