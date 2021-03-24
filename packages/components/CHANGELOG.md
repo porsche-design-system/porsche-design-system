@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Prevent duplicate loading of `porsche-design-system.v2.x.HASH.js` chunk when using `getComponentChunkLinks()` partial
+
 ### [2.0.0-rc.8] - 2021-03-17
 
 #### Added
