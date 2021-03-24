@@ -1,5 +1,6 @@
-import { ButtonComponent } from './button.component';
 import { BannerComponent } from './banner.component';
+import { ButtonComponent } from './button.component';
+import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
@@ -35,6 +36,7 @@ import { TypographyComponent } from './typography.component';
 export const pages = [
   BannerComponent,
   ButtonComponent,
+  ButtonGroupComponent,
   ButtonPureComponent,
   CheckboxWrapperComponent,
   ContentWrapperComponent,
@@ -70,6 +72,7 @@ export const pages = [
 
 export * from './banner.component';
 export * from './button.component';
+export * from './button-group.component';
 export * from './button-pure.component';
 export * from './checkbox-wrapper.component';
 export * from './content-wrapper.component';

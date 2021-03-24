@@ -24,6 +24,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Button',
   },
   {
+    path: 'button-group',
+    component: fromPages.ButtonGroupComponent,
+    name: 'Button Group',
+  },
+  {
     path: 'button-pure',
     component: fromPages.ButtonPureComponent,
     name: 'Button Pure',
