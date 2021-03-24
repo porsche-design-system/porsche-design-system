@@ -30,7 +30,7 @@ Basically, you can use the following approach to serve the form grid described i
 The form header can be fully styled with **components** and corresponding **properties**. The only extra CSS you need is a `margin-top` for the subline. 
 You have to add your own class based spacing system to your project because it is not bundled with the Porsche Design System.
 
-<Playground> 
+<Playground>
   <p-grid class="form-top-spacing">
     <p-grid-item size="{ base: 12, m: 8 }">
       <p-headline variant="headline-2" tag="h1">Some Form Headline</p-headline>
