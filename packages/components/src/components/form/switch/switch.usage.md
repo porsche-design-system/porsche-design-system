@@ -26,7 +26,7 @@ Remember that Switches are meant to be two mutually exclusive states. The Switch
 
 **### Stretching**
 
-Depending on the space, the switch can also be stretched. This makes the spacing between the label and the switch variable. However, the minimum spacing of 8 px should be observed.
+Depending on the space, the Switch can also be stretched. This makes the spacing between the label and the switch variable. However, the minimum spacing of 8 px should be observed.
 
 **### Binary Options vs. Opposing Options**
 
