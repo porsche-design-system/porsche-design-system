@@ -6,8 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
@@ -75,10 +75,6 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default is "{base: 'column', s: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "s" and side by side on viewports larger than "s". You always need to provide a base value when using breakpoints.
          */
         "direction"?: ButtonGroupDirection;
-        /**
-          * Defines how the flex items are aligned along the main axis.
-         */
-        "justifyContent"?: FlexJustifyContent;
     }
     interface PButtonPure {
         /**
@@ -1005,10 +1001,6 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default is "{base: 'column', s: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "s" and side by side on viewports larger than "s". You always need to provide a base value when using breakpoints.
          */
         "direction"?: ButtonGroupDirection;
-        /**
-          * Defines how the flex items are aligned along the main axis.
-         */
-        "justifyContent"?: FlexJustifyContent;
     }
     interface PButtonPure {
         /**

@@ -1,7 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 
 import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
-import { FlexJustifyContent } from '../flex/flex/flex-utils';
 import type { ButtonGroupDirection } from './button-group-utils';
 
 @Component({
@@ -11,9 +10,6 @@ import type { ButtonGroupDirection } from './button-group-utils';
 })
 export class ButtonGroup {
   @Element() public host!: HTMLElement;
-
-  /** Defines how the flex items are aligned along the main axis. */
-  @Prop() public justifyContent?: FlexJustifyContent = 'flex-start';
 
   /** Defines the direction of the main and cross axis. The default is "{base: 'column', s: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "s" and side by side on viewports larger than "s". You always need to provide a base value when using breakpoints. */
   @Prop() public direction?: ButtonGroupDirection = {
@@ -29,11 +25,7 @@ export class ButtonGroup {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pFlex
-        class={buttonGroupClasses}
-        direction={this.direction}
-        justifyContent={this.justifyContent}
-      >
+      <PrefixedTagNames.pFlex class={buttonGroupClasses} direction={this.direction}>
         <slot />
       </PrefixedTagNames.pFlex>
     );
