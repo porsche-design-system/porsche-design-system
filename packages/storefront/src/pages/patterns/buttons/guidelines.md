@@ -25,6 +25,8 @@ Though we generally always speak of "Buttons" for the sake of simplicity (also w
 
 In order to maintain a homogeneous look and feel not only within your product but throughout all Porsche web applications you should **only use the components that are provided in the Porsche Design System** and follow the specific guidelines for [Buttons](#/components/button) or [Links](#/components/link).
 
+We provide you with a [button group component](#/components/button-group), that implements our button guidelines.
+
 ---
 
 ## Alignment
@@ -134,6 +136,6 @@ Buttons with lower priority that come alongside primary or secondary actions can
 ---
 
 ## Related components
-
+* [Button Group](#/components/button-group)
 * [Buttons](#/components/button)
 * [Links](#/components/link)

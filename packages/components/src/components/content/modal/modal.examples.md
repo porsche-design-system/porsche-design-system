@@ -146,16 +146,14 @@ Of course, any combination of the available options is possible.
 
     get basic() {
       const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : ' <p-text>Some Content</p-text>';
-      const footerClass = this.width === 'minWidth' ? 'footer-column' : 'footer-row';
-      const direction = this.width === 'minWidth' ? 'column' : 'row';
-
+      
       return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
   ${content}
-  <p-flex direction="${direction}" class="${footerClass}">
+  <p-button-group class="footer">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
-  </p-flex>
+  </p-button-group>
 </p-modal>`;}
     
     scrollable =
@@ -166,10 +164,10 @@ Of course, any combination of the available options is possible.
   <p-text>More Content</p-text>
   <div style="height: 40vh;"></div>
   <p-text>Even More Content</p-text>
-  <p-flex direction="column" class="footer-column">
+  <p-button-group class="footer">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
-  </p-flex>
+  </p-button-group>
 </p-modal>`;
     
     withoutHeading =
@@ -191,12 +189,10 @@ Of course, any combination of the available options is possible.
     <p-flex-item grow="1">
       <p-text>Some Content</p-text>
     </p-flex-item>
-    <p-flex-item>
-      <p-flex direction="column" class="footer-column">
-        <p-button>Save</p-button>
-        <p-button variant="tertiary">Close</p-button>
-      </p-flex>
-    </p-flex-item>
+    <p-button-group class="footer">
+      <p-button>Save</p-button>
+      <p-button variant="tertiary">Close</p-button>
+    </p-button-group>
   </p-flex>
 </p-modal>`;
     
@@ -213,41 +209,10 @@ Of course, any combination of the available options is possible.
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  @mixin p-row() {
-    > * {
-      width: auto;
-      &:not(:last-child) {
-        margin-right: $p-spacing-16;
-      }
-      &:not(:first-child) {
-        margin-top: 0;
-      }
-    }
-  } 
   
-  @mixin p-col() {
-    > * {
-      width: 100%;
-      &:not(:first-child) {
-        margin-top: $p-spacing-16;
-      }
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-    }
-  }
-
-  
-  ::v-deep .footer-column {
-    @include p-col;
+  ::v-deep .footer {  
     padding: p-px-to-rem(32px) 0 0;
   }
-
-  ::v-deep .footer-row {
-    @include p-row;
-    padding: p-px-to-rem(32px) 0 0;
-  }
-
   ::v-deep .fullscreen-container {
     flex: 1;
   }
