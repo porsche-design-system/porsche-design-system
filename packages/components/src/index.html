@@ -11,6 +11,22 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-checkbox-wrapper label="label">
+      <input type="checkbox" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="label">
+      <input type="checkbox" />
+    </p-checkbox-wrapper>
+
+    <script>
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach((input) =>
+        input.addEventListener('change', (e) => {
+          inputs.forEach((i) => (i.checked = e.target.checked));
+        })
+      );
+    </script>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
