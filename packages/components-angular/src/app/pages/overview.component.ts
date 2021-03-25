@@ -216,7 +216,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default button-group with custom prefix">
           <my-prefix-p-button-group p-button-group>
-            <p-button>Some label</p-button>
+            <my-prefix-p-button p-button>Some label</my-prefix-p-button>
             <my-prefix-p-button p-button>Some label</my-prefix-p-button>
           </my-prefix-p-button-group>
         </div>
