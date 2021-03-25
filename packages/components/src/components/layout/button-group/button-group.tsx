@@ -24,7 +24,7 @@ export class ButtonGroup {
     };
 
     return (
-      <div class={buttonGroupClasses}>
+      <div class={buttonGroupClasses} role="group">
         <slot />
       </div>
     );
