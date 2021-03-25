@@ -84,12 +84,10 @@ Below you can find the explanations of the used class names.
           </p-flex>
           <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
         </p-fieldset-wrapper>
-        <p-flex class="form-section-spacing form-bottom-spacing form-grid-item-container">
-          <p-button-group class="form-grid-item">            
-            <p-button type="submit">Send</p-button>
-            <p-button variant="tertiary" icon="close" type="reset">Cancel</p-button>
-          </p-button-group>
-        </p-flex>
+        <p-button-group class="form-section-spacing form-bottom-spacing">
+          <p-button type="submit">Send</p-button>
+          <p-button variant="tertiary" icon="close"type="reset">Cancel</p-button>
+        </p-button-group>       
       </form>
     </p-grid-item>
   </p-grid>
