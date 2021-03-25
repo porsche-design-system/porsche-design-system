@@ -1,6 +1,6 @@
 import { isDark } from '../../../src/utils';
 
-describe('isDark', () => {
+describe('isDark()', () => {
   it('should return true for "dark"', () => {
     expect(isDark('dark')).toBe(true);
   });

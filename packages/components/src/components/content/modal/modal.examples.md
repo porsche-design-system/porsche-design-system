@@ -17,6 +17,8 @@ The most important property of `p-modal` is its `open` attribute.  When it is pr
   
 In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
 
+The size of `p-modal` adjusts itself to the content with a predefined min/max width.
+
 ### Vanilla JS
 
 ```js
@@ -60,7 +62,14 @@ const ModalPage = (): JSX.Element => {
 
 ```
 
-<Playground :markup="basic"></Playground>
+<Playground :markup="basic">
+  <select v-model="width">
+    <option disabled>Select a modal width</option>
+    <option selected value="minWidth">min width</option>
+    <option value="maxWidth">max width</option>
+  </select>
+</Playground>
+
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](#/patterns/buttons).
 
@@ -84,6 +93,14 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 <Playground :markup="withoutCloseButton"></Playground>
 
+## Fullscreen
+
+The Modal supports a `fullscreen` property.
+Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. 
+Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended for mobile devices only.
+
+<Playground :markup="fullscreen"></Playground>
+
 Of course, any combination of the available options is possible.
 
 <script lang="ts">
@@ -93,18 +110,10 @@ Of course, any combination of the available options is possible.
   @Component
   export default class Code extends Vue {
     modals = [];
+    width = 'minWidth';
     
     mounted() {
-      this.modals = Array.from(document.querySelectorAll('p-modal'));
-      
-      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
-      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
-      
-      this.modals.forEach((modal, index) => {
-        modal.addEventListener('close', () => this.closeModal(index));
-        const buttons = Array.from(modal.querySelectorAll('p-button'));
-        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
-      });
+      this.registerEvents();
       
       // workaround for iOS 13.x masking modal within example
       document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
@@ -117,20 +126,37 @@ Of course, any combination of the available options is possible.
     }
     
     updated() {
-      console.log('updated');
       // event handling is registered again on every update since markup is changing and references are lost
       this.registerEvents();
     }
     
-    basic =
-`<p-button>Open Modal</p-button>
+    registerEvents() {
+      this.modals = Array.from(document.querySelectorAll('p-modal'));
+      
+      const buttonsOpen = Array.from(document.querySelectorAll('.playground .demo > p-button'));
+      buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+      
+      this.modals.forEach((modal, index) => {
+        modal.addEventListener('close', () => this.closeModal(index));
+        const buttons = Array.from(modal.querySelectorAll('p-button'));
+        buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
+      });
+    }
+  
+
+    get basic() {
+      const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : ' <p-text>Some Content</p-text>';
+      const footerClass = this.width === 'minWidth' ? 'footer-column' : 'footer-row';
+      const direction = this.width === 'minWidth' ? 'column' : 'row';
+
+      return `<p-button>Open Modal</p-button>
 <p-modal heading="Some Heading" open="false">
-  <p-text>Some Content</p-text>
-  <p-flex class="footer">
+  ${content}
+  <p-flex direction="${direction}" class="${footerClass}">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
-</p-modal>`;
+</p-modal>`;}
     
     scrollable =
 `<p-button>Open Modal</p-button>
@@ -140,7 +166,7 @@ Of course, any combination of the available options is possible.
   <p-text>More Content</p-text>
   <div style="height: 40vh;"></div>
   <p-text>Even More Content</p-text>
-  <p-flex class="footer">
+  <p-flex direction="column" class="footer-column">
     <p-button>Save</p-button>
     <p-button variant="tertiary">Close</p-button>
   </p-flex>
@@ -157,6 +183,22 @@ Of course, any combination of the available options is possible.
 <p-modal heading="Some Heading" disable-close-button open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
+
+    fullscreen =
+`<p-button>Open Modal</p-button>
+<p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
+  <p-flex direction="column" class="fullscreen-container">
+    <p-flex-item grow="1">
+      <p-text>Some Content</p-text>
+    </p-flex-item>
+    <p-flex-item>
+      <p-flex direction="column" class="footer-column">
+        <p-button>Save</p-button>
+        <p-button variant="tertiary">Close</p-button>
+      </p-flex>
+    </p-flex-item>
+  </p-flex>
+</p-modal>`;
     
     openModal(index: number): void {
       this.modals[index].setAttribute('open', 'true');
@@ -172,7 +214,6 @@ Of course, any combination of the available options is possible.
   @import '~@porsche-design-system/utilities/scss';
 
   @mixin p-row() {
-    flex-direction: row;
     > * {
       width: auto;
       &:not(:last-child) {
@@ -185,7 +226,6 @@ Of course, any combination of the available options is possible.
   } 
   
   @mixin p-col() {
-    flex-direction: column;
     > * {
       width: 100%;
       &:not(:first-child) {
@@ -196,14 +236,19 @@ Of course, any combination of the available options is possible.
       }
     }
   }
+
   
-  ::v-deep .footer {
+  ::v-deep .footer-column {
     @include p-col;
-    padding: p-px-to-rem(16px) 0 0;
-    
-    @include p-media-query('s') {
-      @include p-row;
-      padding: p-px-to-rem(32px) 0 0;
-    }
+    padding: p-px-to-rem(32px) 0 0;
+  }
+
+  ::v-deep .footer-row {
+    @include p-row;
+    padding: p-px-to-rem(32px) 0 0;
+  }
+
+  ::v-deep .fullscreen-container {
+    flex: 1;
   }
 </style>
