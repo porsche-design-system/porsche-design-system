@@ -215,7 +215,7 @@ This might lead to a doubled * symbol if you set one by yourself.
 ```
 
 #### Shadow DOM
-`Flex`, `Flex Item`, `Grid` and `Grid Item` now use Shadow DOM, thus you are not able to apply custom styles on these components any longer.
+`Flex`, `Flex Item`, `Grid` and `Grid Item` now use Shadow DOM, thus you are not able to overwrite styles defined by these components any longer.
 
 ---
 
