@@ -18,6 +18,21 @@ A `label` is a caption which informs the user what information a particular form
 
 ---
 
+## Basic example without preselection
+
+To ensure the user makes a conscious choice, use `<option></option>` as placeholder.
+If the select is required, use `<option hidden></option>` to enforce a selection.
+
+<Playground :markup="basicNoPreselection" :config="config">
+  <select v-model="isRequired">
+    <option disabled>Select a label mode</option>
+    <option selected value="false">optional</option>
+    <option value="true">required</option>
+  </select>
+</Playground>
+
+---
+
 ## With filter
 This option enhances the native select filter by providing an additional search field where the user can type his own search string. 
 The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
@@ -118,6 +133,7 @@ selectElement.options[0].removeAttribute('selected');
     label = 'show';
     state = 'error';
     dropdownDirection = 'auto';
+    isRequired = 'false';
     
     get basic() {
       const attr = `hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -127,6 +143,20 @@ selectElement.options[0].removeAttribute('selected');
   </select>
 </p-select-wrapper>`;
     }
+
+    get basicNoPreselection() { 
+  
+      const option = this.isRequired === 'false' ? '<option></option>' : '<option hidden></option>';
+      const required = this.isRequired === 'true' ? ' required' : '';
+      
+      return `<p-select-wrapper label="Some label">
+  <select name="some-name"${required}>
+    ${option}
+    ${buildOptions(['a','b','c']).join('\n    ')}
+  </select>
+</p-select-wrapper>`;
+    }
+
     
     get withFilter() {
       const options = {
