@@ -261,6 +261,10 @@ _Example input field with error | 1. Asterisk, 2. Border highlight, 3. Error me
 - **Error summary.** Additional to the error message beneath the input fields, you can include an error summary at the top of the form to summarise the mistakes a user has made.
 It might also make sense if you don't want to show which field has an error, f.e. login or have a required group of fields rather than a specific one.
 
+- **Radio Button and Checkbox group.** To avoid providing each Radio Button and each Checkbox with its own error message within a group, we recommend marking the fieldset required. The error message will then be displayed for the entire group at the last item.
+
+![Form validation within a group](../../../assets/validation-fieldset.png)
+
 ---
 
 # Error messages
