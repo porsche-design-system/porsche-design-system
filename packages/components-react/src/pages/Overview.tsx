@@ -1,6 +1,7 @@
 import {
   PBanner,
   PButton,
+  PButtonGroup,
   PButtonPure,
   PHeadline,
   PText,
@@ -105,6 +106,13 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default button">
             <PButton>Some label</PButton>
+          </div>
+
+          <div className="playground light" title="should render default button-group">
+            <PButtonGroup>
+              <PButton>Some label</PButton>
+              <PButton>Some label</PButton>
+            </PButtonGroup>
           </div>
 
           <div className="playground light" title="should render default button-pure">
@@ -259,6 +267,13 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default button with custom prefix">
               <PButton>Some label</PButton>
+            </div>
+
+            <div className="playground light" title="should render default button-group with custom prefix">
+              <PButtonGroup>
+                <PButton>Some label</PButton>
+                <PButton>Some label</PButton>
+              </PButtonGroup>
             </div>
 
             <div className="playground light" title="should render default button-pure with custom prefix">
