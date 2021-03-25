@@ -1,5 +1,6 @@
 export * from './Banner';
 export * from './Button';
+export * from './ButtonGroup';
 export * from './ButtonPure';
 export * from './CheckboxWrapper';
 export * from './ContentWrapper';
