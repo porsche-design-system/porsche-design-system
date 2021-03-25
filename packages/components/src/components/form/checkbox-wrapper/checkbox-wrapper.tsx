@@ -45,12 +45,17 @@ export class CheckboxWrapper {
     initAttributePropChangeListener(this.input, ['checked', 'indeterminate', 'disabled'], () => forceUpdate(this.host));
   }
 
-  public componentDidLoad(): void {
-    this.setAriaAttributes();
-  }
-
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+     */
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message,
+      state: this.state,
+    });
   }
 
   public render(): JSX.Element {
@@ -111,26 +116,12 @@ export class CheckboxWrapper {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
   }
 
-  /*
-   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.input, {
-      label: this.label,
-      message: this.message,
-      state: this.state,
-    });
-  }
-
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out of the box.
      * also we don't want to click to the input, if a link is clicked.
      */
-    if (this.host.shadowRoot?.host && (event.target as HTMLElement).closest('a') === null) {
+    if ((event.target as HTMLElement).closest('a') === null) {
       this.input.focus();
       this.input.click();
     }

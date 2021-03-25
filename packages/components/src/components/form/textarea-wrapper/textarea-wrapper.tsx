@@ -46,12 +46,17 @@ export class TextareaWrapper {
     this.addSlottedStyles();
   }
 
-  public componentDidLoad(): void {
-    this.setAriaAttributes();
-  }
-
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
+    setAriaAttributes(this.textarea, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   public disconnectedCallback(): void {
@@ -122,19 +127,6 @@ export class TextareaWrapper {
 
   private setTextarea(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.textarea, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
   }
 
   private labelClick = (): void => {
