@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
 import { GridDirection } from "./components/layout/grid/grid/grid-utils";
@@ -68,6 +69,12 @@ export namespace Components {
           * The style variant of the button.
          */
         "variant"?: ButtonVariant;
+    }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is "{base: 'column', xs: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "xs" and side by side on viewports larger than "xs". You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
         /**
@@ -724,6 +731,12 @@ declare global {
         prototype: HTMLPButtonElement;
         new (): HTMLPButtonElement;
     };
+    interface HTMLPButtonGroupElement extends Components.PButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPButtonGroupElement: {
+        prototype: HTMLPButtonGroupElement;
+        new (): HTMLPButtonGroupElement;
+    };
     interface HTMLPButtonPureElement extends Components.PButtonPure, HTMLStencilElement {
     }
     var HTMLPButtonPureElement: {
@@ -895,6 +908,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
+        "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -985,6 +999,12 @@ declare namespace LocalJSX {
           * The style variant of the button.
          */
         "variant"?: ButtonVariant;
+    }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is "{base: 'column', xs: 'row'}" in a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than "xs" and side by side on viewports larger than "xs". You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
         /**
@@ -1646,6 +1666,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "p-banner": PBanner;
         "p-button": PButton;
+        "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -1682,6 +1703,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+            "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
