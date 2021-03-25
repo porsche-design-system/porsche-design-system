@@ -10,7 +10,7 @@ type FlexWrapType = typeof FLEX_WRAPS[number];
 export type FlexWrap = BreakpointCustomizable<FlexWrapType>;
 
 export const FLEX_DIRECTION = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
-export type FlexDirectionType = typeof FLEX_DIRECTION[number];
+type FlexDirectionType = typeof FLEX_DIRECTION[number];
 export type FlexDirection = BreakpointCustomizable<FlexDirectionType>;
 
 export const FLEX_JUSTIFY_CONTENTS = [
