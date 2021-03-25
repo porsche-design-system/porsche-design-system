@@ -110,7 +110,7 @@ export class Modal {
     );
   }
 
-  private setScrollTop = (e: TouchEvent) => {
+  private setScrollTop = (e: TouchEvent): void => {
     this.host.scrollTop = getScrollTopOnTouch(this.host, e);
   };
 
