@@ -4,22 +4,27 @@
 @mixin column-mixin() {
   flex-flow: column nowrap !important;
   align-items: stretch !important;
-  ::slotted(*:not(:last-child)) {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  ::slotted(*) {
     margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
 @mixin row-mixin() {
   flex-flow: row wrap !important;
   align-items: center !important;
-  ::slotted(*:not(:last-child)) {
-    margin-right: $p-spacing-16 !important;
+  margin-right: -$p-spacing-8 !important;
+  margin-left: -$p-spacing-8 !important;
+  ::slotted(*) {
+    margin-right: $p-spacing-8 !important;
+    margin-left: $p-spacing-8 !important;
   }
 }
 
 :host {
   display: block;
-  width: 100%;
 }
 
 ::slotted(*) {
@@ -28,7 +33,12 @@
 
 .#{$p-global-class-prefix}button-group {
   display: flex;
-  margin-top: -$p-spacing-16 !important;
+  margin-top: -$p-spacing-16;
+
+  @include column-mixin();
+  @include p-media-query('xs') {
+    @include row-mixin();
+  }
 
   &--direction {
     &-column {
