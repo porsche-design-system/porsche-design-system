@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element, forceUpdate } from '@stencil/core';
+import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -42,7 +42,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.setInput();
-    initAttributePropChangeListener(this.input, ['checked', 'indeterminate', 'disabled'], () => forceUpdate(this.host));
+    initAttributePropChangeListener(this.host, this.input, ['checked', 'indeterminate', 'disabled']);
   }
 
   public componentDidRender(): void {
