@@ -64,6 +64,13 @@ import { componentsReady } from '@porsche-design-system/components-angular';
           <p-button>Some label</p-button>
         </div>
 
+        <div class="playground light" title="should render default button-group">
+          <p-button-group>
+            <p-button>Some label</p-button>
+            <p-button>Some label</p-button>
+          </p-button-group>
+        </div>
+
         <div class="playground light" title="should render default button-pure">
           <p-button-pure>Some label</p-button-pure>
         </div>
@@ -205,6 +212,13 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default button with custom prefix">
           <my-prefix-p-button p-button>Some label</my-prefix-p-button>
+        </div>
+
+        <div class="playground light" title="should render default button-group with custom prefix">
+          <my-prefix-p-button-group p-button-group>
+            <p-button>Some label</p-button>
+            <my-prefix-p-button p-button>Some label</my-prefix-p-button>
+          </my-prefix-p-button-group>
         </div>
 
         <div class="playground light" title="should render default button-pure with custom prefix">
