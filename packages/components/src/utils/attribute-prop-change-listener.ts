@@ -1,19 +1,36 @@
-export const initAttributePropChangeListener = (node: HTMLElement, props: string[], cb: () => void): void => {
-  node.addEventListener('change', cb);
+import { forceUpdate } from '@stencil/core';
+/* eslint-disable no-console */
 
-  props.forEach((prop) => {
-    const { set, get } = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(node), prop);
+export const initAttributePropChangeListener = (host: HTMLElement, node: HTMLElement, props: string[]): void => {
+  const cb = (): void => {
+    console.log('cb...', host);
+    forceUpdate(host);
+  };
+
+  // node.addEventListener('change', () => {
+  //   console.log('event listener', host);
+  //   cb();
+  // });
+
+  const proto = Object.getPrototypeOf(node);
+  const forEachCallback = (prop: string): void => {
+    const descriptor = Object.getOwnPropertyDescriptor(proto, prop);
 
     Object.defineProperty(node, prop, {
       get() {
-        return get.apply(this, arguments);
+        return descriptor.get.apply(this);
       },
-      set() {
+      set(...args) {
+        console.log('set', host);
         cb();
-        return set.apply(this, arguments);
+        descriptor.set.apply(this, args);
       },
     });
-  });
+  };
+  props.forEach(forEachCallback);
 
-  new MutationObserver(cb).observe(node, { attributeFilter: props });
+  new MutationObserver(() => {
+    console.log('mutation observer', host);
+    cb();
+  }).observe(node, { attributeFilter: props });
 };
