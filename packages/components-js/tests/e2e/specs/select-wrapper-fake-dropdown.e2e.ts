@@ -445,6 +445,26 @@ describe('select-wrapper fake-dropdown', () => {
       expect(consoleErrors.length).toBe(1, 'get errorsAmount after custom error');
     });
 
+    it('should not set checkmark icon if option is both selected and disabled', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-select-wrapper label="Some label">
+            <select name="some-name">
+              <option value="" disabled selected>Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+            </select>
+          </p-select-wrapper>`
+      );
+
+      const fakeOptionListCheckmarkIcon = await selectNode(
+        page,
+        'p-select-wrapper >>> .p-select-wrapper__fake-option-icon'
+      );
+
+      expect(fakeOptionListCheckmarkIcon).toBeNull();
+    });
+
     describe('dropdown position', () => {
       it('should set direction to up', async () => {
         await setContentWithDesignSystem(
