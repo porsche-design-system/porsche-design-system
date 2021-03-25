@@ -149,12 +149,10 @@
               required
             />
           </p-checkbox-wrapper>
-          <p-flex class="form-section-spacing form-bottom-spacing form-grid-item-container">
-            <p-button-group class="form-grid-item">
-              <p-button type="submit">Create Porsche account</p-button>
-              <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
-            </p-button-group>
-          </p-flex>
+          <p-button-group class="form-section-spacing form-bottom-spacing">
+            <p-button type="submit">Create Porsche account</p-button>
+            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+          </p-button-group>
         </form>
       </p-grid-item>
     </p-grid>

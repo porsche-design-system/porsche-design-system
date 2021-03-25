@@ -269,12 +269,10 @@
               </p-checkbox-wrapper>
             </p-flex-item>
           </p-flex>
-          <p-flex class="form-section-spacing form-bottom-spacing form-grid-item-container">
-            <p-button-group class="form-grid-item">
-              <p-button type="submit">Send</p-button>
-              <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
-            </p-button-group>
-          </p-flex>
+          <p-button-group class="form-section-spacing form-bottom-spacing">
+            <p-button type="submit">Send</p-button>
+            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+          </p-button-group>
         </form>
       </p-grid-item>
     </p-grid>
