@@ -3,9 +3,10 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  hasNamedSlot,
   initAttributePropChangeListener,
   insertSlottedStyles,
+  isLabelVisible,
+  isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -80,7 +81,7 @@ export class CheckboxWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible && (
+          {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequired(this.input) && <span class={prefix('checkbox-wrapper__required')} />}
@@ -97,21 +98,13 @@ export class CheckboxWrapper {
             <slot />
           </span>
         </label>
-        {this.isMessageVisible && (
+        {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   private setInput(): void {
