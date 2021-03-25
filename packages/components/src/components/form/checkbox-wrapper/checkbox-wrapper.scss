@@ -41,13 +41,11 @@
   padding: 0 !important;
   appearance: none !important;
   border: 0 !important;
-  border-top-color: rgba(255, 255, 255, 0) !important;
   background-color: transparent !important;
   opacity: 1 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
   cursor: pointer !important;
-  transition: border-top-color 1ms linear !important;
 }
 
 // hide native checkbox on IE11
@@ -68,40 +66,9 @@
   outline-color: $p-color-notification-error !important;
 }
 
-// Checked
-::slotted(input:checked) {
-  border-top-color: rgba(255, 255, 255, 0.01) !important;
-}
-
 // Disabled
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  border-top-color: rgba(255, 255, 255, 0.02) !important;
-}
-
-// Indeterminate
-::slotted(input:indeterminate) {
-  border-top-color: rgba(255, 255, 255, 0.03) !important;
-}
-
-// Disabled + Checked
-::slotted(input:disabled:checked) {
-  border-top-color: rgba(255, 255, 255, 0.04) !important;
-}
-
-// Disabled + Indeterminate
-::slotted(input:disabled:indeterminate) {
-  border-top-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-// Checked + Indeterminate
-::slotted(input:checked:indeterminate) {
-  border-top-color: rgba(255, 255, 255, 0.06) !important;
-}
-
-// Disabled + Checked + Indeterminate
-::slotted(input:disabled:checked:indeterminate) {
-  border-top-color: rgba(255, 255, 255, 0.07) !important;
 }
 
 .#{$p-global-class-prefix}checkbox-wrapper {

@@ -4,12 +4,12 @@ import {
   getPrefixedTagNames,
   getTagName,
   hasNamedSlot,
+  initAttributePropChangeListener,
   insertSlottedStyles,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
-  transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -41,7 +41,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.setInput();
-    this.bindStateListener();
+    initAttributePropChangeListener(this.input, ['checked', 'indeterminate', 'disabled'], () => forceUpdate(this.host));
   }
 
   public componentDidLoad(): void {
@@ -142,10 +142,6 @@ export class CheckboxWrapper {
       this.input.click();
     }
   };
-
-  private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', () => forceUpdate(this.host));
-  }
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
