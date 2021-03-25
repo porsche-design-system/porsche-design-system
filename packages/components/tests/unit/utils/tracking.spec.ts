@@ -1,7 +1,7 @@
 import { trackEvent } from '../../../src/utils';
 import { version } from '../../../package.json';
 
-describe('trackEvent', () => {
+describe('trackEvent()', () => {
   it('does a call via fetch', () => {
     const spy = jest.spyOn(global, 'fetch');
 

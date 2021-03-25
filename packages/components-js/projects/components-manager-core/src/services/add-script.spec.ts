@@ -3,7 +3,6 @@ import * as browserHelper from './browser-helper';
 
 describe('addScript', () => {
   const url = 'http://localhost/some-url.js';
-  const otherUrl = 'http://some-other-url/';
   let scriptTags: HTMLScriptElement[];
   let spy: jest.SpyInstance<Node, [Node]>;
 
@@ -55,12 +54,11 @@ describe('addScript', () => {
     expect(document.body.appendChild).toHaveBeenCalledTimes(0);
   });
 
-  it('should add type=module to module syntax scripts', () => {
+  it('should add crossorigin attribute to scripts', () => {
     mockSupportsEs2015ModulesOnce(true);
     addScript(url);
     const [scriptTag] = scriptTags;
-    expect(scriptTag.type).toBe('module');
-    expect(scriptTag.noModule).toBe(undefined); // in jsdom this is undefined, in real dom it is false
+    expect(scriptTag.getAttribute('crossorigin')).toBe('');
     dispatchOnload(0);
   });
 });

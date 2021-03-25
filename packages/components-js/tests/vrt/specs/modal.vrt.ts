@@ -19,4 +19,8 @@ describe('Modal', () => {
   it('should have no visual regression for prefixed modal', async () => {
     expect(await vrt.test('modal-prefixed', () => vrt.goTo('/#modal-prefixed'), testOptions)).toBeFalsy();
   });
+
+  it('should have no visual regression for fullscreen modal', async () => {
+    expect(await vrt.test('modal-fullscreen', () => vrt.goTo('/#modal-fullscreen'), testOptions)).toBeFalsy();
+  });
 });
