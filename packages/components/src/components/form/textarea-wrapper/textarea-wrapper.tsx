@@ -3,8 +3,10 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  hasNamedSlot,
   insertSlottedStyles,
+  isDescriptionVisible,
+  isLabelVisible,
+  isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -88,13 +90,13 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible && (
+          {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequired(this.textarea) && <span class={prefix('textarea-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
-          {this.isDescriptionVisible && (
+          {isDescriptionVisible(this.host, this.description) && (
             <PrefixedTagNames.pText
               class={descriptionTextClasses}
               tag="span"
@@ -109,25 +111,13 @@ export class TextareaWrapper {
             <slot />
           </span>
         </label>
-        {this.isMessageVisible && (
+        {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
       </Host>
     );
-  }
-
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || hasNamedSlot(this.host, 'description');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
   }
 
   private setTextarea(): void {

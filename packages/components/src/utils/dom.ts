@@ -1,4 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
+import type { FormState } from '../types';
 
 type Host = HTMLElement | ShadowRoot;
 
@@ -50,6 +51,18 @@ export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSele
   getAttribute(el, 'required') !== null;
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
+
+export const isLabelVisible = (host: Host, label: string): boolean => {
+  return !!label || hasNamedSlot(host, 'label');
+};
+
+export const isMessageVisible = (host: Host, message: string, state: FormState): boolean => {
+  return !!(message || hasNamedSlot(host, 'message')) && ['success', 'error'].includes(state);
+};
+
+export const isDescriptionVisible = (host: Host, description: string): boolean => {
+  return !!description || hasNamedSlot(host, 'description');
+};
 
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
