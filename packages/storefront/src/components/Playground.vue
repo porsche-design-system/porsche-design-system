@@ -24,9 +24,11 @@
       <div v-if="isSlotSet" class="configurator">
         <slot :theme="theme" />
       </div>
-      <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
-      <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
-      <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
+      <template v-if="this.markup">
+        <div class="demo" v-html="cleanDemoMarkup(patchedMarkup)"></div>
+        <CodeBlock :markup="patchedMarkup" :theme="theme"></CodeBlock>
+        <CodeEditor :markup="cleanEditorMarkup(patchedMarkup)" :theme="theme" :framework="framework"></CodeEditor>
+      </template>
     </div>
   </div>
 </template>
