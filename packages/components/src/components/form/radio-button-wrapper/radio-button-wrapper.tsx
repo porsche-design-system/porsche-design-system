@@ -46,12 +46,17 @@ export class RadioButtonWrapper {
     this.bindStateListener();
   }
 
-  public componentDidLoad(): void {
-    this.setAriaAttributes();
-  }
-
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+     */
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message,
+      state: this.state,
+    });
   }
 
   public render(): JSX.Element {
@@ -101,25 +106,11 @@ export class RadioButtonWrapper {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
   }
 
-  /*
-   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.input, {
-      label: this.label,
-      message: this.message,
-      state: this.state,
-    });
-  }
-
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
-     * for real shadow dom, else the native behaviour works out of the box
      */
-    if (this.host.shadowRoot?.host && getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
+    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.focus();
       this.input.click();
     }
