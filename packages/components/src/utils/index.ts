@@ -1,4 +1,5 @@
 export * from './a11y';
+export * from './attribute-prop-change-listener';
 export * from './breakpoint-customizable';
 export * from './button-handling';
 export * from './change-case';
