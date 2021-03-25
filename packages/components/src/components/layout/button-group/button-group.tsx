@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 
-import { getPrefixedTagNames, mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
+import { mapBreakpointPropToPrefixedClasses, prefix } from '../../../utils';
 import type { ButtonGroupDirection } from './button-group-utils';
 
 @Component({
@@ -22,12 +22,11 @@ export class ButtonGroup {
       [prefix('button-group')]: true,
       ...mapBreakpointPropToPrefixedClasses('button-group--direction', this.direction),
     };
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pFlex class={buttonGroupClasses} direction={this.direction}>
+      <div class={buttonGroupClasses}>
         <slot />
-      </PrefixedTagNames.pFlex>
+      </div>
     );
   }
 }

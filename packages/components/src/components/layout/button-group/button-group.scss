@@ -2,23 +2,34 @@
 @import '../../../styles/internal.variables';
 
 @mixin column-mixin() {
-  ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
+  flex-flow: column nowrap !important;
+  align-items: stretch !important;
+  ::slotted(*:not(:last-child)) {
     margin-right: 0 !important;
-    margin-bottom: $p-spacing-16 !important;
   }
 }
+
 @mixin row-mixin() {
-  ::slotted(#{$p-global-class-prefix}button:not(:last-child)) {
+  flex-flow: row wrap !important;
+  align-items: center !important;
+  ::slotted(*:not(:last-child)) {
     margin-right: $p-spacing-16 !important;
-    margin-bottom: 0 !important;
   }
 }
 
 :host {
+  display: block;
   width: 100%;
 }
 
+::slotted(*) {
+  margin-top: $p-spacing-16 !important;
+}
+
 .#{$p-global-class-prefix}button-group {
+  display: flex;
+  margin-top: -$p-spacing-16 !important;
+
   &--direction {
     &-column {
       @include column-mixin();
