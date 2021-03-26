@@ -176,13 +176,12 @@ describe('tabs-bar', () => {
       await initTabsBar({ amount: 1, activeTabIndex: 0, otherMarkup: clickHandlerScript });
       const statusBar = await getStatusBar();
 
-      //add a new button programmatically
+      //add a new button
       await page.evaluate(() => {
         const tabsBar = document.querySelector('p-tabs-bar');
         const tab = document.createElement('button');
-        const i = tabsBar.children.length + 1;
-        tab.setAttribute('label', `Tab ${i}`);
-        tab.innerText = `Added Tab ${i}`;
+        tab.setAttribute('label', `Added Tab Label`);
+        tab.innerText = `Added Tab Text`;
         tabsBar.append(tab);
       });
       await waitForStencilLifecycle(page);

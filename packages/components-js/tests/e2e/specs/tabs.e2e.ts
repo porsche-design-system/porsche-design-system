@@ -102,6 +102,31 @@ describe('tabs', () => {
     expect(await getHidden(thirdTabsItem)).toBe('');
   });
 
+  it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
+    await initTabs({ amount: 1, activeTabIndex: 0 });
+    await waitForStencilLifecycle(page);
+
+    await page.evaluate(() => {
+      const tabs = document.querySelector('p-tabs');
+      const tab = document.createElement('p-tabs-item');
+      tab.setAttribute('label', `Tabs Item Added`);
+      tab.innerText = `Added Tabs Item Content`;
+      tabs.append(tab);
+    });
+    await waitForStencilLifecycle(page);
+    const [, secondButton] = await getAllTabs();
+    const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+    expect(await getHidden(firstTabsItem)).toBeNull();
+    expect(await getHidden(secondTabsItem)).toBe('');
+
+    await secondButton.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getHidden(secondTabsItem)).toBeNull();
+    expect(await getHidden(firstTabsItem)).toBe('');
+  });
+
   describe('keyboard', () => {
     it('should display correct tabs-item on keyboard arrow press', async () => {
       await initTabs();
