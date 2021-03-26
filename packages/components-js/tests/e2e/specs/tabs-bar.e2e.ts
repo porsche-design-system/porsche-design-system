@@ -158,7 +158,7 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right)).toEqual(
-        94,
+        95,
         'should have correct initial position'
       );
 
@@ -167,7 +167,7 @@ describe('tabs-bar', () => {
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).right)).toEqual(
-        261,
+        265,
         'should have correct position after button name change'
       );
     });
@@ -197,7 +197,7 @@ describe('tabs-bar', () => {
       await clickElement(secondButton);
 
       expect(Math.floor((await getElementPositions(page, statusBar)).left)).toEqual(
-        114,
+        115,
         'should have correct position after click'
       );
     });
