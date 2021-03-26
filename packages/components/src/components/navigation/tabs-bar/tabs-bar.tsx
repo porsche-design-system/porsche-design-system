@@ -76,7 +76,7 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.setTabElements();
     this.initMutationObserver();
   }
 
@@ -220,6 +220,10 @@ export class TabsBar {
     this.firstGradientElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__gradient:first-child')}`);
   };
 
+  private setTabElements = (): void => {
+    this.tabElements = getHTMLElements(this.host, 'a,button');
+  };
+
   private addEventListeners = (): void => {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
@@ -232,7 +236,8 @@ export class TabsBar {
 
   private initMutationObserver = (): void => {
     this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.some(({ type }) => type === 'characterData')) {
+      if (mutations.some(({ type }) => type === 'childList' || type === 'characterData')) {
+        this.setTabElements();
         this.setStatusBarStyle();
       }
     });
