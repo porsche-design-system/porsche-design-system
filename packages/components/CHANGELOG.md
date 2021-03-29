@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Changed
+- `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-elements`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements. 
+
 ### [2.0.0-rc.9] - 2021-03-26
 
 #### Added
