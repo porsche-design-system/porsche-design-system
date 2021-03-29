@@ -42,8 +42,6 @@ The text label is always set in copytext size. It is recommended to always keep 
 
 ### Alignment
 
-To ensure general consistency across all user flows, we recommend aligning the buttons to the left. The CTA should also always be placed on the left. ([Porsche usability testing](https://dovetailapp.com/projects/a6290073-31f1-413f-b8a0-139dd70c86cd/readme)). 
-
 **Left alignment (F-shaped reading pattern)**
 
 Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
@@ -64,18 +62,12 @@ This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles
   ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)
 
 
-### Alignment on smaller viewports 
+**Alignment on smaller viewports**
 
 On smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
 
 ![Mobile view for Buttons](./assets/patterns-buttons-alignment-viewport-xs.png)
 
-
-![Button position](./assets/button-position.png)
-
-### Button width
-
-Even if there is no technical limit to the Button width, you should always make sure that the button remains legible, even more so in multiline state. It is recommended to use max. 100 characters per line (equals approx. 700 px button width).
 
 ### Multi-line Buttons
 
