@@ -16,6 +16,7 @@ import {
   getScrollPositionAfterPrevNextClick,
   getTransformationToInactive,
   getTransformationToActive,
+  removeEnableTransitionClass,
 } from './tabs-bar-utils';
 import {
   getHTMLElement,
@@ -200,10 +201,15 @@ export class TabsBar {
     if (!this.statusBarElement) {
       return;
     }
-    // handle initial inactive + active to inactive cases
-    if (this.activeTabIndex === undefined) {
+    if (this.activeTabIndex === undefined && this.prevActiveTabIndex !== undefined) {
+      // handle initial inactive + active to inactive cases
       addEnableTransitionClass(this.statusBarElement);
       const transformationToInactive = getTransformationToInactive(this.tabElements[this.prevActiveTabIndex]);
+      setAttribute(this.statusBarElement, 'style', transformationToInactive);
+    } else if (this.activeTabIndex === undefined && this.prevActiveTabIndex === undefined) {
+      // handle active to removed
+      removeEnableTransitionClass(this.statusBarElement);
+      const transformationToInactive = getTransformationToInactive();
       setAttribute(this.statusBarElement, 'style', transformationToInactive);
     } else {
       // handle initial active + active to active + inactive to active cases
@@ -235,11 +241,12 @@ export class TabsBar {
   };
 
   private initMutationObserver = (): void => {
-    this.hostObserver = new MutationObserver((mutations): void => {
-      if (mutations.some(({ type }) => type === 'childList' || type === 'characterData')) {
-        this.setTabElements();
-        this.setStatusBarStyle();
-      }
+    this.hostObserver = new MutationObserver((): void => {
+      this.setTabElements();
+      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+      this.prevActiveTabIndex = this.activeTabIndex;
+      this.setStatusBarStyle();
+      this.setAccessibilityAttributes();
     });
     this.hostObserver.observe(this.host, {
       childList: true,

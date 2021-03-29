@@ -22,10 +22,8 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
   const maxIndex = tabElementsCount - 1; // can be -1 without children
   let sanitizedIndex: number;
 
-  if (maxIndex < 0 || index < 0) {
+  if (maxIndex < 0 || index < 0 || index > maxIndex) {
     sanitizedIndex = undefined;
-  } else if (index > maxIndex) {
-    sanitizedIndex = maxIndex;
   } else {
     sanitizedIndex = index;
   }
