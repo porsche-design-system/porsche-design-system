@@ -1,5 +1,6 @@
 export * from './Banner';
 export * from './Button';
+export * from './ButtonGroup';
 export * from './ButtonPure';
 export * from './CheckboxWrapper';
 export * from './ContentWrapper';
@@ -16,8 +17,9 @@ export * from './LinkPure';
 export * from './LinkSocial';
 export * from './Marque';
 export * from './ModalBasic';
-export * from './ModalScrollable';
+export * from './ModalFullscreen';
 export * from './ModalPrefixed';
+export * from './ModalScrollable';
 export * from './Overview';
 export * from './Pagination';
 export * from './RadioButtonWrapper';

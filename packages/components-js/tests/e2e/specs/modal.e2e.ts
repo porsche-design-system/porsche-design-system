@@ -299,7 +299,10 @@ describe('modal', () => {
       expect(status.componentDidLoad['p-headline']).toBe(1, 'componentDidLoad: p-headline');
       expect(status.componentDidLoad['p-button-pure']).toBe(1, 'componentDidLoad: p-button-pure'); // has p-icon and p-text
 
-      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
+      expect(status.componentDidLoad.all).toBe(
+        6,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      );
       expect(status.componentDidUpdate.all).toBe(0, 'componentDidUpdate: all');
     });
 
@@ -314,8 +317,11 @@ describe('modal', () => {
 
       expect(status.componentDidUpdate['p-modal']).toBe(1, 'componentDidUpdate: p-modal');
 
-      expect(status.componentDidLoad.all).toBe(5, 'componentDidLoad: all');
-      expect(status.componentDidUpdate.all).toBe(1, 'componentDidUpdate: all');
+      expect(status.componentDidLoad.all).toBe(
+        6,
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
+      );
+      expect(status.componentDidUpdate.all).toBe(3, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)');
     });
   });
 });
