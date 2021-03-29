@@ -49,12 +49,6 @@ In favor of visual harmony, stacked Buttons should always have the same width, a
 
 On breakpoint S upwards or in screen areas with a minimum width of 760 px the primary call-to-action should always be placed first.
 
-#### Avoid mixing different variants.
-
-Both Buttons and Links are available as "Icon and Text" and "Icon only" variants in the Porsche Design System. In favor of a seamless UX you should homogeneously **stick to one of these types within a group** and avoid mixing them up.  
-  
-![Do's and Don'ts for mixing Button variants](./assets/patterns-buttons-groups-variants.png)
-
 #### Only group Buttons that are related.
 
 Though it is possible to mix up Buttons within a group (see above for detailed information on functionality), you should always make sure that the actions within a group are content-related.
@@ -62,6 +56,15 @@ Though it is possible to mix up Buttons within a group (see above for detailed i
 #### Limit the number of grouped Buttons.
 
 When multiple actions are provided at once, it should be easy for the user to grasp. For "Icon and text" Buttons **we recommend to go for a maximum of 4 actions at once**, as we should set a limit and don't want to overwhelm the user. Also, too many buttons might make the user feel insecure about what to do next.
+
+
+## Do's & Don'ts
+
+#### Avoid mixing different variants.
+
+Both Buttons and Links are available as "Icon and Text" and "Icon only" variants in the Porsche Design System. In favor of a seamless UX you should homogeneously **stick to one of these types within a group** and avoid mixing them up.  
+  
+![Do's and Don'ts for mixing Button variants](./assets/patterns-buttons-groups-variants.png)
 
 #### Differ between Primary, Secondary and Tertiary actions.
 
