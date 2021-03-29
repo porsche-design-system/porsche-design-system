@@ -476,7 +476,7 @@ export class SelectWrapper {
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
-      const selected = item.selected && !item.disabled;
+      const selected = item.selected;
       const highlighted = selected;
       const option: OptionMap = {
         key: index,
@@ -555,7 +555,7 @@ export class SelectWrapper {
             aria-label={!item.text ? 'Empty value' : null}
           >
             {item.text && <span>{item.text}</span>}
-            {selected && (
+            {selected && !disabled && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}
                 aria-hidden="true"
