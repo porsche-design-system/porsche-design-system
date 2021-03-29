@@ -24,6 +24,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Button',
   },
   {
+    path: 'button-group',
+    component: fromPages.ButtonGroupComponent,
+    name: 'Button Group',
+  },
+  {
     path: 'button-pure',
     component: fromPages.ButtonPureComponent,
     name: 'Button Pure',
@@ -94,14 +99,19 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Basic',
   },
   {
-    path: 'modal-scrollable',
-    component: fromPages.ModalScrollableComponent,
-    name: 'Modal Scrollable',
+    path: 'modal-fullscreen',
+    component: fromPages.ModalFullscreenComponent,
+    name: 'Modal Fullscreen',
   },
   {
     path: 'modal-prefixed',
     component: fromPages.ModalPrefixedComponent,
     name: 'Modal Prefixed',
+  },
+  {
+    path: 'modal-scrollable',
+    component: fromPages.ModalScrollableComponent,
+    name: 'Modal Scrollable',
   },
   {
     path: 'pagination',

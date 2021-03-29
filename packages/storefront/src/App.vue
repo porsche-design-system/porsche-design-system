@@ -240,62 +240,6 @@
     padding-right: $p-spacing-8;
   }
 
-  // form item
-  .form-item-width {
-    &--full {
-      width: 100%;
-    }
-
-    &--auto {
-      width: auto;
-    }
-
-    @include p-media-query('xs') {
-      &--full-xs {
-        width: 100%;
-      }
-      &--auto-xs {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('s') {
-      &--full-s {
-        width: 100%;
-      }
-      &--auto-s {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('m') {
-      &--full-m {
-        width: 100%;
-      }
-      &--auto-m {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('l') {
-      &--full-l {
-        width: 100%;
-      }
-      &--auto-l {
-        width: auto;
-      }
-    }
-
-    @include p-media-query('xl') {
-      &--full-xl {
-        width: 100%;
-      }
-      &--auto-xl {
-        width: auto;
-      }
-    }
-  }
-
   .form-fieldset {
     display: block;
     border: 0;
