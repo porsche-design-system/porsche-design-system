@@ -101,30 +101,91 @@ describe('tabs', () => {
     expect(await getHidden(secondTabsItem)).toBeNull();
     expect(await getHidden(thirdTabsItem)).toBe('');
   });
+  describe('mutations', () => {
+    it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
+      await initTabs({ amount: 1, activeTabIndex: 0 });
+      await waitForStencilLifecycle(page);
 
-  it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
-    await initTabs({ amount: 1, activeTabIndex: 0 });
-    await waitForStencilLifecycle(page);
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        const tab = document.createElement('p-tabs-item');
+        tab.setAttribute('label', `Tabs Item Added`);
+        tab.innerText = `Added Tabs Item Content`;
+        tabs.append(tab);
+      });
+      await waitForStencilLifecycle(page);
+      const [, secondButton] = await getAllTabs();
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
-    await page.evaluate(() => {
-      const tabs = document.querySelector('p-tabs');
-      const tab = document.createElement('p-tabs-item');
-      tab.setAttribute('label', `Tabs Item Added`);
-      tab.innerText = `Added Tabs Item Content`;
-      tabs.append(tab);
+      expect(await getHidden(firstTabsItem)).toBeNull();
+      expect(await getHidden(secondTabsItem)).toBe('');
+
+      await secondButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(await getHidden(secondTabsItem)).toBeNull();
+      expect(await getHidden(firstTabsItem)).toBe('');
     });
-    await waitForStencilLifecycle(page);
-    const [, secondButton] = await getAllTabs();
-    const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
-    expect(await getHidden(firstTabsItem)).toBeNull();
-    expect(await getHidden(secondTabsItem)).toBe('');
+    it('should display same active p-tabs-item when last p-tabs-item is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 1 });
+      await waitForStencilLifecycle(page);
 
-    await secondButton.click();
-    await waitForStencilLifecycle(page);
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[2]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
 
-    expect(await getHidden(secondTabsItem)).toBeNull();
-    expect(await getHidden(firstTabsItem)).toBe('');
+      expect(await getHidden(secondTabsItem)).toBeNull();
+      expect(await getHidden(firstTabsItem)).toBe('');
+    });
+
+    it('should display no tab when active p-tabs-item on last position is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 2 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[2]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await getHidden(secondTabsItem)).toBe('');
+      expect(await getHidden(firstTabsItem)).toBe('');
+    });
+
+    it('should display no tab when p-tabs-item on last position is active and p-tabs-item in the middle is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 2 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[1]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await getHidden(secondTabsItem)).toBe('');
+      expect(await getHidden(firstTabsItem)).toBe('');
+    });
+
+    it('should display next tab when p-tabs-item in the middle is active and removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 1 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[1]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await getHidden(secondTabsItem)).toBeNull();
+      expect(await getHidden(firstTabsItem)).toBe('');
+    });
   });
 
   describe('keyboard', () => {
