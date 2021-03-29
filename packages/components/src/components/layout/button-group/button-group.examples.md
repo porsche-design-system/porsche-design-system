@@ -1,6 +1,6 @@
 # Button Group
 
-You can use the following approach to serve the grouped button pattern described in the [design guidelines](#/patterns/buttons#guidelines).
+You can use the following approach to serve the grouped button pattern described in the [design guidelines](#/components/button).
 In a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than **"xs"** and side by side on viewports larger than **"xs"**.
 
 ### Responsive row/column behaviour left aligned
