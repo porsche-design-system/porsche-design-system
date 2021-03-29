@@ -1,6 +1,12 @@
 # Button Group
 
-Sometimes it makes sense to offer two or more actions at once. This can be realized by providing a Button group. When doing so, make sure to follow these principles ([Porsche usability testing](https://dovetailapp.com/projects/a6290073-31f1-413f-b8a0-139dd70c86cd/readme)):
+## When to use
+  • Use a Button Group it makes sense to offer two or more actions at once ([Porsche usability testing](https://dovetailapp.com/projects/a6290073-31f1-413f-b8a0-139dd70c86cd/readme)).
+
+---
+
+## Usage
+
 
 ### Spacing in Button groups
 
@@ -25,7 +31,7 @@ The primary call-to-action within a horizontal-aligned group is always to be pla
  
 **Responsive behaviour**
 
-Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (viewport XS) or screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the F pattern the primary call-to-action button should always be placed on top of the button group ([UX Design](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019). 
+Buttons that are placed in a horizontal row on larger screens are always to be stacked on mobile (breakpoint XS) or screen areas with a maximum width of 479 px, each of them occupying a separate line, and, as generally defined for mobile, spanning full-width. According to the F pattern the primary call-to-action button should always be placed on top of the button group ([UX Design](https://uxdesign.cc/buttons-placement-and-order-bb1c4abadfcb), 2019). 
   
 ![Responsive behaviour of horizontally aligned buttons](./assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
@@ -41,7 +47,7 @@ In favor of visual harmony, stacked Buttons should always have the same width, a
 
 **Hierarchical order**
 
-On viewport S upwards or in screen areas with a minimum width of 760 px the primary call-to-action should always be placed first.
+On breakpoint S upwards or in screen areas with a minimum width of 760 px the primary call-to-action should always be placed first.
 
 #### Avoid mixing different variants.
 
