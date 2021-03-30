@@ -19,7 +19,7 @@ export class Flex {
   /** Defines the flex containers content flow if 2 or more containers are siblings of each other. */
   @Prop() public inline?: FlexInline = false;
 
-  /** If set, overflowing elements will wrap to a new line. */
+  /** Handles wrapping behaviour of elements. */
   @Prop() public wrap?: FlexWrap = 'nowrap';
 
   /** Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. */

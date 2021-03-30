@@ -1,9 +1,8 @@
+import type { GridItemSize, GridItemOffset } from '../../../src/components/layout/grid/grid-item/grid-item-utils';
 import {
   getDynamicCss,
   GRID_ITEM_SIZES,
-  GridItemSize,
   GRID_ITEM_OFFSETS,
-  GridItemOffset,
 } from '../../../src/components/layout/grid/grid-item/grid-item-utils';
 import { stringify } from '../helper';
 
