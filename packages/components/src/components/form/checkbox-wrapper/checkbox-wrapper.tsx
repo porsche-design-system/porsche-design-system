@@ -41,7 +41,7 @@ export class CheckboxWrapper {
   }
 
   public componentWillLoad(): void {
-    this.setInput();
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
     initAttributePropChangeListener(this.host, this.input, ['checked', 'indeterminate', 'disabled']);
   }
 
@@ -110,10 +110,6 @@ export class CheckboxWrapper {
         )}
       </Host>
     );
-  }
-
-  private setInput(): void {
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
   }
 
   private labelClick = (event: MouseEvent): void => {

@@ -1,9 +1,10 @@
-import { JSX, Host, h, Component, Prop, Element, forceUpdate } from '@stencil/core';
+import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
 import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
+  initAttributePropChangeListener,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
@@ -11,7 +12,6 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
-  transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -42,8 +42,8 @@ export class RadioButtonWrapper {
   }
 
   public componentWillLoad(): void {
-    this.setInput();
-    this.bindStateListener();
+    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
+    initAttributePropChangeListener(this.host, this.input, ['checked', 'disabled']);
   }
 
   public componentDidRender(): void {
@@ -102,10 +102,6 @@ export class RadioButtonWrapper {
     );
   }
 
-  private setInput(): void {
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-  }
-
   private labelClick = (event: MouseEvent): void => {
     /**
      * we only want to simulate the checkbox click by label click
@@ -115,10 +111,6 @@ export class RadioButtonWrapper {
       this.input.click();
     }
   };
-
-  private bindStateListener(): void {
-    transitionListener(this.input, 'border-top-color', () => forceUpdate(this.host));
-  }
 
   private addSlottedStyles(): void {
     const tagName = getTagName(this.host);
