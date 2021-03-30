@@ -1,6 +1,6 @@
 # Button Group
 
-The Button Group is a component for wrapping multiple buttons and display them in vertical or horizontal groups with corresponding spacing and width. By default buttons are displayed in full-width as a vertical stacked group for mobile viewports (breakpoint XS) and side-by-side in a row for larger viewports.
+The **Button Group** is a component for wrapping multiple buttons and display them in vertical or horizontal groups with corresponding spacing and width. By default buttons are displayed in full-width as a vertical stacked group for mobile viewports (breakpoint XS) and side-by-side in a row for larger viewports.
 
 ### Responsive row/column behaviour left aligned
 

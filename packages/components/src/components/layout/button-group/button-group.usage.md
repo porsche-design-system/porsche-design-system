@@ -7,9 +7,11 @@
 
 ## Usage
 
+### Alignment
+
 You can either order Buttons within a group horizontally or vertically. Our general recommendation is to place the buttons according to their priority - the most important button is the most left (horizontal) or on top (vertical).
 
-### Horizontal alignment
+#### **1. Horizontal alignment**
 
 A group of Buttons can be aligned side-by-side in a row **whenever you want to** **emphasize the relationship between the different actions** and give the user an instant overview on the available options. A classical case for that would be a "cancel" / "submit" combination. This is **valid for all screens or screen areas with a width of 480 px or larger.**
   
@@ -19,7 +21,7 @@ Buttons that are placed in a horizontal row on larger screens are always to be s
   
 ![Responsive behaviour of horizontally aligned buttons](./assets/patterns-buttons-groups-horizontal-responsiveness.png)
 
-### Vertical alignment
+#### **2. Vertical alignment**
 
 In case you want the users to **focus on each action separately** you should opt for vertically stacked Buttons, giving the user more space for a careful consideration of the actions provided ([UX Movement](https://uxmovement.com/mobile/optimal-placement-for-mobile-call-to-action-buttons/), 2019).
 
@@ -49,7 +51,7 @@ Though it is possible to mix up Buttons within a group, you should always make s
 
 ### Avoid mixing different variants.
 
-Both Buttons and Links are available as "Icon and Text" and "Icon only" variants in the Porsche Design System. In favor of a seamless UX you should homogeneously **stick to one of these types within a group** and avoid mixing them up.  
+In favor of a seamless UX you should homogeneously **stick the Button types "Icon and Text" and "Icon only within a group** and avoid mixing them up.  
   
 ![Do's and Don'ts for mixing Button variants](./assets/patterns-buttons-groups-variants.png)
 

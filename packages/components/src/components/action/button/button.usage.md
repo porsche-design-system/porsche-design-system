@@ -42,7 +42,7 @@ The text label is always set in copytext size. It is recommended to always keep 
 
 ### Alignment
 
-**Left alignment (F-shaped reading pattern)**
+#### **1. Left alignment (F-shaped reading pattern)**
 
 Buttons **on standard pages or in on-page forms** are recommended to be placed **left-justified**, supporting a direct user attention flow:  
   
@@ -50,19 +50,19 @@ This is based on the [F-shaped reading pattern](https://www.nngroup.com/articles
   
 ![F-shaped reading pattern](./assets/patterns-buttons-alignment-left-form.png)
 
-**Centered**
+#### **2. Centered alignment**
 
 **In exceptional cases** it's even possible to place Buttons **centered** to their related content: 
 
-- If the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:
+If the Button centring contributes to a more aesthetically pleasing look and feel, like, for example, in an image slider where the Buttons should be placed centered to the images:
   
   ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-aesthetic.png)
-- If the Button relates to a larger part or even the whole page, e.g. a "Load more" Button:
+If the Button relates to a larger part or even the whole page, e.g. a "Load more" Button:
   
   ![Z-shaped reading pattern](./assets/patterns-buttons-alignment-centered-load-more.png)
 
 
-**Alignment on smaller viewports**
+#### **3. Smaller viewports**
 
 On smaller viewports up to 479 px screen width Buttons are always to be placed stacked and full-width. This makes it easier for the user to tap due to a larger visible touch area and also allows to give primary actions more visibility. "Icon only" Buttons keep their fix size on all viewports.
 
