@@ -1,7 +1,7 @@
 # Button Group
 
 ## When to use
-  • Use a Button Group it makes sense to offer two or more actions at once.
+  • Use a Button Group to consistently align two or more buttons at once.
 
 ---
 
