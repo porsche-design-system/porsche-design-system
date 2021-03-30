@@ -180,7 +180,6 @@ describe('tabs-bar', () => {
       await page.evaluate(() => {
         const tabsBar = document.querySelector('p-tabs-bar');
         const tab = document.createElement('button');
-        tab.setAttribute('label', `Added Tab Label`);
         tab.innerText = `Added Tab Text`;
         tabsBar.append(tab);
       });
