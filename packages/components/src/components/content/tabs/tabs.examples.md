@@ -54,6 +54,7 @@ The background and gradient has to align to your chosen background.
 ## Active Tab
 
 You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`.
+Make sure to update the `activeTabIndex` when adding or removing elements.
 
 <Playground :markup="activeTab" :config="config"></Playground>
 

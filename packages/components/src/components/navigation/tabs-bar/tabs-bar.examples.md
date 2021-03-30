@@ -90,7 +90,7 @@ The content placeholder needs the `role="tabpanel"` and the attribute `aria-labe
 ---
 ## Active Tab
 
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection.
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
 
 <Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
