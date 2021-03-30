@@ -18,7 +18,7 @@ describe('sanitizeActiveTabIndex()', () => {
     ['asd', 0, undefined],
     [2, 0, undefined],
     [-5, 2, undefined],
-    [5, 2, 1],
+    [5, 2, undefined],
     [3, 5, 3],
   ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
     expect(sanitizeActiveTabIndex(index as number, tabElementsCount)).toBe(expected);
