@@ -2,18 +2,19 @@ import { forceUpdate } from '@stencil/core';
 import { addEventListener } from '.';
 /* eslint-disable no-console */
 
-export const observeProperties = (node: HTMLElement, props: string[], callback: () => void): void => {
+const observeProperties = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
   const proto = Object.getPrototypeOf(node);
-  const forEachCallback = (prop: string): void => {
+  const forEachCallback = (prop: keyof T): void => {
     // eslint-disable-next-line @typescript-eslint/unbound-method
-    const { get: superGet, set: superSet } = Object.getOwnPropertyDescriptor(proto, prop);
+    const { get, set } = Object.getOwnPropertyDescriptor(proto, prop);
+    // TODO: maybe use Object.defineProperties() instead
     Object.defineProperty(node, prop, {
       configurable: true,
       get() {
-        return superGet.call(this);
+        return get.call(this);
       },
       set(val) {
-        superSet.call(this, val);
+        set.call(this, val);
 
         // full-circle moment for react
         // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/inputValueTracking.js#L95
@@ -26,7 +27,11 @@ export const observeProperties = (node: HTMLElement, props: string[], callback: 
   props.forEach(forEachCallback);
 };
 
-export const initAttributePropChangeListener = (host: HTMLElement, node: HTMLElement, props: string[]): void => {
+export const initAttributePropChangeListener = <T extends HTMLElement>(
+  host: HTMLElement,
+  node: T,
+  props: (keyof T)[]
+): void => {
   const updateComponent = (): void => {
     console.log('cb...', host);
     forceUpdate(host);
