@@ -39,7 +39,7 @@ describe('tabs', () => {
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
   const getHidden = (element: ElementHandle) => getAttribute(element, 'hidden');
-  const isHidden = async (element: ElementHandle): Promise<boolean> => (await getHidden(element)) !== '';
+  const isHidden = async (element: ElementHandle): Promise<boolean> => (await getHidden(element)) === '';
 
   it('should render', async () => {
     await initTabs();
