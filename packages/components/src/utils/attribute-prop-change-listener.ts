@@ -46,7 +46,7 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
  */
 export const mutationCallbacks: { node: HTMLElement; cb: () => void }[] = [];
 
-const mutationObserver = new MutationObserver((mutations, _observer) => {
+const mutationObserver = new MutationObserver((mutations) => {
   console.log(mutationCallbacks.length, mutations);
   mutationCallbacks
     .filter(({ node }) => node === mutations[0].target)
