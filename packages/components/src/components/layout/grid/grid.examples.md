@@ -60,6 +60,17 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 <Playground :markup="direction('{ base: \'column\', m: \'row\' }', '{ base: 12, m: 4 }')" :config="config"></Playground>
 
 ---
+### Grid wrap
+
+#### Wrap (default)
+
+<Playground :markup="wrap('wrap')" :config="config"></Playground>
+
+#### Nowrap
+
+<Playground :markup="wrap('nowrap')" :config="config"></Playground>
+
+---
 
 ### Grid nesting
 
@@ -129,6 +140,15 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   <p-grid-item${sizeAttr}>B</p-grid-item>
   <p-grid-item${sizeAttr}>C</p-grid-item>
 </p-grid>`;
+    }
+
+    wrap(value: string) {
+      return `<p-grid wrap="${value}" class="example-grid">
+  <p-grid-item size="6">A</p-grid-item>
+  <p-grid-item size="6">B</p-grid-item>
+  <p-grid-item size="6">C</p-grid-item>
+  <p-grid-item size="6">D</p-grid-item>
+</p-grid>`; 
     }
     
     nesting =
