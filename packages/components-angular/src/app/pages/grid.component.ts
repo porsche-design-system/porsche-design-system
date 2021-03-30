@@ -261,6 +261,62 @@ import { Component } from '@angular/core';
       </p-grid>
     </div>
 
+    <div class="playground" title="should render by wrap 'wrap'">
+      <p-grid [wrap]="'wrap'">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>C</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should render by wrap 'nowrap'">
+      <p-grid [wrap]="'nowrap'">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>C</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should adapt wrap depending on viewport">
+      <p-grid [wrap]="{ base: 'wrap', m: 'nowrap' }">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>C</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should adapt direction and wrap depending on viewport">
+      <p-grid [wrap]="{ base: 'wrap', m: 'nowrap' }" [direction]="{ base: 'column', m: 'row' }">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>C</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
     <div class="playground" title="should render nested grid elements correctly">
       <p-grid>
         <p-grid-item [size]="6">

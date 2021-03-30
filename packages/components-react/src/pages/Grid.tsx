@@ -261,6 +261,62 @@ export const GridPage = (): JSX.Element => {
         </PGrid>
       </div>
 
+      <div className="playground" title="should render by wrap 'wrap'">
+        <PGrid wrap="wrap">
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>C</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should render by wrap 'nowrap'">
+        <PGrid wrap="nowrap">
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>C</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should adapt wrap depending on viewport">
+        <PGrid wrap={{ base: 'wrap', m: 'nowrap' }}>
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>C</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should adapt direction and wrap depending on viewport">
+        <PGrid wrap={{ base: 'wrap', m: 'nowrap' }} direction={{ base: 'column', m: 'row' }}>
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>C</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
       <div className="playground" title="should render nested grid elements correctly">
         <PGrid>
           <PGridItem size={6}>
