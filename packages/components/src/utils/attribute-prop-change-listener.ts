@@ -2,16 +2,7 @@ import { forceUpdate } from '@stencil/core';
 import { addEventListener } from '.';
 /* eslint-disable no-console */
 
-export const initAttributePropChangeListener = (host: HTMLElement, node: HTMLElement, props: string[]): void => {
-  const updateComponent = (): void => {
-    console.log('cb...', host);
-    forceUpdate(host);
-  };
-  addEventListener(node, 'click', () => {
-    console.log('event listener', host);
-    updateComponent();
-  });
-
+export const observeProperties = (node: HTMLElement, props: string[], callback: () => void): void => {
   const proto = Object.getPrototypeOf(node);
   const forEachCallback = (prop: string): void => {
     // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -28,11 +19,25 @@ export const initAttributePropChangeListener = (host: HTMLElement, node: HTMLEle
         // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/inputValueTracking.js#L95
         (node as any)._valueTracker?.setValue(val); // eslint-disable-line no-underscore-dangle
 
-        updateComponent();
+        callback();
       },
     });
   };
   props.forEach(forEachCallback);
+};
+
+export const initAttributePropChangeListener = (host: HTMLElement, node: HTMLElement, props: string[]): void => {
+  const updateComponent = (): void => {
+    console.log('cb...', host);
+    forceUpdate(host);
+  };
+
+  addEventListener(node, 'click', () => {
+    console.log('event listener', host);
+    updateComponent();
+  });
+
+  observeProperties(node, props, updateComponent);
 
   new MutationObserver(() => {
     console.log('mutation observer', host);
