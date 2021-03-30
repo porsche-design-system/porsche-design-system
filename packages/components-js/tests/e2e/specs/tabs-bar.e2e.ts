@@ -150,7 +150,7 @@ describe('tabs-bar', () => {
     });
   });
 
-  describe('mutations', () => {
+  describe('slotted content changes', () => {
     it('should adjust status bar style when name of tab is changed', async () => {
       await initTabsBar({ amount: 3, activeTabIndex: 0 });
       const [firstButton] = await getAllButtons();
