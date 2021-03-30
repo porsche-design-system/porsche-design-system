@@ -39,6 +39,7 @@ describe('tabs', () => {
   const getTabsBar = () => selectNode(page, 'p-tabs >>> p-tabs-bar');
   const getAllTabs = async () => (await getTabsBar()).$$('button');
   const getHidden = (element: ElementHandle) => getAttribute(element, 'hidden');
+  const isHidden = async (element: ElementHandle): Promise<boolean> => (await getHidden(element)) === '';
 
   it('should render', async () => {
     await initTabs();
@@ -53,14 +54,14 @@ describe('tabs', () => {
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
     const [, secondTab] = await getAllTabs();
 
-    expect(await getHidden(firstTabsItem)).toBeNull();
-    expect(await getHidden(secondTabsItem)).toBe('');
+    expect(await isHidden(firstTabsItem)).toBe(false);
+    expect(await isHidden(secondTabsItem)).toBe(true);
 
     await secondTab.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getHidden(firstTabsItem)).toBe('');
-    expect(await getHidden(secondTabsItem)).toBeNull();
+    expect(await isHidden(firstTabsItem)).toBe(true);
+    expect(await isHidden(secondTabsItem)).toBe(false);
   });
 
   it('should render updated tabs when tab label is changed', async () => {
@@ -87,19 +88,105 @@ describe('tabs', () => {
       await waitForStencilLifecycle(page);
     };
 
-    expect(await getHidden(firstTabsItem)).toBeNull();
-    expect(await getHidden(secondTabsItem)).toBe('');
-    expect(await getHidden(thirdTabsItem)).toBe('');
+    expect(await isHidden(firstTabsItem)).toBe(false);
+    expect(await isHidden(secondTabsItem)).toBe(true);
+    expect(await isHidden(thirdTabsItem)).toBe(true);
 
     await setActiveTabIndex(2);
-    expect(await getHidden(firstTabsItem)).toBe('');
-    expect(await getHidden(secondTabsItem)).toBe('');
-    expect(await getHidden(thirdTabsItem)).toBeNull();
+    expect(await isHidden(firstTabsItem)).toBe(true);
+    expect(await isHidden(secondTabsItem)).toBe(true);
+    expect(await isHidden(thirdTabsItem)).toBe(false);
 
     await setActiveTabIndex(1);
-    expect(await getHidden(firstTabsItem)).toBe('');
-    expect(await getHidden(secondTabsItem)).toBeNull();
-    expect(await getHidden(thirdTabsItem)).toBe('');
+    expect(await isHidden(firstTabsItem)).toBe(true);
+    expect(await isHidden(secondTabsItem)).toBe(false);
+    expect(await isHidden(thirdTabsItem)).toBe(true);
+  });
+  describe('slotted content changes', () => {
+    it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
+      await initTabs({ amount: 1, activeTabIndex: 0 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        const tab = document.createElement('p-tabs-item');
+        tab.setAttribute('label', `Tabs Item Added`);
+        tab.innerText = `Added Tabs Item Content`;
+        tabs.append(tab);
+      });
+      await waitForStencilLifecycle(page);
+      const [, secondButton] = await getAllTabs();
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await isHidden(firstTabsItem)).toBe(false);
+      expect(await isHidden(secondTabsItem)).toBe(true);
+
+      await secondButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(await isHidden(secondTabsItem)).toBe(false);
+      expect(await isHidden(firstTabsItem)).toBe(true);
+    });
+
+    it('should display same active p-tabs-item when last p-tabs-item is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 1 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[2]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await isHidden(secondTabsItem)).toBe(false);
+      expect(await isHidden(firstTabsItem)).toBe(true);
+    });
+
+    it('should display no tab when active p-tabs-item on last position is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 2 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[2]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await isHidden(secondTabsItem)).toBe(true);
+      expect(await isHidden(firstTabsItem)).toBe(true);
+    });
+
+    it('should display no tab when p-tabs-item on last position is active and p-tabs-item in the middle is removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 2 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[1]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await isHidden(secondTabsItem)).toBe(true);
+      expect(await isHidden(firstTabsItem)).toBe(true);
+    });
+
+    it('should display next tab when p-tabs-item in the middle is active and removed', async () => {
+      await initTabs({ amount: 3, activeTabIndex: 1 });
+      await waitForStencilLifecycle(page);
+
+      await page.evaluate(() => {
+        const tabs = document.querySelector('p-tabs');
+        tabs.removeChild(tabs.children[1]);
+      });
+      await waitForStencilLifecycle(page);
+      const [firstTabsItem, secondTabsItem] = await getAllTabsItems();
+
+      expect(await isHidden(secondTabsItem)).toBe(false);
+      expect(await isHidden(firstTabsItem)).toBe(true);
+    });
   });
 
   describe('keyboard', () => {
@@ -111,14 +198,14 @@ describe('tabs', () => {
       await page.keyboard.press('ArrowRight');
       await waitForStencilLifecycle(page);
 
-      expect(await getHidden(firstTabsItem)).toBe('');
-      expect(await getHidden(secondTabsItem)).toBeNull();
+      expect(await isHidden(firstTabsItem)).toBe(true);
+      expect(await isHidden(secondTabsItem)).toBe(false);
 
       await page.keyboard.press('ArrowLeft');
       await waitForStencilLifecycle(page);
 
-      expect(await getHidden(firstTabsItem)).toBeNull();
-      expect(await getHidden(secondTabsItem)).toBe('');
+      expect(await isHidden(firstTabsItem)).toBe(false);
+      expect(await isHidden(secondTabsItem)).toBe(true);
     });
 
     it('should render correct focusedTab on arrow-key press', async () => {
