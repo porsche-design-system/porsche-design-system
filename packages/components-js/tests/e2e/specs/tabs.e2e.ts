@@ -101,7 +101,7 @@ describe('tabs', () => {
     expect(await getHidden(secondTabsItem)).toBeNull();
     expect(await getHidden(thirdTabsItem)).toBe('');
   });
-  describe('mutations', () => {
+  describe('slotted content changes', () => {
     it('should display p-tabs-item when new p-tabs-item is added and button is clicked', async () => {
       await initTabs({ amount: 1, activeTabIndex: 0 });
       await waitForStencilLifecycle(page);
