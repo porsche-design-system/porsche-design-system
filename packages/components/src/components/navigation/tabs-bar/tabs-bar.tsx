@@ -72,7 +72,6 @@ export class TabsBar {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.prevActiveTabIndex = oldValue;
     this.direction = this.activeTabIndex > this.prevActiveTabIndex ? 'next' : 'prev';
-    this.setAccessibilityAttributes();
     this.scrollActiveTabIntoView();
   }
 
@@ -84,7 +83,6 @@ export class TabsBar {
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
-    this.setAccessibilityAttributes();
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
       // skip scrolling on first render when no activeTabIndex is set
@@ -100,9 +98,6 @@ export class TabsBar {
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
     this.setStatusBarStyle();
-  }
-
-  public componentDidUpdate(): void {
     this.setAccessibilityAttributes();
   }
 
