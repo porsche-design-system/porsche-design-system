@@ -1,5 +1,5 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { GridDirection, GridWrap } from './grid-utils';
+import { JSX, Component, Prop, h, Element, Watch, forceUpdate } from '@stencil/core';
+import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { addCss } from './grid-utils';
 
 @Component({
@@ -15,8 +15,16 @@ export class Grid {
   /** Handles wrapping behaviour of elements. */
   @Prop() public wrap?: GridWrap = 'wrap';
 
+  /** Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this. */
+  @Prop() public gutter?: GridGutter = { base: 16, s: 24, m: 36 };
+
+  @Watch('gutter')
+  public handleGutterChange() {
+    Array.from(this.host.children).forEach(forceUpdate);
+  }
+
   public componentWillRender(): void {
-    addCss(this.host, this.direction, this.wrap);
+    addCss(this.host, this.direction, this.wrap, this.gutter);
   }
 
   public render(): JSX.Element {

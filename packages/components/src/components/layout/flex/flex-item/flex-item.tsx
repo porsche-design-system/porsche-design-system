@@ -8,6 +8,7 @@ import {
   FlexItemShrink,
   FlexItemWidth,
 } from './flex-item-utils';
+import { throwIfParentIsNotOfKind } from '../../../../utils';
 
 @Component({
   tag: 'p-flex-item',
@@ -33,6 +34,10 @@ export class FlexItem {
 
   /** The shorthand property for the combined definition of "shrink", "grow" and "basis" */
   @Prop() public flex?: FlexItemFlex = 'initial';
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pFlex');
+  }
 
   public componentWillRender(): void {
     addCss(this.host, this.width, this.offset, this.alignSelf, this.grow, this.shrink, this.flex);
