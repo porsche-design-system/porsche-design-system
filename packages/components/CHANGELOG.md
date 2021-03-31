@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `Grid` now has a `wrap` and `gutter` property
+- Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`, `Flex`, `Tabs` and `Text List`), will now throw an error if used without that parent. 
 
 ### [2.0.0-rc.9] - 2021-03-26
 
