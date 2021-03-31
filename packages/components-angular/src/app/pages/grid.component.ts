@@ -248,7 +248,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt direction depending on viewport">
-      <p-grid [direction]="{ base: 'column', m: 'row' }">
+      <p-grid [direction]="{ base: 'column', xs: 'row', s: 'column', m: 'row', l: 'column', xl: 'row' }">
         <p-grid-item [size]="{ base: 12, m: 4 }">
           <p>A</p>
         </p-grid-item>
@@ -304,7 +304,10 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt direction and wrap depending on viewport">
-      <p-grid [wrap]="{ base: 'wrap', m: 'nowrap' }" [direction]="{ base: 'column', m: 'row' }">
+      <p-grid
+        [wrap]="{ base: 'wrap', xs: 'nowrap', s: 'wrap', m: 'nowrap', l: 'wrap', xl: 'nowrap' }"
+        [direction]="{ base: 'column', m: 'row' }"
+      >
         <p-grid-item [size]="6">
           <p>A</p>
         </p-grid-item>
@@ -313,6 +316,57 @@ import { Component } from '@angular/core';
         </p-grid-item>
         <p-grid-item [size]="6">
           <p>C</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should render by gutter '16'">
+      <p-grid [gutter]="16">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should render by gutter '24'">
+      <p-grid [gutter]="24">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should render by gutter '36'">
+      <p-grid [gutter]="36">
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+      </p-grid>
+    </div>
+
+    <div class="playground" title="should adapt gutter, wrap and direction depending on viewport">
+      <p-grid
+        [gutter]="{ base: '16', xs: '24', s: '36', m: '16', l: '24', xl: '36' }"
+        [wrap]="{ base: 'wrap', m: 'nowrap' }"
+        [direction]="{ base: 'column', m: 'row' }"
+      >
+        <p-grid-item [size]="6">
+          <p>A</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
+        </p-grid-item>
+        <p-grid-item [size]="6">
+          <p>B</p>
         </p-grid-item>
       </p-grid>
     </div>

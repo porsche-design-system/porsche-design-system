@@ -248,7 +248,7 @@ export const GridPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt direction depending on viewport">
-        <PGrid direction={{ base: 'column', m: 'row' }}>
+        <PGrid direction={{ base: 'column', xs: 'row', s: 'column', m: 'row', l: 'column', xl: 'row' }}>
           <PGridItem size={{ base: 12, m: 4 }}>
             <p>A</p>
           </PGridItem>
@@ -304,7 +304,10 @@ export const GridPage = (): JSX.Element => {
       </div>
 
       <div className="playground" title="should adapt direction and wrap depending on viewport">
-        <PGrid wrap={{ base: 'wrap', m: 'nowrap' }} direction={{ base: 'column', m: 'row' }}>
+        <PGrid
+          wrap={{ base: 'wrap', xs: 'nowrap', s: 'wrap', m: 'nowrap', l: 'wrap', xl: 'nowrap' }}
+          direction={{ base: 'column', m: 'row' }}
+        >
           <PGridItem size={6}>
             <p>A</p>
           </PGridItem>
@@ -313,6 +316,57 @@ export const GridPage = (): JSX.Element => {
           </PGridItem>
           <PGridItem size={6}>
             <p>C</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should render by gutter '16'">
+        <PGrid gutter={16}>
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should render by gutter '24'">
+        <PGrid gutter={24}>
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should render by gutter '36'">
+        <PGrid gutter={36}>
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+        </PGrid>
+      </div>
+
+      <div className="playground" title="should adapt gutter, wrap and direction depending on viewport">
+        <PGrid
+          gutter={{ base: '16', xs: '24', s: '36', m: '16', l: '24', xl: '36' }}
+          wrap={{ base: 'wrap', m: 'nowrap' }}
+          direction={{ base: 'column', m: 'row' }}
+        >
+          <PGridItem size={6}>
+            <p>A</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
+          </PGridItem>
+          <PGridItem size={6}>
+            <p>B</p>
           </PGridItem>
         </PGrid>
       </div>
