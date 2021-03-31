@@ -11581,6 +11581,13 @@ jss-plugin-rule-value-observable@10.6.0:
     jss "10.6.0"
     symbol-observable "^1.2.0"
 
+jss-plugin-sort-css-media-queries@^1.0.1-beta.0:
+  version "1.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/jss-plugin-sort-css-media-queries/-/jss-plugin-sort-css-media-queries-1.0.1-beta.0.tgz#97cbb4f37f99e56aaefaacfcfc380533397286dc"
+  integrity sha512-j+GZQTxANwSCYOAK/hrisA2i5BnD6SM4h+BEyarNOibjQUC9MWP/ZIRdu8fSxeNXcHuvl318f+rlzTriKupfmg==
+  dependencies:
+    sort-css-media-queries "^1.5.2"
+
 jss-plugin-template@10.6.0:
   version "10.6.0"
   resolved "https://registry.yarnpkg.com/jss-plugin-template/-/jss-plugin-template-10.6.0.tgz#75b1643044f3191b9d447589439053c597854704"
@@ -16228,6 +16235,11 @@ socks@^2.3.3:
   dependencies:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
+
+sort-css-media-queries@^1.5.2:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/sort-css-media-queries/-/sort-css-media-queries-1.5.4.tgz#24182b12002a13d01ba943ddf74f5098d7c244ce"
+  integrity sha512-YP5W/h4Sid/YP7Lp87ejJ5jP13/Mtqt2vx33XyhO+IAugKlufRPbOrPlIiEUuxmpNBSBd3EeeQpFhdu3RfI2Ag==
 
 sort-keys@^1.0.0:
   version "1.1.2"
