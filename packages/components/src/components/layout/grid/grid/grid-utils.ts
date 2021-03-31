@@ -1,7 +1,6 @@
-import { mediaQuery } from '@porsche-design-system/utilities';
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
+import { attachCss, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 type GridDirectionType = typeof GRID_DIRECTIONS[number];
@@ -11,30 +10,15 @@ export const GRID_WRAPS = ['nowrap', 'wrap'] as const;
 type GridWrapType = typeof GRID_WRAPS[number];
 export type GridWrap = BreakpointCustomizable<GridWrapType>;
 
-const pxToRem = (px: number): number => px / 16;
-export const paddingBase = `${pxToRem(16) / 2}rem !important`;
-export const paddingS = `${pxToRem(24) / 2}rem !important`;
-export const paddingM = `${pxToRem(36) / 2}rem !important`;
+export const GRID_GUTTERS = [16, 24, 36] as const;
+export type GridGutterType = typeof GRID_GUTTERS[number];
+export type GridGutter = BreakpointCustomizable<GridGutterType>;
 
 const baseCss: string = getCss({
   ':host': {
     display: 'flex !important',
     flex: 'auto !important',
     width: 'auto !important',
-    marginLeft: '-' + paddingBase,
-    marginRight: '-' + paddingBase,
-  },
-  [mediaQuery('s')]: {
-    ':host': {
-      marginLeft: '-' + paddingS,
-      marginRight: '-' + paddingS,
-    },
-  },
-  [mediaQuery('m')]: {
-    ':host': {
-      marginLeft: '-' + paddingM,
-      marginRight: '-' + paddingM,
-    },
   },
 });
 
@@ -42,14 +26,32 @@ const getDirectionStyles: GetStylesFunction = (direction: GridDirectionType): Js
   flexDirection: `${direction} !important`,
 });
 
-const getWrapStyles: GetStylesFunction = (wrap: GridWrap): JssStyle => ({
+const getWrapStyles: GetStylesFunction = (wrap: GridWrapType): JssStyle => ({
   flexWrap: `${wrap} !important`,
 });
 
-export const getDynamicCss = (direction: GridDirection, wrap: GridWrap): string => {
-  return getCss(mergeDeep(buildResponsiveJss(direction, getDirectionStyles), buildResponsiveJss(wrap, getWrapStyles)));
+const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
+  if (!GRID_GUTTERS.includes(gutter)) {
+    throw new Error(`Gutter 'size="${gutter}"' has to be a value of: ${GRID_GUTTERS.join(', ')}`);
+  }
+  const gutterRem = `${pxToRem(gutter) / 2}rem !important`;
+
+  return {
+    marginLeft: '-' + gutterRem,
+    marginRight: '-' + gutterRem,
+  };
 };
 
-export const addCss = (host: HTMLElement, direction: GridDirection, wrap: GridWrap): void => {
-  attachCss(host, baseCss + getDynamicCss(direction, wrap));
+export const getDynamicCss = (direction: GridDirection, wrap: GridWrap, gutter: GridGutter): string => {
+  return getCss(
+    mergeDeep(
+      buildResponsiveJss(direction, getDirectionStyles),
+      buildResponsiveJss(wrap, getWrapStyles),
+      buildResponsiveJss(gutter, getGutterStyles)
+    )
+  );
+};
+
+export const addCss = (host: HTMLElement, direction: GridDirection, wrap: GridWrap, gutter: GridGutter): void => {
+  attachCss(host, baseCss + getDynamicCss(direction, wrap, gutter));
 };

@@ -9,7 +9,7 @@ import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormSta
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
-import { GridDirection, GridWrap } from "./components/layout/grid/grid/grid-utils";
+import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -227,6 +227,10 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
         /**
           * Handles wrapping behaviour of elements.
          */
@@ -1161,6 +1165,10 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
         /**
           * Handles wrapping behaviour of elements.
          */
