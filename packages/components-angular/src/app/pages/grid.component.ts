@@ -355,7 +355,7 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should adapt gutter, wrap and direction depending on viewport">
       <p-grid
-        [gutter]="{ base: '16', xs: '24', s: '36', m: '16', l: '24', xl: '36' }"
+        [gutter]="{ base: 16, xs: 24, s: 36, m: 16, l: 24, xl: 36 }"
         [wrap]="{ base: 'wrap', m: 'nowrap' }"
         [direction]="{ base: 'column', m: 'row' }"
       >
