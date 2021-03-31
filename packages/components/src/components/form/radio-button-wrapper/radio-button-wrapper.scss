@@ -40,14 +40,13 @@
   margin: 0 !important;
   padding: 0 !important;
   appearance: none !important;
-  border: 0 rgba(255, 255, 255, 0) !important;
+  border: 0 !important;
   border-radius: 50% !important;
   background-color: transparent !important;
   opacity: 1 !important;
   outline: none !important;
   cursor: pointer !important;
   box-shadow: 0 0 0 1px transparent !important;
-  transition: border-top-color 1ms linear !important;
 }
 
 // Focus
@@ -61,22 +60,6 @@
 
 :host([state='error']) ::slotted(input:focus) {
   box-shadow: 0 0 0 1px $p-color-notification-error !important;
-}
-
-// Checked
-::slotted(input:checked) {
-  border-top-color: rgba(255, 255, 255, 0.01) !important;
-}
-
-// Disabled
-::slotted(input:disabled) {
-  cursor: not-allowed !important;
-  border-top-color: rgba(255, 255, 255, 0.02) !important;
-}
-
-// Disabled + Checked
-::slotted(input:disabled:checked) {
-  border-top-color: rgba(255, 255, 255, 0.03) !important;
 }
 
 .#{$p-global-class-prefix}radio-button-wrapper {
