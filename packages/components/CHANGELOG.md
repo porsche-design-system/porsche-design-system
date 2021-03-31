@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements.
 
 #### Added
-- `Grid` now has a `wrap` property
+- `Grid` now has a `wrap` and `gutter` property
 
 ### [2.0.0-rc.9] - 2021-03-26
 
