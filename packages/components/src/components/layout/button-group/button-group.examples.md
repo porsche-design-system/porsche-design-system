@@ -1,7 +1,6 @@
 # Button Group
 
-You can use the following approach to serve the grouped button pattern described in the [design guidelines](#/patterns/buttons#guidelines).
-In a standard layout the buttons are placed in a stacked order on mobile up to viewports smaller than **"xs"** and side by side on viewports larger than **"xs"**.
+The **Button Group** is a component for wrapping multiple buttons and display them in vertical or horizontal groups with corresponding spacing and width. By default buttons are displayed in full-width as a vertical stacked group for mobile viewports (breakpoint XS) and side-by-side in a row for larger viewports.
 
 ### Responsive row/column behaviour left aligned
 
