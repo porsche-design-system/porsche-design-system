@@ -34,6 +34,7 @@ const gridItemWidths = [
 ];
 
 const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
+  width: `${gridItemWidths[size]}% !important`,
   minWidth: `${gridItemWidths[size]}% !important`,
 });
 
