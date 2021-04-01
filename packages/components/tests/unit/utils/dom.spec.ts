@@ -1,4 +1,10 @@
-import { getHTMLElementAndThrowIfUndefined, getTagName, hasNamedSlot, isRequired } from '../../../src/utils';
+import {
+  getHTMLElementAndThrowIfUndefined,
+  getTagName,
+  hasNamedSlot,
+  isRequired,
+  throwIfParentIsNotOfKind,
+} from '../../../src/utils';
 
 describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
@@ -75,6 +81,50 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     let error = undefined;
     try {
       getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+});
+
+describe('throwIfParentIsNotOfKind()', () => {
+  it('should throw error if parent tag does not match', () => {
+    const parent = document.createElement('div');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOfKind(child, `pGrid`);
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).not.toBe(undefined);
+  });
+
+  it('should not throw error if parent tag does match', () => {
+    const parent = document.createElement('p-grid');
+    const child = document.createElement('p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOfKind(child, 'pGrid');
+    } catch (e) {
+      error = e.message;
+    }
+    expect(error).toBe(undefined);
+  });
+
+  it('should not throw error if prefixed parent tag does match', () => {
+    const parent = document.createElement('my-prefix-p-grid');
+    const child = document.createElement('my-prefix-p-grid-item');
+    parent.appendChild(child);
+
+    let error = undefined;
+    try {
+      throwIfParentIsNotOfKind(child, 'pGrid');
     } catch (e) {
       error = e.message;
     }

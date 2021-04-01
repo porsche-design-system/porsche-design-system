@@ -29,6 +29,24 @@ describe('getCss()', () => {
       result:
         ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}',
     },
+    {
+      input: {
+        ':host': { display: 'block', marginLeft: '5px !important' },
+        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
+      },
+      result:
+        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+    },
+    {
+      input: {
+        ':host': { display: 'block', marginLeft: '5px !important' },
+        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
+        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+      },
+      result:
+        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+    },
   ];
   it.each(
     data.map(({ input, result }) => [
