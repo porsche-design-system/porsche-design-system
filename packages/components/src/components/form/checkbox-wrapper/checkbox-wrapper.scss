@@ -14,6 +14,7 @@
   clip-path: none;
 }
 
+// Standard approach to hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
 @mixin p-checkbox-wrapper-label-text-hidden() {
   position: absolute;
   width: 1px;
