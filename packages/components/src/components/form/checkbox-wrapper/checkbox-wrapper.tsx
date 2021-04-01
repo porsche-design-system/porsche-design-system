@@ -41,7 +41,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    initAttributePropChangeListener(this.host, this.input, ['disabled', 'hidden']);
+    initAttributePropChangeListener(this.host, this.input, ['disabled']);
   }
 
   public componentDidRender(): void {
