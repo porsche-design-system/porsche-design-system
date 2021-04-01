@@ -239,7 +239,7 @@ describe('tabs-bar', () => {
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(await getStatusBarWidth(statusBar).toBe('0px');
+      expect(await getStatusBarWidth(statusBar)).toBe('0px');
       expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left)).toEqual(
