@@ -12,6 +12,7 @@ export * from './prefix';
 export * from './dom';
 export * from './slotted-styles';
 export * from './ssr-handling';
+export * from './styles';
 export * from './theme';
 export * from './tracking';
 export * from './transition-listener';

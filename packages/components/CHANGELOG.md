@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Changed
-- `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements. 
+- `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements.
+
+#### Added
+- `Grid` now has a `wrap` and `gutter` property
+- Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`, `Flex`, `Tabs` and `Text List`), will now throw an error if used without that parent. 
 
 ### [2.0.0-rc.9] - 2021-03-26
 

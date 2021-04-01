@@ -1,6 +1,9 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { FormState } from '../types';
 
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import { getPrefixedTagNames } from './get-prefixed-tag-name';
+
 type Host = HTMLElement | ShadowRoot;
 
 // prettier-ignore
@@ -75,6 +78,13 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
   }
   return el;
 }
+
+export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCamelCase): void => {
+  const prefixedTagName = getPrefixedTagNames(host)[tagName];
+  if (getTagName(host.parentElement) !== prefixedTagName) {
+    throw new Error(`Parent HTMLElement should be of kind ${prefixedTagName}.`);
+  }
+};
 
 export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
