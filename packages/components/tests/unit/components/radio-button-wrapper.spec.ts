@@ -2,7 +2,7 @@ import * as domUtils from '../../../src/utils/dom';
 import { RadioButtonWrapper } from '../../../src/components/form/radio-button-wrapper/radio-button-wrapper';
 
 describe('radio-button-wrapper', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
+  it('should call getHTMLElementAndThrowIfUndefined() via componentWillLoad', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const radioButton = new RadioButtonWrapper();
     try {

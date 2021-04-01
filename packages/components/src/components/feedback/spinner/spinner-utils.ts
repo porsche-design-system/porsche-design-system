@@ -8,7 +8,7 @@ export type SpinnerSize = BreakpointCustomizable<SpinnerSizeType>;
 
 export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
   const parsedSpinnerSize = parseJSON(spinnerSize);
-  const errorMessage = `Property 'size="${spinnerSize}"' of p-spinner is invalid`;
+  const errorMessage = `Property 'size="${spinnerSize}"' of p-spinner should be of: ${SPINNER_SIZES.join(', ')}`;
 
   if (typeof parsedSpinnerSize === 'object') {
     for (const [key, value] of Object.entries(parsedSpinnerSize)) {

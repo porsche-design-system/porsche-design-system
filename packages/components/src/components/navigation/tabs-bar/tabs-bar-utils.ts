@@ -1,5 +1,4 @@
-import { pxToRem } from '@porsche-design-system/utilities';
-import { prefix } from '../../../utils';
+import { prefix, pxToRem } from '../../../utils';
 import type { TextWeight } from '../../../types';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -42,14 +41,14 @@ export const getTransformationToInactive = ({ offsetWidth, offsetLeft }: HTMLEle
   const statusBarCenter = statusBarWidth / 2;
   const statusBarPositionLeft = offsetLeft > 0 ? offsetLeft : 0;
   const xTranslation = statusBarPositionLeft + statusBarCenter;
-  const xTranslateInRem = xTranslation ? pxToRem(`${xTranslation}px`) : '0';
-  return `transform: translate3d(${xTranslateInRem},0,0); width: 0;`;
+  const xTranslate = xTranslation ? pxToRem(xTranslation) : '0';
+  return `transform: translate3d(${xTranslate}rem,0,0); width: 0;`;
 };
 
 export const getTransformationToActive = ({ offsetWidth, offsetLeft }: HTMLElement = {} as HTMLElement): string => {
-  const statusBarWidth = offsetWidth ? pxToRem(`${offsetWidth}px`) : 0;
-  const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(`${offsetLeft}px`) : 0;
-  return `transform: translate3d(${statusBarPositionLeft},0,0); width: ${statusBarWidth};`;
+  const statusBarWidth = offsetWidth ? pxToRem(offsetWidth) : 0;
+  const statusBarPositionLeft = offsetLeft > 0 ? pxToRem(offsetLeft) : 0;
+  return `transform: translate3d(${statusBarPositionLeft}rem,0,0); width: ${statusBarWidth}rem;`;
 };
 
 export const determineEnableTransitionClass = (
