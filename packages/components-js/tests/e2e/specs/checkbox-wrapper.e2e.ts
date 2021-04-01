@@ -25,9 +25,8 @@ describe('checkbox-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-checkbox-wrapper');
   const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-  const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__label-text');
-  const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .p-checkbox-wrapper__message');
-  const getIcon = () => selectNode(page, 'p-checkbox-wrapper >>> p-icon');
+  const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .label__text');
+  const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
   const getLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
   const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
@@ -62,7 +61,7 @@ describe('checkbox-wrapper', () => {
     return setContentWithDesignSystem(
       page,
       `
-        <p-checkbox-wrapper state="${state}">
+        <p-checkbox-wrapper state="${state}"${!useSlottedLabel && ' label="Some Label"'}>
           ${slottedLabel}
           <input type="checkbox" />
           ${slottedMessage}
@@ -106,11 +105,11 @@ describe('checkbox-wrapper', () => {
     );
 
     const host = await getHost();
-    expect(await getLabel()).toBeNull();
+    expect(await getLabelText()).toBeNull();
 
     await host.evaluate((el) => el.setAttribute('label', 'Some label'));
     await waitForStencilLifecycle(page);
-    expect(await getLabel()).not.toBeNull();
+    expect(await getLabelText()).not.toBeNull();
   });
 
   it('should add/remove message text and update aria-label attribute with message if state changes programmatically', async () => {
@@ -126,30 +125,24 @@ describe('checkbox-wrapper', () => {
     const input = await getInput();
     expect(await getMessage()).toBeNull('initially');
 
-    await host.evaluate((el) => {
-      el.setAttribute('state', 'error');
-      el.setAttribute('message', 'Some error message');
-    });
+    await setAttribute(host, 'state', 'error');
+    await setAttribute(host, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = error');
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert', 'when state = error');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
-    await host.evaluate((el) => {
-      el.setAttribute('state', 'success');
-      el.setAttribute('message', 'Some success message');
-    });
+    await setAttribute(host, 'state', 'success');
+    await setAttribute(host, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
     expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
-    await host.evaluate((el) => {
-      el.setAttribute('state', 'none');
-      el.setAttribute('message', '');
-    });
+    await setAttribute(host, 'state', 'none');
+    await setAttribute(host, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeNull('when state = none');
@@ -185,7 +178,7 @@ describe('checkbox-wrapper', () => {
   it('should toggle checkbox when label text is clicked', async () => {
     await initCheckbox();
 
-    const label = await getLabel();
+    const label = await getLabelText();
     const input = await getInput();
     const isInputChecked = () => getProperty(input, 'checked');
 
@@ -231,17 +224,25 @@ describe('checkbox-wrapper', () => {
     await initCheckbox();
 
     const input = await getInput();
+    const label = await getLabelText();
+    const getLabelStyle = () => getElementStyle(label, 'color');
     const getCursor = () => getElementStyle(input, 'cursor');
+    const waitForTransition = () => page.waitForTimeout(250);
 
     expect(await getCursor()).toBe('pointer');
+    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await waitForTransition();
 
     expect(await getCursor()).toBe('not-allowed');
+    expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await waitForTransition();
 
     expect(await getCursor()).toBe('pointer');
+    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
   });
 
   describe('indeterminate state', () => {
@@ -327,7 +328,7 @@ describe('checkbox-wrapper', () => {
     });
   });
 
-  fdescribe('focus state', () => {
+  describe('focus state', () => {
     it('should be shown by keyboard navigation and on click for slotted <input>', async () => {
       await initCheckbox();
 
@@ -387,8 +388,6 @@ describe('checkbox-wrapper', () => {
 
     it('should show outline of slotted <input> when it is focused', async () => {
       await initCheckbox();
-
-      const host = await getHost();
       const input = await getInput();
 
       expect(await getStyleOnFocus(input)).toBe(expectedStyleOnFocus({ color: 'neutral' }));
