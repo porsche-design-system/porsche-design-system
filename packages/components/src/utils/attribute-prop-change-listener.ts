@@ -44,29 +44,25 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
 /**
  * MUTATION OBSERVER
  */
-export const mutationCallbacks: { node: HTMLElement; cb: () => void }[] = [];
+export const mutationMap: Map<Node, () => void> = new Map();
 
 const mutationObserver = new MutationObserver((mutations) => {
-  console.log(mutationCallbacks.length, mutations);
-  mutationCallbacks
-    .filter(({ node }) => node === mutations[0].target)
-    .forEach((item) => {
-      console.log('mutation observer', item.node);
-      item.cb();
-    });
+  mutations
+    // reduce array to only entries that have really a changed value
+    .filter((mutation) => mutation.oldValue !== (mutation.target as HTMLElement).getAttribute(mutation.attributeName))
+    // remove duplicates so we call forceUpdate only once per node
+    .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
+    .forEach((mutation) => mutationMap.get(mutation.target)());
 });
 
 export const observeMutations = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
   console.log('observeMutations', node, props);
-  mutationCallbacks.push({ node, cb: callback });
-  mutationObserver.observe(node, { attributeFilter: props as string[] });
+  mutationMap.set(node, callback);
+  mutationObserver.observe(node, { attributeFilter: props as string[], attributeOldValue: true });
 };
 
 export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
-  mutationCallbacks.splice(
-    mutationCallbacks.findIndex((x) => x.node === node),
-    1
-  );
+  mutationMap.delete(node);
 };
 
 /**
@@ -82,8 +78,8 @@ export const initAttributePropChangeListener = <T extends HTMLElement>(
     forceUpdate(host);
   };
 
-  observeChangeEvent(node, updateComponent);
-  observeProperties(node, props, updateComponent);
+  // observeChangeEvent(node, updateComponent);
+  // observeProperties(node, props, updateComponent);
   observeMutations(node, props, updateComponent);
 };
 
