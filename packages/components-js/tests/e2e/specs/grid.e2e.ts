@@ -54,7 +54,7 @@ describe('grid', () => {
   const getGridMargin = async () => await getElementStyle(await getGrid(), 'margin');
   const getGridItemPadding = async () => await getElementStyle(await getGridItems(), 'padding');
 
-  fdescribe('handleGutterChange()', () => {
+  describe('handleGutterChange()', () => {
     it('should change margin of grid and update padding of children', async () => {
       await initGrid({ gutter: { base: 16 } });
       const grid = await getGrid();
