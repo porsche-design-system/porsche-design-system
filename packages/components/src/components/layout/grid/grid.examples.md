@@ -160,28 +160,20 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
     }
 
     gutter() {
-      return `<p-grid>
-  <p-grid-item size="12">
-    <p-grid gutter="16" class="example-grid">
-      <p-grid-item size="4">A</p-grid-item>
-      <p-grid-item size="4">B</p-grid-item>
-      <p-grid-item size="4">C</p-grid-item>
-    </p-grid>
-  </p-grid-item>
-  <p-grid-item size="12">
-    <p-grid gutter="24" class="example-grid">
-      <p-grid-item size="4">D</p-grid-item>
-      <p-grid-item size="4">E</p-grid-item>
-      <p-grid-item size="4">F</p-grid-item>
-    </p-grid>
-  </p-grid-item>
-  <p-grid-item size="12">
-    <p-grid gutter="36" class="example-grid">
-      <p-grid-item size="4">G</p-grid-item>
-      <p-grid-item size="4">H</p-grid-item>
-      <p-grid-item size="4">I</p-grid-item>
-    </p-grid>
-  </p-grid-item>  
+      return `<p-grid gutter="16" class="example-grid">
+  <p-grid-item size="4">A</p-grid-item>
+  <p-grid-item size="4">B</p-grid-item>
+  <p-grid-item size="4">C</p-grid-item>
+</p-grid>
+<p-grid gutter="24" class="example-grid">
+  <p-grid-item size="4">D</p-grid-item>
+  <p-grid-item size="4">E</p-grid-item>
+  <p-grid-item size="4">F</p-grid-item>
+</p-grid>
+<p-grid gutter="36" class="example-grid">
+  <p-grid-item size="4">G</p-grid-item>
+  <p-grid-item size="4">H</p-grid-item>
+  <p-grid-item size="4">I</p-grid-item>
 </p-grid>`; 
     }
 
