@@ -65,13 +65,13 @@
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>');
 }
 
+::slotted(input:hover) {
+  box-shadow: inset 0 0 0 1px $p-color-default !important;
+}
+
 ::slotted(input:indeterminate:disabled),
 ::slotted(input:checked:disabled) {
   background-color: $p-color-state-disabled !important;
-}
-
-::slotted(input:hover) {
-  box-shadow: inset 0 0 0 1px $p-color-default !important;
 }
 
 ::slotted(input:disabled) {
@@ -83,61 +83,71 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-.#{$p-global-class-prefix}checkbox-wrapper {
+.label {
   $bem-block: &;
+  position: relative;
+  display: flex;
 
-  &__label {
-    position: relative;
-    display: flex;
-
-    &--error {
-      ::slotted(input) {
-        box-shadow: inset 0 0 0 2px $p-color-notification-error !important;
-      }
-      ::slotted(input:checked) {
-        background-color: $p-color-notification-error !important;
-      }
-      ::slotted(input:focus) {
-        outline-color: $p-color-notification-error !important;
-      }
-
-      .p-checkbox-wrapper__label-text:hover ~ ::slotted(input),
-      &:not(.p-checkbox-wrapper__label--disabled) ::slotted(input:hover) {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
-      }
+  &--error {
+    ::slotted(input) {
+      box-shadow: inset 0 0 0 2px $p-color-notification-error !important;
+    }
+    ::slotted(input:checked) {
+      background-color: $p-color-notification-error !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-error !important;
     }
 
-    &--success {
-      ::slotted(input) {
-        box-shadow: inset 0 0 0 2px $p-color-notification-success !important;
-      }
-      ::slotted(input:checked) {
-        background-color: $p-color-notification-success !important;
-      }
-      ::slotted(input:focus) {
-        outline-color: $p-color-notification-success !important;
-      }
-      .p-checkbox-wrapper__label-text:hover ~ ::slotted(input),
-      &:not(.p-checkbox-wrapper__label--disabled) ::slotted(input:hover) {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
-      }
+    #{$bem-block}__text:hover ~ ::slotted(input),
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
     }
 
-    &-text:hover:not(&--disabled &-text):not(&--success &-text):not(&--error &-text) ~ ::slotted(input) {
-      box-shadow: inset 0 0 0 1px $p-color-default !important;
+    + .message {
+      color: $p-color-notification-error;
     }
   }
 
-  &__label-text {
+  &--success {
+    ::slotted(input) {
+      box-shadow: inset 0 0 0 2px $p-color-notification-success !important;
+    }
+    ::slotted(input:checked) {
+      background-color: $p-color-notification-success !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-success !important;
+    }
+
+    #{$bem-block}__text:hover ~ ::slotted(input),
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
+    }
+
+    + .message {
+      color: $p-color-notification-success;
+    }
+  }
+
+  &--disabled {
+    #{$bem-block}__text {
+      color: $p-color-state-disabled;
+      cursor: default;
+    }
+  }
+
+  &__text {
     order: 1;
     display: inline-block;
     cursor: pointer;
     color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &--disabled {
-      color: $p-color-state-disabled;
-      cursor: default;
+    &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
+        #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
+      ~ ::slotted(input) {
+      box-shadow: inset 0 0 0 1px $p-color-default !important;
     }
 
     &--visible {
@@ -198,22 +208,14 @@
       }
     }
   }
+}
 
-  &__required {
-    @include required;
-  }
+.required {
+  @include required;
+}
 
-  &__message {
-    margin-top: $p-spacing-4;
-    color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &--success {
-      color: $p-color-notification-success;
-    }
-
-    &--error {
-      color: $p-color-notification-error;
-    }
-  }
+.message {
+  margin-top: $p-spacing-4;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 }
