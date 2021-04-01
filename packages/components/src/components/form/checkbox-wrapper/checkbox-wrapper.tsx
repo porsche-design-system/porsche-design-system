@@ -8,7 +8,6 @@ import {
   isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
-  prefix,
   setAriaAttributes,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
@@ -57,20 +56,14 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled } = this.input;
     const labelClasses = {
-      [prefix('checkbox-wrapper__label')]: true,
-      [prefix('checkbox-wrapper__label--disabled')]: disabled,
-      [prefix(`checkbox-wrapper__label--${this.state}`)]: this.state !== 'none',
+      ['label']: true,
+      ['label--disabled']: this.input.disabled,
+      [`label--${this.state}`]: this.state !== 'none',
     };
     const labelTextClasses = {
-      [prefix('checkbox-wrapper__label-text')]: true,
-      [prefix('checkbox-wrapper__label-text--disabled')]: disabled,
-      ...mapBreakpointPropToPrefixedClasses('checkbox-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const messageClasses = {
-      [prefix('checkbox-wrapper__message')]: true,
-      [prefix(`checkbox-wrapper__message--${this.state}`)]: this.state !== 'none',
+      ['label__text']: true,
+      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -81,13 +74,13 @@ export class CheckboxWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {isRequired(this.input) && <span class={prefix('checkbox-wrapper__required')} />}
+              {isRequired(this.input) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
