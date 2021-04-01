@@ -6,6 +6,7 @@ import {
   getTagName,
   insertSlottedStyles,
   prefix,
+  throwIfParentIsNotOfKind,
 } from '../../../../utils';
 
 @Component({
@@ -15,6 +16,10 @@ import {
 })
 export class TextListItem {
   @Element() public host!: HTMLElement;
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pTextList');
+  }
 
   public componentDidLoad(): void {
     this.addSlottedStyles();
