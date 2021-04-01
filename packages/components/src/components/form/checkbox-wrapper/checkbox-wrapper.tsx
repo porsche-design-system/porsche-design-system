@@ -3,7 +3,6 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  initAttributePropChangeListener,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
@@ -42,7 +41,6 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    initAttributePropChangeListener(this.host, this.input, ['checked', 'indeterminate', 'disabled']);
   }
 
   public componentDidRender(): void {
@@ -59,17 +57,11 @@ export class CheckboxWrapper {
   }
 
   public render(): JSX.Element {
-    const { checked, indeterminate, disabled } = this.input;
-    const labelClasses = prefix('checkbox-wrapper__label');
-    const fakeCheckboxClasses = {
-      [prefix('checkbox-wrapper__fake-checkbox')]: true,
-      [prefix('checkbox-wrapper__fake-checkbox--checked')]: checked || indeterminate,
-      [prefix('checkbox-wrapper__fake-checkbox--disabled')]: disabled,
-      [prefix(`checkbox-wrapper__fake-checkbox--${this.state}`)]: this.state !== 'none',
-    };
-    const iconClasses = {
-      [prefix('checkbox-wrapper__icon')]: true,
-      [prefix('checkbox-wrapper__icon--checked')]: checked || indeterminate,
+    const { disabled } = this.input;
+    const labelClasses = {
+      [prefix('checkbox-wrapper__label')]: true,
+      [prefix('checkbox-wrapper__label--disabled')]: disabled,
+      [prefix(`checkbox-wrapper__label--${this.state}`)]: this.state !== 'none',
     };
     const labelTextClasses = {
       [prefix('checkbox-wrapper__label-text')]: true,
@@ -92,16 +84,7 @@ export class CheckboxWrapper {
               {isRequired(this.input) && <span class={prefix('checkbox-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
-          <span class={fakeCheckboxClasses}>
-            <PrefixedTagNames.pIcon
-              class={iconClasses}
-              name={indeterminate ? 'minus' : 'check'}
-              theme="dark"
-              size="inherit"
-              aria-hidden="true"
-            />
-            <slot />
-          </span>
+          <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>

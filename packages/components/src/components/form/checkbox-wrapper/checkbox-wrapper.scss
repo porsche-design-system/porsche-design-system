@@ -31,44 +31,55 @@
 }
 
 ::slotted(input) {
-  position: absolute !important;
+  position: static !important;
   top: 0 !important;
   left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  width: p-px-to-rem(24px) !important;
+  height: p-px-to-rem(24px) !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   appearance: none !important;
   border: 0 !important;
-  background-color: transparent !important;
+  background-color: $p-color-background-default !important;
+  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium !important;
+  transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+    background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
   opacity: 1 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
   cursor: pointer !important;
 }
 
-// hide native checkbox on IE11
-::slotted(input::-ms-check) {
-  display: none !important;
+::slotted(input:checked),
+::slotted(input:indeterminate) {
+  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
+  background-color: $p-color-neutral-contrast-high !important;
+}
+::slotted(input:checked) {
+  // background-image: url(http://localhost:3001/icons/check.min.7d7dc5323782dd8cd3cbb5716a81595b.svg) !important;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>');
 }
 
-// Focus
-::slotted(input:focus) {
-  outline-color: $p-color-neutral-contrast-medium !important;
+::slotted(input:indeterminate:disabled),
+::slotted(input:checked:disabled) {
+  background-color: $p-color-state-disabled !important;
 }
 
-:host([state='success']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-success !important;
+::slotted(input:hover) {
+  box-shadow: inset 0 0 0 1px $p-color-default !important;
 }
 
-:host([state='error']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-error !important;
-}
-
-// Disabled
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
+  box-shadow: inset 0 0 0 1px $p-color-state-disabled !important;
+}
+
+::slotted(input:focus) {
+  outline-color: $p-color-neutral-contrast-medium !important;
 }
 
 .#{$p-global-class-prefix}checkbox-wrapper {
@@ -77,6 +88,43 @@
   &__label {
     position: relative;
     display: flex;
+
+    &--error {
+      ::slotted(input) {
+        box-shadow: inset 0 0 0 2px $p-color-notification-error !important;
+      }
+      ::slotted(input:checked) {
+        background-color: $p-color-notification-error !important;
+      }
+      ::slotted(input:focus) {
+        outline-color: $p-color-notification-error !important;
+      }
+
+      .p-checkbox-wrapper__label-text:hover ~ ::slotted(input),
+      &:not(.p-checkbox-wrapper__label--disabled) ::slotted(input:hover) {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
+      }
+    }
+
+    &--success {
+      ::slotted(input) {
+        box-shadow: inset 0 0 0 2px $p-color-notification-success !important;
+      }
+      ::slotted(input:checked) {
+        background-color: $p-color-notification-success !important;
+      }
+      ::slotted(input:focus) {
+        outline-color: $p-color-notification-success !important;
+      }
+      .p-checkbox-wrapper__label-text:hover ~ ::slotted(input),
+      &:not(.p-checkbox-wrapper__label--disabled) ::slotted(input:hover) {
+        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
+      }
+    }
+
+    &-text:hover:not(&--disabled &-text):not(&--success &-text):not(&--error &-text) ~ ::slotted(input) {
+      box-shadow: inset 0 0 0 1px $p-color-default !important;
+    }
   }
 
   &__label-text {
@@ -152,76 +200,6 @@
 
   &__required {
     @include required;
-  }
-
-  &__fake-checkbox {
-    position: relative;
-    width: p-px-to-rem(24px);
-    height: p-px-to-rem(24px);
-    display: block;
-    flex-shrink: 0;
-    background-color: $p-color-background-default;
-    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
-    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-      background-color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover:not(&--disabled):not(&--success):not(&--error),
-    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-default;
-    }
-
-    &--checked {
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-      background-color: $p-color-neutral-contrast-high;
-    }
-
-    &--checked#{&}--disabled {
-      background-color: $p-color-state-disabled;
-    }
-
-    &--checked#{&}--error {
-      background-color: $p-color-notification-error;
-    }
-
-    &--checked#{&}--success {
-      background-color: $p-color-notification-success;
-    }
-
-    &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
-    }
-
-    &--error {
-      box-shadow: inset 0 0 0 2px $p-color-notification-error;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-      }
-    }
-
-    &--success {
-      box-shadow: inset 0 0 0 2px $p-color-notification-success;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-      }
-    }
-  }
-
-  &__icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &--checked {
-      opacity: 1;
-    }
   }
 
   &__message {
