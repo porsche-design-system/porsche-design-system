@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 
 import type {
   GridDirection,
@@ -57,8 +57,8 @@ describe('grid', () => {
   const getGrid = () => selectNode(page, 'p-grid');
   const getGridItem = () => selectNode(page, 'p-grid > p-grid-item');
 
-  const getGridMargin = async (grid) => await getElementStyle(grid, 'margin');
-  const getGridItemPadding = async (gridItem) => await getElementStyle(gridItem, 'padding');
+  const getGridMargin = async (grid: ElementHandle) => await getElementStyle(grid, 'margin');
+  const getGridItemPadding = async (gridItem: ElementHandle) => await getElementStyle(gridItem, 'padding');
 
   describe('handleGutterChange()', () => {
     it('should change margin of grid and update padding of children', async () => {

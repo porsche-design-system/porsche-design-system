@@ -86,7 +86,7 @@ describe('tabs-bar', () => {
     Object.values(await getProperty(element, 'classList'));
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
-  const getStatusBarWidth = async () => await getElementStyle(await getStatusBar(), 'width');
+  const getStatusBarWidth = async (statusBar: ElementHandle) => await getElementStyle(statusBar, 'width');
 
   const clickElement = async (el: ElementHandle) => {
     await el.click();
@@ -107,7 +107,7 @@ describe('tabs-bar', () => {
       });
       await waitForComponentsReady(page);
 
-      expect(await getStatusBarWidth()).toBe('0px');
+      expect(await getStatusBarWidth(await getStatusBar())).toBe('0px');
     });
 
     it('should render no active tab if no activeTabIndex is set ', async () => {
@@ -239,7 +239,7 @@ describe('tabs-bar', () => {
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(await getStatusBarWidth()).toBe('0px');
+      expect(await getStatusBarWidth(statusBar).toBe('0px');
       expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
       expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
       expect(Math.floor((await getElementPositions(page, statusBar)).left)).toEqual(
@@ -270,7 +270,7 @@ describe('tabs-bar', () => {
         8,
         'should have correct position after removing button in the middle'
       );
-      expect(await getStatusBarWidth()).toBe('0px');
+      expect(await getStatusBarWidth(statusBar)).toBe('0px');
     });
 
     it('should set tabindex and aria-selected on next tab when active tab in the middle is removed', async () => {
@@ -292,7 +292,7 @@ describe('tabs-bar', () => {
         111,
         'should have correct position after removing active button in the middle'
       );
-      expect(await getStatusBarWidth()).toBe('87px');
+      expect(await getStatusBarWidth(statusBar)).toBe('87px');
     });
   });
 
