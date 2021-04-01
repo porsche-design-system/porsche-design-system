@@ -1,8 +1,9 @@
-import { JSX, Host, Component, Prop, h, Element } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
+  initAttributePropChangeListener,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
@@ -40,6 +41,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
+    initAttributePropChangeListener(this.host, this.input, ['disabled', 'hidden']);
   }
 
   public componentDidRender(): void {
@@ -105,7 +107,6 @@ export class CheckboxWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
