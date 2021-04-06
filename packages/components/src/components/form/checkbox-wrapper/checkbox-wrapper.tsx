@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
@@ -95,7 +96,7 @@ export class CheckboxWrapper {
      * we only want to simulate the checkbox click by label click
      * also we don't want to click to the input, if a link is clicked.
      */
-    if ((event.target as HTMLElement).closest('a') === null) {
+    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.focus();
       this.input.click();
     }
