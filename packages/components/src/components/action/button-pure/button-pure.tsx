@@ -85,8 +85,6 @@ export class ButtonPure {
       ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
     };
 
-    const iconClasses = prefix('button-pure__icon');
-
     const labelClasses = {
       [prefix('button-pure__label')]: true,
       ...mapBreakpointPropToPrefixedClasses('button-pure__label-', this.hideLabel, ['hidden', 'visible']),
@@ -95,6 +93,12 @@ export class ButtonPure {
     const sublineClasses = {
       [prefix('button-pure__subline')]: true,
       ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
+    };
+
+    const iconProps = {
+      class: prefix('button-pure__icon'),
+      size: 'inherit',
+      ref: (el: HTMLElement) => (this.iconTag = el),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -110,20 +114,13 @@ export class ButtonPure {
           aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
-            <PrefixedTagNames.pSpinner
-              class={iconClasses}
-              size="inherit"
-              theme={this.theme}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
-            />
+            <PrefixedTagNames.pSpinner {...iconProps} theme={this.theme} />
           ) : (
             <PrefixedTagNames.pIcon
-              class={iconClasses}
+              {...iconProps}
               color="inherit"
-              size="inherit"
               name={this.icon}
               source={this.iconSource}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
               aria-hidden="true"
             />
           )}
