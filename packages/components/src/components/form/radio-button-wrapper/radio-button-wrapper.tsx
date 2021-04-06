@@ -60,15 +60,14 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const labelClasses = prefix('radio-button-wrapper__label');
-    const labelTextClasses = {
-      [prefix('radio-button-wrapper__label-text')]: true,
-      [prefix('radio-button-wrapper__label-text--disabled')]: this.input.disabled,
-      ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: this.input.disabled,
+      [`label--${this.state}`]: this.state !== 'none',
     };
-    const messageClasses = {
-      [prefix('radio-button-wrapper__message')]: true,
-      [prefix(`radio-button-wrapper__message--${this.state}`)]: this.state !== 'none',
+    const labelTextClasses = {
+      ['label__text']: true,
+      ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -79,13 +78,13 @@ export class RadioButtonWrapper {
           {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
-              {isRequired(this.input) && <span class={prefix('radio-button-wrapper__required')} />}
+              {isRequired(this.input) && <span class={prefix('required')} />}
             </PrefixedTagNames.pText>
           )}
           <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}

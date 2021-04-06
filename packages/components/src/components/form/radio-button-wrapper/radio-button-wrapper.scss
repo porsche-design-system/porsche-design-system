@@ -2,6 +2,16 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
+@function p-radio-button-default($color) {
+  $color: str-replace('#{$color}', '#', '%23');
+  @return 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="nonzero" fill="#{$color}" d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 1C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12z"/></svg>';
+}
+
+@function p-radio-button-active($color) {
+  $color: str-replace('#{$color}', '#', '%23');
+  @return 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill-rule="evenodd" fill="#{$color}"><circle cx="12" cy="12" r="8"/><path fill-rule="nonzero" d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 1C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12z"/></g></svg>';
+}
+
 @mixin p-radio-button-wrapper-label-text-visible() {
   position: static;
   width: auto;
@@ -31,55 +41,111 @@
 }
 
 ::slotted(input) {
-  position: absolute !important;
-  top: -2px !important; // -2px because of focus box-shadow position
-  left: -2px !important;
-  width: p-px-to-rem(28px) !important; // 4px wider to enable rounded focus style
-  height: p-px-to-rem(28px) !important;
+  position: relative !important;
+  width: p-px-to-rem(30px) !important; // 4px wider to enable rounded focus style
+  height: p-px-to-rem(30px) !important;
   display: block !important;
-  margin: 0 !important;
+  margin: -4px !important;
   padding: 0 !important;
   appearance: none !important;
-  border: 0 !important;
   border-radius: 50% !important;
-  background-color: transparent !important;
   opacity: 1 !important;
   outline: none !important;
   cursor: pointer !important;
-  box-shadow: 0 0 0 1px transparent !important;
+  box-sizing: border-box !important;
+  background: transparent url(p-radio-button-default($p-color-neutral-contrast-medium)) no-repeat center !important;
+  background-size: 24px !important;
 }
 
-// Focus
+::slotted(input:checked) {
+  background-image: url(p-radio-button-active($p-color-neutral-contrast-high)) !important;
+}
+::slotted(input:checked:disabled) {
+  background-image: url(p-radio-button-active($p-color-state-disabled)) !important;
+}
+
+::slotted(input:hover) {
+  background-image: url(p-radio-button-default($p-color-default)) !important;
+}
+
+::slotted(input:disabled) {
+  background-image: url(p-radio-button-default($p-color-state-disabled)) !important;
+}
+
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
+  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
 }
 
-:host([state='success']) ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-notification-success !important;
-}
-
-:host([state='error']) ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-notification-error !important;
-}
-
-.#{$p-global-class-prefix}radio-button-wrapper {
+.label {
   $bem-block: &;
+  position: relative;
+  display: flex;
 
-  &__label {
-    position: relative;
-    display: flex;
+  &--error {
+    $p-color-notification-error-darkened: darken($p-color-notification-error, 12%);
+
+    ::slotted(input) {
+      background-image: url(p-radio-button-default($p-color-notification-error)) !important;
+    }
+    ::slotted(input:checked) {
+      background-image: url(p-radio-button-active($p-color-notification-error)) !important;
+    }
+    ::slotted(input:focus) {
+      box-shadow: 0 0 0 1px $p-color-notification-error !important;
+    }
+
+    #{$bem-block}__text:hover ~ ::slotted(input),
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+      background-image: url(p-radio-button-default($p-color-notification-error-darkened)) !important;
+    }
+
+    + .message {
+      color: $p-color-notification-error;
+    }
   }
 
-  &__label-text {
+  &--success {
+    $p-color-notification-success-darkened: darken($p-color-notification-success, 12%);
+
+    ::slotted(input) {
+      background-image: url(p-radio-button-default($p-color-notification-success)) !important;
+    }
+    ::slotted(input:checked) {
+      background-image: url(p-radio-button-active($p-color-notification-success)) !important;
+    }
+    ::slotted(input:focus) {
+      box-shadow: 0 0 0 1px $p-color-notification-success !important;
+    }
+
+    //TO-DO: Hover styles
+    #{$bem-block}__text:hover ~ ::slotted(input),
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+      background-image: url(p-radio-button-default($p-color-notification-success-darkened)) !important;
+    }
+
+    + .message {
+      color: $p-color-notification-success;
+    }
+  }
+
+  &--disabled {
+    #{$bem-block}__text {
+      color: $p-color-state-disabled;
+      cursor: default;
+    }
+  }
+
+  &__text {
     order: 1;
     display: inline-block;
     cursor: pointer;
     color: $p-color-default;
     transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
-    &--disabled {
-      color: $p-color-state-disabled;
-      cursor: default;
+    &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
+        #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
+      ~ ::slotted(input) {
+      background-image: url(p-radio-button-default($p-color-default)) !important;
     }
 
     &--visible {
@@ -140,101 +206,14 @@
       }
     }
   }
+}
 
-  &__required {
-    @include required;
-  }
+.required {
+  @include required;
+}
 
-  &__fake-radio-button {
-    position: relative;
-    width: p-px-to-rem(24px);
-    height: p-px-to-rem(24px);
-    display: block;
-    flex-shrink: 0;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium;
-    background-color: $p-color-background-default;
-    transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
-      background-color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &:hover:not(&--disabled):not(&--success):not(&--error),
-    #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--success):not(&--error) {
-      box-shadow: inset 0 0 0 1px $p-color-default;
-    }
-
-    &::before {
-      content: '';
-      width: p-px-to-rem(16px);
-      height: p-px-to-rem(16px);
-      border-radius: 50%;
-      background-color: transparent;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      transition: background-color $p-animation-hover-duration $p-animation-hover-bezier;
-    }
-
-    &--checked {
-      box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high;
-
-      &::before {
-        background-color: $p-color-neutral-contrast-high;
-      }
-    }
-
-    &--checked#{&}--disabled {
-      &::before {
-        background-color: $p-color-state-disabled;
-      }
-    }
-
-    &--checked#{&}--error {
-      &::before {
-        background-color: $p-color-notification-error;
-      }
-    }
-
-    &--checked#{&}--success {
-      &::before {
-        background-color: $p-color-notification-success;
-      }
-    }
-
-    &--disabled {
-      box-shadow: inset 0 0 0 1px $p-color-state-disabled;
-    }
-
-    &--error {
-      box-shadow: inset 0 0 0 2px $p-color-notification-error;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-      }
-    }
-
-    &--success {
-      box-shadow: inset 0 0 0 2px $p-color-notification-success;
-
-      &:hover,
-      #{$bem-block}__label-text:hover ~ & {
-        box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-      }
-    }
-  }
-
-  &__message {
-    margin-top: $p-spacing-4;
-    color: $p-color-default;
-    transition: color $p-animation-hover-duration $p-animation-hover-bezier;
-
-    &--success {
-      color: $p-color-notification-success;
-    }
-
-    &--error {
-      color: $p-color-notification-error;
-    }
-  }
+.message {
+  margin-top: $p-spacing-4;
+  color: $p-color-default;
+  transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 }
