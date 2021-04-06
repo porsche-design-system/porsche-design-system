@@ -43,7 +43,7 @@ export class RadioButtonWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    initAttributePropChangeListener(this.host, this.input, ['checked', 'disabled']);
+    initAttributePropChangeListener(this.host, this.input, ['disabled']);
   }
 
   public componentDidRender(): void {
@@ -60,7 +60,6 @@ export class RadioButtonWrapper {
   }
 
   public render(): JSX.Element {
-    const { checked, disabled } = this.input;
     const labelClasses = prefix('radio-button-wrapper__label');
     const fakeRadioButtonClasses = {
       [prefix('radio-button-wrapper__fake-radio-button')]: true,
@@ -70,7 +69,7 @@ export class RadioButtonWrapper {
     };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
-      [prefix('radio-button-wrapper__label-text--disabled')]: disabled,
+      [prefix('radio-button-wrapper__label-text--disabled')]: this.input.disabled,
       ...mapBreakpointPropToPrefixedClasses('radio-button-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
     };
     const messageClasses = {
