@@ -67,8 +67,13 @@ export class Button {
       [prefix('button--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('button-', this.hideLabel, ['without-label', 'with-label']),
     };
-    const iconClasses = prefix('button__icon');
     const labelClasses = prefix('button__label');
+
+    const iconProps = {
+      class: prefix('button__icon'),
+      size: 'inherit',
+    };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -80,15 +85,10 @@ export class Button {
         aria-busy={this.loading ? 'true' : null}
       >
         {this.loading ? (
-          <PrefixedTagNames.pSpinner
-            class={iconClasses}
-            size="inherit"
-            theme={this.variant === 'tertiary' ? this.theme : 'dark'}
-          />
+          <PrefixedTagNames.pSpinner {...iconProps} theme={this.variant === 'tertiary' ? this.theme : 'dark'} />
         ) : (
           <PrefixedTagNames.pIcon
-            class={iconClasses}
-            size="inherit"
+            {...iconProps}
             name={this.icon}
             source={this.iconSource}
             color="inherit"
