@@ -10,6 +10,7 @@ import {
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import { isSizeInherit } from './text-utils';
 
 @Component({
   tag: 'p-text',
@@ -48,9 +49,11 @@ export class Text {
   }
 
   public componentDidLoad(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.textTag, 'font-size', () => {
+        this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+      });
+    }
   }
 
   public render(): JSX.Element {
