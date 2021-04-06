@@ -66,7 +66,7 @@ export class LinkPure {
     improveFocusHandlingForCustomElement(this.host);
     if (isSizeInherit(this.size)) {
       transitionListener(this.linkTag, 'font-size', () => {
-        const size = calcLineHeightForElement(this.linkTag) + 'em';
+        const size = `${calcLineHeightForElement(this.linkTag)}em`;
         this.iconTag.style.width = size;
         this.iconTag.style.height = size;
       });
