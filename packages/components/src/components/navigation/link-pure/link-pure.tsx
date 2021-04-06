@@ -106,7 +106,7 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
           })}
-          ref={(el) => (this.linkTag = el as HTMLElement)}
+          ref={(el) => (this.linkTag = el)}
         >
           <PrefixedTagNames.pIcon
             class={iconClasses}
@@ -114,7 +114,7 @@ export class LinkPure {
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            ref={(el) => (this.iconTag = el as HTMLElement)}
+            ref={(el) => (this.iconTag = el)}
             aria-hidden="true"
           />
           <PrefixedTagNames.pText class={labelClasses} tag="span" color="inherit" size="inherit" weight={this.weight}>
