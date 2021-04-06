@@ -12,6 +12,7 @@ import {
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, IconName, LinkTarget, TextSize, TextWeight, Theme } from '../../../types';
+import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 @Component({
   tag: 'p-link-pure',
@@ -63,11 +64,13 @@ export class LinkPure {
 
   public componentDidLoad(): void {
     improveFocusHandlingForCustomElement(this.host);
-    transitionListener(this.linkTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.linkTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.linkTag, 'font-size', () => {
+        const size = calcLineHeightForElement(this.linkTag) + 'em';
+        this.iconTag.style.width = size;
+        this.iconTag.style.height = size;
+      });
+    }
   }
 
   public render(): JSX.Element {
