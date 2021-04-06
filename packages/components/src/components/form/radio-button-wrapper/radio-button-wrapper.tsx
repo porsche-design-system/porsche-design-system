@@ -61,12 +61,6 @@ export class RadioButtonWrapper {
 
   public render(): JSX.Element {
     const labelClasses = prefix('radio-button-wrapper__label');
-    const fakeRadioButtonClasses = {
-      [prefix('radio-button-wrapper__fake-radio-button')]: true,
-      [prefix('radio-button-wrapper__fake-radio-button--checked')]: checked,
-      [prefix('radio-button-wrapper__fake-radio-button--disabled')]: disabled,
-      [prefix(`radio-button-wrapper__fake-radio-button--${this.state}`)]: this.state !== 'none',
-    };
     const labelTextClasses = {
       [prefix('radio-button-wrapper__label-text')]: true,
       [prefix('radio-button-wrapper__label-text--disabled')]: this.input.disabled,
@@ -88,9 +82,7 @@ export class RadioButtonWrapper {
               {isRequired(this.input) && <span class={prefix('radio-button-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
-          <span class={fakeRadioButtonClasses}>
-            <slot />
-          </span>
+          <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
