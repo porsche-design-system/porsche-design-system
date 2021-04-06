@@ -3,7 +3,7 @@ import {
   observeProperties,
   observeMutations,
   unobserveMutations,
-  mutationCallbacks,
+  mutationMap,
   initAttributePropChangeListener,
 } from '../../../src/utils';
 import * as domUtils from '../../../src/utils/dom';
@@ -11,7 +11,7 @@ import * as attributePropChangeListenerUtils from '../../../src/utils/attribute-
 
 describe('initAttributePropChangeListener()', () => {
   beforeEach(() => {
-    mutationCallbacks.length = 0;
+    mutationMap.clear();
   });
 
   it('should call observeChangeEvent, observeProperties and observerMutations', () => {
@@ -23,8 +23,8 @@ describe('initAttributePropChangeListener()', () => {
     const node = document.createElement('input');
     initAttributePropChangeListener(host, node, ['checked']);
 
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
+    expect(spy1).toHaveBeenCalledTimes(0);
+    expect(spy2).toHaveBeenCalledTimes(0);
     expect(spy3).toHaveBeenCalledTimes(1);
   });
 });
@@ -119,7 +119,7 @@ describe('observeProperties()', () => {
 
 describe('observeMutations()', () => {
   beforeEach(() => {
-    mutationCallbacks.length = 0;
+    mutationMap.clear();
   });
 
   it('should add node and callback to mutationCallbacks array', () => {
@@ -127,34 +127,36 @@ describe('observeMutations()', () => {
     const callback = () => {};
 
     observeMutations(node, ['checked'], callback);
-    expect(mutationCallbacks.length).toBe(1);
-    expect(mutationCallbacks[0]).toEqual({ node, cb: callback });
+    expect(mutationMap.size).toBe(1);
+    expect(mutationMap.get(node)).toEqual(callback);
   });
 });
 
 describe('unobserveMutations()', () => {
   beforeEach(() => {
-    mutationCallbacks.length = 0;
+    mutationMap.clear();
   });
 
   it('should remove correct element from mutationCallbacks array', () => {
     const node1 = document.createElement('input');
     const node2 = document.createElement('select');
     const node3 = document.createElement('input');
-    const callback = () => {};
+    const callback1 = () => {};
+    const callback2 = () => {};
+    const callback3 = () => {};
 
-    observeMutations(node1, ['checked'], callback);
-    observeMutations(node2, ['disabled'], callback);
-    observeMutations(node3, ['checked'], callback);
-    expect(mutationCallbacks.length).toBe(3);
+    observeMutations(node1, ['checked'], callback1);
+    observeMutations(node2, ['disabled'], callback2);
+    observeMutations(node3, ['checked'], callback3);
+    expect(mutationMap.size).toBe(3);
 
     unobserveMutations(node1);
-    expect(mutationCallbacks.length).toBe(2);
-    expect(mutationCallbacks[0]).toEqual({ node: node2, cb: callback });
-    expect(mutationCallbacks[1]).toEqual({ node: node3, cb: callback });
+    expect(mutationMap.size).toBe(2);
+    expect(mutationMap.get(node2)).toEqual(callback2);
+    expect(mutationMap.get(node3)).toEqual(callback3);
 
     unobserveMutations(node3);
-    expect(mutationCallbacks.length).toBe(1);
-    expect(mutationCallbacks[0]).toEqual({ node: node2, cb: callback });
+    expect(mutationMap.size).toBe(1);
+    expect(mutationMap.get(node2)).toEqual(callback2);
   });
 });
