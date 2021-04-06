@@ -63,8 +63,8 @@ export class Text {
 
     const textClasses = {
       [prefix('text')]: true,
-      [prefix(`text--weight-${this.weight}`)]: true,
-      [prefix(`text--align-${this.align}`)]: true,
+      [prefix(`text--weight-${this.weight}`)]: this.weight !== 'regular',
+      [prefix(`text--align-${this.align}`)]: this.align !== 'left',
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
       [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
