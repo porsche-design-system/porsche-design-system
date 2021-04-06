@@ -533,7 +533,7 @@ export class SelectWrapper {
       this.options.map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
-          item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
+          getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
               {getClosestHTMLElement(item, 'optgroup').label}
             </span>
