@@ -11,6 +11,7 @@ import {
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -68,12 +69,13 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabled
     );
-
-    transitionListener(this.buttonTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.buttonTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.buttonTag, 'font-size', () => {
+        const size = calcLineHeightForElement(this.buttonTag) + 'em';
+        this.iconTag.style.width = size;
+        this.iconTag.style.height = size;
+      });
+    }
   }
 
   public render(): JSX.Element {
