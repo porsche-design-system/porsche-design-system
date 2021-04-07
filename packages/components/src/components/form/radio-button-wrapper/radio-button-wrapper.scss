@@ -55,7 +55,7 @@
   min-width: p-px-to-rem(28px) !important;
   min-height: p-px-to-rem(28px) !important;
   display: block !important;
-  margin: -4px !important;
+  margin: -2px !important;
   padding: 0 !important;
   appearance: none !important;
   border-radius: 50% !important;
@@ -119,7 +119,6 @@
   $bem-block: &;
   display: flex;
   position: relative;
-  align-items: center;
   min-height: p-px-to-rem(24px) !important;
 
   &--error {
