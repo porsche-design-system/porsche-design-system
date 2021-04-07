@@ -17,7 +17,7 @@
 }
 
 @mixin p-radio-button-wrapper-checked-image($image, $color-1, $color-2) {
-  background-image: url($image), radial-gradient(circle, $color-1 0px, $color-2 10px) !important;
+  background-image: url($image), radial-gradient(circle, $color-1 0, $color-2 10px) !important;
 }
 
 @mixin p-radio-button-wrapper-label-text-visible() {
