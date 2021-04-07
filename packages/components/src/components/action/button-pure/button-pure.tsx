@@ -110,7 +110,7 @@ export class ButtonPure {
           type={this.type}
           disabled={this.isDisabled}
           tabindex={this.tabbable ? 0 : -1}
-          ref={(el) => (this.buttonTag = el as HTMLElement)}
+          ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (

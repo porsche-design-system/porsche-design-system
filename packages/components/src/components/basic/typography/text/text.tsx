@@ -72,7 +72,7 @@ export class Text {
     };
 
     return (
-      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
+      <TagType class={textClasses} ref={(el) => (this.textTag = el)}>
         <slot />
       </TagType>
     );
