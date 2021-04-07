@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'page-radio-button',
   template: `
-    <div class="playground light" title="should render with label">
+    <div class="playground light radio-button" title="should render with label">
       <p-radio-button-wrapper [label]="'Some label'">
         <input type="radio" name="some-name-1" />
       </p-radio-button-wrapper>
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render without label">
+    <div class="playground light radio-button" title="should render without label">
       <p-radio-button-wrapper [label]="'Some label'" [hideLabel]="true">
         <input type="radio" name="some-name-2" />
       </p-radio-button-wrapper>
@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with responsive label">
+    <div class="playground light radio-button" title="should render with responsive label">
       <p-radio-button-wrapper
         [label]="'Some label'"
         [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
@@ -36,7 +36,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render in required state">
+    <div class="playground light radio-button" title="should render in required state">
       <p-radio-button-wrapper [label]="'Some label'">
         <input type="radio" name="some-name-3a" required />
       </p-radio-button-wrapper>
@@ -54,7 +54,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render in disabled state">
+    <div class="playground light radio-button" title="should render in disabled state">
       <p-radio-button-wrapper [label]="'Some label'">
         <input type="radio" name="some-name-4" disabled />
       </p-radio-button-wrapper>
@@ -63,7 +63,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with success state and success message">
+    <div class="playground light radio-button" title="should render with success state and success message">
       <p-radio-button-wrapper [label]="'Some label'" [state]="'success'">
         <input type="radio" name="some-name-5" />
       </p-radio-button-wrapper>
@@ -72,7 +72,10 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with success state but without success message and not checked">
+    <div
+      class="playground light radio-button"
+      title="should render with success state but without success message and not checked"
+    >
       <p-radio-button-wrapper [label]="'Some label'" [state]="'success'">
         <input type="radio" name="some-name-6" />
       </p-radio-button-wrapper>
@@ -81,7 +84,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with error state and error message">
+    <div class="playground light radio-button" title="should render with error state and error message">
       <p-radio-button-wrapper [label]="'Some label'" [state]="'error'">
         <input type="radio" name="some-name-7" />
       </p-radio-button-wrapper>
@@ -90,7 +93,10 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with error state but without error message and not checked">
+    <div
+      class="playground light radio-button"
+      title="should render with error state but without error message and not checked"
+    >
       <p-radio-button-wrapper [label]="'Some label'" [state]="'error'">
         <input type="radio" name="some-name-8" />
       </p-radio-button-wrapper>
@@ -99,7 +105,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with slotted content with error state and message">
+    <div class="playground light radio-button" title="should render with slotted content with error state and message">
       <p-radio-button-wrapper [state]="'error'">
         <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
         <input type="radio" name="some-name-9" />
@@ -111,7 +117,7 @@ import { Component } from '@angular/core';
       </p-radio-button-wrapper>
     </div>
 
-    <div class="playground light" title="should render with multiline label">
+    <div class="playground light radio-button" title="should render with multiline label">
       <p-radio-button-wrapper
         [state]="'error'"
         [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
