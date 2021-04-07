@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf ./dist && mkdir -p ./dist && zip -r ./dist/function.zip .",
-    "publish": "aws lambda update-function-code --function-name CreateAthenaPartition --zip-file fileb://dist/function.zip"
+    "deploy": "aws lambda update-function-code --function-name CreateAthenaPartition --zip-file fileb://dist/function.zip"
   },
   "dependencies": {
     "athena-express": "^6.0.4"
