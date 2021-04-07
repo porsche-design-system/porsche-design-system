@@ -2,7 +2,7 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-@function p-radio-button-full() {
+@function p-radio-button-default-overlay() {
   $color: str-replace('#{$p-color-background-default}', '#', '%23');
   @return 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="#{$color}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/></g></svg>';
 }
@@ -49,7 +49,7 @@
   outline: none !important;
   cursor: pointer !important;
   box-sizing: border-box !important;
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-background-default 10px, $p-color-neutral-contrast-medium 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
   border: 2px solid $p-color-background-default !important;
@@ -57,31 +57,31 @@
 }
 
 ::slotted(input:checked) {
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-neutral-contrast-high 0px, $p-color-neutral-contrast-high 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
 }
 
 ::slotted(input:disabled) {
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-background-default 10px, $p-color-state-disabled 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
 }
 
 ::slotted(input:checked:disabled) {
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-state-disabled 0px, $p-color-state-disabled 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
 }
 
 ::slotted(input:not(:checked):not(:disabled):hover) {
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-background-default 10px, $p-color-default 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
 }
 
 ::slotted(input:not(:disabled):checked:hover) {
-  background: url(p-radio-button-full()) no-repeat center,
+  background: url(p-radio-button-default-overlay()) no-repeat center,
     radial-gradient(circle, $p-color-neutral-contrast-high 10px, $p-color-default 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
 }
@@ -97,12 +97,12 @@
 
   &--error {
     ::slotted(input) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, $p-color-notification-error 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
     ::slotted(input:checked) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-notification-error 0px, $p-color-notification-error 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
@@ -112,7 +112,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, darken($p-color-notification-error, 12%) 10px)
           no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
@@ -120,7 +120,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-notification-error 10px, darken($p-color-notification-error, 12%) 10px)
           no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
@@ -133,12 +133,12 @@
 
   &--success {
     ::slotted(input) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, $p-color-notification-success 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
     ::slotted(input:checked) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-notification-success 0px, $p-color-notification-success 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
@@ -148,7 +148,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, darken($p-color-notification-success, 12%) 10px)
           no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
@@ -156,7 +156,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-notification-success 10px, darken($p-color-notification-success, 12%) 10px)
           no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
@@ -184,7 +184,7 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input:not(:checked)) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, $p-color-default 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
@@ -192,7 +192,7 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input:checked) {
-      background: url(p-radio-button-full()) no-repeat center,
+      background: url(p-radio-button-default-overlay()) no-repeat center,
         radial-gradient(circle, $p-color-neutral-contrast-high 10px, $p-color-default 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
