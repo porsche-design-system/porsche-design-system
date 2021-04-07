@@ -13,6 +13,7 @@ import {
   getOutlineStyle,
   getLifecycleStatus,
   getElementStyle,
+  waitForInputTransition,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -227,19 +228,18 @@ describe('checkbox-wrapper', () => {
     const label = await getLabelText();
     const getLabelStyle = () => getElementStyle(label, 'color');
     const getCursor = () => getElementStyle(input, 'cursor');
-    const waitForTransition = () => page.waitForTimeout(250);
 
     expect(await getCursor()).toBe('pointer');
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForTransition();
+    await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('not-allowed');
     expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForTransition();
+    await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('pointer');
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
