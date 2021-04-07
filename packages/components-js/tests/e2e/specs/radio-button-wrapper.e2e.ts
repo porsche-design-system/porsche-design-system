@@ -4,7 +4,6 @@ import {
   getAttribute,
   getStyleOnFocus,
   getBrowser,
-  getCssClasses,
   getProperty,
   selectNode,
   setAttribute,
@@ -16,8 +15,9 @@ import {
   getBoxShadowStyle,
   getLifecycleStatus,
   getElementStyle,
+  waitForInputTransition,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
 describe('radio-button-wrapper', () => {
@@ -32,6 +32,7 @@ describe('radio-button-wrapper', () => {
   const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
   const getLabelLink = () => selectNode(page, 'p-radio-button-wrapper [slot="label"] a');
   const getMessageLink = () => selectNode(page, 'p-radio-button-wrapper [slot="message"] a');
+  const getBackgroundStyle = (element: ElementHandle) => getElementStyle(element, 'background');
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -158,32 +159,32 @@ describe('radio-button-wrapper', () => {
     );
 
     const input = await getInput();
+    const initialStyle = await getBackgroundStyle(input);
     const label = await getLabelText();
     const getLabelStyle = () => getElementStyle(label, 'color');
-    const waitForTransition = () => page.waitForTimeout(250);
 
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
-    await waitForTransition();
+    await waitForInputTransition(page);
 
     expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
+    expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
 
     await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
-    await waitForTransition();
+    await waitForInputTransition(page);
 
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
+    expect(await getBackgroundStyle(input)).toEqual(initialStyle);
   });
 
   describe('checked state', () => {
-    const fakeCheckedClass = 'p-radio-button-wrapper__fake-radio-button--checked';
-
     it('should check radio-button when input is clicked', async () => {
       await setContentWithDesignSystem(
         page,
         `
       <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
+        <input type="radio" name="some-name" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper label="Some label" id="radio-2">
         <input type="radio" name="some-name"/>
@@ -193,18 +194,22 @@ describe('radio-button-wrapper', () => {
       const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
       const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
+      const initialStyleInput1 = await getBackgroundStyle(input1);
+      const initialStyleInput2 = await getBackgroundStyle(input2);
+
+      expect(initialStyleInput1).toEqual(initialStyleInput2);
 
       await input1.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeRadio1)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
+      expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
 
       await input2.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
-      expect(await getCssClasses(fakeRadio2)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
+      expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
     });
 
     it('should check radio-button when label text is clicked', async () => {
@@ -219,26 +224,29 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>`
       );
 
-      const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
-      const fakeRadio2 = await selectNode(page, '#radio-2 >>> .p-radio-button-wrapper__fake-radio-button');
-      const labelText1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__label-text');
-      const labelText2 = await selectNode(page, '#radio-2 >>> .p-radio-button-wrapper__label-text');
+      const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
+      const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
+      const labelText1 = await selectNode(page, '#radio-1 >>> .label__text');
+      const labelText2 = await selectNode(page, '#radio-2 >>> .label__text');
+      const initialStyleInput1 = await getBackgroundStyle(input1);
+      const initialStyleInput2 = await getBackgroundStyle(input2);
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
+      expect(initialStyleInput1).toEqual(initialStyleInput2);
       expect(await getActiveElementId(page)).toBe('');
       expect(await getActiveElementTagName(page)).toBe('BODY');
 
       await labelText1.click();
-      await waitForStencilLifecycle(page);
+      await waitForInputTransition(page);
 
-      expect(await getCssClasses(fakeRadio1)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
+      expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
       expect(await getActiveElementId(page)).toBe('radio-1-input');
 
       await labelText2.click();
-      await waitForStencilLifecycle(page);
+      await waitForInputTransition(page);
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
-      expect(await getCssClasses(fakeRadio2)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
+      expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
       expect(await getActiveElementId(page)).toBe('radio-2-input');
     });
 
@@ -254,24 +262,24 @@ describe('radio-button-wrapper', () => {
       </p-radio-button-wrapper>`
       );
 
-      const fakeRadio1 = await selectNode(page, '#radio-1 >>> .p-radio-button-wrapper__fake-radio-button');
-      const fakeRadio1Input = await selectNode(page, '#radio-1 > input');
-      const fakeRadio2 = await selectNode(page, '#radio-2 >>> .p-radio-button-wrapper__fake-radio-button');
-      const fakeRadio2Input = await selectNode(page, '#radio-2 > input');
+      const input1 = await selectNode(page, '#radio-1 > input');
+      const input2 = await selectNode(page, '#radio-2 > input');
+      const initialStyleInput1 = await getBackgroundStyle(input1);
+      const initialStyleInput2 = await getBackgroundStyle(input2);
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
-      expect(await getCssClasses(fakeRadio2)).not.toContain(fakeCheckedClass);
+      expect(initialStyleInput1).toEqual(initialStyleInput2);
 
-      await fakeRadio1Input.evaluate((el) => el.setAttribute('checked', 'true'));
-      await waitForStencilLifecycle(page);
+      await input1.evaluate((el) => el.setAttribute('checked', 'true'));
+      await waitForInputTransition(page);
 
-      expect(await getCssClasses(fakeRadio1)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
+      expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
 
-      await fakeRadio2Input.evaluate((el) => el.setAttribute('checked', 'true'));
-      await waitForStencilLifecycle(page);
+      await input2.evaluate((el) => el.setAttribute('checked', 'true'));
+      await waitForInputTransition(page);
 
-      expect(await getCssClasses(fakeRadio1)).not.toContain(fakeCheckedClass);
-      expect(await getCssClasses(fakeRadio2)).toContain(fakeCheckedClass);
+      expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
+      expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
     });
   });
 
