@@ -8,7 +8,6 @@ import { addEventListener } from '.';
 export const observeChangeEvent = <T extends HTMLElement>(node: T, callback: () => void): void => {
   // addEventListener(node, 'change', callback);
   addEventListener(node, 'change', () => {
-    console.log('event listener', node);
     callback();
   });
 };
@@ -56,7 +55,6 @@ const mutationObserver = new MutationObserver((mutations) => {
 });
 
 export const observeMutations = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
-  console.log('observeMutations', node, props);
   mutationMap.set(node, callback);
   mutationObserver.observe(node, { attributeFilter: props as string[], attributeOldValue: true });
 };
@@ -74,7 +72,6 @@ export const initAttributePropChangeListener = <T extends HTMLElement>(
   props: (keyof T)[]
 ): void => {
   const updateComponent = (): void => {
-    console.log('cb...', host);
     forceUpdate(host);
   };
 
