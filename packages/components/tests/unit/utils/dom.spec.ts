@@ -4,7 +4,10 @@ import {
   hasNamedSlot,
   isRequired,
   throwIfParentIsNotOfKind,
+  addEventListener,
+  removeEventListener,
 } from '../../../src/utils';
+import { expectFiles } from '@stencil/core/testing/testing-utils';
 
 describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
@@ -140,5 +143,34 @@ describe('getTagName()', () => {
   ])('should be called with %s and return %s', (tag, result) => {
     const el = document.createElement(tag);
     expect(getTagName(el)).toBe(result);
+  });
+});
+
+describe('Event Listener', () => {
+  const listener = () => {};
+
+  describe('addEventListener()', () => {
+    it('should call addEventListener', () => {
+      const element = document.createElement('div');
+      const spy1 = jest.spyOn(element, 'addEventListener');
+
+      addEventListener(element, 'change', listener, false);
+
+      expect(spy1).toBeCalledTimes(1);
+      expect(spy1).toBeCalledWith('change', expect.any(Function), false);
+    });
+  });
+
+  describe('removeEventListener', () => {
+    it('should call removeEventListener', () => {
+      const element = document.createElement('div');
+      const spy1 = jest.spyOn(element, 'removeEventListener');
+
+      addEventListener(element, 'change', listener, false);
+      removeEventListener(element, 'change', listener, false);
+
+      expect(spy1).toBeCalledTimes(1);
+      expect(spy1).toBeCalledWith('change', expect.any(Function), false);
+    });
   });
 });
