@@ -14,6 +14,7 @@ import {
   getLifecycleStatus,
   getElementStyle,
   waitForInputTransition,
+  removeAttribute,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -38,6 +39,18 @@ describe('checkbox-wrapper', () => {
     }, value);
 
     await waitForStencilLifecycle(page);
+  };
+
+  const setChecked = async (value: boolean) => {
+    const indeterminate = await page.evaluate((checked: boolean) => {
+      const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
+      input.checked = checked;
+      return input.indeterminate;
+    }, value);
+
+    if (!indeterminate) {
+      await waitForStencilLifecycle(page);
+    }
   };
 
   const getBackgroundImage = (input: ElementHandle) => getElementStyle(input, 'backgroundImage');
@@ -108,7 +121,7 @@ describe('checkbox-wrapper', () => {
     const host = await getHost();
     expect(await getLabelText()).toBeNull();
 
-    await host.evaluate((el) => el.setAttribute('label', 'Some label'));
+    await setAttribute(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
     expect(await getLabelText()).not.toBeNull();
   });
@@ -212,12 +225,10 @@ describe('checkbox-wrapper', () => {
 
     expect(await getBackgroundImage(input)).toBe('none');
 
-    await input.evaluate((el: HTMLInputElement) => (el.checked = true));
-
+    await setAttribute(input, 'checked', 'true');
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-    await input.evaluate((el: HTMLInputElement) => (el.checked = false));
-
+    await removeAttribute(input, 'checked');
     expect(await getBackgroundImage(input)).toBe('none');
   });
 
@@ -232,13 +243,13 @@ describe('checkbox-wrapper', () => {
     expect(await getCursor()).toBe('pointer');
     expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await setAttribute(input, 'disabled', 'true');
     await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('not-allowed');
     expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await removeAttribute(input, 'disabled');
     await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('pointer');
@@ -246,18 +257,6 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('indeterminate state', () => {
-    const setChecked = async (value: boolean) => {
-      const indeterminate = await page.evaluate((checked: boolean) => {
-        const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
-        input.checked = checked;
-        return input.indeterminate;
-      }, value);
-
-      if (!indeterminate) {
-        await waitForStencilLifecycle(page);
-      }
-    };
-
     it('should show indeterminate state when checkbox is set to indeterminate', async () => {
       await setContentWithDesignSystem(
         page,
