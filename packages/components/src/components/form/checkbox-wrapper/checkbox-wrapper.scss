@@ -2,6 +2,16 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
+@mixin p-checkbox-wrapper-checked-image() {
+  $color: str-replace('#{$p-color-background-default}', '#', '%23');
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#{$color}" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+}
+
+@mixin p-checkbox-wrapper-indeterminate-image() {
+  $color: str-replace('#{$p-color-background-default}', '#', '%23');
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#{$color}" d="M3 11h18v1H3z"/></svg>') !important;
+}
+
 @mixin p-checkbox-wrapper-label-text-visible() {
   position: static;
   width: auto;
@@ -35,7 +45,7 @@
   position: static !important;
   height: p-px-to-rem(24px) !important;
   width: p-px-to-rem(24px) !important;
-  min-width: p-px-to-rem(24px) !important;
+  flex-shrink: 0;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -57,11 +67,11 @@
   background-color: $p-color-neutral-contrast-high !important;
 }
 ::slotted(input:checked) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z"/></svg>') !important;
+  @include p-checkbox-wrapper-checked-image;
 }
 
 ::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M3 11h18v1H3z"/></svg>') !important;
+  @include p-checkbox-wrapper-indeterminate-image;
 }
 
 ::slotted(input:hover) {
