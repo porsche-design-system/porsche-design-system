@@ -54,16 +54,11 @@ export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
 /**
  * PUBLIC API
  */
-export const initAttributePropChangeListener = <T extends HTMLElement>(
-  host: HTMLElement,
-  node: T,
-  props: (keyof T)[]
-): void => {
+export const initMutationObserver = <T extends HTMLElement>(host: HTMLElement, node: T, props: (keyof T)[]): void => {
   const updateComponent = (): void => {
     forceUpdate(host);
   };
 
-  // observeChangeEvent(node, updateComponent);
   // observeProperties(node, props, updateComponent);
   observeMutations(node, props, updateComponent);
 };

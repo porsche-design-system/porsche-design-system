@@ -3,29 +3,30 @@ import {
   observeMutations,
   unobserveMutations,
   mutationMap,
-  initAttributePropChangeListener,
+  initMutationObserver,
 } from '../../../src/utils';
-import * as attributePropChangeListenerUtils from '../../../src/utils/attribute-prop-change-listener';
+import * as initMutationObserverUtils from '../../../src/utils/mutation-observer';
 
-describe('initAttributePropChangeListener()', () => {
+describe('initMutationObserver()', () => {
   beforeEach(() => {
     mutationMap.clear();
   });
 
-  it('should call observeProperties and observerMutations', () => {
-    const spy1 = jest.spyOn(attributePropChangeListenerUtils, 'observeProperties');
-    const spy2 = jest.spyOn(attributePropChangeListenerUtils, 'observeMutations');
+  it('should call observeMutations', () => {
+    const spy1 = jest.spyOn(initMutationObserverUtils, 'observeMutations');
+    /*    const spy2 = jest.spyOn(initMutationObserverUtils, 'observeProperties');*/
 
     const host = document.createElement('div');
     const node = document.createElement('input');
-    initAttributePropChangeListener(host, node, ['checked']);
+    initMutationObserver(host, node, ['checked']);
 
-    expect(spy1).toHaveBeenCalledTimes(0);
-    expect(spy2).toHaveBeenCalledTimes(1);
+    expect(spy1).toHaveBeenCalledTimes(1);
+    /*    expect(spy2).toHaveBeenCalledTimes(1);*/
   });
 });
 
-describe('observeProperties()', () => {
+// Unused function. Enable Testing if used.
+xdescribe('observeProperties()', () => {
   const callback = jest.fn();
 
   it('should define getter and setter for single prop', () => {
