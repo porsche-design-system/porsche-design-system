@@ -1,12 +1,10 @@
 import {
-  observeChangeEvent,
   observeProperties,
   observeMutations,
   unobserveMutations,
   mutationMap,
   initAttributePropChangeListener,
 } from '../../../src/utils';
-import * as domUtils from '../../../src/utils/dom';
 import * as attributePropChangeListenerUtils from '../../../src/utils/attribute-prop-change-listener';
 
 describe('initAttributePropChangeListener()', () => {
@@ -14,30 +12,16 @@ describe('initAttributePropChangeListener()', () => {
     mutationMap.clear();
   });
 
-  it('should call observeChangeEvent, observeProperties and observerMutations', () => {
-    const spy1 = jest.spyOn(attributePropChangeListenerUtils, 'observeChangeEvent');
-    const spy2 = jest.spyOn(attributePropChangeListenerUtils, 'observeProperties');
-    const spy3 = jest.spyOn(attributePropChangeListenerUtils, 'observeMutations');
+  it('should call observeProperties and observerMutations', () => {
+    const spy1 = jest.spyOn(attributePropChangeListenerUtils, 'observeProperties');
+    const spy2 = jest.spyOn(attributePropChangeListenerUtils, 'observeMutations');
 
     const host = document.createElement('div');
     const node = document.createElement('input');
     initAttributePropChangeListener(host, node, ['checked']);
 
     expect(spy1).toHaveBeenCalledTimes(0);
-    expect(spy2).toHaveBeenCalledTimes(0);
-    expect(spy3).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('observeChangeEvent()', () => {
-  // TODO: enable once debugging code is removed
-  xit('should call addEventListener with correct parameters', () => {
-    const spy = jest.spyOn(domUtils, 'addEventListener');
-    const node = document.createElement('input');
-    const callback = () => {};
-
-    observeChangeEvent(node, callback);
-    expect(spy).toHaveBeenCalledWith(node, 'change', callback);
+    expect(spy2).toHaveBeenCalledTimes(1);
   });
 });
 
