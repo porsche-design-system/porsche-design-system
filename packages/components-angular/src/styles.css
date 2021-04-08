@@ -27,7 +27,3 @@ body > select {
 .playground.dark {
   background: #1a2023;
 }
-
-.radio-button > * {
-  margin-bottom: 2px;
-}
