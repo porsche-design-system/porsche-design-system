@@ -1,16 +1,4 @@
 import { forceUpdate } from '@stencil/core';
-import { addEventListener } from '.';
-/* eslint-disable no-console */
-
-/**
- * EVENTS
- */
-export const observeChangeEvent = <T extends HTMLElement>(node: T, callback: () => void): void => {
-  // addEventListener(node, 'change', callback);
-  addEventListener(node, 'change', () => {
-    callback();
-  });
-};
 
 /**
  * PROPERTIES
