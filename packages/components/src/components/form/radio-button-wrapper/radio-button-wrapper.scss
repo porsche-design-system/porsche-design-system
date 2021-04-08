@@ -51,9 +51,7 @@
 
 ::slotted(input) {
   position: relative !important;
-  top: 2px !important;
-  left: 2px !important;
-  margin: 0 !important;
+  margin: p-px-to-rem(-2px) !important;
   width: p-px-to-rem(28px) !important; // 4px wider to enable rounded focus style
   height: p-px-to-rem(28px) !important;
   flex-shrink: 0 !important;
