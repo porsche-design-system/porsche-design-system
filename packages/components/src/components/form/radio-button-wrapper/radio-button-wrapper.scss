@@ -146,7 +146,7 @@
       @include p-radio-button-wrapper-initial-background(
         p-radio-button-wrapper-state-image(),
         $p-color-background-default,
-        $p-color-notification-error
+        darken($p-color-notification-error, 12%)
       );
     }
 
@@ -188,7 +188,7 @@
       @include p-radio-button-wrapper-initial-background(
         p-radio-button-wrapper-state-image(),
         $p-color-background-default,
-        $p-color-notification-success
+        darken($p-color-notification-success, 12%)
       );
     }
 
