@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import type { BreakpointCustomizable } from '../../../../utils';
 
 export const TEXT_SIZES = ['x-small', 'small', 'medium', 'large', 'x-large', 'inherit'] as const;
 
