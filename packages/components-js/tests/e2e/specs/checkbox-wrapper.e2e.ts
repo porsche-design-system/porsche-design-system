@@ -32,25 +32,16 @@ describe('checkbox-wrapper', () => {
   const getLabelLink = () => selectNode(page, 'p-checkbox-wrapper [slot="label"] a');
   const getMessageLink = () => selectNode(page, 'p-checkbox-wrapper [slot="message"] a');
 
-  const setIndeterminate = async (value: boolean) => {
-    await page.evaluate((indeterminate: boolean) => {
-      const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
-      input.indeterminate = indeterminate;
+  const setIndeterminate = async (element: ElementHandle, value: boolean) => {
+    await element.evaluate((el: HTMLInputElement, value: boolean) => {
+      el.indeterminate = value;
     }, value);
-
-    await waitForStencilLifecycle(page);
   };
 
-  const setChecked = async (value: boolean) => {
-    const indeterminate = await page.evaluate((checked: boolean) => {
-      const input: HTMLInputElement = document.querySelector('input[type="checkbox"]');
-      input.checked = checked;
-      return input.indeterminate;
+  const setChecked = async (element: ElementHandle, value: boolean) => {
+    await element.evaluate((element: HTMLInputElement, value: boolean) => {
+      element.checked = value;
     }, value);
-
-    if (!indeterminate) {
-      await waitForStencilLifecycle(page);
-    }
   };
 
   const getBackgroundImage = (input: ElementHandle) => getElementStyle(input, 'backgroundImage');
@@ -185,7 +176,7 @@ describe('checkbox-wrapper', () => {
     expect(await getBackgroundImage(input)).toBe('none');
 
     // ensure that checked and indeterminate use different images
-    await setIndeterminate(true);
+    await setIndeterminate(input, true);
     expect(checkedImage).not.toBe(await getBackgroundImage(input));
   });
 
@@ -270,10 +261,10 @@ describe('checkbox-wrapper', () => {
 
       expect(await getBackgroundImage(input)).toBe('none');
 
-      await setIndeterminate(true);
+      await setIndeterminate(input, true);
       expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-      await setIndeterminate(false);
+      await setIndeterminate(input, false);
       expect(await getBackgroundImage(input)).toBe('none');
     });
 
@@ -288,7 +279,7 @@ describe('checkbox-wrapper', () => {
 
       const input = await getInput();
 
-      await setIndeterminate(true);
+      await setIndeterminate(input, true);
       const indeterminateImage = await getBackgroundImage(input);
       expect(indeterminateImage).toContain(backgroundURL, 'first indeterminate set');
 
@@ -298,7 +289,7 @@ describe('checkbox-wrapper', () => {
       expect(checkedImage).toContain(backgroundURL, 'first click');
       expect(indeterminateImage).not.toBe(checkedImage);
 
-      await setIndeterminate(true);
+      await setIndeterminate(input, true);
       expect(await getBackgroundImage(input)).toContain(backgroundURL, 'second indeterminate set');
 
       await input.click();
@@ -316,13 +307,13 @@ describe('checkbox-wrapper', () => {
 
       const input = await getInput();
 
-      await setIndeterminate(true);
+      await setIndeterminate(input, true);
       expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-      await setChecked(true);
+      await setChecked(input, true);
       expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-      await setChecked(false);
+      await setChecked(input, false);
       expect(await getBackgroundImage(input)).toContain(backgroundURL);
     });
   });
