@@ -2,12 +2,12 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
-@function p-radio-button-default-overlay() {
+@function p-radio-button-default-image() {
   $color: str-replace('#{$p-color-background-default}', '#', '%23');
   @return 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="#{$color}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 3C7.925 25 3 20.075 3 14S7.925 3 14 3s11 4.925 11 11-4.925 11-11 11z"/></g></svg>';
 }
 
-@function p-radio-button-state-overlay() {
+@function p-radio-button-state-image() {
   $color: str-replace('#{$p-color-background-default}', '#', '%23');
   @return 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><g fill="#{$color}" fill-rule="nonzero"><path d="M14 26c6.627 0 12-5.373 12-12S20.627 2 14 2 2 7.373 2 14s5.373 12 12 12zm0 2C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14z"/><path d="M14 21.273a7.273 7.273 0 1 0 0-14.546 7.273 7.273 0 0 0 0 14.546zM14 24C8.477 24 4 19.523 4 14S8.477 4 14 4s10 4.477 10 10-4.477 10-10 10z"/></g></svg> ';
 }
@@ -63,7 +63,7 @@
   outline: none !important;
   cursor: pointer !important;
   box-sizing: border-box !important;
-  background: url(p-radio-button-default-overlay()) no-repeat center,
+  background: url(p-radio-button-default-image()) no-repeat center,
     radial-gradient(circle, $p-color-background-default 10px, $p-color-neutral-contrast-medium 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
   border: 2px solid $p-color-background-default !important;
@@ -72,7 +72,7 @@
 
 ::slotted(input:checked) {
   @include p-radio-button-wrapper-checked-image(
-    p-radio-button-default-overlay(),
+    p-radio-button-default-image(),
     $p-color-neutral-contrast-high,
     $p-color-neutral-contrast-high
   );
@@ -80,7 +80,7 @@
 
 ::slotted(input:disabled) {
   @include p-radio-button-wrapper-initial-image(
-    p-radio-button-default-overlay(),
+    p-radio-button-default-image(),
     $p-color-background-default,
     $p-color-state-disabled
   );
@@ -88,7 +88,7 @@
 
 ::slotted(input:checked:disabled) {
   @include p-radio-button-wrapper-checked-image(
-    p-radio-button-default-overlay(),
+    p-radio-button-default-image(),
     $p-color-state-disabled,
     $p-color-state-disabled
   );
@@ -96,7 +96,7 @@
 
 ::slotted(input:not(:checked):not(:disabled):hover) {
   @include p-radio-button-wrapper-initial-image(
-    p-radio-button-default-overlay(),
+    p-radio-button-default-image(),
     $p-color-background-default,
     $p-color-default
   );
@@ -104,7 +104,7 @@
 
 ::slotted(input:not(:disabled):checked:hover) {
   @include p-radio-button-wrapper-initial-image(
-    p-radio-button-default-overlay(),
+    p-radio-button-default-image(),
     $p-color-neutral-contrast-high,
     $p-color-default
   );
@@ -124,14 +124,14 @@
   &--error {
     ::slotted(input) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-background-default,
         $p-color-notification-error
       );
     }
     ::slotted(input:checked) {
       @include p-radio-button-wrapper-checked-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-notification-error,
         $p-color-notification-error
       );
@@ -143,7 +143,7 @@
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-background-default,
         $p-color-notification-error
       );
@@ -152,7 +152,7 @@
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-notification-error,
         darken($p-color-notification-error, 12%)
       );
@@ -166,14 +166,14 @@
   &--success {
     ::slotted(input) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-background-default,
         $p-color-notification-success
       );
     }
     ::slotted(input:checked) {
       @include p-radio-button-wrapper-checked-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-notification-success,
         $p-color-notification-success
       );
@@ -185,7 +185,7 @@
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-background-default,
         $p-color-notification-success
       );
@@ -194,7 +194,7 @@
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-state-overlay(),
+        p-radio-button-state-image(),
         $p-color-notification-success,
         darken($p-color-notification-success, 12%)
       );
@@ -222,7 +222,7 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input:not(:checked)) {
-      background: url(p-radio-button-default-overlay()) no-repeat center,
+      background: url(p-radio-button-default-image()) no-repeat center,
         radial-gradient(circle, $p-color-background-default 10px, $p-color-default 10px) no-repeat center !important;
       background-size: p-px-to-rem(28px) !important;
     }
@@ -231,7 +231,7 @@
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input:checked) {
       @include p-radio-button-wrapper-initial-image(
-        p-radio-button-default-overlay(),
+        p-radio-button-default-image(),
         $p-color-neutral-contrast-high,
         $p-color-default
       );
