@@ -144,7 +144,7 @@ describe('radio-button-wrapper', () => {
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label', 'when state = none');
   });
 
-  it('should disable radio-button when radio-button is set disabled programmatically', async () => {
+  it('should disable radio-button when disabled attribute is set programmatically', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -168,6 +168,36 @@ describe('radio-button-wrapper', () => {
     expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
 
     await removeAttribute(input, 'disabled');
+    await waitForInputTransition(page);
+
+    expect(await getLabelColor()).toBe(defaultLabelColor);
+    expect(await getBackgroundStyle(input)).toEqual(initialStyle);
+  });
+
+  it('should disable radio-button when disabled property is set programmatically', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`
+    );
+
+    const input = await getInput();
+    const initialStyle = await getBackgroundStyle(input);
+    const label = await getLabelText();
+    const defaultLabelColor = 'rgb(0, 0, 0)';
+    const getLabelColor = () => getElementStyle(label, 'color');
+
+    expect(await getLabelColor()).toBe(defaultLabelColor);
+
+    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await waitForInputTransition(page);
+
+    expect(await getLabelColor()).not.toBe(defaultLabelColor);
+    expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
+
+    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForInputTransition(page);
 
     expect(await getLabelColor()).toBe(defaultLabelColor);
@@ -246,7 +276,7 @@ describe('radio-button-wrapper', () => {
       expect(await getActiveElementId(page)).toBe('radio-2-input');
     });
 
-    it('should check radio-button when radio-button is changed programmatically', async () => {
+    it('should check radio-button when checked attribute is changed programmatically', async () => {
       await setContentWithDesignSystem(
         page,
         `
@@ -277,6 +307,38 @@ describe('radio-button-wrapper', () => {
       expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
       expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
     });
+  });
+
+  it('should check radio-button when checked property is changed programmatically', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Some label" id="radio-2">
+        <input type="radio" name="some-name"/>
+      </p-radio-button-wrapper>`
+    );
+
+    const input1 = await selectNode(page, '#radio-1 > input');
+    const input2 = await selectNode(page, '#radio-2 > input');
+    const initialStyleInput1 = await getBackgroundStyle(input1);
+    const initialStyleInput2 = await getBackgroundStyle(input2);
+
+    expect(initialStyleInput1).toEqual(initialStyleInput2);
+
+    await input1.evaluate((el: HTMLInputElement) => (el.checked = true));
+    await waitForInputTransition(page);
+
+    expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
+    expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
+
+    await input2.evaluate((el: HTMLInputElement) => (el.checked = true));
+    await waitForInputTransition(page);
+
+    expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
+    expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
   });
 
   describe('focus state', () => {
