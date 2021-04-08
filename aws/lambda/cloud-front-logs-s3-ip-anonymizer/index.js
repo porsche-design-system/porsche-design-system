@@ -92,7 +92,7 @@ async function process(record) {
 
 exports.handler = async (event) => {
   //console.log(JSON.stringify(event));
-  for (let record of event.Records) {
+  for (const record of event.Records) {
     if (record.s3.object.key.endsWith('.anonymized.gz')) {
       continue;
     } else if (record.s3.object.key.endsWith('.gz')) {
