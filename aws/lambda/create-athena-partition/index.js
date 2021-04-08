@@ -1,27 +1,19 @@
-const aws = require('aws-sdk');
-const AthenaExpress = require('athena-express');
-
-const awsCredentials = {
-  region: 'eu-central-1',
-};
-aws.config.update(awsCredentials);
-
-const athenaExpressConfig = { aws };
-const athenaExpress = new AthenaExpress(athenaExpressConfig);
+const { addPartition } = require('./utils');
 
 exports.handler = async (event) => {
   console.log('Start creating new Athena partition');
 
-  const query = `ALTER TABLE s3_athena.tracking_data ADD PARTITION (year='2020', month='12', day='31', dt='2020-12-31') location 's3://porsche-design-system-athena/tracking-data/2020/12/31/'`;
+  for (const record of event.Records) {
+    const { key } = record.s3.object;
+    const fileName = key.substr(key.indexOf('/') + 1);
+    let fileDate = fileName.substr(fileName.indexOf('.') + 1);
+    fileDate = fileDate.substr(0, fileDate.indexOf('.'));
+    fileDate = fileDate.substr(0, fileDate.lastIndexOf('-'));
 
-  athenaExpress
-    .query(query)
-    .then((data) => {
-      console.log('Data:', data);
-    })
-    .catch((err) => {
-      console.log('Error:', err);
-    });
+    const [year, month, day] = fileDate.split('-');
+
+    await addPartition(year, month, day);
+  }
 
   console.log('Finished creating new Athena partition');
 };
