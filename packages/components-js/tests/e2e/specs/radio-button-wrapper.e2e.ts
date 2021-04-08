@@ -16,6 +16,7 @@ import {
   getLifecycleStatus,
   getElementStyle,
   waitForInputTransition,
+  removeAttribute,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -99,7 +100,7 @@ describe('radio-button-wrapper', () => {
     const radioComponent = await getHost();
     expect(await getLabelText()).toBeNull();
 
-    await radioComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
+    await setAttribute(radioComponent, 'label', 'Some label');
     await waitForStencilLifecycle(page);
 
     expect(await getLabelText()).not.toBeNull();
@@ -119,30 +120,24 @@ describe('radio-button-wrapper', () => {
     const input = await selectNode(page, 'input');
 
     expect(await getMessage()).toBeNull('initially');
-    await radioComponent.evaluate((el) => {
-      el.setAttribute('state', 'error');
-      el.setAttribute('message', 'Some error message');
-    });
+    await setAttribute(radioComponent, 'state', 'error');
+    await setAttribute(radioComponent, 'message', 'Some error message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = error');
     expect(await getAttribute(await getMessage(), 'role')).toEqual('alert');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some error message', 'when state = error');
 
-    await radioComponent.evaluate((el) => {
-      el.setAttribute('state', 'success');
-      el.setAttribute('message', 'Some success message');
-    });
+    await setAttribute(radioComponent, 'state', 'success');
+    await setAttribute(radioComponent, 'message', 'Some success message');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeDefined('when state = success');
     expect(await getAttribute(await getMessage(), 'role')).toBeNull('when state = success');
     expect(await getProperty(input, 'ariaLabel')).toEqual('Some label. Some success message', 'when state = success');
 
-    await radioComponent.evaluate((el) => {
-      el.setAttribute('state', 'none');
-      el.setAttribute('message', '');
-    });
+    await setAttribute(radioComponent, 'state', 'none');
+    await setAttribute(radioComponent, 'message', '');
     await waitForStencilLifecycle(page);
 
     expect(await getMessage()).toBeNull('when state = none');
@@ -161,20 +156,21 @@ describe('radio-button-wrapper', () => {
     const input = await getInput();
     const initialStyle = await getBackgroundStyle(input);
     const label = await getLabelText();
-    const getLabelStyle = () => getElementStyle(label, 'color');
+    const defaultLabelColor = 'rgb(0, 0, 0)';
+    const getLabelColor = () => getElementStyle(label, 'color');
 
-    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
+    expect(await getLabelColor()).toBe(defaultLabelColor);
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await setAttribute(input, 'disabled', 'true');
     await waitForInputTransition(page);
 
-    expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
+    expect(await getLabelColor()).not.toBe(defaultLabelColor);
     expect(await getBackgroundStyle(input)).not.toEqual(initialStyle);
 
-    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
+    await removeAttribute(input, 'disabled');
     await waitForInputTransition(page);
 
-    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
+    expect(await getLabelColor()).toBe(defaultLabelColor);
     expect(await getBackgroundStyle(input)).toEqual(initialStyle);
   });
 
@@ -269,13 +265,13 @@ describe('radio-button-wrapper', () => {
 
       expect(initialStyleInput1).toEqual(initialStyleInput2);
 
-      await input1.evaluate((el) => el.setAttribute('checked', 'true'));
+      await setAttribute(input1, 'checked', 'true');
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
       expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
 
-      await input2.evaluate((el) => el.setAttribute('checked', 'true'));
+      await setAttribute(input2, 'checked', 'true');
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
