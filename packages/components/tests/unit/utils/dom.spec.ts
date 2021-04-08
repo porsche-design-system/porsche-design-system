@@ -6,8 +6,14 @@ import {
   throwIfParentIsNotOfKind,
   addEventListener,
   removeEventListener,
+  getAttribute,
+  setAttribute,
+  removeAttribute,
+  isLabelVisible,
+  isMessageVisible,
+  isDescriptionVisible,
 } from '../../../src/utils';
-import { expectFiles } from '@stencil/core/testing/testing-utils';
+import type { FormState } from '../../../src/types';
 
 describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
@@ -157,7 +163,7 @@ describe('Event Listener', () => {
       addEventListener(element, 'change', listener, false);
 
       expect(spy1).toBeCalledTimes(1);
-      expect(spy1).toBeCalledWith('change', expect.any(Function), false);
+      expect(spy1).toBeCalledWith('change', listener, false);
     });
   });
 
@@ -170,7 +176,101 @@ describe('Event Listener', () => {
       removeEventListener(element, 'change', listener, false);
 
       expect(spy1).toBeCalledTimes(1);
-      expect(spy1).toBeCalledWith('change', expect.any(Function), false);
+      expect(spy1).toBeCalledWith('change', listener, false);
     });
+  });
+});
+
+describe('getAttribute()', () => {
+  it('should return attribute value', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'Some title');
+
+    expect(getAttribute(element, 'title')).toBe('Some title');
+  });
+});
+
+describe('setAttribute()', () => {
+  it('should set attribute value', () => {
+    const element = document.createElement('div');
+    setAttribute(element, 'title', 'Some title');
+
+    expect(element.getAttribute('title')).toBe('Some title');
+  });
+});
+
+describe('removeAttribute()', () => {
+  it('should remove attribute', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'Some Title');
+
+    removeAttribute(element, 'title');
+    expect(element.getAttribute('title')).toBe(null);
+  });
+});
+
+describe('isLabelVisible()', () => {
+  it.each<[boolean, boolean, boolean]>([
+    [true, false, true],
+    [false, true, true],
+    [false, false, false],
+    [true, true, true],
+  ])('should be called with label:%s & slotted:%p and return:%p', (label, slotted, result) => {
+    const labelText = label ? 'Some label' : '';
+    const el = document.createElement('div');
+    el.setAttribute('label', labelText);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'label';
+      el.appendChild(slot);
+    }
+
+    expect(isLabelVisible(el, labelText)).toBe(result);
+  });
+});
+
+describe('isDescriptionVisible()', () => {
+  it.each<[boolean, boolean, boolean]>([
+    [true, false, true],
+    [false, true, true],
+    [false, false, false],
+    [true, true, true],
+  ])('should be called with description:%p, slotted:%p and return:%p', (description, slotted, result) => {
+    const descriptionText = description ? 'Some description' : '';
+    const el = document.createElement('div');
+    el.setAttribute('description', descriptionText);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(isDescriptionVisible(el, descriptionText)).toBe(result);
+  });
+});
+
+describe('isMessageVisible()', () => {
+  it.each<[boolean, boolean, FormState, boolean]>([
+    [true, false, 'error', true],
+    [false, true, 'error', true],
+    [false, false, 'error', false],
+    [true, false, 'none', false],
+    [false, true, 'none', false],
+    [true, false, 'success', true],
+    [false, true, 'success', true],
+    [false, false, 'success', false],
+    [true, false, 'none', false],
+    [false, true, 'none', false],
+  ])('should be called with message:%p, slotted:%p, state:%s and return:%p', (message, slotted, state, result) => {
+    const messageText = message ? 'Some Message' : '';
+    const el = document.createElement('div');
+    el.setAttribute('message', messageText);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'message';
+      el.appendChild(slot);
+    }
+
+    expect(isMessageVisible(el, messageText, state)).toBe(result);
   });
 });
