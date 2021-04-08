@@ -14,14 +14,12 @@ describe('initMutationObserver()', () => {
 
   it('should call observeMutations', () => {
     const spy1 = jest.spyOn(initMutationObserverUtils, 'observeMutations');
-    /*    const spy2 = jest.spyOn(initMutationObserverUtils, 'observeProperties');*/
 
     const host = document.createElement('div');
     const node = document.createElement('input');
     initMutationObserver(host, node, ['checked']);
 
     expect(spy1).toHaveBeenCalledTimes(1);
-    /*    expect(spy2).toHaveBeenCalledTimes(1);*/
   });
 });
 
