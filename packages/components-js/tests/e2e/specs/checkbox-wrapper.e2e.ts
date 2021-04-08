@@ -203,7 +203,7 @@ describe('checkbox-wrapper', () => {
     expect(await getActiveElementTagName(page)).toBe('INPUT');
   });
 
-  it('should check/uncheck checkbox when checkbox is changed programmatically', async () => {
+  it('should check/uncheck checkbox when checkbox attribute is changed programmatically', async () => {
     await setContentWithDesignSystem(
       page,
       `
@@ -223,7 +223,27 @@ describe('checkbox-wrapper', () => {
     expect(await getBackgroundImage(input)).toBe('none');
   });
 
-  it('should disable checkbox when checkbox is set disabled programmatically', async () => {
+  it('should check/uncheck checkbox when checkbox property is changed programmatically', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-checkbox-wrapper label="Some label">
+        <input type="checkbox" name="some-name"/>
+      </p-checkbox-wrapper>`
+    );
+
+    const input = await getInput();
+
+    expect(await getBackgroundImage(input)).toBe('none');
+
+    await input.evaluate((el: HTMLInputElement) => (el.checked = true));
+    expect(await getBackgroundImage(input)).toContain(backgroundURL);
+
+    await input.evaluate((el: HTMLInputElement) => (el.checked = false));
+    expect(await getBackgroundImage(input)).toBe('none');
+  });
+
+  it('should disable checkbox when disabled attribute is set programmatically', async () => {
     await initCheckbox();
 
     const input = await getInput();
@@ -241,6 +261,30 @@ describe('checkbox-wrapper', () => {
     expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
 
     await removeAttribute(input, 'disabled');
+    await waitForInputTransition(page);
+
+    expect(await getCursor()).toBe('pointer');
+    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
+  });
+
+  it('should disable checkbox when disabled property is set programmatically', async () => {
+    await initCheckbox();
+
+    const input = await getInput();
+    const label = await getLabelText();
+    const getLabelStyle = () => getElementStyle(label, 'color');
+    const getCursor = () => getElementStyle(input, 'cursor');
+
+    expect(await getCursor()).toBe('pointer');
+    expect(await getLabelStyle()).toBe('rgb(0, 0, 0)');
+
+    await input.evaluate((el: HTMLInputElement) => (el.disabled = true));
+    await waitForInputTransition(page);
+
+    expect(await getCursor()).toBe('not-allowed');
+    expect(await getLabelStyle()).toBe('rgb(150, 152, 154)');
+
+    await input.evaluate((el: HTMLInputElement) => (el.disabled = false));
     await waitForInputTransition(page);
 
     expect(await getCursor()).toBe('pointer');
