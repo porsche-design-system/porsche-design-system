@@ -1,0 +1,10 @@
+{
+  "name": "cloud-front-s3-logs-reorganizer",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && mkdir -p ./dist && zip -r ./dist/function.zip . -x '.*' -x 'yarn.lock' -x 'dist/'",
+    "deploy": "aws lambda update-function-code --function-name CloudFrontS3LogsReorganizer --zip-file fileb://dist/function.zip"
+  }
+}
