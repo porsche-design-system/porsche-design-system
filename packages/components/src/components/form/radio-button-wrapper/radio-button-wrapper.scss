@@ -114,15 +114,15 @@
 }
 
 ::slotted(input:focus) {
-  box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium;
-  z-index: 1;
+  box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
+  z-index: 1 !important;
 }
 
 .label {
   $bem-block: &;
   display: flex;
   position: relative;
-  min-height: p-px-to-rem(24px) !important;
+  min-height: p-px-to-rem(24px);
 
   &--error {
     ::slotted(input) {
@@ -225,9 +225,11 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input:not(:checked)) {
-      background: url(p-radio-button-wrapper-default-image()) no-repeat center,
-        radial-gradient(circle, $p-color-background-default 10px, $p-color-default 10px) no-repeat center !important;
-      background-size: p-px-to-rem(28px) !important;
+      @include p-radio-button-wrapper-initial-background(
+        p-radio-button-wrapper-default-image(),
+        $p-color-background-default,
+        $p-color-default
+      );
     }
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
