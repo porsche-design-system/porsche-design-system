@@ -4,7 +4,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  initMutationObserver,
+  updateHostOnNodePropChange,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
@@ -42,7 +42,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    initMutationObserver(this.host, this.input, ['disabled']);
+    updateHostOnNodePropChange(this.host, this.input, ['disabled']);
   }
 
   public componentDidRender(): void {

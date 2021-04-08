@@ -3,7 +3,7 @@ import {
   observeMutations,
   unobserveMutations,
   mutationMap,
-  initMutationObserver,
+  updateHostOnNodePropChange,
 } from '../../../src/utils';
 import * as initMutationObserverUtils from '../../../src/utils/mutation-observer';
 
@@ -17,7 +17,7 @@ describe('initMutationObserver()', () => {
 
     const host = document.createElement('div');
     const node = document.createElement('input');
-    initMutationObserver(host, node, ['checked']);
+    updateHostOnNodePropChange(host, node, ['checked']);
 
     expect(spy1).toHaveBeenCalledTimes(1);
   });
