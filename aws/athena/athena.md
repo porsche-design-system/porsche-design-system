@@ -2,6 +2,8 @@
 
 Collection of useful Athena queries.
 
+[Docs of available functions](https://docs.aws.amazon.com/athena/latest/ug/presto-functions.html)
+
 ## Table
 
 ```sql
