@@ -45,14 +45,14 @@
   position: static !important;
   height: p-px-to-rem(24px) !important;
   width: p-px-to-rem(24px) !important;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  background-size: p-px-to-rem(24px) p-px-to-rem(24px);
-  background-position: p-px-to-rem(-1px) p-px-to-rem(-1px);
+  background-size: 24px 24px !important;
+  background-position: -1px -1px !important;
   background-color: $p-color-background-default !important;
   transition: border $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
@@ -65,7 +65,7 @@
 
 ::slotted(input:checked),
 ::slotted(input:indeterminate) {
-  border: $p-color-neutral-contrast-high solid 1px !important;
+  border-color: $p-color-neutral-contrast-high !important;
   background-color: $p-color-neutral-contrast-high !important;
 }
 ::slotted(input:checked) {
@@ -101,7 +101,7 @@
 
   &--error {
     ::slotted(input) {
-      background-position: p-px-to-rem(-2px) p-px-to-rem(-2px);
+      background-position: -2px -2px !important;
       border: $p-color-notification-error solid 2px !important;
     }
     ::slotted(input:checked) {
@@ -123,7 +123,7 @@
 
   &--success {
     ::slotted(input) {
-      background-position: p-px-to-rem(-2px) p-px-to-rem(-2px);
+      background-position: -2px -2px !important;
       border: $p-color-notification-success solid 2px !important;
     }
     ::slotted(input:checked) {
@@ -160,7 +160,7 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input) {
-      border: $p-color-default solid 1px !important;
+      border-color: $p-color-default !important;
     }
 
     &--visible {
