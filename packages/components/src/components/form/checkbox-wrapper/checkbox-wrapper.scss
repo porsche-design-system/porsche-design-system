@@ -50,12 +50,14 @@
   margin: 0 !important;
   padding: 0 !important;
   appearance: none !important;
-  border: 0 !important;
+  box-sizing: border-box !important;
+  background-size: p-px-to-rem(24px) p-px-to-rem(24px);
+  background-position: p-px-to-rem(-1px) p-px-to-rem(-1px);
   background-color: $p-color-background-default !important;
-  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-medium !important;
-  transition: box-shadow $p-animation-hover-duration $p-animation-hover-bezier,
+  transition: border $p-animation-hover-duration $p-animation-hover-bezier,
     background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
   opacity: 1 !important;
+  border: $p-color-neutral-contrast-medium solid 1px !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
   cursor: pointer !important;
@@ -63,7 +65,7 @@
 
 ::slotted(input:checked),
 ::slotted(input:indeterminate) {
-  box-shadow: inset 0 0 0 1px $p-color-neutral-contrast-high !important;
+  border: $p-color-neutral-contrast-high solid 1px !important;
   background-color: $p-color-neutral-contrast-high !important;
 }
 ::slotted(input:checked) {
@@ -75,7 +77,7 @@
 }
 
 ::slotted(input:hover) {
-  box-shadow: inset 0 0 0 1px $p-color-default !important;
+  border-color: $p-color-default !important;
 }
 
 ::slotted(input:indeterminate:disabled),
@@ -85,7 +87,7 @@
 
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
-  box-shadow: inset 0 0 0 1px $p-color-state-disabled !important;
+  border-color: $p-color-state-disabled !important;
 }
 
 ::slotted(input:focus) {
@@ -99,7 +101,8 @@
 
   &--error {
     ::slotted(input) {
-      box-shadow: inset 0 0 0 2px $p-color-notification-error !important;
+      background-position: p-px-to-rem(-2px) p-px-to-rem(-2px);
+      border: $p-color-notification-error solid 2px !important;
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-error !important;
@@ -110,7 +113,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
-      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%) !important;
+      border-color: darken($p-color-notification-error, 12%) !important;
     }
 
     + .message {
@@ -120,7 +123,8 @@
 
   &--success {
     ::slotted(input) {
-      box-shadow: inset 0 0 0 2px $p-color-notification-success !important;
+      background-position: p-px-to-rem(-2px) p-px-to-rem(-2px);
+      border: $p-color-notification-success solid 2px !important;
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-success !important;
@@ -131,7 +135,7 @@
 
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
-      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%) !important;
+      border-color: darken($p-color-notification-success, 12%) !important;
     }
 
     + .message {
@@ -156,7 +160,7 @@
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
       ~ ::slotted(input) {
-      box-shadow: inset 0 0 0 1px $p-color-default !important;
+      border: $p-color-default solid 1px !important;
     }
 
     &--visible {
