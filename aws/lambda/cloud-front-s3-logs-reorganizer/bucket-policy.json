@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::595108795977:role/service-role/CloudFrontS3LogsReorganizer-role-ofr1f0ww"
+      },
+      "Action": ["s3:PutObject", "s3:PutObjectAcl"],
+      "Resource": "arn:aws:s3:::porsche-design-system-athena/tracking-data/*"
+    }
+  ]
+}
