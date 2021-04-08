@@ -1,3 +1,8 @@
+# CloudFrontS3LogsReorganizer
+
+## Sample Batch Mode
+
+```js
 const AWS = require('aws-sdk');
 const { renameAndReorganizeLogFile } = require('./utils');
 
@@ -25,3 +30,4 @@ exports.handler = async (event) => {
 
   console.log('next marker', files.Contents[files.Contents.length - 1].Key);
 };
+```

@@ -1,3 +1,8 @@
+# CreateAthenaPartition
+
+## Sample Batch Mode
+
+```js
 const { addPartition } = require('./utils');
 
 exports.handler = async (event) => {
@@ -18,3 +23,4 @@ exports.handler = async (event) => {
 
   console.log('Finished creating new Athena partition');
 };
+```
