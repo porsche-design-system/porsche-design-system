@@ -23,8 +23,7 @@ describe('initMutationObserver()', () => {
   });
 });
 
-// Unused function. Enable Testing if used.
-xdescribe('observeProperties()', () => {
+describe('observeProperties()', () => {
   const callback = jest.fn();
 
   it('should define getter and setter for single prop', () => {
