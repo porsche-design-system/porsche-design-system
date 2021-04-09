@@ -106,6 +106,7 @@
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-error !important;
+
       // Needs to be set explicitly for safari
       border-color: $p-color-notification-error !important;
     }
@@ -130,6 +131,7 @@
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-success !important;
+
       // Needs to be set explicitly for safari
       border-color: $p-color-notification-success !important;
     }
