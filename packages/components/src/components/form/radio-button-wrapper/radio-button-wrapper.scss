@@ -130,6 +130,23 @@
         $p-color-notification-error
       );
     }
+
+    ::slotted(input:not(:checked):not(:disabled):hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-background-default,
+        darken($p-color-notification-error, 12%)
+      );
+    }
+
+    ::slotted(input:not(:disabled):checked:hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-notification-error,
+        darken($p-color-notification-error, 12%)
+      );
+    }
+
     ::slotted(input:focus) {
       box-shadow: 0 0 0 1px $p-color-notification-error !important;
     }
@@ -165,6 +182,7 @@
         $p-color-notification-success
       );
     }
+
     ::slotted(input:checked) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
@@ -172,6 +190,23 @@
         $p-color-notification-success
       );
     }
+
+    ::slotted(input:not(:checked):not(:disabled):hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-background-default,
+        darken($p-color-notification-success, 12%)
+      );
+    }
+
+    ::slotted(input:not(:disabled):checked:hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-notification-success,
+        darken($p-color-notification-success, 12%)
+      );
+    }
+
     ::slotted(input:focus) {
       box-shadow: 0 0 0 1px $p-color-notification-success !important;
     }
