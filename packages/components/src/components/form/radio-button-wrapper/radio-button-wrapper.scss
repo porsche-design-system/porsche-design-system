@@ -62,7 +62,7 @@
     radial-gradient(circle, $p-color-background-default 10px, $p-color-neutral-contrast-medium 10px) no-repeat center !important;
   background-size: p-px-to-rem(28px) !important;
   border: 2px solid $p-color-background-default !important;
-  transition: background $p-animation-hover-duration $p-animation-hover-bezier;
+  transition: background $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
 ::slotted(input:checked) {
