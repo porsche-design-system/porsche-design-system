@@ -57,7 +57,7 @@
     "concurrently": "^6.0.1",
     "eslint": "^7.21.0",
     "eslint-plugin-vue": "^7.6.0",
-    "jasmine": "^3.6.4",
+    "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^6.0.0",
     "puppeteer": "~5.5.0",
     "sass": "^1.32.8",
