@@ -1,27 +1,4 @@
-import {
-  observeProperties,
-  observeMutations,
-  unobserveMutations,
-  mutationMap,
-  updateHostOnNodeAttributeChange,
-} from '../../../src/utils';
-import * as initMutationObserverUtils from '../../../src/utils/mutation-observer';
-
-describe('updateHostOnNodeAttributeChange()', () => {
-  beforeEach(() => {
-    mutationMap.clear();
-  });
-
-  it('should call observeMutations', () => {
-    const spy1 = jest.spyOn(initMutationObserverUtils, 'observeMutations');
-
-    const host = document.createElement('div');
-    const node = document.createElement('input');
-    updateHostOnNodeAttributeChange(host, node, ['checked']);
-
-    expect(spy1).toHaveBeenCalledTimes(1);
-  });
-});
+import { observeProperties, observeMutations, unobserveMutations, mutationMap } from '../../../src/utils';
 
 describe('observeProperties()', () => {
   const callback = jest.fn();
