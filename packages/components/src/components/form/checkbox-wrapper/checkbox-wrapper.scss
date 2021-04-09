@@ -51,7 +51,7 @@
   padding: 0 !important;
   appearance: none !important;
   box-sizing: border-box !important;
-  background-size: p-px-to-rem(24px) p-px-to-rem(24px);
+  background-size: p-px-to-rem(24px) p-px-to-rem(24px) !important;
   background-position: -1px -1px !important;
   background-color: $p-color-background-default !important;
   transition: border $p-animation-hover-duration $p-animation-hover-bezier,
