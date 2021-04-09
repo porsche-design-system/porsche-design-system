@@ -44,7 +44,7 @@
     "@rollup/plugin-typescript": "^8.2.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/user-event": "^13.1.1",
     "@types/jasmine": "^3.6.9",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.37",
