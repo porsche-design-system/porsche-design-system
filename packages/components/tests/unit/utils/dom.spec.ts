@@ -184,25 +184,27 @@ describe('Event Listener', () => {
 describe('getAttribute()', () => {
   it('should return attribute value', () => {
     const element = document.createElement('div');
-    element.setAttribute('title', 'Some title');
+    const title = 'Some title';
+    element.setAttribute('title', title);
 
-    expect(getAttribute(element, 'title')).toBe('Some title');
+    expect(getAttribute(element, 'title')).toBe(title);
   });
 });
 
 describe('setAttribute()', () => {
   it('should set attribute value', () => {
     const element = document.createElement('div');
-    setAttribute(element, 'title', 'Some title');
+    const title = 'Some title';
+    setAttribute(element, 'title', title);
 
-    expect(element.getAttribute('title')).toBe('Some title');
+    expect(element.getAttribute('title')).toBe(title);
   });
 });
 
 describe('removeAttribute()', () => {
   it('should remove attribute', () => {
     const element = document.createElement('div');
-    element.setAttribute('title', 'Some Title');
+    element.setAttribute('title', 'Some title');
 
     removeAttribute(element, 'title');
     expect(element.getAttribute('title')).toBe(null);
@@ -210,67 +212,69 @@ describe('removeAttribute()', () => {
 });
 
 describe('isLabelVisible()', () => {
-  it.each<[boolean, boolean, boolean]>([
-    [true, false, true],
-    [false, true, true],
-    [false, false, false],
-    [true, true, true],
-  ])('should be called with label:%s & slotted:%p and return:%p', (label, slotted, result) => {
-    const labelText = label ? 'Some label' : '';
+  const label = 'Some description';
+  it.each<[{ label: string; slotted: boolean }, boolean]>([
+    [{ label, slotted: false }, true],
+    [{ label: '', slotted: true }, true],
+    [{ label: '', slotted: false }, false],
+    [{ label, slotted: true }, true],
+  ])('should be called with parameter:%p and return:%p', (parameter, result) => {
+    const { label, slotted } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('label', labelText);
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'label';
-      el.appendChild(slot);
-    }
-
-    expect(isLabelVisible(el, labelText)).toBe(result);
-  });
-});
-
-describe('isDescriptionVisible()', () => {
-  it.each<[boolean, boolean, boolean]>([
-    [true, false, true],
-    [false, true, true],
-    [false, false, false],
-    [true, true, true],
-  ])('should be called with description:%p, slotted:%p and return:%p', (description, slotted, result) => {
-    const descriptionText = description ? 'Some description' : '';
-    const el = document.createElement('div');
-    el.setAttribute('description', descriptionText);
+    el.setAttribute('description', label);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'description';
       el.appendChild(slot);
     }
 
-    expect(isDescriptionVisible(el, descriptionText)).toBe(result);
+    expect(isDescriptionVisible(el, label)).toBe(result);
+  });
+});
+
+describe('isDescriptionVisible()', () => {
+  const description = 'Some description';
+  it.each<[{ description: string; slotted: boolean }, boolean]>([
+    [{ description, slotted: false }, true],
+    [{ description: '', slotted: true }, true],
+    [{ description: '', slotted: false }, false],
+    [{ description, slotted: true }, true],
+  ])('should be called with parameter:%p and return:%p', (parameter, result) => {
+    const { description, slotted } = parameter;
+    const el = document.createElement('div');
+    el.setAttribute('description', description);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(isDescriptionVisible(el, description)).toBe(result);
   });
 });
 
 describe('isMessageVisible()', () => {
-  it.each<[boolean, boolean, FormState, boolean]>([
-    [true, false, 'error', true],
-    [false, true, 'error', true],
-    [false, false, 'error', false],
-    [true, false, 'none', false],
-    [false, true, 'none', false],
-    [true, false, 'success', true],
-    [false, true, 'success', true],
-    [false, false, 'success', false],
-    [true, false, 'none', false],
-    [false, true, 'none', false],
-  ])('should be called with message:%p, slotted:%p, state:%s and return:%p', (message, slotted, state, result) => {
-    const messageText = message ? 'Some Message' : '';
+  const message = 'Some message';
+  it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
+    [{ message, slotted: false, formState: 'error' }, true],
+    [{ message: '', slotted: true, formState: 'error' }, true],
+    [{ message: '', slotted: false, formState: 'error' }, false],
+    [{ message, slotted: false, formState: 'none' }, false],
+    [{ message: '', slotted: true, formState: 'none' }, false],
+    [{ message: '', slotted: false, formState: 'none' }, false],
+    [{ message, slotted: false, formState: 'success' }, true],
+    [{ message: '', slotted: true, formState: 'success' }, true],
+    [{ message: '', slotted: false, formState: 'success' }, false],
+  ])('should be called with parameter:%p, and return:%p', (parameter, result) => {
+    const { message, slotted, formState } = parameter;
     const el = document.createElement('div');
-    el.setAttribute('message', messageText);
+    el.setAttribute('message', message);
     if (slotted) {
       const slot = document.createElement('span');
       slot.slot = 'message';
       el.appendChild(slot);
     }
 
-    expect(isMessageVisible(el, messageText, state)).toBe(result);
+    expect(isMessageVisible(el, message, formState)).toBe(result);
   });
 });
