@@ -1,16 +1,16 @@
-import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
   getClosestHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  updateHostOnNodeAttributeChange,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
+  observeMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -42,7 +42,7 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
-    updateHostOnNodeAttributeChange(this.host, this.input, ['disabled']);
+    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
   }
 
   public componentDidRender(): void {

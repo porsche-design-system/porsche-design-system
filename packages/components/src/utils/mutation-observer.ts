@@ -1,5 +1,3 @@
-import { forceUpdate } from '@stencil/core';
-
 /**
  * PROPERTIES
  */
@@ -49,25 +47,4 @@ export const observeMutations = <T extends HTMLElement>(node: T, props: (keyof T
 
 export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
   mutationMap.delete(node);
-};
-
-/**
- * PUBLIC API
- */
-export const updateHostOnNodeAttributeChange = <T extends HTMLElement>(
-  host: HTMLElement,
-  node: T,
-  props: (keyof T)[]
-): void => {
-  const updateComponent = (): void => {
-    forceUpdate(host);
-  };
-
-  // observeProperties(node, props, updateComponent);
-  observeMutations(node, props, updateComponent);
-};
-
-// TODO: make this work reliably with disconnectedCallback
-export const disconnectAttributePropChangeListener = <T extends HTMLElement>(node: T): void => {
-  unobserveMutations(node);
 };
