@@ -54,7 +54,7 @@ export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
 /**
  * PUBLIC API
  */
-export const updateHostOnNodePropChange = <T extends HTMLElement>(
+export const updateHostOnNodeAttributeChange = <T extends HTMLElement>(
   host: HTMLElement,
   node: T,
   props: (keyof T)[]

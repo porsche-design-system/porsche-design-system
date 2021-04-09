@@ -4,7 +4,7 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  updateHostOnNodePropChange,
+  updateHostOnNodeAttributeChange,
   insertSlottedStyles,
   isLabelVisible,
   isMessageVisible,
@@ -42,7 +42,7 @@ export class RadioButtonWrapper {
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    updateHostOnNodePropChange(this.host, this.input, ['disabled']);
+    updateHostOnNodeAttributeChange(this.host, this.input, ['disabled']);
   }
 
   public componentDidRender(): void {
