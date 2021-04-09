@@ -106,6 +106,8 @@
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-error !important;
+      // Needs to be set explicitly for safari
+      border-color: $p-color-notification-error !important;
     }
     ::slotted(input:focus) {
       outline-color: $p-color-notification-error !important;
@@ -128,6 +130,8 @@
     }
     ::slotted(input:checked) {
       background-color: $p-color-notification-success !important;
+      // Needs to be set explicitly for safari
+      border-color: $p-color-notification-success !important;
     }
     ::slotted(input:focus) {
       outline-color: $p-color-notification-success !important;
@@ -159,7 +163,7 @@
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
-      ~ ::slotted(input) {
+      + ::slotted(input) {
       border-color: $p-color-default !important;
     }
 
