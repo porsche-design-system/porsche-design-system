@@ -163,7 +163,7 @@
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
-      + ::slotted(input) {
+      ~ ::slotted(input) {
       border-color: $p-color-default !important;
     }
 

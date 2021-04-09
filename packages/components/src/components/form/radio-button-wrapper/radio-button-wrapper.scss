@@ -13,7 +13,7 @@
 }
 
 @mixin p-radio-button-wrapper-background($image, $color-1, $color-2) {
-  background-image: url($image), radial-gradient(circle, $color-1 10px, $color-2 10px) !important;
+  background-image: url($image), radial-gradient(circle, $color-1 9px, $color-2 9px) !important;
 }
 
 @mixin p-radio-button-wrapper-label-text-visible() {
@@ -135,7 +135,7 @@
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
-    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):not(:disabled):hover) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
         $p-color-background-default,
@@ -144,7 +144,7 @@
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
-    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:disabled):checked:hover) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
         $p-color-notification-error,
@@ -177,7 +177,7 @@
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input),
-    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):hover) {
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:checked):not(:disabled):hover) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
         $p-color-background-default,
@@ -186,7 +186,7 @@
     }
 
     #{$bem-block}__text:hover ~ ::slotted(input:checked),
-    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
+    &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:not(:disabled):checked:hover) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
         $p-color-notification-success,
@@ -215,7 +215,7 @@
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
-      ~ ::slotted(input:not(:checked)) {
+      ~ ::slotted(input:not(:checked):not(:disabled)) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-default-image(),
         $p-color-background-default,
@@ -225,7 +225,7 @@
 
     &:hover:not(#{$bem-block}--disabled #{$bem-block}__text):not(#{$bem-block}--success
         #{$bem-block}__text):not(#{$bem-block}--error #{$bem-block}__text)
-      ~ ::slotted(input:checked) {
+      ~ ::slotted(input:not(:disabled):checked) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-default-image(),
         $p-color-neutral-contrast-high,
