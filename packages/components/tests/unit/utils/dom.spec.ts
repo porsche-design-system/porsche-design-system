@@ -218,7 +218,7 @@ describe('isLabelVisible()', () => {
     [{ label: '', slotted: true }, true],
     [{ label: '', slotted: false }, false],
     [{ label, slotted: true }, true],
-  ])('should be called with parameter:%p and return:%p', (parameter, result) => {
+  ])('should be called with parameter: "%p" and return: "%p"', (parameter, result) => {
     const { label, slotted } = parameter;
     const el = document.createElement('div');
     el.setAttribute('description', label);
@@ -239,7 +239,7 @@ describe('isDescriptionVisible()', () => {
     [{ description: '', slotted: true }, true],
     [{ description: '', slotted: false }, false],
     [{ description, slotted: true }, true],
-  ])('should be called with parameter:%p and return:%p', (parameter, result) => {
+  ])('should be called with parameter: "%p" and return: "%p"', (parameter, result) => {
     const { description, slotted } = parameter;
     const el = document.createElement('div');
     el.setAttribute('description', description);
@@ -265,7 +265,7 @@ describe('isMessageVisible()', () => {
     [{ message, slotted: false, formState: 'success' }, true],
     [{ message: '', slotted: true, formState: 'success' }, true],
     [{ message: '', slotted: false, formState: 'success' }, false],
-  ])('should be called with parameter:%p, and return:%p', (parameter, result) => {
+  ])('should be called with parameter: "%p", and return: "%p"', (parameter, result) => {
     const { message, slotted, formState } = parameter;
     const el = document.createElement('div');
     el.setAttribute('message', message);
