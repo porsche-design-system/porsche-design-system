@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
       }
 
       p-flex-item[align-self] > p,
-      p-flex-item[ng-reflect-align-self] > p {
+      p-flex-item.highlight > p {
         background-color: deeppink;
       }
 
@@ -847,7 +847,7 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should render with align-self mode 'auto'">
       <p-flex style="height: 180px;" [alignItems]="'flex-end'">
-        <p-flex-item [alignSelf]="'stretch'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'stretch'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
@@ -870,7 +870,7 @@ import { Component } from '@angular/core';
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="'stretch'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'stretch'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -887,7 +887,7 @@ import { Component } from '@angular/core';
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="'flex-start'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'flex-start'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -904,7 +904,7 @@ import { Component } from '@angular/core';
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="'flex-end'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'flex-end'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -921,7 +921,7 @@ import { Component } from '@angular/core';
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="'center'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'center'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -932,13 +932,13 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should render with align-self mode 'baseline'">
       <p-flex style="height: 180px;">
-        <p-flex-item [alignSelf]="'baseline'">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'baseline'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="'baseline'" style="margin-top: 1rem;">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'baseline'" style="margin-top: 1rem;">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -955,7 +955,7 @@ import { Component } from '@angular/core';
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
+        <p-flex-item [ngClass]="'highlight'" [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
