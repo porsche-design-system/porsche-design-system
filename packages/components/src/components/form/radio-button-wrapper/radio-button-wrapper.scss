@@ -13,7 +13,7 @@
 }
 
 @mixin p-radio-button-wrapper-background($image, $color-1, $color-2) {
-  background-image: url($image), radial-gradient(circle, $color-1 9px, $color-2 9px) !important;
+  background-image: url($image), radial-gradient(circle, $color-1 p-px-to-rem(9px), $color-2 p-px-to-rem(9px)) !important;
 }
 
 @mixin p-radio-button-wrapper-label-text-visible() {
@@ -58,8 +58,12 @@
   outline: none !important;
   cursor: pointer !important;
   box-sizing: border-box !important;
-  background: url(p-radio-button-wrapper-default-image()) no-repeat center,
-    radial-gradient(circle, $p-color-background-default 10px, $p-color-neutral-contrast-medium 10px) no-repeat center !important;
+  background: none no-repeat center !important;
+  @include p-radio-button-wrapper-background(
+    p-radio-button-wrapper-default-image(),
+    $p-color-background-default,
+    $p-color-neutral-contrast-medium
+  );
   background-size: p-px-to-rem(28px) !important;
   border: 2px solid $p-color-background-default !important;
   transition: background $p-animation-hover-duration $p-animation-hover-bezier !important;
