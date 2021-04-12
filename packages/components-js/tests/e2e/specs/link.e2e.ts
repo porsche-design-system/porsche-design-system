@@ -99,60 +99,59 @@ describe('link', () => {
     let afterFocusCalls = 0;
     await addEventListener(after, 'focus', () => afterFocusCalls++);
 
-    expect(beforeFocusCalls).toBe(0);
-    expect(linkFocusCalls).toBe(0);
-    expect(linkFocusInCalls).toBe(0);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
+    expect(beforeFocusCalls).toBe(0, 'initially');
+    expect(linkFocusCalls).toBe(0, 'initially');
+    expect(linkFocusInCalls).toBe(0, 'initially');
+    expect(linkBlurCalls).toBe(0, 'initially');
+    expect(linkFocusOutCalls).toBe(0, 'initially');
+    expect(afterFocusCalls).toBe(0, 'initially');
     expect(await getActiveElementId(page)).toBe('');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(0);
-    expect(linkFocusInCalls).toBe(0);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
+    expect(beforeFocusCalls).toBe(1, 'after 1st tab');
+    expect(linkFocusCalls).toBe(0, 'after 1st tab');
+    expect(linkFocusInCalls).toBe(0, 'after 1st tab');
+    expect(linkBlurCalls).toBe(0, 'after 1st tab');
+    expect(linkFocusOutCalls).toBe(0, 'after 1st tab');
+    expect(afterFocusCalls).toBe(0, 'after 1st tab');
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(1);
-    expect(linkFocusInCalls).toBe(1);
-    expect(linkBlurCalls).toBe(0);
-    expect(linkFocusOutCalls).toBe(0);
-    expect(afterFocusCalls).toBe(0);
+    expect(beforeFocusCalls).toBe(1, 'after 2nd tab');
+    expect(linkFocusCalls).toBe(1, 'after 2nd tab');
+    expect(linkFocusInCalls).toBe(1, 'after 2nd tab');
+    expect(linkBlurCalls).toBe(0, 'after 2nd tab');
+    expect(linkFocusOutCalls).toBe(0, 'after 2nd tab');
+    expect(afterFocusCalls).toBe(0, 'after 2nd tab');
     expect(await getActiveElementId(page)).toBe('my-link');
 
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(1);
-    expect(linkFocusInCalls).toBe(1);
-    expect(linkBlurCalls).toBe(1);
-    expect(linkFocusOutCalls).toBe(1);
-    expect(afterFocusCalls).toBe(1);
+    expect(beforeFocusCalls).toBe(1, 'after 3rd tab');
+    expect(linkFocusCalls).toBe(1, 'after 3rd tab');
+    expect(linkFocusInCalls).toBe(1, 'after 3rd tab');
+    expect(linkBlurCalls).toBe(1, 'after 3rd tab');
+    expect(linkFocusOutCalls).toBe(1, 'after 3rd tab');
+    expect(afterFocusCalls).toBe(1, 'after 3rd tab');
     expect(await getActiveElementId(page)).toBe('after');
 
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(1);
-    expect(linkFocusCalls).toBe(2);
-    expect(linkFocusInCalls).toBe(2);
-    expect(linkBlurCalls).toBe(1);
-    expect(linkFocusOutCalls).toBe(1);
-    expect(afterFocusCalls).toBe(1);
+    expect(beforeFocusCalls).toBe(1, 'after 1st tab back');
+    expect(linkFocusCalls).toBe(2, 'after 1st tab back');
+    expect(linkFocusInCalls).toBe(2, 'after 1st tab back');
+    expect(linkBlurCalls).toBe(1, 'after 1st tab back');
+    expect(linkFocusOutCalls).toBe(1, 'after 1st tab back');
+    expect(afterFocusCalls).toBe(1, 'after 1st tab back');
     expect(await getActiveElementId(page)).toBe('my-link');
 
-    await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
-    expect(beforeFocusCalls).toBe(2);
-    expect(linkFocusCalls).toBe(2);
-    expect(linkFocusInCalls).toBe(2);
-    expect(linkBlurCalls).toBe(2);
-    expect(linkFocusOutCalls).toBe(2);
-    expect(afterFocusCalls).toBe(1);
+    expect(beforeFocusCalls).toBe(2, 'after 2nd tab back');
+    expect(linkFocusCalls).toBe(2, 'after 2nd tab back');
+    expect(linkFocusInCalls).toBe(2, 'after 2nd tab back');
+    expect(linkBlurCalls).toBe(2, 'after 2nd tab back');
+    expect(linkFocusOutCalls).toBe(2, 'after 2nd tab back');
+    expect(afterFocusCalls).toBe(1, 'after 2nd tab back');
     expect(await getActiveElementId(page)).toBe('before');
 
     await page.keyboard.up('ShiftLeft');
