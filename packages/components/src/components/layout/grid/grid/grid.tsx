@@ -19,7 +19,7 @@ export class Grid {
   @Prop() public gutter?: GridGutter = { base: 16, s: 24, m: 36 };
 
   @Watch('gutter')
-  public handleGutterChange() {
+  public handleGutterChange(): void {
     Array.from(this.host.children).forEach(forceUpdate);
   }
 
