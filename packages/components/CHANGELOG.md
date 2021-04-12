@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.10] - 2021-04-12
+
 #### Changed
 - `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements
 - Improved performance of `Text`, `Button Pure` and `Link Pure` when `size` is not `inherit`
