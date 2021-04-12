@@ -40,9 +40,13 @@ const mutationObserver = new MutationObserver((mutations) => {
     .forEach((mutation) => mutationMap.get(mutation.target)());
 });
 
-export const observeMutations = <T extends HTMLElement>(node: T, props: (keyof T)[], callback: () => void): void => {
+export const observeMutations = <T extends HTMLElement>(
+  node: T,
+  attributes: (keyof T)[],
+  callback: () => void
+): void => {
   mutationMap.set(node, callback);
-  mutationObserver.observe(node, { attributeFilter: props as string[], attributeOldValue: true });
+  mutationObserver.observe(node, { attributeFilter: attributes as string[], attributeOldValue: true });
 };
 
 export const unobserveMutations = <T extends HTMLElement>(node: T): void => {
