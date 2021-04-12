@@ -4492,7 +4492,7 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-angular-http-server@^0.12.3:
+angular-http-server@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/angular-http-server/-/angular-http-server-1.10.0.tgz#8d518b03df6dc2633822de9603f51da7f1a0db6d"
   integrity sha512-GlEkTzduqV56+nkP/Ye68Nd386I1G15AlIUTZYKj2yMdQOYn5E0icw7oyHBSIEOwlhzjlqm9rSxo2oJqAa7JXA==
