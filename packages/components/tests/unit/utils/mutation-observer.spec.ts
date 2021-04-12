@@ -89,6 +89,55 @@ describe('observeMutations()', () => {
     expect(mutationMap.size).toBe(1);
     expect(mutationMap.get(node)).toEqual(callback);
   });
+
+  it('should call cb once if observeMutations is reapplied ', async () => {
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+
+    const cb = jest.fn();
+
+    observeMutations(input, ['disabled'], cb);
+    unobserveMutations(input);
+    observeMutations(input, ['disabled'], cb);
+
+    input.setAttribute('disabled', '');
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(cb).toBeCalledTimes(1);
+  });
+
+  it('should call cb once if observeMutations is called multiple times ', async () => {
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+
+    const cb = jest.fn();
+
+    observeMutations(input, ['disabled'], cb);
+    observeMutations(input, ['disabled'], cb);
+    observeMutations(input, ['disabled'], cb);
+
+    input.setAttribute('disabled', '');
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(cb).toBeCalledTimes(1);
+  });
+
+  it('should call cb once if multiple inputs are observed', async () => {
+    const input1 = document.createElement('input');
+    const input2 = document.createElement('input');
+    document.body.appendChild(input1);
+    document.body.appendChild(input2);
+
+    const cb = jest.fn();
+
+    observeMutations(input1, ['disabled'], cb);
+    observeMutations(input2, ['disabled'], cb);
+
+    input1.setAttribute('disabled', '');
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(cb).toBeCalledTimes(1);
+  });
 });
 
 describe('unobserveMutations()', () => {
@@ -117,45 +166,5 @@ describe('unobserveMutations()', () => {
     unobserveMutations(node3);
     expect(mutationMap.size).toBe(1);
     expect(mutationMap.get(node2)).toEqual(callback2);
-  });
-});
-
-xdescribe('mutation-observer', () => {
-  beforeEach(() => {
-    mutationMap.clear();
-  });
-
-  it('should ', () => {
-    class Component {
-      private host: HTMLElement;
-      private input: HTMLInputElement;
-      constructor(host, input) {
-        this.host = host;
-        this.input = input;
-      }
-      cb() {
-        console.log('callback');
-      }
-      connectedCallback(): void {
-        observeMutations(this.input, ['disabled'], this.cb);
-      }
-      componentWillLoad(): void {
-        observeMutations(this.input, ['disabled'], this.cb);
-      }
-      disconnectedCallback(): void {
-        unobserveMutations(this.input);
-      }
-    }
-    const host = document.createElement('span');
-    const input = document.createElement('input');
-    const dummyComponent = new Component(host, input);
-    dummyComponent.componentWillLoad();
-    console.log('componentWillLoad ==>>>>', mutationMap);
-    dummyComponent.disconnectedCallback();
-    console.log('disconnectedCallback ==>>>>', mutationMap);
-    dummyComponent.connectedCallback();
-    console.log('connectedCallback ==>>>>', mutationMap);
-
-    expect(true).toBe(true);
   });
 });

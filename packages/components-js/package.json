@@ -69,7 +69,7 @@
     "http-server": "^0.12.3",
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "^6.0.0",
-    "jsdom": "^16.5.2",
+    "jsdom": "^16.5.3",
     "puppeteer": "~5.5.0",
     "ts-node": "^9.1.1",
     "typescript": "~4.2.4",
