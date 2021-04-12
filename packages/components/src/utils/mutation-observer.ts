@@ -37,7 +37,7 @@ const mutationObserver = new MutationObserver((mutations) => {
     .filter((mutation) => mutation.oldValue !== (mutation.target as HTMLElement).getAttribute(mutation.attributeName))
     // remove duplicates so we call forceUpdate only once per node
     .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
-    .forEach((mutation) => mutationMap.get(mutation.target)());
+    .forEach((mutation) => mutationMap.get(mutation.target)?.());
 });
 
 export const observeMutations = <T extends HTMLElement>(
