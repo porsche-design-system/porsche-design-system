@@ -48,7 +48,7 @@
     "@types/node": "^14.14.37",
     "@types/puppeteer": "^5.4.3",
     "concurrently": "^6.0.1",
-    "angular-http-server": "^0.12.3",
+    "angular-http-server": "^1.10.0",
     "jasmine": "^3.7.0",
     "jasmine-spec-reporter": "~6.0.0",
     "ng-packagr": "^11.2.2",
