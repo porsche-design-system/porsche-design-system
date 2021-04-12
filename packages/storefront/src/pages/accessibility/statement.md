@@ -9,7 +9,7 @@
 An accessibility statement that makes rash or false claims will only damage the reputation of the website, not enhance it and it does not prevent the site owner from getting sued if the website lacks support for accessibility.
 
 ## Where to put an accessibility statement
-**Accessibility statements should be easy to find.** There are several places where you can implement the link, such as from the footer, help menu, as an invisible anchor in the header of each homepage (e.g. next to the sites "Skip Link"), and other prominent areas which helps users to find them. 
+**Accessibility statements should be easy to find** and placed on each page, e.g., placing it in the footer area should be a proven way. 
 Use consistent link names for your accessibility statements to help users recognize them. 
 
 ## Example template
