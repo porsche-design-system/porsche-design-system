@@ -297,6 +297,7 @@
   }
 
   // TODO: Workaround styles to make hover on input work in safari & chrome < v88
+  /* stylelint-disable-next-line no-duplicate-selectors */
   &--error {
     ::slotted(input:not(:checked):not(:disabled):hover) {
       @include p-radio-button-wrapper-background(
@@ -315,6 +316,7 @@
     }
   }
 
+  /* stylelint-disable-next-line no-duplicate-selectors */
   &--success {
     ::slotted(input:not(:checked):not(:disabled):hover) {
       @include p-radio-button-wrapper-background(

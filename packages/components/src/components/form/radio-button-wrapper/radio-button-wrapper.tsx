@@ -107,7 +107,7 @@ export class RadioButtonWrapper {
     }
   };
 
-  private observeMutations = () => {
+  private observeMutations = (): void => {
     observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
   };
 
