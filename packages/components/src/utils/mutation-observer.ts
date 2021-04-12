@@ -45,8 +45,11 @@ export const observeMutations = <T extends HTMLElement>(
   attributes: (keyof T)[],
   callback: () => void
 ): void => {
-  mutationMap.set(node, callback);
-  mutationObserver.observe(node, { attributeFilter: attributes as string[], attributeOldValue: true });
+  // node might not be defined in connectedCallback
+  if (node) {
+    mutationMap.set(node, callback);
+    mutationObserver.observe(node, { attributeFilter: attributes as string[], attributeOldValue: true });
+  }
 };
 
 export const unobserveMutations = <T extends HTMLElement>(node: T): void => {

@@ -38,15 +38,13 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    if (this.input) {
-      observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
-    }
     this.addSlottedStyles();
+    this.observeMutations();
   }
 
   public componentWillLoad(): void {
     this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
-    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
+    this.observeMutations();
   }
 
   public componentDidRender(): void {
@@ -107,6 +105,10 @@ export class RadioButtonWrapper {
       this.input.focus();
       this.input.click();
     }
+  };
+
+  private observeMutations = () => {
+    observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
