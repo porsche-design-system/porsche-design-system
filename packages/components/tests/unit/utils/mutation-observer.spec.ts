@@ -76,12 +76,14 @@ describe('observeProperties()', () => {
   });
 });
 
-describe('observeMutations()', () => {
+describe('mutation-observer behavior', () => {
   beforeEach(() => {
     mutationMap.clear();
   });
 
-  it('should add node and callback to mutationCallbacks array', () => {
+  const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
+
+  it('should add callback and key to mutationMap', () => {
     const node = document.createElement('input');
     const callback = () => {};
 
@@ -90,53 +92,66 @@ describe('observeMutations()', () => {
     expect(mutationMap.get(node)).toEqual(callback);
   });
 
-  it('should call cb once if observeMutations is reapplied ', async () => {
-    const input = document.createElement('input');
-    document.body.appendChild(input);
+  describe('should run callback once on attribute change', () => {
+    it('when observeMutations is reapplied', async () => {
+      const input = document.createElement('input');
 
-    const cb = jest.fn();
+      const cb = jest.fn();
 
-    observeMutations(input, ['disabled'], cb);
-    unobserveMutations(input);
-    observeMutations(input, ['disabled'], cb);
+      observeMutations(input, ['disabled'], cb);
+      unobserveMutations(input);
+      observeMutations(input, ['disabled'], cb);
 
-    input.setAttribute('disabled', '');
+      input.setAttribute('disabled', '');
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(cb).toBeCalledTimes(1);
+      await tick();
+      expect(cb).toBeCalledTimes(1);
+    });
+
+    it('when observeMutations is called multiple times', async () => {
+      const input = document.createElement('input');
+
+      const cb = jest.fn();
+
+      observeMutations(input, ['disabled'], cb);
+      observeMutations(input, ['disabled'], cb);
+      observeMutations(input, ['disabled'], cb);
+
+      input.setAttribute('disabled', '');
+
+      await tick();
+      expect(cb).toBeCalledTimes(1);
+    });
+
+    it('when multiple inputs are observed', async () => {
+      const input1 = document.createElement('input');
+      const input2 = document.createElement('input');
+
+      const cb1 = jest.fn();
+      const cb2 = jest.fn();
+
+      observeMutations(input1, ['disabled'], cb1);
+      observeMutations(input2, ['disabled'], cb2);
+
+      input1.setAttribute('disabled', '');
+
+      await tick();
+      expect(cb1).toBeCalledTimes(1);
+      expect(cb2).toBeCalledTimes(0);
+    });
   });
 
-  it('should call cb once if observeMutations is called multiple times ', async () => {
+  it('should not execute callback when mutationMap is cleared', async () => {
     const input = document.createElement('input');
-    document.body.appendChild(input);
-
     const cb = jest.fn();
 
     observeMutations(input, ['disabled'], cb);
-    observeMutations(input, ['disabled'], cb);
-    observeMutations(input, ['disabled'], cb);
+    mutationMap.clear();
 
     input.setAttribute('disabled', '');
+    await tick();
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(cb).toBeCalledTimes(1);
-  });
-
-  it('should call cb once if multiple inputs are observed', async () => {
-    const input1 = document.createElement('input');
-    const input2 = document.createElement('input');
-    document.body.appendChild(input1);
-    document.body.appendChild(input2);
-
-    const cb = jest.fn();
-
-    observeMutations(input1, ['disabled'], cb);
-    observeMutations(input2, ['disabled'], cb);
-
-    input1.setAttribute('disabled', '');
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(cb).toBeCalledTimes(1);
+    expect(cb).toBeCalledTimes(0);
   });
 });
 
