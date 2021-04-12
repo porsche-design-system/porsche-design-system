@@ -123,27 +123,12 @@
         $p-color-notification-error
       );
     }
+
     ::slotted(input:checked) {
       @include p-radio-button-wrapper-background(
         p-radio-button-wrapper-state-image(),
         $p-color-notification-error,
         $p-color-notification-error
-      );
-    }
-
-    ::slotted(input:not(:checked):not(:disabled):hover) {
-      @include p-radio-button-wrapper-background(
-        p-radio-button-wrapper-state-image(),
-        $p-color-background-default,
-        darken($p-color-notification-error, 12%)
-      );
-    }
-
-    ::slotted(input:not(:disabled):checked:hover) {
-      @include p-radio-button-wrapper-background(
-        p-radio-button-wrapper-state-image(),
-        $p-color-notification-error,
-        darken($p-color-notification-error, 12%)
       );
     }
 
@@ -188,22 +173,6 @@
         p-radio-button-wrapper-state-image(),
         $p-color-notification-success,
         $p-color-notification-success
-      );
-    }
-
-    ::slotted(input:not(:checked):not(:disabled):hover) {
-      @include p-radio-button-wrapper-background(
-        p-radio-button-wrapper-state-image(),
-        $p-color-background-default,
-        darken($p-color-notification-success, 12%)
-      );
-    }
-
-    ::slotted(input:not(:disabled):checked:hover) {
-      @include p-radio-button-wrapper-background(
-        p-radio-button-wrapper-state-image(),
-        $p-color-notification-success,
-        darken($p-color-notification-success, 12%)
       );
     }
 
@@ -324,6 +293,43 @@
       &--hidden-xl {
         @include p-radio-button-wrapper-label-text-hidden;
       }
+    }
+  }
+
+  // TODO: Workaround styles to make hover on input work in safari & chrome < v88
+  &--error {
+    ::slotted(input:not(:checked):not(:disabled):hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-background-default,
+        darken($p-color-notification-error, 12%)
+      );
+    }
+
+    ::slotted(input:not(:disabled):checked:hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-notification-error,
+        darken($p-color-notification-error, 12%)
+      );
+    }
+  }
+
+  &--success {
+    ::slotted(input:not(:checked):not(:disabled):hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-background-default,
+        darken($p-color-notification-success, 12%)
+      );
+    }
+
+    ::slotted(input:not(:disabled):checked:hover) {
+      @include p-radio-button-wrapper-background(
+        p-radio-button-wrapper-state-image(),
+        $p-color-notification-success,
+        darken($p-color-notification-success, 12%)
+      );
     }
   }
 }
