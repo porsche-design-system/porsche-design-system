@@ -30,12 +30,12 @@ picture {
   }
 
   :host([size='small']) &,
-  :host.small & {
+  :host(.small) & {
     @include p-marque-small;
   }
 
   :host([size='medium']) &,
-  :host.medium & {
+  :host(.medium) & {
     @include p-marque-medium;
   }
 }
