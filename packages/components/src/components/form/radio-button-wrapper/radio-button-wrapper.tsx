@@ -11,6 +11,7 @@ import {
   mapBreakpointPropToPrefixedClasses,
   setAriaAttributes,
   observeMutations,
+  unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -37,6 +38,9 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
+    if (this.input) {
+      observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
+    }
     this.addSlottedStyles();
   }
 
@@ -56,6 +60,10 @@ export class RadioButtonWrapper {
       message: this.message,
       state: this.state,
     });
+  }
+
+  public disconnectedCallback(): void {
+    unobserveMutations(this.input);
   }
 
   public render(): JSX.Element {
