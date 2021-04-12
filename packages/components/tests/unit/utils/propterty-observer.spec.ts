@@ -1,4 +1,4 @@
-import { observeProperties } from '../../../dist/types/utils';
+import { observeProperties } from '../../../src/utils';
 
 describe('observeProperties()', () => {
   const callback = jest.fn();
