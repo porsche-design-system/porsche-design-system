@@ -9,6 +9,7 @@ export * from './get-prefixed-tag-name';
 export * from './jss';
 export * from './line-height';
 export * from './prefix';
+export * from './property-observer';
 export * from './dom';
 export * from './slotted-styles';
 export * from './ssr-handling';
