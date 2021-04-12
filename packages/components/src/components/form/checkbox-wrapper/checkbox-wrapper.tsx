@@ -108,7 +108,7 @@ export class CheckboxWrapper {
     }
   };
 
-  private observeMutations = () => {
+  private observeMutations = (): void => {
     observeMutations(this.input, ['disabled'], () => forceUpdate(this.host));
   };
 
