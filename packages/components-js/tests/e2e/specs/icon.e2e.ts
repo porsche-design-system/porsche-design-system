@@ -128,7 +128,7 @@ describe('icon', () => {
 
     initOptions.forEach((opts) => {
       describe(opts.isLazy ? 'with lazy loading' : 'with default loading', () => {
-        it(`should have only one response for default icon`, async () => {
+        it('should have only one response for default icon', async () => {
           await setSvgRequestInterceptor(page, []);
           // render with default icon "arrow-head-right"
           await initIcon(opts);
@@ -145,7 +145,7 @@ describe('icon', () => {
          *                 |_______________________⌃
          *                   request of actual icon
          */
-        it(`should render correct icon if default-icon request takes longer than icon request`, async () => {
+        it('should render correct icon if default-icon request takes longer than icon request', async () => {
           const delay = 2000;
           await setSvgRequestInterceptor(page, [delay, 0]);
 
