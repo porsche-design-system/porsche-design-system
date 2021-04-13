@@ -6,9 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BannerState, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, LinkTarget, LinkVariant, NumberOfPageLinks, PageChangeEvent, TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight, TextAlign, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/layout/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/layout/flex/flex-item/flex-item-utils";
-import { GridDirection } from "./components/layout/grid/grid/grid-utils";
+import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -68,6 +69,12 @@ export namespace Components {
           * The style variant of the button.
          */
         "variant"?: ButtonVariant;
+    }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
         /**
@@ -185,7 +192,7 @@ export namespace Components {
          */
         "justifyContent"?: FlexJustifyContent;
         /**
-          * If set, overflowing elements will wrap to a new line.
+          * Handles wrapping behaviour of elements.
          */
         "wrap"?: FlexWrap;
     }
@@ -220,6 +227,14 @@ export namespace Components {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: GridWrap;
     }
     interface PGridItem {
         /**
@@ -454,6 +469,10 @@ export namespace Components {
          */
         "disableCloseButton"?: boolean;
         /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
+        /**
           * The title of the modal
          */
         "heading"?: string;
@@ -565,6 +584,24 @@ export namespace Components {
           * Adapts the spinner color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PSwitchWrapper {
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PTabs {
         /**
@@ -720,6 +757,12 @@ declare global {
         prototype: HTMLPButtonElement;
         new (): HTMLPButtonElement;
     };
+    interface HTMLPButtonGroupElement extends Components.PButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPButtonGroupElement: {
+        prototype: HTMLPButtonGroupElement;
+        new (): HTMLPButtonGroupElement;
+    };
     interface HTMLPButtonPureElement extends Components.PButtonPure, HTMLStencilElement {
     }
     var HTMLPButtonPureElement: {
@@ -840,6 +883,12 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPSwitchWrapperElement extends Components.PSwitchWrapper, HTMLStencilElement {
+    }
+    var HTMLPSwitchWrapperElement: {
+        prototype: HTMLPSwitchWrapperElement;
+        new (): HTMLPSwitchWrapperElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -891,6 +940,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
+        "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -911,6 +961,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-switch-wrapper": HTMLPSwitchWrapperElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -981,6 +1032,12 @@ declare namespace LocalJSX {
           * The style variant of the button.
          */
         "variant"?: ButtonVariant;
+    }
+    interface PButtonGroup {
+        /**
+          * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: ButtonGroupDirection;
     }
     interface PButtonPure {
         /**
@@ -1098,7 +1155,7 @@ declare namespace LocalJSX {
          */
         "justifyContent"?: FlexJustifyContent;
         /**
-          * If set, overflowing elements will wrap to a new line.
+          * Handles wrapping behaviour of elements.
          */
         "wrap"?: FlexWrap;
     }
@@ -1133,6 +1190,14 @@ declare namespace LocalJSX {
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
          */
         "direction"?: GridDirection;
+        /**
+          * Defines the gutter size for specific breakpoints. You always need to provide a base value when doing this.
+         */
+        "gutter"?: GridGutter;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: GridWrap;
     }
     interface PGridItem {
         /**
@@ -1367,6 +1432,10 @@ declare namespace LocalJSX {
          */
         "disableCloseButton"?: boolean;
         /**
+          * If true the modal uses max viewport height and width. Should only be used for mobile.
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
+        /**
           * The title of the modal
          */
         "heading"?: string;
@@ -1486,6 +1555,24 @@ declare namespace LocalJSX {
           * Adapts the spinner color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PSwitchWrapper {
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PTabs {
         /**
@@ -1638,6 +1725,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "p-banner": PBanner;
         "p-button": PButton;
+        "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -1658,6 +1746,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-switch-wrapper": PSwitchWrapper;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1674,6 +1763,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+            "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
@@ -1694,6 +1784,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-switch-wrapper": LocalJSX.PSwitchWrapper & JSXBase.HTMLAttributes<HTMLPSwitchWrapperElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
