@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { attachCss, getCss, GetStylesFunction, JssStyle } from '../../../utils';
-import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
+import type { GetStylesFunction, JssStyle } from '../../../utils';
+import { attachCss, breakpoint, mediaQuery, getCss } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -49,7 +49,7 @@ const getSizeStyles: GetStylesFunction = (size: MarqueSize): JssStyle =>
     ...baseSizes,
     responsive: {
       ...baseSizes.small,
-      [mediaQuery(breakpoint.l)]: baseSizes.medium,
+      [mediaQuery('l')]: baseSizes.medium,
     },
   }[size]);
 
