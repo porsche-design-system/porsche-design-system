@@ -3,7 +3,7 @@
 **## When to use**
 
 • Use a Switch if an instant response of applied settings is required without an explicit action.  
-• Use a Switch to enable or disable a mode, feature, or function.  
+• Use a Switch to enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox-wrapper) instead.  
 • Use a Switch when user is toggling independent features or behaviors.
 
 ---
@@ -26,11 +26,11 @@ Remember that Switches are meant to be two mutually exclusive states. The Switch
 
 **### Stretching**
 
-Depending on the space, the Switch can also be stretched. This makes the spacing between the label and the switch variable. However, the minimum spacing of 8 px should be observed.
+Depending on the space, the Switch (spacing between the label and the switch) can also be stretched. However, the minimum spacing of 8 px should be observed.
 
 **### Action**
 
-Switches should never require users to press a button to apply the settings because a switch is a toggle button. When you require users to press a submit button, you confuse them because it’s not what they expect. You should only use switches on settings that need to take effect instantaneously. If a setting requires a button press before it can take effect, you should use a [Checkbox](#/components/checkbox-wrapper) instead.
+Switches should never require users to press a button to apply the settings because a switch is a toggle button. When you require users to press a submit button, you confuse them because it’s not what they expect. You should only use switches on settings that need to take effect instantaneously. 
 
 **### Validation**
 
