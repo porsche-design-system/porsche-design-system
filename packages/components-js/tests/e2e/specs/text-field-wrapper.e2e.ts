@@ -352,7 +352,7 @@ describe('text-field-wrapper', () => {
       expect(await isButtonDisabled()).toBe(false);
     });
 
-    it('submits outer forms on click on search button, if the input is search', async () => {
+    it('submits parent form on click on search button if the input is search', async () => {
       await setContentWithDesignSystem(
         page,
         `
