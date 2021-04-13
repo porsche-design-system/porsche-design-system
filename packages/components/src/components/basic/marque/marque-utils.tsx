@@ -5,7 +5,7 @@ import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
-type InnerManifest = MarqueManifest['porscheMarque'];
+export type InnerManifest = MarqueManifest['porscheMarque'];
 
 export const cdnBaseUrl =
   ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUES_CDN_BASE_URL : 'http://localhost:3001/marque';
