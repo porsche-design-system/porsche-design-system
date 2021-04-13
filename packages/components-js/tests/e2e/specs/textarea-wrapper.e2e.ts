@@ -182,7 +182,7 @@ describe('textarea-wrapper', () => {
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label', 'when state = none');
   });
 
-  it(`should focus textarea when label text is clicked`, async () => {
+  it('should focus textarea when label text is clicked', async () => {
     await setContentWithDesignSystem(
       page,
       `
