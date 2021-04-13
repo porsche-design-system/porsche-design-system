@@ -39,11 +39,11 @@ import { Component } from '@angular/core';
         height: 180px;
       }
 
-      .highlight > p {
+      .highlight p {
         background-color: deeppink;
       }
 
-      .wrap > p {
+      .wrap p {
         min-width: 10rem;
       }
     `,
