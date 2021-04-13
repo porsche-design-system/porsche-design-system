@@ -1,12 +1,15 @@
 import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
-import type { Rule, JssStyle, Styles } from 'jss';
+import type { JssStyle, Rule, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginDefaultUnit from 'jss-plugin-default-unit';
+import jssPluginGlobal from 'jss-plugin-global';
+import jssPluginNested from 'jss-plugin-nested';
+import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+
 export type { Styles, JssStyle } from 'jss';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
@@ -21,7 +24,13 @@ declare global {
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
-  plugins: [jssPluginCamelCase(), jssPluginDefaultUnit(), jssPluginSortMediaQueries({ combineMediaQueries: true })],
+  plugins: [
+    jssPluginGlobal(),
+    jssPluginNested(),
+    jssPluginCamelCase(),
+    jssPluginDefaultUnit(),
+    jssPluginSortMediaQueries({ combineMediaQueries: true }),
+  ],
 });
 
 export const getCss = (jssStyles: Styles): string =>
