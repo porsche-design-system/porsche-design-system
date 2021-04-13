@@ -1,7 +1,7 @@
 <template>
   <div class="disclaimer" role="complementary" aria-label="disclaimer">
     <p-text>
-      <strong>Announcement:</strong> Porsche Design System is now on v2.0.0, therefore this site and documentation is outdated. <a href="https://designsystem.porsche.com/v2">Please visit the new Porsche Design System to get the most up to date designs and code!</a>
+      <strong>Announcement:</strong> This version of the Porsche Design System is outdated. <a href="https://designsystem.porsche.com">Please visit the new Porsche Design System to get the latest design and code!</a>
     </p-text>
   </div>
 </template>
