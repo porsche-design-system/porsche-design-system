@@ -92,7 +92,7 @@ Please make sure to set the corresponding **aria** attributes.
 `<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
 </p-checkbox-wrapper>
-<p-checkbox-wrapper label="Some label" indeterminate="true">
+<p-checkbox-wrapper label="Some label">
   <input type="checkbox" name="some-name" class="example-set-to-indeterminate" checked />
 </p-checkbox-wrapper>`;
     
