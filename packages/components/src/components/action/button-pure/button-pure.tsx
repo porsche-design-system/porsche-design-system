@@ -11,6 +11,7 @@ import {
   transitionListener,
 } from '../../../utils';
 import type { BreakpointCustomizable, ButtonType, IconName, TextSize, TextWeight, Theme } from '../../../types';
+import { isSizeInherit } from '../../basic/typography/text/text-utils';
 
 @Component({
   tag: 'p-button-pure',
@@ -68,12 +69,13 @@ export class ButtonPure {
       () => this.type,
       () => this.isDisabled
     );
-
-    transitionListener(this.buttonTag, 'font-size', () => {
-      const size = calcLineHeightForElement(this.buttonTag);
-      this.iconTag.style.width = `${size}em`;
-      this.iconTag.style.height = `${size}em`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.buttonTag, 'font-size', () => {
+        const size = `${calcLineHeightForElement(this.buttonTag)}em`;
+        this.iconTag.style.width = size;
+        this.iconTag.style.height = size;
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -82,8 +84,6 @@ export class ButtonPure {
       [prefix('button-pure--theme-dark')]: isDark(this.theme),
       ...mapBreakpointPropToPrefixedClasses('button-pure--size', this.size),
     };
-
-    const iconClasses = prefix('button-pure__icon');
 
     const labelClasses = {
       [prefix('button-pure__label')]: true,
@@ -95,6 +95,12 @@ export class ButtonPure {
       ...mapBreakpointPropToPrefixedClasses('button-pure__subline-', this.hideLabel, ['hidden', 'visible']),
     };
 
+    const iconProps = {
+      class: prefix('button-pure__icon'),
+      size: 'inherit',
+      ref: (el: HTMLElement) => (this.iconTag = el),
+    };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -104,24 +110,17 @@ export class ButtonPure {
           type={this.type}
           disabled={this.isDisabled}
           tabindex={this.tabbable ? 0 : -1}
-          ref={(el) => (this.buttonTag = el as HTMLElement)}
+          ref={(el) => (this.buttonTag = el)}
           aria-busy={this.loading ? 'true' : null}
         >
           {this.loading ? (
-            <PrefixedTagNames.pSpinner
-              class={iconClasses}
-              size="inherit"
-              theme={this.theme}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
-            />
+            <PrefixedTagNames.pSpinner {...iconProps} theme={this.theme} />
           ) : (
             <PrefixedTagNames.pIcon
-              class={iconClasses}
+              {...iconProps}
               color="inherit"
-              size="inherit"
               name={this.icon}
               source={this.iconSource}
-              ref={(el) => (this.iconTag = el as HTMLElement)}
               aria-hidden="true"
             />
           )}
