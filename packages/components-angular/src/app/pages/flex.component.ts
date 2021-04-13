@@ -31,8 +31,15 @@ import { Component } from '@angular/core';
         background-color: royalblue;
       }
 
-      p-flex-item[align-self] > p,
-      p-flex-item.highlight > p {
+      .wide {
+        width: 80%;
+      }
+
+      .full-height {
+        height: 180px;
+      }
+
+      .highlight > p {
         background-color: deeppink;
       }
 
@@ -170,7 +177,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'nowrap'">
-      <p-flex wrap="nowrap">
+      <p-flex [wrap]="'nowrap'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -202,7 +209,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'wrap'">
-      <p-flex wrap="wrap">
+      <p-flex [wrap]="'wrap'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -234,7 +241,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'wrap-reverse'">
-      <p-flex wrap="wrap-reverse">
+      <p-flex [wrap]="'wrap-reverse'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -266,7 +273,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt wrap mode depending on viewport">
-      <p-flex wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
+      <p-flex [wrap]="{ base: 'nowrap', l: 'wrap-reverse' }">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -396,7 +403,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'stretch'">
-      <p-flex [alignItems]="'stretch'" style="height: 180px;">
+      <p-flex [alignItems]="'stretch'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -410,7 +417,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'flex-start'">
-      <p-flex [alignItems]="'flex-start'" style="height: 180px;">
+      <p-flex [alignItems]="'flex-start'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -424,7 +431,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'flex-end'">
-      <p-flex [alignItems]="'flex-end'" style="height: 180px;">
+      <p-flex [alignItems]="'flex-end'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -438,7 +445,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'center'">
-      <p-flex [alignItems]="'center'" style="height: 180px;">
+      <p-flex [alignItems]="'center'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -452,7 +459,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'baseline'">
-      <p-flex [alignItems]="'baseline'" style="height: 180px;">
+      <p-flex [alignItems]="'baseline'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -466,7 +473,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-items mode depending on viewport">
-      <p-flex [alignItems]="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px;">
+      <p-flex [alignItems]="{ base: 'flex-start', l: 'flex-end' }" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -480,7 +487,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'stretch'">
-      <p-flex wrap="wrap" [alignContent]="'stretch'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'stretch'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -512,7 +519,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'flex-start'">
-      <p-flex wrap="wrap" [alignContent]="'flex-start'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'flex-start'" style="height: 180px;'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -544,7 +551,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'flex-end'">
-      <p-flex wrap="wrap" [alignContent]="'flex-end'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'flex-end'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -576,7 +583,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'center'">
-      <p-flex wrap="wrap" [alignContent]="'center'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'center'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -608,7 +615,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-between'">
-      <p-flex wrap="wrap" [alignContent]="'space-between'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'space-between'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -640,7 +647,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-around'">
-      <p-flex wrap="wrap" [alignContent]="'space-around'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'space-around'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -672,7 +679,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-evenly'">
-      <p-flex wrap="wrap" [alignContent]="'space-evenly'" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="'space-evenly'" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -704,7 +711,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-content mode depending on viewport">
-      <p-flex wrap="wrap" [alignContent]="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px;">
+      <p-flex [wrap]="'wrap'" [alignContent]="{ base: 'flex-start', l: 'flex-end' }" class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -793,7 +800,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt width depending on viewport">
-      <p-flex wrap="wrap">
+      <p-flex [wrap]="'wrap'">
         <p-flex-item [width]="{ base: 'half', l: 'one-quarter' }">
           <p>1</p>
         </p-flex-item>
@@ -846,14 +853,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'auto'">
-      <p-flex style="height: 180px;" [alignItems]="'flex-end'">
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'stretch'">
+      <p-flex class="full-height" [alignItems]="'flex-end'">
+        <p-flex-item class="highlight" [alignSelf]="'stretch'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item align-self="auto">
+        <p-flex-item class="highlight" [alignSelf]="'auto'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -863,14 +870,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'stretch'">
-      <p-flex style="height: 180px;">
+      <p-flex class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'stretch'">
+        <p-flex-item class="highlight" [alignSelf]="'stretch'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -880,14 +887,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'flex-start'">
-      <p-flex style="height: 180px;">
+      <p-flex class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'flex-start'">
+        <p-flex-item class="highlight" [alignSelf]="'flex-start'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -897,14 +904,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'flex-end'">
-      <p-flex style="height: 180px;">
+      <p-flex class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'flex-end'">
+        <p-flex-item class="highlight" [alignSelf]="'flex-end'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -914,14 +921,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'center'">
-      <p-flex style="height: 180px;">
+      <p-flex class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'center'">
+        <p-flex-item class="highlight" [alignSelf]="'center'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -931,14 +938,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'baseline'">
-      <p-flex style="height: 180px;">
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'baseline'">
+      <p-flex class="full-height">
+        <p-flex-item class="highlight" [alignSelf]="'baseline'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="'baseline'" style="margin-top: 1rem;">
+        <p-flex-item class="highlight" [alignSelf]="'baseline'" style="margin-top: 1rem;">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -948,14 +955,14 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-self mode depending on viewport">
-      <p-flex style="height: 180px;">
+      <p-flex class="full-height">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item [ngClass]="'highlight'" [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
+        <p-flex-item class="highlight" [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -999,10 +1006,10 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should render by shrink mode '1'">
       <p-flex>
-        <p-flex-item [shrink]="1" style="width: 80%;">
+        <p-flex-item [shrink]="1" class="wide">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item style="width: 80%;">
+        <p-flex-item class="wide">
           <p>2</p>
         </p-flex-item>
       </p-flex>
@@ -1010,10 +1017,10 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should render by shrink mode '0'">
       <p-flex>
-        <p-flex-item [shrink]="0" style="width: 80%;">
+        <p-flex-item [shrink]="0" class="wide">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item style="width: 80%;">
+        <p-flex-item class="wide">
           <p>2</p>
         </p-flex-item>
       </p-flex>
@@ -1021,10 +1028,10 @@ import { Component } from '@angular/core';
 
     <div class="playground" title="should adapt shrink mode depending on viewport">
       <p-flex>
-        <p-flex-item [shrink]="{ base: 0, l: 1 }" style="width: 80%;">
+        <p-flex-item [shrink]="{ base: 0, l: 1 }" class="wide">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item style="width: 80%;">
+        <p-flex-item class="wide">
           <p>2</p>
         </p-flex-item>
       </p-flex>
