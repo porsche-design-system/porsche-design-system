@@ -93,9 +93,9 @@ export const buildResponsiveJss = <T>(
         // hence it is used as the initial object within reduce function
         .filter((key) => key !== 'base')
         .reduce(
-          (result, breakpointValue) => ({
+          (result, breakpointValue: BreakPoint) => ({
             ...result,
-            [mediaQuery(breakpoint[breakpointValue])]: buildHostStyles(getStyles(value[breakpointValue])),
+            [mediaQuery(breakpointValue)]: buildHostStyles(getStyles(value[breakpointValue])),
           }),
           buildHostStyles(getStyles(value.base))
         )
