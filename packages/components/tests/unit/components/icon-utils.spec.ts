@@ -50,7 +50,7 @@ describe('buildIconUrl()', () => {
     expect(cdnIconUrl).toEqual(source);
   });
 
-  it('should return default icon-url, if icon name is not in manifest', () => {
+  it('should return default icon-url if icon name is not in manifest', () => {
     const cdnIconUrl = buildIconUrl('arrow');
     expect(cdnIconUrl).toEqual(DEFAULT_ICON_URL);
   });
