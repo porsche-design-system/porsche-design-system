@@ -44,15 +44,6 @@ const baseSizes = {
   },
 };
 
-const getSizeStyles: GetStylesFunction = (size: MarqueSize): JssStyle =>
-  ({
-    ...baseSizes,
-    responsive: {
-      ...baseSizes.small,
-      [mediaQuery('l')]: baseSizes.medium,
-    },
-  }[size]);
-
 const baseCss: string = getCss({
   ':host': {
     display: 'inline-flex',
@@ -68,6 +59,11 @@ const baseCss: string = getCss({
       '&:focus': { outlineColor: '#000' },
       '&:focus:not(:focus-visible)': { outlineColor: 'transparent' },
     },
+    picture: {
+      display: 'block',
+      ...baseSizes.small,
+      [mediaQuery('l')]: baseSizes.medium,
+    },
     img: {
       display: 'block',
       width: '100%',
@@ -76,13 +72,12 @@ const baseCss: string = getCss({
   },
 });
 
+const getSizeStyles: GetStylesFunction = (size: MarqueSize): JssStyle => baseSizes[size];
+
 export const getDynamicCss = (size: MarqueSize): string => {
   return getCss({
     '@global': {
-      picture: {
-        display: 'block',
-        ...getSizeStyles(size),
-      },
+      picture: getSizeStyles(size),
     },
   });
 };
