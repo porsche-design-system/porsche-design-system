@@ -1,8 +1,7 @@
-import { mediaQuery } from '@porsche-design-system/utilities';
 import type { BreakpointCustomizable } from '../../../../types';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { attachCss, buildResponsiveJss, getCss, mergeDeep } from '../../../../utils';
-import { paddingBase, paddingM, paddingS } from '../grid/grid-utils';
+import { attachCss, buildResponsiveJss, getCss, mergeDeep, pxToRem } from '../../../../utils';
+import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 type GridItemSizeType = typeof GRID_ITEM_SIZES[number];
@@ -15,20 +14,6 @@ export type GridItemOffset = BreakpointCustomizable<GridItemOffsetType>;
 const baseCss: string = getCss({
   ':host': {
     boxSizing: 'border-box !important',
-    paddingLeft: paddingBase,
-    paddingRight: paddingBase,
-  },
-  [mediaQuery('s')]: {
-    ':host': {
-      paddingLeft: paddingS,
-      paddingRight: paddingS,
-    },
-  },
-  [mediaQuery('m')]: {
-    ':host': {
-      paddingLeft: paddingM,
-      paddingRight: paddingM,
-    },
   },
 });
 
@@ -50,16 +35,31 @@ const gridItemWidths = [
 
 const getSizeStyles: GetStylesFunction = (size: GridItemSizeType): JssStyle => ({
   width: `${gridItemWidths[size]}% !important`,
+  minWidth: `${gridItemWidths[size]}% !important`,
 });
 
 const getOffsetStyles: GetStylesFunction = (offset: GridItemOffsetType): JssStyle => ({
   marginLeft: `${gridItemWidths[offset]}% !important`,
 });
 
-export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset): string => {
-  return getCss(mergeDeep(buildResponsiveJss(size, getSizeStyles), buildResponsiveJss(offset, getOffsetStyles)));
+const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
+  const gutterRem = `${pxToRem(gutter) / 2}rem !important`;
+  return {
+    paddingLeft: gutterRem,
+    paddingRight: gutterRem,
+  };
 };
 
-export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset): void => {
-  attachCss(host, baseCss + getDynamicCss(size, offset));
+export const getDynamicCss = (size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): string => {
+  return getCss(
+    mergeDeep(
+      buildResponsiveJss(size, getSizeStyles),
+      buildResponsiveJss(offset, getOffsetStyles),
+      buildResponsiveJss(gutter, getGutterStyles)
+    )
+  );
+};
+
+export const addCss = (host: HTMLElement, size: GridItemSize, offset: GridItemOffset, gutter: GridGutter): void => {
+  attachCss(host, baseCss + getDynamicCss(size, offset, gutter));
 };

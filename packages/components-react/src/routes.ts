@@ -19,6 +19,11 @@ export const routes: RouteType[] = [
     component: fromPages.ButtonPage,
   },
   {
+    name: 'Button Group',
+    path: '/button-group',
+    component: fromPages.ButtonGroupPage,
+  },
+  {
     name: 'Button Pure',
     path: '/button-pure',
     component: fromPages.ButtonPurePage,

@@ -84,14 +84,10 @@ Below you can find the explanations of the used class names.
           </p-flex>
           <p-text-field-wrapper label="Some label" class="form-row-spacing"><input type="text" name="some name"></p-text-field-wrapper>
         </p-fieldset-wrapper>
-        <p-flex direction="{ base: 'column', s: 'row' }" class="form-section-spacing form-bottom-spacing form-grid-item-container">
-          <p-flex-item width="{base: 'full', s: 'auto'}" class="form-grid-item">
-            <p-button variant="tertiary" icon="close" type="reset" class="form-item-width--full form-item-width--auto-s">Cancel</p-button>
-          </p-flex-item>
-          <p-flex-item width="{base: 'full', s: 'auto'}" class="form-row-spacing form-row-spacing--zero-s form-grid-item">
-            <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Send</p-button>
-          </p-flex-item>
-        </p-flex>
+        <p-button-group class="form-section-spacing form-bottom-spacing">
+          <p-button type="submit">Send</p-button>
+          <p-button variant="tertiary" icon="close"type="reset">Cancel</p-button>
+        </p-button-group>       
       </form>
     </p-grid-item>
   </p-grid>
@@ -213,65 +209,4 @@ The horizontal form grid spacings of the grid-container and the grid-item.
   padding-left: $p-spacing-8;
   padding-right: $p-spacing-8;
 }
-``` 
-
-### Form item width reset
-
-Actually, this can only be used to switch the button widths between `auto` (width of the content) and `full` (100% width) of `p-button` component. 
-This functionality will be added to the form components in the future.
-
-```scss
-.form-item-width {
-  &--full {
-    width: 100%;
-  }
-  &--auto {
-    width: auto;
-  }
-
-  @include p-media-query('xs') {
-    &--full-xs {
-      width: 100%;
-    }
-    &--auto-xs {
-      width: auto;
-    }
-  }
-
-  @include p-media-query('s') {
-    &--full-s {
-      width: 100%;
-    }
-    &--auto-s {
-      width: auto;
-    }
-  }
-  
-  @include p-media-query('m') {
-    &--full-m {
-      width: 100%;
-    }
-    &--auto-m {
-      width: auto;
-    }
-  }
-
-  @include p-media-query('l') {
-    &--full-l {
-      width: 100%;
-    }
-    &--auto-l {
-      width: auto;
-    }
-  }
-  
-  @include p-media-query('xl') {
-    &--full-xl {
-      width: 100%;
-    }
-    &--auto-xl {
-      width: auto;
-    }
-  }
-}
-``` 
+```

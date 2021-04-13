@@ -12,6 +12,7 @@
   display: block;
   background-color: transparent;
   width: 100%;
+  min-width: 0;
 
   &--basic {
     max-width: $p-content-wrapper-max-width;
