@@ -259,3 +259,5 @@ export const enableBrowserLogging = (page: Page) => {
     console.log(msg.type() + ':', msg.text());
   });
 };
+
+export const waitForInputTransition = (page: Page) => page.waitForTimeout(250);
