@@ -1,4 +1,4 @@
-import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
+import { breakpoint } from '@porsche-design-system/utilities';
 import type { JssStyle, Rule, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
@@ -73,6 +73,10 @@ export const attachCss = (host: HTMLElement, css: string): void => {
     }
   }
 };
+
+export { breakpoint } from '@porsche-design-system/utilities';
+export type BreakPoint = keyof typeof breakpoint;
+export const mediaQuery = (minBreakpoint: BreakPoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const buildHostStyles = (jssStyle: JssStyle): Styles<':host'> => ({ ':host': jssStyle });
 
