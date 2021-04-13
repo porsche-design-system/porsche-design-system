@@ -3,6 +3,9 @@
     <router-view/>
   </main>
   <div v-else id="app">
+    <div class="topbar">
+      <Disclaimer/>
+    </div>
     <div class="content">
       <div class="sidebar" :class="{ 'is-menu-active': isMenuActive }">
         <div>
