@@ -61,6 +61,34 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ---
 
+### Grid gutter
+
+The grid gutter can have the sizes `16`, `24` and `36`.
+
+#### Gutter
+
+<Playground :markup="gutter()" :config="config"></Playground>
+
+#### Gutter with breakpoint
+
+The gutter sizes can be set on different breakpoints.
+
+<Playground :markup="gutterBreakpoint()" :config="config"></Playground>
+
+---
+
+### Grid wrap
+
+#### Wrap (default)
+
+<Playground :markup="wrap('wrap')" :config="config"></Playground>
+
+#### Nowrap
+
+<Playground :markup="wrap('nowrap')" :config="config"></Playground>
+
+---
+
 ### Grid nesting
 
 Basic nesting of grids is supported. "Basic" because of percentage value of width and gutter which couldn't be calculated for each column width. Here are some examples of "do's" and "don'ts":
@@ -129,6 +157,41 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   <p-grid-item${sizeAttr}>B</p-grid-item>
   <p-grid-item${sizeAttr}>C</p-grid-item>
 </p-grid>`;
+    }
+
+    gutter() {
+      return `<p-grid gutter="16" class="example-grid">
+  <p-grid-item size="4">A</p-grid-item>
+  <p-grid-item size="4">B</p-grid-item>
+  <p-grid-item size="4">C</p-grid-item>
+</p-grid>
+<p-grid gutter="24" class="example-grid">
+  <p-grid-item size="4">D</p-grid-item>
+  <p-grid-item size="4">E</p-grid-item>
+  <p-grid-item size="4">F</p-grid-item>
+</p-grid>
+<p-grid gutter="36" class="example-grid">
+  <p-grid-item size="4">G</p-grid-item>
+  <p-grid-item size="4">H</p-grid-item>
+  <p-grid-item size="4">I</p-grid-item>
+</p-grid>`; 
+    }
+
+    gutterBreakpoint(){
+      return `<p-grid gutter="{base: 36, m: 16}" class="example-grid">
+    <p-grid-item size="4">A</p-grid-item>
+    <p-grid-item size="4">B</p-grid-item>
+    <p-grid-item size="4">C</p-grid-item>
+  </p-grid>`;
+    }
+
+    wrap(value: string) {
+      return `<p-grid wrap="${value}" class="example-grid">
+  <p-grid-item size="6">A</p-grid-item>
+  <p-grid-item size="6">B</p-grid-item>
+  <p-grid-item size="6">C</p-grid-item>
+  <p-grid-item size="6">D</p-grid-item>
+</p-grid>`; 
     }
     
     nesting =

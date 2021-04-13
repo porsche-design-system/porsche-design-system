@@ -2,7 +2,7 @@ import * as domUtils from '../../../src/utils/dom';
 import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/checkbox-wrapper';
 
 describe('checkbox-wrapper', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() via connectedCallback', () => {
+  it('should call getHTMLElementAndThrowIfUndefined() via componentWillLoad', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const checkbox = new CheckboxWrapper();
     try {

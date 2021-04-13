@@ -1,6 +1,6 @@
 import { mapBreakpointPropToPrefixedClasses } from '../../../src/utils';
 
-describe('mapBreakpointPropToPrefixedClasses', () => {
+describe('mapBreakpointPropToPrefixedClasses()', () => {
   it('should create class by passing a "string" prop', () => {
     const result = mapBreakpointPropToPrefixedClasses('some-class-prefix', 'some-string');
 

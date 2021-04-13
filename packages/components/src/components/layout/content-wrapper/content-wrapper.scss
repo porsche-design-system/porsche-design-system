@@ -12,31 +12,32 @@
   display: block;
   background-color: transparent;
   width: 100%;
+  min-width: 0;
 
   &--basic {
-    max-width: p-px-to-rem(1536px);
+    max-width: $p-content-wrapper-max-width;
     padding: {
-      left: 7vw;
-      right: 7vw;
+      left: $p-content-wrapper-margin;
+      right: $p-content-wrapper-margin;
     }
 
-    @include p-media-query('xl', 'xxl') {
+    @include p-media-query('xl') {
       padding: {
-        left: 10vw;
-        right: 10vw;
+        left: $p-content-wrapper-margin-xl;
+        right: $p-content-wrapper-margin-xl;
       }
     }
 
     @include p-media-query('xxl') {
       padding: {
-        left: p-px-to-rem(192px);
-        right: p-px-to-rem(192px);
+        left: $p-content-wrapper-margin-xxl;
+        right: $p-content-wrapper-margin-xxl;
       }
     }
   }
 
   &--extended {
-    max-width: p-px-to-rem(1920px);
+    max-width: $p-content-wrapper-max-width-extended;
   }
 
   &--background-default {

@@ -1,6 +1,6 @@
 import { paramCaseToCamelCase } from '../../../src/utils';
 
-describe('paramCaseToCamelCase', () => {
+describe('paramCaseToCamelCase()', () => {
   it.each([
     ['p-button', 'pButton'],
     ['arrow-double-down', 'arrowDoubleDown'],

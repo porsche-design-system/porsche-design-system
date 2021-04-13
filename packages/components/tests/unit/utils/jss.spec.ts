@@ -10,7 +10,7 @@ import {
 import * as jssUtils from '../../../src/utils/jss';
 import type { JssStyle, Styles } from 'jss';
 
-describe('getCss', () => {
+describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
     { input: { ':host': { display: 'block', marginLeft: 5 } }, result: ':host{display:block;margin-left:5px}' },
     {
@@ -29,6 +29,24 @@ describe('getCss', () => {
       result:
         ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}',
     },
+    {
+      input: {
+        ':host': { display: 'block', marginLeft: '5px !important' },
+        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
+      },
+      result:
+        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+    },
+    {
+      input: {
+        ':host': { display: 'block', marginLeft: '5px !important' },
+        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
+        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+      },
+      result:
+        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+    },
   ];
   it.each(
     data.map(({ input, result }) => [
@@ -42,7 +60,7 @@ describe('getCss', () => {
   });
 });
 
-describe('supportsConstructableStylesheets', () => {
+describe('supportsConstructableStylesheets()', () => {
   it('should return true if CSSStyleSheet constructor exists', () => {
     // due to polyfill
     expect(supportsConstructableStylesheets()).toBe(true);
@@ -56,7 +74,7 @@ describe('supportsConstructableStylesheets', () => {
   });
 });
 
-describe('attachCss', () => {
+describe('attachCss()', () => {
   describe('with CSSStyleSheet support', () => {
     it('should create CSSStyleSheet and apply it to shadowRoot', () => {
       const div = document.createElement('div');
@@ -86,13 +104,13 @@ describe('attachCss', () => {
   });
 });
 
-describe('buildHostStyles', () => {
+describe('buildHostStyles()', () => {
   it('should return :host styles object', () => {
     expect(buildHostStyles({ marginLeft: 5 })).toStrictEqual({ ':host': { marginLeft: 5 } });
   });
 });
 
-describe('buildResponsiveJss', () => {
+describe('buildResponsiveJss()', () => {
   const getStyles = (val: number): JssStyle => ({ width: 100 * val });
 
   it('should return flat jss for simple type', () => {
@@ -111,7 +129,7 @@ describe('buildResponsiveJss', () => {
   });
 });
 
-describe('isObject', () => {
+describe('isObject()', () => {
   it('should return true for object', () => {
     expect(isObject({})).toBe(true);
     expect(isObject({ foo: 'bar' })).toBe(true);
@@ -125,7 +143,7 @@ describe('isObject', () => {
   });
 });
 
-describe('mergeDeep', () => {
+describe('mergeDeep()', () => {
   const data: { input: object[]; result: object }[] = [
     {
       input: [{}, { foo: 'bar' }],
