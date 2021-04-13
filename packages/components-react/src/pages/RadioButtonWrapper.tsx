@@ -1,8 +1,16 @@
 import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
+  const style = `
+    .playground > * {
+      margin-bottom: 2px;
+    }
+  `;
+
   return (
     <>
+      <style children={style} />
+
       <div className="playground light" title="should render with label">
         <PRadioButtonWrapper label="Some label">
           <input type="radio" name="some-name-1" />

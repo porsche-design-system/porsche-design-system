@@ -4,7 +4,15 @@ import {
   hasNamedSlot,
   isRequired,
   throwIfParentIsNotOfKind,
+  addEventListener,
+  removeEventListener,
+  getAttribute,
+  setAttribute,
+  removeAttribute,
+  isMessageVisible,
+  isDescriptionVisible,
 } from '../../../src/utils';
+import type { FormState } from '../../../src/types';
 
 describe('isRequired()', () => {
   it('should return true if required property is true on element', () => {
@@ -140,5 +148,132 @@ describe('getTagName()', () => {
   ])('should be called with %s and return %s', (tag, result) => {
     const el = document.createElement(tag);
     expect(getTagName(el)).toBe(result);
+  });
+});
+
+describe('Event Listener', () => {
+  const listener = () => {};
+
+  describe('addEventListener()', () => {
+    it('should call addEventListener', () => {
+      const element = document.createElement('div');
+      const spy1 = jest.spyOn(element, 'addEventListener');
+
+      addEventListener(element, 'change', listener, false);
+
+      expect(spy1).toBeCalledTimes(1);
+      expect(spy1).toBeCalledWith('change', listener, false);
+    });
+  });
+
+  describe('removeEventListener', () => {
+    it('should call removeEventListener', () => {
+      const element = document.createElement('div');
+      const spy1 = jest.spyOn(element, 'removeEventListener');
+
+      addEventListener(element, 'change', listener, false);
+      removeEventListener(element, 'change', listener, false);
+
+      expect(spy1).toBeCalledTimes(1);
+      expect(spy1).toBeCalledWith('change', listener, false);
+    });
+  });
+});
+
+describe('getAttribute()', () => {
+  it('should return attribute value', () => {
+    const element = document.createElement('div');
+    const title = 'Some title';
+    element.setAttribute('title', title);
+
+    expect(getAttribute(element, 'title')).toBe(title);
+  });
+});
+
+describe('setAttribute()', () => {
+  it('should set attribute value', () => {
+    const element = document.createElement('div');
+    const title = 'Some title';
+    setAttribute(element, 'title', title);
+
+    expect(element.getAttribute('title')).toBe(title);
+  });
+});
+
+describe('removeAttribute()', () => {
+  it('should remove attribute', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'Some title');
+
+    removeAttribute(element, 'title');
+    expect(element.getAttribute('title')).toBe(null);
+  });
+});
+
+describe('isLabelVisible()', () => {
+  const label = 'Some description';
+  it.each<[{ label: string; slotted: boolean }, boolean]>([
+    [{ label, slotted: false }, true],
+    [{ label: '', slotted: true }, true],
+    [{ label: '', slotted: false }, false],
+    [{ label, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { label, slotted } = parameter;
+    const el = document.createElement('div');
+    el.setAttribute('description', label);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(isDescriptionVisible(el, label)).toBe(result);
+  });
+});
+
+describe('isDescriptionVisible()', () => {
+  const description = 'Some description';
+  it.each<[{ description: string; slotted: boolean }, boolean]>([
+    [{ description, slotted: false }, true],
+    [{ description: '', slotted: true }, true],
+    [{ description: '', slotted: false }, false],
+    [{ description, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { description, slotted } = parameter;
+    const el = document.createElement('div');
+    el.setAttribute('description', description);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(isDescriptionVisible(el, description)).toBe(result);
+  });
+});
+
+describe('isMessageVisible()', () => {
+  const message = 'Some message';
+  it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
+    [{ message, slotted: false, formState: 'error' }, true],
+    [{ message: '', slotted: true, formState: 'error' }, true],
+    [{ message: '', slotted: false, formState: 'error' }, false],
+    [{ message, slotted: false, formState: 'none' }, false],
+    [{ message: '', slotted: true, formState: 'none' }, false],
+    [{ message: '', slotted: false, formState: 'none' }, false],
+    [{ message, slotted: false, formState: 'success' }, true],
+    [{ message: '', slotted: true, formState: 'success' }, true],
+    [{ message: '', slotted: false, formState: 'success' }, false],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { message, slotted, formState } = parameter;
+    const el = document.createElement('div');
+    el.setAttribute('message', message);
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'message';
+      el.appendChild(slot);
+    }
+
+    expect(isMessageVisible(el, message, formState)).toBe(result);
   });
 });

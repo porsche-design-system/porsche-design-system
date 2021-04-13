@@ -49,13 +49,16 @@ const createClass = (
   classPrefix: string,
   value: BreakpointValue,
   breakpoint: Breakpoint,
-  classSuffixes: ClassSuffixes
-): JSXClasses => ({
-  ...(value !== null &&
-    value !== undefined && {
-      [prefix(`${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`)]: true,
-    }),
-});
+  classSuffixes: ClassSuffixes,
+  disablePrefixP?: boolean
+): JSXClasses => {
+  if (value !== null && value !== undefined) {
+    const className = `${classPrefix}-${getClassName(value, classSuffixes)}${getBreakpointSuffix(breakpoint)}`;
+    return {
+      [disablePrefixP ? className : prefix(className)]: true,
+    };
+  }
+};
 
 /**
  * @param classPrefix
@@ -67,7 +70,8 @@ const createClass = (
 export const mapBreakpointPropToPrefixedClasses = (
   classPrefix: string,
   prop: BreakpointCustomizable<BreakpointValue>,
-  classSuffixes?: ClassSuffixes
+  classSuffixes?: ClassSuffixes,
+  disablePrefixP?: boolean
 ): JSXClasses => {
   const parsedProp = parseJSON(prop);
 
@@ -75,9 +79,9 @@ export const mapBreakpointPropToPrefixedClasses = (
     ? Object.entries(parsedProp).reduce(
         (classes, [breakpoint, value]) => ({
           ...classes,
-          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes),
+          ...createClass(classPrefix, value, breakpoint as Breakpoint, classSuffixes, disablePrefixP),
         }),
         {}
       )
-    : createClass(classPrefix, parsedProp, 'base', classSuffixes);
+    : createClass(classPrefix, parsedProp, 'base', classSuffixes, disablePrefixP);
 };
