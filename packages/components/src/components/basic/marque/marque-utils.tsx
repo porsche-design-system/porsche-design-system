@@ -1,7 +1,6 @@
 import { h } from '@stencil/core';
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import type { GetStylesFunction, JssStyle } from '../../../utils';
-import { attachCss, breakpoint, mediaQuery, getCss } from '../../../utils';
+import { attachCss, breakpoint, getCss, mediaQuery } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -44,15 +43,6 @@ const baseSizes = {
   },
 };
 
-const getSizeStyles: GetStylesFunction = (size: MarqueSize): JssStyle =>
-  ({
-    ...baseSizes,
-    responsive: {
-      ...baseSizes.small,
-      [mediaQuery('l')]: baseSizes.medium,
-    },
-  }[size]);
-
 const baseCss: string = getCss({
   ':host': {
     display: 'inline-flex',
@@ -68,6 +58,11 @@ const baseCss: string = getCss({
       '&:focus': { outlineColor: '#000' },
       '&:focus:not(:focus-visible)': { outlineColor: 'transparent' },
     },
+    picture: {
+      display: 'block',
+      ...baseSizes.small,
+      [mediaQuery('l')]: baseSizes.medium,
+    },
     img: {
       display: 'block',
       width: '100%',
@@ -79,10 +74,7 @@ const baseCss: string = getCss({
 export const getDynamicCss = (size: MarqueSize): string => {
   return getCss({
     '@global': {
-      picture: {
-        display: 'block',
-        ...getSizeStyles(size),
-      },
+      picture: baseSizes[size],
     },
   });
 };
