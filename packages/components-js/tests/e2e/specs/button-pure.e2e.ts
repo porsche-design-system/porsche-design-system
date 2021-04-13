@@ -13,6 +13,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   getLifecycleStatus,
+  waitForEventSerialization,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
@@ -107,7 +108,7 @@ describe('button-pure', () => {
     for (const triggerElement of [host, button]) {
       await triggerElement.click();
     }
-    await page.waitForTimeout(5); // event serialization takes a little bit
+    await waitForEventSerialization(page);
     expect(calls).toBe(2);
   });
 
