@@ -93,11 +93,23 @@ export class SelectWrapper {
       this.filterInput.addEventListener('keydown', this.handleKeyboardEvents);
       this.filterInput.addEventListener('input', this.handleFilterSearch);
     }
-    this.setAriaAttributes();
   }
 
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
+    setAriaAttributes(this.select, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
+
+    if (this.filter) {
+      setAttribute(this.select, 'aria-hidden', 'true');
+    }
   }
 
   public disconnectedCallback(): void {
@@ -244,23 +256,6 @@ export class SelectWrapper {
 
     if (this.filter) {
       setAttribute(this.select, 'tabindex', '-1');
-    }
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.select, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
-
-    if (this.filter) {
-      setAttribute(this.select, 'aria-hidden', 'true');
     }
   }
 
@@ -481,7 +476,7 @@ export class SelectWrapper {
     this.optionMaps = this.options.map((item, index) => {
       const initiallyHidden = item.hasAttribute('hidden');
       const disabled = item.hasAttribute('disabled');
-      const selected = item.selected && !item.disabled;
+      const selected = item.selected;
       const highlighted = selected;
       const option: OptionMap = {
         key: index,
@@ -538,7 +533,7 @@ export class SelectWrapper {
       this.options.map((item, index) => {
         const { disabled, hidden, initiallyHidden, selected, highlighted } = this.optionMaps[index];
         return [
-          item.parentElement.tagName === 'OPTGROUP' && item.previousElementSibling === null && (
+          getTagName(item.parentElement) === 'optgroup' && item.previousElementSibling === null && (
             <span class={prefix('select-wrapper__fake-optgroup-label')} role="presentation">
               {getClosestHTMLElement(item, 'optgroup').label}
             </span>
@@ -560,7 +555,7 @@ export class SelectWrapper {
             aria-label={!item.text ? 'Empty value' : null}
           >
             {item.text && <span>{item.text}</span>}
-            {selected && (
+            {selected && !disabled && (
               <PrefixedTagNames.pIcon
                 class={prefix('select-wrapper__fake-option-icon')}
                 aria-hidden="true"
@@ -670,7 +665,6 @@ export class SelectWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

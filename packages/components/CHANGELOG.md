@@ -8,7 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.0.0-rc.10] - 2021-04-12
+
+#### Changed
+- `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure to update the `activeTabIndex` when mutating elements
+- Improved performance of `Text`, `Button Pure` and `Link Pure` when `size` is not `inherit`
+
 #### Added
+- `Grid` now has a `wrap` and `gutter` property
+- Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`, `Flex`, `Tabs` and `Text List`) will now throw an error if used without that parent
+
+#### Fixed
+- Visual appearance of `Checkbox Wrapper` and `Radio Button Wrapper` reflect the state of the wrapped `input` element
+
+### [2.0.0-rc.9] - 2021-03-26
+
+#### Added
+- `Button Group` component
 - Fullscreen property for `Modal` on mobile
 
 #### Changed
@@ -36,8 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [2.0.0-rc.6] - 2021-03-11
 
 #### Changed
-- Make `Grid` and `Grid Item` use ShadowDom
-- Make `Flex` and `Flex Item` use ShadowDom
+- Make `Grid` and `Grid Item` use Shadow DOM
+- Make `Flex` and `Flex Item` use Shadow DOM
 
 ### [2.0.0-rc.5] - 2021-03-09
 
@@ -213,6 +229,9 @@ This might lead to a doubled * symbol if you set one by yourself.
 + <p-select-wrapper label="Some label"><select name="some-name" required><option>A</option></select></p-select-wrapper>
 ```
 
+#### Shadow DOM
+`Flex`, `Flex Item`, `Grid` and `Grid Item` now use Shadow DOM, thus you are not able to overwrite styles defined by these components any longer.
+
 ---
 
 ## Angular
@@ -249,7 +268,7 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 
 #### Jsdom Polyfill for React / Jest / jsdom test automation
-We removed test mocks for React / Jest / jsdom as ShadowDOM is supported since jsdom v12.2.0.
+We removed test mocks for React / Jest / jsdom as Shadow DOM is supported since jsdom v12.2.0.
 Instead, we provide a Jsdom Polyfill (exclusivly for `@porsche-design-system/components-react` package) fixing missing implementation of jsdom which the Porsche Design System relies on.
 **Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with a PorscheDesignSystemProvider in order to avoid exceptions.
 For more information please [read further](https://designsystem.porsche.com/latest/#/start-coding/react).

@@ -10,6 +10,7 @@ import {
   transitionListener,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextWeight, Theme, TextSize } from '../../../../types';
+import { isSizeInherit } from './text-utils';
 
 @Component({
   tag: 'p-text',
@@ -48,9 +49,11 @@ export class Text {
   }
 
   public componentDidLoad(): void {
-    transitionListener(this.textTag, 'font-size', () => {
-      this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-    });
+    if (isSizeInherit(this.size)) {
+      transitionListener(this.textTag, 'font-size', () => {
+        this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -60,8 +63,8 @@ export class Text {
 
     const textClasses = {
       [prefix('text')]: true,
-      [prefix(`text--weight-${this.weight}`)]: true,
-      [prefix(`text--align-${this.align}`)]: true,
+      [prefix(`text--weight-${this.weight}`)]: this.weight !== 'regular',
+      [prefix(`text--align-${this.align}`)]: this.align !== 'left',
       [prefix(`text--color-${this.color}`)]: true,
       [prefix('text--ellipsis')]: this.ellipsis,
       [prefix('text--theme-dark')]: isDark(this.theme) && this.color !== 'inherit',
@@ -69,7 +72,7 @@ export class Text {
     };
 
     return (
-      <TagType class={textClasses} ref={(el) => (this.textTag = el as HTMLElement)}>
+      <TagType class={textClasses} ref={(el) => (this.textTag = el)}>
         <slot />
       </TagType>
     );
@@ -81,7 +84,6 @@ export class Text {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;

@@ -18,7 +18,7 @@ describe('sanitizeActiveTabIndex()', () => {
     ['asd', 0, undefined],
     [2, 0, undefined],
     [-5, 2, undefined],
-    [5, 2, 1],
+    [5, 2, undefined],
     [3, 5, 3],
   ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
     expect(sanitizeActiveTabIndex(index as number, tabElementsCount)).toBe(expected);
@@ -27,10 +27,10 @@ describe('sanitizeActiveTabIndex()', () => {
 
 describe('getTransformationToInactive()', () => {
   it.each([
-    [{}, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
+    [{}, 'transform: translate3d(0rem,0,0); width: 0;'],
+    [{ offsetWidth: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
+    [{ offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
+    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0;'],
     [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(2.34375rem,0,0); width: 0;'],
     [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0.46875rem,0,0); width: 0;'],
   ])('should for %s return %s', (elementOffset, expected) => {
@@ -40,12 +40,12 @@ describe('getTransformationToInactive()', () => {
 
 describe('getTransformationToActive()', () => {
   it.each([
-    [{}, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0,0,0); width: 0;'],
+    [{}, 'transform: translate3d(0rem,0,0); width: 0rem;'],
+    [{ offsetWidth: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
+    [{ offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
+    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0rem;'],
     [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(1.875rem,0,0); width: 0.9375rem;'],
-    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0,0,0); width: 0.9375rem;'],
+    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0rem,0,0); width: 0.9375rem;'],
   ])('should for %s return %s', (elementOffset, expected) => {
     expect(getTransformationToActive(elementOffset as HTMLElement)).toBe(expected);
   });

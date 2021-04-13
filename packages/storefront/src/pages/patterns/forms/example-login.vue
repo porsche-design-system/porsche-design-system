@@ -55,7 +55,9 @@
           </p-flex>
           <p-flex class="form-section-spacing">
             <p-flex-item width="{base: 'full', s: 'auto'}">
-              <p-button type="submit" class="form-item-width--full form-item-width--auto-s">Log in</p-button>
+              <p-button-group>
+                <p-button type="submit">Log in</p-button>
+              </p-button-group>
               <p-checkbox-wrapper label="Keep me logged in" class="form-row-spacing">
                 <input type="checkbox" v-bind:name="validateFieldName('isChecked')" v-model="bag.data.isChecked" />
               </p-checkbox-wrapper>

@@ -150,6 +150,20 @@ export const config: StorefrontConfig = {
         () => import(`@/../../components/src/components/action/button/button.props.md`),
       ],
     },
+    'Button Group': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/button-group/button-group.examples.md`),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/button-group/button-group.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/layout/button-group/button-group.props.md`),
+      ],
+    },
     'Button Pure': {
       Examples: [
         // @ts-ignore
@@ -498,17 +512,7 @@ export const config: StorefrontConfig = {
     ],
   },
   'Patterns': {
-    Buttons: {
-      Guidelines: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/buttons/guidelines.md`),
-      ],
-      Resources: [
-        // @ts-ignore
-        () => import(`@/pages/patterns/buttons/resources.md`),
-      ],
-    },
-    Forms: {
+   Forms: {
       Guidelines: [
         // @ts-ignore
         () => import(`@/pages/patterns/forms/guidelines.md`),
