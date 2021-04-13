@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { attachCss, buildResponsiveJss, getCss, GetStylesFunction, JssStyle, mergeDeep } from '../../../utils';
-import { breakpoint, mediaQuery } from '@porsche-design-system/utilities';
+import type { GetStylesFunction, JssStyle } from '../../../utils';
+import { attachCss, breakpoint, mediaQuery, getCss } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -33,19 +33,31 @@ export const getResponsiveMarque = (trademark: boolean, size: MarqueSize): JSX.E
   ];
 };
 
+const baseSizes = {
+  small: {
+    width: 100,
+    height: 60,
+  },
+  medium: {
+    width: 120,
+    height: 72,
+  },
+};
+
 const getSizeStyles: GetStylesFunction = (size: MarqueSize): JssStyle =>
   ({
-    small: {
-      width: 100,
-      height: 60,
-    },
-    medium: {
-      width: 120,
-      height: 72,
+    ...baseSizes,
+    responsive: {
+      ...baseSizes.small,
+      [mediaQuery('l')]: baseSizes.medium,
     },
   }[size]);
 
 const baseCss: string = getCss({
+  ':host': {
+    display: 'inline-flex',
+    verticalAlign: 'top',
+  },
   '@global': {
     a: {
       display: 'block',
@@ -56,26 +68,23 @@ const baseCss: string = getCss({
       '&:focus': { outlineColor: '#000' },
       '&:focus:not(:focus-visible)': { outlineColor: 'transparent' },
     },
-    picture: {
-      ...getSizeStyles('small'),
-      display: 'block',
-      [mediaQuery(breakpoint.l)]: getSizeStyles('medium'),
-    },
-
     img: {
       display: 'block',
       width: '100%',
       height: 'auto',
     },
   },
-  ':host': {
-    display: 'inline-flex',
-    verticalAlign: 'top',
-  },
 });
 
 export const getDynamicCss = (size: MarqueSize): string => {
-  return getCss(mergeDeep(buildResponsiveJss(size, getSizeStyles)));
+  return getCss({
+    '@global': {
+      picture: {
+        display: 'block',
+        ...getSizeStyles(size),
+      },
+    },
+  });
 };
 
 export const addCss = (host: HTMLElement, size: MarqueSize): void => {
