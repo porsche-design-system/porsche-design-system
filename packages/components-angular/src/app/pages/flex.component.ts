@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
         height: 180px;
       }
 
-      .highlight p {
+      p-flex-item.highlight > p {
         background-color: deeppink;
       }
 
@@ -519,7 +519,7 @@ import { Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'flex-start'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'flex-start'" class="fixed-height">
+      <p-flex [wrap]="'wrap'" [alignContent]="'flex-start'" class="fixed-height wrap">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
