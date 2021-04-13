@@ -11,6 +11,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   getLifecycleStatus,
+  waitForEventSerialization,
 } from '../helpers';
 import { Page } from 'puppeteer';
 
@@ -108,6 +109,7 @@ describe('link', () => {
     expect(await getActiveElementId(page)).toBe('', 'activeElementId initially');
 
     await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
     expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab');
     expect(linkFocusCalls).toBe(0, 'linkFocusCalls after 1st tab');
     expect(linkFocusInCalls).toBe(0, 'linkFocusInCalls after 1st tab');
@@ -117,6 +119,7 @@ describe('link', () => {
     expect(await getActiveElementId(page)).toBe('before', 'activeElementId after 1st tab');
 
     await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
     expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 2nd tab');
     expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 2nd tab');
     expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 2nd tab');
@@ -126,6 +129,7 @@ describe('link', () => {
     expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 2nd tab');
 
     await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
     expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 3rd tab');
     expect(linkFocusCalls).toBe(1, 'linkFocusCalls after 3rd tab');
     expect(linkFocusInCalls).toBe(1, 'linkFocusInCalls after 3rd tab');
@@ -137,6 +141,7 @@ describe('link', () => {
     // tab back
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
     expect(beforeFocusCalls).toBe(1, 'beforeFocusCalls after 1st tab back');
     expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 1st tab back');
     expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 1st tab back');
@@ -146,6 +151,7 @@ describe('link', () => {
     expect(await getActiveElementId(page)).toBe('my-link', 'activeElementId after 1st tab back');
 
     await page.keyboard.press('Tab');
+    await waitForEventSerialization(page);
     expect(beforeFocusCalls).toBe(2, 'beforeFocusCalls after 2nd tab back');
     expect(linkFocusCalls).toBe(2, 'linkFocusCalls after 2nd tab back');
     expect(linkFocusInCalls).toBe(2, 'linkFocusInCalls after 2nd tab back');

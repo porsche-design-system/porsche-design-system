@@ -5,6 +5,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
@@ -181,7 +182,7 @@ describe('icon', () => {
           expect(await getContent(icon)).toContain('highway');
 
           await setAttribute(iconComponent, 'name', 'light');
-          await page.waitForTimeout(5); // to give component time to unset previous icon
+          await waitForEventSerialization(page);
           expect(await getContent(icon)).toEqual('');
 
           await page.waitForResponse((resp) => resp.url().indexOf('light') && resp.status() === 200);
