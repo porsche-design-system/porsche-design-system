@@ -1,4 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
+import type { FormState } from '../types';
 
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
 import { getPrefixedTagNames } from './get-prefixed-tag-name';
@@ -54,6 +55,18 @@ export const isRequired = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSele
 
 export const hasNamedSlot = (el: Host, slotName: string): boolean => !!getHTMLElement(el, `[slot="${slotName}"]`);
 
+export const isLabelVisible = (host: Host, label: string): boolean => {
+  return !!label || hasNamedSlot(host, 'label');
+};
+
+export const isMessageVisible = (host: Host, message: string, state: FormState): boolean => {
+  return !!(message || hasNamedSlot(host, 'message')) && ['success', 'error'].includes(state);
+};
+
+export const isDescriptionVisible = (host: Host, description: string): boolean => {
+  return !!description || hasNamedSlot(host, 'description');
+};
+
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTagNameMap>(host: Host, selector: K): HTMLElementTagNameMap[K] | null;
 export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(host: Host, selector: string): E | null;
@@ -75,4 +88,16 @@ export const throwIfParentIsNotOfKind = (host: HTMLElement, tagName: TagNameCame
 
 export const getTagName = (el: HTMLElement): string => el.tagName.toLowerCase();
 
-// TODO: add addEventListener and removeEventListener
+export const addEventListener = (
+  el: HTMLElement,
+  type: string,
+  listener: () => void,
+  options?: boolean | AddEventListenerOptions
+): void => el.addEventListener(type, listener, options);
+
+export const removeEventListener = (
+  el: HTMLElement,
+  type: string,
+  listener: () => void,
+  options?: boolean | EventListenerOptions
+): void => el.removeEventListener(type, listener, options);
