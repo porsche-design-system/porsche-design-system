@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'page-radio-button',
+  styles: [
+    `
+      .playground > * {
+        margin-bottom: 2px;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should render with label">
       <p-radio-button-wrapper [label]="'Some label'">

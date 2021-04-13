@@ -4,8 +4,10 @@ import {
   getPrefixedTagNames,
   getTagName,
   handleButtonEvent,
-  hasNamedSlot,
   insertSlottedStyles,
+  isDescriptionVisible,
+  isLabelVisible,
+  isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -58,12 +60,17 @@ export class TextFieldWrapper {
     this.initMutationObserver();
   }
 
-  public componentDidLoad(): void {
-    this.setAriaAttributes();
-  }
-
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
+     */
+    setAriaAttributes(this.input, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   public disconnectedCallback(): void {
@@ -106,13 +113,13 @@ export class TextFieldWrapper {
       <Host>
         <div class={containerClasses}>
           <label class={labelClasses}>
-            {this.isLabelVisible && (
+            {isLabelVisible(this.host, this.label) && (
               <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
                 {isRequired(this.input) && <span class={prefix('text-field-wrapper__required')} />}
               </PrefixedTagNames.pText>
             )}
-            {this.isDescriptionVisible && (
+            {isDescriptionVisible(this.host, this.description) && (
               <PrefixedTagNames.pText
                 class={descriptionTextClasses}
                 tag="span"
@@ -138,7 +145,7 @@ export class TextFieldWrapper {
             </button>
           )}
         </div>
-        {this.isMessageVisible && (
+        {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
@@ -147,36 +154,11 @@ export class TextFieldWrapper {
     );
   }
 
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || hasNamedSlot(this.host, 'description');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
-  }
-
   private setInput(): void {
     const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'];
     const selector = types.map((type) => `input[type=${type}]`).join(',');
 
     this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.input, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
   }
 
   private labelClick = (): void => {
@@ -217,7 +199,6 @@ export class TextFieldWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
