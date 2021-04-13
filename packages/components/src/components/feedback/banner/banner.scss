@@ -91,7 +91,6 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
 }
 
 .#{$p-global-class-prefix}banner {
-  $bem-block: &;
   display: flex;
   position: relative;
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
@@ -109,7 +108,7 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
     background-color: $p-color-notification-neutral;
   }
 
-  &#{$bem-block}--theme-dark {
+  &--theme-dark {
     background-color: $p-color-theme-dark-notification-neutral-soft;
   }
 
