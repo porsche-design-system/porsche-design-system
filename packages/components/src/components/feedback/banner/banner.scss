@@ -95,6 +95,7 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
   display: flex;
   position: relative;
   padding: p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(16px) p-px-to-rem(20px);
+  background-color: $p-color-notification-neutral-soft;
   box-shadow: 0 p-px-to-rem(2px) p-px-to-rem(4px) 0 rgba(0, 0, 0, 0.05),
     0 p-px-to-rem(15px) p-px-to-rem(20px) 0 rgba(0, 0, 0, 0.2);
 
@@ -105,20 +106,11 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
     top: 0;
     bottom: 0;
     width: p-px-to-rem(4px);
+    background-color: $p-color-notification-neutral;
   }
 
-  &--neutral {
-    background-color: $p-color-notification-neutral-soft;
-    &::before {
-      background-color: $p-color-notification-neutral;
-    }
-
-    &#{$bem-block}--theme-dark {
-      background-color: $p-color-theme-dark-notification-neutral-soft;
-      &::before {
-        background-color: $p-color-notification-neutral;
-      }
-    }
+  &#{$bem-block}--theme-dark {
+    background-color: $p-color-theme-dark-notification-neutral-soft;
   }
 
   &--warning {
@@ -159,7 +151,7 @@ $easeOutQuad: cubic-bezier(0.5, 1, 0.89, 1);
 
   &__button {
     position: absolute;
-    right: p-px-to-rem(16px);
     top: p-px-to-rem(16px);
+    right: p-px-to-rem(16px);
   }
 }
