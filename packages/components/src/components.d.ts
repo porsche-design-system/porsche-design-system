@@ -585,6 +585,24 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PSwitchWrapper {
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -865,6 +883,12 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPSwitchWrapperElement extends Components.PSwitchWrapper, HTMLStencilElement {
+    }
+    var HTMLPSwitchWrapperElement: {
+        prototype: HTMLPSwitchWrapperElement;
+        new (): HTMLPSwitchWrapperElement;
+    };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
     var HTMLPTabsElement: {
@@ -937,6 +961,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-switch-wrapper": HTMLPSwitchWrapperElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1531,6 +1556,24 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PSwitchWrapper {
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
+    }
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1703,6 +1746,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
+        "p-switch-wrapper": PSwitchWrapper;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1740,6 +1784,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-switch-wrapper": LocalJSX.PSwitchWrapper & JSXBase.HTMLAttributes<HTMLPSwitchWrapperElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
