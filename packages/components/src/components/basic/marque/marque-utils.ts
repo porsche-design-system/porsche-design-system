@@ -20,10 +20,10 @@ export const getResponsiveMarque = (trademark: boolean, size: MarqueSize): strin
   const manifestPath = getManifestPath(trademark);
   return [
     size === 'responsive'
-      ? `<source srcset="${buildSrcSet(manifestPath, 'medium')}" media="(min-width: ${breakpoint.l}px)" />` +
-        `<source srcset="${buildSrcSet(manifestPath, 'small')}" />`
-      : `<source srcset="${buildSrcSet(manifestPath, size)}" />`,
-    `<img src="${cdnBaseUrl}/${manifestPath.medium['2x']}" alt="Porsche" />`,
+      ? `<source srcset="${buildSrcSet(manifestPath, 'medium')}" media="(min-width: ${breakpoint.l}px)">` +
+        `<source srcset="${buildSrcSet(manifestPath, 'small')}">`
+      : `<source srcset="${buildSrcSet(manifestPath, size)}">`,
+    `<img src="${cdnBaseUrl}/${manifestPath.medium['2x']}" alt="Porsche">`,
   ].join('');
 };
 
