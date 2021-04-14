@@ -42,7 +42,7 @@ export class TextFieldWrapper {
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
-  private isPasswordToggleable: boolean;
+  private isPassword: boolean;
 
   public connectedCallback(): void {
     this.addSlottedStyles();
@@ -52,7 +52,7 @@ export class TextFieldWrapper {
   public componentWillLoad(): void {
     this.setInput();
     this.observeMutations();
-    this.isPasswordToggleable = this.input.type === 'password';
+    this.isPassword = this.input.type === 'password';
   }
 
   public componentDidRender(): void {
@@ -103,7 +103,7 @@ export class TextFieldWrapper {
             )}
             <slot />
           </label>
-          {this.isPasswordToggleable ? (
+          {this.isPassword ? (
             <button type="button" onClick={this.togglePassword} disabled={disabled}>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
