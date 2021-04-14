@@ -8,14 +8,14 @@
 **Secondly**, it can present further information about the target level of web accessibility for the website and the methods used to achieve those targets. It also can enable the website owner to acknowledge any areas of the website where accessibility targets have not been met and outline the proposed plan for resolving any such problem.  
 
 **A word of caution however:**
-An accessibility statement that makes rash or false claims will only damage the reputation of the website, not enhance it and it does not prevent the site owner from getting sued if the website lacks support for accessibility.
+An accessibility statement that makes rash or false claims will only damage the reputation of the website, not enhance it and it does not prevent the site owner from getting sued if the website lacks accessibility support.
 
 ## Where to put an accessibility statement
 **Accessibility statements should be easy to find** and should be linked from each page. Placing it in the **footer area** is a proven way. 
 Use consistent link names for your accessibility statement to help users recognize them. 
 
 ## Example template
-**There are no strict specifications** how to write an accessibility statement, but it should announce the intent and commitment to accessibility.
+**There are no strict specifications** on how to write an accessibility statement, but it should announce the intent and commitment to accessibility.
 The following example can be seen as a blueprint and **should be adapted to your specific needs**.
 
 This template is based on the guidelines on [How to develop an Accessibility Statement](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
