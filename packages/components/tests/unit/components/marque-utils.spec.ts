@@ -1,10 +1,5 @@
 import type { InnerManifest, MarqueSize } from '../../../src/components/basic/marque/marque-utils';
-import {
-  buildSrcSet,
-  getDynamicCss,
-  getManifestPath,
-  getResponsiveMarque,
-} from '../../../src/components/basic/marque/marque-utils';
+import { buildSrcSet, getDynamicCss, getManifestPath } from '../../../src/components/basic/marque/marque-utils';
 import { MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
 describe('getManifestPath()', () => {
@@ -45,19 +40,6 @@ describe('buildSrcSet()', () => {
       expect(buildSrcSet(manifestPath, size)).toBe(result);
     }
   );
-});
-
-describe('getResponsiveMarque()', () => {
-  it.each([
-    [true, 'responsive'],
-    [true, 'medium'],
-    [true, 'small'],
-    [false, 'responsive'],
-    [false, 'medium'],
-    [false, 'small'],
-  ])('should match snapshot for trademark %s and size %o', (trademark: boolean, size: MarqueSize) => {
-    expect(getResponsiveMarque(trademark, size)).toMatchSnapshot();
-  });
 });
 
 describe('getDynamicCss()', () => {

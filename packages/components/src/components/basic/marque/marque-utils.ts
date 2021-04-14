@@ -1,5 +1,5 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { attachCss, breakpoint, getCss, mediaQuery } from '../../../utils';
+import { attachCss, getCss, mediaQuery } from '../../../utils';
 
 export type MarqueSize = 'responsive' | 'small' | 'medium';
 type MarqueManifest = typeof MARQUES_MANIFEST;
@@ -15,17 +15,6 @@ export const buildSrcSet = (manifestPath: InnerManifest, size: MarqueSize): stri
   Object.entries(manifestPath[size])
     .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
     .join(',');
-
-export const getResponsiveMarque = (trademark: boolean, size: MarqueSize): string => {
-  const manifestPath = getManifestPath(trademark);
-  return [
-    size === 'responsive'
-      ? `<source srcset="${buildSrcSet(manifestPath, 'medium')}" media="(min-width: ${breakpoint.l}px)">` +
-        `<source srcset="${buildSrcSet(manifestPath, 'small')}">`
-      : `<source srcset="${buildSrcSet(manifestPath, size)}">`,
-    `<img src="${cdnBaseUrl}/${manifestPath.medium['2x']}" alt="Porsche">`,
-  ].join('');
-};
 
 const baseSizes = {
   small: {
