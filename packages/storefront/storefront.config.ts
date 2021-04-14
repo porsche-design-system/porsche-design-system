@@ -235,9 +235,17 @@ export const config: StorefrontConfig = {
       ],
     },
     'Switch': {
+      Examples: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/action/switch/switch.examples.md`),
+      ],
       Usage: [
         // @ts-ignore
-        () => import(`@/../../components/src/components/form/switch/switch.usage.md`),
+        () => import(`@/../../components/src/components/action/switch/switch.usage.md`),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import(`@/../../components/src/components/action/switch/switch.props.md`),
       ],
     },
     'Textarea': {
