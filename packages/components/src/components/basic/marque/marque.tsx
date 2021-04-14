@@ -32,7 +32,7 @@ export class Marque {
   }
 
   public render(): JSX.Element {
-    const picture = <picture>{getResponsiveMarque(this.trademark, this.size)}</picture>;
+    const picture = <picture innerHTML={getResponsiveMarque(this.trademark, this.size)} />;
 
     return (
       <Host>

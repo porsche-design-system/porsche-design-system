@@ -40,7 +40,7 @@ describe('buildSrcSet()', () => {
       'https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.ac2042736af5512cf547c89fa7924c4f@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.22f1e9dc90399d9a5287eda689b60dba@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.small.min.49209245f04eadef8817b9bbae80d3e1@3x.png 3x',
     ],
   ])(
-    'should return correct buildSrcSet for manifestPath %s and size %s',
+    'should return correct buildSrcSet for manifestPath %o and size %s',
     (manifestPath: InnerManifest, size: MarqueSize, result: string) => {
       expect(buildSrcSet(manifestPath, size)).toBe(result);
     }
@@ -55,7 +55,7 @@ describe('getResponsiveMarque()', () => {
     [false, 'responsive'],
     [false, 'medium'],
     [false, 'small'],
-  ])('should match snapshot for trademark %s and size %s', (trademark: boolean, size: MarqueSize) => {
+  ])('should match snapshot for trademark %s and size %o', (trademark: boolean, size: MarqueSize) => {
     expect(getResponsiveMarque(trademark, size)).toMatchSnapshot();
   });
 });
