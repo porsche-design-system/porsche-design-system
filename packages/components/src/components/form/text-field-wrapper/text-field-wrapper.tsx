@@ -11,7 +11,6 @@ import {
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   observeMutations,
-  prefix,
   setAriaAttributes,
   unobserveMutations,
 } from '../../../utils';
@@ -75,49 +74,28 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
-    const containerClasses = prefix('text-field-wrapper__container');
-    const labelClasses = prefix('text-field-wrapper__label');
-    const labelTextClasses = {
-      [prefix('text-field-wrapper__label-text')]: true,
-      [prefix('text-field-wrapper__label-text--disabled')]: disabled,
-      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
-    };
-    const descriptionTextClasses = {
-      [prefix('text-field-wrapper__description-text')]: true,
-      [prefix('text-field-wrapper__description-text--disabled')]: disabled,
-      ...mapBreakpointPropToPrefixedClasses('text-field-wrapper__description-text-', this.hideLabel, [
-        'hidden',
-        'visible',
-      ]),
-    };
-    const fakeInputClasses = {
-      [prefix('text-field-wrapper__fake-input')]: true,
-      [prefix(`text-field-wrapper__fake-input--${this.state}`)]: this.state !== 'none',
-      [prefix('text-field-wrapper__fake-input--disabled')]: disabled,
-      [prefix('text-field-wrapper__fake-input--readonly')]: readOnly,
-      [prefix('text-field-wrapper__fake-input--password')]: this.isPasswordToggleable,
-    };
-    const buttonClasses = prefix('text-field-wrapper__button');
-    const messageClasses = {
-      [prefix('text-field-wrapper__message')]: true,
-      [prefix(`text-field-wrapper__message--${this.state}`)]: this.state !== 'none',
+    const labelClasses = {
+      label: true,
+      'label--disabled': disabled,
+      [`label--${this.state}`]: this.state !== 'none',
+      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
-        <div class={containerClasses}>
+        <div class="container">
           <label class={labelClasses}>
             {isLabelVisible(this.host, this.label) && (
-              <PrefixedTagNames.pText class={labelTextClasses} tag="span" color="inherit" onClick={this.labelClick}>
+              <PrefixedTagNames.pText class="label__text" tag="span" color="inherit" onClick={this.labelClick}>
                 {this.label || <slot name="label" />}
-                {isRequired(this.input) && <span class={prefix('text-field-wrapper__required')} />}
+                {isRequired(this.input) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {isDescriptionVisible(this.host, this.description) && (
               <PrefixedTagNames.pText
-                class={descriptionTextClasses}
+                class="label__text label__text--description"
                 tag="span"
                 color="inherit"
                 size="x-small"
@@ -126,23 +104,21 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            <span class={fakeInputClasses}>
-              <slot />
-            </span>
+            <slot />
           </label>
           {this.isPasswordToggleable && (
-            <button type="button" class={buttonClasses} onClick={this.togglePassword} disabled={disabled}>
+            <button type="button" onClick={this.togglePassword} disabled={disabled}>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
           )}
           {this.isInputTypeSearch && (
-            <button onClick={this.onSubmitHandler} type="submit" class={buttonClasses} disabled={disabled || readOnly}>
+            <button onClick={this.onSubmitHandler} type="submit" disabled={disabled || readOnly}>
               <PrefixedTagNames.pIcon name="search" color="inherit" />
             </button>
           )}
         </div>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
