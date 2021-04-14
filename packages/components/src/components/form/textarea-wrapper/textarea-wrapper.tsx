@@ -3,8 +3,10 @@ import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getTagName,
-  hasNamedSlot,
   insertSlottedStyles,
+  isDescriptionVisible,
+  isLabelVisible,
+  isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
   prefix,
@@ -44,12 +46,17 @@ export class TextareaWrapper {
     this.addSlottedStyles();
   }
 
-  public componentDidLoad(): void {
-    this.setAriaAttributes();
-  }
-
-  public componentDidUpdate(): void {
-    this.setAriaAttributes();
+  public componentDidRender(): void {
+    /*
+     * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
+    setAriaAttributes(this.textarea, {
+      label: this.label,
+      message: this.message || this.description,
+      state: this.state,
+    });
   }
 
   public disconnectedCallback(): void {
@@ -88,13 +95,13 @@ export class TextareaWrapper {
     return (
       <Host>
         <label class={labelClasses}>
-          {this.isLabelVisible && (
+          {isLabelVisible(this.host, this.label) && (
             <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
               {this.label || <slot name="label" />}
               {isRequired(this.textarea) && <span class={prefix('textarea-wrapper__required')} />}
             </PrefixedTagNames.pText>
           )}
-          {this.isDescriptionVisible && (
+          {isDescriptionVisible(this.host, this.description) && (
             <PrefixedTagNames.pText
               class={descriptionTextClasses}
               tag="span"
@@ -109,7 +116,7 @@ export class TextareaWrapper {
             <slot />
           </span>
         </label>
-        {this.isMessageVisible && (
+        {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
@@ -118,33 +125,8 @@ export class TextareaWrapper {
     );
   }
 
-  private get isLabelVisible(): boolean {
-    return !!this.label || hasNamedSlot(this.host, 'label');
-  }
-
-  private get isDescriptionVisible(): boolean {
-    return !!this.description || hasNamedSlot(this.host, 'description');
-  }
-
-  private get isMessageVisible(): boolean {
-    return !!(this.message || hasNamedSlot(this.host, 'message')) && ['success', 'error'].includes(this.state);
-  }
-
   private setTextarea(): void {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-  }
-
-  /*
-   * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
-   * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-   * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-   */
-  private setAriaAttributes(): void {
-    setAriaAttributes(this.textarea, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
   }
 
   private labelClick = (): void => {
@@ -164,7 +146,6 @@ export class TextareaWrapper {
       outline: none transparent !important;
       color: inherit !important;
       text-decoration: underline !important;
-      -webkit-transition: color .24s ease !important;
       transition: color .24s ease !important;
       outline: transparent solid 1px !important;
       outline-offset: 1px !important;
