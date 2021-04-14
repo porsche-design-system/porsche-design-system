@@ -36,6 +36,7 @@ const baseCss: string = getCss({
     a: {
       display: 'block',
       textDecoration: 'none',
+     // TODO: Utilities package with string focus styles was not useful, implement new focus helper in utils that returns style object
       outline: 'transparent solid 1px',
       outlineOffset: 0,
       '::-moz-focus-inner': { border: 0 },
