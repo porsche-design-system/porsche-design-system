@@ -2,9 +2,7 @@ import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/
 import type { BreakpointCustomizable } from '../../../types';
 import { getPrefixedTagNames } from '../../../utils';
 import { Theme } from '../../../types';
-import { isDisabled } from './switch-utils';
-
-export type SwitchChangeEvent = { checked: boolean };
+import { isDisabled, SwitchChangeEvent } from './switch-utils';
 
 @Component({
   tag: 'p-switch',
@@ -42,26 +40,28 @@ export class Switch {
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
   public render(): JSX.Element {
-
     const rootClasses = {
       ['checked']: this.checked,
-      ['disabled']: this.disabled
+      ['disabled']: this.disabled,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <label class={rootClasses}>
-        <PrefixedTagNames.pText tag="span" color="inherit">{this.label}</PrefixedTagNames.pText>
-        <button class="button"
-                role="switch"
-                aria-checked={this.checked ? 'true' : 'false'}
-                disabled={isDisabled(this.disabled, this.loading)}
-                tabindex={this.tabbable ? 0 : -1}
-                aria-busy={this.loading ? 'true' : null}
-                onClick={this.handleSwitchClick}
+        <PrefixedTagNames.pText tag="span" color="inherit">
+          {this.label}
+        </PrefixedTagNames.pText>
+        <button
+          class="button"
+          role="switch"
+          aria-checked={this.checked ? 'true' : 'false'}
+          disabled={isDisabled(this.disabled, this.loading)}
+          tabindex={this.tabbable ? 0 : -1}
+          aria-busy={this.loading ? 'true' : null}
+          onClick={this.handleSwitchClick}
         >
-          <span class="toggle"/>
+          <span class="toggle" />
         </button>
       </label>
     );
