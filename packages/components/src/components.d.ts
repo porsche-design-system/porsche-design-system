@@ -585,7 +585,7 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
-    interface PSwitchWrapper {
+    interface PSwitch {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
          */
@@ -883,11 +883,11 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
-    interface HTMLPSwitchWrapperElement extends Components.PSwitchWrapper, HTMLStencilElement {
+    interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
     }
-    var HTMLPSwitchWrapperElement: {
-        prototype: HTMLPSwitchWrapperElement;
-        new (): HTMLPSwitchWrapperElement;
+    var HTMLPSwitchElement: {
+        prototype: HTMLPSwitchElement;
+        new (): HTMLPSwitchElement;
     };
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
     }
@@ -961,7 +961,7 @@ declare global {
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-spinner": HTMLPSpinnerElement;
-        "p-switch-wrapper": HTMLPSwitchWrapperElement;
+        "p-switch": HTMLPSwitchElement;
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
@@ -1556,7 +1556,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
-    interface PSwitchWrapper {
+    interface PSwitch {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
          */
@@ -1746,7 +1746,7 @@ declare namespace LocalJSX {
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-spinner": PSpinner;
-        "p-switch-wrapper": PSwitchWrapper;
+        "p-switch": PSwitch;
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
@@ -1784,7 +1784,7 @@ declare module "@stencil/core" {
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
-            "p-switch-wrapper": LocalJSX.PSwitchWrapper & JSXBase.HTMLAttributes<HTMLPSwitchWrapperElement>;
+            "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

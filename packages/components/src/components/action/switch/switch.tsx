@@ -9,11 +9,11 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
 @Component({
-  tag: 'p-switch-wrapper',
-  styleUrl: 'switch-wrapper.scss',
+  tag: 'p-switch',
+  styleUrl: 'switch.scss',
   shadow: true,
 })
-export class SwitchWrapper {
+export class Switch {
   @Element() public host!: HTMLElement;
 
   /** The label text. */
