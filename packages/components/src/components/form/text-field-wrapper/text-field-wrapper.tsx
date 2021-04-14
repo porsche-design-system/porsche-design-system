@@ -81,6 +81,9 @@ export class TextFieldWrapper {
       ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
+    const textProps = { tag: 'span', color: 'inherit' };
+    const labelProps = { ...textProps, onClick: this.labelClick };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -88,37 +91,32 @@ export class TextFieldWrapper {
         <div class="container">
           <label class={labelClasses}>
             {isLabelVisible(this.host, this.label) && (
-              <PrefixedTagNames.pText class="label__text" tag="span" color="inherit" onClick={this.labelClick}>
+              <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}
                 {isRequired(this.input) && <span class="required" />}
               </PrefixedTagNames.pText>
             )}
             {isDescriptionVisible(this.host, this.description) && (
-              <PrefixedTagNames.pText
-                class="label__text label__text--description"
-                tag="span"
-                color="inherit"
-                size="x-small"
-                onClick={this.labelClick}
-              >
+              <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
             <slot />
           </label>
-          {this.isPasswordToggleable && (
+          {this.isPasswordToggleable ? (
             <button type="button" onClick={this.togglePassword} disabled={disabled}>
               <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} color="inherit" />
             </button>
-          )}
-          {this.isInputTypeSearch && (
-            <button onClick={this.onSubmitHandler} type="submit" disabled={disabled || readOnly}>
-              <PrefixedTagNames.pIcon name="search" color="inherit" />
-            </button>
+          ) : (
+            this.input.type === 'search' && (
+              <button type="submit" onClick={this.onSubmitHandler} disabled={disabled || readOnly}>
+                <PrefixedTagNames.pIcon name="search" color="inherit" />
+              </button>
+            )
           )}
         </div>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
@@ -127,8 +125,9 @@ export class TextFieldWrapper {
   }
 
   private setInput(): void {
-    const types = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'];
-    const selector = types.map((type) => `input[type=${type}]`).join(',');
+    const selector = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
+      .map((type) => `input[type=${type}]`)
+      .join(',');
 
     this.input = getHTMLElementAndThrowIfUndefined(this.host, selector);
   }
@@ -137,10 +136,6 @@ export class TextFieldWrapper {
     this.input.focus();
   };
 
-  private get isInputTypeSearch(): boolean {
-    return this.input.type === 'search';
-  }
-
   private togglePassword = (): void => {
     this.input.type = this.input.type === 'password' ? 'text' : 'password';
     this.showPassword = !this.showPassword;
@@ -148,14 +143,12 @@ export class TextFieldWrapper {
   };
 
   private onSubmitHandler = (event: MouseEvent): void => {
-    if (this.isInputTypeSearch) {
-      handleButtonEvent(
-        event,
-        this.host,
-        () => 'submit',
-        () => this.input.disabled
-      );
-    }
+    handleButtonEvent(
+      event,
+      this.host,
+      () => 'submit',
+      () => this.input.disabled
+    );
   };
 
   private observeMutations = (): void => {

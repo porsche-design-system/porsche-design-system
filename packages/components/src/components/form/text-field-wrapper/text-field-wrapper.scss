@@ -56,23 +56,26 @@
     background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
 }
 
-::slotted(input[type='number']) {
-  -moz-appearance: textfield !important; // hides up/down spin button for Firefox
-}
-
-::slotted(input[type='search']),
-::slotted(input[type='password']) {
-  padding-right: 3rem !important;
+::slotted(input:hover) {
+  border-color: $p-color-default !important;
 }
 
 ::slotted(input:focus) {
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
+:host([state='success']) ::slotted(input) {
+  border: 2px solid $p-color-notification-success !important;
+  padding: p-px-to-rem(10px) !important;
+}
 :host([state='success']) ::slotted(input:focus) {
   outline-color: $p-color-notification-success !important;
 }
 
+:host([state='error']) ::slotted(input) {
+  border: 2px solid $p-color-notification-error !important;
+  padding: p-px-to-rem(10px) !important;
+}
 :host([state='error']) ::slotted(input:focus) {
   outline-color: $p-color-notification-error !important;
 }
@@ -104,6 +107,15 @@
   color: $p-color-neutral-contrast-medium !important;
 }
 
+::slotted(input[type='number']) {
+  -moz-appearance: textfield !important; // hides up/down spin button for Firefox
+}
+
+:host ::slotted(input[type='search']),
+:host ::slotted(input[type='password']) {
+  padding-right: 3rem !important;
+}
+
 // Reset webkit autofill styles
 ::slotted(input:-internal-autofill-selected),
 ::slotted(input:-internal-autofill-previewed),
@@ -132,6 +144,7 @@
 .label {
   $bem-block: &;
   display: block;
+  position: relative;
 
   &--visible #{$bem-block}__text {
     @include text-visible;
@@ -191,6 +204,20 @@
     }
   }
 
+  &--success {
+    #{$bem-block}__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
+    ::slotted(input:hover:not(:disabled):not(:read-only)) {
+      border-color: darken($p-color-notification-success, 12%) !important;
+    }
+  }
+
+  &--error {
+    #{$bem-block}__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
+    ::slotted(input:hover:not(:disabled):not(:read-only)) {
+      border-color: darken($p-color-notification-error, 12%) !important;
+    }
+  }
+
   &__text {
     display: block;
     width: fit-content;
@@ -205,6 +232,10 @@
       margin-top: -$p-spacing-4;
       padding-bottom: $p-spacing-8;
     }
+
+    &:hover ~ ::slotted(input:not(:disabled):not(:read-only)) {
+      border-color: $p-color-default !important;
+    }
   }
 
   &--disabled {
@@ -217,31 +248,6 @@
 .required {
   @include required;
 }
-
-//&__fake-input {
-//  &:hover:not(&--disabled):not(&--readonly):not(&--success):not(&--error),
-//  #{$bem-block}__label-text:hover ~ &:not(&--disabled):not(&--readonly):not(&--success):not(&--error) {
-//    box-shadow: inset 0 0 0 1px $p-color-default;
-//  }
-//
-//  &--success {
-//    box-shadow: inset 0 0 0 2px $p-color-notification-success;
-//
-//    &:hover,
-//    #{$bem-block}__label-text:hover ~ & {
-//      box-shadow: inset 0 0 0 2px darken($p-color-notification-success, 12%);
-//    }
-//  }
-//
-//  &--error {
-//    box-shadow: inset 0 0 0 2px $p-color-notification-error;
-//
-//    &:hover,
-//    #{$bem-block}__label-text:hover ~ & {
-//      box-shadow: inset 0 0 0 2px darken($p-color-notification-error, 12%);
-//    }
-//  }
-//}
 
 .message {
   margin-top: $p-spacing-4;
