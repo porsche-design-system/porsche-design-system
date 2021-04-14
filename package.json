@@ -42,7 +42,6 @@
     "Melanie Kolar <melanie.kolar@udg.de>",
     "Bernd Hacker <bernd.hacker@mhp.com"
   ],
-  "prettier": "@porsche-design-system/prettier-config",
   "scripts": {
     "preinstall": "yarn preinstall:assets && yarn preinstall:components-manager-cli && yarn preinstall:components-js && yarn preinstall:components-angular && yarn preinstall:components-react",
     "preinstall:assets": "mkdir -p ./packages/assets/bin && touch ./packages/assets/bin/serve-cdn.js",

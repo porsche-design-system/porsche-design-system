@@ -9,9 +9,9 @@ const mutationObserver = new MutationObserver((mutations) => {
     .forEach((mutation) => mutationMap.get(mutation.target)?.());
 });
 
-export const observeMutations = <T extends HTMLElement>(
+export const observeMutations = <T extends HTMLElement, K = keyof T>(
   node: T,
-  attributes: (keyof T)[],
+  attributes: Lowercase<K extends string ? K : string>[],
   callback: () => void
 ): void => {
   // node might not be defined in connectedCallback

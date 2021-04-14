@@ -122,7 +122,8 @@ describe('select-wrapper native-dropdown', () => {
     expect(await getLabel()).toBeNull();
 
     const selectComponent = await getHost();
-    await selectComponent.evaluate((el) => el.setAttribute('label', 'Some label'));
+    await setAttribute(selectComponent, 'label', 'Some label');
+    await waitForStencilLifecycle(page);
 
     expect(await getLabel()).not.toBeNull();
   });

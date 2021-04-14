@@ -1,5 +1,5 @@
 import { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
-import { getElementAttr, getOuterHTML, selectNode, waitForComponentsReady } from '../helpers';
+import { getElementProp, getOuterHTML, selectNode, waitForComponentsReady } from '../helpers';
 import { browser } from '../config';
 
 const BASE_URL = 'http://localhost:4200';
@@ -94,8 +94,8 @@ describe('components', () => {
 
       const prefixedComponent = await selectNode(page, prefixedSelector);
 
-      expect(await getElementAttr(prefixedComponent, 'ng-reflect-description')).toBe('Some Description');
-      expect(await getElementAttr(prefixedComponent, 'ng-reflect-label')).toBe('Some Label');
+      expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
+      expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
     });
   });
 

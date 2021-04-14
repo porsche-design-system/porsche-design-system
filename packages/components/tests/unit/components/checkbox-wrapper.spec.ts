@@ -1,6 +1,7 @@
 import * as domUtils from '../../../src/utils/dom';
 import { CheckboxWrapper } from '../../../src/components/form/checkbox-wrapper/checkbox-wrapper';
 import * as mutationObserverUtils from '../../../src/utils/mutation-observer';
+
 jest.mock('../../../src/utils/dom');
 jest.mock('../../../src/utils/slotted-styles');
 
@@ -8,9 +9,8 @@ describe('checkbox-wrapper', () => {
   describe('connectedCallback', () => {
     it('should call observeMutations()', () => {
       const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
-      const checkbox = new CheckboxWrapper();
-
-      checkbox.connectedCallback();
+      const component = new CheckboxWrapper();
+      component.connectedCallback();
 
       expect(spy).toBeCalledTimes(1);
     });
@@ -19,9 +19,9 @@ describe('checkbox-wrapper', () => {
   describe('componentWillLoad', () => {
     it('should call getHTMLElementAndThrowIfUndefined()', () => {
       const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-      const checkbox = new CheckboxWrapper();
+      const component = new CheckboxWrapper();
       try {
-        checkbox.componentWillLoad();
+        component.componentWillLoad();
       } catch (e) {}
 
       expect(spy).toBeCalledTimes(1);
@@ -29,9 +29,8 @@ describe('checkbox-wrapper', () => {
 
     it('should call observeMutations()', () => {
       const spy = jest.spyOn(mutationObserverUtils, 'observeMutations');
-      const checkbox = new CheckboxWrapper();
-
-      checkbox.componentWillLoad();
+      const component = new CheckboxWrapper();
+      component.componentWillLoad();
 
       expect(spy).toBeCalledTimes(1);
     });
@@ -40,9 +39,8 @@ describe('checkbox-wrapper', () => {
   describe('disconnectedCallback', () => {
     it('should call unobserveMutations()', () => {
       const spy = jest.spyOn(mutationObserverUtils, 'unobserveMutations');
-      const checkbox = new CheckboxWrapper();
-
-      checkbox.disconnectedCallback();
+      const component = new CheckboxWrapper();
+      component.disconnectedCallback();
 
       expect(spy).toBeCalledTimes(1);
     });

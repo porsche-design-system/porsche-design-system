@@ -2,16 +2,18 @@ import * as domUtils from '../../../src/utils/dom';
 import { FlexItem } from '../../../src/components/layout/flex/flex-item/flex-item';
 
 describe('flex-item', () => {
-  it('should call throwIfParentIsNotOfKind() via connectedCallback', () => {
-    const spy = jest.spyOn(domUtils, 'throwIfParentIsNotOfKind');
-    const flexItem = new FlexItem();
+  describe('connectedCallback', () => {
+    it('should call throwIfParentIsNotOfKind()', () => {
+      const spy = jest.spyOn(domUtils, 'throwIfParentIsNotOfKind');
+      const component = new FlexItem();
 
-    expect(spy).toBeCalledTimes(0);
+      expect(spy).toBeCalledTimes(0);
 
-    try {
-      flexItem.connectedCallback();
-    } catch (e) {}
+      try {
+        component.connectedCallback();
+      } catch (e) {}
 
-    expect(spy).toBeCalledTimes(1);
+      expect(spy).toBeCalledTimes(1);
+    });
   });
 });

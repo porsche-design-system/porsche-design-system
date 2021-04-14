@@ -11,6 +11,8 @@ import {
   mapBreakpointPropToPrefixedClasses,
   prefix,
   setAriaAttributes,
+  observeMutations,
+  unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -38,12 +40,15 @@ export class TextareaWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   private textarea: HTMLTextAreaElement;
-  private textareaObserver: MutationObserver;
 
   public connectedCallback(): void {
-    this.setTextarea();
-    this.initMutationObserver();
+    this.observeMutations();
     this.addSlottedStyles();
+  }
+
+  public componentWillLoad(): void {
+    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
+    this.observeMutations();
   }
 
   public componentDidRender(): void {
@@ -60,7 +65,7 @@ export class TextareaWrapper {
   }
 
   public disconnectedCallback(): void {
-    this.textareaObserver.disconnect();
+    unobserveMutations(this.textarea);
   }
 
   public render(): JSX.Element {
@@ -125,19 +130,12 @@ export class TextareaWrapper {
     );
   }
 
-  private setTextarea(): void {
-    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
-  }
-
   private labelClick = (): void => {
     this.textarea.focus();
   };
 
-  private initMutationObserver = (): void => {
-    this.textareaObserver = new MutationObserver(() => forceUpdate(this.host));
-    this.textareaObserver.observe(this.textarea, {
-      attributeFilter: ['disabled', 'readonly'],
-    });
+  private observeMutations = (): void => {
+    observeMutations(this.textarea, ['disabled', 'readonly'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {
