@@ -64,30 +64,8 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-:host([state='success']) ::slotted(input) {
-  border: 2px solid $p-color-notification-success !important;
-  padding: p-px-to-rem(10px) !important;
-}
-:host([state='success']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-success !important;
-}
-
-:host([state='error']) ::slotted(input) {
-  border: 2px solid $p-color-notification-error !important;
-  padding: p-px-to-rem(10px) !important;
-}
-:host([state='error']) ::slotted(input:focus) {
-  outline-color: $p-color-notification-error !important;
-}
-
-::slotted(input:read-only:focus),
-:host([state]) ::slotted(input:read-only:focus) {
+::slotted(input:read-only:focus) {
   outline-color: transparent !important;
-}
-
-:host([state='success']) button:focus,
-:host([state='error']) button:focus {
-  outline-offset: -5px !important;
 }
 
 ::slotted(input:disabled) {
@@ -128,13 +106,51 @@
   position: relative;
   display: block;
 
+  &--success,
+  &--error {
+    button:focus {
+      outline-offset: -5px !important;
+    }
+    ::slotted(input) {
+      border-width: 2px !important;
+      padding: p-px-to-rem(10px) !important;
+    }
+    ::slotted(input:read-only:focus) {
+      outline-color: transparent !important;
+    }
+  }
+
   &--success {
+    ::slotted(input) {
+      border-color: $p-color-notification-success !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-success !important;
+    }
+
+    .label__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
+    ::slotted(input:hover:not(:disabled):not(:read-only)) {
+      border-color: darken($p-color-notification-success, 12%) !important;
+    }
+
     + .message {
       color: $p-color-notification-success;
     }
   }
 
   &--error {
+    ::slotted(input) {
+      border-color: $p-color-notification-error !important;
+    }
+    ::slotted(input:focus) {
+      outline-color: $p-color-notification-error !important;
+    }
+
+    .label__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
+    ::slotted(input:hover:not(:disabled):not(:read-only)) {
+      border-color: darken($p-color-notification-error, 12%) !important;
+    }
+
     + .message {
       color: $p-color-notification-error;
     }
@@ -204,17 +220,9 @@
     }
   }
 
-  &--success {
-    #{$bem-block}__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
-    ::slotted(input:hover:not(:disabled):not(:read-only)) {
-      border-color: darken($p-color-notification-success, 12%) !important;
-    }
-  }
-
-  &--error {
-    #{$bem-block}__text:hover ~ ::slotted(input:not(:disabled):not(:read-only)),
-    ::slotted(input:hover:not(:disabled):not(:read-only)) {
-      border-color: darken($p-color-notification-error, 12%) !important;
+  &--disabled {
+    #{$bem-block}__text {
+      color: $p-color-state-disabled;
     }
   }
 
@@ -235,12 +243,6 @@
 
     &:hover ~ ::slotted(input:not(:disabled):not(:read-only)) {
       border-color: $p-color-default !important;
-    }
-  }
-
-  &--disabled {
-    #{$bem-block}__text {
-      color: $p-color-state-disabled;
     }
   }
 }
