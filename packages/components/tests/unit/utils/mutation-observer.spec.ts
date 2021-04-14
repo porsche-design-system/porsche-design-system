@@ -63,6 +63,21 @@ describe('observeMutations()', () => {
       expect(cb1).toBeCalledTimes(1);
       expect(cb2).toBeCalledTimes(0);
     });
+
+    it('when multiple attributes are changed', async () => {
+      const input = document.createElement('input');
+      const cb = jest.fn();
+      const name = 'Some name';
+
+      observeMutations(input, ['disabled', 'checked', 'name'], cb);
+
+      input.setAttribute('disabled', '');
+      input.setAttribute('checked', '');
+      input.setAttribute('name', name);
+
+      await tick();
+      expect(cb).toBeCalledTimes(1);
+    });
   });
 
   it('should not execute callback when mutationMap is cleared', async () => {
