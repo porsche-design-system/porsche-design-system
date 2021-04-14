@@ -43,6 +43,11 @@ We recommend to use only one validate for error. Success is already provided by 
 Provide help only when help is truly required! For example, if it is important for the user to know what consequences his activation of the Switch will cause.
 
 
+### Switch
+
+The switch should change the state only when the server response is positive. For longer delay use the loading state.
+
+
 ---
 
 ## Do's & Don'ts
