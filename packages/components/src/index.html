@@ -17,30 +17,23 @@
   <br>
 
 
-  <p-switch-wrapper label="Some label" hide-label="false">
-    <input type="checkbox" name="some-name" />
-  </p-switch-wrapper>
+  <p-switch label="Some label"></p-switch>
 
   <br>
   <br>
 
-  <p-switch-wrapper label="Some label" hide-label="false">
-    <input type="checkbox" name="some-name" checked />
-  </p-switch-wrapper>
+  <p-switch label="Some label" checked="true"></p-switch>
 
   <br>
   <br>
 
-  <p-switch-wrapper label="Some label" hide-label="false">
-    <input type="checkbox" name="some-name" disabled />
-  </p-switch-wrapper>
+  <p-switch label="Some label" disabled="true"></p-switch>
 
   <br>
   <br>
 
-  <p-switch-wrapper label="Some label" hide-label="false">
-    <input type="checkbox" name="some-name" checked disabled />
-  </p-switch-wrapper>
+  <p-switch label="Some label" checked="true" disabled="true"></p-switch>
+
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
@@ -49,6 +42,13 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      for (const el of document.querySelectorAll('p-switch')) {
+        el.addEventListener('switchChange', (switchChangeEvent) => {
+          const { checked } = switchChangeEvent.detail;
+          switchChangeEvent.target.setAttribute('checked', checked);
+        });
+      }
     </script>
     <!-- /END -->
   </body>
