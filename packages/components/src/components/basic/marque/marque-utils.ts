@@ -1,4 +1,3 @@
-import { h } from '@stencil/core';
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 import { attachCss, breakpoint, getCss, mediaQuery } from '../../../utils';
 
@@ -17,19 +16,15 @@ export const buildSrcSet = (manifestPath: InnerManifest, size: MarqueSize): stri
     .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
     .join(',');
 
-export const getResponsiveMarque = (trademark: boolean, size: MarqueSize): JSX.Element[] => {
+export const getResponsiveMarque = (trademark: boolean, size: MarqueSize): string => {
   const manifestPath = getManifestPath(trademark);
   return [
-    size === 'responsive' ? (
-      [
-        <source srcSet={buildSrcSet(manifestPath, 'medium')} media={`(min-width: ${breakpoint.l}px)`} />,
-        <source srcSet={buildSrcSet(manifestPath, 'small')} />,
-      ]
-    ) : (
-      <source srcSet={buildSrcSet(manifestPath, size)} />
-    ),
-    <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />,
-  ];
+    size === 'responsive'
+      ? `<source srcset="${buildSrcSet(manifestPath, 'medium')}" media="(min-width: ${breakpoint.l}px)" />` +
+        `<source srcset="${buildSrcSet(manifestPath, 'small')}" />`
+      : `<source srcset="${buildSrcSet(manifestPath, size)}" />`,
+    `<img src="${cdnBaseUrl}/${manifestPath.medium['2x']}" alt="Porsche" />`,
+  ].join('');
 };
 
 const baseSizes = {
