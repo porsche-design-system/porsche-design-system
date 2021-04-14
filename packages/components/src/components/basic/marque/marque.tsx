@@ -1,7 +1,7 @@
 import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import { improveFocusHandlingForCustomElement } from '../../../utils';
+import { breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
 import type { LinkTarget } from '../../../types';
-import { addCss, getResponsiveMarque } from './marque-utils';
+import { addCss, buildSrcSet, cdnBaseUrl, getManifestPath } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
 
 @Component({
@@ -32,7 +32,22 @@ export class Marque {
   }
 
   public render(): JSX.Element {
-    const picture = <picture innerHTML={getResponsiveMarque(this.trademark, this.size)} />;
+    const getResponsiveMarque = (): JSX.Element[] => {
+      const manifestPath = getManifestPath(this.trademark);
+      return [
+        this.size === 'responsive' ? (
+          [
+            <source srcSet={buildSrcSet(manifestPath, 'medium')} media={`(min-width: ${breakpoint.l}px)`} />,
+            <source srcSet={buildSrcSet(manifestPath, 'small')} />,
+          ]
+        ) : (
+          <source srcSet={buildSrcSet(manifestPath, this.size)} />
+        ),
+        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />,
+      ];
+    };
+
+    const picture = <picture>{getResponsiveMarque()}</picture>;
 
     return (
       <Host>
