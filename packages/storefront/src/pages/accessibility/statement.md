@@ -1,19 +1,21 @@
 # Accessibility Statement
 
 ## Definition
-**An accessibility statement has two basic functions:**  
-**Firstly**, it presents clear information about the target level of web accessibility for the website and the methods used to achieve those targets. It also enables the website owner to acknowledge any areas of the website where accessibility targets have not been met and to outline the proposed plan for resolving any such problem.  
-**Secondly**, an accessibility statement is a powerful declaration of commitment. People visiting the website, particularly those with disabilities, will appreciate the open acknowledgement that accessibility is a key driver for the website. 
+
+### An accessibility statement has two basic functions:  
+**Firstly**, an accessibility statement is a powerful declaration of commitment. People visiting the website, particularly those with disabilities, will appreciate the open acknowledgement that accessibility is a key driver for the website.
+
+**Secondly**, it can present further information about the target level of web accessibility for the website and the methods used to achieve those targets. It also can enable the website owner to acknowledge any areas of the website where accessibility targets have not been met and outline the proposed plan for resolving any such problem.  
 
 **A word of caution however:**
 An accessibility statement that makes rash or false claims will only damage the reputation of the website, not enhance it and it does not prevent the site owner from getting sued if the website lacks support for accessibility.
 
 ## Where to put an accessibility statement
-**Accessibility statements should be easy to find** and placed on each page, e.g., placing it in the **footer area** should be a proven way. 
-Use consistent link names for your accessibility statements to help users recognize them. 
+**Accessibility statements should be easy to find** and should be linked from each page. Placing it in the **footer area** is a proven way. 
+Use consistent link names for your accessibility statement to help users recognize them. 
 
 ## Example template
-There are no strict specifications how to write an accessibility statement, but it should announce the intent and commitment to enhance accessibility.
+**There are no strict specifications** how to write an accessibility statement, but it should announce the intent and commitment to accessibility.
 The following example can be seen as a blueprint and **should be adapted to your specific needs**.
 
 This template is based on the guidelines on [How to develop an Accessibility Statament](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
@@ -52,13 +54,14 @@ This template is based on the guidelines on [How to develop an Accessibility Sta
   </p-text>
   <p-text>
 Porsche is committed to making its websites usable by all people by meeting or exceeding the requirements of the Web Content Accessibility Guidelines 2.1 Level AA (the Guidelines). 
-We continually assess and work to ensure that our Web presence is in conformance with the Guidelines.<br>
-Please be aware that our efforts are ongoing as our current website provider implements the relevant improvements to meet the Guidelines over time.
+We continually assess and work to ensure that our Web presence is in conformance with the Guidelines.
+  </p-text>
+  <p-text>
+    Please be aware that our efforts are ongoing as our current website provider implements the relevant improvements to meet the Guidelines over time.
   </p-text>
   <p-headline variant="headline-4"><h2>Feedback</h2></p-headline>
   <p-text>
-    We welcome your feedback on the accessibility of this Website.
-    Please let us know if you encounter accessibility barriers on this Website:
+    If you experience any difficulty in accessing any part of this website, please feel free to contact us. Please be sure to specify the Web page and describe the issue in detail and we will make reasonable efforts to make that page accessible. We welcome feedback on how we can improve as well.
   </p-text>
   <p-text-list>
     <p-text-list-item>E-mail: <a href="#">[e-mail address]</a></p-text-list-item>
