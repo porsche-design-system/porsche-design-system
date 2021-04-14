@@ -18,7 +18,7 @@ Use consistent link names for your accessibility statement to help users recogni
 **There are no strict specifications** how to write an accessibility statement, but it should announce the intent and commitment to accessibility.
 The following example can be seen as a blueprint and **should be adapted to your specific needs**.
 
-This template is based on the guidelines on [How to develop an Accessibility Statament](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
+This template is based on the guidelines on [How to develop an Accessibility Statement](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
 
 <Playground :markup="statement" class="p-accessibility-statement"></Playground>
 
