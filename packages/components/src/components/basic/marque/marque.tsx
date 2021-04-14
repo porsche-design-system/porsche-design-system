@@ -32,22 +32,20 @@ export class Marque {
   }
 
   public render(): JSX.Element {
-    const getResponsiveMarque = (): JSX.Element[] => {
-      const manifestPath = getManifestPath(this.trademark);
-      return [
-        this.size === 'responsive' ? (
+    const manifestPath = getManifestPath(this.trademark);
+    const picture = (
+      <picture>
+        {this.size === 'responsive' ? (
           [
             <source srcSet={buildSrcSet(manifestPath, 'medium')} media={`(min-width: ${breakpoint.l}px)`} />,
             <source srcSet={buildSrcSet(manifestPath, 'small')} />,
           ]
         ) : (
           <source srcSet={buildSrcSet(manifestPath, this.size)} />
-        ),
-        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />,
-      ];
-    };
-
-    const picture = <picture>{getResponsiveMarque()}</picture>;
+        )}
+        <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
+      </picture>
+    );
 
     return (
       <Host>
