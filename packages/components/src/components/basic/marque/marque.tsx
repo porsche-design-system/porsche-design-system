@@ -1,12 +1,11 @@
-import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
-import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
-import { improveFocusHandlingForCustomElement } from '../../../utils';
-import { LinkTarget } from '../../../types';
-import { breakpoint } from '@porsche-design-system/utilities';
+import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
+import { breakpoint, improveFocusHandlingForCustomElement } from '../../../utils';
+import type { LinkTarget } from '../../../types';
+import { addCss, buildSrcSet, cdnBaseUrl, getManifestPath } from './marque-utils';
+import type { MarqueSize } from './marque-utils';
 
 @Component({
   tag: 'p-marque',
-  styleUrl: 'marque.scss',
   shadow: true,
 })
 export class Marque {
@@ -16,7 +15,7 @@ export class Marque {
   @Prop() public trademark?: boolean = true;
 
   /** Adapts sizing of marque. */
-  @Prop() public size?: 'responsive' | 'small' | 'medium' = 'responsive';
+  @Prop() public size?: MarqueSize = 'responsive';
 
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string = undefined;
@@ -28,26 +27,21 @@ export class Marque {
     improveFocusHandlingForCustomElement(this.host);
   }
 
+  public componentWillRender(): void {
+    addCss(this.host, this.size);
+  }
+
   public render(): JSX.Element {
-    const cdnBaseUrl =
-      ROLLUP_REPLACE_IS_STAGING === 'production' ? MARQUES_CDN_BASE_URL : 'http://localhost:3001/marque';
-    const manifestPath: { [size: string]: { [resolution: string]: string } } =
-      MARQUES_MANIFEST[`porscheMarque${this.trademark ? 'Trademark' : ''}`];
-
-    const buildSrcSet = (size: 'small' | 'medium'): string =>
-      Object.entries(manifestPath[size])
-        .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName} ${resolution}`)
-        .join(',');
-
+    const manifestPath = getManifestPath(this.trademark);
     const picture = (
       <picture>
         {this.size === 'responsive' ? (
           [
-            <source srcSet={buildSrcSet('medium')} media={`(min-width: ${breakpoint.l}px)`} />,
-            <source srcSet={buildSrcSet('small')} />,
+            <source srcSet={buildSrcSet(manifestPath, 'medium')} media={`(min-width: ${breakpoint.l}px)`} />,
+            <source srcSet={buildSrcSet(manifestPath, 'small')} />,
           ]
         ) : (
-          <source srcSet={buildSrcSet(this.size)} />
+          <source srcSet={buildSrcSet(manifestPath, this.size)} />
         )}
         <img src={`${cdnBaseUrl}/${manifestPath.medium['2x']}`} alt="Porsche" />
       </picture>

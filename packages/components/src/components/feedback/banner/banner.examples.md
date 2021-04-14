@@ -53,6 +53,7 @@ p-banner {
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { componentsReady } from '@porsche-design-system/components-js';
   
   @Component
   export default class Code extends Vue {
@@ -93,6 +94,11 @@ p-banner {
     mounted(): void {
       const banners = document.querySelectorAll('p-banner');
       banners.forEach((el) => el.addEventListener("dismiss", () => console.log("dismissed")));
+
+      // scroll to top since banners have autofocus on close button via componentDidLoad
+      componentsReady(this.$el).then(() => {
+        document.querySelector('html').scrollTop = 0;
+      });
     }
   }
 </script>
