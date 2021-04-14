@@ -13,6 +13,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { SwitchChangeEvent } from "./components/action/switch/switch";
 export namespace Components {
     interface PBanner {
         /**
@@ -587,6 +588,18 @@ export namespace Components {
     }
     interface PSwitch {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
           * Show or hide label. For better accessibility it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -595,13 +608,17 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
          */
-        "message"?: string;
+        "loading"?: boolean;
         /**
-          * The validation state.
+          * To remove the element from tab order.
          */
-        "state"?: FormState;
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PTabs {
         /**
@@ -1558,6 +1575,18 @@ declare namespace LocalJSX {
     }
     interface PSwitch {
         /**
+          * Aligns the label.
+         */
+        "alignLabel"?: BreakpointCustomizable<'left' | 'right'>;
+        /**
+          * Visualize the switch with on/off status.
+         */
+        "checked"?: boolean;
+        /**
+          * Disables the switch. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
           * Show or hide label. For better accessibility it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1566,13 +1595,21 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
          */
-        "message"?: string;
+        "loading"?: boolean;
         /**
-          * The validation state.
+          * Emitted when checked status is changed.
          */
-        "state"?: FormState;
+        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        /**
+          * To remove the element from tab order.
+         */
+        "tabbable"?: boolean;
+        /**
+          * Adapts the switch color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PTabs {
         /**
