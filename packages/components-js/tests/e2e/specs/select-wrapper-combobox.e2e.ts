@@ -15,6 +15,7 @@ import {
   waitForStencilLifecycle,
   getOutlineStyle,
   getLifecycleStatus,
+  waitForEventSerialization,
 } from '../helpers';
 import { devices, Page } from 'puppeteer';
 
@@ -274,6 +275,7 @@ describe('select-wrapper combobox', () => {
     await page.keyboard.press('ArrowDown');
     await filterInput.press('Enter');
     const value = await select.evaluate((el: HTMLSelectElement) => el.value);
+    await waitForEventSerialization(page);
 
     expect(value).toBe('b');
   });
