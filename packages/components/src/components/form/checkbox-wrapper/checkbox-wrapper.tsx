@@ -66,12 +66,12 @@ export class CheckboxWrapper {
 
   public render(): JSX.Element {
     const labelClasses = {
-      label: true,
-      'label--disabled': this.input.disabled,
+      ['label']: true,
+      ['label--disabled']: this.input.disabled,
       [`label--${this.state}`]: this.state !== 'none',
     };
     const labelTextClasses = {
-      label__text: true,
+      ['label__text']: true,
       ...mapBreakpointPropToPrefixedClasses('label__text-', this.hideLabel, ['hidden', 'visible'], true),
     };
 
