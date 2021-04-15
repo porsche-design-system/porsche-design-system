@@ -81,16 +81,12 @@
   background-color: #ebebeb !important;
 }
 
-::slotted(input:not(:disabled):read-only) {
+::slotted(input:read-only:not(:disabled)) {
   color: $p-color-neutral-contrast-medium !important;
 }
 
 ::slotted(input[type='number']) {
   -moz-appearance: textfield !important; // hides up/down spin button for Firefox
-}
-
-:host ::slotted(input[type='search']) {
-  padding-right: 3rem !important;
 }
 
 // Reset webkit autofill styles
@@ -108,7 +104,7 @@
   &--success,
   &--error {
     button:focus {
-      outline-offset: -5px !important;
+      outline-offset: -5px;
     }
     ::slotted(input) {
       border-width: 2px !important;
@@ -154,11 +150,10 @@
       color: $p-color-notification-error;
     }
   }
-
-  &--password {
-    ::slotted(input) {
-      padding-right: 3rem !important;
-    }
+  @at-root &--password ::slotted(input),
+    ::slotted(input[type='password']),
+    ::slotted(input[type='search']) {
+    padding-right: 3rem !important;
   }
 }
 
@@ -225,10 +220,8 @@
     }
   }
 
-  &--disabled {
-    #{$bem-block}__text {
-      color: $p-color-state-disabled;
-    }
+  &--disabled #{$bem-block}__text {
+    color: $p-color-state-disabled;
   }
 
   &__text {
