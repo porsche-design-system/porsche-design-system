@@ -6,6 +6,7 @@ import {
   getElementStyle,
   getLifecycleStatus,
   getOutlineStyle,
+  getProperty,
   getStyleOnFocus,
   initAddEventListener,
   selectNode,
@@ -36,7 +37,7 @@ fdescribe('text-field-wrapper', () => {
   const getButton = () => selectNode(page, 'p-text-field-wrapper >>> button');
   const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
   const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
-  const getIconName = (icon: ElementHandle) => getAttribute(icon, 'name');
+  const getIconName = (icon: ElementHandle) => getProperty(icon, 'name');
 
   // const fakeInputDisabledClass = 'p-text-field-wrapper__fake-input--disabled';
   // const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
@@ -245,12 +246,12 @@ fdescribe('text-field-wrapper', () => {
       const input = await getInput();
       const toggleButton = await getButton();
 
-      expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
+      expect(await getElementStyle(input, 'paddingRight')).toBe('48px', 'initially');
 
       await toggleButton.click();
       await waitForStencilLifecycle(page);
 
-      expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
+      expect(await getElementStyle(input, 'paddingRight')).toBe('48px', 'after toggleButton click');
     });
 
     it('should toggle password visibility and focus input correctly', async () => {
