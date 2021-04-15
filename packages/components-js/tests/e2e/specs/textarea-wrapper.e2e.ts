@@ -27,9 +27,9 @@ describe('textarea-wrapper', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-textarea-wrapper');
-  const getInput = () => selectNode(page, 'p-textarea-wrapper textarea');
-  const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__message');
-  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .p-textarea-wrapper__label-text');
+  const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
+  const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
+  const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
   const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
   const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
   const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
@@ -89,7 +89,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getInput();
+    const textarea = await getTextarea();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label');
   });
 
@@ -102,7 +102,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getInput();
+    const textarea = await getTextarea();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some description');
   });
 
@@ -115,7 +115,7 @@ describe('textarea-wrapper', () => {
       </p-textarea-wrapper>
     `
     );
-    const textarea = await getInput();
+    const textarea = await getTextarea();
     expect(await getProperty(textarea, 'ariaLabel')).toBe('Some label. Some error message');
   });
 
@@ -148,7 +148,7 @@ describe('textarea-wrapper', () => {
     );
 
     const textareaComponent = await getHost();
-    const textarea = await getInput();
+    const textarea = await getTextarea();
 
     expect(await getMessage()).toBeNull('initially');
 
@@ -193,7 +193,7 @@ describe('textarea-wrapper', () => {
     );
 
     const labelText = await getLabel();
-    const textarea = await getInput();
+    const textarea = await getTextarea();
 
     let textareaFocusSpyCalls = 0;
     await addEventListener(textarea, 'focus', () => textareaFocusSpyCalls++);
@@ -210,7 +210,7 @@ describe('textarea-wrapper', () => {
     it('should be shown by keyboard navigation and on click for slotted <textarea>', async () => {
       await initTextarea();
 
-      const textarea = await getInput();
+      const textarea = await getTextarea();
       const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '2px' });
       const visible = expectedStyleOnFocus({ color: 'neutral', offset: '2px' });
 
@@ -286,7 +286,7 @@ describe('textarea-wrapper', () => {
       await initTextarea();
 
       const host = await getHost();
-      const textarea = await getInput();
+      const textarea = await getTextarea();
 
       expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '2px' }));
 
