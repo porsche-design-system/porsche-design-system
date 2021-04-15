@@ -43,9 +43,12 @@ export class Switch {
     const rootClasses = {
       ['label']: true,
       ['checked']: this.checked,
-      ['disabled']: this.disabled,
-      ...mapBreakpointPropToPrefixedClassesNew('label-align', this.alignLabel, {disablePrefixP: true}),
-      ...mapBreakpointPropToPrefixedClassesNew('label', this.hideLabel, {classSuffixes: ['hidden', 'visible'], disablePrefixP: true}),
+      ['disabled']: this.disabled || this.loading,
+      ...mapBreakpointPropToPrefixedClassesNew('label-align', this.alignLabel, { disablePrefixP: true }),
+      ...mapBreakpointPropToPrefixedClassesNew('label', this.hideLabel, {
+        classSuffixes: ['hidden', 'visible'],
+        disablePrefixP: true,
+      }),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -64,7 +67,11 @@ export class Switch {
           aria-busy={this.loading ? 'true' : null}
           onClick={this.handleSwitchClick}
         >
-          <span class="toggle" />
+          <span class="toggle">
+            {this.loading && (
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.checked ? 'light' : 'dark'} />
+            )}
+          </span>
         </button>
       </label>
     );
