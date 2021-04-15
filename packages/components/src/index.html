@@ -11,6 +11,22 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
+    <p-fieldset-wrapper label="Some legend label" label-size="headline-3">
+      <p-fieldset-wrapper label="Some Section label" message="Some error message" state="error" required="true">
+        <p-grid direction="{ base: 'column', m: 'row' }">
+          <p-grid-item>
+            <p-radio-button-wrapper state="error" label="Some label" hide-label="false">
+              <input type="radio" name="some-name-1" />
+            </p-radio-button-wrapper>
+          </p-grid-item>
+          <p-grid-item>
+            <p-radio-button-wrapper state="error" label="Some label" hide-label="false">
+              <input type="radio" name="some-name-1" />
+            </p-radio-button-wrapper>
+          </p-grid-item>
+        </p-grid>
+      </p-fieldset-wrapper>
+    </p-fieldset-wrapper>
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>

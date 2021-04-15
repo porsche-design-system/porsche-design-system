@@ -3,7 +3,7 @@
 @import '../../../styles/mixins';
 
 :host {
-  display: block;
+  display: block !important;
 }
 
 .fieldset-wrapper {
@@ -30,6 +30,10 @@
   padding: 0;
   margin: 0 0 $p-spacing-16 0;
   color: $p-color-default;
+
+  &--size-small {
+    @include p-headline-5;
+  }
 
   &--required {
     @include required;

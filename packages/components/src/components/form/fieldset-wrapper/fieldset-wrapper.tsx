@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { getPrefixedTagNames, isMessageVisible } from '../../../utils';
-import { FormState } from '../../../types';
+import { getPrefixedTagNames, isLabelVisible, isMessageVisible } from '../../../utils';
+import type { FormState, TextSize } from '../../../types';
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -11,6 +11,8 @@ export class FieldsetWrapper {
   @Element() public host!: HTMLElement;
   /** The label text. */
   @Prop() public label?: string = '';
+  /** The size of the label text. */
+  @Prop() public labelSize?: Extract<TextSize, 'small' | 'medium'> = 'medium';
   /** Marks the Fieldset as required. */
   @Prop() public required?: boolean = false;
   /** The validation state. */
@@ -26,13 +28,16 @@ export class FieldsetWrapper {
     const labelClasses = {
       ['label']: true,
       ['label--required']: this.required,
+      ['label--size-small']: this.labelSize === 'small',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <fieldset class={fieldsetClasses}>
-        {this.label && <legend class={labelClasses}>{this.label}</legend>}
+        {isLabelVisible(this.host, this.label) && (
+          <legend class={labelClasses}>{this.label || <slot name="label" />}</legend>
+        )}
         <slot />
         {isMessageVisible(this.host, this.message, this.state) && (
           <PrefixedTagNames.pText class="message" color="inherit" role={this.state === 'error' ? 'alert' : null}>
