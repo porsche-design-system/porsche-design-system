@@ -70,6 +70,10 @@ Don’t use only the label to describe the states of the Switch. A label next to
 
 ![Switch Label](./assets/switch-label.png)
 
+### Alignment
+
+Preferably set Switches vertically left-aligned, as this supports scannability way better than a horizontal alignment.
+
 
 ## Related Components
 
