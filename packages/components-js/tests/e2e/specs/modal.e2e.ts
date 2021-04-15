@@ -70,6 +70,7 @@ describe('modal', () => {
 
   it('should not be visible when not open', async () => {
     await initBasicModal({ isOpen: false });
+    await page.waitForTimeout(600); // wait for visibility transition to finish
     expect(await getModalVisibility()).toBe('hidden');
   });
 
