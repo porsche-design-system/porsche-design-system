@@ -64,7 +64,7 @@
   outline-color: $p-color-neutral-contrast-medium !important;
 }
 
-::slotted(input:read-only:focus) {
+::slotted(input[readonly]:focus) {
   outline-color: transparent !important;
 }
 
@@ -75,12 +75,12 @@
   cursor: not-allowed !important;
 }
 
-::slotted(input:read-only) {
+::slotted(input[readonly]) {
   border-color: #ebebeb !important;
   background-color: #ebebeb !important;
 }
 
-::slotted(input:read-only:not(:disabled)) {
+::slotted(input[readonly]:not(:disabled)) {
   color: $p-color-neutral-contrast-medium !important;
 }
 
@@ -109,7 +109,7 @@
       border-width: 2px !important;
       padding: p-px-to-rem(10px) !important;
     }
-    ::slotted(input:read-only:focus) {
+    ::slotted(input[readonly]:focus) {
       outline-color: transparent !important;
     }
   }
