@@ -30,6 +30,10 @@
   width: auto;
   justify-content: flex-start;
 
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+
   &.stretch-on {
     width: 100%;
     justify-content: space-between;

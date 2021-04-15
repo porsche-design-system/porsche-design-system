@@ -5,7 +5,6 @@ export const improveButtonHandlingForCustomElement = (
   getType: () => ButtonType,
   getDisabled: () => boolean
 ): void => {
-  element.addEventListener('click', (event) => fixEventTarget(event, element), true);
   element.addEventListener('click', (event) => handleButtonEvent(event, element, getType, getDisabled));
 };
 
@@ -37,18 +36,5 @@ export const handleButtonEvent = (
         fakeButton.remove();
       }
     }, 1);
-  }
-};
-
-/**
- * IE11/Edge (not chromium based) workaround to
- * fix the event target of click events (which normally
- * shadow dom takes care of)
- */
-const fixEventTarget = (event: MouseEvent, element: HTMLElement): void => {
-  if (event.target !== element) {
-    event.stopPropagation();
-    event.preventDefault();
-    element.click();
   }
 };

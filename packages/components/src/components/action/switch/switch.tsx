@@ -1,6 +1,11 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
+import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames, mapBreakpointPropToPrefixedClassesNew } from '../../../utils';
+import {
+  getPrefixedTagNames,
+  improveButtonHandlingForCustomElement,
+  improveFocusHandlingForCustomElement,
+  mapBreakpointPropToPrefixedClassesNew,
+} from '../../../utils';
 import { Theme } from '../../../types';
 import { isDisabled, SwitchChangeEvent } from './switch-utils';
 
@@ -42,6 +47,22 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
+  @Listen('click', { capture: true })
+  public handleOnClick(e: MouseEvent): void {
+    if (isDisabled(this.disabled, this.loading)) {
+      e.stopPropagation();
+    }
+  }
+
+  public componentDidLoad(): void {
+    improveFocusHandlingForCustomElement(this.host);
+    improveButtonHandlingForCustomElement(
+      this.host,
+      () => 'button',
+      () => isDisabled(this.disabled, this.loading)
+    );
+  }
+
   public render(): JSX.Element {
     const rootClasses = {
       ['label']: true,
@@ -67,6 +88,7 @@ export class Switch {
           {this.label}
         </PrefixedTagNames.pText>
         <button
+          type="button"
           class="button"
           role="switch"
           aria-checked={this.checked ? 'true' : 'false'}
