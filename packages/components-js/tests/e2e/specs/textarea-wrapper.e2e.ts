@@ -211,8 +211,8 @@ describe('textarea-wrapper', () => {
       await initTextarea();
 
       const textarea = await getInput();
-      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '4px' });
-      const visible = expectedStyleOnFocus({ color: 'neutral', offset: '4px' });
+      const hidden = expectedStyleOnFocus({ color: 'transparent', offset: '2px' });
+      const visible = expectedStyleOnFocus({ color: 'neutral', offset: '2px' });
 
       expect(await getOutlineStyle(textarea)).toBe(hidden);
 
@@ -288,19 +288,19 @@ describe('textarea-wrapper', () => {
       const host = await getHost();
       const textarea = await getInput();
 
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '4px' }));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'neutral', offset: '2px' }));
 
       await setAttribute(host, 'state', 'success');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'success', offset: '4px' }));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'success', offset: '2px' }));
 
       await setAttribute(host, 'state', 'error');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '4px' }));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'error', offset: '2px' }));
 
       await setAttribute(textarea, 'readonly', 'true');
       await waitForStencilLifecycle(page);
-      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '4px' }));
+      expect(await getStyleOnFocus(textarea)).toBe(expectedStyleOnFocus({ color: 'transparent', offset: '2px' }));
     });
 
     it('should show outline of slotted <a> when it is focused', async () => {
