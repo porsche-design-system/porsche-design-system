@@ -46,8 +46,8 @@ export class TextareaWrapper {
   }
 
   public componentWillLoad(): void {
-    this.observeMutations();
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
+    this.observeMutations();
   }
 
   public componentDidRender(): void {
