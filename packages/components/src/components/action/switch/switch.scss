@@ -150,3 +150,11 @@
     background-color: $p-color-background-default;
   }
 }
+
+.spinner {
+  position: absolute;
+  top: p-px-to-rem(-3px);
+  left: p-px-to-rem(-3px);
+  width: p-px-to-rem(24px);
+  height: p-px-to-rem(24px);
+}
