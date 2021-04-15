@@ -170,6 +170,22 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PFlex {
         /**
@@ -1108,6 +1124,22 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * The size of the label text.
+         */
+        "labelSize"?: Extract<TextSize, 'small' | 'medium'>;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Marks the Fieldset as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: FormState;
     }
     interface PFlex {
         /**
