@@ -1,26 +1,26 @@
 {
-  "hash": "1646b2de6f3f2df0bc4f",
+  "hash": "26cff008de30d01a926b",
   "version": "5.31.2",
-  "time": 2885,
-  "builtAt": 1618487372517,
+  "time": 2969,
+  "builtAt": 1618494749878,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.0.9c92f811fddb1bb7efd7.js"
+      "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.0.9c92f811fddb1bb7efd7.js",
+      "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
       "size": 59616,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "9c92f811fddb1bb7efd7",
+        "contenthash": "17d97efbad8eb4a12320",
         "javascriptModule": false,
         "minimized": true,
         "size": 59616
@@ -65,17 +65,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button-pure.d278500a2e82b6c0b598.js",
-      "size": 20651,
+      "name": "porsche-design-system.button-pure.61ca8a3ba7c1180287ec.js",
+      "size": 19866,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "d278500a2e82b6c0b598",
+        "contenthash": "61ca8a3ba7c1180287ec",
         "javascriptModule": false,
         "minimized": true,
-        "size": 20651
+        "size": 19866
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -90,17 +90,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-pure.ca6826d56c7e540ecaf6.js",
-      "size": 19393,
+      "name": "porsche-design-system.link-pure.8d6e53b29efdc5542d68.js",
+      "size": 18735,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "ca6826d56c7e540ecaf6",
+        "contenthash": "8d6e53b29efdc5542d68",
         "javascriptModule": false,
         "minimized": true,
-        "size": 19393
+        "size": 18735
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -190,17 +190,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.button.157615e6627efddb04fe.js",
-      "size": 12501,
+      "name": "porsche-design-system.button.0b5d6fb8089303c47f65.js",
+      "size": 11716,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "157615e6627efddb04fe",
+        "contenthash": "0b5d6fb8089303c47f65",
         "javascriptModule": false,
         "minimized": true,
-        "size": 12501
+        "size": 11716
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -215,17 +215,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.text-field-wrapper.4ea4b486e03b34a22c00.js",
-      "size": 11493,
+      "name": "porsche-design-system.text-field-wrapper.83c28c7ef89afac0da7b.js",
+      "size": 11366,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "4ea4b486e03b34a22c00",
+        "contenthash": "83c28c7ef89afac0da7b",
         "javascriptModule": false,
         "minimized": true,
-        "size": 11493
+        "size": 11366
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -240,17 +240,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.pagination.c81782146d88bd850f92.js",
-      "size": 11075,
+      "name": "porsche-design-system.pagination.be5071c812e378a6ee80.js",
+      "size": 10417,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c81782146d88bd850f92",
+        "contenthash": "be5071c812e378a6ee80",
         "javascriptModule": false,
         "minimized": true,
-        "size": 11075
+        "size": 10417
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -265,17 +265,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link.6d10b8b43f79e66dec57.js",
-      "size": 10510,
+      "name": "porsche-design-system.link.a5e00cf24233f5ab5303.js",
+      "size": 9852,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "6d10b8b43f79e66dec57",
+        "contenthash": "a5e00cf24233f5ab5303",
         "javascriptModule": false,
         "minimized": true,
-        "size": 10510
+        "size": 9852
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -290,17 +290,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.link-social.41b5af9e4023460e54f1.js",
-      "size": 10000,
+      "name": "porsche-design-system.link-social.501039cf5933ff810850.js",
+      "size": 9342,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "41b5af9e4023460e54f1",
+        "contenthash": "501039cf5933ff810850",
         "javascriptModule": false,
         "minimized": true,
-        "size": 10000
+        "size": 9342
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -315,17 +315,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.textarea-wrapper.3701cd7d1e19983c601b.js",
-      "size": 8708,
+      "name": "porsche-design-system.textarea-wrapper.c83a50013936e2a5f2e5.js",
+      "size": 8709,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "3701cd7d1e19983c601b",
+        "contenthash": "c83a50013936e2a5f2e5",
         "javascriptModule": false,
         "minimized": true,
-        "size": 8708
+        "size": 8709
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -540,17 +540,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.effca22c4fb3c51290f9.js",
-      "size": 3901,
+      "name": "porsche-design-system.marque.a5f3d87df6bbf7c08368.js",
+      "size": 3243,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "effca22c4fb3c51290f9",
+        "contenthash": "a5f3d87df6bbf7c08368",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3901
+        "size": 3243
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -1810,9 +1810,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 17541,
+      "size": 14554,
       "sizes": {
-        "javascript": 17541
+        "javascript": 14554
       },
       "names": [],
       "idHints": [],
@@ -1820,10 +1820,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button.157615e6627efddb04fe.js"
+        "porsche-design-system.button.0b5d6fb8089303c47f65.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "f470078ae51453ea5f4f",
+      "hash": "99b718431ee89697711d",
       "childrenByOrder": {},
       "id": "button",
       "siblings": [],
@@ -1836,16 +1836,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1504,
+          "size": 1063,
           "sizes": {
-            "javascript": 1504
+            "javascript": 1063
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
-          "name": "../components/dist/esm/button-handling-b13e8914.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
+          "name": "../components/dist/esm/button-handling-75524bdb.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
           "index": 16,
           "preOrderIndex": 16,
           "index2": 15,
@@ -1886,7 +1886,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 296,
+          "id": 512,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -1904,7 +1904,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -1918,7 +1918,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "42:4-41",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -1932,7 +1932,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -1946,7 +1946,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "37:4-41",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -1960,7 +1960,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "3:0-71",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -1974,7 +1974,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "31:6-23",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -1995,16 +1995,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -2045,7 +2045,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -2067,7 +2067,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -2081,7 +2081,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -2095,7 +2095,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -2109,7 +2109,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -2123,7 +2123,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -2137,7 +2137,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -2151,7 +2151,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -2165,7 +2165,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -2179,7 +2179,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -2193,7 +2193,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -2207,7 +2207,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -2221,7 +2221,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -2235,7 +2235,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -2249,7 +2249,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -2341,8 +2341,8 @@
           ],
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 54:0-25",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
           ],
@@ -3033,9 +3033,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 30574,
+      "size": 27587,
       "sizes": {
-        "javascript": 30574
+        "javascript": 27587
       },
       "names": [],
       "idHints": [],
@@ -3043,10 +3043,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.button-pure.d278500a2e82b6c0b598.js"
+        "porsche-design-system.button-pure.61ca8a3ba7c1180287ec.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "91d57591ef6c425575db",
+      "hash": "3c5ea4d41277f9764323",
       "childrenByOrder": {},
       "id": "button-pure",
       "siblings": [],
@@ -3059,16 +3059,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1504,
+          "size": 1063,
           "sizes": {
-            "javascript": 1504
+            "javascript": 1063
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
-          "name": "../components/dist/esm/button-handling-b13e8914.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
+          "name": "../components/dist/esm/button-handling-75524bdb.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
           "index": 16,
           "preOrderIndex": 16,
           "index2": 15,
@@ -3109,7 +3109,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 296,
+          "id": 512,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -3127,7 +3127,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -3141,7 +3141,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "42:4-41",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -3155,7 +3155,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -3169,7 +3169,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "37:4-41",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -3183,7 +3183,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "3:0-71",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -3197,7 +3197,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "31:6-23",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -3218,16 +3218,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -3268,7 +3268,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -3290,7 +3290,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -3304,7 +3304,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -3318,7 +3318,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -3332,7 +3332,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -3346,7 +3346,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -3360,7 +3360,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -3374,7 +3374,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -3388,7 +3388,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -3402,7 +3402,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -3416,7 +3416,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -3430,7 +3430,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -3444,7 +3444,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -3458,7 +3458,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -3472,7 +3472,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -3736,8 +3736,8 @@
           ],
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 68:0-33",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/text-utils-9d309683.js: Module ../components/dist/esm/text-utils-9d309683.js is referenced from different chunks by these modules: ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-text.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -8949,9 +8949,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 15665,
+      "size": 13119,
       "sizes": {
-        "javascript": 15665
+        "javascript": 13119
       },
       "names": [],
       "idHints": [],
@@ -8959,10 +8959,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link.6d10b8b43f79e66dec57.js"
+        "porsche-design-system.link.a5e00cf24233f5ab5303.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "bbc0bc51ceca52befa90",
+      "hash": "9e7eea0ce3458148b878",
       "childrenByOrder": {},
       "id": "link",
       "siblings": [],
@@ -8975,16 +8975,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -9025,7 +9025,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -9047,7 +9047,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -9061,7 +9061,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -9075,7 +9075,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -9089,7 +9089,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -9103,7 +9103,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -9117,7 +9117,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -9131,7 +9131,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -9145,7 +9145,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -9159,7 +9159,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -9173,7 +9173,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -9187,7 +9187,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -9201,7 +9201,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -9215,7 +9215,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -9229,7 +9229,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -9321,7 +9321,7 @@
           ],
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 54:0-21",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -10313,9 +10313,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 29400,
+      "size": 26854,
       "sizes": {
-        "javascript": 29400
+        "javascript": 26854
       },
       "names": [],
       "idHints": [],
@@ -10323,10 +10323,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-pure.ca6826d56c7e540ecaf6.js"
+        "porsche-design-system.link-pure.8d6e53b29efdc5542d68.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "1bf74b185f2c3ced9487",
+      "hash": "02f9badf1822b5cf9a16",
       "childrenByOrder": {},
       "id": "link-pure",
       "siblings": [],
@@ -10339,16 +10339,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -10389,7 +10389,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -10411,7 +10411,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -10425,7 +10425,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -10439,7 +10439,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -10453,7 +10453,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -10467,7 +10467,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -10481,7 +10481,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -10495,7 +10495,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -10509,7 +10509,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -10523,7 +10523,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -10537,7 +10537,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -10551,7 +10551,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -10565,7 +10565,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -10579,7 +10579,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -10593,7 +10593,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -10857,7 +10857,7 @@
           ],
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 70:0-29",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/text-utils-9d309683.js: Module ../components/dist/esm/text-utils-9d309683.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text.entry.js",
@@ -12099,9 +12099,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 14913,
+      "size": 12367,
       "sizes": {
-        "javascript": 14913
+        "javascript": 12367
       },
       "names": [],
       "idHints": [],
@@ -12109,10 +12109,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.link-social.41b5af9e4023460e54f1.js"
+        "porsche-design-system.link-social.501039cf5933ff810850.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "962a84937e70b14e38aa",
+      "hash": "a61557b0dc1a7e47895e",
       "childrenByOrder": {},
       "id": "link-social",
       "siblings": [],
@@ -12125,16 +12125,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -12175,7 +12175,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -12197,7 +12197,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -12211,7 +12211,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -12225,7 +12225,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -12239,7 +12239,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -12253,7 +12253,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -12267,7 +12267,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -12281,7 +12281,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -12295,7 +12295,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -12309,7 +12309,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -12323,7 +12323,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -12337,7 +12337,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -12351,7 +12351,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -12365,7 +12365,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -12379,7 +12379,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -12471,7 +12471,7 @@
           ],
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 49:0-33",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -13476,10 +13476,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.0.9c92f811fddb1bb7efd7.js"
+        "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "8dd8cf5737396286a035",
+      "hash": "db550500b9f887119ffd",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -23289,9 +23289,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8080,
+      "size": 5534,
       "sizes": {
-        "javascript": 8080
+        "javascript": 5534
       },
       "names": [],
       "idHints": [],
@@ -23299,10 +23299,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.effca22c4fb3c51290f9.js"
+        "porsche-design-system.marque.a5f3d87df6bbf7c08368.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "7d5e602d0543f048043c",
+      "hash": "75b938557d91a3e34b68",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23315,16 +23315,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -23365,7 +23365,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -23387,7 +23387,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -23401,7 +23401,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -23415,7 +23415,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -23429,7 +23429,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -23443,7 +23443,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -23457,7 +23457,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -23471,7 +23471,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -23485,7 +23485,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -23499,7 +23499,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -23513,7 +23513,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -23527,7 +23527,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -23541,7 +23541,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -23555,7 +23555,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -23569,7 +23569,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -23661,7 +23661,7 @@
           ],
           "optimizationBailout": [
             "Statement (VariableDeclaration) with side effects in source code at 4:0-193",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
           ],
           "depth": 4
@@ -23936,9 +23936,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 25244,
+      "size": 22698,
       "sizes": {
-        "javascript": 25244
+        "javascript": 22698
       },
       "names": [],
       "idHints": [],
@@ -23946,10 +23946,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.pagination.c81782146d88bd850f92.js"
+        "porsche-design-system.pagination.be5071c812e378a6ee80.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "a7f118955478135d2a06",
+      "hash": "ed5c129fb1000894a0eb",
       "childrenByOrder": {},
       "id": "pagination",
       "siblings": [],
@@ -23962,16 +23962,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 3922,
+          "size": 1376,
           "sizes": {
-            "javascript": 3922
+            "javascript": 1376
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-          "name": "../components/dist/esm/focus-handling-8e745142.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+          "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
           "index": 15,
           "preOrderIndex": 15,
           "index2": 14,
@@ -24012,7 +24012,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 742,
+          "id": 275,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -24034,7 +24034,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -24048,7 +24048,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "41:4-40",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -24062,7 +24062,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "3:0-89",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -24076,7 +24076,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "36:4-40",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -24090,7 +24090,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -24104,7 +24104,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "40:4-40",
               "moduleId": 128,
               "resolvedModuleId": 128
@@ -24118,7 +24118,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -24132,7 +24132,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "28:4-40",
               "moduleId": 301,
               "resolvedModuleId": 301
@@ -24146,7 +24146,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -24160,7 +24160,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "32:4-40",
               "moduleId": 176,
               "resolvedModuleId": 176
@@ -24174,7 +24174,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -24188,7 +24188,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
@@ -24202,7 +24202,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "2:0-89",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -24216,7 +24216,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./focus-handling-8e745142.js",
+              "userRequest": "./focus-handling-d0aa3c61.js",
               "loc": "226:4-40",
               "moduleId": 406,
               "resolvedModuleId": 406
@@ -24480,7 +24480,7 @@
           ],
           "optimizationBailout": [
             "Statement (VariableDeclaration) with side effects in source code at 17:0-22:2",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/index-467074a1.js: Module ../components/dist/esm/index-467074a1.js is referenced from different chunks by these modules: ../components/dist/esm/text-utils-9d309683.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -30396,9 +30396,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 15832,
+      "size": 15391,
       "sizes": {
-        "javascript": 15832
+        "javascript": 15391
       },
       "names": [],
       "idHints": [],
@@ -30406,10 +30406,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.text-field-wrapper.4ea4b486e03b34a22c00.js"
+        "porsche-design-system.text-field-wrapper.83c28c7ef89afac0da7b.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "2beec773b562e07934c5",
+      "hash": "a4064f65bff85061670b",
       "childrenByOrder": {},
       "id": "text-field-wrapper",
       "siblings": [],
@@ -30640,16 +30640,16 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 1504,
+          "size": 1063,
           "sizes": {
-            "javascript": 1504
+            "javascript": 1063
           },
           "built": true,
           "codeGenerated": true,
           "cached": false,
-          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
-          "name": "../components/dist/esm/button-handling-b13e8914.js",
-          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
+          "identifier": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
+          "name": "../components/dist/esm/button-handling-75524bdb.js",
+          "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
           "index": 16,
           "preOrderIndex": 16,
           "index2": 15,
@@ -30690,7 +30690,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 296,
+          "id": 512,
           "issuerId": 619,
           "chunks": [
             "button",
@@ -30708,7 +30708,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -30722,7 +30722,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "42:4-41",
               "moduleId": 619,
               "resolvedModuleId": 619
@@ -30736,7 +30736,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "2:0-91",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -30750,7 +30750,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "37:4-41",
               "moduleId": 452,
               "resolvedModuleId": 452
@@ -30764,7 +30764,7 @@
               "type": "harmony side effect evaluation",
               "active": false,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "3:0-71",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -30778,7 +30778,7 @@
               "type": "harmony import specifier",
               "active": true,
               "explanation": "",
-              "userRequest": "./button-handling-b13e8914.js",
+              "userRequest": "./button-handling-75524bdb.js",
               "loc": "31:6-23",
               "moduleId": 22,
               "resolvedModuleId": 22
@@ -30873,7 +30873,7 @@
           "optimizationBailout": [
             "Statement (ExpressionStatement) with side effects in source code at 87:0-45",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
-            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js",
+            "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
             "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
           ],
@@ -32407,9 +32407,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 11655,
+      "size": 11656,
       "sizes": {
-        "javascript": 11655
+        "javascript": 11656
       },
       "names": [],
       "idHints": [],
@@ -32417,10 +32417,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.textarea-wrapper.3701cd7d1e19983c601b.js"
+        "porsche-design-system.textarea-wrapper.c83a50013936e2a5f2e5.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "8c0de4c823b65bbc1fce",
+      "hash": "1b5a85951932ba51df91",
       "childrenByOrder": {},
       "id": "textarea-wrapper",
       "siblings": [],
@@ -32651,9 +32651,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 9726,
+          "size": 9727,
           "sizes": {
-            "javascript": 9726
+            "javascript": 9727
           },
           "built": true,
           "codeGenerated": true,
@@ -43631,8 +43631,8 @@
       ],
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 68:0-33",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/text-utils-9d309683.js: Module ../components/dist/esm/text-utils-9d309683.js is referenced from different chunks by these modules: ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-text.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -43715,8 +43715,8 @@
       ],
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 54:0-25",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
       ],
@@ -44449,7 +44449,7 @@
       ],
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 70:0-29",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/text-utils-9d309683.js: Module ../components/dist/esm/text-utils-9d309683.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-text.entry.js",
@@ -44533,7 +44533,7 @@
       ],
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 49:0-33",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -44616,7 +44616,7 @@
       ],
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 54:0-21",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-marque.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-field-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-pagination.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -44699,7 +44699,7 @@
       ],
       "optimizationBailout": [
         "Statement (VariableDeclaration) with side effects in source code at 4:0-193",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-pagination.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)"
       ],
       "depth": 4
@@ -44861,7 +44861,7 @@
       ],
       "optimizationBailout": [
         "Statement (VariableDeclaration) with side effects in source code at 17:0-22:2",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-8e745142.js: Module ../components/dist/esm/focus-handling-8e745142.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/focus-handling-d0aa3c61.js: Module ../components/dist/esm/focus-handling-d0aa3c61.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-marque.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/index-467074a1.js: Module ../components/dist/esm/index-467074a1.js is referenced from different chunks by these modules: ../components/dist/esm/text-utils-9d309683.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/theme-2bb5f971.js: Module ../components/dist/esm/theme-2bb5f971.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js, ../components/dist/esm/p-content-wrapper.entry.js, ../components/dist/esm/p-divider.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-icon.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-spinner.entry.js, ../components/dist/esm/p-tabs-bar.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js"
@@ -45355,7 +45355,7 @@
       "optimizationBailout": [
         "Statement (ExpressionStatement) with side effects in source code at 87:0-45",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/a11y-ced44573.js: Module ../components/dist/esm/a11y-ced44573.js is referenced from different chunks by these modules: ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js",
-        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-b13e8914.js: Module ../components/dist/esm/button-handling-b13e8914.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js",
+        "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/button-handling-75524bdb.js: Module ../components/dist/esm/button-handling-75524bdb.js is referenced from different chunks by these modules: ../components/dist/esm/p-button-pure.entry.js, ../components/dist/esm/p-button.entry.js",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/jss-ebcfdb85.js: Module ../components/dist/esm/jss-ebcfdb85.js is not in the same chunk(s) (expected in chunk(s) unnamed chunk(s), module is in chunk(s) main)",
         "ModuleConcatenation bailout: Cannot concat with ../components/dist/esm/slotted-styles-50276109.js: Module ../components/dist/esm/slotted-styles-50276109.js is referenced from different chunks by these modules: ../components/dist/esm/p-banner.entry.js, ../components/dist/esm/p-checkbox-wrapper.entry.js, ../components/dist/esm/p-headline.entry.js, ../components/dist/esm/p-link-pure.entry.js, ../components/dist/esm/p-link-social.entry.js, ../components/dist/esm/p-link.entry.js, ../components/dist/esm/p-radio-button-wrapper.entry.js, ../components/dist/esm/p-select-wrapper.entry.js, ../components/dist/esm/p-text-list_2.entry.js, ../components/dist/esm/p-text.entry.js, ../components/dist/esm/p-textarea-wrapper.entry.js"
       ],
@@ -45531,9 +45531,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 9726,
+      "size": 9727,
       "sizes": {
-        "javascript": 9726
+        "javascript": 9727
       },
       "built": true,
       "codeGenerated": true,
@@ -47099,16 +47099,16 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 3922,
+      "size": 1376,
       "sizes": {
-        "javascript": 3922
+        "javascript": 1376
       },
       "built": true,
       "codeGenerated": true,
       "cached": false,
-      "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
-      "name": "../components/dist/esm/focus-handling-8e745142.js",
-      "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-8e745142.js",
+      "identifier": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
+      "name": "../components/dist/esm/focus-handling-d0aa3c61.js",
+      "nameForCondition": "/github/workspace/packages/components/dist/esm/focus-handling-d0aa3c61.js",
       "index": 15,
       "preOrderIndex": 15,
       "index2": 14,
@@ -47148,7 +47148,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 742,
+      "id": 275,
       "issuerId": 619,
       "chunks": [
         "button",
@@ -47170,7 +47170,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "3:0-89",
           "moduleId": 619,
           "resolvedModuleId": 619
@@ -47184,7 +47184,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "41:4-40",
           "moduleId": 619,
           "resolvedModuleId": 619
@@ -47198,7 +47198,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "3:0-89",
           "moduleId": 452,
           "resolvedModuleId": 452
@@ -47212,7 +47212,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "36:4-40",
           "moduleId": 452,
           "resolvedModuleId": 452
@@ -47226,7 +47226,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "2:0-89",
           "moduleId": 128,
           "resolvedModuleId": 128
@@ -47240,7 +47240,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "40:4-40",
           "moduleId": 128,
           "resolvedModuleId": 128
@@ -47254,7 +47254,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "2:0-89",
           "moduleId": 301,
           "resolvedModuleId": 301
@@ -47268,7 +47268,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "28:4-40",
           "moduleId": 301,
           "resolvedModuleId": 301
@@ -47282,7 +47282,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "2:0-89",
           "moduleId": 176,
           "resolvedModuleId": 176
@@ -47296,7 +47296,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "32:4-40",
           "moduleId": 176,
           "resolvedModuleId": 176
@@ -47310,7 +47310,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "2:0-89",
           "moduleId": 951,
           "resolvedModuleId": 951
@@ -47324,7 +47324,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "70:4-40",
           "moduleId": 951,
           "resolvedModuleId": 951
@@ -47338,7 +47338,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "2:0-89",
           "moduleId": 406,
           "resolvedModuleId": 406
@@ -47352,7 +47352,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./focus-handling-8e745142.js",
+          "userRequest": "./focus-handling-d0aa3c61.js",
           "loc": "226:4-40",
           "moduleId": 406,
           "resolvedModuleId": 406
@@ -47371,16 +47371,16 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 1504,
+      "size": 1063,
       "sizes": {
-        "javascript": 1504
+        "javascript": 1063
       },
       "built": true,
       "codeGenerated": true,
       "cached": false,
-      "identifier": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
-      "name": "../components/dist/esm/button-handling-b13e8914.js",
-      "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-b13e8914.js",
+      "identifier": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
+      "name": "../components/dist/esm/button-handling-75524bdb.js",
+      "nameForCondition": "/github/workspace/packages/components/dist/esm/button-handling-75524bdb.js",
       "index": 16,
       "preOrderIndex": 16,
       "index2": 15,
@@ -47420,7 +47420,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 296,
+      "id": 512,
       "issuerId": 619,
       "chunks": [
         "button",
@@ -47438,7 +47438,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "2:0-91",
           "moduleId": 619,
           "resolvedModuleId": 619
@@ -47452,7 +47452,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "42:4-41",
           "moduleId": 619,
           "resolvedModuleId": 619
@@ -47466,7 +47466,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "2:0-91",
           "moduleId": 452,
           "resolvedModuleId": 452
@@ -47480,7 +47480,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "37:4-41",
           "moduleId": 452,
           "resolvedModuleId": 452
@@ -47494,7 +47494,7 @@
           "type": "harmony side effect evaluation",
           "active": false,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "3:0-71",
           "moduleId": 22,
           "resolvedModuleId": 22
@@ -47508,7 +47508,7 @@
           "type": "harmony import specifier",
           "active": true,
           "explanation": "",
-          "userRequest": "./button-handling-b13e8914.js",
+          "userRequest": "./button-handling-75524bdb.js",
           "loc": "31:6-23",
           "moduleId": 22,
           "resolvedModuleId": 22
@@ -48323,7 +48323,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.9c92f811fddb1bb7efd7.js",
+          "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
           "size": 59616
         }
       ],
@@ -48345,7 +48345,7 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.9c92f811fddb1bb7efd7.js",
+          "name": "porsche-design-system.v2.0.0.17d97efbad8eb4a12320.js",
           "size": 59616
         }
       ],
