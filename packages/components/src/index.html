@@ -32,7 +32,11 @@
 <p-grid>
   <p-grid-item size="6">
     <p-content-wrapper>
-      <p-switch label="Default"></p-switch>
+      <p-switch label="Default" onclick="console.log('click', document.activeElement)"
+                onfocus="console.log('focus', document.activeElement)"
+                onfocusin="console.log('focusin', document.activeElement)"
+                onblur="console.log('blur', document.activeElement)"
+                onfocusout="console.log('focusout', document.activeElement)"></p-switch>
       <p-switch label="Checked" checked="true"></p-switch>
       <p-switch label="Align right + Stretch" stretch="true"></p-switch>
       <p-switch label="Align left" align-label="left"></p-switch>
