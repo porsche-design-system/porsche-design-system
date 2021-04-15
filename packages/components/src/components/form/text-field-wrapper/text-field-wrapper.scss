@@ -71,7 +71,6 @@
 ::slotted(input:disabled) {
   color: $p-color-state-disabled !important;
   border-color: $p-color-state-disabled !important;
-  background-color: $p-color-background-default !important;
   -webkit-text-fill-color: $p-color-state-disabled !important; // fix placeholder color bug in Safari
   cursor: not-allowed !important;
 }
@@ -151,7 +150,6 @@
     }
   }
   @at-root &--password ::slotted(input),
-    ::slotted(input[type='password']),
     ::slotted(input[type='search']) {
     padding-right: 3rem !important;
   }
