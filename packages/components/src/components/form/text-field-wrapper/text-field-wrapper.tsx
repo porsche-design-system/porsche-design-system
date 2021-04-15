@@ -1,4 +1,4 @@
-import { JSX, Host, Component, Prop, h, Element, State, forceUpdate } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
@@ -10,8 +10,10 @@ import {
   isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
+  observeMutations,
   prefix,
   setAriaAttributes,
+  unobserveMutations,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 
@@ -42,22 +44,16 @@ export class TextFieldWrapper {
 
   private input: HTMLInputElement;
   private isPasswordToggleable: boolean;
-  private inputObserver: MutationObserver;
 
   public connectedCallback(): void {
     this.addSlottedStyles();
-    // We have to initialize this.input in componentWillLoad to fix the Angular binding issues. To ensure the MutationObserver
-    // is also active when the component gets reattached, this workaround is used. As soon as https://github.com/porscheui/porsche-design-system/issues/1013
-    // is played, we can solve this by observing prop changes of child nodes.
-    if (this.input) {
-      this.initMutationObserver();
-    }
+    this.observeMutations();
   }
 
   public componentWillLoad(): void {
     this.setInput();
+    this.observeMutations();
     this.isPasswordToggleable = this.input.type === 'password';
-    this.initMutationObserver();
   }
 
   public componentDidRender(): void {
@@ -74,7 +70,7 @@ export class TextFieldWrapper {
   }
 
   public disconnectedCallback(): void {
-    this.inputObserver.disconnect();
+    unobserveMutations(this.input);
   }
 
   public render(): JSX.Element {
@@ -186,11 +182,8 @@ export class TextFieldWrapper {
     }
   };
 
-  private initMutationObserver = (): void => {
-    this.inputObserver = new MutationObserver(() => forceUpdate(this.host));
-    this.inputObserver.observe(this.input, {
-      attributeFilter: ['disabled', 'readonly'],
-    });
+  private observeMutations = (): void => {
+    observeMutations(this.input, ['disabled', 'readonly'], () => forceUpdate(this.host));
   };
 
   private addSlottedStyles(): void {

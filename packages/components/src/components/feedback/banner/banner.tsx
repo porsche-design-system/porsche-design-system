@@ -49,7 +49,7 @@ export class Banner {
   public render(): JSX.Element {
     const bannerClasses = {
       [prefix('banner')]: true,
-      [prefix(`banner--${this.state}`)]: true,
+      [prefix(`banner--${this.state}`)]: this.state !== 'neutral',
       [prefix('banner--theme-dark')]: isDark(this.theme),
     };
 
