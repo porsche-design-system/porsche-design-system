@@ -21,6 +21,9 @@ export class Switch {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Stretches the contents to max available space. */
+  @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
+
   /** Visualize the switch with on/off status. */
   @Prop() public checked?: boolean = false;
 
@@ -44,6 +47,10 @@ export class Switch {
       ['label']: true,
       ['checked']: this.checked,
       ['disabled']: this.disabled || this.loading,
+      ...mapBreakpointPropToPrefixedClassesNew('stretch', this.stretch, {
+        classSuffixes: ['on', 'off'],
+        disablePrefixP: true,
+      }),
       ...mapBreakpointPropToPrefixedClassesNew('label-align', this.alignLabel, { disablePrefixP: true }),
       ...mapBreakpointPropToPrefixedClassesNew('label', this.hideLabel, {
         classSuffixes: ['hidden', 'visible'],

@@ -612,6 +612,10 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
+        /**
           * To remove the element from tab order.
          */
         "tabbable"?: boolean;
@@ -1602,6 +1606,10 @@ declare namespace LocalJSX {
           * Emitted when checked status is changed.
          */
         "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        /**
+          * Stretches the contents to max available space.
+         */
+        "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
          */
