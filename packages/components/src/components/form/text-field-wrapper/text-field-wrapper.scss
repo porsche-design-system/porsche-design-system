@@ -89,8 +89,7 @@
   -moz-appearance: textfield !important; // hides up/down spin button for Firefox
 }
 
-:host ::slotted(input[type='search']),
-:host ::slotted(input[type='password']) {
+:host ::slotted(input[type='search']) {
   padding-right: 3rem !important;
 }
 
@@ -153,6 +152,12 @@
 
     + .message {
       color: $p-color-notification-error;
+    }
+  }
+
+  &--password {
+    ::slotted(input) {
+      padding-right: 3rem !important;
     }
   }
 }
