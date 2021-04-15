@@ -133,7 +133,7 @@ export const removeAttribute = async (element: ElementHandle, key: string): Prom
 };
 
 export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
-  return (await element.getProperty(prop)).jsonValue();
+  return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
 export const setProperty = async (
