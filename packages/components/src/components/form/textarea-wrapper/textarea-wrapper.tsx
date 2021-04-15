@@ -9,7 +9,6 @@ import {
   isMessageVisible,
   isRequired,
   mapBreakpointPropToPrefixedClasses,
-  prefix,
   setAriaAttributes,
   observeMutations,
   unobserveMutations,
@@ -42,13 +41,13 @@ export class TextareaWrapper {
   private textarea: HTMLTextAreaElement;
 
   public connectedCallback(): void {
-    this.observeMutations();
     this.addSlottedStyles();
+    this.observeMutations();
   }
 
   public componentWillLoad(): void {
-    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
     this.observeMutations();
+    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
   }
 
   public componentDidRender(): void {
@@ -69,31 +68,15 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
-    const { disabled, readOnly } = this.textarea;
-    const labelClasses = prefix('textarea-wrapper__label');
-    const labelTextClasses = {
-      [prefix('textarea-wrapper__label-text')]: true,
-      [prefix('textarea-wrapper__label-text--disabled')]: disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__label-text-', this.hideLabel, ['hidden', 'visible']),
+    const { disabled } = this.textarea;
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: disabled,
+      [`label--${this.state}`]: this.state !== 'none',
+      ...mapBreakpointPropToPrefixedClasses('label-', this.hideLabel, ['hidden', 'visible'], true),
     };
-    const descriptionTextClasses = {
-      [prefix('textarea-wrapper__description-text')]: true,
-      [prefix('textarea-wrapper__description-text--disabled')]: disabled,
-      ...mapBreakpointPropToPrefixedClasses('textarea-wrapper__description-text-', this.hideLabel, [
-        'hidden',
-        'visible',
-      ]),
-    };
-    const fakeTextareaClasses = {
-      [prefix('textarea-wrapper__fake-textarea')]: true,
-      [prefix(`textarea-wrapper__fake-textarea--${this.state}`)]: true,
-      [prefix('textarea-wrapper__fake-textarea--disabled')]: disabled,
-      [prefix('textarea-wrapper__fake-textarea--readonly')]: readOnly,
-    };
-    const messageClasses = {
-      [prefix('textarea-wrapper__message')]: true,
-      [prefix(`textarea-wrapper__message--${this.state}`)]: true,
-    };
+    const textProps = { tag: 'span', color: 'inherit' };
+    const labelProps = { ...textProps, onClick: this.labelClick };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -101,28 +84,20 @@ export class TextareaWrapper {
       <Host>
         <label class={labelClasses}>
           {isLabelVisible(this.host, this.label) && (
-            <PrefixedTagNames.pText class={labelTextClasses} color="inherit" tag="span" onClick={this.labelClick}>
+            <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isRequired(this.textarea) && <span class={prefix('textarea-wrapper__required')} />}
+              {isRequired(this.textarea) && <span class="required" />}
             </PrefixedTagNames.pText>
           )}
           {isDescriptionVisible(this.host, this.description) && (
-            <PrefixedTagNames.pText
-              class={descriptionTextClasses}
-              tag="span"
-              color="inherit"
-              size="x-small"
-              onClick={this.labelClick}
-            >
+            <PrefixedTagNames.pText class="label__text label__text--description" {...labelProps} size="x-small">
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
-          <span class={fakeTextareaClasses}>
-            <slot />
-          </span>
+          <slot />
         </label>
         {isMessageVisible(this.host, this.message, this.state) && (
-          <PrefixedTagNames.pText class={messageClasses} color="inherit" role={this.state === 'error' ? 'alert' : null}>
+          <PrefixedTagNames.pText class="message" {...textProps} role={this.state === 'error' ? 'alert' : null}>
             {this.message || <slot name="message" />}
           </PrefixedTagNames.pText>
         )}
