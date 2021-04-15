@@ -24,7 +24,6 @@ import {
   getPrefixedTagNames,
   isDark,
   mapBreakpointPropToPrefixedClasses,
-  prefix,
   setAttribute,
 } from '../../../utils';
 
@@ -43,7 +42,7 @@ export class TabsBar {
   @Prop() public weight?: TabWeight = 'regular';
 
   /** Adapts the color when used on dark background. */
-  @Prop({ reflect: true }) public theme?: Theme = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
@@ -108,20 +107,17 @@ export class TabsBar {
 
   public render(): JSX.Element {
     const tabsNavClasses = {
-      [prefix('tabs-bar')]: true,
-      [prefix(`tabs-bar--weight-${this.weight}`)]: true,
-      ...mapBreakpointPropToPrefixedClasses('tabs-bar--size', this.size),
+      ['root']: true,
+      ['root--theme-dark']: isDark(this.theme),
+      ['root--weight-semibold']: this.weight !== 'regular',
+      ...mapBreakpointPropToPrefixedClasses('root--size', this.size, undefined, true),
     };
 
-    const scrollAreaClasses = prefix('tabs-bar__scroll-area');
-    const scrollWrapperClasses = prefix('tabs-bar__scroll-wrapper');
-    const scrollWrapperTriggerClasses = prefix('tabs-bar__scroll-wrapper__trigger');
+    const scrollAreaClasses = 'scroll-area';
+    const scrollWrapperClasses = 'scroll-wrapper';
+    const scrollWrapperTriggerClasses = 'scroll-wrapper__trigger';
 
-    const statusBarClasses = {
-      [prefix('tabs-bar__status-bar')]: true,
-      [prefix('tabs-bar__status-bar--theme-dark')]: isDark(this.theme),
-      [prefix(`tabs-bar__status-bar--weight-${this.weight}`)]: true,
-    };
+    const statusBarClasses = 'status-bar';
 
     return (
       <div class={tabsNavClasses}>
@@ -140,19 +136,16 @@ export class TabsBar {
   }
 
   private renderPrevNextButton = (direction: Direction): JSX.Element => {
-    const isDarkTheme = isDark(this.theme);
     const actionClasses = {
-      [prefix('tabs-bar__action')]: true,
-      [prefix('tabs-bar__action--theme-dark')]: isDarkTheme,
-      [prefix(`tabs-bar__action--${direction}`)]: true,
-      [prefix('tabs-bar__action--hidden')]: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
+      ['action']: true,
+      [`action--${direction}`]: true,
+      ['action--hidden']: direction === 'prev' ? this.isPrevHidden : this.isNextHidden,
     };
 
     const gradientClasses = {
-      [prefix('tabs-bar__gradient')]: true,
-      [prefix('tabs-bar__gradient--theme-dark')]: isDarkTheme,
-      [prefix(`tabs-bar__gradient--color-scheme-${this.gradientColorScheme}`)]: true,
-      [prefix(`tabs-bar__gradient--${direction}`)]: true,
+      ['gradient']: true,
+      ['gradient--color-scheme-surface']: this.gradientColorScheme !== 'default',
+      [`gradient--${direction}`]: true,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -181,8 +174,8 @@ export class TabsBar {
       const isFocusable = tabIndex === +index;
       const isSelected = this.activeTabIndex === +index;
       const attrs = {
-        'role': 'tab',
-        'tabindex': isFocusable ? '0' : '-1',
+        role: 'tab',
+        tabindex: isFocusable ? '0' : '-1',
         'aria-selected': isSelected ? 'true' : 'false',
       };
       for (const [key, value] of Object.entries(attrs)) {
@@ -216,9 +209,9 @@ export class TabsBar {
 
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
-    this.statusBarElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__status-bar')}`);
-    this.scrollAreaElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__scroll-area')}`);
-    this.firstGradientElement = getHTMLElement(shadowRoot, `.${prefix('tabs-bar__gradient:first-child')}`);
+    this.statusBarElement = getHTMLElement(shadowRoot, '.status-bar');
+    this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
+    this.firstGradientElement = getHTMLElement(shadowRoot, '.gradient:first-child');
   };
 
   private setTabElements = (): void => {
@@ -251,10 +244,7 @@ export class TabsBar {
   };
 
   private initIntersectionObserver = (): void => {
-    const [firstTrigger, lastTrigger] = getHTMLElements(
-      this.host.shadowRoot,
-      `.${prefix('tabs-bar__scroll-wrapper__trigger')}`
-    );
+    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.scroll-wrapper__trigger');
 
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
