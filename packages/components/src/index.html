@@ -9,6 +9,19 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
+    <style>
+      p-switch {
+        margin-top: 16px;
+      }
+
+      p-switch:first-child {
+        margin-top: 32px;
+      }
+
+      p-switch:last-child {
+        margin-bottom: 32px;
+      }
+    </style>
   </head>
   <body>
 
@@ -18,85 +31,31 @@
 
 <p-grid>
   <p-grid-item size="6">
-
     <p-content-wrapper>
-
-      <br>
-      <br>
-
-
-    <p-switch label="Some label"></p-switch>
-    <p-switch label="Some label" align-label="left"></p-switch>
-    <p-switch label="Some label" hide-label="true"></p-switch>
-
-    <br>
-    <br>
-
-    <p-switch label="Some label" checked="true"></p-switch>
-
-    <br>
-    <br>
-
-    <p-switch label="Some label" disabled="true"></p-switch>
-
-    <br>
-    <br>
-
-    <p-switch label="Some label" checked="true" disabled="true"></p-switch>
-
-    <br>
-    <br>
-
-    <p-switch label="Some label" loading="true"></p-switch>
-
-    <br>
-    <br>
-
-    <p-switch label="Some label" checked="true" loading="true"></p-switch>
-
-      <br>
-      <br>
+      <p-switch label="Default"></p-switch>
+      <p-switch label="Checked" checked="true"></p-switch>
+      <p-switch label="Align right + Stretch" stretch="true"></p-switch>
+      <p-switch label="Align left" align-label="left"></p-switch>
+      <p-switch label="Align left + Stretch" align-label="left" stretch="true"></p-switch>
+      <p-switch label="Hide label" hide-label="true"></p-switch>
+      <p-switch label="Disabled" disabled="true"></p-switch>
+      <p-switch label="Disabled + Checked" checked="true" disabled="true"></p-switch>
+      <p-switch label="Loading" loading="true"></p-switch>
+      <p-switch label="Loading + Checked" checked="true" loading="true"></p-switch>
     </p-content-wrapper>
-
   </p-grid-item>
   <p-grid-item size="6">
     <p-content-wrapper theme="dark" background-color="default">
-
-      <br>
-      <br>
-
-
-      <p-switch theme="dark" label="Some label"></p-switch>
-      <p-switch theme="dark" label="Some label" align-label="left"></p-switch>
-      <p-switch theme="dark" label="Some label" hide-label="true"></p-switch>
-
-      <br>
-      <br>
-
-      <p-switch theme="dark" label="Some label" checked="true"></p-switch>
-
-      <br>
-      <br>
-
-      <p-switch theme="dark" label="Some label" disabled="true"></p-switch>
-
-      <br>
-      <br>
-
-      <p-switch theme="dark" label="Some label" checked="true" disabled="true"></p-switch>
-
-      <br>
-      <br>
-
-      <p-switch theme="dark" label="Some label" loading="true"></p-switch>
-
-      <br>
-      <br>
-
-      <p-switch theme="dark" label="Some label" checked="true" loading="true"></p-switch>
-
-      <br>
-      <br>
+      <p-switch theme="dark" label="Default"></p-switch>
+      <p-switch theme="dark" label="Checked" checked="true"></p-switch>
+      <p-switch theme="dark" label="Align right + Stretch" stretch="true"></p-switch>
+      <p-switch theme="dark" label="Align left" align-label="left"></p-switch>
+      <p-switch theme="dark" label="Align left + Stretch" align-label="left" stretch="true"></p-switch>
+      <p-switch theme="dark" label="Hide label" hide-label="true"></p-switch>
+      <p-switch theme="dark" label="Disabled" disabled="true"></p-switch>
+      <p-switch theme="dark" label="Disabled + Checked" checked="true" disabled="true"></p-switch>
+      <p-switch theme="dark" label="Loading" loading="true"></p-switch>
+      <p-switch theme="dark" label="Loading + Checked" checked="true" loading="true"></p-switch>
     </p-content-wrapper>
   </p-grid-item>
 </p-grid>

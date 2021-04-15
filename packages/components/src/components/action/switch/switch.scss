@@ -27,6 +27,27 @@
 
 .label {
   display: flex;
+  width: auto;
+  justify-content: flex-start;
+
+  &.stretch-on {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      &.stretch-on-#{$breakpoint} {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &.stretch-off-#{$breakpoint} {
+        width: auto;
+        justify-content: flex-start;
+      }
+    }
+  }
 }
 
 .text {
@@ -91,6 +112,7 @@
   position: relative;
   width: p-px-to-rem(48px);
   height: p-px-to-rem(24px);
+  flex-shrink: 0;
   display: block;
   margin: 0;
   padding: 0;
