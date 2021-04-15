@@ -22,7 +22,7 @@
 }
 
 :host {
-  display: flex;
+  display: flex !important;
 }
 
 .label {
@@ -34,6 +34,11 @@
   order: 1;
   padding-left: $p-spacing-8;
   padding-right: 0;
+  color: $p-color-default;
+
+  .theme-dark & {
+    color: $p-color-theme-dark-default;
+  }
 
   .label-align-left & {
     order: 0;
@@ -72,6 +77,14 @@
       }
     }
   }
+
+  .disabled & {
+    color: $p-color-state-disabled;
+
+    @at-root .theme-dark#{&} {
+      color: $p-color-theme-dark-state-disabled;
+    }
+  }
 }
 
 .button {
@@ -92,38 +105,69 @@
     background-color $p-animation-hover-duration $p-animation-hover-bezier,
     border-color $p-animation-hover-duration $p-animation-hover-bezier;
 
+  .theme-dark & {
+    border-color: $p-color-theme-dark-neutral-contrast-medium;
+  }
+
   .checked & {
     border-color: $p-color-notification-success;
     background-color: $p-color-notification-success;
+
+    @at-root .theme-dark#{&} {
+      border-color: $p-color-theme-dark-notification-success;
+      background-color: $p-color-theme-dark-notification-success;
+    }
   }
 
-  // Disabled
   .disabled & {
     border-color: $p-color-state-disabled;
     cursor: not-allowed;
+
+    @at-root .theme-dark#{&} {
+      border-color: $p-color-theme-dark-state-disabled;
+    }
   }
 
   .disabled.checked & {
     background-color: $p-color-state-disabled;
+
+    @at-root .theme-dark#{&} {
+      background-color: $p-color-theme-dark-state-disabled;
+    }
   }
 
-  // Hover
   :not(.disabled) &:hover {
     border-color: $p-color-default;
+
+    @at-root .theme-dark#{&} {
+      border-color: $p-color-theme-dark-default;
+    }
   }
 
   :not(.disabled).checked &:hover {
     border-color: darken($p-color-notification-success, 12%);
     background-color: darken($p-color-notification-success, 12%);
+
+    @at-root .theme-dark#{&} {
+      border-color: darken($p-color-theme-dark-notification-success, 12%);
+      background-color: darken($p-color-theme-dark-notification-success, 12%);
+    }
   }
 
-  // Focus
   &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-neutral-contrast-medium;
+
+    .theme-dark & {
+      box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-neutral-contrast-medium;
+    }
   }
 
   .checked &:focus {
     box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-notification-success;
+
+    @at-root .theme-dark#{&} {
+      box-shadow: 0 0 0 2px $p-color-theme-dark-background-default, 0 0 0 3px $p-color-theme-dark-notification-success;
+    }
   }
 
   &:not(:focus-visible) {
@@ -145,9 +189,29 @@
     background-color $p-animation-hover-duration $p-animation-hover-bezier,
     transform $p-animation-hover-duration $p-animation-hover-bezier;
 
+  .theme-dark & {
+    background-color: $p-color-theme-dark-neutral-contrast-medium;
+  }
+
   .checked & {
     transform: translateX(p-px-to-rem(24px));
     background-color: $p-color-background-default;
+  }
+
+  :not(.checked).disabled & {
+    background-color: $p-color-state-disabled;
+
+    @at-root .theme-dark#{&} {
+      background-color: $p-color-theme-dark-state-disabled;
+    }
+  }
+
+  :not(.disabled):not(.checked) .button:hover & {
+    background-color: $p-color-default;
+
+    @at-root .theme-dark#{&} {
+      background-color: $p-color-theme-dark-default;
+    }
   }
 }
 

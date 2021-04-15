@@ -49,6 +49,7 @@ export class Switch {
         classSuffixes: ['hidden', 'visible'],
         disablePrefixP: true,
       }),
+      ['theme-dark']: this.theme === 'dark',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
