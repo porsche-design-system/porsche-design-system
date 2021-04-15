@@ -13,7 +13,7 @@ import { GridDirection, GridGutter, GridWrap } from "./components/layout/grid/gr
 import { GridItemOffset, GridItemSize } from "./components/layout/grid/grid-item/grid-item-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { SpinnerSize } from "./components/feedback/spinner/spinner-utils";
-import { SwitchChangeEvent } from "./components/action/switch/switch";
+import { SwitchChangeEvent } from "./components/action/switch/switch-utils";
 export namespace Components {
     interface PBanner {
         /**

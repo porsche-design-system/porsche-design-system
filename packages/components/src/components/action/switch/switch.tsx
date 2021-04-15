@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter } from '@stencil/core';
 import type { BreakpointCustomizable } from '../../../types';
-import { getPrefixedTagNames } from '../../../utils';
+import { getPrefixedTagNames, mapBreakpointPropToPrefixedClassesNew } from '../../../utils';
 import { Theme } from '../../../types';
 import { isDisabled, SwitchChangeEvent } from './switch-utils';
 
@@ -15,11 +15,11 @@ export class Switch {
   /** The label text. */
   @Prop() public label?: string = '';
 
-  /** Show or hide label. For better accessibility it's recommended to show the label. */
-  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
   /** Aligns the label. */
   @Prop() public alignLabel?: BreakpointCustomizable<'left' | 'right'> = 'right';
+
+  /** Show or hide label. For better accessibility it's recommended to show the label. */
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Visualize the switch with on/off status. */
   @Prop() public checked?: boolean = false;
@@ -41,15 +41,18 @@ export class Switch {
 
   public render(): JSX.Element {
     const rootClasses = {
+      ['label']: true,
       ['checked']: this.checked,
       ['disabled']: this.disabled,
+      ...mapBreakpointPropToPrefixedClassesNew('label-align', this.alignLabel, {disablePrefixP: true}),
+      ...mapBreakpointPropToPrefixedClassesNew('label', this.hideLabel, {classSuffixes: ['hidden', 'visible'], disablePrefixP: true}),
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <label class={rootClasses}>
-        <PrefixedTagNames.pText tag="span" color="inherit">
+        <PrefixedTagNames.pText tag="span" color="inherit" class="text">
           {this.label}
         </PrefixedTagNames.pText>
         <button

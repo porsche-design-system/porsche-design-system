@@ -2,11 +2,76 @@
 @import '../../../styles/internal.variables';
 @import '../../../styles/mixins';
 
+// Standard approach to show/hide elements and stay fully accessible, see https://webaim.org/techniques/css/invisiblecontent/
+@mixin p-switch-label-visible() {
+  position: static;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+@mixin p-switch-label-hidden() {
+  position: absolute;
+  left: -99999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 :host {
   display: flex;
 }
 
 .label {
+  display: flex;
+}
+
+.text {
+  @include p-switch-label-visible;
+  order: 1;
+  padding-left: $p-spacing-8;
+  padding-right: 0;
+
+  .label-align-left & {
+    order: 0;
+    padding-left: 0;
+    padding-right: $p-spacing-8;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      .label-align-left-#{$breakpoint} & {
+        order: 0;
+        padding-left: 0;
+        padding-right: $p-spacing-8;
+      }
+
+      .label-align-right-#{$breakpoint} & {
+        order: 1;
+        padding-left: $p-spacing-8;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .label-hidden & {
+    @include p-switch-label-hidden;
+  }
+
+  @each $breakpoint in $breakpoints {
+    @include p-media-query($breakpoint) {
+      .label-visible-#{$breakpoint} & {
+        @include p-switch-label-visible;
+      }
+
+      .label-hidden-#{$breakpoint} & {
+        @include p-switch-label-hidden;
+      }
+    }
+  }
 }
 
 .button {
@@ -54,11 +119,11 @@
 
   // Focus
   &:focus {
-    box-shadow: 0 0 0 1px $p-color-background-default, 0 0 0 2px $p-color-neutral-contrast-medium;
+    box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-neutral-contrast-medium;
   }
 
   .checked &:focus {
-    box-shadow: 0 0 0 1px $p-color-background-default, 0 0 0 2px $p-color-notification-success;
+    box-shadow: 0 0 0 2px $p-color-background-default, 0 0 0 3px $p-color-notification-success;
   }
 
   &:not(:focus-visible) {
