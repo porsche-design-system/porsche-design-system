@@ -12,6 +12,7 @@ import {
   selectNode,
   setAttribute,
   setContentWithDesignSystem,
+  setProperty,
   waitForEventSerialization,
   waitForInheritedCSSTransition,
   waitForStencilLifecycle,
@@ -19,8 +20,9 @@ import {
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-fdescribe('text-field-wrapper', () => {
+describe('text-field-wrapper', () => {
   let page: Page;
+  const CSS_TRANSITION_DURATION = 240;
 
   beforeEach(async () => {
     page = await getBrowser().newPage();
@@ -38,9 +40,6 @@ fdescribe('text-field-wrapper', () => {
   const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
   const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
   const getIconName = (icon: ElementHandle) => getProperty(icon, 'name');
-
-  // const fakeInputDisabledClass = 'p-text-field-wrapper__fake-input--disabled';
-  // const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
 
   type InitOptions = {
     useSlottedLabel?: boolean;
@@ -182,32 +181,34 @@ fdescribe('text-field-wrapper', () => {
   });
 
   describe('input type password', () => {
-    // it('should disable input and toggle password button when input is disabled programmatically', async () => {
-    //   await setContentWithDesignSystem(
-    //     page,
-    //     `
-    //     <p-text-field-wrapper label="Some label">
-    //       <input type="password" name="some-name">
-    //     </p-text-field-wrapper>`
-    //   );
-    //
-    //   const input = await getInput();
-    //
-    //   expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
-    //   expect(await getProperty(await getInput(), 'disabled')).toBe(false);
-    //
-    //   await setProperty(input, 'disabled', true);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await getCssClasses(await getFakeInput())).toContain(fakeInputDisabledClass);
-    //   expect(await getProperty(await getInput(), 'disabled')).toBe(true);
-    //
-    //   await setProperty(input, 'disabled', false);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await getCssClasses(await getFakeInput())).not.toContain(fakeInputDisabledClass);
-    //   expect(await getProperty(await getInput(), 'disabled')).toBe(false);
-    // });
+    it('should disable input and toggle password button when input is disabled programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label">
+          <input type="password" name="some-name">
+        </p-text-field-wrapper>`
+      );
+
+      const input = await getInput();
+
+      const initialCursor = await getElementStyle(input, 'cursor');
+      const initialBorderColor = await getElementStyle(input, 'borderColor');
+
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'cursor')).not.toBe(initialCursor, 'disabled cursor');
+      expect(await getElementStyle(input, 'borderColor')).not.toBe(initialBorderColor, 'disabled border');
+
+      await setProperty(input, 'disabled', false);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'cursor')).toBe(initialCursor, 'not disabled cursor');
+      expect(await getElementStyle(input, 'borderColor')).toBe(initialBorderColor, 'not disabled borderColor');
+    });
 
     it('should toggle icon when password visibility button is clicked', async () => {
       await setContentWithDesignSystem(
@@ -287,45 +288,116 @@ fdescribe('text-field-wrapper', () => {
   });
 
   describe('input type search', () => {
-    // it('should disable search button when input is set to disabled or readonly programmatically', async () => {
-    //   await setContentWithDesignSystem(
-    //     page,
-    //     `
-    //     <p-text-field-wrapper label="Some label">
-    //       <input type="search" name="some-name">
-    //     </p-text-field-wrapper>`
-    //   );
-    //
-    //   const fakeInputReadOnlyClass = 'p-text-field-wrapper__fake-input--readonly';
-    //   const input = await getInput();
-    //   const fakeInput = await getFakeInput();
-    //   const button = await getButton();
-    //   const isButtonDisabled = () => getProperty(button, 'disabled');
-    //
-    //   expect(await isButtonDisabled()).toBe(false);
-    //
-    //   await setProperty(input, 'disabled', true);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await isButtonDisabled()).toBe(true);
-    //
-    //   await setProperty(input, 'disabled', false);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await isButtonDisabled()).toBe(false);
-    //
-    //   await setProperty(input, 'readOnly', true);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
-    //   expect(await isButtonDisabled()).toBe(true);
-    //
-    //   await setProperty(input, 'readOnly', false);
-    //   await waitForStencilLifecycle(page);
-    //
-    //   expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);
-    //   expect(await isButtonDisabled()).toBe(false);
-    // });
+    it('should disable search button when input is set to disabled programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label">
+          <input type="search" name="some-name">
+        </p-text-field-wrapper>`
+      );
+
+      const input = await getInput();
+      const button = await getButton();
+
+      const initialCursor = await getElementStyle(input, 'cursor');
+      const initialBorderColor = await getElementStyle(input, 'borderColor');
+
+      const isButtonDisabled = () => getProperty(button, 'disabled');
+
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'cursor')).not.toBe(initialCursor, 'disabled cursor');
+      expect(await getElementStyle(input, 'borderColor')).not.toBe(initialBorderColor, 'disabled borderColor');
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'disabled', false);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'cursor')).toBe(initialCursor, 'not disabled cursor');
+      expect(await getElementStyle(input, 'borderColor')).toBe(initialBorderColor, 'not disabled borderColor');
+      expect(await isButtonDisabled()).toBe(false);
+    });
+
+    it('should disable search button when input is set to readonly programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label">
+          <input type="search" name="some-name">
+        </p-text-field-wrapper>`
+      );
+
+      const input = await getInput();
+      const button = await getButton();
+
+      const initialColor = await getElementStyle(input, 'color');
+      const initialBorderColor = await getElementStyle(input, 'borderColor');
+      const initialBackgroundColor = await getElementStyle(input, 'backgroundColor');
+
+      const isButtonDisabled = () => getProperty(button, 'disabled');
+
+      await setProperty(input, 'readOnly', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'color')).not.toBe(initialColor, 'readonly color');
+      expect(await getElementStyle(input, 'borderColor')).not.toBe(initialBorderColor, 'readonly border');
+      expect(await getElementStyle(input, 'backgroundColor')).not.toBe(
+        initialBackgroundColor,
+        'readonly backgroundColor'
+      );
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'readOnly', false);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'color')).toBe(initialColor, 'not readonly color');
+      expect(await getElementStyle(input, 'borderColor')).toBe(initialBorderColor, 'not readonly border');
+      expect(await getElementStyle(input, 'backgroundColor')).toBe(
+        initialBackgroundColor,
+        'not readonly backgroundColor'
+      );
+      expect(await isButtonDisabled()).toBe(false);
+    });
+
+    it('should disable search button when input is set to disabled and readonly programmatically', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-text-field-wrapper label="Some label">
+          <input type="search" name="some-name">
+        </p-text-field-wrapper>`
+      );
+
+      const input = await getInput();
+      const button = await getButton();
+
+      const isButtonDisabled = () => getProperty(button, 'disabled');
+
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      const disabledBorderColor = await getElementStyle(input, 'borderColor');
+      const disabledBackgroundColor = await getElementStyle(input, 'backgroundColor');
+
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'readOnly', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'borderColor')).not.toBe(disabledBorderColor, 'readonly and disabled border');
+      expect(await getElementStyle(input, 'backgroundColor')).not.toBe(
+        disabledBackgroundColor,
+        'readonly and disabled backgroundColor'
+      );
+    });
 
     it('submits parent form on search button click', async () => {
       await setContentWithDesignSystem(
@@ -562,34 +634,4 @@ fdescribe('text-field-wrapper', () => {
       expect(status.componentDidLoad.all).toBe(2, 'componentDidLoad: all');
     });
   });
-
-  // describe('MutationObserver', () => {
-  //   it('should trigger disabled class change if component is reattached to dom', async () => {
-  //     await initTextField();
-  //     const input = await getInput();
-  //     const fakeInput = await getFakeInput();
-  //
-  //     expect(await getCssClasses(fakeInput)).not.toContain(fakeInputDisabledClass);
-  //
-  //     await reattachElement(page, 'p-text-field-wrapper');
-  //     await setProperty(input, 'disabled', true);
-  //     await waitForStencilLifecycle(page);
-  //
-  //     expect(await getCssClasses(fakeInput)).toContain(fakeInputDisabledClass);
-  //   });
-  //
-  //   it('should trigger readonly class change if component is reattached to dom', async () => {
-  //     await initTextField();
-  //     const input = await getInput();
-  //     const fakeInput = await getFakeInput();
-  //
-  //     expect(await getCssClasses(fakeInput)).not.toContain(fakeInputReadOnlyClass);
-  //
-  //     await reattachElement(page, 'p-text-field-wrapper');
-  //     await setProperty(input, 'readOnly', true);
-  //     await waitForStencilLifecycle(page);
-  //
-  //     expect(await getCssClasses(fakeInput)).toContain(fakeInputReadOnlyClass);
-  //   });
-  // });
 });
