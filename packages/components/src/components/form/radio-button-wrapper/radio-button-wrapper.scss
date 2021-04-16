@@ -114,6 +114,14 @@
   box-shadow: 0 0 0 1px $p-color-neutral-contrast-medium !important;
 }
 
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+
+::slotted(input:focus-visible) {
+  outline-color: $p-color-neutral-contrast-medium !important;
+}
+
 .label {
   $bem-block: &;
   display: flex;
