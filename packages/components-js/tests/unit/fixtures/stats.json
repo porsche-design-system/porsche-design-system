@@ -1,29 +1,29 @@
 {
-  "hash": "b992c1f72ae855c758fb",
+  "hash": "829e931721ada9ea07a9",
   "version": "5.31.2",
-  "time": 3278,
-  "builtAt": 1618395557651,
+  "time": 2577,
+  "builtAt": 1618556658918,
   "publicPath": "%%%CDN_BASE_URL_DYNAMIC%%%/porsche-design-system/components/",
   "outputPath": "/github/workspace/packages/components-js/dist/components",
   "assetsByChunkName": {
     "main": [
-      "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js"
+      "porsche-design-system.v2.0.0.a6ca806f717f7ed3d7ee.js"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-      "size": 59616,
+      "name": "porsche-design-system.v2.0.0.a6ca806f717f7ed3d7ee.js",
+      "size": 59614,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "771ea302bd7e60f6aaf9",
+        "contenthash": "a6ca806f717f7ed3d7ee",
         "javascriptModule": false,
         "minimized": true,
-        "size": 59616
+        "size": 59614
       },
       "chunkNames": [
         "main"
@@ -190,31 +190,6 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.tabs-bar.aac9947f3d1d86c8e4fa.js",
-      "size": 13242,
-      "emitted": true,
-      "comparedForEmit": false,
-      "cached": false,
-      "info": {
-        "immutable": true,
-        "contenthash": "aac9947f3d1d86c8e4fa",
-        "javascriptModule": false,
-        "minimized": true,
-        "size": 13242
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "related": {},
-      "chunks": [
-        "tabs-bar"
-      ],
-      "auxiliaryChunks": [],
-      "isOverSizeLimit": false
-    },
-    {
-      "type": "asset",
       "name": "porsche-design-system.button.157615e6627efddb04fe.js",
       "size": 12501,
       "emitted": true,
@@ -234,6 +209,31 @@
       "related": {},
       "chunks": [
         "button"
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "porsche-design-system.tabs-bar.ef4ece905aa2b95ad40e.js",
+      "size": 12113,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "immutable": true,
+        "contenthash": "ef4ece905aa2b95ad40e",
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 12113
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        "tabs-bar"
       ],
       "auxiliaryChunks": [],
       "isOverSizeLimit": false
@@ -540,17 +540,17 @@
     },
     {
       "type": "asset",
-      "name": "porsche-design-system.marque.c728683e73b842f2610a.js",
-      "size": 3919,
+      "name": "porsche-design-system.marque.effca22c4fb3c51290f9.js",
+      "size": 3901,
       "emitted": true,
       "comparedForEmit": false,
       "cached": false,
       "info": {
         "immutable": true,
-        "contenthash": "c728683e73b842f2610a",
+        "contenthash": "effca22c4fb3c51290f9",
         "javascriptModule": false,
         "minimized": true,
-        "size": 3919
+        "size": 3901
       },
       "chunkNames": [],
       "chunkIdHints": [],
@@ -1709,21 +1709,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -2222,7 +2208,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -2812,21 +2798,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -3445,7 +3417,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -4457,21 +4429,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -5886,21 +5844,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -6555,21 +6499,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -8178,21 +8108,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -8848,21 +8764,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -9202,7 +9104,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -10212,21 +10114,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -10566,7 +10454,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -11998,21 +11886,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -12352,7 +12226,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -13362,21 +13236,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -13463,9 +13323,9 @@
       "initial": true,
       "entry": true,
       "recorded": false,
-      "size": 162349,
+      "size": 162347,
       "sizes": {
-        "javascript": 155411,
+        "javascript": 155409,
         "runtime": 6938
       },
       "names": [
@@ -13476,10 +13336,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js"
+        "porsche-design-system.v2.0.0.a6ca806f717f7ed3d7ee.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "c4dc2004f8f8ce6b0ef3",
+      "hash": "f68b5c8bb912652938b5",
       "childrenByOrder": {},
       "id": "main",
       "siblings": [],
@@ -17394,7 +17254,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "37:84-94",
+              "loc": "38:84-94",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17408,7 +17268,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "46:9-15",
+              "loc": "47:9-15",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17422,7 +17282,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "53:2-11",
+              "loc": "54:2-11",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17436,7 +17296,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "58:4-20",
+              "loc": "59:4-20",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17450,7 +17310,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "79:10-11",
+              "loc": "77:21-22",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17464,7 +17324,35 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "79:91-103",
+              "loc": "78:6-7",
+              "moduleId": 951,
+              "resolvedModuleId": 951
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "module": "../components/dist/esm/p-marque.entry.js",
+              "moduleName": "../components/dist/esm/p-marque.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "78:87-99",
+              "moduleId": 951,
+              "resolvedModuleId": 951
+            },
+            {
+              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "module": "../components/dist/esm/p-marque.entry.js",
+              "moduleName": "../components/dist/esm/p-marque.entry.js",
+              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./jss-ebcfdb85.js",
+              "loc": "79:6-7",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17492,7 +17380,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "81:14-15",
+              "loc": "80:74-75",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17506,7 +17394,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "82:8-9",
+              "loc": "81:12-13",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17520,7 +17408,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "85:20-21",
+              "loc": "81:14-18",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17534,7 +17422,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:12-13",
+              "loc": "81:65-66",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -17548,35 +17436,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:14-18",
-              "moduleId": 951,
-              "resolvedModuleId": 951
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "module": "../components/dist/esm/p-marque.entry.js",
-              "moduleName": "../components/dist/esm/p-marque.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "86:65-66",
-              "moduleId": 951,
-              "resolvedModuleId": 951
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "module": "../components/dist/esm/p-marque.entry.js",
-              "moduleName": "../components/dist/esm/p-marque.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-              "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "88:22-32",
+              "loc": "83:22-32",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -19956,7 +19816,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "130:9-15",
+              "loc": "138:31-50",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -19970,7 +19830,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "131:9-15",
+              "loc": "139:14-15",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -19984,7 +19844,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "132:9-15",
+              "loc": "139:49-50",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -19998,7 +19858,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "133:9-15",
+              "loc": "139:88-89",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20012,7 +19872,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "136:9-15",
+              "loc": "166:8-20",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20026,7 +19886,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "137:9-15",
+              "loc": "172:8-20",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20040,7 +19900,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "138:9-15",
+              "loc": "178:8-20",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20054,7 +19914,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "139:9-15",
+              "loc": "183:30-44",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20068,7 +19928,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "141:31-50",
+              "loc": "184:31-45",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20082,7 +19942,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "142:14-15",
+              "loc": "185:34-48",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20096,7 +19956,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "142:49-50",
+              "loc": "188:25-40",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20110,7 +19970,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "142:88-89",
+              "loc": "214:42-57",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20124,7 +19984,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "169:8-20",
+              "loc": "342:157-191",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20138,7 +19998,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "175:8-20",
+              "loc": "347:12-13",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20152,7 +20012,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "181:8-20",
+              "loc": "347:48-49",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20166,7 +20026,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "186:30-44",
+              "loc": "347:104-105",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20180,7 +20040,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "186:61-67",
+              "loc": "347:146-147",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20194,7 +20054,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "187:31-45",
+              "loc": "347:163-164",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20208,7 +20068,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "187:62-68",
+              "loc": "347:203-204",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20222,7 +20082,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "188:34-48",
+              "loc": "347:253-254",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -20236,287 +20096,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./jss-ebcfdb85.js",
-              "loc": "188:65-71",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "191:25-40",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "217:42-57",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "217:84-90",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "345:44-50",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "345:72-78",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "345:124-158",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "346:30-36",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "347:33-39",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "348:40-46",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "350:7-13",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "351:7-13",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "352:7-13",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:12-13",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:48-49",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:104-105",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:146-147",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:163-164",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:203-204",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "354:253-254",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./jss-ebcfdb85.js",
-              "loc": "369:22-32",
+              "loc": "362:22-32",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -22950,9 +22530,9 @@
           "type": "module",
           "moduleType": "javascript/esm",
           "layer": null,
-          "size": 8536,
+          "size": 8534,
           "sizes": {
-            "javascript": 8536
+            "javascript": 8534
           },
           "built": true,
           "codeGenerated": true,
@@ -23057,9 +22637,9 @@
               "type": "module",
               "moduleType": "javascript/auto",
               "layer": null,
-              "size": 4700,
+              "size": 4698,
               "sizes": {
-                "javascript": 4700
+                "javascript": 4698
               },
               "built": true,
               "codeGenerated": false,
@@ -23723,9 +23303,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 8066,
+      "size": 8080,
       "sizes": {
-        "javascript": 8066
+        "javascript": 8080
       },
       "names": [],
       "idHints": [],
@@ -23733,10 +23313,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.marque.c728683e73b842f2610a.js"
+        "porsche-design-system.marque.effca22c4fb3c51290f9.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "46e6b5309bdad74ec340",
+      "hash": "7d5e602d0543f048043c",
       "childrenByOrder": {},
       "id": "marque",
       "siblings": [],
@@ -23976,7 +23556,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -24022,9 +23602,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4144,
+          "size": 4158,
           "sizes": {
-            "javascript": 4144
+            "javascript": 4158
           },
           "built": true,
           "codeGenerated": true,
@@ -24623,7 +24203,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./focus-handling-8e745142.js",
-              "loc": "69:4-40",
+              "loc": "70:4-40",
               "moduleId": 951,
               "resolvedModuleId": 951
             },
@@ -25385,21 +24965,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -27587,21 +27153,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -28256,21 +27808,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -28478,9 +28016,9 @@
       "initial": false,
       "entry": false,
       "recorded": false,
-      "size": 22180,
+      "size": 21010,
       "sizes": {
-        "javascript": 22180
+        "javascript": 21010
       },
       "names": [],
       "idHints": [],
@@ -28488,10 +28026,10 @@
         "main"
       ],
       "files": [
-        "porsche-design-system.tabs-bar.aac9947f3d1d86c8e4fa.js"
+        "porsche-design-system.tabs-bar.ef4ece905aa2b95ad40e.js"
       ],
       "auxiliaryFiles": [],
-      "hash": "24e91931723b54057e99",
+      "hash": "935779aa36dc3d1300d6",
       "childrenByOrder": {},
       "id": "tabs-bar",
       "siblings": [],
@@ -28504,9 +28042,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 22038,
+          "size": 20868,
           "sizes": {
-            "javascript": 22038
+            "javascript": 20868
           },
           "built": true,
           "codeGenerated": true,
@@ -29217,21 +28755,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -30729,21 +30253,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -32740,21 +32250,7 @@
               "active": true,
               "explanation": "",
               "userRequest": "./theme-2bb5f971.js",
-              "loc": "128:26-32",
-              "moduleId": 216,
-              "resolvedModuleId": 216
-            },
-            {
-              "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "module": "../components/dist/esm/p-tabs-bar.entry.js",
-              "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-              "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "./theme-2bb5f971.js",
-              "loc": "351:52-58",
+              "loc": "342:81-87",
               "moduleId": 216,
               "resolvedModuleId": 216
             },
@@ -33602,9 +33098,9 @@
       "type": "module",
       "moduleType": "javascript/esm",
       "layer": null,
-      "size": 8536,
+      "size": 8534,
       "sizes": {
-        "javascript": 8536
+        "javascript": 8534
       },
       "built": true,
       "codeGenerated": true,
@@ -33707,9 +33203,9 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
-          "size": 4700,
+          "size": 4698,
           "sizes": {
-            "javascript": 4700
+            "javascript": 4698
           },
           "built": true,
           "codeGenerated": false,
@@ -34077,9 +33573,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4700,
+      "size": 4698,
       "sizes": {
-        "javascript": 4700
+        "javascript": 4698
       },
       "built": true,
       "codeGenerated": false,
@@ -38150,7 +37646,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "37:84-94",
+          "loc": "38:84-94",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38164,7 +37660,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "46:9-15",
+          "loc": "47:9-15",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38178,7 +37674,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "53:2-11",
+          "loc": "54:2-11",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38192,7 +37688,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "58:4-20",
+          "loc": "59:4-20",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38206,7 +37702,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "79:10-11",
+          "loc": "77:21-22",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38220,7 +37716,35 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "79:91-103",
+          "loc": "78:6-7",
+          "moduleId": 951,
+          "resolvedModuleId": 951
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "module": "../components/dist/esm/p-marque.entry.js",
+          "moduleName": "../components/dist/esm/p-marque.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "78:87-99",
+          "moduleId": 951,
+          "resolvedModuleId": 951
+        },
+        {
+          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "module": "../components/dist/esm/p-marque.entry.js",
+          "moduleName": "../components/dist/esm/p-marque.entry.js",
+          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
+          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./jss-ebcfdb85.js",
+          "loc": "79:6-7",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38248,7 +37772,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "81:14-15",
+          "loc": "80:74-75",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38262,7 +37786,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "82:8-9",
+          "loc": "81:12-13",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38276,7 +37800,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "85:20-21",
+          "loc": "81:14-18",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38290,7 +37814,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:12-13",
+          "loc": "81:65-66",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -38304,35 +37828,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:14-18",
-          "moduleId": 951,
-          "resolvedModuleId": 951
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "module": "../components/dist/esm/p-marque.entry.js",
-          "moduleName": "../components/dist/esm/p-marque.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "86:65-66",
-          "moduleId": 951,
-          "resolvedModuleId": 951
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "module": "../components/dist/esm/p-marque.entry.js",
-          "moduleName": "../components/dist/esm/p-marque.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-marque.entry.js",
-          "resolvedModule": "../components/dist/esm/p-marque.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "88:22-32",
+          "loc": "83:22-32",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -40712,7 +40208,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "130:9-15",
+          "loc": "138:31-50",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40726,7 +40222,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "131:9-15",
+          "loc": "139:14-15",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40740,7 +40236,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "132:9-15",
+          "loc": "139:49-50",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40754,7 +40250,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "133:9-15",
+          "loc": "139:88-89",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40768,7 +40264,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "136:9-15",
+          "loc": "166:8-20",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40782,7 +40278,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "137:9-15",
+          "loc": "172:8-20",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40796,7 +40292,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "138:9-15",
+          "loc": "178:8-20",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40810,7 +40306,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "139:9-15",
+          "loc": "183:30-44",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40824,7 +40320,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "141:31-50",
+          "loc": "184:31-45",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40838,7 +40334,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "142:14-15",
+          "loc": "185:34-48",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40852,7 +40348,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "142:49-50",
+          "loc": "188:25-40",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40866,7 +40362,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "142:88-89",
+          "loc": "214:42-57",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40880,7 +40376,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "169:8-20",
+          "loc": "342:157-191",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40894,7 +40390,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "175:8-20",
+          "loc": "347:12-13",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40908,7 +40404,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "181:8-20",
+          "loc": "347:48-49",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40922,7 +40418,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "186:30-44",
+          "loc": "347:104-105",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40936,7 +40432,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "186:61-67",
+          "loc": "347:146-147",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40950,7 +40446,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "187:31-45",
+          "loc": "347:163-164",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40964,7 +40460,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "187:62-68",
+          "loc": "347:203-204",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40978,7 +40474,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "188:34-48",
+          "loc": "347:253-254",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -40992,287 +40488,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./jss-ebcfdb85.js",
-          "loc": "188:65-71",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "191:25-40",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "217:42-57",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "217:84-90",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "345:44-50",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "345:72-78",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "345:124-158",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "346:30-36",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "347:33-39",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "348:40-46",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "350:7-13",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "351:7-13",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "352:7-13",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:12-13",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:48-49",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:104-105",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:146-147",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:163-164",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:203-204",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "354:253-254",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./jss-ebcfdb85.js",
-          "loc": "369:22-32",
+          "loc": "362:22-32",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -45495,9 +44711,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 4144,
+      "size": 4158,
       "sizes": {
-        "javascript": 4144
+        "javascript": 4158
       },
       "built": true,
       "codeGenerated": true,
@@ -45987,9 +45203,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 22038,
+      "size": 20868,
       "sizes": {
-        "javascript": 22038
+        "javascript": 20868
       },
       "built": true,
       "codeGenerated": true,
@@ -47460,21 +46676,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./theme-2bb5f971.js",
-          "loc": "128:26-32",
-          "moduleId": 216,
-          "resolvedModuleId": 216
-        },
-        {
-          "moduleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "module": "../components/dist/esm/p-tabs-bar.entry.js",
-          "moduleName": "../components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModuleIdentifier": "/github/workspace/packages/components/dist/esm/p-tabs-bar.entry.js",
-          "resolvedModule": "../components/dist/esm/p-tabs-bar.entry.js",
-          "type": "harmony import specifier",
-          "active": true,
-          "explanation": "",
-          "userRequest": "./theme-2bb5f971.js",
-          "loc": "351:52-58",
+          "loc": "342:81-87",
           "moduleId": 216,
           "resolvedModuleId": 216
         },
@@ -48193,7 +47395,7 @@
           "active": true,
           "explanation": "",
           "userRequest": "./focus-handling-8e745142.js",
-          "loc": "69:4-40",
+          "loc": "70:4-40",
           "moduleId": 951,
           "resolvedModuleId": 951
         },
@@ -49191,12 +48393,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-          "size": 59616
+          "name": "porsche-design-system.v2.0.0.a6ca806f717f7ed3d7ee.js",
+          "size": 59614
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 59616,
+      "assetsSize": 59614,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
@@ -49213,12 +48415,12 @@
       ],
       "assets": [
         {
-          "name": "porsche-design-system.v2.0.0.771ea302bd7e60f6aaf9.js",
-          "size": 59616
+          "name": "porsche-design-system.v2.0.0.a6ca806f717f7ed3d7ee.js",
+          "size": 59614
         }
       ],
       "filteredAssets": 0,
-      "assetsSize": 59616,
+      "assetsSize": 59614,
       "auxiliaryAssets": [],
       "filteredAuxiliaryAssets": 0,
       "auxiliaryAssetsSize": 0,
