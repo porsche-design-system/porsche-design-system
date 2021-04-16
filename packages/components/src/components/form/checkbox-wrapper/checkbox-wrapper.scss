@@ -123,6 +123,14 @@
       outline-color: $p-color-notification-error !important;
     }
 
+    ::slotted(input:focus:not(:focus-visible)) {
+      outline-color: transparent !important;
+    }
+
+    ::slotted(input:focus-visible) {
+      outline-color: $p-color-notification-error !important;
+    }
+
     #{$bem-block}__text:hover ~ ::slotted(input),
     &:not(#{$bem-block}--disabled #{$bem-block}__text) ::slotted(input:hover) {
       border-color: darken($p-color-notification-error, 12%) !important;
@@ -144,7 +152,16 @@
       // Needs to be set explicitly for safari
       border-color: $p-color-notification-success !important;
     }
+
     ::slotted(input:focus) {
+      outline-color: $p-color-notification-success !important;
+    }
+
+    ::slotted(input:focus:not(:focus-visible)) {
+      outline-color: transparent !important;
+    }
+
+    ::slotted(input:focus-visible) {
       outline-color: $p-color-notification-success !important;
     }
 
