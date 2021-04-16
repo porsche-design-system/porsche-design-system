@@ -58,6 +58,7 @@
     background-color $p-animation-hover-duration $p-animation-hover-bezier !important;
   opacity: 1 !important;
   border: $p-color-neutral-contrast-medium solid 1px !important;
+  border-radius: 0 !important;
   outline: transparent solid 1px !important;
   outline-offset: 2px !important;
   cursor: pointer !important;
