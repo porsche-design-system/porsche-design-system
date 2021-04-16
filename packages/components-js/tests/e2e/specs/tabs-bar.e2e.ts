@@ -66,17 +66,17 @@ describe('tabs-bar', () => {
   const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
   const getAllLinks = () => page.$$('a');
-  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__scroll-area');
-  const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__status-bar');
-  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__gradient--next');
+  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .scroll-area');
+  const getStatusBar = () => selectNode(page, 'p-tabs-bar >>> .status-bar');
+  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .gradient--next');
   const getActionContainers = async () => {
-    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev');
-    const actionNext = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next');
+    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .action--prev');
+    const actionNext = await selectNode(page, 'p-tabs-bar >>> .action--next');
     return { actionPrev, actionNext };
   };
   const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--prev > p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> .p-tabs-bar__action--next > p-button-pure');
+    const prevButton = await selectNode(page, 'p-tabs-bar >>> .action--prev > p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> .action--next > p-button-pure');
     return { prevButton, nextButton };
   };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
