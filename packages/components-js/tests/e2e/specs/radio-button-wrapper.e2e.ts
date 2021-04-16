@@ -266,14 +266,14 @@ describe('radio-button-wrapper', () => {
 
       expect(await getBackgroundStyle(input1)).not.toEqual(initialStyleInput1);
       expect(initialStyleInput2).toEqual(await getBackgroundStyle(input2));
-      expect(await getActiveElementId(page)).toBe('radio-1-input');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
 
       await labelText2.click();
       await waitForInputTransition(page);
 
       expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
       expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
-      expect(await getActiveElementId(page)).toBe('radio-2-input');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
     });
 
     it('should check radio-button when checked attribute is changed programmatically', async () => {
