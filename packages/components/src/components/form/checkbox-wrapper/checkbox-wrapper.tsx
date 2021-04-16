@@ -103,7 +103,6 @@ export class CheckboxWrapper {
      * also we don't want to click to the input, if a link is clicked.
      */
     if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.focus();
       this.input.click();
     }
   };
