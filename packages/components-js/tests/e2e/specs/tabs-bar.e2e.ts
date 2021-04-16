@@ -650,9 +650,9 @@ describe('tabs-bar', () => {
         </div>`
       );
       const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
-      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__gradient--next');
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .gradient--next');
       const gradientWidth = await getOffsetWidth(gradientNext);
-      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .p-tabs-bar__scroll-area');
+      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .scroll-area');
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -748,7 +748,7 @@ describe('tabs-bar', () => {
   });
 
   describe('next/prev buttons', () => {
-    const hiddenClass = 'p-tabs-bar__action--hidden';
+    const hiddenClass = 'action--hidden';
     const tabSizes: TabSize[] = ['small', 'medium'];
 
     tabSizes.forEach((size) => {
