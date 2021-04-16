@@ -16,5 +16,5 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
 
 export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
 
-export const getElementAttr = (el: ElementHandle, attr: string): Promise<string> =>
-  el.evaluate((el, attr: string) => el.getAttribute(attr), attr);
+export const getElementProp = (el: ElementHandle, prop: string): Promise<string> =>
+  el.evaluate((el, prop: string) => el[prop], prop);
