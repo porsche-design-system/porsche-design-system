@@ -352,7 +352,7 @@ describe('radio-button-wrapper', () => {
 
       await input.click();
 
-      expect(await getBoxShadowStyle(input)).toBe(visible, 'after click');
+      expect(await getBoxShadowStyle(input)).toBe('none', 'after click');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
