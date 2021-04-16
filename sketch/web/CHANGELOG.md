@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Type | Web Library |
 |---|---|
-Component |  Improve Module |
+Component | Improve Modal |
 
 ### [2.0.2] - 2021-03-18
 
